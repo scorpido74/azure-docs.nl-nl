@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
-ms.openlocfilehash: c4c2b1f334e37691655b18d2c629fbd8edc95382
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 425266e2a7ca42bb17ca598ddfc2f2b86591f32e
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171610"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900178"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Voldoen aan de voor waarden in de standaard regels-engine voor Azure CDN
 
@@ -60,9 +60,9 @@ Naam van cookie | Operator | Cookie waarde | Case-trans formatie
 ------------|----------|--------------|---------------
 Tekenreeks | [Lijst met standaard operators](#standard-operator-list) | Teken reeks, int | Geen trans formatie, naar hoofd letters, naar kleine letters
 
-#### <a name="key-information"></a>Belang rijke informatie
+#### <a name="key-information"></a>Belangrijke informatie
 
-- U kunt geen joker tekens (inclusief sterretjes (\*)) gebruiken wanneer u een cookie naam opgeeft. u Muse de naam van een exacte cookie gebruiken.
+- U kunt geen joker tekens (inclusief sterretjes (\*)) gebruiken wanneer u een cookie naam opgeeft. u moet een exacte cookie naam gebruiken.
 - U kunt slechts één cookie naam per exemplaar van deze match-voor waarde opgeven.
 - Cookie naam vergelijkingen zijn niet hoofdletter gevoelig.
 - Als u meerdere cookie waarden wilt opgeven, gebruikt u één spatie tussen elke cookie waarde. 
@@ -79,13 +79,13 @@ Argumentnaam | Operator | Argumentwaarde | Case-trans formatie
 --------------|----------|----------------|---------------
 Tekenreeks | [Lijst met standaard operators](#standard-operator-list) | Teken reeks, int | Geen trans formatie, naar hoofd letters, naar kleine letters
 
-### <a name="query-string"></a>Query reeks
+### <a name="query-string"></a>Querytekenreeks
 
 Hiermee worden aanvragen geïdentificeerd die een specifieke query teken reeks parameter bevatten. Deze para meter wordt ingesteld op een waarde die overeenkomt met een specifiek patroon. Query reeks parameters (bijvoorbeeld **para meter = waarde**) in de aanvraag-URL bepalen of aan deze voor waarde wordt voldaan. Deze match-voor waarde identificeert een query reeks parameter met de naam en accepteert een of meer waarden voor de waarde van de para meter.
 
 #### <a name="required-fields"></a>Vereiste velden
 
-Operator | Query reeks | Case-trans formatie
+Operator | Querytekenreeks | Case-trans formatie
 ---------|--------------|---------------
 [Lijst met standaard operators](#standard-operator-list) | Teken reeks, int | Geen trans formatie, naar hoofd letters, naar kleine letters
 
@@ -97,19 +97,19 @@ Hiermee worden aanvragen geïdentificeerd op basis van de locatie of het IP-adre
 
 Operator | Ondersteunde waarden
 ---------|-----------------
-Alle | N.v.t.
+Alle | N/A
 Geo-overeenkomst | Landnummer
 Overeenkomende IP | IP-adres (door spaties gescheiden)
-Geen | N.v.t.
+Geen | N/A
 Geen geo-overeenkomst | Landnummer
 Geen overeenkomst met het IP-adres | IP-adres (door spaties gescheiden)
 
-#### <a name="key-information"></a>Belang rijke informatie
+#### <a name="key-information"></a>Belangrijke informatie
 
 - Gebruik CIDR-notatie.
 - Als u meerdere IP-adressen en IP-adres blokken wilt opgeven, gebruikt u één spatie tussen de waarden:
   - **IPv4-voor beeld**: *1.2.3.4 10.20.30.40* komt overeen met alle aanvragen die binnenkomen bij een van de adressen 1.2.3.4 of 10.20.30.40.
-  - **IPv6-voor beeld**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:8*0 komt overeen met aanvragen die afkomstig zijn van een van de adressen 1:2:3:4:5:6:7:8 of 10:20:30:40:50:60:70:80.
+  - **IPv6-voor beeld**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* komt overeen met aanvragen die afkomstig zijn van een van de adressen 1:2:3:4:5:6:7:8 of 10:20:30:40:50:60:70:80.
 - De syntaxis voor een IP-adres blok is het basis-IP-adres, gevolgd door een slash en de grootte van het voor voegsel. Bijvoorbeeld:
   - **IPv4-voor beeld**: *5.5.5.64/26* komt overeen met de aanvragen die afkomstig zijn van 5.5.5.64 via 5.5.5.127.
   - **IPv6-voor beeld**: *1:2:3:/48* komt overeen met aanvragen die afkomstig zijn van de adressen 1:2:3:0:0:0:0:0 tot en met 1:2: 3: FFFF: FFFF: FFFF: FFFF: FFFF.
@@ -144,7 +144,7 @@ Operator | Ondersteunde waarden
 ---------|----------------
 Is gelijk aan, niet gelijk aan | GET, POST, PUT, DELETE, HEAD, OPTIONS, TRACE
 
-#### <a name="key-information"></a>Belang rijke informatie
+#### <a name="key-information"></a>Belangrijke informatie
 
 - Alleen de GET-aanvraag methode kan inhoud in de cache in Azure CDN genereren. Alle andere aanvraag methoden worden via het netwerk geproxyeerd. 
 
@@ -168,7 +168,7 @@ Operator | Aanvraag-URL | Case-trans formatie
 ---------|-------------|---------------
 [Lijst met standaard operators](#standard-operator-list) | Teken reeks, int | Geen trans formatie, naar hoofd letters, naar kleine letters
 
-#### <a name="key-information"></a>Belang rijke informatie
+#### <a name="key-information"></a>Belangrijke informatie
 
 - Wanneer u deze regel voorwaarde gebruikt, moet u protocol gegevens toevoegen. Bijvoorbeeld: *https://www.\<yourdomain\>.com* .
 
@@ -178,11 +178,11 @@ Hiermee worden aanvragen geïdentificeerd die de opgegeven bestands extensie bev
 
 #### <a name="required-fields"></a>Vereiste velden
 
-Operator | Toestelnummer | Case-trans formatie
+Operator | Extensie | Case-trans formatie
 ---------|-----------|---------------
 [Lijst met standaard operators](#standard-operator-list) | Teken reeks, int | Geen trans formatie, naar hoofd letters, naar kleine letters
 
-#### <a name="key-information"></a>Belang rijke informatie
+#### <a name="key-information"></a>Belangrijke informatie
 
 - Voor uitbrei ding geldt geen voorloop periode. Gebruik bijvoorbeeld *HTML* in plaats van *HTML*.
 
@@ -196,7 +196,7 @@ Operator | Bestandsnaam | Case-trans formatie
 ---------|-----------|---------------
 [Lijst met standaard operators](#standard-operator-list) | Teken reeks, int | Geen trans formatie, naar hoofd letters, naar kleine letters
 
-#### <a name="key-information"></a>Belang rijke informatie
+#### <a name="key-information"></a>Belangrijke informatie
 
 - Als u meerdere bestands namen wilt opgeven, moet u elke bestands naam scheiden met één spatie. 
 
@@ -210,7 +210,7 @@ Operator | Waarde | Case-trans formatie
 ---------|-------|---------------
 [Lijst met standaard operators](#standard-operator-list) | Teken reeks, int | Geen trans formatie, naar hoofd letters, naar kleine letters
 
-#### <a name="key-information"></a>Belang rijke informatie
+#### <a name="key-information"></a>Belangrijke informatie
 
 - De waarde van een bestands naam kan gebruikmaken van joker tekens. Elk bestands naam patroon kan bijvoorbeeld bestaan uit een of meer sterretjes (*), waarbij elk sterretje overeenkomt met een reeks van een of meer tekens.
 

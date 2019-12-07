@@ -1,22 +1,23 @@
 ---
-title: Met Azure Storage de toegang tot gegevens van een toepassing in de cloud beveiligen | Microsoft Docs
+title: Toegang tot toepassings gegevens beveiligen
+titleSuffix: Azure Storage
 description: Gebruik SAS-tokens, versleuteling en HTTPS om de gegevens van een toepassing in de cloud te beveiligen.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 05/30/2018
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.custom: mvc
-ms.openlocfilehash: 2cd7a83b597d656ddbb0210aacfe96f6c056248b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1075c03820efba44ceb8dea28aff6302d2667cf2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986688"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892427"
 ---
-# <a name="secure-access-to-an-applications-data-in-the-cloud"></a>Toegang tot gegevens van een toepassing in de cloud beveiligen
+# <a name="secure-access-to-application-data"></a>Toegang tot toepassings gegevens beveiligen
 
 Deze zelfstudie is deel drie van een serie. U leert hoe u informatie over toegang tot het opslagaccount kunt beveiligen. 
 
@@ -31,7 +32,7 @@ In deel drie van de serie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet de vorige zelfstudie over opslag hebben voltooid: Het [formaat van geüploade afbeeldingen automatisch wijzigen met behulp van Event grid][previous-tutorial]. 
+Voor het volt ooien van deze zelf studie moet u de vorige hand leiding voor opslag hebben voltooid: [automatisch formaat van geüploade afbeeldingen wijzigen met behulp van Event grid][previous-tutorial].
 
 ## <a name="set-container-public-access"></a>Openbare toegang tot de container instellen
 
@@ -128,7 +129,7 @@ public static async Task<List<string>> GetThumbNailUrls(AzureStorageConfig _stor
 
 In de vorige taak zijn de volgende klassen, eigenschappen en methoden gebruikt:
 
-|Klasse  |properties| Methoden  |
+|Klasse  |Eigenschappen| Methoden  |
 |---------|---------|---------|
 |[StorageCredentials](/dotnet/api/microsoft.azure.cosmos.table.storagecredentials)    |         |
 |[CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount)     | |[CreateCloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.blobaccountextensions.createcloudblobclient)        |

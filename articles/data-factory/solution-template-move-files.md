@@ -1,5 +1,5 @@
 ---
-title: Bestanden verplaatsen tussen opslag op basis van bestanden met behulp van Azure Data Factory
+title: Bestanden verplaatsen tussen opslag op basis van bestanden
 description: Meer informatie over hoe u een oplossings sjabloon gebruikt om bestanden te verplaatsen tussen opslag op basis van een bestand met behulp van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.openlocfilehash: f6f83917e84a880fb86b5f592c4d51b03462753d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e0f9179918016b9eaec04b0d559e25ed7973f18a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684160"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896206"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Bestanden verplaatsen met Azure Data Factory
 
@@ -51,7 +51,7 @@ De sjabloon definieert twee para meters:
 
     ![Een nieuwe verbinding maken met de bestemming](media/solution-template-move-files/move-files2.png)
 
-3. Selecteer **deze sjabloon gebruiken**.
+3. Selecteer **Deze sjabloon gebruiken**.
 
     ![Deze sjabloon gebruiken](media/solution-template-move-files/move-files3.png)
     

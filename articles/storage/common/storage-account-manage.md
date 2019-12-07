@@ -1,18 +1,19 @@
 ---
-title: Instellingen voor opslag accounts beheren in de Azure Portal-Azure Storage | Microsoft Docs
+title: Instellingen voor opslag accounts beheren in de Azure Portal
+titleSuffix: Azure Storage
 description: Meer informatie over het beheren van instellingen voor opslag accounts in de Azure Portal, waaronder het configureren van instellingen voor toegangs beheer, het opnieuw genereren van de toegangs sleutels voor accounts, het wijzigen van de toegangs laag of het wijzigen van het type replicatie dat door het account wordt gebruikt. Meer informatie over het verwijderen van een opslag account in de portal.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 11/06/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 3c01cc870b20c8256b215eb700548e6cd69ad0d5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 93d3bf3d17348a0f5ad62118fcb9c9a0c6f2f656
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749010"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892376"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Instellingen voor opslag accounts beheren in de Azure Portal
 
@@ -49,7 +50,7 @@ Wanneer u een opslag account maakt, genereert Azure 2 512-bits toegangs sleutels
 Micro soft raadt u aan uw toegangs sleutels periodiek opnieuw te genereren om uw opslag account veilig te houden. Er zijn twee toegangs sleutels toegewezen zodat u uw sleutels kunt draaien. Wanneer u uw sleutels roteert, zorgt u ervoor dat uw toepassing gedurende het proces toegang tot Azure Storage houdt. 
 
 > [!WARNING]
-> Het opnieuw genereren van de toegangs sleutels kan invloed hebben op alle toepassingen of Azure-Services die afhankelijk zijn van de sleutel van het opslag account. Clients die gebruikmaken van de account sleutel voor toegang tot het opslag account moeten worden bijgewerkt om de nieuwe sleutel te gebruiken, inclusief Media Services, Cloud, desktop-en mobiele toepassingen en Graphical User Interface toepassingen voor Azure Storage, zoals [Azure Storage Explorer ](https://azure.microsoft.com/features/storage-explorer/).
+> Het opnieuw genereren van de toegangs sleutels kan invloed hebben op alle toepassingen of Azure-Services die afhankelijk zijn van de sleutel van het opslag account. Clients die gebruikmaken van de account sleutel voor toegang tot het opslag account moeten worden bijgewerkt om de nieuwe sleutel te gebruiken, inclusief Media Services, Cloud, desktop-en mobiele toepassingen en Graphical User Interface toepassingen voor Azure Storage, zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
 Volg deze procedure om de sleutels van uw opslag account te roteren:
 

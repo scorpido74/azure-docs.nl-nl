@@ -10,30 +10,30 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 27eb4d827c1488b0d051505e62286fd66d6a286b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8b92aa6057c81ec9442372c5b85918cb92196d61
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671495"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894765"
 ---
-# <a name="simple-entity"></a>Eenvoudige entiteit 
+# <a name="simple-entity"></a>Eenvoudige entiteit
 
-Een eenvoudige entiteit is een generieke entiteit die één concept beschrijft en die wordt geleerd van de door de computer geleerde context. Omdat eenvoudige entiteiten doorgaans namen zijn zoals bedrijfs namen, product namen of andere categorieën namen, voegt u een [woordgroepen lijst](luis-concept-feature.md) toe wanneer u een eenvoudige entiteit gebruikt om het signaal van de gebruikte namen te verhogen. 
+Een eenvoudige entiteit is een generieke entiteit die één concept beschrijft en die wordt geleerd van de door de computer geleerde context. Omdat eenvoudige entiteiten doorgaans namen zijn zoals bedrijfs namen, product namen of andere categorieën namen, voegt u een [woordgroepen lijst](luis-concept-feature.md) toe wanneer u een eenvoudige entiteit gebruikt om het signaal van de gebruikte namen te verhogen.
 
 **De entiteit is goed geschikt wanneer:**
 
-* De gegevens zijn niet consistent opgemaakt, maar aangeven hetzelfde. 
+* De gegevens zijn niet consistent opgemaakt, maar aangeven hetzelfde.
 
 ![eenvoudige entiteit](./media/luis-concept-entities/simple-entity.png)
 
-## <a name="example-json"></a>Voor beeld JSON
+## <a name="example-json"></a>Voorbeeld van JSON
 
 `Bob Jones wants 3 meatball pho`
 
-In de vorige utterance wordt `Bob Jones` als een eenvoudige `Customer` entiteit aangeduid.
+In de vorige utterance `Bob Jones` wordt aangeduid als een eenvoudige `Customer` entiteit.
 
-De gegevens die door het eind punt worden geretourneerd, bevatten de naam van de entiteit, de gedetecteerde tekst van de utterance, de locatie van de gedetecteerde tekst en de Score:
+De gegevens die worden geretourneerd van het eindpunt bevat de naam van de entiteit, de gedetecteerde tekst van de utterance, de locatie van de gedetecteerde tekst en de score is:
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
@@ -86,12 +86,13 @@ This is the JSON if `verbose=true` is set in the query string:
 }
 ```
 
-* * * 
+* * *
 
-|Gegevens object|Naam van entiteit|Waarde|
+|Data-object|Naam van de entiteit|Waarde|
 |--|--|--|
 |Eenvoudige entiteit|`Customer`|`bob jones`|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze [zelf studie](luis-quickstart-primary-and-secondary-data.md)extraheert u door de computer geleerde gegevens van de naam van de werk taak uit een utterance met behulp van de **eenvoudige entiteit**. Als u de nauw keurigheid van de extractie wilt verg Roten, voegt u een [woordgroepen lijst](luis-concept-feature.md) toe met termen die specifiek zijn voor de eenvoudige entiteit.
+> [!div class="nextstepaction"]
+> [Syntaxis van het patroon leren](reference-pattern-syntax.md)

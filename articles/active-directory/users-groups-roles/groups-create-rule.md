@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c487ed02abda652a384f2f295c3edac4b56fc654
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7e8ce4f2fbdffc46d18a5f94496e9433c01a65fb
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027246"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900938"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Een dynamische groep maken en de status controleren
 
@@ -47,10 +47,10 @@ Zie voor voor beelden van de syntaxis, ondersteunde eigenschappen, Opera tors en
 ## <a name="to-create-a-group-membership-rule"></a>Een regel voor groepslid maatschap maken
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een account dat zich in de rol globale beheerder, intune-beheerder of gebruikers beheerder in de Tenant bevindt.
-1. Selecteer **groepen**.
+1. Zoek en selecteer **groepen**.
 1. Selecteer **alle groepen**en selecteer **nieuwe groep**.
 
-   ![Selecteer de opdracht voor het toevoegen van een nieuwe groep](./media/groups-create-rule/new-group-creation.png)
+   ![Selecteer de opdracht voor het toevoegen van een nieuwe groep](./media/groups-create-rule/create-new-group-azure-active-directory.png)
 
 1. Voer op de pagina **groep** een naam en een beschrijving in voor de nieuwe groep. Selecteer een **lidmaatschaps type** voor gebruikers of apparaten, en selecteer vervolgens **dynamische query toevoegen**. De opbouw functie voor regels ondersteunt Maxi maal vijf expressies. Als u meer dan vijf expressies wilt toevoegen, moet u het tekstvak gebruiken.
 
@@ -88,7 +88,7 @@ De volgende status berichten kunnen worden weer gegeven voor het lidmaatschap va
 - Wordt **uitgevoerd**: updates worden momenteel uitgevoerd.
 - **Onbekend**: de tijd van de laatste update kan niet worden opgehaald. De groep is mogelijk nieuw.
 
-Als er een fout optreedt tijdens het verwerken van de lidmaatschaps regel voor een specifieke groep, wordt er een waarschuwing weer gegeven boven aan de **pagina overzicht** voor de groep. Als er in behandeling zijnde dynamische lidmaatschaps updates voor alle groepen in de Tenant meer dan 24 uur kunnen worden verwerkt, wordt een waarschuwing weer gegeven aan de bovenkant van **alle groepen**.
+Als er een fout optreedt tijdens het verwerken van de lidmaatschaps regel voor een specifieke groep, wordt er een waarschuwing weer gegeven boven aan de **pagina overzicht** voor de groep. Als er voor meer dan 24 uur geen updates voor dynamische lidmaatschappen in behandeling kunnen worden verwerkt voor alle groepen in de Tenant, wordt een waarschuwing weer gegeven aan de bovenkant van **alle groepen**.
 
 ![fout bericht waarschuwingen verwerken](./media/groups-create-rule/processing-error.png)
 

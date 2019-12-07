@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/16/2018
-ms.openlocfilehash: 48ce748a95f58abb060cd6f54ac29c877356f5de
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 0def528e0c432ecbc706622f0b8c29c2d610c663
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555584"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893532"
 ---
 # <a name="azure-monitor-cli-quick-start-samples"></a>Voor beelden van Azure Monitor CLI Quick Start
 In dit artikel vindt u een voor beeld van opdracht regel interface-opdrachten (CLI) om u te helpen bij het openen van Azure Monitor-functies. Met Azure Monitor kunt u Cloud Services, Virtual Machines en Web Apps automatisch schalen en waarschuwings meldingen verzenden of de Url's van websites aanroepen op basis van de waarden van geconfigureerde telemetriegegevens.
@@ -160,7 +160,7 @@ Gebruik de informatie in deze sectie om met Diagnostische instellingen te werken
 az monitor diagnostic-settings list --resource <target resource ID>
 ```
 
-### <a name="create-a-diagnostic-log-setting"></a>Een diagnostische logboek instelling maken 
+### <a name="create-a-diagnostic-setting"></a>Een diagnostische instelling maken 
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

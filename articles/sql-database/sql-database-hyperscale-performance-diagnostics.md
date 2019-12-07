@@ -10,12 +10,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: a7c64284c958fa8b3ec89c2b27515fe167a04011
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2e162b30a0227c5f04c74dae01413177d1623235
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811154"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901233"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>Diagnostische gegevens voor het oplossen van problemen met SQL grootschalige-prestaties
 
@@ -44,13 +44,14 @@ De reken replica's slaan geen volledige kopie van de data base lokaal op in de c
  
 Als er een lees bewerking wordt uitgevoerd op een berekenings replica en de gegevens niet in de buffer groep of de lokale RBPEX-cache bestaan, wordt een getPage (pageId, LSN)-functie aanroep uitgegeven en wordt de pagina opgehaald van de bijbehorende pagina Server. Lees bewerkingen van pagina servers zijn op afstand lezen en zijn daardoor trager dan lees bewerkingen van de lokale RBPEX. Bij het oplossen van problemen met betrekking tot de prestaties van IO, moeten we kunnen zien hoeveel IOs is uitgevoerd via relatief trage externe pagina-Server Lees bewerkingen.
 
-Verschillende Dmv's-en Extended Events hebben kolommen en velden waarmee het aantal externe Lees bewerkingen van een pagina Server kan worden vergeleken met het totale aantal lees bewerkingen. 
+Verschillende Dmv's-en Extended Events hebben kolommen en velden waarmee het aantal externe Lees bewerkingen van een pagina Server kan worden vergeleken met het totale aantal lees bewerkingen. In query Store worden ook externe Lees bewerkingen vastgelegd als onderdeel van de statistieken van de uitvoerings tijd van de query.
 
-- Kolommen voor het rapporteren van pagina-Server zijn beschikbaar in uitvoerings Dmv's, zoals:
-    - [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
-    - [sys. dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
-    - [sys. dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
+- Kolommen voor het rapporteren van pagina-Server zijn beschikbaar in uitvoerings-Dmv's en catalogus weergaven, zoals:
+    - [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
+    - [sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
+    - [sys.dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
     - [sys. dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
+    - [sys. query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
 - Lees bewerkingen voor pagina-Server worden toegevoegd aan de volgende uitgebreide gebeurtenissen:
     - sql_statement_completed
     - sp_statement_completed
@@ -100,7 +101,7 @@ Een verhouding van Lees bewerkingen die worden uitgevoerd op RBPEX naar geaggreg
 - Op de primaire Compute wordt een schrijf bewerking voor het logboek verwerkt in file_id 2 van sys. dm_io_virtual_file_stats. Het schrijven van een logboek op de primaire Compute is een schrijf bewerking naar de registratie zone van het logboek.
 - Logboek records worden niet op de secundaire replica met een door Voer gehard. In grootschalige wordt het logboek door de xlog-service toegepast op de externe replica's. Omdat de schrijf bewerkingen in het logboek niet echt optreden op secundaire replica's, worden accounting van logboek-IO voor de secundaire replica's alleen gebruikt voor tracerings doeleinden.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - Zie [grootschalige vCore service tier VCore limieten](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5) voor resource limieten voor een grootschalige-data base.
 - Zie [query prestaties in Azure SQL database](sql-database-performance-guidance.md) voor Azure SQL database afstemming van prestaties.

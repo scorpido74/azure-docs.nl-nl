@@ -1,6 +1,6 @@
 ---
 title: Meer informatie over coderings Programma's die worden aanbevolen door Azure Media Services | Microsoft Docs
-description: Meer informatie over coderings Programma's die worden aanbevolen door Media Services
+description: Dit artikel bevat een overzicht van de on-premises encoders die worden aanbevolen door Azure Media Services.
 services: media-services
 keywords: code ring; encoders; media
 author: dbgeorge
@@ -9,15 +9,15 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: fc481129e652c6dacd15a5a6d039a9118393e8f1
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 4a0af9d040c801c125d04a5af72b2ea53322ccdb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854247"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74886568"
 ---
 # <a name="recommended-on-premises-encoders"></a>Aanbevolen on-premises coderingsprogramma's
-Wanneer u live streamt met Azure Media Services, kunt u opgeven hoe u wilt dat uw kanaal de invoer stroom ontvangt. Als u kiest voor het gebruik van een on-premises Encoder met een live encoding-kanaal, moet uw encoder een single-bitrate stream van hoge kwaliteit pushen als uitvoer. Als u kiest voor het gebruik van een on-premises Encoder met een Pass-Through kanaal, moet uw encoder een multi-bitrate stream als uitvoer met alle gewenste uitvoer kwaliteiten pushen. Zie [live streamen met on](media-services-live-streaming-with-onprem-encoders.md)-premises encoders voor meer informatie.
+Wanneer u live streamt met Azure Media Services, kunt u opgeven hoe u wilt dat uw kanaal de invoer stroom ontvangt. Als u kiest voor het gebruik van een on-premises Encoder met een live encoding-kanaal, moet uw encoder een single-bitrate stream van hoge kwaliteit pushen als uitvoer. Als u kiest voor het gebruik van een on-premises Encoder met een Pass-Through kanaal, moet uw encoder een multi-bitrate stream als uitvoer met alle gewenste uitvoer kwaliteiten pushen. Zie [live streamen met on-premises encoders](media-services-live-streaming-with-onprem-encoders.md)voor meer informatie.
 
 Azure Media Services raadt u aan om een van de volgende Live coderings Programma's te gebruiken die RTMP als uitvoer hebben:
 - Adobe Flash Media Live Encoder 3.2
@@ -54,19 +54,19 @@ Kanaal verificatie door geven
 4. Een gepubliceerde live-gebeurtenis maken
 5. Voer uw Live coderings programma uit voor ongeveer 10 minuten
 6. De live-gebeurtenis stoppen
-7. Maak, start een streaming-eind punt, gebruik een speler zoals [Azure Media Player](https://aka.ms/azuremediaplayer) om het gearchiveerde activum te bekijken om ervoor te zorgen dat afspelen geen zicht bare storingen heeft voor alle kwaliteits niveaus (of Bekijk en valideer en controleer deze via de Preview-URL tijdens de Live sessie vóór stap 6)
+7. Maak, start een streaming-eind punt, gebruik een speler zoals [Azure Media Player](https://aka.ms/azuremediaplayer) om het gearchiveerde activum te bekijken om ervoor te zorgen dat afspelen geen zicht bare storingen heeft voor alle kwaliteits niveaus (of Bekijk en valideer en controleer de voor beeld-URL tijdens de Live sessie voordat u stap 6 hebt)
 8. Registreer de Asset-ID, de gepubliceerde streaming-URL voor het Live Archief en de instellingen en versie die worden gebruikt vanuit uw Live coderings programma
 9. De kanaal status opnieuw instellen na het maken van elk voor beeld
 10. Herhaal stap 3 t/m 9 voor alle configuraties die worden ondersteund door uw coderings programma (met en zonder AD-Signa lering/bijschriften/verschillende coderings snelheden)
 
 Verificatie van Live encoding-kanaal
 1. Uw Azure Media Services-account maken of bezoeken
-2. Een **Live** coderings kanaal maken en starten
+2. Een **Live coderings** kanaal maken en starten
 3. Configureer uw encoder om een live stream met één bitsnelheid te pushen.
 4. Een gepubliceerde live-gebeurtenis maken
 5. Voer uw Live coderings programma uit voor ongeveer 10 minuten
 6. De live-gebeurtenis stoppen
-7. Maak, start een streaming-eind punt, gebruik een speler zoals [Azure Media Player](https://aka.ms/azuremediaplayer) om het gearchiveerde activum te bekijken om ervoor te zorgen dat afspelen geen zicht bare storingen heeft voor alle kwaliteits niveaus (of Bekijk en valideer en controleer deze via de Preview-URL tijdens de Live sessie vóór stap 6)
+7. Maak, start een streaming-eind punt, gebruik een speler zoals [Azure Media Player](https://aka.ms/azuremediaplayer) om het gearchiveerde activum te bekijken om ervoor te zorgen dat afspelen geen zicht bare storingen heeft voor alle kwaliteits niveaus (of Bekijk en valideer en controleer de voor beeld-URL tijdens de Live sessie voordat u stap 6 hebt)
 8. Registreer de Asset-ID, de gepubliceerde streaming-URL voor het Live Archief en de instellingen en versie die worden gebruikt vanuit uw Live coderings programma
 9. De kanaal status opnieuw instellen na het maken van elk voor beeld
 10. Herhaal stap 3 t/m 9 voor alle configuraties die worden ondersteund door uw coderings programma (met en zonder AD-Signa lering/bijschriften/verschillende coderings snelheden)
@@ -81,4 +81,4 @@ Duurzaamheids verificatie
 7. De live-gebeurtenis stoppen
 8. Registreer de Asset-ID, de gepubliceerde streaming-URL voor het Live Archief en de instellingen en versie die worden gebruikt vanuit uw Live coderings programma
 
-Verzend ten slotte uw vastgelegde instellingen en de para meters van uw live amsstreaming@microsoft.com-archief naar Media Services door e-mail berichten. Na ontvangst voert Media Services verificatie tests uit op de voor beelden van uw Live coderings programma. U kunt contact opnemen met de Media Services met vragen over dit proces.
+Verzend ten slotte uw vastgelegde instellingen en de para meters van uw live-archief naar Media Services door e-mail amsstreaming@microsoft.com. Na ontvangst voert Media Services verificatie tests uit op de voor beelden van uw Live coderings programma. U kunt contact opnemen met de Media Services met vragen over dit proces.

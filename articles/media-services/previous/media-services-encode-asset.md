@@ -1,6 +1,6 @@
 ---
 title: Overzicht van media encoders van Azure on-demand | Microsoft Docs
-description: In dit onderwerp vindt u een overzicht van Azure-media encoders op aanvraag.
+description: Azure Media Services biedt meerdere opties voor het coderen van media in de Cloud. In dit artikel vindt u een overzicht van Azure-media encoders op aanvraag.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: 5c55b419b88a66d2e1acf1687478ab35d9f0a059
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: d5d5b8a7328ee82e94d494795617832cb0258667
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019036"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901517"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Overzicht van media encoders op aanvraag van Azure 
 
@@ -41,14 +41,14 @@ Media Services ondersteunt de volgende op aanvraag encoders die in dit artikel w
 
 Dit artikel bevat een kort overzicht van de media encoders op aanvraag en bevat koppelingen naar artikelen met meer gedetailleerde informatie. Het onderwerp bevat ook een vergelijking van de encoders.
 
-Elke Media Services-account kan standaard één actieve coderings taak tegelijk hebben. U kunt coderings eenheden reserveren waarmee meerdere versleutelings taken gelijktijdig kunnen worden uitgevoerd, één voor elke gereserveerde encoding-eenheid die u koopt. Zie coderings [eenheden schalen](media-services-scale-media-processing-overview.md)voor meer informatie.
+Elke Media Services-account kan standaard één actieve coderings taak tegelijk hebben. U kunt coderings eenheden reserveren waarmee meerdere versleutelings taken gelijktijdig kunnen worden uitgevoerd, één voor elke gereserveerde encoding-eenheid die u koopt. Zie [coderings eenheden schalen](media-services-scale-media-processing-overview.md)voor meer informatie.
 
 ## <a name="media-encoder-standard"></a>Media Encoder Standard
 
 ### <a name="how-to-use"></a>Gebruiksinstructies
 [Coderen met Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md)
 
-### <a name="formats"></a>Opmaak
+### <a name="formats"></a>Indelingen
 [Indelingen en codecs](media-services-media-encoder-standard-formats.md)
 
 ### <a name="presets"></a>Voorinstellingen

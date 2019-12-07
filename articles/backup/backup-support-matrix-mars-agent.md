@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor de MARS-agent
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning bij het maken van een back-up van computers waarop de Microsoft Azure Recovery Services-agent (MARS) wordt uitgevoerd.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 43f11bb73578187bd851f58cb6311c95b8648d08
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 26f3dde0bb20443753e2b443ffc00ee23c9124c4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195009"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893974"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Ondersteunings matrix voor back-up met de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -45,7 +45,7 @@ Wanneer u de MARS-agent gebruikt voor het maken van een back-up van gegevens, ne
 --- | ---
 Grootte |  Beschik bare ruimte in de cachemap moet ten minste 5 tot 10 procent van de totale grootte van uw back-upgegevens zijn.
 Locatie | De cachemap moet lokaal zijn opgeslagen op de computer waarvan een back-up wordt gemaakt en moet online zijn. De cachemap mag zich niet op een netwerk share, op Verwissel bare media of op een offline volume bevinden.
-Map | De cachemap moet worden versleuteld op een ontdubbeld volume of in een map die is gecomprimeerd, een sparse of een reparsepunt heeft.
+Map | De cachemap mag niet worden versleuteld op een ontdubbeld volume of in een gecomprimeerde map, een sparse of een reparsepunt.
 Locatie wijzigingen | U kunt de locatie van de cache wijzigen door de back-upengine (`net stop bengine`) te stoppen en de cachemap naar een nieuw station te kopiëren. (Zorg ervoor dat er voldoende ruimte beschikbaar is op het nieuwe station.) Werk vervolgens twee Register vermeldingen onder **HKLM\SOFTWARE\Microsoft\Windows Azure backup** (**config/ScratchLocation** en **config/CloudBackupProvider/ScratchLocation**) bij naar de nieuwe locatie en start de engine opnieuw.
 
 ## <a name="networking-and-access-support"></a>Ondersteuning voor netwerken en toegang
@@ -72,7 +72,7 @@ De toegang tot alle hierboven vermelde Url's en IP-adressen maakt gebruik van he
 **Functie** | **Details**
 --- | ---
 Bandbreedte regeling | Ondersteund. In de MARS-agent gebruikt u **Eigenschappen wijzigen** om de band breedte aan te passen.
-Netwerk beperking | Niet beschikbaar voor back-ups van computers waarop Windows Server 2008 R2, Windows Server 2008 SP2 of Windows 7 wordt uitgevoerd.
+Netwerkbeperking | Niet beschikbaar voor back-ups van computers waarop Windows Server 2008 R2, Windows Server 2008 SP2 of Windows 7 wordt uitgevoerd.
 
 ## <a name="support-for-direct-backups"></a>Ondersteuning voor directe back-ups
 
@@ -120,12 +120,12 @@ Windows 7| 1\.700 GB
 --- | ---
 Versleuteld| Ondersteund.
 Gecomprimeerd | Ondersteund.
-Verspreide gegevens | Ondersteund.
+Sparse | Ondersteund.
 Gecomprimeerd en verspreid |Ondersteund.
 Vaste koppelingen| Wordt niet ondersteund. Genegeerd.
 Reparsepunt| Wordt niet ondersteund. Genegeerd.
 Versleuteld en verspreid |Wordt niet ondersteund. Genegeerd.
-Gecomprimeerde stroom| Wordt niet ondersteund. Genegeerd.
+Gecomprimeerde stream| Wordt niet ondersteund. Genegeerd.
 Sparse stream| Wordt niet ondersteund. Genegeerd.
 OneDrive (gesynchroniseerde bestanden zijn sparse-streams)| Wordt niet ondersteund.
 

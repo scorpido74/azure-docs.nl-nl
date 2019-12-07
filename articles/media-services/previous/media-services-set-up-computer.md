@@ -1,6 +1,6 @@
 ---
 title: Uw Azure Media Services-ontwikkelomgeving instellen | Microsoft Docs
-description: Uw omgeving instellen voor het ontwikkelen met Azure Media Services.
+description: In dit artikel wordt beschreven hoe u uw omgeving instelt voor het ontwikkelen met Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 546e8e50bc34307c46d33e217d5bc0887b548774
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5ef9b3d6f13de70cdf2fff87d9aed0a8efc2b782
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60410022"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895791"
 ---
 # <a name="set-up-your-media-services-development-environment"></a>De Media Services-ontwikkelomgeving instellen  
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [hulp bij de migratie van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 De volgende stappen beschrijven de vereisten voor het ontwikkelen met Azure Media Services.
 
-## <a name="create-a-media-services-account"></a>Een Media Services-account maken
+## <a name="create-a-media-services-account"></a>Een Media Services-account kunt maken
 Gebruik Azure Portal, de .NET-SDK of de REST API voor het maken van een Azure Media Services-account.
 
 <a id="setup_dev_env"></a>
@@ -47,7 +47,7 @@ Als u verbinding wilt maken met de API van Azure Media Services, raadpleegt u [A
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zoeken naar meerdere codevoorbeelden in de galerie **Azure Code Samples**: [Azure Media Services-codevoorbeelden](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
+Zoeken naar meerdere codevoorbeelden in de galerie **Azure-codevoorbeelden**: [Azure Media Services-codevoorbeelden](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

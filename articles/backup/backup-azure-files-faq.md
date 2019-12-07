@@ -3,16 +3,16 @@ title: Veelgestelde vragen over het maken van een back-up van Azure-bestanden
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het beveiligen van uw Azure-bestands shares met de Azure Backup-service.
 ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: bf04458d859601de7ca0e9d07f6a3dbf506a51e6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: bc4d7f9ad6512831687b974ae68870314775457d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173116"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892564"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Vragen over het maken back-ups van Azure-bestanden
 
-In dit artikel vindt u antwoorden op veelgestelde vragen over het maken back-ups van Azure-bestanden. Sommige antwoorden bevatten koppelingen naar artikelen met uitgebreide informatie over het onderwerp. U kunt ook in het [discussieforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup) vragen over de Azure Backup-service plaatsen.
+In dit artikel vindt u antwoorden op veelgestelde vragen over het maken back-ups van Azure-bestanden. Sommige antwoorden bevatten koppelingen naar artikelen met uitgebreide informatie over het onderwerp. U kunt in het [discussieforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup) ook vragen over de Azure Backup-service plaatsen.
 
 Als u kort de secties in dit artikel wilt bekijken, gebruikt u de koppelingen aan de rechterkant, onder **In dit artikel**.
 
@@ -70,6 +70,18 @@ Het maken van back-ups van Azure-bestandsshares is momenteel in de preview-fase 
 - US Gov - Arizona (UGA)
 - US Gov - Texas (UGT)
 - US Gov - Virginia (UGV)
+- Australië-centraal (ACL)
+- India West (INW)
+- Zuid-Afrika-noord (SAN)
+- UAE-noord (UAN)
+- Frankrijk-centraal (FRC)
+- Duitsland-noord (GN)                       
+- Duitsland-west-centraal (GWC)
+- Zuid-Afrika-west (zaag)
+- UAE-centraal (UAC)
+- NAANBEVOLEN (Noor wegen Oost)     
+- NWW (Noor wegen West)
+- SZN (Zwitserland-noord)
 
 Schrijf naar [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com) als u deze functie wilt gebruiken in een specifiek geografisch gebied dat hierboven niet wordt vermeld.
 

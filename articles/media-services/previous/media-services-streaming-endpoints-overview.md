@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Azure Media Services streaming-eind punten | Microsoft Docs
-description: Dit onderwerp bevat een overzicht van Azure Media Services streaming-eind punten.
+description: Dit artikel bevat een overzicht van Azure Media Services streaming-eind punten.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ac9c9a73e52c678c8a6d9b1e1779d9ec75cab2c8
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 95d8d819aa1b418b4a7ec736cef64cb989f7e37b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69016455"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885633"
 ---
 # <a name="streaming-endpoints-overview"></a>Overzicht van streaming-eind punten  
 
@@ -28,7 +28,7 @@ ms.locfileid: "69016455"
 
 In Microsoft Azure Media Services (AMS) vertegenwoordigt een **streaming-eind punt** een streaming-service die inhoud rechtstreeks kan leveren aan een client speler of een Content Delivery Network (CDN) voor verdere distributie. Media Services biedt ook naadloze Azure CDN integratie. De uitgaande stroom van een StreamingEndpoint-service kan een live stream, een video op aanvraag of een progressief downloaden van uw asset in uw Media Services-account zijn. Elk Azure Media Services account bevat een standaard-StreamingEndpoint. Aanvullende StreamingEndpoints kunnen worden gemaakt onder het account. Er zijn twee versies van StreamingEndpoints, 1,0 en 2,0. Vanaf 10 januari 2017 zullen nieuw gemaakte AMS-accounts versie 2,0 **standaard** StreamingEndpoint bevatten. Extra streaming-eind punten die u aan dit account toevoegt, zijn ook versie 2,0. Deze wijziging heeft geen invloed op de bestaande accounts. de bestaande StreamingEndpoints wordt versie 1,0 en kan worden bijgewerkt naar versie 2,0. Deze wijziging is van invloed op wijzigingen in de facturerings-en onderdelen (Zie de sectie **streaming-typen en-versies** die hieronder worden beschreven) voor meer informatie.
 
-Azure Media Services de volgende eigenschappen aan de entiteit voor het streaming-eind punt toegevoegd: **CdnProvider**, **CdnProfile**, **StreamingEndpointVersion**. Zie voor gedetailleerde informatie over deze eigenschappen. [](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint) 
+Azure Media Services de volgende eigenschappen toegevoegd aan de streaming-eindpunt entiteit: **CdnProvider**, **CdnProfile**, **StreamingEndpointVersion**. Zie voor gedetailleerde informatie [over deze eigenschappen](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
 
 Wanneer u een Azure Media Services account maakt, wordt er een standaard-streaming-eind punt voor u gemaakt in de status **gestopt** . U kunt het standaard streaming-eind punt niet verwijderen. Afhankelijk van de beschik baarheid van Azure CDN in de doel regio, bevat standaard nieuw gemaakt StandardVerizon-eind punt ook de integratie van de CDN-provider. 
                 
@@ -39,18 +39,18 @@ In dit onderwerp vindt u een overzicht van de belangrijkste functies die worden 
 
 ## <a name="naming-conventions"></a>Naamconventies
 
-Voor het standaard eindpunt:`{AccountName}.streaming.mediaservices.windows.net`
+Voor het standaard eindpunt: `{AccountName}.streaming.mediaservices.windows.net`
 
-Voor alle extra eind punten:`{EndpointName}-{AccountName}.streaming.mediaservices.windows.net`
+Voor alle extra eind punten: `{EndpointName}-{AccountName}.streaming.mediaservices.windows.net`
 
 ## <a name="streaming-types-and-versions"></a>Typen streaming en versies
 
 ### <a name="standardpremium-types-version-20"></a>Standard/Premium-typen (versie 2,0)
 
-Vanaf de versie van Media Services januari 2017 hebt u twee streaming-typen: **Standaard** (preview) en **Premium**. Deze typen maken deel uit van de streaming-eindpunt versie ' 2,0 '.
+Vanaf de versie van Media Services januari 2017 hebt u twee streaming-typen: **Standard** (preview) en **Premium**. Deze typen maken deel uit van de streaming-eindpunt versie ' 2,0 '.
 
 
-|type|Description|
+|Type|Beschrijving|
 |--------|--------|  
 |**Standard**|Het standaard streaming-eind punt is een **standaard** type, dat kan worden gewijzigd in het Premium-type door streaming-eenheden aan te passen.|
 |**Premium** |Deze optie is geschikt voor professionele scenario's die een hogere schaal of beheer vereisen. U gaat naar een **Premium** -type door streaming-eenheden aan te passen.<br/>Toegewezen streaming-eind punten zijn Live in geïsoleerde omgevingen en concurreren niet voor resources.|
@@ -75,9 +75,9 @@ Als het streaming-eind punt van uw **versie 1,0** > = 1 Premium streaming-eenhed
 
 ### <a name="versions"></a>Versies
 
-|type|StreamingEndpointVersion|ScaleUnits|CDN|Billing|
+|Type|StreamingEndpointVersion|ScaleUnits|CDN|Billing|
 |--------------|----------|-----------------|-----------------|-----------------|
-|Klassiek|1.0|0|N.v.t.|Free|
+|Klassiek|1.0|0|N.V.T.|Gratis|
 |Standard streaming-eind punt (preview-versie)|2.0|0|Ja|Betaald|
 |Premium streamingeenheden|1.0|>0|Ja|Betaald|
 |Premium streamingeenheden|2.0|>0|Ja|Betaald|
@@ -91,7 +91,7 @@ CDN|Azure CDN, CDN van derden of geen CDN.|Azure CDN, CDN van derden of geen CDN
 Facturering is naar verhouding| Dagelijks|Dagelijks
 Dynamische versleuteling|Ja|Ja
 Dynamische verpakking|Ja|Ja
-Schalen|Automatisch geschaald naar de beoogde door voer.|Extra streaming-eenheden.
+Schaal|Automatisch geschaald naar de beoogde door voer.|Extra streaming-eenheden.
 IP-filtering/G20/aangepaste host <sup>1</sup>|Ja|Ja
 Progressieve down load|Ja|Ja
 Aanbevolen gebruik |Aanbevolen voor de meeste streaming-scenario's.|Professioneel gebruik. 
@@ -102,7 +102,7 @@ Zie [prijzen en sla](https://azure.microsoft.com/pricing/details/media-services/
 
 ## <a name="migration-between-types"></a>Migratie tussen typen
 
-Van | Naar | Action
+Vanaf | Tot | Bewerking
 ---|---|---
 Klassiek|Standard|Moet u zich aanmelden
 Klassiek|Premium| Schalen (extra streaming-eenheden)

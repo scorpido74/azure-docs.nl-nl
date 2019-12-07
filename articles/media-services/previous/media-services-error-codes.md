@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services-foutcodes | Microsoft Docs
-description: Het onderwerp biedt een overzicht van Azure Media Services-foutcodes.
+title: Fout codes Azure Media Services | Microsoft Docs
+description: U kunt HTTP-fout codes van de service ontvangen, afhankelijk van problemen zoals verificatie tokens die verlopen zijn voor acties die niet worden ondersteund in Media Services. Dit artikel bevat een overzicht van Azure Media Services v2 API-fout codes.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,110 +14,110 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f3c362730e7908e88b363659b7fa580b6f2cddf1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f5a2dd68d86a7a38fc7f2942351c42c84742d104
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61217162"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887064"
 ---
-# <a name="azure-media-services-error-codes"></a>Azure Media Services-foutcodes
-Als u Microsoft Azure Media Services gebruikt, krijgt u mogelijk HTTP-foutcodes van de service, afhankelijk van de problemen zoals verificatietokens naar acties die worden niet ondersteund in Media Services is verlopen. Hieronder volgt een lijst met **HTTP-foutcodes** die door Media Services en de mogelijke oorzaken voor deze kunnen worden geretourneerd.  
+# <a name="azure-media-services-error-codes"></a>Azure Media Services fout codes
+Wanneer u Microsoft Azure Media Services gebruikt, kunt u HTTP-fout codes van de service ontvangen, afhankelijk van problemen zoals verificatie tokens die niet worden ondersteund in Media Services. Hier volgt een lijst met **HTTP-fout codes** die kunnen worden geretourneerd door Media Services en de mogelijke oorzaken hiervoor.  
 
-## <a name="400-bad-request"></a>400-Ongeldige aanvraag
-De aanvraag bevat ongeldige gegevens en wordt geweigerd vanwege een van de volgende redenen:
+## <a name="400-bad-request"></a>400 ongeldige aanvraag
+De aanvraag bevat ongeldige gegevens en is geweigerd om een van de volgende redenen:
 
-* Een niet-ondersteunde API-versie is opgegeven. Zie voor de meest recente versie [instellen voor het ontwikkelen van Media Services REST API](media-services-rest-how-to-use.md).
-* De API-versie van Media Services is niet opgegeven. Zie voor meer informatie over het opgeven van de API-versie [Media Services Operations REST API-verwijzing](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
+* Er is een niet-ondersteunde API-versie opgegeven. Zie voor de meest recente versie de [installatie van Media Services rest API ontwikkeling](media-services-rest-how-to-use.md).
+* De API-versie van Media Services is niet opgegeven. Zie [Media Services Operations rest API Reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)(Engelstalig) voor meer informatie over het opgeven van de API-versie.
   
   > [!NOTE]
-  > Als u de .NET of Java-SDK's gebruikt voor verbinding met Media Services, wordt de API-versie is opgegeven voor u wanneer u probeert en een actie op basis van Media Services.
+  > Als u de .NET-of Java-Sdk's gebruikt om verbinding te maken met Media Services, wordt de API-versie voor u opgegeven wanneer u probeert een actie uit te voeren op Media Services.
   > 
   > 
-* Een niet-gedefinieerde eigenschap er is opgegeven. Naam van de eigenschap is in het foutbericht. Alleen de eigenschappen die lid van een bepaalde entiteit zijn kunnen worden opgegeven. Zie [Azure Media Services REST API-verwijzing](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) voor een lijst met entiteiten en hun eigenschappen.
-* Een ongeldige waarde er is opgegeven. Naam van de eigenschap is in het foutbericht. Zie de vorige koppeling voor geldige eigenschaptypen en hun waarden.
-* Waarde van een eigenschap ontbreekt en is vereist.
+* Er is een niet-gedefinieerde eigenschap opgegeven. De naam van de eigenschap bevindt zich in het fout bericht. Alleen de eigenschappen die lid zijn van een bepaalde entiteit kunnen worden opgegeven. Zie [Azure Media Services rest API verwijzing](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) voor een lijst met entiteiten en de bijbehorende eigenschappen.
+* Er is een ongeldige eigenschaps waarde opgegeven. De naam van de eigenschap bevindt zich in het fout bericht. Zie de vorige koppeling voor geldige eigenschaps typen en de bijbehorende waarden.
+* Er ontbreekt een eigenschaps waarde en deze is vereist.
 * Onderdeel van de opgegeven URL bevat een ongeldige waarde.
-* Er is geprobeerd een eigenschap WriteOnce bij te werken.
-* Er is geprobeerd om te maken van een taak met een invoer Asset met een primaire AssetFile die is niet opgegeven of kan niet worden vastgesteld.
-* Er is geprobeerd om bij te werken van een SAS-Locator. SAS-locators kunnen alleen worden gemaakt of verwijderd. Streaming-locators kan worden bijgewerkt. Zie voor meer informatie, [Locators](https://docs.microsoft.com/rest/api/media/operations/locator).
-* Een niet-ondersteunde bewerking of de query is ingediend.
+* Er is een poging gedaan om een eigenschap WriteOnce bij te werken.
+* Er is een poging gedaan een taak te maken die een invoer element heeft met een primaire AssetFile die niet is opgegeven of niet kan worden bepaald.
+* Er is een poging gedaan om een SAS-Locator bij te werken. SAS-Locators kunnen alleen worden gemaakt of verwijderd. Streaming-Locators kunnen worden bijgewerkt. Zie voor meer informatie [Locators](https://docs.microsoft.com/rest/api/media/operations/locator).
+* Er is een niet-ondersteunde bewerking of query verzonden.
 
-## <a name="401-unauthorized"></a>401-niet toegestaan
-De aanvraag kan niet worden geverifieerd (voordat deze kan worden geautoriseerd) een van de volgende oorzaken hebben:
+## <a name="401-unauthorized"></a>401 niet gemachtigd
+De aanvraag kan niet worden geverifieerd (voordat deze kan worden geautoriseerd) vanwege een van de volgende redenen:
 
-* Ontbrekende header voor verificatie.
-* Onjuiste verificatie header-waarde.
+* Verificatie header ontbreekt.
+* Ongeldige waarde voor verificatie-header.
   * Het token is verlopen. 
-  * Het token bevat een ongeldige handtekening.
+  * Het token bevat een ongeldige hand tekening.
 
-## <a name="403-forbidden"></a>403-verboden
+## <a name="403-forbidden"></a>403 verboden
 De aanvraag is niet toegestaan vanwege een van de volgende redenen:
 
-* De Media Services-account kan niet worden gevonden of is verwijderd.
-* De Media Services-account is uitgeschakeld en het aanvraagtype is geen HTTP GET. Servicebewerkingen wordt ook een 403 antwoord geretourneerd.
-* Het verificatietoken bevat referentie-informatie van de gebruiker: AccountName en/of abonnements-id. U kunt deze informatie vinden in de gebruikersinterface van Media Services-extensie voor uw Media Services-account in de Azure Management Portal.
-* De resource kan niet worden geopend.
+* Het Media Services-account is niet gevonden of is verwijderd.
+* Het Media Services-account is uitgeschakeld en het aanvraag type is niet HTTP GET. Met Service bewerkingen wordt ook een 403-antwoord geretourneerd.
+* Het verificatie token bevat niet de referentie gegevens van de gebruiker: AccountName en/of SubscriptionId. U vindt deze informatie in de Media Services UI-extensie voor uw Media Services-account in de Azure Beheerportal.
+* Kan geen toegang krijgen tot de resource.
   
-  * Er is geprobeerd een MediaProcessor die is niet beschikbaar voor uw Media Services-account gebruiken.
-  * Er is geprobeerd een taaksjabloon gedefinieerd door Media Services bijwerken.
-  * Er is geprobeerd om te overschrijven sommige andere Media Services-account van Locator.
-  * Er is geprobeerd op sommige andere Media Services-account van ContentKey overschrijven.
-* De resource kan niet worden gemaakt vanwege een servicequotum die voor de Media Services-account is bereikt. Zie voor meer informatie over de servicequota [quota en beperkingen](media-services-quotas-and-limitations.md).
+  * Er is geprobeerd een MediaProcessor te gebruiken die niet beschikbaar is voor uw Media Services-account.
+  * Er is een poging gedaan om een door Media Services gedefinieerde JobTemplate bij te werken.
+  * Er is een poging gedaan om een andere Locator van het Media Services-account te overschrijven.
+  * Er is een poging gedaan om een andere ContentKey van het account Media Services te overschrijven.
+* De resource kan niet worden gemaakt vanwege een service quotum dat is bereikt voor het Media Services-account. Zie [quota's en beperkingen](media-services-quotas-and-limitations.md)voor meer informatie over de service quota's.
 
 ## <a name="404-not-found"></a>404 – Niet gevonden
-De aanvraag is niet toegestaan voor een resource vanwege een van de volgende redenen:
+De aanvraag is niet toegestaan op een resource om een van de volgende redenen:
 
-* Er is geprobeerd om bij te werken van een entiteit die niet bestaat.
-* Er is geprobeerd op een entiteit verwijdert die niet bestaat.
-* Er is geprobeerd een entiteit maken die is gekoppeld aan een entiteit die niet bestaat.
-* Er is geprobeerd om op te HALEN van een entiteit die niet bestaat.
-* Er is geprobeerd om op te geven van een opslagaccount dat is niet gekoppeld aan de Media Services-account.  
+* Er is een poging gedaan om een entiteit die niet bestaat, bij te werken.
+* Er is een poging gedaan om een entiteit te verwijderen die niet bestaat.
+* Er is een poging gedaan om een entiteit te maken die is gekoppeld aan een entiteit die niet bestaat.
+* Er is een poging gedaan om een entiteit te verkrijgen die niet bestaat.
+* Er is een poging gedaan een opslag account op te geven dat niet is gekoppeld aan het Media Services-account.  
 
 ## <a name="409-conflict"></a>409 conflict
 De aanvraag is niet toegestaan vanwege een van de volgende redenen:
 
-* Meer dan één AssetFile heeft de naam van de opgegeven in de Asset.
-* Er is geprobeerd om te maken van een tweede primaire AssetFile in de Asset.
-* Er is geprobeerd een ContentKey maken met de opgegeven Id al gebruikt.
-* Er is geprobeerd een Locator te maken met de opgegeven Id al gebruikt.
-* Meer dan één IngestManifestFile heeft de opgegeven naam binnen de IngestManifest.
-* Er is geprobeerd een tweede opslagversleuteling ContentKey koppelen aan de Asset opslag versleuteld.
-* Er is geprobeerd de dezelfde ContentKey koppelen aan de Asset.
-* Er is geprobeerd een locator om een Asset waarvan opslagcontainer ontbreekt of is niet meer gekoppeld aan de Asset te maken.
-* Er is geprobeerd een locator om een Asset die al in gebruik 5 locators is te maken. (Azure Storage wordt de limiet van vijf beleid voor gedeelde toegang op een storage-container afgedwongen.)
-* Storage-account van een Asset koppelen aan een IngestManifestAsset is niet hetzelfde als het opslagaccount dat wordt gebruikt door de bovenliggende IngestManifest.  
+* Meer dan één AssetFile heeft de opgegeven naam binnen de Asset.
+* Er is een poging gedaan om een tweede primaire AssetFile te maken binnen de Asset.
+* Er is geprobeerd een ContentKey te maken met de opgegeven id die al wordt gebruikt.
+* Er is een poging gedaan om een Locator te maken met de opgegeven id die al wordt gebruikt.
+* Meer dan één IngestManifestFile heeft de opgegeven naam in de IngestManifest.
+* Er is geprobeerd om een tweede ContentKey te koppelen aan de door opslag versleutelde Asset.
+* Er is geprobeerd om hetzelfde ContentKey te koppelen aan de Asset.
+* Er is een poging gedaan om een Locator te maken voor een Asset waarvan de opslag container ontbreekt of niet langer is gekoppeld aan de Asset.
+* Er is een poging gedaan om een Locator te maken voor een Asset waarvoor al vijf locators in gebruik zijn. (Azure Storage dwingt de limiet van vijf Shared Access-beleids regels af op één opslag container.)
+* Het koppelen van het opslag account van een Asset aan een IngestManifestAsset is niet hetzelfde als het opslag account dat wordt gebruikt door de bovenliggende IngestManifest.  
 
 ## <a name="500-internal-server-error"></a>500 Interne serverfout
-Media Services aangetroffen tijdens de verwerking van de aanvraag een fout waarmee wordt voorkomen de verwerking van u doorgaat dat. Dit kan een van de volgende oorzaken hebben:
+Tijdens de verwerking van de aanvraag wordt door Media Services een fout aangetroffen waardoor de verwerking niet kan worden voortgezet. Dit kan een van de volgende oorzaken hebben:
 
-* Het maken van een Asset of een taak mislukt, omdat de servicegegevens quotum van het Media Services-account tijdelijk niet beschikbaar is.
-* Het maken van een Asset of IngestManifest blob storage-container mislukt, omdat de accountgegevens voor opslag van het account is tijdelijk niet beschikbaar.
+* Het maken van een activum of taak is mislukt omdat de service quotum gegevens van het Media Services-account tijdelijk niet beschikbaar zijn.
+* Het maken van een activa-of IngestManifest Blob-opslag container mislukt omdat de gegevens van het opslag account van het account tijdelijk niet beschikbaar zijn.
 * Andere onverwachte fout.
 
 ## <a name="503-service-unavailable"></a>503 Service niet beschikbaar
-De server is momenteel niet om aanvragen te ontvangen. Deze fout kan worden veroorzaakt door overmatige aanvragen voor de service. Media Services beperking mechanisme Hiermee beperkt u het Resourcegebruik voor toepassingen die overmatige bij de service indienen.
+De server kan momenteel geen aanvragen ontvangen. Deze fout kan worden veroorzaakt door buitensporige aanvragen voor de service. Media Services beperkings mechanisme beperkt het resource gebruik voor toepassingen die een buitensporige aanvraag voor de service doen.
 
 > [!NOTE]
-> Controleer het foutbericht en de tekenreeks voor de foutcode voor meer gedetailleerde informatie over de reden je de 503-fout. Deze fout betekent niet altijd beperking.
+> Controleer het fout bericht en de fout code reeks voor meer gedetailleerde informatie over de reden waarom u de 503-fout hebt ontvangen. Deze fout betekent niet altijd vertraging.
 > 
 > 
 
-Beschrijvingen van de mogelijke status zijn:
+Mogelijke status beschrijvingen zijn:
 
-* "De server is bezet. Vorige uitvoeringen van dit type aanvraag heeft meer dan {0} seconden. "
-* "De server is bezet. Meer dan {0} aanvragen per seconde kunnen worden beperkt. "
-* "De server is bezet. Meer dan {0} vraagt binnen {1} seconden kunnen worden beperkt. "
+* ' De server is bezet. Eerdere uitvoeringen van dit type aanvraag duurde meer dan {0} seconden. "
+* ' De server is bezet. Er kunnen Maxi maal {0} aanvragen per seconde worden beperkt. "
+* ' De server is bezet. Meer dan {0} aanvragen binnen {1} seconden kunnen worden beperkt. "
 
-Voor het afhandelen van deze fout, wordt u aangeraden Pogingslogica voor exponentieel uitstel. Dit betekent dat met behulp van geleidelijk langere wachttijd tussen nieuwe pogingen voor opeenvolgende foutberichten.  Zie voor meer informatie, [verwerken Toepassingsblok fouten](https://msdn.microsoft.com/library/hh680905.aspx).
+Als u deze fout wilt afhandelen, raden we u aan om exponentiële back-out-logica te gebruiken. Dit betekent dat het gebruik van geleidelijk meer wacht tijden voor opeenvolgende fout reacties.  Zie voor meer informatie het [toepassings blok voor tijdelijke fout verwerking](https://msdn.microsoft.com/library/hh680905.aspx).
 
 > [!NOTE]
-> Als u [Azure Media Services SDK voor .net](https://github.com/Azure/azure-sdk-for-media-services/tree/master), de logica voor opnieuw proberen voor de 503-fout is geïmplementeerd door de SDK.  
+> Als u [Azure Media Services SDK voor .net](https://github.com/Azure/azure-sdk-for-media-services/tree/master)gebruikt, is de logica voor opnieuw proberen voor de 503-fout geïmplementeerd door de SDK.  
 > 
 > 
 
 ## <a name="see-also"></a>Zie ook
-[Media Services-Management-foutcodes](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
+[Fout codes voor Media Services beheer](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
 
 ## <a name="next-steps"></a>Volgende stappen
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

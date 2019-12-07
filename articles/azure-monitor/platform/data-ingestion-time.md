@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 8b40d89920208eaf15e01b3519b667a77baf8671
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bd6590ebbd33dc5c9b65fc193679f4bf99760c3a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932566"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894144"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Opname tijd van gegevens vastleggen in Azure Monitor
 Azure Monitor is een grootschalige gegevens service waarmee duizenden klanten elke maand terabytes aan gegevens verzenden in een groei tempo. Er zijn vaak vragen over de tijd die nodig is om te zorgen dat logboek gegevens beschikbaar worden nadat deze zijn verzameld. In dit artikel worden de verschillende factoren beschreven die van invloed zijn op deze latentie.
@@ -40,10 +40,10 @@ Agents en beheer oplossingen gebruiken verschillende strategieën voor het verza
 ### <a name="agent-upload-frequency"></a>Upload frequentie van agent
 Om ervoor te zorgen dat de Log Analytics agent lichter is, buffert de agent de logboeken en uploadt deze regel matig naar Azure Monitor. De upload frequentie varieert van 30 seconden tot 2 minuten, afhankelijk van het type gegevens. De meeste gegevens worden binnen 1 minuut geüpload. Netwerk omstandigheden kunnen een negatieve invloed hebben op de latentie van deze gegevens om Azure Monitor opname punt te bereiken.
 
-### <a name="azure-activity-logs-diagnostic-logs-and-metrics"></a>Activiteiten logboeken van Azure, Diagnostische logboeken en metrische gegevens
+### <a name="azure-activity-logs-resource-logs-and-metrics"></a>Activiteiten logboeken van Azure, resource logboeken en metrische gegevens
 Azure-gegevens voegen extra tijd toe om op Log Analytics opname punt beschikbaar te komen voor verwerking:
 
-- Gegevens uit de diagnostische logboeken nemen 2-15 minuten in beslag, afhankelijk van de Azure-service. Zie de [onderstaande query](#checking-ingestion-time) om deze latentie te controleren in uw omgeving
+- Gegevens uit de bron logboeken nemen 2-15 minuten in beslag, afhankelijk van de Azure-service. Zie de [onderstaande query](#checking-ingestion-time) om deze latentie te controleren in uw omgeving
 - De metrische gegevens van het Azure-platform duren drie minuten om te worden verzonden naar Log Analytics opname punt.
 - De gegevens van het activiteiten logboek nemen ongeveer 10-15 minuten in beslag om te worden verzonden naar Log Analytics opname punt.
 
@@ -58,7 +58,7 @@ Sommige oplossingen verzamelen geen gegevens van een agent en kunnen een verzame
 Raadpleeg de documentatie voor elke oplossing om de verzamelings frequentie te bepalen.
 
 ### <a name="pipeline-process-time"></a>Pijp lijn-verwerkings tijd
-Zodra logboek records zijn opgenomen in de Azure Monitor-pijp lijn (zoals aangegeven in de eigenschap [_TimeReceived](log-standard-properties.md#_timereceived) ), worden ze geschreven naar tijdelijke opslag om Tenant isolatie te garanderen en ervoor te zorgen dat er geen gegevens verloren gaan. Dit proces voegt doorgaans 5-15 seconden toe. Sommige beheer oplossingen implementeren zwaarere algoritmen voor het verzamelen van gegevens en het afleiden van inzichten naarmate gegevens worden gestreamd. Zo worden met de bewaking van netwerk prestaties inkomende gegevens in intervallen van drie minuten geaggregeerd, waardoor er een latentie van drie minuten wordt toegevoegd. Een ander proces dat latentie toevoegt, is het proces waarmee aangepaste logboeken worden verwerkt. In sommige gevallen kan dit proces enkele minuten latentie toevoegen aan logboeken die worden verzameld van bestanden door de agent.
+Zodra logboek records zijn opgenomen in de Azure Monitor-pijp lijn (zoals aangegeven in de eigenschap [_TimeReceived](log-standard-properties.md#_timereceived) ), worden ze geschreven naar tijdelijke opslag om Tenant isolatie te garanderen en ervoor te zorgen dat de gegevens niet verloren gaan. Dit proces voegt doorgaans 5-15 seconden toe. Sommige beheer oplossingen implementeren zwaarere algoritmen voor het verzamelen van gegevens en het afleiden van inzichten naarmate gegevens worden gestreamd. Zo worden met de bewaking van netwerk prestaties inkomende gegevens in intervallen van drie minuten geaggregeerd, waardoor er een latentie van drie minuten wordt toegevoegd. Een ander proces dat latentie toevoegt, is het proces waarmee aangepaste logboeken worden verwerkt. In sommige gevallen kan dit proces enkele minuten latentie toevoegen aan logboeken die worden verzameld van bestanden door de agent.
 
 ### <a name="new-custom-data-types-provisioning"></a>Nieuwe aangepaste gegevens typen inrichten
 Wanneer er een nieuw type aangepaste gegevens wordt gemaakt op basis van een [aangepast logboek](data-sources-custom-logs.md) of de [Data Collector-API](data-collector-api.md), maakt het systeem een speciale opslag container. Dit is een eenmalige overhead die alleen voor de eerste vormgeving van dit gegevens type optreedt.
@@ -80,7 +80,7 @@ De opname tijd kan variëren voor verschillende bronnen onder verschillende omst
 |:---|:---|:---|
 | Record gemaakt in gegevens bron | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Als de gegevens bron deze waarde niet instelt, wordt deze ingesteld op dezelfde tijd als _TimeReceived. |
 | Record ontvangen door Azure Monitor opname-eind punt | [_TimeReceived](log-standard-properties.md#_timereceived) | |
-| Record opgeslagen in de werk ruimte en beschikbaar voor query's | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | |
+| Record opgeslagen in de werk ruimte en beschikbaar voor query's | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>Vertragingen bij opname latentie
 U kunt de latentie van een specifieke record meten door het resultaat van de functie [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) te vergelijken met de eigenschap _TimeGenerated_ . Deze gegevens kunnen met verschillende aggregaties worden gebruikt om te ontdekken hoe de latentie van opname wordt gedraagt. Bekijk een aantal percentiel van de opname tijd om inzicht te krijgen in grote hoeveel heden gegevens. 

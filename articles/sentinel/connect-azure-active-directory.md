@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 43405bd3e97dbee325f0a5ed82c5848880775eee
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: f08cd731e40b204d042e5df418b03626b9082c3b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240824"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894664"
 ---
 # <a name="connect-data-from-azure-active-directory"></a>Verbinding maken met gegevens van Azure Active Directory
 
@@ -43,7 +43,7 @@ Met Azure Sentinel kunt u gegevens verzamelen van [Azure Active Directory](../ac
 
 1. Klik naast de logboeken die u wilt streamen naar Azure Sentinel op **verbinden**.
 
-1. U kunt selecteren of u wilt dat de waarschuwingen van Azure AD automatisch incidenten in azure Sentinel automatisch genereren. Selecteer **inschakelen** onder **incidenten maken** om de standaard analyse regel in te scha kelen waarmee incidenten automatisch worden gemaakt op basis van waarschuwingen die zijn gegenereerd in de verbonden beveiligings service. U kunt deze regel vervolgens bewerken onder **analyse** en vervolgens op **actieve regels**.
+1. U kunt selecteren of u wilt dat de waarschuwingen van Azure AD automatisch incidenten genereren in azure Sentinel. Selecteer **inschakelen** onder **incidenten maken** om de standaard analyse regel in te scha kelen waarmee incidenten automatisch worden gemaakt op basis van waarschuwingen die zijn gegenereerd in de verbonden beveiligings service. U kunt deze regel vervolgens bewerken onder **analyse** en vervolgens op **actieve regels**.
 
 1. Als u het relevante schema in Log Analytics voor de Azure AD-waarschuwingen wilt gebruiken, zoekt u naar **SigninLogs** en **audit logs bevat**.
 

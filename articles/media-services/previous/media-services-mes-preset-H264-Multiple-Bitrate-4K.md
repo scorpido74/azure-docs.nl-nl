@@ -1,6 +1,6 @@
 ---
-title: Media Encoder Standard standaardinstelling H264 Multiple Bitrate 4K - Azure | Microsoft Docs
-description: Het onderwerp een overzicht van de **H264 Multiple Bitrate 4K** taak vooraf ingesteld.
+title: H264 multiple bitrate Media Encoder Standard vooraf instellen-Azure | Microsoft Docs
+description: In dit artikel wordt een overzicht gegeven van de vooraf ingestelde H264-taak voor **meerdere bitsnelheden** van de Media Encoder Standard.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: e2c5339731267a00e3423e79bc25b9d03d274bfd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cec0fa3bd059cd31d9bd94773b0cce42d0f12a75
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61129576"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887014"
 ---
 # <a name="h264-multiple-bitrate-4k"></a>H264 Multiple Bitrate 4K
-`Media Encoder Standard` definieert een reeks voorinstellingen die kunt u bij het maken van coderingstaken coderen. Kunt u ofwel een `preset name` om op te geven in welke indeling u wilt coderen van uw media-bestand. Of, kunt u uw eigen JSON of XML-indeling voorinstellingen (met behulp van UTF-8- of UTF-16-codering. Vervolgens geeft u door de aangepaste voorinstelling voor het coderingsprogramma. Voor een lijst van de vooraf gedefinieerde namen ondersteund door dit `Media Encoder Standard` encoder, Zie [taak voorinstellingen voor Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard` definieert een set coderings definities die u kunt gebruiken bij het maken van coderings taken. U kunt een `preset name` gebruiken om aan te geven welke indeling uw media bestand moet coderen. U kunt ook uw eigen voor keuren voor JSON of XML maken (met UTF-8-of UTF-16-code ring. Vervolgens geeft u de aangepaste voor instelling door aan het coderings programma. Zie voor de lijst met alle vooraf gedefinieerde namen die worden ondersteund door deze `Media Encoder Standard` encoder, [voor instellingen voor de taak Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- In dit onderwerp leest de `H264 Multiple Bitrate 4K` vooraf in XML en JSON-indeling.  
+ In dit onderwerp wordt de `H264 Multiple Bitrate 4K` definitie in de XML-en JSON-indeling weer gegeven.  
   
- Deze definitie wordt een reeks van 12 GOP uitgelijnde MP4-bestanden, variërend van 20000 kbps tot 1000 kbps en stereo AAC-audio. Voor gedetailleerde informatie over het profiel bitrate, steekproeven snelheid, enz. van deze vooraf ingesteld, controleert u de XML of JSON hieronder gedefinieerd. Voor een uitleg van wat elk element in deze middelen voorinstellingen, en de geldige waarden voor elk element, Zie de [Media Encoder Standard schema](media-services-mes-schema.md) onderwerp.  
-  
-> [!NOTE]
->  Krijgt u de gereserveerde Premium-eenheid van het type met 4K codeert. Zie voor meer informatie, [hoe schaal codering](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+ Deze standaard instelling produceert een set van 12 GOP terug-afgevulde MP4-bestanden, variërend van 20000 kbps tot 1000 kbps en stereo AAC-audio. Voor gedetailleerde informatie over profiel, bitrate, sampling frequentie, enzovoort, bekijkt u de hieronder gedefinieerde XML of JSON. Zie het onderwerp [Media Encoder Standard schema](media-services-mes-schema.md) voor uitleg over wat elk-element in deze voor instellingen betekent en de geldige waarden voor elk element.  
   
 > [!NOTE]
->  Bij het wijzigen van de `Width` en `Height` waarden voor lagen, zorg ervoor dat de hoogte-breedteverhouding consistent blijft. Bijvoorbeeld: 1920x1080, 1280x720, 1080x576, 640x360. U moet een combinatie van verhoudingen, zoals niet gebruiken: 1280x720, 720x480, 640x360.  
+>  U moet het type Premium gereserveerde eenheid ophalen met de code van 4.000 kB. Zie [How to scale encoding](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)(Engelstalig) voor meer informatie.  
+  
+> [!NOTE]
+>  Zorg ervoor dat de hoogte-breedte verhouding consistent blijft bij het wijzigen van de `Width` en `Height` waarden in verschillende lagen. Bijvoorbeeld: 1920, 1280x720, 1080x576, 640 x 360. Gebruik geen combi natie van hoogte-breedte verhoudingen, zoals: 1280x720, 720x480, 640 x 360.  
   
  XML  
   

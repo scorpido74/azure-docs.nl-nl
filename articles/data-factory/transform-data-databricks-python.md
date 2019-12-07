@@ -1,5 +1,5 @@
 ---
-title: Gegevens transformeren met Databricks python-Azure
+title: Gegevens transformeren met Databricks python
 description: Meer informatie over hoe u gegevens verwerkt of transformeert door een Databricks python uit te voeren.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: maghan
 manager: craigg
-ms.openlocfilehash: 47654e8183dab120376f94df63d7664ead5dd580
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1acc484b8843fc1fe1acae5759a24f923396e003
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683947"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893940"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Gegevens transformeren door een python-activiteit uit te voeren in Azure Databricks
 
@@ -62,7 +62,7 @@ Hier volgt een voor beeld van de JSON-definitie van een Databricks python-activi
 
 In de volgende tabel worden de JSON-eigenschappen beschreven die in de JSON-definitie worden gebruikt:
 
-|Eigenschap|Beschrijving|Vereist|
+|Eigenschap|Beschrijving|Verplicht|
 |---|---|---|
 |name|De naam van de activiteit in de pijp lijn.|Ja|
 |description|Tekst die beschrijft wat de activiteit doet.|Nee|
@@ -70,7 +70,7 @@ In de volgende tabel worden de JSON-eigenschappen beschreven die in de JSON-defi
 |linkedServiceName|De naam van de gekoppelde Databricks-service waarop de python-activiteit wordt uitgevoerd. Zie voor meer informatie over deze gekoppelde service artikel [Compute linked Services](compute-linked-services.md) (Engelstalig).|Ja|
 |pythonFile|De URI van het python-bestand dat moet worden uitgevoerd. Alleen DBFS-paden worden ondersteund.|Ja|
 |parameters|Opdracht regel parameters die worden door gegeven aan het python-bestand. Dit is een matrix met teken reeksen.|Nee|
-|Library|Een lijst met bibliotheken die op het cluster moeten worden geïnstalleerd waarmee de taak wordt uitgevoerd. Dit kan een matrix zijn met < teken reeks, object >|Nee|
+|bibliotheken|Een lijst met bibliotheken die op het cluster moeten worden geïnstalleerd waarmee de taak wordt uitgevoerd. Dit kan een matrix zijn met < teken reeks, object >|Nee|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Ondersteunde bibliotheken voor databricks-activiteiten
 

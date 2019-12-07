@@ -1,6 +1,6 @@
 ---
 title: LiveEvent-typen Azure Media Services | Microsoft Docs
-description: Dit artikel bevat een gedetailleerde tabel waarin LiveEvent-typen worden vergeleken.
+description: In Azure Media Services kan een live gebeurtenis een van de twee typen, Live encoding en Pass-Through zijn. In dit artikel wordt een gedetailleerde tabel weer gegeven waarin live gebeurtenis typen worden vergeleken.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 884cf8d913cec038df3b38c8af2ed0a67bd8060d
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 8377c4339b07e0b917e10ed413ffc79baef91fac
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802247"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888390"
 ---
 # <a name="live-event-types-comparison"></a>Vergelijking van live gebeurtenis typen
 
@@ -55,7 +55,7 @@ In de volgende tabel worden de functies van de live-gebeurtenis typen vergeleken
 | Ondersteuning voor het invoegen van pastels|Nee|Nee|
 | Ondersteuning voor AD-Signa lering via API| Nee|Nee|
 | Ondersteuning voor AD-Signa lering via SCTE-35 in-band-berichten|Ja|Ja|
-| Mogelijkheid om te herstellen van korte hokjes in een bijdrager|Ja|Gedeeltelijke|
+| Mogelijkheid om te herstellen van korte hokjes in een bijdrager|Ja|Gedeeltelijk|
 | Ondersteuning voor niet-uniforme invoer GOPs|Ja|Nee: de duur van de invoer moet een vaste GOP terug hebben|
 | Ondersteuning voor variabele frame-rate invoer|Ja|Nee – invoer moet een vaste frame frequentie zijn. Kleine variaties zijn toegestaan, bijvoorbeeld tijdens hoge bewegende scènes. Maar de bijdrage feed kan de frame frequentie niet verwijderen (bijvoorbeeld op 15 frames per seconde).|
 | Automatische shutoff van live gebeurtenis wanneer invoer toevoer verloren gaat|Nee|Na 12 uur, als er geen LiveOutput wordt uitgevoerd|
@@ -113,7 +113,7 @@ In de vorige sectie worden de eigenschappen beschreven van het Live coderings pr
 
 In het Live coderings programma wordt de [GOP terug](https://en.wikipedia.org/wiki/Group_of_pictures) -structuur van de contributie feed gevolgd, wat betekent dat de uitvoer lagen dezelfde GOP terug-duur hebben. Daarom is het raadzaam om de on-premises encoder te configureren voor het produceren van een contributie met vaste duur van de GOP terug (meestal 2 seconden). Dit zorgt ervoor dat de uitgaande HLS-en MPEG-streep stromen van de service ook een vaste GOP terug-duur hebben. Kleine variaties in GOP terug-duur worden waarschijnlijk door de meeste apparaten toegestaan.
 
-### <a name="frame-rate"></a>Framesnelheid
+### <a name="frame-rate"></a>Frame frequentie
 
 De Live coderings Programma's volgen ook de duur van de afzonderlijke video frames in de bijdrage-invoer, wat betekent dat de uitvoer lagen frames met dezelfde duur hebben. Daarom is het raadzaam om de on-premises encoder te configureren voor het maken van een contributie met een vaste frame snelheid (Maxi maal 30 frames per seconde). Dit zorgt ervoor dat de uitgaande HLS-en MPEG-streep stromen van de service ook de duur van een vaste frame snelheid hebben. Kleine variaties in de frame snelheid kunnen worden toegestaan door de meeste apparaten, maar er is geen garantie dat de Live Encoder een uitvoer produceert die correct wordt afgespeeld. Uw on-premises Live Encoder mag geen frames verwijderen (bijvoorbeeld onder lage accu omstandigheden) of de frame frequentie op een wille keurige manier te variëren.
 

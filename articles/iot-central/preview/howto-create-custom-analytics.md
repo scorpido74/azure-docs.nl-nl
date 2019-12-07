@@ -3,18 +3,18 @@ title: Azure IoT Central uitbreiden met aangepaste analyses | Microsoft Docs
 description: Configureer als ontwikkelaar van oplossingen een IoT Central-toepassing om aangepaste analyses en visualisaties uit te voeren. Deze oplossing maakt gebruik van Azure Databricks.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/01/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a29cae2fabe1542a7498bca19dc0a6e147d1d024
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 59fb0dfbc44746853f25437e8e13a1cbc317e151
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895148"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895546"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks-preview-features"></a>Azure IoT Central uitbreiden met aangepaste analyses met behulp van Azure Databricks (preview-functies)
 
@@ -67,8 +67,8 @@ Gebruik de [Azure Portal om een event hubs naam ruimte te maken](https://portal.
 | Prijscategorie | Basic |
 | Abonnement | Uw abonnement |
 | Resourcegroep | IoTCentralAnalysis |
-| Locatie | US - oost |
-| Doorvoereenheden | 1 |
+| Locatie | VS - oost |
+| Eenheden gegevensdoorvoer | 1 |
 
 ### <a name="azure-databricks-workspace"></a>Azure Databricks werk ruimte
 
@@ -76,11 +76,11 @@ Gebruik de [Azure Portal om een Azure Databricks service te maken](https://porta
 
 | Instelling | Waarde |
 | ------- | ----- |
-| Werkruimte naam    | De naam van uw werk ruimte kiezen |
+| Naam van de werkruimte    | De naam van uw werk ruimte kiezen |
 | Abonnement | Uw abonnement |
 | Resourcegroep | IoTCentralAnalysis |
-| Locatie | US - oost |
-| Prijscategorie | Standard |
+| Locatie | VS - oost |
+| Prijsniveau | Standard |
 
 Wanneer u de vereiste resources hebt gemaakt, ziet uw **IoTCentralAnalysis** -resource groep eruit als de volgende scherm afbeelding:
 
@@ -135,14 +135,14 @@ Gebruik de informatie in de volgende tabel om uw cluster te maken:
 | Instelling | Waarde |
 | ------- | ----- |
 | Clusternaam | centralanalysis |
-| Cluster modus | Standard |
-| Databricks Runtime versie | 5,5 LTS (scala 2,11, Spark 2.4.3) |
+| Clustermodus | Standard |
+| Databricks Runtime-versie | 5,5 LTS (scala 2,11, Spark 2.4.3) |
 | Python-versie | 3 |
 | Automatisch schalen inschakelen | Nee |
 | Beëindigen na minuten van inactiviteit | 30 |
-| Type werk nemer | Standard_DS3_v2 |
+| Werkroltype | Standard_DS3_v2 |
 | IT | 1 |
-| Type stuur programma | Gelijk aan werk nemer |
+| Stuurprogrammatype | Zelfde als werkrol |
 
 Het maken van een cluster kan enkele minuten duren. wacht totdat het maken van het cluster is voltooid voordat u doorgaat.
 

@@ -1,5 +1,5 @@
 ---
-title: Voor beelden &-instructies
+title: Voorbeeld Programma's & ML-scenario's
 titleSuffix: Azure Data Science Virtual Machine
 description: In deze voor beelden en instructies leert u hoe u veelvoorkomende taken en scenario's kunt verwerken met de Data Science Virtual Machine.
 keywords: hulpprogramma's voor datatechnologie, virtuele machine voor datatechnologie, hulpprogramma voor datatechnologie, linux-datatechnologie
@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: ad58adb85077a27bce65595738ffdbd92bace9bd
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: d064e940997d13e51be4fd38e9f678b778ce31f4
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802442"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900053"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Voor beelden van Azure data Science Virtual Machines
 
@@ -27,8 +27,8 @@ Azure data Science Virtual Machines (Dsvm) bevat een uitgebreide set voorbeeld c
 
 Als u deze voor beelden wilt uitvoeren, moet u een Data Science Virtual Machine hebben ingericht. Bekijk de Quick starts voor [Windows](./provision-vm.md) en [Ubuntu](./dsvm-ubuntu-intro.md).
 
-## <a name="available-samples"></a>Beschik bare voor beelden
-| Voorbeelden van categorie | Description | Locaties |
+## <a name="available-samples"></a>Beschikbare voorbeelden
+| Voorbeelden van categorie | Beschrijving | Locaties |
 | ------------- | ------------- | ------------- |
 | R-taal  | Voor beelden illustreren scenario's zoals het maken van verbinding met gegevens archieven op basis van Azure en het vergelijken van open source R en Microsoft Machine Learning Server. Er wordt ook uitgelegd hoe u operationeel maken modellen op Microsoft Machine Learning Server en SQL Server. <br/> [R-taal](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
 | Python-taal  | Voor beelden van scenario's zoals het maken van verbinding met gegevens archieven op basis van Azure en het werken met Azure Machine Learning.  <br/> [Python-taal](#python-language) | <br/>`~notebooks` <br/><br/>|
@@ -46,7 +46,7 @@ Als u deze voor beelden wilt uitvoeren, moet u een Data Science Virtual Machine 
 
 ## <a name="access-jupyter"></a>Toegang tot Jupyter 
 
-Om toegang te krijgen tot Jupyter, selecteert u het pictogram **Jupyter** in het menu bureau blad of toepassing. U hebt ook toegang tot Jupyter op een Linux-editie van een DSVM. Als u extern vanuit een webbrowser wilt openen, gaat u naar `https://<Full Domain Name or IP Address of the DSVM>:8000` op Ubuntu.
+Om toegang te krijgen tot Jupyter, selecteert u het pictogram **Jupyter** in het menu bureau blad of toepassing. U hebt ook toegang tot Jupyter op een Linux-editie van een DSVM. Als u op afstand toegang wilt krijgen tot een webbrowser, gaat u naar `https://<Full Domain Name or IP Address of the DSVM>:8000` op Ubuntu.
 
 Gebruik de volgende richt lijnen om uitzonde ringen toe te voegen en de toegang tot Jupyter via een browser beschikbaar te maken:
 

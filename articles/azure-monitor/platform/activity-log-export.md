@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 33302d7252c56badfed1dc7adea6a4f7cbf961b6
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: f2366d60868dd1db52fd8bfc2149756ed4b1b0d1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048255"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893617"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure-activiteiten logboek exporteren naar opslag of Azure Event Hubs
 
@@ -32,8 +32,8 @@ Het archiveren van het activiteiten logboek naar een opslag account is handig al
 
 ## <a name="prerequisites"></a>Vereisten
 
-### <a name="storage-account"></a>Storage-account
-Als u uw activiteiten logboek archiveert, moet u [een opslag account maken](../../storage/common/storage-quickstart-create-account.md) als u er nog geen hebt. Gebruik geen bestaand opslag account met andere, niet-bewakings gegevens die erin zijn opgeslagen, zodat u de toegang tot bewakings gegevens beter kunt beheren. Als u ook Diagnostische logboeken en metrische gegevens naar een opslag account archiveert, kunt u ervoor kiezen om hetzelfde opslag account te gebruiken om alle bewakings gegevens op een centrale locatie te bewaren.
+### <a name="storage-account"></a>Opslagaccount
+Als u uw activiteiten logboek archiveert, moet u [een opslag account maken](../../storage/common/storage-quickstart-create-account.md) als u er nog geen hebt. Gebruik geen bestaand opslag account met andere, niet-bewakings gegevens die erin zijn opgeslagen, zodat u de toegang tot bewakings gegevens beter kunt beheren. Als u ook logboeken en metrische gegevens naar een opslag account archiveert, kunt u ervoor kiezen om hetzelfde opslag account te gebruiken om alle bewakings gegevens op een centrale locatie te bewaren.
 
 Het opslag account hoeft zich niet in hetzelfde abonnement te benemen als het abonnement dat Logboeken verzendt, zolang de gebruiker die de instelling configureert de juiste RBAC-toegang heeft tot beide abonnementen.
 > [!NOTE]
@@ -111,14 +111,14 @@ Als er al een logboek profiel bestaat, moet u eerst het bestaande logboek profie
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | Eigenschap | Vereist | Beschrijving |
+    | Eigenschap | Verplicht | Beschrijving |
     | --- | --- | --- |
     | Naam |Ja |De naam van het logboek profiel. |
     | StorageAccountId |Nee |De resource-ID van het opslag account waarin het activiteiten logboek moet worden opgeslagen. |
     | serviceBusRuleId |Nee |Service Bus regel-ID voor de Service Bus naam ruimte waarin u Event hubs wilt maken. Dit is een teken reeks met de volgende indeling: `{service bus resource ID}/authorizationrules/{key name}`. |
     | Locatie |Ja |Een door komma's gescheiden lijst met regio's waarvoor u activiteiten logboek gebeurtenissen wilt verzamelen. |
     | RetentionInDays |Ja |Aantal dagen dat gebeurtenissen moeten worden bewaard in het opslag account, tussen 1 en 365. Met de waarde nul worden de logboeken voor onbepaalde tijd opgeslagen. |
-    | Categorie |Nee |Een door komma's gescheiden lijst met gebeurtenis categorieën die moeten worden verzameld. Mogelijke waarden zijn _schrijven_, _verwijderen_en _actie_. |
+    | Category |Nee |Een door komma's gescheiden lijst met gebeurtenis categorieën die moeten worden verzameld. Mogelijke waarden zijn _schrijven_, _verwijderen_en _actie_. |
 
 ### <a name="example-script"></a>Voorbeeldscript
 Hier volgt een voor beeld van een Power shell-script voor het maken van een logboek profiel waarmee het activiteiten logboek naar zowel een opslag account als Event Hub wordt geschreven.
@@ -154,7 +154,7 @@ Als er al een logboek profiel bestaat, moet u eerst het bestaande logboek profie
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | Eigenschap | Vereist | Beschrijving |
+    | Eigenschap | Verplicht | Beschrijving |
     | --- | --- | --- |
     | name |Ja |De naam van het logboek profiel. |
     | storage-account-id |Ja |De resource-ID van het opslag account waarnaar de activiteiten logboeken moeten worden opgeslagen. |
@@ -169,7 +169,7 @@ Als er al een logboek profiel bestaat, moet u eerst het bestaande logboek profie
 Of er naar Azure Storage of event hub worden verzonden, worden de gegevens van het activiteiten logboek naar JSON geschreven met de volgende indeling.
 
 
-> De indeling van activiteiten logboek gegevens die naar een opslag account zijn geschreven, is gewijzigd in JSON-regels op nov. 1, 2018. Zie [voor bereiding voor het wijzigen van de indeling van Azure monitor Diagnostische logboeken die zijn gearchiveerd in een opslag account](diagnostic-logs-append-blobs.md) voor meer informatie over deze indelings wijziging.
+> De indeling van activiteiten logboek gegevens die naar een opslag account zijn geschreven, is gewijzigd in JSON-regels op nov. 1, 2018. Zie [voor bereiding voor het wijzigen van de indeling in azure monitor bron logboeken die zijn gearchiveerd in een opslag account](diagnostic-logs-append-blobs.md) voor meer informatie over deze indelings wijziging.
 
 ``` JSON
 {
@@ -239,10 +239,10 @@ De elementen in deze JSON worden in de volgende tabel beschreven.
 | durationMs |Duur van de bewerking in milliseconden |
 | callerIpAddress |IP-adres van de gebruiker die de bewerking, UPN-claim of SPN-claim heeft uitgevoerd op basis van Beschik baarheid. |
 | correlationId |Meestal een GUID in de teken reeks indeling. Gebeurtenissen die een correlationId delen, horen bij dezelfde uber-actie. |
-| identity |JSON-BLOB waarmee de autorisatie en claims worden beschreven. |
+| identiteit |JSON-BLOB waarmee de autorisatie en claims worden beschreven. |
 | authorization |BLOB van RBAC-eigenschappen van de gebeurtenis. Bevat meestal de eigenschappen ' Action ', ' Role ' en ' scope '. |
-| niveau |Het niveau van de gebeurtenis. Een van de volgende waarden: _kritiek_, _fout_, _waarschuwing_, _informatief_en _uitgebreid_ |
-| locatie |De regio waarin de locatie is opgetreden (of algemeen). |
+| level |Het niveau van de gebeurtenis. Een van de volgende waarden: _kritiek_, _fout_, _waarschuwing_, _informatief_en _uitgebreid_ |
+| location |De regio waarin de locatie is opgetreden (of algemeen). |
 | properties |Set `<Key, Value>` paren (bijvoorbeeld woorden lijst) waarin de details van de gebeurtenis worden beschreven. |
 
 > [!NOTE]

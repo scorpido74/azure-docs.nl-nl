@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 8a8a2f32de905ab7c12f4886d889b2a6fc20c449
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5cce4ccd3acd9df896f6c28bd010a92ed4ec1a7a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899139"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893311"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure-netwerk bewakings oplossingen in Azure Monitor
 
@@ -45,7 +45,7 @@ Voor het gebruik van de oplossingen:
 
 U kunt Diagnostische gegevens en de bijbehorende oplossing inschakelen voor een of beide Application Gateway-en netwerk beveiligings groepen.
 
-Als u diagnostische logboek registratie niet inschakelt voor een bepaald bron type, maar u de oplossing installeert, zijn de dashboard bladen voor die resource leeg en wordt er een fout bericht weer gegeven.
+Als u diagnostische bron logboek registratie niet inschakelt voor een bepaald bron type, maar u de oplossing installeert, zijn de dashboard bladen voor die resource leeg en wordt er een fout bericht weer gegeven.
 
 > [!NOTE]
 > In januari 2017 wordt de ondersteunde manier voor het verzenden van logboeken van toepassings gateways en netwerk beveiligings groepen naar een Log Analytics werk ruimte gewijzigd. Als u de oplossing **Azure Networking Analytics (afgeschaft)** ziet, raadpleegt u [migreren van de oude netwerk analyse oplossing voor de](#migrating-from-the-old-networking-analytics-solution) stappen die u moet volgen.
@@ -77,7 +77,7 @@ De volgende metrische gegevens worden ondersteund voor toepassings gateways: opn
 
 * doorvoer snelheid van 5 minuten
 
-### <a name="install-and-configure-the-solution"></a>De oplossing installeren en configureren
+### <a name="install-and-configure-the-solution"></a>Installeren en configureren van de oplossing
 Gebruik de volgende instructies om de Azure-toepassing gateway Analytics-oplossing te installeren en configureren:
 
 1. Schakel de Azure-toepassing gateway Analytics-oplossing in op [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) of gebruik het proces dat wordt beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md).
@@ -100,7 +100,7 @@ Gebruik de volgende instructies om de Azure-toepassing gateway Analytics-oplossi
 
 #### <a name="enable-azure-network-diagnostics-using-powershell"></a>Diagnostische gegevens van Azure Network inschakelen met Power shell
 
-Het volgende Power shell-script biedt een voor beeld van het inschakelen van diagnostische logboek registratie voor toepassings gateways.
+Het volgende Power shell-script biedt een voor beeld van het inschakelen van bron logboek registratie voor toepassings gateways.
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -141,14 +141,14 @@ Op een van de zoek pagina's in Logboeken kunt u de resultaten weer geven op tijd
 > De analyse oplossing voor netwerk beveiligings groepen wordt verplaatst naar de ondersteuning van de Community omdat de functionaliteit ervan is vervangen door [Traffic Analytics](../../network-watcher/traffic-analytics.md).
 > - De oplossing is nu beschikbaar in [Azure Quick](https://azure.microsoft.com/resources/templates/oms-azurensg-solution/) start-sjablonen en is binnenkort niet meer beschikbaar op de Azure Marketplace.
 > - Voor bestaande klanten die de oplossing al aan hun werk ruimte hebben toegevoegd, blijft deze werken zonder wijzigingen.
-> - Micro soft blijft ondersteuning bieden voor het verzenden van Diagnostische logboeken voor NSG naar uw werk ruimte met Diagnostische instellingen.
+> - Micro soft blijft ondersteuning bieden voor het verzenden van NSG-resource logboeken naar uw werk ruimte met behulp van diagnostische instellingen.
 
 De volgende logboeken worden ondersteund voor netwerk beveiligings groepen:
 
 * NetworkSecurityGroupEvent
 * NetworkSecurityGroupRuleCounter
 
-### <a name="install-and-configure-the-solution"></a>De oplossing installeren en configureren
+### <a name="install-and-configure-the-solution"></a>Installeren en configureren van de oplossing
 Gebruik de volgende instructies voor het installeren en configureren van de Azure Networking Analytics-oplossing:
 
 1. Schakel de oplossing voor de analyse van Azure-netwerk beveiligings groepen in via [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) of gebruik het proces beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md).
@@ -171,7 +171,7 @@ Gebruik de volgende instructies voor het installeren en configureren van de Azur
 
 ### <a name="enable-azure-network-diagnostics-using-powershell"></a>Diagnostische gegevens van Azure Network inschakelen met Power shell
 
-Het volgende Power shell-script biedt een voor beeld van het inschakelen van diagnostische logboek registratie voor netwerk beveiligings groepen
+Het volgende Power shell-script biedt een voor beeld van het inschakelen van bron logboek registratie voor netwerk beveiligings groepen
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -216,7 +216,7 @@ De bijgewerkte oplossingen gebruiken:
      | In plaats van: | Gebruiken |
      | --- | --- |
      | NetworkApplicationgateways &#124; waarbij operationname = = "ApplicationGatewayAccess" | AzureDiagnostics &#124; waarbij resource type = = "APPLICATIONGATEWAYS" en operationname = = "ApplicationGatewayAccess" |
-     | NetworkApplicationgateways &#124; waarbij operationname = = "ApplicationGatewayPerformance" | AzureDiagnostics &#124; waarbij resource type = = "APPLICATIONGATEWAYS" en operationname = = "ApplicationGatewayPerformance" |
+     | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; waarbij resource type = = "APPLICATIONGATEWAYS" en operationname = = "ApplicationGatewayPerformance" |
      | NetworkSecuritygroups | AzureDiagnostics &#124; waarbij resource type = = "NETWORKSECURITYGROUPS" |
 
    + Voor een veld met een achtervoegsel van \_s, \_d of \_g in de naam, wijzigt u het eerste teken in kleine letters

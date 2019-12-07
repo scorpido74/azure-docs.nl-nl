@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 10/10/2019
+ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ca38ebb015552042591fb4cc6b7edfe99527e79f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: ff723f490a3f6d34f652e0b21e5f6e0b16f0a841
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007054"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900276"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Problemen in uw Time Series Insights omgeving diagnosticeren en oplossen
 
@@ -38,7 +38,7 @@ Azure Time Series Insights ondersteunt alleen JSON-gegevens. Zie voor voorbeelde
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Oorzaak B: er ontbreekt een vereiste machtiging voor de bron sleutel van de gebeurtenis
 
-* Voor een IoT-hub in azure IoT Hub moet u de sleutel opgeven die **service Connect** -machtigingen heeft. Een van de **iothubowner** -of **service** beleidsregels werkt, omdat beide machtigingen voor **service verbinding** hebben.
+* Voor een IoT-hub in azure IoT Hub moet u de sleutel opgeven die **service Connect** -machtigingen heeft. Selecteer de **iothubowner** of het **service** beleid, want beide hebben **service CONNECT** -machtigingen.
 
    [verbindings machtigingen voor ![IoT Hub-service](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
@@ -50,13 +50,17 @@ Azure Time Series Insights ondersteunt alleen JSON-gegevens. Zie voor voorbeelde
 
 Wanneer u een IoT-hub registreert of een Event Hub, is het belang rijk om de Consumer groep in te stellen die u wilt gebruiken voor het lezen van de gegevens. Deze consumenten groep *kan niet worden gedeeld*. Als de Consumer groep wordt gedeeld, wordt de onderliggende IoT-hub of Event Hub automatisch en wille keurig losgekoppeld van een van de lezers. Geef een unieke consumenten groep op voor de Time Series Insights om te lezen.
 
+### <a name="cause-d-the-environment-has-just-been-provisioned"></a>Oorzaak D: de omgeving is zojuist ingericht
+
+De gegevens worden binnen een paar minuten nadat de omgeving en de gegevens voor het eerst zijn gemaakt in uw Time Series Insights Explorer weer gegeven.
+
 ## <a name="problem-some-data-is-shown-but-data-is-missing"></a>Probleem: sommige gegevens worden weer gegeven, maar er ontbreken gegevens
 
 Wanneer gegevens slechts gedeeltelijk worden weer gegeven en de gegevens zichtbaar zijn, moet u rekening houden met verschillende mogelijkheden.
 
 ### <a name="cause-a-your-environment-is-being-throttled"></a>Oorzaak van een: uw omgeving wordt beperkt
 
-Beperking is een veelvoorkomend probleem bij het inrichten van omgevingen nadat u een gebeurtenis bron hebt gemaakt die gegevens bevat. Azure IoT Hub-en Azure Events-gegevens opslag zijn Maxi maal zeven dagen. Time Series Insights altijd beginnen met de oudste gebeurtenis in de bron van de gebeurtenis (First-in, first-out of *FIFO*).
+[Beperking](time-series-insights-environment-mitigate-latency.md) is een veelvoorkomend probleem bij het inrichten van omgevingen nadat u een gebeurtenis bron hebt gemaakt die gegevens bevat. Azure IoT Hub-en Azure Events-gegevens opslag zijn Maxi maal zeven dagen. Time Series Insights altijd beginnen met de oudste gebeurtenis in de bron van de gebeurtenis (First-in, first-out of *FIFO*).
 
 Als u bijvoorbeeld 5.000.000 gebeurtenissen in een gebeurtenis bron hebt wanneer u verbinding maakt met een S1-Time Series Insights omgeving met één eenheid, wordt door Time Series Insights ongeveer 1.000.000 gebeurtenissen per dag gelezen. Het lijkt erop dat Time Series Insights vijf latenties ondervindt. Maar wat er gebeurt, is dat de omgeving wordt beperkt.
 

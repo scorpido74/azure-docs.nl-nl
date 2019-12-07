@@ -1,7 +1,7 @@
 ---
 title: ML-pijp lijnen maken, uitvoeren, & bijhouden
 titleSuffix: Azure Machine Learning
-description: Een machine learning-pijp lijn maken en uitvoeren met de Azure Machine Learning SDK voor python. Gebruik ML-pijp lijnen om de werk stromen te maken en te beheren die samen machine learning (ML) fasen. Deze fasen omvatten gegevens voorbereiding, model training, model implementatie en defactory/Score.
+description: Maken en uitvoeren van een machine learning-pijplijn met de Azure Machine Learning-SDK voor Python. Gebruik ML-pijp lijnen om de werk stromen te maken en te beheren die samen machine learning (ML) fasen. Deze fasen omvatten gegevens voorbereiding, model training, model implementatie en defactory/Score.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sanpil
 author: sanpil
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 329fa301917fec368b0e76ab970d8ece72aa66c5
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 85c80a5b9f2c0ac7b73fb51fd8138e3aae0b0221
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561409"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894678"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>machine learning-pijp lijnen maken en uitvoeren met Azure Machine Learning SDK
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begin
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Maak een [Azure machine learning-werk ruimte](how-to-manage-workspace.md) om al uw pijplijn resources te bevatten.
+* Maak een [Azure Machine Learning-werkruimte](how-to-manage-workspace.md) voor het opslaan van alle resources van uw pijplijn.
 
 * [Configureer uw ontwikkel omgeving](how-to-configure-environment.md) om de Azure machine learning SDK te installeren, of gebruik een [Azure machine learning-notebook-VM](concept-azure-machine-learning-architecture.md#compute-instance) met de SDK die al is geïnstalleerd.
 
@@ -49,19 +49,19 @@ ws = Workspace.from_config()
 ```
 
 
-## <a name="set-up-machine-learning-resources"></a>machine learning-resources instellen
+## <a name="set-up-machine-learning-resources"></a>Machine learning-resources instellen
 
 Maak de resources die vereist zijn voor het uitvoeren van een ML-pijp lijn:
 
-* Stel een gegevens archief in dat wordt gebruikt voor toegang tot de gegevens die nodig zijn in de pijplijn stappen.
+* Instellen van een gegevensarchief gebruikt voor toegang tot de gegevens die nodig zijn in de stappen van de pijplijn.
 
 * Een `DataReference`-object configureren om te verwijzen naar gegevens die zich in bevinden of toegankelijk zijn in, een gegevens opslag.
 
-* De [reken doelen](concept-azure-machine-learning-architecture.md#compute-targets) instellen waarop de pijplijn stappen worden uitgevoerd.
+* Instellen van de [compute-doelen](concept-azure-machine-learning-architecture.md#compute-targets) op waarmee de stappen van de pijplijn wordt uitgevoerd.
 
-### <a name="set-up-a-datastore"></a>Een gegevens opslag instellen
+### <a name="set-up-a-datastore"></a>Instellen van een gegevensarchief
 
-In een Data Store worden de gegevens voor de pijp lijn opgeslagen voor toegang. Elke werk ruimte heeft een standaard gegevens opslag. U kunt aanvullende gegevens opslag registreren. 
+De gegevens voor de pijplijn voor toegang tot worden opgeslagen in een gegevensarchief. Elke werkruimte heeft een standaard-gegevensopslag. U kunt aanvullende gegevensopslag registreren. 
 
 Wanneer u uw werk ruimte maakt, worden [Azure files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) en [Azure Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) gekoppeld aan de werk ruimte. Er is een standaard gegevens opslag geregistreerd om verbinding te maken met de Azure Blob-opslag. Zie [bepalen wanneer u Azure files, Azure-blobs of Azure-schijven wilt gebruiken](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)voor meer informatie. 
 
@@ -77,7 +77,7 @@ def_file_store = Datastore(ws, "workspacefilestore")
 
 ```
 
-Upload gegevens bestanden of-mappen naar de Data Store zodat ze toegankelijk zijn vanuit uw pijp lijnen. In dit voor beeld wordt de Blob-opslag gebruikt als het gegevens archief:
+Upload bestanden of mappen met het gegevensarchief zodat deze toegankelijk is vanaf uw pijplijnen. In dit voor beeld wordt de Blob-opslag gebruikt als het gegevens archief:
 
 ```python
 def_blob_store.upload_files(
@@ -86,11 +86,11 @@ def_blob_store.upload_files(
     overwrite=True)
 ```
 
-Een pijp lijn bestaat uit een of meer stappen. Een stap is een eenheid die wordt uitgevoerd op een compute-doel. Stappen kunnen gegevens bronnen verbruiken en tussenliggende gegevens produceren. Een stap kan gegevens zoals een model, een directory met model en afhankelijke bestanden of tijdelijke gegevens maken. Deze gegevens zijn vervolgens later in de pijp lijn beschikbaar voor andere stappen.
+Een pijplijn bestaat uit een of meer stappen. Een stap is een eenheid worden uitgevoerd op een compute-doel. Stappen mogelijk gegevensbronnen gebruiken en 'tussenliggende' gegevens produceren. Een stap kunt maken, zoals een model, een map met het model en de afhankelijke bestanden of tijdelijke gegevens. Deze gegevens zijn vervolgens beschikbaar voor andere stappen die verderop in de pijplijn.
 
-### <a name="configure-data-reference"></a>Gegevens referentie configureren
+### <a name="configure-data-reference"></a>Naslaginformatie voor data configureren
 
-U hebt zojuist een gegevens bron gemaakt waarnaar kan worden verwezen in een pijp lijn als invoer van een stap. Een gegevens bron in een pijp lijn wordt vertegenwoordigd door een [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) -object. Het `DataReference`-object verwijst naar gegevens die in of toegankelijk zijn vanuit een gegevens opslag.
+U alleen een gegevensbron die kan worden verwezen in een pijplijn gemaakt als invoer voor een stap. Een gegevensbron in een pijplijn wordt vertegenwoordigd door een [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) object. De `DataReference` object verwijst naar gegevens die zich bevinden of uit een gegevensarchief toegankelijk is.
 
 ```python
 from azureml.data.data_reference import DataReference
@@ -101,7 +101,7 @@ blob_input_data = DataReference(
     path_on_datastore="20newsgroups/20news.pkl")
 ```
 
-Tussenliggende gegevens (of uitvoer van een stap) worden vertegenwoordigd door een [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) -object. `output_data1` wordt gegenereerd als de uitvoer van een stap en wordt gebruikt als invoer van een of meer toekomstige stappen. `PipelineData` introduceert een gegevens afhankelijkheid tussen de stappen en maakt een impliciete uitvoerings volgorde in de pijp lijn. Dit object wordt later gebruikt bij het maken van pijplijn stappen.
+Tussenliggende gegevens (of de uitvoer van een stap) wordt vertegenwoordigd door een [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) object. `output_data1` wordt gegenereerd als de uitvoer van een stap en wordt gebruikt als invoer van een of meer toekomstige stappen. `PipelineData` introduceert een gegevens afhankelijkheid tussen de stappen en maakt een impliciete uitvoerings volgorde in de pijp lijn. Dit object wordt later gebruikt bij het maken van pijplijn stappen.
 
 ```python
 from azureml.pipeline.core import PipelineData
@@ -128,7 +128,7 @@ iris_tabular_dataset = Dataset.Tabular.from_delimited_files([(def_blob_store, 't
 
  Meer informatie over het werken met gegevens sets vindt u in [& gegevens sets registreren](how-to-create-register-datasets.md) of [dit voorbeeld notitieblok](https://aka.ms/tabulardataset-samplenotebook)toevoegen.
 
-## <a name="set-up-compute-target"></a>Reken doel instellen
+## <a name="set-up-compute-target"></a>Compute-doel instellen
 
 In Azure Machine Learning verwijst de term __berekenen__ (of __reken doel__) naar de computers of clusters die de reken stappen in uw machine learning pijp lijn uitvoeren.   Zie [Compute-doelen voor model training](how-to-set-up-training-targets.md) voor een volledige lijst met Compute-doelen en hoe u deze kunt maken en koppelen aan uw werk ruimte.  Het proces voor het maken en of koppelen van een reken doel is hetzelfde, ongeacht of u een model traint of een pijplijn stap uitvoert. Nadat u het reken doel hebt gemaakt en gekoppeld, gebruikt u het `ComputeTarget`-object in de [pijplijn stap](#steps).
 
@@ -137,11 +137,11 @@ In Azure Machine Learning verwijst de term __berekenen__ (of __reken doel__) naa
 
 Hieronder vindt u voor beelden van het maken en koppelen van reken doelen voor:
 
-* Azure Machine Learning compute
+* Azure Machine Learning-Computing
 * Azure Databricks 
 * Azure Data Lake Analytics
 
-### <a name="azure-machine-learning-compute"></a>Azure Machine Learning compute
+### <a name="azure-machine-learning-compute"></a>Azure Machine Learning-Computing
 
 U kunt een Azure Machine Learning Compute maken om uw stappen uit te voeren.
 
@@ -174,15 +174,15 @@ else:
 
 ### <a id="databricks"></a>Azure Databricks
 
-Azure Databricks is een op Apache Spark gebaseerde omgeving in de Azure-Cloud. Het kan worden gebruikt als een reken doel met een Azure Machine Learning-pijp lijn.
+Azure Databricks is een omgeving op basis van Apache Spark in de Azure-cloud. Het kan worden gebruikt als een reken doel met een Azure Machine Learning-pijp lijn.
 
 Maak een Azure Databricks-werk ruimte voordat u deze gebruikt. Als u een werkruimte resource wilt maken, raadpleegt u de [taak een Spark uitvoeren op Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) document.
 
 Als u Azure Databricks als een reken doel wilt koppelen, geeft u de volgende informatie op:
 
 * __Databricks Compute name__: de naam die u wilt toewijzen aan deze Compute-resource.
-* __Naam van de Databricks-werk ruimte__: de naam van de Azure Databricks-werk ruimte.
-* __Databricks-toegangs token__: het toegangs token dat wordt gebruikt voor het verifiëren van Azure Databricks. Als u een toegangs token wilt genereren, raadpleegt u het [verificatie](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html) document.
+* __De naam van de Databricks-werkruimte__: de naam van de Azure Databricks-werkruimte.
+* __Databricks-toegangs token__: het toegangs token dat wordt gebruikt voor het verifiëren van Azure Databricks. Zie voor het genereren van een toegangstoken de [verificatie](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html) document.
 
 De volgende code laat zien hoe u Azure Databricks als een compute-doel koppelt aan de Azure Machine Learning SDK (__de werk ruimte Databricks moet aanwezig zijn in hetzelfde abonnement als uw AML-werk ruimte__):
 
@@ -227,17 +227,17 @@ Bekijk een [voor beeld](https://aka.ms/pl-databricks) van een notebook op github
 
 ### <a id="adla"></a>Azure Data Lake Analytics
 
-Azure Data Lake Analytics is een big data Analytics-platform in de Azure-Cloud. Het kan worden gebruikt als een reken doel met een Azure Machine Learning-pijp lijn.
+Azure Data Lake Analytics is een platform voor big data-analyses in de Azure-cloud. Het kan worden gebruikt als een reken doel met een Azure Machine Learning-pijp lijn.
 
-Maak een Azure Data Lake Analytics-account voordat u het gebruikt. Zie aan de [slag met Azure data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal) document om deze resource te maken.
+Maak een Azure Data Lake Analytics-account voordat u het gebruikt. Zie voor het maken van deze resource, de [aan de slag met Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal) document.
 
-Als u Data Lake Analytics als een reken doel wilt koppelen, moet u de Azure Machine Learning SDK gebruiken en de volgende informatie opgeven:
+Als u wilt koppelen Data Lake Analytics als een compute-doel, moet u de Azure Machine Learning-SDK gebruiken en geef de volgende informatie:
 
-* __Compute name__: de naam die u wilt toewijzen aan deze Compute-resource.
-* __Resource groep__: de resource groep die het data Lake Analytics-account bevat.
-* __Account naam__: de naam van het data Lake Analytics-account.
+* __De naam van COMPUTE__: de naam die u wilt toewijzen aan deze compute-resource.
+* __Resourcegroep__: de resourcegroep met de Data Lake Analytics-account.
+* __Accountnaam__: naam van de Data Lake Analytics-account.
 
-De volgende code laat zien hoe u Data Lake Analytics als een reken doel koppelt:
+De volgende code ziet u hoe u Data Lake Analytics als een compute-doel toevoegen:
 
 ```python
 import os
@@ -276,11 +276,11 @@ except ComputeTargetException:
 Bekijk een [voor beeld](https://aka.ms/pl-adla) van een notebook op github voor een meer gedetailleerd voor beeld.
 
 > [!TIP]
-> Azure Machine Learning pijp lijnen kunnen alleen worden gebruikt voor gegevens die zijn opgeslagen in de standaard gegevens opslag van het Data Lake Analytics-account. Als de gegevens waarmee u wilt werken, zich in een niet-standaard archief bevindt, kunt u een [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) gebruiken om de gegevens te kopiëren vóór de training.
+> Azure Machine Learning-pijplijnen kunnen uitsluitend worden gebruikt met gegevens die zijn opgeslagen in het standaardarchief van gegevens van het Data Lake Analytics-account. Als de gegevens die u nodig hebt om te werken met in een niet-standaard-archief is, kunt u een [ `DataTransferStep` ](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) om de gegevens voordat een training te kopiëren.
 
 ## <a id="steps"></a>Uw pijplijn stappen maken
 
-Wanneer u een compute-doel maakt en koppelt aan uw werk ruimte, bent u klaar om een pijplijn stap te definiëren. Er zijn veel ingebouwde stappen beschikbaar via de Azure Machine Learning SDK. De meest elementaire van deze stappen is een [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py), waarmee een python-script wordt uitgevoerd in een opgegeven Compute-doel:
+Wanneer u een compute-doel maakt en koppelt aan uw werk ruimte, bent u klaar om een pijplijn stap te definiëren. Er zijn veel ingebouwde stappen beschikbaar via de SDK van Azure Machine Learning. De meest elementaire van deze stappen is een [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py), waarmee een python-script wordt uitgevoerd in een opgegeven Compute-doel:
 
 ```python
 from azureml.pipeline.steps import PythonScriptStep
@@ -361,7 +361,7 @@ dataframe = iris_dataset.to_pandas_dataframe()
 
 Zie voor meer informatie het [pakket met Azure-pipeline-stappen](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) en [pijplijn klassen](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) .
 
-## <a name="submit-the-pipeline"></a>De pijp lijn verzenden
+## <a name="submit-the-pipeline"></a>Verzenden van de pijplijn
 
 Wanneer u de pijp lijn verzendt, controleert Azure Machine Learning de afhankelijkheden voor elke stap en uploadt een moment opname van de bronmap die u hebt opgegeven. Als er geen bronmap is opgegeven, wordt de huidige lokale map geüpload. De moment opname wordt ook opgeslagen als onderdeel van het experiment in uw werk ruimte.
 
@@ -383,7 +383,7 @@ Wanneer u een pijp lijn voor het eerst uitvoert, Azure Machine Learning:
 * Downloadt de moment opname van het project naar het reken doel van de Blob-opslag die is gekoppeld aan de werk ruimte.
 * Bouwt een docker-installatie kopie die overeenkomt met elke stap in de pijp lijn.
 * Downloadt de docker-installatie kopie voor elke stap naar het reken doel vanuit het container register.
-* Koppelt de gegevens opslag als een `DataReference`-object in een stap is opgegeven. Als koppelen niet wordt ondersteund, worden de gegevens in plaats daarvan gekopieerd naar het reken doel.
+* Koppelt de gegevens opslag als een `DataReference`-object in een stap is opgegeven. Als het koppelpunt wordt niet ondersteund, worden de gegevens worden in plaats daarvan gekopieerd naar de compute-doel.
 * Voert de stap uit in het berekenings doel dat is opgegeven in de stap definitie. 
 * Maakt artefacten, zoals Logboeken, stdout, stderr, metrische gegevens en uitvoer die zijn opgegeven door de stap. Deze artefacten worden vervolgens geüpload en opgeslagen in de standaard gegevens opslag van de gebruiker.
 
@@ -400,19 +400,19 @@ Bekijk de lijst met al uw pijp lijnen en de details van de uitvoering in Studio:
 1. [Uw werk ruimte weer geven](how-to-manage-workspace.md#view).
 
 1. Selecteer aan de linkerkant **pijp lijnen** om al uw pijplijn uitvoeringen weer te geven.
- ![lijst met machine learning pijp lijnen](./media/how-to-create-your-first-pipeline/pipelines.png)
+ ![lijst met machine learning-pijplijnen](./media/how-to-create-your-first-pipeline/pipelines.png)
  
-1. Selecteer een specifieke pijp lijn om de resultaten van de uitvoering te bekijken.
+1. Selecteer een specifieke pijplijn om te zien van de resultaten van de uitvoering.
 
 ## <a name="git-tracking-and-integration"></a>Git-tracking en-integratie
 
 Wanneer u begint met het uitvoeren van een training waarbij de bronmap een lokale Git-opslag plaats is, wordt informatie over de opslag plaats opgeslagen in de uitvoerings geschiedenis. Zie [Git-integratie voor Azure machine learning](concept-train-model-git-integration.md)voor meer informatie.
 
-## <a name="publish-a-pipeline"></a>Een pijp lijn publiceren
+## <a name="publish-a-pipeline"></a>Publiceren van een pijplijn
 
-U kunt een pijp lijn publiceren om deze later met andere invoer waarden uit te voeren. Voor het REST-eind punt van een al gepubliceerde pijp lijn om para meters te accepteren, moet u de pijp lijn para meters voordat u deze publiceert.
+U kunt een pijplijn uit te voeren met verschillende soorten invoer later publiceren. Voor het REST-eind punt van een al gepubliceerde pijp lijn om para meters te accepteren, moet u de pijp lijn para meters voordat u deze publiceert.
 
-1. Als u een pijplijn parameter wilt maken, gebruikt u een [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) -object met een standaard waarde.
+1. Voor het maken van een pijplijnparameter gebruikt een [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) object met een standaardwaarde.
 
    ```python
    from azureml.pipeline.core.graph import PipelineParameter
@@ -422,7 +422,7 @@ U kunt een pijp lijn publiceren om deze later met andere invoer waarden uit te v
      default_value=10)
    ```
 
-2. Voeg als volgt dit `PipelineParameter`-object als para meter toe aan de stappen in de pijp lijn:
+2. Voeg deze toe `PipelineParameter` object als parameter voor een van de stappen in de pijplijn als volgt:
 
    ```python
    compareStep = PythonScriptStep(
@@ -434,7 +434,7 @@ U kunt een pijp lijn publiceren om deze later met andere invoer waarden uit te v
      source_directory=project_folder)
    ```
 
-3. Publiceer deze pijp lijn die een para meter accepteert wanneer deze wordt aangeroepen.
+3. Publiceer deze pijplijn waarmee een parameter wanneer aangeroepen worden geaccepteerd.
 
    ```python
    published_pipeline1 = pipeline_run1.publish_pipeline(
@@ -443,7 +443,7 @@ U kunt een pijp lijn publiceren om deze later met andere invoer waarden uit te v
         version="1.0")
    ```
 
-### <a name="run-a-published-pipeline"></a>Een gepubliceerde pijp lijn uitvoeren
+### <a name="run-a-published-pipeline"></a>Een gepubliceerde pijplijn uitvoeren
 
 Alle gepubliceerde pijp lijnen hebben een REST-eind punt. Met dit eind punt wordt de uitvoering van de pijp lijn vanuit externe systemen aangeroepen, zoals niet-python-clients. Met dit eind punt wordt ' beheerde Herhaal baarheid ' ingeschakeld in batch-scores en retraining-scenario's.
 
@@ -526,10 +526,9 @@ U kunt deze opnieuw inschakelen met `p.enable()`. Zie referentie [PublishedPipel
 
 Om het gedrag van uw pijp lijnen te optimaliseren en aan te passen, kunt u enkele dingen doen om in de cache te plaatsen en opnieuw te gebruiken. U kunt bijvoorbeeld het volgende kiezen:
 + **Schakel de standaard hergebruik van de uitvoering van de stap uit** door `allow_reuse=False` in te stellen tijdens de definitie van de [stap](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py). Hergebruik is essentieel voor het gebruik van pijp lijnen in een samenwerkings omgeving omdat het elimineren van overbodige uitvoeringen flexibiliteit biedt. U kunt het echter niet opnieuw gebruiken.
-+ **Breid hashing verder uit met het script**, om ook een absoluut pad of relatieve paden naar de source_directory toe te voegen aan andere bestanden en mappen met behulp van de `hash_paths=['<file or directory']` 
 + **Het opnieuw genereren van uitvoer afdwingen voor alle stappen in een uitvoering** met `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
-`allow_reuse` voor stappen is standaard ingeschakeld en alleen het hoofd script bestand wordt gehasht. Als het script voor een gegeven stap hetzelfde blijft (`script_name`, invoer en de para meters), wordt de uitvoer van een vorige uitvoering van de stap opnieuw gebruikt, wordt de taak niet verzonden naar de compute en worden de resultaten van de vorige uitvoering onmiddellijk beschikbaar voor de volgende stap.  
+`allow_reuse` voor stappen is standaard ingeschakeld en de `source_directory` die is opgegeven in de stap definitie, wordt gehasht. Als het script voor een gegeven stap hetzelfde blijft (`script_name`, invoer en de para meters) en niets anders in het` source_directory` is gewijzigd, wordt de uitvoer van een vorige stap opnieuw gebruikt, wordt de taak niet verzonden naar de compute en zijn de resultaten van de vorige uitvoering onmiddellijk beschikbaar voor de volgende stap.
 
 ```python
 step = PythonScriptStep(name="Hello World",
@@ -542,7 +541,7 @@ step = PythonScriptStep(name="Hello World",
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Gebruik [deze Jupyter-notebooks op github](https://aka.ms/aml-pipeline-readme) om machine learning pijp lijnen verder te verkennen.
+- Gebruik [deze Jupyter-notebooks in GitHub](https://aka.ms/aml-pipeline-readme) machine learning-pijplijnen verder verkennen.
 - Zie de SDK-Naslag informatie voor het pakket met het kern pakket voor [azureml-pijp lijnen](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) en de stappen voor het [oplossen van azureml-pijp lijnen](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) .
 - Raadpleeg de [hand](how-to-debug-pipelines.md) leiding voor tips over het opsporen van fouten en pijp lijnen voor probleem oplossing.
 

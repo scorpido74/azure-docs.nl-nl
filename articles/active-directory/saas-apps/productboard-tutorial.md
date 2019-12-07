@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Integratie met productboard Azure Active Directory | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met productboard | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en productboard.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/04/2019
+ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4974f4e39b0b16971d0d666134618d5a1f64e11
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 529c2a453bade8745a596b5cd2e374907a66f613
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68425963"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893719"
 ---
-# <a name="tutorial-integrate-productboard-with-azure-active-directory"></a>Zelfstudie: Productboard integreren met Azure Active Directory
+# <a name="tutorial-integrate-productboard-with-azure-active-directory"></a>Zelf studie: productboard integreren met Azure Active Directory
 
 In deze zelf studie leert u hoe u productboard integreert met Azure Active Directory (Azure AD). Wanneer u productboard integreert met Azure AD, kunt u het volgende doen:
 
@@ -58,18 +58,18 @@ Als u de integratie van productboard in azure AD wilt configureren, moet u produ
 1. Typ in de sectie **toevoegen vanuit de galerie** **productboard** in het zoekvak.
 1. Selecteer **productboard** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configureren en Azure AD eenmalige aanmelding testen
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
 Azure AD SSO met productboard configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in productboard.
 
 Als u Azure AD SSO wilt configureren en testen met productboard, voltooit u de volgende bouw stenen:
 
 1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-2. **[PRODUCTBOARD SSO configureren](#configure-productboard-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)**  - voor het testen van Azure AD eenmalige aanmelding met Britta Simon.
-4. **[Toewijzen van de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)**  - Britta Simon gebruik van Azure AD eenmalige aanmelding inschakelen.
-5. **[Maak een productboard-test gebruiker](#create-productboard-test-user)** -om een equivalent van Julia Simon in productboard te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[PRODUCTBOARD SSO configureren](#configure-productboard-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    * **[Maak een productboard-test gebruiker](#create-productboard-test-user)** -om een equivalent van B. Simon in EZOfficeInventory te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
@@ -85,32 +85,28 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<projectname>.productboard.com/users/auth/saml/callback`
 
-1. Klik op **aanvullende Url's instellen** en voer de volgende stap uit als u de toepassing in de modus door **SP** gestart wilt configureren:
+1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<projectname>.productboard.com/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de echte antwoord-URL en aanmeldings-URL. Neem contact op met het ondersteunings [team van productboard-clients](mailto:support@productboard.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de echte antwoord-URL en aanmeldings-URL. Neem contact op met het [ondersteunings team van productboard-clients](mailto:support@productboard.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , op de knop kopiëren om de **URL voor de federatieve meta gegevens** van de app te kopiëren en op uw computer op te slaan.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** op de knop kopiëren om de URL van de **app Federation-meta gegevens** te kopiëren en op uw computer op te slaan.
 
-    ![De downloadkoppeling certificaat](common/copy-metadataurl.png)
+    ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
-### <a name="configure-productboard-sso"></a>Productboard SSO configureren
-
-Als u eenmalige aanmelding aan de **productboard** zijde wilt configureren, moet u de URL voor de **federatieve meta gegevens** van de app naar het ondersteunings [team van productboard](mailto:support@productboard.com)verzenden. Ze stelt u deze optie om de SAML SSO-verbinding instellen goed aan beide zijden.
-
-### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -120,7 +116,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 1. Selecteer in de lijst toepassingen de optie **productboard**.
 1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-   ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
 1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
@@ -130,20 +126,34 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
+## <a name="configure-productboard-sso"></a>Productboard SSO configureren
+
+1. Als u de configuratie wilt automatiseren in productboard, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
+
+    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
+
+1. Nadat u de extensie aan de browser hebt toegevoegd, klikt u op **Productboard instellen**. Hiermee wordt u doorgestuurd naar de productboard-toepassing. Geef de beheerders referenties op om u aan te melden bij productboard. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd.
+
+    ![Configuratie van Setup](common/setup-sso.png)
+
+1. Als u eenmalige aanmelding op **productboard** hand matig wilt instellen, moet u de URL voor de **federatieve meta gegevens** van de app verzenden naar [productboard ondersteunings team](mailto:support@productboard.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+
 ### <a name="create-productboard-test-user"></a>Productboard-test gebruiker maken
 
-In deze sectie wordt een gebruiker met de naam B. Simon gemaakt in productboard. productboard biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in productboard, wordt er een nieuwe gemaakt na verificatie.
+In deze sectie wordt een gebruiker met de naam Julia Simon gemaakt in productboard. productboard biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in productboard, wordt er een nieuwe gemaakt na verificatie.
 
 ### <a name="test-sso"></a>SSO testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel productboard in het toegangs venster klikt, moet u automatisch worden aangemeld bij de productboard waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-Apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Probeer productboard met Azure AD](https://aad.portal.azure.com/)

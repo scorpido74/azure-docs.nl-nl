@@ -1,20 +1,21 @@
 ---
-title: Een gebruikers delegering SA'S maken voor een container of BLOB met Azure CLI (preview)-Azure Storage
-description: Meer informatie over het maken van een SA'S voor het delegeren van gebruikers met Azure Active Directory referenties in Azure Storage met behulp van de Azure CLI.
+title: Azure CLI gebruiken om een gebruikers delegering SA'S te maken voor een container of BLOB
+titleSuffix: Azure Storage
+description: Meer informatie over het maken van een SAS (preview) voor gebruikers overdracht met Azure Active Directory referenties met behulp van Azure CLI.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 077fe69d80ec433d8e37f18e04120102fc8ca390
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 85f49799472c92770cc8a503a5a1be0b496387f7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673326"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892546"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>Een SAS voor gebruikers overdracht maken voor een container of BLOB met Azure CLI (preview)
 
@@ -57,7 +58,7 @@ Wanneer u een SAS voor gebruikers overdracht maakt met de Azure CLI, wordt de sl
 
 Omdat het maximale interval waarover de gebruikers overdracht-sleutel geldig is, zeven dagen na de begin datum is, moet u een verloop tijd opgeven voor de SA'S die binnen zeven dagen na de begin tijd vallen. De SAS is ongeldig nadat de gebruikers delegerings sleutel is verlopen, waardoor een SAS met een verloop tijd van meer dan zeven dagen nog geldig is gedurende 7 dagen.
 
-Wanneer u een SAS voor gebruikers overdracht maakt, zijn de `--auth-mode login` en `--as-user parameters` vereist. Geef de *aanmeldings naam* op voor de para meter `--auth-mode` zodat aanvragen voor Azure Storage worden geautoriseerd met uw Azure AD-referenties. Geef de para meter `--as-user` op om aan te geven dat de geretourneerde SA'S een SAS voor gebruikers overdracht moeten zijn.
+Wanneer u een SAS voor gebruikers overdracht maakt, zijn de `--auth-mode login` en de `--as-user parameters` vereist. Geef de *aanmeldings* gegevens voor de para meter `--auth-mode` op zodat aanvragen voor Azure Storage worden geautoriseerd met uw Azure AD-referenties. Geef de para meter `--as-user` op om aan te geven dat de geretourneerde SA'S een SAS voor gebruikers overdracht moeten zijn.
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>Een SAS voor gebruikers overdracht maken voor een container
 

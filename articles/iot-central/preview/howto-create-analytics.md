@@ -3,17 +3,17 @@ title: Apparaatgegevens analyseren in uw Azure IoT Central-toepassing | Microsof
 description: Analyseer gegevens van apparaten in uw Azure IoT Central-toepassing.
 author: ankitgup
 ms.author: ankitgup
-ms.date: 10/17/2019
+ms.date: 11/27/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 77ee15d581cfc17af01ae0fa53139edc331a4fea
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e4cf4469833e28a594996b981a47a964131026a7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896006"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895713"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>Informatie over het gebruik van Analytics voor het analyseren van apparaatgegevens
 
@@ -61,11 +61,11 @@ Zodra u een query op uw gegevens hebt uitgevoerd, kunt u beginnen met visualiser
    
     - **Besturings element voor schuif regelaar voor datum bereik**: gebruik de besturings elementen voor het eind punt om het buitenste datum bereik te selecteren. Dit is beschikbaar voor het besturings element binnen het bereik van datums.
 
-    - **Knoppen voor het datum bereik verg Roten**of verkleinen: u kunt uw tijds periode verg Roten of verkleinen door een van de knoppen voor het gewenste interval te selecteren.
+    - **Vergroot of verklein de knoppen voor datumbereik**: toename of afname uw tijd omspannen door een van de knoppen voor het interval dat u wilt selecteren.
 
-    - **Schuif regelaar voor interval grootte**: met deze knop kunt u op dezelfde tijds Panne in-en uitzoomen. Deze actie biedt meer nauw keurige controle over de verplaatsing tussen grote segmenten. U kunt deze gebruiken om gedetailleerde, weer gaven van uw gegevens met hoge resolutie weer te geven, zelfs omlaag tot milliseconden. Het standaard start punt van de schuif regelaar is ingesteld als de meest optimale weer gave van de gegevens uit uw selectie, waarmee de resolutie, de query snelheid en de granulatie worden gebalanceerd.
+    - **Schuif regelaar voor interval grootte**: met deze knop kunt u op dezelfde tijds Panne in-en uitzoomen. Deze actie biedt meer controle over verkeer tussen grote segmenten van de tijd. U kunt deze gebruiken om gedetailleerde, weer gaven van uw gegevens met hoge resolutie weer te geven, zelfs omlaag tot milliseconden. Het standaard start punt van de schuif regelaar is ingesteld als de meest optimale weer gave van de gegevens uit uw selectie, waarmee de resolutie, de query snelheid en de granulatie worden gebalanceerd.
     
-    - **Datum bereik kiezer**: met dit Webbe sturings element kunt u eenvoudig de gewenste datum en tijd selecteren. U kunt ook het besturings element gebruiken om over te scha kelen tussen verschillende tijd zones. Nadat u de wijzigingen hebt aangebracht die u wilt Toep assen op uw huidige werk ruimte, selecteert u opslaan.
+    - **Datum bereik kiezer**: met dit Webbe sturings element kunt u eenvoudig de gewenste datum en tijd selecteren. U kunt ook het besturingselement gebruiken om over te schakelen tussen de verschillende tijdzones. Nadat u de wijzigingen hebt aangebracht die u wilt Toep assen op uw huidige werk ruimte, selecteert u opslaan.
 
     > [!TIP]
     > De interval grootte wordt dynamisch bepaald op basis van de geselecteerde tijds periode. Dankzij kleinere tijds duren kunt u de gegevens samen voegen tot zeer nauw keurige intervallen van Maxi maal een paar seconden.

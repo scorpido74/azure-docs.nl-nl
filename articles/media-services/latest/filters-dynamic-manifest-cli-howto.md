@@ -1,6 +1,6 @@
 ---
 title: CLI gebruiken om filters te maken met Azure Media Services | Microsoft Docs
-description: In dit onderwerp laat zien hoe CLI gebruiken om filters te maken met Media Services.
+description: In dit artikel wordt beschreven hoe u CLI gebruikt om filters te maken met Azure Media Services v3.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,23 +14,23 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 26350479f0f066f45c143e1a35061b3a409de309
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 74516aa921e45917f327a193a1c972b021c9c8ff
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786482"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896075"
 ---
 # <a name="creating-filters-with-cli"></a>Filters maken met CLI 
 
 Als uw inhoud levert aan klanten (Live-evenementen of Video on Demand streaming), moet uw client mogelijk meer flexibiliteit dan wat wordt beschreven in het manifestbestand van de standaard-asset. Azure Media Services kunt u accountfilters en filters actief voor uw inhoud definiëren. 
 
-Zie voor gedetailleerde beschrijving van deze functie en de scenario's waarin deze wordt gebruikt, [dynamische manifesten](filters-dynamic-manifest-overview.md) en [Filters](filters-concept.md).
+Zie [dynamische manifesten](filters-dynamic-manifest-overview.md) en [filters](filters-concept.md)voor een gedetailleerde beschrijving van deze functie en scenario's waarin deze wordt gebruikt.
 
 Dit onderwerp wordt beschreven hoe u een filter voor een on-Demand Video asset configureren en te maken met CLI voor Media Services v3 [Accountfilters](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) en [Asset Filters](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest). 
 
 > [!NOTE]
-> Controleer [presentationTimeRange](filters-concept.md#presentationtimerange).
+> Zorg ervoor dat u de [presentationTimeRange](filters-concept.md#presentationtimerange)controleert.
 
 ## <a name="prerequisites"></a>Vereisten 
 
@@ -40,10 +40,10 @@ Dit onderwerp wordt beschreven hoe u een filter voor een on-Demand Video asset c
 
 ## <a name="define-a-filter"></a>Definieer een filter 
 
-Het volgende voorbeeld definieert de track selectie voorwaarden die zijn toegevoegd aan het laatste manifest. Dit filter bevat alle audionummers die EG-3 en de video nummers die bitrate in de 0-1000000 hebben bereik.
+Het volgende voorbeeld definieert de track selectie voorwaarden die zijn toegevoegd aan het laatste manifest. Dit filter bevat audio tracks die EC-3 zijn en video tracks met bitsnelheid in het 0-1000000-bereik.
 
 > [!TIP]
-> Als u van plan bent om te definiëren **Filters** in REST, ziet u dat u wilt opnemen van het 'Eigenschappen' wrapper JSON-object.  
+> Als u van plan bent om **filters** in rest te definiëren, moet u er rekening mee houden dat u het JSON-object ' Eigenschappen ' kunt toevoegen.  
 
 ```json
 [
@@ -82,7 +82,7 @@ Het volgende voorbeeld definieert de track selectie voorwaarden die zijn toegevo
 
 De volgende [az ams-account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) opdracht maakt u een account-filter met filter bijhouden selecties die waren [eerder hebt gedefinieerd](#define-a-filter). 
 
-Met de opdracht kunt u een optionele doorgeven `--tracks` parameter met de JSON voor de selecties bijhouden.  Gebruik @{file} JSON laden uit een bestand. Als u de Azure CLI lokaal gebruikt, geeft u het volledige bestandspad:
+Met de opdracht kunt u een optionele `--tracks` para meter door geven die JSON bevat die de selecties van het bijhouden vertegenwoordigt.  Gebruik @ {file} om JSON vanuit een bestand te laden. Als u de Azure CLI lokaal gebruikt, geeft u het hele bestandspad op:
 
 ```azurecli
 az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @tracks.json
@@ -100,11 +100,11 @@ az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-
 
 Zie ook [JSON-voorbeelden voor filters](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter).
 
-## <a name="associate-filters-with-streaming-locator"></a>Filters met Streaming-Locator gemaakt koppelen
+## <a name="associate-filters-with-streaming-locator"></a>Filters koppelen aan streaming-Locator
 
-U kunt een lijst met activa of account filters, die voor uw Streaming-Locator gemaakt gelden. De [dynamische Packager (Streaming-eindpunt)](dynamic-packaging-overview.md) deze lijst met filters samen met die de client Hiermee geeft u in de URL van toepassing is. Deze combinatie genereert een [dynamische Manifest](filters-dynamic-manifest-overview.md), die is gebaseerd op filters in de URL en filters die u op Streaming-Locator gemaakt opgeeft. U wordt aangeraden dat u deze functie gebruiken als u filters wilt toepassen, maar niet wilt weergeven van de filterfunctie namen in de URL.
+U kunt een lijst opgeven met activa of account filters die van toepassing zijn op uw streaming-Locator. Met de [dynamische pakket (streaming-eind punt)](dynamic-packaging-overview.md) wordt deze lijst met filters toegepast, samen met de gegevens die door uw client zijn opgegeven in de URL. Deze combi natie genereert een [dynamisch manifest](filters-dynamic-manifest-overview.md)dat is gebaseerd op filters in de URL + filters die u opgeeft in de streaming-Locator. U wordt aangeraden deze functie te gebruiken als u filters wilt Toep assen, maar niet de filter namen in de URL wilt weer geven.
 
-De volgende CLI-code laat zien hoe u een Streaming-Locator te maken en opgeven `filters`. Dit is een optionele eigenschap waarmee een door spaties gescheiden lijst van asset filterfunctie namen en/of namen van filter.
+De volgende CLI-code laat zien hoe u een streaming-Locator maakt en `filters`opgeeft. Dit is een optionele eigenschap die een door spaties gescheiden lijst met namen van activa filters en/of account filter namen neemt.
 
 ```azurecli
 az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocatorName \
@@ -114,11 +114,11 @@ az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocat
                                 
 ```
 
-## <a name="stream-using-filters"></a>Stream met behulp van filters
+## <a name="stream-using-filters"></a>Streamen met filters
 
-Als u filters definiëren, kunnen uw clients deze gebruiken in de streaming-URL. Filters kunnen worden toegepast op adaptieve bitrate streamingprotocollen: Apple HTTP Live Streaming (HLS), MPEG-DASH en Smooth Streaming.
+Zodra u filters hebt gedefinieerd, kunnen uw clients deze gebruiken in de streaming-URL. Filters kunnen worden toegepast op Adaptive Bitrate Streaming protocollen: Apple HTTP Live Streaming (HLS), MPEG-DASH en Smooth Streaming.
 
-De volgende tabel ziet u enkele voorbeelden van URL's met filters:
+In de volgende tabel ziet u enkele voor beelden van Url's met filters:
 
 |Protocol|Voorbeeld|
 |---|---|
@@ -132,4 +132,4 @@ De volgende tabel ziet u enkele voorbeelden van URL's met filters:
 
 ## <a name="see-also"></a>Zie ook
 
-[Azure-CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)

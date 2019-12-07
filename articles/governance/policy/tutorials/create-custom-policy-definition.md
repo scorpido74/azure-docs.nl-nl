@@ -3,12 +3,12 @@ title: 'Zelf studie: een aangepaste beleids definitie maken'
 description: In deze zelf studie maakt u een aangepaste beleids definitie voor Azure Policy om aangepaste bedrijfs regels af te dwingen voor uw Azure-resources.
 ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: e30d47ed6e01c4fd8ff061398b1045f9446e466a
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 51899491d7a75dc41bdab94d17769393ab4a6659
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483988"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885446"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Zelf studie: een aangepaste beleids definitie maken
 
@@ -164,7 +164,7 @@ We hebben de resource-eigenschap gevonden, maar we moeten die eigenschap nog toe
 Er zijn enkele manieren om de aliassen van een Azure-resource te bepalen. In deze zelfstudie bekijken we elk daarvan:
 
 - Azure Policy-extensie voor VS code
-- Azure-CLI
+- Azure CLI
 - Azure PowerShell
 - Azure Resource Graph
 
@@ -172,7 +172,7 @@ Er zijn enkele manieren om de aliassen van een Azure-resource te bepalen. In dez
 
 Met de extensie Azure Policy voor de VS code-extensie kunt u eenvoudig bladeren door uw resources en [aliassen detecteren](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties).
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 In Azure CLI wordt de `az provider`-opdrachtgroep gebruikt om te zoeken naar resource-aliassen. We filteren op de naamruimte **Microsoft.Storage**, op basis van de gegevens die we eerder over de Azure-resource hebben verkregen.
 
@@ -200,35 +200,37 @@ Net als in Azure CLI zien we in de resultaten een door de opslagaccounts onderst
 
 ### <a name="azure-resource-graph"></a>Azure Resource Graph
 
-[Azure resource Graph](../../resource-graph/overview.md) is een nieuwe service. Hiermee kunt u op nog een andere manier eigenschappen van Azure-resources vinden. Hier volgt een voorbeeldquery voor het bekijken van één opslagaccount met Resource Graph:
+[Azure resource Graph](../../resource-graph/overview.md) is een service die een andere methode biedt om de eigenschappen van Azure-resources te vinden. Hier volgt een voorbeeldquery voor het bekijken van één opslagaccount met Resource Graph:
 
 ```kusto
-where type=~'microsoft.storage/storageaccounts'
+Resources
+| where type=~'microsoft.storage/storageaccounts'
 | limit 1
 ```
 
 ```azurecli-interactive
-az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
+az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
+Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
 De resultaten lijken op wat we zien in de Resource Manager-sjablonen en via de Azure Resource Explorer. De resultaten van een Azure-resource grafiek kunnen echter ook [alias](../concepts/definition-structure.md#aliases) details bevatten door de _aliassen_ -matrix te _projecteren_ :
 
 ```kusto
-where type=~'microsoft.storage/storageaccounts'
+Resources
+| where type=~'microsoft.storage/storageaccounts'
 | limit 1
 | project aliases
 ```
 
 ```azurecli-interactive
-az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
 ```
 
 Hier volgt een voorbeeld van uitvoer van een opslagaccount voor aliassen:
@@ -384,7 +386,7 @@ Het opstellen van de [beleidsregel](../concepts/definition-structure.md#policy-r
 - Dat het **type** van het opslagaccount **Microsoft.Storage/storageAccounts** is
 - Dat de eigenschap **supportsHttpsTrafficOnly** van het opslagaccount niet **true** is
 
-Omdat we willen dat beide instructies waar zijn, gebruiken we de **logische operator** [allOf](../concepts/definition-structure.md#logical-operators). We geven de parameter **effectType** door aan het effect in plaats van een statische declaratie te maken. Onze voltooide regel ziet eruit zoals in dit voorbeeld:
+Omdat we willen dat beide instructies waar zijn, gebruiken we de [logische operator](../concepts/definition-structure.md#logical-operators) **allOf**. We geven de parameter **effectType** door aan het effect in plaats van een statische declaratie te maken. Onze voltooide regel ziet eruit zoals in dit voorbeeld:
 
 ```json
 "if": {

@@ -1,25 +1,26 @@
 ---
-title: 'Zelfstudie: Een fout simuleren bij het openen van redundante opslag met leestoegang in Azure | Microsoft Docs'
-description: Een fout simuleren bij het openen van geografisch redundante opslag met leestoegang
+title: Zelf studie-een fout simuleren bij het lezen van gegevens uit de primaire regio
+titleSuffix: Azure Storage
+description: Een fout simuleren bij het lezen van gegevens uit de primaire regio als geo-redundante opslag met lees toegang (RA-GRS) is ingeschakeld voor het opslag account.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: 1f5c404e410ded2714be761e35060f3c07379bd3
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 44c5d037797d845aa9c68af2d7b8e5e45bf418fb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508099"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892444"
 ---
-# <a name="tutorial-simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Zelfstudie: Een fout simuleren bij het openen van redundante opslag met leestoegang
+# <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>Zelf studie: een fout simuleren bij het lezen van gegevens uit de primaire regio
 
 Deze zelfstudie is deel twee van een serie. Er wordt uitgelegd wat de voordelen zijn van [geografisch redundante opslag met leestoegang](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) door een fout te simuleren.
 
-Als u wilt een fout simuleren, kunt u een [statische routering](#simulate-a-failure-with-an-invalid-static-route) of [Fiddler](#simulate-a-failure-with-fiddler). Beide methoden kunt u voor het simuleren van mislukte aanvragen naar het primaire eindpunt van uw [geo-redundante](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) opslagaccount (RA-GRS), waardoor de toepassing in plaats daarvan lezen van het secundaire eindpunt.
+Als u een fout wilt simuleren, kunt u een [statische route ring](#simulate-a-failure-with-an-invalid-static-route) of [Fiddler](#simulate-a-failure-with-fiddler)gebruiken. Met beide methoden kunt u storingen simuleren voor aanvragen naar het primaire eind punt van uw opslag account met [geografisch redundante Lees toegang](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS), waardoor de toepassing in plaats daarvan wordt gelezen vanaf het secundaire eind punt.
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -32,11 +33,11 @@ In deel twee van de serie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Begin pas met deze zelfstudie nadat u de vorige zelfstudie hebt voltooid: [Uw toepassingsgegevens maximaal beschikbaar maken met Azure-opslag][previous-tutorial].
+Voordat u met deze zelf studie begint, moet u de vorige zelf studie volt ooien: [uw toepassings gegevens Maxi maal beschikbaar maken met Azure Storage][previous-tutorial].
 
-Als u wilt een fout simuleren met statische routering, gebruikt u een opdrachtprompt met verhoogde bevoegdheid.
+Als u een fout met statische route ring wilt simuleren, gebruikt u een opdracht prompt met verhoogde bevoegdheden.
 
-Als u wilt een fout met Fiddler simuleren, downloaden en [Fiddler installeren](https://www.telerik.com/download/fiddler)
+Als u een fout wilt simuleren met behulp van Fiddler, downloadt en [installeert u Fiddler](https://www.telerik.com/download/fiddler)
 
 ## <a name="simulate-a-failure-with-an-invalid-static-route"></a>Een fout simuleren met een ongeldige statische route
 
@@ -44,13 +45,13 @@ U kunt een ongeldige statische route maken voor alle aanvragen naar het primaire
 
 ### <a name="start-and-pause-the-application"></a>De toepassing starten en onderbreken
 
-Volg de instructies in de [vorige zelfstudie] [ previous-tutorial] om te starten van het voorbeeld en downloaden van het testbestand bevestigen dat het afkomstig van de primaire opslag is. Afhankelijk van uw doelplatform, kunt u handmatig het voorbeeld onderbreken of wacht bij de opdrachtprompt.
+Volg de instructies in de [vorige zelf studie][previous-tutorial] om het voor beeld te starten en het test bestand te downloaden en te bevestigen dat het afkomstig is van de primaire opslag. Afhankelijk van uw doel platform kunt u het voor beeld hand matig onderbreken of wachten op een prompt.
 
 ### <a name="simulate-failure"></a>Fout simuleren
 
-Terwijl de toepassing wordt onderbroken, open een opdrachtprompt van Windows als een beheerder of voer terminal als root op Linux.
+Wanneer de toepassing is onderbroken, opent u een opdracht prompt in Windows als beheerder of voert u de terminal uit als root op Linux.
 
-Informatie over de storage-account primaire-eindpuntdomein ophalen met de volgende opdracht op een opdracht vragen of terminal, vervangen `STORAGEACCOUNTNAME` met de naam van uw opslagaccount.
+Informatie over het domein van het primaire eind punt van het opslag account ophalen door de volgende opdracht in te voeren in een opdracht prompt of Terminal, waarbij `STORAGEACCOUNTNAME` wordt vervangen door de naam van uw opslag account.
 
 ```
 nslookup STORAGEACCOUNTNAME.blob.core.windows.net
@@ -60,7 +61,7 @@ Kopieer het IP-adres van uw opslagaccount naar een teksteditor voor later gebrui
 
 Als u het IP-adres van uw lokale host wilt ophalen, typt u `ipconfig` in de Windows-opdrachtprompt of `ifconfig` in de Linux-terminal.
 
-Als u wilt toevoegen een statische route voor de doelhost, typt u de volgende opdracht uit op een Windows-opdrachtprompt of Linux-terminal, vervangen `<destination_ip>` met het IP-adres van uw storage-account en `<gateway_ip>` met uw lokale host-IP-adres.
+Als u een statische route voor een doelhost wilt toevoegen, typt u de volgende opdracht in een Windows-opdracht prompt of Linux-Terminal. Vervang `<destination_ip>` door het IP-adres van uw opslag account en `<gateway_ip>` met het IP-adres van uw lokale host.
 
 #### <a name="linux"></a>Linux
 
@@ -74,11 +75,11 @@ route add <destination_ip> gw <gateway_ip>
 route add <destination_ip> <gateway_ip>
 ```
 
-In het venster met het actieve voorbeeld hervat de toepassing of druk op de juiste sleutel te downloaden van het voorbeeldbestand en te bevestigen dat het afkomstig van de secundaire opslag is. U kunt vervolgens het voorbeeld opnieuw onderbreken of wacht bij de prompt.
+In het venster met het uitgevoerde voor beeld hervat u de toepassing of drukt u op de juiste sleutel om het voorbeeld bestand te downloaden en te bevestigen dat het afkomstig is van de secundaire opslag. Vervolgens kunt u het voor beeld opnieuw onderbreken of wachten op de prompt.
 
 ### <a name="simulate-primary-endpoint-restoration"></a>Herstel van het primaire eindpunt simuleren
 
-Om te simuleren dat het primaire eindpunt weer functioneel is, de ongeldige statische route te verwijderen uit de routeringstabel. Hiermee worden alle aanvragen naar het primaire eindpunt via de standaardgateway gerouteerd. Typ de volgende opdracht op een Windows-opdrachtprompt of Linux-terminal.
+Als u wilt simuleren dat het primaire eind punt weer werkt, verwijdert u de ongeldige statische route uit de routerings tabel. Hiermee worden alle aanvragen naar het primaire eindpunt via de standaardgateway gerouteerd. Typ de volgende opdracht in een Windows-opdracht prompt of Linux-Terminal.
 
 #### <a name="linux"></a>Linux
 
@@ -92,7 +93,7 @@ route del <destination_ip> gw <gateway_ip>
 route delete <destination_ip>
 ```
 
-U kunt vervolgens de toepassing of druk op de juiste sleutel om het voorbeeld te downloaden bestand opnieuw, dit keer bevestigen dat het nog een keer afkomstig is van primaire opslag hervatten.
+U kunt de toepassing vervolgens hervatten of op de juiste toets drukken om het voorbeeld bestand opnieuw te downloaden, maar deze keer dat het opnieuw afkomstig is van de primaire opslag.
 
 ## <a name="simulate-a-failure-with-fiddler"></a>Een fout simuleren met Fiddler
 
@@ -108,9 +109,9 @@ Open Fiddler en selecteer **Rules** en **Customize Rules**.
 
 De Fiddler ScriptEditor wordt gestart en u ziet het bestand **SampleRules.js**. Dit bestand wordt gebruikt om Fiddler aan te passen.
 
-Plak het volgende codevoorbeeld in de `OnBeforeResponse` functioneren, vervangen `STORAGEACCOUNTNAME` met de naam van uw opslagaccount. Afhankelijk van het voorbeeld, u moet mogelijk ook vervangen `HelloWorld` met de naam van de testbestand (of een voorvoegsel zoals `sampleFile`) worden gedownload. De nieuwe code is opgenomen als opmerking om ervoor te zorgen dat deze onmiddellijk wordt niet uitgevoerd.
+Plak het volgende code voorbeeld in de functie `OnBeforeResponse`, waarbij u `STORAGEACCOUNTNAME` vervangt door de naam van uw opslag account. Afhankelijk van het voor beeld moet u mogelijk ook `HelloWorld` vervangen door de naam van het test bestand (of een voor voegsel zoals `sampleFile`) dat wordt gedownload. De nieuwe code wordt op opmerkingen uitgevoerd om ervoor te zorgen dat deze niet onmiddellijk wordt uitgevoerd.
 
-Selecteer als u klaar bent **File** en **Save** om uw wijzigingen op te slaan. Laat het ScriptEditor-venster geopend zodat u in de volgende stappen.
+Selecteer als u klaar bent **File** en **Save** om uw wijzigingen op te slaan. Sluit het venster ScriptEditor open voor gebruik in de volgende stappen.
 
 ```javascript
     /*
@@ -132,19 +133,19 @@ Selecteer als u klaar bent **File** en **Save** om uw wijzigingen op te slaan. L
 
 ### <a name="start-and-pause-the-application"></a>De toepassing starten en onderbreken
 
-Volg de instructies in de [vorige zelfstudie] [ previous-tutorial] om te starten van het voorbeeld en downloaden van het testbestand bevestigen dat het afkomstig van de primaire opslag is. Afhankelijk van uw doelplatform, kunt u handmatig het voorbeeld onderbreken of wacht bij de opdrachtprompt.
+Volg de instructies in de [vorige zelf studie][previous-tutorial] om het voor beeld te starten en het test bestand te downloaden en te bevestigen dat het afkomstig is van de primaire opslag. Afhankelijk van uw doel platform kunt u het voor beeld hand matig onderbreken of wachten op een prompt.
 
 ### <a name="simulate-failure"></a>Fout simuleren
 
-Terwijl de toepassing wordt onderbroken, gaat u terug naar Fiddler en verwijder opmerkingen bij de aangepaste regel die u hebt opgeslagen in de `OnBeforeResponse` functie. Zorg ervoor dat u selecteert **bestand** en **opslaan** uw wijzigingen opslaat, zodat de regel worden pas van kracht. Deze code ziet er uit voor aanvragen voor het RA-GRS-opslagaccount en, als het pad de naam van het voorbeeldbestand bevat retourneert een Antwoordcode van `503 - Service Unavailable`.
+Wanneer de toepassing is onderbroken, keert u terug naar Fiddler en geeft u een opmerking op voor de aangepaste regel die u hebt opgeslagen in de functie `OnBeforeResponse`. Zorg ervoor dat u **bestand** en **Opslaan** selecteert om uw wijzigingen op te slaan, zodat de regel van kracht wordt. Met deze code wordt gezocht naar aanvragen voor het RA-GRS-opslag account. als het pad de naam van het voorbeeld bestand bevat, wordt een antwoord code van `503 - Service Unavailable`geretourneerd.
 
-In het venster met het actieve voorbeeld hervat de toepassing of druk op de juiste sleutel te downloaden van het voorbeeldbestand en te bevestigen dat het afkomstig van de secundaire opslag is. U kunt vervolgens het voorbeeld opnieuw onderbreken of wacht bij de prompt.
+In het venster met het uitgevoerde voor beeld hervat u de toepassing of drukt u op de juiste sleutel om het voorbeeld bestand te downloaden en te bevestigen dat het afkomstig is van de secundaire opslag. Vervolgens kunt u het voor beeld opnieuw onderbreken of wachten op de prompt.
 
 ### <a name="simulate-primary-endpoint-restoration"></a>Herstel van het primaire eindpunt simuleren
 
-In Fiddler, verwijderen of opnieuw opmerkingen bij de aangepaste regel. Selecteer **bestand** en **opslaan** om te controleren of de regel wordt niet meer van kracht worden.
+In Fiddler kunt u de aangepaste regel opnieuw verwijderen of opmerkingen toevoegen. Selecteer **bestand** en **Opslaan** om ervoor te zorgen dat de regel niet meer van kracht is.
 
-In het venster met het actieve voorbeeld hervat de toepassing of druk op de juiste sleutel te downloaden van het voorbeeldbestand en te bevestigen dat het afkomstig van primaire opslag opnieuw is. Vervolgens kunt u het voorbeeld afsluiten.
+In het venster met het uitgevoerde voor beeld hervat u de toepassing of drukt u op de juiste sleutel om het voorbeeld bestand te downloaden en te bevestigen dat het afkomstig is van de primaire opslag. Daarna kunt u het voor beeld afsluiten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,5 +1,5 @@
 ---
-title: Voorspellende gegevens pijplijnen maken met behulp van Azure Data Factory
+title: Voorspellende gegevens pijplijnen maken
 description: Meer informatie over het maken van een voorspellende pijp lijn met behulp van Azure Machine Learning-batch uitvoering-activiteit in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 02/20/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 24568940a0f6e550ae0fe7658b81ba1c3b3d3556
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: dc2104495f231a316a1354100ecc105e8fda5bb4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683778"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893838"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Voorspellende pijp lijnen maken met behulp van Azure Machine Learning en Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -124,9 +124,9 @@ In het volgende JSON-code fragment wordt een Azure Machine Learning batch uitvoe
 }
 ```
 
-| Eigenschap          | Beschrijving                              | Vereist |
+| Eigenschap          | Beschrijving                              | Verplicht |
 | :---------------- | :--------------------------------------- | :------- |
-| naam              | Naam van de activiteit in de pijp lijn     | Ja      |
+| name              | Naam van de activiteit in de pijp lijn     | Ja      |
 | description       | Tekst die beschrijft wat de activiteit doet.  | Nee       |
 | type              | Voor Data Lake Analytics U-SQL-activiteit is het type activiteit **AzureMLBatchExecution**. | Ja      |
 | linkedServiceName | Gekoppelde services aan de Azure Machine Learning gekoppelde service. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service. | Ja      |

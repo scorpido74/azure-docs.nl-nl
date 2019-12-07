@@ -1,5 +1,5 @@
 ---
-title: Gegevens transformeren met behulp van Hadoop streaming-activiteit in Azure Data Factory
+title: Gegevens transformeren met behulp van Hadoop streaming-activiteit
 description: In dit artikel wordt uitgelegd hoe u Hadoop streaming-activiteit in Azure Data Factory kunt gebruiken om gegevens te transformeren door Hadoop-streaming Program ma's uit te voeren op een Hadoop-cluster.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/16/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 6977f7a6ad7fd79a51083bf2ef71c539e04837e5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 01237218e30859015b1c8f0a5adeebd8b9bdf7eb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683779"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893787"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Hadoop streaming-activiteit in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -66,11 +66,11 @@ Als u geen ervaring hebt met Azure Data Factory, lees dan [Inleiding tot Azure D
 }
 ```
 
-## <a name="syntax-details"></a>Syntaxis Details
+## <a name="syntax-details"></a>Syntaxis van de details
 
-| Eigenschap          | Beschrijving                              | Vereist |
+| Eigenschap          | Beschrijving                              | Verplicht |
 | ----------------- | ---------------------------------------- | -------- |
-| naam              | Naam van de activiteit                     | Ja      |
+| name              | Naam van de activiteit                     | Ja      |
 | description       | Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt | Nee       |
 | type              | Voor Hadoop streaming-activiteit is het type activiteit HDInsightStreaming | Ja      |
 | linkedServiceName | Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service. | Ja      |
@@ -78,12 +78,12 @@ Als u geen ervaring hebt met Azure Data Factory, lees dan [Inleiding tot Azure D
 | reductier           | Hiermee geeft u de naam van het uitvoer bare bestand voor verkleining | Ja      |
 | combinatie          | Hiermee geeft u de naam van het uitvoer bare bestand van de combi natie | Nee       |
 | fileLinkedService | Verwijzing naar een Azure Storage gekoppelde service die wordt gebruikt voor het opslaan van de Mapper-, combi natie-en Reduceerere Program ma's die moeten worden uitgevoerd. Als u deze gekoppelde service niet opgeeft, wordt de Azure Storage gekoppelde service gebruikt die is gedefinieerd in de gekoppelde HDInsight-service. | Nee       |
-| Bestandspad          | Geef een matrix met het pad op naar de toewijzings programma voor Mapper, combi natie en verminderen die zijn opgeslagen in de Azure Storage waarnaar wordt verwezen door fileLinkedService. Het pad is hoofdlettergevoelig. | Ja      |
+| filePath          | Geef een matrix met het pad op naar de toewijzings programma voor Mapper, combi natie en verminderen die zijn opgeslagen in de Azure Storage waarnaar wordt verwezen door fileLinkedService. Het pad is hoofdlettergevoelig. | Ja      |
 | input             | Hiermee geeft u het pad naar het WASB naar het invoer bestand voor de Mapper. | Ja      |
 | output            | Hiermee geeft u het pad naar de WASB naar het uitvoer bestand voor de verminderr. | Ja      |
 | getDebugInfo      | Hiermee geeft u op wanneer de logboek bestanden worden gekopieerd naar de Azure Storage gebruikt door het HDInsight-cluster (of) dat is opgegeven door scriptLinkedService. Toegestane waarden: geen, altijd of mislukt. Standaard waarde: geen. | Nee       |
-| opmerkingen         | Hiermee wordt een matrix met argumenten voor een Hadoop-taak opgegeven. De argumenten worden door gegeven als opdracht regel argumenten voor elke taak. | Nee       |
-| compliant           | Geef para meters op als sleutel/waarde-paren voor het verwijzen in het Hive-script. | Nee       | 
+| arguments         | Hiermee wordt een matrix met argumenten voor een Hadoop-taak opgegeven. De argumenten worden door gegeven als opdracht regel argumenten voor elke taak. | Nee       |
+| defines           | Geef para meters op als sleutel/waarde-paren voor het verwijzen in het Hive-script. | Nee       | 
 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende artikelen waarin wordt uitgelegd hoe u gegevens op andere manieren transformeert: 

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 279d7f2ac6481f3aa3ebd8e5a18a52b9e52f6201
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: c88ef8c3996b1e7d998d3eff12c15077ec2482ff
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169308"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900734"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Gebeurtenis-handlers in Azure Event Grid
 
@@ -63,7 +63,7 @@ Gebruik Azure Relay Hybride verbindingen om gebeurtenissen te verzenden naar toe
 |---------|---------|
 | [Zelf studie: gebeurtenissen verzenden naar hybride verbinding](custom-event-to-hybrid-connection.md) | Hiermee wordt een aangepaste gebeurtenis verzonden naar een bestaande hybride verbinding voor verwerking door een listener-toepassing. |
 
-## <a name="logic-apps"></a>Logic Apps
+## <a name="logic-apps"></a>Logische apps
 
 Gebruik Logic Apps om bedrijfs processen te automatiseren voor het reageren op gebeurtenissen.
 
@@ -79,7 +79,7 @@ Gebruik Logic Apps om bedrijfs processen te automatiseren voor het reageren op g
 
 U kunt gebeurtenissen in Event Grid rechtstreeks naar Service Bus wacht rijen routeren voor gebruik in buffer-of opdracht & controle scenario's in bedrijfs toepassingen.
 
-Selecteer in de Azure Portal tijdens het maken van een gebeurtenis abonnement ' Service Bus wachtrij ' als eindpunt type en klik vervolgens op ' selecteren en eind punt ' om een Service Bus wachtrij te kiezen.
+Selecteer in de Azure Portal tijdens het maken van een gebeurtenis abonnement ' Service Bus wachtrij ' als eindpunt type en klik vervolgens op Selecteer een eind punt om een Service Bus wachtrij te kiezen.
 
 #### <a name="using-cli-to-add-a-service-bus-queue-handler"></a>CLI gebruiken om een Service Bus-wachtrij-handler toe te voegen
 

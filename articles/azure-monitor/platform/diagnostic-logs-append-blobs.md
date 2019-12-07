@@ -1,6 +1,6 @@
 ---
-title: De indelings wijziging voorbereiden op Azure Monitor Diagnostische logboeken
-description: Hierin wordt de impact beschreven en wordt uitgelegd hoe u uw hulp middelen bijwerkt voor het verwerken van de nieuwe Azure Diagnostische logboeken die zijn gewijzigd voor het gebruik van toevoeg-blobs op 1 november 2018.
+title: Voorbereiden van opmaak wijziging in Azure Monitor bron logboeken
+description: Hierin wordt de impact beschreven en wordt uitgelegd hoe u uw hulp middelen bijwerkt voor het verwerken van de nieuwe Azure-resource logboeken die zijn gewijzigd voor het gebruik van toevoeg-blobs op 1 november 2018.
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 5e71f4c590e4eafea5a2c6ad52b8df8c7dcf3814
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: dc7fd8916f356414437d4def21f26f0b651ee76f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307061"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893515"
 ---
-# <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>De indelings wijziging voorbereiden op Azure Monitor Diagnostische logboeken die zijn gearchiveerd in een opslag account
+# <a name="prepare-for-format-change-to-azure-monitor-resource-logs-archived-to-a-storage-account"></a>Voorbereiden van opmaak wijziging in Azure Monitor bron logboeken die zijn gearchiveerd in een opslag account
 
 > [!WARNING]
-> Als u [Azure resource Diagnostic-Logboeken of-metrische gegevens naar een opslag account verzendt met behulp van resource Diagnostic-instellingen](./../../azure-monitor/platform/archive-diagnostic-logs.md) of [activiteiten logboeken naar een opslag account met behulp van logboek profielen](./../../azure-monitor/platform/archive-activity-log.md), wordt de indeling van het opslag account gewijzigd in JSON-regels op november. 1, 2018. De onderstaande instructies beschrijven de impact en het bijwerken van uw hulp programma voor het afhandelen van de nieuwe indeling. 
+> Als u [Azure resource-Logboeken of-metrische gegevens naar een opslag account verzendt met behulp van resource Diagnostic-instellingen](./../../azure-monitor/platform/archive-diagnostic-logs.md) of [activiteiten logboeken naar een opslag account met behulp van logboek profielen](./../../azure-monitor/platform/archive-activity-log.md), wordt de indeling van het opslag account gewijzigd in JSON-regels op Nov. 1, 2018. De onderstaande instructies beschrijven de impact en het bijwerken van uw hulp programma voor het afhandelen van de nieuwe indeling. 
 >
 > 
 
@@ -31,13 +31,13 @@ Azure Monitor biedt een mogelijkheid waarmee u gegevens van diagnostische gegeve
 * Als u een diagnostische instelling instelt tussen nu en 1 november, blijft de gegevens in de huidige indeling verzenden tot 1 november.
 * Deze wijziging vindt plaats in alle open bare Cloud regio's. De wijziging wordt niet doorgevoerd in Microsoft Azure die door 21Vianet, Azure Duitsland of Azure Government Clouds worden gebruikt.
 * Deze wijziging is van invloed op de volgende gegevens typen:
-  * [Diagnostische logboeken voor Azure-bronnen](archive-diagnostic-logs.md) ([Zie de lijst met resources hier](diagnostic-logs-schema.md))
+  * [Azure resource Resource-logboeken](archive-diagnostic-logs.md) ([Zie de lijst met resources hier](diagnostic-logs-schema.md))
   * [Metrische gegevens van Azure-resource die worden geëxporteerd door Diagnostische instellingen](diagnostic-settings.md)
   * [Gegevens van Azure-activiteiten logboek worden geëxporteerd op logboek profielen](archive-activity-log.md)
 * Deze wijziging heeft geen invloed op:
   * Netwerk stroom logboeken
-  * Azure-service logboeken zijn nog niet via Azure Monitor beschikbaar gemaakt (bijvoorbeeld Azure App Service Diagnostische logboeken, logboeken voor opslag analyse)
-  * Route ring van Azure Diagnostische logboeken en activiteiten logboeken naar andere doelen (Event Hubs, Log Analytics)
+  * Azure-service logboeken zijn nog niet via Azure Monitor beschikbaar gemaakt (bijvoorbeeld Azure App Service Resource logboeken, logboeken voor opslag analyse)
+  * Route ring van Azure-resource logboeken en activiteiten logboeken naar andere doelen (Event Hubs, Log Analytics)
 
 ### <a name="how-to-see-if-you-are-impacted"></a>Controleren of er gevolgen voor u hebben
 
@@ -135,6 +135,6 @@ Aangepaste hulpprogram ma's moeten worden bijgewerkt om zowel de huidige indelin
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [het archiveren van Diagnostische logboeken van resources in een opslag account](./../../azure-monitor/platform/archive-diagnostic-logs.md)
+* Meer informatie over [het archiveren van resource bron Logboeken in een opslag account](./../../azure-monitor/platform/archive-diagnostic-logs.md)
 * Meer informatie over [het archiveren van activiteiten logboek gegevens naar een opslag account](./../../azure-monitor/platform/archive-activity-log.md)
 

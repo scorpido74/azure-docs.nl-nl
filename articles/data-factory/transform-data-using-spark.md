@@ -1,5 +1,5 @@
 ---
-title: Gegevens transformeren met behulp van Spark-activiteit in Azure Data Factory
+title: Gegevens transformeren met Spark-activiteit
 description: Meer informatie over het transformeren van gegevens door Spark-Program ma's uit te voeren vanuit een Azure data factory-pijp lijn met behulp van de Spark-activiteit.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 05/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 5f3bb88d3a2e43abe1776a4b46e4ab35490db8ec
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 27dea39a1ebd2be56c86e4327218c62c5378002d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683746"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893753"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Spark-activiteit in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -58,17 +58,17 @@ Hier volgt een voor beeld van de JSON-definitie van een Spark-activiteit:
 
 In de volgende tabel worden de JSON-eigenschappen beschreven die in de JSON-definitie worden gebruikt:
 
-| Eigenschap              | Beschrijving                              | Vereist |
+| Eigenschap              | Beschrijving                              | Verplicht |
 | --------------------- | ---------------------------------------- | -------- |
-| naam                  | De naam van de activiteit in de pijp lijn.    | Ja      |
+| name                  | De naam van de activiteit in de pijp lijn.    | Ja      |
 | description           | Tekst die beschrijft wat de activiteit doet.  | Nee       |
 | type                  | Voor Spark-activiteiten is het type activiteit HDInsightSpark. | Ja      |
 | linkedServiceName     | De naam van de gekoppelde HDInsight Spark-service waarop het Spark-programma wordt uitgevoerd. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service. | Ja      |
-| sparkJobLinkedService | De Azure Storage gekoppelde service die het Spark-taak bestand, de afhankelijkheden en de logboeken bevat.  Als u geen waarde voor deze eigenschap opgeeft, wordt de opslag gebruikt die aan het HDInsight-cluster is gekoppeld. De waarde van deze eigenschap kan alleen een Azure Storage gekoppelde service zijn. | Nee       |
+| SparkJobLinkedService | De Azure Storage gekoppelde service die het Spark-taak bestand, de afhankelijkheden en de logboeken bevat.  Als u geen waarde voor deze eigenschap opgeeft, wordt de opslag gebruikt die aan het HDInsight-cluster is gekoppeld. De waarde van deze eigenschap kan alleen een Azure Storage gekoppelde service zijn. | Nee       |
 | rootPath              | De Azure Blob-container en de map waarin het Spark-bestand zich bevindt. De bestands naam is hoofdletter gevoelig. Raadpleeg de sectie mappen structuur (volgende sectie) voor meer informatie over de structuur van deze map. | Ja      |
 | entryFilePath         | Relatief pad naar de hoofdmap van de Spark-code/-pakket. Het invoer bestand moet een python-bestand of een jar-bestand zijn. | Ja      |
 | className             | Hoofd klasse java/Spark van de toepassing      | Nee       |
-| opmerkingen             | Een lijst met opdracht regel argumenten voor het Spark-programma. | Nee       |
+| arguments             | Een lijst met opdracht regel argumenten voor het Spark-programma. | Nee       |
 | proxyUser             | Het gebruikers account dat moet worden geïmiteerd voor het uitvoeren van het Spark-programma | Nee       |
 | sparkConfig           | Geef waarden op voor Spark-configuratie-eigenschappen die worden vermeld in het onderwerp: [Spark-configuratie-eigenschappen van toepassing](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Nee       |
 | getDebugInfo          | Hiermee geeft u op wanneer de Spark-logboek bestanden worden gekopieerd naar de Azure-opslag die wordt gebruikt door het HDInsight-cluster (of) dat is opgegeven door sparkJobLinkedService. Toegestane waarden: geen, altijd of mislukt. Standaard waarde: geen. | Nee       |
@@ -78,10 +78,10 @@ Spark-taken zijn meer uitbreidbaar dan Pig/Hive-taken. U kunt voor Spark-taken m
 
 Maak de volgende mapstructuur in de Azure Blob-opslag waarnaar wordt verwezen door de gekoppelde HDInsight-service. Upload vervolgens afhankelijke bestanden naar de juiste submappen in de hoofdmap die wordt vertegenwoordigd door **entryFilePath**. Upload bijvoorbeeld python-bestanden naar de pyFiles-submap en JAR-bestanden naar de submap potten van de hoofdmap. Tijdens runtime verwacht Data Factory service de volgende mapstructuur in de Azure Blob-opslag:     
 
-| Pad                  | Beschrijving                              | Vereist | Type   |
+| Pad                  | Beschrijving                              | Verplicht | Type   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.` (root)            | Het pad naar de hoofdmap van de Spark-taak in de gekoppelde opslag service | Ja      | Map |
-| door de gebruiker gedefinieerde &gt; &lt; | Het pad naar het invoer bestand van de Spark-taak | Ja      | File   |
+| door de gebruiker gedefinieerde &gt; &lt; | Het pad naar het invoer bestand van de Spark-taak | Ja      | Bestand   |
 | ./jars                | Alle bestanden in deze map worden geüpload en geplaatst in het Java-klassenpad van het cluster | Nee       | Map |
 | ./pyFiles             | Alle bestanden in deze map worden geüpload en op de PYTHONPATH van het cluster geplaatst | Nee       | Map |
 | ./files               | Alle bestanden in deze map worden geüpload en op de werk directory van de uitvoerder geplaatst | Nee       | Map |

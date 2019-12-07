@@ -1,89 +1,91 @@
 ---
-title: Verwijzingen voor FarmBeats
+title: Verwijzingen voor Azure FarmBeats
 description: ''
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: efd294910531509d736dbda274406bd7c801c124
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8efc98ad2785a9052244556bddc60a5ba34bd3d8
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931205"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900383"
 ---
-# <a name="references"></a>Verwijzingen
+# <a name="references"></a>Naslaginformatie
 
-Hieronder vindt u een verzameling notities en instructies voor het overzicht van de Azure FarmBeats-Api's.
+In dit artikel worden de Azure FarmBeats-Api's beschreven.
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 
-De Azure FarmBeats-Api's bieden agrarische ondernemingen met een gestandaardiseerde, doorgestuurde interface met antwoorden op basis van JSON. Dit helpt u bij het gebruik van Azure FarmBeats-mogelijkheden:
+De Azure FarmBeats-Api's bieden agrarische ondernemingen een gestandaardiseerde, doorgestuurde interface met antwoorden op basis van JSON om u te helpen profiteren van de mogelijkheden van Azure FarmBeats, zoals:
 
-- API'S voor het verkrijgen van sensor-, camera-, Drone-, weers-, satelliet-en geaard-gegevens.
-- Normalisatie/contextualization van gegevens over common data providers.
+- Api's voor het verkrijgen van sensor-, camera-, Drone-, weers-, satelliet-en geaard-gegevens.
+- Normalisatie en contextualization van gegevens over common data providers.
 - Geschematiseerde-toegang en query mogelijkheden op alle opgenomen gegevens.
-- Automatische generatie van meta gegevens die kunnen worden opgevraagd, op basis van agronomic-functies.  
+- Automatische generatie van meta gegevens die kunnen worden opgevraagd, op basis van agronomic-functies. 
 - Automatisch gegenereerde tijdreeks aggregaties voor het snel bouwen van modellen.
-- Geïntegreerde Azure Data Factory-Engine (ADF) om eenvoudig aangepaste gegevens verwerkings pijplijnen te bouwen.
+- Geïntegreerde Azure Data Factory-Engine om eenvoudig aangepaste gegevens verwerkings pijplijnen te bouwen.
 
-## <a name="application-development"></a>Toepassingen ontwikkelen
+## <a name="application-development"></a>Ontwikkeling van toepassingen
 
-De Api's bevatten technische documentatie voor Swagger. Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger) voor informatie over alle api's en de bijbehorende aanvragen/antwoorden.
+De FarmBeats-Api's bevatten technische documentatie voor Swagger. Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)voor meer informatie over alle api's en hun bijbehorende aanvragen of antwoorden.
 
-Dit is een samen vatting van alle objecten/resources in FarmBeats data hub:
+De volgende tabel bevat een overzicht van alle objecten en resources in FarmBeats Datahub.
 
-Voorzien | De farm komt overeen met een fysieke locatie van belang in het FarmBeats-systeem. Elke farm heeft een farm naam en een unieke Farm-ID.
+| Objecten en bronnen | Beschrijving
 --- | ---|
-Apparaat  | Het apparaat komt overeen met een fysiek apparaat dat aanwezig is in de farm. Elk apparaat heeft een unieke apparaat-ID. Het apparaat wordt doorgaans ingericht voor een farm met een farm-ID.
-DeviceModel  | DeviceModel komt overeen met de meta gegevens van het apparaat, zoals de fabrikant, het type van het apparaat of de gateway of het knoop punt.
+Farm | De farm komt overeen met een fysieke locatie van belang in het FarmBeats-systeem. Elke farm heeft een farm naam en een unieke Farm-ID. |
+Apparaat  | Het apparaat komt overeen met een fysiek apparaat dat aanwezig is op de farm. Elk apparaat heeft een unieke apparaat-ID. Een apparaat wordt doorgaans ingericht in een farm met een farm-ID.
+DeviceModel  | DeviceModel komt overeen met de meta gegevens van het apparaat, zoals de fabrikant en het type apparaat, ofwel de gateway ofwel het knoop punt.
 Sensoren  | Sensor komt overeen met een fysieke sensor waarmee waarden worden vastgelegd. Een sensor is doorgaans verbonden met een apparaat met een apparaat-ID.
-SensorModel  | SensorModel komt overeen met de meta gegevens van de sensor, zoals de fabrikant, het type van de sensor ofwel analoog of digitaal, de sensor meting, zoals omgevings temperatuur, druk enz.
+SensorModel  | SensorModel komt overeen met de meta gegevens van de sensor, zoals de fabrikant, het type sensor dat analoog of digitaal is en de sensor meting, zoals omgevings temperatuur en druk.
 Telemetrie  | Telemetrie biedt de mogelijkheid om telemetrie-berichten te lezen voor een bepaalde sensor en tijds bereik.
-Taak  | De taak komt overeen met elke werk stroom van activiteiten die in het FarmBeats-systeem worden uitgevoerd om een gewenste uitvoer te krijgen. Elke taak is gekoppeld aan een taak-ID en taak type.
-Taak type  | Taak type komt overeen met verschillende taak typen die door het systeem worden ondersteund. Dit omvat het systeem dat is gedefinieerd & door de gebruiker gedefinieerde taak typen.
-Extended type  | Extended type komt overeen met de lijst met door de gebruiker gedefinieerde typen systeem & in het systeem. Dit helpt bij het instellen van een nieuwe sensor of scène of Scenefile type in het FarmBeats-systeem.
-Partner  | Partner komt overeen met de sensor/imagey Integration-partner voor FarmBeats
-Scène  | Scène komt overeen met een gegenereerde uitvoer in de context van een farm. Aan elke scène zijn een scène-ID, scène bron, type scène en Farm-ID gekoppeld. Aan elke scène-ID kunnen meerdere scène bestanden zijn gekoppeld.
-SceneFile |SceneFile komt overeen met alle bestanden, die voor één scène worden gegenereerd. Er kunnen meerdere SceneFile-Id's aan één scène-ID zijn gekoppeld.
-Regel  |De regel komt overeen met een voor waarde voor Farm gegevens om een waarschuwing te activeren. Elke regel wordt weer gegeven in de context van de gegevens van een farm.
-Waarschuwing  | De waarschuwing komt overeen met een melding die wordt gegenereerd wanneer aan de voor waarde van een regel wordt voldaan. Elke waarschuwing wordt weer in de context van een regel.
+Job  | De taak komt overeen met elke werk stroom van activiteiten die in het FarmBeats-systeem worden uitgevoerd om een gewenste uitvoer te krijgen. Elke taak is gekoppeld aan een taak-ID en taak type.
+Taak type  | Taak type komt overeen met verschillende taak typen die door het systeem worden ondersteund. Er zijn door het systeem gedefinieerde en door de gebruiker gedefinieerde taak typen opgenomen.
+Extended type  | Extended type komt overeen met de lijst met systeem-en door de gebruiker gedefinieerde typen in het systeem. Extended type helpt bij het instellen van een nieuw sensor-, scène-of scène bestands type in het FarmBeats-systeem.
+Partner  | De partner komt overeen met de sensor-en image-integratie partner voor FarmBeats.
+Scène  | Scène komt overeen met een gegenereerde uitvoer in de context van een farm. Aan elke scène zijn een scène-ID, scène bron, scène type en Farm-ID gekoppeld. Aan elke scène-ID kunnen meerdere scène bestanden zijn gekoppeld.
+SceneFile |SceneFile komt overeen met alle bestanden die voor één scène worden gegenereerd. Er kunnen meerdere SceneFile-Id's aan één scène-ID zijn gekoppeld.
+Regel  |De regel komt overeen met een voor waarde voor Farm gegevens om een waarschuwing te activeren. Elke regel bevindt zich in de context van de gegevens van een farm.
+Waarschuwing  | De waarschuwing komt overeen met een melding die wordt gegenereerd wanneer aan de voor waarde van een regel wordt voldaan. Elke waarschuwing bevindt zich in de context van een regel.
 RoleDefinition  | RoleDefinition definieert toegestane en niet-toegestane acties voor een rol.
 RoleAssignment  |RoleAssignment komt overeen met de toewijzing van een rol aan een gebruiker of een service-principal.
 
-**Gegevensindeling**
+### <a name="data-format"></a>Gegevensindeling
 
-JSON (JavaScript Object Notation) is een gemeen schappelijke, taal onafhankelijke gegevens indeling die een eenvoudige tekst weergave bevat van wille keurige gegevens structuren. Zie json.org voor meer informatie.
+JSON is een gemeen schappelijke taal onafhankelijke gegevens indeling die een eenvoudige tekst weergave bevat van wille keurige gegevens structuren. Zie de [JSON-website](https://www.json.org/)voor meer informatie.
 
 ## <a name="authentication-and-authorization"></a>Verificatie en autorisatie
 
 HTTP-aanvragen voor de REST API worden beveiligd met Azure Active Directory (Azure AD).
-Voor het maken van een geverifieerde aanvraag voor de REST-Api's, vereist de client code verificatie met geldige referenties voordat u de API kunt aanroepen. Verificatie wordt gecoördineerd tussen de verschillende actoren van Azure AD en biedt uw client een toegangs token als bewijs van de verificatie. Het token wordt vervolgens verzonden in de HTTP-autorisatie-header van REST API-aanvragen. Zie [Azure Active Directory](https://portal.azure.com) voor ontwikkel aars voor meer informatie over Azure AD-verificatie.
+Voor het maken van een geverifieerde aanvraag voor de REST-Api's, vereist de client code verificatie met geldige referenties voordat u de API kunt aanroepen. Verificatie wordt gecoördineerd tussen de verschillende actoren door Azure AD. Het biedt uw client een toegangs token als bewijs van de verificatie. Het token wordt vervolgens verzonden in de HTTP-autorisatie-header van REST API-aanvragen. Zie [Azure Active Directory](https://portal.azure.com) voor ontwikkel aars voor meer informatie over Azure AD-verificatie.
 
-Het toegangs token moet in volgende API-aanvragen in de koptekst sectie worden verzonden als:
+Het toegangs token moet in volgende API-aanvragen worden verzonden in de koptekst sectie, zoals:
 
 ```
 headers = {"Authorization": "Bearer " + **access_token**}
 ```
 
-**HTTP-aanvraag headers**
+### <a name="http-request-headers"></a>HTTP-aanvraag headers
 
-Hier volgen de meest voorkomende aanvraag headers die moeten worden opgegeven bij het maken van een API-aanroep naar Azure FarmBeats data hub:
+Hier volgen de meest voorkomende aanvraag headers die u moet opgeven wanneer u een API-aanroep maakt naar Azure FarmBeats Datahub.
 
 
 **Header** | **Beschrijving en voor beeld**
 --- | ---
-Content-Type  | De indeling van de aanvraag (content-type: Application/<format>) voor de Azure FarmBeats data hub Api's-indeling is JSON. Content-type: Application/JSON
-Autorisatie  | Hiermee geeft u het toegangs token op dat vereist is om een API-aanroep te maken. **Autorisatie: Bearer < Access-token >**
-zodat | De antwoord indeling. Voor Azure FarmBeats data hub-Api's is de indeling JSON **Accept: Application/JSON**
+Content-Type  | De aanvraag indeling (content-type: Application/<format>). Voor Azure FarmBeats Datahub-Api's is de indeling JSON. Content-type: Application/JSON
+Autorisatie  | Hiermee geeft u het toegangs token op dat vereist is om een API-aanroep te maken. Autorisatie: Bearer < Access-token >
+Accepteren | De antwoord indeling. Voor Azure FarmBeats Datahub-Api's is de indeling JSON. Accepteren: toepassing/JSON
 
-**API-aanvragen**
+### <a name="api-requests"></a>API-aanvragen
 
-Als u een REST API aanvraag wilt indienen, combineert u de HTTP-methode (GET, POST, PUT of DELETE), de URL van de API-service, de URI naar een resource om een query uit te voeren, gegevens in te dienen bij, bij te werken of te verwijderen, en een of meer HTTP-aanvraag headers.
+Als u een REST API aanvraag wilt indienen, combineert u de HTTP-methode (GET, POST, PUT of DELETE), de URL van de API-service, de URI naar een resource om een query uit te voeren, gegevens in te dienen bij, bij te werken of te verwijderen, en vervolgens een of meer HTTP-aanvraag headers toe te voegen.
 
-De URL naar de API-service is uw data hub-URL https://\<yourdatahub-website-name >. azurewebsites. net optioneel, kunt u query parameters toevoegen in GET-aanroepen om te filteren, de grootte van de gegevens in de antwoorden te beperken en te sorteren.
+De URL van de API-service is uw Datahub-URL, bijvoorbeeld https://\<yourdatahub-website-name >. azurewebsites. net.
+U kunt desgewenst query parameters toevoegen aan GET-aanroepen om te filteren, de grootte van de gegevens in de antwoorden te beperken en te sorteren.
 
-De onderstaande voorbeeld aanvraag is om de lijst met apparaten op te halen:
+De volgende voorbeeld aanvraag wordt gebruikt om de lijst met apparaten op te halen:
 
 ```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
@@ -91,34 +93,34 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-T
 
 Voor de meeste GET-, POST-en PUT-aanroepen is een JSON-aanvraag tekst vereist.
 
-De onderstaande voorbeeld aanvraag is het maken van een apparaat (deze heeft een invoer-JSON met de hoofd tekst van de aanvraag).
+Met de volgende voorbeeld aanvraag wordt een apparaat gemaakt. Deze aanvraag bevat een invoer-JSON met de aanvraag tekst.
 
 ```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
-**Query parameters**
+### <a name="query-parameters"></a>Queryparameters
 
-Voor REST **Get** -aanroepen kunt u de grootte van de gegevens in een API-antwoord filteren, beperken en sorteren door een of meer query parameters op de aanvraag-URI op te nemen. Raadpleeg de API-documentatie voor de query parameters en Bekijk de afzonderlijke GET-aanroepen.
-Als u bijvoorbeeld een query uitvoert op de lijst met apparaten (aanroep ophalen op/Device), kunnen de volgende query parameters worden opgegeven:  
+Voor REST GET-aanroepen kunt u de grootte van de gegevens in een API-antwoord filteren, beperken en sorteren door een of meer query parameters op de aanvraag-URI op te nemen. Voor de query parameters, zie de API-documentatie en de afzonderlijke GET-aanroepen.
+Als u bijvoorbeeld een query uitvoert op de lijst met apparaten (aanroep ophalen op/Device), kunnen de volgende query parameters worden opgegeven: 
 
-![Maten van project-Farm](./media/for-references/query-parameters-device-1.png)
+![Lijst met apparaten](./media/for-references/query-parameters-device-1.png)
 
-**Foutafhandeling**
+### <a name="error-handling"></a>Foutafhandeling
 
-De Azure FarmBeats data hub API retourneert de standaard HTTP-fouten. De meest voorkomende fout codes zijn als volgt:
+Azure FarmBeats Datahub Api's retour neren de standaard HTTP-fouten. De meest voorkomende fout codes zijn als volgt:
 
- |Fout code             | Beschrijving |
+ |Foutcode             | Beschrijving |
  |---                    | --- |
  |200                    | Geslaagd |
  |201                    | Maken (post) geslaagd |
- |400                    | Ongeldige aanvraag. Er is een fout opgetreden in de aanvraag |
- |401                    | Gasten. De aanroeper van de API is niet gemachtigd om toegang te krijgen tot de resource |
+ |400                    | Ongeldige aanvraag. Er is een fout opgetreden in de aanvraag. |
+ |401                    | Gasten. De aanroeper van de API is niet gemachtigd om toegang te krijgen tot de resource. |
  |404                    | Kan de resource niet vinden |
  |5XX                    | Interne server fout. De fout codes die beginnen met 5XX betekenen dat er een fout is opgetreden op de server. Raadpleeg server logboeken en de volgende sectie voor meer informatie. |
 
 
-Naast de standaard HTTP-fouten retour neren Api's van Azure FarmBeats data hub ook interne fouten in de onderstaande notatie:
+Naast de standaard HTTP-fouten retour neren de Azure FarmBeats Datahub-Api's ook interne fouten in de volgende indeling:
 
 ```json
     {
@@ -129,7 +131,7 @@ Naast de standaard HTTP-fouten retour neren Api's van Azure FarmBeats data hub o
     }
 ```
 
-Voor beeld: bij het maken van een farm is een verplicht veld ' naam ' niet opgegeven in de invoer lading. Het volgende fout bericht wordt weer gegeven:
+In dit voor beeld, wanneer een farm is gemaakt, is het verplichte veld ' naam ' niet opgegeven in de invoer lading. Het volgende fout bericht wordt weer gegeven:
 
  ```json    
     {
@@ -140,33 +142,33 @@ Voor beeld: bij het maken van een farm is een verplicht veld ' naam ' niet opgeg
     }
   ```
 
-## <a name="adding-users-or-app-registrations-to-azure-active-directory"></a>Gebruikers of app-registraties toevoegen aan Azure Active Directory
+## <a name="add-users-or-app-registrations-to-azure-active-directory"></a>Gebruikers of app-registraties toevoegen aan Azure Active Directory
 
-Azure FarmBeats-Api's kunnen worden gebruikt door een gebruiker of een app-registratie in de Azure Active Directory. Ga als volgt te werk om een app-registratie te maken op uw Azure Active Directory:  
+Azure FarmBeats-Api's kunnen worden gebruikt door een gebruiker of een app-registratie in Azure Active Directory. Voer de volgende stappen uit om een app-registratie te maken in Azure Active Directory.
 
-1. Ga naar [Azure Portal](https://portal.azure.com) **Azure Active Directory, app-registraties**> **nieuwe registratie**. U kunt ook een bestaand account gebruiken.
-2. Voor een nieuw account zorgt u ervoor dat u het volgende kunt volt ooien:
+1. Ga naar de [Azure Portal](https://portal.azure.com)en selecteer **Azure Active Directory** > **app-registraties** > **nieuwe registratie**. U kunt ook een bestaand account gebruiken.
+2. Ga als volgt te werk voor een nieuw account:
 
-    - Voer een naam in
-    - Selecteer **alleen accounts in deze organisatie Directory (één Tenant)**
-    - De standaard waarden in de rest van de velden
-    - Selecteer **registreren**
+    - Voer een naam in.
+    - Selecteer **accounts in deze organisatie-Directory alleen (één Tenant)** .
+    - Gebruik de standaard waarden in de rest van de velden.
+    - Selecteer **Registreren**.
 
-3. In de nieuwe/bestaande app-registratie, **overzicht**, voert u het volgende uit:
+3. Ga als volgt te werk in het deel venster Nieuw en bestaand app-registratie **overzicht** :
 
     - Leg de **client-id** en **Tenant-id**vast.
     - Ga naar **certificaten en geheimen** om een nieuw client geheim te genereren en het **client geheim**vast te leggen.
-    - Ga terug naar overzicht en klik op de koppeling naast **toepassing beheren in de lokale map** .
-    - Ga naar **Eigenschappen** om de **object-id** vast te leggen
+    - Ga terug naar **overzicht**en selecteer de koppeling naast **toepassing beheren in de lokale map**.
+    - Ga naar **Eigenschappen** om de **object-id**vast te leggen.
 
-4. Ga naar uw [Data hub Swagger](https://<yourdatahub>.azurewebsites.net/swagger/index.html) en voer de volgende stappen uit:
-    - Ga naar **RoleAssignment-API**
-    - Voer een **bericht** uit om een RoleAssignment te maken voor de **object-id** die u zojuist hebt gemaakt. – De invoer-JSON is:
+4. Ga naar uw [Datahub Swagger](https://<yourdatahub>.azurewebsites.net/swagger/index.html) en Ga als volgt te werk:
+    - Ga naar de **RoleAssignment-API**.
+    - Voer een bericht uit om een **RoleAssignment** -object te maken voor de **object-id** die u zojuist hebt gemaakt. 
 
   > [!NOTE]
-  > Zie [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) voor meer informatie over het toevoegen van gebruikers en het registreren van een AD-advertentie.
+  > Zie [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)voor meer informatie over het toevoegen van gebruikers en het registreren van Active Directory.
 
-Nadat u de bovenstaande stappen hebt voltooid, kunt u met de app-registratie (client) de Azure FarmBeats-Api's aanroepen met behulp van een toegangs token via Bearer-verificatie.  
+Nadat u de vorige stappen hebt voltooid, kunt u met de app-registratie (client) de Azure FarmBeats-Api's aanroepen met behulp van een toegangs token via Bearer-verificatie. 
 
 Gebruik het toegangs token om dit in volgende API-aanvragen in de koptekst sectie te verzenden als:
 

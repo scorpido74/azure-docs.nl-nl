@@ -1,5 +1,5 @@
 ---
-title: Gegevens transformeren met behulp van Databricks in Azure Data Factory
+title: Gegevens transformeren met behulp van Databricks
 description: Meer informatie over het gebruik van een oplossings sjabloon voor het transformeren van gegevens met behulp van een Databricks-notebook in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 471c1d9610fa346b0eac44c73fe02f4510bd2889
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5b39e354d503910d20141ce19c625eb79b4a7353
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684252"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890994"
 ---
 # <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>Gegevens transformeren met behulp van Databricks in Azure Data Factory
 
@@ -39,7 +39,7 @@ De sjabloon maakt geen geplande trigger om deze sjabloon eenvoudig te kunnen geb
 
 2.  Zorg ervoor dat u een **Azure Databricks-werk ruimte** hebt of een nieuwe hebt gemaakt.
 
-1.  **Importeer het notitie blok voor etl**. Importeer de onderstaande notitie blok voor trans formatie naar de Databricks-werk ruimte. (Dit hoeft zich niet op dezelfde locatie te bevinden als hieronder, maar onthoud het pad dat u later hebt gekozen.) Importeer het notitie blok van de volgende URL door deze URL in te voeren in het URL-veld: `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`. Selecteer **importeren**.
+1.  **Importeer het notitie blok voor etl**. Importeer de onderstaande notitie blok voor trans formatie naar de Databricks-werk ruimte. (Dit hoeft zich niet op dezelfde locatie te bevinden als hieronder, maar onthoud het pad dat u later hebt gekozen.) Importeer het notitie blok van de volgende URL door deze URL in te voeren in het URL-veld: `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`. Selecteer **Importeren**.
 
     ![2](media/solution-template-Databricks-notebook/Databricks-tutorial-image02.png)
 
@@ -119,7 +119,7 @@ De sjabloon maakt geen geplande trigger om deze sjabloon eenvoudig te kunnen geb
 
 ## <a name="create-activities"></a>Activiteiten maken
 
-1.  Een**beschikbaarheids markering**voor een opzoek activiteit maken voor het uitvoeren van een controle op de beschik baarheid van de bron (lookup of GetMetadata kan worden gebruikt). Selecteer ' sourceAvailability_Dataset ' die is gemaakt in 2. a.
+1.  Een**beschikbaarheids markering**voor een opzoek activiteit maken voor het uitvoeren van een controle op de beschik baarheid van de bron (lookup of GetMetadata kan worden gebruikt). Selecteer ' sourceAvailability_Dataset ' gemaakt in 2. a.
 
     ![12](media/solution-template-Databricks-notebook/Databricks-tutorial-image12.png)
 

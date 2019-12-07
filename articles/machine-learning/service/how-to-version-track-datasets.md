@@ -11,12 +11,12 @@ author: sihhu
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: ''
-ms.openlocfilehash: 426a93473b969c166a847374d1b4c039055e92d5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d22bfb0743bc18102e665a63f7e36ed75dd39cab
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716097"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900319"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Versie gegevens sets in experimenten bijhouden
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>Een gegevensset op naam ophalen
 
-De methode [get_by_name ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) voor de klasse `Dataset` retourneert standaard de meest recente versie van de gegevensset die is geregistreerd bij de werk ruimte. 
+De methode [get_by_name ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) voor de klasse `Dataset` retourneert standaard de laatste versie van de gegevensset die is geregistreerd bij de werk ruimte. 
 
 Met de volgende code wordt versie 1 van de `titanic_ds` gegevensset opgehaald.
 
@@ -146,7 +146,24 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 ## <a name="track-datasets-in-experiments"></a>Gegevens sets bijhouden in experimenten
 
-Voor elk Machine Learning experiment kunt u eenvoudig de gegevens sets traceren die worden gebruikt als invoer via het `Run`-object van het geregistreerde model.
+Voor elk Machine Learning experiment kunt u eenvoudig de gegevens sets traceren die worden gebruikt als invoer via het experiment `Run` object.
+
+De volgende code gebruikt de [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) methode om bij te houden welke invoer gegevens sets zijn gebruikt bij de uitvoering van het experiment:
+
+```Python
+# get input datasets
+inputs = run.get_details()['inputDatasets']
+input_dataset = inputs[0]['dataset']
+
+# list the files referenced by input_dataset
+input_dataset.to_path()
+```
+
+U kunt ook de `input_datasets` van experimenten vinden met behulp van [Azure machine learning Studio](https://ml.azure.com/). 
+
+De volgende afbeelding laat zien waar u de invoer gegevensset van een experiment op Azure Machine Learning Studio kunt vinden. Voor dit voor beeld gaat u naar het deel venster **experimenten** en opent u het tabblad **Eigenschappen** voor een specifieke uitvoering van uw experiment, `keras-mnist`.
+
+![Invoer gegevens sets](media/how-to-version-datasets/input-datasets.png)
 
 Gebruik de volgende code om modellen te registreren met gegevens sets:
 
@@ -156,26 +173,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Na de registratie ziet u de lijst met modellen die zijn geregistreerd bij de gegevensset met behulp van python of [Azure machine learning Studio](https://ml.azure.com/).
-
-De volgende code gebruikt de [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) methode om bij te houden welke invoer gegevens sets zijn gebruikt bij de uitvoering van het experiment:
-
-```Python
-# get input datasets
-inputs = run.get_details()['inputDatasets']
-train_dataset = inputs[0]['dataset']
-
-# list the files referenced by train_dataset
-train_dataset.to_path()
-```
-
-U kunt ook de `input_datasets` van experimenten vinden met behulp van [Azure machine learning Studio](https://ml.azure.com/). 
-
-De volgende afbeelding laat zien waar u de invoer gegevensset van een experiment op Azure Machine Learning Studio kunt vinden. Voor dit voor beeld gaat u naar het deel venster **experimenten** en opent u het tabblad **Eigenschappen** voor een specifieke uitvoering van uw experiment, `keras-mnist`.
-
-![Invoer gegevens sets](media/how-to-version-datasets/input-datasets.png)
-
-U kunt ook de modellen vinden die uw gegevensset hebben gebruikt. De volgende weer gave is afkomstig uit het deel venster **gegevens sets** onder **assets**. Selecteer de gegevensset en selecteer vervolgens het tabblad **modellen** voor een lijst van de modellen die deze gegevensset gebruiken. 
+Na de registratie ziet u de lijst met modellen die zijn geregistreerd bij de gegevensset met behulp van python of [Azure machine learning Studio](https://ml.azure.com/). De volgende weer gave is afkomstig uit het deel venster **gegevens sets** onder **assets**. Selecteer de gegevensset en selecteer vervolgens het tabblad **modellen** voor een lijst van de modellen die zijn geregistreerd bij de gegevensset. 
 
 ![Modellen van invoer gegevens sets](media/how-to-version-datasets/dataset-models.png)
 

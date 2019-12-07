@@ -1,6 +1,6 @@
 ---
-title: Het controleren van de taak wordt uitgevoerd met behulp van REST-API | Microsoft Docs
-description: Informatie over het bijhouden van de taak wordt uitgevoerd.
+title: De taak voortgang controleren met behulp van REST API | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u de taak voortgang kunt controleren met behulp van Azure Media Services v2 REST API.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 378a90b712af031f9d89758939afb993cee5aafd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec72b7e7bf4c2b859e8ceecf617c90a4853cb517
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869494"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901486"
 ---
-# <a name="how-to-check-job-progress"></a>Hoe: taakvoortgang controleren
+# <a name="how-to-check-job-progress"></a>Procedure: de voortgang van de taak controleren
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [hulp bij de migratie van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-Wanneer u taken uitvoert, moet u vaak een manier om bij te houden van de taak wordt uitgevoerd. U vindt de status van de taak met behulp van de eigenschap State van de taak. Zie voor meer informatie over de eigenschap State [entiteit taakeigenschappen](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
+Wanneer u taken uitvoert, hebt u vaak een manier nodig om de voortgang van de taak bij te houden. U kunt de taak status achterhalen met behulp van de eigenschap State van het project. Zie Eigenschappen van de [taak entiteit](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties)voor meer informatie over de eigenschap State.
 
-## <a name="connect-to-media-services"></a>Verbinding met Media Services maken
+## <a name="connect-to-media-services"></a>Maak verbinding met Media Services
 
-Zie voor meer informatie over het verbinding maken met de AMS-API [toegang tot de API van Azure Media Services met Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md). 
+Zie [toegang tot de Azure Media Services-API met Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md)voor meer informatie over het maken van een verbinding met de AMS-API. 
 
 ## <a name="check-job-progress"></a>Taakvoortgang controleren
 
@@ -70,4 +70,4 @@ Reactie:
 
 ## <a name="see-also"></a>Zie ook
 
-[Overzicht van Media Services operations REST-API](media-services-rest-how-to-use.md)
+[Overzicht van Media Services bewerkingen REST API](media-services-rest-how-to-use.md)

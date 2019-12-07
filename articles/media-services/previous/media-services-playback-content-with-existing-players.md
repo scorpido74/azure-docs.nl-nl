@@ -1,6 +1,6 @@
 ---
 title: Bestaande spelers gebruiken om uw inhoud af te spelen-Azure | Microsoft Docs
-description: In dit onderwerp vindt u een lijst met bestaande spelers die u kunt gebruiken om uw inhoud af te spelen.
+description: In dit artikel vindt u een lijst met bestaande spelers die u kunt gebruiken om uw inhoud af te spelen.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 0da8ce396ce07b7c9859fcfccb5cb524c0ce21c1
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: fdcaa7d8eec0065ad9acd76df9918ed7bccc081b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69015293"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895859"
 ---
 # <a name="playing-your-content-with-existing-players"></a>Uw inhoud afspelen met bestaande spelers
 Azure Media Services ondersteunt veel populaire streaming-indelingen, zoals Smooth Streaming, HTTP Live Streaming en MPEG-Dash. In dit onderwerp vindt u een overzicht van de bestaande spelers die u kunt gebruiken om uw stromen te testen.

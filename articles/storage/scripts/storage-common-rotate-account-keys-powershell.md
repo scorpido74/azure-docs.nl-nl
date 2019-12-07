@@ -1,28 +1,22 @@
 ---
-title: Voorbeeld van Azure PowerShell-script - Opslagaccountsleutels draaien | Microsoft Docs
+title: Toegangs sleutels voor opslag accounts draaien met Power shell
+titleSuffix: Azure Storage
 description: Maak een Azure Storage-account en haal een van de toegangssleutels van het account op en draai deze.
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
 ms.topic: sample
-ms.date: 06/13/2017
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 0aae733f94ab4a217ca41ca3de6df2e5da47df50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 54a7a6cb89c88726853a39ab5b2a61e1f0cde0b5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60196261"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894931"
 ---
-# <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Aen Azure Storage-account maken en de accounttoegangssleutels draaien
+# <a name="rotate-storage-account-access-keys-with-powershell"></a>Toegangs sleutels voor opslag accounts draaien met Power shell
 
 Met dit script wordt een Azure Storage-account gemaakt, worden de primaire toegangssleutels van het nieuwe opslagaccount weergegeven en wordt de sleutel vernieuwd (gedraaid).
 
@@ -34,7 +28,7 @@ Met dit script wordt een Azure Storage-account gemaakt, worden de primaire toega
 
 [!code-powershell[main](../../../powershell_scripts/storage/rotate-storage-account-keys/rotate-storage-account-keys.ps1 "Rotate storage account keys")]
 
-## <a name="clean-up-deployment"></a>Opschonen van implementatie 
+## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
 Gebruik de volgende opdracht om de resourcegroep, het opslagaccount en alle gerelateerde resources te verwijderen.
 

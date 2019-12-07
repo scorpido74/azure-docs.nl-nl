@@ -1,6 +1,6 @@
 ---
-title: Streaming-eindpunten met .NET SDK beheren. | Microsoft Docs
-description: In dit artikel laat zien hoe voor het beheren van streaming-eindpunten met Azure portal.
+title: Streaming-eind punten beheren met .NET SDK. | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u streaming-eind punten beheert met de Azure Portal.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,46 +15,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 0222450e1b85c255f2028adff750b9257f109be7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6c6fccd473ae57139c0b46bf32dc9468a4ba1a8
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61464960"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901280"
 ---
-# <a name="manage-streaming-endpoints-with-net-sdk"></a>Streaming-eindpunten met .NET SDK beheren  
+# <a name="manage-streaming-endpoints-with-net-sdk"></a>Streaming-eind punten beheren met .NET SDK  
 
 >[!NOTE]
->Controleer de [overzicht](media-services-streaming-endpoints-overview.md) artikel. Bekijk ook [streamingendpoint zo](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
+>Zorg ervoor dat u het artikel [overzicht](media-services-streaming-endpoints-overview.md) bekijkt. Lees ook [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
 
-De code in dit artikel laat zien hoe de volgende taken uitvoeren met behulp van de Azure Media Services .NET SDK:
+De code in dit artikel laat zien hoe u de volgende taken kunt uitvoeren met behulp van de Azure Media Services .NET SDK:
 
-- Bekijk het standaardstreaming-eindpunt.
-- Nieuwe streaming-eindpunt maken/toevoegen.
+- Controleer het standaard streaming-eind punt.
+- Nieuw streaming-eind punt maken/toevoegen.
 
-    U kunt meerdere streaming-eindpunten hebben als u van plan bent andere CDN's of een CDN en directe toegang.
+    Mogelijk wilt u meerdere streaming-eind punten hebben als u van plan bent verschillende Cdn's of een CDN en directe toegang te hebben.
 
     > [!NOTE]
-    > U wordt alleen gefactureerd wanneer uw Streaming-eindpunt wordt uitgevoerd.
+    > Er worden alleen kosten in rekening gebracht wanneer het streaming-eind punt wordt uitgevoerd.
     
-- Het streaming-eindpunt bijwerken.
+- Werk het streaming-eind punt bij.
     
-    Zorg ervoor dat u de functie Update() aanroepen.
+    Zorg ervoor dat u de functie update () aanroept.
 
-- Het streaming-eindpunt verwijderen.
+- Het streaming-eind punt verwijderen.
 
     >[!NOTE]
-    >Het standaardstreaming-eindpunt kan niet worden verwijderd.
+    >Het standaard-streaming-eind punt kan niet worden verwijderd.
 
-Zie voor meer informatie over het schalen van het streaming-eindpunt [dit](media-services-portal-scale-streaming-endpoints.md) artikel.
+Zie [Dit](media-services-portal-scale-streaming-endpoints.md) artikel voor meer informatie over het schalen van het streaming-eind punt.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
 Stel uw ontwikkelomgeving in en vul in het bestand app.config de verbindingsinformatie in, zoals beschreven in [Media Services ontwikkelen met .NET](media-services-dotnet-how-to-use.md). 
 
-## <a name="add-code-that-manages-streaming-endpoints"></a>Code die wordt beheerd streaming-eindpunten toevoegen
+## <a name="add-code-that-manages-streaming-endpoints"></a>Code toevoegen die streaming-eind punten beheert
     
-Vervang de code in het bestand Program.cs door de volgende code:
+Vervang de code in het Program.cs door de volgende code:
 
 ```csharp
 using System;

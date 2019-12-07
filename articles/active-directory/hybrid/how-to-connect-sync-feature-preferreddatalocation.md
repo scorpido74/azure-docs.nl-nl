@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: De locatie van de voor keur gegevens voor Office 365-resources configureren'
+title: 'Azure AD Connect: voorkeurs locatie van gegevens configureren voor Office 365-resources'
 description: Hierin wordt beschreven hoe u uw Office 365-gebruikers resources dicht bij de gebruiker kunt plaatsen met Azure Active Directory Connect synchronisatie.
 services: active-directory
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50cb5a76c6b19668fc23147244d65a0d996ebf90
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: f0a1d3de1b3eb5aebd89e6601f95c449851d4a1a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033726"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889565"
 ---
-# <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect synchronisatie: De locatie van de voor keur gegevens voor Office 365-resources configureren
+# <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect synchronisatie: de voorkeurs locatie van gegevens voor Office 365-resources configureren
 Het doel van dit onderwerp is om u stapsgewijs te begeleiden bij het configureren van het kenmerk voor de voorkeurs locatie van gegevens in Azure Active Directory (Azure AD) Connect Sync. Wanneer iemand gebruikmaakt van mogelijkheden voor meerdere geografische locaties in Office 365, gebruikt u dit kenmerk om de geografische locatie van de Office 365-gegevens van de gebruiker aan te duiden. (De termen *regio* en *geo* worden door elkaar gebruikt.)
 
 ## <a name="enable-synchronization-of-preferred-data-location"></a>Synchronisatie van voorkeurs locatie van gegevens inschakelen
@@ -42,18 +42,18 @@ De geografische gebieden in Office 365 is beschikbaar voor meerdere geografische
 
 | Geografisch gebied | waarde preferredDataLocation |
 | --- | --- |
-| Azië en Stille Oceaan | APC |
+| Azië-Pacific | APC |
 | Australië | AU'S |
 | Canada | KUNNEN |
 | Europese Unie | EUR |
 | Frankrijk | FRA |
-| India | ZOEKEN |
+| India | IND |
 | Japan | JPN |
-| Zuid-Korea | KOR |
+| Korea | KOR |
 | Zuid-Afrika | ZAF |
 | Verenigde Arabische Emiraten | ZIJN |
 | Verenigd Koninkrijk | GBR |
-| Verenigde Staten | VIETNAM |
+| Verenigde Staten | Vietnam |
 
 * Als een geo-waarde niet wordt vermeld in deze tabel (bijvoorbeeld Zuid-Amerika), kan deze niet worden gebruikt voor multi-geo.
 
@@ -66,15 +66,15 @@ Azure AD Connect ondersteunt synchronisatie van het kenmerk **preferredDataLocat
 * Het schema van de **gebruiker** van het object type in de Azure AD-connector wordt uitgebreid met het kenmerk **preferredDataLocation** . Het kenmerk is van het type teken reeks met één waarde.
 * Het schema van de **persoon** van het object type in de tekst wordt uitgebreid met het kenmerk **preferredDataLocation** . Het kenmerk is van het type teken reeks met één waarde.
 
-**PreferredDataLocation** is standaard niet ingeschakeld voor synchronisatie. Deze functie is bedoeld voor grotere organisaties. U moet ook een kenmerk identificeren om Office 365 geo in te zetten voor uw gebruikers, omdat er in on-premises Active Directory geen kenmerk **preferredDataLocation** is. Dit is voor elke organisatie anders.
+**PreferredDataLocation** is standaard niet ingeschakeld voor synchronisatie. Deze functie is bedoeld voor grotere organisaties. Het Active Directory schema in Windows Server 2019 heeft een kenmerk **msDS-preferredDataLocation** die u voor dit doel moet gebruiken. Als u het Active Directory schema niet hebt bijgewerkt en dit niet kunt doen, moet u een kenmerk identificeren voor het bewaren van Office 365 geo voor uw gebruikers. Dit is voor elke organisatie anders.
 
 > [!IMPORTANT]
 > Met Azure AD kan het kenmerk **preferredDataLocation** op **Cloud gebruikers objecten** rechtstreeks worden geconfigureerd met behulp van Azure AD Power shell. Azure AD staat niet langer het **preferredDataLocation** -kenmerk voor **gesynchroniseerde gebruikers objecten** toe om rechtstreeks te worden geconfigureerd met behulp van Azure AD Power shell. Als u dit kenmerk wilt configureren voor **gesynchroniseerde gebruikers objecten**, moet u Azure AD Connect gebruiken.
 
 Voordat u de synchronisatie inschakelt:
 
-* Bepaal welke on-premises Active Directory kenmerk moet worden gebruikt als bron kenmerk. Deze moet van het type **teken reeks met één waarde**zijn. In de volgende stappen wordt een van de **extensionAttributes** gebruikt.
-* Als u eerder het kenmerk **preferredDataLocation** op bestaande gesynchroniseerde **gebruikers objecten** in azure AD hebt geconfigureerd met behulp van Azure AD Power shell, moet u de kenmerk waarden backport naar de bijbehorende **gebruikers** objecten in on-premises Active Directory.
+* Als u het Active Directory-schema niet hebt bijgewerkt naar 2019, moet u bepalen welk Active Directory kenmerk op locatie voor gebruik als bron kenmerk. Deze moet van het type **teken reeks met één waarde**zijn.
+* Als u eerder het kenmerk **preferredDataLocation** op bestaande **gesynchroniseerde gebruikers objecten** in azure AD hebt geconfigureerd met behulp van Azure AD Power shell, moet u de kenmerk waarden backport naar de bijbehorende **gebruikers** objecten in on-premises Active Directory.
 
     > [!IMPORTANT]
     > Als u deze waarden niet backport, verwijdert Azure AD Connect de bestaande kenmerk waarden in azure AD wanneer synchronisatie voor het kenmerk **preferredDataLocation** is ingeschakeld.
@@ -86,20 +86,32 @@ In de volgende secties vindt u de stappen voor het inschakelen van synchronisati
 > [!NOTE]
 > De stappen worden beschreven in de context van een Azure AD-implementatie met een topologie met één forest en zonder aangepaste synchronisatie regels. Als u een topologie met meerdere forests hebt, aangepaste synchronisatie regels hebt geconfigureerd of een staging-server hebt, moet u de stappen dienovereenkomstig aanpassen.
 
-## <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Stap 1: Synchronisatie planner uitschakelen en controleren of er geen synchronisatie wordt uitgevoerd
+## <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Stap 1: de synchronisatie planner uitschakelen en controleren of er geen synchronisatie wordt uitgevoerd
 Om te voor komen dat onbedoelde wijzigingen worden geëxporteerd naar Azure AD, moet u ervoor zorgen dat er geen synchronisatie plaatsvindt terwijl u de synchronisatie regels bijwerkt. De ingebouwde synchronisatie planner uitschakelen:
 
 1. Start een Power shell-sessie op de Azure AD Connect-server.
-2. Schakel de geplande synchronisatie uit door deze cmdlet `Set-ADSyncScheduler -SyncCycleEnabled $false`uit te voeren:.
-3. Start de **Synchronization Service Manager** door de**synchronisatie service**te **starten** > .
+2. Schakel geplande synchronisatie uit door deze cmdlet uit te voeren: `Set-ADSyncScheduler -SyncCycleEnabled $false`.
+3. Start de **Synchronization Service Manager** door naar de **synchronisatie service**voor ** > te gaan** .
 4. Selecteer het tabblad **bewerkingen** en controleer of er geen bewerking is met de status *in behandeling*.
 
 ![Scherm opname van Synchronization Service Manager](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step1.png)
 
-## <a name="step-2-add-the-source-attribute-to-the-on-premises-active-directory-connector-schema"></a>Stap 2: Het bron kenmerk toevoegen aan het on-premises Active Directory-Connector schema
+## <a name="step-2-refresh-the-schema-for-active-directory"></a>Stap 2: het schema voor Active Directory vernieuwen
+Als u het Active Directory schema hebt bijgewerkt naar 2019 en Connect is geïnstalleerd vóór de schema-uitbrei ding, heeft de Connect-schema cache geen bijgewerkt schema. Vervolgens moet u het schema vernieuwen vanuit de wizard zodat het wordt weer gegeven in de gebruikers interface.
+
+1. Start de wizard Azure AD Connect op het bureau blad.
+2. Selecteer de optie **Directory schema vernieuwen** en klik op **volgende**.
+3. Voer uw Azure AD-referenties in en klik op **volgende**.
+4. Zorg ervoor dat alle forests zijn geselecteerd op de pagina **Directory schema vernieuwen** en klik op **volgende**.
+5. Wanneer u klaar bent, sluit u de wizard.
+
+![Scherm opname van Directory-schema vernieuwen in de wizard verbinding maken](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-refreshschema.png)
+
+## <a name="step-3-add-the-source-attribute-to-the-on-premises-active-directory-connector-schema"></a>Stap 3: het bron kenmerk toevoegen aan het on-premises Active Directory-Connector schema
+**Deze stap is alleen nodig als u Connect versie 1.3.21 of ouder uitvoert. Als u zich op 1.4.18 of nieuwer bevindt, gaat u verder met stap 5.**  
 Niet alle Azure AD-kenmerken worden geïmporteerd in de on-premises Active Directory-Connector ruimte. Als u ervoor hebt gekozen om een kenmerk te gebruiken dat standaard niet is gesynchroniseerd, moet u het importeren. Om het bron kenmerk toe te voegen aan de lijst met geïmporteerde kenmerken:
 
-1. Selecteer het tabblad connectors in de Synchronization Service Manager.
+1. Selecteer het tabblad **connectors** in de Synchronization Service Manager.
 2. Klik met de rechter muisknop op de on-premises Active Directory-connector en selecteer **Eigenschappen**.
 3. Ga in het pop-upvenster naar het tabblad **kenmerken selecteren** .
 4. Zorg ervoor dat het bron kenmerk dat u hebt geselecteerd, is ingeschakeld in de lijst met kenmerken. Als uw kenmerk niet wordt weer gegeven, selecteert u het selectie vakje **alles weer geven** .
@@ -107,10 +119,11 @@ Niet alle Azure AD-kenmerken worden geïmporteerd in de on-premises Active Direc
 
 ![Scherm afbeelding van het dialoog venster Synchronization Service Manager en eigenschappen](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
 
-## <a name="step-3-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>Stap 3: **PreferredDataLocation** toevoegen aan het Azure AD-connector schema
+## <a name="step-4-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>Stap 4: **PreferredDataLocation** toevoegen aan het Azure AD-connector schema
+**Deze stap is alleen nodig als u Connect versie 1.3.21 of ouder uitvoert. Als u zich op 1.4.18 of nieuwer bevindt, gaat u verder met stap 5.**  
 Het kenmerk **preferredDataLocation** wordt standaard niet in de Azure AD-connector ruimte geïmporteerd. Om het toe te voegen aan de lijst met geïmporteerde kenmerken:
 
-1. Selecteer het tabblad connectors in de Synchronization Service Manager.
+1. Selecteer het tabblad **connectors** in de Synchronization Service Manager.
 2. Klik met de rechter muisknop op de Azure AD-connector en selecteer **Eigenschappen**.
 3. Ga in het pop-upvenster naar het tabblad **kenmerken selecteren** .
 4. Selecteer het kenmerk **preferredDataLocation** in de lijst.
@@ -118,56 +131,56 @@ Het kenmerk **preferredDataLocation** wordt standaard niet in de Azure AD-connec
 
 ![Scherm afbeelding van het dialoog venster Synchronization Service Manager en eigenschappen](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step3.png)
 
-## <a name="step-4-create-an-inbound-synchronization-rule"></a>Stap 4: Een regel voor binnenkomende synchronisatie maken
+## <a name="step-5-create-an-inbound-synchronization-rule"></a>Stap 5: een regel voor binnenkomende synchronisatie maken
 Met de regel voor binnenkomende synchronisatie kan de kenmerk waarde worden gestroomd van het bron kenmerk in on-premises Active Directory naar de oorspronkelijke tekst.
 
-1. Start de **Editor voor synchronisatie regels** door te gaan met de**Editor voor synchronisatie regels** **starten** > .
-2. Stel de **richting** van het zoek filter in op binnenkomend.
+1. Start de **Editor voor synchronisatie regels** door te gaan > **Editor voor synchronisatie regels** **starten** .
+2. Stel de **richting** van het zoek filter in op **binnenkomend**.
 3. Selecteer **nieuwe regel toevoegen**om een nieuwe regel voor binnenkomende verbindingen te maken.
 4. Geef onder het tabblad **Beschrijving** de volgende configuratie op:
 
-    | Kenmerk | Value | Details |
+    | Kenmerk | Waarde | Details |
     | --- | --- | --- |
-    | Name | *Geef een naam op* | Bijvoorbeeld ' in van AD: gebruiker preferredDataLocation ' |
-    | Description | *Geef een aangepaste beschrijving op* |  |
+    | Naam | *Geef een naam op* | Bijvoorbeeld ' in van AD: gebruiker preferredDataLocation ' |
+    | Beschrijving | *Geef een aangepaste beschrijving op* |  |
     | Verbonden systeem | *Kies de on-premises Active Directory-connector* |  |
     | Type verbonden systeem object | **Gebruiker** |  |
     | Omgekeerd object type | **Person** |  |
-    | Type koppeling | **Koppelen** |  |
+    | Koppelings type | **Koppelen** |  |
     | Prioriteit | *Kies een getal tussen 1 en 99* | 1 – 99 is gereserveerd voor aangepaste synchronisatie regels. Kies geen waarde die wordt gebruikt door een andere synchronisatie regel. |
 
 5. Laat het **bereik filter** leeg, zodat alle objecten worden toegevoegd. Mogelijk moet u het bereik filter aanpassen op basis van uw Azure AD Connect-implementatie.
 6. Ga naar het **tabblad trans formatie**en implementeer de volgende transformatie regel:
 
-    | Stroom type | Doelkenmerk | Source | Eenmaal Toep assen | Type samen voeging |
+    | Stroom type | Doel kenmerk | Bron | Eenmaal Toep assen | Type samen voeging |
     | --- | --- | --- | --- | --- |
-    |Rechtstreeks | preferredDataLocation | Het bron kenmerk kiezen | Uitgeschakeld | Update |
+    |Direct | preferredDataLocation | Het bron kenmerk kiezen | Uitgeschakeld | Bijwerken |
 
 7. Als u de regel voor binnenkomend verkeer wilt maken, selecteert u **toevoegen**.
 
 ![Scherm opname van regel voor het maken van een inkomende synchronisatie](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step4.png)
 
-## <a name="step-5-create-an-outbound-synchronization-rule"></a>Stap 5: Een regel voor uitgaande synchronisatie maken
+## <a name="step-6-create-an-outbound-synchronization-rule"></a>Stap 6: een regel voor uitgaande synchronisatie maken
 De regel voor uitgaande synchronisatie maakt het mogelijk dat de waarde van het kenmerk wordt overgelopen van de tekst in het kenmerk **preferredDataLocation** in azure AD:
 
 1. Ga naar de **Editor voor synchronisatie regels**.
-2. Stel de **richting** van het zoek filter in op uitgaand.
+2. Stel de **richting** van het zoek filter in op **uitgaand**.
 3. Selecteer **nieuwe regel toevoegen**.
 4. Geef onder het tabblad **Beschrijving** de volgende configuratie op:
 
-    | Kenmerk | Value | Details |
+    | Kenmerk | Waarde | Details |
     | ----- | ------ | --- |
-    | Name | *Geef een naam op* | Bijvoorbeeld ' naar Azure AD: User preferredDataLocation ' |
-    | Description | *Geef een beschrijving op* ||
+    | Naam | *Geef een naam op* | Bijvoorbeeld ' naar Azure AD: User preferredDataLocation ' |
+    | Beschrijving | *Geef een beschrijving op* ||
     | Verbonden systeem | *De Azure AD-connector selecteren* ||
     | Type verbonden systeem object | **Gebruiker** ||
     | Omgekeerd object type | **Person** ||
-    | Type koppeling | **Koppelen** ||
+    | Koppelings type | **Koppelen** ||
     | Prioriteit | *Kies een getal tussen 1 en 99* | 1 – 99 is gereserveerd voor aangepaste synchronisatie regels. Kies geen waarde die wordt gebruikt door een andere synchronisatie regel. |
 
 5. Ga naar het tabblad **filter bereik** en voeg één bereik filter groep met twee componenten toe:
 
-    | Kenmerk | Operator | Value |
+    | Kenmerk | Operator | Waarde |
     | --- | --- | --- |
     | sourceObjectType | WAARD | Gebruiker |
     | cloudMastered | NOTEQUAL | Waar |
@@ -176,15 +189,15 @@ De regel voor uitgaande synchronisatie maakt het mogelijk dat de waarde van het 
 
 6. Ga naar het tabblad **trans formatie** en implementeer de volgende transformatie regel:
 
-    | Stroom type | Doelkenmerk | Source | Eenmaal Toep assen | Type samen voeging |
+    | Stroom type | Doel kenmerk | Bron | Eenmaal Toep assen | Type samen voeging |
     | --- | --- | --- | --- | --- |
-    | Rechtstreeks | preferredDataLocation | preferredDataLocation | Uitgeschakeld | Update |
+    | Direct | preferredDataLocation | preferredDataLocation | Uitgeschakeld | Bijwerken |
 
 7. Sluit **toevoegen** om de uitgaande regel te maken.
 
 ![Scherm opname van regel voor uitgaande synchronisatie maken](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step5.png)
 
-## <a name="step-6-run-full-synchronization-cycle"></a>Stap 6: Volledige synchronisatie cyclus uitvoeren
+## <a name="step-7-run-full-synchronization-cycle"></a>Stap 7: volledige synchronisatie cyclus uitvoeren
 In het algemeen is volledige synchronisatie cyclus vereist. Dit komt doordat u nieuwe kenmerken hebt toegevoegd aan het Active Directory-en Azure AD-connector schema en aangepaste synchronisatie regels hebt geïntroduceerd. Controleer de wijzigingen voordat u ze naar Azure AD exporteert. U kunt de volgende stappen gebruiken om de wijzigingen te verifiëren, terwijl u de stappen die een volledige synchronisatie cyclus vormen hand matig uitvoert.
 
 1. **Volledige import** bewerking uitvoeren op de on-premises Active Directory-connector:
@@ -213,7 +226,7 @@ In het algemeen is volledige synchronisatie cyclus vereist. Dit komt doordat u n
    2. Selecteer **volledige synchronisatie**in het dialoog venster en selecteer **OK**.
    3. Wacht tot de bewerking is voltooid.
 
-5. Controleer **in** afwachting van export naar Azure AD:
+5. Controleer **in afwachting van export** naar Azure AD:
 
    1. Klik met de rechter muisknop op de **Azure AD-connector**en selecteer **ruimte voor Zoek connector**.
    2. In het dialoog venster **Zoek connector ruimte** :
@@ -232,13 +245,13 @@ In het algemeen is volledige synchronisatie cyclus vereist. Dit komt doordat u n
 > [!NOTE]
 > U zult merken dat de stappen niet de volledige synchronisatie stap voor de Azure AD-connector bevatten of de stap exporteren op de Active Directory-connector. De stappen zijn niet vereist, omdat de kenmerk waarden alleen vanuit on-premises Active Directory naar Azure AD stromen.
 
-## <a name="step-7-re-enable-sync-scheduler"></a>Stap 7: Synchronisatie planner opnieuw inschakelen
+## <a name="step-8-re-enable-sync-scheduler"></a>Stap 8: de synchronisatie planner opnieuw inschakelen
 De ingebouwde synchronisatie planner opnieuw inschakelen:
 
 1. Start een Power shell-sessie.
-2. Schakel geplande synchronisatie opnieuw in door deze cmdlet uit te voeren:`Set-ADSyncScheduler -SyncCycleEnabled $true`
+2. Schakel geplande synchronisatie opnieuw in door deze cmdlet uit te voeren: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
-## <a name="step-8-verify-the-result"></a>Stap 8: Het resultaat controleren
+## <a name="step-8-verify-the-result"></a>Stap 8: het resultaat controleren
 Het is nu tijd om de configuratie te controleren en in te scha kelen voor uw gebruikers.
 
 1. Voeg de geo toe aan het geselecteerde kenmerk van een gebruiker. De lijst met beschik bare geografische gebieden kan worden gevonden in deze tabel.  
@@ -260,9 +273,9 @@ Meer informatie over multi-geo in Office 365:
 Meer informatie over het configuratie model in de sync-engine:
 
 * Meer informatie over het configuratie model vindt u in [informatie over declaratieve inrichting](concept-azure-ad-connect-sync-declarative-provisioning.md).
-* Meer informatie over de expressie taal vindt u in uitleg over declaratieve inrichtings [expressies](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md).
+* Meer informatie over de expressie taal vindt u in [uitleg over declaratieve inrichtings expressies](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md).
 
 Overzichts onderwerpen:
 
-* [Azure AD Connect-synchronisatie: Synchronisatie begrijpen en aanpassen](how-to-connect-sync-whatis.md)
+* [Azure AD Connect synchronisatie: synchronisatie begrijpen en aanpassen](how-to-connect-sync-whatis.md)
 * [Uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md)

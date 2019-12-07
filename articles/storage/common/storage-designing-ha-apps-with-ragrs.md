@@ -1,20 +1,21 @@
 ---
-title: Maxi maal beschik bare toepassingen ontwerpen met geografisch redundante opslag met lees toegang (RA-GZRS of RA-GRS) | Microsoft Docs
-description: Azure RA-GZRS-of RA-GRS-opslag gebruiken om een Maxi maal beschik bare toepassing te ontwikkelen die flexibel genoeg is voor het verwerken van uitval.
+title: Maxi maal beschik bare toepassingen ontwerpen met geografisch redundante opslag
+titleSuffix: Azure Storage
+description: Meer informatie over het gebruik van geografisch redundante opslag met lees toegang om een Maxi maal beschik bare toepassing te ontwikkelen die flexibel genoeg is voor het verwerken van uitval.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: a6d724f834fb8a4c54cd613c61ca90a77a36bdea
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 8cb644495d99b331ec95eb0a9759be45a65e97a6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673119"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895343"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Maxi maal beschik bare toepassingen ontwerpen met geografisch redundante opslag met lees toegang
 
@@ -27,7 +28,7 @@ Opslag accounts die zijn geconfigureerd voor geo-redundante replicatie, worden s
 
 In dit artikel wordt uitgelegd hoe u uw toepassing kunt ontwerpen voor het afhandelen van een storing in de primaire regio. Als de primaire regio niet beschikbaar is, kan uw toepassing worden aangepast om Lees bewerkingen uit te voeren op de secundaire regio. Zorg ervoor dat uw opslag account is geconfigureerd voor RA-GRS of RA-GZRS voordat u aan de slag gaat.
 
-Zie [Business continuïteit en herstel na nood gevallen (BCDR) voor meer informatie over welke primaire regio's worden gekoppeld aan de secundaire regio's. gekoppelde Azure-regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) voor meer informatie.
+Zie [bedrijfs continuïteit en herstel na nood gevallen (BCDR): gekoppelde Azure-regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)voor meer informatie over welke primaire regio's zijn gekoppeld aan de secundaire regio's.
 
 Er zijn code fragmenten opgenomen in dit artikel en een koppeling naar een volledig voor beeld aan het einde dat u kunt downloaden en uitvoeren.
 
@@ -199,17 +200,17 @@ Geografisch redundante opslag werkt door trans acties te repliceren van de prima
 
 In de volgende tabel ziet u een voor beeld van wat er kan gebeuren wanneer u de details van een werk nemer bijwerkt om ze lid te maken van de rol *Administrators* . Voor dit voor beeld moet u de entiteit **werk nemer** bijwerken en een entiteit **rol beheerder** bijwerken met een telling van het totale aantal beheerders. U ziet hoe de updates in de secundaire regio in de juiste volg orde worden toegepast.
 
-| **Tegelijk** | **Trans actie**                                            | **Replicatie**                       | **Tijdstip van de laatste synchronisatie** | **Daardoor** |
+| **Tijd** | **Trans actie**                                            | **Replicatie**                       | **Tijdstip van de laatste synchronisatie** | **Resultaat** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Trans actie A: <br> Werk nemer invoegen <br> entiteit in primaire |                                   |                    | Trans actie A ingevoegd op primaire,<br> nog niet gerepliceerd. |
-| T1       |                                                            | Trans actie A <br> gerepliceerd naar<br> secundair | T1 | Trans actie A gerepliceerd naar secundair. <br>Laatste synchronisatie tijd bijgewerkt.    |
-| T2       | Trans actie B:<br>Update<br> Entiteit werk nemer<br> in primaire  |                                | T1                 | Trans actie B, geschreven naar primair,<br> nog niet gerepliceerd.  |
-| T3       | Trans actie C:<br> Update <br>beheerder<br>rol-entiteit in<br>primair |                    | T1                 | Trans actie C geschreven naar primair,<br> nog niet gerepliceerd.  |
-| *T4*     |                                                       | Trans actie C <br>gerepliceerd naar<br> secundair | T1         | Trans actie C gerepliceerd naar secundair.<br>LastSyncTime is niet bijgewerkt omdat <br>trans actie B is nog niet gerepliceerd.|
+| T1       |                                                            | Trans actie A <br> gerepliceerd naar<br> primaire | T1 | Trans actie A gerepliceerd naar secundair. <br>Laatste synchronisatie tijd bijgewerkt.    |
+| T2       | Trans actie B:<br>Bijwerken<br> Entiteit werk nemer<br> in primaire  |                                | T1                 | Trans actie B, geschreven naar primair,<br> nog niet gerepliceerd.  |
+| T3       | Trans actie C:<br> Bijwerken <br>beheerder<br>rol-entiteit in<br>basis |                    | T1                 | Trans actie C geschreven naar primair,<br> nog niet gerepliceerd.  |
+| *T4*     |                                                       | Trans actie C <br>gerepliceerd naar<br> primaire | T1         | Trans actie C gerepliceerd naar secundair.<br>LastSyncTime is niet bijgewerkt omdat <br>trans actie B is nog niet gerepliceerd.|
 | *T5*     | Entiteiten lezen <br>van secundaire                           |                                  | T1                 | U krijgt de verouderde waarde voor werk nemer <br> entiteit omdat trans actie B niet <br> gerepliceerd. U krijgt de nieuwe waarde voor<br> entiteit van beheerdersrol omdat C<br> bijgewerkt. Laatste synchronisatie tijd nog niet<br> bijgewerkt omdat trans actie B<br> is niet gerepliceerd. U kunt de<br>entiteit van beheerdersrol is inconsistent <br>omdat de datum/tijd van de entiteit na <br>de laatste synchronisatie tijd. |
-| *T6*     |                                                      | Trans actie B<br> gerepliceerd naar<br> secundair | T6                 | *T6* : alle trans acties via C hebben <br>gerepliceerd, laatste synchronisatie tijd<br> is bijgewerkt. |
+| *T6*     |                                                      | Trans actie B<br> gerepliceerd naar<br> primaire | T6                 | *T6* : alle trans acties via C hebben <br>gerepliceerd, laatste synchronisatie tijd<br> is bijgewerkt. |
 
-In dit voor beeld wordt ervan uitgegaan dat de client overschakelt van de secundaire regio op t 5. De entiteit **rol van beheerder** kan op dit moment worden gelezen, maar de entiteit bevat een waarde voor het aantal beheerders dat niet consistent is met het aantal entiteiten van **werk nemers** dat is gemarkeerd als Administrators in de secundaire regio op dit moment. Uw client zou deze waarde gewoon kunnen weer geven, met het risico dat het inconsistente informatie is. De client kan ook proberen te bepalen dat de beheerdersrol een mogelijk inconsistente **status heeft omdat** de updates in de juiste volg orde zijn verlopen en vervolgens de gebruiker op de hoogte stellen van dit feit.
+In dit voor beeld wordt ervan uitgegaan dat de client overschakelt van de secundaire regio op t 5. De entiteit **rol van beheerder** kan op dit moment worden gelezen, maar de entiteit bevat een waarde voor het aantal beheerders dat niet consistent is met het aantal **werknemers** entiteiten dat op dit moment als Administrators is gemarkeerd. Uw client zou deze waarde gewoon kunnen weer geven, met het risico dat het inconsistente informatie is. De client kan ook proberen te bepalen dat de beheerdersrol een mogelijk inconsistente **status heeft omdat** de updates in de juiste volg orde zijn verlopen en vervolgens de gebruiker op de hoogte stellen van dit feit.
 
 Om te herkennen dat het mogelijk inconsistente gegevens bevat, kan de client de waarde van de *laatste synchronisatie tijd* gebruiken die u op elk gewenst moment kunt bereiken door een opslag service te doorzoeken. Dit geeft u het tijdstip waarop de gegevens in de secundaire regio voor het laatst consistent zijn en toen de service alle trans acties vóór dat moment heeft toegepast. In het bovenstaande voor beeld, nadat de **werknemers** entiteit in de secundaire regio is ingevoegd, wordt de laatste synchronisatie tijd ingesteld op *T1*. Deze blijft op *T1* totdat de service de werknemers entiteit in de secundaire regio **bijwerkt** wanneer deze is ingesteld op *T6*. Als de client de laatste synchronisatie tijd ophaalt bij het lezen van de entiteit op *T5*, kan deze worden vergeleken met de tijds tempel van de entiteit. Als de tijds tempel van de entiteit later is dan de laatste synchronisatie tijd, heeft de entiteit een mogelijk inconsistente status en kunt u de juiste actie ondernemen voor uw toepassing. Als u dit veld wilt gebruiken, moet u weten wanneer de laatste update voor de primaire is voltooid.
 
@@ -233,7 +234,7 @@ $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
     -IncludeGeoReplicationStats).GeoReplicationStats.LastSyncTime
 ```
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Als u de laatste synchronisatie tijd voor het opslag account wilt ophalen met behulp van Azure CLI, controleert u de eigenschap **geoReplicationStats. lastSyncTime** van het opslag account. Gebruik de para meter `--expand` om waarden te retour neren voor de eigenschappen die onder **geoReplicationStats**zijn genest. Vergeet niet om de waarden van de tijdelijke aanduidingen te vervangen door uw eigen waarden:
 

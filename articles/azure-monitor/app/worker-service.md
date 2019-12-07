@@ -4,15 +4,15 @@ description: .NET core/. NET Framework-niet-HTTP-apps bewaken met Application In
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: cijothomas
-ms.author: cithomas
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/15/2019
-ms.openlocfilehash: 5f812d5fe1b25358a0bf09ebf879569ae29b33f3
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 386c171e4785fac2c7fa6da39f249e211f4c660c
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131880"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893295"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights voor Worker-service toepassingen (niet-HTTP-toepassingen)
 
@@ -35,7 +35,7 @@ Een geldige Application Insights instrumentatie sleutel. Deze sleutel is vereist
 
 ```xml
     <ItemGroup>
-        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.8.0" />
+        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.8.2" />
     </ItemGroup>
 ```
 
@@ -136,6 +136,7 @@ Normaal gesp roken bevat `APPINSIGHTS_INSTRUMENTATIONKEY` de instrumentatie sleu
 > Een instrumentatie sleutel die is opgegeven in code wint via de omgevings variabele `APPINSIGHTS_INSTRUMENTATIONKEY`, die WINS over andere opties overneemt.
 
 ## <a name="aspnet-core-background-tasks-with-hosted-services"></a>Achtergrond taken ASP.NET Core met gehoste services
+
 In [Dit](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&tabs=visual-studio) document wordt beschreven hoe u achtergrond taken maakt in ASP.net Core 2.1/2.2-toepassing.
 
 [Hier](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) wordt een volledig voor beeld gedeeld
@@ -355,14 +356,14 @@ Veelgebruikte instellingen in `ApplicationInsightsServiceOptions`
 
 |Instelling | Beschrijving | Standaard
 |---------------|-------|-------
-|EnableQuickPulseMetricStream | Functie LiveMetrics in-of uitschakelen | true
-|EnableAdaptiveSampling | Adaptieve steek proeven in-/uitschakelen | true
-|EnableHeartbeat | De functie heartbeats inschakelen/uitschakelen, die periodiek (standaard 15-minuten) een aangepaste metriek met de naam ' HeartBeatState ' verzendt met informatie over de runtime, zoals .NET-versie, informatie over de Azure-omgeving, indien van toepassing, enzovoort. | true
-|AddAutoCollectedMetricExtractor | Schakel AutoCollectedMetrics extractor in/uit. Dit is een TelemetryProcessor die vooraf geaggregeerde metrische gegevens over aanvragen/afhankelijkheden verzendt voordat steek proeven worden uitgevoerd. | true
+|EnableQuickPulseMetricStream | Functie LiveMetrics in-of uitschakelen | waar
+|EnableAdaptiveSampling | Adaptieve steek proeven in-/uitschakelen | waar
+|EnableHeartbeat | De functie heartbeats inschakelen/uitschakelen, die periodiek (standaard 15-minuten) een aangepaste metriek met de naam ' HeartBeatState ' verzendt met informatie over de runtime, zoals .NET-versie, informatie over de Azure-omgeving, indien van toepassing, enzovoort. | waar
+|AddAutoCollectedMetricExtractor | Schakel AutoCollectedMetrics extractor in/uit. Dit is een TelemetryProcessor die vooraf geaggregeerde metrische gegevens over aanvragen/afhankelijkheden verzendt voordat steek proeven worden uitgevoerd. | waar
 
 Zie de [Configureer bare instellingen in `ApplicationInsightsServiceOptions`](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) voor de meest recente lijst.
 
-### <a name="sampling"></a>Steekproeven
+### <a name="sampling"></a>Sampling
 
 De Application Insights SDK voor Worker-service ondersteunt zowel vaste als adaptieve steek proeven. Adaptieve steek proeven zijn standaard ingeschakeld. Het configureren van sampling voor Worker-service gebeurt op dezelfde manier als voor [ASP.net core toepassingen](https://docs.microsoft.com/azure/azure-monitor/app/sampling#configuring-adaptive-sampling-for-aspnet-core-applications).
 

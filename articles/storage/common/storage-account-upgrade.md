@@ -1,18 +1,19 @@
 ---
-title: Upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik-Azure Storage | Microsoft Docs
+title: Upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik
+titleSuffix: Azure Storage
 description: Voer een upgrade uit naar v2-opslag accounts voor algemeen gebruik.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 03/26/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: e24b7efb9f4af9f730ce79751e2fc5a9d210edbd
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 7c7b0a0bb79f3f00d7a8dff64ec1b7143241a1f8
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806963"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892223"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik
 
@@ -84,7 +85,7 @@ Alle opslagaccounts maken gebruik van een prijsmodel voor het opslaan van blobs 
 
 * **Kosten voor gegevensoverdracht met geo-replicatie**: deze kosten zijn alleen van toepassing op accounts waarvoor geo-replicatie is geconfigureerd, inclusief GRS en RA-GRS. Kosten voor gegevensoverdracht met geo-replicatie worden in rekening gebracht per GB.
 
-* **Kosten voor uitgaande gegevens overdracht**: uitgaande gegevens overdracht (gegevens die worden overgedragen uit een Azure-regio), maakt het mogelijk om het bandbreedte gebruik per gigabyte te betalen, in overeenstemming met opslag accounts voor algemeen gebruik.
+* **Kosten voor uitgaande gegevensoverdracht**: uitgaande gegevensoverdracht (gegevens die buiten een Azure-regio worden overgedragen) worden gefactureerd voor bandbreedtegebruik per GB, net zoals bij opslagaccounts voor algemeen gebruik.
 
 * **De laag voor opslag toegang wijzigen**: het toegangs niveau van de account opslag wijzigen van koud in warme, waarbij de kosten gelijk zijn aan het lezen van alle gegevens in het opslag account. Als u de laag van het account echter wijzigt van dynamisch in Cool, worden er kosten in rekening gebracht die gelijk zijn aan het schrijven van alle gegevens in de cool-laag (alleen GPv2-accounts).
 
@@ -96,11 +97,12 @@ Alle opslagaccounts maken gebruik van een prijsmodel voor het opslaan van blobs 
 Voor een schatting van de kosten voor het opslaan en openen van BLOB-gegevens in een v2-opslag account voor algemeen gebruik in een bepaalde laag, moet u uw bestaande gebruiks patroon evalueren of een schatting maken van het verwachte gebruiks patroon. Doorgaans zijn de volgende gegevens hiervoor van belang:
 
 * Uw gebruik van Blob-opslag, in gigabytes, met inbegrip van:
-    - Hoeveel gegevens worden opgeslagen in het opslagaccount?
-    - Hoe verandert het gegevensvolume op maandbasis; worden oude gegevens voortdurend vervangen door nieuwe gegevens?
+  * Hoeveel gegevens worden opgeslagen in het opslagaccount?
+  * Hoe verandert het gegevensvolume op maandbasis; worden oude gegevens voortdurend vervangen door nieuwe gegevens?
+
 * Het primaire toegangs patroon voor uw Blob Storage-gegevens, met inbegrip van:
-    - Hoeveel gegevens worden er van gelezen en naar het opslag account geschreven?
-    - Hoeveel Lees bewerkingen versus schrijf bewerkingen worden uitgevoerd op de gegevens in het opslag account?
+  * Hoeveel gegevens worden er van gelezen en naar het opslag account geschreven?
+  * Hoeveel Lees bewerkingen versus schrijf bewerkingen worden uitgevoerd op de gegevens in het opslag account?
 
 Om te beslissen over de beste Access-laag voor uw behoeften, kan het nuttig zijn om de capaciteit van uw BLOB-gegevens te bepalen en hoe deze gegevens worden gebruikt. U kunt dit het beste doen door de metrische gegevens voor uw account te controleren.
 
@@ -119,7 +121,7 @@ Als dit is ingeschakeld, worden de capaciteitsgegevens van een Blob Storage-serv
 Voor het controleren van gegevenstoegangspatronen voor Blob Storage, moet u de metrische gegevens die per uur worden verzameld voor de transactie inschakelen vanaf de API. Als deze methode is ingeschakeld, worden er elk uur per-API-transacties verzameld en geregistreerd als een tabelvermelding die is naar de *$MetricsHourPrimaryTransactionsBlob*-tabel binnen hetzelfde opslagaccount wordt geschreven. De *$MetricsHourSecondaryTransactionsBlob*-tabel registreert de transacties naar het secundaire eindpunt bij gebruik van RA-GRS-opslagaccounts.
 
 > [!NOTE]
-> Als u een algemeen opslag account hebt waarin u pagina-blobs en virtuele-machine schijven hebt opgeslagen, of wacht rijen, bestanden of tabellen, naast het blok keren en toevoegen van BLOB-gegevens, is dit schattings proces niet van toepassing. De capaciteitsgegevens maken geen onderscheid tussen blok-blobs en andere typen en geven geen capaciteitsgegevens voor andere gegevenstypen. Als u deze typen gebruikt, is een alternatieve methode om te kijken naar de hoeveelheden op uw meest recente factuur.
+> Als u een algemeen opslagaccount hebt waarin u pagina-blobs en virtuele-machineschijven of wachtrijen, bestanden of tabellen, hebt opgeslagen naast blok- en toevoegblobgegevens, is dit schattingsproces niet van toepassing. De capaciteitsgegevens maken geen onderscheid tussen blok-blobs en andere typen en geven geen capaciteitsgegevens voor andere gegevenstypen. Als u deze typen gebruikt, is een alternatieve methode om te kijken naar de hoeveelheden op uw meest recente factuur.
 
 Als u een goede schatting wilt maken van uw gegevensverbruik en toegangspatroon, raden we u aan voor de metrische gegevens een retentieperiode te kiezen die een goede afspiegeling is van uw normale gebruik en dat als uitgangspunt te nemen. Een optie is de metrische gegevens zeven dagen te bewaren en de gegevens elke week te verzamelen en aan het einde van de maand te analyseren. Een andere optie is de metrische gegevens van de afgelopen 30 dagen te bewaren en deze gegevens aan het einde van deze periode van 30 dagen te verzamelen en te analyseren.
 
@@ -165,5 +167,5 @@ De overdrachtskosten van geo-replicatiegegevens voor Blob Storage-accounts kan o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een opslagaccount maken](storage-quickstart-create-account.md)
-- [Azure Storage-accounts beheren](storage-account-manage.md)
+* [Een opslagaccount maken](storage-quickstart-create-account.md)
+* [Azure Storage-accounts beheren](storage-account-manage.md)

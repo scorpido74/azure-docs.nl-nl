@@ -1,22 +1,23 @@
 ---
-title: Door de klant beheerde sleutels met Azure Key Vault met behulp van Power shell-Azure Storage configureren
+title: Power shell gebruiken voor het configureren van door de klant beheerde sleutels
+titleSuffix: Azure Storage
 description: Meer informatie over het gebruik van Power shell voor het configureren van door de klant beheerde sleutels voor Azure Storage versleuteling. Door de klant beheerde sleutels bieden u de mogelijkheid om toegangs beheer te maken, te draaien, uit te scha kelen en in te trekken.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/20/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: bd723787d9cea2d3b9d81ae9db63c70a21190854
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 87ee96b0f6ad27fc34709f3fc20a2dd69be49089
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666219"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895274"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-by-using-powershell"></a>Door de klant beheerde sleutels configureren voor Azure Storage met behulp van Power shell
+# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>Door de klant beheerde sleutels configureren met Azure Key Vault met behulp van Power shell
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 

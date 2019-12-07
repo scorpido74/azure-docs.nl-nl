@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: d9967b6f1177281759dd66122ffd0183bb2b813d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: e3a9b733b055469e22d3b107c0f9f49b768756c4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775830"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895249"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Gids voor het oplossen van problemen Azure Storage Explorer
 
@@ -98,7 +98,7 @@ De dialoog vensters met een leeg aanmeld probleem worden meestal beschreven wann
 1. Open op de werk balk links verticaal de knop **instellingen**. Ga in het deel venster instellingen naar **toepassing** > **Meld**u aan. Schakel **Aanmelden met apparaatcode stroom in**.
 2. Open het dialoog venster **verbinding maken** (via het pictogram met de plug-in de verticale balk aan de linkerkant of selecteer **account toevoegen** in het deel venster account).
 3. Kies de omgeving waarin u zich wilt aanmelden.
-4. Selecteer **Aanmelden**.
+4. Selecteer **Aanmelden.**
 5. Volg de instructies op het volgende scherm.
 
 Als u zich niet kunt aanmelden bij het account dat u wilt gebruiken omdat uw standaard browser al is aangemeld bij een ander account, voert u een van de volgende handelingen uit:
@@ -301,7 +301,7 @@ U kunt de toepassing ook downloaden als een. tar. gz-bestand, maar u moet afhank
 
 Deze pakketten zijn de meest voorkomende vereisten voor Storage Explorer op Linux:
 
-* [.NET Core 2,0-runtime](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* [.NET Core 2,2-runtime](https://docs.microsoft.com/en-us/dotnet/core/install/dependencies?tabs=netcore22&pivots=os-linux)
 * `libgconf-2-4`
 * `libgnome-keyring0` of `libgnome-keyring-dev`
 * `libgnome-keyring-common`
@@ -309,7 +309,7 @@ Deze pakketten zijn de meest voorkomende vereisten voor Storage Explorer op Linu
 > [!NOTE]
 > Voor Storage Explorer versie 1.7.0 en eerder is .NET Core 2,0 vereist. Als u een nieuwere versie van .NET core hebt geïnstalleerd, moet u een [patch Storage Explorer](#patching-storage-explorer-for-newer-versions-of-net-core). Als u Storage Explorer 1.8.0 of hoger gebruikt, kunt u gebruikmaken van tot .NET Core 2,2. Versies van meer dan 2,2 zijn op dit moment niet geverifieerd.
 
-# <a name="ubuntu-1904tab1904"></a>[Ubuntu 19,04](#tab/1904)
+# <a name="ubuntu-1904tab1904"></a>[Ubuntu 19.04](#tab/1904)
 
 1. Down load Storage Explorer.
 2. Installeer de [.net core-runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current).
@@ -327,7 +327,7 @@ Deze pakketten zijn de meest voorkomende vereisten voor Storage Explorer op Linu
    sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
    ```
 
-# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16,04](#tab/1604)
+# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Down load Storage Explorer.
 2. Installeer de [.net core-runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current).
@@ -336,7 +336,7 @@ Deze pakketten zijn de meest voorkomende vereisten voor Storage Explorer op Linu
    sudo apt install libgnome-keyring-dev
    ```
 
-# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14,04](#tab/1404)
+# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
 
 1. Down load Storage Explorer.
 2. Installeer de [.net core-runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current).
@@ -364,7 +364,7 @@ Als de knop **openen in Verkenner** op de Azure Portal niet werkt, moet u ervoor
 * Microsoft Edge
 * Mozilla Firefox
 * Google Chrome
-* Micro soft Internet Explorer
+* Microsoft Internet Explorer
 
 ## <a name="next-steps"></a>Volgende stappen
 

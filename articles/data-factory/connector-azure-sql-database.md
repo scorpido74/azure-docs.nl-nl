@@ -1,5 +1,5 @@
 ---
-title: Gegevens in Azure SQL Database kopiëren en transformeren met behulp van Data Factory
+title: Gegevens kopiëren en transformeren in Azure SQL Database
 description: Informatie over het kopiëren van gegevens van en naar Azure SQL Database en het transformeren van gegevens in Azure SQL Database met behulp van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: b899d9884a80a882ca03d3d970421227a48a3803
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 8b09bb50df18660ae6fb21febc121d17058be23b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075597"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891030"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Gegevens in Azure SQL Database kopiëren en transformeren met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Azure Data Factory die u gebruikt:"]
-> * [Versie 1:](v1/data-factory-azure-sql-connector.md)
+> * [Versie 1](v1/data-factory-azure-sql-connector.md)
 > * [Huidige versie](connector-azure-sql-database.md)
 
 In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens te kopiëren van en naar Azure SQL Database, en om gegevens in Azure SQL Database te transformeren met behulp van gegevens stromen. Lees voor meer informatie over Azure Data Factory, de [inleidende artikel](introduction.md).
@@ -58,7 +58,7 @@ De volgende secties bevatten informatie over eigenschappen die worden gebruikt v
 
 Deze eigenschappen worden ondersteund voor een Azure SQL Database gekoppelde service:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap **type** moet worden ingesteld op **AzureSqlDatabase**. | Ja |
 | connectionString | Geef de gegevens op die nodig zijn om verbinding te maken met het Azure SQL Database-exemplaar voor de **Connections Tring** -eigenschap. <br/>Markeer dit veld als **SecureString** om het veilig op te slaan in azure Data Factory. U kunt ook een wacht woord of Service-Principal-sleutel in Azure Key Vault plaatsen. Als de SQL-verificatie wordt uitgevoerd, haalt u de `password` configuratie uit de connection string. Zie voor meer informatie het JSON-voor beeld dat volgt op de tabel en [referenties opslaan in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
@@ -231,7 +231,7 @@ Zie [gegevens sets](https://docs.microsoft.com/azure/data-factory/concepts-datas
 
 De volgende eigenschappen worden ondersteund voor Azure SQL Database-gegevensset:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap **type** van de DataSet moet worden ingesteld op **AzureSqlTable**. | Ja |
 | schema | De naam van het schema. |Nee voor bron, Ja voor sink  |
@@ -267,7 +267,7 @@ Voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor 
 
 Als u gegevens wilt kopiëren uit Azure SQL Database, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **AzureSqlSource**. Het type SqlSource wordt nog steeds ondersteund voor compatibiliteit met eerdere versies. | Ja |
 | sqlReaderQuery | Deze eigenschap maakt gebruik van de aangepaste SQL-query om gegevens te lezen. Een voorbeeld is `select * from MyTable`. | Nee |
@@ -373,7 +373,7 @@ GO
 
 Als u gegevens wilt kopiëren naar Azure SQL Database, worden de volgende eigenschappen ondersteund in het gedeelte **sink** van Kopieer activiteit:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap **type** van de Sink voor kopieer activiteiten moet worden ingesteld op **AzureSqlSink**. Het type SqlSink wordt nog steeds ondersteund voor compatibiliteit met eerdere versies. | Ja |
 | writeBatchSize | Het aantal rijen dat *per batch*in de SQL-tabel moet worden ingevoegd.<br/> De toegestane waarde is **geheel getal** (aantal rijen). Standaard bepaalt Azure Data Factory dynamisch de juiste Batch grootte op basis van de Rijgrootte. | Nee |
@@ -585,30 +585,30 @@ Wanneer gegevens worden gekopieerd van of naar Azure SQL Database, worden de vol
 | binary |Byte[] |
 | bit |Booleaans |
 | char |String, Char[] |
-| date |DateTime |
-| Datum en tijd |DateTime |
-| datetime2 |DateTime |
+| date |Datum/tijd |
+| Datetime |Datum/tijd |
+| datetime2 |Datum/tijd |
 | Datetimeoffset |DateTimeOffset |
-| decimaal |decimaal |
+| Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
-| Float |Double-waarde |
-| installatiekopie |Byte[] |
+| Float |Double |
+| image |Byte[] |
 | int |Int32 |
-| money |decimaal |
+| money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |decimaal |
+| numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Enkelvoudig |
 | rowversion |Byte[] |
-| smalldatetime |DateTime |
+| smalldatetime |Datum/tijd |
 | smallint |Int16 |
-| smallmoney |decimaal |
+| smallmoney |Decimal |
 | sql_variant |Object |
 | tekst |String, Char[] |
 | tijd |TimeSpan |
 | tijdstempel |Byte[] |
-| tinyint |Byte |
+| tinyint |byte |
 | uniqueidentifier |GUID |
 | varbinary |Byte[] |
 | varchar |String, Char[] |

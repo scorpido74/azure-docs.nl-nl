@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65714f67dde79847bf07efda358a4e1f9ea938d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 87cdd5ff303cbb001e482137df1d4241487fc6d2
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028455"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900789"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Uitgebreide toegang beveiligen voor hybride en Cloud implementaties in azure AD
 
@@ -44,7 +44,7 @@ A cyber-attack, if successful, can shut down operations not just for a few hours
 does the article really start here?-->
 Voor de meeste organisaties is de beveiliging van bedrijfs assets afhankelijk van de integriteit van de bevoegde accounts waarmee IT-systemen worden beheerd en beheerd. Cyber aanvallers richten zich op bevoorrechte toegang tot infrastructuur systemen (zoals Active Directory en Azure Active Directory) om toegang te krijgen tot gevoelige gegevens van een organisatie. 
 
-Traditionele benaderingen die zich richten op het beveiligen van de ingangs-en uitgangs punten van een netwerk, omdat de primaire beveiligings verbinding minder effectief is vanwege de toename van het gebruik van SaaS-apps en persoonlijke apparaten op internet. De natuurlijke vervanging voor de netwerk beveiligings verbinding in een complexe moderne onderneming is de verificatie-en autorisatie controles in de laag van een organisatie.
+Traditionele benaderingen die zich richten op het beveiligen van de ingangs-en uitgangs punten van een netwerk, omdat de primaire beveiligings verbinding minder effectief is vanwege de toename van het gebruik van SaaS-apps en persoonlijke apparaten op internet. De natuurlijke vervanging voor de netwerkbeveiligingsperimeter in een complexe moderne onderneming is het gebruik van verificatie- en autorisatie-elementen in de identiteitslaag van een organisatie.
 
 Geprivilegieerde beheerders accounts zijn effectief in het beheer van dit nieuwe beveiligings netwerk. Het is van cruciaal belang om de toegang te beschermen, ongeacht of de omgeving on-premises, Cloud of hybride on-premises en in de Cloud gehoste services is. Voor het beveiligen van administratieve toegang tegen de vastgestelde aanvallers moet u een volledige en doordachte benadering nemen voor het isoleren van de systemen van uw organisatie tegen Risico's. 
 
@@ -94,7 +94,7 @@ Nadat u Azure AD Privileged Identity Management hebt ingeschakeld:
 
 2. Als u de Tenant wilt selecteren waarvoor u Privileged Identity Management wilt gebruiken, selecteert u uw gebruikers naam in de rechter bovenhoek van de Azure Portal.
 
-3. Selecteer **alle services** en filter de lijst voor **Azure AD privileged Identity Management**.
+3. Selecteer in het menu Azure Portal **alle services** en filter de lijst voor **Azure AD privileged Identity Management**.
 
 4. Open Privileged Identity Management in de lijst **alle services** en vastmaken aan uw dash board.
 
@@ -241,7 +241,7 @@ Beheer van C-Suite, managers op hoog niveau, kritiek IT-en beveiligings personee
 
 #### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Speciale werk stations gebruiken voor beheer voor Azure AD
 
-Aanvallers kunnen proberen zich te richten op bevoegde accounts om toegang te krijgen tot de gegevens en systemen van een organisatie, zodat ze de integriteit en authenticiteit van gegevens kunnen verstoren door middel van schadelijke code die de programma logica wijzigt of de beheerder die een referentie invoert, ondervindt. Privileged Access workstations (Paw's) bieden een speciaal besturings systeem voor gevoelige taken die worden beschermd tegen aanvallen via internet en bedreigings vectoren. Het scheiden van deze gevoelige taken en accounts van de werk stations en apparaten die dagelijks worden gebruikt, biedt zeer sterke bescherming tegen phishing-aanvallen, problemen met toepassingen en besturings systemen, verschillende imitatie aanvallen en aanvallen met referentie diefstal, zoals toetsaanslag logboek registratie, Pass-the-hash en Pass-the-ticket. Door privileged Access workstations te implementeren, kunt u het risico dat beheerders beheerders referenties invoeren, beperken, behalve op een desktop omgeving die is gehard. Zie [privileged Access workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)(Engelstalig) voor meer informatie.
+Aanvallers kunnen proberen zich te richten op bevoegde accounts om toegang te krijgen tot de gegevens en systemen van een organisatie, zodat ze de integriteit en authenticiteit van gegevens kunnen verstoren door middel van schadelijke code die de programma logica wijzigt of de beheerder die een referentie invoert, ondervindt. Privileged Access Workstations (PAW's) beschikken over een speciaal besturingssysteem voor gevoelige taken dat is beveiligd tegen aanvallen via internet en dreigingsvectoren. Het scheiden van deze gevoelige taken en accounts van de werk stations en apparaten die dagelijks worden gebruikt, biedt zeer sterke bescherming tegen phishing-aanvallen, problemen met toepassingen en besturings systemen, verschillende imitatie aanvallen en aanvallen met referentie diefstal, zoals toetsaanslag logboek registratie, Pass-the-hash en Pass-the-ticket. Door privileged Access workstations te implementeren, kunt u het risico dat beheerders beheerders referenties invoeren, beperken, behalve op een desktop omgeving die is gehard. Zie [privileged Access workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)(Engelstalig) voor meer informatie.
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Bestudeer het National Institute of Standards and Technology aanbevelingen voor het afhandelen van incidenten 
 
@@ -261,7 +261,7 @@ Als u Azure AD Privileged Identity Management al gebruikt, past u de tijds perio
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>De bloot stelling aan aanmeldings protocollen op basis van wacht woorden bepalen (als u Exchange Online gebruikt)
 
-In het verleden wordt aangenomen dat de combi Naties van gebruikers namen en wacht woorden zijn Inge sloten in apparaten, e-mail accounts, telefoons, enzovoort. Maar nu het risico voor Cyber aanvallen in de Cloud, raden we u aan om elke mogelijke gebruiker te identificeren die, als de referenties zijn aangetast, mogelijk onherstelbaar is voor de organisatie en deze niet kan aanmelden bij hun e-mail via gebruikers naam/wacht woord door sterke verificatie vereisten en voorwaardelijke toegang te implementeren. U kunt [verouderde verificatie blok keren met behulp van voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication). Raadpleeg de details over [het blok keren van basis verificatie](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) via Exchnage online. 
+In het verleden wordt aangenomen dat de combi Naties van gebruikers namen en wacht woorden zijn Inge sloten in apparaten, e-mail accounts, telefoons, enzovoort. Maar nu het risico voor Cyber aanvallen in de Cloud, raden we u aan om elke mogelijke gebruiker te identificeren die, als de referenties zijn aangetast, mogelijk onherstelbaar is voor de organisatie en deze niet kan aanmelden bij hun e-mail via gebruikers naam/wacht woord door sterke verificatie vereisten en voorwaardelijke toegang te implementeren. U kunt [verouderde verificatie blok keren met behulp van voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication). Raadpleeg de details over [het blok keren van basis verificatie](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) via Exchange Online. 
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Beoordeling van functies volt ooien evaluatie voor Office 365-rollen (als u Office 365 gebruikt)
 

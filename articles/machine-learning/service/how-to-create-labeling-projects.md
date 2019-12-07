@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: e66a9f8a775a46c906601ea08be52ca9dfbe0171
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: c171310fd1c9caf78288fa156b353ecdd517d602
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689293"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894690"
 ---
 # <a name="get-labels-for-data"></a>Labels voor gegevens ophalen
 
@@ -24,6 +24,9 @@ Machine Learning volgt de voortgang en onderhoudt de wachtrij met onvolledige la
 
 In Machine Learning kunt u het project starten en stoppen, mensen en teams toevoegen en verwijderen en de voortgang controleren. U kunt gelabelde gegevens in de COCO-indeling exporteren of als een Azure Machine Learning-gegevensset.
 
+> [!Important]
+> Er worden op dit moment alleen afbeeldings classificatie en object identificatie labeling voor projecten ondersteund. Daarnaast moeten de gegevens kopieën beschikbaar zijn in een Azure Blob-gegevens opslag. (Als u geen bestaande gegevens opslag hebt, kunt u afbeeldingen uploaden tijdens het maken van het project.) 
+
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
@@ -32,6 +35,7 @@ In dit artikel leert u het volgende:
 > * De teams en personen beheren die aan het project werken
 > * Het project uitvoeren en bewaken
 > * De labels exporteren
+
 
 ## <a name="prerequisites"></a>Vereisten
 

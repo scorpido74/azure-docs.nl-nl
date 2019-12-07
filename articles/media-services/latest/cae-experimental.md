@@ -1,6 +1,6 @@
 ---
-title: Een experimenteel voorinstelling voor inhoud-bewuste encoding - Azure | Microsoft Docs
-description: Dit artikel worden besproken inhoud-bewuste codering in Azure Media Services
+title: Een experimentele voor instelling voor Content-Aware encoding-Azure | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u met inhoud compatibele code ring in Microsoft Azure Media Services v3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,46 +12,46 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: ddb7bfd2437af806c8db75068c50545e69867ea0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9389466b6291542563c068706479bf981c5880da
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65151008"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896145"
 ---
-# <a name="experimental-preset-for-content-aware-encoding"></a>Experimentele voorinstelling voor encoding op inhoud-bewuste
+# <a name="experimental-preset-for-content-aware-encoding"></a>Experimentele voor instelling voor code ring met Content-Aware
 
-Als u wilt voorbereiden van inhoud voor de levering van [streaming met adaptieve bitrates](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), video moet worden gecodeerd in meerdere bitsnelheden (hoog naar laag). Om ervoor te zorgen correcte vermindering van de kwaliteit, zoals de bitrate worden verlaagd en is dus de resolutie van de video. Dit resulteert in een zogenaamde codering ladder: een tabel met oplossingen en bitrates; Zie de Media Services [ingebouwde coderingsstandaarden](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
+Video moet worden gecodeerd met meerdere bitsnelheden (hoog naar laag) om inhoud voor te bereiden voor levering door [Adaptive bitrate streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming). Om te zorgen voor een goede vermindering van de kwaliteit, naarmate de bitsnelheid lager is, is dit de resolutie van de video. Dit resulteert in een zogenaamde coderings ladder: een tabel met resoluties en bitsnelheden; Zie de Media Services [ingebouwde coderings definities](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
 ## <a name="overview"></a>Overzicht
 
-Interesse in voorbij de benadering van een een-definitie-past-all-video's toegenomen na de publicatie van Netflix hun [blog](https://medium.com/netflix-techblog/per-title-encode-optimization-7e99442b62a2) in December 2015. Sindsdien zijn meerdere oplossingen voor het coderen van inhoud-bewust vrijgegeven op marketplace; Zie [in dit artikel](https://www.streamingmedia.com/Articles/Editorial/Featured-Articles/Buyers-Guide-to-Per-Title-Encoding-130676.aspx) voor een overzicht. Het idee is om te worden op de hoogte van de inhoud voor het aanpassen of de codering ladder aan de complexiteit van de afzonderlijke video af te stemmen. Elke resolutie is er een bitrate waarboven toename van de kwaliteit is niet perceptive – het coderingsprogramma werkt op deze optimale bitrate-waarde. Het volgende niveau van optimalisatie is om te selecteren van de oplossingen die op basis van de inhoud – bijvoorbeeld een video van een PowerPoint-presentatie niet profiteren van gaan hieronder 720p. Verder gaat, kan het coderingsprogramma voor het optimaliseren van de instellingen voor elk schot binnen de video worden belast. NetFlix beschreven [dergelijke een benadering](https://medium.com/netflix-techblog/optimized-shot-based-encodes-now-streaming-4b9464204830) in 2018.
+Het is belang dat u verder gaat dan een vooraf ingestelde methode die geschikt is voor alle Video's nadat Netflix zijn [blog](https://medium.com/netflix-techblog/per-title-encode-optimization-7e99442b62a2) in december 2015 heeft gepubliceerd. Sinds dat moment zijn er meerdere oplossingen voor content-bewuste code ring uitgebracht op Marketplace; Raadpleeg [dit artikel](https://www.streamingmedia.com/Articles/Editorial/Featured-Articles/Buyers-Guide-to-Per-Title-Encoding-130676.aspx) voor een overzicht. Het is de bedoeling dat u rekening houdt met de inhoud: om de coderings ladder aan te passen of af te stemmen op de complexiteit van de afzonderlijke video. Bij elke oplossing is er sprake van een bitsnelheid waarboven een toename van de kwaliteit niet perceptive is. het coderings programma werkt op deze optimale bitrate waarde. Het volgende optimalisatie niveau is het selecteren van de oplossingen op basis van de inhoud. een video van een Power Point-presentatie biedt bijvoorbeeld geen voor deel uit van de volgende 720p. Het coderings programma kan ook worden getaakd om de instellingen voor elke foto in de video te optimaliseren. Netflix heeft [een dergelijke benadering](https://medium.com/netflix-techblog/optimized-shot-based-encodes-now-streaming-4b9464204830) beschreven in 2018.
 
-Begin 2017 bracht Microsoft de [adaptief streamen](autogen-bitrate-ladder.md) vooraf ingestelde om het probleem van de veranderlijkheid van de kwaliteit en de resolutie van de bron-video's. Onze klanten hebben een uiteenlopende combinatie van inhoud, enkele bij 1080p, anderen bij 720p en een aantal wordt aan SD en lagere resoluties. Bovendien was niet alle broninhoud mezzanines van hoge kwaliteit van films of TV studios. De adaptieve Streaming vooraf ingestelde adressen deze problemen door ervoor te zorgen dat de bitrateladder nooit meer dan de oplossing of de gemiddelde bitrate van de invoer tussentijds.
+In vroege 2017 heeft micro soft de [adaptieve streaming](autogen-bitrate-ladder.md) -voor instelling uitgebracht om het probleem van de variabiliteit in de kwaliteit en resolutie van de bron Video's te verhelpen. Onze klanten hadden een gevarieerde combi natie van inhoud, een aantal van 1080p, anderen op 720p en enkele van de SD en lagere resoluties. Bovendien was niet alle bron inhoud van hoge kwaliteit mezzanine van film of TV Studios. Met de vooraf ingestelde adaptieve streaming worden deze problemen opgelost door ervoor te zorgen dat de videoladder nooit de resolutie of de gemiddelde bitsnelheid van de invoer-mezzanine overschrijdt.
 
-De experimentele inhoud-bewuste vooraf ingestelde standaardcodering breidt dit mechanisme, door de integratie van aangepaste logica waarmee de encoder die proberen de optimale bitrate-waarde voor een bepaalde oplossing, maar zonder uitgebreide rekenkundige analyse. Het resultaat is dat deze nieuwe definitie produceert een uitvoer met lagere bitrate dan de voorinstelling adaptief streamen, maar met een hogere kwaliteit. Zie het volgende voorbeeld grafieken die laten zien van de vergelijking met metrische gegevens van kwaliteit zoals [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) en [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). De bron is gemaakt door het samenvoegen van korte clips van hoge complexiteit foto's van films en TV-programma, bedoeld voor het coderingsprogramma stress. Per definitie deze vooraf ingestelde produceert resultaten die verschillen van inhoud naar inhoud – betekent het ook dat voor sommige inhoud, er niet significante vermindering van bitrate of verbetering van de kwaliteit zijn kan.
+De voor keuren voor de experimentele inhoud van de coderings functie breidt dat mechanisme uit door aangepaste logica te integreren waarmee de encoder de optimale bitrate waarde voor een bepaalde oplossing kan zoeken, maar zonder dat er uitgebreide reken kundige analyse nodig is. Het resultaat is dat deze nieuwe standaard instelling een uitvoer produceert die een lagere bitsnelheid heeft dan de vooraf ingestelde adaptieve streaming, maar met een hogere kwaliteit. Bekijk de volgende voorbeeld grafieken die de vergelijking weer geven met behulp van kwaliteits metingen, zoals [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) en [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). De bron is gemaakt door het samen voegen van korte clips met zeer complexe opnamen van films en TV-Program ma's, die zijn bedoeld om het coderings programma te stressren. Deze standaard instelling produceert per definitie resultaten die variëren van inhoud tot inhoud. het betekent ook dat er voor sommige inhoud geen aanzienlijke vermindering van de bitrate of verbetering van de bitsnelheid kan optreden.
 
-![Tarief vervorming (RD)-curve met behulp van PSNR](media/cae-experimental/msrv1.png)
+![Distorsie (RD)-curve met behulp van PSNR](media/cae-experimental/msrv1.png)
 
-**Afbeelding 1: Tarief vervorming (RD)-curve met behulp van PSNR metrische gegevens voor hoge complexiteit bron**
+**Afbeelding 1: een bocht-curve (distorsie) met behulp van PSNR-metrische gegevens voor een hoge complexiteits bron**
 
-![Tarief vervorming (RD)-curve met behulp van VMAF](media/cae-experimental/msrv2.png)
+![Distorsie (RD)-curve met behulp van VMAF](media/cae-experimental/msrv2.png)
 
-**Afbeelding 2: Tarief vervorming (RD)-curve met behulp van VMAF metrische gegevens voor hoge complexiteit bron**
+**Afbeelding 2: een bocht-curve (distorsie) met behulp van VMAF-metrische gegevens voor een hoge complexiteits bron**
 
-De vooraf gedefinieerde instellingen op dit moment is afgestemd op hoge complexiteit, van hoge kwaliteit bronvideo (films, tv-programma's). Werk wordt uitgevoerd aan te passen aan inhoud voor weinig complexiteit (bijvoorbeeld PowerPoint-presentaties), evenals slechtere kwaliteit video's. Deze definitie gebruikt ook de dezelfde set oplossingen als voorinstelling voor adaptief streamen. Microsoft is bezig met methoden voor het selecteren van de minimale set oplossingen op basis van de inhoud. Als volgt worden resultaten voor een andere categorie van de bron van de inhoud, waarbij het coderingsprogramma kunnen bepalen is dat de invoer van slechte kwaliteit (veel compressie artefacten vanwege de lage bitrate) is. Houd er rekening mee dat met de experimentele vooraf ingesteld, de encoder besloten voor het produceren van slechts één uitvoer laag – met een laag genoeg bitsnelheid zodat de meeste clients zou kunnen afspelen van de gegevensstroom zonder ophoudt.
+De voor instelling is momenteel afgesteld voor hoge complexiteit, bron Video's van hoge kwaliteit (films, TV-Program ma's). Het werk wordt uitgevoerd om aan te passen aan inhoud met weinig complexiteit (bijvoorbeeld Power Point-presentaties), en Video's met een slechte kwaliteit. Deze vooraf ingestelde gebruikt ook dezelfde set resoluties als de vooraf ingestelde voor instelling van adaptief streamen. Micro soft werkt aan methoden om de minimale set resoluties te selecteren op basis van de inhoud. Dit zijn de resultaten voor een andere categorie bron inhoud, waarbij het coderings programma kan bepalen dat de invoer van slechte kwaliteit was (veel compressie artefacten vanwege de lage bitrate). Houd er rekening mee dat met de voor instelling voor experimenteren het coderings programma heeft besloten om slechts één uitvoer laag te maken: met een lage bitrate, zodat de meeste clients de stroom kunnen afspelen zonder te hoeven aflopen.
 
-![Extern bureaublad-curve met behulp van PSNR](media/cae-experimental/msrv3.png)
+![RD-curve met PSNR](media/cae-experimental/msrv3.png)
 
-**Afbeelding 3: Extern bureaublad-curve met behulp van PSNR voor lage kwaliteit invoer (bij 1080p)**
+**Afbeelding 3: RD-curve met PSNR voor invoer van lage kwaliteit (in 1080p)**
 
-![Extern bureaublad-curve met behulp van VMAF](media/cae-experimental/msrv4.png)
+![RD-curve met VMAF](media/cae-experimental/msrv4.png)
 
-**Afbeelding 4: Extern bureaublad-curve met behulp van VMAF voor lage kwaliteit invoer (bij 1080p)**
+**Afbeelding 4: RD-curve met VMAF voor invoer van lage kwaliteit (in 1080p)**
 
-## <a name="use-the-experimental-preset"></a>De experimentele voorinstelling gebruiken
+## <a name="use-the-experimental-preset"></a>De voor instelling experimenteel gebruiken
 
-U kunt de transformaties die gebruikmaken van deze definitie als volgt maken. Als u met behulp van een zelfstudie [zoals dit](stream-files-tutorial-with-api.md), kunt u de code als volgt bijwerken:
+U kunt als volgt trans formaties maken die gebruikmaken van deze voor instelling. [Als u een zelf studie](stream-files-tutorial-with-api.md)wilt gebruiken, kunt u de code als volgt bijwerken:
 
 ```csharp
 TransformOutput[] output = new TransformOutput[]
@@ -70,8 +70,8 @@ TransformOutput[] output = new TransformOutput[]
 ```
 
 > [!NOTE]
-> Het voorvoegsel 'experimentele' wordt hier gebruikt om aan te geven dat de onderliggende algoritmen zijn nog in ontwikkeling. Daar kunt en worden wijzigingen gedurende een bepaalde periode de logica die wordt gebruikt voor het genereren van bitrate ladders, met het doel van een algoritme die is robuust en aangepast aan een groot aantal invoer voorwaarden geconvergeerd. Coderingstaken met behulp van deze vooraf ingestelde wordt nog steeds worden gefactureerd op basis van uitvoerminuten, en de uitvoerasset kan worden geleverd vanuit onze streaming-eindpunten in protocollen zoals DASH- en HLS.
+> Het voor voegsel "experimenteel" wordt hier gebruikt om te Signa leren dat de onderliggende algoritmen nog steeds in ontwikkeling zijn. Er kunnen wijzigingen in de loop van de tijd worden aangebracht aan de logica die wordt gebruikt voor het genereren van bitsnelheid ladders, met het doel van het convergeren van een algoritme dat robuust is, en wordt aangepast aan een groot aantal invoer voorwaarden. Voor het coderen van taken die gebruikmaken van deze voor instelling worden nog steeds kosten in rekening gebracht op basis van uitvoer minuten en het uitvoer activum kan worden geleverd vanuit onze streaming-eind punten in protocollen zoals streepje en HLS.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu dat u hebt geleerd over deze nieuwe optie voor het optimaliseren van uw video's, nodigen we u om het te proberen. Stuur ons feedback via de koppelingen aan het einde van dit artikel of betrekken ons meer rechtstreeks op <amsved@microsoft.com>.
+Nu u hebt geleerd over deze nieuwe optie voor het optimaliseren van uw Video's, nodigen we u uit om het uit te proberen. U kunt ons feedback sturen via de koppelingen aan het einde van dit artikel of ons meer rechtstreeks op <amsved@microsoft.com>.

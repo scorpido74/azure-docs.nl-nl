@@ -1,22 +1,23 @@
 ---
-title: Door de klant beheerde sleutels configureren met Azure Key Vault met behulp van Azure CLI-Azure Storage
+title: Azure CLI gebruiken voor het configureren van door de klant beheerde sleutels
+titleSuffix: Azure Storage
 description: Meer informatie over het gebruik van Azure CLI voor het configureren van door de klant beheerde sleutels met Azure Key Vault voor Azure Storage versleuteling. Door de klant beheerde sleutels bieden u de mogelijkheid om toegangs beheer te maken, te draaien, uit te scha kelen en in te trekken.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/03/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: fd3b7767bad104f4074b2460ecba3fe89d5a23e1
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 9b9ec315954f5916339bb006cb020acc28886839
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806623"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895328"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-by-using-azure-cli"></a>Door de klant beheerde sleutels configureren voor Azure Storage met behulp van Azure CLI
+# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Door de klant beheerde sleutels configureren met Azure Key Vault met behulp van Azure CLI
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 

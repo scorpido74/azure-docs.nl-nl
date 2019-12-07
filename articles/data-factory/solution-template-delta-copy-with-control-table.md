@@ -1,5 +1,5 @@
 ---
-title: Delta kopie van een Data Base met behulp van een controle tabel met Azure Data Factory
+title: Delta kopie van een Data Base met behulp van een controle tabel
 description: Leer hoe u een oplossings sjabloon kunt gebruiken om nieuwe of bijgewerkte rijen incrementeel te kopiëren vanuit een Data Base met Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/24/2018
-ms.openlocfilehash: c9ab1d005cf71dbe03546ce5b6014f616a872f8d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 22723033b59fafc0b9dfd1ae4fc08e5f6e9145ed
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684204"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896220"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Delta kopie van een Data Base met een controle tabel
 
@@ -36,19 +36,19 @@ Deze sjabloon haalt eerst de oude watermerk waarde op en vergelijkt deze met de 
 De sjabloon bevat vier activiteiten:
 - Met **lookup** wordt de oude waarde met een bovengrens opgehaald, die wordt opgeslagen in een externe beheer tabel.
 - Met een andere **opzoek** activiteit wordt de huidige waarde van het hoogste water merk opgehaald uit de bron database.
-- **Copy** kopieert alleen wijzigingen van de bron database naar het doel archief. De query waarmee de wijzigingen in de bron database worden geïdentificeerd, is vergelijkbaar met ' SELECT * FROM Data_Source_Table WHERE TIMESTAMP_Column > ' last High-watermerk ' en TIMESTAMP_Column < = "Current High-watermerk" '.
+- **Copy** kopieert alleen wijzigingen van de bron database naar het doel archief. De query waarmee de wijzigingen in de bron database worden geïdentificeerd, is vergelijkbaar met ' SELECT * FROM Data_Source_Table WHERE TIMESTAMP_Column > ' laatste bovengrens ' en TIMESTAMP_Column < = ' huidige bovengrens ' '.
 - **SqlServerStoredProcedure** schrijft de huidige waarde met hoge water merk naar een externe controle tabel voor de volgende keer dat de Delta kopie wordt gekopieerd.
 
 De sjabloon definieert vijf para meters:
 - *Data_Source_Table_Name* is de tabel in de bron database waaruit u gegevens wilt laden.
 - *Data_Source_WaterMarkColumn* is de naam van de kolom in de bron tabel die wordt gebruikt om nieuwe of bijgewerkte rijen te identificeren. Het type van deze kolom is doorgaans *DateTime*, *int*of soortgelijk.
 - *Data_Destination_Folder_Path* of *Data_Destination_Table_Name* is de plaats waar de gegevens naar worden gekopieerd in uw doel archief.
-- *Control_Table_Table_Name* is de tabel voor externe controle waarin de waarde met een hoog water merk wordt opgeslagen.
-- *Control_Table_Column_Name* is de kolom in de tabel voor externe controle waarin de waarde met een hoog water merk wordt opgeslagen.
+- *Control_Table_Table_Name* is de tabel voor externe controle waarin de waarde met een hoog watermerk niveau wordt opgeslagen.
+- *Control_Table_Column_Name* is de kolom in de tabel voor externe controle waarin de waarde met een hoog watermerk niveau wordt opgeslagen.
 
 ## <a name="how-to-use-this-solution-template"></a>Deze oplossings sjabloon gebruiken
 
-1. Verken de bron tabel die u wilt laden en definieer de kolom met het hoogste water merk die kan worden gebruikt om nieuwe of bijgewerkte rijen te identificeren. Het type van deze kolom kan *DateTime*, *int*of soortgelijk zijn. De waarde van deze kolom neemt toe wanneer er nieuwe rijen worden toegevoegd. Vanuit de volgende voorbeeld bron tabel (data_source_table), kunnen we de kolom *LastModifytime* gebruiken als de kolom met hoge water merken.
+1. Verken de bron tabel die u wilt laden en definieer de kolom met het hoogste water merk die kan worden gebruikt om nieuwe of bijgewerkte rijen te identificeren. Het type van deze kolom kan *DateTime*, *int*of soortgelijk zijn. De waarde van deze kolom neemt toe wanneer er nieuwe rijen worden toegevoegd. In het volgende voor beeld van een bron tabel (data_source_table), kunnen we de kolom *LastModifytime* gebruiken als de kolom met hoge water merken.
 
     ```sql
             PersonID    Name    LastModifytime
@@ -100,7 +100,7 @@ De sjabloon definieert vijf para meters:
 
     ![Een nieuwe verbinding maken met het gegevens archief van de controle tabel](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 
-7. Selecteer **deze sjabloon gebruiken**.
+7. Selecteer **Deze sjabloon gebruiken**.
 
      ![Deze sjabloon gebruiken](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable7.png)
     

@@ -2,13 +2,13 @@
 title: Label resources voor logische organisatie
 description: Laat zien hoe u Tags toepast om Azure-resources te organiseren voor facturering en beheer.
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: c0a34204b5eb7080c6444e69def9d82d0193783b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 12/05/2019
+ms.openlocfilehash: a0ba5ba89b966de4aa1d1394f7d90c99f8352115
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850598"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893022"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Tags gebruiken om uw Azure-resources te organiseren
 
@@ -62,34 +62,34 @@ Dept                           IT
 Environment                    Test
 ```
 
-Gebruik het volgende om de bestaande tags te bekijken van een *resource met een opgegeven bron-id*:
-
-```azurepowershell-interactive
-(Get-AzResource -ResourceId /subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>).Tags
-```
-
-Of gebruik het volgende om de bestaande tags te bekijken van een *resource met een opgegeven naam en resourcegroep*:
+Als u de bestaande tags voor een *resource met een opgegeven naam en resource groep*wilt weer geven, gebruikt u:
 
 ```azurepowershell-interactive
 (Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
 ```
 
-Gebruik het volgende om de *resourcegroepen met een specifieke tag* op te halen:
+Als u de resource-ID voor een resource hebt, kunt u deze resource-ID door geven om de tags op te halen.
 
 ```azurepowershell-interactive
-(Get-AzResourceGroup -Tag @{ Dept="Finance" }).ResourceGroupName
+(Get-AzResource -ResourceId /subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>).Tags
 ```
 
-Gebruik het volgende om de *resources met een specifieke tag* op te halen:
+Als u *resource groepen wilt ophalen met een specifieke label naam en-waarde*, gebruikt u:
 
 ```azurepowershell-interactive
-(Get-AzResource -Tag @{ Dept="Finance"}).Name
+(Get-AzResourceGroup -Tag @{ "Dept"="Finance" }).ResourceGroupName
+```
+
+Als u *resources wilt ophalen met een specifieke label naam en-waarde*, gebruikt u:
+
+```azurepowershell-interactive
+(Get-AzResource -Tag @{ "Dept"="Finance"}).Name
 ```
 
 Als u *resources met een specifieke label naam*wilt ophalen, gebruikt u:
 
 ```azurepowershell-interactive
-(Get-AzResource -TagName Dept).Name
+(Get-AzResource -TagName "Dept").Name
 ```
 
 Wanneer u tags op een resource of resourcegroep toepast, overschrijft u de bestaande tags van die resource of resourcegroep. Als u een resource of resourcegroep hebt met bestaande tags, gaat u anders te werk dan wanneer dat niet het geval is.
@@ -97,7 +97,7 @@ Wanneer u tags op een resource of resourcegroep toepast, overschrijft u de besta
 Gebruik het volgende om tags toe te voegen aan een *resourcegroep zonder bestaande tags*:
 
 ```azurepowershell-interactive
-Set-AzResourceGroup -Name examplegroup -Tag @{ Dept="IT"; Environment="Test" }
+Set-AzResourceGroup -Name examplegroup -Tag @{ "Dept"="IT"; "Environment"="Test" }
 ```
 
 Als u tags wilt toevoegen aan een *resourcegroep met bestaande tags*, haalt u de bestaande tags op, voegt u de nieuwe tag toe en past u de tags opnieuw toe:
@@ -111,32 +111,36 @@ Set-AzResourceGroup -Tag $tags -Name examplegroup
 Gebruik het volgende om tags toe te voegen aan een *resource zonder bestaande tags*:
 
 ```azurepowershell-interactive
-$r = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
-Set-AzResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceId $r.ResourceId -Force
+$resource = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
+Set-AzResource -Tag @{ "Dept"="IT"; "Environment"="Test" } -ResourceId $resource.ResourceId -Force
+```
+
+Een resource groep kan meer dan één resource met dezelfde naam bevatten. In dat geval kunt u elke resource instellen met de volgende opdrachten:
+
+```azurepowershell-interactive
+$resource = Get-AzResource -ResourceName sqlDatabase1 -ResourceGroupName examplegroup
+$resource | ForEach-Object { Set-AzResource -Tag @{ "Dept"="IT"; "Environment"="Test" } -ResourceId $_.ResourceId -Force }
 ```
 
 Gebruik het volgende om tags toe te voegen aan een *resource met bestaande tags*:
 
 ```azurepowershell-interactive
-$r = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
-$r.Tags.Add("Status", "Approved")
-Set-AzResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
+$resource = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
+$resource.Tags.Add("Status", "Approved")
+Set-AzResource -Tag $resource.Tags -ResourceId $resource.ResourceId -Force
 ```
 
 Gebruik het volgende script om alle tags van een resource groep toe te passen op de bijbehorende resources en *geen bestaande tags op de resources te blijven*gebruiken:
 
 ```azurepowershell-interactive
-$groups = Get-AzResourceGroup
-foreach ($g in $groups)
-{
-    Get-AzResource -ResourceGroupName $g.ResourceGroupName | ForEach-Object {Set-AzResource -ResourceId $_.ResourceId -Tag $g.Tags -Force }
-}
+$group = Get-AzResourceGroup -Name examplegroup
+Get-AzResource -ResourceGroupName $group.ResourceGroupName | ForEach-Object {Set-AzResource -ResourceId $_.ResourceId -Tag $group.Tags -Force }
 ```
 
 Gebruik het volgende script als u alle tags van een resource groep wilt Toep assen op de bijbehorende resources en *bestaande tags wilt blijven gebruiken voor resources die geen duplicaten zijn*:
 
 ```azurepowershell-interactive
-$group = Get-AzResourceGroup "examplegroup"
+$group = Get-AzResourceGroup -Name examplegroup
 if ($null -ne $group.Tags) {
     $resources = Get-AzResource -ResourceGroupName $group.ResourceGroupName
     foreach ($r in $resources)

@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 6616bd8172e9bc049a6e0e2c687390197de2f391
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/05/2019
+ms.openlocfilehash: 707f4eca440c0e8461420ff0bbc5e67f8e5ad69d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767310"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888509"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>De para meters voor de server configuratie aanpassen met behulp van Azure CLI
 U kunt configuratie parameters voor een Azure Database for MariaDB server weer geven, tonen en bijwerken met behulp van Azure CLI, het opdracht regel programma van Azure. Een subset van de engine configuraties wordt weer gegeven op server niveau en kan worden gewijzigd.
@@ -55,9 +55,9 @@ az mariadb server configuration set --name slow_query_log --resource-group myres
 
 Met deze code wordt de **langzame\_query opnieuw ingesteld\_logboek** configuratie naar de standaard **waarde.** 
 
-## <a name="working-with-the-time-zone-parameter"></a>Werken met de para meter tijd zone
+## <a name="working-with-the-time-zone-parameter"></a>Werken met de parameter tijdzone
 
-### <a name="populating-the-time-zone-tables"></a>De tijd zone tabellen worden gevuld
+### <a name="populating-the-time-zone-tables"></a>Invullen van de tijdzone-tabellen
 
 De tijd zone tabellen op uw server kunnen worden gevuld door de `az_load_timezone` opgeslagen procedure aan te roepen vanuit een hulp programma zoals de MariaDB-opdracht regel of MariaDB Workbench.
 
@@ -68,13 +68,16 @@ De tijd zone tabellen op uw server kunnen worden gevuld door de `az_load_timezon
 CALL mysql.az_load_timezone();
 ```
 
-Voer de volgende opdracht uit om de beschik bare tijd zone waarden weer te geven:
+> [!IMPORTANT]
+> U moet de server opnieuw opstarten om te controleren of de tabellen van de tijd zone juist zijn ingevuld. Gebruik de [Azure Portal](howto-restart-server-portal.md) of [cli](howto-restart-server-cli.md)om de server opnieuw op te starten.
+
+Als u wilt weergeven van waarden van de beschikbare tijd zone, moet u de volgende opdracht uitvoeren:
 
 ```sql
 SELECT name FROM mysql.time_zone_name;
 ```
 
-### <a name="setting-the-global-level-time-zone"></a>De tijd zone van het globale niveau instellen
+### <a name="setting-the-global-level-time-zone"></a>De globale niveau tijdzone instellen
 
 De tijd zone globaal niveau kan worden ingesteld met behulp van de opdracht [AZ mariadb server configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) .
 
@@ -84,9 +87,9 @@ Met de volgende opdracht wordt de tijd van de **\_zone** server configuratie par
 az mariadb server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"
 ```
 
-### <a name="setting-the-session-level-time-zone"></a>De tijd zone op sessie niveau instellen
+### <a name="setting-the-session-level-time-zone"></a>De sessie niveau tijdzone instellen
 
-De tijd zone op sessie niveau kan worden ingesteld door de `SET time_zone` opdracht uit te voeren vanuit een hulp programma zoals de MariaDB-opdracht regel of MariaDB Workbench. In het volgende voor beeld wordt de tijd zone ingesteld op de **Amerikaanse/Pacific-** tijd zone.  
+De tijd zone op sessie niveau kan worden ingesteld door de `SET time_zone` opdracht uit te voeren vanuit een hulp programma zoals de MariaDB-opdracht regel of MariaDB Workbench. In het volgende voorbeeld wordt de tijdzone ingesteld op de **VS / Stille Oceaan** tijdzone.  
 
 ```sql
 SET time_zone = 'US/Pacific';

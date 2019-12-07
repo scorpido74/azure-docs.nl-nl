@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 4fe405d4027535eb6b0211f7a3f997194b8819aa
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 14fc91feb16fb45eee1fe2e757a717e04ef07f99
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580751"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894724"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Wat is een Azure Machine Learning-werk ruimte?
 
@@ -28,7 +28,7 @@ Prijzen en functies die beschikbaar zijn, zijn afhankelijk van het feit of [Basi
 
 Een taxonomie van de werk ruimte wordt geïllustreerd in het volgende diagram:
 
-[taxonomie van ![werk ruimte](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+[![Taxonomie van werkruimte](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 In het diagram worden de volgende onderdelen van een werk ruimte weer gegeven:
 
@@ -73,8 +73,8 @@ U kunt ook de volgende beheer taken voor werk ruimten uitvoeren:
 |---------------------------|---------|---------|------------|------------|
 | Een werkruimte maken        | **&check;**     | | **&check;** | **&check;** |
 | Toegang tot de werk ruimte beheren    | **&check;**   || |  **&check;**    |
-| Bijwerken naar Enter prise Edition    | **&check;** |  | |     |
-| Reken resources maken en beheren    |   | **&check;** | **&check;** |  **&check;**   |
+| Bijwerken naar Enter prise Edition    | **&check;** | **&check;**  | |     |
+| Reken resources maken en beheren    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
 | Een VM voor een notebook maken |   | **&check;** | |     |
 
 
@@ -95,7 +95,7 @@ U kunt [uw werk ruimte bijwerken met behulp van de Basic-naar-Enter prise-editie
 
 ## <a name="resources"></a>Gekoppelde resources
 
-Wanneer u een nieuwe werk ruimte maakt, worden er automatisch verschillende Azure-resources gemaakt die worden gebruikt door de werk ruimte:
+Wanneer u een nieuwe werkruimte maakt, wordt automatisch verschillende Azure-resources die worden gebruikt door de werkruimte gemaakt:
 
 + [Azure container Registry](https://azure.microsoft.com/services/container-registry/): registreert docker-containers die u tijdens de training gebruikt en wanneer u een model implementeert. Om de kosten te minimaliseren, wordt ACR **Lazy geladen** totdat implementatie installatie kopieën zijn gemaakt.
 + [Azure Storage account](https://azure.microsoft.com/services/storage/): wordt gebruikt als de standaard gegevens opslag voor de werk ruimte.  Jupyter-notebooks die worden gebruikt met uw Azure Machine Learning notebook-VM, worden hier ook opgeslagen.

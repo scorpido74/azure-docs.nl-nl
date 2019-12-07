@@ -1,7 +1,7 @@
 ---
 title: Video Indexer concepten
 titleSuffix: Azure Media Services
-description: In dit onderwerp worden enkele concepten van de Video Indexer-service beschreven.
+description: In dit artikel worden enkele concepten van de Azure Media Services Video Indexer-service beschreven.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: e3795b699f5518efdbef117fb24d118041ed3e78
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 73dad1db4f44134f871c9f3d6e7edcdd3bd1e2ea
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839578"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900679"
 ---
 # <a name="video-indexer-concepts"></a>Video Indexer concepten
  

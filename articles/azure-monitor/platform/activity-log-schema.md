@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: d196cf4024513d891182f3b916bd8412a2f81d14
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 73f6de80348b7d933e45a8145f6bdb8fe22b5954
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305489"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893600"
 ---
 # <a name="azure-activity-log-event-schema"></a>Gebeurtenis schema voor Azure-activiteiten logboek
-Het **Azure-activiteiten logboek** is een logboek dat inzicht biedt in alle gebeurtenissen op abonnements niveau die zich in azure hebben voorgedaan. In dit artikel wordt het gebeurtenis schema per gegevens categorie beschreven. Het schema van de gegevens verschilt, afhankelijk van of u de gegevens in de portal, Power shell, CLI of rechtstreeks via de REST API leest en [de gegevens naar opslag of event hubs met behulp van een logboek profiel](activity-log-export.md). In de onderstaande voor beelden wordt het schema weer gegeven dat beschikbaar is via de portal, Power shell, CLI en REST API. Aan het einde van het artikel is een toewijzing van die eigenschappen aan het [Azure Diagnostics logs-schema](diagnostic-logs-schema.md) opgenomen.
+Het **Azure-activiteiten logboek** is een logboek dat inzicht biedt in alle gebeurtenissen op abonnements niveau die zich in azure hebben voorgedaan. In dit artikel wordt het gebeurtenis schema per gegevens categorie beschreven. Het schema van de gegevens verschilt, afhankelijk van of u de gegevens in de portal, Power shell, CLI of rechtstreeks via de REST API leest en [de gegevens naar opslag of event hubs met behulp van een logboek profiel](activity-log-export.md). In de onderstaande voor beelden wordt het schema weer gegeven dat beschikbaar is via de portal, Power shell, CLI en REST API. Aan het einde van het artikel wordt een toewijzing van deze eigenschappen aan het [Azure logs schema](diagnostic-logs-schema.md) gegeven.
 
 ## <a name="administrative"></a>Administratief
 Deze categorie bevat de record van alle bewerkingen voor maken, bijwerken, verwijderen en acties die zijn uitgevoerd via Resource Manager. Voor beelden van de typen gebeurtenissen die in deze categorie worden weer gegeven zijn onder andere "virtuele machine maken" en "netwerk beveiligings groep verwijderen" elke actie die door een gebruiker of toepassing wordt uitgevoerd met behulp van Resource Manager is gemodelleerd als een bewerking voor een bepaald bron type. Als het bewerkings type schrijven, verwijderen of actie is, worden de records van zowel het begin als het slagen of mislukken van die bewerking vastgelegd in de beheer categorie. De beheer categorie bevat ook eventuele wijzigingen in op rollen gebaseerd toegangs beheer in een abonnement.
@@ -110,7 +110,7 @@ Deze categorie bevat de record van alle bewerkingen voor maken, bijwerken, verwi
 ```
 
 ### <a name="property-descriptions"></a>Beschrijvingen van eigenschappen
-| Element naam | Beschrijving |
+| Naam van element | Beschrijving |
 | --- | --- |
 | authorization |BLOB van RBAC-eigenschappen van de gebeurtenis. Bevat meestal de eigenschappen ' Action ', ' Role ' en ' scope '. |
 | aanroeper |Het e-mail adres van de gebruiker die de bewerking, UPN-claim of SPN-claim heeft uitgevoerd op basis van Beschik baarheid. |
@@ -122,7 +122,7 @@ Deze categorie bevat de record van alle bewerkingen voor maken, bijwerken, verwi
 | eventName | Beschrijvende naam van de beheer gebeurtenis. |
 | category | Altijd ' beheer ' |
 | httpRequest |BLOB waarmee de HTTP-aanvraag wordt beschreven. Bevat meestal de ' clientRequestId ', ' clientIpAddress ' en ' methode ' (HTTP-methode. Bijvoorbeeld PUT). |
-| niveau |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing" en "informatief" |
+| level |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing" en "informatief" |
 | resourceGroupName |De naam van de resource groep voor de betrokken resource. |
 | resourceProviderName |De naam van de resource provider voor de betrokken resource |
 | resourceType | Het type resource dat is beïnvloed door een beheer gebeurtenis. |
@@ -136,7 +136,7 @@ Deze categorie bevat de record van alle bewerkingen voor maken, bijwerken, verwi
 | submissionTimestamp |Tijds tempel wanneer de gebeurtenis beschikbaar werd voor het uitvoeren van query's. |
 | subscriptionId |Azure-abonnements-ID. |
 
-## <a name="service-health"></a>Status van service
+## <a name="service-health"></a>Servicestatus
 Deze categorie bevat de record van alle service status incidenten die zich in azure hebben voorgedaan. Een voor beeld van het gebeurtenis type dat in deze categorie wordt weer geven, is ' SQL Azure in VS-Oost ondervindt downtime. ' Service Health-gebeurtenissen zijn beschikbaar in vijf rassen: actie vereist, assistentie herstel, incident, onderhoud, informatie of beveiliging, en alleen als u een resource in het abonnement hebt die van invloed is op de gebeurtenis.
 
 ### <a name="sample-event"></a>Voorbeeld gebeurtenis
@@ -196,7 +196,7 @@ Deze categorie bevat de record van alle service status incidenten die zich in az
 ```
 Raadpleeg het artikel over [service status meldingen](./../../azure-monitor/platform/service-notifications.md) voor documentatie over de waarden in de eigenschappen.
 
-## <a name="resource-health"></a>Status van resources
+## <a name="resource-health"></a>Bronnenstatus
 Deze categorie bevat de record van de resource status gebeurtenissen die zijn opgetreden in uw Azure-resources. Een voor beeld van het type gebeurtenis dat in deze categorie wordt weer geven, is de status van de virtuele machine is gewijzigd in niet beschikbaar. Resource Health-gebeurtenissen kunnen een van de vier statussen vertegenwoordigen: beschikbaar, niet beschikbaar, gedegradeerd en onbekend. Daarnaast kunnen resource status gebeurtenissen worden gecategoriseerd als platform gestart of door de gebruiker gestart.
 
 ### <a name="sample-event"></a>Voorbeeld gebeurtenis
@@ -257,7 +257,7 @@ Deze categorie bevat de record van de resource status gebeurtenissen die zijn op
 ```
 
 ### <a name="property-descriptions"></a>Beschrijvingen van eigenschappen
-| Element naam | Beschrijving |
+| Naam van element | Beschrijving |
 | --- | --- |
 | detailhandelkanalen | Altijd ' admin, bewerking ' |
 | correlationId | Een GUID in de teken reeks indeling. |
@@ -265,7 +265,7 @@ Deze categorie bevat de record van de resource status gebeurtenissen die zijn op
 | eventDataId |De unieke id van de waarschuwings gebeurtenis. |
 | category | Altijd "ResourceHealth" |
 | eventTimestamp |Tijds tempel wanneer de gebeurtenis is gegenereerd door de Azure-service die de aanvraag verwerkt die overeenkomt met de gebeurtenis. |
-| niveau |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing", "informatief" en "uitgebreid" |
+| level |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing", "informatief" en "uitgebreid" |
 | operationId |Een GUID die wordt gedeeld tussen de gebeurtenissen die overeenkomen met één bewerking. |
 | operationName |Naam van de bewerking. |
 | resourceGroupName |De naam van de resource groep die de resource bevat. |
@@ -350,7 +350,7 @@ Deze categorie bevat de registratie van alle activeringen van Azure-waarschuwing
 ```
 
 ### <a name="property-descriptions"></a>Beschrijvingen van eigenschappen
-| Element naam | Beschrijving |
+| Naam van element | Beschrijving |
 | --- | --- |
 | aanroeper | Always Microsoft.Insights/alertRules |
 | detailhandelkanalen | Altijd ' admin, bewerking ' |
@@ -359,7 +359,7 @@ Deze categorie bevat de registratie van alle activeringen van Azure-waarschuwing
 | description |Statische tekst beschrijving van de waarschuwings gebeurtenis. |
 | eventDataId |De unieke id van de waarschuwings gebeurtenis. |
 | category | Altijd "waarschuwing" |
-| niveau |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing" en "informatief" |
+| level |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing" en "informatief" |
 | resourceGroupName |De naam van de resource groep voor de betrokken resource als het een metrische waarschuwing is. Voor andere waarschuwings typen is dit de naam van de resource groep die de waarschuwing zelf bevat. |
 | resourceProviderName |De naam van de resource provider voor de betrokken resource als het een metrische waarschuwing is. Voor andere waarschuwings typen is dit de naam van de resource provider voor de waarschuwing zelf. |
 | resourceId | De naam van de resource-ID voor de betrokken resource als het een metrische waarschuwing is. Voor andere waarschuwings typen is het de resource-ID van de waarschuwings resource zelf. |
@@ -376,7 +376,7 @@ Deze categorie bevat de registratie van alle activeringen van Azure-waarschuwing
 Het veld eigenschappen bevat verschillende waarden, afhankelijk van de bron van de waarschuwings gebeurtenis. Twee veelvoorkomende waarschuwings gebeurtenis providers zijn activiteiten logboek waarschuwingen en metrische waarschuwingen.
 
 #### <a name="properties-for-activity-log-alerts"></a>Eigenschappen voor waarschuwingen voor activiteiten logboeken
-| Element naam | Beschrijving |
+| Naam van element | Beschrijving |
 | --- | --- |
 | properties.subscriptionId | De abonnements-ID van de gebeurtenis in het activiteiten logboek, waardoor de waarschuwings regel voor het activiteiten logboek wordt geactiveerd. |
 | properties.eventDataId | De gebeurtenis gegevens-ID van de gebeurtenis in het activiteiten logboek, waardoor de waarschuwings regel voor het activiteiten logboek is geactiveerd. |
@@ -387,7 +387,7 @@ Het veld eigenschappen bevat verschillende waarden, afhankelijk van de bron van 
 | Eigenschappen. status | De status van de gebeurtenis in het activiteiten logboek die de waarschuwings regel voor het activiteiten logboek heeft veroorzaakt dat deze wordt geactiveerd.|
 
 #### <a name="properties-for-metric-alerts"></a>Eigenschappen voor metrische waarschuwingen
-| Element naam | Beschrijving |
+| Naam van element | Beschrijving |
 | --- | --- |
 | eigenschappen. RuleUri | Resource-ID van de metrische waarschuwings regel zelf. |
 | properties.RuleName | De naam van de waarschuwings regel voor metrische gegevens. |
@@ -460,7 +460,7 @@ Deze categorie bevat een overzicht van alle gebeurtenissen die betrekking hebben
 ```
 
 ### <a name="property-descriptions"></a>Beschrijvingen van eigenschappen
-| Element naam | Beschrijving |
+| Naam van element | Beschrijving |
 | --- | --- |
 | aanroeper | Always Microsoft.Insights/autoscaleSettings |
 | detailhandelkanalen | Altijd ' admin, bewerking ' |
@@ -468,7 +468,7 @@ Deze categorie bevat een overzicht van alle gebeurtenissen die betrekking hebben
 | correlationId | Een GUID in de teken reeks indeling. |
 | description |Statische tekst beschrijving van de gebeurtenis automatisch schalen. |
 | eventDataId |De unieke id van de gebeurtenis voor automatisch schalen. |
-| niveau |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing" en "informatief" |
+| level |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing" en "informatief" |
 | resourceGroupName |De naam van de resource groep voor de instelling voor automatisch schalen. |
 | resourceProviderName |De naam van de resource provider voor de instelling voor automatisch schalen. |
 | resourceId |Resource-ID van de instelling voor automatisch schalen. |
@@ -550,7 +550,7 @@ Deze categorie bevat alle waarschuwingen die door Azure Security Center worden g
 ```
 
 ### <a name="property-descriptions"></a>Beschrijvingen van eigenschappen
-| Element naam | Beschrijving |
+| Naam van element | Beschrijving |
 | --- | --- |
 | detailhandelkanalen | Altijd ' bewerking ' |
 | correlationId | Een GUID in de teken reeks indeling. |
@@ -559,7 +559,7 @@ Deze categorie bevat alle waarschuwingen die door Azure Security Center worden g
 | eventName |Beschrijvende naam van de beveiligings gebeurtenis. |
 | category | Altijd ' Beveiliging ' |
 | id |De unieke resource-id van de beveiligings gebeurtenis. |
-| niveau |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing" of "informatief" |
+| level |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing" of "informatief" |
 | resourceGroupName |De naam van de resource groep voor de resource. |
 | resourceProviderName |De naam van de resource provider voor Azure Security Center. Altijd ' micro soft. Security '. |
 | resourceType |Het type resource dat de beveiligings gebeurtenis heeft gegenereerd, zoals ' micro soft. Security/locations/Alerts ' |
@@ -631,7 +631,7 @@ Deze categorie bevat de record met nieuwe aanbevelingen die voor uw services wor
 
 ```
 ### <a name="property-descriptions"></a>Beschrijvingen van eigenschappen
-| Element naam | Beschrijving |
+| Naam van element | Beschrijving |
 | --- | --- |
 | detailhandelkanalen | Altijd ' bewerking ' |
 | correlationId | Een GUID in de teken reeks indeling. |
@@ -639,7 +639,7 @@ Deze categorie bevat de record met nieuwe aanbevelingen die voor uw services wor
 | eventDataId | De unieke id van de aanbevelings gebeurtenis. |
 | category | Altijd ' aanbeveling ' |
 | id |De unieke resource-id van de aanbevelings gebeurtenis. |
-| niveau |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing" of "informatief" |
+| level |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing" of "informatief" |
 | operationName |Naam van de bewerking.  Altijd ' micro soft. Advisor/generateRecommendations/Action '|
 | resourceGroupName |De naam van de resource groep voor de resource. |
 | resourceProviderName |De naam van de resource provider voor de resource waarop deze aanbeveling van toepassing is, zoals ' micro soft. COMPUTe ' |
@@ -741,7 +741,7 @@ Deze categorie bevat records van alle bewerkingen voor effect acties die worden 
 
 ### <a name="policy-event-property-descriptions"></a>Beschrijvingen van eigenschap beleids gebeurtenis
 
-| Element naam | Beschrijving |
+| Naam van element | Beschrijving |
 | --- | --- |
 | authorization | Matrix van RBAC-eigenschappen van de gebeurtenis. Voor nieuwe resources zijn dit de actie en het bereik van de aanvraag die de evaluatie heeft geactiveerd. Voor bestaande resources is de actie ' micro soft. resources/checkPolicyCompliance/lezen '. |
 | aanroeper | Voor nieuwe resources, de identiteit die een implementatie heeft gestart. Voor bestaande resources, de GUID van de Microsoft Azure Policy Insights RP. |
@@ -754,7 +754,7 @@ Deze categorie bevat records van alle bewerkingen voor effect acties die worden 
 | category | Declareert de gebeurtenis in het activiteiten logboek als onderdeel van het beleid. |
 | eventTimestamp | Tijds tempel wanneer de gebeurtenis is gegenereerd door de Azure-service die de aanvraag verwerkt die overeenkomt met de gebeurtenis. |
 | id | De unieke id van de gebeurtenis voor de specifieke resource. |
-| niveau | Het niveau van de gebeurtenis. Bij controle wordt gebruikgemaakt van "waarschuwing" en weigeren wordt "fout". Een auditIfNotExists-of deployIfNotExists-fout kan "waarschuwing" of "fout" genereren, afhankelijk van de ernst. Alle andere beleids gebeurtenissen gebruiken ' informatief '. |
+| level | Het niveau van de gebeurtenis. Bij controle wordt gebruikgemaakt van "waarschuwing" en weigeren wordt "fout". Een auditIfNotExists-of deployIfNotExists-fout kan "waarschuwing" of "fout" genereren, afhankelijk van de ernst. Alle andere beleids gebeurtenissen gebruiken ' informatief '. |
 | operationId | Een GUID die wordt gedeeld tussen de gebeurtenissen die overeenkomen met één bewerking. |
 | operationName | De naam van de bewerking en is rechtstreeks gerelateerd aan het beleids effect. |
 | resourceGroupName | De naam van de resource groep voor de geëvalueerde resource. |
@@ -771,11 +771,11 @@ Deze categorie bevat records van alle bewerkingen voor effect acties die worden 
 | Eigenschappen. beleids regels | Bevat details over de beleids definitie, toewijzing, effect en para meters die door deze beleids evaluatie worden geretourneerd. |
 | relatedEvents | Dit veld is leeg voor beleids gebeurtenissen. |
 
-## <a name="mapping-to-diagnostic-logs-schema"></a>Toewijzing aan schema van Diagnostische logboeken
+## <a name="mapping-to-resource-logs-schema"></a>Toewijzing aan het resource logboek schema
 
-Wanneer u het Azure-activiteiten logboek streamt naar een opslag account of Event Hubs naam ruimte, worden de gegevens gevolgd door het [Azure Diagnostics logs-schema](./diagnostic-logs-schema.md). Hier volgt de toewijzing van eigenschappen van het bovenstaande schema aan het schema Diagnostische logboeken:
+Wanneer u het Azure-activiteiten logboek streamt naar een opslag account of Event Hubs naam ruimte, volgen de gegevens het schema van de [Azure-resource logboeken](./diagnostic-logs-schema.md). Hier volgt de toewijzing van eigenschappen van het bovenstaande schema aan het schema voor bron logboeken:
 
-| Schema-eigenschap van Diagnostische logboeken | REST API schema-eigenschap van activiteiten logboek | Opmerkingen |
+| Schema-eigenschap van bron logboeken | REST API schema-eigenschap van activiteiten logboek | Opmerkingen |
 | --- | --- | --- |
 | tijd | eventTimestamp |  |
 | resourceId | resourceId | subscriptionId, resource type, resourceGroupName zijn alle uitgestelde van de resourceId. |
@@ -784,12 +784,12 @@ Wanneer u het Azure-activiteiten logboek streamt naar een opslag account of Even
 | resultType | status. waarde | |
 | resultSignature | substatus. waarde | |
 | resultDescription | description |  |
-| durationMs | N.v.t. | Altijd 0 |
+| durationMs | N/A | Altijd 0 |
 | callerIpAddress | httpRequest.clientIpAddress |  |
 | correlationId | correlationId |  |
-| identity | Eigenschappen voor claims en autorisatie |  |
+| identiteit | Eigenschappen voor claims en autorisatie |  |
 | Niveau | Niveau |  |
-| locatie | N.v.t. | Locatie van waar de gebeurtenis is verwerkt. *Dit is niet de locatie van de resource, maar in plaats van de gebeurtenis. Deze eigenschap wordt verwijderd in een toekomstige update.* |
+| location | N/A | Locatie van waar de gebeurtenis is verwerkt. *Dit is niet de locatie van de resource, maar in plaats van de gebeurtenis. Deze eigenschap wordt verwijderd in een toekomstige update.* |
 | Eigenschappen | Eigenschappen. eventProperties |  |
 | properties.eventCategory | category | Als Properties. eventCategory niet aanwezig is, is de categorie ' beheer ' |
 | properties.eventName | eventName |  |

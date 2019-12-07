@@ -4,12 +4,12 @@ description: Symptomen, oorzaken en oplossingen voor Azure Backup fouten met bet
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: c4ee8cbeeec21c4af0cc3a7fd83844bc8c676add
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 23b10bed3b741ec76167eb5a976bf5737d20b173
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172590"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894008"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup fout oplossen: problemen met de agent of extensie
 
@@ -22,10 +22,12 @@ Dit artikel bevat probleemoplossings stappen die u kunnen helpen bij het oplosse
 **Fout code**: UserErrorGuestAgentStatusUnavailable <br>
 **Fout bericht**: de VM-agent kan niet communiceren met Azure backup<br>
 
-De Azure VM-agent is mogelijk gestopt, verouderd, in een inconsistente status of niet geïnstalleerd en voor komen dat Azure Backup Service moment opnamen kan activeren.  
+De Azure VM-agent is mogelijk gestopt, verouderd, in een inconsistente status of niet geïnstalleerd en voor komen dat Azure Backup Service moment opnamen kan activeren.
 
-- Als de VM-agent is gestopt of niet consistent is, start u **de agent opnieuw** en voert u de back-upbewerking opnieuw uit (probeer een back-up op aanvraag uit te voeren). Zie [Virtuele Windows-machines](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) of [Virtuele Linux-machines](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) voor stappen om de agent opnieuw te starten.
-- Als de VM-agent niet is geïnstalleerd of is verouderd, installeert u de VM-agent en voert u de back-upbewerking opnieuw uit. Zie [Windows vm's](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) of [Linux-vm's](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)voor stappen om de agent te installeren of bij te werken.  
+- **Open Azure Portal > VM-> instellingen > eigenschappen blade** > Controleer of de **status** van de virtuele machine wordt **uitgevoerd** en de **agent status** **gereed**is. Als de VM-agent is gestopt of een inconsistente status heeft, start u de agent opnieuw op<br>
+  - Voor Windows-Vm's voert u de volgende [stappen uit](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) om de gast agent opnieuw te starten.<br>
+  - Voor Linux-Vm's voert u deze [stappen uit](https://docs.microsoft.com/en-us/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) om de gast agent opnieuw te starten.
+
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError: kan niet communiceren met de VM-agent voor de status van de moment opname
 
@@ -41,6 +43,16 @@ Nadat u een virtuele machine voor de Azure Backup-service hebt geregistreerd en 
 **Oorzaak 3: [de status van de moment opname kan niet worden opgehaald of een moment opname kan niet worden gemaakt](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**
 
 **Oorzaak 4: [de back-upextensie kan niet worden bijgewerkt of geladen](#the-backup-extension-fails-to-update-or-load)**
+
+## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed: de virtuele machine heeft een mislukte inrichtings status
+
+**Fout code**: UserErrorVmProvisioningStateFailed<br>
+**Fout bericht**: de inrichtings status van de virtuele machine is mislukt<br>
+
+Deze fout treedt op wanneer een van de uitbrei dingen de virtuele machine inricht bij het inrichten van de status mislukt.<br>**Open Azure Portal > VM-> instellingen > extensies > uitbrei dingen status** en controleer of alle uitbrei dingen de status **geslaagd** hebben.
+
+- Als de VMSnapshot-extensie de status Mislukt heeft, klikt u met de rechter muisknop op de uitbrei ding die is mislukt en verwijdert u deze. Een ad-hoc-back-up activeren, worden de uitbrei dingen opnieuw geïnstalleerd en wordt de back-uptaak uitgevoerd.  <br>
+- Als een andere uitbrei ding een mislukte status heeft, kan deze de back-up verstoren. Zorg ervoor dat de problemen met de extensie zijn opgelost en voer de back-upbewerking opnieuw uit.  
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached-de maximale limiet voor de verzameling met herstel punten is bereikt
 
@@ -219,7 +231,7 @@ Bij het uitvoeren van deze stappen wordt de extensie opnieuw geïnstalleerd tijd
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Vergren deling van de resource groep herstel punt verwijderen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Ga naar **alle resources optie**, selecteer de resource groep voor de verzameling van herstel punten in de volgende indeling AzureBackupRG_`<Geo>`_`<number>`.
 3. Selecteer in de sectie **instellingen** de optie **vergren** delen om de vergren delingen weer te geven.
 4. Als u de vergren deling wilt verwijderen, selecteert u het weglatings teken en klikt u op **verwijderen**.
@@ -248,7 +260,7 @@ Nadat u de vergren deling hebt verwijderd, moet u een back-up op aanvraag starte
 
 Voer de volgende stappen uit om de verzameling met herstel punten hand matig te wissen, die niet is gewist vanwege de vergren deling van de resource groep:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Klik in het menu **hub** op **alle resources**en selecteer de resource groep met de volgende indeling AzureBackupRG_`<Geo>`_`<number>` waar de virtuele machine zich bevindt.
 
     ![Vergren deling verwijderen](./media/backup-azure-arm-vms-prepare/resource-group.png)

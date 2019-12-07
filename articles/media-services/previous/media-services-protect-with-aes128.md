@@ -1,6 +1,6 @@
 ---
 title: Gebruik AES-128 Dynamic Encryption en de key delivery service | Microsoft Docs
-description: Lever uw inhoud die is versleuteld met AES 128-bits versleutelings sleutels met behulp van Microsoft Azure Media Services. Media Services biedt ook de key delivery service die versleutelings sleutels levert aan geautoriseerde gebruikers. In dit onderwerp wordt beschreven hoe u dynamisch versleutelen met AES-128 en de key delivery-service gebruikt.
+description: In dit onderwerp wordt beschreven hoe u dynamisch versleutelen met AES-128 en de key delivery-service gebruikt.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 2b96d968cb1ad2ec903dbf9788e1fbae22bd2b7d
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69014975"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895839"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Gebruik AES-128 dynamische versleuteling en de key delivery service
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ Voer de volgende algemene stappen uit wanneer u uw assets versleutelt met AES do
 
 5. [Configureer het leverings beleid voor een Asset](media-services-protect-with-aes128.md#configure_asset_delivery_policy). De configuratie van het leverings beleid bevat de URL voor sleutel aanschaf en een initialisatie vector (IV). (AES-128 vereist dezelfde IV voor versleuteling en ontsleuteling.) De configuratie omvat ook het leverings Protocol (bijvoorbeeld MPEG-DASH, HLS, Smooth Streaming of alle) en het type dynamische versleuteling (bijvoorbeeld een envelop of geen dynamische versleuteling).
 
-    U kunt voor dezelfde asset een ander beleid voor elk protocol toepassen. U kunt bijvoorbeeld PlayReady-versleuteling toepassen op Smooth/DASH en een AES Envelope op HLS. Alle protocollen die niet zijn gedefinieerd in een leverings beleid, worden geblokkeerd voor het streamen van gegevens. (Een voor beeld hiervan is als u één beleid toevoegt waarmee alleen HLS als protocol worden opgegeven.) De uitzondering is als u helemaal geen leveringsbeleid voor assets hebt gedefinieerd. In dat geval is streaming voor alle protocollen toegestaan.
+    U kunt voor dezelfde asset een ander beleid voor elk protocol toepassen. U kunt bijvoorbeeld PlayReady-versleuteling toepassen op Smooth/DASH en een AES Envelope op HLS. Alle protocollen die niet zijn gedefinieerd in een leverings beleid, worden geblokkeerd voor het streamen van gegevens. (Een voor beeld hiervan is als u één beleid toevoegt waarmee alleen HLS als protocol worden opgegeven.) De uitzonde ring hierop is als u geen leverings beleid voor assets hebt gedefinieerd. In dat geval is streaming voor alle protocollen toegestaan.
 
 6. [Maak een OnDemand-Locator](media-services-protect-with-aes128.md#create_locator) om een streaming-URL op te halen.
 
@@ -141,7 +141,7 @@ U kunt de [Azure Media Services Player](https://aka.ms/azuremediaplayer) gebruik
 In de vorige stap hebt u de URL die naar een manifest bestand verwijst, samengesteld. Uw client moet de benodigde gegevens uit de streaming-manifest bestanden ophalen om een aanvraag voor de key delivery-service te maken.
 
 ### <a name="manifest-files"></a>Manifest bestanden
-De client moet de URL (die ook inhoud sleutel-ID [Kid] bevat) uit het manifest bestand extra heren. De client probeert vervolgens de versleutelings sleutel op te halen van de key delivery service. De client moet ook de waarde voor de IV extra heren en gebruiken om de stroom te ontsleutelen. Het volgende code fragment toont `<Protection>` het element van het Smooth streaming-manifest:
+De client moet de URL (die ook inhoud sleutel-ID [Kid] bevat) uit het manifest bestand extra heren. De client probeert vervolgens de versleutelings sleutel op te halen van de key delivery service. De client moet ook de waarde voor de IV extra heren en gebruiken om de stroom te ontsleutelen. Het volgende code fragment toont het `<Protection>` element van het Smooth Streaming-manifest:
 
 ```xml
     <Protection>
@@ -159,7 +159,7 @@ De client moet de URL (die ook inhoud sleutel-ID [Kid] bevat) uit het manifest b
 
 In het geval van HLS wordt het basis manifest onderverdeeld in segment bestanden. 
 
-Het basis manifest is bijvoorbeeld: http:\//test001.Origin.mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL). Het bevat een lijst met de bestands namen van het segment.
+Het basis manifest is bijvoorbeeld: http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest (Format = M3U8-AAPL). Het bevat een lijst met de bestands namen van het segment.
 
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -168,7 +168,7 @@ Het basis manifest is bijvoorbeeld: http:\//test001.Origin.mediaservices.Windows
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-Als u een van de segment bestanden in een tekst editor opent (bijvoorbeeld http:\//test001.Origin.mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/QualityLevels (514369)/manifest (video, Format = M3U8-AAPL), het bevat #EXT-X-sleutel. Dit geeft aan dat het bestand is versleuteld.
+Als u een van de segment bestanden in een tekst editor opent (bijvoorbeeld http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels (514369)/manifest (video, Format = M3U8-AAPL), bevat deze #EXT-X-KEY. Dit geeft aan dat het bestand is versleuteld.
 
     #EXTM3U
     #EXT-X-VERSION:4

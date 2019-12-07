@@ -1,5 +1,5 @@
 ---
-title: Gegevens transformeren met Databricks jar-Azure
+title: Gegevens transformeren met Databricks jar
 description: Meer informatie over het verwerken of transformeren van gegevens door een Databricks jar uit te voeren.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.date: 03/15/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 982f00b5de9fd3e84233e5fe3b68e22fa6f7fe2a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4a01a21259c4957b6f497bf213a3ef53f940bab7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683954"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893957"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Gegevens transformeren door een jar-activiteit uit te voeren in Azure Databricks
 
@@ -56,7 +56,7 @@ Hier volgt een voor beeld van de JSON-definitie van een Databricks jar-activitei
 
 In de volgende tabel worden de JSON-eigenschappen beschreven die in de JSON-definitie worden gebruikt:
 
-|Eigenschap|Beschrijving|Vereist|
+|Eigenschap|Beschrijving|Verplicht|
 |:--|---|:-:|
 |name|De naam van de activiteit in de pijp lijn.|Ja|
 |description|Tekst die beschrijft wat de activiteit doet.|Nee|
@@ -64,10 +64,10 @@ In de volgende tabel worden de JSON-eigenschappen beschreven die in de JSON-defi
 |linkedServiceName|De naam van de gekoppelde Databricks-service waarop de jar-activiteit wordt uitgevoerd. Zie voor meer informatie over deze gekoppelde service artikel [Compute linked Services](compute-linked-services.md) (Engelstalig).|Ja|
 |mainClassName|De volledige naam van de klasse die de hoofd methode bevat die moet worden uitgevoerd. Deze klasse moet zich bevinden in een JAR die als bibliotheek is opgenomen.|Ja|
 |parameters|Para meters die worden door gegeven aan de methode Main.  Dit is een matrix met teken reeksen.|Nee|
-|Library|Een lijst met bibliotheken die op het cluster moeten worden geïnstalleerd waarmee de taak wordt uitgevoerd. Dit kan een matrix zijn met < teken reeks, object >|Ja (ten minste één met de methode mainClassName)|
+|bibliotheken|Een lijst met bibliotheken die op het cluster moeten worden geïnstalleerd waarmee de taak wordt uitgevoerd. Dit kan een matrix zijn met < teken reeks, object >|Ja (ten minste één met de methode mainClassName)|
 
 > [!NOTE]
-> **Bekend probleem** : wanneer u hetzelfde [interactieve cluster](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks) gebruikt voor het uitvoeren van gelijktijdige Databricks jar-activiteiten (zonder dat het cluster opnieuw hoeft te worden opgestart), is er een bekend probleem in Databricks waar in de para meters van de eerste activiteit wordt gebruikt door de volgende activiteiten ook. Daarom ontstaan er onjuiste para meters die worden door gegeven aan de volgende taken. Als u dit wilt beperken, moet u in plaats daarvan een [taak cluster](compute-linked-services.md#example---using-new-job-cluster-in-databricks) gebruiken. 
+> **Bekend probleem** : wanneer u hetzelfde [interactieve cluster](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks) gebruikt voor het uitvoeren van gelijktijdige Databricks jar-activiteiten (zonder dat het cluster opnieuw hoeft te worden opgestart), is er een bekend probleem in Databricks waar in de para meters van de eerste activiteit ook door de volgende activiteiten wordt gebruikt. Daarom ontstaan er onjuiste para meters die worden door gegeven aan de volgende taken. Als u dit wilt beperken, moet u in plaats daarvan een [taak cluster](compute-linked-services.md#example---using-new-job-cluster-in-databricks) gebruiken. 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Ondersteunde bibliotheken voor databricks-activiteiten
 

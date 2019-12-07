@@ -1,6 +1,6 @@
 ---
 title: Video's bijsnijden met Media Encoder Standard-Azure | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u Video's bijsnijdt met Media Encoder Standard.
+description: Bijsnijden is het proces van het selecteren van een rechthoekig venster binnen het video frame en het coderen van alleen de pixels in het venster. In dit artikel wordt beschreven hoe u Video's bijsnijdt met Media Encoder Standard.
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 03d68cc3a60abba8b7189a9d03fbc21d7606f736
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 059816284e39c65bb772bd02f066d73da624722f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69016613"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887761"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Video’s bijsnijden met Media Encoder Standard  
 
@@ -29,7 +29,7 @@ U kunt Media Encoder Standard (MES) gebruiken om uw invoer video bij te snijden.
 
 Stel, u hebt als invoer een video met een resolutie van 1920 pixels (verhouding van 16:9 hoogte), maar heeft zwarte balken aan de linkerkant en rechts, zodat alleen een 4:3-venster of 1440x1080 pixels actieve video bevatten. U kunt MES gebruiken om de zwarte balken te bijsnijden of te bewerken en de regio 1440x1080 te coderen.
 
-Bijsnijden in MES is een pre-verwerkings fase, waardoor de bijsnijd parameters in de voor instelling voor versleuteling van toepassing zijn op de oorspronkelijke invoer video. Encoding is een volgende fase en de instellingen voor breedte/hoogte zijn van toepassing op de *vooraf* verwerkte video en niet op de oorspronkelijke video. Bij het ontwerpen van uw voor instelling moet u het volgende doen: (a) Selecteer de snij parameters op basis van de oorspronkelijke invoer video en (b) Selecteer uw coderings instellingen op basis van de bijgesneden video. Als u de versleutelings instellingen niet overeenkomt met de bijgesneden video, is de uitvoer niet zoals verwacht.
+Bijsnijden in MES is een pre-verwerkings fase, waardoor de bijsnijd parameters in de voor instelling voor versleuteling van toepassing zijn op de oorspronkelijke invoer video. Encoding is een volgende fase en de instellingen voor breedte/hoogte zijn van toepassing op de *vooraf verwerkte* video en niet op de oorspronkelijke video. Bij het ontwerpen van uw voor instelling moet u het volgende doen: (a) Selecteer de snij parameters op basis van de oorspronkelijke invoer video en (b) Selecteer uw coderings instellingen op basis van de bijgesneden video. Als u de versleutelings instellingen niet overeenkomt met de bijgesneden video, is de uitvoer niet zoals verwacht.
 
 In het [volgende](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) onderwerp ziet u hoe u een coderings taak met mes maakt en hoe u een aangepaste voor instelling voor de coderings taak opgeeft. 
 

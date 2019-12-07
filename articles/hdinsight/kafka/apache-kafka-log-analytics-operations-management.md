@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: 5739883984d4087d2b2a1bda66c01ff3cfa10eb0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 12/04/2019
+ms.openlocfilehash: d4263b8b338f057893c9dfcda1541fc338c2577f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122598"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894262"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Logboeken voor Apache Kafka op HDInsight analyseren
 
@@ -56,7 +56,7 @@ De stappen voor het inschakelen van Azure Monitor logboeken voor HDInsight zijn 
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
 
-* Inkomende berichten per seconde:
+* Inkomende berichten per seconde: (Vervang `your_kafka_cluster_name` door de naam van uw cluster.)
 
     ```kusto
     metrics_kafka_CL 
@@ -64,7 +64,7 @@ De stappen voor het inschakelen van Azure Monitor logboeken voor HDInsight zijn 
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s, bin(TimeGenerated, 1h)
     ```
 
-* Binnenkomende bytes per seconde:
+* Binnenkomende bytes per seconde: (Vervang `wn0-kafka` door de hostnaam van het worker-knoop punt.)
 
     ```kusto
     metrics_kafka_CL 
@@ -72,7 +72,7 @@ De stappen voor het inschakelen van Azure Monitor logboeken voor HDInsight zijn 
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-* Uitgaande bytes per seconde:
+* Uitgaande bytes per seconde: (Vervang `your_kafka_cluster_name` door de naam van uw cluster.)
 
     ```kusto
     metrics_kafka_CL 
@@ -80,16 +80,13 @@ De stappen voor het inschakelen van Azure Monitor logboeken voor HDInsight zijn 
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-    > [!IMPORTANT]  
-    > Vervang de query waarden door uw specifieke cluster informatie. Bijvoorbeeld `ClusterName_s` moet worden ingesteld op de naam van uw cluster. `HostName_s`moet worden ingesteld op de domein naam van een werk knooppunt in het cluster.
+    U kunt ook `*` invoeren om alle typen logboeken te doorzoeken. Momenteel zijn de volgende logboeken beschikbaar voor query's:
 
-    U kunt ook invoeren `*` om te zoeken naar alle typen die zijn geregistreerd. Momenteel zijn de volgende logboeken beschikbaar voor query's:
-
-    | Logboektype | Description |
+    | Logboek type | Beschrijving |
     | ---- | ---- |
     | log\_kafkaserver\_CL | Kafka Broker-server. log |
     | log\_kafkacontroller\_CL | Kafka Broker controller. log |
-    | metrische gegevens\_Kafkacl\_ | Kafka JMX-metrische gegevens |
+    | metrische gegevens\_Kafka\_CL | Kafka JMX-metrische gegevens |
 
     ![CPU-gebruik voor Apache Kafka log Analytics](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
 
@@ -100,6 +97,6 @@ Zie [overzicht van Azure monitor](../../log-analytics/log-analytics-get-started.
 Raadpleeg de volgende documenten voor meer informatie over het werken met Apache Kafka:
 
 * [Mirror Apache Kafka tussen HDInsight-clusters](apache-kafka-mirroring.md)
-* [De schaal baarheid van Apache Kafka op HDInsight verg Roten](apache-kafka-scalability.md)
+* [De schaal van Apache Kafka op HDInsight verg Roten](apache-kafka-scalability.md)
 * [Apache Spark streaming (DStreams) gebruiken met Apache Kafka](../hdinsight-apache-spark-with-kafka.md)
 * [Apache Spark Structured streamen gebruiken met Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

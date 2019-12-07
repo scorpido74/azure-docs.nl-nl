@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: iainfou
-ms.openlocfilehash: 8cba2cbf8fcbad1acae8c36892308c3249fc4181
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: aafefeb94f3b150789a91c3cf669520ccb522dd8
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674903"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893056"
 ---
 # <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Voor beeld-Azure AD Domain Services migreren van het klassieke virtuele netwerk model naar Resource Manager
 
@@ -22,7 +22,7 @@ Azure Active Directory Domain Services (AD DS) ondersteunt eenmalige overstap vo
 
 In dit artikel vindt u een overzicht van de voor delen en overwegingen voor migratie en vervolgens de vereiste stappen om een bestaand exemplaar van Azure AD DS te migreren. Deze functie is momenteel beschikbaar als preview-product.
 
-## <a name="overview-of-the-migration-process"></a>Overzicht van het migratie proces
+## <a name="overview-of-the-migration-process"></a>Overzicht van het migratieproces
 
 Bij het migratie proces wordt een bestaand exemplaar van Azure AD DS uitgevoerd dat in een klassiek virtueel netwerk draait en het verplaatst naar een bestaand virtueel netwerk van Resource Manager. De migratie wordt uitgevoerd met behulp van Power shell en heeft twee belang rijke fasen voor het uitvoeren van de voor *bereiding* en *migratie*.
 
@@ -112,11 +112,11 @@ In het geval van terugdraaien kunnen de IP-adressen na terugdraaien worden gewij
 
 Azure AD DS maakt doorgaans gebruik van de eerste twee beschik bare IP-adressen in het adres bereik, maar dit is niet gegarandeerd. U kunt op dit moment geen IP-adressen opgeven die na de migratie moeten worden gebruikt.
 
-### <a name="downtime"></a>Productie
+### <a name="downtime"></a>Downtime
 
 Bij het migratie proces moeten de domein controllers gedurende een bepaalde tijd offline zijn. Domein controllers zijn niet toegankelijk terwijl Azure AD DS worden gemigreerd naar het Resource Manager-implementatie model en het virtuele netwerk. Gemiddeld is de downtime ongeveer 1 tot 3 uur. Deze periode is van waaruit de domein controllers offline worden gezet naar het moment dat de eerste domein controller weer online is. Dit gemiddelde omvat niet de tijd die nodig is om de tweede domein controller te repliceren, of de tijd die het kan duren om aanvullende resources te migreren naar het Resource Manager-implementatie model.
 
-### <a name="account-lockout"></a>Account vergrendeling
+### <a name="account-lockout"></a>Accountvergrendeling
 
 In azure AD DS beheerde domeinen die worden uitgevoerd op klassieke virtuele netwerken, is het AD-account vergrendelings beleid niet aanwezig. Als Vm's worden blootgesteld aan Internet, kunnen aanvallers met behulp van wacht woord-spray methoden gebruiken om accounts te laten afdwingen. Er is geen account vergrendelings beleid om deze pogingen te stoppen. Voor Azure AD DS beheerde domeinen die gebruikmaken van het Resource Manager-implementatie model en virtuele netwerken, wordt het AD-account vergrendelings beleid beschermd tegen deze aanvallen met een wacht woord.
 
@@ -151,7 +151,7 @@ Zie overwegingen voor het [ontwerpen van virtuele netwerken en configuratie opti
 
 De migratie naar het Resource Manager-implementatie model en het virtuele netwerk is onderverdeeld in vijf hoofd stappen:
 
-| Stap    | Uitgevoerd via  | Geschatte tijd  | Productie  | Terugdraaien/herstellen? |
+| Stap    | Uitgevoerd via  | Geschatte tijd  | Downtime  | Terugdraaien/herstellen? |
 |---------|--------------------|-----------------|-----------|-------------------|
 | [Stap 1: het nieuwe virtuele netwerk bijwerken en zoeken](#update-and-verify-virtual-network-settings) | Azure Portal | 15 minuten | Geen downtime vereist | N/A |
 | [Stap 2: het beheerde domein van Azure AD DS voorbereiden voor migratie](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – 30 minuten op gemiddeld | De downtime van Azure AD DS begint nadat deze opdracht is voltooid. | Terugdraaien en herstellen beschikbaar. |
@@ -293,7 +293,7 @@ Als dat nodig is, kunt u het beleid voor verfijnde wacht woorden bijwerken zodat
 1. Gebruik een netwerk tracering op de virtuele machine om de bron van de aanvallen te vinden en de IP-adressen te blok keren om u te kunnen aanmelden.
 1. Wanneer er minimale vergrendelings problemen zijn, werkt u het verfijnde wachtwoord beleid zo strikt mogelijk aan.
 
-#### <a name="creating-a-network-security-group"></a>Een netwerk beveiligings groep maken
+#### <a name="creating-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
 
 Azure AD DS heeft een netwerk beveiligings groep nodig om de poorten die nodig zijn voor het beheerde domein te beveiligen en alle andere inkomend verkeer te blok keren. Deze netwerk beveiligings groep fungeert als een extra beveiligingslaag om de toegang tot het beheerde domein te vergren delen en wordt niet automatisch gemaakt. Als u de netwerk beveiligings groep wilt maken en de vereiste poorten wilt openen, raadpleegt u de volgende stappen:
 
@@ -306,12 +306,13 @@ Azure AD DS heeft een netwerk beveiligings groep nodig om de poorten die nodig z
 
 Als er een fout optreedt tijdens het uitvoeren van de Power shell-cmdlet om de migratie voor te bereiden in stap 2 of voor de migratie zelf in stap 3, kan het door Azure AD DS beheerde domein worden teruggezet naar de oorspronkelijke configuratie. Voor deze terugdraaien is het oorspronkelijke klassieke virtuele netwerk vereist. Houd er rekening mee dat de IP-adressen na het terugdraaien mogelijk nog steeds worden gewijzigd.
 
-Voer de `Migrate-Aadds`-cmdlet uit met de para meter *-abort* . Geef de *-ManagedDomainFqdn* op voor uw eigen Azure AD DS beheerde domein dat in een vorige sectie is voor bereid, zoals *contoso.com*:
+Voer de `Migrate-Aadds`-cmdlet uit met de para meter *-abort* . Geef de *-ManagedDomainFqdn* voor uw eigen Azure AD DS beheerde domein die is voor bereid in een vorige sectie, zoals *contoso.com*, en de naam van het klassieke virtuele netwerk, zoals *myClassicVnet*:
 
 ```powershell
 Migrate-Aadds `
     -Abort `
     -ManagedDomainFqdn contoso.com `
+    -ClassicVirtualNetworkName myClassicVnet `
     -Credentials $creds
 ```
 
@@ -360,4 +361,4 @@ Als uw Azure AD DS beheerd domein is gemigreerd naar het Resource Manager-implem
 [get-credential]: /powershell/module/microsoft.powershell.security/get-credential
 
 <!-- EXTERNAL LINKS -->
-[powershell-script]: https://www.powershellgallery.com/packages/Migrate-Aadds/1.0
+[powershell-script]: https://www.powershellgallery.com/packages/Migrate-Aadds/

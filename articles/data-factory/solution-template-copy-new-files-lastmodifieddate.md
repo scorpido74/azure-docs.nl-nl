@@ -1,5 +1,5 @@
 ---
-title: Nieuwe en gewijzigde bestanden kopiëren met behulp van LastModifiedDate met Azure Data Factory
+title: Nieuwe en gewijzigde bestanden kopiëren via LastModifiedDate
 description: Meer informatie over het gebruik van een oplossings sjabloon om nieuwe en gewijzigde bestanden te kopiëren door LastModifiedDate met Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/8/2019
-ms.openlocfilehash: aaa7114113d5f0330d2dc7d656b0d91963931512
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ca752fb75b8e151de925d3b5604a7e7182d82e92
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684228"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896295"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Nieuwe en gewijzigde bestanden kopiëren met behulp van LastModifiedDate met Azure Data Factory
 
@@ -34,8 +34,8 @@ De sjabloon bevat één activiteit:
 De sjabloon definieert vier para meters:
 -  *FolderPath_Source* is het mappad waar u de bestanden uit het bron archief kunt lezen. U moet de standaard waarde vervangen door uw eigen mappad.
 -  *FolderPath_Destination* is het mappad waarnaar u bestanden wilt kopiëren naar het doel archief. U moet de standaard waarde vervangen door uw eigen mappad.
--  *LastModified_From* wordt gebruikt om de bestanden te selecteren waarvan het kenmerk LastModifiedDate na of is gelijk aan deze datum/tijd waarde.  Als u alleen de nieuwe bestanden wilt selecteren, die de laatste keer niet zijn gekopieerd, kan deze datum/tijd-waarde de tijd zijn waarop de pijp lijn de laatste keer is geactiveerd. U kunt de standaard waarde ' 2019-02-01T00:00:00Z ' vervangen door de verwachte LastModifiedDate in UTC-tijd zone. 
--  *LastModified_To* wordt gebruikt om de bestanden te selecteren waarvan het kenmerk LastModifiedDate vóór deze datum/tijd-waarde ligt. Als u alleen de nieuwe bestanden wilt selecteren, die de laatste keer niet zijn gekopieerd, kan deze datum/tijd-waarde de huidige keer zijn.  U kunt de standaard waarde ' 2019-02-01T00:00:00Z ' vervangen door de verwachte LastModifiedDate in UTC-tijd zone. 
+-  *LastModified_From* wordt gebruikt om de bestanden te selecteren waarvan het kenmerk LastModifiedDate na of gelijk is aan deze datum/tijd waarde.  Als u alleen de nieuwe bestanden wilt selecteren, die de laatste keer niet zijn gekopieerd, kan deze datum/tijd-waarde de tijd zijn waarop de pijp lijn de laatste keer is geactiveerd. U kunt de standaard waarde ' 2019-02-01T00:00:00Z ' vervangen door de verwachte LastModifiedDate in UTC-tijd zone. 
+-  *LastModified_To* wordt gebruikt om de bestanden te selecteren waarvan het kenmerk LastModifiedDate vóór deze datum/tijd-waarde valt. Als u alleen de nieuwe bestanden wilt selecteren, die de laatste keer niet zijn gekopieerd, kan deze datum/tijd-waarde de huidige keer zijn.  U kunt de standaard waarde ' 2019-02-01T00:00:00Z ' vervangen door de verwachte LastModifiedDate in UTC-tijd zone. 
 
 ## <a name="how-to-use-this-solution-template"></a>Deze oplossings sjabloon gebruiken
 
@@ -51,7 +51,7 @@ De sjabloon definieert vier para meters:
 
     ![Een nieuwe verbinding maken met de bestemming](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png)
 
-4. Selecteer **deze sjabloon gebruiken**.
+4. Selecteer **Deze sjabloon gebruiken**.
 
     ![Deze sjabloon gebruiken](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png)
     
@@ -60,8 +60,8 @@ De sjabloon definieert vier para meters:
     ![De pijp lijn weer geven](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png)
 
 6. Selecteer **debug**, schrijf de waarde voor de **para meters** en selecteer **volt ooien**.  In de onderstaande afbeelding worden de para meters als volgt ingesteld.
-   - **FolderPath_Source** =  **/Source/**
-   - **FolderPath_Destination** =  **/Destination/**
+   - **FolderPath_Source** =  **/source/**
+   - **FolderPath_Destination** =  **/destination/**
    - **LastModified_From** =  **2019-02-01T00:00:00Z**
    - **LastModified_To** = **2019-03-01T00:00:00Z**
     
@@ -86,12 +86,12 @@ De sjabloon definieert vier para meters:
     ![Trigger maken](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
 11. Schrijf de waarde voor de **trigger run-para meters** als volgt en selecteer **volt ooien**.
-    - **FolderPath_Source** =  **/Source/** .  U kunt vervangen door de map in de gegevens opslag van de bron.
-    - **FolderPath_Destination** =  **/Destination/** .  U kunt vervangen door de map in het doel gegevens archief.
+    - **FolderPath_Source** =  **/source/** .  U kunt vervangen door de map in de gegevens opslag van de bron.
+    - **FolderPath_Destination** =  **/destination/** .  U kunt vervangen door de map in het doel gegevens archief.
     - **LastModified_From** =   **\@trigger (). outputs. windowStartTime**.  Het is een systeem variabele van de trigger voor het bepalen van de tijd waarop de pijp lijn de laatste keer is geactiveerd.
     - **LastModified_To** =  **\@trigger (). outputs. windowEndTime**.  Het is een systeem variabele van de trigger die de tijd bepaalt wanneer de pijp lijn deze keer wordt geactiveerd.
     
-    ![Invoer parameters](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
+    ![Invoerparameters](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     
 12. Selecteer **Alles publiceren**.
     

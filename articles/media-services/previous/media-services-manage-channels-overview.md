@@ -1,6 +1,6 @@
 ---
 title: Overzicht van live streamen met behulp van Azure Media Services | Microsoft Docs
-description: Dit onderwerp bevat een overzicht van live streamen met behulp van Azure Media Services.
+description: Dit artikel geeft een overzicht van live streamen met behulp van Microsoft Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5ab4a6b96df964497e20b2b93c59febb0e24393c
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 8b58e9d2eae1fbe5b0f4086f772bea3bf46399c3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035900"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895942"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Overzicht van live streamen met Media Services
 
@@ -61,7 +61,7 @@ Een **kanaal** vertegenwoordigt een pijplijn voor de verwerking van inhoud voor 
   > Het gebruik van de passthrough-methode is de meest voordelige manier om live te streamen wanneer u meerdere gebeurtenissen gedurende een langere periode streamt en u al hebt geïnvesteerd in on-premises coderingsprogramma’s. Zie de details over de [prijzen](https://azure.microsoft.com/pricing/details/media-services/).
   > 
   > 
-* Een on-premises Live Encoder verzendt een stream met één bitsnelheid naar het kanaal dat is ingeschakeld voor het uitvoeren van Live code ring met Media Services in een van de volgende indelingen: RTMP of Smooth Streaming (gefragmenteerde MP4). De volgende Live coderings Programma's met RTMP-uitvoer zijn bekend om te werken met kanalen van dit type: Telestream-Wirecast, FMLE. Het kanaal codeert de inkomende single-bitrate stream vervolgens live naar een (adaptieve) multi-bitrate videostream. Desgevraagd levert Media Services de stream aan klanten.
+* Een on-premises Live Encoder verzendt een stream met één bitsnelheid naar het kanaal dat is ingeschakeld voor het uitvoeren van Live code ring met Media Services in een van de volgende indelingen: RTMP of Smooth Streaming (gefragmenteerde MP4). De volgende Live coderings Programma's met RTMP-uitvoer zijn bekend om te werken met kanalen van dit type: Telestream Wirecast, FMLE. Het kanaal codeert de inkomende single-bitrate stream vervolgens live naar een (adaptieve) multi-bitrate videostream. Desgevraagd levert Media Services de stream aan klanten.
 
 Als u begint met de release van Media Services 2,10, kunt u, wanneer u een kanaal maakt, opgeven op welke manier u wilt dat uw kanaal de invoer stroom ontvangt en of u wilt dat het kanaal Live code ring van uw stream uitvoert. U hebt hiervoor twee opties:
 
@@ -112,7 +112,7 @@ U kunt de opname-URL en de voor beeld-URL ophalen wanneer u het kanaal maakt. Om
 
 Elk Media Services-account kan meerdere kanalen, meerdere Program Ma's en meerdere StreamingEndpoints bevatten. Afhankelijk van de behoefte aan band breedte en beveiliging, kunnen StreamingEndpoint-services worden toegewezen aan een of meer kanalen. Elk StreamingEndpoint kan uit elk kanaal halen.
 
-Wanneer u een kanaal maakt, kunt u toegestane IP-adressen in een van de volgende indelingen opgeven: IpV4-adres met 4 cijfers, CIDR-adresbereik.
+Wanneer u een kanaal maakt, kunt u toegestane IP-adressen in een van de volgende indelingen opgeven: IpV4-adres met 4 getallen, CIDR-adres bereik.
 
 ### <a name="program"></a>Programma
 Met een [programma](https://docs.microsoft.com/rest/api/media/operations/program) kunt u het publiceren en opslaan van segmenten in een live stream beheren. Kanalen beheren programma's. De kanaal-/programmarelatie lijkt erg op traditionele media waarbij een kanaal een constante stream met inhoud heeft en een programma is afgestemd op een bepaalde getimede gebeurtenis op dat kanaal.
@@ -150,10 +150,10 @@ In de volgende tabel wordt het verband tussen de verschillende Kanaalstatussen e
 
 | Kanaalstatus | Portal UI-indicatoren | Is het facturerings abonnement? |
 | --- | --- | --- |
-| Starten |Starten |Nee (overgangsstatus) |
-| Wordt uitgevoerd |Ready (er worden geen programma's uitgevoerd)<br/>of<br/>Streaming (er wordt ten minste een programma uitgevoerd) |JA |
-| Stoppen |Stoppen |Nee (overgangsstatus) |
-| Gestopt |Gestopt |Nee |
+| Starting |Starting |Nee (overgangsstatus) |
+| In uitvoering |Ready (er worden geen programma's uitgevoerd)<br/>of<br/>Streaming (er wordt ten minste een programma uitgevoerd) |JA |
+| Stopping |Stopping |Nee (overgangsstatus) |
+| Stopped |Stopped |Nee |
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

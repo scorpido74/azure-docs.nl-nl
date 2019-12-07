@@ -1,26 +1,27 @@
 ---
-title: Beperkte toegang verlenen tot Azure Storage-resources met behulp van Shared Access signatures (SAS)
+title: Beperkte toegang verlenen tot gegevens met Shared Access signatures (SAS)
+titleSuffix: Azure Storage
 description: Meer informatie over het gebruik van Shared Access signatures (SAS) voor het delegeren van toegang tot Azure Storage resources, waaronder blobs, wacht rijen, tabellen en bestanden.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 9623152bdea5cc56e6b9bcb7d9911a730fd7a4a4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e4a5f83e3f4d26c2321ed1b4c48a385d07e6489d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72382017"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895159"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Beperkte toegang verlenen tot Azure Storage-resources met behulp van Shared Access signatures (SAS)
 
 Een Shared Access Signature (SAS) biedt beveiligde gedelegeerde toegang tot resources in uw opslag account zonder de beveiliging van uw gegevens in gevaar te brengen. Met een SAS hebt u gedetailleerde controle over hoe een client toegang heeft tot uw gegevens. U kunt bepalen welke resources de client mag openen, welke machtigingen ze hebben op deze resources en hoe lang de SAS geldig is, onder andere para meters.
 
-## <a name="types-of-shared-access-signatures"></a>Typen Shared Access signatures
+## <a name="types-of-shared-access-signatures"></a>Typen handtekeningen voor gedeelde toegang
 
 Azure Storage ondersteunt drie typen hand tekeningen voor gedeelde toegang:
 
@@ -75,13 +76,13 @@ Hier volgt een voor beeld van een SAS-URI van de service, waarin de bron-URI en 
 
 Gebruik een SAS wanneer u beveiligde toegang tot resources in uw opslag account wilt verlenen aan elke client die anders geen machtigingen voor die bronnen heeft.
 
-Een veelvoorkomend scenario waarbij een SAS handig is, is een service waar gebruikers hun eigen gegevens lezen en schrijven naar uw opslag account. In een scenario waarin gebruikers gegevens worden opgeslagen in een opslag account, zijn er twee typische ontwerp patronen:
+Een veelvoorkomend scenario waarbij een SAS handig is, is een service waar gebruikers hun eigen gegevens lezen en schrijven naar uw opslag account. In een scenario waarin een opslagaccount gebruikersgegevens opslaat, zijn er twee typische ontwerppatronen:
 
-1. Clients uploaden en downloaden gegevens via een front-end-proxy service, die verificatie uitvoert. Deze front-end proxy service heeft het voor deel dat het mogelijk is om validatie van bedrijfs regels toe te staan, maar voor grote hoeveel heden gegevens of trans acties met veel volumes is het maken van een service die kan worden geschaald naar wens, duur of lastig.
+1. Clients uploaden en downloaden gegevens via een front-endproxyservice, waarmee verificatie wordt uitgevoerd. Deze front-end proxy service heeft het voor deel dat het mogelijk is om validatie van bedrijfs regels toe te staan, maar voor grote hoeveel heden gegevens of trans acties met veel volumes is het maken van een service die kan worden geschaald naar wens, duur of lastig.
 
    ![Scenario diagram: front-end proxy service](./media/storage-sas-overview/sas-storage-fe-proxy-service.png)
 
-1. Een licht gewicht service verifieert de client naar behoefte en genereert vervolgens een SAS. Zodra de client toepassing de SAS heeft ontvangen, kunnen ze rechtstreeks toegang krijgen tot Storage-account bronnen met de machtigingen die zijn gedefinieerd door de SA'S en voor het interval dat is toegestaan door de SAS. De SAS verkleint de nood zaak om alle gegevens door te sturen via de front-end-proxy service.
+1. Met een eenvoudige service wordt de client indien nodig geverifieerd en vervolgens een SAS gegenereerd. Zodra de client toepassing de SAS heeft ontvangen, kunnen ze rechtstreeks toegang krijgen tot Storage-account bronnen met de machtigingen die zijn gedefinieerd door de SA'S en voor het interval dat is toegestaan door de SAS. Dankzij de SAS hoeven alle gegevens niet via de front-endproxyservice te worden doorgestuurd.
 
    ![Scenario diagram: SAS-Provider service](./media/storage-sas-overview/sas-storage-provider-service.png)
 

@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Media Services bewerkingen REST API | Microsoft Docs
-description: Overzicht van Media Services REST API
+description: De API ' Media Services Operations REST ' wordt gebruikt voor het maken van taken, assets, Live kanalen en andere resources in een Media Services-account. In dit artikel vindt u een overzicht van Azure Media Services v2 REST API.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 29b995d722cd304cc85580ac4f2f38a0b0d9cecd
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 7df1651be01b4bed533c1173cc37bddda58f0aa3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014849"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895816"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Overzicht van Media Services bewerkingen REST API 
 
@@ -37,8 +37,8 @@ Verificatie voor de Media Services REST API wordt uitgevoerd via Azure Active Di
 
 De volgende overwegingen zijn van toepassing wanneer u REST gebruikt.
 
-* Bij het uitvoeren van een query op entiteiten is er een limiet van 1000 entiteiten die tegelijk worden geretourneerd, omdat open bare REST v2 de query resultaten beperkt tot 1000 resultaten. U moet overs **Laan** en **nemen** (.net)/ **Top** (rest) gebruiken, zoals beschreven in [dit .net-voor beeld](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) en [Dit rest API-voor beeld](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). 
-* Wanneer u JSON gebruikt en opgeeft dat u het sleutel woord **__metadata** in de aanvraag wilt gebruiken (bijvoorbeeld om te verwijzen naar een gekoppeld object), moet u de **Accept** -header instellen op [JSON-uitgebreide indeling](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) (Zie het volgende voor beeld). Odata begrijpt de eigenschap **__metadata** niet in de aanvraag, tenzij u deze instelt op uitgebreid.  
+* Bij het uitvoeren van een query op entiteiten is er een limiet van 1000 entiteiten die tegelijk worden geretourneerd, omdat open bare REST v2 de query resultaten beperkt tot 1000 resultaten. U moet **overs Laan** en **nemen** (.net)/ **Top** (rest) gebruiken, zoals beschreven in [dit .net-voor beeld](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) en [Dit rest API-voor beeld](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). 
+* Wanneer u JSON gebruikt en opgeeft dat het sleutel woord **__metadata** wordt gebruikt in de aanvraag (bijvoorbeeld om te verwijzen naar een gekoppeld object), moet u de **Accept** -header instellen op [JSON-indeling](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) (Zie het volgende voor beeld). Odata begrijpt de eigenschap **__metadata** niet in de aanvraag, tenzij u deze instelt op uitgebreid.  
   
         POST https://media.windows.net/API/Jobs HTTP/1.1
         Content-Type: application/json;odata=verbose
@@ -58,9 +58,9 @@ De volgende overwegingen zijn van toepassing wanneer u REST gebruikt.
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Standaard-HTTP-aanvraag headers die worden ondersteund door Media Services
 Voor elke aanroep die u in Media Services maakt, moet u een set vereiste kopteksten opnemen in uw aanvraag en ook een set optionele kopteksten die u mogelijk wilt opnemen. De volgende tabel bevat de vereiste headers:
 
-| Header | type | Value |
+| Header | Type | Waarde |
 | --- | --- | --- |
-| Authorization |Bearer |Bearer is het enige geaccepteerde autorisatie mechanisme. De waarde moet ook het toegangs token bevatten dat door Azure Active Directory is geleverd. |
+| Autorisatie |Drager |Bearer is het enige geaccepteerde autorisatie mechanisme. De waarde moet ook het toegangs token bevatten dat door Azure Active Directory is geleverd. |
 | x-MS-version |Decimal |2,17 (of meest recente versie)|
 | DataServiceVersion |Decimal |3.0 |
 | MaxDataServiceVersion |Decimal |3.0 |
@@ -72,32 +72,32 @@ Voor elke aanroep die u in Media Services maakt, moet u een set vereiste kopteks
 
 Hier volgt een aantal optionele kopteksten:
 
-| Header | type | Value |
+| Header | Type | Waarde |
 | --- | --- | --- |
-| Date |RFC 1123-datum |Tijds tempel van de aanvraag |
+| Datum |RFC 1123-datum |Tijds tempel van de aanvraag |
 | Accepteren |Inhoudstype |Het aangevraagde inhouds type voor het antwoord, zoals de volgende:<p> -application/json;odata=verbose<p> -Application/Atom + XML<p> Antwoorden kunnen een ander inhouds type hebben, zoals het ophalen van een blob, waarbij een geslaagd antwoord de BLOB-stream als de payload bevat. |
-| Accepteren-coderen |Gzip, verkleinen |GZIP-en deflate-code ring, indien van toepassing. Opmerking: Voor grote bronnen kan Media Services deze header negeren en niet-gecomprimeerde gegevens retour neren. |
+| Accept-Encoding |Gzip, verkleinen |GZIP-en deflate-code ring, indien van toepassing. Opmerking: voor grote bronnen kan Media Services deze header negeren en niet-gecomprimeerde gegevens retour neren. |
 | Accept-Language |"en", "ES", enzovoort. |Hiermee geeft u de voorkeurs taal op voor het antwoord. |
 | Accept-Charset |Charset-type like "UTF-8" |De standaard waarde is UTF-8. |
 | X-HTTP-methode |HTTP-methode |Biedt clients of firewalls die geen ondersteuning bieden voor HTTP-methoden zoals PUT of DELETE om deze methoden te gebruiken, via een GET-aanroep. |
-| Inhoudstype |Inhoudstype |Inhouds type van de aanvraag tekst in PUT-of POST-aanvragen. |
+| Content-Type |Inhoudstype |Inhouds type van de aanvraag tekst in PUT-of POST-aanvragen. |
 | client-aanvraag-id |Tekenreeks |Een door een aanroeper gedefinieerde waarde die de opgegeven aanvraag aanduidt. Indien opgegeven, wordt deze waarde opgenomen in het antwoord bericht als een manier om de aanvraag toe te wijzen. <p><p>**Belangrijk**<p>De waarden moeten worden afgetopt op 2096b (2 KB). |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Standaard-HTTP-antwoord headers die worden ondersteund door Media Services
 Hier volgt een reeks kopteksten die kunnen worden geretourneerd, afhankelijk van de resource die u hebt aangevraagd en de actie die u wilt uitvoeren.
 
-| Header | type | Value |
+| Header | Type | Waarde |
 | --- | --- | --- |
 | aanvraag-id |Tekenreeks |Een unieke id voor de huidige bewerking, gegenereerde service. |
 | client-aanvraag-id |Tekenreeks |Een id die is opgegeven door de aanroeper in de oorspronkelijke aanvraag, indien aanwezig. |
-| Date |RFC 1123-datum |De datum/tijd waarop de aanvraag is verwerkt. |
-| Inhoudstype |Varieert |Het inhouds type van de antwoord tekst. |
+| Datum |RFC 1123-datum |De datum/tijd waarop de aanvraag is verwerkt. |
+| Content-Type |Varieert |Het inhouds type van de antwoord tekst. |
 | Content-Encoding |Varieert |Gzip of verkleinen, indien van toepassing. |
 
 ## <a name="standard-http-verbs-supported-by-media-services"></a>Standaard HTTP-termen die worden ondersteund door Media Services
 Hier volgt een volledige lijst met HTTP-termen die kunnen worden gebruikt bij het maken van HTTP-aanvragen:
 
-| term | Description |
+| term | Beschrijving |
 | --- | --- |
 | GET |Retourneert de huidige waarde van een object. |
 | POST |Hiermee wordt een object gemaakt op basis van de verstrekte gegevens of wordt een opdracht verzonden. |

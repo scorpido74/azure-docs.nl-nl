@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2019
 ms.author: kumud
-ms.openlocfilehash: beb2655b0796adbe289b0af104dead2d15e584db
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1c27af30f97ea967d170b2cccaefb2e95f8fedaf
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852157"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900743"
 ---
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>Een openbaar IP-adres ontkoppelen van een Azure-VM 
 
@@ -51,7 +51,7 @@ Installeer de [Azure cli](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-ne
     --name ipconfigmyVM \
     --resource-group myResourceGroup \
     --nic-name myVMVMNic \
-    --remove PublicIpAdress
+    --remove PublicIpAddress
    ```
 
    Als u de naam van een netwerk interface die is gekoppeld aan uw virtuele machine niet weet, gebruikt u de opdracht [AZ VM NIC List](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list) om ze weer te geven. Met de volgende opdracht worden bijvoorbeeld de namen weer gegeven van de netwerk interfaces die zijn gekoppeld aan een virtuele machine met de naam *myVM* in een resource groep met de naam *myResourceGroup*:
@@ -68,11 +68,18 @@ Installeer de [Azure cli](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-ne
 
      In het vorige voor beeld is *myVMVMNic* de naam van de netwerk interface.
 
-   - Als u de naam van een IP-configuratie voor een netwerk interface niet weet, gebruikt u de opdracht [AZ Network NIC IP-config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list) om deze op te halen. De volgende opdracht toont bijvoorbeeld de namen van de IP-configuraties voor een netwerk interface met de naam *myVMVMNic* in een resource groep met de naam *myResourceGroup*:
+   - Als u de naam van een IP-configuratie voor een netwerk interface niet weet, gebruikt u de opdracht [AZ Network NIC IP-config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list) om deze op te halen. De volgende opdracht toont bijvoorbeeld de namen van de open bare IP-configuraties voor een netwerk interface met de naam *myVMVMNic* in een resource groep met de naam *myResourceGroup*:
 
      ```azurecli-interactive
      az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
      ```
+
+   - Als u de naam van een open bare IP-configuratie voor een netwerk interface niet weet, gebruikt u de opdracht [AZ Network NIC IP-config show](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-show) om deze op te halen. De volgende opdracht toont bijvoorbeeld de namen van de open bare IP-configuraties voor een netwerk interface met de naam *myVMVMNic* in een resource groep met de naam *myResourceGroup*:
+
+     ```azurecli-interactive
+     az network nic ip-config show --name ipconfigmyVM --nic-name myVMVMNic --resource-group myResourceGroup --query publicIPAddress.id
+     ```
+
 
 ## <a name="powershell"></a>PowerShell
 
@@ -106,13 +113,13 @@ Installeer [Power shell](/powershell/azure/install-az-ps)of gebruik de Azure Clo
 
      ```azurepowershell-interactive
      $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroupName myResourceGroup
-     $nic.IPConfigurations
+     $nic.IPConfigurations.id
      ```
 
      De uitvoer bevat een of meer regels die vergelijkbaar zijn met het voor beeld dat volgt. In de voorbeeld uitvoer is *ipconfigmyVM* de naam van een IP-configuratie.
   
      ```
-     Id     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM
+     "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM"
      ```
 
 ## <a name="next-steps"></a>Volgende stappen

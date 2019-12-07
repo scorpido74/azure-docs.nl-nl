@@ -11,20 +11,20 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: ba309b864056b10fe6540e85ffbc4c013af00455
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 0cda55d42f0d89d61919b751335ec95ef8143274
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186473"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901177"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastische Pools helpen u bij het beheren en schalen van meerdere Azure SQL-data bases
 
-Elastische pools in SQL Database zijn eenvoudige, kosteneffectieve oplossingen voor het beheren en schalen van meerdere databases die een verschillend en onvoorspelbaar verbruik hebben. De data bases in een elastische pool bevinden zich op één Azure SQL Database Server en delen een bepaald aantal resources tegen een ingestelde prijs. Met elastische groepen in Azure SQL Database kunnen SaaS-ontwikkelaars de prijsprestaties voor een groep databases binnen een voorgeschreven budget optimaliseren en flexibele prestaties voor elke database leveren.
+Elastische pools in SQL Database zijn eenvoudige, kosteneffectieve oplossingen voor het beheren en schalen van meerdere databases die een verschillend en onvoorspelbaar verbruik hebben. De databases in een elastische pool bevinden zich op één Azure SQL Database-server en delen een vast aantal resources tegen een vaste prijs. Met elastische groepen in Azure SQL Database kunnen SaaS-ontwikkelaars de prijsprestaties voor een groep databases binnen een voorgeschreven budget optimaliseren en flexibele prestaties voor elke database leveren.
 
 ## <a name="what-are-sql-elastic-pools"></a>Wat zijn elastische SQL-Pools
 
-SaaS-ontwikkelaars ontwikkelen toepassingen boven op grootschalige gegevenslagen die uit meerdere databases bestaan. Een algemeen patroon is de inrichting van een individuele database voor elke klant. Maar verschillende klanten hebben vaak verschillende en onvoorspelbare gebruikspatronen, en de resourcevereisten van elke gebruiker van een individuele database zijn moeilijk te voorspellen. Normaal gesp roken hebt u twee opties:
+SaaS-ontwikkelaars ontwikkelen toepassingen boven op grootschalige gegevenslagen die uit meerdere databases bestaan. Een algemeen patroon is de inrichting van een individuele database voor elke klant. Maar verschillende klanten hebben vaak verschillende en onvoorspelbare gebruiks patronen, en het is moeilijk om de resource vereisten van elke afzonderlijke database gebruiker te voors pellen. Normaal gesp roken hebt u twee opties:
 
 - Resources van meer dan inrichten op basis van piek gebruik en meer dan betalen, of
 - Onder-inrichting voor het besparen van kosten, tegen kosten van prestaties en klant tevredenheid tijdens pieken.
@@ -48,7 +48,7 @@ Binnen de pool hebben afzonderlijke databases de flexibiliteit om de schaal auto
 
 Pools zijn geschikt voor een groot aantal databases met specifieke gebruikspatronen. Voor een bepaalde database wordt dit patroon gekenmerkt door een laag gemiddeld gebruik met relatief incidentele gebruikspieken.
 
-Hoe meer databases u aan een groep kunt toevoegen, des te groter worden de besparingen. Afhankelijk van uw gebruikspatroon van toepassingen is het mogelijk om besparingen te zien met slechts twee S3-databases.
+Hoe meer databases u aan een groep kunt toevoegen, des te groter worden de besparingen. Afhankelijk van het gebruiks patroon van uw toepassing is het mogelijk om besparingen te zien met slechts twee S3-data bases.
 
 In de volgende secties ziet u hoe u kunt bepalen of het voor uw specifieke verzameling databases voordelig is om deel uit te maken van een groep. In de voorbeelden wordt gebruik gemaakt van Standard-groepen, maar dezelfde principes gelden ook voor Basic- en Premium-groepen.
 
@@ -95,7 +95,7 @@ Door resources te delen, kunnen niet alle data bases in een pool gelijktijdig br
 
 Om de kosten voor drie S3-databases in een groep van 200 eDTU's te verlagen, kunnen maximaal twee van deze databases tegelijkertijd pieken in hun gebruik. Of, als meer dan twee van deze vier S3-databases gelijktijdig pieken, zou de groep moeten worden uitgebreid tot meer dan 200 eDTU's. Als het formaat van de groep wordt gewijzigd naar meer dan 200 Edtu's, moeten er meer S3-data bases aan de groep worden toegevoegd om de kosten lager te blijven dan reken grootten voor afzonderlijke data bases.
 
-In dit voorbeeld wordt geen rekening gehouden met het gebruik van andere databases in de groep. Als alle databases voortdurend in enige mate gebruik maken van eDTU's, kan minder dan 2/3 (of 67%) van de databases tegelijkertijd pieken.
+Opmerking in dit voor beeld is het gebruik van andere data bases in de pool niet in aanmerking. Als alle databases voortdurend in enige mate gebruik maken van eDTU's, kan minder dan 2/3 (of 67%) van de databases tegelijkertijd pieken.
 
 ### <a name="resource-utilization-per-database"></a>Resource gebruik per data base
 
@@ -143,7 +143,7 @@ Pooldatabases ondersteunen in het algemeen dezelfde [bedrijfscontinuïteitsfunct
 
   Herstel naar een bepaald tijdstip maakt gebruik van automatische database back-ups om een data base in een groep te herstellen naar een specifiek tijdstip. Zie [Herstel naar een bepaald tijdstip](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-- **Geo-herstel**
+- **Geo-restore**
 
   Geo-Restore biedt de standaard herstel optie wanneer een Data Base niet beschikbaar is vanwege een incident in de regio waarin de data base wordt gehost. Zie [Restore an Azure SQL Database or failover to a secondary](sql-database-disaster-recovery.md) (Een Azure SQL Database of herstellen of een failover uitvoeren naar een secundaire server)
 
@@ -155,7 +155,7 @@ Pooldatabases ondersteunen in het algemeen dezelfde [bedrijfscontinuïteitsfunct
 
 Er zijn twee manieren waarop u een elastische pool kunt maken in de Azure Portal.
 
-1. Selecteer **Azure SQL** in het linkermenu van de Azure Portal. Als Azure SQL niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens *Azure SQL* in het zoekvak.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om een elastische pool te maken. Zoek en selecteer **Azure SQL**.
 2. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over elastische Pools weer geven door **Details weer geven** te selecteren op de tegel **data bases** .
 3. Selecteer in de tegel **data bases** de optie **elastische groep** in de vervolg keuzelijst **resource type** en selecteer vervolgens **maken**:
 
@@ -177,7 +177,7 @@ Wanneer u klaar bent met het configureren van de groep, kunt u op Toep assen kli
 
 In de Azure Portal kunt u het gebruik van een elastische pool en de data bases in die groep bewaken. U kunt ook een reeks wijzigingen aanbrengen in uw elastische pool en alle wijzigingen tegelijk verzenden. Deze wijzigingen omvatten het toevoegen of verwijderen van data bases, het wijzigen van de instellingen voor de elastische groep of het wijzigen van de data base-instellingen.
 
-Zoek en open een elastische groep in de portal om te beginnen met het bewaken van uw elastische pool. Er wordt eerst een scherm weer gegeven waarin u een overzicht krijgt van de status van uw elastische pool. Dit omvat:
+Zoek en open een elastische groep in de portal om te beginnen met het bewaken van uw elastische pool. U ziet eerst een scherm dat u een overzicht geeft van de status van uw elastische pool. Dit omvat:
 
 - Bewakings grafieken met het gebruik van resources van de elastische pool
 - Recente waarschuwingen en aanbevelingen, indien beschikbaar, voor de elastische pool

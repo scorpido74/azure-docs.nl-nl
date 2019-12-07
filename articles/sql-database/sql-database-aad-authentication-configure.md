@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 11/06/2019
-ms.openlocfilehash: 5830e0b7ee49a7d954dbdb3f897ee7ac5901c6a5
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 76ca8a5d781c22279ccad633cc7c5bc98d645df8
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421758"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901397"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Azure Active Directory verificatie met SQL configureren en beheren
 
@@ -128,7 +128,7 @@ Uw beheerde exemplaar heeft machtigingen nodig voor het lezen van Azure AD om ta
 
 5. Nadat de bewerking is voltooid, wordt in de rechter bovenhoek de volgende melding weer gegeven:
 
-    ![success](./media/sql-database-aad-authentication/success.png)
+    ![voltooid](./media/sql-database-aad-authentication/success.png)
 
 6. U kunt nu uw Azure AD-beheerder kiezen voor uw beheerde exemplaar. Selecteer op de pagina Active Directory-beheer de optie admin-opdracht **instellen** .
 
@@ -138,7 +138,7 @@ Uw beheerde exemplaar heeft machtigingen nodig voor het lezen van Azure AD om ta
 
    Op de pagina Active Directory beheer worden alle leden en groepen van uw Active Directory weer gegeven. Gebruikers of groepen die grijs worden weer gegeven, kunnen niet worden geselecteerd, omdat ze niet worden ondersteund als Azure AD-Administrators. Zie de lijst met ondersteunde beheerders in [Azure AD-functies en-beperkingen](sql-database-aad-authentication.md#azure-ad-features-and-limitations). Op rollen gebaseerd toegangs beheer (RBAC) is alleen van toepassing op de Azure Portal en wordt niet door gegeven aan SQL Server.
 
-    ![toevoegen-beheerder](./media/sql-database-aad-authentication/add-admin.png)
+    ![Azure Active Directory beheerder toevoegen](./media/sql-database-aad-authentication/add-azure-active-directory-admin.png)
 
 8. Selecteer boven aan de pagina Active Directory-beheer de optie **Opslaan**.
 
@@ -178,7 +178,7 @@ Als best practice voor bestaande Azure AD-beheerders voor MI gemaakt vóór GA e
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Als u Power shell-cmdlets wilt uitvoeren, moet Azure PowerShell zijn geïnstalleerd en worden uitgevoerd. Zie [How to install and configure Azure PowerShell](/powershell/azure/overview) (Azure PowerShell installeren en configureren) voor gedetailleerde informatie.
+Als u Power shell-cmdlets wilt uitvoeren, moet Azure PowerShell zijn geïnstalleerd en worden uitgevoerd. Zie voor gedetailleerde informatie [Installeren en configureren van Azure PowerShell](/powershell/azure/overview).
 
 > [!IMPORTANT]
 > De module Power shell Azure Resource Manager (RM) wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. De AzureRM-module blijft oplossingen ontvangen tot ten minste december 2020.  De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek. Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit.
@@ -238,11 +238,13 @@ De volgende twee procedures laten zien hoe u een Azure Active Directory beheerde
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Ga naar de [Azure-portal](https://portal.azure.com/) en selecteer in de rechterbovenhoek uw verbinding om een lijst met mogelijke Active Directories weer te geven. Kies de juiste Active Directory als de standaard-Azure AD. In deze stap wordt de aan het abonnement gekoppelde Active Directory gekoppeld aan de Azure SQL-server, zodat u zeker weet dat hetzelfde abonnement wordt gebruikt voor zowel Azure AD als SQL Server. (De Azure SQL-Server kan worden gehost op Azure SQL Database of Azure SQL Data Warehouse.) ![kiezen-AD][8]
+1. Ga naar de [Azure-portal](https://portal.azure.com/) en selecteer in de rechterbovenhoek uw verbinding om een lijst met mogelijke Active Directories weer te geven. Kies de juiste Active Directory als de standaard-Azure AD. In deze stap wordt de aan het abonnement gekoppelde Active Directory gekoppeld aan de Azure SQL-server, zodat u zeker weet dat hetzelfde abonnement wordt gebruikt voor zowel Azure AD als SQL Server. (De Azure SQL-server kan Azure SQL Database of Azure SQL Data Warehouse hosten.)
 
-2. Selecteer in het linkerdeel ster **alle services**en in het filter type in **SQL Server**. Selecteer **SQL-servers**.
+    ![ad-kiezen][8]
 
-    ![sqlservers. png](media/sql-database-aad-authentication/sqlservers.png)
+2. Zoek en selecteer **SQL Server**.
+
+    ![SQL-servers zoeken en selecteren](media/sql-database-aad-authentication/search-for-and-select-sql-servers.png)
 
     >[!NOTE]
     > Op deze pagina kunt u, voordat u **SQL-servers**selecteert, de **ster** naast de naam selecteren om de categorie te *favoriet* en **SQL-servers** aan de linkernavigatiebalk toe te voegen.
@@ -251,11 +253,11 @@ De volgende twee procedures laten zien hoe u een Azure Active Directory beheerde
 
 4. Selecteer op de pagina **Active Directory-beheerder** de optie **beheerder instellen**.
 
-    ![active directory selecteren](./media/sql-database-aad-authentication/select-active-directory.png)  
+    ![SQL-servers Active Directory beheerder instellen](./media/sql-database-aad-authentication/sql-servers-set-active-directory-admin.png)  
 
 5. Zoek op de pagina **Beheerder toevoegen** een gebruiker. Selecteer de gebruiker of groep die beheerder moet zijn en selecteer **Selecteren**. (Op de pagina Active Directory-beheerder ziet u alle leden en groepen van uw Active Directory.) Gebruikers of groepen die grijs zijn gekleurd, kunnen niet worden geselecteerd omdat ze niet worden ondersteund als beheerders voor Azure AD. (Zie de lijst met ondersteunde beheerders in de sectie **functies en beperkingen van Azure AD** van het [gebruik van Azure Active Directory verificatie voor verificatie met SQL database of SQL Data Warehouse](sql-database-aad-authentication.md).) Op rollen gebaseerd toegangs beheer (RBAC) is alleen van toepassing op de portal en wordt niet door gegeven aan SQL Server.
 
-    ![beheerder selecteren](./media/sql-database-aad-authentication/select-admin.png)  
+    ![Azure Active Directory beheerder selecteren](./media/sql-database-aad-authentication/select-azure-active-directory-admin.png)  
 
 6. Selecteer boven aan de pagina **Active Directory-beheerder** de optie **Opslaan**.
 
@@ -272,7 +274,7 @@ Als u later een beheerder wilt verwijderen, selecteert u aan de bovenkant van de
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Als u Power shell-cmdlets wilt uitvoeren, moet Azure PowerShell zijn geïnstalleerd en worden uitgevoerd. Zie [How to install and configure Azure PowerShell](/powershell/azure/overview) (Azure PowerShell installeren en configureren) voor gedetailleerde informatie. Voer de volgende Azure PowerShell opdrachten uit om een Azure AD-beheerder in te richten:
+Als u Power shell-cmdlets wilt uitvoeren, moet Azure PowerShell zijn geïnstalleerd en worden uitgevoerd. Zie voor gedetailleerde informatie [Installeren en configureren van Azure PowerShell](/powershell/azure/overview). Voer de volgende Azure PowerShell opdrachten uit om een Azure AD-beheerder in te richten:
 
 - Connect-AzAccount
 - Select-AzSubscription
@@ -436,7 +438,7 @@ Gebruik deze methode als u bent aangemeld bij Windows met behulp van uw Azure Ac
 
     ![De database naam selecteren][13]
 
-## <a name="active-directory-password-authentication"></a>Wachtwoord verificatie Active Directory
+## <a name="active-directory-password-authentication"></a>Wachtwoordverificatie via Active Directory
 
 Gebruik deze methode wanneer u verbinding maakt met een principal-naam van Azure AD met behulp van het door Azure AD beheerde domein. U kunt dit ook gebruiken voor federatieve accounts zonder toegang tot het domein, bijvoorbeeld wanneer u extern werkt.
 
@@ -470,7 +472,7 @@ conn.Open();
 
 Het sleutel woord connection string `Integrated Security=True` wordt niet ondersteund om verbinding te maken met Azure SQL Database. Wanneer u een ODBC-verbinding maakt, moet u spaties verwijderen en de verificatie instellen op ' ActiveDirectoryIntegrated '.
 
-### <a name="active-directory-password-authentication"></a>Wachtwoord verificatie Active Directory
+### <a name="active-directory-password-authentication"></a>Wachtwoordverificatie via Active Directory
 
 Als u verbinding wilt maken met een Data Base met behulp van geïntegreerde verificatie en een Azure AD-identiteit, moet het sleutel woord voor verificatie zijn ingesteld op Active Directory wacht woord. Het connection string moet gebruikers-ID/UID en wacht woord/PWD tref woorden en waarden bevatten. Het volgende C# code voorbeeld maakt gebruik van ADO .net.
 

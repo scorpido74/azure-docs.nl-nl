@@ -4,12 +4,12 @@ description: Meer informatie over container groepen in Azure Container Instances
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: bba0aa35ef52d498bdb2028c7180f01b6c5f81ec
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c4d5217fe96ca2669397bb7f2a94c6394c002534
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706318"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896585"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Container groepen in Azure Container Instances
 
@@ -68,7 +68,9 @@ Zie de eigenschap [ResourceRequirements][resource-requirements] in de container 
 
 ## <a name="networking"></a>Networking
 
-Container groepen delen een IP-adres en een poort naam ruimte op dat IP-adres. Om externe clients in staat te stellen een container binnen de groep te bereiken, moet u de poort op het IP-adres en uit de container zichtbaar maken. Omdat containers binnen de groep een poort naam ruimte delen, wordt poort toewijzing niet ondersteund. Containers in een groep kunnen elkaar via localhost bereiken op de poorten die ze hebben blootgesteld, zelfs als deze poorten niet extern worden weer gegeven op het IP-adres van de groep.
+Container groepen kunnen een extern IP-adres en een poort naam ruimte delen op dat IP-adres. Om externe clients in staat te stellen een container binnen de groep te bereiken, moet u de poort op het IP-adres en uit de container zichtbaar maken. Omdat containers binnen de groep een poort naam ruimte delen, wordt poort toewijzing niet ondersteund. 
+
+Binnen een container groep kunnen containers instanties elkaar via localhost bereiken op elke poort, zelfs als deze poorten niet extern worden weer gegeven op het IP-adres van de groep of in de container.
 
 Implementeer eventueel container groepen in een [virtueel Azure-netwerk][virtual-network] (preview) zodat containers veilig kunnen communiceren met andere resources in het virtuele netwerk.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 818ebbf15cdbc985c7a1cc14597dc538e62894cf
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c0b30ecb9bc2b029141e528139f2b8a308c3a8dd
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793389"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892835"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events voor Linux-Vm's
 
@@ -50,7 +50,7 @@ Scheduled Events bevat gebeurtenissen in de volgende use-cases:
 - Door de gebruiker geïnitieerd onderhoud (bijvoorbeeld: een gebruiker start een virtuele machine opnieuw of implementeert deze)
 - [Spot-VM](spot-vms.md) en verwijderingen van exemplaren van de [schaalset](../../virtual-machine-scale-sets/use-spot.md) .
 
-## <a name="the-basics"></a>De basis beginselen  
+## <a name="the-basics"></a>De basisbeginselen  
 
   Metadata Service geeft informatie over het uitvoeren van Vm's met behulp van een REST-eind punt dat toegankelijk is vanuit de VM. De informatie is beschikbaar via een nonroutable IP-adres, zodat het niet buiten de virtuele machine wordt weer gegeven.
 
@@ -74,9 +74,9 @@ Als de virtuele machine niet is gemaakt binnen een Virtual Network, zijn de stan
 ### <a name="version-and-region-availability"></a>Beschik baarheid van versie en regio
 Er is een versie van de Scheduled Events-service. Versies zijn verplicht. de huidige versie is `2017-11-01`.
 
-| Version | Release type | Regio's | Opmerkingen bij de release | 
+| Version | Releasetype | Regio's | Opmerkingen bij de release | 
 | - | - | - | - | 
-| 2017-11-01 | Algemene beschikbaarheid | Alles | <li> Er is ondersteuning toegevoegd voor de gebeurtenis ' preempt ' voor VM-verwijdering met lage prioriteit<br> | 
+| 2017-11-01 | Algemene beschikbaarheid | Alles | <li> Er is ondersteuning toegevoegd voor de gebeurtenis ' preempt ' voor VM-verwijdering van de publicatie<br> | 
 | 2017-08-01 | Algemene beschikbaarheid | Alles | <li> Achterliggend onderstrepings teken verwijderd uit resource namen voor IaaS-Vm's<br><li>Er is een vereiste voor de meta gegevens header afgedwongen voor alle aanvragen | 
 | 2017-03-01 | Preview | Alles | <li>Eerste release
 
@@ -128,8 +128,8 @@ Als er geplande gebeurtenissen zijn, bevat het antwoord een matrix met gebeurten
 ### <a name="event-properties"></a>Gebeurtenis eigenschappen
 |Eigenschap  |  Beschrijving |
 | - | - |
-| Gebeurtenis | De wereld wijde unieke id voor deze gebeurtenis. <br><br> Voorbeeld: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| Type | Dit heeft invloed op deze gebeurtenis. <br><br> Waarden: <br><ul><li> `Freeze`: de virtuele machine is gepland om enkele seconden te worden onderbroken. De CPU-en netwerk verbinding wordt mogelijk onderbroken, maar er is geen invloed op het geheugen of geopende bestanden.<li>`Reboot`: de virtuele machine is gepland voor opnieuw opstarten (niet-permanent geheugen gaat verloren). <li>`Redeploy`: de virtuele machine is ingepland om te worden verplaatst naar een ander knoop punt (tijdelijke schijven gaan verloren). <li>`Preempt`: de virtuele machine met lage prioriteit wordt verwijderd (tijdelijke schijven gaan verloren).|
+| Gebeurtenis-id | De wereld wijde unieke id voor deze gebeurtenis. <br><br> Voorbeeld: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
+| EventType | Dit heeft invloed op deze gebeurtenis. <br><br> Waarden: <br><ul><li> `Freeze`: de virtuele machine is gepland om enkele seconden te worden onderbroken. De CPU-en netwerk verbinding wordt mogelijk onderbroken, maar er is geen invloed op het geheugen of geopende bestanden.<li>`Reboot`: de virtuele machine is gepland voor opnieuw opstarten (niet-permanent geheugen gaat verloren). <li>`Redeploy`: de virtuele machine is ingepland om te worden verplaatst naar een ander knoop punt (tijdelijke schijven gaan verloren). <li>`Preempt`: de locatie van de virtuele machine wordt verwijderd (tijdelijke schijven gaan verloren).|
 | ResourceType | Type resource waarop deze gebeurtenis betrekking heeft. <br><br> Waarden: <ul><li>`VirtualMachine`|
 | Bronnen| Lijst met resources die deze gebeurtenis beïnvloedt. De lijst is gegarandeerd dat machines uit Maxi maal één [update domein](manage-availability.md)worden opgenomen, maar bevat mogelijk niet alle computers in de UD. <br><br> Voorbeeld: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | De status van deze gebeurtenis. <br><br> Waarden: <ul><li>`Scheduled`: deze gebeurtenis is gepland om te starten na het tijdstip dat is opgegeven in de eigenschap `NotBefore`.<li>`Started`: deze gebeurtenis is gestart.</ul> Er wordt nooit `Completed` of een vergelijk bare status gegeven. De gebeurtenis wordt niet meer geretourneerd wanneer de gebeurtenis is voltooid.
@@ -138,7 +138,7 @@ Als er geplande gebeurtenissen zijn, bevat het antwoord een matrix met gebeurten
 ### <a name="event-scheduling"></a>Gebeurtenissen plannen
 Elke gebeurtenis wordt in de toekomst gepland op basis van het gebeurtenis type. Deze tijd wordt weer gegeven in de eigenschap `NotBefore` van een gebeurtenis. 
 
-|Type  | Minimale kennisgeving |
+|EventType  | Minimale kennisgeving |
 | - | - |
 | Kering| 15 minuten |
 | Opnieuw opstarten | 15 minuten |

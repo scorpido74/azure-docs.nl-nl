@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: 5f138314fd536d0264f8d40e1ac78da954c19e74
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: afe2ac60d7b945dd1bb3b8841ae0a7605865f29f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74030701"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893379"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens
 
@@ -30,7 +30,7 @@ De core-API is gelijkmatig op alle platforms, met uitzonde ring van enkele varia
 | [`TrackMetric`](#trackmetric) |Prestatie metingen zoals wachtrij lengten die niet gerelateerd zijn aan specifieke gebeurtenissen. |
 | [`TrackException`](#trackexception) |Logboek registratie van uitzonde ringen voor diagnose. Traceren waar deze zich voordoen ten opzichte van andere gebeurtenissen en de stack traceringen onderzoeken. |
 | [`TrackRequest`](#trackrequest) |Registratie van de frequentie en de duur van server aanvragen voor prestatie analyse. |
-| [`TrackTrace`](#tracktrace) |Diagnostische logboek berichten. U kunt ook logboeken van derden vastleggen. |
+| [`TrackTrace`](#tracktrace) |Diagnostische logboek berichten van resource. U kunt ook logboeken van derden vastleggen. |
 | [`TrackDependency`](#trackdependency) |Registratie van de duur en frequentie van aanroepen naar externe onderdelen waarvan uw app afhankelijk is. |
 
 U kunt [Eigenschappen en metrische gegevens](#properties) aan de meeste van deze telemetrie-aanroepen koppelen.
@@ -1168,7 +1168,7 @@ Als u een van deze waarden zelf instelt, kunt u overwegen om de relevante regel 
 * **Sessie**: de sessie van de gebruiker. De ID wordt ingesteld op een gegenereerde waarde, die wordt gewijzigd wanneer de gebruiker enige tijd niet actief is geweest.
 * **Gebruiker**: gebruikers informatie.
 
-## <a name="limits"></a>Limieten
+## <a name="limits"></a>Beperkingen
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 
@@ -1188,8 +1188,8 @@ Zie [gegevens retentie en privacy](../../azure-monitor/app/data-retention-privac
 * [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
 * [ASP.NET](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [Windows Server-pakketten](https://github.com/Microsoft/applicationInsights-dotnet-server)
-* [Java-SDK](https://github.com/Microsoft/ApplicationInsights-Java)
-* [Node.js-SDK](https://github.com/Microsoft/ApplicationInsights-Node.js)
+* [Java SDK](https://github.com/Microsoft/ApplicationInsights-Java)
+* [Node.js SDK](https://github.com/Microsoft/ApplicationInsights-Node.js)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
 

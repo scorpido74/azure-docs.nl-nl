@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a1cba2c4572b2f898f631aefbbf316fae1195ac
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596359"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900376"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Apparaat-id en desktop-virtualisatie
 
@@ -44,26 +44,27 @@ Voordat u apparaat-id's configureert in azure AD voor uw VDI-omgeving, moet u ve
 | Type apparaat-id | Identiteits infrastructuur | Windows-apparaten | VDI-platform versie | Ondersteund |
 | --- | --- | --- | --- | --- |
 | Hybride Azure AD-join | Federatie | Windows huidige * * * en Windows down level * * * * | Permanent | Ja |
-|   |   |   | Niet-persistent | Ja |
-|   | Beheerd * * | Windows huidige en Windows down level | Permanent | Ja |
-|   |   | Downlevel Windows | Niet-persistent | Ja |
 |   |   | Windows actueel | Niet-persistent | Nee |
-| Toegevoegd aan Azure AD | Federatie | Windows actueel | Permanent | Nee |
+|   |   | Downlevel Windows | Niet-persistent | Ja |
+|   | Beheerd * * | Windows huidige en Windows down level | Permanent | Ja |
+|   |   | Windows actueel | Niet-persistent | Nee |
+|   |   | Downlevel Windows | Niet-persistent | Ja |
+| Toegevoegd aan Azure AD | Federatief | Windows actueel | Permanent | Nee |
 |   |   |   | Niet-persistent | Nee |
 |   | Managed | Windows actueel | Permanent | Nee |
 |   |   |   | Niet-persistent | Nee |
-| Geregistreerde Azure AD | Federatie | Windows actueel | Permanent | Nee |
+| Azure AD-geregistreerd | Federatief | Windows actueel | Permanent | Nee |
 |   |   |   | Niet-persistent | Nee |
 |   | Managed | Windows actueel | Permanent | Nee |
 |   |   |   | Niet-persistent | Nee |
 
 \* een infra structuur voor **federatieve** identiteiten is een omgeving met een id-provider, zoals AD FS of een andere IDP van derden.
 
-\* \* een omgeving met **beheerde** identiteits infrastructuur vertegenwoordigt een omgeving met Azure AD als de ID-provider die is geïmplementeerd met een [hash-synchronisatie (PHS)](../hybrid/whatis-phs.md) of [Pass Through-verificatie (PTA)](../hybrid/how-to-connect-pta.md) met [ naadloze eenmalige aanmelding](../hybrid/how-to-connect-sso.md).
+\*\* een omgeving met **beheerde** identiteits infrastructuur vertegenwoordigt een omgeving met Azure AD als de ID-provider die is geïmplementeerd met een [PHS (Password Hash Sync)](../hybrid/whatis-phs.md) of [Pass Through-verificatie (PTA)](../hybrid/how-to-connect-pta.md) met [naadloze eenmalige aanmelding](../hybrid/how-to-connect-sso.md).
 
-\* \* \* **Windows huidige** apparaten vertegenwoordigen Windows 10, windows server 2016 en windows server 2019.
+\*\*\* **Windows huidige** apparaten vertegenwoordigen Windows 10, windows server 2016 en windows server 2019.
 
-\* \* \* \* **Windows-apparaten op lagere niveaus** Windows 7, Windows 8,1, windows server 2008 R2, Windows Server 2012 en windows server 2012 R2 vertegenwoordigen. Zie [ondersteuning voor Windows 7](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support)voor meer informatie over ondersteuning voor Windows 7. Zie voor ondersteunings informatie over Windows Server 2008 R2 voor [bereiding op Windows server 2008 end of support](https://www.microsoft.com/cloud-platform/windows-server-2008).
+\*\*\*\* **Windows-apparaten op lagere niveaus** Windows 7, Windows 8,1, windows server 2008 R2, Windows Server 2012 en windows server 2012 R2 vertegenwoordigen. Zie [ondersteuning voor Windows 7](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support)voor meer informatie over ondersteuning voor Windows 7. Zie voor ondersteunings informatie over Windows Server 2008 R2 voor [bereiding op Windows server 2008 end of support](https://www.microsoft.com/cloud-platform/windows-server-2008).
 
 ## <a name="microsofts-guidance"></a>Richt lijn van micro soft
 
@@ -79,8 +80,7 @@ Als u een moment opname van een virtuele machine (VM) vertrouwt om extra Vm's te
 Bij het implementeren van niet-persistente VDI, moeten IT-beheerders bijna de aandacht best Eden aan het beheer van verouderde apparaten in azure AD. Micro soft adviseert IT-beheerders de volgende instructies uit te voeren. Als u dit niet doet, zal uw directory veel verouderde Hybrid Azure AD-apparaten hebben die zijn geregistreerd bij het niet-permanente VDI-platform.
 
 - Maak en gebruik een voor voegsel voor de weergave naam van de computer die het bureau blad als VDI-gebaseerd geeft.
-- Implementeer de volgende opdrachten als onderdeel van het afmeldings script. Met deze opdrachten wordt een beste oproep naar Azure AD geactiveerd om het apparaat te verwijderen.
-   - Voor Windows-huidige apparaten – dsregcmd. exe/Leave
+- Implementeer de volgende opdracht als onderdeel van het afmeldings script. Met deze opdracht wordt een beste poging tot Azure AD geactiveerd om het apparaat te verwijderen.
    - Voor Windows-apparaten op lagere niveaus: autowerkplek. exe/Leave
 - Definieer en implementeer het proces voor het [beheren van verouderde apparaten](manage-stale-devices.md).
    - Zodra u een strategie hebt voor het identificeren van uw niet-permanente hybride Azure AD-apparaten, kunt u zich op het opschonen van deze apparaten agressief maken om ervoor te zorgen dat uw Directory niet wordt gebruikt met veel verouderde apparaten.

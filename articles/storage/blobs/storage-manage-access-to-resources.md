@@ -1,29 +1,30 @@
 ---
-title: Open bare Lees toegang voor containers en blobs in Azure Blob-opslag inschakelen | Microsoft Docs
+title: Open bare Lees toegang voor containers en blobs beheren
+titleSuffix: Azure Storage
 description: Meer informatie over het maken van containers en blobs beschikbaar voor anonieme toegang en hoe u deze via een programma kunt openen.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 09/19/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: d0e3121fe773a9725eb7cfd9e8b14d0ed86f3fbb
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 4d9a54c220861b19d67b07998e609ee72897446a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673305"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892479"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Anonieme leestoegang tot containers en blobs beheren
 
-U kunt anonieme, open bare Lees toegang inschakelen voor een container en de bijbehorende blobs in Azure Blob-opslag. Door dit te doen, kunt u alleen-lezen toegang verlenen aan deze resources zonder uw account sleutel te delen en zonder een Shared Access Signature (SAS).
+U kunt anonieme, openbare leestoegang inschakelen voor een container en de bijbehorende blobs in Azure Blob-opslag. Door dit te doen, kunt u alleen-lezentoegang verlenen aan deze resources zonder dat u uw accountsleutel hoeft te delen en zonder dat een handtekening voor gedeelde toegang (SAS) nodig is.
 
 Open bare Lees toegang is het beste voor scenario's waarin u wilt dat bepaalde blobs altijd beschikbaar zijn voor anonieme lees toegang. Voor meer nauw keurige controle kunt u een gedeelde toegangs handtekening maken. Met hand tekeningen voor gedeelde toegang kunt u beperkte toegang bieden met behulp van verschillende machtigingen, voor een specifieke periode. Zie [using Shared Access signatures (SAS) (Engelstalig) in azure Storage](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie over het maken van hand tekeningen voor gedeelde toegang.
 
 ## <a name="grant-anonymous-users-permissions-to-containers-and-blobs"></a>Anonieme gebruikers machtigingen verlenen aan containers en blobs
 
-Standaard kan een container en alle blobs in deze alleen worden geopend door een gebruiker die de juiste machtigingen heeft gekregen. Als u anonieme gebruikers lees toegang wilt verlenen voor een container en de bijbehorende blobs, kunt u het open bare toegangs niveau van de container instellen. Wanneer u open bare toegang verleent aan een container, kunnen anonieme gebruikers blobs lezen binnen een openbaar toegankelijke container zonder de aanvraag te autoriseren.
+De standaardinstelling is dat een container en alle bijbehorende blobs alleen toegankelijk zijn voor een gebruiker die over de juiste machtigingen beschikt. Als u anonieme gebruikers leestoegang wilt geven voor een container en de bijbehorende blobs, kunt u het niveau voor openbare toegang van de container instellen. Wanneer u open bare toegang verleent aan een container, kunnen anonieme gebruikers blobs lezen binnen een openbaar toegankelijke container zonder de aanvraag te autoriseren.
 
 U kunt een container met de volgende machtigingen configureren:
 
@@ -138,4 +139,4 @@ public static void DownloadBlobAnonymously()
 
 - [Toegang tot Azure Storage autoriseren](../common/storage-auth.md)
 - [Beperkte toegang verlenen tot Azure Storage-resources met behulp van Shared Access signatures (SAS)](../common/storage-sas-overview.md)
-- [REST API BLOB-service](/rest/api/storageservices/blob-service-rest-api)
+- [Blob Service REST API](/rest/api/storageservices/blob-service-rest-api)

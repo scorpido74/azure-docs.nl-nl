@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/06/2019
+ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 345822847ddd60794cd912ccb52c14f6e240cd66
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 80c961c1aa4da199fa87b97bc8e0a37e60c2235f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075419"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74903045"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Wordt het aangepaste beleid voor IPsec/IKE op alle Azure VPN Gateway-SKU's ondersteund?
 Aangepaste IPsec/IKE-beleid wordt ondersteund op alle Azure Sku's, met uitzonde ring van de basis-SKU.
@@ -110,7 +110,7 @@ IKEv1-verbindingen kunnen worden gemaakt op alle RouteBased VPN-type Sku's, met 
 Ja. De door Voer tussen IKEv1 en IKEv2-verbindingen wordt ondersteund.
 
 ### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>Kan ik geikev1e site-naar-site-verbindingen hebben op de Basic-Sku's van het VPN-type RouteBased?
-Nee. Alle RouteBased VPN-Sku's behalve Basic Sku's van het VPN-type op basis van route bieden ondersteuning voor IKEv1-verbindingen voor site-naar-site.
+Nee. De basis-SKU biedt geen ondersteuning voor dit.
 
 ### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>Kan ik het type verbindings protocol wijzigen nadat de verbinding is gemaakt (IKEv1 naar IKEv2 en vice versa)?
 Nee. Als de verbinding tot stand is gebracht, kunnen IKEv1/IKEv2-protocollen niet worden gewijzigd. U moet een nieuwe verbinding met het gewenste protocol type verwijderen en opnieuw maken.

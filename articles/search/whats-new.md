@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 247378461a99d42f21a67a2c0aebc7019727f3a0
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b1df328f151a4085ec0aadd1b880048f81483a51
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555148"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901328"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Wat is er nieuw in azure Cognitive Search
 
@@ -29,7 +29,11 @@ API-versies, Nuget-pakketten, naam ruimten en eind punten zijn ongewijzigd. Uw b
 
 ## <a name="feature-announcements"></a>Aankondigingen van functies
 
-4 november 2019-Ignite-conferentie
+### <a name="december-2019"></a>December 2019
+
++ [App maken (preview)](search-create-app-portal.md) is een nieuwe wizard in de portal waarmee een DOWNLOADBAAR HTML-bestand wordt gegenereerd. Het bestand wordt geleverd met een Inge sloten script dat een operationele ' localhost '-stijl web-app weergeeft, gebonden aan een index in uw zoek service. Pagina's kunnen in de wizard worden geconfigureerd en bevatten een zoek balk, een resultaat gebied, een navigatie naar een terzijde en typeahead-query ondersteuning. U kunt de HTML offline wijzigen om de werk stroom of het uiterlijk te verlengen of aan te passen.
+
+### <a name="november-2019---ignite-conference"></a>November 2019-Ignite-conferentie
 
 + Met [incrementele indexering (preview)](cognitive-search-incremental-indexing-conceptual.md) kunt u kiezen welke stappen opnieuw moeten worden verwerkt wanneer u wijzigingen aanbrengt in een verrijkings pijplijn. Incrementeel indexeren is handig als u afbeeldings inhoud hebt die u eerder hebt geanalyseerd. De uitvoer van een kost bare analyse wordt opgeslagen en vervolgens gebruikt als basis voor aanvullende indexering of verrijking.
 
@@ -44,7 +48,7 @@ API-versies, Nuget-pakketten, naam ruimten en eind punten zijn ongewijzigd. Uw b
 
 + [Azure data Lake Storage Gen2 (preview)](search-howto-index-azure-data-lake-storage.md), [Cosmos DB Gremlin-API (preview)](search-howto-index-cosmosdb.md)en [Cosmos DB Cassandra-API (preview)](search-howto-index-cosmosdb.md) worden nu ondersteund in Indexeer functies. U kunt zich aanmelden met [dit formulier](https://aka.ms/azure-cognitive-search/indexer-preview). U ontvangt een bevestigings-e-mail zodra u deze hebt geaccepteerd in het preview-programma.
 
-24 2019 juli
+### <a name="july-2019"></a>Juli 2019
 
 + Algemeen beschikbaar in [Azure Government Cloud](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search).
 

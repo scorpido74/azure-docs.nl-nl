@@ -1,20 +1,21 @@
 ---
-title: Een gebruikers delegering SA'S maken voor een container of BLOB met Power shell (preview)-Azure Storage
-description: Meer informatie over het maken van een Shared Access Signature (SAS) met behulp van Azure Active Directory referenties in Azure Storage met behulp van Power shell.
+title: Power shell gebruiken om een gebruikers delegering SA'S te maken voor een container of BLOB
+titleSuffix: Azure Storage
+description: Meer informatie over het maken van een SAS (preview) voor gebruikers overdracht met Azure Active Directory referenties met behulp van Power shell.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 08/29/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 0164c97adf720a618179908298223c54bf48824e
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 5f4947921a77f2bc94d1810c9b1d1951431d3d71
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673345"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892512"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>Een gebruikers delegering SA'S maken voor een container of BLOB met Power shell (preview)
 
@@ -31,7 +32,7 @@ Als u Power shell wilt gebruiken voor het maken van een SA'S voor het delegeren 
 1. Eerdere installaties van Azure PowerShell verwijderen:
 
     - Verwijder eerdere installaties van Azure PowerShell van Windows met de instelling **Apps & onderdelen** onder **instellingen**.
-    - Verwijder alle **Azure** -modules `%Program Files%\WindowsPowerShell\Modules`uit.
+    - Verwijder alle **Azure** -modules van `%Program Files%\WindowsPowerShell\Modules`.
 
 1. Zorg ervoor dat de meest recente versie van PowerShellGet is geïnstalleerd. Open een Windows Power shell-venster en voer de volgende opdracht uit om de meest recente versie te installeren:
 
@@ -102,7 +103,7 @@ Wanneer u een SAS voor gebruikers overdracht met Azure PowerShell maakt, wordt d
 
 Omdat het maximale interval waarover de gebruikers overdracht-sleutel geldig is, zeven dagen na de begin datum is, moet u een verloop tijd opgeven voor de SA'S die binnen zeven dagen na de begin tijd vallen. De SAS is ongeldig nadat de gebruikers delegerings sleutel is verlopen, waardoor een SAS met een verloop tijd van meer dan zeven dagen nog geldig is gedurende 7 dagen.
 
-Als u een gebruikers delegering SAS voor een container of BLOB met Azure PowerShell wilt maken, moet u eerst een nieuw Azure Storage context-object maken, waarbij u de para meter `-UseConnectedAccount` opgeeft. De para meter `-UseConnectedAccount` geeft aan dat de opdracht het context object maakt onder het Azure AD-account waarmee u zich hebt aangemeld.
+Als u een gebruikers delegering SAS voor een container of BLOB met Azure PowerShell wilt maken, moet u eerst een nieuw Azure Storage context-object maken, waarbij u de para meter `-UseConnectedAccount` opgeeft. De para meter `-UseConnectedAccount` geeft aan dat met de opdracht het context object wordt gemaakt onder het Azure AD-account waarmee u zich hebt aangemeld.
 
 Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
 

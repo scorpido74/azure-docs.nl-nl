@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 48357adccea201aaeb99863b39e9c8cabce915ce
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 4e9779f612bc4a2521459bf76a6e2b399fc89e07
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262056"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894127"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor gegevens platform
 
@@ -48,7 +48,7 @@ Lees meer over de metrische gegevens van Azure Monitor, inclusief de brongegeven
 Logboeken in Azure Monitor worden opgeslagen in een Log Analytics werk ruimte die is gebaseerd op [Azure Data Explorer](/azure/data-explorer/) en die een krachtige analyse-engine en een [uitgebreide query taal](/azure/kusto/query/)biedt. Logboeken bevatten doorgaans voldoende informatie om te voorzien in de volledige context van het probleem dat wordt geïdentificeerd en zijn waardevol voor het identificeren van het hoofd geval van problemen.
 
 > [!NOTE]
-> Het is belang rijk om onderscheid te maken tussen Azure Monitor logboeken en bronnen van logboek gegevens in Azure. Gebeurtenissen op abonnements niveau in Azure worden bijvoorbeeld geschreven naar een [activiteiten logboek](activity-logs-overview.md) dat u kunt weer geven in het menu Azure monitor. De meeste resources schrijven operationele informatie naar een [diagnostisch logboek](resource-logs-overview.md) dat u kunt door sturen naar verschillende locaties. Azure Monitor-Logboeken is een platform voor gegevens in een logboek waarbij activiteiten logboeken en Diagnostische logboeken Samen met andere bewakings gegevens worden verzameld om een diepe analyse te bieden over uw hele set resources.
+> Het is belang rijk om onderscheid te maken tussen Azure Monitor logboeken en bronnen van logboek gegevens in Azure. Gebeurtenissen op abonnements niveau in Azure worden bijvoorbeeld geschreven naar een [activiteiten logboek](activity-logs-overview.md) dat u kunt weer geven in het menu Azure monitor. De meeste resources schrijven operationele informatie naar een [bron logboek](resource-logs-overview.md) dat u kunt door sturen naar verschillende locaties. Azure Monitor-Logboeken is een platform voor gegevens registratie dat activiteiten logboeken en resource logboeken verzamelt samen met andere bewakings gegevens om een diepe analyse te bieden in uw hele set resources.
 
 
  U kunt [logboek query's](../log-query/log-query-overview.md) interactief gebruiken met [Log Analytics](../log-query/portals.md) in de Azure portal of de resultaten toevoegen aan een [Azure-dash board](../learn/tutorial-app-dashboards.md) voor visualisatie in combi natie met andere gegevens. U kunt ook [logboek waarschuwingen](alerts-log.md) maken waarmee een waarschuwing wordt geactiveerd op basis van de resultaten van een plannings query.
@@ -70,11 +70,11 @@ In de volgende tabel worden metrische gegevens en Logboeken in Azure Monitor ver
 | Kenmerk  | Metrische gegevens | Logboeken |
 |:---|:---|:---|
 | Voordelen | Licht gewicht en geschikt voor realtime scenario's zoals waarschuwingen. Ideaal voor snelle detectie van problemen. | Geanalyseerd met uitgebreide query taal. Ideaal voor een grondige analyse en het identificeren van de hoofd oorzaak. |
-| Data | Alleen numerieke waarden | Tekst of numerieke gegevens |
+| Gegevens | Alleen numerieke waarden | Tekst of numerieke gegevens |
 | Structuur | Standaardset eigenschappen, waaronder de voorbeeld tijd, de bron die wordt bewaakt, een numerieke waarde. Sommige metrische gegevens bevatten meerdere dimensies voor verdere definitie. | Unieke set eigenschappen, afhankelijk van het logboek type. |
-| Collection | Verzameld met regel matige tussen pozen. | Kan sporadisch worden verzameld als gebeurtenissen een record activeren die moet worden gemaakt. |
+| Verzameling | Verzameld met regel matige tussen pozen. | Kan sporadisch worden verzameld als gebeurtenissen een record activeren die moet worden gemaakt. |
 | Weer geven in Azure Portal | Metrics Explorer | Log Analytics |
-| Gegevens bronnen bevatten | De metrische gegevens van het platform worden verzameld van Azure-resources.<br>Toepassingen die worden bewaakt door Application Insights.<br>Aangepast gedefinieerd door toepassing of API. | Toepassings-en diagnose Logboeken.<br>Bewakings oplossingen.<br>Agents en VM-extensies.<br>Toepassings aanvragen en-uitzonde ringen.<br>Azure Security Center.<br>Data Collector-API. |
+| Gegevens bronnen bevatten | De metrische gegevens van het platform worden verzameld van Azure-resources.<br>Toepassingen die worden bewaakt door Application Insights.<br>Aangepast gedefinieerd door toepassing of API. | Toepassings-en bron Logboeken.<br>Bewakings oplossingen.<br>Agents en VM-extensies.<br>Toepassings aanvragen en-uitzonde ringen.<br>Azure Security Center.<br>Data Collector-API. |
 
 ## <a name="collect-monitoring-data"></a>Bewakings gegevens verzamelen
 Verschillende [gegevens bronnen voor Azure monitor](data-sources.md) schrijven naar een log Analytics-werk ruimte (Logboeken) of de data base van de Azure monitor metriek (metrisch) of beide. Sommige bronnen schrijven rechtstreeks naar deze gegevens archieven, terwijl andere kunnen schrijven naar een andere locatie, zoals Azure Storage, en een bepaalde configuratie nodig heeft om Logboeken of metrieken te vullen. 

@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 4d150a1f6793cc20d58bebc67d5c6b58c03139d4
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 2bb275b1ca129d2381fb89fcbe0111c573d4a8e7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304714"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893345"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Metrische gegevens en logboekgegevens van Azure archiveren met behulp van Azure Storage
 
@@ -38,9 +38,9 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-## <a name="create-a-storage-account"></a>Een opslagaccount maken
+## <a name="create-a-storage-account"></a>Maak een opslagaccount
 
 U moet eerst een opslagaccount instellen waarin de bewakingsgegevens worden gearchiveerd. Daarvoor [volgt u deze stappen](../../storage/common/storage-quickstart-create-account.md).
 
@@ -70,7 +70,7 @@ Bewakingsgegevens uit uw abonnement worden nu doorgestuurd naar het opslagaccoun
 
 ## <a name="route-resource-data-to-the-storage-account"></a>Resourcegegevens doorsturen naar het opslagaccount
 
-Nu gaan we gegevens op resourceniveau (metrische gegevens voor resources en diagnostische logboeken) zodanig configureren dat ze worden doorgestuurd naar het opslagaccount door **instellingen voor resourcediagnose** te definiëren.
+Nu gaan we gegevens op resource niveau configureren (resource metrieken en resource Logboeken) om te worden doorgestuurd naar het opslag account door **Diagnostische instellingen voor bronnen**in te stellen.
 
 1. Klik op de knop **Controle** in de linkernavigatielijst en klik op **Diagnostische instellingen**. Hier kunt u een lijst zien van alle resources in uw abonnement die bewakingsgegevens via Azure Monitor genereren. Als er geen resources in deze lijst staan, kunt u [een logische app maken](../../logic-apps/quickstart-create-first-logic-app-workflow.md) voordat u verdergaat. Zodoende beschikt u over een resource waarvoor u een diagnostische instelling kunt configureren.
 
@@ -103,7 +103,7 @@ Bewakingsgegevens uit uw resource worden nu doorgestuurd naar het opslagaccount.
 > [!NOTE]
 > Het verzenden van multidimensionale metrische gegevens via diagnostische instellingen wordt momenteel niet ondersteund. Metrische gegevens met dimensies worden geëxporteerd als platte eendimensionale metrische gegevens, als totaal van alle dimensiewaarden.
 >
-> *Een voorbeeld*: de metriek 'Binnenkomende berichten' voor een Event Hub kan worden verkend en uitgezet op wachtrijniveau. Wanneer de waarde wordt geëxporteerd via diagnostische instellingen, wordt deze echter voorgesteld als alle binnenkomende berichten voor alle wachtrijen in de Event Hub.
+> *Een voorbeeld*: de meetwaarde 'Binnenkomende berichten' voor een Event Hub kan worden verkend en uitgezet op wachtrijniveau. Wanneer de waarde wordt geëxporteerd via diagnostische instellingen, wordt deze echter voorgesteld als alle binnenkomende berichten voor alle wachtrijen in de Event Hub.
 >
 >
 
@@ -162,7 +162,7 @@ Als u de voorgaande stappen hebt gevolgd, worden gegevens nu doorgestuurd naar u
 
 5. Ga naar het bestand PT1H.json door te klikken in de containers voor resource-id, datum en tijd. Klik op het bestand PT1H.json en op **Downloaden**. Elke PT1H.json-blob bevat een JSON-blob van gebeurtenissen die hebben plaatsgevonden binnen het uur dat is opgegeven in de blob-URL (bijvoorbeeld, h=12). Tijdens het huidige uur worden gebeurtenissen toegevoegd aan het bestand PT1H.json wanneer deze zich voordoen. De minuutwaarde (m=00) is altijd 00 omdat logboekgebeurtenissen worden onderverdeeld in afzonderlijke blobs per uur.
 
-   U kunt nu de JSON-gebeurtenis zien die in het opslagaccount werd opgeslagen. Voor diagnostische logboeken voor resources is de notatie voor de blobs:
+   U kunt nu de JSON-gebeurtenis zien die in het opslagaccount werd opgeslagen. Voor resource-Resource Logboeken is de indeling voor de blobs:
 
    insights-logs-{categorienaam logboek}/resourceId=/{resource-id}/y={jaar als vier cijfers}/m={maand als twee cijfers}/d={dag als twee cijfers}/h={uur als twee cijfers in 24-uurs notatie}/m=00/PT1H.json
 

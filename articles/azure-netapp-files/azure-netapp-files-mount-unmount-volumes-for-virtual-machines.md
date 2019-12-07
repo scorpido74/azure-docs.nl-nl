@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 12/05/2019
 ms.author: b-juche
-ms.openlocfilehash: 84496fbc8a415171172d0a138f647ecb0310b6c7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7f1e9500a9268e0fba054f7065e858cd801aca7b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173587"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894093"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Een volume voor Windows- of Linux-VM's koppelen of ontkoppelen 
 
@@ -41,6 +41,12 @@ U kunt indien nodig een volume koppelen of ontkoppelen voor virtuele Windows-of 
     * `$ANFIP` is het IP-adres van het Azure NetApp Files volume dat op de Blade met de volume-eigenschappen is gevonden.
     * `$FILEPATH` het exportpad van het Azure NetApp Files volume is.
     * `$MOUNTPOINT` is de map die is gemaakt op de Linux-host die wordt gebruikt om de NFS-export te koppelen.
+
+4. Als u het volume aan Windows wilt koppelen met behulp van NFS:
+
+    a. Koppel het volume eerst aan een UNIX-of Linux-VM.  
+    b. Voer een `chmod 777` of `chmod 775` opdracht uit op het volume.  
+    c. Koppel het volume via de NFS-client in Windows.
 
 ## <a name="next-steps"></a>Volgende stappen
 

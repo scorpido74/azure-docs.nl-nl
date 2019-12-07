@@ -1,22 +1,22 @@
 ---
-title: Gegevens in Azure Data Lake Storage Gen1 laden met behulp van Azure Data Factory
+title: Gegevens laden in Azure Data Lake Storage Gen1
 description: Azure Data Factory gebruiken om gegevens te kopi√´ren naar Azure Data Lake Storage Gen1
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: b8e5841e6869bd6f19b07bf71434de809cdcb74f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: adad770926b23e0529d5a6e08605a338d958ae09
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672723"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892954"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Gegevens in Azure Data Lake Storage Gen1 laden met behulp van Azure Data Factory
 
@@ -42,7 +42,7 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
 * Data Lake Storage Gen1 account: als u geen Data Lake Storage Gen1 account hebt, raadpleegt u de instructies in [een Data Lake Storage gen1-account maken](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account).
 * Amazon S3: in dit artikel wordt beschreven hoe u gegevens kopieert van Amazon S3. U kunt andere gegevens archieven gebruiken door vergelijk bare stappen te volgen.
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 1. Selecteer in het menu aan de linkerkant **een resource maken** > **Analytics** > **Data Factory**:
    
@@ -50,7 +50,7 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
 
 2. Geef op de pagina **nieuw Data Factory** waarden op voor de velden die worden weer gegeven in de volgende afbeelding: 
       
-   ![Pagina nieuwe data factory](./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png)
+   ![De pagina Nieuwe data factory](./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png)
  
     * **Naam**: Voer een wereld wijd unieke naam in voor uw Azure-Data Factory. Als het fout bericht ' Data Factory-naam \"LoadADLSG1Demo\" niet beschikbaar is, geeft u een andere naam op voor de data factory. U kunt bijvoorbeeld _**de naam**_ **ADFTutorialDataFactory**. Probeer de data factory opnieuw te maken. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
     * **Abonnement**: Selecteer het Azure-abonnement waarin u de Data Factory wilt maken. 
@@ -63,7 +63,7 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
    
    ![Startpagina van de gegevensfactory](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
 
-   Selecteer de tegel **auteur & monitor** om de gegevens integratie toepassing in een afzonderlijk tabblad te openen.
+   Klik op de tegel **Maken en bewaken** om de toepassing Gegevensintegratie in een afzonderlijk tabblad te openen.
 
 ## <a name="load-data-into-data-lake-storage-gen1"></a>Gegevens laden in Data Lake Storage Gen1
 
@@ -88,15 +88,15 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
    
       ![Amazon S3-account opgeven](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
-   4. Er wordt een nieuwe verbinding weer geven. Selecteer **Volgende**.
+   4. Er wordt een nieuwe verbinding weer geven. Selecteer **Next**.
    
    ![Amazon S3-account opgeven](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
-5. Blader op de pagina **het invoer bestand of de map kiezen** naar de map en het bestand waarnaar u wilt kopi√´ren. Selecteer de map/het bestand, selecteer **kiezen**en selecteer vervolgens **volgende**:
+5. Blader op de pagina **Het invoerbestand of de invoermap kiezen** naar de map en het bestand dat u wilt kopi√´ren. Selecteer de map/het bestand, selecteer **kiezen**en selecteer vervolgens **volgende**:
 
     ![Het invoerbestand of de invoermap kiezen](./media/load-data-into-azure-data-lake-store/choose-input-folder.png)
 
-6. Kies het Kopieer gedrag door de opties **bestanden recursief** en **binaire kopie** kopi√´ren (bestanden kopi√´ren als-is) te selecteren. Selecteer **volgende**:
+6. Kies het Kopieer gedrag door de opties **bestanden recursief** en **binaire kopie** kopi√´ren (bestanden kopi√´ren als-is) te selecteren. Selecteer **Volgende**:
 
     ![Uitvoermap opgeven](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
     
@@ -108,7 +108,7 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
 
    1. Selecteer uw Data Lake Storage Gen1 account voor de **naam**van het data Lake Store-account.
    2. Geef de **Tenant**op en selecteer volt ooien.
-   3. Selecteer **Volgende**.
+   3. Selecteer **Next**.
    
    > [!IMPORTANT]
    > In dit scenario gebruikt u een beheerde identiteit voor Azure-resources om uw Data Lake Storage Gen1-account te verifi√´ren. Zorg ervoor dat u het MSI-bestand de juiste machtigingen geeft in Data Lake Storage Gen1 door [deze instructies](connector-azure-data-lake-store.md#managed-identity)te volgen.

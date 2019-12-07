@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e0b87757326b5e2a54a78a38bbcd5bef8e6f5be2
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 42378c4377057902937b718555489636bc5dcbaa
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74119984"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900016"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: de Azure AD-Graph API gebruiken
 
@@ -363,6 +363,5 @@ Als u `B2CGraphClient`gebruikt, hebt u een service toepassing waarmee u de B2C-T
 Als u deze functionaliteit in uw eigen toepassing opneemt, moet u enkele belang rijke punten onthouden voor B2C-toepassingen:
 
 * Ken de vereiste machtigingen toe aan de toepassing in de Tenant.
-* Voor Taan moet u ADAL (niet MSAL) gebruiken om toegangs tokens te verkrijgen. (U kunt ook protocol berichten rechtstreeks verzenden zonder een bibliotheek te gebruiken.)
 * Wanneer u de Graph API aanroept, gebruikt u `api-version=1.6`.
 * Wanneer u consumenten gebruikers maakt en bijwerkt, zijn er enkele eigenschappen vereist, zoals hierboven wordt beschreven.

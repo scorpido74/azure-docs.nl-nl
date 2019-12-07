@@ -1,24 +1,23 @@
 ---
-title: Expressie functies in de functie gegevens stroom toewijzen van Azure Data Factory
+title: Expressie functies in de stroom toewijzings gegevens
 description: Meer informatie over expressie functies in het toewijzen van gegevens stroom.
 author: kromerm
 ms.author: makromer
+manager: anandsub
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: dc742fc625604e71909f49c7453a9215dce71e35
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f384c440dab06660c95f635dde02ced5b3e54d94
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596965"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896315"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Gegevens transformatie expressies in gegevens stroom toewijzen 
 
-
-
-## <a name="expression-functions"></a>Expressie functies
+## <a name="expression-functions"></a>Expressiefuncties
 
 In Data Factory gebruikt u de expressie taal van de functie gegevens stroom toewijzen om gegevens transformaties te configureren.
 
@@ -956,7 +955,7 @@ Vermenigvuldigt het paar getallen. Hetzelfde als de operator *
 ___
 ### <code>nTile</code>
 <code><b>nTile([<i>&lt;value1&gt;</i> : integer]) => integer</b></code><br/><br/>
-Met de functie NTile worden de rijen voor elke venster partitie verdeeld over `n` buckets, variërend van 1 tot Maxi maal `n`. Bucket waarden kunnen Maxi maal 1 zijn. Als het aantal rijen in de partitie niet gelijkmatig is verdeeld over het aantal buckets, worden de waarden van de rest gedistribueerd per Bucket, beginnend met de eerste Bucket. De functie NTile is handig voor het berekenen van tertiles, kwartielen, deciles en andere algemene samenvattings statistieken. De functie berekent twee variabelen tijdens de initialisatie: er wordt één extra rij aan de grootte van een gewone Bucket toegevoegd. Beide variabelen zijn gebaseerd op de grootte van de huidige partitie. Tijdens het berekenings proces houdt de functie het huidige rijnummer, het huidige Bucket nummer en het rijnummer waarbij de Bucket wordt gewijzigd (bucketThreshold) bij. Wanneer het huidige rijnummer de Bucket drempel bereikt, wordt de Bucket waarde verhoogd met één en wordt de drempel verhoogd met de Bucket grootte (plus één extra als de huidige Bucket wordt opgevuld).
+Met de functie NTile worden de rijen voor elke venster partitie verdeeld over `n` buckets van 1 tot de meeste `n`. Bucket waarden kunnen Maxi maal 1 zijn. Als het aantal rijen in de partitie niet gelijkmatig is verdeeld over het aantal buckets, worden de waarden van de rest gedistribueerd per Bucket, beginnend met de eerste Bucket. De functie NTile is handig voor het berekenen van tertiles, kwartielen, deciles en andere algemene samenvattings statistieken. De functie berekent twee variabelen tijdens de initialisatie: er wordt één extra rij aan de grootte van een gewone Bucket toegevoegd. Beide variabelen zijn gebaseerd op de grootte van de huidige partitie. Tijdens het berekenings proces houdt de functie het huidige rijnummer, het huidige Bucket nummer en het rijnummer waarbij de Bucket wordt gewijzigd (bucketThreshold) bij. Wanneer het huidige rijnummer de Bucket drempel bereikt, wordt de Bucket waarde verhoogd met één en wordt de drempel verhoogd met de Bucket grootte (plus één extra als de huidige Bucket wordt opgevuld).
 
 * ``nTile()``
 
@@ -1067,7 +1066,7 @@ Verzamelt elementen in een matrix. Reductie verwacht een verwijzing naar een acc
 ___
 ### <code>regexExtract</code>
 <code><b>regexExtract(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, [<i>&lt;match group 1-based index&gt;</i> : integral]) => string</b></code><br/><br/>
-Een overeenkomende subtekenreeks ophalen voor een opgegeven regex-patroon. De laatste para meter identificeert de overeenkomende groep en wordt standaard ingesteld op 1 als dit wordt wegge laten. Gebruik ' <regex> ' (achterwaartse aanhalings tekens) om een teken reeks te zoeken zonder Escapes
+Een overeenkomende subtekenreeks ophalen voor een opgegeven regex-patroon. De laatste para meter identificeert de overeenkomende groep en wordt standaard ingesteld op 1 als dit wordt wegge laten. Gebruik '<regex>' (achterwaartse aanhalings tekens) om een teken reeks te zoeken zonder Escapes
 
 * ``regexExtract('Cost is between 600 and 800 dollars', '(\\d+) and (\\d+)', 2) -> '800'``
 
@@ -1076,7 +1075,7 @@ Een overeenkomende subtekenreeks ophalen voor een opgegeven regex-patroon. De la
 ___
 ### <code>regexMatch</code>
 <code><b>regexMatch(<i>&lt;string&gt;</i> : string, <i>&lt;regex to match&gt;</i> : string) => boolean</b></code><br/><br/>
-Controleert of de teken reeks overeenkomt met het opgegeven regex-patroon. Gebruik ' <regex> ' (achterwaartse aanhalings tekens) om een teken reeks te zoeken zonder Escapes
+Controleert of de teken reeks overeenkomt met het opgegeven regex-patroon. Gebruik '<regex>' (achterwaartse aanhalings tekens) om een teken reeks te zoeken zonder Escapes
 
 * ``regexMatch('200.50', '(\\d+).(\\d+)') -> true``
 
@@ -1085,7 +1084,7 @@ Controleert of de teken reeks overeenkomt met het opgegeven regex-patroon. Gebru
 ___
 ### <code>regexReplace</code>
 <code><b>regexReplace(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, <i>&lt;substring to replace&gt;</i> : string) => string</b></code><br/><br/>
-Alle exemplaren van een regex-patroon vervangen door een andere subtekenreeks in de opgegeven teken reeks gebruik ' <regex> ' (back-quote) om een teken reeks zonder aanhalings tekens te zoeken.
+Alle exemplaren van een regex-patroon vervangen door een andere subtekenreeks in de opgegeven teken reeks gebruik '<regex>' (back-quote) om een teken reeks zonder aanhalings tekens te zoeken.
 
 * ``regexReplace('100 and 200', '(\\d+)', 'bojjus') -> 'bojjus and bojjus'``
 
@@ -1143,7 +1142,7 @@ Controleert of de teken reeks overeenkomt met het opgegeven regex-patroon
 ___
 ### <code>round</code>
 <code><b>round(<i>&lt;number&gt;</i> : number, [<i>&lt;scale to round&gt;</i> : number], [<i>&lt;rounding option&gt;</i> : integral]) => double</b></code><br/><br/>
-Rondt een getal af op basis van een optionele schaal en een optionele Afrondings modus. Als de schaal wordt wegge laten, wordt deze standaard ingesteld op 0.  Als de modus wordt wegge laten, wordt deze standaard ingesteld op ROUND_HALF_UP (5). De waarden voor afronding bevatten 1-ROUND_UP 2-ROUND_DOWN 3-ROUND_CEILING 4-ROUND_FLOOR 5-ROUND_HALF_UP 6-ROUND_HALF_DOWN 7-ROUND_HALF_EVEN 8-ROUND_UNNECESSARY
+Rondt een getal af op basis van een optionele schaal en een optionele Afrondings modus. Als de schaal wordt wegge laten, wordt deze standaard ingesteld op 0.  Als de modus wordt wegge laten, wordt de standaard waarde ROUND_HALF_UP (5). De waarden voor afronding bevatten 1 ROUND_UP 2 ROUND_DOWN 3 ROUND_CEILING 4-ROUND_FLOOR 5-ROUND_HALF_UP 6-ROUND_HALF_DOWN 7-ROUND_HALF_EVEN 8-ROUND_UNNECESSARY
 
 * ``round(100.123) -> 100.0``
 

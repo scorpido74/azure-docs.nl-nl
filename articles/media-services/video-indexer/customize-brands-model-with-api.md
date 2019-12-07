@@ -1,7 +1,7 @@
 ---
 title: Azure Video Indexer gebruiken om het merk model aan te passen
 titleSuffix: Azure Media Services
-description: In dit artikel wordt uitgelegd hoe u Azure Video Indexer kunt gebruiken om het merk model aan te passen.
+description: In dit artikel wordt gedemonstreerd hoe u Azure Video Indexer kunt gebruiken om het merk model aan te passen.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 4289c592644d7570ff0dd9ce6aed0cd77f51f25e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 804cc7b2b0b51312ed756723fff5150b02f324cc
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838339"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892801"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Een Brands model aanpassen met de Video Indexer-API
 
@@ -41,9 +41,9 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Naam**|**Type**|**Vereist**|**Beschrijving**|
 |---|---|---|---|
-|location|tekenreeks|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
-|accountId|tekenreeks|Ja|GUID (Globally Unique Identifier) voor het account|
-|accessToken|tekenreeks|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
+|location|string|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
+|accountId|string|Ja|GUID (Globally Unique Identifier) voor het account|
+|accessToken|string|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
 
 ### <a name="request-body"></a>Aanvraagbody
 
@@ -103,10 +103,10 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Naam**|**Type**|**Vereist**|**Beschrijving**|
 |---|---|---|---|
-|location|tekenreeks|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
-|accountId|tekenreeks|Ja|GUID (Globally Unique Identifier) voor het account|
+|location|string|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
+|accountId|string|Ja|GUID (Globally Unique Identifier) voor het account|
 |id|geheel getal|Ja|De merk-id (gegenereerd bij het maken van het merk)|
-|accessToken|tekenreeks|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
+|accessToken|string|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
 
 ### <a name="request-body"></a>Aanvraagbody
 
@@ -132,10 +132,10 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Naam**|**Type**|**Vereist**|**Beschrijving**|
 |---|---|---|---|
-|location|tekenreeks|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
-|accountId|tekenreeks|Ja|GUID (Globally Unique Identifier) voor het account|
+|location|string|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
+|accountId|string|Ja|GUID (Globally Unique Identifier) voor het account|
 |id|geheel getal|Ja|De merk-ID (gegenereerd bij het maken van het merk)|
-|accessToken|tekenreeks|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
+|accessToken|string|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
 
 ### <a name="request-body"></a>Aanvraagbody
 
@@ -182,10 +182,10 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Naam**|**Type**|**Vereist**|**Beschrijving**|
 |---|---|---|---|
-|location|tekenreeks|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
-|accountId|tekenreeks|Ja|GUID (Globally Unique Identifier) voor het account|
+|location|string|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
+|accountId|string|Ja|GUID (Globally Unique Identifier) voor het account|
 |id|geheel getal|Ja|De merk-ID (gegenereerd bij het maken van het merk)|
-|accessToken|tekenreeks|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
+|accessToken|string|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
 
 ### <a name="request-body"></a>Aanvraagbody
 
@@ -245,9 +245,9 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Naam**|**Type**|**Vereist**|**Beschrijving**|
 |---|---|---|---|
-|location|tekenreeks|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
-|accountId|tekenreeks|Ja|GUID (Globally Unique Identifier) voor het account|
-|accessToken|tekenreeks|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
+|location|string|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
+|accountId|string|Ja|GUID (Globally Unique Identifier) voor het account|
+|accessToken|string|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
 
 ### <a name="request-body"></a>Aanvraagbody
 
@@ -305,9 +305,9 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Naam**|**Type**|**Vereist**|**Beschrijving**|
 |---|---|---|---|
-|location|tekenreeks|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
-|accountId|tekenreeks|Ja|GUID (Globally Unique Identifier) voor het account|
-|accessToken|tekenreeks|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
+|location|string|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
+|accountId|string|Ja|GUID (Globally Unique Identifier) voor het account|
+|accessToken|string|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
 
 ### <a name="request-body"></a>Aanvraagbody
 
@@ -342,9 +342,9 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Naam**|**Type**|**Vereist**|**Beschrijving**|
 |---|---|---|---|
-|location|tekenreeks|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
-|accountId|tekenreeks|Ja|GUID (Globally Unique Identifier) voor het account|
-|accessToken|tekenreeks|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
+|location|string|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
+|accountId|string|Ja|GUID (Globally Unique Identifier) voor het account|
+|accessToken|string|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
 
 ### <a name="request-body"></a>Aanvraagbody
 

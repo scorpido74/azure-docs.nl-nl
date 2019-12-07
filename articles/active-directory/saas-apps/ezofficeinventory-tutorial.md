@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ebfe5f75d5d8546e0f5e8ad6f8c5d0063e5bda2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: cc73d7ec81ea0105a5868ec698289bd27526a43b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376446"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893498"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ezofficeinventory"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met EZOfficeInventory
 
@@ -94,7 +94,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. De EZOfficeInventory-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![installatiekopie](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
 1. Daarnaast verwacht EZOfficeInventory toepassing nog maar weinig kenmerken die worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereiste.
 
@@ -102,7 +102,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
     | ---------------| --------------- |
     | First_name | user.givenname |
     | Last_name | user.surname |
-    | Email | user.mail |
+    | E-mail | user.mail |
 
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
@@ -144,13 +144,21 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ## <a name="configure-ezofficeinventory-sso"></a>EZOfficeInventory SSO configureren
 
-1. Open een nieuw webbrowser venster en meld u aan bij de EZOfficeInventory-bedrijfs site als beheerder.
+1. Als u de configuratie wilt automatiseren in EZOfficeInventory, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
 
-2. Klik in de rechter bovenhoek van de pagina op **profiel** en navigeer vervolgens naar **instellingen** > **invoeg toepassingen toevoegen**.
+    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
+
+1. Nadat u de extensie hebt toegevoegd aan de browser, klikt u op **EZOfficeInventory instellen** gaat u naar de EZOfficeInventory-toepassing. Geef de beheerders referenties op om u aan te melden bij EZOfficeInventory. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-5 geautomatiseerd.
+
+    ![Configuratie van Setup](common/setup-sso.png)
+
+1. Als u EZOfficeInventory hand matig wilt instellen, opent u een nieuw webbrowser venster en meldt u zich aan bij uw EZOfficeInventory-bedrijfs site als beheerder en voert u de volgende stappen uit:
+
+1. Klik in de rechter bovenhoek van de pagina op **profiel** en navigeer vervolgens naar **instellingen** > **invoeg toepassingen toe te voegen**.
 
     ![EZOfficeInventory-configuratie](./media/ezofficeinventory-tutorial/configure01.png)
 
-3. Schuif omlaag naar de sectie **SAML-integratie** en voer de volgende stappen uit:
+1. Schuif omlaag naar de sectie **SAML-integratie** en voer de volgende stappen uit:
 
     ![EZOfficeInventory-configuratie](./media/ezofficeinventory-tutorial/configure02.png)
 
@@ -176,7 +184,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 In deze sectie wordt een gebruiker met de naam Julia Simon gemaakt in EZOfficeInventory. EZOfficeInventory biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in EZOfficeInventory, wordt er een nieuwe gemaakt na verificatie.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>SSO testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
@@ -191,4 +199,3 @@ Wanneer u op de tegel EZOfficeInventory in het toegangs venster klikt, moet u au
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Probeer EZOfficeInventory met Azure AD](https://aad.portal.azure.com/)
-

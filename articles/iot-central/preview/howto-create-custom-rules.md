@@ -3,18 +3,18 @@ title: Azure-IoT Central uitbreiden met aangepaste regels en meldingen | Microso
 description: Als oplossings ontwikkelaar kunt u een IoT Central-toepassing configureren om e-mail meldingen te verzenden wanneer een apparaat stopt met het verzenden van telemetrie. Deze oplossing maakt gebruik van Azure Stream Analytics, Azure Functions en SendGrid.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/01/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 56ff01af6466e90ff4b69cd37c1638265c59b873
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: bdaa08e8c3b104c7269c1fb4169779d98b4e0880
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895863"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895732"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid-preview-features"></a>Azure IoT Central uitbreiden met aangepaste regels met behulp van Stream Analytics, Azure Functions en SendGrid (preview-functies)
 
@@ -68,10 +68,10 @@ Gebruik de [Azure Portal om een event hubs naam ruimte te maken](https://portal.
 | Prijscategorie | Basic |
 | Abonnement | Uw abonnement |
 | Resourcegroep | DetectStoppedDevices |
-| Locatie | US - oost |
-| Doorvoereenheden | 1 |
+| Locatie | VS - oost |
+| Eenheden gegevensdoorvoer | 1 |
 
-### <a name="stream-analytics-job"></a>Stream Analytics taak
+### <a name="stream-analytics-job"></a>Stream Analytics-taak
 
 Gebruik de [Azure Portal om een stream Analytics-taak te maken](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) met de volgende instellingen:
 
@@ -80,9 +80,9 @@ Gebruik de [Azure Portal om een stream Analytics-taak te maken](https://portal.a
 | Naam    | Kies de naam van uw taak |
 | Abonnement | Uw abonnement |
 | Resourcegroep | DetectStoppedDevices |
-| Locatie | US - oost |
+| Locatie | VS - oost |
 | Hostingomgeving | Cloud |
-| Streaming-eenheden | 3 |
+| Streamingeenheden | 3 |
 
 ### <a name="function-app"></a>Function App
 
@@ -93,10 +93,10 @@ Gebruik de [Azure Portal om een functie-app te maken](https://portal.azure.com/#
 | Naam van app    | De naam van de functie-app kiezen |
 | Abonnement | Uw abonnement |
 | Resourcegroep | DetectStoppedDevices |
-| OS | Windows |
-| Hosting plan | Verbruiksabonnement |
-| Locatie | US - oost |
-| Runtime stack | .NET |
+| Besturingssysteem | Windows |
+| Hostingabonnement | Verbruiksabonnement |
+| Locatie | VS - oost |
+| Runtimestack | .NET |
 | Storage | Nieuwe maken |
 
 ### <a name="sendgrid-account"></a>SendGrid-account

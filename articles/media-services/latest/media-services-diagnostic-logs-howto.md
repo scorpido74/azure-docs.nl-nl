@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 42724ae3619312c2cc172be0e143291cd7fa2a70
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 786aefbd8657046f18042defd71dfcb38528eecf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261108"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887948"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Diagnostische logboeken van Media Services controleren
 
@@ -55,7 +55,7 @@ Bewakingsgegevens uit uw resource worden nu doorgestuurd naar het opslagaccount.
 
 ## <a name="route-data-to-the-storage-account-using-the-cli"></a>Gegevens naar het opslag account routeren met behulp van de CLI
 
-Als u de opslag van Diagnostische logboeken in een opslag account wilt inschakelen, `az monitor diagnostic-settings` voert u de volgende CLI-opdracht uit: 
+Als u de opslag van Diagnostische logboeken in een opslag account wilt inschakelen, voert u de volgende `az monitor diagnostic-settings` CLI-opdracht uit: 
 
 ```cli
 az monitor diagnostic-settings create --name <diagnostic name> \

@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: overview
-ms.date: 03/12/2019
+ms.date: 12/05/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 65e28b557a3708c155bf80f21a784374c4497783
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 6615f166ced4a93115f9cbaae1c6ce5b57cf57bc
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383043"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892988"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Wat is de Bing Webzoekopdrachten-API?
 
-De Bing Webzoekopdrachten-API is een RESTful-service die directe antwoorden op gebruikersquery's biedt. Zoekresultaten kunnen eenvoudig zo worden geconfigureerd dat deze webpagina's, afbeeldingen, video's, nieuws, vertalingen en meer bevatten. Bing webzoekopdrachten biedt de resultaten als JSON op basis van op zoekrelevantie en de Bing webzoekopdrachten-abonnementen.
+De Bing Webzoekopdrachten-API is een RESTful-service die directe antwoorden op gebruikersquery's biedt. Zoekresultaten kunnen eenvoudig zo worden geconfigureerd dat deze webpagina's, afbeeldingen, video's, nieuws, vertalingen en meer bevatten. Bing Web Search levert de resultaten als JSON op basis van zoek relevantie en uw Bing Web Search-abonnementen.
 
 Deze API werkt optimaal voor toepassingen die toegang moeten hebben tot alle inhoud die relevant is voor de zoekquery van een gebruiker. Als u een toepassing maakt waarvoor alleen een specifiek type resultaat nodig is, kunt u ook de [Bing Afbeeldingen zoeken-API](../Bing-Image-Search/overview.md), [Bing Video's zoeken-API](../Bing-Video-Search/search-the-web.md) of [Bing Nieuws zoeken-API](../Bing-News-Search/search-the-web.md) gebruiken. Zie [Cognitive Services-API's](https://docs.microsoft.com/azure/cognitive-services) voor een volledige lijst met de Bing Zoeken-API's.
 
@@ -28,9 +28,9 @@ Wilt u zien hoe dit werkt? Probeer onze [Demo voor de Bing Webzoekopdrachten-API
 
 ## <a name="features"></a>Functies  
 
-Bing Web Search geven niet alleen u toegang tot direct antwoord. Het biedt ook extra functies en functionaliteit waarmee u kunt zoekresultaten voor uw gebruikers aanpassen.
+Bing Web Search biedt u geen toegang tot direct antwoord. Het bevat ook aanvullende functies en functionaliteit waarmee u de zoek resultaten voor uw gebruikers kunt aanpassen.
 
-| Functie | Description |
+| Functie | Beschrijving |
 |---------|-------------|
 | [Zoektermen in realtime voorstellen](../bing-autosuggest/get-suggested-search-terms.md) | Verbeter uw toepassingservaring met de Bing Automatische suggestie-API om voorgestelde zoektermen weer te geven wanneer deze worden getypt. |
 | [Resultaten filteren en beperken op inhoudstype](filter-answers.md) | Pas zoekresultaten aan en verfijn deze met filters en queryparameters voor webpagina's, afbeeldingen, video's, veilig zoeken en meer. |
@@ -42,7 +42,7 @@ Bing Web Search geven niet alleen u toegang tot direct antwoord. Het biedt ook e
 
 De Bing Webzoekopdrachten-API kan eenvoudig worden aangeroepen vanuit elke programmeertaal waarmee HTTP-aanvragen kunnen worden gedaan en JSON-antwoorden kunnen worden geparseerd. De service is toegankelijk via de [REST API](quickstarts/python.md) of de [Bing Webzoekopdrachten-SDK's](web-sdk-python-quickstart.md).
 
-1. Maak een [Account voor Cognitive Services-API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met toegang tot de Bing Zoeken-API's. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) maken.  
+1. [Maak een Azure-resource](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) voor de Bing zoeken-API's. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) maken.  
 2. Verzend een [aanvraag naar de Bing Webzoekopdrachten-API](quickstarts/python.md).
 3. Parseer het JSON-antwoord.
 

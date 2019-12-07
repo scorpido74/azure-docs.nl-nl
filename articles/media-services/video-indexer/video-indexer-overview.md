@@ -1,7 +1,7 @@
 ---
 title: Wat is Video Indexer?
 titleSuffix: Azure Media Services
-description: Een overzicht van de service Azure Media Services Video Indexer.
+description: Dit artikel bevat een overzicht van de Azure Media Services Video Indexer-service.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: juliako
-ms.openlocfilehash: 9f6a5fa96034e0bf43ddd573a425de8d114d47ce
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a942277b5616f3e8220e7fc0fd00f7d660d76d3e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575116"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892699"
 ---
 # <a name="what-is-video-indexer"></a>Wat is Video Indexer?
 
@@ -33,7 +33,7 @@ De inzichten van Video Indexer kunnen worden toegepast op verschillende scenario
 
 * *Uitgebreide zoek opdracht*: gebruik de inzichten die zijn geëxtraheerd uit de video om de zoek ervaring in een video bibliotheek te verbeteren. Als u bijvoorbeeld gesp roken woorden en gezichten indexeert, kan de zoek ervaring van het vinden van momenten in een video waarbij een persoon op bepaalde woorden is gespokeeerd of wanneer twee personen samen worden weer gegeven. Zoeken op basis van deze inzichten van Video's is van toepassing op de nieuws instanties, onderwijs instituten, omroep organisaties, eigen aren van entertainment, zakelijke LOB-apps, en in het algemeen voor elke branche met een video bibliotheek die gebruikers nodig hebben om te zoeken.
 * *Maken van inhoud*: Maak Trailers, Markeer trommels, sociale media-inhoud of Nieuws clips op basis van de inzichten video indexer extracten van uw inhoud. Met keyframes, scènes en tijds tempels voor de vormgeving van personen en labels kan het maken van het proces veel vloeiender en eenvoudiger worden en kunt u de onderdelen van de video ophalen die u nodig hebt voor de inhoud die u wilt maken.
-* *Toegankelijkheid*: of u uw inhoud beschikbaar wilt maken voor mensen met een handicap of als u wilt dat uw inhoud naar verschillende regio's wordt gedistribueerd met behulp van verschillende talen, kunt u de transcriptie en de vertaling van de video gebruiken Indexeer functie in meerdere talen.
+* *Toegankelijkheid*: of u uw inhoud beschikbaar wilt maken voor mensen met een handicap of als u wilt dat uw inhoud naar verschillende regio's wordt gedistribueerd met behulp van verschillende talen, kunt u de transcriptie en vertaling van de video indexer in meerdere talen gebruiken.
 * *Verdiensten maximaliseren*: video indexer kunt u helpen de waarde van Video's te verhogen. Zo kunnen branches die gebruikmaken van de inkomsten van de advertentie (nieuws media, sociale media, enzovoort), relevante advertenties leveren door gebruik te maken van de uitgepakte inzichten als extra signalen voor de ad-server.
 * *Toezicht op inhoud*: gebruik tekstuele en visuele toezicht modellen voor inhoud om uw gebruikers veilig te houden van ongepaste inhoud en te controleren of de inhoud die u publiceert, overeenkomt met de waarden van uw organisatie. U kunt bepaalde Video's automatisch blok keren of uw gebruikers waarschuwen over de inhoud.
 * *Aanbevelingen*: video Insights kan worden gebruikt om de gebruikers betrokkenheid te verbeteren door de relevante video te markeren voor gebruikers. Als u elke video met aanvullende meta gegevens codeert, kunt u gebruikers aanbevelen de meest relevante Video's te plaatsen en de onderdelen van de video te markeren die overeenkomen met hun behoeften.

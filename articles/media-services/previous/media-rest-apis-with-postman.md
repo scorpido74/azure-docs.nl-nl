@@ -1,6 +1,6 @@
 ---
 title: Postman configureren voor Azure Media Services REST API-aanroepen
-description: Informatie over het configureren van Postman voor Media Services REST API-aanroepen.
+description: In dit artikel wordt beschreven hoe u na het configureren van Postman voor Media Services REST API-aanroepen.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,51 +13,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 5d0b5a57f3fe587a06a102c958b17dbf2a73225c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f55b3d5767f38c8fba2e79925f6f6e1e390aad2d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466675"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887790"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Postman configureren voor Media Services REST API-aanroepen  
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [hulp bij de migratie van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-Deze zelfstudie leert u hoe het configureren van **Postman** zodat deze kan worden gebruikt voor het aanroepen van Azure Media Services (AMS) REST-API's. De zelfstudie laat zien hoe u de omgeving en verzameling bestanden importeren in **Postman**. De verzameling bevat gegroepeerde definities van HTTP-aanvragen die Azure Media Services (AMS) REST-API's aanroepen. Het omgevingsbestand bevat variabelen die worden gebruikt door de verzameling.
+In deze zelf studie wordt uitgelegd hoe u **postman** zo configureert dat deze kan worden gebruikt om Azure Media Services-rest API'S (AMS) aan te roepen. In de zelf studie ziet u hoe u omgevings-en verzamelings bestanden importeert in een **bericht**. De verzameling bevat gegroepeerde definities van HTTP-aanvragen die de REST-Api's van Azure Media Services (AMS) aanroepen. Het omgevingsbestand bevat variabelen die worden gebruikt door de verzameling.
 
-Deze omgeving en de verzameling wordt gebruikt in artikelen die laten zien hoe u verschillende taken met Azure Media Services REST API's te bereiken.
+Deze omgeving en verzameling wordt in artikelen gebruikt die laten zien hoe u verschillende taken met Azure Media Services REST-Api's kunt bezorgen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Installeer de [Postman](https://www.getpostman.com/) REST-client als u de REST-API's wilt uitvoeren die in een aantal AMS REST-zelfstudies worden weergegeven. 
 
-    We gebruiken **Postman** maar elk ander REST-hulpprogramma is hiervoor geschikt. Enkele andere alternatieven: **Visual Studio Code** met de REST-invoegtoepassing of **Telerik Fiddler**. 
+    We gebruiken **Postman** maar elk ander REST-hulpprogramma is hiervoor geschikt. Andere alternatieven zijn: **Visual Studio Code** met de REST-invoegtoepassing of **Telerik Fiddler**. 
 
 ## <a name="configure-the-environment"></a>De omgeving configureren 
 
-1. Maak een .json-bestand waarin de omgevingsvariabelen die worden gebruikt in de AMS-zelfstudies. Noem het bestand (bijvoorbeeld **AzureMediaServices.postman_environment.json**). Open het bestand en plak de code die de Postman-omgeving van bepaalt [deze vermelding van de code](postman-environment.md). 
+1. Maak een JSON-bestand dat de omgevings variabelen bevat die in AMS-zelf studies worden gebruikt. Noem het bestand (bijvoorbeeld **AzureMediaServices. postman_environment. json**). Open het bestand en plak de code die de Postman-omgeving in de [code vermelding](postman-environment.md)definieert. 
 2. Open de **Postman**.
 3. Selecteer rechts van het scherm de optie **Manage environment**.
 
     ![Bestand uploaden](./media/media-services-rest-upload-files/postman-create-env.png)
 4. Klik in het dialoogvenster **Manage environment** op **Import**.
-5. Blader en selecteer de **AzureMediaServices.postman_environment.json** bestand.
-6. De **Media** omgeving wordt toegevoegd.
+5. Blader en selecteer het bestand **AzureMediaServices. postman_environment. json** .
+6. De **Media** -omgeving wordt toegevoegd.
 7. Sluit het dialoogvenster.
-8. Selecteer de **Media** omgeving.
+8. Selecteer de **Media** -omgeving.
 
     ![Bestand uploaden](./media/media-services-rest-upload-files/postman-choose-env.png)
 
 ## <a name="configure-the-collection"></a>De collectie configureren
 
-1. Maak een .json-bestand met de **Postman** verzameling met alle bewerkingen die nodig zijn voor het uploaden van een bestand met Media Services. Noem het bestand (bijvoorbeeld **AzureMediaServicesOperations.postman_collection.json**). Open het bestand en plak de code die definieert de **Postman** verzamelen van [deze vermelding van de code](postman-collection.md).
+1. Maak een JSON-bestand dat de **postman** -verzameling bevat met alle bewerkingen die nodig zijn om een bestand te uploaden naar Media Services. Noem het bestand (bijvoorbeeld **AzureMediaServicesOperations. postman_collection. json**). Open het bestand en plak de code die de **postman** -verzameling definieert vanuit [deze code lijst](postman-collection.md).
 2. Klik op **Import** om het verzamelingbestand te importeren.
-3. Kies de **AzureMediaServicesOperations.postman_collection.json** bestand.
+3. Kies het bestand **AzureMediaServicesOperations. postman_collection. json** .
 
     ![Bestand uploaden](./media/media-services-rest-upload-files/postman-import-collection.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [upload items](media-services-rest-upload-files.md) artikel.  
+Bekijk het artikel [Upload assets](media-services-rest-upload-files.md) .  

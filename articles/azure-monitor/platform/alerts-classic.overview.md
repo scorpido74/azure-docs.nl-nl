@@ -7,17 +7,17 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/19/2018
-ms.openlocfilehash: 3ad0bdc2ec5db2f34a3bb6a1b8fda54cf9037483
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 177c110ce9679f3d564918dfac50b3e3f66f84ce
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555683"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893583"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Wat zijn klassieke waarschuwingen in Microsoft Azure?
 
 > [!NOTE]
-> In dit artikel wordt beschreven hoe u oudere klassieke metrische waarschuwingen maakt. Azure Monitor ondersteunt nu [nieuwere bijna realtime waarschuwingen voor metrische gegevens en een nieuwe meldings ervaring](../../azure-monitor/platform/alerts-overview.md). Klassieke waarschuwingen zijn [gepland om te worden buiten gebruik gesteld](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement).  
+> In dit artikel wordt beschreven hoe u oudere klassieke metrische waarschuwingen maakt. Azure Monitor ondersteunt nu [nieuwere bijna realtime waarschuwingen voor metrische gegevens en een nieuwe meldings ervaring](../../azure-monitor/platform/alerts-overview.md). Klassieke waarschuwingen worden [buiten gebruik gesteld](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement), maar zijn nog steeds beperkt in beperkte functionaliteit voor resources die de nieuwe waarschuwingen nog niet ondersteunen. 
 >
 
 Met waarschuwingen kunt u voor waarden voor gegevens configureren en op de hoogte worden gesteld wanneer de voor waarden overeenkomen met de meest recente bewakings gegevens.
@@ -54,7 +54,7 @@ Er zijn twee soorten klassieke waarschuwingen beschikbaar: metrische waarschuwin
 
 * **Waarschuwingen voor klassieke activiteiten logboeken** : een streaming-logboek waarschuwing die wordt geactiveerd door een gebeurtenis vermelding in het activiteiten logboek die overeenkomt met de filter criteria. Deze waarschuwingen hebben slechts één status, "geactiveerd". Met de waarschuwings-engine worden de filter criteria toegepast op elke nieuwe gebeurtenis. Er wordt niet gezocht naar oudere vermeldingen. Deze waarschuwingen kunnen u waarschuwen wanneer een nieuw Service Health incident optreedt of wanneer een gebruiker of toepassing een bewerking in uw abonnement uitvoert, bijvoorbeeld ' virtuele machine verwijderen '.
 
-Voor diagnostische logboek gegevens die via Azure Monitor beschikbaar zijn, kunt u de gegevens naar Log Analytics (voorheen OMS) routeren en een Log Analytics query waarschuwing gebruiken. Log Analytics maakt nu gebruik van de [nieuwe methode voor waarschuwingen](../../azure-monitor/platform/alerts-overview.md) 
+Voor resource logboek gegevens die beschikbaar zijn via Azure Monitor, de gegevens routeren naar Log Analytics en een waarschuwing voor een logboek query gebruiken. Log Analytics maakt nu gebruik van de [nieuwe methode voor waarschuwingen](../../azure-monitor/platform/alerts-overview.md) 
 
 In het volgende diagram vindt u een overzicht van de gegevens bronnen in Azure Monitor en, in het algemeen, hoe u een melding kunt ontvangen van die gegevens.
 
@@ -82,7 +82,7 @@ De oudere metrische waarschuwingen gebruiken echter geen actie groepen. In plaat
 Webhooks maken automatisering en herstel mogelijk, bijvoorbeeld met:
 - Azure Automation Runbook
 - Azure-functie
-- Azure Logic-app
+- Azure Logic Apps
 - een service van derden
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -14,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 89c98379a8e79d1b00db47021ae737ae471f79b3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9dff10848c42fd730f0bc77fd325f00cec554c9d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035016"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892869"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Een galerie met gedeelde installatie kopieën maken met behulp van de Azure Portal
 
@@ -31,7 +30,7 @@ De galerie is een resource op het hoogste niveau die volledige op rollen gebasee
 
 De functie gedeelde installatie kopie galerie heeft meerdere bron typen. We gebruiken of maken deze in dit artikel:
 
-| Resource | Beschrijving|
+| Bron | Beschrijving|
 |----------|------------|
 | **Beheerde installatie kopie** | Een basis installatie kopie die alleen kan worden gebruikt of gebruikt om een **installatie kopie versie** in een galerie met installatie kopieën te maken. Beheerde installatie kopieën worden gemaakt op basis van [gegeneraliseerde](shared-image-galleries.md#generalized-and-specialized-images) vm's. Een beheerde installatie kopie is een speciaal type VHD dat kan worden gebruikt om meerdere virtuele machines te maken en kan nu worden gebruikt om versies van gedeelde installatie kopieën te maken. |
 | **Snapshot** | Een kopie van een VHD die kan worden gebruikt om een **installatie kopie versie**te maken. Moment opnamen kunnen worden gemaakt op basis van een [gespecialiseerde](shared-image-galleries.md#generalized-and-specialized-images) virtuele machine (een die niet is gegeneraliseerd) en vervolgens alleen worden gebruikt of met moment opnamen van gegevens schijven, om een gespecialiseerde installatie kopie versie te maken.
@@ -57,7 +56,7 @@ Wanneer u dit artikel doorwerkt, moet u de namen van de resource groep en de VM 
  
 [!INCLUDE [virtual-machines-common-shared-images-portal](../../../includes/virtual-machines-common-shared-images-portal.md)]
 
-## <a name="create-vms"></a>VM's maken 
+## <a name="create-vms"></a>Virtuele machines maken 
 
 U kunt nu een of meer nieuwe virtuele machines maken. In dit voor beeld wordt een VM gemaakt met de naam *myVMfromImage*in de *MYRESOURCEGROUP* in het *VS-Oost* -Data Center.
 

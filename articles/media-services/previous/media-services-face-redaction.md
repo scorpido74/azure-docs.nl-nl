@@ -1,6 +1,6 @@
 ---
 title: Gezichten met Azure Media Analytics redigeren | Microsoft Docs
-description: In dit onderwerp ziet u hoe u met Azure Media Analytics gezichten kunt redigeren.
+description: Azure Media Redactor is een Azure Media Analytics media processor die schaal bare gezichts redactie in de Cloud biedt. In dit artikel wordt beschreven hoe u met Azure Media Analytics gezichten kunt redigeren.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: e350b6ed90324e7ed645d85c046fd74c0a089452
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 6a1b7a76ef1efda51f09ac733b3d434235ff40ef
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016016"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900302"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Gezichten met Azure Media Analytics redigeren 
 ## <a name="overview"></a>Overzicht
@@ -54,7 +54,7 @@ De **analyse** fase van de werk stroom met twee slagen neemt een video-invoer en
 | Invoer Asset |Foo. Bar |Video in WMV-, MPV-of MP4-indeling |
 | Invoer configuratie |Vooraf ingestelde taak configuratie |{' version ': ' 1.0 ', ' opties ': {' mode ': ' analyse '}} |
 | Uitvoer activum |foo_annotations.json |Aantekening gegevens van gezichts locaties in JSON-indeling. Dit kan worden bewerkt door de gebruiker om de vervagings kaders te wijzigen. Zie het voor beeld hieronder. |
-| Uitvoer activum |foo_thumb% 0 6 d. jpg [foo_thumb000001. jpg, foo_thumb000002. jpg] |Een bijgesneden jpg van elk gedetecteerd gezicht, waarbij het nummer de labelId van het gezicht aangeeft |
+| Uitvoer activum |foo_thumb %0 6 d. jpg [foo_thumb000001. jpg, foo_thumb000002. jpg] |Een bijgesneden jpg van elk gedetecteerd gezicht, waarbij het nummer de labelId van het gezicht aangeeft |
 
 #### <a name="output-example"></a>Voor beeld van uitvoer:
 
@@ -135,7 +135,7 @@ Voor beeld foo_IDList. txt
 
 ## <a name="blur-types"></a>Vervagings typen
 
-In de **gecombineerde** of **redactie** modus zijn er vijf verschillende vervagings modi waaruit u kunt kiezen via de configuratie van de JSON-invoer: **Laag**, **med**, **hoog**, **vak**en **zwart**. Standaard wordt **med** gebruikt.
+In de **gecombineerde** of **redactie** modus zijn er vijf verschillende vervagings modi waaruit u kunt kiezen via de JSON-invoer configuratie: **laag**, **med**, **hoog**, **vak**en **zwart**. Standaard wordt **med** gebruikt.
 
 Hieronder vindt u voor beelden van de vervagings typen die hieronder worden beschreven.
 
@@ -370,7 +370,7 @@ namespace FaceRedaction
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-links"></a>Verwante koppelingen
+## <a name="related-links"></a>Gerelateerde koppelingen
 [Overzicht van Azure Media Services Analytics](media-services-analytics-overview.md)
 
 [Demo's Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)

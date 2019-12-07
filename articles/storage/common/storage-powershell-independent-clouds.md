@@ -1,79 +1,82 @@
 ---
-title: Azure PowerShell gebruiken voor het beheren van opslag in de Azure onafhankelijke clouds | Microsoft Docs
-description: Opslag in de China-Cloud, de Government-Cloud en de Duitse Cloud met behulp van Azure PowerShell beheren
+title: Power shell gebruiken voor het beheren van gegevens in azure-onafhankelijke Clouds
+titleSuffix: Azure Storage
+description: Opslag beheren in de Cloud, overheids Cloud en Duitse Cloud met behulp van Azure PowerShell.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 10/24/2017
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 69707eec0ea1f2260ee50a48ce1dcb82dc9ddd8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fa515515c06466e121a5c0ee925fd4d14245363
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65145868"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895242"
 ---
-# <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Beheren van opslag in de Azure-onafhankelijke clouds met behulp van PowerShell
+# <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Opslag beheren in de onafhankelijke Azure-Clouds met behulp van Power shell
 
-De meeste mensen gebruiken openbare Azure-Cloud voor de globale Azure-implementatie. Er zijn ook enkele onafhankelijke implementaties van Microsoft Azure omwille van de onafhankelijkheid enzovoort. Onafhankelijke implementaties worden aangeduid als 'omgeving'. De volgende lijst bevat de onafhankelijke clouds die momenteel beschikbaar is.
+De meeste mensen gebruiken de open bare Azure-Cloud voor hun wereld wijde Azure-implementatie. Er zijn ook enkele onafhankelijke implementaties van Microsoft Azure om redenen van soevereiniteit, enzovoort. Deze onafhankelijke implementaties worden ' omgevingen ' genoemd. De volgende lijst bevat informatie over de onafhankelijke Clouds die momenteel beschikbaar zijn.
 
 * [Azure Government Cloud](https://azure.microsoft.com/features/gov/)
-* [Azure China-Cloud uitgevoerd door 21Vianet in China](http://www.windowsazure.cn/)
-* [Azure German Cloud](../../germany/germany-welcome.md)
+* [Azure China 21Vianet-Cloud die wordt beheerd door 21Vianet in China](http://www.windowsazure.cn/)
+* [Azure Duitse Cloud](../../germany/germany-welcome.md)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="using-an-independent-cloud"></a>Met behulp van een onafhankelijke cloud 
+## <a name="using-an-independent-cloud"></a>Een onafhankelijke Cloud gebruiken
 
-Voor het gebruik van Azure Storage in een van de onafhankelijke clouds, moet u die cloud in plaats van openbare Azure-verbinden. Gebruik een van de onafhankelijke clouds in plaats van openbare Azure:
+Als u Azure Storage wilt gebruiken in een van de onafhankelijke Clouds, maakt u verbinding met die Cloud in plaats van Azure public. Als u een van de onafhankelijke Clouds wilt gebruiken in plaats van Azure Public:
 
-* U geeft de *omgeving* waarmee u verbinding wilt.
-* U bepalen en de beschikbare regio's.
-* U gebruik het juiste eindpunt-achtervoegsel, die van openbare Azure afwijkt.
+* U geeft de *omgeving* op waarmee u verbinding wilt maken.
+* U kunt de beschik bare regio's bepalen en gebruiken.
+* U gebruikt het juiste eindpunt achtervoegsel, wat afwijkt van Azure public.
 
-De voorbeelden vereist Azure PowerShell module Az versie 0,7 of hoger. Voer in een PowerShell-venster `Get-Module -ListAvailable Az` de versie te vinden. Als niets wordt weergegeven, of u wilt upgraden, Zie [Azure PowerShell-module installeren](/powershell/azure/install-Az-ps). 
+Voor de voor beelden is Azure PowerShell module AZ versie 0,7 of hoger vereist. Voer in een Power shell-venster `Get-Module -ListAvailable Az` uit om de versie te vinden. Als niets wordt vermeld of als u een upgrade wilt uitvoeren, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-Az-ps).
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
-Voer de [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) cmdlet om te controleren van de beschikbare Azure-omgevingen:
-   
+Voer de cmdlet [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) uit om de beschik bare Azure-omgevingen te bekijken:
+
 ```powershell
 Get-AzEnvironment
 ```
 
-Aanmelden bij uw account dat toegang heeft tot de cloud die u wilt verbinden en de omgeving. Dit voorbeeld laat zien hoe u zich aanmelden bij een account dat gebruikmaakt van de Azure Government-Cloud.   
+Meld u aan bij uw account dat toegang heeft tot de Cloud waarmee u verbinding wilt maken en stel de omgeving in. In dit voor beeld ziet u hoe u zich aanmeldt bij een account dat gebruikmaakt van de Azure Government Cloud.   
 
 ```powershell
 Connect-AzAccount –Environment AzureUSGovernment
 ```
 
-Voor toegang tot de China-Cloud, gebruikt u de omgeving **AzureChinaCloud**. Gebruiken voor toegang tot de Duitse Cloud, **AzureGermanCloud**.
+Gebruik de omgeving **AzureChinaCloud**om toegang te krijgen tot de cloud van China. Gebruik **AzureGermanCloud**om toegang te krijgen tot de Duitse Cloud.
 
-Als u de lijst met locaties te maken van een storage-account of een andere resource nodig hebt, kunt u op dit moment de locaties die beschikbaar zijn voor het gebruik van de geselecteerde cloud query [Get-AzLocation](/powershell/module/az.resources/get-azlocation).
+Als u op dit punt de lijst met locaties nodig hebt om een opslag account of een andere resource te maken, kunt u een query uitvoeren op de locaties die beschikbaar zijn voor de geselecteerde Cloud met behulp van [Get-AzLocation](/powershell/module/az.resources/get-azlocation).
 
 ```powershell
 Get-AzLocation | select Location, DisplayName
 ```
 
-De volgende tabel ziet u de locaties die worden geretourneerd voor de Duitse cloud.
+De volgende tabel bevat de locaties die voor de Duitse Cloud zijn geretourneerd.
 
-|Locatie | DisplayName |
+|Locatie | Weergavenaam |
 |----|----|
-| germanycentral | Duitsland - centraal|
-| germanynortheast | Duitsland - noordoost | 
+| `germanycentral` | Duitsland - centraal|
+| `germanynortheast` | Duitsland - noordoost |
 
 
-## <a name="endpoint-suffix"></a>Achtervoegsel van eindpunt
+## <a name="endpoint-suffix"></a>Eind punt achtervoegsel
 
-Het achtervoegsel van het eindpunt voor elk van deze omgevingen wijkt af van het openbare Azure-eindpunt. Bijvoorbeeld, het achtervoegsel van het blob-eindpunt voor openbare Azure-is **blob.core.windows.net**. Voor de Government-Cloud, het achtervoegsel van het blob-eindpunt is **blob.core.usgovcloudapi.net**. 
+Het achtervoegsel van het eind punt voor elk van deze omgevingen wijkt af van het open bare Azure-eind punt. Het achtervoegsel van het BLOB-eind punt voor Azure Public is bijvoorbeeld **blob.core.Windows.net**. Voor de overheids-Cloud is het achtervoegsel van het BLOB-eind punt **blob.core.usgovcloudapi.net**.
 
-### <a name="get-endpoint-using-get-azenvironment"></a>Met behulp van Get-AzEnvironment-eindpunt ophalen 
+### <a name="get-endpoint-using-get-azenvironment"></a>Eind punt ophalen met Get-AzEnvironment
 
-Ophalen van het eindpunt achtervoegsel via [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment). Het eindpunt is de *StorageEndpointSuffix* eigenschap van de omgeving. De volgende codefragmenten laten zien hoe u dit doet. Deze opdrachten retourneren iets, zoals 'core.cloudapp.net' of 'core.cloudapi.de', enzovoort. Voeg dit toe aan de storage-service voor toegang tot deze service. "Queue.core.cloudapi.de" wordt bijvoorbeeld toegang tot de queue-service in de Duitse Cloud.
+Haal het achtervoegsel van het eind punt op met [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment). Het eind punt is de eigenschap *StorageEndpointSuffix* van de omgeving.
 
-Dit codefragment worden alle van de omgevingen en het achtervoegsel van het eindpunt voor elk criterium opgehaald.
+De volgende code fragmenten laten zien hoe het achtervoegsel van het eind punt kan worden opgehaald. Al deze opdrachten retour neren iets als ' core.cloudapp.net ' of ' core.cloudapi.de ', enzovoort. Voeg het achtervoegsel aan de opslag service toe om toegang te krijgen tot de service. Bijvoorbeeld: ' queue.core.cloudapi.de ' heeft toegang tot de Queue-service in de Duitse Cloud.
+
+Met dit code fragment worden alle omgevingen en het achtervoegsel van het eind punt voor elke omgeving opgehaald.
 
 ```powershell
 Get-AzEnvironment | select Name, StorageEndpointSuffix 
@@ -81,51 +84,48 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 
 Met deze opdracht worden de volgende resultaten geretourneerd.
 
-| Name| StorageEndpointSuffix|
+| Naam| StorageEndpointSuffix|
 |----|----|
 | AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
 | AzureGermanCloud | core.cloudapi.de|
 | AzureUSGovernment | core.usgovcloudapi.net |
 
-Als u wilt alle van de eigenschappen voor de opgegeven omgeving ophalen, aanroepen **Get-AzEnvironment** en geef de cloudnaam. Dit codefragment retourneert een lijst met eigenschappen. Zoek naar **StorageEndpointSuffix** in de lijst. Het volgende voorbeeld is voor de Duitse Cloud.
+U kunt alle eigenschappen voor de opgegeven omgeving ophalen door **Get-AzEnvironment** aan te roepen en de naam van de Cloud op te geven. Dit code fragment retourneert een lijst met eigenschappen. Zoek naar **StorageEndpointSuffix** in de lijst. Het volgende voor beeld is voor de Duitse Cloud.
 
 ```powershell
-Get-AzEnvironment -Name AzureGermanCloud 
+Get-AzEnvironment -Name AzureGermanCloud
 ```
 
-De resultaten zijn vergelijkbaar met het volgende:
+De resultaten zijn vergelijkbaar met de volgende waarden:
 
-|De naam van eigenschap|Value|
+|De naam van eigenschap|Waarde|
 |----|----|
-| Name | AzureGermanCloud |
-| EnableAdfsAuthentication | False |
-| ActiveDirectoryServiceEndpointResourceI | http://management.core.cloudapi.de/ |
-| GalleryURL | https://gallery.cloudapi.de/ |
-| ManagementPortalUrl | https://portal.microsoftazure.de/ | 
-| ServiceManagementUrl | https://manage.core.cloudapi.de/ |
-| PublishSettingsFileUrl| https://manage.microsoftazure.de/publishsettings/index |
-| ResourceManagerUrl | http://management.microsoftazure.de/ |
-| SqlDatabaseDnsSuffix | .database.cloudapi.de |
-| **StorageEndpointSuffix** | core.cloudapi.de |
-| ... | ... | 
-
-Alleen de opslag-achtervoegsel eindpunteigenschap ophalen, de specifieke cloud ophalen en vragen om alleen die een eigenschap.
+| Naam | `AzureGermanCloud` |
+| EnableAdfsAuthentication | `False` |
+| ActiveDirectoryServiceEndpointResourceI | `http://management.core.cloudapi.de/` |
+| GalleryURL | `https://gallery.cloudapi.de/` |
+| ManagementPortalUrl | `https://portal.microsoftazure.de/` |
+| ServiceManagementUrl | `https://manage.core.cloudapi.de/` |
+| PublishSettingsFileUrl| `https://manage.microsoftazure.de/publishsettings/index` |
+| ResourceManagerUrl | `http://management.microsoftazure.de/` |
+| SqlDatabaseDnsSuffix | `.database.cloudapi.de` |
+| **StorageEndpointSuffix** | `core.cloudapi.de` |
+| ... | ... |
+Als u alleen de eigenschap voor het eindpunt achtervoegsel van het opslag account wilt ophalen, haalt u de specifieke Cloud op en vraagt u slechts één eigenschap op.
 
 ```powershell
 $environment = Get-AzEnvironment -Name AzureGermanCloud
-Write-Host "Storage EndPoint Suffix = " $environment.StorageEndpointSuffix 
+Write-Host "Storage EndPoint Suffix = " $environment.StorageEndpointSuffix
 ```
 
-Dit retourneert de volgende informatie.
+Met deze opdracht wordt de volgende informatie geretourneerd:
 
-```
-Storage Endpoint Suffix = core.cloudapi.de
-```
+`Storage Endpoint Suffix = core.cloudapi.de`
 
-### <a name="get-endpoint-from-a-storage-account"></a>Eindpunt van een opslagaccount ophalen
+### <a name="get-endpoint-from-a-storage-account"></a>Eind punt ophalen uit een opslag account
 
-U kunt ook de eigenschappen van een storage-account om op te halen van de eindpunten. Dit is handig als u al een storage-account in uw PowerShell-script; u kunt alleen het eindpunt dat u moet ophalen. 
+U kunt ook de eigenschappen van een opslag account bekijken om de eind punten op te halen:
 
 ```powershell
 # Get a reference to the storage account.
@@ -141,7 +141,7 @@ Write-Host "queue endpoint = " $storageAccount.PrimaryEndPoints.Queue
 Write-Host "table endpoint = " $storageAccount.PrimaryEndPoints.Table
 ```
 
-Voor een opslagaccount in de Government-Cloud retourneert deze het volgende: 
+Voor een opslag account in de Government Cloud retourneert deze opdracht de volgende uitvoer:
 
 ```
 blob endpoint = http://myexistingstorageaccount.blob.core.usgovcloudapi.net/
@@ -152,11 +152,11 @@ table endpoint = http://myexistingstorageaccount.table.core.usgovcloudapi.net/
 
 ## <a name="after-setting-the-environment"></a>Na het instellen van de omgeving
 
-Vanaf hier voortaan, kunt u de dezelfde PowerShell gebruikt voor het beheren van uw opslagaccounts en toegang tot het gegevensvlak zoals beschreven in het artikel [Azure PowerShell gebruiken met Azure Storage](storage-powershell-guide-full.md).
+Vanaf hier kunt u dezelfde Power shell gebruiken voor het beheren van uw opslag accounts en toegang krijgen tot het gegevens vlak zoals beschreven in het artikel [Using Azure PowerShell with Azure Storage](storage-powershell-guide-full.md).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een nieuwe resourcegroep en een opslagaccount voor deze oefening hebt gemaakt, kunt u alle activa die door het verwijderen van de resourcegroep verwijderen. Hiermee verwijdert u ook alle resources binnen de groep. In dit geval verwijderd het de storage-account gemaakt en de resourcegroep zelf.
+Als u voor deze oefening een nieuwe resource groep en een opslag account hebt gemaakt, kunt u beide assets verwijderen door de resource groep te verwijderen. Als u de resourcegroep verwijdert, worden alle resources verwijderd die deze groep bevat.
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
@@ -164,8 +164,8 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Gebruikersaanmeldingen behouden tussen PowerShell-sessies](/powershell/azure/context-persistence)
-* [Azure Government-opslag](../../azure-government/documentation-government-services-storage.md)
-* [Ontwikkelaarshandleiding voor Microsoft Azure Government](../../azure-government/documentation-government-developer-guide.md)
-* [Opmerkingen voor ontwikkelaars voor Azure China toepassingen](https://msdn.microsoft.com/library/azure/dn578439.aspx)
+* [Gebruikers aanmeldingen persistent maken tussen Power shell-sessies](/powershell/azure/context-persistence)
+* [Opslag Azure Government](../../azure-government/documentation-government-services-storage.md)
+* [Ontwikkelaars handleiding Microsoft Azure Government](../../azure-government/documentation-government-developer-guide.md)
+* [Opmerkingen voor ontwikkel aars voor Azure China 21Vianet-toepassingen](https://msdn.microsoft.com/library/azure/dn578439.aspx)
 * [Documentatie voor Azure Duitsland](../../germany/germany-welcome.md)

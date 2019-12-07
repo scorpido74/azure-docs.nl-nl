@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 09/20/2019
-ms.openlocfilehash: ae737b908aad95f61cef922b493b41752da68f14
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 373c498b9ce58062e42f4318c9fa94688556d8c5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932354"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894212"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>De implementatie van uw Azure Monitor-logboeken ontwerpen
 
@@ -63,14 +63,14 @@ Met op rollen gebaseerd toegangs beheer (RBAC) kunt u gebruikers en groepen alle
 
 De gegevens waartoe een gebruiker toegang heeft, wordt bepaald door een combi natie van factoren die in de volgende tabel worden weer gegeven. Elk wordt beschreven in de volgende secties.
 
-| Rekening | Beschrijving |
+| Multi-factor Authentication | Beschrijving |
 |:---|:---|
-| [Toegangs modus](#access-mode) | De methode die de gebruiker gebruikt voor toegang tot de werk ruimte.  Hiermee definieert u het bereik van de beschik bare gegevens en de toegangs beheer modus die wordt toegepast. |
+| [Toegangsmodus](#access-mode) | De methode die de gebruiker gebruikt voor toegang tot de werk ruimte.  Hiermee definieert u het bereik van de beschik bare gegevens en de toegangs beheer modus die wordt toegepast. |
 | [Toegangs beheer modus](#access-control-mode) | Instelling in de werk ruimte die definieert of machtigingen worden toegepast op het niveau van de werk ruimte of de resource. |
 | [Machtigingen](manage-access.md) | Machtigingen die worden toegepast op afzonderlijke of groepen gebruikers voor de werk ruimte of resource. Hiermee definieert u welke gegevens de gebruiker toegang heeft. |
 | [RBAC op tabel niveau](manage-access.md#table-level-rbac) | Optionele gedetailleerde machtigingen die van toepassing zijn op alle gebruikers, ongeacht de toegangs modus of de toegangs beheer modus. Hiermee definieert u welke gegevens typen een gebruiker kan openen. |
 
-## <a name="access-mode"></a>Toegangs modus
+## <a name="access-mode"></a>Toegangsmodus
 
 De *toegangs modus* verwijst naar hoe een gebruiker toegang heeft tot een log Analytics-werk ruimte en definieert het bereik van de gegevens waartoe ze toegang hebben. 
 
@@ -80,7 +80,7 @@ Gebruikers hebben twee opties om toegang tot de gegevens te krijgen:
 
     ![Context van Log Analytics in werk ruimte](./media/design-logs-deployment/query-from-workspace.png)
 
-* **Resource-context**: wanneer u de werk ruimte voor een bepaalde resource, resource groep of abonnement opent, bijvoorbeeld wanneer u **Logboeken** selecteert in een Resource menu in het Azure Portal, kunt u Logboeken alleen weer geven voor resources in alle tabellen die u hebt toegang tot. Query's in deze modus zijn alleen van toepassing op gegevens die aan die resource zijn gekoppeld. Met deze modus kunt u ook granulaire RBAC.
+* **Resource-context**: wanneer u de werk ruimte voor een bepaalde resource, resource groep of abonnement opent, bijvoorbeeld wanneer u **Logboeken** selecteert in een Resource menu in het Azure Portal, kunt u Logboeken voor alleen resources weer geven in alle tabellen waartoe u toegang hebt. Query's in deze modus zijn alleen van toepassing op gegevens die aan die resource zijn gekoppeld. Met deze modus kunt u ook granulaire RBAC.
 
     ![Log Analytics context van resource](./media/design-logs-deployment/query-from-resource.png)
 
@@ -90,7 +90,7 @@ Gebruikers hebben twee opties om toegang tot de gegevens te krijgen:
     > - Service Fabric
     > - Application Insights
     >
-    > U kunt testen of Logboeken goed zijn gekoppeld aan hun resource door een query uit te voeren en de records te controleren waarin u bent geïnteresseerd. Als de juiste resource-ID voor komt in de eigenschap [_ResourceId](log-standard-properties.md#_resourceid) , zijn de gegevens beschikbaar voor resource gerichte query's.
+    > U kunt testen of Logboeken goed zijn gekoppeld aan hun resource door een query uit te voeren en de records te controleren waarin u bent geïnteresseerd. Als de juiste resource-ID wordt weer gegeven in de eigenschap [_ResourceId](log-standard-properties.md#_resourceid) , zijn de gegevens beschikbaar voor resource gerichte query's.
 
 Azure Monitor bepaalt automatisch de juiste modus, afhankelijk van de context waarin u de zoek opdracht in Logboeken uitvoert. Het bereik wordt altijd weer gegeven in de linkerbovenhoek van Log Analytics.
 
@@ -102,7 +102,7 @@ De volgende tabel bevat een overzicht van de toegangs modi:
 |:---|:---|:---|
 | Voor wie is elk model bedoeld? | Centraal beheer. Beheerders die gegevens verzameling en gebruikers moeten configureren die toegang nodig hebben tot een groot aantal verschillende bronnen. Dit is ook vereist voor gebruikers die toegang moeten hebben tot logboeken voor bronnen buiten Azure. | Toepassings teams. Beheerders van Azure-resources die worden bewaakt. |
 | Wat heeft een gebruiker nodig om logboeken weer te geven? | Machtigingen voor de werk ruimte. Zie **machtigingen voor werk ruimten** in [toegang beheren via werkruimte machtigingen](manage-access.md#manage-access-using-workspace-permissions). | Lees toegang tot de resource. Zie **resource machtigingen** in [toegang beheren met Azure-machtigingen](manage-access.md#manage-access-using-azure-permissions). Machtigingen kunnen worden overgenomen (bijvoorbeeld van de container resource groep) of rechtstreeks worden toegewezen aan de resource. De machtigingen voor de logboeken voor de resource worden automatisch toegewezen. |
-| Wat is het bereik van machtigingen? | Werk ruimte. Gebruikers met toegang tot de werk ruimte kunnen alle logboeken in de werk ruimte opvragen van tabellen waarvoor ze machtigingen hebben. Zie [Table Access Control](manage-access.md#table-level-rbac) | Azure-resource. De gebruiker kan Logboeken zoeken voor specifieke resources, resource groepen of abonnementen waartoe ze toegang hebben vanuit een wille keurige werk ruimte, maar geen logboeken kunnen doorzoeken voor andere resources. |
+| Wat is het bereik van machtigingen? | werk ruimte. Gebruikers met toegang tot de werk ruimte kunnen alle logboeken in de werk ruimte opvragen van tabellen waarvoor ze machtigingen hebben. Zie [Table Access Control](manage-access.md#table-level-rbac) | Azure-resource. De gebruiker kan Logboeken zoeken voor specifieke resources, resource groepen of abonnementen waartoe ze toegang hebben vanuit een wille keurige werk ruimte, maar geen logboeken kunnen doorzoeken voor andere resources. |
 | Hoe kan de gebruiker toegang krijgen tot logboeken? | <ul><li>Start **Logboeken** vanuit **Azure monitor** menu.</li></ul> <ul><li>Start **Logboeken** vanuit **log Analytics werk ruimten**.</li></ul> <ul><li>Vanuit Azure Monitor [werkmappen](../visualizations.md#workbooks).</li></ul> | <ul><li>**Logboeken** starten vanuit het menu voor de Azure-resource</li></ul> <ul><li>Start **Logboeken** vanuit **Azure monitor** menu.</li></ul> <ul><li>Start **Logboeken** vanuit **log Analytics werk ruimten**.</li></ul> <ul><li>Vanuit Azure Monitor [werkmappen](../visualizations.md#workbooks).</li></ul> |
 
 ## <a name="access-control-mode"></a>Toegangs beheer modus
@@ -115,7 +115,7 @@ De *Access Control-modus* is een instelling voor elke werk ruimte die definieert
 
     Dit is de standaard instelling voor alle werk ruimten die zijn gemaakt vóór 2019 maart.
 
-* **Resource-of werkruimte machtigingen gebruiken**: deze besturings modus maakt granulaire RBAC mogelijk. Gebruikers kunnen toegang krijgen tot gegevens die zijn gekoppeld aan resources die ze kunnen weer geven door de machtiging Azure `read` toe te wijzen. 
+* **Resource-of werkruimte machtigingen gebruiken**: deze besturings modus maakt granulaire RBAC mogelijk. Gebruikers kunnen toegang krijgen tot gegevens die zijn gekoppeld aan resources die ze kunnen weer geven door Azure `read`-machtiging toe te wijzen. 
 
     Wanneer een gebruiker toegang heeft tot de werk ruimte in de werk ruimte-context modus, zijn werkruimte machtigingen van toepassing. Wanneer een gebruiker de werk ruimte in de resource context modus opent, worden alleen resource machtigingen gecontroleerd en worden de machtigingen voor de werk ruimte genegeerd. Schakel RBAC voor een gebruiker in door deze uit de werkruimte machtigingen te verwijderen en de machtigingen van de resource te herkennen.
 
@@ -147,7 +147,7 @@ Dit scenario heeft betrekking op één werkruimte ontwerp in uw IT-organisatie a
 
 Alle resources, bewakings oplossingen en inzichten zoals Application Insights en Azure Monitor voor VM's, ondersteunende infra structuur en toepassingen die worden onderhouden door de verschillende teams, zijn geconfigureerd om hun verzamelde logboek gegevens door te sturen naar de IT-organisaties gecentraliseerde gedeelde werk ruimte. Gebruikers van elk team krijgen toegang tot logboeken voor bronnen waartoe ze toegang hebben gekregen.
 
-Wanneer u uw werkruimte architectuur hebt geïmplementeerd, kunt u dit afdwingen op Azure-resources met [Azure Policy](../../governance/policy/overview.md). Het biedt een manier om beleid te definiëren en te controleren op naleving van uw Azure-resources, zodat ze al hun Diagnostische logboeken naar een bepaalde werk ruimte verzenden. Met virtuele machines of virtuele-machine schaal sets van Azure kunt u bijvoorbeeld bestaande beleids regels gebruiken om de naleving van de werk ruimte te evalueren en resultaten te rapporteren, of om te herstellen als deze niet compatibel is.  
+Wanneer u uw werkruimte architectuur hebt geïmplementeerd, kunt u dit afdwingen op Azure-resources met [Azure Policy](../../governance/policy/overview.md). Het biedt een manier om beleid te definiëren en te controleren op naleving van uw Azure-resources, zodat ze al hun resource logboeken naar een bepaalde werk ruimte verzenden. Met virtuele machines of virtuele-machine schaal sets van Azure kunt u bijvoorbeeld bestaande beleids regels gebruiken om de naleving van de werk ruimte te evalueren en resultaten te rapporteren, of om te herstellen als deze niet compatibel is.  
 
 ## <a name="workspace-consolidation-migration-strategy"></a>Strategie voor consolidatie migratie van werk ruimte
 

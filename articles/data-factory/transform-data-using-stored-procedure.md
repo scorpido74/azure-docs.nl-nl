@@ -1,5 +1,5 @@
 ---
-title: Gegevens transformeren met behulp van de opgeslagen procedure activiteit in Azure Data Factory
+title: Gegevens transformeren met behulp van de opgeslagen procedure-activiteit
 description: Hierin wordt uitgelegd hoe u SQL Server opgeslagen procedure activiteit gebruikt om een opgeslagen procedure in een Azure SQL Database/Data Warehouse aan te roepen vanuit een Data Factory-pijp lijn.
 services: data-factory
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.date: 11/27/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 5ebb2b9cdcbef59e07476dbebd289bb4402ca5fa
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 59bfdc5d2d57b2c05a2c7676d83d8771142ca285
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683721"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893770"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van de SQL Server opgeslagen procedure activiteit in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -36,11 +36,11 @@ U kunt de opgeslagen procedure activiteit gebruiken voor het aanroepen van een o
 > [!IMPORTANT]
 > Bij het kopiëren van gegevens naar Azure SQL Database of SQL Server, kunt u de **SqlSink** in Kopieer activiteit configureren om een opgeslagen procedure aan te roepen met behulp van de eigenschap **sqlWriterStoredProcedureName** . Zie voor meer informatie over de eigenschap de volgende connector artikelen: [Azure SQL database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md). Het aanroepen van een opgeslagen procedure bij het kopiëren van gegevens naar een Azure SQL Data Warehouse met behulp van een Kopieer activiteit, wordt niet ondersteund. Maar u kunt de opgeslagen procedure activiteit gebruiken om een opgeslagen procedure in een SQL Data Warehouse aan te roepen. 
 >
-> Bij het kopiëren van gegevens uit Azure SQL Database of SQL Server of Azure SQL Data Warehouse, kunt u **SqlSource** configureren in de Kopieer activiteit om een opgeslagen procedure aan te roepen voor het lezen van gegevens uit de bron database met behulp van de **sqlReaderStoredProcedureName** eigenschap. Zie de volgende connector artikelen: [Azure SQL database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md) [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md) voor meer informatie          
+> Bij het kopiëren van gegevens uit Azure SQL Database of SQL Server of Azure SQL Data Warehouse, kunt u **SqlSource** configureren in de Kopieer activiteit om een opgeslagen procedure aan te roepen voor het lezen van gegevens uit de bron database met behulp van de eigenschap **sqlReaderStoredProcedureName** . Zie de volgende connector artikelen: [Azure SQL database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md) [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md) voor meer informatie          
 
  
 
-## <a name="syntax-details"></a>Syntaxis Details
+## <a name="syntax-details"></a>Syntaxis van de details
 Dit is de JSON-indeling voor het definiëren van een opgeslagen procedure activiteit:
 
 ```json
@@ -65,9 +65,9 @@ Dit is de JSON-indeling voor het definiëren van een opgeslagen procedure activi
 
 In de volgende tabel worden deze JSON-eigenschappen beschreven:
 
-| Eigenschap                  | Beschrijving                              | Vereist |
+| Eigenschap                  | Beschrijving                              | Verplicht |
 | ------------------------- | ---------------------------------------- | -------- |
-| naam                      | Naam van de activiteit                     | Ja      |
+| name                      | Naam van de activiteit                     | Ja      |
 | description               | Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt | Nee       |
 | type                      | Voor de opgeslagen procedure activiteit is het type activiteit **SqlServerStoredProcedure** | Ja      |
 | linkedServiceName         | Verwijzing naar de **Azure SQL database** of **Azure SQL Data Warehouse** of **SQL Server** geregistreerd als een gekoppelde service in Data Factory. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service. | Ja      |
@@ -77,7 +77,7 @@ In de volgende tabel worden deze JSON-eigenschappen beschreven:
 ## <a name="parameter-data-type-mapping"></a>Toewijzing van parameter gegevens type
 Het gegevens type dat u opgeeft voor de para meter is het Azure Data Factory type dat wordt toegewezen aan het gegevens type in de gegevens bron die u gebruikt. U kunt de gegevens type toewijzingen voor uw gegevens bron vinden in het gebied connectors. Enkele voor beelden zijn
 
-| Gegevens bron          | Toewijzing van gegevens type |
+| Gegevensbron          | Toewijzing van gegevens type |
 | ---------------------|-------------------|
 | Azure SQL Data Warehouse | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
 | Azure SQL Database   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 

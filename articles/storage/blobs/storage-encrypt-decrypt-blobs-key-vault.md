@@ -1,27 +1,27 @@
 ---
-title: 'Zelfstudie: Blobs in Azure Storage versleutelen en ontsleutelen met behulp van Azure Key Vault | Microsoft Docs'
-description: Een BLOB versleutelen en ontsleutelen met behulp van versleuteling aan client zijde voor Microsoft Azure Storage met Azure Key Vault.
+title: 'Zelf studie: blobs versleutelen en ontsleutelen met behulp van Azure Key Vault'
+titleSuffix: Azure Storage
+description: Meer informatie over het versleutelen en ontsleutelen van een blob met versleuteling aan client zijde met Azure Key Vault.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 05/14/2019
+ms.topic: tutorial
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 34dbcaeedb544a8a8808aab3e8e3315f1790dd9a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c83e56a47f4b212a5612cb9e6965ce8e73228dcb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003442"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892886"
 ---
-# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Zelfstudie: Blobs in Microsoft Azure Storage versleutelen en ontsleutelen met behulp van Azure Key Vault
+# <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Zelf studie: blobs versleutelen en ontsleutelen met behulp van Azure Key Vault
 
-## <a name="introduction"></a>Inleiding
 In deze zelf studie wordt beschreven hoe u gebruik kunt maken van opslag versleuteling aan de client zijde met Azure Key Vault. U wordt begeleid bij het versleutelen en ontsleutelen van een BLOB in een console toepassing met behulp van deze technologieën.
 
-**Geschatte tijdsduur:** 20 minuten
+**Geschatte duur:** 20 minuten
 
 Zie [Wat is Azure Key Vault?](../../key-vault/key-vault-overview.md)voor overzichts informatie over Azure Key Vault.
 
@@ -29,7 +29,7 @@ Zie [versleuteling aan client zijde en Azure Key Vault voor Microsoft Azure Stor
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt het volgende nodig om deze zelfstudie te voltooien:
+Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 * Een Azure Storage-account
 * Visual Studio 2013 of hoger
@@ -48,7 +48,7 @@ Hier volgt een korte beschrijving van de werking van versleuteling aan client zi
 
 ## <a name="set-up-your-azure-key-vault"></a>Uw Azure Key Vault instellen
 
-Als u wilt door gaan met deze zelf studie, moet u de volgende stappen uitvoeren, zoals beschreven in de Snelstartgids voor de [zelf studie: Een geheim van Azure Key Vault instellen en ophalen met behulp van een .NET](../../key-vault/quick-create-net.md)-web-app:
+Als u wilt door gaan met deze zelf studie, moet u de volgende stappen uitvoeren, zoals beschreven in de [Snelstartgids: een geheim van Azure Key Vault instellen en ophalen met behulp van een .net-Web-app](../../key-vault/quick-create-net.md):
 
 * Een sleutelkluis maken.
 * Voeg een sleutel of geheim toe aan de sleutel kluis.
@@ -87,7 +87,7 @@ Voeg AppSettings toe aan de app. config.
 </appSettings>
 ```
 
-Voeg de volgende `using` instructies toe en voeg een verwijzing naar System. Configuration toe aan het project.
+Voeg de volgende `using`-instructies toe en zorg ervoor dat u een verwijzing naar System. Configuration aan het project toevoegt.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -121,7 +121,7 @@ private async static Task<string> GetToken(string authority, string resource, st
 }
 ```
 
-## <a name="access-storage-and-key-vault-in-your-program"></a>Toegang tot opslag en Key Vault in uw programma
+## <a name="access-azure-storage-and-key-vault-in-your-program"></a>Toegang tot Azure Storage en Key Vault in uw programma
 
 Voeg de volgende code toe aan de methode Main ().
 
@@ -229,6 +229,7 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
     "https://contosokeyvault.vault.azure.net/secrets/TestSecret2/",
     CancellationToken.None).GetAwaiter().GetResult();
 ```
+
 Dat is alles. Veel plezier!
 
 ## <a name="next-steps"></a>Volgende stappen

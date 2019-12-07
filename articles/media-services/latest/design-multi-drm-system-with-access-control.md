@@ -1,6 +1,6 @@
 ---
 title: Ontwerp van een multi-DRM-inhouds beschermings systeem met toegangs beheer-Azure Media Services | Microsoft Docs
-description: Meer informatie over licentieverlening Microsoft Smooth Streaming Client Porting Kit.
+description: In deze artikelen vindt u een gedetailleerde beschrijving van het ontwerpen van een multi-DRM-inhouds beschermings systeem met Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: ffbf53c0bb0aaf2832afecc2d0df935f04eeff19
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 00ddedf135d13c07e8abe1094dd5366acb0f4ae5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310330"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896173"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Ontwerp van een multi-DRM-beveiliging van inhoud-systeem met toegangsbeheer 
 
@@ -27,7 +27,7 @@ Het ontwerpen en bouwen van een subsysteem Digital Rights Management (DRM) voor 
 
 De betreffende lezers voor dit document zijn engineers die werken in DRM subsystemen van OTT of online streaming/Graphic; oplossingen of lezers die geïnteresseerd in DRM subsystemen zijn. Verondersteld wordt dat lezers bekend met ten minste één van de DRM-technologieën op de markt, zoals PlayReady, Widevine, FairPlay of Adobe-toegang bent.
 
-In deze bespreking bevatten Multi-DRM de drie DRMs die door Azure Media Services worden ondersteund: Common Encryption (CENC) voor PlayReady en Widevine, FairPlay en AES-128 Clear Key encryption. Een belangrijke trend in online streaming en uit de branche OTT is het gebruik van systeemeigen DRM's op verschillende-clientplatforms. Deze trend is een overstap van de voorgaande build is die een enkele DRM en de client-SDK voor verschillende-clientplatforms gebruikt. Wanneer u CENC met multi systeemeigen DRM, zowel PlayReady als Widevine zijn versleuteld volgens de [Common Encryption (ISO/IEC 23001-7 CENC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specificatie.
+In deze discussie door multi-DRM nemen we de 3 DRM's ondersteund door Azure Media Services: algemene versleuteling (CENC) voor PlayReady en Widevine, FairPlay, evenals de AES-128 clear key-versleuteling. Een belangrijke trend in online streaming en uit de branche OTT is het gebruik van systeemeigen DRM's op verschillende-clientplatforms. Deze trend is een overstap van de voorgaande build is die een enkele DRM en de client-SDK voor verschillende-clientplatforms gebruikt. Wanneer u CENC met multi systeemeigen DRM, zowel PlayReady als Widevine zijn versleuteld volgens de [Common Encryption (ISO/IEC 23001-7 CENC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specificatie.
 
 De voordelen van het gebruik van systeemeigen multi-DRM voor inhoudsbeveiliging zijn dat deze:
 
@@ -116,11 +116,11 @@ Waarom deze overwegingen belangrijk zijn?
 
 Als u een openbare cloud voor de licentielevering van de, hebben permanente en niet-persistente licenties een directe invloed op kosten voor de levering van licentie. De volgende twee verschillende ontwerp-gevallen hebben om te illustreren:
 
-* Maandelijks abonnement: Gebruik een permanente licentie en een 1-op-veel-inhouds sleutel-naar-Asset-toewijzing. Bijvoorbeeld, voor alle kinderen films gebruiken we een enkele inhoudssleutel voor versleuteling. In dit geval:
+* Maandabonnement: gebruik een permanente licentie en 1-op-veel inhoud sleutel-asset-toewijzing. Bijvoorbeeld, voor alle kinderen films gebruiken we een enkele inhoudssleutel voor versleuteling. In dit geval:
 
     Totaal aantal licenties die zijn aangevraagd voor alle kinderen films/apparaat = 1
 
-* Maandelijks abonnement: Gebruik een niet-permanente licentie en 1-op-1 toewijzing tussen inhouds sleutel en Asset. In dit geval:
+* Maandabonnement: gebruik een niet-persistente licentie en 1-op-1-toewijzing tussen inhoudssleutel en asset. In dit geval:
 
     Totaal aantal licenties die zijn aangevraagd voor alle kinderen films/apparaat = [aantal films bekeken] x [aantal sessies]
 
@@ -245,7 +245,7 @@ Gebruik de volgende informatie voor probleemoplossing voor hulp bij problemen me
 
 * Lidmaatschap van verlenen claims bevoegdheden. Zorg ervoor dat het volgende in het manifestbestand van de Azure AD-toepassing: 
 
-    "groupMembershipClaims": ' All ' (de standaard waarde is null)
+    "groupMembershipClaims": "Alle" (de standaardwaarde is null)
 
 * Stel de juiste TokenType bij het maken van beperking vereisten.
 
@@ -286,15 +286,15 @@ U kunt contact opnemen met een van de auteurs hebben een account te maken of toe
 
 De volgende schermafbeeldingen tonen verschillende aanmelden pagina's die worden gebruikt door verschillende domeinaccounts:
 
-**Aangepast Azure AD-domein account voor Tenant**: De aangepaste aanmeldings pagina van het aangepaste domein van de Azure AD-Tenant.
+**Aangepaste Azure AD-tenant domeinaccount**: de aangepaste aanmeldingspagina van de aangepaste Azure AD tenant-domein.
 
 ![Aangepast Azure AD-tenant domeinaccount een](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
 
-**Micro soft-domein account met Smart Card**: De aanmeldings pagina die door micro soft is aangepast met twee ledige verificatie.
+**Microsoft-domeinaccount met smartcard**: aangepast door Microsoft zakelijke pagina IT met tweeledige verificatie.
 
 ![Aangepast Azure AD-tenant-domeinaccount twee](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
 
-**Microsoft-account**: De aanmeldings pagina van de Microsoft-account voor consumenten.
+**Microsoft-account**: de aanmeldingspagina van het Microsoft-account voor consumenten.
 
 ![Aangepast Azure AD-tenant domeinaccount drie](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
 

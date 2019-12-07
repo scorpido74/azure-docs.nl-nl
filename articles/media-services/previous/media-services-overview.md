@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Azure Media Services | Microsoft Docs
-description: Dit onderwerp bevat een overzicht van Azure Media Services
+description: Microsoft Azure Media Services is een uitbreidbaar cloudplatform dat ontwikkelaars in staat stelt om schaalbare toepassingen voor mediabeheer en -levering te bouwen. Dit artikel geeft een overzicht van Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7f0a071012685ee192d4f866396a5953d0a4508c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d339fd16b1eef8df367bdcb375a1cb3dc71ddde2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937256"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895881"
 ---
 # <a name="azure-media-services-overview"></a>Overzicht van Azure Media Services 
 
@@ -27,7 +27,7 @@ ms.locfileid: "64937256"
 > * [Versie 2](media-services-overview.md)
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [hulp bij de migratie van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure Media Services (AMS) is een uitbreidbaar cloudplatform waarmee ontwikkelaars schaalbare toepassingen voor mediabeheer en -levering kunnen ontwikkelen. Media Services is gebaseerd op de REST API's waarmee u veilig video- of audio-inhoud kunt uploaden, opslaan, coderen en verpakken, zowel voor levering on demand als levering via livestreaming aan verschillende clients (bijvoorbeeld tv, pc en mobiele apparaten).
 
@@ -53,12 +53,12 @@ Als u Media Services-oplossingen wilt maken, kunt u het volgende gebruiken:
     * Azure Media Services SDK voor .NET
     
         * [NuGet-pakket](https://www.nuget.org/packages/windowsazure.mediaservices/)
-        * [Broncode van Github](https://github.com/Azure/azure-sdk-for-media-services)
+        * [Github-bron code](https://github.com/Azure/azure-sdk-for-media-services)
     * [Azure SDK voor Java](https://github.com/Azure/azure-sdk-for-java)
     * [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)
     * [Azure Media Services voor Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (Dit is een niet-Microsoft-versie van een Node.js SDK. Deze wordt onderhouden door een community en biedt nog geen 100% dekking voor AMS API's).
 * Bestaande hulpprogramma's:
-    * [Azure Portal](https://portal.azure.com/)
+    * [Azure-portal](https://portal.azure.com/)
     * [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Azure Media Services Explorer (AMSE) is een Winforms-/C#-toepassing voor Windows)
 
 > [!NOTE]
@@ -67,7 +67,7 @@ Als u Media Services-oplossingen wilt maken, kunt u het volgende gebruiken:
 
 ## <a name="code-samples"></a>Codevoorbeelden
 
-Zoeken naar meerdere codevoorbeelden in de galerie **Azure Code Samples**: [Azure Media Services-codevoorbeelden](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
+Zoeken naar meerdere codevoorbeelden in de galerie **Azure-codevoorbeelden**: [Azure Media Services-codevoorbeelden](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
 
 ## <a name="concepts"></a>Concepten
 

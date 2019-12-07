@@ -1,6 +1,6 @@
 ---
 title: Media Encoder Standard gebruiken om een bitrate ladder automatisch te genereren-Azure | Microsoft Docs
-description: In dit onderwerp wordt uitgelegd hoe u Media Encoder Standard (MES) kunt gebruiken om automatisch een bitrate ladder te genereren op basis van de invoer resolutie en bitrate. De invoer resolutie en bitrate worden nooit overschreden. Als de invoer bijvoorbeeld 720p is op 3Mbps, blijft de uitvoer 720p op het beste en begint dit met lagere tarieven dan 3Mbps.
+description: In dit onderwerp wordt uitgelegd hoe u Media Encoder Standard (MES) kunt gebruiken om automatisch een bitrate ladder te genereren op basis van de invoer resolutie en bitrate.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 14575e0c95acf1345fc3358b323083d86d8eedee
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: b7f0b77ba11a0c9c1670ec240caf45fcf61a934d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543549"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896019"
 ---
 #  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Media Encoder Standard gebruiken om een bitrate ladder automatisch te genereren  
 
@@ -28,7 +28,7 @@ In dit artikel wordt uitgelegd hoe u Media Encoder Standard (MES) kunt gebruiken
 
 ### <a name="encoding-for-streaming-only"></a>Code ring voor alleen streaming
 
-Als u uw bron video alleen wilt coderen voor streaming, moet u de voor instelling ' adaptieve streaming ' gebruiken bij het maken van een coderings taak. Wanneer u de voor instelling voor **adaptieve streaming** gebruikt, zal het mes-coderings programma op een slimme manier een bitrate voor de bitsnelheid maken. U kunt de coderings kosten echter niet beheren omdat de service bepaalt hoeveel lagen er moeten worden gebruikt en met welke resolutie. Aan het einde van dit artikel ziet u voor beelden van uitvoer lagen die worden geproduceerd door mes als resultaat van code ring met de voor instelling adaptief streamen. Het uitvoer element bevat MP4-bestanden waarbij audio en video niet Interleaved zijn.
+Als u uw bron video alleen wilt coderen voor streaming, moet u de voor instelling ' adaptieve streaming ' gebruiken bij het maken van een coderings taak. Wanneer u de voor instelling voor **adaptieve streaming** gebruikt, zal het mes-coderings programma op een slimme manier een bitrate voor de bitsnelheid maken. U kunt de coderings kosten echter niet beheren omdat de service bepaalt hoeveel lagen er moeten worden gebruikt en met welke resolutie. Aan het einde van dit artikel ziet u voor beelden van uitvoer lagen die worden geproduceerd door MES als resultaat van code ring met de voor instelling **adaptief streamen** . Het uitvoer element bevat MP4-bestanden waarbij audio en video niet Interleaved zijn.
 
 ### <a name="encoding-for-streaming-and-progressive-download"></a>Code ring voor streaming en progressief downloaden
 

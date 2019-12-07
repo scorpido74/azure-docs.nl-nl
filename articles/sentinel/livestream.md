@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2019
+ms.date: 12/06/2019
 ms.author: cabailey
-ms.openlocfilehash: e72b9012b41f50b36ba7d92582d0c697e6db0683
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 5b347848c9c6a58a70ab1093a6f9c70b62f3f769
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546852"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900460"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Jacht Livestream in azure Sentinel gebruiken om bedreigingen te detecteren
 
@@ -70,7 +70,7 @@ U kunt een livestream-sessie maken op basis van een bestaande zoek opdracht of e
 
 5. Selecteer **afspelen** in de opdracht balk.
     
-    De status balk onder de opdracht balk geeft aan of uw Livestream actief of onderbroken is. In het volgende voor beeld wordt de sessie uitgevoerd:
+    De status balk onder de opdracht balk geeft aan of uw Livestream-sessie actief of onderbroken is. In het volgende voor beeld wordt de sessie uitgevoerd:
     
     > [!div class="mx-imgBorder"]
     > ![Livestream-sessie maken op basis van een Sentinel-jacht van Azure](./media/livestream/livestream-session.png)
@@ -110,7 +110,6 @@ Met deze actie wordt de wizard voor het maken van regels geopend. deze wordt voo
 ## <a name="next-steps"></a>Volgende stappen
 
 In dit artikel hebt u geleerd hoe u de jacht Livestream in azure Sentinel kunt gebruiken. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-
 
 - [Proactief zoeken naar bedreigingen](hunting.md)
 - [Notitie blokken gebruiken voor het uitvoeren van geautomatiseerde jacht-campagnes](notebooks.md)

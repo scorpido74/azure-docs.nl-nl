@@ -1,6 +1,6 @@
 ---
-title: Gids voor probleemoplossing voor live streamen | Microsoft Docs
-description: In dit onderwerp vindt suggesties over het oplossen van problemen met live streaming.
+title: Gids voor probleem oplossing voor live streamen | Microsoft Docs
+description: Dit artikel bevat suggesties voor het oplossen van problemen met het Azure Media Services van live streamen.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,45 +13,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f502e3228274840d23b9f52512280fc0d9f0553b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b00df5e8176aaad86be5cf3ae4e04c736f36cf5b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544691"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885599"
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>Handleiding voor het oplossen van problemen met live streaming  
 
-Dit artikel bevat suggesties over het oplossen van enkele problemen met live streaming.
+Dit artikel bevat suggesties voor het oplossen van problemen met live streamen.
 
-## <a name="issues-related-to-on-premises-encoders"></a>Problemen met betrekking tot on-premises coderingsprogramma 's
-In deze sectie biedt suggesties over het oplossen van problemen met betrekking tot on-premises coderingsprogramma's die zijn geconfigureerd voor het verzenden van een single-bitrate stream aan AMS-kanalen die zijn ingeschakeld voor live codering.
+## <a name="issues-related-to-on-premises-encoders"></a>Problemen met betrekking tot on-premises encoders
+Deze sectie bevat suggesties voor het oplossen van problemen met betrekking tot on-premises encoders die zijn geconfigureerd voor het verzenden van een enkele bitrate stroom naar AMS-kanalen die zijn ingeschakeld voor Live encoding.
 
-### <a name="problem-would-like-to-see-logs"></a>Probleem: Graag zou willen zien van Logboeken
-* **Potentiële problemen**: Kan de encoder-logboeken die u kunnen helpen niet vinden in het opsporen van problemen.
+### <a name="problem-would-like-to-see-logs"></a>Probleem: logboeken wilt weer geven
+* **Mogelijk probleem**: kan encoder-logboeken niet vinden die kunnen helpen bij het oplossen van problemen.
   
-  * **Telestream Wirecast**: U vindt meestal Logboeken onder C:\Users\{gebruikersnaam} \AppData\Roaming\Wirecast\ 
-  * **Elemental Live**: U vindt bevat koppelingen naar Logboeken op de management portal. Klik op **statistieken**, klikt u vervolgens **logboeken**. Op de **logboekbestanden** pagina, ziet u een lijst van Logboeken voor alle items in de LiveEvent; de optie die overeenkomt met uw huidige sessie. 
-  * **Flash Media Live Encoder**: U vindt de **logboekmap...**  door te navigeren naar de **codering Log** tabblad.
+  * **Telestream Wirecast**: u kunt meestal logboeken vinden onder C:\Users\{username} \AppData\Roaming\Wirecast\ 
+  * **Elementair Live**: u vindt koppelingen naar Logboeken op de beheer Portal. Klik op **Statistieken**en vervolgens op **Logboeken**. Op de pagina **logboek bestanden** ziet u een lijst met Logboeken voor alle LiveEvent-items. Selecteer het abonnement dat overeenkomt met uw huidige sessie. 
+  * **Flash Media Live Encoder**: u kunt de **Logboekmap vinden...** door te navigeren naar het tabblad **coderings logboek** .
 
-### <a name="problem-there-is-no-option-for-outputting-a-progressive-stream"></a>Probleem: Er bestaat geen optie voor het uitvoeren van een progressieve stream
-* **Potentiële problemen**: De encoder die wordt gebruikt niet automatisch Interlace ongedaan maken. 
+### <a name="problem-there-is-no-option-for-outputting-a-progressive-stream"></a>Probleem: er is geen optie voor het uitvoeren van een progressieve stroom
+* **Mogelijk probleem**: de gebruikte code ring wordt niet automatisch interliniëring ongedaan gemaakt. 
   
-    **Stappen voor probleemoplossing**: Zoek naar een optie voor het ongedaan maken ineengestrengeld binnen de encoder-interface. Zodra de interlace ongedaan maken is ingeschakeld, controleren opnieuw progressieve uitvoerinstellingen. 
+    **Stappen voor probleem oplossing**: zoek naar een niet-interliniëring-optie in de coderings interface. Zodra de-interliniëring is ingeschakeld, controleert u opnieuw op de instellingen voor Progressieve uitvoer. 
 
-### <a name="problem-tried-several-encoder-output-settings-and-still-unable-to-connect"></a>Probleem: Heeft geprobeerd meerdere encoder uitvoerinstellingen en kan nog steeds geen verbinding maken.
-* **Potentiële problemen**: Azure codering kanaal is niet juist opnieuw ingesteld. 
+### <a name="problem-tried-several-encoder-output-settings-and-still-unable-to-connect"></a>Probleem: er zijn verschillende uitvoer instellingen voor het coderings programma en er kan nog steeds geen verbinding worden gemaakt.
+* **Mogelijk probleem**: het Azure encoding-kanaal is niet juist opnieuw ingesteld. 
   
-    **Stappen voor probleemoplossing**: Zorg ervoor dat het coderingsprogramma is niet meer aan AMS pushen, stoppen en opnieuw instellen van het kanaal. Zodra nogmaals uit te voeren, moet u proberen verbinding te maken van het coderingsprogramma met de nieuwe instellingen. Als dit nog niet het probleem wordt opgelost, maak een nieuw kanaal volledig, soms kanalen beschadigd kunnen raken nadat het aantal mislukte pogingen.  
-* **Potentiële problemen**: De GOP grootte of sleutel frame-instellingen zijn niet optimaal. 
+    **Stappen voor probleem oplossing**: Zorg ervoor dat het coderings programma niet meer naar AMS pusht, stop en stel het kanaal opnieuw in. Wanneer het opnieuw wordt uitgevoerd, probeert u uw encoder te koppelen met de nieuwe instellingen. Als het probleem nog steeds niet wordt verholpen, probeert u een nieuw kanaal te maken, soms kunnen kanalen beschadigd raken na verschillende mislukte pogingen.  
+* **Mogelijk probleem**: de instellingen voor de grootte van het GOP terug of het keyframe zijn niet optimaal. 
   
-    **Stappen voor probleemoplossing**: Aanbevolen GOP-grootte of sleutelframes interval is twee seconden. Sommige coderingsprogramma's berekenen met deze instelling in het aantal frames, terwijl anderen seconden. Bijvoorbeeld: Bij het uitvoeren van 30 fps, zou de grootte van de GOP 60 frames die gelijk is aan 2 seconden.  
-* **Potentiële problemen**: De stroom blokkeren gesloten poorten. 
+    **Stappen voor probleem oplossing**: aanbevolen GOP terug-grootte of het interval voor het keyframe is twee seconden. Sommige coderings Programma's berekenen deze instelling in het aantal frames, terwijl anderen seconden gebruiken. Bijvoorbeeld: bij het uitvoeren van 30 fps is de grootte van de GOP terug 60 frames, die gelijk is aan 2 seconden.  
+* **Mogelijk probleem**: de stroom wordt geblokkeerd door gesloten poorten. 
   
-    **Stappen voor probleemoplossing**: Bij het streamen via RTMP, Controleer de firewall en/of proxy-instellingen om te bevestigen dat uitgaande poorten 1935 en 1936 geopend zijn. 
+    **Stappen voor probleem oplossing**: als streaming via RTMP, controleert u de firewall-en/of proxy-instellingen om te bevestigen dat de uitgaande poorten 1935 en 1936 zijn geopend. 
 
 > [!NOTE]
-> Als na het volgen van de stappen die u nog steeds kan niet met succes streamen, dien een ondersteuningsticket met behulp van de Azure portal.
+> Als u na het volgen van de probleemoplossings stappen die u nog steeds niet kunt streamen, een ondersteunings ticket verzendt met behulp van de Azure Portal.
 > 
 > 
 

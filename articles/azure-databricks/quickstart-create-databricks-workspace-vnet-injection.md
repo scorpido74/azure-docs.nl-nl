@@ -1,5 +1,5 @@
 ---
-title: Een Azure Databricks-werk ruimte maken in een Virtual Network
+title: Een Azure Databricks-werk ruimte maken in uw eigen Virtual Network Snelstartgids
 description: In dit artikel wordt beschreven hoe u Azure Databricks implementeert in uw virtuele netwerk.
 services: azure-databricks
 author: mamccrea
@@ -7,19 +7,21 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
-ms.date: 04/02/2019
-ms.openlocfilehash: 69afe2aab3c10707f7160d727b970ad73d59a952
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 12/04/2019
+ms.openlocfilehash: 404aa1d345bb1e30a0fe55d033d49d7dd8ba5a1b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791545"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893412"
 ---
-# <a name="quickstart-create-an-azure-databricks-workspace-in-a-virtual-network"></a>Quick Start: een Azure Databricks-werk ruimte maken in een Virtual Network
+# <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>Quick Start: een Azure Databricks-werk ruimte maken in uw eigen Virtual Network
 
-In deze Quick start ziet u hoe u een Azure Databricks werkruimte maakt in een virtueel netwerk. U maakt ook een Apache Spark cluster binnen die werk ruimte.
+De standaard implementatie van Azure Databricks maakt een nieuw virtueel netwerk dat wordt beheerd door Databricks. In deze Quick start ziet u hoe u in plaats daarvan een Azure Databricks werkruimte maakt in uw eigen virtuele netwerk. U maakt ook een Apache Spark cluster binnen die werk ruimte. 
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) aan.
+Zie [Deploy Azure Databricks in uw Azure Virtual Network (VNet-injectie)] (/databricks/Administration-Guide/Cloud-configurations/Azure/vnet-Inject) voor meer informatie over het maken van een Azure Databricks-werk ruimte in uw eigen virtuele netwerk.
+
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/databricks/) aan.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -31,14 +33,16 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
 
-1. Selecteer in de Azure Portal **een resource maken** > **netwerk** > **virtueel netwerk**.
+1. Selecteer in het menu Azure Portal de optie **een resource maken**. Selecteer vervolgens **netwerk > virtueel netwerk**.
+
+    ![Een virtueel netwerk maken op Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network-portal.png)
 
 2. Pas onder **virtueel netwerk maken**de volgende instellingen toe: 
 
     |Instelling|Voorgestelde waarde|Beschrijving|
     |-------|---------------|-----------|
     |Naam|databricks-Quick Start|Selecteer een naam voor het virtuele netwerk.|
-    |Adresruimte|10.1.0.0/16|Het adres bereik van het virtuele netwerk in CIDR-notatie.|
+    |Adresruimte|10.1.0.0/16|Het adres bereik van het virtuele netwerk in CIDR-notatie. Het CIDR-bereik moet tussen/16 en/24 zijn|
     |Abonnement|\<Uw abonnement\>|Selecteer het Azure-abonnement dat u wilt gebruiken.|
     |Resourcegroep|databricks-Quick Start|Selecteer **nieuwe maken** en voer een nieuwe resource groeps naam in voor uw account.|
     |Locatie|\<Selecteer de regio die het dichtst bij uw gebruikers is gelegen\>|Selecteer een geografische locatie waar u uw virtuele netwerk kunt hosten. Gebruik de locatie die het dichtst bij uw gebruikers is.|
@@ -53,23 +57,25 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Een Azure Databricks-werkruimte maken
 
-1. Selecteer in de Azure Portal **een resource maken** > **Analytics** > **Databricks**.
+1. Selecteer in het menu Azure Portal de optie **een resource maken**. Selecteer vervolgens **Analytics > Databricks**.
+
+    ![Een Azure Databricks-werk ruimte maken op Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace-portal.png)
 
 2. Pas onder **Azure Databricks-service**de volgende instellingen toe:
 
     |Instelling|Voorgestelde waarde|Beschrijving|
     |-------|---------------|-----------|
-    |Werkruimte naam|databricks-Quick Start|Selecteer een naam voor uw Azure Databricks-werk ruimte.|
+    |Naam van de werkruimte|databricks-Quick Start|Selecteer een naam voor uw Azure Databricks-werk ruimte.|
     |Abonnement|\<Uw abonnement\>|Selecteer het Azure-abonnement dat u wilt gebruiken.|
     |Resourcegroep|databricks-Quick Start|Selecteer dezelfde resource groep die u hebt gebruikt voor het virtuele netwerk.|
     |Locatie|\<Selecteer de regio die het dichtst bij uw gebruikers is gelegen\>|Kies dezelfde locatie als het virtuele netwerk.|
     |Prijsniveau|Kies tussen Standard of Premium.|Zie de [pagina met prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/)voor meer informatie over prijs categorieën.|
-    |Azure Databricks-werk ruimte in uw Virtual Network implementeren|Ja|Met deze instelling kunt u een Azure Databricks-werk ruimte in uw virtuele netwerk implementeren.|
+    |Azure Databricks-werk ruimte in uw Virtual Network (VNet) implementeren|Ja|Met deze instelling kunt u een Azure Databricks-werk ruimte in uw virtuele netwerk implementeren.|
     |Virtueel netwerk|databricks-Quick Start|Selecteer het virtuele netwerk dat u in de vorige sectie hebt gemaakt.|
     |Naam van openbaar subnet|openbaar subnet|Gebruik de standaard naam van het open bare subnet.|
-    |CIDR-bereik openbaar subnet|10.179.64.0/18|Het CIDR-bereik voor dit subnet moet tussen/18 en/26 zijn.|
+    |CIDR-bereik openbaar subnet|10.179.64.0/18|Gebruik een CIDR-bereik tot en met/26.|
     |Naam van particulier subnet|persoonlijk subnet|De standaard naam van het particuliere subnet gebruiken.|
-    |CIDR-bereik voor persoonlijk subnet|10.179.0.0/18|Het CIDR-bereik voor dit subnet moet tussen/18 en/26 zijn.|
+    |CIDR-bereik voor persoonlijk subnet|10.179.0.0/18|Gebruik een CIDR-bereik tot en met/26.|
 
     ![Een Azure Databricks-werk ruimte maken op Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
 
@@ -77,7 +83,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
     ![Azure Databricks overzicht in Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/databricks-overview-portal.png)
 
-    De beheerde resource groep bevat de fysieke locatie van het opslag account (DBFS), werk nemer-AG (netwerk beveiligings groep), werk nemers-vnet (virtueel netwerk). Het is ook de locatie waar de virtuele machines, de schijf, het IP-adres en de netwerk interface worden gemaakt. Deze resource groep is standaard vergrendeld. Als er echter een cluster wordt gestart in het virtuele netwerk, wordt er een netwerk interface gemaakt tussen de werk nemers-vnet in de beheerde resource groep en het virtuele netwerk van de hub.
+    De beheerde resource groep kan niet worden gewijzigd en wordt niet gebruikt voor het maken van virtuele machines. U kunt alleen virtuele machines maken in de resource groep die u beheert.
 
     ![Beheerde resource groep Azure Databricks](./media/quickstart-create-databricks-workspace-vnet-injection/managed-resource-group.png)
 

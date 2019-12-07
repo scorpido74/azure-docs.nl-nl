@@ -1,6 +1,6 @@
 ---
-title: Implementeren van failover streamen met Azure Media Services | Microsoft Docs
-description: Dit onderwerp leest hoe u een failover streaming scenario implementeert.
+title: Het streamen van failover met Azure Media Services implementeren | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u een scenario voor het streamen van failover implementeert met Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,57 +13,57 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ea5238df50ff050140453ce655ea041669f6080c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 195f7f089b84e1665f4dd078a7da141d531c2185
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051650"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887154"
 ---
-# <a name="implement-failover-streaming-with-media-services"></a>Failover streamen met Media Services implementeren 
+# <a name="implement-failover-streaming-with-media-services"></a>Het streamen van failover met Media Services implementeren 
 
-In dit scenario ziet u hoe u inhoud (blobs) kopiëren van een asset naar een andere om redundantie voor on-demand streaming verwerkt. Dit scenario is handig als u wilt voor het instellen van Azure Content Delivery Network failover tussen twee datacentra, in het geval van een storing in één datacenter. In dit scenario maakt gebruik van de Azure Media Services SDK, de REST-API van Azure Media Services en de Azure Storage SDK ter illustratie van de volgende taken:
+In deze walkthrough wordt gedemonstreerd hoe u inhoud (blobs) van een activum naar een andere kopieert om redundantie voor on-demand streaming te kunnen afhandelen. Dit scenario is handig als u Azure Content Delivery Network wilt instellen op failover tussen twee data centers, in het geval van een storing in één Data Center. In dit scenario wordt gebruikgemaakt van de Azure Media Services SDK, de Azure Media Services REST API en de Azure Storage SDK om de volgende taken te demonstreren:
 
-1. Instellen van een Media Services-account in 'Data Center a'
-2. Upload een tussentijds bestand naar een asset bron.
-3. Codeer de asset in met meerdere bits tarief MP4-bestanden. 
-4. Maak een alleen-lezen shared access signature-locator. Dit is voor de bron-asset lezen toegang hebben tot de container in het opslagaccount dat is gekoppeld aan de bron-asset.
-5. De containernaam van de bron-activa ophalen van de alleen-lezen shared access signature-locator in de vorige stap hebt gemaakt. Dit is nodig voor het kopiëren van BLOB's tussen opslagaccounts (verderop in het onderwerp beschreven.)
-6. Maak een oorsprong-locator voor de asset die door de coderingstaak is gemaakt. 
+1. Stel een Media Services-account in in Data Center A.
+2. Upload een mezzanine-bestand naar een bron Asset.
+3. Codeer de asset in multi-bitrate MP4-bestanden. 
+4. Maak een alleen-lezen Locator voor gedeelde Access-hand tekeningen. Dit is voor de bron Asset om Lees toegang te hebben tot de container in het opslag account dat is gekoppeld aan de bron Asset.
+5. Haal de container naam van de bron Asset op uit de alleen-lezen locatie van de gedeelde Access-hand tekening die in de vorige stap is gemaakt. Dit is nodig voor het kopiëren van blobs tussen opslag accounts (verderop beschreven in het onderwerp).
+6. Maak een bron-Locator voor het activum dat door de coderings taak is gemaakt. 
 
-Klik om af te handelen van de failover:
+Ga vervolgens als volgt te werk om de failover te verwerken:
 
-1. Instellen van een Media Services-account in "Data Center B."
-2. Maak een lege asset van doel in de doel-Media Services-account.
-3. Maak een schrijven shared access signature-locator. Dit is voor de lege asset doel schrijven toegang hebben tot de container in het doel-opslagaccount dat is gekoppeld aan de doel-asset.
-4. De Azure Storage SDK gebruiken om te kopiëren van blobs (assetbestanden) tussen de bron-storage-account in 'Data Center A' en het doelopslagaccount in "Data Center B." Deze storage-accounts zijn gekoppeld aan de activa van belang zijn.
-5. Blobs (assetbestanden) die zijn gekopieerd naar de doel-blob-container met de doel-asset koppelen. 
-6. Maken van een oorsprong-locator voor de activa in "Data Center B" en geef de locator-ID die is gegenereerd voor de activa in 'Data Center a'
+1. Stel een Media Services-account in in Data Center B.
+2. Maak een lege assets in het doel Media Services account.
+3. Maak een Locator voor het schrijven van gedeelde Access-hand tekeningen. Dit is voor het doel lege activum om schrijf toegang te hebben tot de container in het doel opslag account dat is gekoppeld aan de doel Asset.
+4. Gebruik de Azure Storage SDK om blobs (Asset-bestanden) te kopiëren tussen het bron opslag account in Data Center A en het doel-opslag account in Data Center B. Deze opslag accounts zijn gekoppeld aan de activa van belang.
+5. Koppel blobs (Asset-bestanden) die zijn gekopieerd naar de doel-BLOB-container met de doel Asset. 
+6. Maak een bron-Locator voor de asset in Data Center B en geef de Locator-ID op die voor het activum is gegenereerd in Data Center A.
 
-Dit biedt u de streaming-URL's waarbij de relatieve paden van de URL's hetzelfde zijn (alleen de basis-URL's verschillende zijn). 
+Dit geeft u de streaming-Url's waar de relatieve paden van de Url's hetzelfde zijn (alleen de basis-Url's verschillen). 
 
-U kunt vervolgens een Content Delivery Network boven op deze oorsprong locators maken voor het afhandelen van eventuele uitval. 
+Als u vervolgens eventuele storingen wilt verwerken, kunt u een Content Delivery Network maken boven op deze bron Locators. 
 
 De volgende overwegingen zijn van toepassing:
 
-* De huidige versie van Media Services SDK biedt geen ondersteuning voor programmatisch genereren IAssetFile-informatie die u aan een asset assetbestanden koppelen wilt. In plaats daarvan de CreateFileInfos Media Services REST API gebruiken om dit te doen. 
-* Opslag versleuteld activa (AssetCreationOptions.StorageEncrypted) worden niet ondersteund voor replicatie (omdat de versleutelingssleutel anders in beide Media Services-accounts is). 
-* Als u wilt profiteren van dynamische pakketten, zorg ervoor dat het streaming-eindpunt van waaruit u inhoud wilt streamen uw is in de **met** staat.
+* De huidige versie van de SDK van Media Services biedt geen ondersteuning voor het programmatisch genereren van IAssetFile-informatie die een Asset aan activa bestanden zou koppelen. Gebruik in plaats daarvan de CreateFileInfos-Media Services REST API om dit te doen. 
+* Opslag versleutelde assets (AssetCreationOptions. StorageEncrypted) worden niet ondersteund voor replicatie (omdat de versleutelings sleutel anders is in beide Media Services-accounts). 
+* Als u gebruik wilt maken van dynamische pakketten, moet u ervoor zorgen dat het streaming-eind punt van waaruit u uw inhoud wilt streamen, de status wordt **uitgevoerd** heeft.
 
 ## <a name="prerequisites"></a>Vereisten
-* Twee Media Services-accounts in een nieuwe of bestaande Azure-abonnement. Zie [over het maken van een Media Services-Account](media-services-portal-create-account.md).
-* Besturingssysteem: Windows 7, Windows 2008 R2 of Windows 8.
-* .NET framework 4.5 of .NET Framework 4.
+* Twee Media Services accounts in een nieuw of bestaand Azure-abonnement. Zie [een Media Services-account maken](media-services-portal-create-account.md).
+* Besturings systeem: Windows 7, Windows 2008 R2 of Windows 8.
+* .NET Framework 4,5 of .NET Framework 4.
 * Visual Studio 2010 SP1 of hoger (Professional, Premium, Ultimate of Express).
 
 ## <a name="set-up-your-project"></a>Uw project instellen
-In deze sectie maken en instellen van een project C#-consoletoepassing.
+In deze sectie maakt en definieert u een C# console toepassings project.
 
-1. Visual Studio gebruiken om een nieuwe oplossing met het project C#-consoletoepassing te maken. Voer **HandleRedundancyForOnDemandStreaming** voor de naam en klik vervolgens op **OK**.
-2. Maak de **SupportFiles** map op hetzelfde niveau bevindt als de **HandleRedundancyForOnDemandStreaming.csproj** projectbestand. Onder de **SupportFiles** map, maken de **OutputFiles** en **MP4Files** mappen. Kopieer een MP4-bestand in de **MP4Files** map. (In dit voorbeeld wordt de **BigBuckBunny.mp4** -bestand wordt gebruikt.) 
-3. Gebruik **Nuget** om toe te voegen verwijzingen naar dll-bestanden met betrekking tot Media Services. In **Visual Studio-hoofdmenu**, selecteer **extra** > **Library Package Manager** > **Package Manager Console**. Typ in het consolevenster **Install-Package windowsazure.mediaservices**, en druk op Enter.
-4. Andere referenties weergegeven die vereist voor dit project zijn toevoegen: System.Configuration, System.Runtime.Serialization en System.Web.
-5. Vervang **met behulp van** instructies die zijn toegevoegd aan de **Programs.cs** bestand standaard met de volgende query:
+1. Gebruik Visual Studio om een nieuwe oplossing te maken die het C# console toepassings project bevat. Voer **HandleRedundancyForOnDemandStreaming** in als naam en klik vervolgens op **OK**.
+2. Maak de map **SupportFiles** op hetzelfde niveau als het project bestand **HandleRedundancyForOnDemandStreaming. csproj** . Maak in de map **SupportFiles** de mappen **OutputFiles** en **MP4Files** . Kopieer een MP4-bestand naar de map **MP4Files** . (In dit voor beeld wordt het bestand **BigBuckBunny. MP4** gebruikt.) 
+3. Gebruik **Nuget** om verwijzingen toe te voegen aan dll-bestanden met betrekking tot Media Services. Selecteer in het **hoofd menu van Visual Studio** **Hulpprogram Ma's** > **bibliotheek pakket beheer** > **Package Manager-console**. Typ in het console venster **installeren-package windowsazure. Media Services**en druk op ENTER.
+4. Voeg andere verwijzingen toe die vereist zijn voor dit project: System. Configuration, System. runtime. serialisatie en System. Web.
+5. Vervang met **behulp** van-instructies die zijn toegevoegd aan het **programs.cs** -bestand standaard met de volgende:
    
         using System;
         using System.Configuration;
@@ -82,7 +82,7 @@ In deze sectie maken en instellen van een project C#-consoletoepassing.
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Blob;
         using Microsoft.WindowsAzure.Storage.Auth;
-6. Toevoegen de **appSettings** sectie aan de **.config** bestands- en update de waarden op basis van uw Media Services en Storage-sleutel en geef de naam waarden. 
+6. Voeg de sectie **appSettings** toe aan het **. config** -bestand en werk de waarden bij op basis van uw Media Services en de waarden van de opslag sleutel en de naam. 
    
         <appSettings>
           <add key="MediaServicesAccountNameSource" value="Media-Services-Account-Name-Source"/>
@@ -95,10 +95,10 @@ In deze sectie maken en instellen van een project C#-consoletoepassing.
           <add key="MediaServicesStorageAccountKeyTarget" value=" Media-Services-Storage-Account-Key-Target" />
         </appSettings>
 
-## <a name="add-code-that-handles-redundancy-for-on-demand-streaming"></a>Voeg code die verantwoordelijk is voor redundantie voor on-demand streaming
-In deze sectie maakt u de mogelijkheid voor het afhandelen van redundantie.
+## <a name="add-code-that-handles-redundancy-for-on-demand-streaming"></a>Code toevoegen die redundantie voor on-demand streaming verwerkt
+In deze sectie maakt u de mogelijkheid om redundantie te verwerken.
 
-1. De volgende klasseniveau velden toevoegt aan de klasse Program.
+1. Voeg de volgende velden op klasseniveau toe aan de klasse Program.
        
         // Read values from the App.config file.
         private static readonly string MediaServicesAccountNameSource = ConfigurationManager.AppSettings["MediaServicesAccountNameSource"];
@@ -125,7 +125,7 @@ In deze sectie maakt u de mogelijkheid voor het afhandelen van redundantie.
         static private MediaServicesCredentials _cachedCredentialsSource = null;
         static private MediaServicesCredentials _cachedCredentialsTarget = null;
 
-2. De standaarddefinitie van de Main-methode vervangen door de volgende uitvoer. Methodedefinities die worden aangeroepen vanuit de Main worden hieronder gedefinieerd.
+2. Vervang de standaard definitie van de hoofd methode door de volgende. Methode definities die worden aangeroepen vanuit Main, worden hieronder gedefinieerd.
         
         static void Main(string[] args)
         {
@@ -203,10 +203,10 @@ In deze sectie maakt u de mogelijkheid voor het afhandelen van redundantie.
                 writeSasLocator.Delete();
         }
 
-3. De volgende methodedefinities worden aangeroepen vanuit de Main.
+3. De volgende methode definities worden aangeroepen vanuit Main.
 
     >[!NOTE]
-    >Er is een limiet van 1.000.000 beleidsregels voor verschillende Media Services-beleidsitems (bijvoorbeeld voor Locator-beleid of ContentKeyAuthorizationPolicy). U moet dezelfde beleids-ID gebruiken als u altijd dezelfde dagen en toegangsmachtigingen. Bijvoorbeeld, de dezelfde ID gebruiken voor beleidsregels voor locators die zijn bedoeld om te blijven aanwezig gedurende een lange periode (niet-uploadbeleidsregels). Zie voor meer informatie, [in dit onderwerp](media-services-dotnet-manage-entities.md#limit-access-policies).
+    >Er geldt een limiet van 1.000.000 beleids regels voor verschillende Media Services-beleids regels (bijvoorbeeld voor Locator-beleid of ContentKeyAuthorizationPolicy). Gebruik dezelfde beleids-ID als u altijd dezelfde dagen en toegangs machtigingen gebruikt. Gebruik bijvoorbeeld dezelfde ID voor beleid voor Locators die zijn bedoeld om gedurende een lange periode te blijven (niet-upload beleid). Zie [dit onderwerp](media-services-dotnet-manage-entities.md#limit-access-policies) voor meer informatie.
 
         public static IAsset CreateAssetAndUploadSingleFile(CloudMediaContext context,
                                                         AssetCreationOptions assetCreationOptions,
@@ -931,7 +931,7 @@ In deze sectie maakt u de mogelijkheid voor het afhandelen van redundantie.
         }
 
 ## <a name="next-steps"></a>Volgende stappen
-U kunt nu een traffic manager gebruiken voor het doorsturen van aanvragen tussen de twee datacentra, en dus een failover uitvoeren in het geval van eventuele uitval.
+U kunt nu een Traffic Manager gebruiken om aanvragen te routeren tussen de twee data centers en daarom failover in het geval van storingen.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

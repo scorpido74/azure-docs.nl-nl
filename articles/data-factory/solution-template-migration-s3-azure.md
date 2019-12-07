@@ -1,5 +1,5 @@
 ---
-title: Gegevens migreren van Amazon S3 naar Azure Data Lake Storage Gen2 met Azure Data Factory
+title: Gegevens migreren van Amazon S3 naar Azure Data Lake Storage Gen2
 description: Informatie over het gebruik van een oplossings sjabloon voor het migreren van gegevens van Amazon S3 met behulp van een externe beheer tabel om een partitie lijst op te slaan in AWS S3 met Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/07/2019
-ms.openlocfilehash: a8591762bf4e8eccd5e1b7d67538674feed720b9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b1e7d15f1c747644c755b1e0bbe3351c626f7c28
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684193"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890807"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Gegevens migreren van Amazon S3 naar Azure Data Lake Storage Gen2
 
@@ -38,31 +38,31 @@ Voor gegevens migratie is normaal gesp roken een historische gegevens migratie v
 Met deze sjabloon (*sjabloon naam: historische gegevens van AWS S3 naar Azure data Lake Storage Gen2*) wordt ervan uitgegaan dat u een partitie lijst hebt geschreven in een tabel voor externe controle in Azure SQL database. Daarom wordt er een *opzoek* activiteit gebruikt om de partitie lijst op te halen uit de tabel voor externe controle, een herhaalde failover van elke partitie uit te voeren en elke taak voor het kopiëren van de ADF één partitie per keer te kopiëren. Zodra een Kopieer taak is voltooid, gebruikt deze een *opgeslagen procedure* activiteit om de status van het kopiëren van elke partitie in de controle tabel bij te werken.
 
 De sjabloon bevat vijf activiteiten:
-- Met **lookup** worden de partities opgehaald die niet zijn gekopieerd naar Azure data Lake Storage Gen2 uit een externe beheer tabel. De tabel naam is *s3_partition_control_table* en de query voor het laden van gegevens uit de tabel is *' Select PARTITIONPREFIX from s3_partition_control_table where SuccessOrFailure = 0 '* .
+- Met **lookup** worden de partities opgehaald die niet zijn gekopieerd naar Azure data Lake Storage Gen2 uit een externe beheer tabel. De tabel naam is *s3_partition_control_table* en de query voor het laden van gegevens uit de tabel is *' SELECT PARTITIONPREFIX from s3_partition_control_table where SuccessOrFailure = 0 '* .
 - **Foreach** haalt de partitie lijst op uit de *opzoek* activiteit en herhaalt elke partitie met de *TriggerCopy* -activiteit. U kunt de *batchCount* zo instellen dat gelijktijdig meerdere ADF-Kopieer taken worden uitgevoerd. We hebben in deze sjabloon 2 ingesteld.
 - **ExecutePipeline** voert *CopyFolderPartitionFromS3* -pijp lijn uit. De reden hiervoor is dat er een andere pijp lijn wordt gemaakt om elke Kopieer taak een partitie te laten kopiëren is omdat u de mislukte Kopieer taak eenvoudig opnieuw kunt uitvoeren om die specifieke partitie opnieuw te laden vanuit AWS S3. Alle andere Kopieer taken voor het laden van andere partities worden niet beïnvloed.
 - **Copy** kopieert elke partitie van AWS S3 naar Azure data Lake Storage Gen2.
 - **SqlServerStoredProcedure** de status van het kopiëren van elke partitie in de beheer tabel bij te werken.
 
 De sjabloon bevat twee para meters:
-- **AWS_S3_bucketName** is de Bucket naam op AWS S3 waar u de gegevens wilt migreren. Als u gegevens wilt migreren uit meerdere buckets op AWS S3, kunt u nog één kolom in de tabel met externe controle toevoegen om de Bucket naam voor elke partitie op te slaan en ook de pijp lijn bij te werken om de gegevens uit die kolom dienovereenkomstig op te halen.
+- **AWS_S3_bucketName** is de Bucket naam op de AWS S3 waar u de gegevens wilt migreren. Als u gegevens wilt migreren uit meerdere buckets op AWS S3, kunt u nog één kolom in de tabel met externe controle toevoegen om de Bucket naam voor elke partitie op te slaan en ook de pijp lijn bij te werken om de gegevens uit die kolom dienovereenkomstig op te halen.
 - **Azure_Storage_fileSystem** is de naam van het bestands systeem op Azure data Lake Storage Gen2 waarnaar u gegevens wilt migreren.
 
 ### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Voor de sjabloon alleen gewijzigde bestanden van Amazon S3 naar Azure Data Lake Storage Gen2 kopiëren
 
-Deze sjabloon (*sjabloon naam: verschil gegevens kopiëren van AWS S3 naar Azure data Lake Storage Gen2*) gebruikt LastModifiedTime van elk bestand om de nieuwe of bijgewerkte bestanden alleen van AWS S3 naar Azure te kopiëren. Houd er rekening mee dat de bestanden of mappen al zijn gepartitioneerd met timeslice-informatie als onderdeel van de naam van het bestand of de map op AWS S3 (bijvoorbeeld/yyyy/mm/dd/file.CSV), u kunt naar deze [zelf studie](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) gaan voor een incrementele benadering van de meest uitgebreide aanpak nieuwe bestanden laden. Bij deze sjabloon wordt ervan uitgegaan dat u een partitie lijst hebt geschreven in een externe beheer tabel in Azure SQL Database. Daarom wordt er een *opzoek* activiteit gebruikt om de partitie lijst op te halen uit de tabel voor externe controle, een herhaalde failover van elke partitie uit te voeren en elke taak voor het kopiëren van de ADF één partitie per keer te kopiëren. Wanneer elke Kopieer taak begint met het kopiëren van de bestanden van AWS S3, is het afhankelijk van de eigenschap LastModifiedTime om de nieuwe of bijgewerkte bestanden te identificeren en te kopiëren. Zodra een Kopieer taak is voltooid, gebruikt deze een *opgeslagen procedure* activiteit om de status van het kopiëren van elke partitie in de controle tabel bij te werken.
+Deze sjabloon (*sjabloon naam: verschil gegevens kopiëren van AWS S3 naar Azure data Lake Storage Gen2*) gebruikt LastModifiedTime van elk bestand om de nieuwe of bijgewerkte bestanden alleen van AWS S3 naar Azure te kopiëren. Houd rekening met het volgende: als uw bestanden of mappen al zijn gepartitioneerd met timeslice-informatie als onderdeel van de bestands-of mapnaam op AWS S3 (bijvoorbeeld/yyyy/mm/dd/file.CSV), kunt u naar deze [zelf studie](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) gaan om de meer uitgebreide benadering te verkrijgen voor het stapsgewijs laden van nieuwe bestanden. Bij deze sjabloon wordt ervan uitgegaan dat u een partitie lijst hebt geschreven in een externe beheer tabel in Azure SQL Database. Daarom wordt er een *opzoek* activiteit gebruikt om de partitie lijst op te halen uit de tabel voor externe controle, een herhaalde failover van elke partitie uit te voeren en elke taak voor het kopiëren van de ADF één partitie per keer te kopiëren. Wanneer elke Kopieer taak begint met het kopiëren van de bestanden van AWS S3, is het afhankelijk van de eigenschap LastModifiedTime om de nieuwe of bijgewerkte bestanden te identificeren en te kopiëren. Zodra een Kopieer taak is voltooid, gebruikt deze een *opgeslagen procedure* activiteit om de status van het kopiëren van elke partitie in de controle tabel bij te werken.
 
 De sjabloon bevat zeven activiteiten:
-- Met **lookup** worden de partities opgehaald uit een externe beheer tabel. De tabel naam is *s3_partition_delta_control_table* en de query voor het laden van gegevens uit de tabel is *' SELECT DISTINCT PartitionPrefix from s3_partition_delta_control_table '* .
+- Met **lookup** worden de partities opgehaald uit een externe beheer tabel. De tabel naam is *s3_partition_delta_control_table* en de query voor het laden van gegevens uit de tabel is *' Select distinct PartitionPrefix from s3_partition_delta_control_table '* .
 - **Foreach** haalt de partitie lijst op uit de *opzoek* activiteit en herhaalt elke partitie met de *TriggerDeltaCopy* -activiteit. U kunt de *batchCount* zo instellen dat gelijktijdig meerdere ADF-Kopieer taken worden uitgevoerd. We hebben in deze sjabloon 2 ingesteld.
 - **ExecutePipeline** voert *DeltaCopyFolderPartitionFromS3* -pijp lijn uit. De reden hiervoor is dat er een andere pijp lijn wordt gemaakt om elke Kopieer taak een partitie te laten kopiëren is omdat u de mislukte Kopieer taak eenvoudig opnieuw kunt uitvoeren om die specifieke partitie opnieuw te laden vanuit AWS S3. Alle andere Kopieer taken voor het laden van andere partities worden niet beïnvloed.
-- Met **lookup** wordt de laatste kopie van de uitvoer tijd van de taak opgehaald uit de tabel met externe controle, zodat de nieuwe of bijgewerkte bestanden kunnen worden geïdentificeerd via LastModifiedTime. De tabel naam is *s3_partition_delta_control_table* en de query voor het laden van gegevens uit de tabel is *' Select Max (JobRunTime) as LastModifiedTime from s3_partition_delta_control_table where PartitionPrefix = ' @ {pipeline (). para meters. prefixStr } en SuccessOrFailure = 1*.
+- Met **lookup** wordt de laatste kopie van de uitvoer tijd van de taak opgehaald uit de tabel met externe controle, zodat de nieuwe of bijgewerkte bestanden kunnen worden geïdentificeerd via LastModifiedTime. De tabel naam is *s3_partition_delta_control_table* en de query voor het laden van gegevens uit de tabel is *' Select Max (JobRunTime) als LastModifiedTime van s3_partition_delta_control_table waarbij PartitionPrefix = @ {pipeline (). para meters. PrefixStr} en SuccessOrFailure = 1*.
 - **Kopie** kopieert nieuwe of gewijzigde bestanden alleen voor elke partitie van AWS S3 naar Azure data Lake Storage Gen2. De eigenschap van *modifiedDatetimeStart* is ingesteld op de laatste keer dat de taak wordt uitgevoerd. De eigenschap van *modifiedDatetimeEnd* wordt ingesteld op de huidige uitvoerings tijd van de taak copy. Houd er rekening mee dat de tijd wordt toegepast op de UTC-tijd zone.
 - **SqlServerStoredProcedure** bijwerken de status van het kopiëren van elke partitie en het kopiëren van de uitvoerings tijd in de controle tabel wanneer deze slaagt. De kolom van SuccessOrFailure is ingesteld op 1.
 - **SqlServerStoredProcedure** bijwerken de status van het kopiëren van elke partitie en het kopiëren van de uitvoerings tijd in de controle tabel wanneer deze mislukt. De kolom van SuccessOrFailure is ingesteld op 0.
 
 De sjabloon bevat twee para meters:
-- **AWS_S3_bucketName** is de Bucket naam op AWS S3 waar u de gegevens wilt migreren. Als u gegevens wilt migreren uit meerdere buckets op AWS S3, kunt u nog één kolom in de tabel met externe controle toevoegen om de Bucket naam voor elke partitie op te slaan en ook de pijp lijn bij te werken om de gegevens uit die kolom dienovereenkomstig op te halen.
+- **AWS_S3_bucketName** is de Bucket naam op de AWS S3 waar u de gegevens wilt migreren. Als u gegevens wilt migreren uit meerdere buckets op AWS S3, kunt u nog één kolom in de tabel met externe controle toevoegen om de Bucket naam voor elke partitie op te slaan en ook de pijp lijn bij te werken om de gegevens uit die kolom dienovereenkomstig op te halen.
 - **Azure_Storage_fileSystem** is de naam van het bestands systeem op Azure data Lake Storage Gen2 waarnaar u gegevens wilt migreren.
 
 ## <a name="how-to-use-these-two-solution-templates"></a>Deze twee oplossings sjablonen gebruiken
@@ -111,7 +111,7 @@ De sjabloon bevat twee para meters:
 
     ![Een nieuwe verbinding maken](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
 
-4. Selecteer **deze sjabloon gebruiken**.
+4. Selecteer **Deze sjabloon gebruiken**.
 
     ![Deze sjabloon gebruiken](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
     
@@ -174,7 +174,7 @@ De sjabloon bevat twee para meters:
 
     ![Een nieuwe verbinding maken](media/solution-template-migration-s3-azure/delta-migration-s3-azure1.png)
 
-4. Selecteer **deze sjabloon gebruiken**.
+4. Selecteer **Deze sjabloon gebruiken**.
 
     ![Deze sjabloon gebruiken](media/solution-template-migration-s3-azure/delta-migration-s3-azure2.png)
     
@@ -190,7 +190,7 @@ De sjabloon bevat twee para meters:
 
     ![Bekijk het resultaat](media/solution-template-migration-s3-azure/delta-migration-s3-azure5.png)
 
-8. U kunt de resultaten van de controle tabel ook met een query *' Select * from s3_partition_delta_control_table '* controleren. de uitvoer ziet er ongeveer uit zoals in het volgende voor beeld:
+8. U kunt ook de resultaten van de controle tabel controleren met een query *"Select * from s3_partition_delta_control_table"* . de uitvoer ziet er ongeveer uit als in het volgende voor beeld:
 
     ![Bekijk het resultaat](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
     

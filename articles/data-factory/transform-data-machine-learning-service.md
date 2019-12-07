@@ -1,5 +1,5 @@
 ---
-title: Azure Machine Learning pijp lijnen uitvoeren in uw Azure Data Factory pijp lijnen
+title: Azure Machine Learning pijp lijnen uitvoeren
 description: Meer informatie over het uitvoeren van uw Azure Machine Learning-pijp lijnen in uw Azure Data Factory pijp lijnen.
 services: data-factory
 documentationcenter: ''
@@ -7,15 +7,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/10/2019
-author: djpmsft
 ms.author: daperlov
-ms.openlocfilehash: a257c7d3f288f9a2e1998bf0679b7146b089cb50
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+author: djpmsft
+manager: anandsub
+ms.date: 10/10/2019
+ms.openlocfilehash: b9b7ce4b215e3182279b7ffe16124c466ac0dd25
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683883"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893906"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Azure Machine Learning pijp lijnen uitvoeren in Azure Data Factory
 
@@ -44,13 +45,13 @@ Voer uw Azure Machine Learning-pijp lijnen uit als een stap in uw Azure Data Fac
 
 ## <a name="type-properties"></a>Type-eigenschappen
 
-Eigenschap | Beschrijving | Toegestane waarden | Vereist
+Eigenschap | Beschrijving | Toegestane waarden | Verplicht
 -------- | ----------- | -------------- | --------
-naam | Naam van de activiteit in de pijp lijn | Tekenreeks | Ja
+name | Naam van de activiteit in de pijp lijn | Tekenreeks | Ja
 type | Type activiteit is ' AzureMLExecutePipeline ' | Tekenreeks | Ja
 linkedServiceName | Gekoppelde service aan Azure Machine Learning | Verwijzing naar gekoppelde service | Ja
 mlPipelineId | ID van de gepubliceerde Azure Machine Learning pijp lijn | Teken reeks (of expressie met het resultType van de teken reeks) | Ja
-experimentnaam | Naam van het experiment met de uitvoerings geschiedenis van de Machine Learning pijplijn uitvoering | Teken reeks (of expressie met het resultType van de teken reeks) | Nee
+Experimentnaam | Naam van het experiment met de uitvoerings geschiedenis van de Machine Learning pijplijn uitvoering | Teken reeks (of expressie met het resultType van de teken reeks) | Nee
 mlPipelineParameters | Sleutel-, waardeparen die moeten worden door gegeven aan het gepubliceerde eind punt van Azure Machine Learning pijplijn. Sleutels moeten overeenkomen met de namen van de pijplijn parameters die in de gepubliceerde Machine Learning pijp lijn zijn gedefinieerd | Object met sleutel waarde-paren (of expressie met het resultType-object) | Nee
 mlParentRunId | De ID van de bovenliggende Azure Machine Learning pijplijn uitvoering | Teken reeks (of expressie met het resultType van de teken reeks) | Nee
 continueOnStepFailure | Of de uitvoering van andere stappen in de Machine Learning pijplijn uitvoering moet worden voortgezet als een stap is mislukt | booleaans | Nee

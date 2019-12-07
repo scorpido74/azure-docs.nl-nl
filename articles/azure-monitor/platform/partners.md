@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: 8e04369e3e070054c5095abde29ecca99d071cb8
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 61b43329fcc840bc68f454400a4b5e917f43110c
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144469"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894592"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integraties van Azure Monitor-partner
 
@@ -255,7 +255,7 @@ Turbonomic voorziet in automatisering van workloads voor hybride clouds door teg
 - [Meer informatie over Azure Monitor](../../azure-monitor/overview.md)
 - [Toegang tot metrische gegevens met behulp van de REST API](rest-api-walkthrough.md)
 - [Het activiteiten logboek streamen naar een niet-micro soft-service](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-- [Diagnostische logboeken streamen naar een niet-micro soft-service](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+- [Bron logboeken streamen naar een niet-micro soft-service](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 
 
 

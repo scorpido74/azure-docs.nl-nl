@@ -1,5 +1,5 @@
 ---
-title: Gegevens in Azure SQL Data Warehouse kopiëren en transformeren met behulp van Azure Data Factory
+title: Gegevens kopiëren en transformeren in Azure SQL Data Warehouse
 description: Informatie over het kopiëren van gegevens van en naar Azure SQL Data Warehouse en het transformeren van gegevens in Azure SQL Data Warehouse met behulp van Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 4d08a388e98283ff7bf05e938d7b8c48b7065074
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1bd6d4d594bc7988d2dceaae533202f2a41379f1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076772"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891035"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens in Azure SQL Data Warehouse kopiëren en transformeren met behulp van Azure Data Factory 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -58,12 +58,12 @@ De volgende secties bevatten meer informatie over eigenschappen die specifieke D
 
 De volgende eigenschappen worden ondersteund voor een Azure SQL Data Warehouse gekoppelde service:
 
-| Eigenschap            | Beschrijving                                                  | Vereist                                                     |
+| Eigenschap            | Beschrijving                                                  | Verplicht                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | type                | De eigenschap type moet worden ingesteld op **AzureSqlDW**.             | Ja                                                          |
 | connectionString    | Geef de informatie die nodig zijn voor het verbinding maken met de Azure SQL Data Warehouse-exemplaar voor de **connectionString** eigenschap. <br/>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. U kunt ook het wacht woord/de sleutel van de Service-Principal in Azure Key Vault plaatsen, en als de SQL-verificatie de `password` configuratie uit de connection string haalt. Zie het JSON-voor beeld onder de tabel en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja                                                          |
 | servicePrincipalId  | Opgeven van de toepassing client-ID.                         | Ja, als u Azure AD-verificatie met een service-principal. |
-| servicePrincipalKey | Geef de sleutel van de toepassing. Dit veld markeren als een SecureString Bewaar deze zorgvuldig in Data Factory, of [verwijzen naar een geheim opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja, als u Azure AD-verificatie met een service-principal. |
+| servicePrincipalKey | Geef de sleutel van de toepassing. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja, als u Azure AD-verificatie met een service-principal. |
 | tenant              | De tenantgegevens (domain name of tenant-ID) opgeven in uw toepassing zich bevindt. U kunt het ophalen van de muis in de rechterbovenhoek van de Azure-portal. | Ja, als u Azure AD-verificatie met een service-principal. |
 | connectVia          | De [integratieruntime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. U kunt Azure Integration Runtime of een zelf-hostende integratieruntime gebruiken (als het gegevensarchief bevindt zich in een particulier netwerk). Als niet is opgegeven, wordt de standaard Azure Integration Runtime. | Nee                                                           |
 
@@ -231,7 +231,7 @@ Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zij
 
 De volgende eigenschappen worden ondersteund voor Azure SQL Data Warehouse-gegevensset:
 
-| Eigenschap  | Beschrijving                                                  | Vereist                    |
+| Eigenschap  | Beschrijving                                                  | Verplicht                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | De **type** eigenschap van de gegevensset moet worden ingesteld op **AzureSqlDWTable**. | Ja                         |
 | schema | De naam van het schema. |Nee voor bron, Ja voor sink  |
@@ -267,7 +267,7 @@ Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zij
 
 Om gegevens te kopiëren van Azure SQL Data Warehouse, stel de **type** eigenschap in de bron van Kopieeractiviteit naar **SqlDWSource**. De volgende eigenschappen worden ondersteund in de Kopieeractiviteit **bron** sectie:
 
-| Eigenschap                     | Beschrijving                                                  | Vereist |
+| Eigenschap                     | Beschrijving                                                  | Verplicht |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | De **type** eigenschap van de Kopieeractiviteit-bron moet worden ingesteld op **SqlDWSource**. | Ja      |
 | sqlReaderQuery               | Gebruik de aangepaste SQL-query om gegevens te lezen. Voorbeeld: `select * from MyTable`. | Nee       |
@@ -370,7 +370,7 @@ GO
 
 Om gegevens te kopiëren naar Azure SQL Data Warehouse, stelt u het sink-type in de Kopieeractiviteit naar **SqlDWSink**. De volgende eigenschappen worden ondersteund in de Kopieeractiviteit **sink** sectie:
 
-| Eigenschap          | Beschrijving                                                  | Vereist                                      |
+| Eigenschap          | Beschrijving                                                  | Verplicht                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | De **type** eigenschap van de Copy-activiteit-sink moet zijn ingesteld op **SqlDWSink**. | Ja                                           |
 | allowPolyBase     | Hiermee wordt aangegeven of het gebruik van PolyBase, indien van toepassing, in plaats van het mechanisme voor BULKINSERT. <br/><br/> Het is raadzaam om gegevens te laden in SQL Data Warehouse met behulp van PolyBase. Zie de [gebruik PolyBase om gegevens te laden in Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) sectie voor beperkingen en meer informatie.<br/><br/>Toegestane waarden zijn **waar** en **False** (standaard). | Nee                                            |
@@ -605,26 +605,26 @@ Wanneer u gegevens van of naar Azure SQL Data Warehouse kopieert, worden de volg
 | binary                                | Byte[]                         |
 | bit                                   | Booleaans                        |
 | char                                  | String, Char[]                 |
-| date                                  | DateTime                       |
-| Datum en tijd                              | DateTime                       |
-| datetime2                             | DateTime                       |
+| date                                  | Datum/tijd                       |
+| Datetime                              | Datum/tijd                       |
+| datetime2                             | Datum/tijd                       |
 | Datetimeoffset                        | DateTimeOffset                 |
-| decimaal                               | decimaal                        |
+| Decimal                               | Decimal                        |
 | FILESTREAM attribute (varbinary(max)) | Byte[]                         |
-| Float                                 | Double-waarde                         |
-| installatiekopie                                 | Byte[]                         |
+| Float                                 | Double                         |
+| image                                 | Byte[]                         |
 | int                                   | Int32                          |
-| money                                 | decimaal                        |
+| money                                 | Decimal                        |
 | nchar                                 | String, Char[]                 |
-| numeric                               | decimaal                        |
+| numeric                               | Decimal                        |
 | nvarchar                              | String, Char[]                 |
 | real                                  | Enkelvoudig                         |
 | rowversion                            | Byte[]                         |
-| smalldatetime                         | DateTime                       |
+| smalldatetime                         | Datum/tijd                       |
 | smallint                              | Int16                          |
-| smallmoney                            | decimaal                        |
+| smallmoney                            | Decimal                        |
 | tijd                                  | TimeSpan                       |
-| tinyint                               | Byte                           |
+| tinyint                               | byte                           |
 | uniqueidentifier                      | GUID                           |
 | varbinary                             | Byte[]                         |
 | varchar                               | String, Char[]                 |

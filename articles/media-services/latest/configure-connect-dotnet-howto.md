@@ -1,6 +1,6 @@
 ---
 title: Verbinding maken met Azure Media Services v3 API-.NET
-description: Meer informatie over hoe u verbinding maakt met Media Services v3 API met .NET.
+description: In dit artikel wordt beschreven hoe u verbinding maakt met Media Services v3 API met .NET.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
-ms.openlocfilehash: b2cfe8014e6ffbd7a6d5449192acde9780a2d303
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122890"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899895"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Verbinding maken met Media Services v3 API-.NET
 
@@ -38,14 +38,14 @@ In dit artikel wordt beschreven hoe u verbinding maakt met de Azure Media Servic
 1. Klik in het menu **bestand** op **Nieuw** > **project**. 
 1. Maak een **.net core** -console toepassing.
 
-De voor beeld-app in dit onderwerp `netcoreapp2.0`streeft naar doelen. De code maakt gebruik van C# ' async Main ', dat vanaf 7,1 kan worden gebruikt. Raadpleeg dit [blog](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) voor meer informatie.
+De voor beeld-app in dit onderwerp is gericht op `netcoreapp2.0`. De code maakt gebruik van C# ' async Main ', dat vanaf 7,1 kan worden gebruikt. Raadpleeg dit [blog](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) voor meer informatie.
 
 ## <a name="add-required-nuget-packages"></a>Vereiste NuGet-pakketten toevoegen
 
-1. Selecteer in Visual Studio **extra** > **NuGet package manager** > **NuGet Manager-console**.
-2. In het venster **Package Manager-console** gebruikt `Install-Package` u de opdracht om de volgende NuGet-pakketten toe te voegen. Bijvoorbeeld `Install-Package Microsoft.Azure.Management.Media`.
+1. Selecteer in Visual Studio **Hulpprogram ma's** > **NuGet package manager** > **NuGet Manager-console**.
+2. Gebruik in het venster **Package Manager-console** de opdracht `Install-Package` om de volgende NuGet-pakketten toe te voegen. Bijvoorbeeld `Install-Package Microsoft.Azure.Management.Media`.
 
-|Pakket|Description|
+|Pakket|Beschrijving|
 |---|---|
 |`Microsoft.Azure.Management.Media`|Azure Media Services SDK. <br/>Om ervoor te zorgen dat u het meest recente Azure Media Services-pakket gebruikt, controleert u [micro soft. Azure. Management. Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media).|
 |`Microsoft.Rest.ClientRuntime.Azure.Authentication`|ADAL-verificatie bibliotheek voor Azure SDK voor NET|
@@ -57,7 +57,7 @@ De voor beeld-app in dit onderwerp `netcoreapp2.0`streeft naar doelen. De code m
 
 ### <a name="create-appsettingsjson"></a>AppSettings. json maken
 
-1. Go-bestand voor **algemene** > **tekst**.
+1. Ga naar **algemeen** > **tekst bestand**.
 1. Noem het bestand appSettings. json.
 1. Stel de eigenschap kopiëren naar uitvoermap van het JSON-bestand in op ' kopiëren indien nieuwer ' (zodat de toepassing toegang kan krijgen tot de map wanneer deze wordt gepubliceerd).
 
@@ -70,7 +70,7 @@ Voer de `az ams account sp create` opdracht uit zoals beschreven in [Access-api'
 Voeg voor het gemak een configuratie bestand toe dat verantwoordelijk is voor het lezen van waarden van appSettings. json.
 
 1. Voeg een nieuwe. cs-klasse toe aan uw project. Noem deze `ConfigWrapper`. 
-1. Plak de volgende code in dit bestand (in dit voor beeld wordt ervan uitgegaan dat `ConsoleApp1`u de naam ruimte hebt).
+1. Plak de volgende code in dit bestand (in dit voor beeld wordt ervan uitgegaan dat u de naam ruimte hebt `ConsoleApp1`).
 
 ```csharp
 using System;
@@ -228,9 +228,9 @@ namespace ConsoleApp1
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelfstudie: Video's uploaden, coderen en streamen - .NET](stream-files-tutorial-with-api.md) 
-- [Zelfstudie: Live streamen met Azure Media Services v3 - .NET](stream-live-tutorial-with-api.md)
-- [Zelfstudie: Video's analyseren met Media Services v3 - .NET](analyze-videos-tutorial-with-api.md)
+- [Zelf studie: Video's uploaden, coderen en streamen-.NET](stream-files-tutorial-with-api.md) 
+- [Zelf studie: Stream Live met Media Services v3-.NET](stream-live-tutorial-with-api.md)
+- [Zelf studie: Video's analyseren met Media Services v3-.NET](analyze-videos-tutorial-with-api.md)
 - [Een taakinvoer maken vanuit een lokaal bestand - .NET](job-input-from-local-file-how-to.md)
 - [Een taakinvoer maken vanuit een HTTPS-URL - .NET](job-input-from-http-how-to.md)
 - [Coderen met een aangepaste transformatie - .NET](customize-encoder-presets-how-to.md)

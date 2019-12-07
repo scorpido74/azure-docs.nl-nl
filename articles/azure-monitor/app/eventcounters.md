@@ -4,15 +4,15 @@ description: Bewaak systeem-en aangepaste .NET/.NET core-EventCounters in Applic
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: cithomas
-ms.author: cithomas
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 0762819239e8fd71a015f317776a94280806db53
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1719c917ee2a4c0a11e4a79953a8b67e946d5931
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72677151"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889121"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters-Inleiding
 
@@ -28,7 +28,7 @@ Application Insights ondersteunt het verzamelen van `EventCounters` aan de `Even
 
 Voor apps die worden uitgevoerd in .NET Core 3,0 worden de volgende prestatie meter items automatisch verzameld door de SDK. De naam van de prestatie meter items heeft de indeling ' Category | Teller ".
 
-|Category | Item|
+|Category | Prestatiemeteritem|
 |---------------|-------|
 |`System.Runtime` | `cpu-usage` |
 |`System.Runtime` | `working-set` |
@@ -98,7 +98,7 @@ In het volgende voor beeld ziet u hoe u tellers kunt toevoegen/verwijderen. Deze
 Als u metrische gegevens van Event Counter wilt weer geven in de [metrische Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), selecteert u Application Insights resource en kiest u metrische gegevens op basis van een logboek als metrische naam ruimte. Vervolgens worden event Counter-metrische gegevens weer gegeven onder de categorie Performance Counter.
 
 > [!div class="mx-imgBorder"]
-> ![Event meter items die zijn gerapporteerd in Application Insights ](./media/event-counters/metrics-explorer-counter-list.png)
+> ![gebeurtenis tellers die zijn gerapporteerd in Application Insights](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Gebeurtenis tellers in Analytics
 
@@ -111,7 +111,7 @@ performanceCounters | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Event meter items die zijn gerapporteerd in Application Insights ](./media/event-counters/analytics-event-counters.png)
+> ![gebeurtenis tellers die zijn gerapporteerd in Application Insights](./media/event-counters/analytics-event-counters.png)
 
 Voer de volgende query uit om een grafiek van een specifieke teller te verkrijgen (bijvoorbeeld `ThreadPool Completed Work Item Count`) in de recente periode.
 
@@ -123,7 +123,7 @@ performanceCounters
 | render timechart
 ```
 > [!div class="mx-imgBorder"]
-> ![Chat van één item in Application Insights ](./media/event-counters/analytics-completeditems-counters.png)
+> ![chatten van één item in Application Insights](./media/event-counters/analytics-completeditems-counters.png)
 
 Net als bij andere telemetrie heeft **Performance Counters** ook een kolom `cloud_RoleInstance` die de identiteit aangeeft van het exemplaar van de hostserver waarop uw app wordt uitgevoerd. De bovenstaande query toont de item waarde per exemplaar en kan worden gebruikt om de prestaties van verschillende server instanties te vergelijken.
 

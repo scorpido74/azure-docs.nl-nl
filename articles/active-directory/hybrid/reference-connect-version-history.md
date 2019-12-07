@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 893b617a965b0823b8d630e036d5d5f923647f8f
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 461298e4f195d88ced5015af26226a9f7b12f737
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73944227"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891776"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: release geschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -31,7 +31,7 @@ Onderwerp |  Details
 --------- | --------- |
 Stappen om een upgrade uit te voeren van Azure AD Connect | Verschillende methoden voor [het uitvoeren van een upgrade van een eerdere versie naar de nieuwste](how-to-upgrade-previous-version.md) Azure AD Connect versie.
 Vereiste machtigingen | Zie [accounts en machtigingen](reference-connect-accounts-permissions.md#upgrade)voor machtigingen die vereist zijn om een update toe te passen.
-Download| [Down load Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
+Downloaden| [Down load Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
 >Het uitgeven van een nieuwe versie van Azure AD Connect is een proces waarbij verschillende kwaliteitscontrole stappen nodig zijn om de werking van de service te waarborgen, terwijl we dit proces door lopen, het versie nummer van een nieuwe release en de release status wordt bijgewerkt om de meest recente status weer te geven.
@@ -70,7 +70,7 @@ Onder bepaalde omstandigheden werden servers die automatisch zijn bijgewerkt naa
 
 
 ### <a name="release-status"></a>Release status
-9/25/2019: verwijderd uit hand matig downloaden totdat het incident onderzoek is voltooid.
+9/25/2019: alleen uitgegeven voor automatische upgrades.
 
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 - Nieuw hulp programma voor probleem oplossing helpt bij het oplossen van problemen ' gebruiker niet synchroniseren ', ' groep niet synchroniseren ' of ' geen synchronisatie van groeps leden '.
@@ -365,7 +365,7 @@ Status 4/12/2018: alleen beschikbaar voor downloaden
 #### <a name="fixed-issues"></a>Problemen opgelost
 Correctie van een probleem was automatische Azure-exemplaar detectie voor China-tenants af en toe mislukt.  
 
-### <a name="ad-fs-management"></a>AD FS beheer
+### <a name="ad-fs-management"></a>AD FS-Management
 #### <a name="fixed-issues"></a>Problemen opgelost
 
 Er is een probleem opgetreden in de logica voor het opnieuw proberen van de configuratie, wat zou leiden tot een ArgumentException dat er al een item met dezelfde sleutel is toegevoegd.  Dit kan leiden tot het mislukken van alle pogingen.
@@ -469,11 +469,11 @@ Vergrendel de toegang tot het AD DS-account door de volgende machtigings wijzigi
 *   Verwijder alle Ace's van het specifieke object, met uitzonde ring van Ace's die specifiek voor zichzelf zijn. We willen de standaard machtigingen intact houden wanneer het gaat om zelf.
 *   Wijs deze specifieke machtigingen toe:
 
-Type     | Naam                          | Toegang               | Van toepassing op
+Type     | Naam                          | Access               | Is van toepassing op
 ---------|-------------------------------|----------------------|--------------|
-Toestaan    | OPGEHAALD                        | Volledig beheer         | Dit object  |
-Toestaan    | Ondernemings Administrators             | Volledig beheer         | Dit object  |
-Toestaan    | Domein Administrators                 | Volledig beheer         | Dit object  |
+Toestaan    | SYSTEEM                        | Volledig beheer         | Dit object  |
+Toestaan    | Ondernemingsadministrators             | Volledig beheer         | Dit object  |
+Toestaan    | Domeinadministrators                 | Volledig beheer         | Dit object  |
 Toestaan    | Beheerders                | Volledig beheer         | Dit object  |
 Toestaan    | Ondernemings domein controllers | Inhoud weer geven        | Dit object  |
 Toestaan    | Ondernemings domein controllers | Alle eigenschappen lezen  | Dit object  |
@@ -581,7 +581,7 @@ Status: oktober 19 2017
 
 * Als u eerder de synchronisatie van wacht woord-Hashs probeerde in te scha kelen, controleert Azure AD Connect niet of het AD-Connector account de vereiste machtigingen heeft voor het synchroniseren van wacht woord-hashes uit on-premises AD. Azure AD Connect wizard wordt nu geverifieerd en u wordt gewaarschuwd als het AD Connector-account niet over voldoende machtigingen beschikt.
 
-### <a name="ad-fs-management"></a>AD FS beheer
+### <a name="ad-fs-management"></a>AD FS-Management
 #### <a name="fixed-issue"></a>Probleem opgelost
 * Er is een probleem opgelost dat betrekking heeft op het gebruik van de functie [MS-DS-ConsistencyGuid als bron anker](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) . Dit probleem is van invloed op klanten die Federatie hebben geconfigureerd *met AD FS* als de aanmeldings methode voor gebruikers. Wanneer u de taak *bron anker configureren* in de wizard uitvoert, schakelt Azure AD Connect over naar het bron kenmerk * MS-DS-ConsistencyGuid als broncode voor immutableId. Als onderdeel van deze wijziging Azure AD Connect probeert de claim regels voor ImmutableId in AD FS bij te werken. Deze stap is echter mislukt omdat Azure AD Connect geen beheerders referenties hebt vereist voor het configureren van AD FS. Met deze oplossing wordt Azure AD Connect nu gevraagd om de beheerders referenties voor AD FS in te voeren wanneer u de taak *bron anker configureren* uitvoert.
 
@@ -623,7 +623,7 @@ Status: september 05 2017
 #### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 * Er is ondersteuning toegevoegd voor Microsoft Azure Government Cloud en Microsoft Cloud Duitsland.
 
-### <a name="ad-fs-management"></a>AD FS beheer
+### <a name="ad-fs-management"></a>AD FS-Management
 #### <a name="fixed-issues"></a>Problemen opgelost
 * De initialisatie-ADSyncNGCKeysWriteBack-cmdlet in de AD prep Power shell-module heeft onjuiste Acl's toegepast op de apparaatregistratie en zou daarom alleen bestaande machtigingen overnemen.  Dit is bijgewerkt, zodat het synchronisatie service account de juiste machtigingen heeft.
 
@@ -765,7 +765,7 @@ Het probleem dat zich voordoet, is dat de **optie alle domeinen en organisatie-e
 
 #### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 
-* Voorheen was de functie [MS-DS-ConsistencyGuid als bron-anker](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) alleen beschikbaar voor nieuwe implementaties. Nu is het beschikbaar voor bestaande implementaties. Met name:
+* Voorheen was de functie [MS-DS-ConsistencyGuid als bron-anker](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) alleen beschikbaar voor nieuwe implementaties. Nu is het beschikbaar voor bestaande implementaties. Meer details:
   * Als u de functie wilt openen, start u de wizard Azure AD Connect en kiest u de optie *bron anker bijwerken* .
   * Deze optie is alleen zichtbaar voor bestaande implementaties die gebruikmaken van objectGuid als source Anchor-kenmerk.
   * Bij het configureren van de optie valideert de wizard de status van het kenmerk MS-DS-ConsistencyGuid in uw on-premises Active Directory. Als het kenmerk niet is geconfigureerd voor een gebruikers object in de Directory, gebruikt de wizard de MS-DS-ConsistencyGuid als het kenmerk source Anchor. Als het kenmerk is geconfigureerd voor een of meer gebruikers objecten in de Directory, sluit de wizard het kenmerk dat wordt gebruikt door andere toepassingen en is het niet geschikt als source Anchor-kenmerk en staat het bron anker niet toe om door te gaan. Als u zeker weet dat het kenmerk niet door bestaande toepassingen wordt gebruikt, moet u contact opnemen met de ondersteuning voor meer informatie over het onderdrukken van de fout.
@@ -814,7 +814,7 @@ CBool(
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Selecteer|
     |CertKeyAlgorithmParams|CertHashString|Waar|
-    |||With|
+    |||Met|
 
 * De volgende schema wijzigingen zijn geïntroduceerd zodat klanten aangepaste synchronisatie regels kunnen maken voor flow sAMAccountName, domainNetBios en domainFQDN voor groeps objecten, evenals DN voor gebruikers objecten:
 

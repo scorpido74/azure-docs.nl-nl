@@ -7,12 +7,13 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
-ms.openlocfilehash: 5a0a7e59e71e51a109af0f89cbb7ba580b2b97e6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 21c1380862638ef671b31f0fdec42009d217aca7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967188"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893209"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor bedrijfs continuïteit en herstel na nood gevallen in azure Kubernetes service (AKS)
 
@@ -29,13 +30,13 @@ Dit artikel is gericht op het plannen van bedrijfs continuïteit en herstel na n
 
 ## <a name="plan-for-multiregion-deployment"></a>Plan voor implementatie met meer regio's
 
-**Aanbevolen procedure**: Wanneer u meerdere AKS-clusters implementeert, kiest u regio's waar AKS beschikbaar is en gebruikt u gekoppelde regio's.
+**Aanbevolen procedure**: wanneer u meerdere AKS-clusters implementeert, kiest u REGIO'S waar AKS beschikbaar is en gebruikt u gekoppelde regio's.
 
 Er wordt een AKS-cluster geïmplementeerd in één regio. Als u uw systeem wilt beveiligen tegen storingen in regio's, implementeert u uw toepassing in meerdere AKS-clusters in verschillende regio's. Wanneer u van plan bent om uw AKS-cluster te implementeren, kunt u het volgende overwegen:
 
 * [**Beschik baarheid van AKS-regio**](https://docs.microsoft.com/azure/aks/quotas-skus-regions#region-availability): Kies regio's sluiten voor uw gebruikers. AKS wordt doorlopend uitgebreid naar nieuwe regio's.
-* [**Gekoppelde Azure-regio's**](https://docs.microsoft.com/azure/best-practices-availability-paired-regions): Kies voor uw geografische regio twee regio's die aan elkaar zijn gekoppeld. Gekoppelde regio's coördineren platform updates en bepalen waar nodig herstel taken.
-* **Beschik baarheid van service**: Bepaal of de gekoppelde regio's warm/hot, Hot/warme of warme/koud moeten zijn. Wilt u beide regio's tegelijk uitvoeren, met een regio die *gereed* is voor het leveren van verkeer? Of wilt u dat er voor een regio een tijd is om het verkeer te kunnen verwerken?
+* [**Gekoppelde Azure-regio's**](https://docs.microsoft.com/azure/best-practices-availability-paired-regions): Kies voor uw geografische gebied twee regio's die aan elkaar zijn gekoppeld. Gekoppelde regio's coördineren platform updates en bepalen waar nodig herstel taken.
+* **Beschik baarheid**van de service: Bepaal of de gekoppelde regio's warm/hot, Hot/warme of warme/koud moeten zijn. Wilt u beide regio's tegelijk uitvoeren, met een regio die *gereed* is voor het leveren van verkeer? Of wilt u dat er voor een regio een tijd is om het verkeer te kunnen verwerken?
 
 De beschik baarheid en gekoppelde regio's van de AKS-regio zijn een gezamenlijke overweging. Implementeer uw AKS-clusters in gekoppelde regio's die zijn ontworpen voor het samen stellen van de regionale nood herstel. AKS is bijvoorbeeld beschikbaar in VS-Oost en VS-West. Deze regio's zijn gekoppeld. Kies deze twee regio's wanneer u een AKS BC/DR-strategie maakt.
 
@@ -43,7 +44,7 @@ Wanneer u uw toepassing implementeert, voegt u nog een stap toe aan uw CI/CD-pij
 
 ## <a name="use-azure-traffic-manager-to-route-traffic"></a>Azure Traffic Manager gebruiken om verkeer te routeren
 
-**Aanbevolen procedure**: Azure Traffic Manager kan klanten naar hun dichtstbijzijnde AKS-cluster en toepassings exemplaar sturen. Voor de beste prestaties en redundantie moet u alle toepassings verkeer via Traffic Manager door sturen voordat het naar uw AKS-cluster gaat.
+**Best Practice**: Azure Traffic Manager kan klanten naar hun dichtstbijzijnde AKS-cluster en toepassings exemplaar sturen. Voor de beste prestaties en redundantie moet u alle toepassings verkeer via Traffic Manager door sturen voordat het naar uw AKS-cluster gaat.
 
 Als u meerdere AKS-clusters in verschillende regio's hebt, gebruikt u Traffic Manager om te bepalen hoe verkeer stromen naar de toepassingen die in elk cluster worden uitgevoerd. [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) is een op DNS gebaseerd verkeer Load Balancer dat netwerk verkeer kan distribueren tussen regio's. Gebruik Traffic Manager om gebruikers te routeren op basis van de reactie tijd van een cluster of op basis van geografie.
 
@@ -55,15 +56,21 @@ Klanten met één AKS-cluster maken doorgaans verbinding met het service-IP-adre
 
 Traffic Manager DNS-Zoek opdrachten uitvoeren en retourneert het meest geschikte eind punt van een gebruiker. Geneste profielen kunnen een prioriteit geven aan een primaire locatie. Gebruikers moeten in het algemeen bijvoorbeeld verbinding maken met hun dichtstbijzijnde geografische regio. Als deze regio een probleem heeft, stuurt Traffic Manager in plaats daarvan de gebruikers naar een secundaire regio. Deze aanpak zorgt ervoor dat klanten verbinding kunnen maken met een toepassings exemplaar, zelfs als hun dichtstbijzijnde geografische regio niet beschikbaar is.
 
-Voor informatie over het instellen van eind punten en route ring, Zie [de methode voor geografische verkeers routering configureren](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method)met behulp van Traffic Manager.
+Voor informatie over het instellen van eind punten en route ring, Zie [de methode voor geografische verkeers routering configureren met behulp van Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method).
 
 ### <a name="layer-7-application-routing-with-azure-front-door-service"></a>Route ring van laag 7-toepassingen met de Azure front-deur service
 
 Traffic Manager DNS (Layer 3) gebruikt voor het vorm geven van verkeer. De [Azure front-deur service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) biedt een HTTP/HTTPS-routerings optie (Layer 7). Aanvullende functies van de Azure front-deur service zijn onder andere SSL-beëindiging, aangepast domein, Web Application Firewall, URL herschrijven en sessie affiniteit. Bekijk de vereisten van uw toepassings verkeer om te begrijpen welke oplossing het meest geschikt is.
 
+### <a name="interconnect-regions-with-global-virtual-network-peering"></a>Interconnect-regio's met globale virtuele-netwerk peering
+
+Als de clusters met elkaar moeten communiceren, kunt u beide virtuele netwerken met elkaar verbinden met behulp van [peering op virtueel netwerk](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). Met deze technologie worden virtuele netwerken met elkaar verbonden met een hoge band breedte in het backbone-netwerk van micro soft, zelfs in verschillende geografische regio's.
+
+Een vereiste voor de peer van de virtuele netwerken waarin AKS-clusters worden uitgevoerd, is door gebruik te maken van de standaard Load Balancer in uw AKS-cluster, zodat kubernetes-services bereikbaar zijn via de peering van het virtuele netwerk.
+
 ## <a name="enable-geo-replication-for-container-images"></a>Geo-replicatie inschakelen voor container installatie kopieën
 
-**Aanbevolen procedure**: Sla de container installatie kopieën op in Azure Container Registry en geo-repliceer het REGI ster naar elke AKS-regio.
+**Best Practice**: Sla de container installatie kopieën op in azure container Registry en geo-repliceer het REGI ster naar elke AKS-regio.
 
 Als u uw toepassingen wilt implementeren en uitvoeren in AKS, hebt u een manier nodig om de container installatie kopieën op te slaan en te halen. Container Registry kan worden geïntegreerd met AKS, zodat de container installatie kopieën of helm-grafieken veilig kunnen worden opgeslagen. Container Registry ondersteunt geo-replicatie met meerdere masters om uw installatie kopieën automatisch te repliceren naar Azure-regio's over de hele wereld. 
 
@@ -73,15 +80,15 @@ U kunt de prestaties en beschik baarheid verbeteren door Container Registry geo-
 
 Wanneer u Container Registry geo-replicatie gebruikt voor het ophalen van installatie kopieën uit dezelfde regio, zijn de volgende resultaten:
 
-* **Sneller**: U haalt installatie kopieën op met netwerk verbindingen met hoge snelheid en lage latentie binnen dezelfde Azure-regio.
-* **Betrouwbaarder**: Als een regio niet beschikbaar is, haalt uw AKS-cluster de installatie kopieën op uit een beschikbaar container register.
-* **Goed koper**: Er worden geen kosten in rekening gebracht voor het netwerk tussen data centers.
+* **Sneller**: u haalt installatie kopieën van netwerk verbindingen met hoge snelheid en lage latentie op in dezelfde Azure-regio.
+* **Betrouwbaarder**: als een regio niet beschikbaar is, haalt uw AKS-cluster de installatie kopieën op uit een beschikbaar container register.
+* **Goed koper**: er worden geen kosten in rekening gebracht voor het netwerk tussen data centers.
 
 Geo-replicatie is een functie van *Premium* SKU-container registers. Zie [container Registry geo-replicatie](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication)voor meer informatie over het configureren van geo-replicatie.
 
 ## <a name="remove-service-state-from-inside-containers"></a>Service status van binnen containers verwijderen
 
-**Aanbevolen procedure**: Sla de service status niet op in de container. Gebruik in plaats daarvan een Azure-platform als een service (PaaS) die replicatie van meerdere regio's ondersteunt.
+**Aanbevolen procedure**: Sla de service status niet op in de container, indien mogelijk. Gebruik in plaats daarvan een Azure-platform als een service (PaaS) die replicatie van meerdere regio's ondersteunt.
 
 De *service status* verwijst naar de gegevens in het geheugen of op schijf die een service nodig heeft om te functioneren. De status bevat de gegevens structuren en lidvariabelen die de service leest en schrijft. Afhankelijk van hoe de service is ontworpen, kan de status ook bestanden of andere bronnen die op de schijf zijn opgeslagen, bevatten. De status kan bijvoorbeeld de bestanden bevatten die een data base gebruikt om gegevens en transactie logboeken op te slaan.
 
@@ -96,7 +103,7 @@ Als u draag bare toepassingen wilt bouwen, raadpleegt u de volgende richt lijnen
 
 ## <a name="create-a-storage-migration-plan"></a>Een opslag migratie plan maken
 
-**Aanbevolen procedure**: Als u Azure Storage gebruikt, bereidt en test u hoe u uw opslag van de primaire regio naar de back-upregio kunt migreren.
+**Aanbevolen procedure**: als u Azure Storage gebruikt, bereidt en test u hoe u uw opslag van de primaire regio naar de back-upregio kunt migreren.
 
 Uw toepassingen kunnen Azure Storage gebruiken voor hun gegevens. Omdat uw toepassingen zijn verdeeld over meerdere AKS-clusters in verschillende regio's, moet u de opslag gesynchroniseerd laten worden. Hier volgen twee veelvoorkomende manieren om opslag te repliceren:
 

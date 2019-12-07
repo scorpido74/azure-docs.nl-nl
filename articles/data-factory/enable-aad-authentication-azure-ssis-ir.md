@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory voor Azure-SSIS Integration Runtime inschakelen
+title: AAD inschakelen voor Azure-SSIS Integration Runtime
 description: In dit artikel wordt beschreven hoe u Azure Active Directory verificatie inschakelt met de beheerde identiteit voor Azure Data Factory om Azure-SSIS Integration Runtime te maken.
 services: data-factory
 ms.service: data-factory
@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.date: 5/14/2019
-ms.openlocfilehash: 6973e72b06d51241e883038936270fd0931365d7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9d03d0668b8519ae811b5d275e61b370ceb30e78
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217701"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896196"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure Active Directory authenticatie inschakelen voor Azure-SSIS Integration Runtime
 
@@ -42,7 +42,7 @@ Azure SQL Database-Server biedt ondersteuning voor het maken van een Data Base m
 
 U kunt een bestaande Azure AD-groep gebruiken of een nieuwe maken met behulp van Azure AD Power shell.
 
-1.  Installeer de [Azure AD Power shell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) -module.
+1.  Installeer de [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) module.
 
 2.  Meld u aan met `Connect-AzureAD`, voer de volgende cmdlet uit om een groep te maken en op te slaan in een variabele:
 

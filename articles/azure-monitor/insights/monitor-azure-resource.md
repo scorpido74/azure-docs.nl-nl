@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 230b79a5062262a85d3090e15ed52d67c38ed3e9
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 5a46de9fa17790cb93ce7d5a2af8008d34d4dc35
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928460"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888781"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure-resources bewaken met Azure Monitor
 Wanneer u belang rijke toepassingen en bedrijfs processen hebt die afhankelijk zijn van Azure-resources, wilt u deze resources controleren op hun Beschik baarheid, prestaties en werking. In dit artikel worden de bewakings gegevens beschreven die worden gegenereerd door Azure-resources en hoe u de functies van Azure Monitor kunt gebruiken om deze gegevens te analyseren en te waarschuwen.
@@ -70,7 +70,7 @@ Sommige bewakings gegevens worden automatisch verzameld, maar u moet mogelijk ee
 - [Resource logboeken](../platform/resource-logs-overview.md) : resource logboeken worden automatisch gegenereerd door Azure-resources, maar niet zonder een diagnostische instelling.  Maak een diagnostische instelling voor het verzenden van vermeldingen naar Azure Monitor Logboeken of om ze buiten Azure door te sturen.
 - [Activiteiten logboek](../platform/activity-logs-overview.md) : het activiteiten logboek wordt automatisch verzameld zonder vereiste configuratie en kan worden weer gegeven in de Azure Portal. Een diagnostische instelling maken om deze te kopiëren naar Azure Monitor Logboeken of om ze buiten Azure door te sturen.
 
-### <a name="log-analytics-workspace"></a>Log Analytics werk ruimte
+### <a name="log-analytics-workspace"></a>Log Analytics-werkruimte
 Voor het verzamelen van gegevens in Azure Monitor Logboeken is een Log Analytics-werk ruimte vereist. U kunt snel aan de slag met het bewaken van uw service door een nieuwe werk ruimte te maken, maar er kan ook een waarde zijn in het gebruik van een werk ruimte die gegevens uit andere services verzamelt. Zie [een log Analytics-werk ruimte maken in de Azure Portal](../learn/quick-create-workspace.md) voor meer informatie over het maken van een werk ruimte en [het ontwerpen van de implementatie van uw Azure monitor-logboeken](../platform/design-logs-deployment.md) om het beste ontwerp van de werk ruimte voor uw vereisten te bepalen. Als u een bestaande werk ruimte in uw organisatie gebruikt, hebt u de juiste machtigingen nodig, zoals wordt beschreven in [toegang beheren tot logboek gegevens en werk ruimten in azure monitor](../platform/manage-access.md). 
 
 
@@ -91,7 +91,7 @@ Volg de procedure in [Diagnostische instelling maken voor het verzamelen van pla
  U hebt toegang tot bewakings gegevens voor de meeste Azure-resources vanuit het menu van de resource in de Azure Portal. Hiermee krijgt u toegang tot de gegevens van één resource met behulp van standaard Azure Monitor-hulpprogram ma's. Sommige Azure-Services bieden andere opties, dus u moet de documentatie voor die service raadplegen voor aanvullende informatie. Gebruik het menu **Azure monitor** om gegevens van alle bewaakte resources te analyseren. 
 
 ### <a name="overview"></a>Overzicht
-Veel services bevatten bewakings gegevens op de **overzichts** pagina als een kort overzicht van de werking ervan. Dit is doorgaans gebaseerd op een subset van platform metrieken die zijn opgeslagen in Azure Monitor metrische gegevens. Andere bewakings opties zijn doorgaans beschikbaar in een **bewakings** sectie van de services. snelmenu's.
+Veel services bevatten bewakings gegevens op de **overzichts** pagina als een kort overzicht van de werking ervan. Dit is doorgaans gebaseerd op een subset van platform metrieken die zijn opgeslagen in Azure Monitor metrische gegevens. Andere bewakings opties zijn doorgaans beschikbaar in een **bewakings** sectie van de services. .
 
 ![Overzichts pagina](media/monitor-azure-resource/overview-page.png)
 
@@ -101,7 +101,7 @@ Sommige services bieden nog meer hulp middelen dan de standaard functies van Azu
 
 Als een service een Azure Monitor inzicht heeft, kunt u deze openen vanuit **bewaking** in elk resource menu. Toegang tot alle inzichten en oplossingen vanuit het **Azure monitor** menu.
 
-![Insights](media/monitor-azure-resource/insights.png)
+![Inzichten](media/monitor-azure-resource/insights.png)
 
 ### <a name="metrics"></a>Metrische gegevens
 Analyseer de metrische gegevens in de Azure Portal met behulp van [Metrics Explorer](../platform/metrics-getting-started.md) , die beschikbaar is via de menu opdracht **metrische gegevens** voor de meeste services. Met dit hulp programma kunt u met afzonderlijke metrische gegevens werken of meerdere combi neren om correlaties en trends te identificeren. 
@@ -164,4 +164,4 @@ Verschillende soorten bewakings gegevens worden gebruikt voor verschillende soor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [ondersteunde services, schema's en categorieën voor Azure Diagnostische logboeken](../platform/diagnostic-logs-schema.md) voor meer informatie over resource logboeken voor verschillende Azure-Services.  
+* Zie [ondersteunde services, schema's en categorieën voor Azure-resource logboeken](../platform/diagnostic-logs-schema.md) voor meer informatie over resource logboeken voor verschillende Azure-Services.  

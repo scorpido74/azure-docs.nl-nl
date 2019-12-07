@@ -1,6 +1,6 @@
 ---
 title: Advertenties invoegen aan de client zijde | Microsoft Docs
-description: In dit onderwerp wordt uitgelegd hoe u advertenties kunt invoegen aan de client zijde.
+description: In dit artikel wordt beschreven hoe u advertenties kunt invoegen in uw media aan de client zijde.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 37ee600a2f7d621d3fefb2f70c26b6c29f738ea9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f56c897fd6f5ce7e5129a4500ecaacbaf0a75f3b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162702"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895971"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Advertenties invoegen aan de client zijde
 Dit artikel bevat informatie over het invoegen van verschillende soorten advertenties aan de client zijde.
@@ -96,7 +96,7 @@ Een VAST bestand geeft aan welke AD of advertenties moeten worden weer gegeven. 
 
 De lineaire advertentie wordt beschreven in het element <**lineaire**>. Hiermee geeft u de duur van de AD op, gevolgd door gebeurtenissen, klikt u op bijhouden en een aantal **MediaFile** -elementen. Tracerings gebeurtenissen worden opgegeven in het**TrackingEvents**>-element van < en kunnen een ad-server bij het volgen van verschillende gebeurtenissen die optreden tijdens het weer geven van de AD. In dit geval worden de gebeurtenissen start, midden, volt ooien en uitvouwen bijgehouden. De gebeurtenis starten vindt plaats wanneer de AD wordt weer gegeven. De punt gebeurtenis treedt op wanneer ten minste 50% van de tijd lijn van de advertentie is bekeken. De gebeurtenis complete vindt plaats wanneer de AD aan het eind is uitgevoerd. De gebeurtenis Expand treedt op wanneer de gebruiker de video speler uitbreidt naar het volledige scherm. Clickthroughs worden opgegeven met**een < door**klikken > element binnen een <**VideoClicks**-element > en geeft een URI aan een resource die moet worden weer gegeven wanneer de gebruiker op de AD klikt. ClickTracking is opgegeven in een <**ClickTracking**>-element, ook binnen het element <**VideoClicks**> en geeft een tracerings resource op die de speler kan aanvragen wanneer de gebruiker op de AD klikt. De <**MediaFile**> elementen geven informatie op over een specifieke code ring van een ad-advertentie. Wanneer er meer dan één <**MediaFile**> element, kan de video speler de beste code ring voor het platform kiezen.
 
-Lineaire advertenties kunnen in een opgegeven volg orde worden weer gegeven. U doet dit door extra `<Ad>`-elementen toe te voegen aan het bestand VAST en de volg orde op te geven met behulp van het Sequence-kenmerk. In het volgende voor beeld ziet u dit:
+Lineaire advertenties kunnen in een opgegeven volg orde worden weer gegeven. U doet dit door extra `<Ad>`-elementen toe te voegen aan het bestand VAST en de volg orde op te geven met behulp van het Sequence-kenmerk. Het volgende voorbeeld illustreert dit:
 
 ```xml
     <VAST version="2.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">

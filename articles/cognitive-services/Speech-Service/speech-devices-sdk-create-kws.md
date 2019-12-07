@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: erhopf
-ms.openlocfilehash: 15a0e27f3f96eda27182e8437dc95d047f56e260
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 42bcc336bfeb325a08c3d65438d66690c0b35100
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815291"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896430"
 ---
 # <a name="create-a-custom-keyword-by-using-the-speech-service"></a>Een aangepast tref woord maken met behulp van de speech-service
 
@@ -50,17 +50,29 @@ Voordat u een aangepast tref woord kunt gebruiken, moet u een tref woord maken m
 
 1. Ga naar de [Speech Studio](https://aka.ms/sdsdk-speechportal) en **Meld** u aan of als u nog geen abonnement op spraak hebt, kiest u [**een abonnement maken**](https://go.microsoft.com/fwlink/?linkid=2086754).
 
-1. Typ op de pagina [aangepast tref](https://aka.ms/sdsdk-wakewordportal) woord het tref woord van uw keuze en klik op **tref woord toevoegen**. Er zijn enkele [richt lijnen](#choose-an-effective-keyword) die u helpen bij het kiezen van een effectief tref woord. Ondersteuning is momenteel beperkt tot de taal en-US.
+1. Maak een **Nieuw project**op de pagina [aangepast tref woord](https://aka.ms/sdsdk-wakewordportal) . 
 
-    ![Voer uw tref woord in](media/speech-devices-sdk/custom-kws-portal-enter-keyword.png)
+1. Voer een **naam**, een optionele **Beschrijving**en selecteer de taal. U hebt één project per taal nodig en de ondersteuning is momenteel beperkt tot de taal en-US.
 
-1. De portal maakt nu kandidaat-uitspraak voor uw tref woord. Luister naar elke kandidaat door te klikken op de afspeel knoppen en de controles te verwijderen naast eventuele uitstaande uitspraaken. Wanneer u alleen goede uitspraaken hebt geselecteerd, selecteert u **verzenden** om te beginnen met het genereren van het tref woord. Als u het tref woord wilt wijzigen, moet u eerst de bestaande verwijderen door te klikken op de knop verwijderen die aan de rechter kant van de rij wordt weer gegeven terwijl u de muis aanwijzer erop houdt.
+    ![Uw trefwoord project beschrijven](media/custom-keyword/custom-kws-portal-new-project.png)
 
-    ![Je tref woord controleren](media/speech-devices-sdk/custom-kws-portal-review-keyword.png)
+1. Selecteer uw project in de lijst. 
 
-1. Het kan Maxi maal één minuut duren voordat het model is gegenereerd. Vervolgens wordt u gevraagd het bestand te downloaden.
+    ![Selecteer uw trefwoord project](media/custom-keyword/custom-kws-portal-project-list.png)
 
-    ![Uw tref woord downloaden](media/speech-devices-sdk/custom-kws-portal-download-keyword.png)
+1. Als u een nieuw trefwoord model wilt starten, klikt u op **model trainen**.
+
+1. Voer een **naam** in voor het trefwoord model en geef een optionele **Beschrijving** op en typ het **tref woord** van uw keuze en klik op **volgende**. Er zijn enkele [richt lijnen](#choose-an-effective-keyword) die u helpen bij het kiezen van een effectief tref woord.
+
+    ![Voer uw tref woord in](media/custom-keyword/custom-kws-portal-new-model.png) 
+
+1. De portal maakt nu kandidaat-uitspraak voor uw tref woord. Luister naar elke kandidaat door te klikken op de afspeel knoppen en de controles te verwijderen naast eventuele uitstaande uitspraaken. Als er alleen goede uitspraaken zijn ingeschakeld, klikt u op **trainen** om het tref woord te genereren. 
+
+    ![Je tref woord controleren](media/custom-keyword/custom-kws-portal-choose-prons.png) 
+
+1. Het kan Maxi maal tien minuten duren voordat het model is gegenereerd. De lijst met tref woorden wordt gewijzigd van de **verwerking** naar **geslaagd** wanneer het model is voltooid. Vervolgens kunt u het bestand downloaden.
+
+    ![Je tref woord controleren](media/custom-keyword/custom-kws-portal-download-model.png) 
 
 1. Sla het ZIP-bestand op uw computer. U hebt dit bestand nodig om uw aangepaste tref woord te implementeren op het apparaat.
 

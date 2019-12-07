@@ -1,21 +1,22 @@
 ---
-title: 'Zelf studie: een Maxi maal beschik bare toepassing bouwen met Blob Storage-Azure Storage'
-description: Geografisch redundante opslag met leestoegang gebruiken om uw toepassingsgegevens maximaal beschikbaar te maken
+title: 'Zelf studie: een Maxi maal beschik bare toepassing bouwen met Blob Storage'
+titleSuffix: Azure Storage
+description: Geografisch redundante opslag met lees toegang gebruiken om uw toepassings gegevens Maxi maal beschikbaar te maken.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 6b0ac017704c599e96543ed36a13ff5d3ddef9fc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 55846c76f2c3ef1c5d884af39af85db3abe38aad
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838578"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892903"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Zelf studie: een Maxi maal beschik bare toepassing bouwen met Blob Storage
 
@@ -30,7 +31,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 In deel 1 van de reeks leert u het volgende:
 
 > [!div class="checklist"]
-> * Een opslagaccount maken
+> * Maak een opslagaccount
 > * De verbindingsreeks instellen
 > * De consoletoepassing uitvoeren
 
@@ -40,8 +41,7 @@ Vereisten voor het voltooien van deze zelfstudie:
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-* Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende werk belastingen:
-  - **Azure-ontwikkeling**
+* Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de werk belasting van **Azure Development** .
 
   ![Azure-ontwikkeling (onder Web en Cloud)](media/storage-create-geo-redundant-storage/workloads.png)
 
@@ -52,15 +52,15 @@ Vereisten voor het voltooien van deze zelfstudie:
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
-* Installeer [node. js](https://nodejs.org).
+* Installeer [Node.js](https://nodejs.org).
 
 ---
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-## <a name="create-a-storage-account"></a>Een opslagaccount maken
+## <a name="create-a-storage-account"></a>Maak een opslagaccount
 
 Een opslagaccount biedt een unieke naamruimte voor het opslaan en openen van uw Azure Storage-gegevensobjecten.
 
@@ -112,13 +112,13 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 ---
 
-## <a name="configure-the-sample"></a>Het voorbeeld configureren
+## <a name="configure-the-sample"></a>Voorbeeld configureren
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 In de toepassing moet u de verbindingsreeks voor uw opslagaccount opgeven. U kunt deze verbindingsreeks opslaan in een omgevingsvariabele op de lokale computer waarop de toepassing wordt uitgevoerd. Volg een van de onderstaande voorbeelden afhankelijk van uw besturingssysteem voor het maken van de omgevingsvariabele.
 
-Ga in Azure Portal naar het nieuwe opslagaccount. Selecteer bij **Instellingen** in uw opslagaccount de optie **Toegangssleutels**. Kopieer de **verbindingsreeks** uit de primaire of secundaire sleutel. Voer een van de volgende opdrachten uit op basis van uw besturings systeem en vervang \<yourconnectionstring\> door de daad werkelijke connection string. Met deze opdracht slaat u een omgevingsvariabele naar de lokale machine op. In Windows is de omgevingsvariabele pas beschikbaar wanneer u de **opdrachtprompt** of shell die u gebruikt opnieuw laadt.
+Ga in Azure Portal naar uw opslagaccount. Selecteer bij **Instellingen** in uw opslagaccount de optie **Toegangssleutels**. Kopieer de **verbindingsreeks** uit de primaire of secundaire sleutel. Voer een van de volgende opdrachten uit op basis van uw besturings systeem en vervang \<yourconnectionstring\> door de daad werkelijke connection string. Met deze opdracht slaat u een omgevingsvariabele naar de lokale machine op. In Windows is de omgevingsvariabele pas beschikbaar wanneer u de **opdrachtprompt** of shell die u gebruikt opnieuw laadt.
 
 ### <a name="linux"></a>Linux
 
@@ -136,7 +136,7 @@ setx storageconnectionstring "<yourconnectionstring>"
 
 In de toepassing moet u de referenties van uw opslag account opgeven. U kunt deze informatie opslaan in omgevings variabelen op de lokale computer waarop de toepassing wordt uitgevoerd. Volg een van de onderstaande voor beelden, afhankelijk van uw besturings systeem, om de omgevings variabelen te maken.
 
-Ga in Azure Portal naar het nieuwe opslagaccount. Selecteer bij **Instellingen** in uw opslagaccount de optie **Toegangssleutels**. Plak de **naam van het opslag account** en de **sleutel** waarden in de volgende opdrachten, waarbij u de \<youraccountname\> en \<youraccountkey\> tijdelijke aanduidingen vervangt. Met deze opdracht worden de omgevings variabelen opgeslagen op de lokale computer. In Windows is de omgevingsvariabele pas beschikbaar wanneer u de **opdrachtprompt** of shell die u gebruikt opnieuw laadt.
+Ga in Azure Portal naar uw opslagaccount. Selecteer bij **Instellingen** in uw opslagaccount de optie **Toegangssleutels**. Plak de **naam van het opslag account** en de **sleutel** waarden in de volgende opdrachten, waarbij u de \<youraccountname\> en \<youraccountkey\> tijdelijke aanduidingen vervangt. Met deze opdracht worden de omgevings variabelen opgeslagen op de lokale computer. In Windows is de omgevingsvariabele pas beschikbaar wanneer u de **opdrachtprompt** of shell die u gebruikt opnieuw laadt.
 
 ### <a name="linux"></a>Linux
 
@@ -191,7 +191,6 @@ De functie Opnieuw van het opslagobject is ingesteld op een lineair beleid voor 
 
 Vóór het downloaden wordt de functie Service object [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) en [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) gedefinieerd. Deze functies definiëren gebeurtenis-handlers die worden geactiveerd wanneer een download is voltooid of wanneer een download is mislukt en opnieuw wordt uitgevoerd.
 
-
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 Als u het voor beeld wilt uitvoeren, opent u een opdracht prompt, navigeert u naar de map voor beeld en voert u vervolgens `node index.js`in.
@@ -223,7 +222,7 @@ Deleted container newcontainer1550799840726
 
 ## <a name="understand-the-sample-code"></a>De voorbeeldcode begrijpen
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ### <a name="retry-event-handler"></a>Gebeurtenis-handler opnieuw proberen
 
@@ -274,7 +273,7 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="pythontabpython"></a>[Python](#tab/python)
 
 ### <a name="retry-event-handler"></a>Gebeurtenis-handler opnieuw proberen
 
@@ -317,7 +316,7 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+### <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 Met de node. js V10 toevoegen SDK zijn call back-handlers overbodig. In plaats daarvan maakt het voor beeld een pijp lijn die is geconfigureerd met opties voor opnieuw proberen en een secundair eind punt. Hierdoor kan de toepassing automatisch overschakelen naar de secundaire pijp lijn als deze de gegevens niet kan bereiken via de primaire pijp lijn.
 
@@ -349,4 +348,4 @@ In deel één van de serie hebt u geleerd hoe u een toepassing maximaal beschikb
 Ga naar deel twee van de serie voor informatie over hoe u een fout simuleert en uw toepassing dwingt om het secundaire RA-GRS-eindpunt te gebruiken.
 
 > [!div class="nextstepaction"]
-> [Een fout in de verbinding met het primaire eindpunt van de opslag simuleren](storage-simulate-failure-ragrs-account-app.md)
+> [Een fout in het lezen van de primaire regio simuleren](storage-simulate-failure-ragrs-account-app.md)

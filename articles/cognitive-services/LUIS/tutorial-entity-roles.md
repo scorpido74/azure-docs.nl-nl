@@ -9,28 +9,28 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: 3e85067439fe412822ac34a065753e9a13c7a506
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 29e43692c1eb543768934a961a2bb8ae5a023b1d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488726"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894611"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Zelf studie: contextuele gerelateerde gegevens uit een utterance ophalen
 
-In deze zelfstudie zoekt u gerelateerde gegevens op basis van context. Denk bijvoorbeeld aan de locaties van oorsprong en bestemming voor een overplaatsing tussen vestigingen. Hiervoor zijn mogelijk beide gegevenselementen vereist en ze zijn aan elkaar gerelateerd.  
+In deze zelfstudie zoekt u gerelateerde gegevens op basis van context. Denk bijvoorbeeld aan de locaties van oorsprong en bestemming voor een overplaatsing tussen vestigingen. Hiervoor zijn mogelijk beide gegevenselementen vereist en ze zijn aan elkaar gerelateerd.
 
-Een rol kan worden gebruikt met een vooraf samengesteld of aangepast entiteits type en wordt gebruikt in beide voor beelden van uitingen en patronen. 
+Een rol kan worden gebruikt met een vooraf samengesteld of aangepast entiteits type en wordt gebruikt in beide voor beelden van uitingen en patronen.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **In deze zelfstudie leert u het volgende:**
 
 > [!div class="checklist"]
 > * Nieuwe app maken
-> * Intentie toevoegen 
+> * Intentie toevoegen
 > * Informatie over de oorsprong en bestemming ophalen met behulp van rollen
 > * Trainen
 > * Publiceren
@@ -57,9 +57,9 @@ Er moet een rol worden gebruikt wanneer de entiteits gegevens die moeten worden 
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. Selecteer **Create new intent**. 
+1. Selecteer **Create new intent**.
 
-1. Voer in het pop-updialoogvenster `MoveEmployeeToCity` in en selecteer vervolgens **Done**. 
+1. Voer in het pop-updialoogvenster `MoveEmployeeToCity` in en selecteer vervolgens **Done**.
 
     ![Schermopname van het pop-updialoogvenster voor het maken van een nieuwe intentie met](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
@@ -85,24 +85,24 @@ De vooraf samengestelde entiteit, geographyV2, extraheert locatie-informatie, in
 
 1. Selecteer **entiteiten** in de navigatie aan de linkerkant.
 
-1. Selecteer vooraf **samengestelde entiteit toevoegen**en selecteer vervolgens `geo` op de zoek balk om de vooraf gemaakte entiteiten te filteren. 
+1. Selecteer vooraf **samengestelde entiteit toevoegen**en selecteer vervolgens `geo` op de zoek balk om de vooraf gemaakte entiteiten te filteren.
 
     ![Een vooraf gemaakte geographyV2-entiteit toevoegen aan de app](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 1. Schakel het selectie vakje in en selecteer **gereed**.
-1. Selecteer in de lijst **entiteiten** de **geographyV2** om de nieuwe entiteit te openen. 
-1. Voeg twee rollen, `Origin`en `Destination`toe. 
+1. Selecteer in de lijst **entiteiten** de **geographyV2** om de nieuwe entiteit te openen.
+1. Voeg twee rollen, `Origin`en `Destination`toe.
 
     ![Rollen toevoegen aan vooraf samengestelde entiteit](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 1. Selecteer **intenties** in de navigatie aan de linkerkant en selecteer vervolgens de **MoveEmployeeToCity** intentie. U ziet dat de namen van steden worden aangeduid met de vooraf samengestelde entiteit **geographyV2**.
 1. Selecteer de oorspronkelijke locatie in de eerste utterance van de lijst. Er wordt een vervolg keuzelijst weer gegeven. Selecteer **geographyV2** in de lijst en volg vervolgens het menu om de **oorsprong**te selecteren.
-1. Gebruik de methode uit de vorige stap om alle rollen van locaties in alle uitingen te markeren. 
+1. Gebruik de methode uit de vorige stap om alle rollen van locaties in alle uitingen te markeren.
 
 
-## <a name="add-example-utterances-to-the-none-intent"></a>Voorbeelduitingen toevoegen aan de intentie None 
+## <a name="add-example-utterances-to-the-none-intent"></a>Voorbeelduitingen toevoegen aan de intentie None
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>De app trainen zodat de wijzigingen aan de intentie kunnen worden getest 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>De app trainen zodat de wijzigingen aan de intentie kunnen worden getest
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
@@ -152,9 +152,9 @@ De vooraf samengestelde entiteit, geographyV2, extraheert locatie-informatie, in
       ]
     }
     ```
-    
+
     De juiste intentie is voor speld en de matrix entiteiten heeft zowel de oorspronkelijke als de doel rollen in de bijbehorende eigenschap **entities** .
-    
+
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
@@ -173,5 +173,5 @@ De vooraf samengestelde entiteit, geographyV2, extraheert locatie-informatie, in
 
 In deze zelfstudie hebt u een nieuwe intentie gemaakt en voorbeelden van utterances toegevoegd voor de contextueel geleerde gegevens van locaties van oorsprong en bestemming. Zodra de app is getraind en gepubliceerd, kan een clienttoepassing die informatie gebruiken om een verplaatsingsticket te maken met de relevante informatie.
 
-> [!div class="nextstepaction"] 
-> [Informatie over het toevoegen van een samengestelde entiteit](luis-tutorial-composite-entity.md) 
+> [!div class="nextstepaction"]
+> [Informatie over het toevoegen van een samengestelde entiteit](luis-tutorial-composite-entity.md)

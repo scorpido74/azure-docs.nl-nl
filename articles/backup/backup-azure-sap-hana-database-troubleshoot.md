@@ -3,12 +3,12 @@ title: Back-upfouten van SAP HANA databases oplossen
 description: Hierin wordt beschreven hoe u veelvoorkomende fouten oplost die zich kunnen voordoen wanneer u Azure Backup gebruikt om back-ups te maken van SAP HANA-data bases.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: e8bb1d3328f95b647a788c53afe3ac1455eefa13
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 9958b241c44d619efea2f9ad516a2bd6d4f33d6e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665335"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892597"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Problemen met back-ups van SAP HANA-data bases in azure oplossen
 
@@ -102,17 +102,19 @@ In meerdere container databases voor HANA is de standaard configuratie SYSTEMDB 
 Als u SAP HANA 1,0-data bases beveiligt en een upgrade naar 2,0 wilt uitvoeren, voert u de onderstaande stappen uit:
 
 - [Stop de beveiliging](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) met behoud van gegevens voor de oude dit SDC-data base.
+- Voer de upgrade uit. Na voltooiing wordt de HANA nu MDC met een systeem database en een Tenant database (s)
 - Voer het script voor de [voorafgaande registratie](https://aka.ms/scriptforpermsonhana) opnieuw uit met de juiste details van (sid en MDC).
-- Extensie opnieuw registreren (back-up > Details weer geven-> de relevante Azure-VM selecteren-> opnieuw registreren).
+- De extensie voor dezelfde computer opnieuw registreren in azure Portal (Details van de weer gave voor back->-> de relevante Azure-VM selecteren-> opnieuw registreren).
 - Klik op Db's opnieuw detecteren voor dezelfde VM. Bij deze actie moet de nieuwe Db's in stap 2 worden weer gegeven met de juiste Details (SYSTEMDB en Tenant database, niet dit SDC).
-- Beveilig deze nieuwe data bases.
+- Configureer de back-up voor deze nieuwe data bases.
 
 ## <a name="upgrading-without-an-sid-change"></a>Upgraden zonder SID-wijziging
 
 Upgrades naar besturings systeem of SAP HANA die geen SID-wijziging veroorzaken, kunnen worden verwerkt, zoals hieronder wordt beschreven:
 
 - [Beveiliging stoppen](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) met het bewaren van gegevens voor de data base
-- Voer het [script voor de voorafgaande registratie](https://aka.ms/scriptforpermsonhana) opnieuw uit
+- Voer de upgrade uit.
+- Voer het [script voor de voorafgaande registratie](https://aka.ms/scriptforpermsonhana)opnieuw uit. Doorgaans worden de benodigde rollen door het upgrade proces weer gegeven. Als u het script voor de voorafgaande registratie uitvoert, kunt u alle vereiste rollen controleren.
 - De beveiliging voor de data base opnieuw [hervatten](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database)
 
 ## <a name="next-steps"></a>Volgende stappen

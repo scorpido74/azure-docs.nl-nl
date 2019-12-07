@@ -1,6 +1,6 @@
 ---
-title: Telemetrie voor Azure Media Services | Microsoft Docs
-description: In dit artikel biedt een overzicht van telemetrie van Azure Media Services.
+title: Azure Media Services telemetrie | Microsoft Docs
+description: Dit artikel bevat een overzicht van Microsoft Azure Media Services telemetrie.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,207 +14,207 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8e8b493881662483e66dd835d1cc68a471b18454
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e2cbb36158722a47518f575b391340b5e25bd908
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60545517"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895780"
 ---
-# <a name="azure-media-services-telemetry"></a>Azure Media Services-telemetrie  
+# <a name="azure-media-services-telemetry"></a>Azure Media Services telemetrie  
 
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [hulp bij de migratie van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-Azure Media Services (AMS) kunt u toegang tot telemetrie/metrische gegevens voor de services. De huidige versie van AMS kunt u live verzamelen van telemetriegegevens voor **kanaal**, **streamingendpoint zo**, en live **archief** entiteiten. 
+Met Azure Media Services (AMS) kunt u toegang krijgen tot gegevens over telemetrische/metrieken voor de services. Met de huidige versie van AMS kunt u telemetrie-gegevens verzamelen voor live **Channel**-, **StreamingEndpoint**-en live- **Archief** entiteiten. 
 
-Telemetrie wordt geschreven naar een storage-tabel in een Azure Storage-account dat u opgeeft (meestal het geval is, zou u het opslagaccount dat is gekoppeld aan uw AMS-account gebruikt). 
+Telemetrie wordt naar een opslag tabel geschreven in een Azure Storage-account dat u opgeeft (meestal gebruikt u het opslag account dat is gekoppeld aan uw AMS-account). 
 
-Bewaren van gegevens niet door het telemetriesysteem wordt beheerd. U kunt de oude telemetriegegevens verwijderen door de opslagtabellen verwijderen.
+Het telemetrie-systeem beheert geen gegevens retentie. U kunt de oude telemetriegegevens verwijderen door de opslag tabellen te verwijderen.
 
-In dit onderwerp wordt beschreven hoe configureren en gebruiken van de AMS-telemetrie.
+In dit onderwerp wordt beschreven hoe u de AMS-telemetrie configureert en gebruikt.
 
 ## <a name="configuring-telemetry"></a>Telemetrie configureren
 
-U kunt de telemetrie configureren op een niveau granulatie onderdeel. Er zijn twee detailniveaus "Normaal" en "Uitgebreide". Op dit moment retourneert beide niveaus dezelfde informatie. Het verdient aanbeveling om te gebruiken "normaal. 
+U kunt telemetrie configureren op een granulatie op onderdeel niveau. Er zijn twee detail niveaus: "normaal" en "uitgebreid". Op dit moment retour neren beide niveaus dezelfde informatie. U kunt het beste "normaal. 
 
-De volgende onderwerpen laten zien hoe u telemetrie inschakelen:
+In de volgende onderwerpen ziet u hoe u telemetrie inschakelt:
 
-[Telemetrie met .NET inschakelen](media-services-dotnet-telemetry.md) 
+[Telemetrie inschakelen met .NET](media-services-dotnet-telemetry.md) 
 
-[Telemetrie met REST inschakelen](media-services-rest-telemetry.md)
+[Telemetrie inschakelen met REST](media-services-rest-telemetry.md)
 
-## <a name="consuming-telemetry-information"></a>Telemetriegegevens gebruiken
+## <a name="consuming-telemetry-information"></a>Informatie over telemetrie gebruiken
 
-Telemetrie wordt geschreven naar een Azure Storage-tabel in de storage-account dat u hebt opgegeven tijdens het configureren van telemetrie voor de Media Services-account. Deze sectie beschrijft de opslagtabellen voor de metrische gegevens.
+Telemetrie wordt geschreven naar een Azure Storage tabel in het opslag account dat u hebt opgegeven toen u telemetrie voor het Media Services account hebt geconfigureerd. In deze sectie worden de opslag tabellen voor de metrische gegevens beschreven.
 
-U kunt de telemetrische gegevens gebruiken in een van de volgende manieren:
+U kunt telemetrie-gegevens op een van de volgende manieren gebruiken:
 
-- Gegevens rechtstreeks vanuit Azure Table Storage (bijvoorbeeld met behulp van de Storage-SDK) lezen. Zie voor de beschrijving van de opslagtabellen telemetrie, het **verbruikt telemetriegegevens** in [dit](https://msdn.microsoft.com/library/mt742089.aspx) onderwerp.
+- Lees gegevens rechtstreeks vanuit Azure Table Storage (bijvoorbeeld met de opslag-SDK). Zie de **informatie** over het gebruik van telemetriegegevens in [Dit](https://msdn.microsoft.com/library/mt742089.aspx) onderwerp voor de beschrijving van de telemetrie-opslag tabellen.
 
-of
+Of
 
-- De ondersteuning voor gebruik in de Media Services .NET SDK voor het lezen van opslag-gegevens, zoals beschreven in [dit](media-services-dotnet-telemetry.md) onderwerp. 
+- Gebruik de ondersteuning in de Media Services .NET SDK voor het lezen van opslag gegevens, zoals beschreven in [Dit](media-services-dotnet-telemetry.md) onderwerp. 
 
 
-De telemetrie-schema die hieronder worden beschreven, is ontworpen om goede prestaties binnen de grenzen van Azure Table Storage:
+Het hieronder beschreven telemetrie-schema is ontworpen om goede prestaties te bieden binnen de limieten van Azure Table Storage:
 
-- Account-ID en -service-ID waarmee de telemetrie van elke service moet worden gezocht onafhankelijk van de gegevens zijn gepartitioneerd.
-- Partities bevatten de datum moet een redelijke bovengrens geven over de grootte van de partitie.
-- Rij-sleutels worden in volgorde van de omgekeerde tijd om toe te staan de meest recente telemetrie-items moet worden gezocht voor een bepaalde service.
+- Gegevens worden gepartitioneerd op account-ID en service-ID zodat telemetrie van elke service onafhankelijk van elkaar kan worden opgevraagd.
+- Partities bevatten de datum om een redelijke bovengrens voor de partitie grootte te geven.
+- De rijwaarden zijn in omgekeerde volg orde zodat de meest recente telemetriegegevens voor een bepaalde service kunnen worden opgevraagd.
 
-Hierdoor moeten veel van de algemene query's om efficiënt zijn:
+Zo kunnen veel van de algemene query's efficiënt zijn:
 
-- Parallelle, ongeacht het downloaden van gegevens voor afzonderlijke services.
-- Het ophalen van alle gegevens voor een bepaalde service in een bepaalde periode.
-- Het ophalen van de meest recente gegevens voor een service.
+- Parallel, onafhankelijk downloaden van gegevens voor afzonderlijke services.
+- Ophalen van alle gegevens voor een bepaalde service in een datum bereik.
+- De meest recente gegevens voor een service worden opgehaald.
 
-### <a name="telemetry-table-storage-output-schema"></a>Uitvoerschema van telemetrie table storage
+### <a name="telemetry-table-storage-output-schema"></a>Uitvoer schema voor telemetrie-tabel opslag
 
-Telemetrische gegevens worden opgeslagen in een statistische functie in een tabel, "TelemetryMetrics20160321" waar "20160321" de datum van de gemaakte tabel is. Een afzonderlijke tabel telemetriesysteem gemaakt voor elke nieuwe per dag om 00:00 UTC. De tabel wordt gebruikt voor het opslaan van terugkerende waarden, zoals opnemen bitrate binnen een bepaalde tijd, aantal verzonden bytes, enzovoort. 
+Telemetriegegevens worden opgeslagen in een statistische functie in een tabel, ' TelemetryMetrics20160321 ', waarbij ' 20160321 ' de datum van de gemaakte tabel is. Het telemetrie-systeem maakt een afzonderlijke tabel voor elke nieuwe dag op basis van 00:00 UTC. De tabel wordt gebruikt voor het opslaan van terugkerende waarden, zoals opname bitrate binnen een bepaald tijd venster, verzonden bytes, enzovoort. 
 
-Eigenschap|Value|Voorbeelden/opmerkingen
+Eigenschap|Waarde|Voor beelden/opmerkingen
 ---|---|---
-PartitionKey|{account-ID} _ {entiteit-ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>De account-ID is opgenomen in de partitiesleutel voor het vereenvoudigen van werkstromen waar meerdere Media Services-accounts naar hetzelfde opslagaccount schrijft.
-RowKey|{seconds bij middernacht} _ {willekeurige waarde}|01688_00199<br/><br/>De rijsleutel begint met het aantal seconden tot middernacht om toe te staan van top n-query's binnen een partitie. Raadpleeg [dit artikel](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) voor meer informatie. 
-Tijdstempel|Datum/tijd|Automatische-timestamp van de Azure-tabel 2016-09-09T22:43:42.241Z
-Type|Het type van de entiteit die levert telemetrische gegevens|Channel/StreamingEndpoint/Archive<br/><br/>Gebeurtenistype is een string-waarde.
-Name|De naam van de telemetrie-gebeurtenis|ChannelHeartbeat/StreamingEndpointRequestLog
-ObservedTime|De tijd die de telemetrie-gebeurtenis heeft plaatsgevonden (UTC)|2016-09-09T22:42:36.924Z<br/><br/>De waargenomen tijd wordt geleverd door de entiteit die de telemetrie (bijvoorbeeld een kanaal) te verzenden. Kunnen er problemen met de synchronisatie tussen onderdelen, zodat deze waarde is geschatte tijd
-ServiceID|{service-ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
-Entiteit-specifieke eigenschappen|Zoals gedefinieerd door de gebeurtenis|StreamName: stream1, Bitrate 10123...<br/><br/>De overige eigenschappen zijn gedefinieerd voor het opgegeven type. Inhoud van Azure is de sleutel-waardeparen.  (dat wil zeggen, hebben verschillende rijen in de tabel verschillende sets van eigenschappen).
+PartitionKey|{account-ID} _ {entiteit-ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>De account-ID is opgenomen in de partitie sleutel om werk stromen te vereenvoudigen waarbij meerdere Media Services-accounts naar hetzelfde opslag account worden geschreven.
+RowKey|{seconden tot middernacht} _ {wille keurige waarde}|01688_00199<br/><br/>De rij begint met het aantal seconden tot middernacht om de bovenste n-stijl query's in een partitie toe te staan. Raadpleeg [dit artikel](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) voor meer informatie. 
+Tijdstempel|Datum/tijd|Automatische tijds tempel van de Azure-tabel 2016-09-09T22:43:42.241 Z
+Type|Het type entiteit dat telemetrie-gegevens levert|Channel/StreamingEndpoint/Archive<br/><br/>Het gebeurtenis type is een teken reeks waarde.
+Naam|De naam van de telemetrie-gebeurtenis|ChannelHeartbeat/StreamingEndpointRequestLog
+ObservedTime|Het tijdstip waarop de telemetrie-gebeurtenis is opgetreden (UTC)|2016-09-09T22:42:36.924 Z<br/><br/>De waargenomen tijd wordt gegeven door de entiteit die de telemetrie verzendt (bijvoorbeeld een kanaal). Er kunnen tijd synchronisatie problemen zijn tussen onderdelen, dus deze waarde is ongeveer gelijk aan
+ServiceID|{Service-ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
+Entiteit-specifieke eigenschappen|Zoals gedefinieerd door de gebeurtenis|Streamnaam: stream1, bitrate 10123,...<br/><br/>De overige eigenschappen worden gedefinieerd voor het opgegeven gebeurtenis type. Azure-tabel inhoud is sleutel waardeparen.  (dat wil zeggen dat verschillende rijen in de tabel verschillende sets eigenschappen hebben).
 
-### <a name="entity-specific-schema"></a>Entiteit-specifieke schema
+### <a name="entity-specific-schema"></a>Entiteit-specifiek schema
 
-Er zijn drie typen van de entiteit-specifieke telemetrische gegevens vermeldingen doorgegeven met de volgende frequentie:
+Er zijn drie soorten metrische gegevens items met een entiteit die elk zijn gepusht met de volgende frequentie:
 
-- Streaming-eindpunten: Elke 30 seconden
-- Live kanalen: Elke minuut
-- Livearchief: Elke minuut
+- Streaming-eind punten: elke 30 seconden
+- Live kanalen: elke minuut
+- Live-Archief: elke minuut
 
 **Streaming-eindpunt**
 
-Eigenschap|Value|Voorbeelden
+Eigenschap|Waarde|Voorbeelden
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Tijdstempel|Tijdstempel|Automatische-timestamp van Azure Table 2016-09-09T22:43:42.241Z
+Tijdstempel|Tijdstempel|Automatische tijds tempel van Azure Table 2016-09-09T22:43:42.241 Z
 Type|Type|StreamingEndpoint
-Name|Name|StreamingEndpointRequestLog
-ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
+Naam|Naam|StreamingEndpointRequestLog
+ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceID|Service-ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
-Hostnaam|Hostnaam van het eindpunt|builddemoserver.origin.mediaservices.windows.net
-StatusCode|Records HTTP-status|200
-ResultCode|Details van de resultaat-code|S_OK
-RequestCount|Totaal aantal aanvragen in de samenstelling|3
-BytesSent|Samengevoegde verzonden bytes|2987358
-ServerLatency|Gemiddelde serverlatentie (inclusief opslag)|129
+Hostnaam|Hostnaam van het eind punt|builddemoserver.origin.mediaservices.windows.net
+StatusCode|Registreert HTTP-status|200
+ResultCode|Details van resultaat code|S_OK
+RequestCount|Totaal aantal aanvragen in de aggregatie|3
+BytesSent|Totaal aantal verzonden bytes|2987358
+ServerLatency|Gemiddelde server latentie (inclusief opslag)|129
 E2ELatency|Gemiddelde end-to-end-latentie|250
 
-**Live kanalen**
+**Live-kanaal**
 
-Eigenschap|Value|Voorbeelden/opmerkingen
+Eigenschap|Waarde|Voor beelden/opmerkingen
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Tijdstempel|Tijdstempel|Automatische-timestamp van de Azure-tabel 2016-09-09T22:43:42.241Z
+Tijdstempel|Tijdstempel|Automatische tijds tempel van de Azure-tabel 2016-09-09T22:43:42.241 Z
 Type|Type|Kanaal
-Name|Name|ChannelHeartbeat
-ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
+Naam|Naam|ChannelHeartbeat
+ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceID|Service-ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
-TrackType|Type van de video, audio/tekst van bijhouden|video/audio
+TrackType|Type track video/audio/tekst|video/audio
 TrackName|Naam van het spoor|video/audio_1
-Bitrate|Bitrate bijhouden|785000
+Bitrate|Bitsnelheid bijhouden|785000
 CustomAttributes||   
 IncomingBitrate|Werkelijke binnenkomende bitrate|784548
-OverlapCount|Elkaar overlappen in de opname|0
-DiscontinuityCount|Onderbreking voor bijhouden|0
-LastTimestamp|Tijdstempel voor laatste opgenomen gegevens|1800488800
-NonincreasingCount|Aantal fragmenten verwijderd als gevolg van niet-toenemende timestamp|2
-UnalignedKeyFrames|Of er fragment(s) (via kwaliteitsniveaus ontvangen) waar frames niet uitgelijnd sleutel |True
-UnalignedPresentationTime|(Alle kwaliteit niveaus/nummers) fragment(s) of we ontvangen waar presentatietijd is niet uitgelijnd|True
-UnexpectedBitrate|Waar, als berekend/werkelijke bitrate voor audio/video > 40.000 bps en IncomingBitrate bijhouden == of IncomingBitrate en actualBitrate met 50 verschillen % 0 |True
-In orde|Waar, als <br/>overlapCount, <br/>DiscontinuityCount, <br/>NonIncreasingCount, <br/>UnalignedKeyFrames, <br/>UnalignedPresentationTime, <br/>UnexpectedBitrate<br/> alle 0 zijn|True<br/><br/>In orde is een samengestelde functie ' false ' retourneert als een van de volgende voorwaarden:<br/><br/>-OverlapCount > 0<br/>- DiscontinuityCount > 0<br/>-NonincreasingCount > 0<br/>-UnalignedKeyFrames == True<br/>-UnalignedPresentationTime == True<br/>-UnexpectedBitrate == True
+OverlapCount|Overlap ping in de opname|0
+DiscontinuityCount|Oncontinuïteit voor spoor|0
+LastTimestamp|Laatste opgenomen tijds tempel van gegevens|1800488800
+NonincreasingCount|Aantal verwijderde fragmenten vanwege niet-toenemende tijds tempel|2
+UnalignedKeyFrames|Of er fragment (en) (op verschillende kwaliteits niveaus) zijn ontvangen waar de keyframes niet zijn uitgelijnd |Waar
+UnalignedPresentationTime|Of we fragment (en) (op verschillende kwaliteits niveaus/tracks) ontvangen waarbij de presentatie tijd niet is uitgelijnd|Waar
+UnexpectedBitrate|Waar, als de berekende/werkelijke bitrate voor audio/video track > 40.000 bps en IncomingBitrate = = 0 of IncomingBitrate en actualBitrate verschillen per 50% |Waar
+In orde|Waar, als <br/>overlapCount, <br/>DiscontinuityCount, <br/>NonIncreasingCount, <br/>UnalignedKeyFrames, <br/>UnalignedPresentationTime, <br/>UnexpectedBitrate<br/> zijn allemaal 0|Waar<br/><br/>In orde is een samengestelde functie die onwaar retourneert wanneer een van de volgende voor waarden van toepassing is:<br/><br/>-OverlapCount > 0<br/>-DiscontinuityCount > 0<br/>-NonincreasingCount > 0<br/>-UnalignedKeyFrames = = True<br/>-UnalignedPresentationTime = = True<br/>-UnexpectedBitrate = = True
 
-**Livearchief**
+**Live-Archief**
 
-Eigenschap|Value|Voorbeelden/opmerkingen
+Eigenschap|Waarde|Voor beelden/opmerkingen
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Tijdstempel|Tijdstempel|Automatische-timestamp van de Azure-tabel 2016-09-09T22:43:42.241Z
-Type|Type|Archiveren
-Name|Name|ArchiveHeartbeat
-ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
+Tijdstempel|Tijdstempel|Automatische tijds tempel van de Azure-tabel 2016-09-09T22:43:42.241 Z
+Type|Type|Archief
+Naam|Naam|ArchiveHeartbeat
+ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceID|Service-ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
-ManifestName|Programma-url|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism
+Manifestnaam|Programma-URL|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism
 TrackName|Naam van het spoor|audio_1
-TrackType|Type van het spoor|Audio/video
-CustomAttribute|Hex-tekenreeks is die onderscheid tussen de verschillende bijhouden met dezelfde naam en de bitsnelheid (meerdere camerahoek gemaakt)|
-Bitrate|Bitrate bijhouden|785000
-In orde|Waar, als FragmentDiscardedCount == 0 & & ArchiveAcquisitionError == False|True (deze twee waarden zijn niet aanwezig in de metrische gegevens, maar ze zijn aanwezig in de bron-gebeurtenis)<br/><br/>In orde is een samengestelde functie ' false ' retourneert als een van de volgende voorwaarden:<br/><br/>- FragmentDiscardedCount > 0<br/>-ArchiveAcquisitionError == True
+TrackType|Type spoor|Audio/video
+CustomAttribute|Hex-teken reeks die onderscheidt tussen een ander spoor met dezelfde naam en bitsnelheid (hoek van meerdere camera's)|
+Bitrate|Bitsnelheid bijhouden|785000
+In orde|Waar, als FragmentDiscardedCount = = 0 & & ArchiveAcquisitionError = = False|Waar (deze twee waarden zijn niet aanwezig in de metriek, maar zijn aanwezig in de bron gebeurtenis)<br/><br/>In orde is een samengestelde functie die onwaar retourneert wanneer een van de volgende voor waarden van toepassing is:<br/><br/>-FragmentDiscardedCount > 0<br/>-ArchiveAcquisitionError = = True
 
-## <a name="general-qa"></a>Algemene Q & A
+## <a name="general-qa"></a>Algemeen Q & A
 
-### <a name="how-to-consume-metrics-data"></a>Het gebruik van metrische gegevens?
+### <a name="how-to-consume-metrics-data"></a>Hoe worden metrische gegevens verbruikt?
 
-Metrische gegevens worden opgeslagen als een reeks Azure-tabellen in de storage-account van de klant. Deze gegevens kan worden gebruikt met behulp van de volgende hulpprogramma's:
+Metrische gegevens worden opgeslagen als een reeks Azure-tabellen in het opslag account van de klant. Deze gegevens kunnen worden gebruikt met behulp van de volgende hulpprogram ma's:
 
-- AMS SDK
+- AMS-SDK
 - Microsoft Azure Storage Explorer (ondersteunt exporteren naar een indeling met door komma's gescheiden waarden en verwerkt in Excel)
 - REST-API
 
-### <a name="how-to-find-average-bandwidth-consumption"></a>Hoe kunt u het vinden van gemiddelde bandbreedte verbruikt?
+### <a name="how-to-find-average-bandwidth-consumption"></a>Hoe kunt u het gemiddelde bandbreedte verbruik vinden?
 
-Het gemiddelde bandbreedtegebruik is het gemiddelde van BytesSent gedurende een bepaalde periode.
+Het gemiddelde bandbreedte verbruik is het gemiddelde van bytes sent gedurende een periode.
 
-### <a name="how-to-define-streaming-unit-count"></a>Het aantal streaming definiëren?
+### <a name="how-to-define-streaming-unit-count"></a>Hoe kan ik het aantal streaming-eenheden definiëren?
 
-Het aantal streaming kan worden gedefinieerd als de maximale doorvoer van streaming van de service-eindpunten gedeeld door de maximale doorvoer van een streaming-eindpunt. De piek bruikbaar doorvoer van een streaming-eindpunt is 160 Mbps.
-Stel bijvoorbeeld dat de piek-doorvoer van een klant-service is 40 MBps (de maximale waarde van BytesSent gedurende een bepaalde periode). Klik, het aantal streaming is gelijk aan (40 MBps) * (8-bits/byte) /(160 Mbps) = 2 streaming-eenheden.
+Het aantal streaming-eenheden kan worden gedefinieerd als de piek doorvoer van de streaming-eind punten van de service gedeeld door de piek doorvoer van één streaming-eind punt. De maximale gebruiks doorvoer van één streaming-eind punt is 160 Mbps.
+Stel bijvoorbeeld dat de piek doorvoer van de service van een klant 40 MBps is (de maximale waarde van bytes sent gedurende een periode). Vervolgens is het aantal streaming-eenheden gelijk aan (40 MBps) * (8 bits/byte)/(160 Mbps) = 2 streaming-eenheden.
 
-### <a name="how-to-find-average-requestssecond"></a>Hoe kan ik aanvragen/seconde voor gemiddelde berekenen?
+### <a name="how-to-find-average-requestssecond"></a>Gemiddeld aantal aanvragen per seconde zoeken
 
-Als u zoekt het gemiddelde aantal aanvragen per seconde, compute-het gemiddelde aantal aanvragen (RequestCount) gedurende een bepaalde periode.
+Als u het gemiddelde aantal aanvragen per seconde wilt vinden, berekent u het gemiddelde aantal aanvragen (RequestCount) gedurende een periode.
 
-### <a name="how-to-define-channel-health"></a>Het definiëren van kanalen health?
+### <a name="how-to-define-channel-health"></a>Kanaal status definiëren?
 
-Kanaal status kan worden gedefinieerd als een samengestelde Booleaanse functie dat is de waarde false als een van de volgende voorwaarden:
+De kanaal status kan worden gedefinieerd als een samengestelde Boole-functie, zodat deze ONWAAR is wanneer een van de volgende voor waarden van toepassing is:
 
 - OverlapCount > 0
 - DiscontinuityCount > 0
 - NonincreasingCount > 0
-- UnalignedKeyFrames == True 
-- UnalignedPresentationTime == True 
-- UnexpectedBitrate == True
+- UnalignedKeyFrames = = True 
+- UnalignedPresentationTime = = True 
+- UnexpectedBitrate = = True
 
 
-### <a name="how-to-detect-discontinuities"></a>Hoe wijzigingen detecteren?
+### <a name="how-to-detect-discontinuities"></a>Hoe kunnen er problemen worden opgespoord?
 
-Voor het detecteren van wijzigingen, vindt u alle gegevens van kanaal waar DiscontinuityCount > 0. De bijbehorende ObservedTime tijdstempel geeft de tijden waarop de wijzigingen heeft plaatsgevonden.
+Als u wilt detecteren, kunt u alle kanaal gegevens items zoeken waarbij DiscontinuityCount > 0. De bijbehorende ObservedTime-tijds tempel geeft de tijden aan waarop de zich heeft voorgedaan.
 
-### <a name="how-to-detect-timestamp-overlaps"></a>Het vaststellen van timestamp overlapt?
+### <a name="how-to-detect-timestamp-overlaps"></a>Hoe kan ik tijds tempel overlappingen detecteren?
 
-Voor het detecteren van timestamp overlapt, vindt u alle gegevens van kanaal waar OverlapCount > 0. De tijdstempel van de bijbehorende ObservedTime geeft aan dat de tijden waarop overlapt met de tijdstempel is opgetreden.
+Als u de tijds tempel overlap pingen wilt detecteren, zoekt u alle kanaal gegevens invoer waarbij OverlapCount > 0. De bijbehorende ObservedTime-tijds tempel geeft de tijden aan waarop de tijds tempel overlapt.
 
-### <a name="how-to-find-streaming-request-failures-and-reasons"></a>Hoe kan ik mislukte streaming aanvragen en de redenen vinden?
+### <a name="how-to-find-streaming-request-failures-and-reasons"></a>Hoe kan ik problemen met streaming-aanvragen en redenen vinden?
 
-Zoeken om te zoeken mislukte streaming aanvragen en de redenen, alle gegevens van Streaming-eindpunt waar ResultCode is niet gelijk aan S_OK. In het bijbehorende StatusCode veld wordt de reden voor de aanvraag-fout.
+Als u fouten en redenen voor streaming-aanvragen wilt vinden, zoekt u alle gegevens items van streaming-eind punten waarbij ResultCode niet gelijk is aan S_OK. Het bijbehorende veld status code geeft de reden voor het mislukken van de aanvraag aan.
 
-### <a name="how-to-consume-data-with-external-tools"></a>Hoe kan ik gegevens met externe hulpprogramma's gebruiken?
+### <a name="how-to-consume-data-with-external-tools"></a>Gegevens gebruiken met externe hulpprogram ma's
 
-Telemetrische gegevens kunnen worden verwerkt en gevisualiseerd met de volgende hulpprogramma's:
+U kunt gegevens van de telemetrische verwerking en visualiseren met de volgende hulpprogram ma's:
 
 - PowerBI
 - Application Insights
 - Azure Monitor (voorheen Shoebox)
-- Dashboard voor AMS Live
-- Azure-Portal (in behandeling release)
+- AMS Live-dash board
+- Azure Portal (in afwachting van vrijgave)
 
-### <a name="how-to-manage-data-retention"></a>Hoe werkt het bewaren van gegevens beheren?
+### <a name="how-to-manage-data-retention"></a>Hoe kan ik gegevens retentie beheren?
 
-Het telemetriesysteem biedt geen bewaarperiode gegevensbeheer of automatische verwijdering van de oude records. U moet dus, beheren en het handmatig verwijderen van oude records uit de opslagtabel. U kunt verwijzen naar de opslag-SDK voor hoe u dit doet.
+Het telemetrie-systeem voorziet niet in het beheer van gegevens retentie of het automatisch verwijderen van oude records. Daarom moet u oude records hand matig beheren en verwijderen uit de opslag tabel. Raadpleeg de opslag-SDK voor informatie over hoe u dit kunt doen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: 36035d844237115361ccb3c1e1bc0dcb91250881
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 3b6a16436b2719d1571f5d5a3c16711a9100b75d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423866"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894414"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Overzicht van Azure Standard Load Balancer
 
@@ -38,11 +38,6 @@ De functies van de Load Balancer resource worden altijd uitgedrukt als een front
 Een belang rijke hoogte is het bereik van het virtuele netwerk van de bron.  Hoewel Basic Load Balancer bestaat binnen het bereik van een beschikbaarheidsset, is een Standard Load Balancer volledig geïntegreerd met het bereik van een virtueel netwerk en zijn alle concepten van het virtuele netwerk van toepassing.
 
 Load Balancer resources zijn objecten waarin u kunt zien hoe Azure de multi tenant-infra structuur moet Program meren om het scenario dat u wilt maken te verhalen.  Er is geen rechtstreekse relatie tussen Load Balancer resources en de werkelijke infra structuur. Als u een Load Balancer maakt, wordt er geen exemplaar gemaakt, is de capaciteit altijd beschikbaar en zijn er geen vertragingen voor opstarten of schalen. 
-
->[!NOTE]
-> Azure biedt een pakket volledig beheerde oplossingen voor taakverdeling voor uw scenario's. Zie [Wat is Azure-toepassing gateway?](../application-gateway/overview.md) als u op zoek bent naar Transport Layer Security (TLS) Termination (' SSL offload ') of per HTTP/HTTPS-aanvraag, de verwerking van de toepassingslaag. Als u op zoek bent naar globale DNS-taak verdeling, raadpleegt u [Wat is Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Uw end-to-end-scenario's kunnen van pas komen bij het combi neren van deze oplossingen.
->
-> Zie [overzicht van opties voor taak verdeling in azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)voor een vergelijking van Azure-opties voor taak verdeling.
 
 ## <a name="why-use-standard-load-balancer"></a>Waarom Standard Load Balancer gebruiken?
 
@@ -240,7 +235,7 @@ Ga naar de pagina [Prijs van Load Balancer](https://azure.microsoft.com/pricing/
 - Meer informatie over [Beschikbaarheidszones](../availability-zones/az-overview.md).
 - Meer informatie over [Standard Load Balancer diagnostische gegevens](load-balancer-standard-diagnostics.md).
 - Meer informatie over [ondersteunde multi-dimensionale metrische gegevens](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) voor diagnostische gegevens in [Azure monitor](../monitoring-and-diagnostics/monitoring-overview.md).
-- Meer informatie over het gebruik [van Load Balancer voor uitgaande verbindingen](load-balancer-outbound-connections.md).
+- Meer informatie over het gebruik van [Load Balancer voor uitgaande verbindingen](load-balancer-outbound-connections.md).
 - Meer informatie over [Uitgaande regels](load-balancer-outbound-rules-overview.md).
 - Meer informatie over [TCP Reset bij niet-actief](load-balancer-tcp-reset.md).
 - Meer informatie over Standard Load Balancer met de taakverdelings [regels van ha-poorten](load-balancer-ha-ports-overview.md).

@@ -1,6 +1,6 @@
 ---
 title: Live streamen met on-premises coderings Programma's die multi-bitrate streams maken-Azure | Microsoft Docs
-description: 'In dit onderwerp wordt beschreven hoe u een kanaal instelt dat een multi-bitrate Live Stream ontvangt van een on-premises encoder. De stroom kan vervolgens worden geleverd aan client Play-toepassingen via een of meer streaming-eind punten, met behulp van een van de volgende adaptieve streaming-protocollen: HLS, Smooth Streaming, streepje.'
+description: In dit onderwerp wordt beschreven hoe u een kanaal instelt dat een multi-bitrate Live Stream ontvangt van een on-premises encoder.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a299c050be37d53acd01ddc2db580c4881eeae07
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "69015488"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887098"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Werken met kanalen die een multi-bitrate live stream van on-premises encoders ontvangen
 
@@ -39,13 +39,13 @@ In Azure Media Services vertegenwoordigt een *kanaal* een pijp lijn voor het ver
 
 Als u begint met de release van Media Services 2,10, kunt u, wanneer u een kanaal maakt, opgeven hoe u wilt dat uw kanaal de invoer stroom ontvangt. U kunt ook opgeven of u wilt dat het kanaal Live code ring van uw stream uitvoert. U hebt hiervoor twee opties:
 
-* **Door geven**: Geef deze waarde op als u van plan bent een on-premises Live coderings programma te gebruiken dat een multi-bitrate stroom (een Pass-Through-stroom) als uitvoer heeft. In dit geval wordt de inkomende stroom door gegeven aan de uitvoer zonder code ring. Dit is het gedrag van een kanaal vóór de 2,10-release. In dit artikel vindt u informatie over het werken met kanalen van dit type.
+* **Pass**through: geef deze waarde op als u van plan bent een on-premises Live coderings programma te gebruiken dat een multi-bitrate stroom (een Pass-Through-stroom) als uitvoer heeft. In dit geval wordt de inkomende stroom door gegeven aan de uitvoer zonder code ring. Dit is het gedrag van een kanaal vóór de 2,10-release. In dit artikel vindt u informatie over het werken met kanalen van dit type.
 * **Live encoding**: Kies deze waarde als u Media Services wilt gebruiken om uw live stream met één bitsnelheid te coderen naar een multi-bitrate stream. Als u een live coderings kanaal in een **actieve** status laat staan, worden facturerings kosten in rekening gebracht. We raden u aan uw actieve kanalen direct te stoppen nadat uw live-streaming-gebeurtenis is voltooid om extra kosten per uur te voor komen. Media Services de stroom levert aan klanten die deze aanvragen.
 
 > [!NOTE]
 > In dit artikel worden kenmerken van kanalen beschreven die niet zijn ingeschakeld voor het uitvoeren van Live code ring. Zie voor meer informatie over het werken met kanalen die geschikt zijn voor het uitvoeren van Live code ring, [live streamen met Azure Media Services om multi-bitrate streams te maken](media-services-manage-live-encoder-enabled-channels.md).
 >
->Zie [Aanbevolen voor](media-services-recommended-encoders.md)on-premises coderings Programma's voor meer informatie over het aanbevolen on-premises coderings Programma's.
+>Zie [Aanbevolen voor on-premises coderings](media-services-recommended-encoders.md)Programma's voor meer informatie over het aanbevolen on-premises coderings Programma's.
 
 Het volgende diagram vertegenwoordigt een live-streaming werk stroom die gebruikmaakt van een on-premises Live coderings programma voor multi-bitrate RTMP-of gefragmenteerde MP4-stromen (Smooth Streaming) als uitvoer.
 
@@ -105,7 +105,7 @@ Gebruik de secundaire URL als u de duurzaamheid en fout tolerantie van uw opname
 
     In dit scenario pushen beide Codeer gegevens naar zowel de primaire als de secundaire URL. Dit biedt de beste betrouw baarheid en fout tolerantie, evenals gegevens redundantie. Dit scenario kan beide coderings fouten verdragen en de verbinding verbreken, zelfs als één encoder niet meer werkt. Hierbij wordt ervan uitgegaan dat coderings Programma's zijn gesynchroniseerd en exact dezelfde gegevens opgeven.  
 
-Zie [Azure Media Services RTMP-ondersteuning en live](https://go.microsoft.com/fwlink/?LinkId=532824)coderings Programma's voor meer informatie over RTMP Live coderings Programma's.
+Zie [Azure Media Services RTMP-ondersteuning en live coderings](https://go.microsoft.com/fwlink/?LinkId=532824)Programma's voor meer informatie over RTMP Live coderings Programma's.
 
 #### <a name="ingest-urls-endpoints"></a>Opname-Url's (eind punten)
 Een kanaal biedt een invoer eindpunt (opname-URL) dat u opgeeft in het Live coderings programma, zodat het coderings programma streams naar uw kanalen kan pushen.   
@@ -140,7 +140,7 @@ U kunt de IP-adressen definiëren die video naar dit kanaal mogen publiceren. Ee
 
 Als er geen IP-adressen zijn opgegeven en er geen regel definitie is, is geen IP-adres toegestaan. Als u IP-adres(sen) wilt toestaan, maakt u een regel en stelt u 0.0.0.0/0 in.
 
-### <a name="channel-preview"></a>Kanaalvoorbeeld
+### <a name="channel-preview"></a>Channel Preview
 #### <a name="preview-urls"></a>Preview-Url's
 Kanalen bieden een preview-eind punt (Preview-URL) die u gebruikt om uw stroom te bekijken en te valideren vóór verdere verwerking en levering.
 
@@ -176,11 +176,11 @@ Zelfs nadat u het programma hebt gestopt en verwijderd, kunnen gebruikers de gea
 ## <a id="states"></a>Kanaal status en facturering
 Mogelijke waarden voor de huidige status van een kanaal zijn:
 
-* **Gestopt**: Dit is de beginstatus van het kanaal nadat het is gemaakt. In deze status kunnen de eigenschappen van het kanaal worden bijgewerkt, maar is streaming niet toegestaan.
-* **Starten**: Het kanaal wordt gestart. In deze status zijn streaming en updates niet toegestaan. Als er een fout optreedt, keert het kanaal terug naar de status **gestopt** .
-* **Uitvoeren**: Het kanaal kan live streams verwerken.
-* **Stoppen**: Het kanaal wordt gestopt. In deze status zijn streaming en updates niet toegestaan.
-* **Verwijderen**: Het kanaal wordt verwijderd. In deze status zijn streaming en updates niet toegestaan.
+* **Gestopt**: dit is de begin status van het kanaal nadat het is gemaakt. In deze status kunnen de eigenschappen van het kanaal worden bijgewerkt, maar is streaming niet toegestaan.
+* **Starten**: het kanaal wordt gestart. In deze status zijn streaming en updates niet toegestaan. Als er een fout optreedt, keert het kanaal terug naar de status **gestopt** .
+* **Uitvoeren**: het kanaal kan live streams verwerken.
+* **Stoppen**: het kanaal wordt gestopt. In deze status zijn streaming en updates niet toegestaan.
+* **Verwijderen**: het kanaal wordt verwijderd. In deze status zijn streaming en updates niet toegestaan.
 
 In de volgende tabel wordt het verband tussen de verschillende kanaalstatussen en de facturering weergegeven.
 
@@ -197,7 +197,7 @@ De volgende tabel bevat de ondersteunde standaarden voor ondertiteling en het in
 | Standard | Opmerkingen |
 | --- | --- |
 | CEA-708 en EIA-608 (708/608) |CEA-708 en EIA-608 zijn closed captioning-standaarden voor de Verenigde Staten en Canada.<p><p>Bijschriften worden momenteel alleen ondersteund als deze in de gecodeerde invoer stroom worden uitgevoerd. U moet een Live Media Encoder gebruiken waarmee u 608-of 708-bijschriften in de gecodeerde stroom kunt invoegen die naar Media Services worden verzonden. Media Services levert de inhoud met Inge sloten bijschriften aan uw viewers. |
-| TTML binnen. ismt (Smooth Streaming tekst sporen) |Met Media Services dynamische pakketten kunnen uw clients inhoud in een van de volgende indelingen streamen: DASH, HLS of Smooth Streaming. Als u echter gefragmenteerde MP4 (Smooth Streaming) opneemt met bijschriften in. ismt (Smooth Streaming tekst sporen), kunt u de stroom alleen aan Smooth Streaming-clients leveren. |
+| TTML binnen. ismt (Smooth Streaming tekst sporen) |Met Media Services dynamische pakketten kunnen uw clients inhoud streamen in een van de volgende indelingen: DASH, HLS of Smooth Streaming. Als u echter gefragmenteerde MP4 (Smooth Streaming) opneemt met bijschriften in. ismt (Smooth Streaming tekst sporen), kunt u de stroom alleen aan Smooth Streaming-clients leveren. |
 | SCTE-35 |SCTE-35 is een digitaal signalerings systeem dat wordt gebruikt voor het aanroepen van invoeging van advertenties. Downstream-ontvangers gebruiken het signaal om reclame uit te splitsen in de stroom voor de toegewezen tijd. SCTE-35 moet worden verzonden als een sparse track in de invoer stroom.<p><p>Op dit moment is de enige ondersteunde invoer stroom indeling die AD-signalen heeft, gefragmenteerde MP4 (Smooth Streaming). De enige ondersteunde uitvoer indeling is ook Smooth Streaming. |
 
 ## <a id="considerations"></a>Tot

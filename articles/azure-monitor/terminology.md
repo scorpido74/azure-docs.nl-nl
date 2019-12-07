@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 5324c17cdf2593d8e1022e6ddbf52b4e24ee64e8
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 01d4c8b3b803c5fce4fe24a5c96e649212fc4dca
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597812"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894348"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor naamgevings-en terminologie wijzigingen
 Er zijn belang rijke wijzigingen aangebracht in Azure Monitor recent, waarbij verschillende services worden geconsolideerd om de controle van Azure-klanten te vereenvoudigen. In dit artikel worden de recente naam en terminologie wijzigingen in Azure Monitor documentatie beschreven.
 
 ## <a name="october-2019---diagnostic-log-to-resource-log"></a>Oktober 2019-diagnostisch logboek naar resource logboek
-Diagnostische logboeken zijn gewijzigd in bron logboeken, zodat ze beter overeenkomen met wat er daad werkelijk wordt verzameld. De term Diagnostische instellingen blijft hetzelfde.  
+' Diagnostische logboeken ' zijn gewijzigd in ' resource logs ' om beter te kunnen overeenkomen met wat er daad werkelijk wordt verzameld. De term Diagnostische instellingen blijft hetzelfde.  
 
 ## <a name="february-2019---log-analytics-terminology"></a>Log Analytics met terminologie van februari 2019
 Na de consolidatie van verschillende services onder Azure Monitor, nemen we de volgende stap in de hand van de terminologie in onze documentatie om de Azure Monitor-service en de verschillende onderdelen beter te beschrijven. 

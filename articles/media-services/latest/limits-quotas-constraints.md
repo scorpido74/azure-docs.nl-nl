@@ -1,6 +1,6 @@
 ---
 title: Quota en beperkingen in Azure Media Services v3 | Microsoft Docs
-description: In dit onderwerp worden de quota's en beperkingen in Azure Media Services v3 beschreven
+description: In dit onderwerp worden de quota's en beperkingen in Microsoft Azure Media Services v3 beschreven.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 2a530d6a1a447ccde448259623da6faeaa6a4d72
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 5a4f7e31cb17f47e8796ab99c1f8a089339903df
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598369"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888424"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Quota en beperkingen in Azure Media Services v3
 
@@ -30,7 +30,7 @@ In dit artikel worden de quota's en beperkingen in Azure Media Services v3 besch
 | JobOutputs per taak | 20 (vast) |
 | TransformOutputs in een trans formatie | 20 (vast) |
 | Bestanden per JobInput|10 (vast)|
-| Bestandsgrootte| In sommige scenario's geldt een limiet voor de maximale bestands grootte die wordt ondersteund voor verwerking in Media Services. <sup>i</sup> |
+| Bestandsgrootte| In sommige scenario's geldt een limiet voor de maximale bestands grootte die wordt ondersteund voor verwerking in Media Services. <sup>(1)</sup> |
 | Taken per Media Services-account | 500.000 <sup>(2)</sup> (vast)|
 | Live gebeurtenissen per Azure Media Services-account |5|
 | Media Services accounts in één abonnement | 25 (vast) |

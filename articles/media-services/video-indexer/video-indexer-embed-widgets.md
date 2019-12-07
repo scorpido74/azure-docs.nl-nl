@@ -1,7 +1,7 @@
 ---
 title: Video Indexer widgets insluiten in uw toepassingen
 titleSuffix: Azure Media Services
-description: Meer informatie over het insluiten van Video Indexer widgets in uw toepassing.
+description: In dit artikel wordt beschreven hoe u Azure Media Services Video Indexer widgets insluit in uw toepassing.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 99d6647ab5e7fa8f35cef883dd00ae9fea866370
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bb0af855a136c83eac7e28287b28046b50a7c124
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839109"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892733"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Video Indexer widgets insluiten in uw toepassingen
 
@@ -32,7 +32,7 @@ Een cognitieve Insights-widget bevat alle visuele inzichten die zijn geëxtrahee
 |Naam|Definitie|Beschrijving|
 |---|---|---|
 |`widgets`|Tekenreeksen gescheiden door komma's|Hiermee kunt u de inzichten bepalen die u wilt weer geven. <br/> Voor beeld: met `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` worden alleen de gebruikers interface-inzichten van gebruikers en Brands weer gegeven.<br/>Beschikbare opties: mensen, trefwoorden, aantekeningen, merken, gevoelens, transcript, zoeken.<br/>Houd er rekening mee dat de para meter `widgets` URL niet wordt ondersteund in versie 2.<br/>|
-|`locale`|Een korte taal code|Hiermee bepaalt u de inzichten taal. De standaard waarde is `en`. <br/> Voor beeld: `locale=de`.|
+|`locale`|Een korte taal code|Hiermee bepaalt u de inzichten taal. De standaardwaarde is `en`. <br/> Voorbeeld: `locale=de`.|
 |`tab`|Het standaard geselecteerde tabblad|Hiermee bepaalt u het tabblad **inzichten** dat standaard wordt weer gegeven. <br/> Voor beeld: `tab=timeline` de inzichten weer geven op het tabblad **tijd lijn** geselecteerd.|
 
 ### <a name="player-widget"></a>Widget Speler
@@ -41,12 +41,12 @@ U kunt de Player-widget gebruiken om video te streamen met behulp van adaptieve 
 
 |Naam|Definitie|Beschrijving|
 |---|---|---|
-|`t`|Seconden vanaf het begin|Hiermee wordt het afspelen van de speler vanaf het opgegeven tijd punt gestart.<br/> Voor beeld: `t=60`.|
-|`captions`|Een taal code|Haalt het bijschrift in de opgegeven taal op tijdens het laden van de widget zodat deze beschikbaar is in het menu **bijschriften** .<br/> Voor beeld: `captions=en-US`.|
-|`showCaptions`|Een Booleaanse waarde|Zorgt ervoor dat speler wordt geladen met de ondertiteling al ingeschakeld.<br/> Voor beeld: `showCaptions=true`.|
-|`type`||Hiermee wordt een audio speler-weer gave geactiveerd (het video onderdeel wordt verwijderd).<br/> Voor beeld: `type=audio`.|
-|`autoplay`|Een Booleaanse waarde|Hiermee wordt aangegeven of de speler de video moet starten wanneer deze wordt geladen. De standaard waarde is `true`.<br/> Voor beeld: `autoplay=false`.|
-|`language`|Een taal code|Hiermee bepaalt u de taal van de speler. De standaard waarde is `en-US`.<br/>Voor beeld: `language=de-DE`.|
+|`t`|Seconden vanaf het begin|Hiermee wordt het afspelen van de speler vanaf het opgegeven tijd punt gestart.<br/> Voorbeeld: `t=60`.|
+|`captions`|Een taal code|Haalt het bijschrift in de opgegeven taal op tijdens het laden van de widget zodat deze beschikbaar is in het menu **bijschriften** .<br/> Voorbeeld: `captions=en-US`.|
+|`showCaptions`|Een Booleaanse waarde|Zorgt ervoor dat speler wordt geladen met de ondertiteling al ingeschakeld.<br/> Voorbeeld: `showCaptions=true`.|
+|`type`||Hiermee wordt een audio speler-weer gave geactiveerd (het video onderdeel wordt verwijderd).<br/> Voorbeeld: `type=audio`.|
+|`autoplay`|Een Booleaanse waarde|Hiermee wordt aangegeven of de speler de video moet starten wanneer deze wordt geladen. De standaardwaarde is `true`.<br/> Voorbeeld: `autoplay=false`.|
+|`language`|Een taal code|Hiermee bepaalt u de taal van de speler. De standaardwaarde is `en-US`.<br/>Voorbeeld: `language=de-DE`.|
 
 ### <a name="editor-widget"></a>Editor-widget
 
@@ -55,8 +55,8 @@ U kunt de editor-widget gebruiken om nieuwe projecten te maken en de inzichten v
 |Naam|Definitie|Beschrijving|
 |---|---|---|
 |`accessToken`<sup>*</sup>|Tekenreeks|Biedt toegang tot Video's die alleen voor komen in het account dat wordt gebruikt om de widget in te sluiten.<br> Voor de editor-widget is de para meter `accessToken` vereist.|
-|`language`|Een taal code|Hiermee bepaalt u de taal van de speler. De standaard waarde is `en-US`.<br/>Voor beeld: `language=de-DE`.|
-|`locale`|Een korte taal code|Hiermee bepaalt u de inzichten taal. De standaard waarde is `en`.<br/>Voor beeld: `language=de`.|
+|`language`|Een taal code|Hiermee bepaalt u de taal van de speler. De standaardwaarde is `en-US`.<br/>Voorbeeld: `language=de-DE`.|
+|`locale`|Een korte taal code|Hiermee bepaalt u de inzichten taal. De standaardwaarde is `en`.<br/>Voorbeeld: `language=de`.|
 
 <sup>*</sup> De eigenaar moet er `accessToken` voorzichtig van kunnen zijn.
 

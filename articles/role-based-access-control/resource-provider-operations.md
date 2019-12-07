@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b00e699eb49d88e41dff18d6c86024c9b0537e50
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e8a3397cd8229a84103fdcbb116bf61648a6ba22
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872312"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895561"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Bewerkingen voor de resource provider Azure Resource Manager
 
@@ -5534,14 +5534,14 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Bewerking | Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/read | Gevoeligheids labels van een bepaalde Data Base weer geven |
 > | Bewerking | Micro soft. SQL/managedInstances/data bases/recommendedSensitivityLabels/schrijven | Aanbevolen gevoeligheids labels voor batch update |
 > | Bewerking | Micro soft. SQL/managedInstances/data bases/restoreDetails/lezen | Retourneert Details over het herstellen van de beheerde data base terwijl het terugzetten wordt uitgevoerd. |
-> | Bewerking | Microsoft.Sql/managedInstances/databases/schemas/read | Een beheerd database schema ophalen. |
-> | Bewerking | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/read | Een kolom met beheerde data base ophalen |
+> | Bewerking | Microsoft.Sql/managedInstances/databases/schemas/read | Een beheerd database schema ophalen. (alleen schema) |
+> | Bewerking | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/read | Een kolom met beheerde data base ophalen (alleen schema) |
 > | Bewerking | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/delete | Het gevoeligheids label van een bepaalde kolom verwijderen |
 > | Bewerking | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/disable/action | Gevoeligheids aanbevelingen voor een bepaalde kolom uitschakelen |
 > | Bewerking | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/enable/action | Gevoeligheids aanbevelingen voor een bepaalde kolom inschakelen |
 > | Bewerking | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/read | Het gevoeligheids label van een bepaalde kolom ophalen |
 > | Bewerking | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/write | Het gevoeligheids label van een bepaalde kolom maken of bijwerken |
-> | Bewerking | Microsoft.Sql/managedInstances/databases/schemas/tables/read | Een beheerde database tabel ophalen |
+> | Bewerking | Microsoft.Sql/managedInstances/databases/schemas/tables/read | Een beheerde database tabel ophalen (alleen schema) |
 > | Bewerking | Microsoft.Sql/managedInstances/databases/securityAlertPolicies/read | Een lijst met beleids regels voor detectie van het beleid voor beheerde data bases die zijn geconfigureerd voor een bepaalde server ophalen |
 > | Bewerking | Microsoft.Sql/managedInstances/databases/securityAlertPolicies/write | Het beleid voor het detecteren van de Data Base voor een bepaalde beheerde data base wijzigen |
 > | Bewerking | Microsoft.Sql/managedInstances/databases/securityEvents/read | Hiermee worden de beveiligings gebeurtenissen van de beheerde data base opgehaald |
@@ -5680,14 +5680,14 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 > | Bewerking | Microsoft.Sql/servers/databases/restorePoints/delete | Hiermee verwijdert u een herstel punt voor de data base. |
 > | Bewerking | Microsoft.Sql/servers/databases/restorePoints/read | Retourneert herstel punten voor de data base. |
 > | Bewerking | Microsoft.Sql/servers/databases/resume/action | Azure SQL Data Warehouse database hervatten |
-> | Bewerking | Micro soft. SQL/servers/data bases/schema's/lezen | Een database schema ophalen. |
-> | Bewerking | Micro soft. SQL/servers/data bases/schema's/tabellen/kolommen/lezen | Een database kolom ophalen. |
+> | Bewerking | Micro soft. SQL/servers/data bases/schema's/lezen | Een database schema ophalen (alleen schema). |
+> | Bewerking | Micro soft. SQL/servers/data bases/schema's/tabellen/kolommen/lezen | Een database kolom ophalen (alleen schema). |
 > | Bewerking | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/delete | Het gevoeligheids label van een bepaalde kolom verwijderen |
 > | Bewerking | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/disable/action | Gevoeligheids aanbevelingen voor een bepaalde kolom uitschakelen |
 > | Bewerking | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/enable/action | Gevoeligheids aanbevelingen voor een bepaalde kolom inschakelen |
 > | Bewerking | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/read | Het gevoeligheids label van een bepaalde kolom ophalen |
 > | Bewerking | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/write | Het gevoeligheids label van een bepaalde kolom maken of bijwerken |
-> | Bewerking | Micro soft. SQL/servers/data bases/schema's/tabellen/lezen | Een database tabel ophalen. |
+> | Bewerking | Micro soft. SQL/servers/data bases/schema's/tabellen/lezen | Een database tabel ophalen (alleen schema). |
 > | Bewerking | Microsoft.Sql/servers/databases/schemas/tables/recommendedIndexes/read | Lijst met index aanbevelingen voor een Data Base ophalen |
 > | Bewerking | Microsoft.Sql/servers/databases/schemas/tables/recommendedIndexes/write | Aanbeveling index Toep assen |
 > | Bewerking | Microsoft.Sql/servers/databases/securityAlertPolicies/read | Een lijst ophalen met beleids regels voor het detecteren van de database bedreigingen die zijn geconfigureerd voor een bepaalde server |

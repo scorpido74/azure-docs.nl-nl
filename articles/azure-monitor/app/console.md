@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/02/2019
 ms.reviewer: lmolkova
-ms.openlocfilehash: 9e198d3ea24383a532c5fbc3bfdcb1d1d7e49a92
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: c8c71fa3798b7c56550b742a8b19c83336bb6ddf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689042"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889138"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights voor .NET-console toepassingen
 
@@ -27,7 +27,7 @@ U hebt een abonnement met [Microsoft Azure](https://azure.com)nodig. Meld u aan 
 ## <a name="getting-started"></a>Aan de slag
 
 * Maak in de [Azure Portal](https://portal.azure.com) [een Application Insights-resource](../../azure-monitor/app/create-new-resource.md). Voor toepassings type kiest u **Algemeen**.
-* Kopieer de instrumentatiesleutel. Zoek de sleutel in de vervolg keuzelijst **Essentials** van de nieuwe resource die u hebt gemaakt. 
+* Kopieer de instrumentatiesleutel. Zoek de sleutel in de vervolg keuzelijst **Essentials** van de nieuwe resource die u hebt gemaakt.
 * Installeer het meest recente pakket [micro soft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) .
 * Stel de instrumentatie sleutel in uw code in voordat u een telemetrie bijhoudt (of stel APPINSIGHTS_INSTRUMENTATIONKEY omgevings variabele in). Daarna kunt u de telemetrie hand matig bijhouden en weer geven op de Azure Portal
 
@@ -39,6 +39,10 @@ var telemetryClient = new TelemetryClient(configuration);
 telemetryClient.TrackTrace("Hello World!");
 ```
 
+> [!NOTE]
+> Telemetrie wordt niet direct verzonden. Telemetriegegevens worden batches en verzonden door de ApplicationInsights-SDK. In console-apps, die direct na het aanroepen van `Track()`-methoden verlaten, mag telemetrie niet worden verzonden, tenzij `Flush()` en `Sleep` worden uitgevoerd voordat de app wordt afgesloten, [zoals verderop in](#full-example) dit artikel wordt weer gegeven.
+
+
 * Installeer de nieuwste versie van het pakket [micro soft. ApplicationInsights. DependencyCollector.](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) het traceert automatisch http, SQL of andere externe afhankelijkheids aanroepen.
 
 U kunt Application Insights initialiseren en configureren van de code of met `ApplicationInsights.config`-bestand. Zorg ervoor dat de initialisatie zo snel mogelijk gebeurt. 
@@ -47,6 +51,7 @@ U kunt Application Insights initialiseren en configureren van de code of met `Ap
 > Instructies die verwijzen naar **ApplicationInsights. config** zijn alleen van toepassing op apps die zijn gericht op de .NET Framework, en zijn niet van toepassing op .net core-toepassingen.
 
 ### <a name="using-config-file"></a>Configuratie bestand gebruiken
+
 Application Insights SDK zoekt standaard naar `ApplicationInsights.config` bestand in de werkmap wanneer `TelemetryConfiguration` wordt gemaakt
 
 ```csharp

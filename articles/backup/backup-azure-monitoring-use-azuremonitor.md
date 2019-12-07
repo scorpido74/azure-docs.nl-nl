@@ -4,12 +4,12 @@ description: Bewaak Azure Backup werk belastingen en maak aangepaste waarschuwin
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: bdb59e5ec461288c89e4c7d036488b5eaeb9472a
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 1fb739c8d517654c7258fd3a58c93ab29602f228
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554879"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894059"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Op schaal controleren met behulp van Azure Monitor
 
@@ -51,7 +51,8 @@ Nadat de gegevens zich in de Log Analytics-werk ruimte bevinden, [implementeert 
 
 ### <a name="view-azure-backup-data-by-using-log-analytics"></a>Azure Backup gegevens weer geven met behulp van Log Analytics
 
-Nadat de sjabloon is geïmplementeerd, wordt de oplossing voor bewaking en rapportage in Azure Backup weer gegeven in de samenvattings regio van de werk ruimte. Als u naar de samen vatting wilt gaan, volgt u een van deze paden:
+> [!IMPORTANT]
+> De LA-rapportage sjabloon ondersteunt momenteel gegevens uit de verouderde gebeurtenis AzureBackupReport in de modus AzureDiagnostics. Als u deze sjabloon wilt gebruiken, moet u [de diagnostische instellingen voor de kluis in de Azure Diagnostics modus configureren](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event). 
 
 - **Azure monitor**: Selecteer in de sectie **inzichten** **meer** en kies vervolgens de relevante werk ruimte.
 - **Log Analytics werk ruimten**: Selecteer de relevante werk ruimte en selecteer vervolgens **samen vatting van werk ruimte**onder **Algemeen**.
@@ -205,7 +206,7 @@ Het juiste logboek identificeren en een waarschuwing maken:
 1. Selecteer **nieuwe waarschuwings regel** om de pagina **regel maken** te openen.
 1. Maak een waarschuwing door de stappen te volgen in [waarschuwingen voor activiteiten logboek maken, weer geven en beheren met behulp van Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log).
 
-   ![Nieuwe waarschuwings regel](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
+   ![Nieuwe waarschuwingsregel](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
 Hier is de resource de Recovery Services kluis zelf. Herhaal dezelfde stappen voor alle kluizen waarin u wilt worden gewaarschuwd via activiteiten Logboeken. De voor waarde heeft geen drempel waarde, punt of frequentie omdat deze waarschuwing is gebaseerd op gebeurtenissen. Zodra het relevante activiteiten logboek wordt gegenereerd, wordt de waarschuwing geactiveerd.
 
@@ -213,7 +214,7 @@ Hier is de resource de Recovery Services kluis zelf. Herhaal dezelfde stappen vo
 
 U kunt alle waarschuwingen weer geven die zijn gemaakt op basis van activiteiten logboeken en Log Analytics werk ruimten in Azure Monitor. Open het deel venster **waarschuwingen** aan de linkerkant.
 
-Hoewel u meldingen kunt ontvangen via activiteiten logboeken, raden we u ten zeerste aan gebruik te maken van Log Analytics in plaats van activiteiten logboeken voor bewaking op schaal. Dit is de reden:
+Hoewel u meldingen kunt ontvangen via activiteiten logboeken, raden we u ten zeerste aan gebruik te maken van Log Analytics in plaats van activiteiten logboeken voor bewaking op schaal. Waarom is:
 
 - **Beperkte scenario's**: meldingen via activiteiten logboeken zijn alleen van toepassing op back-ups van Azure-vm's. De meldingen moeten worden ingesteld voor elke Recovery Services kluis.
 - **Passende definitie**: de geplande back-upactiviteit past niet op de nieuwste definitie van activiteiten Logboeken. In plaats daarvan wordt de [resource-logboeken](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace)uitgelijnd. Deze uitlijning veroorzaakt onverwachte effecten wanneer de gegevens die door het activiteiten logboek kanaal worden gewijzigd.

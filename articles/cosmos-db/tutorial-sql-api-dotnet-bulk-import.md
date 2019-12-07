@@ -1,20 +1,20 @@
 ---
-title: De door Voer optimaliseren bij het bulksgewijs importeren van gegevens naar Azure Cosmos DB SQL-API-account
-description: Meer informatie over het bouwen van een .NET-console toepassing die de ingerichte door Voer (RU/s) optimaliseert die is vereist om gegevens te importeren in Azure Cosmos DB.
+title: Gegevens bulksgewijs importeren naar Azure Cosmos DB SQL-API-account met behulp van de .NET SDK
+description: Meer informatie over het importeren of opnemen van gegevens naar Azure Cosmos DB door het bouwen van een .NET-console toepassing die de ingerichte door Voer (RU/s) optimaliseert die is vereist voor het importeren van gegevens
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d80d762338744c0ca783d1768bacb8443dbc5020
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606204"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896282"
 ---
-# <a name="optimize-throughput-when-bulk-importing-data-to-azure-cosmos-db-sql-api-account"></a>De door Voer optimaliseren bij het bulksgewijs importeren van gegevens naar Azure Cosmos DB SQL-API-account
+# <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Gegevens bulksgewijs importeren naar Azure Cosmos DB SQL-API-account met behulp van de .NET SDK
 
 Deze zelf studie laat zien hoe u een .NET-console toepassing bouwt die de ingerichte door Voer (RU/s) optimaliseert die is vereist om gegevens te importeren in Azure Cosmos DB. In dit artikel leest u gegevens uit een voorbeeld gegevens bron en importeert u deze in een Azure Cosmos-container.
 In deze zelf studie wordt [versie 3.0 +](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) van de Azure Cosmos db .NET SDK gebruikt, die kan worden gericht op .NET Framework of .net core.
@@ -81,7 +81,7 @@ Terwijl u nog steeds in de toepassingsmap, installeert u de Azure Cosmos DB-clie
 
 De voorbeeld toepassing moet worden geverifieerd bij uw Azure Cosmos-account. Als u zich wilt verifiëren, moet u de referenties van het Azure Cosmos-account door geven aan de toepassing. U kunt de referenties van uw Azure Cosmos-account ophalen door de volgende stappen uit te voeren:
 
-1.  Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1.  Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1.  Navigeer naar uw Azure Cosmos-account.
 1.  Open het deel venster **sleutels** en kopieer de **URI** en de **primaire sleutel** van uw account.
 

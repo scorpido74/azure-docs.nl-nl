@@ -1,6 +1,6 @@
 ---
 title: Taak voorinstelling voor Azure Media Indexer
-description: In dit onderwerp vindt u een overzicht van de taak voorinstelling voor Azure Media Indexer.
+description: In dit onderwerp vindt u een overzicht van de taak voorinstelling voor Azure Media Services Media Indexer.
 services: media-services
 documentationcenter: ''
 author: Asolanki
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 38baa4f69d96efd68839e7ee15ae5ee6088d2063
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 29753759af341f82429f12b6710ae9c32dcb4103
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464098"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896030"
 ---
 # <a name="task-preset-for-azure-media-indexer"></a>Taak voorinstelling voor Azure Media Indexer 
 
@@ -32,9 +32,9 @@ In de volgende tabel worden elementen en kenmerken van de XML-configuratie besch
 
 |Naam|Require|Beschrijving|
 |---|---|---|
-|Invoer|true|Activa bestand (en) die u wilt indexeren.<br/>Azure Media Indexer ondersteunt de volgende indelingen voor media bestanden: MP4, MOV, WMV, MP3, M4A, WMA, AAC, WAV. <br/><br/>U kunt de bestands namen opgeven in het kenmerk **name** of **List** van het **input** -element (zoals hieronder weer gegeven). Als u niet opgeeft welk item bestand moet worden geïndexeerd, wordt het primaire bestand gekozen. Als er geen primair activa bestand is ingesteld, wordt het eerste bestand in de invoer Asset geïndexeerd.<br/><br/>Ga als volgt te werk om de naam van het activa bestand expliciet op te geven:<br/>```<input name="TestFile.wmv" />```<br/><br/>U kunt ook meerdere Asset-bestanden tegelijk indexeren (Maxi maal 10 bestanden). Om dit te doen:<br/>-Maak een tekst bestand (manifest bestand) en geef het de extensie. lst.<br/>-Voeg een lijst met alle bestands namen van assets in uw invoer Asset toe aan dit manifest bestand.<br/>-Voeg het manifest bestand toe (upload het) aan de Asset.<br/>-Geef de naam op van het manifest bestand in het lijst kenmerk van de invoer.<br/>```<input list="input.lst">```<br/><br/>**Opmerking:** Als u meer dan 10 bestanden toevoegt aan het manifest bestand, mislukt de indexerings taak met de fout code 2006.|
-|metagegevens|false|Meta gegevens voor het opgegeven item bestand (en).<br/>```<metadata key="..." value="..." />```<br/><br/>U kunt waarden voor vooraf gedefinieerde sleutels opgeven. <br/><br/>Momenteel worden de volgende sleutels ondersteund:<br/><br/>**titel** en **Beschrijving** : wordt gebruikt om het taal model bij te werken om de nauw keurigheid van spraak herkenning te verbeteren.<br/>```<metadata key="title" value="[Title of the media file]" /><metadata key="description" value="[Description of the media file]" />```<br/><br/>**gebruikers naam** en **wacht woord** : wordt gebruikt voor verificatie bij het downloaden van Internet bestanden via http of https.<br/>```<metadata key="username" value="[UserName]" /><metadata key="password" value="[Password]" />```<br/>De waarden voor gebruikers naam en wacht woord zijn van toepassing op alle media-Url's in het invoer manifest.|
-|database<br/><br/>Toegevoegd in versie 1,2. Op dit moment is de enige ondersteunde functie spraak herkenning (ASR).|false|De functie voor spraak herkenning heeft de volgende instellingen sleutels:<br/><br/>Taal:<br/>-De natuurlijke taal die moet worden herkend in het multimedia bestand.<br/>-Engels, Spaans<br/><br/>CaptionFormats:<br/>-een door punt komma's gescheiden lijst met de gewenste indelingen van de uitvoer bijschriften (indien van toepassing)<br/>-ttml; webvtt<br/><br/><br/>GenerateKeywords:<br/>-Een Booleaanse vlag die aangeeft of een XML-bestand met een tref woord is vereist.<br/>- True; False.|
+|Invoer|waar|Activa bestand (en) die u wilt indexeren.<br/>Azure Media Indexer ondersteunt de volgende indelingen voor media bestanden: MP4, MOV, WMV, MP3, M4A, WMA, AAC, WAV. <br/><br/>U kunt de bestands namen opgeven in het kenmerk **name** of **List** van het **input** -element (zoals hieronder weer gegeven). Als u niet opgeeft welk item bestand moet worden geïndexeerd, wordt het primaire bestand gekozen. Als er geen primair activa bestand is ingesteld, wordt het eerste bestand in de invoer Asset geïndexeerd.<br/><br/>Ga als volgt te werk om de naam van het activa bestand expliciet op te geven:<br/>```<input name="TestFile.wmv" />```<br/><br/>U kunt ook meerdere Asset-bestanden tegelijk indexeren (Maxi maal 10 bestanden). Om dit te doen:<br/>-Maak een tekst bestand (manifest bestand) en geef het de extensie. lst.<br/>-Voeg een lijst met alle bestands namen van assets in uw invoer Asset toe aan dit manifest bestand.<br/>-Voeg het manifest bestand toe (upload het) aan de Asset.<br/>-Geef de naam op van het manifest bestand in het lijst kenmerk van de invoer.<br/>```<input list="input.lst">```<br/><br/>**Opmerking:** Als u meer dan 10 bestanden toevoegt aan het manifest bestand, mislukt de indexerings taak met de fout code 2006.|
+|metagegevens|onwaar|Meta gegevens voor het opgegeven item bestand (en).<br/>```<metadata key="..." value="..." />```<br/><br/>U kunt waarden voor vooraf gedefinieerde sleutels opgeven. <br/><br/>Momenteel worden de volgende sleutels ondersteund:<br/><br/>**titel** en **Beschrijving** : wordt gebruikt om het taal model bij te werken om de nauw keurigheid van spraak herkenning te verbeteren.<br/>```<metadata key="title" value="[Title of the media file]" /><metadata key="description" value="[Description of the media file]" />```<br/><br/>**gebruikers naam** en **wacht woord** : wordt gebruikt voor verificatie bij het downloaden van Internet bestanden via http of https.<br/>```<metadata key="username" value="[UserName]" /><metadata key="password" value="[Password]" />```<br/>De waarden voor gebruikers naam en wacht woord zijn van toepassing op alle media-Url's in het invoer manifest.|
+|database<br/><br/>Toegevoegd in versie 1,2. Op dit moment is de enige ondersteunde functie spraak herkenning (ASR).|onwaar|De functie voor spraak herkenning heeft de volgende instellingen sleutels:<br/><br/>Taal:<br/>-De natuurlijke taal die moet worden herkend in het multimedia bestand.<br/>-Engels, Spaans<br/><br/>CaptionFormats:<br/>-een door punt komma's gescheiden lijst met de gewenste indelingen van de uitvoer bijschriften (indien van toepassing)<br/>-ttml; webvtt<br/><br/><br/>GenerateKeywords:<br/>-Een Booleaanse vlag die aangeeft of een XML-bestand met een tref woord is vereist.<br/>- True; False.|
 
 ## <a name="azure-media-indexer-configuration-xml-example"></a>Azure Media Indexer configuratie-XML-voor beeld
 

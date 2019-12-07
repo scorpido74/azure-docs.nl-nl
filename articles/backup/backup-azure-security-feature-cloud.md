@@ -3,12 +3,12 @@ title: Beveiligings functies voor het beveiligen van Cloud werkbelastingen
 description: Meer informatie over het gebruik van beveiligings functies in Azure Backup om back-ups veiliger te maken.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: b6ce2f9400ad46150fbd4ee86f126b137b5f7800
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 0be85bf57510f575f238012b9bd1ef21e44e3cf1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278237"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894025"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Beveiligings functies voor het beveiligen van Cloud werkbelastingen die gebruikmaken van Azure Backup
 
@@ -24,7 +24,7 @@ Zorgen over beveiligingsproblemen, zoals malware, ransomware en inbraak nemen to
 
 Voorlopig verwijderen wordt momenteel ondersteund in de West-Centraal VS, Azië-oost, Canada-centraal, Canada-oost, Frankrijk-centraal, Frankrijk-zuid, Korea-centraal, Korea-zuid, UK-zuid, UK-west, Australië-oost, Australië-Zuid-Oost, Europa-noord, VS-West, West VS2, VS-midden, Zuid Azië-oost, Noord-Centraal VS, Zuid-Centraal VS, Japan-Oost, Japan-West, India-Zuid, India-midden, India-West, VS-Oost 2, Zwitserland-noord, Zwitserland-west en alle nationale regio's.
 
-### <a name="soft-delete-for-vms"></a>Voorlopig verwijderen voor Vm's
+### <a name="soft-delete-for-vms-using-azure-portal"></a>Voorlopig verwijderen voor Vm's met behulp van Azure Portal
 
 1. Voor het verwijderen van de back-upgegevens van een virtuele machine moet de back-up worden gestopt. Ga in het Azure Portal naar uw Recovery Services-kluis, klik met de rechter muisknop op het back-upitem en kies **back-up stoppen**.
 
@@ -66,9 +66,59 @@ In dit stroom diagram worden de verschillende stappen en statussen van een back-
 
 Zie het gedeelte Veelgestelde [vragen](backup-azure-security-feature-cloud.md#frequently-asked-questions) hieronder voor meer informatie.
 
+### <a name="soft-delete-for-vms-using-azure-powershell"></a>Voorlopig verwijderen voor Vm's met behulp van Azure Power shell
+
+> [!IMPORTANT]
+> De AZ. Recovery Services-versie die is vereist voor het gebruik van voorlopig verwijderen met Azure PS, is mini maal 2.2.0. Gebruik ```Install-Module -Name Az.RecoveryServices -Force``` om de nieuwste versie te verkrijgen.
+
+Zoals hierboven wordt beschreven voor Azure Portal, is de volg orde van de stappen hetzelfde wanneer u ook Azure Power shell gebruikt.
+
+#### <a name="delete-the-backup-item-using-azure-powershell"></a>Het back-upitem verwijderen met Azure Power shell
+
+Verwijder het back-upitem met de cmdlet [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS.
+
+```powershell
+Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
+```
+
+Het ' DeleteState ' van het back-upitem wordt gewijzigd van ' NotDeleted ' in ' ToBeDeleted '. De back-upgegevens worden 14 dagen bewaard. Als u de Verwijder bewerking wilt terugdraaien, moet u het ongedaan maken verwijderen.
+
+#### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>De Verwijder bewerking ongedaan maken met Azure Power shell
+
+U moet eerst het relevante back-upitem ophalen dat zich in de modus voor voorlopig verwijderen bevindt, dat wil zeggen dat het moet worden verwijderd
+
+```powershell
+
+Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID | Where-Object {$_.DeleteState -eq "ToBeDeleted"}
+
+Name                                     ContainerType        ContainerUniqueName                      WorkloadType         ProtectionStatus     HealthStatus         DeleteState
+----                                     -------------        -------------------                      ------------         ----------------     ------------         -----------
+VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;selfhostrg;AppVM1       AzureVM              Healthy              Passed               ToBeDeleted
+
+$myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
+```
+
+Vervolgens voert u de bewerking voor ongedaan maken uit met de PS [-cmdlet Undo-AzRecoveryServicesBackupItemDeletion](https://docs.microsoft.com/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion?view=azps-3.1.0) .
+
+```powershell
+Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
+```
+
+De ' DeleteState ' van het back-upitem wordt teruggezet op ' NotDeleted '. De beveiliging is echter nog steeds gestopt. U moet [de back-up hervatten](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items) om de beveiliging opnieuw in te scha kelen.
+
 ## <a name="disabling-soft-delete"></a>Tijdelijke verwijdering uitschakelen
 
 Voorlopig verwijderen is standaard ingeschakeld op nieuwe kluizen om back-upgegevens te beschermen tegen onbedoelde of schadelijke verwijderingen.  Het uitschakelen van deze functie wordt niet aanbevolen. De enige omstandigheid waarbij het uitschakelen van de functie voor het verwijderen van uw beveiligde items naar een nieuwe kluis moet worden aangeraden, is dat de 14 dagen die vereist zijn voor het verwijderen en opnieuw beveiligen van de gegevens (zoals in een test omgeving), niet kunnen worden gewacht. Alleen een back-upbeheerder kan deze functie uitschakelen. Als u deze functie uitschakelt, worden alle verwijderde beveiligde items onmiddellijk verwijderd, zonder dat u de mogelijkheid hebt om te herstellen. Back-upgegevens in de modus zacht verwijderd voordat deze functie wordt uitgeschakeld, blijft de status voorlopig verwijderd. Als u deze onmiddellijk permanent wilt verwijderen, moet u het verwijderen ongedaan maken en opnieuw verwijderen om het permanent te laten worden verwijderd.
+
+### <a name="disabling-soft-delete-using-azure-portal"></a>Zacht verwijderen uitschakelen met Azure Portal
 
 Voer de volgende stappen uit om de tijdelijke verwijdering uit te scha kelen:
 
@@ -76,17 +126,36 @@ Voer de volgende stappen uit om de tijdelijke verwijdering uit te scha kelen:
 2. Selecteer in het deel venster Eigenschappen de optie **beveiligings instellingen** -> **Update**.  
 3. Selecteer in het deel venster beveiligings instellingen onder **voorlopig verwijderen**de optie **uitschakelen**.
 
-
 ![Tijdelijke verwijdering uitschakelen](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
+
+### <a name="disabling-soft-delete-using-azure-powershell"></a>Zacht verwijderen uitschakelen met Azure Power shell
+
+> [!IMPORTANT]
+> De AZ. Recovery Services-versie die is vereist voor het gebruik van voorlopig verwijderen met Azure PS, is mini maal 2.2.0. Gebruik ```Install-Module -Name Az.RecoveryServices -Force``` om de nieuwste versie te verkrijgen.
+
+Als u wilt uitschakelen, gebruikt u de [set-AzRecoveryServicesVaultBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty?view=azps-3.1.0) PS-cmdlet.
+
+```powershell
+Set-AzRecoveryServicesVaultProperty -VaultId $myVaultID -SoftDeleteFeatureState Disable
+
+
+StorageModelType       :
+StorageType            :
+StorageTypeState       :
+EnhancedSecurityState  : Enabled
+SoftDeleteFeatureState : Disabled
+```
 
 ## <a name="permanently-deleting-soft-deleted-backup-items"></a>Voorlopig verwijderde back-upitems permanent verwijderen
 
-Back-upgegevens in de modus zacht verwijderd voordat deze functie wordt uitgeschakeld, blijft de status voorlopig verwijderd. Als u deze onmiddellijk permanent wilt verwijderen, moet u deze verwijderen en weer verwijderen om het permanent te verwijderen. 
+Back-upgegevens in de modus zacht verwijderd voordat deze functie wordt uitgeschakeld, blijft de status voorlopig verwijderd. Als u deze onmiddellijk permanent wilt verwijderen, moet u deze verwijderen en weer verwijderen om het permanent te verwijderen.
+
+### <a name="using-azure-portal"></a>Azure Portal gebruiken
 
 Volg deze stappen:
 
 1. Volg de stappen om [zacht verwijderen uit te scha kelen](#disabling-soft-delete). 
-2. Ga in het Azure Portal naar uw kluis, ga naar **Back-upitems** en kies de voorlopig verwijderde virtuele machine 
+2. Ga in het Azure Portal naar uw kluis, ga naar **Back-upitems** en kies de voorlopig verwijderde virtuele machine
 
 ![Zacht verwijderde virtuele machine kiezen](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
@@ -109,6 +178,42 @@ Volg deze stappen:
 
 7. Selecteer **verwijderen**als u de back-upgegevens voor het item wilt verwijderen. Een meldings bericht laat u weten dat de back-upgegevens zijn verwijderd.
 
+### <a name="using-azure-powershell"></a>Azure Power shell gebruiken
+
+Als er items zijn verwijderd voordat de Soft-verwijdering werd uitgeschakeld, wordt de status voorlopig verwijderd. Als u deze onmiddellijk wilt verwijderen, moet de verwijderings bewerking worden omgekeerd en opnieuw worden uitgevoerd.
+
+Identificeer de items met de status zacht verwijderd.
+
+```powershell
+
+Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID | Where-Object {$_.DeleteState -eq "ToBeDeleted"}
+
+Name                                     ContainerType        ContainerUniqueName                      WorkloadType         ProtectionStatus     HealthStatus         DeleteState
+----                                     -------------        -------------------                      ------------         ----------------     ------------         -----------
+VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;selfhostrg;AppVM1       AzureVM              Healthy              Passed               ToBeDeleted
+
+$myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
+```
+
+Vervolgens keert u de verwijderings bewerking terug die is uitgevoerd tijdens het inschakelen van de functie voor het verwijderen van de software.
+
+```powershell
+Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
+```
+
+Omdat de tijdelijke verwijdering nu is uitgeschakeld, wordt de back-upgegevens onmiddellijk verwijderd wanneer de bewerking wordt verwijderd.
+
+```powershell
+Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
+```
 
 ## <a name="other-security-features"></a>Andere beveiligings functies
 
@@ -168,7 +273,7 @@ Nee. U kunt het verwijderen van de voorlopig verwijderde items niet afdwingen. d
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>Kunnen er tijdelijke Verwijder bewerkingen worden uitgevoerd in Power shell of CLI?
 
-Nee, ondersteuning voor Power shell of CLI is momenteel niet beschikbaar.
+U kunt tijdelijke Verwijder bewerkingen uitvoeren met behulp van [Power shell](#soft-delete-for-vms-using-azure-powershell). CLI wordt momenteel niet ondersteund.
 
 #### <a name="is-soft-delete-supported-for-other-cloud-workloads-like-sql-server-in-azure-vms-and-sap-hana-in-azure-vms"></a>Wordt zacht verwijderen ondersteund voor andere werk belastingen in de Cloud, zoals SQL Server in azure-Vm's en SAP HANA in azure-Vm's?
 

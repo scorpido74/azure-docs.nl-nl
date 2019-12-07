@@ -7,12 +7,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: spelluru
-ms.openlocfilehash: d2b92759384a9a0b63d784a8cb1afb3d18d55aeb
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d0118f815a2ceb149c62363fa334c16d28c6d615
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219326"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894411"
 ---
 # <a name="security-controls-for-azure-service-bus-messaging"></a>Beveiligings controles voor Azure Service Bus berichten
 
@@ -37,19 +37,19 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 | Logboek registratie en controle op het vlak van controle en beheer| Ja | Bewerkings logboeken zijn beschikbaar.  | [Diagnostische logboeken Service Bus](service-bus-diagnostic-logs.md) |
 | Logboek registratie en controle van het gegevens vlak| Nee |  |
 
-## <a name="identity"></a>Identiteit
+## <a name="identity"></a>Identity
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen| Documentatie |
 |---|---|--|--|
-| Authentication| Ja | Beheerd via [Azure Active Directory Managed Service Identity](service-bus-managed-service-identity.md).| [Service Bus verificatie en autorisatie](service-bus-authentication-and-authorization.md). |
-| Authorization| Ja | Ondersteunt verificatie via [RBAC](authenticate-application.md) en SAS-token. | [Service Bus verificatie en autorisatie](service-bus-authentication-and-authorization.md). |
+| Verificatie| Ja | Beheerd via [Azure Active Directory Managed Service Identity](service-bus-managed-service-identity.md).| [Service Bus verificatie en autorisatie](service-bus-authentication-and-authorization.md). |
+| Autorisatie| Ja | Ondersteunt verificatie via [RBAC](authenticate-application.md) en SAS-token. | [Service Bus verificatie en autorisatie](service-bus-authentication-and-authorization.md). |
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Databeveiliging
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen | Documentatie |
 |---|---|--|--|
-| Versleuteling aan server zijde bij rest: Door micro soft beheerde sleutels |  Ja voor versleuteling aan de server zijde is standaard ingesteld op rest. | Door de klant beheerde sleutels en BYOK worden nog niet ondersteund. Versleuteling aan client zijde is de verantwoordelijkheid van de client |
-| Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Nee |   |   |
+| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels |  Ja voor versleuteling aan de server zijde is standaard ingesteld op rest. |  |  |
+| Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Ja. Momenteel als preview-versie | Een door de klant beheerde sleutel in azure-hoofd kluis kan worden gebruikt om de gegevens op de Service Bus naam ruimte op rest te versleutelen. | [Door de klant beheerde sleutels voor het versleutelen van Azure Service Bus gegevens op rest configureren met behulp van de Azure Portal (preview)](configure-customer-managed-key.md)  |
 | Versleuteling op kolom niveau (Azure Data Services)| N/A | |   |
 | Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja | Ondersteunt het standaard HTTPS/TLS-mechanisme. |   |
 | Versleutelde API-aanroepen| Ja | API-aanroepen worden gedaan via [Azure Resource Manager](../azure-resource-manager/index.yml) en HTTPS. |   |

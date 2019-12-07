@@ -1,22 +1,23 @@
 ---
-title: Herstel na nood gevallen en failover van het opslag account (preview)-Azure Storage
+title: Herstel na nood gevallen en failover van het opslag account (preview-versie)
+titleSuffix: Azure Storage
 description: Azure Storage ondersteunt de failover van een account (preview) voor geografisch redundante opslag accounts. Met account-failover kunt u het failover-proces voor uw opslag account initiëren als het primaire eind punt niet beschikbaar is.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d9daff390aa1678c25f4bf9c29b0293d96c43f48
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 7bbad4adce88b8b669c5c5739bfa45b079f321d0
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775925"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895353"
 ---
-# <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Herstel na nood gevallen en failover van het opslag account (preview) in Azure Storage
+# <a name="disaster-recovery-and-account-failover-preview"></a>Herstel na nood gevallen en failover van account (preview-versie)
 
 Micro soft streeft ernaar om ervoor te zorgen dat Azure-Services altijd beschikbaar zijn. Er kunnen echter niet-geplande service storingen optreden. Als uw toepassing tolerantie vereist, raadt micro soft aan geografisch redundante opslag te gebruiken, zodat uw gegevens in een tweede regio worden gerepliceerd. Daarnaast moeten klanten een nood herstel plan hebben voor het verwerken van een regionale service storing. Een belang rijk onderdeel van een plan voor herstel na nood gevallen is bezig met het voorbereiden van een failover naar het secundaire eind punt in het geval dat het primaire eind punt niet beschikbaar is. 
 
@@ -69,7 +70,7 @@ Micro soft raadt u ook aan uw toepassing te ontwerpen om de mogelijkheid van sch
 
 Met een door de klant beheerde account-failover (preview) kunt u uw hele opslag account laten mislukken tot de secundaire regio als de primaire om een of andere reden niet beschikbaar is. Wanneer u een failover naar de secundaire regio afdwingt, kunnen clients beginnen met het schrijven van gegevens naar het secundaire eind punt nadat de failover is voltooid. De failover duurt doorgaans ongeveer een uur.
 
-### <a name="how-an-account-failover-works"></a>Hoe een account-failover werkt
+### <a name="how-an-account-failover-works"></a>Hoe een accountfailover werkt
 
 Onder normale omstandigheden schrijft een client gegevens naar een Azure Storage account in de primaire regio en worden gegevens asynchroon gerepliceerd naar de secundaire regio. In de volgende afbeelding ziet u het scenario wanneer de primaire regio beschikbaar is:
 

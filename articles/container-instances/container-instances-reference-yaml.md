@@ -3,12 +3,12 @@ title: YAML-verwijzing voor container groep
 description: Verwijzing voor het YAML-bestand dat wordt ondersteund door Azure Container Instances voor het configureren van een container groep
 ms.topic: article
 ms.date: 08/12/2019
-ms.openlocfilehash: 5603f2e0f63c4f83a6d3761feb540abb8b8b7d5c
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8497330a327201c4c64e9f7ae57e6fc4225b52de
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533490"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896573"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>YAML-verwijzing: Azure Container Instances
 
@@ -38,7 +38,7 @@ properties: # Properties of container group
       image: string # Container image used to create the instance
       command:
       - string
-      ports: # Exposed ports on the instance
+      ports: # External-facing ports exposed on the instance, must also be set in group ipAddress property 
       - protocol: string
         port: integer
       environmentVariables:
@@ -129,7 +129,7 @@ properties: # Properties of container group
     options: string
 ```
 
-## <a name="property-values"></a>Eigenschaps waarden
+## <a name="property-values"></a>Waarden van eigenschappen
 
 De volgende tabellen bevatten een beschrijving van de waarden die u moet instellen in het schema.
 
@@ -140,7 +140,7 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 |  Naam | Type | Verplicht | Waarde |
 |  ---- | ---- | ---- | ---- |
 |  name | string | Ja | De naam van de container groep. |
-|  apiVersion | vaste | Ja | 2018-10-01 |
+|  apiVersion | enum | Ja | 10-01-2018 |
 |  location | string | Nee | De resource locatie. |
 |  tags | object | Nee | De resource Tags. |
 |  identiteit | object | Nee | De identiteit van de container groep, indien geconfigureerd. - [ContainerGroupIdentity-object](#ContainerGroupIdentity) |
@@ -153,7 +153,7 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 
 |  Naam | Type | Verplicht | Waarde |
 |  ---- | ---- | ---- | ---- |
-|  type | vaste | Nee | Het type identiteit dat voor de container groep wordt gebruikt. Het type ' SystemAssigned, UserAssigned ' bevat zowel een impliciet gemaakte identiteit als een set door de gebruiker toegewezen identiteiten. Met het type geen worden identiteiten uit de container groep verwijderd. -SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, geen |
+|  type | enum | Nee | Het type identiteit dat voor de container groep wordt gebruikt. Het type ' SystemAssigned, UserAssigned ' bevat zowel een impliciet gemaakte identiteit als een set door de gebruiker toegewezen identiteiten. Met het type geen worden identiteiten uit de container groep verwijderd. -SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, geen |
 |  userAssignedIdentities | object | Nee | De lijst met gebruikers-id's die zijn gekoppeld aan de container groep. De sleutel verwijzingen van de gebruikers-id-woorden lijst worden Azure Resource Manager bron-Id's in de vorm: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName} '. |
 
 
@@ -165,9 +165,9 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 |  ---- | ---- | ---- | ---- |
 |  containers | matrix | Ja | De containers in de container groep. - [container object](#Container) |
 |  imageRegistryCredentials | matrix | Nee | De register referenties voor de installatie kopie waarmee de container groep wordt gemaakt. - [ImageRegistryCredential-object](#ImageRegistryCredential) |
-|  restartPolicy | vaste | Nee | Start het beleid voor alle containers binnen de container groep opnieuw. - `Always` altijd opnieuw opstarten: `OnFailure` opnieuw opstarten na fout-`Never` nooit opnieuw opgestart. -Always, OnFailure, Never |
+|  restartPolicy | enum | Nee | Start het beleid voor alle containers binnen de container groep opnieuw. - `Always` altijd opnieuw opstarten: `OnFailure` opnieuw opstarten na fout-`Never` nooit opnieuw opgestart. -Always, OnFailure, Never |
 |  IPAdres | object | Nee | Het IP-adres type van de container groep. - [IpAddress-object](#IpAddress) |
-|  osType | vaste | Ja | Het type besturings systeem dat vereist is voor de containers in de container groep. -Windows of Linux |
+|  besturingssysteemtype | enum | Ja | Het type besturings systeem dat vereist is voor de containers in de container groep. -Windows of Linux |
 |  volumes | matrix | Nee | De lijst met volumes die kunnen worden gekoppeld door containers in deze container groep. - - [volume object](#Volume) |
 |  diagnostische gegevens | object | Nee | De diagnostische gegevens voor een container groep. - [ContainerGroupDiagnostics-object](#ContainerGroupDiagnostics) |
 |  networkProfile | object | Nee | De netwerk profiel gegevens voor een container groep. - [ContainerGroupNetworkProfile-object](#ContainerGroupNetworkProfile) |
@@ -202,8 +202,8 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 |  Naam | Type | Verplicht | Waarde |
 |  ---- | ---- | ---- | ---- |
 |  ports | matrix | Ja | De lijst met poorten die worden weer gegeven in de container groep. - [poort object](#Port) |
-|  type | vaste | Ja | Hiermee geeft u op of het IP-adres beschikbaar is voor het open bare Internet of het persoonlijke VNET. -Openbaar of privé |
-|  onderzoek | string | Nee | Het IP-adres dat toegankelijk is voor het open bare Internet. |
+|  type | enum | Ja | Hiermee geeft u op of het IP-adres beschikbaar is voor het open bare Internet of het persoonlijke VNET. -Openbaar of privé |
+|  IP | string | Nee | Het IP-adres dat toegankelijk is voor het open bare Internet. |
 |  dnsNameLabel | string | Nee | Het DNS-naam label voor het IP-adres. |
 
 
@@ -246,7 +246,7 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 |  ---- | ---- | ---- | ---- |
 |  Naam servers | matrix | Ja | De DNS-servers voor de container groep. -teken reeks |
 |  searchDomains | string | Nee | De DNS-Zoek domeinen voor het opzoeken van hostnamen in de container groep. |
-|  Opties | string | Nee | De DNS-opties voor de container groep. |
+|  opties | string | Nee | De DNS-opties voor de container groep. |
 
 
 <a id="ContainerProperties" />
@@ -271,8 +271,8 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 
 |  Naam | Type | Verplicht | Waarde |
 |  ---- | ---- | ---- | ---- |
-|  Protocolsubstatus | vaste | Nee | Het protocol dat is gekoppeld aan de poort. -TCP of UDP |
-|  poort | geheel getal | Ja | Het poort nummer. |
+|  protocol | enum | Nee | Het protocol dat is gekoppeld aan de poort. -TCP of UDP |
+|  poort | geheel getal | Ja | het poortnummer. |
 
 
 <a id="AzureFileVolume" />
@@ -293,9 +293,9 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 
 |  Naam | Type | Verplicht | Waarde |
 |  ---- | ---- | ---- | ---- |
-|  uitvoermap | string | Nee | Naam van de doel directory. Mag niet bevatten of beginnen met...  Als '. ' is opgegeven, wordt de map van het volume de Git-opslag plaats.  Als dat niet het geval is, bevat het volume de Git-opslag plaats in de submap met de opgegeven naam. |
-|  opslag plaats | string | Ja | URL van opslag plaats |
-|  feedback | string | Nee | Hash voor de opgegeven revisie door voeren. |
+|  map | string | Nee | Naam van de doel directory. Mag niet bevatten of beginnen met...  Als '. ' is opgegeven, wordt de map van het volume de Git-opslag plaats.  Als dat niet het geval is, bevat het volume de Git-opslag plaats in de submap met de opgegeven naam. |
+|  repository | string | Ja | URL van opslag plaats |
+|  revision | string | Nee | Hash voor de opgegeven revisie door voeren. |
 
 
 <a id="LogAnalytics" />
@@ -306,7 +306,7 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 |  ---- | ---- | ---- | ---- |
 |  workspaceId | string | Ja | De werk ruimte-id voor log Analytics |
 |  workspaceKey | string | Ja | De werkruimte sleutel voor log Analytics |
-|  logType | vaste | Nee | Het logboek type dat moet worden gebruikt. -ContainerInsights of ContainerInstanceLogs |
+|  logType | enum | Nee | Het logboek type dat moet worden gebruikt. -ContainerInsights of ContainerInstanceLogs |
 |  metagegevens | object | Nee | Meta gegevens voor log Analytics. |
 
 
@@ -316,7 +316,7 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 
 |  Naam | Type | Verplicht | Waarde |
 |  ---- | ---- | ---- | ---- |
-|  Protocolsubstatus | vaste | Nee | Het protocol dat is gekoppeld aan de poort. -TCP of UDP |
+|  protocol | enum | Nee | Het protocol dat is gekoppeld aan de poort. -TCP of UDP |
 |  poort | geheel getal | Ja | Het poort nummer dat wordt weer gegeven in de container groep. |
 
 
@@ -404,9 +404,9 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 
 |  Naam | Type | Verplicht | Waarde |
 |  ---- | ---- | ---- | ---- |
-|  programmapad | string | Nee | Het pad dat moet worden getest. |
+|  Pad | string | Nee | Het pad dat moet worden getest. |
 |  poort | geheel getal | Ja | Het poort nummer dat moet worden getest. |
-|  niveaus | vaste | Nee | Het schema. -http of https |
+|  niveaus | enum | Nee | Het schema. -http of https |
 
 
 <a id="GpuResource" />
@@ -416,7 +416,7 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 |  Naam | Type | Verplicht | Waarde |
 |  ---- | ---- | ---- | ---- |
 |  count | geheel getal | Ja | Het aantal GPU-resources. |
-|  sku | vaste | Ja | De SKU van de GPU-resource. -K80, P100, V100 |
+|  sku | enum | Ja | De SKU van de GPU-resource. -K80, P100, V100 |
 
 
 ## <a name="next-steps"></a>Volgende stappen

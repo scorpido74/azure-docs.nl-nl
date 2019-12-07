@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 09aaa998bf011561bd73ad87eda6a2e211ffaa72
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 61b94e95c5292b4013409deed6565a90890b66d1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158938"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892631"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>PowerShell gebruiken voor het inschakelen van Azure Diagnostics in een virtuele machine met Windows
 
@@ -40,7 +40,7 @@ Als u de uitbrei ding voor diagnostische gegevens wilt inschakelen op een bestaa
 
 *$diagnosticsconfig _path* het pad is naar het bestand dat de diagnostische configuratie in XML bevat, zoals wordt beschreven in het onderstaande voor [beeld](#sample-diagnostics-configuration) .  
 
-Als in het configuratie bestand voor diagnostische gegevens een **Storage account** -element met de naam van een opslag account is opgegeven, wordt door het script *set-AzVMDiagnosticsExtension* automatisch de diagnostische extensie ingesteld voor het verzenden van diagnostische gegevens naar die opslag account. Om dit te laten werken, moet het opslag account zich in hetzelfde abonnement benemen als de VM.
+Als in het configuratie bestand voor diagnostische gegevens een **Storage account** -element met de naam van een opslag account is opgegeven, wordt door het script *set-AzVMDiagnosticsExtension* automatisch de diagnostische extensie voor het verzenden van diagnostische gegevens naar dat opslag account ingesteld. Om dit te laten werken, moet het opslag account zich in hetzelfde abonnement benemen als de VM.
 
 Als er geen **Storage account** is opgegeven in de diagnostische configuratie, moet u de para meter *StorageAccountName* door geven aan de cmdlet. Als de para meter *StorageAccountName* is opgegeven, gebruikt de cmdlet altijd het opslag account dat is opgegeven in de para meter en niet de-naam die is opgegeven in het configuratie bestand voor diagnostische gegevens.
 
@@ -64,9 +64,9 @@ De cmdlet [Remove-AzVmDiagnosticsExtension](https://docs.microsoft.com/powershel
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>De diagnostische uitbrei ding inschakelen als u het klassieke implementatie model gebruikt
 U kunt de cmdlet [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) gebruiken om een uitbrei ding van diagnostische gegevens in te scha kelen op een virtuele machine die u maakt via het klassieke implementatie model. In het volgende voor beeld ziet u hoe u een nieuwe virtuele machine maakt op basis van het klassieke implementatie model waarin de diagnostische uitbrei ding is ingeschakeld.
 
-    $VM = New-AzVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
+    $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
     $VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
-    $VM = Set-AzVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
+    $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
     New-AzVM -Location $Location -ServiceName $Service_Name -VM $VM
 
 Als u de diagnostische uitbrei ding wilt inschakelen op een bestaande virtuele machine die is gemaakt via het klassieke implementatie model, gebruikt u eerst de cmdlet [Get-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurevm) om de VM-configuratie op te halen. Werk vervolgens de configuratie van de virtuele machine bij met de extensie voor diagnostische gegevens met behulp van de cmdlet [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) . Ten slotte past u de bijgewerkte configuratie toe op de virtuele machine met behulp van [Update-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/update-azurevm).
@@ -82,8 +82,8 @@ De configuratie moet worden bijgewerkt om het volgende te kunnen bevatten:
 
 * Het kenmerk *resourceID* van het element **Metrics** moet worden bijgewerkt met de resource-id voor de virtuele machine.
   
-  * De resource-ID kan worden samengesteld met behulp van het volgende patroon: "/Subscriptions/{ *-abonnements-id voor het abonnement met de VM*}/resourceGroups/{*de ResourceGroup-naam voor de VM*}/providers/Microsoft.Compute/virtualMachines/{ *De VM-naam*} ".
-  * Als de abonnements-ID voor het abonnement waarin de virtuele machine wordt uitgevoerd, **11111111-1111-1111-1111-111111111111**is, is de naam van de resource groep voor de resource groep **MyResourceGroup**en de naam van de virtuele machine **MyWindowsVM**. vervolgens wordt de de waarde voor *resourceID* zou zijn:
+  * De resource-ID kan worden samengesteld met behulp van het volgende patroon: "/Subscriptions/{ *-abonnements-id voor het abonnement met de VM*}/resourceGroups/{*de ResourceGroup-naam voor de VM*}/providers/Microsoft.Compute/virtualMachines/{*de VM-naam*}".
+  * Als de abonnements-ID voor het abonnement waarin de virtuele machine wordt uitgevoerd, **11111111-1111-1111-1111-111111111111**is, is de naam van de resource groep voor de resource groep **MyResourceGroup**en de naam van de virtuele machine **MyWindowsVM**. vervolgens wordt de waarde voor *resourceID* :
     
       ```xml
       <Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >

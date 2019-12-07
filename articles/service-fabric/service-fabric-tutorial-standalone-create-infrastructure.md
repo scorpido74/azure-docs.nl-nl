@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 048051a612793cbe82f82fbde482ed470ad3758c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 69508628356a5f33073311e4d062d66875509192
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 12/06/2019
 ms.locfileid: "73177824"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Zelfstudie: AWS-infrastructuur maken voor het hosten van een Service Fabric-cluster
@@ -82,7 +82,7 @@ Voor Service Fabric moeten verschillende poorten zijn geopend tussen de hosts in
 
 Om te voorkomen dat deze poorten voor iedereen worden geopend, opent u ze alleen voor hosts in dezelfde beveiligingsgroep. Noteer de id van de netwerkbeveiligingsgroep. In het voorbeeld is de id **sg-c4fb1eba**.  Selecteer vervolgens **Edit**.
 
-Voeg nu vier regels toe aan de beveiligingsgroep voor serviceafhankelijkheden en dan nog drie voor Service Fabric zelf. De eerste regel is om ICMP-verkeer toe te staan, voor essentiële connectiviteitscontroles. De andere regels openen de vereiste poorten om extern REGI ster in te scha kelen.
+Voeg nu vier regels toe aan de beveiligingsgroep voor serviceafhankelijkheden en dan nog drie voor Service Fabric zelf. De eerste regel is om ICMP-verkeer toe te staan, voor essentiële connectiviteitscontroles. Met de andere regels worden de vereiste poorten geopend om SMB en Remote Registry in te schakelen.
 
 Selecteer voor de eerste regel **Add Rule** en selecteer vervolgens in de vervolgkeuzelijst **All ICMP - IPv4**. Selecteer het invoervak naast Custom en voer de id van de beveiligingsgroep in die u eerder hebt genoteerd.
 
@@ -118,18 +118,30 @@ Als u wilt controleren of de basisconnectiviteit werkt, gebruikt u de ping-opdra
 ping 172.31.20.163
 ```
 
-Als de uitvoer er gedurende vier pogingen uitziet zoals `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128`, werkt de verbinding tussen de exemplaren.  
+Als de uitvoer er gedurende vier pogingen uitziet zoals `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128`, werkt de verbinding tussen de exemplaren.  Gebruik nu de volgende opdracht om te controleren of delen via SMB werkt:
+
+```
+net use * \\172.31.20.163\c$
+```
+
+De uitvoer moet gelijk zijn aan `Drive Z: is now connected to \\172.31.20.163\c$.`.
 
 ## <a name="prep-instances-for-service-fabric"></a>Exemplaren voorbereiden voor Service Fabric
 
-Als u alles helemaal zelf hebt gedaan, moet u nog een paar extra stappen uitvoeren.  Dat wil zeggen dat u moet controleren of het externe REGI ster actief is en de vereiste poorten opent.
+Als u alles helemaal zelf hebt gedaan, moet u nog een paar extra stappen uitvoeren.  U moet namelijk valideren of het externe register actief was, SMB inschakelen en de vereiste poorten openen voor SMB en het externe register.
 
 Om deze stappen te vereenvoudigen, hebt u al deze taken ingesloten toen u de exemplaren via een bootstrap hebt geladen met het script met gebruikersgegevens.
+
+Dit is de PowerShell-opdracht die u hebt gebruikt voor het inschakelen van SMB:
+
+```powershell
+netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
+```
 
 Dit is de PowerShell-opdracht voor het openen van de poorten in de firewall:
 
 ```powershell
-New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
+New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

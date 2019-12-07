@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ac9ad5877c6a1408d4045df4d4e1fd8f64ea94
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: ebe362be49995ce2cd1f4c43a5cfbee408396976
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275744"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900409"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>De status van het inrichten van gebruikers controleren
 
@@ -101,6 +101,8 @@ Samen vatting van factoren die van invloed zijn op de tijd die nodig is om een *
 - Frequentie limieten en beperking van aanvragen die worden geïmplementeerd door het doel systeem. Sommige doel systemen implementeren limieten en beperking van aanvragen, wat de prestaties kan beïnvloeden tijdens grote synchronisatie bewerkingen. Onder deze omstandigheden kan een app die te snel te veel aanvragen ontvangt, de reactie snelheid vertragen of de verbinding sluiten. Om de prestaties te verbeteren, moet de connector worden aangepast door de app-aanvragen sneller te verzenden dan deze door de app kunnen worden verwerkt. Voor het inrichten van connectors die door micro soft zijn gebouwd, doet u deze aanpassing. 
 
 - Het aantal en de grootte van toegewezen groepen. Het synchroniseren van toegewezen groepen duurt langer dan gebruikers synchroniseren. Zowel het aantal als de grootte van de toegewezen groepen zijn van invloed op de prestaties. Als een toepassing [toewijzingen voor groeps object synchronisatie heeft ingeschakeld](customize-application-attributes.md#editing-group-attribute-mappings), worden groeps eigenschappen zoals groeps namen en lidmaatschappen naast gebruikers gesynchroniseerd. Deze aanvullende synchronisaties nemen meer tijd in beslag dan alleen gebruikers objecten synchroniseren.
+
+- Als de prestaties een probleem vormen en u probeert het meren deel van de gebruikers en groepen in uw Tenant in te richten, gebruikt u bereik filters. Met behulp van bereik filters kunt u de gegevens die door de inrichtings service worden geëxtraheerd, afstemmen op de gebruikers op basis van specifieke kenmerk waarden. Zie voor meer informatie over het bereik van filters [kenmerk toepassing inrichten met bereik filters](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
 
 ## <a name="next-steps"></a>Volgende stappen
 [Automate user provisioning and deprovisioning to SaaS applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning) (Automatisch gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory)

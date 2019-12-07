@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 8863280407de5d02b53a203b2b6385477aa9f8ae
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8d9c5f63a00179903c0920912aba642311a354e7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899217"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889104"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault Analytics-oplossing in Azure Monitor
 
@@ -29,7 +29,7 @@ Als u de oplossing wilt gebruiken, moet u logboek registratie van Azure Key Vaul
 >
 >
 
-## <a name="install-and-configure-the-solution"></a>De oplossing installeren en configureren
+## <a name="install-and-configure-the-solution"></a>Installeren en configureren van de oplossing
 Gebruik de volgende instructies voor het installeren en configureren van de Azure Key Vault oplossing:
 
 1. Gebruik het proces beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md) om de Azure Key Vault oplossing toe te voegen aan uw log Analytics-werk ruimte.
@@ -51,7 +51,7 @@ Gebruik de volgende instructies voor het installeren en configureren van de Azur
 8. Klik op *Opslaan* om de logboek registratie van diagnostische gegevens in log Analytics werk ruimte in te scha kelen.
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>Diagnostische gegevens van Key Vault inschakelen met behulp van Power shell
-Het volgende Power shell-script biedt een voor beeld van het gebruik van `Set-AzDiagnosticSetting` om diagnostische logboek registratie in te scha kelen voor Key Vault:
+In het volgende Power shell-script vindt u een voor beeld van het gebruik van `Set-AzDiagnosticSetting` om bron logboek registratie voor Key Vault in te scha kelen:
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -114,8 +114,8 @@ De Azure Key Vault oplossing analyseert records die een type sleutel **kluizen**
 | `Resource` |De naam van de sleutel kluis |
 | `ResourceGroup` |Resource groep van de sleutel kluis |
 | `ResourceId` |Azure Resource Manager-resource-id. Voor Key Vault-Logboeken is dit de Key Vault Resource-ID. |
-| `ResourceProvider` |*Micro soft. KEYVAULT* |
-| `ResourceType` | *KLUIZEN* |
+| `ResourceProvider` |*MICROSOFT.KEYVAULT* |
+| `ResourceType` | *VAULTS* |
 | `ResultSignature` |HTTP-status (bijvoorbeeld *OK*) |
 | `ResultType` |Resultaat van REST API aanvraag (bijvoorbeeld *geslaagd*) |
 | `SubscriptionId` |Azure-abonnements-ID van het abonnement met de Key Vault |

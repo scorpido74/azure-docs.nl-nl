@@ -1,6 +1,6 @@
 ---
 title: Schema's van Azure Media Services Diagnostische logboeken-Azure
-description: In dit artikel worden de schema's voor Azure Media Services Diagnostische logboeken weer gegeven.
+description: In dit artikel worden de schema's van Azure Media Services Diagnostische logboeken gedemonstreerd.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: f95258368664aabeb89426afb83854378c0e4429
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 2f5fcf4d9106bf37bcc81388e48afe689f4ef4d6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261087"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896044"
 ---
 # <a name="diagnostic-logs-schemas"></a>Schema's van diagnostische logboeken
 
@@ -34,14 +34,14 @@ Zie [ondersteunde services, schema's en categorieën voor Diagnostische logboeke
 
 ## <a name="key-delivery-log-schema"></a>Schema voor sleutel leverings logboek
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Eigenschappen
 
 Deze eigenschappen zijn specifiek voor het schema van het sleutel leverings logboek.
 
-|Name|Description|
+|Naam|Beschrijving|
 |---|---|
 |keyId|De ID van de aangevraagde sleutel.|
-|keyType|Dit kan een van de volgende waarden zijn: "Wissen" (geen versleuteling), "FairPlay", "PlayReady" of "Widevine".|
+|keyType|Dit kan een van de volgende waarden zijn: ' Clear ' (geen versleuteling), ' FairPlay ', ' PlayReady ' of ' Widevine '.|
 |policyName|De Azure Resource Manager naam van het beleid.|
 |tokenType|Het token type.|
 |statusMessage|Het status bericht.|

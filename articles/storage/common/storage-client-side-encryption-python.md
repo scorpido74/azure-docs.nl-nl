@@ -1,23 +1,25 @@
 ---
-title: Versleuteling aan client zijde met python voor Microsoft Azure Storage | Microsoft Docs
+title: Versleuteling aan client zijde met python
+titleSuffix: Azure Storage
 description: De Azure Storage-client bibliotheek voor python ondersteunt versleuteling aan de client zijde voor maximale beveiliging van uw Azure Storage toepassingen.
 services: storage
 author: tamram
 ms.service: storage
 ms.devlang: python
-ms.topic: article
-ms.date: 05/11/2017
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: cd8ba51b960703fa25371d874ed2bb50e7df2fde
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 16e66cd762b86b27dc6703542ca7261b2300a33b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360053"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895374"
 ---
-# <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Versleuteling aan client zijde met python voor Microsoft Azure Storage
+# <a name="client-side-encryption-with-python"></a>Versleuteling aan client zijde met python
+
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Overzicht
@@ -67,7 +69,7 @@ Als u een wille keurig bereik downloadt (**Get** *-methoden met de bereik parame
 
 Blok-blobs en pagina-blobs kunnen alleen worden versleuteld/ontsleuteld met dit schema. Er is momenteel geen ondersteuning voor het versleutelen van toevoeg-blobs.
 
-### <a name="queues"></a>Wachtrijen
+### <a name="queues"></a>Queues
 Omdat wachtrij berichten een wille keurige indeling hebben, definieert de client bibliotheek een aangepaste indeling die de initialisatie vector (IV) en de versleutelde inhouds versleutelings sleutel (CEK) bevat in de bericht tekst.
 
 Tijdens het versleutelen genereert de client bibliotheek een wille keurige IV van 16 bytes samen met een wille keurige CEK van 32 bytes en wordt een envelop versleuteling van de bericht tekst van de wachtrij uitgevoerd met behulp van deze gegevens. De verpakte CEK en andere versleutelings-meta gegevens worden vervolgens toegevoegd aan het versleutelde bericht in de wachtrij. Dit gewijzigde bericht (hieronder weer gegeven) wordt opgeslagen op de service.
@@ -90,12 +92,12 @@ Tabel gegevens versleuteling werkt als volgt:
 
 1. Gebruikers geven de eigenschappen op die moeten worden versleuteld.
 2. De client bibliotheek genereert een wille keurige initialisatie vector (IV) van 16 bytes samen met een wille keurige inhouds versleutelings sleutel (CEK) van 32 bytes voor elke entiteit en voert een envelop versleuteling uit voor de afzonderlijke eigenschappen die moeten worden versleuteld door een nieuwe IV per eigenschap af te leiden. De versleutelde eigenschap wordt opgeslagen als binaire gegevens.
-3. De verpakte CEK en andere versleutelings meta gegevens worden vervolgens opgeslagen als twee extra gereserveerde eigenschappen. De eerste gereserveerde eigenschap\_(ClientEncryptionMetadata1) is een teken reeks eigenschap die de informatie over IV, versie en ingepakte sleutel bevat. De tweede gereserveerde eigenschap\_(ClientEncryptionMetadata2) is een binaire eigenschap die de informatie bevat over de versleutelde eigenschappen. De informatie in deze tweede eigenschap (\_ClientEncryptionMetadata2) is zelf versleuteld.
+3. De verpakte CEK en andere versleutelings meta gegevens worden vervolgens opgeslagen als twee extra gereserveerde eigenschappen. De eerste gereserveerde eigenschap (\_ClientEncryptionMetadata1) is een teken reeks eigenschap die de informatie over IV, versie en ingepakte sleutel bevat. De tweede gereserveerde eigenschap (\_ClientEncryptionMetadata2) is een binaire eigenschap die de informatie bevat over de versleutelde eigenschappen. De informatie in deze tweede eigenschap (\_ClientEncryptionMetadata2) is zelf versleuteld.
 4. Als gevolg van deze aanvullende gereserveerde eigenschappen die vereist zijn voor versleuteling, kunnen gebruikers nu slechts 250 aangepaste eigenschappen hebben in plaats van 252. De totale grootte van de entiteit moet kleiner zijn dan 1 MB.
 
    Houd er rekening mee dat alleen teken reeks eigenschappen kunnen worden versleuteld. Als andere typen eigenschappen moeten worden versleuteld, moeten ze worden geconverteerd naar teken reeksen. De versleutelde teken reeksen worden op de service opgeslagen als binaire eigenschappen, en ze worden teruggeconverteerd naar teken reeksen (onbewerkte teken reeksen, niet EntityProperties met het type EdmType. STRING) na ontsleuteling.
 
-   Gebruikers moeten de eigenschappen moeten worden versleuteld opgeven voor tabellen, naast het coderingsbeleid. U kunt dit doen door deze eigenschappen op te slaan in TableEntity-objecten met het type ingesteld op EdmType. STRING en encrypte ingesteld op True of door de encryption_resolver_function in te stellen op het tableservice-object. Een coderings conflict is een functie die een partitie sleutel, een rijdefinitie en een eigenschaps naam gebruikt en een Booleaanse waarde retourneert die aangeeft of die eigenschap moet worden versleuteld. Tijdens het versleutelen, wordt de clientbibliotheek van deze informatie gebruiken om te bepalen of een eigenschap moet worden versleuteld tijdens het schrijven naar de kabel. De gemachtigde biedt ook de mogelijkheid van logica over hoe eigenschappen zijn gecodeerd. (Bijvoorbeeld, als X, vervolgens versleutelen eigenschap A; anders eigenschappen A en B. te versleutelen) Houd er rekening mee dat deze informatie niet hoeft te worden verstrekt tijdens het lezen of doorzoeken van entiteiten.
+   Gebruikers moeten de eigenschappen moeten worden versleuteld opgeven voor tabellen, naast het coderingsbeleid. U kunt dit doen door deze eigenschappen op te slaan in TableEntity-objecten met het type ingesteld op EdmType. STRING en encrypte ingesteld op True of door de encryption_resolver_function in te stellen op het tableservice-object. Een coderings conflict is een functie die een partitie sleutel, een rijdefinitie en een eigenschaps naam gebruikt en een Booleaanse waarde retourneert die aangeeft of die eigenschap moet worden versleuteld. Tijdens het versleutelen, wordt de clientbibliotheek van deze informatie gebruiken om te bepalen of een eigenschap moet worden versleuteld tijdens het schrijven naar de kabel. De gemachtigde biedt ook de mogelijkheid van logica over hoe eigenschappen zijn gecodeerd. (Bijvoorbeeld als X, vervolgens versleutelings eigenschap A; anders eigenschappen A en B versleutelen.) Houd er rekening mee dat deze informatie niet hoeft te worden verstrekt tijdens het lezen of doorzoeken van entiteiten.
 
 ### <a name="batch-operations"></a>Batch bewerkingen
 Eén versleutelings beleid is van toepassing op alle rijen in de batch. In de client bibliotheek wordt intern een nieuwe wille keurige IV en wille keurige CEK per rij in de batch gegenereerd. Gebruikers kunnen er ook voor kiezen om verschillende eigenschappen te versleutelen voor elke bewerking in de batch door dit gedrag te definiëren in de versleutelings conflict Oplosser.
@@ -107,29 +109,29 @@ Houd er rekening mee dat entiteiten worden versleuteld wanneer ze worden ingevoe
 > Omdat de entiteiten zijn versleuteld, kunt u geen query's uitvoeren die filteren op een versleutelde eigenschap.  Als u probeert, zijn de resultaten onjuist, omdat de service probeert versleutelde gegevens te vergelijken met niet-versleutelde gegevens.
 > 
 > 
-> Als u query bewerkingen wilt uitvoeren, moet u een sleutel conflict Oplosser opgeven waarmee alle sleutels in de resultatenset kunnen worden omgezet. Als een entiteit in het query resultaat niet kan worden omgezet naar een provider, wordt een fout gegenereerd door de client bibliotheek. Voor elke query die aan server zijde-projecties uitvoert, voegt de client bibliotheek de speciale eigenschappen van de\_meta gegevens \_voor versleuteling (ClientEncryptionMetadata1 en ClientEncryptionMetadata2) standaard toe aan de geselecteerde kolommen.
+> Als u query bewerkingen wilt uitvoeren, moet u een sleutel conflict Oplosser opgeven waarmee alle sleutels in de resultatenset kunnen worden omgezet. Als een entiteit in het query resultaat niet kan worden omgezet naar een provider, wordt een fout gegenereerd door de client bibliotheek. Voor elke query die aan de server zijde-projecties uitvoert, voegt de client bibliotheek de speciale eigenschappen van de meta gegevens voor versleuteling (\_ClientEncryptionMetadata1 en \_ClientEncryptionMetadata2) standaard toe aan de geselecteerde kolommen.
 > 
 > [!IMPORTANT]
 > Houd rekening met de volgende belang rijke punten wanneer versleuteling aan de client zijde wordt gebruikt:
 > 
 > * Bij het lezen van of schrijven naar een versleutelde BLOB gebruikt u hele BLOB-upload opdrachten en bereik/hele BLOB-Download opdrachten. Vermijd het schrijven naar een versleutelde blob met behulp van protocol bewerkingen zoals put blok keren, blokkerings lijst plaatsen, schrijf pagina's of pagina's wissen; anders is het mogelijk dat u de versleutelde BLOB beschadigd en onleesbaar maakt.
 > * Voor tabellen bestaat een soort gelijke beperking. Zorg ervoor dat u geen versleutelde eigenschappen bijwerkt zonder de versleutelings meta gegevens bij te werken.
-> * Als u meta gegevens op de versleutelde BLOB instelt, kunt u de meta gegevens voor versleuteling overschrijven die vereist zijn voor ontsleuteling, omdat het instellen van meta gegevens geen additief is. Dit geldt ook voor moment opnamen. Vermijd het opgeven van meta gegevens tijdens het maken van een moment opname van een versleutelde blob. Als meta gegevens moeten worden ingesteld, moet u eerst de **get_blob_metadata** -methode aanroepen om de huidige versleutelings-meta gegevens op te halen en te voor komen dat er gelijktijdige schrijf bewerkingen worden uitgevoerd terwijl de meta gegevens worden ingesteld.
+> * Als u meta gegevens op de versleutelde BLOB instelt, kunt u de meta gegevens voor versleuteling overschrijven die vereist zijn voor ontsleuteling, omdat het instellen van meta gegevens geen additief is. Dit geldt ook voor moment opnamen. Vermijd het opgeven van meta gegevens tijdens het maken van een moment opname van een versleutelde blob. Als meta gegevens moeten worden ingesteld, moet u eerst de **get_blob_metadata** methode aanroepen om de huidige versleutelings-meta gegevens op te halen en voor komen dat er gelijktijdige schrijf bewerkingen worden uitgevoerd terwijl de meta gegevens worden ingesteld.
 > * Schakel de vlag **require_encryption** in op het Service object voor gebruikers die alleen moeten werken met versleutelde gegevens. Zie hieronder voor meer informatie.
 
 De opslag-client bibliotheek verwacht de door de KEK en de sleutel conflict Oplosser voor het implementeren van de volgende interface. [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) ondersteuning voor python Kek-beheer is in behandeling en wordt in deze bibliotheek geïntegreerd wanneer dit is voltooid.
 
 ## <a name="client-api--interface"></a>Client-API/-interface
-Nadat een Storage Service-object (blockblobservice) is gemaakt, kan de gebruiker waarden toewijzen aan de velden die een versleutelings beleid vormen: key_encryption_key, key_resolver_function en require_encryption. Gebruikers kunnen alleen een KEK, een resolver of beide opgeven. key_encryption_key is het basis type van de sleutel die wordt geïdentificeerd met behulp van een sleutel-id en die de logica biedt voor het in-of uitpakken. key_resolver_function wordt gebruikt om een sleutel tijdens het ontsleutelen op te lossen. Het retourneert een geldige KEK op basis van een sleutel-id. Dit biedt gebruikers de mogelijkheid om te kiezen tussen meerdere sleutels die worden beheerd op meerdere locaties.
+Nadat een Storage Service-object (blockblobservice) is gemaakt, kan de gebruiker waarden toewijzen aan de velden die een versleutelings beleid vormen: key_encryption_key, key_resolver_function en require_encryption. Gebruikers kunnen alleen een KEK, een resolver of beide opgeven. key_encryption_key is het basis sleutel type dat wordt geïdentificeerd met behulp van een sleutel-id en die de logica biedt voor het in-of uitpakken. key_resolver_function wordt gebruikt om een sleutel tijdens het ontsleutelen op te lossen. Het retourneert een geldige KEK op basis van een sleutel-id. Dit biedt gebruikers de mogelijkheid om te kiezen tussen meerdere sleutels die worden beheerd op meerdere locaties.
 
 De KEK moet de volgende methoden implementeren om gegevens te versleutelen:
 
-* wrap_key(cek): Verpakt de opgegeven CEK (bytes) met behulp van een algoritme van de keuze van de gebruiker. Retourneert de ingepakte sleutel.
-* get_key_wrap_algorithm(): Retourneert de algoritme die wordt gebruikt om sleutels te terugloop.
-* get_kid(): Retourneert de teken reeks sleutel-id voor deze KEK.
+* wrap_key (CEK): rondt de opgegeven CEK (bytes) aan met behulp van een algoritme van de keuze van de gebruiker. Retourneert de ingepakte sleutel.
+* get_key_wrap_algorithm (): retourneert de algoritme die wordt gebruikt om sleutels te terugloop.
+* get_kid (): retourneert de teken reeks sleutel-id voor deze KEK.
   De KEK moet de volgende methoden implementeren om gegevens te ontsleutelen:
-* unwrap_key (CEK, algoritme): Retourneert het niet-gepakte formulier van de opgegeven CEK met behulp van het algoritme dat door de teken reeks is opgegeven.
-* get_kid(): Retourneert een teken reeks sleutel-id voor deze KEK.
+* unwrap_key (CEK, algoritme): retourneert het niet-gepakte formulier van de opgegeven CEK met behulp van het algoritme dat door de teken reeks is opgegeven.
+* get_kid (): retourneert een teken reeks sleutel-id voor deze KEK.
 
 De Key resolver moet ten minste een methode implementeren die, op basis van een sleutel-id, de overeenkomende KEK retourneert die de bovenstaande interface implementeert. Alleen deze methode moet worden toegewezen aan de eigenschap key_resolver_function van het Service object.
 
@@ -195,7 +197,7 @@ retrieved_message_list = my_queue_service.get_messages(queue_name)
 ```
 
 ### <a name="table-service-encryption"></a>Versleuteling Table service
-Naast het maken van een versleutelings beleid en het instellen ervan op aanvraag opties, moet u een **encryption_resolver_function** op de **tableservice**opgeven of het kenmerk Encryption instellen op de EntityProperty.
+Naast het maken van een versleutelings beleid en het instellen ervan op aanvraag opties, moet u een **encryption_resolver_function** op de **tableservice**opgeven of het kenmerk Encryption op de EntityProperty instellen.
 
 ### <a name="using-the-resolver"></a>De resolver gebruiken
 

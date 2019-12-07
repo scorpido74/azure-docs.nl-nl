@@ -1,5 +1,5 @@
 ---
-title: Een Databricks-notebook uitvoeren met de Databricks-notebook activiteit
+title: Een Databricks-notebook uitvoeren met de activiteit
 description: Meer informatie over hoe u de Databricks Notebook-activiteit in een Azure Data Factory kunt gebruiken voor het uitvoeren van een Databricks-notebook in het Databricks-takencluster.
 services: data-factory
 ms.service: data-factory
@@ -11,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
-ms.openlocfilehash: 7ad7c8e70d8669612baf00f19d3695dc7fab07f5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6cd80492c6901cc80c2e3f3c22536580c471ea37
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217881"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893923"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>De Databricks Notebook-activiteit uitvoeren in Azure Data Factory op een Databricks-notebook
 
@@ -24,7 +24,7 @@ In deze zelfstudie gebruikt u Azure Portal om een Azure Data Factory-pijplijn te
 
 In deze zelfstudie voert u de volgende stappen uit:
 
-  - Een data factory maken.
+  - Een gegevensfactory maakt.
 
   - Een pijplijn maken die gebruikmaakt van Databricks Notebook-activiteit.
 
@@ -68,7 +68,7 @@ Bekijk de volgende video voor een inleiding en demonstratie van deze functie van
 
 1.  Selecteer **V2** als **Versie**.
 
-1.  Selecteer voor **Locatie** een locatie voor de data factory.
+1.  Selecteer voor **Locatie** de locatie voor de data factory.
 
     Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensarchieven (zoals Azure Storage en Azure SQL Database) en berekeningen (zoals Azure HDInsight) die Data Factory gebruikt, kunnen zich in andere regio's bevinden.
 1.  Selecteer **Maken**.
@@ -226,7 +226,7 @@ U kunt klikken op de **Taaknaam** om meer informatie weer te geven. Na een geluk
 
 De pijplijn in dit voorbeeld activeert een Databricks Notebook-activiteit en geeft daar een parameter aan door. U hebt geleerd hoe u:
 
-  - Een data factory maken.
+  - Een gegevensfactory maakt.
 
   - Een pijplijn maken die gebruikmaakt van de Databricks Notebook-activiteit.
 

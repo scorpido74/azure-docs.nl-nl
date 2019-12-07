@@ -1,6 +1,6 @@
 ---
 title: Cast Labs gebruiken om Widevine-licenties te leveren aan Azure Media Services | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u Azure Media Services (AMS) kunt gebruiken voor het leveren van een stroom die dynamisch wordt versleuteld door AMS met zowel PlayReady als Widevine DRMs. De PlayReady-licentie is afkomstig van Media Services PlayReady-licentie server en de Widevine-licentie wordt geleverd door de cast Labs-licentie server.
+description: In dit artikel wordt beschreven hoe u Azure Media Services (AMS) kunt gebruiken voor het leveren van een stroom die dynamisch wordt versleuteld door AMS met zowel PlayReady als Widevine DRMs.
 services: media-services
 documentationcenter: ''
 author: Mingfeiy
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
-ms.openlocfilehash: 9c61fad333037074f392b019ae61c161673e4008
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: c038480c9a49c96aaba7c7ff7299c8ebea31b81f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016692"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887778"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>castLabs gebruiken om Widevine-licenties te leveren aan Azure Media Services 
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ Cast Labs en AMS ondersteunen JWT (JSON Web Token)-token indeling die wordt gebr
 
 In de volgende tabel wordt JWT-token in AMS beschreven. 
 
-| Certificaatverlener | De uitgevende teken reeks van de gekozen Secure token service (STS) |
+| Verlener | De uitgevende teken reeks van de gekozen Secure token service (STS) |
 | --- | --- |
 | Doelgroep |Reeks publiek van de gebruikte STS |
 | Claims |Een set claims |
@@ -68,7 +68,7 @@ In de volgende tabel wordt JWT-token in AMS beschreven.
 
 In de volgende tabel wordt JWT-token in cast Labs beschreven. 
 
-| Name | Description |
+| Naam | Beschrijving |
 | --- | --- |
 | optData |Een JSON-teken reeks met informatie over u. |
 | CRT |Een JSON-teken reeks met informatie over de Asset, de licentie gegevens en de weergave rechten. |

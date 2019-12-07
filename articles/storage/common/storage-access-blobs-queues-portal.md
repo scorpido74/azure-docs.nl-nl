@@ -1,20 +1,21 @@
 ---
-title: De Azure Portal gebruiken om toegang te krijgen tot BLOB-of wachtrij gegevens-Azure Storage
+title: De Azure Portal gebruiken om toegang te krijgen tot BLOB-of wachtrij gegevens
+titleSuffix: Azure Storage
 description: Wanneer u toegang hebt tot BLOB-of wachtrij gegevens met behulp van het Azure Portal, maakt de portal aanvragen voor Azure Storage onder de voor vallen. Deze aanvragen voor Azure Storage kunnen worden geverifieerd en geautoriseerd met uw Azure AD-account of de toegangs sleutel voor het opslag account.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3d5d5bd6400fdf09216124665b6b236b4da2583b
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 89816e3640c0afad6290e77faa3904c691df4318
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673283"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892394"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>De Azure Portal gebruiken om toegang te krijgen tot BLOB-of wachtrij gegevens
 
@@ -48,11 +49,11 @@ De rol van **lezer** of een andere Azure Resource Manager roltoewijzing is nodig
 
 De ingebouwde rollen die toegang bieden tot uw BLOB-of wachtrij gegevens zijn onder andere:
 
-- [Eigenaar van gegevens](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)van de opslag-blob: Voor POSIX-toegangs beheer voor Azure Data Lake Storage Gen2.
-- [Inzender voor Storage BLOB-gegevens](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Machtigingen voor lezen/schrijven/verwijderen voor blobs.
-- [Gegevens lezer](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)van de opslag-blob: Alleen-lezen machtigingen voor blobs.
-- [Inzender voor opslag wachtrij gegevens](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor): Machtigingen voor lezen/schrijven/verwijderen voor wacht rijen.
-- [Gegevens lezer van de opslag wachtrij](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader): Alleen-lezen machtigingen voor wacht rijen.
+- [Eigenaar](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)van de opslag-BLOB-gegevens: voor POSIX-toegangs beheer voor Azure data Lake Storage Gen2.
+- [Inzender voor Storage BLOB-gegevens](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): machtigingen voor lezen/schrijven/verwijderen voor blobs.
+- [Gegevens lezer](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)van de opslag-blob: alleen-lezen machtigingen voor blobs.
+- [Inzender voor gegevens van de opslag wachtrij](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor): machtigingen voor lezen/schrijven/verwijderen voor wacht rijen.
+- [Gegevens lezer van de opslag wachtrij](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader): alleen-lezen machtigingen voor wacht rijen.
     
 Aangepaste rollen kunnen verschillende combi Naties van dezelfde machtigingen ondersteunen die worden geboden door de ingebouwde rollen. Zie voor meer informatie over het maken van aangepaste RBAC-rollen [aangepaste rollen voor Azure-resources](../../role-based-access-control/custom-roles.md) en [inzicht krijgen in roldefinities voor Azure-resources](../../role-based-access-control/role-definitions.md).
 

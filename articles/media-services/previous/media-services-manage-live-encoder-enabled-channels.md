@@ -1,6 +1,6 @@
 ---
 title: Live streamen met Azure Media Services om multi-bitrate streams te maken | Microsoft Docs
-description: 'In dit onderwerp wordt beschreven hoe u een kanaal instelt dat een single-bitrate Live Stream ontvangt van een on-premises encoder en vervolgens Live encoding uitvoert voor een adaptieve bitrate stroom met Media Services. De stroom kan vervolgens worden geleverd aan client Play-toepassingen via een of meer streaming-eind punten, met behulp van een van de volgende adaptieve streaming-protocollen: HLS, Smooth stream, MPEG DASH.'
+description: In dit onderwerp wordt beschreven hoe u een kanaal instelt dat een single-bitrate Live Stream ontvangt van een on-premises encoder en vervolgens Live encoding uitvoert voor een adaptieve bitrate stroom met Media Services.
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 4131e9b0ec057c16516f5a656debcf7053c2c1fe
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 32a4fde12287e06c12fac9ed13ad7a8889b49fc1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598305"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895917"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Live streamen met Azure Media Services om multi-bitrate streams te maken
 
@@ -71,7 +71,7 @@ In de volgende tabel wordt het verband tussen de verschillende Kanaalstatussen e
 | Kanaalstatus | Portal UI-indicatoren | Is het facturerings abonnement? |
 | --- | --- | --- |
 | Starting |Starting |Nee (overgangsstatus) |
-| In uitvoering |Ready (er worden geen programma's uitgevoerd)<br/>of<br/>Streaming (er wordt ten minste een programma uitgevoerd) |KLIKT |
+| In uitvoering |Ready (er worden geen programma's uitgevoerd)<br/>of<br/>Streaming (er wordt ten minste een programma uitgevoerd) |JA |
 | Stopping |Stopping |Nee (overgangsstatus) |
 | Stopped |Stopped |Nee |
 
@@ -170,7 +170,7 @@ U kunt de opname-Url's ophalen zodra u een kanaal hebt gemaakt. Om deze Url's op
 U kunt gefragmenteerde MP4-live streams (Smooth Streaming) opnemen via een SSL-verbinding. Zorg ervoor dat u de opname-URL naar HTTPS bijwerkt voor opname via SSL. AMS biedt momenteel geen ondersteuning voor SSL met aangepaste domeinen.  
 
 ### <a name="allowed-ip-addresses"></a>Toegestane IP-adressen
-U kunt de IP-adressen definiëren die video naar dit kanaal mogen publiceren. Toegestane IP-adressen kunnen worden opgegeven als een enkel IP-adres (bijvoorbeeld 10.0.0.1), een IP-bereik met een IP-adres en een CIDR-subnetmasker (bijvoorbeeld 10.0.0.1/22) of een IP-bereik met een IP-adres en een decimaal subnetmasker met punten (bijvoorbeeld , 10.0.0.1 (255.255.252.0)).
+U kunt de IP-adressen definiëren die video naar dit kanaal mogen publiceren. Toegestane IP-adressen kunnen worden opgegeven als een enkel IP-adres (bijvoorbeeld 10.0.0.1), een IP-bereik met een IP-adres en een CIDR-subnetmasker (bijvoorbeeld 10.0.0.1/22) of een IP-bereik met een IP-adres en een decimaal subnetmasker met punten (bijvoorbeeld ' 10.0.0.1 (255.255.252.0) ').
 
 Als geen IP-adressen zijn opgegeven en er geen regeldefinitie bestaat, zijn er geen IP-adressen toegestaan. Als u IP-adres(sen) wilt toestaan, maakt u een regel en stelt u 0.0.0.0/0 in.
 
@@ -188,7 +188,7 @@ Zodra het kanaal begint met het opnemen van gegevens, kunt u een voor beeld van 
 > 
 
 ### <a name="allowed-ip-addresses"></a>Toegestane IP-adressen
-U kunt de IP-adressen definiëren die verbinding mogen maken met het eind punt van de preview. Als er geen IP-adressen zijn opgegeven, is een IP-adres toegestaan. Toegestane IP-adressen kunnen worden opgegeven als een enkel IP-adres (bijvoorbeeld 10.0.0.1), een IP-bereik met een IP-adres en een CIDR-subnetmasker (bijvoorbeeld 10.0.0.1/22) of een IP-bereik met een IP-adres en een decimaal subnetmasker met punten (bijvoorbeeld , 10.0.0.1 (255.255.252.0)).
+U kunt de IP-adressen definiëren die verbinding mogen maken met het eind punt van de preview. Als er geen IP-adressen zijn opgegeven, is een IP-adres toegestaan. Toegestane IP-adressen kunnen worden opgegeven als een enkel IP-adres (bijvoorbeeld 10.0.0.1), een IP-bereik met een IP-adres en een CIDR-subnetmasker (bijvoorbeeld 10.0.0.1/22) of een IP-bereik met een IP-adres en een decimaal subnetmasker met punten (bijvoorbeeld ' 10.0.0.1 (255.255.252.0) ').
 
 ## <a name="live-encoding-settings"></a>Instellingen voor Live code ring
 In deze sectie wordt beschreven hoe de instellingen voor de Live Encoder binnen het kanaal kunnen worden aangepast wanneer het **coderings type** van een kanaal is ingesteld op **standaard**.
@@ -260,7 +260,7 @@ Het Live coderings programma kan worden geconfigureerd om over te scha kelen naa
 De duur van de pastel in seconden. Dit moet een positieve waarde zijn die niet gelijk is aan nul om de pastel te starten. Als er sprake is van een voortdurende pastel en er een duur van nul is opgegeven, wordt die voortdurende slag beëindigd.
 
 ### <a name="insert-slate-on-ad-marker"></a>Pastel invoegen in advertentie markering
-Als deze optie is ingesteld op True, wordt met deze instelling het Live coderings programma geconfigureerd voor het invoegen van een pastel afbeelding tijdens een AD-out. De standaard waarde is True. 
+Als deze optie is ingesteld op True, wordt met deze instelling het Live coderings programma geconfigureerd voor het invoegen van een pastel afbeelding tijdens een AD-out. De standaardwaarde is true. 
 
 ### <a id="default_slate"></a>Standaard activum-id
 
@@ -340,7 +340,7 @@ In de volgende tabel wordt het verband tussen de verschillende Kanaalstatussen e
 * Pastel afbeeldingen moeten voldoen aan de beperkingen die [hier](media-services-manage-live-encoder-enabled-channels.md#default_slate)worden beschreven. Als u probeert een kanaal te maken met een standaard kleur die groter is dan 1920, wordt de aanvraag uiteindelijk afgemeld.
 * Nog een keer.... Vergeet niet om uw kanalen te stoppen wanneer u klaar bent met streamen. Als u dat niet doet, wordt de facturering voortgezet.
 
-## <a name="need-help"></a>Hulp nodig?
+## <a name="need-help"></a>Hebt u hulp nodig?
 
 U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 

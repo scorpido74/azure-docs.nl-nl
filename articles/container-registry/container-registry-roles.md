@@ -2,17 +2,17 @@
 title: RBAC-rollen en-machtigingen
 description: Gebruik Azure op rollen gebaseerd toegangs beheer (RBAC) en identiteits-en toegangs beheer (IAM) om nauw keurige machtigingen te bieden aan bronnen in een Azure container Registry.
 ms.topic: article
-ms.date: 03/20/2019
-ms.openlocfilehash: 8ef4f26dfd59c7b3b177ef58fa23e08f7e66d328
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 12/02/2019
+ms.openlocfilehash: 3fb103ac4c4dac736b3c0fc99b2cf49f01e9e005
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456232"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893481"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Rollen en machtigingen Azure Container Registry
 
-De Azure Container Registry-service ondersteunt een set Azure-rollen die verschillende machtigings niveaus bieden voor een Azure container Registry. Gebruik Azure op [rollen gebaseerd toegangs beheer](../role-based-access-control/index.yml) (RBAC) om specifieke machtigingen toe te wijzen aan gebruikers of service-principals die moeten communiceren met een REGI ster.
+De Azure Container Registry-service ondersteunt een aantal [ingebouwde Azure-rollen](../role-based-access-control/built-in-roles.md) die verschillende machtigings niveaus bieden voor een Azure container Registry. Gebruik Azure op [rollen gebaseerd toegangs beheer](../role-based-access-control/index.yml) (RBAC) om specifieke machtigingen toe te wijzen aan gebruikers, service-principals of andere identiteiten die moeten communiceren met een REGI ster. 
 
 | Rol/machtiging       | [Toegang tot Resource Manager](#access-resource-manager) | [REGI ster maken/verwijderen](#create-and-delete-registry) | [Push-installatie kopie](#push-image) | [Pull-afbeelding](#pull-image) | [Afbeeldings gegevens verwijderen](#delete-image-data) | [Beleid wijzigen](#change-policies) |   [Installatie kopieën ondertekenen](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
@@ -68,8 +68,25 @@ De mogelijkheid om beleid te configureren in een REGI ster. Beleids regels zijn 
 
 De mogelijkheid om installatie kopieën te ondertekenen, die meestal worden toegewezen aan een geautomatiseerd proces, waarbij een service-principal wordt gebruikt. Deze machtiging wordt doorgaans gecombineerd met een [push installatie kopie](#push-image) , zodat een vertrouwde installatie kopie naar een REGI ster kan worden gepusht. Zie voor meer informatie [vertrouwen in inhoud in azure container Registry](container-registry-content-trust.md).
 
+## <a name="custom-roles"></a>Aangepaste rollen
+
+Net als bij andere Azure-resources kunt u uw eigen [aangepaste rollen](../role-based-access-control/custom-roles.md) maken met verfijnde machtigingen voor Azure container Registry. Wijs vervolgens de aangepaste rollen toe aan gebruikers, service-principals of andere identiteiten die moeten communiceren met een REGI ster. 
+
+Als u wilt bepalen welke machtigingen u wilt Toep assen op een aangepaste rol, raadpleegt u de lijst met micro soft. ContainerRegistry- [acties](../role-based-access-control/resource-provider-operations.md#microsoftcontainerregistry), controleert u de toegestane acties van de [ingebouwde ACR-rollen](../role-based-access-control/built-in-roles.md)of voert u de volgende opdracht uit:
+
+```azurecli
+az provider operation show --namespace Microsoft.ContainerRegistry
+```
+
+Zie [stappen voor het maken](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role)van een aangepaste rol voor het definiëren van een aangepaste rol.
+
+> [!IMPORTANT]
+> In een aangepaste rol ondersteunt Azure Container Registry momenteel geen joker tekens zoals `Microsoft.ContainerRegistry/*` of `Microsoft.ContainerRegistry/registries/*` die toegang verlenen aan alle overeenkomende acties. Geef elke vereiste actie afzonderlijk op in de rol.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over het toewijzen van RBAC-rollen aan een Azure-identiteit met behulp van de [Azure Portal](../role-based-access-control/role-assignments-portal.md), de [Azure cli](../role-based-access-control/role-assignments-cli.md)of andere Azure-hulpprogram ma's.
 
 * Meer informatie over [verificatie opties](container-registry-authentication.md) voor Azure container Registry.
+
+* Meer informatie over het inschakelen van [machtigingen voor opslagplaatsen](container-registry-repository-scoped-permissions.md) (preview) in een container register.

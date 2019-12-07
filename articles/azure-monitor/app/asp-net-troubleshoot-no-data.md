@@ -7,14 +7,15 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/23/2018
-ms.openlocfilehash: 857188ebb5ddc3c24f6a225819c47fc1643417e6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a1e299f195a148ebd1bdbda91e5a56e297f34d31
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887518"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889172"
 ---
-# <a name="troubleshooting-no-data---application-insights-for-net"></a>Problemen met ontbrekende gegevens oplossen - Application Insights voor .NET
+# <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Problemen met geen gegevens Application Insights voor .NET/.NET core oplossen
+
 ## <a name="some-of-my-telemetry-is-missing"></a>Er ontbreekt een deel van de telemetrie
 *In Application Insights ziet u alleen een fractie van de gebeurtenissen die door mijn app worden gegenereerd.*
 
@@ -58,7 +59,7 @@ Mogelijke oorzaken:
 * Er is een probleem met uw Azure-account.
 * U hebt alleen [Lees toegang tot het abonnement of de groep waar u de nieuwe resource probeerde te maken](../../azure-monitor/app/resources-roles-access-control.md).
 
-Holpen
+Oplossing:
 
 * Controleer of u aanmeldings referenties hebt ingesteld voor het juiste Azure-account.
 * Controleer of u toegang hebt tot de [Azure Portal](https://portal.azure.com)in uw browser. Open instellingen en controleer of er beperkingen gelden.
@@ -83,7 +84,7 @@ Mogelijke oorzaken:
 * De hulpprogram ma's voor de analyse van ontwikkel aars zijn uitgeschakeld in uw Visual Studio.
 * Uw Visual Studio is ouder dan 2013 update 3.
 
-Holpen
+Oplossing:
 
 * Zorg ervoor dat uw versie van Visual Studio 2013 update 3 of hoger is.
 * Selecteer **extra**, **uitbrei dingen en updates** en controleer of **Developer Analytics-hulpprogram ma's** zijn geïnstalleerd en ingeschakeld. Als dit het geval is, klikt u op **updates** om te zien of er een update beschikbaar is.
@@ -111,7 +112,7 @@ Mogelijke oorzaken:
 
 De instrumentatie sleutel in ApplicationInsights. config bepaalt waar de telemetrie wordt verzonden. Een regel in het project bestand bepaalt welke resource wordt geopend wanneer u de opdracht in Visual Studio gebruikt.
 
-Holpen
+Oplossing:
 
 * Klik in Solution Explorer met de rechter muisknop op het project en kies Application Insights, Application Insights configureren. In het dialoog venster kunt u ervoor kiezen om telemetrie te verzenden naar een bestaande resource of een nieuw item te maken. Of
 * Open de resource rechtstreeks. Meld u aan bij [de Azure Portal](https://portal.azure.com), klik op Application Insights in de linker navigatie balk en selecteer vervolgens uw app.
@@ -212,7 +213,7 @@ Volg deze instructies om logboeken voor het oplossen van problemen vast te legge
 
 1. Installeer het pakket [micro soft. AspNet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) van NuGet. De versie die u installeert, moet overeenkomen met de huidige geïnstalleerde versie van `Microsoft.ApplicationInsights`
 
-De nieuwste versie van micro soft. ApplicationInsights. AspNetCore is 2.7.1 en verwijst naar micro soft. ApplicationInsights versie 2,10. De versie van micro soft. AspNet. ApplicationInsights. HostingStartup die moet worden geïnstalleerd, moet daarom worden 2.10.0
+De nieuwste versie van micro soft. ApplicationInsights. AspNetCore is 2.8.2 en verwijst naar micro soft. ApplicationInsights versie 2.11.2. De versie van micro soft. AspNet. ApplicationInsights. HostingStartup die moet worden geïnstalleerd, moet daarom worden 2.11.2
 
 2. Wijzig `ConfigureServices` methode in uw `Startup.cs`-klasse.:
 
@@ -247,7 +248,7 @@ U kunt deze para meters naar behoefte wijzigen:
 - **NoGui**. Stel deze para meter in op het verzamelen van Logboeken zonder de GUI.
 
 
-Voor meer informatie
+Meer informatie
 - [Prestatie traceringen vastleggen met PerfView](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
 - [Application Insights gebeurtenis bronnen](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
 

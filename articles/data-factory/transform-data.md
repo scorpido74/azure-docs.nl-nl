@@ -1,8 +1,7 @@
 ---
-title: 'Gegevens transformeren met behulp van Azure Data Factory '
+title: Gegevens transformeren
 description: Meer informatie over het transformeren van gegevens of het verwerken van gegevens in Azure Data Factory met Hadoop, Machine Learning of Azure Data Lake Analytics.
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -10,15 +9,16 @@ ms.topic: conceptual
 ms.date: 07/31/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 40157228e3bb2ab7625d703a25dd1e820ca1bc07
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+manager: shwang
+ms.openlocfilehash: dbca107fc35a297c2a0b44b85a1cbb48865c3ab0
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703586"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893736"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Gegevens in Azure Data Factory transformeren
+
 > [!div class="op_single_selector"]
 > * [Gegevens stroom toewijzen](data-flow-create.md)
 > * [Hive](transform-data-using-hadoop-hive.md)  

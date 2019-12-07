@@ -1,6 +1,6 @@
 ---
 title: Wijziging van Azure Media Services-Smooth Streaming Protocol (MS-SSTR) voor HEVC | Microsoft Docs
-description: Deze specificatie beschrijft het protocol en de indeling voor gefragmenteerde op MP4 gebaseerde live streamen met HEVC in Azure Media Services. Dit is een wijziging van de Smooth Streaming Protocol documentatie (MS-SSTR) om ondersteuning te bieden voor HEVC-opname en-streaming. Alleen de wijzigingen die nodig zijn om HEVC te leveren, worden in dit artikel vermeld, met uitzonde ring van ' (geen wijziging) ' geeft aan dat tekst alleen ter verduidelijking wordt gekopieerd.
+description: Deze specificatie beschrijft het protocol en de indeling voor gefragmenteerde op MP4 gebaseerde live streamen met HEVC in Azure Media Services. Alleen de wijzigingen die nodig zijn om HEVC te leveren, worden in dit artikel vermeld, met uitzonde ring van ' (geen wijziging) ' geeft aan dat tekst alleen ter verduidelijking wordt gekopieerd.
 services: media-services
 documentationcenter: ''
 author: johndeu
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: e0637b2a015a610f9c3f92809f63a442980b63b1
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6dd7e0dc7e58f33f952aa5531773a84ebd31a163
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624807"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887863"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Wijziging van het Smooth Streaming Protocol (MS-SSTR) voor HEVC 
 
@@ -42,21 +42,21 @@ De volgende termen zijn specifiek voor dit document:
 
 >  **samenstellings tijd:** Het tijdstip waarop een steek proef wordt weer gegeven op de client, zoals gedefinieerd in [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695).
 > 
->   **CENC**: Common Encryption, zoals gedefinieerd in [ISO/IEC 23001-7] Tweede editie.
+>   **CENC**: common Encryption, zoals gedefinieerd in [ISO/IEC 23001-7] Tweede editie.
 > 
 >   **decoderings tijd:** Het tijdstip waarop een steek proef moet worden gedecodeerd op de client, zoals gedefinieerd in [[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695).
 
-**fragment** Een afzonderlijk Download bare **Media** -eenheid met een of meer voor **beelden**.
+**fragment:** Een afzonderlijk Download bare **Media** -eenheid met een of meer voor **beelden**.
 
 >   **HEVC:** Video codering met hoge efficiëntie, zoals gedefinieerd in [ISO/IEC 23008-2]
 > 
->   **merkt** Meta gegevens over de **presentatie** waarmee een client aanvragen voor **Media**kan uitvoeren. **tussenliggend** Gecomprimeerde audio-, video-en tekst gegevens die door de client worden gebruikt om een **presentatie**af te spelen. **Media-indeling:** Een goed gedefinieerde indeling voor het weer geven van audio of video als een gecomprimeerd voor **beeld**.
+>   **manifest:** Meta gegevens over de **presentatie** waarmee een client aanvragen voor **Media**kan uitvoeren. **Media:** Gecomprimeerde audio-, video-en tekst gegevens die door de client worden gebruikt om een **presentatie**af te spelen. **Media-indeling:** Een goed gedefinieerde indeling voor het weer geven van audio of video als een gecomprimeerd voor **beeld**.
 > 
->   **indeling** De set van alle **streams** en gerelateerde meta gegevens die nodig zijn om één film af te spelen. **schot** Een HTTP-bericht dat van de client naar de server wordt verzonden, zoals gedefinieerd in [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) - **antwoord:** Een HTTP-bericht dat van de server naar de client is verzonden, zoals gedefinieerd in [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372)
+>   **presentatie:** De set van alle **streams** en gerelateerde meta gegevens die nodig zijn om één film af te spelen. **aanvraag:** Een HTTP-bericht dat van de client naar de server wordt verzonden, zoals gedefinieerd in [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) **Response:** een HTTP-bericht dat van de server naar de client is verzonden, zoals gedefinieerd in [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372)
 > 
->   **voorbeeld** De kleinste basis eenheid (zoals een frame) waarin **Media** worden opgeslagen en verwerkt.
+>   voor **Beeld:** De kleinste basis eenheid (zoals een frame) waarin **Media** worden opgeslagen en verwerkt.
 > 
->   **MAG, MOET DIT NIET, MOET:** Deze voor waarden (in hoofd letters) worden gebruikt zoals beschreven in [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) alle instructies voor het gebruik van een optioneel gedrag, of dat kan.
+>   **mag,** moet dit niet, moet: Deze voor waarden (in hoofd letters) worden gebruikt zoals beschreven in [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) alle instructies voor het gebruik van een optioneel gedrag, of dat kan.
 
 ## <a name="12-references"></a>1,2 verwijzingen
 
@@ -64,31 +64,31 @@ De volgende termen zijn specifiek voor dit document:
 
 ### <a name="121-normative-references"></a>1.2.1 normatieve verwijzingen 
 
->  [MS-SSTR] Smooth Streaming Protocol *v20140502*[https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
+>  [MS-SSTR] Smooth Streaming Protocol *v20140502* [https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
 > 
->   [ISO/IEC 14496-12] International Organization for Standardization, ' informatie technologie--code ring van audio-visuele objecten--deel 12: ISO-basis medium bestands indeling ", ISO/IEC 14496-12:2014, Edition 4, plus corrigendum 1, wijzigingen 1 & 2.
+>   [ISO/IEC 14496-12] International Organization for Standardization, ' informatie technologie--code ring van audiovisuele objecten--deel 12: ISO-basis media bestands indeling ', ISO/IEC 14496-12:2014, Edition 4, plus corrigendum 1, wijzigingen 1 & 2.
 >   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>
 > 
->   [ISO/IEC 14496-15] International Organization for Standardization, ' informatie technologie--code ring van audio-visuele objecten--deel 15: Trans Port van NAL-gestructureerde video in de ISO-basis media bestands indeling ", ISO 14496-15:2015, editie 3.
+>   [ISO/IEC 14496-15] International Organization for Standardization, ' informatie technologie: code ring van audiovisuele objecten--deel 15: Trans Port van de NAL-video in de ISO-basis media bestands indeling ', ISO 14496-15:2015, editie 3.
 >   <https://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=65216>
 > 
->   [ISO/IEC 23008-2] Informatie technologie--hoge efficiëntie code ring en media levering in heterogene omgevingen--deel 2: Video codering met hoge efficiëntie: 2013 of nieuwste versie<https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
+>   [ISO/IEC 23008-2] Informatie technologie--hoge efficiëntie code ring en media levering in heterogene omgevingen--deel 2: video codering met hoge efficiëntie: 2013 of nieuwste versie <https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
 > 
->   [ISO/IEC 23001-7] Informatie technologie: MPEG Systems technologieën — deel 7: Veelvoorkomende versleuteling in ISO base Media File Format-bestanden, CENC Edition 2:2015<https://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
+>   [ISO/IEC 23001-7] Informatie technologie: MPEG Systems technologieën — deel 7: algemene versleuteling in ISO base Media File Format-bestanden, CENC Edition 2:2015 <https://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
 > 
->   [RFC-6381] IETF RFC-6381, ' codecs ' en ' Profiles ' para meters voor ' Bucket-media typen '<https://tools.ietf.org/html/rfc6381>
+>   [RFC-6381] IETF RFC-6381, de para meters ' codecs ' en ' Profiles ' voor ' Bucket ' media types <https://tools.ietf.org/html/rfc6381>
 > 
->   [MPEG4-RA] De MP4-registratie-instantie, ' MP4REG ',[http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
+>   [MPEG4-RA] De MP4-registratie-instantie, ' MP4REG ', [http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
 > 
->   [RFC2119] Bradner, S., "sleutel woorden voor gebruik in Rfc's voor het aanduiden van vereisten niveaus", BCP 14, RFC 2119, maart 1997,[https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
+>   [RFC2119] Bradner, S., "sleutel woorden voor gebruik in Rfc's om vereisten niveaus aan te geven", BCP 14, RFC 2119, maart 1997, [https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
 
 ### <a name="122-informative-references"></a>1.2.2 informatieve verwijzingen 
 
->   [MS-GLOS] Micro soft Corporation, '*verklarende woorden lijst voor Windows*-protocols '.
+>   [MS-GLOS] Micro soft Corporation, '*verklarende woorden lijst voor Windows-protocols*'.
 > 
->   [RFC3548] Josefsson, S., ed., "de Base16-, Base32-en base64-gegevens codering", RFC 3548, juli 2003,[https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
+>   [RFC3548] Josefsson, S., ed., "de Base16-, Base32-en base64-gegevens codering", RFC 3548, juli 2003, [https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
 > 
->   [RFC5234] Crocker, D., ed. en Overell, P., "uitgebreid BNF voor de syntaxis specificaties: ABNF ", STD 68, RFC 5234, januari 2008,[https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
+>   [RFC5234] Crocker, D., ed. en Overell, P., "uitgebreid BNF voor de syntaxis specificaties: ABNF", STD 68, RFC 5234, januari 2008, [https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
 
 
 ## <a name="13-overview"></a>overzicht van 1,3 
@@ -147,9 +147,9 @@ Het ProtectionElement moet aanwezig zijn als Common Encryption (CENC) is toegepa
 
 >   **FourCC (variabele):** Een code van vier tekens die aangeeft welke media-indeling voor elk voor beeld wordt gebruikt. Het volgende waarden bereik is gereserveerd met de volgende semantische betekenissen:
 > 
-> * "hev1": Video-voor beelden voor dit nummer maken gebruik van HEVC-video, met behulp van de voorbeeld indeling ' hev1 ' die is opgegeven in [ISO/IEC-14496-15].
+> * "hev1": video-voor beelden voor dit traject maken gebruik van HEVC-video, met behulp van de voorbeeld indeling ' hev1 ' die is opgegeven in [ISO/IEC-14496-15].
 >
-> * "hvc1": Video-voor beelden voor dit nummer maken gebruik van HEVC-video, met behulp van de voorbeeld indeling ' hvc1 ' die is opgegeven in [ISO/IEC-14496-15].
+> * "hvc1": video-voor beelden voor dit traject maken gebruik van HEVC-video, met behulp van de voorbeeld indeling ' hvc1 ' die is opgegeven in [ISO/IEC-14496-15].
 > 
 >   **CodecPrivateData (variabele):** Gegevens die para meters opgeven die specifiek zijn voor de media-indeling en die gemeen schappelijk zijn voor alle voor beelden in de track, weer gegeven als een teken reeks met hexadecimale code bytes. De indeling en semantische betekenis van de byte reeks varieert als volgt met de waarde van het veld **FourCC** :
 > 
@@ -163,7 +163,7 @@ Het ProtectionElement moet aanwezig zijn als Common Encryption (CENC) is toegepa
 > 
 >   * PPSField bevat de para meter set van het segment (PPS).
 > 
->   Opmerking: De VPS (video para meter set) bevindt zich niet in CodecPrivateData, maar moet in de bestands header van opgeslagen bestanden in het vak ' hvcC ' staan. Systemen die gebruikmaken van Smooth Streaming Protocol moeten aanvullende para meters voor het decoderen (bijvoorbeeld HEVC-laag) Signa leren met het aangepaste kenmerk ' codecs '.
+>   Opmerking: de para meter voor de video parameters (VPS) bevindt zich niet in CodecPrivateData, maar moet in de bestands header van opgeslagen bestanden in het vak ' hvcC ' staan. Systemen die gebruikmaken van Smooth Streaming Protocol moeten aanvullende para meters voor het decoderen (bijvoorbeeld HEVC-laag) Signa leren met het aangepaste kenmerk ' codecs '.
 
 ##### <a name="22251-customattributeselement"></a>2.2.2.5.1 CustomAttributesElement 
 
@@ -175,7 +175,7 @@ Het ProtectionElement moet aanwezig zijn als Common Encryption (CENC) is toegepa
 
 ### <a name="223-fragment-request"></a>2.2.3 fragment aanvraag 
 
->   **Opmerking**: De standaard media-indeling die is aangevraagd voor **MinorVersion** 2 en ' hev1 ' of ' hvc1 ' is ' iso8 ' brand ISO base-basis media bestands indeling die is opgegeven in [ISO/IEC 14496-12] ISO base Media File Format vierde editie en [ISO/IEC 23001-7] common Encryption tweede editie.
+>   **Opmerking**: de standaard media-indeling die is aangevraagd voor **MinorVersion** 2 en ' hev1 ' of ' hvc1 ' is ' Iso8 ' brand ISO base-basis media bestands indeling die is opgegeven in [ISO/IEC 14496-12] ISO base Media File Format vierde editie en [ISO/IEC 23001-7] common Encryption tweede editie.
 
 ### <a name="224-fragment-response"></a>2.2.4 fragment antwoord 
 
@@ -189,15 +189,15 @@ Het ProtectionElement moet aanwezig zijn als Common Encryption (CENC) is toegepa
 
 >   De **TfxdBox** is afgeschaft en de functie wordt vervangen door het vak gedecodeerd fragment (' tfdt ') dat is opgegeven in de sectie [ISO/IEC 14496-12] 8.8.12.
 > 
->   **Opmerking**: Een-client kan de duur van een fragment berekenen door de tijds duur van de steek proef die wordt vermeld in het vak uitvoering bijhouden (' Trun ') te totaliseren of het aantal steek proeven te vermenigvuldigen met de standaard duur van de steek proef. De baseMediaDecodeTime in ' tfdt ' plus fragment duur is gelijk aan de URL-tijd parameter voor het volgende fragment.
+>   **Opmerking**: een client kan de duur van een fragment berekenen door de tijds duur van de steek proef die wordt vermeld in het vak uitvoering bijhouden (' Trun ') te totaliseren of door het aantal steek proeven te vermenigvuldigen met de standaard duur van de steek proef. De baseMediaDecodeTime in ' tfdt ' plus fragment duur is gelijk aan de URL-tijd parameter voor het volgende fragment.
 > 
->   Een referentie tijd voor een producent (' prft ') moet worden ingevoegd vóór een film fragment (' moof '), indien nodig, om de UTC-tijd aan te geven die overeenkomt met de decoderings tijd van het tracerings fragment van de eerste steek proef waarnaar wordt verwezen door het vak film fragment, zoals opgegeven in [ISO/IEC 14496 -12] sectie 8.16.5.
+>   Een referentie tijd voor een producent (' prft ') moet worden ingevoegd vóór een film fragment (' moof '), indien nodig, om de UTC-tijd aan te geven die overeenkomt met de decodeer tijd van het tracerings fragment van de eerste steek proef waarnaar wordt verwezen door het vak film fragment, zoals opgegeven in de sectie [ISO/IEC 14496-12] 8.16.5.
 
 #### <a name="2245-tfrfbox"></a>2.2.4.5 TfrfBox 
 
 >   De **TfrfBox** is afgeschaft en de functie wordt vervangen door het vak gedecodeerd fragment (' tfdt ') dat is opgegeven in de sectie [ISO/IEC 14496-12] 8.8.12.
 > 
->   **Opmerking**: Een-client kan de duur van een fragment berekenen door de tijds duur van de steek proef die wordt vermeld in het vak uitvoering bijhouden (' Trun ') te totaliseren of het aantal steek proeven te vermenigvuldigen met de standaard duur van de steek proef. De baseMediaDecodeTime in ' tfdt ' plus fragment duur is gelijk aan de URL-tijd parameter voor het volgende fragment. Doorgifte adressen zijn afgeschaft omdat ze live streamen vertragen.
+>   **Opmerking**: een client kan de duur van een fragment berekenen door de tijds duur van de steek proef die wordt vermeld in het vak uitvoering bijhouden (' Trun ') te totaliseren of door het aantal steek proeven te vermenigvuldigen met de standaard duur van de steek proef. De baseMediaDecodeTime in ' tfdt ' plus fragment duur is gelijk aan de URL-tijd parameter voor het volgende fragment. Doorgifte adressen zijn afgeschaft omdat ze live streamen vertragen.
 
 #### <a name="2246-tfhdbox"></a>2.2.4.6 TfhdBox 
 
@@ -213,7 +213,7 @@ Het ProtectionElement moet aanwezig zijn als Common Encryption (CENC) is toegepa
 > 
 >   zoals gedefinieerd in [[ISO/IEC-14496-12].](https://go.microsoft.com/fwlink/?LinkId=183695)
 > 
->   Opmerking: Dit voor komt dat een video synchronisatie fout wordt veroorzaakt door video die geluid vertoont die gelijk is aan de grootste gedecodeerde vertraging bij het verwijderen van de afbeeldings buffer en de timing van de presentatie tussen alternatieve fragmenten die verschillende verwijderings vertragingen kunnen hebben.
+>   Opmerking: hiermee voor komt u dat er een video synchronisatie fout wordt veroorzaakt door video die geluid vertoont die gelijk is aan de grootste gedecodeerde vertraging bij het verwijderen van de afbeeldings buffer en wordt er een presentatie tijd in rekening gebracht tussen alternatieve fragmenten die verschillende verwijderings vertragingen kunnen hebben.
 > 
 >   De syntaxis van de velden die in deze sectie zijn gedefinieerd, opgegeven in ABNF [[RFC5234],](https://go.microsoft.com/fwlink/?LinkId=123096) blijft hetzelfde, met uitzonde ring van de volgende opties:
 > 
@@ -247,7 +247,7 @@ Het ProtectionElement moet aanwezig zijn als Common Encryption (CENC) is toegepa
     MinorVersion = STRING_UINT32
     CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
 
-**Opmerking**: De compatibiliteits Brands ' ccff ' en ' iso8 ' geven aan dat fragmenten overeenkomen met ' common container File Format ' en Common Encryption [ISO/IEC 23001-7] en ISO base Media File Format Edition 4 [ISO/IEC 14496-12].
+**Opmerking**: de compatibiliteits Brands ' ccff ' en ' iso8 ' geven aan dat fragmenten overeenkomen met ' common container File Format ' en common Encryption [ISO/IEC 23001-7] en ISO base Media File Format Edition 4 [ISO/IEC 14496-12].
 
 #### <a name="2272-streammanifestbox"></a>2.2.7.2 StreamManifestBox 
 
@@ -276,7 +276,7 @@ Het ProtectionElement moet aanwezig zijn als Common Encryption (CENC) is toegepa
 
 >   Het gegevens element van de presentatie beschrijving omvat alle meta gegevens voor de presentatie.
 > 
->   Meta gegevens van presentatie: Een set meta gegevens die gemeen schappelijk zijn voor alle streams in de presentatie. Meta gegevens van de presentatie omvatten de volgende velden, zoals beschreven in sectie *2.2.2.1*:
+>   Meta gegevens van Presentation: een set meta gegevens die gemeen schappelijk is voor alle streams in de presentatie. Meta gegevens van de presentatie omvatten de volgende velden, zoals beschreven in sectie *2.2.2.1*:
 > 
 > * **MajorVersion**
 > * **MinorVersion**
@@ -291,21 +291,21 @@ Het ProtectionElement moet aanwezig zijn als Common Encryption (CENC) is toegepa
     MajorVersion = 2
     MinorVersion = 2
 
->   LookaheadCount = 0 (Opmerking: Vakken afgeschaft)
+>   LookaheadCount = 0 (Opmerking: vakken afgeschaft)
 > 
 >   Presentaties moeten ook worden ingesteld:
 
     TimeScale = 90000
 
->   Stream-verzameling: Een verzameling gegevens elementen van stream description, zoals beschreven in sectie *3.1.1.1.2*.
+>   Stream-verzameling: een verzameling gegevens elementen van stream description, zoals beschreven in sectie *3.1.1.1.2*.
 > 
->   Beschrijving van beveiliging: Een verzameling gegevens elementen van meta gegevens van een beveiligings systeem, zoals beschreven in sectie *3.1.1.1.1*.
+>   Beschrijving van beveiliging: een verzameling gegevens elementen van meta gegevens van een beveiligings systeem, zoals beschreven in sectie *3.1.1.1.1*.
 
 ##### <a name="31111-protection-system-metadata-description"></a>3.1.1.1.1 Protection System Metadata Description 
 
 >   Het gegevens element van de meta gegevens beschrijving van het beveiligings systeem encapsulateert meta gegevens die specifiek zijn voor een enkel Content Protection systeem. (Geen wijziging)
 > 
->   Beschrijving van de beveiligings header: Meta gegevens van inhouds beveiliging die betrekking hebben op een enkel Content Protection systeem. De beschrijving van de beveiligings header bestaat uit de volgende velden, zoals beschreven in sectie *2.2.2.2*:
+>   Beschrijving van de beveiligings header: meta gegevens van inhouds beveiliging die betrekking hebben op een enkel Content Protection systeem. De beschrijving van de beveiligings header bestaat uit de volgende velden, zoals beschreven in sectie *2.2.2.2*:
 > 
 >   * **SystemID**
 >   * **ProtectionHeaderContent**
@@ -352,9 +352,9 @@ Het ProtectionElement moet aanwezig zijn als Common Encryption (CENC) is toegepa
 
 ## <a name="51-security-considerations-for-implementers"></a>5,1 beveiligings overwegingen voor implementaties
 
->   Als de inhoud die wordt getransporteerd met dit protocol een hoge commerciële waarde heeft, moet een Content Protection systeem worden gebruikt om ongeoorloofd gebruik van de inhoud te voor komen. De **ProtectionElement** kan worden gebruikt voor het gebruiken van meta gegevens met betrekking tot het gebruik van een Content Protection-systeem. Beveiligde audio-en video-inhoud moeten worden versleuteld zoals aangegeven door MPEG Common Encryption tweede editie: 2015 [ISO/IEC 23001-7].
+>   Als de inhoud die wordt getransporteerd met dit protocol een hoge commerciële waarde heeft, moet een Content Protection systeem worden gebruikt om ongeoorloofd gebruik van de inhoud te voor komen. De **ProtectionElement** kan worden gebruikt voor het gebruiken van meta gegevens met betrekking tot het gebruik van een Content Protection-systeem. Beveiligde audio-en video-inhoud moeten worden versleuteld zoals is opgegeven door MPEG Common Encryption tweede editie: 2015 [ISO/IEC 23001-7].
 > 
->   **Opmerking**: Voor HEVC video worden alleen segment gegevens in VCL NALs versleuteld. Segment koppen en andere NALs zijn toegankelijk voor presentatie toepassingen voordat ze worden ontsleuteld. in een beveiligd video pad zijn versleutelde gegevens niet beschikbaar voor presentatie toepassingen.
+>   **Opmerking**: voor HEVC video worden alleen segment gegevens in VCL NALs versleuteld. Segment koppen en andere NALs zijn toegankelijk voor presentatie toepassingen voordat ze worden ontsleuteld. in een beveiligd video pad zijn versleutelde gegevens niet beschikbaar voor presentatie toepassingen.
 
 ## <a name="52-index-of-security-parameters"></a>5,2 index van beveiligings parameters 
 

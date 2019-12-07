@@ -1,5 +1,5 @@
 ---
-title: Bulksgewijs kopiëren van een Data Base met behulp van een controle tabel met Azure Data Factory
+title: Bulksgewijs kopiëren van een Data Base met behulp van een controle tabel
 description: Meer informatie over het gebruik van een oplossings sjabloon voor het kopiëren van bulk gegevens uit een Data Base met behulp van een externe beheer tabel om een partitie lijst met bron tabellen op te slaan met behulp van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/14/2018
-ms.openlocfilehash: b651721e9b833c02e4789c79ff5ad0b49ce31343
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f50a6067eb38e920c32079c140785f397ee6698
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684275"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896263"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Bulksgewijs kopiëren van een Data Base met een controle tabel
 
@@ -40,11 +40,11 @@ De sjabloon definieert vijf para meters:
 - *Control_Table_Schema_PartitionID* is de naam van de kolom naam in de tabel met externe controle waarin elke partitie-id wordt opgeslagen. Zorg ervoor dat de partitie-ID uniek is voor elke partitie in de bron database.
 - *Control_Table_Schema_SourceTableName* is uw externe beheer tabel waarin elke tabel naam wordt opgeslagen vanuit de bron database.
 - *Control_Table_Schema_FilterQuery* is de naam van de kolom in de tabel met externe controle waarin de filter query wordt opgeslagen om de gegevens op te halen uit elke partitie in de bron database. Als u bijvoorbeeld de gegevens per jaar hebt gepartitioneerd, kan de query die in elke rij is opgeslagen, vergelijkbaar zijn met ' Select * from data source where LastModifytime > = ' ' 2015-01-01 00:00:00 ' ' en LastModifytime < = ' ' 2015-12-31 23:59:59.999 ' '.
-- *Data_Destination_Folder_Path* is het pad waar de gegevens naar het doel archief worden gekopieerd. Deze para meter wordt alleen weer gegeven als de bestemming die u kiest, is opgeslagen op basis van bestanden. Als u SQL Data Warehouse als doel archief kiest, is deze para meter niet vereist. Maar de tabel namen en het schema in SQL Data Warehouse moeten gelijk zijn aan die in de bron database.
+- *Data_Destination_Folder_Path* is het pad naar de locatie waar de gegevens naar uw doel archief worden gekopieerd. Deze para meter wordt alleen weer gegeven als de bestemming die u kiest, is opgeslagen op basis van bestanden. Als u SQL Data Warehouse als doel archief kiest, is deze para meter niet vereist. Maar de tabel namen en het schema in SQL Data Warehouse moeten gelijk zijn aan die in de bron database.
 
 ## <a name="how-to-use-this-solution-template"></a>Deze oplossings sjabloon gebruiken
 
-1. Maak een controle tabel in SQL Server of Azure SQL Database om de partitie lijst van de bron database op te slaan voor bulk kopieën. In het volgende voor beeld zijn er vijf partities in de bron database. Drie partities zijn voor de *datasource_table*en twee voor de *project_table*. De kolom *LastModifytime* wordt gebruikt voor het partitioneren van de gegevens in tabel *datasource_table* van de bron database. De query die wordt gebruikt voor het lezen van de eerste partitie is ' Select * from datasource_table where LastModifytime > = ' ' 2015-01-01 00:00:00 ' ' en LastModifytime < = ' ' 2015-12-31 23:59:59.999 ' '. U kunt een vergelijk bare query gebruiken om gegevens uit andere partities te lezen.
+1. Maak een controle tabel in SQL Server of Azure SQL Database om de partitie lijst van de bron database op te slaan voor bulk kopieën. In het volgende voor beeld zijn er vijf partities in de bron database. Drie partities zijn voor de *datasource_table*en twee zijn voor de *project_table*. De kolom *LastModifytime* wordt gebruikt voor het partitioneren van de gegevens in tabel *datasource_table* van de bron database. De query die wordt gebruikt voor het lezen van de eerste partitie is ' Select * from datasource_table where LastModifytime > = ' ' 2015-01-01 00:00:00 ' ' en LastModifytime < = ' ' 2015-12-31 23:59:59.999 ' '. U kunt een vergelijk bare query gebruiken om gegevens uit andere partities te lezen.
 
      ```sql
             Create table ControlTableForTemplate
@@ -76,7 +76,7 @@ De sjabloon definieert vijf para meters:
 
     ![Een nieuwe verbinding maken met het doel archief](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
 
-5. Selecteer **deze sjabloon gebruiken**.
+5. Selecteer **Deze sjabloon gebruiken**.
 
     ![Deze sjabloon gebruiken](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable5.png)
     

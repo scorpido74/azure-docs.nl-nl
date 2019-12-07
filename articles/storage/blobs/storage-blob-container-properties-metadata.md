@@ -1,18 +1,19 @@
 ---
-title: Eigenschappen en meta gegevens beheren voor een BLOB-container met .NET-Azure Storage
+title: .NET gebruiken voor het beheren van eigenschappen en meta gegevens voor een BLOB-container
+titleSuffix: Azure Storage
 description: Meer informatie over het instellen en ophalen van systeem eigenschappen en het opslaan van aangepaste meta gegevens op BLOB-containers in uw Azure Storage-account met behulp van de .NET-client bibliotheek.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 07/10/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: d63c78fedb8dbd48655d36fecc3544fd512072e3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 17ed10d424d606091bd2b7d6f3e325955c48a5a2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673379"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894195"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>Container eigenschappen en meta gegevens beheren met .NET
 
@@ -20,11 +21,11 @@ BLOB-containers ondersteunen systeem eigenschappen en door de gebruiker gedefini
 
 ## <a name="about-properties-and-metadata"></a>Over eigenschappen en meta gegevens
 
-- **Systeem eigenschappen**: Systeem eigenschappen bestaan op elke Blob Storage-Resource. Sommige van deze kunnen worden gelezen of ingesteld, terwijl anderen alleen-lezen zijn. Onder de kaften sommige systeem eigenschappen overeenkomen met bepaalde standaard-HTTP-headers. De Azure Storage-client bibliotheek voor .NET houdt deze eigenschappen voor u bij.
+- **Systeem eigenschappen**: systeem eigenschappen bestaan op elke Blob Storage-Resource. Sommige van deze kunnen worden gelezen of ingesteld, terwijl anderen alleen-lezen zijn. Onder de kaften sommige systeem eigenschappen overeenkomen met bepaalde standaard-HTTP-headers. De Azure Storage-client bibliotheek voor .NET houdt deze eigenschappen voor u bij.
 
-- Door de **gebruiker gedefinieerde meta gegevens**: Door de gebruiker gedefinieerde meta gegevens bestaan uit een of meer naam/waarde-paren die u opgeeft voor een Blob Storage-Resource. U kunt meta gegevens gebruiken om aanvullende waarden met de resource op te slaan. Meta gegevens waarden zijn alleen bedoeld voor eigen doel einden en zijn niet van invloed op de werking van de resource.
+- Door de **gebruiker gedefinieerde META**gegevens: door de gebruiker gedefinieerde meta gegevens bestaan uit een of meer naam/waarde-paren die u opgeeft voor een Blob Storage-Resource. U kunt meta gegevens gebruiken om aanvullende waarden met de resource op te slaan. Meta gegevens waarden zijn alleen bedoeld voor eigen doel einden en zijn niet van invloed op de werking van de resource.
 
-Het ophalen van eigenschaps-en meta gegevens waarden voor een Blob Storage-Resource is een proces dat uit twee stappen bestaat. Voordat u deze waarden kunt lezen, moet u deze expliciet ophalen door de **FetchAttributes** -of **FetchAttributesAsync** -methode aan te roepen. De uitzonde ring op deze regel is dat de methoden exists en **ExistsAsync** de juiste **FetchAttributes** -methode aanroepen onder de kaften. Wanneer u een van deze methoden aanroept, hoeft u **FetchAttributes**ook niet aan te roepen.
+Het ophalen van eigenschaps-en meta gegevens waarden voor een Blob Storage-Resource is een proces dat uit twee stappen bestaat. Voordat u deze waarden kunt lezen, moet u deze expliciet ophalen door de **FetchAttributes** -of **FetchAttributesAsync** -methode aan te roepen. De uitzonde ring op deze regel is dat de methoden **Exists** en **ExistsAsync** de juiste **FetchAttributes** -methode aanroepen onder de kaften. Wanneer u een van deze methoden aanroept, hoeft u **FetchAttributes**ook niet aan te roepen.
 
 > [!IMPORTANT]
 > Als u merkt dat de eigenschaps-of meta gegevens waarden voor een opslag bron niet zijn ingevuld, controleert u of de code de methode **FetchAttributes** of **FetchAttributesAsync** aanroept.

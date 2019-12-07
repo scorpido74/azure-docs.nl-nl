@@ -7,12 +7,12 @@ ms.date: 11/26/2019
 ms.author: fauhse
 ms.subservice: files
 description: StorSimple is een einde product en Azure File Sync is de oplossing voor de migratie naar. Meer informatie over het migratie concept en het bereiken van AzureFiles@microsoft.com voor aangepaste migratie-Help.
-ms.openlocfilehash: edad4d1c6be2c39dbf8150b6ab8979ae3924fb53
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 1cc88080522a62085d9a515223512ef25c20a9e4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666661"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895082"
 ---
 # <a name="storsimple-migration-to-azure-file-sync"></a>Migratie naar Azure File Sync StorSimple
 
@@ -26,7 +26,7 @@ In dit artikel wordt het concept beschreven van de manier waarop een migratie wo
 Het is belang rijk te weten dat klanten hun migratie van StorSimple uit te voeren en op Azure File Sync geen eigen verdere procedure hoeven te doen.
 
 > [!IMPORTANT]
-> Micro soft streeft ernaar klanten te helpen bij hun migratie. E-mail AzureFiles@microsoft.com voor een aangepast migratie plan en voor hulp tijdens de migratie.
+> Micro soft streeft ernaar klanten te helpen bij hun migratie. E-mail AzureFiles@microsoft. com voor een aangepast migratie plan en voor hulp tijdens de migratie.
 
 ## <a name="migration-approach"></a>Migratie benadering
 De migratie naar Azure File Sync begint aan de Cloud zijde met minimale gevolgen voor on-premises en beperkte uitval tijd.
@@ -67,7 +67,7 @@ Daarnaast kan een Azure-bestands share worden gesynchroniseerd met een groot aan
 Meer vertrouwd zijn met Azure Files en Azure File Sync. Het is belang rijk om inzicht te krijgen in het Azure File Sync terminologie-en implementatie patroon voor een geslaagde migratie. In dit overzichts artikel vindt u meer gedetailleerde informatie over elke stap. Zorg ervoor dat u contact opneemt met micro soft voor aangepaste Help tijdens het plannen en uitvoeren van de migratie.
 
 > [!IMPORTANT]
-> Micro soft streeft ernaar klanten te helpen bij hun migratie. E-mail AzureFiles@microsoft.com voor een aangepast migratie plan en voor hulp tijdens de migratie.
+> Micro soft streeft ernaar klanten te helpen bij hun migratie. E-mail AzureFiles@microsoft. com voor een aangepast migratie plan en voor hulp tijdens de migratie.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 Azure File Sync, als doel service, heeft twee fundamentele documenten die wij u raden als u geen ervaring hebt met Azure File Sync.
