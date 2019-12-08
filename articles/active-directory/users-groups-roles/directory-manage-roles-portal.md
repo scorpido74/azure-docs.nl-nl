@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ac62a4f318690a1e8156d619c82e9b936973159
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b2815b496545ca5f920c00df7b2b5b7efe15c12a
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027887"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900916"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Beheerders rollen in Azure Active Directory weer geven en toewijzen
 
@@ -26,11 +26,11 @@ U kunt nu alle leden van de beheerders rollen weer geven en beheren in de Azure 
 
 ## <a name="view-all-roles"></a>Alle rollen weer geven
 
-Selecteer in Azure Active Directory de optie **rollen en beheerders** om de lijst met alle beschik bare rollen weer te geven. 
+Zoek en selecteer **Azure Active Directory**. Selecteer **rollen en beheerders** om de lijst met alle beschik bare rollen weer te geven.
 
 Klik op het weglatings teken rechts van elke rij om de gedetailleerde beschrijving van de functie te openen.
 
-![lijst met rollen in de Azure AD-Portal](./media/directory-manage-roles-portal/role-list.png)
+![lijst met rollen in de Azure AD-Portal](./media/directory-manage-roles-portal/view-roles-in-azure-active-directory.png)
 
 ## <a name="view-my-roles"></a>Mijn rollen weer geven
 
