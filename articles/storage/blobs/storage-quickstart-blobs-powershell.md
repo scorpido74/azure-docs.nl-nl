@@ -1,21 +1,22 @@
 ---
-title: 'Azure-snelstart: een blob maken in objectopslag met Microsoft Azure PowerShell | Microsoft Docs'
+title: 'Quick Start: een BLOB maken met Power shell'
+titleSuffix: Azure Storage
 description: In deze snelstart gebruikt u Azure PowerShell in object(blob)-opslag. Vervolgens gebruikt u PowerShell om een blob in Azure Storage te uploaden, een blob te downloaden en de blobs in een container te vermelden.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/14/2019
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: b0e9cc37f6269c3b878e16b754ec3a49aee13f72
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c5d32b91043d310e51143357ad51631463f7e991
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699003"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892495"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-by-using-azure-powershell"></a>Snelstartgids: Blobs uploaden, downloaden en vermelden met behulp van Azure PowerShell
+# <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Quick Start: blobs uploaden, downloaden en vermelden met Power shell
 
 Gebruik de Azure PowerShell-module om Azure-resources te maken en beheren. Azure-resources kunnen vanaf de PowerShell-opdrachtregel of met scripts worden gemaakt of beheerd. In deze handleiding wordt beschreven hoe PowerShell kan worden gebruikt om bestanden over te dragen tussen de lokale schijf en Azure Blob Storage.
 

@@ -1,20 +1,19 @@
 ---
 title: 'Snelstartgids: Apache Hive in azure HDInsight met Apache Zeppelin'
 description: In deze Quick Start leert u hoe u Apache Zeppelin gebruikt om Apache Hive query's uit te voeren.
-keywords: hdinsight, Hadoop, Hive, Interactive query, LLAP
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: quickstart
-ms.date: 05/06/2019
-ms.author: hrasheed
-ms.openlocfilehash: 36d9e9b34deb4bc6cd5f599cfe2d09a12f680730
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/03/2019
+ms.openlocfilehash: 915aca0e95fce05f74477b526de047c829c7f512
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494287"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890396"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Snelstartgids: Apache Hive query's uitvoeren in azure HDInsight met Apache Zeppelin
 
@@ -71,9 +70,47 @@ An HDInsight interactieve query cluster. Zie [cluster maken](../hadoop/apache-ha
 
     Vergelijking met de traditionele component, worden de query resultaten sneller weer gegeven.
 
+### <a name="additional-examples"></a>Aanvullende voorbeelden
+
+1. Een tabel maken. Voer de volgende code uit in de Zeppelin-notebook:
+
+    ```hql
+    %jdbc(hive)
+    CREATE EXTERNAL TABLE log4jLogs (
+        t1 string,
+        t2 string,
+        t3 string,
+        t4 string,
+        t5 string,
+        t6 string,
+        t7 string)
+    ROW FORMAT DELIMITED
+    FIELDS TERMINATED BY ' '
+    STORED AS TEXTFILE;
+    ```
+
+1. Gegevens laden in de nieuwe tabel. Voer de volgende code uit in de Zeppelin-notebook:
+
+    ```hql
+    %jdbc(hive)
+    LOAD DATA
+    INPATH 'wasbs:///example/data/sample.log'
+    INTO TABLE log4jLogs;
+    ```
+
+1. Voeg één record in. Voer de volgende code uit in de Zeppelin-notebook:
+
+    ```hql
+    %jdbc(hive)
+    INSERT INTO TABLE log4jLogs2
+    VALUES ('A', 'B', 'C', 'D', 'E', 'F', 'G');
+    ```
+
+Raadpleeg de [hand leiding](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) voor de Hive-taal voor aanvullende syntaxis.
+
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Nadat u de Snelstartgids hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
+Nadat u de Snelstartgids hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage, zodat u een cluster veilig kunt verwijderen wanneer deze niet in gebruik is. U betaalt ook voor een HDInsight-cluster, zelfs wanneer het niet in gebruik is. Omdat de kosten voor het cluster veel keren meer zijn dan de kosten voor opslag, is het economisch zinvol om clusters te verwijderen wanneer ze niet worden gebruikt.
 
 Als u een cluster wilt verwijderen, raadpleegt u [een HDInsight-cluster verwijderen met behulp van uw browser, Power shell of de Azure cli](../hdinsight-delete-cluster.md).
 

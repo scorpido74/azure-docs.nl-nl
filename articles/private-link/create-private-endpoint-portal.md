@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 2cb3c1d798e48017604d72d8a438d6a1071199ea
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 22614b28023a0628fb12c170e934aaab4d1ddfe4
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419761"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899868"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Snelstartgids: een persoonlijk eind punt maken met Azure Portal
 
@@ -28,7 +28,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Meld u aan bij Azure Portal op https://portal.azure.com.
 
-## <a name="create-a-vm"></a>Een virtuele machine maken
+## <a name="create-a-vm"></a>Een VM maken
 In deze sectie maakt u een virtueel netwerk en het subnet voor het hosten van de virtuele machine die wordt gebruikt voor toegang tot uw persoonlijke koppelings bron (een SQL-Server in Azure in dit voor beeld).
 
 ### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
@@ -67,7 +67,7 @@ In deze sectie maakt u een Virtual Network en het subnet voor het hosten van de 
     | Naam van de virtuele machine | Voer *myVm*in. |
     | Regio | Selecteer **WestCentralUS**. |
     | Beschikbaarheidsopties | Laat de standaardwaarde **Geen infrastructuurredundantie vereist** staan. |
-    | Installatiekopie | Selecteer **Windows Server 2019 Data Center**. |
+    | afbeelding | Selecteer **Windows Server 2019 Data Center**. |
     | Grootte | Laat de standaardwaarde **Standard DS1 v2** staan. |
     | **ADMINISTRATOR-ACCOUNT** |  |
     | Gebruikersnaam | Voer een gebruikers naam van uw keuze in. |
@@ -144,7 +144,7 @@ In deze sectie maakt u een SQL Server en voegt u hieraan een persoonlijk eind pu
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
     | **INSTANTIEDETAILS** |  |
-    | Naam | Voer * myPrivateEndpoint*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
+    | Naam | Voer *myPrivateEndpoint*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
     |Regio|Selecteer **WestCentralUS**.|
     |||
 5. Selecteer **volgende: resource**.
@@ -155,7 +155,7 @@ In deze sectie maakt u een SQL Server en voegt u hieraan een persoonlijk eind pu
     |Verbindingsmethode  | Selecteer verbinding maken met een Azure-resource in mijn Directory.|
     | Abonnement| Selecteer uw abonnement. |
     | Resourcetype | Selecteer **micro soft. SQL/servers**. |
-    | Resource |*Mijn server* selecteren|
+    | Bron |*Mijn server* selecteren|
     |Doel-subresource |*SqlServer* selecteren|
     |||
 7. Selecteer **volgende: Configuratie**.
@@ -177,7 +177,7 @@ In deze sectie maakt u een SQL Server en voegt u hieraan een persoonlijk eind pu
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Verbinding maken met een virtuele machine met behulp van Extern bureaublad (RDP)
 
 
-Nadat u **myVm*hebt gemaakt, kunt u als volgt verbinding maken met het Internet: 
+Nadat u **myVm**hebt gemaakt, kunt u als volgt verbinding maken met het Internet: 
 
 1. Voer in de zoek balk van de portal *myVm*in.
 
@@ -185,7 +185,7 @@ Nadat u **myVm*hebt gemaakt, kunt u als volgt verbinding maken met het Internet:
 
 1. Selecteer **RDP-bestand downloaden**. Azure maakt een Remote Desktop Protocol-bestand ( *.rdp*) en downloadt het bestand naar uw computer.
 
-1. Open het bestand gedownloade. rdp *.
+1. Open het *gedownloade RDP* -bestand.
 
     1. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd.
 
@@ -225,7 +225,7 @@ Nadat u **myVm*hebt gemaakt, kunt u als volgt verbinding maken met het Internet:
     | Servernaam| *MyServer.database.Windows.net* selecteren |
     | Gebruikersnaam | Voer de gebruikers naam in als username@servername die wordt opgegeven tijdens het maken van de SQL-Server. |
     |Wachtwoord |Voer een wacht woord in dat u hebt opgegeven tijdens het maken van de SQL-Server. |
-    |Wacht woord onthouden|Selecteer **Ja**.|
+    |Wachtwoord onthouden|Selecteer **Ja**.|
     |||
 1. Selecteer **Verbinden**.
 2. Bladeren door data bases vanuit het menu links.

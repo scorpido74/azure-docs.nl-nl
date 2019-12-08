@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: be2425d97573e7990ea7f0dfd4c2d999e85fe922
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 2ae0e5b53d735b95ce1c3d2f9275456e41319242
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74407002"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901008"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Quick Start: een Azure Cognitive Search-index maken in de Azure Portal
 > [!div class="op_single_selector"]
@@ -142,7 +142,7 @@ U zou nu een zoekindex moeten hebben die klaar is om query’s uit te voeren met
 > De volgende stappen worden op 6m08s getoond in de [overzichts video van Azure Cognitive Search](https://channel9.msdn.com/Events/Connect/2016/138).
 >
 
-1. Klik op **Search explorer** in de werkbalk.
+1. Klik op **Search explorer** in de opdrachtbalk.
 
    ![Opdracht Search Explorer](media/search-get-started-portal/search-explorer-cmd.png)
 
@@ -260,7 +260,7 @@ U hebt ook geleerd hoe u in de portal kunt zoeken naar indexen, indexeerfuncties
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u in uw eigen abonnement werkt, is het een goed idee aan het einde van een project om te bepalen of u nog steeds de resources nodig hebt die u hebt gemaakt. Resources die actief zijn, kunnen kosten in rekening worden. U kunt resources afzonderlijk verwijderen of de resource groep verwijderen om de volledige set resources te verwijderen.
+Wanneer u in uw eigen abonnement werkt, is het een goed idee om aan het einde van een project te bepalen of u de gemaakte resources nog nodig hebt. Resources die actief blijven, kunnen u geld kosten. U kunt resources afzonderlijk verwijderen of de resourcegroep verwijderen als u de complete verzameling resources wilt verwijderen.
 
 U kunt resources vinden en beheren in de portal met behulp van de koppeling **alle resources** of **resource groepen** in het navigatie deel venster aan de linkerkant.
 
@@ -268,7 +268,7 @@ Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent bepe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Hoewel de portal nuttig is voor de eerste keer onderzoek en kleine taken, kunt u op een uitgebreidere manier de concepten en werk stroom op een dieper niveau bekijken met behulp van de eerdere Api's.
+Een portal wizard gebruiken om een kant-en-klare Web-app te genereren die in een browser wordt uitgevoerd. U kunt deze wizard uitproberen op de kleine index die u zojuist hebt gemaakt, of een van de ingebouwde voorbeeld gegevens sets gebruiken voor een uitgebreidere Zoek ervaring.
 
 > [!div class="nextstepaction"]
-> [Een index maken met behulp van de .NET-SDK](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
+> [Een zoek-app maken in de portal](search-create-app-portal.md)

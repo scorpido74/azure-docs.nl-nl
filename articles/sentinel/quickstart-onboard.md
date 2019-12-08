@@ -8,13 +8,13 @@ ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.date: 09/23/2019
-ms.openlocfilehash: 182dec35d515966ae883aca405cf3a95b6f1f72c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.date: 12/05/2019
+ms.openlocfilehash: 108d251ec6aadb4881f500edfa3483f137a09a68
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133096"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900439"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Snelstartgids: Azure-Sentinel op de trein
 
@@ -24,18 +24,8 @@ Als u Azure Sentinel wilt gebruiken, moet u eerst Azure Sentinel inschakelen en 
 
 Nadat u verbinding hebt gemaakt met uw gegevens bronnen, kiest u uit een galerie met deskundig gemaakte werkmappen op basis van uw gegevens. Deze werkmappen kunnen eenvoudig worden aangepast aan uw behoeften.
 
->[!NOTE] 
-> De [prijs van Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) is gebaseerd op de hoeveelheid gegevens die is opgenomen in de gekoppelde Azure monitor log Analytics-werk ruimte. Voor sommige van de volgende gegevens connectors worden er nog geen kosten in rekening gebracht voor de opname wanneer u een wille keurige waarschuwing genereert met behulp van de opgenomen gegevens die zijn opgeslagen in Log Analytics werk ruimte waarvoor kosten in rekening worden Azure Monitor gebracht volgens de [prijzen voor log Analytics](https://azure.microsoft.com/pricing/details/monitor/). 
-  > - Azure-activiteit (activiteiten logboeken voor Azure-bewerkingen)
-  > - Azure Active Directory Identity Protection (voor tenants met AAD P2-licenties)
-  > - Azure Information Protection
-  > - Azure Advanced Threat Protection (waarschuwingen)
-  > - Azure Security Center (waarschuwingen)
-  > - Microsoft Cloud App Security (alleen waarschuwingen)
-  > - Micro soft Defender Advanced Threat Protection (waarschuwingen van bewakings agent)
-  > - Office 365 (Exchange-en share point-Logboeken)
->
-> De audit logboeken van Azure AD/Office365 zijn niet gratis en worden niet aangeboden als Premium-laag, waardoor de opname van deze gegevens per GB is geprijsd. 
+>[!IMPORTANT] 
+> Zie [Azure Sentinel-prijzen](https://azure.microsoft.com/pricing/details/azure-sentinel/)voor meer informatie over de kosten die worden gemaakt bij het gebruik van Azure Sentinel.
   
 
 ## <a name="global-prerequisites"></a>Globale vereisten
@@ -44,7 +34,7 @@ Nadat u verbinding hebt gemaakt met uw gegevens bronnen, kiest u uit een galerie
 
 - Log Analytics werk ruimte. Meer informatie over het [maken van een log Analytics-werk ruimte](../log-analytics/log-analytics-quick-create-workspace.md). Zie [de implementatie van uw Azure monitor-logboeken ontwerpen](../azure-monitor/platform/design-logs-deployment.md)voor meer informatie over log Analytics-werk ruimten.
 
--  Als u Azure Sentinel wilt inschakelen, hebt u Inzender machtigingen nodig voor het abonnement waarin de Azure Sentinel-werk ruimte zich bevindt. 
+- Als u Azure Sentinel wilt inschakelen, hebt u Inzender machtigingen nodig voor het abonnement waarin de Azure Sentinel-werk ruimte zich bevindt. 
 - Als u Azure Sentinel wilt gebruiken, hebt u Inzender-of lezer-machtigingen nodig voor de resource groep waartoe de werk ruimte behoort.
 - Er zijn mogelijk extra machtigingen nodig om verbinding te maken met specifieke gegevens bronnen.
 - Azure Sentinel is een betaalde service. Zie [about Azure Sentinel](https://go.microsoft.com/fwlink/?linkid=2104058)(Engelstalig) voor informatie over prijzen.
@@ -59,7 +49,7 @@ Nadat u verbinding hebt gemaakt met uw gegevens bronnen, kiest u uit een galerie
 1. Klik op **+ toevoegen**.
 1. Selecteer de werk ruimte die u wilt gebruiken of maak een nieuwe. U kunt Azure Sentinel uitvoeren op meer dan één werk ruimte, maar de gegevens worden geïsoleerd voor één werk ruimte.
 
-   ![Opdracht](./media/quickstart-onboard/choose-workspace.png)
+   ![zoeken](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
    > - Standaardwerk ruimten die zijn gemaakt door Azure Security Center worden niet weer gegeven in de lijst. u kunt geen Azure-Sentinel installeren.

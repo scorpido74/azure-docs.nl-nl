@@ -10,19 +10,22 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 11/06/2019
-ms.openlocfilehash: 47c0ecb5674f821d3034fb5f165df08f176c2e93
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.date: 12/06/2019
+ms.openlocfilehash: a124c33f15318f1b9b22a750a1de15601823afa3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646948"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890688"
 ---
 # <a name="quickstart-create-an-instance-of-azure-database-migration-service-in-hybrid-mode-using-the-azure-portal-preview"></a>Snelstartgids: een exemplaar van Azure Database Migration Service in de hybride modus maken met behulp van de Azure Portal (preview-versie)
 
 Azure Database Migration Service hybride modus beheert database migraties met behulp van een migratie medewerker die on-premises wordt gehost, samen met een exemplaar van Azure Database Migration Service dat in de Cloud wordt uitgevoerd. De hybride modus is vooral nuttig voor scenario's waarin een gebrek aan site-naar-site-connectiviteit tussen het on-premises netwerk en Azure of een beperkte band breedte voor site-naar-site-verbinding is.
 
 In deze Quick Start gebruikt u de Azure Portal om een instantie van Azure Database Migration Service in de hybride modus te maken. Daarna kunt u de Hybrid worker in uw on-premises netwerk downloaden, installeren en instellen. Tijdens de preview kunt u Azure Database Migration Service hybride modus gebruiken om gegevens van een on-premises exemplaar van SQL Server naar Azure SQL Database te migreren.
+
+> [!IMPORTANT]
+> Voor het hybride installatie programma van Azure Database Migration Service is .NET 4.7.2 of hoger vereist. Zie de pagina [down load .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) voor de nieuwste versies van .net.
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -111,6 +114,9 @@ U moet een Azure-app registratie-ID maken die de on-premises Hybrid Worker kan g
 
 3. Pak het ZIP-bestand uit op de server die als host fungeert voor de Azure Database Migration Service Hybrid Worker.
 
+    > [!IMPORTANT]
+    > Voor het hybride installatie programma van Azure Database Migration Service is .NET 4.7.2 of hoger vereist. Zie de pagina [down load .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) voor de nieuwste versies van .net.
+
 4. Zoek en open het bestand **dmsSettings. json** in de installatiemap, geef de **ApplicationId** en **resourceId**op en sla het bestand op.
 
     ![Instellingen voor Hybrid worker Azure Database Migration Service](media/quickstart-create-data-migration-service-hybrid-portal/dms-settings.png)
@@ -125,7 +131,7 @@ U moet een Azure-app registratie-ID maken die de on-premises Hybrid Worker kan g
 
     ![Azure Database Migration Service Hybrid worker-certificaat](media/quickstart-create-data-migration-service-hybrid-portal/dms-certificate.png)
 
-6. Navigeer in het Azure Portal naar de App-ID onder **beheren**, selecteer **Certificaten & geheimen**en selecteer vervolgens **certificaat uploaden** om het open bare certificaat te selecteren dat u zojuist hebt gegenereerd.
+6. Navigeer in het Azure Portal naar de App-ID onder **beheren**, selecteer **Certificaten & geheimen**en selecteer vervolgens **certificaat uploaden** om het open bare certificaat te selecteren dat u hebt gegenereerd.
 
     ![Azure Database Migration Service Hybrid worker-certificaat uploaden](media/quickstart-create-data-migration-service-hybrid-portal/dms-app-upload-certificate.png)
 

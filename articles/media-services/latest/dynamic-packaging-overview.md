@@ -1,7 +1,7 @@
 ---
 title: Dynamische verpakking in Media Services
 titleSuffix: Azure Media Services
-description: Een overzicht van dynamische verpakking in Azure Media Services.
+description: Dit artikel geeft een overzicht van dynamische pakketten in Azure Media Services.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 304a6168ee5a4c60369b541d4a8cc7ac961913b6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: dbce24ced0ed057eac829d5c4b7223a10fa96b3e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574897"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888475"
 ---
 # <a name="dynamic-packaging-in-media-services"></a>Dynamische verpakking in Media Services
 
@@ -274,7 +274,7 @@ U kunt *dynamische versleuteling* gebruiken om uw Live of on-demand inhoud dynam
 
 Raadpleeg [Azure Media Services Community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates over Media Services te krijgen.
 
-## <a name="need-help"></a>Hulp nodig?
+## <a name="need-help"></a>Hebt u hulp nodig?
 
 U kunt een ondersteunings ticket openen door te navigeren naar een [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

@@ -12,44 +12,26 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/21/2019
+ms.date: 12/05/2019
 ms.author: allensu
-ms.openlocfilehash: 335549f4ccae01fa36921e0e4668fa15e8b33835
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: c95744e58ce08943765755145645ed45a2ccdb1f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423903"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894446"
 ---
 # <a name="what-is-azure-load-balancer"></a>Wat is Azure Load Balancer?
 
-Met Azure Load Balancer kunt u uw toepassingen schalen en hoge beschikbaarheid voor uw services realiseren. Load Balancer biedt ondersteuning voor scenario's met inkomend en uitgaand verkeer, biedt lage latentie en hoge doorvoer en kan omhoog worden geschaald tot miljoenen stromen voor alle TCP- en UDP-toepassingen.
+*Taak verdeling* verwijst naar het efficiënt distribueren van belasting of binnenkomend netwerk verkeer over een groep back-end-bronnen of-servers. Azure biedt [verschillende opties voor taak verdeling](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) die u kunt kiezen op basis van uw behoeften. In dit document worden de Azure Load Balancer beschreven.
 
-Load Balancer distribueert nieuwe inkomende stromen die aankomen op de front-end van de Load Balancer voor een back-end-pool, volgens opgegeven regels en status controles.
+Azure Load Balancer werkt op laag 4 van het OSI-model (Open Systems Interconnection). Het is het enige contact punt voor clients. Load Balancer distribueert nieuwe inkomende stromen die op de front-end van de Load Balancer aan de voor zijde van de back-end-pool worden ontvangen volgens de opgegeven taakverdelings regels en status controles. De exemplaren van de back-end-pool kunnen Azure Virtual Machines of exemplaren in een virtuele-machine Scale set (VMSS) zijn. 
 
-Een open bare Load Balancer kan uitgaande verbindingen bieden voor virtuele machines (Vm's) in uw virtuele netwerk door hun privé-IP-adressen te vertalen naar open bare IP-adressen.
+Met Azure Load Balancer kunt u uw toepassingen schalen en hoge beschikbaar-Services maken. Load Balancer ondersteunt zowel de scenario's voor inkomend als uitgaand verkeer, biedt een lage latentie en hoge door Voer en schaalt Maxi maal miljoenen stromen voor alle TCP-en UDP-toepassingen.
 
-Azure Load Balancer is beschikbaar in twee prijs categorieën of *sku's*: Basic en Standard. Er zijn verschillen in schaal, functies en prijzen. Elk scenario dat mogelijk is met basis Load Balancer, kan ook worden gemaakt met Standard Load Balancer, hoewel de benaderingen enigszins verschillen. Lees voor meer informatie over Load Balancer de basis principes en de SKU-specifieke verschillen.
+Een **[open bare Load Balancer](#publicloadbalancer)** kan uitgaande verbindingen bieden voor virtuele machines (vm's) in uw virtuele netwerk door hun privé-IP-adressen te vertalen naar open bare IP-adressen. Open bare load balancers worden gebruikt om het Internet verkeer naar uw Vm's te load balancer.
 
-## <a name="why-use-load-balancer"></a>Waarom zou ik Load Balancer moeten gebruiken?
-
-U kunt Azure Load Balancer voor het volgende gebruiken:
-
-* Taak verdeling van binnenkomend Internet verkeer naar uw Vm's. Deze configuratie wordt een [open bare Load Balancer](#publicloadbalancer)genoemd.
-* Taak verdeling van verkeer tussen virtuele machines in een virtueel netwerk. In een hybride scenario kunt u een front-end van een Load Balancer ook bereiken vanaf een on-premises netwerk. In beide scenario's wordt een configuratie gebruikt die een [interne Load Balancer](#internalloadbalancer)wordt genoemd.
-* Voor Port Forwarding-verkeer naar een specifieke poort op specifieke virtuele machines met regels voor binnenkomende NAT-regels (Network Address Translation).
-* Voor het leveren van [uitgaande connectiviteit](load-balancer-outbound-connections.md) voor VM's binnen uw virtuele netwerk door gebruik te maken van een openbare Load Balancer.
-
->[!NOTE]
-> Azure biedt een pakket volledig beheerde oplossingen voor taakverdeling voor uw scenario's. Zie [Wat is Azure-toepassing gateway?](../application-gateway/overview.md) als u op zoek bent naar Transport Layer Security (TLS) Termination (' SSL offload ') of per HTTP/HTTPS-aanvraag, de verwerking van de toepassingslaag. Als u op zoek bent naar globale DNS-taak verdeling, raadpleegt u [Wat is Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Uw end-to-end-scenario's kunnen van pas komen bij het combi neren van deze oplossingen.
->
-> Zie [overzicht van opties voor taak verdeling in azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)voor een vergelijking van Azure-opties voor taak verdeling.
-
-## <a name="what-are-load-balancer-resources"></a>Wat zijn Load Balancer-resources?
-
-Load Balancer resources zijn objecten die aangeven hoe Azure de multi tenant-infra structuur moet Program meren om het scenario te verhalen dat u wilt maken. Er is geen rechtstreekse relatie tussen Load Balancer resources en de werkelijke infra structuur. Als een Load Balancer wordt gemaakt, wordt er geen instantie gemaakt en capaciteit is altijd beschikbaar.
-
-Een Load Balancer resource kan een open bare Load Balancer of een interne Load Balancer zijn. De functies van de Load Balancer resource worden gedefinieerd door een front-end, een regel, een status test en een back-end-pool definitie. U kunt virtuele machines in de back-end-pool plaatsen door de back-end-pool van de virtuele machine op te geven.
+Een **[intern (of persoonlijk) Load Balancer](#internalloadbalancer)** kan worden gebruikt voor scenario's waarbij alleen privé-IP-adressen aan de front-end zijn vereist. Interne load balancers worden gebruikt voor het verdelen van verkeer binnen een virtueel netwerk. In een hybride scenario kunt u een front-end van een Load Balancer ook bereiken vanaf een on-premises netwerk.
 
 ## <a name="fundamental-load-balancer-features"></a>Fundamentele functies van Load Balancer
 
@@ -195,4 +177,4 @@ Zie [Sla voor Load Balancer](https://aka.ms/lbsla)voor meer informatie over de S
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [een basis Load Balancer maken](quickstart-create-basic-load-balancer-portal.md) om aan de slag te gaan met het gebruik van een Load Balancer: Maak een virtuele machine met een aangepaste IIS-extensie die is geïnstalleerd en taak verdeling van de web-app tussen de vm's.
+Zie [een open bare Standard Load Balancer maken](quickstart-load-balancer-standard-public-portal.md) om aan de slag te gaan met het gebruik van een Load Balancer: Maak een virtuele machine met een aangepaste IIS-extensie die is geïnstalleerd en taak verdeling van de web-app tussen de vm's.

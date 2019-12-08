@@ -6,22 +6,24 @@ ms.service: spring-cloud
 ms.topic: overview
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 9709d7edb7c48ccfdb551d0e837a098289a5097a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 87bcea5e9ada4f095896c1ebe4cbe1928f158eb0
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721264"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895418"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Wat is Azure Spring Cloud?
 
-Met Azure lente-Cloud kunt u eenvoudig micro service-toepassingen op basis van een Spring boot implementeren naar Azure met wijzigingen in de code.  Met Azure lente Cloud kunnen ontwikkel aars zich richten op hun code door de levens cyclus van Lente-Cloud toepassingen te beheren.  Lente-Cloud biedt levenscyclus beheer met uitgebreide bewaking en diagnose, configuratie beheer, service detectie, CI/CD-integratie, Blue-groen implementaties en meer.
+Met Azure lente-Cloud kunt u eenvoudig micro service-toepassingen op basis van een Spring boot implementeren naar Azure met wijzigingen in de code.  Azure lente-Cloud beheert de levens cyclus van Lente-Cloud toepassingen, zodat ontwikkel aars zich kunnen richten op hun code.  Lente-Cloud biedt levenscyclus beheer met uitgebreide bewaking en diagnose, configuratie beheer, service detectie, CI/CD-integratie, Blue-groen implementaties en meer.
 
 Als onderdeel van het Azure-ecosysteem kan Azure lente-Cloud eenvoudig worden gebonden aan andere Azure-Services, waaronder opslag, data bases, bewaking en meer.
 
 Azure lente Cloud wordt momenteel aangeboden als een open bare preview. Met open bare preview-aanbiedingen kunnen klanten experimenteren met nieuwe functies vóór hun officiële release.  Open bare preview-functies en-services zijn niet bedoeld voor gebruik in productie omgevingen.  Raadpleeg voor meer informatie over ondersteuning tijdens previews onze [Veelgestelde vragen](https://azure.microsoft.com/support/faq/) of bestand a [ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) voor meer informatie.
 
 Om aan de slag te gaan, voltooit u de lente-Cloud Snelstartgids met behulp van de [Azure cli](spring-cloud-quickstart-launch-app-cli.md), het [Azure Portal](spring-cloud-quickstart-launch-app-portal.md)of [maven](spring-cloud-quickstart-launch-app-maven.md).
+
+Meer voor beelden zijn beschikbaar op GitHub: [Azure lente-Cloud voorbeelden](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).
 
 ## <a name="application-configuration"></a>Toepassings configuratie
 
@@ -41,7 +43,7 @@ Azure lente Cloud biedt integratie met Azure DevOps met behulp van de Azure CLI.
 
 Met Azure lente Cloud kunt u eenvoudig de micro Services in uw Azure veer Cloud-dash board schalen.  Het aantal Vcpu's en de hoeveelheid geheugen die beschikbaar is voor uw micro Services kunnen omhoog of omlaag worden geschaald op basis van uw vereisten.  Schalen neemt in een paar seconden toe en vereist geen code wijzigingen of herimplementatie.  Voltooi deze [zelf studie](spring-cloud-tutorial-scale-manual.md)voor meer informatie.
 
-## <a name="application-monitoring"></a>Toepassings bewaking
+## <a name="application-monitoring"></a>Toepassingsbewaking
 
 ### <a name="monitor-your-application-using-distributed-tracing-and-azure-app-insights"></a>Uw toepassing bewaken met gedistribueerde tracering en Azure-app inzichten
 

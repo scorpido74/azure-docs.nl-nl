@@ -3,12 +3,12 @@ title: Overzicht van Azure-beleid
 description: Azure Policy is een service in Azure die u gebruikt om beleidsdefinities in uw Azure-omgeving te maken, toe te wijzen en te beheren.
 ms.date: 11/25/2019
 ms.topic: overview
-ms.openlocfilehash: db6a7c592213b0ef8a17466300c37c859e96476b
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a7cc5ebca74e249057d159334e4207a3efca37f5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484015"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885463"
 ---
 # <a name="what-is-azure-policy"></a>Wat is Azure Policy?
 
@@ -16,7 +16,9 @@ Governance valideert dat uw organisatie de doel stellingen kan bereiken via effe
 
 Ondervindt uw bedrijf een significant aantal IT-problemen die nooit lijken te worden opgelost? Goed IT-beheer omvat het plannen van uw initiatieven en het stellen van prioriteiten op strategisch niveau, zodat problemen beheerst en voorkomen kunnen worden. Hiervoor gebruikt u Azure Policy.
 
-Azure Policy is een service in Azure die u gebruikt om beleidsregels te maken, toe te wijzen en te beheren. Met deze beleidsregels worden verschillende regels en effecten afgedwongen voor uw resources, zodat deze resources voldoen aan de standaarden en service level agreements in uw bedrijf. Azure Policy voorziet in deze behoefte door uw resources met toegewezen beleid te controleren op niet-naleving. U kunt bijvoorbeeld beleid hebben op basis waarvan alleen virtuele machines van een bepaalde SKU-grootte in uw omgeving zijn toegestaan. Wanneer dit beleid is geïmplementeerd, worden nieuwe en bestaande resources gecontroleerd op naleving. Met het juiste type beleid kunt u ervoor zorgen dat bestaande resources conform zijn. Verderop in deze documentatie wordt dieper ingegaan op het maken en implementeren van beleidsregels met Azure Policy.
+Azure Policy is een service in Azure die u gebruikt om beleidsregels te maken, toe te wijzen en te beheren. Met deze beleidsregels worden verschillende regels en effecten afgedwongen voor uw resources, zodat deze resources voldoen aan de standaarden en service level agreements in uw bedrijf. Azure Policy voorziet in deze behoefte door uw resources met toegewezen beleid te controleren op niet-naleving. Alle gegevens die door Azure Policy zijn opgeslagen, worden op rest versleuteld.
+
+U kunt bijvoorbeeld beleid hebben op basis waarvan alleen virtuele machines van een bepaalde SKU-grootte in uw omgeving zijn toegestaan. Wanneer dit beleid is geïmplementeerd, worden nieuwe en bestaande resources gecontroleerd op naleving. Met het juiste type beleid kunt u ervoor zorgen dat bestaande resources conform zijn. Verderop in deze documentatie wordt dieper ingegaan op het maken en implementeren van beleidsregels met Azure Policy.
 
 > [!IMPORTANT]
 > Evaluatie van de naleving van Azure Policy is nu beschikbaar voor alle toewijzingen, ongeacht de prijscategorie. Als uw toewijzingen de nalevingsgegevens niet weergeven, controleert u of het abonnement is geregistreerd bij de resourceprovider Microsoft.PolicyInsights.
@@ -25,7 +27,7 @@ Azure Policy is een service in Azure die u gebruikt om beleidsregels te maken, t
 
 ## <a name="how-is-it-different-from-rbac"></a>Wat is het verschil met RBAC?
 
-Er zijn enkele belang rijke verschillen tussen Azure Policy en op rollen gebaseerd toegangs beheer (RBAC). RBAC is gericht op de acties van gebruikers in verschillende bereiken. Mogelijk wordt u voor een resourcegroep toegevoegd aan de rol Inzender, zodat u wijzigingen kunt aanbrengen in die resourcegroep. Azure Policy richt zich op bron eigenschappen tijdens de implementatie en voor al bestaande resources. Azure Policy besturings elementen, zoals de typen of locaties van resources. In tegens telling tot RBAC is Azure Policy een standaard systeem voor toestaan en expliciet weigeren.
+Er zijn enkele belang rijke verschillen tussen Azure Policy en op rollen gebaseerd toegangs beheer (RBAC). RBAC is gericht op de acties van gebruikers in verschillende bereiken. Mogelijk wordt u voor een resourcegroep toegevoegd aan de rol Inzender, zodat u wijzigingen kunt aanbrengen in die resourcegroep. Azure Policy richt zich op bron eigenschappen tijdens de implementatie en voor al bestaande resources. Met Azure Policy worden eigenschappen bepaald, zoals de typen resources of hun locatie. In tegens telling tot RBAC is Azure Policy een standaard systeem voor toestaan en expliciet weigeren.
 
 ### <a name="rbac-permissions-in-azure-policy"></a>RBAC-machtigingen in Azure Policy
 
@@ -104,7 +106,7 @@ Neem bijvoorbeeld een scenario met initiatiefdefinitie **initiativeC**, waarbij 
 | Beleid | Naam van parameter |Type parameter  |Opmerking |
 |---|---|---|---|
 | policyA | allowedLocations | matrix  |Op basis van deze parameter wordt een lijst met tekenreeksen verwacht voor een waarde, omdat het parametertype is gedefinieerd als een matrix |
-| policyB | allowedSingleLocation |tekenreeks |Op basis van deze parameter wordt één woord verwacht voor een waarde, omdat het parametertype is gedefinieerd als een tekenreeks |
+| policyB | allowedSingleLocation |string |Op basis van deze parameter wordt één woord verwacht voor een waarde, omdat het parametertype is gedefinieerd als een tekenreeks |
 
 In dit scenario hebt u, bij het definiëren van de initiatiefparameters voor **initiativeC**, drie opties:
 
