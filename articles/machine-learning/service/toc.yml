@@ -152,7 +152,7 @@
     - name: Werken met gegevens
       items:
         - name: Gegevens uit gegevensarchief ophalen
-          displayName: 'blob, get, fileshare, access storage'
+          displayName: 'blob, get, fileshare, access storage, mount, download'
           href: how-to-access-data.md
         - name: Gegevenssets toevoegen & registreren
           displayName: 'data, dataset'

@@ -17,8 +17,6 @@
   items:
     - name: Algemeen beleid voor voorwaardelijke toegang
       href: concept-conditional-access-policy-common.md
-    - name: Standaardinstellingen voor de beveiliging
-      href: concept-conditional-access-security-defaults.md
     - name: Onderdelen van beleid voor voorwaardelijke toegang
       href: concept-conditional-access-policies.md
     - name: Voorwaarden
