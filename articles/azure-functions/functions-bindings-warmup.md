@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: 6884c8f1bf7a462b5d93f5c9ea23a2f64021fd9e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a947ff11fbbe418af84ff49033cba3857bb8447f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328493"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925184"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Opwarmende trigger Azure Functions
 
@@ -22,7 +22,7 @@ In dit artikel wordt uitgelegd hoe u kunt werken met de trigger opwarm in Azure 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>Pakketten - functies 2.x
+## <a name="packages---functions-2x-and-higher"></a>Pakketten-functions 2. x en hoger
 
 Het pakket [micro soft. Azure. webjobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet, versie **3.0.5 of hoger** is vereist. De bron code voor het pakket bevindt zich in de GitHub-opslag plaats [Azure-webjobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) . 
 
@@ -80,7 +80,7 @@ In het volgende voor beeld ziet u een opwarm-trigger in een *Function. json* -be
 
 De functie moet de naam ```warmup``` (niet hoofdletter gevoelig) hebben en er mag slechts één opwarm-functie per app zijn.
 
-Hier is het bestand *Function. json* :
+Hier volgt de *function.json* bestand:
 
 ```json
 {
@@ -94,7 +94,7 @@ Hier is het bestand *Function. json* :
 }
 ```
 
-In de [configuratie](#trigger---configuration) sectie worden deze eigenschappen uitgelegd.
+De [configuratie](#trigger---configuration) sectie wordt uitgelegd dat deze eigenschappen.
 
 Dit is C# de script code die wordt gekoppeld aan `HttpRequest`:
 
@@ -111,7 +111,7 @@ In het volgende voor beeld ziet u een opwarm-trigger in een *Function. json* -be
 
 De functie moet een naam hebben ```warmup``` (niet hoofdletter gevoelig) en er mag slechts één opwarm-functie per app zijn.
 
-Hier is het bestand *Function. json* :
+Hier volgt de *function.json* bestand:
 
 ```json
 {
@@ -125,7 +125,7 @@ Hier is het bestand *Function. json* :
 }
 ```
 
-In de [configuratie](#trigger---configuration) sectie worden deze eigenschappen uitgelegd.
+De [configuratie](#trigger---configuration) sectie wordt uitgelegd dat deze eigenschappen.
 
 Dit is de JavaScript-code:
 
@@ -142,7 +142,7 @@ In het volgende voor beeld ziet u een opwarm-trigger in een *Function. json* -be
 
 De functie moet een naam hebben ```warmup``` (niet hoofdletter gevoelig) en er mag slechts één opwarm-functie per app zijn.
 
-Hier is het bestand *Function. json* :
+Hier volgt de *function.json* bestand:
 
 ```json
 {
@@ -156,7 +156,7 @@ Hier is het bestand *Function. json* :
 }
 ```
 
-In de [configuratie](#trigger---configuration) sectie worden deze eigenschappen uitgelegd.
+De [configuratie](#trigger---configuration) sectie wordt uitgelegd dat deze eigenschappen.
 
 Dit is de python-code:
 
@@ -175,7 +175,7 @@ In het volgende voor beeld ziet u een opwarm-trigger in een *Function. json* -be
 
 De functie moet een naam hebben ```warmup``` (niet hoofdletter gevoelig) en er mag slechts één opwarm-functie per app zijn.
 
-Hier is het bestand *Function. json* :
+Hier volgt de *function.json* bestand:
 
 ```json
 {
@@ -241,13 +241,13 @@ De trigger opwarm wordt niet ondersteund in Java als een kenmerk.
 
 ## <a name="trigger---configuration"></a>Trigger - configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `WarmupTrigger`.
+De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `WarmupTrigger` kenmerk.
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-| **type** | N.v.t.| Vereist: moet worden ingesteld op `warmupTrigger`. |
-| **direction** | N.v.t.| Vereist: moet worden ingesteld op `in`. |
-| **naam** | N.v.t.| Vereist: de naam van de variabele die wordt gebruikt in de functie code.|
+| **type** | n.v.t.| Vereist: moet worden ingesteld op `warmupTrigger`. |
+| **direction** | n.v.t.| Vereist: moet worden ingesteld op `in`. |
+| **De naam** | n.v.t.| Vereist: de naam van de variabele die wordt gebruikt in de functie code.|
 
 ## <a name="trigger---usage"></a>Trigger - gebruik
 
@@ -262,4 +262,4 @@ Er wordt geen aanvullende informatie verstrekt aan een door opwarm geactiveerde 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over Azure functions-triggers en-bindingen](functions-triggers-bindings.md)
+[Meer informatie over Azure functions-triggers en bindingen](functions-triggers-bindings.md)

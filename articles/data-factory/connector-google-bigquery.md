@@ -1,27 +1,27 @@
 ---
 title: Gegevens uit Google BigQuery kopiëren met behulp van Azure Data Factory
-description: Meer informatie over het kopiëren van gegevens uit Google BigQuery naar ondersteunde Sink-gegevens archieven met behulp van een Kopieer activiteit in een data factory-pijp lijn.
+description: Meer informatie over het kopiëren van gegevens uit Google BigQuery naar ondersteunde sink-gegevensopslag met behulp van een kopieeractiviteit in een data factory-pijplijn.
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.author: jingwang
-ms.openlocfilehash: d57260db74a1373eb461c560e013be620910eee9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c0eb043ce040f154050ef4c3675f165dad326e32
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680925"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929428"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Gegevens uit Google BigQuery kopiëren met behulp van Azure Data Factory
 
-In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit Google BigQuery te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
+In dit artikel bevat een overzicht over het gebruik van de Kopieeractiviteit in Azure Data Factory om gegevens te kopiëren uit Google BigQuery. Dit is gebaseerd op de [overzicht van Kopieeractiviteit](copy-activity-overview.md) artikel met daarin een algemeen overzicht van de kopieeractiviteit.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
@@ -30,40 +30,40 @@ Deze Google BigQuery-connector wordt ondersteund voor de volgende activiteiten:
 - [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
-U kunt gegevens uit Google BigQuery kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bronnen of sinks op basis van de Kopieer activiteit.
+U kunt gegevens uit Google BigQuery kopiëren naar een ondersteunde sink-gegevensopslag. Zie voor een lijst met gegevensarchieven die worden ondersteund als gegevensbronnen of PUT voor de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
 
-Data Factory biedt een ingebouwd stuur programma om connectiviteit mogelijk te maken. Daarom hoeft u niet hand matig een stuur programma te installeren om deze connector te gebruiken.
+Data Factory biedt een ingebouwde stuurprogramma als connectiviteit wilt inschakelen. Daarom moet u niet handmatig een stuurprogramma voor het gebruik van deze connector hebt geïnstalleerd.
 
 >[!NOTE]
->Deze Google BigQuery-connector is gebaseerd op de BigQuery-Api's. Houd er rekening mee dat BigQuery het maximale aantal binnenkomende aanvragen beperkt en de juiste quota per project afdwingt, de [quota's & limieten-API-aanvragen](https://cloud.google.com/bigquery/quotas#api_requests). Zorg ervoor dat u niet te veel gelijktijdige aanvragen naar het account wilt activeren.
+>Deze Google BigQuery-connector is gebaseerd op de APIs BigQuery. Houd er rekening mee dat BigQuery limieten voor de maximale snelheid van inkomende aanvragen en dwingt juiste quota op basis van per-project, verwijzen naar [quota en limieten - API-aanvragen](https://cloud.google.com/bigquery/quotas#api_requests). Zorg ervoor dat u te veel gelijktijdige aanvragen voor het account niet activeren.
 
 ## <a name="get-started"></a>Aan de slag
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor de Google BigQuery-connector.
+De volgende secties bevatten meer informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory-entiteiten specifieke naar de Google BigQuery-connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 
-De volgende eigenschappen worden ondersteund voor de Google BigQuery-gekoppelde service.
+De volgende eigenschappen worden ondersteund voor de Google BigQuery service gekoppelde.
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op **GoogleBigQuery**. | Ja |
-| project | De project-ID van het standaard BigQuery-project waarmee een query wordt uitgevoerd.  | Ja |
-| additionalProjects | Een door komma's gescheiden lijst met project-Id's van open bare BigQuery-projecten voor toegang.  | Nee |
-| requestGoogleDriveScope | Of u toegang tot Google Drive wilt aanvragen. Het toestaan van toegang tot Google Drive biedt ondersteuning voor federatieve tabellen die BigQuery gegevens combi neren met gegevens uit Google Drive. De standaard waarde is **False**.  | Nee |
-| authenticationType | Het OAuth 2,0-verificatie mechanisme dat wordt gebruikt voor verificatie. ServiceAuthentication kan alleen worden gebruikt op zelf-hostende Integration Runtime. <br/>Toegestane waarden zijn **UserAuthentication** en **ServiceAuthentication**. Raadpleeg de secties onder deze tabel voor meer eigenschappen en JSON-voor beelden voor deze verificatie typen. | Ja |
+| project | De project-ID van het project standaard BigQuery-query op.  | Ja |
+| additionalProjects | Een door komma's gescheiden lijst van project-id's van de openbare BigQuery projecten toegang krijgen tot.  | Nee |
+| requestGoogleDriveScope | Hiermee geeft u op of u voor het aanvragen van toegang tot Google Drive. Google Drive-toegang toe te staan, schakelt u ondersteuning voor federatieve-tabellen BigQuery-gegevens met gegevens uit Google Drive combineren. De standaardwaarde is **false**.  | Nee |
+| authenticationType | Het OAuth 2.0-verificatiemechanisme voor verificatie gebruikt. ServiceAuthentication kan alleen worden gebruikt voor zelfgehoste Cloudintegratieruntime. <br/>Toegestane waarden zijn **UserAuthentication** en **ServiceAuthentication**. Zie de secties onder deze tabel op meer eigenschappen en JSON-voorbeelden voor deze verificatietypen respectievelijk. | Ja |
 
-### <a name="using-user-authentication"></a>Gebruikers verificatie gebruiken
+### <a name="using-user-authentication"></a>Met behulp van verificatie van de gebruiker
 
-Stel de eigenschap authenticationType in op **UserAuthentication**en geef de volgende eigenschappen op, samen met algemene eigenschappen die in de vorige sectie zijn beschreven:
+Stel de eigenschap 'authenticationType' in op **UserAuthentication**, en geeft u de volgende eigenschappen samen met de algemene eigenschappen die worden beschreven in de vorige sectie:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
-| clientId | ID van de toepassing die wordt gebruikt voor het genereren van het vernieuwings token. | Nee |
-| clientSecret | Geheim van de toepassing die wordt gebruikt voor het genereren van het vernieuwings token. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Nee |
-| refreshToken | Het vernieuwings token dat is verkregen van Google, wordt gebruikt om toegang te verlenen aan BigQuery. Meer informatie over het verkrijgen van [OAuth 2,0-toegangs tokens](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) en [deze Community-Blog](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59). Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Nee |
+| clientId | ID van de toepassing die wordt gebruikt voor het genereren van het vernieuwingstoken. | Nee |
+| clientSecret | Geheim van de toepassing die wordt gebruikt voor het genereren van het vernieuwingstoken. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Nee |
+| refreshToken | Het vernieuwingstoken dat is verkregen van Google gebruikt voor de autorisatie van toegang tot BigQuery. Informatie over het verkrijgen van [het verkrijgen van OAuth 2.0-toegangstokens](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) en [deze communityblog](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59). Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Nee |
 
 **Voorbeeld:**
 
@@ -91,16 +91,16 @@ Stel de eigenschap authenticationType in op **UserAuthentication**en geef de vol
 }
 ```
 
-### <a name="using-service-authentication"></a>Service verificatie gebruiken
+### <a name="using-service-authentication"></a>Met behulp van service-verificatie
 
-Stel de eigenschap authenticationType in op **ServiceAuthentication**en geef de volgende eigenschappen op, samen met algemene eigenschappen die in de vorige sectie worden beschreven. Dit verificatie type kan alleen worden gebruikt op zelf-hostende Integration Runtime.
+Stel de eigenschap 'authenticationType' in op **ServiceAuthentication**, en geeft u de volgende eigenschappen samen met de algemene eigenschappen die worden beschreven in de vorige sectie. Dit verificatietype kan alleen worden gebruikt voor zelfgehoste Cloudintegratieruntime.
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
-| e-mail | De e-mail-ID van het service account die wordt gebruikt voor ServiceAuthentication. Het kan alleen worden gebruikt op zelf-hostende Integration Runtime.  | Nee |
-| keyFilePath | Het volledige pad naar het. p12-sleutel bestand dat wordt gebruikt om het e-mail adres van het service account te verifiëren. | Nee |
-| trustedCertPath | Het volledige pad van het. pem-bestand dat vertrouwde CA-certificaten bevat die worden gebruikt om de server te controleren wanneer u verbinding maakt via SSL. Deze eigenschap kan alleen worden ingesteld wanneer u SSL op zelf-hostende Integration Runtime gebruikt. De standaard waarde is het cacerts. pem-bestand dat is geïnstalleerd met de Integration runtime.  | Nee |
-| useSystemTrustStore | Hiermee geeft u op of u een CA-certificaat wilt gebruiken uit de systeem vertrouwens archief of vanuit een opgegeven PEM-bestand. De standaard waarde is **False**.  | Nee |
+| e-mail | De service-account e-mail-ID die wordt gebruikt voor ServiceAuthentication. Het kan alleen worden gebruikt voor zelfgehoste Cloudintegratieruntime.  | Nee |
+| keyFilePath | Het volledige pad naar het .p12-sleutelbestand die wordt gebruikt voor verificatie van het e-mailadres van de service-account. | Nee |
+| trustedCertPath | Het volledige pad van het .pem-bestand met vertrouwde CA-certificaten gebruikt om te controleren of de server wanneer u verbinding via SSL maakt. Deze eigenschap kan alleen worden ingesteld als u SSL op zelfgehoste Cloudintegratieruntime. De standaardwaarde is de cacerts.pem-bestand met de integratieruntime geïnstalleerd.  | Nee |
+| useSystemTrustStore | Hiermee geeft u op of u wilt gebruiken van een CA-certificaat uit het archief van de vertrouwensrelatie system of vanuit een opgegeven .pem-bestand. De standaardwaarde is **false**.  | Nee |
 
 **Voorbeeld:**
 
@@ -126,16 +126,16 @@ Stel de eigenschap authenticationType in op **ServiceAuthentication**en geef de 
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Google BigQuery-gegevensset.
+Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de Google BigQuery-gegevensset.
 
-Als u gegevens wilt kopiëren uit Google BigQuery, stelt u de eigenschap type van de gegevensset in op **GoogleBigQueryObject**. De volgende eigenschappen worden ondersteund:
+Als u wilt kopiëren van gegevens uit Google BigQuery, stel de eigenschap type van de gegevensset in **GoogleBigQueryObject**. De volgende eigenschappen worden ondersteund:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **GoogleBigQueryObject** | Ja |
-| Sets | De naam van de Google BigQuery-gegevensset. |Nee (als "query" in activiteit bron is opgegeven)  |
-| tabel | De naam van de tabel. |Nee (als "query" in activiteit bron is opgegeven)  |
-| tableName | De naam van de tabel. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik voor nieuwe werk belasting `dataset` en `table`. | Nee (als "query" in activiteit bron is opgegeven) |
+| sets | De naam van de Google BigQuery-gegevensset. |Nee (als 'query' in de activiteitbron is opgegeven)  |
+| table | Naam van de tabel. |Nee (als 'query' in de activiteitbron is opgegeven)  |
+| tableName | Naam van de tabel. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `dataset` en `table`voor nieuwe werk belasting. | Nee (als 'query' in de activiteitbron is opgegeven) |
 
 **Voorbeeld**
 
@@ -156,16 +156,16 @@ Als u gegevens wilt kopiëren uit Google BigQuery, stelt u de eigenschap type va
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door het Google BigQuery-bron type.
+Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door het brontype Google BigQuery.
 
-### <a name="googlebigquerysource-as-a-source-type"></a>GoogleBigQuerySource als bron type
+### <a name="googlebigquerysource-as-a-source-type"></a>GoogleBigQuerySource als een brontype
 
-Als u gegevens wilt kopiëren uit Google BigQuery, stelt u het bron type in de Kopieer activiteit in op **GoogleBigQuerySource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit.
+Om gegevens te kopiëren uit Google BigQuery, stelt u het brontype in de kopieeractiviteit naar **GoogleBigQuerySource**. De volgende eigenschappen worden ondersteund in de kopieeractiviteit **bron** sectie.
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **GoogleBigQuerySource**. | Ja |
-| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Een voorbeeld is `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
+| type | De eigenschap type van de bron voor kopiëren-activiteit moet worden ingesteld op **GoogleBigQuerySource**. | Ja |
+| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Een voorbeeld is `"SELECT * FROM MyTable"`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
 
 **Voorbeeld:**
 
@@ -204,4 +204,4 @@ Als u gegevens wilt kopiëren uit Google BigQuery, stelt u het bron type in de K
 Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in Data Factory.
+Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).

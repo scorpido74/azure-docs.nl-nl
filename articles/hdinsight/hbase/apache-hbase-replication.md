@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/15/2018
-ms.openlocfilehash: 18c7a06e656cbd5c16151381a76ec7725eb2785e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/06/2019
+ms.openlocfilehash: 5b1b85a0c600871cbedc478f3a56cf71ef8c2ca4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468423"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931497"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Apache HBase-cluster replicatie in virtuele Azure-netwerken instellen
 
@@ -68,15 +68,15 @@ Enkele van de in code vastgelegde waarden in de sjabloon:
 
 | Eigenschap | Waarde |
 |----------|-------|
-| Locatie | US - west |
-| VNet-naam | &lt;ClusterNamePrevix >-vnet1 |
+| Locatie | VS - west |
+| VNet-naam | &lt;ClusterNamePrevix>-vnet1 |
 | Adres ruimte voorvoegsel | 10.1.0.0/16 |
 | Subnetnaam | subnet 1 |
 | Subnetvoorvoegsel | 10.1.0.0/24 |
 | Subnet-naam (gateway) | GatewaySubnet (kan niet worden gewijzigd) |
 | Voor voegsel van subnet (gateway) | 10.1.255.0/27 |
 | Gateway naam | vnet1gw |
-| Gateway type | VPN |
+| Gatewaytype | VPN |
 | VPN-type gateway | RouteBased |
 | Gateway-SKU | Basic |
 | Gateway-IP | vnet1gwip |
@@ -85,15 +85,15 @@ Enkele van de in code vastgelegde waarden in de sjabloon:
 
 | Eigenschap | Waarde |
 |----------|-------|
-| Locatie | US - oost |
-| VNet-naam | &lt;ClusterNamePrevix >-vnet2 |
+| Locatie | VS - oost |
+| VNet-naam | &lt;ClusterNamePrevix>-vnet2 |
 | Adres ruimte voorvoegsel | 10.2.0.0/16 |
 | Subnetnaam | subnet 1 |
 | Subnetvoorvoegsel | 10.2.0.0/24 |
 | Subnet-naam (gateway) | GatewaySubnet (kan niet worden gewijzigd) |
 | Voor voegsel van subnet (gateway) | 10.2.255.0/27 |
 | Gateway naam | vnet2gw |
-| Gateway type | VPN |
+| Gatewaytype | VPN |
 | VPN-type gateway | RouteBased |
 | Gateway-SKU | Basic |
 | Gateway-IP | vnet1gwip |
@@ -104,7 +104,7 @@ In de laatste sectie maakt de sjabloon een virtuele Ubuntu-machine in elk van de
 
 Voor het installeren van een BIND moet yon het open bare IP-adres van de twee virtuele DNS-machines vinden.
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open de [Azure-portal](https://portal.azure.com).
 2. Open de virtuele DNS-machine door **resource groepen te selecteren > [naam resource groep] > [vnet1DNS]** .  De naam van de resource groep is het account dat u in de laatste procedure maakt. De standaard namen van de virtuele DNS-machines zijn *vnet1DNS* en *vnet2NDS*.
 3. Selecteer **Eigenschappen** om de pagina eigenschappen van het virtuele netwerk te openen.
 4. Noteer het **open bare IP-adres**en Controleer ook het **privé-IP-adres**.  Het privé-IP-adres is **10.1.0.4** voor vnet1DNS en **10.2.0.4** voor vnet2DNS.  
@@ -281,7 +281,7 @@ In de volgende stappen wordt beschreven hoe u de script actie script aanroept va
 
 **HBase-replicatie inschakelen vanuit de Azure Portal**
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Open het bron HBase-cluster.
 3. Selecteer **script acties**in het menu cluster.
 4. Selecteer aan de bovenkant van de pagina de optie **Nieuw verzenden**.
@@ -296,6 +296,8 @@ In de volgende stappen wordt beschreven hoe u de script actie script aanroept va
     
       > [!NOTE]
       > Gebruik hostname in plaats van FQDN voor zowel de bron-als het doel cluster DNS-naam.
+      >
+      > In dit scenario wordt ervan uitgegaan dat HN1 als actieve hoofd knooppunt. Controleer uw cluster om het actieve hoofd knooppunt te identificeren.
 
 6. Selecteer **Maken**. Het uitvoeren van het script kan enige tijd duren, vooral wanneer u het argument **-copydata** gebruikt.
 
@@ -312,12 +314,12 @@ Optionele argumenten:
 
 |Naam|Beschrijving|
 |----|-----------|
-|-su,--src-ambari-User | Hiermee geeft u de gebruikers naam van de beheerder voor Ambari op het HBase-bron cluster. De standaard waarde is **admin**. |
+|-su, --src-ambari-user | Hiermee geeft u de gebruikers naam van de beheerder voor Ambari op het HBase-bron cluster. De standaard waarde is **admin**. |
 |-du,--DST-ambari-User | Hiermee geeft u de gebruikers naam van de beheerder voor Ambari op het cluster van de doel-HBase. De standaard waarde is **admin**. |
 |-t,--tabel lijst | Hiermee worden de tabellen opgegeven die moeten worden gerepliceerd. Bijvoorbeeld:--Table-List = "Tabel1; tabel2; table3". Als u geen tabellen opgeeft, worden alle bestaande HBase-tabellen gerepliceerd.|
-|-m,--computer | Hiermee geeft u het hoofd knooppunt op waarop de script actie wordt uitgevoerd. De waarde is **hn0** of **HN1** en moet worden gekozen op basis van het actieve hoofd knooppunt. Gebruik deze optie wanneer u het script $0 als script actie uitvoert vanuit de HDInsight-portal of Azure PowerShell.|
-|-CP,-copydata | Hiermee schakelt u de migratie van bestaande gegevens in op de tabellen waarvoor replicatie is ingeschakeld. |
-|-rpm,-repliceren-Phoenix-meta | Hiermee schakelt u replicatie in voor Breda-systeem tabellen. <br><br>*Gebruik deze optie met een waarschuwing.* U wordt aangeraden Bredae tabellen opnieuw te maken op replica clusters voordat u dit script gebruikt. |
+|-m,--computer | Hiermee geeft u het hoofd knooppunt op waarop de script actie wordt uitgevoerd. De waarde moet worden gekozen op basis van het actieve hoofd knooppunt. Gebruik deze optie wanneer u het script $0 als script actie uitvoert vanuit de HDInsight-portal of Azure PowerShell.|
+|-cp, -copydata | Hiermee schakelt u de migratie van bestaande gegevens in op de tabellen waarvoor replicatie is ingeschakeld. |
+|-rpm, -replicate-phoenix-meta | Hiermee schakelt u replicatie in voor Breda-systeem tabellen. <br><br>*Gebruik deze optie met een waarschuwing.* U wordt aangeraden Bredae tabellen opnieuw te maken op replica clusters voordat u dit script gebruikt. |
 |-h,--Help | Hiermee worden gebruiks gegevens weer gegeven. |
 
 De sectie `print_usage()` van het [script](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) bevat een gedetailleerde uitleg van de para meters.
@@ -363,7 +365,7 @@ De sectie `print_usage()` van het [script](https://github.com/Azure/hbase-utils/
 - **Kopieer specifieke tabellen (test1, Test2 en Test3) voor alle rijen die tot nu toe zijn bewerkt (huidige tijds tempel)** :
 
         -m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
-  of
+  Of
 
         -m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
 

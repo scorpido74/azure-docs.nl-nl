@@ -1,17 +1,18 @@
 ---
-title: Trans formatie Azure Data Factory toewijzing van gegevens stroom selecteren
+title: Gegevens stroom koppelen selecteren trans formatie
 description: Trans formatie Azure Data Factory toewijzing van gegevens stroom selecteren
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 02/12/2019
-ms.openlocfilehash: 6ef9712dd2fd6b8d53fd4ad2c3e07e1d6c8f1aec
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a255d89aa4850d1249f1af9bdd0cb43b0826914f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72387205"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930233"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Gegevens stroom koppelen selecteren trans formatie
 
@@ -41,7 +42,7 @@ Select kan ook worden gebruikt als een manier om de kolommen uit uw gegevens str
 > [!NOTE]
 > Als u de toewijzings regels wilt wissen, klikt u op de knop **Reset** .
 
-## <a name="mapping"></a>Mapping
+## <a name="mapping"></a>Toewijzing
 Standaard worden alle kolommen automatisch toegewezen door trans formatie selecteren, die alle binnenkomende kolommen doorgeeft aan dezelfde naam in de uitvoer. De naam van de uitvoer stroom die is ingesteld in instellingen selecteren, definieert een nieuwe alias naam voor de stroom. Als u de optie instellen voor automatisch toewijzen inschakelt, kunt u de hele stroom een alias met alle kolommen.
 
 ![Transformatie regels selecteren](media/data-flow/rule2.png "Toewijzing op basis van een regel")

@@ -1,5 +1,5 @@
 ---
-title: Voer een SSIS-pakket uit met de activiteit voor het uitvoeren van SSIS-pakketten-Azure
+title: Voer een SSIS-pakket uit met de activiteit voor het uitvoeren van SSIS-pakketten
 description: In dit artikel wordt beschreven hoe u een SQL Server Integration Services (SSIS)-pakket uitvoert in een Azure Data Factory-pijp lijn met behulp van de activiteit voor het uitvoeren van SSIS-pakketten.
 services: data-factory
 documentationcenter: ''
@@ -8,17 +8,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 11/14/2019
-author: swinarko
 ms.author: sawinark
+author: swinarko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: ddb7cd06934c85243717dd2a34dc99bae582b6fa
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 11/14/2019
+ms.openlocfilehash: 6027c2d94535ca2ef5c41e7027fe070c6ccb21a0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122950"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926484"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Voer een SSIS-pakket uit met de activiteit voor het uitvoeren van SSIS-pakketten in Azure Data Factory
 In dit artikel wordt beschreven hoe u een SQL Server Integration Services (SSIS)-pakket uitvoert in een Azure Data Factory-pijp lijn met behulp van de activiteit voor het uitvoeren van SSIS-pakketten. 
@@ -57,7 +58,7 @@ In deze stap gebruikt u de Data Factory-gebruikers interface of-app om een pijp 
 
     Wanneer u uw Key kluis gekoppelde service maakt of bewerkt, kunt u uw bestaande sleutel kluis selecteren of bewerken of een nieuwe maken. Zorg ervoor dat u Data Factory beheerde identiteits toegang verleent aan uw sleutel kluis als u dit nog niet hebt gedaan. U kunt uw geheimen ook rechtstreeks invoeren in de volgende indeling: `<Key vault linked service name>/<secret name>/<secret version>`. Als uw pakket 32 bits-runtime nodig heeft om uit te voeren, schakelt u het selectie vakje **32-bits runtime** in.
 
-   Voor **de pakket locatie**selecteert u **SSISDB**, **Bestands systeem (pakket)** , **Bestands systeem (project)** of **Inge sloten pakket**. Als u **SSISDB** als uw pakket locatie selecteert, die automatisch wordt geselecteerd als uw Azure-SSIS IR is ingericht met de SSIS-catalogus (SSISDB) die wordt gehost door een Azure SQL database server of beheerde instantie, geeft u op welk pakket moet worden uitgevoerd dat is geïmplementeerd in SSISDB. 
+   Voor **de pakket locatie**selecteert u **SSISDB**, **Bestands systeem (pakket)** , **Bestands systeem (project)** of **Inge sloten pakket**. Als u **SSISDB** als uw pakket locatie selecteert, die automatisch wordt geselecteerd als uw Azure-SSIS IR is ingericht met de SSIS-catalogus (SSISDB) die wordt gehost door een Azure SQL database server of beheerde instantie, geeft u op welk pakket moet worden uitgevoerd dat is GEÏMPLEMENTEERD in SSISDB. 
 
     Als uw Azure-SSIS IR actief is en het selectie vakje **hand matige invoer** is uitgeschakeld, bladert u naar uw bestaande mappen, projecten, pakketten of omgevingen en selecteert u deze in SSISDB. Selecteer **vernieuwen** om de zojuist toegevoegde mappen, projecten, pakketten of omgevingen van SSISDB op te halen, zodat deze beschikbaar zijn voor bladeren en selectie. Als u de omgevingen voor uw pakket uitvoeringen wilt zoeken of selecteren, moet u uw projecten vooraf configureren om deze omgevingen toe te voegen als verwijzingen van dezelfde mappen onder SSISDB. Zie [SSIS-omgevingen maken en toewijzen](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014)voor meer informatie.
 
@@ -69,13 +70,13 @@ In deze stap gebruikt u de Data Factory-gebruikers interface of-app om een pijp 
 
    ![Eigenschappen instellen op het tabblad instellingen-hand matig](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
-   Als u **Bestands systeem (pakket)** als uw pakket locatie selecteert, dat automatisch wordt geselecteerd als uw Azure-SSIS IR is ingericht zonder SSISDB, geeft u het pakket op dat moet worden uitgevoerd door een UNC-pad (Universal Naming Convention) naar uw pakket bestand op te geven (@no __t_1_) in het vak **pakket pad** .`.dtsx` Als u bijvoorbeeld uw pakket opslaat in Azure Files, wordt het pad van het pakket `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`. 
+   Als u **Bestands systeem (pakket)** als uw pakket locatie selecteert, dat automatisch wordt geselecteerd als uw Azure-SSIS IR is ingericht zonder SSISDB, geeft u het pakket op dat moet worden uitgevoerd door een UNC-pad (Universal Naming Convention) naar uw pakket bestand (`.dtsx`) op te geven in het vak **pakket pad** . Als u bijvoorbeeld uw pakket opslaat in Azure Files, wordt het pad van het pakket `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`. 
    
    Als u uw pakket in een afzonderlijk bestand configureert, moet u ook een UNC-pad naar uw configuratie bestand (`.dtsConfig`) in het vak **configuratiepad** opgeven. Als u bijvoorbeeld uw configuratie in Azure Files opslaat, wordt het configuratiepad `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`.
 
    ![Eigenschappen instellen op het tabblad instellingen-hand matig](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
 
-   Als u **Bestands systeem (project)** als uw pakket locatie selecteert, geeft u het pakket op dat moet worden uitgevoerd door een UNC-pad naar uw project bestand (`.ispac`) op te geven in het vak **pad naar project** en een pakket bestand (`.dtsx`) van uw project in de naam van het **pakket** keuzelijst. Als u bijvoorbeeld het project in Azure Files opslaat, wordt het pad van het project `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`.
+   Als u **Bestands systeem (project)** als uw pakket locatie selecteert, geeft u het pakket op dat moet worden uitgevoerd door een UNC-pad naar uw project bestand (`.ispac`) op te geven in het vak **pad naar project** en een pakket bestand (`.dtsx`) van uw project in het vak **pakket naam** . Als u bijvoorbeeld het project in Azure Files opslaat, wordt het pad van het project `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`.
 
    ![Eigenschappen instellen op het tabblad instellingen-hand matig](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
 
@@ -99,17 +100,17 @@ In deze stap gebruikt u de Data Factory-gebruikers interface of-app om een pijp 
    
    Voor alle eerder genoemde UNC-paden moet de volledige naam van het bestand kleiner zijn dan 260 tekens. De mapnaam mag niet langer zijn dan 248 tekens.
 
-1. Als uw Azure-SSIS IR wordt uitgevoerd op het tabblad **SSIS para meters** voor de activiteit EXECUTe SSIS-pakket, wordt **SSISDB** geselecteerd als uw pakket locatie en wordt het selectie vakje **hand matige vermeldingen** op het tabblad **instellingen** uitgeschakeld, de bestaande SSIS de para meters in het geselecteerde project of pakket van SSISDB worden weer gegeven, zodat u waarden aan hen kunt toewijzen. Als dat niet het geval is, kunt u ze één voor één invoeren om waarden hand matig toe te wijzen. Zorg ervoor dat deze bestaan en correct zijn ingevoerd voor het slagen van de pakket uitvoering. 
+1. Als uw Azure-SSIS IR wordt uitgevoerd op het tabblad **SSIS-para meters** voor de activiteit EXECUTe SSIS-pakket, wordt **SSISDB** geselecteerd als uw pakket locatie en wordt het selectie vakje **hand matige vermeldingen** op het tabblad **instellingen** uitgeschakeld. de bestaande SSIS-para meters in het geselecteerde project of pakket van SSISDB worden weer gegeven zodat u waarden aan hen kunt toewijzen. Als dat niet het geval is, kunt u ze één voor één invoeren om waarden hand matig toe te wijzen. Zorg ervoor dat deze bestaan en correct zijn ingevoerd voor het slagen van de pakket uitvoering. 
    
-   Als u het beveiligings niveau **EncryptSensitiveWithUserKey** hebt gebruikt toen u het pakket hebt gemaakt via SQL Server Data tools en het **Bestands systeem (pakket)** of het **Bestands systeem (project)** is geselecteerd als uw pakket locatie, moet u ook opnieuw invoeren uw gevoelige para meters om waarden toe te wijzen in configuratie bestanden of op dit tabblad. 
+   Als u het **EncryptSensitiveWithUserKey** -beveiligings niveau hebt gebruikt toen u het pakket hebt gemaakt via SQL Server Data tools en het **Bestands systeem (pakket)** of het **Bestands systeem (project)** is geselecteerd als uw pakket locatie, moet u ook uw gevoelige para meters opnieuw invoeren om waarden toe te wijzen aan de configuratie bestanden of op dit tabblad. 
    
    Wanneer u waarden toewijst aan uw para meters, kunt u dynamische inhoud toevoegen met behulp van expressies, functies, Data Factory systeem variabelen en Data Factory pijplijn parameters of-variabelen. U kunt ook geheimen die zijn opgeslagen in uw sleutel kluis gebruiken als waarden (zie vorige).
 
    ![Eigenschappen instellen op het tabblad SSIS-para meters](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
 
-1. Als uw Azure-SSIS IR wordt uitgevoerd op het tabblad **verbindings beheer** van de activiteit uitvoeren SSIS-pakket, wordt **SSISDB** geselecteerd als uw pakket locatie en wordt het selectie vakje **hand matige vermeldingen** op het tabblad **instellingen** uitgeschakeld, de bestaande verbindings beheer in uw geselecteerde project of pakket van SSISDB wordt weer gegeven om waarden aan hun eigenschappen toe te wijzen. Als dat niet het geval is, kunt u ze één voor één invoeren om waarden hand matig toe te wijzen aan hun eigenschappen. Zorg ervoor dat deze bestaan en correct zijn ingevoerd voor het slagen van de pakket uitvoering. 
+1. Op het tabblad **verbindings beheer** voor de activiteit voor het uitvoeren van SSIS-pakketten, als uw Azure-SSIS IR wordt uitgevoerd, **SSISDB** is geselecteerd als uw pakket locatie en het selectie vakje **hand matige vermeldingen** op het tabblad **instellingen** is uitgeschakeld, worden de bestaande verbindings beheer in uw geselecteerde project of pakket van SSISDB weer gegeven om waarden aan hun eigenschappen toe te wijzen. Als dat niet het geval is, kunt u ze één voor één invoeren om waarden hand matig toe te wijzen aan hun eigenschappen. Zorg ervoor dat deze bestaan en correct zijn ingevoerd voor het slagen van de pakket uitvoering. 
    
-   Als u het beveiligings niveau **EncryptSensitiveWithUserKey** hebt gebruikt toen u het pakket hebt gemaakt via SQL Server Data tools en het **Bestands systeem (pakket)** of het **Bestands systeem (project)** is geselecteerd als uw pakket locatie, moet u ook opnieuw invoeren de eigenschappen van uw gevoelige verbindings beheer om waarden toe te wijzen in configuratie bestanden of op dit tabblad. 
+   Als u het **EncryptSensitiveWithUserKey** -beveiligings niveau hebt gebruikt toen u het pakket hebt gemaakt via SQL Server Data tools en het **Bestands systeem (pakket)** of het **Bestands systeem (project)** is geselecteerd als uw pakket locatie, moet u ook de eigenschappen van uw gevoelige verbindings beheer opnieuw invoeren om waarden toe te wijzen aan de configuratie bestanden of op dit tabblad. 
    
    Wanneer u waarden toewijst aan de eigenschappen van verbindings beheer, kunt u dynamische inhoud toevoegen met behulp van expressies, functies, Data Factory systeem variabelen en Data Factory pijplijn parameters of-variabelen. U kunt ook geheimen die zijn opgeslagen in uw sleutel kluis gebruiken als waarden (zie vorige).
 
@@ -117,7 +118,7 @@ In deze stap gebruikt u de Data Factory-gebruikers interface of-app om een pijp 
 
 1. Voer op het tabblad **Eigenschappen onderdrukkingen** voor de activiteit uitvoeren SSIS-pakket de paden in van bestaande eigenschappen in het geselecteerde pakket één voor één om hand matig waarden toe te wijzen. Zorg ervoor dat deze bestaan en correct zijn ingevoerd voor het slagen van de pakket uitvoering. Als u bijvoorbeeld de waarde van uw gebruikers variabele wilt overschrijven, voert u het pad in de volgende indeling in: `\Package.Variables[User::<variable name>].Value`. 
    
-   Als u het beveiligings niveau **EncryptSensitiveWithUserKey** hebt gebruikt toen u het pakket hebt gemaakt via SQL Server Data tools en het **Bestands systeem (pakket)** of het **Bestands systeem (project)** is geselecteerd als uw pakket locatie, moet u ook opnieuw invoeren uw gevoelige eigenschappen om waarden toe te wijzen in configuratie bestanden of op dit tabblad. 
+   Als u het **EncryptSensitiveWithUserKey** -beveiligings niveau hebt gebruikt toen u het pakket hebt gemaakt via SQL Server Data tools en het **Bestands systeem (pakket)** of het **Bestands systeem (project)** is geselecteerd als uw pakket locatie, moet u ook uw gevoelige eigenschappen opnieuw invoeren om waarden toe te wijzen aan de configuratie bestanden of op dit tabblad. 
    
    Wanneer u waarden toewijst aan uw eigenschappen, kunt u dynamische inhoud toevoegen met behulp van expressies, functies, Data Factory systeem variabelen en Data Factory pijplijn parameters of-variabelen.
 

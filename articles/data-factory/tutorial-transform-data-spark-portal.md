@@ -5,18 +5,17 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: b0df6264eb38cbbacd5f624b634eea5f742adbc7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 34c2a27d047888d1e763a0a99461e7eb4b9fb203
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683321"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925103"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Gegevens transformeren in de cloud met behulp van een Spark-activiteit in Azure Data Factory
 In deze zelfstudie gebruikt u Azure Portal om een pijplijn voor Azure Data Factory te maken. Deze pijplijn transformeert gegevens met behulp van een Spark-activiteit en een gekoppelde Azure HDInsight-service op aanvraag. 
@@ -24,10 +23,10 @@ In deze zelfstudie gebruikt u Azure Portal om een pijplijn voor Azure Data Facto
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory. 
+> * Een gegevensfactory maakt. 
 > * Een pijplijn maken die een Spark-activiteit gebruikt.
 > * Een pijplijnuitvoering activeren.
-> * Controleer de pijplijnuitvoering.
+> * De pijplijnuitvoering controleert.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
@@ -81,7 +80,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 1. Maak in de map **spark** een submap met de naam **inputfiles**. 
 1. Upload het bestand **minecraftstory.txt** naar de submap **inputfiles**. 
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
 1. Selecteer **Nieuw** in het menu links, selecteer **Gegevens en analyses** en selecteer vervolgens **Data Factory**. 
@@ -102,7 +101,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
          
    Voor sommige van de stappen in deze snelstartgids wordt ervan uitgegaan dat u voor de resourcegroep de naam **ADFTutorialResourceGroup** gebruikt. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/resource-group-overview.md) voor meer informatie.  
 1. Selecteer **V2** als **Versie**.
-1. Selecteer voor **Locatie** een locatie voor de data factory. 
+1. Selecteer voor **Locatie** de locatie voor de data factory. 
 
    Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensarchieven (zoals Azure Storage en Azure SQL Database) en berekeningen (zoals Azure HDInsight) die Data Factory gebruikt, kunnen zich in andere regio's bevinden.
 
@@ -110,7 +109,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 1. Zodra de bewerking is voltooid, ziet u de pagina **Data Factory**. Selecteer de tegel **Maken en controleren** om de gebruikersinterface van Data Factory te openen op een afzonderlijk tabblad.
 
-    ![Startpagina van Data Factory, met de tegel Maken en controleren](./media/tutorial-transform-data-spark-portal/data-factory-home-page.png)
+    ![Startpagina voor de data factory, met de tegel Maken en controleren](./media/tutorial-transform-data-spark-portal/data-factory-home-page.png)
 
 ## <a name="create-linked-services"></a>Gekoppelde services maken
 In deze sectie maakt u twee gekoppelde services: 
@@ -216,7 +215,7 @@ Selecteer **trigger toevoegen** op de werk balk en selecteer **nu activeren**.
    
 1. Selecteer regelmatig **Vernieuwen** om de status van de pijplijnuitvoering te controleren. 
 
-   ![Tabblad voor het controleren van pijplijnuitvoeringen met knop Vernieuwen](./media/tutorial-transform-data-spark-portal/monitor-tab.png)
+   ![Tabblad voor het controleren van pijplijnuitvoeringen, met de knop Vernieuwen](./media/tutorial-transform-data-spark-portal/monitor-tab.png)
 
 1. Selecteer **Uitvoering van activiteiten weergeven** in de kolom **Acties** om de uitvoering van activiteiten weer te geven die zijn gekoppeld aan de pijplijnuitvoering.
 
@@ -245,10 +244,10 @@ Het bestand moet elk woord uit het invoertekstbestand bevatten, plus het aantal 
 De pijplijn in dit voorbeeld transformeert gegevens met behulp van een Spark-activiteit en een gekoppelde HDInsight-service op aanvraag. U hebt geleerd hoe u: 
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory. 
+> * Een gegevensfactory maakt. 
 > * Een pijplijn maken die een Spark-activiteit gebruikt.
 > * Een pijplijnuitvoering activeren.
-> * Controleer de pijplijnuitvoering.
+> * De pijplijnuitvoering controleert.
 
 Ga naar de volgende zelfstudie voor informatie over het transformeren van gegevens door een Hive-script uit te voeren in een Azure HDInsight-cluster in een virtueel netwerk: 
 

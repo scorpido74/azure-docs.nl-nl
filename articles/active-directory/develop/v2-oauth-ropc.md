@@ -1,6 +1,7 @@
 ---
-title: Micro soft Identity-platform gebruiken om gebruikers aan te melden met behulp van de ROPC-toekenning (resource owner password Credential) | Azure
-description: Ondersteuning voor browser-minder verificatie stromen met behulp van het wacht woord voor de toewijzing van de resource-eigenaar.
+title: Aanmelden met wachtwoord referenties voor de resource-eigenaar | Azure
+titleSuffix: Microsoft identity platform
+description: Ondersteuning voor browser-minder authenticatie stromen met behulp van de ROPC-subsidie (resource owner password Credential).
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4504a1ae60aaac790ca15c120433159c2ff78fa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 24c6bfdc7efc8f15378d4a126b978bc77741b43c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207772"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919321"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credentials"></a>Referenties voor het micro soft Identity-platform en de OAuth 2,0 Resource owner-wacht woord
+# <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Referenties voor het micro soft Identity platform en het OAuth 2,0 Resource owner-wacht woord
 
 Het micro soft Identity-platform biedt ondersteuning voor de [OAuth 2,0 Resource owner password credentials-toekenning (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3), waarmee een toepassing zich kan aanmelden bij de gebruiker door rechtstreeks hun wacht woord te verwerken.  In dit artikel wordt beschreven hoe u direct kunt Program meren met het protocol in uw toepassing.  Als dat mogelijk is, kunt u het beste de ondersteunde micro soft-verificatie bibliotheken (MSAL) gebruiken in plaats van [tokens te verkrijgen en beveiligde web-api's](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)aan te roepen.  Bekijk ook de voor beeld- [apps die gebruikmaken van MSAL](sample-v2-code.md).
 
@@ -70,11 +71,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parameter | Voorwaarde | Beschrijving |
 | --- | --- | --- |
-| `tenant` | Vereist | De Directory-Tenant waarvan u de gebruiker wilt registreren. Dit kan een GUID of beschrijvende naam zijn. Deze para meter kan niet worden ingesteld op `common` of `consumers`, maar kan worden ingesteld op `organizations`. |
-| `client_id` | Vereist | De ID van de toepassing (client) die de [Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina die aan uw app is toegewezen. | 
-| `grant_type` | Vereist | Moet worden ingesteld op `password`. |
-| `username` | Vereist | Het e-mail adres van de gebruiker. |
-| `password` | Vereist | Het wacht woord van de gebruiker. |
+| `tenant` | Verplicht | De Directory-Tenant waarvan u de gebruiker wilt registreren. Dit kan een GUID of beschrijvende naam zijn. Deze para meter kan niet worden ingesteld op `common` of `consumers`, maar kan worden ingesteld op `organizations`. |
+| `client_id` | Verplicht | De ID van de toepassing (client) die de [Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina die aan uw app is toegewezen. | 
+| `grant_type` | Verplicht | Moet worden ingesteld op `password`. |
+| `username` | Verplicht | Het e-mailadres van de gebruiker. |
+| `password` | Verplicht | Het wacht woord van de gebruiker. |
 | `scope` | Aanbevolen | Een door spaties gescheiden lijst met [bereiken](v2-permissions-and-consent.md)of machtigingen die voor de app zijn vereist. In een interactieve stroom moet de beheerder of de gebruiker vóór de tijd toestemming geven aan deze bereiken. |
 | `client_secret`| Soms vereist | Als uw app een open bare client is, kunnen de `client_secret` of `client_assertion` niet worden opgenomen.  Als de app een vertrouwelijke client is, moet deze worden opgenomen. | 
 | `client_assertion` | Soms vereist | Een andere vorm van `client_secret`, gegenereerd met een certificaat.  Zie [certificaat referenties](active-directory-certificate-credentials.md) voor meer informatie. | 

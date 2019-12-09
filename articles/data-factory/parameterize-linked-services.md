@@ -5,18 +5,17 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/18/2018
 author: djpmsft
 ms.author: daperlov
-manager: craigg
-ms.openlocfilehash: 46ea65c09ec9567bb03a524470a3550c9cdfd00e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 0d8418d846d26d4104718df6d0fc66d264ef4a54
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684574"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918828"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Para meters gekoppelde services in Azure Data Factory
 
@@ -31,7 +30,7 @@ Bekijk de volgende video voor een inleiding en demonstratie van zeven minuten vo
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Parameterize-connections-to-your-data-stores-in-Azure-Data-Factory/player]
 
-## <a name="supported-data-stores"></a>Ondersteunde gegevens archieven
+## <a name="supported-data-stores"></a>Ondersteunde gegevensarchieven
 
 Op dit moment wordt de gekoppelde service parameterisering ondersteund in de Data Factory-gebruikers interface in de Azure Portal voor de volgende gegevens archieven. Voor alle andere gegevens archieven kunt u de gekoppelde service para meters door het pictogram **code** te selecteren op het tabblad **verbindingen** en de JSON-editor te gebruiken.
 - Azure SQL Database
@@ -41,7 +40,7 @@ Op dit moment wordt de gekoppelde service parameterisering ondersteund in de Dat
 - Cosmos DB
 - Amazon Redshift
 - MySQL
-- Azure Database for MySQL
+- Azure Database voor MySQL
 
 ## <a name="data-factory-ui"></a>Gebruikersinterface van Data Factory
 

@@ -1,5 +1,5 @@
 ---
-title: Java-traceer logboeken verkennen in Azure-toepassing Insights | Microsoft Docs
+title: Java-traceer logboeken verkennen in Azure-toepassing Insights
 description: Log4J-of logback-traceringen zoeken in Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/18/2019
-ms.openlocfilehash: a1a0a1462c8a4e52a065eafad315aab3ddae5f3b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f552ccdbc67df93913c698e5d763dbb62b48a4ad
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74784592"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927233"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Java-traceer logboeken verkennen in Application Insights
 Als u logback of Log4J (v 1.2 of v 2.0) gebruikt voor tracering, kunt u uw traceer logboeken automatisch laten verzenden naar Application Insights waar u ze kunt verkennen en doorzoeken.
@@ -77,7 +77,7 @@ Vernieuw vervolgens de Project afhankelijkheden om de binaire bestanden te downl
     </dependencies>
 ```
 
-*Log4J v 2.0*
+*Log4J v2.0*
 
 ```XML
 
@@ -90,7 +90,7 @@ Vernieuw vervolgens de Project afhankelijkheden om de binaire bestanden te downl
     </dependencies>
 ```
 
-*Log4J v 1.2*
+*Log4J v1.2*
 
 ```XML
 
@@ -115,13 +115,13 @@ Vernieuw vervolgens de Project afhankelijkheden om de binaire bestanden te downl
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-logback', version: '2.0.+'
 ```
 
-**Log4J v 2.0**
+**Log4J v2.0**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '2.0.+'
 ```
 
-**Log4J v 1.2**
+**Log4J v1.2**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j1_2', version: '2.0.+'
@@ -134,7 +134,7 @@ Volg de richt lijnen om Application Insights Java SDK hand matig te installeren,
 | --- | --- | --- |
 | Logback |[Logback-toevoeger jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
 | Log4J v 2.0 |[Log4J v2-toevoeger jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
-| Log4j v 1.2 |[Log4J v 1.2-toevoeger jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
+| Log4j v1.2 |[Log4J v 1.2-toevoeger jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
 
 
 ### <a name="add-the-appender-to-your-logging-framework"></a>Voeg de toevoegder toe aan uw Framework voor logboek registratie
@@ -153,7 +153,7 @@ Als u wilt beginnen met het ophalen van traceringen, voegt u het relevante code 
     </root>
 ```
 
-*Log4J v 2.0*
+*Log4J v2.0*
 
 ```XML
 
@@ -169,7 +169,7 @@ Als u wilt beginnen met het ophalen van traceringen, voegt u het relevante code 
     </Configuration>
 ```
 
-*Log4J v 1.2*
+*Log4J v1.2*
 
 ```XML
 

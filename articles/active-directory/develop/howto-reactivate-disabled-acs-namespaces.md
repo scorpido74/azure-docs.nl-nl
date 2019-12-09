@@ -1,108 +1,105 @@
 ---
-title: Opnieuw activeren uitgeschakelde naamruimten van de Azure Access controleservice (ACS)
-description: Meer informatie over het zoeken en inschakelen van uw Azure Access Control Service (ACS)-naamruimten en aanvragen van een uitbreiding van bewaring ingeschakeld tot en met 4 februari 2019.
+title: Uitgeschakelde Azure Access Control Service (ACS)-naam ruimten opnieuw activeren
+description: Meer informatie over het zoeken naar en inschakelen van uw Azure Access Control Service (ACS)-naam ruimten en een uitbrei ding aanvragen om ze in te scha kelen tot 4 februari 2019.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cb17109d53c6e08c8607959207e367086032f6d
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 590fc99861035ce1a5219a3cfd788159c6c2a19b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482713"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917706"
 ---
-# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Procedure: Uitgeschakelde naamruimten van de Access Control Service opnieuw activeren
+# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Procedure: uitgeschakelde Access Control Service naam ruimten opnieuw activeren
 
-In November 2017, hebben we aangekondigd dat Microsoft Azure Access Control Service (ACS), een service van Azure Active Directory (Azure AD), wordt stopgezet op 7 November 2018.
+Op 2017 Novemberen we dat Microsoft Azure Access Control Service (ACS), een service van Azure Active Directory (Azure AD), buiten gebruik wordt gesteld op 7 november 2018.
 
-Aangezien vervolgens e-mailberichten naar de ACS-abonnementen e-mailadres beheerder over de ACS buiten gebruik stellen 12 maanden, 9 maanden, 6 maanden, drie maanden, 1 maand, 2 weken, 1 week, en 1 dag vóór de vervaldatum van 7 November 2018 is verzonden.
+Sinds nu hebben we e-mail berichten verzonden naar de beheerders-e-mail van de ACS-abonnementen over de uittreding van de ACS 12 maanden, negen maanden, 6 maanden, drie maanden, 1 maand, 2 weken, 1 week en 1 dag vóór de datum van uittreding van 7 november 2018.
 
-Op 3 oktober 2018, hebben we aangekondigd (via e-mail en [een blogbericht](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)) een extensie-aanbieding voor klanten die hun worden gemigreerd om de 7 November 2018 kan niet worden voltooid. De aankondiging had ook instructies voor het aanvragen van de extensie.
+Op 3 oktober 2018 hebben we (via e-mail en [een blog bericht](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)) een verlengings aanbod aangekondigd aan klanten die hun migratie niet vóór 7 november 2018 kunnen volt ooien. De aankondiging bevat ook instructies voor het aanvragen van de uitbrei ding.
 
-## <a name="why-your-namespace-is-disabled"></a>Waarom uw naamruimte is uitgeschakeld
+## <a name="why-your-namespace-is-disabled"></a>Waarom uw naam ruimte is uitgeschakeld
 
-Als u dit nog niet hebt aangemeld voor de extensie, gaan we het uitschakelen van ACS-naamruimten vanaf 7 November 2018. U moet hebt aangevraagd de extensie voor 4 februari 2019 al; anders niet mogelijk om in te schakelen van de naamruimten via PowerShell.
+Als u zich nog niet hebt aangemeld voor de uitbrei ding, beginnen we met het uitschakelen van ACS-naam ruimten vanaf 7 november 2018. U moet de uitbrei ding van 4 februari 2019 al hebben aangevraagd. anders is het niet mogelijk om de naam ruimten via Power shell in te scha kelen.
 
 > [!NOTE]
-> U moet een servicebeheerder of medebeheerder van het abonnement voor het uitvoeren van de PowerShell-opdrachten en verlengen.
+> U moet een service beheerder of mede beheerder van het abonnement zijn om de Power shell-opdrachten uit te voeren en een uitbrei ding aan te vragen.
 
-## <a name="find-and-enable-your-acs-namespaces"></a>Zoeken en inschakelen van de ACS-naamruimten
+## <a name="find-and-enable-your-acs-namespaces"></a>Uw ACS-naam ruimten zoeken en inschakelen
 
-U kunt PowerShell ACS lijst met alle ACS-naamruimten en opnieuw activeren die zijn uitgeschakeld.
+U kunt ACS Power shell gebruiken om alle ACS-naam ruimten weer te geven en opnieuw te activeren die zijn uitgeschakeld.
 
-1. Downloaden en installeren van ACS PowerShell:
-    1. Ga naar de PowerShell Gallery en download [Acs.Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2).
-    1. De module installeren:
+1. ACS Power shell downloaden en installeren:
+    1. Ga naar het PowerShell Gallery en down load [ACS. namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2).
+    1. Installeer de module:
 
         ```powershell
         Install-Module -Name Acs.Namespaces
         ```
 
-    1. Haal een lijst van alle mogelijke opdrachten:
+    1. Een lijst met alle mogelijke opdrachten ophalen:
 
         ```powershell
         Get-Command -Module Acs.Namespaces
         ```
 
-        Hulp op een specifieke opdracht uitvoeren:
+        Voer het volgende uit om hulp te krijgen voor een specifieke opdracht:
 
         ```powershell
         Get-Help [Command-Name] -Full
         ```
     
-        waar `[Command-Name]` is de naam van de ACS-opdracht.
-1. Verbinding maken met ACS met behulp van de **Connect AcsAccount** cmdlet. 
+        waarbij `[Command-Name]` de naam is van de ACS-opdracht.
+1. Maak verbinding met ACS met de cmdlet **Connect-AcsAccount** . 
 
-    U moet mogelijk uw uitvoeringsbeleid wijzigen door te voeren **Set-ExecutionPolicy** voordat u de opdracht kunt uitvoeren.
-1. Lijst van uw beschikbare Azure-abonnementen met behulp van de **Get-AcsSubscription** cmdlet.
-1. Lijst met uw ACS-naamruimten op met de **Get-AcsNamespace** cmdlet.
-1. Bevestig dat de naamruimten zijn uitgeschakeld door te bevestigen dat `State` is `Disabled`.
+    Mogelijk moet u het uitvoerings beleid wijzigen door **Set-ExecutionPolicy** uit te voeren voordat u de opdracht kunt uitvoeren.
+1. Vermeld uw beschik bare Azure-abonnementen met de cmdlet **Get-AcsSubscription** .
+1. Vermeld uw ACS-naam ruimten met behulp van de cmdlet **Get-AcsNamespace** .
+1. Controleer of de naam ruimten zijn uitgeschakeld door te bevestigen dat `State` is `Disabled`.
 
-    [![Bevestig dat de naamruimten zijn uitgeschakeld](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png)](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png#lightbox)
+    [![bevestigen dat de naam ruimten zijn uitgeschakeld](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png)](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png#lightbox)
 
-    U kunt ook `nslookup {your-namespace}.accesscontrol.windows.net` om te controleren of het domein nog steeds actief is.
+    U kunt `nslookup {your-namespace}.accesscontrol.windows.net` ook gebruiken om te bevestigen of het domein nog steeds actief is.
 
-1. Schakel uw ACS namespace(s) met de **inschakelen AcsNamespace** cmdlet.
+1. Schakel uw ACS-naam ruimte (n) in met de cmdlet **Enable-AcsNamespace** .
 
-    Nadat u uw namespace(s) hebt ingeschakeld, kunt u een uitbreiding aanvragen, zodat de namespace(s) wordt niet zijn uitgeschakeld opnieuw voordat u 4 februari 2019. Na die datum mislukken alle aanvragen voor ACS.
+    Zodra u uw naam ruimte (n) hebt ingeschakeld, kunt u een uitbrei ding aanvragen zodat de naam ruimte (n) niet opnieuw wordt uitgeschakeld vóór 4 februari 2019. Na deze datum mislukken alle aanvragen aan ACS.
 
-## <a name="request-an-extension"></a>Een verlenging van aanvragen
+## <a name="request-an-extension"></a>Een uitbrei ding aanvragen
 
-We nemen nieuwe extensieaanvragen vanaf 21 januari 2019.
+We nemen nieuwe verlengings aanvragen vanaf 21 januari 2019.
 
-Gaan we het uitschakelen van naamruimten voor klanten die uitbreidingen voor 4 februari 2019 hebt aangevraagd. U kunt nog steeds naamruimten via PowerShell weer inschakelen, maar de naamruimten wordt uitgeschakeld na 48 uur opnieuw.
+We gaan het uitschakelen van naam ruimten voor klanten die uitbrei dingen hebben aangevraagd voor 4 februari 2019. U kunt de naam ruimten nog steeds opnieuw inschakelen via Power shell, maar de naam ruimten worden na 48 uur weer uitgeschakeld.
 
-Na 4 maart 2019 wordt klanten niet langer opnieuw inschakelen van alle naamruimten via PowerShell.
+Na 4 maart 2019 kunnen klanten geen naam ruimten meer opnieuw inschakelen via Power shell.
 
-Verder wordt niet meer automatisch worden goedgekeurd. Als u meer tijd om te migreren, neem dan contact op met [ondersteuning van Azure](https://portal.azure.com/#create/Microsoft.Support) voor een gedetailleerde migratie-tijdlijn.
+Verdere extensies worden niet meer automatisch goedgekeurd. Als u meer tijd nodig hebt om te migreren, neemt u contact op met de [ondersteuning van Azure](https://portal.azure.com/#create/Microsoft.Support) om een gedetailleerde migratie tijdlijn te bieden.
 
-### <a name="to-request-an-extension"></a>Om aan te vragen van een uitbreiding
+### <a name="to-request-an-extension"></a>Een uitbrei ding aanvragen
 
-1. Meld u aan bij Azure portal en maak een [nieuwe ondersteuningsaanvraag](https://portal.azure.com/#create/Microsoft.Support).
-1. Vul in nieuw aanvraagformulier voor de ondersteuning, zoals weergegeven in het volgende voorbeeld.
+1. Meld u aan bij de Azure Portal en maak een [nieuwe ondersteunings aanvraag](https://portal.azure.com/#create/Microsoft.Support).
+1. Vul het nieuwe formulier voor de ondersteunings aanvraag in, zoals wordt weer gegeven in het volgende voor beeld.
 
-    | Ondersteuning voor het veld | Value |
+    | Ondersteuningsaanvraag veld | Waarde |
     |-----------------------|--------------------|
-    | **Probleemtype** | `Technical` |
+    | **Probleem type** | `Technical` |
     | **Abonnement** | Ingesteld op uw abonnement |
     | **Service** | `All services` |
     | **Resource** | `General question/Resource not available` |
-    | **Probleemtype** | `ACS to SAS Migration` |
+    | **Type probleem** | `ACS to SAS Migration` |
     | **Onderwerp** | Het probleem beschrijven |
 
-   ![Toont een voorbeeld van een nieuwe aanvraag voor technische ondersteuning](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
+   ![Toont een voor beeld van een nieuwe technische ondersteunings aanvraag](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
 
 <!--
 
@@ -122,9 +119,9 @@ Verder wordt niet meer automatisch worden goedgekeurd. Als u meer tijd om te mig
 
 ## <a name="help-and-support"></a>Help en ondersteuning
 
-- Als u problemen ondervindt na het volgen van deze instructies, neem dan contact op met [ondersteuning van Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
-- Hebt u vragen of feedback over ACS buiten gebruik stellen, contact met ons op acsfeedback@microsoft.com.
+- Als u problemen ondervindt na het volgen van deze instructies, neemt u contact op met de [ondersteuning van Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+- Als u vragen of feedback hebt over het buiten gebruik stellen van ACS, neemt u contact met ons op acsfeedback@microsoft.com.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees de informatie over ACS buiten gebruik stellen in [het: Migreren van de Azure Access controleservice](active-directory-acs-migration.md).
+- Lees de informatie over het buiten gebruik stellen van ACS in [procedures: migreren vanuit Azure Access Control service](active-directory-acs-migration.md).

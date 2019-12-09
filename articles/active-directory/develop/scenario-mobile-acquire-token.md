@@ -1,5 +1,5 @@
 ---
-title: Mobiele app die web-Api's aanroept-een Token ophalen voor de app
+title: Een Token ophalen voor het aanroepen van web-Api's in mobiele apps | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het bouwen van een mobiele app die web-Api's aanroept (een token voor de app ophalen)
 services: active-directory
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b1d6a0e4bfffaaf4ed0fa836bcf62a7f1104e6a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 1101a1923e094c22e9f6a82853f4dec4deb089a1
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803762"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919916"
 ---
 # <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Mobiele app die web-Api's aanroept-een Token ophalen
 
@@ -259,7 +259,7 @@ Het is niet raadzaam het protocol rechtstreeks te gebruiken. Als u dat wel doet,
 
 Wanneer u het protocol gebruikt om tokens voor mobiele apps op te halen, moet u twee aanvragen doen: een autorisatie code ophalen en deze voor een token uitwisselen.
 
-#### <a name="get-authorization-code"></a>Autorisatie code ophalen
+#### <a name="get-authorization-code"></a>Autorisatiecode verkrijgen
 
 ```Text
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?

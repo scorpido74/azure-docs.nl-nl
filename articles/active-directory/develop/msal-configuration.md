@@ -1,33 +1,29 @@
 ---
-title: Informatie over het configuratie bestand van de Android micro soft Authentication Library (MSAL)
+title: Configuratie bestand voor Android micro soft Authentication Library | Azure
 titleSuffix: Microsoft identity platform
 description: Een overzicht van het configuratie bestand van de Android micro soft Authentication Library (MSAL), dat de configuratie van een toepassing vertegenwoordigt in Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c06bc1ebf3b87f622029e9e875fe478eae7e6a30
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f643022c85a44b2202fcbd91be50664882c8ba7b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803154"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916823"
 ---
-# <a name="android-microsoft-authentication-library-msal-configuration-file"></a>Android micro soft Authentication Library (MSAL)-configuratie bestand
+# <a name="android-microsoft-authentication-library-configuration-file"></a>Configuratie bestand voor micro soft-verificatie bibliotheek voor Android
 
-MSAL wordt geleverd met een [standaard JSON-configuratie bestand](https://github.com/AzureAD/microsoft-authentication-library-for-android/blob/dev/msal/src/main/res/raw/msal_default_config.json) dat u kunt aanpassen om het gedrag van uw open bare client-app te definiëren voor zaken als de standaard instantie, de instanties die u gaat gebruiken, enzovoort.
+De Android micro soft Authentication Library (MSAL) wordt geleverd met een [JSON-standaard configuratie bestand](https://github.com/AzureAD/microsoft-authentication-library-for-android/blob/dev/msal/src/main/res/raw/msal_default_config.json) dat u kunt aanpassen om het gedrag van uw open bare client-app te definiëren voor zaken als de standaard instantie, de instanties die u gaat gebruiken, enzovoort.
 
 In dit artikel vindt u meer informatie over de verschillende instellingen in het configuratie bestand en hoe u het configuratie bestand opgeeft dat moet worden gebruikt in uw MSAL-app.
 
@@ -52,7 +48,7 @@ De client-ID of App-ID die is gemaakt tijdens het registreren van uw toepassing.
 
 De omleidings-URI die u hebt geregistreerd tijdens het registreren van uw toepassing. Als de omleidings-URI naar een Broker-app verwijst, raadpleegt u de [omleidings-URI voor open bare client-apps](msal-client-application-configuration.md#redirect-uri-for-public-client-apps) om te controleren of u de juiste omleidings-URI-indeling gebruikt voor uw broker-app
 
-### <a name="authorities"></a>ca's
+### <a name="authorities"></a>Ca's
 
 De lijst met instanties die bekend zijn en worden vertrouwd door u. Naast de instanties die hier worden vermeld, vraagt MSAL ook micro soft om een lijst met Clouds en instanties te verkrijgen die bekend zijn bij micro soft. Geef in deze lijst met vermeldingen het type van de instantie en eventuele aanvullende optionele para meters op, zoals `"audience"`, die moeten worden uitgelijnd met de doel groep van uw app op basis van de registratie van uw app. Hier volgt een voor beeld van een lijst met instanties:
 
@@ -148,7 +144,7 @@ Algemene instellingen voor HTTP-time-outs configureren, zoals:
 | `connect_timeout` | int | Nee | Tijd in milliseconden |
 | `read_timeout` | int | Nee | Tijd in milliseconden |
 
-### <a name="logging"></a>Userenv
+### <a name="logging"></a>logboekregistratie
 
 De volgende algemene instellingen zijn voor logboek registratie:
 

@@ -3,20 +3,19 @@ title: Referenties opslaan in Azure Key Vault
 description: Meer informatie over het opslaan van referenties voor gegevens archieven die worden gebruikt in een Azure-sleutel kluis die Azure Data Factory automatisch kan ophalen tijdens runtime.
 services: data-factory
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 1e2458fa125ee4d223ef46001534fb7ae72b805e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 32c4b9b8e6268aa648e3414b337e8b2b908589e8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684003"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928726"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Referenties opslaan in Azure Key Vault
 
@@ -41,10 +40,10 @@ Als u wilt verwijzen naar een referentie die is opgeslagen in Azure Key Vault, m
 
 De volgende eigenschappen worden ondersteund voor Azure Key Vault gekoppelde service:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **AzureKeyVault**. | Ja |
-| BaseUrl | Geef de Azure Key Vault URL op. | Ja |
+| baseUrl | Geef de Azure Key Vault URL op. | Ja |
 
 **Gebruikers interface voor ontwerpen gebruiken:**
 
@@ -74,12 +73,12 @@ Selecteer de ingerichte Azure Key Vault waar uw referenties worden opgeslagen. U
 
 De volgende eigenschappen worden ondersteund wanneer u een veld configureert in een gekoppelde service die naar een sleutel kluis geheim verwijst:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type van het veld moet worden ingesteld op: **AzureKeyVaultSecret**. | Ja |
 | secretName | De naam van het geheim in Azure Key Vault. | Ja |
 | secretVersion | De versie van het geheim in Azure Key Vault.<br/>Als u niets opgeeft, wordt altijd de meest recente versie van het geheim gebruikt.<br/>Als deze is opgegeven, wordt de opgegeven versie weer gegeven.| Nee |
-| Store | Verwijst naar een Azure Key Vault gekoppelde service die u gebruikt om de referentie op te slaan. | Ja |
+| store | Verwijst naar een Azure Key Vault gekoppelde service die u gebruikt om de referentie op te slaan. | Ja |
 
 **Gebruikers interface voor ontwerpen gebruiken:**
 
@@ -116,4 +115,4 @@ Selecteer **Azure Key Vault** voor geheime velden tijdens het maken van de verbi
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.
+Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).

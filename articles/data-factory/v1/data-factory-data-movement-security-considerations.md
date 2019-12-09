@@ -4,20 +4,19 @@ description: Meer informatie over het beveiligen van gegevens verplaatsing in Az
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7f18505e02c5d65d21e93759eb5da480c20e2eb3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 467ba9f36dbcd44c5b8d87ee2f20d178d62d9732
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682625"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930818"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory-beveiligings overwegingen voor gegevens verplaatsing
 
@@ -79,7 +78,7 @@ Amazon S3 ondersteunt zowel client-als server versleuteling van gegevens in rust
 #### <a name="amazon-redshift"></a>Amazon Redshift
 Amazon Redshift ondersteunt cluster versleuteling voor Data-at-rest. Zie [Amazon Redshift data base Encryption](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)(Engelstalig) voor meer informatie. Data Factory biedt momenteel geen ondersteuning voor Amazon Redshift binnen een VPC. 
 
-#### <a name="salesforce"></a>SalesForce
+#### <a name="salesforce"></a>Salesforce
 Sales Force ondersteunt afschermings platform versleuteling waarmee alle bestanden, bijlagen en aangepaste velden kunnen worden versleuteld. Zie [Wat is de web server OAuth-verificatie stroom](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm)? voor meer informatie.  
 
 ## <a name="hybrid-scenarios-using-data-management-gateway"></a>Hybride Scenario's (met behulp van Data Management Gateway)
@@ -95,7 +94,7 @@ De referenties voor uw on-premises gegevens archieven worden lokaal opgeslagen (
 - Gebruik **onbewerkte tekst** (minder veilig) via HTTPS via de wizard Azure Portal/kopiëren. De referenties worden door gegeven als tekst zonder opmaak naar de on-premises gateway.
 - **Java script Cryptography-bibliotheek van de wizard kopiëren**gebruiken.
 - Met behulp **van een klik-eenmaal gebaseerde credentials Manager-app**. De Click-toepassing wordt uitgevoerd op de on-premises computer die toegang heeft tot de gateway en waarmee referenties voor het gegevens archief worden ingesteld. Deze optie en de volgende zijn de veiligste opties. De referentie beheer-app gebruikt standaard de poort 8050 op de computer met de gateway voor beveiligde communicatie.  
-- Gebruik de Power shell-cmdlet [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) om referenties te versleutelen. De cmdlet maakt gebruik van het certificaat dat door de gateway is geconfigureerd voor het versleutelen van de referenties. U kunt de versleutelde referenties die door deze cmdlet worden geretourneerd, gebruiken en deze toevoegen aan het **EncryptedCredential** -element van de **Connections Tring** in het JSON-bestand dat u gebruikt met de cmdlet [New-AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) of in het JSON-code fragment in de Data Factory editor in de portal. Deze optie en de toepassing waarop u kunt klikken, zijn de veiligste opties. 
+- Gebruik de Power shell-cmdlet [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) om referenties te versleutelen. De cmdlet maakt gebruik van het certificaat dat door de gateway is geconfigureerd voor het versleutelen van de referenties. U kunt de versleutelde referenties die door deze cmdlet worden geretourneerd, gebruiken en deze toevoegen aan het **EncryptedCredential** -element van de **Connections Tring** in het JSON-bestand dat u gebruikt met de cmdlet [New-AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) of in het json-code fragment in de Data Factory editor van de portal. Deze optie en de toepassing waarop u kunt klikken, zijn de veiligste opties. 
 
 #### <a name="javascript-cryptography-library-based-encryption"></a>Versleuteling op basis van Java script Cryptography-bibliotheek
 U kunt referenties voor gegevens opslag versleutelen met behulp van de [Java script Cryptography-bibliotheek](https://www.microsoft.com/download/details.aspx?id=52439) via de [wizard kopiëren](data-factory-copy-wizard.md). Wanneer u deze optie selecteert, haalt de wizard kopiëren de open bare sleutel van de gateway op en gebruikt deze om de referenties van het gegevens archief te versleutelen. De referenties worden ontsleuteld door de gateway computer en beveiligd door Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx).
@@ -118,7 +117,7 @@ Data Management Gateway gebruikt momenteel één **certificaat**. Dit certificaa
 | > = 2.4. xxxx. x | On-premises | Beveiligd via DPAPI | 
   
 
-### <a name="encryption-in-transit"></a>Versleuteling in transit
+### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
 Alle gegevens overdrachten zijn via Secure Channel **https** en **TLS via TCP** om te voor komen dat man-in-the-middle-aanvallen optreden tijdens de communicatie met Azure-Services.
  
 U kunt ook [IPSec VPN](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) of [Express route](../../expressroute/expressroute-introduction.md) gebruiken om het communicatie kanaal te beveiligen tussen uw on-premises netwerk en Azure.
@@ -127,7 +126,7 @@ Virtueel netwerk is een logische weer gave van uw netwerk in de Cloud. U kunt ee
 
 De volgende tabel bevat een overzicht van de aanbevelingen voor de netwerk-en gateway configuratie op basis van verschillende combi Naties van bron-en doel locaties voor het verplaatsen van hybride gegevens.
 
-| Bron | Doel | Netwerkconfiguratie | Gateway instellen |
+| Bron | Bestemming | Netwerkconfiguratie | Gateway instellen |
 | ------ | ----------- | --------------------- | ------------- | 
 | On-premises | Virtuele machines en Cloud Services die zijn geïmplementeerd in virtuele netwerken | IPSec VPN (punt-naar-site of site-naar-site) | De gateway kan on-premises of op een virtuele Azure-machine (VM) in VNet worden geïnstalleerd | 
 | On-premises | Virtuele machines en Cloud Services die zijn geïmplementeerd in virtuele netwerken | ExpressRoute (persoonlijke peering) | De gateway kan on-premises of op een virtuele Azure-machine worden geïnstalleerd in VNet | 
@@ -150,7 +149,7 @@ In een onderneming wordt een **bedrijfs firewall** uitgevoerd op de centrale rou
 
 De volgende tabel bevat de **uitgaande poort** -en domein vereisten voor de **bedrijfs firewall**.
 
-| Domein namen | Uitgaande poorten | Beschrijving |
+| Domeinnamen | Uitgaande poorten | Beschrijving |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | Vereist door de gateway om verbinding te maken met Services voor gegevens verplaatsing in Data Factory |
 | `*.core.windows.net` | 443 | Wordt gebruikt door de gateway om verbinding te maken met Azure Storage account wanneer u de functie voor [gefaseerd kopiëren](data-factory-copy-activity-performance.md#staged-copy) gebruikt. | 

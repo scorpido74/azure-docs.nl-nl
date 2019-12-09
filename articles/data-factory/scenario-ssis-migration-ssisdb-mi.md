@@ -9,19 +9,18 @@ ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 6ea9134085812b99d59ad64aa2c9ec1b2ff827d9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 38010e3aaa2d0544dfbfe19135d25250d2b021a2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684395"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929785"
 ---
 # <a name="ssis-migration-with-azure-sql-database-managed-instance-as-the-database-workload-destination"></a>SSIS-migratie met Azure SQL Database Managed instance als de werk belasting bestemming van de data base
 
-Bij het migreren van data base-workloads van SQL Server on-premises naar Azure SQL Database beheerde instantie, moet u bekend zijn met de [Azure Data Migration service](https://docs.microsoft.com/azure/dms/dms-overview)(DMS) en de [netwerktopologieën voor Azure SQL database beheerde exemplaar migraties met behulp van DMS](https://docs.microsoft.com/azure/dms/resource-network-topologies).
+Bij het migreren van data base-workloads van SQL Server on-premises naar Azure SQL Database beheerde instantie, moet u bekend zijn met de [Azure Data Migration service](https://docs.microsoft.com/azure/dms/dms-overview)(DMS) en de [netwerktopologieën voor Azure SQL database beheerde-instantie migraties met behulp van DMS](https://docs.microsoft.com/azure/dms/resource-network-topologies).
 
 Dit artikel is gericht op de migratie van de SSIS-pakketten (SQL Server Integration service) die zijn opgeslagen in SSIS Catalog (SSISDB) en SQL Server Agent Jobs waarmee SSIS-pakket uitvoeringen worden gepland.
 

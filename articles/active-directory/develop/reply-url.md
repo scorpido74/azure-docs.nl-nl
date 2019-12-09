@@ -1,5 +1,5 @@
 ---
-title: Omleiding van URI/antwoord-URL-beperkingen en-beperkingen-micro soft Identity-platform
+title: Omleidings-URI-& antwoord-URL-beperkingen-micro soft Identity-platform | Azure
 description: Antwoord Url's/omleidings-Url's beperkingen & beperkingen
 author: SureshJa
 ms.author: sureshja
@@ -11,12 +11,12 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9cc6ab0342682bce7befdfe412221ec581312be
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: bfc13c1057f74fb1eb5a41210ffaf166e69bb06e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389599"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920324"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Beperkingen voor omleidings-URI en antwoord-URL
 

@@ -4,21 +4,20 @@ description: Meer informatie over het verplaatsen van gegevens uit de MySQL-data
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 452f4fce-9eb5-40a0-92f8-1e98691bea4c
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4a7b42b51f49ab0c11aa8af3af6495c60907d230
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666102"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928112"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Gegevens verplaatsen vanuit MySQL met Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -51,7 +50,7 @@ Als Data Management Gateway verbinding met de MySQL-data base wilt maken, moet u
 U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van een on-premises Cassandra-gegevens opslag met behulp van verschillende hulpprogram ma's/Api's. 
 
 - De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren. 
-- U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit. 
+- U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit. 
 
 Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
@@ -63,17 +62,17 @@ Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data 
 
 De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor een MySQL-gegevens archief:
 
-## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 De volgende tabel bevat een beschrijving van de JSON-elementen die specifiek zijn voor de aan MySQL gekoppelde service.
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **OnPremisesMySql** |Ja |
 | server |De naam van de MySQL-server. |Ja |
 | database |De naam van de MySQL-data base. |Ja |
-| Schema |De naam van het schema in de data base. |Nee |
+| schema |De naam van het schema in de data base. |Nee |
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de MySQL-data base. Mogelijke waarden zijn: `Basic`. |Ja |
-| Gebruikers |Geef de gebruikers naam op om verbinding te maken met de MySQL-data base. |Ja |
+| userName |Geef de gebruikers naam op om verbinding te maken met de MySQL-data base. |Ja |
 | wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven. |Ja |
 | gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises MySQL-data base. |Ja |
 
@@ -82,7 +81,7 @@ Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een 
 
 De sectie **typeProperties** verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie typeProperties voor de gegevensset van het type **RelationalTable** (die mysql-gegevensset bevat) heeft de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | tableName |De naam van de tabel in de MySQL-data base-instantie waarnaar de gekoppelde service verwijst. |Nee (als de **query** van **RelationalSource** is opgegeven) |
 
@@ -93,7 +92,7 @@ Terwijl de eigenschappen die beschikbaar zijn in de sectie **typeProperties** va
 
 Wanneer de bron in de Kopieer activiteit van het type **RelationalSource** (inclusief MySQL) is, zijn de volgende eigenschappen beschikbaar in de sectie typeProperties:
 
-| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
+| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: Select * from MyTable. |Nee (als **TableName** van **gegevensset** is opgegeven) |
 
@@ -301,45 +300,45 @@ Bij het verplaatsen van gegevens naar MySQL worden de volgende toewijzingen gebr
 
 | MySQL-database type | .NET Framework type |
 | --- | --- |
-| bigint niet ondertekend |Komma |
+| bigint niet ondertekend |Decimal |
 | bigint |Int64 |
-| bitmask |Komma |
-| blob |Byte [] |
+| bit |Decimal |
+| blob |Byte[] |
 | bool |Booleaans |
 | char |Tekenreeks |
 | date |Datetime |
 | datum/tijd |Datetime |
-| decimal |Komma |
-| dubbele precisie |Double-waarde |
-| double |Double-waarde |
-| vaste |Tekenreeks |
+| decimal |Decimal |
+| dubbele precisie |Double |
+| double |Double |
+| enum |Tekenreeks |
 | float |Enkelvoudig |
 | geheel getal niet ondertekend |Int64 |
 | int |Int32 |
 | geheel getal niet ondertekend |Int64 |
 | geheel getal |Int32 |
-| lange varbinary |Byte [] |
+| lange varbinary |Byte[] |
 | lange varchar |Tekenreeks |
-| longblob |Byte [] |
-| LONGTEXT |Tekenreeks |
-| mediumblob |Byte [] |
+| longblob |Byte[] |
+| longtext |Tekenreeks |
+| mediumblob |Byte[] |
 | mediumint niet ondertekend |Int64 |
 | mediumint |Int32 |
 | mediumtext |Tekenreeks |
-| 443 |Komma |
-| realistische |Double-waarde |
+| numeric |Decimal |
+| real |Double |
 | set |Tekenreeks |
 | niet-ondertekend in smallint |Int32 |
 | smallint |Int16 |
 | tekst |Tekenreeks |
-| tijd |Duur |
+| tijd |TimeSpan |
 | tijdstempel |Datetime |
-| tinyblob |Byte [] |
+| tinyblob |Byte[] |
 | tinyint niet ondertekend |Int16 |
 | tinyint |Int16 |
 | tinytext |Tekenreeks |
 | varchar |Tekenreeks |
-| jaar |integer |
+| jaar |Int |
 
 ## <a name="map-source-to-sink-columns"></a>Bron toewijzen aan Sink-kolommen
 Zie [DataSet-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md)voor meer informatie over het toewijzen van kolommen in de bron-gegevensset aan kolommen in Sink-gegevensset.

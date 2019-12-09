@@ -1,18 +1,19 @@
 ---
-title: Gegevens stromen toewijzen in Azure Data Factory
+title: Toewijzing gegevensstromen
 description: Een overzicht van het toewijzen van gegevens stromen in Azure Data Factory
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/7/2019
-ms.openlocfilehash: ed2502ffebbacf5e66e3e4738e2e88ce7fb8a562
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 397ecdb805f0be9f374c53ae7128f806bfb789d3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681566"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928294"
 ---
 # <a name="what-are-mapping-data-flows"></a>Wat zijn toewijzingsgegevensstromen?
 
@@ -32,13 +33,13 @@ Hiermee gaat u naar het canvas voor gegevens stromen waar u uw transformatie log
 
 Het canvas voor de gegevens stroom is onderverdeeld in drie delen: de bovenste balk, de grafiek en het configuratie paneel. 
 
-![Geval](media/data-flow/canvas1.png "Geval")
+![Canvas](media/data-flow/canvas1.png "Canvas")
 
-### <a name="graph"></a>Graph
+### <a name="graph"></a>Grafiek
 
 In de grafiek wordt de transformatie stroom weer gegeven. De afkomst van de bron gegevens worden weer gegeven terwijl deze in een of meer sinks worden stromen. Selecteer **bron toevoegen**om een nieuwe bron toe te voegen. Als u een nieuwe trans formatie wilt toevoegen, selecteert u het plus teken aan de rechter benedenhoek van een bestaande trans formatie.
 
-![Geval](media/data-flow/canvas2.png "Geval")
+![Canvas](media/data-flow/canvas2.png "Canvas")
 
 ### <a name="azure-integration-runtime-data-flow-properties"></a>Eigenschappen van gegevens stroom voor Azure Integration runtime
 
@@ -122,15 +123,15 @@ Bouw een expressie die een vast bereik voor waarden in de gepartitioneerde gegev
 
 Als u een goed beeld hebt van de kardinaliteit van uw gegevens, is het mogelijk dat sleutel partities een goede strategie zijn. Bij sleutel partities worden partities gemaakt voor elke unieke waarde in de kolom. U kunt het aantal partities niet instellen omdat het aantal is gebaseerd op unieke waarden in de gegevens.
 
-#### <a name="inspect"></a>Controleert
+#### <a name="inspect"></a>Controleren
 
 Het tabblad **controleren** bevat een weer gave van de meta gegevens van de gegevensstroom die u transformeert. U kunt de kolom aantallen, gewijzigde kolommen, toegevoegde kolommen, gegevens typen, kolom ordening en kolom verwijzingen bekijken. **Inspecteer** is een alleen-lezen weer gave van uw meta gegevens. U hoeft de foutopsporingsmodus niet in te scha kelen om meta gegevens in het deel venster **controleren** weer te geven.
 
-![Controleert](media/data-flow/inspect1.png "Controleert")
+![Controleert](media/data-flow/inspect1.png "Controleren")
 
 Wanneer u de vorm van uw gegevens via trans formaties wijzigt, worden de wijzigingen in de meta gegevens in het deel venster **controleren** weer gegeven. Als er geen gedefinieerd schema is in uw bron transformatie, worden de meta gegevens niet weer gegeven in het deel venster **controleren** . Het ontbreken van meta gegevens is gebruikelijk in schema-drift-scenario's.
 
-#### <a name="data-preview"></a>Voor beeld van gegevens
+#### <a name="data-preview"></a>Voorbeeld van gegevens
 
 Als de foutopsporingsmodus is ingeschakeld, biedt het tabblad **voor beeld van gegevens** een interactieve moment opname van de gegevens bij elke trans formatie. Zie voor meer informatie de [Preview van gegevens in de foutopsporingsmodus](concepts-data-flow-debug-mode.md#data-preview).
 

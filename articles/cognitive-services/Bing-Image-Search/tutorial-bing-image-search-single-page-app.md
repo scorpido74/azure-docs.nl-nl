@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: aahi
-ms.openlocfilehash: 7b530b3d415761956cbdb45fdc92bfed55a1bae5
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: c0f06f02a274780085fdb3c4c270ad541a0daa8c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868263"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930701"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Zelfstudie: Een app van één pagina maken met de Bing Afbeeldingen zoeken-API
 
@@ -40,7 +40,7 @@ De volledige broncode voor deze zelfstudie is beschikbaar op [GitHub](https://gi
 
 ## <a name="manage-and-store-user-subscription-keys"></a>Abonnementssleutels van gebruikers beheren en opslaan
 
-In deze toepassing wordt gebruikgemaakt van de permanente opslag van webbrowsers om API-abonnementssleutels op te slaan. Als er geen sleutel is opgeslagen, wordt de gebruiker op de webpagina om de sleutel gevraagd. De sleutel wordt vervolgens voor later gebruik opgeslagen. Als de sleutel later door de API wordt geweigerd, verwijdert de app de sleutel uit de opslag.
+In deze toepassing wordt gebruikgemaakt van de permanente opslag van webbrowsers om API-abonnementssleutels op te slaan. Als er geen sleutel is opgeslagen, wordt de gebruiker op de webpagina om de sleutel gevraagd. De sleutel wordt vervolgens voor later gebruik opgeslagen. Als de sleutel later door de API wordt geweigerd, verwijdert de app de sleutel uit de opslag. In dit voor beeld wordt het globale eind punt gebruikt. U kunt ook het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
 
 
 Definieer de functies `storeValue` en `retrieveValue` voor gebruik van het `localStorage`-object (als de browser dit ondersteunt) of een cookie.
@@ -95,7 +95,7 @@ function getSubscriptionKey() {
 }
 ```
 
-Met de HTML-`<form>`-tag `onsubmit` wordt de functie `bingWebSearch` aangeroepen om de zoekresultaten te retourneren. `bingWebSearch` gebruikt `getSubscriptionKey` om elke query te verifiëren. Zoals weergegeven in de vorige definitie, wordt de gebruiker in `getSubscriptionKey` om de sleutel gevraagd, indien de sleutel niet is ingevoerd. De sleutel wordt vervolgens opgeslagen voor verder gebruik in de toepassing.
+Met de HTML-`<form>`-code `onsubmit` wordt de functie `bingWebSearch` aangeroepen om de zoekresultaten te retourneren. `bingWebSearch` gebruikt `getSubscriptionKey` om elke query te verifiëren. Zoals weergegeven in de vorige definitie, wordt de gebruiker in `getSubscriptionKey` om de sleutel gevraagd, indien de sleutel niet is ingevoerd. De sleutel wordt vervolgens opgeslagen voor verder gebruik in de toepassing.
 
 ```html
 <form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value,
@@ -321,7 +321,7 @@ Met de Bing Afbeeldingen zoeken-API kunnen vier typen zoeksuggesties worden gere
 | `pivotSuggestions` | Query's die een beschrijvend woord in de oorspronkelijke zoekopdracht vervangen door een ander beschrijvend woord. Als u bijvoorbeeld zoekt naar ‘rode bloemen', is ‘rood' een beschrijvend woord, en is ‘gele bloemen' een mogelijke suggestie. |
 | `queryExpansions`  | Query's die de oorspronkelijke zoekopdracht verfijnen door meer zoektermen toe te voegen. Als u bijvoorbeeld zoekt naar ‘Microsoft Surface', is ‘Microsoft Surface Pro' een mogelijke uitbreiding van de query.                                   |
 | `relatedSearches`  | Query's die ook zijn ingevoerd door andere gebruikers die de oorspronkelijke zoekopdracht hebben ingevoerd. Als u bijvoorbeeld zoekt naar ‘Mount Rainier', is ‘Mt. Saint Helens' een gerelateerde zoekopdracht.                       |
-| `similarTerms`     | Query’s die qua betekenis vergelijkbaar zijn met de oorspronkelijke zoekopdracht. Als u bijvoorbeeld zoekt naar 'kittens', is 'schattig' een vergelijkbare term.                                                                   |
+| `similarTerms`     | Query's die qua betekenis vergelijkbaar zijn met de oorspronkelijke zoekopdracht. Als u bijvoorbeeld zoekt naar 'kittens', is 'schattig' een vergelijkbare term.                                                                   |
 
 Met deze toepassing worden alleen de `relatedItems`-suggesties weergegeven. De bijbehorende koppelingen worden in de zijbalk van de pagina geplaatst.
 
@@ -347,7 +347,7 @@ In de weergavefuncties worden de volgende parameters geaccepteerd:
 De parameters `index` en `count` worden gebruikt om resultaten te nummeren, HTML voor collecties te genereren en inhoud te ordenen. Met name gebeurt het volgende:
 
 * De grootte van de miniatuur van de afbeelding berekenen (de breedte varieert, met een minimum van 120 pixels, terwijl de hoogte altijd 90 pixels bedraagt).
-* De HTML-`<img>`-tag wordt gebouwd om de miniatuur weer te geven.
+* De HTML-`<img>`-code wordt gebouwd om de miniatuur weer te geven.
 * De HTML-`<a>`-tags worden gebouwd die zijn gekoppeld aan de afbeelding en aan de pagina die de afbeelding bevat.
 * De beschrijving met informatie over de afbeelding en de bijbehorende site wordt samengesteld.
 
@@ -379,14 +379,14 @@ Door de `X-MSEdge-ClientID`-header op te geven kunnen met Bing-API's alle zoekop
 
 Ten eerste kan met de Bing-zoekmachine vroegere context worden toegepast op zoekopdrachten om beter kloppende resultaten te vinden voor de gebruiker. Als een gebruiker bijvoorbeeld eerder heeft gezocht naar termen die zijn gerelateerd aan zeilen, kan bij een latere zoekopdracht naar ‘knopen' de voorkeur worden gegeven aan informatie over knopen die worden gebruikt bij zeilen.
 
-Ten tweede kunnen in Bing willekeurig gebruikers worden geselecteerd om nieuwe functies te proberen voordat deze algemeen beschikbaar worden. Door bij elke aanvraag dezelfde client-id op te geven, zien gebruikers die de functie zien, deze altijd. Zonder de client-id kan het gebeuren dat de gebruiker een functie, schijnbaar willekeurig, ziet verschijnen en verdwijnen in de zoekresultaten.
+Ten tweede kunnen in Bing willekeurig gebruikers worden geselecteerd om nieuwe functies uit te proberen voordat deze algemeen beschikbaar worden. Door bij elke aanvraag dezelfde client-id op te geven, zien gebruikers die de functie zien, deze altijd. Zonder de client-id kan het gebeuren dat de gebruiker een functie, schijnbaar willekeurig, ziet verschijnen en verdwijnen in de zoekresultaten.
 
 Beveiligingsbeleid voor browsers (CORS) kan ervoor zorgen dat de `X-MSEdge-ClientID`-header niet beschikbaar is in JavaScript. Deze beperking treedt op wanneer het antwoord op een zoekopdracht een andere oorsprong heeft dan de pagina waarop de zoekopdracht is uitgevoerd. In een productieomgeving kunt u dit beleid omzeilen door een serverscript te hosten waarmee de API wordt aangeroepen in hetzelfde domein als de webpagina. Omdat het script dezelfde oorsprong heeft als de webpagina, is de `X-MSEdge-ClientID`-header vervolgens beschikbaar voor JavaScript.
 
 > [!NOTE]
-> In een webtoepassing die bedoeld is voor productie, moet u de aanvraag toch aan de serverzijde uitvoeren. Anders moet de sleutel voor de Bing Zoeken-API worden opgenomen op de webpagina, waar deze beschikbaar is voor iedereen die de bron weergeeft. Al uw gebruik van de API-abonnementssleutel wordt in rekening gebracht, zelfs aanvragen die zijn gedaan door partijen die niet zijn gemachtigd. Het is daarom van groot belang dat u uw sleutel niet algemeen beschikbaar maakt.
+> In een webtoepassing die bedoeld is voor productie, moet u de aanvraag toch aan de serverzijde uitvoeren. Anders moet de sleutel voor de Bing Search-API worden opgenomen op de webpagina, waar deze beschikbaar is voor iedereen die de bron weergeeft. Al uw gebruik van de API-abonnementssleutel wordt in rekening gebracht, zelfs aanvragen die zijn gedaan door partijen die niet zijn gemachtigd. Het is daarom van groot belang dat u uw sleutel niet algemeen beschikbaar maakt.
 
-Voor ontwikkelingsdoeleinden kunt u de aanvraag van de Bing Web Search-API via een CORS-proxy doen. Het antwoord van deze proxy heeft een `Access-Control-Expose-Headers` -header die kan antwoordheaders en maakt ze beschikbaar voor JavaScript.
+Voor ontwikkelingsdoeleinden kunt u de aanvraag van de Bing Web Search-API via een CORS-proxy doen. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers`-header die antwoord headers toestaat en deze beschikbaar maakt voor Java script.
 
 U kunt eenvoudig een CORS-proxy installeren zodat de zelfstudie-app toegang krijgt tot de client-id-header. Als u [Node.js](https://nodejs.org/en/download/) nog niet hebt, moet u dit eerst installeren. Voer vervolgens de volgende opdracht uit in een opdrachtvenster:
 

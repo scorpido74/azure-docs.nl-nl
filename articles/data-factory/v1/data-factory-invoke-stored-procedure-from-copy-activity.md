@@ -4,21 +4,20 @@ description: Meer informatie over het aanroepen van een opgeslagen procedure in 
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0c5bb7ab4e8932c9568293620352435c7259d810
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d05c2b03a0c498144f37c9b6205053120a596b09
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682497"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924085"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>De opgeslagen procedure vanuit een Kopieer activiteit in Azure Data Factory aanroepen
 > [!NOTE]
@@ -68,7 +67,7 @@ Definieer de sectie **SqlSink** in de JSON Copy activity als volgt. Als u een op
 }
 ```
 
-## <a name="stored-procedure-definition"></a>Definitie van opgeslagen procedure 
+## <a name="stored-procedure-definition"></a>Definitie van de opgeslagen procedure 
 Definieer in uw data base de opgeslagen procedure met de naam **SqlWriterStoredProcedureName**. De opgeslagen procedure verwerkt invoer gegevens uit de brongegevens opslag en voegt gegevens toe aan een tabel in de doel database. De naam van de eerste para meter van de opgeslagen procedure moet overeenkomen met de TableName die is gedefinieerd in de gegevensset JSON (marketing).
 
 ```sql

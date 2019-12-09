@@ -1,18 +1,19 @@
 ---
-title: Schema-drift in toewijzings gegevens stroom | Azure Data Factory
+title: Schema-drift in toewijzing van gegevens stroom
 description: Flexibele gegevens stromen bouwen in Azure Data Factory met schema-drift
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/12/2019
-ms.openlocfilehash: 8c2764535515d0aeb1eb65a1621148fa58317cac
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9daf7973a2e48f866a8d0b93a682851d31dc3af7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553695"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928541"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Schema-drift in toewijzing van gegevens stroom
 
@@ -64,7 +65,7 @@ Als u expliciete verwijzingen naar gerefereerde kolommen wilt maken, kunt u snel
 
 ![Toegewezen kaart](media/data-flow/mapdrifted1.png "Toegewezen kaart")
 
-In de gegenereerde afgeleide kolom transformatie wordt elke geplaatste kolom toegewezen aan de gedetecteerde naam en het gegevens type. In het bovenstaande voor beeld van de gegevens wordt de kolom ' movieId ' gedetecteerd als een geheel getal. Wanneer u hebt geklikt op **toegewezen kaart** , wordt movieId gedefinieerd in de afgeleide kolom als `toInteger(byName('movieId'))` en opgenomen in schema weergaven in downstream-trans formaties.
+In de gegenereerde afgeleide kolom transformatie wordt elke geplaatste kolom toegewezen aan de gedetecteerde naam en het gegevens type. In het bovenstaande voor beeld van de gegevens wordt de kolom ' movieId ' gedetecteerd als een geheel getal. Nadat de **toewijzing** is geklikt, wordt movieId gedefinieerd in de afgeleide kolom als `toInteger(byName('movieId'))` en opgenomen in schema weergaven in downstream-trans formaties.
 
 ![Toegewezen kaart](media/data-flow/mapdrifted2.png "Toegewezen kaart")
 

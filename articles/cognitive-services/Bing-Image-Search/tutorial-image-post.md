@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 12/06/2019
 ms.author: aahi
-ms.openlocfilehash: e9ba5925ce562e53dbc415d66bbb529c32a725a7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 9f707dd6b93080e550b4f75e7c9c23139b8adf1d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327013"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930675"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Zelfstudie: Afbeeldingsdetails extraheren met de Bing Afbeeldingen zoeken-API en C#
 
@@ -42,7 +42,7 @@ De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azu
 
 ## <a name="construct-an-image-details-search-request"></a>Een zoekaanvraag voor afbeeldingsdetails opstellen
 
-Hieronder gaat het op het eindpunt `/details`, dat POST-aanvragen accepteert met afbeeldingsgegevens in de hoofdtekst van de aanvraag.
+Hieronder gaat het op het eindpunt `/details`, dat POST-aanvragen accepteert met afbeeldingsgegevens in de hoofdtekst van de aanvraag. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
@@ -77,7 +77,7 @@ client.Headers["ContentType"] = "multipart/form-data";
 
 ## <a name="upload-the-image-and-display-the-results"></a>De afbeelding uploaden en de resultaten weergeven
 
-De methode `WebClient` van de klasse `UpLoadFile()` maakt gegevens op voor de `POST`-aanvraag, inclusief het opmaken van `RequestStream` en het aanroepen van `HttpWebRequest`.
+De methode `UpLoadFile()` van de klasse `WebClient` maakt gegevens op voor de `POST`-aanvraag, inclusief het opmaken van `RequestStream` en het aanroepen van `HttpWebRequest`.
 
 Roep `WebClient.UpLoadFile()` aan met het eindpunt `/details` en het afbeeldingsbestand dat moet worden geüpload. Gebruik het JSON-antwoord om een instantie van de `SearchResult`-structuur te initialiseren, en sla het antwoord op.
 

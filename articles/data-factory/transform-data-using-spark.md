@@ -2,21 +2,20 @@
 title: Gegevens transformeren met Spark-activiteit
 description: Meer informatie over het transformeren van gegevens door Spark-Program ma's uit te voeren vanuit een Azure data factory-pijp lijn met behulp van de Spark-activiteit.
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/31/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 27dea39a1ebd2be56c86e4327218c62c5378002d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+manager: shwang
+ms.custom: seo-lt-2019
+ms.date: 05/31/2018
+ms.openlocfilehash: eb887a7d9081875c28964ddb1e3d1b2e609862fd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893753"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912975"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Spark-activiteit in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]

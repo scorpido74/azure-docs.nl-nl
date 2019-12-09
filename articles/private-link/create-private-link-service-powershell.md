@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: c5910649127c4b2e78cfc12065a8f12a41f7309a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 932de70b634a7bbdb77e5dc1552ae53828a7269e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229378"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913106"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Een persoonlijke koppelings service maken met behulp van Azure PowerShell
 In dit artikel wordt beschreven hoe u een persoonlijke koppelings service maakt in azure met behulp van Azure PowerShell.
@@ -32,7 +32,7 @@ New-AzResourceGroup `
   -ResourceGroupName $rgName `
   -Location $location
 ```
-## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+## <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
 Maak een virtueel netwerk voor uw persoonlijke koppeling met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). In het volgende voor beeld wordt een virtueel netwerk gemaakt met de naam *myvnet* met subnet voor frontend (*frontendSubnet*), back-end (*backendSubnet*), persoonlijke koppeling (*otherSubnet*):
 
 ```azurepowershell
@@ -103,7 +103,7 @@ $privateLinkService = New-AzPrivateLinkService `
 ```
 
 ### <a name="get-private-link-service"></a>Persoonlijke koppelings service ophalen
-Ga als volgt te weten over uw persoonlijke koppelings service met [New-AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice) :
+Ga als volgt te weten over uw persoonlijke koppelings service met [Get-AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice) :
 
 ```azurepowershell
 $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName 
@@ -114,7 +114,7 @@ In deze fase is uw persoonlijke koppelings service gemaakt en is deze klaar om h
 Vervolgens laten we zien hoe u deze service kunt toewijzen aan een persoonlijk eind punt in verschillende VNet met behulp van Power shell. Het voor beeld is beperkt tot het maken van het persoonlijke eind punt en het verbinden met de persoonlijke koppelings service die hierboven is gemaakt. U kunt Virtual Machines in de Virtual Network maken voor het verzenden/ontvangen van verkeer naar het persoonlijke eind punt voor het bouwen van uw scenario. 
 
 ## <a name="create-a-private-endpoint"></a>Een privé-eindpunt maken
-### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+### <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
 Maak een virtueel netwerk voor uw persoonlijke eind punt met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). In dit voor beeld wordt een virtueel netwerk gemaakt met de naam *vnetPE* in de resource groep met de naam *myResourceGroup*:
  
 ```azurepowershell
