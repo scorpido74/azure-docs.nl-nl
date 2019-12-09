@@ -1,29 +1,25 @@
 ---
-title: Client toepassingen initialiseren (micro soft-verificatie bibliotheek voor .NET)
+title: MSAL.NET-client toepassingen initialiseren | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het initialiseren van open bare client-en vertrouwelijke client toepassingen met behulp van de micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8cf7b7004097ef5a4d915d8fdff60cc9606c5be
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 15c0db66fd357ba150af1901a6b50a645fd1ca88
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927085"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915852"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Client toepassingen initialiseren met MSAL.NET
 In dit artikel wordt beschreven hoe u open bare client-en vertrouwelijke client toepassingen initialiseert met behulp van micro soft Authentication Library voor .NET (MSAL.NET).  Lees het [overzicht](msal-client-applications.md)voor meer informatie over de client toepassings typen en configuratie opties voor toepassingen.

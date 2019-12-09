@@ -1,36 +1,37 @@
 ---
-title: 'Stapsgewijs een tabel kopiëren met behulp van Azure Data Factory '
+title: Stapsgewijs een tabel kopiëren met behulp van Power shell
 description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn waarmee gegevens uit een Azure SQL-database stapsgewijs worden gekopieerd naar Azure Blob Storage.
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: craigg
+ms.author: yexu
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.author: yexu
-ms.openlocfilehash: bb1ddbddfb2e06f394ac2f57b10e18893879b51b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d6b41f06f9e5d64532b5684e6bc40d017a8c4434
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683345"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925211"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Stapsgewijs gegevens uit een Azure SQL-database laden in Azure Blob Storage
+# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Incrementeel gegevens van een Azure-SQL database naar Azure Blob-opslag laden met Power shell
+
 In deze zelfstudie maakt u een Azure-gegevensfactory met een pijplijn waarmee deltagegevens uit een tabel in een Azure SQL-database worden geladen naar Azure Blob Storage. 
 
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
 > * Bereid de gegevensopslag voor om de grenswaarde in op te slaan.
-> * Maak een gegevensfactory.
+> * Een gegevensfactory maakt.
 > * Maak gekoppelde services. 
-> * Bron-, sink- en grenswaardegegevenssets maken.
+> * Maak bron-, sink- en grenswaardegegevenssets.
 > * Maak een pijplijn.
 > * Voer de pijplijn uit.
-> * Controleer de pijplijnuitvoering. 
+> * De pijplijnuitvoering controleert. 
 
 ## <a name="overview"></a>Overzicht
 Hier volgt de diagramoplossing op hoog niveau: 
@@ -145,7 +146,7 @@ WHERE [TableName] = @TableName
 END
 ```
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 1. Definieer een variabele voor de naam van de resourcegroep die u later gaat gebruiken in PowerShell-opdrachten. Kopieer de tekst van de volgende opdracht naar PowerShell, geef tussen dubbele aanhalingstekens een naam op voor de [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en voer de opdracht uit. Een voorbeeld is `"adfrg"`. 
    
      ```powershell
@@ -728,12 +729,12 @@ In deze zelfstudie hebt u de volgende stappen uitgevoerd:
 
 > [!div class="checklist"]
 > * Bereid de gegevensopslag voor om de grenswaarde in op te slaan. 
-> * Maak een gegevensfactory.
+> * Een gegevensfactory maakt.
 > * Maak gekoppelde services. 
-> * Bron-, sink- en grenswaardegegevenssets maken.
+> * Maak bron-, sink- en grenswaardegegevenssets.
 > * Maak een pijplijn.
 > * Voer de pijplijn uit.
-> * Controleer de pijplijnuitvoering. 
+> * De pijplijnuitvoering controleert. 
 
 In deze zelfstudie heeft de pijplijn gegevens uit één tabel in een SQL-database naar een Blob-opslag gekopieerd. Ga door naar de volgende zelfstudie voor meer informatie over het kopiëren van gegevens uit meerdere tabellen in een on-premises SQL Server-database naar een SQL-database. 
 

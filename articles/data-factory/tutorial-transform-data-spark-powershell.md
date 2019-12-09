@@ -5,28 +5,27 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 06ec56e9e86069bd23a032aa289ea7391db04538
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 62e760da58eeff265e560d7cbc5dc044bf053de2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683294"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924943"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Gegevens transformeren in de cloud met behulp van Spark-activiteit in Azure Data Factory
 In deze zelfstudie gebruikt u Azure PowerShell om een Data Factory-pijplijn te maken waarmee gegevens worden getransformeerd met behulp van Spark-activiteit en een gekoppelde HDInsight-service op aanvraag. In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory. 
+> * Een gegevensfactory maakt. 
 > * Gekoppelde services maakt en implementeert.
 > * Een pijplijn maakt en implementeert. 
-> * Start een pijplijnuitvoering.
-> * Controleer de pijplijnuitvoering.
+> * Een pijplijnuitvoering starten.
+> * De pijplijnuitvoering controleert.
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -73,7 +72,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ### <a name="upload-the-input-file"></a>Invoerbestand uploaden
 1. Maak een bestand met de naam **minecraftstory.txt** met wat tekst. In het Spark-programma wordt het aantal woorden in deze tekst geteld. 
-2. Maak in de map `inputfiles` een submap met de naam `spark`. 
+2. Maak in de map `spark` een submap met de naam `inputfiles`. 
 3. Upload de `minecraftstory.txt` naar de submap`inputfiles`. 
 
 ## <a name="author-linked-services"></a>Gekoppelde services maken
@@ -182,7 +181,7 @@ Houd rekening met de volgende punten:
 - entryFilePath verwijst naar het bestand WordCount_Spark.py in de submap script van de map spark. 
 
 
-## <a name="create-a-data-factory"></a>Een data factory maken 
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken 
 U hebt een gekoppelde service en pijplijndefinities gemaakt in JSON-bestanden. Nu gaan we een gegevensfactory maken en de gekoppelde service en JSON-pijplijnbestanden implementeren met behulp van PowerShell-cmdlets. Voer de volgende PowerShell-opdrachten één voor één: 
 
 1. Stel één voor één de variabelen in.
@@ -252,7 +251,7 @@ U hebt een gekoppelde service en pijplijndefinities gemaakt in JSON-bestanden. N
     
 ## <a name="start-and-monitor-a-pipeline-run"></a>Een pijplijnuitvoering starten en controleren  
 
-1. Start een pijplijnuitvoering. Ook wordt de id voor de pijplijnuitvoering vastgelegd voor toekomstige controle.
+1. Een pijplijnuitvoering starten. Ook wordt de id voor de pijplijnuitvoering vastgelegd voor toekomstige controle.
 
     ```powershell
     $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName  
@@ -336,11 +335,11 @@ U hebt een gekoppelde service en pijplijndefinities gemaakt in JSON-bestanden. N
 Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene locatie naar een andere locatie in een Azure Blob-opslag. U hebt geleerd hoe u: 
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory. 
+> * Een gegevensfactory maakt. 
 > * Gekoppelde services maakt en implementeert.
 > * Een pijplijn maakt en implementeert. 
-> * Start een pijplijnuitvoering.
-> * Controleer de pijplijnuitvoering.
+> * Een pijplijnuitvoering starten.
+> * De pijplijnuitvoering controleert.
 
 Ga naar de volgende zelfstudie voor informatie over het transformeren van gegevens door een Hive-script uit te voeren in een Azure HDInsight-cluster in een virtueel netwerk. 
 

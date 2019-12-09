@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: d3651c63b206c37b1f41ecab7f69e24fc94ddffd
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 43ea197c4dc774a4e011cd9fb2b3adcf94866d90
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263865"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926084"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Een AKS-cluster (Azure Kubernetes Services) maken en configureren voor het gebruik van virtuele knoop punten met behulp van de Azure CLI
 
@@ -214,7 +214,7 @@ aks-agentpool-14693408-0      Ready     agent     32m       v1.11.2
 
 ## <a name="deploy-a-sample-app"></a>Een voor beeld-app implementeren
 
-Maak een bestand met de naam `virtual-node.yaml` en kopieer het in de volgende YAML. Als u de container op het knoop punt wilt plannen, worden er een [nodeSelector][node-selector] en- [tolerantie][toleration] gedefinieerd.
+Maak een bestand met de naam `virtual-node.yaml` en kopieer de volgende YAML. Als u de container op het knoop punt wilt plannen, worden er een [nodeSelector][node-selector] en- [tolerantie][toleration] gedefinieerd.
 
 ```yaml
 apiVersion: apps/v1
@@ -253,7 +253,7 @@ Voer de toepassing uit met de opdracht [kubectl apply][kubectl-apply] .
 kubectl apply -f virtual-node.yaml
 ```
 
-Gebruik de opdracht [kubectl Get peul][kubectl-get] met het argument `-o wide` om een lijst van peulen en het geplande knoop punt uit te voeren. U ziet dat de pod van de `aci-helloworld` is gepland op het knoop punt `virtual-node-aci-linux`.
+Gebruik de opdracht [kubectl Get peul][kubectl-get] met het argument `-o wide` om een lijst met peulen en het geplande knoop punt uit te voeren. U ziet dat de `aci-helloworld` Pod is gepland op het `virtual-node-aci-linux` knoop punt.
 
 ```
 $ kubectl get pods -o wide
@@ -265,14 +265,14 @@ aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.
 Aan de Pod wordt een intern IP-adres toegewezen vanuit het subnet van het virtuele netwerk van Azure dat is gedelegeerd voor gebruik met virtuele knoop punten.
 
 > [!NOTE]
-> [Configureer en gebruik een Kubernetes-geheim][acr-aks-secrets]als u installatie kopieën gebruikt die zijn opgeslagen in azure container Registry. Een huidige beperking van virtuele knoop punten is dat u geen geïntegreerde Azure AD-Service-Principal-verificatie kunt gebruiken. Als u geen geheim gebruikt, mislukt het begin van de virtuele knoop punten en wordt de fout `HTTP response status code 400 error code "InaccessibleImage"` gerapporteerd.
+> [Configureer en gebruik een Kubernetes-geheim][acr-aks-secrets]als u installatie kopieën gebruikt die zijn opgeslagen in azure container Registry. Een huidige beperking van virtuele knoop punten is dat u geen geïntegreerde Azure AD-Service-Principal-verificatie kunt gebruiken. Als u geen geheim gebruikt, kan er geen peulen gepland op virtuele knoop punten worden gestart en wordt de fout `HTTP response status code 400 error code "InaccessibleImage"`gerapporteerd.
 
 ## <a name="test-the-virtual-node-pod"></a>De pod van het virtuele knoop punt testen
 
 Als u de pod die op het virtuele knoop punt wordt uitgevoerd wilt testen, bladert u naar de demo toepassing met een webclient. Als aan de pod een intern IP-adres is toegewezen, kunt u deze verbinding snel testen vanaf een andere pod op het AKS-cluster. Een test pod maken en een terminal sessie hieraan koppelen:
 
 ```console
-kubectl run -it --rm virtual-node-test --image=debian
+kubectl run --generator=run-pod/v1 -it --rm testvk --image=debian
 ```
 
 Installeer `curl` in de Pod met behulp van `apt-get`:
@@ -281,7 +281,7 @@ Installeer `curl` in de Pod met behulp van `apt-get`:
 apt-get update && apt-get install -y curl
 ```
 
-U hebt nu toegang tot het adres van uw Pod met `curl`, zoals *http://10.241.0.4* . Geef uw eigen interne IP-adres op dat wordt weer gegeven in de vorige `kubectl get pods`-opdracht:
+U hebt nu toegang tot het adres van uw Pod met behulp van `curl`, zoals *http://10.241.0.4* . Geef uw eigen interne IP-adres op dat wordt weer gegeven in de vorige `kubectl get pods` opdracht:
 
 ```console
 curl -L http://10.241.0.4

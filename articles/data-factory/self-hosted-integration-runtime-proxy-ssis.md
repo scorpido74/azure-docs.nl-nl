@@ -5,7 +5,6 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
@@ -13,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/12/2019
-ms.openlocfilehash: cae15e38f98794a3e97ad0b06329aa2e62c2945e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fa0f61ed0e280f11e693596f80e79f2e2c110678
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217650"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932045"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Zelf-Hostende IR configureren als proxy voor Azure-SSIS IR in ADF
 
@@ -54,14 +53,14 @@ Schakel op de pagina **Geavanceerde instellingen** het selectie vakje **zelf geh
 ![Azure-SSIS IR configureren met een zelf-Hostende IR als proxy](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-settings-ssisir.png)
 
 ## <a name="enable-ssis-packages-to-connect-by-proxy"></a>SSIS-pakketten inschakelen om verbinding te maken via proxy
-Met de meest recente SSDT met SSIS projects-extensie voor Visual Studio die [hier](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) kan worden gedownload of als een zelfstandig installatie programma dat [hier](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)kan worden gedownload, vindt u een nieuwe **ConnectByProxy** -eigenschap die is toegevoegd in OLEDB/ Verbindings beheer van platte bestanden.  
+Met de meest recente SSDT met SSIS projects-extensie voor Visual Studio die [hier](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) kan worden gedownload of als een zelfstandig installatie programma dat [hier](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)kan worden gedownload, vindt u een nieuwe **ConnectByProxy** -eigenschap die is toegevoegd aan OLEDB/plat file Connection-beheer.  
 
 Bij het ontwerpen van nieuwe pakketten met gegevens stroom taken met OLEDB/platte bestands bronnen om toegang te krijgen tot data bases/bestanden op locatie, kunt u deze eigenschap inschakelen door deze in te stellen op **True** in het deel venster Eigenschappen van relevante verbindings beheer.
 
 ![De eigenschap ConnectByProxy inschakelen](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
 U kunt deze eigenschap ook inschakelen wanneer u bestaande pakketten uitvoert zonder deze hand matig te wijzigen.  Er zijn twee opties:
-- Het project met de pakketten openen, opnieuw samen stellen en opnieuw implementeren met de nieuwste SSDT om uit te voeren op uw Azure-SSIS IR: de eigenschap kan vervolgens worden ingeschakeld door deze in te stellen op **True** voor de relevante verbindings beheer die worden weer gegeven op de **verbinding** Het tabblad managers van het pop-upvenster pakket uitvoeren tijdens het uitvoeren van pakketten van SSMS.
+- Het project met de pakketten openen, opnieuw samen stellen en opnieuw implementeren met de nieuwste SSDT om uit te voeren op uw Azure-SSIS IR: de eigenschap kan vervolgens worden ingeschakeld door deze in te stellen op **True** voor de relevante verbindings beheer Programma's die worden weer gegeven op het tabblad **verbindings beheer** van het pop-upvenster pakket uitvoeren bij het uitvoeren van pakketten van SSMS.
 
   ![ConnectByProxy property2 inschakelen](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
 
@@ -69,7 +68,7 @@ U kunt deze eigenschap ook inschakelen wanneer u bestaande pakketten uitvoert zo
   
   ![ConnectByProxy property3 inschakelen](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- Implementeer het project met de pakketten die moeten worden uitgevoerd op uw SSIS-IR: de eigenschap kan vervolgens worden ingeschakeld door het pad naar de eigenschap op te geven, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`en het in te stellen op **True** als eigenschaps overschrijving op het tabblad **Geavanceerd** van het pop-upvenster pakket uitvoeren. bij het uitvoeren van pakketten van SSMS.
+- Implementeer het project met de pakketten die moeten worden uitgevoerd op uw SSIS-IR: de eigenschap kan vervolgens worden ingeschakeld door het pad naar de eigenschap op te geven, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`en het in te stellen op **True** als eigenschaps overschrijving op het tabblad **Geavanceerd** van het pop-upvenster pakket uitvoeren bij het uitvoeren van pakketten van SSMS.
 
   ![ConnectByProxy property4 inschakelen](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
@@ -95,4 +94,4 @@ De tweede faserings taken die op uw Azure-SSIS IR worden uitgevoerd, worden niet
 - Het gebruik van SSIS-para meters/-variabelen in de eigenschappen van ODBC/OLEDB/plat bestands bronnen en verbindings beheer wordt momenteel niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
-Wanneer u uw zelf-Hostende IR als proxy voor uw Azure-SSIS IR hebt geconfigureerd, kunt u uw pakketten implementeren en uitvoeren om toegang te krijgen tot gegevens die on-premises worden uitgevoerd als de uitvoering van SSIS-pakket activiteiten in ADF-pijp lijnen. Zie [SSIS-pakketten uitvoeren als uitvoeren SSIS-pakket activiteiten in ADF-pijp lijnen ](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Als u uw zelf-Hostende IR als proxy voor uw Azure-SSIS IR hebt geconfigureerd, kunt u uw pakketten implementeren en uitvoeren om toegang te krijgen tot gegevens die on-premises worden uitgevoerd als de uitvoering van SSIS-pakket activiteiten in ADF-pijp lijnen. Zie [SSIS-pakketten uitvoeren als uitvoeren SSIS-pakket activiteiten in ADF-pijp lijnen](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).

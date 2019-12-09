@@ -1,5 +1,5 @@
 ---
-title: Een Sink-trans formatie instellen in de functie gegevens stroom toewijzen
+title: Een Sink-trans formatie instellen in de stroom voor het toewijzen van gegevens
 description: Meer informatie over het instellen van een Sink-trans formatie in de stroom voor het toewijzen van gegevens.
 author: kromerm
 ms.author: makromer
@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/03/2019
-ms.openlocfilehash: 707c0e93b88f34d4663d3dbe20bb2e9e4991a332
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 828487aba651d10e5c906050dab544c097b49762
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217932"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930279"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Sink-trans formatie voor een gegevens stroom
 
@@ -34,7 +34,7 @@ U kunt het partitie schema instellen op het tabblad **optimaliseren** . Als u wi
 
 ![Opties op het tabblad optimaliseren](media/data-flow/opt001.png "Sink-opties")
 
-## <a name="field-mapping"></a>Veld toewijzing
+## <a name="field-mapping"></a>Veldtoewijzing
 Op het tabblad **toewijzing** van de Sink-trans formatie kunt u de binnenkomende kolommen aan de linkerkant toewijzen aan de doelen aan de rechter kant. Wanneer u gegevens stromen naar bestanden sinkt, worden er door Data Factory altijd nieuwe bestanden naar een map geschreven. Wanneer u toewijst aan een Data Base-gegevensset, kiest u bewerkings opties voor database tabellen om in te voegen, bij te werken, te upsert of te verwijderen.
 
 ![Het tabblad toewijzing](media/data-flow/sink2.png "Wastafel")

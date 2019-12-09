@@ -4,21 +4,20 @@ description: Meer informatie over het gebruik van de activiteit meta gegevens op
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: ''
 ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: jingwang
-ms.openlocfilehash: c62a7de1f16a3d7d286f48500117c256804c0f24
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 9985997ff4bef727676232705297379ccfc179c5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546931"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928568"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Activiteit van meta gegevens in Azure Data Factory ophalen
 
@@ -41,13 +40,13 @@ De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourne
 
 ### <a name="supported-connectors"></a>Ondersteunde connectors
 
-**Bestands opslag**
+**File Storage**
 
-| Connector/meta gegevens | itemName<br>(bestand/map) | Item type<br>(bestand/map) | size<br>Profiler | toegevoegd<br>(bestand/map) | lastModified<br>(bestand/map) |childItems<br>map |contentMD5<br>Profiler | structuur<br/>Profiler | Aantal<br>Profiler | reeds<br>(bestand/map) |
+| Connector/meta gegevens | itemName<br>(bestand/map) | itemType<br>(bestand/map) | size<br>Profiler | toegevoegd<br>(bestand/map) | lastModified<br>(bestand/map) |childItems<br>map |contentMD5<br>Profiler | structure<br/>Profiler | Aantal<br>Profiler | reeds<br>(bestand/map) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
-| [Google-Cloud opslag](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
-| [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | √ | √ | √ | √/√ |
+| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
+| [Google-Cloud opslag](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Files](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
@@ -62,7 +61,7 @@ De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourne
 
 **Relationele data base**
 
-| Connector/meta gegevens | structuur | Aantal | reeds |
+| Connector/meta gegevens | structure | Aantal | reeds |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Database](connector-azure-sql-database.md) | √ | √ | √ |
 | [Beheerd exemplaar van Azure SQL-Database](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
@@ -76,13 +75,13 @@ U kunt de volgende typen meta gegevens opgeven in de velden lijst activiteit met
 | Meta gegevens type | Beschrijving |
 |:--- |:--- |
 | itemName | De naam van het bestand of de map. |
-| Item type | Het type van het bestand of de map. Geretourneerde waarde is `File` of `Folder`. |
+| itemType | Het type van het bestand of de map. Geretourneerde waarde is `File` of `Folder`. |
 | size | Grootte van het bestand in bytes. Alleen van toepassing op bestanden. |
 | toegevoegd | Er is een datum/tijd gemaakt van het bestand of de map. |
 | lastModified | Datum/tijd waarop het bestand of de map voor het laatst is gewijzigd. |
 | childItems | Lijst met submappen en bestanden in de opgegeven map. Alleen van toepassing op mappen. Geretourneerde waarde is een lijst met de naam en het type van elk onderliggend item. |
 | contentMD5 | MD5 van het bestand. Alleen van toepassing op bestanden. |
-| structuur | De gegevens structuur van het bestand of de relationele database tabel. Geretourneerde waarde is een lijst met kolom namen en kolom typen. |
+| structure | De gegevens structuur van het bestand of de relationele database tabel. Geretourneerde waarde is een lijst met kolom namen en kolom typen. |
 | Aantal | Het aantal kolommen in het bestand of de tabel relationeel. |
 | reeds| Hiermee wordt aangegeven of een bestand, map of tabel bestaat. Houd er rekening mee dat als `exists` is opgegeven in de lijst met velden voor meta gegevens ophalen, de activiteit niet kan worden uitgevoerd, zelfs niet als het bestand, de map of de tabel niet bestaat. In plaats daarvan wordt `exists: false` geretourneerd in de uitvoer. |
 
@@ -110,7 +109,7 @@ U kunt de volgende typen meta gegevens opgeven in de velden lijst activiteit met
 }
 ```
 
-**Sets**
+**Dataset**
 
 ```json
 {
@@ -138,7 +137,7 @@ Op dit moment kunnen met de activiteit meta gegevens ophalen de volgende typen m
 
 Eigenschap | Beschrijving | Verplicht
 -------- | ----------- | --------
-Velden | De typen meta gegevens die zijn vereist. Zie de sectie [meta gegevens opties](#metadata-options) in dit artikel voor meer informatie over ondersteunde meta gegevens. | Ja 
+fieldList | De typen meta gegevens die zijn vereist. Zie de sectie [meta gegevens opties](#metadata-options) in dit artikel voor meer informatie over ondersteunde meta gegevens. | Ja 
 sets | De referentie gegevensset waarvan de meta gegevens moeten worden opgehaald door de activiteit meta gegevens ophalen. Zie de sectie [mogelijkheden](#capabilities) voor informatie over ondersteunde connectors. Raadpleeg de onderwerpen over de specifieke connector voor de syntaxis van de gegevensset. | Ja
 formatSettings | Toep assen bij gebruik van gegevensset voor indelings type. | Nee
 storeSettings | Toep assen bij gebruik van gegevensset voor indelings type. | Nee

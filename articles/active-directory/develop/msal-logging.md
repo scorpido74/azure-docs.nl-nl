@@ -1,29 +1,25 @@
 ---
-title: Logboek registratie in MSAL-toepassingen (micro soft Authentication Library)
+title: Logboek registratie in MSAL-apps | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over logboek registratie in micro soft Authentication Library (MSAL)-toepassingen.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/11/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5960389389e4b75794a7334c0bff12ce3ac0f170
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 9a71093ee05e032a5df89bb0560b6daa82e2fbf2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452479"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916142"
 ---
 # <a name="logging-in-msal-applications"></a>Logboek registratie in MSAL-toepassingen
 
@@ -197,7 +193,7 @@ Bijvoorbeeld:
     }];
 ```
 
-### <a name="personal-data"></a>Persoons gegevens
+### <a name="personal-data"></a>Persoonlijke gegevens
 
 Standaard worden door MSAL geen persoonlijke gegevens (PII) vastgelegd of geregistreerd. Met de bibliotheek kunnen app-ontwikkel aars dit inschakelen via een eigenschap in de MSALLogger-klasse. Door `pii.Enabled`in te scha kelen, wordt de app verantwoordelijk voor het veilig verwerken van uiterst gevoelige gegevens en de volgende regelgevings vereisten.
 
@@ -219,7 +215,7 @@ Gebruik een van de volgende waarden om het logboek registratie niveau in te stel
 |---------|---------|
 | `MSALLogLevelNothing`| Alle logboek registratie uitschakelen |
 | `MSALLogLevelError` | Standaard niveau, alleen informatie afdrukken wanneer er fouten optreden |
-| `MSALLogLevelWarning` | Berichten |
+| `MSALLogLevelWarning` | Waarschuwingen |
 | `MSALLogLevelInfo` |  Bibliotheek ingangs punten, met para meters en verschillende sleutel hanger bewerkingen |
 |`MSALLogLevelVerbose`     |  API-tracering |
 
@@ -274,7 +270,7 @@ MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
 }
 ```
 
-### <a name="personal-data"></a>Persoons gegevens
+### <a name="personal-data"></a>Persoonlijke gegevens
 
 Standaard worden door MSAL geen persoonlijke gegevens (PII) vastgelegd of geregistreerd. Met de bibliotheek kunnen app-ontwikkel aars dit inschakelen via een eigenschap in de MSALLogger-klasse. Door `pii.Enabled`in te scha kelen, wordt de app verantwoordelijk voor het veilig verwerken van uiterst gevoelige gegevens en de volgende regelgevings vereisten.
 
@@ -296,7 +292,7 @@ Gebruik een van de volgende waarden om het logboek registratie niveau in te stel
 |---------|---------|
 | `MSALLogLevelNothing`| Alle logboek registratie uitschakelen |
 | `MSALLogLevelError` | Standaard niveau, alleen informatie afdrukken wanneer er fouten optreden |
-| `MSALLogLevelWarning` | Berichten |
+| `MSALLogLevelWarning` | Waarschuwingen |
 | `MSALLogLevelInfo` |  Bibliotheek ingangs punten, met para meters en verschillende sleutel hanger bewerkingen |
 |`MSALLogLevelVerbose`     |  API-tracering |
 

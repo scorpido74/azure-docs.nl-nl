@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8337d18b5c6b484e45e6cefaec98e2684155a02
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 9d76a11fc41fd964ff4e43518aee34aad3ecffd3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900426"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922670"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kenmerk toewijzingen voor het inrichten van gebruikers aanpassen voor SaaS-toepassingen in Azure Active Directory
 
@@ -139,7 +139,7 @@ De SCIM-RFC definieert een kern gebruikers-en groeps schema, en biedt ook uitbre
    1. Meld u aan bij de [Azure Active Directory-Portal](https://aad.portal.azure.com), selecteer **zakelijke toepassingen**, selecteer uw toepassing en selecteer vervolgens **inrichting**.
    2. Selecteer onder **toewijzingen**het object (gebruiker of groep) waarvoor u een aangepast kenmerk wilt toevoegen.
    3. Selecteer onder aan de pagina **Geavanceerde opties weer geven**.
-   4. Selecteer * * kenmerk lijst bewerken voor *toepassing*.
+   4. Selecteer **kenmerk lijst bewerken voor appName*.
    5. Typ onder aan de lijst met kenmerken informatie over het aangepaste kenmerk in de opgegeven velden. Selecteer vervolgens **kenmerk toevoegen**.
 
 Voor SCIM-toepassingen moet de naam van het kenmerk voldoen aan het patroon dat in het voor beeld hieronder wordt weer gegeven. De ' CustomExtensionName ' en ' CustomAttribute ' kunnen worden aangepast volgens de vereisten van uw toepassing, bijvoorbeeld: urn: IETF: params: scim: schemas: extension: 2.0: CustomExtensionName: CustomAttribute

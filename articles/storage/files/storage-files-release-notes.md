@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/8/2019
+ms.date: 12/6/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 633465e9123d679b1aa0e7f7ad048b17c18f2acb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8caa66801dda223681c38e966ba3d08b1b0c5921
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771033"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931067"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Release opmerkingen voor de Azure File Sync-agent
 Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Uw installaties van Windows Server worden getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als u waar ook ter wereld nodig hebt.
@@ -23,7 +23,7 @@ Dit artikel bevat de releaseopmerkingen voor de ondersteunde versies van de Azur
 ## <a name="supported-versions"></a>Ondersteunde versies
 De volgende versies worden ondersteund voor de Azure File Sync-agent:
 
-| Mijlpalen | Versienummer agent | Releasedatum | Status |
+| Mijlpaal | Versienummer agent | Releasedatum | Status |
 |----|----------------------|--------------|------------------|
 | V9 release- [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2 december 2019 | Ondersteund-Flighting |
 | V8 release- [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 8 oktober 2019 | Ondersteund |
@@ -50,7 +50,7 @@ De volgende release opmerkingen zijn voor versie 9.0.0.0 van de Azure File Sync-
 ### <a name="improvements-and-issues-that-are-fixed"></a>Verbeteringen en problemen die zijn opgelost
 
 - Ondersteuning voor herstel door self-service
-    - Gebruikers kunnen nu hun bestanden herstellen met behulp van de functie voor eerdere versies. Vóór de v9-release werd de functie vorige versie niet ondersteund op volumes waarop Cloud lagen zijn ingeschakeld. Deze functie moet voor elk volume afzonderlijk worden ingeschakeld, waarbij een eind punt waarvoor Cloud lagen zijn ingeschakeld, bestaat. Zie voor meer informatie  
+    - Gebruikers kunnen nu hun bestanden herstellen met behulp van de functie voor eerdere versies. Vóór de v9-release werd de functie vorige versie niet ondersteund op volumes waarop Cloud lagen zijn ingeschakeld. Deze functie moet voor elk volume afzonderlijk worden ingeschakeld, waarbij een eind punt waarvoor Cloud lagen zijn ingeschakeld, bestaat. Zie  voor meer informatie.  
 [Self-service herstellen via eerdere versies en VSS (Volume Shadow Copy Service)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service). 
  
 - Ondersteuning voor grotere grootte van bestands shares 
@@ -73,11 +73,12 @@ De volgende release opmerkingen zijn voor versie 9.0.0.0 van de Azure File Sync-
 - Server-eindpunt verbetering verwijderen als Cloud lagen zijn ingeschakeld 
     - Net als voorheen verwijdert het verwijderen van een server eindpunt niet het verwijderen van bestanden in de Azure-bestands share. Het gedrag voor reparsepunten op de lokale server is echter gewijzigd. Reparsepunten (verwijzingen naar bestanden die niet lokaal op de server zijn) worden nu verwijderd wanneer een server eindpunt wordt verwijderd. De volledig in de cache opgeslagen bestanden blijven op de server. Deze verbetering werd toegepast om [zwevende gelaagde bestanden](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) te voor komen bij het verwijderen van een server eindpunt. Als het server-eind punt opnieuw wordt gemaakt, worden de reparsepunten voor de gelaagde bestanden opnieuw gemaakt op de server.  
  
-- Verbeteringen in prestaties en betrouw baarheid 
+- Verbeteringen in de prestaties en betrouwbaarheid 
     - Minder intrekken mislukt. De grootte van het intrekken wordt nu automatisch aangepast op basis van de netwerk bandbreedte. 
     - Verbeterde download prestaties bij het toevoegen van een nieuwe server aan een synchronisatie groep. 
     - Bestanden die niet worden gesynchroniseerd door conflicterende beperkingen, worden gereduceerd. 
-
+    - Bestanden die niet worden gelaagd of onverwacht in bepaalde scenario's worden ingetrokken als het pad van het server eindpunt een volume koppel punt is.
+    
 ### <a name="evaluation-tool"></a>Evaluatie programma
 Voordat u Azure File Sync implementeert, moet u evalueren of het compatibel is met uw systeem met behulp van het Azure File Sync-evaluatie programma. Dit hulp programma is een Azure PowerShell-cmdlet waarmee wordt gecontroleerd op mogelijke problemen met uw bestands systeem en gegevensset, zoals niet-ondersteunde tekens of een niet-ondersteunde versie van het besturings systeem. Zie het gedeelte [evaluatie hulpprogramma's](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) in de plannings handleiding voor instructies voor de installatie en het gebruik. 
 
@@ -414,7 +415,7 @@ De volgende release opmerkingen zijn voor versie 5.0.2.0 van de Azure File Sync-
 
 - Ondersteuning voor Azure Government Cloud
   - Er is preview-ondersteuning toegevoegd voor de Azure Government Cloud. Hiervoor is een wit abonnement en een speciale down load van de agent van micro soft vereist. Als u toegang wilt krijgen tot de preview, kunt u ons rechtstreeks bij [AzureFiles@microsoft.com](mailto:AzureFiles@microsoft.com)een e-mail sturen.
-- Ondersteuning voor Gegevensontdubbeling
+- Ondersteuning voor gegevensontdubbeling
     - Gegevensontdubbeling wordt nu volledig ondersteund met Cloud lagen die zijn ingeschakeld op Windows Server 2016 en Windows Server 2019. Als u ontdubbeling inschakelt op een volume waarvoor Cloud lagen zijn ingeschakeld, kunt u meer bestanden on-premises opslaan zonder dat u meer opslag ruimte hoeft in te richten.
 - Ondersteuning voor offline gegevens overdracht (bijvoorbeeld via Data Box)
     - Migreer eenvoudig grote hoeveel heden gegevens naar Azure File Sync via een wille keurige manier. U kunt kiezen Azure Data Box, AzCopy en zelfs migratie services van derden. U hoeft geen enorme hoeveel heden band breedte te gebruiken om uw gegevens in azure op te halen, in het geval van Data Box: u kunt er gewoon e-mailen. Zie [Offline gegevensoverdracht docs](https://aka.ms/AFS/OfflineDataTransfer)(Engelstalig) voor meer informatie.

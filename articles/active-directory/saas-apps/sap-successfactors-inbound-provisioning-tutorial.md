@@ -14,15 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
-ms.openlocfilehash: 85f3c8b9bc4167350b8a56f118128b89df142611
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: cc17b8158c847bff5f07d6088a99566dc499d1bf
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896920"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914770"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Zelf studie: SAP SuccessFactors configureren voor het inrichten van Active Directory gebruikers (preview-versie)
-Het doel van deze zelf studie is het weer geven van de stappen die u moet uitvoeren om gegevens van werk nemers van SuccessFactors worker Central te importeren in zowel Active Directory als Azure Active Directory, met een optionele write-back van e-mail adres naar SuccessFactors.
+Het doel van deze zelf studie is het weer geven van de stappen die u moet uitvoeren om gebruikers in te richten vanuit SuccessFactors Employee Central in Active Directory (AD) en Azure AD, met een optionele write-back van e-mail adres naar SuccessFactors. Deze integratie is in open bare preview en ondersteunt het ophalen van meer dan [70 + gebruikers kenmerken](../manage-apps/sap-successfactors-attribute-reference.md) van SuccessFactors Employee Central.
+
+>[!NOTE]
+>Gebruik deze zelf studie als u wilt dat de gebruikers die u wilt inrichten vanuit SuccessFactors een on-premises AD-account en optioneel een Azure AD-account nodig hebben. Als de gebruikers van SuccessFactors alleen een Azure AD-account nodig hebben (alleen Cloud gebruikers), raadpleegt u de zelf studie over het [configureren van SAP SuccessFactors naar Azure AD](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) -gebruikers inrichting. 
+
 
 ## <a name="overview"></a>Overzicht
 
@@ -69,7 +73,7 @@ In deze sectie wordt de end-to-end-oplossings architectuur voor gebruikers inger
 4. De Azure AD Connect-inrichtings agent gebruikt een service account om AD-account gegevens toe te voegen of bij te werken.
 5. De Azure AD Connect sync-engine voert Delta synchronisatie uit voor het ophalen van updates in AD.
 6. De Active Directory updates worden gesynchroniseerd met Azure Active Directory.
-7. Als de SuccessFactors write-connector is geconfigureerd, schrijft het het e-mail kenmerk en de gebruikers naam terug naar SuccessFactors, op basis van het gebruikte kenmerk dat wordt gebruikt.
+7. Als de [SuccessFactors write-app](sap-successfactors-writeback-tutorial.md) is geconfigureerd, schrijft het het e-mail kenmerk terug naar SuccessFactors, op basis van het gebruikte kenmerk dat wordt gebruikt.
 
 ## <a name="planning-your-deployment"></a>Uw implementatie plannen
 
@@ -109,6 +113,10 @@ Werk samen met uw SuccessFactors-beheer team of implementatie partner om een geb
 * Schuif omlaag in hetzelfde vak en selecteer de **centrale API voor werk nemers**. Voeg machtigingen toe, zoals hieronder wordt weer gegeven, voor meer informatie over het gebruik van ODATA API en Edit met de ODATA-API. Selecteer de optie bewerken als u van plan bent hetzelfde account te gebruiken voor het terugschrijven naar het SuccessFactors-scenario. 
   > [!div class="mx-imgBorder"]
   > ![lees schrijf machtigingen](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
+
+  >[!NOTE]
+  >Voor de volledige lijst met kenmerken die zijn opgehaald door deze inrichtings-app, verwijzen wij u naar [SuccessFactors-kenmerk verwijzing](../manage-apps/sap-successfactors-attribute-reference.md)
+
 * Klik op **gereed**. Klik op **Wijzigingen opslaan**.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Een machtigings groep maken voor de API-gebruiker
@@ -294,6 +302,10 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van SuccessFactors
 
 1. In de sectie **kenmerk toewijzingen** kunt u definiëren hoe afzonderlijke SuccessFactors kenmerken worden toegewezen aan Active Directory kenmerken.
 
+  >[!NOTE]
+  >Voor de volledige lijst met SuccessFactors-kenmerken die door de toepassing worden ondersteund, verwijzen wij u naar [SuccessFactors-kenmerk verwijzing](../manage-apps/sap-successfactors-attribute-reference.md)
+
+
 1. Klik op een bestaande kenmerk toewijzing om het bij te werken of Klik onder aan het scherm op **nieuwe toewijzing toevoegen** om nieuwe toewijzingen toe te voegen. Een individuele kenmerk toewijzing ondersteunt de volgende eigenschappen:
 
       * **Toewijzings type**
@@ -347,20 +359,9 @@ Zodra de configuratie van de SuccessFactors-inrichting is voltooid, kunt u de in
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* [Meer informatie over ondersteunde SuccessFactors-kenmerken voor inkomende inrichting](../manage-apps/sap-successfactors-attribute-reference.md)
+* [Meer informatie over het configureren van write-back van e-mail naar SuccessFactors](sap-successfactors-writeback-tutorial.md)
 * [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../manage-apps/check-status-user-account-provisioning.md)
 * [Meer informatie over het configureren van eenmalige aanmelding tussen SuccessFactors en Azure Active Directory](successfactors-tutorial.md)
 * [Meer informatie over het integreren van andere SaaS-toepassingen met Azure Active Directory](tutorial-list.md)
 * [Meer informatie over het exporteren en importeren van uw inrichtings configuraties](../manage-apps/export-import-provisioning-configuration.md)
-
-
-
-
-
-
-
-
-
-
-
-
-

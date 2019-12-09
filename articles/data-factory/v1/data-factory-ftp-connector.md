@@ -4,21 +4,20 @@ description: Meer informatie over het verplaatsen van gegevens van een FTP-serve
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: eea3bab0-a6e4-4045-ad44-9ce06229c718
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e5a6485e93e8f617883a7dfef511709ec857b411
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 55c8bf2210eb0990a91aeff1f90e4af4db2c22ab
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682601"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927165"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Gegevens verplaatsen van een FTP-server met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -45,7 +44,7 @@ U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst va
 
 De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren Data Factory**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough.
 
-U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **power shell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
+U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **power shell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.
 
 Of u de hulpprogram ma's of Api's gebruikt, voer de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
@@ -60,21 +59,21 @@ Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data 
 
 De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor FTP.
 
-## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 De volgende tabel beschrijft de JSON-elementen die specifiek zijn voor een gekoppelde FTP-service.
 
-| Eigenschap | Beschrijving | Vereist | Standaard |
+| Eigenschap | Beschrijving | Verplicht | Standaard |
 | --- | --- | --- | --- |
 | type |Stel dit in op FtpServer. |Ja |&nbsp; |
-| hostsite |Geef de naam of het IP-adres van de FTP-server op. |Ja |&nbsp; |
+| host |Geef de naam of het IP-adres van de FTP-server op. |Ja |&nbsp; |
 | authenticationType |Geef het verificatie type op. |Ja |Basic, anoniem |
 | gebruikersnaam |Geef de gebruiker op die toegang heeft tot de FTP-server. |Nee |&nbsp; |
 | wachtwoord |Geef het wacht woord voor de gebruiker (gebruikers naam) op. |Nee |&nbsp; |
 | encryptedCredential |Geef de versleutelde referentie op voor toegang tot de FTP-server. |Nee |&nbsp; |
 | gatewayName |Geef de naam op van de gateway in Data Management Gateway om verbinding te maken met een on-premises FTP-server. |Nee |&nbsp; |
 | poort |Geef de poort op waarop de FTP-server luistert. |Nee |21 |
-| enableSsl |Geef op of FTP via een SSL/TLS-kanaal moet worden gebruikt. |Nee |true |
-| enableServerCertificateValidation |Geef op of de SSL-certificaat validatie van de server moet worden ingeschakeld wanneer u FTP via SSL/TLS-kanaal gebruikt. |Nee |true |
+| enableSsl |Geef op of FTP via een SSL/TLS-kanaal moet worden gebruikt. |Nee |waar |
+| enableServerCertificateValidation |Geef op of de SSL-certificaat validatie van de server moet worden ingeschakeld wanneer u FTP via SSL/TLS-kanaal gebruikt. |Nee |waar |
 
 >[!NOTE]
 >De FTP-connector ondersteunt toegang tot de FTP-server zonder versleuteling of expliciete SSL/TLS-versleuteling. Het biedt geen ondersteuning voor impliciete SSL/TLS-versleuteling.
@@ -153,14 +152,14 @@ Zie [gegevens sets maken](data-factory-create-datasets.md)voor een volledige lij
 
 De sectie **typeProperties** verschilt voor elk type gegevensset. Het bevat informatie die specifiek is voor het type gegevensset. De sectie **typeProperties** voor een gegevensset van het type **file share** heeft de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | folderPath |Subpad van de map. Escape teken ' \ ' gebruiken voor speciale tekens in de teken reeks. Zie voor beelden van gekoppelde service en gegevensset-definities voor voor beeld.<br/><br/>U kunt deze eigenschap combi neren met **partitionBy** om mappaden te laten zijn op basis van de begin-en eind datum van het segment. |Ja |
 | fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen **Bestands naam** is opgegeven voor een uitvoer gegevensset, de naam van het gegenereerde bestand heeft de volgende indeling: <br/><br/>`Data.<Guid>.txt` (bijvoorbeeld: data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt) |Nee |
-| File filter |Geef een filter op dat moet worden gebruikt om een subset van bestanden in de **FolderPath**te selecteren, in plaats van alle bestanden.<br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (één teken).<br/><br/>Voor beeld 1: `"fileFilter": "*.log"`<br/>Voor beeld 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **File filter** is van toepassing op een invoer-file share-gegevensset. Deze eigenschap wordt niet ondersteund met Hadoop Distributed File System (HDFS). |Nee |
+| File filter |Geef een filter op dat moet worden gebruikt om een subset van bestanden in de **FolderPath**te selecteren, in plaats van alle bestanden.<br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (één teken).<br/><br/>Voorbeeld 1: `"fileFilter": "*.log"`<br/>Voorbeeld 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **File filter** is van toepassing op een invoer-file share-gegevensset. Deze eigenschap wordt niet ondersteund met Hadoop Distributed File System (HDFS). |Nee |
 | partitionedBy |Wordt gebruikt om een dynamische **FolderPath** en een **Bestands naam** op te geven voor time series-gegevens. U kunt bijvoorbeeld een **FolderPath** opgeven dat voor elk uur aan gegevens is para meters. |Nee |
-| Formatteer | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie de secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) voor meer informatie. <br><br> Als u bestanden wilt kopiëren als ze zich bevinden tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie opmaak in de gegevensset voor invoer en uitvoer over. |Nee |
-| compressie | Geef het type en compressie niveau voor de gegevens op. Ondersteunde typen zijn **gzip**, **Deflate**, **bzip2**en **ZipDeflate**, en ondersteunde niveaus zijn **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
+| format | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de **type** eigenschap onder indeling op een van deze waarden. Zie de secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) voor meer informatie. <br><br> Als u bestanden wilt kopiëren als ze zich bevinden tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie opmaak in de gegevensset voor invoer en uitvoer over. |Nee |
+| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn **gzip**, **Deflate**, **bzip2**en **ZipDeflate**, en ondersteunde niveaus zijn **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
 | useBinaryTransfer |Geef op of de binaire overdrachts modus moet worden gebruikt. De waarden zijn waar voor de binaire modus (dit is de standaard waarde) en False voor ASCII. Deze eigenschap kan alleen worden gebruikt wanneer het gekoppelde type gekoppelde service van het type: FtpServer is. |Nee |
 
 > [!NOTE]
@@ -204,9 +203,9 @@ De eigenschappen die beschikbaar zijn in de **typeProperties** -sectie van de ac
 
 Als de bron van het type **FileSystemSource**is in Kopieer activiteit, is de volgende eigenschap beschikbaar in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
+| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
 | --- | --- | --- | --- |
-| recursieve |Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. |True, False (standaard) |Nee |
+| recursive |Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. |True, False (standaard) |Nee |
 
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON-voor beeld: gegevens kopiëren van een FTP-server naar Azure Blob
 In dit voor beeld ziet u hoe u gegevens kopieert van een FTP-server naar Azure Blob Storage. Gegevens kunnen echter rechtstreeks naar een van de sinks worden gekopieerd die worden vermeld in de [ondersteunde gegevens archieven en-indelingen](data-factory-data-movement-activities.md#supported-data-stores-and-formats), met behulp van de Kopieer activiteit in Data Factory.

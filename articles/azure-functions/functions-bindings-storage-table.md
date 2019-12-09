@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 77f95cf02b5216f1946283143b828f915b351abc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1308463694754231aa6d770bf716fd3def219981
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230979"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925310"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-bindingen voor Azure Functions
 
@@ -20,15 +20,15 @@ In dit artikel wordt uitgelegd hoe u kunt werken met Azure Table Storage-binding
 
 ## <a name="packages---functions-1x"></a>Pakketten - functies 1.x
 
-De tabel opslag bindingen zijn opgenomen in het pakket [micro soft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet versie 2. x. De bron code voor het pakket bevindt zich in de GitHub-opslag plaats [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) .
+De tabel opslag bindingen zijn opgenomen in het pakket [micro soft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet versie 2. x. Broncode voor het pakket is in de [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub-opslagplaats.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
-## <a name="packages---functions-2x"></a>Pakketten - functies 2.x
+## <a name="packages---functions-2x-and-higher"></a>Pakketten-functions 2. x en hoger
 
-De tabel opslag bindingen zijn opgenomen in het [micro soft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet-pakket, versie 3. x. De bron code voor het pakket bevindt zich in de GitHub-opslag plaats [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables) .
+De tabel opslag bindingen zijn opgenomen in het [micro soft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet-pakket, versie 3. x. Broncode voor het pakket is in de [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables) GitHub-opslagplaats.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -105,7 +105,7 @@ public class TableStorage
 
 ### <a name="input---c-example---cloudtable"></a>Invoer- C# voor beeld-CloudTable
 
-`IQueryable` wordt niet ondersteund in de [runtime van functions v2](functions-versions.md). U kunt ook een `CloudTable` methode parameter gebruiken om de tabel te lezen met behulp van de Azure Storage SDK. Hier volgt een voor beeld van een 2. x-functie die een query uitvoert op een Azure Functions-logboek tabel:
+`IQueryable` wordt niet ondersteund in de [runtime van functions v2](functions-versions.md). U kunt ook een `CloudTable` methode parameter gebruiken om de tabel te lezen met behulp van de Azure Storage SDK. Hier volgt een voor beeld van een functie die een Azure Functions-logboek tabel opvraagt:
 
 ```csharp
 using Microsoft.Azure.WebJobs;
@@ -185,7 +185,7 @@ Het bestand *Function. json* bevat een `partitionKey` en een `rowKey`. De `rowKe
 }
 ```
 
-In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
+De [configuratie](#input---configuration) sectie wordt uitgelegd dat deze eigenschappen.
 
 Dit is de C#-scriptcode:
 
@@ -208,7 +208,7 @@ public class Person
 
 In het volgende voor beeld ziet u een tabel-invoer binding in een *Function. json* -bestand en [ C# script](functions-reference-csharp.md) code die gebruikmaken van de binding. De functie leest entiteiten voor een partitie sleutel die is opgegeven in een wachtrij bericht.
 
-Hier is het bestand *Function. json* :
+Hier volgt de *function.json* bestand:
 
 ```json
 {
@@ -232,7 +232,7 @@ Hier is het bestand *Function. json* :
 }
 ```
 
-In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
+De [configuratie](#input---configuration) sectie wordt uitgelegd dat deze eigenschappen.
 
 Met C# de script code wordt een verwijzing toegevoegd aan de Azure Storage SDK, zodat het entiteits type kan worden afgeleid van `TableEntity`:
 
@@ -258,7 +258,7 @@ public class Person : TableEntity
 
 ### <a name="input---c-script-example---cloudtable"></a>Voor beeld C# van invoer script-CloudTable
 
-`IQueryable` wordt niet ondersteund in de [runtime van functions v2](functions-versions.md). U kunt ook een `CloudTable` methode parameter gebruiken om de tabel te lezen met behulp van de Azure Storage SDK. Hier volgt een voor beeld van een 2. x-functie die een query uitvoert op een Azure Functions-logboek tabel:
+`IQueryable` wordt niet ondersteund in de functions-runtime voor [versie 2. x en hoger)](functions-versions.md). U kunt ook een `CloudTable` methode parameter gebruiken om de tabel te lezen met behulp van de Azure Storage SDK. Hier volgt een voor beeld van een functie die een Azure Functions-logboek tabel opvraagt:
 
 ```json
 {
@@ -349,7 +349,7 @@ Het bestand *Function. json* bevat een `partitionKey` en een `rowKey`. De `rowKe
 }
 ```
 
-In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
+De [configuratie](#input---configuration) sectie wordt uitgelegd dat deze eigenschappen.
 
 Hier volgt de F# code:
 
@@ -396,7 +396,7 @@ Het bestand *Function. json* bevat een `partitionKey` en een `rowKey`. De `rowKe
 }
 ```
 
-In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
+De [configuratie](#input---configuration) sectie wordt uitgelegd dat deze eigenschappen.
 
 Dit is de JavaScript-code:
 
@@ -479,10 +479,10 @@ Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)de volgend
 
 Het opslag account dat moet worden gebruikt, wordt in de volgende volg orde bepaald:
 
-* De eigenschap `Connection` van het `Table`-kenmerk.
-* Het `StorageAccount` kenmerk dat wordt toegepast op dezelfde para meter als het kenmerk `Table`.
-* Het `StorageAccount` kenmerk dat wordt toegepast op de functie.
-* Het `StorageAccount` kenmerk dat wordt toegepast op de klasse.
+* De `Table` van kenmerk `Connection` eigenschap.
+* De `StorageAccount` kenmerk toegepast op de dezelfde parameter als de `Table` kenmerk.
+* De `StorageAccount` kenmerk toegepast op de functie.
+* De `StorageAccount` kenmerk toegepast op de klasse.
 * Het standaard opslag account voor de functie-app (de app-instelling AzureWebJobsStorage).
 
 ## <a name="input---java-annotations"></a>Invoer-java-aantekeningen
@@ -491,19 +491,19 @@ Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/f
 
 ## <a name="input---configuration"></a>Invoer - configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `Table`.
+De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `Table` kenmerk.
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type** | n.v.t. | Moet worden ingesteld op `table`. Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal.|
 |**direction** | n.v.t. | Moet worden ingesteld op `in`. Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
-|**naam** | n.v.t. | De naam van de variabele die de tabel of entiteit in functie code vertegenwoordigt. | 
+|**De naam** | n.v.t. | De naam van de variabele die de tabel of entiteit in functie code vertegenwoordigt. | 
 |**tableName** | **TableName** | De naam van de tabel.| 
-|**partitionKey** | **PartitionKey** |Optioneel. De partitie sleutel van de tabel entiteit die moet worden gelezen. Zie de sectie [gebruik](#input---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
+|**partitionKey** | **partitionKey** |Optioneel. De partitie sleutel van de tabel entiteit die moet worden gelezen. Zie de sectie [gebruik](#input---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
 |**rowKey** |**RowKey** | Optioneel. De rij van de tabel entiteit die moet worden gelezen. Zie de sectie [gebruik](#input---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
-|**Houd** |**Houd** | Optioneel. Het maximum aantal entiteiten dat in Java script kan worden gelezen. Zie de sectie [gebruik](#input---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
-|**Filterwebonderdelen** |**Filterwebonderdelen** | Optioneel. Een OData-filter expressie voor tabel invoer in Java script. Zie de sectie [gebruik](#input---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
-|**Combi** |**Verbinding** | De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld `connection` instelt op ' mijn opslag ', zoekt de runtime van functions naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard opslag connection string in de app-instelling met de naam `AzureWebJobsStorage`.|
+|**take** |**Houd** | Optioneel. Het maximum aantal entiteiten dat in Java script kan worden gelezen. Zie de sectie [gebruik](#input---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
+|**filter** |**Filter** | Optioneel. Een OData-filter expressie voor tabel invoer in Java script. Zie de sectie [gebruik](#input---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
+|**verbinding** |**Verbinding** | De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld `connection` instelt op ' mijn opslag ', zoekt de runtime van functions naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard opslag connection string in de app-instelling met de naam `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -538,7 +538,7 @@ Gebruik een Azure Table Storage-uitvoer binding om entiteiten te schrijven naar 
 Zie het voorbeeld taalspecifieke:
 
 * [C#](#output---c-example)
-* [C#script (. CSX)](#output---c-script-example)
+* [C# script (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
 
@@ -570,7 +570,7 @@ public class TableStorage
 
 In het volgende voor beeld ziet u een tabel-uitvoer binding in een *Function. json* -bestand en [ C# script](functions-reference-csharp.md) code die gebruikmaken van de binding. Met de functie worden meerdere tabel entiteiten geschreven.
 
-Hier is het bestand *Function. json* :
+Hier volgt de *function.json* bestand:
 
 ```json
 {
@@ -592,7 +592,7 @@ Hier is het bestand *Function. json* :
 }
 ```
 
-In de [configuratie](#output---configuration) sectie worden deze eigenschappen uitgelegd.
+De [configuratie](#output---configuration) sectie wordt uitgelegd dat deze eigenschappen.
 
 Dit is de C#-scriptcode:
 
@@ -625,7 +625,7 @@ public class Person
 
 In het volgende voor beeld ziet u een tabel-uitvoer binding in een *Function. json* -bestand en [ F# script](functions-reference-fsharp.md) code die gebruikmaken van de binding. Met de functie worden meerdere tabel entiteiten geschreven.
 
-Hier is het bestand *Function. json* :
+Hier volgt de *function.json* bestand:
 
 ```json
 {
@@ -647,7 +647,7 @@ Hier is het bestand *Function. json* :
 }
 ```
 
-In de [configuratie](#output---configuration) sectie worden deze eigenschappen uitgelegd.
+De [configuratie](#output---configuration) sectie wordt uitgelegd dat deze eigenschappen.
 
 Hier volgt de F# code:
 
@@ -672,7 +672,7 @@ let Run(input: string, tableBinding: ICollector<Person>, log: ILogger) =
 
 In het volgende voor beeld ziet u een tabel-uitvoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. Met de functie worden meerdere tabel entiteiten geschreven.
 
-Hier is het bestand *Function. json* :
+Hier volgt de *function.json* bestand:
 
 ```json
 {
@@ -694,7 +694,7 @@ Hier is het bestand *Function. json* :
 }
 ```
 
-In de [configuratie](#output---configuration) sectie worden deze eigenschappen uitgelegd.
+De [configuratie](#output---configuration) sectie wordt uitgelegd dat deze eigenschappen.
 
 Dit is de JavaScript-code:
 
@@ -745,23 +745,23 @@ public static MyPoco TableOutput(
 }
 ```
 
-Zie voor een volledig voor beeld [uitvoer- C# voor beeld](#output---c-example).
+Zie voor een compleet voorbeeld [uitvoer - voorbeeld met C#](#output---c-example).
 
 U kunt het kenmerk `StorageAccount` gebruiken om het opslag account op te geven bij klasse, methode of parameter niveau. Zie [invoer kenmerken](#input---attributes)voor meer informatie.
 
 ## <a name="output---configuration"></a>Uitvoer - configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `Table`.
+De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `Table` kenmerk.
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type** | n.v.t. | Moet worden ingesteld op `table`. Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal.|
 |**direction** | n.v.t. | Moet worden ingesteld op `out`. Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
-|**naam** | n.v.t. | De naam van de variabele die wordt gebruikt in de functie code die de tabel of entiteit vertegenwoordigt. Ingesteld op `$return` om te verwijzen naar de retour waarde van de functie.| 
+|**De naam** | n.v.t. | De naam van de variabele die wordt gebruikt in de functie code die de tabel of entiteit vertegenwoordigt. Ingesteld op `$return` om te verwijzen naar de retour waarde van de functie.| 
 |**tableName** |**TableName** | De naam van de tabel.| 
-|**partitionKey** |**PartitionKey** | De partitie sleutel van de tabel entiteit die moet worden geschreven. Zie de [sectie gebruik](#output---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
+|**partitionKey** |**partitionKey** | De partitie sleutel van de tabel entiteit die moet worden geschreven. Zie de [sectie gebruik](#output---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
 |**rowKey** |**RowKey** | De rij van de tabel entiteit die moet worden geschreven. Zie de [sectie gebruik](#output---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
-|**Combi** |**Verbinding** | De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld `connection` instelt op ' mijn opslag ', zoekt de runtime van functions naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard opslag connection string in de app-instelling met de naam `AzureWebJobsStorage`.|
+|**verbinding** |**Verbinding** | De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld `connection` instelt op ' mijn opslag ', zoekt de runtime van functions naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard opslag connection string in de app-instelling met de naam `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -794,4 +794,4 @@ De tabel opslag-uitvoer binding ondersteunt de volgende scenario's:
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over Azure functions-triggers en-bindingen](functions-triggers-bindings.md)
+> [Meer informatie over Azure functions-triggers en bindingen](functions-triggers-bindings.md)

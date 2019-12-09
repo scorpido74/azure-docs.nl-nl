@@ -1,21 +1,21 @@
 ---
-title: Power shell-script-Azure SSIS Integration runtime implementeren
+title: Azure SSIS Integration runtime implementeren met behulp van Power shell
 description: Met dit Power shell-script wordt een Azure SSIS Integration runtime gemaakt waarmee SSIS-pakketten kunnen worden uitgevoerd in de Cloud.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/12/2017
-author: swinarko
 ms.author: sawinark
-manager: craigg
-ms.openlocfilehash: beba0a8d01d7d10910716f03602116fe7673ffc8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+author: swinarko
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 09/12/2017
+ms.openlocfilehash: c6d9a9299fa25013a440ee6ac45f5eae407225b8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684371"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929809"
 ---
 # <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>Power shell-script-Azure SSIS Integration runtime implementeren
 
@@ -48,8 +48,8 @@ In dit script worden de volgende opdrachten gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
-| [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Maak een gegevensfactory. |
+| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Een gegevensfactory maakt. |
 | [Set-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/set-Azdatafactoryv2integrationruntime) | Hiermee wordt een Azure SSIS Integration runtime gemaakt waarmee SSIS-pakketten kunnen worden uitgevoerd in de Cloud |
 | [Start-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/start-Azdatafactoryv2integrationruntime) | Hiermee wordt de Azure SSIS Integration runtime gestart. |
 | [Get-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/get-Azdatafactoryv2integrationruntime) | Haalt informatie op over de Azure SSIS Integration runtime. |

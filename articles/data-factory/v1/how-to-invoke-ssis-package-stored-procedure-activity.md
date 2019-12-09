@@ -4,7 +4,7 @@ description: In dit artikel wordt beschreven hoe u een SQL Server Integration Se
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: f0a63db95d0948951ec98159af381e0a04ac91ff
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d9d0ef37c247107a902b1083e77541711f18e7b2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666399"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927919"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Een SSIS-pakket aanroepen met behulp van opgeslagen procedure activiteit in Azure Data Factory
 In dit artikel wordt beschreven hoe u een SSIS-pakket aanroept vanuit een Azure Data Factory pijp lijn met behulp van een opgeslagen procedure activiteit. 
@@ -41,7 +41,7 @@ In deze sectie gebruikt u Azure PowerShell om een Data Factory-pijp lijn te make
 
 Installeer de nieuwste Azure PowerShell-modules met de instructies in [Azure PowerShell installeren en configureren](/powershell/azure/install-az-ps).
 
-### <a name="create-a-data-factory"></a>Een data factory maken
+### <a name="create-a-data-factory"></a>Een gegevensfactory maken
 De volgende procedure bevat stappen voor het maken van een data factory. In deze data factory maakt u een pijp lijn met een opgeslagen procedure activiteit. Met de activiteit opgeslagen procedure wordt een opgeslagen procedure uitgevoerd in de SSISDB-data base om uw SSIS-pakket uit te voeren.
 
 1. Definieer een variabele voor de naam van de resourcegroep die u later gaat gebruiken in PowerShell-opdrachten. Kopieer de tekst van de volgende opdracht naar PowerShell, geef tussen dubbele aanhalingstekens een naam op voor de [Azure-resourcegroep](../../azure-resource-manager/resource-group-overview.md) en voer de opdracht uit. Bijvoorbeeld: `"adfrg"`. 
@@ -133,7 +133,7 @@ Deze uitvoer gegevensset is een dummy-gegevensset waarmee de planning van de pij
     ```
 
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Een pijp lijn maken met een opgeslagen procedure activiteit 
-In deze stap maakt u een pijp lijn met een opgeslagen procedure activiteit. De activiteit roept de opgeslagen procedure sp_executesql aan om uw SSIS-pakket uit te voeren. 
+In deze stap maakt u een pijp lijn met een opgeslagen procedure activiteit. Met de activiteit wordt de sp_executesql opgeslagen procedure aangeroepen om uw SSIS-pakket uit te voeren. 
 
 1. Maak een JSON-bestand met de naam **MyPipeline. json** in de map **C:\ADF\RunSSISPackage** met de volgende inhoud:
 

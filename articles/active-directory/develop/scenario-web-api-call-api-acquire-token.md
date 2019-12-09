@@ -1,6 +1,7 @@
 ---
-title: Web-API die aanroepen van andere web-API's (een token voor de app ophalen) - Microsoft identity-platform
-description: Meer informatie over het bouwen van een web-API die aanroepen van andere web-API's (ophalen van een token voor de app).
+title: Een Token ophalen voor een web-API die web-Api's aanroept | Azure
+titleSuffix: Microsoft identity platform
+description: Meer informatie over het bouwen van een web-API voor het aanroepen van web-Api's die een token moeten verkrijgen voor de app.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,20 +16,20 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 986e2e0f8a481d61dc870af2548290658b44d2d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 276ff1e5e9f709aa5b38d1efa4055dfe3baf3cc5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65231109"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919780"
 ---
-# <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web-API die web-API's - roept een token verkrijgen voor de app.
+# <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web-API voor het aanroepen van web-Api's-een Token ophalen voor de app
 
-Als u een clienttoepassing hebt gemaakt object, gebruiken voor het verkrijgen van een token dat u gebruiken kunt voor het aanroepen van een web-API.
+Zodra u een client toepassings object hebt gemaakt, gebruikt u dit om een token op te halen dat u kunt gebruiken om een web-API aan te roepen.
 
 ## <a name="code-in-the-controller"></a>Code in de controller
 
-Hier volgt een voorbeeld van code die wordt aangeroepen in de acties van de API-controllers, een downstream-API (met de naam todolist) aanroepen.
+Hier volgt een voor beeld van code die wordt aangeroepen in de acties van de API-controllers, aanroepen van een stroomafwaartse API (met de naam ToDoList).
 
 ```CSharp
 private async Task GetTodoList(bool isAppStarting)
@@ -49,9 +50,9 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()` is vergelijkbaar met wat u hebt gezien in het artikel [Web-API-aanroepen web-API's - app-configuratie](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()` instantieert `IConfidentialClientApplication` met een cache met alleen gegevens voor één account. Het account wordt geleverd door de `GetAccountIdentifier` methode.
+`BuildConfidentialClient()` is vergelijkbaar met wat u hebt gezien in de [Web-API voor het artikel die web-api's aanroept-app-configuratie](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()` instantieert `IConfidentialClientApplication` met een cache die alleen informatie voor één account bevat. Het account wordt verzorgd door de `GetAccountIdentifier` methode.
 
-De `GetAccountIdentifier` methode maakt gebruik van de claims die zijn gekoppeld aan de identiteit van de gebruiker waarvoor de web-API de JWT ontvangen:
+De `GetAccountIdentifier` methode maakt gebruik van de claims die zijn gekoppeld aan de identiteit van de gebruiker waarvoor de Web-API de JWT heeft ontvangen:
 
 ```CSharp
 public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)

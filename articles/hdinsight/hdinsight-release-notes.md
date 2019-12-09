@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 54e28a9d434500915aa8cc8e07ade3592e5aa96c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 5d9ca8d0df3eb0186add5c40765c87a4409a5660
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185608"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926427"
 ---
 # <a name="release-notes"></a>Releaseopmerkingen
 
@@ -51,11 +51,11 @@ Ondersteuning voor automatisch schalen voor HBase en LLAP-werk belasting is ook 
 
 ### <a name="hdinsight-accelerated-writes-for-apache-hbase"></a>Versnelde schrijf bewerkingen van HDInsight voor Apache HBase 
 
-Voor verbeterde schrijfbewerkingen worden beheerde Azure Premium SSD-schijven gebruikt om de prestaties van het Apache HBase Write Ahead Log (WAL) te verbeteren. Zie [Azure HDInsight-versnelde schrijf bewerkingen voor Apache HBase](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes)voor meer informatie.
+Voor verbeterde schrijfbewerkingen worden beheerde Azure Premium SSD-schijven gebruikt om de prestaties van het Apache HBase Write Ahead Log (WAL) te verbeteren. Zie [Verbeterde schrijfbewerkingen van Azure HDInsight voor Apache HBase](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes) voor meer informatie.
 
 ### <a name="custom-ambari-db"></a>Aangepaste Ambari-database
 
-HDInsight biedt nu een nieuwe capaciteit om klanten in staat te stellen hun eigen SQL-Data Base voor Ambari te gebruiken. Klanten kunnen nu de juiste SQL-Data Base voor Ambari kiezen en deze eenvoudig upgraden op basis van hun eigen zakelijke groei vereiste. De implementatie wordt uitgevoerd met een Azure Resource Manager sjabloon. Zie [HDInsight-clusters instellen met een aangepaste AMBARI DB](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db)voor meer informatie.
+HDInsight biedt nu een nieuwe capaciteit om klanten in staat te stellen hun eigen SQL-Data Base voor Ambari te gebruiken. Klanten kunnen nu de juiste SQL-Data Base voor Ambari kiezen en deze eenvoudig upgraden op basis van hun eigen bedrijfs groei vereiste. De implementatie wordt uitgevoerd met een Azure Resource Manager sjabloon. Zie [HDInsight-clusters instellen met een aangepaste AMBARI DB](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db)voor meer informatie.
 
 ### <a name="f-series-virtual-machines-are-now-available-with-hdinsight"></a>Virtuele machines uit de F-serie zijn nu beschikbaar met HDInsight
 
@@ -69,7 +69,7 @@ Vanuit deze release worden virtuele machines uit de G-serie niet meer aangeboden
 ### <a name="dv1-virtual-machine-deprecation"></a>Afschaffing van Dv1-virtuele machines
 In deze release is het gebruik van Dv1 Vm's met HDInsight afgeschaft. Elke klant aanvraag voor Dv1 wordt automatisch geleverd met dv2. Er is geen prijs verschil tussen Dv1 en dv2 Vm's.
 
-## <a name="behavior-changes"></a>Gedrags wijzigingen
+## <a name="behavior-changes"></a>Gedragswijzigingen
 
 ### <a name="cluster-managed-disk-size-change"></a>Wijziging in cluster-beheerde schijf grootte
 HDInsight biedt beheerde schijf ruimte voor het cluster. In deze release wordt de beheerde schijf grootte van elk knoop punt in het nieuwe gemaakte cluster gewijzigd in 128 GB.
@@ -90,4 +90,4 @@ Vm's uit de A-serie kunnen problemen met ESP-clusters veroorzaken vanwege een re
 HDInsight blijft de betrouw baarheid en prestaties van het cluster verbeteren. 
 
 ## <a name="component-version-change"></a>Onderdeel versie wijzigen
-Er is geen wijziging van de onderdeel versie voor deze versie. U vindt [hier](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)de huidige onderdeel versies voor HDInsight 4,0 ad hdinsight 3,6.
+Er is geen wijziging van de onderdeel versie voor deze versie. U vindt [hier](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)de huidige onderdeel versies voor HDInsight 4,0 en hdinsight 3,6.

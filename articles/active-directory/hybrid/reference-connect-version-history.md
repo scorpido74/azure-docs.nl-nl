@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 461298e4f195d88ced5015af26226a9f7b12f737
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3414bc21afb88d2683261ea1ce1398a0b1bfeece
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891776"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922291"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: release geschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -38,9 +38,23 @@ Downloaden| [Down load Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId
 Hoewel we dit proces door lopen, wordt het versie nummer van de release weer gegeven met een ' X ' in de positie van het kleine release nummer, zoals in ' 1.3. X. 0 '. Dit betekent dat de release opmerkingen in dit document geldig zijn voor alle versies die beginnen met ' 1,3 '. Zodra het release proces is voltooid, wordt het versie nummer van de release bijgewerkt naar de meest recente versie en wordt de release status bijgewerkt naar ' vrijgegeven voor downloaden en automatische upgrade '.
 Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatische upgrade. De release status geeft aan of een release beschikbaar moet worden gesteld voor automatische upgrade of alleen voor down loads. Als automatische upgrade is ingeschakeld op uw Azure AD Connect server, wordt die server automatisch bijgewerkt naar de meest recente versie van Azure AD Connect die is uitgebracht voor automatische upgrade. Houd er rekening mee dat niet alle Azure AD Connect configuraties in aanmerking komen voor automatische upgrade. Volg deze link voor meer informatie over [automatische upgrade](how-to-connect-install-automatic-upgrade.md)
 
+## <a name="14380"></a>1.4.38.0
+### <a name="release-status"></a>Release status
+12/6/2019: vrijgeven voor downloaden. Niet beschikbaar via automatische upgrade.
+### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
+- De wachtwoord hash-synchronisatie voor Azure AD Domain Services is bijgewerkt naar een juiste account voor opvulling in Kerberos-hashes.  Dit biedt een prestatie verbetering tijdens wachtwoord synchronisatie van AAD naar Azure AD Domain Services.
+- Er is ondersteuning toegevoegd voor betrouw bare sessies tussen de verificatie agent en service bus.
+- Deze release dwingt TLS 1,2 af voor communicatie tussen verificatie agent en Cloud Services.
+- Er is een DNS-cache toegevoegd voor WebSocket-verbindingen tussen verificatie agent en Cloud Services.
+- We hebben de mogelijkheid toegevoegd om specifieke agents te richten vanuit de cloud om te testen op agent connectiviteit.
+
+### <a name="fixed-issues"></a>Problemen opgelost
+- Release 1.4.18.0 had een bug waarbij de Power shell-cmdlet voor DSSO de aanmeld Windows-referenties gebruikt in plaats van de referenties van de beheerder die zijn verschaft tijdens het uitvoeren van PS. Als gevolg hiervan is het niet mogelijk om DSSO in meerdere forests in te scha kelen via de AADConnect-gebruikers interface. 
+- Er is een oplossing uitgevoerd om DSSO tegelijkertijd in alle forests in te scha kelen via de AADConnect-gebruikers interface
+
 ## <a name="14320"></a>1.4.32.0
 ### <a name="release-status"></a>Release status
-11/08/2019: uitgebracht voor downloaden. Niet beschikbaar voor automatische upgrade
+11/08/2019: uitgebracht voor downloaden. Niet beschikbaar via automatische upgrade.
 
 >[!IMPORTANT]
 >Als gevolg van een interne schema wijziging in deze versie van Azure AD Connect, als u configuratie-instellingen van ADFS-vertrouwens relatie beheert met MSOnline Power shell, moet u uw MSOnline Power shell-module bijwerken naar versie 1.1.183.57 of hoger
@@ -809,7 +823,7 @@ CBool(
     |CertSubject|CertIssuer|CertKeyAlgorithm|
     |CertSubjectNameDN|CertIssuerOid|CertNameInfo|
     |CertSubjectNameOid|CertIssuerDN|IsCert|
-    |CertFriendlyName|certThumbprint|CertExtensionOids|
+    |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Selecteer|

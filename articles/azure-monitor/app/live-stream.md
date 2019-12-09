@@ -1,5 +1,5 @@
 ---
-title: Live Metrics Stream met aangepaste metrische gegevens en diagnostische gegevens in Azure-toepassing inzichten | Microsoft Docs
+title: Problemen vaststellen met Live Metrics Stream-Azure-toepassing inzichten
 description: Bewaak uw web-app in realtime met aangepaste metrische gegevens en stel problemen vast met een live feed van fouten, traceringen en gebeurtenissen.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 69aaa61bb0be9a5f07de85ff4ef81b28a86aefaa
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ac2aabe12697336377df808e02e283dde0e4da16
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575620"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927229"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: controleren & diagnose met een latentie van 1 seconde
 
@@ -22,7 +22,7 @@ Test het opvallende hart van uw Live, in-productie webtoepassing met behulp van 
 Met Live Metrics Stream kunt u het volgende doen:
 
 * Valideer een oplossing tijdens de release, door prestatie-en fout aantallen te bekijken.
-* Bekijk het effect van de test belasting en stel problemen vast. 
+* Bekijk het effect van de test belasting en stel problemen vast.
 * Richt u op bepaalde test sessies of filter bekende problemen door de metrische gegevens die u wilt bekijken, te selecteren en te filteren.
 * Ontvang uitzonderings traceringen wanneer ze plaatsvinden.
 * Experimenteer met filters om de meest relevante Kpi's te vinden.
@@ -45,7 +45,7 @@ Live metrics worden momenteel ondersteund voor ASP.NET-, ASP.NET Core-, Azure Fu
 
 4. [Beveilig het besturings kanaal](#secure-the-control-channel) als u gevoelige gegevens zoals klant namen in uw filters kunt gebruiken.
 
-### <a name="no-data-check-your-server-firewall"></a>Zijn er geen gegevens? Controleer de firewall van uw server
+### <a name="no-data-check-your-server-firewall"></a>Geen gegevens? Controleer de firewall van uw server
 
 Controleer of de [uitgaande poorten voor Live Metrics stream](../../azure-monitor/app/ip-addresses.md#outgoing-ports) zijn geopend in de firewall van uw servers.
 
@@ -57,7 +57,7 @@ Controleer of de [uitgaande poorten voor Live Metrics stream](../../azure-monito
 |Geen Bewaar periode|De gegevens blijven behouden in de grafiek en vervolgens verwijderd|[Gegevens die gedurende 90 dagen worden bewaard](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
 |Op aanvraag|Gegevens worden gestreamd tijdens het openen van Live metrieken|Er worden gegevens verzonden wanneer de SDK is geïnstalleerd en ingeschakeld|
 |Gratis|Er worden geen kosten in rekening gebracht voor Live Stream gegevens|Onderworpen aan [prijzen](../../azure-monitor/app/pricing.md)
-|Steekproeven|Alle geselecteerde metrische gegevens en tellers worden verzonden. Voor beelden van fouten en stack traceringen zijn. TelemetryProcessors worden niet toegepast.|Gebeurtenissen kunnen worden [bemonsterd](../../azure-monitor/app/api-filtering-sampling.md)|
+|Sampling|Alle geselecteerde metrische gegevens en tellers worden verzonden. Voor beelden van fouten en stack traceringen zijn. TelemetryProcessors worden niet toegepast.|Gebeurtenissen kunnen worden [bemonsterd](../../azure-monitor/app/api-filtering-sampling.md)|
 |Besturings kanaal|Filter besturings signalen worden naar de SDK verzonden. U wordt aangeraden dit kanaal te beveiligen.|Communicatie is een manier, naar de portal|
 
 ## <a name="select-and-filter-your-metrics"></a>Uw metrische gegevens selecteren en filteren
@@ -151,7 +151,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 ```
 
-### <a name="azure-function-apps"></a>Azure function-apps
+### <a name="azure-function-apps"></a>Azure Function-apps
 
 Voor Azure function-apps (v2) kunt u het kanaal beveiligen met een API-sleutel door een omgevings variabele te gebruiken.
 
@@ -204,7 +204,7 @@ Dynamische metrische gegevens worden standaard uitgeschakeld in de node. js-SDK.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Zijn er geen gegevens? Als uw toepassing zich in een beveiligd netwerk bevindt: Live Metrics Stream gebruikt andere IP-adressen dan andere Application Insights telemetrie. Zorg ervoor dat [deze IP-adressen](../../azure-monitor/app/ip-addresses.md) zijn geopend in uw firewall.
+Geen gegevens? Als uw toepassing zich in een beveiligd netwerk bevindt: Live Metrics Stream gebruikt andere IP-adressen dan andere Application Insights telemetrie. Zorg ervoor dat [deze IP-adressen](../../azure-monitor/app/ip-addresses.md) zijn geopend in uw firewall.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Gebruik controleren met Application Insights](../../azure-monitor/app/usage-overview.md)

@@ -1,29 +1,25 @@
 ---
-title: Aandachtspunten voor Xamarin Android-systeem browser (micro soft Authentication Library voor .NET)
+title: Xamarin Android-systeem browser overwegingen (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over specifieke overwegingen bij het gebruik van systeem browsers op Xamarin Android wanneer u gebruikmaakt van de micro soft-verificatie bibliotheek voor .NET (MSAL.NET).
+description: Meer informatie over specifieke overwegingen bij het gebruik van systeem browsers op Xamarin Android met micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f83283cc02c60eb452d0e414c0b21843b48f343b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1d3ea2554fac8654b052e3e38633af23e7c778b3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150360"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915472"
 ---
 #  <a name="xamarin-android-system-browser-considerations-with-msalnet"></a>Xamarin Android-systeem browser overwegingen met MSAL.NET
 
@@ -33,12 +29,12 @@ Vanaf MSAL.NET 2.4.0-Preview ondersteunt MSAL.NET andere browsers dan Chrome en 
 
 We raden u aan om browsers te gebruiken die aangepaste tabbladen ondersteunen, zoals deze:
 
-| Browsers met aangepaste tabbladen ondersteunen | Pakket naam |
+| Browsers met aangepaste tabbladen ondersteunen | Pakketnaam |
 |------| ------- |
-|Chrome | com. Android. Chrome|
-|Microsoft Edge | com. micro soft. emmx|
+|Chrome | com.android.chrome|
+|Microsoft Edge | com.microsoft.emmx|
 |Firefox | org. mozilla. Firefox|
-|Ecosia | com. ecosia. Android|
+|Ecosia | com.ecosia.android|
 |Kiwi | com. kiwibrowser. browser|
 |Brave | com. Brave. browser|
 
@@ -59,14 +55,14 @@ De volgende tabel geeft een lijst van de apparaten en browsers die zijn getest.
 | | Browser&ast;     |  Resultaat  | 
 | ------------- |:-------------:|:-----:|
 | Huawei/één + | Chrome&ast; | Door|
-| Huawei/één + | Edge-&ast; | Door|
-| Huawei/één + | Firefox-&ast; | Door|
+| Huawei/één + | Edge&ast; | Door|
+| Huawei/één + | Firefox&ast; | Door|
 | Huawei/één + | Brave&ast; | Door|
 | Eén + | Ecosia&ast; | Door|
 | Eén + | Kiwi&ast; | Door|
 | Huawei/één + | Opera | Door|
 | Huawei | OperaMini | Door|
-| Huawei/één + | Inbrowser | Door|
+| Huawei/één + | InBrowser | Door|
 | Eén + | Maxthon | Door|
 | Huawei/één + | DuckDuckGo | Door de gebruiker geannuleerde authenticatie|
 | Huawei/één + | UC-browser | Door de gebruiker geannuleerde authenticatie|

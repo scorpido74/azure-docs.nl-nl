@@ -9,15 +9,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 8/26/2019
+ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ef38013d2c5d7f41db0eaf8d6e444471387d7ff6
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 3778ec9bb44c1e78da152d4bde525884098fd445
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327068"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930751"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Snelstartgids: zoeken naar afbeeldingen met behulp van de Bing Image Search REST API en PHP
 
@@ -41,7 +41,7 @@ Volg deze stappen om deze toepassing uit te voeren.
 
 1. Zorg ervoor dat beveiligde HTTP-ondersteuning is ingeschakeld in uw `php.ini`-bestand. In Windows bevindt dit bestand zich in `C:\windows`.
 2. Maak een nieuw PHP-project in uw favoriete IDE of editor.
-3. maak variabelen voor uw API-eindpunt, uw abonnementssleutel en zoekterm.
+3. Definieer het API-eind punt, uw abonnements sleutel en zoek term. het eind punt kan het volgende globale eind punt zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```php
     $endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/images/search';
@@ -49,7 +49,8 @@ Volg deze stappen om deze toepassing uit te voeren.
     $accessKey = 'enter key here';
     $term = 'tropical ocean';
     ```
-   ## <a name="construct-and-perform-an-http-request"></a>Een HTTP-aanvraag compileren en uitvoeren
+
+## <a name="construct-and-perform-an-http-request"></a>Een HTTP-aanvraag compileren en uitvoeren
 
 1. Gebruik de variabelen in de vorige stap om een HTTP-aanvraag naar de Image Search-API voor te bereiden.
 
@@ -59,6 +60,7 @@ Volg deze stappen om deze toepassing uit te voeren.
                             'header' => $headers,
                             'method' => 'GET' ));
     ```
+
 2. Voer de webaanvraag uit en haal het JSON-antwoord op.
 
     ```php
@@ -70,16 +72,16 @@ Volg deze stappen om deze toepassing uit te voeren.
 
 Verwerk en druk het geretourneerde JSON-antwoord af.
 
-    ```php
-    $headers = array();
-        foreach ($http_response_header as $k => $v) {
-            $h = explode(":", $v, 2);
-            if (isset($h[1]))
-                if (preg_match("/^BingAPIs-/", $h[0]) || preg_match("/^X-MSEdge-/", $h[0]))
-                    $headers[trim($h[0])] = trim($h[1]);
-        }
-        return array($headers, $result);
-    ```
+```php
+$headers = array();
+    foreach ($http_response_header as $k => $v) {
+        $h = explode(":", $v, 2);
+        if (isset($h[1]))
+            if (preg_match("/^BingAPIs-/", $h[0]) || preg_match("/^X-MSEdge-/", $h[0]))
+                $headers[trim($h[0])] = trim($h[1]);
+    }
+    return array($headers, $result);
+```
 
 ## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
 
@@ -138,7 +140,7 @@ Antwoorden die afkomstig zijn van de Bing Afbeeldingen zoeken-API worden geretou
 
 * [Wat is Bing Image Search?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [Online interactieve demo proberen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* [Prijsinformatie](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) voor Bing Zoek-API's. 
+* [Prijsinformatie](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) voor Bing Search-API's. 
 * [Gratis Cognitive Services-toegangssleutel ophalen](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Documentatie van Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Naslag voor Bing Afbeeldingen zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

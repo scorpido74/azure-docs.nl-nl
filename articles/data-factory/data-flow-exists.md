@@ -1,18 +1,19 @@
 ---
-title: Er bestaat een trans formatie in Azure Data Factory toewijzing van gegevens stroom
+title: Er bestaat een trans formatie in de toewijzing van gegevens stroom
 description: Controleren op bestaande rijen met de trans formatie exists in Azure Data Factory gegevens stroom toewijzen
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/16/2019
-ms.openlocfilehash: a477eba246c4ebcfbd32e92f1fd30c301ea1cc5b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: efcc45dcf3565b70305323701810c49c4a720394
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676735"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930413"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>Er bestaat een trans formatie in de toewijzing van gegevens stroom
 
@@ -39,7 +40,7 @@ Als u een vrije-vorm expressie wilt maken die andere opera tors dan ' en ' en ' 
 
 ![Aangepaste instellingen bestaan](media/data-flow/exists1.png "bestaat aangepast")
 
-## <a name="data-flow-script"></a>Gegevens stroom script
+## <a name="data-flow-script"></a>Script voor gegevensstroom
 
 ### <a name="syntax"></a>Syntaxis
 

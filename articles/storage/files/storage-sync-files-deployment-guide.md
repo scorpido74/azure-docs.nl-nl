@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 593c9ea9c37cc5684e85604340f8aae3d84d9afb
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 4f9a2842f99c7f8b0bb9f820584fb2cd4e41a2b2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546354"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927880"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Files SYNC implementeren
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -57,7 +57,7 @@ Schakel de **Verbeterde beveiliging van Internet Explorer**uit voor elke server 
 > [!Note]  
 > U kunt deze stap overs Laan als u Azure File Sync implementeert op Windows Server Core.
 
-1. Open Serverbeheer.
+1. Serverbeheer openen.
 2. Klik op **lokale server**:  
     ![' lokale server ' aan de linkerkant van de Serverbeheer gebruikers interface](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
 3. Selecteer in het deelvenster **Eigenschappen** de koppeling naar **Verbeterde beveiliging van Internet Explorer**.  
@@ -400,6 +400,10 @@ Op dit moment heeft de pre-seeding-benadering een aantal beperkingen:
 - Nadat het Cloud-eind punt is gemaakt, wordt door Azure File Sync een proces uitgevoerd om de bestanden in de cloud te detecteren voordat de initiële synchronisatie wordt gestart. De tijd die nodig is om dit proces te volt ooien, is afhankelijk van de verschillende factoren, zoals de netwerk snelheid, de beschik bare band breedte en het aantal bestanden en mappen. Voor de ruwe schatting van de preview-versie voert het detectie proces ongeveer 10 bestanden per seconde uit.  Zelfs als vooraf seeding snel wordt uitgevoerd, kan de totale tijd voor het verkrijgen van een volledig uitgevoerd systeem aanzienlijk langer zijn wanneer gegevens in de Cloud vooraf worden geseed.
 
 ## <a name="self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service"></a>Self-service herstellen via eerdere versies en VSS (Volume Shadow Copy Service)
+
+> [!IMPORTANT]
+> De volgende informatie kan alleen worden gebruikt in combi natie met versie 9 (of hoger) van de opslag synchronisatie agent. Versies die lager zijn dan 9, hebben geen StorageSyncSelfService-cmdlets.
+
 Eerdere versies is een Windows-functie waarmee u VSS-moment opnamen aan de server zijde van een volume kunt gebruiken voor het weer geven van herstelbare versies van een bestand naar een SMB-client.
 Dit maakt een krachtig scenario mogelijk, ook wel selfservice herstel genoemd, rechtstreeks voor informatie medewerkers, in plaats van afhankelijk van het herstel van een IT-beheerder.
 

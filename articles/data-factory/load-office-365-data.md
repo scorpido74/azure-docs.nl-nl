@@ -4,19 +4,19 @@ description: Azure Data Factory gebruiken om gegevens te kopiëren van Office 36
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 0c938caef81063409d3c8d6632cd7e8df99f1ea1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 896265311a67b74ccf9d0226a2969284ee491c9b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672621"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931425"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Gegevens laden uit Office 365 met behulp van Azure Data Factory
 
@@ -30,7 +30,7 @@ In dit artikel wordt beschreven hoe u de Data Factory _gegevens uit Office 365 l
 
 2. Geef op de pagina **nieuw Data Factory** waarden op voor de velden die worden weer gegeven in de volgende afbeelding:
       
-   ![Pagina nieuwe data factory](./media/load-office-365-data/new-azure-data-factory.png)
+   ![De pagina Nieuwe data factory](./media/load-office-365-data/new-azure-data-factory.png)
  
     * **Naam**: Voer een wereld wijd unieke naam in voor uw Azure-Data Factory. Als u de fout melding ' Data Factory-naam *LoadFromOffice365Demo* is niet beschikbaar ' ontvangt, voert u een andere naam in voor de Data Factory. U kunt bijvoorbeeld _**de naam**_ **LoadFromOffice365Demo**. Probeer de data factory opnieuw te maken. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
     * **Abonnement**: Selecteer het Azure-abonnement waarin u de Data Factory wilt maken. 
@@ -43,7 +43,7 @@ In dit artikel wordt beschreven hoe u de Data Factory _gegevens uit Office 365 l
    
    ![Startpagina van de gegevensfactory](./media/load-office-365-data/data-factory-home-page.png)
 
-5. Selecteer de tegel **auteur & monitor** om de gegevens integratie toepassing in een afzonderlijk tabblad te openen.
+5. Klik op de tegel **Maken en bewaken** om de toepassing Gegevensintegratie in een afzonderlijk tabblad te openen.
 
 ## <a name="create-a-pipeline"></a>Een pijplijn maken
 
@@ -128,7 +128,7 @@ Selecteer de koppeling **uitvoeringen van activiteit weer geven** in de kolom ac
 
 ![Activiteit bewaken](./media/load-office-365-data/activity-status.png) 
 
-Als dit de eerste keer is dat u gegevens aanvraagt voor deze context (een combi natie van welke gegevens tabel wordt geopend, met welk doel account de gegevens worden geladen en welke gebruikers-id de aanvraag voor gegevens toegang maakt), ziet u de Kopieer activiteit de status wordt **uitgevoerd**, en alleen wanneer u op de koppeling Details klikt onder acties ziet u de status als **RequesetingConsent**.  Een lid van de groep voor het goed keuren van gegevens toegang moet de aanvraag goed keuren in de Privileged Access Management voordat de gegevens extractie kan worden voortgezet.
+Als dit de eerste keer is dat u gegevens aanvraagt voor deze context (een combi natie van welke gegevens tabel wordt geopend, met welk doel account de gegevens worden geladen en welke gebruikers-id de aanvraag voor gegevens toegang maakt), ziet u dat de status van de Kopieer activiteit wordt **uitgevoerd**, en alleen wanneer u op de koppeling Details onder acties ziet, wordt de status weer gegeven als **RequesetingConsent**.  Een lid van de groep voor het goed keuren van gegevens toegang moet de aanvraag goed keuren in de Privileged Access Management voordat de gegevens extractie kan worden voortgezet.
 
 _Status als aanvraag om toestemming:_ 
 ![activiteit uitvoerings Details-aanvraag toestemming](./media/load-office-365-data/activity-details-request-consent.png) 

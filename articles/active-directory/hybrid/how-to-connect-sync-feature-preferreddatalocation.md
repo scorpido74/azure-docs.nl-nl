@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0a1d3de1b3eb5aebd89e6601f95c449851d4a1a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5a493179e6e657a1d99d7cdb808629bae7332567
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889565"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918964"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect synchronisatie: de voorkeurs locatie van gegevens voor Office 365-resources configureren
 Het doel van dit onderwerp is om u stapsgewijs te begeleiden bij het configureren van het kenmerk voor de voorkeurs locatie van gegevens in Azure Active Directory (Azure AD) Connect Sync. Wanneer iemand gebruikmaakt van mogelijkheden voor meerdere geografische locaties in Office 365, gebruikt u dit kenmerk om de geografische locatie van de Office 365-gegevens van de gebruiker aan te duiden. (De termen *regio* en *geo* worden door elkaar gebruikt.)
@@ -251,7 +251,7 @@ De ingebouwde synchronisatie planner opnieuw inschakelen:
 1. Start een Power shell-sessie.
 2. Schakel geplande synchronisatie opnieuw in door deze cmdlet uit te voeren: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
-## <a name="step-8-verify-the-result"></a>Stap 8: het resultaat controleren
+## <a name="step-9-verify-the-result"></a>Stap 9: het resultaat controleren
 Het is nu tijd om de configuratie te controleren en in te scha kelen voor uw gebruikers.
 
 1. Voeg de geo toe aan het geselecteerde kenmerk van een gebruiker. De lijst met beschik bare geografische gebieden kan worden gevonden in deze tabel.  

@@ -4,19 +4,20 @@ description: Deze zelfstudie bevat stapsgewijze instructies voor het maken van e
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: ba348cdd478b1d66d7b7286ba0a54adfd98137e2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a42d796010368ec24cc6cfde8a704c4b7608963d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683619"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926624"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Gegevens kopiëren van Azure Blob-opslag naar een SQL database met Azure Data Factory
 In deze zelfstudie maakt u een data factory met behulp van de Azure Data Factory-gebruikersinterface. Met de pijplijn in deze data factory worden gegevens gekopieerd van Azure Blob-opslag naar een SQL database. Het configuratiepatroon in deze zelfstudie geldt voor het kopiëren van een gegevensarchief op basis van bestanden naar een relationeel gegevensarchief. Zie de tabel [Ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensarchieven die worden ondersteund als bron en als sink.
@@ -27,7 +28,7 @@ In deze zelfstudie maakt u een data factory met behulp van de Azure Data Factory
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory.
+> * Een gegevensfactory maakt.
 > * Een pijplijn met kopieeractiviteit maken.
 > * De uitvoering van de pijplijn testen.
 > * De pijplijn handmatig activeren.
@@ -70,9 +71,9 @@ Voer nu de volgende stappen uit om uw blobopslag en SQL database voor te bereide
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-1. Geef Azure-services toegang tot de SQL-server. Zorg ervoor dat **Toegang tot Azure-services toestaan** is **ingeschakeld** voor SQL Server, zodat Data Factory gegevens naar SQL Server kan schrijven. Om deze instelling te controleren en in te scha kelen, gaat u naar de > overzicht van Azure SQL Server > Set Server Firewall > Stel de optie **toegang tot Azure-Services toestaan** **in op aan**.
+1. Geef Azure-services toegang tot SQL Server. Zorg ervoor dat **Toegang tot Azure-services toestaan** is **ingeschakeld** voor SQL Server, zodat Data Factory gegevens naar SQL Server kan schrijven. Om deze instelling te controleren en in te scha kelen, gaat u naar de > overzicht van Azure SQL Server > Set Server Firewall > Stel de optie **toegang tot Azure-Services toestaan** **in op aan**.
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 In deze stap maakt u een data factory en start u de Data Factory-gebruikersinterface om een pijplijn te maken in de data factory. 
 
 1. Open **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
@@ -197,7 +198,7 @@ In deze stap moet u handmatig de pijplijn activeren, die u in de vorige stap hee
 
     ![Pijplijnuitvoeringen controleren](./media/tutorial-copy-data-portal/monitor-pipeline.png)
 
-1. Selecteer de link **Uitvoeringen van activiteit weergeven** in de kolom **Acties** om de activiteituitvoeringen te zien die zijn gekoppeld aan de pijplijnuitvoering. In dit voor beeld is er slechts één activiteit, zodat er slechts één vermelding in de lijst wordt weer gegeven. Selecteer de koppeling **Details** (pictogram van een bril) in de kolom **Acties** om details over de kopieerbewerking te zien. Selecteer de **pijp lijn wordt** aan de bovenkant uitgevoerd om terug te gaan naar de weer gave pijplijn uitvoeringen. Selecteer **Vernieuwen** om de weergave te vernieuwen.
+1. Selecteer de link **Uitvoeringen van activiteit weergeven** in de kolom **Acties** om de activiteituitvoeringen te zien die zijn gekoppeld aan de pijplijnuitvoering. In dit voor beeld is er slechts één activiteit, zodat er slechts één vermelding in de lijst wordt weer gegeven. Selecteer de link **Details** (pictogram van een bril) in de kolom **Acties** om details over de kopieerbewerking te zien. Selecteer de **pijp lijn wordt** aan de bovenkant uitgevoerd om terug te gaan naar de weer gave pijplijn uitvoeringen. Selecteer **Vernieuwen** om de weergave te vernieuwen.
 
     ![Uitvoering van activiteiten controleren](./media/tutorial-copy-data-portal/view-activity-runs.png)
 
@@ -228,7 +229,7 @@ In dit schema maakt u een planningstrigger voor de pijplijn. De trigger voert de
 
     g. Selecteer bij **geactiveerd** de optie **Ja**. 
 
-    h. Selecteer **Volgende**.
+    h. Selecteer **Next**.
 
     ![Knop Geactiveerd](./media/tutorial-copy-data-portal/trigger-activiated-next.png)
 
@@ -252,7 +253,7 @@ In dit schema maakt u een planningstrigger voor de pijplijn. De trigger voert de
 Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene locatie naar een andere locatie in een blobopslag. U hebt geleerd hoe u: 
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory.
+> * Een gegevensfactory maakt.
 > * Een pijplijn met kopieeractiviteit maken.
 > * De uitvoering van de pijplijn testen.
 > * De pijplijn handmatig activeren.

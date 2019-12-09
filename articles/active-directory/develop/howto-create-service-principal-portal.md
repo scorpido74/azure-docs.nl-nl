@@ -3,26 +3,22 @@ title: Een identiteit maken voor de Azure-app in de portal
 titleSuffix: Microsoft identity platform
 description: Hierin wordt beschreven hoe u een nieuwe Azure Active Directory toepassing en Service-Principal maakt die kunnen worden gebruikt met het op rollen gebaseerd toegangs beheer in Azure Resource Manager om de toegang tot bronnen te beheren.
 services: active-directory
-documentationcenter: na
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03ae780f86512ac401fcb7f6936e8f74cb595ca7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2c883dc1f9743e4318db5fe21b0e52ea92d60dc5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473872"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917859"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Procedure: een Azure AD-toepassing en service-principal maken met behulp van de portal om toegang te krijgen tot resources
 
@@ -47,9 +43,9 @@ U hebt uw Azure AD-toepassing en service-principal gemaakt.
 
 ## <a name="assign-the-application-to-a-role"></a>De toepassing aan een rol toewijzen
 
-Als u toegang wilt krijgen tot resources in uw abonnement, moet u de toepassing toewijzen aan een rol. Bepaal welke rol de juiste machtigingen voor de toepassing biedt. Zie [RBAC: ingebouwde rollen](../../role-based-access-control/built-in-roles.md)voor meer informatie over de beschik bare rollen.
+Als u toegang wilt krijgen tot resources in uw abonnement, moet u de toepassing toewijzen aan een rol. Bepaal welke rol de juiste machtigingen voor de toepassing biedt. Zie voor meer informatie over de beschikbare rollen, [RBAC: ingebouwde rollen](../../role-based-access-control/built-in-roles.md).
 
-U kunt het bereik instellen op het niveau van het abonnement, de resource groep of de resource. Machtigingen worden overgenomen door lagere bereik niveaus. Als u bijvoorbeeld een toepassing toevoegt aan de rol van lezer voor een resource groep, betekent dit dat de resource groep en alle resources die deze bevat, kunnen worden gelezen.
+U kunt het bereik instellen op het niveau van het abonnement, de resource groep of de resource. Machtigingen worden overgenomen op lagere niveaus van bereik. Als u bijvoorbeeld een toepassing toevoegt aan de rol van lezer voor een resource groep, betekent dit dat de resource groep en alle resources die deze bevat, kunnen worden gelezen.
 
 1. Selecteer in het Azure Portal het bereik dat u aan de toepassing wilt toewijzen. Als u bijvoorbeeld een rol wilt toewijzen aan het abonnements bereik, zoekt en selecteert u **abonnementen**, of selecteert u **abonnementen** op de **Start** pagina.
 
@@ -67,7 +63,7 @@ U kunt het bereik instellen op het niveau van het abonnement, de resource groep 
 
    ![Selecteer de rol die u aan de toepassing wilt toewijzen](./media/howto-create-service-principal-portal/select-role.png)
 
-1. Selecteer **Opslaan** om de rol toe te wijzen. U ziet uw toepassing in de lijst met gebruikers die zijn toegewezen aan een rol voor dat bereik.
+1. Selecteer **opslaan** voltooien van de rol toe te wijzen. U ziet uw toepassing in de lijst met gebruikers die zijn toegewezen aan een rol voor dat bereik.
 
 De Service-Principal is ingesteld. U kunt deze gebruiken om uw scripts of apps uit te voeren. In de volgende sectie ziet u hoe u waarden kunt ophalen die nodig zijn bij het programmatisch aanmelden.
 

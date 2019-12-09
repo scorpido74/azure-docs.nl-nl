@@ -1,17 +1,18 @@
 ---
-title: Prestaties en afstemmings handleiding voor gegevens stromen toewijzen in Azure Data Factory
+title: Prestaties en afstemmings handleiding voor gegevens stromen toewijzen
 description: Meer informatie over de belangrijkste factoren die van invloed zijn op de prestaties van het toewijzen van gegevens stromen in Azure Data Factory.
 author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
+ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: 9ae6ff5fb5a5bfc6ba9299e06bad9afafc1403f3
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: fb2a11850370766ab174c67dd122f33879fb432a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671578"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928534"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
 
@@ -72,7 +73,7 @@ Onder **bron opties** in de bron transformatie kunnen de volgende instellingen i
 
 Stel **Batch grootte** in op het tabblad Instellingen voor Azure SQL DB-en Azure SQL DW-sinks om te voor komen dat de gegevens stromen worden verwerkt door rijen. Als Batch grootte is ingesteld, verwerkt ADF database schrijf bewerkingen in batches op basis van de opgegeven grootte.
 
-![Tenen](media/data-flow/sink4.png "Sink")
+![Sink](media/data-flow/sink4.png "Sink")
 
 ### <a name="partitioning-on-sink"></a>Partitioneren op Sink
 

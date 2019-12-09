@@ -1,29 +1,25 @@
 ---
-title: Client verklaringen in micro soft-verificatie bibliotheek voor .NET
+title: Client verklaringen (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over ondertekende client verklaringen ondersteuning voor vertrouwelijke client toepassingen in micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/18/2019
 ms.author: jmprieur
-ms.reviewer: ''
+ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66ff02e4c95594f0155ab31e3c99a0eb269626d9
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4731a7265265c48bed02e836de91d61971b9be14
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168124"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921906"
 ---
 # <a name="confidential-client-assertions"></a>Verklaringen van vertrouwelijke client
 
@@ -55,10 +51,10 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 De claims die worden verwacht door Azure AD zijn:
 
-Claim type | Waarde | Beschrijving
+Claimtype | Waarde | Beschrijving
 ---------- | ---------- | ----------
 aud | https://login.microsoftonline.com/{tenantId}/v2.0 | De claim ' AUD ' (doel groep) identificeert de ontvangers waarvoor de JWT is bedoeld (hier Azure AD) Zie [RFC 7519, sectie 4.1.3]
-Geldig | Do jun 27 2019 15:04:17 GMT + 0200 (Romaanse zomer tijd) | De claim ' exp ' (verval tijd) identificeert de verval tijd op of waarna de JWT niet moet worden geaccepteerd voor verwerking. Zie [RFC 7519, sectie 4.1.4]
+geldig | Do jun 27 2019 15:04:17 GMT + 0200 (Romaanse zomer tijd) | De claim ' exp ' (verval tijd) identificeert de verval tijd op of waarna de JWT niet moet worden geaccepteerd voor verwerking. Zie [RFC 7519, sectie 4.1.4]
 iss | ClientID | De claim ' ISS ' (verlener) identificeert de principal die de JWT heeft uitgegeven. De verwerking van deze claim is toepassingsspecifiek. De "ISS"-waarde is een hoofdletter gevoelige teken reeks met een StringOrURI-waarde. [RFC 7519, sectie 4.1.1]
 jti | (een GUID) | De claim ' JTI ' (JWT-ID) biedt een unieke id voor de JWT. De id-waarde moet worden toegewezen op een manier die ervoor zorgt dat er een Verwaarloos bare kans is dat dezelfde waarde per ongeluk wordt toegewezen aan een ander gegevens object. Als de toepassing meerdere verleners gebruikt, moeten conflicten worden voor komen tussen waarden die door verschillende verleners worden geproduceerd. De claim ' JTI ' kan worden gebruikt om te voor komen dat de JWT opnieuw wordt afgespeeld. De waarde ' JTI ' is een hoofdletter gevoelige teken reeks. [RFC 7519, sectie 4.1.7]
 nbf | Do jun 27 2019 14:54:17 GMT + 0200 (Romaanse zomer tijd) | De claim ' NBF ' (niet vóór) identificeert de tijd waarna de JWT niet moet worden geaccepteerd voor verwerking. [RFC 7519, sectie 4.1.5]

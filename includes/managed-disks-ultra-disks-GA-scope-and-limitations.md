@@ -8,23 +8,23 @@ ms.topic: include
 ms.date: 11/18/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: df488c2a3033015175943f7d092beaaa41e34046
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b819264895e35c6ef4fe9dc5263444dcac17eaa2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260709"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935849"
 ---
 Voor nu hebben Ultra disks de volgende beperkingen:
 
 - Worden ondersteund in de volgende regio's, met een verschillend aantal beschikbaarheids zones per regio:
-    - US - oost 2
-    - US - oost
-    - US - west 2
+    - VS - oost 2
+    - VS - oost
+    - VS - west 2
     - Zuidoost-Azië
     - Europa - noord
-    - Europa -west
-    - Verenigd Koninkrijk Zuid 
+    - Europa - west
+    - VK - zuid 
 - Kan alleen worden gebruikt met beschikbaarheids zones (beschikbaarheids sets en implementaties met één VM buiten zones kan geen Ultra schijf koppelen)
 - Worden alleen ondersteund in de volgende VM-reeks:
     - [ESv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
@@ -32,8 +32,8 @@ Voor nu hebben Ultra disks de volgende beperkingen:
     - FSv2
     - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
-- Niet elke VM-grootte is beschikbaar in elke ondersteunde regio met ultra disks.
-- Zijn alleen beschikbaar als gegevens schijven en ondersteunen alleen de fysieke sector grootte van 4.000  
+- Niet elke VM-grootte is beschikbaar in elke ondersteunde regio met ultra disks
+- Zijn alleen beschikbaar als gegevens schijven en ondersteunen alleen de fysieke sector grootte van 4.000. Vanwege de standaard sector grootte van 4.000 kB van ultra disk zijn er sommige toepassingen die niet compatibel zijn met ultra disks. Een voor beeld hiervan is Oracle Database, waarvoor release 12,2 of hoger is vereist voor de ondersteuning van ultra disks.  
 - Kan alleen worden gemaakt als lege schijven  
 - Nog geen ondersteuning bieden voor schijf momentopnamen, VM-installatie kopieën, beschikbaarheids sets en Azure Disk Encryption
 - Nog geen ondersteuning voor integratie met Azure Backup of Azure Site Recovery

@@ -1,23 +1,22 @@
 ---
-title: Gegevens kopiëren van en naar Azure Database for PostgreSQL met behulp van Azure Data Factory
+title: Gegevens kopiëren van en naar Azure Database for PostgreSQL
 description: Informatie over het kopiëren van gegevens van en naar Azure Database for PostgreSQL met behulp van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/16/2019
-ms.author: jingwang
-ms.openlocfilehash: 7443ab3abb12451619e77d925912b4bfc118cfaa
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3729d43716a0f4e133fb175da2546aac560b0525
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681226"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931622"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar Azure Database for PostgreSQL met behulp van Azure Data Factory
 
@@ -32,9 +31,9 @@ Deze Azure Database for PostgreSQL-connector wordt ondersteund voor de volgende 
 - [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
-U kunt gegevens van Azure Database for PostgreSQL kopiëren naar elk ondersteund Sink-gegevens archief. U kunt ook gegevens van elk ondersteund brongegevens archief kopiëren naar Azure Database for PostgreSQL. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die door de Kopieer activiteit worden ondersteund als bronnen en Sinks.
+U kunt gegevens uit een Azure Database for PostgreSQL kopiëren naar een ondersteunde sink-gegevensopslag. U kunt ook gegevens van elk ondersteund brongegevens archief kopiëren naar Azure Database for PostgreSQL. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die door de Kopieer activiteit worden ondersteund als bronnen en Sinks.
 
-Azure Data Factory biedt een ingebouwd stuur programma om connectiviteit mogelijk te maken. Daarom hoeft u geen stuur Programma's hand matig te installeren om deze connector te gebruiken.
+Azure Data Factory biedt een ingebouwde stuurprogramma als connectiviteit wilt inschakelen. Daarom hoeft u geen stuur Programma's hand matig te installeren om deze connector te gebruiken.
 
 ## <a name="getting-started"></a>Aan de slag
 
@@ -42,24 +41,24 @@ Azure Data Factory biedt een ingebouwd stuur programma om connectiviteit mogelij
 
 De volgende secties bieden informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor Azure Database for PostgreSQL-connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 
 De volgende eigenschappen worden ondersteund voor de Azure Database for PostgreSQL gekoppelde service:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **AzurePostgreSql**. | Ja |
-| connectionString | Een ODBC-connection string om verbinding te maken met Azure Database for PostgreSQL.<br/>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. U kunt ook een wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de connection string halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) voor meer informatie. | Ja |
-| connectVia | Deze eigenschap vertegenwoordigt de [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt Azure Integration Runtime of zelf-hostende Integration Runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
+| connectionString | Een ODBC-verbindingsreeks verbinding maakt met Azure Database voor PostgreSQL.<br/>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. U kunt ook een wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de connection string halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) voor meer informatie. | Ja |
+| connectVia | Deze eigenschap vertegenwoordigt de [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt Azure Integration Runtime of zelfgehoste Cloudintegratieruntime gebruiken (als het gegevensarchief bevindt zich in een particulier netwerk). Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
 
-Een typische connection string is `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Hier vindt u meer eigenschappen die u per case kunt instellen:
+Een gebruikelijke verbindingsreeks is `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Hier vindt u meer eigenschappen die u per case kunt instellen:
 
-| Eigenschap | Beschrijving | Opties | Vereist |
+| Eigenschap | Beschrijving | Opties | Verplicht |
 |:--- |:--- |:--- |:--- |
-| EncryptionMethod (EM)| De methode die het stuur programma gebruikt voor het versleutelen van gegevens die worden verzonden tussen het stuur programma en de database server. Bijvoorbeeld `EncryptionMethod=<0/1/6>;`| 0 (geen versleuteling) **(standaard)** /1 (SSL)/6 (RequestSSL) | Nee |
-| ValidateServerCertificate (VSC) | Hiermee wordt bepaald of het stuur programma het certificaat valideert dat door de database server wordt verzonden wanneer SSL-versleuteling is ingeschakeld (versleutelings methode = 1). Bijvoorbeeld `ValidateServerCertificate=<0/1>;`| 0 (uitgeschakeld) **(standaard)** /1 (ingeschakeld) | Nee |
+| EncryptionMethod (EM)| De methode voor het stuurprogramma wordt gebruikt voor het versleutelen van gegevens die worden verzonden tussen het stuurprogramma en de database-server. Bijvoorbeeld `EncryptionMethod=<0/1/6>;`| 0 (geen versleuteling) **(standaard)** / 1 (SSL) / 6 (RequestSSL) | Nee |
+| ValidateServerCertificate (VSC) | Hiermee wordt bepaald of het stuur programma het certificaat valideert dat door de database server wordt verzonden wanneer SSL-versleuteling is ingeschakeld (versleutelings methode = 1). Bijvoorbeeld `ValidateServerCertificate=<0/1>;`| 0 (uitgeschakeld) **(standaard)** / 1 (ingeschakeld) | Nee |
 
-**Voorbeeld**:
+**Voor beeld**:
 
 ```json
 {
@@ -76,7 +75,7 @@ Een typische connection string is `Server=<server>.postgres.database.azure.com;D
 }
 ```
 
-**Voorbeeld**:
+**Voor beeld**:
 
 ***Wacht woord opslaan in Azure Key Vault***
 
@@ -107,14 +106,14 @@ Een typische connection string is `Server=<server>.postgres.database.azure.com;D
 
 Zie [gegevens sets in azure Data Factory](concepts-datasets-linked-services.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. In deze sectie vindt u een lijst met eigenschappen die Azure Database for PostgreSQL in gegevens sets ondersteunt.
 
-Als u gegevens wilt kopiëren uit Azure Database for PostgreSQL, stelt u de eigenschap type van de gegevensset in op **AzurePostgreSqlTable**. De volgende eigenschappen worden ondersteund:
+Om gegevens te kopiëren uit een Azure Database for PostgreSQL, stel de eigenschap type van de gegevensset in **AzurePostgreSqlTable**. De volgende eigenschappen worden ondersteund:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de DataSet moet worden ingesteld op **AzurePostgreSqlTable** | Ja |
-| tableName | Naam van de tabel | Nee (als "query" in activiteit bron is opgegeven) |
+| tableName | Naam van de tabel | Nee (als 'query' in de activiteitbron is opgegeven) |
 
-**Voorbeeld**:
+**Voor beeld**:
 
 ```json
 {
@@ -134,16 +133,16 @@ Als u gegevens wilt kopiëren uit Azure Database for PostgreSQL, stelt u de eige
 
 Voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, Zie [pijp lijnen en activiteiten in azure Data Factory](concepts-pipelines-activities.md). Deze sectie bevat een lijst met eigenschappen die worden ondersteund door een Azure Database for PostgreSQL bron.
 
-### <a name="azure-database-for-postgresql-as-source"></a>Azure data base for PostgreSql als bron
+### <a name="azure-database-for-postgresql-as-source"></a>Azure Database voor PostgreSql als bron
 
-Als u gegevens wilt kopiëren uit Azure Database for PostgreSQL, stelt u het bron type in de Kopieer activiteit in op **AzurePostgreSqlSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
+Om gegevens te kopiëren uit een Azure Database for PostgreSQL, stelt u het brontype in de kopieeractiviteit naar **AzurePostgreSqlSource**. De volgende eigenschappen worden ondersteund in de kopieeractiviteit **source** sectie:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **AzurePostgreSqlSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"` | Nee (als de eigenschap TableName in de gegevensset is opgegeven) |
 
-**Voorbeeld**:
+**Voor beeld**:
 
 ```json
 "activities":[
@@ -179,14 +178,14 @@ Als u gegevens wilt kopiëren uit Azure Database for PostgreSQL, stelt u het bro
 
 Als u gegevens wilt kopiëren naar Azure Database for PostgreSQL, worden de volgende eigenschappen ondersteund in het gedeelte **sink** van Kopieer activiteit:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de Sink voor kopieer activiteiten moet worden ingesteld op **AzurePostgreSQLSink**. | Ja |
 | preCopyScript | Geef een SQL-query op voor de Kopieer activiteit die moet worden uitgevoerd voordat u in elke uitvoering gegevens in Azure Database for PostgreSQL schrijft. U kunt deze eigenschap gebruiken om de vooraf geladen gegevens op te schonen. | Nee |
 | writeBatchSize | Hiermee worden gegevens in de Azure Database for PostgreSQL tabel ingevoegd wanneer de buffer grootte writeBatchSize bereikt.<br>Toegestane waarde is een geheel getal dat het aantal rijen vertegenwoordigt. | Nee (de standaard waarde is 10.000) |
 | writeBatchTimeout | Wacht tijd voordat de batch INSERT-bewerking is voltooid voordat er een time-out optreedt.<br>Toegestane waarden zijn time span-teken reeksen. Een voor beeld is 00:30:00 (30 minuten). | Nee (de standaard waarde is 00:00:30) |
 
-**Voorbeeld**:
+**Voor beeld**:
 
 ```json
 "activities":[

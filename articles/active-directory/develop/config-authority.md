@@ -1,5 +1,5 @@
 ---
-title: MSAL voor iOS en macOS configureren voor het gebruik van verschillende id-providers
+title: Verschillende id-providers configureren (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het gebruik van verschillende instanties, zoals B2C, soevereine Clouds en gast gebruikers, met MSAL voor iOS en macOS.
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: feea11dfa8e199d4c1c01ba7ec09003233574fbe
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0f2408dc2dd80ab3f52b158a18355087fe941b48
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843628"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917978"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Procedure: MSAL voor iOS en macOS configureren voor het gebruik van verschillende id-providers
 

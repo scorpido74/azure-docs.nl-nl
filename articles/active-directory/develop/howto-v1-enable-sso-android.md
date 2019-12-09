@@ -1,8 +1,7 @@
 ---
-title: Het inschakelen van eenmalige aanmelding voor verschillende Apps op Android met behulp van ADAL | Microsoft Docs
-description: Het gebruik van de functies van de ADAL-SDK voor eenmalige aanmelding inschakelen voor uw toepassingen.
+title: SSO van meerdere apps inschakelen op Android met behulp van ADAL | Microsoft Docs
+description: De functies van de ADAL SDK gebruiken om eenmalige aanmelding in te scha kelen voor uw toepassingen.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: 40710225-05ab-40a3-9aec-8b4e96b6b5e7
@@ -17,61 +16,61 @@ ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb11a4a926c676d37a0bf6be456e3b831a5d8357
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4d247c569cdc0beff499cee191b95711a603e42
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962634"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917553"
 ---
-# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Procedure: SSO voor cross-app op Android met behulp van ADAL inschakelen
+# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Procedure: cross-app SSO inschakelen op Android met behulp van ADAL
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
-Eenmalige aanmelding (SSO) kan gebruikers slechts één keer zijn referenties invoeren en deze referenties automatisch werken tussen toepassingen en -platforms die andere toepassingen (zoals Microsoft-Accounts of een werkaccount van Microsoft 365 gebruiken kunnen) hebben geen de uitgever van belang.
+Eenmalige aanmelding (SSO) stelt gebruikers in staat om hun referenties één keer in te voeren en deze referenties automatisch te laten werken in toepassingen en op verschillende platforms die andere toepassingen mogelijk gebruiken (zoals micro soft-accounts of een werk account van Microsoft 365). vraag de uitgever.
 
-Van Microsoft identity-platform, samen met de SDK's, kunt eenvoudig eenmalige aanmelding binnen uw eigen suite van apps, of met de broker-functie en de verificator-toepassingen, voor het hele apparaat inschakelen.
+Het identiteits platform van micro soft, samen met de Sdk's, maakt het eenvoudig om eenmalige aanmelding in te scha kelen in uw eigen suite van apps of met de Broker-en verificator-toepassingen, op het hele apparaat.
 
-In deze procedures leert u over het configureren van de SDK in uw toepassing voor eenmalige aanmelding voor uw klanten.
+In deze procedure leert u hoe u de SDK in uw toepassing kunt configureren om eenmalige aanmelding te bieden voor uw klanten.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Deze instructies wordt ervan uitgegaan dat u weet hoe u:
+In deze procedure wordt ervan uitgegaan dat u weet hoe u:
 
-- Uw app met behulp van de oude portal voor Azure Active Directory (Azure AD) inrichten. Zie voor meer informatie, [een app registreren](quickstart-register-app.md)
-- Integreer uw toepassing met de [Azure AD Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android).
+- Richt uw app in met behulp van de verouderde portal voor Azure Active Directory (Azure AD). Zie [een app registreren](quickstart-register-app.md) voor meer informatie
+- Integreer uw toepassing met de [Azure AD Android-SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android).
 
 ## <a name="single-sign-on-concepts"></a>Concepten voor eenmalige aanmelding
 
-### <a name="identity-brokers"></a>Identity brokers
+### <a name="identity-brokers"></a>Identiteits Brokers
 
-Microsoft biedt toepassingen voor elk mobiel platform waarmee voor het overbruggen van referenties voor toepassingen van verschillende leveranciers en verbeterde functies waarvoor een enkele veilige plaats waar om referenties te valideren. Deze heten **brokers**.
+Micro soft biedt toepassingen voor elk mobiel platform dat de bridging van referenties voor toepassingen van verschillende leveranciers mogelijk maakt, en voor verbeterde functies waarvoor een enkele veilige locatie is vereist voor het valideren van referenties. Deze worden **makelaars**genoemd.
 
-Op iOS en Android, brokers geleverd via downloadbare toepassingen dat klanten onafhankelijk installeren of naar het apparaat gepusht door een bedrijf die beheert sommige of alle van de apparaten van hun werknemers. Brokers ondersteuning voor beheer van beveiliging voor sommige toepassingen of het hele apparaat op basis van de configuratie van de IT-beheerder. In Windows, wordt deze functionaliteit verstrekt door een accountkiezer die is ingebouwd in het besturingssysteem, ook wel technisch gezien als de Webauthenticatiebroker.
+Op iOS en Android worden makelaars geleverd via download bare toepassingen die door klanten afzonderlijk of naar het apparaat worden gepusht door een bedrijf dat sommige of alle apparaten beheert voor hun werk nemers. Makelaars ondersteunen het beheer van beveiliging alleen voor sommige toepassingen of het hele apparaat op basis van de IT-beheerders configuratie. In Windows wordt deze functionaliteit geleverd door een account kiezer die is ingebouwd in het besturings systeem, technisch aangeduid als de Web authentication Broker.
 
-#### <a name="broker-assisted-login"></a>Assisted Broker-aanmelding
+#### <a name="broker-assisted-login"></a>Door Broker geassisteerde aanmelding
 
-Ondersteuning van de Broker-aanmelding zijn aanmelding ervaringen die optreden in de broker-toepassing en de opslag en de beveiliging van de broker gebruiken voor het delen van referenties voor alle toepassingen op het apparaat die van toepassing het identity-platform zijn. Het gevolg hiervan wordt van uw toepassingen zijn afhankelijk van de broker gebruikers zich aanmelden. Op iOS en Android, worden deze brokers geleverd via downloadbare toepassingen dat klanten onafhankelijk installeren of op het apparaat kunnen worden geactiveerd door een bedrijf dat het apparaat voor de gebruiker wordt beheerd. Een voorbeeld van dit type toepassing is de Microsoft Authenticator-toepassing op iOS. In Windows, wordt deze functionaliteit verstrekt door een accountkiezer die is ingebouwd in het besturingssysteem, ook wel technisch gezien als de Webauthenticatiebroker.
-De ervaring verschilt per platform en kan soms verstorend voor gebruikers zijn als het niet correct worden beheerd. U bent waarschijnlijk meest bekend zijn met dit patroon als u de Facebook-toepassing geïnstalleerd en Facebook verbinding maken met gebruik van een andere toepassing. Het identity-platform gebruikt hetzelfde patroon.
+Aanmeldingen met Broker ondersteuning zijn aanmeldings ervaringen die zich binnen de Broker-toepassing voordoen en gebruiken de opslag en beveiliging van de Broker om referenties te delen in alle toepassingen op het apparaat waarop het identiteits platform wordt toegepast. De implicatie van uw toepassingen is afhankelijk van de Broker voor het ondertekenen van gebruikers in. Op iOS en Android worden deze makelaars geleverd door Download bare toepassingen die onafhankelijk van elkaar worden geïnstalleerd of kunnen worden gepusht naar het apparaat door een bedrijf dat het apparaat beheert voor hun gebruiker. Een voor beeld van dit type toepassing is de Microsoft Authenticator toepassing op iOS. In Windows wordt deze functionaliteit geleverd door een account kiezer die is ingebouwd in het besturings systeem, technisch aangeduid als de Web authentication Broker.
+De ervaring is afhankelijk van het platform en kan soms storend zijn voor gebruikers als ze niet correct worden beheerd. U bent waarschijnlijk het meest vertrouwd met dit patroon als u de Facebook-toepassing hebt geïnstalleerd en Facebook Connect van een andere toepassing gebruikt. Het identiteits platform gebruikt hetzelfde patroon.
 
-Op Android, wordt de accountkiezer boven op uw toepassing, dit minder verstorend voor de gebruiker is weergegeven.
+Op Android wordt de account kiezer weer gegeven boven op de toepassing, die minder storend is voor de gebruiker.
 
-#### <a name="how-the-broker-gets-invoked"></a>Hoe de broker wordt aangeroepen
+#### <a name="how-the-broker-gets-invoked"></a>Hoe de Broker wordt aangeroepen
 
-Als een compatibel broker is geïnstalleerd op het apparaat, zoals de Microsoft Authenticator-toepassing, de identiteit van de SDK's wordt automatisch doen het werk van het aanroepen van de broker voor u wanneer een gebruiker geeft aan dat ze willen aanmelden met een account van het identity-platform.
+Als er een compatibele Broker op het apparaat is geïnstalleerd, zoals de toepassing Microsoft Authenticator, wordt door de identiteits-Sdk's automatisch het werk van de Broker opgeroepen wanneer een gebruiker aangeeft dat hij of zij zich wil aanmelden met een account van het identiteits platform.
 
-#### <a name="how-microsoft-ensures-the-application-is-valid"></a>Hoe zorgt Microsoft ervoor dat de toepassing is geldig
+#### <a name="how-microsoft-ensures-the-application-is-valid"></a>Hoe micro soft garandeert dat de toepassing geldig is
 
-De noodzaak om te controleren of de identiteit van een aanroep van de toepassing de broker is van cruciaal belang voor de beveiliging die is opgegeven in de ondersteuning van de broker-aanmeldingen. iOS en Android niet afgedwongen door unieke id's die alleen geldig voor een bepaalde toepassing zijn zodat schadelijke toepassingen mogelijk '"een legitieme toepassings-id vervalsen en de tokens die zijn bedoeld voor de legitieme aanvraag ontvangen. Om ervoor te zorgen dat Microsoft altijd communiceert met de juiste toepassing tijdens runtime, de ontwikkelaar gevraagd voor een aangepaste redirectURI bij het registreren van hun toepassing met Microsoft. **Hoe ontwikkelaars deze omleidings-URI moeten stellen wordt besproken in de hieronder beschreven.** Deze aangepaste redirectURI bevat de vingerafdruk van het certificaat van de toepassing en wordt ervoor gezorgd dat uniek zijn voor de toepassing door de Google Play Store. Wanneer een toepassing de broker aanroept, gevraagd de broker de Android-besturingssysteem om te voorzien de vingerafdruk van het certificaat dat de broker genoemd. De broker biedt de vingerafdruk van dit certificaat naar Microsoft in de aanroep naar de identiteitssysteem. Als de vingerafdruk van het certificaat van de toepassing komt niet overeen met de vingerafdruk van het certificaat die aan ons wordt verstrekt door de ontwikkelaar tijdens de registratie, wordt toegang is geweigerd tot de tokens voor de resource die de toepassing aanvraagt. Deze controle zorgt ervoor dat alleen de door de ontwikkelaar van de geregistreerde toepassing tokens ontvangen.
+De nood zaak om ervoor te zorgen dat de identiteit van een toepassing die de Broker aanroept, cruciaal is voor de beveiliging die wordt geleverd in door Broker geassisteerde aanmeldingen. iOS en Android afdwingen geen unieke id's die alleen geldig zijn voor een bepaalde toepassing, waardoor kwaadwillende toepassingen een geldige toepassings-id kunnen ' spoofen ' en de tokens ontvangen die voor de legitieme toepassing bedoeld zijn. Om ervoor te zorgen dat micro soft altijd communiceert met de juiste toepassing tijdens de uitvoering, wordt de ontwikkelaar gevraagd een aangepaste redirectURI op te geven wanneer ze hun toepassing registreren bij micro soft. **Hoe ontwikkel aars deze omleidings-URI moeten bebouwen, worden hieronder gedetailleerd beschreven.** Deze aangepaste redirectURI bevat de vinger afdruk van het certificaat van de toepassing en wordt gegarandeerd uniek voor de toepassing door de Google Play Store. Wanneer een toepassing de Broker aanroept, vraagt de Broker het Android-besturings systeem om het te voorzien van de vinger afdruk van het certificaat dat de Broker wordt genoemd. De broker biedt deze vinger afdruk van het certificaat naar micro soft in de aanroep van het identiteits systeem. Als de vinger afdruk van de toepassing niet overeenkomt met de vinger afdruk van het certificaat dat door de ontwikkelaar tijdens de registratie is opgegeven, wordt de toegang geweigerd tot de tokens voor de resource die de toepassing aanvraagt. Met deze controle wordt gegarandeerd dat alleen de toepassing die door de ontwikkelaar is geregistreerd, tokens ontvangt.
 
-Brokered-SSO-aanmeldingen hebben de volgende voordelen:
+Voor brokered-SSO-aanmeldingen gelden de volgende voor delen:
 
-* Gebruikerservaringen SSO voor al hun toepassingen, ongeacht de leverancier.
-* Uw toepassing kunt gebruiken meer geavanceerde functies zoals voorwaardelijke toegang en ondersteuning voor Intune-scenario's.
-* Uw toepassing kan ondersteuning voor verificatie op basis van certificaten voor zakelijke gebruikers.
-* Ervaring voor beter beveiligd aanmelden als de identiteit van de toepassing en de gebruiker worden geverifieerd door de broker-toepassing met algoritmen voor extra beveiliging en versleuteling.
+* Gebruikers ervaringen SSO voor al hun toepassingen, ongeacht de leverancier.
+* Uw toepassing kan meer geavanceerde zakelijke functies gebruiken, zoals voorwaardelijke toegang en ondersteuning voor intune-scenario's.
+* Uw toepassing kan verificatie op basis van certificaten ondersteunen voor zakelijke gebruikers.
+* Veiliger aanmeldings ervaring als de identiteit van de toepassing en de gebruiker worden geverifieerd door de Broker-toepassing met aanvullende beveiligings algoritmen en versleuteling.
 
-Dit is een weergave van de werking van de SDK's met de broker-toepassingen voor eenmalige aanmelding inschakelen:
+Hier volgt een weer gave van de manier waarop de Sdk's samen werken met de Broker-toepassingen om SSO in te scha kelen:
 
 ```
 +------------+ +------------+   +-------------+
@@ -98,41 +97,41 @@ Dit is een weergave van de werking van de SDK's met de broker-toepassingen voor 
 
 ```
 
-### <a name="turning-on-sso-for-broker-assisted-sso"></a>Eenmalige aanmelding telefonische inschakelen van eenmalige aanmelding voor broker
+### <a name="turning-on-sso-for-broker-assisted-sso"></a>EENMALIGe aanmelding inschakelen voor SSO met Broker-ondersteuning
 
-De mogelijkheid om een toepassing te gebruiken een broker die is geïnstalleerd op het apparaat is standaard uitgeschakeld. Als u wilt uw toepassing met de broker gebruiken, moet u enkele aanvullende configuratie en code toevoegen aan uw toepassing.
+De mogelijkheid voor een toepassing voor het gebruik van elke Broker die op het apparaat is geïnstalleerd, is standaard uitgeschakeld. Als u uw toepassing met de Broker wilt gebruiken, moet u een extra configuratie uitvoeren en wat code toevoegen aan uw toepassing.
 
-Zijn de stappen te volgen:
+De stappen die u moet volgen:
 
-1. Schakel de broker-modus in uw toepassingscode aanroepen met de SDK van MS
-2. Tot stand brengen van een nieuwe omleidings-URI en bieden die zowel de app als uw app-registratie
-3. Instellen van de juiste machtigingen in het Android-manifest
+1. De Broker modus inschakelen in de aanroepende toepassings code van de MS SDK
+2. Een nieuwe omleidings-URI tot stand brengen en opgeven dat zowel de app als uw app-registratie
+3. De juiste machtigingen instellen in het Android-manifest
 
-#### <a name="step-1-enable-broker-mode-in-your-application"></a>Stap 1: Schakel de broker-modus in uw toepassing
+#### <a name="step-1-enable-broker-mode-in-your-application"></a>Stap 1: de Broker modus inschakelen in uw toepassing
 
-De mogelijkheid voor uw toepassing voor het gebruik van de broker is ingeschakeld wanneer u de 'instellingen' of de eerste installatie van de verificatie-exemplaar maakt. Om dit te doen in uw app:
+De mogelijkheid om uw toepassing te gebruiken voor het gebruik van de Broker is ingeschakeld wanneer u de instellingen of de eerste installatie van uw verificatie-exemplaar maakt. U doet dit als volgt in uw app:
 
 ```
 AuthenticationSettings.Instance.setUseBroker(true);
 ```
 
-#### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>Stap 2: Tot stand brengen van een nieuwe omleidings-URI met de URL-schema
+#### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>Stap 2: een nieuwe omleidings-URI tot stand brengen met uw URL-schema
 
-Om ervoor te zorgen dat de juiste toepassing de geretourneerde ontvangt de referentie op die tokens, er is een nodig om te controleren of de aanroep naar de toepassing op een manier die de Android-besturingssysteem kunt controleren. Het besturingssysteem Android maakt gebruik van de hash van het certificaat in de Google Play store. Deze hash van het certificaat kan niet door een rogue-toepassing worden vervalst. Samen met de URI van de broker-toepassing, zorgt Microsoft ervoor dat de tokens terug naar de juiste toepassing keert. Een unieke redirect URI is vereist om te worden geregistreerd op de toepassing.
+Om ervoor te zorgen dat de juiste toepassing de geretourneerde referentie tokens ontvangt, moet u ervoor zorgen dat de aanroep terugkeert naar uw toepassing op een manier die het Android-besturings systeem kan controleren. Het Android-besturings systeem gebruikt de hash van het certificaat in het Google Play-archief. Deze hash van het certificaat kan niet worden vervalst met een Rogue-toepassing. Naast de URI van de Broker-toepassing zorgt micro soft ervoor dat de tokens worden geretourneerd naar de juiste toepassing. Er moet een unieke omleidings-URI zijn geregistreerd voor de toepassing.
 
-De omleidings-URI moet zich in de juiste vorm van:
+De omleidings-URI moet de volgende vorm hebben:
 
 `msauth://packagename/Base64UrlencodedSignature`
 
 bijvoorbeeld: *msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
 
-U kunt deze omleidings-URI registreren in uw app-registratie met de [Azure-portal](https://portal.azure.com/). Zie voor meer informatie over Azure AD-app-registratie [integreren met Azure Active Directory](active-directory-how-to-integrate.md).
+U kunt deze omleidings-URI in de registratie van uw app registreren met behulp van de [Azure Portal](https://portal.azure.com/). Zie [integreren met Azure Active Directory](active-directory-how-to-integrate.md)voor meer informatie over Azure AD-App-registratie.
 
-#### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>Stap 3: De juiste machtigingen in uw toepassing instellen
+#### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>Stap 3: de juiste machtigingen instellen in uw toepassing
 
-De broker-toepassing in Android maakt gebruik van de Accounts Manager-functie van de Android-besturingssysteem voor het beheer van referenties voor toepassingen. Als u wilt gebruiken van de broker in Android moet uw app-manifest machtigingen hebben voor AccountManager accounts gebruiken. Deze machtigingen worden besproken in de [hier Google documentatie voor Account Manager](https://developer.android.com/reference/android/accounts/AccountManager.html)
+In de Broker-toepassing in Android wordt de functie Accounts Manager van het Android-besturings systeem gebruikt voor het beheren van referenties tussen toepassingen. Als u de broker in Android wilt gebruiken, moet uw app-manifest machtigingen hebben voor het gebruik van AccountManager-accounts. Deze machtigingen worden gedetailleerd beschreven in de [Google-documentatie voor account manager](https://developer.android.com/reference/android/accounts/AccountManager.html)
 
-In het bijzonder zijn deze machtigingen:
+Deze machtigingen zijn met name:
 
 ```
 GET_ACCOUNTS
@@ -140,10 +139,10 @@ USE_CREDENTIALS
 MANAGE_ACCOUNTS
 ```
 
-### <a name="youve-configured-sso"></a>U kunt eenmalige aanmelding hebt geconfigureerd.
+### <a name="youve-configured-sso"></a>U hebt SSO geconfigureerd.
 
-Nu de identiteit van de SDK automatisch worden zowel het delen van referenties voor uw toepassingen en aanroepen van de broker, indien aanwezig zijn op hun apparaat.
+Nu zal de identiteits-SDK automatisch referenties delen in uw toepassingen en de Broker aanroepen als deze aanwezig is op het apparaat.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [eenmalige aanmelding in de SAML-protocol](single-sign-on-saml-protocol.md)
+* Meer informatie over het [SAML-protocol voor eenmalige aanmelding](single-sign-on-saml-protocol.md)

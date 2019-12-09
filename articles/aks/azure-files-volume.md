@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 009da6c16d446f2b0d4d3f402c1c1ec63dde34d8
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 7b5f7c25cd1627475d8e37a539956f01ae6151ab
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018737"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914021"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Hand matig een volume maken en gebruiken met Azure Files share in azure Kubernetes service (AKS)
 
@@ -44,7 +44,7 @@ az group create --name $AKS_PERS_RESOURCE_GROUP --location $AKS_PERS_LOCATION
 az storage account create -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -l $AKS_PERS_LOCATION --sku Standard_LRS
 
 # Export the connection string as an environment variable, this is used when creating the Azure file share
-export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -o tsv`
+export AZURE_STORAGE_CONNECTION_STRING=$(az storage account show-connection-string -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -o tsv)
 
 # Create the file share
 az storage share create -n $AKS_PERS_SHARE_NAME --connection-string $AZURE_STORAGE_CONNECTION_STRING
@@ -63,7 +63,7 @@ Noteer de naam van het opslag account en de sleutel die aan het einde van de scr
 
 Kubernetes heeft referenties nodig om toegang te krijgen tot de bestands share die u in de vorige stap hebt gemaakt. Deze referenties worden opgeslagen in een [Kubernetes-geheim][kubernetes-secret], waarnaar wordt verwezen bij het maken van een Kubernetes-pod.
 
-Gebruik de `kubectl create secret` opdracht om het geheim te maken. In het volgende voor beeld wordt een gedeeld *Azure-geheim* gemaakt en worden de *azurestorageaccountname* en *azurestorageaccountkey* van de vorige stap gevuld. Als u een bestaand Azure Storage-account wilt gebruiken, geeft u de account naam en de sleutel op.
+Gebruik de opdracht `kubectl create secret` om het geheim te maken. In het volgende voor beeld wordt een gedeeld *Azure-geheim* gemaakt en worden de *azurestorageaccountname* en *azurestorageaccountkey* van de vorige stap gevuld. Als u een bestaand Azure Storage-account wilt gebruiken, geeft u de account naam en de sleutel op.
 
 ```console
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
@@ -71,7 +71,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-the-file-share-as-a-volume"></a>De bestands share koppelen als een volume
 
-Als u de Azure Files share in uw Pod wilt koppelen, configureert u het volume in de container specificatie. Maak een nieuw bestand met `azure-files-pod.yaml` de naam met de volgende inhoud. Als u de naam van de bestands share of geheime naam hebt gewijzigd, werkt u de *sharename* en de *secretnaam*bij. Als dat gewenst is, `mountPath`werkt u de, die het pad is naar de bestands share in de pod. Voor Windows Server-containers (momenteel in de preview-versie van AKS) geeft u een *mountPath* op met behulp van de Windows Path-Conventie, zoals *: '* .
+Als u de Azure Files share in uw Pod wilt koppelen, configureert u het volume in de container specificatie. Maak een nieuw bestand met de naam `azure-files-pod.yaml` met de volgende inhoud. Als u de naam van de bestands share of geheime naam hebt gewijzigd, werkt u de *sharename* en de *secretnaam*bij. Indien gewenst kunt u de `mountPath`bijwerken. Dit is het pad waar de bestands share is gekoppeld in de pod. Voor Windows Server-containers (momenteel in de preview-versie van AKS) geeft u een *mountPath* op met behulp van de Windows Path-Conventie, zoals *: '* .
 
 ```yaml
 apiVersion: v1
@@ -106,7 +106,7 @@ Gebruik de `kubectl` opdracht om de Pod te maken.
 kubectl apply -f azure-files-pod.yaml
 ```
 
-U hebt nu een actieve pod met een Azure Files-share gekoppeld op */mnt/Azure*. U kunt gebruiken `kubectl describe pod mypod` om te controleren of de share is gekoppeld. De volgende gecomprimeerde voorbeeld uitvoer toont het volume dat in de container is gekoppeld:
+U hebt nu een actieve pod met een Azure Files-share gekoppeld op */mnt/Azure*. U kunt `kubectl describe pod mypod` gebruiken om te controleren of de share is gekoppeld. De volgende gecomprimeerde voorbeeld uitvoer toont het volume dat in de container is gekoppeld:
 
 ```
 Containers:
@@ -133,7 +133,7 @@ Volumes:
 [...]
 ```
 
-## <a name="mount-options"></a>Koppelingsopties
+## <a name="mount-options"></a>Koppelings opties
 
 De standaard waarde voor *file mode* en *dirMode* is *0755* voor Kubernetes-versie 1.9.1 en hoger. Als u een cluster met Kuberetes-versie 1.8.5 of hoger gebruikt en het permanente volume statisch maakt, moeten er koppelings opties worden opgegeven voor het *PersistentVolume* -object. In het volgende voor beeld wordt *0777*ingesteld:
 

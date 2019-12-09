@@ -1,28 +1,28 @@
 ---
-title: 'Gegevens transformeren met behulp van Hive in azure Virtual Network '
+title: Gegevens transformeren met behulp van Hive in azure Virtual Network met behulp van Azure Portal
 description: Deze zelfstudie biedt stapsgewijze instructies voor het transformeren van gegevens met behulp van Hive-activiteit in Azure Data Factory.
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.topic: tutorial
-ms.date: 01/04/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 73a43bdb859d39bd0cb8e3d4a3ed3f114fb2c156
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.topic: tutorial
+ms.custom: seo-dt-2019
+ms.date: 01/04/2018
+ms.openlocfilehash: d52aed98549478898cb3bd263d52eeae2a69ccfd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683428"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925555"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Gegevens in een virtueel Azure-netwerk transformeren met behulp van Hive-activiteit in Azure Data Factory
+
 In deze zelfstudie gebruikt u Azure Portal om een Data Factory-pijplijn te maken waarmee gegevens worden getransformeerd met behulp van Hive-activiteit in een HDInsight-cluster in een virtueel Azure-netwerk (VNet). In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory. 
+> * Een gegevensfactory maakt. 
 > * Een zelf-hostende Integration Runtime maken
 > * Gekoppelde Azure Storage- en Azure HDInsight-services maken
 > * Een pijplijn maken met Hive-activiteit.
@@ -37,7 +37,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - **Een Azure Storage-account**. U maakt een Hive-script en uploadt dit script naar de Azure-opslag. De uitvoer van het Hive-script wordt opgeslagen in dit opslagaccount. In dit voorbeeld gebruikt het HDInsight-cluster dit Azure Storage-account als primaire opslag. 
-- **Een virtueel Azure-netwerk.** Als u geen virtueel Azure-netwerk hebt, maakt u er een door [deze instructies](../virtual-network/quick-create-portal.md) te volgen. In dit voorbeeld bevindt HDInsight zich in een virtueel Azure-netwerk. Hier volgt een voorbeeldconfiguratie van Azure Virtual Network. 
+- **Azure Virtual Network.** Als u geen virtueel Azure-netwerk hebt, maakt u er een door [deze instructies](../virtual-network/quick-create-portal.md) te volgen. In dit voorbeeld bevindt HDInsight zich in een virtueel Azure-netwerk. Hier volgt een voorbeeldconfiguratie van een virtueel Azure-netwerk. 
 
     ![Virtueel netwerk maken](media/tutorial-transform-data-using-hive-in-vnet-portal/create-virtual-network.png)
 - **HDInsight-cluster.** Maak een HDInsight-cluster en koppel dit aan het virtuele netwerk dat u in de vorige stap hebt gemaakt, door de instructies in dit artikel te volgen: [Azure HDInsight uitbreiden met behulp van een virtueel Azure-netwerk](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Hier volgt een voorbeeldconfiguratie van HDInsight in een virtueel netwerk. 
@@ -68,7 +68,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 3. Maak een map met de naam **hivescripts**.
 4. Upload het bestand **hivescript.hql** naar de submap **hivescripts**.
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).    
@@ -77,7 +77,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
    ![Nieuw -> DataFactory](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
 3. Voer op de pagina **New data factory** **ADFTutorialHiveFactory** in bij **Name**. 
       
-     ![Pagina nieuwe data factory](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-azure-data-factory.png)
+     ![De pagina Nieuwe data factory](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-azure-data-factory.png)
  
    De naam van de Azure-gegevensfactory moet **wereldwijd uniek** zijn. Als u het volgende foutbericht krijgt, wijzigt u de naam van de gegevensfactory (bijvoorbeeld uwnaamMyAzureSsisDataFactory) en probeert u het opnieuw. Zie het artikel [Data factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
   
@@ -96,11 +96,11 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 8. Op het dashboard ziet u de volgende tegel met de status: **Gegevensfactory implementeren**. 
 
      ![tegel met de status 'gegevensfactory implementeren'](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
-9. Wanneer de gegevensfactory is gemaakt, ziet u de pagina **Gegevensfactory** zoals wordt weergegeven in de afbeelding.
+9. Na het aanmaken ziet u de pagina **Data Factory** zoals weergegeven in de afbeelding.
    
     ![Startpagina van de gegevensfactory](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
-10. Klik op **Author & Monitor** om de gebruikersinterface (UI) van Data Factory op een afzonderlijk tabblad te openen.
-11. Ga op de pagina **get started** naar het tabblad **Edit** in het linkervenster, zoals wordt weergegeven in de volgende afbeelding: 
+10. Klik op **Maken en controleren** om de gebruikersinterface (UI) van Azure Data Factory te openen op een afzonderlijk tabblad.
+11. Ga op de pagina **aan de slag** naar het tabblad **Bewerken** in het linkervenster, zoals wordt weergegeven in de volgende afbeelding: 
 
     ![Tabblad Bewerken](./media/tutorial-transform-data-using-hive-in-vnet-portal/get-started-page.png)
 
@@ -127,7 +127,7 @@ Als de Hadoop-cluster zich in een virtueel netwerk bevindt, moet u een zelf-host
 
 1. Download de [zelf-hostende integratieruntime](https://www.microsoft.com/download/details.aspx?id=39717) op de virtuele Azure-machine. Gebruik de in de vorige stap verkregen **verificatiesleutel** om de zelf-hostende Integration Runtime handmatig te registreren. 
 
-    ![Integration Runtime registreren](media/tutorial-transform-data-using-hive-in-vnet-portal/register-integration-runtime.png)
+    ![Integratieruntime registreren](media/tutorial-transform-data-using-hive-in-vnet-portal/register-integration-runtime.png)
 
 2. U ziet het volgende bericht wanneer de zelf-hostende Integration Runtime is geregistreerd. 
    
@@ -159,7 +159,7 @@ In deze sectie maakt en implementeert u twee gekoppelde services:
    ![Knop Nieuwe gekoppelde service](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-linked-service.png)    
 2. In het venster **New Linked Service** selecteert u **Azure Blob Storage** en klikt u op **Continue**. 
 
-   ![Azure Blob-opslag selecteren](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-azure-storage.png)
+   ![Azure Blob Storage selecteren](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-azure-storage.png)
 3. Voer in het venster **Nieuwe gekoppelde service** de volgende stappen uit:
 
     1. Voer **AzureStorageLinkedService** in als **Naam**.
@@ -201,7 +201,7 @@ In deze stap maakt u een nieuwe pijplijn met een Hive-activiteit. Met deze activ
 Houd rekening met de volgende punten:
 
 - **scriptPath** verwijst naar het pad naar het Hive-script in het Azure Storage-account dat u hebt gebruikt voor MyStorageLinkedService. Het pad is hoofdlettergevoelig.
-- **Uitvoer** is een argument dat wordt gebruikt in het Hive-script. Gebruik de indeling van `wasbs://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` om dit argument te laten verwijzen naar een bestaande map in de Azure-opslag. Het pad is hoofdlettergevoelig. 
+- **Output** is een argument dat wordt gebruikt in het Hive-script. Gebruik de indeling van `wasbs://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` om dit argument te laten verwijzen naar een bestaande map in de Azure-opslag. Het pad is hoofdlettergevoelig. 
 
 1. Klik in de Data Factory-gebruikersinterface op **+ (plus)** in het linkerdeelvenster en klik op **Pipeline**. 
 
@@ -262,7 +262,7 @@ Houd rekening met de volgende punten:
 In deze zelfstudie hebt u de volgende stappen uitgevoerd: 
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory. 
+> * Een gegevensfactory maakt. 
 > * Een zelf-hostende Integration Runtime maken
 > * Gekoppelde Azure Storage- en Azure HDInsight-services maken
 > * Een pijplijn maken met Hive-activiteit.

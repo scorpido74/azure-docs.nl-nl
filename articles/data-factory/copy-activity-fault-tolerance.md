@@ -4,20 +4,19 @@ description: Meer informatie over het toevoegen van fout tolerantie aan de Kopie
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: yexu
-ms.openlocfilehash: a60cafd529db1c6726a15db2c442af8d097411cc
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b874c0dcc1f394866e74b45e6bc335a25ce24499
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73678163"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930016"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Fouttolerantie van kopieeractiviteit in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -71,12 +70,12 @@ In het volgende voor beeld wordt een JSON-definitie geboden voor het overs laan 
 }
 ```
 
-Eigenschap | Beschrijving | Toegestane waarden | Vereist
+Eigenschap | Beschrijving | Toegestane waarden | Verplicht
 -------- | ----------- | -------------- | -------- 
-enableSkipIncompatibleRow | Hiermee wordt aangegeven of niet-compatibele rijen moeten worden overgeslagen tijdens het kopiëren of niet. | True<br/>False (standaard) | Nee
+enableSkipIncompatibleRow | Hiermee wordt aangegeven of niet-compatibele rijen moeten worden overgeslagen tijdens het kopiëren of niet. | Waar<br/>False (standaard) | Nee
 redirectIncompatibleRowSettings | Een groep eigenschappen die kan worden opgegeven wanneer u de niet-compatibele rijen wilt vastleggen. | &nbsp; | Nee
 linkedServiceName | De gekoppelde service van [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) of [Azure data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) om het logboek op te slaan dat de overgeslagen rijen bevat. | De naam van een gekoppelde service van het type `AzureStorage` of `AzureDataLakeStore`, die verwijst naar het exemplaar dat u wilt gebruiken om het logboek bestand op te slaan. | Nee
-programmapad | Het pad naar het logboek bestand dat de overgeslagen rijen bevat. | Geef het pad op dat u wilt gebruiken om de niet-compatibele gegevens te registreren. Als u geen pad opgeeft, maakt de service een container voor u. | Nee
+Pad | Het pad naar het logboek bestand dat de overgeslagen rijen bevat. | Geef het pad op dat u wilt gebruiken om de niet-compatibele gegevens te registreren. Als u geen pad opgeeft, maakt de service een container voor u. | Nee
 
 ## <a name="monitor-skipped-rows"></a>Overgeslagen rijen bewaken
 Nadat het uitvoeren van de Kopieer activiteit is voltooid, kunt u het aantal overgeslagen rijen zien in de uitvoer van de Kopieer activiteit:
@@ -106,9 +105,9 @@ data4, data5, data6, "2627", "Violation of PRIMARY KEY constraint 'PK_tblintstrd
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de andere artikelen over Kopieer activiteiten:
+Zie de andere artikelen van de Kopieeractiviteit:
 
-- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
+- [Overzicht kopieeractiviteit](copy-activity-overview.md)
 - [Prestaties van Kopieer activiteit](copy-activity-performance.md)
 
 

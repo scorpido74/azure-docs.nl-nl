@@ -7,16 +7,15 @@ ms.service: data-factory
 services: data-factory
 documentationcenter: ''
 ms.workload: data-services
-ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
-manager: craigg
-ms.openlocfilehash: f5b4cbc670a429a84f42be79adb00057656a5483
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 00d84a7f3b4a15c9278caac8c2715380dd330482
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681427"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930502"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Rollen en machtigingen voor Azure Data Factory
 
@@ -46,7 +45,7 @@ Als u lid bent van de rol **Data Factory Inzender** , kunnen gebruikers het volg
 
 Zie [Data Factory rol Inzender](../role-based-access-control/built-in-roles.md#data-factory-contributor)voor meer informatie over deze rol.
 
-### <a name="resource-manager-template-deployment"></a>Implementatie van Resource Manager-sjabloon
+### <a name="resource-manager-template-deployment"></a>Sjabloonimplementatie van Resource Manager
 
 Met de rol **Data Factory Inzender** , op het niveau van de resource groep of hoger, kunnen gebruikers Resource Manager-sjablonen implementeren. Als gevolg hiervan kunnen leden van de rol Resource Manager-sjablonen gebruiken voor het implementeren van zowel gegevens fabrieken als hun onderliggende resources, inclusief gegevens sets, gekoppelde services, pijp lijnen, triggers en Integration Runtimes. Als u lidmaatschap van deze rol gebruikt, kan de gebruiker echter geen andere resources maken.
 

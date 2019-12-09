@@ -11,14 +11,14 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 903551bfcaae3ffa7ccee72b1a5d781413864b32
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 333a3b93d872c1a99d1ec18d4941adc8986d4a03
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868453"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914558"
 ---
-# <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Wat is Azure AD Connect Cloud inrichting?
+# <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Wat is Azure AD Connect-cloudinrichting?
 Azure AD Connect Cloud inrichting is een nieuwe micro soft-agent die is ontworpen om tegemoet te komen aan uw hybride identiteits doelstellingen voor synchronisatie van gebruikers, groepen en contact personen naar Azure AD.  Deze kan naast Azure AD Connect Sync worden gebruikt en biedt de volgende voor delen:
     
 - Ondersteuning voor het synchroniseren naar een Azure AD-Tenant vanuit een niet-verbonden omgeving met meerdere forests Active Directory-forest: de algemene scenario's omvatten fusie & overname, waarbij de AD-forests van het overgenomen bedrijf worden geïsoleerd van de AD van het bovenliggende bedrijf. forests en bedrijven die historisch meerdere AD-forests hebben.
@@ -33,7 +33,7 @@ Met Azure AD Connect Cloud inrichting wordt het inrichten van AD naar Azure AD i
 
 De volgende tabel bevat een vergelijking tussen Azure AD Connect en Azure AD Connect Cloud inrichting:
 
-| Functie | Azure Active Directory Connect synch| Azure Active Directory Connect Cloud inrichting |
+| Functie | Azure Active Directory Connect synchronisatie| Azure Active Directory Connect Cloud inrichting |
 |:--- |:---:|:---:|
 |Verbinding maken met één on-premises AD-forest|● |● |
 | Verbinding maken met meerdere on-premises AD-forests |● |● |

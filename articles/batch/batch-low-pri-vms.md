@@ -8,15 +8,15 @@ ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
 ms.topic: article
 ms.workload: na
-ms.date: 03/19/2018
+ms.date: 12/05/2019
 ms.author: markscu
 ms.custom: seodec18
-ms.openlocfilehash: 33d448bc95f4cb12f5a06232cbab168a43d522c1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 39d332a6d069a4e9fac8545f4d08a986c8984c9b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095202"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926294"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Virtuele machines met lage prioriteit met Batch gebruiken
 
@@ -27,6 +27,14 @@ Vm's met lage prioriteit profiteren van de overschot capaciteit in Azure. Wannee
 Het saldo voor het gebruik van virtuele machines met lage prioriteit is dat deze Vm's mogelijk niet kunnen worden toegewezen of op elk gewenst moment kunnen worden gebruikt, afhankelijk van de beschik bare capaciteit. Daarom zijn virtuele machines met lage prioriteit het meest geschikt voor bepaalde typen werk belastingen. Gebruik virtuele machines met lage prioriteit voor werk belastingen voor batch en asynchrone verwerking waarbij de voltooiings tijd van de taak flexibel is en het werk wordt gedistribueerd over meerdere Vm's.
  
 Vm's met lage prioriteit worden aangeboden tegen een aanzienlijk gereduceerde prijs vergeleken met toegewezen Vm's. Zie [batch-prijzen](https://azure.microsoft.com/pricing/details/batch/)voor meer informatie over prijzen.
+
+> [!NOTE]
+> [Er zijn nu virtuele machines beschikbaar](https://azure.microsoft.com/pricing/spot/) voor [virtuele machines met één exemplaar](https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms) en [VM-schaal sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot). Spot-Vm's zijn een evolutie van Vm's met lage prioriteit, maar verschillen in die prijzen kunnen variëren en een optionele maximum prijs kan worden ingesteld bij het toewijzen van spot-Vm's.
+>
+> Azure Batch-groepen beginnen met het ondersteunen van spot-Vm's in het eerste kwar taal van 2020 met nieuwe versies van de [batch-api's en-hulpprogram ma's](https://docs.microsoft.com/azure/batch/batch-apis-tools). Vm's met lage prioriteit blijven worden ondersteund, met de huidige API-en hulpprogramma versies gedurende ten minste 12 maanden, om voldoende tijd te bieden voor de migratie naar de locatie van virtuele machines. 
+>
+> Spot-Vm's worden niet ondersteund voor [Cloud service-configuratie](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) groepen. Als u gebruik wilt maken van spot-Vm's, moeten Cloud service groepen worden gemigreerd naar configuratie groepen van [virtuele machines](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) .
+
 
 ## <a name="use-cases-for-low-priority-vms"></a>Gebruiks voorbeelden voor Vm's met een lage prioriteit
 
@@ -42,11 +50,11 @@ Wat zijn de kenmerken van Vm's met lage prioriteit en welke workloads kunnen ze 
 
 Enkele voor beelden van gebruiks scenario's voor batch verwerking zijn geschikt voor het gebruik van Vm's met lage prioriteit:
 
--   **Ontwikkelen en testen**: Met name als grootschalige oplossingen worden ontwikkeld, kunnen aanzienlijke besparingen worden gerealiseerd. Alle soorten tests kunnen profiteren, maar grootschalige belasting testen en regressie tests zijn geweldig.
+-   **Ontwikkeling en tests**: met name als grootschalige oplossingen worden ontwikkeld, kunnen aanzienlijke besparingen worden gerealiseerd. Alle soorten tests kunnen profiteren, maar grootschalige belasting testen en regressie tests zijn geweldig.
 
--   **Aanvulling op aanvraag capaciteit**: Vm's met lage prioriteit kunnen worden gebruikt voor het aanvullen van regel matige, specifieke Vm's, wanneer deze beschikbaar zijn, kunnen taken worden geschaald en daarom sneller worden uitgevoerd voor lagere kosten; Als deze niet beschikbaar is, blijft de basis lijn van toegewezen Vm's beschikbaar.
+-   Een **aanvulling op de capaciteit op aanvraag**: virtuele machines met lage prioriteit kunnen worden gebruikt voor het aanvullen van regel matige, specifieke vm's, wanneer deze beschikbaar zijn, kunnen taken worden geschaald en daarom sneller worden uitgevoerd voor lagere kosten; Als deze niet beschikbaar is, blijft de basis lijn van toegewezen Vm's beschikbaar.
 
--   **Flexibele tijd voor het uitvoeren van taken**: Als er flexibiliteit is in de tijd taken, kan de capaciteit worden toegestaan. met de toevoeging van Vm's met lage prioriteit worden vaak sneller en voor lagere kosten uitgevoerd.
+-   **Flexibele tijd**voor het uitvoeren van taken: als er flexibiliteit is in de tijd taken, kan de capaciteit worden toegestaan. met de toevoeging van Vm's met lage prioriteit worden vaak sneller en voor lagere kosten uitgevoerd.
 
 Batch-Pools kunnen op een paar manieren worden geconfigureerd voor het gebruik van virtuele machines met lage prioriteit, afhankelijk van de flexibiliteit van de uitvoerings tijd van de taak:
 
@@ -123,7 +131,7 @@ Groeps knooppunten hebben een eigenschap om aan te geven of het knoop punt een t
 bool? isNodeDedicated = poolNode.IsDedicated;
 ```
 
-Wanneer een of meer knoop punten in een groep zijn voor rang, worden deze knoop punten nog steeds door een bewerking met een lijst knooppunt in de groep geretourneerd. Het huidige aantal knoop punten met een lage prioriteit blijft ongewijzigd, maar de status van deze knoop punten is ingesteld op de status afgebroken. Batch probeert vervangings-Vm's te vinden en, als dit is gelukt, worden de knoop punten **gemaakt** en vervolgens **gestart** voordat ze beschikbaar zijn voor taak uitvoering, net als bij nieuwe knoop punten.
+Wanneer een of meer knoop punten in een groep zijn voor rang, worden deze knoop punten nog steeds door een bewerking met een lijst knooppunt in de groep geretourneerd. Het huidige aantal knoop punten met een lage prioriteit blijft ongewijzigd, maar de status van deze knoop punten is ingesteld op de status **afgebroken** . Batch probeert vervangings-Vm's te vinden en, als dit is gelukt, worden de knoop punten **gemaakt** en vervolgens **gestart** voordat ze beschikbaar zijn voor taak uitvoering, net als bij nieuwe knoop punten.
 
 ## <a name="scale-a-pool-containing-low-priority-vms"></a>Een groep met virtuele machines met lage prioriteit schalen
 
@@ -183,3 +191,4 @@ U kunt als volgt de metrische gegevens weer geven in de Azure Portal:
 
 * Bekijk het [overzicht met Batch-functies voor ontwikkelaars](batch-api-basics.md), essentiële informatie voor iedereen die Batch wil gaan gebruiken. Het artikel bevat meer gedetailleerde informatie over de Batch-serviceresources zoals groepen, knooppunten, jobs en taken, en de vele API-functies die u tijdens het maken van de Batch-toepassing kunt gebruiken.
 * Meer informatie over de [Batch-API's en -hulpprogramma's](batch-apis-tools.md) die beschikbaar zijn voor het bouwen van Batch-oplossingen.
+* Begin met het plannen van de overstap van Vm's met lage prioriteit om virtuele machines te plaatsen. Als u virtuele machines met lage prioriteit gebruikt met configuratie groepen voor de **Cloud service** , moet u de **configuratie van de virtuele machine configureren** .

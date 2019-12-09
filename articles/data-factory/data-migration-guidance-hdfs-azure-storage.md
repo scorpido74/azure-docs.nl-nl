@@ -1,23 +1,22 @@
 ---
-title: Azure Data Factory gebruiken om gegevens van een on-premises Hadoop-cluster te migreren naar Azure Storage
+title: Gegevens migreren van een on-premises Hadoop-cluster naar Azure Storage
 description: Meer informatie over het gebruik van Azure Data Factory voor het migreren van gegevens van een on-premises Hadoop-cluster naar Azure Storage.
 services: data-factory
-documentationcenter: ''
-author: dearandyxu
 ms.author: yexu
+author: dearandyxu
 ms.reviewer: ''
-manager: ''
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 8/30/2019
-ms.openlocfilehash: b952be49bf5bc00b338aa04ed51e9dc451b5c4f9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: afccbdbbfd5b8ddeefa621448d6170d937b518f0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675815"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931454"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>Azure Data Factory gebruiken om gegevens van een on-premises Hadoop-cluster te migreren naar Azure Storage 
 
@@ -82,7 +81,7 @@ In deze afbeelding ziet u hoe u gegevens migreert via een privé-koppeling:
 - In deze architectuur worden gegevens gemigreerd via een koppeling voor persoonlijke peering via Azure ExpressRoute. Gegevens passeren nooit via het open bare Internet.
 - Het DistCp-hulp programma biedt geen ondersteuning voor ExpressRoute-persoonlijke peering met een Azure Storage eind punt van een virtueel netwerk. U wordt aangeraden om de gegevens van Data Factory te migreren met behulp van de Integration runtime.
 - Voor deze architectuur moet u de Data Factory zelf-hostende Integration runtime installeren op een Windows-VM in uw virtuele Azure-netwerk. U kunt uw virtuele machine hand matig schalen of uitschalen naar meerdere Vm's om uw netwerk-en opslag-IOPS of-band breedte volledig te benutten.
-- De aanbevolen configuratie om te beginnen voor elke Azure VM (waarbij de Data Factory zelf-hostende Integration runtime is geïnstalleerd) is Standard_D32s_v3 met een 32 vCPU en 128 GB geheugen. U kunt het CPU-en geheugen gebruik van de virtuele machine tijdens de gegevens migratie bewaken om te zien of u de virtuele machine moet opschalen voor betere prestaties of dat u de virtuele machine omlaag kunt schalen om de kosten te verlagen.
+- De aanbevolen configuratie om te beginnen voor elke Azure VM (waarbij de Data Factory zelf-hostende Integration runtime is geïnstalleerd) is Standard_D32s_v3 met een 32-vCPU en 128 GB geheugen. U kunt het CPU-en geheugen gebruik van de virtuele machine tijdens de gegevens migratie bewaken om te zien of u de virtuele machine moet opschalen voor betere prestaties of dat u de virtuele machine omlaag kunt schalen om de kosten te verlagen.
 - U kunt ook uitschalen door Maxi maal vier VM-knoop punten te koppelen aan één zelf-hostende Integration runtime. Een enkele Kopieer taak die wordt uitgevoerd op een zelf-hostende Integration runtime partitioneert automatisch de bestandenset en maakt gebruik van alle VM-knoop punten om de bestanden parallel te kopiëren. Voor maximale Beschik baarheid raden we u aan om te beginnen met twee VM-knoop punten om te voor komen dat een scenario met één punt wordt veroorzaakt tijdens de gegevens migratie.
 - Wanneer u deze architectuur gebruikt, zijn initiële momentopname gegevens migratie en Delta gegevens migratie voor u beschikbaar.
 

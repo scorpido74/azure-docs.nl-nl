@@ -4,20 +4,19 @@ description: Meer informatie over het verplaatsen van gegevens van een on-premis
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4133393b7b21394ea397598a5e1651ee370f92f0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e668f44bbc3d2e381edeb80c568a41355584a4ee
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682517"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924184"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Gegevens verplaatsen van een HTTP-bron met behulp van Azure Data Factory
 
@@ -47,11 +46,11 @@ U kunt een pijp lijn met een Kopieer activiteit maken om gegevens te verplaatsen
 
 - U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, een **Azure Resource Manager sjabloon**, de **.net API**of de **rest API**. Zie de [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit. Zie [JSON-voor beelden](#json-examples)voor json-voor beelden waarmee gegevens worden gekopieerd van een HTTP-bron naar Azure Blob-opslag.
 
-## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 
 De volgende tabel beschrijft de JSON-elementen die specifiek zijn voor de HTTP-gekoppelde service:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | type | De eigenschap **type** moet worden ingesteld op **http**. | Ja |
 | url | De basis-URL naar de webserver. | Ja |
@@ -66,9 +65,9 @@ Zie [gegevens verplaatsen tussen on-premises bronnen en de Cloud met behulp van 
 
 Stel **authenticationType** in op **Basic**, **Digest**of **Windows**. Naast de algemene HTTP-connector eigenschappen die in de voor gaande secties worden beschreven, stelt u de volgende eigenschappen in:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
-| Gebruikers | De gebruikers naam die moet worden gebruikt voor toegang tot het HTTP-eind punt. | Ja |
+| userName | De gebruikers naam die moet worden gebruikt voor toegang tot het HTTP-eind punt. | Ja |
 | wachtwoord | Het wacht woord voor de gebruiker (**gebruikers naam**). | Ja |
 
 **Voor beeld: Basic, Digest of Windows-verificatie gebruiken**
@@ -94,10 +93,10 @@ Stel **authenticationType** in op **Basic**, **Digest**of **Windows**. Naast de 
 
 Als u basis verificatie wilt gebruiken, stelt u **authenticationType** in op **ClientCertificate**. Naast de algemene HTTP-connector eigenschappen die in de voor gaande secties worden beschreven, stelt u de volgende eigenschappen in:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | embeddedCertData | De met base64 gecodeerde inhoud van binaire gegevens van het PFX-bestand. | Geef **embeddedCertData** of **certThumbprint** op |
-| certThumbprint | De vinger afdruk van het certificaat dat is geïnstalleerd op het certificaat archief van uw gateway computer. Pas toe wanneer u gegevens van een on-premises HTTP-bron kopieert. | Geef **embeddedCertData** of **certThumbprint** op |
+| CertThumbprint | De vinger afdruk van het certificaat dat is geïnstalleerd op het certificaat archief van uw gateway computer. Pas toe wanneer u gegevens van een on-premises HTTP-bron kopieert. | Geef **embeddedCertData** of **certThumbprint** op |
 | wachtwoord | Het wacht woord dat is gekoppeld aan het certificaat. | Nee |
 
 Als u **certThumbprint** gebruikt voor verificatie en het certificaat is geïnstalleerd in het persoonlijke archief van de lokale computer, verleent u lees machtigingen voor de Gateway Service:
@@ -158,15 +157,15 @@ Zie [gegevens sets maken](data-factory-create-datasets.md)voor een volledige lij
 
 De sectie **typeProperties** verschilt voor elk type gegevensset. De sectie **typeProperties** bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie **typeProperties** voor een gegevensset van het **http-** type heeft de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | Het **type** van de gegevensset moet worden ingesteld op **http**. | Ja |
 | relativeUrl | Een relatieve URL naar de resource die de gegevens bevat. Wanneer het pad niet is opgegeven, wordt alleen de URL gebruikt die in de definitie van de gekoppelde service is opgegeven. <br><br> Als u een dynamische URL wilt maken, kunt u [Data Factory functies en systeem variabelen](data-factory-functions-variables.md)gebruiken. Voor beeld: **relativeUrl**: **$ $Text. Format ('/My/Report? month = {0: jjjj}-{0: mm} & fmt = CSV ', slice start)** . | Nee |
 | requestMethod | De HTTP-methode. Toegestane waarden zijn **Get** en **post**. | Nee <br />(de standaard waarde is **Get**) |
 | additionalHeaders | Aanvullende HTTP-aanvraag headers. | Nee |
 | requestBody | De hoofd tekst van de HTTP-aanvraag. | Nee |
-| Formatteer | Als u *de gegevens wilt ophalen van een HTTP-eind punt alsof-is* zonder te parseren, slaat u de instelling van de **indeling** over. <br><br> Als u de inhoud van het HTTP-antwoord tijdens het kopiëren wilt parseren, worden de volgende indelings typen ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**en **ParquetFormat**. Zie [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, Orc- [indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en Parquet- [indeling](data-factory-supported-file-and-compression-formats.md#parquet-format)voor meer informatie. |Nee |
-| compressie | Geef het type en compressie niveau voor de gegevens op. Ondersteunde typen: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**. Ondersteunde niveaus: **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
+| format | Als u *de gegevens wilt ophalen van een HTTP-eind punt alsof-is* zonder te parseren, slaat u de instelling van de **indeling** over. <br><br> Als u de inhoud van het HTTP-antwoord tijdens het kopiëren wilt parseren, worden de volgende indelings typen ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**en **ParquetFormat**. Zie [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, Orc- [indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en Parquet- [indeling](data-factory-supported-file-and-compression-formats.md#parquet-format)voor meer informatie. |Nee |
+| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**. Ondersteunde niveaus: **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
 
 **Voor beeld: de methode GET (standaard) gebruiken**
 
@@ -211,7 +210,7 @@ De sectie **typeProperties** verschilt voor elk type gegevensset. De sectie **ty
 }
 ```
 
-## <a name="copy-activity-properties"></a>Eigenschappen van Kopieer activiteit
+## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
 Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en beleid zijn beschikbaar voor alle typen activiteiten.
 
@@ -221,7 +220,7 @@ Eigenschappen die beschikbaar zijn in de sectie **typeProperties** van de activi
 
 Op dit moment worden de volgende eigenschappen ondersteund wanneer de bron in de Kopieer activiteit van het type **http** is:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | De time-out (de time **span** -waarde) voor de HTTP-aanvraag om een antwoord te krijgen. Het is de time-out voor het verkrijgen van een reactie, niet de time-out voor het lezen van antwoord gegevens. | Nee<br />(standaard waarde: **00:01:40**) |
 

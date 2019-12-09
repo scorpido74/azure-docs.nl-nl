@@ -1,5 +1,5 @@
 ---
-title: Meer informatie over de autorisatie protocollen die worden ondersteund door het micro soft Identity platform | Azure
+title: Autorisatie protocollen die worden ondersteund door het micro soft Identity-platform | Azure
 description: Een hand leiding voor OAuth 2,0 en OpenID Connect Connect-protocollen die worden ondersteund door het micro soft Identity platform-eind punt.
 services: active-directory
 author: rwike77
@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50f2b4d5da2cdda35de0adc5dc646065f2b64a41
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f04ba26f592c02814412493cf4811e30aefa6ee3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844699"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918285"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Micro soft Identity platform-protocollen
 

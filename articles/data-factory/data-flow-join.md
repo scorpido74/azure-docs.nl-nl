@@ -1,18 +1,19 @@
 ---
-title: Trans formatie koppelen in Azure Data Factory gegevens stroom toewijzen
+title: Trans formatie koppelen in gegevens stroom toewijzen
 description: Gegevens uit twee gegevens bronnen combi neren met behulp van de deelname transformatie in Azure Data Factory gegevens stroom toewijzen
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/17/2019
-ms.openlocfilehash: 1e9315195ceae435447739055105a66ee81e2a6a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 09d2c1d063c542583dc11fab0805a9392661426f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122918"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930347"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Trans formatie koppelen in gegevens stroom toewijzen
 
@@ -38,7 +39,7 @@ De rechter outer join retourneert alle rijen uit de juiste stroom en overeenkome
 
 Volledige outer join alle kolommen en rijen van beide zijden met NULL-waarden voor kolommen die niet overeenkomen, worden uitgevoerd.
 
-### <a name="cross-join"></a>Cross-koppeling
+### <a name="cross-join"></a>Cross join
 
 Met cross-koppeling wordt het cross-product van de twee stromen op basis van een voor waarde uitgevoerd. Als u een voor waarde gebruikt die niet gelijk is aan elkaar, geeft u een aangepaste expressie op als cross-samenvoegings voorwaarde. De uitvoer stroom is alle rijen die voldoen aan de voor waarde voor samen voegen. Als u een Cartesisch product wilt maken dat elke rij-combi natie uitvoert, geeft u `true()` op als uw samenvoegings voorwaarde.
 

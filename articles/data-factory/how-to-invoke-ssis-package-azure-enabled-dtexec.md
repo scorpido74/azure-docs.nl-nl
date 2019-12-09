@@ -5,19 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/21/2019
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 9ab308d0e2145a0d0b40e8b37c8c5be07b55dac6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a5540eea91937319a6ac947b50698ccaa8b25847
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673558"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931703"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>SQL Server Integration Services-pakketten uitvoeren met het Azure-hulp programma dtexec
 In dit artikel wordt het opdracht prompt hulpprogramma voor Azure-dtexec (AzureDTExec) beschreven. Dit wordt gebruikt om SQL Server Integration Services (SSIS)-pakketten uit te voeren op de Azure-SSIS Integration Runtime (IR) in Azure Data Factory.

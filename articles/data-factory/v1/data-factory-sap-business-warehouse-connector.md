@@ -4,21 +4,20 @@ description: Meer informatie over het verplaatsen van gegevens van SAP Business 
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 47bc2db8730ebdedd180646d2fb86b642bbc631d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666046"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929214"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Gegevens verplaatsen van SAP Business Warehouse met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -47,7 +46,7 @@ Als u de verbinding met het SAP BW-exemplaar wilt inschakelen, installeert u de 
 U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van een on-premises Cassandra-gegevens opslag met behulp van verschillende hulpprogram ma's/Api's. 
 
 - De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren. 
-- U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit. 
+- U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit. 
 
 Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
@@ -59,18 +58,18 @@ Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data 
 
 De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor een SAP BW-gegevens archief:
 
-## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifiek zijn voor een gekoppelde service van SAP Business Warehouse (BW).
 
-Eigenschap | Beschrijving | Toegestane waarden | Vereist
+Eigenschap | Beschrijving | Toegestane waarden | Verplicht
 -------- | ----------- | -------------- | --------
-server | De naam van de server waarop het SAP BW-exemplaar zich bevindt. | tekenreeks | Ja
+server | De naam van de server waarop het SAP BW-exemplaar zich bevindt. | string | Ja
 systemNumber | Systeem nummer van het SAP BW systeem. | Decimaal getal van twee cijfers dat wordt weer gegeven als een teken reeks. | Ja
 clientId | Client-ID van de client in het SAP W-systeem. | Decimaal getal met drie cijfers dat wordt weer gegeven als een teken reeks. | Ja
-gebruikersnaam | Naam van de gebruiker die toegang heeft tot de SAP-server | tekenreeks | Ja
-wachtwoord | Het wachtwoord voor de gebruiker. | tekenreeks | Ja
-gatewayName | De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met het on-premises SAP BW exemplaar. | tekenreeks | Ja
-encryptedCredential | De versleutelde referentie teken reeks. | tekenreeks | Nee
+gebruikersnaam | Naam van de gebruiker die toegang heeft tot de SAP-server | string | Ja
+wachtwoord | Het wachtwoord voor de gebruiker. | string | Ja
+gatewayName | De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met het on-premises SAP BW exemplaar. | string | Ja
+encryptedCredential | De versleutelde referentie teken reeks. | string | Nee
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob, Azure Table, enzovoort).
@@ -85,7 +84,7 @@ Terwijl de eigenschappen die beschikbaar zijn in de sectie **typeProperties** va
 
 Wanneer de bron in de Kopieer activiteit van het type **RelationalSource** is (inclusief SAP BW), zijn de volgende eigenschappen beschikbaar in de sectie typeProperties:
 
-| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
+| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
 | --- | --- | --- | --- |
 | query | Hiermee geeft u de MDX-query op die gegevens uit het SAP BW exemplaar moet lezen. | MDX-query. | Ja |
 
@@ -291,24 +290,24 @@ Bij het verplaatsen van gegevens uit SAP BW worden de volgende toewijzingen gebr
 
 Gegevens type in de ABAP-woorden lijst | .NET-gegevens type
 -------------------------------- | --------------
-ACCP |  integer
+ACCP |  Int
 CHAR | Tekenreeks
 CLNT | Tekenreeks
-LOPEN | Komma
+CURR | Decimal
 CUKY | Tekenreeks
-DEC | Komma
-FLTP | Double-waarde
-INT1 | DBCS
+DEC | Decimal
+FLTP | Double
+INT1 | byte
 INT2 | Int16
-INT4 | integer
+INT4 | Int
 LANG | Tekenreeks
 LCHR | Tekenreeks
-LRAW | Byte []
+LRAW | Byte[]
 PREC | Int16
-QUAN | Komma
-UITGANG | Byte []
-RAWSTRING | Byte []
-TEKENREEKSEXPRESSIE | Tekenreeks
+QUAN | Decimal
+RAW | Byte[]
+RAWSTRING | Byte[]
+STRING | Tekenreeks
 EENHEID | Tekenreeks
 DATS | Tekenreeks
 NUMC | Tekenreeks

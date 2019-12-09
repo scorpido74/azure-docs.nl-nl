@@ -4,20 +4,19 @@ description: Meer informatie over het versleutelen en opslaan van referenties vo
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 41e353931fb2d9fe26c0a6bd73d5085495ad7b78
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bcca2e6168baafe9f98f663298790841c0f1f450
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675065"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927418"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Referenties voor on-premises gegevens archieven in Azure Data Factory versleutelen
 U kunt referenties voor uw on-premises gegevens archieven (gekoppelde services met gevoelige informatie) versleutelen en opslaan op een computer met zelf-hostende Integration runtime. 

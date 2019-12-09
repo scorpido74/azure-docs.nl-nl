@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: bee8c1d2a1cd313c7fe59d8e53379dc57554e98c
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 4cd5fc50c35f4c4adb63c9d91af05dcf8b2dda40
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618567"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924641"
 ---
 # <a name="duplicate-detection"></a>Detectie van duplicaten
 
@@ -32,14 +32,14 @@ Het inschakelen van duplicaten detectie helpt bij het bijhouden van de door de t
 
 Toepassings beheer van de id is essentieel, omdat alleen de toepassing de *MessageId* kan koppelen aan een bedrijfsproces context van waaruit het zoals verwacht kan worden geconstrueerd wanneer er een fout optreedt.
 
-Voor een bedrijfs proces waarbij tijdens de verwerking van bepaalde toepassings context meerdere berichten worden verzonden, kan de *MessageId* een combi natie zijn van de context-id op toepassings niveau, zoals een aankoop ordernummer en het onderwerp van het bericht voor voor beeld: **12345.2017/Payment**.
+Voor een bedrijfs proces waarbij tijdens de verwerking van bepaalde toepassings context meerdere berichten worden verzonden, kan de *MessageId* een combi natie zijn van de context-id op toepassings niveau, zoals een aankoop ordernummer, en het onderwerp van het bericht, bijvoorbeeld **12345.2017/Payment**.
 
 De *MessageId* kan altijd een bepaalde GUID zijn, maar het verankeren van de id naar het bedrijfs proces levert voorspel bare Herhaal baarheid, die u nodig hebt om de duplicaten detectie functie effectief te benutten.
 
 > [!NOTE]
 > Als de duplicaten detectie is ingeschakeld en de sessie-ID of partitie sleutel niet zijn ingesteld, wordt de bericht-ID gebruikt als de partitie sleutel. Als de bericht-ID ook niet is ingesteld, genereert .NET-en AMQP-bibliotheken automatisch een bericht-ID voor het bericht. Zie het [gebruik van partitie sleutels](service-bus-partitioning.md#use-of-partition-keys)voor meer informatie.
 
-## <a name="enable-duplicate-detection"></a>Duplicaatdetectie inschakelen
+## <a name="enable-duplicate-detection"></a>Detectie van duplicaten inschakelen
 
 In de portal is de functie ingeschakeld tijdens het maken van de entiteit met het selectie vakje **Duplicaten detectie inschakelen** , die standaard uitgeschakeld is. De instelling voor het maken van nieuwe onderwerpen is gelijkwaardig.
 
@@ -67,6 +67,8 @@ Zie de volgende onderwerpen voor meer informatie over Service Bus Messa ging:
 * [Service Bus-wachtrijen, -onderwerpen en -abonnementen](service-bus-queues-topics-subscriptions.md)
 * [Aan de slag met Service Bus-wachtrijen](service-bus-dotnet-get-started-with-queues.md)
 * [Service Bus-onderwerpen en -abonnementen gebruiken](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+
+In scenario's waarin client code een bericht niet opnieuw kan verzenden met dezelfde *MessageId* als voorheen, is het belang rijk om berichten te ontwerpen die veilig kunnen worden verwerkt. In dit [blog bericht over Idempotence](https://particular.net/blog/what-does-idempotent-mean) worden verschillende technieken beschreven voor het uitvoeren van deze procedure.
 
 [1]: ./media/duplicate-detection/create-queue.png
 [2]: ./media/duplicate-detection/queue-prop.png

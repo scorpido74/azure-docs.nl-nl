@@ -4,19 +4,17 @@ description: Begrijpen hoe SQL Database controle logboeken worden gestructureerd
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 3b7a3c295d2edd60c70f47ea155a5d747a3bfb03
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 5bd3a3ae5ab95076129e2565a578bdc6ac0e1e38
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873757"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928637"
 ---
 # <a name="sql-database-audit-log-format"></a>Indeling van SQL Database audit logboek
 
@@ -32,16 +30,16 @@ Bijvoorbeeld: voor data base-`Database1` op `Server1` is het volgende een geldig
 
     Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
 
-[Alleen-lezen replica's](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-read-scale-out) Audit logboeken worden in dezelfde container opgeslagen. De Directory-hiërarchie in de container is van het formulier `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/`. De BLOB-bestands naam heeft dezelfde indeling. De audit logboeken van alleen-lezen Replica's worden in dezelfde container opgeslagen.
+[Alleen-lezen replica's](sql-database-read-scale-out.md) Audit logboeken worden in dezelfde container opgeslagen. De Directory-hiërarchie in de container is van het formulier `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/`. De BLOB-bestands naam heeft dezelfde indeling. De audit logboeken van alleen-lezen Replica's worden in dezelfde container opgeslagen.
 
 
 ### <a name="event-hub"></a>Event Hub
 
-Controle gebeurtenissen worden geschreven naar de naam ruimte en Event Hub die tijdens de controle configuratie zijn gedefinieerd, en worden vastgelegd in de hoofd tekst van [Apache Avro](https://avro.apache.org/) -gebeurtenissen en opgeslagen met JSON-indeling met UTF-8-code ring. Als u de audit logboeken wilt lezen, kunt u [Avro-Hulpprogram ma's](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) of gelijksoortige hulp middelen gebruiken waarmee deze indeling wordt verwerkt.
+Controle gebeurtenissen worden geschreven naar de naam ruimte en Event Hub die tijdens de controle configuratie zijn gedefinieerd, en worden vastgelegd in de hoofd tekst van [Apache Avro](https://avro.apache.org/) -gebeurtenissen en opgeslagen met JSON-indeling met UTF-8-code ring. Als u de audit logboeken wilt lezen, kunt u [Avro-Hulpprogram ma's](../event-hubs/event-hubs-capture-overview.md#use-avro-tools) of gelijksoortige hulp middelen gebruiken waarmee deze indeling wordt verwerkt.
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Controle gebeurtenissen worden geschreven naar Log Analytics werk ruimte die tijdens de controle configuratie is gedefinieerd, naar de `AzureDiagnostics` tabel met de categorie `SQLSecurityAuditEvents`. Zie [log Analytics Search Reference](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search)(Engelstalig) voor meer nuttige informatie over log Analytics Zoek taal en-opdrachten.
+Controle gebeurtenissen worden geschreven naar Log Analytics werk ruimte die tijdens de controle configuratie is gedefinieerd, naar de `AzureDiagnostics` tabel met de categorie `SQLSecurityAuditEvents`. Zie [log Analytics Search Reference](../log-analytics/log-analytics-log-search.md)(Engelstalig) voor meer nuttige informatie over log Analytics Zoek taal en-opdrachten.
 
 ## <a id="subheading-1"></a>Controle logboek velden
 

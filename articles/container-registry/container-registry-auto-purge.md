@@ -3,12 +3,12 @@ title: Tags en manifesten opschonen
 description: Gebruik een opschoon opdracht om meerdere tags en manifesten uit een Azure-container register te verwijderen op basis van leeftijd en een label filter, en om eventueel opschoon bewerkingen te plannen.
 ms.topic: article
 ms.date: 08/14/2019
-ms.openlocfilehash: 65169927f7a1cffa88a2d909217e636417f695cc
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 0ec1f5f6f5c3c572b8558c971b58e46cce36e3fd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456477"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923114"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Afbeeldingen automatisch uit een Azure container Registry verwijderen
 
@@ -33,11 +33,10 @@ De `acr purge` container opdracht verwijdert installatie kopieën op basis van l
 > [!NOTE]
 > `acr purge` verwijdert geen afbeeldings code of opslag plaats waarvoor het kenmerk `write-enabled` is ingesteld op `false`. Zie [een container installatie kopie vergren delen in een Azure container Registry](container-registry-image-lock.md)voor meer informatie.
 
-`acr purge` is ontworpen om te worden uitgevoerd als een container opdracht in een [ACR-taak](container-registry-tasks-overview.md), zodat deze automatisch wordt geverifieerd met het REGI ster waarin de taak wordt uitgevoerd. 
+`acr purge` is ontworpen om te worden uitgevoerd als een container opdracht in een [ACR-taak](container-registry-tasks-overview.md), zodat deze automatisch wordt geverifieerd met het REGI ster waarin de taak wordt uitgevoerd en er daar acties worden uitgevoerd. In de taak voorbeelden in dit artikel wordt gebruikgemaakt van de `acr purge`-opdracht [alias](container-registry-tasks-reference-yaml.md#aliases) in plaats van een volledig gekwalificeerde container installatie kopie opdracht.
 
 Geef ten minste het volgende op wanneer u `acr purge`uitvoert:
 
-* `--registry`-het Azure container Registry waarin u de opdracht uitvoert. 
 * `--filter`: een opslag plaats en een *reguliere expressie* voor het filteren van labels in de opslag plaats. Voor beelden: `--filter "hello-world:.*"` overeenkomt met alle labels in de `hello-world` opslag plaats en `--filter "hello-world:^1.*"` komt overeen met de labels die beginnen met `1`. Geef meerdere `--filter` para meters door om meerdere opslag plaatsen te verwijderen.
 * `--ago`: een [teken reeks](https://golang.org/pkg/time/) met de duur van het type Go om aan te geven hoe lang het duurt voordat afbeeldingen worden verwijderd. De duur bestaat uit een reeks van een of meer decimale getallen, elk met een achtervoegsel van een eenheid. Geldige tijds eenheden zijn "d" voor dagen, "h" voor uren en "m" voor minuten. `--ago 2d3h6m` selecteert bijvoorbeeld alle gefilterde afbeeldingen die voor het laatst zijn gewijzigd, meer dan 2 dagen, 3 uur en 6 minuten geleden, en `--ago 1.5h` selecteert installatie kopieën die meer dan 1,5 uur geleden voor het laatst zijn gewijzigd.
 
@@ -54,12 +53,10 @@ Voer `acr purge --help`uit voor aanvullende para meters.
 
 In het volgende voor beeld wordt de opdracht [AZ ACR run][az-acr-run] uitgevoerd om de `acr purge` opdracht op aanvraag uit te voeren. In dit voor beeld worden alle afbeeldings Tags en manifesten verwijderd uit de `hello-world` opslag plaats in *myregistry* die meer dan 1 dag geleden zijn gewijzigd. De container opdracht wordt door gegeven met behulp van een omgevings variabele. De taak wordt uitgevoerd zonder bron context.
 
-In dit en de volgende voor beelden wordt het REGI ster waarin de `acr purge` opdracht wordt uitgevoerd, opgegeven met behulp van de `$Registry` alias, waarmee het REGI ster wordt aangegeven waarmee de taak wordt uitgevoerd.
-
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --untagged --ago 1d"
+PURGE_CMD="acr purge --filter 'hello-world:.*' \
+  --untagged --ago 1d"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -73,8 +70,8 @@ In het volgende voor beeld wordt de opdracht [AZ ACR Task Create][az-acr-task-cr
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 7d"
+PURGE_CMD="acr purge --filter 'hello-world:.*' \
+  --ago 7d"
 
 az acr task create --name purgeTask \
   --cmd "$PURGE_CMD" \
@@ -93,8 +90,8 @@ Met de volgende on-demand taak wordt bijvoorbeeld een time-outperiode van 3600 s
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 1d --untagged"
+PURGE_CMD="acr purge --filter 'hello-world:.*' \
+  --ago 1d --untagged"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -115,13 +112,12 @@ In het volgende voor beeld selecteert het filter in elke opslag plaats alle tags
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} \
+PURGE_CMD="acr purge \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged --dry-run"
 
 az acr run \
-  --cmd  "$PURGE_CMD" \
+  --cmd "$PURGE_CMD" \
   --registry myregistry \
   /dev/null
 ```
@@ -156,8 +152,7 @@ Nadat u de droge uitvoering hebt gecontroleerd, maakt u een geplande taak om de 
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} \
+PURGE_CMD="acr purge \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged"
 

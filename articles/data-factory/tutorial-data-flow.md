@@ -1,18 +1,19 @@
 ---
-title: Gegevens transformeren met behulp van een toewijzings gegevens stroom in Azure Data Factory
+title: Gegevens transformeren met behulp van een toewijzings gegevens stroom
 description: Deze zelf studie bevat stapsgewijze instructies voor het gebruik van Azure Data Factory om gegevens te transformeren met toewijzings gegevens stroom
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: 886e6e659dee2a898167054c5d76bc3977f27e11
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1211a7f2aa82f7084dc87e2c9a8bdaab9997be45
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683639"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927212"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Gegevens transformeren met toewijzing van gegevens stromen
 
@@ -23,7 +24,7 @@ In deze zelf studie gebruikt u de Azure Data Factory gebruikers interface (UX) o
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory.
+> * Een gegevensfactory maakt.
 > * Maak een pijp lijn met een gegevens stroom activiteit.
 > * Bouw een toewijzings gegevens stroom met vier trans formaties. 
 > * De uitvoering van de pijplijn testen.
@@ -35,7 +36,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 Het bestand dat u in deze zelf studie transformeert, is MoviesDB. CSV, dat [hier](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)kan worden gevonden. Als u het bestand wilt ophalen uit GitHub, kopieert u de inhoud naar een tekst editor van uw keuze om lokaal op te slaan als een CSV-bestand. Als u het bestand naar uw opslag account wilt uploaden, raadpleegt u [blobs uploaden met Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md). De voor beelden verwijzen naar een container met de naam ' Sample-Data '.
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 In deze stap maakt u een data factory en opent u de Data Factory UX om een pijp lijn te maken in de data factory. 
 
@@ -92,10 +93,10 @@ Wanneer u de gegevens stroom hebt gemaakt, wordt u automatisch naar het canvas v
 1. Geef uw bron **MoviesDB**een naam. Klik op **Nieuw** om een nieuwe bron gegevensset te maken.
     
     ![Canvas voor gegevens stroom](media/tutorial-data-flow/dataflow3.png)
-1. Kies **Azure data Lake Storage Gen2**. Klik op door gaan.
+1. Kies **Azure data Lake Storage Gen2**. Klik op Doorgaan.
 
     ![Gegevensset](media/tutorial-data-flow/dataset1.png)
-1. Kies **DelimitedText**. Klik op door gaan.
+1. Kies **DelimitedText**. Klik op Doorgaan.
 
     ![Gegevensset](media/tutorial-data-flow/dataset2.png)
 1. Geef uw gegevensset een naam **MoviesDB**. Kies in de vervolg keuzelijst gekoppelde service de optie **Nieuw**.
@@ -115,26 +116,26 @@ Wanneer u de gegevens stroom hebt gemaakt, wordt u automatisch naar het canvas v
     ![Canvas voor gegevens stroom](media/tutorial-data-flow/dataflow5.png)
 1. Geef een naam op voor de filter transformatie **FilterYears**. Klik op het expressievak naast **filteren op** om de opbouw functie voor expressies te openen. Hier geeft u uw filter voorwaarde op. 
     
-    ![Filteren](media/tutorial-data-flow/filter1.png)
+    ![Filter](media/tutorial-data-flow/filter1.png)
 1. Met de opbouw functie voor de data flow-expressie kunt u interactief expressies bouwen voor gebruik in verschillende trans formaties. Expressies kunnen ingebouwde functies, kolommen uit het invoer schema en door de gebruiker gedefinieerde para meters bevatten. Zie de [opbouw functie voor data flow](concepts-data-flow-expression-builder.md)-expressies voor meer informatie over het maken van expressies.
     
     In deze zelf studie wilt u de films van genre Comedy filteren die zijn uitgekomen tussen de jaren 1910 en 2000. Als jaar is momenteel een teken reeks, moet u deze converteren naar een geheel getal met behulp van de functie ```toInteger()```. Gebruik de Opera tors groter dan of gelijk aan (> =) en kleiner dan of gelijk aan (< =) om te vergelijken met de letterlijke jaar waarden 1910 en 200-. Voeg deze expressies samen met de operator and (& &). De expressie wordt als volgt opgehaald:
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000```
 
-    Als u wilt weten welke films comedies zijn, kunt u de functie ```rlike()``` gebruiken om het patroon ' comedy ' te vinden in de kolom genres. De rlike-expressie samen voegen met de jaar vergelijking om het volgende te krijgen:
+    Als u wilt weten welke films comedies zijn, kunt u de functie ```rlike()``` gebruiken om het patroon ' comedy ' in de kolom genres te vinden. De rlike-expressie samen voegen met de jaar vergelijking om het volgende te krijgen:
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')```
 
     Als u een debug-cluster hebt geactiveerd, kunt u uw logica controleren door op **vernieuwen** te klikken om de expressie-uitvoer te bekijken in vergelijking met de gebruikte invoer. Er is meer dan één recht antwoord op hoe u deze logica kunt uitvoeren met behulp van de data flow-expressie taal.
     
-    ![Filteren](media/tutorial-data-flow/filter2.png)
+    ![Filter](media/tutorial-data-flow/filter2.png)
 
     Klik op **opslaan en volt ooien** zodra u klaar bent met de expressie.
 
 1. Een **voor beeld** van een gegevens ophalen om te controleren of het filter goed werkt.
     
-    ![Filteren](media/tutorial-data-flow/filter3.png)
+    ![Filter](media/tutorial-data-flow/filter3.png)
 1. De volgende trans formatie die u toevoegt, is een **statistische** trans formatie onder **schema wijzigings functie**.
     
     ![Samenvoegen](media/tutorial-data-flow/agg1.png)
@@ -160,10 +161,10 @@ Wanneer u de gegevens stroom hebt gemaakt, wordt u automatisch naar het canvas v
 1. Geef **uw Sink een naam.** Klik op **Nieuw** om uw Sink-gegevensset te maken.
     
     ![Sink](media/tutorial-data-flow/sink2.png)
-1. Kies **Azure data Lake Storage Gen2**. Klik op door gaan.
+1. Kies **Azure data Lake Storage Gen2**. Klik op Doorgaan.
 
     ![Gegevensset](media/tutorial-data-flow/dataset1.png)
-1. Kies **DelimitedText**. Klik op door gaan.
+1. Kies **DelimitedText**. Klik op Doorgaan.
 
     ![Gegevensset](media/tutorial-data-flow/dataset2.png)
 1. Geef uw Sink-gegevensset een naam **MoviesSink**. Voor gekoppelde service kiest u de gekoppelde ADLS Gen2-service die u in stap 6 hebt gemaakt. Voer een uitvoermap in om uw gegevens naar te schrijven. In deze zelf studie schrijven we naar map ' uitvoer ' in container ' voor beeld-gegevens '. De map hoeft niet vooraf te bestaan en kan dynamisch worden gemaakt. Stel de **eerste rij als koptekst** in op True en selecteer **geen** voor het **import schema**. Klik op Voltooien.
@@ -184,10 +185,10 @@ U kunt fouten opsporen in een pijp lijn voordat u deze publiceert. In deze stap 
     ![Pijplijn](media/tutorial-data-flow/pipeline2.png)
 1. In het deel venster bewaking ziet u het aantal rijen en tijd dat aan elke transformatie stap is besteed.
     
-    ![Bewaking](media/tutorial-data-flow/pipeline3.png)
+    ![Controleren](media/tutorial-data-flow/pipeline3.png)
 1. Klik op een trans formatie om gedetailleerde informatie over de kolommen en het partitioneren van de gegevens op te halen.
     
-    ![Bewaking](media/tutorial-data-flow/pipeline4.png)
+    ![Controleren](media/tutorial-data-flow/pipeline4.png)
 
 Als u deze zelf studie correct hebt gevolgd, moet u 83 rijen en 2 kolommen in uw map Sink hebben geschreven. U kunt controleren of de gegevens correct zijn door uw Blob-opslag te controleren.
 
@@ -196,7 +197,7 @@ Als u deze zelf studie correct hebt gevolgd, moet u 83 rijen en 2 kolommen in uw
 De pijp lijn in deze zelf studie voert een gegevens stroom uit die de gemiddelde waardering van comedies van 1910 tot 2000 samenvoegt en schrijft de gegevens naar ADLS. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory.
+> * Een gegevensfactory maakt.
 > * Maak een pijp lijn met een gegevens stroom activiteit.
 > * Bouw een toewijzings gegevens stroom met vier trans formaties. 
 > * De uitvoering van de pijplijn testen.

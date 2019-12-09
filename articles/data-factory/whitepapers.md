@@ -9,22 +9,21 @@ ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 9421a4bbc5f05e8473d25aa63f31e9a8e23e3c98
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b4b13f8b21cfdedde93145a8e437bc2301bee460
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555196"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927106"
 ---
 # <a name="azure-data-factory-whitepapers"></a>Azure Data Factorye witboeken 
 
 Met White papers kunt u Azure Data Factory op een dieper niveau verkennen. In dit artikel vindt u een lijst met beschik bare witboeken voor Azure Data Factory.
 
-| **Paper** | **Beschrijving** |
+| **Technisch document** | **Beschrijving** |
 | --- | --- |
 |[Azure Data Factory: gegevens integratie in de Cloud](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-data-integration-in-the-cloud/Azure_Data_Factory_Data_Integration_in_the_Cloud.pdf) | In dit artikel wordt beschreven hoe Azure Data Factory u in staat stelt om een modern Data Warehouse te bouwen, geavanceerde analyses in te scha kelen om intelligente SaaS-toepassingen te ontwikkelen en uw SQL Server integrations Services-pakketten naar Azure te tillen.|
 |[Gegevens migratie van on-premises relationele data warehouse naar Azure met Azure Data Factory](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/) | Dit document heeft betrekking op de complexiteit van het migreren van tien TB gegevens van bestaande on-premises relationele data warehouse (bijvoorbeeld Netezza, Oracle, Teradata, SQL Server) naar Azure (bijvoorbeeld Blob Storage of Azure Data Lake Storage) met behulp van Azure Data Factory. De uitdagingen en aanbevolen procedures zijn geïllustreerd rond de flexibiliteit, prestaties, schaal baarheid, beheer en beveiliging van de big data opname naar Azure door Azure Data Factory. |

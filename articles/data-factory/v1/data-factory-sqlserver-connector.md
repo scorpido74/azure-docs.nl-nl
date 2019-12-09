@@ -4,21 +4,20 @@ description: Meer informatie over het verplaatsen van gegevens naar/van SQL Serv
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 864ece28-93b5-4309-9873-b095bbe6fedd
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a5afbec39a87423463bf1a65fdd99ec7a739958b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5e4bbe1e6bd944787d47c5e3ed98de582c088a52
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666262"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928167"
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Gegevens verplaatsen van en naar SQL Server on-premises of op IaaS (Azure VM) met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -42,7 +41,7 @@ U kunt gegevens uit de volgende gegevens archieven kopiëren **naar een SQL Serv
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 ## <a name="supported-sql-server-versions"></a>Ondersteunde SQL Server versies
-Deze SQL Server-connector ondersteunt het kopiëren van gegevens van/naar de volgende versies van instance die lokaal worden gehost of in azure IaaS met behulp van SQL-verificatie en Windows-verificatie: SQL Server 2016, SQL Server 2014, SQL Server 2012, SQL Server 2008 R2 SQL Server 2008, SQL Server 2005
+Deze SQL Server-connector ondersteunt het kopiëren van gegevens van/naar de volgende versies van instance die lokaal worden gehost of in azure IaaS met behulp van SQL-verificatie en Windows-verificatie: SQL Server 2016, SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008, SQL Server 2005
 
 ## <a name="enabling-connectivity"></a>Connectiviteit inschakelen
 De concepten en stappen die nodig zijn om verbinding te maken met SQL Server lokaal gehost of in azure IaaS (Infrastructure-as-a-Service) zijn hetzelfde. In beide gevallen moet u Data Management Gateway gebruiken voor connectiviteit.
@@ -56,7 +55,7 @@ U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst va
 
 De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
+U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.
 
 Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
@@ -69,12 +68,12 @@ Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data 
 
 De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor SQL Server:
 
-## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 U maakt een gekoppelde service van het type **OnPremisesSqlServer** om een on-premises SQL Server Data Base te koppelen aan een Data Factory. De volgende tabel bevat beschrijvingen van de JSON-elementen die specifiek zijn voor on-premises SQL Server gekoppelde service.
 
 In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifiek zijn voor SQL Server gekoppelde service.
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **OnPremisesSqlServer**. |Ja |
 | connectionString |Geef de Connections Tring-gegevens op die nodig zijn om verbinding te maken met de on-premises SQL Server Data Base via SQL-verificatie of Windows-verificatie. |Ja |
@@ -131,7 +130,7 @@ Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een 
 
 De sectie typeProperties verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie **typeProperties** voor de gegevensset van het type **SqlServerTable** heeft de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | tableName |De naam van de tabel of weer gave in de SQL Server Data Base-instantie waarnaar de gekoppelde service verwijst. |Ja |
 
@@ -148,11 +147,11 @@ Terwijl de eigenschappen die beschikbaar zijn in de sectie typeProperties van de
 ### <a name="sqlsource"></a>SqlSource
 Wanneer de bron in een Kopieer activiteit van het type **SqlSource**is, zijn de volgende eigenschappen beschikbaar in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
+| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
 | --- | --- | --- | --- |
 | sqlReaderQuery |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: Select * from MyTable. Kan verwijzen naar meerdere tabellen vanuit de data base waarnaar wordt verwezen door de invoer gegevensset. Indien niet opgegeven, de SQL-instructie die wordt uitgevoerd: Selecteer een van de MyTable. |Nee |
-| sqlReaderStoredProcedureName |De naam van de opgeslagen procedure waarmee gegevens uit de bron tabel worden gelezen. |De naam van de opgeslagen procedure. De laatste SQL-instructie moet een instructie SELECT in de opgeslagen procedure zijn. |Nee |
-| storedProcedureParameters |Para meters voor de opgeslagen procedure. |Naam/waarde-paren. Namen en hoofdletter gebruik van para meters moeten overeenkomen met de namen en de behuizing van de opgeslagen procedure parameters. |Nee |
+| sqlReaderStoredProcedureName |De naam van de opgeslagen procedure waarmee gegevens uit de bron tabel worden gelezen. |De naam van de opgeslagen procedure. De laatste SQL-instructie moet een SELECT-instructie in de opgeslagen procedure. |Nee |
+| storedProcedureParameters |Parameters voor de opgeslagen procedure. |Naam/waarde-paren. Namen en hoofdlettergebruik van parameters moeten overeenkomen met de naam en het hoofdlettergebruik van de opgeslagen-procedureparameters. |Nee |
 
 Als de **sqlReaderQuery** is opgegeven voor de SqlSource, voert de Kopieer activiteit deze query uit op basis van de SQL Server database bron om de gegevens op te halen.
 
@@ -166,14 +165,14 @@ Als u sqlReaderQuery of sqlReaderStoredProcedureName niet opgeeft, worden de kol
 ### <a name="sqlsink"></a>SqlSink
 **SqlSink** ondersteunt de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
+| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Wacht tijd voordat de batch INSERT-bewerking is voltooid voordat er een time-out optreedt. |duur<br/><br/> Voor beeld: "00:30:00" (30 minuten). |Nee |
+| writeBatchTimeout |Wacht tijd voordat de batch INSERT-bewerking is voltooid voordat er een time-out optreedt. |duur<br/><br/> Voorbeeld: "00: 30:00 ' (30 minuten). |Nee |
 | writeBatchSize |Hiermee worden gegevens in de SQL-tabel ingevoegd wanneer de buffer grootte writeBatchSize bereikt. |Geheel getal (aantal rijen) |Nee (standaard: 10000) |
 | sqlWriterCleanupScript |Geef een query op om de Kopieer activiteit uit te voeren, zodat de gegevens van een specifiek segment worden opgeruimd. Zie de sectie Herhaal bare [kopieën](#repeatable-copy) voor meer informatie. |Een query-instructie. |Nee |
 | sliceIdentifierColumnName |Geef de kolom naam voor de Kopieer activiteit op die moet worden gevuld met een automatisch gegenereerde segment-id, die wordt gebruikt om gegevens van een specifiek segment op te schonen wanneer het opnieuw wordt uitgevoerd. Zie de sectie Herhaal bare [kopieën](#repeatable-copy) voor meer informatie. |Kolom naam van een kolom met het gegevens type binary (32). |Nee |
 | sqlWriterStoredProcedureName |De naam van de opgeslagen procedure die definieert hoe bron gegevens worden toegepast in de doel tabel, bijvoorbeeld om upsert of trans formatie te gebruiken met uw eigen bedrijfs logica. <br/><br/>Houd er rekening mee dat deze opgeslagen procedure **per batch wordt geactiveerd**. Als u een bewerking wilt uitvoeren die slechts één keer wordt uitgevoerd en niets hoeft te doen met bron gegevens, bijvoorbeeld verwijderen/truncate, gebruikt u `sqlWriterCleanupScript` eigenschap. |De naam van de opgeslagen procedure. |Nee |
-| storedProcedureParameters |Para meters voor de opgeslagen procedure. |Naam/waarde-paren. Namen en hoofdletter gebruik van para meters moeten overeenkomen met de namen en de behuizing van de opgeslagen procedure parameters. |Nee |
+| storedProcedureParameters |Parameters voor de opgeslagen procedure. |Naam/waarde-paren. Namen en hoofdlettergebruik van parameters moeten overeenkomen met de naam en het hoofdlettergebruik van de opgeslagen-procedureparameters. |Nee |
 | sqlWriterTableType |Geef de naam op van het tabel type dat moet worden gebruikt in de opgeslagen procedure. Als u de Kopieer activiteit uitvoert, worden de gegevens die in een tijdelijke tabel worden verplaatst, met dit tabel type beschikbaar. De opgeslagen procedure code kan vervolgens de gegevens samen voegen die worden gekopieerd met bestaande gegevens. |De naam van een tabel type. |Nee |
 
 
@@ -654,37 +653,37 @@ De toewijzing is hetzelfde als de SQL Server gegevens type toewijzing voor ADO.N
 | Type SQL Server data base-engine | .NET Framework type |
 | --- | --- |
 | bigint |Int64 |
-| waarde |Byte [] |
-| bitmask |Booleaans |
-| char |Teken reeks, char [] |
-| date |DateTime |
-| Datetime |DateTime |
-| DATETIME2 |DateTime |
-| Date time offset |Date time offset |
-| Komma |Komma |
-| FILESTREAM-kenmerk (varbinary (max)) |Byte [] |
-| Float |Double-waarde |
-| image |Byte [] |
+| binary |Byte[] |
+| bit |Booleaans |
+| char |String, Char[] |
+| date |Datum/tijd |
+| Datetime |Datum/tijd |
+| datetime2 |Datum/tijd |
+| Datetimeoffset |DateTimeOffset |
+| Decimal |Decimal |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| Float |Double |
+| image |Byte[] |
 | int |Int32 |
-| financieel |Komma |
-| nchar |Teken reeks, char [] |
-| ntext |Teken reeks, char [] |
-| 443 |Komma |
-| nvarchar |Teken reeks, char [] |
-| realistische |Enkelvoudig |
-| rowversion |Byte [] |
-| smalldatetime |DateTime |
+| money |Decimal |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |Decimal |
+| nvarchar |String, Char[] |
+| real |Enkelvoudig |
+| rowversion |Byte[] |
+| smalldatetime |Datum/tijd |
 | smallint |Int16 |
-| smallmoney |Komma |
-| sql_variant |Object |
-| tekst |Teken reeks, char [] |
-| tijd |Duur |
-| tijdstempel |Byte [] |
-| tinyint |DBCS |
-| unieke |GUID |
-| varbinary |Byte [] |
-| varchar |Teken reeks, char [] |
-| xml |indeling |
+| smallmoney |Decimal |
+| sql_variant |Object * |
+| tekst |String, Char[] |
+| tijd |TimeSpan |
+| tijdstempel |Byte[] |
+| tinyint |byte |
+| uniqueidentifier |GUID |
+| varbinary |Byte[] |
+| varchar |String, Char[] |
+| xml |Xml |
 
 ## <a name="mapping-source-to-sink-columns"></a>Bron toewijzen aan Sink-kolommen
 Als u kolommen van de bron-gegevensset wilt toewijzen aan kolommen uit Sink-gegevensset, raadpleegt u [DataSet-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md).

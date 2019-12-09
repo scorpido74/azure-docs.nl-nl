@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 4/10/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: e28104e1c795e093fda6457d9f86265312f540be
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 19503fd0e469258bb8305f151cc53b9ec3136558
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176598"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935939"
 ---
 > [!IMPORTANT]
-> De Azure Functions-Runtime preview 2 ondersteunt alleen versie 1.x van de Azure Functions-runtime. Deze preview-functie niet wordt bijgewerkt ter ondersteuning van versie 2.x van de runtime en geen toekomstige updates worden gepland. Als u nodig hebt voor het hosten van de Azure Functions-runtime buiten Azure, kunt u overwegen [met behulp van Azure Functions op Kubernetes met KEDA](../articles/azure-functions/functions-kubernetes-keda.md)
+> De Azure Functions-runtime Preview 2 ondersteunt alleen versie 1. x van de Azure Functions runtime. Deze preview-functie wordt niet bijgewerkt ter ondersteuning van versie 2. x en hoger van de runtime en er worden geen toekomstige updates gepland. Als u de Azure Functions runtime buiten Azure moet hosten, kunt u overwegen [Azure functions te gebruiken op Kubernetes met KEDA](../articles/azure-functions/functions-kubernetes-keda.md)

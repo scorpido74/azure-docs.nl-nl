@@ -1,29 +1,25 @@
 ---
-title: Webbrowsers in micro soft-verificatie bibliotheek voor .NET
+title: Webbrowsers gebruiken met MSAL.NET | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over specifieke overwegingen bij het gebruik van Xamarin Android met de micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2446166aa8078040c06d7cb54ce01666d9931727
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: d5b8c8e78c554994b71f9e246f8bacc39828b17f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802688"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921609"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>Webbrowsers gebruiken in MSAL.NET
 Webbrowsers zijn vereist voor interactieve verificatie. Standaard ondersteunt MSAL.NET de [systeem webbrowser](#system-web-browser-on-xamarinios-xamarinandroid) op Xamarin. IOS en Xamarin. Android. [U kunt echter ook de Inge sloten webbrowser inschakelen](#enable-embedded-webviews-on-ios-and-android) , afhankelijk van uw vereisten (UX, eenmalige aanmelding (SSO), beveiliging) in [Xamarin. IOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) en [Xamarin. Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) -apps. En u kunt zelfs [dynamisch kiezen](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) welke webbrowser u wilt gebruiken op basis van de aanwezigheid van Chrome of een browser die aangepaste Chrome-tabbladen in Android ondersteunt. MSAL.NET biedt alleen ondersteuning voor de systeem browser in .NET core desktop-toepassingen.
@@ -49,7 +45,7 @@ Over het algemeen is het raadzaam om de standaard waarde van het platform te geb
 
 ### <a name="at-a-glance"></a>Een overzicht
 
-| Regelgevings        | Geïntegreerde | Systeem | Standaard |
+| Framework        | Geïntegreerde | Systeem | Standaard |
 | ------------- |-------------| -----| ----- |
 | .NET-klassiek     | Ja | Ja ^ | Geïntegreerde |
 | .NET Core     | Nee | Ja ^ | Systeem |
@@ -153,7 +149,7 @@ Er zijn enkele visuele verschillen tussen de Inge sloten webweergave en de syste
 
 **Interactief aanmelden met MSAL.NET met behulp van de Inge sloten webweergave:**
 
-![Geïntegreerde](media/msal-net-web-browsers/embedded-webview.png)
+![ingesloten](media/msal-net-web-browsers/embedded-webview.png)
 
 **Interactief aanmelden met MSAL.NET met behulp van de systeem browser:**
 
@@ -175,7 +171,7 @@ Als ontwikkelaar met behulp van MSAL.NET hebt u verschillende opties voor het we
                     .ExecuteAsync();
     ```
 
-    Android
+    Android:
 
     ```csharp
     authResult = app.AcquireTokenInteractively(scopes)
@@ -211,7 +207,7 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
 
 #### <a name="detecting-the-presence-of-custom-tabs-on-xamarinandroid"></a>De aanwezigheid van aangepaste tabbladen op Xamarin. Android detecteren
 
-Als u de systeem webbrowser wilt gebruiken om eenmalige aanmelding in te scha kelen voor de apps die worden uitgevoerd in de browser, maar wel voor de gebruikers ervaring voor Android-apparaten die geen browser met ondersteuning voor aangepaste tabbladen hebben, kunt u kiezen of u de `IsSystemWebViewAvailable()` methode aanroept in `IPublicClientApplication`. Deze methode retourneert `true` als de PackageManager aangepaste tabbladen en `false` detecteert als deze niet op het apparaat worden gedetecteerd.
+Als u de systeem webbrowser wilt gebruiken om SSO in te scha kelen met de apps die worden uitgevoerd in de browser, maar wel over de gebruikers ervaring voor Android-apparaten die geen browser met ondersteuning voor aangepaste tabbladen hebben, kunt u kiezen of u de `IsSystemWebViewAvailable()`-methode aanroept in `IPublicClientApplication`. Deze methode retourneert `true` als de PackageManager aangepaste tabbladen en `false` detecteert als deze niet op het apparaat worden gedetecteerd.
 
 Op basis van de waarde die is geretourneerd door deze methode en uw vereisten kunt u een beslissing nemen:
 

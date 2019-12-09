@@ -1,22 +1,22 @@
 ---
-title: On-premises gegevens kopiëren met behulp van het hulp programma Azure Gegevens kopiëren
+title: On-premises gegevens kopiëren met behulp van het Azure Gegevens kopiëren tool
 description: Maak een Azure-gegevensfactory en gebruik vervolgens het hulpprogramma Copy Data om gegevens uit een on-premises SQL Server-database te kopiëren naar Azure Blob-opslag.
 services: data-factory
-documentationcenter: ''
+ms.author: abnarain
 author: nabhishek
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019
 ms.date: 04/09/2018
-ms.author: abnarain
-ms.openlocfilehash: 3b9c9371d947b0193f93b8084fbaaf66e3253997
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e248c7f37c062fc69e5e42ae7d33e275c4b0aa19
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683544"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926530"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Gegevens uit een on-premises SQL-serverdatabase naar Azure Blob-opslag kopiëren met behulp van het hulpprogramma Copy Data.
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -31,7 +31,7 @@ In deze zelfstudie gebruikt u Azure Portal om een gegevensfactory te maken. Verv
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory.
+> * Een gegevensfactory maakt.
 > * Het hulpprogramma Copy Data gebruiken om een pijplijn te maken.
 > * De uitvoering van de pijplijn en van de activiteit controleren.
 
@@ -79,7 +79,7 @@ In deze zelfstudie gaat u de naam en sleutel van uw opslagaccount gebruiken. Voe
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) met uw Azure-gebruikersnaam en -wachtwoord. 
 
-1. Selecteer **alle services**in het linkerdeel venster. Filter met behulp van het sleutelwoord **Opslag** en selecteer vervolgens **Opslagaccounts**.
+1. Selecteer **Alle services** in het linkerdeelvenster. Filter met behulp van het sleutelwoord **Opslag** en selecteer vervolgens **Opslagaccounts**.
 
     ![Zoeken naar Storage-account](media/doc-common-process/search-storage-account.png)
 
@@ -105,7 +105,7 @@ In deze sectie maakt u in uw Blob Storage een blobcontainer met de naam **adftut
 1. Houd het venster **Container** voor **adftutorial** geopend. U kunt deze gebruiken om de uitvoer aan het einde van de zelf studie te controleren. In Data Factory wordt automatisch in deze container de uitvoermap gemaakt, zodat u er zelf geen hoeft te maken.
 
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 1. Selecteer in het menu aan de linkerkant **+ een resource maken** > **Analytics** > **Data Factory**. 
   
@@ -234,7 +234,7 @@ In deze sectie maakt u in uw Blob Storage een blobcontainer met de naam **adftut
 Met de pijplijn in dit voorbeeld worden gegevens uit een on-premises SQL Server-database gekopieerd naar Blob Storage. U hebt geleerd hoe u: 
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory.
+> * Een gegevensfactory maakt.
 > * Het hulpprogramma Copy Data gebruiken om een pijplijn te maken.
 > * De uitvoering van de pijplijn en van de activiteit controleren.
 

@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.assetid: 8dd7ba14-15d2-4fd9-9ada-0b2c684327e9
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
+manager: anandsub
 robots: noindex
-ms.openlocfilehash: 8826dd51766ee0d1059ab73046e7e078f27a8e03
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 32ab81d618cb0a6ee40814b644ad934008ee7719
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703329"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927959"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Use custom activities in an Azure Data Factory pipeline (Aangepaste activiteiten gebruiken in een Azure Data Factory-pijplijn)
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -455,7 +454,7 @@ Met gekoppelde services worden gegevensarchieven of compute-services gekoppeld a
    1. Geef Azure Batch account naam op voor de eigenschap **AccountName** . De **URL** van de **Blade Azure batch account** heeft de volgende indeling: `http://accountname.region.batch.azure.com`. Voor de eigenschap **batchUri** in de JSON moet u `accountname.` verwijderen uit de URL en de `accountname` voor de JSON-eigenschap `accountName` gebruiken.
    2. Geef de sleutel van het Azure Batch-account op voor de eigenschap **accessKey** .
    3. Geef de naam op van de groep die u hebt gemaakt als onderdeel van vereisten voor de eigenschap **pool** naam. U kunt ook de ID van de pool opgeven in plaats van de naam van de pool.
-   4. Geef Azure Batch URI op voor de eigenschap **batchUri** . Voor beeld: `https://westus.batch.azure.com`.
+   4. Geef Azure Batch URI op voor de eigenschap **batchUri** . Voorbeeld: `https://westus.batch.azure.com`.
    5. Geef de **AzureStorageLinkedService** op voor de eigenschap **linkedServiceName** .
 
         ```json

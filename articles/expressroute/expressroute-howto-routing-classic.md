@@ -5,18 +5,18 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 12/06/2019
 ms.author: cherylmc
-ms.openlocfilehash: 814a73900b05b66d1bacc946b9f994135d3fc9f6
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 05602538f206032d924b39a7dd8f4325c48a5224
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083444"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931379"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Peering maken en wijzigen voor een ExpressRoute-circuit (klassiek)
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure-portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [Video - Privépeering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
@@ -42,40 +42,7 @@ Deze instructies zijn alleen van toepassing op circuits die zijn gemaakt met ser
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>De meest recente Power shell-cmdlets downloaden
 
-Installeer de nieuwste versies van de Azure SM (Service Management) PowerShell-modules en de ExpressRoute-module. Wanneer u het volgende voorbeeld, houd er rekening mee dat het versienummer (in dit voorbeeld 5.1.1) worden gewijzigd als nieuwere versies van de cmdlets worden vrijgegeven.
-
-```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-```
-
-Zie voor meer informatie aan de slag [met Azure PowerShell-cmdlets](/powershell/azure/overview) voor stapsgewijze richt lijnen voor het configureren van uw computer voor het gebruik van de Azure PowerShell-modules.
-
-### <a name="sign-in"></a>Aanmelden
-
-Gebruik de volgende voor beelden om u aan te melden bij uw Azure-account:
-
-1. Open de PowerShell-console met verhoogde rechten en maak verbinding met uw account.
-
-   ```powershell
-   Connect-AzAccount
-   ```
-2. Controleer de abonnementen voor het account.
-
-   ```powershell
-   Get-AzSubscription
-   ```
-3. Als u meerdere abonnementen hebt, selecteert u het abonnement dat u wilt gebruiken.
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-4. Gebruik vervolgens de volgende cmdlet uit uw Azure-abonnement toevoegen aan PowerShell voor het klassieke implementatiemodel.
-
-   ```powershell
-   Add-AzureAccount
-   ```
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="azure-private-peering"></a>Persoonlijke Azure-peering
 
@@ -94,7 +61,7 @@ In deze sectie vindt u instructies voor het maken, verkrijgen, bijwerken en verw
    Get-AzureDedicatedCircuit -ServiceKey "*********************************"
    ```
 
-   Opvragen
+   retourneren:
 
    ```powershell
    Bandwidth                        : 200
@@ -147,7 +114,7 @@ U kunt configuratie details weer geven met behulp van de volgende cmdlet:
 Get-AzureBGPPeering -AccessType Private -ServiceKey "*********************************"
 ```
 
-Opvragen
+retourneren:
 
 ```
 AdvertisedPublicPrefixes       : 
@@ -201,7 +168,7 @@ In deze sectie vindt u instructies voor het maken, verkrijgen, bijwerken en verw
    Get-AzureDedicatedCircuit -ServiceKey "*********************************"
    ```
 
-   Opvragen
+   retourneren:
 
    ```powershell
    Bandwidth                        : 200
@@ -254,7 +221,7 @@ Als u configuratie details wilt weer geven, gebruikt u de volgende cmdlet:
 Get-AzureBGPPeering -AccessType Public -ServiceKey "*********************************"
 ```
 
-Opvragen
+retourneren:
 
 ```powershell
 AdvertisedPublicPrefixes       : 
@@ -305,7 +272,7 @@ In deze sectie vindt u instructies voor het maken, verkrijgen, bijwerken en verw
    Get-AzureDedicatedCircuit -ServiceKey "*********************************"
    ```
 
-   Opvragen
+   retourneren:
    
    ```powershell
    Bandwidth                        : 200
@@ -350,7 +317,7 @@ U kunt configuratie details weer geven met behulp van de volgende cmdlet:
 ```powershell
 Get-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"
 ```
-Opvragen
+retourneren:
 
 ```powershell
 AdvertisedPublicPrefixes       : 123.0.0.0/30

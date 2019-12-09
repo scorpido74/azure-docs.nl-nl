@@ -1,29 +1,25 @@
 ---
-title: Configuratie van client toepassing (micro soft-verificatie bibliotheek)
+title: Configuratie van client toepassing (MSAL) | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over de configuratie opties voor open bare client-en vertrouwelijke client toepassingen in de micro soft Authentication Library (MSAL).
+description: Meer informatie over configuratie opties voor open bare client-en vertrouwelijke client toepassingen met behulp van de micro soft Authentication Library (MSAL).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/27/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d9a18f1ab5b86cbdb74a61a9520e89ecf920478
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f3fd70757fe5ce8761fd3444f3f0dd31e2bfcc3b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803184"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917060"
 ---
 # <a name="application-configuration-options"></a>Configuratie opties voor toepassingen
 
@@ -127,7 +123,7 @@ Als u een open bare client-app-ontwikkelaar bent die gebruikmaakt van MSAL:
 
 U kunt de omleidings-URI onderdrukken met behulp van de eigenschap `RedirectUri` (bijvoorbeeld als u Brokers gebruikt). Hier volgen enkele voor beelden van omleidings-Uri's voor dat scenario:
 
-- `RedirectUriOnAndroid` = "msauth-5a434691-CCB2-4fd1-b97b-b64bcfbc03fc://com.Microsoft.Identity.client.sample";
+- `RedirectUriOnAndroid` = "msauth-5a434691-ccb2-4fd1-b97b-b64bcfbc03fc://com.microsoft.identity.client.sample";
 - `RedirectUriOnIos` = $ "msauth. {Bundel. ID}://auth ";
 
 Zie [IOS-toepassingen migreren die gebruikmaken van Microsoft Authenticator van ADAL.net naar MSAL.net](msal-net-migration-ios-broker.md) en [de Broker op Ios](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS)gebruiken voor meer informatie over IOS.

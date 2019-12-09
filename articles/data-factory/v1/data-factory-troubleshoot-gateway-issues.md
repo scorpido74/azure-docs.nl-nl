@@ -3,21 +3,20 @@ title: Problemen met Data Management Gateway oplossen
 description: Tips voor het oplossen van problemen met betrekking tot Data Management Gateway.
 services: data-factory
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 34930061189c11c9cea9c2cd0feb2ede9aade74d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0b8aee32869202a8cc24a27dec85c93ffd294c6b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682326"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931605"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Problemen oplossen met behulp van Data Management Gateway
 Dit artikel bevat informatie over het oplossen van problemen met het gebruik van Data Management Gateway.
@@ -36,7 +35,7 @@ Dit fout bericht wordt weer gegeven bij het installeren en registreren van een g
 #### <a name="cause"></a>Oorzaak
 De computer waarop u de gateway wilt installeren, heeft het meest recente installatie bestand voor de gateway niet gedownload uit het Download centrum vanwege een netwerk probleem.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 Controleer de instellingen van de proxy server voor uw firewall om te zien of de instellingen de netwerk verbinding van de computer naar het [Download centrum](https://download.microsoft.com/)blok keren en werk de instellingen dienovereenkomstig bij.
 
 U kunt ook het installatie bestand voor de nieuwste gateway downloaden van het [Download centrum](https://www.microsoft.com/download/details.aspx?id=39717) op andere computers die toegang hebben tot het Download centrum. U kunt het installatie bestand vervolgens kopiëren naar de gateway-hostcomputer en het hand matig uitvoeren om de gateway te installeren en bij te werken.
@@ -49,7 +48,7 @@ U ziet deze fout wanneer u een gateway probeert te installeren door rechtstreeks
 #### <a name="cause"></a>Oorzaak
 Er is al een gateway geïnstalleerd op de computer.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 Verwijder de bestaande gateway op de computer en klik op de koppeling **rechtstreeks op deze computer opnieuw installeren** .
 
 ### <a name="3-problem"></a>3. probleem
@@ -64,7 +63,7 @@ Dit bericht kan om een van de volgende redenen worden weer gegeven:
 * De gateway sleutel is ongeldig gemaakt.
 * De gateway sleutel is opnieuw gegenereerd vanuit de portal.  
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 Controleer of u de juiste gateway sleutel gebruikt vanuit de portal. Genereer, indien nodig, opnieuw een sleutel en gebruik de sleutel om de gateway te registreren.
 
 ### <a name="4-problem"></a>4. probleem
@@ -79,7 +78,7 @@ Mogelijk wordt het volgende fout bericht weer gegeven wanneer u een gateway regi
 #### <a name="cause"></a>Oorzaak
 De inhoud of indeling van de invoer gateway sleutel is onjuist. Een van de redenen hiervan is dat u slechts een deel van de sleutel uit de portal hebt gekopieerd of dat u een ongeldige sleutel gebruikt.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 Genereer een gateway sleutel in de portal en gebruik de Kopieer knop om de volledige sleutel te kopiëren. Plak deze in dit venster om de gateway te registreren.
 
 ### <a name="5-problem"></a>5. probleem
@@ -92,7 +91,7 @@ Mogelijk wordt het volgende fout bericht weer gegeven wanneer u een gateway regi
 #### <a name="cause"></a>Oorzaak
 De gateway sleutel is opnieuw gegenereerd of de gateway is verwijderd uit het Azure Portal. Dit kan ook gebeuren als de Data Management Gateway Setup niet het meest recent is.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 Controleer of de Data Management Gateway Setup de meest recente versie is. u kunt de meest recente versie vinden in het micro soft [Download centrum](https://go.microsoft.com/fwlink/p/?LinkId=271260).
 
 Als de installatie actueel/recent en de gateway nog bestaan op de portal, genereert u de gateway sleutel opnieuw in het Azure Portal en gebruikt u de Kopieer knop om de hele sleutel te kopiëren en plakt u deze in dit venster om de gateway te registreren. Als dat niet het geval is, maakt u de gateway opnieuw en begint u opnieuw.
@@ -107,7 +106,7 @@ Mogelijk wordt het volgende fout bericht weer gegeven wanneer u een gateway regi
 #### <a name="cause"></a>Oorzaak
 Deze fout kan optreden omdat de gateway is verwijderd of de gekoppelde gateway sleutel opnieuw is gegenereerd.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 Als de gateway is verwijderd, maakt u de gateway opnieuw vanuit de portal, klikt u op **registreren**, kopieert u de sleutel uit de portal, plakt u deze en probeert u de gateway te registreren.
 
 Als de gateway nog bestaat, maar de bijbehorende sleutel opnieuw is gegenereerd, gebruikt u de nieuwe sleutel om de gateway te registreren. Als u de sleutel niet hebt, genereert u de sleutel opnieuw vanuit de portal.
@@ -124,7 +123,7 @@ De gateway is eerder geregistreerd op andere computers. Tijdens de eerste regist
 
 Wanneer u de gateway op een andere hostcomputer herstelt, vraagt de Registratie wizard dit certificaat om referenties die eerder zijn versleuteld met dit certificaat te ontsleutelen.  Zonder dit certificaat kunnen de referenties niet worden ontsleuteld door de nieuwe gateway en zullen de uitvoeringen van de volgende Kopieer activiteit die aan deze nieuwe gateway zijn gekoppeld, mislukken.  
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 Als u het referentie certificaat hebt geëxporteerd van de oorspronkelijke gateway computer met behulp van de knop **exporteren** op het tabblad **instellingen** in Data Management Gateway Configuration Manager, gebruikt u het certificaat hier.
 
 U kunt deze fase niet overs Laan wanneer u een gateway herstelt. Als het certificaat ontbreekt, moet u de gateway uit de Portal verwijderen en opnieuw een nieuwe gateway maken.  Werk bovendien alle gekoppelde services die zijn gerelateerd aan de gateway bij door de referenties opnieuw in te voeren.
@@ -137,7 +136,7 @@ Mogelijk wordt het volgende fout bericht weer gegeven.
 #### <a name="cause"></a>Oorzaak
 Deze fout treedt op wanneer uw gateway zich in een omgeving bevindt die een HTTP-proxy nodig heeft om toegang te krijgen tot Internet bronnen, of als het verificatie wachtwoord van uw proxy is gewijzigd, maar deze wordt niet dienovereenkomstig bijgewerkt in uw gateway.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 Volg de instructies in de sectie overwegingen voor proxy server van dit artikel en Configureer proxy-instellingen met Data Management Gateway Configuration Manager.
 
 ## <a name="gateway-is-online-with-limited-functionality"></a>De gateway is online met beperkte functionaliteit
@@ -152,7 +151,7 @@ U ziet de status van de gateway als online met beperkte functionaliteit om een v
 
 Wanneer de gateway online is met beperkte functionaliteit, kunt u de wizard voor het Data Factory kopiëren mogelijk niet gebruiken om gegevens pijplijnen te maken voor het kopiëren van gegevens naar of van on-premises gegevens archieven. Als tijdelijke oplossing kunt u Data Factory editor gebruiken in de portal, Visual Studio of Azure PowerShell.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 De oplossing voor dit probleem (online met beperkte functionaliteit) is gebaseerd op de vraag of de gateway geen verbinding kan maken met de Cloud service of op een andere manier. De volgende secties bieden deze oplossingen.
 
 ### <a name="2-problem"></a>2. probleem
@@ -165,7 +164,7 @@ U ziet de volgende fout.
 #### <a name="cause"></a>Oorzaak
 De gateway kan geen verbinding maken met de Cloud service via Service Bus.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 Volg deze stappen om de gateway weer online te krijgen:
 
 1. Uitgaande IP-adres regels op de gateway computer en de bedrijfs firewall toestaan. U kunt IP-adressen vinden in het Windows-gebeurtenis logboek (ID = = 401): er is geprobeerd toegang te krijgen tot een socket op een manier die is verboden door de toegangs machtigingen XX. XX. XX. XX: 9350.
@@ -180,7 +179,7 @@ U ziet de volgende fout.
 #### <a name="cause"></a>Oorzaak
 Een tijdelijke fout in de netwerk verbinding.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 Volg deze stappen om de gateway weer online te krijgen:
 
 1. Wacht een paar minuten. de verbinding wordt automatisch hersteld wanneer de fout zich blijft voordoen.
@@ -201,7 +200,7 @@ Het SSL-certificaat kan op de gateway computer verloren zijn gegaan. De gateway 
 
  `Unable to get the gateway settings from cloud service. Check the gateway key and the network connection. (Certificate with thumbprint cannot be loaded.)`
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 Volg deze stappen om het probleem op te lossen:
 
 1. Start Data Management Gateway Configuration Manager.
@@ -222,7 +221,7 @@ Mogelijk ziet u de volgende fout ' UserErrorFailedToConnectToSqlserver ' nadat u
 #### <a name="cause"></a>Oorzaak
 Dit kan om verschillende redenen gebeuren en de beperking is dienovereenkomstig afhankelijk.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 Sta uitgaande TCP-verbindingen via TCP/1433 toe aan de Data Management Gateway client voordat u verbinding maakt met een SQL database.
 
 Als de doel database een Azure-SQL database is, controleert u ook SQL Server firewall instellingen voor Azure.
@@ -239,7 +238,7 @@ Voer de volgende stappen uit als u verbinding met het gegevens archief of stuur 
 
 ![Verbinding testen op het tabblad Diagnostische gegevens](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)
 
-## <a name="gateway-logs"></a>Gateway logboeken
+## <a name="gateway-logs"></a>Gatewaylogboeken
 ### <a name="send-gateway-logs-to-microsoft"></a>Gateway logboeken naar micro soft verzenden
 Wanneer u contact opneemt met Microsoft Ondersteuning om hulp te krijgen bij het oplossen van gateway problemen, wordt u mogelijk gevraagd om uw gateway logboeken te delen. Met de release van de gateway kunt u de vereiste gateway logboeken delen met twee knoppen klikken in Data Management Gateway Configuration Manager.    
 

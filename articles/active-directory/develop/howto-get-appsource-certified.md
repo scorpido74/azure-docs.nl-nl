@@ -2,28 +2,24 @@
 title: AppSource-certificering verkrijgen voor Azure Active Directory | Microsoft Docs
 description: Meer informatie over het verkrijgen van uw toepassing AppSource Certified for Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 21206407-49f8-4c0b-84d1-c25e17cd4183
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/21/2018
 ms.author: ryanwi
-ms.reviewer: andret
+ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 139c7c2e6736eeb3e78ac0aab913378ac84160e1
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 789b7d29673bca8a7703349ee46f4595fd24c2ea
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374100"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917808"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>AppSource-certificering verkrijgen voor Azure Active Directory
 
@@ -40,7 +36,7 @@ Als u meer wilt weten over het integreren van uw toepassing met Azure AD met ope
 Een *toepassing met meerdere tenants* is een toepassing die aanmeldingen accepteert van gebruikers van elk bedrijf of organisatie die Azure AD hebben zonder dat hiervoor een afzonderlijk exemplaar, configuratie of implementatie is vereist. AppSource beveelt aan dat toepassingen een multitenancy implementeren om de gratis proef versie met *één klik* in te scha kelen.
 
 Voer de volgende stappen uit om multitenancy voor uw toepassing in te scha kelen:
-1. Stel de eigenschap `Multi-Tenanted` in op `Yes` voor de gegevens van uw toepassings registratie in de [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Toepassingen die zijn gemaakt in de Azure Portal, worden standaard geconfigureerd als *[één Tenant](#single-tenant-applications)* .
+1. Stel `Multi-Tenanted` eigenschap in op `Yes` van de gegevens van uw toepassings registratie in de [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Toepassingen die zijn gemaakt in de Azure Portal, worden standaard geconfigureerd als *[één Tenant](#single-tenant-applications)* .
 1. Werk uw code bij om aanvragen naar het `common`-eind punt te verzenden. U doet dit door het eind punt bij te werken van `https://login.microsoftonline.com/{yourtenant}` naar `https://login.microsoftonline.com/common*`.
 1. Voor sommige platforms, zoals ASP .NET, moet u uw code ook bijwerken om meerdere verleners te accepteren.
 

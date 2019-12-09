@@ -3,34 +3,30 @@ title: Migreren naar MSAL.NET
 titleSuffix: Microsoft identity platform
 description: Meer informatie over de verschillen tussen micro soft Authentication Library voor .NET (MSAL.NET) en Azure AD Authentication Library voor .NET (ADAL.NET) en hoe u migreert naar MSAL.NET.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5059acea753b4b8b7db80bfc79b4bb9718e0484e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 38f28f153eff11e2b4d705b874609a95a9def8d4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175572"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915676"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Toepassingen migreren naar MSAL.NET
 
 Zowel micro soft Authentication Library voor .NET (MSAL.NET) als Azure AD-verificatie bibliotheek voor .NET (ADAL.NET) worden gebruikt voor het verifiëren van Azure AD-entiteiten en het aanvragen van tokens van Azure AD. Tot nu toe hebben de meeste ontwikkel aars met Azure AD voor ontwikkel aars platform (v 1.0) gewerkt voor het verifiëren van Azure AD-identiteiten (werk-en school accounts) door tokens aan te vragen met behulp van Azure AD Authentication Library (ADAL). MSAL gebruiken:
 
 - u kunt een bredere set met micro soft-identiteiten (Azure AD-identiteiten en micro soft-accounts en sociale en lokale accounts via Azure AD B2C) verifiëren, zoals het micro soft Identity platform-eind punt gebruikt.
-- uw gebruikers krijgen de beste ervaring voor eenmalige aanmelding.
+- Uw gebruikers krijgen de beste ervaring voor eenmalige aanmelding.
 - uw toepassing kan stapsgewijze toestemming bieden en het ondersteunen van voorwaardelijke toegang is eenvoudiger
 - u profiteert van de innovatie.
 
@@ -123,10 +119,10 @@ Niet alle subsidies worden nog ondersteund in MSAL.NET en het v 2.0-eind punt. H
 
 Dit zijn de subsidies die worden ondersteund in ADAL.NET en MSAL.NET voor desktop-en mobiele toepassingen
 
-Geef | ADAL.NET | MSAL.NET
+Toekennen | ADAL.NET | MSAL.NET
 ----- |----- | -----
 Interactief | [Interactieve verificatie](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows) | [Tokens interactief ophalen in MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively)
-Geïntegreerde Windows-verificatie | [Geïntegreerde verificatie op Windows (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [Geïntegreerde Windows-verificatie](msal-authentication-flows.md#integrated-windows-authentication)
+Geïntegreerde Windows-authenticatie | [Geïntegreerde verificatie op Windows (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [Geïntegreerde Windows-verificatie](msal-authentication-flows.md#integrated-windows-authentication)
 Gebruikers naam/wacht woord | [Tokens ophalen met gebruikers naam en wacht woord](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-username-and-password)| [Wachtwoord verificatie voor gebruikers naam](msal-authentication-flows.md#usernamepassword)
 Toestel code stroom | [Apparaatprofiel voor apparaten zonder webbrowsers](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Device-profile-for-devices-without-web-browsers) | [Toestel code stroom](msal-authentication-flows.md#device-code)
 
@@ -134,7 +130,7 @@ Toestel code stroom | [Apparaatprofiel voor apparaten zonder webbrowsers](https:
 
 Hier volgen de subsidies die worden ondersteund in ADAL.NET en MSAL.NET voor webtoepassingen, Web-Api's en daemon-toepassingen:
 
-Type app | Geef | ADAL.NET | MSAL.NET
+Type app | Toekennen | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
 Web-app, Web-API, daemon | Client referenties | [Client referentie stromen in ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [Client referentie stromen in MSAL.net](msal-authentication-flows.md#client-credentials))
 Web-API | Namens | [Service voor het aanroepen van services namens de gebruiker met ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [Namens in MSAL.NET](msal-authentication-flows.md#on-behalf-of)

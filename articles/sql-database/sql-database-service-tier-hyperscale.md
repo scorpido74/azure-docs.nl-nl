@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: b09e5366584e9974e67d47d34f22a3483be14f7a
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5b473af780bdd68b8fc0dd3dc0430c4f4fd3255b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805753"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927670"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
@@ -196,25 +196,25 @@ Als u een grootschalige-Data Base wilt maken in een regio die niet wordt weer ge
 
 De mogelijkheid om grootschalige-data bases te maken in niet-vermelde regio's aanvragen:
 
-1. Ga naar de [Blade Help en ondersteuning van Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+1. Selecteer in het menu Azure Portal de optie **Help en ondersteuning**, of zoek naar Help en **ondersteuning** op een wille keurige pagina en selecteer deze.
 
-2. Klik op [ **nieuwe ondersteunings aanvraag**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+2. In [Help en ondersteuning van Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)selecteert u [**nieuwe ondersteunings aanvraag**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-    ![De Blade Help en ondersteuning van Azure](media/sql-database-service-tier-hyperscale/request-screen-1.png)
+3. Selecteer voor **probleem type** **service-en abonnements limieten (quota's)** .
 
-3. Selecteer voor **probleem type** **service-en abonnements limieten (quota's)**
+4. Kies het abonnement dat u wilt gebruiken voor het maken van de data base (s).
 
-4. Kies het abonnement dat u wilt gebruiken voor het maken van de data base (s)
+5. Selecteer **SQL database**bij **quotum type**.
 
-5. Selecteer **SQL database** bij **quotum type**
+    ![De Blade Help en ondersteuning van Azure](media/sql-database-service-tier-hyperscale/new-support-request-screen.png)
 
-6. Klik op **volgende: oplossingen**
+6. Klik op **volgende: oplossingen**.
 
-1. Klik op **Details opgeven**
+7. Klik op **Details opgeven**.
 
     ![Details van probleem](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
-8. **SQL database quotum type**kiezen: **andere quotum aanvraag**
+8. Kies **SQL database quotum type**: **andere quotum aanvraag**.
 
 9. Vul de volgende sjabloon in:
 
@@ -227,11 +227,11 @@ De mogelijkheid om grootschalige-data bases te maken in niet-vermelde regio's aa
     > Aantal TB geschat 
     >
 
-10. Kies **Ernst C**
+10. Kies **Ernst C**.
 
 11. Kies de juiste contact wijze en vul de details in.
 
-12. Klik op **Opslaan** en **door gaan**
+12. Klik op **Opslaan** en **door gaan**.
 
 ## <a name="known-limitations"></a>Bekende beperkingen
 Dit zijn de huidige beperkingen voor het grootschalige van de service tier.  We werken actief om zoveel mogelijk van deze beperkingen te verwijderen.
@@ -240,7 +240,7 @@ Dit zijn de huidige beperkingen voor het grootschalige van de service tier.  We 
 | :---- | :--------- |
 | In het deel venster Back-ups beheren voor een logische server worden geen grootschalige-data bases weer gegeven die worden gefilterd van SQL Server  | Grootschalige heeft een afzonderlijke methode voor het beheren van back-ups, en omdat de Bewaar periode voor lange termijn retentie en het tijdstip voor het bewaren van back-ups niet van toepassing zijn/zijn ongeldig. Daarom worden grootschalige-data bases niet weer gegeven in het deel venster back-up beheren. |
 | Herstel naar een bepaald tijdstip | Wanneer een Data Base wordt gemigreerd naar de grootschalige, wordt het herstellen naar een bepaald tijdstip vóór de migratie niet ondersteund.|
-| Herstellen van niet-grootschalige DB naar Hypserscale en vice versa | U kunt een grootschalige-data base niet herstellen in een niet-grootschalige-data base, en u kunt ook een niet-grootschalige-data base herstellen in een grootschalige-data base.|
+| Herstellen van niet-grootschalige DB naar grootschalige en vice versa | U kunt een grootschalige-data base niet herstellen in een niet-grootschalige-data base, en u kunt ook een niet-grootschalige-data base herstellen in een grootschalige-data base.|
 | Als een Data Base een of meer gegevens bestanden heeft die groter zijn dan 1 TB, mislukt de migratie | In sommige gevallen is het mogelijk om dit probleem te omzeilen door de grote bestanden kleiner te maken dan 1 TB. Als u een Data Base migreert die tijdens het migratie proces wordt gebruikt, moet u ervoor zorgen dat er geen bestanden groter zijn dan 1 TB. Gebruik de volgende query om de grootte van database bestanden te bepalen. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Managed Instance | Azure SQL Database beheerde instantie wordt momenteel niet ondersteund met grootschalige-data bases. |
 | Elastische pools |  Elastische Pools worden momenteel niet ondersteund met SQL Database grootschalige.|
@@ -251,7 +251,8 @@ Dit zijn de huidige beperkingen voor het grootschalige van de service tier.  We 
 | Data base kopiëren | U kunt geen database kopie gebruiken om een nieuwe data base in Azure SQL grootschalige te maken. |
 | TDE/Azure-integratie | Transparante database versleuteling met behulp van Azure Key Vault (ook wel uw eigen sleutel of BYOK genoemd) wordt nog niet ondersteund voor Azure SQL Database grootschalige, maar TDE met door service beheerde sleutels wordt volledig ondersteund. |
 |Intelligente database functies | Met uitzonde ring van de optie ' plan forceren ' worden alle andere opties voor automatisch afstemmen nog niet ondersteund op grootschalige: mogelijk lijkt het alsof de opties zijn ingeschakeld, maar zijn er geen aanbevelingen of acties gedaan. |
-| Data base verkleinen | DBCC SHRINKDATABASE of DBCC SHRINKFILE wordt momenteel niet ondersteund met Azure SQL grootschalige-data bases. |
+| Data base verkleinen | DBCC SHRINKDATABASE of DBCC SHRINKFILE wordt momenteel niet ondersteund voor grootschalige-data bases. |
+| Integriteits controle van data base | DBCC CHECKDB wordt momenteel niet ondersteund voor grootschalige-data bases. Zie [gegevens integriteit in Azure SQL database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/) voor meer informatie over het beheer van gegevens integriteit in Azure SQL database. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

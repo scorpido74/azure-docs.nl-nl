@@ -1,22 +1,22 @@
 ---
-title: Gegevens laden uit SAP Business Warehouse met behulp van Azure Data Factory
+title: Gegevens laden uit SAP Business Warehouse
 description: Azure Data Factory gebruiken om gegevens te kopiëren van SAP Business Warehouse (BW)
 services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: craigg
+ms.author: jingwang
+manager: shwang
 ms.reviewer: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.author: jingwang
-ms.openlocfilehash: 0c96ecff27a57b3277e7c8105766059b739d11af
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7d9c0000964348b7c9c83ccbc2490677614c50cd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672654"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931470"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Gegevens van SAP Business Warehouse kopiëren met behulp van Azure Data Factory
 
@@ -46,7 +46,7 @@ In dit artikel wordt beschreven hoe u Azure Data Factory kunt gebruiken om gegev
 
 ## <a name="do-a-full-copy-from-sap-bw-open-hub"></a>Een volledige kopie van SAP BW hub openen
 
-Ga in het Azure Portal naar uw data factory. Selecteer **auteur & monitor** om de Data Factory gebruikers interface te openen op een afzonderlijk tabblad.
+Ga in Azure Portal naar uw data factory. Selecteer **auteur & monitor** om de Data Factory gebruikers interface te openen op een afzonderlijk tabblad.
 
 1. Selecteer op de pagina **aan de slag** de optie **Gegevens kopiëren** om het gegevens kopiëren-hulp programma te openen.
 
@@ -68,7 +68,7 @@ Ga in het Azure Portal naar uw data factory. Selecteer **auteur & monitor** om d
 
    3. Selecteer **verbinding testen** om de instellingen te valideren en selecteer vervolgens **volt ooien**.
 
-   4. Er wordt een nieuwe verbinding gemaakt. Selecteer **Volgende**.
+   4. Er wordt een nieuwe verbinding gemaakt. Selecteer **Next**.
 
 5. Blader op de pagina **Open hub-doelen selecteren** door de open hub-bestemmingen die beschikbaar zijn in uw SAP BW. Selecteer de OHD waaruit u gegevens wilt kopiëren en selecteer vervolgens **volgende**.
 
@@ -87,7 +87,7 @@ Ga in het Azure Portal naar uw data factory. Selecteer **auteur & monitor** om d
    ![Een ADLS Gen2 pagina gekoppelde service maken](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
    1. Selecteer uw Data Lake Storage Gen2-compatibele account in de vervolg keuzelijst **naam** .
-   2. Selecteer **volt ooien** om de verbinding te maken. Selecteer vervolgens **Volgende**.
+   2. Selecteer **Voltooien** om de verbinding te maken. Selecteer vervolgens **Volgende**.
 
 9. Voer op de pagina **het uitvoer bestand of de map kiezen** **copyfromopenhub** in als de naam van de uitvoermap. Selecteer vervolgens **Volgende**.
 
@@ -101,7 +101,7 @@ Ga in het Azure Portal naar uw data factory. Selecteer **auteur & monitor** om d
 
     ![Kopieer instellingen configureren](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. Controleer de instellingen op de pagina **samen vatting** . Selecteer vervolgens **Volgende**.
+12. Bekijk de instellingen op de pagina **Samenvatting** . Selecteer vervolgens **Volgende**.
 
 13. Selecteer op de pagina **implementatie** de optie **controleren** om de pijp lijn te bewaken.
 
@@ -212,7 +212,7 @@ Als u zowel een historische kopie als een incrementele kopie of alleen een incre
 
    U kunt het aantal parallelle SAP-werk processen voor de DTP verhogen:
 
-   ![Create-SAP-BW-OHD-delta3](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
+   ![create-sap-bw-ohd-delta3](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
 
 2. Plan de DTP in proces ketens.
 

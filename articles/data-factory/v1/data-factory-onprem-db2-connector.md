@@ -4,21 +4,20 @@ description: Meer informatie over het verplaatsen van gegevens uit een on-premis
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: c1644e17-4560-46bb-bf3c-b923126671f1
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0d066e66e4b9600eb5734ef2f3c6031dbc44f17a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666606"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931790"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Gegevens van DB2 verplaatsen met behulp van Azure Data Factory Kopieer activiteit
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -79,15 +78,15 @@ De volgende secties bevatten informatie over de JSON-eigenschappen die worden ge
 ## <a name="db2-linked-service-properties"></a>Eigenschappen van gekoppelde service met DB2
 De volgende tabel geeft een lijst van de JSON-eigenschappen die specifiek zijn voor een gekoppelde DB2-service.
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | **type** |Deze eigenschap moet worden ingesteld op **OnPremisesDb2**. |Ja |
-| **naam** |De naam van de DB2-Server. |Ja |
+| **server** |De naam van de DB2-Server. |Ja |
 | **database** |De naam van de DB2-Data Base. |Ja |
 | **schema** |De naam van het schema in de DB2-Data Base. Deze eigenschap is hoofdletter gevoelig. |Nee |
 | **authenticationType** |Het type verificatie dat wordt gebruikt om verbinding te maken met de DB2-Data Base. De mogelijke waarden zijn: anoniem, basis en Windows. |Ja |
-| **gebruikers** |De naam voor het gebruikers account als u basis-of Windows-verificatie gebruikt. |Nee |
-| **wacht woord** |Het wacht woord voor het gebruikers account. |Nee |
+| **gebruikersnaam** |De naam voor het gebruikers account als u basis-of Windows-verificatie gebruikt. |Nee |
+| **Wachtwoord** |Het wacht woord voor het gebruikers account. |Nee |
 | **gatewayName** |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises DB2-Data Base. |Ja |
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
@@ -95,18 +94,18 @@ Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een 
 
 De sectie **typeProperties** verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie **typeProperties** voor een gegevensset van het type **RelationalTable**, die de DB2-gegevensset bevat, heeft de volgende eigenschap:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | **tableName** |De naam van de tabel in het exemplaar van de DB2-Data Base waarnaar de gekoppelde service verwijst. Deze eigenschap is hoofdletter gevoelig. |Nee (als de eigenschap **query** van een Kopieer activiteit van het type **RelationalSource** is opgegeven) |
 
-## <a name="copy-activity-properties"></a>Eigenschappen van Kopieer activiteit
+## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 Zie het artikel [pijp lijnen maken](data-factory-create-pipelines.md) voor een lijst met de secties en eigenschappen die beschikbaar zijn voor het definiëren van Kopieer activiteiten. Eigenschappen van de Kopieer activiteit, zoals **naam**, **Beschrijving**, **invoer** tabel, **uitvoer** tabel en **beleid**, zijn beschikbaar voor alle typen activiteiten. De eigenschappen die beschikbaar zijn in de sectie **typeProperties** van de activiteit variëren per type activiteit. Voor kopieer activiteiten zijn de eigenschappen afhankelijk van de typen gegevens bronnen en Sinks.
 
 Als de bron van het type **RelationalSource** (inclusief DB2) is, zijn de volgende eigenschappen beschikbaar in de sectie **TypeProperties** van Kopieer activiteit:
 
-| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
+| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
 | --- | --- | --- | --- |
-| **ophalen** |Gebruik de aangepaste query om de gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: `"query": "select * from "MySchema"."MyTable""` |Nee (als de eigenschap **TableName** van een gegevensset is opgegeven) |
+| **query** |Gebruik de aangepaste query om de gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: `"query": "select * from "MySchema"."MyTable""` |Nee (als de eigenschap **TableName** van een gegevensset is opgegeven) |
 
 > [!NOTE]
 > Schema-en tabel namen zijn hoofdletter gevoelig. Plaats in de query-instructie eigenschaps namen met behulp van "" (dubbele aanhalings tekens).
@@ -312,42 +311,42 @@ De volgende toewijzingen worden gebruikt wanneer Kopieer activiteit de gegevens 
 | Geheel getal |Int32 |
 | BigInt |Int64 |
 | Real |Enkelvoudig |
-| Double-waarde |Double-waarde |
-| Float |Double-waarde |
-| Komma |Komma |
-| DecimalFloat |Komma |
-| 443 |Komma |
-| Date |DateTime |
-| Time |Duur |
-| Tijdstempel |DateTime |
-| indeling |Byte [] |
-| char |Tekenreeks |
+| Double |Double |
+| Float |Double |
+| Decimal |Decimal |
+| DecimalFloat |Decimal |
+| Numeriek |Decimal |
+| Datum |Datum/tijd |
+| Tijd |TimeSpan |
+| Tijdstempel |Datum/tijd |
+| Xml |Byte[] |
+| CHAR |Tekenreeks |
 | VarChar |Tekenreeks |
 | LongVarChar |Tekenreeks |
 | DB2DynArray |Tekenreeks |
-| Binair bestand |Byte [] |
-| VarBinary |Byte [] |
-| LongVarBinary |Byte [] |
-| Afbeelding |Tekenreeks |
+| Binary |Byte[] |
+| VarBinary |Byte[] |
+| LongVarBinary |Byte[] |
+| Graphic |Tekenreeks |
 | VarGraphic |Tekenreeks |
 | LongVarGraphic |Tekenreeks |
-| CLOB |Tekenreeks |
-| Blob |Byte [] |
+| Clob |Tekenreeks |
+| Blob |Byte[] |
 | DbClob |Tekenreeks |
 | SmallInt |Int16 |
 | Geheel getal |Int32 |
 | BigInt |Int64 |
 | Real |Enkelvoudig |
-| Double-waarde |Double-waarde |
-| Float |Double-waarde |
-| Komma |Komma |
-| DecimalFloat |Komma |
-| 443 |Komma |
-| Date |DateTime |
-| Time |Duur |
-| Tijdstempel |DateTime |
-| indeling |Byte [] |
-| char |Tekenreeks |
+| Double |Double |
+| Float |Double |
+| Decimal |Decimal |
+| DecimalFloat |Decimal |
+| Numeriek |Decimal |
+| Datum |Datum/tijd |
+| Tijd |TimeSpan |
+| Tijdstempel |Datum/tijd |
+| Xml |Byte[] |
+| CHAR |Tekenreeks |
 
 ## <a name="map-source-to-sink-columns"></a>Bron toewijzen aan Sink-kolommen
 Zie [DataSet-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md)voor meer informatie over het toewijzen van kolommen in de bron-gegevensset aan kolommen in de Sink-gegevensset.

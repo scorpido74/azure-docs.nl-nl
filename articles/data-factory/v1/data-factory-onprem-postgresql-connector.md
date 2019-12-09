@@ -4,21 +4,20 @@ description: Meer informatie over het verplaatsen van gegevens uit de PostgreSQL
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 888d9ebc-2500-4071-b6d1-0f6bd1b5997c
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6d8c63551bd6bcc7a7e00dffa6c2b6d9e0e644db
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666073"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929073"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Gegevens verplaatsen van PostgreSQL met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -56,7 +55,7 @@ U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst va
   - .NET API
   - REST-API
 
-    Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
+    Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.
 
 Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
@@ -68,15 +67,15 @@ Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data 
 
 De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor een PostgreSQL-gegevens archief:
 
-## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifiek zijn voor PostgreSQL gekoppelde service.
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **OnPremisesPostgreSql** |Ja |
 | server |De naam van de PostgreSQL-server. |Ja |
 | database |De naam van de PostgreSQL-data base. |Ja |
-| Schema |De naam van het schema in de data base. De schema naam is hoofdletter gevoelig. |Nee |
+| schema |De naam van het schema in de data base. De schema naam is hoofdletter gevoelig. |Nee |
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de PostgreSQL-data base. Mogelijke waarden zijn: anoniem, basis en Windows. |Ja |
 | gebruikersnaam |Geef de gebruikers naam op als u basis-of Windows-verificatie gebruikt. |Nee |
 | wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Nee |
@@ -87,7 +86,7 @@ Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een 
 
 De sectie typeProperties verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie typeProperties voor de gegevensset van het type **RelationalTable** (die de postgresql-gegevensset bevat) heeft de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | tableName |De naam van de tabel in de PostgreSQL-data base-instantie waarnaar de gekoppelde service verwijst. De tabel naam is hoofdletter gevoelig. |Nee (als de **query** van **RelationalSource** is opgegeven) |
 
@@ -98,7 +97,7 @@ Terwijl de eigenschappen die beschikbaar zijn in de sectie typeProperties van de
 
 Wanneer bron van het type **RelationalSource** (inclusief postgresql), zijn de volgende eigenschappen beschikbaar in de sectie typeProperties:
 
-| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
+| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: `"query": "select * from \"MySchema\".\"MyTable\""`. |Nee (als **TableName** van **gegevensset** is opgegeven) |
 
@@ -303,24 +302,24 @@ Zoals vermeld in het artikel Kopieer activiteit van [gegevens verplaatsing](data
 
 Bij het verplaatsen van gegevens naar PostgreSQL worden de volgende toewijzingen gebruikt van PostgreSQL type naar .NET-type.
 
-| PostgreSQL-database type | PostgresSQL-aliassen | .NET Framework type |
+| PostgreSQL-database type | PostgresSQL aliassen | .NET Framework type |
 | --- | --- | --- |
 | abstime | |Datetime |
-| bigint |Int8 |Int64 |
+| bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
 | bits [(n)] | |Byte [], teken reeks |
 | bits variërend [(n)] |varbit |Byte [], teken reeks |
 | booleaans |bool |Booleaans |
-| Keuzelijst | |Byte [], teken reeks |
+| keuzelijst | |Byte [], teken reeks |
 | bytea | |Byte [], teken reeks |
 | teken [(n)] |teken [(n)] |Tekenreeks |
 | teken variërend [(n)] |varchar [(n)] |Tekenreeks |
 | Cid | |Tekenreeks |
 | CIDR | |Tekenreeks |
-| middencirkel | |Byte [], teken reeks |
+| cirkel | |Byte [], teken reeks |
 | date | |Datetime |
-| daterange | |Tekenreeks |
-| dubbele precisie |float8 |Double-waarde |
+| DateRange | |Tekenreeks |
+| dubbele precisie |float8 |Double |
 | inet | |Byte [], teken reeks |
 | intarry | |Tekenreeks |
 | int4range | |Tekenreeks |
@@ -328,19 +327,19 @@ Bij het verplaatsen van gegevens naar PostgreSQL worden de volgende toewijzingen
 | geheel getal |int, INT4 |Int32 |
 | interval [Fields] [(p)] | |Periode |
 | json | |Tekenreeks |
-| jsonb | |Byte [] |
-| streep | |Byte [], teken reeks |
+| jsonb | |Byte[] |
+| lijn | |Byte [], teken reeks |
 | lseg | |Byte [], teken reeks |
 | macaddr | |Byte [], teken reeks |
-| financieel | |Komma |
-| numeriek [(p, s)] |decimaal [(p, s)] |Komma |
+| money | |Decimal |
+| numeriek [(p, s)] |decimaal [(p, s)] |Decimal |
 | numrange | |Tekenreeks |
-| nogmaals | |Int32 |
-| programmapad | |Byte [], teken reeks |
+| oid | |Int32 |
+| Pad | |Byte [], teken reeks |
 | pg_lsn | |Int64 |
-| Spreek | |Byte [], teken reeks |
-| Polygoon | |Byte [], teken reeks |
-| realistische |float4 |Enkelvoudig |
+| punt | |Byte [], teken reeks |
+| polygoon | |Byte [], teken reeks |
+| real |float4 |Enkelvoudig |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | wel |serial4 |Int32 |

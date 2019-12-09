@@ -1,23 +1,22 @@
 ---
-title: Azure Data Factory gebruiken om gegevens te migreren van Amazon S3 naar Azure Storage
+title: Gegevens migreren van Amazon S3 naar Azure Storage
 description: Gebruik Azure Data Factory om gegevens te migreren van Amazon S3 naar Azure Storage.
 services: data-factory
-documentationcenter: ''
-author: dearandyxu
 ms.author: yexu
+author: dearandyxu
 ms.reviewer: ''
-manager: ''
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 4d4e0453105dacfbf35624a2a9acb9d5994f4dea
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 30990c3d1e3f885e8984227425d3e8e5c44b9286
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675746"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927480"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Azure Data Factory gebruiken om gegevens te migreren van Amazon S3 naar Azure Storage 
 
@@ -93,7 +92,7 @@ Als een van de Kopieer taken mislukt als gevolg van een probleem met de tijdelij
 
 ### <a name="delta-data-migration"></a>Delta gegevens migratie 
 
-De meest krachtige manier om nieuwe of gewijzigde bestanden van AWS S3 te identificeren, is door gebruik te maken van tijdgebonden naamgevings conventies – wanneer uw gegevens in AWS S3 zijn gepartitioneerd met tijds segment informatie in de naam van het bestand of de map (bijvoorbeeld/yyyy/mm/dd/file.CSV), met uw pijp lijn kunt u eenvoudig bepalen welke bestanden/mappen incrementeel moeten worden gekopieerd. 
+De meest krachtige manier om nieuwe of gewijzigde bestanden van AWS S3 te identificeren, is door gebruik te maken van tijdgebonden naamgevings conventies: wanneer uw gegevens in AWS S3 zijn gepartitioneerd met tijds segment informatie in het bestand of de mapnaam (bijvoorbeeld/yyyy/mm/dd/file.CSV), kan uw pijp lijn gemakkelijk bepalen welke bestanden/mappen incrementeel moeten worden gekopieerd. 
 
 Als uw gegevens in AWS S3 niet gepartitioneerd zijn, kan ADF nieuwe of gewijzigde bestanden identificeren met hun LastModifiedDate.   Zoals u ziet, scant de ADF alle bestanden van AWS S3 en kopieert alleen het nieuwe en bijgewerkte bestand waarvan het tijdstip waarop de laatste wijziging is aangebracht, groter is dan een bepaalde waarde.  Houd er rekening mee dat als u een groot aantal bestanden in S3 hebt, de eerste scan van het bestand veel tijd kan duren, ongeacht het aantal bestanden dat overeenkomt met de filter voorwaarde.  In dit geval wordt u geadviseerd om eerst de gegevens te partitioneren met dezelfde prefix instelling voor de eerste migratie van moment opnamen, zodat het scannen van bestanden parallel kan plaatsvinden.  
 
@@ -101,7 +100,7 @@ Als uw gegevens in AWS S3 niet gepartitioneerd zijn, kan ADF nieuwe of gewijzigd
 
 Of u nu gegevens migreert via een privé koppeling of een specifiek IP-adres bereik wilt toestaan op de Amazon S3-firewall, moet u zelf-hostende Integration runtime installeren op Azure Windows VM. 
 
-- De aanbevolen configuratie om te beginnen voor elke virtuele machine van Azure is Standard_D32s_v3 met 32 vCPU en 128 GB geheugen.  U kunt het CPU-en geheugen gebruik van de IR-VM tijdens de gegevens migratie blijven bewaken om te zien of u de virtuele machine verder moet opschalen voor betere prestaties of de virtuele machine kunt verlagen om kosten te besparen. 
+- De aanbevolen configuratie voor elke virtuele machine van Azure is Standard_D32s_v3 met 32 vCPU en 128 GB geheugen.  U kunt het CPU-en geheugen gebruik van de IR-VM tijdens de gegevens migratie blijven bewaken om te zien of u de virtuele machine verder moet opschalen voor betere prestaties of de virtuele machine kunt verlagen om kosten te besparen. 
 - U kunt ook uitschalen door Maxi maal 4 VM-knoop punten te koppelen aan één zelf-hostende IR.  Een enkele Kopieer taak die wordt uitgevoerd op een zelf-hostende IR, partitioneert automatisch de set bestanden en maakt gebruik van alle VM-knoop punten om de bestanden parallel te kopiëren.  Voor maximale Beschik baarheid kunt u het beste beginnen met 2 VM-knoop punten om Single Point of Failure te voor komen tijdens de gegevens migratie. 
 
 ### <a name="rate-limiting"></a>Frequentie beperking 
@@ -149,7 +148,7 @@ Dit is de geschatte prijs op basis van de bovenstaande hypo Thesen:
 - [Nieuwe en gewijzigde bestanden kopiëren op basis van LastModifiedDate](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
 - [Pagina met prijzen voor ADF](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
-## <a name="template"></a>Template
+## <a name="template"></a>Sjabloon
 
 Dit is de [sjabloon](solution-template-migration-s3-azure.md) waarmee u begint met het migreren van PETA bytes aan gegevens van honderden miljoenen bestanden van Amazon S3 naar Azure data Lake Storage Gen2.
 

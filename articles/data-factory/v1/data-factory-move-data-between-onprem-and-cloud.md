@@ -4,21 +4,20 @@ description: Stel een gegevens gateway in om gegevens te verplaatsen tussen on-p
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: 7bf6d8fd-04b5-499d-bd19-eff217aa4a9c
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 52bce71abd6ecf30b5a3661c2e6033537357db3a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 039a19f38da4e651ee35fe60ba2b95a40cf890b0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682479"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931909"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Gegevens verplaatsen tussen on-premises bronnen en de Cloud met Data Management Gateway
 > [!NOTE]
@@ -37,7 +36,7 @@ In de volgende procedure ziet u hoe u een data factory maakt met een pijp lijn d
 ## <a name="walkthrough-copy-on-premises-data-to-cloud"></a>Walkthrough: on-premises gegevens kopiëren naar de Cloud
 In dit scenario voert u de volgende stappen uit: 
 
-1. Maak een gegevensfactory.
+1. Een gegevensfactory maakt.
 2. Een Data Management gateway maken. 
 3. Gekoppelde services maken voor de bron-en Sink-gegevens opslag.
 4. Gegevens sets maken om invoer-en uitvoer gegevens weer te geven.
@@ -148,7 +147,7 @@ In deze stap gebruikt u de Azure Portal om een Azure Data Factory-exemplaar te m
    * Gebruik de sectie **verbinding testen** met een on-premises gegevens bron met behulp van de gateway.
    * Klik op **Logboeken weer geven** voor een overzicht van het Data Management Gateway logboek in een logboeken venster.
    * Klik op **Logboeken verzenden** om een zip-bestand te uploaden met Logboeken van de afgelopen zeven dagen naar micro soft om het oplossen van problemen met problemen te vergemakkelijken.
-10. Selecteer op het tabblad **Diagnostische** gegevens in de sectie **verbinding testen** de optie **sqlserver** voor het type van het Data Store, voer de naam in van de database server, de naam van de data base, geef het verificatie type op, voer de gebruikers naam en het wacht woord in en klik op **Test** om te testen of de gateway verbinding kan maken met de data base.
+10. Selecteer op het tabblad **Diagnostische** gegevens in de sectie **verbinding testen** de optie **sqlserver** voor het type van het Data Store, voer de naam in van de database server, de naam van de data base, geef het verificatie type op, voer de gebruikers naam en het wacht woord in en klik op **testen** om te testen of de gateway verbinding kan maken met de data base.
 11. Ga naar de webbrowser en klik in de **Azure Portal**op **OK** op de pagina **configureren** en vervolgens op de pagina **nieuwe gegevens gateway** .
 12. U ziet **adftutorialgateway** onder **gegevens gateways** in de structuur weergave aan de linkerkant.  Als u erop klikt, wordt de bijbehorende JSON weer geven.
 
@@ -409,7 +408,7 @@ In deze stap gebruikt u Azure Portal om te controleren wat er gebeurt in een Azu
 8. Beschrijving Klik op **pijp lijnen**, klik op **ADFTutorialOnPremDF**en zoom in op invoer tabellen (**verbruikte**) of uitvoer gegevens sets (**geproduceerd**).
 9. Gebruik hulpprogram ma's zoals [micro soft Storage Explorer](https://storageexplorer.com/) om te controleren of een blob/bestand voor elk uur wordt gemaakt.
 
-   ![Azure Opslagverkenner](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
+   ![Azure Storage-verkenner](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 * Zie [Data Management Gateway](data-factory-data-management-gateway.md) artikel voor meer informatie over de Data Management Gateway.

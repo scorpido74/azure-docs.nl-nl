@@ -5,18 +5,17 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 898290f70777ca442bb8885d83064231c5486a7c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 1a9a88f975ca10a63741818dcb88874a8f1bf436
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73677266"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926388"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure Integration Runtime maken en configureren
 De Integration Runtime (IR) is de reken infrastructuur die door Azure Data Factory wordt gebruikt om mogelijkheden voor gegevens integratie in verschillende netwerk omgevingen te bieden. Zie [Integration runtime](concepts-integration-runtime.md)(Engelstalig) voor meer informatie over IR.

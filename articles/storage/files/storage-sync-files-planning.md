@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a732e80549747f7c683a73bf0f16c40d48decea6
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: bb75fd8aafdc886a8753fa2e6be30d9d7f83bb6f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546353"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927862"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planning voor de implementatie van Azure Files Sync
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -122,14 +122,14 @@ De resultaten weer geven in CSV:
 
 ### <a name="file-system-features"></a>Bestandssysteem functies
 
-| Functie | Ondersteunings status | Opmerkingen |
+| Functie | Ondersteuningsstatus | Opmerkingen |
 |---------|----------------|-------|
-| Toegangs beheer lijsten (Acl's) | Volledig ondersteund | Windows-Acl's worden bewaard door Azure File Sync en worden afgedwongen door Windows Server op server-eind punten. Windows-Acl's worden nog niet ondersteund door Azure Files als bestanden rechtstreeks in de cloud worden geopend. |
-| Vaste koppelingen | Genegeerd | |
-| Symbolische koppelingen | Genegeerd | |
-| Koppel punten | Gedeeltelijk ondersteund | Koppel punten kunnen de hoofdmap van een server eindpunt zijn, maar ze worden overgeslagen als ze zijn opgenomen in de naam ruimte van een server eindpunt. |
-| Koppelingen | Genegeerd | Bijvoorbeeld Distributed File System mappen DfrsrPrivate en DFSRoots. |
-| Reparsepunten | Genegeerd | |
+| ACL’s (toegangsbeheerlijsten) | Volledig ondersteund | Windows-Acl's worden bewaard door Azure File Sync en worden afgedwongen door Windows Server op server-eind punten. Windows-Acl's worden nog niet ondersteund door Azure Files als bestanden rechtstreeks in de cloud worden geopend. |
+| Vaste koppelingen | Overgeslagen | |
+| Symbolische koppelingen | Overgeslagen | |
+| Koppelpunten | Gedeeltelijk ondersteund | Koppel punten kunnen de hoofdmap van een server eindpunt zijn, maar ze worden overgeslagen als ze zijn opgenomen in de naam ruimte van een server eindpunt. |
+| Koppelingen | Overgeslagen | Bijvoorbeeld Distributed File System mappen DfrsrPrivate en DFSRoots. |
+| Reparsepunten | Overgeslagen | |
 | NTFS-compressie | Volledig ondersteund | |
 | Sparse bestanden | Volledig ondersteund | Verspreide bestanden worden gesynchroniseerd (worden niet geblokkeerd), maar gesynchroniseerd met de Cloud als een volledig bestand. Als de bestands inhoud in de Cloud (of op een andere server) wordt gewijzigd, wordt het bestand niet langer verspreid wanneer de wijziging wordt gedownload. |
 | Alternatieve gegevens stromen (ADS) | Behouden, maar niet gesynchroniseerd | Classificatie Tags die zijn gemaakt door de infra structuur voor bestands classificatie worden bijvoorbeeld niet gesynchroniseerd. Bestaande classificatie Tags op bestanden op elk van de server-eind punten blijven ongewijzigd. |
@@ -141,17 +141,17 @@ De resultaten weer geven in CSV:
 
 | Bestand/map | Opmerking |
 |-|-|
-| Desktop. ini | Bestand dat specifiek is voor systeem |
+| Desktop.ini | Bestand dat specifiek is voor systeem |
 | ethumbs. db $ | Tijdelijk bestand voor miniatuur weergaven |
 | ~$\*.\* | Tijdelijk Office-bestand |
 | \*. tmp | Tijdelijk bestand |
-| \*. LACCDB | Access DB-bestand vergren delen|
+| \*.laccdb | Access DB-bestand vergren delen|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | Intern synchronisatie bestand|
 | Informatie over \\systeem volume | Map die specifiek is voor het volume |
 | $RECYCLE. DOCKOPSLAGLOCATIE| Map |
 | \\SyncShareState | Map voor synchronisatie |
 
-### <a name="failover-clustering"></a>Failover Clustering
+### <a name="failover-clustering"></a>Failoverclustering
 Windows Server Failover Clustering wordt ondersteund door Azure File Sync voor de implementatie optie ' Bestands server voor algemeen gebruik '. Failover Clustering wordt niet ondersteund op Scale-out bestandsserver voor toepassings gegevens (SOFS) of op geclusterde gedeelde volumes (Csv's).
 
 > [!Note]  
@@ -159,14 +159,14 @@ Windows Server Failover Clustering wordt ondersteund door Azure File Sync voor d
 
 ### <a name="data-deduplication"></a>Gegevensontdubbeling
 **Windows server 2016 en Windows server 2019**   
-Gegevensontdubbeling wordt ondersteund op volumes waarvoor Cloud lagen zijn ingeschakeld op Windows Server 2016. Door Gegevensontdubbeling in te scha kelen op een volume waarvoor Cloud lagen zijn ingeschakeld, kunt u meer bestanden on-premises opslaan zonder dat u meer opslag ruimte hoeft in te richten. 
+Gegevensontdubbeling wordt ondersteund op volumes waarvoor Cloud lagen zijn ingeschakeld op Windows Server 2016 en Windows Server 2019. Door Gegevensontdubbeling in te scha kelen op een volume waarvoor Cloud lagen zijn ingeschakeld, kunt u meer bestanden on-premises opslaan zonder dat u meer opslag ruimte hoeft in te richten. 
 
 Als Gegevensontdubbeling is ingeschakeld op een volume waarop Cloud lagen zijn ingeschakeld, worden geoptimaliseerde bestanden in de eindpunt locatie van het server niveau vergelijkbaar met een normaal bestand op basis van de beleids instellingen voor Cloud lagen. Zodra de geoptimaliseerde bestanden voor ontdubbeling zijn gelaagd, wordt de garbagecollection-taak voor Gegevensontdubbeling automatisch uitgevoerd om schijf ruimte vrij te maken door overbodige segmenten te verwijderen waarnaar niet meer wordt verwezen door andere bestanden op het volume.
 
 Houd er rekening mee dat de besparing van volumes alleen van toepassing is op de-server. uw gegevens in de Azure-bestands share worden niet ontdubbeld.
 
 > [!Note]  
-> Gegevensontdubbeling en Cloud lagen worden momenteel niet ondersteund op hetzelfde volume op server 2019 vanwege een fout die wordt opgelost in een toekomstige update.
+> Voor de ondersteuning van Gegevensontdubbeling op volumes waarvoor Cloud lagen zijn ingeschakeld op Windows Server 2019, moet Windows Update [KB4520062](https://support.microsoft.com/help/4520062) zijn geïnstalleerd en moeten Azure file sync agent versie 9.0.0.0 of nieuwer zijn vereist.
 
 **Windows Server 2012 R2**  
 Azure File Sync biedt geen ondersteuning voor Gegevensontdubbeling en Cloud lagen op hetzelfde volume op Windows Server 2012 R2. Als Gegevensontdubbeling op een volume is ingeschakeld, moet Cloud lagen worden uitgeschakeld. 
@@ -256,7 +256,7 @@ Azure File Sync is alleen beschikbaar in de volgende regio's:
 | Canada-Oost | Quebec (stad) |
 | India - centraal | Pune |
 | VS - centraal | Iowa |
-| Azië - oost | Hong Kong SAR |
+| Azië - oost | Hongkong SAR |
 | VS - oost | Virginia |
 | US - oost 2 | Virginia |
 | Frankrijk - centraal | Parijs |

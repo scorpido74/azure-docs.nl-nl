@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 63d2aa5c9e4ec751d9b95ba0d884e6dc17e207bb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bb86d551d83668a3558cf63827a64a481cf87e02
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276796"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926965"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen met Azure Machine Learning implementeren
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Zie [modellen beheren, implementeren en bewaken met Azure machine learning](conc
 
 - De [Azure cli-extensie voor de machine learning-service](reference-azure-machine-learning-cli.md), de [Azure machine learning SDK voor Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)of de [Azure machine learning Visual Studio code extension](how-to-vscode-tools.md).
 
-## <a name="connect-to-your-workspace"></a>Verbinding maken met uw werk ruimte
+## <a name="connect-to-your-workspace"></a>Verbinding maken met uw werkruimte
 
 De volgende code laat zien hoe u verbinding maakt met een Azure Machine Learning-werk ruimte met behulp van informatie in cache naar de lokale ontwikkel omgeving:
 
@@ -194,7 +194,7 @@ Het script bevat twee functies die het model laden en uitvoeren:
 
 * `init()`: deze functie laadt meestal het model in een globaal object. Deze functie wordt slechts één keer uitgevoerd wanneer de docker-container voor uw webservice wordt gestart.
 
-* `run(input_data)`: deze functie maakt gebruik van het model voor het voors pellen van een waarde op basis van de invoer gegevens. Invoer en uitvoer van de run worden meestal JSON gebruikt voor serialisatie en deserialisatie. U kunt ook werken met onbewerkte binaire gegevens. U kunt de gegevens transformeren voordat u deze naar het model verzendt of voordat u deze naar de client stuurt.
+* `run(input_data)`: Met deze functie maakt gebruik van het model om te voorspellen van een waarde op basis van de ingevoerde gegevens. Invoer en uitvoer van de run worden meestal JSON gebruikt voor serialisatie en deserialisatie. U kunt ook werken met onbewerkte binaire gegevens. U kunt de gegevens transformeren voordat u deze naar het model verzendt of voordat u deze naar de client stuurt.
 
 #### <a name="locate-model-files-in-your-entry-script"></a>Model bestanden zoeken in uw invoer script
 
@@ -867,6 +867,9 @@ az ml model download --model-id mymodel:1 --target-dir model_folder
 Implementatie zonder code model is momenteel als preview-versie beschikbaar en ondersteunt de volgende machine learning frameworks:
 
 ### <a name="tensorflow-savedmodel-format"></a>Tensor flow SavedModel-indeling
+Tensor flow-modellen moeten worden geregistreerd in **SavedModel-indeling** om te kunnen werken met implementatie zonder code modellen.
+
+Raadpleeg [deze koppeling](https://www.tensorflow.org/guide/saved_model) voor meer informatie over het maken van een SavedModel.
 
 ```python
 from azureml.core import Model
@@ -1069,8 +1072,8 @@ docker kill mycontainer
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een geïmplementeerde webservice wilt verwijderen, gebruikt u `service.delete()`.
-Als u een geregistreerd model wilt verwijderen, gebruikt u `model.delete()`.
+Als u wilt verwijderen van een geïmplementeerde webservice, gebruikt u `service.delete()`.
+Als u wilt een geregistreerde model verwijderen, gebruikt u `model.delete()`.
 
 Zie de documentatie voor [webservice. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) en [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)voor meer informatie.
 
@@ -1078,7 +1081,7 @@ Zie de documentatie voor [webservice. Delete ()](https://docs.microsoft.com/pyth
 
 * [Een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)
 * [Problemen met implementatie oplossen](how-to-troubleshoot-deployment.md)
-* [Azure Machine Learning webservices beveiligen met SSL](how-to-secure-web-service.md)
+* [Azure Machine Learning-webservices met SSL beveiligde](how-to-secure-web-service.md)
 * [Een Azure Machine Learning model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
 * [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)
 * [Gegevens verzamelen voor modellen in productie](how-to-enable-data-collection.md)

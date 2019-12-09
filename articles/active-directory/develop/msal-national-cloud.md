@@ -1,28 +1,25 @@
 ---
-title: Micro soft Authentication Library (MSAL) gebruiken in nationale Clouds-micro soft Identity-platform
+title: MSAL gebruiken in een nationale Cloud-app | Azure
+titleSuffix: Microsoft identity platform
 description: Met micro soft Authentication Library (MSAL) kunnen ontwikkel aars van toepassingen tokens verkrijgen om beveiligde web-Api's aan te roepen. Deze web-Api's kunnen worden Microsoft Graph, andere Api's van micro soft, partner web-Api's of uw eigen web-API. MSAL ondersteunt meerdere toepassings architecturen en-platforms.
 services: active-directory
-documentationcenter: dev-center-name
 author: negoe
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f1c73d89b0efc17e8f8836d080595927d500ad6
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: f1d0d4511b95d56ae41bf9fbb1118318d8374bde
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481871"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916036"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>MSAL gebruiken in een nationale cloud omgeving
 
@@ -74,7 +71,7 @@ Uw MSAL. js-toepassing voor soevereine Clouds inschakelen:
 
 ### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.us/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.us/).
     
    Zie [app-registratie-eind punten](authentication-national-cloud.md#app-registration-endpoints)voor informatie over Azure Portal eind punten voor andere nationale Clouds.
 

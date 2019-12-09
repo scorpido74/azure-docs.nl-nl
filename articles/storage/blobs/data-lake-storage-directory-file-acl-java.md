@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: b01370bb8c86da07549775ec1a1399e09c80f9af
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0a57e87cc408d111893cbb2beaf4fc5afee2eca2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534253"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930789"
 ---
 # <a name="use-java-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Java gebruiken voor bestanden & Acl's in Azure Data Lake Storage Gen2 (preview-versie)
 
@@ -32,15 +32,7 @@ In dit artikel leest u hoe u Java gebruikt om directory's, bestanden en machtigi
 
 ## <a name="set-up-your-project"></a>Uw project instellen
 
-Om aan de slag te gaan, opent u het bestand *pom. XML* in de tekst editor. Voeg het volgende afhankelijkheids element toe aan de groep met afhankelijkheden.
-
-```xml
-<dependency>
-  <groupId>com.azure</groupId>
-  <artifactId>azure-storage-file-datalake</artifactId>
-  <version>12.0.0-preview.6</version>
-</dependency>
-```
+Open [Deze pagina](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) en zoek de meest recente versie van de Java-bibliotheek om aan de slag te gaan. Open vervolgens het bestand *pom. XML* in de tekst editor. Voeg een afhankelijkheids element toe dat verwijst naar die versie.
 
 Voeg vervolgens deze Imports-instructies toe aan het code bestand.
 

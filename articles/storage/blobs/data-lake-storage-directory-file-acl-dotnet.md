@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: fb69e0b797243a3403e8899d3f4ef23a9be9451d
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: a756518688b5b1f8b854165de69d3444b772eabc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534282"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931225"
 ---
 # <a name="use-net-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>.NET gebruiken voor bestanden & Acl's in Azure Data Lake Storage Gen2 (preview-versie)
 
@@ -32,7 +32,7 @@ In dit artikel leest u hoe u .NET gebruikt voor het maken en beheren van mappen,
 
 ## <a name="set-up-your-project"></a>Uw project instellen
 
-Om aan de slag te gaan, installeert u het [Azure. storage. files. DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) NuGet-pakket.
+Om aan de slag te gaan, installeert u het [Azure. storage. files. DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) NuGet-pakket.
 
 Zie [pakketten installeren en beheren in Visual Studio met behulp van de NuGet-pakket beheer](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio)voor meer informatie over het installeren van NuGet-pakketten.
 

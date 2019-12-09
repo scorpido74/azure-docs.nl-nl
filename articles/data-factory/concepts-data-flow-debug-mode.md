@@ -1,22 +1,21 @@
 ---
-title: Foutopsporingsmodus voor Azure Data Factory toewijzing van gegevens stroom
+title: Fout opsporings modus gegevens stroom toewijzen
 description: Een interactieve sessie voor fout opsporing starten bij het bouwen van gegevens stromen
-author: kromerm
 ms.author: makromer
+author: kromerm
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/06/2019
-ms.openlocfilehash: c65ed14abb86b3b434e46fbe857487b06e217aad
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 18848695327a374f12fbe5a34d03366b050d8b65
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387370"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928366"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Fout opsporings modus gegevens stroom toewijzen
-
-
 
 ## <a name="overview"></a>Overzicht
 
@@ -48,11 +47,11 @@ Als u para meters hebt in uw gegevens stroom of een van de data sets waarnaar wo
 
 ![Para meters voor fout opsporing](media/data-flow/debug-settings2.png "Para meters voor fout opsporing")
 
-## <a name="data-preview"></a>Voor beeld van gegevens
+## <a name="data-preview"></a>Voorbeeld van gegevens
 
 Met fout opsporing in wordt het tabblad voor beeld van gegevens lichter op het onderste paneel. Zonder de foutopsporingsmodus in, worden in de gegevens stroom alleen de huidige meta gegevens in en uit elk van de trans formaties op het tabblad inspectie weer gegeven. In de preview van de gegevens wordt alleen het aantal rijen weer gegeven dat u hebt ingesteld als uw limiet voor de instellingen voor fout opsporing. Klik op **vernieuwen** om de voorbeeld gegevens op te halen.
 
-![Voor beeld van gegevens](media/data-flow/datapreview.png "Voor beeld van gegevens")
+![Voor beeld van gegevens](media/data-flow/datapreview.png "Voorbeeld van gegevens")
 
 > [!NOTE]
 > Bestands bronnen beperken alleen de rijen die u ziet, niet de rijen die worden gelezen. Voor zeer grote gegevens sets wordt u aangeraden een klein deel van het bestand te maken en dit te gebruiken voor uw test doeleinden. U kunt een tijdelijk bestand selecteren in instellingen voor fout opsporing voor elke bron die een bestands gegevensset type is.

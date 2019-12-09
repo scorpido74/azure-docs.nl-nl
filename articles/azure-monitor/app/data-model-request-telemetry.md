@@ -1,5 +1,5 @@
 ---
-title: Azure-toepassing Insights-gegevens model voor telemetrie-aanvraag-telemetrie aanvragen | Microsoft Docs
+title: Gegevens model voor aanvraag-telemetrie-Azure-toepassing Insights
 description: Application Insights gegevens model voor aanvraag-telemetrie
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,16 +8,16 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: ff7b52cbd88e4927db275dee4d7fbc4691ad076b
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: b253a95a39f118efe82e36ac7261a4d6c62a99d6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677332"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928842"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Telemetrie aanvragen: Application Insights gegevens model
 
-Een telemetrie van aanvragen (in [Application Insights](../../azure-monitor/app/app-insights-overview.md)) vertegenwoordigt de logische volg orde van uitvoering die door een externe aanvraag naar uw toepassing wordt geactiveerd. Elke uitvoering van een aanvraag wordt geïdentificeerd door unieke `ID` en `url` met alle uitvoerings parameters. U kunt aanvragen groeperen op logische `name` en de `source` van deze aanvraag definiëren. Uitvoering van code kan resulteren in `success` of `fail` en een bepaalde `duration` heeft. Geslaagde en mislukte uitvoeringen kunnen verder worden gegroepeerd door `resultCode`. Begin tijd voor de telemetrie van de aanvraag die is gedefinieerd op het envelop niveau.
+Een telemetrie van aanvragen (in [Application Insights](../../azure-monitor/app/app-insights-overview.md)) vertegenwoordigt de logische volg orde van uitvoering die door een externe aanvraag naar uw toepassing wordt geactiveerd. Elke uitvoering van een aanvraag wordt geïdentificeerd door unieke `ID` en `url` met alle uitvoerings parameters. U kunt aanvragen groeperen op logische `name` en de `source` van deze aanvraag definiëren. Uitvoering van code kan resulteren in `success` of `fail` en een bepaalde `duration`heeft. Geslaagde en mislukte uitvoeringen kunnen verder worden gegroepeerd door `resultCode`. Begin tijd voor de telemetrie van de aanvraag die is gedefinieerd op het envelop niveau.
 
 Telemetrie van aanvragen ondersteunt het model voor standaard uitbreid baarheid met aangepaste `properties` en `measurements`.
 
@@ -59,7 +59,7 @@ Maximale lengte: 1024 tekens
 
 ## <a name="success"></a>Geslaagd
 
-Indicatie van een geslaagde of mislukte aanroep. Dit veld is verplicht. Wanneer niet expliciet worden ingesteld op `false`, wordt een aanvraag als geslaagd beschouwd. Stel deze waarde in op `false` als de bewerking is onderbroken door een uitzonde ring of geretourneerde fout code.
+Indicatie van een geslaagde of mislukte aanroep. Dit veld is vereist. Wanneer niet expliciet worden ingesteld op `false`, wordt een aanvraag als geslaagd beschouwd. Stel deze waarde in op `false` als de bewerking is onderbroken door een uitzonde ring of geretourneerde fout code.
 
 Voor de webtoepassingen Application Insights een aanvraag definiëren als geslaagd wanneer de respons code kleiner is dan `400` of gelijk is aan `401`. Er zijn echter gevallen waarin deze standaard toewijzing niet overeenkomt met de semantiek van de toepassing. De reactie code `404` kan duiden op "no records", die deel kunnen uitmaken van de normale stroom. Dit kan ook duiden op een verbroken koppeling. Voor de verbroken koppelingen kunt u zelfs meer geavanceerde logica implementeren. U kunt verbroken koppelingen alleen als fouten markeren als deze koppelingen zich op dezelfde site bevinden door het analyseren van URL-verwijzings bronnen. Of markeer ze als storingen wanneer ze worden geopend vanuit de mobiele toepassing van het bedrijf. Evenzo `301` en `302` geeft aan dat er een fout is opgetreden bij het openen van de client die geen ondersteuning biedt voor omleiden.
 

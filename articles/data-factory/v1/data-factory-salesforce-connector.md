@@ -4,21 +4,20 @@ description: Meer informatie over het verplaatsen van gegevens uit Sales Force m
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: dbe3bfd6-fa6a-491a-9638-3a9a10d396d1
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 71201efeb56ffda2dfbf82ca19b3bacb773c7c3d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8b94f6388d77cca2ef74c802aec7648091172775
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666155"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929274"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Gegevens uit Sales Force verplaatsen met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -45,14 +44,14 @@ Sales Force heeft limieten voor zowel het totale aantal API-aanvragen als gelijk
 - Als het aantal gelijktijdige aanvragen de limiet overschrijdt, wordt er een beperking weer gegeven en ziet u wille keurige fouten.
 - Als het totale aantal aanvragen de limiet overschrijdt, wordt het Sales Force-account 24 uur geblokkeerd.
 
-U kunt ook de fout ' REQUEST_LIMIT_EXCEEDED ' in beide scenario's ontvangen. Zie de sectie ' API-aanvraag limieten ' in het artikel [Sales Force-ontwikkelaars limieten](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf) voor meer informatie.
+Het is ook mogelijk dat de fout melding ' REQUEST_LIMIT_EXCEEDED ' in beide scenario's wordt weer gegeven. Zie de sectie ' API-aanvraag limieten ' in het artikel [Sales Force-ontwikkelaars limieten](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf) voor meer informatie.
 
 ## <a name="getting-started"></a>Aan de slag
 U kunt een pijp lijn maken met een Kopieer activiteit waarmee gegevens uit Sales Force worden verplaatst met behulp van verschillende hulpprogram ma's/Api's.
 
 De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
+U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.
 
 Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
@@ -64,28 +63,28 @@ Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data 
 
 De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor Sales Force:
 
-## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 De volgende tabel bevat beschrijvingen van de JSON-elementen die specifiek zijn voor de aan Sales Force gekoppelde service.
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **Sales Force**. |Ja |
 | environmentUrl | Geef de URL van het Sales Force-exemplaar op. <br><br> -Standaard is ' https:\//login.salesforce.com '. <br> -Geef "https://test.salesforce.com" op om gegevens uit de sandbox te kopiëren. <br> -Als u gegevens wilt kopiëren uit een aangepast domein, geeft u bijvoorbeeld ' https://[domain]. mijn. Sales Force. com ' op. |Nee |
 | gebruikersnaam |Geef een gebruikers naam op voor het gebruikers account. |Ja |
 | wachtwoord |Geef een wacht woord op voor het gebruikers account. |Ja |
-| Security |Geef een beveiligings token op voor het gebruikers account. Zie [beveiligings Token ophalen](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) voor instructies over het opnieuw instellen/ophalen van een beveiligings token. Zie [beveiliging en de API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)voor meer informatie over beveiligings tokens in het algemeen. |Ja |
+| securityToken |Geef een beveiligings token op voor het gebruikers account. Zie [beveiligings Token ophalen](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) voor instructies over het opnieuw instellen/ophalen van een beveiligings token. Zie [beveiliging en de API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)voor meer informatie over beveiligings tokens in het algemeen. |Ja |
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob, Azure Table, enzovoort).
 
 De sectie **typeProperties** verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie typeProperties voor een gegevensset van het type **RelationalTable** heeft de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | tableName |De naam van de tabel in Sales Force. |Nee (als er een **query** van **RelationalSource** is opgegeven) |
 
 > [!IMPORTANT]
-> Het gedeelte ' __c ' van de API-naam is vereist voor een aangepast object.
+> Het onderdeel __c van de API-naam is vereist voor een aangepast object.
 
 ![Data Factory-Sales Force-verbinding-API-naam](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
@@ -96,12 +95,12 @@ De eigenschappen die beschikbaar zijn in de typeProperties van de activiteit, an
 
 Als de bron van het type **RelationalSource** (inclusief Sales Force) is in Kopieer activiteit, zijn de volgende eigenschappen beschikbaar in de sectie typeProperties:
 
-| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
+| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |Een SQL-92 query of [Sales Force object query language-query (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) . Bijvoorbeeld: `select * from MyTable__c`. |Nee (als de **tabel naam** van de **gegevensset** is opgegeven) |
 
 > [!IMPORTANT]
-> Het gedeelte ' __c ' van de API-naam is vereist voor een aangepast object.
+> Het onderdeel __c van de API-naam is vereist voor een aangepast object.
 
 ![Data Factory-Sales Force-verbinding-API-naam](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
@@ -121,7 +120,7 @@ U kunt gegevens ophalen uit Sales Force-rapporten door query op te geven als `{c
 Als u wilt zoeken in de Prullenbak van het Sales Force-cluster, kunt u **' IsDeleted = 1 '** opgeven in de query. Bijvoorbeeld:
 
 * Als u alleen de verwijderde records wilt opvragen, geeft u ' Select * from MyTable__c **where IsDeleted = 1**'
-* Om alle records op te vragen, inclusief de bestaande en verwijderde, geeft u ' Select * from MyTable__c **where IsDeleted = 0 or IsDeleted = 1**' op.
+* Om alle records op te vragen, inclusief de bestaande en verwijderde, geeft u ' Select * from MyTable__c **where IsDeleted = 0 of IsDeleted = 1**'
 
 ## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>JSON-voor beeld: gegevens kopiëren van Sales Force naar Azure Blob
 In het volgende voor beeld worden voor beeld-JSON-definities weer gegeven die u kunt gebruiken om een pijp lijn te maken met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ze laten zien hoe u gegevens kunt kopiëren van Sales Force naar Azure Blob Storage. Gegevens kunnen echter worden gekopieerd naar de [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) opgegeven sinks met behulp van de Kopieer activiteit in azure Data Factory.
@@ -196,7 +195,7 @@ In dit voor beeld wordt de gekoppelde service **Sales Force** gebruikt. Zie de s
 Als u **extern** instelt op **True** , informeert de Data Factory-service dat de gegevensset zich buiten de Data Factory bevindt en die niet wordt geproduceerd door een activiteit in de Data Factory.
 
 > [!IMPORTANT]
-> Het gedeelte ' __c ' van de API-naam is vereist voor een aangepast object.
+> Het onderdeel __c van de API-naam is vereist voor een aangepast object.
 
 ![Data Factory-Sales Force-verbinding-API-naam](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
@@ -277,7 +276,7 @@ Zie [Eigenschappen van het type RelationalSource](#copy-activity-properties) voo
 }
 ```
 > [!IMPORTANT]
-> Het gedeelte ' __c ' van de API-naam is vereist voor een aangepast object.
+> Het onderdeel __c van de API-naam is vereist voor een aangepast object.
 
 ![Data Factory-Sales Force-verbinding-API-naam](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
@@ -286,24 +285,24 @@ Zie [Eigenschappen van het type RelationalSource](#copy-activity-properties) voo
 
 | Sales Force-type | . Op het netwerk gebaseerd type |
 | --- | --- |
-| Automatisch nummer |Tekenreeks |
-| PS/2-verbinding |Booleaans |
-| Valuta |Komma |
-| Date |DateTime |
-| Datum en tijd |DateTime |
-| Email |Tekenreeks |
+| Auto Number |Tekenreeks |
+| Checkbox |Booleaans |
+| Valuta |Decimal |
+| Datum |Datum/tijd |
+| Datum/tijd |Datum/tijd |
+| E-mail |Tekenreeks |
 | Id |Tekenreeks |
-| Opzoek relatie |Tekenreeks |
-| Meervoudige selectie lijst |Tekenreeks |
-| Aantal |Komma |
-| Procent |Komma |
+| Lookup Relationship |Tekenreeks |
+| Multi-Select Picklist |Tekenreeks |
+| Aantal |Decimal |
+| Procent |Decimal |
 | Telefoon |Tekenreeks |
 | Picklist |Tekenreeks |
 | Tekst |Tekenreeks |
-| Tekst gebied |Tekenreeks |
-| Tekst gebied (lang) |Tekenreeks |
-| Tekst gebied (uitgebreid) |Tekenreeks |
-| Tekst (versleuteld) |Tekenreeks |
+| Text Area |Tekenreeks |
+| Text Area (Long) |Tekenreeks |
+| Text Area (Rich) |Tekenreeks |
+| Text (Encrypted) |Tekenreeks |
 | URL |Tekenreeks |
 
 > [!NOTE]

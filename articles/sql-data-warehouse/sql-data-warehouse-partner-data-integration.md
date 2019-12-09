@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8dd111017076e4a1a6a93ac7d53c253a85a09376
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d71c4ee7c5d982708c8a3b0a79b453d7196ad02d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74890090"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923612"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>Partners voor gegevens integratie SQL Data Warehouse
 Als u uw data warehouse-oplossing wilt maken, kiest u uit een groot aantal toonaangevende hulpprogram ma's. In dit artikel worden micro soft-partner bedrijven op de hoogte van officiële oplossingen voor gegevens integratie die Azure SQL Data Warehouse ondersteunen.
@@ -37,7 +37,7 @@ Als u uw data warehouse-oplossing wilt maken, kiest u uit een groot aantal toona
 | ![SnapLogic][6] |**SnapLogic**<br>Met het SnapLogic-platform kunnen klanten snel gegevens overdragen van en naar Microsoft Azure SQL Data Warehouse. Het biedt de mogelijkheid om honderden toepassingen, services en IoT-scenario's te integreren in één oplossing.|[Product pagina][snaplogic_website]<br>[Azure Marketplace][snaplogic_marketplace]<br> |
 | ![StreamSets][16] |**StreamSets**<br>StreamSets biedt een platform voor gegevens integratie voor DataOps. Het operationalizes is de volledige ontwerp-implementatie-levens cyclus van het integreren van gegevens in Azure SQL Data Warehouse. Het is niet mogelijk om gegevens van en naar het magazijn snel op te nemen en te integreren, via streaming, batch of gewijzigde bezorgings methoden voor het vastleggen van gegevens, maar ook om continue bewerkingen met Smart Data-pijp lijnen die een end-to-end zicht baarheid van gegevens stromen bieden en tolerantie.|[Product pagina][streamsets_website]|
 | ![Talend][12] |**Talend-Cloud**<br>Talend Cloud is een platform voor gegevens integratie voor ondernemingen waarmee u gegevens in de Cloud of on-premises kunt verbinden, benaderen en transformeren. Het is een iPaaS-aanbieding (platform-as-a-Service) die een brede connectiviteit, ingebouwde gegevens kwaliteit en systeem eigen ondersteuning biedt voor de nieuwste big data-en Cloud technologieën. |[Product pagina][talend_website]<br> [Azure Marketplace][talend_marketplace] |
-| ![TimeXtender][13] |**TimeXtender**<br>De detectie-hub van TimeXtender helpt bedrijven bij het bouwen van een modern gegevens systeem door een geïntegreerd platform voor gegevens beheer te bieden dat sneller tijd tot gegevens inzichten versnelt met Maxi maal tien keer. Het gaat verder dan dagelijks uitpakken, transformeren en laden (ETL) of extract, Load en Transform (ELT) door automatisering en mogelijkheden te bieden voor gegevens toegang, gegevens modellering en-naleving in één platform. Discovery hub biedt een samenhangende gegevens Fabric voor Cloud Scale Analytics, waarmee u verschillende gegevens silo's kunt verbinden en integreren, catalogi, model, verplaats en document gegevens voor analyse en AI. | [Product pagina][timextender_website] |
+| ![TimeXtender][13] |**TimeXtender**<br>De detectie-hub van TimeXtender helpt bedrijven bij het bouwen van een modern gegevens systeem door een geïntegreerd platform voor gegevens beheer te bieden dat sneller tijd tot gegevens inzichten versnelt met Maxi maal tien keer. Het gaat verder dan dagelijks uitpakken, transformeren en laden (ETL) of extract, Load en Transform (ELT) door automatisering en mogelijkheden te bieden voor gegevens toegang, gegevens modellering en-naleving in één platform. Discovery hub biedt een samenhangende gegevens Fabric voor Cloud Scale Analytics, waarmee u verschillende gegevens silo's kunt verbinden en integreren, catalogi, model, verplaats en document gegevens voor analyse en AI. | [Product pagina][timextender_website]<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=timextender&page=1) |
 | ![Trifacta][14] |**Trifacta Wrangler**<br> Trifacta helpt individuen en organisaties om diverse gegevens te verkennen en samen te voegen voor analyse. Trifacta Wrangler is ontworpen voor het afhandelen van gegevens wrangling-workloads die gegevens moeten ondersteunen op schaal en een groot aantal eind gebruikers.|[Product pagina][trifacta_website]<br> [Azure Marketplace][trifacta_marketplace] |
 | ![WhereScape][15] |**Wherescape rood**<br> WhereScape RED is een IDE die teams voorziet van hulpprogram ma's voor automatisering om ETL-werk stromen te stroom lijnen. De IDE biedt best practice, geoptimaliseerde systeem eigen code voor populaire gegevens doelen. Gebruik WhereScape RED om de tijd te verkorten om uw gegevens infrastructuur te ontwikkelen, implementeren en beheren.|[Product pagina][wherescape_website]<br> [Azure Marketplace][wherescape_marketplace] |
 

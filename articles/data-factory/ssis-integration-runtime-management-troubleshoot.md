@@ -1,23 +1,22 @@
 ---
-title: 'Problemen met SSIS Integration Runtime Management in Azure Data Factory oplossen '
+title: Problemen met SSIS Integration Runtime Management oplossen
 description: Dit artikel bevat richt lijnen voor probleem oplossing voor beheer problemen van SSIS Integration Runtime (SSIS IR)
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/08/2019
 author: chinadragon0515
 ms.author: dashe
 ms.reviewer: sawinark
-manager: craigg
-ms.openlocfilehash: 3452fc2274eb646acb19c0e6a203ebadcb81cad5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 07/08/2019
+ms.openlocfilehash: c7db5d7d8963702f6039af3cfd51d6d916755abb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684021"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931944"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Problemen met SSIS Integration Runtime Management in Azure Data Factory oplossen
 
@@ -77,7 +76,7 @@ Voor andere problemen controleert u het foutbericht van SQL-uitzondering en lost
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-Dit type fout bericht ziet er als volgt uit: ' ongeldige object naam ' Catalog. catalog_properties '. In dit geval hebt u al een Data Base met de naam SSISDB, maar deze is niet gemaakt door SSIS IR, of de Data Base bevindt zich in een ongeldige status die wordt veroorzaakt door fouten in de laatste SSIS-IR-inrichting. U kunt de bestaande database met de naam SSISDB verwijderen, maar u kunt ook een nieuwe Azure SQL Database-server of een beheerd exemplaar voor de IR configureren.
+Dit type fout bericht ziet er als volgt uit: ' ongeldige object naam ' Catalog. catalog_properties '. ' In dit geval hebt u al een Data Base met de naam SSISDB, maar deze is niet gemaakt door SSIS IR, of de Data Base bevindt zich in een ongeldige status die wordt veroorzaakt door fouten in de laatste SSIS-IR-inrichting. U kunt de bestaande database met de naam SSISDB verwijderen, maar u kunt ook een nieuwe Azure SQL Database-server of een beheerd exemplaar voor de IR configureren.
 
 ## <a name="custom-setup-issues"></a>Aangepaste installatie problemen
 

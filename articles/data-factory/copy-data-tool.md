@@ -4,19 +4,19 @@ description: Bevat informatie over het hulp programma Gegevens kopiëren in Azur
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
-ms.openlocfilehash: b5c93213199cac399487f949a3a8cb04c2d9addb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a6de5c28115d3a451256cc43d26552c269ba245a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73678323"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927502"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Gegevens kopiëren-hulp programma in Azure Data Factory
 Het hulp programma Azure Data Factory Gegevens kopiëren vereenvoudigt en optimaliseert het proces van het opnemen van gegevens in een Data Lake. Dit is meestal een eerste stap in een end-to-end gegevens integratie scenario.  Het bespaart tijd, vooral wanneer u Azure Data Factory gebruikt om gegevens van een gegevens bron voor de eerste keer op te nemen. Enkele voor delen van het gebruik van dit hulp programma:

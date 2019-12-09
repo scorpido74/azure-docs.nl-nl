@@ -3,27 +3,24 @@ title: Identiteit voor Azure-app maken met Power shell
 titleSuffix: Microsoft identity platform
 description: Hierin wordt beschreven hoe u met Azure PowerShell een Azure Active Directory-toepassing en service-principal maakt en toegang tot resources verleent via toegangsbeheer op basis van rollen. Het laat zien hoe u de toepassing verifieert met een certificaat.
 services: active-directory
-documentationcenter: na
 author: rwike77
 manager: CelesteDG
 ms.assetid: d2caf121-9fbe-4f00-bf9d-8f3d1f00a6ff
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcf52bc5a6d177c18d9ebb792d1a147d09746afd
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 2456d52a3863b362943547d8a0c0e478dbc572cf
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803816"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917893"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Procedure: Azure PowerShell gebruiken om een service-principal te maken met een certificaat
 
@@ -48,9 +45,9 @@ U kunt dit artikel alleen volt ooien als u over voldoende machtigingen beschikt 
 De eenvoudigste manier om te controleren of uw account over de juiste machtigingen beschikt, verloopt via de portal. Zie [Check required permission](howto-create-service-principal-portal.md#required-permissions) (Vereiste machtiging controleren).
 
 ## <a name="assign-the-application-to-a-role"></a>De toepassing aan een rol toewijzen
-Als u toegang wilt krijgen tot resources in uw abonnement, moet u de toepassing toewijzen aan een rol. Bepaal welke rol de juiste machtigingen voor de toepassing biedt. Zie [RBAC: ingebouwde rollen](/azure/role-based-access-control/built-in-roles)voor meer informatie over de beschik bare rollen.
+Als u toegang wilt krijgen tot resources in uw abonnement, moet u de toepassing toewijzen aan een rol. Bepaal welke rol de juiste machtigingen voor de toepassing biedt. Zie voor meer informatie over de beschikbare rollen, [RBAC: ingebouwde rollen](/azure/role-based-access-control/built-in-roles).
 
-U kunt het bereik instellen op het niveau van het abonnement, de resource groep of de resource. Machtigingen worden overgenomen door lagere bereik niveaus. Als u bijvoorbeeld een toepassing toevoegt aan de rol van *lezer* voor een resource groep, betekent dit dat de resource groep en alle resources die deze bevat, kunnen worden gelezen. Selecteer de rol *Inzender* om de toepassing toe te staan acties uit te voeren zoals opnieuw opstarten, het starten en stoppen van exemplaren.
+U kunt het bereik instellen op het niveau van het abonnement, de resource groep of de resource. Machtigingen worden overgenomen op lagere niveaus van bereik. Als u bijvoorbeeld een toepassing toevoegt aan de rol van *lezer* voor een resource groep, betekent dit dat de resource groep en alle resources die deze bevat, kunnen worden gelezen. Selecteer de rol *Inzender* om de toepassing toe te staan acties uit te voeren zoals opnieuw opstarten, het starten en stoppen van exemplaren.
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Service-principal met een zelfondertekend certificaat maken
 
@@ -223,7 +220,7 @@ Bij het maken van een service-principal kunnen de volgende foutmeldingen worden 
 
 * **Authentication_Unauthorized** (Verificatie geweigerd) of **No subscription found in the context.** (Geen abonnement gevonden in de context.) -U ziet deze fout wanneer uw account niet over de [vereiste machtigingen](#required-permissions) beschikt voor Azure AD om een app te registreren. Normaal gesp roken ziet u deze fout wanneer alleen gebruikers met beheerders rechten in uw Azure Active Directory apps kunnen registreren en uw account geen beheerder is. Vraag uw beheerder om u toe te wijzen aan een beheerdersrol of gebruikers in staat te stellen apps te registreren.
 
-* Uw account heeft **geen toestemming om de actie ' micro soft. Authorization/roleAssignments/write ' over scope '/Subscriptions/{GUID} ' uit te voeren. '** : u ziet deze fout wanneer uw account niet voldoende machtigingen heeft om een rol toe te wijzen aan een persoon. Vraag de abonnementsbeheerder om u toe te voegen aan de rol Administrator voor gebruikerstoegang.
+* Uw account heeft **geen toestemming om de actie ' micro soft. Authorization/roleAssignments/write ' over scope '/Subscriptions/{GUID} ' uit te voeren. '** : u ziet deze fout wanneer uw account niet voldoende machtigingen heeft om een rol toe te wijzen aan een identiteit. Vraag de abonnementsbeheerder om u toe te voegen aan de rol Administrator voor gebruikerstoegang.
 
 ## <a name="next-steps"></a>Volgende stappen
 

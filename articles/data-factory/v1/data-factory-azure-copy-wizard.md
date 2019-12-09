@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: 0974eb40-db98-4149-a50d-48db46817076
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b2ec8e2cc09b6deb236bd83cb5cca99fead97279
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fef9059700e2bd94029c40bb819870a7174e0812
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683218"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930120"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Wizard Azure Data Factory kopiëren
 > [!NOTE]
@@ -55,7 +54,7 @@ Het schema van invoer gegevens komt mogelijk niet overeen met het schema van de 
 
 Gebruik een vervolg keuzelijst om een kolom uit het bron schema te selecteren die u wilt toewijzen aan een kolom in het doel schema. De wizard kopiëren probeert het patroon voor de kolom toewijzing te begrijpen. Hiermee wordt hetzelfde patroon op de rest van de kolommen toegepast, zodat u niet elke kolom afzonderlijk hoeft te selecteren om de schema toewijzing te volt ooien. Als u wilt, kunt u deze toewijzingen negeren door de kolommen één voor één toe te wijzen met behulp van de vervolg keuzelijsten. Het patroon wordt nauw keuriger naarmate u meer kolommen toewijst. Met de wizard kopiëren wordt het patroon continu bijgewerkt en uiteindelijk het juiste patroon bereikt voor de kolom toewijzing die u wilt bereiken.     
 
-![Schema toewijzing](./media/data-factory-copy-wizard/schema-mapping.png)
+![Schematoewijzing](./media/data-factory-copy-wizard/schema-mapping.png)
 
 ## <a name="filtering-data"></a>Gegevens filteren
 U kunt bron gegevens filteren om alleen de gegevens te selecteren die moeten worden gekopieerd naar de Sink-gegevens opslag. Filteren vermindert het volume van de gegevens die moeten worden gekopieerd naar de Sink-gegevens opslag en verhoogt daarom de door Voer van de Kopieer bewerking. Het biedt een flexibele manier om gegevens in een relationele data base te filteren met behulp van de SQL-query taal of bestanden in een Azure Blob-map door gebruik te maken van [Data Factory-functies en-variabelen](data-factory-functions-variables.md).   

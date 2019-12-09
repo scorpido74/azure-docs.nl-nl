@@ -4,21 +4,20 @@ description: Meer informatie over Teradata-connector voor de Data Factory-servic
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 98eb76d8-5f3d-4667-b76e-e59ed3eea3ae
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 645dcde949c8f5a6b48a5c02892d4cb2c6c5be0e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666097"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929052"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Gegevens verplaatsen van Teradata met Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -47,7 +46,7 @@ Als Data Management Gateway verbinding met de Teradata-Data Base wilt maken, moe
 U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van een on-premises Cassandra-gegevens opslag met behulp van verschillende hulpprogram ma's/Api's.
 
 - De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
-- U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
+- U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.
 
 Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
@@ -59,10 +58,10 @@ Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data 
 
 De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor een Teradata-gegevens archief:
 
-## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 De volgende tabel bevat een beschrijving van de JSON-elementen die specifiek zijn voor een gekoppelde Teradata-service.
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **OnPremisesTeradata** |Ja |
 | server |Naam van de server van de Teradata. |Ja |
@@ -83,7 +82,7 @@ Terwijl de eigenschappen die beschikbaar zijn in de sectie typeProperties van de
 
 Als de bron van het type **RelationalSource** (dat Teradata bevat) is, zijn de volgende eigenschappen beschikbaar in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
+| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: Select * from MyTable. |Ja |
 
@@ -285,45 +284,45 @@ Bij het verplaatsen van gegevens naar Teradata, worden de volgende toewijzingen 
 
 | Teradata-database type | .NET Framework type |
 | --- | --- |
-| char |Tekenreeks |
-| CLOB |Tekenreeks |
-| Afbeelding |Tekenreeks |
+| CHAR |Tekenreeks |
+| Clob |Tekenreeks |
+| Graphic |Tekenreeks |
 | VarChar |Tekenreeks |
 | VarGraphic |Tekenreeks |
-| Blob |Byte [] |
-| DBCS |Byte [] |
-| VarByte |Byte [] |
+| Blob |Byte[] |
+| byte |Byte[] |
+| VarByte |Byte[] |
 | BigInt |Int64 |
 | ByteInt |Int16 |
-| Komma |Komma |
-| Double-waarde |Double-waarde |
+| Decimal |Decimal |
+| Double |Double |
 | Geheel getal |Int32 |
-| Aantal |Double-waarde |
+| Aantal |Double |
 | SmallInt |Int16 |
-| Date |DateTime |
-| Time |Duur |
-| Tijd met tijd zone |Tekenreeks |
-| Tijdstempel |DateTime |
-| Tijds tempel met tijd zone |Date time offset |
-| Interval dag |Duur |
-| Interval van dag tot uur |Duur |
-| Interval van dag tot minuut |Duur |
-| Interval van dag tot seconde |Duur |
-| Interval-uur |Duur |
-| Interval van uur tot minuut |Duur |
-| Interval per seconde |Duur |
-| Interval minuut |Duur |
-| Interval minuut tot seconde |Duur |
-| Interval seconde |Duur |
-| Interval jaar |Tekenreeks |
-| Interval jaar tot maand |Tekenreeks |
-| Interval maand |Tekenreeks |
-| Periode (datum) |Tekenreeks |
+| Datum |Datum/tijd |
+| Tijd |TimeSpan |
+| Time With Time Zone |Tekenreeks |
+| Tijdstempel |Datum/tijd |
+| Timestamp With Time Zone |DateTimeOffset |
+| Interval dag |TimeSpan |
+| Interval Day To Hour |TimeSpan |
+| Interval Day To Minute |TimeSpan |
+| Interval Day To Second |TimeSpan |
+| Interval Hour |TimeSpan |
+| Interval Hour To Minute |TimeSpan |
+| Interval Hour To Second |TimeSpan |
+| Interval Minute |TimeSpan |
+| Interval Minute To Second |TimeSpan |
+| Interval Second |TimeSpan |
+| Interval Year |Tekenreeks |
+| Interval Year To Month |Tekenreeks |
+| Interval Month |Tekenreeks |
+| Period(Date) |Tekenreeks |
 | Periode (tijd) |Tekenreeks |
-| Periode (tijd met tijd zone) |Tekenreeks |
-| Periode (tijds tempel) |Tekenreeks |
-| Periode (tijds tempel met tijd zone) |Tekenreeks |
-| indeling |Tekenreeks |
+| Period(Time With Time Zone) |Tekenreeks |
+| Period(Timestamp) |Tekenreeks |
+| Period(Timestamp With Time Zone) |Tekenreeks |
+| Xml |Tekenreeks |
 
 ## <a name="map-source-to-sink-columns"></a>Bron toewijzen aan Sink-kolommen
 Zie [DataSet-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md)voor meer informatie over het toewijzen van kolommen in de bron-gegevensset aan kolommen in Sink-gegevensset.

@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9e3915a2f55680fc2e24ac63d5e7170ada026c2e
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: c7ff51c18d4ec41c706518631071e8feb3bafe59
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615178"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912440"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning-werk ruimten in de Azure Portal maken en beheren
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ In dit artikel maakt, bekijkt en verwijdert u [**Azure machine learning-werk rui
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
-Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+Een werkruimte te maken, moet u een Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met behulp van de referenties voor uw Azure-abonnement. 
 
@@ -42,9 +42,9 @@ Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u nog g
 
    Veld|Beschrijving 
    ---|---
-   Werkruimte naam |Voer een unieke naam in die uw werk ruimte identificeert. In dit voor beeld gebruiken we **docs-WS**. De namen moeten uniek zijn in de resource groep. Gebruik een naam die gemakkelijk kan worden ingetrokken en om onderscheid te maken tussen werk ruimten die door anderen zijn gemaakt.  
+   Naam van de werkruimte |Voer een unieke naam in die uw werk ruimte identificeert. In dit voor beeld gebruiken we **docs-WS**. De namen moeten uniek zijn in de resource groep. Gebruik een naam die gemakkelijk kan worden ingetrokken en om onderscheid te maken tussen werk ruimten die door anderen zijn gemaakt.  
    Abonnement |Selecteer het Azure-abonnement dat u wilt gebruiken.
-   Resourcegroep | Gebruik een bestaande resource groep in uw abonnement of voer een naam in om een nieuwe resource groep te maken. Een resource groep bevat gerelateerde resources voor een Azure-oplossing. In dit voor beeld gebruiken we **docs-AML**. 
+   Resourcegroep | Gebruik een bestaande resourcegroep in uw abonnement of voer een naam in om een nieuwe resourcegroep te maken. Een resource groep bevat gerelateerde resources voor een Azure-oplossing. In dit voor beeld gebruiken we **docs-AML**. 
    Locatie | Selecteer de locatie die het dichtst bij uw gebruikers ligt en de gegevens bronnen om uw werk ruimte te maken.
    Werkruimte editie | Selecteer **Basic** of **Enter prise**.  Deze werk ruimte-editie bepaalt de functies waartoe u toegang hebt en de prijzen. Meer informatie over de [Basic-en Enter prise Edition-aanbiedingen](overview-what-is-azure-ml.md#sku). 
 
@@ -73,15 +73,15 @@ Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u nog g
 
 U kunt uw werk ruimte upgraden van de Basic Edition naar Enter prise Edition om te profiteren van de uitgebreide functies, zoals ervaringen met weinig code en verbeterde beveiligings functies.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com).
 
 1. Selecteer de werk ruimte die u wilt bijwerken.
 
-1. Selecteer de optie **upgrade** bovenaan of in het bericht upgrade.
+1. Selecteer in de rechter bovenhoek van de pagina **meer informatie** .
 
-    ![Een werk ruimte bijwerken](media/how-to-manage-workspace/upgrade.png)
+   [een werk ruimte ![upgraden](media/how-to-manage-workspace/upgrade.png)](media/how-to-manage-workspace/upgrade.png#lightbox)
 
-1. Selecteer **Update bevestigen**.
+1. Selecteer **upgrade** in het venster dat wordt weer gegeven.
 
 
 > [!IMPORTANT]
@@ -95,13 +95,13 @@ U kunt uw werk ruimte upgraden van de Basic Edition naar Enter prise Edition om 
 
    ![Zoeken naar Azure Machine Learning-werk ruimte](media/how-to-manage-workspace/find-workspaces.png)
 
-1. Bekijk de lijst met werk ruimten die zijn gevonden. U kunt filteren op basis van abonnement, resource groepen en locaties.  
+1. Bekijk de lijst met werkruimten die zijn gevonden. U kunt filteren op basis van abonnement, resourcegroepen en locaties.  
 
 1. Selecteer een werk ruimte om de eigenschappen ervan weer te geven.
 
 ## <a name="delete-a-workspace"></a>Een werkruimte verwijderen
 
-Gebruik de knop verwijderen boven aan de werk ruimte die u wilt verwijderen.
+Gebruik de knop verwijderen aan de bovenkant van de werkruimte die u wilt verwijderen.
 
   ![De knop Verwijderen](media/how-to-manage-workspace/delete-workspace.png)
 
@@ -115,4 +115,4 @@ Gebruik de knop verwijderen boven aan de werk ruimte die u wilt verwijderen.
 Volg de zelf studie met volledige lengte voor meer informatie over het gebruik van een werk ruimte om modellen te bouwen, te trainen en te implementeren met Azure Machine Learning.
 
 > [!div class="nextstepaction"]
-> [Zelf studie: modellen trainen](tutorial-train-models-with-aml.md)
+> [Zelfstudie: Train modellen](tutorial-train-models-with-aml.md)

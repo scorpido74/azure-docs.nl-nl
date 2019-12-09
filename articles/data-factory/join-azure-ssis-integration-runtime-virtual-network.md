@@ -5,19 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/15/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: d36900a1ce05eaf022637a6ef6b866fe0d190b17
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 77019d6a99e41bb5fb9233aa95836bd4bc8dd877
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672734"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926888"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Een Azure-SSIS-integratie-runtime toevoegen aan een virtueel netwerk
 Wanneer u SQL Server Integration Services (SSIS) in Azure Data Factory gebruikt, moet u uw Azure-SSIS Integration runtime (IR) koppelen aan een virtueel Azure-netwerk in de volgende scenario's: 
@@ -47,7 +46,7 @@ Onthoud de volgende belang rijke punten wanneer u uw Azure-SSIS IR lid maakt van
 - Als er al een Azure Resource Manager virtueel netwerk is verbonden met uw on-premises netwerk op een andere locatie dan uw Azure-SSIS IR, kunt u eerst een [Azure Resource Manager virtueel netwerk](../virtual-network/quick-create-portal.md##create-a-virtual-network) maken om uw Azure-SSIS IR te koppelen. Configureer vervolgens een Azure Resource Manager-to-Azure Resource Manager virtuele netwerk verbinding. 
 
 ## <a name="access-to-azure-services"></a>Toegang tot Azure-services
-Als uw SSIS-pakketten toegang krijgen tot Azure-service bronnen die worden ondersteund door [service-eind punten van virtuele netwerken](../virtual-network/virtual-network-service-endpoints-overview.md) en u deze bronnen wilt beveiligen Azure-SSIS IR, kunt u uw Azure-SSIS IR toevoegen aan het subnet van het virtuele netwerk dat is geconfigureerd met het virtuele netwerk Service-eind punten. U kunt ondertussen een regel voor het virtuele netwerk toevoegen aan de Azure-service resources om toegang vanaf hetzelfde subnet toe te staan.
+Als uw SSIS-pakketten toegang krijgen tot Azure-service bronnen die worden ondersteund door [service-eind punten van virtuele netwerken](../virtual-network/virtual-network-service-endpoints-overview.md) en u deze bronnen wilt beveiligen Azure-SSIS IR, kunt u uw Azure-SSIS IR toevoegen aan het subnet van het virtuele netwerk dat is geconfigureerd met de service-eind punten van het virtuele netwerk. U kunt ondertussen een regel voor het virtuele netwerk toevoegen aan de Azure-service resources om toegang vanaf hetzelfde subnet toe te staan.
 
 ## <a name="hosting-the-ssis-catalog-in-sql-database"></a>De SSIS-catalogus in SQL Database hosten
 Als u uw SSIS-catalogus host in Azure SQL Database met virtuele netwerk service-eind punten, moet u uw Azure-SSIS IR toevoegen aan hetzelfde virtuele netwerk en subnet.
@@ -118,7 +117,7 @@ Zie [naam omzetting die gebruikmaakt van uw eigen DNS-server](../virtual-network
 ### <a name="nsg"></a>Een NSG instellen
 Als u een NSG wilt implementeren voor het subnet dat door uw Azure-SSIS IR wordt gebruikt, kunt u inkomend en uitgaand verkeer via de volgende poorten toestaan: 
 
-| Richting | Transport Protocol | Bron | Poortbereik van bron | Doel | Poortbereik van doel | Opmerkingen |
+| Richting | Transport Protocol | Bron | Poortbereik van bron | Bestemming | Poortbereik van doel | Opmerkingen |
 |---|---|---|---|---|---|---|
 | Inkomend | TCP | BatchNodeManagement | * | VirtualNetwork | 29876, 29877 (als u de IR koppelt aan een virtueel netwerk van Resource Manager) <br/><br/>10100, 20100, 30100 (als u de IR koppelt aan een klassiek virtueel netwerk)| De Data Factory-service gebruikt deze poorten om te communiceren met de knoop punten van uw Azure-SSIS IR in het virtuele netwerk. <br/><br/> Of u nu een NSG op subnetniveau maakt, Data Factory altijd een NSG configureert op het niveau van de netwerk interface kaarten (Nic's) die zijn gekoppeld aan de virtuele machines die de Azure-SSIS IR hosten. Alleen binnenkomend verkeer van Data Factory IP-adressen op de opgegeven poorten is toegestaan door deze NSG op NIC-niveau. Zelfs als u deze poorten opent op het Internet verkeer op subnetniveau, wordt verkeer van IP-adressen die niet Data Factory IP-adressen worden geblokkeerd op het niveau van de NIC. |
 | Uitgaand | TCP | VirtualNetwork | * | AzureCloud | 443 | De knoop punten van uw Azure-SSIS IR in het virtuele netwerk gebruiken deze poort voor toegang tot Azure-Services, zoals Azure Storage en Azure Event Hubs. |
@@ -157,9 +156,9 @@ Deze resources worden gemaakt wanneer de IR wordt gestart. Ze worden verwijderd 
 Zorg ervoor dat er geen resource vergrendeling is voor de resource groep of het abonnement waartoe het virtuele netwerk behoort. Als u een alleen-lezen vergrendeling of een verwijderings vergrendeling configureert, kan het starten en stoppen van de IR mislukken, of kan de IR niet meer reageren. 
 
 Zorg ervoor dat u geen Azure-beleid hebt waarmee wordt voor komen dat de volgende resources worden gemaakt onder de resource groep of het abonnement waartoe het virtuele netwerk behoort: 
-   -   Micro soft. Network/LoadBalancers 
-   -   Micro soft. Network/NetworkSecurityGroups 
-   -   Micro soft. Network/PublicIPAddresses 
+   -   Microsoft.Network/LoadBalancers 
+   -   Microsoft.Network/NetworkSecurityGroups 
+   -   Microsoft.Network/PublicIPAddresses 
 
 ### <a name="faq"></a>FAQ
 
@@ -187,7 +186,7 @@ Gebruik de portal om een Azure Resource Manager virtueel netwerk te configureren
 
 1. Start micro soft Edge of Google Chrome. Momenteel ondersteunen alleen deze webbrowsers de Data Factory-gebruikers interface. 
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 
 1. Selecteer **meer services**. Filter voor en selecteer **virtuele netwerken**. 
 
@@ -216,7 +215,7 @@ Gebruik de portal om een klassiek virtueel netwerk te configureren voordat u pro
 
 1. Start micro soft Edge of Google Chrome. Momenteel ondersteunen alleen deze webbrowsers de Data Factory-gebruikers interface. 
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 
 1. Selecteer **meer services**. Filter voor en selecteer **virtuele netwerken (klassiek)** . 
 

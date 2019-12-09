@@ -1,6 +1,5 @@
 ---
-title: Azure AD v 2.0 java script-toepassing met één pagina (SPA) begeleide setup
-titleSuffix: Microsoft identity platform
+title: Micro soft Identity platform java script-toepassings gids met één pagina | Azure
 description: Hoe Java script-SPA-toepassingen een API kunnen aanroepen waarvoor toegangs tokens zijn vereist door Azure Active Directory v 2.0-eind punt
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +16,12 @@ ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc03e6f1610fe6cef9ce72c981f6f800da8a9951
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a3576c015fcca7eb9c390f38c6527d76353efe06
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802528"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919389"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Gebruikers aanmelden en de Microsoft Graph-API aanroepen vanuit een Java script-toepassing met één pagina (SPA)
 
@@ -380,7 +379,7 @@ Voeg de volgende code toe aan uw `index.html`-bestand binnen de `<script></scrip
     ```
 
     Waar:
-    - *\<Enter_the_Application_Id_here >* de **client-id** is voor de toepassing die u hebt geregistreerd.
+    - *\<Enter_the_Application_Id_here >* de **client-id** is van de toepassing die u hebt geregistreerd.
     - *\<Enter_the_Tenant_info_here >* is ingesteld op een van de volgende opties:
        - Als uw toepassing *accounts in deze organisatie Directory*ondersteunt, vervangt u deze waarde door de **Tenant-id** of **Tenant naam** (bijvoorbeeld *contoso.Microsoft.com*).
        - Als uw toepassing *accounts in een organisatorische Directory*ondersteunt, vervangt u deze waarde door **organisaties**.

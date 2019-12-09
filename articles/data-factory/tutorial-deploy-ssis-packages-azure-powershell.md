@@ -8,17 +8,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: tutorial
+ms.custom: seo-lt-2019
 ms.date: 06/26/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 594cdd848a3712d2164616e38f7b75a01a21b7f6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: ff40867bc1e2778ec6f21f479360866b50d0c184
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683580"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926509"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory-with-powershell"></a>De Azure-SSIS-integratieruntime inrichten in Azure Data Factory met PowerShell
 
@@ -28,7 +29,7 @@ Deze zelf studie bevat stappen voor het inrichten van een Azure-SQL Server Integ
 > In dit artikel wordt gebruikgemaakt van Azure PowerShell om een Azure-SSIS IR in te richten. Zie [zelf studie: inrichten Azure-SSIS IR](tutorial-create-azure-ssis-runtime-portal.md)als u de app Azure Portal/ADF wilt gebruiken om een Azure-SSIS IR in te richten. 
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory.
+> * Een gegevensfactory maakt.
 > * Een Azure SSIS Integration Runtime maken
 > * De Azure SSIS Integration Runtime starten
 > * Het volledige script bekijken
@@ -40,10 +41,10 @@ Deze zelf studie bevat stappen voor het inrichten van een Azure-SQL Server Integ
 
 - **Azure-abonnement**. Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. Zie [Overzicht van Integration Runtime in Azure-SSIS](concepts-integration-runtime.md#azure-ssis-integration-runtime) voor algemene informatie over Azure-SSIS IR.
 - **Azure SQL database server (optioneel)** . Als u nog geen database server hebt, maakt u er een in de Azure Portal voordat u aan de slag gaat. ADF maakt SSISDB op deze database server. Het wordt aangeraden om de databaseserver in dezelfde Azure-regio te maken als de Integration Runtime. Met deze configuratie kan de integratie-runtime uitvoer logboeken schrijven naar SSISDB zonder overschrijding van Azure-regio's. 
-    - Op basis van de geselecteerde databaseserver kan SSISDB namens u worden gemaakt als een enkele database, als onderdeel van een elastische pool of in een beheerd exemplaar. Deze is toegankelijk in een openbaar netwerk of kan worden toegevoegd aan een virtueel netwerk. Zie [een Azure SQL database afzonderlijke Data Base, elastische pool en beheerde instantie vergelijken](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)voor hulp bij het kiezen van het type database server voor het hosten van SSISDB. Als u Azure SQL Database Server met virtuele netwerk service-eind punten/beheerde exemplaren in een virtueel netwerk gebruikt voor het hosten van SSISDB of toegang tot on-premises gegevens nodig hebt, moet u uw Azure-SSIS IR toevoegen aan een virtueel netwerk. Zie [Azure-SSIS IR maken in een virtueel netwerk](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+    - Op basis van de geselecteerde databaseserver kan SSISDB namens u worden gemaakt als een enkele database, als onderdeel van een elastische pool of in een beheerd exemplaar. Deze is toegankelijk in een openbaar netwerk of kan worden toegevoegd aan een virtueel netwerk. Zie [een Azure SQL database afzonderlijke Data Base, elastische pool en beheerde instantie vergelijken](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)voor hulp bij het kiezen van het type database server voor het hosten van SSISDB. Als u Azure SQL Database Server met virtuele netwerk service-eind punten/beheerde exemplaren in een virtueel netwerk gebruikt voor het hosten van SSISDB of toegang tot on-premises gegevens nodig hebt, moet u uw Azure-SSIS IR toevoegen aan [Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)een virtueel netwerk.
     - Controleer of de instelling **Toegang tot Azure-services toestaan** is ingeschakeld voor de databaseserver. Dit is niet van toepassing wanneer u Azure SQL Database Server met virtuele netwerk service-eind punten/beheerde exemplaren in een virtueel netwerk gebruikt om SSISDB te hosten. Zie [Secure your Azure SQL database](../sql-database/sql-database-security-tutorial.md#create-firewall-rules) (Azure SQL-database beveiligen) voor meer informatie. Zie [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)om deze instelling in te scha kelen met behulp van Power shell.
     - Voeg het IP-adres van de client computer, of een bereik van IP-adressen met het IP-adres van de client computer, toe aan de lijst met client-IP-adressen in de firewall instellingen voor de database server. Zie [Overzicht van firewallregels op Azure SQL Database-serverniveau en -databaseniveau](../sql-database/sql-database-firewall-configure.md) voor meer informatie.
-    - U kunt verbinding maken met de database server met behulp van SQL-verificatie met de referenties van de server beheerder of de Azure Active Directory (AAD)-verificatie met de beheerde identiteit voor uw ADF.  Voor het laatste moet u de beheerde identiteit voor uw ADF toevoegen aan een AAD-groep met machtigingen voor toegang tot de databaseserver. Zie [Azure-SSIS IR met AAD-verificaties maken](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+    - U kunt verbinding maken met de database server met behulp van SQL-verificatie met de referenties van de server beheerder of de Azure Active Directory (AAD)-verificatie met de beheerde identiteit voor uw ADF.  Voor het laatste moet u de beheerde identiteit voor de ADF toevoegen aan een AAD-groep met machtigingen voor toegang tot de databaseserver. Zie [Azure-SSIS IR met AAD-verificaties maken](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
     - Controleer of de database server al een SSISDB heeft. Het inrichten van een Azure-SSIS IR biedt geen ondersteuning voor het gebruik van een bestaande SSISDB.
 - **Azure PowerShell**. Volg de instructies in het [Azure PowerShell installeren en configureren](/powershell/azure/install-Az-ps)als u een Power shell-script wilt uitvoeren om uw Azure-SSIS IR in te richten.
 
@@ -157,7 +158,7 @@ Als uw resource groep al bestaat, kopieert u deze code niet naar het script.
 New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
 ```
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 Voer de volgende opdracht uit om een data factory te maken:
 
@@ -380,10 +381,10 @@ Zie ook de volgende artikelen uit de SSIS-documentatie:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd: 
+In deze zelfstudie hebt u het volgende geleerd: 
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory.
+> * Een gegevensfactory maakt.
 > * Een Azure SSIS Integration Runtime maken
 > * De Azure SSIS Integration Runtime starten
 > * Het volledige script bekijken

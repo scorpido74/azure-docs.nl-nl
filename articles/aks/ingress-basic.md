@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 1e5c3aa7ed4ec990dba07fb24830fae243141ad5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7b1fb26adc49067c35745011414ada7b33d7e55e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615584"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913579"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Een ingangs controller maken in azure Kubernetes service (AKS)
 
@@ -35,15 +35,15 @@ Voor dit artikel moet u ook de Azure CLI-versie 2.0.64 of hoger uitvoeren. Voer 
 
 ## <a name="create-an-ingress-controller"></a>Een ingangs controller maken
 
-Als u de ingangs controller wilt maken `Helm` , gebruikt u voor het installeren van *nginx-ingang*. Voor toegevoegde redundantie worden twee replica's van de NGINX ingress-controllers geïmplementeerd met de `--set controller.replicaCount` para meter. Om volledig te profiteren van het uitvoeren van replica's van de ingangs controller, moet u ervoor zorgen dat er meer dan één knoop punt in uw AKS-cluster is.
+Als u de ingangs controller wilt maken, gebruikt u `Helm` om *nginx*te installeren. Voor toegevoegde redundantie worden twee replica's van de NGINX ingress-controllers geïmplementeerd met de para meter `--set controller.replicaCount`. Om volledig te profiteren van het uitvoeren van replica's van de ingangs controller, moet u ervoor zorgen dat er meer dan één knoop punt in uw AKS-cluster is.
 
-De ingangs controller moet ook worden gepland op een Linux-knoop punt. Windows Server-knoop punten (momenteel in de preview-versie van AKS) mogen de ingangs controller niet uitvoeren. Een knooppunt kiezer wordt opgegeven met behulp `--set nodeSelector` van de para meter om aan te geven dat de Kubernetes scheduler de NGINX ingangs controller moet uitvoeren op een Linux-knoop punt.
-
-> [!TIP]
-> In het volgende voor beeld wordt een Kubernetes-naam ruimte gemaakt voor de ingangs resources met de naam *ingress-Basic*. Geef waar nodig een naam ruimte op voor uw eigen omgeving. Als op uw AKS-cluster geen RBAC is ingeschakeld `--set rbac.create=false` , voegt u toe aan de helm-opdrachten.
+De ingangs controller moet ook worden gepland op een Linux-knoop punt. Windows Server-knoop punten (momenteel in de preview-versie van AKS) mogen de ingangs controller niet uitvoeren. Een knooppunt kiezer wordt opgegeven met behulp van de para meter `--set nodeSelector` om de Kubernetes scheduler te laten weten dat de NGINX ingangs controller moet worden uitgevoerd op een Linux-knoop punt.
 
 > [!TIP]
-> Als u [IP-behoud van client bronnen][client-source-ip] wilt inschakelen voor aanvragen voor containers in uw cluster, voegt `--set controller.service.externalTrafficPolicy=Local` u toe aan de helm-installatie opdracht. Het bron-IP-adres van de client wordt opgeslagen in de aanvraag header onder *X-doorgestuurd-voor*. Bij gebruik van een ingangs controller waarvoor IP-behoud door client bronnen is ingeschakeld, werkt SSL Pass-Through niet.
+> In het volgende voor beeld wordt een Kubernetes-naam ruimte gemaakt voor de ingangs resources met de naam *ingress-Basic*. Geef waar nodig een naam ruimte op voor uw eigen omgeving. Als op uw AKS-cluster geen RBAC is ingeschakeld, voegt u `--set rbac.create=false` toe aan de helm-opdrachten.
+
+> [!TIP]
+> Als u [IP-behoud van client bronnen][client-source-ip] wilt inschakelen voor aanvragen voor containers in uw cluster, voegt u `--set controller.service.externalTrafficPolicy=Local` toe aan de helm-installatie opdracht. Het bron-IP-adres van de client wordt opgeslagen in de aanvraag header onder *X-doorgestuurd-voor*. Bij gebruik van een ingangs controller waarvoor IP-behoud door client bronnen is ingeschakeld, werkt SSL Pass-Through niet.
 
 ```console
 # Create a namespace for your ingress resources
@@ -98,9 +98,9 @@ helm install azure-samples/aks-helloworld \
 
 Beide toepassingen worden nu uitgevoerd op uw Kubernetes-cluster. Als u verkeer naar elke toepassing wilt routeren, maakt u een Kubernetes-ingangs bron. De ingangs resource configureert de regels die verkeer routeren naar een van de twee toepassingen.
 
-In het volgende voor beeld wordt verkeer naar het `http://40.117.74.8/` adres gerouteerd naar de service met de `aks-helloworld`naam. Verkeer naar het adres `http://40.117.74.8/hello-world-two` wordt doorgestuurd naar de `ingress-demo` service.
+In het volgende voor beeld wordt verkeer naar het adres `http://40.117.74.8/` doorgestuurd naar de service met de naam `aks-helloworld`. Verkeer naar het adres `http://40.117.74.8/hello-world-two` wordt doorgestuurd naar de `ingress-demo`-service.
 
-Maak een bestand met `hello-world-ingress.yaml` de naam en kopieer het in het volgende voor beeld YAML.
+Maak een bestand met de naam `hello-world-ingress.yaml` en kopieer het in het volgende voor beeld YAML.
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -111,7 +111,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
   - http:
@@ -126,7 +126,7 @@ spec:
         path: /hello-world-two(/|$)(.*)
 ```
 
-Maak de ingangs resource met behulp van de `kubectl apply -f hello-world-ingress.yaml` opdracht.
+Maak de ingangs resource met behulp van de opdracht `kubectl apply -f hello-world-ingress.yaml`.
 
 ```
 $ kubectl apply -f hello-world-ingress.yaml
@@ -140,7 +140,7 @@ Als u de routes voor de ingangs controller wilt testen, bladert u naar de twee t
 
 ![De eerste app die achter de ingangs controller wordt uitgevoerd](media/ingress-basic/app-one.png)
 
-Voeg nu het */Hello-World-Two* -pad toe aan het IP-adres *http://40.117.74.8/hello-world-two* , zoals. De tweede demo toepassing met de aangepaste titel wordt weer gegeven:
+Voeg nu het */Hello-World-Two* -pad toe aan het IP-adres, zoals *http://40.117.74.8/hello-world-two* . De tweede demo toepassing met de aangepaste titel wordt weer gegeven:
 
 ![Tweede app die achter de ingangs controller wordt uitgevoerd](media/ingress-basic/app-two.png)
 
@@ -150,7 +150,7 @@ In dit artikel wordt helm gebruikt voor het installeren van de ingangs onderdele
 
 ### <a name="delete-the-sample-namespace-and-all-resources"></a>De voorbeeld naam ruimte en alle resources verwijderen
 
-Als u de volledige voorbeeld naam ruimte wilt verwijderen `kubectl delete` , gebruikt u de opdracht en geeft u de naam van de naam ruimte op. Alle resources in de naam ruimte worden verwijderd.
+Als u de volledige voorbeeld naam ruimte wilt verwijderen, gebruikt u de opdracht `kubectl delete` en geeft u de naam van de naam ruimte op. Alle resources in de naam ruimte worden verwijderd.
 
 ```console
 kubectl delete namespace ingress-basic
@@ -164,7 +164,7 @@ helm repo remove azure-samples
 
 ### <a name="delete-resources-individually"></a>Resources afzonderlijk verwijderen
 
-U kunt ook een nauw keurigere benadering van de gemaakte afzonderlijke resources verwijderen. Vermeld de helm-releases met `helm list` de opdracht. Zoek naar grafieken met de naam *nginx-ingangs* en *AKS-HelloWorld*, zoals wordt weer gegeven in de volgende voorbeeld uitvoer:
+U kunt ook een nauw keurigere benadering van de gemaakte afzonderlijke resources verwijderen. Vermeld de helm-releases met de opdracht `helm list`. Zoek naar grafieken met de naam *nginx-ingangs* en *AKS-HelloWorld*, zoals wordt weer gegeven in de volgende voorbeeld uitvoer:
 
 ```
 $ helm list
@@ -175,7 +175,7 @@ esteemed-koala          1           Wed Mar 27 19:59:18 2019    DEPLOYED    aks-
 wonderful-puma          1           Wed Mar 27 19:59:07 2019    DEPLOYED    aks-helloworld-0.1.0                ingress-basic
 ```
 
-Verwijder de releases met de `helm delete` opdracht. In het volgende voor beeld worden de implementaties van NGINX-inkomend en de twee voor beelden van de AKS Hello World-apps verwijderd.
+Verwijder de releases met de opdracht `helm delete`. In het volgende voor beeld worden de implementaties van NGINX-inkomend en de twee voor beelden van de AKS Hello World-apps verwijderd.
 
 ```
 $ helm delete aspiring-labradoodle esteemed-koala wonderful-puma

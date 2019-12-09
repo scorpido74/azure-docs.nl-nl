@@ -1,23 +1,23 @@
 ---
-title: Integration Runtime in Azure Data Factory
+title: Integratie-runtime
 description: Meer informatie over Integration Runtime in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
+ms.author: abnarain
 author: nabhishek
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 05/31/2019
-ms.author: abnarain
-ms.openlocfilehash: 0b137edbfb5ca439d4ba15614225ec0973511763
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 40660c0397f8b7fd7c370e2e0f697cae26b9bb48
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74218814"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927154"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integration Runtime in Azure Data Factory
 De Integration Runtime (IR) is de rekeninfrastructuur die Azure Data Factory gebruikt om de volgende mogelijkheden voor gegevensintegratie in verschillende netwerkomgevingen te bieden:
@@ -53,7 +53,7 @@ Een Azure Integration Runtime is geschikt voor:
 
 - Gegevens stromen uitvoeren in azure 
 - Het uitvoeren van kopieeractiviteit tussen gegevensarchieven in de cloud
-- Het verzenden van de volgende trans formatie-activiteiten in het open bare netwerk: Databricks notebook/jar/python activity, HDInsight component activity, HDInsight varken activity, HDInsight MapReduce activiteit, HDInsight Spark-activiteit, HDInsight streaming-activiteit, computer Activiteiten voor batch uitvoering leren, Machine Learning Resource activiteiten bijwerken, opgeslagen procedure activiteit, Data Lake Analytics U-SQL-activiteit, aangepaste .NET-activiteit, webactiviteit, opzoek activiteit en activiteiten voor meta gegevens ophalen.
+- Het verzenden van de volgende trans formatie-activiteiten in het open bare netwerk: Databricks notebook/jar/python activity, HDInsight component activity, HDInsight varken activiteit, HDInsight MapReduce activity, HDInsight Spark-activiteit, HDInsight Streaming Machine Learning Machine Learning-activiteit, Data Lake Analytics U-SQL-activiteit, aangepaste .NET-activiteit, webactiviteit, opzoek activiteit en activiteiten voor meta gegevens ophalen.
 
 ### <a name="azure-ir-network-environment"></a>Azure IR-netwerkomgeving
 Azure Integration Runtime ondersteunt het maken van verbinding met gegevens archieven en Compute-Services met open bare eind punten. Gebruik een zelf-hostende Integration Runtime voor een Azure Virtual Network-omgeving.
@@ -82,7 +82,7 @@ Een zelf-hostende IR is geschikt voor:
 > [!NOTE] 
 > Java Runtime Environment (JRE) is een afhankelijkheid van zelf-Hostende IR. Zorg ervoor dat JRE is geïnstalleerd op dezelfde host.
 
-### <a name="self-hosted-ir-network-environment"></a>Zelf-hostende Azure IR-netwerkomgeving
+### <a name="self-hosted-ir-network-environment"></a>Zelf-hostende IR-netwerkomgeving
 Als u gegevensintegratie veilig wilt uitvoeren in een privénetwerkomgeving zonder rechtstreekse zichtbaarheid vanuit de openbare cloudomgeving, kunt u een zelf-hostende on-premises IR installeren achter de firewall van het bedrijf of in een virtueel privénetwerk.  De zelf-hostende Integration Runtime maakt alleen uitgaande HTTP-gebaseerde verbindingen met het openbare internet.
 
 ### <a name="self-hosted-ir-compute-resource-and-scaling"></a>Zelf-hostende IR-rekenresource en -schalen
@@ -112,7 +112,7 @@ Zie de volgende artikelen voor meer informatie over Azure-SSIS Runtime:
 ## <a name="integration-runtime-location"></a>Locatie van Integration Runtime
 De Data Factory-locatie is waar de metagegevens van de data factory worden opgeslagen en waar van het activeren van de pijplijn wordt gestart. Ondertussen heeft een data factory wel toegang tot gegevensarchieven en Compute Services in andere Azure-regio’s om gegevens te verplaatsen tussen gegevensarchieven of om gegevens te verwerken middels Compute Services. Dit gedrag wordt gerealiseerd via de [IR die algemeen beschikbaar](https://azure.microsoft.com/global-infrastructure/services/) is om de gegevensnaleving, efficiëntie en verminderde kosten voor uitgaand netwerkverkeer te realiseren.
 
-De locatie van de IR definieert de locatie van de back-end rekenkracht en in wezen de locatie waar de verplaatsing van gegevens, het verzenden van activiteit en de uitvoering van het SSIS-pakket worden uitgevoerd. De locatie van de IR kan afwijken van de locatie van de data factory waar hij bij hoort. 
+De locatie van de IR definieert de locatie van de back-endrekenkracht en in wezen de locatie waar de gegevensverplaatsing, het verzenden van activiteit en de uitvoering van het SSIS-pakket worden uitgevoerd. De locatie van de IR kan afwijken van de locatie van de data factory waar hij bij hoort. 
 
 ### <a name="azure-ir-location"></a>Locatie van Azure IR
 U kunt een bepaalde locatie van een Azure IR instellen, in welk geval de gegevensverplaatsing of verzendactiviteit in die specifieke regio plaatsvindt. 
@@ -121,7 +121,7 @@ Als u ervoor kiest om de **Azure IR automatisch oplossen** te gebruiken dat de s
 
 - Voor kopieeractiviteit probeert ADF om automatisch uw sink- en brongegevensopslag te detecteren om de beste locatie te vinden in dezelfde regio, indien beschikbaar, of in de dichtstbijzijnde regio in dezelfde geografie. Indien niet detecteerbaar, wordt de regio van de data factory gebruikt.
 
-- Voor het uitvoeren van opzoek-GetMetadata/verwijderen (ook wel pijplijn activiteiten genoemd), het verzenden van trans formatie-activiteiten (ook wel externe activiteiten genoemd) en het schrijven van bewerkingen (verbinding testen, bladeren door mappen lijst en tabel lijst, preview-gegevens), ADF maakt gebruik van de IR in de regio data factory.
+- Voor het uitvoeren van opzoek-GetMetadata/het verwijderen van de activiteit (ook wel pijplijn activiteiten genoemd), het verzenden van trans formatie-activiteiten (ook wel externe activiteiten genoemd) en het maken van bewerkingen (verbinding testen, bladeren in mappen lijst en tabel lijst, preview-gegevens), wordt de IR in de data factory regio gebruikt.
 
 - Voor de gegevens stroom maakt ADF gebruik van de IR in de regio data factory. 
 
@@ -143,7 +143,7 @@ Het selecteren van de juiste locatie voor uw Azure-SSIS IR is essentieel voor he
 
 - De locatie van uw Azure-SSIS IR hoeft niet hetzelfde te zijn als de locatie van uw data factory, maar moet hetzelfde zijn als de locatie van uw eigen Azure SQL Database/Managed instance server waar SSISDB moet worden gehost. Op deze manier heeft uw Azure-SSIS Integration Runtime eenvoudig toegang tot SSISDB, zonder overmatig verkeer tussen verschillende locaties.
 - Als u geen bestaande Azure SQL Database/beheerde exemplaar server hebt om SSISDB te hosten, maar u beschikt over on-premises gegevens bronnen/-bestemmingen, moet u een nieuwe Azure SQL Database/beheerde exemplaar server maken op dezelfde locatie als een virtueel netwerk dat is verbonden met uw on-premises netwerk.  Op deze manier kunt u uw Azure-SSIS IR maken met behulp van de nieuwe Azure SQL Database/Managed instance server en dat virtuele netwerk samen voegen, allemaal op dezelfde locatie, waardoor gegevens verkeer tussen verschillende locaties effectief wordt geminimaliseerd.
-- Als de locatie van de bestaande Azure SQL Database/beheerde exemplaar server waar SSISDB wordt gehost niet hetzelfde is als de locatie van een virtueel netwerk dat is verbonden met uw on-premises netwerk, maakt u uw Azure-SSIS IR eerst met een bestaande Azure SQL Database/ Beheerde exemplaar server en toevoegen van een ander virtueel netwerk op dezelfde locatie en vervolgens configureert u een virtueel netwerk naar een virtueel netwerk verbinding tussen verschillende locaties.
+- Als de locatie van de bestaande Azure SQL Database/beheerde exemplaar server waar SSISDB wordt gehost, niet hetzelfde is als de locatie van een virtueel netwerk dat is verbonden met uw on-premises netwerk, maakt u uw Azure-SSIS IR eerst met een bestaande Azure SQL Database/beheerde exemplaar server en verbindt u een virtueel netwerk op dezelfde locatie. vervolgens configureert u een virtueel netwerk naar een virtueel netwerk tussen verschillende locaties.
 
 Het volgende diagram toont de locatie-instellingen van Data Factory en het aantal keren dat de integratie wordt uitgevoerd:
 

@@ -1,24 +1,25 @@
 ---
-title: Gegevens kopiëren van SQL Server naar Blob-opslag met behulp van Azure Data Factory
+title: Gegevens kopiëren van SQL Server naar Blob-opslag met behulp van Power shell
 description: Meer informatie over het kopiëren van gegevens uit een on-premises gegevensopslag naar Azure-cloud met behulp van de zelf-hostende Integration Runtime in Azure Data Factory.
 services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: craigg
+ms.author: abnarain
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.author: abnarain
-ms.openlocfilehash: d2f59e7e8e86100a2a667634c0e99e6c1d5976da
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b0e4fcf771f2441d9e1061ee57e83e26b6b1a241
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683504"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922959"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Zelfstudie: gegevens van een on-premises SQL-serverdatabase naar Azure Blob Storage kopiëren
+
 In deze zelfstudie gebruikt u Azure PowerShell om een Data Factory-pijplijn te maken waarmee gegevens worden gekopieerd van een on-premises SQL Server-database naar een Azure Blob-opslag. U gaat een zelf-hostende Integration Runtime maken en gebruiken. Deze verplaatst gegevens van on-premises gegevensarchieven en gegevensarchieven in de cloud en omgekeerd. 
 
 > [!NOTE]
@@ -27,13 +28,13 @@ In deze zelfstudie gebruikt u Azure PowerShell om een Data Factory-pijplijn te m
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory.
+> * Een gegevensfactory maakt.
 > * Een zelf-hostende Integration Runtime maken.
 > * Gekoppelde services maken voor SQL Server en Azure Storage. 
 > * Gegevenssets maken voor SQL Server en Azure Blob.
 > * Een pijplijn maakt met een kopieeractiviteit om de gegevens te verplaatsen.
-> * Start een pijplijnuitvoering.
-> * Controleer de pijplijnuitvoering.
+> * Een pijplijnuitvoering starten.
+> * De pijplijnuitvoering controleert.
 
 ## <a name="prerequisites"></a>Vereisten
 ### <a name="azure-subscription"></a>Azure-abonnement
@@ -72,7 +73,7 @@ In deze zelfstudie gebruikt u een on-premises SQL Server-database als een *brong
     ```
 
 
-### <a name="azure-storage-account"></a>Azure Storage-account
+### <a name="azure-storage-account"></a>Azure-opslagaccount
 In deze zelfstudie gaat u een algemeen Azure Storage-account (en dan met name Azure Blob Storage) gebruiken als een doel/sink-gegevensopslag. Zie het artikel [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md) als u geen Azure Storage-account hebt voor algemene doeleinden. De pijplijn in de data factory die u in deze zelfstudie gaat maken, kopieert gegevens van de on-premises SQL Server-database (bron) naar deze Azure Blob-opslag (sink). 
 
 #### <a name="get-storage-account-name-and-account-key"></a>De naam en sleutel van een opslagaccount ophalen
@@ -108,7 +109,7 @@ In deze sectie maakt u in uw Azure Blob Storage een blobcontainer met de naam **
 1. Houd het venster **Container** voor **adftutorial** geopend. U gaat hiermee aan het einde van deze zelfstudie de uitvoer controleren. In Data Factory wordt automatisch in deze container de uitvoermap gemaakt, zodat u er zelf geen hoeft te maken.
 
 
-### <a name="windows-powershell"></a>Windows Powershell
+### <a name="windows-powershell"></a>Windows PowerShell
 
 #### <a name="install-azure-powershell"></a>Azure PowerShell installeren
 
@@ -132,7 +133,7 @@ Installeer de nieuwste versie van Azure PowerShell als u deze niet al op uw comp
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
     ```
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 1. Definieer een variabele voor de naam van de resourcegroep die u later gaat gebruiken in PowerShell-opdrachten. Kopieer de tekst van de volgende opdracht naar PowerShell, geef een naam op voor de [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) (bijvoorbeeld tussen dubbele aanhalingstekens) `"adfrg"`en voer de opdracht uit. 
    
@@ -182,7 +183,7 @@ Installeer de nieuwste versie van Azure PowerShell als u deze niet al op uw comp
 
 ## <a name="create-a-self-hosted-integration-runtime"></a>Een zelf-hostende Integration Runtime maken
 
-In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppelen aan een on-premises computer met de SQL Server-database. De zelf-hostende Integration Runtime is het onderdeel waarmee gegevens worden gekopieerd van SQL Server-database op uw computer naar Azure Blob Storage. 
+In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppelen aan een on-premises computer met de SQL Server database. De zelf-hostende Integration Runtime is het onderdeel waarmee gegevens worden gekopieerd van SQL Server-database op uw computer naar Azure Blob Storage. 
 
 1. Maak een variabele voor de naam van een Integration Runtime. Gebruik een unieke naam en noteer deze. U gaat deze verderop in de zelfstudie gebruiken. 
 
@@ -266,7 +267,7 @@ In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppel
 
 1. Plak de sleutel die u in de vorige sectie hebt opgeslagen in het venster **Integration Runtime (zelf-hostend) registreren** en selecteer **Registreren**. 
 
-    ![Integration Runtime registreren](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
+    ![Integratieruntime registreren](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
 
 1. Selecteer in het venster **nieuwe Integration runtime (zelf-hostend) knoop punt** **volt ooien**. 
 
@@ -717,13 +718,13 @@ De uitvoermap *fromonprem* wordt automatisch door de pijplijn gemaakt in de `adf
 Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene locatie naar een andere locatie in een Azure Blob-opslag. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory.
+> * Een gegevensfactory maakt.
 > * Een zelf-hostende Integration Runtime maken.
 > * Gekoppelde services maken voor SQL Server en Azure Storage. 
 > * Gegevenssets maken voor SQL Server en Azure Blob.
 > * Een pijplijn maakt met een kopieeractiviteit om de gegevens te verplaatsen.
-> * Start een pijplijnuitvoering.
-> * Controleer de pijplijnuitvoering.
+> * Een pijplijnuitvoering starten.
+> * De pijplijnuitvoering controleert.
 
 Zie [Ondersteunde gegevensopslagexemplaren](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslagexemplaren die worden ondersteund door Data Factory.
 

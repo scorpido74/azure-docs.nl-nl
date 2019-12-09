@@ -4,21 +4,20 @@ description: Meer informatie over het verplaatsen van gegevens van Amazon Redshi
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 01d15078-58dc-455c-9d9d-98fbdf4ea51e
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 707061f523e5e991c851abfe7960a9aa66fb2066
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3c9e10df9f2be2a07bc7b7af0e01905d5b278d35
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683264"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924870"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Gegevens verplaatsen van Amazon Redshift met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -56,18 +55,18 @@ Wanneer u de wizard kopiëren gebruikt, worden automatisch JSON-definities voor 
 
 In de volgende secties worden de JSON-eigenschappen beschreven die worden gebruikt voor het definiëren van de Data Factory entiteiten voor Amazon Redshift.
 
-## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 
 De volgende tabel bevat beschrijvingen van de JSON-elementen die specifiek zijn voor een gekoppelde service van Amazon Redshift.
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | **type** |Deze eigenschap moet worden ingesteld op **AmazonRedshift**. |Ja |
-| **naam** |Het IP-adres of de hostnaam van de Amazon Redshift-server. |Ja |
+| **server** |Het IP-adres of de hostnaam van de Amazon Redshift-server. |Ja |
 | **Importeer** |Het nummer van de TCP-poort die de Amazon Redshift-server gebruikt om te Luis teren naar client verbindingen. |Nee (de standaard waarde is 5439) |
 | **database** |De naam van de Amazon Redshift-data base. |Ja |
-| **gebruikers** |De naam van de gebruiker die toegang heeft tot de data base. |Ja |
-| **wacht woord** |Het wacht woord voor het gebruikers account. |Ja |
+| **gebruikersnaam** |De naam van de gebruiker die toegang heeft tot de data base. |Ja |
+| **Wachtwoord** |Het wacht woord voor het gebruikers account. |Ja |
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
@@ -75,28 +74,28 @@ Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een 
 
 De sectie **typeProperties** verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in de Store. **De sectie typeProperties** voor een gegevensset van het type **RelationalTable**, die de Amazon Redshift-gegevensset bevat, heeft de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | **tableName** |De naam van de tabel in de Amazon Redshift-data base waarnaar de gekoppelde service verwijst. |Nee (als de eigenschap **query** van een Kopieer activiteit van het type **RelationalSource** is opgegeven) |
 
-## <a name="copy-activity-properties"></a>Eigenschappen van Kopieer activiteit
+## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
 Zie het artikel [pijp lijnen maken](data-factory-create-pipelines.md) voor een lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. De **naam**, **Beschrijving**, **invoer** tabel, **uitvoer** tabel en **beleids** eigenschappen zijn beschikbaar voor alle typen activiteiten. De eigenschappen die beschikbaar zijn in de sectie **typeProperties** , variëren per type activiteit. Voor kopieer activiteiten zijn de eigenschappen afhankelijk van de typen gegevens bronnen en Sinks.
 
 Voor kopieer activiteit, wanneer de bron van het type **AmazonRedshiftSource**is, zijn de volgende eigenschappen beschikbaar in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
-| **ophalen** | Gebruik de aangepaste query om de gegevens te lezen. |Nee (als de eigenschap **TableName** van een gegevensset is opgegeven) |
+| **query** | Gebruik de aangepaste query om de gegevens te lezen. |Nee (als de eigenschap **TableName** van een gegevensset is opgegeven) |
 | **redshiftUnloadSettings** | Bevat de eigenschappen groep wanneer de Redshift **Unload** opdracht wordt gebruikt. | Nee |
 | **s3LinkedServiceName** | Amazon S3 om te gebruiken als een tijdelijke opslag. De gekoppelde service wordt opgegeven met behulp van een Azure Data Factory naam van het type **awsaccesskey worden**. | Vereist wanneer de eigenschap **redshiftUnloadSettings** wordt gebruikt |
-| **Bucket** | Hiermee wordt de Bucket van Amazon S3 aangegeven die moet worden gebruikt om de tussenliggende gegevens op te slaan. Als deze eigenschap niet wordt gegeven, wordt door de Kopieer activiteit automatisch een Bucket gegenereerd. | Vereist wanneer de eigenschap **redshiftUnloadSettings** wordt gebruikt |
+| **bucketName** | Hiermee wordt de Bucket van Amazon S3 aangegeven die moet worden gebruikt om de tussenliggende gegevens op te slaan. Als deze eigenschap niet wordt gegeven, wordt door de Kopieer activiteit automatisch een Bucket gegenereerd. | Vereist wanneer de eigenschap **redshiftUnloadSettings** wordt gebruikt |
 
 U kunt ook het type **RelationalSource** gebruiken, dat Amazon Redshift bevat, met de volgende eigenschap in de sectie **typeProperties** . Opmerking dit bron type biedt geen ondersteuning voor de opdracht Redshift **Unload** .
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
-| **ophalen** |Gebruik de aangepaste query om de gegevens te lezen. | Nee (als de eigenschap **TableName** van een gegevensset is opgegeven) |
+| **query** |Gebruik de aangepaste query om de gegevens te lezen. | Nee (als de eigenschap **TableName** van een gegevensset is opgegeven) |
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>VERWIJDEREN gebruiken om gegevens van Amazon Redshift te kopiëren
 
@@ -331,17 +330,17 @@ De volgende toewijzingen worden gebruikt wanneer Kopieer activiteit de gegevens 
 | Amazon Redshift-type | .NET-type |
 | --- | --- |
 | SMALLINT |Int16 |
-| GEHEELTALLIGE |Int32 |
+| INTEGER |Int32 |
 | BIGINT |Int64 |
-| KOMMA |Komma |
-| REALISTISCHE |Enkelvoudig |
-| DUBBELE PRECISIE |Double-waarde |
-| True |Tekenreeks |
+| DECIMAL |Decimal |
+| REAL |Enkelvoudig |
+| DOUBLE PRECISION |Double |
+| BOOLEAN |Tekenreeks |
 | CHAR |Tekenreeks |
 | VARCHAR |Tekenreeks |
-| DATE |DateTime |
-| Neem |DateTime |
-| SMS |Tekenreeks |
+| DATE |Datum/tijd |
+| TIMESTAMP |Datum/tijd |
+| TEXT |Tekenreeks |
 
 ## <a name="map-source-to-sink-columns"></a>Bron toewijzen aan Sink-kolommen
 Zie [DataSet-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md)voor meer informatie over het toewijzen van kolommen in de bron-gegevensset aan kolommen in de Sink-gegevensset.

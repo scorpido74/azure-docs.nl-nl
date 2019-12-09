@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 26ba3ff600ddca6158579941ab5d32b60ff13101
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 429205d1df91b5a63679d1189903e5340ab837f8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950370"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913888"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Netwerk concepten voor toepassingen in azure Kubernetes service (AKS)
 
@@ -92,7 +92,7 @@ Zowel kubenet als Azure CNI bieden netwerk connectiviteit voor uw AKS-clusters. 
     * U moet door de gebruiker gedefinieerde routes (Udr's) hand matig beheren en onderhouden.
     * Maxi maal 400 knoop punten per cluster.
 * **Azure CNI**
-    * De volledige connectiviteit van een virtueel netwerk en kan rechtstreeks worden bereikt buiten het cluster.
+    * Het is de volledige connectiviteit van een virtueel netwerk en kan rechtstreeks worden bereikt via het privé-IP-adres van verbonden netwerken.
     * Vereist meer IP-adres ruimte.
 
 De volgende gedrags verschillen bestaan tussen kubenet en Azure CNI:

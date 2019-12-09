@@ -1,7 +1,7 @@
 ---
-title: Meer informatie over het bieden van optionele claims voor uw Azure AD-app
+title: Optionele claims voor Azure AD-apps bieden | Azure
 titleSuffix: Microsoft identity platform
-description: Een hand leiding voor het toevoegen van aangepaste of extra claims aan de JWT-tokens (SAML 2,0 en JSON Web tokens) die zijn uitgegeven door Azure Active Directory.
+description: Aangepaste of extra claims toevoegen aan de SAML-tokens (2,0) en JSON Web tokens (JWT) die zijn uitgegeven door Azure Active Directory.
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1364a491122ae15f86bec98afbfd4e5110e8e07
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 323415c18497f19b4c8f29a303b6ec59dfda1885
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844716"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918267"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Procedure: optionele claims voor uw Azure AD-App opgeven
 

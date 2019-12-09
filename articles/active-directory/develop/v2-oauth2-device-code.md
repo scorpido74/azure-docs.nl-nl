@@ -1,5 +1,6 @@
 ---
-title: Micro soft Identity platform gebruiken voor het aanmelden van gebruikers op browser-minder apparaten | Azure
+title: Gebruikers aanmelden zonder browser | Azure
+titleSuffix: Microsoft identity platform
 description: Maak Inge sloten en browser-minder verificatie stromen met behulp van de autorisatie toekenning van het apparaat.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c948c59a90e0db17b4704188221cfc3c3d82310
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e937955f0b122d3a878141655475f34b051622e7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207604"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919236"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Micro soft Identity platform en de OAuth 2,0-autorisatie voor het weigeren van apparaten
 
@@ -62,8 +63,8 @@ scope=user.read%20openid%20profile
 
 | Parameter | Voorwaarde | Beschrijving |
 | --- | --- | --- |
-| `tenant` | Vereist | Kan/veelvoorkomende,/consumers of/organizations. zijn  Het kan ook de Directory Tenant zijn waarvoor u een machtiging wilt aanvragen in de indeling GUID of beschrijvende naam.  |
-| `client_id` | Vereist | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
+| `tenant` | Verplicht | Kan/veelvoorkomende,/consumers of/organizations. zijn  Het kan ook de Directory Tenant zijn waarvoor u een machtiging wilt aanvragen in de indeling GUID of beschrijvende naam.  |
+| `client_id` | Verplicht | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
 | `scope` | Aanbevolen | Een lijst met door spaties gescheiden [bereiken](v2-permissions-and-consent.md) waarvan u wilt dat de gebruiker toestemming geeft.  |
 
 ### <a name="device-authorization-response"></a>Reactie van het apparaat autorisatie
@@ -99,12 +100,12 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| Parameter | Vereist | Beschrijving|
+| Parameter | Verplicht | Beschrijving|
 | -------- | -------- | ---------- |
-| `tenant`  | Vereist | Dezelfde Tenant of Tenant alias die in de eerste aanvraag wordt gebruikt. | 
-| `grant_type` | Vereist | Moet `urn:ietf:params:oauth:grant-type:device_code`|
-| `client_id`  | Vereist | Moet overeenkomen met de `client_id` die in de eerste aanvraag wordt gebruikt. |
-| `device_code`| Vereist | De `device_code` geretourneerd in de autorisatie aanvraag voor het apparaat.  |
+| `tenant`  | Verplicht | Dezelfde Tenant of Tenant alias die in de eerste aanvraag wordt gebruikt. | 
+| `grant_type` | Verplicht | Moet `urn:ietf:params:oauth:grant-type:device_code`|
+| `client_id`  | Verplicht | Moet overeenkomen met de `client_id` die in de eerste aanvraag wordt gebruikt. |
+| `device_code`| Verplicht | De `device_code` geretourneerd in de autorisatie aanvraag voor het apparaat.  |
 
 ### <a name="expected-errors"></a>Verwachte fouten
 

@@ -1,35 +1,31 @@
 ---
-title: Xamarin iOS-overwegingen (micro soft-verificatie bibliotheek voor .NET)
+title: Xamarin iOS-overwegingen (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over specifieke overwegingen bij het gebruik van Xamarin iOS met de micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cc4eb0084e0606251d3fbd80d08723701c6a260
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f04074dfd9055fa4791f6fdce6bcf296aae8ff61
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175613"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921463"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>Xamarin iOS-specifieke overwegingen met MSAL.NET
 Op Xamarin iOS zijn er verschillende overwegingen die u moet meenemen bij het gebruik van MSAL.NET
 
 - [Bekende problemen met iOS 12 en verificatie](#known-issues-with-ios-12-and-authentication)
-- [De functie `OpenUrl` in het `AppDelegate`overschrijven en implementeren](#implement-openurl)
+- [De functie `OpenUrl` in het `AppDelegate` overschrijven en implementeren](#implement-openurl)
 - [Sleutel hanger groepen inschakelen](#enable-keychain-access)
 - [Het delen van token cache inschakelen](#enable-token-cache-sharing-across-ios-applications)
 - [Sleutel hanger toegang inschakelen](#enable-keychain-access)
@@ -97,7 +93,7 @@ Wanneer u de `WithIosKeychainSecurityGroup()`-API gebruikt, voegt MSAL automatis
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>Het delen van tokens in de cache inschakelen voor iOS-toepassingen
 
-Vanuit MSAL 2. x kunt u een toegangs groep voor de sleutel hanger opgeven die moet worden gebruikt voor het persistent maken van de token cache in meerdere toepassingen. Met deze instelling kunt u de token cache delen tussen verschillende toepassingen die dezelfde toegangs groep voor de sleutel hanger hebben, waaronder die zijn ontwikkeld met [ADAL.net](https://aka.ms/adal-net), MSAL.net Xamarin. IOS-toepassingen en systeem eigen IOS-toepassingen die zijn ontwikkeld met [ ADAL. objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) of [MSAL. objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc)).
+Vanuit MSAL 2. x kunt u een toegangs groep voor de sleutel hanger opgeven die moet worden gebruikt voor het persistent maken van de token cache in meerdere toepassingen. Met deze instelling kunt u de token cache delen tussen verschillende toepassingen die dezelfde toegangs groep voor de sleutel hanger hebben, waaronder die zijn ontwikkeld met [ADAL.net](https://aka.ms/adal-net), MSAL.net Xamarin. IOS-toepassingen en systeem eigen IOS-toepassingen die zijn ontwikkeld met [ADAL. objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) of [MSAL. objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc)).
 
 Door de token cache te delen, kunt u eenmalige aanmelding toestaan tussen alle toepassingen die gebruikmaken van de toegangs groep voor de sleutel hanger.
 

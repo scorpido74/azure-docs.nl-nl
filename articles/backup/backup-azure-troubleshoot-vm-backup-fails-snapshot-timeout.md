@@ -4,12 +4,13 @@ description: Symptomen, oorzaken en oplossingen voor Azure Backup fouten met bet
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 23b10bed3b741ec76167eb5a976bf5737d20b173
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.service: backup
+ms.openlocfilehash: 5e435d1169d5f148bfa2910174bf1f2835806c8b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894008"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928242"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup fout oplossen: problemen met de agent of extensie
 
@@ -25,8 +26,8 @@ Dit artikel bevat probleemoplossings stappen die u kunnen helpen bij het oplosse
 De Azure VM-agent is mogelijk gestopt, verouderd, in een inconsistente status of niet geïnstalleerd en voor komen dat Azure Backup Service moment opnamen kan activeren.
 
 - **Open Azure Portal > VM-> instellingen > eigenschappen blade** > Controleer of de **status** van de virtuele machine wordt **uitgevoerd** en de **agent status** **gereed**is. Als de VM-agent is gestopt of een inconsistente status heeft, start u de agent opnieuw op<br>
-  - Voor Windows-Vm's voert u de volgende [stappen uit](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) om de gast agent opnieuw te starten.<br>
-  - Voor Linux-Vm's voert u deze [stappen uit](https://docs.microsoft.com/en-us/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) om de gast agent opnieuw te starten.
+  - Voor Windows-Vm's voert u de volgende [stappen uit](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) om de gast agent opnieuw te starten.<br>
+  - Voor Linux-Vm's voert u deze [stappen uit](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) om de gast agent opnieuw te starten.
 
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError: kan niet communiceren met de VM-agent voor de status van de moment opname
@@ -223,7 +224,7 @@ De uitbrei ding verwijderen:
 2. Selecteer **instellingen**.
 3. Selecteer **Extensies**.
 4. Selecteer **Vmsnapshot-extensie**.
-5. Selecteer **verwijderen**.
+5. Selecteer **Verwijderen**.
 
 Als de VMSnapshot-extensie niet wordt weer gegeven in de Azure Portal, werkt u voor de Linux-VM naar de [Azure Linux-agent](../virtual-machines/linux/update-agent.md)en voert u de back-up uit.
 

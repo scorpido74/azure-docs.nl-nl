@@ -1,22 +1,22 @@
 ---
-title: Gegevens in Azure SQL Data Warehouse laden met behulp van Azure Data Factory
+title: Gegevens laden in Azure SQL Data Warehouse
 description: Azure Data Factory gebruiken om gegevens te kopiëren naar Azure SQL Data Warehouse
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 06/22/2018
-ms.author: jingwang
-ms.openlocfilehash: 538751b1e93dfec66c35ea3768bde603c198df32
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 732d5d170ee647dc0dfdbf4d09a12617c8c9bcce
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672751"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931514"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens in Azure SQL Data Warehouse laden met behulp van Azure Data Factory
 
@@ -43,7 +43,7 @@ In dit artikel wordt beschreven hoe u het Data Factory Gegevens kopiëren-hulp p
 * Azure SQL Database: in deze zelf studie worden gegevens uit een Azure-SQL database gekopieerd met LT Works-voorbeeld gegevens. U kunt een SQL database maken door de instructies in [een Azure-SQL database maken](../sql-database/sql-database-get-started-portal.md)te volgen. 
 * Azure-opslag account: Azure Storage wordt gebruikt als de _faserings_ -Blob in de bulksgewijze Kopieer bewerking. Als u geen Azure-opslagaccount hebt, raadpleegt u de instructies in [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md).
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 1. Selecteer in het menu links de optie **een resource maken** > **gegevens en analyses** > **Data Factory**: 
    
@@ -51,7 +51,7 @@ In dit artikel wordt beschreven hoe u het Data Factory Gegevens kopiëren-hulp p
 
 2. Geef op de pagina **nieuw Data Factory** waarden op voor de velden die worden weer gegeven in de volgende afbeelding:
       
-   ![Pagina nieuwe data factory](./media/load-azure-sql-data-warehouse/new-azure-data-factory.png)
+   ![De pagina Nieuwe data factory](./media/load-azure-sql-data-warehouse/new-azure-data-factory.png)
  
     * **Naam**: Voer een wereld wijd unieke naam in voor uw Azure-Data Factory. Als het fout bericht ' Data Factory-naam \"LoadSQLDWDemo\" niet beschikbaar is, geeft u een andere naam op voor de data factory. U kunt bijvoorbeeld _**de naam**_ **ADFTutorialDataFactory**. Probeer de data factory opnieuw te maken. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
     * **Abonnement**: Selecteer het Azure-abonnement waarin u de Data Factory wilt maken. 
@@ -64,7 +64,7 @@ In dit artikel wordt beschreven hoe u het Data Factory Gegevens kopiëren-hulp p
    
    ![Startpagina van de gegevensfactory](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)
 
-   Selecteer de tegel **auteur & monitor** om de gegevens integratie toepassing in een afzonderlijk tabblad te openen.
+   Klik op de tegel **Maken en bewaken** om de toepassing Gegevensintegratie in een afzonderlijk tabblad te openen.
 
 ## <a name="load-data-into-azure-sql-data-warehouse"></a>Gegevens laden in Azure SQL Data Warehouse
 
@@ -85,7 +85,7 @@ In dit artikel wordt beschreven hoe u het Data Factory Gegevens kopiëren-hulp p
 
     ![Azure SQL DB selecteren](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
 
-    c. Selecteer op de pagina **nieuwe gekoppelde service** de naam van de server en de data base in de vervolg keuzelijst en geef de gebruikers naam en het wacht woord op. Klik op **verbinding testen** om de instellingen te valideren en selecteer vervolgens **volt ooien**.
+    c. Selecteer op de pagina **nieuwe gekoppelde service** de naam van de server en de data base in de vervolg keuzelijst en geef de gebruikers naam en het wacht woord op. Klik op **Verbinding testen** om de instellingen te valideren en selecteer vervolgens **Voltooien**.
    
     ![Azure SQL DB configureren](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
 
@@ -107,7 +107,7 @@ In dit artikel wordt beschreven hoe u het Data Factory Gegevens kopiëren-hulp p
 
     ![Azure SQL DW selecteren](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
-    c. Selecteer op de pagina **nieuwe gekoppelde service** de naam van de server en de data base in de vervolg keuzelijst en geef de gebruikers naam en het wacht woord op. Klik op **verbinding testen** om de instellingen te valideren en selecteer vervolgens **volt ooien**.
+    c. Selecteer op de pagina **nieuwe gekoppelde service** de naam van de server en de data base in de vervolg keuzelijst en geef de gebruikers naam en het wacht woord op. Klik op **Verbinding testen** om de instellingen te valideren en selecteer vervolgens **Voltooien**.
    
     ![Azure SQL DW configureren](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 

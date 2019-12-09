@@ -1,27 +1,26 @@
 ---
-title: Gegevens kopiëren van en naar Azure Database for MySQL met behulp van Azure Data Factory
+title: Gegevens kopiëren van en naar Azure Database for MySQL
 description: Informatie over het kopiëren van gegevens van en naar Azure Database for MySQL met behulp van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 08/25/2019
-ms.author: jingwang
-ms.openlocfilehash: dd450852931fdc57192bcc126b710d8cfb3e27ac
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cd3a069eb24b6390629cfaf9a4f19f47e8978d8a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681236"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931642"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-mysql-using-azure-data-factory"></a>Gegevens kopiëren van en naar Azure Database for MySQL met behulp van Azure Data Factory
 
-In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit Azure Database for MySQL te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit Azure Database for MySQL te kopiëren. Dit is gebaseerd op de [overzicht kopieeractiviteit](copy-activity-overview.md) artikel met daarin een algemeen overzicht van de kopieeractiviteit.
 
 Deze connector is speciaal voor [Azure database for MySQL service](../mysql/overview.md). Als u gegevens wilt kopiëren van een algemene MySQL-data base die zich on-premises of in de Cloud bevindt, gebruikt u [mysql-connector](connector-mysql.md).
 
@@ -32,9 +31,9 @@ Deze Azure Database for MySQL-Connector wordt ondersteund voor de volgende activ
 - [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
-U kunt gegevens van Azure Database for MySQL kopiëren naar elk ondersteund Sink-gegevens archief. U kunt ook gegevens van elk ondersteund brongegevens archief kopiëren naar Azure Database for MySQL. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
+U kunt gegevens van Azure Database for MySQL kopiëren naar elk ondersteund Sink-gegevens archief. U kunt ook gegevens van elk ondersteund brongegevens archief kopiëren naar Azure Database for MySQL. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
 
-Azure Data Factory biedt een ingebouwd stuur programma om connectiviteit mogelijk te maken. u hoeft dus niet hand matig een stuur programma te installeren met behulp van deze connector.
+Azure Data Factory biedt een ingebouwde stuurprogramma als connectiviteit wilt inschakelen, dus hoeft u stuurprogramma voor gebruik van deze connector handmatig installeren.
 
 ## <a name="getting-started"></a>Aan de slag
 
@@ -42,22 +41,22 @@ Azure Data Factory biedt een ingebouwd stuur programma om connectiviteit mogelij
 
 De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor Azure Database for MySQL-Connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 
 De volgende eigenschappen worden ondersteund voor Azure Database for MySQL gekoppelde service:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **AzureMySql** | Ja |
 | connectionString | Geef de gegevens op die nodig zijn om verbinding te maken met het Azure Database for MySQL exemplaar. <br/>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. U kunt ook wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de connection string halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja |
-| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt Azure Integration Runtime of zelf-hostende Integration Runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
+| connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. U kunt Azure Integration Runtime of zelfgehoste Cloudintegratieruntime gebruiken (als het gegevensarchief bevindt zich in een particulier netwerk). Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
 
-Een typische connection string is `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. Meer eigenschappen die u per case kunt instellen:
+Een gebruikelijke verbindingsreeks is `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. Meer eigenschappen die u per uw situatie instellen kunt:
 
-| Eigenschap | Beschrijving | Opties | Vereist |
+| Eigenschap | Beschrijving | Opties | Verplicht |
 |:--- |:--- |:--- |:--- |
 | SSLMode | Met deze optie geeft u op of het stuur programma SSL-versleuteling en verificatie gebruikt bij het verbinden met MySQL. Bijvoorbeeld `SSLMode=<0/1/2/3/4>`| UITGESCHAKELD (0)/voor keur (1) **(standaard)** /vereist (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | Nee |
-| useSystemTrustStore | Met deze optie geeft u aan of u een CA-certificaat wilt gebruiken uit het archief van het systeem vertrouwen of van een opgegeven PEM-bestand. Bijvoorbeeld `UseSystemTrustStore=<0/1>;`| Ingeschakeld (1)/uitgeschakeld (0) **(standaard)** | Nee |
+| UseSystemTrustStore | Met deze optie geeft u aan of u een CA-certificaat wilt gebruiken uit het archief van het systeem vertrouwen of van een opgegeven PEM-bestand. Bijvoorbeeld `UseSystemTrustStore=<0/1>;`| Ingeschakeld (1)/uitgeschakeld (0) **(standaard)** | Nee |
 
 **Voorbeeld:**
 
@@ -111,14 +110,14 @@ Een typische connection string is `Server=<server>.mysql.database.azure.com;Port
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die door Azure Database for MySQL DataSet worden ondersteund.
+Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. Deze sectie bevat een lijst met eigenschappen die door Azure Database for MySQL DataSet worden ondersteund.
 
 Als u gegevens wilt kopiëren uit Azure Database for MySQL, stelt u de eigenschap type van de gegevensset in op **AzureMySqlTable**. De volgende eigenschappen worden ondersteund:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **AzureMySqlTable** | Ja |
-| tableName | De naam van de tabel in de MySQL-data base. | Nee (als "query" in activiteit bron is opgegeven) |
+| tableName | De naam van de tabel in de MySQL-data base. | Nee (als 'query' in de activiteitbron is opgegeven) |
 
 **Voorbeeld**
 
@@ -140,16 +139,16 @@ Als u gegevens wilt kopiëren uit Azure Database for MySQL, stelt u de eigenscha
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door Azure Database for MySQL bron en Sink.
+Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door Azure Database for MySQL bron en Sink.
 
 ### <a name="azure-database-for-mysql-as-source"></a>Azure Database for MySQL als bron
 
 Als u gegevens wilt kopiëren uit Azure Database for MySQL, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **AzureMySqlSource** | Ja |
-| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
+| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
 | queryCommandTimeout | De wacht tijd voordat de query aanvraag een time-out heeft. De standaard waarde is 120 minuten (02:00:00) | Nee |
 
 **Voorbeeld:**
@@ -188,7 +187,7 @@ Als u gegevens wilt kopiëren uit Azure Database for MySQL, worden de volgende e
 
 Als u gegevens wilt kopiëren naar Azure Database for MySQL, worden de volgende eigenschappen ondersteund in het gedeelte **sink** van Kopieer activiteit:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de Sink voor kopieer activiteiten moet worden ingesteld op: **AzureMySqlSink** | Ja |
 | preCopyScript | Geef een SQL-query op voor de Kopieer activiteit die moet worden uitgevoerd voordat er in elke uitvoering gegevens naar Azure Database for MySQL worden geschreven. U kunt deze eigenschap gebruiken om de vooraf geladen gegevens op te schonen. | Nee |
@@ -234,9 +233,9 @@ Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer info
 
 ## <a name="data-type-mapping-for-azure-database-for-mysql"></a>Toewijzing van gegevens type voor Azure Database for MySQL
 
-Bij het kopiëren van gegevens uit Azure Database for MySQL worden de volgende toewijzingen gebruikt van MySQL-gegevens typen om te Azure Data Factory interim-gegevens typen. Zie [schema-en gegevens type toewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe kopieer activiteit het bron schema en het gegevens type aan de Sink koppelt.
+Bij het kopiëren van gegevens uit Azure Database for MySQL worden de volgende toewijzingen gebruikt van MySQL-gegevens typen om te Azure Data Factory interim-gegevens typen. Zie [Schema en gegevens typt toewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe copy activity in het schema en de gegevens van een brontype aan de sink toegewezen.
 
-| Azure Database for MySQL gegevens type | Data Factory-gegevens type interim |
+| Azure Database for MySQL gegevens type | Data factory tussentijdse gegevenstype |
 |:--- |:--- |
 | `bigint` |`Int64` |
 | `bigint unsigned` |`Decimal` |
@@ -280,4 +279,4 @@ Bij het kopiëren van gegevens uit Azure Database for MySQL worden de volgende t
 | `year` |`Int32` |
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.
+Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).

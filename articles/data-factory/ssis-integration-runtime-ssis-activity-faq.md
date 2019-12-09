@@ -1,23 +1,22 @@
 ---
-title: 'Problemen met de uitvoering van pakketten oplossen in SSIS Integration runtime '
+title: Problemen met de uitvoering van pakketten oplossen in SSIS Integration runtime
 description: Dit artikel bevat richt lijnen voor probleem oplossing voor het uitvoeren van SSIS-pakketten in de SSIS Integration runtime
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/15/2019
-author: wenjiefu
 ms.author: wenjiefu
+author: wenjiefu
 ms.reviewer: sawinark
-manager: craigg
-ms.openlocfilehash: 9692c754e59eba02d3d483d44430150107d703a4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+manager: shwang
+ms.custom: seo-lt-2019
+ms.date: 04/15/2019
+ms.openlocfilehash: c0aa33cce8dc163722557b1ef868cf0de8bea8fe
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217543"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928737"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Problemen met de uitvoering van pakketten oplossen in SSIS Integration runtime
 
@@ -156,7 +155,7 @@ Een mogelijke oorzaak is dat uw zelf-Hostende Integration runtime niet op de jui
   * Het uitvoerings logboek vindt u in het [rapport SSMS](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) of in de logboekmap die u hebt opgegeven in de activiteit SSIS-pakket uitvoering.
   * vNet kan ook worden gebruikt om toegang te krijgen tot on-premises gegevens als alternatief. Meer informatie vindt u in een [Azure-SSIS Integration runtime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md)
 
-### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Fout bericht: ' status Faserings taak: mislukt. Fout in de staging-taak: error code: 2906, ErrorMessage: de uitvoering van het pakket is mislukt. uitvoer: {"OperationErrorMessages": "SSIS-uitvoerings code voor uitvoerder:-1. \ n", "LogLocation": "...\\SSISTelemetry\\ExecutionLog\\...", " effectiveIntegrationRuntime": "...", "executionDuration": ..., "durationInQueue": { "integrationRuntimeQueue": ... }}"
+### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Fout bericht: ' status Faserings taak: mislukt. Fout in de staging-taak: error code: 2906, ErrorMessage: de uitvoering van het pakket is mislukt. uitvoer: {"OperationErrorMessages": "SSIS-uitvoerder" code:-1. \ n "," LogLocation ":"...\\SSISTelemetry\\ExecutionLog\\... "," effectiveIntegrationRuntime ":"... "," executionDuration ":...," durationInQueue ": {" integrationRuntimeQueue ":.
 
 Zorg ervoor dat C++ Visual runtime is geïnstalleerd op een zelf-hostende Integration runtime-computer. Meer informatie vindt [u op zelf-hostende IR configureren als proxy voor Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
 

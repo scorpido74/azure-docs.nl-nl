@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: a1de59ebb5ef0d7f5522a388aa9a2f5818495a9f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 208b5462efeb579e30550824bd7ba931db1825b2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786330"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925623"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>SignalR-servicebindingen voor Azure Functions
 
@@ -18,7 +18,7 @@ In dit artikel wordt uitgelegd hoe u real-time berichten kunt verifiëren en ver
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>Pakketten-functions 2. x
+## <a name="packages---functions-2x-and-higher"></a>Pakketten-functions 2. x en hoger
 
 De signalerings service bindingen worden gegeven in het [micro soft. Azure. webjobs. Extensions. SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) Nuget-pakket, versie 1. *. De bron code voor het pakket bevindt zich in de [Azure-functions-signalrservice-extension github-](https://github.com/Azure/azure-functions-signalrservice-extension) opslag plaats.
 
@@ -106,7 +106,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -236,7 +236,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -377,7 +377,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -507,7 +507,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -642,7 +642,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -705,7 +705,7 @@ public SignalRMessage sendMessage(
 
 ---
 
-### <a name="group-management"></a>Groeps beheer
+### <a name="group-management"></a>Beheer van groepen
 
 Met de seingevings service kunnen gebruikers worden toegevoegd aan groepen. Berichten kunnen vervolgens naar een groep worden verzonden. U kunt de `SignalR` uitvoer binding gebruiken om het groepslid maatschap van een gebruiker te beheren.
 
@@ -859,7 +859,7 @@ Voor beeld van *functie. json*
 }
 ```
 
-*index. js*
+*index.js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -887,7 +887,7 @@ Voor beeld van *functie. json*
 }
 ```
 
-*index. js*
+*index.js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -1007,35 +1007,35 @@ public SignalRGroupAction removeFromGroup(
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `SignalRConnectionInfo`.
+De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `SignalRConnectionInfo` kenmerk.
 
-|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
+|de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type**|| Moet worden ingesteld op `signalRConnectionInfo`.|
 |**direction**|| Moet worden ingesteld op `in`.|
-|**naam**|| De naam van de variabele die wordt gebruikt in de functie code voor het verbindings info-object. |
+|**De naam**|| De naam van de variabele die wordt gebruikt in de functie code voor het verbindings info-object. |
 |**hubName**|**HubName**| Deze waarde moet worden ingesteld op de naam van de seingevings hub waarvoor de verbindings gegevens worden gegenereerd.|
-|**Naam**|**Naam**| Optioneel: de waarde van de claim voor de gebruikers-id die moet worden ingesteld in het toegangs sleutel token. |
-|**connectionStringSetting**|**ConnectionStringSetting**| De naam van de app-instelling die de seingevings service connection string bevat (standaard ingesteld op ' AzureSignalRConnectionString ') |
+|**userId**|**Naam**| Optioneel: de waarde van de claim voor de gebruikers-id die moet worden ingesteld in het toegangs sleutel token. |
+|**connectionStringSetting**|**connectionStringSetting**| De naam van de app-instelling die de seingevings service connection string bevat (standaard ingesteld op ' AzureSignalRConnectionString ') |
 
 ### <a name="signalr"></a>SignalR
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `SignalR`.
+De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `SignalR` kenmerk.
 
-|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
+|de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type**|| Moet worden ingesteld op `signalR`.|
 |**direction**|| Moet worden ingesteld op `out`.|
-|**naam**|| De naam van de variabele die wordt gebruikt in de functie code voor het verbindings info-object. |
+|**De naam**|| De naam van de variabele die wordt gebruikt in de functie code voor het verbindings info-object. |
 |**hubName**|**HubName**| Deze waarde moet worden ingesteld op de naam van de seingevings hub waarvoor de verbindings gegevens worden gegenereerd.|
-|**connectionStringSetting**|**ConnectionStringSetting**| De naam van de app-instelling die de seingevings service connection string bevat (standaard ingesteld op ' AzureSignalRConnectionString ') |
+|**connectionStringSetting**|**connectionStringSetting**| De naam van de app-instelling die de seingevings service connection string bevat (standaard ingesteld op ' AzureSignalRConnectionString ') |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over Azure functions-triggers en-bindingen](functions-triggers-bindings.md)
+> [Meer informatie over Azure functions-triggers en bindingen](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
 > [Ontwikkeling en configuratie van Azure Functions met Azure SignalR Service](../azure-signalr/signalr-concept-serverless-development-config.md)

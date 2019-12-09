@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: f904972f-cd33-48db-9755-2b3196ae4168
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 88e5603405ad5594b06674aaf6cbb2c4d23b754c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8b872cc30ae66e83274f189138dad6d609e3f536
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682788"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927058"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Gegevens eenvoudig kopiëren of verplaatsen met Azure Data Factory wizard kopiëren
 > [!NOTE]
@@ -52,7 +51,7 @@ Het schema van invoer gegevens komt mogelijk niet overeen met het schema van de 
 
 De wizard kopiëren wijst automatisch kolommen in het bron schema toe aan kolommen in het doel schema. U kunt de toewijzingen negeren met behulp van de vervolg keuzelijsten (of) Hiermee geeft u op of een kolom moet worden overgeslagen bij het kopiëren van de gegevens.   
 
-![Schema toewijzing](./media/data-factory-copy-wizard/schema-mapping.png)
+![Schematoewijzing](./media/data-factory-copy-wizard/schema-mapping.png)
 
 ## <a name="filtering-data"></a>Gegevens filteren
 Met de wizard kunt u Bron gegevens filteren om alleen de gegevens te selecteren die moeten worden gekopieerd naar het gegevens archief doel/sink. Filteren vermindert het volume van de gegevens die moeten worden gekopieerd naar de Sink-gegevens opslag en verhoogt daarom de door Voer van de Kopieer bewerking. Het biedt een flexibele manier om gegevens in een relationele data base te filteren met behulp van de SQL-query taal (of) bestanden in een Azure Blob-map door gebruik te maken van [Data Factory-functies en-variabelen](data-factory-functions-variables.md).   

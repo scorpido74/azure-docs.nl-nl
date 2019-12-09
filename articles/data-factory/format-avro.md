@@ -2,19 +2,19 @@
 title: De indeling Avro in Azure Data Factory
 description: In dit onderwerp wordt beschreven hoe u kunt omgaan met de Avro-indeling in Azure Data Factory.
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: a40e1b717a2ac791cdf7583afb9a7649a5b00af1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9e962a0e76cdc0d51a87df3c33927c34db991fc7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674896"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927417"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>De indeling Avro in Azure Data Factory
 
@@ -24,9 +24,9 @@ De Avro-indeling wordt ondersteund voor de volgende connectors: [Amazon S3](conn
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de Avro-gegevensset.
+Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de Avro-gegevensset.
 
-| Eigenschap         | Beschrijving                                                  | Vereist |
+| Eigenschap         | Beschrijving                                                  | Verplicht |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | De eigenschap type van de DataSet moet worden ingesteld op **Avro**. | Ja      |
 | location         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location`. **Zie de sectie Details in connector artikel-> Eigenschappen van gegevensset**. | Ja      |
@@ -61,13 +61,13 @@ Hieronder ziet u een voor beeld van een AVRO-gegevensset op Azure Blob Storage:
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Avro-bron en Sink.
+Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Avro-bron en Sink.
 
 ### <a name="avro-as-source"></a>AVRO als bron
 
 De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***\*bron\**** .
 
-| Eigenschap      | Beschrijving                                                  | Vereist |
+| Eigenschap      | Beschrijving                                                  | Verplicht |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **AvroSource**. | Ja      |
 | storeSettings | Een groep eigenschappen voor het lezen van gegevens uit een gegevens archief. Elke connector op basis van een bestand heeft zijn eigen ondersteunde Lees instellingen onder `storeSettings`. **Zie de sectie Details in connector artikel-> Eigenschappen van de Kopieer activiteit**. | Nee       |
@@ -76,7 +76,7 @@ De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***
 
 De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***\*sink\**** .
 
-| Eigenschap      | Beschrijving                                                  | Vereist |
+| Eigenschap      | Beschrijving                                                  | Verplicht |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **AvroSink**. | Ja      |
 | storeSettings | Een groep eigenschappen voor het schrijven van gegevens naar een gegevens archief. Elke connector op basis van bestanden heeft eigen ondersteunde schrijf instellingen onder `storeSettings`. **Zie de sectie Details in connector artikel-> Eigenschappen van de Kopieer activiteit**. | Nee       |
@@ -87,6 +87,6 @@ Avro [complexe gegevens typen](https://avro.apache.org/docs/current/spec.html#sc
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
+- [Overzicht kopieeractiviteit](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 - [GetMetadata-activiteit](control-flow-get-metadata-activity.md)

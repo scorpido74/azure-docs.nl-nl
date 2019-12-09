@@ -1,29 +1,25 @@
 ---
-title: Azure AD B2C (micro soft-verificatie bibliotheek voor .NET)
+title: Azure AD B2C (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over specifieke overwegingen bij het gebruik van Azure AD B2C met de micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0996c5635223800a981497256654b7e418bf4163
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b8940ca6887e5c37659dd5b8d5a24ba7a2f4b889
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175596"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921930"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>MSAL.NET gebruiken om gebruikers aan te melden met sociale identiteiten
 
@@ -170,7 +166,7 @@ MSAL.Net ondersteunt een [token cache](/dotnet/api/microsoft.identity.client.tok
 
 Beide claims ontbreken in veel van de Azure AD B2C scenario's. 
 
-Het effect van de klant is dat wanneer u het gebruikers naam veld probeert weer te geven, u de waarde ' ontbreekt in de token reactie ' krijgt Als dit het geval is, is dit omdat Azure AD B2C geen waarde retourneert in de IdToken voor de preferred_username wegens beperkingen met betrekking tot sociale accounts en externe ID-providers (id). Azure AD retourneert een waarde voor preferred_username omdat u weet wie de gebruiker is, maar voor Azure AD B2C, omdat de gebruiker zich kan aanmelden met een lokaal account, Facebook, Google, GitHub, enzovoort. er is geen consistente waarde voor Azure AD B2C voor preferred_username. Voor het deblokkeren van de MSAL van de compatibiliteit met ADAL, hebben we besloten om ' ontbreekt te gebruiken in het token antwoord ' aan het einde van het verwerken van de Azure AD B2C-accounts wanneer de IdToken Nothing retourneert voor preferred_username. MSAL moet een waarde Retour neren voor preferred_username voor het onderhouden van de cache compatibiliteit tussen bibliotheken.
+Het effect van de klant is dat wanneer u het gebruikers naam veld probeert weer te geven, u de waarde ' ontbreekt in de token reactie ' krijgt Als dit het geval is, komt dit omdat Azure AD B2C geen waarde retourneert in de IdToken voor de preferred_username wegens beperkingen met de sociale accounts en externe ID-providers (id). Azure AD retourneert een waarde voor preferred_username omdat hij weet wie de gebruiker is, maar voor Azure AD B2C, omdat de gebruiker zich kan aanmelden met een lokaal account, Facebook, Google, GitHub, enzovoort. er is geen consistente waarde voor Azure AD B2C om te gebruiken voor preferred_username. Voor het deblokkeren van de MSAL van de compatibiliteit met ADAL, hebben we besloten om ' ontbreekt te gebruiken in het token antwoord ' aan het einde van de Azure AD B2C-accounts wanneer de IdToken Nothing retourneert voor preferred_username. MSAL moet een waarde Retour neren voor preferred_username om cache compatibiliteit tussen bibliotheken te behouden.
 
 ### <a name="workarounds"></a>Tijdelijke oplossingen
 
@@ -189,4 +185,4 @@ Meer informatie over het interactief verkrijgen van tokens met MSAL.NET voor Azu
 
 | Voorbeeld | Platform | Beschrijving|
 |------ | -------- | -----------|
-|[Active-Directory-B2C-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | Een eenvoudige Xamarin Forms-app die laat zien hoe u MSAL.NET kunt gebruiken om gebruikers te verifiëren via Azure AD B2C en toegang te krijgen tot een web-API met de resulterende tokens.|
+|[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | Een eenvoudige Xamarin Forms-app die laat zien hoe u MSAL.NET kunt gebruiken om gebruikers te verifiëren via Azure AD B2C en toegang te krijgen tot een web-API met de resulterende tokens.|

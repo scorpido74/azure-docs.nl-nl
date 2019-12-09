@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9f6fd2a01cdb325d543bc624d0c13bce1d84a02
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 55bba2ff51460a10feabd881458b8d4a15cde924
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848235"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914612"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Verificatie in twee stappen vereisen voor een gebruiker
 
@@ -52,7 +52,10 @@ Gebruikers accounts in azure Multi-Factor Authentication de volgende drie status
 
 De status van een gebruiker geeft aan of een beheerder deze heeft inge schreven in azure MFA en of het registratie proces is voltooid.
 
-Alle gebruikers beginnen *Uitgeschakeld*. Als u een gebruiker zich inschrijft via Azure MFA, wordt zijn of haar status gewijzigd naar *Ingeschakeld*. Zodra de ingeschakelde gebruiker zich heeft aangemeld en het registratieproces heeft voltooid, wordt de status ingesteld op *Afgedwongen*.  
+Alle gebruikers beginnen *Uitgeschakeld*. Als u een gebruiker zich inschrijft via Azure MFA, wordt zijn of haar status gewijzigd naar *Ingeschakeld*. Zodra de ingeschakelde gebruiker zich heeft aangemeld en het registratieproces heeft voltooid, wordt de status ingesteld op *Afgedwongen*.
+
+> [!NOTE]
+> Als MFA opnieuw wordt ingeschakeld voor een gebruikers object dat al registratie details, zoals een telefoon of e-mail adres, heeft, moeten beheerders die gebruiker MFA opnieuw registreren via Azure Portal of Power shell. Als de gebruiker zich niet opnieuw registreert, wordt de MFA-status niet overgezet van *ingeschakeld* om te worden *afgedwongen* in de gebruikers interface voor MFA-beheer.
 
 ### <a name="view-the-status-for-a-user"></a>De status van een gebruiker weer geven
 
@@ -179,6 +182,8 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 > [!NOTE]
 > Het gedrag en het Power shell-script hierboven zijn onlangs gewijzigd. Voorheen werd het script bespaard op de MFA-methoden, uitgeschakeld MFA en de methoden hersteld. Dit is nu niet langer nodig om de methoden niet te wissen met het standaard gedrag voor uitschakelen.
+>
+> Als MFA opnieuw wordt ingeschakeld voor een gebruikers object dat al registratie details, zoals een telefoon of e-mail adres, heeft, moeten beheerders die gebruiker MFA opnieuw registreren via Azure Portal of Power shell. Als de gebruiker zich niet opnieuw registreert, wordt de MFA-status niet overgezet van *ingeschakeld* om te worden *afgedwongen* in de gebruikers interface voor MFA-beheer.
 
 ## <a name="next-steps"></a>Volgende stappen
 

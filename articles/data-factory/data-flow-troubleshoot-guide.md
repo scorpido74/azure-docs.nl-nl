@@ -1,18 +1,20 @@
 ---
-title: Problemen met Azure Data Factory gegevens stromen oplossen
+title: Problemen met gegevens stromen oplossen
 description: Meer informatie over het oplossen van problemen met gegevens stromen in Azure Data Factory.
 services: data-factory
+ms.author: makromer
 author: kromerm
+manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/08/2019
-ms.author: makromer
-ms.openlocfilehash: 1b2309ec71cb3d43f4e5a39b80db593ab201c614
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.custom: seo-lt-2019
+ms.date: 12/06/2019
+ms.openlocfilehash: b972bbeac419d88afdd257a7fd19587dbaedf0d9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721347"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930179"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Problemen met Azure Data Factory gegevens stromen oplossen
 
@@ -84,6 +86,14 @@ In dit artikel worden algemene probleemoplossings methoden voor gegevens stromen
 
 - **Oplossing**: voor de bron transformatie die gebruikmaakt van een JSON-gegevensset, vouwt u JSON-instellingen uit en schakelt u ' Eén document ' in.
 
+### <a name="error-message-duplicate-columns-found-in-join"></a>Fout bericht: dubbele kolommen gevonden in samen voeging
+
+- **Symptomen**: deelname aan trans formatie resulteerde in kolommen aan de linkerkant en aan de rechter kant die dubbele kolom namen bevatten
+
+- **Oorzaak**: de stromen die worden toegevoegd, hebben algemene kolom namen
+
+- **Oplossing**: Voeg een SELECT-transforamtion toe na de koppeling en selecteer ' Remove Duplicate columns ' voor de invoer en uitvoer.
+
 
 ## <a name="general-troubleshooting-guidance"></a>Algemene richt lijnen voor probleem oplossing
 
@@ -95,7 +105,7 @@ In dit artikel worden algemene probleemoplossings methoden voor gegevens stromen
 
 Probeer deze bronnen voor meer informatie over probleem oplossing:
 
-*  [Data Factory-blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory functie aanvragen](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-Video's](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [MSDN-forum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 99cd9fc1da009660023a246c5210e7f54bdebcfd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f287d3782148ca48a0367fa2a6a9a346a0299684
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177417"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931346"
 ---
 # <a name="virtual-network-tap"></a>Virtual Network TAP
 
@@ -52,7 +52,7 @@ Met het virtuele netwerk van Azure (Terminal Access Point) kunt u het netwerk ve
 - [RSA NetWitness® Platform](https://www.rsa.com/azure)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)
 
-In de volgende afbeelding ziet u hoe virtuele netwerk tikken werkt. U kunt een TAP-configuratie toevoegen aan een [netwerk interface](virtual-network-network-interface.md) die is gekoppeld aan een virtuele machine die is geïmplementeerd in uw virtuele netwerk. De bestemming is een IP-adres van een virtueel netwerk in hetzelfde virtuele netwerk als de bewaakte netwerk interface of een gekoppeld [virtueel](virtual-network-peering-overview.md) netwerk. De Collector-oplossing voor Virtual Network TIKT kan worden geïmplementeerd achter een [interne Load Balancer van Azure](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#concepts) voor hoge Beschik baarheid. Zie [partner oplossingen](#virtual-network-tap-partner-solutions)voor meer informatie over het evalueren van implementatie opties voor afzonderlijke oplossingen.
+In de volgende afbeelding ziet u hoe virtuele netwerk tikken werkt. U kunt een TAP-configuratie toevoegen aan een [netwerk interface](virtual-network-network-interface.md) die is gekoppeld aan een virtuele machine die is geïmplementeerd in uw virtuele netwerk. De bestemming is een IP-adres van een virtueel netwerk in hetzelfde virtuele netwerk als de bewaakte netwerk interface of een gekoppeld [virtueel](virtual-network-peering-overview.md) netwerk. De Collector-oplossing voor Virtual Network TIKT kan worden geïmplementeerd achter een interne Load Balancer van Azure voor hoge Beschik baarheid. Zie [partner oplossingen](#virtual-network-tap-partner-solutions)voor meer informatie over het evalueren van implementatie opties voor afzonderlijke oplossingen.
 
 ![Hoe Virtual Network TIKT werkt](./media/virtual-network-tap/architecture.png)
 
@@ -64,7 +64,7 @@ Voordat u een virtueel netwerk maakt, moet u een bevestigings bericht hebben ont
 
 De accounts die u gebruikt voor het Toep assen van TIKT op netwerk interfaces, moeten worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de nodige acties zijn toegewezen in de volgende tabel:
 
-| Actie | Naam |
+| Bewerking | Naam |
 |---|---|
 | Microsoft.Network/virtualNetworkTaps/* | Vereist voor het maken, bijwerken, lezen en verwijderen van een virtueel netwerk Tik op resource |
 | Microsoft.Network/networkInterfaces/read | Vereist voor het lezen van de netwerk interface bron waarop de Tik wordt geconfigureerd |

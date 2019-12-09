@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 70272413ef4952cfeed558dd313f12096204d569
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 601f89c4510899dbb1f5d8a238961d9a4e5864e0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120489"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913722"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Opslag opties voor toepassingen in azure Kubernetes service (AKS)
 
@@ -60,8 +60,8 @@ Als u verschillende opslag lagen wilt definiëren, zoals Premium en Standard, ku
 
 In AKS worden twee initiële StorageClasses gemaakt:
 
-- *standaard* : maakt gebruik van Azure Standard-opslag voor het maken van een beheerde schijf. Het beleid voor opnieuw claim geeft aan dat de onderliggende Azure-schijf wordt verwijderd wanneer de pod die deze gebruikt, wordt verwijderd.
-- *Managed-Premium* : maakt gebruik van Azure Premium Storage voor het maken van een beheerde schijf. Het beleid voor opnieuw claimen geeft aan dat de onderliggende Azure-schijf wordt verwijderd wanneer de pod die deze gebruikt, wordt verwijderd.
+- *standaard* : maakt gebruik van Azure Standard-opslag voor het maken van een beheerde schijf. Het beleid voor opnieuw claim geeft aan dat de onderliggende Azure-schijf wordt verwijderd wanneer het permanente volume dat wordt gebruikt, wordt verwijderd.
+- *Managed-Premium* : maakt gebruik van Azure Premium Storage voor het maken van een beheerde schijf. Het beleid voor opnieuw claimen geeft aan dat de onderliggende Azure-schijf wordt verwijderd wanneer het permanente volume dat wordt gebruikt, wordt verwijderd.
 
 Als er geen StorageClass is opgegeven voor een permanent volume, wordt de standaard StorageClass gebruikt. Wees voorzichtig bij het aanvragen van permanente volumes, zodat ze de juiste opslag gebruiken die u nodig hebt. U kunt een StorageClass maken voor extra behoeften met behulp van `kubectl`. In het volgende voor beeld wordt Premium Managed Disks gebruikt en wordt aangegeven dat de onderliggende Azure-schijf *behouden moet blijven* wanneer de Pod wordt verwijderd:
 

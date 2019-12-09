@@ -1,22 +1,22 @@
 ---
-title: Een zelf-hostende Integration runtime maken in Azure Data Factory
+title: Een zelf-hostende Integration Runtime maken
 description: Meer informatie over het maken van een zelf-hostende Integration runtime in Azure Data Factory, waarmee gegevens fabrieken toegang hebben tot gegevens archieven in een particulier netwerk.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: f4eb275d8e1303ba68a23ac4ea0135c81c6a452a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+manager: anandsub
+ms.custom: seo-lt-2019
+ms.date: 06/18/2019
+ms.openlocfilehash: 0d04ea7d7003f274b252e057b7afced7759bfaae
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672294"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928510"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Een zelf-hostende Integration runtime maken en configureren
 
@@ -72,7 +72,7 @@ Gebruik de volgende stappen om een zelf-hostende IR te maken met behulp van Azur
 
     1. Kopieer en plak de verificatie sleutel. Selecteer **down load en installeer Integration runtime**.
 
-    1. Down load de zelf-hostende Integration runtime op een lokale Windows-computer. Voer het installatie programma uit.
+    1. Down load de zelf-hostende Integration runtime op een lokale Windows-computer. Voer het installatieprogramma uit.
 
     1. Plak de sleutel die u eerder hebt opgeslagen op de pagina **registreren Integration runtime (zelf-hostend)** en selecteer **registreren**.
     
@@ -112,7 +112,7 @@ Hier volgen de details van de para meters en eigenschappen van de toepassing:
 | **Sleutel** "`<AuthenticationKey>`"                                 | De vorige verificatie sleutel overschrijven of bijwerken. Wees voorzichtig met deze actie. Het vorige zelf-hostende IR-knoop punt kan offline gaan als de sleutel een nieuwe Integration runtime is. | Nee       |
 | **GenerateBackupFile** "`<filePath>`"`<password>`"            | Genereer een back-upbestand voor het huidige knoop punt. Het back-upbestand bevat de referenties van de knooppunt sleutel en de gegevens opslag. | Nee       |
 | **ImportBackupFile** "`<filePath>`"`<password>`"              | Herstel het knoop punt uit een back-upbestand.                          | Nee       |
-| **Opnieuw**                                                     | Start de zelf-hostende Integration runtime host-service opnieuw.   | Nee       |
+| **Opnieuw opstarten**                                                     | Start de zelf-hostende Integration runtime host-service opnieuw.   | Nee       |
 | **Beginnen**                                                       | Start de zelf-hostende integratie runtime host service.     | Nee       |
 | **Tab**                                                        | Stop de zelf-hostende integratie runtime host service.        | Nee       |
 | **StartUpgradeService**                                         | Start de zelf-hostende Integration runtime upgrade-service.       | Nee       |
@@ -355,7 +355,7 @@ De integratie runtime host service wordt automatisch opnieuw opgestart nadat u d
 Wanneer u de zelf-hostende Integration runtime hebt geregistreerd en u de proxy-instellingen wilt weer geven of bijwerken, gebruikt u Microsoft Integration Runtime Configuration Manager.
 
 1. Open **Microsoft Integration Runtime Configuration Manager**.
-1. Selecteer het tabblad **instellingen** .
+1. Selecteer het tabblad **Instellingen**.
 1. Selecteer onder **http-proxy**de **wijzigings** koppeling om het dialoog venster **http-proxy instellen** te openen.
 1. Selecteer **Next**. Vervolgens wordt er een waarschuwing weer gegeven waarin u wordt gevraagd om de proxy instelling op te slaan en de integratie runtime host-service opnieuw te starten.
 

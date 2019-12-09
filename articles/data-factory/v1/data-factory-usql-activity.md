@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 author: nabhishek
 ms.author: abnarain
-manager: craigg
+manager: anandsub
 robots: noindex
-ms.openlocfilehash: 7608719c4e0c2b9e23f1982efda9789d25f50224
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c6d3510dfdd02bf2eb07d656c706c44d895c582d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665951"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927908"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Gegevens transformeren door U-SQL-scripts uit te voeren op Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -46,27 +45,27 @@ U maakt een **Azure data Lake Analytics** gekoppelde service om een Azure data L
 
 De volgende tabel bevat beschrijvingen van de algemene eigenschappen die in de JSON-definitie worden gebruikt. U kunt kiezen tussen Service-Principal en verificatie van de gebruikers referenties.
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | **type** |De eigenschap type moet worden ingesteld op: **AzureDataLakeAnalytics**. |Ja |
 | **accountName** |Azure Data Lake Analytics account naam. |Ja |
 | **dataLakeAnalyticsUri** |Azure Data Lake Analytics-URI. |Nee |
-| **Abonnements** |Azure-abonnements-id |Nee (als dit niet wordt opgegeven, wordt het abonnement van de data factory gebruikt). |
+| **subscriptionId** |Azure-abonnements-id |Nee (als dit niet wordt opgegeven, wordt het abonnement van de data factory gebruikt). |
 | **resourceGroupName** |Naam van Azure-resourcegroep |Nee (als dit niet is opgegeven, wordt de resource groep van de data factory gebruikt). |
 
 ### <a name="service-principal-authentication-recommended"></a>Service-Principal-verificatie (aanbevolen)
-Als u Service-Principal-verificatie wilt gebruiken, registreert u een toepassings entiteit in Azure Active Directory (Azure AD) en verleent u deze toegang tot Data Lake Store. Zie [service-to-service-verificatie](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md)voor gedetailleerde stappen. Noteer de volgende waarden, die u gebruikt om de gekoppelde service te definiëren:
+Als u Service-Principal-verificatie wilt gebruiken, registreert u een toepassings entiteit in Azure Active Directory (Azure AD) en verleent u deze toegang tot Data Lake Store. Zie voor gedetailleerde stappen [Service-naar-serviceverificatie](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Noteer de volgende waarden, die u gebruikt voor het definiëren van de gekoppelde service:
 * Toepassings-id
-* Toepassings sleutel 
+* Toepassingssleutel 
 * Tenant-id
 
 Gebruik Service-Principal-verificatie door de volgende eigenschappen op te geven:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Geef de client-ID van de toepassing op. | Ja |
-| **servicePrincipalKey** | Geef de sleutel van de toepassing op. | Ja |
-| **tenant** | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja |
+| **servicePrincipalId** | Opgeven van de toepassing client-ID. | Ja |
+| **servicePrincipalKey** | Geef de sleutel van de toepassing. | Ja |
+| **tenant** | De tenantgegevens (domain name of tenant-ID) opgeven in uw toepassing zich bevindt. U kunt het ophalen van de muis in de rechterbovenhoek van de Azure-portal. | Ja |
 
 **Voor beeld: Service-Principal-verificatie**
 ```json
@@ -90,7 +89,7 @@ Gebruik Service-Principal-verificatie door de volgende eigenschappen op te geven
 ### <a name="user-credential-authentication"></a>Verificatie van gebruikers referenties
 U kunt ook verificatie van de gebruikers referenties voor Data Lake Analytics gebruiken door de volgende eigenschappen op te geven:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | **autorisatie** | Klik op de knop **machtigen** in de Data Factory editor en voer uw referenties in die de automatisch gegenereerde autorisatie-URL aan deze eigenschap toewijzen. | Ja |
 | **sessionId** | OAuth-sessie-ID van de OAuth-autorisatie sessie. Elke sessie-ID is uniek en kan slechts één keer worden gebruikt. Deze instelling wordt automatisch gegenereerd wanneer u de Data Factory editor gebruikt. | Ja |
@@ -116,7 +115,7 @@ U kunt ook verificatie van de gebruikers referenties voor Data Lake Analytics ge
 #### <a name="token-expiration"></a>Token verloop tijd
 De autorisatie code die u hebt gegenereerd met behulp van de knop **autorisatie** verloopt na enige tijd. Raadpleeg de volgende tabel voor de verloop tijden voor verschillende soorten gebruikers accounts. Mogelijk wordt het volgende fout bericht weer gegeven wanneer het verificatie **token verloopt**: referentie bewerkings fout: INVALID_GRANT-AADSTS70002: fout bij het valideren van referenties. AADSTS70008: de verleende toegangs toekenning is verlopen of ingetrokken. Tracerings-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 correlatie-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7-tijds tempel: 2015-12-15 21:09:31Z
 
-| Gebruikers type | Verloopt na |
+| Gebruikerstype | Verloopt na |
 |:--- |:--- |
 | Gebruikers accounts die niet worden beheerd door Azure Active Directory (@hotmail.com, @live.com, enz.) |12 uur |
 | Gebruikers accounts die worden beheerd door Azure Active Directory (AAD) |14 dagen na de laatste uitvoering van het segment. <br/><br/>90 dagen, als een segment op basis van op OAuth gebaseerde gekoppelde service ten minste één keer per 14 dagen wordt uitgevoerd. |
@@ -206,7 +205,7 @@ Het volgende JSON-code fragment definieert een pijp lijn met een Data Lake Analy
 
 In de volgende tabel worden namen en beschrijvingen van eigenschappen beschreven die specifiek zijn voor deze activiteit. 
 
-| Eigenschap            | Beschrijving                              | Vereist                                 |
+| Eigenschap            | Beschrijving                              | Verplicht                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
 | type                | De eigenschap type moet worden ingesteld op **DataLakeAnalyticsU-SQL**. | Ja                                      |
 | linkedServiceName   | Verwijzing naar de Azure Data Lake Analytics geregistreerd als een gekoppelde service in Data Factory | Ja                                      |

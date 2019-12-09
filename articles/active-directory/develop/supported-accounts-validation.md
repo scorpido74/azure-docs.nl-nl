@@ -1,5 +1,5 @@
 ---
-title: Validatie verschillen per ondersteund account type (SignInAudience)-micro soft Identity platform/Azure Active Directory
+title: Validatie verschillen per account type-micro soft Identity-platform | Azure
 description: Meer informatie over de validatie verschillen van verschillende eigenschappen voor verschillende ondersteunde account typen bij het registreren van uw app met het micro soft Identity platform.
 author: SureshJa
 ms.author: sureshja
@@ -11,12 +11,12 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bea6e3ea93e8b630970a8d86fc246eddaf3f56c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 576adc99ef7d794f50efeb61375f3e59f8815033
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392603"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919355"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>Validatie verschillen per ondersteund account type (signInAudience)
 
@@ -44,7 +44,7 @@ Zie de volgende tabel voor de verschillen in de validatie van verschillende eige
 | Bereiken die door deze API worden gedefinieerd (`oauth2Permissions`) | Maximale lengte van de scope naam van 120 tekens <br><br> Geen limiet * voor het aantal gedefinieerde bereiken | Maximale lengte van de scope naam van 120 tekens <br><br> Geen limiet * voor het aantal gedefinieerde bereiken |  Maximale lengte van de scope naam van 40 tekens <br><br> Maxi maal 100 scopes gedefinieerd | 
 | Geautoriseerde client toepassingen (`preautorizedApplications`) | Geen limiet * | Geen limiet * | Totaal aantal van 500 <br><br> Maximum aantal gedefinieerde 100-client-apps <br><br> Maxi maal 30 scopes gedefinieerd per client | 
 | appRoles | Ondersteund <br> Geen limiet * | Ondersteund <br> Geen limiet * | Niet ondersteund | 
-| Afmeldings-URL | http://localhost is toegestaan <br><br> Maximale lengte van 255 tekens | http://localhost is toegestaan <br><br> Maximale lengte van 255 tekens | <br><br> https://localhost is toegestaan, http://localhost mislukt voor MSA <br><br> Maximale lengte van 255 tekens <br><br> HTTP-schema is niet toegestaan <br><br> Joker tekens worden niet ondersteund | 
+| Afmeldings-URL | http://localhost is toegestaan <br><br> Maximale lengte van 255 tekens | http://localhost is toegestaan <br><br> Maximale lengte van 255 tekens | <br><br> https://localhost is toegestaan http://localhost mislukt voor MSA <br><br> Maximale lengte van 255 tekens <br><br> HTTP-schema is niet toegestaan <br><br> Joker tekens worden niet ondersteund | 
 
 \* Er is een algemene limiet van ongeveer 1000 items in alle verzamelings eigenschappen van het app-object
 

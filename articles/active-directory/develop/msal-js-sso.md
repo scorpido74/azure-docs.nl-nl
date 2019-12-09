@@ -1,29 +1,25 @@
 ---
-title: Eenmalige aanmelding (micro soft-verificatie bibliotheek voor Java script)
+title: Eenmalige aanmelding (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het bouwen van eenmalige aanmelding met behulp van de micro soft-verificatie bibliotheek voor Java script (MSAL. js).
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da39b8435acdd11108a945c6bac5147dc8b6ad50
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 921c02e682c722a4e96f98fb0fc54d7fcbb82220
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150573"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916261"
 ---
 # <a name="single-sign-on-with-msaljs"></a>Eenmalige aanmelding met MSAL.js
 
@@ -92,7 +88,7 @@ userAgentApplication.acquireTokenSilent(request).then(function(response) {
 
 **Aanmeldings Hint gebruiken**
 
-Als u geen SID-claim hebt geconfigureerd of de account selectie prompt wilt overs laan in interactieve verificatie aanroepen, kunt u dit doen door een `login_hint` op te geven in de aanvraag parameters en eventueel een `domain_hint` als `extraQueryParameters` in de interactieve methoden MSAL. js (@no __t_3_, `loginRedirect`, `acquireTokenPopup` en `acquireTokenRedirect`). Bijvoorbeeld:
+Als u geen SID-claim hebt geconfigureerd of de account selectie prompt wilt overs laan in interactieve verificatie aanroepen, kunt u dit doen door een `login_hint` op te geven in de aanvraag parameters en eventueel een `domain_hint` als `extraQueryParameters` in de interactieve methoden MSAL. js (`loginPopup`, `loginRedirect`, `acquireTokenPopup` en `acquireTokenRedirect`). Bijvoorbeeld:
 
 ```javascript
 var request = {
@@ -113,7 +109,7 @@ U kunt de waarden voor login_hint en domain_hint ophalen door de claims te lezen
 Lees [hier](v2-oauth2-implicit-grant-flow.md) meer informatie over de waarden voor aanmeldings hint en domein hint.
 
 > [!Note]
-> U kunt SID en login_hint niet tegelijkertijd door geven. Dit resulteert in een fout melding.
+> U kunt de SID en login_hint op hetzelfde moment niet door geven. Dit resulteert in een fout melding.
 
 ## <a name="sso-without-msaljs-login"></a>SSO zonder MSAL. js-aanmelding
 

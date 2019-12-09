@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: 4aab699ff0141b648066fae0de445c4467be7509
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 394c674da63bbda643246c3d61fb670d6ac8d1f7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048394"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928621"
 ---
 # <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit
 
@@ -31,26 +31,34 @@ Met Azure Hybrid Benefit kunt u ervoor kiezen om alleen te betalen voor de onder
 
 U kunt uw licentie model kiezen of wijzigen met behulp van de Azure Portal of door gebruik te maken van een van de volgende Api's:
 
-- Het licentie type instellen of bijwerken met behulp van Power shell:
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-  - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase)
-  - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
-  - [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
-  - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)
+Het licentie type instellen of bijwerken met behulp van Power shell:
 
-- Het licentie type instellen of bijwerken met behulp van de Azure CLI:
+- [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)
+- [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase)
+- [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance)
+- [Set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance)
 
-  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
-  - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
-  - [AZ SQL mi Create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
-  - [AZ SQL mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-- Het licentie type instellen of bijwerken met behulp van de REST API:
+Het licentie type instellen of bijwerken met behulp van de Azure CLI:
 
-  - [Data bases: maken of bijwerken](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
-  - [Data bases-bijwerken](https://docs.microsoft.com/rest/api/sql/databases/update)
-  - [Beheerde instanties: maken of bijwerken](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
-  - [Beheerde instanties-bijwerken](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
+- [az sql db create](/cli/azure/sql/db#az-sql-db-create)
+- [az sql db update](/cli/azure/sql/db#az-sql-db-update)
+- [AZ SQL mi Create](/cli/azure/sql/mi#az-sql-mi-create)
+- [AZ SQL mi update](/cli/azure/sql/mi#az-sql-mi-update)
+
+# <a name="rest-apitabrest"></a>[REST API](#tab/rest)
+
+Het licentie type instellen of bijwerken met behulp van de REST API:
+
+- [Data bases: maken of bijwerken](/rest/api/sql/databases/createorupdate)
+- [Data bases-bijwerken](/rest/api/sql/databases/update)
+- [Beheerde instanties: maken of bijwerken](/rest/api/sql/managedinstances/createorupdate)
+- [Beheerde instanties-bijwerken](/rest/api/sql/managedinstances/update)
+
+* * *
 
 ## <a name="next-steps"></a>Volgende stappen
 

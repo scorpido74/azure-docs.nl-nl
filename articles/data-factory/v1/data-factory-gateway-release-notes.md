@@ -3,21 +3,20 @@ title: Releaseopmerkingen voor Data Management Gateway
 description: Opmerkingen bij de release van Data Management Gateway Tory
 services: data-factory
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: 14762e82-76d9-41c4-ba9f-14a54da29c36
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: bb89ed08b05f9a8f271ceee400bc609881e7048d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9d0e31a89494477e048c7a2f9f7b8165e08d1a2f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682573"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924264"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Releaseopmerkingen voor Data Management Gateway
 > [!NOTE]
@@ -65,7 +64,7 @@ De release opmerkingen worden hier niet meer onderhouden. Lees [hier](https://go
 - Fixed: onjuiste Lees van de decimale waarde van Oracle als bron.
 
 ## <a name="2661922"></a>2.6.6192.2
-### <a name="whats-new"></a>Nieuwe functies
+### <a name="whats-new"></a>Nieuws
 - Klanten kunnen feedback geven over de registratie van de gateway.
 - Een nieuwe compressie-indeling ondersteunen: ZIP (effenen)
 
@@ -75,14 +74,14 @@ De release opmerkingen worden hier niet meer onderhouden. Lees [hier](https://go
 
 
 ## <a name="2561641"></a>2.5.6164.1
-### <a name="enhancements"></a>Opties
+### <a name="enhancements"></a>Verbeteringen
 - Verbeterde en robuuste ervaring voor het registreren van de gateway: u kunt nu de voortgangs status bijhouden tijdens het registratie proces van de gateway, waardoor de registratie-ervaring sneller reageert.
 - Verbetering van het herstel proces van de gateway: u kunt nog steeds een gateway herstellen, zelfs als u niet over het back-upbestand van de gateway met deze update beschikt. Hiervoor moet u de referenties van de gekoppelde service opnieuw instellen in de portal.
 - Fout oplossing.
 
 ## <a name="2461511"></a>2.4.6151.1
 
-### <a name="whats-new"></a>Nieuwe functies
+### <a name="whats-new"></a>Nieuws
 
 - U kunt de referenties van de gegevens bron nu lokaal opslaan. De referenties zijn versleuteld. De referenties van de gegevens bron kunnen worden hersteld en hersteld met behulp van het back-upbestand dat vanaf de bestaande gateway, al op locatie, kan worden geëxporteerd.
 

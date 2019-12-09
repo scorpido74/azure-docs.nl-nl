@@ -4,7 +4,7 @@ description: In dit artikel wordt beschreven hoe u een SQL Server Integration Se
 services: data-factory
 documentationcenter: ''
 author: swinarko
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: sawinark
-ms.openlocfilehash: 3bfef0d787d8289055ab80e2ac30408dd7a13fb4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f45c317e64f63fe6192f4e32507876841f4322de
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673765"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932103"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Voer een SSIS-pakket uit met de opgeslagen procedure activiteit in Azure Data Factory
 In dit artikel wordt beschreven hoe u een SSIS-pakket uitvoert in een Azure Data Factory pijp lijn met behulp van een opgeslagen procedure activiteit. 
@@ -34,7 +34,7 @@ Een Azure SSIS Integration runtime maken als u er nog geen hebt door de stapsgew
 ## <a name="data-factory-ui-azure-portal"></a>Data Factory gebruikers interface (Azure Portal)
 In deze sectie gebruikt u Data Factory gebruikers interface om een Data Factory pijp lijn te maken met een opgeslagen procedure activiteit die een SSIS-pakket aanroept.
 
-### <a name="create-a-data-factory"></a>Een data factory maken
+### <a name="create-a-data-factory"></a>Een gegevensfactory maken
 De eerste stap is het maken van een data factory met behulp van de Azure Portal. 
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
@@ -42,9 +42,9 @@ De eerste stap is het maken van een data factory met behulp van de Azure Portal.
 3. Klik op **Nieuw** in het linkermenu en klik vervolgens op **Gegevens en analyses** en **Data Factory**. 
    
    ![Nieuw -> DataFactory](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png)
-2. Voer op de pagina **Nieuwe data factory** **ADFTutorialDataFactory** in als **naam**. 
+2. Voer op de pagina **Nieuwe gegevensfactory** **ADFTutorialDataFactory** in als de **naam**. 
       
-     ![Pagina nieuwe data factory](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory.png)
+     ![De pagina Nieuwe data factory](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory.png)
  
    De naam van de Azure-gegevensfactory moet **wereldwijd uniek** zijn. Als het volgende foutbericht wordt weergegeven voor het naamveld, wijzigt u de naam van de data factory (bijvoorbeeld uwnaamADFTutorialDataFactory). Zie het artikel [Data factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
   
@@ -63,13 +63,13 @@ De eerste stap is het maken van een data factory met behulp van de Azure Portal.
 8. Op het dashboard ziet u de volgende tegel met de status: **Gegevensfactory implementeren**. 
 
      ![tegel met de status 'gegevensfactory implementeren'](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
-9. Wanneer de gegevensfactory is gemaakt, ziet u de pagina **Gegevensfactory** zoals wordt weergegeven in de afbeelding.
+9. Na het aanmaken ziet u de pagina **Data Factory** zoals weergegeven in de afbeelding.
    
      ![Startpagina van de gegevensfactory](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 10. Klik op de tegel **Maken en controleren** om de gebruikersinterface (UI) van Azure Data Factory te openen op een afzonderlijk tabblad. 
 
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Een pijp lijn maken met een opgeslagen procedure activiteit
-In deze stap gebruikt u de Data Factory-gebruikers interface om een pijp lijn te maken. U voegt een opgeslagen procedure activiteit toe aan de pijp lijn en configureert deze voor het uitvoeren van het SSIS-pakket met behulp van de opgeslagen procedure sp_executesql. 
+In deze stap gebruikt u de Data Factory-gebruikers interface om een pijp lijn te maken. U voegt een opgeslagen procedure activiteit toe aan de pijp lijn en configureert deze voor het uitvoeren van het SSIS-pakket door gebruik te maken van de sp_executesql opgeslagen procedure. 
 
 1. Klik op de pagina aan de slag op **pijp lijn maken**: 
 
@@ -101,7 +101,7 @@ In deze stap gebruikt u de Data Factory-gebruikers interface om een pijp lijn te
     5. Voer een **teken reeks**in bij het **type** van de para meter. 
     6. Voer de volgende SQL-query in voor de **waarde** van de para meter:
 
-        Geef in de SQL-query de juiste waarden op voor de para meters **mapnaam**, **project_name**en **package_name** . 
+        Geef in de SQL-query de juiste waarden op voor de para meters **folder_name**, **project_name**en **package_name** . 
 
         ```sql
         DECLARE @return_value INT, @exe_id BIGINT, @err_msg NVARCHAR(150)    EXEC @return_value=[SSISDB].[catalog].[create_execution] @folder_name=N'<FOLDER name in SSIS Catalog>', @project_name=N'<PROJECT name in SSIS Catalog>', @package_name=N'<PACKAGE name>.dtsx', @use32bitruntime=0, @runinscaleout=1, @useanyworker=1, @execution_id=@exe_id OUTPUT    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1    EXEC [SSISDB].[catalog].[start_execution] @execution_id=@exe_id, @retry_count=0    IF(SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id=@exe_id)<>7 BEGIN SET @err_msg=N'Your package execution did not succeed for execution ID: ' + CAST(@exe_id AS NVARCHAR(20)) RAISERROR(@err_msg,15,1) END
@@ -151,7 +151,7 @@ In deze sectie gebruikt u Azure PowerShell om een Data Factory-pijp lijn te make
 
 Installeer de nieuwste Azure PowerShell-modules met de instructies in [Azure PowerShell installeren en configureren](/powershell/azure/install-az-ps). 
 
-### <a name="create-a-data-factory"></a>Een data factory maken
+### <a name="create-a-data-factory"></a>Een gegevensfactory maken
 U kunt dezelfde data factory gebruiken die de Azure-SSIS IR heeft of een afzonderlijke data factory maken. De volgende procedure bevat stappen voor het maken van een data factory. In deze data factory maakt u een pijp lijn met een opgeslagen procedure activiteit. Met de activiteit opgeslagen procedure wordt een opgeslagen procedure uitgevoerd in de SSISDB-data base om uw SSIS-pakket uit te voeren. 
 
 1. Definieer een variabele voor de naam van de resourcegroep die u later gaat gebruiken in PowerShell-opdrachten. Kopieer de tekst van de volgende opdracht naar PowerShell, geef tussen dubbele aanhalingstekens een naam op voor de [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en voer de opdracht uit. Bijvoorbeeld: `"adfrg"`. 
@@ -224,7 +224,7 @@ Maak een gekoppelde service om uw Azure-SQL database die als host fungeert voor 
     ```
 
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Een pijp lijn maken met een opgeslagen procedure activiteit 
-In deze stap maakt u een pijp lijn met een opgeslagen procedure activiteit. De activiteit roept de opgeslagen procedure sp_executesql aan om uw SSIS-pakket uit te voeren. 
+In deze stap maakt u een pijp lijn met een opgeslagen procedure activiteit. Met de activiteit wordt de sp_executesql opgeslagen procedure aangeroepen om uw SSIS-pakket uit te voeren. 
 
 1. Maak een JSON-bestand met de naam **RunSSISPackagePipeline. json** in de map **C:\ADF\RunSSISPackage** met de volgende inhoud:
 

@@ -1,22 +1,22 @@
 ---
-title: 'Vertakking in Azure Data Factory pijp lijn '
+title: Vertakking in Azure Data Factory pijp lijn
 description: Leer de stroom van gegevens in Azure Data Factory beheren door activiteiten te vertakken en te koppelen.
 services: data-factory
-documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
+manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 0a7e5f56fe71c174c78f1363e403ae41a2ec90a6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 277616d9fcd15affc7ddc8ede5d9af3ff68c62f8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683675"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926604"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Activiteiten vertakken en koppelen in een Data Factory-pijplijn
 
@@ -29,7 +29,7 @@ Deze afbeelding biedt een overzicht van het scenario:
 Deze zelf studie laat zien hoe u de volgende taken kunt uitvoeren:
 
 > [!div class="checklist"]
-> * Een data factory maken
+> * Een gegevensfactory maken
 > * Een gekoppelde Azure Storage-service maken
 > * Een Azure Blob-gegevensset maken
 > * Een pijplijn met een kopieeractiviteit en een webactiviteit maken
@@ -63,7 +63,7 @@ Maak een toepassing zoals beschreven in [een Azure Active Directory-toepassing m
    Tamika|Walsh
    ```
 
-1. Open Azure Storage Explorer. Breid uw opslag account uit. Klik met de rechter muisknop op **BLOB-containers** en selecteer **BLOB-container maken**.
+1. Open Azure Storage Explorer. Breid uw opslag account uit. Klik met de rechtermuisknop op **Blobcontainers** en selecteer **Blobcontainer maken**.
 1. Geef de nieuwe container *adfv2branch* een naam en selecteer **uploaden** om het bestand *input. txt* toe te voegen aan de container.
 
 ## Visual Studio-project maken<a name="create-visual-studio-project"></a>
@@ -77,7 +77,7 @@ Een C# .net-console toepassing maken:
 
 ### <a name="install-nuget-packages"></a>NuGet-pakketten installeren
 
-1. Selecteer **Hulpprogram ma's** > **NuGet package manager** > **Package Manager-console**.
+1. Selecteer **Extra** > **NuGet-pakketbeheer** > **Package Manager Console**.
 1. Voer in **Package Manager Console** de volgende opdrachten uit om pakketten te installeren. Raadpleeg het [pakket micro soft. Azure. Management. DataFactory nuget](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) voor meer informatie.
 
    ```powershell
@@ -133,7 +133,7 @@ Een C# .net-console toepassing maken:
    static string sendSuccessEmailActivity = "SendSuccessEmailActivity";
    ```
 
-1. Voeg de volgende code toe aan de methode `Main`. Met deze code wordt een instantie van `DataFactoryManagementClient`-klasse gemaakt. Vervolgens gebruikt u dit object om data factory, een gekoppelde service, gegevens sets en een pijp lijn te maken. U kunt dit object ook gebruiken om de details van de pijplijn uitvoering te controleren.
+1. Voeg de volgende code toe aan de methode `Main`. Deze code maakt een instantie van `DataFactoryManagementClient` klasse. Vervolgens gebruikt u dit object om data factory, een gekoppelde service, gegevens sets en een pijp lijn te maken. U kunt dit object ook gebruiken om de details van de pijplijn uitvoering te controleren.
 
    ```csharp
    // Authenticate and create a data factory management client
@@ -144,7 +144,7 @@ Een C# .net-console toepassing maken:
    var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
    ```
 
-### <a name="create-a-data-factory"></a>Een data factory maken
+### <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 1. Voeg een `CreateOrUpdateDataFactory` methode toe aan uw *Program.cs* -bestand:
 
@@ -171,7 +171,7 @@ Een C# .net-console toepassing maken:
    }
    ```
 
-1. Voeg de volgende regel toe aan de methode `Main` waarmee een data factory wordt gemaakt:
+1. Voeg de volgende regel toe aan de `Main` methode waarmee een data factory wordt gemaakt:
 
    ```csharp
    Factory df = CreateOrUpdateDataFactory(client);
@@ -195,7 +195,7 @@ Een C# .net-console toepassing maken:
    }
    ```
 
-1. Voeg de volgende regel toe aan de `Main`-methode waarmee een Azure Storage gekoppelde service wordt gemaakt:
+1. Voeg de volgende regel toe aan de `Main` methode waarmee een Azure Storage gekoppelde service wordt gemaakt:
 
    ```csharp
    client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, storageLinkedServiceName, StorageLinkedServiceDefinition(client));
@@ -258,7 +258,7 @@ Let op het gebruik van para meters voor de *FolderPath*. `sourceBlobContainer` i
    }
    ```
 
-1. Voeg de volgende code toe aan de methode `Main` waarmee zowel de bron-als Sink-gegevens sets van Azure Blob worden gemaakt.
+1. Voeg de volgende code toe aan de `Main` methode waarmee zowel de bron-als Sink-gegevens sets van Azure Blob worden gemaakt.
 
    ```csharp
    client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSourceDatasetName, SourceBlobDatasetDefinition(client));
@@ -332,9 +332,9 @@ Uw werk stroom ziet er ongeveer als volgt uit:
 
 ![Werkstroom voor e-mail met succesbericht](media/tutorial-control-flow/success-email-workflow-trigger.png)
 
-Deze JSON-inhoud wordt uitgelijnd met de klasse `EmailRequest` die u in de vorige sectie hebt gemaakt.
+Deze JSON-inhoud wordt uitgelijnd met de `EmailRequest`-klasse die u in de vorige sectie hebt gemaakt.
 
-Een actie van `Office 365 Outlook – Send an email` toevoegen. Voor de actie **een E-mail verzenden** kunt u aanpassen hoe u het e-mail bericht wilt opmaken, met behulp van de eigenschappen die worden door gegeven in het JSON-schema van de aanvraag **tekst** . Hier volgt een voorbeeld:
+Een actie van `Office 365 Outlook – Send an email`toevoegen. Voor de actie **een E-mail verzenden** kunt u aanpassen hoe u het e-mail bericht wilt opmaken, met behulp van de eigenschappen die worden door gegeven in het JSON-schema van de aanvraag **tekst** . Hier volgt een voorbeeld:
 
 ![Logic app Designer-actie e-mail verzenden](media/tutorial-control-flow/customize-send-email-action.png)
 
@@ -360,7 +360,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
 ## <a name="create-a-pipeline"></a>Een pijplijn maken
 
-Ga terug naar uw project in Visual Studio. We voegen nu de code toe die een pijp lijn maakt met een Kopieer activiteit en een `DependsOn`-eigenschap. In deze zelf studie bevat de pijp lijn één activiteit, een Kopieer activiteit, die in de BLOB-gegevensset als bron wordt gebruikt en een andere blob-gegevensset als sink. Als de Kopieer activiteit slaagt of mislukt, worden verschillende e-mail taken aangeroepen.
+Ga terug naar uw project in Visual Studio. We voegen nu de code toe die een pijp lijn maakt met een Kopieer activiteit en `DependsOn` eigenschap. In deze zelf studie bevat de pijp lijn één activiteit, een Kopieer activiteit, die in de BLOB-gegevensset als bron wordt gebruikt en een andere blob-gegevensset als sink. Als de Kopieer activiteit slaagt of mislukt, worden verschillende e-mail taken aangeroepen.
 
 In deze pijpelijn gebruikt u de volgende functies:
 
@@ -443,7 +443,7 @@ In deze pijpelijn gebruikt u de volgende functies:
             }
     ```
 
-1. Voeg de volgende regel toe aan de methode `Main` waarmee de pijp lijn wordt gemaakt:
+1. Voeg de volgende regel toe aan de `Main` methode waarmee de pijp lijn wordt gemaakt:
 
    ```csharp
    client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, PipelineDefinition(client));
@@ -468,7 +468,7 @@ Parameters = new Dictionary<string, ParameterSpecification>
 
 ### <a name="web-activity"></a>Webactiviteit
 
-Met de webactiviteit kan een aanroep naar een wille keurig REST-eind punt worden aangeroepen. Zie [webactiviteit in azure Data Factory](control-flow-web-activity.md)voor meer informatie over de activiteit. Deze pijp lijn gebruikt een webactiviteit om de werk stroom van Logic Apps e-mail aan te roepen. U maakt twee webactiviteiten: een die de `CopySuccessEmail`-werk stroom aanroept en een die de `CopyFailWorkFlow` aanroept.
+Met de webactiviteit kan een aanroep naar een wille keurig REST-eind punt worden aangeroepen. Zie [webactiviteit in azure Data Factory](control-flow-web-activity.md)voor meer informatie over de activiteit. Deze pijp lijn gebruikt een webactiviteit om de werk stroom van Logic Apps e-mail aan te roepen. U maakt twee webactiviteiten: een die de `CopySuccessEmail`-werk stroom aanroept en een die de `CopyFailWorkFlow`aanroept.
 
 ```csharp
         new WebActivity
@@ -488,18 +488,18 @@ Met de webactiviteit kan een aanroep naar een wille keurig REST-eind punt worden
         }
 ```
 
-Plak in de eigenschap `Url` de eind punten van de **http-post-URL** uit uw Logic apps werk stromen. Geef in de eigenschap `Body` een exemplaar van de klasse `EmailRequest` door. De e-mailaanvraag bevat de volgende eigenschappen:
+Plak in de eigenschap `Url` de eind punten van de **http-post-URL** uit uw Logic apps werk stromen. Geef in de eigenschap `Body` een exemplaar van de klasse `EmailRequest` op. De e-mailaanvraag bevat de volgende eigenschappen:
 
-* Bericht. Hiermee wordt de waarde van `@{activity('CopyBlobtoBlob').output.dataWritten` door gegeven. Hiermee wordt een eigenschap van de vorige Kopieer activiteit geopend en wordt de waarde van `dataWritten` door gegeven. In het geval waarin het kopiëren mislukt, wordt de uitvoer van de fout doorgegeven in plaats van `@{activity('CopyBlobtoBlob').error.message`.
-* Data Factory naam. Hiermee wordt de waarde van `@{pipeline().DataFactory}` door gegeven met deze systeem variabele kunt u toegang krijgen tot de bijbehorende data factory naam. Zie [systeem variabelen](control-flow-system-variables.md)voor een lijst met systeem variabelen.
-* Naam van de pijp lijn. Hiermee wordt de waarde van `@{pipeline().Pipeline}` door gegeven. Met deze systeem variabele kunt u toegang krijgen tot de bijbehorende naam van de pijp lijn.
-* Ontvangst. Hiermee wordt de waarde van `"@pipeline().parameters.receiver"` door gegeven. Toegang tot de pijplijn parameters.
+* Bericht. Hiermee wordt de waarde van `@{activity('CopyBlobtoBlob').output.dataWritten`door gegeven. Hiermee wordt een eigenschap van de vorige Kopieer activiteit geopend en wordt de waarde van `dataWritten`door gegeven. In het geval waarin het kopiëren mislukt, wordt de uitvoer van de fout doorgegeven in plaats van `@{activity('CopyBlobtoBlob').error.message`.
+* Data Factory naam. Hiermee wordt de waarde van `@{pipeline().DataFactory}` door gegeven aan deze systeem variabele kunt u toegang krijgen tot de bijbehorende data factory naam. Zie [systeem variabelen](control-flow-system-variables.md)voor een lijst met systeem variabelen.
+* Naam van de pijp lijn. Hiermee wordt de waarde van `@{pipeline().Pipeline}`door gegeven. Met deze systeem variabele kunt u toegang krijgen tot de bijbehorende naam van de pijp lijn.
+* Ontvangst. Hiermee wordt de waarde van `"@pipeline().parameters.receiver"`door gegeven. Toegang tot de pijplijn parameters.
 
 Met deze code wordt een nieuwe activiteit afhankelijkheid gemaakt die afhankelijk is van de vorige Kopieer activiteit.
 
 ## <a name="create-a-pipeline-run"></a>Een pijplijnuitvoering maken
 
-Voeg de volgende code toe aan de methode `Main` waarmee een pijplijn uitvoering wordt geactiveerd.
+Voeg de volgende code toe aan de `Main` methode waarmee een pijplijn uitvoering wordt geactiveerd.
 
 ```csharp
 // Create a pipeline run
@@ -517,7 +517,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 ## <a name="main-class"></a>Main-klasse
 
-De laatste `Main`-methode moet er als volgt uitzien.
+De laatste `Main` methode moet er als volgt uitzien.
 
 ```csharp
 // Authenticate and create a data factory management client
@@ -570,7 +570,7 @@ Bouw het programma en voer het uit om een pijplijnuitvoering te activeren.
 
     Met deze code wordt doorlopend de status van de uitvoering gecontroleerd totdat deze klaar is met het kopiëren van de gegevens.
 
-1. Voeg de volgende code toe aan de methode `Main` waarmee details van de uitvoer van de Kopieer activiteit worden opgehaald, bijvoorbeeld de grootte van de gelezen/geschreven gegevens:
+1. Voeg de volgende code toe aan de `Main` methode waarmee details van de uitvoer van de Kopieer activiteit worden opgehaald, bijvoorbeeld de grootte van de gegevens die zijn gelezen/geschreven:
 
     ```csharp
     // Check the copy activity run details
@@ -754,7 +754,7 @@ Press any key to exit...
 In deze zelf studie hebt u de volgende taken doorstaan:
 
 > [!div class="checklist"]
-> * Een data factory maken
+> * Een gegevensfactory maken
 > * Een gekoppelde Azure Storage-service maken
 > * Een Azure Blob-gegevensset maken
 > * Een pijplijn met een kopieeractiviteit en een webactiviteit maken

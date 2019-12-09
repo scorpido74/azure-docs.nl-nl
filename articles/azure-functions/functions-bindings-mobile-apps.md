@@ -5,17 +5,17 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 474cdc52d34d3f5e00dee69b7cc9861042cbcc04
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 051b8780a102a8a1ec4d3979cc53b686e2823dc8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231118"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928599"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps bindingen voor Azure Functions 
 
 > [!NOTE]
-> Azure Mobile Apps-bindingen zijn alleen beschikbaar voor Azure Functions 1. x. Ze worden niet ondersteund in Azure Functions 2. x.
+> Azure Mobile Apps-bindingen zijn alleen beschikbaar voor Azure Functions 1. x. Ze worden niet ondersteund in Azure Functions 2. x en hoger.
 
 In dit artikel wordt uitgelegd hoe u kunt werken met [Azure Mobile apps](../app-service-mobile/app-service-mobile-value-prop.md) -bindingen in azure functions. Azure Functions ondersteunt invoer-en uitvoer bindingen voor Mobile Apps.
 
@@ -37,14 +37,14 @@ De Mobile Apps invoer binding laadt een record uit een eind punt van een mobiele
 
 Zie het voorbeeld taalspecifieke:
 
-* [C#script (. CSX)](#input---c-script-example)
-* JavaScript
+* [C# script (.csx)](#input---c-script-example)
+* Javascript
 
 ### <a name="input---c-script-example"></a>Voor beeld C# van invoer script
 
 In het volgende voor beeld ziet u een Mobile apps invoer binding in een *Function. json* -bestand en een [ C# script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie wordt geactiveerd door een wachtrij bericht dat een record-id heeft. Met de functie wordt de opgegeven record gelezen en wordt de eigenschap `Text` gewijzigd.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier volgt de binding-gegevens de *function.json* bestand:
 
 ```json
 {
@@ -68,7 +68,7 @@ Hier vindt u de bindings gegevens in het bestand *Function. json* :
 ]
 }
 ```
-In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
+De [configuratie](#input---configuration) sectie wordt uitgelegd dat deze eigenschappen.
 
 Dit is de C#-scriptcode:
 
@@ -89,7 +89,7 @@ public static void Run(string myQueueItem, JObject record)
 
 In het volgende voor beeld ziet u een Mobile Apps invoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie wordt geactiveerd door een wachtrij bericht dat een record-id heeft. Met de functie wordt de opgegeven record gelezen en wordt de eigenschap `Text` gewijzigd.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier volgt de binding-gegevens de *function.json* bestand:
 
 ```json
 {
@@ -113,7 +113,7 @@ Hier vindt u de bindings gegevens in het bestand *Function. json* :
 ]
 }
 ```
-In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
+De [configuratie](#input---configuration) sectie wordt uitgelegd dat deze eigenschappen.
 
 Dit is de JavaScript-code:
 
@@ -132,16 +132,16 @@ Voor informatie over kenmerk eigenschappen die u kunt configureren, raadpleegt u
 
 ## <a name="input---configuration"></a>Invoer - configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `MobileTable`.
+De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `MobileTable` kenmerk.
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
 | **type**|| Moet worden ingesteld op ' mobileTable '|
 | **direction**||Moet worden ingesteld op ' in '|
-| **naam**|| Naam van invoer parameter in functie handtekening.|
+| **De naam**|| Naam van invoer parameter in functie handtekening.|
 |**tableName** |**TableName**|De naam van de gegevens tabel van de mobiele app|
 | **id**| **Id** | De id van de record die moet worden opgehaald. Kan statisch zijn of op basis van de trigger die de functie aanroept. Als u bijvoorbeeld een wachtrij trigger gebruikt voor uw functie, gebruikt `"id": "{queueTrigger}"` de teken reeks waarde van het wachtrij bericht als de record-ID die moet worden opgehaald.|
-|**Combi**|**Verbinding**|De naam van een app-instelling met de URL van de mobiele app. De functie gebruikt deze URL om de vereiste REST bewerkingen te maken voor uw mobiele app. Maak een app-instelling in de functie-app die de URL van de mobiele app bevat en geef vervolgens de naam van de app-instelling op in de eigenschap `connection` in uw invoer binding. De URL ziet eruit als `http://<appname>.azurewebsites.net`.
+|**verbinding**|**Verbinding**|De naam van een app-instelling met de URL van de mobiele app. De functie gebruikt deze URL om de vereiste REST bewerkingen te maken voor uw mobiele app. Maak een app-instelling in de functie-app die de URL van de mobiele app bevat en geef vervolgens de naam van de app-instelling op in de eigenschap `connection` in uw invoer binding. De URL ziet eruit als `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKey**|De naam van een app-instelling met de API-sleutel van uw mobiele app. Geef de API-sleutel op als u [een API-sleutel in uw mobiele node. js-app implementeert](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)of [een API-sleutel in uw mobiele .net-app implementeert](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Als u de sleutel wilt opgeven, maakt u een app-instelling in de functie-app die de API-sleutel bevat en voegt u vervolgens de eigenschap `apiKey` toe aan de invoer binding met de naam van de app-instelling. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -166,7 +166,7 @@ Gebruik de Mobile Apps uitvoer binding om een nieuwe record te schrijven naar ee
 Zie het voorbeeld taalspecifieke:
 
 * [C#](#output---c-example)
-* [C#script (. CSX)](#output---c-script-example)
+* [C# script (.csx)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>Uitvoer - voorbeeld met C#
@@ -188,7 +188,7 @@ public static object Run(
 
 In het volgende voor beeld ziet u een Mobile apps uitvoer binding in een *Function. json* -bestand en een [ C# script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie wordt geactiveerd door een bericht in de wachtrij en maakt een nieuwe record met een in code vastgelegde waarde voor de eigenschap `Text`.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier volgt de binding-gegevens de *function.json* bestand:
 
 ```json
 {
@@ -212,7 +212,7 @@ Hier vindt u de bindings gegevens in het bestand *Function. json* :
 }
 ```
 
-In de [configuratie](#output---configuration) sectie worden deze eigenschappen uitgelegd.
+De [configuratie](#output---configuration) sectie wordt uitgelegd dat deze eigenschappen.
 
 Dit is de C#-scriptcode:
 
@@ -229,7 +229,7 @@ public static void Run(string myQueueItem, out object record)
 
 In het volgende voor beeld ziet u een Mobile Apps uitvoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie wordt geactiveerd door een bericht in de wachtrij en maakt een nieuwe record met een in code vastgelegde waarde voor de eigenschap `Text`.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier volgt de binding-gegevens de *function.json* bestand:
 
 ```json
 {
@@ -254,7 +254,7 @@ Hier vindt u de bindings gegevens in het bestand *Function. json* :
 }
 ```
 
-In de [configuratie](#output---configuration) sectie worden deze eigenschappen uitgelegd.
+De [configuratie](#output---configuration) sectie wordt uitgelegd dat deze eigenschappen.
 
 Dit is de JavaScript-code:
 
@@ -273,7 +273,7 @@ module.exports = function (context, myQueueItem) {
 
 Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmerk [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) .
 
-Zie [output-Configuration](#output---configuration)(Engelstalig) voor meer informatie over kenmerk eigenschappen die u kunt configureren. Hier volgt een voor beeld van een `MobileTable` kenmerk in een methode handtekening:
+Zie [output-Configuration](#output---configuration)(Engelstalig) voor meer informatie over kenmerk eigenschappen die u kunt configureren. Hier volgt een `MobileTable` kenmerk voorbeeld in een handtekeningmethode:
 
 ```csharp
 [FunctionName("MobileAppsOutput")]        
@@ -286,19 +286,19 @@ public static object Run(
 }
 ```
 
-Zie voor een volledig voor beeld [uitvoer- C# voor beeld](#output---c-example).
+Zie voor een compleet voorbeeld [uitvoer - voorbeeld met C#](#output---c-example).
 
 ## <a name="output---configuration"></a>Uitvoer - configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `MobileTable`.
+De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `MobileTable` kenmerk.
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
 | **type**|| Moet worden ingesteld op ' mobileTable '|
 | **direction**||Moet worden ingesteld op out|
-| **naam**|| De naam van de uitvoer parameter in de functie handtekening.|
+| **De naam**|| De naam van de uitvoer parameter in de functie handtekening.|
 |**tableName** |**TableName**|De naam van de gegevens tabel van de mobiele app|
-|**Combi**|**MobileAppUriSetting**|De naam van een app-instelling met de URL van de mobiele app. De functie gebruikt deze URL om de vereiste REST bewerkingen te maken voor uw mobiele app. Maak een app-instelling in de functie-app die de URL van de mobiele app bevat en geef vervolgens de naam van de app-instelling op in de eigenschap `connection` in uw invoer binding. De URL ziet eruit als `http://<appname>.azurewebsites.net`.
+|**verbinding**|**MobileAppUriSetting**|De naam van een app-instelling met de URL van de mobiele app. De functie gebruikt deze URL om de vereiste REST bewerkingen te maken voor uw mobiele app. Maak een app-instelling in de functie-app die de URL van de mobiele app bevat en geef vervolgens de naam van de app-instelling op in de eigenschap `connection` in uw invoer binding. De URL ziet eruit als `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKeySetting**|De naam van een app-instelling met de API-sleutel van uw mobiele app. Geef de API-sleutel op als u [een API-sleutel in uw back-end van de node. js-app implementeert](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)of [een API-sleutel in uw back-end van uw .net-app implementeert](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Als u de sleutel wilt opgeven, maakt u een app-instelling in de functie-app die de API-sleutel bevat en voegt u vervolgens de eigenschap `apiKey` toe aan de invoer binding met de naam van de app-instelling. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -319,4 +319,4 @@ Gebruik in node. js-functies de `context.bindings.<name>` voor toegang tot de ui
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over Azure functions-triggers en-bindingen](functions-triggers-bindings.md)
+> [Meer informatie over Azure functions-triggers en bindingen](functions-triggers-bindings.md)

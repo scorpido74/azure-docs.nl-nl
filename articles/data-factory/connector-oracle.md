@@ -4,20 +4,19 @@ description: Meer informatie over het kopiëren van gegevens van ondersteunde br
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: d8cbc7410f2b2bd525148cee9dc5b8ddbb756dff
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b43ec36f6f3a9111656892c65af2592fce6eaed2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680507"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931744"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar Oracle met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -33,7 +32,7 @@ Deze Oracle-Connector wordt ondersteund voor de volgende activiteiten:
 - [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
-U kunt gegevens uit een Oracle-data base kopiëren naar elk ondersteund Sink-gegevens archief. U kunt ook gegevens van elk ondersteund brongegevens archief kopiëren naar een Oracle-data base. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bronnen of sinks op basis van de Kopieer activiteit.
+U kunt gegevens uit een Oracle-data base kopiëren naar elk ondersteund Sink-gegevens archief. U kunt ook gegevens van elk ondersteund brongegevens archief kopiëren naar een Oracle-data base. Zie voor een lijst met gegevensarchieven die worden ondersteund als gegevensbronnen of PUT voor de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
 
 Deze Oracle-connector ondersteunt met name:
 
@@ -63,15 +62,15 @@ Integration runtime biedt een ingebouwd Oracle-stuur programma. Daarom hoeft u n
 
 De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor de Oracle-Connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 
 De gekoppelde Oracle-Service ondersteunt de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op **Oracle**. | Ja |
 | connectionString | Hiermee geeft u de gegevens op die nodig zijn om verbinding te maken met het Oracle Database-exemplaar. <br/>Markeer dit veld als `SecureString` om het veilig op te slaan in Data Factory. U kunt ook een wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de connection string halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) met meer informatie. <br><br>**Ondersteund verbindings type**: u kunt de **Oracle-sid** of **Oracle-Service naam** gebruiken om uw data base te identificeren:<br>-Als u SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;` gebruikt<br>-Als u de service naam gebruikt: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Ja |
-| connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
+| connectVia | De [integratieruntime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Indien niet opgegeven, wordt de standaard Azure Integration Runtime wordt gebruikt. |Nee |
 
 >[!TIP]
 >Als er een fout optreedt, wordt de ' ORA-01025: UPI-para meter buiten het bereik ', en uw Oracle-versie is 8i, voeg `WireProtocolMode=1` toe aan uw connection string. Probeer het opnieuw.
@@ -178,12 +177,12 @@ Deze sectie bevat een lijst met eigenschappen die door de Oracle-gegevensset wor
 
 Als u gegevens wilt kopiëren van en naar Oracle, stelt u de eigenschap type van de gegevensset in op `OracleTable`. De volgende eigenschappen worden ondersteund.
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de DataSet moet worden ingesteld op `OracleTable`. | Ja |
-| Schema | De naam van het schema. |Nee voor bron, ja voor Sink  |
-| tabel | De naam van de tabel/weer gave. |Nee voor bron, ja voor Sink  |
-| tableName | De naam van de tabel/weer gave met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik voor nieuwe werk belasting `schema` en `table`. | Nee voor bron, ja voor Sink |
+| schema | De naam van het schema. |Nee voor bron, Ja voor sink  |
+| table | De naam van de tabel/weer gave. |Nee voor bron, Ja voor sink  |
+| tableName | De naam van de tabel/weer gave met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en `table`voor nieuwe werk belasting. | Nee voor bron, Ja voor sink |
 
 **Voorbeeld:**
 
@@ -215,9 +214,9 @@ In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door d
 >[!TIP]
 >Als u gegevens van Oracle efficiënt wilt laden met behulp van gegevens partitioneren, kunt u meer informatie uit een [parallelle kopie van Oracle](#parallel-copy-from-oracle)gebruiken.
 
-Als u gegevens van Oracle wilt kopiëren, stelt u het bron type in de Kopieer activiteit in op `OracleSource`. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit.
+Als u gegevens van Oracle wilt kopiëren, stelt u het bron type in de Kopieer activiteit in op `OracleSource`. De volgende eigenschappen worden ondersteund in de kopieeractiviteit **bron** sectie.
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op `OracleSource`. | Ja |
 | oracleReaderQuery | Gebruik de aangepaste SQL-query om gegevens te lezen. Een voorbeeld is `"SELECT * FROM MyTable"`.<br>Wanneer u gepartitioneerde belasting inschakelt, moet u alle bijbehorende ingebouwde partitie parameters in uw query koppelen. Zie de sectie [parallelle kopie van Oracle](#parallel-copy-from-oracle) voor voor beelden. | Nee |
@@ -264,7 +263,7 @@ Als u gegevens van Oracle wilt kopiëren, stelt u het bron type in de Kopieer ac
 
 Als u gegevens wilt kopiëren naar Oracle, stelt u het sink-type in de Kopieer activiteit in op `OracleSink`. De volgende eigenschappen worden ondersteund in het gedeelte **sink** van de Kopieer activiteit.
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de Sink voor kopieer activiteiten moet worden ingesteld op `OracleSink`. | Ja |
 | writeBatchSize | Hiermee worden gegevens in de SQL-tabel ingevoegd wanneer de buffer grootte `writeBatchSize`bereikt.<br/>Toegestane waarden zijn integer (aantal rijen). |Nee (de standaard waarde is 10.000) |
@@ -312,7 +311,7 @@ Wanneer u gepartitioneerde kopie inschakelt, voert Data Factory parallelle query
 
 U wordt aangeraden om parallelle kopieën in te scha kelen met gegevens partities met name wanneer u grote hoeveel heden gegevens uit uw Oracle-data base laadt. Hieronder vindt u de aanbevolen configuraties voor verschillende scenario's. Bij het kopiëren van gegevens naar gegevens opslag op basis van een bestand, is het opnieuw opdracht om naar een map te schrijven als meerdere bestanden (Geef alleen de mapnaam op). in dat geval is de prestaties beter dan het schrijven naar één bestand.
 
-| Scenario                                                     | Voorgestelde instellingen                                           |
+| Scenario                                                     | Aanbevolen instellingen                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Volledige belasting van een grote tabel met fysieke partities.          | **Partitie optie**: fysieke partities van tabel. <br><br/>Tijdens de uitvoering worden de fysieke partities automatisch door Data Factory gedetecteerd en worden de gegevens gekopieerd op partities. |
 | Volledige belasting van een grote tabel, zonder fysieke partities, met een kolom met gehele getallen voor het partitioneren van gegevens. | **Partitie opties**: partitie met dynamisch bereik.<br>**Partitie kolom**: Geef de kolom op die wordt gebruikt om gegevens te partitioneren. Als u niets opgeeft, wordt de kolom primaire sleutel gebruikt. |
@@ -354,27 +353,27 @@ U wordt aangeraden om parallelle kopieën in te scha kelen met gegevens partitie
 
 Wanneer u gegevens van en naar Oracle kopieert, zijn de volgende toewijzingen van toepassing. Zie [schema en gegevens type toewijzingen](copy-activity-schema-and-type-mapping.md)voor meer informatie over hoe de Kopieer activiteit het bron schema en het gegevens type aan de Sink toewijst.
 
-| Oracle-gegevens type | Data Factory tussentijds gegevens type |
+| Oracle-gegevens type | Data Factory tussentijdse gegevenstype |
 |:--- |:--- |
-| MENU |Byte [] |
-| BLOB |Byte []<br/>(alleen ondersteund op Oracle 10g en hoger) |
+| BFILE |Byte[] |
+| BLOB |Byte[]<br/>(alleen ondersteund op Oracle 10g en hoger) |
 | CHAR |Tekenreeks |
 | CLOB |Tekenreeks |
-| DATE |DateTime |
-| FLOAT |Decimaal, teken reeks (als precisie > 28) |
-| GEHEELTALLIGE |Decimaal, teken reeks (als precisie > 28) |
+| DATE |Datum/tijd |
+| FLOAT |Decimal, String (als precisie > 28) |
+| INTEGER |Decimal, String (als precisie > 28) |
 | OMVANG |Tekenreeks |
-| LANGE ONBEWERKTE |Byte [] |
+| LONG RAW |Byte[] |
 | NCHAR |Tekenreeks |
 | NCLOB |Tekenreeks |
-| TELWOORD |Decimaal, teken reeks (als precisie > 28) |
+| NUMBER |Decimal, String (als precisie > 28) |
 | NVARCHAR2 |Tekenreeks |
-| UITGANG |Byte [] |
+| RAW |Byte[] |
 | ROWID |Tekenreeks |
-| Neem |DateTime |
-| TIJDS TEMPEL MET LOKALE TIJD ZONE |Tekenreeks |
-| TIJDS TEMPEL MET TIJD ZONE |Tekenreeks |
-| NIET-ONDERTEKEND GEHEEL GETAL |Aantal |
+| TIMESTAMP |Datum/tijd |
+| TIMESTAMP WITH LOCAL TIME ZONE |Tekenreeks |
+| TIMESTAMP WITH TIME ZONE |Tekenreeks |
+| UNSIGNED INTEGER |Aantal |
 | VARCHAR2 |Tekenreeks |
 | XML |Tekenreeks |
 
@@ -386,4 +385,4 @@ Wanneer u gegevens van en naar Oracle kopieert, zijn de volgende toewijzingen va
 Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [ondersteunde gegevens archieven](copy-activity-overview.md##supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in Data Factory.
+Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md##supported-data-stores-and-formats).

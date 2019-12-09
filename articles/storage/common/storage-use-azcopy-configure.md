@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 0be50ef43774be6082a4ede330f65296094552de
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c16fea8f710751a051995ecece8a3d0ce8f933c7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786840"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926458"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy configureren, optimaliseren en problemen oplossen
 
@@ -26,7 +26,7 @@ AzCopy is een opdracht regel programma dat u kunt gebruiken voor het kopiëren v
 > - [Gegevens overdragen met AzCopy en File Storage](storage-use-azcopy-files.md)
 > - [Gegevens overdragen met AzCopy en Amazon S3-buckets](storage-use-azcopy-s3.md)
 
-## <a name="configure-proxy-settings"></a>Proxy-instellingen configureren
+## <a name="configure-proxy-settings"></a>Proxyinstellingen configureren
 
 Als u de proxy-instellingen voor AzCopy wilt configureren, stelt u de omgevings variabele `https_proxy` in. Als u AzCopy uitvoert in Windows, detecteert AzCopy automatisch proxy-instellingen. u hoeft deze instelling niet te gebruiken in Windows. Als u kiest voor het gebruik van deze instelling in Windows, wordt automatische detectie vervangen.
 
@@ -99,7 +99,7 @@ AzCopy maakt logboek-en plan bestanden voor elke taak. U kunt de Logboeken gebru
 
 De logboeken bevatten de status van de fout (`UPLOADFAILED`, `COPYFAILED`en `DOWNLOADFAILED`), het volledige pad en de reden van de fout.
 
-Standaard bevinden de logboek-en plan bestanden zich in de map `%USERPROFILE$\.azcopy` op Windows of `$HOME$\.azcopy` Directory op Mac en Linux, maar u kunt deze locatie desgewenst wijzigen.
+Standaard bevinden de logboek-en plan bestanden zich in de map `%USERPROFILE%\.azcopy` op Windows of `$HOME$\.azcopy` Directory op Mac en Linux, maar u kunt deze locatie desgewenst wijzigen.
 
 > [!IMPORTANT]
 > Wanneer u een aanvraag indient om Microsoft Ondersteuning (of het probleem met een derde partij op te lossen), deelt u de geredigeerde versie van de opdracht die u wilt uitvoeren. Dit zorgt ervoor dat de SAS niet per ongeluk met iedereen wordt gedeeld. U kunt de geredigeerde versie vinden aan het begin van het logboek bestand.
@@ -151,7 +151,7 @@ Wanneer u een taak hervat, zoekt AzCopy naar het job plan-bestand. In het plan b
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>De locatie van het plan en de logboek bestanden wijzigen
 
-Plan-en logboek bestanden bevinden zich standaard in de map `%USERPROFILE$\.azcopy` op Windows of in de `$HOME$\.azcopy` Directory op Mac en Linux. U kunt deze locatie wijzigen.
+Plan-en logboek bestanden bevinden zich standaard in de map `%USERPROFILE%\.azcopy` op Windows of in de `$HOME$\.azcopy` Directory op Mac en Linux. U kunt deze locatie wijzigen.
 
 ### <a name="change-the-location-of-plan-files"></a>De locatie van plan bestanden wijzigen
 

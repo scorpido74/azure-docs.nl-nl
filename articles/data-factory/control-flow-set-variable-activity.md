@@ -5,19 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/10/2018
 author: djpmsft
 ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: 2589e56d3170b235f31d07f902eb75c749e8573f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 88500ecbc56b34551a0cbd3ca94727ba4bbcda9f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679307"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930649"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Variabele activiteit instellen in Azure Data Factory
 
@@ -25,9 +24,9 @@ Gebruik de activiteit variabele instellen om de waarde in te stellen van een bes
 
 ## <a name="type-properties"></a>Type-eigenschappen
 
-Eigenschap | Beschrijving | Vereist
+Eigenschap | Beschrijving | Verplicht
 -------- | ----------- | --------
-naam | De naam van de activiteit in de pijp lijn | Ja
+name | De naam van de activiteit in de pijp lijn | Ja
 description | Tekst die beschrijft wat de activiteit doet | nee
 type | Type activiteit is SetVariable | ja
 waarde | Waarde van de teken reeks of expressie object die wordt gebruikt om de opgegeven variabele in te stellen | ja

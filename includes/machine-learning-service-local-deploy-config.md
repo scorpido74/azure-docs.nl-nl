@@ -1,21 +1,21 @@
 ---
-author: larryfr
+author: Blackmist
 ms.service: machine-learning
 ms.topic: include
 ms.date: 11/04/2019
 ms.author: larryfr
-ms.openlocfilehash: f35245aea0d7ba20561d1504b111e747ccbe5e0d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c288ea4a2c62999f27b3f07c39df40dae7ab1426
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73799782"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926946"
 ---
 De vermeldingen in het `deploymentconfig.json` document worden toegewezen aan de para meters voor [LocalWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py). De volgende tabel beschrijft de toewijzing tussen de entiteiten in het JSON-document en de para meters voor de-methode:
 
 | JSON-entiteit | Methode parameter | Beschrijving |
 | ----- | ----- | ----- |
-| `computeType` | N.v.t. | Het rekendoel. Voor lokale doelen moet de waarde `local`zijn. |
+| `computeType` | N.V.T. | Het rekendoel. Voor lokale doelen moet de waarde `local`zijn. |
 | `port` | `port` | De lokale poort waarop het HTTP-eind punt van de service wordt weer gegeven. |
 
 Deze JSON is een voorbeeld implementatie configuratie voor gebruik met de CLI:

@@ -1,29 +1,25 @@
 ---
-title: Vraag gedrag in interactieve aanvragen (micro soft-verificatie bibliotheek voor Java script)
+title: Vraag gedrag interactieve aanvraag (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het aanpassen van prompt gedrag in interactieve aanroepen met behulp van de micro soft-verificatie bibliotheek voor Java script (MSAL. js).
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42d6c4415a3eeb28c999d95b838c6dd7c0f6e606
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6654b523cef4623a55bf9f857fd5a723fae2dc47
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803026"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921955"
 ---
 # <a name="prompt-behavior-in-msaljs-interactive-requests"></a>Vraag gedrag in interactieve aanvragen van MSAL. js
 

@@ -4,20 +4,19 @@ description: Meer informatie over het toevoegen van fout tolerantie in Azure Dat
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 84f5cdff72abe210ac1e39234b455e506d52ba5e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8ffaee75154fd5fe025bdb683c89f16799d6e86b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682958"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926156"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Fout tolerantie in Kopieer activiteit toevoegen door incompatibele rijen over te slaan
 
@@ -70,14 +69,14 @@ In het volgende voor beeld wordt een JSON-definitie geboden voor het overs laan 
 }
 ```
 
-| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
+| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
 | --- | --- | --- | --- |
-| **enableSkipIncompatibleRow** | Het overs laan van incompatibele rijen tijdens het kopiëren inschakelen of niet. | True<br/>False (standaard) | Nee |
+| **enableSkipIncompatibleRow** | Het overs laan van incompatibele rijen tijdens het kopiëren inschakelen of niet. | Waar<br/>False (standaard) | Nee |
 | **redirectIncompatibleRowSettings** | Een groep eigenschappen die kan worden opgegeven wanneer u de niet-compatibele rijen wilt vastleggen. | &nbsp; | Nee |
 | **linkedServiceName** | De gekoppelde service van Azure Storage om het logboek op te slaan dat de overgeslagen rijen bevat. | De naam van een gekoppelde [opslag](data-factory-azure-blob-connector.md#azure-storage-linked-service) -of [azurestoragesas zijn](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) -service, die verwijst naar het opslag exemplaar dat u wilt gebruiken om het logboek bestand op te slaan. | Nee |
 | **path** | Het pad naar het logboek bestand dat de overgeslagen rijen bevat. | Geef het pad op naar de Blob-opslag die u wilt gebruiken om de niet-compatibele gegevens te registreren. Als u geen pad opgeeft, maakt de service een container voor u. | Nee |
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controleren
 Nadat het uitvoeren van de Kopieer activiteit is voltooid, kunt u het aantal overgeslagen rijen bekijken in de sectie bewaking:
 
 ![Monitor heeft incompatibele rijen overgeslagen](./media/data-factory-copy-activity-fault-tolerance/skip-incompatible-rows-monitoring.png)

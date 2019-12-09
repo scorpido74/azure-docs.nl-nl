@@ -1,36 +1,37 @@
 ---
-title: 'Stapsgewijs een tabel kopiëren met behulp van Azure Data Factory '
+title: Stapsgewijs een tabel kopiëren met behulp van Azure Portal
 description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn waarmee gegevens uit een Azure SQL-database stapsgewijs worden gekopieerd naar Azure Blob Storage.
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: craigg
+ms.author: yexu
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-dt-2019
 ms.date: 01/11/2018
-ms.author: yexu
-ms.openlocfilehash: a446574f0a6b2b18959f1a3c3e9a02a0a97e9f6b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5d82971cbd7781a298f3f3aeeba47e4be471e248
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683372"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927982"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Stapsgewijs gegevens uit een Azure SQL-database laden in Azure Blob Storage
+# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Incrementeel gegevens van een Azure-SQL database naar Azure Blob-opslag te laden met behulp van de Azure Portal
+
 In deze zelfstudie maakt u een Azure-gegevensfactory met een pijplijn waarmee deltagegevens uit een tabel in een Azure SQL-database worden geladen naar Azure Blob Storage. 
 
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
 > * Bereid de gegevensopslag voor om de grenswaarde in op te slaan.
-> * Maak een gegevensfactory.
+> * Een gegevensfactory maakt.
 > * Maak gekoppelde services. 
-> * Bron-, sink- en grenswaardegegevenssets maken.
+> * Maak bron-, sink- en grenswaardegegevenssets.
 > * Maak een pijplijn.
 > * Voer de pijplijn uit.
-> * Controleer de pijplijnuitvoering. 
+> * De pijplijnuitvoering controleert. 
 > * Resultaat controleren
 > * Voeg meer gegevens toe aan de bron.
 > * Voer de pijplijn opnieuw uit.
@@ -146,7 +147,7 @@ WHERE [TableName] = @TableName
 END
 ```
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
 2. Selecteer in het menu aan de linkerkant **een resource maken** > **Analytics** > **Data Factory**: 
@@ -168,10 +169,10 @@ END
 6. Selecteer **V2** als de **versie**.
 7. Selecteer de **locatie** voor de gegevensfactory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
 8. Klik op **Maken**.      
-9. Wanneer de gegevensfactory is gemaakt, ziet u de pagina **Gegevensfactory** zoals wordt weergegeven in de afbeelding.
+9. Na het aanmaken ziet u de pagina **Data Factory** zoals weergegeven in de afbeelding.
    
    ![Startpagina van de gegevensfactory](./media/doc-common-process/data-factory-home-page.png)
-10. Klik op de tegel **Author & Monitor** om de gebruikersinterface (UI) van Azure Data Factory te openen in een afzonderlijk tabblad.
+10. Klik op **Author & Monitor** om de gebruikersinterface (UI) van Data Factory op een afzonderlijk tabblad te openen.
 
 ## <a name="create-a-pipeline"></a>Een pijplijn maken
 In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopieeractiviteit en één opgeslagen procedureactiviteit als keten in één pijplijn. 
@@ -192,7 +193,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
 
 8. Voor **gekoppelde service**selecteert u **Nieuw**en voert u de volgende stappen uit:
 
-    1. Voer **AzureSqlDatabaseLinkedService** in als **Naam**. 
+    1. Voer **AzureSqlDatabaseLinkedService** in bij **Name**. 
     2. Selecteer uw Azure SQL-server als **Servernaam**
     3. Selecteer de **naam van uw data base** in de vervolg keuzelijst. 
     4. Voer uw **gebruikers naam** in & **wacht woord**. 
@@ -212,7 +213,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
 12. Ga in het venster Eigenschappen voor de tweede **opzoekactiviteit** naar het tabblad **Instellingen** en klik op **Nieuw**. U maakt een gegevensset om te verwijzen naar de brontabel met de nieuwe grenswaarde (maximumwaarde van LastModifyTime). 
 
 13. Selecteer in het venster **nieuwe gegevensset** de optie **Azure SQL database**en klik op **door gaan**. 
-14. Voer in het venster **set Properties** **Source dataset** in als **name**. Selecteer **AzureSqlDatabaseLinkedService** bij **Linked service**.
+14. Voer in het venster **set Properties** **Source dataset** in als **name**. Selecteer **AzureSqlDatabaseLinkedService** als **Gekoppelde service**.
 15. Selecteer **[dbo].[data_source_table]** als Tabel. Verderop in de zelfstudie geeft u een query op voor deze gegevensset. De query heeft voorrang op de tabel die u in deze stap opgeeft.
 16. Selecteer **Finish**. 
 17. Ga naar de pijplijneditor door op het pijplijntabblad bovenaan te klikken of door in de structuurweergave aan de linkerkant op de naam van de pijplijn te klikken. Bevestig in het venster Eigenschappen voor de **opzoekactiviteit** dat **SourceDataset** is geselecteerd in het veld **Brongegevensset**. 
@@ -230,7 +231,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
     ![Opzoekactiviteiten verbinden met kopieeractiviteit](./media/tutorial-incremental-copy-portal/connection-lookups-to-copy.png)
 21. Selecteer de **kopieeractiviteit** en controleer of de eigenschappen voor de activiteit worden weergegeven in het venster **Eigenschappen**. 
 
-22. Ga naar **Source** in het venster **Properties** en voer de volgende stappen uit:
+22. Ga naar het tabblad **Bron** in het venster **Eigenschappen** en voer de volgende stappen uit:
 
     1. Selecteer **SourceDataset** in het veld **Brongegevensset**. 
     2. Selecteer **Query** in het veld **Query gebruiken**. 
@@ -240,7 +241,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
         select * from data_source_table where LastModifytime > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and LastModifytime <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'
         ```
     
-        ![Kopieeractiviteit - bron](./media/tutorial-incremental-copy-portal/copy-activity-source.png)
+        ![Copy-activiteit - bron](./media/tutorial-incremental-copy-portal/copy-activity-source.png)
 23. Ga naar het tabblad **Sink** en klik op **+ Nieuw** voor het veld **Sink-gegevensset**. 
 
 24. In deze zelfstudie is het sink-gegevensexemplaar van het type Azure Blob-opslag. Selecteer daarom **Azure Blob Storage**en klik op **door gaan** in het venster **nieuwe gegevensset** . 
@@ -249,7 +250,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
 26. Voer de volgende stappen uit in het venster **nieuwe gekoppelde service (Azure Blob Storage)** : 
 
     1. Voer **AzureStorageLinkedService** in als **Naam**. 
-    2. Selecteer uw Azure Storage-account als **naam van het opslagaccount**.
+    2. Selecteer uw Azure Storage-account bij **Storage account name**.
     3. Test de verbinding en klik vervolgens op **volt ooien**. 
 
 27. Controleer in het venster **set Properties** of **AzureStorageLinkedService** is geselecteerd voor **gekoppelde service**. Selecteer vervolgens **Voltooien**.
@@ -271,7 +272,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
 
         | Naam | Type | Waarde | 
         | ---- | ---- | ----- | 
-        | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
+        | LastModifiedtime | Datum/tijd | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Tekenreeks | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
     ![Opgeslagen-procedureactiviteit - instellingen voor de opgeslagen procedure](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
@@ -383,12 +384,12 @@ In deze zelfstudie hebt u de volgende stappen uitgevoerd:
 
 > [!div class="checklist"]
 > * Bereid de gegevensopslag voor om de grenswaarde in op te slaan.
-> * Maak een gegevensfactory.
+> * Een gegevensfactory maakt.
 > * Maak gekoppelde services. 
-> * Bron-, sink- en grenswaardegegevenssets maken.
+> * Maak bron-, sink- en grenswaardegegevenssets.
 > * Maak een pijplijn.
 > * Voer de pijplijn uit.
-> * Controleer de pijplijnuitvoering. 
+> * De pijplijnuitvoering controleert. 
 > * Resultaat controleren
 > * Voeg meer gegevens toe aan de bron.
 > * Voer de pijplijn opnieuw uit.

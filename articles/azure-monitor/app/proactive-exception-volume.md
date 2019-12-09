@@ -1,18 +1,18 @@
 ---
-title: 'Slimme detectie: ongewone toename in het uitzonderings volume, in Azure-toepassing inzichten | Microsoft Docs'
-description: Bewaak toepassings uitzonderingen met Azure-toepassing Insights voor ongebruikelijke patronen in het uitzonderings volume.
+title: Abnormale toename in het uitzonderings volume-Azure-toepassing Insights
+description: Bewaak toepassings uitzonderingen met Slimme detectie in Azure-toepassing inzichten voor ongebruikelijke patronen in het uitzonderings volume.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/08/2017
-ms.openlocfilehash: fa7669b78caabb95b08200e83ed18ea982ce9ac9
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 02c4fca42f3d5d7494dc8fd6fe0e33161904ddbe
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820601"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928229"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>Uitzonderings volume met een abnormale toename (preview-versie)
 
@@ -27,7 +27,7 @@ Machine learning-algoritmen worden gebruikt voor het detecteren van de toename v
 ## <a name="does-my-app-definitely-have-a-problem"></a>Heeft mijn app een probleem?
 Nee, een melding betekent niet dat uw app een probleem heeft. Hoewel een uitzonderlijk aantal uitzonde ringen meestal duidt op een probleem met een toepassing, kunnen deze uitzonde ringen goed aardig zijn en correct worden verwerkt door uw toepassing.
 
-## <a name="how-do-i-fix-it"></a>Hoe kan ik oplossen?
+## <a name="how-do-i-fix-it"></a>Hoe herstel ik deze?
 De meldingen bevatten diagnostische gegevens voor ondersteuning bij het diagnose proces:
 1. **Sorteren.** In de melding ziet u hoeveel gebruikers of hoeveel aanvragen er worden beïnvloed. Dit kan handig zijn bij het toewijzen van een prioriteit aan het probleem.
 2. **Ligt.** Is het probleem van invloed op al het verkeer of alleen een bepaalde bewerking? Deze informatie kan worden opgehaald uit de melding.

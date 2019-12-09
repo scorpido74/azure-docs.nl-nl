@@ -1,5 +1,5 @@
 ---
-title: Profileer productie toepassingen in azure met Application Insights Profiler | Microsoft Docs
+title: Profileer productie-apps in azure met Application Insights Profiler
 description: Identificeer het warme pad in uw webserver code met een profilerings versie met weinig footprint.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: fc152aab6d0e62ac5656b50834ce17278bb6676e
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 64e7cc0afa4051836d38c885dff0bc0a0e0b08c6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820516"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922081"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profileer productie toepassingen in azure met Application Insights
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Application Insights Profiler inschakelen voor uw toepassing
@@ -109,7 +109,7 @@ De toepassing voert netwerk bewerkingen uit.
 
 ### <a id="when"></a>Wanneer kolom
 
-De kolom **Wanneer** is een visualisatie van de manier waarop de inclusieve steek proeven voor een knoop punt in de loop van de tijd variëren. Het totale bereik van de aanvraag is onderverdeeld in 32 tijd buckets. De inclusieve voor beelden voor dat knoop punt worden gecumuleerd in deze 32 buckets. Elke Bucket wordt weer gegeven als een balk. De hoogte van de balk vertegenwoordigt een geschaalde waarde. Voor knoop punten die zijn gemarkeerd als **CPU_TIME** of **BLOCKED_TIME**, of waarbij een duidelijke relatie is voor het gebruik van een resource (bijvoorbeeld een CPU, schijf of thread), vertegenwoordigt de balk het verbruik van een van de resources tijdens de Bucket. Voor deze metrische gegevens is het mogelijk om een waarde van meer dan 100 procent op te halen door meerdere resources te gebruiken. Als u bijvoorbeeld gemiddeld twee Cpu's gebruikt tijdens een interval, krijgt u 200 procent.
+De kolom **Wanneer** is een visualisatie van de manier waarop de inclusieve steek proeven voor een knoop punt in de loop van de tijd variëren. Het totale bereik van de aanvraag is onderverdeeld in 32 tijd buckets. De inclusieve voor beelden voor dat knoop punt worden gecumuleerd in deze 32 buckets. Elke Bucket wordt weer gegeven als een balk. De hoogte van de balk vertegenwoordigt een geschaalde waarde. Voor knoop punten die zijn gemarkeerd **CPU_TIME** of **BLOCKED_TIME**, of waarbij een duidelijke relatie is voor het gebruik van een resource (bijvoorbeeld een CPU, schijf of thread), vertegenwoordigt de balk het verbruik van een van de resources tijdens de Bucket. Voor deze metrische gegevens is het mogelijk om een waarde van meer dan 100 procent op te halen door meerdere resources te gebruiken. Als u bijvoorbeeld gemiddeld twee Cpu's gebruikt tijdens een interval, krijgt u 200 procent.
 
 ## <a name="limitations"></a>Beperkingen
 

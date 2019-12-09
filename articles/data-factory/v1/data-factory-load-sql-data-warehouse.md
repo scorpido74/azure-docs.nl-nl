@@ -4,21 +4,20 @@ description: Laat zien hoe 1 TB aan gegevens binnen 15 minuten in Azure SQL Data
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: a6c133c0-ced2-463c-86f0-a07b00c9e37f
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 47ee1682118fd761d55625428e3522de92b9e38a
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b5fec342cf9f228edce80e3f0e8fb5243196973d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703408"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924156"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB onder 15 minuten aan Azure SQL Data Warehouse laden met Data Factory
 > [!NOTE]
@@ -51,7 +50,7 @@ In dit artikel vindt u stapsgewijze instructies voor het verplaatsen van gegeven
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
   * `Dbgen -s 1000 -S **2** -C 10 -T L -v`
-  * ...
+  * …
   * `Dbgen -s 1000 -S **10** -C 10 -T L -v`
 
     Kopieer nu de gegenereerde bestanden naar Azure Blob.  Raadpleeg voor meer informatie over het [verplaatsen van gegevens naar en van een on-premises bestands systeem met behulp van Azure Data Factory](data-factory-onprem-file-system-connector.md) om dat te doen met behulp van ADF copy.    

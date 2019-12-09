@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2114e60b5ed684063ed100279ea19f561bd335ea
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: af16643ed877ca427a22428afec028264de7a5d8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849782"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928973"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Azure Monitor instellen voor uw python-toepassing (preview-versie)
 
@@ -61,7 +61,16 @@ Zie [pakket met Opentellingen](https://docs.microsoft.com/azure/azure-monitor/ap
 
 De SDK gebruikt drie Azure Monitor Exporters voor het verzenden van verschillende soorten telemetrie naar Azure Monitor: tracering, metrische gegevens en Logboeken. Zie [het overzicht van het gegevens platform](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform)voor meer informatie over deze typen telemetrie. Gebruik de volgende instructies om deze typen telemetrie via de drie Exporters te verzenden.
 
+## <a name="telemetry-type-mappings"></a>Toewijzingen van het type telemetrie
+
+Dit zijn de Exporters die opentellingen bieden die zijn gekoppeld aan de typen telemetrie die u ziet in Azure Monitor.
+
+![Scherm opname van de toewijzing van telemetrie-typen van opentelling naar Azure Monitor](./media/opencensus-python/0012-telemetry-types.png)
+
 ### <a name="trace"></a>Tracering
+
+> [!NOTE]
+> `Trace` in opentelling verwijst naar [gedistribueerde tracering](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing). De `AzureExporter` verzendt `requests` en `dependency` telemetrie naar Azure Monitor.
 
 1. Eerst gaan we een aantal tracerings gegevens lokaal genereren. Voer de volgende code in python niet-actief of uw editor van keuze in.
 
@@ -293,7 +302,10 @@ De SDK gebruikt drie Azure Monitor Exporters voor het verzenden van verschillend
         main()
     ```
 
-4. De export functie stuurt logboek gegevens naar Azure Monitor. U kunt de gegevens onder `traces`vinden.
+4. De export functie stuurt logboek gegevens naar Azure Monitor. U kunt de gegevens onder `traces`vinden. 
+
+> [!NOTE]
+> `traces` in deze context is niet hetzelfde als `Tracing`. `traces` verwijst naar het type telemetrie dat u in Azure Monitor zult zien bij het gebruik van de `AzureLogHandler`. `Tracing` verwijst naar een concept in opentelling en is gekoppeld aan [gedistribueerde tracering](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing).
 
 5. Als u uw logboek berichten wilt Format teren, kunt u `formatters` gebruiken in de ingebouwde python- [logboek registratie-API](https://docs.python.org/3/library/logging.html#formatter-objects).
 

@@ -2,23 +2,22 @@
 title: Azure-SSIS Integration Runtime voor SQL Database failover configureren
 description: In dit artikel wordt beschreven hoe u de Azure-SSIS Integration Runtime configureert met Azure SQL Database geo-replicatie en failover voor de SSISDB-data base
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: conceptual
-ms.date: 08/14/2018
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 6e709a25c6c33a1fc80a110435035b1473d92681
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.topic: conceptual
+ms.custom: seo-lt-2019
+ms.date: 08/14/2018
+ms.openlocfilehash: 92f7d25a9c19409b220b6a71fba87da91e51a415
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681396"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928505"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>De Azure-SSIS Integration Runtime configureren met Azure SQL Database geo-replicatie en failover
 
@@ -115,7 +114,7 @@ Wanneer een ADF of Azure-SSIS IR nood geval in de huidige regio optreedt, kunt u
 
 Volg deze stappen om uw Azure-SSIS IR te stoppen, de IR naar een nieuwe regio over te scha kelen en opnieuw te starten.
 
-1. Voer een opgeslagen procedure uit om SSISDB toe te voegen aan **\<new_data_factory_name\>** of **\<new_integration_runtime_name\>** .
+1. Voer een opgeslagen procedure uit om SSISDB toe te voegen aan **\<new_data_factory_name\>** of **\<new_integration_runtime_name** \>.
    
   ```SQL
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'

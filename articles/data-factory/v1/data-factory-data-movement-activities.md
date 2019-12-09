@@ -4,21 +4,20 @@ description: 'Meer informatie over het verplaatsen van gegevens in Data Factory 
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 67543a20-b7d5-4d19-8b5e-af4c1fd7bc75
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0f7771c55bfdc837921fb731b29e88c970b5d283
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fbaa8c3544b35978786404619879f59ab91a6979
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682651"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931922"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Gegevens verplaatsen met behulp van Kopieer activiteit
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -29,9 +28,9 @@ ms.locfileid: "73682651"
 > Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u de [Kopieer activiteit in v2](../copy-activity-overview.md).
 
 ## <a name="overview"></a>Overzicht
-In Azure Data Factory kunt u de Kopieer activiteit gebruiken om gegevens te kopiëren tussen on-premises en gegevens archieven in de Cloud. Nadat de gegevens zijn gekopieerd, kunnen ze verder worden getransformeerd en geanalyseerd. U kunt ook Kopieer activiteit gebruiken om trans formatie-en analyse resultaten te publiceren voor business intelligence (BI) en het gebruik van toepassingen.
+In Azure Data Factory kunt u de Kopieer activiteit gebruiken om gegevens te kopiëren tussen on-premises en gegevens archieven in de Cloud. Nadat de gegevens worden gekopieerd, kan worden verder verwerkt en geanalyseerd. U kunt ook een Kopieeractiviteit gebruiken om transformatie en analyseresultaten voor business intelligence (BI) en het verbruik van de toepassing te publiceren.
 
-![Rol van Kopieer activiteit](media/data-factory-data-movement-activities/copy-activity.png)
+![Rol van Kopieeractiviteit](media/data-factory-data-movement-activities/copy-activity.png)
 
 De Kopieer activiteit wordt aangedreven door een beveiligde, betrouw bare, schaal bare en [wereld wijd beschik bare service](#global). Dit artikel bevat informatie over het verplaatsen van gegevens in Data Factory en de Kopieer activiteit.
 
@@ -43,10 +42,10 @@ Eerst laten we zien hoe gegevens migratie plaatsvindt tussen twee Cloud gegevens
 >
 
 ### <a name="copy-data-between-two-cloud-data-stores"></a>Gegevens tussen twee gegevens archieven in de Cloud kopiëren
-Wanneer zowel de bron-als de Sink-gegevens opslag zich in de cloud bevinden, gaat de Kopieer activiteit door de volgende fasen om gegevens van de bron naar de sink te kopiëren. De service die de Kopieer activiteit toestuurt:
+Wanneer zowel de bron-als de Sink-gegevens opslag zich in de cloud bevinden, gaat de Kopieer activiteit door de volgende fasen om gegevens van de bron naar de sink te kopiëren. De service die wordt gebruikt door de Kopieeractiviteit:
 
 1. Hiermee worden gegevens uit de brongegevens opslag gelezen.
-2. Voert serialisatie/deserialisatie, compressie/decompressie, kolom toewijzing en type conversie uit. Deze bewerkingen worden uitgevoerd op basis van de configuraties van de invoer gegevensset, uitvoer gegevensset en kopieer activiteit.
+2. Voert serialisatie/deserialisatie, compressie/decompressie, kolom toewijzing en type conversie uit. Dit gebeurt deze bewerkingen op basis van de configuraties van de invoergegevensset, de uitvoergegevensset en de Kopieeractiviteit.
 3. Schrijft gegevens naar het doel gegevens archief.
 
 De service kiest automatisch de optimale regio om de gegevens verplaatsing uit te voeren. Deze regio is doorgaans het dichtst bij de Sink-gegevens opslag.
@@ -64,7 +63,7 @@ Zie [gegevens verplaatsen tussen on-premises en gegevens archieven in de Cloud](
 
 U kunt ook gegevens verplaatsen van/naar ondersteunde gegevens archieven die worden gehost op Azure IaaS virtual machines (Vm's) met behulp van Data Management Gateway. In dit geval kunt u Data Management Gateway op dezelfde VM installeren als het gegevens archief zelf of op een afzonderlijke virtuele machine die toegang heeft tot het gegevens archief.
 
-## <a name="supported-data-stores-and-formats"></a>Ondersteunde gegevens archieven en-indelingen
+## <a name="supported-data-stores-and-formats"></a>Ondersteunde gegevensarchieven en indelingen
 De kopieeractiviteit in Data Factory kopieert gegevens van een brongegevensarchief naar een sinkgegevensarchief. Data Factory ondersteunt de volgende gegevensarchieven. Gegevens vanuit elke willekeurige bron kunnen naar een sink worden geschreven. Klik op een gegevensarchief voor informatie over het kopiëren van gegevens naar en van dat archief.
 
 > [!NOTE] 
@@ -78,49 +77,49 @@ De kopieeractiviteit in Data Factory kopieert gegevens van een brongegevensarchi
 ### <a name="supported-file-formats"></a>Ondersteunde bestandsindelingen
 U kunt Kopieer activiteit gebruiken om **bestanden te kopiëren** tussen twee bestanden op basis van een bestand, u kunt de [sectie opmaak](data-factory-create-datasets.md) in zowel de definitie van de invoer-als uitvoer gegevensset overs Laan. De gegevens worden efficiënt gekopieerd zonder serialisatie/deserialisatie.
 
-Kopieer activiteit leest ook van en schrijft naar bestanden in de opgegeven indelingen: **Text, JSON, AVRO, Orc en Parquet**, en de compressie **-codec gzip, Deflate, bzip2 en ZipDeflate** worden ondersteund. Zie [ondersteunde bestands-en compressie-indelingen](data-factory-supported-file-and-compression-formats.md) met details.
+Kopieer activiteit leest ook van en schrijft naar bestanden in de opgegeven indelingen: **Text, JSON, AVRO, Orc en Parquet**, en de compressie **-codec gzip, Deflate, bzip2 en ZipDeflate** worden ondersteund. Zie [ondersteunde indelingen voor bestanden en compressie](data-factory-supported-file-and-compression-formats.md) met details.
 
-U kunt bijvoorbeeld de volgende Kopieer activiteiten uitvoeren:
+U kunt bijvoorbeeld de volgende kopieeractiviteiten doen:
 
-* Kopieer gegevens in on-premises SQL Server en schrijf naar Azure Data Lake Store in de ORC-indeling.
-* Kopieer bestanden in de tekst indeling (CSV) van on-premises bestands systeem en schrijf naar Azure Blob in de Avro-indeling.
-* Kopieer gezipte bestanden van het on-premises bestands systeem en decomprimeren vervolgens land tot Azure Data Lake Store.
-* Kopieer gegevens in de indeling voor gecomprimeerde tekst van GZip (CSV) van Azure Blob en schrijf naar Azure SQL Database.
+* Kopiëren van gegevens in on-premises SQL Server en schrijven naar Azure Data Lake Store in ORC-indeling.
+* Bestanden kopiëren in tekstindeling (CSV) van on-premises bestandssysteem en naar Azure-Blob in Avro-indeling wilt schrijven.
+* ZIP-bestanden kopiëren van on-premises bestandssysteem en decomprimeren vervolgens land Azure Data Lake Store.
+* Kopiëren van gegevens in de indeling van GZip gecomprimeerde tekstbestand (CSV) van Azure Blob en schrijven naar Azure SQL Database.
 
 ## <a name="global"></a>Wereld wijd beschik bare gegevens verplaatsing
-Azure Data Factory is alleen beschikbaar in de regio's VS-Oost, VS-West en Europa-noord. De service die de Kopieer activiteit toestuurt, is echter algemeen beschikbaar in de volgende regio's en in de geografische gebieden. De wereld wijd beschik bare topologie zorgt voor een efficiënte verplaatsing van gegevens die doorgaans interregionale hops voor komt. Zie [Services per regio](https://azure.microsoft.com/regions/#services) voor Beschik baarheid van Data Factory en het verplaatsen van gegevens in een regio.
+Azure Data Factory is alleen beschikbaar in de regio's VS-Oost, VS-West en Europa-noord. De service die de Kopieer activiteit toestuurt, is echter algemeen beschikbaar in de volgende regio's en in de geografische gebieden. De algemeen beschikbare topologie zorgt u ervoor efficiënt gegevensverplaatsing die meestal regio-overschrijdende hops voorkomt. Zie [-Services per regio](https://azure.microsoft.com/regions/#services) voor beschikbaarheid van Data Factory en de verplaatsing van gegevens in een regio.
 
 ### <a name="copy-data-between-cloud-data-stores"></a>Gegevens kopiëren tussen gegevens archieven in de Cloud
 Wanneer zowel de bron-als de Sink-gegevens opslag zich in de cloud bevinden, gebruikt Data Factory een service-implementatie in de regio die het dichtst bij de Sink ligt die zich in dezelfde geografie bevindt om de gegevens te verplaatsen. Raadpleeg de volgende tabel voor toewijzing:
 
 | Geografie van de doel gegevens archieven | Regio van het doel gegevens archief | Regio die wordt gebruikt voor gegevens verplaatsing |
 |:--- |:--- |:--- |
-| Verenigde Staten | US - oost | US - oost |
-| &nbsp; | US - oost 2 | US - oost 2 |
-| &nbsp; | US - centraal | US - centraal |
-| &nbsp; | US - noord-centraal | US - noord-centraal |
-| &nbsp; | US - zuid-centraal | US - zuid-centraal |
-| &nbsp; | US - west-centraal | US - west-centraal |
-| &nbsp; | US - west | US - west |
-| &nbsp; | US - west 2 | US - west 2 |
-| Canada | Canada - oost | Canada - midden |
-| &nbsp; | Canada - midden | Canada - midden |
-| Brazilië | Brazilië - zuid | Brazilië - zuid |
+| Verenigde Staten | VS - oost | VS - oost |
+| &nbsp; | VS - oost 2 | VS - oost 2 |
+| &nbsp; | VS - centraal | VS - centraal |
+| &nbsp; | VS - noord-centraal | VS - noord-centraal |
+| &nbsp; | VS - zuid-centraal | VS - zuid-centraal |
+| &nbsp; | VS - west-centraal | VS - west-centraal |
+| &nbsp; | VS - west | VS - west |
+| &nbsp; | VS - west 2 | VS - west 2 |
+| Canada | Canada-Oost | Canada-Midden |
+| &nbsp; | Canada-Midden | Canada-Midden |
+| Brazilië | Brazilië - Zuid | Brazilië - Zuid |
 | Europa | Europa - noord | Europa - noord |
-| &nbsp; | Europa -west | Europa -west |
-| Verenigd Koninkrijk | Verenigd Koninkrijk West | VK - zuid |
+| &nbsp; | Europa - west | Europa - west |
+| Verenigd Koninkrijk | VK - west | VK - zuid |
 | &nbsp; | VK - zuid | VK - zuid |
-| Azië en Stille Oceaan | Azië - zuidoost | Azië - zuidoost |
+| Azië-Pacific | Azië - zuidoost | Azië - zuidoost |
 | &nbsp; | Azië - oost | Azië - zuidoost |
-| Australië | Australië - oost | Australië - oost |
-| &nbsp; | Australië - zuidoost | Australië - zuidoost |
+| Australië | Australië Oost | Australië Oost |
+| &nbsp; | Australië Zuidoost | Australië Zuidoost |
 | India | India - centraal | India - centraal |
 | &nbsp; | India - west | India - centraal |
 | &nbsp; | India - zuid | India - centraal |
-| Japan | Japan - oost | Japan - oost |
-| &nbsp; | Japan - west | Japan - oost |
+| Japan | Japan - Oost | Japan - Oost |
+| &nbsp; | Japan - West | Japan - Oost |
 | Korea | Korea - centraal | Korea - centraal |
-| &nbsp; | Korea - zuid | Korea - centraal |
+| &nbsp; | Korea (Zuid) | Korea - centraal |
 
 U kunt de regio van Data Factory service die moet worden gebruikt voor het uitvoeren van de kopie, ook expliciet opgeven door `executionLocation` eigenschap onder Copy activity `typeProperties`op te geven. Ondersteunde waarden voor deze eigenschap worden weer gegeven in de bovenstaande **regio die wordt gebruikt voor de kolom gegevens verplaatsing** . Houd er rekening mee dat uw gegevens tijdens het kopiëren over de kabel heen gaan. Als u bijvoorbeeld wilt kopiëren tussen Azure-winkels in Korea, kunt u `"executionLocation": "Japan East"` opgeven om te routeren via een Japanse regio (Zie voor [beeld van JSON](#by-using-json-scripts) als referentie).
 
@@ -192,10 +191,10 @@ De planning die in de uitvoer gegevensset is gedefinieerd, bepaalt wanneer de ac
 U kunt meer dan één invoer gegevensset opgeven om de activiteit te kopiëren. Ze worden gebruikt om de afhankelijkheden te controleren voordat de activiteit wordt uitgevoerd. Alleen de gegevens van de eerste gegevensset worden echter gekopieerd naar de doel-DataSet. Zie [planning en uitvoering](data-factory-scheduling-and-execution.md)voor meer informatie.  
 
 ## <a name="performance-and-tuning"></a>Prestaties en afstemmen
-Zie de gids voor het kopiëren van de prestaties van de [Kopieer activiteit](data-factory-copy-activity-performance.md), waarin de belangrijkste factoren worden beschreven die van invloed zijn op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) in azure Data Factory. Het bevat ook een lijst met de waargenomen prestaties tijdens interne tests en behandelt verschillende manieren om de prestaties van de Kopieer activiteit te optimaliseren.
+Zie de [Kopieeractiviteit prestatie- en afstemmingshandleiding](data-factory-copy-activity-performance.md), waarin belangrijke factoren die invloed hebben op de prestaties van de verplaatsing van gegevens (Kopieeractiviteit) in Azure Data Factory wordt beschreven. Ook geeft een lijst van de waargenomen prestaties tijdens interne tests van en worden verschillende manieren om te optimaliseren de prestaties van Kopieeractiviteit besproken.
 
 ## <a name="fault-tolerance"></a>Fouttolerantie
-De Kopieer activiteit stopt standaard met het kopiëren van gegevens en retourneert een fout wanneer er incompatibele gegevens tussen de bron en de Sink optreden. u kunt expliciet configureren om de niet-compatibele rijen over te slaan en te registreren en alleen die compatibele gegevens kopiëren om het kopiëren te laten verlopen. Zie de [fout tolerantie van de Kopieer activiteit](data-factory-copy-activity-fault-tolerance.md) voor meer informatie.
+De Kopieer activiteit stopt standaard met het kopiëren van gegevens en retourneert een fout wanneer er incompatibele gegevens tussen de bron en de Sink optreden. u kunt expliciet configureren om de niet-compatibele rijen over te slaan en te registreren en alleen die compatibele gegevens kopiëren om het kopiëren te laten verlopen. Zie de [Kopieeractiviteit fouttolerantie](data-factory-copy-activity-fault-tolerance.md) op meer informatie.
 
 ## <a name="security-considerations"></a>Beveiligingsoverwegingen
 Zie de [beveiligings overwegingen](data-factory-data-movement-security-considerations.md)die de beveiligings infrastructuur beschrijft die services voor gegevens verplaatsing in azure Data Factory gebruiken om uw gegevens te beveiligen.

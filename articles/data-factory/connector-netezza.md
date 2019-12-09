@@ -1,27 +1,26 @@
 ---
 title: Gegevens kopiëren van Netezza met behulp van Azure Data Factory
-description: Meer informatie over het kopiëren van gegevens uit Netezza naar ondersteunde Sink-gegevens archieven met behulp van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
+description: Leer hoe u gegevens kopiëren van Netezza naar ondersteunde sink-gegevensopslag met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 93fed398748dc793f0021758b5c24b6ba6d54782
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 738c0cf8c9fea61bedb53aa5f6c9bde089bac5f7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680636"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930057"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Gegevens kopiëren van Netezza met behulp van Azure Data Factory
 
-In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit Netezza te kopiëren. Het artikel bouwt voort op de [Kopieer activiteit in azure Data Factory](copy-activity-overview.md), waarin een algemeen overzicht van de Kopieer activiteit wordt weer gegeven.
+In dit artikel bevat een overzicht over het gebruik van de Kopieeractiviteit in Azure Data Factory om gegevens te kopiëren van Netezza. Het artikel is gebaseerd op [Kopieeractiviteit in Azure Data Factory](copy-activity-overview.md), die een algemeen overzicht van Kopieeractiviteit geeft.
 
 >[!TIP]
 >Voor het scenario voor gegevens migratie van Netezza naar Azure leert u meer over [het gebruik van Azure Data Factory voor het migreren van gegevens van een on-premises Netezza-server naar Azure](data-migration-guidance-netezza-azure-sqldw.md).
@@ -34,11 +33,11 @@ Deze Netezza-connector wordt ondersteund voor de volgende activiteiten:
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
 
-U kunt gegevens van Netezza kopiëren naar elk ondersteund Sink-gegevens archief. Zie [ondersteunde gegevens archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die door de Kopieer activiteit worden ondersteund als bronnen en Sinks.
+U kunt gegevens uit Netezza kopiëren naar een ondersteunde sink-gegevensopslag. Zie voor een lijst met gegevens opslaat of Kopieeractiviteit als bronnen en sinks ondersteunt, [ondersteunde gegevensarchieven en indelingen](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Netezza-connector ondersteunt parallelle Kopieer bewerking vanuit de bron. Zie de sectie [parallelle kopie van Netezza](#parallel-copy-from-netezza) voor meer informatie.
 
-Azure Data Factory biedt een ingebouwd stuur programma om connectiviteit mogelijk te maken. U hoeft geen stuur Programma's hand matig te installeren om deze connector te gebruiken.
+Azure Data Factory biedt een ingebouwde stuurprogramma als connectiviteit wilt inschakelen. U hoeft niet te installeren op een stuurprogramma voor het gebruik van deze connector.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -46,26 +45,26 @@ Azure Data Factory biedt een ingebouwd stuur programma om connectiviteit mogelij
 
 ## <a name="get-started"></a>Aan de slag
 
-U kunt een pijp lijn maken die gebruikmaakt van een Kopieer activiteit met behulp van de .NET SDK, de python-SDK, Azure PowerShell, de REST API of een Azure Resource Manager-sjabloon. Raadpleeg de [zelf studie activiteit kopiëren](quickstart-create-data-factory-dot-net.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
+U kunt een pijplijn met behulp van een kopieeractiviteit met behulp van de .NET SDK, de Python-SDK, Azure PowerShell, de REST-API of een Azure Resource Manager-sjabloon maken. Zie de [zelfstudie Kopieeractiviteit](quickstart-create-data-factory-dot-net.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.
 
-De volgende secties bevatten informatie over eigenschappen die u kunt gebruiken voor het definiëren van Data Factory entiteiten die specifiek zijn voor de Netezza-connector.
+De volgende secties bevatten meer informatie over eigenschappen die u gebruiken kunt voor het definiëren van Data Factory-entiteiten die specifiek voor de Netezza-connector zijn.
 
-## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 
-De volgende eigenschappen worden ondersteund voor de gekoppelde Netezza-service:
+De volgende eigenschappen worden ondersteund voor de service Netezza gekoppeld:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** moet worden ingesteld op **Netezza**. | Ja |
-| connectionString | Een ODBC-connection string om verbinding te maken met Netezza. <br/>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. U kunt ook wacht woord in Azure Key Vault plaatsen en de `pwd` configuratie uit de connection string halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja |
-| connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
+| type | De **type** eigenschap moet worden ingesteld op **Netezza**. | Ja |
+| connectionString | Een ODBC-verbindingsreeks verbinding maken met Netezza. <br/>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. U kunt ook wacht woord in Azure Key Vault plaatsen en de `pwd` configuratie uit de connection string halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja |
+| connectVia | De [Integration Runtime](concepts-integration-runtime.md) gebruiken om te verbinden met het gegevensarchief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Indien niet opgegeven, wordt de standaard Azure Integration Runtime wordt gebruikt. |Nee |
 
-Een typische connection string is `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. In de volgende tabel worden meer eigenschappen beschreven die u kunt instellen:
+Een gebruikelijke verbindingsreeks is `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. De volgende tabel bevat meer eigenschappen die u kunt instellen:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
-| SecurityLevel | Het beveiligings niveau (SSL/TLS) dat het stuur programma gebruikt voor de verbinding met het gegevens archief. Voor beeld: `SecurityLevel=preferredSecured`. Ondersteunde waarden zijn:<br/>Alleen - niet **beveiligd** (**OnlyUnSecured**): het stuur programma maakt geen gebruik van SSL.<br/>- **voor keur niet-beveiligd (preferredUnSecured) (standaard)** : als de server een keuze biedt, gebruikt het stuur programma geen SSL. <br/>- **Voorkeurs beveiliging (preferredSecured)** : als de server een keuze biedt, maakt het stuur programma gebruik van SSL. <br/>- **alleen beveiligd (onlySecured)** : het stuur programma kan geen verbinding maken tenzij er een SSL-verbinding beschikbaar is. | Nee |
-| CaCertFile | Het volledige pad naar het SSL-certificaat dat door de server wordt gebruikt. Voorbeeld: `CaCertFile=<cert path>;`| Ja, als SSL is ingeschakeld |
+| SecurityLevel | Het niveau van beveiliging (SSL/TLS) die gebruikmaakt van het stuurprogramma voor de verbinding met het gegevensarchief. Voorbeeld: `SecurityLevel=preferredSecured`. Ondersteunde waarden zijn:<br/>- **Alleen niet-beveiligde** (**onlyUnSecured**): het stuurprogramma biedt geen gebruik van SSL.<br/>- **Niet-beveiligde (preferredUnSecured) (standaard) bij voorkeur**: als de server een keuze biedt, het stuurprogramma niet worden gebruikt voor het gebruik van SSL. <br/>- **Beveiligd (preferredSecured) bij voorkeur**: als de server een keuze biedt, SSL wordt gebruikt door het stuurprogramma. <br/>- **Alleen beveiligd (onlySecured)** : het stuurprogramma biedt geen verbinding maken als een SSL-verbinding beschikbaar is. | Nee |
+| CaCertFile | Het volledige pad naar het SSL-certificaat dat wordt gebruikt door de server. Voorbeeld: `CaCertFile=<cert path>;`| Ja, als SSL is ingeschakeld |
 
 **Voorbeeld**
 
@@ -119,18 +118,18 @@ Een typische connection string is `Server=<server>;Port=<port>;Database=<databas
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-In deze sectie vindt u een lijst met eigenschappen die door de Netezza-gegevensset worden ondersteund.
+Deze sectie bevat een lijst met eigenschappen die ondersteuning biedt voor de gegevensset Netezza.
 
-Zie [gegevens sets](concepts-datasets-linked-services.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets.
+Zie voor een volledige lijst van eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets en secties, [gegevenssets](concepts-datasets-linked-services.md).
 
-Als u gegevens van Netezza wilt kopiëren, stelt u de eigenschap **type** van de gegevensset in op **NetezzaTable**. De volgende eigenschappen worden ondersteund:
+Om gegevens te kopiëren van Netezza, stel de **type** eigenschap van de gegevensset in **NetezzaTable**. De volgende eigenschappen worden ondersteund:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **NetezzaTable** | Ja |
-| Schema | De naam van het schema. |Nee (als "query" in activiteit bron is opgegeven)  |
-| tabel | De naam van de tabel. |Nee (als "query" in activiteit bron is opgegeven)  |
-| tableName | De naam van de tabel met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en `table` voor nieuwe workloads. | Nee (als "query" in activiteit bron is opgegeven) |
+| schema | De naam van het schema. |Nee (als 'query' in de activiteitbron is opgegeven)  |
+| table | Naam van de tabel. |Nee (als 'query' in de activiteitbron is opgegeven)  |
+| tableName | De naam van de tabel met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en `table` voor nieuwe workloads. | Nee (als 'query' in de activiteitbron is opgegeven) |
 
 **Voorbeeld**
 
@@ -148,23 +147,23 @@ Als u gegevens van Netezza wilt kopiëren, stelt u de eigenschap **type** van de
 }
 ```
 
-## <a name="copy-activity-properties"></a>Eigenschappen van Kopieer activiteit
+## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-In deze sectie vindt u een lijst met eigenschappen die door de Netezza-bron worden ondersteund.
+Deze sectie bevat een lijst met eigenschappen die ondersteuning biedt voor de bron Netezza.
 
-Zie [pijp lijnen](concepts-pipelines-activities.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten.
+Zie voor een volledige lijst van eigenschappen die beschikbaar zijn voor het definiëren van activiteiten en secties, [pijplijnen](concepts-pipelines-activities.md).
 
 ### <a name="netezza-as-source"></a>Netezza als bron
 
 >[!TIP]
 >Als u gegevens van Netezza efficiënt wilt laden met behulp van gegevens partitioneren, kunt u meer informatie vinden in de sectie [parallel kopiëren vanuit Netezza](#parallel-copy-from-netezza) .
 
-Als u gegevens van Netezza wilt kopiëren, stelt u het **bron** type in de Kopieer activiteit in op **NetezzaSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
+Om gegevens te kopiëren van Netezza, stel de **bron** type in de Kopieeractiviteit naar **NetezzaSource**. De volgende eigenschappen worden ondersteund in de Kopieeractiviteit **bron** sectie:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **NetezzaSource**. | Ja |
-| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Voorbeeld: `"SELECT * FROM MyTable"` | Nee (als ' Tablename ' in gegevensset is opgegeven) |
+| type | De **type** eigenschap van de Kopieeractiviteit-bron moet worden ingesteld op **NetezzaSource**. | Ja |
+| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Voorbeeld: `"SELECT * FROM MyTable"` | Nee (als de 'tableName' in de gegevensset is opgegeven) |
 | partitionOptions | Hiermee geeft u de opties voor gegevens partities op die worden gebruikt voor het laden van gegevens uit Netezza. <br>Toegestane waarden zijn: **geen** (standaard), **DataSlice**en **DynamicRange**.<br>Wanneer een partitie optie is ingeschakeld (dat wil zeggen, niet `None`), is de mate van parallelle uitvoering om gegevens uit een Netezza-data base gelijktijdig te laden, beheerd door [`parallelCopies`](copy-activity-performance.md#parallel-copy) instelling van de Kopieer activiteit. | Nee |
 | partitionSettings | Geef de groep van de instellingen voor het partitioneren van gegevens op. <br>Toep assen als de partitie optie niet `None`is. | Nee |
 | partitionColumnName | Geef de naam op van de bron kolom **in een geheel getal** dat wordt gebruikt voor het partitioneren van het bereik voor parallelle kopieën. Als u niets opgeeft, wordt de primaire sleutel van de tabel automatisch gedetecteerd en gebruikt als de kolom partitie. <br>Toep assen wanneer de partitie optie is `DynamicRange`. Als u een query gebruikt om de bron gegevens op te halen, Hook `?AdfRangePartitionColumnName` in de component WHERE. Zie voor beeld in [parallelle kopie van](#parallel-copy-from-netezza) de sectie Netezza. | Nee |
@@ -213,7 +212,7 @@ Wanneer u gepartitioneerde kopie inschakelt, voert Data Factory parallelle query
 
 U wordt aangeraden om parallelle kopieën in te scha kelen met gegevens partities met name wanneer u grote hoeveel heden gegevens uit uw Netezza-data base laadt. Hieronder vindt u de aanbevolen configuraties voor verschillende scenario's. Bij het kopiëren van gegevens naar gegevens opslag op basis van een bestand, is het opnieuw opdracht om naar een map te schrijven als meerdere bestanden (Geef alleen de mapnaam op). in dat geval is de prestaties beter dan het schrijven naar één bestand.
 
-| Scenario                                                     | Voorgestelde instellingen                                           |
+| Scenario                                                     | Aanbevolen instellingen                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Volledige belasting van een grote tabel.                                   | **Partitie optie**: gegevens segment. <br><br/>Tijdens de uitvoering van Data Factory worden de gegevens automatisch gepartitioneerd op basis van [de ingebouwde gegevens segmenten van Netezza](https://www.ibm.com/support/knowledgecenter/en/SSULQD_7.2.1/com.ibm.nz.adm.doc/c_sysadm_data_slices_parts_disks.html)en worden gegevens gekopieerd op partities. |
 | Laad grote hoeveelheid gegevens met behulp van een aangepaste query.                 | **Partitie optie**: gegevens segment.<br>**Query**: `SELECT * FROM <TABLENAME> WHERE mod(datasliceid, ?AdfPartitionCount) = ?AdfDataSliceCondition AND <your_additional_where_clause>`.<br>Tijdens de uitvoering worden Data Factory vervangen door de `?AdfPartitionCount` (waarbij het parallelle kopie nummer is ingesteld op de Kopieer activiteit) en `?AdfDataSliceCondition` met de partitie logica van het gegevens segment en verzonden naar Netezza. |
@@ -251,4 +250,4 @@ Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer info
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [ondersteunde gegevens archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die door de Kopieer activiteit worden ondersteund als bronnen en sinks in azure Data Factory.
+Zie voor een lijst met gegevensarchieven die Kopieeractiviteit ondersteunt als bronnen en sinks in Azure Data Factory, [ondersteunde gegevensarchieven en indelingen](copy-activity-overview.md#supported-data-stores-and-formats).

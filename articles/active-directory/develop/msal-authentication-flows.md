@@ -1,29 +1,25 @@
 ---
-title: Verificatie stromen (micro soft-verificatie bibliotheek)
+title: MSAL-verificatie stromen | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over de verificatie stromen en subsidies die worden gebruikt door de micro soft Authentication Library (MSAL).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55d618a24b957fedb6fc2af3e75b7a7d2bd23d96
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2c818b7d7508555e1233d4ef954502728f65abfb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473808"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917196"
 ---
 # <a name="authentication-flows"></a>Verificatie stromen
 
@@ -42,15 +38,15 @@ In dit artikel worden de verschillende verificatie stromen beschreven die worden
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>Hoe elke stroom tokens en codes uitstraalt
  
-Afhankelijk van hoe uw client is gebouwd, kunnen er één (of meerdere) verificatie stromen worden gebruikt die worden ondersteund door het micro soft Identity-platform.  Deze stromen kunnen een aantal tokens (id_tokens, vernieuwings tokens, toegangs tokens) en autorisatie codes produceren, en vereisen verschillende tokens om ze te laten werken. In dit diagram wordt een overzicht proides:
+Afhankelijk van hoe uw client is gebouwd, kunnen er één (of meerdere) verificatie stromen worden gebruikt die worden ondersteund door het micro soft Identity-platform.  Deze stromen kunnen een aantal tokens (id_tokens, vernieuwings tokens, toegangs tokens) en autorisatie codes produceren, en vereisen verschillende tokens om ze te laten werken. Dit diagram bevat een overzicht:
  
-|Stroom | Nodig | id_token | toegangs token | token vernieuwen | autorisatie code | 
+|Stroom | Vereist | id_token | Toegangs token | token vernieuwen | autorisatie code | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Autorisatie code stroom](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Impliciete stroom](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[Hybride OIDC-stroom](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
 |[Aflossingen van token vernieuwen](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | token vernieuwen | x | x | x| |
-|[Namens-stroom](v2-oauth2-on-behalf-of-flow.md) | toegangs token| x| x| x| |
+|[Namens-stroom](v2-oauth2-on-behalf-of-flow.md) | Toegangs token| x| x| x| |
 |[Toestel code stroom](v2-oauth2-device-code.md) | | x| x| x| |
 |[Clientreferenties](v2-oauth2-client-creds-grant-flow.md) | | | x (alleen app)| | |
  
@@ -69,7 +65,7 @@ Zie voor meer informatie over het gebruik van MSAL.NET voor het interactief verk
 
 Zie voor meer informatie over interactieve aanroepen in MSAL. js [prompt gedrag in interactieve aanvragen van MSAL. js](msal-js-prompt-behavior.md).
 
-## <a name="implicit-grant"></a>Impliciete toekenning
+## <a name="implicit-grant"></a>Impliciete toewijzing
 
 MSAL ondersteunt de [OAuth 2 impliciete toekennings stroom](v2-oauth2-implicit-grant-flow.md), waarmee de app tokens kan ophalen van het micro soft-identiteits platform zonder een back-end-server referentie-uitwisseling uit te voeren. Hiermee kan de app zich aanmelden bij de gebruiker, de sessie onderhouden en tokens ophalen voor andere web-Api's, allemaal in de Java script-code van de client.
 
@@ -79,7 +75,7 @@ Veel moderne webtoepassingen zijn gebouwd als client-side, single page-toepassin
 
 Deze verificatie stroom bevat geen toepassings scenario's die gebruikmaken van platformoverschrijdende java script frameworks, zoals elektroden en reageren, omdat ze verdere mogelijkheden nodig hebben voor interactie met de systeem eigen platformen.
 
-## <a name="authorization-code"></a>autorisatie code
+## <a name="authorization-code"></a>Autorisatiecode
 
 MSAL ondersteunt de [autorisatie code toekenning van OAuth 2](v2-oauth2-auth-code-flow.md). Deze toekenning kan worden gebruikt in apps die op een apparaat zijn geïnstalleerd om toegang te krijgen tot beveiligde bronnen, zoals web-Api's. Zo kunt u aanmelden en API-toegang toevoegen aan uw mobiele en desktop-apps. 
 
@@ -106,7 +102,7 @@ MSAL ondersteunt de [OAuth 2-verificatie stroom op naam](v2-oauth2-on-behalf-of-
 
 ![Diagram van namens-stroom](media/msal-authentication-flows/on-behalf-of.png)
 
-In het voor gaande diagram:
+In het bovenstaande diagram:
 
 1. De toepassing verkrijgt een toegangs token voor de Web-API.
 2. Een client (Web-, Desktop-, mobiele of toepassing met één pagina) roept een beveiligde web-API aan en voegt het toegangs token toe als Bearer-token in de verificatie header van de HTTP-aanvraag. De Web-API verifieert de gebruiker.
@@ -154,7 +150,7 @@ Door de apparaatcode stroom te gebruiken, haalt de toepassing tokens op via een 
 
 ![Diagram van de code stroom van het apparaat](media/msal-authentication-flows/device-code.png)
 
-In het voor gaande diagram:
+In het bovenstaande diagram:
 
 1. Wanneer gebruikers verificatie is vereist, biedt de app een code en wordt de gebruiker gevraagd een ander apparaat (zoals een smartphone met Internet verbinding) te gebruiken om naar een URL te gaan (bijvoorbeeld https://microsoft.com/devicelogin). De gebruiker wordt vervolgens gevraagd de code in te voeren en gaat verder met een normale verificatie-ervaring, inclusief toestemming prompts en multi-factor Authentication, indien nodig.
 
@@ -168,7 +164,7 @@ In het voor gaande diagram:
   - Voor alle werk-en school accounts (`https://login.microsoftonline.com/organizations/`).
 - Persoonlijke micro soft-accounts worden nog niet ondersteund door het Azure AD v 2.0-eind punt (u kunt de `/common`-of `/consumers`-tenants niet gebruiken).
 
-## <a name="integrated-windows-authentication"></a>Geïntegreerde Windows-verificatie
+## <a name="integrated-windows-authentication"></a>Geïntegreerde Windows-authenticatie
 
 MSAL biedt ondersteuning voor geïntegreerde Windows-verificatie (IWA) voor desktop-of mobiele toepassingen die worden uitgevoerd op een lid van een domein of een Windows-computer die is toegevoegd aan Azure AD. Met behulp van IWA kunnen deze toepassingen een token op de achtergrond verkrijgen (zonder interactie van de gebruikers interface van de gebruiker). 
 

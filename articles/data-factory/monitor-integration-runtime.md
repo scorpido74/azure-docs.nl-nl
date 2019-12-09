@@ -5,24 +5,23 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/25/2018
 author: djpmsft
 ms.author: daperlov
-manager: craigg
-ms.openlocfilehash: 874483540b8c92bbb8a6e37101191f5c867b76f1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: a65bb119994e8bb56eecc730774535d7c0a4d8b6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684650"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928430"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Een Integration runtime in Azure Data Factory bewaken  
 **Integration runtime** is de reken infrastructuur die wordt gebruikt door Azure Data Factory om verschillende mogelijkheden voor gegevens integratie in verschillende netwerk omgevingen te bieden. Er zijn drie typen Integration runtimes die worden aangeboden door Data Factory:
 
-- Azure Integration Runtime
-- Zelf-hostende Integration Runtime
+- Azure-integratieruntime
+- Zelf-hostende integratieruntime
 - Azure-SSIS-integratie-runtime
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -35,7 +34,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGr
 
 De cmdlet retourneert verschillende informatie voor verschillende typen Integration runtime. In dit artikel worden de eigenschappen en statussen van elk type Integration runtime beschreven.  
 
-## <a name="azure-integration-runtime"></a>Azure Integration Runtime
+## <a name="azure-integration-runtime"></a>Azure-integratieruntime
 De reken resource voor een Azure Integration runtime wordt volledig beheerd in Azure. De volgende tabel bevat beschrijvingen voor eigenschappen die worden geretourneerd door de opdracht **Get-AzDataFactoryV2IntegrationRuntime** :
 
 ### <a name="properties"></a>Eigenschappen
@@ -44,7 +43,7 @@ De volgende tabel bevat beschrijvingen van de eigenschappen die worden geretourn
 | Eigenschap | Beschrijving |
 -------- | ------------- | 
 | Naam | De naam van de Azure Integration runtime. |  
-| Status | Status van de Azure Integration runtime. | 
+| Staat | Status van de Azure Integration runtime. | 
 | Locatie | Locatie van de Azure Integration runtime. Zie [Inleiding tot Integration runtime](concepts-integration-runtime.md)voor meer informatie over de locatie van een Azure Integration runtime. |
 | DataFactoryName | De naam van de data factory waarvan de Azure Integration runtime deel uitmaakt. | 
 | ResourceGroupName | De naam van de resource groep waartoe de data factory behoort.  |
@@ -56,9 +55,9 @@ De volgende tabel bevat mogelijke statussen van een Azure Integration runtime:
 | Status | Opmerkingen/Scenario's | 
 | ------ | ------------------ |
 | Online | Azure Integration runtime is online en klaar om te worden gebruikt. | 
-| Breken | De Azure Integration runtime is offline vanwege een interne fout. |
+| Offline | De Azure Integration runtime is offline vanwege een interne fout. |
 
-## <a name="self-hosted-integration-runtime"></a>Zelf-hostende Integration Runtime
+## <a name="self-hosted-integration-runtime"></a>Zelf-hostende integratieruntime
 Deze sectie bevat beschrijvingen voor eigenschappen die door de cmdlet Get-AzDataFactoryV2IntegrationRuntime worden geretourneerd. 
 
 > [!NOTE] 
@@ -72,7 +71,7 @@ De volgende tabel bevat beschrijvingen van de bewakings eigenschappen voor **elk
 | -------- | ----------- | 
 | Naam | De naam van de zelf-hostende Integration runtime en knoop punten die eraan zijn gekoppeld. Knoop punt is een on-premises Windows-computer waarop de zelf-hostende Integration runtime is geïnstalleerd. |  
 | Status | De status van de algemene zelf-hostende Integration runtime en elk knoop punt. Voor beeld: online/offline/beperkt/etc. Zie de volgende sectie voor meer informatie over deze statussen. | 
-| Versie | De versie van de zelf-hostende Integration runtime en elk knoop punt. De versie van de zelf-hostende Integration runtime wordt bepaald op basis van de versie van de knoop punten in de groep. Als er knoop punten met verschillende versies in de zelf-hostende Integration runtime-installatie zijn, worden alleen de knoop punten met hetzelfde versie nummer als de logische zelf-hostende Integration runtime-functie correct uitgevoerd. Andere bevinden zich in de beperkte modus en moeten hand matig worden bijgewerkt (alleen als de automatische update mislukt). | 
+| Version | De versie van de zelf-hostende Integration runtime en elk knoop punt. De versie van de zelf-hostende Integration runtime wordt bepaald op basis van de versie van de knoop punten in de groep. Als er knoop punten met verschillende versies in de zelf-hostende Integration runtime-installatie zijn, worden alleen de knoop punten met hetzelfde versie nummer als de logische zelf-hostende Integration runtime-functie correct uitgevoerd. Andere bevinden zich in de beperkte modus en moeten hand matig worden bijgewerkt (alleen als de automatische update mislukt). | 
 | Beschikbaar geheugen | Beschikbaar geheugen op een zelf-hostend Integration runtime-knoop punt. Deze waarde is een bijna realtime moment opname. | 
 | CPU-gebruik | CPU-gebruik van een zelf-hostend Integration runtime-knoop punt. Deze waarde is een bijna realtime moment opname. |
 | Netwerken (in/uit) | Netwerk gebruik van een zelf-hostend Integration runtime-knoop punt. Deze waarde is een bijna realtime moment opname. | 
@@ -95,10 +94,10 @@ De volgende tabel bevat mogelijke statussen van een zelf-hostende Integration ru
 | Status | Beschrijving |
 | ------ | ------------------ | 
 | Online | Het knoop punt is verbonden met de Data Factory-service. |
-| Breken | Het knoop punt is offline. |
-| Abonnement | Het knoop punt wordt automatisch bijgewerkt. |
+| Offline | Het knoop punt is offline. |
+| Upgrade uitvoeren | Het knoop punt wordt automatisch bijgewerkt. |
 | Beperkt | Vanwege een probleem met de verbinding. Wordt mogelijk veroorzaakt door een probleem met de HTTP-poort 8050, een probleem met de Service Bus-verbinding of een probleem met de synchronisatie van referenties. |
-| Inactieve | Het knoop punt bevindt zich in een configuratie die verschilt van de configuratie van andere hoofd knooppunten. |
+| Inactief | Het knoop punt bevindt zich in een configuratie die verschilt van de configuratie van andere hoofd knooppunten. |
 
 Een knoop punt kan inactief zijn wanneer er geen verbinding kan worden gemaakt met andere knoop punten.
 
@@ -109,7 +108,7 @@ De volgende tabel bevat mogelijke statussen van een zelf-hostende Integration ru
 | ------ | ----------- | 
 | Registratie vereist | Er is nog geen knoop punt geregistreerd bij deze zelf-hostende Integration runtime. |
 | Online | Alle knoop punten zijn online. |
-| Breken | Er is geen knoop punt online. |
+| Offline | Er is geen knoop punt online. |
 | Beperkt | Niet alle knoop punten in deze zelf-hostende Integration runtime hebben de status in orde. Deze status is een waarschuwing dat bepaalde knoop punten mogelijk niet actief zijn. Deze status kan worden veroorzaakt door een probleem met de synchronisatie van referenties op de verzender/het worker-knoop punt. |
 
 Gebruik de cmdlet **Get-AzDataFactoryV2IntegrationRuntimeMetric** om de JSON-nettolading op te halen met de gedetailleerde runtime-eigenschappen voor zelf-hostende Integration en de bijbehorende momentopname waarden tijdens de uitvoering van de cmdlet.
@@ -163,7 +162,7 @@ Azure-SSIS Integration runtime is een volledig beheerd cluster van virtuele Azur
 | Knooppunten | De toegewezen/beschik bare knoop punten van uw Azure-SSIS-integratie-runtime met knooppunt statussen (gestart/beschikbaar/recycling/niet beschikbaar) en bruikbare fouten. |
 | OtherErrors | De niet-knooppunt specifieke actie fouten op uw Azure SSIS Integration runtime. |
 | LastOperation | Het resultaat van de laatste start-en stop bewerking voor uw Azure SSIS Integration runtime met een actie bare fout (en) als deze is mislukt. |
-| Status | De algehele status van uw Azure SSIS Integration runtime (begin/start/gestart/gestopt). |
+| Staat | De algehele status van uw Azure SSIS Integration runtime (begin/start/gestart/gestopt). |
 | Locatie | De locatie van uw Azure SSIS Integration runtime. |
 | NodeSize | De grootte van elk knoop punt van uw Azure SSIS Integration runtime. |
 | NodeCount | Het aantal knoop punten in uw Azure SSIS Integration runtime. |
@@ -186,20 +185,20 @@ Azure-SSIS Integration runtime is een volledig beheerd cluster van virtuele Azur
 
 | Status | Beschrijving |
 | ------ | ----------- | 
-| Starten | Dit knoop punt wordt voor bereid. |
+| Starting | Dit knoop punt wordt voor bereid. |
 | Beschikbaar | Met dit knoop punt kunt u SSIS-pakketten implementeren en uitvoeren. |
-| Recycl | Dit knoop punt wordt hersteld/opnieuw gestart. |
+| Recyclen | Dit knoop punt wordt hersteld/opnieuw gestart. |
 | Niet beschikbaar | Dit knoop punt is niet gereed voor het implementeren/uitvoeren van SSIS-pakketten en heeft actie fouten/problemen die kunnen worden opgelost. |
 
 ### <a name="status-overall-azure-ssis-integration-runtime"></a>Status (algehele Azure-SSIS Integration runtime)
 
 | Algemene status | Beschrijving | 
 | -------------- | ----------- | 
-| Itiaal | De knoop punten van uw Azure SSIS Integration runtime zijn niet toegewezen/voor bereid. | 
-| Starten | De knoop punten van uw Azure SSIS Integration runtime worden toegewezen/voor bereid en de facturering is gestart. |
-| Helpen | De knoop punten van uw Azure SSIS Integration runtime zijn toegewezen/voor bereid en ze zijn klaar om SSIS-pakketten te implementeren en uit te voeren. |
-| Stoppen  | De knoop punten van uw Azure SSIS Integration runtime worden vrijgegeven. |
-| Gestopt | De knoop punten van uw Azure SSIS Integration runtime zijn vrijgegeven en de facturering is gestopt. |
+| Eerste | De knoop punten van uw Azure SSIS Integration runtime zijn niet toegewezen/voor bereid. | 
+| Starting | De knoop punten van uw Azure SSIS Integration runtime worden toegewezen/voor bereid en de facturering is gestart. |
+| Gestart | De knoop punten van uw Azure SSIS Integration runtime zijn toegewezen/voor bereid en ze zijn klaar om SSIS-pakketten te implementeren en uit te voeren. |
+| Stopping  | De knoop punten van uw Azure SSIS Integration runtime worden vrijgegeven. |
+| Stopped | De knoop punten van uw Azure SSIS Integration runtime zijn vrijgegeven en de facturering is gestopt. |
 
 ### <a name="monitor-the-azure-ssis-integration-runtime-in-the-azure-portal"></a>De Azure SSIS Integration runtime bewaken in de Azure Portal
 

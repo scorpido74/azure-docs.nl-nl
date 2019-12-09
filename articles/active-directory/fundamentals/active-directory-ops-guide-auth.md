@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 40e0ba21d472097e34938878ddc1fa0c47b30417
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 85281088692d1c4b0245eb9d069519198f8f315d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803730"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919338"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Naslag Gids voor verificatie beheer van Azure Active Directory
 
@@ -292,16 +292,16 @@ Als verouderde verificatie veel in uw omgeving wordt gebruikt, moet u plannen om
 
 ### <a name="consent-grants"></a>Verleende toestemming
 
-Bij een illegale toestemming verleent de aanvaller een Azure AD-geregistreerde toepassing die toegang tot gegevens, zoals contact gegevens, e-mail of documenten, aanvraagt. Gebruikers kunnen toestaan dat ze toestemming geven voor schadelijke toepassingen via phishing-aanvallen, of indirect door te voor komen dat ze op schadelijke websites terechtkomen.
+Bij een illegale toestemming verleent de aanvaller een Azure AD-geregistreerde toepassing die toegang tot gegevens, zoals contact gegevens, e-mail of documenten, aanvraagt. Gebruikers kunnen via phishing-aanvallen toestemming geven voor kwaad aardige toepassingen wanneer ze op schadelijke websites terechtkomen.
 
-Hieronder vindt u de machtigingen die u mogelijk wilt scrutinize voor micro soft-Cloud Services:
+Hieronder vindt u een lijst met apps met machtigingen die u mogelijk wilt scrutinize voor micro soft-Cloud Services:
 
-- Toepassingen met app of gedelegeerde \*. ReadWrite-machtigingen
-- Toepassingen met gedelegeerde machtigingen kunnen e-mail namens de gebruiker lezen, verzenden of beheren
-- Toepassingen waaraan het gebruik van de volgende machtigingen is verleend:
+- Apps met een app of gedelegeerde \*. ReadWrite-machtigingen
+- Apps met gedelegeerde machtigingen kunnen e-mail namens de gebruiker lezen, verzenden of beheren
+- Apps waaraan het gebruik van de volgende machtigingen is verleend:
 
 | Bron | Machtiging |
-| -------------------------- | -------------------- |
+| :- | :- |
 | Office 365 Exchange Online | Uitgebreide. AccessAsUser. all |
 | | EWS. AccessAsUser. all |
 | | Mail. Read |
@@ -309,11 +309,19 @@ Hieronder vindt u de machtigingen die u mogelijk wilt scrutinize voor micro soft
 | | Mail. Read. Shared |
 | | Mail. ReadWrite |
 
-Om dit scenario te voor komen, dient u te verwijzen naar [illegale toestemming subsidies in Office 365 te detecteren](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) en op te lossen om toepassingen te identificeren en te herstellen met illegale subsidies of toepassingen die meer subsidies hebben dan nodig zijn. Regel matige beoordelingen van app-machtigingen plannen en deze verwijderen wanneer ze niet nodig zijn; of verwijder self-service samen en stel beheer procedures in.
+- Apps hebben volledige gebruikers imitatie verleend van de aangemelde gebruiker. Bijvoorbeeld:
+
+|Bron | Machtiging |
+| :- | :- |
+| Azure AD-grafiek | Map. AccessAsUser. alle |
+| Microsoft Graph | Map. AccessAsUser. alle |
+| Azure REST API | user_impersonation |
+
+Om dit scenario te voor komen, dient u te verwijzen naar [illegale toestemming subsidies in Office 365 te detecteren](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) en op te lossen om toepassingen te identificeren en te herstellen met illegale subsidies of toepassingen die meer subsidies hebben dan nodig zijn. Vervolgens [verwijdert u self-service samen](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent) en stelt u beheer [procedures](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)in. Ten slotte kunt u regel matig beoordelingen van app-machtigingen plannen en deze verwijderen wanneer ze niet nodig zijn.
 
 #### <a name="consent-grants-recommended-reading"></a>Toestemming toekenningen aanbevolen te lezen
 
-- [Graph API machtigings bereik van Azure Active Directory (AD)](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes)
+- [Machtigingen voor Microsoft Graph](https://docs.microsoft.com/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>Gebruikers-en groeps instellingen
 

@@ -1,31 +1,32 @@
 ---
-title: 'Incrementeel gegevens kopiëren met behulp van Wijzigingen bijhouden en Azure Data Factory '
-description: 'In deze zelfstudie maakt u een Azure Data Factory-pijplijn waarmee wijzigingsgegevens incrementeel uit meerdere tabellen van een lokale Microsoft SQL Server worden gekopieerd naar een Azure SQL-database. '
+title: Incrementeel gegevens kopiëren met behulp van Wijzigingen bijhouden
+description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn waarmee wijzigingsgegevens incrementeel uit meerdere tabellen van een lokale Microsoft SQL Server worden gekopieerd naar een Azure SQL-database.
 services: data-factory
-documentationcenter: ''
+ms.author: yexu
 author: dearandyxu
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.author: yexu
-ms.openlocfilehash: feab54128a00d587ea9b68d8db5df59bd3615ee2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: de42acd9cb8ca0520db616237c23b7db9fadb77f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683480"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923018"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Incrementeel gegevens kopiëren van Azure SQL Database naar Azure Blob Storage met behulp van technologie voor bijhouden van wijzigingen 
+
 In deze zelfstudie maakt u een Azure data factory met een pijplijn die gewijzigde gegevens laadt op basis van informatie over **wijzigingen** in de Azure SQL-brondatabase naar een Azure blob storage.  
 
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
 > * Voorbereiden van de bron-gegevensopslag
-> * Maak een gegevensfactory.
+> * Een gegevensfactory maakt.
 > * Maak gekoppelde services. 
 > * Maken van bron-, sink- en wijzigingsgegevenssets.
 > * Maken, uitvoeren en bewaken van de pijplijn met de volledige kopie
@@ -72,7 +73,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 * Azure PowerShell. Installeer de nieuwste Azure PowerShell-modules met de instructies in [Azure PowerShell installeren en configureren](/powershell/azure/install-Az-ps).
 * **Azure SQL-database**. U gebruikt de database als de **brongegevensopslag**. Als u geen Azure SQL-database hebt, raadpleegt u het artikel [Een Azure SQL-database maken](../sql-database/sql-database-get-started-portal.md) voor de stappen voor het maken van een account.
-* **Een Azure Storage-account**. U gebruikt de Blob-opslag als de **sinkgegevensopslag**. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md) voor de stappen voor het maken van een account. Maak een container met de naam **adftutorial**. 
+* **Een Azure Storage-account**. U gebruikt de Blob-opslag als de **sinkgegevensopslag**. Als u geen Azure-opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md) om een account te maken. Maak een container met de naam **adftutorial**. 
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Een gegevensbrontabel maken in de Azure SQL-database
 1. Start **SQL Server Management Studio**, en maak verbinding met uw Azure SQL-server. 
@@ -149,7 +150,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 ### <a name="azure-powershell"></a>Azure PowerShell
 Installeer de nieuwste Azure PowerShell-modules met de instructies in [Azure PowerShell installeren en configureren](/powershell/azure/install-Az-ps).
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 1. Definieer een variabele voor de naam van de resourcegroep die u later gaat gebruiken in PowerShell-opdrachten. Kopieer de tekst van de volgende opdracht naar PowerShell, geef tussen dubbele aanhalingstekens een naam op voor de [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en voer de opdracht uit. Bijvoorbeeld: `"adfrg"`. 
    
      ```powershell
@@ -196,7 +197,7 @@ Houd rekening met de volgende punten:
 ## <a name="create-linked-services"></a>Gekoppelde services maken
 U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze sectie maakt u gekoppelde services in het Azure Storage-account en de Azure SQL-database. 
 
-### <a name="create-azure-storage-linked-service"></a>Een gekoppelde Azure Storage-service maakt.
+### <a name="create-azure-storage-linked-service"></a>Maak een gekoppelde Azure Storage-service.
 Tijdens deze stap koppelt u uw Azure Storage-account aan de data factory.
 
 1. Maak een JSON-bestand met de naam **AzureStorageLinkedService.json** in de map **C:\ADFTutorials\IncCopyChangeTrackingTutorial** met de volgende inhoud: Maak de map als deze nog niet bestaat. Vervang voordat u het bestand opslaat `<accountName>`, `<accountKey>` door de naam en de sleutel van uw Azure Storage-account.

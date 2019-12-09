@@ -1,17 +1,18 @@
 ---
-title: Opbouw functie voor gegevensstroom Expression Azure Data Factory koppelen
+title: Opbouw functie voor gegevens stroom expressie koppelen
 description: De opbouw functie voor expressies voor het Azure Data Factory toewijzen van gegevens stromen
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 11/17/2019
-ms.openlocfilehash: 0eb2c2692ed2444a85e7253c6fdd8734385ff881
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: seo-lt-2019
+ms.date: 12/06/2019
+ms.openlocfilehash: 7d8f02647224c971c44bff51f09315c53c53e9a3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672272"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928339"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Opbouw functie voor gegevens stroom expressie koppelen
 
@@ -50,6 +51,16 @@ Klik op de knop Vernieuwen om de resultaten van uw expressie bij te werken met e
 Voeg opmerkingen toe aan uw expressies met behulp van de syntaxis voor één regel en een opmerking met meerdere regels:
 
 ![Opmerkingen](media/data-flow/comments.png "Opmerkingen")
+
+## <a name="string-interpolation"></a>Interpolatie van teken reeksen
+
+Gebruik dubbele aanhalings tekens om letterlijke teken reeks tekst samen met expressies te sluiten. U kunt expressie functies, kolommen en para meters toevoegen. Dit is zeer nuttig om te voor komen dat teken reeksen samen voegen als u para meters met een query teken reeks opgeeft.
+
+* ```"My favorite movie is {iif(instr(title,', The')>0,"The {split(title,', The')[1]}",title)}"```
+
+* ```"select * from {$tablename} where orderyear > {$year}"```
+
+* ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
 
 ## <a name="regular-expressions"></a>Reguliere expressies
 

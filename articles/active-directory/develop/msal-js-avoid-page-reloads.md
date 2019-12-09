@@ -1,32 +1,28 @@
 ---
-title: Pagina opnieuw laden voor komen (micro soft-verificatie bibliotheek voor Java script)
+title: Pagina opnieuw laden (MSAL. js) voor komen | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het voor komen van het opnieuw laden van pagina's bij het op de achtergrond ophalen en vernieuwen van tokens met behulp van de micro soft-verificatie bibliotheek voor Java script (MSAL. js).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/29/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29edafdc27a3835653f82ec36d576a4871e66155
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 04d1ef1f76b1b1a807f48f7c79e41ada68b561fc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803101"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916432"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>Pagina opnieuw laden voor komen bij het op de achtergrond ophalen en vernieuwen van tokens met behulp van MSAL. js
-Micro soft Authentication Library voor Java script (MSAL. js) gebruikt verborgen `iframe` elementen voor het op de achtergrond verkrijgen en vernieuwen van tokens. Azure AD retourneert het token terug naar de geregistreerde redirect_uri die is opgegeven in de token aanvraag (standaard is dit de hoofd pagina van de app). Omdat het antwoord een 302 is, resulteert dit in de HTML-code die overeenkomt met de `redirect_uri` geladen in de `iframe`. Normaal gesp roken is de `redirect_uri` van de app de hoofd pagina, waardoor deze opnieuw wordt geladen.
+Micro soft Authentication Library voor Java script (MSAL. js) gebruikt verborgen `iframe` elementen voor het op de achtergrond verkrijgen en vernieuwen van tokens. Azure AD retourneert het token terug naar de geregistreerde redirect_uri die in de token aanvraag is opgegeven (standaard is dit de hoofd pagina van de app). Omdat het antwoord een 302 is, resulteert dit in de HTML-code die overeenkomt met de `redirect_uri` geladen in de `iframe`. Normaal gesp roken is de `redirect_uri` van de app de hoofd pagina, waardoor deze opnieuw wordt geladen.
 
 Als er in andere gevallen verificatie is vereist voor het navigeren naar de hoofd pagina van de app, kan dit leiden tot geneste `iframe` elementen of `X-Frame-Options: deny` fout.
 

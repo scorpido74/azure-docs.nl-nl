@@ -3,27 +3,23 @@ title: Sleutelketen configureren
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het configureren van sleutel ketens, zodat uw app tokens in de sleutel hanger kan opslaan in de cache.
 services: active-directory
-documentationcenter: ''
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: twhitney
-ms.reviewer: ''
+ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69991d105ff3523310f54e65596f2f379b547052
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 8b4599549e15d6ebe4d0bd04f96c89df86b0c0cd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803804"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917502"
 ---
 # <a name="configure-keychain"></a>Sleutelketen configureren
 
@@ -35,23 +31,23 @@ In dit artikel wordt beschreven hoe u de rechten van een app kunt configureren, 
 
 ### <a name="ios"></a>iOS
 
-MSAL op iOS maakt standaard gebruik van de `com.microsoft.adalcache`-toegangs groep. Dit is de gedeelde toegangs groep die wordt gebruikt door zowel de MSAL-als de Azure AD Authentication Library (ADAL) Sdk's en zorgt voor de beste SSO-ervaring (eenmalige aanmelding) tussen meerdere apps van dezelfde uitgever.
+MSAL op iOS maakt standaard gebruik van de toegangs groep `com.microsoft.adalcache`. Dit is de gedeelde toegangs groep die wordt gebruikt door zowel de MSAL-als de Azure AD Authentication Library (ADAL) Sdk's en zorgt voor de beste SSO-ervaring (eenmalige aanmelding) tussen meerdere apps van dezelfde uitgever.
 
-Voeg op iOS de `com.microsoft.adalcache`-sleutel keten groep toe aan het recht van uw app in XCode onder **project instellingen** > **mogelijkheden** > **sleutel hanger delen**
+Voeg op iOS de `com.microsoft.adalcache` sleutel keten groep toe aan het recht van uw app in XCode onder **project instellingen** > **mogelijkheden** > **sleutel hanger delen**
 
 ### <a name="macos"></a>macOS
 
-MSAL in macOS maakt standaard gebruik van `com.microsoft.identity.universalstorage`-toegangs groep.
+MSAL in macOS maakt standaard gebruik van `com.microsoft.identity.universalstorage` toegangs groep.
 
-Als gevolg van de beperkingen van de macOS-sleutel hanger de `access group` van MSAL niet rechtstreeks naar het kenmerk voor de toegangs groep van de sleutel hanger (Zie [kSecAttrAccessGroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) op macOS 10,14 en eerdere versies. Het werkt echter op dezelfde manier als een SSO-perspectief door ervoor te zorgen dat meerdere toepassingen die door dezelfde Apple-ontwikkelaar worden gedistribueerd, Silent SSO kunnen hebben.
+Als gevolg van de beperkingen van macOS-sleutel hanger, wordt de `access group` van MSAL niet rechtstreeks vertaald naar het kenmerk voor de toegangs groep van de sleutel hanger (Zie [kSecAttrAccessGroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) op macOS 10,14 en eerder. Het werkt echter op dezelfde manier als een SSO-perspectief door ervoor te zorgen dat meerdere toepassingen die door dezelfde Apple-ontwikkelaar worden gedistribueerd, Silent SSO kunnen hebben.
 
 Op macOS 10,15 en hoger (macOS Catalina) maakt MSAL gebruik van de toegangs groeps kenmerk sleutel hanger voor het verkrijgen van een stille SSO, op dezelfde wijze als iOS.
 
 ## <a name="custom-keychain-access-group"></a>Toegangs groep voor aangepaste sleutel hanger
 
-Als u een andere toegangs groep voor de sleutel hanger wilt gebruiken, kunt u uw aangepaste groep door geven tijdens het maken van `MSALPublicClientApplicationConfig` voordat u `MSALPublicClientApplication` maakt, bijvoorbeeld:
+Als u een andere toegangs groep voor de sleutel hanger wilt gebruiken, kunt u uw aangepaste groep door geven tijdens het maken van `MSALPublicClientApplicationConfig` voordat u `MSALPublicClientApplication`maakt, zoals:
 
-Doel-C:
+# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
 
 ```objc
 MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"your-client-id"
@@ -67,9 +63,7 @@ MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] 
 // and only shared with other applications declaring the same access group
 ```
 
-
-
-Swift
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "your-client-id",
@@ -85,25 +79,27 @@ do {
 }       
 ```
 
-
+---
 
 ## <a name="disable-keychain-sharing"></a>Sleutel hanger delen uitschakelen
 
 Als u de SSO-status niet wilt delen tussen meerdere apps of een toegangs groep voor de sleutel hanger wilt gebruiken, moet u het delen van sleutel hanger uitschakelen door de Application bundel-ID als uw keychainGroup door te geven:
 
-Doel-C:
+# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
 
 ```objc
 config.cacheConfig.keychainSharingGroup = [[NSBundle mainBundle] bundleIdentifier];
 ```
 
-Swift
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
 
 ```swift
 if let bundleIdentifier = Bundle.main.bundleIdentifier {
     config.cacheConfig.keychainSharingGroup = bundleIdentifier
 }
 ```
+
+---
 
 ## <a name="handle--34018-error-failed-to-set-item-into-keychain"></a>Handle-34018-fout (kan item niet in sleutel hanger instellen)
 

@@ -1,6 +1,6 @@
 ---
-title: Bureau blad-app die web-Api's aanroept (code configuratie)-micro soft Identity-platform
-description: Meer informatie over het bouwen van een bureau blad-app die web-Api's aanroept (de code configuratie van de app)
+title: De bureau blad-app configureren die web-Api's aanroept-micro soft Identity-platform | Azure
+description: Meer informatie over het configureren van de code van een bureau blad-app die web-Api's aanroept
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6baf7d21748b5b524745f26302e70612dab29a8d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 0d31a70ebc63a5e9a16e0da00623bd5855f0a7d1
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175430"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920256"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Bureau blad-app die web-Api's aanroept-code configuratie
 
@@ -34,7 +34,7 @@ De volgende micro soft-bibliotheken ondersteunen bureaublad toepassingen:
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Biedt ondersteuning voor het bouwen van een bureaublad toepassing in meerdere platforms-Linux, Windows en MacOS
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL python | Biedt ondersteuning voor het bouwen van een bureaublad toepassing op meerdere platforms. Ontwikkeling in uitvoering-in open bare preview
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL java | Biedt ondersteuning voor het bouwen van een bureaublad toepassing op meerdere platforms. Ontwikkeling in uitvoering-in open bare preview
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Biedt ondersteuning voor het bouwen van een bureaublad toepassing op meerdere platforms. Ontwikkeling in uitvoering-in open bare preview
   ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | Ondersteunt alleen bureaublad toepassingen die worden uitgevoerd op macOS
 
 ## <a name="public-client-application"></a>Open bare client toepassing

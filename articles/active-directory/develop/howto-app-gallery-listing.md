@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/16/2019
+ms.date: 12/06/2019
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e1763b8d6402a6093499f1f06253fe4c7502255
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 54c51a10f950fb5381ab29968a866772dcaec78c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842775"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917999"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uw toepassing weergeven in de Azure Active Directory-toepassingsgalerie
 
@@ -42,6 +42,10 @@ In dit artikel wordt beschreven hoe u een toepassing kunt weer geven in de toepa
 - Zorg ervoor dat uw toepassing ondersteuning biedt voor formulier verificatie, zodat wachtwoord kluizen kan worden uitgevoerd om eenmalige aanmelding te kunnen werken.
 - U hebt een permanent account nodig om te testen met ten minste twee gebruikers die zijn geregistreerd.
 
+**Hoe kan ik Azure AD voor ontwikkel aars ophalen?**
+
+U kunt een gratis test account krijgen met alle Premium Azure AD-functies-90 dagen gratis en kunnen zo lang worden uitgebreid als u er ontwikkel aars mee werkt: https://docs.microsoft.com/office/developer-program/office-365-developer-program
+
 ## <a name="submit-the-request-in-the-portal"></a>De aanvraag verzenden in de portal
 
 Nadat u hebt gecontroleerd of uw toepassings integratie werkt met Azure AD, moet u uw verzoek om toegang verzenden in de portal voor het [toepassings netwerk](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Als u een Office 365-account hebt, kunt u dit gebruiken om u aan te melden bij deze portal. Als dat niet het geval is, gebruikt u uw Microsoft-account, zoals Outlook of Hotmail, om u aan te melden.
@@ -59,6 +63,26 @@ Als de volgende pagina wordt weer gegeven nadat u zich hebt aangemeld, moet u ee
 Ons team bekijkt de details en geeft u de juiste toegang. Nadat uw aanvraag is goedgekeurd, kunt u zich aanmelden bij de portal en de aanvraag indienen door de tegel **aanvraag indienen (ISV)** op de start pagina te selecteren.
 
 ![Tegel Request (ISV) verzenden op Start pagina](./media/howto-app-gallery-listing/homepage.png)
+
+## <a name="issues-on-logging-into-portal"></a>Problemen bij het aanmelden bij de portal
+
+Als deze fout optreedt tijdens het aanmelden, ziet u hier de details over het probleem en hoe u het kunt oplossen.
+
+* Als uw aanmelding is geblokkeerd, zoals hieronder wordt weer gegeven:
+
+  ![problemen met het omzetten van toepassingen in de galerie](./media/howto-app-gallery-listing/blocked.png)
+
+**Wat gebeurt er:**
+
+De gast gebruiker is federatief voor een thuis Tenant die ook een Azure AD is. De gast gebruiker heeft een hoog risico. Micro soft staat gebruikers met een hoog risico niet toe om toegang te krijgen tot de resources. Alle gebruikers met een hoog risico (werk nemers of gasten/leveranciers) moeten hun risico voor toegang tot micro soft-resources herstellen/sluiten. Voor gast gebruikers is dit risico van de gebruiker afkomstig van de thuis Tenant en is het beleid afkomstig van de resource Tenant (micro soft in dit geval).
+ 
+**Veilige oplossingen:**
+
+* Door MFA geregistreerde gast gebruikers herstellen hun eigen gebruikers risico. Dit kan door de gast gebruiker worden uitgevoerd om een beveiligd wacht woord te wijzigen of opnieuw in te stellen (https://aka.ms/sspr) bij hun thuis Tenant (dit vereist MFA en SSPR bij de thuis Tenant). Het beveiligde wacht woord wijzigen of opnieuw instellen moet worden gestart op Azure AD en niet on-premises.
+
+* Gast gebruikers hebben hun beheerders hun risico hersteld. In dit geval voert de beheerder een wachtwoord herstel uit (tijdelijke wacht woorden genereren). Dit vereist geen identiteits beveiliging. De beheerder van de gast gebruiker kan naar https://aka.ms/RiskyUsers gaan en op wacht woord opnieuw instellen klikken.
+
+* Gast gebruikers hebben hun beheerders hun Risico's sluiten/verwijderen. Opnieuw, hiervoor is geen identiteits beveiliging vereist. De beheerder kan naar https://aka.ms/RiskyUsers gaan en op gebruikers risico negeren klikken. De beheerder moet er echter rekening mee houden dat dit een onjuiste positieve risico analyse was voordat het gebruikers risico wordt gesloten. Anders zetten ze hun en micro soft-bronnen risico door een risico analyse zonder onderzoek te onderdrukken.
 
 > [!NOTE]
 > Als u problemen hebt met Access, neemt u contact op met het [Azure AD SSO-integratie team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
@@ -79,6 +103,7 @@ Als u een toepassing in de Azure AD-App-galerie wilt weer geven, moet u eerst ee
   ![Een SAML 2,0-of WS--toepassing in de galerie weer geven](./media/howto-app-gallery-listing/saml.png)
 
   * Als u uw toepassing wilt toevoegen aan de lijst in de galerie met behulp van **saml 2,0** of **WS-voeder**, selecteert u **SAML 2.0/WS-wordt gevoederd** zoals weer gegeven.
+
   * Als u problemen hebt met Access, neemt u contact op met het [Azure AD SSO-integratie team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ## <a name="implement-sso-by-using-the-password-sso"></a>SSO implementeren met behulp van de SSO van het wacht woord

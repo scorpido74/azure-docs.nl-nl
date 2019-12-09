@@ -1,5 +1,5 @@
 ---
-title: Bewaak uw webtoepassing met webtests met meerdere stappen en Azure-toepassing inzichten | Microsoft Docs
+title: Bewaken met webtests met meerdere stappen-Azure-toepassing inzichten
 description: Webtests met meerdere stappen instellen om uw webtoepassingen te bewaken met Azure-toepassing Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/23/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 80a39151a3d40c9b9d7cb49c6ab41aab602c5991
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 8e630f324a7a0ebdfcc74941e760b80fabefa8d3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817384"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928957"
 ---
 # <a name="multi-step-web-tests"></a>Webtests met meerdere stappen
 
@@ -27,7 +27,7 @@ U kunt een vastgelegde reeks Url's en interacties bewaken met een website via we
 * Visual Studio 2017 Enter prise of hoger.
 * Visual Studio Web Performance en load test tools.
 
-Om de vereiste voor de test hulpprogramma's te vinden. Start het **Visual Studio-installatie programma**  > **afzonderlijke onderdelen**  > **fout opsporing en testen**  > **Web Performance en load test tools**.
+Om de vereiste voor de test hulpprogramma's te vinden. Start het **Visual Studio-installatie programma** > **afzonderlijke onderdelen** > **fout opsporing en testen** > **Web Performance en load test tools**.
 
 ![Scherm afbeelding van de gebruikers interface van Visual Studio Installer waarbij afzonderlijke onderdelen zijn geselecteerd met een selectie vakje naast het item voor de hulpprogram ma's voor webprestaties en laad Programma's](./media/availability-multistep/web-performance-load-testing.png)
 
@@ -43,7 +43,7 @@ Raadpleeg de [officiële documentatie voor Visual studio 2019](https://docs.micr
 
 ## <a name="upload-the-web-test"></a>De webtest uploaden
 
-1. Selecteer in de Portal Application Insights in het deel venster Beschik baarheid **test maken**  > **type test**  > **webtest met meerdere stappen**.
+1. Selecteer in de Portal Application Insights in het deel venster Beschik baarheid **test maken** > **type test** > **webtest met meerdere stappen**.
 
 2. Stel de test locaties, frequentie en waarschuwings parameters in.
 
@@ -68,7 +68,7 @@ Raadpleeg de [officiële documentatie voor Visual studio 2019](https://docs.micr
 |----|----|----|
 |**Bijna realtime (preview-versie)** | We raden u aan bijna realtime waarschuwingen te gebruiken. Het configureren van dit type waarschuwing wordt uitgevoerd nadat de beschikbaarheids test is gemaakt.  |
 |**Klassiek** | Het gebruik van klassieke waarschuwingen voor nieuwe beschikbaarheids tests wordt niet meer aanbevolen.|
-|**Drempel waarde voor waarschuwings locatie**|We raden aan dat er mini maal 3/5 locaties zijn. De optimale relatie tussen de drempel waarde van de waarschuwings locatie en het aantal test locaties is de **drempel waarde voor de waarschuwing locatie**  = **aantal test locaties-2, met een minimum van vijf test locaties.**|
+|**Drempel waarde voor waarschuwings locatie**|We raden aan dat er mini maal 3/5 locaties zijn. De optimale relatie tussen de drempel waarde van de waarschuwings locatie en het aantal test locaties is de **drempel waarde voor de waarschuwing locatie** = **aantal test locaties-2, met een minimum van vijf test locaties.**|
 
 ## <a name="configuration"></a>Configuratie
 

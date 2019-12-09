@@ -1,17 +1,18 @@
 ---
-title: Gegevens stroom script van Azure Data Factory toewijzing
+title: Gegevens stroom script toewijzen
 description: Overzicht van de script code voor de gegevens stroom van Data Factory-behind-taal
 author: kromerm
 ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 11/10/2019
-ms.openlocfilehash: 4ff5a05fd40ef086c1f2332443ca03d5e872e9a8
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: d861a4355158dfe18ac3aa40a7f98dc11ebda90b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010165"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930260"
 ---
 # <a name="data-flow-script-dfs"></a>Gegevens stroom script (DFS)
 
@@ -21,7 +22,7 @@ Data flow script (DFS) is de onderliggende meta gegevens, vergelijkbaar met een 
 
 `allowSchemaDrift: true,` in een bron transformatie vertelt de service bijvoorbeeld dat alle kolommen uit de bron-gegevensset in de gegevens stroom moeten worden opgenomen, zelfs als deze niet zijn opgenomen in de schema projectie.
 
-## <a name="use-cases"></a>Gebruiksvoorbeelden
+## <a name="use-cases"></a>Use cases
 De DFS wordt automatisch geproduceerd door de gebruikers interface. U kunt op de knop script klikken om het script weer te geven en aan te passen. U kunt ook scripts maken buiten de ADF-gebruikers interface en vervolgens door geven aan de Power shell-cmdlet. Wanneer u fouten opspoort in complexe gegevens stromen, is het mogelijk dat u de script code achtereen kunt scannen in plaats van de UI-grafiek weergave van uw stromen te scannen.
 
 Hier volgen enkele voor beelden van use cases:

@@ -9,13 +9,13 @@ ms.workload: data-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
-manager: craigg
-ms.openlocfilehash: 518da092f690108111ca4456eaca66e4f3153c54
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 15aac35a7ebc505e76ddfd0c538c4fddb7b2d9ff
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681444"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930549"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>De Azure-SSIS Integration Runtime configureren voor hoge prestaties
 
@@ -72,20 +72,20 @@ $SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…
 Data Factory, met inbegrip van de Azure-SSIS IR, ondersteunt de volgende opties:
 -   Standaard\_A4\_v2
 -   Standard\_A8\_v2
--   Standaard\_D1\_v2
--   Standaard\_D2\_v2
+-   Standard\_D1\_v2
+-   Standard\_D2\_v2
 -   Standard\_D3\_v2
 -   Standaard\_D4\_v2
--   Standaard\_D2\_v3
+-   Standard\_D2\_v3
 -   Standard\_D4\_v3
 -   Standard\_D8\_v3
 -   Standard\_D16\_v3
 -   Standard\_D32\_v3
 -   Standard\_D64\_v3
--   Standaard\_E2\_v3
+-   Standard\_E2\_v3
 -   Standard\_E4\_v3
 -   Standard\_E8\_v3
--   Standard\_e16\_v3
+-   Standard\_E16\_v3
 -   Standard\_E32\_v3
 -   Standard\_E64\_v3
 
@@ -115,27 +115,27 @@ Als u veel pakketten wilt uitvoeren, en u de meeste algemene door Voer hebt, geb
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Wanneer u al een krachtig worker-knoop punt gebruikt voor het uitvoeren van pakketten, kan het toenemende aantal **AzureSSISMaxParallelExecutionsPerNode** de algemene door Voer van de Integration runtime verhogen. Voor Standard_D1_v2-knoop punten worden 1-4 parallelle uitvoeringen per knoop punt ondersteund. Voor alle andere typen knoop punten, Maxi maal 1 (2 x aantal kernen, 8) parallelle uitvoeringen per knoop punt worden ondersteund. Als u **AzureSSISMaxParallelExecutionsPerNode** meer wilt dan de Maxi maal ondersteunde waarde, kunt u een ondersteunings ticket openen en kunnen we de maximale waarde voor u en nadat u Azure Power shell nodig hebt, gebruiken om AzureSSISMaxParallelExecutionsPerNode bij te werken.
+Wanneer u al een krachtig worker-knoop punt gebruikt voor het uitvoeren van pakketten, kan het toenemende aantal **AzureSSISMaxParallelExecutionsPerNode** de algemene door Voer van de Integration runtime verhogen. Voor Standard_D1_v2 knooppunten worden 1-4 parallelle uitvoeringen per knoop punt ondersteund. Voor alle andere typen knoop punten, Maxi maal 1 (2 x aantal kernen, 8) parallelle uitvoeringen per knoop punt worden ondersteund. Als u **AzureSSISMaxParallelExecutionsPerNode** meer wilt dan de Maxi maal ondersteunde waarde, kunt u een ondersteunings ticket openen en kunnen we de maximale waarde voor u en nadat u Azure Power shell nodig hebt, gebruiken om **AzureSSISMaxParallelExecutionsPerNode**bij te werken.
 U kunt een schatting maken van de juiste waarde op basis van de kosten van uw pakket en de volgende configuraties voor de worker-knoop punten. Zie voor meer informatie de grootten van [virtuele machines voor algemene doel einden](../virtual-machines/windows/sizes-general.md).
 
 | Grootte             | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximale tijdelijke opslagdoorvoer: IOPS / MBps lezen / MBps schrijven | Maximumaantal gegevensschijven / doorvoer: IOPS | Maximum aantal NIC's/verwachte netwerkprestaties (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
-| Standaard\_D1\_v2 | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 2 / 2 x 500                         | 2 / 750                                        |
-| Standaard\_D2\_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 4 / 4 x 500                         | 2 / 1500                                       |
+| Standard\_D1\_v2 | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 2 / 2 x 500                         | 2 / 750                                        |
+| Standard\_D2\_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 4 / 4 x 500                         | 2 / 1500                                       |
 | Standard\_D3\_v2 | 4    | 14          | 200                    | 12.000 / 187 / 93                                           | 8 / 8 x 500                         | 4 / 3000                                       |
 | Standaard\_D4\_v2 | 8    | 28          | 400                    | 24.000 / 375 / 187                                          | 16 / 16 x 500                       | 8 / 6000                                       |
 | Standaard\_A4\_v2 | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8 x 500                         | 4 / 1000                                       |
 | Standard\_A8\_v2 | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16 x 500                       | 8 / 2000                                       |
-| Standaard\_D2\_v3 | 2    | 8           | 50                     | 3000 / 46 / 23                                             | 4-6x500                         | 2 / 1000                                       |
+| Standard\_D2\_v3 | 2    | 8           | 50                     | 3000 / 46 / 23                                             | 4-6x500                         | 2 / 1000                                       |
 | Standard\_D4\_v3 | 4    | 16          | 100                    | 6000 / 93 / 46                                             | 8-12x500                        | 2 / 2000                                       |
 | Standard\_D8\_v3 | 8    | 32          | 200                    | 12.000 / 187 / 93                                           | 16-24x500                       | 4 / 4000                                       |
 | Standard\_D16\_v3| 16   | 64          | 400                    | 24.000 / 375 / 187                                          | 32-48x500                        | 8 / 8000                                       |
 | Standard\_D32\_v3| 32   | 128         | 800                    | 48.000 / 750 / 375                                          | 32/96x500                       | 8 / 16000                                      |
 | Standard\_D64\_v3| 64   | 256         | 1600                   | 96000/1000/500                                         | 32/192x500                      | 8 / 30000                                      |
-| Standaard\_E2\_v3 | 2    | 16          | 50                     | 3000 / 46 / 23                                             | 4-6x500                         | 2 / 1000                                       |
+| Standard\_E2\_v3 | 2    | 16          | 50                     | 3000 / 46 / 23                                             | 4-6x500                         | 2 / 1000                                       |
 | Standard\_E4\_v3 | 4    | 32          | 100                    | 6000 / 93 / 46                                             | 8-12x500                        | 2 / 2000                                       |
 | Standard\_E8\_v3 | 8    | 64          | 200                    | 12.000 / 187 / 93                                           | 16-24x500                       | 4 / 4000                                       |
-| Standard\_e16\_v3| 16   | 128         | 400                    | 24.000 / 375 / 187                                          | 32/48x500                       | 8 / 8000                                       |
+| Standard\_E16\_v3| 16   | 128         | 400                    | 24.000 / 375 / 187                                          | 32/48x500                       | 8 / 8000                                       |
 | Standard\_E32\_v3| 32   | 256         | 800                    | 48.000 / 750 / 375                                          | 32/96x500                       | 8 / 16000                                      |
 | Standard\_E64\_v3| 64   | 432         | 1600                   | 96000/1000/500                                         | 32/192x500                      | 8 / 30000                                      |
 

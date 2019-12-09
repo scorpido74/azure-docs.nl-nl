@@ -2,19 +2,19 @@
 title: Ondersteunde bestands indelingen in Azure Data Factory
 description: Dit onderwerp beschrijft de bestandsindelingen en compressie-codes die worden ondersteund door de connectors op basis van bestanden in Azure Data Factory.
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 4a81cc9887610036007b92e43b8bd44f0a8b7740
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 48121dabfa4fc56e2f797f715cb3fce3e3be9578
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075534"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928676"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Ondersteunde indelingen en codecs voor de compressie in Azure Data Factory
 
@@ -32,7 +32,7 @@ ms.locfileid: "74075534"
 
 Als u wilt lezen uit een tekstbestand of schrijven naar een tekstbestand, stelt u de `type` eigenschap in de `format` sectie van de gegevensset in **TextFormat**. U kunt ook de volgende **optionele** eigenschappen opgeven in het gedeelte `format`. Raadpleeg het gedeelte [TextFormat-voorbeeld](#textformat-example) voor configuratie-instructies.
 
-| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
+| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
 | --- | --- | --- | --- |
 | columnDelimiter |Het teken dat wordt gebruikt voor het scheiden van kolommen in een bestand. U kunt overwegen een zeldzaam niet-afdrukbaar teken die mogelijk niet aanwezig zijn in uw gegevens gebruiken. Geef bijvoorbeeld '\u0001', waarmee de Start van de kop (SOH). |Er is slechts één teken toegestaan. De **standaardwaarde** is een **komma (',')** . <br/><br/>Raadpleeg voor het gebruik van een Unicode-teken, [Unicode-tekens](https://en.wikipedia.org/wiki/List_of_Unicode_characters) om op te halen van de bijbehorende code voor deze. |Nee |
 | rowDelimiter |Het teken dat wordt gebruikt voor het scheiden van rijen in een bestand. |Er is slechts één teken toegestaan. De **standaardwaarde** is een van de volgende leeswaarden **['\r\n', '\r', '\n']** en de schrijfwaarde **'\r\n'** . |Nee |
@@ -40,9 +40,9 @@ Als u wilt lezen uit een tekstbestand of schrijven naar een tekstbestand, stelt 
 | quoteChar |Het teken dat wordt gebruikt om een tekenreekswaarde te citeren. De scheidingstekens voor kolommen en rijen binnen de aanhalingstekens worden beschouwd als onderdeel van de tekenreekswaarde. Deze eigenschap is van toepassing op gegevenssets voor invoer en uitvoer.<br/><br/>Het is niet mogelijk om zowel escapeChar als quoteChar voor een tabel op te geven. |Er is slechts één teken toegestaan. Er is geen standaardwaarde. <br/><br/>Voorbeeld: als u kolommen scheidt met komma's (', '), maar u het kommateken in een tekst wilt gebruiken (voorbeeld: <Hallo, wereld>), kunt u " (dubbel aanhalingsteken) als het aanhalingsteken opgeven en de tekenreeks "Hallo, wereld" in de bron gebruiken. |Nee |
 | nullValue |Een of meer tekens die worden gebruikt om een null-waarde te vertegenwoordigen. |Een of meer tekens. De **standaardwaarden** zijn **'\N' en 'NULL'** voor lezen en **'\N'** voor schrijven. |Nee |
 | encodingName |Geef de coderingsnaam op. |Een geldige coderingsnaam. Zie [De eigenschap Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Voorbeeld: windows 1250 of shift_jis. De **standaardwaarde** is **UTF-8**. |Nee |
-| firstRowAsHeader |Hiermee geeft u op of de eerste rij als een header moet worden gezien. Bij een gegevensset voor invoer leest Data Factory de eerste rij als een header. Bij een gegevensset voor uitvoer schrijft Data Factory de eerste rij als een header. <br/><br/>Zie [Gebruiksscenario's`firstRowAsHeader` en `skipLineCount` ](#scenarios-for-using-firstrowasheader-and-skiplinecount) voor voorbeeldscenario's. |True<br/><b>False (standaard)</b> |Nee |
+| firstRowAsHeader |Hiermee geeft u op of de eerste rij als een header moet worden gezien. Bij een gegevensset voor invoer leest Data Factory de eerste rij als een header. Bij een gegevensset voor uitvoer schrijft Data Factory de eerste rij als een header. <br/><br/>Zie [Gebruiksscenario's`firstRowAsHeader` en `skipLineCount` ](#scenarios-for-using-firstrowasheader-and-skiplinecount) voor voorbeeldscenario's. |Waar<br/><b>False (standaard)</b> |Nee |
 | skipLineCount |Geeft het aantal **niet-lege** rijen dat moet worden overgeslagen bij het lezen van gegevens in invoerbestanden. Als zowel skipLineCount als firstRowAsHeader is opgegeven, worden de regels eerst overgeslagen en wordt de headerinformatie gelezen uit het invoerbestand. <br/><br/>Zie [Gebruiksscenario's`firstRowAsHeader` en `skipLineCount` ](#scenarios-for-using-firstrowasheader-and-skiplinecount) voor voorbeeldscenario's. |Geheel getal |Nee |
-| treatEmptyAsNull |Hiermee geeft u aan of null of lege tekenreeks moeten worden behandeld als een null-waarde bij het lezen van gegevens uit een invoerbestand. |**True (standaard)**<br/>False |Nee |
+| treatEmptyAsNull |Hiermee geeft u aan of null of lege tekenreeks moeten worden behandeld als een null-waarde bij het lezen van gegevens uit een invoerbestand. |**True (standaard)**<br/>Onwaar |Nee |
 
 ### <a name="textformat-example"></a>Voorbeeld van TextFormat
 
@@ -88,7 +88,7 @@ Naar **importeren/exporteren als een JSON-bestand-in / uit Azure Cosmos DB**, Zi
 
 Als u wilt voor het parseren van JSON-bestanden of de gegevens in JSON-indeling wilt schrijven, stelt u de `type` eigenschap in de `format` gedeelte **JsonFormat**. U kunt ook de volgende **optionele** eigenschappen opgeven in het gedeelte `format`. Zie het gedeelte [JsonFormat-voorbeeld](#jsonformat-example) voor configuratie-instructies.
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | filePattern |Hiermee geeft u het patroon aan van gegevens die zijn opgeslagen in elk JSON-bestand. Toegestane waarden zijn **setOfObjects** en **arrayOfObjects**. De **standaardwaarde** is **setOfObjects**. Zie het gedeelte [JSON-bestandpatronen](#json-file-patterns) voor meer informatie over deze patronen. |Nee |
 | jsonNodeReference | Als u wilt bladeren en gegevens wilt ophalen uit de objecten in een matrixveld met hetzelfde patroon, geeft u het JSON-pad van die matrix op. Deze eigenschap wordt alleen ondersteund bij het kopiëren **van gegevens uit** json-bestanden. | Nee |
@@ -228,7 +228,7 @@ en u wilt het kopiëren naar een Azure SQL-tabel in de volgende indeling door ge
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | Pc | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 13/1/2017 11:24:37 uur |
 
-De invoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (gedeeltelijke definitie met alleen belangrijke onderdelen). Met name:
+De invoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (gedeeltelijke definitie met alleen belangrijke onderdelen). Meer details:
 
 - Het gedeelte `structure` definieert de aangepaste kolomnamen en het bijbehorende gegevenstype tijdens het converteren van gegevens in tabelvorm. Dit gedeelte is **optioneel**, tenzij u kolommen moet toewijzen. Zie voor meer informatie, [bronkolommen gegevensset worden toegewezen aan de gegevensset doelkolommen](copy-activity-schema-and-type-mapping.md).
 - Met `jsonPathDefinition` geeft u het JSON-pad op voor elke kolom die aangeeft waar de gegevens moeten worden opgehaald. U kunt gebruiken om gegevens te kopiëren van de matrix, `array[x].property` om op te halen van de waarde van de opgegeven eigenschap van de `xth` object, of u kunt gebruiken `array[*].property` gezocht naar de waarde van een object met deze eigenschap.
@@ -303,7 +303,7 @@ en u wilt het kopiëren naar een Azure SQL-tabel in de volgende indeling, door d
 | 01 | 20170122 | P3 | 231 | `[{"sanmateo":"No 1"}]` |
 
 
-De invoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (gedeeltelijke definitie met alleen belangrijke onderdelen). Met name:
+De invoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (gedeeltelijke definitie met alleen belangrijke onderdelen). Meer details:
 
 - Het gedeelte `structure` definieert de aangepaste kolomnamen en het bijbehorende gegevenstype tijdens het converteren van gegevens in tabelvorm. Dit gedeelte is **optioneel**, tenzij u kolommen moet toewijzen. Zie voor meer informatie, [bronkolommen gegevensset worden toegewezen aan de gegevensset doelkolommen](copy-activity-schema-and-type-mapping.md).
 - `jsonNodeReference` Hiermee wordt aangegeven en dat er gegevens ophalen uit de objecten met hetzelfde patroon onder **matrix** `orderlines`.
@@ -435,7 +435,7 @@ Voor kopieën die worden uitgevoerd op zelf-hostende IR met Parquet-serialisatie
 - **Als u openjdk wilt gebruiken**, wordt dit ondersteund sinds IR-versie 3,13. Verdeel het JVM. dll-bestand met alle andere vereiste assembly's van OpenJDK in een zelf-hostende IR-computer en stel de systeem omgevings variabele in JAVA_HOME dienovereenkomstig in.
 
 >[!TIP]
->Als u gegevens kopieert naar/van Parquet-indeling met behulp van zelf-hostende Integration Runtime en de fout melding ' er is een fout opgetreden bij het aanroepen van Java, bericht: **Java. lang. OutOfMemoryError: Java-heap-ruimte**', kunt u een omgevings variabele toevoegen `_JAVA_OPTIONS` in het machine die de zelf-hostende IR host om de minimale/maximale Heap-grootte voor JVM aan te passen om een dergelijke kopie te kunnen uitvoeren, en vervolgens de pijp lijn opnieuw uit te voeren.
+>Als u gegevens kopieert naar/van Parquet-indeling met behulp van zelf-hostende Integration Runtime en de fout melding ' er is een fout opgetreden bij het aanroepen van Java, bericht: **Java. lang. OutOfMemoryError: Java-heapruimte**', kunt u een omgevings variabele `_JAVA_OPTIONS` toevoegen aan de computer die als host fungeert voor de zelf-hostende IR om een dergelijke kopie te maken,
 
 ![JVM-Heap-grootte instellen op zelf-hostende IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
@@ -445,26 +445,26 @@ Voor beeld: Stel variabele `_JAVA_OPTIONS` in met de waarde `-Xms256m -Xmx16g`. 
 
 | Data factory tussentijdse gegevenstype | Parquet primitief Type | Parquet oorspronkelijke Type (deserialiseren) | Parquet oorspronkelijke Type (serialiseren) |
 |:--- |:--- |:--- |:--- |
-| Booleaans | Booleaans | N.v.t. | N.v.t. |
+| Booleaans | Booleaans | N/A | N/A |
 | SByte | Int32 | Int8 | Int8 |
-| Byte | Int32 | UInt8 | Int16 |
+| byte | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
 | UInt16 | Int32 | UInt16 | Int32 |
 | Int32 | Int32 | Int32 | Int32 |
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
-| UInt64 | Int64 binaire | UInt64 | decimaal |
-| Enkelvoudig | Float | N.v.t. | N.v.t. |
-| Double-waarde | Double-waarde | N.v.t. | N.v.t. |
-| decimaal | Binair bestand | decimaal | decimaal |
-| Tekenreeks | Binair bestand | Utf8 | Utf8 |
-| DateTime | Int96 | N.v.t. | N.v.t. |
-| TimeSpan | Int96 | N.v.t. | N.v.t. |
-| DateTimeOffset | Int96 | N.v.t. | N.v.t. |
-| ByteArray | Binair bestand | N.v.t. | N.v.t. |
-| GUID | Binair bestand | Utf8 | Utf8 |
-| CHAR | Binair bestand | Utf8 | Utf8 |
-| CharArray | Niet ondersteund | N.v.t. | N.v.t. |
+| UInt64 | Int64 binaire | UInt64 | Decimal |
+| Enkelvoudig | Float | N/A | N/A |
+| Double | Double | N/A | N/A |
+| Decimal | Binary | Decimal | Decimal |
+| Tekenreeks | Binary | Utf8 | Utf8 |
+| Datum/tijd | Int96 | N/A | N/A |
+| TimeSpan | Int96 | N/A | N/A |
+| DateTimeOffset | Int96 | N/A | N/A |
+| ByteArray | Binary | N/A | N/A |
+| GUID | Binary | Utf8 | Utf8 |
+| CHAR | Binary | Utf8 | Utf8 |
+| CharArray | Niet ondersteund | N/A | N/A |
 
 ## <a name="orc-format"></a>ORC-indeling
 
@@ -499,8 +499,8 @@ Voor kopieën die worden uitgevoerd op zelf-hostende IR met ORC-serialisatie/des
 | Data factory tussentijdse gegevenstype | ORC-typen |
 |:--- |:--- |
 | Booleaans | Booleaans |
-| SByte | Byte |
-| Byte | Kort |
+| SByte | byte |
+| byte | Kort |
 | Int16 | Kort |
 | UInt16 | Int |
 | Int32 | Int |
@@ -508,13 +508,13 @@ Voor kopieën die worden uitgevoerd op zelf-hostende IR met ORC-serialisatie/des
 | Int64 | Lang |
 | UInt64 | Tekenreeks |
 | Enkelvoudig | Float |
-| Double-waarde | Double-waarde |
-| decimaal | decimaal |
+| Double | Double |
+| Decimal | Decimal |
 | Tekenreeks | Tekenreeks |
-| DateTime | Tijdstempel |
+| Datum/tijd | Tijdstempel |
 | DateTimeOffset | Tijdstempel |
 | TimeSpan | Tijdstempel |
-| ByteArray | Binair bestand |
+| ByteArray | Binary |
 | GUID | Tekenreeks |
 | CHAR | CHAR(1) |
 

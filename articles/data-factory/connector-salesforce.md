@@ -2,24 +2,24 @@
 title: Gegevens kopiëren van en naar Sales Force
 description: Meer informatie over het kopiëren van gegevens uit Sales Force naar ondersteunde Sink-gegevens archieven of van ondersteunde bron gegevens archieven naar Sales Force met behulp van een Kopieer activiteit in een data factory pijp lijn.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.author: jingwang
-ms.openlocfilehash: de14d62f0356a8edf37f23fc85fb974dbca4e9a6
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 89ce253806b4a39b393c74ea96ddc2523d338d84
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895594"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926257"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar Sales Force met behulp van Azure Data Factory
+
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1](v1/data-factory-salesforce-connector.md)
 > * [Huidige versie](connector-salesforce.md)

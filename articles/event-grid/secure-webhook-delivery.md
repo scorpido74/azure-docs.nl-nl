@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: babanisa
-ms.openlocfilehash: 9ee1dd74384725b3fffbfea7144c3a536b50c531
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 074378668b0516936e11968ea8c800d3daa667bb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174549"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931542"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Gebeurtenissen publiceren naar Azure Active Directory beveiligde eind punten
 
@@ -22,7 +22,7 @@ In dit artikel wordt gebruikgemaakt van de Azure Portal voor demonstratie, maar 
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
-## <a name="create-and-azure-ad-application"></a>Een Azure AD-toepassing maken
+## <a name="create-an-azure-ad-application"></a>Een Azure AD-toepassing maken
 
 Maak eerst een Azure AD-toepassing voor uw beveiligde eind punt. Zie https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
     - Configureer uw beveiligde API om te worden aangeroepen door een daemon-app.

@@ -1,23 +1,22 @@
 ---
-title: Gegevens uit een SAP-tabel kopiëren met behulp van Azure Data Factory
+title: Gegevens uit een SAP-tabel kopiëren
 description: Informatie over het kopiëren van gegevens uit een SAP-tabel naar ondersteunde Sink-gegevens archieven door gebruik te maken van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/02/2019
-ms.author: jingwang
-ms.openlocfilehash: 9c4e22e997b4ad8c36d8aaf84d1bb8aacb5c5529
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fd363f7b685db5e309827a0c5e635264e676b388
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680230"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926177"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Gegevens uit een SAP-tabel kopiëren met behulp van Azure Data Factory
 
@@ -69,11 +68,11 @@ Als u deze SAP-tabel connector wilt gebruiken, moet u het volgende doen:
 
 De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van de Data Factory entiteiten die specifiek zijn voor de SAP-tabel connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 
 De volgende eigenschappen worden ondersteund voor de SAP BW open hub gekoppelde service:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | `type` | De eigenschap `type` moet worden ingesteld op `SapTable`. | Ja |
 | `server` | De naam van de server waarop het SAP-exemplaar zich bevindt.<br/>Gebruiken om verbinding te maken met een SAP-toepassings server. | Nee |
@@ -91,7 +90,7 @@ De volgende eigenschappen worden ondersteund voor de SAP BW open hub gekoppelde 
 | `sncPartnerName` | De SNC naam van de communicatie partner om toegang te krijgen tot de SAP-server waarop de tabel zich bevindt.<br/>Van toepassing wanneer `sncMode` is ingeschakeld. | Nee |
 | `sncLibraryPath` | De bibliotheek van het externe beveiligings product voor toegang tot de SAP-server waarop de tabel zich bevindt.<br/>Van toepassing wanneer `sncMode` is ingeschakeld. | Nee |
 | `sncQop` | De SNC kwaliteit van het beveiligings niveau dat moet worden toegepast.<br/>Van toepassing wanneer `sncMode` is ingeschakeld. <br/>Toegestane waarden zijn `1` (authenticatie), `2` (integriteit), `3` (privacy), `8` (standaard), `9` (maximum). | Nee |
-| `connectVia` | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Een zelf-hostende Integration runtime is vereist, zoals eerder is vermeld in [vereisten](#prerequisites). |Ja |
+| `connectVia` | De [integratieruntime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Een zelf-hostende Integration runtime is vereist, zoals eerder is vermeld in [vereisten](#prerequisites). |Ja |
 
 **Voor beeld 1: verbinding maken met een SAP-toepassings server**
 
@@ -181,7 +180,7 @@ Zie [gegevens sets](concepts-datasets-linked-services.md)voor een volledige lijs
 
 De volgende eigenschappen worden ondersteund voor het kopiëren van gegevens van en naar de gekoppelde SAP BW hub-service:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | `type` | De eigenschap `type` moet worden ingesteld op `SapTableResource`. | Ja |
 | `tableName` | De naam van de SAP-tabel waaruit de gegevens moeten worden gekopieerd. | Ja |
@@ -213,7 +212,7 @@ Voor een volledige lijst van de secties en eigenschappen voor het definiëren va
 
 Als u gegevens wilt kopiëren uit een SAP-tabel, worden de volgende eigenschappen ondersteund:
 
-| Eigenschap                         | Beschrijving                                                  | Vereist |
+| Eigenschap                         | Beschrijving                                                  | Verplicht |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | De eigenschap `type` moet worden ingesteld op `SapTableSource`.         | Ja      |
 | `rowCount`                         | Het aantal rijen dat moet worden opgehaald.                              | Nee       |
@@ -288,7 +287,7 @@ In `rfcTableOptions`kunt u de volgende algemene SAP-query operators gebruiken om
 
 Wanneer u gegevens uit een SAP-tabel kopieert, worden de volgende toewijzingen gebruikt vanuit de gegevens typen van de SAP-tabel naar het Azure Data Factory tussenliggende gegevens typen. Zie [schema en gegevens type toewijzingen](copy-activity-schema-and-type-mapping.md)voor meer informatie over hoe de Kopieer activiteit het bron schema en het gegevens type aan de Sink koppelt.
 
-| SAP ABAP-type | Data Factory tussentijds gegevens type |
+| SAP ABAP-type | Data Factory tussentijdse gegevenstype |
 |:--- |:--- |
 | `C` (teken reeks) | `String` |
 | `I` (geheel getal) | `Int32` |

@@ -7,21 +7,25 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 08/08/2019
+ms.date: 12/06/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 522cb9b75d5c0db270f8ba4a65850e35a2e8c4fd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fdbf0eb849549071b4cbbb961c9e9f71fce1faf8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685691"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923626"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Gegevens laden van Azure Data Lake Storage naar SQL Data Warehouse
-Gebruik poly base externe tabellen om gegevens van Azure Data Lake Storage naar Azure SQL Data Warehouse te laden. Hoewel u ad hoc query's kunt uitvoeren op gegevens die zijn opgeslagen in Data Lake Storage, is het raadzaam om de gegevens te importeren in de SQL Data Warehouse voor de beste prestaties.
+In deze hand leiding wordt beschreven hoe u met poly base externe tabellen gegevens laadt van Azure Data Lake Storage naar Azure SQL Data Warehouse. Hoewel u ad hoc query's kunt uitvoeren op gegevens die zijn opgeslagen in Data Lake Storage, is het raadzaam om de gegevens te importeren in de SQL Data Warehouse voor de beste prestaties. 
 
+> [!NOTE]  
+> Een alternatief voor het laden is de [instructie Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) die momenteel beschikbaar is als open bare preview. Als u feedback wilt geven over de instructie COPY, stuurt u een e-mail naar de volgende distributie lijst: sqldwcopypreview@service.microsoft.com.
+>
 > [!div class="checklist"]
+
 > * Maak database objecten die vereist zijn om te laden uit Data Lake Storage.
 > * Verbinding maken met een Data Lake Storage Directory.
 > * Gegevens laden in Azure SQL Data Warehouse.
@@ -33,14 +37,13 @@ Download en installeer voordat u met deze zelfstudie begint de nieuwste versie v
 
 Als u deze zelf studie wilt uitvoeren, hebt u het volgende nodig:
 
-* Azure Active Directory toepassing die moet worden gebruikt voor service-naar-service-verificatie. Als u wilt maken, voert u [Active Directory-verificatie](../data-lake-store/data-lake-store-authenticate-using-active-directory.md) uit
-
 * Een Azure SQL Data Warehouse. Zie [maken en query's en Azure SQL Data Warehouse](create-data-warehouse-portal.md).
-
-* Een Data Lake Storage-account. Zie [aan de slag met Azure data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md). 
+* Een Data Lake Storage-account. Zie [aan de slag met Azure data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md). Voor dit opslag account moet u een van de volgende referenties configureren of opgeven om te laden: een sleutel voor een opslag account, een Azure Directory-toepassings gebruiker of een AAD-gebruiker die de juiste RBAC-rol heeft voor het opslag account. 
 
 ##  <a name="create-a-credential"></a>Een referentie maken
-Als u toegang wilt krijgen tot uw Data Lake Storage-account, moet u een database hoofd sleutel maken voor het versleutelen van uw referentie geheim dat in de volgende stap wordt gebruikt. Vervolgens maakt u een referentie voor het data base-bereik. Bij de verificatie met behulp van service-principals slaat de data base-referentie de referenties van de Service-Principal op die in AAD zijn ingesteld. U kunt ook de sleutel van het opslag account gebruiken in de data base bereik referentie voor Gen2. 
+U kunt deze sectie overs Laan en door gaan met het maken van de externe gegevens bron bij het verifiëren met behulp van AAD Pass-through. Een Data Base-bereik referentie hoeft niet te worden gemaakt of opgegeven wanneer AAD Pass-Through wordt gebruikt, maar zorg ervoor dat uw AAD-gebruiker over de juiste RBAC-rol (Storage BLOB data Reader, Inzender of eigenaar) beschikt voor het opslag account. Meer informatie vindt u [hier](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260). 
+
+Als u toegang wilt krijgen tot uw Data Lake Storage-account, moet u een database hoofd sleutel maken om uw referentie geheim te versleutelen. Vervolgens maakt u een referentie data base-scope om uw geheim op te slaan. Bij verificatie met Service-principals (Azure Directory-toepassings gebruiker) worden de referenties van de data base-Scope opgeslagen die zijn ingesteld in AAD. U kunt ook de data base-scoped referentie gebruiken om de sleutel van het opslag account op te slaan voor Gen2.
 
 Als u verbinding wilt maken met Data Lake Storage met Service-principals, moet u **eerst** een Azure Active Directory toepassing maken, een toegangs sleutel maken en de toepassing toegang verlenen tot het data Lake Storage-account. Zie [verifiëren voor Azure data Lake Storage met behulp van Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)voor instructies.
 
@@ -75,7 +78,7 @@ WITH
     SECRET = '<azure_storage_account_key>'
 ;
 
--- It should look something like this when authenticating using service principals:
+-- It should look something like this when authenticating using service principal:
 CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
 WITH
     IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.microsoftonline.com/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
@@ -84,7 +87,7 @@ WITH
 ```
 
 ## <a name="create-the-external-data-source"></a>De externe gegevens bron maken
-Gebruik deze opdracht voor het maken van een [externe gegevens bron](/sql/t-sql/statements/create-external-data-source-transact-sql) om de locatie van de gegevens op te slaan. 
+Gebruik deze opdracht voor het maken van een [externe gegevens bron](/sql/t-sql/statements/create-external-data-source-transact-sql) om de locatie van de gegevens op te slaan. Als u verificatie uitvoert met AAD Pass-Through, is de para meter CREDENTIAL niet vereist. 
 
 ```sql
 -- C (for Gen1): Create an external data source
@@ -216,8 +219,8 @@ In deze zelf studie hebt u externe tabellen gemaakt om de structuur te definiër
 
 U hebt het volgende gedaan:
 > [!div class="checklist"]
-> * Er zijn data base-objecten gemaakt die nodig zijn om te laden uit Data Lake Storage Gen1.
-> * Verbonden met een Data Lake Storage Gen1 Directory.
+> * Er zijn data base-objecten gemaakt die nodig zijn om te laden uit Data Lake Storage.
+> * Verbonden met een Data Lake Storage Directory.
 > * De gegevens zijn geladen in Azure SQL Data Warehouse.
 >
 

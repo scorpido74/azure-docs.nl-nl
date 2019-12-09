@@ -1,18 +1,19 @@
 ---
-title: JSON gebruiken in de toewijzing van gegevens stroom in Azure Data Factory
+title: JSON in gegevens stroom toewijzen
 description: Azure Data Factory gegevens stroom voor toewijzing heeft ingebouwde mogelijkheden voor het verwerken van JSON-documenten met hiërarchieën
 author: kromerm
 ms.author: makromer
 ms.review: djpmsft
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 08/30/2019
-ms.openlocfilehash: fe412e9e682fb55f1664c546e6b6c5a347527adb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 153c7a1003c68526c960644bebcc4800e92edc3c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72387348"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928330"
 ---
 # <a name="mapping-data-flow-json-handling"></a>JSON-verwerking van gegevens stroom toewijzen
 
@@ -161,7 +162,7 @@ Selecteer **opmerkingen bevat** als de JSON-gegevens C of C++ stijl opmerkingen 
 
 Een functie met een hogere volg orde is een functie die in een of meer functies als argument wordt gebruikt. Hieronder vindt u een lijst met functies met hogere volg orde die worden ondersteund bij het toewijzen van gegevens stromen waarmee matrix bewerkingen kunnen worden uitgevoerd.
 
-### <a name="filter"></a>Filterwebonderdelen
+### <a name="filter"></a>filter
 Hiermee worden elementen van de matrix gefilterd die niet voldoen aan het gegeven predicaat. Het filter verwacht een verwijzing naar één element in de predicaat functie als #item.
 
 #### <a name="examples"></a>Voorbeelden
@@ -189,7 +190,7 @@ reduce(['1', '2', '3', '4'], '0', #acc + #item, #result) => '01234'
 reduce([1, 2, 3, 4], 0, #acc + #item, #result + 15) => 25
 ```
 
-### <a name="sort"></a>Acties
+### <a name="sort"></a>sorteren
 Sorteert de matrix met behulp van de meegeleverde predicaat functie. Bij het sorteren wordt een verwijzing verwacht naar twee opeenvolgende elementen in de expressie-functie als #item1 en #item2.
 
 #### <a name="examples"></a>Voorbeelden
@@ -201,7 +202,7 @@ sort(['a3', 'b2', 'c1'],
         iif(#item1 >= #item2, 1, -1)) => ['a3', 'b2', 'c1']
 ```
 
-### <a name="contains"></a>daarin
+### <a name="contains"></a>bevat
 Retourneert waar als een element in de geleverde matrix als waar wordt geëvalueerd in het geleverde predicaat. Contains verwacht een verwijzing naar één element in de predicaat functie als #item.
 
 #### <a name="examples"></a>Voorbeelden

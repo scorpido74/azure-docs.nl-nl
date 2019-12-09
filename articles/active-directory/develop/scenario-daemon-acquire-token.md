@@ -1,5 +1,5 @@
 ---
-title: Daemon-app die web-Api's aanroept (tokens ophalen voor de app)-micro soft Identity-platform
+title: Tokens ophalen in daemon-apps die web-Api's aanroepen-micro soft Identity-platform | Azure
 description: Meer informatie over het bouwen van een daemon-app die web-Api's aanroept (tokens ophalen)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a5a3ac1438d5e958317f1899fc6c447f5c149ac
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 0588e20467701512da6542da0d87fca786dcc793
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175514"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920290"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Daemon-app die web-Api's aanroept-een Token ophalen
 
@@ -64,7 +64,7 @@ Het bereik dat wordt gebruikt voor client referenties moet altijd resourceId + "
 > Voor MSAL waarbij een toegangs token wordt gevraagd voor een resource die een v 1.0-toegangs token accepteert, parseert Azure AD de gewenste doel groep uit het aangevraagde bereik door alles vóór de laatste slash te nemen en deze als resource-id te gebruiken.
 > Als u, zoals Azure SQL ( **https://database.windows.net** ) verwacht dat een doel groep eindigt met een schuine streep (voor Azure SQL: `https://database.windows.net/` ), moet u een bereik van `https://database.windows.net//.default` aanvragen (Let op de dubbele slash). Zie ook MSAL.NET issue [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): de afsluitende slash van de resource-URL wordt wegge laten, wat een SQL-verificatie fout heeft veroorzaakt.
 
-## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient-API
+## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 
 Voor het verkrijgen van een token voor de app gebruikt u `AcquireTokenForClient` of het equivalent dat afhankelijk is van de platformen.
 

@@ -1,23 +1,23 @@
 ---
-title: 'Setup aanpassen voor de Azure-SSIS Integration runtime '
+title: Setup aanpassen voor de Azure-SSIS Integration runtime
 description: In dit artikel wordt beschreven hoe u de aangepaste installatie-interface voor de Azure-SSIS Integration runtime gebruikt voor het installeren van extra onderdelen of het wijzigen van instellingen
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 1/25/2019
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 222672a93ccde7464ec1f37212f18996033a1460
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019
+ms.date: 1/25/2019
+ms.openlocfilehash: d80ff102648deebf63cc0752b2980274cb90aeb9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674869"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922880"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Setup aanpassen voor de Azure-SSIS Integration runtime
 
@@ -152,11 +152,11 @@ Als u uw Azure-SSIS IR wilt aanpassen, moet u het volgende doen:
 
       1. Een `EXCEL` map die een aangepaste installatie bevat voor het installeren van open-source-assembly's (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll`en `ExcelDataReader.dll`) op elk knoop punt van uw Azure-SSIS IR.
 
-      1. Een `ORACLE ENTERPRISE`-map, die een aangepast installatie script (`main.cmd`) en een installatie van het configuratie bestand voor de achtergrond (`client.rsp`) bevat voor het installeren van de Oracle-connectors en het OCI-stuur programma op elk knoop punt van uw Azure-SSIS IR Enter prise-editie. Met deze installatie kunt u de Oracle-verbindings beheer,-bron en-bestemming gebruiken. Down load eerst micro soft-connectors v 5.0 voor Oracle (`AttunitySSISOraAdaptersSetup.msi` en `AttunitySSISOraAdaptersSetup64.msi`) van het [micro soft Download centrum](https://www.microsoft.com/en-us/download/details.aspx?id=55179) en de nieuwste Oracle-client, bijvoorbeeld `winx64_12102_client.zip`-van [Oracle](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html), en upload ze allemaal samen met `main.cmd` en `client.rsp` in uw container. Als u TNS gebruikt om verbinding te maken met Oracle, moet u ook `tnsnames.ora`downloaden, bewerken en uploaden naar uw container, zodat deze kan worden gekopieerd naar de map Oracle-installatie tijdens de installatie.
+      1. Een `ORACLE ENTERPRISE`-map, die een aangepast installatie script (`main.cmd`) en een installatie van het configuratie bestand voor de achtergrond (`client.rsp`) bevat voor het installeren van de Oracle-connectors en het OCI-stuur programma op elk knoop punt van uw Azure-SSIS IR Enter prise-editie. Met deze installatie kunt u de Oracle-verbindings beheer,-bron en-bestemming gebruiken. Down load eerst micro soft-connectors v 5.0 voor Oracle (`AttunitySSISOraAdaptersSetup.msi` en `AttunitySSISOraAdaptersSetup64.msi`) van het [micro soft Download centrum](https://www.microsoft.com/en-us/download/details.aspx?id=55179) en de nieuwste Oracle-client, bijvoorbeeld `winx64_12102_client.zip`-van [Oracle](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html), en upload ze allemaal samen met `main.cmd` en `client.rsp` naar uw container. Als u TNS gebruikt om verbinding te maken met Oracle, moet u ook `tnsnames.ora`downloaden, bewerken en uploaden naar uw container, zodat deze kan worden gekopieerd naar de map Oracle-installatie tijdens de installatie.
 
       1. Een `ORACLE STANDARD ADO.NET` map, die een aangepaste installatie script (`main.cmd`) bevat om het Oracle ODP.NET-stuur programma te installeren op elk knoop punt van uw Azure-SSIS IR. Met deze installatie kunt u de ADO.NET-verbindings beheer,-bron en-bestemming gebruiken. Down load eerst het meest recente Oracle ODP.NET-stuur programma, bijvoorbeeld `ODP.NET_Managed_ODAC122cR1.zip`-van [Oracle](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html), en upload het vervolgens samen met `main.cmd` naar uw container.
        
-      1. Een `ORACLE STANDARD ODBC` map die een aangepast installatie script (`main.cmd`) bevat voor de installatie van het Oracle ODBC-stuur programma en het configureren van de DSN op elk knoop punt van uw Azure-SSIS IR. Met deze installatie kunt u het type ODBC-verbindings beheer/bron/bestemming of Power Query verbindings beheer/bron met ODBC-gegevens bron gebruiken om verbinding te maken met Oracle server. Down load eerst de nieuwste Oracle Instant-client (Basic package of Basic Lite package) en het ODBC-pakket, bijvoorbeeld de 64-bits pakketten van [hier](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) (Basic-pakket: `instantclient-basic-windows.x64-18.3.0.0.0dbru.zip`, Basic Lite-pakket: `instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip`, ODBC-pakket: `instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip`) of de 32-bits pakketten van [hier](https://www.oracle.com/technetwork/topics/winsoft-085727.html) (Basic-pakket: `instantclient-basic-nt-18.3.0.0.0dbru.zip`, Basic Lite-pakket: `instantclient-basiclite-nt-18.3.0.0.0dbru.zip`, ODBC-pakket: `instantclient-odbc-nt-18.3.0.0.0dbru.zip`) en upload ze samen met `main.cmd` in uw container.
+      1. Een `ORACLE STANDARD ODBC` map die een aangepast installatie script (`main.cmd`) bevat voor de installatie van het Oracle ODBC-stuur programma en het configureren van de DSN op elk knoop punt van uw Azure-SSIS IR. Met deze installatie kunt u het type ODBC-verbindings beheer/bron/bestemming of Power Query verbindings beheer/bron met ODBC-gegevens bron gebruiken om verbinding te maken met Oracle server. Down load eerst de nieuwste Oracle Instant-client (Basic package of Basic Lite package) en het ODBC-pakket, bijvoorbeeld de 64-bits pakketten van [hier](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) (Basic-pakket: `instantclient-basic-windows.x64-18.3.0.0.0dbru.zip`, Basic Lite-pakket: `instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip`, ODBC-pakket: `instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip`) of de 32-bits pakketten van [hier](https://www.oracle.com/technetwork/topics/winsoft-085727.html) (basic-pakket: `instantclient-basic-nt-18.3.0.0.0dbru.zip`, Basic Lite-pakket: `instantclient-basiclite-nt-18.3.0.0.0dbru.zip`, ODBC-pakket: `instantclient-odbc-nt-18.3.0.0.0dbru.zip`) en upload ze samen met `main.cmd` naar uw container.
 
       1. Een `SAP BW` map, die een aangepaste installatie script (`main.cmd`) bevat voor het installeren van de SAP .NET-connector-Assembly (`librfc32.dll`) op elk knoop punt van uw Azure-SSIS IR Enter prise-editie. Met deze installatie kunt u de SAP BW verbindings beheer, de bron en het doel. Upload eerst de 64-bits of de 32-bits versie van `librfc32.dll` vanuit de SAP-installatiemap in uw container, samen met `main.cmd`. Het script kopieert vervolgens de SAP-assembly naar de map `%windir%\SysWow64` of `%windir%\System32` tijdens de installatie.
 

@@ -2,24 +2,22 @@
 title: Hulp programma voor gegevens om nieuwe en bijgewerkte bestanden stapsgewijs te kopiëren
 description: Maak een Azure-data factory en gebruik vervolgens het hulp programma Gegevens kopiëren om nieuwe bestanden op basis van LastModifiedDate stapsgewijs te laden.
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 1/24/2019
-ms.openlocfilehash: 5c20196bd243d025d58f7cc08e015e1e0038e178
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5ff3ade800b2a3474a68a34dc77d0c9b009e8822
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217789"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923144"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Incrementeel nieuwe en gewijzigde bestanden op basis van LastModifiedDate kopiëren met behulp van het hulp programma Gegevens kopiëren
 
@@ -33,7 +31,7 @@ Als u dit doet, worden alle bestanden in het bron archief gescand, wordt het bes
 In deze zelf studie voert u de volgende taken uit:
 
 > [!div class="checklist"]
-> * Een data factory maken.
+> * Een gegevensfactory maakt.
 > * Het hulpprogramma Copy Data gebruiken om een pijplijn te maken.
 > * De uitvoering van de pijplijn en van de activiteit controleren.
 
@@ -100,7 +98,7 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
     
     d. Voer onder **terugkeer patroon** **15 minuut/minuten**in. 
     
-    e. Selecteer **Volgende**. 
+    e. Selecteer **Next**. 
     
     De gebruikersinterface van Data Factory maakt een pijplijn met de opgegeven taaknaam. 
 
@@ -148,7 +146,7 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
     
     ![Het uitvoerbestand of de uitvoermap kiezen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-output-file-folder.png)
     
-    b. Selecteer **Volgende**.
+    b. Selecteer **Next**.
     
      ![Het uitvoerbestand of de uitvoermap kiezen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/click-next-after-output-folder.png)
     
@@ -168,7 +166,7 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
     ![Lijst vernieuwen en uitvoering van activiteit weer geven selecteren](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs1.png)
 
-11. Er is slechts één activiteit (de Kopieer activiteit) in de pijp lijn, zodat er slechts één vermelding wordt weer gegeven. Selecteer de koppeling **Details** (pictogram van een bril) in de kolom **Acties** om details over de kopieerbewerking te zien. 
+11. Er is slechts één activiteit (de Kopieer activiteit) in de pijp lijn, zodat er slechts één vermelding wordt weer gegeven. Selecteer de link **Details** (pictogram van een bril) in de kolom **Acties** om details over de kopieerbewerking te zien. 
 
     ![De Kopieer activiteit bevindt zich in een pijp lijn](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs2.png)
     

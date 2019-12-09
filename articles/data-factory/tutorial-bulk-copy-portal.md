@@ -1,25 +1,25 @@
 ---
-title: 'Gegevens bulksgewijs kopiëren met Azure Data Factory '
+title: Gegevens bulksgewijs kopiëren met Azure Portal
 description: Informatie over het gebruik van Azure Data Factory en Activiteit kopiëren om gegevens bulksgewijs van een brongegevensopslag naar een doelgegevensopslag te kopiëren.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/22/2018
-ms.author: jingwang
-ms.openlocfilehash: aaa03e04167cc579cb19885a66db369a3e11176a
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: e0e6ffc45d55dc76abdbdf839958479b2ac5d40b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546910"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926701"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Meerdere tabellen bulksgewijs kopiëren met behulp van Azure Data Factory
+
 Deze zelfstudie demonstreert het **kopiëren van een aantal tabellen uit Azure SQL Database naar Azure SQL Data Warehouse**. U kunt hetzelfde patroon toepassen in andere kopieerscenario's. Bijvoorbeeld het kopiëren van tabellen van SQL Server/Oracle naar Azure SQL Database/Data Warehouse/Azure Blob, verschillende paden kopiëren van Blob naar Azure SQL Database-tabellen.
 
 > [!NOTE]
@@ -224,7 +224,7 @@ De **IterateAndCopySQLTables** -pijp lijn gebruikt een lijst met tabellen als ee
 
     b. Ga naar het tabblad **instellingen** , klik op het invoervak voor **items**en klik vervolgens op de koppeling **dynamische inhoud toevoegen** hieronder. 
 
-    c. Op de pagina **dynamische inhoud toevoegen** vouwt u de secties **systeem variabelen** en **functies** uit, klikt u op de **tableList** onder **para meters**, waarmee het tekstvak met de bovenste expressie automatisch wordt gevuld als `@pipeline().parameter.tableList`. Klik vervolgens op **volt ooien**. 
+    c. Op de pagina **dynamische inhoud toevoegen** vouwt u de secties **systeem variabelen** en **functies** uit, klikt u op de **tableList** onder **para meters**, waarmee het tekstvak met de bovenste expressie automatisch wordt gevuld als `@pipeline().parameter.tableList`. Klik vervolgens op **Voltooien**. 
 
     ![Opbouwfunctie voor Foreach-parameters](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
     

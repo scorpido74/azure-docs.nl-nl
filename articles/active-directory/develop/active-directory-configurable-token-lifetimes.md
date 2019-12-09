@@ -1,5 +1,5 @@
 ---
-title: Configureer bare levens duur van tokens in Azure Active Directory
+title: Configureer bare Azure AD-token levensduur
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het instellen van de levens duur voor tokens die zijn uitgegeven door Azure AD.
 services: active-directory
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5abd6928ed92b80caabe71dd27dc2db2e53b1abf
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c195a5da6b04a919947c0ae65d7d6109115627d2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845243"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918386"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Configureer bare levens duur van tokens in Azure Active Directory (preview-versie)
 

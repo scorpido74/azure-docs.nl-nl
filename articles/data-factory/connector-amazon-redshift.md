@@ -3,21 +3,20 @@ title: Gegevens kopiëren van Amazon RedShift
 description: Meer informatie over het kopiëren van gegevens van Amazon Redshift naar ondersteunde Sink-gegevens archieven met behulp van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.author: jingwang
-ms.openlocfilehash: 8cb604996f6cde5c55098fd3fdc51d0d061dbcd1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 262afd00428c61d828837fd4692fd4fe110448c8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891215"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931798"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Gegevens kopiëren van Amazon Redshift met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]

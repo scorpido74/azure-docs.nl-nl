@@ -1,5 +1,5 @@
 ---
-title: Azure-toepassing inzichten-Azure Functions ondersteunde functies | Microsoft Docs
+title: Azure-toepassing Insights-Azure Functions ondersteunde functies
 description: Ondersteunde functies Application Insights voor Azure Functions
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 31f962ca96ca5c47d18f9250e567abb8f4024e6f
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5688bd92e63016e195726488bd9ff9ed039c5795
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677562"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928408"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights voor Azure Functions ondersteunde functies
 
@@ -26,19 +26,19 @@ Azure Functions biedt [ingebouwde integratie](../../azure-functions/functions-mo
 | **Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 
 | **Automatische verzameling van**        |                 |                   |               
-| &bull;-aanvragen                     | Ja             | Ja               | 
+| &bull; aanvragen                     | Ja             | Ja               | 
 | &bull; uitzonde ringen                   | Ja             | Ja               | 
-| &bull; prestatie meter items         | Ja             | Ja               |
+| Prestatie meter items &bull;         | Ja             | Ja               |
 | &bull; afhankelijkheden                   |                   |                   |               
-| &nbsp; &nbsp; &nbsp; &mdash; HTTP      |                 | Ja               | 
-| &nbsp; &nbsp; &nbsp; &mdash; ServiceBus|                 | Ja               | 
-| &nbsp; &nbsp; &nbsp; &mdash; EventHub  |                 | Ja               | 
-| &nbsp; &nbsp; &nbsp; &mdash; SQL       |                 | Ja               | 
+| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Ja               | 
+| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Ja               | 
+| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | Ja               | 
+| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Ja               | 
 | | | | 
 | **Ondersteunde functies**                |                   |                   |               
 | &bull; QuickPulse/LiveMetrics       | Ja             | Ja               | 
-| &nbsp; &nbsp; &nbsp; &mdash; beveiligd-besturings kanaal|                 | Ja               | 
-| &bull;-steek proef                     | Ja             | Ja               | 
+| &nbsp;&nbsp;&nbsp;&mdash; beveiligd-besturings kanaal|                 | Ja               | 
+| &bull; steekproef                     | Ja             | Ja               | 
 | &bull; heartbeats                   |                 | Ja               | 
 | | | | 
 | **Verband**                       |                   |                   |               
@@ -46,7 +46,7 @@ Azure Functions biedt [ingebouwde integratie](../../azure-functions/functions-mo
 | &bull; EventHub                       |                   | Ja               | 
 | | | | 
 | **Configureer bare**                      |                   |                   |           
-| &bull;Fully-configureerbaar.<br/>Zie [Azure functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) voor instructies.<br/>Zie [ASP.net core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) voor alle opties.               |                   | Ja                   | 
+| &bull;volledig geconfigureerd.<br/>Zie [Azure functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) voor instructies.<br/>Zie [ASP.net core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) voor alle opties.               |                   | Ja                   | 
 
 
 ## <a name="performance-counters"></a>Prestatiemeteritems

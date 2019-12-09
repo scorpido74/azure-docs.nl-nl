@@ -1,22 +1,22 @@
 ---
-title: Gegevens kopiëren van SQL Server naar Blob-opslag met behulp van Azure Data Factory
+title: Gegevens kopiëren van SQL Server naar Blob-opslag met behulp van Azure Portal
 description: Meer informatie over het kopiëren van gegevens uit een on-premises gegevensopslag naar de cloud met behulp van de zelf-hostende Integration Runtime in Azure Data Factory.
 services: data-factory
-documentationcenter: ''
+ms.author: abnarain
 author: nabhishek
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.author: abnarain
-ms.openlocfilehash: 09768e3b9bd1c2e6c9d4a5dbe95bb270b07266c0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5b9bed971ff239c0c4b0d1cb923e845bd76957da
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683532"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922920"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Gegevens van een on-premises SQL-serverdatabase naar Azure Blob Storage kopiëren
 In deze zelfstudie gebruikt u de gebruikersinterface (UI) van Azure Data Factory om een pijplijn voor een data factory te maken waarmee gegevens worden gekopieerd van een on-premises SQL Server-database naar Azure Blob-opslag. U gaat een zelf-hostende Integration Runtime maken en gebruiken. Deze verplaatst gegevens van on-premises gegevensarchieven en gegevensarchieven in de cloud en omgekeerd.
@@ -27,13 +27,13 @@ In deze zelfstudie gebruikt u de gebruikersinterface (UI) van Azure Data Factory
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory.
+> * Een gegevensfactory maakt.
 > * Een zelf-hostende Integration Runtime maken.
 > * Gekoppelde services maken voor SQL Server en Azure Storage. 
 > * Gegevenssets maken voor SQL Server en Azure Blob.
 > * Een pijplijn maakt met een kopieeractiviteit om de gegevens te verplaatsen.
-> * Start een pijplijnuitvoering.
-> * Controleer de pijplijnuitvoering.
+> * Een pijplijnuitvoering starten.
+> * De pijplijnuitvoering controleert.
 
 ## <a name="prerequisites"></a>Vereisten
 ### <a name="azure-subscription"></a>Azure-abonnement
@@ -78,7 +78,7 @@ In deze zelfstudie gaat u de naam en sleutel van uw opslagaccount gebruiken. Voe
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) met uw Azure-gebruikersnaam en -wachtwoord. 
 
-1. Selecteer **alle services**in het linkerdeel venster. Filter met behulp van het sleutelwoord **Opslag** en selecteer vervolgens **Opslagaccounts**.
+1. Selecteer **Alle services** in het linkerdeelvenster. Filter met behulp van het sleutelwoord **Opslag** en selecteer vervolgens **Opslagaccounts**.
 
     ![Zoeken naar Storage-account](media/doc-common-process/search-storage-account.png)
 
@@ -103,7 +103,7 @@ In deze sectie maakt u in uw Blob Storage een blobcontainer met de naam **adftut
 
 1. Houd het venster **Container** voor **adftutorial** geopend. U gaat hiermee aan het einde van deze zelfstudie de uitvoer controleren. In Data Factory wordt automatisch in deze container de uitvoermap gemaakt, zodat u er zelf geen hoeft te maken.
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 In deze stap maakt u een data factory en start u de Data Factory-gebruikersinterface om een pijplijn te maken in de data factory. 
 
 1. Open de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
@@ -153,7 +153,7 @@ In deze stap maakt u een data factory en start u de Data Factory-gebruikersinter
 
 1. Voer in het dialoog venster **Eigenschappen instellen** onder **naam** **SqlServerDataset**in. Onder **gekoppelde service**selecteert u **+ Nieuw**. In deze stap maakt u een verbinding met het brongegevensexemplaar (SQL Server-database). 
 
-1. Voeg in het dialoog venster **nieuwe gekoppelde service** **naam** toe als **SqlServerLinkedService**. Selecteer **+ Nieuw**onder **verbinden via Integration runtime**.  In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppelen aan een on-premises computer met de SQL Server-database. De zelf-hostende Integration Runtime is het onderdeel waarmee gegevens worden gekopieerd van SQL Server-database op uw computer naar Blob Storage. 
+1. Voeg in het dialoog venster **nieuwe gekoppelde service** **naam** toe als **SqlServerLinkedService**. Selecteer **+ Nieuw**onder **verbinden via Integration runtime**.  In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppelen aan een on-premises computer met de SQL Server database. De zelf-hostende Integration Runtime is het onderdeel waarmee gegevens worden gekopieerd van SQL Server-database op uw computer naar Blob Storage. 
 
 1. Selecteer in het dialoog venster **Integration runtime instellen** de optie **zelf gehost**en selecteer vervolgens **volgende**. 
 
@@ -240,13 +240,13 @@ De uitvoermap *fromonprem* wordt automatisch door de pijplijn gemaakt in de `adf
 Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene locatie naar een andere locatie in Blob Storage. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Maak een gegevensfactory.
+> * Een gegevensfactory maakt.
 > * Een zelf-hostende Integration Runtime maken.
 > * Gekoppelde services maakt voor SQL Server en Storage. 
 > * Gegevenssets maakt voor SQL Server en Blob Storage.
 > * Een pijplijn maakt met een kopieeractiviteit om de gegevens te verplaatsen.
-> * Start een pijplijnuitvoering.
-> * Controleer de pijplijnuitvoering.
+> * Een pijplijnuitvoering starten.
+> * De pijplijnuitvoering controleert.
 
 Zie [Ondersteunde gegevensopslagexemplaren](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslagexemplaren die worden ondersteund door Data Factory.
 

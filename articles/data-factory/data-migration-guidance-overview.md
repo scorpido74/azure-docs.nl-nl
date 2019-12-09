@@ -2,23 +2,21 @@
 title: Gegevens migreren van data Lake en Data Warehouse naar Azure
 description: Gebruik Azure Data Factory om gegevens van uw data Lake en Data Warehouse te migreren naar Azure.
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/30/2019
-ms.openlocfilehash: 056e98c18dbe2dd1adaa9386145ef18e36f8aac2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: aaf1593cc049e8b23f8ebe36fea022b3029ccd04
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217569"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930803"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Azure Data Factory gebruiken om gegevens van uw data Lake of Data Warehouse te migreren naar Azure
 
@@ -47,7 +45,7 @@ Azure Data Factory is een standaard hulp programma voor het migreren van gegeven
 Er zijn drie belang rijke aandachtspunten wanneer u kiest tussen een online-en offline migratie methode:  
 
 - Grootte van de gegevens die moeten worden gemigreerd
-- Netwerk bandbreedte
+- Netwerkbandbreedte
 - Migratie venster
 
 Stel dat u van plan bent om Azure Data Factory te gebruiken voor het volt ooien van de gegevens migratie binnen twee weken (uw *migratie venster*). Let op de regel roze/blauw knippen in de volgende tabel. In de laagste roze cel voor een bepaalde kolom ziet u de gegevens grootte/netwerk bandbreedte koppeling waarvan het migratie venster zich het dichtst bij maar minder dan twee weken bevindt. (Elke grootte/band breedte-koppeling in een blauwe cel heeft een venster voor online migratie van meer dan twee weken.) 

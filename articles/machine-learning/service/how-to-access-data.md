@@ -11,27 +11,27 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2e86c06cca26da2776459f3c20bf921a02ed89b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ee6ab1ada540f4f664e6782a1fffc63cc7df95e4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894713"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928586"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Toegang tot gegevens in azure Storage-services
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u eenvoudig toegang hebt tot uw gegevens in azure Storage-services via Azure Machine Learning gegevens opslag. Data stores worden gebruikt om verbindings gegevens op te slaan, zoals uw abonnements-ID en Token autorisatie. Door data stores te gebruiken, kunt u toegang krijgen tot uw opslag zonder dat u de verbindings gegevens van uw scripts hard kunt coderen. U kunt gegevens opslag maken op basis van deze [Azure Storage-oplossingen](#matrix). Voor niet-ondersteunde opslag oplossingen kunt u uw gegevens het beste verplaatsen naar onze ondersteunde Azure-opslag oplossingen om de kosten voor de uitvoer van gegevens op te slaan tijdens machine learning experimenten. [Meer informatie over het verplaatsen van uw gegevens](#move). 
+In dit artikel leert u hoe u eenvoudig toegang hebt tot uw gegevens in azure Storage-services via Azure Machine Learning gegevens opslag. Data stores worden gebruikt om verbindings gegevens op te slaan, zoals uw abonnements-ID en Token autorisatie. Door data stores te gebruiken, kunt u toegang krijgen tot uw opslag zonder dat u de verbindings gegevens van uw scripts hard kunt coderen. U kunt gegevens opslag maken op basis van deze [Azure Storage-oplossingen](#matrix). Voor niet-ondersteunde opslag oplossingen en voor het opslaan van de kosten voor de uitvoer van gegevens tijdens machine learning experimenten, raden we u aan om uw gegevens te verplaatsen naar onze ondersteunde Azure-opslag oplossingen. [Meer informatie over het verplaatsen van uw gegevens](#move). 
 
 In deze procedure worden voor beelden van de volgende taken weer gegeven:
-* [Gegevens opslag registreren](#access)
-* [Gegevens opslag ophalen uit de werk ruimte](#get)
-* [Gegevens uploaden en downloaden met behulp van data stores](#up-and-down)
-* [Toegang tot gegevens tijdens de training](#train)
-* [Gegevens verplaatsen naar Azure](#move)
+* Gegevens opslag registreren
+* Gegevens opslag ophalen uit de werk ruimte
+* Gegevens uploaden en downloaden met behulp van data stores
+* Toegang tot gegevens tijdens de training
+* Gegevens verplaatsen naar een Azure Storage-service
 
 ## <a name="prerequisites"></a>Vereisten
-
+U hebt
 - Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
 - Een Azure-opslag account met een [Azure Blob-container](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) of een [Azure-bestands share](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
@@ -58,7 +58,13 @@ Wanneer u een Azure Storage-oplossing registreert als een gegevens opslag, maakt
 
 Alle registratie methoden bevinden zich op de klasse [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) en hebben het formulier register_azure_ *.
 
-De informatie die u nodig hebt om de methode REGI ster () te vullen, vindt u via [Azure Portal](https://portal.azure.com). Selecteer **opslag accounts** in het linkerdeel venster en kies het opslag account dat u wilt registreren. De pagina **overzicht** bevat informatie zoals de account naam en de naam van de container of de bestands share. Voor verificatie-informatie, zoals account sleutel of SAS-token, navigeert u naar **account sleutels** in het deel venster **instellingen** aan de linkerkant. 
+De gegevens die u nodig hebt om de kassa methode () te vullen, vindt u via de [Azure machine learning Studio](https://ml.azure.com) en deze stappen
+
+1. Selecteer **opslag accounts** in het linkerdeel venster en kies het opslag account dat u wilt registreren. 
+2. De pagina **overzicht** bevat informatie zoals de account naam en de naam van de container of de bestands share. 
+3. Voor verificatie-informatie, zoals account sleutel of SAS-token, navigeert u naar **account sleutels** in het deel venster **instellingen** aan de linkerkant. 
+
+>BELANG rijk Als uw opslag account zich in een VNET bevindt, wordt alleen het maken van Azure Blob Data Store ondersteund. Stel de para meter `grant_workspace_access` in op `True` om uw werk ruimte toegang te verlenen tot uw opslag account.
 
 In de volgende voor beelden ziet u hoe u een Azure Blob-container of een Azure-bestands share als een gegevens opslag registreert.
 
@@ -74,7 +80,6 @@ In de volgende voor beelden ziet u hoe u een Azure Blob-container of een Azure-b
                                                           account_key='your storage account key',
                                                           create_if_not_exists=True)
     ```
-    Als uw opslag account zich in een VNET bevindt, wordt alleen het maken van Azure Blob Data Store ondersteund. Stel de para meter `grant_workspace_access` in op `True` om uw werk ruimte toegang te verlenen tot uw opslag account.
 
 + Gebruik [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-)voor een **Azure file share-gegevens opslag**. 
 
@@ -104,7 +109,7 @@ Maak een nieuwe gegevens opslag in een paar stappen in Azure Machine Learning St
   
 De informatie die u nodig hebt om het formulier in te vullen, vindt u via [Azure Portal](https://portal.azure.com). Selecteer **opslag accounts** in het linkerdeel venster en kies het opslag account dat u wilt registreren. De pagina **overzicht** bevat informatie zoals de account naam en de naam van de container of de bestands share. Voor verificatie-items, zoals account sleutel of SAS-token, navigeert u naar **account sleutels** in het deel venster **instellingen** aan de linkerkant.
 
-In het volgende voor beeld ziet u hoe het formulier eruitziet voor het maken van een Azure Blob-gegevens opslag. 
+In het volgende voor beeld ziet u hoe het formulier eruitziet voor het maken van Azure Blob Data Store. 
     
  ![Nieuwe gegevens opslag](media/how-to-access-data/new-datastore-form.png)
 
@@ -128,7 +133,7 @@ for name, datastore in datastores.items():
     print(name, datastore.datastore_type)
 ```
 
-Wanneer u een werk ruimte maakt, worden een Azure Blob-container en een Azure-bestands share geregistreerd in de werk ruimte met de naam `workspaceblobstore` en `workspacefilestore` respectievelijk. Ze slaan de verbindings gegevens van de BLOB-container en de bestands share op die zijn ingericht in het opslag account dat aan de werk ruimte is gekoppeld. De `workspaceblobstore` is ingesteld als de standaard gegevens opslag.
+Wanneer u een werk ruimte maakt, worden er automatisch een Azure Blob-container en een Azure-bestands share geregistreerd in de werk ruimte met de naam `workspaceblobstore` en `workspacefilestore` respectievelijk. Deze slaan de verbindings gegevens van de BLOB-container en de bestands share op die zijn ingericht in het opslag account dat is gekoppeld aan de werk ruimte. De `workspaceblobstore` is ingesteld als de standaard gegevens opslag.
 
 Ophalen van de werkruimte standaard gegevensopslag:
 
@@ -189,7 +194,7 @@ De volgende tabel bevat de methoden die het reken doel vertellen hoe de gegevens
 
 Manier|Methode|Beschrijving|
 ----|-----|--------
-Koppelen| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| Gebruiken om de gegevens opslag te koppelen aan het berekenings doel.
+Koppelen| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| Gebruiken om de gegevens opslag te koppelen aan het berekenings doel. Wanneer deze is gekoppeld, worden alle bestanden van uw gegevens opslag toegankelijk gemaakt voor uw reken doel.
 Downloaden|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|Gebruik om de inhoud van uw gegevens archief te downloaden naar de locatie die is opgegeven door `path_on_compute`. <br><br> Deze down load gebeurt vóór de uitvoering.
 Uploaden|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| Gebruik dit om een bestand te uploaden vanaf de locatie die is opgegeven door `path_on_compute` naar uw gegevens opslag. <br><br> Deze upload vindt plaats na de uitvoering.
 
@@ -207,13 +212,14 @@ datastore.path('./bar').as_download()
 
 ### <a name="examples"></a>Voorbeelden 
 
-De volgende code voorbeelden zijn specifiek voor de [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) -klasse voor het verkrijgen van toegang tot gegevens tijdens de training. 
+De volgende code voorbeelden zijn specifiek voor de [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) -klasse voor het verkrijgen van toegang tot gegevens tijdens de training.
 
 `script_params` is een woorden lijst met para meters voor de entry_script. Gebruik deze functie om in een gegevens Archief door te geven en te beschrijven hoe gegevens beschikbaar worden gesteld op het reken doel. Meer informatie vindt u in onze end-to-end [zelf studie](tutorial-train-models-with-aml.md).
 
 ```Python
 from azureml.train.estimator import Estimator
 
+# notice '/' is in front, this indicates the absolute path
 script_params = {
     '--data_dir': datastore.path('/bar').as_mount()
 }

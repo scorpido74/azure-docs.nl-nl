@@ -3,27 +3,23 @@ title: Verschillen tussen MSAL. js en ADAL. js
 titleSuffix: Microsoft identity platform
 description: Meer informatie over de verschillen tussen de micro soft-verificatie bibliotheek voor Java script (MSAL. js) en de Azure AD-verificatie bibliotheek voor Java script (ADAL. js) en hoe u kunt kiezen welke u wilt gebruiken.
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d831f9f1cf8dbf565d569f63ee6215fac80949d
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: e3696eb90abbb35f4d989649b4a1198aec69b9a5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803169"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916907"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>Verschillen tussen MSAL JS en ADAL JS
 
@@ -43,17 +39,17 @@ U moet echter nog steeds ADAL. js gebruiken als uw toepassing zich moet aanmelde
 
 ### <a name="core-api"></a>Core-API
 
-* ADAL. js gebruikt [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context#authenticationcontext) als representatie van een exemplaar van de verbinding van uw toepassing met de autorisatie server of ID-provider via een instantie-URL. In tegens telling tot de MSAL. js-API is ontworpen rond client toepassing voor gebruikers agent (een vorm van een open bare client toepassing waarin de client code wordt uitgevoerd in een gebruikers agent, zoals een webbrowser). Het biedt de `UserAgentApplication`-klasse om een exemplaar van de verificatie context van de toepassing met de autorisatie server weer te geven. Zie [initialiseren met MSAL. js](msal-js-initializing-client-applications.md)voor meer informatie.
+* ADAL. js gebruikt [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context#authenticationcontext) als representatie van een exemplaar van de verbinding van uw toepassing met de autorisatie server of ID-provider via een instantie-URL. In tegens telling tot de MSAL. js-API is ontworpen rond client toepassing voor gebruikers agent (een vorm van een open bare client toepassing waarin de client code wordt uitgevoerd in een gebruikers agent, zoals een webbrowser). Het biedt de `UserAgentApplication` klasse om een exemplaar van de verificatie context van de toepassing met de autorisatie server weer te geven. Zie [initialiseren met MSAL. js](msal-js-initializing-client-applications.md)voor meer informatie.
 
-* In ADAL. js worden de methoden voor het verkrijgen van tokens gekoppeld aan één instantie die is ingesteld in de `AuthenticationContext`. In MSAL. js kunnen de aanvragen voor het ophalen van tokens verschillende instanties waarden hebben dan wat in de `UserAgentApplication` is ingesteld. Hierdoor kan MSAL. js tokens afzonderlijk verkrijgen en in de cache opslaan voor meerdere tenants en gebruikers accounts in dezelfde toepassing.
+* In ADAL. js worden de methoden voor het verkrijgen van tokens gekoppeld aan één instantie die in de `AuthenticationContext`is ingesteld. In MSAL. js kunnen de aanvragen voor het ophalen van tokens verschillende instanties waarden hebben dan wat in de `UserAgentApplication`is ingesteld. Hierdoor kan MSAL. js tokens afzonderlijk verkrijgen en in de cache opslaan voor meerdere tenants en gebruikers accounts in dezelfde toepassing.
 
-* De methode om tokens op de achtergrond te verkrijgen en te vernieuwen zonder dat gebruikers wordt gevraagd om de naam `acquireToken` in ADAL. js. In MSAL. js heeft deze methode de naam `acquireTokenSilent` voor een meer beschrijvende functie van deze functionaliteit.
+* De methode om tokens op de achtergrond te verkrijgen en te vernieuwen zonder dat de gebruiker om toestemming wordt gevraagd, wordt `acquireToken` genoemd in ADAL. js. In MSAL. js heeft deze methode de naam `acquireTokenSilent` om meer beschrijvende van deze functionaliteit te maken.
 
 ### <a name="authority-value-common"></a>Waarde van instantie `common`
 
 In v 1.0 kunnen gebruikers zich aanmelden met een Azure AD-account (voor elke organisatie) met behulp van de `https://login.microsoftonline.com/common`-instantie.
 
-In v 2.0 kunnen gebruikers zich met behulp van de instantie `https://login.microsoftonline.com/common` aanmelden met een Azure AD-organisatie account of een persoonlijk micro soft-account (MSA). Als u de aanmelding wilt beperken tot Azure AD-accounts (hetzelfde gedrag als met ADAL. js), moet u `https://login.microsoftonline.com/organizations` gebruiken. Zie voor meer informatie de `authority` config option in [Initialize met behulp van MSAL. js](msal-js-initializing-client-applications.md).
+In v 2.0 kunnen gebruikers met behulp van de `https://login.microsoftonline.com/common`-instantie zich aanmelden met een Azure AD-organisatie account of een persoonlijk micro soft-account (MSA). Als u de aanmelding wilt beperken tot alleen Azure AD-accounts (hetzelfde gedrag als met ADAL. js), moet u `https://login.microsoftonline.com/organizations`gebruiken. Zie voor meer informatie de optie `authority` config in [Initialize met behulp van MSAL. js](msal-js-initializing-client-applications.md).
 
 ### <a name="scopes-for-acquiring-tokens"></a>Bereiken voor het verkrijgen van tokens
 * Bereik in plaats van resource-para meter in verificatie aanvragen voor het verkrijgen van tokens
@@ -64,9 +60,9 @@ In v 2.0 kunnen gebruikers zich met behulp van de instantie `https://login.micro
 
     v 2.0: Scope = https\://graph.microsoft.com/User.Read
 
-    U kunt bereiken voor elke resource-API aanvragen met behulp van de URI van de API in deze indeling: appidURI/Scope bijvoorbeeld: https: \//mytenant. onmicrosoft. com/myapi/API. Read
+    U kunt bereiken voor elke resource-API aanvragen met behulp van de URI van de API in deze indeling: appidURI/Scope bijvoorbeeld: https:\//mytenant.onmicrosoft.com/myapi/api.read
 
-    Voor de MS Graph API is een bereik waarde `user.read` toegewezen aan https: \//Graph. micro soft. com/user. Read en kan door elkaar worden gebruikt.
+    Voor de MS Graph API is een bereik waarde `user.read` toegewezen aan https:\//graph.microsoft.com/User.Read en kan door elkaar worden gebruikt.
 
     ```javascript
     var request = {

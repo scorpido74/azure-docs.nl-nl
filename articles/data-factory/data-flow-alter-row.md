@@ -1,17 +1,18 @@
 ---
-title: Azure Data Factory toewijzing van gegevens stroom Alter Row trans formatie
+title: Gegevens stroom koppelen wijzigen rij transformatie
 description: Data base-doel bijwerken met Azure Data Factory toewijzing gegevens stroom Alter Row trans formatie
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 03/12/2019
-ms.openlocfilehash: 7a782c62165aa6f2641c2ebe8e4600198ec373c5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1301b89ef1a6fb02356c6dcd4e568401eb5e9cd2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486214"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930482"
 ---
 # <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory Alter Row Transform
 
@@ -26,12 +27,12 @@ Gebruik de Alter Row trans formatie om INSERT-, Delete-, update-en upsert-beleid
 
 ## <a name="indicate-a-default-row-policy"></a>Een standaard beleid voor rijen aangeven
 
-Een alter Row trans formatie maken en een rij-beleid met een voor waarde van `true()` opgeven. Elke rij die niet aan een van de eerder gedefinieerde expressies voldoet, wordt gemarkeerd voor het opgegeven beleid voor de rij. Standaard wordt elke rij die niet aan een voorwaardelijke expressie voldoet, gemarkeerd voor `Insert`.
+Een alter Row trans formatie maken en een rij-beleid met een voor waarde van `true()`opgeven. Elke rij die niet aan een van de eerder gedefinieerde expressies voldoet, wordt gemarkeerd voor het opgegeven beleid voor de rij. Standaard wordt elke rij die niet aan een voorwaardelijke expressie voldoet, gemarkeerd voor `Insert`.
 
 ![Rij één beleids regel wijzigen](media/data-flow/alter-row4.png "Rij één beleids regel wijzigen")
 
 > [!NOTE]
-> Als u alle rijen met één beleid wilt markeren, kunt u een voor waarde voor dat beleid maken en de voor waarde als `true()` opgeven.
+> Als u alle rijen met één beleid wilt markeren, kunt u een voor waarde voor dat beleid maken en de voor waarde als `true()`opgeven.
 
 ## <a name="view-policies"></a>Beleids regels weer geven
 

@@ -1,6 +1,6 @@
 ---
-title: Bureau blad-app voor het aanroepen van web-Api's (verplaatsen naar productie)-micro soft Identity-platform
-description: Meer informatie over het bouwen van een desktop-app die web-Api's aanroept (verplaatsen naar productie)
+title: Bureau blad-app die web-Api's aanroept, verplaatsen naar productie-micro soft Identity-platform | Azure
+description: Meer informatie over het verplaatsen van een bureau blad-app die web-Api's aanroept voor productie
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -17,16 +17,16 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5331f01c5dc6acf01f567dbe4c332853bf7aa47e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 81a5e57d0ef37a3a2e758e42f122c8e014c94958
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175548"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919980"
 ---
 # <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Bureau blad-app voor het aanroepen van web-Api's-verplaatsen naar productie
 
-In dit artikel vindt u meer informatie over het verbeteren van uw toepassing en het verplaatsen ervan naar productie.
+In dit artikel vindt u informatie over het verplaatsen van uw bureau blad-app die web-Api's aanroept voor productie.
 
 ## <a name="handling-errors-in-desktop-applications"></a>Fouten afhandelen in bureaublad toepassingen
 

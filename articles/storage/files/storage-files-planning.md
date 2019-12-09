@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7d11dc70a78fcec62032c2a6af168bd306c9d416
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fdfa01a45c0dd35da65b2ad7ce8b0d291148af1a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227870"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931107"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 
-[Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard SMB-protocol. Omdat Azure Files volledig wordt beheerd, is het implementeren van de implementatie in productie scenario's veel eenvoudiger dan het implementeren en beheren van een bestands server of een NAS-apparaat. In dit artikel worden de onderwerpen behandeld waarmee u rekening moet houden bij het implementeren van een Azure-bestands share voor productie gebruik binnen uw organisatie.
+[Azure Files](storage-files-introduction.md) biedt volledig beheerde bestandsshares in de cloud die toegankelijk zijn via het industriestandaard SMB-protocol. Omdat Azure Files volledig wordt beheerd, is het implementeren van de implementatie in productie scenario's veel eenvoudiger dan het implementeren en beheren van een bestands server of een NAS-apparaat. In dit artikel worden de onderwerpen behandeld waarmee u rekening moet houden bij het implementeren van een Azure-bestands share voor productie gebruik binnen uw organisatie.
 
 ## <a name="management-concepts"></a>Beheer concepten
 
@@ -53,7 +53,7 @@ In de volgende tabel ziet u hoe uw gebruikers en toepassingen toegang hebben tot
 | Waar wordt uw werk belasting uitgevoerd? | **In azure**: Azure files biedt directe toegang tot uw gegevens. | **On-premises met langzaam netwerk**: Windows-, Linux-en macOS-clients kunnen een lokale on-premises Windows-bestands share koppelen als een snelle cache van uw Azure-bestands share. |
 | Welk toegangs niveau hebt u nodig? | Share-en bestands niveau. | Share-, bestands-en gebruikers niveau. |
 
-## <a name="data-security"></a>Gegevensbeveiliging
+## <a name="data-security"></a>Databeveiliging
 
 Azure Files heeft verschillende ingebouwde opties voor het garanderen van gegevens beveiliging:
 
@@ -205,8 +205,8 @@ Standaard bestands shares zijn beschikbaar in alle regio's tot 5 TiB. In bepaald
 
 |Regio |Ondersteunde redundantie |
 |-------|---------|
-|Australië - oost |LRS     |
-|Australië - Zuidoost|LRS |
+|Australië Oost |LRS     |
+|Australië Zuidoost|LRS |
 |Canada-Midden  |LRS     |
 |Canada-Oost     |LRS     |
 |India - centraal  |LRS     |
@@ -216,6 +216,7 @@ Standaard bestands shares zijn beschikbaar in alle regio's tot 5 TiB. In bepaald
 |VS-Oost 2 *      |LRS     |
 |Frankrijk - centraal |LRS, ZRS|
 |Frankrijk - zuid   |LRS     |
+|VS - noord-centraal |LRS     |
 |Europa - noord   |LRS     |
 |India - zuid    |LRS     |
 |Azië - zuidoost |LRS, ZRS|
