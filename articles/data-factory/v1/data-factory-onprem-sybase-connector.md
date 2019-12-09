@@ -4,21 +4,20 @@ description: Meer informatie over het verplaatsen van gegevens uit de Sybase-dat
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: b379ee10-0ff5-4974-8c87-c95f82f1c5c6
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e6d2acbb848a03d950e830458963ecc4f26dff98
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cefa0c15dd50f95780034dcb63f888a2e1c6b65e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682414"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929026"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Gegevens van Sybase verplaatsen met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -49,7 +48,7 @@ SAP Sybase SQL Anywhere (ASA) versie 16 en hoger wordt ondersteund; IQ en ASE wo
 U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van een on-premises Cassandra-gegevens opslag met behulp van verschillende hulpprogram ma's/Api's. 
 
 - De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren. 
-- U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit. 
+- U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit. 
 
 Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
@@ -61,15 +60,15 @@ Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data 
 
 De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor een Sybase-gegevens opslag:
 
-## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifiek zijn voor een met Sybase gekoppelde service.
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **OnPremisesSybase** |Ja |
 | server |De naam van de Sybase-server. |Ja |
 | database |De naam van de Sybase-data base. |Ja |
-| Schema |De naam van het schema in de data base. |Nee |
+| schema |De naam van het schema in de data base. |Nee |
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de Sybase-data base. Mogelijke waarden zijn: anoniem, basis en Windows. |Ja |
 | gebruikersnaam |Geef de gebruikers naam op als u basis-of Windows-verificatie gebruikt. |Nee |
 | wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Nee |
@@ -80,7 +79,7 @@ Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een 
 
 De sectie typeProperties verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie **typeProperties** voor de gegevensset van het type **RelationalTable** (inclusief Sybase dataset) heeft de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | tableName |De naam van de tabel in het data base-exemplaar van Sybase waarnaar de gekoppelde service verwijst. |Nee (als de **query** van **RelationalSource** is opgegeven) |
 
@@ -91,7 +90,7 @@ Terwijl de eigenschappen die beschikbaar zijn in de sectie typeProperties van de
 
 Wanneer de bron van het type **RelationalSource** (inclusief Sybase) is, zijn de volgende eigenschappen beschikbaar in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
+| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: Select * from MyTable. |Nee (als **TableName** van **gegevensset** is opgegeven) |
 
