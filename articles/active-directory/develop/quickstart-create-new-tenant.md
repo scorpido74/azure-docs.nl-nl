@@ -2,29 +2,26 @@
 title: Een Azure Active Directory-tenant maken | Microsoft Docs
 description: Informatie over het maken van een Azure Active Directory-tenant voor het registreren en maken van toepassingen.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: 1f4b24eb-ab4d-4baa-a717-2a0e5b8d27cd
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 02/05/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c29195e5e597583a5c16c7f1d9494d655f2b317
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: b9d4e51e6242da90a1e7044e0c3a182ea59ad187
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268598"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915109"
 ---
-# <a name="quickstart-set-up-a-tenant"></a>Quickstart: Een Tenant instellen
+# <a name="quickstart-set-up-a-tenant"></a>Snelstartgids: een Tenant instellen
 
 Met het Microsoft Identity Platform kunnen ontwikkelaars apps bouwen voor een breed scala van aangepaste Microsoft 365-omgevingen en -identiteiten. Om aan de slag te gaan met het Microsoft Identity Platform hebt u toegang nodig tot een omgeving, ook wel een Azure AD-tenant genoemd, waarmee u apps kunt registreren en beheren. Daarnaast hebt u toegang nodig tot Microsoft 365-gegevens en moet u aangepaste beperkingen voor voorwaardelijke toegang en de tenant implementeren.
 

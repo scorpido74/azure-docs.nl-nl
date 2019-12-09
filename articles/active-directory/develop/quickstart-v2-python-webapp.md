@@ -2,25 +2,21 @@
 title: Micro soft Identity platform python web app Quick Start | Azure
 description: Meer informatie over het implementeren van micro soft-aanmelding op een Python-web-app met OAuth2
 services: active-directory
-documentationcenter: dev-center-name
 author: abhidnya13
-editor: ''
-ms.assetid: 9551f0b5-04f2-44d7-87b5-756409180fe9
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: d9349391ad9af1a4ec1c84b586f825f3f7632ff8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0d6b96683a04fa5d2814246b3c22aa52956a8bbb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815755"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920511"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Snelstartgids: aanmelden toevoegen met micro soft aan een Python-web-app
 
@@ -42,7 +38,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 
 > [!div renderon="docs"]
 >
-> ## <a name="register-and-download-your-quickstart-app"></a>De snelstart-app registreren en downloaden
+> ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
 >
 > U hebt twee opties om uw Quick Start-toepassing te starten: Express (optie 1) en hand matig (optie 2)
 >
@@ -60,7 +56,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 > Volg deze stappen om de toepassing te registreren en de registratiegegevens van de app handmatig toe te voegen aan uw oplossing:
 >
 > 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-> 1. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u de portalsessie in op de gewenste Azure Active Directory-tenant.
+> 1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
 > 1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) .
 > 1. Selecteer **nieuwe registratie**.
 > 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:

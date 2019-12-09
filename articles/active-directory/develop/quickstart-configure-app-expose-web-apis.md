@@ -2,27 +2,23 @@
 title: Een toepassing configureren voor het beschikbaar maken van web-Api's-micro soft Identity-platform
 description: Leer hoe u een toepassing kunt configureren voor het beschikbaar maken van een nieuwe machtiging/nieuw bereik en een nieuwe rol, om de toepassing beschikbaar te maken voor clienttoepassingen.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/14/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9c8e4a2e5dadf64312481f33993911177c90bc7
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8ba582516002c3e34ca91ceddbfd826bafe0c282
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "68989277"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921446"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Snelstartgids: een toepassing configureren voor het beschikbaar maken van web-Api's
 
@@ -52,7 +48,7 @@ Voordat u de app kunt configureren, volgt u deze stappen:
 
 ## <a name="expose-a-new-scope-through-the-ui"></a>Een nieuw bereik beschikbaar maken via de gebruikersinterface
 
-[![Shows hoe u een API beschikbaar maakt met behulp van de gebruikers interface](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
+[![laat zien hoe u een API beschikbaar maakt met behulp van de gebruikers interface](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
 
 Een nieuw bereik beschikbaar maken via de gebruikersinterface:
 
@@ -135,7 +131,7 @@ Lees meer in deze andere gerelateerde snelstarts voor app-beheer:
 
 * [Een toepassing registreren met het Microsoft Identity Platform](quickstart-register-app.md)
 * [Een clienttoepassing configureren voor toegang tot web-API's](quickstart-configure-app-access-web-apis.md)
-* [De accounts wijzigen die worden ondersteund door een toepassing](quickstart-modify-supported-accounts.md)
+* [De accounts wijzigen die worden ondersteund in een toepassing](quickstart-modify-supported-accounts.md)
 * [Een geregistreerde toepassing verwijderen met het Microsoft Identity Platform](quickstart-remove-app.md)
 
 Zie [Toepassingsobjecten en service-principal-objecten](app-objects-and-service-principals.md) voor meer informatie over de twee Azure Active Directory-objecten die een geregistreerde toepassing vertegenwoordigen en de relatie ertussen.

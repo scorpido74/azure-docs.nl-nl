@@ -3,12 +3,12 @@ title: Een Azure Storage wachtrij binding toevoegen aan uw python-functie
 description: Meer informatie over het toevoegen van een Azure Storage wachtrij-uitvoer binding aan uw python-functie.
 ms.date: 10/02/2019
 ms.topic: quickstart
-ms.openlocfilehash: dede135da56e9ed1eaaed2ae0f7b5cd14d08195c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f2db0f470c4205919343e3838a4f73b05bf71fb0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231237"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928869"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Een Azure Storage wachtrij binding toevoegen aan uw python-functie
 
@@ -55,7 +55,7 @@ func host start
 ```
 
 > [!NOTE]  
-> Omdat u uitbreidings bundels in de host. json hebt ingeschakeld, is de [opslag bindings uitbreiding](functions-bindings-storage-blob.md#packages---functions-2x) tijdens het opstarten gedownload en geïnstalleerd, samen met de andere micro soft-bindings extensies.
+> Omdat u uitbreidings bundels in de host. json hebt ingeschakeld, is de [opslag bindings uitbreiding](functions-bindings-storage-blob.md#packages---functions-2x-and-higher) tijdens het opstarten gedownload en geïnstalleerd, samen met de andere micro soft-bindings extensies.
 
 Kopieer de URL van uw `HttpTrigger`-functie uit de uitvoer van de runtime en plak deze in de adresbalk van uw browser. Voeg de query reeks `?name=<yourname>` toe aan deze URL en voer de aanvraag uit. U ziet hetzelfde antwoord in de browser zoals u dat in het vorige artikel hebt gedaan.
 

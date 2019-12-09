@@ -4,19 +4,19 @@ description: Maak een Azure data factory aan en gebruik vervolgens het hulpprogr
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
-manager: craigg
+ms.author: yexu
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
-ms.author: yexu
-ms.openlocfilehash: 64f2c989d6ccb4b3ade96065836e1b1f2439e6f5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4ead3472e1706742781cb64a12103f3dec1fd27a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684549"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922458"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Snelstartgids: gebruik het Gegevens kopiëren-hulp programma om gegevens te kopiëren
 
@@ -31,7 +31,7 @@ In deze snelstart gebruikt u Azure Portal voor het maken van een data factory. G
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
 1. Ga naar de [Azure Portal](https://portal.azure.com). 
@@ -56,7 +56,7 @@ In deze snelstart gebruikt u Azure Portal voor het maken van een data factory. G
          
    Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/resource-group-overview.md) voor meer informatie.  
 1. Selecteer **V2** als **Versie**.
-1. Selecteer voor **Locatie** een locatie voor de data factory.
+1. Selecteer voor **Locatie** de locatie voor de data factory.
 
    De lijst bevat alleen locaties die worden ondersteund door Data Factory en waar uw Azure Data Factory-metagegevens worden opgeslagen. De bijbehorende gegevens archieven (zoals Azure Storage en Azure SQL Database) en berekeningen (zoals Azure HDInsight) die Data Factory gebruikt, kunnen in andere regio's worden uitgevoerd.
 
@@ -64,7 +64,7 @@ In deze snelstart gebruikt u Azure Portal voor het maken van een data factory. G
 
 1. Wanneer het maken is voltooid, ziet u de pagina **Data Factory**. Selecteer de tegel **Maken en controleren** om de gebruikersinterface (UI) van Azure Data Factory te openen op een afzonderlijk tabblad.
    
-   ![Startpagina van Data Factory, met de tegel Maken en controleren](./media/doc-common-process/data-factory-home-page.png)
+   ![Startpagina voor de data factory, met de tegel Maken en controleren](./media/doc-common-process/data-factory-home-page.png)
 
 ## <a name="start-the-copy-data-tool"></a>Het hulpprogramma Copy Data starten
 

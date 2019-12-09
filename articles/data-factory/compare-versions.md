@@ -4,19 +4,18 @@ description: In dit artikel wordt Azure Data Factory vergeleken met Azure Data F
 services: data-factory
 documentationcenter: ''
 author: kromerm
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: e0c92fbd06bec00f09c66c322ba2520bacb7bffb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e964be548a2f82ecc268a147dd20817b232f51a6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267776"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924808"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure Data Factory vergelijken met Data Factory-versie 1
 In dit artikel wordt Data Factory vergeleken met Data Factory-versie 1. Zie [Inleiding tot Data Factory](introduction.md) voor een inleiding tot Data Factory. Zie [Inleiding tot Azure Data Factory](v1/data-factory-introduction.md) voor een inleiding tot Data Factory-versie 1. 
@@ -133,7 +132,7 @@ De SDK's die zijn bijgewerkt in de huidige versie, zijn niet compatibel met eerd
 | Azure Portal | [Ja](quickstart-create-data-factory-portal.md) | Nee |
 | Azure PowerShell | [Ja](quickstart-create-data-factory-powershell.md) | [Ja](data-factory-build-your-first-pipeline-using-powershell.md) |
 | .NET SDK | [Ja](quickstart-create-data-factory-dot-net.md) | [Ja](data-factory-build-your-first-pipeline-using-vs.md) |
-| REST API | [Ja](quickstart-create-data-factory-rest-api.md) | [Ja](data-factory-build-your-first-pipeline-using-rest-api.md) |
+| REST-API | [Ja](quickstart-create-data-factory-rest-api.md) | [Ja](data-factory-build-your-first-pipeline-using-rest-api.md) |
 | Python-SDK | [Ja](quickstart-create-data-factory-python.md) | Nee |
 | Resource Manager-sjabloon | [Ja](quickstart-create-data-factory-resource-manager-template.md) | [Ja](data-factory-build-your-first-pipeline-using-arm.md) | 
 

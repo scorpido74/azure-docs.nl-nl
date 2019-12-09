@@ -5,18 +5,17 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 02/20/2019
 author: djpmsft
 ms.author: daperlov
-manager: craigg
-ms.openlocfilehash: 6bba764060c243417711205083bf02f84a68fed1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: d7cafa6ec385ed296a5341efdaec1b16f7742683
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684523"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928798"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Zelfstudie: een Azure Data Factory maken op basis van een Azure Resource Manager-sjabloon
 
@@ -24,7 +23,7 @@ ms.locfileid: "73684523"
 > * [Versie 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Huidige versie](quickstart-create-data-factory-resource-manager-template.md)
 
-In deze QuickStart wordt beschreven hoe u een Azure Resource Manager-sjabloon gebruikt om een Azure Data Factory te maken. Met de pijplijn die u in deze data factory maakt, worden gegevens **gekopieerd** van één map naar een andere map in een Azure Blob Storage. Zie **Zelfstudie: Gegevens transformeren met Spark** voor meer informatie over het [transformeren](transform-data-using-spark.md) van gegevens met Azure Data Factory.
+In deze QuickStart wordt beschreven hoe u een Azure Resource Manager-sjabloon gebruikt om een Azure Data Factory te maken. Met de pijplijn die u in deze data factory maakt, worden gegevens **gekopieerd** van één map naar een andere map in een Azure Blob Storage. Zie [Zelfstudie: Gegevens transformeren met Spark](transform-data-using-spark.md) voor meer informatie over het **transformeren** van gegevens met Azure Data Factory.
 
 > [!NOTE]
 > Dit artikel is geen gedetailleerde introductie tot de Data Factory-service. Zie [Inleiding tot Azure Data Factory](introduction.md) voor een inleiding tot Azure Data Factory-service.

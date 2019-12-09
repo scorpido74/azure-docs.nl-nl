@@ -2,27 +2,22 @@
 title: Micro soft Identity platform Windows Desktop Quick Start | Microsoft Docs
 description: Meer informatie over hoe een Windows Desktop .NET-toepassing (XAML) een toegangs token kan krijgen en een API kan aanroepen die wordt beveiligd door een micro soft Identity platform-eind punt
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a85cafce13cffcebbcce3ebf022941ce899fa72b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 38ebf817d80fb1afdd3642f648d8e881b2e9d7de
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852759"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920443"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Quickstart: Een token verkrijgen en Microsoft Graph API aanroepen vanuit een Windows-bureaublad-app
 
@@ -33,22 +28,22 @@ In deze quickstart leert u hoe u een .NET-toepassing (WPF) voor Windows-bureaubl
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
 > U hebt twee opties voor het starten van de snelstarttoepassing:
-> * [Express] [Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens het codevoorbeeld](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [Express] [Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens de voorbeeldcode](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
 > * [Handmatig] [Optie 2: registreer de toepassing en configureer handmatig de toepassing en het codevoorbeeld](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens het codevoorbeeld
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: de app registreren en automatisch configureren, en vervolgens de voorbeeldcode downloaden
 >
 > 1. Ga naar de nieuwe [Azure Portal-app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs).
 > 1. Voer een naam in voor de toepassing en selecteer **Registreren**.
 > 1. Volg de instructies om de nieuwe toepassing met slechts één klik te downloaden en automatisch te configureren.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: registreer de toepassing en configureer handmatig de toepassing en het codevoorbeeld
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: de toepassing en voorbeeldcode registreren en handmatig configureren
 >
 > #### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 > Volg deze stappen om de toepassing te registreren en de registratiegegevens van de app handmatig toe te voegen aan uw oplossing:
 >
 > 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-> 1. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u de portalsessie in op de gewenste Azure Active Directory-tenant.
+> 1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
 > 1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](https://aka.ms/MobileAppReg) .
 > 1. Selecteer **nieuwe registratie**.
 >      - Voer in de sectie **Naam** een beschrijvende toepassingsnaam. Deze wordt zichtbaar voor gebruikers van de app. Bijvoorbeeld: `Win-App-calling-MsGraph`.
@@ -56,11 +51,11 @@ In deze quickstart leert u hoe u een .NET-toepassing (WPF) voor Windows-bureaubl
 >      - Selecteer **Registreren** om de toepassing te maken.
 > 1. Selecteer in de lijst met pagina’s voor de app de optie **Verificatie**.
 > 1. Vouw de sectie **bureau blad + apparaten** uit.  (Als **Desktop + apparaten** niet zichtbaar zijn, klikt u eerst op de bovenste banner om de preview-verificatie-ervaring weer te geven)
-> 1. Selecteer onder de sectie omleidings- **URI** de optie **URI toevoegen**.  Typ **urn: IETF: WG: OAuth: 2.0: OOB**.
+> 1. Selecteer onder de sectie **omleidings-URI** de optie **URI toevoegen**.  Typ **urn: IETF: WG: OAuth: 2.0: OOB**.
 > 1. Selecteer **Opslaan**.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Stap 1: uw toepassing configureren in Azure Portal
+> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Stap 1: Uw toepassing configureren in Azure Portal
 > Voor een juiste werking van het codevoorbeeld uit deze quickstart moet u een antwoord-URL toevoegen als **urn:ietf:wg:oauth:2.0:oob**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Deze wijziging voor mij maken]()
@@ -68,11 +63,11 @@ In deze quickstart leert u hoe u een .NET-toepassing (WPF) voor Windows-bureaubl
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Al geconfigureerd](media/quickstart-v2-windows-desktop/green-check.png) Uw toepassing is al geconfigureerd met deze kenmerken.
 
-#### <a name="step-2-download-your-visual-studio-project"></a>Stap 2: uw Visual Studio-project downloaden
+#### <a name="step-2-download-your-visual-studio-project"></a>Stap 2: Uw Visual Studio-project downloaden
 
-[Down load het Visual Studio-project](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)  ([Project weer geven op github](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/))
+[Down load het Visual Studio-project](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip) ([project weer geven op github](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/))
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>Stap 3: uw Visual Studio-project configureren
+#### <a name="step-3-configure-your-visual-studio-project"></a>Stap 3: Uw Visual Studio-project configureren
 
 1. Pak het zip-bestand uit in een lokale map dicht bij de hoofdmap van de schijf, bijvoorbeeld **C:\Azure-Samples**.
 1. Open het project in Visual Studio.
@@ -84,7 +79,7 @@ In deze quickstart leert u hoe u een .NET-toepassing (WPF) voor Windows-bureaubl
     ```
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Deze Quick Start biedt ondersteuning voor Enter_the_Supported_Account_Info_Here.
+> > Deze Quick Start ondersteunt Enter_the_Supported_Account_Info_Here.
 
 > [!div renderon="docs"]
 > Waar:
@@ -152,7 +147,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
 
 #### <a name="get-a-user-token-silently"></a>Een gebruikerstoken op de achtergrond ophalen
 
-U wilt niet dat de gebruiker telkens wanneer deze toegang nodig heeft tot een resource, de referenties moet laten valideren. In de meeste gevallen wilt u tokens ophalen en verlengen zonder tussenkomst van de gebruiker. U kunt de methode `AcquireTokenSilent` voor het verkrijgen van tokens gebruiken voor toegang tot beveiligde resources na de eerste methode `AcquireTokenInteractive`:
+U wilt niet vereisen dat de gebruiker telkens wanneer deze toegang nodig heeft tot een resource zijn/haar referenties moet valideren. In de meeste gevallen wilt u tokens ophalen en verlengen zonder tussenkomst van de gebruiker. U kunt de methode `AcquireTokenSilent` voor het verkrijgen van tokens gebruiken voor toegang tot beveiligde resources na de eerste methode `AcquireTokenInteractive`:
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();

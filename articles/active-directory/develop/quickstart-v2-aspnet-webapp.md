@@ -2,27 +2,23 @@
 title: Snelstartgids voor micro soft Identity platform ASP.NET Web Server | Azure
 description: Informatie over het implementeren van Microsoft-aanmelding in een ASP.NET-web-app met behulp van OpenID Connect.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d03bb9ede4bbbfdc1c902fec755425a433fea07a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 46902d72c888713be62524ed4b609e2299a85c2b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149467"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920715"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Snelstartgids: aanmelden van micro soft Identity platform toevoegen aan een ASP.NET-Web-app
 
@@ -87,7 +83,7 @@ In deze Quick Start maakt u een ASP.NET-Web-app in staat om persoonlijke account
     ```
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Deze Quick Start biedt ondersteuning voor Enter_the_Supported_Account_Info_Here. 
+> > Deze Quick Start ondersteunt Enter_the_Supported_Account_Info_Here. 
 
 > [!div renderon="docs"]
 > Waar:
@@ -99,7 +95,7 @@ In deze Quick Start maakt u een ASP.NET-Web-app in staat om persoonlijke account
 >
 > > [!TIP]
 > > - Als u de waarden van *Toepassings-id*, *Map-id (tenant)* en *Ondersteunde accounttypen* wilt weten, gaat u naar de **Overzichtspagina**
-> > - Controleer of de waarde voor `redirectUri` in **Web. config** overeenkomt met de **omleidings-URI** die is gedefinieerd voor de app-registratie in azure AD (als dat niet het geval is, gaat u naar het menu **verificatie** voor de app-registratie en werkt u de **omleidings-URI** bij om te zoeken)
+> > - Zorg ervoor dat de waarde voor `redirectUri` in **Web. config** overeenkomt met de **omleidings-URI** die is gedefinieerd voor de app-registratie in azure AD (als dat niet het geval is, gaat u naar het menu **verificatie** voor de app-registratie en werkt u de **omleidings-URI** bij naar overeenkomst)
 
 ## <a name="more-information"></a>Meer informatie
 

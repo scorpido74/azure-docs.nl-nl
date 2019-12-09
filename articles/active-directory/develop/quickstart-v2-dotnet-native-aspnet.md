@@ -2,27 +2,22 @@
 title: Een ASP.NET-Web-API aanroepen die wordt beveiligd door Azure AD-micro soft-identiteit
 description: In deze Quick Start leert u hoe u een ASP.NET-Web-API aanroept die wordt beveiligd door Azure Active Directory van een Windows Desktop-toepassing (WPF). De WPF-client verifieert een gebruiker, vraagt een toegangs token aan en roept de Web-API aan.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e0fdeb2c1955eab18b440c3ef3bcac725ad92b6
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 6f1d9e402bff9d333957d51982dd917822d2c24d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200258"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920647"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-azure-ad"></a>Quick Start: een ASP.NET-Web-API aanroepen die wordt beveiligd door Azure AD
 
@@ -88,7 +83,7 @@ Als u uw apps hand matig wilt registreren, moet u eerst het volgende doen:
 
 ### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>De nieuwe scope toevoegen aan de app. config van de *TodoListClient*
 
-1. Open het bestand **app. config** dat zich in de hoofdmap van het **TodoListClient** -project bevindt en plak vervolgens **toepassings-id** uit de toepassing die u zojuist hebt geregistreerd voor uw *TodoListService* onder `TodoListServiceScope` para meter, waarbij u de teken reeks vervangt `{Enter the Application ID of your TodoListService from the app registration portal}`.
+1. Open het bestand **app. config** dat zich in de hoofdmap van het **TodoListClient** -project bevindt en plak vervolgens **toepassings-id** uit de toepassing die u zojuist hebt geregistreerd voor uw *TodoListService* onder `TodoListServiceScope` para meter, waarbij de teken reeks wordt vervangen `{Enter the Application ID of your TodoListService from the app registration portal}`.
 
    > Opmerking: Zorg ervoor dat deze gebruikmaakt van de volgende indeling:
    >
@@ -115,7 +110,7 @@ In deze stap configureert u uw *TodoListClient* -project door een nieuwe toepass
    - Klik op de knop **een machtiging toevoegen** en vervolgens op
    - Selecteer het tabblad **mijn api's** .
    - Selecteer in de lijst met Api's de `AppModelv2-NativeClient-DotNet-TodoListService API`of de naam die u hebt ingevoerd voor de Web-API.
-   - Controleer de machtiging **access_as_user** als deze nog niet is geselecteerd. Gebruik het zoekvak als dat nodig is.
+   - Controleer de **access_as_user** machtiging als deze nog niet is ingeschakeld. Gebruik het zoekvak als dat nodig is.
    - Selecteer de knop **machtigingen toevoegen**
 
 ### <a name="configure-your-todolistclient-project"></a>Uw *TodoListClient* -project configureren
@@ -128,11 +123,11 @@ In deze stap configureert u uw *TodoListClient* -project door een nieuwe toepass
 1. Druk op `<F5>` om het project uit te voeren. Uw *TodoListClient* moet worden geopend.
 1. Selecteer **in** de rechter bovenhoek de optie aanmelden en meld u aan met dezelfde gebruiker die u hebt gebruikt om uw toepassing te registreren, of een gebruiker in dezelfde map.
 1. Als u zich voor de eerste keer aanmeldt, wordt u mogelijk gevraagd om toestemming te geven voor *TodoListService* Web API.
-1. De aanmelding vraagt het toegangs token ook aan het *access_as_user* -bereik om toegang te krijgen tot de *TodoListService* -Web-API en de *taken* lijst te bewerken.
+1. De aanmelding vraagt het toegangs token ook aan het *access_as_user* bereik om toegang te krijgen tot de *TodoListService* -Web-API en de *taken* lijst te bewerken.
 
 ## <a name="pre-authorize-your-client-application"></a>Uw client toepassing vooraf autoriseren
 
-Een van de manieren om gebruikers uit andere mappen toegang te geven tot uw web-API is door de client toepassingen *vooraf te autoriseren* voor toegang tot uw web-API door de toepassings-id's van client toepassingen toe te voegen aan de lijst met *vooraf geautoriseerde* toepassingen voor de Web-API. Door een vooraf geautoriseerde client toe te voegen, hoeft u geen toestemming te geven voor het gebruik van uw web-API. Volg de onderstaande stappen om uw webtoepassing vooraf te autoriseren::
+Een van de manieren om gebruikers uit andere directory's toegang te geven tot uw web-API is door de client toepassingen *vooraf te autoriseren* voor toegang tot uw web-API door de toepassings-id's van client toepassingen toe te voegen aan de lijst met *vooraf geautoriseerde* toepassingen voor uw web-API. Door een vooraf geautoriseerde client toe te voegen, hoeft u geen toestemming te geven voor het gebruik van uw web-API. Volg de onderstaande stappen om uw webtoepassing vooraf te autoriseren::
 
 1. Ga terug naar de *Portal voor toepassings registratie* en open de eigenschappen van uw **TodoListService**.
 1. Klik in de sectie **een API beschikbaar** maken op **een client toepassing toevoegen** onder de sectie *geautoriseerde client toepassingen* .
@@ -155,7 +150,7 @@ Als u wilt beperken wie zich kan aanmelden bij uw toepassing, gebruikt u een van
 
 U kunt aanmeldings toegang voor uw toepassing beperken tot alleen gebruikers accounts die zich in één Azure AD-Tenant bevinden, waaronder *Gast accounts* van die Tenant. Dit scenario is gebruikelijk voor *line-of-business-toepassingen*:
 
-1. Open het **App_Start\Startup.auth** -bestand en wijzig de waarde van het eind punt voor meta gegevens dat is door gegeven aan de `OpenIdConnectSecurityTokenProvider` op `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"` (u kunt ook de naam van de Tenant gebruiken, zoals `contoso.onmicrosoft.com`).
+1. Open het **\Startup.auth** -bestand van de App_Start en wijzig de waarde van het eind punt voor meta gegevens dat is door gegeven aan de `OpenIdConnectSecurityTokenProvider` naar `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"` (u kunt ook de naam van de Tenant gebruiken, bijvoorbeeld `contoso.onmicrosoft.com`).
 2. Stel in hetzelfde bestand de eigenschap `ValidIssuer` op de `TokenValidationParameters` in `"https://sts.windows.net/{Tenant ID}/"` en het argument `ValidateIssuer` in op `true`.
 
 ### <a name="option-2-use-a-custom-method-to-validate-issuers"></a>Optie 2: een aangepaste methode gebruiken om verleners te valideren
