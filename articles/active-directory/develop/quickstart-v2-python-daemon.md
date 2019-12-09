@@ -2,27 +2,22 @@
 title: Micro soft Identity platform python daemon | Azure
 description: Meer informatie over hoe een python-proces een toegangs token kan ophalen en een API aanroept die wordt beveiligd door het micro soft Identity platform-eind punt, met behulp van de eigen identiteit van de app
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68715186c624cc5ce8702073129752487a8cea63
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 400dfb1ad8b0682194974e6d829cc42bad37bf75
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964008"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920613"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Quick Start: een token verkrijgen en Microsoft Graph-API aanroepen vanuit een python-console-app met behulp van de identiteit van de app
 
@@ -100,7 +95,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
     
     > [!div class="sxs-lookup" renderon="portal"]
     > > [!NOTE]
-    > > Deze Quick Start biedt ondersteuning voor Enter_the_Supported_Account_Info_Here.
+    > > Deze Quick Start ondersteunt Enter_the_Supported_Account_Info_Here.
     
     > [!div renderon="docs"]
     >> Waar:

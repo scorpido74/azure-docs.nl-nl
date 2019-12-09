@@ -2,27 +2,22 @@
 title: Quick start voor OIDC node. js-Web-App van micro soft Identity platform | Azure
 description: Meer informatie over het implementeren van verificatie in een node. js-webtoepassing met behulp van OpenID Connect Connect.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ac3344fe16d24ae116a5fde289421998f11f18
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d8a73193a4e43ad4c91e23534898d003a310dff5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178044"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920596"
 ---
 # <a name="quickstart-add-sign-in-using-oidc-to-a-nodejs-web-app"></a>Snelstartgids: aanmelden toevoegen met behulp van OIDC aan een node. js-web-app
 
@@ -76,7 +71,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 
 Vervolgens kloont u de voor beeld-opslag plaats en installeert u de NPM-modules.
 
-Vanuit de shell of de opdracht regel:
+Vanuit de shell of vanaf de opdrachtregel:
 
 `$ git clone git@github.com:AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git`
 
@@ -106,7 +101,7 @@ De standaard sessie opslag in dit voor beeld is `express-session`. De standaard 
 
 * Werk `exports.databaseUri`bij als u mongoDB-sessie archief en een andere data base-URI wilt gebruiken.
 
-* `exports.mongoDBSessionMaxAge`bijwerken. Hier kunt u opgeven hoe lang u een sessie in mongoDB wilt blijven gebruiken. De eenheid is seconde (n).
+* Update `exports.mongoDBSessionMaxAge`. Hier kunt u opgeven hoe lang u een sessie in mongoDB wilt blijven gebruiken. De eenheid is seconde (n).
 
 ## <a name="build-and-run-the-application"></a>De toepassing bouwen en uitvoeren.
 

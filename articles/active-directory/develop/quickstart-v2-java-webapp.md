@@ -2,25 +2,21 @@
 title: Snelstartgids voor Java-Web-apps voor micro soft Identity platform | Azure
 description: Meer informatie over het implementeren van micro soft-aanmelding in een Java-Web-app met behulp van OpenID Connect Connect
 services: active-directory
-documentationcenter: dev-center-name
 author: sangonzal
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 6645fa30772d7e1556f7a1aae76c7189577c3c1d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 1a5401ee76f60c9b9c2a75561cad8f6571d3b308
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452614"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920698"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Snelstartgids: aanmelden toevoegen met micro soft aan een Java-Web-app
 
@@ -40,7 +36,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 - Een Azure Active Directory-Tenant (Azure AD). Zie [een Azure AD-Tenant verkrijgen](https://azure.microsoft.com/documentation/articles/active-directory-howto-tenant/)voor meer informatie over het verkrijgen van een Azure AD-Tenant.
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-app"></a>De snelstart-app registreren en downloaden
+> ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
 > U hebt twee opties om uw Quick Start-toepassing te starten: Express (optie 1) of hand matig (optie 2)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: de app registreren en automatisch configureren, en vervolgens de voorbeeldcode downloaden
@@ -49,19 +45,19 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 > 1. Voer een naam in voor de toepassing en selecteer **Registreren**.
 > 1. Volg de instructies om uw nieuwe toepassing te downloaden en automatisch te configureren.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: registreer de toepassing en configureer handmatig de toepassing en het codevoorbeeld
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: de toepassing en voorbeeldcode registreren en handmatig configureren
 >
 > #### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 >
 > Volg deze stappen om de toepassing te registreren en de registratiegegevens van de app handmatig toe te voegen aan uw oplossing:
 >
 > 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-> 1. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u de portalsessie in op de gewenste Azure Active Directory-tenant.
+> 1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
 >
 > 1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](/azure/active-directory/develop/) .
 > 1. Selecteer **nieuwe registratie**.
 > 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
->    - Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die zichtbaar is voor gebruikers van de app. Bijvoorbeeld: `java-webapp`.
+>    - Voer in de sectie **Naam** een beschrijvende toepassingsnaam. Deze wordt zichtbaar voor gebruikers van de app. Bijvoorbeeld: `java-webapp`.
 >    - Laat de **omleidings-URI** nu leeg en selecteer **registreren**.
 > 1. Zoek op de pagina **overzicht** de **client-id** van de toepassing en de id van de **Directory (Tenant)** van de toepassing. Kopieer deze waarden voor later.
 > 1. Selecteer de **verificatie** in het menu en voeg de volgende gegevens toe:
@@ -93,7 +89,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 
 #### <a name="step-3-configure-the-code-sample"></a>Stap 3: het code voorbeeld configureren
 
- 1. Pak het zip-bestand uit naar een lokale map.
+ 1. Pak het zipbestand uit in een lokale map.
  1. Als u een Integrated Development Environment gebruikt, opent u het voor beeld in uw favoriete IDE (optioneel).
 
  1. Open het bestand Application. Properties, dat u kunt vinden in src/main/resources/folder en vervang de waarde van de velden *Aad. clientId*, *Aad. Authority* en *Aad. secretKey* met de respectieve waarden van de **toepassings-id**, **Tenant-id** en **client geheim** als volgt:

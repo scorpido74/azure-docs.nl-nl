@@ -1,28 +1,24 @@
 ---
-title: Gebruikers aanmelden en een toegangs token verkrijgen in een Java script-SPA | Azure
+title: Gebruikers aanmelden in Java script-apps met één pagina | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over hoe Java script-toepassingen een API kunnen aanroepen die toegangs tokens vereist met behulp van micro soft Identity platform.
+description: Meer informatie over hoe een Java script-app een API kan hebben die toegangs tokens vereist met het micro soft Identity-platform.
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ca9a8b87713508a581a833f60fbe863fd93919a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 77763ac30b4ba98e4849a25690302469843b4d06
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795617"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920630"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Snelstartgids: gebruikers aanmelden en een toegangs token verkrijgen in een Java script-beveiligd-wachtwoord verificatie
 
@@ -80,11 +76,12 @@ Selecteer de optie die geschikt is voor uw ontwikkel omgeving:
 
 * Beschrijving Als u het project wilt uitvoeren met de IIS-server, [downloadt u het Visual Studio-project](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip). Pak het zip-bestand uit naar een lokale map (bijvoorbeeld *C:\Azure-samples*).
 
-> [!div renderon="docs"]
-> #### <a name="step-3-configure-your-javascript-app"></a>Stap 3: uw Java script-app configureren
-> Bewerk in de map *JavaScriptSPA* *index. html*en stel de waarden `clientID` en `authority` onder `msalConfig`in.
+#### <a name="step-3-configure-your-javascript-app"></a>Stap 3: uw Java script-app configureren
 
 > [!div renderon="docs"]
+> Bewerk in de map *JavaScriptSPA* *index. html*en stel de waarden `clientID` en `authority` onder `msalConfig`in.
+
+> [!div class="sxs-lookup" renderon="portal"]
 > Bewerk in de map *JavaScriptSPA* *index. html*en vervang `msalConfig` door de volgende code:
 
 ```javascript
@@ -101,11 +98,15 @@ var msalConfig = {
 };
 
 ```
+> [!div renderon="portal"]
+> > [!NOTE]
+> > Deze Quick Start ondersteunt Enter_the_Supported_Account_Info_Here.
+
 
 > [!div renderon="docs"]
 >
 > Waar:
-> - *\<Enter_the_Application_Id_here >* de **client-id** is voor de toepassing die u hebt geregistreerd.
+> - *\<Enter_the_Application_Id_here >* de **client-id** is van de toepassing die u hebt geregistreerd.
 > - *\<Enter_the_Tenant_info_here >* is ingesteld op een van de volgende opties:
 >    - Als uw toepassing *accounts in deze organisatie Directory*ondersteunt, vervangt u deze waarde door de **Tenant-id** of **Tenant naam** (bijvoorbeeld *contoso.Microsoft.com*).
 >    - Als uw toepassing *accounts in een organisatorische Directory*ondersteunt, vervangt u deze waarde door **organisaties**.
@@ -115,12 +116,7 @@ var msalConfig = {
 > > Om de waarden van **Toepassings-id (client-id)** , **Map-id (tenant-id)** en **Ondersteunde accounttypen** te achterhalen, gaat u naar de **Overzichtspagina** van de app in de Azure-portal.
 >
 
-> [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Stap 3: uw app is geconfigureerd en klaar om te worden uitgevoerd
-> Uw project is geconfigureerd met waarden van de eigenschappen van uw app. 
-
-> [!div renderon="docs"]
-> #### <a name="step-4-run-the-project"></a>Stap 4: het project uitvoeren
+#### <a name="step-4-run-the-project"></a>Stap 4: het project uitvoeren
 
 * Als u [node. js](https://nodejs.org/en/download/)gebruikt:
 
@@ -145,7 +141,7 @@ Nadat de toepassing door de browser is geladen, selecteert u **Aanmelden**. De e
 
 ![Hoe de voor beeld-app in deze Snelstartgids werkt](media/quickstart-v2-javascript/javascriptspa-intro.svg)
 
-### <a name="msaljs"></a>msal. js
+### <a name="msaljs"></a>msal.js
 
 De MSAL-bibliotheek ondertekent gebruikers en vraagt de tokens aan die worden gebruikt voor toegang tot een API die wordt beveiligd door micro soft Identity platform. Het bestand Quick Start *index. html* bevat een verwijzing naar de bibliotheek:
 
@@ -277,7 +273,7 @@ Zie voor een gedetailleerde stapsgewijze hand leiding voor het bouwen van de toe
 Als u wilt zoeken in de MSAL-opslag plaats op documentatie, veelgestelde vragen, problemen en meer, raadpleegt u:
 
 > [!div class="nextstepaction"]
-> [MSAL. js GitHub opslag plaats](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+> [MSAL.js GitHub repo](https://github.com/AzureAD/microsoft-authentication-library-for-js)
 
 Help ons het micro soft Identity-platform te verbeteren. Vertel ons wat u denkt door een korte enquête met twee vragen te volt ooien.
 
