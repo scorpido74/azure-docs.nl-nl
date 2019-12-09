@@ -170,6 +170,8 @@
       items:
         - name: Handleiding voor het oplossen van problemen
           href: event-hubs-messaging-exceptions.md
+        - name: Uitzonderingen voor Resource Manager
+          href: resource-manager-exceptions.md
 - name: Naslaginformatie
   items:
     - name: Java

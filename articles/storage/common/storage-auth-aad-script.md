@@ -1,20 +1,21 @@
 ---
-title: Voer Azure CLI-of Power shell-opdrachten uit met Azure AD-referenties om toegang te krijgen tot BLOB-of wachtrij gegevens | Microsoft Docs
+title: Voer Azure CLI-of Power shell-opdrachten uit met Azure AD-referenties om toegang te krijgen tot BLOB-of wachtrij gegevens
+titleSuffix: Azure Storage
 description: Azure CLI en Power shell ondersteunen het aanmelden met Azure AD-referenties om opdrachten uit te voeren op Azure Storage Blob-en Queue-gegevens. Er wordt een toegangs token voor de sessie gegeven en gebruikt om aanroepende bewerkingen te autoriseren. De machtigingen zijn afhankelijk van de RBAC-rol die is toegewezen aan de Azure AD-beveiligings-principal.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 07/03/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e1c7f4531dee8673cc5b6dfe675e4c793144931e
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 07abb9d604c14a5c78a088cb07f57088b84552a6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671087"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891861"
 ---
 # <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Voer Azure CLI-of Power shell-opdrachten uit met Azure AD-referenties om toegang te krijgen tot BLOB-of wachtrij gegevens
 
@@ -26,26 +27,26 @@ U kunt machtigingen toewijzen aan Blob-en wachtrij gegevens aan een Azure AD-bev
 
 De uitbrei dingen worden ondersteund voor bewerkingen op containers en wacht rijen. Welke bewerkingen u kunt aanroepen, is afhankelijk van de machtigingen die zijn verleend aan de Azure AD-beveiligings-principal waarmee u zich aanmeldt bij Azure CLI of Power shell. Machtigingen voor het Azure Storage van containers of wacht rijen worden toegewezen via op rollen gebaseerd toegangs beheer (RBAC). Als u bijvoorbeeld de rol **BLOB data Reader** hebt toegewezen, kunt u script opdrachten uitvoeren die gegevens uit een container of wachtrij lezen. Als u de rol **BLOB data contributor** hebt toegewezen, kunt u script opdrachten uitvoeren die een container of wachtrij lezen, schrijven of verwijderen, of de gegevens die ze bevatten. 
 
-Zie [opslag bewerkingen aanroepen met OAuth](https://docs.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)-tokens voor meer informatie over de vereiste machtigingen voor elke Azure Storage bewerking in een container of wachtrij.  
+Zie [opslag bewerkingen aanroepen met OAuth-tokens](https://docs.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)voor meer informatie over de vereiste machtigingen voor elke Azure Storage bewerking in een container of wachtrij.  
 
 ## <a name="call-cli-commands-using-azure-ad-credentials"></a>CLI-opdrachten aanroepen met Azure AD-referenties
 
-Azure cli ondersteunt de `--auth-mode` para meter voor Blob-en wachtrij gegevens bewerkingen:
+Azure CLI ondersteunt de para meter `--auth-mode` voor Blob-en wachtrij gegevens bewerkingen:
 
-- Stel de `--auth-mode` `login` para meter in om u aan te melden met een Azure AD-beveiligings-principal.
-- Stel de `--auth-mode` para meter in op `key` de oude waarde om te proberen een query uit te voeren voor een account sleutel als er geen verificatie parameters voor het account worden opgegeven. 
+- Stel de `--auth-mode`-para meter in op `login` om u aan te melden met een Azure AD-beveiligings-principal.
+- Stel de para meter `--auth-mode` in op de verouderde `key` waarde om te proberen een query uit te voeren voor een account sleutel als er geen verificatie parameters voor het account worden opgegeven. 
 
 In het volgende voor beeld ziet u hoe u een container maakt in een nieuw opslag account vanuit Azure CLI met behulp van uw Azure AD-referenties. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden: 
 
 1. Zorg ervoor dat u Azure CLI-versie 2.0.46 of hoger hebt geïnstalleerd. Voer `az --version` uit om de geïnstalleerde versie te controleren.
 
-1. Uitvoeren `az login` en verifiëren in het browser venster: 
+1. Voer `az login` uit en verifieer de verificatie in het browser venster: 
 
     ```azurecli
     az login
     ```
 
-1. Geef het gewenste abonnement op. Maak een resourcegroep met de opdracht [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create). Maak een opslag account in die resource groep met [AZ Storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create):
+1. Geef het gewenste abonnement op. Maak een resourcegroep met [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create). Maak een opslag account in die resource groep met [AZ Storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create):
 
     ```azurecli
     az account set --subscription <subscription-id>
@@ -62,12 +63,12 @@ In het volgende voor beeld ziet u hoe u een container maakt in een nieuw opslag 
         --encryption-services blob
     ```
 
-1. Voordat u de container maakt, moet u de rol voor blobgegevens van de [opslag](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) toewijzen aan uzelf. Hoewel u de eigenaar van het account bent, hebt u expliciete machtigingen nodig om gegevens bewerkingen uit te voeren op het opslag account. Zie voor meer informatie over het toewijzen van RBAC-rollen [toegang verlenen aan Azure Blob en gegevens wachtrij met RBAC in het Azure Portal](storage-auth-aad-rbac.md).
+1. Voordat u de container maakt, moet u de rol voor [blobgegevens](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) van de opslag toewijzen aan uzelf. Hoewel u de eigenaar van het account bent, hebt u expliciete machtigingen nodig om gegevens bewerkingen uit te voeren op het opslag account. Zie voor meer informatie over het toewijzen van RBAC-rollen [toegang verlenen aan Azure Blob en gegevens wachtrij met RBAC in het Azure Portal](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
     > RBAC-roltoewijzingen kunnen enkele minuten duren voordat deze wordt door gegeven.
 
-1. Roep de opdracht [AZ storage container Create](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) aan met `--auth-mode` de para meter `login` ingesteld op om de container te maken met uw Azure AD-referenties:
+1. Roep de opdracht [AZ storage container Create](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) aan met de para meter `--auth-mode` ingesteld op `login` om de container te maken met uw Azure AD-referenties:
 
     ```azurecli
     az storage container create \ 
@@ -76,7 +77,7 @@ In het volgende voor beeld ziet u hoe u een container maakt in een nieuw opslag 
         --auth-mode login
     ```
 
-De omgevings variabele die aan `--auth-mode` de para `AZURE_STORAGE_AUTH_MODE`meter is gekoppeld, is. U kunt de juiste waarde opgeven in de omgevings variabele om te voor komen dat deze wordt opgenomen bij elke aanroep van een Azure Storage gegevens bewerking.
+De omgevings variabele die aan de para meter `--auth-mode` is gekoppeld, is `AZURE_STORAGE_AUTH_MODE`. U kunt de juiste waarde opgeven in de omgevings variabele om te voor komen dat deze wordt opgenomen bij elke aanroep van een Azure Storage gegevens bewerking.
 
 ## <a name="call-powershell-commands-using-azure-ad-credentials"></a>Power shell-opdrachten aanroepen met Azure AD-referenties
 
@@ -111,13 +112,13 @@ In het volgende voor beeld ziet u hoe u een container maakt in een nieuw opslag 
       -Location $location `
     ```
 
-1. Haal de context van het opslag account op waarmee het nieuwe opslag account wordt opgegeven door [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext)aan te roepen. Wanneer u op een opslag account werkt, kunt u naar de context verwijzen in plaats van herhaaldelijk de referenties door te geven. Neem de `-UseConnectedAccount` para meter op voor het aanroepen van volgende gegevens bewerkingen met uw Azure AD-referenties:
+1. Haal de context van het opslag account op waarmee het nieuwe opslag account wordt opgegeven door [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext)aan te roepen. Wanneer u op een opslag account werkt, kunt u naar de context verwijzen in plaats van herhaaldelijk de referenties door te geven. Neem de para meter `-UseConnectedAccount` op voor het aanroepen van volgende gegevens bewerkingen met uw Azure AD-referenties:
 
     ```powershell
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
     ```
 
-1. Voordat u de container maakt, moet u de rol voor blobgegevens van de [opslag](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) toewijzen aan uzelf. Hoewel u de eigenaar van het account bent, hebt u expliciete machtigingen nodig om gegevens bewerkingen uit te voeren op het opslag account. Zie voor meer informatie over het toewijzen van RBAC-rollen [toegang verlenen aan Azure Blob en gegevens wachtrij met RBAC in het Azure Portal](storage-auth-aad-rbac.md).
+1. Voordat u de container maakt, moet u de rol voor [blobgegevens](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) van de opslag toewijzen aan uzelf. Hoewel u de eigenaar van het account bent, hebt u expliciete machtigingen nodig om gegevens bewerkingen uit te voeren op het opslag account. Zie voor meer informatie over het toewijzen van RBAC-rollen [toegang verlenen aan Azure Blob en gegevens wachtrij met RBAC in het Azure Portal](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
     > RBAC-roltoewijzingen kunnen enkele minuten duren voordat deze wordt door gegeven.

@@ -51,6 +51,10 @@
       href: concepts-custom-role-definition.md
     - name: Onboarding van resources
       href: concepts-custom-providers-resourceonboarding.md
+    - name: Azure Policy voor aangepaste providerkoppelingen
+      href: concepts-custom-providers-built-in-policy.md
+    - name: Azure Policy voor beheerde toepassingskoppelingen
+      href: concepts-managed-applications-built-in-policy.md
 - name: Handleidingen
   items:
     - name: Aangepaste providers

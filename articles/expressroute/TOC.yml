@@ -26,7 +26,7 @@
           href: expressroute-locations-providers.md
         - name: Locaties per provider
           href: expressroute-locations.md
-    - name: Virtuele netwerkgateway en FastPath
+    - name: Over virtuele netwerkgateways
       href: expressroute-about-virtual-network-gateways.md
     - name: Vereisten
       href: expressroute-prerequisites.md
@@ -40,6 +40,8 @@
       href: expressroute-qos.md
     - name: Circuits verplaatsen van het klassieke model naar Resource Manager
       href: expressroute-move.md
+    - name: Over ExpressRoute FastPath
+      href: about-fastpath.md
     - name: Over ExpressRoute Direct
       href: expressroute-erdirect-about.md
     - name: Over ExpressRoute Global Reach

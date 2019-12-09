@@ -1,24 +1,25 @@
 ---
-title: Gebruik de Azure Portal voor het beheren van Azure AD-toegangs rechten voor Blob-en wachtrij gegevens met RBAC-Azure Storage | Microsoft Docs
-description: Gebruik op rollen gebaseerd toegangs beheer (RBAC) van de Azure Portal om toegang toe te wijzen aan containers en wacht rijen aan beveiligings-principals. Azure Storage ondersteunt ingebouwde en aangepaste RBAC-rollen voor verificatie via Azure AD.
+title: De Azure Portal gebruiken om een RBAC-rol toe te wijzen voor gegevens toegang
+titleSuffix: Azure Storage
+description: Meer informatie over het gebruik van de Azure Portal om machtigingen toe te wijzen aan een Azure Active Directory-beveiligingsprincipal met op rollen gebaseerd toegangs beheer (RBAC). Azure Storage ondersteunt ingebouwde en aangepaste RBAC-rollen voor verificatie via Azure AD.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 07/25/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b11b2c42087b8724c7d90b87bc33965eb7270dc6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e1544303ee7b792a00f7afb57fe62b7b86a300f8
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422002"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891946"
 ---
-# <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-in-the-azure-portal"></a>Toegang verlenen tot Azure Blob-en wachtrij gegevens met RBAC in het Azure Portal
+# <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>De Azure Portal gebruiken om een RBAC-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens
 
-Met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via [op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md). Azure Storage definieert een set ingebouwde RBAC-rollen die algemene sets machtigingen omvatten die worden gebruikt voor toegang tot BLOB-of wachtrij gegevens. 
+Met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via [op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md). Azure Storage definieert een set ingebouwde RBAC-rollen die algemene sets machtigingen omvatten die worden gebruikt voor toegang tot BLOB-of wachtrij gegevens.
 
 Wanneer een RBAC-rol is toegewezen aan een Azure AD-beveiligings-principal, verleent Azure toegang tot de resources voor die beveiligings-principal. De toegang kan worden beperkt tot het niveau van het abonnement, de resource groep, het opslag account of een afzonderlijke container of wachtrij. Een beveiligings-principal voor Azure AD kan een gebruiker, een groep, een service-principal van de toepassing of een [beheerde identiteit voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)zijn.
 
@@ -83,7 +84,7 @@ Als uw gebruikers toegang moeten hebben tot blobs in de Azure Portal, wijst u he
 
 Volg deze stappen om de rol van **lezer** toe te wijzen, zodat een gebruiker toegang heeft tot de blobs van de Azure Portal. In dit voor beeld is de toewijzing het bereik van het opslag account:
 
-1. Navigeer in het [Azure Portal](https://portal.azure.com)naar uw opslag account.
+1. Ga in [Azure Portal](https://portal.azure.com) naar uw opslagaccount.
 1. Selecteer **toegangs beheer (IAM)** om de instellingen voor toegangs beheer voor het opslag account weer te geven. Selecteer het **tabblad roltoewijzingen om de lijst** met roltoewijzingen weer te geven.
 1. Selecteer de rol **lezer** in het venster **roltoewijzing toevoegen** . 
 1. Selecteer in het veld **toegang toewijzen aan** de optie **Azure AD-gebruiker,-groep of-Service-Principal**.

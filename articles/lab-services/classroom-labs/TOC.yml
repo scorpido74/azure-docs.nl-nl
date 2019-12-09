@@ -72,6 +72,8 @@
           href: how-to-enable-remote-desktop-linux.md
         - name: Geneste virtualisatie inschakelen in een sjabloon-VM
           href: how-to-enable-nested-virtualization-template-vm.md
+        - name: Een VM met Windows-sjabloon voorbereiden
+          href: how-to-prepare-windows-template.md
     - name: Verbinding maken met VM's in leslokaallabs (student)
       items:
         - name: Leslokaallabs openen

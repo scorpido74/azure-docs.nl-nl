@@ -1,6 +1,6 @@
 ---
-title: Maak een Azure Media Services-taak van een HTTPS-URL | Microsoft Docs
-description: In dit onderwerp laat zien hoe de Taakinvoer van een maken via een URL voor HTTP (s).
+title: Een Azure Media Services taak invoer maken op basis van een HTTPS-URL | Microsoft Docs
+description: In dit onderwerp ziet u hoe u een Azure Media Services taak invoer maakt op basis van een HTTPS-URL.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,23 +11,23 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: juliako
-ms.openlocfilehash: f6eee912bb3bba112bd13969f1a8d9cb5748e387
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a3d4568dd237491f28ae2880bdd78dd236870c3f
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413819"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899831"
 ---
-# <a name="create-a-job-input-from-an-https-url"></a>De Taakinvoer van een maken van een HTTPS-URL
+# <a name="create-a-job-input-from-an-https-url"></a>Een taak invoer maken op basis van een HTTPS-URL
 
-Wanneer u in Media Services v3 taken verzendt voor het verwerken van uw video's, moet u aan Media Services de locatie van de invoervideo doorgeven. Een van de opties is dat u een HTTPS-URL als taakinvoer opgeeft (zoals in dit voorbeeld). Op dit moment biedt AMS v3 geen ondersteuning voor gesegmenteerde overdrachtscodering via HTTPS-URL's. Zie voor een compleet voorbeeld [GitHub voorbeeld](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs).
+Wanneer u in Media Services v3 taken verzendt voor het verwerken van uw video's, moet u aan Media Services de locatie van de invoervideo doorgeven. Een van de opties is dat u een HTTPS-URL als taakinvoer opgeeft (zoals in dit voorbeeld). Op dit moment biedt AMS v3 geen ondersteuning voor gesegmenteerde overdrachtscodering via HTTPS-URL's. Voor een volledig voor beeld raadpleegt u dit [github voor beeld](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs).
 
 > [!TIP]
-> Controleer voordat u begint met het ontwikkelen, [ontwikkelen met Media Services v3 API's](media-services-apis-overview.md) (bevat informatie over het verkrijgen van toegang tot API's voor naamgeving, enz.)
+> Controleer voordat u begint met het ontwikkelen [met behulp van Media Services v3 api's](media-services-apis-overview.md) (bevat informatie over het openen van api's, naam conventies, enzovoort).
 
-## <a name="net-sample"></a>.NET-voorbeeld
+## <a name="net-sample"></a>.NET-voor beeld
 
-De volgende code toont hoe u een taak maken met een HTTPS-URL invoeren.
+De volgende code laat zien hoe u een taak met een HTTPS-URL-invoer maakt.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-quickstarts/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs#SubmitJob)]
 
@@ -37,4 +37,4 @@ Zie [Foutcodes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[De Taakinvoer van een maken vanuit een lokaal bestand](job-input-from-local-file-how-to.md).
+[Een taak invoer maken op basis van een lokaal bestand](job-input-from-local-file-how-to.md).

@@ -15,6 +15,8 @@
       items:
         - name: Een zoekindex maken
           href: search-get-started-portal.md
+        - name: Een app maken (preview)
+          href: search-create-app-portal.md
         - name: Een cognitieve-vaardighedenset maken
           href: cognitive-search-quickstart-blob.md
         - name: Een Knowledge Store maken
@@ -303,6 +305,8 @@
           href: search-manage-powershell.md
         - name: Activiteit en logboekregistratie bewaken
           href: search-monitor-usage.md
+        - name: Analyse zoekverkeer
+          href: search-traffic-analytics.md
     - name: Problemen oplossen
       items:
         - name: Indexeringsproblemen

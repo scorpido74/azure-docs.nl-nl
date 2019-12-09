@@ -151,6 +151,8 @@
               href: ../common/storage-use-azcopy-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
             - name: 'Configureren, optimaliseren, problemen oplossen'
               href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: Gegevens overdragen met de bibliotheek voor gegevensverplaatsing
+              href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Ontwikkelen
       items:
         - name: Verbindingsreeksen configureren

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 92de47041791c8b6c540844adb62391268b81c34
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 83b91be52694076373d950e0ad785ef22671ef4f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200503"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894517"
 ---
 # <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure-resource logboeken verzamelen in Log Analytics werk ruimte in Azure Monitor
 [Resource logboeken](resource-logs-overview.md) in azure bieden uitgebreide, frequente gegevens over de interne werking van een Azure-resource. In dit artikel wordt beschreven hoe u bron logboeken verzamelt in een Log Analytics-werk ruimte, waarmee u het kunt analyseren met andere bewakings gegevens die zijn verzameld in Azure Monitor logboeken met behulp van krachtige logboek query's en ook om gebruik te maken van andere Azure Monitor functies, zoals waarschuwingen en visualisaties. 
@@ -51,14 +51,14 @@ Bekijk het volgende voor beeld waarin Diagnostische instellingen worden verzamel
 
 De tabel AzureDiagnostics ziet er als volgt uit:  
 
-| ResourceProvider    | Category     | A  | B  | C  | D  | &  | F  | G  | H  | I  |
+| ResourceProvider    | Category     | A  | B  | C  | D  | E  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| Micro soft. Service1 | Audit logs bevat    | x1 | Y1 | z1 |    |    |    |    |    |    |
-| Micro soft. Service1 | ErrorLogs    |    |    |    | eerste | W1 | E1 |    |    |    |
-| Micro soft. Service2 | Audit logs bevat    |    |    |    |    |    |    | j1 | K1 | L1 |
-| Micro soft. Service1 | ErrorLogs    |    |    |    | inclusief | Box | E2 |    |    |    |
-| Micro soft. Service2 | Audit logs bevat    |    |    |    |    |    |    | j3 | k3 | L3 |
-| Micro soft. Service1 | Audit logs bevat    | x5 | y5 waardeveld | z5 |    |    |    |    |    |    |
+| Micro soft. Service1 | Audit logs bevat    | x1 | y1 | z1 |    |    |    |    |    |    |
+| Micro soft. Service1 | ErrorLogs    |    |    |    | q1 | W1 | e1 |    |    |    |
+| Micro soft. Service2 | Audit logs bevat    |    |    |    |    |    |    | j1 | k1 | l1 |
+| Micro soft. Service1 | ErrorLogs    |    |    |    | q2 | w2 | e2 |    |    |    |
+| Micro soft. Service2 | Audit logs bevat    |    |    |    |    |    |    | j3 | k3 | l3 |
+| Micro soft. Service1 | Audit logs bevat    | x5 | y5 | z5 |    |    |    |    |    |    |
 | ... |
 
 ### <a name="resource-specific"></a>Resource-specifiek
@@ -70,24 +70,24 @@ Het bovenstaande voor beeld resulteert in het maken van drie tabellen:
 
     | Resource provider | Category | A | B | C |
     | -- | -- | -- | -- | -- |
-    | Service1 | Audit logs bevat | x1 | Y1 | z1 |
-    | Service1 | Audit logs bevat | x5 | y5 waardeveld | z5 |
+    | Service1 | Audit logs bevat | x1 | y1 | z1 |
+    | Service1 | Audit logs bevat | x5 | y5 | z5 |
     | ... |
 
 - Tabel *Service1ErrorLogs* als volgt:  
 
-    | Resource provider | Category | D | & | F |
+    | Resource provider | Category | D | E | F |
     | -- | -- | -- | -- | -- | 
-    | Service1 | ErrorLogs |  eerste | W1 | E1 |
-    | Service1 | ErrorLogs |  inclusief | Box | E2 |
+    | Service1 | ErrorLogs |  q1 | W1 | e1 |
+    | Service1 | ErrorLogs |  q2 | w2 | e2 |
     | ... |
 
 - Tabel *Service2AuditLogs* als volgt:  
 
     | Resource provider | Category | G | H | I |
     | -- | -- | -- | -- | -- |
-    | Service2 | Audit logs bevat | j1 | K1 | L1|
-    | Service2 | Audit logs bevat | j3 | k3 | L3|
+    | Service2 | Audit logs bevat | j1 | k1 | l1|
+    | Service2 | Audit logs bevat | j3 | k3 | l3|
     | ... |
 
 
@@ -110,7 +110,7 @@ Ga door met het bekijken van [Azure updates](https://azure.microsoft.com/updates
 ### <a name="column-limit-in-azurediagnostics"></a>Kolom limiet in AzureDiagnostics
 Er is een limiet van 500 eigenschappen voor een tabel in Azure Monitor Logboeken. Zodra deze limiet is bereikt, worden alle rijen met gegevens die zich buiten de eerste 500 bevinden, verwijderd op de opname tijd. De *AzureDiagnostics* -tabel is met name vatbaar voor deze limiet omdat deze eigenschappen bevat voor alle Azure-Services die ernaar schrijven.
 
-Als u Diagnostische logboeken van meerdere services verzamelt, kan _AzureDiagnostics_ deze limiet overschrijden en worden de gegevens gemist. Totdat alle Azure-Services ondersteuning bieden voor de resource-specifieke modus, moet u bronnen zo configureren dat deze naar meerdere werk ruimten schrijven om de kans te verkleinen dat de limiet van 500 kolommen wordt bereikt.
+Als u bron logboeken verzamelt van meerdere services, overschrijden _AzureDiagnostics_ mogelijk deze limiet en worden de gegevens niet geregistreerd. Totdat alle Azure-Services ondersteuning bieden voor de resource-specifieke modus, moet u bronnen zo configureren dat deze naar meerdere werk ruimten schrijven om de kans te verkleinen dat de limiet van 500 kolommen wordt bereikt.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 Azure Data Factory, vanwege een zeer gedetailleerde set logboeken, is een service waarvan bekend is dat ze een groot aantal kolommen schrijven, waardoor het mogelijk is dat _AzureDiagnostics_ de limiet overschrijdt. Voor alle diagnostische instellingen die zijn geconfigureerd voordat de resource-specifieke modus werd ingeschakeld, wordt er een nieuwe kolom gemaakt voor elke unieke benoemde gebruikers parameter voor elke activiteit. Er worden meer kolommen gemaakt vanwege de uitgebreide aard van de activiteit invoer en uitvoer.

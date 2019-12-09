@@ -1,7 +1,7 @@
 ---
 title: Gebruik tijd verschuivingen en live uitvoer om video weergave op aanvraag te maken
 titleSuffix: Azure Media Services
-description: Meer informatie over hoe u tijd verschuiving en live output kunt gebruiken om live streams vast te leggen en op aanvraag af te spelen.
+description: In dit artikel wordt beschreven hoe u gebruik kunt maken van tijd verschuivingen en live uitvoer om live streams vast te leggen en op aanvraag af te spelen.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 08/27/2019
 ms.author: juliako
-ms.openlocfilehash: acba251a57f39c07d690d0c55665b8914feaf06c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4c7618b60e5fd86a9b8b3f22fb3333c00cfdfa61
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186228"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899798"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>Gebruik tijd verschuivingen en live uitvoer om video weergave op aanvraag te maken
 
@@ -45,7 +45,7 @@ Zelfs nadat u de gebeurtenis hebt gestopt en verwijderd, kunnen gebruikers de ge
 
 Als u het activum van uw live uitvoer hebt gepubliceerd met behulp van een streaming-Locator, blijft de live-gebeurtenis (tot de lengte van het DVR-venster) zichtbaar totdat het verloop of de verwijdering van de streaming-Locator, afhankelijk van wat het eerste komt.
 
-Ga voor meer informatie naar:
+Zie voor meer informatie:
 
 - [Overzicht van live streamen](live-streaming-overview.md)
 - [Zelf studie over live streamen](stream-live-tutorial-with-api.md)

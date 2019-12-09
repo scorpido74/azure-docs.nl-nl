@@ -1,22 +1,23 @@
 ---
-title: Toegang verlenen tot Azure-blobs en-wacht rijen met Azure Active Directory | Microsoft Docs
+title: Toegang verlenen tot blobs en wacht rijen met behulp van Active Directory
+titleSuffix: Azure Storage
 description: De toegang tot Azure-blobs en-wacht rijen met Azure Active Directory autoriseren.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/02/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: aed61e5cf32ed0148e8b9eee6edf44daa03acd17
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 445d98ab07a91b056d4cf747f7c0f4cf1cdf9d53
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598113"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891810"
 ---
-# <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Toegang tot Azure-blobs en-wacht rijen toestaan met Azure Active Directory
+# <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Toegang verlenen tot blobs en wacht rijen met behulp van Azure Active Directory
 
 Azure Storage ondersteunt het gebruik van Azure Active Directory (AD) om aanvragen voor Blob-en wachtrij opslag te autoriseren. Met Azure AD kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen toe te kennen aan een beveiligingsprincipal. Dit kan een gebruiker, groep of toepassings Service-Principal zijn. De beveiligingsprincipal wordt door Azure AD geverifieerd om een OAuth 2,0-token te retour neren. Het token kan worden gebruikt voor het autoriseren van een aanvraag voor toegang tot een bron in BLOB-of queue-opslag.
 

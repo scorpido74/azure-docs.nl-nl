@@ -44,9 +44,6 @@
     - name: Klanten weergeven en beheren
       displayName: my customers
       href: ./how-to/view-manage-customers.md
-    - name: Serviceproviders weergeven en beheren
-      displayName: 'customer, update'
-      href: ./how-to/view-manage-service-providers.md
     - name: Integratie van Azure Policy
       items:
         - name: Een beleid op schaal implementeren
@@ -55,6 +52,14 @@
         - name: Beleid implementeren dat kan worden hersteld
           displayName: 'deployIfNotExists, modify, managed identities, managed identity'
           href: ./how-to/deploy-policy-remediation.md
+    - name: Klantacties
+      items:
+        - name: Serviceproviders weergeven en beheren
+          displayName: 'customer, update'
+          href: ./how-to/view-manage-service-providers.md
+        - name: Activiteit van serviceprovider bekijken
+          displayName: 'monitor, log'
+          href: ./how-to/view-service-provider-activity.md
 - name: Naslaginformatie
   items:
     - name: Azure-CLI

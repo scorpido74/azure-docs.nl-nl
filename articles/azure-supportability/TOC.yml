@@ -14,7 +14,7 @@
               href: per-vm-quota-requests.md
             - name: De algehele regionale vCPU-limiet verhogen
               href: regional-quota-requests.md
-            - name: Quotumlimiet met lage prioriteit verhogen
+            - name: Verhoging van quotumlimiet spotten
               href: low-priority-quota.md
         - name: Klassiek implementatiemodel
           href: classic-deployment-model-quota-increase-requests.md

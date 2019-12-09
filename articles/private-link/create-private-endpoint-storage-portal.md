@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bd3e33fde3f4249064bfbe1973ee95f680630673
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2a2a96a823867ea7700933c8253a0ba500b0e1cf
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851159"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899810"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Privé verbinding maken met een opslag account met behulp van een persoonlijk Azure-eind punt
 Persoonlijk Azure-eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hierdoor kunnen Azure-resources, zoals virtuele machines (Vm's), privé communiceren met persoonlijke koppelings bronnen.
@@ -132,7 +132,7 @@ In deze sectie maakt u een privé-opslag account met behulp van een persoonlijk 
     | Subnet | Selecteer *mySubnet*. |
     | **INTEGRATIE VAN PARTICULIERE DNS**|  |
     | Integreren met een privé-DNS-zone  | Accepteer de standaard waarde **Ja**. |
-    | Privé-DNS-zone  | Wijzig de standaard waarde * * (nieuw) privatelink.blob.core.windows.net * *. |
+    | Privé-DNS-zone  | Wijzig de standaard waarde voor **privatelink.blob.core.Windows.net (nieuw)** . |
     |||
 7. Selecteer **OK**. 
 8. Selecteer **Controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert. 
@@ -151,7 +151,7 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
 
 1. Selecteer **RDP-bestand downloaden**. Azure maakt een Remote Desktop Protocol-bestand ( *.rdp*) en downloadt het bestand naar uw computer.
 
-1. Open het bestand gedownloade. rdp *.
+1. Open het *gedownloade RDP* -bestand.
 
     1. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd.
 

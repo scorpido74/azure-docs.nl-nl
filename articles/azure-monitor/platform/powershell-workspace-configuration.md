@@ -1,39 +1,39 @@
 ---
-title: Power shell gebruiken voor het maken en configureren van een Log Analytics werkruimte | Microsoft Docs
-description: Log Analytics werk ruimten in Azure Monitor gegevens opslaan van servers in uw on-premises of Cloud infrastructuur. U kunt computer gegevens uit Azure Storage verzamelen wanneer deze worden gegenereerd door Azure Diagnostics.
+title: PowerShell gebruiken om te maken en configureren van een Log Analytics-werkruimte | Microsoft Docs
+description: Log Analytics werk ruimten in Azure Monitor gegevens opslaan van servers in uw on-premises of Cloud infrastructuur. U kunt gegevens van de machine verzamelen uit Azure storage wanneer die worden gegenereerd door Azure diagnostics.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/19/2019
-ms.openlocfilehash: 9d5bbaf02798c0fd87c40f1d952db19aac7b0b7e
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9404bbf0ad79df41b0b5960977d6605697da5df5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932078"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894570"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Log Analytics werk ruimte beheren in Azure Monitor met behulp van Power shell
 
-U kunt de [log Analytics Power shell-cmdlets](https://docs.microsoft.com/powershell/module/az.operationalinsights/) gebruiken om verschillende functies uit te voeren op een log Analytics werk ruimte in azure monitor vanaf een opdracht regel of als onderdeel van een script.  Voor beelden van de taken die u kunt uitvoeren met Power shell zijn:
+U kunt de [log Analytics Power shell-cmdlets](https://docs.microsoft.com/powershell/module/az.operationalinsights/) gebruiken om verschillende functies uit te voeren op een log Analytics werk ruimte in azure monitor vanaf een opdracht regel of als onderdeel van een script.  Voorbeelden van de taken die u met PowerShell uitvoeren kunt zijn:
 
 * Een werkruimte maken
-* Een oplossing toevoegen of verwijderen
-* Opgeslagen Zoek opdrachten importeren en exporteren
-* Een computer groep maken
-* Verzamelen van IIS-logboeken inschakelen op computers waarop de Windows-agent is geïnstalleerd
-* Prestatie meter items verzamelen van Linux-en Windows-computers
+* Toevoegen of verwijderen van een oplossing
+* Importeren en exporteren van opgeslagen zoekopdrachten
+* Een computergroep maken
+* Verzamelen van IIS-logboeken van computers met de Windows-agent is geïnstalleerd
+* Verzamelen van prestatiemeteritems van Linux en Windows-computers
 * Gebeurtenissen verzamelen van syslog op Linux-computers
-* Gebeurtenissen verzamelen van Windows-gebeurtenis logboeken
-* Aangepaste gebeurtenis logboeken verzamelen
-* De log Analytics-agent toevoegen aan een virtuele machine van Azure
-* Log Analytics configureren voor het indexeren van gegevens die zijn verzameld met Azure Diagnostics
+* Gebeurtenissen verzamelen van Windows-gebeurtenislogboeken
+* Aangepaste logboeken verzamelen
+* De log analytics-agent toevoegen aan een virtuele machine van Azure
+* Log analytics om gegevens te indexeren die zijn verzameld met behulp van Azure diagnostics configureren
 
-Dit artikel bevat twee code voorbeelden die een aantal functies illustreren die u vanuit Power shell kunt uitvoeren.  U kunt verwijzen naar de [log Analytics Power shell-cmdlet-verwijzing](https://docs.microsoft.com/powershell/module/az.operationalinsights/) voor andere functies.
+In dit artikel bevat twee codevoorbeelden van die illustratie van enkele van de functies die u vanuit PowerShell uitvoeren kunt.  U kunt verwijzen naar de [Log Analytics PowerShell-cmdlet-verwijzing](https://docs.microsoft.com/powershell/module/az.operationalinsights/) voor andere functies.
 
 > [!NOTE]
-> Log Analytics eerder Operational Insights is aangeroepen. Dit is de reden waarom het de naam is die wordt gebruikt in de cmdlets.
+> Log Analytics werd voorheen Operational Insights, die daarom is het de naam die wordt gebruikt in de cmdlets genoemd.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -41,20 +41,20 @@ Dit artikel bevat twee code voorbeelden die een aantal functies illustreren die 
 Deze voor beelden werken met versie 1.0.0 of hoger van de module AZ. OperationalInsights.
 
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a>Een Log Analytics-werk ruimte maken en configureren
-In het volgende voorbeeld script ziet u hoe u:
+## <a name="create-and-configure-a-log-analytics-workspace"></a>Maken en configureren van een Log Analytics-werkruimte
+Het volgende voorbeeldscript laat zien hoe u:
 
 1. Een werkruimte maken
-2. De beschik bare oplossingen weer geven
-3. Oplossingen toevoegen aan de werk ruimte
-4. Opgeslagen Zoek opdrachten importeren
-5. Opgeslagen Zoek opdrachten exporteren
-6. Een computer groep maken
-7. Verzamelen van IIS-logboeken inschakelen op computers waarop de Windows-agent is geïnstalleerd
-8. Prestatie meter items voor logische schijven verzamelen van Linux-computers (% used inodes; Beschik bare mega bytes; Percentage gebruikte ruimte; Schijf overdrachten per seconde; Schijf lezen per seconde; Schrijf bewerkingen per seconde)
+2. Lijst van de beschikbare oplossingen
+3. Oplossingen toevoegen aan de werkruimte
+4. Importeren opgeslagen zoekopdrachten
+5. Export opgeslagen zoekopdrachten
+6. Een computergroep maken
+7. Verzamelen van IIS-logboeken van computers met de Windows-agent is geïnstalleerd
+8. Verzamelen van prestatiemeteritems voor logische schijf van Linux-computers (% gebruikte Inodes Beschikbare Megabytes; Percentage gebruikte ruimte; Schijfoverdrachten per seconde; Schijf lezen per seconde; Schijf schrijven per seconde)
 9. Syslog-gebeurtenissen verzamelen van Linux-computers
-10. Fout-en waarschuwings gebeurtenissen verzamelen uit het toepassings gebeurtenis logboek van Windows-computers
-11. Het prestatie meter item geheugen beschik bare Mbytes verzamelen van Windows-computers
+10. Fout- en waarschuwingsberichten gebeurtenissen verzamelen van het logboek voor toepassingsgebeurtenissen van Windows-computers
+11. Beschikbaar geheugen in megabytes-prestatiemeteritem verzamelen van Windows-computers
 12. Een aangepast logboek verzamelen
 
 ```powershell
@@ -194,7 +194,7 @@ In het bovenstaande voor beeld is regexDelimiter gedefinieerd als '\\n ' voor ee
 | `yyyy-MM-ddTHH:mm:ss` <br> De T is een letterlijke letter T | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))T((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 
 ## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Log Analytics configureren voor het verzenden van Azure Diagnostics
-Voor bewaking zonder agents van Azure-resources moeten de resources Azure Diagnostics hebben ingeschakeld en geconfigureerd om te schrijven naar een Log Analytics-werk ruimte. Deze benadering verzendt gegevens rechtstreeks naar de werk ruimte en vereist niet dat gegevens naar een opslag account worden geschreven. Ondersteunde bronnen zijn:
+Voor bewaking zonder agent van Azure-resources, moeten de resources hebben van Azure diagnostics ingeschakeld en geconfigureerd voor het schrijven naar Log Analytics-werkruimte. Deze benadering verzendt gegevens rechtstreeks naar de werk ruimte en vereist niet dat gegevens naar een opslag account worden geschreven. Ondersteunde resources zijn onder andere:
 
 | Resourcetype | Logboeken | Metrische gegevens |
 | --- | --- | --- |
@@ -202,8 +202,8 @@ Voor bewaking zonder agents van Azure-resources moeten de resources Azure Diagno
 | Automation-accounts     | Ja | |
 | Batch-accounts          | Ja | Ja |
 | Data Lake Analytics     | Ja | |
-| Data Lake Store         | Ja | |
-| Elastische SQL-pool        |     | Ja |
+| Data Lake store         | Ja | |
+| Elastische SQL-groep        |     | Ja |
 | Event hub-naamruimte     |     | Ja |
 | IoT Hubs                |     | Ja |
 | Key Vault               | Ja | |
@@ -212,14 +212,14 @@ Voor bewaking zonder agents van Azure-resources moeten de resources Azure Diagno
 | Netwerkbeveiligingsgroepen | Ja | |
 | Azure Cache voor Redis             |     | Ja |
 | Services zoeken         | Ja | Ja |
-| Service Bus naam ruimte   |     | Ja |
-| SQL (V12)               |     | Ja |
+| Service Bus-naamruimte   |     | Ja |
+| SQL (v12)               |     | Ja |
 | Web Sites               |     | Ja |
-| Webserver farms        |     | Ja |
+| Web Server-farms        |     | Ja |
 
-Raadpleeg voor meer informatie over de beschik bare metrische gegevens de [ondersteunde metrische gegevens met Azure monitor](../../azure-monitor/platform/metrics-supported.md).
+Raadpleeg voor de details van de beschikbare metrische gegevens, [ondersteunde metrische gegevens met Azure Monitor](../../azure-monitor/platform/metrics-supported.md).
 
-Raadpleeg [ondersteunde services en schema's voor Diagnostische logboeken](../../azure-monitor/platform/diagnostic-logs-schema.md)voor meer informatie over de beschik bare Logboeken.
+Raadpleeg voor meer informatie over de beschik bare logboeken [ondersteunde services en schema's voor bron logboeken](../../azure-monitor/platform/diagnostic-logs-schema.md).
 
 ```powershell
 $workspaceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -229,20 +229,20 @@ $resourceId = "/SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/RESOURCEGROUPS/D
 Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
 ```
 
-U kunt ook de voor gaande cmdlet gebruiken om logboeken te verzamelen van bronnen die zich in verschillende abonnementen bevinden. De cmdlet kan worden gebruikt voor verschillende abonnementen, omdat u de ID opgeeft van zowel de resource waarmee logboeken worden gemaakt als de werk ruimte waarnaar de logboeken worden verzonden.
+U kunt ook de voorgaande cmdlet gebruiken om Logboeken te verzamelen uit resources die zich in verschillende abonnementen. De cmdlet kan worden gebruikt voor verschillende abonnementen, omdat u de ID opgeeft van zowel de resource waarmee logboeken worden gemaakt als de werk ruimte waarnaar de logboeken worden verzonden.
 
 
 ## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>Log Analytics werkruimte configureren voor het verzamelen van Azure-diagnose van opslag
-Als u logboek gegevens wilt verzamelen vanuit een actief exemplaar van een klassieke Cloud service of een service Fabric-cluster, moet u eerst de gegevens naar Azure Storage schrijven. Er wordt dan een Log Analytics-werk ruimte geconfigureerd voor het verzamelen van de logboeken van het opslag account. Ondersteunde bronnen zijn:
+Voor het verzamelen van logboekgegevens van binnen een actief exemplaar van een klassieke cloudservice of een service fabric-cluster, moet u eerst de gegevens schrijven naar Azure storage. Er wordt dan een Log Analytics-werk ruimte geconfigureerd voor het verzamelen van de logboeken van het opslag account. Ondersteunde resources zijn onder andere:
 
-* Klassieke Cloud Services (web-en werk rollen)
-* Service Fabric-clusters
+* Klassieke cloudservices (web- en werkrollen rollen)
+* Service fabric-clusters
 
-In het volgende voor beeld ziet u hoe u:
+Het volgende voorbeeld wordt getoond hoe u:
 
 1. Geef een lijst van de bestaande opslag accounts en locaties waarvan de werk ruimte index gegevens bevat
-2. Een configuratie maken om te lezen van een opslag account
-3. De zojuist gemaakte configuratie bijwerken om gegevens te indexeren van extra locaties
+2. Een configuratie lezen van een storage-account maken
+3. Werk de zojuist gemaakte configuratie om gegevens te indexeren vanaf meer locaties
 4. De zojuist gemaakte configuratie verwijderen
 
 ```powershell
@@ -267,9 +267,9 @@ Remove-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.Resourc
 
 ```
 
-U kunt ook het voor gaande script gebruiken voor het verzamelen van logboeken van opslag accounts in verschillende abonnementen. Het script kan worden gebruikt voor verschillende abonnementen sinds u de resource-ID van het opslag account en een bijbehorende toegangs sleutel opgeeft. Wanneer u de toegangs sleutel wijzigt, moet u de opslag inzicht bijwerken zodat deze de nieuwe sleutel heeft.
+U kunt dit script ook gebruiken voor het verzamelen van Logboeken van de storage-accounts in verschillende abonnementen. Het script kan worden gebruikt voor verschillende abonnementen sinds u de resource-ID van het opslag account en een bijbehorende toegangs sleutel opgeeft. Wanneer u de toegangssleutel wijzigt, moet u het opslaginzicht als u de nieuwe sleutel wilt bijwerken.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Raadpleeg log Analytics Power shell-cmdlets](https://docs.microsoft.com/powershell/module/az.operationalinsights/) voor meer informatie over het gebruik van Power shell voor configuratie van log Analytics.
+* [Controleer de Log Analytics PowerShell-cmdlets](https://docs.microsoft.com/powershell/module/az.operationalinsights/) voor meer informatie over het gebruik van PowerShell voor de configuratie van Log Analytics.
 

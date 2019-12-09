@@ -563,7 +563,7 @@
                           href: platform/collect-custom-metrics-guestos-vm-classic.md
                         - name: Cloudservice
                           href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
-                    - name: JSON Lines-indeling voor diagnostische logboeken
+                    - name: Indelingen van resourcelogboeken van JSON-regels
                       href: platform/diagnostic-logs-append-blobs.md
                     - name: Problemen oplossen
                       href: platform/diagnostics-extension-troubleshooting.md
@@ -1163,7 +1163,7 @@
           href: platform/metrics-supported.md
         - name: Ondersteunde metrische gegevens voor nieuwere waarschuwingen
           href: platform/alerts-metric-near-real-time.md
-    - name: 'Resources maken van logboekservices, categorieën en schema''s'
+    - name: 'Logboekservices, categorieën en schema''s van platform'
       href: platform/diagnostic-logs-schema.md
     - name: Azure-CLI
       href: /cli/azure/monitor?view=azure-cli-latest

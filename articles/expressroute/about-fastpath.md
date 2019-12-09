@@ -1,0 +1,50 @@
+---
+title: Over Azure ExpressRoute FastPath
+description: Meer informatie over Azure ExpressRoute FastPath voor het verzenden van netwerk verkeer door de gateway over te slaan
+services: expressroute
+author: cherylmc
+ms.service: expressroute
+ms.topic: conceptual
+ms.date: 12/05/2019
+ms.author: cherylmc
+ms.openlocfilehash: 6ff1dac312bcb4df1e1afc9679df09fc8a2b28ff
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74897362"
+---
+# <a name="about-expressroute-fastpath"></a>Over ExpressRoute FastPath
+
+ExpressRoute virtuele netwerk gateway is ontworpen voor het uitwisselen van netwerk routes en het routeren van netwerk verkeer. FastPath is ontworpen om de prestaties van het gegevenspad tussen uw on-premises netwerk en het virtuele netwerk te verbeteren. Als deze functie is ingeschakeld, verzendt FastPath netwerk verkeer rechtstreeks naar virtuele machines in het virtuele netwerk, waarbij de gateway wordt omzeild.
+
+## <a name="requirements"></a>Vereisten
+
+### <a name="circuits"></a>Circuits
+
+FastPath is beschikbaar op alle ExpressRoute-circuits.
+
+### <a name="gateways"></a>Gateways
+
+FastPath moet nog een virtuele netwerk gateway maken voor het uitwisselen van routes tussen het virtuele netwerk en het on-premises netwerk. Zie [virtuele netwerk gateways van ExpressRoute](expressroute-about-virtual-network-gateways.md)voor meer informatie over virtuele netwerk gateways en ExpressRoute.
+
+De gateway van het virtuele netwerk moet een van de volgende zijn:
+
+* Ultra Performance
+* ErGw3AZ
+
+## <a name="supported-features"></a>Ondersteunde functies
+
+Hoewel FastPath de meeste configuraties ondersteunt, biedt het geen ondersteuning voor de volgende functies:
+
+* UDR op het gateway-subnet: als u een UDR toepast op het gateway-subnet van het virtuele netwerk, wordt het netwerk verkeer van uw on-premises netwerk naar de gateway van het virtuele netwerk verzonden.
+
+* VNet-peering: als u andere virtuele netwerken hebt die zijn gekoppeld aan ExpressRoute, wordt het netwerk verkeer van uw on-premises netwerk naar de andere virtuele netwerken (d.w.z. de zogenaamde "spoke" VNets) naar het virtuele netwerk verzonden. #b0. De tijdelijke oplossing is om alle virtuele netwerken rechtstreeks aan het ExpressRoute-circuit te koppelen.
+
+* Basis Load Balancer: als u een intern interne load balancer in uw virtuele netwerk implementeert of de Azure PaaS-service die u in uw virtuele netwerk implementeert, maakt gebruik van een Basic interne load balancer, het netwerk verkeer van uw on-premises netwerk naar de virtuele IP-adressen die worden gehost op de Basis load balancer worden verzonden naar de gateway van het virtuele netwerk. De oplossing is het bijwerken van de basis load balancer naar een [standaard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview).
+
+* Privé-koppeling: als u vanuit uw on-premises netwerk verbinding maakt met een [persoonlijk eind punt](../private-link/private-link-overview.md) in uw virtuele netwerk, wordt de verbinding via de gateway van het virtuele netwerk door lopen.
+ 
+## <a name="next-steps"></a>Volgende stappen
+
+Zie [een virtueel netwerk koppelen aan ExpressRoute](expressroute-howto-linkvnet-arm.md#configure-expressroute-fastpath)om FastPath in te scha kelen.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 424d57c59dea11a49faf7a7bb32d85772ef4de8c
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: d223c3483becdc8ba44bc14ec16150cf1b001943
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305152"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894545"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Rollen, machtigingen en beveiliging in Azure Monitor
 
@@ -116,7 +116,7 @@ New-AzRoleDefinition -Role $role
 Bewakings gegevens, met name logboek bestanden, kunnen gevoelige informatie bevatten, zoals IP-adressen of gebruikers namen. Het bewaken van gegevens van Azure is beschikbaar in drie basis formulieren:
 
 1. Het activiteiten logboek, waarmee alle acties op het vlak van het besturings element van uw Azure-abonnement worden beschreven.
-2. Diagnostische logboeken, die door een resource uitgelichte logboeken worden verzonden.
+2. Bron logboeken, logboeken die worden verzonden door een resource.
 3. Metrische gegevens, die worden verzonden door resources.
 
 Al deze drie van deze gegevens typen kunnen worden opgeslagen in een opslag account of worden gestreamd naar Event hub, waarvan beide Azure-resources voor algemeen gebruik zijn. Omdat dit resources voor algemeen gebruik zijn, is het maken, verwijderen en openen ervan een geautoriseerde bewerking die is gereserveerd voor een beheerder. U wordt aangeraden de volgende procedures te gebruiken voor het bewaken van bronnen om misbruik te voor komen:
@@ -182,7 +182,7 @@ Azure Monitor moet toegang hebben tot uw Azure-resources om de services te kunne
 ### <a name="secured-storage-accounts"></a>Beveiligde opslag accounts 
 
 Bewakings gegevens worden vaak naar een opslag account geschreven. U kunt er ook voor zorgen dat de gegevens die naar een opslag account worden gekopieerd, niet toegankelijk zijn voor onbevoegde gebruikers. Voor extra beveiliging kunt u netwerk toegang vergren delen om alleen uw geautoriseerde resources en vertrouwde micro soft-Services toegang te geven tot een opslag account door een opslag account te beperken om ' geselecteerde netwerken ' te gebruiken.
-![Azure Storage instellingen dialoog venster](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor wordt beschouwd als een van deze ' vertrouwde micro soft-Services ' als u vertrouwde micro soft-Services toegang verleent tot uw beveiligde opslag, heeft Azure monitor toegang tot uw beveiligde-opslag account. het schrijven van Azure Monitor Diagnostische logboeken, het activiteiten logboek en de metrische gegevens naar uw opslag account inschakelen onder deze beveiligde voor waarden. Op deze locatie kunnen ook Log Analytics logboeken van beveiligde opslag worden gelezen.   
+![Azure Storage instellingen dialoog venster](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor wordt beschouwd als een van deze ' vertrouwde micro soft-Services ' als u vertrouwde micro soft-Services toegang verleent tot uw beveiligde opslag, heeft Azure monitor toegang tot uw beveiligde-opslag account. het schrijven van schrijf Azure Monitor bron logboeken, het activiteiten logboek en de metrische gegevens naar uw opslag account met deze beveiligde voor waarden. Op deze locatie kunnen ook Log Analytics logboeken van beveiligde opslag worden gelezen.   
 
 
 Zie [netwerk beveiliging en Azure Storage](../../storage/common/storage-network-security.md) voor meer informatie.

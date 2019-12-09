@@ -211,6 +211,8 @@
       items:
         - name: Handleiding voor het oplossen van problemen
           href: service-bus-messaging-exceptions.md
+        - name: Uitzonderingen voor Resource Manager
+          href: service-bus-resource-manager-exceptions.md
 - name: Naslaginformatie
   items:
     - name: .NET
