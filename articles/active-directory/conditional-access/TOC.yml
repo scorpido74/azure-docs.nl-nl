@@ -78,8 +78,6 @@
       href: howto-conditional-access-session-lifetime.md
     - name: Klassieke beleidsregels migreren
       href: policy-migration-mfa.md
-    - name: Voorwaardelijke toegang implementeren
-      href: howto-conditional-access-adoption-kit.md
     - name: Problemen oplossen
       items:
         - name: Problemen met het hulpprogramma What If oplossen
