@@ -2,18 +2,18 @@
 title: 'Infra structuur: on-premises Apache Hadoop naar Azure HDInsight'
 description: Ontdek de aanbevolen procedures voor de infra structuur voor het migreren van on-premises Hadoop-clusters naar Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: hrasheed
-ms.openlocfilehash: adc0e5f5eef41dcb1f826ffbf0cfe91a937fac01
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: d7ee8ae121e3cbb9760a87c95d12109a9b05e0c5
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499221"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951510"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>On-premises Apache Hadoop clusters migreren naar de aanbevolen procedures voor Azure HDInsight-infra structuur
 
@@ -23,10 +23,17 @@ Dit artikel bevat aanbevelingen voor het beheren van de infra structuur van Azur
 
 De belangrijkste keuzes voor het maken van de capaciteits planning voor HDInsight-clusters zijn als volgt:
 
-- **De regio kiezen** : de Azure-regio bepaalt waar het cluster fysiek wordt ingericht. Het cluster moet zich in dezelfde regio bevinden als de gegevens om de latentie van lees-en schrijf bewerkingen te minimaliseren.
-- **Opslag locatie en-grootte kiezen** : de standaard opslag moet zich in dezelfde regio bevinden als het cluster. Voor een cluster met een 48-knoop punt wordt aanbevolen 4 tot 8 opslag accounts te hebben. Hoewel er mogelijk al voldoende totale opslag ruimte beschikbaar is, biedt elk opslag account extra netwerk bandbreedte voor de reken knooppunten. Als er meerdere opslag accounts zijn, gebruikt u een wille keurige naam voor elk opslag account, zonder voor voegsel. Het doel van een wille keurige naam is het verminderen van de kans op opslag knelpunten (beperking) of fouten in de algemene modus voor alle accounts. Gebruik slechts één container per opslag account voor betere prestaties.
-- **De grootte en het type van de virtuele machine kiezen (ondersteunt nu de G-serie)** : elk cluster type heeft een set knooppunt typen en elk type knoop punt heeft specifieke opties voor de VM-grootte en het type. De grootte en het type van de virtuele machine worden bepaald door CPU-verwerkings kracht, RAM-grootte en netwerk latentie. Een gesimuleerde werk belasting kan worden gebruikt om de optimale grootte en het type van de virtuele machine voor elke knooppunt typen te bepalen.
-- **Kies het aantal worker-knoop punten** -het initiële aantal worker-knoop punten kan worden bepaald met behulp van de gesimuleerde werk belastingen. Het cluster kan later worden geschaald door meer worker-knoop punten toe te voegen om te voldoen aan de maximale belasting vereisten. Het cluster kan later weer worden geschaald wanneer de extra worker-knoop punten niet vereist zijn.
+**Regio**  
+De Azure-regio bepaalt waar het cluster fysiek wordt ingericht. Het cluster moet zich in dezelfde regio bevinden als de gegevens om de latentie van lees-en schrijf bewerkingen te minimaliseren.
+
+**Opslag locatie en-grootte**  
+De standaard opslag moet zich in dezelfde regio bevinden als het cluster. Voor een cluster met een 48-knoop punt is het raadzaam 4 tot 8 opslag accounts te hebben. Hoewel er mogelijk al voldoende totale opslag ruimte beschikbaar is, biedt elk opslag account extra netwerk bandbreedte voor de reken knooppunten. Als er meerdere opslag accounts zijn, gebruikt u een wille keurige naam voor elk opslag account, zonder voor voegsel. Het doel van een wille keurige naam is het verminderen van de kans op opslag knelpunten (beperking) of fouten in de algemene modus voor alle accounts. Gebruik slechts één container per opslag account voor betere prestaties.
+
+**VM-grootte en-type (ondersteunt nu de G-serie)**  
+Elk cluster type heeft een reeks knooppunt typen en elk knooppunt type heeft specifieke opties voor de VM-grootte en het bijbehorende type. De grootte en het type van de virtuele machine worden bepaald door CPU-verwerkings kracht, RAM-grootte en netwerk latentie. Een gesimuleerde werk belasting kan worden gebruikt om de optimale grootte en het type van de virtuele machine voor elke knooppunt typen te bepalen.
+
+**Aantal worker-knoop punten**  
+Het oorspronkelijke aantal worker-knoop punten kan worden bepaald met behulp van de gesimuleerde werk belastingen. Het cluster kan later worden geschaald door meer worker-knoop punten toe te voegen om te voldoen aan de maximale belasting vereisten. Het cluster kan later weer worden geschaald wanneer de extra worker-knoop punten niet vereist zijn.
 
 Zie het artikel [capaciteits planning voor HDInsight-clusters](../hdinsight-capacity-planning.md)voor meer informatie.
 
@@ -42,7 +49,7 @@ U kunt ook Apache Ambari UI of Ambari REST API gebruiken om de Hadoop-onderdelen
 
 Toepassingen of onderdelen die beschikbaar waren in on-premises clusters, maar die geen deel uitmaken van de HDInsight-clusters kunnen worden toegevoegd aan een Edge-knoop punt of op een virtuele machine in hetzelfde VNet als het HDInsight-cluster. Een Hadoop-toepassing van derden die niet beschikbaar is in azure HDInsight, kan worden geïnstalleerd met behulp van de optie ' toepassingen ' in het HDInsight-cluster. Aangepaste Hadoop-toepassingen kunnen worden geïnstalleerd op HDInsight-cluster met behulp van ' script acties '. De volgende tabel bevat enkele van de algemene toepassingen en de opties voor HDInsight-integratie:
 
-|**Modules**|**Opneming**
+|**Toepassing**|**Integratie**
 |---|---|
 |Lucht stroom|IaaS of HDInsight Edge-knoop punt
 |Alluxio|IaaS  
@@ -61,7 +68,7 @@ Toepassingen of onderdelen die beschikbaar waren in on-premises clusters, maar d
 |Python 2|PaaS 
 |Python 3|PaaS 
 |R|PaaS 
-|GEBASEERD|IaaS 
+|SAS|IaaS 
 |Vertica|IaaS (SQLDW een alternatief op Azure)
 |Tableau|IaaS 
 |Toestand|HDInsight Edge-knoop punt
@@ -191,6 +198,4 @@ Zie het artikel [verbinding maken tussen HDInsight en uw on-premises netwerk](..
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees het volgende artikel in deze serie:
-
-- [Aanbevolen procedures voor opslag van on-premises naar Azure HDInsight Hadoop migratie](apache-hadoop-on-premises-migration-best-practices-storage.md)
+Lees het volgende artikel in deze serie: [Aanbevolen procedures voor opslag voor on-premises om Azure HDInsight Hadoop migratie](apache-hadoop-on-premises-migration-best-practices-storage.md).

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 12/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 54f0584eae948d6e577b0439a5a0d976ff61d4b1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c0b022ed759837fc6d922386dd48a2f3a109527a
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850649"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951493"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>VM's buiten bedrijfsuren starten/stoppen oplossing in Azure Automation
 
@@ -428,7 +428,7 @@ Voer de volgende stappen uit om de oplossing te verwijderen:
 
 Het Automation-account en de Log Analytics-werk ruimte worden niet verwijderd als onderdeel van dit proces. Als u de Log Analytics-werk ruimte niet wilt behouden, moet u deze hand matig verwijderen. Dit kan worden bereikt vanuit de Azure Portal:
 
-1. Selecteer **log Analytics werk ruimten**in het Azure Portal start scherm.
+1. In Azure Portal zoekt en selecteert u **log Analytics-werk ruimten**.
 1. Selecteer de werk ruimte op de pagina **log Analytics-werk ruimten** .
 1. Selecteer **verwijderen** in het menu op de pagina werkruimte instellingen.
 

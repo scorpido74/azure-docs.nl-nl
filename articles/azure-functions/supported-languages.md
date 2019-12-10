@@ -2,13 +2,13 @@
 title: Ondersteunde talen in Azure Functions
 description: Meer informatie over welke talen worden ondersteund (GA) en wat experimentele of in Preview zijn.
 ms.topic: conceptual
-ms.date: 08/02/2018
-ms.openlocfilehash: 3b61dd83e481d42dd15f089247d016c6b71ff0de
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 11/27/2019
+ms.openlocfilehash: 029ea753439dca3093bf214a5adfb6d58a1fe567
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230287"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942253"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Ondersteunde talen in Azure Functions
 
@@ -24,7 +24,7 @@ Er zijn drie ondersteunings niveaus:
 
 ## <a name="languages-by-runtime-version"></a>Talen per runtime versie 
 
-Er zijn [twee versies van de Azure functions runtime](functions-versions.md) beschikbaar. In de volgende tabel ziet u welke talen worden ondersteund in elke runtime versie.
+Er zijn [drie versies van de Azure functions runtime](functions-versions.md) beschikbaar. In de volgende tabel ziet u welke talen worden ondersteund in elke runtime versie.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
@@ -34,7 +34,7 @@ De experimentele talen in versie 1. x worden niet goed geschaald en bieden geen 
 
 Gebruik geen experimentele functies voor alles wat u vertrouwt, aangezien er geen officiële ondersteuning voor hen is. Ondersteunings cases mogen niet worden geopend voor problemen met experimentele talen. 
 
-De runtime van versie 2. x biedt geen ondersteuning voor experimentele talen. Ondersteuning voor nieuwe talen wordt alleen toegevoegd wanneer de taal in productie kan worden ondersteund. 
+Latere runtime versies bieden geen ondersteuning voor experimentele talen. Ondersteuning voor nieuwe talen wordt alleen toegevoegd wanneer de taal in productie kan worden ondersteund. 
 
 ### <a name="language-extensibility"></a>Taal uitbreid baarheid
 

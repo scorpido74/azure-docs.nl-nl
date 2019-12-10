@@ -1,19 +1,19 @@
 ---
-title: Apache Hadoop & beveiligde Tranfser-opslag-Azure HDInsight
+title: Apache Hadoop & beveiligde overdrachts opslag-Azure HDInsight
 description: Informatie over het maken van HDInsight-clusters met Azure-opslag-accounts voor veilige overdracht.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/24/2018
-ms.openlocfilehash: ed8e20509c4a3f941d6f215dfc476c87e9a813a7
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: hdinsightactive
+ms.date: 12/04/2019
+ms.openlocfilehash: 09a6b158c4390f881754c90d52a476f0bc249a5a
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687781"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947636"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Apache Hadoop cluster maken met opslag accounts voor veilige overdracht in azure HDInsight
 
@@ -23,57 +23,57 @@ De functie [Veilige overdracht vereist](../storage/common/storage-require-secure
 
 Voordat u aan dit artikel begint, hebt u het volgende nodig:
 
-* **Azure-abonnement**: voor het maken van een gratis proefaccount van één maand, bezoekt u [azure.microsoft.com/free](https://azure.microsoft.com/free).
-* **Een Azure-opslagaccount met veilige overdracht**. Zie [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md) en [Veilige overdracht vereisen](../storage/common/storage-require-secure-transfer.md) voor instructies. Voor het inschakelen van beveiligde opslag overdracht na het maken van een cluster zijn extra stappen vereist die niet in dit artikel worden besproken.
-* **Een Blob-container in het opslagaccount**.
+* Azure-abonnement: als u een gratis proef account voor één maand wilt maken, gaat u naar [Azure.Microsoft.com/Free](https://azure.microsoft.com/free).
+* Een Azure Storage-account waarvoor beveiligde overdracht is ingeschakeld. Zie [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md) en [Veilige overdracht vereisen](../storage/common/storage-require-secure-transfer.md) voor instructies. Voor het inschakelen van beveiligde opslag overdracht na het maken van een cluster zijn extra stappen vereist die niet in dit artikel worden besproken.
+* Een BLOB-container op het opslag account.
 
 ## <a name="create-cluster"></a>Cluster maken
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-In deze sectie maakt u een Hadoop-cluster in HDInsight met behulp van een [Azure Resource Manager-sjabloon](../azure-resource-manager/resource-group-template-deploy.md). De sjabloon bevindt zich in [github](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/). Het maken van een Azure Resource Manager-sjabloon is niet vereist voor dit artikel. Zie [HDInsight-clusters maken](hdinsight-hadoop-provision-linux-clusters.md)voor andere methoden voor het maken van een cluster en over de eigenschappen die in dit artikel worden gebruikt.
+In deze sectie maakt u een Hadoop-cluster in HDInsight met behulp van een [Azure Resource Manager-sjabloon](../azure-resource-manager/resource-group-template-deploy.md). De sjabloon bevindt zich in [github](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/). De Resource Manager-sjabloon ervaring is niet vereist voor het volgen van dit artikel. Zie [HDInsight-clusters maken](hdinsight-hadoop-provision-linux-clusters.md)voor andere methoden voor het maken van een cluster en over de eigenschappen die in dit artikel worden gebruikt.
 
 1. Klik op de volgende afbeelding om u aan te melden bij Azure en de Resource Manager-sjabloon in Azure Portal te openen.
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-existing-default-storage-account%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-2. Volg de instructies voor het maken van het cluster met de volgende specificaties: 
+2. Volg de instructies voor het maken van het cluster met de volgende specificaties:
 
-    - Geef HDInsight versie 3.6 op. Versie 3.6 of hoger is vereist.
-    - Geef een opslagaccount met veilige overdracht op.
-    - Gebruik de korte naam voor het opslagaccount.
-    - Zowel het opslagaccount als de blob-container moeten vooraf zijn gemaakt.
+    * Geef HDInsight versie 3.6 op. Versie 3.6 of hoger is vereist.
+    * Geef een opslagaccount met veilige overdracht op.
+    * Gebruik de korte naam voor het opslagaccount.
+    * Zowel het opslagaccount als de blob-container moeten vooraf zijn gemaakt.
 
       Zie [Cluster maken](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) voor instructies.
 
 Als u een scriptactie gebruikt om uw eigen configuratiebestanden te verstrekken, moet u wasbs gebruiken in de volgende instellingen:
 
-- fs.defaultFS (core-site)
-- spark.eventLog.dir 
-- spark.history.fs.logDirectory
+* fs.defaultFS (core-site)
+* spark.eventLog.dir
+* spark.history.fs.logDirectory
 
 ## <a name="add-additional-storage-accounts"></a>Extra opslagaccounts toevoegen
 
 Er zijn verschillende opties om extra opslagaccounts met veilige overdracht toe te voegen:
 
-- De Azure Resource Manager-sjabloon in de laatste sectie wijzigen.
-- Een cluster maken met [Azure Portal](https://portal.azure.com) en een gekoppelde opslagaccount opgeven.
-- Een scriptactie gebruiken om extra opslagaccounts met veilige overdracht toe te voegen aan een bestaand HDInsight-cluster. Zie [Extra opslagaccounts toevoegen aan HDInsight](hdinsight-hadoop-add-storage.md) voor meer informatie.
+* De Azure Resource Manager-sjabloon in de laatste sectie wijzigen.
+* Een cluster maken met [Azure Portal](https://portal.azure.com) en een gekoppelde opslagaccount opgeven.
+* Een scriptactie gebruiken om extra opslagaccounts met veilige overdracht toe te voegen aan een bestaand HDInsight-cluster. Zie [Extra opslagaccounts toevoegen aan HDInsight](hdinsight-hadoop-add-storage.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 In dit artikel hebt u geleerd hoe u een HDInsight-cluster maakt en hoe u beveiligde overdracht naar de opslag accounts inschakelt.
 
 Zie de volgende artikelen voor meer informatie over het analyseren van gegevens met HDInsight:
 
-* Zie [Apache Hive gebruiken met hdinsight][hdinsight-use-hive]voor meer informatie over het gebruik van [Apache Hive](https://hive.apache.org/) met hdinsight, waaronder het uitvoeren van Hive-query's vanuit Visual Studio.
-* Zie [Apache Pig gebruiken met HDInsight][hdinsight-use-pig]voor meer informatie over [Apache varken](https://pig.apache.org/), een taal die wordt gebruikt voor het transformeren van gegevens.
-* Zie [Apache Hadoop MapReduce gebruiken met HDInsight][hdinsight-use-mapreduce]voor meer informatie over [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), een manier om Program ma's te schrijven die gegevens verwerken op Hadoop.
+* Zie [Apache Hive gebruiken met hdinsight](hadoop/hdinsight-use-hive.md)voor meer informatie over het gebruik van [Apache Hive](https://hive.apache.org/) met hdinsight, waaronder het uitvoeren van Hive-query's vanuit Visual Studio.
+* Zie [Apache Hadoop MapReduce gebruiken met HDInsight](hadoop/hdinsight-use-mapreduce.md)voor meer informatie over [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), een manier om Program ma's te schrijven die gegevens verwerken op Hadoop.
 * Zie aan de [slag met Visual studio Apache Hadoop-hulpprogram ma's voor hdinsight voor](hadoop/apache-hadoop-visual-studio-tools-get-started.md)meer informatie over het gebruik van Hdinsight-hulpprogram Ma's voor Visual Studio voor het analyseren van gegevens op hdinsight.
 
 Zie de volgende artikelen voor meer informatie over hoe HDInsight gegevens opslaat en over het ophalen van gegevens in HDInsight:
 
 * Zie [Azure Storage gebruiken met HDInsight](hdinsight-hadoop-use-blob-storage.md) voor meer informatie over hoe HDInsight Azure Storage gebruikt.
-* Zie [Gegevens uploaden naar HDInsight][hdinsight-upload-data] voor meer informatie over het uploaden van gegevens naar HDInsight.
+* Zie [Gegevens uploaden naar HDInsight](hdinsight-upload-data.md) voor meer informatie over het uploaden van gegevens naar HDInsight.
 
 Zie de volgende artikelen voor meer informatie over het maken of beheren van een HDInsight-cluster:
 
@@ -84,11 +84,3 @@ Zie de volgende artikelen voor meer informatie over het maken of beheren van een
   * Url's voor services die worden gehost op het cluster, zoals [Apache Ambari](https://ambari.apache.org/) en [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat)
   * De locatie van [Apache Hadoop](https://hadoop.apache.org/) bestanden en voor beelden op het lokale bestands systeem
   * Het gebruik van Azure Storage (WASB) in plaats van [Apache HADOOP HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) als de standaard gegevens opslag
-
-[1]: ../HDInsight/hadoop/apache-hadoop-visual-studio-tools-get-started.md
-
-[hdinsight-provision]: hdinsight-provision-linux-clusters.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-use-mapreduce]:hadoop/hdinsight-use-mapreduce.md
-[hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
-[hdinsight-use-pig]:hadoop/hdinsight-use-pig.md

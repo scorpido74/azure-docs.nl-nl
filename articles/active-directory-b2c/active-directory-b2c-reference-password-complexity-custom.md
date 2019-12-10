@@ -1,5 +1,6 @@
 ---
-title: Wachtwoord complexiteit configureren met aangepaste beleids regels in Azure Active Directory B2C | Microsoft Docs
+title: Wachtwoord complexiteit configureren met aangepaste beleids regels
+titleSuffix: Azure AD B2C
 description: Vereisten voor wachtwoord complexiteit configureren met behulp van een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6454d380b0f34e940951e3de44d1dee0ff6b597f
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e8718a04f9d63897b2d2472dd0cdffb196c41435
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065526"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949786"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Wachtwoord complexiteit configureren met aangepaste beleids regels in Azure Active Directory B2C
 
@@ -31,7 +32,7 @@ Voer de stappen in aan de [slag met aangepast beleid in Active Directory B2C](ac
 
 1. Kopieer het *SignUpOrSignIn. XML-* bestand dat u met het eerste pakket hebt gedownload en noem dit *SingUpOrSignInPasswordComplexity. XML*.
 2. Open het bestand *SingUpOrSignInPasswordComplexity. XML* en wijzig de **PolicyId** en de **PublicPolicyUri** in een nieuwe beleids naam. Bijvoorbeeld *B2C_1A_signup_signin_password_complexity*.
-3. Voeg de volgende **claim** type-elementen met de `newPassword` id's `reenterPassword`van en toe:
+3. Voeg de volgende **claim** type-elementen met de id's van `newPassword` en `reenterPassword`toe:
 
     ```XML
     <ClaimsSchema>
@@ -44,7 +45,7 @@ Voer de stappen in aan de [slag met aangepast beleid in Active Directory B2C](ac
     </ClaimsSchema>
     ```
 
-4. [Predikaten](predicates.md) hebben methoden van `IsLengthRange` het type of `MatchesRegex`. Het `MatchesRegex` type wordt gebruikt om overeen te komen met een reguliere expressie. Het `IsLengthRange` type neemt een minimum-en maximum lengte van de teken reeks met zich mee. Voeg een **predikaten** -element toe aan het **BuildingBlocks** -element als dit niet bestaat met de volgende **predicaat** elementen:
+4. [Predikaten](predicates.md) hebben methoden van het type `IsLengthRange` of `MatchesRegex`. Het `MatchesRegex` type wordt gebruikt om een reguliere expressie te vinden. Het `IsLengthRange` type neemt de minimale en maximale teken reeks lengte. Voeg een **predikaten** -element toe aan het **BuildingBlocks** -element als dit niet bestaat met de volgende **predicaat** elementen:
 
     ```XML
     <Predicates>
@@ -107,11 +108,11 @@ Voer de stappen in aan de [slag met aangepast beleid in Active Directory B2C](ac
 
 ## <a name="test-your-policy"></a>Uw beleid testen
 
-Bij het testen van uw toepassingen in azure AD B2C kan het nuttig zijn om het Azure AD B2C-token te `https://jwt.ms` retour neren om de claims daarin te kunnen bekijken.
+Bij het testen van uw toepassingen in Azure AD B2C kan het nuttig zijn om het Azure AD B2C-token terug te krijgen naar `https://jwt.ms` om de claims in de toepassing te kunnen bekijken.
 
 ### <a name="upload-the-files"></a>De bestanden uploaden
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer een **Framework voor identiteits ervaring**.
@@ -122,7 +123,7 @@ Bij het testen van uw toepassingen in azure AD B2C kan het nuttig zijn om het Az
 ### <a name="run-the-policy"></a>Het beleid uitvoeren
 
 1. Open het beleid dat u hebt gewijzigd. Bijvoorbeeld *B2C_1A_signup_signin_password_complexity*.
-2. Selecteer voor **toepassing**de toepassing die u eerder hebt geregistreerd. Om het token weer te geven, moet de antwoord `https://jwt.ms`- **URL** worden weer gegeven.
+2. Selecteer voor **toepassing**de toepassing die u eerder hebt geregistreerd. Om het token weer te geven, moet de **antwoord-URL** `https://jwt.ms`weer geven.
 3. Klik op **Nu uitvoeren**.
 4. Selecteer **nu aanmelden**, voer een e-mail adres in en voer een nieuw wacht woord in. Richt lijnen worden weer gegeven voor wachtwoord beperkingen. Voer de gebruikers gegevens in en klik vervolgens op **maken**. De inhoud van het geretourneerde token moet worden weer gegeven.
 

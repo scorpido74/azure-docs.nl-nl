@@ -1,5 +1,6 @@
 ---
-title: Geef een toegangs token door via een gebruikers stroom naar uw toepassing-Azure Active Directory B2C
+title: Een toegangs token door geven via een gebruikers stroom naar uw app
+titleSuffix: Azure AD B2C
 description: Meer informatie over het door geven van een toegangs token voor OAuth 2,0-id-providers als een claim in een gebruikers stroom in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a1a9ad0c615e50db746548a1ed5b557fe6fdea5a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 345924c10feabe9a7d5f50905689a4a0edb065ce
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064285"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948808"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Geef een toegangs token door via een gebruikers stroom naar uw toepassing in Azure Active Directory B2C
 
@@ -35,7 +36,7 @@ Azure AD B2C biedt momenteel alleen ondersteuning voor het door geven van het to
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer **gebruikers stromen (beleid)** en selecteer vervolgens uw gebruikers stroom. Bijvoorbeeld **B2C_1_signupsignin1**.
 5. Selecteer **Toepassingsclaims**.
-6. Schakel de claim van het **toegangs token** van de identiteits provider in.
+6. Schakel de claim van het **toegangs token van de identiteits provider** in.
 
     ![De claim van het toegangs token van de identiteits provider inschakelen](./media/idp-pass-through-user-flow/idp-pass-through-user-flow-app-claim.png)
 
@@ -43,16 +44,16 @@ Azure AD B2C biedt momenteel alleen ondersteuning voor het door geven van het to
 
 ## <a name="test-the-user-flow"></a>De gebruikers stroom testen
 
-Bij het testen van uw toepassingen in azure AD B2C kan het nuttig zijn om het Azure AD B2C-token te `https://jwt.ms` retour neren om de claims erin te controleren.
+Bij het testen van uw toepassingen in Azure AD B2C kan het nuttig zijn om het Azure AD B2C-token terug te krijgen naar `https://jwt.ms` om de claims erin te bekijken.
 
 1. Selecteer op de pagina overzicht van de gebruikers stroom de optie **gebruikers stroom uitvoeren**.
-2. Selecteer voor **toepassing**de toepassing die u eerder hebt geregistreerd. Voor een overzicht van het token in het onderstaande voor beeld moet de antwoord `https://jwt.ms`- **URL** worden weer gegeven.
-3. Klik op **gebruikers stroom uitvoeren**en meld u aan met uw account referenties. U ziet het toegangs token van de ID-provider in de claim **idp_access_token** .
+2. Selecteer voor **toepassing**de toepassing die u eerder hebt geregistreerd. Voor een overzicht van het token in het onderstaande voor beeld moet de **antwoord-URL** `https://jwt.ms`weer geven.
+3. Klik op **gebruikers stroom uitvoeren**en meld u aan met uw account referenties. U ziet het toegangs token van de ID-provider in de **idp_access_token** claim.
 
     Het volgende voor beeld ziet er ongeveer uit:
 
-    ![Gedecodeer token in jwt.ms met idp_access_token-blok gemarkeerd](./media/idp-pass-through-user-flow/idp-pass-through-user-flow-token.PNG)
+    ![Gedecodeer token in jwt.ms met idp_access_token blok gemarkeerd](./media/idp-pass-through-user-flow/idp-pass-through-user-flow-token.PNG)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie vindt u in het [overzicht van Azure AD B2C](active-directory-b2c-reference-tokens.md)-tokens.
+Meer informatie vindt u in het [overzicht van Azure AD B2C-tokens](active-directory-b2c-reference-tokens.md).

@@ -1,5 +1,6 @@
 ---
-title: Aanmelden met een Amazon-account instellen met behulp van aangepast beleid in Azure Active Directory B2C | Microsoft Docs
+title: Aanmelden met een Amazon-account instellen met behulp van aangepast beleid
+titleSuffix: Azure AD B2C
 description: Stel aanmelden met een Amazon-account in Azure Active Directory B2C met aangepaste beleids regels.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/05/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 89f753eb0a4327bc68be9ff85006e86b57bcb548
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 39a0e9442f3e41ceeb67b4d528eb193b159d8777
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827247"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950847"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden met een Amazon-account instellen met behulp van aangepast beleid in Azure Active Directory B2C
 
@@ -26,7 +27,7 @@ In dit artikel leest u hoe u aanmelden kunt inschakelen voor gebruikers van een 
 ## <a name="prerequisites"></a>Vereisten
 
 - Voer de stappen in aan de [slag met aangepast beleid](active-directory-b2c-get-started-custom.md).
-- Als u nog geen Amazon-account hebt, kunt u er [https://www.amazon.com/](https://www.amazon.com/)een maken op.
+- Als u nog geen Amazon-account hebt, maakt u er een op [https://www.amazon.com/](https://www.amazon.com/).
 
 ## <a name="register-the-application"></a>De toepassing registreren
 
@@ -37,23 +38,23 @@ Als u het aanmelden voor gebruikers van een Amazon-account wilt inschakelen, moe
 3. Selecteer **nieuwe toepassing registreren**.
 4. Voer een **naam**, **Beschrijving**en URL voor de **privacyverklaring**in en klik vervolgens op **Opslaan**. De privacyverklaring is een pagina die u beheert en die privacy-informatie verstrekt aan gebruikers.
 5. Kopieer de waarden van de **client-id**in het gedeelte **Web Settings** . Selecteer **geheim weer geven** om het client geheim te ontvangen en kopieer het vervolgens. U hebt beide nodig om een Amazon-account te configureren als een id-provider in uw Tenant. **Client geheim** is een belang rijke beveiligings referentie.
-6. Selecteer **bewerken**in de sectie `https://your-tenant-name.b2clogin.com` **Webinstellingen** en voer in **toegestane java script-oorsprong** in en `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in **toegestane retour-url's**. Vervang `your-tenant-name` door de naam van uw Tenant. Gebruik alleen kleine letters bij het invoeren van de tenantnaam van uw, zelfs als de tenant is gedefinieerd met behulp van hoofdletters in Azure AD B2C.
+6. Selecteer in de sectie **Webinstellingen** de optie **bewerken**en geef `https://your-tenant-name.b2clogin.com` op in **toegestane java script-oorsprong** en `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in **toegestane retour-url's**. Vervang `your-tenant-name` door de naam van uw Tenant. Gebruik alleen kleine letters bij het invoeren van de tenantnaam van uw, zelfs als de tenant is gedefinieerd met behulp van hoofdletters in Azure AD B2C.
 7. Klik op **Opslaan**.
 
 ## <a name="create-a-policy-key"></a>Een beleids sleutel maken
 
 U moet het client geheim opslaan dat u eerder in uw Azure AD B2C-Tenant hebt vastgelegd.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
 5. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
-6. Kies`Manual`voor **Opties**.
-7. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `AmazonSecret`. Het voor `B2C_1A_` voegsel wordt automatisch toegevoegd aan de naam van uw sleutel.
+6. Kies `Manual`voor **Opties**.
+7. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `AmazonSecret`. De prefix `B2C_1A_` wordt automatisch toegevoegd aan de naam van uw sleutel.
 8. Voer in het **geheim**uw client geheim in dat u eerder hebt vastgelegd.
-9. Selecteer`Signature`voor **sleutel gebruik**.
-10. Klik op **Create**.
+9. Selecteer `Signature`voor **sleutel gebruik**.
+10. Klik op **Maken**.
 
 ## <a name="add-a-claims-provider"></a>Een claim provider toevoegen
 
@@ -105,7 +106,7 @@ U kunt een Amazon-account definiëren als een claim provider door deze toe te vo
     </ClaimsProvider>
     ```
 
-4. Stel **client_id** in op de toepassings-id in de registratie van de toepassing.
+4. Stel **client_id** van de toepassings-id in voor de registratie van de toepassing.
 5. Sla het bestand op.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Upload het extensie bestand voor verificatie
@@ -130,7 +131,7 @@ Op dit moment is de ID-provider ingesteld, maar is deze niet beschikbaar in de s
 
 Het element **ClaimsProviderSelection** is vergelijkbaar met een id-provider knop op het scherm aanmelden/aanmelden. Als u een **ClaimsProviderSelection** -element toevoegt voor een Amazon-account, wordt een nieuwe knop weer gegeven wanneer een gebruiker op de pagina terechtkomt.
 
-1. Zoek het **OrchestrationStep** -element dat `Order="1"` is opgenomen in de gebruikers traject die u hebt gemaakt.
+1. Zoek het **OrchestrationStep** -element dat `Order="1"` bevat in de gebruikers traject die u hebt gemaakt.
 2. Voeg onder **ClaimsProviderSelects**het volgende element toe. Stel de waarde van **TargetClaimsExchangeId** in op een geschikte waarde, bijvoorbeeld `AmazonExchange`:
 
     ```XML
@@ -141,7 +142,7 @@ Het element **ClaimsProviderSelection** is vergelijkbaar met een id-provider kno
 
 Nu er een knop aanwezig is, moet u deze koppelen aan een actie. De actie in dit geval is voor Azure AD B2C om te communiceren met een Amazon-account om een token te ontvangen.
 
-1. Zoek de **OrchestrationStep** die in `Order="2"` de gebruikers reis zijn opgenomen.
+1. Zoek de **OrchestrationStep** die `Order="2"` bevat in de gebruikers reis.
 2. Voeg het volgende **ClaimsExchange** -element toe om ervoor te zorgen dat u dezelfde waarde gebruikt voor de id die u hebt gebruikt voor **TargetClaimsExchangeId**:
 
     ```XML
@@ -164,7 +165,7 @@ Werk het Relying Party (RP)-bestand bij waarmee de door u gemaakte gebruikers tr
 
 1. Maak een kopie van *SignUpOrSignIn. XML* in uw werkmap en wijzig de naam ervan. Wijzig de naam bijvoorbeeld in *SignUpSignInAmazon. XML*.
 2. Open het nieuwe bestand en werk de waarde van het kenmerk **PolicyId** voor **TrustFrameworkPolicy** met een unieke waarde bij. Bijvoorbeeld `SignUpSignInAmazon`.
-3. Werk de waarde van **PublicPolicyUri** bij met de URI voor het beleid. Bijvoorbeeld:`http://contoso.com/B2C_1A_signup_signin_amazon`
+3. Werk de waarde van **PublicPolicyUri** bij met de URI voor het beleid. Bijvoorbeeld`http://contoso.com/B2C_1A_signup_signin_amazon`
 4. Werk de waarde van het kenmerk **ReferenceId** in **DefaultUserJourney** bij zodat dit overeenkomt met de id van de nieuwe gebruikers traject die u hebt gemaakt (SignUpSignAmazon).
 5. Sla de wijzigingen op, upload het bestand en selecteer vervolgens het nieuwe beleid in de lijst.
 6. Zorg ervoor dat Azure AD B2C toepassing die u hebt gemaakt, is geselecteerd in het veld **toepassing selecteren** en test deze door op **nu uitvoeren**te klikken.

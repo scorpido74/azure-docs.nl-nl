@@ -3,12 +3,12 @@ title: Azure Functions runtime-versies instellen
 description: Azure Functions ondersteunt meerdere versies van de runtime. Meer informatie over het opgeven van de runtime versie van een functie-app die wordt gehost in Azure.
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 6f93ac7bcbd25c1b120cfeecae9dd4353524855f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0031fe08ee1e77c35a78b2128615f08846c1b612
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230325"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942270"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Azure Functions runtime-versies instellen
 
@@ -29,9 +29,9 @@ De volgende tabel bevat de `FUNCTIONS_EXTENSION_VERSION` waarden voor elke prima
 
 | Primaire versie | `FUNCTIONS_EXTENSION_VERSION` waarde |
 | ------------- | ----------------------------------- |
-| 3. x (preview-versie) | `~3` |
+| controleert  | `~3` |
 | 2.x  | `~2` |
-| 1.x | `~1` |
+| 1.x  | `~1` |
 
 Een wijziging in de runtime versie leidt ertoe dat een functie-app opnieuw wordt gestart.
 
@@ -42,7 +42,7 @@ U kunt de runtime versie die wordt gebruikt door uw functie-app wijzigen. U kunt
 > [!IMPORTANT]
 > Hoewel de runtime versie wordt bepaald door de `FUNCTIONS_EXTENSION_VERSION` instelling, moet u deze wijziging aanbrengen in de Azure Portal en niet door de instelling rechtstreeks te wijzigen. Dit komt doordat de portal uw wijzigingen valideert en andere gerelateerde wijzigingen indien nodig maakt.
 
-### <a name="from-the-azure-portal"></a>Van de Azure Portal
+### <a name="from-the-azure-portal"></a>Vanuit Azure Portal
 
 [!INCLUDE [Set the runtime version in the portal](../../includes/functions-view-update-version-portal.md)]
 

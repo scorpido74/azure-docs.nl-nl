@@ -1,6 +1,7 @@
 ---
-title: Voor beelden van een geheel getal trans formatie voor het Framework van de identiteits ervaring van Azure Active Directory B2C | Microsoft Docs
-description: Voor beelden van trans formatie van een geheel getal voor het Framework van de identiteits ervaring van Azure Active Directory B2C.
+title: Voor beelden van het transformeren van een geheel getal voor aangepaste beleids regels
+titleSuffix: Azure AD B2C
+description: Voor beelden van een geheel getal voor trans formatie van het IEF-schema (Identity experience Framework) van Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d82f7fecfb35c63d586993fed73a83209782a890
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 7295e03f0a0f94b3450b99acc4d10d6ff86c92e7
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064217"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948839"
 ---
 # <a name="integer-claims-transformations"></a>Geheeltallige claim transformaties
 
@@ -29,10 +30,10 @@ Converteert een lang gegevens type naar een teken reeks gegevens type.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | long | Het claim type dat moet worden geconverteerd naar een teken reeks. |
+| InputClaim | inputClaim | lang | Het claim type dat moet worden geconverteerd naar een teken reeks. |
 | OutputClaim | outputClaim | string | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
 
-In dit voor beeld wordt `numericUserId` de claim met het waardetype Long omgezet in een `UserId` claim met het waardetype string.
+In dit voor beeld wordt de `numericUserId` claim met het waardetype Long geconverteerd naar een `UserId` claim met het waardetype string.
 
 ```XML
 <ClaimsTransformation Id="CreateUserId" TransformationMethod="ConvertNumberToStringClaim">
@@ -48,7 +49,7 @@ In dit voor beeld wordt `numericUserId` de claim met het waardetype Long omgezet
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-    - **inputClaim**: 12334 (lang)
+    - **input claim**: 12334 (lang)
 - Uitvoer claims:
-    - **outputClaim**: "12334" (teken reeks)
+    - **output claim**: "12334" (teken reeks)
 

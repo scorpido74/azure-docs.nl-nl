@@ -1,5 +1,6 @@
 ---
-title: De gebruikers interface in Azure Active Directory B2C aanpassen
+title: De gebruikersinterface aanpassen
+titleSuffix: Azure AD B2C
 description: Meer informatie over het aanpassen van de gebruikers interface voor uw toepassingen die gebruikmaken van Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6ebaeedf88bc02aa16e8be07fcb734e44ffa5bb6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: d737d010f323a5d5b230091ad07ba530d25d6e51
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258174"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949403"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>De gebruikers interface in Azure Active Directory B2C aanpassen
 
@@ -31,13 +32,13 @@ Als u gebruik maakt van [gebruikers stromen](active-directory-b2c-reference-poli
 
 U gebruikt de [Azure Portal](tutorial-customize-ui.md) voor het configureren van de UI-aanpassing voor gebruikers stromen.
 
-### <a name="custom-policies"></a>Aangepaste beleidsregels
+### <a name="custom-policies"></a>Aangepast beleid
 
 Als u [aangepaste beleids regels](active-directory-b2c-overview-custom.md) gebruikt voor het aanmelden of aanmelden, het opnieuw instellen van wacht woorden of het bewerken van profielen in uw toepassing, gebruikt u [beleids bestanden om de gebruikers interface aan te passen](active-directory-b2c-ui-customization-custom.md).
 
 Als u dynamische inhoud op basis van de beslissing van een klant wilt opgeven, gebruikt u aangepaste beleids regels die de [pagina-inhoud dynamisch kunnen wijzigen](active-directory-b2c-ui-customization-custom-dynamic.md) , afhankelijk van een para meter die wordt verzonden in een query reeks. U kunt bijvoorbeeld de achtergrond afbeelding wijzigen op de Azure AD B2C registratie-of aanmeldings pagina op basis van een para meter die u doorgeeft vanuit uw web-of mobiele toepassing.
 
-### <a name="javascript"></a>JavaScript
+### <a name="javascript"></a>Javascript
 
 U kunt Java script-code aan de client zijde inschakelen in zowel [gebruikers stromen](user-flow-javascript-overview.md) als [aangepaste beleids regels](page-layout.md).
 
@@ -57,7 +58,7 @@ Onder **aanpassen** in het menu links selecteert u **pagina-indelingen** en sele
 
 Selecteer vervolgens een sjabloon in de lijst. Hier volgen enkele voor beelden van de aanmeldings pagina's voor elke sjabloon:
 
-| Oceaanblauw | Leisteengrijs | Klassiek |
+| Oceaan blauw | Pastel grijs | Klassiek |
 |:-:|:-:|:-:|
 |![Voor beeld van de sjabloon oceaan blauw die wordt weer gegeven op de aanmeldings pagina voor aanmelden](media/customize-ui-overview/template-ocean-blue.png)|![Voor beeld van de sjabloon pastel grijs weer gegeven op de aanmeldings pagina voor aanmelden](media/customize-ui-overview/template-slate-gray.png)|![Voor beeld van de klassieke sjabloon die wordt weer gegeven op de aanmeldings pagina voor aanmelden](media/customize-ui-overview/template-classic.png)|
 
@@ -90,7 +91,7 @@ Het belang rijk punt is dat u de inhoud host op een openbaar beschik bare HTTPS-
 
 Ga aan de slag met uw eigen HTML en CSS op uw pagina's voor gebruikers ervaring door deze richt lijnen te volgen.
 
-- Maak goed opgemaakte HTML-inhoud met `<div id="api"></div>` een leeg element ergens in `<body>`de. Dit element markeert waar de Azure AD B2C inhoud wordt ingevoegd. In het volgende voor beeld ziet u een minimale pagina:
+- Maak goed opgemaakte HTML-inhoud met een leeg `<div id="api"></div>`-element ergens in de `<body>`. Dit element markeert waar de Azure AD B2C inhoud wordt ingevoegd. In het volgende voor beeld ziet u een minimale pagina:
 
     ```html
     <!DOCTYPE html>
@@ -136,7 +137,7 @@ Ga aan de slag met uw eigen HTML en CSS op uw pagina's voor gebruikers ervaring 
 
 ### <a name="html-fragments-from-azure-ad-b2c"></a>HTML-fragmenten van Azure AD B2C
 
-De volgende tabel bevat de HTML-fragmenten die Azure AD B2C worden samengevoegd in het `<div id="api"></div>` element dat zich in uw inhoud bevindt.
+De volgende tabel bevat de HTML-fragmenten die Azure AD B2C worden samengevoegd in het `<div id="api"></div>`-element dat zich in uw inhoud bevindt.
 
 | Pagina ingevoegd | Beschrijving van HTML |
 | ------------- | ------------------- |
@@ -149,9 +150,9 @@ De volgende tabel bevat de HTML-fragmenten die Azure AD B2C worden samengevoegd 
 
 ## <a name="localize-content"></a>Inhoud lokaliseren
 
-U kunt uw HTML-inhoud lokaliseren door [taal aanpassing](active-directory-b2c-reference-language-customization.md) in te scha kelen in uw Azure AD B2C-Tenant. Als u deze functie inschakelt, kunnen Azure AD B2C de `ui-locales` OpenID Connect Connect-para meter naar uw eind punt door sturen. De inhouds server kan deze para meter gebruiken om taalspecifieke HTML-pagina's op te geven.
+U kunt uw HTML-inhoud lokaliseren door [taal aanpassing](active-directory-b2c-reference-language-customization.md) in te scha kelen in uw Azure AD B2C-Tenant. Als u deze functie inschakelt, kunnen Azure AD B2C de OpenID Connect Connect-para meter `ui-locales` naar uw eind punt door sturen. De inhouds server kan deze para meter gebruiken om taalspecifieke HTML-pagina's op te geven.
 
-Inhoud kan vanaf verschillende locaties worden opgehaald op basis van de land instelling die wordt gebruikt. In het eind punt waarvoor CORS is ingeschakeld, stelt u een mapstructuur in om inhoud voor specifieke talen te hosten. U belt het juiste nummer als u de Joker teken waarde `{Culture:RFC5646}`gebruikt.
+Inhoud kan vanaf verschillende locaties worden opgehaald op basis van de land instelling die wordt gebruikt. In het eind punt waarvoor CORS is ingeschakeld, stelt u een mapstructuur in om inhoud voor specifieke talen te hosten. U roept de juiste waarde aan als u de Joker teken `{Culture:RFC5646}`gebruikt.
 
 Uw aangepaste pagina-URI kan er bijvoorbeeld als volgt uitzien:
 
@@ -169,7 +170,7 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 
 U kunt verschillende voorbeeld sjabloon bestanden vinden in de [B2C-AzureBlobStorage-client](https://github.com/azureadquickstarts/b2c-azureblobstorage-client) opslagplaats op github.
 
-De voorbeeld HTML-en CSS-bestanden in de sjablonen bevinden zich in de [/sample_templates](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates) -map.
+De voorbeeld HTML-en CSS-bestanden in de sjablonen bevinden zich in de map [/sample_templates](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates) .
 
 ## <a name="next-steps"></a>Volgende stappen
 

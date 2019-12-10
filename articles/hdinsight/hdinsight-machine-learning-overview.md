@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: a770fca4f14e5441e5ef4f7bc99d9c0abd9a59d3
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: 4a1e621570f3bf5fdb78a2fd7b29ce0d1b51187f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241631"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951782"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Machine learning op HDInsight
 
@@ -21,19 +21,19 @@ HDInsight maakt het mogelijk om machine learning met big data, waardoor u waarde
 
 ## <a name="sparkml-and-mllib"></a>SparkML en MLlib
 
-[HDInsight Spark](spark/apache-spark-overview.md) is een door Azure gehoste aanbieding van [Apache Spark](https://spark.apache.org/), een gecombineerd, open source, parallel data processing framework dat ondersteuning biedt voor in-Memory verwerking om Big Data Analytics te stimuleren. De Spark-verwerkings engine is gebouwd voor snelheid, gebruiks gemak en geavanceerde analyses. Met de mogelijkheden van de gedistribueerde reken kracht van Spark in het geheugen is het een goede keuze voor de iteratieve algoritmen die worden gebruikt in machine learning-en grafiek berekeningen. Er zijn twee schaal bare machine learning bibliotheken die algoritmen model leren met deze gedistribueerde omgeving: MLlib en SparkML. MLlib bevat de oorspronkelijke API die boven op Rdd's is gebouwd. SparkML is een nieuwer pakket dat een op een hoger niveau ingebouwde API biedt voor het bouwen van ML-pijp lijnen. SparkML biedt nog geen ondersteuning voor alle functies van MLlib, maar vervangt MLlib als de standaard machine learning-bibliotheek van Spark.
+[HDInsight Spark](spark/apache-spark-overview.md) is een door Azure gehoste aanbieding van [Apache Spark](https://spark.apache.org/), een gecombineerd, open source, parallel data processing framework dat ondersteuning biedt voor in-Memory verwerking om Big Data Analytics te stimuleren. De Spark-verwerkingsengine is gebouwd voor snelheid, gebruiksgemak, en geavanceerde analyses. Gedistribueerde berekening in-memory-mogelijkheden van Spark kunnen u een goede keuze voor de zich herhalende algoritmen in machine learning- en grafiekberekeningen gebruikt. Er zijn twee schaal bare machine learning bibliotheken die algoritmen model leren met deze gedistribueerde omgeving: MLlib en SparkML. MLlib bevat de oorspronkelijke API die boven op Rdd's is gebouwd. SparkML is een nieuwer pakket dat een op een hoger niveau ingebouwde API biedt voor het bouwen van ML-pijp lijnen. SparkML biedt nog geen ondersteuning voor alle functies van MLlib, maar vervangt MLlib als de standaard machine learning-bibliotheek van Spark.
 
 De micro Soft Machine Learning-bibliotheek voor Apache Spark is [MMLSpark](https://github.com/Azure/mmlspark). Deze bibliotheek is ontworpen om gegevens wetenschappers productiever te maken op Spark, de frequentie van experimenten te verhogen en de geavanceerde machine learning technieken uit te voeren, waaronder diepe kennis, op zeer grote gegevens sets. MMLSpark biedt een laag bovenop de Api's met een laag niveau van SparkML bij het bouwen van schaal bare ML-modellen, zoals het indexeren van teken reeksen, het afdwingen van gegevens in een indeling die wordt verwacht door machine learning algoritmen en het samen stellen van functie vectoren. De MMLSpark-bibliotheek vereenvoudigt deze en andere veelvoorkomende taken voor het bouwen van modellen in PySpark.
 
 ## <a name="r"></a>R
 
-[R](https://www.r-project.org/) is momenteel de meest populaire statistische programmeer taal in de wereld. Het is een open source-hulp programma voor gegevens visualisatie met een community van meer dan 2.500.000 gebruikers en groei. Met zijn bloeiende gebruikers basis en meer dan 8.000 bijgedragen pakketten, is R een waarschijnlijke keuze voor veel bedrijven die machine learning nodig hebben. U kunt een HDInsight-cluster maken met ML services die klaar zijn voor gebruik met enorme gegevens sets en modellen. Deze mogelijkheid biedt gegevens wetenschappers en statistici met een vertrouwde R-interface die op aanvraag kan worden geschaald via HDInsight, zonder de overhead van het instellen en onderhouden van het cluster.
+[R](https://www.r-project.org/) is momenteel de meest populaire statistische programmeer taal in de wereld. Het is een open-source hulp programma voor gegevens visualisatie met een community van meer dan 2.500.000 gebruikers en groei. Met zijn bloeiende gebruikers basis en meer dan 8.000 bijgedragen pakketten, is R een waarschijnlijke keuze voor veel bedrijven die machine learning nodig hebben. U kunt een HDInsight-cluster maken met ML services die klaar zijn voor gebruik met enorme gegevens sets en modellen. Deze mogelijkheid biedt gegevens wetenschappers en statistici met een vertrouwde R-interface die op aanvraag kan worden geschaald via HDInsight, zonder de overhead van het instellen en onderhouden van het cluster.
 
 ![Training voor voor spellingen met R server](./media/hdinsight-machine-learning-overview/training-for-prediction.png)
 
-Het Edge-knoop punt van een cluster biedt een handige plaats om verbinding te maken met het cluster en om uw R-scripts uit te voeren.  U hebt ook de optie om R-scripts uit te voeren op de knoop punten van het cluster met behulp van de Hadoop-toewijzings reductie of Spark-reken contexten van de Scaler.
+Het Edge-knoop punt van een cluster biedt een handige plaats om verbinding te maken met het cluster en om uw R-scripts uit te voeren.  U kunt ook R-scripts uitvoeren op de knoop punten van het cluster met behulp van de Hadoop-toewijzing van de Scale-map of door middel van Spark Compute-contexten.
 
-Met ML Services op HDInsight met Spark kunt u training over de knoop punten van een cluster parallelliseren met behulp van een Spark-Compute-context. U kunt R-scripts rechtstreeks op het Edge-knoop punt uitvoeren, waarbij alle beschik bare kernen parallel, indien nodig, worden gebruikt. U kunt de code ook uitvoeren vanuit het Edge-knoop punt om de verwerking te starten die wordt gedistribueerd over alle knoop punten in het cluster. Met Spark Services in HDInsight kunt u ook gelijktijdig-functies van open source R-pakketten, indien gewenst, inschakelen.
+Met ML Services op HDInsight met Spark kunt u training over de knoop punten van een cluster parallelliseren met behulp van een Spark-Compute-context. U kunt R-scripts rechtstreeks op het Edge-knoop punt uitvoeren, waarbij alle beschik bare kernen parallel, indien nodig, worden gebruikt. U kunt de code ook uitvoeren vanuit het Edge-knoop punt om de verwerking te starten die wordt gedistribueerd over alle knoop punten in het cluster. Met Spark-Services in HDInsight kunnen ook gelijktijdig-functies van open-source R-pakketten, indien gewenst, worden ingeschakeld.
 
 ## <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning en Apache Hive
 

@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/09/2019
 ms.author: rkarlin
-ms.openlocfilehash: cf02708ae4ba3f203448398fdf954e8f48cce614
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 0479eba13fd747ea1bcab2672fce1df2156802e8
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762699"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947583"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Machtigingen in azure Sentinel
 
@@ -70,7 +70,7 @@ In de volgende tabel worden de rollen en toegestane acties in azure Sentinel wee
 >
 ## <a name="building-custom-rbac-roles"></a>Aangepaste RBAC-rollen bouwen
 
-Naast of in plaats van het gebruik van ingebouwde RBAC-rollen, kunt u aangepaste RBAC-rollen maken voor Azure Sentinel. Aangepaste RBAC-rollen voor Azure Sentinel worden op dezelfde manier gemaakt als bij het maken van andere [aangepaste Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) -rollen, op basis van specifieke machtigingen voor Azure-Sentinel-resources.
+Naast of in plaats van het gebruik van ingebouwde RBAC-rollen, kunt u aangepaste RBAC-rollen maken voor Azure Sentinel. Aangepaste RBAC-rollen voor Azure Sentinel worden op dezelfde manier gemaakt als bij het maken van andere [aangepaste Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) -rollen, op basis van [specifieke machtigingen voor Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) en [Azure log Analytics-resources](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights).
 
 ## <a name="advanced-rbac-on-the-data-you-store-in-azure-sentinel"></a>Geavanceerde RBAC voor de gegevens die u in azure-Sentinel opslaat
   

@@ -1,5 +1,6 @@
 ---
-title: SSO-en Token aanpassing beheren met aangepaste beleids regels in Azure Active Directory B2C | Microsoft Docs
+title: SSO en het aanpassen van tokens beheren met aangepaste beleids regels
+titleSuffix: Azure AD B2C
 description: Meer informatie over het beheren van SSO en het aanpassen van tokens met aangepaste beleids regels in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 36a95b502c13ccf360ba4ac56b4837d41ee487c8
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: de125bf61b5b0ff658f095077eab3ea20742368c
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72296408"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950610"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>SSO en het aanpassen van tokens beheren met aangepaste beleids regels in Azure Active Directory B2C
 
@@ -51,12 +52,12 @@ In moet u de informatie over de levens duur van uw tokens plaatsen. De XML ziet 
 
 De volgende waarden zijn ingesteld in het vorige voor beeld:
 
-- **Toegangs token levensduur** : de waarde voor de levens duur van het toegangs token is ingesteld met **token_lifetime_secs** -meta gegevens items. De standaard waarde is 3600 seconden (60 minuten).
-- **Levens duur van id-token** : de waarde voor de levens duur van het id-token is ingesteld met het **id_token_lifetime_secs** -meta gegevens item. De standaard waarde is 3600 seconden (60 minuten).
-- **Levens duur van het token vernieuwen** : de waarde voor de levens duur van het vernieuwings token is ingesteld met het meta gegevens item **refresh_token_lifetime_secs** . De standaard waarde is 1209600 seconden (14 dagen).
-- De **levens duur van het token sliding window vernieuwen** : als u een sliding window levensduur wilt instellen voor het vernieuwings token, stelt u de waarde van **rolling_refresh_token_lifetime_secs** -meta gegevens item in. De standaard waarde is 7776000 (90 dagen). Als u geen sliding window levensduur wilt afdwingen, vervangt u het item door `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`.
+- **Toegangs token levensduur** : de waarde voor de levens duur van het toegangs token is ingesteld met **token_lifetime_secs** meta gegevens item. De standaard waarde is 3600 seconden (60 minuten).
+- **Levens duur van id-token** : de waarde voor de levens duur van het id-token is ingesteld met het **id_token_lifetime_secs** meta gegevens item. De standaard waarde is 3600 seconden (60 minuten).
+- **Levens duur van het token vernieuwen** : de waarde voor de levens duur van het vernieuwings token is ingesteld met het **refresh_token_lifetime_secs** meta gegevens item. De standaard waarde is 1209600 seconden (14 dagen).
+- De **levens duur van het token sliding window vernieuwen** : als u een sliding window levensduur wilt instellen voor het vernieuwings token, stelt u de waarde van **rolling_refresh_token_lifetime_secs** meta gegevens item in. De standaard waarde is 7776000 (90 dagen). Als u geen sliding window levensduur wilt afdwingen, vervangt u het item door `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`.
 - **Claim verlener (ISS)** : de claim verlener (ISS) is ingesteld met het meta gegevens item **IssuanceClaimPattern** . De toepasselijke waarden zijn `AuthorityAndTenantGuid` en `AuthorityWithTfp`.
-- **Claim instellen die beleids-id vertegenwoordigt** : de opties voor het instellen van deze waarde zijn `TFP` (vertrouwens raamwerk beleid) en `ACR` (Naslag informatie over de verificatie context). `TFP` is de aanbevolen waarde. Stel **AuthenticationContextReferenceClaimPattern** in met de waarde `None`.
+- **Claim instellen die beleids-id vertegenwoordigt** : de opties voor het instellen van deze waarde zijn `TFP` (vertrouwens raamwerk beleid) en `ACR` (Naslag informatie over de verificatie context). `TFP` is de aanbevolen waarde. Stel **AuthenticationContextReferenceClaimPattern** in met de waarde van `None`.
 
     Voeg dit element toe aan het element **ClaimsSchema** :
 
@@ -75,13 +76,13 @@ De volgende waarden zijn ingesteld in het vorige voor beeld:
 
     Voor ACR verwijdert u het item **AuthenticationContextReferenceClaimPattern** .
 
-- **Onderwerp (sub) claim** : deze optie wordt standaard ingesteld op ObjectID. Als u deze instelling wilt overschakelen naar `Not Supported`, vervangt u deze regel als volgt:
+- **Onderwerp (sub) claim** : deze optie is standaard ingesteld op ObjectID. Als u deze instelling wilt overschakelen op `Not Supported`, vervangt u deze regel als volgt:
 
     ```XML
     <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />
     ```
 
-    met deze regel:
+    Met deze regel:
 
     ```XML
     <OutputClaim ClaimTypeReferenceId="sub" />
@@ -101,6 +102,6 @@ Als u uw sessie-en SSO-configuraties wilt wijzigen, voegt u een **UserJourneyBeh
 
 De volgende waarden zijn in het vorige voor beeld geconfigureerd:
 
-- **Eenmalige aanmelding (SSO)** : eenmalige aanmelding is geconfigureerd met de **SingleSignOn**. De toepasselijke waarden zijn `Tenant`, `Application`, `Policy` en `Suppressed`.
+- **Eenmalige aanmelding (SSO)** : eenmalige aanmelding is geconfigureerd met de **SingleSignOn**. De toepasselijke waarden zijn `Tenant`, `Application`, `Policy`en `Suppressed`.
 - **Sessietime-out van web** -app-de time-out voor de sessie van de web-app is ingesteld met het element **SessionExpiryType** . De toepasselijke waarden zijn `Absolute` en `Rolling`.
 - **Levens duur** van de web-app: de levens duur van de web-app-sessie is ingesteld met het element **SessionExpiryInSeconds** . De standaard waarde is 86400 seconden (1440 minuten).

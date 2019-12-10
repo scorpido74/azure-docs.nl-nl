@@ -1,6 +1,7 @@
 ---
-title: Beschik baarheid van de regio & gegevens locatie in Azure Active Directory B2C
-description: Een onderwerp over de typen Azure Active Directory B2C-tenants.
+title: Beschik baarheid van regio's en gegevens locatie
+titleSuffix: Azure AD B2C
+description: Beschik baarheid van regio's, gegevens locatie en informatie over Azure Active Directory B2C preview-tenants.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,14 +11,14 @@ ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0bb7a7ef2aabd7f93531d9afa662d7e582e05550
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 1b09eb85df6748fed042731ac90ebbf20c65b702
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273567"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950507"
 ---
-# <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Regionale beschikbaarheid en opslaglocaties
+# <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Beschik baarheid van regio's & gegevens locatie
 
 Beschik baarheid van regio's en gegevens locatie zijn twee verschillende concepten die verschillend van toepassing zijn op Azure AD B2C van de rest van Azure. In dit artikel vindt u informatie over de verschillen tussen deze twee concepten en vergelijkt u hoe deze van toepassing zijn op Azure versus Azure AD B2C.
 
@@ -27,7 +28,7 @@ Azure AD B2C is **over het algemeen wereld wijd beschikbaar** met de optie voor 
 
 De [gegevens locatie](#data-residency) verwijst naar de locatie waar de gebruikers gegevens worden opgeslagen.
 
-## <a name="region-availability"></a>Beschikbaarheid in regio’s
+## <a name="region-availability"></a>Regionale beschikbaarheid
 
 Azure AD B2C is wereld wijd beschikbaar via de open bare Azure-Cloud.
 
@@ -57,7 +58,7 @@ De volgende landen/regio's worden toegevoegd aan de lijst. U kunt nu nog steeds 
 
 > Argentinië, Australië, Brazilië, Chili, Colombia, Ecuador, Irak, Nieuw-Zeeland, Paraguay, Peru, Uruguay en Venezuela.
 
-## <a name="preview-tenant"></a>Preview-tenant
+## <a name="preview-tenant"></a>Preview-Tenant
 
 Als u een B2C-Tenant hebt gemaakt tijdens de preview-periode van Azure AD B2C's, is het waarschijnlijk dat uw **Tenant type** **een preview-Tenant**bevat.
 

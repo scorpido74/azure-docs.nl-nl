@@ -1,5 +1,6 @@
 ---
-title: REST API claim uitwisselingen integreren in uw Azure Active Directory B2C gebruikers traject
+title: REST API claim uitwisselingen integreren in een gebruikers traject
+titleSuffix: Azure AD B2C
 description: Integreer REST API claim uitwisselingen in uw Azure AD B2C gebruikers traject als validatie van gebruikers invoer.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 49cd049c56e0c1d80318f9323aefe2d128774f3f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 3bea04ba077aebe9a52400a1292c5cd27c15b72e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69645130"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950915"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>REST API claims-uitwisselingen integreren in uw Azure AD B2C gebruikers traject als validatie van gebruikers invoer
 
@@ -27,19 +28,19 @@ Met het Framework voor identiteits ervaring, dat Azure Active Directory B2C (Azu
 
 U kunt met behulp van Azure AD B2C uw eigen bedrijfs logica toevoegen aan een gebruikers reis door uw eigen REST-service aan te roepen. Met het Framework voor identiteits ervaring worden gegevens verzonden naar de REST-service in een claim verzameling met *invoer* en worden gegevens teruggestuurd vanuit de rest van een verzameling *uitvoer claims* . Met de ondersteunings integratie van de REST-service kunt u het volgende doen:
 
-* **Gebruikers invoer gegevens valideren**: Met deze actie voor komt u dat ongeldige gegevens persistent worden gemaakt in azure AD. Als de waarde van de gebruiker ongeldig is, retourneert de REST-service een fout bericht dat de gebruiker de opdracht geeft een vermelding op te geven. U kunt bijvoorbeeld controleren of het e-mail adres van de gebruiker bestaat in de data base van uw klant.
-* **Invoer claims overschrijven**: Als een gebruiker bijvoorbeeld de eerste naam in alle kleine letters of hoofd letters typt, kunt u de naam alleen met de eerste letter in een letter type Format teren.
-* **Verrijkende gebruikers gegevens door verder te integreren met zakelijke line-of-business-toepassingen**: De REST-service kan het e-mail adres van de gebruiker ontvangen, query's uitvoeren op de data base van de klant en het loyaliteits nummer van de gebruiker voor Azure AD B2C retour neren. De retour claims kunnen worden opgeslagen in het Azure AD-account van de gebruiker, geëvalueerd in de volgende *Orchestration-stappen*of opgenomen in het toegangs token.
-* **Aangepaste bedrijfs logica uitvoeren**: U kunt push meldingen verzenden, zakelijke data bases bijwerken, een gebruikers migratie proces uitvoeren, machtigingen beheren, data bases controleren en andere acties uitvoeren.
+* **Gebruikers invoer valideren**: met deze actie voor komt u dat ongeldige gegevens worden bewaard in azure AD. Als de waarde van de gebruiker ongeldig is, retourneert de REST-service een fout bericht dat de gebruiker de opdracht geeft een vermelding op te geven. U kunt bijvoorbeeld controleren of het e-mail adres van de gebruiker bestaat in de data base van uw klant.
+* **Invoer claims overschrijven**: als een gebruiker bijvoorbeeld in alle kleine letters of hoofd letters de voor naam invoert, kunt u de naam alleen met de eerste letter in een letter type Format teren.
+* **Verrijkende gebruikers gegevens door verder te integreren met zakelijke line-of-business-toepassingen**: uw rest-service kan het e-mail adres van de gebruiker ontvangen, query's uitvoeren op de data base van de klant en het loyaliteits nummer van de gebruiker retour neren om Azure AD B2C. De retour claims kunnen worden opgeslagen in het Azure AD-account van de gebruiker, geëvalueerd in de volgende *Orchestration-stappen*of opgenomen in het toegangs token.
+* **Aangepaste bedrijfs logica uitvoeren**: u kunt push meldingen verzenden, zakelijke data bases bijwerken, een gebruikers migratie proces uitvoeren, machtigingen beheren, data bases controleren en andere acties uitvoeren.
 
 U kunt op de volgende manieren de integratie met de REST-services ontwerpen:
 
-* **Validatie technische profiel**: De aanroep van de REST-service vindt plaats binnen het technische profiel voor validatie van het opgegeven technische profiel. Het validatie-technische profiel valideert de door de gebruiker verschafte gegevens voordat de reis van de gebruiker vooruit gaat. Met het technische profiel voor validatie kunt u het volgende doen:
+* **Technisch profiel voor validatie**: de aanroep van de rest-service vindt plaats binnen het technische profiel voor validatie van het opgegeven technische profiel. Het validatie-technische profiel valideert de door de gebruiker verschafte gegevens voordat de reis van de gebruiker vooruit gaat. Met het technische profiel voor validatie kunt u het volgende doen:
   * Invoer claims verzenden.
   * Valideer de invoer claims en genereren aangepaste fout berichten.
   * Uitvoer claims verzenden.
 
-* **Uitwisseling van claims**: Dit ontwerp is vergelijkbaar met het technische profiel voor validatie, maar dit gebeurt in een indelings stap. Deze definitie is beperkt tot:
+* **Claim uitwisseling**: dit ontwerp is vergelijkbaar met het technische profiel voor validatie, maar dit gebeurt in een indelings stap. Deze definitie is beperkt tot:
   * Invoer claims verzenden.
   * Uitvoer claims verzenden.
 
@@ -60,35 +61,35 @@ Overzicht:
 
 Volg de stappen in het artikel aan de slag [met aangepaste beleids regels](active-directory-b2c-get-started-custom.md) .
 
-## <a name="step-1-create-an-aspnet-web-api"></a>Stap 1: Een ASP.NET-Web-API maken
+## <a name="step-1-create-an-aspnet-web-api"></a>Stap 1: een ASP.NET-Web-API maken
 
 1. Maak in Visual Studio een project door **bestand** > **Nieuw** > **project**te selecteren.
-1. Selecteer in het venster **New Project** de **optie C#Visual**   >  **Web** > **ASP.net Web Application (.NET Framework)** .
+1. Selecteer in het venster **New Project** de **optie C# Visual** > **Web** > **ASP.net Web Application (.NET Framework)** .
 1. Typ in het vak **naam** een naam voor de toepassing (bijvoorbeeld *contoso. AADB2C. API*) en selecteer vervolgens **OK**.
 
     ![Een nieuw Visual Studio-project maken in Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-create-project.png)
 
-1. Selecteer in het venster **nieuwe ASP.net** -webtoepassing een **Web API** -of **Azure API-app** -sjabloon.
+1. Selecteer in het venster **nieuwe ASP.NET-webtoepassing** een **Web API** -of **Azure API-app** -sjabloon.
 
     ![Een web-API-sjabloon in Visual Studio selecteren](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
 
 1. Zorg ervoor dat verificatie is ingesteld op **geen verificatie**.
 1. Selecteer **OK** om het project te maken.
 
-## <a name="step-2-prepare-the-rest-api-endpoint"></a>Stap 2: Het REST API-eind punt voorbereiden
+## <a name="step-2-prepare-the-rest-api-endpoint"></a>Stap 2: het REST API-eind punt voorbereiden
 
-### <a name="step-21-add-data-models"></a>Stap 2.1: Gegevens modellen toevoegen
+### <a name="step-21-add-data-models"></a>Stap 2,1: gegevens modellen toevoegen
 
 De modellen vertegenwoordigen de invoer claims en uitvoer claim gegevens in uw REST-service. Uw code leest de invoer gegevens door het invoer claim model van een JSON-teken reeks naar een C# object (uw model) te deserialiseren. De ASP.NET Web-API deserialeert het uitvoer claim model automatisch terug naar JSON en schrijft vervolgens de geserialiseerde gegevens naar de hoofd tekst van het HTTP-antwoord bericht.
 
 Maak een model dat invoer claims vertegenwoordigt door het volgende te doen:
 
-1. Als Solution Explorer nog niet is geopend, selecteert u**Solution Explorer** **weer geven** > .
+1. Als Solution Explorer nog niet is geopend, selecteert u > **Solution Explorer** **weer geven** .
 1. Klik in Solution Explorer met de rechtermuisknop op de map **Modellen** en selecteer achtereenvolgens **Toevoegen** en **Klasse**.
 
     ![Menu-item klasse toevoegen geselecteerd in Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
 
-1. Geef de klasse `InputClaimsModel`een naam en voeg de volgende eigenschappen toe aan `InputClaimsModel` de klasse:
+1. Geef de klasse een naam `InputClaimsModel`en voeg de volgende eigenschappen toe aan de klasse `InputClaimsModel`:
 
     ```csharp
     namespace Contoso.AADB2C.API.Models
@@ -102,7 +103,7 @@ Maak een model dat invoer claims vertegenwoordigt door het volgende te doen:
     }
     ```
 
-1. Maak een nieuw model `OutputClaimsModel`en voeg de volgende eigenschappen toe aan de `OutputClaimsModel` klasse:
+1. Maak een nieuw model, `OutputClaimsModel`en voeg de volgende eigenschappen toe aan de klasse `OutputClaimsModel`:
 
     ```csharp
     namespace Contoso.AADB2C.API.Models
@@ -114,7 +115,7 @@ Maak een model dat invoer claims vertegenwoordigt door het volgende te doen:
     }
     ```
 
-1. Maak nog een model `B2CResponseContent`dat u kunt gebruiken om fout berichten over invoer validatie te genereren. Voeg de volgende eigenschappen toe aan `B2CResponseContent` de klasse, geef de ontbrekende verwijzingen op en sla het bestand op:
+1. Maak nog een model, `B2CResponseContent`, dat u gebruikt om fout berichten over invoer validatie te genereren. Voeg de volgende eigenschappen toe aan de klasse `B2CResponseContent`, geef de ontbrekende verwijzingen op en sla het bestand op:
 
     ```csharp
     namespace Contoso.AADB2C.API.Models
@@ -135,7 +136,7 @@ Maak een model dat invoer claims vertegenwoordigt door het volgende te doen:
     }
     ```
 
-### <a name="step-22-add-a-controller"></a>Stap 2.2: Een controller toevoegen
+### <a name="step-22-add-a-controller"></a>Stap 2,2: een controller toevoegen
 
 In de Web-API is een _controller_ een object waarmee HTTP-aanvragen worden verwerkt. De controller retourneert uitvoer claims of, als de voor naam ongeldig is, een HTTP-fout bericht met een conflict.
 
@@ -206,7 +207,7 @@ In de Web-API is een _controller_ een object waarmee HTTP-aanvragen worden verwe
     }
     ```
 
-## <a name="step-3-publish-the-project-to-azure"></a>Stap 3: Het project naar Azure publiceren
+## <a name="step-3-publish-the-project-to-azure"></a>Stap 3: het project naar Azure publiceren
 
 1. Klik in Solution Explorer met de rechter muisknop op het project **contoso. AADB2C. API** en selecteer vervolgens **publiceren**.
 
@@ -230,9 +231,9 @@ In de Web-API is een _controller_ een object waarmee HTTP-aanvragen worden verwe
 
 1. Kopieer de URL van de web-app.
 
-## <a name="step-4-add-the-new-loyaltynumber-claim-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>Stap 4: De nieuwe `loyaltyNumber` claim toevoegen aan het schema van uw TrustFrameworkExtensions. XML-bestand
+## <a name="step-4-add-the-new-loyaltynumber-claim-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>Stap 4: Voeg de nieuwe `loyaltyNumber` claim toe aan het schema van uw TrustFrameworkExtensions. XML-bestand
 
-De `loyaltyNumber` claim is nog niet gedefinieerd in het schema. Een definitie toevoegen in het `<BuildingBlocks>` -element, dat u aan het begin van het bestand *TrustFrameworkExtensions. XML* kunt vinden.
+De `loyaltyNumber` claim is nog niet gedefinieerd in het schema. Voeg een definitie toe binnen het `<BuildingBlocks>`-element, dat u aan het begin van het bestand *TrustFrameworkExtensions. XML* kunt vinden.
 
 ```xml
 <BuildingBlocks>
@@ -246,7 +247,7 @@ De `loyaltyNumber` claim is nog niet gedefinieerd in het schema. Een definitie t
 </BuildingBlocks>
 ```
 
-## <a name="step-5-add-a-claims-provider"></a>Stap 5: Een claim provider toevoegen
+## <a name="step-5-add-a-claims-provider"></a>Stap 5: een claim provider toevoegen
 
 Elke claim provider moet een of meer technische profielen hebben, die de eind punten en protocollen bepalen die nodig zijn om te communiceren met de claim provider.
 
@@ -254,15 +255,15 @@ Een claim provider kan om verschillende redenen meerdere technische profielen he
 
 Het volgende XML-fragment bevat een claim provider knooppunt met twee technische profielen:
 
-* **TechnicalProfile id = "rest-API-aanmelden"** : Hiermee definieert u de REST-service.
-  * `Proprietary`wordt beschreven als het protocol voor een op REST gebaseerde provider.
-  * `InputClaims`Hiermee worden de claims gedefinieerd die van Azure AD B2C naar de REST-service worden verzonden.
+* **TechnicalProfile id = "rest-API-aanmelden"** : definieert uw rest-service.
+  * `Proprietary` wordt als protocol voor een op REST-gebaseerde provider beschreven.
+  * `InputClaims` definieert de claims die van Azure AD B2C naar de REST-service worden verzonden.
 
-    In dit voor beeld verzendt de inhoud van de `givenName` claim naar de rest-service `firstName`als, de inhoud van de `surname` claim wordt verzonden naar de rest `lastName`-service `email` als, en wordt verzonden als. Het `OutputClaims` element definieert de claims die worden opgehaald van de rest-service terug naar Azure AD B2C.
+    In dit voor beeld wordt de inhoud van de claim `givenName` als `firstName`verzonden naar de REST-service, wordt de inhoud van de claim `surname` naar de REST-service verzonden als `lastName`en wordt `email` verzonden. Het `OutputClaims`-element definieert de claims die worden opgehaald van de REST-service terug naar Azure AD B2C.
 
-* **TechnicalProfile id = "LocalAccountSignUpWithLogonEmail"** : Voegt een validatie technische profiel toe aan een bestaand technisch profiel (gedefinieerd in het basis beleid). Tijdens de registratie traject roept het technische profiel voor validatie het voor gaande technische profiel aan. Als de REST-service een HTTP-fout 409 (een conflict fout) retourneert, wordt het fout bericht voor de gebruiker weer gegeven.
+* **TechnicalProfile id = "LocalAccountSignUpWithLogonEmail"** : voegt een technisch profiel voor validatie toe aan een bestaand technisch profiel (gedefinieerd in het basis beleid). Tijdens de registratie traject roept het technische profiel voor validatie het voor gaande technische profiel aan. Als de REST-service een HTTP-fout 409 (een conflict fout) retourneert, wordt het fout bericht voor de gebruiker weer gegeven.
 
-Zoek het `<ClaimsProviders>` knoop punt en voeg het volgende XML-fragment toe onder `<ClaimsProviders>` het knoop punt:
+Zoek het knoop punt `<ClaimsProviders>` en voeg het volgende XML-fragment toe onder het knoop punt `<ClaimsProviders>`:
 
 ```xml
 <ClaimsProvider>
@@ -305,9 +306,9 @@ Zoek het `<ClaimsProviders>` knoop punt en voeg het volgende XML-fragment toe on
 </ClaimsProvider>
 ```
 
-De opmerkingen hierboven `AuthenticationType` en `AllowInsecureAuthInProduction` Geef de wijzigingen op die u moet aanbrengen wanneer u overstapt naar een productie omgeving. Voor meer informatie over het beveiligen van uw REST-Api's voor productie raadpleegt u [beveiligde rest api's met basis verificatie](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) en [beveiligde rest api's met certificaat verificatie](active-directory-b2c-custom-rest-api-netfw-secure-cert.md).
+De opmerkingen hierboven `AuthenticationType` en `AllowInsecureAuthInProduction` u de wijzigingen opgeeft die u moet aanbrengen wanneer u overstapt naar een productie omgeving. Voor meer informatie over het beveiligen van uw REST-Api's voor productie raadpleegt u [beveiligde rest api's met basis verificatie](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) en [beveiligde rest api's met certificaat verificatie](active-directory-b2c-custom-rest-api-netfw-secure-cert.md).
 
-## <a name="step-6-add-the-loyaltynumber-claim-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Stap 6: Voeg de `loyaltyNumber` claim toe aan uw Relying Party-beleids bestand zodat de claim wordt verzonden naar uw toepassing
+## <a name="step-6-add-the-loyaltynumber-claim-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Stap 6: de `loyaltyNumber` claim toevoegen aan uw Relying Party-beleids bestand zodat de claim naar uw toepassing wordt verzonden
 
 Bewerk het bestand *SignUpOrSignIn. xml* RELYING Party (RP) en wijzig het element TechnicalProfile id = "PolicyProfile" om het volgende toe te voegen: `<OutputClaim ClaimTypeReferenceId="loyaltyNumber" />`.
 
@@ -334,7 +335,7 @@ Nadat u de nieuwe claim hebt toegevoegd, ziet de Relying Party code er als volgt
 </TrustFrameworkPolicy>
 ```
 
-## <a name="step-7-upload-the-policy-to-your-tenant"></a>Stap 7: Het beleid uploaden naar uw Tenant
+## <a name="step-7-upload-the-policy-to-your-tenant"></a>Stap 7: het beleid uploaden naar uw Tenant
 
 1. In de [Azure Portal](https://portal.azure.com)gaat u naar de [context van uw Azure AD B2C-Tenant](active-directory-b2c-navigate-to-b2c-context.md)en opent u **Azure AD B2C**.
 
@@ -350,7 +351,7 @@ Nadat u de nieuwe claim hebt toegevoegd, ziet de Relying Party code er als volgt
 
 1. Herhaal de vorige stap met het bestand SignUpOrSignIn. XML.
 
-## <a name="step-8-test-the-custom-policy-by-using-run-now"></a>Stap 8: Het aangepaste beleid testen met behulp van nu uitvoeren
+## <a name="step-8-test-the-custom-policy-by-using-run-now"></a>Stap 8: het aangepaste beleid testen met behulp van nu uitvoeren
 
 1. Selecteer **Azure AD B2C instellingen**en ga vervolgens naar **identiteits ervaring-Framework**.
 
@@ -359,7 +360,7 @@ Nadat u de nieuwe claim hebt toegevoegd, ziet de Relying Party code er als volgt
 
 2. Open **B2C_1A_signup_signin**, het aangepaste beleid RELYING Party (RP) dat u hebt geüpload en selecteer **nu uitvoeren**.
 
-    ![De aangepaste beleids pagina voor B2C_1A_signup_signin in de Azure Portal](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-run.png)
+    ![De B2C_1A_signup_signin aangepaste beleids pagina in het Azure Portal](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-run.png)
 
 3. Test het proces door **test** te typen in het vak **naam** .
     In Azure AD B2C wordt boven in het venster een fout bericht weer gegeven.
@@ -403,4 +404,4 @@ Uw volgende taak is het beveiligen van de REST-API met behulp van basis-of verif
 * [Beveilig uw REST API met basis verificatie (gebruikers naam en wacht woord)](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 * [De REST-API beveiligen met client certificaten](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
 
-Zie [Naslag informatie over alle beschik bare elementen in een onderliggend technisch profiel: Het resterende technische profiel](restful-technical-profile.md).
+Zie Referentie: reactief [technisch profiel](restful-technical-profile.md)voor informatie over alle elementen die beschikbaar zijn in een onderliggend technisch profiel.

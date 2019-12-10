@@ -1,5 +1,6 @@
 ---
-title: Stel registratie in en meld u aan met een WeChat-account met behulp van Azure Active Directory B2C
+title: Registratie instellen en aanmelden met een WeChat-account
+titleSuffix: Azure AD B2C
 description: Gebruik Azure Active Directory B2C om u aan te melden en u aan te melden bij klanten met WeChat-accounts in uw toepassingen.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ad5e5b766c38b2ce3c48c22e62dd1fd2b9a79853
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 7cbc41247d7b99eb63730ae4326808e64c663e8f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064970"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950524"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Stel registratie in en meld u aan met een WeChat-account met behulp van Azure Active Directory B2C
 
@@ -23,14 +24,14 @@ ms.locfileid: "71064970"
 
 ## <a name="create-a-wechat-application"></a>Een WeChat-toepassing maken
 
-Als u een WeChat-account wilt gebruiken als een id-provider in Azure Active Directory B2C (Azure AD B2C), moet u een toepassing maken in uw Tenant waarmee deze wordt vertegenwoordigd. Als u nog geen WeChat-account hebt, kunt u informatie opvragen op [https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html).
+Als u een WeChat-account wilt gebruiken als een id-provider in Azure Active Directory B2C (Azure AD B2C), moet u een toepassing maken in uw Tenant waarmee deze wordt vertegenwoordigd. Als u nog geen WeChat-account hebt, kunt u informatie ontvangen op [https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html).
 
 ### <a name="register-a-wechat-application"></a>Een WeChat-toepassing registreren
 
-1. Meld u aan [https://open.weixin.qq.com/](https://open.weixin.qq.com/) met uw WeChat-referenties.
+1. Meld u aan bij [https://open.weixin.qq.com/](https://open.weixin.qq.com/) met uw WeChat-referenties.
 1. Selecteer**管理中心**(Management Center).
 1. Volg de stappen om een nieuwe toepassing te registreren.
-1. Voer `https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in**授权回调域**(call back-URL) in. Als uw Tenant naam bijvoorbeeld contoso is, stelt u de URL in op `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+1. Geef `https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` op in**授权回调域**(call back-URL). Als uw Tenant naam bijvoorbeeld contoso is, stelt u de URL in op `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
 1. Kopieer de **App-ID** en **app-sleutel**. U hebt deze nodig om de ID-provider toe te voegen aan uw Tenant.
 
 ## <a name="configure-wechat-as-an-identity-provider-in-your-tenant"></a>WeChat configureren als een id-provider in uw Tenant

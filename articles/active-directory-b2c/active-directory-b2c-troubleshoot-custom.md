@@ -1,5 +1,6 @@
 ---
-title: Problemen oplossen met aangepaste beleids regels met Application Insights-Azure Active Directory B2C
+title: Problemen met aangepaste beleid oplossen met Application Insights
+titleSuffix: Azure AD B2C
 description: Application Insights instellen om de uitvoering van uw aangepaste beleids regels te traceren.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b8bf26791ca6489c12e4f9538d56ae0f0f66cc8c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3aeef1614f22563e0fd348c5bc6ae7ff1e7b0b03
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602023"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950082"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Azure Active Directory B2C-logboeken met Application Insights verzamelen
 
@@ -30,7 +31,7 @@ De gedetailleerde activiteiten logboeken die hier worden beschreven, moeten **al
 
 Als u er nog geen hebt, maakt u een instantie van Application Insights in uw abonnement.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure-abonnement bevat (niet uw Azure AD B2C Directory).
 1. Selecteer **een resource maken** in het navigatie menu aan de linkerkant.
 1. Zoek en selecteer **Application Insights**en selecteer vervolgens **maken**.
@@ -92,7 +93,7 @@ Er is een korte vertraging, meestal minder dan vijf minuten, voordat u nieuwe lo
 
 Hier volgt een lijst met query's die u kunt gebruiken om de logboeken weer te geven:
 
-| Query’s uitvoeren | Beschrijving |
+| Query | Beschrijving |
 |---------------------|--------------------|
 `traces` | Alle logboeken weer geven die zijn gegenereerd door Azure AD B2C |
 `traces | where timestamp > ago(1d)` | Alle logboeken weer geven die zijn gegenereerd door Azure AD B2C voor de afgelopen dag

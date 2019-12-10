@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Shell-beperkingen | Microsoft Docs
-description: Overzicht van de beperkingen van Azure Cloud Shell
+title: Azure Cloud Shell beperkingen | Microsoft Docs
+description: Overzicht van beperkingen van Azure Cloud Shell
 services: azure
 documentationcenter: ''
 author: maertendMSFT
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: damaerte
-ms.openlocfilehash: 8fd88221818d28c227c33719c03e522e815a408b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 092dccab82326bb9983f11ff64fe50aee7b1084d
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62097027"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951476"
 ---
-# <a name="limitations-of-azure-cloud-shell"></a>Beperkingen van Azure Cloudshell
+# <a name="limitations-of-azure-cloud-shell"></a>Beperkingen van Azure Cloud Shell
 
-Azure Cloud Shell bevat de volgende beperkingen:
+Azure Cloud Shell heeft de volgende bekende beperkingen:
 
 ## <a name="general-limitations"></a>Algemene beperkingen
 
-### <a name="system-state-and-persistence"></a>Systeemstatus- en persistentie
+### <a name="system-state-and-persistence"></a>Systeem status en persistentie
 
-De computer waarmee u uw Cloud Shell-sessie is tijdelijk en deze wordt gerecycled nadat uw sessie niet actief voor de 20 minuten is. Cloudshell is vereist voor een Azure-bestandsshare te koppelen. Uw abonnement moet als gevolg hiervan kunnen opslagresources instellen voor toegang tot Cloud Shell. Andere overwegingen zijn onder andere:
+De computer die uw Cloud Shell-sessie levert, is tijdelijk en wordt gerecycled nadat uw sessie 20 minuten niet actief is. Cloud Shell moet een Azure-bestands share worden gekoppeld. Als gevolg hiervan moet uw abonnement opslag bronnen kunnen instellen voor toegang tot Cloud Shell. Andere overwegingen zijn onder andere:
 
-* Met gekoppelde opslag, alleen de wijzigingen in de `$Home` directory zijn opgeslagen.
-* Azure-bestandsshares kunnen worden gekoppeld alleen vanuit uw [regio toegewezen](persisting-shell-storage.md#mount-a-new-clouddrive).
-  * Voer in Bash, `env` te vinden van uw regio instellen als `ACC_LOCATION`.
+* Bij gekoppelde opslag worden alleen wijzigingen in de `$Home` Directory bewaard.
+* Azure-bestands shares kunnen alleen worden gekoppeld vanuit uw [toegewezen regio](persisting-shell-storage.md#mount-a-new-clouddrive).
+  * Voer in bash `env` uit om uw regio in te stellen als `ACC_LOCATION`.
 
 ### <a name="browser-support"></a>Browserondersteuning
 
-Cloudshell biedt ondersteuning voor de nieuwste versies van Microsoft Edge, Microsoft Internet Explorer, Google Chrome, Mozilla Firefox en Apple Safari. Safari in de privémodus wordt niet ondersteund.
+Cloud Shell ondersteunt de nieuwste versies van micro soft Edge, micro soft Internet Explorer, Google Chrome, Mozilla Firefox en Apple Safari. Safari in de privé modus wordt niet ondersteund.
 
 ### <a name="copy-and-paste"></a>Kopiëren en plakken
 
@@ -45,46 +45,46 @@ Cloudshell biedt ondersteuning voor de nieuwste versies van Microsoft Edge, Micr
 
 ### <a name="for-a-given-user-only-one-shell-can-be-active"></a>Voor een bepaalde gebruiker kan slechts één shell actief zijn
 
-Gebruikers kunnen alleen starten één type shell op een tijdstip, ofwel **Bash** of **PowerShell**. U mogelijk echter meerdere exemplaren van de Bash- of PowerShell in één keer uitgevoerd. Wisselen tussen Bash of PowerShell met behulp van het menu zorgt ervoor dat Cloud-Shell te starten, dat bestaande sessies beëindigd. U kunt bash in PowerShell ook uitvoeren door te typen `bash`, en kunt u PowerShell uitvoeren in bash door te typen `pwsh`.
+Gebruikers kunnen slechts één type shell tegelijk starten, hetzij **bash** of **Power shell**. Het is echter mogelijk dat er meerdere exemplaren van bash of Power shell tegelijk worden uitgevoerd. Als u het menu verwisselt tussen bash of Power shell, worden Cloud Shell opnieuw opgestart, waardoor bestaande sessies worden beëindigd. U kunt ook bash in Power shell uitvoeren door `bash`te typen en Power shell in bash uit te voeren door `pwsh`te typen.
 
 ### <a name="usage-limits"></a>Gebruiksbeperkingen
 
-Cloudshell is bedoeld voor interactieve gebruiksvoorbeelden. Als gevolg hiervan, geen niet-interactieve langlopende-sessies worden beëindigd zonder waarschuwing.
+Cloud Shell is bedoeld voor interactieve use-cases. Als gevolg hiervan worden langlopende niet-interactieve sessies beëindigd zonder dat dit wordt gewaarschuwd.
 
 ## <a name="bash-limitations"></a>Bash-beperkingen
 
 ### <a name="user-permissions"></a>Gebruikersmachtigingen
 
-Machtigingen zijn ingesteld als normale gebruikers zonder toegang tot sudo. Elke installatie buiten uw `$Home` directory is niet persistent.
+Machtigingen worden ingesteld als gewone gebruikers zonder sudo-toegang. Een installatie buiten uw `$Home` Directory wordt niet bewaard.
 
-### <a name="editing-bashrc-or-profile"></a>.Bashrc of $PROFILE bewerken
+### <a name="editing-bashrc-or-profile"></a>Bewerken. bashrc of $PROFILE
 
-Nemen voorzichtig bij het bewerken van .bashrc of van PowerShell $PROFILE bestand, in dat geval kan onverwachte fouten veroorzaken in Cloud Shell.
+Let op wanneer u het bestand bewerkt. bashrc of Power shell $PROFILE. Dit kan leiden tot onverwachte fouten in Cloud Shell.
 
-## <a name="powershell-limitations"></a>PowerShell-beperkingen
+## <a name="powershell-limitations"></a>Power shell-beperkingen
 
-### <a name="azuread-module-name"></a>`AzureAD` modulenaam
+### <a name="azuread-module-name"></a>module naam `AzureAD`
 
-De `AzureAD` modulenaam is momenteel `AzureAD.Standard.Preview`, de module biedt dezelfde functionaliteit.
+De naam van de `AzureAD` module is momenteel `AzureAD.Standard.Preview`, de module biedt dezelfde functionaliteit.
 
-### <a name="sqlserver-module-functionality"></a>`SqlServer` modulefunctionaliteit
+### <a name="sqlserver-module-functionality"></a>functionaliteit van `SqlServer`-module
 
-De `SqlServer` opgenomen in de Cloud Shell-module bevat alleen prerelease ondersteuning voor PowerShell Core. In het bijzonder `Invoke-SqlCmd` is nog niet beschikbaar.
+De `SqlServer` module die is opgenomen in Cloud Shell heeft alleen ondersteuning voor de Prerelease van Power shell core. Met name `Invoke-SqlCmd` is nog niet beschikbaar.
 
-### <a name="default-file-location-when-created-from-azure-drive"></a>Standaardlocatie wanneer gemaakt op basis van Azure-station:
+### <a name="default-file-location-when-created-from-azure-drive"></a>Standaard bestands locatie bij het maken van een Azure-station:
 
-Met behulp van PowerShell-cmdlets, gebruikers kunnen niet maken in de Azure bestanden: station. Wanneer gebruikers nieuwe bestanden met andere hulpprogramma's, zoals vim of nano, maakt de bestanden worden opgeslagen in de `$HOME` standaard. 
+Met Power shell-cmdlets kunnen gebruikers geen bestanden maken in het Azure:-station. Wanneer gebruikers nieuwe bestanden maken met andere hulpprogram ma's, zoals vim of nano, worden de bestanden standaard opgeslagen in de `$HOME`. 
 
 ### <a name="gui-applications-are-not-supported"></a>GUI-toepassingen worden niet ondersteund
 
-Als de gebruiker wordt uitgevoerd een opdracht die een Windows-dialoogvenster wilt maken, een foutmelding zoals ziet: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
+Als de gebruiker een opdracht uitvoert waarmee een Windows-dialoog venster wordt gemaakt, ziet u een fout bericht zoals: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
 
-### <a name="large-gap-after-displaying-progress-bar"></a>Wijd nadat de voortgangsbalk weergegeven
+### <a name="large-gap-after-displaying-progress-bar"></a>Grote tussen ruimte na het weer geven van de voortgangs balk
 
-Als de gebruiker een actie uitvoert die wordt weergegeven een voortgangsbalk, zoals een tabblad voltooien tijdens het in de `Azure:` station, dan is het mogelijk dat de cursor is niet juist ingesteld en een onderbreking wordt weergegeven wanneer de voortgangsbalk is eerder.
+Als de gebruiker een actie uitvoert waarmee een voortgangs balk wordt weer gegeven, zoals een tab die wordt ingevuld in het `Azure:` station, is het mogelijk dat de cursor niet op de juiste wijze is ingesteld en dat er een lege ruimte wordt weer gegeven waarin de voortgangs balk eerder was.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Oplossen van problemen met Cloudshell](troubleshooting.md) <br>
+[Problemen met Cloud Shell oplossen](troubleshooting.md) <br>
 [Snelstartgids voor Bash](quickstart.md) <br>
 [Snelstartgids voor PowerShell](quickstart-powershell.md)

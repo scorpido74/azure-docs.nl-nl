@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b2d02ed5a9fb2cb10e4cf18fe7d878da5b032fe0
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: ba95723e62cec9708684665a9d141b1e39ccb831
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816402"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951833"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Gegevens voorbereiden voor Custom Speech
 
@@ -62,6 +62,9 @@ Gebruik deze tabel om ervoor te zorgen dat uw audio bestanden correct zijn inged
 | Archief indeling | .zip |
 | Maximale archief grootte | 2 GB |
 
+> [!TIP]
+> Bij het uploaden van training en het testen van gegevens, mag de zip-bestand niet groter zijn dan 2 GB. Als u meer gegevens nodig hebt voor trainings-en test doeleinden, splitst u deze in verschillende zip-bestanden en uploadt u deze afzonderlijk. Later kunt u kiezen voor het trainen en testen van *meerdere* gegevens sets.
+
 Als uw audio niet voldoet aan deze eigenschappen of als u wilt controleren of dit het geval is, wordt u aangeraden [Sox](http://sox.sourceforge.net) te downloaden om de audio te controleren of te converteren. Hieronder ziet u enkele voor beelden van de manier waarop elk van deze activiteiten kan worden uitgevoerd via de opdracht regel:
 
 | Activiteit | Beschrijving | Sox-opdracht |
@@ -71,7 +74,7 @@ Als uw audio niet voldoet aan deze eigenschappen of als u wilt controleren of di
 
 ## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>Audio en transcriptie gegevens met menselijke labels voor testen/training
 
-Als u de nauw keurigheid van de spraak-naar-tekst nauwkeurigheid van micro soft tijdens het verwerken van uw audio bestanden wilt meten, moet u transcripties (woord voor woord) van de mens voorzien voor vergelijking. Hoewel menselijke labels transcriptie vaak tijdrovend zijn, is het nood zakelijk om nauw keurigheid te evalueren en het model te trainen voor uw gebruiks voorbeelden. Houd er rekening mee dat de verbeteringen in de herkenning alleen van belang zijn voor de gegevens. Daarom is het belang rijk dat alleen transcripten van hoogwaardige kwaliteit worden geüpload.  
+Als u de nauw keurigheid van de spraak-naar-tekst nauwkeurigheid van micro soft tijdens het verwerken van uw audio bestanden wilt meten, moet u transcripties (woord voor woord) van de mens voorzien voor vergelijking. Hoewel menselijke labels transcriptie vaak tijdrovend zijn, is het nood zakelijk om nauw keurigheid te evalueren en het model te trainen voor uw gebruiks voorbeelden. Houd er rekening mee dat de verbeteringen in de herkenning alleen van belang zijn voor de gegevens. Daarom is het belang rijk dat alleen transcripten van hoogwaardige kwaliteit worden geüpload.
 
 | Eigenschap | Waarde |
 |----------|-------|
@@ -82,6 +85,9 @@ Als u de nauw keurigheid van de spraak-naar-tekst nauwkeurigheid van micro soft 
 | Voorbeeld indeling | PCM, 16-bits |
 | Archief indeling | .zip |
 | Maximale grootte van zip | 2 GB |
+
+> [!TIP]
+> Bij het uploaden van training en het testen van gegevens, mag de zip-bestand niet groter zijn dan 2 GB. Als u meer gegevens nodig hebt voor trainings-en test doeleinden, splitst u deze in verschillende zip-bestanden en uploadt u deze afzonderlijk. Later kunt u kiezen voor het trainen en testen van *meerdere* gegevens sets.
 
 Voor het oplossen van problemen zoals het verwijderen of vervangen van woorden, is een aanzienlijke hoeveelheid gegevens vereist om de herkenning te verbeteren. Over het algemeen is het raadzaam om per woord transcripties te bieden voor ongeveer 10 tot 1.000 uur aan audio. De transcripties voor alle WAV-bestanden moeten worden opgenomen in één bestand met tekst zonder opmaak. Elke regel van het transcriptiebestand moet de naam van een van de audiobestanden bevatten, gevolgd door de bijbehorende transcriptie. De bestandsnaam en transcriptie moeten worden gescheiden door een tab (\t).
 

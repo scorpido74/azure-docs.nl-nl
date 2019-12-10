@@ -1,5 +1,6 @@
 ---
-title: Definieer een Azure Active Directory technisch profiel in een aangepast beleid in Azure Active Directory B2C | Microsoft Docs
+title: Een technische Azure AD-profiel definiëren in een aangepast beleid
+titleSuffix: Azure AD B2C
 description: Definieer een Azure Active Directory technisch profiel in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4383980953147560b9e51e4ccab3032dd8173dd4
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1a839c86a717122778f736f01fea4bdd08da8945
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064625"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949555"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een Azure Active Directory technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -25,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) biedt ondersteuning voor het Azure Act
 
 ## <a name="protocol"></a>Protocol
 
-Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `Proprietary`. Het kenmerk **handler** moet de volledig gekwalificeerde naam van de assembly `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`van de protocolhandler bevatten.
+Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `Proprietary`. Het kenmerk **handler** moet de volledig gekwalificeerde naam van de assembly van de protocol-handler bevatten `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
 
 Alle technische profielen van Azure AD bevatten het **Aad-algemene** technische profiel. In de volgende technische profielen is het protocol niet opgegeven omdat het protocol is geconfigureerd in het **Aad-algemene** technische profiel:
 
@@ -61,13 +62,13 @@ De volgende technische profielen zijn **InputClaims** voor sociale en lokale acc
 
 - De technische profielen van het sociaal account **Aad-UserReadUsingAlternativeSecurityId** en **Aad-UserWriteUsingAlternativeSecurityId** bevatten de **AlternativeSecurityId** -claim. Deze claim bevat de gebruikers-id van het sociaal-account.
 - De technische profielen van het lokale account **Aad-UserReadUsingEmailAddress** en **Aad-UserWriteUsingLogonEmail** bevatten de **e-mail** claim. Deze claim bevat de aanmeldings naam van het lokale account.
-- De Unified (Local en Social) technische profielen **Aad-UserReadUsingObjectId**, **Aad-UserWritePasswordUsingObjectId**, **Aad-UserWriteProfileUsingObjectId**en **Aad-UserWritePhoneNumberUsingObjectId** bevatten de **objectId** -claim. De unieke id van een account.
+- De geïntegreerde (lokale en sociale) technische profielen **Aad-UserReadUsingObjectId**, **Aad-UserWritePasswordUsingObjectId**, **Aad-UserWriteProfileUsingObjectId**en **Aad-UserWritePhoneNumberUsingObjectId** bevatten de **objectId** -claim. De unieke id van een account.
 
 Het **InputClaimsTransformations** -element kan een verzameling **InputClaimsTransformation** -elementen bevatten die worden gebruikt om de invoer claims te wijzigen of nieuwe te genereren.
 
 ## <a name="output-claims"></a>Uitvoer claims
 
-Het **OutputClaims** -element bevat een lijst met claims die worden geretourneerd door het technische profiel van Azure AD. Mogelijk moet u de naam van de claim die in uw beleid is gedefinieerd, toewijzen aan de naam die is gedefinieerd in Azure Active Directory. U kunt ook claims toevoegen die niet worden geretourneerd door de Azure Active Directory, zolang u het `DefaultValue` kenmerk hebt ingesteld.
+Het **OutputClaims** -element bevat een lijst met claims die worden geretourneerd door het technische profiel van Azure AD. Mogelijk moet u de naam van de claim die in uw beleid is gedefinieerd, toewijzen aan de naam die is gedefinieerd in Azure Active Directory. U kunt ook claims toevoegen die niet worden geretourneerd door de Azure Active Directory, op voor waarde dat u het kenmerk `DefaultValue` hebt ingesteld.
 
 Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsTransformation** -elementen bevatten die worden gebruikt voor het wijzigen van de uitvoer claims of voor het genereren van nieuwe.
 
@@ -75,7 +76,7 @@ Het **Aad-UserWriteUsingLogonEmail-** technische profiel maakt bijvoorbeeld een 
 
 - **objectId**, een id van het nieuwe account
 - **newuser**, die aangeeft of de gebruiker nieuw is
-- **authenticationSource**, waarbij verificatie wordt ingesteld op`localAccountAuthentication`
+- **authenticationSource**, waarmee verificatie wordt ingesteld op `localAccountAuthentication`
 - **userPrincipalName**: de User Principal name van het nieuwe account
 - **signInNames. emailAddress**, de aanmeldings naam van het account, vergelijkbaar met de invoer claim van de **e-mail**
 
@@ -114,7 +115,7 @@ De naam van de claim is de naam van het kenmerk Azure AD, tenzij het kenmerk **P
 ## <a name="requirements-of-an-operation"></a>Vereisten van een bewerking
 
 - Er moet precies één **input claim** -element aanwezig zijn in de claim verzameling voor alle technische profielen van Azure AD.
-- Als de bewerking is `Write` of `DeleteClaims`, moet deze ook worden weer gegeven in een **PersistedClaims** -element.
+- Als de bewerking `Write` of `DeleteClaims`is, moet deze ook worden weer gegeven in een **PersistedClaims** -element.
 - De waarde van de **userPrincipalName** -claim moet de indeling van `user@tenant.onmicrosoft.com`hebben.
 - De **DisplayName** -claim is vereist en kan geen lege teken reeks zijn.
 
@@ -252,13 +253,13 @@ Met het volgende technische profiel wordt een sociaal gebruikers account verwijd
 ```
 ## <a name="metadata"></a>Metagegevens
 
-| Kenmerk | Vereist | Description |
+| Kenmerk | Verplicht | Beschrijving |
 | --------- | -------- | ----------- |
-| Bewerking | Ja | De bewerking die moet worden uitgevoerd. Mogelijke waarden: `Read` `Write` ,`DeleteClaims`, of `DeleteClaimsPrincipal`. |
+| Bewerking | Ja | De bewerking die moet worden uitgevoerd. Mogelijke waarden: `Read`, `Write`, `DeleteClaims`of `DeleteClaimsPrincipal`. |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | Nee | Een fout veroorzaken als het gebruikers object niet in de map bestaat. Mogelijke waarden: `true` of `false`. |
-| UserMessageIfClaimsPrincipalDoesNotExist | Nee | Als er een fout is opgetreden (Zie de beschrijving van het kenmerk RaiseErrorIfClaimsPrincipalDoesNotExist), geeft u het bericht op dat moet worden weer gegeven voor de gebruiker als het gebruikers object niet bestaat. De waarde kan worden [](localization.md)gelokaliseerd.|
+| UserMessageIfClaimsPrincipalDoesNotExist | Nee | Als er een fout is opgetreden (Zie de beschrijving van het kenmerk RaiseErrorIfClaimsPrincipalDoesNotExist), geeft u het bericht op dat moet worden weer gegeven voor de gebruiker als het gebruikers object niet bestaat. De waarde kan worden [gelokaliseerd](localization.md).|
 | RaiseErrorIfClaimsPrincipalAlreadyExists | Nee | Er wordt een fout gegenereerd als het gebruikers object al bestaat. Mogelijke waarden: `true` of `false`.|
-| UserMessageIfClaimsPrincipalAlreadyExists | Nee | Als er een fout is opgetreden (zie beschrijving van het RaiseErrorIfClaimsPrincipalAlreadyExists-kenmerk), geeft u het bericht op dat moet worden weer gegeven voor de gebruiker als het gebruikers object al bestaat. De waarde kan worden [](localization.md)gelokaliseerd.|
+| UserMessageIfClaimsPrincipalAlreadyExists | Nee | Als er een fout is opgetreden (zie beschrijving van het RaiseErrorIfClaimsPrincipalAlreadyExists-kenmerk), geeft u het bericht op dat moet worden weer gegeven voor de gebruiker als het gebruikers object al bestaat. De waarde kan worden [gelokaliseerd](localization.md).|
 | ApplicationObjectId | Nee | De object-id van de toepassing voor extensie kenmerken. Waarde: ObjectId van een toepassing. Zie voor meer informatie [aangepaste kenmerken gebruiken in een aangepast profiel beleid bewerken](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). |
 | ClientId | Nee | De client-id voor toegang tot de Tenant als derde partij. Zie voor meer informatie [aangepaste kenmerken gebruiken in een aangepast profiel beleid bewerken](active-directory-b2c-create-custom-attributes-profile-edit-custom.md) |
 

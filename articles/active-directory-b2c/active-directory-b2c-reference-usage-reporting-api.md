@@ -1,6 +1,7 @@
 ---
-title: Gebruik reporting API voorbeelden en definities in Azure Active Directory B2C | Microsoft Docs
-description: Handleiding en voorbeelden over het gebruik van rapporten in Azure AD B2C-tenant gebruikers, verificaties en multi-factor Authentication-oproepen.
+title: Gebruiks rapportage-API-voor beelden en-definities
+titleSuffix: Azure AD B2C
+description: Hand leiding en voor beelden over het verkrijgen van rapporten over Azure AD B2C Tenant gebruikers, authenticaties en multi-factor Authentication.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,38 +11,38 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fe7dd90bdec816ee433310a803d85c57f4892f8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f81acf28b502965f896cd8b38767e7c2e925156c
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508717"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949335"
 ---
-# <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>Toegang tot rapporten voor gebruik in Azure AD B2C via de rapportage-API
+# <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>Toegang tot gebruiks rapporten in Azure AD B2C via de rapportage-API
 
-Azure Active Directory B2C (Azure AD B2C) biedt verificatie op basis van de gebruiker zich aanmelden en Azure multi-factor Authentication. Verificatie is bedoeld voor eindgebruikers van uw toepassing-familie over id-providers. Als u het aantal gebruikers die zijn geregistreerd in de tenant, de providers die ze gebruikt om u te registreren en het aantal verificaties per type weet, kunt u vragen beantwoorden zoals:
-* Hoeveel gebruikers van elk type id-provider (bijvoorbeeld, een Microsoft- of LinkedIn-account) in de afgelopen 10 dagen hebben geregistreerd?
-* Het aantal authenticaties met multi-factor Authentication in de afgelopen maand zijn voltooid?
-* Het aantal verificaties sign-in-gebaseerd zijn deze maand voltooid? Per dag? Per toepassing?
-* Hoe schat ik de verwachte maandelijkse kosten van de activiteit van mijn Azure AD B2C-tenant?
+Azure Active Directory B2C (Azure AD B2C) biedt verificatie op basis van de gebruiker die zich aanmeldt en Azure Multi-Factor Authentication. Er wordt verificatie gegeven voor eind gebruikers van uw toepassings familie over id-providers. Wanneer u weet hoeveel gebruikers zijn geregistreerd in de Tenant, welke providers ze hebben gebruikt om zich te registreren, en het aantal verificaties per type, kunt u vragen beantwoorden zoals:
+* Hoeveel gebruikers van elk type ID-provider (bijvoorbeeld een micro soft-of LinkedIn-account) zijn in de afgelopen tien dagen geregistreerd?
+* Hoeveel verificaties met behulp van Multi-Factor Authentication zijn in de afgelopen maand voltooid?
+* Hoeveel aanmeldings verificaties op basis van aanmelding zijn deze maand voltooid? Per dag? Per toepassing?
+* Hoe kan ik de verwachte maandelijkse kosten van mijn Azure AD B2C-Tenant activiteit schatten?
 
-In dit artikel richt zich op rapporten die zijn gekoppeld aan facturering activiteit, die is gebaseerd op het aantal gebruikers, factureerbare sign-in-gebaseerd verificaties en multi-factor Authentication-oproepen.
+Dit artikel richt zich op rapporten die zijn gekoppeld aan facturerings activiteiten, die zijn gebaseerd op het aantal gebruikers, factureer bare aanmeldings verificaties en multi-factor Authentication.
 
 
 ## <a name="prerequisites"></a>Vereisten
-Voordat u begint, moet u de stappen in [vereisten voor toegang tot de rapportage-API's Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/). Maken van een toepassing, een geheim voor het verkrijgen en toegang verlenen rechten voor rapporten van uw Azure AD B2C-tenant. *Bash-script-* en *Python-script* voorbeelden vindt u ook hier. 
+Voordat u aan de slag gaat, moet u de stappen in [vereisten voor toegang tot de Azure AD Reporting-api's](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)volt ooien. Maak een toepassing, vraag een geheim aan en verleen deze toegang tot de rapporten van uw Azure AD B2C-Tenant. Hier vindt u ook voor beelden van *bash-script* -en *python-scripts* .
 
 ## <a name="powershell-script"></a>PowerShell-script
-Dit script toont het maken van rapporten over gebruik van vier met behulp van de `TimeStamp` parameter en de `ApplicationId` filter.
+Met dit script wordt het maken van vier gebruiks rapporten gedemonstreerd met behulp van de para meter `TimeStamp` en het `ApplicationId` filter.
 
 ```powershell
 # This script will require the Web Application and permissions setup in Azure Active Directory
 
 # Constants
-$ClientID      = "your-client-application-id-here"  
+$ClientID      = "your-client-application-id-here"
 $ClientSecret  = "your-client-application-secret-here"
 $loginURL      = "https://login.microsoftonline.com"
-$tenantdomain  = "your-b2c-tenant-domain.onmicrosoft.com"  
+$tenantdomain  = "your-b2c-tenant-domain.onmicrosoft.com"
 # Get an Oauth 2 access token based on client id, secret and tenant domain
 $body          = @{grant_type="client_credentials";resource=$resource;client_id=$ClientID;client_secret=$ClientSecret}
 $oauth         = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body
@@ -96,33 +97,33 @@ if ($oauth.access_token -ne $null) {
 ```
 
 
-## <a name="usage-report-definitions"></a>Gebruik rapportdefinities
-* **tenantUserCount**: Het aantal gebruikers in de tenant door het type id-provider, per dag in de afgelopen 30 dagen. (U kunt desgewenst een `TimeStamp` -filter biedt een aantal van de gebruiker vanaf een opgegeven datum in de huidige datum). Het rapport bevat:
-  * **TotalUserCount**: Het aantal alle gebruikersobjecten.
-  * **OtherUserCount**: Het aantal Active Directory-gebruikers (niet Azure AD B2C-gebruikers).
-  * **LocalUserCount**: Het aantal Azure AD B2C gebruikersaccounts die zijn gemaakt met de referenties van lokaal op de Azure AD B2C-tenant.
+## <a name="usage-report-definitions"></a>Definities van gebruiks rapporten
+* **tenantUserCount**: het aantal gebruikers in de Tenant per type ID-provider, per dag in de afgelopen 30 dagen. (Optioneel, een `TimeStamp` filter geeft gebruikers aantallen van een opgegeven datum tot de huidige datum). Het rapport bevat het volgende:
+  * **TotalUserCount**: het aantal gebruikers objecten.
+  * **OtherUserCount**: het aantal Azure Active Directory gebruikers (niet Azure AD B2C gebruikers).
+  * **LocalUserCount**: het aantal Azure AD B2C gebruikers accounts die zijn gemaakt met referenties die lokaal zijn voor de Azure AD B2C-Tenant.
 
-* **AlternateIdUserCount**: Het aantal Azure AD B2C-gebruikers die zijn geregistreerd bij externe id-providers (bijvoorbeeld Facebook, een Microsoft-account of een andere Azure Active Directory-tenant, ook wel een `OrgId`).
+* **AlternateIdUserCount**: het aantal Azure AD B2C-gebruikers dat is geregistreerd bij externe ID-providers (bijvoorbeeld Facebook, een Microsoft-account of een andere Azure Active Directory Tenant, ook wel een `OrgId`genoemd).
 
-* **b2cAuthenticationCountSummary**: Samenvatting van het dagelijkse aantal factureerbare verificaties in de afgelopen 30 dagen, per dag en het type verificatie-stroom.
+* **b2cAuthenticationCountSummary**: overzicht van het dagelijkse aantal factureer bare authenticaties in de afgelopen 30 dagen, per dag en type verificatie stroom.
 
-* **b2cAuthenticationCount**: Het aantal verificaties binnen een bepaalde periode. De standaardwaarde is de afgelopen 30 dagen.  (Optioneel: Het begin en einde `TimeStamp` parameters definiëren in een bepaalde periode.) De uitvoer bevat `StartTimeStamp` (vroegste datum van de activiteit voor deze tenant) en `EndTimeStamp` (meest recente update).
+* **b2cAuthenticationCount**: het aantal authenticaties binnen een bepaalde periode. De standaard waarde is de laatste 30 dagen.  (Optioneel: de begin-en eind `TimeStamp` para meters definiëren een specifieke tijds periode.) De uitvoer bevat `StartTimeStamp` (vroegste datum van de activiteit voor deze Tenant) en `EndTimeStamp` (laatste update).
 
-* **b2cMfaRequestCountSummary**: Samenvatting van het dagelijkse aantal multi-factor Authentication-oproepen per dag en type (SMS of spraak).
+* **b2cMfaRequestCountSummary**: een samen vatting van het dagelijkse aantal multi-factor Authentication, per dag en type (SMS of voice).
 
 
 ## <a name="limitations"></a>Beperkingen
-Gegevens over het aantal gebruikers wordt elke 24 uur per dag op 48 uur vernieuwd. Verificaties zijn meerdere keren per dag bijgewerkt. Wanneer u de `ApplicationId` filter, een leeg rapport-antwoord kan worden veroorzaakt door een van de volgende voorwaarden:
-  * De toepassings-ID bestaat niet in de tenant. Zorg ervoor dat deze juist is.
-  * De toepassings-ID bestaat, maar er zijn geen gegevens gevonden in de rapportageperiode. Herzie de parameters van de datum/tijd.
+De gegevens van het aantal gebruikers worden elke 24 tot 48 uur vernieuwd. Verificaties worden meerdere keren per dag bijgewerkt. Wanneer u het `ApplicationId`-filter gebruikt, kan een leeg rapport antwoord een van de volgende oorzaken hebben:
+  * De toepassings-ID bestaat niet in de Tenant. Controleer of het juist is.
+  * De toepassings-ID bestaat, maar er zijn geen gegevens gevonden in de rapportage periode. Controleer de datum/tijd-para meters.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-### <a name="monthly-bill-estimates-for-azure-ad"></a>Maandelijkse factuur maakt een schatting van voor Azure AD
-In combinatie met [de meest recente Azure AD B2C prijzen beschikbaar](https://azure.microsoft.com/pricing/details/active-directory-b2c/), u kunt een schatting maken dagelijkse, wekelijkse en maandelijkse Azure-verbruik.  Een schatting is vooral nuttig wanneer u van plan bent om wijzigingen in de tenant-gedrag dat mogelijk invloed op de totale kosten. U kunt bekijken werkelijke kosten in uw [gekoppelde Azure-abonnement](active-directory-b2c-how-to-enable-billing.md).
+### <a name="monthly-bill-estimates-for-azure-ad"></a>Schattingen maandelijks gefactureerd voor Azure AD
+In combi natie met [de meest actuele prijzen voor Azure AD B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/), kunt u dagelijks, wekelijks en maandelijks Azure-verbruik schatten.  Een schatting is vooral nuttig wanneer u wijzigingen aanbrengt in het gedrag van de Tenant die van invloed kunnen zijn op de totale kosten. U kunt de werkelijke kosten bekijken in uw [gekoppelde Azure-abonnement](active-directory-b2c-how-to-enable-billing.md).
 
-### <a name="options-for-other-output-formats"></a>Opties voor andere uitvoerindeling op te geven
-De volgende code ziet u voorbeelden van het verzenden van uitvoer in JSON, een lijst met de naam van waarde en XML:
+### <a name="options-for-other-output-formats"></a>Opties voor andere uitvoer indelingen
+In de volgende code ziet u voor beelden van het verzenden van uitvoer naar JSON, een lijst met naam waarden en XML:
 ```powershell
 # to output to JSON use following line in the PowerShell sample
 $myReport.Content | Out-File -FilePath name-your-file.json -Force

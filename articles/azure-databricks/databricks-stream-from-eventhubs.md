@@ -8,14 +8,14 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
-ms.date: 07/23/2019
+ms.date: 12/08/2019
 ms.author: alehall
-ms.openlocfilehash: 2e6bfa9188034c602660eaff34bf86ea711dc7b3
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 6af0881049e52cbead5cca9719d4c9b06be29491
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121274"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951544"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Zelfstudie: Gegevens streamen naar Azure Databricks met behulp van Event Hubs
 
@@ -34,7 +34,7 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * Een Apache Spark-cluster in Azure Databricks maken
 > * Een Twitter-app voor toegang tot streaminggegevens maken
 > * Notitieblokken maken in Azure Databricks
-> * Bibliotheken koppelen voor Event Hubs en Twitter API
+> * Bibliotheken toevoegen voor Event Hubs en Twitter-API
 > * Tweets verzenden naar Event Hubs
 > * Tweets lezen van Event Hubs
 
@@ -56,7 +56,7 @@ U kunt aan deze vereisten voldoen via de stappen in het artikel [Een Azure Event
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Een Azure Databricks-werkruimte maken
 
@@ -101,14 +101,14 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
     Accepteer alle andere standaardwaarden, anders dan de volgende:
 
    * Voer een naam in voor het cluster.
-   * Voor dit artikel maakt u een cluster met **6,0* runtime.
+   * Voor dit artikel maakt u een cluster met **6,0** runtime.
    * Zorg ervoor dat u het selectievakje **Beëindigen na\_\_ minuten van inactiviteit** inschakelt. Geef een duur (in minuten) op waarna het cluster moet worden beëindigd als het niet wordt gebruikt.
 
    Selecteer cluster-Worker en stuur programma-node grootte die geschikt is voor uw technische criteria en [budget](https://azure.microsoft.com/pricing/details/databricks/).
 
      Selecteer **Cluster maken**. Zodra het cluster wordt uitgevoerd, kunt u notitieblokken koppelen aan het cluster en Spark-taken uitvoeren.
 
-## <a name="create-a-twitter-application"></a>Maak een Twitter-toepassing
+## <a name="create-a-twitter-application"></a>Een Twitter-toepassing maken
 
 Als u een stream van tweets wilt ontvangen, maakt u een toepassing in Twitter. Volg de instructies om een Twitter-toepassing te maken en leg de waarden vast die u nodig hebt om deze zelfstudie te voltooien.
 
@@ -138,14 +138,10 @@ In deze zelfstudie gebruikt u de Twitter-API's om tweets te verzenden naar Event
 
    ![Het dialoog venster bibliotheek toevoegen](./media/databricks-stream-from-eventhubs/databricks-add-library-install-new.png "Nieuwe bibliotheek toevoegen installeren")
 
-2. Selecteer op de pagina nieuwe bibliotheek voor **bron** **maven**. Voor een **coördinaat**klikt u op **Pakketten zoeken** voor het pakket dat u wilt toevoegen. Dit zijn de Maven-coördinaten voor de bibliotheken die in deze zelfstudie worden gebruikt:
+2. Selecteer op de pagina nieuwe bibliotheek voor **bron** **maven**. Voer individueel de volgende coördinaten in voor de Spark Event Hubs-connector en de Twitter API in- **coördinaten**.
 
-   * Apache Spark Event Hubs-connector - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
+   * Apache Spark Event Hubs-connector - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.12`
    * Twitter API - `org.twitter4j:twitter4j-core:4.0.7`
-
-     ![Maven-coördinaten opgeven](./media/databricks-stream-from-eventhubs/databricks-add-library-search.png "Maven-coördinaten opgeven")
-
-     ![Maven-coördinaten opgeven](./media/databricks-stream-from-eventhubs/databricks-add-library-search-dialogue.png "Maven-coördinaten zoeken")
 
 3. Selecteer **Installeren**.
 
@@ -155,18 +151,18 @@ In deze zelfstudie gebruikt u de Twitter-API's om tweets te verzenden naar Event
 
 6. Herhaal deze stappen voor het Twitter-pakket, `twitter4j-core:4.0.7`.
 
-## <a name="create-notebooks-in-databricks"></a>Notitieblokken maken in Databricks
+## <a name="create-notebooks-in-databricks"></a>Notitieblokken maken in Azure Databricks
 
 In deze sectie kunt u twee notitieblokken in de Databricks-werkruimte maken met de volgende namen:
 
-- **SendTweetsToEventHub**: een notitieblok voor producenten waarmee u tweets kunt ophalen uit Twitter die u kunt streamen naar Event Hubs.
+- **SendTweetsToEventHub** - een notitieblok voor producenten waarmee u tweets kunt ophalen uit Twitter en ze kunt streamen naar Event Hubs.
 - **ReadTweetsFromEventHub** - een notitieblok voor consumenten waarmee u de tweets uit Event Hubs kunt lezen.
 
 1. Selecteer **Werkruimte** in het linkerdeelvenster. Selecteer in de **Werkruimte**-vervolgkeuzelijst, **Notitieblok** > **maken**.
 
     ![Een notitie blok maken in Databricks](./media/databricks-stream-from-eventhubs/databricks-create-notebook.png "Een notitie blok maken in Databricks")
 
-2. Voer in het dialoogvenster **Notitieblok maken** een naam in, voer in **SendTweetsToEventHub**, selecteer **Scala** als taal en selecteer het Spark-cluster dat u eerder hebt gemaakt.
+2. Voer in het dialoogvenster **Notitieblok maken** als naam **SendTweetsToEventHub** in, selecteer **Scala** als taal en selecteer het Apache Spark-cluster dat u eerder hebt gemaakt.
 
     ![Een notitie blok maken in Databricks](./media/databricks-stream-from-eventhubs/databricks-notebook-details.png "Een notitie blok maken in Databricks")
 
@@ -277,7 +273,7 @@ Plak in het notitieblok **SendTweetsToEventHub** de volgende code en vervang de 
     eventHubClient.get().close()
 ```
 
-Voor het uitvoeren van het notitieblok drukt u op **SHIFT + ENTER**. U ziet uitvoer zoals het onderstaande codefragment. Elke gebeurtenis in de uitvoer is een tweet die in Event Hubs met de term 'Azure' wordt opgenomen.
+Voor het uitvoeren van het notitieblok, drukt u op **SHIFT + ENTER**. U ziet uitvoer zoals het onderstaande codefragment. Elke gebeurtenis in de uitvoer is een tweet die in Event Hubs met de term 'Azure' wordt opgenomen.
 
     Sent event: @Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence
 
@@ -296,7 +292,7 @@ Voor het uitvoeren van het notitieblok drukt u op **SHIFT + ENTER**. U ziet uitv
 
 ## <a name="read-tweets-from-event-hubs"></a>Tweets lezen van Event Hubs
 
-Plak in het notitieblok **ReadTweetsFromEventHub**de volgende code en vervang de tijdelijke aanduiding door de waarden voor uw Azure Event Hubs die u eerder hebt gemaakt. Dit notitieblok leest de tweets die u eerder naar Event Hubs hebt gestreamd met behulp van het notitieblok **SendTweetsToEventHub**.
+Plak in het notitieblok **ReadTweetsFromEventHub**de volgende code en vervang de tijdelijke aanduiding door de waarden voor uw Azure Event Hubs die u eerder hebt gemaakt. Dit notitieblok leest de tweets die u eerder hebt gestreamd naar Event Hubs met behulp van het **SendTweetsToEventHub**-notitieblok.
 
 ```scala
 
@@ -413,7 +409,7 @@ Nadat u de zelfstudie hebt voltooid, kunt u het cluster beëindigen. Dit doet u 
 Als u het cluster niet handmatig beëindigt, stopt het cluster automatisch, op voorwaarde dat het selectievakje **Beëindigen na \_\_ minuten inactiviteit** is ingeschakeld tijdens het maken van het cluster. In dat geval stopt het cluster automatisch als het gedurende de opgegeven tijd inactief is geweest.
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een Azure Databricks-werkruimte maken

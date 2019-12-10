@@ -1,6 +1,7 @@
 ---
-title: Definieer een technisch profiel voor een JWT-token uitgever in een aangepast beleid in Azure Active Directory B2C | Microsoft Docs
-description: Definieer een technisch profiel voor een JWT-token uitgever in een aangepast beleid in Azure Active Directory B2C.
+title: Een technisch profiel voor een JWT-verlener in een aangepast beleid definiëren
+titleSuffix: Azure AD B2C
+description: Definieer een technisch profiel voor een JWT-verlener (JSON Web token) in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 10/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a5b8f299826c5688eb80eaea11ffc3b2b5176297
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 41661277d89c45baf2350282c6e4b500fae63662
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959666"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949820"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel voor een JWT-token Uitgever definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -44,7 +45,7 @@ De **InputClaims**-, **OutputClaims**-en **PersistClaims** -elementen zijn leeg 
 
 ## <a name="metadata"></a>Metagegevens
 
-| Kenmerk | Vereist | Beschrijving |
+| Kenmerk | Verplicht | Beschrijving |
 | --------- | -------- | ----------- |
 | issuer_refresh_token_user_identity_claim_type | Ja | De claim die moet worden gebruikt als de claim van de identiteit van de gebruiker in de OAuth2-autorisatie codes en vernieuwings tokens. Standaard moet u deze instellen op `objectId`, tenzij u een ander claim type SubjectNamingInfo opgeeft. |
 | SendTokenResponseBodyWithJsonNumbers | Nee | Altijd ingesteld op `true`. Voor oudere indeling waarbij numerieke waarden worden gegeven als teken reeksen in plaats van JSON-nummers, stelt u in op `false`. Dit kenmerk is vereist voor clients die een afhankelijkheid hebben genomen van een eerdere implementatie waarbij dergelijke eigenschappen als teken reeksen zijn geretourneerd. |
@@ -60,7 +61,7 @@ De **InputClaims**-, **OutputClaims**-en **PersistClaims** -elementen zijn leeg 
 
 Het CryptographicKeys-element bevat de volgende kenmerken:
 
-| Kenmerk | Vereist | Beschrijving |
+| Kenmerk | Verplicht | Beschrijving |
 | --------- | -------- | ----------- |
 | issuer_secret | Ja | Het x509-certificaat (RSA-sleutelset) dat moet worden gebruikt voor het ondertekenen van het JWT-token. Dit is de `B2C_1A_TokenSigningKeyContainer` sleutel die u in de afbeelding aan de [slag met aangepaste beleids regels hebt aangepast](active-directory-b2c-get-started-custom.md). |
 | issuer_refresh_token_key | Ja | Het x509-certificaat (RSA key set) dat moet worden gebruikt voor het versleutelen van het vernieuwings token. U hebt de `B2C_1A_TokenEncryptionKeyContainer` sleutel geconfigureerd in aan de [slag met aangepaste beleids regels](active-directory-b2c-get-started-custom.md) |

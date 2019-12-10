@@ -1,6 +1,7 @@
 ---
-title: Definieer een technische validatie profiel in een aangepast beleid in Azure Active Directory B2C | Microsoft Docs
-description: Definieer een Azure Active Directory technisch profiel in een aangepast beleid in Azure Active Directory B2C.
+title: Een validatie technische profiel definiëren in een aangepast beleid
+titleSuffix: Azure AD B2C
+description: Valideer claims met behulp van een validatie technische profiel in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ad15342e6d35a5c6101beb1ddc09d4ce1f2089d5
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: facef1e1288f2a64872efbf37a9a31fa05244a7e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167574"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950796"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technische validatie profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -40,7 +41,7 @@ Een validatie technische profiel kan voorwaardelijk worden uitgevoerd op basis v
 Een zelf-bevestigd technisch profiel kan een technisch profiel voor validatie definiëren dat moet worden gebruikt voor het valideren van sommige of alle bijbehorende uitvoer claims. Alle invoer claims van het technische profiel waarnaar wordt verwezen, moeten worden weer gegeven in de uitvoer claims van het referentie-technische profiel voor validatie.
 
 > [!NOTE]
-> Alleen zelf-beweringen technische profielen kunnen validatie technische profielen gebruiken. Als u de uitvoer claims van niet-zelfondertekende technische profielen moet valideren, kunt u overwegen om een aanvullende indelings stap in uw gebruikers traject te gebruiken om het technische profiel dat verantwoordelijk is voor de validatie, toe te passen.    
+> Alleen zelf-beweringen technische profielen kunnen validatie technische profielen gebruiken. Als u de uitvoer claims van niet-zelfondertekende technische profielen moet valideren, kunt u overwegen om een aanvullende indelings stap in uw gebruikers traject te gebruiken om het technische profiel dat verantwoordelijk is voor de validatie, toe te passen.
 
 ## <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 
@@ -52,7 +53,7 @@ Het **ValidationTechnicalProfiles** -element bevat de volgende elementen:
 
 Het element **ValidationTechnicalProfile** bevat het volgende kenmerk:
 
-| Kenmerk | Vereist | Beschrijving |
+| Kenmerk | Verplicht | Beschrijving |
 | --------- | -------- | ----------- |
 | ReferenceId | Ja | Een id van een technisch profiel is al gedefinieerd in het beleid of het bovenliggende beleid. |
 |ContinueOnError|Nee| Hiermee wordt aangegeven of de validatie van de volgende validatie technische profielen moet worden voortgezet als het technische profiel voor de validatie een fout veroorzaakt. Mogelijke waarden: `true` of `false` (standaard, verwerking van verdere validatie profielen wordt gestopt en er wordt een fout geretourneerd). |
@@ -66,7 +67,7 @@ Het element **ValidationTechnicalProfile** bevat het volgende element:
 
 Het element **voor waarde** bevat het volgende kenmerk:
 
-| Kenmerk | Vereist | Beschrijving |
+| Kenmerk | Verplicht | Beschrijving |
 | --------- | -------- | ----------- |
 | `Type` | Ja | Het type controle of query dat moet worden uitgevoerd voor de voor waarde. `ClaimsExist` is opgegeven om ervoor te zorgen dat er acties moeten worden uitgevoerd als de opgegeven claims bestaan in de huidige claimset van de gebruiker, of `ClaimEquals` is opgegeven dat de acties moeten worden uitgevoerd als de opgegeven claim bestaat en de waarde ervan gelijk is aan de opgegeven waarde. |
 | `ExecuteActionsIf` | Ja | Hiermee wordt aangegeven of de acties in de voor waarde moeten worden uitgevoerd als de test True of False is. |
@@ -76,7 +77,7 @@ Het element **voor waarde** bevat de volgende elementen:
 | Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | Waarde | 1: n | De gegevens die worden gebruikt door de controle. Als het type van deze controle is `ClaimsExist`, geeft dit veld een ClaimTypeReferenceId op dat moet worden opgevraagd. Als het type controle is `ClaimEquals`, geeft dit veld een ClaimTypeReferenceId op dat moet worden opgevraagd. Een ander value-element bevat de waarde die moet worden gecontroleerd.|
-| Actie | 1:1 | De actie die moet worden uitgevoerd als de voor waarde wordt gecontroleerd binnen een Orchestration-stap. De waarde van de **actie** is ingesteld op `SkipThisValidationTechnicalProfile`. Hiermee geeft u op dat het bijbehorende technische profiel voor validatie niet moet worden uitgevoerd. |
+| Bewerking | 1:1 | De actie die moet worden uitgevoerd als de voor waarde wordt gecontroleerd binnen een Orchestration-stap. De waarde van de **actie** is ingesteld op `SkipThisValidationTechnicalProfile`. Hiermee geeft u op dat het bijbehorende technische profiel voor validatie niet moet worden uitgevoerd. |
 
 ### <a name="example"></a>Voorbeeld
 

@@ -1,6 +1,7 @@
 ---
-title: 'Zelf studie: verificatie inschakelen in een toepassing met één pagina-Azure Active Directory B2C'
-description: In deze zelf studie leert u hoe u Azure Active Directory B2C kunt gebruiken om gebruikers aanmelding te bieden voor een toepassing met één pagina (Java script).
+title: 'Zelf studie: verificatie inschakelen in een app met één pagina'
+titleSuffix: Azure AD B2C
+description: In deze zelf studie leert u hoe u Azure Active Directory B2C kunt gebruiken om gebruikers aanmelding te bieden voor een op Java script gebaseerde toepassing met één pagina (SPA).
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,21 +11,21 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8ece6401484d8f32483d4673384fcce6d7afac4a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 2f18a7ddeb5256c660c6458fc8d2d29f83e04429
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420354"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950153"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>Zelf studie: verificatie inschakelen in een toepassing met één pagina met behulp van Azure Active Directory B2C (Azure AD B2C)
 
-In deze zelf studie wordt uitgelegd hoe u Azure Active Directory B2C (Azure AD B2C) gebruikt om u aan te melden en gebruikers aan te melden bij een toepassing met één pagina (SPA). Met Azure AD B2C kunnen uw toepassingen zich met behulp van open-standaardprotocollen verifiëren bij sociale accounts, Enterprise-accounts en Azure Active Directory-accounts.
+In deze zelf studie wordt uitgelegd hoe u Azure Active Directory B2C (Azure AD B2C) gebruikt om u aan te melden en gebruikers aan te melden bij een toepassing met één pagina (SPA). Met Azure AD B2C zijn uw toepassingen in staat om zich met behulp van open-standaardprotocollen te verifiëren bij sociale accounts, Enterprise-accounts en Azure Active Directory-accounts.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Bijwerken van de toepassing in Azure AD B2C
+> * De toepassing bijwerken in Azure AD B2C
 > * Het voorbeeld configureren voor gebruik van de toepassing
 > * Aanmelden met behulp van de gebruikersstroom
 
@@ -52,7 +53,7 @@ U kunt de huidige **toepassingen** ervaring of onze nieuwe **Preview-ervaring (U
 
 #### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 1. Selecteer **alle services** in de linkerbovenhoek van de Azure Portal, zoek naar en selecteer **Azure AD B2C**.
 1. Selecteer **Toepassingen** en selecteer vervolgens de toepassing *webapp1*.
@@ -62,7 +63,7 @@ U kunt de huidige **toepassingen** ervaring of onze nieuwe **Preview-ervaring (U
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
 1. Selecteer **app-registraties (preview)** , selecteer het tabblad **toepassingen die eigendom** zijn en selecteer vervolgens de toepassing *webapp1* .
@@ -168,7 +169,7 @@ U kunt deze fout oplossen door door te gaan naar de volgende zelf studie in de r
 In dit artikel hebt u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Bijwerken van de toepassing in Azure AD B2C
+> * De toepassing bijwerken in Azure AD B2C
 > * Het voorbeeld configureren voor gebruik van de toepassing
 > * Aanmelden met behulp van de gebruikersstroom
 

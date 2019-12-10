@@ -1,6 +1,7 @@
 ---
-title: Registratie instellen en aanmelden met OpenID Connect Connect-Azure Active Directory B2C | Microsoft Docs
-description: Stel registratie in en meld u aan met OpenID Connect Connect met behulp van Azure Active Directory B2C.
+title: Registratie instellen en aanmelden met OpenID Connect Connect
+titleSuffix: Azure AD B2C
+description: Stel registratie in en meld u aan met een OpenID Connect Connect-ID-provider (IdP) in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0303f8c7e18a5c229bc5a8c5e9b90d95cdaccbe7
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 471163fc8fe8c5bad550d0615683ef2b97b818dc
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672905"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950457"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Registratie instellen en aanmelden met OpenID Connect Connect met behulp van Azure Active Directory B2C
 
@@ -39,7 +40,7 @@ Om gebruikers toe te staan zich aan te melden, vereist de ID-provider ontwikkel 
 > [!NOTE]
 > Het client geheim is optioneel. U moet echter een client geheim invoeren als u de [autorisatie code stroom](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)wilt gebruiken, die het geheim gebruikt voor het uitwisselen van de code voor het token.
 
-## <a name="scope"></a>Bereik
+## <a name="scope"></a>Scope
 
 Met het bereik worden de informatie en machtigingen gedefinieerd die u wilt verzamelen uit uw aangepaste ID-provider. OpenID Connect Connect-aanvragen moeten de `openid` bereik waarde bevatten om het ID-token van de ID-provider te ontvangen. Zonder het ID-token kunnen gebruikers zich niet aanmelden bij Azure AD B2C met behulp van de aangepaste ID-provider. Andere bereiken kunnen worden toegevoegd, gescheiden door een spatie. Raadpleeg de documentatie van de aangepaste ID-provider om te zien welke andere bereiken mogelijk beschikbaar zijn.
 

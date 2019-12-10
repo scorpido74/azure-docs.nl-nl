@@ -1,6 +1,7 @@
 ---
-title: Een OAuth1 technisch profiel definiëren in een aangepast beleid in Azure Active Directory B2C | Microsoft Docs
-description: Definieer een OAuth1 technisch profiel in een aangepast beleid in Azure Active Directory B2C.
+title: Een OAuth1 technisch profiel definiëren in een aangepast beleid
+titleSuffix: Azure AD B2C
+description: Definieer een OAuth 1,0 Technical-profiel in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 97fa5757f8b77e29545f6d6f6b885334c7b526f1
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: d97d908ddf5d55bf09d96a5ef16fa79a7afde7b4
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063991"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951102"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een OAuth1 technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -25,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) biedt ondersteuning voor de [OAuth 1,0
 
 ## <a name="protocol"></a>Protocol
 
-Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `OAuth1`. Het protocol voor het technische profiel **Twitter-OAUTH1** is `OAuth1`bijvoorbeeld.
+Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `OAuth1`. Het protocol voor het technische profiel **Twitter-OAUTH1** is bijvoorbeeld `OAuth1`.
 
 ```XML
 <TechnicalProfile Id="Twitter-OAUTH1">
@@ -46,14 +47,14 @@ Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsT
 
 In het volgende voor beeld worden de claims weer gegeven die zijn geretourneerd door de Twitter-ID-provider:
 
-- De **user_id** -claim die is toegewezen aan de **issuerUserId** -claim.
-- De **screen_name** -claim die is toegewezen aan de **DisplayName** -claim.
+- De **user_id** claim die is toegewezen aan de **issuerUserId** -claim.
+- De **screen_name** claim die is toegewezen aan de **DisplayName** -claim.
 - De **e-mail** claim zonder naam toewijzing.
 
 Het technische profiel retourneert ook claims die niet worden geretourneerd door de ID-provider:
 
 - De claim **Identity provider** die de naam van de ID-provider bevat.
-- De **authenticationSource** claim met de standaard waarde van `socialIdpAuthentication`.
+- De **authenticationSource** claim met een standaard waarde van `socialIdpAuthentication`.
 
 ```xml
 <OutputClaims>
@@ -67,7 +68,7 @@ Het technische profiel retourneert ook claims die niet worden geretourneerd door
 
 ## <a name="metadata"></a>Metagegevens
 
-| Kenmerk | Vereist | Description |
+| Kenmerk | Verplicht | Beschrijving |
 | --------- | -------- | ----------- |
 | client_id | Ja | De toepassings-id van de ID-provider. |
 | ProviderName | Nee | De naam van de ID-provider. |
@@ -81,13 +82,13 @@ Het technische profiel retourneert ook claims die niet worden geretourneerd door
 
 Het element **CryptographicKeys** bevat het volgende kenmerk:
 
-| Kenmerk | Vereist | Description |
+| Kenmerk | Verplicht | Beschrijving |
 | --------- | -------- | ----------- |
 | client_secret | Ja | Het client geheim van de identiteits provider toepassing.   |
 
 ## <a name="redirect-uri"></a>Omleidings-URI
 
-Wanneer u de omleidings-URL van uw ID- `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`provider configureert, voert u in. Zorg ervoor dat u de **Tenant** vervangt door de naam van uw Tenant (bijvoorbeeld contosob2c.onmicrosoft.com) en **policyId** met de id van uw beleid (bijvoorbeeld b2c_1a_policy). De omleidings-URI moet in alle kleine letters zijn. Voeg een omleidings-URL toe voor alle beleids regels die gebruikmaken van de aanmelding van de identiteits provider.
+Wanneer u de omleidings-URL van uw ID-provider configureert, voert u `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`in. Zorg ervoor dat u de **Tenant** vervangt door de naam van uw Tenant (bijvoorbeeld contosob2c.onmicrosoft.com) en **policyId** met de id van uw beleid (bijvoorbeeld b2c_1a_policy). De omleidings-URI moet in alle kleine letters zijn. Voeg een omleidings-URL toe voor alle beleids regels die gebruikmaken van de aanmelding van de identiteits provider.
 
 Als u het **b2clogin.com** -domein gebruikt in plaats van **login.microsoftonline.com** , moet u ervoor zorgen dat u b2clogin.com gebruikt in plaats van login.microsoftonline.com.
 

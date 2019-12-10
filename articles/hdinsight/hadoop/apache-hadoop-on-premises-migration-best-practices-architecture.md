@@ -2,18 +2,18 @@
 title: 'Architectuur: on-premises Apache Hadoop naar Azure HDInsight'
 description: Ontdek de aanbevolen procedures voor de architectuur voor het migreren van on-premises Hadoop-clusters naar Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: hrasheed
-ms.openlocfilehash: 4ef3cded9aba7bd95ecc48e1feadf6c55acd7bdc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: 9f532e7bbf9e24e431341344b3172c988f69bfc3
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499251"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951527"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>On-premises Apache Hadoop clusters migreren naar aanbevolen procedures voor de architectuur van Azure HDInsight
 
@@ -25,27 +25,27 @@ Veel on-premises Apache Hadoop implementaties bestaan uit één groot cluster da
 
 Azure HDInsight-clusters zijn ontworpen voor een specifiek type Compute-gebruik. Omdat opslag kan worden gedeeld met meerdere clusters, is het mogelijk om meerdere door werk belasting geoptimaliseerde reken clusters te maken om te voldoen aan de behoeften van verschillende taken. Elk cluster type beschikt over de optimale configuratie voor die specifieke werk belasting. De volgende tabel bevat de ondersteunde cluster typen in HDInsight en de bijbehorende werk belastingen.
 
-|**Workload**|**HDInsight-cluster type**|
+|Werkbelasting|HDInsight-cluster type|
 |---|---|
 |Batch verwerking (ETL/ELT)|Hadoop, Spark|
 |Datawarehousing|Hadoop, Spark, interactieve query|
 |IoT/streaming|Kafka, Storm, Spark|
 |Transactionele verwerking van NoSQL|HBase|
-|Interactieve en snellere query's met in-memory cache|Interactive Query|
-|Data Science|ML Services, Spark|
+|Interactieve en snellere query's met in-memory cache|Interactieve query|
+|Datawetenschap|ML Services, Spark|
 
 In de volgende tabel ziet u de verschillende methoden die kunnen worden gebruikt voor het maken van een HDInsight-cluster.
 
-|**Hulpprogramma**|**Browser op basis**|**Opdracht regel**|**REST-API**|**SDK**|
+|Hulpprogramma|Browser op basis|Opdrachtregel|REST-API|SDK|
 |---|---|---|---|---|
-|[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
+|[Azure-portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
 |[Azure CLI (ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
 |[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
-|[.NET SDK](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)||||X|
-|[Python-SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||X|
-|[Java-SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
+|[.NET-SDK](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)||||X|
+|[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||X|
+|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
 |[Azure Resource Manager sjablonen](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
 
 Zie het artikel [cluster typen in HDInsight](../hadoop/apache-hadoop-introduction.md)voor meer informatie.
@@ -54,7 +54,7 @@ Zie het artikel [cluster typen in HDInsight](../hadoop/apache-hadoop-introductio
 
 HDInsight-clusters kunnen lange tijd niet worden gebruikt. HDInsight biedt ondersteuning voor tijdelijke clusters op aanvraag, die kunnen worden verwijderd zodra de werk belasting is voltooid.
 
-Wanneer u een cluster verwijdert, worden het bijbehorende opslag account en de externe meta gegevens niet verwijderd. Het cluster kan later opnieuw worden gemaakt met behulp van dezelfde opslag accounts en meta archieven.
+Wanneer u een cluster verwijdert, worden de bijbehorende opslag account en de externe meta gegevens niet verwijderd. Het cluster kan later opnieuw worden gemaakt met behulp van dezelfde opslag accounts en meta archieven.
 
 Azure Data Factory kan worden gebruikt om het maken van HDInsight-clusters op aanvraag te plannen. Zie voor meer informatie het artikel [Apache Hadoop clusters op aanvraag maken in HDInsight met behulp van Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md).
 
@@ -62,7 +62,7 @@ Azure Data Factory kan worden gebruikt om het maken van HDInsight-clusters op aa
 
 Typische on-premises Hadoop-implementaties gebruiken dezelfde set machines voor gegevens opslag en gegevens verwerking. Omdat deze zijn gekoppeld, moeten Compute en opslag samen worden geschaald.
 
-In HDInsight-clusters hoeft de opslag niet te worden gebruikt met Compute en kan deze zich bevinden in azure Storage, Azure Data Lake Storage of beide. Het ontkoppelen van opslag van Compute biedt de volgende voor delen:
+In HDInsight-clusters hoeft de opslag niet te worden gekoppeld aan Compute en kan deze zich bevinden in azure Storage, Azure Data Lake Storage of beide. Het ontkoppelen van opslag van Compute biedt de volgende voor delen:
 
 - Gegevens delen tussen clusters.
 - Het gebruik van tijdelijke clusters, aangezien de gegevens niet afhankelijk zijn van het cluster.
@@ -74,9 +74,7 @@ Er worden reken clusters gemaakt dicht bij de resources van het opslag account i
 
 ## <a name="use-external-metadata-stores"></a>Externe metagegevensopslag gebruiken
 
-
 Er zijn twee belang rijke meta Stores die werken met HDInsight-clusters: [Apache Hive](https://hive.apache.org/) en [Apache Oozie](https://oozie.apache.org/). De Hive-metastore is de centrale schema opslagplaats die kan worden gebruikt door engines voor gegevens verwerking, waaronder Hadoop, Spark, LLAP, Presto en Apache varken. In de Oozie-meta Store worden gegevens over de planning en de status van in uitvoering en voltooide Hadoop-taken opgeslagen.
-
 
 HDInsight maakt gebruik van Azure SQL Database voor Hive-en Oozie-meta Stores. Er zijn twee manieren om een meta Store in HDInsight-clusters in te stellen:
 
@@ -105,7 +103,7 @@ Enkele HDInsight-Hive-metastore best practices zijn als volgt:
 - Maak regel matig een back-up van de aangepaste meta Store.
 - Behoud de meta Store en het HDInsight-cluster in dezelfde regio.
 - Bewaak de meta Store voor prestaties en beschik baarheid met behulp van Azure SQL Database controle hulpprogramma's, zoals Azure Portal of Azure Monitor Logboeken.
-- Voer de opdracht **tabel analyseren** uit zoals vereist voor het genereren van statistieken voor tabellen en kolommen. Bijvoorbeeld `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
+- Voer de `ANALYZE TABLE` opdracht uit zoals vereist voor het genereren van statistieken voor tabellen en kolommen. Bijvoorbeeld `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
 ## <a name="best-practices-for-different-workloads"></a>Aanbevolen procedures voor verschillende werk belastingen
 

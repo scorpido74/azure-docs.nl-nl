@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual Machines planning en implementatie voor SAP NetWeaver | Microsoft Docs
+title: 'SAP on Azure: hand leiding voor planning en implementatie'
 description: Azure Virtual Machines planning en implementatie voor SAP net-Weaver
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b791ac58ada84ac0c2087f266d29bff4bd9c6fe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 863070eb025d8ac58f6a0946d49732dc6b2842b8
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224714"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951748"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines planning en implementatie voor SAP net-Weaver
 
@@ -1633,8 +1633,8 @@ In de tabel hieronder worden typische SAP-communicatie poorten weer gegeven. Het
 | --- | --- | --- | --- | --- |
 | Dispatcher |sapdp`<nn>` weer geven * |3201 |3200 - 3299 |SAP-verzender die wordt gebruikt door de SAP-GUI voor Windows en Java |
 | Bericht server |sapms`<sid`> Zie * * |3600 |gratis sapms`<anySID`> |sid = SAP-systeem-ID |
-| Gateway |sapgw`<nn`> Zie * |3301 |macro's |SAP-gateway, gebruikt voor CPIC en RFC-communicatie |
-| SAP-router |sapdp99 |3299 |macro's |Alleen CI-service namen (Central instance) kunnen opnieuw worden toegewezen in/etc/services naar een wille keurige waarde na de installatie. |
+| Gateway |sapgw`<nn`> Zie * |3301 |gratis |SAP-gateway, gebruikt voor CPIC en RFC-communicatie |
+| SAP-router |sapdp99 |3299 |gratis |Alleen CI-service namen (Central instance) kunnen opnieuw worden toegewezen in/etc/services naar een wille keurige waarde na de installatie. |
 
 *) nn = SAP-instantie nummer
 

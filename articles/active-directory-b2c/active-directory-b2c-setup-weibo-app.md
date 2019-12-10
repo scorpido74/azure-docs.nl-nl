@@ -1,5 +1,6 @@
 ---
-title: Stel registratie in en meld u aan met een Weibo-account met behulp van Azure Active Directory B2C
+title: Registratie instellen en aanmelden met een Weibo-account
+titleSuffix: Azure AD B2C
 description: Gebruik Azure Active Directory B2C om u aan te melden en u aan te melden bij klanten met Weibo-accounts in uw toepassingen.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4a019c3f197f123486dd28dc2bdb46e34f6cabc4
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3f84d1d33874ac70a21c9d596c6fa5a9e608bb84
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064907"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950303"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Stel registratie in en meld u aan met een Weibo-account met behulp van Azure Active Directory B2C
 
@@ -43,7 +44,7 @@ Als u een Weibo-account wilt gebruiken als een id-provider in Azure Active Direc
 1. Selecteer**保存以上信息**(opslaan).
 1. Selecteer**高级信息**(geavanceerde informatie).
 1. Selecteer**编辑**(bewerken) naast het veld voor OAuth 2.0**授权设置**(omleidings-URL).
-1. Voer `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in voor OAuth 2.0-**授权设置**(omleidings-URL). Als uw Tenant naam bijvoorbeeld contoso is, stelt u de URL in op `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+1. Voer `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in voor OAuth 2.0**授权设置**(omleidings-URL). Als uw Tenant naam bijvoorbeeld contoso is, stelt u de URL in op `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
 1. Selecteer**提交**(verzenden).
 
 ## <a name="configure-a-weibo-account-as-an-identity-provider"></a>Een Weibo-account configureren als een id-provider

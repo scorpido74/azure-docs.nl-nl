@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: toegang verlenen aan een web-API van Node.js vanuit een desktop-app met behulp van Azure Active Directory B2C | Microsoft Docs'
-description: Zelfstudie over het gebruik van Active Directory B2C om een Node.js web-API te beveiligen en aan te roepen vanuit een .NET-desktop-app.
+title: 'Zelf studie: toegang verlenen aan een node. js-Web-API vanuit een bureaublad toepassing'
+description: Zelf studie over het gebruik van Active Directory B2C om een node. js-Web-API te beveiligen en deze aan te roepen vanuit een .NET-desktop-app.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 0cf9a0a13a1c16f5be6d82528849e6e2cc3d466d
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: f271dd23501aa0514faff29f638f695c80c844f2
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641855"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949769"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Zelfstudie: toegang verlenen aan een web-API van Node.js vanuit een desktop-app met behulp van Azure Active Directory B2C
 
@@ -55,7 +55,7 @@ In de hand leiding voor vereisten hebt u een systeem eigen client toepassing ger
 
 1. Selecteer **Toepassingen** en vervolgens *nativeapp1*.
 1. Selecteer **API-toegang** en vervolgens **Toevoegen**.
-1. Selecteer **webapi1** in de vervolgkeuzelijst *API selecteren*.
+1. Selecteer *webapi1* in de vervolgkeuzelijst **API selecteren**.
 1. Selecteer in de vervolg keuzelijst **bereiken selecteren** de bereiken die u eerder hebt gedefinieerd. Bijvoorbeeld: *demo. Read* en *demo. write*.
 1. Selecteer **OK**.
 
@@ -153,7 +153,7 @@ Uw bureaublad toepassing, beveiligd door Azure AD B2C, roept de lokaal uitgevoer
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een web-API-toepassing toevoegen

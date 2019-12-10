@@ -1,5 +1,6 @@
 ---
-title: Aanmelden met een Sales Force SAML-provider instellen met behulp van aangepast beleid in Azure Active Directory B2C
+title: Aanmelden met een Sales Force SAML-provider instellen met behulp van aangepast beleid
+titleSuffix: Azure AD B2C
 description: Stel aanmelden met een Sales Force SAML-provider in met behulp van aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2922aa32bab2d9d7146a03757850d4b724ad7570
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: bf4b10c2c1f927c80ed9a99e178ed336892daa21
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71822254"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950541"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden met een Sales Force SAML-provider instellen met behulp van aangepast beleid in Azure Active Directory B2C
 
@@ -39,16 +40,16 @@ In dit artikel wordt beschreven hoe u aanmelden inschakelt voor gebruikers van e
 
 ### <a name="create-a-connected-app-in-salesforce"></a>Een verbonden app maken in Sales Force
 
-1. Selecteer op de pagina **id** -provider **de optie service providers die nu zijn gemaakt via verbonden apps. Klik hier.**
+1. Selecteer op de pagina **ID-provider** de optie **service providers die nu zijn gemaakt via verbonden apps. Klik hier.**
 2. Voer onder **basis informatie**de vereiste waarden in voor de verbonden app.
 3. Schakel onder **Web app-instellingen**het selectie vakje **SAML inschakelen** in.
-4. Voer in het veld **Entiteits-ID** de volgende URL in. Zorg ervoor dat u de waarde `your-tenant` vervangt door de naam van uw Azure AD B2C-Tenant.
+4. Voer in het veld **Entiteits-ID** de volgende URL in. Zorg ervoor dat u de waarde voor `your-tenant` vervangt door de naam van uw Azure AD B2C Tenant.
 
       ```
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase
       ```
 
-6. Voer in het veld **ACS-URL** de volgende URL in. Zorg ervoor dat u de waarde `your-tenant` vervangt door de naam van uw Azure AD B2C-Tenant.
+6. Voer in het veld **ACS-URL** de volgende URL in. Zorg ervoor dat u de waarde voor `your-tenant` vervangt door de naam van uw Azure AD B2C Tenant.
 
       ```
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
@@ -87,16 +88,16 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 
 U moet het certificaat dat u hebt gemaakt in uw Azure AD B2C-Tenant opslaan.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
 5. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
-6. Kies`Upload`voor **Opties**.
-7. Voer een **naam** in voor het beleid. Bijvoorbeeld SAMLSigningCert. Het voor `B2C_1A_` voegsel wordt automatisch toegevoegd aan de naam van uw sleutel.
+6. Kies `Upload`voor **Opties**.
+7. Voer een **naam** in voor het beleid. Bijvoorbeeld SAMLSigningCert. De prefix `B2C_1A_` wordt automatisch toegevoegd aan de naam van uw sleutel.
 8. Blader naar en selecteer het B2CSigningCert. pfx-certificaat dat u hebt gemaakt.
 9. Voer het **wacht woord** voor het certificaat in.
-3. Klik op **Create**.
+3. Klik op **Maken**.
 
 ## <a name="add-a-claims-provider"></a>Een claim provider toevoegen
 
@@ -172,7 +173,7 @@ Op dit moment is de ID-provider ingesteld, maar is deze niet beschikbaar in de b
 
 Het element **ClaimsProviderSelection** is vergelijkbaar met een id-provider knop op een registratie-of aanmeldings scherm. Als u een **ClaimsProviderSelection** -element toevoegt voor een LinkedIn-account, wordt een nieuwe knop weer gegeven wanneer een gebruiker op de pagina terechtkomt.
 
-1. Zoek het **OrchestrationStep** -element dat `Order="1"` is opgenomen in de gebruikers traject die u zojuist hebt gemaakt.
+1. Zoek het **OrchestrationStep** -element dat `Order="1"` bevat in de gebruikers traject die u zojuist hebt gemaakt.
 2. Voeg onder **ClaimsProviderSelects**het volgende element toe. Stel de waarde van **TargetClaimsExchangeId** in op een geschikte waarde, bijvoorbeeld `SalesforceExchange`:
 
     ```XML
@@ -183,7 +184,7 @@ Het element **ClaimsProviderSelection** is vergelijkbaar met een id-provider kno
 
 Nu er een knop aanwezig is, moet u deze koppelen aan een actie. De actie in dit geval is voor Azure AD B2C om te communiceren met een Sales Force-account om een token te ontvangen.
 
-1. Zoek de **OrchestrationStep** die in `Order="2"` de gebruikers reis zijn opgenomen.
+1. Zoek de **OrchestrationStep** die `Order="2"` bevat in de gebruikers reis.
 2. Voeg het volgende **ClaimsExchange** -element toe om ervoor te zorgen dat u dezelfde waarde gebruikt voor de **id** die u hebt gebruikt voor **TargetClaimsExchangeId**:
 
     ```XML
@@ -206,7 +207,7 @@ Werk het Relying Party (RP)-bestand bij dat de gebruikers traject initieert die 
 
 1. Maak een kopie van *SignUpOrSignIn. XML* in uw werkmap en wijzig de naam ervan. Wijzig de naam bijvoorbeeld in *SignUpSignInSalesforce. XML*.
 2. Open het nieuwe bestand en werk de waarde van het kenmerk **PolicyId** voor **TrustFrameworkPolicy** met een unieke waarde bij. Bijvoorbeeld `SignUpSignInSalesforce`.
-3. Werk de waarde van **PublicPolicyUri** bij met de URI voor het beleid. Bijvoorbeeld:`http://contoso.com/B2C_1A_signup_signin_salesforce`
+3. Werk de waarde van **PublicPolicyUri** bij met de URI voor het beleid. Bijvoorbeeld`http://contoso.com/B2C_1A_signup_signin_salesforce`
 4. Werk de waarde van het kenmerk **ReferenceId** in **DefaultUserJourney** bij zodat dit overeenkomt met de id van de nieuwe gebruikers traject die u hebt gemaakt (SignUpSignInSalesforce).
 5. Sla de wijzigingen op, upload het bestand en selecteer vervolgens het nieuwe beleid in de lijst.
 6. Zorg ervoor dat Azure AD B2C toepassing die u hebt gemaakt, is geselecteerd in het veld **toepassing selecteren** en test deze door op **nu uitvoeren**te klikken.

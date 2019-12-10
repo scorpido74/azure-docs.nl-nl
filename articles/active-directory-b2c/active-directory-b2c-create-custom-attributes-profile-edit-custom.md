@@ -1,5 +1,6 @@
 ---
-title: Uw eigen kenmerken toevoegen aan aangepaste beleids regels in Azure Active Directory B2C | Microsoft Docs
+title: Uw eigen kenmerken toevoegen aan aangepaste beleids regels
+titleSuffix: Azure AD B2C
 description: Een overzicht van het gebruik van extensie-eigenschappen en aangepaste kenmerken en het opnemen ervan in de gebruikers interface.
 services: active-directory-b2c
 author: mmacy
@@ -10,14 +11,14 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 82a796a3252a4de6eacabcad45c61c864e963fe0
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 92050261777482bae8055f697ef50c2295675c5b
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066176"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948774"
 ---
-# <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Aangepaste kenmerken gebruiken in een aangepast profiel beleid bewerken
+# <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: aangepaste kenmerken gebruiken in een aangepast profiel beleid bewerken
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -25,7 +26,7 @@ In dit artikel maakt u een aangepast kenmerk in de map Azure Active Directory B2
 
 ## <a name="prerequisites"></a>Vereisten
 
-Volg de stappen in het artikel [Azure Active Directory B2C: Aan de slag met aangepast](active-directory-b2c-get-started-custom.md)beleid.
+Volg de stappen in het artikel [Azure Active Directory B2C: aan de slag met aangepast beleid](active-directory-b2c-get-started-custom.md).
 
 ## <a name="use-custom-attributes-to-collect-information-about-your-customers-in-azure-ad-b2c-by-using-custom-policies"></a>Aangepaste kenmerken gebruiken voor het verzamelen van informatie over uw klanten in Azure AD B2C met behulp van aangepast beleid
 Uw Azure AD B2C Directory wordt geleverd met een ingebouwde set kenmerken. Voor beelden zijn namen, **Achternaam**, **plaats**, **Post code**en **userPrincipalName**. U moet vaak uw eigen kenmerken maken, zoals deze voor beelden:
@@ -43,7 +44,7 @@ Als de toepassing wordt verwijderd, worden ook de extensie-eigenschappen, samen 
 Extensie-eigenschappen bestaan alleen in de context van een geregistreerde toepassing in de Tenant. De object-ID van de toepassing moet worden opgenomen in de **TechnicalProfile** die gebruikt.
 
 >[!NOTE]
->De Azure AD B2C Directory bevat doorgaans een web-app `b2c-extensions-app`met de naam. Deze toepassing wordt voornamelijk gebruikt door het ingebouwde B2C-beleid voor de aangepaste claims die zijn gemaakt via de Azure Portal. Het is raadzaam dat alleen geavanceerde gebruikers uitbrei dingen voor B2C aangepaste beleids regels registreren met behulp van deze toepassing.
+>De Azure AD B2C Directory bevat doorgaans een web-app met de naam `b2c-extensions-app`. Deze toepassing wordt voornamelijk gebruikt door het ingebouwde B2C-beleid voor de aangepaste claims die zijn gemaakt via de Azure Portal. Het is raadzaam dat alleen geavanceerde gebruikers uitbrei dingen voor B2C aangepaste beleids regels registreren met behulp van deze toepassing.
 Instructies zijn opgenomen in de sectie **volgende stappen** in dit artikel.
 
 ## <a name="create-a-new-application-to-store-the-extension-properties"></a>Een nieuwe toepassing maken voor het opslaan van de extensie-eigenschappen
@@ -52,8 +53,8 @@ Instructies zijn opgenomen in de sectie **volgende stappen** in dit artikel.
 2. Selecteer **Azure Active Directory** in het navigatie menu aan de linkerkant. Mogelijk moet u deze vinden door **meer services**te selecteren.
 3. Selecteer **App-registraties**. Selecteer **Nieuwe toepassing registreren**.
 4. Geef de volgende gegevens op:
-    * Een naam voor de webtoepassing: **WebApp-GraphAPI-DirectoryExtensions**.
-    * Het toepassings type: **Web-app/-API**.
+    * Een naam voor de webtoepassing: **webapp-GraphAPI-DirectoryExtensions**.
+    * Het toepassings type: **Web-app/API**.
     * De aanmeldings-URL: **https://{tenantnaam}. onmicrosoft. com/webapp-GraphAPI-DirectoryExtensions**.
 5. Selecteer **Maken**.
 6. Selecteer de zojuist gemaakte webtoepassing.
@@ -67,9 +68,9 @@ Instructies zijn opgenomen in de sectie **volgende stappen** in dit artikel.
 
 ## <a name="modify-your-custom-policy-to-add-the-applicationobjectid"></a>Wijzig uw aangepaste beleid om de **ApplicationObjectId** toe te voegen
 
-Wanneer u de stappen in [Azure Active Directory B2C hebt gevolgd: Aan de slag met aangepaste](active-directory-b2c-get-started-custom.md)beleids regels, u hebt [voorbeeld bestanden](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) gedownload en gewijzigd met de naam **TrustFrameworkBase. XML**, **TrustFrameworkExtensions. XML**, **SignUpOrSignin. XML**, **ProfileEdit. XML**en  **PasswordReset. XML**. In deze stap brengt u meer wijzigingen aan die bestanden aan.
+Wanneer u de stappen in [Azure Active Directory B2C: aan de slag met aangepast beleid](active-directory-b2c-get-started-custom.md), hebt u [voorbeeld bestanden](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) gedownload en gewijzigd met de naam **TrustFrameworkBase. XML**, **TrustFrameworkExtensions. XML**, **SignUpOrSignin. XML**, **ProfileEdit. XML**en **PasswordReset. XML**. In deze stap brengt u meer wijzigingen aan die bestanden aan.
 
-* Open het bestand **TrustFrameworkBase. XML** en voeg de `Metadata` sectie toe, zoals in het volgende voor beeld wordt weer gegeven. Voeg de object-id in die u eerder hebt `ApplicationObjectId` geregistreerd voor de waarde en de toepassings-id die `ClientId` u hebt genoteerd voor de waarde:
+* Open het bestand **TrustFrameworkBase. XML** en voeg de sectie `Metadata` toe, zoals in het volgende voor beeld wordt weer gegeven. Voeg de object-ID in die u eerder hebt geregistreerd voor de `ApplicationObjectId` waarde en de toepassings-ID die u hebt genoteerd voor de `ClientId` waarde:
 
     ```xml
     <ClaimsProviders>
@@ -102,7 +103,7 @@ Wanneer u de stappen in [Azure Active Directory B2C hebt gevolgd: Aan de slag me
 ## <a name="use-the-new-extension-property-or-custom-attribute-in-a-user-journey"></a>De nieuwe extensie-eigenschap of aangepast kenmerk in een gebruikers traject gebruiken
 
 1. Open het bestand **ProfileEdit. XML** .
-2. Voeg een aangepaste claim `loyaltyId`toe. Door de aangepaste claim in het `<RelyingParty>` -element op te nemen, wordt deze opgenomen in het token voor de toepassing.
+2. Voeg een aangepaste claim toe `loyaltyId`. Door de aangepaste claim op te nemen in het `<RelyingParty>`-element, wordt deze opgenomen in het token voor de toepassing.
 
     ```xml
     <RelyingParty>
@@ -123,7 +124,7 @@ Wanneer u de stappen in [Azure Active Directory B2C hebt gevolgd: Aan de slag me
     </RelyingParty>
     ```
 
-3. Open het bestand **TrustFrameworkExtensions. XML** en voeg het`<ClaimsSchema>` element en de onderliggende elementen aan het `BuildingBlocks` element toe:
+3. Open het bestand **TrustFrameworkExtensions. XML** en voeg het`<ClaimsSchema>`-element en de onderliggende elementen toe aan het `BuildingBlocks`-element:
 
     ```xml
     <BuildingBlocks>
@@ -138,9 +139,9 @@ Wanneer u de stappen in [Azure Active Directory B2C hebt gevolgd: Aan de slag me
     </BuildingBlocks>
     ```
 
-4. Voeg dezelfde `ClaimType` definitie toe aan **TrustFrameworkBase. XML**. Het is niet nodig om een `ClaimType` definitie toe te voegen aan de bestanden basis en extensies. Met de volgende stappen wordt echter de `extension_loyaltyId` **TechnicalProfiles** toegevoegd aan het basis bestand. De beleids validatie van het beleid weigert de upload van het basis bestand zonder dat. Het kan handig zijn om de uitvoering van de gebruikers traject met de naam **ProfileEdit** te traceren in het bestand **TrustFrameworkBase. XML** . Zoek naar de gebruikers traject met dezelfde naam in de editor. Houd er rekening mee dat met de Orchestration Step 5 de **TechnicalProfileReferenceID = "SelfAsserted-ProfileUpdate**. Zoek en Inspecteer deze **TechnicalProfile** om vertrouwd te raken met de stroom.
+4. Voeg dezelfde `ClaimType` definitie toe aan **TrustFrameworkBase. XML**. Het is niet nodig om een `ClaimType` definitie toe te voegen in de bestanden basis en extensies. Met de volgende stappen wordt de `extension_loyaltyId` echter toegevoegd aan **TechnicalProfiles** in het basis bestand. De beleids validatie van het beleid weigert de upload van het basis bestand zonder dat. Het kan handig zijn om de uitvoering van de gebruikers traject met de naam **ProfileEdit** te traceren in het bestand **TrustFrameworkBase. XML** . Zoek naar de gebruikers traject met dezelfde naam in de editor. Houd er rekening mee dat met de Orchestration Step 5 de **TechnicalProfileReferenceID = "SelfAsserted-ProfileUpdate**. Zoek en Inspecteer deze **TechnicalProfile** om vertrouwd te raken met de stroom.
 
-5. Open het bestand **TrustFrameworkBase. XML** en voeg `loyaltyId` als een invoer-en uitvoer claim toe aan de **TechnicalProfile SelfAsserted-ProfileUpdate**:
+5. Open het bestand **TrustFrameworkBase. XML** en voeg `loyaltyId` toe als een invoer-en uitvoer claim in de **TechnicalProfile SelfAsserted-ProfileUpdate**:
 
     ```xml
     <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
@@ -233,7 +234,7 @@ Wanneer u de stappen in [Azure Active Directory B2C hebt gevolgd: Aan de slag me
 
 ## <a name="test-the-custom-policy"></a>Het aangepaste beleid testen
 
-1. Open de Blade Azure AD B2C en navigeer naar het**aangepaste beleid**voor **identiteits ervaring** > .
+1. Open de Blade Azure AD B2C en navigeer naar **Identity experience Framework** > **aangepast beleid**.
 1. Selecteer het aangepaste beleid dat u hebt geüpload. Selecteer **nu uitvoeren**.
 1. Meld u aan met een e-mail adres.
 
@@ -300,5 +301,6 @@ Zie de Directory schema-uitbrei dingen voor het artikel voor meer informatie ove
 
 > [!NOTE]
 > * Een **TechnicalProfile** is een element type, of functie, waarmee de naam, meta gegevens en het Protocol van een eind punt worden gedefinieerd. De **TechnicalProfile** geeft een overzicht van de uitwisseling van claims die het Framework voor identiteits ervaring uitvoert. Wanneer deze functie wordt aangeroepen in een indelings stap of vanuit een andere **TechnicalProfile**, worden de **InputClaims** en **OutputClaims** als para meters door de aanroeper opgegeven.
-> * Extensie kenmerken in de Graph API worden genoemd met behulp van `extension_ApplicationObjectID_attributename`de Conventie.
+> * Extensie kenmerken in de Graph API worden genoemd met behulp van de Conventie `extension_ApplicationObjectID_attributename`.
 > * Aangepaste beleids regels verwijzen naar extensie kenmerken als **extension_attributename**. Met deze verwijzing wordt de **ApplicationObjectId** in XML wegge laten.
+> * U moet de kenmerk-ID opgeven in de volgende indeling **extension_attributename** waar hiernaar naar wordt verwezen.

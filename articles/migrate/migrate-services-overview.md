@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5843e6a5669cd90cdc0572e7a104c4fdf70ac2b3
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 54aea9fac946713ee6c1709e952e3962bb7288e9
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669133"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951765"
 ---
 # <a name="about-azure-migrate"></a>Over Azure Migrate
 
@@ -34,7 +34,7 @@ Azure Migrate helpt u bij het migreren van uw onderneming van on-premises naar A
 Er zijn momenteel twee versies van de Azure Migrate-service:
 
 - **Huidige versie**: gebruik deze versie om Azure migrate projecten te maken, on-premises machines te detecteren en beoordelingen en migraties te organiseren. Meer [informatie](whats-new.md) over wat er nieuw is in deze versie.
-- **Vorige versie**: als u de vorige versie van Azure migrate hebt gebruikt (alleen de evaluatie van on-premises virtuele VMware-machines werd ondersteund), moet u nu de huidige versie gebruiken. U kunt niet meer Azure Migrate projecten maken met de vorige versie en u wordt aangeraden geen nieuwe detecties uit te voeren. Als u toegang wilt krijgen tot bestaande projecten, zoekt u in de Azure Portal > **alle services**naar **Azure migrate**. Op het dash board van Azure Migrate ziet u een melding en een koppeling voor toegang tot oude Azure Migrate projecten.
+- **Vorige versie**: als u de vorige versie van Azure migrate hebt gebruikt (alleen de evaluatie van on-premises virtuele VMware-machines werd ondersteund), moet u nu de huidige versie gebruiken. U kunt niet meer Azure Migrate projecten maken met de vorige versie en u wordt aangeraden geen nieuwe detecties uit te voeren. Als u toegang wilt krijgen tot bestaande projecten, zoekt en selecteert u in de Azure Portal **Azure migrate**. Op het dash board van **Azure migrate** ziet u een melding en een koppeling voor toegang tot oude Azure migrate projecten.
 
 
 

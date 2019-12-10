@@ -1,6 +1,7 @@
 ---
-title: Over claim resolvers in Azure Active Directory B2C aangepast beleid | Microsoft Docs
-description: Meer informatie over hoe claims resolvers worden gebruikt in een aangepast beleid in Azure Active Directory B2C.
+title: Claim resolvers in aangepast beleid
+titleSuffix: Azure AD B2C
+description: Meer informatie over het gebruik van claim resolvers in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f08c85cee2378f4a879daf197af7a2adf0c20f45
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3370ec8de0fb49b92c0fb4dd429439e293ad1d8b
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064402"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949871"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Over claim resolvers in Azure Active Directory B2C aangepast beleid
 
@@ -23,7 +24,7 @@ Claim resolvers in Azure Active Directory B2C (Azure AD B2C) [aangepaste beleids
 
 Als u een claim resolver wilt gebruiken in een invoer-of uitvoer claim, definieert u een teken reeks **claim**type onder het element [ClaimsSchema](claimsschema.md) en stelt u de **DefaultValue** in op de claim resolver in het element input of output claim. Azure AD B2C leest de waarde van de claim resolver en gebruikt de waarde in het technische profiel.
 
-In het volgende voor beeld wordt een claim type `correlationId` met de naam gedefinieerd met het `string` **gegevens type** van.
+In het volgende voor beeld wordt een claim type met de naam `correlationId` gedefinieerd met het **gegevens type** `string`.
 
 ```XML
 <ClaimType Id="correlationId">
@@ -45,16 +46,16 @@ De volgende secties bevatten een lijst met beschik bare claim resolvers.
 
 ### <a name="culture"></a>Culture
 
-| Claim | Description | Voorbeeld |
+| Claim | Beschrijving | Voorbeeld |
 | ----- | ----------- | --------|
-| {Culture:LanguageName} | De ISO-code van twee letters voor de taal. | nl-NL |
+| {Culture:LanguageName} | De ISO-code van twee letters voor de taal. | en |
 | {Culture: LCID}   | De LCID van de taal code. | 1033 |
 | {Culture: regionaam} | De ISO-code van twee tekens voor de regio. | VS |
 | {Culture: RFC5646} | De RFC5646-taal code. | en-US |
 
 ### <a name="policy"></a>Beleid
 
-| Claim | Description | Voorbeeld |
+| Claim | Beschrijving | Voorbeeld |
 | ----- | ----------- | --------|
 | {Beleid: PolicyId} | De naam van het Relying Party-beleid. | B2C_1A_signup_signin |
 | {Policy:RelyingPartyTenantId} | De Tenant-ID van het Relying Party-beleid. | your-tenant.onmicrosoft.com |
@@ -63,21 +64,21 @@ De volgende secties bevatten een lijst met beschik bare claim resolvers.
 
 ### <a name="openid-connect"></a>OpenID Connect
 
-| Claim | Description | Voorbeeld |
+| Claim | Beschrijving | Voorbeeld |
 | ----- | ----------- | --------|
-| {OIDC: AuthenticationContextReferences} |De `acr_values` query teken reeks parameter. | N/A |
-| {OIDC: ClientId} |De `client_id` query teken reeks parameter. | 00000000-0000-0000-0000-000000000000 |
-| {OIDC: DomainHint} |De `domain_hint` query teken reeks parameter. | facebook.com |
-| {OIDC: LoginHint} |  De `login_hint` query teken reeks parameter. | someone@contoso.com |
-| {OIDC: MaxAge} | De `max_age`. | N/A |
-| {OIDC: nonce} |De `Nonce` query teken reeks parameter. | defaultNonce |
-| {OIDC: prompt} | De `prompt` query teken reeks parameter. | aanmelding |
-| {OIDC: resource} |De `resource` query teken reeks parameter. | N/A |
-| {OIDC: bereik} |De `scope` query teken reeks parameter. | OpenID Connect |
+| {OIDC: AuthenticationContextReferences} |De query reeks parameter `acr_values`. | N/A |
+| {OIDC: ClientId} |De query reeks parameter `client_id`. | 00000000-0000-0000-0000-000000000000 |
+| {OIDC: DomainHint} |De query reeks parameter `domain_hint`. | facebook.com |
+| {OIDC: LoginHint} |  De query reeks parameter `login_hint`. | someone@contoso.com |
+| {OIDC: MaxAge} | Het `max_age`. | N/A |
+| {OIDC: nonce} |De query reeks parameter `Nonce`. | defaultNonce |
+| {OIDC: prompt} | De query reeks parameter `prompt`. | aanmelding |
+| {OIDC: resource} |De query reeks parameter `resource`. | N/A |
+| {OIDC: bereik} |De query reeks parameter `scope`. | OpenID Connect |
 
 ### <a name="context"></a>Context
 
-| Claim | Description | Voorbeeld |
+| Claim | Beschrijving | Voorbeeld |
 | ----- | ----------- | --------|
 | {Context: BuildNumber} | De Framework-versie van de identiteits ervaring (build-nummer).  | 1.0.507.0 |
 | {Context:CorrelationId} | De correlatie-ID.  | 00000000-0000-0000-0000-000000000000 |
@@ -90,7 +91,7 @@ De volgende secties bevatten een lijst met beschik bare claim resolvers.
 
 Een parameter naam die deel uitmaakt van een OIDC-of OAuth2-aanvraag kan worden toegewezen aan een claim in de gebruikers traject. De aanvraag van de toepassing kan bijvoorbeeld een query teken reeks parameter bevatten met de naam `app_session`, `loyalty_number`of een aangepaste query teken reeks.
 
-| Claim | Description | Voorbeeld |
+| Claim | Beschrijving | Voorbeeld |
 | ----- | ----------------------- | --------|
 | {OAUTH-KV:campaignId} | Een query reeks parameter. | Hawaï |
 | {OAUTH-KV: app_session} | Een query reeks parameter. | A3C5R |
@@ -99,7 +100,7 @@ Een parameter naam die deel uitmaakt van een OIDC-of OAuth2-aanvraag kan worden 
 
 ### <a name="oauth2"></a>OAuth2
 
-| Claim | Description | Voorbeeld |
+| Claim | Beschrijving | Voorbeeld |
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | Het toegangs token. | N/A |
 
@@ -138,7 +139,7 @@ Met behulp van claim resolvers kunt u de aanmeldings naam of de directe aanmeldi
 
 Met Azure AD B2C kunt u query reeks parameters door geven aan uw HTML-inhouds definitie-eind punten zodat u de pagina-inhoud dynamisch kunt weer geven. U kunt bijvoorbeeld de achtergrond afbeelding wijzigen op de Azure AD B2C registratie-of aanmeldings pagina op basis van een aangepaste para meter die u doorgeeft vanuit uw web-of mobiele toepassing. Zie voor meer informatie [de gebruikers interface dynamisch configureren met behulp van aangepast beleid in azure Active Directory B2C](active-directory-b2c-ui-customization-custom-dynamic.md). U kunt ook uw HTML-pagina lokaliseren op basis van een taal parameter, of u kunt de inhoud wijzigen op basis van de client-ID.
 
-In het volgende voor beeld wordt in de query reeks een para meter met de naam `hawaii`campaignId opgegeven met de waarde `en-US`, een **taal** code en een **app** die de client-id vertegenwoordigt:
+In het volgende voor beeld wordt in de query reeks een para meter met de naam **campaignId** weer gegeven met de waarde `hawaii`, een **taal** code van `en-US`en een **app** die de client-id vertegenwoordigt:
 
 ```XML
 <UserJourneyBehaviors>

@@ -1,5 +1,6 @@
 ---
-title: 'Zelf studie: toegang verlenen tot een ASP.NET Core Web-API vanuit een toepassing met één pagina-Azure Active Directory B2C'
+title: 'Zelf studie: toegang verlenen tot een ASP.NET Core Web-API vanuit een app met één pagina'
+titleSuffix: Azure AD B2C
 description: In deze zelf studie leert u hoe u Active Directory B2C kunt gebruiken om een .NET core web-API te beveiligen en de API aan te roepen vanuit een node. js-toepassing met één pagina.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 7dae8bb552fe12d1cdf1f3d8a5fe124491933a87
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e5ced0c3e4ad05c33866548acb09189e03ed22f4
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420324"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949701"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Zelf studie: toegang verlenen tot een ASP.NET Core Web-API vanuit een toepassing met één pagina met behulp van Azure Active Directory B2C
 
@@ -58,7 +59,7 @@ In de hand leiding voor vereisten hebt u een webtoepassing gemaakt met de naam *
 
 Uw webtoepassing met één pagina is geregistreerd om de beveiligde web-API aan te roepen. Een gebruiker wordt geverifieerd met Azure AD B2C om de toepassing met één pagina te gebruiken. De app met één pagina verkrijgt een autorisatie machtiging van Azure AD B2C om toegang te krijgen tot de beveiligde web-API.
 
-## <a name="configure-the-sample"></a>Configureren van het voorbeeld
+## <a name="configure-the-sample"></a>Voorbeeld configureren
 
 Nu de web-API is geregistreerd en u bereiken hebt gedefinieerd, moet u de web-API-code configureren om uw Azure AD B2C-tenant te gebruiken. In deze zelf studie configureert u een voor beeld van een .NET core-webtoepassing die u kunt downloaden van GitHub.
 
@@ -204,7 +205,7 @@ Als u liever de `dotnet` CLI gebruikt in plaats van Visual Studio:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een web-API-toepassing toevoegen

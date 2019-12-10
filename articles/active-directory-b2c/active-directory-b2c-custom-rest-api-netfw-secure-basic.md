@@ -1,6 +1,7 @@
 ---
-title: Uw RESTful-services beveiligen met behulp van HTTP-verificatie in Azure Active Directory B2C | Microsoft Docs
-description: Uw aangepaste claims-uitwisselingen van REST-API in uw Azure AD B2C beveiligen met behulp van HTTP-basisverificatie.
+title: Een REST-service beveiligen met behulp van HTTP-basis verificatie
+titleSuffix: Azure AD B2C
+description: Beveilig uw aangepaste REST API claim uitwisselingen in uw Azure AD B2C met behulp van HTTP-basis verificatie.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,43 +11,43 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8c1251056ad816af664f95abcd18d50ceca4619d
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1a956638e8bd74c974012834ca650195e5bee37e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835269"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949437"
 ---
-# <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Uw RESTful-services beveiligen met behulp van HTTP-basisverificatie
+# <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Beveilig uw REST-services met behulp van HTTP-basis verificatie
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In een [gerelateerde Azure AD B2C-artikel](active-directory-b2c-custom-rest-api-netfw.md), maken van een RESTful-service (web-API) die kan worden geïntegreerd met Azure Active Directory B2C (Azure AD B2C) gebruiker reizen zonder verificatie.
+In een [gerelateerde Azure AD B2C-artikel](active-directory-b2c-custom-rest-api-netfw.md)maakt u een rest-service (Web-API) die kan worden geïntegreerd met de gebruikers ritten van Azure Active Directory B2C (Azure AD B2C) zonder verificatie.
 
-In dit artikel, voegt u HTTP-verificatie toe aan uw RESTful-service zodat alleen geverifieerde gebruikers, met inbegrip van B2C, hebben toegang tot uw API. Met HTTP-basisverificatie, kunt u de referenties van de gebruiker (app-ID en app-geheim) instellen in uw aangepast beleid.
+In dit artikel voegt u HTTP Basic-verificatie toe aan uw REST-service zodat alleen geverifieerde gebruikers, waaronder B2C, toegang hebben tot uw API. Met HTTP-basis verificatie stelt u de gebruikers referenties (App-ID en app-geheim) in voor uw aangepaste beleid.
 
-Zie voor meer informatie, [basisverificatie in ASP.NET web-API](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication).
+Zie [Basic Authentication in ASP.net Web API](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication)(Engelstalig) voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voer de stappen in de [REST-API integreren claims worden uitgewisseld in uw Azure AD B2C de gebruikersbeleving](active-directory-b2c-custom-rest-api-netfw.md) artikel.
+Voer de stappen uit in de [rest API claim uitwisseling integreren in uw reis artikel van uw Azure AD B2C gebruiker](active-directory-b2c-custom-rest-api-netfw.md) .
 
-## <a name="step-1-add-authentication-support"></a>Stap 1: Verificatie-ondersteuning toevoegen
+## <a name="step-1-add-authentication-support"></a>Stap 1: ondersteuning voor verificatie toevoegen
 
-### <a name="step-11-add-application-settings-to-your-projects-webconfig-file"></a>Stap 1.1: Voeg toepassingsinstellingen toe aan het web.config-bestand van uw project
+### <a name="step-11-add-application-settings-to-your-projects-webconfig-file"></a>Stap 1,1: toepassings instellingen toevoegen aan het bestand Web. config van het project
 
 1. Open het Visual Studio-project dat u eerder hebt gemaakt.
 
-2. De volgende toepassingsinstellingen toevoegen aan het bestand web.config in de `appSettings` element:
+2. Voeg de volgende toepassings instellingen toe aan het bestand Web. config onder het element `appSettings`:
 
     ```XML
     <add key="WebApp:ClientId" value="B2CServiceUserAccount" />
     <add key="WebApp:ClientSecret" value="your secret" />
     ```
 
-3. Maak een wachtwoord, en stel vervolgens de `WebApp:ClientSecret` waarde.
+3. Maak een wacht woord en stel vervolgens de `WebApp:ClientSecret` waarde in.
 
-    Voer de volgende PowerShell-code voor het genereren van een complex wachtwoord in. U kunt een willekeurige waarde gebruiken.
+    Voer de volgende Power shell-code uit om een complex wacht woord te genereren. U kunt elke wille keurige waarde gebruiken.
 
     ```powershell
     $bytes = New-Object Byte[] 32
@@ -56,9 +57,9 @@ Voer de stappen in de [REST-API integreren claims worden uitgewisseld in uw Azur
     [System.Convert]::ToBase64String($bytes)
     ```
 
-### <a name="step-12-install-owin-libraries"></a>Stap 1.2: OWIN-bibliotheken installeren
+### <a name="step-12-install-owin-libraries"></a>Stap 1,2: OWIN-bibliotheken installeren
 
-Toevoegen als u wilt beginnen, de OWIN-middleware NuGet-pakketten aan het project met behulp van Visual Studio Package Manager Console:
+Als u wilt beginnen, voegt u de OWIN middleware NuGet-pakketten toe aan het project met behulp van de Visual Studio Package Manager-console:
 
 ```powershell
 PM> Install-Package Microsoft.Owin
@@ -66,19 +67,19 @@ PM> Install-Package Owin
 PM> Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
-### <a name="step-13-add-an-authentication-middleware-class"></a>Stap 1.3: Voeg een verificatie-middleware-klasse
+### <a name="step-13-add-an-authentication-middleware-class"></a>Stap 1,3: een middleware-klasse voor verificatie toevoegen
 
-Voeg de `ClientAuthMiddleware.cs` klasse onder de *App_Start* map. Dit doet u als volgt:
+Voeg de klasse `ClientAuthMiddleware.cs` toe onder de map *App_Start* . Dit doet u als volgt:
 
-1. Met de rechtermuisknop op de *App_Start* map, selecteer **toevoegen**, en selecteer vervolgens **klasse**.
+1. Klik met de rechter muisknop op de map *App_Start* , selecteer **toevoegen**en selecteer vervolgens **klasse**.
 
-   ![ClientAuthMiddleware.cs klasse in de map App_Start toevoegen](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth1.png)
+   ![De klasse ClientAuthMiddleware.cs toevoegen in de map App_Start](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth1.png)
 
-2. In de **naam** in het vak **ClientAuthMiddleware.cs**.
+2. Typ **ClientAuthMiddleware.cs**in het vak **naam** .
 
-   ![Het maken van een nieuw C# klasse in het dialoogvenster Add New Item in Visual Studio](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth2.png)
+   ![Een nieuwe C# klasse maken in het dialoog venster Nieuw item toevoegen in Visual Studio](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth2.png)
 
-3. Open de *App_Start\ClientAuthMiddleware.cs* -bestand en vervang het bestand inhoud met de volgende code:
+3. Open het *App_Start \clientauthmiddleware.cs* -bestand en vervang de bestands inhoud door de volgende code:
 
     ```csharp
 
@@ -190,14 +191,14 @@ Voeg de `ClientAuthMiddleware.cs` klasse onder de *App_Start* map. Dit doet u al
     }
     ```
 
-### <a name="step-14-add-an-owin-startup-class"></a>Stap 1.4: Een OWIN-opstartklasse toevoegen
+### <a name="step-14-add-an-owin-startup-class"></a>Stap 1,4: een OWIN-opstart klasse toevoegen
 
-Voeg een OWIN-Opstartklasse met de naam toe `Startup.cs` naar de API. Dit doet u als volgt:
-1. Met de rechtermuisknop op het project, selecteer **toevoegen** > **Nieuw Item**, en zoek vervolgens **OWIN**.
+Voeg een OWIN-opstart klasse toe met de naam `Startup.cs` aan de API. Dit doet u als volgt:
+1. Klik met de rechter muisknop op het project, selecteer > **Nieuw item** **toevoegen** en zoek vervolgens naar **OWIN**.
 
-   ![Het maken van OWIN-Opstartklasse in het dialoogvenster Add New Item in Visual Studio](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup.png)
+   ![Een OWIN-opstart klasse maken in het dialoog venster Nieuw item toevoegen in Visual Studio](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup.png)
 
-2. Open de *Startup.cs* -bestand en vervang het bestand inhoud met de volgende code:
+2. Open het *Startup.cs* -bestand en vervang de bestands inhoud door de volgende code:
 
     ```csharp
     using Microsoft.Owin;
@@ -216,78 +217,78 @@ Voeg een OWIN-Opstartklasse met de naam toe `Startup.cs` naar de API. Dit doet u
     }
     ```
 
-### <a name="step-15-protect-the-identity-api-class"></a>Stap 1.5: De klasse-id-API beveiligen
+### <a name="step-15-protect-the-identity-api-class"></a>Stap 1,5: de identiteits-API-klasse beveiligen
 
-Open Controllers\IdentityController.cs en voeg de `[Authorize]` code aan de controllerklasse. Deze tag wordt beperkt tot de controller voor gebruikers die voldoen aan de vereiste machtiging.
+Open Controllers\IdentityController.cs en voeg de label `[Authorize]` toe aan de klasse controller. Met deze tag wordt de toegang tot de controller beperkt tot gebruikers die voldoen aan de autorisatie vereiste.
 
-![De autoriseren-tag toevoegen aan de controller](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-authorize.png)
+![De code voor autoriseren toevoegen aan de controller](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-authorize.png)
 
-## <a name="step-2-publish-to-azure"></a>Stap 2: Publiceren naar Azure
+## <a name="step-2-publish-to-azure"></a>Stap 2: publiceren naar Azure
 
-Voor het publiceren van uw project in Solution Explorer, met de rechtermuisknop op de **Contoso.AADB2C.API** project en selecteer vervolgens **publiceren**.
+Als u uw project wilt publiceren, klikt u in Solution Explorer met de rechter muisknop op het project **contoso. AADB2C. API** en selecteert u vervolgens **publiceren**.
 
-## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>Stap 3: De RESTful-services-app-ID en app-geheim toevoegen aan Azure AD B2C
+## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>Stap 3: Voeg de services-App-ID en het app-geheim van de REST toe aan Azure AD B2C
 
-Als uw RESTful-service wordt beveiligd door de client-ID (gebruikersnaam) en -geheim, moet u de referenties opslaan in uw Azure AD B2C-tenant. Uw aangepaste beleid bevat de referenties wanneer deze de RESTful-services roept.
+Nadat de REST-service is beveiligd door de client-ID (gebruikers naam) en het geheim, moet u de referenties opslaan in uw Azure AD B2C-Tenant. Uw aangepaste beleid bevat de referenties wanneer de services van de REST worden aangeroepen.
 
-### <a name="step-31-add-a-restful-services-client-id"></a>Stap 3.1: Toevoegen van een RESTful-services-client-ID
+### <a name="step-31-add-a-restful-services-client-id"></a>Stap 3,1: een client-ID van de REST-services toevoegen
 
-1. Selecteer in uw Azure AD B2C-tenant, **B2C-instellingen** > **Identity-Ervaringsframework**.
+1. Selecteer in uw Azure AD B2C-Tenant **B2C instellingen** > **Framework voor identiteits ervaring**.
 
 
-2. Selecteer **Beleidssleutels** om de sleutels die beschikbaar in uw tenant zijn weer te geven.
-
-3. Selecteer **Toevoegen**.
-
-4. Voor **opties**, selecteer **handmatig**.
-
-5. Voor **naam**, type **B2cRestClientId**.
-    Het voorvoegsel *B2C_1A_* mogelijk automatisch worden toegevoegd.
-
-6. In de **geheim** voert u de app-ID die u eerder hebt gedefinieerd.
-
-7. Voor **sleutelgebruik**, selecteer **handtekening**.
-
-8. Selecteer **Maken**.
-
-9. Bevestig dat u hebt gemaakt de `B2C_1A_B2cRestClientId` sleutel.
-
-### <a name="step-32-add-a-restful-services-client-secret"></a>Stap 3.2: Toevoegen van een clientgeheim RESTful-services
-
-1. Selecteer in uw Azure AD B2C-tenant, **B2C-instellingen** > **Identity-Ervaringsframework**.
-
-2. Selecteer **Beleidssleutels** om de sleutels die beschikbaar zijn in uw tenant weer te geven.
+2. Selecteer **beleids sleutels** om de sleutels weer te geven die beschikbaar zijn in uw Tenant.
 
 3. Selecteer **Toevoegen**.
 
-4. Voor **opties**, selecteer **handmatig**.
+4. Voor **Opties**selecteert u **hand matig**.
 
-5. Voor **naam**, type **B2cRestClientSecret**.
-    Het voorvoegsel *B2C_1A_* mogelijk automatisch worden toegevoegd.
+5. Typ **B2cRestClientId**voor **naam**.
+    De prefix *B2C_1A_* kan automatisch worden toegevoegd.
 
-6. In de **geheim** voert u de appgeheim dat u eerder hebt gedefinieerd.
+6. In het vak **geheim** voert u de app-id in die u eerder hebt gedefinieerd.
 
-7. Voor **sleutelgebruik**, selecteer **handtekening**.
+7. Selecteer voor **sleutel gebruik** **hand tekening**.
 
 8. Selecteer **Maken**.
 
-9. Bevestig dat u hebt gemaakt de `B2C_1A_B2cRestClientSecret` sleutel.
+9. Bevestig dat u de `B2C_1A_B2cRestClientId` sleutel hebt gemaakt.
 
-## <a name="step-4-change-the-technical-profile-to-support-basic-authentication-in-your-extension-policy"></a>Stap 4: Het technische profiel ter ondersteuning van basisverificatie wordt gebruikt in de uitbreiding beleid wijzigen
+### <a name="step-32-add-a-restful-services-client-secret"></a>Stap 3,2: Voeg een onderliggend Services-client geheim toe
 
-1. Open het beleid extensiebestand (TrustFrameworkExtensions.xml) in uw werkmap.
+1. Selecteer in uw Azure AD B2C-Tenant **B2C instellingen** > **Framework voor identiteits ervaring**.
 
-2. Zoek de `<TechnicalProfile>` knooppunt met `Id="REST-API-SignUp"`.
+2. Selecteer **beleids sleutels** om de sleutels weer te geven die beschikbaar zijn in uw Tenant.
 
-3. Zoek de `<Metadata>` element.
+3. Selecteer **Toevoegen**.
 
-4. Wijzig de *AuthenticationType* naar *Basic*, als volgt:
+4. Voor **Opties**selecteert u **hand matig**.
+
+5. Typ **B2cRestClientSecret**voor **naam**.
+    De prefix *B2C_1A_* kan automatisch worden toegevoegd.
+
+6. Voer in het vak **geheim** het app-geheim in dat u eerder hebt gedefinieerd.
+
+7. Selecteer voor **sleutel gebruik** **hand tekening**.
+
+8. Selecteer **Maken**.
+
+9. Bevestig dat u de `B2C_1A_B2cRestClientSecret` sleutel hebt gemaakt.
+
+## <a name="step-4-change-the-technical-profile-to-support-basic-authentication-in-your-extension-policy"></a>Stap 4: het technische profiel voor de ondersteuning van basis verificatie in uw uitbreidings beleid wijzigen
+
+1. Open in uw werkmap het extensie beleids bestand (TrustFrameworkExtensions. XML).
+
+2. Zoek naar het `<TechnicalProfile>` knoop punt dat `Id="REST-API-SignUp"`bevat.
+
+3. Zoek het element `<Metadata>`.
+
+4. Wijzig de *AuthenticationType* in *Basic*als volgt:
 
     ```xml
     <Item Key="AuthenticationType">Basic</Item>
     ```
 
-5. Onmiddellijk na de afsluitende `<Metadata>` -element, Voeg het volgende XML-fragment toe:
+5. Voeg direct na het afsluitende `<Metadata>` element het volgende XML-fragment toe:
 
     ```xml
     <CryptographicKeys>
@@ -296,40 +297,40 @@ Als uw RESTful-service wordt beveiligd door de client-ID (gebruikersnaam) en -ge
     </CryptographicKeys>
     ```
 
-    Nadat u het fragment hebt toegevoegd, wordt het technische profiel moet eruitzien als de volgende XML-code:
+    Nadat u het fragment hebt toegevoegd, moet uw technische profiel eruitzien zoals in de volgende XML-code:
 
-    ![Basisverificatie XML-elementen toevoegen aan het technische profiel](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-add-1.png)
+    ![XML-elementen voor basis verificatie toevoegen aan TechnicalProfile](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-add-1.png)
 
-## <a name="step-5-upload-the-policy-to-your-tenant"></a>Stap 5: Uploaden van het beleid aan uw tenant
+## <a name="step-5-upload-the-policy-to-your-tenant"></a>Stap 5: het beleid uploaden naar uw Tenant
 
-1. In de [Azure-portal](https://portal.azure.com), Ga naar de [context van uw Azure AD B2C-tenant](active-directory-b2c-navigate-to-b2c-context.md), en open vervolgens **Azure AD B2C**.
+1. In de [Azure Portal](https://portal.azure.com)gaat u naar de [context van uw Azure AD B2C-Tenant](active-directory-b2c-navigate-to-b2c-context.md)en opent u **Azure AD B2C**.
 
-2. Selecteer **Identity-Ervaringsframework**.
+2. Selecteer een **Framework voor identiteits ervaring**.
 
-3. Open **alle beleidsregels**.
+3. Open **alle beleids regels**.
 
 4. Selecteer **beleid uploaden**.
 
-5. Selecteer de **het beleid overschrijven als deze bestaat** selectievakje.
+5. Selecteer het selectie vakje het **beleid overschrijven als dit bestaat** .
 
-6. Upload de *TrustFrameworkExtensions.xml* bestand en zorg ervoor dat deze de validatietests doorstaat.
+6. Upload het bestand *TrustFrameworkExtensions. XML* en controleer of het validatie wordt door gegeven.
 
-## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>Stap 6: Het aangepaste beleid testen met behulp van nu uitvoeren
+## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>Stap 6: het aangepaste beleid testen met behulp van nu uitvoeren
 
-1. Open **Azure AD B2C-instellingen**, en selecteer vervolgens **Identity-Ervaringsframework**.
+1. Open **Azure AD B2C-instellingen**en selecteer vervolgens **Framework voor identiteits ervaring**.
 
     >[!NOTE]
-    >Voer nu vereist dat ten minste één toepassing vooraf op de tenant worden geregistreerd. Zie voor meer informatie over het registreren van toepassingen, de Azure AD B2C [aan de slag](active-directory-b2c-get-started.md) artikel of de [toepassingsregistratie](active-directory-b2c-app-registration.md) artikel.
+    >Voor het uitvoeren van nu moet ten minste één toepassing vooraf worden geregistreerd op de Tenant. Zie het artikel Azure AD B2C [aan de slag](active-directory-b2c-get-started.md) of het artikel over het registreren van [toepassingen](active-directory-b2c-app-registration.md) voor meer informatie over het registreren van toepassingen.
 
-2. Open **B2C_1A_signup_signin**, de relying party (RP) aangepast beleid u geüpload en selecteer vervolgens **nu uitvoeren**.
+2. Open **B2C_1A_signup_signin**, het aangepaste beleid RELYING Party (RP) dat u hebt geüpload en selecteer **nu uitvoeren**.
 
-3. Het proces testen door te typen **Test** in de **voornaam** vak.
-    Azure AD B2C wordt een foutbericht weergegeven aan de bovenkant van het venster.
+3. Test het proces door **test** te typen in het vak **naam** .
+    In Azure AD B2C wordt boven in het venster een fout bericht weer gegeven.
 
-    ![De Invoervalidatie voornaam testen in uw identiteit API](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
+    ![De invoer validatie van de opgegeven naam in uw identiteits-API testen](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
 
-4. In de **voornaam** typt u een naam (met uitzondering van 'Test').
-    Azure AD B2C de gebruiker zich aanmeldt en verzendt vervolgens een getal loyaliteit naar uw toepassing. Houd rekening met het nummer in dit voorbeeld:
+4. In het vak **naam** typt u een naam (anders dan ' test ').
+    Azure AD B2C de gebruiker aan te melden en vervolgens een loyaliteits nummer naar uw toepassing te verzenden. Noteer het nummer in dit voor beeld:
 
     ```
     {
@@ -352,11 +353,11 @@ Als uw RESTful-service wordt beveiligd door de client-ID (gebruikersnaam) en -ge
     }
     ```
 
-## <a name="optional-download-the-complete-policy-files-and-code"></a>(Optioneel) De volledige beleidsbestanden en de code downloaden
+## <a name="optional-download-the-complete-policy-files-and-code"></a>Beschrijving De volledige beleids bestanden en code downloaden
 
-* Na het voltooien van de [aan de slag met aangepaste beleidsregels](active-directory-b2c-get-started-custom.md) scenario, het is raadzaam dat u uw scenario bouwen met behulp van uw eigen aangepaste beleidsbestanden. Ter referentie, we hebben opgegeven [beleid voorbeeldbestanden](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic).
-* U kunt de code van de volledige downloaden [voorbeeld Visual Studio-oplossing voor verwijzing](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic).
+* Nadat u de walkthrough aan de [slag met aangepast beleid](active-directory-b2c-get-started-custom.md) hebt voltooid, wordt u aangeraden om uw scenario te bouwen met behulp van uw eigen aangepaste beleids bestanden. Voor uw referentie hebben we [voorbeeld beleids bestanden](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic)gegeven.
+* U kunt de volledige code downloaden van een [voor beeld van een Visual Studio-oplossing voor referentie](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [-Clientcertificaten gebruiken voor het beveiligen van uw RESTful-API](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
+* [Client certificaten gebruiken om de REST-API te beveiligen](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

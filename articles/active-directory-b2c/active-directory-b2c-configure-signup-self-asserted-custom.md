@@ -1,5 +1,6 @@
 ---
-title: Claims toevoegen en gebruikers invoer aanpassen met aangepast beleid-Azure Active Directory B2C | Microsoft Docs
+title: Claims toevoegen en gebruikers invoer aanpassen in aangepast beleid
+titleSuffix: Azure AD B2C
 description: Meer informatie over het aanpassen van de gebruikers invoer en het toevoegen van claims aan de traject voor registreren of aanmelden in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e29e2e3e61594870cc9d704d64b1040a4211a520
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 452a7f61726c3039b2c2b37280d0153fbcbca5fb
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066212"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948843"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Claims toevoegen en gebruikers invoer aanpassen met aangepaste beleids regels in Azure Active Directory B2C
 
@@ -51,7 +52,7 @@ De volgende elementen worden gebruikt voor het definiëren van de claim:
 - **UserHelpText** : helpt de gebruiker te begrijpen wat er nodig is.
 - **UserInputType** : kan een tekstvak, een keuze rondje, een vervolg keuzelijst of een meervoudige selectie zijn.
 
-#### <a name="textbox"></a>TextBox
+#### <a name="textbox"></a>Tekstvak
 
 ```xml
 <ClaimType Id="city">
@@ -113,7 +114,7 @@ De volgende elementen worden gebruikt voor het definiëren van de claim:
 
 ### <a name="add-the-claim-to-the-user-journey"></a>De claim toevoegen aan de gebruikers traject
 
-1. Voeg de claim toe als `<OutputClaim ClaimTypeReferenceId="city"/>` een aan `LocalAccountSignUpWithLogonEmail` het technische profiel dat is gevonden in het TrustFrameworkBase-beleids bestand. Dit technische profiel maakt gebruik van de SelfAssertedAttributeProvider.
+1. Voeg de claim als een `<OutputClaim ClaimTypeReferenceId="city"/>` toe aan het `LocalAccountSignUpWithLogonEmail` technische profiel dat is gevonden in het beleids bestand TrustFrameworkBase. Dit technische profiel maakt gebruik van de SelfAssertedAttributeProvider.
 
     ```xml
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -150,7 +151,7 @@ De volgende elementen worden gebruikt voor het definiëren van de claim:
     </TechnicalProfile>
     ```
 
-2. Voeg de claim toe aan het Aad-UserWriteUsingLogonEmail-technische profiel `<PersistedClaim ClaimTypeReferenceId="city" />` als een om de claim te schrijven naar de Aad-map nadat deze van de gebruiker is verzameld. U kunt deze stap overs Laan als u de claim in de map niet wilt behouden voor toekomstig gebruik.
+2. Voeg de claim toe aan het AAD-UserWriteUsingLogonEmail-technische profiel als `<PersistedClaim ClaimTypeReferenceId="city" />` om de claim te schrijven naar de AAD-map nadat deze is verzameld van de gebruiker. U kunt deze stap overs Laan als u de claim in de map niet wilt behouden voor toekomstig gebruik.
 
     ```xml
     <!-- Technical profiles for local accounts -->
@@ -186,7 +187,7 @@ De volgende elementen worden gebruikt voor het definiëren van de claim:
     </TechnicalProfile>
     ```
 
-3. De `<OutputClaim ClaimTypeReferenceId="city" />` claim toevoegen aan de technische profielen die vanuit de Directory worden gelezen wanneer een gebruiker zich aanmeldt.
+3. Voeg de `<OutputClaim ClaimTypeReferenceId="city" />` claim toe aan de technische profielen die vanuit de Directory worden gelezen wanneer een gebruiker zich aanmeldt.
 
     ```xml
     <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
@@ -260,7 +261,7 @@ De volgende elementen worden gebruikt voor het definiëren van de claim:
 
 ## <a name="test-the-custom-policy"></a>Het aangepaste beleid testen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zorg ervoor dat u de map met uw Azure AD-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD-Tenant bevat.
 3. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
 4. Selecteer **een framework voor identiteits ervaring (preview-versie)** .
@@ -272,7 +273,7 @@ Het scherm voor de aanmelding moet er ongeveer als volgt uitzien:
 
 ![Scherm afbeelding van gewijzigde registratie optie](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
 
-Het token dat teruggestuurd naar uw toepassing bevat `city` de claim.
+Het token dat teruggestuurd naar uw toepassing bevat de `city` claim.
 
 ```json
 {
@@ -294,11 +295,11 @@ Het token dat teruggestuurd naar uw toepassing bevat `city` de claim.
 }
 ```
 
-## <a name="optional-remove-email-verification"></a>Optioneel: E-mail verificatie verwijderen
+## <a name="optional-remove-email-verification"></a>Optioneel: e-mail verificatie verwijderen
 
-Als u e-mail verificatie wilt overs Laan `PartnerClaimType="Verified.Email"`, kunt u verwijderen. In dit geval is het e-mail adres vereist, maar niet geverifieerd, tenzij ' vereist ' = waar is verwijderd.  Denk voorzichtig te weten als deze optie geschikt is voor uw use cases.
+Als u e-mail verificatie wilt overs Laan, kunt u ervoor kiezen om `PartnerClaimType="Verified.Email"`te verwijderen. In dit geval is het e-mail adres vereist, maar niet geverifieerd, tenzij ' vereist ' = waar is verwijderd.  Denk voorzichtig te weten als deze optie geschikt is voor uw use cases.
 
-Geverifieerde e-mail is standaard ingeschakeld in de `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` in het TrustFrameworkBase-beleids bestand:
+Geverifieerde e-mail is standaard ingeschakeld in de `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` in het beleids bestand TrustFrameworkBase:
 
 ```xml
 <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />

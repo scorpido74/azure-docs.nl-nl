@@ -1,6 +1,7 @@
 ---
-title: Zelf studie-de interface van gebruikers ervaringen aanpassen-Azure Active Directory B2C | Microsoft Docs
-description: Meer informatie over het aanpassen van de gebruikers interface van uw toepassingen in Azure Active Directory B2C met behulp van de Azure Portal.
+title: 'Zelf studie: de gebruikers interface aanpassen'
+titleSuffix: Azure AD B2C
+description: Meer informatie over het aanpassen van de gebruikers interface (UI) van uw toepassingen in Azure Active Directory B2C met behulp van de Azure Portal.
 services: B2C
 author: mmacy
 manager: celestedg
@@ -10,14 +11,14 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 08edf6e841dc7d389573d5e5b5ea7e043f750e76
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: eba9919b7a1d89e6aea8fb93ef8c4b3e92960368
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71291094"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950864"
 ---
-# <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Zelfstudie: De interface van gebruikers ervaringen aanpassen in Azure Active Directory B2C
+# <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Zelf studie: de interface van gebruikers ervaringen aanpassen in Azure Active Directory B2C
 
 U kunt [gebruikers stromen](active-directory-b2c-reference-policies.md) gebruiken in Azure Active Directory B2C (Azure AD B2C) voor meer veelvoorkomende gebruikers ervaringen, zoals aanmelden, aanmelden en het bewerken van profielen. In de informatie in deze zelf studie leert u hoe u [de gebruikers interface (UI)](customize-ui-overview.md) van deze ervaringen kunt aanpassen met uw eigen HTML-en CSS-bestanden.
 
@@ -38,11 +39,11 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 U maakt een Azure Storage-account en een container en plaatst vervolgens de basis-HTML-en CSS-bestanden in de container.
 
-### <a name="create-a-storage-account"></a>Create a storage account
+### <a name="create-a-storage-account"></a>Maak een opslagaccount
 
 Hoewel u uw bestanden op veel verschillende manieren kunt opslaan, slaat u deze op in [Azure Blob-opslag](../storage/blobs/storage-blobs-introduction.md).
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zorg ervoor dat u de map gebruikt die uw Azure-abonnement bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw abonnement bevat. Deze map wijkt af van de directory die uw Azure B2C-Tenant bevat.
 3. Kies alle services in de linkerbovenhoek van het Azure Portal, zoek en selecteer **opslag accounts**.
 4. Selecteer **Toevoegen**.
@@ -62,8 +63,8 @@ Hoewel u uw bestanden op veel verschillende manieren kunt opslaan, slaat u deze 
  Azure AD B2C-code in een browser gebruikt een moderne en standaard benadering voor het laden van aangepaste inhoud vanuit een URL die u opgeeft in een gebruikers stroom. Met CORS (cross-Origin Resource Sharing) kunnen beperkte resources op een webpagina worden aangevraagd vanuit andere domeinen.
 
 1. Selecteer **CORS**in het menu.
-2. Voer`https://your-tenant-name.b2clogin.com`in voor **toegestane oorsprongen**. Vervang `your-tenant-name` met de naam van uw Azure AD B2C-tenant. Bijvoorbeeld `https://fabrikam.b2clogin.com`. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant.
-3. Voor **toegestane methoden**selecteert u `GET`,`PUT`en `OPTIONS`.
+2. Voer `https://your-tenant-name.b2clogin.com`in voor **toegestane oorsprongen**. Vervang `your-tenant-name` met de naam van uw Azure AD B2C-tenant. Bijvoorbeeld `https://fabrikam.b2clogin.com`. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant.
+3. Selecteer `GET`,`PUT`en `OPTIONS`voor **toegestane methoden**.
 4. Voer een asterisk (*) in bij **toegestane headers**.
 5. Voer een asterisk (*) in voor **weer gegeven headers**.
 6. Voer 200 in als **maximum leeftijd**.
@@ -74,9 +75,9 @@ Hoewel u uw bestanden op veel verschillende manieren kunt opslaan, slaat u deze 
 
 ### <a name="create-the-customization-files"></a>De aanpassings bestanden maken
 
-Als u de gebruikers interface van de registratie-ervaring wilt aanpassen, kunt u beginnen met het maken van een eenvoudig HTML-en CSS-bestand. U kunt uw HTML op elke gewenste manier configureren, maar deze moet een **div** -element met een id van `api`hebben. Bijvoorbeeld `<div id="api"></div>`. Azure AD B2C worden elementen in de `api` container geïnjecteerd wanneer de pagina wordt weer gegeven.
+Als u de gebruikers interface van de registratie-ervaring wilt aanpassen, kunt u beginnen met het maken van een eenvoudig HTML-en CSS-bestand. U kunt uw HTML op elke gewenste manier configureren, maar deze moet een **div** -element met de id `api`hebben. Bijvoorbeeld `<div id="api"></div>`. Azure AD B2C worden elementen in de `api` container geïnjecteerd wanneer de pagina wordt weer gegeven.
 
-1. Maak in een lokale map het volgende bestand en zorg ervoor dat u de naam `your-storage-account` van het opslag account en `your-container` de naam van de door u gemaakte container wijzigt. Bijvoorbeeld `https://store1.blob.core.windows.net/b2c/style.css`.
+1. Maak in een lokale map het volgende bestand en zorg ervoor dat u `your-storage-account` wijzigt in de naam van het opslag account en `your-container` naar de naam van de container die u hebt gemaakt. Bijvoorbeeld `https://store1.blob.core.windows.net/b2c/style.css`.
 
     ```html
     <!DOCTYPE html>
@@ -127,7 +128,7 @@ Als u de gebruikers interface van de registratie-ervaring wilt aanpassen, kunt u
 In deze zelf studie slaat u de bestanden op die u hebt gemaakt in het opslag account, zodat Azure AD B2C deze kunt openen.
 
 1. Kies **alle services** in de linkerbovenhoek van het Azure Portal, zoek en selecteer **opslag accounts**.
-2. Selecteer het opslag account dat u hebt gemaakt, selecteer blobs en selecteer vervolgens de container die u hebt gemaakt.
+2. Selecteer het opslag account dat u hebt gemaakt, selecteer **blobs**en selecteer vervolgens de container die u hebt gemaakt.
 3. Selecteer **uploaden**, navigeer naar en selecteer het bestand *Custom-UI. html* en klik vervolgens op **uploaden**.
 
     ![De BLOB-pagina in de portal uploaden met de knop uploaden en gemarkeerde bestanden](./media/tutorial-customize-ui/upload-blob.png)
@@ -138,14 +139,14 @@ In deze zelf studie slaat u de bestanden op die u hebt gemaakt in het opslag acc
 ## <a name="update-the-user-flow"></a>De gebruikers stroom bijwerken
 
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-2. Selecteer **gebruikers stromen (beleid)** en selecteer vervolgens de *B2C_1_signupsignin1* -gebruikers stroom.
+2. Selecteer **gebruikers stromen (beleid)** en selecteer vervolgens de *B2C_1_signupsignin1* gebruikers stroom.
 3. Selecteer **pagina-indelingen**en klik onder **Unified Sign-up of aanmeldings pagina**op **Ja** voor **aangepaste pagina-inhoud gebruiken**.
 4. Voer in de URI van de **aangepaste pagina**de URI in voor het *Custom-UI. html-* bestand dat u eerder hebt vastgelegd.
 5. Selecteer boven aan de pagina **Opslaan**.
 
 ## <a name="test-the-user-flow"></a>De gebruikers stroom testen
 
-1. Selecteer in uw Azure AD B2C-Tenant **gebruikers stromen** en selecteer de *B2C_1_signupsignin1* -gebruikers stroom.
+1. Selecteer in uw Azure AD B2C-Tenant **gebruikers stromen** en selecteer de *B2C_1_signupsignin1* gebruikers stroom.
 2. Klik boven aan de pagina op **gebruikers stroom uitvoeren**.
 3. Klik op de knop **gebruikers stroom uitvoeren** .
 

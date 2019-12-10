@@ -1,5 +1,6 @@
 ---
-title: OWIN-based web-Api's migreren naar b2clogin.com-Azure Active Directory B2C
+title: OWIN-based web-Api's migreren naar b2clogin.com
+titleSuffix: Azure AD B2C
 description: Meer informatie over het inschakelen van een .NET-Web-API voor het ondersteunen van tokens die zijn uitgegeven door meerdere token verleners terwijl u uw toepassingen migreert naar b2clogin.com.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a8a6b4f90fe3f1e60341cc59e7d81870c82e843b
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f07eb65243b4f797a2955e33aca50ed8c46d256e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533761"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950983"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>Een op OWIN gebaseerde web-API migreren naar b2clogin.com
 
@@ -26,7 +27,7 @@ Door ondersteuning toe te voegen aan uw API voor het accepteren van tokens die z
 De volgende secties bevatten een voor beeld van het inschakelen van meerdere verleners in een web-API die gebruikmaakt van de [micro soft OWIN][katana] middleware Components (Katana). Hoewel de code voorbeelden specifiek zijn voor de micro soft OWIN-middleware, moet de algemene techniek van toepassing zijn op andere OWIN-bibliotheken.
 
 > [!NOTE]
-> Dit artikel is bedoeld voor Azure AD B2C klanten met geïmplementeerde api's en toepassingen die verwijzen `login.microsoftonline.com` naar en die naar het aanbevolen `b2clogin.com` eind punt willen migreren. Als u een nieuwe toepassing wilt instellen, gebruikt u [b2clogin.com](b2clogin.md) als gestuurde.
+> Dit artikel is bedoeld voor Azure AD B2C klanten met momenteel geïmplementeerde Api's en toepassingen die verwijzen naar `login.microsoftonline.com` en die naar het aanbevolen `b2clogin.com`-eind punt willen migreren. Als u een nieuwe toepassing wilt instellen, gebruikt u [b2clogin.com](b2clogin.md) als gestuurde.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -51,7 +52,7 @@ Begin met het selecteren van een van uw bestaande gebruikers stromen:
 
     `https://your-b2c-tenant.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/`
 
-1. Gebruik de vervolg keuzelijst **domein selecteren** om het andere domein te selecteren en voer de vorige twee stappen opnieuw uit en noteer de waarde `issuer` ervan.
+1. Gebruik de vervolg keuzelijst **domein selecteren** om het andere domein te selecteren en voer de vorige twee stappen opnieuw uit en noteer de `issuer` waarde.
 
 Er zijn nu twee Uri's opgenomen die vergelijkbaar zijn met:
 
@@ -60,13 +61,13 @@ https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/
 https://your-b2c-tenant.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/
 ```
 
-### <a name="custom-policies"></a>Aangepaste beleidsregels
+### <a name="custom-policies"></a>Aangepast beleid
 
 Als u aangepaste beleids regels hebt in plaats van gebruikers stromen, kunt u een vergelijkbaar proces gebruiken om de Issuer-Uri's op te halen.
 
 1. Navigeer naar uw Azure AD B2C-Tenant
 1. **Identiteits ervaring-Framework** selecteren
-1. Selecteer een van uw Relying Party-beleid, bijvoorbeeld *B2C_1A_signup_signin*
+1. Selecteer een van de Relying Party-beleids regels, bijvoorbeeld *B2C_1A_signup_signin*
 1. Gebruik de vervolg keuzelijst **domein selecteren** om een domein te selecteren, bijvoorbeeld *yourtenant.b2clogin.com*
 1. Selecteer de Hyper link die wordt weer gegeven onder **OpenID Connect Connect Discovery-eind punt**
 1. De `issuer` waarde vastleggen
@@ -88,10 +89,10 @@ In deze sectie werkt u de code bij om aan te geven dat beide eind punten van de 
 
 1. Open de oplossing **B2C-WebAPI-dotnet. SLN** in Visual Studio
 1. Open in het project **TaskService** het bestand *TaskService\\App_Start\\**startup.auth.cs**.* in uw editor
-1. Voeg de volgende `using` instructie toe aan het begin van het bestand:
+1. Voeg de volgende `using`-instructie toe aan het begin van het bestand:
 
     `using System.Collections.Generic;`
-1. Voeg de [`ValidIssuers`][validissuers] eigenschap toe aan [`TokenValidationParameters`][tokenvalidationparameters] de definitie en geef beide uri's op die u in de vorige sectie hebt genoteerd:
+1. Voeg de eigenschap [`ValidIssuers`][validissuers] aan de [`TokenValidationParameters`][tokenvalidationparameters] definitie toe en geef beide uri's op die u in de vorige sectie hebt genoteerd:
 
     ```csharp
     TokenValidationParameters tvps = new TokenValidationParameters
@@ -106,7 +107,7 @@ In deze sectie werkt u de code bij om aan te geven dat beide eind punten van de 
     };
     ```
 
-`TokenValidationParameters`wordt verzorgd door MSAL.NET en wordt gebruikt door de OWIN-middleware in de volgende sectie van de code in *Startup.auth.cs*. Als er meerdere geldige verleners zijn opgegeven, wordt de OWIN-toepassings pijplijn op de hoogte gesteld dat beide token-eind punten geldige verleners zijn.
+`TokenValidationParameters` wordt door MSAL.NET gegeven en wordt gebruikt door de OWIN-middleware in de volgende sectie van code in *Startup.auth.cs*. Als er meerdere geldige verleners zijn opgegeven, wordt de OWIN-toepassings pijplijn op de hoogte gesteld dat beide token-eind punten geldige verleners zijn.
 
 ```csharp
 app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
@@ -124,7 +125,7 @@ Wanneer beide Uri's nu door de Web-API worden ondersteund, moet u uw webtoepassi
 
 U kunt bijvoorbeeld de voor beeld-webtoepassing zodanig configureren dat het nieuwe eind punt wordt gebruikt `ida:AadInstance` door de waarde in het bestand *project taskwebapp\\**web. config**.* van het **project taskwebapp** -project te wijzigen.
 
-Wijzig de `ida:AadInstance` waarde in *Web. config* of project taskwebapp zodat deze verwijst naar `{your-b2c-tenant-name}.b2clogin.com` in plaats van. `login.microsoftonline.com`
+Wijzig de `ida:AadInstance` waarde in *Web. config* of project taskwebapp zodat deze verwijst naar `{your-b2c-tenant-name}.b2clogin.com` in plaats van `login.microsoftonline.com`.
 
 Voor:
 

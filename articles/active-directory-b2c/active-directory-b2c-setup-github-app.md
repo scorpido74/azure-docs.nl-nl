@@ -1,5 +1,6 @@
 ---
-title: Registratie instellen en aanmelden met een GitHub-account-Azure Active Directory B2C
+title: Registratie instellen en aanmelden met een GitHub-account
+titleSuffix: Azure AD B2C
 description: Meld u aan en meld u bieden aan klanten met een GitHub-account in uw toepassingen met behulp van Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 74c663d8847c2829a5d9466f8e601dd44593a6f8
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ae431ecd76f0ae5d51880832a5de415d3271ba54
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065201"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949352"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Instellen van zich kunnen registreren en aanmelden met een GitHub-account met behulp van Azure Active Directory B2C
 

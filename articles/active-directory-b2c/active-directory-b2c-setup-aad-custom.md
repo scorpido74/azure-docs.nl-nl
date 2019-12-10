@@ -1,5 +1,6 @@
 ---
-title: Aanmelden met een Azure Active Directory account instellen in Azure Active Directory B2C met aangepaste beleids regels
+title: Aanmelden met een Azure AD-account instellen met behulp van aangepast beleid
+titleSuffix: Azure AD B2C
 description: Stel aanmelden met een Azure Active Directory-account in Azure Active Directory B2C met aangepaste beleids regels.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a221d55d942e6140c12f2ebfb64428b8ec7be74b
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 2babd21ab477fae8c0d139932e08b8d99b9170ae
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643577"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947773"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden met een Azure Active Directory-account instellen met behulp van aangepast beleid in Azure Active Directory B2C
 
@@ -31,7 +32,7 @@ Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B
 
 Als u het aanmelden voor gebruikers van een specifieke Azure AD-organisatie wilt inschakelen, moet u een toepassing registreren in de Azure AD-Tenant van de organisatie.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zorg ervoor dat u de map gebruikt die de Azure AD-Tenant van uw organisatie bevat (bijvoorbeeld contoso.com). Selecteer het **filter Directory + abonnement** in het bovenste menu en kies vervolgens de map die uw Azure AD-Tenant bevat.
 1. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
 1. Selecteer **nieuwe registratie**.
@@ -58,7 +59,7 @@ U moet de toepassings sleutel opslaan die u hebt gemaakt in uw Azure AD B2C-Tena
 1. Onder **beleids regels**selecteert u **identiteits ervaring-Framework**.
 1. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
 1. Kies `Manual`voor **Opties**.
-1. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `ContosoAppSecret`.  Het voor voegsel `B2C_1A_` wordt automatisch toegevoegd aan de naam van de sleutel wanneer deze wordt gemaakt, zodat de verwijzing in de XML in de volgende sectie wordt *B2C_1A_ContosoAppSecret*.
+1. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `ContosoAppSecret`.  Het voor voegsel `B2C_1A_` wordt automatisch toegevoegd aan de naam van de sleutel die wordt gemaakt, zodat de verwijzing in de XML in de volgende sectie wordt *B2C_1A_ContosoAppSecret*.
 1. Voer in het **geheim**uw client geheim in dat u eerder hebt vastgelegd.
 1. Selecteer `Signature`voor **sleutel gebruik**.
 1. Selecteer **Maken**.
@@ -130,7 +131,7 @@ Als u een token van het Azure AD-eind punt wilt ophalen, moet u de protocollen d
 1. Azure AD maakt gebruik van het OpenID Connect Connect-protocol, dus zorg ervoor dat de waarde voor **protocol** is `OpenIdConnect`.
 1. Stel de waarde van de **meta gegevens** in op `https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration`, waarbij `your-AD-tenant-name` uw Azure AD-Tenant naam is. Bijvoorbeeld: `https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration`
 1. Open uw browser en ga naar de **meta gegevens** -URL die u zojuist hebt bijgewerkt, zoek naar het object van de **verlener** en kopieer en plak de waarde in de waarde voor **ProviderName** in het XML-bestand.
-1. Stel **client_id** in op de toepassings-id in de registratie van de toepassing.
+1. Stel **client_id** van de toepassings-id in voor de registratie van de toepassing.
 1. Werk onder **CryptographicKeys**de waarde van **StorageReferenceId** bij naar de naam van de beleids sleutel die u eerder hebt gemaakt. Bijvoorbeeld `B2C_1A_ContosoAppSecret`.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Upload het extensie bestand voor verificatie

@@ -1,6 +1,7 @@
 ---
-title: Voor beelden van controle logboeken en definities in Azure Active Directory B2C
-description: Hand leiding en voor beelden voor het openen van de Azure AD B2C controle Logboeken.
+title: Audit Logboeken openen en bekijken
+titleSuffix: Azure AD B2C
+description: Toegang tot Azure AD B2C controle logboeken programmatisch en in de Azure Portal.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,12 +12,12 @@ ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b1070314767f280ec9d15390dc838fa80b5508e2
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: feefe7cf6d559360defd7c7f830a9e3f2e583cd6
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643614"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948229"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Toegang tot Azure AD B2C controle logboeken
 
@@ -37,8 +38,8 @@ De categorie **B2C** in audit Logboeken bevat de volgende soorten activiteiten:
 |Directory |Activiteiten gerelateerd aan adreslijst kenmerken die zijn opgehaald wanneer een beheerder zich aanmeldt met behulp van de Azure Portal. |
 |Toepassing | Maak, lees-, update-en delete-bewerkingen (ruw) in B2C-toepassingen. |
 |Sleutel |RUWE bewerkingen op sleutels die zijn opgeslagen in een B2C-sleutel container. |
-|Resource |RUWE bewerkingen op B2C-resources. Bijvoorbeeld beleid en id-providers.
-|Authentication |Validatie van gebruikers referenties en het uitgeven van tokens.|
+|Bron |RUWE bewerkingen op B2C-resources. Bijvoorbeeld beleid en id-providers.
+|Verificatie |Validatie van gebruikers referenties en het uitgeven van tokens.|
 
 Raadpleeg de categorie **basis directory** voor een ruwe activiteiten voor gebruikers objecten.
 
@@ -52,13 +53,13 @@ Het deel venster activity Details bevat de volgende relevante informatie:
 
 |Sectie|Veld|Beschrijving|
 |-------|-----|-----------|
-| Activiteit | Naam | Welke activiteit heeft plaatsgevonden. U kunt bijvoorbeeld *een Id_token uitgeven aan de toepassing*, waardoor de werkelijke gebruikers aanmelding wordt beëindigd. |
-| Gestart door (actor) | Id | De **object-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. Deze id is niet zichtbaar in de Azure Portal, maar is toegankelijk via de Microsoft Graph-API. |
+| Activiteit | Naam | Welke activiteit heeft plaatsgevonden. *Geef bijvoorbeeld een id_token voor de toepassing op*, waarmee de werkelijke gebruikers aanmelding wordt beëindigd. |
+| Gestart door (actor) | ObjectId | De **object-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. Deze id is niet zichtbaar in de Azure Portal, maar is toegankelijk via de Microsoft Graph-API. |
 | Gestart door (actor) | SPN | De **toepassings-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. |
-| Doel (en) | Id | De **object-id** van de gebruiker die zich aanmeldt. |
-| Aanvullende details | tenantId | De **Tenant-id** van de Azure AD B2C Tenant. |
-| Aanvullende details | policyId | De **beleids-id** van de gebruikers stroom (het beleid) dat wordt gebruikt voor het ondertekenen van de gebruiker in. |
-| Aanvullende details | applicationId | De **toepassings-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. |
+| Doel(en) | ObjectId | De **object-id** van de gebruiker die zich aanmeldt. |
+| Aanvullende details | TenantId | De **Tenant-id** van de Azure AD B2C Tenant. |
+| Aanvullende details | PolicyId | De **beleids-id** van de gebruikers stroom (het beleid) dat wordt gebruikt voor het ondertekenen van de gebruiker in. |
+| Aanvullende details | ApplicationId | De **toepassings-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>Audit logboeken weer geven in de Azure Portal
 
@@ -109,7 +110,7 @@ Voer de volgende stappen uit om een toepassing te registreren, de vereiste Micro
 1. Selecteer **Microsoft Graph**en **Selecteer**.
 1. Selecteer **alle audit logboek gegevens lezen**onder **toepassings machtigingen**.
 1. Selecteer de knop **selecteren** en selecteer vervolgens **gereed**.
-1. Selecteer **machtigingen verlenen**en selecteer vervolgens **Ja**.
+1. Selecteer **machtigingen verlenen**, en selecteer vervolgens **Ja**.
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
 

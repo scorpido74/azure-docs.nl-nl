@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 722907328fe17c4116f4f8d948e081f9582ca712
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: c26c4c47cb17acf88bc545af3a1fc979138d56b1
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266564"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951731"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Virtuele netwerken van verschillende implementatie modellen verbinden met behulp van de portal
 
@@ -77,14 +77,14 @@ In de volgende tabel ziet u een voor beeld van hoe het voor beeld-VNets en de lo
 
 | Virtueel netwerk | Adresruimte | Regio | Maakt verbinding met de lokale netwerk site |
 |:--- |:--- |:--- |:--- |
-| ClassicVNet |(10.0.0.0/24) |US - west | RMVNetLocal (192.168.0.0/16) |
-| RMVNet | (192.168.0.0/16) |East US |ClassicVNetLocal (10.0.0.0/24) |
+| ClassicVNet |(10.0.0.0/24) |VS - west | RMVNetLocal (192.168.0.0/16) |
+| RMVNet | (192.168.0.0/16) |VS - oost |ClassicVNetLocal (10.0.0.0/24) |
 
 ## <a name="classicvnet"></a>Sectie 1: de klassieke VNet-instellingen configureren
 
 In deze sectie maakt u het klassieke VNet, het lokale netwerk (lokale site) en de gateway van het virtuele netwerk. De schermafbeeldingen dienen alleen als voorbeeld. Zorg ervoor dat u de waarden vervangt door uw eigen waarde of gebruik de [voorbeeld](#values) waarden.
 
-### 1. <a name="classicvnet"></a>Een klassiek VNet maken
+### 1. <a name="classicvnet"> </a>een klassiek VNet maken
 
 Als u geen klassiek VNet hebt en u deze stappen uitvoert als oefening, kunt u een VNet maken met behulp van [dit artikel](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) en de [voor beeld](#values) -instellingen van bovenstaande waarden.
 
@@ -96,11 +96,11 @@ Als u al een VNet met een VPN-gateway hebt, controleert u of de gateway dynamisc
 4. Zoek naar ' Virtual Network ' in de lijst met resultaten en klik erop om de pagina Virtual Network te openen. 
 5. Selecteer op de pagina virtueel netwerk de optie klassiek om een klassiek VNet te maken. Als u hier de standaard waarde haalt, gaat u in plaats daarvan een resource manager-VNet.
 
-### 2. <a name="local"></a>De lokale site configureren
+### 2. <a name="local"> </a>de lokale site configureren
 
 1. Ga naar **alle resources** en zoek de **ClassicVNet** in de lijst.
-2. Klik op de pagina **overzicht** in de sectie **VPN-verbindingen** op **Gateway** om een gateway te maken.
-  ![Een VPN-gateway configureren](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "Een VPN-gateway configureren")
+2. Klik in de sectie **instellingen** van het menu op **Gateway** en klik vervolgens op de banner om een gateway te maken.
+  ![Een VPN-gateway configureren](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "Ceen VPN-gateway onfigureren ")
 3. Selecteer op de pagina **nieuwe VPN-verbinding** bij **verbindings type**de optie **site-naar-site**.
 4. Klik voor **lokale site**op **vereiste instellingen configureren**. Hiermee opent u de pagina **lokale site** .
 5. Maak op de pagina **lokale site** een naam om te verwijzen naar het Resource Manager VNet. Bijvoorbeeld ' RMVNetLocal '.
@@ -108,7 +108,7 @@ Als u al een VNet met een VPN-gateway hebt, controleert u of de gateway dynamisc
 7. Gebruik voor de **adres ruimte**van de client de [waarden](#connectoverview) voor de IP-adres ruimten van het virtuele netwerk voor het Resource Manager-VNet. Deze instelling wordt gebruikt om de adres ruimten op te geven die moeten worden doorgestuurd naar het virtuele netwerk van Resource Manager. In het voor beeld gebruiken we 192.168.0.0/16, het adres bereik voor de RMVNet.
 8. Klik op **OK** om de waarden op te slaan en terug te keren naar de pagina **nieuwe VPN-verbinding** .
 
-### <a name="classicgw"></a>3. De gateway van het virtuele netwerk maken
+### <a name="classicgw"></a>3. de gateway van het virtuele netwerk maken
 
 1. Schakel op de pagina **nieuwe VPN-verbinding** het selectie vakje **Gateway onmiddellijk maken** in.
 2. Klik op **Optionele gatewayconfiguratie** om de pagina **Gatewayconfiguratie** te openen.
@@ -120,7 +120,7 @@ Als u al een VNet met een VPN-gateway hebt, controleert u of de gateway dynamisc
 6. Controleer of het **routerings type** **dynamisch**is en klik vervolgens op **OK** om terug te keren naar de pagina **nieuwe VPN-verbinding** .
 7. Klik op de pagina **nieuwe VPN-verbinding** op **OK** om te beginnen met het maken van uw VPN-gateway. Het maken van een VPN-gateway kan tot 45 minuten duren.
 
-### <a name="ip"></a>4. Het open bare IP-adres van de gateway van het virtuele netwerk kopiëren
+### <a name="ip"></a>4. het open bare IP-adres van de gateway van het virtuele netwerk kopiëren
 
 Nadat de virtuele netwerk gateway is gemaakt, kunt u het IP-adres van de gateway weer geven. 
 
@@ -132,7 +132,7 @@ Nadat de virtuele netwerk gateway is gemaakt, kunt u het IP-adres van de gateway
 
 In deze sectie maakt u de gateway van het virtuele netwerk en de lokale netwerk gateway voor uw Resource Manager-VNet. De schermafbeeldingen dienen alleen als voorbeeld. Zorg ervoor dat u de waarden vervangt door uw eigen waarde of gebruik de [voorbeeld](#values) waarden.
 
-### <a name="1-create-a-virtual-network"></a>1. Een virtueel netwerk maken
+### <a name="1-create-a-virtual-network"></a>1. een virtueel netwerk maken
 
 **Voorbeeld waarden:**
 
@@ -145,7 +145,7 @@ In deze sectie maakt u de gateway van het virtuele netwerk en de lokale netwerk 
 
 Als u geen Resource Manager VNet hebt en u deze stappen uitvoert als oefening, maakt u een virtueel netwerk met de stappen in [een virtueel netwerk maken](../virtual-network/quick-create-portal.md)met behulp van de voorbeeld waarden.
 
-### <a name="creategw"></a>2. De gateway van een virtueel netwerk maken
+### <a name="creategw"></a>2. een virtuele netwerk gateway maken
 
 In deze stap maakt u de virtuele netwerkgateway VNet. Het maken van een gateway duurt vaak 45 minuten of langer, afhankelijk van de geselecteerde gateway-SKU.
 
@@ -166,14 +166,14 @@ In deze stap maakt u de virtuele netwerkgateway VNet. Het maken van een gateway 
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-### <a name="createlng"></a>3. Een lokale netwerkgateway maken
+### <a name="createlng"></a>3. een lokale netwerk gateway maken
 
 **Voorbeeld waarden:** Lokale netwerk gateway = ClassicVNetLocal
 
 | Virtueel netwerk | Adresruimte | Regio | Maakt verbinding met de lokale netwerk site |Openbaar IP-adres van Gateway|
 |:--- |:--- |:--- |:--- |:--- |
-| ClassicVNet |(10.0.0.0/24) |US - west | RMVNetLocal (192.168.0.0/16) |Het open bare IP-adres dat is toegewezen aan de ClassicVNet-gateway|
-| RMVNet | (192.168.0.0/16) |East US |ClassicVNetLocal (10.0.0.0/24) |Het open bare IP-adres dat is toegewezen aan de RMVNet-gateway.|
+| ClassicVNet |(10.0.0.0/24) |VS - west | RMVNetLocal (192.168.0.0/16) |Het open bare IP-adres dat is toegewezen aan de ClassicVNet-gateway|
+| RMVNet | (192.168.0.0/16) |VS - oost |ClassicVNetLocal (10.0.0.0/24) |Het open bare IP-adres dat is toegewezen aan de RMVNet-gateway.|
 
 De lokale netwerk gateway geeft het adres bereik en het open bare IP-adres aan dat is gekoppeld aan uw klassieke VNet en de gateway van het virtuele netwerk. Als u deze stappen uitvoert als oefening, raadpleegt u de voorbeeld waarden.
 
@@ -196,7 +196,7 @@ In deze sectie vervangt u het IP-adres van de tijdelijke aanduiding dat u hebt g
    ![Open-local-site](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "Open lokale site")
 6. Vervang het IP-adres van de **VPN-gateway** op de pagina **lokale site** door het IP-adres van de Resource Manager-gateway.
 
-   ![Gateway-IP-adres](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "IP-adres") van de gateway
+   ![Gateway-IP-adres](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "IP-adres van de gateway")
 7. Klik op **OK** om het IP-adres bij te werken.
 
 ## <a name="RMtoclassic"></a>Sectie 4: Resource Manager maken voor klassieke verbinding
@@ -207,7 +207,7 @@ In deze stappen configureert u de verbinding van de Resource Manager VNet met he
 2. Klik op **configuratie** en controleer of de IP-adres waarde de VPN-gateway voor het klassieke VNet is. Update, indien nodig, en klik vervolgens op **Opslaan**. Sluit de pagina.
 3. Klik in **alle resources**op de lokale netwerk gateway.
 4. Klik op **verbindingen** om de pagina verbindingen te openen.
-5. **Klik+** op de pagina **verbindingen** op om een verbinding toe te voegen.
+5. Klik op de pagina **verbindingen** op **+** om een verbinding toe te voegen.
 6. Geef op de pagina **verbinding toevoegen** een naam op voor de verbinding. Bijvoorbeeld ' RMtoClassic '.
 7. **Site-naar-site** is al geselecteerd op deze pagina.
 8. Selecteer de virtuele netwerk gateway die u wilt koppelen aan deze site.
@@ -218,7 +218,7 @@ In deze stappen configureert u de verbinding van de Resource Manager VNet met he
 
 In deze stappen configureert u de verbinding van het klassieke VNet met het Resource Manager-VNet. Voor deze stappen is Power shell vereist. U kunt deze verbinding niet maken in de portal. Zorg ervoor dat u de klassieke Power shell-cmdlets (SM) en Resource Manager (RM) hebt gedownload en geïnstalleerd.
 
-### <a name="1-connect-to-your-azure-account"></a>1. Verbinding maken met uw Azure-account
+### <a name="1-connect-to-your-azure-account"></a>1. Maak verbinding met uw Azure-account
 
 Open de Power shell-console met verhoogde rechten en meld u aan bij uw Azure-account. Nadat u zich hebt aangemeld, worden uw account instellingen gedownload zodat ze beschikbaar zijn voor Azure PowerShell. De volgende cmdlet vraagt u om de aanmeldings referenties voor uw Azure-account voor het Resource Manager-implementatie model:
 
@@ -256,7 +256,7 @@ Als u meer dan één abonnement hebt, geeft u het abonnement op dat u wilt gebru
 Select-AzureSubscription -SubscriptionName "Name of subscription"
 ```
 
-### <a name="2-view-the-network-configuration-file-values"></a>2. De waarden van het netwerk configuratie bestand weer geven
+### <a name="2-view-the-network-configuration-file-values"></a>2. de waarden van het netwerk configuratie bestand weer geven
 
 Wanneer u een VNet maakt in de Azure Portal, is de volledige naam die door Azure wordt gebruikt, niet zichtbaar in de Azure Portal. Een VNet dat in het Azure Portal met de naam ' ClassicVNet ' wordt weer gegeven, kan in het netwerk configuratie bestand bijvoorbeeld een veel langere naam hebben. De naam kan er ongeveer als volgt uitzien: ' Group ClassicRG ClassicVNet '. In deze stappen downloadt u het netwerk configuratie bestand en bekijkt u de waarden.
 
@@ -271,7 +271,7 @@ Open het bestand met een tekst editor en Bekijk de naam voor uw klassieke VNet. 
 - VNet-namen worden vermeld als **VirtualNetworkSite name =**
 - Site namen worden vermeld als **LocalNetworkSite name =**
 
-### <a name="3-create-the-connection"></a>3. De verbinding maken
+### <a name="3-create-the-connection"></a>3. de verbinding maken
 
 Stel de gedeelde sleutel in en maak de verbinding van het klassieke VNet met het Resource Manager-VNet. U kunt de gedeelde sleutel niet instellen met behulp van de portal. Zorg ervoor dat u deze stappen uitvoert terwijl u bent aangemeld met de klassieke versie van de Power shell-cmdlets. Gebruik hiervoor **add-AzureAccount**. Als dat niet het geval is, kunt u de-AzureVNetGatewayKey niet instellen.
 

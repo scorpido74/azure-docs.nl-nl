@@ -1,5 +1,6 @@
 ---
-title: Opmerkingen voor ontwikkel aars voor aangepast beleid-Azure Active Directory B2C | Microsoft Docs
+title: Opmerkingen voor ontwikkel aars voor aangepast beleid
+titleSuffix: Azure AD B2C
 description: Opmerkingen voor ontwikkel aars over het configureren en onderhouden van Azure AD B2C met aangepast beleid.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3f8d1ac217647ee292338da875671ef8bd3f79db
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: edbd31434715c380badf15118b0779885aed700f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227200"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949752"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Opmerkingen voor ontwikkel aars voor aangepast beleid in Azure Active Directory B2C
 
@@ -44,7 +45,7 @@ Ontwikkel aars die de aangepaste beleids functie set gebruiken, moeten voldoen a
 - Voer methode testen uit.
 - Volg de aanbevolen procedures voor software ontwikkeling en fase ring met mini maal één ontwikkel-en test omgeving en één productie omgeving.
 - Blijf op de hoogte van nieuwe ontwikkelingen van de id-providers en services die u integreert met. U kunt bijvoorbeeld wijzigingen bijhouden in geheimen en de geplande en ongeplande wijzigingen in de service.
-- Stel actieve bewaking in en bewaak de reactie snelheid van productie omgevingen. Zie [Azure Active Directory B2C voor meer informatie over de integratie met Application Insights: Logboeken](active-directory-b2c-custom-guide-eventlogger-appins.md)verzamelen.
+- Stel actieve bewaking in en bewaak de reactie snelheid van productie omgevingen. Zie [Azure Active Directory B2C: Logboeken verzamelen](active-directory-b2c-custom-guide-eventlogger-appins.md)voor meer informatie over de integratie met Application Insights.
 - Houd contact-e-mail adressen actueel in het Azure-abonnement en blijf op de hoogte van de e-mail van micro soft live site-team.
 - Onderneem tijdige actie wanneer u dit door het team van micro soft live site hebt door gesteld.
 
@@ -106,8 +107,8 @@ Mogelijkheden voor aangepast beleid/identiteits ervaring zijn onder constante en
 
 | Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Query teken reeks parameter domain_hint |  |  | X | Beschikbaar als claim kan worden door gegeven aan IDP. |
-| Query teken reeks parameter login_hint |  |  | X | Beschikbaar als claim kan worden door gegeven aan IDP. |
+| Query reeks parameter domain_hint |  |  | X | Beschikbaar als claim kan worden door gegeven aan IDP. |
+| Query reeks parameter login_hint |  |  | X | Beschikbaar als claim kan worden door gegeven aan IDP. |
 | JSON invoegen in UserJourney via client_assertion | X |  |  | Wordt afgeschaft. |
 | JSON invoegen in UserJourney als id_token_hint |  | X |  | Go-Forward-benadering voor het door geven van JSON. |
 | IDP-TOKEN door geven aan de toepassing |  | X |  | Bijvoorbeeld van Facebook naar app. |

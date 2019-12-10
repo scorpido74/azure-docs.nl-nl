@@ -1,6 +1,7 @@
 ---
-title: Beveiligen van uw RESTful-service met behulp van clientcertificaten in Azure Active Directory B2C | Microsoft Docs
-description: Uw aangepaste claims-uitwisselingen van REST-API in uw Azure AD B2C beveiligen met behulp van clientcertificaten
+title: Een REST-service beveiligen met behulp van client certificaten
+titleSuffix: Azure AD B2C
+description: Uw aangepaste REST API claim uitwisselingen in uw Azure AD B2C beveiligen door gebruik te maken van client certificaten
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,82 +11,82 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1690adfe5336ea85328e16755c5e3bc82b6d240a
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1d396de57a12285fb6cc682510fa6f95585465d0
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835610"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949854"
 ---
-# <a name="secure-your-restful-service-by-using-client-certificates"></a>Beveiligen van uw RESTful-service met behulp van clientcertificaten
+# <a name="secure-your-restful-service-by-using-client-certificates"></a>Uw REST-service beveiligen met behulp van client certificaten
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In een verwant artikel u [maken van een RESTful-service](active-directory-b2c-custom-rest-api-netfw.md) die communiceert met Azure Active Directory B2C (Azure AD B2C).
+In een verwant artikel maakt u [een rest-service](active-directory-b2c-custom-rest-api-netfw.md) die samenwerkt met Azure Active Directory B2C (Azure AD B2C).
 
-In dit artikel leert u hoe u toegang tot uw Azure-web-app (RESTful-API) met behulp van een clientcertificaat te beperken. Dit mechanisme heet wederzijdse TLS-verificatie, of *verificatie van clientcertificaten*. Alleen services die u hebt de juiste certificaten, zoals Azure AD B2C, hebben toegang tot uw service.
+In dit artikel leert u hoe u de toegang tot uw Azure-web-app (REST API) kunt beperken met behulp van een client certificaat. Dit mechanisme heet TLS wederzijdse verificatie of verificatie van *client certificaten*. Alleen services die over de juiste certificaten beschikken, zoals Azure AD B2C, hebben toegang tot uw service.
 
 >[!NOTE]
->U kunt ook uw RESTful-service beveiligen met behulp van [HTTP-basisverificatie](active-directory-b2c-custom-rest-api-netfw-secure-basic.md). Echter, HTTP-verificatie wordt beschouwd als minder veilig via een clientcertificaat. Onze aanbeveling is voor het beveiligen van de RESTful-service met behulp van verificatie van clientcertificaten, zoals beschreven in dit artikel.
+>U kunt ook uw REST-service beveiligen met behulp van [http-basis verificatie](active-directory-b2c-custom-rest-api-netfw-secure-basic.md). HTTP Basic-verificatie wordt echter minder veilig beschouwd via een client certificaat. Onze aanbeveling is de REST-service te beveiligen met behulp van verificatie via client certificaten, zoals beschreven in dit artikel.
 
-Dit artikel wordt beschreven hoe u:
-* Uw web-app ingesteld voor het gebruik van verificatie van clientcertificaten.
-* Upload het certificaat naar de sleutels voor Azure AD B2C-beleid.
-* Configureren van uw aangepaste beleid voor het gebruik van het clientcertificaat.
+In dit artikel vindt u informatie over:
+* Stel uw web-app in voor gebruik van verificatie van client certificaten.
+* Upload het certificaat naar Azure AD B2C-beleids sleutels.
+* Configureer uw aangepaste beleid voor het gebruik van het client certificaat.
 
 ## <a name="prerequisites"></a>Vereisten
-* Voer de stappen in de [REST-API integreren claims worden uitgewisseld](active-directory-b2c-custom-rest-api-netfw.md) artikel.
-* Verkrijgen van een geldig certificaat (een pfx-bestand met een persoonlijke sleutel).
+* Voer de stappen in het artikel [integratie rest API claims uitwissels](active-directory-b2c-custom-rest-api-netfw.md) uit.
+* Een geldig certificaat (een. pfx-bestand met een persoonlijke sleutel) ophalen.
 
-## <a name="step-1-configure-a-web-app-for-client-certificate-authentication"></a>Stap 1: Configureren van een web-app voor verificatie van clientcertificaten
-Voor het instellen van **Azure App Service** om te vereisen dat clientcertificaten, stelt u de web-app `clientCertEnabled` site-instelling *waar*. Om deze wijziging in de Azure-portal, de webpagina van de app te openen. In het linker navigatiedeelvenster, onder **instellingen** Selecteer **SSL-instellingen**. In de **clientcertificaten** sectie, schakelt u de **binnenkomend clientcertificaat** optie.
-
->[!NOTE]
->Zorg ervoor dat uw Azure App Service-plan Standard of hoger. Zie voor meer informatie, [gedetailleerd overzicht van Azure App Service-plannen](https://docs.microsoft.com/azure/app-service/overview-hosting-plans).
+## <a name="step-1-configure-a-web-app-for-client-certificate-authentication"></a>Stap 1: een web-app configureren voor verificatie van client certificaten
+Als u **Azure app service** wilt instellen om client certificaten te vereisen, stelt u de web-app `clientCertEnabled` site-instelling in op *waar*. Als u deze wijziging wilt aanbrengen, opent u de pagina Web-app in het Azure Portal. Klik in de linkernavigatiebalk onder **instellingen** SSL- **instellingen**selecteren. Schakel in de sectie **client certificaten** de optie **Inkomend client certificaat** in.
 
 >[!NOTE]
->Voor meer informatie over het instellen de **clientCertEnabled** eigenschap, Zie [configureren TLS wederzijdse verificatie voor web-apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
+>Zorg ervoor dat uw Azure App Service plan Standard of hoger is. Zie [Azure app service indieping-overzicht van plannen](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)voor meer informatie.
 
-## <a name="step-2-upload-your-certificate-to-azure-ad-b2c-policy-keys"></a>Stap 2: Upload uw certificaat naar de sleutels voor Azure AD B2C-beleid
-Nadat u hebt ingesteld `clientCertEnabled` naar *waar*, de communicatie met uw RESTful-API is een clientcertificaat vereist. Als u wilt downloaden, uploaden en opslaan van het clientcertificaat in uw Azure AD B2C-tenant, het volgende doen:
-1. Selecteer in uw Azure AD B2C-tenant, **B2C-instellingen** > **Identity-Ervaringsframework**.
+>[!NOTE]
+>Zie voor meer informatie over het instellen van de eigenschap **CLIENTCERTENABLED** [TLS wederzijdse verificatie configureren voor web-apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
 
-2. Als u de sleutels die beschikbaar in uw tenant zijn, selecteer **Beleidssleutels**.
+## <a name="step-2-upload-your-certificate-to-azure-ad-b2c-policy-keys"></a>Stap 2: Upload uw certificaat naar Azure AD B2C-beleids sleutels
+Nadat u `clientCertEnabled` op *waar*hebt ingesteld, is voor de communicatie met de rest-API een client certificaat vereist. Ga als volgt te werk om het client certificaat te verkrijgen, te uploaden en op te slaan in uw Azure AD B2C Tenant:
+1. Selecteer in uw Azure AD B2C-Tenant **B2C instellingen** > **Framework voor identiteits ervaring**.
+
+2. Selecteer **beleids sleutels**om de sleutels weer te geven die beschikbaar zijn in uw Tenant.
 
 3. Selecteer **Toevoegen**.
-    De **maakt u een sleutel** venster wordt geopend.
+    Het venster **een sleutel maken** wordt geopend.
 
-4. In de **opties** Schakel **uploaden**.
+4. Selecteer **uploaden**in het vak **Opties** .
 
-5. In de **naam** in het vak **B2cRestClientCertificate**.
-    Het voorvoegsel *B2C_1A_* wordt automatisch toegevoegd.
+5. Typ **B2cRestClientCertificate**in het vak **naam** .
+    Het voor voegsel *B2C_1A_* automatisch toegevoegd.
 
-6. In de **bestandsupload** vak, selecteert u het pfx-bestand van het certificaat met een persoonlijke sleutel.
+6. Selecteer in het vak **bestand uploaden** het pfx-bestand van uw certificaat met een persoonlijke sleutel.
 
-7. In de **wachtwoord** van het certificaat wachtwoord typt.
+7. Typ in het vak **wacht** woord het wacht woord van het certificaat.
 
-    ![Sleutel voor het in de maken een belangrijke pagina in Azure portal uploaden](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
+    ![Beleids sleutel uploaden op de pagina een sleutel maken in Azure Portal](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
 
 7. Selecteer **Maken**.
 
-8. De sleutels die beschikbaar in uw tenant zijn weergeven en Bevestig dat u hebt gemaakt de `B2C_1A_B2cRestClientCertificate` sleutel, selecteer **Beleidssleutels**.
+8. Selecteer **beleids sleutels**om de sleutels weer te geven die beschikbaar zijn in uw Tenant en te bevestigen dat u de `B2C_1A_B2cRestClientCertificate` sleutel hebt gemaakt.
 
-## <a name="step-3-change-the-technical-profile"></a>Stap 3: Het technische profiel wijzigen
-Ter ondersteuning van verificatie van clientcertificaten in uw aangepast beleid, het technische profiel te wijzigen door het volgende te doen:
+## <a name="step-3-change-the-technical-profile"></a>Stap 3: het technische profiel wijzigen
+Als u verificatie van client certificaten wilt ondersteunen in uw aangepaste beleid, wijzigt u het technische profiel door het volgende te doen:
 
-1. Open in uw werkmap en de *TrustFrameworkExtensions.xml* extensiebestand beleid.
+1. Open in uw werkmap het extensie beleids bestand *TrustFrameworkExtensions. XML* .
 
-2. Zoek de `<TechnicalProfile>` knooppunt met `Id="REST-API-SignUp"`.
+2. Zoek naar het `<TechnicalProfile>` knoop punt dat `Id="REST-API-SignUp"`bevat.
 
-3. Zoek de `<Metadata>` element.
+3. Zoek het element `<Metadata>`.
 
-4. Wijzig de *AuthenticationType* naar *ClientCertificate*, als volgt:
+4. Wijzig de *AuthenticationType* in *ClientCertificate*als volgt:
 
     ```xml
     <Item Key="AuthenticationType">ClientCertificate</Item>
     ```
 
-5. Onmiddellijk na de afsluitende `<Metadata>` -element, Voeg het volgende XML-fragment toe:
+5. Voeg direct na het afsluitende `<Metadata>` element het volgende XML-fragment toe:
 
     ```xml
     <CryptographicKeys>
@@ -93,39 +94,39 @@ Ter ondersteuning van verificatie van clientcertificaten in uw aangepast beleid,
     </CryptographicKeys>
     ```
 
-    Nadat u het fragment hebt toegevoegd, wordt het technische profiel moet eruitzien als de volgende XML-code:
+    Nadat u het fragment hebt toegevoegd, moet uw technische profiel eruitzien zoals in de volgende XML-code:
 
-    ![ClientCertificate verificatie XML-elementen instellen](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-tech-profile.png)
+    ![XML-elementen voor ClientCertificate-verificatie instellen](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-tech-profile.png)
 
-## <a name="step-4-upload-the-policy-to-your-tenant"></a>Stap 4: Uploaden van het beleid aan uw tenant
+## <a name="step-4-upload-the-policy-to-your-tenant"></a>Stap 4: het beleid uploaden naar uw Tenant
 
-1. In de [Azure-portal](https://portal.azure.com), Ga naar de [context van uw Azure AD B2C-tenant](active-directory-b2c-navigate-to-b2c-context.md), en selecteer vervolgens **Azure AD B2C**.
+1. In de [Azure Portal](https://portal.azure.com)gaat u naar de [context van uw Azure AD B2C-Tenant](active-directory-b2c-navigate-to-b2c-context.md)en selecteert u **Azure AD B2C**.
 
-2. Selecteer **Identity-Ervaringsframework**.
+2. Selecteer een **Framework voor identiteits ervaring**.
 
-3. Selecteer **alle beleidsregels**.
+3. Selecteer **alle beleids regels**.
 
 4. Selecteer **beleid uploaden**.
 
-5. Selecteer de **het beleid overschrijven als deze bestaat** selectievakje.
+5. Selecteer het selectie vakje het **beleid overschrijven als dit bestaat** .
 
-6. Upload de *TrustFrameworkExtensions.xml* bestand en zorg ervoor dat deze de validatietests doorstaat.
+6. Upload het bestand *TrustFrameworkExtensions. XML* en controleer of het validatie wordt door gegeven.
 
-## <a name="step-5-test-the-custom-policy-by-using-run-now"></a>Stap 5: Het aangepaste beleid testen met behulp van nu uitvoeren
-1. Open **Azure AD B2C-instellingen**, en selecteer vervolgens **Identity-Ervaringsframework**.
+## <a name="step-5-test-the-custom-policy-by-using-run-now"></a>Stap 5: het aangepaste beleid testen met behulp van nu uitvoeren
+1. Open **Azure AD B2C-instellingen**en selecteer vervolgens **Framework voor identiteits ervaring**.
 
     >[!NOTE]
-    >Voer nu vereist dat ten minste één toepassing vooraf op de tenant worden geregistreerd. Zie voor meer informatie over het registreren van toepassingen, de Azure AD B2C [aan de slag](active-directory-b2c-get-started.md) artikel of de [toepassingsregistratie](active-directory-b2c-app-registration.md) artikel.
+    >Voor het uitvoeren van nu moet ten minste één toepassing vooraf worden geregistreerd op de Tenant. Zie het artikel Azure AD B2C [aan de slag](active-directory-b2c-get-started.md) of het artikel over het registreren van [toepassingen](active-directory-b2c-app-registration.md) voor meer informatie over het registreren van toepassingen.
 
-2. Open **B2C_1A_signup_signin**, de relying party (RP) aangepast beleid u geüpload en selecteer vervolgens **nu uitvoeren**.
+2. Open **B2C_1A_signup_signin**, het aangepaste beleid RELYING Party (RP) dat u hebt geüpload en selecteer **nu uitvoeren**.
 
-3. Het proces testen door te typen **Test** in de **voornaam** vak.
-    Azure AD B2C wordt een foutbericht weergegeven aan de bovenkant van het venster.
+3. Test het proces door **test** te typen in het vak **naam** .
+    In Azure AD B2C wordt boven in het venster een fout bericht weer gegeven.
 
-    ![In het tekstvak servernaam opgegeven gemarkeerd en validatie invoerfout weergegeven](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
+    ![De opgegeven naam is gemarkeerd en de invoer validatie fout wordt weer gegeven](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
 
-4. In de **voornaam** typt u een naam (met uitzondering van 'Test').
-    Azure AD B2C de gebruiker zich aanmeldt en verzendt vervolgens een getal loyaliteit naar uw toepassing. Houd rekening met het nummer in dit voorbeeld JWT:
+4. In het vak **naam** typt u een naam (anders dan ' test ').
+    Azure AD B2C de gebruiker aan te melden en vervolgens een loyaliteits nummer naar uw toepassing te verzenden. Noteer het nummer in dit JWT-voor beeld:
 
    ```
    {
@@ -149,18 +150,18 @@ Ter ondersteuning van verificatie van clientcertificaten in uw aangepast beleid,
    ```
 
    >[!NOTE]
-   >Als u het foutbericht ontvangt *de naam is niet geldig, Geef een geldige naam*, betekent dit dat Azure AD B2C uw RESTful-service is aangeroepen terwijl het certificaat van de client weergegeven. De volgende stap is om het certificaat te valideren.
+   >Als u het fout bericht ontvangt, *is de naam niet geldig. Geef een geldige naam*op. Dit betekent dat Azure AD B2C de rest-service is aangeroepen terwijl het client certificaat wordt aangeboden. De volgende stap is het valideren van het certificaat.
 
-## <a name="step-6-add-certificate-validation"></a>Stap 6: Validatie van het servercertificaat toevoegen
-Het clientcertificaat dat Azure AD B2C wordt verzonden naar uw RESTful-service heeft geen validatie ondergaan door de Azure App Service-platform, behalve om te controleren of het certificaat bestaat. Validatie van het certificaat is de verantwoordelijkheid van de web-app.
+## <a name="step-6-add-certificate-validation"></a>Stap 6: certificaat validatie toevoegen
+Het client certificaat dat Azure AD B2C verzonden naar uw REST-service, wordt niet gevalideerd door het Azure App Service-platform, behalve om te controleren of het certificaat bestaat. Het valideren van het certificaat is de verantwoordelijkheid van de web-app.
 
-In deze sectie voegt u ASP.NET-voorbeeldcode die de eigenschappen voor certificaat voor verificatiedoeleinden wordt gebruikt valideert.
+In deze sectie voegt u voorbeeld code ASP.NET toe die de certificaat eigenschappen valideert voor verificatie doeleinden.
 
 > [!NOTE]
->Zie voor meer informatie over het configureren van Azure App Service voor verificatie van clientcertificaten [configureren TLS wederzijdse verificatie voor web-apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
+>Zie voor meer informatie over het configureren van Azure App Service voor client certificaat verificatie [wederzijdse TLS-verificatie configureren voor web-apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
 
-### <a name="61-add-application-settings-to-your-projects-webconfig-file"></a>6.1 toepassingsinstellingen aan web.config-bestand van uw project toevoegen
-In de Visual Studio-project dat u eerder hebt gemaakt, voeg de volgende toepassingsinstellingen op de *web.config* bestand na de `appSettings` element:
+### <a name="61-add-application-settings-to-your-projects-webconfig-file"></a>6,1 toepassings instellingen toevoegen aan het web. config-bestand van het project
+In het Visual Studio-project dat u eerder hebt gemaakt, voegt u de volgende toepassings instellingen toe aan het bestand *Web. config* na het `appSettings`-element:
 
 ```XML
 <add key="ClientCertificate:Subject" value="CN=Subject name" />
@@ -168,10 +169,10 @@ In de Visual Studio-project dat u eerder hebt gemaakt, voeg de volgende toepassi
 <add key="ClientCertificate:Thumbprint" value="Certificate thumbprint" />
 ```
 
-Vervangen van het certificaat **onderwerpnaam**, **verlenernaam**, en **certificaatvingerafdruk** waarden met de certificaatwaarden van uw.
+Vervang de **onderwerpnaam**van het certificaat, de naam van de **verlener**en de **vinger afdruk** van het certificaat door de waarden van uw certificaat.
 
-### <a name="62-add-the-isvalidclientcertificate-function"></a>6.2 de IsValidClientCertificate-functie toevoegen
-Open de *Controllers\IdentityController.cs* bestand en vervolgens toevoegen aan de `Identity` controller klasse de volgende functie:
+### <a name="62-add-the-isvalidclientcertificate-function"></a>6,2 de functie IsValidClientCertificate toevoegen
+Open het *Controllers\IdentityController.cs* -bestand en voeg de volgende functie toe aan de klasse `Identity` controller:
 
 ```csharp
 private bool IsValidClientCertificate()
@@ -263,17 +264,17 @@ private bool IsValidClientCertificate()
 }
 ```
 
-In de bovenstaande voorbeeldcode accepteren we het certificaat zoals is alleen geldig als de volgende voorwaarden wordt voldaan:
-* Het certificaat niet is verlopen en de huidige tijd op de server actief is.
-* De `Subject` naam van het certificaat is gelijk aan de `ClientCertificate:Subject` waarde van toepassing.
-* De `Issuer` naam van het certificaat is gelijk aan de `ClientCertificate:Issuer` waarde van toepassing.
-* De `thumbprint` van het certificaat is gelijk aan de `ClientCertificate:Thumbprint` waarde van toepassing.
+In de voor gaande voorbeeld code accepteren we het certificaat alleen geldig als aan de volgende voor waarden wordt voldaan:
+* Het certificaat is niet verlopen en is actief voor de huidige tijd op de server.
+* De `Subject` naam van het certificaat is gelijk aan de waarde voor de instelling van de `ClientCertificate:Subject` toepassing.
+* De `Issuer` naam van het certificaat is gelijk aan de waarde voor de instelling van de `ClientCertificate:Issuer` toepassing.
+* De `thumbprint` van het certificaat is gelijk aan de waarde voor de instelling van de `ClientCertificate:Thumbprint` toepassing.
 
 >[!IMPORTANT]
->Afhankelijk van de vertrouwelijkheid van uw service moet u mogelijk meer validaties toevoegen. Bijvoorbeeld, als u wilt testen of het certificaat wordt gekoppeld aan een vertrouwde basis-CA, validatie van de verlener organisatie pakketnaam, enzovoort.
+>Afhankelijk van de gevoeligheid van uw service moet u mogelijk meer validaties toevoegen. U moet bijvoorbeeld testen of het certificaat is gekoppeld aan een vertrouwde basis instantie, validatie van de organisatie naam van de verlener, enzovoort.
 
-### <a name="63-call-the-isvalidclientcertificate-function"></a>6.3 de IsValidClientCertificate functie aanroepen
-Open de *Controllers\IdentityController.cs* bestand en vervolgens aan het begin van de `SignUp()` functie, Voeg het volgende codefragment toe:
+### <a name="63-call-the-isvalidclientcertificate-function"></a>6,3 de functie IsValidClientCertificate aanroepen
+Open het *Controllers\IdentityController.cs* -bestand en voeg aan het begin van de functie `SignUp()` het volgende code fragment toe:
 
 ```csharp
 if (IsValidClientCertificate() == false)
@@ -282,21 +283,21 @@ if (IsValidClientCertificate() == false)
 }
 ```
 
-Nadat u het codefragment toevoegen uw `Identity` controller moet eruitzien als de volgende code:
+Nadat u het fragment hebt toegevoegd, moet uw `Identity`-controller eruitzien als de volgende code:
 
-![Certificaat validatiecode toevoegen](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-code.png)
+![Certificaat validatie code toevoegen](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-code.png)
 
-## <a name="step-7-publish-your-project-to-azure-and-test-it"></a>Stap 7: Uw project kunt publiceren naar Azure en kunt u deze testen
-1. In **Solution Explorer**, met de rechtermuisknop op de **Contoso.AADB2C.API** project en selecteer vervolgens **publiceren**.
+## <a name="step-7-publish-your-project-to-azure-and-test-it"></a>Stap 7: uw project naar Azure publiceren en dit testen
+1. Klik in **Solution Explorer**met de rechter muisknop op het project **contoso. AADB2C. API** en selecteer vervolgens **publiceren**.
 
-2. Herhaal de 'Stap 6' en het aangepaste beleid met de validatie van het servercertificaat opnieuw testen. Probeer het uitvoeren van het beleid en zorg ervoor dat alles werkt nadat u de validatie hebt toegevoegd.
+2. Herhaal ' stap 6 ' en test uw aangepaste beleid opnieuw met de certificaat validatie. Probeer het beleid uit te voeren en zorg ervoor dat alles werkt nadat u de validatie hebt toegevoegd.
 
-3. In uw *web.config* bestand, wijzig de waarde van `ClientCertificate:Subject` naar **ongeldig**. Het beleid voor opnieuw uitvoeren en ziet u een foutbericht weergegeven.
+3. Wijzig de waarde van `ClientCertificate:Subject` in het bestand *Web. config* in **ongeldig**. Voer het beleid opnieuw uit en er wordt een fout bericht weer gegeven.
 
-4. Wijzig de waarde weer **geldig**, en zorg ervoor dat het beleid voor de REST-API kunt aanroepen.
+4. Wijzig de waarde in **geldig**en controleer of het beleid uw rest API kan aanroepen.
 
-Als u nodig hebt om op te lossen in deze stap ziet [verzamelen van logboeken met behulp van Application Insights](active-directory-b2c-troubleshoot-custom.md).
+Als u deze stap moet oplossen, raadpleegt u [Logboeken verzamelen met behulp van Application Insights](active-directory-b2c-troubleshoot-custom.md).
 
-## <a name="optional-download-the-complete-policy-files-and-code"></a>(Optioneel) De volledige beleidsbestanden en de code downloaden
-* Na het voltooien van de [aan de slag met aangepaste beleidsregels](active-directory-b2c-get-started-custom.md) scenario, het is raadzaam dat u uw scenario bouwen met behulp van uw eigen aangepaste beleidsbestanden. Ter referentie, we hebben opgegeven [beleid voorbeeldbestanden](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-cert).
-* U kunt de code van de volledige downloaden [voorbeeld Visual Studio-oplossing voor verwijzing](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API).
+## <a name="optional-download-the-complete-policy-files-and-code"></a>Beschrijving De volledige beleids bestanden en code downloaden
+* Nadat u de walkthrough aan de [slag met aangepast beleid](active-directory-b2c-get-started-custom.md) hebt voltooid, wordt u aangeraden om uw scenario te bouwen met behulp van uw eigen aangepaste beleids bestanden. Voor uw referentie hebben we [voorbeeld beleids bestanden](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-cert)gegeven.
+* U kunt de volledige code downloaden van een [voor beeld van een Visual Studio-oplossing voor referentie](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API).

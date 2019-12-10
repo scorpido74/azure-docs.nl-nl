@@ -1,5 +1,6 @@
 ---
-title: Gebruikers gedrag bijhouden met behulp van gebeurtenissen in Application Insights van Azure Active Directory B2C | Microsoft Docs
+title: Gebruikers gedrag bijhouden met Application Insights
+titleSuffix: Azure AD B2C
 description: Meer informatie over het inschakelen van gebeurtenis Logboeken in Application Insights van Azure AD B2C gebruikers trajecten met aangepaste beleids regels (preview).
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c02757fb4b48ebf1220a5826bc9699741faa5170
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 6643759688817811890fd022c7aa061607270b9e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066187"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948943"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Gebruikers gedrag bijhouden in Azure Active Directory B2C met behulp van Application Insights
 
@@ -28,11 +29,11 @@ Wanneer u Azure Active Directory B2C (Azure AD B2C) gebruikt in combi natie met 
 * Prestaties meten.
 * Meldingen van Application Insights maken.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Het werkt als volgt
 
-Het Framework voor identiteits ervaring in Azure AD B2C bevat `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`de provider. Er worden gebeurtenis gegevens rechtstreeks naar Application Insights verzonden met behulp van de instrumentatie sleutel die aan Azure AD B2C wordt gegeven.
+Het Framework voor identiteits ervaring in Azure AD B2C bevat de provider `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`. Er worden gebeurtenis gegevens rechtstreeks naar Application Insights verzonden met behulp van de instrumentatie sleutel die aan Azure AD B2C wordt gegeven.
 
-Met een technisch profiel wordt deze provider gebruikt voor het definiëren van een gebeurtenis van Azure AD B2C. Het profiel bevat de naam van de gebeurtenis, de claims die worden vastgelegd en de instrumentatie sleutel. Als u een evenement wilt plaatsen, wordt het technische profiel toegevoegd als `orchestration step`een, of als `validation technical profile` een in een aangepaste gebruikers traject.
+Met een technisch profiel wordt deze provider gebruikt voor het definiëren van een gebeurtenis van Azure AD B2C. Het profiel bevat de naam van de gebeurtenis, de claims die worden vastgelegd en de instrumentatie sleutel. Als u een evenement wilt plaatsen, wordt het technische profiel toegevoegd als `orchestration step`of als een `validation technical profile` in een aangepaste gebruikers traject.
 
 Application Insights kunt de gebeurtenissen samen voegen met behulp van een correlatie-ID om een gebruikers sessie vast te leggen. Application Insights maakt de gebeurtenis en sessie binnen enkele seconden beschikbaar en biedt veel visualisatie-, export-en analytische hulpprogram ma's.
 
@@ -44,14 +45,14 @@ Voer de stappen in aan de [slag met aangepast beleid](active-directory-b2c-get-s
 
 Wanneer u Application Insights met Azure AD B2C gebruikt, hoeft u alleen maar een resource te maken en de instrumentatie sleutel op te halen.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Zorg ervoor dat u de map met uw Azure-abonnement gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw abonnement bevat. Deze Tenant is niet uw Azure AD B2C-Tenant.
 3. Kies **een resource maken** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **Application Insights**.
-4. Klik op **Create**.
+4. Klik op **Maken**.
 5. Voer een **naam** in voor de resource.
-6. Selecteer voor **toepassings Type** **ASP.net**-webtoepassing.
+6. Selecteer voor **toepassings Type** **ASP.NET-webtoepassing**.
 7. Voor **resource groep**selecteert u een bestaande groep of voert u een naam in voor een nieuwe groep.
-8. Klik op **Create**.
+8. Klik op **Maken**.
 4. Nadat u de Application Insights resource hebt gemaakt, opent u deze, vouwt u de **essentiële**elementen uit en kopieert u de instrumentatie sleutel.
 
 ![Application Insights overzicht en instrumentatie sleutel](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-insights.png)
@@ -166,11 +167,11 @@ Voeg de profielen toe aan het bestand *TrustFrameworkExtensions. XML* van het St
 ```
 
 > [!IMPORTANT]
-> Wijzig de instrumentatie sleutel in het `AzureInsights-Common` technische profiel in de GUID die uw Application Insights resource levert.
+> Wijzig de instrumentatie sleutel in het technische profiel van `AzureInsights-Common` in de GUID die uw Application Insights resource levert.
 
 ## <a name="add-the-technical-profiles-as-orchestration-steps"></a>Voeg de technische profielen toe als Orchestration-stappen
 
-Aanroep `Azure-Insights-SignInRequest` als Orchestration-stap 2 om bij te houden dat er een aanvraag voor aanmelden/registreren is ontvangen:
+Roep `Azure-Insights-SignInRequest` aan als indelings stap 2 om te controleren of er een aanvraag voor aanmelden/registreren is ontvangen:
 
 ```xml
 <!-- Track that we have received a sign in request -->
@@ -181,7 +182,7 @@ Aanroep `Azure-Insights-SignInRequest` als Orchestration-stap 2 om bij te houden
 </OrchestrationStep>
 ```
 
-Voeg onmiddellijk vóór `SendClaims` de Orchestration-stap een nieuwe stap toe die aanroept. `Azure-Insights-UserSignup` Het wordt geactiveerd wanneer de gebruiker de registratie knop selecteert in een traject voor registreren/aanmelden.
+Voeg direct *vóór* de `SendClaims` Orchestration-stap een nieuwe stap toe die `Azure-Insights-UserSignup`aanroept. Het wordt geactiveerd wanneer de gebruiker de registratie knop selecteert in een traject voor registreren/aanmelden.
 
 ```xml
 <!-- Handles the user clicking the sign up link in the local account sign in page -->
@@ -203,7 +204,7 @@ Voeg onmiddellijk vóór `SendClaims` de Orchestration-stap een nieuwe stap toe 
 </OrchestrationStep>
 ```
 
-`SendClaims` Bel`Azure-Insights-SignInComplete`direct na de Orchestration-stap. In deze stap ziet u dat de reis is voltooid.
+Bel direct na de `SendClaims` Orchestration-stap `Azure-Insights-SignInComplete`. In deze stap ziet u dat de reis is voltooid.
 
 ```xml
 <!-- Track that we have successfully sent a token -->
@@ -230,10 +231,10 @@ Sla het bestand *TrustFrameworkExtensions. XML* op en upload het. Roep vervolgen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voeg claim typen en gebeurtenissen toe aan uw gebruikers traject, zodat deze aan uw behoeften voldoen. U kunt [claim](claim-resolver-overview.md) resolvers of een teken reeks claim type gebruiken, de claims toevoegen door een **invoer claim** element toe te voegen aan de Application Insights gebeurtenis of aan het AzureInsights-algemeen technische profiel.
+Voeg claim typen en gebeurtenissen toe aan uw gebruikers traject, zodat deze aan uw behoeften voldoen. U kunt [claim resolvers](claim-resolver-overview.md) of een teken reeks claim type gebruiken, de claims toevoegen door een **invoer claim** element toe te voegen aan de Application Insights gebeurtenis of aan het AzureInsights-algemeen technische profiel.
 
 - **ClaimTypeReferenceId** is de verwijzing naar een claim type.
-- **PartnerClaimType** is de naam van de eigenschap die wordt weer gegeven in azure Insights. Gebruik de syntaxis van `{property:NAME}`, waarbij `NAME` de eigenschap wordt toegevoegd aan de gebeurtenis.
+- **PartnerClaimType** is de naam van de eigenschap die wordt weer gegeven in azure Insights. Gebruik de syntaxis van `{property:NAME}`, waarbij `NAME` een eigenschap is die wordt toegevoegd aan de gebeurtenis.
 - **DefaultValue** gebruik een wille keurige teken reeks waarde of de claim resolver.
 
 ```XML

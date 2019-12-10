@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1a45ed90b2b2c4a3a4f8eb11c4618c11e6d66761
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 3d358ac1fb766804b35d969f4d06bc6c07e62661
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849357"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951459"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Problemen met desired state Configuration (DSC) oplossen
 
@@ -89,6 +89,68 @@ Deze fout wordt meestal veroorzaakt door een firewall, de computer zich achter e
 #### <a name="resolution"></a>Resolutie
 
 Controleer of de computer toegang heeft tot de juiste eind punten voor Azure Automation DSC en probeer het opnieuw. Zie [netwerk planning](../automation-dsc-overview.md#network-planning) voor een lijst met poorten en adressen.
+
+### <a name="a-nameunauthorizedascenario-status-reports-return-response-code-unauthorized"></a><a name="unauthorized"><a/>scenario: status rapporten retour antwoord code "onbevoegd"
+
+#### <a name="issue"></a>Probleem
+
+Bij het registreren van een knoop punt met de status configuratie (DSC) wordt een van de volgende fout berichten weer gegeven:
+
+```error
+The attempt to send status report to the server https://{your automation account url}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
+```
+
+```error
+VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / Registration of the Dsc Agent with the server failed.
+```
+
+### <a name="cause"></a>Oorzaak
+
+Dit probleem wordt veroorzaakt door een onjuist of verlopen certificaat.  Zie [verval datum en registratie van certificaten](../automation-dsc-onboarding.md#certificate-expiration-and-re-registration)voor meer informatie.
+
+### <a name="resolution"></a>Resolutie
+
+Volg de onderstaande stappen om het failed DSC-knoop punt opnieuw te registreren.
+
+Verwijder eerst de registratie van het knoop punt met behulp van de volgende stappen.
+
+1. Vanuit de Azure Portal, onder **Home** -> **Automation-accounts**: > {Your Automation-account}-> **State Configuration (DSC)**
+2. Klik op knoop punten en klik op het knoop punt dat problemen ondervindt.
+3. Klik op verwijderen om de registratie van het knoop punt ongedaan te maken.
+
+Ten tweede verwijdert u de DSC-uitbrei ding van het knoop punt.
+
+1. Vanuit de Azure Portal onder **Home** -> **virtuele machine** -> {knoop punt mislukt}-> **uitbreidingen**
+2. Klik op micro soft. Power shell. DSC.
+3. Klik op verwijderen om de Power shell DSC-uitbrei ding te verwijderen.
+
+Ten derde verwijdert u alle beschadigde of verlopen certificaten van het knoop punt.
+
+Voer het volgende uit op het knoop punt waarvoor een Power shell-prompt met verhoogde bevoegdheid is uitgevoerd:
+
+```powershell
+$certs = @()
+$certs += dir cert:\localmachine\my | ?{$_.FriendlyName -like "DSC"}
+$certs += dir cert:\localmachine\my | ?{$_.FriendlyName -like "DSC-OaaS Client Authentication"}
+$certs += dir cert:\localmachine\CA | ?{$_.subject -like "CN=AzureDSCExtension*"}
+"";"== DSC Certificates found: " + $certs.Count
+$certs | FL ThumbPrint,FriendlyName,Subject
+If (($certs.Count) -gt 0)
+{ 
+    ForEach ($Cert in $certs) 
+    {
+        RD -LiteralPath ($Cert.Pspath) 
+    }
+}
+```
+
+Als laatste moet u het knoop punt met de fout opnieuw registreren door de volgende stappen uit te voeren.
+
+1. Vanuit de Azure Portal, onder **Home** -> **Automation-accounts** : > {Your Automation-account}-> **State Configuration (DSC)**
+2. Klik op knoop punten.
+3. Klik op de knop toevoegen.
+4. Selecteer het knoop punt dat niet werkt.
+5. Klik op verbinden en selecteer de gewenste opties.
 
 ### <a name="failed-not-found"></a>Scenario: het knoop punt heeft de status mislukt met de fout ' niet gevonden '
 
@@ -187,6 +249,49 @@ Deze fout treedt doorgaans op wanneer aan het knoop punt een knooppunt configura
 
 * Zorg ervoor dat u het knoop punt toewijst met een knooppunt configuratie naam die exact overeenkomt met de naam in de service.
 * U kunt ervoor kiezen om de naam van de configuratie van het knoop punt niet op te stellen, wat resulteert in het voorbereiden van het knoop punt, maar geen knooppunt configuratie toewijzen
+
+### <a name="cross-subscription"></a>Scenario: een knoop punt registreren met Power shell retourneert de fout ' er zijn een of meer fouten opgetreden '
+
+#### <a name="issue"></a>Probleem
+
+Wanneer u een knoop punt registreert met behulp van `Register-AzAutomationDSCNode` of `Register-AzureRMAutomationDSCNode`, wordt de volgende fout weer gegeven.
+
+```error
+One or more errors occurred.
+```
+
+#### <a name="cause"></a>Oorzaak
+
+Deze fout treedt op wanneer u een knoop punt wilt registreren dat zich in een ander abonnement bevindt dan het Automation-account.
+
+#### <a name="resolution"></a>Resolutie
+
+Het knoop punt voor meerdere abonnementen behandelen alsof het in een afzonderlijke Cloud of on-premises valt.
+
+Volg de onderstaande stappen om het knoop punt te registreren.
+
+* Windows- [fysieke en virtuele Windows-machines on-premises of in een andere Cloud dan Azure/AWS](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws).
+* Linux- [fysieke/virtuele Linux-machines on-premises of in een andere Cloud dan Azure](../automation-dsc-onboarding.md#physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure).
+
+### <a name="agent-has-a-problem"></a>Scenario: fout bericht-' inrichting mislukt '
+
+#### <a name="issue"></a>Probleem
+
+Wanneer u een knoop punt registreert, ziet u de volgende fout:
+
+```error
+Provisioning has failed
+```
+
+#### <a name="cause"></a>Oorzaak
+
+Dit bericht wordt weer gegeven wanneer er een connectiviteits probleem is tussen het knoop punt en Azure.
+
+#### <a name="resolution"></a>Resolutie
+
+Bepaal of uw knoop punt zich in een particulier virtueel netwerk bevindt of dat er andere problemen zijn die verbinding maken met Azure.
+
+Zie [problemen oplossen bij onboarding van oplossingen](onboarding.md)voor meer informatie.
 
 ### <a name="failure-linux-temp-noexec"></a>Scenario: een configuratie Toep assen in Linux, treedt er een fout op met een algemene fout
 

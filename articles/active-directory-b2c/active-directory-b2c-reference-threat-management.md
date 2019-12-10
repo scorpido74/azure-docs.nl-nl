@@ -1,5 +1,6 @@
 ---
-title: Bedreigingen voor resources en gegevens in Azure Active Directory B2C beheren
+title: Bedreigingen voor bronnen en gegevens beheren
+titleSuffix: Azure AD B2C
 description: Meer informatie over technieken voor detectie en risico beperking voor denial-of-service-aanvallen en wachtwoord aanvallen in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eae82fbd56782faf5b15479c13fe530e189a0e3e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b236dba9b682bc4d62ef8cfc8b95e67370b3e0ea
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71256910"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947737"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Bedreigingen voor resources en gegevens in Azure Active Directory B2C beheren
 
@@ -43,12 +44,12 @@ Instellingen voor wachtwoord beveiliging beheren, met inbegrip van de drempel wa
 1. Selecteer onder **beveiliging** **verificatie methoden (preview)** en selecteer vervolgens **wachtwoord beveiliging**.
 1. Voer de gewenste instellingen voor wachtwoord beveiliging in en selecteer vervolgens **Opslaan**.
 
-    ![Azure Portal pagina wachtwoord beveiliging in azure AD-instellingen](media/active-directory-b2c-reference-threat-management/portal-02-password-protection.png)
+    ![pagina Azure Portal wachtwoord beveiliging in azure AD-instellingen](media/active-directory-b2c-reference-threat-management/portal-02-password-protection.png)
     <br />*De drempel waarde voor vergren deling in te stellen op 5 in instellingen voor **wachtwoord beveiliging*** .
 
 ## <a name="view-locked-out-accounts"></a>Vergrendelde accounts weer geven
 
-Als u informatie wilt ophalen over vergrendelde accounts, kunt u het [rapport Active Directory-aanmeld activiteit](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)controleren. Selecteer onder **status**de optie **fout**. Mislukte aanmeldings pogingen met een **fout code** voor `50053` aanmelding die een vergrendeld account aangeven:
+Als u informatie wilt ophalen over vergrendelde accounts, kunt u het [rapport Active Directory-aanmeld activiteit](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)controleren. Selecteer onder **status**de optie **fout**. Mislukte aanmeldings pogingen met een **aanmeldings fout code** van `50053` wijzen op een vergrendeld account:
 
 ![Sectie van het aanmeldings rapport van Azure AD met het account vergrendeld](media/active-directory-b2c-reference-threat-management/portal-01-locked-account.png)
 

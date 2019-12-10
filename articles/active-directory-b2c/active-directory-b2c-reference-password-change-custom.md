@@ -1,5 +1,6 @@
 ---
-title: Wachtwoord wijziging configureren met aangepast beleid in Azure Active Directory B2C | Microsoft Docs
+title: Wachtwoord wijziging configureren met aangepaste beleids regels
+titleSuffix: Azure AD B2C
 description: Meer informatie over hoe u gebruikers in staat stelt hun wacht woord te wijzigen met behulp van aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0775920e1d6572223253edbfc066123a515b5480
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: fd1f623eecdd855dbfb8e27795f813db4d099f53
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065537"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950575"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Wachtwoord wijzigingen configureren met aangepast beleid in Azure Active Directory B2C
 
@@ -29,7 +30,7 @@ Voer de stappen in aan de [slag met aangepast beleid in Active Directory B2C](ac
 
 ## <a name="add-the-elements"></a>De elementen toevoegen
 
-1. Open uw *TrustframeworkExtensions. XML-* bestand en voeg het volgende **claim** type-element toe `oldPassword` met een id van aan het [ClaimsSchema](claimsschema.md) -element:
+1. Open uw *TrustframeworkExtensions. XML-* bestand en voeg het volgende **claim** type-element met de id `oldPassword` toe aan het [ClaimsSchema](claimsschema.md) -element:
 
     ```XML
     <BuildingBlocks>
@@ -120,9 +121,9 @@ Voer de stappen in aan de [slag met aangepast beleid in Active Directory B2C](ac
     </ClaimsProviders>
     ```
 
-    Vervang `IdentityExperienceFrameworkAppId` door de toepassings-id van de IdentityExperienceFramework-toepassing die u hebt gemaakt in de hand leiding voor vereisten. Vervang `ProxyIdentityExperienceFrameworkAppId` door de toepassings-id van de ProxyIdentityExperienceFramework-toepassing die u eerder hebt gemaakt.
+    Vervang `IdentityExperienceFrameworkAppId` door de toepassings-ID van de IdentityExperienceFramework-toepassing die u hebt gemaakt in de hand leiding voor vereisten. Vervang `ProxyIdentityExperienceFrameworkAppId` door de toepassings-ID van de ProxyIdentityExperienceFramework-toepassing die u ook eerder hebt gemaakt.
 
-3. Het [UserJourney](userjourneys.md) -element definieert het pad dat de gebruiker nodig heeft bij interactie met uw toepassing. Voeg het **UserJourneys** -element toe als het niet bestaat met de UserJourney `PasswordChange`geïdentificeerd als:
+3. Het [UserJourney](userjourneys.md) -element definieert het pad dat de gebruiker nodig heeft bij interactie met uw toepassing. Voeg het element **UserJourneys** toe als het niet bestaat met de **UserJourney** die als `PasswordChange`is geïdentificeerd:
 
     ```XML
     <UserJourneys>
@@ -160,11 +161,11 @@ U kunt [hier](https://github.com/Azure-Samples/active-directory-b2c-custom-polic
 
 ## <a name="test-your-policy"></a>Uw beleid testen
 
-Bij het testen van uw toepassingen in azure AD B2C kan het nuttig zijn om het Azure AD B2C-token te `https://jwt.ms` retour neren om de claims daarin te kunnen bekijken.
+Bij het testen van uw toepassingen in Azure AD B2C kan het nuttig zijn om het Azure AD B2C-token terug te krijgen naar `https://jwt.ms` om de claims in de toepassing te kunnen bekijken.
 
 ### <a name="upload-the-files"></a>De bestanden uploaden
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer een **Framework voor identiteits ervaring**.
@@ -176,7 +177,7 @@ Bij het testen van uw toepassingen in azure AD B2C kan het nuttig zijn om het Az
 ### <a name="run-the-policy"></a>Het beleid uitvoeren
 
 1. Open het beleid dat u hebt gewijzigd. Bijvoorbeeld *B2C_1A_profile_edit_password_change*.
-2. Selecteer voor **toepassing**de toepassing die u eerder hebt geregistreerd. Om het token weer te geven, moet de antwoord `https://jwt.ms`- **URL** worden weer gegeven.
+2. Selecteer voor **toepassing**de toepassing die u eerder hebt geregistreerd. Om het token weer te geven, moet de **antwoord-URL** `https://jwt.ms`weer geven.
 3. Klik op **Nu uitvoeren**. Meld u aan met de acouunt die u eerder hebt gemaakt. U hebt nu de mogelijkheid om het wacht woord te wijzigen.
 
 ## <a name="next-steps"></a>Volgende stappen

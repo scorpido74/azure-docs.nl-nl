@@ -1,5 +1,6 @@
 ---
-title: Zelf studie-id-providers toevoegen aan uw toepassingen-Azure Active Directory B2C
+title: 'Zelf studie: id-providers toevoegen aan uw apps'
+titleSuffix: Azure AD B2C
 description: Meer informatie over het toevoegen van id-providers aan uw toepassingen in Azure Active Directory B2C met behulp van de Azure Portal.
 services: active-directory-b2c
 author: mmacy
@@ -10,14 +11,14 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bc7828b7926ea6e7f2d6bc3891ee231972ae3208
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: a49eae95628645f6586a637c103433b122b5d287
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063238"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950949"
 ---
-# <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Zelfstudie: Voeg id-providers toe aan uw toepassingen in Azure Active Directory B2C
+# <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Zelf studie: id-providers toevoegen aan uw toepassingen in Azure Active Directory B2C
 
 Het is wellicht wenselijk dat uw gebruikers zich in uw toepassingen bij verschillende id-providers kunnen aanmelden. Een *id-provider* maakt, onderhoudt en beheert id-gegevens en biedt tegelijkertijd verificatieservices voor toepassingen. U kunt met behulp van de Azure Portal ID-providers toevoegen die door Azure Active Directory B2C (Azure AD B2C) worden ondersteund voor uw [gebruikers stromen](active-directory-b2c-reference-policies.md) .
 
@@ -44,13 +45,13 @@ ID-provider toepassingen bieden de id en de sleutel om communicatie met uw Azure
 
 Als u het aanmelden voor gebruikers vanuit Azure AD wilt inschakelen, moet u een toepassing registreren in de Azure AD-Tenant. De Azure AD-Tenant is niet hetzelfde als uw Azure AD B2C-Tenant.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zorg ervoor dat u de map met uw Azure AD-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD-Tenant bevat.
 1. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
 1. Selecteer **nieuwe registratie**.
 1. Voer een naam in voor de toepassing. Bijvoorbeeld `Azure AD B2C App`.
 1. Accepteer de selectie van **accounts in deze organisatie Directory alleen** voor deze toepassing.
-1. Voor de **omleidings-URI**accepteert u de waarde van **Web** en voert u de volgende URL in in `your-B2C-tenant-name` kleine letters, waarbij u vervangt door de naam van uw Azure AD B2C Tenant.
+1. Voor de **omleidings-URI**accepteert u de waarde van **Web** en voert u de volgende URL in in kleine letters, waarbij u `your-B2C-tenant-name` vervangt door de naam van uw Azure AD B2C Tenant.
 
     ```
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
@@ -68,24 +69,24 @@ Als u het aanmelden voor gebruikers vanuit Azure AD wilt inschakelen, moet u een
 
 ### <a name="create-a-facebook-application"></a>Een Facebook-toepassing maken
 
-Als u een Facebook-account wilt gebruiken als een id-provider in Azure AD B2C, moet u een toepassing maken op Facebook. Als u nog geen Facebook-account hebt, kunt u het downloaden via [https://www.facebook.com/](https://www.facebook.com/).
+Als u een Facebook-account wilt gebruiken als een id-provider in Azure AD B2C, moet u een toepassing maken op Facebook. Als u nog geen Facebook-account hebt, kunt u het downloaden op [https://www.facebook.com/](https://www.facebook.com/).
 
 1. Meld u aan bij [Facebook voor ontwikkel aars](https://developers.facebook.com/) met de referenties van uw Facebook-account.
 1. Als u dit nog niet hebt gedaan, moet u zich registreren als Facebook-ontwikkelaar. U doet dit door aan de rechter bovenhoek van de pagina aan de **slag te gaan** , het beleid van Facebook te accepteren en de registratie stappen te volt ooien.
 1. Selecteer **mijn apps** en maak vervolgens een **app**.
 1. Voer een **weergave naam** in en geef een geldig **e-mail adres voor de contact persoon op**.
 1. Klik op **App-ID maken**. Hiervoor moet u mogelijk het Facebook-platform beleid accepteren en een online beveiligings controle volt ooien.
-1. Selecteer **instellingen** > **basis**.
-1. Kies bijvoorbeeld `Business and Pages`een categorie. Deze waarde is vereist voor Facebook, maar wordt niet gebruikt door Azure AD B2C.
+1. Selecteer **instellingen** > **Basic**.
+1. Kies een **categorie**, bijvoorbeeld `Business and Pages`. Deze waarde is vereist voor Facebook, maar wordt niet gebruikt door Azure AD B2C.
 1. Selecteer onder aan de pagina **platform toevoegen**en selecteer vervolgens **website**.
-1. `your-tenant-name` Voer`https://your-tenant-name.b2clogin.com/` in site-URL vervangen in met de naam van uw Tenant.
-1. Voer een URL in voor de URL van het **Privacybeleid**, `http://www.contoso.com/`bijvoorbeeld. De URL van het privacybeleid is een pagina die u kunt onderhouden voor het verstrekken van privacy-informatie voor uw toepassing.
+1. Voer in **site-URL**`https://your-tenant-name.b2clogin.com/` `your-tenant-name` vervangen door de naam van uw Tenant.
+1. Voer een URL in voor de URL van het **Privacybeleid**, bijvoorbeeld `http://www.contoso.com/`. De URL van het privacybeleid is een pagina die u kunt onderhouden voor het verstrekken van privacy-informatie voor uw toepassing.
 1. Selecteer **Save changes**.
 1. Noteer de waarde van de **App-ID**aan de bovenkant van de pagina.
 1. Selecteer bij **app-geheim**de waarde **weer geven** en noteer deze. U gebruikt zowel de App-ID als het geheim van de app voor het configureren van Facebook als een id-provider in uw Tenant. **App-geheim** is een belang rijke beveiligings referentie die u veilig moet opslaan.
 1. Selecteer het plus teken naast **producten**en selecteer vervolgens onder **Aanmelden bij Facebook**de optie **instellen**.
 1. Selecteer onder **Facebook-aanmelding** in het menu links de optie **instellingen**.
-1. Voer`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`in **geldige OAuth omleidings-uri's**in. Vervang `your-tenant-name` door de naam van uw Tenant. Selecteer **wijzigingen opslaan** onder aan de pagina.
+1. Voer `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`in **geldige OAuth omleidings-uri's**in. Vervang `your-tenant-name` door de naam van uw Tenant. Selecteer **wijzigingen opslaan** onder aan de pagina.
 1. Als u uw Facebook-toepassing beschikbaar wilt maken voor Azure AD B2C, klikt u op de **status** kiezer rechtsboven op de pagina en schakelt u deze **in** om de toepassing openbaar te maken en klikt u vervolgens op **bevestigen**. Op dit moment moet de status worden gewijzigd van **ontwikkeling** naar **Live**.
 
 ## <a name="add-the-identity-providers"></a>De id-providers toevoegen
@@ -98,7 +99,7 @@ Nadat u de toepassing hebt gemaakt voor de ID-provider die u wilt toevoegen, voe
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Selecteer **id-providers**en selecteer vervolgens **nieuwe OpenID Connect Connect-provider**.
 1. Voer een **naam**in. Voer bijvoorbeeld *Contoso Azure AD*in.
-1. Voor **meta gegevens-URL**voert u de volgende `your-AD-tenant-domain` URL in die wordt vervangen door de domein naam van uw Azure AD-Tenant:
+1. Voor **meta gegevens-URL**voert u de volgende URL in die `your-AD-tenant-domain` vervangt door de domein naam van uw Azure AD-Tenant:
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
@@ -114,7 +115,7 @@ Nadat u de toepassing hebt gemaakt voor de ID-provider die u wilt toevoegen, voe
 
     * **Gebruikers-id**: *OID*
     * **Weergave naam**: *naam*
-    * Voor **naam**: *given_name*
+    * **Gegeven naam**: *given_name*
     * **Achternaam**: *family_name*
     * **E-mail**: *unique_name*
 
@@ -130,20 +131,20 @@ Nadat u de toepassing hebt gemaakt voor de ID-provider die u wilt toevoegen, voe
 
 ## <a name="update-the-user-flow"></a>De gebruikers stroom bijwerken
 
-In de zelf studie die u als onderdeel van de vereisten hebt voltooid, hebt u een gebruikers stroom gemaakt voor het aanmelden en aanmelden met de naam *B2C_1_signupsignin1*. In deze sectie voegt u de id-providers toe aan de *B2C_1_signupsignin1* -gebruikers stroom.
+In de zelf studie die u als onderdeel van de vereisten hebt voltooid, hebt u een gebruikers stroom gemaakt voor het aanmelden en aanmelden met de naam *B2C_1_signupsignin1*. In deze sectie voegt u de id-providers toe aan de *B2C_1_signupsignin1* gebruikers stroom.
 
-1. Selecteer **gebruikers stromen (beleid)** en selecteer vervolgens de *B2C_1_signupsignin1* -gebruikers stroom.
+1. Selecteer **gebruikers stromen (beleid)** en selecteer vervolgens de *B2C_1_signupsignin1* gebruikers stroom.
 2. Selecteer **id-providers**, selecteer de **Facebook** -en **Contoso Azure AD** -id-providers die u hebt toegevoegd.
 3. Selecteer **Opslaan**.
 
 ## <a name="test-the-user-flow"></a>De gebruikers stroom testen
 
 1. Selecteer op de pagina overzicht van de gebruikers stroom die u hebt gemaakt, de optie **gebruikers stroom uitvoeren**.
-1. Selecteer voor **toepassing**de webtoepassing met de naam *webapp1* die u eerder hebt geregistreerd. De **antwoord-URL** moet `https://jwt.ms`worden weer gegeven.
+1. Selecteer voor **toepassing**de webtoepassing met de naam *webapp1* die u eerder hebt geregistreerd. In de **antwoord-URL** moeten `https://jwt.ms`worden weer gegeven.
 1. Selecteer **gebruikers stroom uitvoeren**en meld u aan met een id-provider die u eerder hebt toegevoegd.
 1. Herhaal stap 1 tot en met 3 voor de andere id-providers die u hebt toegevoegd.
 
-Als de aanmeldings bewerking is gelukt, wordt u omgeleid naar `https://jwt.ms` waar de gedecodeerde token wordt weer gegeven, vergelijkbaar met:
+Als de aanmeldings bewerking is geslaagd, wordt u omgeleid naar `https://jwt.ms` waarin de gedecodeerde token wordt weer gegeven, vergelijkbaar met:
 
 ```json
 {

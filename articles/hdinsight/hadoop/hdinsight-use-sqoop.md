@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/12/2019
-ms.openlocfilehash: f2a153b1eef974c8c73df49a6eed53ef5dbf2353
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 12/06/2019
+ms.openlocfilehash: 8353c0fba034022a79570d09b320b7b5c4c3e60a
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076216"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951850"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Apache Sqoop gebruiken met Hadoop in HDInsight
 
@@ -42,18 +42,18 @@ HDInsight-cluster wordt geleverd met een aantal voorbeeld gegevens. U gebruikt d
 ...
 ```
 
-* Een Hive-tabel `hivesampletable`met de naam, die verwijst naar het `/hive/warehouse/hivesampletable`gegevens bestand dat zich bevindt in. De tabel bevat enkele gegevens van mobiele apparaten.
+* Een Hive-tabel met de naam `hivesampletable`, die verwijst naar het gegevens bestand dat zich op `/hive/warehouse/hivesampletable`bevindt. De tabel bevat enkele gegevens van mobiele apparaten.
   
   | Veld | Gegevenstype |
   | --- | --- |
   | clientid |string |
   | querytime |string |
-  | Markt |string |
+  | markt |string |
   | deviceplatform |string |
   | devicemake |string |
   | devicemodel |string |
-  | toestand |string |
-  | Regio |string |
+  | state |string |
+  | land |string |
   | querydwelltime |double |
   | SessionID |bigint |
   | sessionpagevieworder |bigint |
@@ -61,7 +61,8 @@ HDInsight-cluster wordt geleverd met een aantal voorbeeld gegevens. U gebruikt d
 In dit artikel gebruikt u deze twee gegevens sets om het importeren en exporteren van Sqoop te testen.
 
 ## <a name="create-cluster-and-sql-database"></a>Test omgeving instellen
-Het cluster, SQL database en andere objecten worden via de Azure Portal gemaakt met behulp van een Azure Resource Manager sjabloon. De sjabloon is te vinden in [Azure Quick](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)start-sjablonen. Met de Resource Manager-sjabloon wordt een Bacpac-pakket aangeroepen om de tabel schema's te implementeren in een SQL database.  Het Bacpac-pakket bevindt zich in een open https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac bare BLOB-container. Als u een persoonlijke container wilt gebruiken voor de Bacpac-bestanden, gebruikt u de volgende waarden in de sjabloon:
+
+Het cluster, SQL database en andere objecten worden via de Azure Portal gemaakt met behulp van een Azure Resource Manager sjabloon. De sjabloon is te vinden in [Azure Quick](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)start-sjablonen. Met de Resource Manager-sjabloon wordt een Bacpac-pakket aangeroepen om de tabel schema's te implementeren in een SQL database.  Het Bacpac-pakket bevindt zich in een open bare BLOB-container, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Als u een persoonlijke container wilt gebruiken voor de Bacpac-bestanden, gebruikt u de volgende waarden in de sjabloon:
 
 ```json
 "storageKeyType": "Primary",
@@ -77,24 +78,24 @@ Het cluster, SQL database en andere objecten worden via de Azure Portal gemaakt 
 
 2. Voer de volgende eigenschappen in:
 
-    |Veld |Value |
+    |Veld |Waarde |
     |---|---|
-    |Subscription |Selecteer uw Azure-abonnement in de vervolg keuzelijst.|
-    |Resource group |Selecteer uw resource groep in de vervolg keuzelijst of maak een nieuwe.|
-    |Location |Selecteer een regio in de vervolg keuzelijst.|
+    |Abonnement |Selecteer uw Azure-abonnement in de vervolg keuzelijst.|
+    |Resourcegroep |Selecteer uw resource groep in de vervolg keuzelijst of maak een nieuwe.|
+    |Locatie |Selecteer een regio in de vervolg keuzelijst.|
     |Clusternaam |Voer een naam in voor het Hadoop-cluster. Alleen kleine letters gebruiken.|
-    |Gebruikersnaam voor clusteraanmelding |Behoud de vooraf ingevulde waarde `admin`.|
+    |Gebruikersnaam voor clusteraanmelding |Behoud de vooraf gevulde waarde `admin`.|
     |Wachtwoord voor clusteraanmelding |Voer een wacht woord in.|
-    |SSH-gebruikers naam |Behoud de vooraf ingevulde waarde `sshuser`.|
+    |SSH-gebruikers naam |Behoud de vooraf gevulde waarde `sshuser`.|
     |SSH-wacht woord |Voer een wacht woord in.|
-    |Aanmelding voor SQL-beheerder |Behoud de vooraf ingevulde waarde `sqluser`.|
+    |Aanmelding voor SQL-beheerder |Behoud de vooraf gevulde waarde `sqluser`.|
     |Wacht woord voor SQL-beheerder |Voer een wacht woord in.|
-    |Locatie van _artifacts | Gebruik de standaard waarde tenzij u uw eigen Bacpac-bestand op een andere locatie wilt gebruiken.|
-    |SAS-token van _artifacts-locatie |Leeg laten.|
+    |_artifacts locatie | Gebruik de standaard waarde tenzij u uw eigen Bacpac-bestand op een andere locatie wilt gebruiken.|
+    |SAS-token _artifacts locatie |Leeg laten.|
     |Bacpac-bestands naam |Gebruik de standaard waarde tenzij u uw eigen Bacpac-bestand wilt gebruiken.|
-    |Location |Gebruik de standaardwaarde.|
+    |Locatie |Gebruik de standaardwaarde.|
 
-    De naam `<ClusterName>dbserver`van de Azure-SQL Server is. De naam van de data `<ClusterName>db`Base is. De standaard naam `e6qhezrh2pdqu`van het opslag account is.
+    De naam van de Azure-SQL Server wordt `<ClusterName>dbserver`. De naam van de data base wordt `<ClusterName>db`. De standaard naam van het opslag account wordt `e6qhezrh2pdqu`.
 
 3. Selecteer **Ik ga akkoord met de bovenstaande voor waarden**.
 
@@ -112,12 +113,13 @@ HDInsight kan Sqoop-taken uitvoeren met behulp van verschillende methoden. Gebru
 
 ## <a name="limitations"></a>Beperkingen
 
-* Bulk export-met HDInsight op basis van Linux, de Sqoop-connector die wordt gebruikt om gegevens te exporteren naar Microsoft SQL Server of Azure SQL Database biedt momenteel geen ondersteuning voor bulksgewijs invoegen.
-* Batch verwerking: met HDInsight op basis van Linux, worden bij `-batch` het gebruik van de switch tijdens het invoegen meerdere toevoegingen uitgevoerd in plaats van de invoeg bewerkingen batch-Sqoop.
+* Bulk export-met HDInsight op basis van Linux, de Sqoop-connector die wordt gebruikt voor het exporteren van gegevens naar Microsoft SQL Server of Azure SQL Database momenteel geen bulk toevoegingen ondersteunt.
+* Batch verwerking: met HDInsight op basis van Linux kunt u bij het gebruik van de `-batch` switch meerdere inserts uitvoeren in plaats van batch verwerking van de Insert-bewerkingen.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 U hebt nu geleerd hoe u Sqoop kunt gebruiken. Voor meer informatie zie:
 
 * [Apache Hive gebruiken met HDInsight](../hdinsight-use-hive.md)
-* [Apache Pig gebruiken met HDInsight](../hdinsight-use-pig.md)
-* [Gegevens uploaden naar HDInsight](../hdinsight-upload-data.md): Andere methoden vinden voor het uploaden van gegevens naar HDInsight/Azure Blob-opslag.
+* [Gegevens uploaden naar hdinsight](../hdinsight-upload-data.md): andere methoden voor het uploaden van gegevens naar Hdinsight/Azure Blob Storage zoeken.
+* [Apache Sqoop gebruiken voor het importeren en exporteren van gegevens tussen Apache Hadoop in HDInsight en SQL Database](./apache-hadoop-use-sqoop-mac-linux.md)

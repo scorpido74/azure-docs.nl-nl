@@ -1,5 +1,6 @@
 ---
-title: Registratie instellen en aanmelden met een Twitter-account met behulp van Azure Active Directory B2C
+title: Registratie instellen en aanmelden met een Twitter-account
+titleSuffix: Azure AD B2C
 description: Bied u de mogelijkheid om u aan te melden en u aan te melden bij klanten met Twitter-accounts in uw toepassingen met Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5cb5c5813bff8c0df5b119ea1cadf4f2e7c1696a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8b316fdb185c8a9c78e1a0c9be5f7d57b809141c
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811390"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950439"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Registratie instellen en aanmelden met een Twitter-account met behulp van Azure Active Directory B2C
 
@@ -26,8 +27,8 @@ Als u Twitter als een id-provider in Azure AD B2C wilt gebruiken, moet u een Twi
 1. Meld u aan bij de website van de [Twitter-ontwikkel aars](https://developer.twitter.com/en/apps) met de referenties van uw Twitter-account.
 1. Selecteer **een app maken**.
 1. Voer een **app-naam** en een **toepassings beschrijving**in.
-1. Voer`https://your-tenant.b2clogin.com`in **website-URL**in. Vervang `your-tenant` door de naam van uw Tenant. Bijvoorbeeld https://contosob2c.b2clogin.com.
-1. Voer`https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`in voor de **call back-URL**. Vervang `your-tenant` door de naam van uw Tenant naam en `your-user-flow-Id` met de id van uw gebruikers stroom. Bijvoorbeeld `b2c_1A_signup_signin_twitter`. U moet alle kleine letters gebruiken wanneer u uw Tenant naam en gebruikers stroom-ID invoert, zelfs als ze zijn gedefinieerd met hoofd letters in Azure AD B2C.
+1. Voer in de URL van de **Website**`https://your-tenant.b2clogin.com`in. Vervang `your-tenant` door de naam van uw Tenant. Bijvoorbeeld https://contosob2c.b2clogin.com.
+1. Voer `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`in voor de **call back-URL**. Vervang `your-tenant` door de naam van uw Tenant naam en `your-user-flow-Id` door de id van uw gebruikers stroom. Bijvoorbeeld `b2c_1A_signup_signin_twitter`. U moet alle kleine letters gebruiken wanneer u uw Tenant naam en gebruikers stroom-ID invoert, zelfs als ze zijn gedefinieerd met hoofd letters in Azure AD B2C.
 1. Lees en accepteer de voor waarden aan de onderkant van de pagina en selecteer vervolgens **maken**.
 1. Op de **pagina app-Details** selecteert u **Bewerken > Details bewerken**, schakelt u het selectie vakje **Aanmelden met Twitter inschakelen in**en selecteert u vervolgens **Opslaan**.
 1. Selecteer **sleutels en tokens** en noteer de **CONSUMer-API-sleutel** en de geheime sleutel waarden voor de **Consumer-API** die u later wilt gebruiken.

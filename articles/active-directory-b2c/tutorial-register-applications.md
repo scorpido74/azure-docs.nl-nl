@@ -1,5 +1,6 @@
 ---
-title: Zelf studie-een toepassing registreren-Azure Active Directory B2C
+title: 'Zelf studie: een toepassing registreren'
+titleSuffix: Azure AD B2C
 description: Meer informatie over het registreren van een webtoepassing in Azure Active Directory B2C met behulp van de Azure Portal.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3a5d5099c91736276aca56c8b94b846b53a190c1
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 76d38e4b35111cd2c09685653fb4948f98387132
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73642419"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950779"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Zelf studie: een toepassing registreren in Azure Active Directory B2C
 
@@ -57,7 +58,7 @@ Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de huidi
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
 1. Selecteer **app-registraties (preview)** en selecteer vervolgens **nieuwe registratie**.
@@ -72,7 +73,7 @@ Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de huidi
     * De antwoord-URL moet beginnen met het schema `https`.
     * De antwoord-URL is hoofdletter gevoelig. Het hoofdletter gebruik moet overeenkomen met het URL-pad van de actieve toepassing. Als uw toepassing bijvoorbeeld een deel van het pad bevat `.../abc/response-oidc`, geeft u geen `.../ABC/response-oidc` op in de antwoord-URL. Omdat de webbrowser paden als hoofdletter gevoelig behandelt, kunnen cookies die zijn gekoppeld aan `.../abc/response-oidc`, worden uitgesloten als ze worden omgeleid naar de niet-overeenkomende `.../ABC/response-oidc` URL.
 
-1. Schakel onder **machtigingen**het selectie vakje *verlenen beheerders toestemming voor OpenID Connect-en offline_access-machtigingen* in.
+1. Schakel onder **machtigingen**het selectie vakje *verlenen beheerder toestemming geven aan openid connect-en offline_access machtigingen* in.
 1. Selecteer **Registreren**.
 
 Zodra de registratie van de toepassing is voltooid, schakelt u de impliciete toekennings stroom in:

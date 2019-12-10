@@ -1,5 +1,6 @@
 ---
-title: 'Quick Start: stel aanmelden in voor een app met één pagina met behulp van Azure Active Directory B2C'
+title: 'Snelstartgids: aanmelden instellen voor een app met één pagina (SPA)'
+titleSuffix: Azure AD B2C
 description: In deze Snelstartgids voert u een voor beeld van een toepassing met één pagina uit die gebruikmaakt van Azure Active Directory B2C om de aanmelding van het account te bieden.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7dc3a52ca9f227f8476cf74286be917b5b6ba021
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ef6fd46ef51cff9823c93e2297a738f95494f577
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420183"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948323"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Snelstartgids: aanmelden instellen voor een app met één pagina met Azure Active Directory B2C
 
@@ -29,7 +30,7 @@ Azure Active Directory B2C (Azure AD B2C) biedt Cloud Identity Management om uw 
 - [Node.js](https://nodejs.org/en/download/)
 - Sociaal account van Facebook, Google of micro soft
 - Code voorbeeld van GitHub: [Active-Directory-B2C-java script-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
-    
+
     U kunt [het zip-archief downloaden](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip) of de opslag plaats klonen:
 
     ```
@@ -60,7 +61,7 @@ Azure Active Directory B2C (Azure AD B2C) biedt Cloud Identity Management om uw 
 
     ![Voor beeld-app met één pagina die wordt weer gegeven in de browser](media/active-directory-b2c-quickstarts-spa/sample-app-spa.png)
 
-    In de voorbeeldtoepassing worden verschillende registratiemogelijkheden ondersteund. U kunt bijvoorbeeld een id-provider voor sociale netwerken gebruiken of een lokaal account maken met behulp van een e-mailadres. Gebruik voor deze Quick Start een id-provider account van de sociale identiteit van Facebook, Google of micro soft.
+    In de voorbeeldtoepassing worden verschillende registratiemogelijkheden ondersteund. U kunt bijvoorbeeld een provider voor sociale identiteit gebruiken of een lokale account maken met behulp van een e-mailadres. Gebruik voor deze Quick Start een id-provider account van de sociale identiteit van Facebook, Google of micro soft.
 
 2. Azure AD B2C geeft een aanmeldings pagina voor een fictief bedrijf met de naam Fabrikam voor de voor beeld-webtoepassing. Klik op de knop van de id-provider voor sociale netwerken die u wilt gebruiken om u aan te melden via een id-provider voor sociale netwerken.
 
@@ -80,7 +81,7 @@ De voorbeeldtoepassing met één pagina bevat het toegangstoken van Azure AD in 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-U kunt uw Azure AD B2C-tenant gebruiken voor andere Quick Starts of zelfstudies voor Azure AD B2C. Als u deze niet meer nodig hebt, kunt u [uw Azure AD B2C-tenant verwijderen](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant).
+U kunt uw Azure AD B2C-tenant gebruiken voor andere snelstarts of zelfstudies voor Azure AD B2C. Als u deze niet meer nodig hebt, kunt u [uw Azure AD B2C-tenant verwijderen](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,7 @@
 ---
-title: Geef een toegangs token door via een aangepast beleid voor uw toepassing in Azure Active Directory B2C
-description: Meer informatie over hoe u een toegangs token kunt door geven voor OAuth 2.0-id-providers als een claim via een aangepast beleid voor uw toepassing in Azure Active Directory B2C.
+title: Een toegangs token door geven via een aangepast beleid voor uw app
+titleSuffix: Azure AD B2C
+description: Meer informatie over hoe u een toegangs token kunt door geven voor OAuth 2,0-id-providers als een claim via een aangepast beleid voor uw toepassing in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b6795af0829a288c36cad5b848fed50a99dc1bfc
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 8f7122035f8d70cb91f4ec4f64e1dd4f7b2842b8
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510125"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949837"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Geef een toegangs token door via een aangepast beleid voor uw toepassing in Azure Active Directory B2C
 
@@ -29,7 +30,7 @@ Azure AD B2C ondersteunt het door geven van het toegangs token van [OAuth 2,0](a
 
 ## <a name="add-the-claim-elements"></a>De claim elementen toevoegen
 
-1. Open uw *TrustframeworkExtensions. XML-* bestand en voeg het volgende **claim** type-element toe `identityProviderAccessToken` met een id van aan het **ClaimsSchema** -element:
+1. Open uw *TrustframeworkExtensions. XML-* bestand en voeg het volgende **claim** type-element met de id `identityProviderAccessToken` toe aan het **ClaimsSchema** -element:
 
     ```XML
     <BuildingBlocks>
@@ -79,11 +80,11 @@ Azure AD B2C ondersteunt het door geven van het toegangs token van [OAuth 2,0](a
 
 ## <a name="test-your-policy"></a>Uw beleid testen
 
-Bij het testen van uw toepassingen in azure AD B2C kan het nuttig zijn om het Azure AD B2C-token te `https://jwt.ms` retour neren om de claims daarin te kunnen bekijken.
+Bij het testen van uw toepassingen in Azure AD B2C kan het nuttig zijn om het Azure AD B2C-token terug te krijgen naar `https://jwt.ms` om de claims in de toepassing te kunnen bekijken.
 
 ### <a name="upload-the-files"></a>De bestanden uploaden
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C Tenant bevat door te klikken op het filter **Directory + abonnement** in het bovenste menu en de map te kiezen die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer een **Framework voor identiteits ervaring**.
@@ -95,12 +96,12 @@ Bij het testen van uw toepassingen in azure AD B2C kan het nuttig zijn om het Az
 ### <a name="run-the-policy"></a>Het beleid uitvoeren
 
 1. Open het beleid dat u hebt gewijzigd. Bijvoorbeeld *B2C_1A_signup_signin*.
-2. Selecteer voor **toepassing**de toepassing die u eerder hebt geregistreerd. Voor een overzicht van het token in het onderstaande voor beeld moet de antwoord `https://jwt.ms`- **URL** worden weer gegeven.
+2. Selecteer voor **toepassing**de toepassing die u eerder hebt geregistreerd. Voor een overzicht van het token in het onderstaande voor beeld moet de **antwoord-URL** `https://jwt.ms`weer geven.
 3. Selecteer **nu uitvoeren**.
 
     Het volgende voor beeld ziet er ongeveer uit:
 
-    ![Gedecodeer token in jwt.ms met idp_access_token-blok gemarkeerd](./media/idp-pass-through-custom/idp-pass-through-custom-token.PNG)
+    ![Gedecodeer token in jwt.ms met idp_access_token blok gemarkeerd](./media/idp-pass-through-custom/idp-pass-through-custom-token.PNG)
 
 ## <a name="next-steps"></a>Volgende stappen
 
