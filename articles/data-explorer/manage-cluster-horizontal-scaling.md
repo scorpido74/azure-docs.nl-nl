@@ -3,28 +3,24 @@ title: Horizon taal schalen van het cluster beheren (uitschalen) in azure Data E
 description: In dit artikel worden de stappen beschreven voor het uitschalen en schalen in een Azure Data Explorer-cluster op basis van het wijzigen van de vraag.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 07/14/2019
-ms.openlocfilehash: eb204701b42436a5ae95bac97ed6fd97cf272860
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.date: 12/09/2019
+ms.openlocfilehash: 52a9c0a13723361bbc93362cdd9e2c73ef0372f2
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561867"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942236"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Horizon taal schalen van het cluster beheren (uitschalen) in azure Data Explorer voor het wijzigen van de vraag
 
-Het formaat van een cluster op de juiste wijze is essentieel voor de prestaties van Azure Data Explorer. De grootte van een statisch cluster kan leiden tot minder gebruik of over meer gebruiks mogelijkheden.
-
-Omdat de vraag naar een cluster niet met absolute nauw keurigheid kan worden voor speld, is het beter om een cluster te *schalen* , capaciteit en CPU-resources toe te voegen en te verwijderen met veranderende vraag. 
+Het formaat van een cluster op de juiste wijze is essentieel voor de prestaties van Azure Data Explorer. De grootte van een statisch cluster kan leiden tot minder gebruik of over meer gebruiks mogelijkheden. Omdat de vraag naar een cluster niet met absolute nauw keurigheid kan worden voor speld, is het beter om een cluster te *schalen* , capaciteit en CPU-resources toe te voegen en te verwijderen met veranderende vraag. 
 
 Er zijn twee werk stromen voor het schalen van een Azure Data Explorer-cluster: 
-
 * Horizon taal schalen, ook wel in-en uitschalen genoemd.
 * [Verticaal schalen](manage-cluster-vertical-scaling.md), ook wel omhoog en omlaag schalen genoemd.
-
 In dit artikel wordt de werk stroom voor Horizon taal schalen uitgelegd.
 
 ## <a name="configure-horizontal-scaling"></a>Horizon taal schalen configureren
@@ -35,7 +31,7 @@ Als u horizon taal schalen gebruikt, kunt u het aantal exemplaren automatisch sc
 
 2. Selecteer in het venster **uitschalen** de gewenste methode voor automatisch schalen: **hand matig schalen**, **geoptimaliseerd**automatisch schalen of **aangepast automatisch schalen**.
 
-### <a name="manual-scale"></a>Hand matig schalen
+### <a name="manual-scale"></a>Handmatig schalen
 
 Hand matig schalen is de standaard instelling tijdens het maken van het cluster. Het cluster heeft een statische capaciteit die niet automatisch wordt gewijzigd. U selecteert de statische capaciteit met behulp van de **instantie aantal exemplaren** . De schaal van het cluster blijft in die instelling totdat u een andere wijziging aanbrengt.
 
@@ -55,13 +51,40 @@ Geoptimaliseerd automatisch schalen is de aanbevolen methode voor automatisch sc
 
 Geoptimaliseerd automatisch schalen wordt gestart. De bijbehorende acties zijn nu zichtbaar in het Azure-activiteiten logboek van het cluster.
 
-### <a name="custom-autoscale"></a>Aangepaste automatisch schalen
+#### <a name="logic-of-optimized-autoscale"></a>Logica van geoptimaliseerd automatisch schalen 
+
+**Uitschalen**
+
+Wanneer uw cluster de status over het gebruik benadert, kunt u uitschalen om optimale prestaties te behouden. Uitschalen vindt plaats wanneer:
+* Het aantal cluster exemplaren ligt onder het maximum aantal exemplaren dat door de gebruiker is gedefinieerd.
+* Het cache gebruik is gedurende een uur hoog.
+
+> [!NOTE]
+> De scale out-logica houdt momenteel geen rekening met het opname gebruik en CPU-metrische gegevens. Als deze metrische gegevens belang rijk zijn voor uw use-case, gebruikt u [aangepaste automatisch schalen](#custom-autoscale).
+
+**Schalen in**
+
+Als uw cluster de status onder gebruik nadert, kunt u inschalen om de kosten te verlagen, maar de prestaties te behouden. Er worden meerdere metrische gegevens gebruikt om te controleren of het veilig is om in het cluster te schalen. De volgende regels worden dagelijks geëvalueerd gedurende 7 dagen voordat de schaal in wordt uitgevoerd:
+* Het aantal exemplaren ligt boven 2 en hoger dan het minimum aantal exemplaren dat is gedefinieerd.
+* Om ervoor te zorgen dat resources niet overbelast zijn, moeten de volgende metrische gegevens worden gecontroleerd voordat de schaal in wordt uitgevoerd: 
+    * Cache gebruik is niet hoog
+    * CPU is lager dan gemiddeld 
+    * Het gebruik van opname is lager dan het gemiddelde 
+    * Het gebruik van streaming-opname (als het opnemen van gegevens stromen wordt gebruikt) is niet hoog
+    * Keep Alive-gebeurtenissen bevinden zich boven een gedefinieerd minimum, worden correct verwerkt en op tijd.
+    * Geen query beperking 
+    * Het aantal mislukte query's ligt onder een gedefinieerd minimum.
+
+> [!NOTE]
+> Voor de schaal van logica is momenteel een evaluatie van zeven dagen vereist voordat de implementatie van een geoptimaliseerde schaal in kan worden geïmplementeerd. Deze evaluatie vindt één keer per 24 uur plaats. Als er een snelle wijziging nodig is, gebruikt u [hand matig schalen](#manual-scale).
+
+### <a name="custom-autoscale"></a>Aangepaste automatische schaalaanpassing
 
 Met aangepaste automatisch schalen kunt u uw cluster dynamisch schalen op basis van de metrische gegevens die u opgeeft. In de volgende afbeelding ziet u de stroom en de stappen voor het configureren van aangepaste automatisch schalen. Raadpleeg de afbeelding voor meer informatie.
 
 1. Voer in het vak **instellings naam automatisch schalen** een naam in, zoals *uitschalen: cache gebruik*. 
 
-   ![Schaal regel](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
+   ![Schaalregel](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
 
 2. Voor **schaal modus**selecteert u **schalen op basis van een metriek**. Deze modus biedt dynamische schaling. U kunt ook **schalen naar een specifiek aantal instanties**selecteren.
 
@@ -76,7 +99,7 @@ Met aangepaste automatisch schalen kunt u uw cluster dynamisch schalen op basis 
     | **Tijd aggregatie** | Selecteer een aggregatie criterium, zoals **gemiddeld**. |
     | **Metrische naam** | Selecteer de metrische gegevens waarop u de schaal bewerking wilt baseren, zoals het **cache gebruik**. |
     | **Statistieken voor tijd korrels** | Kies een **gemiddelde**, een **minimum**, een **maximum**en een **som**. |
-    | **And** | Kies de gewenste optie, zoals **groter dan of gelijk aan**. |
+    | **Operator** | Kies de gewenste optie, zoals **groter dan of gelijk aan**. |
     | **Spreek** | Kies een geschikte waarde. Bijvoorbeeld: voor cache gebruik is 80 procent een goed uitgangs punt. |
     | **Duur (in minuten)** | Kies een geschikte hoeveelheid tijd om het systeem terug te laten kijken bij het berekenen van metrische gegevens. Begin met de standaard waarde van 10 minuten. |
     |  |  |
@@ -96,8 +119,8 @@ Met aangepaste automatisch schalen kunt u uw cluster dynamisch schalen op basis 
 
     | Instelling | Beschrijving en waarde |
     | --- | --- |
-    | **Maal** | Het aantal exemplaren dat door uw cluster niet kan worden geschaald, ongeacht het gebruik. |
-    | **Gehalte** | Het aantal exemplaren dat door uw cluster niet kan worden geschaald, ongeacht het gebruik. |
+    | **Minimum** | Het aantal exemplaren dat door uw cluster niet kan worden geschaald, ongeacht het gebruik. |
+    | **Maximum** | Het aantal exemplaren dat door uw cluster niet kan worden geschaald, ongeacht het gebruik. |
     | **Standaard** | Het standaard aantal exemplaren. Deze instelling wordt gebruikt als er problemen zijn met het lezen van de metrische gegevens van de resource. |
     |  |  |
 
@@ -108,5 +131,4 @@ U hebt nu horizon taal schalen geconfigureerd voor uw Azure Data Explorer-cluste
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Prestaties, status en gebruik van Azure Data Explorer controleren met metrische gegevens](using-metrics.md)
-
 * [Verticaal schalen van clusters beheren](manage-cluster-vertical-scaling.md) voor de juiste grootte van een cluster.

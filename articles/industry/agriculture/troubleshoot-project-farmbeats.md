@@ -5,26 +5,29 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0a4fb337adfb2f4e6b8edb86ac620103e929c3a8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 89f364d9246db27276eee6d05e8130e87061feec
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842132"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941594"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Problemen met Azure FarmBeats oplossen
 
 Dit artikel bevat oplossingen voor veelvoorkomende problemen met Azure FarmBeats.
 
-Neem contact met ons op farmbeatssupport@microsoft.comvoor meer hulp. Zorg ervoor dat u het bestand *deployer. log* in uw e-mail bericht opneemt.
+Neem contact met ons op farmbeatssupport@microsoft.comvoor meer hulp. Zorg ervoor dat u het bestand **deployer. log** in uw e-mail bericht opneemt.
 
-Ga als volgt te werk om het bestand *deployer. log* te downloaden:
+Ga als volgt te werk om het bestand **deployer. log** te downloaden:
 
-1. Selecteer het gemarkeerde pictogram en selecteer vervolgens in de vervolg keuzelijst **downloaden**.
+1. Meld u aan **Azure Portal** en selecteer uw abonnement en de Azure AD-Tenant.
+2. Open Cloud Shell via de bovenste navigatiebalk van de Azure Portal.
+3. Selecteer **bash** als de voor keurs-Cloud shell-ervaring.
+4. Selecteer het gemarkeerde pictogram en selecteer vervolgens in de vervolg keuzelijst **downloaden**.
 
     ![Project FarmBeats](./media/troubleshooting-farmbeats/download-deployer-log-1.png)
 
-1. Geef in het volgende deel venster het pad op naar het bestand *deployer. log* . Voer bijvoorbeeld **farmbeats-deployer. log**in.
+5. Geef in het volgende deel venster het pad op naar het bestand **deployer. log** . Voer bijvoorbeeld **farmbeats-deployer. log**in.
 
 ## <a name="sensor-telemetry"></a>Sensor-telemetrie
 
@@ -32,7 +35,7 @@ Ga als volgt te werk om het bestand *deployer. log* te downloaden:
 
 **Symptoom**: er zijn apparaten of Sens oren geïmplementeerd en u hebt FarmBeats gekoppeld aan de partner van uw apparaat, maar u kunt geen telemetriegegevens ophalen of weer geven op FarmBeats.
 
-**Corrigerende actie**: 
+**Corrigerende actie**:
 
 1. Ga naar de resource groep FarmBeats Datahub.   
 1. Selecteer de **Event hub** (DatafeedEventHubNamespace) en controleer vervolgens op het aantal inkomende berichten.
@@ -44,14 +47,14 @@ Als u wilt weten hoe u Logboeken kunt downloaden, gaat u naar de sectie [Logboek
 
 ### <a name="dont-have-the-azure-event-hubs-connection-string"></a>De Azure-Event Hubs niet hebben connection string
 
-**Corrigerende actie**: 
+**Corrigerende actie**:
 
 1. Ga in Datahub Swagger naar de partner-API.
 1. Selecteer ** > ** **uitproberen** > **uitvoeren**.
 1. Noteer de partner-ID van de sensor partner die u wilt.
 1. Ga terug naar de partner-API en selecteer **Get/\<ID >** .
 1. Geef de partner-ID op uit stap 3 en selecteer vervolgens **uitvoeren**.
-   
+
    De API-reactie moet de Event Hubs connection string hebben.
 
 ### <a name="device-appears-offline"></a>Apparaat wordt offline weer gegeven
@@ -128,7 +131,7 @@ Als de fout zich blijft voordoen, voegt u het fout bericht toe aan een bericht o
 **Probleem**: FarmBeats Accelerator geeft niet de nieuwste versie weer, zelfs nadat u FarmBeatsDeployment hebt bijgewerkt.
 
 **Corrigerende actie**: deze fout treedt op door de service medewerker-persistentie in de browser. Ga als volgt te werk:
-1. Sluit alle browser tabbladen met Accelerator open en sluit het browser venster. 
+1. Sluit alle browser tabbladen met Accelerator open en sluit het browser venster.
 1. Start een nieuw exemplaar van de browser en laad de Accelerator-URI opnieuw. Met deze actie wordt de nieuwe versie van Accelerator geladen.
 
 ## <a name="sentinel-imagery-related-issues"></a>Sentinel: problemen met betrekking tot installatie kopieën
@@ -137,7 +140,7 @@ Als de fout zich blijft voordoen, voegt u het fout bericht toe aan een bericht o
 
 **Taak fout bericht**: volledige verificatie is vereist voor toegang tot deze resource.
 
-**Corrigerende actie**: 
+**Corrigerende actie**:
 
 Voer een van de volgende handelingen uit:
 * Voer het installatie programma voor het bijwerken van Datahub met de juiste gebruikers naam en wacht woord opnieuw uit.
@@ -207,7 +210,7 @@ Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen i
 
     ![Project FarmBeats](./media/troubleshooting-farmbeats/collecting-logs-manually-1.png)
 
-### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Azure Data Factory-taak Logboeken in de Accelerator verzamelen 
+### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Azure Data Factory-taak Logboeken in de Accelerator verzamelen
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zoek in **het zoekvak naar de resource** groep FarmBeats Accelerator.

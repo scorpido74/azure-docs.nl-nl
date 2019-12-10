@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 74de621f88d9af65f8894319729f902bf11e57ce
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: cccdb54b89dff7c6a1fc9dac55c63b19d661ab65
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873009"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951306"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Voor beeld: Meld u aan bij een virtuele Linux-machine in azure met Azure Active Directory-verificatie
 
@@ -206,6 +206,10 @@ Als u de verificatie stap in een webbrowser hebt voltooid, wordt u mogelijk onmi
 - Controleer of de aanmeldings naam die u hebt opgegeven bij de SSH-prompt juist is. Een type fout in de aanmeldings naam kan ertoe leiden dat de aanmeldings naam die u hebt opgegeven bij de SSH-prompt en het account waarmee u zich hebt aangemeld bij Azure AD overeenkomen. U hebt bijvoorbeeld *azuresuer\@contoso.onmicrosoft.com* getypt in plaats van *azureuser\@contoso.onmicrosoft.com*.
 - Als u meerdere gebruikers accounts hebt, moet u ervoor zorgen dat u in het browser venster geen ander gebruikers account opgeeft wanneer u zich aanmeldt bij Azure AD.
 - Linux is een hoofdletter gevoelig besturings systeem. Er is een verschil tussen 'Azureuser@contoso.onmicrosoft.com' en 'azureuser@contoso.onmicrosoft.com', wat kan leiden tot een niet-overeenkomend. Zorg ervoor dat u de UPN opgeeft met de juiste hoofdletter gevoeligheid bij de SSH-prompt.
+
+### <a name="other-limitations"></a>Andere beperkingen
+
+Gebruikers die toegangs rechten overnemen via geneste groepen of roltoewijzingen, worden momenteel niet ondersteund. De gebruiker of groep moet rechtstreeks de [vereiste roltoewijzingen](#configure-role-assignments-for-the-vm)toewijzen. Het gebruik van beheer groepen of geneste groeps roltoewijzingen wijst bijvoorbeeld niet de juiste machtigingen toe om de gebruiker in staat te stellen zich aan te melden.
 
 ## <a name="preview-feedback"></a>Preview-feedback
 

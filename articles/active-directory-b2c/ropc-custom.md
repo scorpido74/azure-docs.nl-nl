@@ -1,6 +1,7 @@
 ---
-title: De gegevens stroom van het wacht woord voor de resource-eigenaar configureren in Azure Active Directory B2C | Microsoft Docs
-description: Meer informatie over het configureren van de gegevens stroom voor het wacht woord voor de resource-eigenaar in Azure Active Directory B2C.
+title: De gegevens stroom van het wacht woord voor de resource-eigenaar configureren met aangepast beleid
+titleSuffix: Azure AD B2C
+description: Meer informatie over het configureren van de ROPC-stroom (resource owner password credentials) met behulp van aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2f3eb2c0071eecb20bbf5616a01c80e55645207a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 990493b6b2c3757849168d8fb82a4b38f55364e2
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678130"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951061"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>De gegevens stroom van het wacht woord voor de resource-eigenaar configureren in Azure Active Directory B2C met behulp van een aangepast beleid
 
@@ -133,7 +134,7 @@ Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B
     </TechnicalProfile>
     ```
 
-    Vervang de **DefaultValue** van **Client_id** door de toepassings-id van de ProxyIdentityExperienceFramework-toepassing die u hebt gemaakt in de zelf studie voor vereisten. Vervang vervolgens **DefaultValue** van **Resource_id** door de toepassings-id van de IdentityExperienceFramework-toepassing die u ook hebt gemaakt in de hand leiding voor vereisten.
+    Vervang de **DefaultValue** van **Client_id** door de toepassings-id van de ProxyIdentityExperienceFramework-toepassing die u hebt gemaakt in de hand leiding voor vereisten. Vervang vervolgens **DefaultValue** van **Resource_id** door de toepassings-id van de IdentityExperienceFramework-toepassing die u ook hebt gemaakt in de hand leiding voor vereisten.
 
 5. Voeg de volgende **ClaimsProvider** -elementen met hun technische profielen toe aan het **ClaimsProviders** -element:
 
@@ -236,7 +237,7 @@ Werk vervolgens het Relying Party bestand bij dat de door u gemaakte gebruikers 
 
 1. Maak een kopie van het bestand *SignUpOrSignin. XML* in de werkmap en wijzig de naam in *ROPC_Auth. XML*.
 2. Open het nieuwe bestand en wijzig de waarde van het kenmerk **PolicyId** voor **TrustFrameworkPolicy** in een unieke waarde. De beleids-ID is de naam van uw beleid. Bijvoorbeeld **B2C_1A_ROPC_Auth**.
-3. Wijzig de waarde van het kenmerk **ReferenceId** in `ResourceOwnerPasswordCredentials`DefaultUserJourney in.
+3. Wijzig de waarde van het kenmerk **ReferenceId** in **DefaultUserJourney** in `ResourceOwnerPasswordCredentials`.
 4. Wijzig het element **OutputClaims** zodat het de volgende claims bevat:
 
     ```XML
@@ -260,18 +261,18 @@ Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te generere
 - Vervang `your-tenant-name` met de naam van uw Azure AD B2C-tenant.
 - Vervang `B2C_1A_ROPC_Auth` door de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
 
-| Sleutel | Value |
+| Sleutel | Waarde |
 | --- | ----- |
-| username | `user-account` |
-| password | `password1` |
-| grant_type | password |
-| bereik | OpenID Connect `application-id` offline_access |
+| gebruikersnaam | `user-account` |
+| wachtwoord | `password1` |
+| grant_type | wachtwoord |
+| scope | OpenID Connect `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | token id_token |
 
 - Vervang `user-account` door de naam van een gebruikers account in uw Tenant.
 - Vervang `password1` door het wacht woord van het gebruikers account.
-- Vervang `application-id` door de toepassings-ID van de *ROPC_Auth_app* -registratie.
+- Vervang `application-id` door de toepassings-ID van de *ROPC_Auth_app* registratie.
 - *Offline_access* is optioneel als u een vernieuwings token wilt ontvangen.
 
 De werkelijke POST-aanvraag ziet er ongeveer uit als in het volgende voor beeld:
@@ -305,7 +306,7 @@ Een POST-aanroep maken zoals deze wordt weer gegeven. Gebruik de informatie in d
 - Vervang `your-tenant-name` met de naam van uw Azure AD B2C-tenant.
 - Vervang `B2C_1A_ROPC_Auth` door de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
 
-| Sleutel | Value |
+| Sleutel | Waarde |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
@@ -313,8 +314,8 @@ Een POST-aanroep maken zoals deze wordt weer gegeven. Gebruik de informatie in d
 | resource | `application-id` |
 | refresh_token | `refresh-token` |
 
-- Vervang `application-id` door de toepassings-ID van de *ROPC_Auth_app* -registratie.
-- Vervang `refresh-token` door het **refresh_token** dat in het vorige antwoord terug is verzonden.
+- Vervang `application-id` door de toepassings-ID van de *ROPC_Auth_app* registratie.
+- Vervang `refresh-token` door de **refresh_token** die in het vorige antwoord weer is teruggestuurd.
 
 Een geslaagde reactie ziet eruit als in het volgende voor beeld:
 

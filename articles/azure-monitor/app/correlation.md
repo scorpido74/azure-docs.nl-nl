@@ -8,34 +8,34 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: bcdc6633980ec3684217c8c19b4799befe2af3a3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: bc73dfb1c4dc77abe0bd135ecf572fa05ddf6322
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576862"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951323"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Intermetrie-correlatie in Application Insights
 
-In de wereld van micro Services moet voor elke logische bewerking werk worden uitgevoerd in verschillende onderdelen van de service. Elk van deze onderdelen kan afzonderlijk worden bewaakt door [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md). Application Insights ondersteunt gedistribueerde telemetrie-correlatie, die u gebruikt om te detecteren welk onderdeel verantwoordelijk is voor storingen of verminderde prestaties.
+In de wereld van micro Services moet voor elke logische bewerking werk worden uitgevoerd in verschillende onderdelen van de service. U kunt elk van deze onderdelen afzonderlijk bewaken met behulp van [Application Insights](../../azure-monitor/app/app-insights-overview.md). Application Insights ondersteunt gedistribueerde telemetrie-correlatie, die u gebruikt om te detecteren welk onderdeel verantwoordelijk is voor storingen of verminderde prestaties.
 
-In dit artikel wordt het gegevens model uitgelegd dat door Application Insights wordt gebruikt voor het correleren van telemetrie die door meerdere onderdelen worden verzonden. Hierin worden technieken en protocollen voor context doorgifte beschreven. Het behandelt ook de implementatie van correlatie concepten op verschillende talen en platformen.
+In dit artikel wordt het gegevens model uitgelegd dat door Application Insights wordt gebruikt voor het correleren van telemetrie die door meerdere onderdelen worden verzonden. Hierin worden technieken en protocollen voor context doorgifte beschreven. Het behandelt ook de implementatie van correlatie tactieken op verschillende talen en platforms.
 
 ## <a name="data-model-for-telemetry-correlation"></a>Gegevens model voor de correlatie van de telemetrie
 
-Application Insights definieert een [gegevens model](../../azure-monitor/app/data-model.md) voor gedistribueerde telemetrie-correlatie. Om telemetrie te koppelen aan de logische bewerking, heeft elk telemetrie-item een context veld met de naam `operation_Id`. Deze id wordt gedeeld door elk telemetrie-item in de gedistribueerde tracering. Dus zelfs als de telemetrie van één laag is verbroken, kunt u nog steeds telemetrie koppelen die door andere onderdelen zijn gerapporteerd.
+Application Insights definieert een [gegevens model](../../azure-monitor/app/data-model.md) voor gedistribueerde telemetrie-correlatie. Om telemetrie te koppelen aan een logische bewerking, heeft elk telemetrie-item een context veld met de naam `operation_Id`. Deze id wordt gedeeld door elk telemetrie-item in de gedistribueerde tracering. Zelfs als u telemetrie van één laag kwijtraakt, kunt u nog steeds telemetrie koppelen die door andere onderdelen worden gerapporteerd.
 
-Een gedistribueerde logische bewerking bestaat meestal uit een set kleinere bewerkingen, die aanvragen verwerken door een van de onderdelen. Deze bewerkingen worden gedefinieerd op basis van [aanvraag-telemetrie](../../azure-monitor/app/data-model-request-telemetry.md). Elke telemetrie van een aanvraag heeft een eigen `id` dat deze uniek en wereld wijd identificeert. En alle telemetrie-items (zoals traceringen en uitzonde ringen) die aan deze aanvraag zijn gekoppeld, moeten de `operation_parentId` instellen op de waarde van de aanvraag `id`.
+Een gedistribueerde logische bewerking bestaat meestal uit een set kleinere bewerkingen die aanvragen verwerken door een van de onderdelen. Deze bewerkingen worden gedefinieerd op basis van [aanvraag-telemetrie](../../azure-monitor/app/data-model-request-telemetry.md). Elk aanvraag-telemetrie-item heeft een eigen `id` waarmee het uniek en wereld wijd wordt geïdentificeerd. En alle telemetrie-items (zoals traceringen en uitzonde ringen) die zijn gekoppeld aan de aanvraag, moeten de `operation_parentId` instellen op de waarde van de aanvraag `id`.
 
-Elke uitgaande bewerking, zoals een HTTP-aanroep naar een ander onderdeel, wordt weer gegeven door middel van [afhankelijkheids-telemetrie](../../azure-monitor/app/data-model-dependency-telemetry.md). Met de telemetrie van een afhankelijkheid wordt ook een eigen `id` gedefinieerd die wereld wijd uniek is. Telemetrie aanvragen, geïnitieerd door deze afhankelijkheids aanroep, gebruikt deze `id` als `operation_parentId`.
+Elke uitgaande bewerking, zoals een HTTP-aanroep naar een ander onderdeel, wordt weer gegeven door middel van [afhankelijkheids-telemetrie](../../azure-monitor/app/data-model-dependency-telemetry.md). Met de telemetrie van een afhankelijkheid worden ook de eigen `id` gedefinieerd die wereld wijd uniek zijn. Telemetrie aanvragen, geïnitieerd door deze afhankelijkheids aanroep, gebruikt deze `id` als `operation_parentId`.
 
 U kunt een weer gave van de gedistribueerde logische bewerking maken met behulp van `operation_Id`, `operation_parentId`en `request.id` met `dependency.id`. Deze velden definiëren ook de causality volgorde van telemetrie-aanroepen.
 
-In een micro Services-omgeving kunnen traceringen van onderdelen naar verschillende opslag items gaan. Elk onderdeel kan een eigen instrumentatie sleutel hebben in Application Insights. Als u telemetrie wilt ophalen voor de logische bewerking, vraagt de Application Insights UX gegevens van elk opslag item op. Wanneer het aantal opslag items enorm is, hebt u een hint nodig over waar u de volgende moet zien. Het Application Insights gegevens model definieert twee velden om dit probleem op te lossen: `request.source` en `dependency.target`. Het eerste veld identificeert het onderdeel dat de afhankelijkheids aanvraag heeft gestart, en de tweede identificeert welk onderdeel het antwoord van de afhankelijkheids aanroep retourneert.
+In een micro Services-omgeving kunnen traceringen van onderdelen naar verschillende opslag items gaan. Elk onderdeel kan een eigen instrumentatie sleutel hebben in Application Insights. Als u telemetrie voor de logische bewerking wilt ophalen, Application Insights query's gegevens uit elk opslag item op. Wanneer het aantal opslag items groot is, hebt u een hint nodig over waar u de volgende moet zien. Het Application Insights gegevens model definieert twee velden om dit probleem op te lossen: `request.source` en `dependency.target`. Het eerste veld identificeert het onderdeel dat de afhankelijkheids aanvraag heeft gestart. Het tweede veld identificeert welk onderdeel het antwoord van de afhankelijkheids aanroep retourneert.
 
 ## <a name="example"></a>Voorbeeld
 
-We gaan nu een voor beeld van een toepassing met de naam aandelen prijzen bekijken, waarin de huidige markt prijs van een aandeel wordt weer gegeven met behulp van een externe API met de naam `Stock`. De voorraad prijzen toepassing bevat een pagina met de naam `Stock page` dat de client webbrowser wordt geopend met behulp van `GET /Home/Stock`. De toepassing zoekt de `Stock`-API met behulp van een HTTP-aanroep `GET /api/stock/value`.
+We bekijken een voorbeeld. Een toepassing met de naam aandelen prijzen toont de huidige markt prijs van een aandeel met behulp van een externe API met de naam Stock. De voorraad prijzen toepassing heeft een pagina met de naam Stock pagina die door de webbrowser van de client wordt geopend met behulp van `GET /Home/Stock`. De toepassing voert een query uit op de voorraad-API met behulp van de HTTP-aanroep `GET /api/stock/value`.
 
 U kunt de resulterende telemetrie analyseren door een query uit te voeren:
 
@@ -47,75 +47,75 @@ U kunt de resulterende telemetrie analyseren door een query uit te voeren:
 
 Houd er rekening mee dat alle telemetrie-items de hoofd `operation_Id`delen. Wanneer er een Ajax-aanroep van de pagina wordt gemaakt, wordt er een nieuwe unieke ID (`qJSXU`) toegewezen aan de telemetrie van de afhankelijkheid en wordt de ID van de pagina weergave gebruikt als `operation_ParentId`. De server aanvraag gebruikt vervolgens de Ajax-ID als `operation_ParentId`.
 
-| Item type   | naam                      | Id           | operation_ParentId | operation_Id |
+| itemType   | name                      | Id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
-| Pagina weergave   | Voorraad pagina                |              | STYz               | STYz         |
+| pageView   | Voorraad pagina                |              | STYz               | STYz         |
 | einde | /Home/Stock ophalen           | qJSXU        | STYz               | STYz         |
-| Schot    | Home/Stock ophalen            | KqKwlrSt9PA = | qJSXU              | STYz         |
-| einde | /API/Stock/value ophalen      | bBrf2L7mm2g = | KqKwlrSt9PA =       | STYz         |
+| request    | Home/Stock ophalen            | KqKwlrSt9PA= | qJSXU              | STYz         |
+| einde | /API/Stock/value ophalen      | bBrf2L7mm2g = | KqKwlrSt9PA=       | STYz         |
 
-Wanneer de oproep `GET /api/stock/value` wordt gedaan bij een externe service, weet u zeker dat u de identiteit van die server wilt weten, zodat u het veld `dependency.target` op de juiste wijze kunt instellen. Wanneer de externe service geen bewaking ondersteunt, wordt `target` ingesteld op de hostnaam van de service (bijvoorbeeld `stock-prices-api.com`). Als de service echter zichzelf identificeert door een vooraf gedefinieerde HTTP-header te retour neren, bevat `target` de service-identiteit waarmee Application Insights een gedistribueerde tracering kunt bouwen door de telemetrie van die service op te vragen.
+Wanneer de oproep `GET /api/stock/value` wordt gedaan bij een externe service, moet u de identiteit van die server weten zodat u het veld `dependency.target` op de juiste wijze kunt instellen. Wanneer de externe service geen bewaking ondersteunt, wordt `target` ingesteld op de hostnaam van de service (bijvoorbeeld `stock-prices-api.com`). Maar als de service zichzelf identificeert door een vooraf gedefinieerde HTTP-header te retour neren, bevat `target` de service-identiteit waarmee Application Insights een gedistribueerde tracering kunt bouwen door de telemetrie van die service op te vragen.
 
 ## <a name="correlation-headers"></a>Correlatie headers
 
-Er wordt overgeschakeld naar de [W3C-traceer context, die het](https://w3c.github.io/trace-context/) volgende definieert:
+Application Insights wordt overgezet naar [W3C-tracering-context](https://w3c.github.io/trace-context/), die het volgende definieert:
 
 - `traceparent`: bevat de wereld wijd unieke bewerkings-ID en de unieke id van de aanroep.
-- `tracestate`: voert een tracering systeem-specifieke context uit.
+- `tracestate`: bevat een systeemspecifieke tracerings context.
 
-De nieuwste versies van Application Insights Sdk's ondersteunen tracering-context protocol, maar u moet er mogelijk voor kiezen (het zorgt voor achterwaartse compatibiliteit met het oude correlatie protocol dat door ApplicationInsights Sdk's wordt ondersteund).
+De nieuwste versie van de Application Insights SDK ondersteunt het Trace-context protocol, maar u moet er mogelijk voor kiezen. (Achterwaartse compatibiliteit met het vorige correlatie protocol dat wordt ondersteund door de Application Insights SDK wordt behouden.)
 
-De [aanvraag-id van het correlatie HTTP-protocol ook wel](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) is op het afschaffing-pad. Dit protocol definieert twee headers:
+Het [correlatie-HTTP-protocol, ook wel de aanvraag-id genoemd](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md), wordt afgeschaft. Dit protocol definieert twee headers:
 
 - `Request-Id`: de wereld wijd unieke ID van de aanroep.
 - `Correlation-Context`: de verzameling naam/waarde-paren van de gedistribueerde tracerings eigenschappen.
 
-Application Insights definieert ook de [uitbrei ding](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) voor het correlatie-http-protocol. Er worden `Request-Context` naam/waarde-paren gebruikt voor het door geven van de verzameling eigenschappen die door de directe aanroeper of de aanroepee worden gebruikt. De Application Insights SDK gebruikt deze header om `dependency.target` en `request.source` velden in te stellen.
+Application Insights definieert ook de [uitbrei ding](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) voor het correlatie-http-protocol. Er worden `Request-Context` naam/waarde-paren gebruikt voor het door geven van de verzameling eigenschappen die door de directe aanroeper of de aanroepee worden gebruikt. De Application Insights SDK gebruikt deze header om de velden `dependency.target` en `request.source` in te stellen.
 
 ### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>Ondersteuning voor gedistribueerde W3C-tracering inschakelen voor klassieke ASP.NET-Apps
  
   > [!NOTE]
-  > Er is geen configuratie vereist, te beginnen met `Microsoft.ApplicationInsights.Web` en `Microsoft.ApplicationInsights.DependencyCollector` 
+  >  Vanaf `Microsoft.ApplicationInsights.Web` en `Microsoft.ApplicationInsights.DependencyCollector`is geen configuratie nodig.
 
-W3C-tracering: context ondersteuning wordt uitgevoerd op de neerwaarts compatibele manier en correlatie wordt verwacht te werken met toepassingen die worden gebruikt in combi natie met eerdere versies van SDK (zonder W3C-ondersteuning). 
+W3C-tracering: context ondersteuning wordt op een neerwaarts compatibele manier geïmplementeerd. Correlatie wordt verwacht te werken met toepassingen die zijn gekoppeld aan eerdere versies van de SDK (zonder W3C-ondersteuning).
 
-Als u een verouderd `Request-Id`-protocol wilt blijven gebruiken, kunt u trace-context met de volgende configuratie *uitschakelen*
+Als u het verouderde `Request-Id`-protocol wilt blijven gebruiken, kunt u de tracerings context uitschakelen met behulp van deze configuratie:
 
 ```csharp
   Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
   Activity.ForceDefaultIdFormat = true;
 ```
 
-Als u een oudere versie van de SDK uitvoert, raden we u aan om deze bij te werken of de volgende configuratie toe te passen om tracering context in te scha kelen.
-Deze functie is beschikbaar in `Microsoft.ApplicationInsights.Web` en `Microsoft.ApplicationInsights.DependencyCollector` pakketten die beginnen met versie 2.8.0-beta1.
-Het is standaard uitgeschakeld. Als u deze wilt inschakelen, wijzigt u `ApplicationInsights.config`:
+Als u een oudere versie van de SDK uitvoert, wordt u aangeraden deze bij te werken of de volgende configuratie toe te passen om tracering context in te scha kelen.
+Deze functie is beschikbaar in de `Microsoft.ApplicationInsights.Web`-en `Microsoft.ApplicationInsights.DependencyCollector`-pakketten, te beginnen met versie 2.8.0-beta1.
+Het is standaard uitgeschakeld. Als u deze wilt inschakelen, brengt u deze wijzigingen aan `ApplicationInsights.config`:
 
-- Voeg onder `RequestTrackingTelemetryModule`het element `EnableW3CHeadersExtraction` toe met de waarde ingesteld op `true`.
-- Voeg onder `DependencyTrackingTelemetryModule`het element `EnableW3CHeadersInjection` toe met de waarde ingesteld op `true`.
-- `W3COperationCorrelationTelemetryInitializer` toevoegen onder de `TelemetryInitializers` vergelijkbaar met 
+- Voeg onder `RequestTrackingTelemetryModule`het element `EnableW3CHeadersExtraction` toe en stel de waarde ervan in op `true`.
+- Voeg onder `DependencyTrackingTelemetryModule`het element `EnableW3CHeadersInjection` toe en stel de waarde ervan in op `true`.
+- Voeg `W3COperationCorrelationTelemetryInitializer` toe onder `TelemetryInitializers`. Dit ziet er ongeveer uit als in dit voor beeld:
 
 ```xml
 <TelemetryInitializers>
   <Add Type="Microsoft.ApplicationInsights.Extensibility.W3C.W3COperationCorrelationTelemetryInitializer, Microsoft.ApplicationInsights"/>
    ...
-</TelemetryInitializers> 
+</TelemetryInitializers>
 ```
 
 ### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>Ondersteuning voor gedistribueerde W3C-tracering voor ASP.NET Core-Apps inschakelen
 
  > [!NOTE]
-  > Er is geen configuratie nodig die begint met `Microsoft.ApplicationInsights.AspNetCore` versie 2.8.0.
+  > Vanaf `Microsoft.ApplicationInsights.AspNetCore` versie 2.8.0 is geen configuratie nodig.
  
-W3C-tracering: context ondersteuning wordt uitgevoerd op de neerwaarts compatibele manier en correlatie wordt verwacht te werken met toepassingen die worden gebruikt in combi natie met eerdere versies van SDK (zonder W3C-ondersteuning). 
+W3C-tracering: context ondersteuning wordt op een neerwaarts compatibele manier geïmplementeerd. Correlatie wordt verwacht te werken met toepassingen die zijn gekoppeld aan eerdere versies van de SDK (zonder W3C-ondersteuning).
 
-Als u een verouderd `Request-Id`-protocol wilt blijven gebruiken, kunt u trace-context met de volgende configuratie *uitschakelen*
+Als u het verouderde `Request-Id`-protocol wilt blijven gebruiken, kunt u de tracerings context uitschakelen met behulp van deze configuratie:
 
 ```csharp
   Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
   Activity.ForceDefaultIdFormat = true;
 ```
 
-Als u een oudere versie van de SDK uitvoert, raden we u aan om deze bij te werken of de volgende configuratie toe te passen om tracering context in te scha kelen.
+Als u een oudere versie van de SDK uitvoert, wordt u aangeraden deze bij te werken of de volgende configuratie toe te passen om tracering context in te scha kelen.
 
 Deze functie bevindt zich in `Microsoft.ApplicationInsights.AspNetCore` versie 2.5.0-beta1 en in `Microsoft.ApplicationInsights.DependencyCollector` versie 2.8.0-beta1.
 Het is standaard uitgeschakeld. Als u deze wilt inschakelen, stelt u `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` in op `true`:
@@ -141,6 +141,7 @@ public void ConfigureServices(IServiceCollection services)
        <Param name ="enableW3CBackCompat" value = "true" />
     </Add>
     ```
+    
   - Voor Spring-boot-apps voegt u de volgende eigenschappen toe:
 
     - `azure.application-insights.web.enable-W3C=true`
@@ -164,11 +165,11 @@ public void ConfigureServices(IServiceCollection services)
   > In het ideale geval kunt u deze uitschakelen wanneer al uw services zijn bijgewerkt naar nieuwere versies van Sdk's die ondersteuning bieden voor het W3C-protocol. Wij raden u ten zeerste aan deze nieuwere Sdk's zo snel mogelijk te verplaatsen.
 
 > [!IMPORTANT]
-> Zorg ervoor dat zowel binnenkomende als uitgaande configuraties exact hetzelfde zijn.
+> Zorg ervoor dat de configuraties voor binnenkomende en uitgaande verbindingen exact hetzelfde zijn.
 
 ### <a name="enable-w3c-distributed-tracing-support-for-web-apps"></a>Ondersteuning voor gedistribueerde W3C-tracering inschakelen voor web-apps
 
-Deze functie bevindt zich in `Microsoft.ApplicationInsights.JavaScript`. Het is standaard uitgeschakeld. Gebruik `distributedTracingMode` configuratie om deze functie in te scha kelen. AI_AND_W3C wordt verzorgd voor back-compatibiliteit met verouderde services van Application Insights instrument:
+Deze functie bevindt zich in `Microsoft.ApplicationInsights.JavaScript`. Het is standaard uitgeschakeld. Gebruik `distributedTracingMode` configuratie om deze functie in te scha kelen. AI_AND_W3C is voor achterwaartse compatibiliteit met verouderde services die worden uitgevoerd door Application Insights.
 
 - **NPM-installatie (negeren bij het instellen van de fragment instelling)**
 
@@ -178,7 +179,7 @@ Deze functie bevindt zich in `Microsoft.ApplicationInsights.JavaScript`. Het is 
   const appInsights = new ApplicationInsights({ config: {
     instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE',
     distributedTracingMode: DistributedTracingModes.W3C
-    /* ...Other Configuration Options... */
+    /* ...other configuration options... */
   } });
   appInsights.loadAppInsights();
   ```
@@ -192,7 +193,7 @@ Deze functie bevindt zich in `Microsoft.ApplicationInsights.JavaScript`. Het is 
     {
       instrumentationKey:"INSTRUMENTATION_KEY",
       distributedTracingMode: 2 // DistributedTracingModes.W3C
-      /* ...Other Configuration Options... */
+      /* ...other configuration options... */
     }
   );
   window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
@@ -211,17 +212,17 @@ De [gegevens model specificatie Opentracering](https://opentracing.io/) en Appli
 | `Operation_Id`                        | `TraceId`                                         |
 | `Operation_ParentId`                  | `Reference` van het type `ChildOf` (het bovenliggende bereik)   |
 
-Zie het [Application Insights telemetrie-gegevens model](../../azure-monitor/app/data-model.md)voor meer informatie. 
+Zie [Application Insights telemetrie-gegevens model](../../azure-monitor/app/data-model.md)voor meer informatie.
 
-Zie voor definities van opentracerings concepten de opentracerings [specificatie](https://github.com/opentracing/specification/blob/master/specification.md) en [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
+Zie voor definities van openvolgende concepten de [specificatie](https://github.com/opentracing/specification/blob/master/specification.md) opentracering en [semantische conventies](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
 
 ## <a name="telemetry-correlation-in-opencensus-python"></a>Telemetrie-correlatie in opentellingen python
 
-De opentellingen python volgt de `OpenTracing` hierboven beschreven gegevens model specificaties. Het ondersteunt ook de [W3C-tracering-context](https://w3c.github.io/trace-context/) zonder dat er een configuratie nodig is.
+De opentellingen python volgt de `OpenTracing` gegevens model specificaties die eerder zijn beschreven. Het ondersteunt ook [W3C-tracering-context](https://w3c.github.io/trace-context/) zonder dat hiervoor configuratie is vereist.
 
 ### <a name="incoming-request-correlation"></a>Correlatie van binnenkomende aanvragen
 
-Met opentellingen python worden de kopteksten van de W3C-tracerings context van binnenkomende aanvragen gecorreleerd naar de reeksen die worden gegenereerd op basis van de aanvragen. Bij opentellingen wordt dit automatisch gedaan met integraties voor de volgende populaire Web Application Frameworks: `flask`, `django` en `pyramid`. De kopteksten van de W3C-traceer context moeten eenvoudigweg worden gevuld met de [juiste indeling](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) en met de aanvraag worden verzonden. Hieronder ziet u een voor beeld `flask` toepassing die dit demonstreert.
+Met opentellingen python worden W3C-tracering context headers van binnenkomende aanvragen afgestemd op de reeksen die worden gegenereerd op basis van de aanvragen. Met opentellingen wordt dit automatisch gedaan met integraties voor deze populaire Web Application Frameworks: kolf, Django en piramide. U hoeft alleen de header van de W3C-tracerings context in te vullen met de [juiste indeling](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) en deze te verzenden met de aanvraag. Hier volgt een voor beeld van een kolf toepassing waarin dit wordt gedemonstreerd:
 
 ```python
 from flask import Flask
@@ -244,27 +245,33 @@ if __name__ == '__main__':
     app.run(host='localhost', port=8080, threaded=True)
 ```
 
-Hiermee wordt een voorbeeld toepassing `flask` op de lokale computer uitgevoerd en wordt geluisterd naar poort `8080`. Om de tracerings context te correleren, sturen we een aanvraag naar het eind punt. In dit voor beeld kunnen we een `curl`-opdracht gebruiken.
+Deze code voert een voorbeeld toepassing voor een fles op uw lokale computer uit en luistert naar poort `8080`. Als u de tracerings context wilt correleren, verzendt u een aanvraag naar het eind punt. In dit voor beeld kunt u een `curl`-opdracht gebruiken:
 ```
 curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01" localhost:8080
 ```
-Als u de indeling van de koptekst van de [tracerings context](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)bekijkt, wordt de volgende informatie afgeleid: `version`: `00`
+Als u de indeling van de header van de [tracerings context](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)bekijkt, kunt u de volgende informatie afleiden:
+
+`version`: `00`
+
 `trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736`
+
 `parent-id/span-id`: `00f067aa0ba902b7`
+
 `trace-flags`: `01`
 
-Als we kijken naar de aanvraag vermelding die naar Azure Monitor is verzonden, kunnen we de velden zien die zijn ingevuld met de traceer header-informatie. U kunt deze gegevens vinden onder Logboeken (Analytics) in Azure Monitor Application Insights resource.
+Als u de aanvraag vermelding bekijkt die naar Azure Monitor is verzonden, kunt u de velden weer geven die zijn ingevuld met de traceer header-informatie. U kunt deze gegevens vinden onder Logboeken (Analytics) in de Azure Monitor Application Insights resource.
 
-![Scherm afbeelding van aanvraag-telemetrie in Logboeken (analyse) met traceer kopregel velden gemarkeerd in het rood vak](./media/opencensus-python/0011-correlation.png)
+![Telemetrie aanvragen in Logboeken (analyse)](./media/opencensus-python/0011-correlation.png)
 
-Het veld `id` heeft de indeling `<trace-id>.<span-id>`, waarbij de `trace-id` wordt opgehaald uit de trace-header die in de aanvraag is door gegeven en het `span-id` een gegenereerde 8-bytes matrix is voor deze periode. 
+Het veld `id` heeft de indeling `<trace-id>.<span-id>`, waarbij de `trace-id` wordt opgehaald uit de trace-header die in de aanvraag is door gegeven en het `span-id` een gegenereerde 8-bytes matrix is voor deze periode.
 
 Het veld `operation_ParentId` heeft de indeling `<trace-id>.<parent-id>`, waarbij zowel de `trace-id` als de `parent-id` worden opgehaald uit de trace-header die in de aanvraag is door gegeven.
 
-### <a name="logs-correlation"></a>Logboeken correlatie
+### <a name="log-correlation"></a>Logboekcorrelatie
 
-Met opentellingen python wordt correlatie van Logboeken toegestaan door logboek records te verrijken met traceer-ID, reeks-ID en steekproef vlag. Dit wordt gedaan door de integratie van de opentellings [logboek registratie](https://pypi.org/project/opencensus-ext-logging/)te installeren. De volgende kenmerken worden toegevoegd aan python `LogRecord`s: `traceId`, `spanId` en `traceSampled`. Houd er rekening mee dat dit alleen van kracht is voor logboeken die zijn gemaakt na de integratie.
-Hieronder ziet u een voor beeld van een toepassing die dit vertoont.
+Met opentellingen python kunt u Logboeken correleren door een tracerings-ID, een span-ID en een steekproef vlag toe te voegen om records te registreren. U voegt deze kenmerken toe door integratie van de [logboek registratie](https://pypi.org/project/opencensus-ext-logging/)van opentellingen te installeren. De volgende kenmerken worden toegevoegd aan python `LogRecord`-objecten: `traceId`, `spanId`en `traceSampled`. Houd er rekening mee dat dit alleen van toepassing is op Logboeken die zijn gemaakt na de integratie.
+
+Hier volgt een voor beeld van een toepassing waarin dit wordt gedemonstreerd:
 
 ```python
 import logging
@@ -283,58 +290,58 @@ with tracer.span(name='hello'):
     logger.warning('In the span')
 logger.warning('After the span')
 ```
-Wanneer deze code wordt uitgevoerd, worden de volgende opties weer geven in de-console:
+Wanneer deze code wordt uitgevoerd, worden de volgende afdrukken in de-console:
 ```
 2019-10-17 11:25:59,382 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 Before the span
 2019-10-17 11:25:59,384 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=70da28f5a4831014 In the span
 2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
 ```
-Houd er rekening mee dat er een spanId aanwezig is voor het logboek bericht dat zich binnen het bereik bevindt. Dit is de spanId die hoort bij de reeks met de naam `hello`.
+U ziet dat er een `spanId` aanwezig is voor het logboek bericht dat zich binnen de reeks bevindt. Dit is hetzelfde `spanId` dat hoort bij de reeks met de naam `hello`.
 
-U kunt de logboek gegevens exporteren met behulp van de `AzureLogHandler`. Meer informatie vindt u [hier](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs)
+U kunt de logboek gegevens exporteren met behulp van `AzureLogHandler`. Raadpleeg [dit artikel](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs) voor meer informatie.
 
 ## <a name="telemetry-correlation-in-net"></a>Telemetrie-correlatie in .NET
 
-In de loop van de tijd zijn er verschillende manieren gedefinieerd voor het correleren van telemetrie-en Diagnostische logboeken:
+In de loop van de tijd heeft .NET verschillende manieren gedefinieerd voor het correleren van telemetrie-en Diagnostische logboeken:
 
-- `System.Diagnostics.CorrelationManager` kunt het bijhouden van [LogicalOperationStack en ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx). 
+- `System.Diagnostics.CorrelationManager` kunt het volgen van [LogicalOperationStack en ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx).
 - `System.Diagnostics.Tracing.EventSource` en Event Tracing for Windows (ETW) definiëren de methode [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx) .
-- `ILogger` maakt gebruik van [logboek bereiken](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes). 
+- `ILogger` maakt gebruik van [logboek bereiken](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes).
 - Windows Communication Foundation (WCF) en HTTP-updoorgifte van de huidige context.
 
-Deze methoden hebben echter geen automatische ondersteuning voor gedistribueerde tracering ingeschakeld. `DiagnosticSource` is een manier om automatische correlatie tussen machines te ondersteunen. .NET-bibliotheken ondersteunen ' DiagnosticSource ' en kunnen automatische doorgifte van de correlatie tussen computers via het Trans Port, zoals HTTP, toestaan.
+Deze methoden hebben echter geen automatische ondersteuning voor gedistribueerde tracering ingeschakeld. `DiagnosticSource` ondersteunt automatische correlatie tussen computers. .NET-bibliotheken ondersteunen `DiagnosticSource` en toestaan dat de correlatie context automatisch wordt door gegeven via het Trans Port, zoals HTTP.
 
-In de [hand leiding voor activiteiten](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) in `DiagnosticSource` worden de basis beginselen van het bijhouden van activiteiten uitgelegd.
+De [Gebruikers handleiding](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) voor de activiteit in `DiagnosticSource` legt de basis beginselen van het bijhouden van activiteiten uit.
 
-ASP.NET Core 2,0 ondersteunt het ophalen van HTTP-headers en het starten van een nieuwe activiteit.
+ASP.NET Core 2,0 ondersteunt het ophalen van HTTP-headers en het starten van nieuwe activiteiten.
 
-`System.Net.Http.HttpClient`, te beginnen met versie 4.1.0, ondersteunt automatische injectie van de correlatie-HTTP-headers en het volgen van de HTTP-aanroep als een activiteit.
+`System.Net.Http.HttpClient`, te beginnen met versie 4.1.0, ondersteunt automatische injectie van correlatie-HTTP-headers en het bijhouden van HTTP-aanroepen als activiteiten.
 
-Er is een nieuwe HTTP-module, [micro soft. AspNet. TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/), voor klassieke ASP.net. Deze module implementeert telemetrie-correlatie met behulp van `DiagnosticSource`. Er wordt een activiteit gestart op basis van binnenkomende aanvraag headers. Ook wordt de telemetrie gecorreleerd vanuit de verschillende stadia van aanvraag verwerking, zelfs voor gevallen waarin elke fase van de verwerking van Internet Information Services (IIS) wordt uitgevoerd op een andere beheerde thread.
+Er is een nieuwe HTTP-module, [micro soft. AspNet. TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/), voor klassieke ASP.net. Deze module implementeert telemetrie-correlatie met behulp van `DiagnosticSource`. Er wordt een activiteit gestart op basis van binnenkomende aanvraag headers. Ook wordt de telemetrie gecorreleerd vanuit de verschillende stadia van aanvraag verwerking, zelfs wanneer elke fase van de verwerking van Internet Information Services (IIS) wordt uitgevoerd op een andere beheerde thread.
 
 De Application Insights SDK, te beginnen met versie 2.4.0-beta1, gebruikt `DiagnosticSource` en `Activity` om telemetrie te verzamelen en te koppelen aan de huidige activiteit.
 
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-the-java-sdk"></a>Telemetrie-correlatie in de Java SDK
 
-De [Application INSIGHTS SDK voor Java](../../azure-monitor/app/java-get-started.md) ondersteunt automatische correlatie van telemetrie, te beginnen met versie 2.0.0. `operation_id` wordt automatisch gevuld voor alle telemetrie (zoals traceringen, uitzonde ringen en aangepaste gebeurtenissen) die binnen het bereik van een aanvraag zijn uitgegeven. Het zorgt er ook voor dat de correlatie headers worden door gegeven (eerder beschreven) voor service-naar-service-aanroepen via HTTP, als de [Java SDK-agent](../../azure-monitor/app/java-agent.md) is geconfigureerd.
+[Application INSIGHTS SDK voor Java](../../azure-monitor/app/java-get-started.md) versie 2.0.0 of hoger ondersteunt automatische correlatie van telemetrie. `operation_id` wordt automatisch gevuld voor alle telemetrie (zoals traceringen, uitzonde ringen en aangepaste gebeurtenissen) die binnen het bereik van een aanvraag zijn uitgegeven. Ook worden de correlatie headers (eerder beschreven) door gegeven voor service-naar-service-aanroepen via HTTP, als de [Java SDK-agent](../../azure-monitor/app/java-agent.md) is geconfigureerd.
 
 > [!NOTE]
-> Alleen aanroepen via Apache httpclient maakt worden ondersteund voor de correlatie functie. Als u veer RestTemplate of Feign gebruikt, kunnen beide worden gebruikt met Apache httpclient maakt onder de schermen.
+> Alleen aanroepen via Apache httpclient maakt worden ondersteund voor de correlatie functie. Zowel lente RestTemplate als Feign kunnen worden gebruikt met Apache httpclient maakt onder de schermen.
 
-Momenteel wordt de automatische context doorgifte voor berichten technologieën (zoals Kafka, RabbitMQ of Azure Service Bus) niet ondersteund. Het is echter mogelijk om dergelijke scenario's hand matig te coderen met behulp van de `trackDependency`-en `trackRequest`-Api's. In deze Api's vertegenwoordigt een telemetrie van een afhankelijkheid een bericht in de wachtrij van een producent. de aanvraag vertegenwoordigt een bericht dat door een gebruiker wordt verwerkt. In dit geval moeten zowel `operation_id` als `operation_parentId` worden door gegeven in de eigenschappen van het bericht.
+Op dit moment wordt de automatische context doorgifte voor berichten technologieën (zoals Kafka, RabbitMQ en Azure Service Bus) niet ondersteund. Het is mogelijk om dergelijke scenario's hand matig te coderen met behulp van de methoden `trackDependency` en `trackRequest`. In deze methoden vertegenwoordigt een telemetrie van een afhankelijkheid een bericht dat door een producent in de wachtrij wordt geplaatst. De aanvraag vertegenwoordigt een bericht dat door een gebruiker wordt verwerkt. In dit geval moeten zowel `operation_id` als `operation_parentId` worden door gegeven in de eigenschappen van het bericht.
 
-### <a name="telemetry-correlation-in-asynchronous-java-application"></a>Telemetrie-correlatie in asynchrone Java-toepassing
+### <a name="telemetry-correlation-in-asynchronous-java-applications"></a>Telemetrie-correlatie in asynchrone Java-toepassingen
 
-Volg dit uitgebreide artikel als u [de](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications) telemetrie in een asynchrone Spring boot-toepassing wilt correleren. Het bevat richt lijnen voor het [ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) van de lente en [ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html). 
+Zie [gedistribueerde tracering in asynchrone Java-toepassingen](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications)voor meer informatie over het correleren van telemetrie in een asynchrone Spring boot-toepassing. Dit artikel bevat richt lijnen voor het [ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) en [ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html)van instrumentatie.
 
 
 <a name="java-role-name"></a>
 ## <a name="role-name"></a>Rolnaam
 
-Soms wilt u de manier waarop onderdeel namen worden weer gegeven in de [toepassings toewijzing](../../azure-monitor/app/app-map.md)aanpassen. Hiervoor kunt u de `cloud_RoleName` hand matig instellen door een van de volgende handelingen uit te voeren:
+Mogelijk wilt u de manier aanpassen waarop onderdeel namen worden weer gegeven in de [toepassings toewijzing](../../azure-monitor/app/app-map.md). Hiervoor kunt u de `cloud_RoleName` hand matig instellen door een van de volgende acties uit te voeren:
 
-- Vanaf Application Insights Java SDK 2.5.0 kunt u de naam van de Cloud functie opgeven door `<RoleName>` toe te voegen aan uw `ApplicationInsights.xml`-bestand, bijvoorbeeld
+- Met Application Insights Java SDK 2.5.0 en hoger kunt u de `cloud_RoleName` opgeven door `<RoleName>` toe te voegen aan uw ApplicationInsights. XML-bestand:
 
   ```XML
   <?xml version="1.0" encoding="utf-8"?>
@@ -345,7 +352,7 @@ Soms wilt u de manier waarop onderdeel namen worden weer gegeven in de [toepassi
   </ApplicationInsights>
   ```
 
-- Als u achtereen met de Application Insights Spring boot Starter gebruikt, hoeft u alleen de aangepaste naam voor de toepassing in het bestand Application. Properties in te stellen.
+- Als u de nood opstartdiskette met de Application Insights Spring boot Starter gebruikt, hoeft u alleen maar uw aangepaste naam voor de toepassing in het bestand Application. Properties in te stellen:
 
   `spring.application.name=<name-of-app>`
 
@@ -354,7 +361,7 @@ Soms wilt u de manier waarop onderdeel namen worden weer gegeven in de [toepassi
 ## <a name="next-steps"></a>Volgende stappen
 
 - Schrijf [aangepaste telemetrie](../../azure-monitor/app/api-custom-events-metrics.md).
-- Raadpleeg voor geavanceerde correlatie scenario's in ASP.NET Core en ASP.NET het artikel [aangepaste bewerkingen bijhouden](custom-operations-tracking.md) .
+- Zie [aangepaste bewerkingen bijhouden](custom-operations-tracking.md)voor geavanceerde correlatie scenario's in ASP.NET Core en ASP.net.
 - Meer informatie over het [instellen van cloud_RoleName](../../azure-monitor/app/app-map.md#set-cloud-role-name) voor andere sdk's.
 - Alle onderdelen van uw micro service op Application Insights onboarden. Bekijk de [ondersteunde platforms](../../azure-monitor/app/platforms.md).
 - Zie het [gegevens model](../../azure-monitor/app/data-model.md) voor Application Insights typen.

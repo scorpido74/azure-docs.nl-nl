@@ -1,37 +1,37 @@
 ---
-title: Azure HDInsight-clusters met behulp van Azure CLI beheren
-description: Informatie over het gebruik van de Azure CLI voor het beheren van Azure HDInsight-clusters. Clustertypen bevatten Apache Hadoop, Spark, HBase, Storm, Kafka, Interactive Query en ML-Services.
+title: Azure HDInsight-clusters beheren met Azure CLI
+description: Meer informatie over het gebruik van de Azure CLI voor het beheren van Azure HDInsight-clusters. Cluster typen zijn onder andere Apache Hadoop, Spark, HBase, Storm, Kafka, interactieve Query's en ML-Services.
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
-author: tylerfox
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/13/2019
-ms.author: tyfox
-ms.openlocfilehash: 5ae97b17d06fa0a9934a58ac662ef12116cce4f6
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 12/06/2019
+ms.openlocfilehash: 81bc632f1061f0ee73d2295cafa5f7a8472d20ee
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137407"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951799"
 ---
-# <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Azure HDInsight-clusters met behulp van Azure CLI beheren
+# <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Azure HDInsight-clusters beheren met Azure CLI
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Meer informatie over het gebruik van [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) voor het beheren van Azure HDInsight-clusters. De Azure-opdrachtregelinterface (CLI) is de platformoverschrijdende opdrachtregelervaring voor het beheren van Azure-resources.
+Meer informatie over het gebruik van [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) voor het beheren van Azure HDInsight-clusters. De Azure-opdrachtregelinterface (CLI) is de platformoverschrijdende opdrachtregelervaring voor het beheren van Azure-resources.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli) voor stappen.
+* Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure cli installeren voor de](https://docs.microsoft.com/cli/azure/install-azure-cli) stappen.
 
-* Een Apache Hadoop-cluster in HDInsight. Zie [aan de slag met HDInsight op Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* Een Apache Hadoop cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="connect-to-azure"></a>Verbinding maken met Azure
 
-Aanmelden bij uw Azure-abonnement. Als u van plan bent te gebruiken van Azure Cloud Shell en vervolgens selecteert u **uitproberen** in de rechterbovenhoek van het codeblok. Anders, voer de volgende opdracht:
+Meld u aan bij uw Azure-abonnement. Als u Azure Cloud Shell wilt gebruiken, selecteert u **deze** in de rechter bovenhoek van het code blok. Anders voert u de onderstaande opdracht in:
 
 ```azurecli-interactive
 az login
@@ -40,9 +40,9 @@ az login
 # az account set --subscription "SUBSCRIPTIONID"
 ```
 
-## <a name="list-clusters"></a>Clusters groeperen
+## <a name="list-clusters"></a>Clusters weer geven
 
-Gebruik [az hdinsight lijst](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-list) aan de lijst met clusters. De onderstaande opdrachten bewerken door te vervangen `RESOURCE_GROUP_NAME` met de naam van de resourcegroep, voert u de opdrachten:
+Gebruik [AZ hdinsight List](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-list) om clusters weer te geven. Bewerk de onderstaande opdrachten door `RESOURCE_GROUP_NAME` te vervangen door de naam van de resource groep en voer de volgende opdrachten in:
 
 ```azurecli-interactive
 # List all clusters in the current subscription
@@ -58,9 +58,9 @@ az hdinsight list --resource-group RESOURCE_GROUP_NAME
 az hdinsight list --resource-group RESOURCE_GROUP_NAME --query "[].{clusterName:name}" --output table
 ```
 
-## <a name="show-cluster"></a>Cluster weergeven
+## <a name="show-cluster"></a>Cluster weer geven
 
-Gebruik [az hdinsight show](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-show) om informatie voor een opgegeven cluster weer te geven. De onderstaande opdracht bewerken door te vervangen `RESOURCE_GROUP_NAME`, en `CLUSTER_NAME` met de relevante informatie, voert u de opdracht:
+Gebruik [AZ hdinsight show](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-show) om informatie weer te geven voor een opgegeven cluster. Bewerk de onderstaande opdracht door `RESOURCE_GROUP_NAME`te vervangen en `CLUSTER_NAME` met de relevante gegevens en voer vervolgens de volgende opdracht in:
 
 ```azurecli-interactive
 az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -68,13 +68,13 @@ az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 
 ## <a name="delete-clusters"></a>Clusters verwijderen
 
-Gebruik [az hdinsight verwijderen](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-delete) verwijderen van een cluster opgegeven gebruikmaakt. De onderstaande opdracht bewerken door te vervangen `RESOURCE_GROUP_NAME`, en `CLUSTER_NAME` met de relevante informatie, voert u de opdracht:
+Gebruik [AZ hdinsight delete](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-delete) om een opgegeven cluster te verwijderen. Bewerk de onderstaande opdracht door `RESOURCE_GROUP_NAME`te vervangen en `CLUSTER_NAME` met de relevante gegevens en voer vervolgens de volgende opdracht in:
 
 ```azurecli-interactive
 az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 ```
 
-U kunt ook een cluster verwijderen door de resourcegroep waarin het cluster te verwijderen. Opmerking: Hiermee worden alle resources in de groep met inbegrip van het standaardopslagaccount verwijderd.
+U kunt ook een cluster verwijderen door de resource groep te verwijderen die het cluster bevat. Opmerking: Hiermee verwijdert u alle resources in de groep, met inbegrip van het standaard opslag account.
 
 ```azurecli-interactive
 az group delete --name RESOURCE_GROUP_NAME
@@ -82,7 +82,7 @@ az group delete --name RESOURCE_GROUP_NAME
 
 ## <a name="scale-clusters"></a>Clusters schalen
 
-Gebruik [az hdinsight vergroten of verkleinen](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) formaat van het opgegeven HDInsight-cluster met de opgegeven grootte. De onderstaande opdracht bewerken door te vervangen `RESOURCE_GROUP_NAME`, en `CLUSTER_NAME` met de relevante informatie. Vervang `TARGET_INSTANCE_COUNT` met het gewenste aantal worker-knooppunten voor uw cluster. Zie voor meer informatie over het schalen van clusters [schaal HDInsight-clusters](./hdinsight-scaling-best-practices.md). Voer de opdracht:
+Gebruik [AZ hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) om het formaat van het opgegeven hdinsight-cluster te wijzigen in de opgegeven grootte. Bewerk de onderstaande opdracht door `RESOURCE_GROUP_NAME`te vervangen en `CLUSTER_NAME` met de relevante informatie. Vervang `TARGET_INSTANCE_COUNT` door het gewenste aantal worker-knoop punten voor uw cluster. Zie [HDInsight-clusters schalen](./hdinsight-scaling-best-practices.md)voor meer informatie over het schalen van clusters. Voer de opdracht in:
 
 ```azurecli-interactive
 az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --target-instance-count TARGET_INSTANCE_COUNT
@@ -90,9 +90,9 @@ az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --t
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u verschillende HDInsight-cluster administratieve taken uit te voeren. Zie de volgende artikelen voor meer informatie:
+In dit artikel hebt u geleerd hoe u verschillende beheer taken voor HDInsight-clusters kunt uitvoeren. Raadpleeg de volgende artikelen voor meer informatie:
 
-* [Apache Hadoop-clusters in HDInsight beheren met behulp van de Azure-portal](hdinsight-administer-use-portal-linux.md)
+* [Apache Hadoop clusters in HDInsight beheren door gebruik te maken van de Azure Portal](hdinsight-administer-use-portal-linux.md)
 * [HDInsight beheren met behulp van Azure PowerShell](hdinsight-administer-use-powershell.md)
 * [Aan de slag met Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Aan de slag met Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)

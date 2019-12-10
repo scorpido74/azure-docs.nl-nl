@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 8efc98ad2785a9052244556bddc60a5ba34bd3d8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 501e5bc1b2de91e0dd74ae0f0d9163d74dcb06f2
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900383"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941556"
 ---
 # <a name="references"></a>Naslaginformatie
 
@@ -23,7 +23,7 @@ De Azure FarmBeats-Api's bieden agrarische ondernemingen een gestandaardiseerde,
 - Api's voor het verkrijgen van sensor-, camera-, Drone-, weers-, satelliet-en geaard-gegevens.
 - Normalisatie en contextualization van gegevens over common data providers.
 - Geschematiseerde-toegang en query mogelijkheden op alle opgenomen gegevens.
-- Automatische generatie van meta gegevens die kunnen worden opgevraagd, op basis van agronomic-functies. 
+- Automatische generatie van meta gegevens die kunnen worden opgevraagd, op basis van agronomic-functies.
 - Automatisch gegenereerde tijdreeks aggregaties voor het snel bouwen van modellen.
 - Geïntegreerde Azure Data Factory-Engine om eenvoudig aangepaste gegevens verwerkings pijplijnen te bouwen.
 
@@ -102,7 +102,7 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept:
 ### <a name="query-parameters"></a>Queryparameters
 
 Voor REST GET-aanroepen kunt u de grootte van de gegevens in een API-antwoord filteren, beperken en sorteren door een of meer query parameters op de aanvraag-URI op te nemen. Voor de query parameters, zie de API-documentatie en de afzonderlijke GET-aanroepen.
-Als u bijvoorbeeld een query uitvoert op de lijst met apparaten (aanroep ophalen op/Device), kunnen de volgende query parameters worden opgegeven: 
+Als u bijvoorbeeld een query uitvoert op de lijst met apparaten (aanroep ophalen op/Device), kunnen de volgende query parameters worden opgegeven:
 
 ![Lijst met apparaten](./media/for-references/query-parameters-device-1.png)
 
@@ -163,12 +163,12 @@ Azure FarmBeats-Api's kunnen worden gebruikt door een gebruiker of een app-regis
 
 4. Ga naar uw [Datahub Swagger](https://<yourdatahub>.azurewebsites.net/swagger/index.html) en Ga als volgt te werk:
     - Ga naar de **RoleAssignment-API**.
-    - Voer een bericht uit om een **RoleAssignment** -object te maken voor de **object-id** die u zojuist hebt gemaakt. 
+    - Voer een bericht uit om een **RoleAssignment** -object te maken voor de **object-id** die u zojuist hebt gemaakt.
 
   > [!NOTE]
   > Zie [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)voor meer informatie over het toevoegen van gebruikers en het registreren van Active Directory.
 
-Nadat u de vorige stappen hebt voltooid, kunt u met de app-registratie (client) de Azure FarmBeats-Api's aanroepen met behulp van een toegangs token via Bearer-verificatie. 
+Nadat u de vorige stappen hebt voltooid, kunt u met de app-registratie (client) de Azure FarmBeats-Api's aanroepen met behulp van een toegangs token via Bearer-verificatie.
 
 Gebruik het toegangs token om dit in volgende API-aanvragen in de koptekst sectie te verzenden als:
 

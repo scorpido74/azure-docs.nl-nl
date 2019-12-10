@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d2ac3b0f531b6384643d91fac1cf50a0ea719969
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: a3e4f543be2f01e0c649d5f9bcc9287dedc275f1
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900341"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941641"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Historische telemetriegegevens opnemen
 
@@ -39,7 +39,7 @@ Volg deze stappen.
 > U moet een beheerder zijn om de volgende stappen uit te voeren.
 
 1. Down load dit [script](https://aka.ms/farmbeatspartnerscript)en pak het uit op uw lokale station. Twee bestanden bevinden zich in het zip-bestand.
-2. Meld u aan bij [Azure Portal](https://portal.azure.com/) en open Azure Cloud Shell. Deze optie is beschikbaar op de werk balk in de rechter bovenhoek van de portal. 
+2. Meld u aan bij [Azure Portal](https://portal.azure.com/) en open Azure Cloud Shell. Deze optie is beschikbaar op de werk balk in de rechter bovenhoek van de portal.
 
     ![Azure Portal werk balk](./media/for-tutorials/navigation-bar-1.png)
 
@@ -47,7 +47,7 @@ Volg deze stappen.
 
     ![Power shell-instelling](./media/for-tutorials/power-shell-new-1.png)
 
-4. Upload de twee bestanden die u hebt gedownload uit stap 1 van uw Cloud Shell-exemplaar. 
+4. Upload de twee bestanden die u hebt gedownload uit stap 1 van uw Cloud Shell-exemplaar.
 
     ![Knop uploaden op de werk balk](./media/for-tutorials/power-shell-two-1.png)
 
@@ -55,7 +55,7 @@ Volg deze stappen.
 
    >[!NOTE]
    > Standaard worden bestanden geüpload naar de map Home/Home/username.
-6. Voer het script uit met behulp van deze opdracht: 
+6. Voer het script uit met behulp van deze opdracht:
 
     ```azurepowershell-interactive
     ./generateCredentials.ps1
@@ -67,10 +67,10 @@ Volg deze stappen.
 
  Nu u de vereiste referenties hebt, kunt u het apparaat en de Sens oren definiëren. U doet dit door de meta gegevens te maken met behulp van FarmBeats-Api's.
 
- FarmBeats Datahub heeft de volgende Api's waarmee het maken en beheren van meta gegevens van apparaten of Sens oren kan worden ingeschakeld. 
+ FarmBeats Datahub heeft de volgende Api's waarmee het maken en beheren van meta gegevens van apparaten of Sens oren kan worden ingeschakeld.
 
-- /**DeviceModel**: DeviceModel komt overeen met de meta gegevens van het apparaat, zoals de fabrikant en het type apparaat, ofwel een gateway ofwel een knoop punt. 
-- /**apparaat**: het apparaat komt overeen met een fysiek apparaat dat aanwezig is op de farm. 
+- /**DeviceModel**: DeviceModel komt overeen met de meta gegevens van het apparaat, zoals de fabrikant en het type apparaat, ofwel een gateway ofwel een knoop punt.
+- /**apparaat**: het apparaat komt overeen met een fysiek apparaat dat aanwezig is op de farm.
 - /**SensorModel**: SensorModel komt overeen met de meta gegevens van de sensor, zoals de fabrikant, het type sensor dat analoog of digitaal is en de sensor meting, zoals omgevings temperatuur en druk.
 - /**sensor**: sensor komt overeen met een fysieke sensor waarmee waarden worden vastgelegd. Een sensor is doorgaans verbonden met een apparaat met een apparaat-ID.  
 
@@ -98,7 +98,7 @@ Volg deze stappen.
 |          Fabrikant            |       De fabrikant van de sensor.     |
 |     Code| Product code of model naam of-nummer. Bijvoorbeeld RS-CO2-N01. |
 |       > Naam SensorMeasures       | De naam van de sensor meting. Alleen kleine letters worden ondersteund. Geef voor metingen uit verschillende diepten de diepte op. Bijvoorbeeld soil_moisture_15cm. Deze naam moet consistent zijn met de telemetriegegevens.  |
-|          sensorMeasures > Data type       |Het gegevens type telemetrie. Op dit moment wordt dubbele wordt ondersteund.|
+|          SensorMeasures > Data type       |Het gegevens type telemetrie. Op dit moment wordt dubbele wordt ondersteund.|
 |    SensorMeasures > type    |Meet type van de telemetrie van de sensor. De door het systeem gedefinieerde typen zijn AmbientTemperature, CO2, depth, ElectricalConductivity, LeafWetness, length, LiquidLevel, nitraat, O2, PH, fosfaat, PointInTime, kalium, druk, RainGauge, RelativeHumidity, zouten, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, volume, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. Raadpleeg de/ExtendedType-API om meer toe te voegen.|
 |        SensorMeasures >-eenheid              | De gegevens eenheid van de sensor-telemetrie. De door het systeem gedefinieerde eenheden zijn geen eenheid, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, kwik, PSI, MilliMeter, CentiMeter, meter, inch, meter, mijl, kilo meter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, percentage, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, liter, MilliLiter, seconden, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour om meer toe te voegen, raadpleegt u de/ExtendedType-API.|
 |    SensorMeasures > AggregationType    |  De waarden kunnen none, Average, maximum, minimum of StandardDeviation zijn.  |
@@ -107,7 +107,7 @@ Volg deze stappen.
 |   Eigenschappen       |  Aanvullende eigenschappen van de fabrikant.  |
 |    **Sensoren**      |          |
 | HardwareId          |   De unieke ID voor de sensor die door de fabrikant is ingesteld. |
-|  sensorModelId     |    ID van het gekoppelde sensor model.   |
+|  SensorModelId     |    ID van het gekoppelde sensor model.   |
 | Locatie          |  Sensor Latitude (-90 tot + 90), lengte graad (-180 tot 180) en uitbrei ding (in meters).|
 |   Naam van poort >        |  Naam en type van de poort waarop de sensor is aangesloten op het apparaat. Dit moet overeenkomen met de naam die is gedefinieerd in het model apparaat. |
 |    DeviceID  |    ID van het apparaat waarmee de sensor is verbonden.     |
@@ -269,7 +269,7 @@ Sensoren
   }
 }
 ```
-Met de volgende voorbeeld aanvraag wordt een apparaat gemaakt. Deze aanvraag bevat de invoer JSON als Payload met de aanvraag tekst. 
+Met de volgende voorbeeld aanvraag wordt een apparaat gemaakt. Deze aanvraag bevat de invoer JSON als Payload met de aanvraag tekst.
 
 ```bash
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
@@ -292,7 +292,7 @@ U moet de telemetrie naar Azure Event Hubs verzenden voor verwerking. Azure Even
 
 ### <a name="send-a-telemetry-message-as-the-client"></a>Een telemetrie-bericht verzenden als de client
 
-Nadat u verbinding hebt gemaakt met een Event Hubs-client, kunt u berichten verzenden naar de Event Hub als JSON-bestand. 
+Nadat u verbinding hebt gemaakt met een Event Hubs-client, kunt u berichten verzenden naar de Event Hub als JSON-bestand.
 
 Hier volgt een voor beeld van een python-code die telemetrie verzendt als een client naar een opgegeven Event Hub:
 
@@ -313,7 +313,7 @@ write_client.stop()
 
 ```
 
-Converteer de historische sensor gegevens indeling naar een canonieke indeling die door Azure FarmBeats wordt begrepen. De canonieke bericht indeling is als volgt: 
+Converteer de historische sensor gegevens indeling naar een canonieke indeling die door Azure FarmBeats wordt begrepen. De canonieke bericht indeling is als volgt:
 
 ```json
 {

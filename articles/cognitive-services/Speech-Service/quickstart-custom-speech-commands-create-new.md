@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 5c90c91791af8a9a16039e9650765bd24433ff38
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 081327e7c70128dad764d66942f1703a889f77fd
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815828"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951211"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Snelstartgids: een aangepaste opdracht maken (preview)
 
@@ -28,16 +28,6 @@ De toepassing herkent een utterance zoals ' de TV inschakelen ' en reageert met 
 
   > [!NOTE]
   > Tijdens de preview-periode wordt alleen de regio westus2 ondersteund voor abonnements sleutels.
-
-- Een [Language Understanding](https://www.luis.ai/home) -ontwerp sleutel (Luis):
-  1. Open een webbrowser en navigeer naar de [Azure Portal](https://portal.azure.com)
-  1. Selecteer een resource maken
-  1. [Language Understanding](https://aka.ms/sc-luis-all) zoeken en selecteren
-  1. Selecteer ontwerpen in de opties voor maken
-  1. Nadat de resource is geïmplementeerd, gaat u naar de resource en kopieert u de sleutel uit de sectie Quick Start of keys
-
-      > [!div class="mx-imgBorder"]
-      > ](media/custom-speech-commands/resources-lu-authoring.png) ![maken
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>Ga naar de speech Studio voor aangepaste opdrachten
 
@@ -58,11 +48,21 @@ De standaard weergave is een lijst met de aangepaste opdrachten voor toepassinge
 1. Selecteer **Nieuw project** om een nieuw project te maken
 
    > [!div class="mx-imgBorder"]
-   > ![nieuw project maken](media/custom-speech-commands/create-new-project.png)
+   > ![een project maken](media/custom-speech-commands/create-new-project.png)
 
-1. Voer de naam en taal van het project in, selecteer **volgende** om door te gaan
-1. Voer uw LUIS-ontwerp sleutel in
-1. Selecteer uw project zodra deze is gemaakt
+1. Voer de naam en taal van het project in.
+1. Selecteer een ontwerp bron. Als er geen geldige ontwerp resources zijn, maakt u er een door **nieuwe resource maken**te selecteren.
+
+   > [!div class="mx-imgBorder"]
+   > ![Een resource maken](media/custom-speech-commands/create-new-resource.png)
+
+   1. Voer de resource naam, de groep, de locatie en de prijs categorie in.
+
+         > [!NOTE]
+         > U kunt resource groepen maken door de naam van de gewenste resource groep in te voeren in het veld Resource groep. De resource groep wordt gemaakt wanneer **maken** is geselecteerd.
+
+1. Klik op **maken** om het project te maken.
+1. Selecteer uw project zodra het is gemaakt.
 
 Uw weer gave moet nu een overzicht zijn van de toepassing aangepaste opdrachten.
 
@@ -99,25 +99,41 @@ We hebben nu geen para meters, dus we kunnen door gaan met de voltooiings regels
 
 Voeg nu een voltooiings regel toe om te reageren op de gebruiker om aan te geven dat een actie wordt ondernomen.
 
+1. Een nieuwe voltooiings regel maken door het `+` pictogram naast voltooiings regels te selecteren
+1. Voer de naam van de regel in
+1. Een actie toevoegen
+   1. Maak een nieuwe actie voor spraak reacties door het `+` pictogram naast acties te selecteren en `SpeechResponse` te selecteren
+   1. Voer het antwoord in
+
+   > [!NOTE]
+   > Normale tekst moet beginnen met een streepje. Meer informatie vindt u [hier](https://aka.ms/sc-lg-format)
+
+   > [!div class="mx-imgBorder"]
+   > ![een spraak antwoord maken](media/custom-speech-commands/create-speech-response-action.png)
+
+1. Klik op **Opslaan** om de regel op te slaan
+
 > [!div class="mx-imgBorder"]
 > ![een voltooiings regel maken](media/custom-speech-commands/create-basic-completion-response-rule.png)
+
 
 | Instelling    | Voorgestelde waarde                        | Beschrijving                                        |
 | ---------- | -------------------------------------- | -------------------------------------------------- |
 | Regelnaam  | "ConfirmationResponse"                 | Een naam die het doel van de regel beschrijft          |
 | Voorwaarden | Geen                                   | Voor waarden die bepalen wanneer de regel kan worden uitgevoerd    |
-| Acties    | SpeechResponse "OK, inschakelen van de TV" | De actie die moet worden uitgevoerd wanneer de regel voorwaarde waar is |
+| Acties    | SpeechResponse "-OK, inschakelen van de TV" | De actie die moet worden uitgevoerd wanneer de regel voorwaarde waar is |
 
 ## <a name="try-it-out"></a>Probeer het
 
 Test het gedrag met behulp van het deel venster testen.
 
 > [!div class="mx-imgBorder"]
-> ![testen met webchat](media/custom-speech-commands/create-basic-test-chat.png)
+> ![testen met Web Chat](media/custom-speech-commands/create-basic-test-chat.png)
 
 - U typt: ' de TV inschakelen '
 - Verwachte reactie: "OK, inschakelen van de TV"
 
 ## <a name="next-steps"></a>Volgende stappen
+
 > [!div class="nextstepaction"]
 > [Snelstartgids: een aangepaste opdracht maken met para meters (preview)](./quickstart-custom-speech-commands-create-parameters.md)

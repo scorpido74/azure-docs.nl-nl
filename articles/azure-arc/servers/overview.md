@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, Power shell, desired state Configuration, updat
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 7a2e9d39629e4fdb349652c9c48d0084d051f9f8
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d091b89342570b73ccde5fe496a3432102617918
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122835"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951425"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>Wat is Azure Arc voor servers?
 
@@ -109,7 +109,41 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 U kunt de resource providers ook registreren met behulp van de portal door de stappen onder [Azure Portal](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal)te volgen.
 
-## <a name="supported-scenarios"></a>Ondersteunde Scenario's
+## <a name="machine-changes-after-installing-the-agent"></a>Computer wijzigingen na de installatie van de agent
+
+Als er een oplossing voor het bijhouden van wijzigingen in uw omgeving is geïmplementeerd, kunt u de onderstaande lijst gebruiken om de wijzigingen die zijn aangebracht door het **AzCMAgent-installatie pakket (Azure Connected machine agent)** , bij te houden, te identificeren en toe te staan.
+
+Nadat u de agent hebt geïnstalleerd, ziet u de volgende wijzigingen die zijn aangebracht op uw servers.
+
+### <a name="windows"></a>Windows
+
+Geïnstalleerde services:
+
+* `Himds`: de service **Azure Connected machine agent** .
+* `Dscservice` of `gcd`-de **gast configuratie** service.
+
+Bestanden die zijn toegevoegd aan de server:
+
+* `%ProgramFiles%\AzureConnectedMachineAgent\*.*` locatie van bestanden van een **met Azure verbonden machine agent** .
+* `%ProgramData%\GuestConfig\*.*` - **gast configuratie** Logboeken.
+
+Locaties van register sleutels:
+
+* `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Connected Machine Agent`-register sleutels voor de **Azure Connected machine agent**.
+
+### <a name="linux"></a>Linux
+
+Geïnstalleerde services:
+
+* `Himdsd`: de service **Azure Connected machine agent** .
+* `dscd` of `gcd`-de **gast configuratie** service.
+
+Bestanden die zijn toegevoegd aan de server:
+
+* `/var/opt/azcmagent/**` locatie van bestanden van een **met Azure verbonden machine agent** .
+* `/var/lib/GuestConfig/**` - **gast configuratie** Logboeken.
+
+## <a name="supported-scenarios"></a>Ondersteunde scenario 's
 
 Nadat u een knoop punt hebt geregistreerd, kunt u beginnen met het beheren van uw knoop punten met behulp van andere Azure-Services.
 

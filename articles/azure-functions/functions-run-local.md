@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 24bee8ffe23d524553143b2097560979a39329d7
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5f260ab1df5341a981a388533b06cbcda400e4da
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74784711"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941828"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -29,37 +29,47 @@ Het ontwikkelen van functies op uw lokale computer en het publiceren van deze na
 > * [De functie lokaal uitvoeren](#start)
 > * [Het project publiceren naar Azure](#publish)
 
-## <a name="core-tools-versions"></a>Kern Hulpprogramma's versies
+## <a name="core-tools-versions"></a>Versies van Core Tools
 
-Er zijn twee versies van Azure Functions Core Tools. Welke versie u gebruikt, is afhankelijk van uw lokale ontwikkel omgeving, de [keuze van de taal](supported-languages.md)en het vereiste ondersteunings niveau:
+Er zijn drie versies van Azure Functions Core Tools. Welke versie u gebruikt, is afhankelijk van uw lokale ontwikkel omgeving, de [keuze van de taal](supported-languages.md)en het vereiste ondersteunings niveau:
 
-+ Versie 1. x: ondersteunt versie 1. x van de runtime. Deze versie van de hulpprogram ma's wordt alleen ondersteund op Windows-computers en wordt geïnstalleerd vanuit een [NPM-pakket](https://docs.npmjs.com/getting-started/what-is-npm). Met deze versie kunt u functies maken in experimentele talen die niet officieel worden ondersteund. Zie [ondersteunde talen in azure functions](supported-languages.md) voor meer informatie.
++ **Versie 1. x**: ondersteunt versie 1. x van de Azure functions runtime. Deze versie van de hulpprogram ma's wordt alleen ondersteund op Windows-computers en wordt geïnstalleerd vanuit een [NPM-pakket](https://www.npmjs.com/package/azure-functions-core-tools).
 
-+ [Versie 2. x](#v2): ondersteunt [versie 2. x van de runtime](functions-versions.md). Deze versie biedt ondersteuning voor [Windows](#windows-npm), [macOS](#brew)en [Linux](#linux). Maakt gebruik van platformspecifieke pakket beheerders of NPM voor installatie.
++ [**Versie 2. x/3. x**](#v2): ondersteunt [versie 2. x of 3. x van de Azure functions runtime](functions-versions.md). Deze versies ondersteunen [Windows](#windows-npm), [macOS](#brew)en [Linux](#linux) en gebruiken platformspecifieke pakket beheerders of NPM voor installatie.
 
-Tenzij anders vermeld, zijn de voor beelden in dit artikel van versie 2. x.
+Tenzij anders vermeld, zijn de voor beelden in dit artikel van versie 3. x.
 
 ## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools installeren
 
 [Azure functions core tools] bevat een versie van dezelfde runtime die voorziet in azure functions runtime die u kunt uitvoeren op uw lokale ontwikkel computer. Het bevat ook opdrachten voor het maken van functies, verbinding maken met Azure en functie projecten implementeren.
 
-### <a name="v2"></a>Versie 2. x
+### <a name="v2"></a>Versie 2. x en 3. x
 
-Versie 2. x van de hulpprogram ma's maakt gebruik van de Azure Functions runtime 2. x die is gebouwd op .NET core. Deze versie wordt ondersteund op alle platformen .NET Core 2. x ondersteunt, waaronder [Windows](#windows-npm), [macOS](#brew)en [Linux](#linux). 
+Versie 2. x/3. x van de hulpprogram ma's maakt gebruik van de Azure Functions runtime die is gebouwd op .NET core. Deze versie wordt ondersteund op alle platformen .NET core ondersteunt, waaronder [Windows](#windows-npm), [macOS](#brew)en [Linux](#linux). 
 
 > [!IMPORTANT]
-> U kunt de vereiste voor het installeren van de .NET Core 2. x SDK overs Laan door gebruik te maken van [uitbreidings bundels].
+> U kunt de vereiste voor het installeren van de .NET Core SDK overs Laan door gebruik te maken van [uitbreidings bundels].
 
 #### <a name="windows-npm"></a>Windows
 
 In de volgende stappen wordt NPM gebruikt om de belangrijkste Hulpprogram Ma's in Windows te installeren. U kunt ook [Choco lade](https://chocolatey.org/)gebruiken. Zie het Leesmij-bestand met [belangrijkste Hulpprogram ma's](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)voor meer informatie.
 
-1. Installeer [Node.js], dat NPM omvat. Voor versie 2. x van de hulpprogram ma's worden alleen node. js 8,5 en latere versies ondersteund.
+1. Installeer [Node.js], dat NPM omvat.
+    - Voor versie 2. x van de hulpprogram ma's worden alleen node. js 8,5 en latere versies ondersteund.
+    - Voor versie 3. x van de hulpprogram ma's worden alleen node 10 en latere versies ondersteund.
 
 1. Installeer het pakket met kern Hulpprogramma's:
 
+    ##### <a name="v2x"></a>v2. x
+
     ```bash
     npm install -g azure-functions-core-tools
+    ```
+
+    ##### <a name="v3x"></a>v3. x
+
+    ```bash
+    npm install -g azure-functions-core-tools@3
     ```
 
    Het kan enkele minuten duren voordat NPM het pakket met kern Hulpprogramma's downloadt en installeert.
@@ -74,13 +84,21 @@ In de volgende stappen wordt homebrew gebruikt om de belangrijkste Hulpprogram M
 
 1. Installeer het pakket met kern Hulpprogramma's:
 
+    ##### <a name="v2x"></a>v2. x
+
     ```bash
     brew tap azure/functions
     brew install azure-functions-core-tools
     ```
 
-1. Als u geen [uitbreidings bundels]wilt gebruiken, installeert u [.net Core 2. x SDK voor macOS](https://www.microsoft.com/net/download/macos).
+    ##### <a name="v3x"></a>v3. x
 
+    ```bash
+    brew tap azure/functions
+    brew install azure-functions-core-tools@3
+    # if upgrading on a machine that has 2.x installed
+    brew link --overwrite azure-functions-core-tools@3
+    ```
 
 #### <a name="linux"></a>Linux (Ubuntu/Debian) met APT
 
@@ -117,7 +135,7 @@ De volgende stappen gebruiken [apt](https://wiki.debian.org/Apt) om kern hulppro
     | Ubuntu 18,10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
     | Ubuntu 17,04    | `zesty`     |
-    | Ubuntu 16.04/Linux licht 18    | `xenial`  |
+    | Ubuntu 16.04/Linux Mint 18    | `xenial`  |
 
 1. Start de APT-bron update:
 
@@ -199,7 +217,7 @@ Deze instellingen worden standaard niet automatisch gemigreerd wanneer het proje
 De waarden van de functie-app-instellingen kunnen ook in uw code worden gelezen als omgevings variabelen. Zie de sectie omgevings variabelen van deze taalspecifieke naslag onderwerpen voor meer informatie:
 
 * [C#vooraf gecompileerde](functions-dotnet-class-library.md#environment-variables)
-* [C#script (. CSX)](functions-reference-csharp.md#environment-variables)
+* [C# script (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -212,7 +230,7 @@ Als er geen geldige opslag connection string is ingesteld voor [`AzureWebJobsSto
 Zelfs wanneer u de opslag emulator gebruikt voor ontwikkeling, wilt u wellicht testen met een echte opslag verbinding. Ervan uitgaande dat u al [een opslag account hebt gemaakt](../storage/common/storage-create-storage-account.md), kunt u op een van de volgende manieren een geldig opslag Connection String krijgen:
 
 - Zoek en selecteer **opslag accounts**vanuit het [Azure-portal]. 
-  ![Storagea-accounts selecteren van Azure Portal](./media/functions-run-local/select-storage-accounts.png)
+  ![opslag accounts selecteren van Azure Portal](./media/functions-run-local/select-storage-accounts.png)
   
   Selecteer uw opslag account, selecteer **toegangs sleutels** in **instellingen**en kopieer een van de **verbindings reeks** waarden.
   connection string ![kopiëren van Azure Portal](./media/functions-run-local/copy-storage-connection-portal.png)
@@ -526,5 +544,5 @@ Meer informatie over het ontwikkelen, testen en publiceren van Azure Functions m
 [Azure-portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
-['AzureWebJobsStorage']: functions-app-settings.md#azurewebjobsstorage
+[`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
 [uitbreidings bundels]: functions-bindings-register.md#extension-bundles

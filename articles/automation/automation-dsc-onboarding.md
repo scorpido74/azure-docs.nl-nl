@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 80038cf5fba18eca4fbbe1405df2a76cfc84e2db
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 89b51af3beaad645dc27b599c2493be4d4bdf30f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850326"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951408"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Onboarding van machines voor beheer door Azure Automation status configuratie
 
@@ -305,6 +305,15 @@ U kunt de informatie ophalen die is vereist voor het status configuratie registr
 
 Voor extra beveiliging kunnen de primaire en secundaire toegangs sleutels van een Automation-account op elk gewenst moment opnieuw worden gegenereerd (op de pagina **sleutels beheren** ) om toekomstige knooppunt registraties te voor komen met eerdere sleutels.
 
+## <a name="certificate-expiration-and-re-registration"></a>Certificaten verlopen en opnieuw registreren
+
+Na het registreren van een machine als een DSC-knoop punt in Azure Automation status configuratie, zijn er een aantal redenen waarom u dat knoop punt in de toekomst opnieuw moet registreren:
+
+- Voor versies van Windows Server voorafgaand aan Windows Server 2019 onderhandelt elk knoop punt automatisch een uniek certificaat voor verificatie dat verloopt na één jaar. Op dit moment kan het Power shell DSC-registratie protocol niet automatisch certificaten vernieuwen wanneer deze bijna verlopen. u moet de knoop punten dus na een jaar opnieuw registreren. Zorg ervoor dat op elk knoop punt Windows Management Framework 5,0 RTM wordt uitgevoerd voordat u de registratie opnieuw registreert. Als het verificatie certificaat van een knoop punt verloopt en het knoop punt niet opnieuw wordt geregistreerd, kan het knoop punt niet communiceren met Azure Automation en is de status niet meer reageert. opnieuw registreren heeft 90 dagen of minder tijd uitgevoerd vanaf de verval datum van het certificaat of op elk moment na de verloop tijd van het certificaat, waardoor er een nieuw certificaat wordt gegenereerd en gebruikt.  Een oplossing voor dit probleem is opgenomen in Windows Server 2019 en hoger.
+- Het wijzigen van [lokale Power shell DSC-Configuration Manager waarden](/powershell/scripting/dsc/managing-nodes/metaConfig4) die zijn ingesteld tijdens de eerste registratie van het knoop punt, zoals ConfigurationMode. Deze DSC-agent waarden kunnen momenteel alleen worden gewijzigd via opnieuw registreren. De enige uitzonde ring is de knooppunt configuratie die is toegewezen aan het knoop punt. Dit kan rechtstreeks in Azure Automation DSC worden gewijzigd.
+
+opnieuw registreren kan op dezelfde manier worden uitgevoerd als u het knoop punt in eerste instantie hebt geregistreerd, met behulp van een van de voorbereidings methoden die in dit document worden beschreven. U hoeft de registratie van een knoop punt bij Azure Automation status configuratie niet ongedaan te maken voordat u het opnieuw registreert.
+
 ## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Problemen met het voorbereiden van virtuele Azure-machines oplossen
 
 Met de configuratie van de Azure Automation-status kunt u op eenvoudige wijze Azure Windows-Vm's vrijgeven voor configuratie beheer. Onder de schermen wordt de Azure VM desired state Configuration-extensie gebruikt voor het registreren van de virtuele machine met Azure Automation status configuratie. Omdat de configuratie-uitbrei ding desired state van Azure VM asynchroon wordt uitgevoerd, kunt u de voortgang bijhouden en de uitvoering ervan oplossen.
@@ -314,14 +323,7 @@ Met de configuratie van de Azure Automation-status kunt u op eenvoudige wijze Az
 
 Om problemen op te lossen of de status weer te geven van de extensie voor de gewenste status van de Azure VM, in de Azure Portal navigeert u naar de virtuele machine die wordt uitgevoerd en klikt u op **uitbrei dingen** onder **instellingen**. Klik op **DSC** of **DSCForLinux** , afhankelijk van uw besturings systeem. Klik op **gedetailleerde status weer geven**voor meer informatie.
 
-## <a name="certificate-expiration-and-reregistration"></a>Certificaten verlopen en opnieuw registreren
-
-Na het registreren van een computer als een DSC-knoop punt in Azure Automation status configuratie, zijn er een aantal redenen waarom u dat knoop punt in de toekomst mogelijk opnieuw moet registreren:
-
-- Voor versies van Windows Server voorafgaand aan Windows Server 2019 onderhandelt elk knoop punt automatisch een uniek certificaat voor verificatie dat verloopt na één jaar. Op dit moment kan het Power shell DSC-registratie protocol niet automatisch certificaten vernieuwen wanneer deze bijna verlopen. u moet de knoop punten na een jaar opnieuw registreren. Zorg ervoor dat op elk knoop punt Windows Management Framework 5,0 RTM wordt uitgevoerd voordat u zich opnieuw registreert. Als het verificatie certificaat van een knoop punt verloopt en het knoop punt niet opnieuw wordt geregistreerd, kan het knoop punt niet communiceren met Azure Automation en is de markering niet meer reageert. Opnieuw registreren heeft 90 dagen of minder tijd uitgevoerd vanaf de verval datum van het certificaat of op elk moment na de verval tijd van het certificaat, waardoor er een nieuw certificaat wordt gegenereerd en gebruikt.  Een oplossing voor dit probleem is opgenomen in Windows Server 2019 en hoger.
-- Het wijzigen van [lokale Power shell DSC-Configuration Manager waarden](/powershell/scripting/dsc/managing-nodes/metaConfig4) die zijn ingesteld tijdens de eerste registratie van het knoop punt, zoals ConfigurationMode. Deze DSC-agent waarden kunnen momenteel alleen worden gewijzigd via opnieuw registreren. De enige uitzonde ring is de knooppunt configuratie die is toegewezen aan het knoop punt. Dit kan rechtstreeks in Azure Automation DSC worden gewijzigd.
-
-Opnieuw registreren kan op dezelfde manier worden uitgevoerd als u het knoop punt in eerste instantie hebt geregistreerd, met behulp van een van de voorbereidings methoden die in dit document worden beschreven. U hoeft de registratie van een knoop punt bij Azure Automation status configuratie niet ongedaan te maken voordat u het opnieuw registreert.
+Zie [problemen met Azure Automation desired state Configuration (DSC) oplossen](./troubleshoot/desired-state-configuration.md)voor meer informatie over het oplossen van problemen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,7 @@
 ---
-title: Voor beelden van StringCollection-claim transformatie voor het Framework met identiteits ervaring van Azure Active Directory B2C | Microsoft Docs
-description: StringCollection voor beelden van claim transformatie voor het identiteits ervaring Framework-schema van Azure Active Directory B2C.
+title: Voor beelden van StringCollection-claim transformatie voor aangepaste beleids regels
+titleSuffix: Azure AD B2C
+description: StringCollection voor beelden van claim transformatie voor het IEF-schema (Identity experience Framework) van Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9add75b8922fe958fc348fb2a6dd48a7b300eade
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: fbbd7b4bdddf2b58e66cb1203414b5a63eec2f27
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063318"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951000"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection-claim transformaties
 
@@ -53,7 +54,7 @@ De volgende claim transformatie voegt het **e-mail** claim type toe aan **otherM
 
 - Invoer claims:
   - **verzameling**: ["someone@outlook.com"]
-  - **item**:admin@contoso.com
+  - **item**: "admin@contoso.com"
 - Uitvoer claims:
   - **verzameling**: ["someone@outlook.com", "admin@contoso.com"]
 
@@ -67,7 +68,7 @@ Voegt een teken reeks parameter toe aan een nieuwe stringCollection-claim.
 | InputParameter | item | string | De waarde die moet worden toegevoegd aan de uitvoer claim. |
 | OutputClaim | verzameling | stringCollection | De ClaimTypes die wordt geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
 
-Gebruik deze claim transformatie om een teken reeks waarde toe te voegen aan een nieuwe of bestaande stringCollection. In het volgende voor beeld wordt een constant eadmin@contoso.com-mail adres () aan de claim **otherMails** toegevoegd.
+Gebruik deze claim transformatie om een teken reeks waarde toe te voegen aan een nieuwe of bestaande stringCollection. In het volgende voor beeld wordt een constant e-mail adres (admin@contoso.com) aan de claim **otherMails** toegevoegd.
 
 ```XML
 <ClaimsTransformation Id="SetCompanyEmail" TransformationMethod="AddParameterToStringCollection">
@@ -87,8 +88,8 @@ Gebruik deze claim transformatie om een teken reeks waarde toe te voegen aan een
 
 - Invoer claims:
   - **verzameling**: ["someone@outlook.com"]
-- Invoer parameters
-  - **item**:admin@contoso.com
+- Invoerparameters
+  - **item**: "admin@contoso.com"
 - Uitvoer claims:
   - **verzameling**: ["someone@outlook.com", "admin@contoso.com"]
 
@@ -119,5 +120,5 @@ In het volgende voor beeld wordt de **otherMails** -claim gelezen en wordt het e
 - Invoer claims:
   - **verzameling**: ["someone@outlook.com", "someone@contoso.com"]
 - Uitvoer claims:
-  - **extractedItem**: "someone@outlook.com"
+  - **extractedItem**:someone@outlook.com
 

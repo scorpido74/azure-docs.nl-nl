@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: dc842ba0e7ca0f34b7dacb98322c4dc0cd056483
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b3165daa06ed975df9ccb677699d3ceb449327ab
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931992"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941900"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Bestanden verplaatsen met Azure Data Factory
 
@@ -36,9 +36,11 @@ De sjabloon bevat vijf activiteiten:
 - **Copy** kopieert één bestand van de bron naar het doel archief.
 - Met **verwijderen** wordt hetzelfde bestand uit het bron archief verwijderd.
 
-De sjabloon definieert twee para meters:
-- *FolderPath_SourceStore* is het mappad van het bron archief waaruit u bestanden wilt verplaatsen. 
-- *FolderPath_DestinationStore* is het mappad van het doel archief waarnaar u bestanden wilt verplaatsen. 
+De sjabloon definieert vier para meters:
+- *SourceStore_Location* is het mappad van het bron archief waaruit u bestanden wilt verplaatsen. 
+- *SourceStore_Directory* is het pad naar de submap van de bron opslag waaruit u bestanden wilt verplaatsen.
+- *DestinationStore_Location* is het mappad van het doel archief waarnaar u bestanden wilt verplaatsen. 
+- *DestinationStore_Directory* is het pad naar de submap van het doel archief waarnaar u bestanden wilt verplaatsen.
 
 ## <a name="how-to-use-this-solution-template"></a>Deze oplossings sjabloon gebruiken
 
@@ -50,9 +52,7 @@ De sjabloon definieert twee para meters:
 
     ![Een nieuwe verbinding maken met de bestemming](media/solution-template-move-files/move-files2.png)
 
-3. Selecteer **Deze sjabloon gebruiken**.
-
-    ![Deze sjabloon gebruiken](media/solution-template-move-files/move-files3.png)
+3. Selecteer **deze sjabloon tabblad gebruiken** .
     
 4. U ziet de pijp lijn, zoals in het volgende voor beeld:
 

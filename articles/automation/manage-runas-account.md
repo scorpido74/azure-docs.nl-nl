@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ae73188fa8818c84806709dc7518e3d5760ae187
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2ce6c27487e834325b59fb21ba0d54d1e788ea57
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849527"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951374"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation uitvoeren als-accounts beheren
 
@@ -67,7 +67,7 @@ Als u klassieke uitvoeren als-accounts wilt configureren of vernieuwen, moet u d
 In deze sectie voert u de volgende stappen uit om uw Azure Automation-account bij te werken in Azure Portal. U maakt afzonderlijke Uitvoeren als- en Klassiek Uitvoeren als-accounts. Als u geen klassieke resources hoeft te beheren, kunt u alleen de Uitvoeren als-account van Azure maken.
 
 1. Meld u aan bij Azure Portal met een account dat lid is van de rol Abonnementsbeheerders en dat medebeheerder is van het abonnement.
-2. Klik in Azure Portal op **Alle services**. Typ in de lijst met resources **Automation**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Automation-accounts**.
+2. In Azure Portal zoekt en selecteert u **Automation-accounts**.
 3. Selecteer op de pagina **Automation-accounts** uw Automation-account uit de lijst met Automation-accounts.
 4. Selecteer in het linkerdeelvenster de optie **Uitvoeren als-accounts** in de sectie **Accountinstellingen**.
 5. Afhankelijk van welk account u nodig hebt, selecteert u **Uitvoeren als-account van Azure**  of **Klassiek Uitvoeren als-account van Azure**. Na deze selectie wordt het deelvenster **Azure uitvoeren als-account toevoegen** of **Klassiek Uitvoeren als-account toevoegen** weergegeven. Controleer de overzichtsgegevens en klik op **Maken** om verder te gaan met het maken van een Uitvoeren als-account.
@@ -86,7 +86,7 @@ De volgende lijst bevat de vereisten voor het maken van een uitvoeren als-accoun
 
 Voer de volgende stappen uit om de waarden op te halen voor *SubscriptionID*, *ResourceGroup*en *AutomationAccountName*, die vereiste para meters zijn voor het script:
 
-1. Klik in Azure Portal op **Alle services**. Typ in de lijst met resources **Automation**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Automation-accounts**.
+1. In Azure Portal zoekt en selecteert u **Automation-accounts**.
 1. Selecteer op de Automation-accountpagina uw Automation-account en selecteer vervolgens onder **Accountinstellingen** de optie **Eigenschappen**.
 1. Noteer de waarden van de **abonnements-id**, de **naam**en de **resource groep** op de **Eigenschappen** pagina.
 

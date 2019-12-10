@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 73b5c86030d9e106cb3ea24d3100faa56e323815
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 49f3759d7c5ba178cd0f1d0164a45c09df464571
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348941"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942219"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-onderdelen
 
@@ -57,7 +57,7 @@ Application Gateway ondersteunt vier protocollen: HTTP, HTTPS, HTTP/2 en WebSock
 
 Gebruik een HTTPS-listener voor SSL-beëindiging. Een HTTPS-listener versleutelt de versleuteling en ontsleuteling van uw toepassings gateway, zodat uw webservers niet worden belast met de overhead.
 
-### <a name="custom-error-pages"></a>Aangepaste foutpagina's
+### <a name="custom-error-pages"></a>Aangepaste foutenpagina's
 
 Met Application Gateway kunt u aangepaste fout pagina's maken in plaats van de standaardfout pagina's weer te geven. U kunt uw eigen huisstijl en lay-out hanteren door een aangepaste foutpagina te gebruiken. Application Gateway wordt een aangepaste fout pagina weer gegeven wanneer een aanvraag de back-end niet kan bereiken.
 
@@ -75,7 +75,7 @@ Er zijn twee soorten listeners:
 
 Nadat u een listener hebt gemaakt, koppelt u deze aan een routerings regel voor aanvragen. Deze regel bepaalt hoe de ontvangen aanvraag op de listener moet worden doorgestuurd naar de back-end.
 
-Application Gateway verwerkt listeners in de weer gegeven volg orde. Als de Basic-listener overeenkomt met een inkomende aanvraag, wordt deze eerst verwerkt. Als u verkeer wilt routeren naar de juiste back-end, configureert u een listener voor meerdere sites vóór een Basic-listener.
+Application Gateway verwerkt listeners in de [weer gegeven volg orde](https://docs.microsoft.com/en-us/azure/application-gateway/configuration-overview#order-of-processing-listeners).
 
 ## <a name="request-routing-rules"></a>Routerings regels voor aanvragen
 
@@ -121,12 +121,12 @@ Dit onderdeel wordt ook gebruikt voor het volgende:
 
 - Koppel een aangepaste test om de status van de back-end te controleren, de time-outinterval van de aanvraag in te stellen, de hostnaam en het pad in de aanvraag te overschrijven en met één klik te bieden voor het opgeven van instellingen voor de App Service back-end.
 
-## <a name="backend-pools"></a>Back-end-pools
+## <a name="backend-pools"></a>Back-endpools
 
 Een back-end-groep routeert aanvragen naar back-endservers, die de aanvraag verwerken. Back-end-Pools kunnen het volgende bevatten:
 
 - NIC’s
-- Virtual Machine Scale Sets
+- Virtuele-machineschaalsets
 - Openbare IP-adressen
 - Interne IP-adressen
 - FQDN-NAAM
@@ -140,7 +140,7 @@ Een toepassings gateway kan ook communiceren met naar on-premises servers wannee
 
 U kunt verschillende back-endservers maken voor verschillende typen aanvragen. Maak bijvoorbeeld één back-end-groep voor algemene aanvragen en vervolgens een andere back-end-groep voor aanvragen van de micro Services voor uw toepassing.
 
-## <a name="health-probes"></a>Tests
+## <a name="health-probes"></a>Statuscontroles
 
 Standaard controleert een toepassings gateway de status van alle resources in de back-end-pool en worden de beschadigde items automatisch verwijderd. Vervolgens worden de beschadigde instanties bewaakt en worden ze weer toegevoegd aan de juiste back-end-groep wanneer deze beschikbaar komen en reageren op status controles.
 
@@ -152,6 +152,6 @@ Zie [de status van uw toepassings gateway bewaken](https://docs.microsoft.com/az
 
 Een toepassings gateway maken:
 
-* [In de Azure Portal](quick-create-portal.md)
+* [In de Azure-Portal](quick-create-portal.md)
 * [Met behulp van Azure PowerShell](quick-create-powershell.md)
 * [Via de Azure CLI](quick-create-cli.md)

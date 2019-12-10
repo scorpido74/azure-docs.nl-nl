@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, Power shell, desired state Configuration, updat
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: b5299f49663fbf2e828f76d9c240a86fdccb2ff2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e7a527fc290433390436eac3d4c291f2a32bf2b3
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872686"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951442"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Snelstartgids: computers verbinden met Azure met behulp van Azure Arc voor servers-Power shell
 
@@ -72,8 +72,11 @@ Kopieer vanuit de uitvoer het **wacht woord** en de **ApplicationId** (uit de vo
 
 In het script voor de installatie van agent voorbereiden:
 
-* De eigenschap **ApplicationId** wordt gebruikt voor de para meter `--service-principal-id` die wordt gebruikt in de installatie agent
-* De eigenschap **Password** wordt gebruikt voor de para meter `--service-principal-secret` in de installatie agent.
+* De eigenschap **ApplicationId** wordt gebruikt voor de para meter `--service-principal-id` die wordt gebruikt om verbinding te maken met de agent
+* De eigenschap **Password** wordt gebruikt voor de para meter `--service-principal-secret` die wordt gebruikt om verbinding te maken met de agent.
+
+> [!NOTE]
+> Zorg ervoor dat u de Service Principal **ApplicationId** -eigenschap gebruikt, niet de eigenschap **id** . De **id** werkt niet.
 
 ## <a name="manually-install-the-agent-and-connect-to-azure"></a>De agent hand matig installeren en verbinding maken met Azure
 
@@ -90,7 +93,6 @@ Voor **Linux** -servers wordt de agent gedistribueerd via de [pakket opslagplaat
 > [!NOTE]
 > Tijdens de open bare preview is slechts één pakket vrijgegeven, wat geschikt is voor Ubuntu 16,04 of 18,04.
 
-<!-- What about this aks? -->
 De eenvoudigste optie is het registreren van de pakket opslagplaats en vervolgens het pakket installeren met behulp van Package Manager van de distributie.
 Het bash-script bevindt zich op [https://aka.ms/azcmagent](https://aka.ms/azcmagent) voert de volgende acties uit:
 

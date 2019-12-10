@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: deab16f3b80ada12a7167e90922dc38f3012be91
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0d654dc05668a71b0fe69de32e5c09f8936951f8
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478685"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951578"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Gegevens verzameling van agents voor Azure Monitor voor containers configureren
 
@@ -33,13 +33,13 @@ Hieronder vindt u de instellingen die kunnen worden geconfigureerd om het verzam
 
 |Sleutel |Gegevenstype |Waarde |Beschrijving |
 |----|----------|------|------------|
-|`schema-version` |Teken reeks (hoofdletter gevoelig) |RIP |Dit is de schema versie die door de agent wordt gebruikt bij het parseren van deze ConfigMap. Momenteel ondersteunde schema versie v1. Het wijzigen van deze waarde wordt niet ondersteund en wordt afgewezen wanneer ConfigMap wordt geëvalueerd.|
+|`schema-version` |Teken reeks (hoofdletter gevoelig) |v1 |Dit is de schema versie die door de agent wordt gebruikt bij het parseren van deze ConfigMap. Momenteel ondersteunde schema versie v1. Het wijzigen van deze waarde wordt niet ondersteund en wordt afgewezen wanneer ConfigMap wordt geëvalueerd.|
 |`config-version` |Tekenreeks | | Ondersteunt de mogelijkheid om de versie van dit configuratie bestand in uw bron beheersysteem of opslag plaats bij te houden. Het maximum aantal toegestane tekens is 10 en alle andere tekens worden afgekapt. |
-|`[log_collection_settings.stdout] enabled =` |Booleaans | waar of onwaar | Hiermee wordt bepaald of de collectie stdout container log is ingeschakeld. Als deze optie is ingesteld op `true` en er geen naam ruimten worden uitgesloten voor de verzameling van stdout-Logboeken (`log_collection_settings.stdout.exclude_namespaces` hieronder), worden stdout-logboeken verzameld van alle containers op alle knoop punten in het cluster. Als niet opgegeven in ConfigMaps, is de standaard waarde `enabled = true`. |
-|`[log_collection_settings.stdout] exclude_namespaces =`|Tekenreeks | Door komma's gescheiden matrix |Matrix van Kubernetes-naam ruimten waarvoor stdout-logboeken worden niet verzameld. Deze instelling is alleen effectief als `log_collection_settings.stdout.enabled` is ingesteld op `true`. Als niet opgegeven in ConfigMap, is de standaard waarde `exclude_namespaces = ["kube-system"]`.|
-|`[log_collection_settings.stderr] enabled =` |Booleaans | waar of onwaar |Hiermee wordt bepaald of de logboek verzameling voor de stderr-container is ingeschakeld. Als deze optie is ingesteld op `true` en er geen naam ruimten worden uitgesloten voor de stdout-logboek verzameling (`log_collection_settings.stderr.exclude_namespaces`-instelling), worden stderr-logboeken verzameld van alle containers op alle knoop punten in het cluster. Als niet opgegeven in ConfigMaps, is de standaard waarde `enabled = true`. |
-|`[log_collection_settings.stderr] exclude_namespaces =` |Tekenreeks |Door komma's gescheiden matrix |Matrix van Kubernetes-naam ruimten waarvoor stderr-logboeken niet zullen worden verzameld. Deze instelling is alleen effectief als `log_collection_settings.stdout.enabled` is ingesteld op `true`. Als niet opgegeven in ConfigMap, is de standaard waarde `exclude_namespaces = ["kube-system"]`. |
-| `[log_collection_settings.env_var] enabled =` |Booleaans | waar of onwaar | Met deze instelling bepaalt u de verzameling van omgevings variabelen op alle knoop punten in het cluster en wordt de standaard waarde `enabled = true` wanneer deze niet is opgegeven in ConfigMaps. Als verzameling van omgevings variabelen globaal is ingeschakeld, kunt u deze uitschakelen voor een specifieke container door de omgevings variabele in te stellen `AZMON_COLLECT_ENV` op **Onwaar** , met een Dockerfile-instelling of in het [configuratie bestand voor de pod](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) onder de **env:** sectie. Als verzameling van omgevings variabelen globaal is uitgeschakeld, kunt u het verzamelen van een bepaalde container niet inschakelen (dat wil zeggen, de enige onderdrukking die kan worden toegepast op het niveau van de container om de verzameling uit te scha kelen wanneer deze al is ingeschakeld.) |
+|`[log_collection_settings.stdout] enabled =` |Booleaans | true of false | Hiermee wordt bepaald of de collectie stdout container log is ingeschakeld. Als deze optie is ingesteld op `true` en er geen naam ruimten worden uitgesloten voor de stdout-logboek verzameling (`log_collection_settings.stdout.exclude_namespaces` onderstaande instelling), worden stdout-logboeken verzameld van alle containers op alle knoop punten in het cluster. Als dat niet is opgegeven in ConfigMaps, is de standaard waarde `enabled = true`. |
+|`[log_collection_settings.stdout] exclude_namespaces =`|Tekenreeks | Door komma's gescheiden matrix |Matrix van Kubernetes-naam ruimten waarvoor stdout-logboeken worden niet verzameld. Deze instelling is alleen effectief als `log_collection_settings.stdout.enabled` is ingesteld op `true`. Als dat niet is opgegeven in ConfigMap, is de standaard waarde `exclude_namespaces = ["kube-system"]`.|
+|`[log_collection_settings.stderr] enabled =` |Booleaans | true of false |Hiermee wordt bepaald of de logboek verzameling voor de stderr-container is ingeschakeld. Als deze optie is ingesteld op `true` en er geen naam ruimten worden uitgesloten voor de stdout-logboek verzameling (`log_collection_settings.stderr.exclude_namespaces` instelling), worden stderr-logboeken verzameld van alle containers op alle knoop punten in het cluster. Als dat niet is opgegeven in ConfigMaps, is de standaard waarde `enabled = true`. |
+|`[log_collection_settings.stderr] exclude_namespaces =` |Tekenreeks |Door komma's gescheiden matrix |Matrix van Kubernetes-naam ruimten waarvoor stderr-logboeken niet zullen worden verzameld. Deze instelling is alleen effectief als `log_collection_settings.stdout.enabled` is ingesteld op `true`. Als dat niet is opgegeven in ConfigMap, is de standaard waarde `exclude_namespaces = ["kube-system"]`. |
+| `[log_collection_settings.env_var] enabled =` |Booleaans | true of false | Met deze instelling bepaalt u de verzameling van omgevings variabelen op alle Helen/knoop punten in het cluster en wordt de standaard waarde `enabled = true` wanneer deze niet is opgegeven in ConfigMaps. Als verzameling van omgevings variabelen globaal is ingeschakeld, kunt u deze uitschakelen voor een specifieke container door de omgevings variabele in te stellen `AZMON_COLLECT_ENV` op **Onwaar** , met een Dockerfile-instelling of in het [configuratie bestand voor de pod](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) onder de sectie **env:** . Als verzameling van omgevings variabelen globaal is uitgeschakeld, kunt u het verzamelen van een bepaalde container niet inschakelen (dat wil zeggen, de enige onderdrukking die kan worden toegepast op het niveau van de container om de verzameling uit te scha kelen wanneer deze al is ingeschakeld.) |
 
 ConfigMaps is een globale lijst en er kan slechts één ConfigMap op de agent worden toegepast. U kunt de verzamelingen niet overConfigMapsen.
 
@@ -55,19 +55,13 @@ Voer de volgende stappen uit om uw ConfigMap-configuratie bestand te configurere
     
     - Als u de verzameling van omgevings variabelen voor een specifieke container wilt uitschakelen, stelt u de sleutel/waarde `[log_collection_settings.env_var] enabled = true` om het verzamelen van variabelen globaal in te scha kelen en volgt u de stappen [hier](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container) om de configuratie voor de specifieke container te volt ooien.
     
-    - Voor het uitschakelen van het hoofdletter gebruik van de logboek verzameling van stderr kunt u de sleutel/waarde configureren met het volgende voor beeld: `[log_collection_settings.stderr] enabled = false`.
+    - Als u het cluster voor het verzamelen van stderr-logboeken wilt uitschakelen, configureert u de sleutel/waarde met behulp van het volgende voor beeld: `[log_collection_settings.stderr] enabled = false`.
 
 3. Maak ConfigMap door de volgende kubectl-opdracht uit te voeren: `kubectl apply -f <configmap_yaml_file.yaml>`.
     
-    Voor beeld: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
+    Voorbeeld: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
     
-    Het kan een paar minuten duren voordat de configuratie wijziging is doorgevoerd en alle omsagent in het cluster opnieuw worden opgestart. Het opnieuw opstarten is een rolling start voor alle omsagent-peulen, niet allemaal tegelijk opnieuw opstarten. Wanneer het opnieuw opstarten is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat: `configmap "container-azm-ms-agentconfig" created`.
-
-4. Maak ConfigMap door de volgende kubectl-opdracht uit te voeren: `kubectl apply -f <configmap_yaml_file.yaml>`.
-    
-    Voor beeld: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
-    
-    Het kan een paar minuten duren voordat de configuratie wijziging is doorgevoerd en alle omsagent in het cluster opnieuw worden opgestart. Het opnieuw opstarten is een rolling start voor alle omsagent-peulen, niet allemaal tegelijk opnieuw opstarten. Wanneer het opnieuw opstarten is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat: `configmap "container-azm-ms-agentconfig" created`.
+    Het kan een paar minuten duren voordat de configuratie wijziging is doorgevoerd en alle omsagent in het cluster opnieuw worden opgestart. Het opnieuw opstarten is een rolling start voor alle omsagent-peulen, niet allemaal tegelijk opnieuw opstarten. Wanneer het opnieuw opstarten is voltooid, wordt er een bericht weer gegeven dat er ongeveer als volgt uitziet: `configmap "container-azm-ms-agentconfig" created`.
 
 ## <a name="verify-configuration"></a>Configuratie controleren 
 
@@ -90,13 +84,13 @@ Fouten met betrekking tot het Toep assen van configuratie wijzigingen zijn ook b
 
 - Vanuit de **KubeMonAgentEvents** -tabel in uw log Analytics-werk ruimte. Gegevens worden elk uur verzonden met *fout* code voor configuratie fouten. Als er geen fouten zijn, heeft de vermelding in de tabel gegevens met *informatie*over de ernst, die geen fouten rapporteert. De eigenschap **Tags** bevat meer informatie over de Pod en de container-id waarop de fout is opgetreden en ook de eerste instantie, het laatste exemplaar en het aantal voor het afgelopen uur.
 
-Fouten zorgen ervoor dat omsagent het bestand niet kan parseren, waardoor het opnieuw wordt gestart en de standaard configuratie wordt gebruikt. Nadat u de fout (en) in ConfigMap hebt gecorrigeerd, slaat u het yaml-bestand op en past u de bijgewerkte ConfigMaps toe door de opdracht uit te voeren: `kubectl apply -f <configmap_yaml_file.yaml`.
+Fouten zorgen ervoor dat omsagent het bestand niet kan parseren, waardoor het opnieuw wordt gestart en de standaard configuratie wordt gebruikt. Nadat u de fout (en) in ConfigMap hebt gecorrigeerd, slaat u het yaml-bestand op en past u de bijgewerkte ConfigMaps toe door de volgende opdracht uit te voeren: `kubectl apply -f <configmap_yaml_file.yaml`.
 
 ## <a name="applying-updated-configmap"></a>Bijgewerkte ConfigMap Toep assen
 
-Als u al een ConfigMap op uw cluster hebt geïmplementeerd en u deze wilt bijwerken met een nieuwere configuratie, kunt u het ConfigMap-bestand dat u eerder hebt gebruikt, bewerken en vervolgens op dezelfde opdracht Toep assen als voorheen, `kubectl apply -f <configmap_yaml_file.yaml`.
+Als u al een ConfigMap op uw cluster hebt geïmplementeerd en u deze wilt bijwerken met een nieuwere configuratie, kunt u het ConfigMap-bestand dat u eerder hebt gebruikt, bewerken en vervolgens op dezelfde opdracht Toep assen als voorheen `kubectl apply -f <configmap_yaml_file.yaml`.
 
-Het kan een paar minuten duren voordat de configuratie wijziging is doorgevoerd en alle omsagent in het cluster opnieuw worden opgestart. Het opnieuw opstarten is een rolling start voor alle omsagent-peulen, niet allemaal tegelijk opnieuw opstarten. Wanneer het opnieuw opstarten is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat: `configmap "container-azm-ms-agentconfig" updated`.
+Het kan een paar minuten duren voordat de configuratie wijziging is doorgevoerd en alle omsagent in het cluster opnieuw worden opgestart. Het opnieuw opstarten is een rolling start voor alle omsagent-peulen, niet allemaal tegelijk opnieuw opstarten. Wanneer het opnieuw opstarten is voltooid, wordt er een bericht weer gegeven dat er ongeveer als volgt uitziet: `configmap "container-azm-ms-agentconfig" updated`.
 
 ## <a name="verifying-schema-version"></a>De schema versie wordt gecontroleerd
 

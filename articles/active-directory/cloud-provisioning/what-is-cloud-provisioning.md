@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 333a3b93d872c1a99d1ec18d4941adc8986d4a03
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 10c778025c3def384f621cb5311d0d71ccb457d7
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74914558"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951119"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Wat is Azure AD Connect-cloudinrichting?
 Azure AD Connect Cloud inrichting is een nieuwe micro soft-agent die is ontworpen om tegemoet te komen aan uw hybride identiteits doelstellingen voor synchronisatie van gebruikers, groepen en contact personen naar Azure AD.  Deze kan naast Azure AD Connect Sync worden gebruikt en biedt de volgende voor delen:
@@ -60,6 +60,7 @@ De volgende tabel bevat een vergelijking tussen Azure AD Connect en Azure AD Con
 | Geavanceerd aanpassen voor kenmerkstromen toestaan |● | |
 | Ondersteuning voor write-back (wacht woorden, apparaten, groepen) |● | |
 | Ondersteuning voor Azure AD Domain Services|● | |
+| Hybride Exchange-configuratie |● | |
 
 ## <a name="next-steps"></a>Volgende stappen 
 

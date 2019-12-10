@@ -1,5 +1,6 @@
 ---
-title: Definieer een OpenID Connect Connect Technical-profiel in een aangepast beleid in Azure Active Directory B2C | Microsoft Docs
+title: Een OpenID Connect Connect Technical-profiel in een aangepast beleid definiëren
+titleSuffix: Azure AD B2C
 description: Definieer een OpenID Connect Connect Technical-profiel in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0a776c793bab9aee76cf338bc19c560ab700e787
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: fdb925f820cad79fe68e7082f4ed63292a7d9444
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258201"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951085"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een OpenID Connect Connect Technical-profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -36,7 +37,7 @@ Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `Open
 
 ## <a name="input-claims"></a>Invoer claims
 
-De **InputClaims** -en **InputClaimsTransformations** -elementen zijn niet vereist. Maar u wilt mogelijk extra para meters naar uw ID-provider verzenden. In het volgende voor beeld wordt de **domain_hint** -query teken reeks parameter met de waarde `contoso.com` toegevoegd aan de autorisatie aanvraag.
+De **InputClaims** -en **InputClaimsTransformations** -elementen zijn niet vereist. Maar u wilt mogelijk extra para meters naar uw ID-provider verzenden. In het volgende voor beeld wordt de **domain_hint** query teken reeks parameter met de waarde `contoso.com` aan de autorisatie aanvraag toegevoegd.
 
 ```XML
 <InputClaims>
@@ -73,18 +74,18 @@ Het technische profiel retourneert ook claims die niet worden geretourneerd door
 
 ## <a name="metadata"></a>Metagegevens
 
-| Kenmerk | Vereist | Description |
+| Kenmerk | Verplicht | Beschrijving |
 | --------- | -------- | ----------- |
 | client_id | Ja | De toepassings-id van de ID-provider. |
 | IdTokenAudience | Nee | De doel groep van de id_token. Indien opgegeven, Azure AD B2C controleert of het token zich in een claim bevindt die wordt geretourneerd door de ID-provider en is deze gelijk aan de waarde die is opgegeven. |
 | METAGEGEVENSARCHIEFMETHODE | Ja | Een URL die verwijst naar een JSON-configuratie document dat is opgemaakt volgens de OpenID Connect Connect-detectie specificatie, ook wel bekend als een bekende OpenID Connect-configuratie-eind punt. |
 | ProviderName | Nee | De naam van de ID-provider. |
-| response_types | Nee | Het antwoord type volgens de OpenID Connect Connect Core 1,0-specificatie. Mogelijke waarden: `id_token`, `code` of `token`. |
+| response_types | Nee | Het antwoord type volgens de OpenID Connect Connect Core 1,0-specificatie. Mogelijke waarden: `id_token`, `code`of `token`. |
 | response_mode | Nee | De methode die de ID-provider gebruikt om het resultaat terug te sturen naar Azure AD B2C. Mogelijke waarden: `query`, `form_post` (standaard) of `fragment`. |
-| bereik | Nee | Het bereik van de aanvraag die is gedefinieerd volgens de OpenID Connect Connect Core 1,0-specificatie. Zoals `openid`, `profile` en `email`. |
+| scope | Nee | Het bereik van de aanvraag die is gedefinieerd volgens de OpenID Connect Connect Core 1,0-specificatie. Zoals `openid`, `profile`en `email`. |
 | HttpBinding | Nee | De verwachte HTTP-binding met het toegangs token en claims token-eind punten. Mogelijke waarden: `GET` of `POST`.  |
 | ValidTokenIssuerPrefixes | Nee | Een sleutel die kan worden gebruikt om u aan te melden bij elk van de tenants wanneer u een multi tenant-ID-provider gebruikt, zoals Azure Active Directory. |
-| UsePolicyInRedirectUri | Nee | Hiermee wordt aangegeven of een beleid moet worden gebruikt bij het samen stellen van de omleidings-URI. Wanneer u uw toepassing in de ID-provider configureert, moet u de omleidings-URI opgeven. De omleidings-URI verwijst naar Azure AD B2C, `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`.  Als u `false` opgeeft, moet u een omleidings-URI toevoegen voor elk beleid dat u gebruikt. Bijvoorbeeld: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
+| UsePolicyInRedirectUri | Nee | Hiermee wordt aangegeven of een beleid moet worden gebruikt bij het samen stellen van de omleidings-URI. Wanneer u uw toepassing in de ID-provider configureert, moet u de omleidings-URI opgeven. De omleidings-URI verwijst naar Azure AD B2C, `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`.  Als u `false`opgeeft, moet u een omleidings-URI toevoegen voor elk beleid dat u gebruikt. Bijvoorbeeld: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
 | MarkAsFailureOnStatusCode5xx | Nee | Hiermee wordt aangegeven of een aanvraag naar een externe service als een fout moet worden gemarkeerd als de HTTP-status code zich in het 5xx bereik bevindt. De standaardwaarde is `false`. |
 | DiscoverMetadataByTokenIssuer | Nee | Geeft aan of de OIDC-meta gegevens moeten worden gedetecteerd met behulp van de verlener in het JWT-token. |
 
@@ -92,13 +93,13 @@ Het technische profiel retourneert ook claims die niet worden geretourneerd door
 
 Het element **CryptographicKeys** bevat het volgende kenmerk:
 
-| Kenmerk | Vereist | Description |
+| Kenmerk | Verplicht | Beschrijving |
 | --------- | -------- | ----------- |
-| client_secret | Ja | Het client geheim van de identiteits provider toepassing. De cryptografische sleutel is alleen vereist als de **response_types** -meta gegevens zijn ingesteld op `code`. In dit geval maakt Azure AD B2C een andere aanroep voor het uitwisselen van de autorisatie code voor een toegangs token. Als de meta gegevens zijn ingesteld op `id_token`, kunt u de cryptografische sleutel weglaten.  |
+| client_secret | Ja | Het client geheim van de identiteits provider toepassing. De cryptografische sleutel is alleen vereist als de **response_types** meta gegevens zijn ingesteld op `code`. In dit geval maakt Azure AD B2C een andere aanroep voor het uitwisselen van de autorisatie code voor een toegangs token. Als de meta gegevens zijn ingesteld op `id_token` kunt u de cryptografische sleutel weglaten.  |
 
 ## <a name="redirect-uri"></a>Omleidings-URI
 
-Wanneer u de omleidings-URI van uw ID-provider configureert, geeft u `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp` op. Zorg ervoor dat u `{your-tenant-name}` vervangt door de naam van uw Tenant. De omleidings-URI moet in alle kleine letters zijn.
+Wanneer u de omleidings-URI van uw ID-provider configureert, voert u `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`in. Zorg ervoor dat u `{your-tenant-name}` vervangt door de naam van uw Tenant. De omleidings-URI moet in alle kleine letters zijn.
 
 Voorbeelden:
 

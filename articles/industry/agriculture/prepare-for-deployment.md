@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c29bba81132df15fcea9ff0df7be6a8cea94c9a0
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 27bf62cb328273db1f7bdd44117853b00feca9ae
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851125"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941573"
 ---
 # <a name="deploy-azure-farmbeats"></a>Azure-FarmBeats implementeren
 
@@ -33,7 +33,7 @@ Een snelle implementatie van Azure FarmBeats moet minder dan een uur duren. De k
 
 Azure FarmBeats Deployment maakt de volgende resources binnen uw abonnement:
 
-| S. nr.  | Resourcenaam  | Onderdeel FarmBeats  |
+| Wel. nr.  | Resourcenaam  | Onderdeel FarmBeats  |
 |---------|---------|---------|
 |1  |       Azure Cosmos DB   |  Datahub       |
 |2  |    Application Insights      |     Datahub/Accelerator     |
@@ -49,7 +49,6 @@ Azure FarmBeats Deployment maakt de volgende resources binnen uw abonnement:
 |12|      Azure App Service      |  Datahub/Accelerator       |
 |13 |    App Service-abonnement        |     Datahub/Accelerator      |
 |14 |Azure Maps-account     |Snelle    |
-|15 |       Azure Time Series Insights      |  Datahub     |
 
 Azure FarmBeats is beschikbaar voor down loads in azure Marketplace, die u rechtstreeks vanuit de Azure Portal kunt openen.  
 
@@ -83,7 +82,7 @@ Voordat u met de implementatie begint, moet u ervoor zorgen dat aan de volgende 
 
 Een account met Sentinel helpt u bij het downloaden van de installatie kopie van de verklikker satelliet van de officiële website naar uw apparaat. Als u een gratis account wilt maken, gaat u als volgt te werk:
 
-1. Ga naar de [registratie pagina voor verklikker accounts](https://scihub.copernicus.eu/dhus/#/self-registration). 
+1. Ga naar de [registratie pagina voor verklikker accounts](https://scihub.copernicus.eu/dhus/#/self-registration).
 1. Geef op het registratie formulier uw voor naam, achternaam, gebruikers naam, wacht woord en e-mail adres op.
 
 Er wordt een verificatie-e-mail verzonden naar het geregistreerde e-mail adres voor bevestiging. Selecteer de koppeling om uw e-mail adres te bevestigen. Het registratie proces is voltooid.
@@ -211,7 +210,7 @@ In dit scenario, dat eerder is beschreven in ' optie 1 ', wordt de Azure AD-App-
     > Het token verloopt na 60 minuten. Als de service is verlopen, kunt u deze opnieuw starten door de implementatie opdracht opnieuw in te voeren.
 
 1. Voer bij de prompt het wacht woord van uw Sentinel-account in.
-   
+
    Het installatie programma valideert en start de implementatie, wat ongeveer 20 minuten kan duren.
 
    Nadat de implementatie is voltooid, ontvangt u de volgende uitvoer koppelingen:
@@ -282,12 +281,8 @@ Raadpleeg [problemen oplossen](troubleshoot-project-farmbeats.md)als u problemen
 Nadat de Datahub-installatie is voltooid, ontvangt u de URL voor toegang tot Azure FarmBeats-Api's via de Swagger-interface in de indeling https://\<yourdatahub-website-name >. azurewebsites. net/Swagger.
 
 1. Als u zich wilt aanmelden via Swagger, kopieert en plakt u de URL in uw browser.
-1. Meld u aan met uw Azure Portal referenties.
-1. Beschrijving Probeer het volgende ' Sanity-test ': 
-
-     - Meld u aan bij de Swagger-Portal met behulp van de Datahub-koppeling, die u hebt ontvangen als uitvoer voor een geslaagde implementatie.
-     - Uitgebreide typen Get API: Selecteer ' Probeer het uit '/Execute '
-     - U ontvangt de server respons code 200 en geen uitzonde ring, zoals "403 niet-geautoriseerde gebruiker".
+2. Meld u aan met uw Azure Portal referenties.
+3. U kunt de Swagger zien en alle REST-bewerkingen uitvoeren op de Azure FarmBeats-Api's. Dit duidt op een succes volle implementatie van Azure FarmBeats.
 
 ### <a name="accelerator"></a>Snelle
 

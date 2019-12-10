@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: c7db5d7d8963702f6039af3cfd51d6d916755abb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 52b1d93935e6428563c72361655893ffddf8a507
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931944"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941849"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Problemen met SSIS Integration Runtime Management in Azure Data Factory oplossen
 
@@ -156,3 +156,38 @@ Als u SSIS IR stopt, worden alle aan Virtual Network gerelateerde resources verw
 ### <a name="nodeunavailable"></a>NodeUnavailable
 
 Deze fout treedt op als IR actief is, en duidt erop dat IR is beschadigd. Deze fout wordt altijd veroorzaakt door een wijziging in de DNS-server of NSG-configuratie, waardoor SSIS IR geen verbinding kan maken met een noodzakelijke service. Omdat de configuratie van DNS-server en NSG wordt beheerd door de klant, moet deze de blokkerende problemen aan de eigen zijde oplossen. Zie [Virtual Network-configuratie voor SSIS IR](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network) voor meer informatie. Als u nog steeds problemen ondervindt, neemt u contact op met het ondersteuningsteam van Azure Data Factory.
+
+## <a name="static-public-ip-addresses-configuration"></a>Configuratie van statische open bare IP-adressen
+
+Wanneer u de Azure-SSIS IR aan Azure Virtual Network koppelt, kunt u ook uw eigen statische open bare IP-adressen voor de IR meebrengen, zodat de IR toegang kan krijgen tot gegevens bronnen waarmee de toegang tot specifieke IP-adressen wordt beperkt. Zie [Azure-SSIS Integration Runtime toevoegen aan een virtueel netwerk](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network) voor meer informatie.
+
+Naast de bovenstaande problemen met het virtuele netwerk, kunt u ook voldoen aan statisch openbaar IP-adressen probleem. Raadpleeg de volgende fouten voor meer informatie.
+
+### <a name="InvalidPublicIPSpecified"></a>InvalidPublicIPSpecified
+
+Deze fout kan om verschillende redenen optreden wanneer u de Azure-SSIS IR start:
+
+| Foutbericht | Oplossing|
+|:--- |:--- |
+| Het geleverde statische open bare IP-adres wordt al gebruikt. Geef twee ongebruikte voor uw Azure-SSIS Integration Runtime op. | U moet twee ongebruikte statische open bare IP-adressen selecteren of de huidige verwijzingen naar het opgegeven open bare IP-adres verwijderen en vervolgens de Azure-SSIS IR opnieuw opstarten. |
+| Het geleverde statische open bare IP-adres heeft geen DNS-naam. Geef twee van de DNS-naam op voor de Azure-SSIS Integration Runtime. | U kunt de DNS-naam van het open bare IP-adres in Azure Portal instellen, zoals hieronder wordt weer gegeven. Specifieke stappen zijn als volgt: (1) open Azure Portal en ga naar de pagina resource van dit open bare IP-adres. (2) Selecteer de **configuratie** sectie en stel de DNS-naam in en klik vervolgens op de knop **Opslaan** . (3) start uw Azure-SSIS IR opnieuw op. |
+| De verschafte VNet-en statische open bare IP-adressen voor uw Azure-SSIS Integration Runtime moeten zich op dezelfde locatie bezien. | Volgens de vereisten van het Azure-netwerk moeten het statische open bare IP-adres en het virtuele netwerk zich op dezelfde locatie en hetzelfde abonnement benemen. Geef twee geldige statische open bare IP-adressen op en start de Azure-SSIS IR opnieuw. |
+| Het geleverde statische open bare IP-adres is een basis. Geef twee standaard voor uw Azure-SSIS Integration Runtime op. | Raadpleeg [sku's van het open bare IP-adres](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) voor hulp. |
+
+![Azure-SSIS IR](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
+
+### <a name="publicipresourcegrouplockedduringstart"></a>PublicIPResourceGroupLockedDuringStart
+
+Als Azure-SSIS IR inrichting mislukt, worden alle resources die zijn gemaakt, verwijderd. Als er echter een resource delete Lock is voor het abonnement of de resource groep (die uw statische open bare IP-adres bevat), worden de netwerk bronnen niet zoals verwacht verwijderd. Als u de fout wilt herstellen, moet u de verwijderings vergrendeling verwijderen en de IR opnieuw opstarten.
+
+### <a name="publicipresourcegrouplockedduringstop"></a>PublicIPResourceGroupLockedDuringStop
+
+Wanneer u Azure-SSIS IR stopt, worden alle netwerk resources verwijderd die zijn gemaakt in de resource groep met uw open bare IP-adres. Het verwijderen kan echter mislukken als de vergren deling van een resource wordt verwijderd uit het abonnement of de resource groep (die uw statische open bare IP-adres bevat). Verwijder de verwijderings vergrendeling en start de IR opnieuw.
+
+### <a name="publicipresourcegrouplockedduringupgrade"></a>PublicIPResourceGroupLockedDuringUpgrade
+
+Azure-SSIS IR wordt regel matig automatisch bijgewerkt. Nieuwe IR-knoop punten worden tijdens de upgrade gemaakt en de oude knoop punten worden verwijderd. Daarnaast worden de gemaakte netwerk bronnen (bijvoorbeeld de load balancer en de netwerk beveiligings groep) voor de oude knoop punten verwijderd en worden de nieuwe netwerk bronnen gemaakt onder uw abonnement. Deze fout betekent dat het verwijderen van de netwerk bronnen voor de oude knoop punten is mislukt vanwege een verwijderings vergrendeling bij het abonnement of de resource groep (die uw statische open bare IP-adres bevat). Verwijder de verwijderings vergrendeling zodat de oude knoop punten kunnen worden opgeruimd en het statische open bare IP-adres voor de oude knoop punten kan worden vrijgegeven. Als u dit niet doet, kan het statische open bare IP-adres niet worden vrijgegeven. we kunnen uw IR verder niet meer bijwerken.
+
+### <a name="publicipnotusableduringupgrade"></a>PublicIPNotUsableDuringUpgrade
+
+Wanneer u uw eigen statische open bare IP-adressen wilt maken, moeten er twee open bare IP-adressen worden gegeven. Een van deze wordt gebruikt om de IR-knoop punten direct te maken en er wordt een andere gebruikt tijdens de upgrade van de IR. Deze fout kan optreden wanneer het andere open bare IP-adres niet kan worden gebruikt tijdens de upgrade. Raadpleeg [InvalidPublicIPSpecified](#InvalidPublicIPSpecified) voor mogelijke oorzaken.
