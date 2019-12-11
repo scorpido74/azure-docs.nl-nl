@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 4a09389cfd9a5e61c1d73440545c76df7c9eadb2
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: d89240467d5ea5172d04c8eb187fe85d1b702723
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74566248"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74980612"
 ---
 ## <a name="for-users-in-your-directory"></a>Voor gebruikers in uw Directory
 
@@ -66,6 +66,7 @@ Volg deze stappen als u wilt toestaan dat gebruikers die geen toegang hebben tot
     | --- | --- |
     | **Specifieke verbonden organisaties** | Kies deze optie als u een selectie wilt selecteren in een lijst met organisaties die de beheerder eerder heeft toegevoegd. Alle gebruikers van de geselecteerde organisaties kunnen dit toegangs pakket aanvragen. |
     | **Alle verbonden organisaties** | Kies deze optie als alle gebruikers van alle verbonden organisaties dit toegangs pakket kunnen aanvragen. |
+    | **Alle gebruikers (alle verbonden organisaties en alle nieuwe externe gebruikers)** | Kies deze optie als alle gebruikers van alle verbonden organisaties dit toegangs pakket kunnen aanvragen en de instellingen van de lijst voor het toestaan of weigeren van de B2B-gebruikers prioriteit moeten hebben voor een nieuwe externe gebruiker. |
 
     Een verbonden organisatie is een extern Azure AD-adres lijst of-domein waarmee u een relatie hebt.
 
@@ -80,7 +81,7 @@ Volg deze stappen als u wilt toestaan dat gebruikers die geen toegang hebben tot
 1. Wanneer u alle verbonden organisaties hebt geselecteerd, klikt u op **selecteren**.
 
     > [!NOTE]
-    > Alle gebruikers van de geselecteerde verbonden organisaties kunnen dit toegangs pakket aanvragen. Dit omvat gebruikers in azure AD van alle subdomeinen die zijn gekoppeld aan de organisatie, tenzij deze domeinen worden geblokkeerd door de Azure B2B-lijst voor toestaan of weigeren. Zie [uitnodigingen voor B2B-gebruikers van specifieke organisaties toestaan of blok keren](../articles/active-directory/b2b/allow-deny-list.md)voor meer informatie.
+    > Alle gebruikers van de geselecteerde verbonden organisaties kunnen dit toegangs pakket aanvragen. Dit omvat gebruikers in azure AD van alle subdomeinen die zijn gekoppeld aan de organisatie, tenzij deze domeinen worden geblokkeerd door de Azure B2B-lijst voor toestaan of weigeren. Zie voor meer informatie, [uitnodigingen toestaan of blokkeren voor B2B-gebruikers van bepaalde organisaties](../articles/active-directory/b2b/allow-deny-list.md).
 
 1. De sectie [goed keuring](#approval) overs Laan.
 

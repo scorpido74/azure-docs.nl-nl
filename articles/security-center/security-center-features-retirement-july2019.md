@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: c4fe185f5d203b1b0eba306c80cded14ad82bc98
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: bb8cfae73d84135858733899e6441f564106e9d1
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72438626"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997221"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Buiten gebruik stellen van Security Center-functies (2019 juli)
 
@@ -156,7 +156,7 @@ Security Center kunt [geïntegreerde beveiligings oplossingen inschakelen in azu
 
 - [Firewall-en Web Application Firewall oplossingen van de volgende generatie](https://docs.microsoft.com/azure/sentinel/connect-data-sources)
 - [Integratie van beveiligings oplossingen die de algemene gebeurtenis indeling (CEF) ondersteunen](https://docs.microsoft.com/azure/sentinel/connect-common-event-format)
-- [Micro soft Advanced Threat Analytics](https://docs.microsoft.com/azure/sentinel/connect-azure-atp)
+- [Microsoft Advanced Threat Analytics](https://docs.microsoft.com/azure/sentinel/connect-azure-atp)
 - [Azure AD Identity Protection](https://docs.microsoft.com/azure/sentinel/connect-azure-ad-identity-protection)
 
 Na het buiten gebruik stellen kunt u geen van de typen oplossingen die in de voor gaande lijst worden vermeld, toevoegen of wijzigen, hetzij via de gebruikers interface of de API. Azure Security Center vindt geen nieuwe exemplaren van deze partner oplossingen meer.
@@ -169,7 +169,7 @@ Als u bestaande verbonden oplossingen hebt, raden we u aan om over te stappen op
 
 Azure Security Center bewaakt beveiligingsconfiguraties door een set van [meer dan 150 aanbevolen regels](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) toe te passen om het besturingssysteem te beveiligen. Deze regels zijn van toepassing op firewalls, controle, wachtwoord beleid en meer. Als er wordt geconstateerd dat een computer een kwetsbare configuratie heeft, wordt er door Security Center een beveiligingsaanbeveling gegenereerd. In het [scherm beveiligings configuratie bewerken](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) kunnen klanten de standaard configuratie voor de beveiliging van besturings systemen aanpassen in Security Center.
 
-Deze preview-functie is buiten gebruik gesteld. Ga als [volgt](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization) te werk om de standaard waarden na afloop van de eind datum van de beveiligings configuraties te herstellen via de API of Power shell
+Deze preview-functie is buiten gebruik gesteld. Ga als [volgt](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization)te werk om de standaard waarden na afloop van de eind datum van de beveiligings configuraties te herstellen via de API of Power shell.
 
 ![Beveiligings configuraties bewerken][17]
 

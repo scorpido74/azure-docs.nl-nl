@@ -1,20 +1,20 @@
 ---
 title: 'Snelstartgids: client bibliotheek voor formulier herkenning voor .NET | Microsoft Docs'
-description: Aan de slag met de Form Recognizer-client bibliotheek voor .NET voor het trainen, uitpakken, analyseren en ophalen van gestructureerde gegevens uitvoer.
+description: Ga aan de slag met de formulier Recognizer-client bibliotheek voor .NET voor het trainen, ophalen, analyseren en ophalen van gestructureerde gegevens uitvoer.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 07/12/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 6d360939a0196d7e5dc651ecf9a01ef5cbd2f689
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 018371f4c188d05d92a5fd3fd81511d941a359a6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904610"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978608"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Snelstartgids: client bibliotheek voor formulier herkenning voor .NET
 
@@ -99,7 +99,7 @@ De volgende klassen behandelen de hoofd functionaliteit van de formulier Recogni
 |[AnalyzeResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.analyzeresult?view=azure-dotnet-preview)| Deze klasse levert de resultaten van een aangepaste model analyse bewerking. Het bevat een lijst met **ExtractedPage** -instanties. |
 |[ExtractedPage](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.extractedpage?view=azure-dotnet-preview)| Deze klasse vertegenwoordigt alle gegevens die zijn geëxtraheerd uit één formulier document.|
 
-## <a name="code-examples"></a>Code voorbeelden
+## <a name="code-examples"></a>Codevoorbeelden
 
 <!--
     Include code snippets and short descriptions for each task you list in the the bulleted list. Briefly explain each operation, but include enough clarity to explain complex or otherwise tricky operations.
@@ -197,4 +197,4 @@ In deze Quick Start hebt u de formulier Recognizer .NET-client bibliotheek gebru
 >[Een set trainings gegevens bouwen](../build-training-data-set.md)
 
 * [Wat is formulier herkenner?](../overview.md)
-* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer).
+* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer).

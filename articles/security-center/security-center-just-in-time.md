@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: fb092a3c6b473680480c3bba0ad6f437176833de
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3e344afc29ae398394a1aa2aa527f2f32e24eef7
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576406"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997187"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Toegang tot virtuele machines beheren met Just-in-time
 
-Just-in-time-toegang (VM) voor virtuele machines kan worden gebruikt om inkomend verkeer naar uw Azure-Vm's te vergren delen, waardoor de bloot stelling aan aanvallen wordt verkleind en zo snel mogelijk toegang tot virtuele machines kan worden gemaakt.
+JIT-toegang (Just-In-Time) tot virtuele machines (VM's) kan worden gebruikt om binnenkomend verkeer naar uw Azure-VM's te blokkeren, zodat u minder kwetsbaar bent voor aanvallen maar tegelijkertijd eenvoudig toegang wordt geboden om verbinding met VM's te kunnen maken wanneer dat nodig is.
 
 > [!NOTE]
 > De just-in-time-functie is beschikbaar in de laag standaard van Security Center. Bekijk de pagina [Prijzen](security-center-pricing.md) voor meer informatie over de tariefopties van Security Center.
@@ -94,12 +94,12 @@ Vanuit Security Center kunt u een JIT-beleid configureren en toegang aanvragen t
 5. Klik op **JIT inschakelen op vm's**.
    -. Deze Blade bevat de standaard poorten die worden aanbevolen door Azure Security Center:
       - 22-SSH
-      - 3389-RDP
-      - 5985-WinRM 
-      - 5986-WinRM
+      - 3389 - RDP
+      - 5985 - WinRM 
+      - 5986 - WinRM
 6. U kunt ook aangepaste poorten configureren:
 
-      1. Klik op **Toevoegen**. Het venster **poort configuratie toevoegen** wordt geopend.
+      1. Klik op **Add**. Het venster **poort configuratie toevoegen** wordt geopend.
       2. Voor elke poort die u wilt configureren, zowel standaard als aangepast, kunt u de volgende instellingen aanpassen:
 
     - **Protocol type**: het protocol dat is toegestaan op deze poort wanneer een aanvraag wordt goedgekeurd.
@@ -176,10 +176,10 @@ Voor uw gemak kunt u vanuit de pagina van de virtuele machine in Security Center
 
 Als u de just-in-time-toegang op uw Vm's eenvoudig wilt implementeren, kunt u een virtuele machine zo instellen dat alleen just-in-time-toegang rechtstreeks vanuit de virtuele machine wordt toegestaan.
 
-1. Selecteer **virtuele machines**In het Azure Portal.
-2. Klik op de virtuele machine die u wilt beperken tot just-in-time-toegang.
-3. Klik in het menu op **configuratie**.
-4. Onder **just-in-time-Access** klikt u op **just-in-time-beleid inschakelen**. 
+1. Zoek in het [Azure Portal](https://ms.portal.azure.com)naar **virtuele machines**en selecteer deze. 
+2. Selecteer de virtuele machine die u wilt beperken tot just-in-time-toegang.
+3. Selecteer in het menu **configuratie**.
+4. Onder **just-in-time-toegang**selecteert u **just-in-time-beleid inschakelen**. 
 
 Dit maakt just-in-time-toegang voor de virtuele machine mogelijk met de volgende instellingen:
 
@@ -227,7 +227,7 @@ De just-in-time VM-toegangs functie kan worden gebruikt via de Azure Security Ce
 
 ## <a name="jit-vm-access-via-powershell"></a>JIT-VM-toegang via Power shell
 
-Als u de just-in-time-toegang tot een VM wilt gebruiken via Power shell, gebruikt u de officiële Azure Security Center Power shell-cmdlets en specifiek `Set-AzJitNetworkAccessPolicy`.
+Gebruik de officiële Azure Security Center Power shell-cmdlets en `Set-AzJitNetworkAccessPolicy`om de just-in-time-toegang tot een VM via Power shell te gebruiken.
 
 In het volgende voor beeld wordt een just-in-time-VM-toegangs beleid ingesteld op een specifieke virtuele machine en worden de volgende opties ingesteld:
 
@@ -286,7 +286,7 @@ Zie de Power shell-cmdlet-documentatie voor meer informatie.
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel hebt u geleerd hoe u met Just-in-time-VM-toegang in Security Center de toegang tot uw virtuele Azure-machines kunt beheren.
 
-Zie de volgende onderwerpen voor meer informatie over Security Center:
+Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
 
 - [Beveiligings beleid instellen](tutorial-security-policy.md) : informatie over het configureren van beveiligings beleid voor uw Azure-abonnementen en-resource groepen.
 - [Aanbevelingen voor beveiliging beheren](security-center-recommendations.md) : Ontdek hoe u met aanbevelingen uw Azure-resources kunt beveiligen.

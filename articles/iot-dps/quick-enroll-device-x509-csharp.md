@@ -1,6 +1,6 @@
 ---
 title: X. 509-apparaat inschrijven bij Azure Device Provisioning Service met behulp vanC#
-description: In deze snelstart wordt gebruikgemaakt van groepsregistraties. In deze Snelstartgids schrijft u X. 509-apparaten in voor de Azure C#-IOT hub Device Provisioning Service met behulp van.
+description: In deze quickstart wordt gebruikgemaakt van groepsregistraties. In deze Snelstartgids schrijft u X. 509-apparaten in voor Azure IoT Hub Device Provisioning Service (DPS) C#met.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 3df9afa35b3ae9f7360a5d4b890d3fce209a4b12
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 1986f51b834f177a7c8d70392cc532cbfadb7170
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423350"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974730"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Snelstart: X.509-apparaten registreren bij Device Provisioning Service met behulp van C#
 

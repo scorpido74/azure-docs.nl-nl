@@ -7,22 +7,22 @@ ms.subservice: security
 ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
-author: aliceku
-ms.author: aliceku
+author: jaszymas
+ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/19/2019
-ms.openlocfilehash: 6676a6f7c694ffd4f2edf3f63a8181863df0016c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c8a1e2a19fa3c8691cdb381669dc3d4db189c42d
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227964"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995844"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption met door de klant beheerde sleutel
 
 Azure SQL [transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) met door de klant beheerde sleutel maakt het Bring your own Key-scenario (BYOK) mogelijk voor gegevens bescherming in rust en stelt organisaties in staat om schei ding van taken in het beheer van sleutels en gegevens te implementeren. Met door de klant beheerde transparante gegevens versleuteling is de klant verantwoordelijk voor en in een volledig beheer van een belang rijke levenscyclus beheer (het maken van sleutels, uploaden, draaien, verwijderen), machtigingen voor sleutel gebruik en het controleren van bewerkingen op sleutels.
 
-In dit scenario is de sleutel die wordt gebruikt voor het versleutelen van de database versleutelings sleutel (DEK), de zogeheten TDE Protector, een door de klant beheerde asymmetrische sleutel die is opgeslagen in een door de klant en de klant beheerde [Azure Key Vault (Azure)](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), een op de cloud gebaseerd extern sleutel beheer opgehaald. Key Vault is een Maxi maal beschik bare en schaal bare beveiligde opslag voor RSA cryptografische sleutels, optioneel ondersteund door FIPS 140-2 level 2 gevalideerde hardware security modules (Hsm's). Het biedt geen directe toegang tot een opgeslagen sleutel, maar voorziet in Services voor het versleutelen/ontsleutelen met behulp van de sleutel voor de gemachtigde entiteiten. De sleutel kan worden gegenereerd door de sleutel kluis, geïmporteerd of [overgedragen naar de sleutel kluis van een on-premises HSM-apparaat](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
+In dit scenario is de sleutel die wordt gebruikt voor het versleutelen van de database versleutelings sleutel (DEK), de zogeheten TDE-Protector, een door de klant beheerde asymmetrische sleutel die is opgeslagen in een door de klant en door de klant beheerde [Azure Key Vault (Azure)](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), een op de cloud gebaseerd extern sleutel beheersysteem. Key Vault is een Maxi maal beschik bare en schaal bare beveiligde opslag voor RSA cryptografische sleutels, optioneel ondersteund door FIPS 140-2 level 2 gevalideerde hardware security modules (Hsm's). Het biedt geen directe toegang tot een opgeslagen sleutel, maar voorziet in Services voor het versleutelen/ontsleutelen met behulp van de sleutel voor de gemachtigde entiteiten. De sleutel kan worden gegenereerd door de sleutel kluis, geïmporteerd of [overgedragen naar de sleutel kluis van een on-premises HSM-apparaat](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
 
 Voor Azure SQL Database en Azure SQL Data Warehouse wordt de TDE-Protector ingesteld op het niveau van de logische server en overgenomen door alle versleutelde data bases die aan die server zijn gekoppeld. Voor Azure SQL Managed instance wordt de TDE-Protector ingesteld op het niveau van de instantie en overgenomen door alle versleutelde data bases op die instantie. De term *Server* verwijst naar SQL database logische server en beheerde instantie in dit document, tenzij anders aangegeven. 
 
@@ -158,7 +158,7 @@ Als u een back-up wilt herstellen die is versleuteld met een TDE-Protector van K
 > [!IMPORTANT]
 > Er kan op elk moment niet meer dan één TDE-protector worden ingesteld voor een server. De sleutel is gemarkeerd met de sleutel de standaard TDE-Protector maken op de Blade Azure Portal. Meerdere extra sleutels kunnen echter aan een server worden gekoppeld zonder dat ze als een TDE-protector worden gemarkeerd. Deze sleutels worden niet gebruikt voor het beveiligen van DEK, maar kunnen worden gebruikt tijdens het terugzetten vanuit een back-up, als het back-upbestand is versleuteld met de sleutel met de bijbehorende vinger afdruk.
 
-Als de sleutel die nodig is voor het herstellen van een back-up niet langer beschikbaar is voor de doel server, wordt het volgende fout bericht weer gegeven in de Restore try: ' target server `<Servername>` heeft geen toegang tot alle Azure-Uri's die zijn gemaakt tussen \<tijds Tempel #1 > en \<Time Stamp #2 >. Voer de bewerking opnieuw uit nadat alle Azure-Uri's zijn teruggezet.
+Als de sleutel die nodig is voor het herstellen van een back-up niet langer beschikbaar is voor de doel server, wordt het volgende fout bericht weer gegeven in de Restore try: ' target server `<Servername>` heeft geen toegang tot alle Azure-Uri's die zijn gemaakt tussen \<Time Stamp #1 > en \<Time Stamp #2 >. Voer de bewerking opnieuw uit nadat alle Azure-Uri's zijn teruggezet.
 
 Als u dit wilt beperken, voert u de cmdlet [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) uit voor de doel-SQL database logische server of [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) voor het beheerde exemplaar van het doel om de lijst met beschik bare sleutels te retour neren en de ontbrekende waarden te identificeren. Om ervoor te zorgen dat alle back-ups kunnen worden hersteld, moet u ervoor zorgen dat de doel server voor het terugzetten toegang heeft tot alle benodigde sleutels. Deze sleutels hoeven niet als TDE-Protector te worden gemarkeerd.
 

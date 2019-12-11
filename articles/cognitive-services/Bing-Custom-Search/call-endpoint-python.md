@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Aanroepen van uw Bing Custom Search-eindpunt met Python | Microsoft Docs'
+title: 'Snelstartgids: uw Bing Aangepaste zoekopdrachten-eind punt aanroepen met python | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om te beginnen met het opvragen van zoekresultaten van uw Bing Custom Search-instantie met behulp van Python.
 services: cognitive-services
@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 24416bc2259fdd35581699b11f599ea48e349d5a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cbfc122913978b1e0828917e901422942928644d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564640"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974441"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-python"></a>Quickstart: Aanroepen van uw Bing Custom Search-eindpunt met Python
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-python"></a>Snelstartgids: uw Bing Aangepaste zoekopdrachten-eind punt aanroepen met behulp van python
 
-Gebruik deze quickstart om te beginnen met het opvragen van zoekresultaten van uw exemplaar van Bing Custom Search. Hoewel deze toepassing is geschreven in Python, is de Bing Custom Search-API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingCustomSearchv7.py).
+Gebruik deze quickstart om te beginnen met het opvragen van zoekresultaten van uw Bing Aangepaste zoekopdrachten-exemplaar. Hoewel deze toepassing is geschreven in Python, is de Bing Custom Search-API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingCustomSearchv7.py).
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Bing Custom Search-exemplaar. Zie [Quickstart: Uw eerste Bing Custom Search-exemplaar maken](quick-start.md) voor meer informatie.
+- Een Bing Custom Search-exemplaar. Zie [Quick Start: uw eerste Bing aangepaste zoekopdrachten-exemplaar maken](quick-start.md) voor meer informatie.
 - [Python](https://www.python.org/) 2.x of 3.x
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
@@ -44,7 +44,7 @@ Gebruik deze quickstart om te beginnen met het opvragen van zoekresultaten van u
 
 ## <a name="send-and-receive-a-search-request"></a>Een zoekaanvraag verzenden en ontvangen 
 
-1. Stel de aanvraag-URL samen door uw zoekterm toe te voegen aan de queryparameter `q=`, en de aangepaste configuratie-id van uw zoekinstantie aan `customconfig=`. Scheid de parameters van elkaar met een `&`-teken. 
+1. Stel de aanvraag-URL samen door uw zoekterm toe te voegen aan de queryparameter `q=`, en de aangepaste configuratie-id van uw zoekinstantie aan `customconfig=`. Scheid de parameters van elkaar met een `&`-teken. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```python
     url = 'https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?' + 'q=' + searchTerm + '&' + 'customconfig=' + customConfigId

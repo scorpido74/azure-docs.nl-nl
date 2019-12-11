@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: helohr
-ms.openlocfilehash: 420978e79da99847f16e5c85b2d2510083ca97a7
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 745b33efe46c82e3b9358c9c5a2ed13292242db1
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006243"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997340"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Verbinding maken met de Windows Desktop-client
 
-> Van toepassing op: Windows 7 en Windows 10
+> Van toepassing op: Windows 7, Windows 10 en Windows 10 IoT Enter prise
 
-U hebt toegang tot de virtuele bureau blad-bronnen van Windows op apparaten met Windows 7 of Windows 10 met behulp van de Windows-bureaubladclient.
+U hebt toegang tot de virtuele Bureau bladen van Windows op apparaten met Windows 7, Windows 10 en Windows 10 IoT Enter prise met behulp van de Windows-bureaubladclient.
 
 > [!IMPORTANT]
 > Windows virtueel bureau blad biedt geen ondersteuning voor de client RemoteApp-en bureaublad verbindingen (RADC) of de Verbinding met extern bureaublad-client (MSTSC).

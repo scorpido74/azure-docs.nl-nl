@@ -11,17 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/19/2019
+ms.date: 12/09/2019
 ms.author: takamath
-ms.openlocfilehash: 080dd91b2ab6792debfae3a3ccc97b0927015de4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e2dd642139ae082cc0d0838e61399c549d2d812a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580135"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970763"
 ---
 # <a name="enable-browser-connection-on-lab-virtual-machines"></a>Browser verbinding inschakelen op virtuele lab-machines 
-
 DevTest Labs kan worden geïntegreerd met [Azure Bastion](https://docs.microsoft.com/azure/bastion/), waarmee u via een browser verbinding kunt maken met uw virtuele machines. U moet eerst de browser verbinding inschakelen op de virtuele lab-machines.
 
 Als eigenaar van een lab kunt u de toegang tot alle virtuele lab-machines inschakelen via een browser. U hebt geen aanvullende client, agent of software nodig. Azure Bastion biedt beveiligde en naadloze RDP-/SSH-connectiviteit in uw virtuele machine, rechtstreeks in Azure Portal via SSL. Wanneer u verbinding maakt via Azure Bastion, hebt u geen openbaar IP-adres nodig voor uw virtuele machines. Zie [Wat is Azure Bastion?](../bastion/bastion-overview.md) voor meer informatie.
@@ -30,13 +29,21 @@ Als eigenaar van een lab kunt u de toegang tot alle virtuele lab-machines inscha
 In dit artikel wordt beschreven hoe u browser verbinding kunt inschakelen voor virtuele lab-machines.
 
 ## <a name="prerequisites"></a>Vereisten 
-Implementeer een bastion-host in uw bestaande virtuele netwerk van uw Lab **(of)** Verbind uw Lab met een bastion geconfigureerd VNet. 
+Implementeer een bastion-host in uw bestaande virtuele netwerk van uw Lab **(of)** Verbind uw Lab met een bastion geconfigureerd virtueel netwerk. 
 
-Zie [een Azure bastion-host maken (preview)](../bastion/bastion-create-host-portal.md)voor meer informatie over het implementeren van een bastion-host in een VNet. Wanneer u de bastion-host maakt, selecteert u het virtuele netwerk van de test omgeving. 
+Zie [een Azure bastion-host maken](../bastion/bastion-create-host-portal.md)voor meer informatie over het implementeren van een bastion-host in een virtueel netwerk. Wanneer u de bastion-host maakt, selecteert u het virtuele netwerk van de test omgeving. 
 
-Zie [een virtueel netwerk configureren in azure DevTest Labs](devtest-lab-configure-vnet.md)voor meer informatie over het verbinden van uw Lab met een bastion geconfigureerde VNet. Selecteer het VNet waarop de bastion-host is geïmplementeerd en de **AzureBastionSubnet** . Hier volgen de gedetailleerde stappen: 
+Eerst moet u een tweede subnet in het virtuele netwerk van Bastion maken, omdat de AzureBastionSubnet geen niet-Bastion resources meer mag maken. 
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+## <a name="create-a-second-sub-net-in-the-bastion-virtual-network"></a>Een tweede sub-net in het virtuele netwerk van Bastion maken
+U kunt geen Lab Vm's maken in een Azure Bastion-subnet. Maak een ander subnet in het virtuele Bastion-netwerk, zoals wordt weer gegeven in de volgende afbeelding:
+
+![Tweede subnet in azure Bastion virtueel netwerk](./media/connect-virtual-machine-through-browser/second-subnet.png)
+
+## <a name="enable-vm-creation-in-the-subnet"></a>Het maken van VM'S in het subnet inschakelen
+Nu kunt u de virtuele machines in dit subnet maken door de volgende stappen uit te voeren: 
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **alle services** in het navigatie menu links. 
 1. Selecteer **DevTest Labs** uit de lijst. 
 1. Selecteer in de lijst met Labs *uw Lab*. 
@@ -47,23 +54,23 @@ Zie [een virtueel netwerk configureren in azure DevTest Labs](devtest-lab-config
 1. Selecteer **configuratie en beleid** in de sectie **instellingen** in het menu links. 
 1. Selecteer **virtuele netwerken**.
 1. Selecteer **toevoegen** op de werk balk. 
-1. Selecteer het **VNet** waarop de bastion-host is geïmplementeerd. 
-1. Selecteer het subnet: **AzureBastionSubnet**. 
+1. Selecteer het **virtuele netwerk** waarop de bastion-host is geïmplementeerd. 
+1. Selecteer het subnet voor virtuele machines, niet de **AzureBastionSubnet**, de andere die u eerder hebt gemaakt. Sluit de pagina en open deze opnieuw als u het subnet in de lijst onderaan niet ziet. 
 
-    ![Subnet](./media/enable-browser-connection-lab-virtual-machines/subnet.png)
+    ![Het maken van VM'S in het subnet inschakelen](./media/connect-virtual-machine-through-browser/enable-vm-creation-subnet.png)
 1. Selecteer **gebruiken in de optie voor het maken van virtuele machines** . 
 1. Selecteer **Opslaan** op de werkbalk. 
-1. Als u een oud VNet voor het Lab hebt, verwijdert u dit door * *...* te selecteren.  en **verwijderen**. 
+1. Als u een oud virtueel netwerk voor het Lab hebt, verwijdert u dit door * *...* te selecteren.  en **verwijderen**. 
 
 ## <a name="enable-browser-connection"></a>Browser verbinding inschakelen 
 
-Zodra u in het lab een bastion-geconfigureerde VNet hebt, kunt u browser verbinding maken inschakelen voor virtuele lab-machines.
+Zodra u een virtueel Bastion-netwerk hebt geconfigureerd in de test omgeving, kunt u de verbinding met de virtuele machine van Lab inschakelen voor de browser.
 
 Voer de volgende stappen uit om browser verbinding te maken op virtuele lab-machines:
 
 1. Ga in het Azure Portal naar *uw Lab*.
 1. Selecteer **configuratie en beleid**.
-1. Selecteer in **instellingen**de optie **browser verbinding maken (preview)** .
+1. Selecteer in **instellingen**de optie **browser verbinding maken**. Als u deze optie niet ziet, sluit u de pagina **configuratie beleid** en opent u deze opnieuw. 
 
     ![Browser verbinding inschakelen](./media/enable-browser-connection-lab-virtual-machines/browser-connect.png)
 

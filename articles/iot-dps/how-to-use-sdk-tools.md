@@ -1,18 +1,18 @@
 ---
 title: Hulpprogram ma's voor Azure IoT Hub Device Provisioning Service Sdk's gebruiken
-description: In dit document worden de hulpprogram ma's in azure IoT Hub Device Provisioning Service Sdk's voor ontwikkeling beschreven
+description: In dit document worden de hulpprogram ma's van Azure IoT Hub Device Provisioning Service (DPS) Sdk's voor ontwikkeling beschreven
 author: robinsh
 ms.author: robinsh
 ms.date: 04/09/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: f5bdf81dedfcf803b8c53a5b0a29cfb823989873
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229678"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974799"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>De hulpprogram ma's in de Sdk's gebruiken om de ontwikkeling van het inrichten te vereenvoudigen
 De IoT Hub Device Provisioning Service vereenvoudigt het inrichtings proces met Zero-Touch, just-in-time- [inrichting](concepts-auto-provisioning.md) op een veilige en schaal bare manier.  Er is een beveiligings attest in de vorm van X. 509-certificaat of Trusted Platform Module (TPM) vereist.  Micro soft is ook in samen werking met [andere partners voor beveiligingshardware](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) om het vertrouwen in de beveiliging van IOT-implementatie te verbeteren. Meer informatie over de vereiste voor hardware-beveiliging kan voor ontwikkel aars behoorlijk lastig zijn. Er wordt een set met Sdk's voor Azure IoT Provisioning Service gegeven, zodat ontwikkel aars een laag kunnen gebruiken voor het schrijven van clients die met de inrichtings service communiceren. De Sdk's bieden ook voor beelden voor veelvoorkomende scenario's en een set hulpprogram ma's om beveiligings attesten in ontwikkeling te vereenvoudigen.

@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Een zoekopdracht op internet uitvoeren met Ruby - Bing Webzoekopdrachten-API'
+title: 'Quick Start: een webzoekopdracht uitvoeren met Ruby-Bing Webzoekopdrachten-API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen naar de REST API van Bing Web Search te verzenden via Ruby en een JSON-antwoord te ontvangen
 services: cognitive-services
@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9aa8fc4c6b27c2a2c7d11a95ddb2ecca347ec0e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4a902e869ed9fd2ae9274f0ad8eee11e43b8edc6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60646826"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974322"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Snelstartgids: Ruby gebruiken voor het aanroepen van de Bing Webzoekopdrachten-API  
 
-Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en het JSON-antwoord te ontvangen. Deze Ruby-toepassing een zoekaanvraag verzendt naar de API en het antwoord. Hoewel deze toepassing in Ruby is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Gebruik deze quickstart om voor het eerst de Bing Web Search-API aan te roepen en het JSON-antwoord te ontvangen. Met deze ruby-toepassing wordt een zoek opdracht naar de API verzonden en wordt het antwoord weer gegeven. Hoewel deze toepassing in Ruby is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u verdergaat met deze snelstart moet u beschikken over:
+U moet over het volgende beschikken voordat u verdergaat met deze snelstartgids:
 
 * [Ruby 2.4 of hoger](https://www.ruby-lang.org/en/downloads/)
 * Een abonnementssleutel
@@ -43,7 +43,7 @@ require 'json'
 
 ## <a name="define-variables"></a>Variabelen definiëren
 
-Er moet een aantal variabelen worden ingesteld voordat we verder kunnen gaan. Controleer of `$uri` en `path` geldig zijn en vervang de waarde `accessKey` door een geldige abonnementssleutel uit uw Azure-account. U kunt de zoekquery gerust aanpassen door de waarde voor `term` te vervangen.
+Er moet een aantal variabelen worden ingesteld voordat we verder kunnen gaan. `uri` kunnen het globale eind punt hieronder zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource. Controleer of `uri` en `path` geldig zijn en vervang de waarde `accessKey` door een geldige abonnementssleutel uit uw Azure-account. U kunt de zoekquery gerust aanpassen door de waarde voor `term` te vervangen.
 
 ```ruby
 accessKey = "YOUR_SUBSCRIPTION_KEY"
@@ -58,7 +58,7 @@ if accessKey.length != 32 then
 end
 ```
 
-## <a name="make-a-request"></a>Een aanvraag maken
+## <a name="make-a-request"></a>Een aanvraag doen
 
 Gebruik de volgende code om een aanvraag te maken en het antwoord te verwerken.
 
@@ -264,6 +264,6 @@ Antwoorden afkomstig van de Bing Webzoekopdrachten-API worden geretourneerd in d
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie voor app met één pagina voor Bing Web Search](../tutorial-bing-web-search-single-page-app.md)
+> [Zelfstudie voor app met één pagina voor Bing Web Search ](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

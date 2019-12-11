@@ -1,6 +1,6 @@
 ---
 title: X. 509-apparaten registreren bij Azure Device Provisioning Service met behulp van Java
-description: In deze quickstart wordt gebruikgemaakt van zowel groepsregistraties als afzonderlijke registraties. In deze quickstart registreert u X.509-apparaten bij Azure IoT Hub Device Provisioning Service met behulp van Java.
+description: In deze quickstart wordt gebruikgemaakt van zowel groepsregistraties als afzonderlijke registraties. In deze Quick Start schrijft u X. 509-apparaten in bij Azure IoT Hub Device Provisioning Service (DPS) met behulp van Java.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 983e410c6f6298c6b251fdc2a4aff5c677d26906
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 4be7dc3e93b61f036a4167347a45725eff185f04
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423046"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969707"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Snelstart: X.509-apparaten registreren bij Device Provisioning Service met behulp van Java
 
@@ -66,7 +66,7 @@ In de volgende stappen wordt gedemonstreerd hoe u de inrichtingsgegevens van het
 
             ![De verbindingsreeks voor de inrichting ophalen uit de portal](./media/quick-enroll-device-x509-java/provisioning-string.png)  
 
-        4. Vervang  **in het voorbeeldcodebestandServiceEnrollmentGroupSample.java**`[Provisioning Connection String]` door de **Verbindingsreeks van de primaire sleutel**.
+        4. Vervang `[Provisioning Connection String]` in het voorbeeldcodebestand **_ServiceEnrollmentGroupSample.java_** door de **Verbindingsreeks van de primaire sleutel**.
 
             ```Java
             private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";

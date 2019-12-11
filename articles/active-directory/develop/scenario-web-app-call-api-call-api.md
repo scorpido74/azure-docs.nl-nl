@@ -1,5 +1,5 @@
 ---
-title: Web-app die web-Api's aanroept (die een web-API aanroepen)-micro soft Identity-platform
+title: Een web-API aanroepen vanuit een web-app-micro soft Identity platform | Azure
 description: Meer informatie over het bouwen van een web-app die web-Api's aanroept (die een web-API aanroepen)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d971ec3c7cd82d6e028d0f96c8f52b897cedc351
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: de972c4efcfa544227649581d7c3441aae0bfb4f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175302"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964936"
 ---
 # <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Web-app die web-Api's aanroept-een web-API aanroepen
 

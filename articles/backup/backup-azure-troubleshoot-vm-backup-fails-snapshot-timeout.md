@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 5e435d1169d5f148bfa2910174bf1f2835806c8b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 8331d74528703df1d7c56f25af7df0f53cd1f9be
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928242"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996269"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup fout oplossen: problemen met de agent of extensie
 
@@ -29,7 +29,6 @@ De Azure VM-agent is mogelijk gestopt, verouderd, in een inconsistente status of
   - Voor Windows-Vm's voert u de volgende [stappen uit](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) om de gast agent opnieuw te starten.<br>
   - Voor Linux-Vm's voert u deze [stappen uit](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) om de gast agent opnieuw te starten.
 
-
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError: kan niet communiceren met de VM-agent voor de status van de moment opname
 
 **Fout code**: GuestAgentSnapshotTaskStatusError<br>
@@ -44,6 +43,8 @@ Nadat u een virtuele machine voor de Azure Backup-service hebt geregistreerd en 
 **Oorzaak 3: [de status van de moment opname kan niet worden opgehaald of een moment opname kan niet worden gemaakt](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**
 
 **Oorzaak 4: [de back-upextensie kan niet worden bijgewerkt of geladen](#the-backup-extension-fails-to-update-or-load)**
+
+**Oorzaak 5: de [configuratie opties voor de VM-agent zijn niet ingesteld (voor Linux-vm's)](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
 
 ## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed: de virtuele machine heeft een mislukte inrichtings status
 
@@ -196,6 +197,11 @@ Als u uitgebreide logboek registratie voor waagent nodig hebt, voert u de volgen
 1. Zoek in het bestand/etc/waagent.conf de volgende regel: **uitgebreide logboek registratie inschakelen (y | n)**
 2. Wijzig de **Logboeken. uitgebreide** waarde van *n* tot en met *y*.
 3. Sla de wijziging op en start waagent opnieuw door de stappen uit te voeren die eerder in deze sectie zijn beschreven.
+
+### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>VM-agent configuratie opties zijn niet ingesteld (voor Linux-Vm's)
+
+Een configuratie bestand (/etc/waagent.conf) regelt de acties van waagent. Extensie van configuratie bestand opties **. inschakelen** en **inrichten.** voor het werken moet de agent worden ingesteld op **y** voor back-up.
+Zie <https://github.com/Azure/WALinuxAgent#configuration-file-options> voor een volledige lijst met opties voor het configuratie bestand van de VM-agent
 
 ### <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>De status van de moment opname kan niet worden opgehaald, of een moment opname kan niet worden gemaakt
 

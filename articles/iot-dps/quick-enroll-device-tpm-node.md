@@ -1,6 +1,6 @@
 ---
 title: TPM-apparaat inschrijven bij Azure Device Provisioning Service met behulp van node. js
-description: 'Quick Start: TPM-apparaat inschrijven bij Azure IoT Hub Device Provisioning Service met behulp van de node. js-Service-SDK. In deze snelstart wordt gebruikgemaakt van afzonderlijke registraties.'
+description: 'Quick Start: TPM-apparaat inschrijven bij Azure IoT Hub Device Provisioning Service (DPS) met behulp van de node. js-Service-SDK. In deze snelstart wordt gebruikgemaakt van afzonderlijke inschrijvingen.'
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 890ad28d99bfc53fa8a3fb40caf0469b31aeee61
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 82e78801225659a1d79829a5d26741a885931919
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422964"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974747"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-nodejs-service-sdk"></a>Quick Start: TPM-apparaat inschrijven voor IoT Hub Device Provisioning Service met behulp van de node. js-Service-SDK
 

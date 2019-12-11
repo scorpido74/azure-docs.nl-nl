@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Een zoekopdracht op internet uitvoeren met Go - Bing Webzoekopdrachten-REST API'
+title: 'Snelstartgids: een webzoekopdracht met Go-Bing Web Search uitvoeren REST API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen naar de REST API van Bing Web Search te verzenden via Go en een JSON-antwoord te ontvangen
 services: cognitive-services
@@ -8,25 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
-ms.openlocfilehash: b7bf73c2948b302ec8294b7dc2ff2dc8f220c91b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 589f7884f390ae57df4e946bcd34ca3bda629ed8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648445"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978795"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Snelstartgids: Zoeken op internet met behulp van de REST API voor Bing Web Search en Go
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Snelstartgids: zoeken op internet met behulp van de Bing Web Search REST API en go
 
-Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en het JSON-antwoord te ontvangen. Deze Go-App een zoekaanvraag verzendt naar de API en het antwoord. Hoewel deze toepassing in Go is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
-
-Zie ook [Prijsinformatie Cognitive Services - Bing Zoeken-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Gebruik deze quickstart om voor het eerst de Bing Web Search-API aan te roepen en het JSON-antwoord te ontvangen. Met deze go-toepassing wordt een zoek opdracht naar de API verzonden en wordt het antwoord weer gegeven. Hoewel deze toepassing in Go is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
-Voordat u verdergaat met deze snelstart moet u beschikken over:
+U moet over het volgende beschikken voordat u verdergaat met deze snelstartgids:
 
 * [Binaire Go-bestanden](https://golang.org/dl/)
 * Een abonnementssleutel
@@ -113,7 +111,7 @@ type BingAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>De hoofdfunctie declareren en variabelen definiëren  
 
-Met deze code wordt de hoofdfunctie gedeclareerd en worden de vereiste variabelen ingesteld. Controleer of het eindpunt juist is en vervang de waarde `token` door een geldige abonnementssleutel uit uw Azure-account. U kunt de zoekquery gerust aanpassen door de waarde voor `searchTerm` te vervangen.
+Met deze code wordt de hoofdfunctie gedeclareerd en worden de vereiste variabelen ingesteld. `endpoint` kunnen het globale eind punt hieronder zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource. Controleer of het eindpunt juist is en vervang de waarde `token` door een geldige abonnementssleutel uit uw Azure-account. U kunt de zoekquery gerust aanpassen door de waarde voor `searchTerm` te vervangen.
 
 ```go
 // Declare the main function. This is required for all Go programs.
@@ -309,7 +307,7 @@ func main() {
 
 ## <a name="sample-response"></a>Voorbeeldantwoord  
 
-Antwoorden afkomstig van de Bing Webzoekopdrachten-API worden geretourneerd in de JSON-indeling. Deze voorbeeld-reactie is geformatteerd met behulp van de `BingAnswer` struct en toont de `result.Name` en `result.URL`.
+Antwoorden afkomstig van de Bing Webzoekopdrachten-API worden geretourneerd in de JSON-indeling. Dit voorbeeld antwoord is opgemaakt met behulp van de `BingAnswer` struct en toont de `result.Name` en `result.URL`.
 
 ```go
 Microsoft Cognitive Services || https://www.microsoft.com/cognitive-services
@@ -326,6 +324,6 @@ Cognitive Services - msdn.microsoft.com || https://msdn.microsoft.com/magazine/m
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie voor app met één pagina voor Bing Web Search](../tutorial-bing-web-search-single-page-app.md)
+> [Zelfstudie voor app met één pagina voor Bing Web Search ](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

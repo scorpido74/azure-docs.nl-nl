@@ -3,12 +3,12 @@ title: Waarvan kan Azure Backup Server back-ups maken?
 description: In dit artikel wordt een ondersteunings matrix weer gegeven met alle werk belastingen, gegevens typen en installaties die Azure Backup Server beveiligt.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: a7794ac82c70239693e91b3ae65c6292a6b4ed7f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 7e34ba81ad20b2d6a4e89995ab8b834f5f7dc725
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841350"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996150"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Beveiligingsmatrix voor Azure Backup Server
 
@@ -38,7 +38,8 @@ In dit artikel vindt u een overzicht van de verschillende servers en workloads d
 |Servers (32-bit en 64-bit)|Windows Server 2008 SP2|Fysieke server<br /><br />Lokale Hyper-V virtuele machine<br /> <br /> Azure Stack|Niet ondersteund|Volume, share, map, bestand, systeemstatus/bare metal|
 |Servers (32-bit en 64-bit)|Windows Server 2008 SP2|Windows virtuele machine in VMWare (beveiligt werkbelasting die wordt uitgevoerd in de Windows virtuele machine in VMWare)<br /> <br /> Azure Stack|V3, V2|Volume, share, map, bestand, systeemstatus/bare metal|
 |Servers (32-bit en 64-bit)|Windows Storage Server 2008|Fysieke server<br /><br />Lokale Hyper-V virtuele machine<br /> <br /> Azure Stack|V3, V2|Volume, share, map, bestand, systeemstatus/bare metal|
-|SQL Server|SQL Server 2017|Fysieke server <br /><br /> Lokale Hyper-V virtuele machine <br /> <br /> virtuele Azure-machine <br /><br /> Windows virtuele machine in VMWare (beveiligt werkbelasting die wordt uitgevoerd in de Windows virtuele machine in VMWare)<br /> <br /> Azure Stack|V3|Alle implementatiescenario's: database|
+|SQL Server|SQL Server 2019|Fysieke server <br /><br /> Lokale Hyper-V virtuele machine <br /> <br /> Azure virtuele machine (indien de werkbelasting wordt uitgevoerd als Azure virtuele machine) <br /><br /> Windows virtuele machine in VMWare (beveiligt werkbelasting die wordt uitgevoerd in de Windows virtuele machine in VMWare)<br /> <br /> Azure Stack|V3|Alle implementatiescenario's: database|
+|SQL Server|SQL Server 2017|Fysieke server <br /><br /> Lokale Hyper-V virtuele machine <br /> <br /> Azure virtuele machine (indien de werkbelasting wordt uitgevoerd als Azure virtuele machine) <br /><br /> Windows virtuele machine in VMWare (beveiligt werkbelasting die wordt uitgevoerd in de Windows virtuele machine in VMWare)<br /> <br /> Azure Stack|V3|Alle implementatiescenario's: database|
 |SQL Server|SQL Server 2016 SP2|Fysieke server <br /><br /> Lokale Hyper-V virtuele machine <br /> <br /> virtuele Azure-machine <br /><br /> Windows virtuele machine in VMWare (beveiligt werkbelasting die wordt uitgevoerd in de Windows virtuele machine in VMWare)<br /> <br /> Azure Stack|V3, V2|Alle implementatiescenario's: database|
 |SQL Server|SQL Server 2016 SP1|Fysieke server <br /><br /> Lokale Hyper-V virtuele machine <br /> <br /> virtuele Azure-machine <br /><br /> Windows virtuele machine in VMWare (beveiligt werkbelasting die wordt uitgevoerd in de Windows virtuele machine in VMWare)<br /> <br /> Azure Stack|V3, V2|Alle implementatiescenario's: database|
 |SQL Server|SQL Server 2016|Fysieke server <br /><br /> Lokale Hyper-V virtuele machine <br /> <br /> virtuele Azure-machine <br /><br /> Windows virtuele machine in VMWare (beveiligt werkbelasting die wordt uitgevoerd in de Windows virtuele machine in VMWare)<br /> <br /> Azure Stack|V3, V2|Alle implementatiescenario's: database|

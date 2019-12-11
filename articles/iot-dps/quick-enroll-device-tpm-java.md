@@ -1,6 +1,6 @@
 ---
 title: TPM-apparaat inschrijven bij Azure Device Provisioning Service met behulp van Java
-description: 'Quick Start: TPM-apparaat inschrijven bij Azure IoT Hub Device Provisioning Service met behulp van de Java Service-SDK. In deze snelstart wordt gebruikgemaakt van afzonderlijke registraties.'
+description: 'Quick Start: TPM-apparaat inschrijven bij Azure IoT Hub Device Provisioning Service (DPS) met behulp van de Java Service-SDK. In deze snelstart wordt gebruikgemaakt van afzonderlijke inschrijvingen.'
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 4e6e5eb876bbf93c8228c2440a90aad608a24af9
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: cadee1b72c15ded7c29d1eea341c1ea21b346a37
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422928"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976822"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Quick Start: TPM-apparaat inschrijven voor IoT Hub Device Provisioning Service met behulp van de Java Service-SDK
 
@@ -71,7 +71,7 @@ In deze sectie ziet u hoe u de inrichtingsgegevens van het TPM-apparaat toevoegt
 
            ![De verbindingsreeks voor de inrichting ophalen uit de portal](./media/quick-enroll-device-tpm-java/provisioning-string.png)  
 
-       4. Vervang  **in het voorbeeldcodebestandServiceEnrollmentSample.java**`[Provisioning Connection String]` door de **Verbindingsreeks van de primaire sleutel**.
+       4. Vervang `[Provisioning Connection String]` in het voorbeeldcodebestand **_ServiceEnrollmentSample.java_** door de **Verbindingsreeks van de primaire sleutel**.
     
            ```Java
            private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";

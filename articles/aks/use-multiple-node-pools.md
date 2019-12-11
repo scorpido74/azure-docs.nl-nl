@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: c48bcab0a3d009b186832a6b728597f03788a7cd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: f507619a1c8e80623a756b91f3fd6187283212f0
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382992"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996728"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
 
@@ -38,7 +38,7 @@ De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en behe
 * U kunt geen knooppunt groepen toevoegen of verwijderen met behulp van een bestaande resource manager-sjabloon, net als bij de meeste bewerkingen. In plaats daarvan [kunt u een afzonderlijke resource manager-sjabloon gebruiken](#manage-node-pools-using-a-resource-manager-template) om wijzigingen aan te brengen in knooppunt groepen in een AKS-cluster.
 * De naam van een knooppunt groep mag alleen kleine letters bevatten en moet beginnen met een kleine letter. Voor Linux-knooppunt Pools moet de lengte tussen 1 en 12 tekens lang zijn voor Windows-knooppunt groepen. de lengte moet tussen 1 en 6 tekens lang zijn.
 * Het AKS-cluster kan Maxi maal acht knooppunt groepen bevatten.
-* Het AKS-cluster kan Maxi maal 400 knoop punten in deze acht knooppunt groepen hebben.
+* Het AKS-cluster kan Maxi maal 800 knoop punten in deze acht knooppunt groepen hebben.
 * Alle knooppunt groepen moeten zich in hetzelfde subnet bevinden.
 
 ## <a name="create-an-aks-cluster"></a>Een AKS-cluster maken

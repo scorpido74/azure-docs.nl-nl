@@ -8,14 +8,14 @@ manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: d1c709beb225dff0ae616a23eb67eb57f4643ac9
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 50132593ce3301094ea39546f5661df06a716503
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812765"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976584"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Snelstartgids: een aangepaste opdracht maken met para meters (preview)
 
@@ -37,7 +37,7 @@ In dit artikel wordt deze toepassing uitgebreid met para meters zodat het mogeli
    | Instelling            | Voorgestelde waarde | Beschrijving                                                                                               |
    | ------------------ | --------------- | --------------------------------------------------------------------------------------------------------- |
    | Naam               | OnOff           | Een beschrijvende naam voor uw para meter                                                                     |
-   | Is wereld wijd          | uitgeschakeld       | Selectie vakje dat aangeeft of een waarde voor deze para meter globaal moet worden toegepast op alle opdrachten in het project |
+   | Is wereld wijd          | Uitgeschakeld       | Selectie vakje dat aangeeft of een waarde voor deze para meter globaal moet worden toegepast op alle opdrachten in het project |
    | Verplicht           | wel         | Selectie vakje dat aangeeft of een waarde voor deze para meter vereist is voordat de opdracht wordt voltooid          |
    | Antwoord sjabloon  | Aan of uit?      | Een prompt om te vragen naar de waarde van deze para meter als deze niet bekend is                                       |
    | Type               | Tekenreeks          | Het type para meter, zoals getal, teken reeks of datum/tijd                                               |
@@ -49,7 +49,7 @@ In dit artikel wordt deze toepassing uitgebreid met para meters zodat het mogeli
    | Instelling            | Voorgestelde waarde   | Beschrijving                                                                                               |
    | ------------------ | ----------------- | --------------------------------------------------------------------------------------------------------- |
    | Naam               | SubjectDevice     | Een beschrijvende naam voor uw para meter                                                                     |
-   | Is wereld wijd          | uitgeschakeld         | Selectie vakje dat aangeeft of een waarde voor deze para meter globaal moet worden toegepast op alle opdrachten in het project |
+   | Is wereld wijd          | Uitgeschakeld         | Selectie vakje dat aangeeft of een waarde voor deze para meter globaal moet worden toegepast op alle opdrachten in het project |
    | Verplicht           | wel           | Selectie vakje dat aangeeft of een waarde voor deze para meter vereist is voordat de opdracht wordt voltooid          |
    | Antwoord sjabloon  | Welk apparaat?     | Een prompt om te vragen naar de waarde van deze para meter als deze niet bekend is                                       |
    | Type               | Tekenreeks            | Het type para meter, zoals getal, teken reeks of datum/tijd                                               |

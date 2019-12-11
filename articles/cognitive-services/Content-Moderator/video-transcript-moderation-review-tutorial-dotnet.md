@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e1c3d3d95261b959a7540aab73faf12f92801d4c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2fbd4270221cb23a4f99a0f8155bb1de76472f31
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564268"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976975"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Zelfstudie: Video's en transcripties beoordelen
 
-In deze zelf studie leert u hoe u een complete oplossing voor video en transcriptie kunt bouwen met door de machine gesteunde toezicht en het maken van een Human-in-the-loop-beoordeling.
+In deze zelf studie leert u hoe u een complete oplossing voor video en transcriptie kunt bouwen met door machines ondersteunde toezicht en integratie van menselijke beoordeling.
 
 In deze zelfstudie ontdekt u hoe u:
 
@@ -42,9 +42,9 @@ In deze zelfstudie ontdekt u hoe u:
 
 ## <a name="enter-credentials"></a>Referenties opgeven
 
-Bewerk het `App.config` bestand en voeg de Active Directory Tenant naam, service-eind punten en abonnements sleutels toe die `#####`worden aangegeven door. U hebt de volgende informatie nodig:
+Bewerk het `App.config` bestand en voeg de Active Directory Tenant naam, service-eind punten en abonnements sleutels toe die door `#####`worden aangegeven. U hebt de volgende informatie nodig:
 
-|Sleutel|Description|
+|Sleutel|Beschrijving|
 |-|-|
 |`AzureMediaServiceRestApiEndpoint`|Eindpunt voor de API van Azure Media Services (AMS)|
 |`ClientSecret`|Abonnementssleutel voor Azure Media Services|
@@ -60,7 +60,7 @@ De klasse `Program` in `Program.cs` is het belangrijkste invoerpunt voor de toep
 
 ### <a name="methods-of-program-class"></a>Methoden van de klasse Program
 
-|Methode|Description|
+|Methode|Beschrijving|
 |-|-|
 |`Main`|Parseert de opdrachtregel, verzamelt invoer van de gebruiker en start de verwerking.|
 |`ProcessVideo`|Comprimeert, uploadt, beoordeelt en maakt videobeoordelingen.|
@@ -82,13 +82,13 @@ De uitvoering begint bij `Main()`, dus is dit het punt vanaf waar het belangrijk
 Als er geen opdrachtregelargumenten zijn opgegeven, wordt `GetUserInputs()` aangeroepen met `Main()`. Deze methode vraagt de gebruiker om het pad naar één videobestand in te voeren en om aan te geven of er een transcriptie moet worden gegenereerd.
 
 > [!NOTE]
-> De consoletoepassing maakt gebruik van de [API van Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) om transcripties te genereren van de audiotrack van de geüploade video. De resultaten worden aangeboden in de indeling WebVTT. Zie de Engelstalige site [Web Video Text Tracks Format (WebVTT)](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) voor meer informatie over deze indeling.
+> De console toepassing maakt gebruik van de [Azure media indexer-API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) om transcripten te genereren op basis van de audio track van de geüploade video. De resultaten worden vermeld in de WebVTT-indeling. Zie de Engelstalige site [Web Video Text Tracks Format (WebVTT)](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) voor meer informatie over deze indeling.
 
 ### <a name="initialize-and-processvideo-methods"></a>De methoden Initialize en ProcessVideo
 
 Ongeacht of de opties voor het programma afkomstig zijn van de opdrachtregel of uit interactieve invoer van de gebruiker, roept `Main()` vervolgens `Initialize()` aan om de volgende instanties te maken:
 
-|Klasse|Description|
+|Klasse|Beschrijving|
 |-|-|
 |`AMSComponent`|Comprimeert videobestanden voordat deze worden verzonden voor beoordeling.|
 |`AMSconfigurations`|Interface naar de configuratiegegevens van de toepassing, gevonden in `App.config`.|
@@ -223,7 +223,7 @@ Het resultaat van de videobeoordelingstaak (zie de [snelstartgids over videobeoo
 Er wordt ook een transcriptie van de audio van de video gemaakt wanneer de vlag `GenerateVTT` is ingesteld.
 
 > [!NOTE]
-> De consoletoepassing maakt gebruik van de [API van Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) om transcripties te genereren van de audiotrack van de geüploade video. De resultaten worden aangeboden in de indeling WebVTT. Zie de Engelstalige site [Web Video Text Tracks Format (WebVTT)](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) voor meer informatie over deze indeling.
+> De console toepassing maakt gebruik van de [Azure media indexer-API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) om transcripten te genereren op basis van de audio track van de geüploade video. De resultaten worden vermeld in de WebVTT-indeling. Zie de Engelstalige site [Web Video Text Tracks Format (WebVTT)](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) voor meer informatie over deze indeling.
 
 ## <a name="create-a-human-review"></a>Een menselijke beoordeling maken
 
@@ -236,7 +236,7 @@ Het beoordelingsproces retourneert een lijst met sleutelframes uit de video, sam
 > [!NOTE]
 > De consoletoepassing maakt gebruik van de bibliotheek [FFmpeg](https://ffmpeg.org/) voor het genereren van miniaturen. Deze miniaturen (afbeeldingen) komen overeen met de frame-tijds tempels in de video-moderator uitvoer.
 
-|Taak|Methoden|File|
+|Taak|Methoden|Bestand|
 |-|-|-|
 |De sleutelframes uit de video extraheren en er miniatuurafbeeldingen van maken|`CreateVideoFrames()`<br>`GenerateFrameImages()`|`FrameGeneratorServices.cs`|
 |De transcriptie, indien beschikbaar, scannen op tekst voor volwassenen of ongepaste tekst|`GenerateTextScreenProfanity()`| `VideoReviewAPI.cs`|
@@ -252,7 +252,7 @@ De code in deze zelfstudie is tot nu toe gericht op de visuele inhoud. Beoordeli
 
 De toepassing voert de volgende taken uit:
 
-|Taak|Methoden|File|
+|Taak|Methoden|Bestand|
 |-|-|-|
 |Vaststellen of er transcripties moeten worden gegenereerd|`Main()`<br>`GetUserInputs()`|`Program.cs`|
 |Zo ja, een transcriptietaak verzenden als onderdeel van de beoordeling|`ConfigureTranscriptTask()`|`VideoModerator.cs`|
@@ -359,7 +359,7 @@ Total Elapsed Time: 00:05:56.8420355
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie stelt u een toepassing in waarmee video-inhoud&mdash;wordt gematigd met inbegrip van transcript inhoud&mdash;en worden beoordelingen in het hulp programma beoordeling gemaakt. Vervolgens leest u meer over de details van de video-toezicht.
+In deze zelf studie stelt u een toepassing in waarmee video-inhoud wordt gematigd&mdash;met inbegrip van transcript inhoud&mdash;en worden er beoordelingen in het hulp programma beoordeling gemaakt. Vervolgens leest u meer over de details van de video-toezicht.
 
 > [!div class="nextstepaction"]
 > [Beheer van video](./video-moderation-human-review.md)

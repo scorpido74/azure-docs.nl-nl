@@ -1,6 +1,6 @@
 ---
-title: Web-app dat aanroepen van web-API's (verplaatsen naar productie) - Microsoft identity-platform
-description: Informatie over het bouwen van een web-app dat aanroepen van web-API's (verplaatsen naar productie)
+title: Web-app die web-Api's aanroept, naar productie verplaatsen-micro soft Identity-platform | Azure
+description: Meer informatie over het verplaatsen van een web-app die web-Api's aanroept voor productie.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,31 +15,31 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b326cdb7303ff392c6129e0f0fa460ffe088305
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e40920b7045dad6f64b5699bc3c4c560eb399f2a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074933"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964953"
 ---
-# <a name="web-app-that-calls-web-apis---move-to-production"></a>Web-app die aanroepen van web-API's - verplaatsen naar productie
+# <a name="web-app-that-calls-web-apis---move-to-production"></a>Web-app die web-Api's aanroept-verplaatsen naar productie
 
-Nu dat u hoe u om een token weet voor het aanroepen van Web-API's te verkrijgen, leert u hoe u verplaatst naar productie.
+Nu u weet hoe u een token kunt verkrijgen om Web-Api's aan te roepen, leert u hoe u kunt overstappen op productie.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor meer informatie uit de volledige ASP.NET Core web-app progressieve zelfstudie laat zien op welke te proberen:
+Meer informatie kunt u vinden door de volledige ASP.NET Core web-app uit te proberen, waarin het volgende wordt weer gegeven:
 
-- Aanmelden bij gebruikers aan meerdere doelgroepen, nationale clouds of met sociale identiteiten
-- Aanroepen van Microsoft Graph
-- Aanroepen van de verschillende Microsoft-APIs
-- Incrementele toestemming worden verwerkt
-- Uw eigen Web-API-aanroepen
+- Gebruikers aanmelden met meerdere doel groepen, nationale Clouds of met sociale identiteiten
+- Aanroepen Microsoft Graph
+- Roept diverse Api's van micro soft aan
+- Hiermee wordt incrementele toestemming geregeld
+- Hiermee wordt uw eigen web-API aangeroepen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie voor ASP.NET Core web-apps](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
+> [Zelf studie voor ASP.NET Core web-app](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
 
 <!--- Removing this diagram as it's already shown from the next step linked tutorial
 

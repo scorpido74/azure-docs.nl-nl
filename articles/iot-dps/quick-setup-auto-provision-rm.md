@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub Device Provisioning instellen met behulp van Azure Resource Manager-sjabloon
-description: Azure-Quick Start-de Azure-IoT Hub Device Provisioning Service instellen met behulp van een sjabloon
+description: Azure-Quick Start-Azure IoT Hub Device Provisioning Service (DPS) instellen met behulp van een sjabloon
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: b40e126ca23190fbe50a717016b18719be6950e2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 482401b75cadf44e2cef03cced8dd216d0980524
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276383"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969578"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Snelstartgids: de IoT Hub Device Provisioning Service instellen met een Azure Resource Manager sjabloon
 

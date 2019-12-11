@@ -4,16 +4,16 @@ description: Meerdere acties uitvoeren vanuit één IoT Central regel en herbrui
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/21/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: e51a2fc7e3af9a56b90a66935ef01ac907ebce3b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: a93e96dd14411302bf5368b4825044e060b54a43
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929904"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974356"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules-preview-features"></a>Meerdere acties groeperen om uit te voeren vanuit een of meer regels (preview-functies)
 
@@ -57,9 +57,9 @@ Selecteer **Opslaan**. De actie groep wordt nu weer gegeven in de lijst met acti
 
 De volgende tabel bevat een overzicht van de informatie die wordt verzonden naar de ondersteunde actie typen:
 
-| Actietype | Uitvoer indeling |
+| Actietype | Uitvoerindeling |
 | ----------- | -------------- |
-| Email       | E-mail sjabloon standaard IoT Central |
+| E-mail       | E-mail sjabloon standaard IoT Central |
 | Sms         | Azure IoT Central-waarschuwing: $ {ApplicationName}-"$ {ruleNaam} ' geactiveerd op ' $ {DeviceName} ' op $ {triggerDate} $ {triggerTime} |
 | Spraak       | Azure I. O. T Central alert: regel "$ {DeviceName}" geactiveerd op apparaat "$ {apparaatnaam}" op $ {triggerDate} $ {triggerTime}, in toepassing $ {ApplicationName} |
 | Webhook     | {"schemaId": "AzureIoTCentralRuleWebhook", "gegevens": {[normale webhook Payload](howto-create-webhooks.md#payload)}} |

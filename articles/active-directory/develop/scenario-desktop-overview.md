@@ -1,5 +1,5 @@
 ---
-title: Bureau blad-app voor het aanroepen van web-Api's (overzicht)-micro soft Identity-platform
+title: Een bureau blad-app bouwen die web-Api's aanroept-micro soft Identity-platform | Azure
 description: Meer informatie over het bouwen van een bureau blad-app die web-Api's aanroept (overzicht)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,14 +15,14 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d56a07b46c4cd54577bcb3d81f2c45c03433fc31
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 545012629686e1fe3ece8a48ed852542e09e54fe
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268350"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965514"
 ---
-# <a name="scenario-desktop-app-that-calls-web-apis"></a>Scenario: Desktop-app die web-API's aanroept
+# <a name="scenario-desktop-app-that-calls-web-apis"></a>Scenario: bureau blad-app voor het aanroepen van web-Api's
 
 Meer informatie over wat u nodig hebt om een bureau blad-app te bouwen die web-Api's aanroept
 
@@ -35,14 +35,14 @@ Meer informatie over wat u nodig hebt om een bureau blad-app te bouwen die web-A
 Als u dat nog niet hebt gedaan, maakt u uw eerste toepassing door de Snelstartgids van .NET Desktop, de UWP Quick Start of de macOS systeem eigen app Quick Start te volgen:
 
 > [!div class="nextstepaction"]
-> [Snelstart: Een token verkrijgen en Microsoft Graph-API aanroepen vanuit een Windows-bureau blad-app](./quickstart-v2-windows-desktop.md)
+> [Snelstartgids: een token verkrijgen en Microsoft Graph-API aanroepen vanuit een Windows-bureau blad-app](./quickstart-v2-windows-desktop.md)
 
 
 > [!div class="nextstepaction"]
-> [Snelstart: Een token verkrijgen en Microsoft Graph-API aanroepen vanuit een UWP-app](./quickstart-v2-uwp.md)
+> [Quick Start: een token verkrijgen en Microsoft Graph-API aanroepen vanuit een UWP-app](./quickstart-v2-uwp.md)
 
 > [!div class="nextstepaction"]
-> [Snelstart: Een token verkrijgen en Microsoft Graph-API aanroepen vanuit een macOS-systeem eigen app](./quickstart-v2-ios.md)
+> [Quick Start: een token verkrijgen en Microsoft Graph-API aanroepen vanuit een macOS-systeem eigen app](./quickstart-v2-ios.md)
 
 ## <a name="overview"></a>Overzicht
 

@@ -3,17 +3,17 @@ title: Apparaatgroepen gebruiken in uw Azure IoT Central-toepassing | Microsoft 
 description: Als operator vindt u informatie over het gebruik van apparaatgroepen voor het analyseren van telemetrie van apparaten in uw Azure IoT Central-toepassing.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/29/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 281806999b08c3babbb753459835850ad9d733eb
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 981046f9417876a68c215c6d01a63c7f0a634464
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895434"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976210"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry-preview-features"></a>Zelf studie: apparaatgroepen gebruiken om apparaat-telemetrie te analyseren (preview-functies)
 
@@ -67,7 +67,7 @@ Een apparaatgroep maken:
 > [!NOTE]
 > Selecteer Azure IoT Edge sjablonen voor Azure IoT Edge apparaten om een apparaatgroep te maken.
 
-## <a name="analytics"></a>Analytische gegevens
+## <a name="analytics"></a>Analyse
 
 U kunt **Analytics** met een apparaatgroep gebruiken om de telemetrie van de apparaten in de groep te analyseren. U kunt bijvoorbeeld de gemiddelde Tempe ratuur die door alle contoso-omgevings sensoren wordt gerapporteerd, uitzetten.
 

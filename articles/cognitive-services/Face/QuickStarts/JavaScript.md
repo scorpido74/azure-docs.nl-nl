@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Gezichten in een afbeelding detecteren met de REST API en JavaScript'
+title: 'Snelstart: Gezichten in een afbeelding detecteren met de REST API en JavaScript'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart detecteert u gezichten in een afbeelding met behulp van de Face-API met JavaScript in Cognitive Services.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: bc8d20abcc7bc66d319874978e134c5c86c86e1c
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 3946f6d034baee528f9cd5abd6467b8c393e73de
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859040"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977978"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Quickstart: Gezichten in een afbeelding detecteren met de REST API en JavaScript
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Snelstart: Gezichten in een afbeelding detecteren met de REST API en JavaScript
 
 In deze quickstart gebruikt u de Azure Face REST API met JavaScript om menselijke gezichten in een afbeelding te detecteren.
 
@@ -124,7 +124,7 @@ Voeg de volgende code rechtstreeks boven het element `h1` toe in uw document. Me
 </script>
 ```
 
-U moet het `subscriptionKey` veld bijwerken met de waarde van uw abonnements sleutel en u moet de `uriBase` teken reeks wijzigen zodat deze de juiste eindpunt teken reeks bevat. Het veld `returnFaceAttributes` geeft op welke gezichtskenmerken moeten worden opgehaald. U kunt deze queryreeks wijzigen afhankelijk van het beoogde gebruik.
+U moet het `subscriptionKey` veld bijwerken met de waarde van uw abonnements sleutel en u moet de teken reeks van de `uriBase` wijzigen zodat deze de juiste eindpunt teken reeks bevat. Het veld `returnFaceAttributes` geeft op welke gezichtskenmerken moeten worden opgehaald. U kunt deze queryreeks wijzigen afhankelijk van het beoogde gebruik.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

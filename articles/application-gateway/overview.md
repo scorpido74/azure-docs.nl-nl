@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: a61b1a44419ac35efa5888de2b5a6e4988dfb512
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 29962fa217c34088ed17fdea68c2c1189a3bfcd2
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422313"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996575"
 ---
 # <a name="what-is-azure-application-gateway"></a>Wat is Azure Application Gateway?
 
@@ -50,7 +50,7 @@ Een Application Gateway-of WAF-implementaties onder Standard_v2 of WAF_v2 SKU ka
 
 Het VIP van de toepassings gateway op Standard_v2 of WAF_v2 SKU ondersteunt alleen een statisch VIP-type. Dit zorgt ervoor dat het VIP dat is gekoppeld aan de toepassings gateway niet wordt gewijzigd, zelfs gedurende de levens duur van de Application Gateway.
 
-## <a name="web-application-firewall"></a>Web Application Firewall
+## <a name="web-application-firewall"></a>Firewall voor webtoepassingen
 
 Web Application firewall (WAF) is een service waarmee uw webtoepassingen gecentraliseerd worden beschermd tegen veelvoorkomende aanvallen en beveiligings problemen. WAF is gebaseerd op regels van de [OWASP (open Web Application Security project) kern regel sets](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1 (alleen WAF_v2), 3,0 en 2.2.9. 
 
@@ -77,7 +77,7 @@ Zie [URL-based route ring met Application Gateway](https://docs.microsoft.com/az
 
 Door meerdere sites te hosten, kunt u meer dan een website configureren op dezelfde instantie van de toepassingsgateway. Met deze functie kunt u een efficiëntere topologie voor uw implementaties configureren door Maxi maal 100 websites toe te voegen aan één Application Gateway, of 40 voor WAF (voor optimale prestaties). Elke website kan worden omgeleid naar een eigen pool. Application Gateway kan bijvoorbeeld verkeer regelen voor `contoso.com` en `fabrikam.com` vanaf twee servergroepen genaamd ContosoServerPool en FabrikamServerPool.
 
-Aanvragen voor `http://contoso.com` worden gerouteerd naar ContosoServerPool en aanvragen voor `http://fabrikam.com` worden gerouteerd naar FabrikamServerPool.
+Aanvragen voor `http://contoso.com` worden gerouteerd naar ContoServerPool en aanvragen voor `http://fabrikam.com` worden gerouteerd naar FabrikamServerPool.
 
 Op dezelfde manier kunnen twee subdomeinen van hetzelfde bovenliggende domein worden gehost op dezelfde implementatie van een toepassingsgateway. Voorbeelden van subdomeinen die worden gehost op één toepassingsgateway-implementatie, zijn `http://blog.contoso.com` en `http://app.contoso.com`.
 
@@ -111,7 +111,7 @@ Zie ondersteuning voor [Websockets](https://docs.microsoft.com/azure/application
 
 ## <a name="connection-draining"></a>Verwerkingsstop voor verbindingen
 
-Verwerkingsstop voor verbindingen helpt u om back-endgroepsleden zonder problemen te verwijderen tijdens geplande service-updates. Deze instelling wordt ingeschakeld via de HTTP-instelling van de back-end en kan tijdens het maken van de regel worden toegepast op alle leden van een back-endgroep. Wanneer deze functie Application Gateway is ingeschakeld, worden alle exemplaren van een back-end-groep die niet meer worden geregistreerd, niet meer in een nieuwe aanvraag ontvangen en kunnen bestaande aanvragen binnen een geconfigureerde tijds limiet worden voltooid. Dit geldt voor beide back-endservers die expliciet worden verwijderd uit de back-end-pool door een API-aanroep en back-end-exemplaren die als slecht zijn gerapporteerd, zoals bepaald door de status controles.
+Verwerkingsstop voor verbindingen helpt u om back-endgroepsleden zonder problemen te verwijderen tijdens geplande service-updates. Deze instelling wordt ingeschakeld via de HTTP-instelling van de back-end en kan tijdens het maken van de regel worden toegepast op alle leden van een back-endgroep. Wanneer deze functie is ingeschakeld, ontvangt Application Gateway alle ongedaan maken van de registratie van exemplaren van een back-end-groep geen nieuwe aanvraag en wordt het toestaan dat bestaande aanvragen binnen een geconfigureerde tijds limiet worden voltooid. Dit geldt voor beide back-endservers die expliciet worden verwijderd uit de back-end-pool door een wijziging van de gebruikers configuratie en back-end-exemplaren die als slecht zijn gerapporteerd zoals bepaald door de status controles. De enige uitzonde ring hierop zijn aanvragen die zijn gebonden voor het deregistreren van instanties, die expliciet zijn geregistreerd vanwege gateway beheer sessie-affiniteit, en naar de Deregistratie van instanties blijven worden gefactureerd.
 
 Zie voor meer informatie de sectie verbindings afvoer van [Application Gateway configuratie-overzicht](https://docs.microsoft.com/azure/application-gateway/configuration-overview#connection-draining).
 

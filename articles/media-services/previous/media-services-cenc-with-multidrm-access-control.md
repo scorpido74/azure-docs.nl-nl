@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 6004e08f5f30c7f3c63bb87437147db15da5e335
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: b0fec44a59bd70c6f1d0236861d93e81aaba033c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016765"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969425"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Ontwerp van een systeem van de beveiliging van inhoud met toegangsbeheer met Azure Media Services 
 
@@ -131,11 +131,11 @@ Waarom deze overwegingen belangrijk zijn?
 
 Als u een openbare cloud voor de licentielevering van de, hebben permanente en niet-persistente licenties een directe invloed op kosten voor de levering van licentie. De volgende twee verschillende ontwerp-gevallen hebben om te illustreren:
 
-* Maandelijks abonnement: Gebruik een permanente licentie en een 1-op-veel-inhouds sleutel-naar-Asset-toewijzing. Bijvoorbeeld, voor alle kinderen films gebruiken we een enkele inhoudssleutel voor versleuteling. In dit geval:
+* Maandabonnement: gebruik een permanente licentie en 1-op-veel inhoud sleutel-asset-toewijzing. Bijvoorbeeld, voor alle kinderen films gebruiken we een enkele inhoudssleutel voor versleuteling. In dit geval:
 
     Totaal aantal licenties die zijn aangevraagd voor alle kinderen films/apparaat = 1
 
-* Maandelijks abonnement: Gebruik een niet-permanente licentie en 1-op-1 toewijzing tussen inhouds sleutel en Asset. In dit geval:
+* Maandabonnement: gebruik een niet-persistente licentie en 1-op-1-toewijzing tussen inhoudssleutel en asset. In dit geval:
 
     Totaal aantal licenties die zijn aangevraagd voor alle kinderen films/apparaat = [aantal films bekeken] x [aantal sessies]
 
@@ -257,7 +257,7 @@ Gebruik de volgende informatie voor probleemoplossing voor hulp bij problemen me
 
 * Lidmaatschap van verlenen claims bevoegdheden. Zorg ervoor dat het volgende in het manifestbestand van de Azure AD-toepassing: 
 
-    "groupMembershipClaims": ' All ' (de standaard waarde is null)
+    "groupMembershipClaims": "Alle" (de standaardwaarde is null)
 
 * Stel de juiste TokenType bij het maken van beperking vereisten.
 
@@ -336,7 +336,7 @@ Als u wilt registreren en configureren van de wijzer-app in Azure AD, moet u de 
 
 2. Voeg een nieuwe sleutel voor de resource-app.
 
-3. Werk het manifest bestand van de app bij zodat de eigenschap groupMembershipClaims de waarde ' groupMembershipClaims ' heeft: ' Alle '.
+3. Het manifestbestand van de app bijwerken zodat de eigenschap groupMembershipClaims de waarde 'groupMembershipClaims heeft': 'Alle'.
 
 4. In de Azure AD-app die naar de player-web-app, in de sectie verwijst **machtigingen voor andere toepassingen**, toevoegen van de resource-app die is toegevoegd in stap 1. Onder **overgedragen machtiging**, selecteer **toegang [resource_name]** . Met deze optie geeft de web-app-machtiging voor het maken van toegangstokens die toegang hebben tot de resource-app. Als u met Visual Studio en de Azure-web-app ontwikkelt, moet u dit doen voor de lokale en geïmplementeerde versie van de web-app.
 
@@ -368,13 +368,13 @@ Wanneer u een aangepaste STS, moet twee worden gewijzigd:
 
 Er zijn twee soorten sleutels:
 
-* Symmetrische sleutel: Dezelfde sleutel wordt gebruikt om een JWT te genereren en te verifiëren.
-* Asymmetrische sleutel: Een combi natie van open bare en persoonlijke sleutels in een x509-certificaat wordt gebruikt met een persoonlijke sleutel voor het versleutelen/genereren van een JWT en met de open bare sleutel om het token te verifiëren.
+* Symmetrische sleutel: dezelfde sleutel wordt gebruikt voor het genereren en te controleren of een JWT.
+* Asymmetrische sleutel: een openbaar / persoonlijk sleutelpaar in een X509 certificaat wordt gebruikt met een persoonlijke sleutel voor het versleutelen/genereren van een JWT en met de openbare sleutel om te controleren of het token.
 
 > [!NOTE]
 > Als u .NET Framework / C# als uw ontwikkelplatform, de X509 certificaat dat wordt gebruikt voor een asymmetrische beveiligingssleutel moet een sleutellengte van ten minste 2048 hebben. Dit is een vereiste van de klasse System.IdentityModel.Tokens.X509AsymmetricSecurityKey in .NET Framework. Anders is de volgende uitzondering opgetreden:
 > 
-> IDX10630: De ' System. Identity model. tokens. X509AsymmetricSecurityKey ' voor ondertekening mag niet kleiner zijn dan ' 2048 ' bits.
+> IDX10630: System.IdentityModel.Tokens.X509AsymmetricSecurityKey voor het ondertekenen van mag niet kleiner dan '2048-bits.
 
 ## <a name="the-completed-system-and-test"></a>Het voltooide systeem en de test
 In dit gedeelte leidt u door de volgende scenario's in het voltooide end-to-end-systeem zodat u een eenvoudige beeld van het gedrag hebben kunt voordat u een account aanmelden:
@@ -408,15 +408,15 @@ U kunt contact opnemen met een van de auteurs hebben een account te maken of toe
 
 De volgende schermafbeeldingen tonen verschillende aanmelden pagina's die worden gebruikt door verschillende domeinaccounts:
 
-**Aangepast Azure AD-domein account voor Tenant**: De aangepaste aanmeldings pagina van het aangepaste domein van de Azure AD-Tenant.
+**Aangepaste Azure AD-tenant domeinaccount**: de aangepaste aanmeldingspagina van de aangepaste Azure AD tenant-domein.
 
 ![Domeinaccount voor aangepast Azure AD-tenant](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
 
-**Micro soft-domein account met Smart Card**: De aanmeldings pagina die door micro soft is aangepast met twee ledige verificatie.
+**Microsoft-domeinaccount met smartcard**: aangepast door Microsoft zakelijke pagina IT met tweeledige verificatie.
 
 ![Domeinaccount voor aangepast Azure AD-tenant](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
 
-**Microsoft-account**: De aanmeldings pagina van de Microsoft-account voor consumenten.
+**Microsoft-account**: de aanmeldingspagina van het Microsoft-account voor consumenten.
 
 ![Domeinaccount voor aangepast Azure AD-tenant](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain3.png)
 
@@ -463,11 +463,16 @@ De volgende schermafbeelding ziet u een scenario waarin een asymmetrische sleute
 In beide van de vorige gevallen wordt blijft verificatie van de gebruiker hetzelfde. Dit vindt plaats via Azure AD. Het enige verschil is dat JWTs zijn uitgegeven door de aangepaste STS in plaats van Azure AD. Wanneer u dynamische CENC beveiliging configureert, is de beperking license delivery service Hiermee geeft u het type JWT, een symmetrische of een asymmetrische sleutel.
 
 ## <a name="summary"></a>Samenvatting
+
 Dit document besproken CENC met multi systeemeigen DRM en toegangsbeheer via tokenverificatie, het ontwerp en de implementatie met behulp van Azure Media Services en Media Player.
 
 * Een referentieontwerp werd weergegeven met alle vereiste onderdelen in een subsysteem DRM/CENC.
 * Een referentie-implementatie is die wordt weergegeven op het Azure Media Services en Media Player.
 * Sommige onderwerpen die rechtstreeks betrokken is bij het ontwerpen en implementeren, zijn ook besproken.
+
+## <a name="additional-notes"></a>Aanvullende opmerkingen
+
+* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

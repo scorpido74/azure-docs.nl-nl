@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 59d18ea11699ed77763c162e4930b159fcd19fe2
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 12/9/2019
+ms.openlocfilehash: ba091d05aa243fab08138c96827d2f657d9755de
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888662"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976295"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Server parameters configureren in Azure Database for MariaDB met behulp van de Azure Portal
 
@@ -37,21 +37,21 @@ De lijst met ondersteunde serverparameters groeit voortdurend. Gebruik het tabbl
 
 InnoDB-buffergroep en maximum aantal verbindingen zijn niet kunnen worden geconfigureerd en gekoppeld aan uw [prijscategorie](concepts-pricing-tiers.md).
 
-|**Prijscategorie**| **vCore(s)**|**InnoDB buffergroep (MB)**| **Maximum aantal verbindingen**|
-|---|---|---|---|
-|Basic| 1| 1024| 50|
-|Basic| 2| 2560| 100|
-|Algemeen doel| 2| 3584| 300|
-|Algemeen doel| 4| 7680| 625|
-|Algemeen doel| 8| 15360| 1250|
-|Algemeen doel| 16| 31232| 2500|
-|Algemeen doel| 32| 62976| 5000|
-|Algemeen doel| 64| 125952| 10.000|
-|Geoptimaliseerd geheugen| 2| 7168| 600|
-|Geoptimaliseerd geheugen| 4| 15360| 1250|
-|Geoptimaliseerd geheugen| 8| 30720| 2500|
-|Geoptimaliseerd geheugen| 16| 62464| 5000|
-|Geoptimaliseerd geheugen| 32| 125952| 10.000|
+|**Prijscategorie**| **vCore(s)**|**InnoDB buffergroep (MB)**|
+|---|---|---|
+|Basic| 1| 1024|
+|Basic| 2| 2560|
+|Algemeen doel| 2| 3584|
+|Algemeen doel| 4| 7680|
+|Algemeen doel| 8| 15360|
+|Algemeen doel| 16| 31232|
+|Algemeen doel| 32| 62976|
+|Algemeen doel| 64| 125952|
+|Geoptimaliseerd geheugen| 2| 7168|
+|Geoptimaliseerd geheugen| 4| 15360|
+|Geoptimaliseerd geheugen| 8| 30720|
+|Geoptimaliseerd geheugen| 16| 62464|
+|Geoptimaliseerd geheugen| 32| 125952|
 
 Deze extra server-parameters zijn niet kunnen worden geconfigureerd in het systeem:
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/12/2019
+ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: 12be696c74a32909d79be405144582cd8fc05fb6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: e7aa4a557821ee49867a8ea82f92ef04dfbef689
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "73519156"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978676"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Snelstartgids: een classificatie bouwen met Custom Vision
 
@@ -47,7 +47,7 @@ Navigeer in uw webbrowser naar de webpagina van [Custom Vision](https://customvi
    > [!NOTE]
    > Als er geen resource groep beschikbaar is, bevestigt u dat u bent aangemeld bij [customvision.ai](https://customvision.ai) met hetzelfde account als u hebt gebruikt om u aan te melden bij de [Azure Portal](https://portal.azure.com/). Zorg er ook voor dat u dezelfde map hebt geselecteerd in de Custom Vision portal als de map in de Azure Portal waar uw Custom Vision-resources zich bevinden. In beide sites kunt u uw map selecteren in het menu van de vervolg keuzelijst in de rechter bovenhoek van het scherm. 
 
-1. Selecteer __classificatie__ onder __project typen__. Kies onder __classificatie typen__ofwel multi **Label** of multi **Class**, afhankelijk van uw use-case. Met de classificatie voor meerdere labels wordt een wille keurig aantal tags toegepast op een afbeelding (nul of meer), terwijl classificatie met meerdere klassen afbeeldingen in één categorie sorteert (elke afbeelding die u verzendt, wordt in de meest waarschijnlijke tag gesorteerd). Indien gewenst kunt u het classificatie type later wijzigen.
+1. Selecteer __classificatie__ onder __project typen__. Kies onder __classificatie typen__ofwel multi **Label** of multi **Class**, afhankelijk van uw use-case. Met de classificatie voor meerdere labels wordt een wille keurig aantal tags toegepast op een afbeelding (nul of meer), terwijl classificatie met meerdere klassen afbeeldingen in één categorie sorteert (elke afbeelding die u verzendt, wordt in de meest waarschijnlijke tag gesorteerd). Als u wilt, kunt u het classificatie type later wijzigen.
 
 1. Selecteer vervolgens een van de beschik bare domeinen. Elk domein optimaliseert de classificatie voor specifieke typen installatie kopieën, zoals beschreven in de volgende tabel. U kunt het domein later indien gewenst wijzigen.
 
@@ -69,7 +69,7 @@ Navigeer in uw webbrowser naar de webpagina van [Custom Vision](https://customvi
 
 In deze sectie gaat u afbeeldingen uploaden en hand matig labelen om de classificatie te trainen. 
 
-1. Als u installatie kopieën wilt toevoegen, klikt u op de knop __afbeeldingen toevoegen__ en selecteert u __lokale bestanden zoeken__. Selecteer __openen__ om naar labels te verplaatsen. De label selectie wordt toegepast op de hele groep installatie kopieën die u hebt geselecteerd om te uploaden, zodat het eenvoudiger is om afbeeldingen in afzonderlijke groepen te uploaden op basis van de gewenste labels. U kunt ook de labels voor afzonderlijke afbeeldingen wijzigen nadat ze zijn geüpload.
+1. Als u installatie kopieën wilt toevoegen, klikt u op de knop __afbeeldingen toevoegen__ en selecteert u __lokale bestanden zoeken__. Selecteer __openen__ om naar labels te verplaatsen. De label selectie wordt toegepast op de hele groep installatie kopieën die u hebt geselecteerd om te uploaden. het is dus eenvoudiger om afbeeldingen in afzonderlijke groepen te uploaden op basis van de gewenste labels. U kunt ook de labels voor afzonderlijke afbeeldingen wijzigen nadat ze zijn geüpload.
 
     ![Het besturings element afbeeldingen toevoegen wordt weer gegeven in de linkerbovenhoek en als een knop onderaan in het midden.](./media/getting-started-build-a-classifier/add-images01.png)
 
@@ -103,13 +103,13 @@ Nadat de training is voltooid, worden de prestaties van het model geschat en wee
 
 ![De resultaten van de training tonen de algehele nauw keurigheid en intrekken en de nauw keurigheid en intrekken voor elke tag in de classificatie.](./media/getting-started-build-a-classifier/train03.png)
 
-### <a name="probability-threshold"></a>Waarschijnlijkheids drempel
+### <a name="probability-threshold"></a>Drempelwaarde waarschijnlijkheid
 
 [!INCLUDE [probability threshold](includes/probability-threshold.md)]
 
 ## <a name="manage-training-iterations"></a>Trainings herhalingen beheren
 
-Telkens wanneer u uw classificatie traint, maakt u een nieuwe _iteratie_ met de eigen bijgewerkte metrische gegevens voor prestaties. U kunt al uw iteraties bekijken in het linkerdeel venster van het tabblad **prestaties** . In het linkerdeel venster ziet u ook de knop **verwijderen** , die u kunt gebruiken om een herhaling te verwijderen als deze verouderd is. Wanneer u een herhaling verwijdert, verwijdert u alle installatie kopieën die uniek zijn gekoppeld.
+Telkens wanneer u uw classificatie traint, maakt u een nieuwe _iteratie_ met de eigen bijgewerkte metrische gegevens voor prestaties. U kunt al uw iteraties bekijken in het linkerdeel venster van het tabblad **prestaties** . U vindt ook de knop **verwijderen** , die u kunt gebruiken om een herhaling te verwijderen als deze verouderd is. Wanneer u een herhaling verwijdert, verwijdert u alle installatie kopieën die uniek zijn gekoppeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: overview
-ms.date: 06/04/2019
+ms.date: 12/09/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 8cdd52963f89041ea97b018fd3756c925308e641
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8f27e8e8693fc5d1d3e432b78f2877d71274f146
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443263"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978472"
 ---
 # <a name="what-is-the-translator-text-api"></a>Wat is de Translator Text-API?
 
@@ -28,7 +28,7 @@ De Translator Text-API is onderdeel van de Azure [Cognitive Services API](https:
 
 Microsoft Translator is een cloudservice voor machinevertaling. De basis van deze service is de Translator Text-API, die een aantal Microsoft-producten en -services aanstuurt en die door duizenden bedrijven over de hele wereld wordt gebruikt in hun toepassingen en werkstromen, zodat hun inhoud beschikbaar wordt gemaakt voor een wereldwijd publiek.
 
-Spraakomzetting, mogelijk gemaakt door de Translator Text-API, is ook beschikbaar via de [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/). Het combineert de functionaliteit van de Translator Speech-API en de Custom Speech Service in een uniforme en volledig aanpasbare-service. Speech Service vervangt de Translator Speech-API, die buiten bedrijf wordt genomen op 15 oktober 2019.
+Spraakomzetting, mogelijk gemaakt door de Translator Text-API, is ook beschikbaar via de [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/). Het combineert de functionaliteit van de Translator Speech-API en de Custom Speech Service in een geïntegreerde en volledig aanpas bare service. De spraak service vervangt de Translator Speech-API, die wordt buiten gebruik gesteld op 15 oktober 2019.
 
 ## <a name="language-support"></a>Taalondersteuning
 

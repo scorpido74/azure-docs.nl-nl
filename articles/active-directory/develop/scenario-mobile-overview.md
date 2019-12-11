@@ -1,5 +1,5 @@
 ---
-title: Mobiele app die web-Api's aanroept-overzicht
+title: Een mobiele app bouwen die web-Api's aanroept | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het bouwen van een mobiele app die web-Api's aanroept (overzicht)
 services: active-directory
@@ -17,16 +17,16 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98f05470a07bad82a1e51517a787fb98c78f92ce
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: c6ebeed4a7806c013205d01621107ef65655e753
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803756"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965463"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Scenario: mobiele toepassing die web-Api's aanroept
 
-Lees alles wat u nodig hebt om een mobiele app te bouwen die web-Api's aanroept.
+Meer informatie over het bouwen van een mobiele app die web-Api's aanroept.
 
 ## <a name="prerequisites"></a>Vereisten
 

@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van Azure-toepassing Insights met 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 5f7f6c130226080cba635f89280f655498e5db27
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4a182ddffd4c1ee4d2e71e7d9e6385df23e4260e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226903"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978080"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions controleren
 
@@ -92,10 +92,10 @@ Zie de [Application Insights-documentatie](https://docs.microsoft.com/azure/appl
 
 De volgende gebieden van Application Insights kunnen nuttig zijn bij het evalueren van het gedrag, de prestaties en de fouten in uw functies:
 
-| Tabbesturingselement | Beschrijving |
+| Tab-toets | Beschrijving |
 | ---- | ----------- |
 | **[Masters](../azure-monitor/app/asp-net-exceptions.md)** |  Grafieken en waarschuwingen maken op basis van functie fouten en server uitzonderingen. De **naam** van de bewerking is de naam van de functie. Storingen in afhankelijkheden worden niet weer gegeven, tenzij u aangepaste telemetrie implementeert voor afhankelijkheden. |
-| **[Nemen](../azure-monitor/app/performance-counters.md)** | Analyseer prestatie problemen. |
+| **[Performance](../azure-monitor/app/performance-counters.md)** | Analyseer prestatie problemen. |
 | **Servers** | Het resource gebruik en de door Voer per server weer geven. Deze gegevens kunnen nuttig zijn voor het opsporen van fouten in scenario's waarbij functies worden bogging van uw onderliggende resources. Servers worden aangeduid als instanties in de **Cloud**. |
 | **[Metrische gegevens](../azure-monitor/app/metrics-explorer.md)** | Grafieken en waarschuwingen maken op basis van metrische gegevens. Metrische gegevens bevatten het aantal functie-aanroepen, uitvoerings tijd en succes percentages. |
 | **[Live Metrics Stream](../azure-monitor/app/live-stream.md)** | Metrische gegevens weer geven terwijl deze in realtime worden gemaakt. |
@@ -126,7 +126,7 @@ De tabellen die beschikbaar zijn, worden weer gegeven op het tabblad **schema** 
 | **uitzonderingen** | Eventuele uitzonde ringen die worden veroorzaakt door de runtime. |
 | **customMetrics** | Het aantal geslaagde en mislukte aanroepen, succes percentage en duur. |
 | **customEvents** | Gebeurtenissen die worden bijgehouden door de runtime, bijvoorbeeld: HTTP-aanvragen die een functie activeren. |
-| **Performance Counters** | Informatie over de prestaties van de servers waarop de functies worden uitgevoerd. |
+| **performanceCounters** | Informatie over de prestaties van de servers waarop de functies worden uitgevoerd. |
 
 De andere tabellen zijn voor beschikbaarheids testen en voor client-en browser-telemetrie. U kunt aangepaste telemetrie implementeren om er gegevens aan toe te voegen.
 
@@ -151,11 +151,11 @@ Met de functie runtime worden logboeken gemaakt met een categorie die begint met
 
 Als u Logboeken in uw functie code schrijft, wordt de categorie `Function` in versie 1. x van de functions-runtime. In versie 2. x is de categorie `Function.<YOUR_FUNCTION_NAME>.User`.
 
-### <a name="log-levels"></a>Logboek niveaus
+### <a name="log-levels"></a>Logboekniveaus
 
 De Azure Functions logger bevat ook een *logboek niveau* voor elk logboek. [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) is een inventarisatie en de gehele code geeft het relatieve belang aan:
 
-|LogLevel    |Code|
+|Logniveau    |Coderen|
 |------------|---|
 |Tracering       | 0 |
 |Foutopsporing       | 1 |
@@ -169,11 +169,11 @@ Het `None` van het logboek niveau wordt uitgelegd in de volgende sectie.
 
 ### <a name="log-configuration-in-hostjson"></a>Logboek configuratie in host. json
 
-In het bestand [host. json] wordt geconfigureerd hoeveel logboek registratie van een functie-app naar Application Insights verzendt. Voor elke categorie geeft u het minimale logboek niveau op dat moet worden verzonden. Er zijn twee voor beelden: het eerste voor beeld heeft betrekking op de [functies versie 2. x runtime](functions-versions.md#version-2x) (.net core) en het tweede voor beeld is voor de versie 1. x runtime.
+In het bestand [host. json] wordt geconfigureerd hoeveel logboek registratie van een functie-app naar Application Insights verzendt. Voor elke categorie geeft u het minimale logboek niveau op dat moet worden verzonden. Er zijn twee voor beelden: in het eerste voor beeld is [versie 2. x en hoger](functions-versions.md#version-2x) van de functions runtime (met .net core) en het tweede voor beeld voor de versie 1. x runtime.
 
-### <a name="version-2x"></a>Versie 2. x
+### <a name="version-2x-and-higher"></a>Versie 2. x en hoger
 
-De v2. x-runtime maakt gebruik van de [.net core logging filter-hiërarchie](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering). 
+Versie v2. x en latere versies van de functions runtime gebruiken de [.net core logging filter-hiërarchie](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering). 
 
 ```json
 {
@@ -216,7 +216,7 @@ De categorie waarde in [host. json] bepaalt de logboek registratie voor alle cat
 
 Als [host. json] meerdere categorieën bevat die beginnen met dezelfde teken reeks, worden de langere reeksen eerst vergeleken. Stel dat u wilt dat alles uit de runtime, behalve `Host.Aggregator` zich op `Error` niveau aanmeldt, maar u `Host.Aggregator` wilt aanmelden op het `Information` niveau:
 
-### <a name="version-2x"></a>Versie 2. x 
+### <a name="version-2x-and-later"></a>Versie 2. x en hoger
 
 ```json
 {
@@ -298,7 +298,7 @@ Zoals u in de vorige sectie hebt genoteerd, verzamelt de runtime gegevens over f
 
 Application Insights heeft een [bemonsterings](../azure-monitor/app/sampling.md) functie waarmee u kunt voor komen dat er te veel telemetriegegevens worden geproduceerd tijdens voltooide uitvoeringen op momenten van piek belasting. Wanneer de frequentie van binnenkomende uitvoeringen een opgegeven drempel overschrijdt, wordt Application Insights wille keurig een aantal binnenkomende uitvoeringen negeren. De standaard instelling voor het maximum aantal uitvoeringen per seconde is 20 (vijf in versie 1. x). U kunt steek proeven configureren in [host. json].  Hier volgt een voorbeeld:
 
-### <a name="version-2x"></a>Versie 2. x 
+### <a name="version-2x-and-later"></a>Versie 2. x en hoger
 
 ```json
 {
@@ -396,7 +396,7 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="custom-metrics-logging"></a>Logboek registratie voor aangepaste metrische gegevens
 
-Wanneer u werkt met [versie 1. x](functions-versions.md#creating-1x-apps) van de functions runtime, kunnen node. js-functies de `context.log.metric` methode gebruiken om aangepaste metrische gegevens in Application Insights te maken. Deze methode wordt momenteel niet ondersteund in versie 2. x. Dit is een voor beeld van een methode aanroep:
+Wanneer u werkt met [versie 1. x](functions-versions.md#creating-1x-apps) van de functions runtime, kunnen node. js-functies de `context.log.metric` methode gebruiken om aangepaste metrische gegevens in Application Insights te maken. Deze methode wordt momenteel niet ondersteund in versie 2. x en hoger. Dit is een voor beeld van een methode aanroep:
 
 ```javascript
 context.log.metric("TestMetric", 1234);
@@ -408,9 +408,9 @@ Deze code is een alternatief voor het aanroepen van `trackMetric` met behulp van
 
 U kunt het NuGet-pakket van [micro soft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) gebruiken om aangepaste telemetriegegevens naar Application Insights te verzenden. In het C# volgende voor beeld wordt de [aangepaste telemetrie-API](../azure-monitor/app/api-custom-events-metrics.md)gebruikt. Het voor beeld is voor een .NET-klassebibliotheek, maar de Application Insights code is hetzelfde voor C# het script.
 
-### <a name="version-2x"></a>Versie 2. x
+### <a name="version-2x-and-later"></a>Versie 2. x en hoger
 
-In de runtime van versie 2. x worden nieuwere functies van Application Insights gebruikt om telemetrie automatisch te correleren met de huidige bewerking. U hoeft de `Id`-, `ParentId`-of `Name` velden van de bewerking niet hand matig in te stellen.
+Versie 2. x en latere versies van de runtime gebruiken nieuwere functies in Application Insights om telemetrie automatisch te correleren met de huidige bewerking. U hoeft de `Id`-, `ParentId`-of `Name` velden van de bewerking niet hand matig in te stellen.
 
 ```cs
 using System;

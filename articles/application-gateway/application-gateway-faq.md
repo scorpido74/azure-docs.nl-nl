@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 68ce0dca3bc7c5d408bd6e8f267d238ac812a84d
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: c93198848058bad8c9af6903cc68253e71e2d668
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130579"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996648"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -128,7 +128,7 @@ Nee. Instanties worden gedistribueerd over upgrade domeinen en fout domeinen.
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Ondersteunt Application Gateway verbindings afvoer?
 
-Ja. U kunt de verbinding verbreken instellen om leden binnen een back-end-groep zonder onderbreking te wijzigen. Met deze installatie kunt u bestaande verbindingen naar hun vorige bestemming blijven verzenden totdat de verbinding wordt gesloten of een Configureer bare time-out verloopt. Er wordt gewacht tot er alleen huidige verbindingen in de vlucht zijn voltooid. Application Gateway is niet op de hoogte van de sessie status van de toepassing.
+Ja. U kunt de verbinding verbreken instellen om leden binnen een back-end-groep zonder onderbreking te wijzigen. Zie voor meer informatie de [sectie verbindings afvoer van Application Gateway](overview.md#connection-draining).
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>Kan ik de instantie grootte wijzigen van gemiddeld in groot, zonder onderbreking?
 

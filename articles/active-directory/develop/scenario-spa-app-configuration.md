@@ -1,5 +1,5 @@
 ---
-title: Toepassing met één pagina (code configuratie van de app)-micro soft Identity-platform
+title: Een app met één pagina configureren-micro soft Identity-platform | Azure
 description: Meer informatie over het bouwen van een toepassing met één pagina (de code configuratie van de app)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ec98a62aab0b8d87645f3f58dc28219abe4e4fc
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 111f8d45fced1ed0e9293c874d7a56c64e9fb0e4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766273"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965412"
 ---
 # <a name="single-page-application-code-configuration"></a>Toepassing met één pagina: code configuratie
 
@@ -32,7 +32,7 @@ Het micro soft Identity-platform biedt de volgende MSAL-bibliotheken (micro soft
 
 | MSAL-bibliotheek | Beschrijving |
 |--------------|--------------|
-| ![MSAL. js](media/sample-v2-code/logo_js.png) <br/> [MSAL. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | Een gewone Java script-bibliotheek voor gebruik in een webtoepassing aan de client zijde die is gebouwd via Java script-of SPA-frameworks, zoals hoek, vue. js en reageren. js. |
+| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | Een gewone Java script-bibliotheek voor gebruik in een webtoepassing aan de client zijde die is gebouwd via Java script-of SPA-frameworks, zoals hoek, vue. js en reageren. js. |
 | ![hoek van MSAL](media/sample-v2-code/logo_angular.png) <br/> [MSAL hoek](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Wrapper van de core MSAL. JS-bibliotheek om gebruik te vereenvoudigen in apps met één pagina die zijn gebouwd met behulp van het hoek kader. Deze bibliotheek is beschikbaar als preview-versie en heeft [bekende problemen](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues?q=is%3Aopen+is%3Aissue+label%3Aangular) met bepaalde hoek versies en browsers. |
 
 ## <a name="application-code-configuration"></a>Configuratie van de toepassings code

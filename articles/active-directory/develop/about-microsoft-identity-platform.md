@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: overview
 ms.workload: identity
-ms.date: 06/03/2019
+ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca1b6cc6288b75dc7194ead916f2ecb468b053d2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 7e5faf9db9a6ba97f353b54a4fb8123fde072574
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845906"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996983"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Evolutie van het Microsoft Identity Platform
 
@@ -26,13 +26,13 @@ Het Microsoft Identity Platform bouwt voort op het ontwikkelaarsplatform van Azu
 
 Tot nu toe hebben de meeste ontwikkel aars met het Azure AD v 1.0-platform gewerkt voor het verifiëren van werk-en school accounts (ingericht door Azure AD) door het aanvragen van tokens van het Azure AD v 1.0-eind punt met behulp van Azure AD Authentication Library (ADAL), Azure Portal voor registratie en configuratie van toepassingen en Azure AD-Graph API voor de configuratie van een programmatische toepassing.
 
-Met micro soft Identity platform (v 2.0) breidt u uw bereik uit voor dit soort gebruikers:
+Met het Unified micro soft Identity platform (v 2.0) kunt u eenmaal code schrijven en een micro soft-identiteit verifiëren in uw toepassing. Voor verschillende platforms wordt de volledig ondersteunde open-source micro soft Authentication Library (MSAL) aanbevolen voor gebruik met de identiteits platform-eind punten. MSAL is eenvoudig te gebruiken. biedt uw gebruikers een fantastische SSO-ervaring (eenmalige aanmelding), helpt u bij het bezorgen van hoge betrouw baarheid en prestaties en is ontwikkeld met behulp van micro soft Secure Development Lifecycle (SDL). Wanneer u Api's aanroept, kunt u uw toepassing zo configureren dat deze gebruikmaakt van incrementele toestemming, zodat u de aanvraag voor toestemming voor meer invasieve bereiken kunt vertragen tot het gebruik van de toepassing dit tijdens runtime garandeert.  MSAL biedt ook ondersteuning voor Azure Active Directory B2C, zodat uw klanten hun eigen identiteiten voor sociale, zakelijke of lokale accounts gebruiken om toegang te krijgen tot uw toepassingen en Api's voor eenmalige aanmelding.
+
+Met micro soft Identity platform kunt u uw bereik voor dit soort gebruikers verg Roten:
 
 - Werk-en school accounts (voor Azure AD ingerichte accounts)
 - Persoonlijke accounts (zoals Outlook.com of Hotmail.com)
-- Uw klanten die hun eigen e-mail adres of sociale identiteit (zoals LinkedIn, Facebook, Google) meenemen via de Azure AD B2C aanbieding
-
-Met het geïntegreerde identiteits platform van micro soft kunt u eenmaal code schrijven en een micro soft-identiteit verifiëren in uw toepassing. Voor verschillende platforms is er een volledig ondersteunde open-source bibliotheek met de naam micro soft Authentication Library (MSAL). MSAL is eenvoudig te gebruiken. biedt uw gebruikers een fantastische SSO-ervaring (eenmalige aanmelding), helpt u bij het bezorgen van hoge betrouw baarheid en prestaties en is ontwikkeld met behulp van micro soft Secure Development Lifecycle (SDL). Wanneer u Api's aanroept, kunt u uw toepassing zo configureren dat deze gebruikmaakt van incrementele toestemming, zodat u de aanvraag voor toestemming voor meer invasieve bereiken kunt vertragen tot het gebruik van de toepassing dit tijdens runtime garandeert.
+- Uw klanten die hun eigen e-mail adres of sociale identiteit (zoals LinkedIn, Facebook, Google) meenemen via MSAL en Azure AD B2C
 
 U kunt de Azure Portal gebruiken om uw toepassing te registreren en te configureren, en de Microsoft Graph API gebruiken voor de programmatische toepassings configuratie.
 

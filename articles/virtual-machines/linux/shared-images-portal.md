@@ -1,5 +1,5 @@
 ---
-title: Gedeelde installatie kopieën voor virtuele Azure-machines voor Linux maken met behulp van de portal
+title: Gedeelde Azure VM-installatie kopieën voor Linux maken met behulp van de portal
 description: Meer informatie over het gebruik van Azure Portal voor het maken en delen van installatie kopieën van virtuele machines.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,14 +13,14 @@ ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 9dff10848c42fd730f0bc77fd325f00cec554c9d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 44df85a94ad26d3abcd48f01c31e7aa093c1123f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892869"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978693"
 ---
-# <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Een galerie met gedeelde installatie kopieën maken met behulp van de Azure Portal
+# <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>Een galerie met gedeelde Azure-afbeeldingen maken met behulp van de portal
 
 Een [Galerie met gedeelde afbeeldingen](shared-image-galleries.md) vereenvoudigt het delen van aangepaste afbeeldingen in uw organisatie. Aangepaste installatiekopieën zijn soortgelijk aan Marketplace-installatiekopieën, maar u kunt deze zelf maken. Aangepaste installatie kopieën kunnen worden gebruikt om implementatie taken te Boots trapn, zoals het vooraf laden van toepassingen, toepassings configuraties en andere besturingssysteem configuraties. 
 

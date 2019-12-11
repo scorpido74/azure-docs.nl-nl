@@ -4,12 +4,12 @@ description: Meer informatie over de Azure Functions-concepten en-technieken die
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 4aa42e8aef2e2205523be0536cb5aceafd1aa829
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3ccfc28dc332d2ff90ec09256a43a9143e37c03b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226663"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974220"
 ---
 # <a name="azure-functions-developers-guide"></a>Hand leiding Azure Functions ontwikkel aars
 In Azure Functions delen specifieke functies enkele kern technische concepten en onderdelen, ongeacht de taal of binding die u gebruikt. Lees de informatie in dit overzicht die van toepassing is op alle voor waarden, voordat u naar een bepaalde taal of binding gaat gaan.
@@ -19,7 +19,7 @@ In dit artikel wordt ervan uitgegaan dat u het [Azure functions overzicht](funct
 ## <a name="function-code"></a>Functie code
 Een *functie* is het primaire concept in azure functions. Een functie bevat twee belang rijke onderdelen: uw code, die in verschillende talen kan worden geschreven, en een bepaalde configuratie, het bestand function. json. Voor gecompileerde talen wordt dit configuratie bestand automatisch gegenereerd vanuit aantekeningen in uw code. Voor script talen moet u zelf het configuratie bestand opgeven.
 
-Het bestand function. json definieert de trigger, bindingen en andere configuratie-instellingen van de functie. Elke functie heeft één en slechts één trigger. De runtime gebruikt dit configuratie bestand om te bepalen welke gebeurtenissen moeten worden bewaakt en hoe gegevens moeten worden door gegeven en hoe gegevens kunnen worden opgehaald uit een functie-uitvoering. Hier volgt een voor beeld van een function. JSON-bestand.
+Het bestand function. json definieert de trigger, bindingen en andere configuratie-instellingen van de functie. Elke functie kan slechts één trigger hebben. De runtime gebruikt dit configuratie bestand om te bepalen welke gebeurtenissen moeten worden bewaakt en hoe gegevens moeten worden door gegeven en hoe gegevens kunnen worden opgehaald uit een functie-uitvoering. Hier volgt een voor beeld van een function. JSON-bestand.
 
 ```json
 {
@@ -73,7 +73,7 @@ Als er meerdere activerings gebeurtenissen sneller optreden dan een functie-runt
 
 ## <a name="functions-runtime-versioning"></a>Functions runtime versie beheer
 
-U kunt de versie van de functions-runtime configureren met behulp van de app-instelling `FUNCTIONS_EXTENSION_VERSION`. De waarde "~ 2" geeft bijvoorbeeld aan dat uw functie-app 2. x als primaire versie gebruikt. Functie-apps worden bijgewerkt naar elke nieuwe secundaire versie zodra deze worden vrijgegeven. Zie [runtime-versies van Azure functions instellen](set-runtime-version.md)voor meer informatie over het weer geven van de exacte versie van uw functie-app.
+U kunt de versie van de functions-runtime configureren met behulp van de app-instelling `FUNCTIONS_EXTENSION_VERSION`. De waarde "~ 3" geeft bijvoorbeeld aan dat uw functie-app 3. x als de primaire versie gaat gebruiken. Functie-apps worden bijgewerkt naar elke nieuwe secundaire versie zodra deze worden vrijgegeven. Zie [runtime-versies van Azure functions instellen](set-runtime-version.md)voor meer informatie over het weer geven van de exacte versie van uw functie-app.
 
 ## <a name="repositories"></a>Opslagplaatsen
 De code voor Azure Functions is open source en opgeslagen in GitHub-opslag plaatsen:

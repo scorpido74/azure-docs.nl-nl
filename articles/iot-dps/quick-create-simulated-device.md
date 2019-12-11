@@ -1,6 +1,6 @@
 ---
 title: 'Snelstartgids: een gesimuleerd TPM-apparaat inrichten voor Azure IoT Hub met C'
-description: In deze snelstart wordt gebruikgemaakt van afzonderlijke registraties. In deze snelstart maakt u een gesimuleerd TPM-apparaat met de SDK voor C voor Azure IoT Hub Device Provisioning Service en richt u het in.
+description: In deze snelstart wordt gebruikgemaakt van afzonderlijke inschrijvingen. In deze Quick Start maakt en richt u een gesimuleerd TPM-apparaat met de SDK van C-apparaat voor Azure IoT Hub Device Provisioning Service (DPS).
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 0330476650af205854b6d0d4be098c28b46e78a1
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 9ee40d4dadd25e37028a7381583d1f333bc4f19a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423211"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976856"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Snelstart: Een gesimuleerd TPM-apparaat inrichten met de Azure IoT C SDK
 
@@ -22,13 +22,13 @@ ms.locfileid: "74423211"
 
 In deze snelstart leert u hoe u een TPM-apparaatsimulator (Trusted Platform Module) op een Windows-ontwikkelcomputer kunt maken en uitvoeren. U verbindt dit gesimuleerde apparaat met een IoT-hub met behulp van een Device Provisioning Service-exemplaar. Er wordt voorbeeldcode van de [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) gebruikt om u te helpen bij het registreren van het apparaat bij een Device Provisioning Service-exemplaar en een opstartvolgorde voor het apparaat te simuleren.
 
-Raadpleeg [Concepten voor automatische inrichting](concepts-auto-provisioning.md) als u niet bekend bent met het proces van automatische inrichting. Controleer ook of u de stappen in [IoT Hub Device Provisioning Service instellen met Azure Portal](./quick-setup-auto-provision.md) hebt voltooid voordat u verdergaat met deze snelstart. 
+Raadpleeg [Concepten voor automatische inrichting](concepts-auto-provisioning.md) als u niet bekend bent met het proces van automatisch inrichten. Controleer ook of u de stappen in [IoT Hub Device Provisioning Service instellen met Azure Portal](./quick-setup-auto-provision.md) hebt voltooid voordat u verdergaat met deze snelstart. 
 
 Azure IoT Device Provisioning Service ondersteunt twee typen registraties:
 - [Registratiegroepen](concepts-service.md#enrollment-group): wordt gebruikt om meerdere gerelateerde apparaten in te schrijven.
 - [Afzonderlijke inschrijvingen](concepts-service.md#individual-enrollment): wordt gebruikt om een enkel apparaat in te schrijven.
 
-In dit artikel worden afzonderlijke registraties gedemonstreerd.
+In dit artikel worden afzonderlijke inschrijvingen gedemonstreerd.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

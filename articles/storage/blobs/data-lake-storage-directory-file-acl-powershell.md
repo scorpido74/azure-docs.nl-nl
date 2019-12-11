@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 360845d75c27fab0151c3a64846ff788f9f56b95
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f2a2eaa3224fff117a30dfb742b4f8a35196dba4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931248"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973897"
 ---
 # <a name="use-powershell-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Power shell gebruiken voor bestanden & Acl's in Azure Data Lake Storage Gen2 (preview-versie)
 
@@ -378,6 +378,7 @@ In de volgende tabel ziet u hoe de cmdlets die worden gebruikt voor Data Lake St
 |Get-AzDataLakeStoreItemContent|Get-AzDataLakeGen2FileContent|De cmdlet Get-AzDataLakeGen2FileContent laadt bestand inhoud naar een lokaal bestand.|
 |Move-AzDataLakeStoreItem|Move-AzDataLakeGen2Item||
 |New-AzDataLakeStoreItem|New-AzDataLakeGen2Item|Met deze cmdlet wordt de nieuwe bestands inhoud van een lokaal bestand geüpload.|
+|Remove-AzDataLakeStoreItem|Remove-AzDataLakeGen2Item||
 |Set-AzDataLakeStoreItemOwner<br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemAcl|Update-AzDataLakeGen2Item|Met de cmdlet Update-AzDataLakeGen2Item wordt één enkel item bijgewerkt en niet recursief. Als u recursief wilt bijwerken, kunt u items weer geven met behulp van de cmdlet Get-AzDataLakeStoreChildItem en vervolgens pijp lijn naar de cmdlet Update-AzDataLakeGen2Item.|
 |Test-AzDataLakeStoreItem|Get-AzDataLakeGen2Item|Met de cmdlet Get-AzDataLakeGen2Item wordt een fout gerapporteerd als het item niet bestaat.|
 

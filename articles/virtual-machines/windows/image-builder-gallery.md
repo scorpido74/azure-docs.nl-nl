@@ -1,26 +1,26 @@
 ---
-title: Azure Image Builder gebruiken met een galerie met installatie kopieën voor virtuele Windows-machines (preview)
-description: Maak Windows-installatie kopieën met Azure Image Builder en de galerie met gedeelde afbeeldingen.
+title: Azure Image Builder gebruiken met een galerie met installatie kopieën voor Windows-Vm's (preview-versie)
+description: Windows VM-installatie kopieën maken met Azure Image Builder en de galerie met gedeelde installatie kopieën.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: 33f13c09a06885523298bd7c23744e79f68e5301
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 1d9763ccc5f5967b9fc9932a11fff655e6120fd0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698672"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976074"
 ---
-# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Preview: Een Windows-installatie kopie maken en deze distribueren naar een gedeelde installatie kopie galerie 
+# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Voor beeld: een Windows-installatie kopie maken en deze distribueren naar een gedeelde installatie kopie galerie 
 
 In dit artikel wordt uitgelegd hoe u de Azure Image Builder kunt gebruiken om een installatie kopie versie te maken in een [Galerie met gedeelde afbeeldingen](shared-image-galleries.md)en vervolgens de installatie kopie wereld wijd te distribueren.
 
 Er wordt een JSON-sjabloon gebruikt om de installatie kopie te configureren. Het JSON-bestand dat we gebruiken, is hier: [helloImageTemplateforWinSIG. json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/helloImageTemplateforWinSIG.json). 
 
-De sjabloon maakt gebruik van [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) als de waarde voor de `distribute` sectie van de sjabloon om de installatie kopie naar een galerie met gedeelde afbeeldingen te distribueren.
+De sjabloon maakt gebruik van [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) als de waarde voor de sectie `distribute` van de sjabloon om de installatie kopie naar een galerie met gedeelde afbeeldingen te distribueren.
 
 > [!IMPORTANT]
 > Azure Image Builder is momenteel beschikbaar als open bare preview.
@@ -77,7 +77,7 @@ username="azureuser"
 vmpassword="passwordfortheVM"
 ```
 
-Maak een variabele voor uw abonnements-ID. U kunt dit doen met `az account show | grep id`.
+Maak een variabele voor uw abonnements-ID. U kunt dit doen met behulp van `az account show | grep id`.
 
 ```azurecli-interactive
 subscriptionID="Subscription ID"
@@ -90,7 +90,7 @@ az group create -n $sigResourceGroup -l $location
 ```
 
 
-Stel de Azure Image Builder-machtiging in voor het maken van resources in die resource groep. De `--assignee` waarde is de app-registratie-id voor de Image Builder-service. 
+Stel de Azure Image Builder-machtiging in voor het maken van resources in die resource groep. De `--assignee` waarde is de ID van de app-registratie voor de Image Builder-service. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -191,7 +191,7 @@ Maak een Extern bureaublad verbinding met de virtuele machine met behulp van de 
 dir c:\
 ```
 
-Als het goed is, ziet `buildActions` u een map met de naam die is gemaakt tijdens het aanpassen van de installatie kopie.
+Als het goed is, ziet u een map met de naam `buildActions` die is gemaakt tijdens het aanpassen van de installatie kopie.
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
@@ -211,7 +211,7 @@ az resource delete \
     -n helloImageTemplateforWinSIG01
 ```
 
-De afbeeldings versie ophalen die is gemaakt door de opbouw functie voor `0.`afbeeldingen, dit wordt altijd gestart met en vervolgens de versie van de installatie kopie verwijderen
+Haal de installatie kopie versie op die is gemaakt door de opbouw functie voor afbeeldingen, dit begint altijd met `0.`en verwijder vervolgens de versie van de installatie kopie
 
 ```azurecli-interactive
 sigDefImgVersion=$(az sig image-version list \

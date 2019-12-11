@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: 8f1639a21e3783f587904c2a8085fd2f555ff5b8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: a0b0a4e89242103811f20071b7235c825c9d8bd2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900360"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967521"
 ---
 # <a name="azure-media-player-overview"></a>Overzicht van Azure Media Player
 
@@ -50,6 +50,10 @@ U kunt de [Azure Media Player-demo pagina](https://aka.ms/azuremediaplayer) gebr
 ## <a name="set-up-azure-media-player-in-your-html"></a>Azure Media Player in uw HTML instellen
 
 Azure Media Player eenvoudig in te stellen. Het kan even duren voordat de media-inhoud wordt afgespeeld vanuit uw Media Services-account. Raadpleeg de [Azure Media Player-documentatie](https://aka.ms/ampdocs) voor meer informatie over het instellen en configureren van Azure Media Player. 
+
+## <a name="additional-notes"></a>Aanvullende opmerkingen
+
+* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="next-steps"></a>Volgende stappen
 

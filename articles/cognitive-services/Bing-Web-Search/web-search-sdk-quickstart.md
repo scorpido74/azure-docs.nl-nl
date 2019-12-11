@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: De Bing Web Search SDK voor C# gebruiken'
+title: 'Snelstartgids: de Bing Web Search SDK voor C# gebruiken'
 titleSuffix: Azure Cognitive Services
 description: Met de Bing Web Search SDK kunt u Bing Web Search eenvoudig integreren in uw C#-toepassing. In deze snelstartgids leert u hoe u een instantie maakt voor een client, een aanvraag verzendt en het antwoord weergeeft.
 services: cognitive-services
@@ -8,31 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 04/15/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 5e893fda5a0e71703eb867c045de19d391c012ed
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 2c55aaa0843574981a7643b11161700992ea0b09
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018216"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976448"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Quickstart: De Bing Web Search SDK voor C# gebruiken
+# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Snelstartgids: de Bing Web Search SDK voor C# gebruiken
 
 Met de Bing Web Search SDK kunt u Bing Web Search eenvoudig integreren in uw C#-toepassing. In deze snelstartgids leert u hoe u een instantie maakt voor een client, een aanvraag verzendt en het antwoord weergeeft.
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-Zie ook [Prijsinformatie Cognitive Services - Bing Zoeken-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
-
 ## <a name="prerequisites"></a>Vereisten
-Voordat u verdergaat met deze snelstart moet u beschikken over:
+U moet over het volgende beschikken voordat u verdergaat met deze snelstartgids:
 
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/) of
 * [Visual Studio Code 2017](https://code.visualstudio.com/download)
   * [C# voor Visual Studio Code](https://visualstudio.microsoft.com/downloads/)
   * [NuGet Package Manager](https://github.com/jmrog/vscode-nuget-package-manager)
 * [.NET Core-SDK](https://www.microsoft.com/net/download)
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-install-dependencies"></a>Een project maken en afhankelijkheden installeren
 
@@ -354,7 +352,7 @@ In dit voorbeeld wordt de parameter `response_filter` gebruikt om zoekresultaten
 
 3. Voer de toepassing uit.
 
-### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Gebruik de parameters voor veilig zoeken, aantal antwoorden en het filter voor het promoten van zoekresultaten
+### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Gebruik de parameters voor veilig zoeken, aantal antwoorden en de filter voor het promoten van zoekresultaten
 
 In dit voorbeeld worden de parameters `answer_count`, `promote`, en `safe_search` gebruikt om de zoekresultaten voor 'muziekvideo's' te filteren. De `Name` en `ContentUrl` voor het eerste resultaat worden weergegeven.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Gezichten in een afbeelding detecteren met de Azure REST API en Java'
+title: 'Snelstart: gezichten in een afbeelding detecteren met de Azure REST API en Java'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart gebruikt u de Azure Face REST API met Java om gezichten in een afbeelding te detecteren.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 30e4852668fc12c38cd7d1794c461041acd654db
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 7097f399b2bf5a3b0f9adb990fbd66785adc09aa
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859192"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977995"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Quickstart: Gezichten in een afbeelding detecteren met de REST API en Java
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Snelstart: Gezichten in een afbeelding detecteren met de REST API en Java
 
 In deze snelstart gebruikt u de Azure Face REST API met Java om menselijke gezichten in een afbeelding te detecteren.
 
@@ -35,7 +35,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
    - [Apache HTTP-client](https://hc.apache.org/downloads.cgi) (org. apache. httpcomponents: httpclient maakt: 4.5.6)
    - [Apache HTTP core](https://hc.apache.org/downloads.cgi) (org. apache. httpcomponents: httpcore: 4.4.10)
    - [JSON-bibliotheek](https://github.com/stleary/JSON-java) (org.json:json:20180130)
-   - [Apache Commons-logboek registratie](https://commons.apache.org/proper/commons-logging/download_logging.cgi) (Commons-logboek registratie: commons-logboek registratie: 1.1.2)
+   - [Apache Commons-logboek registratie](https://commons.apache.org/proper/commons-logging/download_logging.cgi) (Commons-logboek registratie:/logboek registratie: 1.1.2)
 
 ## <a name="add-face-detection-code"></a>Gezichtsdetectiecode toevoegen
 
@@ -65,7 +65,7 @@ import org.json.JSONObject;
 
 ### <a name="add-essential-fields"></a>Essentiële velden toevoegen
 
-Vervang de **hoofd** klasse door de volgende code. Met deze gegevens wordt aangegeven hoe de Face-service moet worden verbonden en waar de invoergegevens kunnen worden opgehaald. U moet het `subscriptionKey` veld bijwerken met de waarde van uw abonnements sleutel en de `uriBase` teken reeks zodanig wijzigen dat het de juiste eindpunt teken reeks bevat. U kunt ook de waarde `imageWithFaces` instellen voor een pad dat naar een ander afbeeldingsbestand verwijst.
+Vervang de **hoofd** klasse door de volgende code. Met deze gegevens wordt aangegeven hoe de Face-service moet worden verbonden en waar de invoergegevens kunnen worden opgehaald. U moet het `subscriptionKey` veld bijwerken met de waarde van uw abonnements sleutel en de `uriBase` teken reeks wijzigen zodat deze de juiste eindpunt teken reeks bevat. U kunt ook de waarde `imageWithFaces` instellen voor een pad dat naar een ander afbeeldingsbestand verwijst.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -152,7 +152,7 @@ Direct onder de vorige code voegt u het volgende blok toe. Hiermee worden de ger
 }
 ```
 
-## <a name="run-the-app"></a>De app uitvoeren
+## <a name="run-the-app"></a>De app kunt uitvoeren
 
 Compileer de code en voer deze uit. Bij een geslaagd antwoord worden de Face-gegevens in de console weergegeven in een makkelijk leesbare JSON-indeling. Bijvoorbeeld:
 
@@ -251,4 +251,4 @@ Compileer de code en voer deze uit. Bij een geslaagd antwoord worden de Face-geg
 In deze snelstart hebt u een eenvoudige Java-consoletoepassing gemaakt die gebruikmaakt van REST-aanroepen met de Azure Face-API voor het detecteren van gezichten in een afbeelding en het retourneren van de kenmerken. Vervolgens leert u hoe u meer kunt doen met deze functionaliteit in een Android-toepassing.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Een Android-app maken om gezichten te herkennen en omlijsten](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
+> [Zelfstudie: een Android-app maken om gezichten te herkennen en omlijsten](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)

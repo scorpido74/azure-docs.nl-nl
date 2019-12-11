@@ -8,26 +8,26 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8e3b6d0fbefb8e3d3437fd5e24f929e453c573df
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 07fa43563ca9b6c9ae247df6eb28894331b004c1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621016"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976431"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics op IoT Edge
  
-Azure Stream Analytics (ASA) op IoT Edge kunnen ontwikkelaars bijna-realtime analytische intelligence dichter bij IoT-apparaten implementeren, zodat ze de volledige waarde van het apparaat worden gegenereerd gegevens kunnen ontgrendelen. Azure Stream Analytics is ontworpen voor lage latentie, tolerantie en efficiënt gebruik van bandbreedte en naleving. Ondernemingen kunnen nu implementeren logische besturingselement dicht bij de industriële bewerkingen en een aanvulling vormen op Big Data-analyses klaar in de cloud.  
+Met Azure Stream Analytics (ASA) op IoT Edge kunnen ontwikkelaars in bijna realtime analytische intelligence dichterbij IoT-apparaten implementeren. Op deze manier kan er gebruik worden gemaakt van de volledige waarde van de gegevens die door de apparaten worden gegenereerd. Azure Stream Analytics biedt een lage latentie, tolerantie en efficiënt gebruik van bandbreedte en naleving. Ondernemingen kunnen nu besturingslogica implementeren die dicht bij de industriële bewerkingen ligt en een aanvulling vormen op Big Data-analyses die worden uitgevoerd in de cloud.  
 
 Azure Stream Analytics op IoT Edge wordt uitgevoerd binnen de [Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/) framework. Nadat de taak is gemaakt in ASA, kunt u deze kunt implementeren en beheren met behulp van IoT-Hub.
 
 ## <a name="scenarios"></a>Scenario's
 ![Diagram op hoog niveau van IoT Edge](media/stream-analytics-edge/ASAedge-highlevel-diagram.png)
 
-* **Lage latentie opdracht en controle**: Bijvoorbeeld, moet het veiligheid productiesystemen reageren op operationele gegevens met zeer lage latentie. Met ASA op IoT Edge, kunt u analyseren sensor gegevens in bijna realtime en opdrachten geven bij het detecteren van afwijkingen op een virtuele machine stoppen of alarmen te activeren.
-*   **Verbinding met de cloud beperkt**: Missiekritieke kritieke systemen, zoals externe analysestructuur apparatuur, verbonden vaartuigen of offshore analyseren, moeten het analyseren en reageren op gegevens, zelfs wanneer cloudconnectiviteit onregelmatige. Met ASA, uw streaming logica wordt uitgevoerd onafhankelijk van de verbinding met het netwerk en u kunt kiezen wat u verzendt naar de cloud voor verdere verwerking of opslag.
-* **Beperkte bandbreedte**: De hoeveelheid gegevens die worden geproduceerd door jet-engines of verbonden auto's kunnen zo groot is dat gegevens moet worden gefilterd of vooraf verwerken voordat deze wordt verzonden naar de cloud. Met ASA, kunt u filteren en samenvoegen van de gegevens die moet worden verzonden naar de cloud.
-* **Naleving**: Naleving van regelgeving mogelijk enkele gegevens aan lokaal worden geanonimiseerd of samengevoegd voordat het wordt verzonden naar de cloud.
+* **Lage latentie opdracht en controle**: bijvoorbeeld veiligheid productiesystemen moet reageren op operationele gegevens met zeer lage latentie. Met ASA op IoT Edge, kunt u analyseren sensor gegevens in bijna realtime en opdrachten geven bij het detecteren van afwijkingen op een virtuele machine stoppen of alarmen te activeren.
+*   **Verbinding met de cloud beperkt**: missie kritieke systemen, zoals externe analysestructuur apparatuur, verbonden vaartuigen of offshore analyseren wilt analyseren en reageren op gegevens, zelfs wanneer cloudconnectiviteit onderbroken wordt. Met ASA, uw streaming logica wordt uitgevoerd onafhankelijk van de verbinding met het netwerk en u kunt kiezen wat u verzendt naar de cloud voor verdere verwerking of opslag.
+* **Beperkte bandbreedte**: de hoeveelheid gegevens die worden geproduceerd door jet-engines of verbonden auto's kunnen zo groot is dat gegevens moet worden gefilterd of vooraf verwerken voordat deze wordt verzonden naar de cloud. Met ASA, kunt u filteren en samenvoegen van de gegevens die moet worden verzonden naar de cloud.
+* **Naleving**: naleving van regelgeving mogelijk enkele gegevens aan lokaal worden geanonimiseerd of samengevoegd voordat het wordt verzonden naar de cloud.
 
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Edge-taken in Azure Stream Analytics
 ### <a name="what-is-an-edge-job"></a>Wat is een 'edge'-taak?
@@ -110,7 +110,7 @@ Deze stappen worden beschreven in de IoT Edge-documentatie voor [Windows](https:
 
 > [!Note]
 > Tijdens deze stap maakt de ASA een map met de naam 'EdgeJobs' in de storage-container (als deze niet al bestaat). Voor elke implementatie, wordt een nieuwe submap in de map 'EdgeJobs' gemaakt.
-> Wanneer u uw taak in IoT Edge-apparaten implementeert, maakt de ASA een shared access signature (SAS) voor het definitiebestand van de taak. De SAS-sleutel wordt veilig naar de IoT Edge-apparaten met behulp van dubbele apparaat verzonden. De vervaldatum van deze sleutel is drie jaar van de dag van het is gemaakt. Wanneer u een IoT Edge-taak bijwerkt, verandert de SAS, maar heeft geen invloed op de versie van de installatiekopie. Nadat u **bijwerken**, volgt u de implementatiewerkstroom en een melding van updates op het apparaat wordt geregistreerd.
+> Wanneer u uw taak op IoT Edge-apparaten implementeert, maakt ASA een Shared Access Signature (SAS) voor het definitie bestand van de taak. De SAS-sleutel wordt veilig naar de IoT Edge-apparaten met behulp van dubbele apparaat verzonden. De vervaldatum van deze sleutel is drie jaar van de dag van het is gemaakt. Wanneer u een IoT Edge taak bijwerkt, worden de SA'S gewijzigd, maar de versie van de installatie kopie wordt niet gewijzigd. Nadat u de **Update**hebt uitgevoerd, volgt u de implementatie werk stroom en wordt er een update melding op het apparaat vastgelegd.
 
 
 Zie voor meer informatie over IoT Edge-implementaties, [deze pagina](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
@@ -143,11 +143,11 @@ In dit voorbeeld definieert de volgende routes:
 
 ## <a name="technical-information"></a>Technische informatie
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>Huidige beperkingen voor IoT Edge-taken in vergelijking met cloudtaken
-Het doel is dat pariteit tussen IoT Edge-taken en cloudtaken. De meeste SQL-query language-functies worden ondersteund, zodat dezelfde logica worden uitgevoerd op zowel de cloud als IoT Edge.
+Het doel is dat pariteit tussen IoT Edge-taken en cloudtaken. De meeste functies van de SQL-query taal worden ondersteund, zodat dezelfde logica kan worden uitgevoerd in zowel de Cloud als IoT Edge.
 Echter de volgende functies zijn nog niet ondersteund voor edge-taken:
 * Gebruiker gedefinieerde functies (UDF's) in JavaScript. UDF zijn beschikbaar in [ C# voor IoT Edge-taken](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (preview).
 * De gebruiker gedefinieerde verzamelingen (UDA).
-* Azure ML-functies
+* Azure ML-functies.
 * Met behulp van meer dan 14 combinaties in één stap.
 * AVRO-indeling voor invoer/uitvoer. Op dit moment worden alleen CSV en JSON ondersteund.
 * De volgende SQL-operators:
@@ -160,7 +160,7 @@ Als u wilt uitvoeren ASA op IoT Edge, moet u de apparaten die kunnen worden uitg
 
 ASA en Azure IoT Edge gebruiken **Docker** containers om een draagbare oplossing die wordt uitgevoerd op meerdere host-besturingssystemen (Windows, Linux) te bieden.
 
-ASA on IoT Edge is beschikbaar als Windows en Linux-installatiekopieën, die worden uitgevoerd op zowel x86 64 of ARM (Advanced RISC Machines)-architecturen. 
+ASA on IoT Edge wordt beschikbaar gesteld als Windows-en Linux-installatie kopieën die worden uitgevoerd op x86-64-of ARM-architecturen (Advanced RISC machines). 
 
 
 ### <a name="input-and-output"></a>Invoer en uitvoer
@@ -202,30 +202,30 @@ Er zijn twee manieren om bij te werken van de referentiegegevens:
 * [Licentie voor Azure Stream Analytics op IoT Edge](https://go.microsoft.com/fwlink/?linkid=862827). 
 * [Kennisgeving van derden voor Azure Stream Analytics op IoT Edge](https://go.microsoft.com/fwlink/?linkid=862828).
 
-## <a name="azure-stream-analytics-module-image-information"></a>Azure Stream Analytics-module informatie over de afbeelding 
+## <a name="azure-stream-analytics-module-image-information"></a>Informatie over de installatie kopie van Azure Stream Analytics module 
 
-Deze versie-informatie voor het laatst is bijgewerkt op 27-06-2019:
+Deze versie-informatie is voor het laatst bijgewerkt op 2019-06-27:
 
 - Afbeelding: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-amd64`
-   - basisinstallatiekopie: microsoft/dotnet:2.1.6-runtime-alpine3.7
-   - Platform:
+   - basis installatie kopie: micro soft/DotNet: 2.1.6-runtime-Alpine 3.7
+   - onafhankelijk
       - architectuur: amd64
-      - besturingssysteem: linux
+      - besturings systeem: Linux
   
 - Afbeelding: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-arm32v7`
-   - basisinstallatiekopie: microsoft/dotnet:2.1.6-runtime-bionic-arm32v7
-   - Platform:
+   - basis installatie kopie: micro soft/DotNet: 2.1.6-runtime-Bionic-arm32v7
+   - onafhankelijk
       - architectuur: arm
-      - besturingssysteem: linux
+      - besturings systeem: Linux
   
 - Afbeelding: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-windows-amd64`
-   - basisinstallatiekopie: microsoft/dotnet:2.1.6-runtime-nanoserver-1809
-   - Platform:
+   - basis installatie kopie: micro soft/DotNet: 2.1.6-runtime-nano server-1809
+   - onafhankelijk
       - architectuur: amd64
-      - besturingssysteem: windows
+      - besturings systeem: Windows
       
       
-## <a name="get-help"></a>Help opvragen
+## <a name="get-help"></a>Hulp krijgen
 Voor verdere ondersteuning kunt u proberen de [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Volgende stappen

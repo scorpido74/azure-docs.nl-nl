@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Uw eerste Bing Custom Search-exemplaar maken | Microsoft Docs'
+title: 'Snelstartgids: een eerste Bing Aangepaste zoekopdrachten-exemplaar maken | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Gebruik dit artikel om een aangepast Bing-exemplaar te maken waarmee u domeinen en webpagina's kunt doorzoeken die u hebt gedefinieerd.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 06/18/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 2806ca6f7079ffac3d2222363cd5b3839ef8f97d
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 2c98395e2671c245d9349a72ed6a964b2ebd28ca
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405017"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978540"
 ---
-# <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Quickstart: Uw eerste Bing Custom Search-exemplaar maken
+# <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Snelstartgids: Uw eerste exemplaar voor Bing Custom Search maken
 
 Als u Bing Custom Search wilt gebruiken, moet u een exemplaar voor aangepaste zoekopdrachten maken dat uw weergave of segment van het internet definieert. Dit exemplaar bevat de openbare domeinen, websites en webpagina's die u wilt doorzoeken, plus eventuele gewenste aanpassingen van de rangschikking. 
 
@@ -52,4 +52,4 @@ Een exemplaar voor aangepaste zoekopdrachten met Bing maken:
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Snelstart: Uw Bing Custom Search-eindpunt aanroepen](./call-endpoint-csharp.md)
+> [Snelstartgids: uw Bing Aangepaste zoekopdrachten-eind punt aanroepen](./call-endpoint-csharp.md)

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 808e110ccb45b0b4f7bf34a43597c1f7a7bc0fed
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 6ee156efb5512c92d86ba05513b6a2b91df4eae8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422580"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976958"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>Entiteiten en hun doel in LUIS
 
@@ -75,7 +75,7 @@ Door [**machines geleerde entiteiten**](tutorial-machine-learned-entity.md) zijn
 
 Een door de machine geleerde entiteits triggers op basis van de context die is geleerd via uitingen training. **Beperkingen** zijn optionele regels die worden toegepast op een door een machine geleerde entiteit die de trigger beperkt op basis van de exacte definitie van de tekst die overeenkomt met een niet door de machine geleerde entiteit, zoals een [lijst](reference-entity-list.md) of [regex](reference-entity-regular-expression.md). Een `size` door de machine geleerde entiteit kan bijvoorbeeld een beperking hebben van een `sizeList` lijst entiteit die de `size` entiteit beperkt om alleen te activeren wanneer de waarden in de `sizeList` entiteit worden aangetroffen.
 
-[**Descriptors**](luis-concept-feature.md) zijn functies die worden toegepast om de relevantie van de woorden of zinsdelen voor de voor spelling te verhogen. Ze worden *descriptors* genoemd, omdat ze worden gebruikt om een intentie of entiteit te *beschrijven* . Descriptoren beschrijven het onderscheiden van eigenschappen of kenmerken van gegevens, zoals belang rijke woorden of zinsdelen. die LUIS observeert en leert door.
+[**Descriptors**](luis-concept-feature.md) zijn functies die worden toegepast om de relevantie van de woorden of zinsdelen voor de voor spelling te verhogen. Ze worden *descriptors* genoemd, omdat ze worden gebruikt om een intentie of entiteit te *beschrijven* . Descriptoren beschrijven het onderscheiden van eigenschappen of kenmerken van gegevens, zoals belang rijke woorden of zinsdelen die LUIS observeert en leert.
 
 Wanneer u een woordgroepen lijst functie in uw LUIS-app maakt, wordt deze standaard globaal ingeschakeld en toegepast op alle intenten en entiteiten. Als u echter de woordgroepen lijst toepast als een descriptor (functie) van een door de machine geleerde entiteit (of *model*), vermindert het bereik van de groep alleen voor het model en wordt het niet meer gebruikt met alle andere modellen. Het gebruik van een woordgroepen lijst als een descriptor van een model helpt de ontleding te verhelpen door de nauw keurigheid te helpen van het model waarop het wordt toegepast.
 
@@ -90,11 +90,11 @@ Wanneer u een woordgroepen lijst functie in uw LUIS-app maakt, wordt deze standa
 
 Kies de entiteit op basis van de manier waarop de gegevens moeten worden geëxtraheerd en hoe deze moeten worden weer gegeven nadat deze is geëxtraheerd.
 
-|Entiteits type|Doel|
+|Entiteitstype|Doel|
 |--|--|
 |[**Machine-geleerd**](tutorial-machine-learned-entity.md)|Door de machine geleerd entiteiten leren van de context in het utterance. Bovenliggende groepering van entiteiten, ongeacht het entiteits type. Dit maakt variatie van de plaatsing in voor beeld uitingen aanzienlijk. |
-|[**Orderverzamellijst**](reference-entity-list.md)|Lijst met items en de bijbehorende synoniemen die zijn geëxtraheerd met **exact overeenkomende tekst**.|
-|[**Patroon. alle**](reference-entity-pattern-any.md)|Entiteit waarvan het einde van de entiteit moeilijk te bepalen is. |
+|[**List**](reference-entity-list.md)|Lijst met items en de bijbehorende synoniemen die zijn geëxtraheerd met **exact overeenkomende tekst**.|
+|[**Pattern.any**](reference-entity-pattern-any.md)|Entiteit waarvan het einde van de entiteit moeilijk te bepalen is. |
 |[**Vooraf gedefinieerde**](luis-reference-prebuilt-entities.md)|Al getraind voor het extra heren van specifieke soorten gegevens, zoals URL of e-mail. Sommige van deze vooraf gemaakte entiteiten worden gedefinieerd in het open source- [tekst](https://github.com/Microsoft/Recognizers-Text) project voor herkenning. Als uw specifieke cultuur of de entiteit wordt momenteel niet ondersteund, dragen bij aan het project.|
 |[**Reguliere expressie**](reference-entity-regular-expression.md)|Gebruikt reguliere expressie voor **exacte tekst overeenkomst**.|
 
@@ -128,7 +128,7 @@ Als LUIS de `location` vindt maar de rol niet kan bepalen, wordt de locatie-enti
 
 ## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Als u meer dan het maximum aantal entiteiten
 
-Neem contact op met de ondersteuning als u meer nodig hebt dan de limiet. Als u dit wilt doen, verzamelt u gedetailleerde informatie over uw systeem, gaat u naar de [Luis](luis-reference-regions.md#luis-website) -website en selecteert u vervolgens **ondersteuning**. Als uw Azure-abonnement ondersteunings services bevat, neemt u contact op met de [technische ondersteuning van Azure](https://azure.microsoft.com/support/options/).
+Neem contact op met de ondersteuning als u meer nodig hebt dan de limiet. Om dit te doen, verzamelt gedetailleerde informatie over uw systeem, gaat u naar de [LUIS](luis-reference-regions.md#luis-website) website, en selecteer vervolgens **ondersteuning**. Als uw Azure-abonnement voor ondersteuningsservices bevat, neem dan contact op met [technische ondersteuning van Azure](https://azure.microsoft.com/support/options/).
 
 ## <a name="entity-prediction-status"></a>Status van de voor spelling van de entiteit
 
@@ -136,8 +136,9 @@ De LUIS-portal laat zien wanneer de entiteit, in een voor beeld utterance, een a
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Leer concepten over goede [uitingen](luis-concept-utterance.md).
+Informatie over concepten over goede [uitingen](luis-concept-utterance.md).
 
-Zie [entiteiten toevoegen](luis-how-to-add-entities.md) voor meer informatie over het toevoegen van entiteiten aan uw Luis-app.
+Zie [entiteiten toevoegen](luis-how-to-add-entities.md) voor meer informatie over entiteiten toevoegen aan uw LUIS-app.
 
 Zie [zelf studie: gestructureerde gegevens ophalen van gebruikers utterance met door machines geleerde entiteiten in language Understanding (Luis)](tutorial-machine-learned-entity.md) voor meer informatie over het extra heren van gestructureerde gegevens uit een utterance met behulp van de door de machine geleerde entiteit.
+ 

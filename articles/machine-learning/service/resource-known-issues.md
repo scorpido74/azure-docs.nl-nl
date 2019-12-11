@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bff3547456c03ae313e7465238872670965765f1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ed67981a79e2bc998d0f1f64858206243c0a7070
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927687"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997204"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekende problemen en Azure Machine Learning voor probleem oplossing
 
@@ -105,7 +105,7 @@ Als u de voorloop back slash (/) niet opneemt, moet u een voor voegsel voor de w
 
 ### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>Kan het Parquet-bestand niet lezen uit HTTP of ADLS gen 2
 
-Er is een bekend probleem in de DataPrep SDK-versie 1.1.25 die een fout veroorzaakt bij het maken van een gegevensset door Parquet-bestanden te lezen uit HTTP of ADLS gen 2. Het zal mislukken met `Cannot seek once reading started.`. Als u dit probleem wilt oplossen, moet u `azureml-dataprep` bijwerken naar een versie die hoger is dan 1.1.26 of een lagere versie dan 1.1.24.
+Er is een bekend probleem in de DataPrep SDK-versie 1.1.25 die een fout veroorzaakt bij het maken van een gegevensset door Parquet-bestanden van HTTP of ADLS gen 2 te lezen. Het zal mislukken met `Cannot seek once reading started.`. Als u dit probleem wilt oplossen, moet u `azureml-dataprep` bijwerken naar een versie die hoger is dan 1.1.26 of een lagere versie dan 1.1.24.
 
 ```python
 pip install --upgrade azureml-dataprep
@@ -141,7 +141,7 @@ Wanneer u gebruikmaakt van geautomatiseerde machine learning mogelijkheden op Az
 
 Als u in automatische machine learning instellingen meer dan 10 iteraties hebt, stelt u `show_output` in op `False` wanneer u de uitvoering verzendt.
 
-### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Widget voor de Azure Machine Learning SDK/automatische machine learning
+### <a name="widget-for-the-azure-machine-learning-sdk-and-automated-machine-learning"></a>Widget voor de Azure Machine Learning SDK en geautomatiseerde machine learning
 
 De Azure Machine Learning SDK-widget wordt niet ondersteund in een Databricks-notebook omdat de notebooks geen HTML-widgets kunnen parseren. U kunt de widget in de portal weer geven met behulp van deze python-code in uw Azure Databricks notebook-cel:
 
@@ -261,6 +261,16 @@ kubectl get secret/azuremlfessl -o yaml
 ## <a name="recommendations-for-error-fix"></a>Aanbevelingen voor probleem oplossing
 Op basis van algemene waarneming zijn dit de aanbevelingen van Azure ML voor het oplossen van enkele veelvoorkomende fouten in azure ML.
 
+### <a name="metric-document-is-too-large"></a>Het metrieke document is te groot
+Azure Machine Learning-service heeft interne limieten voor de grootte van metrische objecten die tegelijkertijd kunnen worden geregistreerd vanuit een training-uitvoering. Als er een fout bericht wordt weer gegeven met de melding ' metrisch document is te groot ' bij het vastleggen van een metrische waarde voor een lijst, kunt u de lijst in kleinere segmenten splitsen, bijvoorbeeld:
+
+```python
+run.log_list("my metric name", my_metric[:N])
+run.log_list("my metric name", my_metric[N:])
+```
+
+ De uitvoerings geschiedenis-service voegt de blokken met dezelfde metrische naam in een aaneengesloten lijst samen.
+
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors (geen module met de naam)
 Als u in ModuleErrors uitvoert terwijl experimenten in azure ML worden ingediend, betekent dit dat het trainings script verwacht dat er een pakket wordt geïnstalleerd, maar dit wordt niet toegevoegd. Wanneer u de naam van het pakket opgeeft, installeert Azure ML het pakket in de omgeving die wordt gebruikt voor uw training. 
 
@@ -268,10 +278,11 @@ Als u [schattingen](concept-azure-machine-learning-architecture.md#estimators) g
 
 Azure ML biedt ook Framework-specifieke schattingen voor tensor flow, PyTorch, Chainer en SKLearn. Door deze ramingen te gebruiken, moet u ervoor zorgen dat de Framework afhankelijkheden namens u zijn geïnstalleerd in de omgeving die wordt gebruikt voor de training. U hebt de optie om extra afhankelijkheden op te geven zoals hierboven wordt beschreven. 
  
- Azure ML bewaart docker-installatie kopieën en de inhoud ervan kunnen worden weer gegeven in [AzureML-containers](https://github.com/Azure/AzureML-Containers).
+Azure ML bewaart docker-installatie kopieën en de inhoud ervan kunnen worden weer gegeven in [AzureML-containers](https://github.com/Azure/AzureML-Containers).
 Framework-specifieke afhankelijkheden worden weer gegeven in de bijbehorende Framework-documentatie- [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), [tensor flow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks), [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks).
 
->[Opmerking!] Als u denkt dat een bepaald pakket algemeen genoeg is om te worden toegevoegd aan de bewaarde afbeeldingen en omgevingen van Azure ML, kunt u een GitHub-probleem veroorzaken in [AzureML-containers](https://github.com/Azure/AzureML-Containers). 
+> [!Note]
+> Als u denkt dat een bepaald pakket algemeen genoeg is om te worden toegevoegd aan de bewaarde afbeeldingen en omgevingen van Azure ML, kunt u een GitHub-probleem veroorzaken in [AzureML-containers](https://github.com/Azure/AzureML-Containers). 
  
  ### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError (naam niet gedefinieerd), AttributeError (object heeft geen kenmerk)
 Deze uitzonde ring moet afkomstig zijn uit uw trainings scripts. U kunt de logboek bestanden van Azure Portal bekijken voor meer informatie over de specifieke naam niet gedefinieerd of kenmerk fout. In de SDK kunt u `run.get_details()` gebruiken om het fout bericht te bekijken. Hiermee worden ook alle logboek bestanden weer geven die zijn gegenereerd voor de uitvoering. Bekijk uw trainings script, los het probleem op en probeer het opnieuw. 

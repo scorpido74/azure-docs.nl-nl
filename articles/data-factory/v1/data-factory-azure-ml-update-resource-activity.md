@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 190a4e704b002a4d6d4876d048c693a5fffe0114
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: afc79badd19fa180e631f1f8fa9735567a0b1e33
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683122"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978710"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Azure Machine Learning modellen bijwerken met resource activiteit bijwerken
 
@@ -41,8 +41,8 @@ Dit artikel vormt een aanvulling op het belangrijkste Azure Data Factory-Azure M
 ## <a name="overview"></a>Overzicht
 Na verloop van tijd moeten de voorspellende modellen in de Score experimenten van Azure ML opnieuw worden getraind met behulp van nieuwe invoer gegevens sets. Wanneer u klaar bent met opnieuw trainen, wilt u de Score-webservice bijwerken met het opnieuw getrainde ML-model. De gebruikelijke stappen voor het inschakelen van het opnieuw trainen en bijwerken van Azure ML-modellen via webservices zijn:
 
-1. Maak een experiment in [Azure ml Studio](https://studio.azureml.net).
-2. Wanneer u tevreden bent met het model, kunt u Azure ML Studio gebruiken om webservices te publiceren voor zowel het **trainings experiment** als het scoren/**voorspellende experiment**.
+1. Maak een experiment in [Azure machine learning Studio (klassiek)](https://studio.azureml.net).
+2. Wanneer u tevreden bent met het model, gebruikt u Azure Machine Learning Studio (klassiek) voor het publiceren van webservices voor zowel het **trainings experiment** als het scoren/**voorspellende experiment**.
 
 In de volgende tabel worden de webservices beschreven die in dit voor beeld worden gebruikt.  Zie [machine learning-modellen programmatisch opnieuw trainen](../../machine-learning/machine-learning-retrain-models-programmatically.md) voor meer informatie.
 
@@ -88,7 +88,7 @@ Als de webservice het nieuwe type webservice is dat een Azure Resource Manager-e
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-U kunt in de URL waarden ophalen voor de plaatsings houders bij het uitvoeren van een query op de webservice op de [Portal Azure machine learning](https://services.azureml.net/)-webservices. Voor het nieuwe type update resource-eind punt is een AAD-token (Azure Active Directory) vereist. Geef **servicePrincipalId** en **servicePrincipalKey**op in de gekoppelde service van AzureML. Zie [Service-Principal maken en machtigingen toewijzen om Azure-resources te beheren](../../active-directory/develop/howto-create-service-principal-portal.md). Hier volgt een voor beeld van een gekoppelde service definitie voor AzureML: 
+U kunt in de URL waarden ophalen voor de plaatsings houders bij het uitvoeren van een query op de webservice op de [Portal Azure machine learning](https://services.azureml.net/)-webservices. Voor het nieuwe type update resource-eind punt is een AAD-token (Azure Active Directory) vereist. Geef **servicePrincipalId** en **servicePrincipalKey** op in de gekoppelde Azure machine learning service. Zie [Service-Principal maken en machtigingen toewijzen om Azure-resources te beheren](../../active-directory/develop/howto-create-service-principal-portal.md). Hier volgt een voor beeld van een gekoppelde service definitie voor AzureML: 
 
 ```json
 {
@@ -138,7 +138,7 @@ Hier volgt een voor beeld van de JSON-definitie van de gekoppelde service:
 ```
 
 ### <a name="training-input-dataset"></a>Gegevensset voor invoer van training:
-De volgende gegevensset vertegenwoordigt de invoer trainings gegevens voor de Azure ML training-webservice. De activiteit Azure ML batch Execution neemt deze gegevensset als invoer.
+De volgende gegevensset vertegenwoordigt de invoer trainings gegevens voor de webservice van de Azure Machine Learning-training. De activiteit voor het uitvoeren van Azure Machine Learning batch neemt deze gegevensset als invoer.
 
 ```JSON
 {
@@ -192,7 +192,7 @@ De volgende gegevensset vertegenwoordigt het uitvoer iLearner-bestand van de Azu
 }
 ```
 
-### <a name="linked-service-for-azure-ml-training-endpoint"></a>Gekoppelde service voor Azure ML-trainings eindpunt
+### <a name="linked-service-for-azure-machine-learning-training-endpoint"></a>Gekoppelde service voor Azure Machine Learning-trainings eindpunt
 Het volgende JSON-code fragment definieert een Azure Machine Learning gekoppelde service die naar het standaard eindpunt van de training-webservice verwijst.
 
 ```JSON
@@ -208,12 +208,12 @@ Het volgende JSON-code fragment definieert een Azure Machine Learning gekoppelde
 }
 ```
 
-In **Azure ml Studio**gaat u als volgt te werk om waarden op te halen voor **mlEndpoint** en **apiKey**:
+In **Azure machine learning Studio (klassiek)** gaat u als volgt te werk om waarden op te halen voor **mlEndpoint** en **apiKey**:
 
 1. Klik op **WEBservices** in het menu links.
 2. Klik op de training-webservice in de lijst met **webservices** .
 3. Klik op Kopiëren naast tekstvak **API-sleutel** . Plak de sleutel in het klem bord in de Data Factory JSON-editor.
-4. Klik in **Azure ml Studio**op **batch-uitvoerings** koppeling.
+4. Klik in de **Azure machine learning Studio (klassiek)** op **batch-uitvoerings** koppeling.
 5. Kopieer de **aanvraag-URI** uit de sectie **Request** en plak deze in de Data Factory JSON-editor.   
 
 ### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Gekoppelde service voor het bijwerk bare Score eindpunt van Azure ML:

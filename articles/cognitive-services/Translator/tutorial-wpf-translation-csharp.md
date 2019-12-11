@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 06/04/2019
+ms.date: 12/09/2019
 ms.author: swmachan
-ms.openlocfilehash: 6f8196c276b4f8ef5c8a49f6f83f59f9f505a6be
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 25c51067f713b5d713684e5d267c133c21b17c93
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647710"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978523"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Zelf studie: een omzettings-app maken met WPF
 
@@ -42,7 +42,7 @@ Deze lijst bevat de Cognitive Services in deze zelfstudie worden gebruikt. Klik 
 | Translator Text | [Talen ophalen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Hiermee haalt u een volledige lijst ondersteunde talen op voor het vertalen van tekst. |
 | Translator Text | [Vertalen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Hiermee vertaalt u tekst naar meer dan 60 talen. |
 | Translator Text | [Detecteren](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Hiermee detecteert u de taal van ingevoerde tekst. Biedt ook een betrouwbaarheidsscore voor de detectie. |
-| Bing-spellingcontrole | [Spellingscontrole](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Hiermee corrigeert u spelfouten om de nauwkeurigheid van de vertaling te vergroten. |
+| Bing Spellingcontrole | [Spellingscontrole](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Hiermee corrigeert u spelfouten om de nauwkeurigheid van de vertaling te vergroten. |
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -252,7 +252,7 @@ In dit codeblok hebben we twee variabelen opgegeven die informatie bevatten over
 
 | Variabele | Type | Beschrijving |
 |----------|------|-------------|
-|`languageCodes` | Matrix van tekenreeksen |Hiermee worden de taalcodes opgeslagen in de cache. De Translator-service gebruikt korte codes, zoals `en` voor Engels, om talen te identificeren. |
+|`languageCodes` | Matrix van tekenreeksen |Hiermee worden de taalcodes opgeslagen in de cache. De Translator-service gebruikt korte codes om talen te identificeren, bijvoorbeeld `en` voor Engels. |
 |`languageCodesAndTitles` | Gesorteerde woordenlijst | Hiermee worden de beschrijvende namen in de gebruikersinterface terugverwezen naar de korte codes die in de API worden gebruikt. Ze worden op alfabetische volgorde gesorteerd, zonder rekening te houden met het gebruik van hoofdletters. |
 
 In de `MainWindow`-constructor is foutafhandeling met `HandleExceptions` toegevoegd. Deze fout afhandeling zorgt ervoor dat er een waarschuwing wordt gegeven als er geen uitzonde ring wordt afgehandeld. Vervolgens wordt er een controle uitgevoerd om te bevestigen dat de opgegeven abonnementssleutel 32 tekens lang is. Er wordt een fout gemeld als de sleutel korter of langer is dan 32 tekens.

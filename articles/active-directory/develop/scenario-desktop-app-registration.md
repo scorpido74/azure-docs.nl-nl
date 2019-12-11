@@ -1,5 +1,5 @@
 ---
-title: Bureau blad-app die web-Api's aanroept (app-registratie)-micro soft Identity-platform
+title: Een bureau blad-app registreren die web-Api's aanroept-micro soft Identity-platform | Azure
 description: Meer informatie over het bouwen van een bureau blad-app die web-Api's aanroept (app-registratie)
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,16 +17,16 @@ ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 648652ed32a5dea30de665b7fa49190171a7f10a
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 94f7f2dfdbf404a092773857a0f7727618cd429a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268392"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965531"
 ---
 # <a name="desktop-app-that-calls-web-apis---app-registration"></a>Bureau blad-app die web-Api's aanroept-app-registratie
 
-Dit artikel bevat de specifieke app-registraties voor een bureaublad toepassing.
+In dit artikel worden de app-registratie gegevens voor een bureaublad toepassing besproken.
 
 ## <a name="supported-accounts-types"></a>Ondersteunde account typen
 
@@ -46,14 +46,14 @@ Als uw bureaublad toepassing interactieve verificatie gebruikt, kunt u gebruiker
 
 De omleidings-Uri's voor gebruik in een bureaublad toepassing zijn afhankelijk van de stroom die u wilt gebruiken.
 
-- Als u de **interactieve verificatie** of de **code stroom**van het apparaat gebruikt, wilt u deze `https://login.microsoftonline.com/common/oauth2/nativeclient`gebruiken. U verkrijgt deze configuratie door te klikken op de bijbehorende URL in het gedeelte **verificatie** voor uw toepassing.
+- Als u de **interactieve verificatie** of de **code stroom**van het apparaat gebruikt, wilt u `https://login.microsoftonline.com/common/oauth2/nativeclient`gebruiken. U verkrijgt deze configuratie door te klikken op de bijbehorende URL in het gedeelte **verificatie** voor uw toepassing.
   
   > [!IMPORTANT]
-  > Vandaag MSAL.NET maakt standaard gebruik van een andere omleidings-URI in bureaublad`urn:ietf:wg:oauth:2.0:oob`toepassingen die worden uitgevoerd op Windows (). In de toekomst wilt u deze standaard instelling wijzigen. u kunt daarom het beste`https://login.microsoftonline.com/common/oauth2/nativeclient`
+  > Vandaag MSAL.NET maakt standaard gebruik van een andere omleidings-URI in bureaublad toepassingen die worden uitgevoerd op Windows (`urn:ietf:wg:oauth:2.0:oob`). In de toekomst wilt u deze standaard instelling wijzigen. u kunt daarom het beste `https://login.microsoftonline.com/common/oauth2/nativeclient` gebruiken
 
-- Als u een systeem eigen doel-C of SWIFT-app bouwt voor macOS, wilt u de redirectUri registreren op basis van de bundel-id van uw toepassing in de volgende indeling: **msauth. < your. app. bundel. id >://auth** (< vervangen uw app. bundel. id-> met de bundel-id van uw toepassing)
+- Als u een systeem eigen doel-C of SWIFT-app bouwt voor macOS, wilt u de redirectUri registreren op basis van de bundel-id van uw toepassing in de volgende indeling: **msauth. < your. app. bundel. id >://auth** (Vervang < your. app. bundel. id > met de bundel-id van uw toepassing)
 - Als uw app alleen gebruikmaakt van geïntegreerde Windows-verificatie of gebruikers naam/wacht woord, hoeft u geen omleidings-URI voor uw toepassing te registreren. Deze stromen maken een afronding van het micro soft Identity platform v 2.0-eind punt en uw toepassing wordt niet terugaangeroepen op een specifieke URI.
-- Voor het onderscheiden van de apparaatcode stroom, geïntegreerde Windows-verificatie en gebruikers naam/wacht woord van een vertrouwelijke client toepassings stroom die geen omleidings-Uri's heeft (de client referentie stroom die wordt gebruikt in de daemon-toepassingen), moet u uitdrukkelijk bepalen dat uw de toepassing is een open bare client toepassing. Voor deze configuratie gaat u naar het gedeelte **verificatie** voor uw toepassing. Klik in de Subsectie **Geavanceerde instellingen** in het standaard- **client type** op **Ja** als **een open bare client**om de vraag te behandelen.
+- Als u de apparaatcode stroom, geïntegreerde Windows-verificatie en gebruikers naam/wacht woord van een vertrouwelijke client toepassings stroom die geen omleidings-Uri's heeft, wilt onderscheiden (de client referentie stroom die wordt gebruikt in daemon-toepassingen), moet u uitdrukkelijk controleren of uw toepassing een open bare client toepassing is. Voor deze configuratie gaat u naar het gedeelte **verificatie** voor uw toepassing. Klik in de Subsectie **Geavanceerde instellingen** in het standaard- **client type** op **Ja** als **een open bare client**om de vraag te behandelen.
 
   ![Open bare client toestaan](media/scenarios/default-client-type.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Beveiligde web-API-app-code configuratie
+title: Beveiligde web API-apps configureren | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het bouwen van een beveiligde web-API en het configureren van de code van uw toepassing.
 services: active-directory
@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb562caf2dfc83841762748f37d1a7ee325de10b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 7f78fa35096b7e17d3736190bfa49619c2c81520
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882629"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965395"
 ---
 # <a name="protected-web-api-code-configuration"></a>Beveiligde web-API: code configuratie
 
@@ -32,7 +32,7 @@ Als u de code voor de beveiligde web-API wilt configureren, moet u weten wat Api
 
 Net als web-apps zijn de ASP.NET/ASP.NET core-web-Api's beveiligd omdat hun controller acties worden voorafgegaan door het kenmerk `[Authorize]`. Daarom kunnen de controller acties alleen worden aangeroepen als de API wordt aangeroepen met een identiteit die is geautoriseerd.
 
-Houd rekening met de volgende vragen:
+Denk na over de volgende vragen:
 
 - Hoe kent de Web-API de identiteit van de app waarmee deze wordt aangeroepen? (Alleen een app kan een web-API aanroepen.)
 - Wat is de identiteit van de gebruiker als de app namens een gebruiker de Web-API wordt aangeroepen?

@@ -1,5 +1,5 @@
 ---
-title: Meer informatie over de verschillende token-en claim typen die worden ondersteund door Azure AD | Microsoft Docs
+title: Azure AD-token & claim typen | Microsoft Docs
 description: Een hand leiding voor het leren en evalueren van de claims in de SAML-tokens (2,0 en JSON Web tokens) die zijn uitgegeven door Azure Active Directory (AAD)
 documentationcenter: na
 author: rwike77
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baf4c976a1232d08df1be2549d2861295adf9ee1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 4acac79d79b584dac93d63f6d478627f7e953f81
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532962"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965753"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML-token referentie
 
@@ -32,7 +32,7 @@ Azure Active Directory (Azure AD) verzendt verschillende typen beveiligings toke
 ## <a name="claims-in-saml-tokens"></a>Claims in SAML-tokens
 
 > [!div class="mx-codeBreakAll"]
-> | Naam | Equivalente JWT-claim | Beschrijving | Voorbeeld |
+> | Naam | Equivalent JWT Claim | Beschrijving | Voorbeeld |
 > | --- | --- | --- | ------------|
 > |Doelgroep | `aud` |De bedoelde ontvanger van het token. De toepassing die het token ontvangt, moet controleren of de doel groep juist is en weigert tokens die zijn bedoeld voor een andere doel groep. | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
 > | Verificatiemoment | |Registreert de datum en tijd waarop verificatie is uitgevoerd. | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 
@@ -155,7 +155,7 @@ Dit is een voor beeld van een typisch SAML-token.
       <t:KeyType>http://schemas.xmlsoap.org/ws/2005/05/identity/NoProofKey</t:KeyType>
     </t:RequestSecurityTokenResponse>
 
-## <a name="related-content"></a>Gerelateerde inhoud
+## <a name="related-content"></a>Verwante inhoud
 
 * Zie de [Operations-beleids bewerkingen](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) en de entiteit van het [beleid](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity)van Azure AD voor meer informatie over het beheren van de levens duur van tokens via de Azure AD-Graph API.
 * Zie [Configureer bare token levensduur in azure AD](active-directory-configurable-token-lifetimes.md)voor meer informatie en voor beelden over het beheren van beleids regels via Power shell-cmdlets, inclusief voor beelden. 

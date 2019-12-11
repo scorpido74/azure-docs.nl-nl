@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 12/09/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/23/2019
-ms.openlocfilehash: 66388f139b63c63e1f0f8ee8ee063e0ddd0f9da5
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 236e222da9e9a64d4b93002d28c94fa6fe469c08
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213032"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971978"
 ---
 # <a name="routing-and-tag-expressions"></a>Routerings-en label expressies
 
@@ -41,13 +41,13 @@ De enige manier om specifieke meldings registraties te richten, is door labels t
 
 Een tag kan een wille keurige teken reeks zijn, Maxi maal 120 tekens, bevatten alfanumeriek en de volgende niet-alfanumerieke tekens: ' _ ', ' @ ', ' # ', '. ', ': ', '-'. In het volgende voor beeld ziet u een toepassing waarvan u pop-upmeldingen over specifieke muziek groepen kunt ontvangen. In dit scenario is een eenvoudige manier om meldingen te routeren met label registraties met tags die de verschillende banden vertegenwoordigen, zoals in de volgende afbeelding:
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags.png)
+![Overzicht van Tags](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags.png)
 
 In deze afbeelding bereikt het bericht **Beatles** alleen de Tablet die is geregistreerd bij de tag **Beatles**.
 
 Zie [registratie beheer](notification-hubs-push-notification-registration-management.md)voor meer informatie over het maken van registraties voor Tags.
 
-U kunt meldingen naar Tags verzenden met behulp van de methoden voor `Microsoft.Azure.NotificationHubs.NotificationHubClient` het verzenden van meldingen van de klasse in de [Microsoft Azure notification hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK. U kunt ook node. js of de REST-Api's voor push meldingen gebruiken.  Hier volgt een voor beeld van het gebruik van de SDK.
+U kunt meldingen naar Tags verzenden met behulp van de methoden voor het verzenden van meldingen van de klasse `Microsoft.Azure.NotificationHubs.NotificationHubClient` in de [Microsoft Azure notification hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK. U kunt ook node. js of de REST-Api's voor push meldingen gebruiken.  Hier volgt een voor beeld van het gebruik van de SDK.
 
 ```csharp
 Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
@@ -65,7 +65,7 @@ outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(to
 
 Tags hoeven niet vooraf te worden ingericht en kunnen verwijzen naar meerdere app-specifieke concepten. Gebruikers van deze voorbeeld toepassing kunnen bijvoorbeeld opmerkingen maken op banden en pop-upmeldingen ontvangen, niet alleen voor de opmerkingen op hun favoriete banden, maar ook voor alle opmerkingen van hun vrienden, ongeacht de band waarop ze opmerkingen maken. In de volgende afbeelding ziet u een voor beeld van dit scenario:
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags2.png)
+![Tags voor vrienden](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags2.png)
 
 In deze afbeelding is Lisa geïnteresseerd in updates voor het Beatles en is Bob geïnteresseerd in updates voor de Wailers. Bob is ook geïnteresseerd in de opmerkingen van Charlie en Charlie is geïnteresseerd in de Wailers. Wanneer er een melding wordt verzonden voor de opmerking van Charlie op de Beatles, ontvangen zowel Alice als Bob deze.
 
@@ -80,9 +80,9 @@ Zie voor een volledige stapsgewijze zelf studie over het gebruik van tags voor h
 
 Een andere manier om tags te gebruiken is het identificeren van alle apparaten van een bepaalde gebruiker. Registraties kunnen worden gelabeld met een tag die een gebruikers-ID bevat, zoals in de volgende afbeelding:
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags3.png)
+![Gebruikers labelen](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags3.png)
 
-In deze afbeelding is het bericht met de gecodeerde UID: Anja bereikt alle registraties met de label ' UID: Alice '; dus alle apparaten van Alice.
+In deze afbeelding heeft het bericht Tagged UID: Anne alle registraties met de label ' UID: Alice ' bereikt; dus alle apparaten van Alice.
 
 ## <a name="tag-expressions"></a>Label expressies
 
@@ -94,7 +94,7 @@ Overweeg een sport toepassing die een herinnering stuurt naar iedereen in Boston
 (follows_RedSox || follows_Cardinals) && location_Boston
 ```
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags4.png)
+![Label expressies](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags4.png)
 
 Label expressies kunnen alle Booleaanse Opera tors bevatten, zoals en (& &) of (| |), en niet (!). Ze kunnen ook haakjes bevatten. Label expressies zijn beperkt tot 20 Tags als ze alleen or bevatten. anders zijn ze beperkt tot 6 tags.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 694cdf054f74db50bcf1781e60df0f93810ae60c
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 5137f35a4707aa68adfbf3f326ca9e4bfb40f0f4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875195"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970326"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Offline Widevine streaming voor Android  
 
@@ -53,7 +53,7 @@ Voordat u offline DRM implementeert voor Widevine op Android-apparaten, moet u e
 
 - Vertrouwd raken met de concepten die zijn geïntroduceerd voor online Content Protection met behulp van Widevine DRM. Dit wordt gedetailleerd behandeld in de volgende documenten/voor beelden:
     - [Azure Media Services gebruiken om DRM-licenties of AES-sleutels te leveren](media-services-deliver-keys-and-licenses.md)
-    - [CENC met multi-DRM en Access Control: Een referentie ontwerp en-implementatie in Azure en Azure Media Services](media-services-cenc-with-multidrm-access-control.md)
+    - [CENC met Multi-DRM en Access Control: een referentieontwerp en -implementatie in Azure en Azure Media Services](media-services-cenc-with-multidrm-access-control.md)
     - [PlayReady en/of Widevine Dynamic Common Encryption gebruiken met .NET](https://azure.microsoft.com/resources/samples/media-services-dotnet-dynamic-encryption-with-drm/)
     - [Gebruik Azure Media Services voor het leveren van PlayReady-en/of Widevine-licenties met .NET](https://azure.microsoft.com/resources/samples/media-services-dotnet-deliver-playready-widevine-licenses/)
 - Vertrouwd raken met de Google ExoPlayer SDK voor Android, een open-source video speler SDK die ondersteuning biedt voor het afspelen van offline Widevine DRM. 
@@ -129,11 +129,11 @@ Ontwikkel aars moeten tijdens de ontwikkeling van een toepassing verwijzen naar 
 
 ### <a name="working-with-older-android-devices"></a>Werken met oudere Android-apparaten
 
-Voor sommige oudere Android-apparaten moet u waarden instellen voor de volgende **policy_overrides** -eigenschappen (gedefinieerd in [Widevine-licentie sjabloon](media-services-widevine-license-template-overview.md): **rental_duration_seconds**, **playback_duration_seconds**en **license_ duration_seconds**. U kunt ze ook instellen op nul, wat betekent oneindig/onbeperkte duur.  
+Voor sommige oudere Android-apparaten moet u waarden instellen voor de volgende **policy_overrides** eigenschappen (gedefinieerd in [Widevine-licentie sjabloon](media-services-widevine-license-template-overview.md): **rental_duration_seconds**, **playback_duration_seconds**en **license_duration_seconds**. U kunt ze ook instellen op nul, wat betekent oneindig/onbeperkte duur.  
 
 De waarden moeten worden ingesteld om te voor komen dat er een geheeltallige overloop fout optreedt. Zie https://github.com/google/ExoPlayer/issues/3150 en https://github.com/google/ExoPlayer/issues/3112 voor meer uitleg over het probleem. <br/>Als u de waarden niet expliciet instelt, worden zeer grote waarden voor **PlaybackDurationRemaining** en **LicenseDurationRemaining** toegewezen, (bijvoorbeeld 9223372036854775807, de maximale positieve waarde voor een 64-bits geheel getal). Als gevolg hiervan wordt de Widevine-licentie verouderd en daarom wordt de ontsleuteling niet uitgevoerd. 
 
-Dit probleem treedt niet op bij Android 5,0 lollipop of hoger omdat Android 5,0 de eerste Android-versie is, die is ontworpen voor volledige ondersteuning van ARMv8 ([Advanced RISC machine](https://en.wikipedia.org/wiki/ARM_architecture)) en 64-bits platformen, terwijl Android 4,4 KitKat oorspronkelijk is ontworpen voor ondersteuning voor ARMv7-en 32-bits platformen als met andere oudere Android-versies.
+Dit probleem treedt niet op bij Android 5,0 lollipop of hoger omdat Android 5,0 de eerste Android-versie is, die is ontworpen om ARMv8 ([Advanced RISC machine](https://en.wikipedia.org/wiki/ARM_architecture)) en 64-bits platformen volledig te ondersteunen, terwijl Android 4,4 KitKat oorspronkelijk is ontworpen ter ondersteuning van ARMv7-en 32-bits platforms als andere oudere Android-versies.
 
 ## <a name="using-xamarin-to-build-an-android-playback-app"></a>Xamarin gebruiken om een app voor het afspelen van Android te bouwen
 
@@ -146,19 +146,19 @@ Zie ook de volgende thread: [Xamarin-binding](https://github.com/martijn00/ExoPl
 
 ## <a name="chrome-player-apps-for-android"></a>Chrome Player-apps voor Android
 
-Vanaf de release van [Chrome voor Android v. 62](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates), permanente licentie in EME wordt ondersteund. [Widevine L1](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates#widevine_l1) wordt nu ook ondersteund in Chrome voor Android. Zo kunt u offline afspeel toepassingen maken in Chrome als uw eind gebruikers deze (of hoger) versie van Chrome hebben. 
+Vanaf de release van [Chrome voor Android v. 62](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates)wordt de permanente licentie in EME ondersteund. [Widevine L1](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates#widevine_l1) wordt nu ook ondersteund in Chrome voor Android. Zo kunt u offline afspeel toepassingen maken in Chrome als uw eind gebruikers deze (of hoger) versie van Chrome hebben. 
 
 Daarnaast heeft Google een voor beeld van een progressieve web-app (PWA) gemaakt en het bestand geopend: 
 
 - [Broncode](https://github.com/GoogleChromeLabs/sample-media-pwa)
-- [Google](https://biograf-155113.appspot.com/ttt/episode-2/) -gehoste versie (werkt alleen in Chrome v 62 en hoger op Android-apparaten)
+- [Google gehoste versie](https://biograf-155113.appspot.com/ttt/episode-2/) (werkt alleen in Chrome v 62 en hoger op Android-apparaten)
 
 Als u uw mobiele Chrome-browser bijwerkt naar v62 (of hoger) op een Android-telefoon en de bovenstaande gehoste voor beeld-app wilt testen, ziet u dat zowel online streaming als offline afspelen wordt uitgevoerd.
 
 De bovenstaande open-source PWA-app is gemaakt in node. js. Als u uw eigen versie op een Ubuntu-server wilt hosten, houdt u rekening met de volgende veelvoorkomende problemen die het afspelen kunnen voor komen:
 
-1. CORS-probleem: De voorbeeld video in de voor beeld-app wordt https://storage.googleapis.com/biograf-video-files/videos/ gehost in. Google heeft CORS ingesteld voor alle test voorbeelden die worden gehost in Google Cloud Storage Bucket. Ze worden geleverd met CORS-headers, waarbij expliciet de cors- https://biograf-155113.appspot.com vermelding wordt opgegeven: (het domein waarin Google als host fungeert voor het voor beeld), waardoor toegang door andere sites wordt voor komen. Als u probeert, wordt de volgende HTTP-fout weer geven: Het laden https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: van de kop ' toegang beheren-toestaan-oorsprong ' is niet mogelijk voor de aangevraagde resource. De oorsprong ' https\/:/13.85.80.81:8080 ' is daarom geen toegang. Als een dekkend antwoord aan uw behoeften voldoet, stelt u de modus van de aanvraag in op ' nee-cors ' om de resource op te halen waarvoor CORS is uitgeschakeld.
-2. Probleem met certificaat: Vanaf Chrome v 58 is HTTPS vereist voor EME voor Widevine. Daarom moet u de voor beeld-app via HTTPS hosten met een x509-certificaat. Een normaal test certificaat werkt niet als gevolg van de volgende vereisten: U moet een certificaat verkrijgen dat voldoet aan de volgende minimale vereisten:
+1. CORS-probleem: de voorbeeld video in de voor beeld-app wordt gehost in https://storage.googleapis.com/biograf-video-files/videos/. Google heeft CORS ingesteld voor alle test voorbeelden die worden gehost in Google Cloud Storage Bucket. Ze worden geleverd met CORS-headers, waarbij expliciet de CORS-vermelding wordt opgegeven: https://biograf-155113.appspot.com (het domein waarin Google als host fungeert voor het voor beeld), waardoor toegang door andere sites wordt voor komen. Als u probeert, wordt de volgende HTTP-fout weer gegeven: er kan niet worden geladen https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: er geen header ' toegangs beheer-allow-Origin ' aanwezig is voor de aangevraagde resource. De oorsprong ' https:\//13.85.80.81:8080 ' is daarom geen toegang. Als een dekkend antwoord aan uw behoeften voldoet, stelt u de modus van de aanvraag in op ' nee-cors ' om de resource op te halen waarvoor CORS is uitgeschakeld.
+2. Probleem met het certificaat: vanaf Chrome v 58, EME voor Widevine is HTTPS vereist. Daarom moet u de voor beeld-app via HTTPS hosten met een x509-certificaat. Een normaal test certificaat werkt niet als gevolg van de volgende vereisten: u moet een certificaat verkrijgen dat voldoet aan de volgende minimale vereisten:
     - Chrome en Firefox vereisen een alternatieve naam voor SAN-instelling in het certificaat
     - Het certificaat moet beschikken over een vertrouwde certificerings instantie en een zelf-ondertekend ontwikkelings certificaat niet
     - Het certificaat moet een CN hebben die overeenkomt met de DNS-naam van de webserver of gateway
@@ -175,7 +175,7 @@ U hoeft de inhoud niet te dupliceren. U kunt slechts één exemplaar van de inho
 1. IContentKeyAuthorizationPolicyOption 1: maakt gebruik van een permanente licentie en ContentKeyAuthorizationPolicyRestriction 1 met een claim zoals license_type = "persistent"
 2. IContentKeyAuthorizationPolicyOption 2: maakt gebruik van niet-permanente licenties en ContentKeyAuthorizationPolicyRestriction 2 met een claim zoals license_type = "niet persistent"
 
-Op deze manier, wanneer een licentie aanvraag afkomstig is uit de client-app, is er geen verschil van de licentie aanvraag. Voor de verschillende eind gebruiker/apparaat moet de STS echter de bedrijfs logica hebben om verschillende JWT-tokens met verschillende claims te verlenen (een van de bovenstaande twee license_type's). De claim waarde in het JWT-token wordt gebruikt om te bepalen welke licentie service u wilt gebruiken om te verlenen welk type licentie: permanent of niet permanent is.
+Op deze manier, wanneer een licentie aanvraag afkomstig is uit de client-app, is er geen verschil van de licentie aanvraag. Voor de verschillende eind gebruiker/apparaat moet de STS echter de bedrijfs logica hebben om verschillende JWT-tokens met verschillende claims te verlenen (een van de bovenstaande twee license_type). De claim waarde in het JWT-token wordt gebruikt om te bepalen welke licentie service u wilt gebruiken om te verlenen welk type licentie: permanent of niet permanent is.
 
 Dit betekent dat de Secure token service (STS) de bedrijfs logica en de gegevens van de client/het apparaat nodig heeft om de bijbehorende claim waarde toe te voegen aan een token.
 
@@ -187,11 +187,11 @@ Voor Widevine-beveiligings niveaus, in de documentatie over het [WIDEVINE DRM-ar
 
 In het overzicht van de [WIDEVINE DRM-architectuur](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)van Google worden de volgende drie beveiligings niveaus gedefinieerd:
 
-1.  Beveiligings niveau 1: Alle verwerking van inhoud, crypto grafie en beheer worden uitgevoerd binnen de Trusted Execution Environment (TEE). In sommige implementatie modellen kan beveiligings verwerking worden uitgevoerd in verschillende chips.
-2.  Beveiligings niveau 2: Voert crypto grafie (maar geen video verwerking) uit in de TEE: ontsleutelde buffers worden geretourneerd naar het toepassings domein en verwerkt via afzonderlijke video-hardware of software. Op niveau 2 wordt echter alleen cryptografische informatie verwerkt in het TEE.
+1.  Beveiligings niveau 1: alle verwerking van inhoud, crypto grafie en beheer worden uitgevoerd binnen de Trusted Execution Environment (TEE). In sommige implementatie modellen kan beveiligings verwerking worden uitgevoerd in verschillende chips.
+2.  Beveiligings niveau 2: voert crypto grafie (maar geen video verwerking) uit in de TEE: ontsleutelde buffers worden geretourneerd naar het toepassings domein en verwerkt via afzonderlijke video-hardware of software. Op niveau 2 wordt echter alleen cryptografische informatie verwerkt in het TEE.
 3.  Beveiligings niveau 3 heeft geen TEE op het apparaat. Er kunnen passende maat regelen worden getroffen ter bescherming van de cryptografische informatie en ontsleutelde inhoud op het hostbesturingssysteem. Een level 3-implementatie kan ook een hardware-cryptografische engine omvatten, maar dat biedt alleen betere prestaties, niet voor beveiliging.
 
-Terzelfder tijd kan de eigenschap security_level van content_key_specs de volgende vijf verschillende waarden hebben (in [Azure Media Services documentatie op de Widevine-licentie sjabloon](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)):
+Op hetzelfde moment kan de eigenschap security_level van content_key_specs de volgende vijf verschillende waarden hebben (in [Azure Media Services documentatie op de Widevine-licentie sjabloon](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview):
 
 1.  Crypto grafie op basis van software-WhiteBox is vereist.
 2.  Software-crypto en een verborgen decoder zijn vereist.
@@ -199,13 +199,13 @@ Terzelfder tijd kan de eigenschap security_level van content_key_specs de volgen
 4.  De crypto grafie en de code ring van inhoud moet worden uitgevoerd in een TEE-hardware.
 5.  De crypto grafie, het decoderen en alle verwerking van de media (gecomprimeerd en niet-gecomprimeerd) moeten worden afgehandeld in een TEE-hardware.
 
-Beide beveiligings niveaus worden gedefinieerd door Google Widevine. Het verschil bevindt zich in het gebruiks niveau: architectuur niveau of API-niveau. De vijf beveiligings niveaus worden gebruikt in de Widevine-API. Het content_key_specs-object, dat security_level bevat, wordt gedeserialiseerd en door gegeven aan de Widevine Global Delivery Service door Azure Media Services Widevine-licentie. In de volgende tabel ziet u de toewijzing tussen de twee sets beveiligings niveaus.
+Beide beveiligings niveaus worden gedefinieerd door Google Widevine. Het verschil bevindt zich in het gebruiks niveau: architectuur niveau of API-niveau. De vijf beveiligings niveaus worden gebruikt in de Widevine-API. Het content_key_specs-object, dat security_level bevat, wordt gedeserialiseerd en door gegeven aan de Widevine Global Delivery Service van Azure Media Services Widevine-licentie service. In de volgende tabel ziet u de toewijzing tussen de twee sets beveiligings niveaus.
 
 | **Beveiligings niveaus die zijn gedefinieerd in de Widevine-architectuur** |**Beveiligings niveaus die worden gebruikt in de Widevine-API**|
 |---|---| 
-| **Beveiligings niveau 1**: Alle verwerking van inhoud, crypto grafie en beheer worden uitgevoerd binnen de Trusted Execution Environment (TEE). In sommige implementatie modellen kan beveiligings verwerking worden uitgevoerd in verschillende chips.|**security_level=5**: De crypto grafie, het decoderen en alle verwerking van de media (gecomprimeerd en niet-gecomprimeerd) moeten worden afgehandeld in een TEE-hardware.<br/><br/>**security_level=4**: De crypto grafie en de code ring van inhoud moet worden uitgevoerd in een TEE-hardware.|
-**Beveiligings niveau 2**: Voert crypto grafie (maar geen video verwerking) uit in de TEE: ontsleutelde buffers worden geretourneerd naar het toepassings domein en verwerkt via afzonderlijke video-hardware of software. Op niveau 2 wordt echter alleen cryptografische informatie verwerkt in het TEE.| **security_level=3**: Het sleutel materiaal en de cryptografische bewerkingen moeten worden uitgevoerd in een TEE van een hardwarematige back-up. |
-| **Beveiligings niveau 3**: Heeft geen TEE op het apparaat. Er kunnen passende maat regelen worden getroffen ter bescherming van de cryptografische informatie en ontsleutelde inhoud op het hostbesturingssysteem. Een level 3-implementatie kan ook een hardware-cryptografische engine omvatten, maar dat biedt alleen betere prestaties, niet voor beveiliging. | **security_level=2**: Software-crypto en een verborgen decoder zijn vereist.<br/><br/>**security_level=1**: Crypto grafie op basis van software-WhiteBox is vereist.|
+| **Beveiligings niveau 1**: alle verwerking van inhoud, crypto grafie en beheer worden uitgevoerd binnen de Trusted Execution Environment (Tee). In sommige implementatie modellen kan beveiligings verwerking worden uitgevoerd in verschillende chips.|**security_level = 5**: de crypto grafie, het decoderen en alle verwerking van de media (gecomprimeerd en niet-gecomprimeerd) moeten worden afgehandeld in een tee-apparaat.<br/><br/>**security_level = 4**: de crypto grafie en de code ring van inhoud moet worden uitgevoerd binnen een door hardware opgeslagen Tee.|
+**Beveiligings niveau 2**: voert crypto grafie (maar geen video verwerking) uit in de tee: ontsleutelde buffers worden geretourneerd naar het toepassings domein en verwerkt via afzonderlijke video-hardware of software. Op niveau 2 wordt echter alleen cryptografische informatie verwerkt in het TEE.| **security_level = 3**: het sleutel materiaal en de cryptografische bewerkingen moeten worden uitgevoerd in een Tee van een hardwarematige back-up. |
+| **Beveiligings niveau 3**: heeft geen tee op het apparaat. Er kunnen passende maat regelen worden getroffen ter bescherming van de cryptografische informatie en ontsleutelde inhoud op het hostbesturingssysteem. Een level 3-implementatie kan ook een hardware-cryptografische engine omvatten, maar dat biedt alleen betere prestaties, niet voor beveiliging. | **security_level = 2**: software-crypto en een verborgen decoder zijn vereist.<br/><br/>**security_level = 1**: op software gebaseerde WhiteBox-crypto grafie is vereist.|
 
 ### <a name="question"></a>Vraag
 
@@ -219,6 +219,10 @@ Er zijn twee manieren om de download snelheid te verbeteren:
 2.  Geef eind gebruikers de mogelijkheid om de video kwaliteits lagen en audio tracks selectief te downloaden in plaats van alle inhoud. Voor de offline modus is er geen punt om alle kwaliteits lagen te downloaden. Er zijn twee manieren om dit te doen:
     1.  Door client beheerd: met de optie voor automatisch selecteren van de speler of gebruiker selecteert u de video kwaliteit laag en audio nummers die u wilt downloaden.
     2.  Beheerde service: één kan gebruikmaken van de dynamische manifest functie in Azure Media Services om een (globaal) filter te maken, waarmee de HLS-afspeel lijst of-streep-MPD wordt beperkt tot één video kwaliteit en geselecteerde audio tracks. De download-URL die aan eind gebruikers wordt gepresenteerd, omvat dit filter.
+
+## <a name="additional-notes"></a>Aanvullende opmerkingen
+
+* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="summary"></a>Samenvatting
 

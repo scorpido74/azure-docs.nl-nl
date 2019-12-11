@@ -1,23 +1,23 @@
 ---
 title: Aanvullende gegevens overdragen tussen apparaten en Azure Device Provisioning Service
-description: In dit document wordt beschreven hoe u extra gegevens overbrengt tussen het apparaat en de DPS
+description: In dit document wordt beschreven hoe u aanvullende gegevens overbrengt tussen Device Provisioning Service (DPS)
 author: menchi
 ms.author: menchi
 ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 90402dd6fbe19811b5bb6d5ac0fbdd984b71fd33
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: e9482f7069616d61efb98f66590ce33cfe3cf350
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123181"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974850"
 ---
 # <a name="how-to-transfer-additional-data-between-device-and-dps"></a>Aanvullende gegevens overdragen tussen apparaat en DPS
 DPS heeft soms meer gegevens nodig om apparaten correct in te richten in de juiste IoT Hub en die gegevens moeten door het apparaat worden geleverd. Omgekeerd kan DPS gegevens naar het apparaat retour neren om logica aan de client zijde te vergemakkelijken. 
 
-## <a name="when-to-use-it"></a>Wanneer gebruiken
+## <a name="when-to-use-it"></a>Wanneer te gebruiken
 Deze functie kan worden gebruikt als een uitbrei ding voor [aangepaste toewijzing](https://docs.microsoft.com/azure/iot-dps/how-to-use-custom-allocation-policies). U wilt bijvoorbeeld uw apparaten toewijzen op basis van het model apparaat zonder menselijke tussen komst. In dit geval gebruikt u [aangepaste toewijzing](https://docs.microsoft.com/azure/iot-dps/how-to-use-custom-allocation-policies). U kunt het apparaat zo configureren dat de model gegevens worden gerapporteerd als onderdeel van de registratie van het [apparaat](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice). De gegevens van het apparaat worden door DPS doorgestuurd naar de aangepaste toewijzings-webhook. En uw functie kan bepalen welke IoT Hub dit apparaat gaat gebruiken wanneer het apparaat-model informatie ontvangt. Op dezelfde manier kan de webhook gegevens retourneren naar het apparaat door de gegevens als een tekenreeks in een webhookantwoord op te nemen.  
 
 ## <a name="device-sends-data-to-dps"></a>Apparaat verzendt gegevens naar DPS

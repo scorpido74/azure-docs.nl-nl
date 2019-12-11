@@ -6,15 +6,15 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 553234410a7b8b798d26f0e2fee6132a2602b1cc
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 3fed615a767fee2fff1700f996b2103f411db825
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770506"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973472"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Een Azure Database for MySQL-server beheren met behulp van de Azure Portal
-Dit artikel laat u zien hoe u uw Afire-Data Base voor MySQL-servers kunt beheren. Beheer taken zijn onder andere berekening en opslag schalen, beheerders wachtwoord opnieuw instellen en server details weer geven.
+Dit artikel laat u zien hoe u uw Azure Database for MySQL-servers kunt beheren. Beheer taken zijn onder andere berekening en opslag schalen, beheerders wachtwoord opnieuw instellen en server details weer geven.
 
 ## <a name="sign-in"></a>Aanmelden
 Meld u aan bij de [Azure-portal](https://portal.azure.com).

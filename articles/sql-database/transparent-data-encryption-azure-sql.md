@@ -1,5 +1,5 @@
 ---
-title: Transparent Data Encryption
+title: Transparante dataversleuteling
 description: Een overzicht van transparante gegevens versleuteling voor SQL Database en het Data Warehouse. In het document worden de voor delen en de opties voor de configuratie beschreven, waaronder door de service beheerde transparante gegevens versleuteling en Bring Your Own Key.
 services: sql-database
 ms.service: sql-database
@@ -8,27 +8,27 @@ titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
-author: aliceku
-ms.author: aliceku
+author: jaszymas
+ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/01/2019
-ms.openlocfilehash: b6af171eafbaf1f4d31bad649fcb0c69d8bdc24d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 19414a6f09f4bc61cd9b1b09ae98ea070e577d7f
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821710"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995878"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparante gegevens versleuteling voor SQL Database en Data Warehouse
 
-Transparent Data Encryption (TDE) helpt bij het beschermen van Azure SQL Database, Azure SQL Managed instance en Azure Data Warehouse tegen de dreiging van schadelijke offline activiteiten door het versleutelen van gegevens in rust. Er wordt in realtime versleuteling en ontsleuteling van de data base, gekoppelde back-ups en transactie logboek bestanden in rust uitgevoerd zonder dat de toepassing hoeft te worden gewijzigd. TDE is standaard ingeschakeld voor alle nieuw geïmplementeerde Azure SQL-data bases. TDE kan niet worden gebruikt voor het versleutelen van de logische **hoofd** database in SQL database.  De **hoofd** database bevat objecten die nodig zijn om de TDe-bewerkingen uit te voeren op de gebruikers databases.
+Transparent Data Encryption (TDE) helpt bij het beschermen van Azure SQL Database, Azure SQL Managed instance en Azure Data Warehouse tegen de dreiging van schadelijke offline activiteiten door het versleutelen van gegevens in rust. Het voert in realtime versleuteling en ontsleuteling van de database uit, van bijbehorende back-ups en van transactielogboekbestanden, zonder dat er wijzigingen in de toepassing moeten worden aangebracht. Standaard wordt TDE ingeschakeld voor alle nieuw geïmplementeerde Azure SQL-databases. TDE kan niet worden gebruikt voor het versleutelen van de logische **hoofd** database in SQL database.  De **hoofd** database bevat objecten die nodig zijn om de TDe-bewerkingen uit te voeren op de gebruikers databases.
 
 TDE moet hand matig worden ingeschakeld voor oudere data bases van Azure SQL Database, een beheerd exemplaar van Azure SQL of Azure SQL Data Warehouse.
 Beheerde exemplaar databases die zijn gemaakt via Restore, nemen de versleutelings status over van de bron database.
 
 Transparante gegevens versleuteling versleutelt de opslag van een volledige data base met behulp van een symmetrische sleutel die de database versleutelings sleutel wordt genoemd. Deze versleutelings sleutel voor de data base wordt beveiligd door de transparante beveiliging van gegevens versleuteling. Het beveiligings programma is een door een service beheerd certificaat (door de service beheerde transparante gegevens versleuteling) of een asymmetrische sleutel die is opgeslagen in Azure Key Vault (Bring Your Own Key). U stelt de transparante gegevens versleutelings beveiliging in op server niveau voor Azure SQL Database en het Data Warehouse, en op instantie niveau voor Azure SQL Managed instance. De term *Server* verwijst naar de server en het exemplaar in dit document, tenzij anders aangegeven.
 
-Bij het opstarten van de data base wordt de versleutelde database versleutelings sleutel ontsleuteld en vervolgens gebruikt voor ontsleuteling en opnieuw versleutelen van de database bestanden in het proces van de SQL Server data base-engine. Transparante gegevens versleuteling voert realtime-I/O-versleuteling en ontsleuteling van de gegevens op pagina niveau uit. Elke pagina wordt gedecodeerd wanneer deze in het geheugen wordt gelezen en vervolgens versleuteld voordat deze naar de schijf wordt geschreven. Zie [transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption)(Engelstalig) voor een algemene beschrijving van transparent Data Encryption.
+Bij het opstarten van de data base wordt de versleutelde database versleutelings sleutel ontsleuteld en vervolgens gebruikt voor ontsleuteling en opnieuw versleutelen van de database bestanden in het proces van de SQL Server data base-engine. Transparante gegevens versleuteling voert realtime-I/O-versleuteling en ontsleuteling van de gegevens op pagina niveau uit. Elke pagina wordt ontsleuteld wanneer deze wordt ingelezen in het geheugen en vervolgens versleuteld voordat deze naar een schijf wordt geschreven. Zie [transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption)(Engelstalig) voor een algemene beschrijving van transparent Data Encryption.
 
 SQL Server die op een virtuele Azure-machine worden uitgevoerd, kunt u ook een asymmetrische sleutel van Key Vault gebruiken. De configuratie stappen verschillen van het gebruik van een asymmetrische sleutel in SQL Database en SQL Managed instance. Zie [Extensible Key Management met behulp van Azure Key Vault (SQL Server)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server)voor meer informatie.
 
@@ -121,8 +121,8 @@ Maak verbinding met de data base met behulp van een aanmelding die een beheerder
 | Opdracht | Beschrijving |
 | --- | --- |
 | [ALTER data base (Azure SQL Database)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database) | VERSLEUTELING instellen in-of uitschakelen voor het versleutelen of ontsleutelen van een Data Base |
-| [sys. dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |Retourneert informatie over de versleutelings status van een Data Base en de bijbehorende versleutelings sleutels voor de data base |
-| [sys. dm_pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |Retourneert informatie over de versleutelings status van elk data warehouse-knoop punt en de bijbehorende data base-versleutelings sleutels |
+| [sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |Retourneert informatie over de versleutelings status van een Data Base en de bijbehorende versleutelings sleutels voor de data base |
+| [sys.dm_pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |Retourneert informatie over de versleutelings status van elk data warehouse-knoop punt en de bijbehorende data base-versleutelings sleutels |
 |  | |
 
 U kunt niet overstappen op de transparante beveiliging van gegevens versleuteling naar een sleutel van Key Vault met behulp van Transact-SQL. Gebruik Power shell of de Azure Portal.

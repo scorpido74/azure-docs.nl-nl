@@ -1,6 +1,6 @@
 ---
-title: Web-app die web-Api's aanroept (Meld u aan)-micro soft Identity-platform
-description: Meer informatie over het bouwen van een web-app die web-Api's aanroept (Meld u aan)
+title: Accounts verwijderen uit de cache op Afmelden-micro soft Identity-platform | Azure
+description: Meer informatie over het verwijderen van een account uit de token cache bij afmelden
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,14 +15,14 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cb0190f76ddce79012a5bf97e2d813f40f9f018
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 375382b1245186197657c5067e3c5b4ec2b15655
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596365"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961655"
 ---
-# <a name="web-app-that-calls-web-apis---sign-in"></a>Web-app die web-Api's aanroept-aanmelden
+# <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>Accounts verwijderen uit de cache op globale afmelding
 
 U weet al hoe u aanmelden kunt toevoegen aan uw web-app. U leert dat in de [Web-app die zich aanmeldt gebruikers de aanmelding toevoegen](scenario-web-app-sign-user-sign-in.md).
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 5b1b85a0c600871cbedc478f3a56cf71ef8c2ca4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 803deb9a4d9eaf02129bd16dd6465362b87b7e84
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931497"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995912"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Apache HBase-cluster replicatie in virtuele Azure-netwerken instellen
 
@@ -275,6 +275,10 @@ Wanneer u een cluster repliceert, moet u de tabellen opgeven die u wilt replicer
 
 Volg de instructies in [Apache HBase-zelf studie: aan de slag met Apache HBase in HDInsight](apache-hbase-tutorial-get-started-linux.md)om een tabel **contact personen** te maken en gegevens in de tabel in te voegen.
 
+> [!NOTE]
+> Als u tabellen uit een aangepaste naam ruimte wilt repliceren, moet u ervoor zorgen dat ook de juiste aangepaste naam ruimten op het doel cluster worden gedefinieerd.
+>
+
 ## <a name="enable-replication"></a>Replicatie inschakelen
 
 In de volgende stappen wordt beschreven hoe u de script actie script aanroept vanuit het Azure Portal. Zie [HDInsight-clusters aanpassen met behulp van script acties](../hdinsight-hadoop-customize-cluster-linux.md)voor meer informatie over het uitvoeren van een script actie met behulp van Azure PowerShell en de klassieke Azure-cli.
@@ -395,6 +399,10 @@ De sectie `print_usage()` van het [script](https://raw.githubusercontent.com/Azu
 - **Replicatie voor opgegeven tabellen uitschakelen (Tabel1, Tabel2 en table3)** :
 
         -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
+
+> [!NOTE]
+> Als u van plan bent om het doel cluster te verwijderen, moet u dit verwijderen uit de lijst met peers van het bron cluster. U kunt dit doen door de opdracht remove_peer ' 1 ' uit te voeren op de hbase-shell van het bron cluster. Als dit mislukt, werkt het bron cluster mogelijk niet goed.
+>
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 570699fe83197a1b5442909d8b89e285a1dfa73b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 268775d125e783b0c640e565c5f63e416cb197fd
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275438"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996949"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Koppelingen op de pagina werken niet voor een toepassings proxy toepassing
 
@@ -38,7 +38,11 @@ Er zijn drie manieren om dit probleem op te lossen. De onderstaande opties worde
 
 1.  Zorg ervoor dat de interne URL een hoofdmap is die alle relevante koppelingen voor de toepassing bevat. Hierdoor kunnen alle koppelingen worden omgezet als inhoud die binnen dezelfde toepassing wordt gepubliceerd.
 
-    Als u de interne URL wijzigt, maar de landings pagina voor gebruikers niet wilt wijzigen, wijzigt u de URL van de start pagina in de eerder gepubliceerde interne URL. U kunt dit doen door te gaan naar ' Azure Active Directory '-&gt; app-registraties:&gt; Selecteer de eigenschappen van de toepassing&gt;. Op deze eigenschappen tabblad ziet u het veld "URL van start pagina", die u kunt aanpassen aan de gewenste landings pagina.
+    Als u de interne URL wijzigt, maar de landings pagina voor gebruikers niet wilt wijzigen, wijzigt u de URL van de start pagina in de eerder gepubliceerde interne URL. U kunt dit doen door te gaan naar ' Azure Active Directory '-&gt; app-registraties:&gt; Selecteer de&gt; huis stijl van de toepassing. In de sectie huis stijl ziet u het veld "URL van start pagina", die u kunt aanpassen aan de gewenste landings pagina. Als u nog steeds de verouderde App-registraties ervaring gebruikt, wordt op het tabblad Eigenschappen de informatie ' start pagina-URL ' weer gegeven. 
+    
+    > [!IMPORTANT]
+    > Als u de bovenstaande wijzigingen wilt aanbrengen, moet u rechten hebben om toepassings objecten in azure AD te wijzigen. De gebruiker moet de rol '[toepassings beheerder](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/roles-delegate-app-roles#assign-built-in-application-admin-roles)' toewijzen die toepassings Modificaion in azure AD aan de gebruiker verleent. 
+    >
 
 2.  Als uw toepassingen FQDN-namen (FULLy Qualified Domain names) gebruiken, moet u [aangepaste domeinen](application-proxy-configure-custom-domain.md) gebruiken om uw toepassingen te publiceren. Met deze functie kan dezelfde URL zowel intern als extern worden gebruikt.
 
@@ -47,5 +51,5 @@ Er zijn drie manieren om dit probleem op te lossen. De onderstaande opties worde
 3.  Als geen van deze opties haalbaar zijn, zijn er meerdere opties voor het inschakelen van de vertaling van inline-koppelingen. Deze opties zijn onder andere het Intune Managed Browser, mijn apps-extensie of het gebruik van de instelling voor de koppelings conversie in uw toepassing. Zie voor meer informatie over elk van deze opties en over hoe u deze kunt inschakelen de [omleiding van hardcoded koppelingen voor apps die zijn gepubliceerd met Azure AD-toepassingsproxy](application-proxy-configure-hard-coded-link-translation.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-[Werken met bestaande on-premises proxy servers](application-proxy-configure-connectors-with-proxy-servers.md)
+[Werken met bestaande on-premises proxy-servers](application-proxy-configure-connectors-with-proxy-servers.md)
 

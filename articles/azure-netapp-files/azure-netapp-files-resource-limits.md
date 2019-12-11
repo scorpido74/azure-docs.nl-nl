@@ -12,26 +12,26 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/09/2019
 ms.author: b-juche
-ms.openlocfilehash: f7213ddee5d7bdfd41508f5fee66de63cde5b7c4
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 6fcea0aaecb860e07c2066877494c05b51f43ca4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170033"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976244"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Resourcelimieten voor Azure NetApp Files
 
 Informatie over resource limieten voor Azure NetApp Files helpt u bij het beheren van uw volumes.
 
-## <a name="resource-limits"></a>Bronlimieten
+## <a name="resource-limits"></a>Bronbeperkingen
 
 In de volgende tabel worden resource limieten voor Azure NetApp Files beschreven:
 
-|  Resource  |  Standaardlimiet  |  Aanpasbaar via ondersteunings aanvraag  |
+|  Bron  |  Standaardlimiet  |  Aanpasbaar via ondersteunings aanvraag  |
 |----------------|---------------------|--------------------------------------|
-|  Aantal NetApp-accounts per Azure-abonnement   |  10    |  Ja   |
+|  Aantal NetApp-accounts per Azure-regio   |  10    |  Ja   |
 |  Aantal capaciteits Pools per NetApp-account   |    25     |   Ja   |
 |  Aantal volumes per capaciteits pool     |    500   |    Ja     |
 |  Aantal moment opnamen per volume       |    255     |    Nee        |
@@ -69,23 +69,23 @@ Vanuit Azure Portal navigatie vlak:
 1. Klik op **Help en ondersteuning**.
 2. Klik op **+ nieuwe ondersteunings aanvraag**.
 3. Geef op het tabblad basis beginselen de volgende informatie op: 
-    1. Type probleem: **Service-en abonnements limieten (quota's)** selecteren.
-    2. Geabonneerd Selecteer het abonnement voor de resource dat u nodig hebt om het quotum te verg root.
-    3. Type quotum: Opslag **selecteren: Azure NetApp Files limieten**.
-    4. Klik op **Next: Oplossingen**.
+    1. Probleem type: Selecteer **service-en abonnements limieten (quota's)** .
+    2. Abonnementen: Selecteer het abonnement voor de resource waarvoor u het quotum hebt verhoogd.
+    3. Quotum type: Selecteer **opslag: Azure NetApp files limieten**.
+    4. Klik op **volgende: oplossingen**.
 4. Op het tabblad Details:
     1. Geef in het vak Beschrijving de volgende informatie op voor het bijbehorende resource type:
 
-        |  Resource  |    Bovenliggende resources      |    Aangevraagde nieuwe limieten     |    Reden voor toename van quotum       |
+        |  Bron  |    Bovenliggende resources      |    Aangevraagde nieuwe limieten     |    Reden voor toename van quotum       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  Account |  *Subscription ID*   |  *Aangevraagd nieuw Maxi maal **account** nummer*    |  *Welk scenario of use-case vraagt de aanvraag?*  |
-        |  Groep    |  *Abonnements-ID, account-URI*  |  *Nieuw maximum **groeps** nummer aangevraagd*   |  *Welk scenario of use-case vraagt de aanvraag?*  |
+        |  Pool    |  *Abonnements-ID, account-URI*  |  *Nieuw maximum **groeps** nummer aangevraagd*   |  *Welk scenario of use-case vraagt de aanvraag?*  |
         |  Volume  |  *Abonnements-ID, account-URI, groeps-URI*   |  *Nieuw maximum **volume** nummer aangevraagd*     |  *Welk scenario of use-case vraagt de aanvraag?*  |
         |  Maxfiles  |  *Abonnements-ID, account-URI, groeps-URI, volume-URI*   |  *Aangevraagd aantal voor nieuwe maximum **maxfiles***     |  *Welk scenario of use-case vraagt de aanvraag?*  |    
 
     2. Geef de juiste ondersteunings methode op en geef uw contract informatie op.
 
-    3. Klik op **Next: Bekijk + maken** om de aanvraag te maken. 
+    3. Klik op **volgende: controleren + maken** om de aanvraag te maken. 
 
 
 ## <a name="next-steps"></a>Volgende stappen  

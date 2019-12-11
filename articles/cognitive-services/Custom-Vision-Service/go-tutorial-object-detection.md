@@ -9,13 +9,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/08/2019
-ms.openlocfilehash: d0734763ca1dd5ab3162ca00748361bee29cefc1
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 12/05/2019
+ms.openlocfilehash: 986dbc48bae6cd133e74648ad6e900ba7e515f91
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378745"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970496"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Snelstartgids: een object detectie project maken met de Custom Vision go-SDK
 
@@ -111,7 +111,7 @@ scissorsTag, _ := trainer.CreateTag(ctx, *project.ID, "scissors", "Pair of sciss
 
 Als u afbeeldingen labelt in objectdetectieprojecten, dient u de regio van elk gelabeld object op te geven met behulp van genormaliseerde coördinaten.
 
-Als u de afbeeldingen, labels en regio's aan het project wilt toevoegen, voegt u de volgende code in nadat u het label hebt gemaakt. Houd er rekening mee dat voor deze zelfstudie de regio's inline zijn vastgelegd door de code. Door de regio's wordt het begrenzingsvak opgegeven in genormaliseerde coördinaten. De coördinaten worden gegeven in de volgorde links, boven, breedte, hoogte.
+Als u de afbeeldingen, labels en regio's aan het project wilt toevoegen, voegt u de volgende code in nadat u het label hebt gemaakt. Houd er rekening mee dat in deze zelf studie de regio's in inline zijn vastgelegd. Door de regio's wordt het begrenzingsvak opgegeven in genormaliseerde coördinaten. De coördinaten worden gegeven in de volgorde links, boven, breedte, hoogte.
 
 ```Go
 forkImageRegions := map[string][4]float64{
@@ -270,7 +270,7 @@ Als u een afbeelding naar het voorspellingseindpunt wilt verzenden en de voorspe
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-*sample.go* uitvoeren.
+Voer *sample.go* uit.
 
 ```shell
 go run sample.go

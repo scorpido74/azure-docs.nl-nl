@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
-ms.openlocfilehash: 3f742d4cd2a5285c7c52611a0c4c4735dedc2f19
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 350b8d111652511627ddf67236f63248a5489015
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844781"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970445"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Offline PlayReady streaming voor Windows 10  
 
@@ -64,13 +64,13 @@ Hieronder vindt u twee sets test assets, de eerste met PlayReady-licentie leveri
 
 Activa #1:
 
-* URL voor progressieve down load:[https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* URL voor progressieve down load: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
 * PlayReady LA_URL (AMS): [https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
 
 Activa #2:
 
-* URL voor progressieve down load:[https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA_URL (on-premises):[https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
+* URL voor progressieve down load: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* PlayReady LA_URL (on-premises): [https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
 
 Voor het testen van afspelen gebruikt ik een universele Windows-toepassing in Windows 10. In [Windows 10 Universal](https://github.com/Microsoft/Windows-universal-samples)-voor beelden is er een basis speler-voor beeld met de naam [adaptief stream](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming)-voor beeld. U hoeft alleen maar de code toe te voegen om de gedownloade video te selecteren en deze als bron te gebruiken in plaats van een adaptieve streaming-bron. De wijzigingen bevinden zich in de knop gebeurtenis-handler klikken:
 
@@ -125,6 +125,10 @@ In samen vatting hebben we de offline modus op Azure Media Services bereikt:
 * Inhoud kan worden gehost in Azure Media Services of Azure Storage voor progressief downloaden.
 * De levering van PlayReady-licenties kan van Azure Media Services of elders zijn.
 * De voor bereide smooth streaming inhoud kan nog steeds worden gebruikt voor online streamen met behulp van een streepje of Smooth met PlayReady als DRM.
+
+## <a name="additional-notes"></a>Aanvullende opmerkingen
+
+* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="next-steps"></a>Volgende stappen
 

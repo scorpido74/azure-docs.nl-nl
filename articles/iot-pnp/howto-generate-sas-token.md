@@ -1,19 +1,19 @@
 ---
 title: Beveiligings token genereren voor toegang tot IoT Plug en Play preview-opslag plaats | Microsoft Docs
 description: Genereer een token voor een Shared Access-hand tekening dat moet worden gebruikt wanneer u via een programma toegang hebt tot een IoT Plug en Play preview model-opslag.
-author: YasinMSFT
-ms.author: yahajiza
+author: Philmea
+ms.author: philmea
 ms.date: 08/06/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: e5d6e7087a7e3d5f4a001e16c5cfa19a6df6a68e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f6c4f5b9784eeff9d03b6e93953674736fb78c6c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880538"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976023"
 ---
 # <a name="generate-sas-token"></a>SAS-token genereren
 
@@ -46,7 +46,7 @@ def calculate_sas_token(hostname, repo_id, key_name, key, expiry_in_second):
 
 ## <a name="c"></a>C\#
 
-Het volgende code fragment laat zien hoe u een SAS-token kunt\#genereren met C:
+Het volgende code fragment laat zien hoe u een SAS-token kunt genereren met behulp van C\#:
 
 ```csharp
 public static string generateSasToken(string hostName, string repoId, string key, string keyName, int expiryInSeconds = 3600)

@@ -4,12 +4,12 @@ description: Gebruik Azure Functions om een taak te plannen die verbinding maakt
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: f70b5b83561e7c580dd7192850c8eb50be5aac0a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3dafe275dcd5eb172e744f1d163b33ebb0bac7cc
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230385"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972231"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions gebruiken om verbinding te maken met een Azure SQL Database
 
@@ -19,7 +19,7 @@ Als dit de eerste ervaring voor het werken C# met functions is, lees dan de [Azu
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ Volg de stappen in het artikel [uw eerste functie maken met Visual Studio](functions-create-your-first-function-visual-studio.md) om een lokale functie-app te maken die de versie 2. x-runtime bedoelt. U moet uw project ook hebben gepubliceerd naar een functie-app in Azure.
++ Volg de stappen in het artikel [uw eerste functie maken met Visual Studio](functions-create-your-first-function-visual-studio.md) om een lokale functie-app te maken die is gericht op versie 2. x of een latere versie van de runtime. U moet uw project ook hebben gepubliceerd naar een functie-app in Azure.
 
 + In dit artikel wordt een Transact-SQL-opdracht beschreven waarmee een bulksgewijze opschoning bewerking wordt uitgevoerd in de tabel **SalesOrderHeader** in de voorbeeld database AdventureWorksLT. Als u de voorbeeld database AdventureWorksLT wilt maken, voert u de stappen in het artikel [een Azure-SQL database maken in de Azure Portal](../sql-database/sql-database-get-started-portal.md).
 
@@ -29,7 +29,7 @@ Als dit de eerste ervaring voor het werken C# met functions is, lees dan de [Azu
 
 U moet de connection string ophalen voor de data base die u hebt gemaakt tijdens [het maken van een Azure-SQL database in de Azure Portal](../sql-database/sql-database-get-started-portal.md).
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Selecteer **SQL-data bases** in het menu aan de linkerkant en selecteer uw Data Base op de pagina **SQL-data bases** .
 

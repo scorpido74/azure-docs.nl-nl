@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: dbce24ced0ed057eac829d5c4b7223a10fa96b3e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c12ebe307eb370e07b785b4379f82a4274964492
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888475"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977757"
 ---
 # <a name="dynamic-packaging-in-media-services"></a>Dynamische verpakking in Media Services
 
@@ -269,6 +269,9 @@ Als u het aantal sporen, indelingen, bitsnelheden en presentatie tijd vensters w
 ## <a name="dynamic-encryption"></a>Dynamische versleuteling
 
 U kunt *dynamische versleuteling* gebruiken om uw Live of on-demand inhoud dynamisch te versleutelen met AES-128 of een van de drie belangrijkste Digital Rights Management (DRM)-systemen: micro soft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM-licenties aan geautoriseerde clients. Zie [dynamische versleuteling](content-protection-overview.md)voor meer informatie.
+
+> [!NOTE]
+> Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="more-information"></a>Meer informatie
 

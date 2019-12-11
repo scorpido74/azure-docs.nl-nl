@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Azure IoT Hub Device Provisioning Service | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u in Azure apparaten inricht met Device Provisioning Service en IoT Hub
+description: Hierin wordt het inrichten van apparaten in azure beschreven met de Device Provisioning Service (DPS) en IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: e02f0de685dc1f67633e13fed1f4114c399afdea
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c29e687a787e59a03bb6825493d808ba036a1d68
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280537"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975360"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Apparaten inrichten met Azure IoT Hub Device Provisioning Service
 Microsoft Azure biedt een uitgebreide set geïntegreerde openbare cloudservices om tegemoet te komen aan al uw IoT-vragen. IoT Hub Device Provisioning Service is een Helper-service voor IoT Hub die Just-In-Time-inrichting naar de juiste IoT-hub mogelijk maakt zonder tussenkomst van de gebruiker, zodat klanten miljoenen apparaten op een veilige en schaalbare manier kunnen inrichten.

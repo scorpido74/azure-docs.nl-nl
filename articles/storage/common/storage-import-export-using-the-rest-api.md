@@ -1,29 +1,29 @@
 ---
-title: Met behulp van de Azure Import/Export-service REST-API | Microsoft Docs
-description: Meer informatie over waar u kunt resources voor het gebruik van de Azure Import/Export-service REST API, met inbegrip van materiaal voor instructie- en referentiedocumenten vinden.
-author: muralikk
+title: De Azure import/export-service gebruiken REST API | Microsoft Docs
+description: Meer informatie over het zoeken naar bronnen voor het gebruik van de Azure import/export-service REST API, met inbegrip van de procedures en het referentie materiaal.
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 1e8b60f37cefb81fbbbbb7823be7752dd1188dc3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 833b8c79fba57b7129092e084381c0671c396496
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60320275"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978863"
 ---
 # <a name="using-the-azure-importexport-service-rest-api"></a>De REST-API van de Azure-service Import/Export gebruiken
 
-De Microsoft Azure Import/Export-service geeft een REST-API om in te schakelen programmatisch beheer van import/export-taken. U kunt de REST-API gebruiken om uit te voeren op alle van de import/export-bewerkingen die u met uitvoeren kunt de [Azure-portal](https://portal.azure.com/). Bovendien kunt u de REST-API om uit te voeren van bepaalde gedetailleerde bewerkingen, zoals het uitvoeren van query's het voltooiingspercentage van een taak die momenteel niet beschikbaar in Azure portal is.
+De Microsoft Azure Import/Export-service stelt een REST API in staat om programmatisch beheer van import/export-taken mogelijk te maken. U kunt de REST API gebruiken om alle import/export-bewerkingen uit te voeren die u met de [Azure Portal](https://portal.azure.com/)kunt uitvoeren. Daarnaast kunt u de REST API gebruiken om bepaalde granulaire bewerkingen uit te voeren, zoals het uitvoeren van een query op het voltooiings percentage van een taak, die momenteel niet beschikbaar is in de Azure Portal.
 
-Zie [met behulp van de Microsoft Azure Import/Export-service gegevens overbrengen naar Blob-opslag](../storage-import-export-service.md) voor een overzicht van de Import/Export-service en een zelfstudie die laat hoe u zien het gebruik van de portal te maken en beheren van importeren en exporteren van taken.
+Zie [de Microsoft Azure import/export-service gebruiken om gegevens over te dragen naar Blob Storage](../storage-import-export-service.md) voor een overzicht van de import/export-service en een zelf studie waarin wordt getoond hoe u de portal kunt gebruiken om import-en export taken te maken en te beheren.
 
 ## <a name="service-endpoints"></a>Service-eindpunten
 
-De Azure Import/Export-service is een resourceprovider voor Azure Resource Manager en biedt een set REST-API's op de volgende HTTPS-eindpunt voor het beheren van import/export-taken:
+De Azure import/export-service is een resource provider voor Azure Resource Manager en biedt een set REST-Api's op het volgende HTTPS-eind punt voor het beheren van import/export-taken:
 
 ```
 https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ImportExport/jobs/<job-name>
@@ -31,9 +31,9 @@ https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<res
 
 ## <a name="versioning"></a>Versiebeheer
 
-Aanvragen voor de Import/Export-service moeten opgeven de `api-version` parameter en stel de waarde op `2016-11-01`.
+Aanvragen voor de import/export-service moeten de para meter `api-version` opgeven en de waarde ervan instellen op `2016-11-01`.
 
-## <a name="importexport-service-operations"></a>Import/Export-servicebewerkingen
+## <a name="importexport-service-operations"></a>Import/export-service bewerkingen
 
 [Een importtaak maken](../storage-import-export-creating-an-import-job.md)
 
@@ -45,10 +45,10 @@ Aanvragen voor de Import/Export-service moeten opgeven de `api-version` paramete
 
 [Taken annuleren en verwijderen](storage-import-export-cancelling-and-deleting-jobs.md)
 
-[Back-ups maken van stationsmanifesten](../storage-import-export-backing-up-drive-manifests.md)
+[Back-ups maken van station manifesten](../storage-import-export-backing-up-drive-manifests.md)
 
 [Diagnoses en het herstel van fouten voor Import/Export-taken](../storage-import-export-diagnostics-and-error-recovery.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Storage Import/Export-REST](/rest/api/storageimportexport)
+* [Opslag voor importeren/exporteren](/rest/api/storageimportexport)

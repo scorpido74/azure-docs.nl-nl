@@ -1,6 +1,6 @@
 ---
-title: Web-app die gebruikers aanmeldt (app-registratie)-micro soft Identity-platform
-description: Meer informatie over het bouwen van een web-app die zich aanmeldt bij gebruikers (app-registratie)
+title: Een web-app registreren die zich aanmeldt bij gebruikers-micro soft Identity platform | Azure
+description: Meer informatie over het registreren van een web-app die wordt aangemeld bij gebruikers
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d840cbaba2cc8325c619248bb7f4421d3b2f83c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b08dd5602196bae0e250953c83320e69ddc6da83
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766069"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964817"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Web-app die zich aanmeldt bij gebruikers: app-registratie
 
@@ -54,11 +54,11 @@ U kunt deze koppelingen gebruiken om het maken van uw webtoepassing te Boots tra
 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
    1. Kies de ondersteunde account typen voor uw toepassing. (Zie [ondersteunde account typen](./v2-supported-account-types.md).)
    1. Voer in de sectie **naam** een zinvolle toepassings naam in die wordt weer gegeven voor gebruikers van de app. Voer bijvoorbeeld **AspNetCore-webapp**in.
-   1. Voor **omleidings-URI**voegt u het type toepassing toe en de URI-bestemming die geretourneerde token Reacties accepteert na een geslaagde verificatie. Voer bijvoorbeeld **https://localhost:44321** in. Selecteer vervolgens **registreren**.
+   1. Voor **omleidings-URI**voegt u het type toepassing toe en de URI-bestemming die geretourneerde token Reacties accepteert na een geslaagde verificatie. Voer bijvoorbeeld **https://localhost:44321** . Selecteer vervolgens **registreren**.
 1. Selecteer het menu **Verificatie** en voeg dan de volgende gegevens toe:
    1. Voeg **https://localhost:44321/signin-oidc** van het type **Web**toe aan de **antwoord-URL**.
    1. Stel in het gedeelte **Geavanceerde instellingen** de **afmeldings-URL** in op **https://localhost:44321/signout-oidc** .
-   1. Onder **impliciete toekenning**selecteert u **id-tokens**.
+   1. Selecteer **id-tokens** onder **Impliciete toekenning**.
    1. Selecteer **Opslaan**.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)

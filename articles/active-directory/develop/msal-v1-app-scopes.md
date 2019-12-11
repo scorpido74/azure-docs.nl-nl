@@ -1,5 +1,5 @@
 ---
-title: Bereiken voor een v 1.0-toepassing (micro soft-verificatie bibliotheek) | Azure
+title: MSAL-bereiken voor een v 1.0-toepassing | Azure
 description: Meer informatie over de bereiken voor een v 1.0-toepassing met behulp van de micro soft Authentication Library (MSAL).
 services: active-directory
 author: TylerMSFT
@@ -13,12 +13,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 395b5105fdb067977f8414fe5675170032262fe0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0606376c455733ca90f1bff3d0295cbd1a075637
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921395"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963253"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Bereiken voor een web-API die v 1.0-tokens accepteert
 
@@ -26,7 +26,7 @@ OAuth2 machtigingen zijn machtigings bereiken die een Azure Active Directory-toe
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Bereiken voor het aanvragen van toegang tot specifieke OAuth2-machtigingen van een v 1.0-toepassing
 
-Voor het verkrijgen van tokens voor specifieke bereiken van een v 1.0-toepassing (bijvoorbeeld de Azure AD-grafiek, die HTTPS is:\//graph.windows.net), moet u scopes maken door een gewenste resource-id te koppelen aan een gewenste OAuth2-machtiging voor die bron.
+Voor het verkrijgen van tokens voor specifieke bereiken van een v 1.0-toepassing (bijvoorbeeld de Azure AD-grafiek, die is https://graph.windows.net), maakt u bereiken door een gewenste resource-id te koppelen met een gewenste OAuth2-machtiging voor die bron.
 
 Bijvoorbeeld voor toegang namens de gebruiker een v 1.0 Web-API waarbij de URI van de App-ID is `ResourceId`:
 

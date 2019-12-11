@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: 77442eda6c8b2aae71c5d647127ead9f851ec485
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 1754168478caf3ca029e003ad0187fc29e85fa8a
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421420"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997289"
 ---
 # <a name="automated-backups"></a>Automatische back-ups
 
@@ -29,7 +29,7 @@ SQL Database maakt automatisch de database back-ups die tussen 7 en 35 dagen wor
 
 SQL Database gebruikt SQL Server technologie om elke week [volledige back-ups](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) te maken, [differentiële back-](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) ups elke 12 uur en [back-ups van transactie logboeken](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) om de 5-10 minuten. De back-ups worden opgeslagen in [Ra-GRS-opslag-blobs](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) die worden gerepliceerd naar een [gekoppeld Data Center](../best-practices-availability-paired-regions.md) voor beveiliging tegen een storing in een Data Center. Wanneer u een Data Base herstelt, moet u de volledige, differentiële en transactie logboek back-ups herstellen.
 
-U kunt deze back-ups gebruiken voor het volgende:
+U kunt deze back-ups gebruiken om:
 
 - **Een bestaande data base in het verleden herstellen naar een bepaald tijdstip** binnen de retentie periode met behulp van de Azure Portal, Azure PowerShell, Azure CLI of rest API. In één data base en elastische Pools wordt met deze bewerking een nieuwe data base gemaakt op dezelfde server als de oorspronkelijke data base. In het beheerde exemplaar kan deze bewerking een kopie maken van de data base of een ander beheerd exemplaar onder hetzelfde abonnement.
   - **[Wijzig de Bewaar periode voor back-ups](#how-to-change-the-pitr-backup-retention-period)** tussen 7 en 35 dagen om uw back-upbeleid te configureren.
@@ -67,7 +67,7 @@ Als u de back-ups langer wilt bewaren dan de maximale Bewaar periode, kunt u de 
 
 ### <a name="backups-for-point-in-time-restore"></a>Back-ups voor herstel naar een bepaald tijdstip
 
-SQL Database ondersteunt self-service for Point-in-time Restore (PITR) door automatisch volledige back-ups, differentiële back-ups en back-ups van transactie logboeken te maken. Volledige database back-ups worden wekelijks gemaakt, differentiële back-ups van data bases worden doorgaans elke 12 uur gemaakt en back-ups van transactie logboeken worden over het algemeen elke 5-10 minuten gemaakt, met de frequentie gebaseerd op de reken grootte en de hoeveelheid database activiteit. De eerste volledige back-up wordt onmiddellijk gepland nadat er een Data Base is gemaakt. Het wordt doorgaans binnen 30 minuten voltooid, maar het kan langer duren als de Data Base een aanzienlijke omvang heeft. De eerste back-up kan bijvoorbeeld langer duren op een herstelde data base of een kopie van een Data Base. Na de eerste volledige back-up worden alle verdere back-ups automatisch op de achtergrond gepland en beheerd. De exacte timing van back-ups van alle data bases wordt bepaald door de SQL Database-Service, omdat deze de algehele systeem werk belasting evenwichtig benadert. U kunt de back-uptaken niet wijzigen of uitschakelen. 
+SQL Database ondersteunt self-service for Point-in-time Restore (PITR) door automatisch volledige back-ups, differentiële back-ups en back-ups van transactie logboeken te maken. Volledige database back-ups worden wekelijks gemaakt, differentiële back-ups van data bases worden doorgaans elke 12 uur gemaakt en back-ups van transactie logboeken worden over het algemeen elke 5-10 minuten gemaakt, met de frequentie gebaseerd op de reken grootte en de hoeveelheid database activiteit. De eerste volledige back-up wordt onmiddellijk gepland nadat er een Data Base is gemaakt. Het wordt doorgaans binnen 30 minuten voltooid, maar het kan langer duren als de Data Base een aanzienlijke omvang heeft. De eerste back-up kan bijvoorbeeld langer duren op een herstelde data base of een kopie van een Data Base. Na de eerste volledige back-up worden alle verdere back-ups automatisch op de achtergrond gepland en beheerd. De exacte timing van alle databaseback-ups wordt bepaald door de SQL Database-service, omdat deze de algehele werkbelasting van het systeem evenredig verdeelt. U kunt de back-uptaken niet wijzigen of uitschakelen. 
 
 De PITR-back-ups zijn geografisch redundant en worden beschermd door [Azure Storage cross-regionale replicatie](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
 
@@ -115,7 +115,7 @@ Wanneer u uw data base migreert van een service tier op basis van DTU met de sta
 
 ## <a name="how-to-change-the-pitr-backup-retention-period"></a>De retentie periode voor PITR-back-ups wijzigen
 
-U kunt de standaard retentie periode voor PITR-back-ups wijzigen met behulp van de Azure Portal, Power shell of de REST API. De ondersteunde waarden zijn: 7, 14, 21, 28 of 35 dagen. In de volgende voor beelden ziet u hoe u de retentie van PITR wijzigt in 28 dagen.
+U kunt de standaard retentie periode voor PITR-back-ups wijzigen met behulp van de Azure Portal, Power shell of de REST API. In de volgende voor beelden ziet u hoe u de retentie van PITR wijzigt in 28 dagen.
 
 > [!WARNING]
 > Als u de huidige Bewaar periode verkort, zijn alle bestaande back-ups die ouder zijn dan de nieuwe Bewaar periode niet meer beschikbaar. Als u de huidige retentie periode verhoogt, worden de bestaande back-ups door SQL Database bewaard totdat de langere Bewaar periode wordt bereikt.

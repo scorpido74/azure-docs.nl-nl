@@ -4,12 +4,12 @@ description: Block Chain Data Manager voor de Azure Block Chain-service maken en
 ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
-ms.openlocfilehash: 9c682f449fbab823134d626870c7dcfe8a8f2847
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455812"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977013"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Blockchain Data Manager configureren met behulp van Azure Portal
 
@@ -32,7 +32,7 @@ Een Block Chain Data Manager-exemplaar maakt verbinding met een Azure Block Chai
 
 Een uitgaande verbinding verzendt Block Chain-gegevens naar Azure Event Grid. Wanneer u het exemplaar maakt, configureert u één uitgaande verbinding. Block Chain Data Manager ondersteunt meerdere uitgaande verbindingen van Event Grid onderwerp voor een gegeven block Chain Data Manager exemplaar. U kunt Block Chain-gegevens naar één bestemming verzenden of block Chain-gegevens verzenden naar meerdere bestemmingen. Als u een andere bestemming wilt toevoegen, voegt u extra uitgaande verbindingen toe aan het exemplaar.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Ga naar het lid van de Azure Block Chain-service waarmee u verbinding wilt maken met block Chain Data Manager. Selecteer **block chain data manager**.
 1. Selecteer **Toevoegen**.
 
@@ -78,13 +78,15 @@ In het contract ABI worden de slimme contract interfaces gedefinieerd. Hierin wo
 
 1. Sla de **Abi** -matrix op als een JSON-bestand. Bijvoorbeeld *Abi. json*. U gebruikt het bestand in een latere stap.
 
-Voor Block Chain Data Manager is de geïmplementeerde byte code voor het slimme contract vereist. De geïmplementeerde byte code wijkt af van de byte code van het Smart-contract. U kunt de geïmplementeerde byte code ophalen uit het bestand met meta gegevens van het gecompileerde contract.
+Voor Block Chain Data Manager is de geïmplementeerde byte code voor het slimme contract vereist. De geïmplementeerde byte code wijkt af van de byte code van het Smart-contract. U gebruikt de Azure Block Chain Development Kit-extensie om de byte code naar het klem bord te kopiëren.
 
-1. Open het meta gegevensbestand van de opdracht in de map **Build/contract** van het volheid-project. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
-1. Zoek het element **deployedBytecode** in het JSON-bestand.
-1. Kopieer de hexadecimale waarde zonder de aanhalings tekens.
+1. Vouw in het deel venster Visual Studio code Explorer de map **Build/contract** van het volheid-project uit.
+1. Klik met de rechter muisknop op het JSON-bestand met meta gegevens van het contract. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
+1. Selecteer de **byte code van de kopieer actie**.
 
-    ![Venster Visual Studio code met byte code in de meta gegevens](./media/data-manager-portal/bytecode-metadata.png)
+    ![Deel venster Visual Studio met de optie byte code ring kopiëren](./media/data-manager-portal/bytecode-devkit.png)
+
+    De byte code wordt gekopieerd naar het klem bord.
 
 1. Sla de **byte code** -waarde op als een JSON-bestand. Bijvoorbeeld: *byte code. json*. U gebruikt het bestand in een latere stap.
 
@@ -109,13 +111,13 @@ Block Chain Data Manager vereist dat de ABI-en byte code-bestanden van het contr
     | Veld | Beschrijving |
     |-------|-------------|
     | Naam  | Geef de container een naam. Bijvoorbeeld *smartcontract* |
-    | Openbaar toegangs niveau | Kies *privé (geen anonieme toegang)* |
+    | Openbaar toegangsniveau | Kies *privé (geen anonieme toegang)* |
 
 1. Selecteer **OK** om de container te maken.
 1. Selecteer de container en selecteer vervolgens **uploaden**.
 1. Kies beide JSON-bestanden die u hebt gemaakt in de sectie [contract Abi en byte code ophalen](#get-contract-abi-and-bytecode) .
 
-    ![BLOB uploaden](./media/data-manager-portal/upload-blobs.png)
+    ![Blob uploaden](./media/data-manager-portal/upload-blobs.png)
 
     Selecteer **Uploaden**.
 

@@ -7,14 +7,14 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 08/12/2019
-ms.openlocfilehash: c803de599f6be98512b15e927c6d15f1c7d95ff1
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 3ece5a9d225e48654a0a3a96c3b7b78327565841
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515738"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975173"
 ---
-# <a name="quickstart-ingest-sample-data-into-azure-data-explorer"></a>Quickstart: Voorbeeld gegevens opnemen in azure Data Explorer
+# <a name="quickstart-ingest-sample-data-into-azure-data-explorer"></a>Quick Start: voorbeeld gegevens opnemen in azure Data Explorer
 
 In dit artikel wordt beschreven hoe u voorbeeld gegevens opneemt in een Azure Data Explorer-data base. Er zijn [verschillende manieren om gegevens op te](ingest-data-overview.md)nemen; Dit artikel richt zich op een basis benadering die geschikt is voor test doeleinden.
 
@@ -33,13 +33,16 @@ De set met voorbeeldgegevens **StormEvents** bevat gegevens van het weer afkomst
 
 1. Selecteer in de linkerbovenhoek van de toepassing **Add Cluster**.
 
-1. Voer in het dialoog venster **cluster toevoegen** uw cluster-URL in het formulier `https://<ClusterName>.<Region>.kusto.windows.net/`in en selecteer vervolgens **toevoegen**.
+1. Voer in het dialoog venster **cluster toevoegen** uw cluster-URL in de notatie `https://<ClusterName>.<Region>.kusto.windows.net/`en selecteer vervolgens **toevoegen**.
 
-1. Plak de volgende opdracht en selecteer **uitvoeren**.
+1. Plak de volgende opdracht en selecteer **uitvoeren** om een StormEvents-tabel te maken.
 
     ```Kusto
     .create table StormEvents (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)
+    ```
+1. Plak de volgende opdracht en selecteer **uitvoeren** om gegevens op te nemen in de tabel StormEvents.
 
+    ```Kusto
     .ingest into table StormEvents h'https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (ignoreFirstRecord=true)
     ```
 
@@ -57,5 +60,5 @@ De set met voorbeeldgegevens **StormEvents** bevat gegevens van het weer afkomst
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Gegevens opname van Azure Data Explorer](ingest-data-overview.md) voor meer informatie over opname methoden.
-* [Snelstart: Query's uitvoeren op gegevens in](web-query-data.md) Azure Data Explorer web-UI.
+* [Quick Start: Query's uitvoeren op gegevens in Azure Data Explorer](web-query-data.md) Webgebruikersinterface.
 * [Schrijf query's](write-queries.md) met een Kusto-query taal.

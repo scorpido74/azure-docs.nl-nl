@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 47c7e35f71fd33cc53d498867ef015364252d5ea
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 39bdcc94b785371044b5d49fd844a06a176a8fba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910296"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970033"
 ---
 # <a name="media-services-concepts"></a>Media Services concepten
 
@@ -32,7 +32,7 @@ Bekijk de basisconcepten die worden beschreven in de volgende onderwerpen voorda
 
 In deze sectie ziet u hoe sommige algemene branche termen worden toegewezen aan de Media Services v3 API.
 
-### <a name="live-event"></a>Livegebeurtenis
+### <a name="live-event"></a>Live evenement
 
 Een **live-gebeurtenis** vertegenwoordigt een pijp lijn voor opname, code ring (optioneel) en het verpakken van live streams van video, audio en realtime meta gegevens.
 
@@ -62,7 +62,7 @@ Als u wilt coderen met Media Services v3, moet u **trans formaties** en **taken*
 - [Trans formaties en taken](transforms-jobs-concept.md)
 - [Code ring met Media Services](encoding-concept.md)
 
-## <a name="media-analytics"></a>Media Analytics
+## <a name="media-analytics"></a>Analytische gegevens media
 
 Als u uw video-en audio bestanden wilt analyseren, moet u ook **trans formaties** en **taken**maken.
 
@@ -78,13 +78,13 @@ Dynamische pakketten worden gebruikt, ongeacht of u uw inhoud live of on-demand 
 
 ![Dynamische verpakking](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-Met Media Services kunt u uw Live en on-demand inhoud dynamisch versleutelen met Advanced Encryption Standard (AES-128) of/en een van de drie belangrijkste Digital Rights Management (DRM)-systemen: Micro soft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM (PlayReady, Widevine en FairPlay) licenties voor geautoriseerde clients.
+Met Media Services kunt u uw Live en on-demand inhoud dynamisch versleutelen met Advanced Encryption Standard (AES-128) of/en een van de drie belangrijkste Digital Rights Management (DRM)-systemen: micro soft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM (PlayReady, Widevine en FairPlay) licenties voor geautoriseerde clients.
 
 Als u versleutelings opties voor uw stroom opgeeft, maakt u het **beleid voor inhouds sleutels** en koppelt u dit aan uw **streaming-Locator**. Met het **beleid voor inhouds sleutels** kunt u configureren hoe de inhouds sleutel wordt bezorgd bij de eind clients.
 
 De volgende afbeelding ziet u de Media Services content protection-werkstroom: 
 
-![Inhoud beveiligen](./media/content-protection/content-protection.svg)
+![Inhoud beschermen](./media/content-protection/content-protection.svg)
 
 &#42;dynamische versleuteling ondersteunt AES-128 ' Clear key ', CBCS en CENC. 
 
@@ -101,6 +101,9 @@ U kunt Media Services **dynamische manifesten** gebruiken om alleen een specifie
 - [Dynamische manifesten](filters-dynamic-manifest-overview.md)
 - [Filters](filters-concept.md)
 
+> [!NOTE]
+> Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+
 ## <a name="live-streaming"></a>Live streamen
 
 Met Azure Media Services kunt u live gebeurtenissen aan uw klanten leveren via de Azure-Cloud. **Livegebeurtenissen** zijn verantwoordelijk voor het opnemen en verwerken van de live videofeeds. Wanneer u een **live gebeurtenis**maakt, wordt er een invoer eindpunt gemaakt dat u kunt gebruiken om een live signaal van een extern coderings programma te verzenden. Zodra u de stroom naar de **live gebeurtenis**hebt gestroomd, kunt u de streaming-gebeurtenis starten door een **Asset**, **Live output**en **streaming-Locator**te maken. **Live output** archiveert de stroom naar de **Asset** en maakt deze beschikbaar voor gebruikers via het **streaming-eind punt**. Een **live gebeurtenis** kan een van de volgende twee typen zijn: **Pass-Through** en **Live encoding**.
@@ -112,7 +115,7 @@ In de volgende afbeelding ziet u de werk stroom Pass-Through type:
 - [Overzicht van live streamen](live-streaming-overview.md)
 - [Livegebeurtenissen en live-uitvoer](live-events-outputs-concept.md)
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controleren
 
 ### <a name="event-grid"></a>Event Grid
 

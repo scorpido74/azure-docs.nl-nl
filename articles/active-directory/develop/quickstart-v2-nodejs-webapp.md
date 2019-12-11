@@ -1,5 +1,5 @@
 ---
-title: Quick start voor OIDC node. js-Web-App van micro soft Identity platform | Azure
+title: OIDC-aanmelding toevoegen aan een node. js-web-app-micro soft Identity platform | Azure
 description: Meer informatie over het implementeren van verificatie in een node. js-webtoepassing met behulp van OpenID Connect Connect.
 services: active-directory
 author: jmprieur
@@ -12,14 +12,14 @@ ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8a73193a4e43ad4c91e23534898d003a310dff5
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a2869333fe0e9103724b9b1075270a5c3301c472
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920596"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968014"
 ---
-# <a name="quickstart-add-sign-in-using-oidc-to-a-nodejs-web-app"></a>Snelstartgids: aanmelden toevoegen met behulp van OIDC aan een node. js-web-app
+# <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Snelstartgids: aanmelden toevoegen met OpenID connect verbinding maken met een node. js-web-app
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 

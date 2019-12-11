@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 93932fac9a5e5d4c21adc99bd31e9366a9709cc2
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a444294497b82f316e7407999f5203cd13878928
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859113"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977961"
 ---
-# <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>Zelfstudie: Een WPF-app maken om gegevens van gezichten in een afbeelding weer te geven
+# <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Zelf studie: een Windows Presentation Framework (WPF)-app maken voor het weer geven van gezichts gegevens in een installatie kopie
 
-In deze zelf studie leert u hoe u de Azure Face-API, via de .NET client SDK, kunt gebruiken om gezichten in een installatie kopie te detecteren en vervolgens de gegevens in de gebruikers interface weer te geven. U maakt een Windows Presentation Framework (WPF)-toepassing die gezichten detecteert, een kader rond elk gezicht tekent en een beschrijving van het gezicht in de status balk weergeeft. 
+In deze zelf studie leert u hoe u de Azure Face-API, via de .NET client SDK, kunt gebruiken om gezichten in een installatie kopie te detecteren en vervolgens de gegevens in de gebruikers interface weer te geven. U maakt een WPF-toepassing die gezichten detecteert, tekent een kader rond elk gezicht en geeft een beschrijving van het gezicht weer in de status balk. 
 
 In deze zelfstudie ontdekt u hoe u:
 
@@ -39,7 +39,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Face-API-abonnementssleutel. U kunt een abonnementssleutel voor een gratis proefversie downloaden van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op de Face-API-service en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service- `FACE_SUBSCRIPTION_KEY` eindpunt `FACE_ENDPOINT`teken reeks, respectievelijk met de naam en.
+- Een Face-API-abonnementssleutel. U kunt een abonnementssleutel voor een gratis proefversie downloaden van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op de Face-API-service en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service-eindpunt reeks, respectievelijk met de naam `FACE_SUBSCRIPTION_KEY` en `FACE_ENDPOINT`.
 - Een versie van [Visual Studio 2015 of 2017](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-the-visual-studio-project"></a>Het Visual Studio-project maken
@@ -57,7 +57,7 @@ In deze sectie voegt u het basisframework van de app toe zonder de gezichtsbepal
 
 ### <a name="create-the-ui"></a>Gebruikersinterface maken
 
-Open *mainwindow. xaml* en vervang de inhoud door de volgende code&mdash;. met deze code wordt het venster gebruikers interface gemaakt. De `FacePhoto_MouseMove` methoden `BrowseButton_Click` en zijn gebeurtenis-handlers die u later wilt definiëren.
+Open *mainwindow. xaml* en vervang de inhoud door de volgende code&mdash;deze code het venster gebruikers interface maakt. De methoden `FacePhoto_MouseMove` en `BrowseButton_Click` zijn gebeurtenis-handlers die u later wilt definiëren.
 
 [!code-xaml[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml?name=snippet_xaml)]
 
@@ -85,7 +85,7 @@ Voeg tot slot de methoden **BrowseButton_Click** en **FacePhoto_MouseMove** aan 
 
 <!-- [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mousemove_end)] -->
 
-### <a name="try-the-app"></a>De app uitproberen
+### <a name="try-the-app"></a>Probeer de app
 
 Druk op **Start** in het menu om uw app te testen. Als het app-venster wordt geopend, klikt u in de linkerbenedenhoek op **Bladeren**. Het dialoogvenster **Bestand openen** verschijnt. Selecteer een afbeelding in uw bestandssysteem en controleer of deze in het venster wordt weergegeven. Sluit vervolgens de app en ga door naar de volgende stap.
 
@@ -117,7 +117,7 @@ Voeg de volgende code toe aan de methode **FacePhoto_MouseMove**. Deze gebeurten
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mousemove_mid)]
 
-## <a name="run-the-app"></a>De app uitvoeren
+## <a name="run-the-app"></a>De app kunt uitvoeren
 
 Voer de toepassing uit en blader naar een afbeelding met een gezicht. Wacht enkele seconden, zodat de Face-service kan reageren. U zou nu een rode rechthoek rond de gezichten in de afbeelding moeten zien. Als u de muisaanwijzer boven een gezichtsrechthoek beweegt, moet de beschrijving van dat gezicht op de statusbalk worden weergegeven.
 

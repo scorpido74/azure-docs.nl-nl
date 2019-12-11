@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 0026aa377a58f6b766a400860692a35440deb962
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2ae0f3033b88b3229d3dbef35c8bc9a32510c00e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748356"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972333"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Problemen met Azure Data Factory oplossen
 
@@ -43,9 +43,9 @@ Raadpleeg [problemen met Azure Data Factory connectors oplossen](connector-troub
 
 - **Aanbeveling**: Geef het pad naar de notebook op in de Databricks-activiteit.
 
-<br/>    
-              
-- **Bericht**: `Cluster   ... does not exist.`
+<br/>  
+
+- **Bericht**: `Cluster... does not exist.`
 
 - **Oorzaak**: `Authoring error: Databricks cluster does not exist or has been deleted.`
 
@@ -53,7 +53,7 @@ Raadpleeg [problemen met Azure Data Factory connectors oplossen](connector-troub
 
 <br/>  
 
-- **Bericht**: `Invalid Python file URI.... Please visit Databricks user guide for supported URI schemes.`
+- **Bericht**: `Invalid Python file URI... Please visit Databricks user guide for supported URI schemes.`
 
 - **Oorzaak**: `Bad authoring.`
 
@@ -334,56 +334,56 @@ De volgende tabel is van toepassing op U-SQL.
 
 ### <a name="error-code--4121"></a>Fout code: 4121
 
-- **Bericht**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Bericht**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Oorzaak**: de referentie die wordt gebruikt voor toegang tot de Azure ml-service is verlopen.
+- **Oorzaak**: de referentie die wordt gebruikt voor toegang tot Azure machine learning is verlopen.
 
 - **Aanbeveling**: Controleer of de referenties geldig zijn en probeer het opnieuw
 
 
 ### <a name="error-code--4122"></a>Fout code: 4122
 
-- **Bericht**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Bericht**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Oorzaak**: de in de gekoppelde service van de Azure ml-service is ongeldig of heeft geen machtiging voor de bewerking.
+- **Oorzaak**: de in azure machine learning gekoppelde service opgenomen referentie is ongeldig of heeft geen machtiging voor de bewerking.
 
-- **Aanbeveling**: Controleer of de referentie in de gekoppelde service geldig is en toegang heeft tot de Azure ml-service.
+- **Aanbeveling**: Controleer of de referentie in de gekoppelde service geldig is en de machtiging heeft om toegang te krijgen tot Azure machine learning.
 
 
 ### <a name="error-code--4123"></a>Fout code: 4123
 
-- **Bericht**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Bericht**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Oorzaak**: `Properties of the activity such as pipelineParamters are invalid for the Azure ML pipeline.`
+- **Oorzaak**: de eigenschappen van de activiteit, zoals pipelineParameters, zijn ongeldig voor de Azure ml-pijp lijn.
 
 - **Aanbeveling**: Controleer de waarde van de activiteit eigenschappen die overeenkomt met de verwachte payload van de gepubliceerde Azure ml-pijp lijn die is opgegeven in de gekoppelde service.
 
 
 ### <a name="error-code--4124"></a>Fout code: 4124
 
-- **Bericht**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Bericht**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
 - **Oorzaak**: het gepubliceerde eind punt van de Azure ml-pijp lijn bestaat niet.
 
-- **Aanbeveling**: Controleer of het gepubliceerde Azure ml pijp lijn-eind punt dat is opgegeven in de gekoppelde service bestaat in de Azure ml-service.
+- **Aanbeveling**: Controleer of het gepubliceerde Azure machine learning pijplijn-eind punt dat is opgegeven in de gekoppelde service voor komt in azure machine learning.
 
 
 ### <a name="error-code--4125"></a>Fout code: 4125
 
-- **Bericht**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Bericht**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Oorzaak**: Server fout op Azure ml-service.
+- **Oorzaak**: Server fout op Azure machine learning.
 
-- **Aanbeveling**: Probeer het later opnieuw. Neem contact op met het service team van Azure ML als het probleem blijft bestaan.
+- **Aanbeveling**: Probeer het later opnieuw. Neem contact op met Azure Machine Learning team voor hulp als het probleem blijft bestaan.
 
 
 ### <a name="error-code--4126"></a>Fout code: 4126
 
-- **Bericht**: `Azure ML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in Azure ML Service for more error logs.`
+- **Bericht**: `Azure ML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in Azure Machine Learning for more error logs.`
 
 - **Oorzaak**: de uitvoering van de Azure ml-pijp lijn is mislukt.
 
-- **Aanbeveling**: Raadpleeg de Azure ml-service voor meer fout logboeken en herstel de ml-pijp lijn
+- **Aanbeveling**: Raadpleeg Azure machine learning voor meer fout logboeken en herstel de ml-pijp lijn.
 
 
 
@@ -422,7 +422,7 @@ De volgende tabel is van toepassing op U-SQL.
 
 - **Oorzaak**: de Connection String voor de opslag is ongeldig of heeft een onjuiste indeling.
 
-- **Aanbeveling**: Ga naar Azure Portal, Zoek uw opslag, kopieer de Connection String en plak deze in de gekoppelde service en probeer het opnieuw.
+- **Aanbeveling**: Ga naar de Azure Portal, Zoek uw opslag, kopieer de Connection String en plak de gekoppelde service en probeer het opnieuw.
 
 
 ### <a name="error-code--2108"></a>Fout code: 2108
@@ -471,7 +471,7 @@ De volgende tabel is van toepassing op U-SQL.
 
 
 
-## <a name="custom"></a>Aangepast telefoonnummer
+## <a name="custom"></a>Aangepast
 
 De volgende tabel is van toepassing op Azure Batch.
       
@@ -522,7 +522,7 @@ De volgende tabel is van toepassing op Azure Batch.
 
 ### <a name="error-code--2507"></a>Fout code: 2507
 
-- **Bericht**: `The folder path does not exist or is empty: ....`
+- **Bericht**: `The folder path does not exist or is empty: ...`
 
 - **Oorzaak**: er zijn geen bestanden in het opslag account op het opgegeven pad.
 
@@ -668,12 +668,12 @@ De volgende tabel is van toepassing op Azure Batch.
 - **Oorzaak**: wanneer het fout bericht een bericht bevat dat lijkt op ' 502-webserver heeft een ongeldig antwoord ontvangen terwijl deze als gateway of proxy server optreedt, wordt deze fout geretourneerd door de HDInsight-service.
 
 
-- **Aanbeveling**: Bekijk de documentatie voor het oplossen van problemen met Azure HDInsight, bijvoorbeeld https://hdinsight.github.io/ambari/ambari-ui-502-error.html, https://hdinsight.github.io/spark/spark-thriftserver-errors.htmlhttps://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502.
+- **Aanbeveling**: Bekijk de documentatie voor het oplossen van problemen met Azure HDInsight, bijvoorbeeld https://hdinsight.github.io/ambari/ambari-ui-502-error.html , https://hdinsight.github.io/spark/spark-thriftserver-errors.htmlhttps://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502.
                   
 
 <br>
 
-- **Oorzaak**: wanneer het fout bericht een bericht bevat dat lijkt op ' kan de aanvraag voor het verzenden van de taak niet verwerken omdat de Templeton-service te veel aanvragen voor het verzenden van taken of de wachtrij root. joblauncher al 500 toepassingen heeft, kan het indienen van niet accepteren toepassing ', dit betekent dat er te veel taken tegelijkertijd worden verzonden naar HDInsight.
+- **Oorzaak**: Wanneer fout bericht een bericht bevat dat lijkt op ' kan de aanvraag voor de verzend taak niet verwerken omdat de Templeton-service is bezig met te veel verzend taak aanvragen ' of ' queue root. joblauncher heeft al 500 toepassingen, waardoor het indienen van de toepassing niet kan worden geaccepteerd. Dit betekent dat er te veel taken tegelijkertijd worden verzonden naar HDInsight.
 
 - **Aanbeveling**: overweeg het aantal gelijktijdige taken dat naar HDInsight moet worden verzonden te beperken. Raadpleeg Data Factory gelijktijdige activiteit als de taken worden verzonden door dezelfde activiteit. Wijzig de triggers zodat de gelijktijdige pijplijn uitvoeringen in de loop van de tijd worden verdeeld. Raadpleeg de HDInsight-documentatie om Templeton. parallellism. job. Submit aan te passen. dit wordt voorgesteld door de fout.
 
@@ -685,7 +685,7 @@ De volgende tabel is van toepassing op Azure Batch.
 - **Oorzaak**: HDInsight-cluster of-service heeft problemen.
 
 
-- **Aanbeveling**: deze fout treedt op wanneer ADF geen reactie krijgt van HDInsight-cluster bij het ophalen van de status van de actieve taak. Dit kan problemen veroorzaken op het cluster zelf of de HDInsight-service heeft mogelijk een storing. Raadpleeg de documentatie voor het oplossen van problemen met HDInsight op https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guideof neem contact op met de ondersteuning voor verdere ondersteuning.
+- **Aanbeveling**: deze fout treedt op wanneer ADF geen reactie krijgt van HDInsight-cluster bij het ophalen van de status van de actieve taak. Dit kan problemen veroorzaken op het cluster zelf of de HDInsight-service heeft mogelijk een storing. Raadpleeg de documentatie voor het oplossen van problemen met HDInsight op https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guide of neem contact op met de ondersteuning voor verdere ondersteuning.
                 
 
 
@@ -816,7 +816,7 @@ De volgende tabel is van toepassing op Azure Batch.
 
 - **Aanbeveling**:  
       1. Controleer of de referenties juist zijn door de Ambari-gebruikers interface van het HDInsight-cluster in een browser te openen.
-      2. Als het cluster zich in VNet bevindt en zelf-hostende IR wordt gebruikt, moet de HDI-URL de privé-URL zijn in VNets, dat wil zeggen: '-int ' na de cluster naam. Bijvoorbeeld 'https://mycluster.azurehdinsight.net/' moet worden gewijzigd in 'https://mycluster-int.azurehdinsight.net/'.
+      2. Als het cluster zich in VNet bevindt en zelf-hostende IR wordt gebruikt, moet de HDI-URL de privé-URL zijn in VNets, dat wil zeggen: '-int ' na de cluster naam. Bijvoorbeeld 'https://mycluster.azurehdinsight.net/ ' moet worden gewijzigd in 'https://mycluster-int.azurehdinsight.net/ '.
       2. Als het cluster zich in VNet bevindt, wordt zelf-hostende IR gebruikt en wordt de persoonlijke URL gebruikt. de verbinding is dan nog steeds mislukt. vervolgens wordt de virtuele machine waarop de IR is geïnstalleerd problemen ondervonden met het verbinding maken met de HDI. Maak verbinding met de virtuele machine waarop IR is geïnstalleerd en open de Ambari-gebruikers interface in een browser. Gebruik de persoonlijke URL voor het cluster. Deze verbinding moet werken vanuit de browser. Als dat niet het geval is, neemt u contact op met het HDInsight-ondersteunings team.
       3. Als zelf-hostende IR niet wordt gebruikt, moet het HDI-cluster openbaar toegankelijk zijn. Open de Ambari-gebruikers interface in een browser en zorg ervoor dat deze wordt geopend. Als er problemen zijn met het cluster of de services erop, neemt u contact op met het HDInsight-ondersteunings team voor hulp.
       In het algemeen moet de HDI-cluster-URL die wordt gebruikt in de aan ADF gekoppelde service toegankelijk zijn voor ADF IR (zelf-hostend of Azure), zodat de test verbinding kan worden door gegeven en voor uitvoeringen werkt. Dit kan eenvoudig worden geverifieerd door de URL te openen vanuit een browser van een virtuele machine of een open bare computer.
@@ -977,7 +977,7 @@ De volgende tabel is van toepassing op Azure Batch.
 
 - **Oorzaak**: het maken van het cluster is mislukt en de ADF heeft geen fout weer gegeven van de HDInsight-service.
 
-- **Aanbeveling**: Open de Azure-Portal en zoek de HDI-resource met de gegeven naam op en controleer de inrichtings status. Neem contact op met het HDInsight-ondersteunings team voor verdere ondersteuning.
+- **Aanbeveling**: Open de Azure Portal en probeer de HDI-resource te vinden met de naam die u hebt gekregen en controleer de inrichtings status. Neem contact op met het HDInsight-ondersteunings team voor verdere ondersteuning.
 
 
 ### <a name="error-code--2362"></a>Fout code: 2362
@@ -990,7 +990,7 @@ De volgende tabel is van toepassing op Azure Batch.
 
 
 
-## <a name="web-activity"></a>Web Activity
+## <a name="web-activity"></a>Webactiviteit
 
 ### <a name="error-code--2128"></a>Fout code: 2128
 
@@ -1018,7 +1018,7 @@ Fiddler gebruiken om een HTTP-sessie van de bewaakte webtoepassing te maken:
 
 1. Als uw webtoepassing gebruikmaakt van HTTPS, gaat u naar **Hulpprogram ma's** > **Fiddler opties** > **https**. Selecteer **https-verbinding** maken en **versleutelen van HTTPS-verkeer**.
 
-![Opties voor Fiddler](media/data-factory-troubleshoot-guide/fiddler-options.png)
+   ![Opties voor Fiddler](media/data-factory-troubleshoot-guide/fiddler-options.png)
 
 1. Als uw toepassing gebruikmaakt van SSL-certificaten, voegt u het Fiddler-certificaat toe aan uw apparaat. Ga naar **Hulpprogram ma's** > **Fiddler opties** > **https** > **acties** > **basis certificaat exporteren naar het bureau blad**.
 
@@ -1028,17 +1028,17 @@ Fiddler gebruiken om een HTTP-sessie van de bewaakte webtoepassing te maken:
 
 1. Een aanvraag maken:
 
-a. Selecteer het tabblad **Composer** .
+   1. Selecteer het tabblad **Composer** .
 
-b. Stel de HTTP-methode en URL in.
+   1. Stel de HTTP-methode en URL in.
+   
+   1. Voeg indien nodig kopteksten en een aanvraag tekst toe.
 
-c. Voeg indien nodig kopteksten en een aanvraag tekst toe.
+   1. Selecteer **Uitvoeren**.
 
-d. Selecteer **Uitvoeren**.
+1. Schakel het vastleggen van verkeer in en voltooi de problematische trans actie op de pagina.
 
-9. Schakel het vastleggen van verkeer in en voltooi de problematische trans actie op de pagina.
-
-10. Ga naar **bestand** >  > **alle sessies**op te **slaan** .
+1. Ga naar **bestand** >  > **alle sessies**op te **slaan** .
 
 Zie [aan de slag met Fiddler](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)voor meer informatie.
 
@@ -1046,7 +1046,7 @@ Zie [aan de slag met Fiddler](https://docs.telerik.com/fiddler/Configure-Fiddler
 
 Probeer deze bronnen voor meer informatie over probleem oplossing:
 
-*  [Data Factory-blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory functie aanvragen](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-Video's](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [MSDN-forum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)

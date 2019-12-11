@@ -1,6 +1,6 @@
 ---
-title: Web-API die worden aangeroepen web-API's (aanroep van API's) - Microsoft identity-platform
-description: Meer informatie over het bouwen van een web-API die downstream web-aanroepen van API's (aanroepen van een web-API).
+title: Web-API voor het aanroepen van web-Api's-micro soft Identity-platform | Azure
+description: Meer informatie over het bouwen van een web-API voor het aanroepen van web-Api's.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,22 +15,22 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cd093cc68a21558dc326221eeaa8c034c24f1c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6063d143e2f217426bdf1db217fde46f8542d314
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074723"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965208"
 ---
-# <a name="web-api-that-calls-web-apis---call-an-api"></a>Web-API die web-API's - roept een API aanroepen
+# <a name="web-api-that-calls-web-apis---call-an-api"></a>Web-API voor het aanroepen van web-Api's-aanroepen van een API
 
-Zodra u een token hebt, kunt u een beveiligde web-API kunt aanroepen. Dit wordt gedaan via de controller van de web-API voor uw ASP.NET/ASP.NET Core.
+Zodra u een token hebt, kunt u een beveiligde web-API aanroepen. Dit wordt gedaan vanuit de controller van uw ASP.NET/ASP.NET core web-API.
 
-## <a name="controller-code"></a>Controllercode
+## <a name="controller-code"></a>Controller code
 
-Hier is de voortzetting van de voorbeeldcode die wordt weergegeven [beveiligde web-API-aanroepen web-API's - ophalen van een token](scenario-web-api-call-api-acquire-token.md), met de naam in de acties van de API-controllers, aanroepen van een downstream-API (met de naam todolist).
+Dit is de voortzetting van de voorbeeld code die wordt weer gegeven in de [beveiligde web-API aanroepen Web-api's: een Token ophalen](scenario-web-api-call-api-acquire-token.md), aangeroepen in de acties van de API-controllers, waarmee een downstream API (met de naam ToDoList) wordt opgeroepen.
 
-Nadat u het token verkregen, gebruiken als een bearer-token van de downstream-API aan te roepen.
+Nadat u het token hebt verkregen, gebruikt u dit als Bearer-token om de downstream API aan te roepen.
 
 ```CSharp
 private async Task GetTodoList(bool isAppStarting)
@@ -61,4 +61,4 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Verplaatsen naar productie](scenario-web-api-call-api-production.md)
+> [Naar productie verplaatsen](scenario-web-api-call-api-production.md)

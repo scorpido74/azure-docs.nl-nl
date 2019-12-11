@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Een zoekopdracht op internet uitvoeren met C# - Bing Webzoekopdrachten-REST API'
+title: 'Quick Start: een webzoekopdracht met C# -Bing Web Search uitvoeren rest API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen naar de REST API van Bing Web Search te verzenden via C# en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -8,25 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 20cb5f65ed33bc3e737bbba902ed2d891eaf83be
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 6c847af4f6938923abdfced4d5e8b842ae84eca6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823359"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978812"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Snelstartgids: Zoeken op internet met behulp van de REST API voor Bing Web Search en C#
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Quick Start: zoeken op internet met behulp van de Bing Web Search REST API enC#
 
-Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en het JSON-antwoord te ontvangen. Dit C# toepassing een zoekaanvraag verzendt naar de API en het antwoord. Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Gebruik deze quickstart om voor het eerst de Bing Web Search-API aan te roepen en het JSON-antwoord te ontvangen. Met C# deze toepassing wordt een zoek opdracht naar de API verzonden en wordt het antwoord weer gegeven. Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u verdergaat met deze snelstart moet u beschikken over:
+U moet over het volgende beschikken voordat u verdergaat met deze snelstartgids:
 
-* Windows: [Visual Studio 2017 of later](https://www.visualstudio.com/downloads/)
+* Windows: [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/)
 * Linux/macOS: [Mono](https://www.mono-project.com/)  
 * Een abonnementssleutel
 
@@ -62,7 +62,7 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>Variabelen definiëren
 
-Er moet een aantal variabelen worden ingesteld voordat we verder kunnen gaan. Controleer of de `uriBase` geldig is en vervang de waarde `accessKey` door een geldige abonnementssleutel uit uw Azure-account. U kunt de zoekquery gerust aanpassen door de waarde voor `searchTerm` te vervangen. Houd er rekening mee om toe te voegen deze code de `Program` klasse, zoals hierboven is vermeld.
+Er moet een aantal variabelen worden ingesteld voordat we verder kunnen gaan.  `uriBase` kunnen het globale eind punt hieronder zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource. Controleer of de `uriBase` geldig is en vervang de waarde `accessKey` door een geldige abonnementssleutel uit uw Azure-account. U kunt de zoekquery gerust aanpassen door de waarde voor `searchTerm` te vervangen. Vergeet niet om deze code toe te voegen aan de `Program`-klasse zoals hierboven is vermeld.
 
 ```csharp
 // Enter a valid subscription key.
@@ -109,7 +109,7 @@ static void Main()
 
 ## <a name="create-a-struct-for-search-results"></a>Een struct voor zoekresultaten maken
 
-Deze struct retourneert zoekresultaten met relevante headers. Deze wordt aangeroepen wanneer die een aanvraag verzendt naar de Bing webzoekopdrachten-API om een resultaatobject te maken.
+Deze struct retourneert zoekresultaten met relevante headers. Het wordt aangeroepen bij het maken van een aanvraag voor de Bing Webzoekopdrachten-API om een resultaat object te creëren.
 
 ```csharp
 // Returns search results with headers.
@@ -366,6 +366,6 @@ Antwoorden afkomstig van de Bing Webzoekopdrachten-API worden geretourneerd in d
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie voor app met één pagina voor Bing Web Search](../tutorial-bing-web-search-single-page-app.md)
+> [Zelfstudie voor app met één pagina voor Bing Web Search ](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

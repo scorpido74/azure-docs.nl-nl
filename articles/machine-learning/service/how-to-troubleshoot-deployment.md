@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dc66ae0f69c19524b32b55c654f7c8fd2d32762
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 7d7744aab6d83b3415f32ca9e311940836c6f93c
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123206"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997238"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Problemen met Azure Machine Learning Azure Kubernetes-service en Azure Container Instances-implementatie oplossen
 
@@ -505,7 +505,7 @@ Als u wijzigingen wilt aanbrengen in bestanden in de installatie kopie, kunt u k
     docker exec -it debug /bin/bash
     ```
 
-1. Als u de bestanden wilt vinden die door de service worden gebruikt, gebruikt u de volgende opdracht uit de bash-shell in de container:
+1. Als u de bestanden wilt vinden die door de service worden gebruikt, gebruikt u de volgende opdracht uit de bash-shell in de container als de standaard directory afwijkt van `/var/azureml-app`:
 
     ```bash
     cd /var/azureml-app

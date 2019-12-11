@@ -1,5 +1,5 @@
 ---
-title: Web-API die downstream Web-Api's (overzicht) aanroept-micro soft Identity-platform
+title: Een web-API bouwen die web-Api's aanroept-micro soft Identity-platform | Azure
 description: Meer informatie over het bouwen van een web-API die downstream Web-Api's (overzicht) aanroept.
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,14 +15,14 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ef9fc121b16d81eed932d1ab55ca38d2a2f1057
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 4b357def86b77d4bbb294e2253dacfbd129998ec
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852503"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965123"
 ---
-# <a name="scenario-web-api-that-calls-web-apis"></a>Scenario: Web-API die web-API's aanroept
+# <a name="scenario-web-api-that-calls-web-apis"></a>Scenario: Web-API voor het aanroepen van web-Api's
 
 Meer informatie over wat u nodig hebt om een web-API te maken die web-Api's aanroept.
 
@@ -33,8 +33,8 @@ In dit scenario wordt de beveiligde web-API voor het aanroepen van web-Api's geb
 ## <a name="overview"></a>Overzicht
 
 - Een client (Web-, Desktop-, mobiele of toepassing met één pagina)-wordt niet weer gegeven in het onderstaande diagram: roept een beveiligde web-API aan en biedt een JWT Bearer-token in de http-header autorisatie.
-- De beveiligde web-API valideert het token en maakt gebruik `AcquireTokenOnBehalfOf` van de methode MSAL om een andere token te aanvragen (vanuit Azure AD), zodat het zelf een tweede Web-API (de downstream Web-API) kan aanroepen namens de gebruiker.
-- De beveiligde web-API gebruikt dit token om een downstream API aan te roepen. Het kan ook later `AcquireTokenSilent`aanroepen om tokens aan te vragen voor andere downstream-api's (maar nog steeds namens dezelfde gebruiker). `AcquireTokenSilent`Hiermee wordt het token vernieuwd wanneer dit nodig is.
+- De beveiligde web-API valideert het token en maakt gebruik van de methode MSAL `AcquireTokenOnBehalfOf` om een andere token aan te vragen (van Azure AD), zodat het zelf een tweede Web-API (met de naam de downstream Web-API) kan aanroepen namens de gebruiker.
+- De beveiligde web-API gebruikt dit token om een downstream API aan te roepen. Het kan ook `AcquireTokenSilent`later aanroepen om tokens aan te vragen voor andere downstream-Api's (maar nog steeds namens dezelfde gebruiker). `AcquireTokenSilent` het token zo nodig vernieuwen.
 
 ![Web-API die een web-API aanroept](media/scenarios/web-api.svg)
 

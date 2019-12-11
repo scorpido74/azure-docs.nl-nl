@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 4d4823e8dcce0d1296ebe39a0b7a7c4bbc180317
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 275fa173c5005c4d1609a858c8edb39b5c307c5e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015434"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974611"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Axinom gebruiken om Widevine-licenties te leveren aan Azure Media Services 
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "69015434"
 ## <a name="overview"></a>Overzicht
 Azure Media Services (AMS) heeft Google Widevine Dynamic Protection toegevoegd (Zie [de blog van Mingfei](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/) voor meer informatie). Daarnaast heeft Azure Media Player (AMP) ook ondersteuning toegevoegd voor Widevine (Zie het [amp-document](https://amp.azure.net/libs/amp/latest/docs/) voor meer informatie). Dit is een belang rijke stroom in streaming DASH-inhoud die wordt beveiligd door CENC met multi-native-DRM (PlayReady en Widevine) in moderne browsers die zijn uitgerust met MSE en EME.
 
-Vanaf de Media Services .NET SDK versie 3.5.2 kunt u met Media Services de Widevine-licentie sjabloon configureren en Widevine-licenties ophalen. U kunt ook de volgende AMS-partners gebruiken om Widevine-licenties te leveren: [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](https://ezdrm.com/), [castLabs](https://castlabs.com/company/partners/azure/).
+Vanaf de Media Services .NET SDK versie 3.5.2 kunt u met Media Services de Widevine-licentie sjabloon configureren en Widevine-licenties ophalen. U kunt ook de volgende AMS-partners gebruiken om Widevine-licenties te leveren: [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](https://ezdrm.com/) en [castLabs](https://castlabs.com/company/partners/azure/).
 
 In dit artikel wordt beschreven hoe u Widevine-licentie servers die worden beheerd door Axinom integreert en test. Dit betreft met name:  
 
@@ -45,7 +45,7 @@ Het volledige systeem en de stroom van de inhouds sleutel, sleutel-ID, sleutel z
 ![STREEPJE en CENC](./media/media-services-axinom-integration/media-services-axinom1.png)
 
 ## <a name="content-protection"></a>Content Protection
-Zie blog van Mingfei voor meer informatie over het configureren van een beleid voor dynamische beveiliging en het leveren van sleutels: [Widevine-verpakking configureren met Azure Media Services](https://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services).
+Zie blog van Mingfei voor meer informatie over het configureren van dynamische beveiliging en het bezorgings beleid voor sleutels: [het configureren van Widevine-verpakking met Azure Media Services](https://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services).
 
 U kunt dynamische CENC-beveiliging met multi-DRM configureren voor een streepje-streaming met de volgende opties:
 
@@ -56,7 +56,7 @@ Zie de sectie [JWT-token generatie](media-services-axinom-integration.md#jwt-tok
 
 ### <a name="considerations"></a>Overwegingen
 1. U moet de Axinom opgegeven sleutel Seed (8888000000000000000000000000000000000000) en de gegenereerde of geselecteerde sleutel-ID voor het genereren van de inhouds sleutel voor het configureren van de key delivery-service gebruiken. Axinom-licentie server verzendt alle licenties met inhouds sleutels op basis van dezelfde sleutel Seed, die geldig zijn voor testen en productie.
-2. De Widevine-licentie voor het verkrijgen van [https://drm-widevine-licensing.axtest.net/AcquireLicense](https://drm-widevine-licensing.axtest.net/AcquireLicense)tests:. Zowel HTTP als HTTS zijn toegestaan.
+2. De Widevine-URL voor het ophalen van licenties voor testen: [https://drm-widevine-licensing.axtest.net/AcquireLicense](https://drm-widevine-licensing.axtest.net/AcquireLicense). Zowel HTTP als HTTS zijn toegestaan.
 
 ## <a name="azure-media-player-preparation"></a>Azure Media Player voorbereiding
 AMP v 1.4.0 ondersteunt het afspelen van AMS-inhoud die dynamisch wordt verpakt met PlayReady en Widevine DRM.
@@ -177,6 +177,7 @@ Er zijn natuurlijk meerdere manieren om de sleutel-ID op te halen. Een voor beel
     }
 
 ## <a name="summary"></a>Samenvatting
+
 Met de nieuwste toevoeging van Widevine-ondersteuning in zowel Azure Media Services Content Protection als Azure Media Player kunnen we streaming van DASH + multi-native-DRM (PlayReady + Widevine) implementeren met zowel de PlayReady-licentie service in de AMS-als Widevine-licentie server van Axinom voor de volgende moderne browsers:
 
 * Chrome
@@ -194,12 +195,16 @@ De volgende para meters zijn vereist in de Axinom Widevine-licentie server van d
 | URL voor Widevine-licentie aanschaf |Moet worden gebruikt bij het configureren van het leverings beleid voor assets voor streepje streaming (Zie [deze](media-services-axinom-integration.md#content-protection) sectie). |
 | Inhouds sleutel-ID |Moet worden opgenomen als onderdeel van de waarde van de claim van de toeslag van de JWT-token (Zie [deze](media-services-axinom-integration.md#jwt-token-generation) sectie). |
 
+## <a name="additional-notes"></a>Aanvullende opmerkingen
+
+* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>Bevestigingen
-We willen de volgende personen erkennen die hebben bijgedragen aan het maken van dit document: Kristjan Jõgi van Axinom, Mingfei Yan en Amit Rajput.
+### <a name="acknowledgments"></a>Erkenningen
+We willen graag de volgende personen erkennen die hebben bijgedragen aan het maken van dit document: Kristjan Jõgi van Axinom, Mingfei Yan en Amit Rajput.
 

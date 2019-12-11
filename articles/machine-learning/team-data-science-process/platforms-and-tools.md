@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8ad5c4cb4d17443144febd716391803064ccdad1
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 97dafe292ff3ed0ef5fa46eb895136e3b32e62c5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626364"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978506"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformen en hulpprogramma's voor data science-projecten
 
@@ -44,7 +44,7 @@ De data science virtual machine die wordt aangeboden op zowel Windows als Linux 
 - Power BI desktop voor Windows
 - SQL Server 2016 Developer Edition op Windows / Postgres op Linux
 
-Dit omvat ook **hulpprogramma's voor ML en AI** zoals xgboost, mxnet en Vowpal Wabbit.
+Het bevat ook **ml-en AI-hulpprogram ma's** zoals xgboost, Mxnet en Vowpal Wabbit.
 
 DSVM is momenteel beschikbaar in **Windows** en **Linux CentOS** besturingssystemen. Kies de grootte van uw DSVM (aantal CPU-kernen) en de hoeveelheid geheugen op basis van de behoeften van de data science-projecten die u van plan bent om uit te voeren op het. 
 
@@ -73,7 +73,7 @@ Zie voor meer informatie over Azure SQL Data Warehouse de [SQL Data Warehouse](h
 
 Azure data lake is als een bedrijfsbrede opslagruimte voor elk soort gegevens die zijn verzameld op één locatie, voordat u een formele vereisten of schema wordt opgelegd. Deze flexibiliteit kunt elk soort gegevens worden bewaard in een data lake, ongeacht het formaat of de structuur of hoe snel worden opgenomen. Organisaties kunnen vervolgens gebruiken voor Hadoop of geavanceerde analyses om te zoeken, patronen in deze data lakes. Datalakes kunnen ook dienen als een opslagplaats voor goedkopere gegevens voor te bereiden voordat de inrichting van de gegevens en u deze verplaatst naar een datawarehouse.
 
-Zie voor meer informatie over Azure Data Lake [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Zie voor meer informatie over het bouwen van een schaalbare end-to-end data science-oplossing met Azure Data Lake, [schaalbare Gegevenswetenschap in Azure Data Lake: Een end-to-end-overzicht](data-lake-walkthrough.md)
+Zie voor meer informatie over Azure Data Lake [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Zie voor meer informatie over het bouwen van een schaalbare end-to-end data science-oplossing met Azure Data Lake, [schaalbare Gegevenswetenschap in Azure Data Lake: een end-to-end-overzicht](data-lake-walkthrough.md)
 
 
 ## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Hive met Azure HDInsight (Hadoop)-clusters
@@ -124,28 +124,30 @@ Voer de volgende bash-opdracht uit om Git te installeren op Linux (CentOS) virtu
 
 Als u van machines voor Linux (CentOS gebruikmaakt) de git-opdrachten uitvoeren, moet u de openbare SSH-sleutel van uw computer toevoegen aan uw Azure DevOps-Services, zodat deze computer wordt herkend door het Azure DevOps-Services. Eerst moet u een openbare SSH-sleutel genereren en de sleutel toevoegen aan de openbare SSH-sleutels in de instellingenpagina van uw Azure DevOps-Services-beveiliging. 
 
-- Voer de volgende twee opdrachten voor het genereren van de SSH-sleutel: 
+1. Voer de volgende twee opdrachten voor het genereren van de SSH-sleutel: 
 
-        ssh-keygen
-        cat .ssh/id_rsa.pub
+   ```
+   ssh-keygen
+   cat .ssh/id_rsa.pub
+   ```
+   
+   ![Opdrachten voor het genereren van de SSH-sleutel](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
-![Opdrachten voor het genereren van de SSH-sleutel](./media/platforms-and-tools/resources-1-generate_ssh.png)
-
-- Kopieer de gehele ssh key inclusief *ssh-rsa*. 
-- Meld u aan bij uw Azure DevOps-Services. 
-- Klik op **< naam van uw\>**  in de rechterbovenhoek van de pagina en klik op **security**. 
+1. Kopieer de gehele ssh key inclusief *ssh-rsa*. 
+1. Meld u aan bij uw Azure DevOps-Services. 
+1. Klik op **< naam van uw\>**  in de rechterbovenhoek van de pagina en klik op **security**. 
     
-    ![Klik op uw naam en klik vervolgens op beveiliging](./media/platforms-and-tools/resources-2-user-setting.png)
+   ![Klik op uw naam en klik vervolgens op beveiliging](./media/platforms-and-tools/resources-2-user-setting.png)
 
-- Klik op **openbare SSH-sleutels**, en klikt u op **+ toevoegen**. 
+1. Klik op **openbare SSH-sleutels**, en klikt u op **+ toevoegen**. 
 
-    ![Klik op de openbare SSH-sleutels en vervolgens klikt u op + toevoegen](./media/platforms-and-tools/resources-3-add-ssh.png)
+   ![Klik op de openbare SSH-sleutels en vervolgens klikt u op + toevoegen](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-- Plak de ssh sleutel hebt gekopieerd in het tekstvak en opslaan.
+1. Plak de ssh sleutel hebt gekopieerd in het tekstvak en opslaan.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 End-to-end-scenario's die laten zien van alle de stappen in het proces voor het volledige **specifieke scenario's** worden ook gegeven. Ze worden weergegeven en die is gekoppeld met miniaturen beschrijvingen in de [voorbeeld walkthroughs](walkthroughs.md) onderwerp. Ze laten zien hoe u naar de cloud, on-premises hulpprogramma's en services combineren in een werkstroom of een pijplijn te maken van een intelligente toepassingen. 
 
-Zie voor meer voorbeelden stappen uitvoeren in het Team Data Science Process die gebruikmaken van Azure Machine Learning Studio, de [met Azure ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) leertraject.
+Voor voor beelden die laten zien hoe u de stappen in het team data Science process uitvoert met behulp van Azure Machine Learning Studio (klassiek), raadpleegt u het leer traject [van Azure ml](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) .

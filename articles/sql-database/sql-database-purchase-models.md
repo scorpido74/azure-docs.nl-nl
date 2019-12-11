@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: be223245c634b8e38dc5e4c89df4c265c22c0b57
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6dbe61c47a7323e2dec599d2f3c77453aa6f8d82
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821267"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973523"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Kiezen tussen de vCore en de DTU-aankoop modellen
 
@@ -129,7 +129,7 @@ Als u een bestaande on-premises of SQL Server werk belasting van virtuele machin
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Workloads die profiteren van een elastische groep resources
 
-Pools zijn zeer geschikt voor data bases met een gemiddelde en relatief onregelmatige piek gebruik. SQL Database evalueert automatisch het historische resource gebruik van data bases op een bestaande SQL Database-Server en raadt de juiste pool configuratie aan in de Azure Portal. Zie [Wanneer moet u rekening houden met een SQL database elastische pool?](sql-database-elastic-pool.md)voor meer informatie.
+Pools zijn zeer geschikt voor data bases met een gemiddelde en relatief onregelmatige piek gebruik. Zie [Wanneer moet u rekening houden met een SQL database elastische pool?](sql-database-elastic-pool.md)voor meer informatie.
 
 ## <a name="frequently-asked-questions-faqs"></a>Veelgestelde vragen (FAQ)
 

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Woorden opzoeken met tweetalige woorden lijst-Translator Text-API'
+title: 'Snelstartgids: woorden opzoeken met tweetalige woorden lijst-Translator Text-API'
 titleSuffix: Azure Cognitive Services
 description: In deze Quick Start leert u hoe u alternatieve vertalingen kunt ophalen voor een periode, en kunt u de voor beelden van gebruik van deze alternatieve vertalingen gebruiken met behulp van de Translator Text-API.
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 09/05/2019
+ms.date: 12/09/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: fcbf6878be53d7aa6bf9569da194b4e90f2b10db
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 42e883a7563072fca771482998bdcdbebec50ae9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827450"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975768"
 ---
-# <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Quickstart: Woorden opzoeken met een tweetalige woorden lijst
+# <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Snelstartgids: woorden opzoeken met tweetalige woorden lijst
 
 In deze Quick Start leert u hoe u alternatieve vertalingen kunt ophalen voor een periode, en kunt u de voor beelden van gebruik van deze alternatieve vertalingen gebruiken met behulp van de Translator Text-API.
 

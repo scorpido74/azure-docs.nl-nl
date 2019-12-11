@@ -1,6 +1,6 @@
 ---
 title: Gesimuleerd X. 509-apparaat met behulp van python inrichten voor Azure IoT Hub
-description: 'Quick Start: een gesimuleerd X. 509-apparaat maken en inrichten met behulp van python Device SDK voor IoT Hub Device Provisioning Service. In deze snelstart wordt gebruikgemaakt van afzonderlijke inschrijvingen.'
+description: 'Quick Start: een gesimuleerd X. 509-apparaat maken en inrichten met behulp van python-apparaat-SDK voor IoT Hub Device Provisioning Service (DPS). In deze snelstart wordt gebruikgemaakt van afzonderlijke inschrijvingen.'
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 0bd47de8862be4e66914b9748a00ce907acda526
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 75c604ebe6f0bee6427123652c7ea433b21e2956
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555509"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976482"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Quick Start: een gesimuleerd X. 509-apparaat maken en inrichten met behulp van python Device SDK voor IoT Hub Device Provisioning Service
 

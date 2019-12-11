@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 65775a9c7a6d66a088eccdfdb22ce7d6b01829d2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d6a17322c360040b8fa77ac243a1b568f0d10c1f
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925406"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996490"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Blob-opslag bindingen voor Azure Functions
 
@@ -463,7 +463,7 @@ Java script-en Java-functies laden de volledige Blob in C# het geheugen, en func
 
 ## <a name="trigger---polling"></a>Trigger - polling
 
-Als de BLOB-container die wordt bewaakt meer dan 10.000 blobs (in alle containers) bevat, scant de functions runtime de logboek bestanden om te kijken of er nieuwe of gewijzigde blobs zijn. Dit proces kan leiden tot vertragingen. Een functie wordt mogelijk pas na een paar minuten of langer geactiveerd nadat de blob is gemaakt.
+Polling werkt als een hybride tussen het inspecteren van Logboeken en het uitvoeren van periodieke container scans. Blobs worden gescand in groepen van 10.000 tegelijk met een vervolg token dat tussen intervallen wordt gebruikt.
 
 > [!WARNING]
 > Daarnaast [worden opslag logboeken gemaakt op basis van ' Best effort '](/rest/api/storageservices/About-Storage-Analytics-Logging) . Er is geen garantie dat alle gebeurtenissen worden vastgelegd. Onder bepaalde omstandigheden kunnen Logboeken worden gemist.

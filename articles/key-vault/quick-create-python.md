@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: eea929d68c824ac7cf8045aa6a7ce60430952d03
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: aeac3b5ab1894e4392152ff255d582c338ceff18
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546879"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972422"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Snelstartgids: Azure Key Vault-client bibliotheek voor python
 
@@ -123,7 +123,7 @@ Met de Azure Key Vault-client bibliotheek voor python kunt u sleutels en gerelat
 
 De volledige console-app is beschikbaar op https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
 
-## <a name="code-examples"></a>Code voorbeelden
+## <a name="code-examples"></a>Codevoorbeelden
 
 ### <a name="add-directives"></a>Instructies toevoegen
 
@@ -188,7 +188,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 Wanneer u deze niet meer nodig hebt, kunt u de Azure CLI of Azure PowerShell gebruiken om uw sleutel kluis en de bijbehorende resource groep te verwijderen.
 
 ```azurecli
-az group delete -g "myResourceGroup" -l "EastUS" 
+az group delete -g "myResourceGroup"
 ```
 
 ```azurepowershell

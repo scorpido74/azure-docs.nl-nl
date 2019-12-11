@@ -1,18 +1,18 @@
 ---
-title: Server concepten in Azure Database for PostgreSQL
-description: In dit artikel vindt u overwegingen en richt lijnen voor het configureren en beheren van Azure Database for PostgreSQL-servers.
+title: Table colocation-grootschalige (Citus)-Azure Database for PostgreSQL
+description: Verwante informatie samen opslaan voor snellere query's
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 4a5ebf810771efe49ee40e272d1fa4683140eda1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7e4073ec45f4c21f33d20924a9948e72f961c7f8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482748"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967334"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Tabel co-locatie in Azure Database for PostgreSQL – grootschalige (Citus)
 
@@ -132,7 +132,7 @@ WHERE tenant_id = 6 AND path LIKE '/blog%'
 GROUP BY page_id;
 ```
 
-Vanwege het filter en de koppeling op tenant_id, weet grootschalige (Citus) dat de volledige query kan worden beantwoord met behulp van de set met Shards die de gegevens voor die specifieke Tenant bevatten. Een enkel PostgreSQL-knoop punt kan de query in één stap beantwoorden.
+Vanwege het filter en de samen voeging van tenant_id, weet grootschalige (Citus) dat de volledige query kan worden beantwoord met behulp van de set met Shards die de gegevens voor die specifieke Tenant bevatten. Een enkel PostgreSQL-knoop punt kan de query in één stap beantwoorden.
 
 ![Betere query](media/concepts-hyperscale-colocation/colocation-better-query.png)
 

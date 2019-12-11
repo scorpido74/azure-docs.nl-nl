@@ -6,12 +6,12 @@ author: alexkarcher-msft
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: b86ea2367a17baa8c57b8d0c0331c0cd3cfbb481
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: aa2e0e8be8805187ec1f5b8ea6498e90e2d5a7c4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227103"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976873"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Een functie maken met behulp van Azure for students starter
 
@@ -19,7 +19,7 @@ In deze zelf studie maakt u een Hello World-functie in een Azure for students st
 
 Met micro soft *Azure for students starter* kunt u aan de slag met de Azure-producten die u nodig hebt om gratis te ontwikkelen in de Cloud. [Meer informatie over deze aanbieding vindt u hier.](https://azure.microsoft.com/offers/ms-azr-0144p/)
 
-Met Azure Functions kunt u uw code in een [serverloze](https://azure.microsoft.com/solutions/serverless/) omgeving uitvoeren zonder dat u eerst een virtuele machine moet maken of een webtoepassing moet publiceren. [Meer informatie over functies vindt u hier.](./functions-overview.md)
+Met Azure Functions kunt u uw code in een [serverloze](https://azure.microsoft.com/solutions/serverless/) omgeving uitvoeren zonder dat u eerst een virtuele machine moet maken of een webtoepassing publiceren. [Meer informatie over functies vindt u hier.](./functions-overview.md)
 
 ## <a name="create-a-function"></a>Een functie maken
 
@@ -121,7 +121,7 @@ In azure for student starter hebt u toegang tot de meeste functies van de Azure 
     * [Bekijk hier de talen die in hogere plannen worden ondersteund](supported-languages.md)
 * Windows is het enige besturings systeem dat wordt ondersteund.
 * De schaal is beperkt tot [één exemplaar van een gratis laag](https://azure.microsoft.com/pricing/details/app-service/windows/) dat elke dag maxi maal 60 minuten wordt uitgevoerd. U kunt serverlessly schalen van 0 naar 1 automatisch als HTTP-verkeer wordt ontvangen, maar niet verder.
-* Alleen [de runtime 2. x](functions-versions.md) wordt ondersteund.
+* Alleen [versie 2. x en hoger](functions-versions.md) van de functions-runtime wordt ondersteund.
 * Alle hulpprogram ma's voor ontwikkel aars worden ondersteund voor het bewerken en publiceren van functies. Dit omvat VS code, Visual Studio, de Azure CLI en de Azure Portal. Als u andere items dan de portal wilt gebruiken, moet u eerst een app in de portal maken en vervolgens die app als een implementatie doel in uw favoriete hulp programma kiezen.
 
 ## <a name="next-steps"></a>Volgende stappen

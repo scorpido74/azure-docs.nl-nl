@@ -1,31 +1,22 @@
 ---
 title: Functies in Azure Functions uitschakelen
-description: Meer informatie over het uitschakelen en inschakelen van functies in Azure Functions 1. x en 2. x.
+description: Meer informatie over het uitschakelen en inschakelen van functies in Azure Functions.
 ms.topic: conceptual
-ms.date: 08/05/2019
-ms.openlocfilehash: 7968580fcaa40575571a41f067fa74fbdc0a3a34
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/05/2019
+ms.openlocfilehash: bffb3136c77074ecd50e839fd7c73144ad910967
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233048"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970972"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Functies in Azure Functions uitschakelen
 
-In dit artikel wordt uitgelegd hoe u een functie in Azure Functions kunt uitschakelen. Als u een functie wilt *uitschakelen* , moet u ervoor zorgen dat de runtime de automatische trigger die voor de functie is gedefinieerd, negeert. Hoe u dat doet, is afhankelijk van de runtime versie en de programmeer taal:
+In dit artikel wordt uitgelegd hoe u een functie in Azure Functions kunt uitschakelen. Als u een functie wilt *uitschakelen* , moet u ervoor zorgen dat de runtime de automatische trigger die voor de functie is gedefinieerd, negeert. Zo kunt u voor komen dat een specifieke functie wordt uitgevoerd zonder de volledige functie-app te stoppen.
 
-* Functies 2. x:
-  * Eén manier voor alle talen
-  * Optionele manier voor C# class-bibliotheken
-* Functions 1. x:
-  * Script talen
-  * C#Class-bibliotheken
+De aanbevolen manier om een functie uit te scha kelen is door gebruik te maken van een app-instelling in de notatie `AzureWebJobs.<FUNCTION_NAME>.Disabled`. U kunt deze toepassings instelling op verschillende manieren maken en wijzigen, zoals met behulp van [Azure cli](/cli/azure/) en op het tabblad **beheren** van uw functie in de [Azure Portal](https://portal.azure.com). 
 
-## <a name="functions-2x---all-languages"></a>Functies 2. x-alle talen
-
-In functions 2. x, schakelt u een functie uit met behulp van een app-instelling in de notatie `AzureWebJobs.<FUNCTION_NAME>.Disabled`. U kunt deze toepassings instelling op verschillende manieren maken en wijzigen, zoals met behulp van [Azure cli](/cli/azure/) en op het tabblad **beheren** van uw functie in de [Azure Portal](https://portal.azure.com). 
-
-### <a name="azure-cli"></a>Azure-CLI
+## <a name="use-the-azure-cli"></a>Azure CLI gebruiken
 
 In azure CLI gebruikt u de opdracht [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) om de app-instelling te maken en te wijzigen. Met de volgende opdracht wordt een functie met de naam `QueueTrigger` uitgeschakeld door het maken van een app-instelling met de naam `AzureWebJobs.QueueTrigger.Disabled` deze instellen op `true`. 
 
@@ -43,52 +34,19 @@ az functionapp config appsettings set --name <myFunctionApp> \
 --settings AzureWebJobs.QueueTrigger.Disabled=false
 ```
 
-### <a name="portal"></a>Portal
+## <a name="use-the-portal"></a>De portal gebruiken
 
 U kunt ook de **functie status** switch op het tabblad **beheren** van de functie gebruiken. De switch werkt door het maken en verwijderen van de `AzureWebJobs.<FUNCTION_NAME>.Disabled` app-instelling.
 
 ![Functie status schakelaar](media/disable-function/function-state-switch.png)
 
-## <a name="functions-2x---c-class-libraries"></a>Functies 2. x- C# class-bibliotheken
+## <a name="other-methods"></a>Andere methoden
 
-In een functions 2. x-klassebibliotheek wordt u aangeraden de methode te gebruiken die geschikt is voor alle talen. Maar als u wilt, kunt u [het kenmerk uitschakelen gebruiken als in de functies 1. x](#functions-1x---c-class-libraries).
+Hoewel de instellings methode van de toepassing wordt aanbevolen voor alle talen en runtime versies, zijn er verschillende andere manieren om functies uit te scha kelen. Deze methoden, die variëren per taal en runtime versie, blijven behouden voor compatibiliteit met eerdere versies. 
 
-## <a name="functions-1x---scripting-languages"></a>Functions 1. x-script talen
+### <a name="c-class-libraries"></a>C#Class-bibliotheken
 
-Voor script talen als C# script en Java script gebruikt u de eigenschap `disabled` van het bestand *Function. json* om de runtime te laten weten dat er geen functie moet worden geactiveerd. Deze eigenschap kan worden ingesteld op `true` of op de naam van een app-instelling:
-
-```json
-{
-    "bindings": [
-        {
-            "type": "queueTrigger",
-            "direction": "in",
-            "name": "myQueueItem",
-            "queueName": "myqueue-items",
-            "connection":"MyStorageConnectionAppSetting"
-        }
-    ],
-    "disabled": true
-}
-```
-of 
-
-```json
-    "bindings": [
-        ...
-    ],
-    "disabled": "IS_DISABLED"
-```
-
-In het tweede voor beeld is de functie uitgeschakeld wanneer er een app-instelling met de naam IS_DISABLED is ingesteld op `true` of 1.
-
-U kunt het bestand bewerken in de Azure Portal of de schakel optie **status** op het tabblad **beheren** van de functie gebruiken. De portal-switch werkt door het bestand *Function. json* te wijzigen.
-
-![Functie status schakelaar](media/disable-function/function-state-switch.png)
-
-## <a name="functions-1x---c-class-libraries"></a>Functions 1. x C# -class-bibliotheken
-
-In een functions 1. x-klassebibliotheek gebruikt u een `Disable` kenmerk om te voor komen dat een functie wordt geactiveerd. U kunt het kenmerk zonder een constructor-para meter gebruiken, zoals wordt weer gegeven in het volgende voor beeld:
+In een Class Library-functie kunt u ook het kenmerk `Disable` gebruiken om te voor komen dat de functie wordt geactiveerd. U kunt het kenmerk zonder een constructor-para meter gebruiken, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```csharp
 public static class QueueFunctions
@@ -128,6 +86,39 @@ Met deze methode kunt u de functie in-en uitschakelen door de app-instelling te 
 > Hetzelfde geldt voor de **functie status** switch op het tabblad **beheren** , omdat deze werkt door het bestand *Function. json* te wijzigen.
 >
 > Houd er ook rekening mee dat de portal kan aangeven dat de functie is uitgeschakeld wanneer dat niet het geval is.
+
+### <a name="functions-1x---scripting-languages"></a>Functions 1. x-script talen
+
+In versie 1. x kunt u ook de eigenschap `disabled` van het bestand *Function. json* gebruiken om te bepalen dat de runtime geen functie moet activeren. Deze methode werkt alleen voor script talen zoals C# script en Java script. De eigenschap `disabled` kan worden ingesteld op `true` of op de naam van een app-instelling:
+
+```json
+{
+    "bindings": [
+        {
+            "type": "queueTrigger",
+            "direction": "in",
+            "name": "myQueueItem",
+            "queueName": "myqueue-items",
+            "connection":"MyStorageConnectionAppSetting"
+        }
+    ],
+    "disabled": true
+}
+```
+of 
+
+```json
+    "bindings": [
+        ...
+    ],
+    "disabled": "IS_DISABLED"
+```
+
+In het tweede voor beeld is de functie uitgeschakeld wanneer er een app-instelling met de naam IS_DISABLED is ingesteld op `true` of 1.
+
+U kunt het bestand bewerken in de Azure Portal of de schakel optie **status** op het tabblad **beheren** van de functie gebruiken. De portal-switch werkt door het bestand *Function. json* te wijzigen.
+
+![Functie status schakelaar](media/disable-function/function-state-switch.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

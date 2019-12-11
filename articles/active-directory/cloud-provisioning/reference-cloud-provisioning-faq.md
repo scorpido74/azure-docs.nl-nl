@@ -1,5 +1,5 @@
 ---
-title: Veelgestelde vragen over het inrichten van Clouds Azure AD Connect
+title: Veelgestelde vragen over Azure AD Connect-cloudinrichting
 description: In dit document worden veelgestelde vragen over het inrichten van Clouds beschreven.
 services: active-directory
 author: billmath
@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93c88b167884c455ffb995f35356b121bce8a207
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fbaafdce6f2510b58966f4b6c18e45a3fcd4a664
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793554"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997085"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Veelgestelde vragen over Azure Active Directory Connect
 
@@ -42,7 +42,7 @@ Ja. Cloud inrichting kan worden gebruikt om te synchroniseren vanuit meerdere Ac
 
 **V: hoe wordt de agent bijgewerkt?**
 
-De agents worden automatisch bijgewerkt door micro soft. Dit vermindert de last van IT om nieuwe agent versies te testen en te valideren. 
+De agents worden automatisch bijgewerkt door micro soft. Voor het IT-team vermindert dit de belasting van het testen en valideren van nieuwe agent versies. 
 
 **V: kan ik de automatische upgrade uitschakelen?**
 

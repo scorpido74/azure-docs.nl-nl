@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/26/2019
+ms.date: 12/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fcb3885446e534a2a6a5153545fd39fb14a02776
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4e5e0135e4ab56d319c78b7daeab9dd2e9d101f9
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850156"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996507"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integratie van broncodebeheer in Azure Automation
 
@@ -30,7 +30,7 @@ Azure Automation ondersteunt drie typen broncode beheer:
 
 * Een broncode beheer bibliotheek (GitHub of Azure opslag plaatsen)
 * Een [uitvoeren als-account](manage-runas-account.md)
-* Zorg ervoor dat u beschikt over de [nieuwste Azure-modules](automation-update-azure-modules.md) in uw Automation-account
+* Zorg ervoor dat u beschikt over de [nieuwste Azure-modules](automation-update-azure-modules.md) in uw Automation-account, inclusief de module **AzureRM. profile** . 
 
 > [!NOTE]
 > Synchronisatie taken van broncode beheer worden uitgevoerd onder het Automation-account van de gebruiker en worden gefactureerd tegen hetzelfde aantal als andere Automation-taken.

@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: ac198ed8eac6221831fbb280129b76e5fa4e3413
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f718bc17b987926f4324635f096d5983acdb63fc
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815768"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997272"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replicatie naar SQL Database afzonderlijke en gepoolde data bases
 
@@ -32,14 +32,17 @@ SQL Server replicatie kan worden geconfigureerd voor afzonderlijke en gepoolde d
 
 ## <a name="versions"></a>Versies  
 
-- De uitgever en Distributor moeten ten minste een van de volgende versies hebben:  
-- SQL Server 2017 (14. x)
-- SQL Server 2016 (13. x)
-- SQL Server 2014 (12. x) SP1 CU3
-- SQL Server 2014 (12. x) RTM CU10
-- SQL Server 2012 (11. x) SP2 CU8 of SP3
-- Het configureren van een replicatie met een oudere versie kan leiden tot een fout nummer MSSQL_REPL20084 (het proces kan geen verbinding maken met de abonnee.) en MSSQL_REPL40532 (kan de naam van de server \<niet openen > aangevraagd door de aanmelding. De aanmelding is mislukt.)  
-- Als u alle functies van Azure SQL Database wilt gebruiken, moet u de nieuwste versies van [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) en [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)gebruiken.  
+On-premises SQL Server uitgevers en distributeurs moeten (ten minste) een van de volgende versies gebruiken:  
+
+- SQL Server 2016 en hoger
+- SQL Server 2014 [RTM CU10 (12.0.4427.24)](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014) of [SP1 CU3 (12.0.2556.4)](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
+- SQL Server 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2) of [SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996)
+
+> [!NOTE]
+> Poging tot het configureren van een replicatie met een niet-ondersteunde versie kan resulteren in een fout nummer MSSQL_REPL20084 (het proces kan geen verbinding maken met de abonnee.) en MSSQL_REPL40532 (kan de naam van de server \<niet openen > aangevraagd door de aanmelding. De aanmelding is mislukt.)  
+
+Als u alle functies van Azure SQL Database wilt gebruiken, moet u de nieuwste versies van [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) en [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)gebruiken.  
+
   
 ## <a name="remarks"></a>Opmerkingen
 
@@ -106,7 +109,7 @@ De volgende opties worden niet ondersteund voor Azure SQL Database-abonnementen:
 Maak een publicatie en een push-abonnement. Zie voor meer informatie:
   
 - [Een publicatie maken](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Maak een push-abonnement](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) met behulp van de naam van de Azure SQL database-server als de abonnee (bijvoorbeeld **N'azuresqldbdns. data base. Windows. net**) en de naam van de Azure-SQL database als de doel database (bijvoorbeeld **AdventureWorks** ).  
+- [Maak een push-abonnement](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) met behulp van de naam van de Azure SQL database-server als de abonnee (bijvoorbeeld **N'azuresqldbdns. data base. Windows. net**) en de naam van de Azure-SQL database als de doel database (bijvoorbeeld **AdventureWorks**).  
 
 ## <a name="see-also"></a>Zie ook  
 

@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3cbb6afb96ccea32aa78d1f587377e5d67e1a5b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: bbbe882acda532a54333ca8013693121d5b677b7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381028"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964086"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Beveiligings beleid voor apps vereisen voor toegang tot Cloud-apps met voorwaardelijke toegang (preview)
 
-Uw werk nemers gebruiken mobiele apparaten voor zowel privé-als werk taken. Hoewel uw werk nemers productief kunnen zijn, moet u ook gegevens verlies voor komen. Met Azure Active Directory (Azure AD) voorwaardelijke toegang kunt u uw bedrijfs gegevens beveiligen door de toegang tot uw Cloud-apps te beperken. Gebruik eerst client-apps met een app-beveiligings beleid.
+Uw werknemers gebruiken mobiele apparaten voor zowel privé- als werktaken. Hoewel uw werk nemers productief kunnen zijn, moet u ook gegevens verlies voor komen. Met Azure Active Directory (Azure AD) voorwaardelijke toegang kunt u uw bedrijfs gegevens beveiligen door de toegang tot uw Cloud-apps te beperken. Gebruik eerst client-apps met een app-beveiligings beleid.
 
 In dit artikel wordt uitgelegd hoe u beleid voor voorwaardelijke toegang kunt configureren waarvoor een app-beveiligings beleid is vereist voordat toegang tot gegevens wordt verleend.
 
@@ -330,7 +330,7 @@ Er zijn beveiligings beleidsregels voor intune-apps vereist voordat toegang tot 
 
 ### <a name="configuration"></a>Configuratie
 
-**Stap 1: een beleid voor voorwaardelijke toegang voor Azure AD configureren voor Exchange Online**
+**Stap 1: een beleid voor voorwaardelijke toegang voor Azure AD configureren voor Exchange Online en share point online**
 
 Configureer voor het beleid voor voorwaardelijke toegang in deze stap de volgende onderdelen:
 
@@ -338,7 +338,7 @@ Configureer voor het beleid voor voorwaardelijke toegang in deze stap de volgend
 
 1. Voer de naam van het beleid voor voorwaardelijke toegang in.
 1. Selecteer onder **toewijzingen**in **gebruikers en groepen**ten minste één gebruiker of groep voor elk beleid voor voorwaardelijke toegang.
-1. Selecteer **Office 365 Exchange Online**in **Cloud-apps**. 
+1. Selecteer in **Cloud**-apps **Office 365 Exchange online** en **Office 365 share point online**. 
 
    ![Voorwaardelijke toegang](./media/app-protection-based-conditional-access/02.png)
 

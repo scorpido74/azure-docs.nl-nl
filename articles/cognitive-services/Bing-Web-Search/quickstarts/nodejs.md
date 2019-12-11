@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Een zoekopdracht op internet uitvoeren met Node.js - Bing Webzoekopdrachten-REST API'
+title: 'Quick Start: een webzoekopdracht uitvoeren met behulp van node. js-Bing Web Search REST API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen naar de REST API van Bing Web Search te verzenden via Node.js en een JSON-antwoord te ontvangen
 services: cognitive-services
@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 95a27ff17ca74f930fc1a739c0eb94a90bd82ec4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f45b6ce402a5f61faeabd1534d7e3562af81294c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60651063"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973863"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Quickstart: Zoeken op internet met behulp van de REST API voor Bing Web Search en Node.js
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Quick Start: zoeken op internet met behulp van de Bing Web Search REST API en node. js
 
-Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en het JSON-antwoord te ontvangen. Deze Node.js-toepassing een zoekaanvraag verzendt naar de API en het antwoord. Hoewel deze toepassing in JavaScript is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Gebruik deze quickstart om voor het eerst de Bing Web Search-API aan te roepen en het JSON-antwoord te ontvangen. Met deze node. js-toepassing wordt een zoek opdracht naar de API verzonden en wordt het antwoord weer gegeven. Hoewel deze toepassing in JavaScript is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u verdergaat met deze snelstart moet u beschikken over:
+U moet over het volgende beschikken voordat u verdergaat met deze snelstartgids:
 
 * [Node.js 6](https://nodejs.org/en/download/) of later
 * Een abonnementssleutel
@@ -44,7 +44,7 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>Abonnementssleutel instellen
 
-Dit codefragment gebruikt de omgevingsvariabele `AZURE_SUBSCRIPTION_KEY` voor het opslaan van de abonnementssleutel, een goede gewoonte om te voorkomen dat uw sleutels per ongeluk worden weergegeven wanneer u code implementeert. Ga naar de [pagina van uw API's](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7) om te controleren of de abonnementssleutel van uw.
+Dit codefragment gebruikt de omgevingsvariabele `AZURE_SUBSCRIPTION_KEY` voor het opslaan van de abonnementssleutel, een goede gewoonte om te voorkomen dat uw sleutels per ongeluk worden weergegeven wanneer u code implementeert. Ga naar de [pagina uw api's](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7) om uw abonnements sleutel op te zoeken.
 
 Als u niet bekend bent met het gebruik van omgevingsvariabelen, of als u deze app zo snel mogelijk wilt uitvoeren, kunt u `process.env['AZURE_SUBSCRIPTION_KEY']` vervangen door uw abonnementssleutel die is ingesteld als een tekenreeks.
 
@@ -57,7 +57,7 @@ if (!SUBSCRIPTION_KEY) {
 
 ## <a name="create-a-function-to-make-the-request"></a>Een functie maken voor het versturen van de aanvraag
 
-Met deze functie maakt u een beveiligde GET-aanvraag, waarbij de zoekopdracht als een queryparameter wordt opgeslagen in het pad. `encodeURIComponent` wordt gebruikt als escape voor ongeldige tekens, en de abonnementssleutel wordt doorgegeven in een header. De callback ontvangt een [respons](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse) die zich abonneert op de gebeurtenis `data` om de JSON-hoofdtekst te aggregeren, op `error` om eventuele problemen vast te leggen en op `end` om te weten wanneer het bericht moet worden beschouwd als voltooid. Als de aanroep is voltooid, worden de interessante headers en hoofdtekst weergegeven door de app. U kunt experimenteren met de kleuren en de diepte instellen op basis van uw voorkeur. Een diepte van `1` biedt een goed overzicht van het antwoord.
+Met deze functie maakt u een beveiligde GET-aanvraag, waarbij de zoekopdracht als een queryparameter wordt opgeslagen in het pad. `hostname` kunnen het globale eind punt hieronder zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.  `encodeURIComponent` wordt gebruikt als escape voor ongeldige tekens, en de abonnementssleutel wordt doorgegeven in een header. De callback ontvangt een [respons](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse) die zich abonneert op de gebeurtenis `data` om de JSON-hoofdtekst te aggregeren, op `error` om eventuele problemen vast te leggen en op `end` om te weten wanneer het bericht moet worden beschouwd als voltooid. Als de aanroep is voltooid, worden de interessante headers en hoofdtekst weergegeven door de app. U kunt experimenteren met de kleuren en de diepte instellen op basis van uw voorkeur. Een diepte van `1` biedt een goed overzicht van het antwoord.
 
 ```javascript
 function bingWebSearch(query) {
@@ -269,6 +269,6 @@ Antwoorden afkomstig van de Bing Webzoekopdrachten-API worden geretourneerd in d
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie voor app met één pagina voor Bing Web Search](../tutorial-bing-web-search-single-page-app.md)
+> [Zelfstudie voor app met één pagina voor Bing Web Search ](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

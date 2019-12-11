@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: 3b56747d9bc8c8ae5884d4fb654c20d49527fed5
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 126700e6290650221a9cb9711b22472301409fca
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186076"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974169"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Zelf studie: video versleutelen met AES-128 en de key delivery service gebruiken
 
@@ -32,7 +32,7 @@ U kunt elke asset met meerdere versleutelingstypen versleutelen (AES-128, PlayRe
 
 De uitvoer van het voor beeld dit artikel bevat een URL naar de Azure Media Player, manifest-URL en het AES-token dat nodig is voor het afspelen van de inhoud. In het voor beeld wordt de verval datum van het token van de JSON Web Token (JWT) ingesteld op 1 uur. U kunt een browser openen en de resulterende URL plakken om de Azure Media Player demo pagina te starten met de URL en het token die u hebt ingevuld, al in de volgende indeling: ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```.
 
-In deze handleiding ontdekt u hoe u:
+In deze zelfstudie ontdekt u hoe u:
 
 > [!div class="checklist"]
 > * Down load het [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) -voor beeld dat wordt beschreven in het artikel.
@@ -166,6 +166,10 @@ az group delete --name amsResourceGroup
 ## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
 Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+
+## <a name="additional-notes"></a>Aanvullende opmerkingen
+
+* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="next-steps"></a>Volgende stappen
 

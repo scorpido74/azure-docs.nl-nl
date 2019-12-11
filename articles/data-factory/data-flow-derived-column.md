@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
-ms.openlocfilehash: ce774868acc281f769e7f2991472e7d2a5da9739
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c2d4c9b089a6673a5cff716d2901cc2b9483ede1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930400"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972248"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Afgeleide kolom transformatie bij toewijzing van gegevens stroom
 
@@ -27,6 +27,16 @@ Als u een bestaande kolom wilt overschrijven, selecteert u deze via de vervolg k
 Beweeg de muis aanwijzer over een bestaande afgeleide kolom en klik op het plus pictogram om extra afgeleide kolommen toe te voegen. Kies **kolom toevoegen** of een **kolom patroon toevoegen**. Kolom patronen kunnen handig zijn als uw kolom namen van uw bronnen variabel zijn. Zie [kolom patronen](concepts-data-flow-column-pattern.md)voor meer informatie.
 
 ![Nieuwe afgeleide kolom selectie](media/data-flow/columnpattern.png "Nieuwe afgeleide kolom selectie")
+
+## <a name="build-schemas-in-output-schema-pane"></a>Schema's maken in het deel venster uitvoer schema
+
+De kolommen die u wilt wijzigen en toevoegen aan uw schema worden weer gegeven in het deel venster uitvoer schema. U kunt hier interactief eenvoudige en complexe gegevens structuren bouwen. Selecteer **kolom toevoegen**om extra velden toe te voegen. Selecteer **subkolom toevoegen**om hiërarchieën te bouwen.
+
+![Subkolom toevoegen](media/data-flow/addsubcolumn.png "Subkolom toevoegen")
+
+Zie voor meer informatie over het verwerken van complexe typen in gegevens stroom [JSON handling in mapping data flow](concepts-data-flow-json.md)
+
+![Complexe kolom toevoegen](media/data-flow/complexcolumn.png "Kolommen toevoegen")
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 

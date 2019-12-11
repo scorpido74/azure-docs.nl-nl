@@ -11,19 +11,19 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 10a150a64a058a4bf346f07e2ef298c974641256
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 4ef1249a601334cc198662b90da95623247190e7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901306"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978182"
 ---
 # <a name="collect-data-for-models-in-production"></a>Verzamelen van gegevens voor modellen in productie
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 >[!IMPORTANT]
-> De Azure Machine Learning monitoring-SDK wordt binnenkort ingetrokken. De SDK is nog steeds geschikt voor ontwikkel aars die gegevens drift in modellen controleren. Maar de meeste ontwikkel aars moeten de vereenvoudigde [gegevens bewaking gebruiken met Application Insights](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights).
+> De Azure Machine Learning monitoring-SDK wordt binnenkort ingetrokken. De SDK is nog steeds geschikt voor ontwikkel aars die momenteel de SDK gebruiken om gegevens drift in modellen te bewaken. Voor nieuwe klanten raden wij u echter aan de vereenvoudigde [gegevens bewaking met Application Insights](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)te gebruiken.
 
 In dit artikel wordt uitgelegd hoe u invoer model gegevens van Azure Machine Learning kunt verzamelen. Ook wordt uitgelegd hoe u de invoer gegevens implementeert in een AKS-cluster (Azure Kubernetes service) en de uitvoer gegevens opslaat in Azure Blob-opslag.
 

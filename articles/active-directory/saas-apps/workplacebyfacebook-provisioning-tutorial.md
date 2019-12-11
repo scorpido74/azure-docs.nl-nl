@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee091d1c8f0f477354f6bb422d041278ec5668e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c10171ae59772f58411997d16dc4ad1472e94e29
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574252"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996932"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Zelf studie: werk plek op Facebook configureren voor automatische gebruikers inrichting
 
@@ -34,7 +34,7 @@ U hebt het volgende nodig om Azure AD-integratie te configureren met Workplace b
 - Een werk plek met een Facebook-abonnement dat is ingeschakeld voor eenmalige aanmelding
 
 > [!NOTE]
-> Als u de stappen in deze zelfstudie wilt testen, is het raadzaam om niet de  productieomgeving te gebruiken.
+> Als u de stappen in deze zelfstudie wilt testen, is het raadzaam om niet de productieomgeving te gebruiken.
 
 Volg deze aanbevelingen als u de stappen in deze zelfstudie wilt testen:
 
@@ -88,7 +88,7 @@ Azure AD biedt ondersteuning voor de mogelijkheid om automatisch de account gege
 
 9. Selecteer in de sectie toewijzingen de optie **Azure Active Directory gebruikers op de werk plek synchroniseren met Facebook.**
 
-10. Controleer in de sectie **kenmerk toewijzingen** de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD op werk plek via Facebook. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om de gebruikers accounts in werk plek van Facebook te vergelijken voor update bewerkingen. Selecteer de knop Opslaan om eventuele wijzigingen door te voeren.
+10. Controleer in de sectie **kenmerk toewijzingen** de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD op werk plek via Facebook. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om de gebruikers accounts in werk plek van Facebook te vergelijken voor update bewerkingen. Selecteer de knop Opslaan om door te voeren van eventuele wijzigingen.
 
 11. Als u de Azure AD-inrichtings service voor werk plek wilt inschakelen op Facebook, wijzigt **u de** **inrichtings status** in in het gedeelte **instellingen**
 
@@ -99,7 +99,7 @@ Zie [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-pr
 U kunt nu een test account maken. Wacht Maxi maal 20 minuten om te controleren of het account is gesynchroniseerd op werk plek via Facebook.
 
 > [!NOTE]
-> We werken nauw samen met de werk plek van het Facebook-team om te controleren of de Azure AD-toepassing is goedgekeurd en voldoet aan de nieuwe richt lijnen. De deadline voor de werk plek op Facebook is 16 december en we verwachten dat. Er wordt op dat moment geen werk van klanten verwacht. Op 28-februari-2020 moeten klanten overstappen op de nieuwe integratie. Er wordt hier een bericht weer gegeven zodra het migratie traject beschikbaar is.    
+> De Azure AD-toepassing van derden in werk plek op Facebook is goedgekeurd. Klanten hebben op 16 december geen onderbreking van de service. Er wordt een opmerking weer gegeven in de beheer console van de Facebook-beheerder met een deadline van 28-februari-2020, wanneer u moet overstappen op de nieuwe toepassing. We zijn bezig om de overgang zo eenvoudig mogelijk te laten verlopen en bieden hier een update voor de overgang per einde van de maand.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 

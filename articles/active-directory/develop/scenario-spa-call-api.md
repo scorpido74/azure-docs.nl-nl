@@ -1,6 +1,6 @@
 ---
-title: Toepassing met één pagina (een web-API aanroepen)-micro soft Identity-platform
-description: Meer informatie over het bouwen van een toepassing met één pagina (een web-API aanroepen)
+title: Een app met één pagina bouwen die een web-API aanroept-micro soft Identity-platform | Azure
+description: Meer informatie over het bouwen van een toepassing met één pagina die een web-API aanroept
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -15,12 +15,12 @@ ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4170a6642d35802581b5d1ff28eb802a6eb3482b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 1171d8c3bc28c7b325cc8daf6cc072965363339c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766154"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965328"
 ---
 # <a name="single-page-application-call-a-web-api"></a>Toepassing met één pagina: een web-API aanroepen
 

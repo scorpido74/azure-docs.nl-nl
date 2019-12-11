@@ -1,16 +1,16 @@
 ---
-title: Ondersteunings matrix voor Azure VM-back-up
+title: Ondersteuningsmatrix voor back-up van Azure-VM
 description: Hierin wordt een overzicht gegeven van de ondersteunings instellingen en beperkingen bij het maken van back-ups van virtuele Azure-machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 85a32dd9ea875bdfc73d7e4a9515e5cfe0e2da42
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: fa4e01def8db4e5fef32b644d198bad1e9beab27
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559033"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996167"
 ---
-# <a name="support-matrix-for-azure-vm-backup"></a>Ondersteunings matrix voor Azure VM-back-up
+# <a name="support-matrix-for-azure-vm-backup"></a>Ondersteuningsmatrix voor back-up van Azure-VM
 
 U kunt de [Azure backup-service](backup-overview.md) gebruiken voor het maken van een back-up van on-premises machines en werk belastingen, en virtuele machines van Azure (vm's). Dit artikel bevat een overzicht van de ondersteunings instellingen en beperkingen bij het maken van back-ups van virtuele Azure-machines met Azure Backup.
 
@@ -44,7 +44,7 @@ Back-up van beheerde schijven maken na inschakelen van vergren deling van resour
 Back-upbeleid voor een VM wijzigen | Ondersteund.<br/><br/> Er wordt een back-up van de VM gemaakt met behulp van de instellingen voor het plannen en bewaren van het nieuwe beleid. Als de Bewaar instellingen worden uitgebreid, worden de bestaande herstel punten gemarkeerd en bewaard. Als ze worden gereduceerd, worden de bestaande herstel punten verwijderd bij de volgende opschoon taak en uiteindelijk gewist.
 Een back-uptaak annuleren| Ondersteund tijdens het momentopname proces.<br/><br/> Niet ondersteund wanneer de moment opname wordt overgedragen naar de kluis.
 Back-ups maken van de VM naar een andere regio of een ander abonnement |Wordt niet ondersteund.
-Back-ups per dag (via de Azure VM-extensie) | Eén geplande back-up per dag.<br/><br/> De service staat Maxi maal negen back-ups op aanvraag per dag toe, maar micro soft raadt u aan om Maxi maal vier dagelijkse back-ups op aanvraag te ondersteunen.
+Back-ups per dag (via de Azure VM-extensie) | Eén geplande back-up per dag.<br/><br/>De Azure Backup-service ondersteunt Maxi maal negen back-ups op aanvraag per dag, maar micro soft raadt niet meer dan vier dagelijkse back-ups op aanvraag aan om de beste prestaties te garanderen.
 Back-ups per dag (via de MARS-agent) | Drie geplande back-ups per dag.
 Back-ups per dag (via DPM/MABS) | Twee geplande back-ups per dag.
 Maandelijkse/jaarlijkse back-up| Niet ondersteund bij het maken van een back-up met de Azure VM-extensie. Alleen dagelijks en wekelijks worden ondersteund.<br/><br/> U kunt het beleid zo instellen dat dagelijks/wekelijks back-ups worden bewaard voor een maandelijks/jaarlijks Bewaar periode.
@@ -146,7 +146,7 @@ Back-ups maken van Vm's die zijn geïmplementeerd vanuit [Azure Marketplace](htt
 Back-ups maken van Vm's die zijn geïmplementeerd vanuit een aangepaste installatie kopie (derden) |Ondersteund.<br/><br/> Op de VM moet een ondersteund besturings systeem worden uitgevoerd.<br/><br/> Bij het herstellen van bestanden op de VM kunt u alleen herstellen naar een compatibel besturings systeem (geen besturings systeem dat ouder of later is).
 Back-ups maken van virtuele machines die zijn gemigreerd naar Azure| Ondersteund.<br/><br/> Als u een back-up wilt maken van de VM, moet de VM-agent op de gemigreerde computer zijn geïnstalleerd.
 Back-up van multi-VM-consistentie | Azure Backup biedt geen consistentie van gegevens en toepassingen op meerdere Vm's.
-Back-up met [Diagnostische instellingen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)  | Niet-ondersteunde. <br/><br/> Als het herstellen van de virtuele machine van Azure met Diagnostische instellingen wordt geactiveerd met de optie [nieuwe maken](backup-azure-arm-restore-vms.md#create-a-vm) , mislukt de herstel bewerking.
+Back-up met [Diagnostische instellingen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)  | Niet ondersteund. <br/><br/> Als het herstellen van de virtuele machine van Azure met Diagnostische instellingen wordt geactiveerd met de optie [nieuwe maken](backup-azure-arm-restore-vms.md#create-a-vm) , mislukt de herstel bewerking.
 Herstellen van op zones vastgemaakte Vm's | Ondersteund (voor VM waarvan een back-up is gemaakt na 2019 januari en waar de [beschikbaarheids zone](https://azure.microsoft.com/global-infrastructure/availability-zones/) beschikbaar is).<br/><br/>We ondersteunen momenteel het herstellen naar dezelfde zone die is vastgemaakt in Vm's. Als de zone echter niet beschikbaar is, mislukt de herstel bewerking.
 Gen2 Vm's | Ondersteund <br> Azure Backup ondersteunt het maken van back-ups en het herstellen van [Gen2-vm's](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/). Wanneer deze Vm's worden hersteld vanaf het herstel punt, worden ze teruggezet als [Gen2 vm's](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/).
 

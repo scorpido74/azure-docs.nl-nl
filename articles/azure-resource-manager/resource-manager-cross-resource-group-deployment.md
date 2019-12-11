@@ -2,26 +2,24 @@
 title: '& Resource groep voor het implementeren van resources voor meerdere abonnementen'
 description: Laat zien hoe u tijdens de implementatie meer dan één Azure-abonnement en-resource groep kunt bereiken.
 ms.topic: conceptual
-ms.date: 06/02/2018
-ms.openlocfilehash: 99c534e1c51dcdf32c2b3a3b779c01d71b8d0c24
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 12/09/2019
+ms.openlocfilehash: 0754895215384f76b1cb44224f3ba06c80181827
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149550"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978761"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Azure-resources implementeren voor meer dan één abonnement of resource groep
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-Doorgaans implementeert u alle resources in uw sjabloon tot één [resource groep](resource-group-overview.md). Er zijn echter scenario's waarin u een set resources samen wilt implementeren, maar deze wilt plaatsen in verschillende resource groepen of-abonnementen. U kunt bijvoorbeeld de virtuele machine van de back-up voor Azure Site Recovery implementeren in een afzonderlijke resource groep en locatie. Met Resource Manager kunt u geneste sjablonen gebruiken om verschillende abonnementen en resource groepen te richten dan het abonnement en de resource groep die worden gebruikt voor de bovenliggende sjabloon.
+Doorgaans implementeert u alle resources in uw sjabloon tot één [resource groep](resource-group-overview.md). Er zijn echter scenario's waarin u een set resources samen wilt implementeren, maar deze wilt plaatsen in verschillende resource groepen of-abonnementen. U kunt bijvoorbeeld de virtuele machine van de back-up voor Azure Site Recovery implementeren in een afzonderlijke resource groep en locatie. Met Resource Manager kunt u geneste sjablonen gebruiken om meer dan één abonnement en resource groep te bereiken.
 
 > [!NOTE]
 > U kunt implementeren in slechts vijf resource groepen in één implementatie. Deze beperking betekent meestal dat u kunt implementeren in één resource groep die is opgegeven voor de bovenliggende sjabloon en Maxi maal vier resource groepen in geneste of gekoppelde implementaties. Als uw bovenliggende sjabloon alleen geneste of gekoppelde sjablonen bevat en zelf geen resources implementeert, kunt u Maxi maal vijf resource groepen toevoegen in geneste of gekoppelde implementaties.
 
-## <a name="specify-a-subscription-and-resource-group"></a>Een abonnement en een resource groep opgeven
+## <a name="specify-subscription-and-resource-group"></a>Abonnement en resource groep opgeven
 
-Als u een andere resource wilt instellen, gebruikt u een geneste of gekoppelde sjabloon. Het resource type `Microsoft.Resources/deployments` bevat para meters voor `subscriptionId` en `resourceGroup`. Met deze eigenschappen kunt u een ander abonnement en een andere resource groep voor de geneste implementatie opgeven. Alle resource groepen moeten bestaan voordat u de implementatie uitvoert. Als u de abonnements-ID of de resource groep niet opgeeft, wordt het abonnement en de resource groep van de bovenliggende sjabloon gebruikt.
+Als u een andere resource groep of een ander abonnement wilt instellen, gebruikt u een [geneste of gekoppelde sjabloon](resource-group-linked-templates.md). Het resource type `Microsoft.Resources/deployments` bevat para meters voor `subscriptionId` en `resourceGroup`, waarmee u het abonnement en de resource groep voor de geneste implementatie kunt opgeven. Als u de abonnements-ID of de resource groep niet opgeeft, wordt het abonnement en de resource groep van de bovenliggende sjabloon gebruikt. Alle resource groepen moeten bestaan voordat u de implementatie uitvoert.
 
 Het account dat u gebruikt om de sjabloon te implementeren, moet machtigingen hebben om te implementeren naar de opgegeven abonnements-ID. Als het opgegeven abonnement bestaat in een andere Azure Active Directory Tenant, moet u [gast gebruikers toevoegen vanuit een andere map](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
 
@@ -42,7 +40,7 @@ Als u een andere resource groep en een ander abonnement wilt opgeven, gebruikt u
 
 Als uw resource groepen zich in hetzelfde abonnement bevinden, kunt u de **abonnements** waarde verwijderen.
 
-In het volgende voor beeld worden twee opslag accounts geïmplementeerd: één in de resource groep die is opgegeven tijdens de implementatie en één in een resource groep die is opgegeven in de para meter `secondResourceGroup`:
+In het volgende voor beeld worden twee opslag accounts geïmplementeerd. Het eerste opslag account wordt geïmplementeerd naar de resource groep die tijdens de implementatie is opgegeven. Het tweede opslag account wordt geïmplementeerd naar de resource groep die is opgegeven in de para meters `secondResourceGroup` en `secondSubscriptionID`:
 
 ```json
 {
@@ -70,6 +68,18 @@ In het volgende voor beeld worden twee opslag accounts geïmplementeerd: één i
         "secondStorageName": "[concat(parameters('storagePrefix'), uniqueString(parameters('secondSubscriptionID'), parameters('secondResourceGroup')))]"
     },
     "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[variables('firstStorageName')]",
+            "apiVersion": "2017-06-01",
+            "location": "[resourceGroup().location]",
+            "sku":{
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {
+            }
+        },
         {
             "apiVersion": "2017-05-10",
             "name": "nestedTemplate",
@@ -100,18 +110,6 @@ In het volgende voor beeld worden twee opslag accounts geïmplementeerd: één i
                 },
                 "parameters": {}
             }
-        },
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('firstStorageName')]",
-            "apiVersion": "2017-06-01",
-            "location": "[resourceGroup().location]",
-            "sku":{
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {
-            }
         }
     ]
 }
@@ -119,54 +117,11 @@ In het volgende voor beeld worden twee opslag accounts geïmplementeerd: één i
 
 Als u `resourceGroup` instelt op de naam van een resource groep die niet bestaat, mislukt de implementatie.
 
-## <a name="use-the-resourcegroup-and-subscription-functions"></a>De functies resourceGroup () en Subscription () gebruiken
+Als u de voor gaande sjabloon wilt testen en de resultaten wilt weer geven, gebruikt u Power shell of Azure CLI.
 
-Voor implementaties van meerdere resource groepen worden de functies [resourceGroup ()](resource-group-template-functions-resource.md#resourcegroup) en [Subscription ()](resource-group-template-functions-resource.md#subscription) verschillend omgezet op basis van de manier waarop u de geneste sjabloon opgeeft. 
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Als u één sjabloon in een andere sjabloon insluit, worden de functies in de geneste sjabloon omgezet in de bovenliggende resource groep en het-abonnement. Een Inge sloten sjabloon maakt gebruik van de volgende indeling:
-
-```json
-"apiVersion": "2017-05-10",
-"name": "embeddedTemplate",
-"type": "Microsoft.Resources/deployments",
-"resourceGroup": "crossResourceGroupDeployment",
-"properties": {
-    "mode": "Incremental",
-    "template": {
-        ...
-        resourceGroup() and subscription() refer to parent resource group/subscription
-    }
-}
-```
-
-Als u een koppeling naar een afzonderlijke sjabloon maakt, worden de functies in de gekoppelde sjabloon omgezet in de geneste resource groep en het gegroepeerde abonnement. Een gekoppelde sjabloon maakt gebruik van de volgende indeling:
-
-```json
-"apiVersion": "2017-05-10",
-"name": "linkedTemplate",
-"type": "Microsoft.Resources/deployments",
-"resourceGroup": "crossResourceGroupDeployment",
-"properties": {
-    "mode": "Incremental",
-    "templateLink": {
-        ...
-        resourceGroup() and subscription() in linked template refer to linked resource group/subscription
-    }
-}
-```
-
-## <a name="example-templates"></a>Voorbeeldsjablonen
-
-De volgende sjablonen illustreren meerdere implementaties van resource groepen. Scripts voor het implementeren van de sjablonen worden weer gegeven na de tabel.
-
-|Template  |Beschrijving  |
-|---------|---------|
-|[Sjabloon voor meerdere abonnementen](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) |Hiermee wordt één opslag account geïmplementeerd in één resource groep en één opslag account naar een tweede resource groep. Neem een waarde op voor de abonnements-ID wanneer de tweede resource groep zich in een ander abonnement bevindt. |
-|[Sjabloon voor eigenschappen van meerdere bron groepen](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) |Laat zien hoe de `resourceGroup()` functie wordt opgelost. Er worden geen resources geïmplementeerd. |
-
-### <a name="powershell"></a>PowerShell
-
-Voor Power shell, voor het implementeren van twee opslag accounts voor twee resource groepen in **hetzelfde abonnement**, gebruikt u:
+Als u twee opslag accounts wilt implementeren voor twee resource groepen in **hetzelfde abonnement**, gebruikt u:
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -183,7 +138,7 @@ New-AzResourceGroupDeployment `
   -secondStorageLocation eastus
 ```
 
-Voor Power shell, voor het implementeren van twee opslag accounts op **twee abonnementen**, gebruikt u:
+Als u twee opslag accounts wilt implementeren op **twee abonnementen**, gebruikt u:
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -207,52 +162,9 @@ New-AzResourceGroupDeployment `
   -secondSubscriptionID $secondSub
 ```
 
-Gebruik voor Power shell om te testen hoe het **resource groeps object** wordt omgezet voor de bovenliggende sjabloon, inline sjabloon en gekoppelde sjabloon:
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```azurepowershell-interactive
-New-AzResourceGroup -Name parentGroup -Location southcentralus
-New-AzResourceGroup -Name inlineGroup -Location southcentralus
-New-AzResourceGroup -Name linkedGroup -Location southcentralus
-
-New-AzResourceGroupDeployment `
-  -ResourceGroupName parentGroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
-```
-
-In het vorige voor beeld **parentRG** en **InlineRG** omgezet in **parentGroup**. **linkedRG** wordt omgezet in **linkedGroup**. De uitvoer van het vorige voor beeld is:
-
-```powershell
- Name             Type                       Value
- ===============  =========================  ==========
- parentRG         Object                     {
-                                               "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
-                                               "name": "parentGroup",
-                                               "location": "southcentralus",
-                                               "properties": {
-                                                 "provisioningState": "Succeeded"
-                                               }
-                                             }
- inlineRG         Object                     {
-                                               "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
-                                               "name": "parentGroup",
-                                               "location": "southcentralus",
-                                               "properties": {
-                                                 "provisioningState": "Succeeded"
-                                               }
-                                             }
- linkedRG         Object                     {
-                                               "id": "/subscriptions/<subscription-id>/resourceGroups/linkedGroup",
-                                               "name": "linkedGroup",
-                                               "location": "southcentralus",
-                                               "properties": {
-                                                 "provisioningState": "Succeeded"
-                                               }
-                                             }
-```
-
-### <a name="azure-cli"></a>Azure-CLI
-
-Voor Azure CLI, voor het implementeren van twee opslag accounts voor twee resource groepen in **hetzelfde abonnement**, gebruikt u:
+Als u twee opslag accounts wilt implementeren voor twee resource groepen in **hetzelfde abonnement**, gebruikt u:
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -267,7 +179,7 @@ az group deployment create \
   --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
 ```
 
-Voor Azure CLI, voor het implementeren van twee opslag accounts op **twee abonnementen**, gebruikt u:
+Als u twee opslag accounts wilt implementeren op **twee abonnementen**, gebruikt u:
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -289,7 +201,146 @@ az group deployment create \
   --parameters storagePrefix=storage secondResourceGroup=$secondRG secondStorageLocation=eastus secondSubscriptionID=$secondSub
 ```
 
-Voor Azure CLI, om te testen hoe het **resource groeps object** wordt omgezet voor de bovenliggende sjabloon, inline sjabloon en gekoppelde sjabloon, gebruikt u:
+---
+
+## <a name="use-functions"></a>Functies gebruiken
+
+De functies [resourceGroup ()](resource-group-template-functions-resource.md#resourcegroup) en [Subscription ()](resource-group-template-functions-resource.md#subscription) worden op verschillende manieren opgelost, afhankelijk van hoe u de sjabloon opgeeft. Wanneer u een koppeling naar een externe sjabloon maakt, worden de functies altijd omgezet in het bereik voor die sjabloon. Wanneer u een sjabloon in een bovenliggende sjabloon nest, gebruikt u de eigenschap `expressionEvaluationOptions` om op te geven of de functies worden omgezet in de resource groep en het abonnement voor de bovenliggende sjabloon of de geneste sjabloon. Stel de eigenschap in op `inner` om het bereik voor de geneste sjabloon op te lossen. Stel de eigenschap in op `outer` om het bereik van de bovenliggende sjabloon om te zetten.
+
+In de volgende tabel wordt aangegeven of de functies worden omgezet naar de bovenliggende of Inge sloten resource groep en het-abonnement.
+
+| Sjabloon type | Scope | Resolutie |
+| ------------- | ----- | ---------- |
+| nest        | Outer (standaard) | Bovenliggende resource groep |
+| nest        | wend | Subresourcegroep |
+| Btrieve        | N/A   | Subresourcegroep |
+
+In de volgende [voorbeeld sjabloon]((https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json)) ziet u:
+
+* geneste sjabloon met het standaard bereik (buitenste)
+* geneste sjabloon met binnenste bereik
+* gekoppelde sjabloon
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "name": "defaultScopeTemplate",
+            "apiVersion": "2017-05-10",
+            "resourceGroup": "inlineGroup",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                    ],
+                    "outputs": {
+                        "resourceGroupOutput": {
+                            "type": "string",
+                            "value": "[resourceGroup().name]"
+                        }
+                    }
+                },
+                "parameters": {}
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "name": "innerScopeTemplate",
+            "apiVersion": "2017-05-10",
+            "resourceGroup": "inlineGroup",
+            "properties": {
+                "expressionEvaluationOptions": {
+                    "scope": "inner"
+                },
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                    ],
+                    "outputs": {
+                        "resourceGroupOutput": {
+                            "type": "string",
+                            "value": "[resourceGroup().name]"
+                        }
+                    }
+                },
+                "parameters": {}
+            }
+        },
+        {
+            "apiVersion": "2017-05-10",
+            "name": "linkedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "resourceGroup": "linkedGroup",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "contentVersion": "1.0.0.0",
+                    "uri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/resourceGroupName.json"
+                },
+                "parameters": {}
+            }
+        }
+    ],
+    "outputs": {
+        "parentRG": {
+            "type": "string",
+            "value": "[concat('Parent resource group is ', resourceGroup().name)]"
+        },
+        "defaultScopeRG": {
+            "type": "string",
+            "value": "[concat('Default scope resource group is ', reference('defaultScopeTemplate').outputs.resourceGroupOutput.value)]"
+        },
+        "innerScopeRG": {
+            "type": "string",
+            "value": "[concat('Inner scope resource group is ', reference('innerScopeTemplate').outputs.resourceGroupOutput.value)]"
+        },
+        "linkedRG": {
+            "type": "string",
+            "value": "[concat('Linked resource group is ', reference('linkedTemplate').outputs.resourceGroupOutput.value)]"
+        }
+    }
+}
+```
+
+Als u de voor gaande sjabloon wilt testen en de resultaten wilt weer geven, gebruikt u Power shell of Azure CLI.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+New-AzResourceGroup -Name parentGroup -Location southcentralus
+New-AzResourceGroup -Name inlineGroup -Location southcentralus
+New-AzResourceGroup -Name linkedGroup -Location southcentralus
+
+New-AzResourceGroupDeployment `
+  -ResourceGroupName parentGroup `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
+```
+
+De uitvoer van het vorige voor beeld is:
+
+```powershell
+ Name             Type                       Value
+ ===============  =========================  ==========
+ parentRG         String                     Parent resource group is parentGroup
+ defaultScopeRG   String                     Default scope resource group is parentGroup
+ innerScopeRG     String                     Inner scope resource group is inlineGroup
+ linkedRG         String                     Linked resource group is linkedgroup
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group create --name parentGroup --location southcentralus
@@ -302,47 +353,30 @@ az group deployment create \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json 
 ```
 
-In het vorige voor beeld **parentRG** en **InlineRG** omgezet in **parentGroup**. **linkedRG** wordt omgezet in **linkedGroup**. De uitvoer van het vorige voor beeld is:
+De uitvoer van het vorige voor beeld is:
 
 ```azurecli
-...
 "outputs": {
-  "inlineRG": {
-    "type": "Object",
-    "value": {
-      "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
-      "location": "southcentralus",
-      "name": "parentGroup",
-      "properties": {
-        "provisioningState": "Succeeded"
-      }
-    }
+  "defaultScopeRG": {
+    "type": "String",
+    "value": "Default scope resource group is parentGroup"
+  },
+  "innerScopeRG": {
+    "type": "String",
+    "value": "Inner scope resource group is inlineGroup"
   },
   "linkedRG": {
-    "type": "Object",
-    "value": {
-      "id": "/subscriptions/<subscription-id>/resourceGroups/linkedGroup",
-      "location": "southcentralus",
-      "name": "linkedGroup",
-      "properties": {
-        "provisioningState": "Succeeded"
-      }
-    }
+    "type": "String",
+    "value": "Linked resource group is linkedGroup"
   },
   "parentRG": {
-    "type": "Object",
-    "value": {
-      "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
-      "location": "southcentralus",
-      "name": "parentGroup",
-      "properties": {
-        "provisioningState": "Succeeded"
-      }
-    }
+    "type": "String",
+    "value": "Parent resource group is parentGroup"
   }
 },
-...
 ```
+
+---
 
 ## <a name="next-steps"></a>Volgende stappen
 

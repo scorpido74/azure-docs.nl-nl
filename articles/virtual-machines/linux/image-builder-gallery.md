@@ -1,27 +1,27 @@
 ---
 title: Azure Image Builder gebruiken met een galerie met installatie kopieën voor virtuele Linux-machines (preview)
-description: Maak Linux-installatie kopieën met Azure Image Builder en de galerie met gedeelde afbeeldingen.
+description: Linux VM-installatie kopieën maken met Azure Image Builder en de galerie met gedeelde afbeeldingen.
 author: cynthn
 ms.author: cynthn
 ms.date: 04/20/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9fc624ab24cd98d0025fe2a34bf48c29b47c50e9
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 09dceb84a20ef49b3e9d5264b94bb5e74180cd2b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695408"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976125"
 ---
-# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Preview: Een Linux-installatie kopie maken en deze distribueren naar een gedeelde galerie met installatie kopieën 
+# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Voor beeld: een Linux-installatie kopie maken en deze distribueren naar een gedeelde galerie met installatie kopieën 
 
 In dit artikel leest u hoe u de Azure Image Builder kunt gebruiken om een installatie kopie versie te maken in een [Galerie met gedeelde afbeeldingen](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)en vervolgens de installatie kopie wereld wijd te distribueren.
 
 
 Er wordt een voor beeld van een JSON-sjabloon gebruikt voor het configureren van de installatie kopie. Het JSON-bestand dat we gebruiken, is hier: [helloImageTemplateforSIG. json](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
 
-De sjabloon maakt gebruik van [sharedImage](image-builder-json.md#distribute-sharedimage) als de waarde voor de `distribute` sectie van de sjabloon om de installatie kopie naar een galerie met gedeelde afbeeldingen te distribueren.
+De sjabloon maakt gebruik van [sharedImage](image-builder-json.md#distribute-sharedimage) als de waarde voor de sectie `distribute` van de sjabloon om de installatie kopie naar een galerie met gedeelde afbeeldingen te distribueren.
 
 > [!IMPORTANT]
 > Azure Image Builder is momenteel beschikbaar als open bare preview.
@@ -77,7 +77,7 @@ imageDefName=myIbImageDef
 runOutputName=aibLinuxSIG
 ```
 
-Maak een variabele voor uw abonnements-ID. U kunt dit doen met `az account show | grep id`.
+Maak een variabele voor uw abonnements-ID. U kunt dit doen met behulp van `az account show | grep id`.
 
 ```azurecli-interactive
 subscriptionID=<Subscription ID>
@@ -90,7 +90,7 @@ az group create -n $sigResourceGroup -l $location
 ```
 
 
-Stel de Azure Image Builder-machtiging in voor het maken van resources in die resource groep. De `--assignee` waarde is de app-registratie-id voor de Image Builder-service. 
+Stel de Azure Image Builder-machtiging in voor het maken van resources in die resource groep. De `--assignee` waarde is de ID van de app-registratie voor de Image Builder-service. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -186,7 +186,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-SSH naar de virtuele machine.
+Maak via SSH verbinding met de virtuele machine.
 
 ```azurecli-interactive
 ssh aibuser@<publicIpAddress>
@@ -204,7 +204,7 @@ U ziet dat de installatie kopie is aangepast met een *bericht van de dag* zodra 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de versie van de installatie kopie nu opnieuw wilt aanpassen om een nieuwe versie van dezelfde installatie kopie te maken, slaat u de volgende stappen over en gaat u verder met het maken van een versie van de installatie kopie met behulp van [Azure Image Builder](image-builder-gallery-update-image-version.md).
+Als u de versie van de installatie kopie nu opnieuw wilt aanpassen om een nieuwe versie van dezelfde installatie kopie te maken, slaat u de volgende stappen over en gaat u verder met het maken van een versie van de installatie kopie met [behulp van Azure Image Builder](image-builder-gallery-update-image-version.md).
 
 
 Hiermee verwijdert u de installatie kopie die is gemaakt, samen met alle andere bron bestanden. Zorg ervoor dat u klaar bent met deze implementatie voordat u de resources verwijdert.
@@ -220,7 +220,7 @@ az resource delete \
     -n helloImageTemplateforSIG01
 ```
 
-De afbeeldings versie ophalen die is gemaakt door de opbouw functie voor `0.`afbeeldingen, dit wordt altijd gestart met en vervolgens de versie van de installatie kopie verwijderen
+Haal de installatie kopie versie op die is gemaakt door de opbouw functie voor afbeeldingen, dit begint altijd met `0.`en verwijder vervolgens de versie van de installatie kopie
 
 ```azurecli-interactive
 sigDefImgVersion=$(az sig image-version list \

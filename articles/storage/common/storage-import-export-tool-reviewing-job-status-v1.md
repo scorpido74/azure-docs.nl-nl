@@ -1,36 +1,36 @@
 ---
-title: Taakstatus Azure Import/Export - v1 controleren | Microsoft Docs
-description: Informatie over het gebruik van de logboekbestanden gemaakt wanneer de taak importeren of exporteren om te zien van de status van de Import/Export-taak werd uitgevoerd.
-author: muralikk
+title: Status van Azure import/export-taak controleren-v1 | Microsoft Docs
+description: Meer informatie over het gebruik van de logboek bestanden die worden gemaakt wanneer de import-of export taak werd uitgevoerd om de status van de import/export-taak te bekijken.
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/26/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 306e3ccf19ba8db2de01e4b20a52707215a4a040
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 075af43796d3ca3dfef4b48f8f98f20903af3308
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60320703"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978965"
 ---
-# <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>De status van de Azure Import/Export-taak controleren met logboekbestanden kopiëren
-Wanneer de Microsoft Azure Import/Export-service stations die zijn gekoppeld aan een taak importeren of exporteren verwerkt, schrijft deze kopie logboekbestanden naar het storage-account of waaruit u importeren of exporteren blobs. Het logboekbestand bevat gedetailleerde status van elk bestand dat is geïmporteerd of geëxporteerd. De URL naar het logboekbestand van elk exemplaar wordt geretourneerd wanneer u de status van een voltooide taak; opvragen Zie [Get Job](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get) voor meer informatie.  
+# <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>De status van een Azure import/export-taak controleren met behulp van Kopieer logboek bestanden
+Wanneer de Microsoft Azure Import/Export-service stations verwerkt die zijn gekoppeld aan een import-of export taak, schrijft de logboek bestanden naar het opslag account naar of van waaruit u blobs importeert of exporteert. Het logboek bestand bevat gedetailleerde status informatie over elk bestand dat is geïmporteerd of geëxporteerd. De URL naar elk exemplaar van het logboek bestand wordt geretourneerd wanneer u de status van een voltooide taak doorzoekt. Zie [taak ophalen](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get) voor meer informatie.  
 
-## <a name="example-urls"></a>Voorbeeld-URL 's
+## <a name="example-urls"></a>Voor beeld-Url's
 
-Het volgende zijn voorbeeld-URL's voor de kopie-logboekbestanden voor een importtaak met twee schijven:  
+Hieronder vindt u voor beelden van Url's voor het kopiëren van logboek bestanden voor een import taak met twee stations:  
   
  `http://myaccount.blob.core.windows.net/ImportExportStatesPath/waies/myjob_9WM35C2V_20130921-034307-902_error.xml`  
   
  `http://myaccount.blob.core.windows.net/ImportExportStatesPath/waies/myjob_9WM45A6Q_20130921-042122-021_error.xml`  
   
- Zie [Import/Export-service Logboekbestandindeling](../storage-import-export-file-format-log.md) voor de indeling van Logboeken kopiëren en de volledige lijst met waarden.  
+ Zie [import/export-service logboek bestands indeling](../storage-import-export-file-format-log.md) voor de indeling van Kopieer logboeken en de volledige lijst met status codes.  
   
 ## <a name="next-steps"></a>Volgende stappen
  
- * [Het hulpprogramma Azure Import/Export instellen](storage-import-export-tool-setup-v1.md)   
+ * [Het Azure-hulp programma voor importeren/exporteren instellen](storage-import-export-tool-setup-v1.md)   
  * [Harde schijven voorbereiden voor een importtaak](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
  * [Een importtaak herstellen](../storage-import-export-tool-repairing-an-import-job-v1.md)   
  * [Een exporttaak herstellen](../storage-import-export-tool-repairing-an-export-job-v1.md)   

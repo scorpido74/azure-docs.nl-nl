@@ -6,18 +6,18 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: daf7cfdca2e9bfa4de68f490eb4a67f46cc59f42
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: e06c8d5373f8740e8091daae242a4f7af6c0ea4a
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174291"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995861"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-java"></a>Snelstartgids: Azure Key Vault-client bibliotheek voor Java
 
 Ga aan de slag met de Azure Key Vault-client bibliotheek voor Java. Volg de onderstaande stappen om het pakket te installeren en voorbeeld code voor basis taken uit te proberen.
 
-Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-client bibliotheek voor Java om het volgende te doen:
+Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-client bibliotheek voor Java om het volgende te doen:
 
 - Verbeter de beveiliging en controle over sleutels en wacht woorden.
 - Versleutelings sleutels maken en importeren in een paar minuten.
@@ -170,7 +170,7 @@ Met de Azure Key Vault-client bibliotheek voor Java kunt u sleutels en gerelatee
 
 De volledige console-app is beschikbaar op https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
 
-## <a name="code-examples"></a>Code voorbeelden
+## <a name="code-examples"></a>Codevoorbeelden
 
 ### <a name="add-directives"></a>Instructies toevoegen
 
@@ -241,7 +241,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 Wanneer u deze niet meer nodig hebt, kunt u de Azure CLI of Azure PowerShell gebruiken om uw sleutel kluis en de bijbehorende resource groep te verwijderen.
 
 ```azurecli
-az group delete -g "myResourceGroup" -l "EastUS" 
+az group delete -g "myResourceGroup"
 ```
 
 ```azurepowershell

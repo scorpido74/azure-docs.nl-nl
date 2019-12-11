@@ -1,5 +1,5 @@
 ---
-title: Micro soft Identity platform en OAuth 2.0 namens-of-flow | Azure
+title: Micro soft Identity platform & OAuth 2.0 namens-of-flow | Azure
 description: In dit artikel wordt beschreven hoe u HTTP-berichten gebruikt om service te implementeren voor service verificatie met behulp van de OAuth 2.0 namens-of-stroom.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09d851572731ad9c83093b7076279df112585703
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fa58f63e70c09e17328b849e7728604a65cb7ae1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207498"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964316"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Micro soft Identity platform en OAuth 2,0-of-flow
 
@@ -71,12 +71,12 @@ Bij gebruik van een gedeeld geheim bevat een aanvraag voor service-naar-service-
 
 | Parameter |  | Beschrijving |
 | --- | --- | --- |
-| `grant_type` | Vereist | Het type van de token aanvraag. Voor een aanvraag met behulp van een JWT moet de waarde `urn:ietf:params:oauth:grant-type:jwt-bearer`zijn. |
-| `client_id` | Vereist | De ID van de toepassing (client) waaraan [de Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina is toegewezen aan uw app. |
-| `client_secret` | Vereist | Het client geheim dat u hebt gegenereerd voor uw app op de pagina Azure Portal-App-registraties. |
-| `assertion` | Vereist | De waarde van het token dat in de aanvraag wordt gebruikt. |
-| `scope` | Vereist | Een lijst met door spaties gescheiden bereiken voor de token aanvraag. Zie [scopes](v2-permissions-and-consent.md)voor meer informatie. |
-| `requested_token_use` | Vereist | Hiermee geeft u op hoe de aanvraag moet worden verwerkt. In de OBO-stroom moet de waarde worden ingesteld op `on_behalf_of`. |
+| `grant_type` | Verplicht | Het type van de token aanvraag. Voor een aanvraag met behulp van een JWT moet de waarde `urn:ietf:params:oauth:grant-type:jwt-bearer`zijn. |
+| `client_id` | Verplicht | De ID van de toepassing (client) waaraan [de Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina is toegewezen aan uw app. |
+| `client_secret` | Verplicht | Het client geheim dat u hebt gegenereerd voor uw app op de pagina Azure Portal-App-registraties. |
+| `assertion` | Verplicht | De waarde van het token dat in de aanvraag wordt gebruikt. |
+| `scope` | Verplicht | Een lijst met door spaties gescheiden bereiken voor de token aanvraag. Zie [scopes](v2-permissions-and-consent.md)voor meer informatie. |
+| `requested_token_use` | Verplicht | Hiermee geeft u op hoe de aanvraag moet worden verwerkt. In de OBO-stroom moet de waarde worden ingesteld op `on_behalf_of`. |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -103,13 +103,13 @@ Een aanvraag voor service-naar-service-toegangs token met een certificaat bevat 
 
 | Parameter |  | Beschrijving |
 | --- | --- | --- |
-| `grant_type` | Vereist | Het type van de token aanvraag. Voor een aanvraag met behulp van een JWT moet de waarde `urn:ietf:params:oauth:grant-type:jwt-bearer`zijn. |
-| `client_id` | Vereist |  De ID van de toepassing (client) waaraan [de Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina is toegewezen aan uw app. |
-| `client_assertion_type` | Vereist | De waarde moet `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`zijn. |
-| `client_assertion` | Vereist | Een verklaring (een JSON-webtoken) die u moet maken en ondertekenen met het certificaat dat u hebt geregistreerd als referenties voor uw toepassing. Zie [certificaat referenties](active-directory-certificate-credentials.md)voor meer informatie over het registreren van uw certificaat en de indeling van de bevestiging. |
-| `assertion` | Vereist | De waarde van het token dat in de aanvraag wordt gebruikt. |
-| `requested_token_use` | Vereist | Hiermee geeft u op hoe de aanvraag moet worden verwerkt. In de OBO-stroom moet de waarde worden ingesteld op `on_behalf_of`. |
-| `scope` | Vereist | Een lijst met door spaties gescheiden bereiken voor de token aanvraag. Zie [scopes](v2-permissions-and-consent.md)voor meer informatie.|
+| `grant_type` | Verplicht | Het type van de token aanvraag. Voor een aanvraag met behulp van een JWT moet de waarde `urn:ietf:params:oauth:grant-type:jwt-bearer`zijn. |
+| `client_id` | Verplicht |  De ID van de toepassing (client) waaraan [de Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina is toegewezen aan uw app. |
+| `client_assertion_type` | Verplicht | De waarde moet `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`zijn. |
+| `client_assertion` | Verplicht | Een verklaring (een JSON-webtoken) die u moet maken en ondertekenen met het certificaat dat u hebt geregistreerd als referenties voor uw toepassing. Zie [certificaat referenties](active-directory-certificate-credentials.md)voor meer informatie over het registreren van uw certificaat en de indeling van de bevestiging. |
+| `assertion` | Verplicht | De waarde van het token dat in de aanvraag wordt gebruikt. |
+| `requested_token_use` | Verplicht | Hiermee geeft u op hoe de aanvraag moet worden verwerkt. In de OBO-stroom moet de waarde worden ingesteld op `on_behalf_of`. |
+| `scope` | Verplicht | Een lijst met door spaties gescheiden bereiken voor de token aanvraag. Zie [scopes](v2-permissions-and-consent.md)voor meer informatie.|
 
 U ziet dat de para meters bijna hetzelfde zijn als in het geval van de aanvraag van het gedeelde geheim, behalve dat de para meter `client_secret` wordt vervangen door twee para meters: een `client_assertion_type` en `client_assertion`.
 

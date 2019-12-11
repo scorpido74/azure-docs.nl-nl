@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Het Bing Aangepaste zoekopdrachten-eind punt aanroepen met behulp van de python-SDK | Microsoft Docs'
+title: 'Snelstartgids: uw Bing Aangepaste zoekopdrachten-eind punt aanroepen met behulp van de python-SDK | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze Quick Start om te beginnen met het aanvragen van zoek resultaten van uw Bing Aangepaste zoekopdrachten-exemplaar met behulp van de python-SDK.
 services: cognitive-services
@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 7a9d0d6619878299768e1f17b4da3280ea1ec1fc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 98070ab8f715305fe01c940026ecf5f49f8c28f9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564620"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976040"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>Quickstart: Het Bing Aangepaste zoekopdrachten-eind punt aanroepen met de python-SDK 
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>Snelstartgids: uw Bing Aangepaste zoekopdrachten-eind punt aanroepen met behulp van de python-SDK 
 
 Gebruik deze Quick Start om de zoek resultaten van uw Bing Aangepaste zoekopdrachten-exemplaar te vragen met behulp van de python-SDK. Hoewel Bing Custom Search een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de Bing Custom Search SDK een eenvoudige manier om de service in uw toepassingen te integreren. De bron code voor dit voor beeld is te vinden op [github](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/custom_search_samples.py) met aanvullende fout afhandeling en annotaties.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Bing Custom Search-exemplaar. Zie [Quickstart: Uw eerste Bing Custom Search-exemplaar maken](quick-start.md) voor meer informatie.
+- Een Bing Custom Search-exemplaar. Zie [Quick Start: uw eerste Bing aangepaste zoekopdrachten-exemplaar maken](quick-start.md) voor meer informatie.
 - Python [2.x of 3.x](https://www.python.org/) 
 - De [Bing aangepaste zoekopdrachten SDK voor python](https://pypi.org/project/azure-cognitiveservices-search-customsearch/) 
 
@@ -53,13 +53,13 @@ from msrest.authentication import CognitiveServicesCredentials
     subscription_key = 'your-subscription-key'
     ```
 
-2. Maak een instantie van `CustomSearchClient`met behulp `CognitiveServicesCredentials` van een object met de abonnements sleutel. 
+2. Maak een instantie van `CustomSearchClient`met behulp van een `CognitiveServicesCredentials`-object met de abonnements sleutel. 
 
     ```python
     client = CustomSearchClient(CognitiveServicesCredentials(subscription_key))
     ```
 
-3. Verzend een zoek opdracht met `client.custom_instance.search()`. Voeg uw zoek term toe aan `query` de para meter en `custom_config` stel deze in op uw aangepaste configuratie-ID om uw zoek exemplaar te gebruiken. U kunt uw ID ophalen via de [Bing aangepaste zoekopdrachten Portal](https://www.customsearch.ai/)door te klikken op het tabblad **productie** .
+3. Een zoek opdracht met `client.custom_instance.search()`verzenden. Voeg uw zoek term toe aan de para meter `query` en stel `custom_config` in op uw aangepaste configuratie-ID om uw zoek exemplaar te gebruiken. U kunt uw ID ophalen via de [Bing aangepaste zoekopdrachten Portal](https://www.customsearch.ai/)door te klikken op het tabblad **productie** .
 
     ```python
     web_data = client.custom_instance.search(query="xbox", custom_config="your-configuration-id")

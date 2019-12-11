@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: b0d71a7b010e91776a28330cfc32278c7060aab6
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 4ff4025941e9a77148daa91995ecf182231d1f0b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901258"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976278"
 ---
 # <a name="content-protection-overview"></a>Overzicht van de beveiliging van inhoud 
 
@@ -87,6 +87,10 @@ De volgende overwegingen zijn van toepassing:
   * **Cenc**: voor PlayReady of Widevine (algemene versleuteling)
   * **cbcs-AAPL**: voor FAIRPLAY (AES CBC-versleuteling)
   * **CBC**: voor AES-envelop versleuteling
+
+## <a name="additional-notes"></a>Aanvullende opmerkingen
+
+* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="next-steps"></a>Volgende stappen
 In de volgende artikelen worden de volgende stappen beschreven om aan de slag te gaan met inhouds beveiliging:

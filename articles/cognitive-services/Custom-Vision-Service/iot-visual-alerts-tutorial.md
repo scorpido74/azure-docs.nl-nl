@@ -6,16 +6,16 @@ services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: computer-vision
+ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 09/11/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: d146c264ebc2d36f0842f464f4547520546fd363
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9f3802ada79ee87d1a04634f7caac3b1b4286dce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888278"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978029"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Zelf studie: Custom Vision gebruiken met een IoT-apparaat om de visuele statussen te melden
 
@@ -78,7 +78,7 @@ Volg deze stappen om de app IoT Visual Alerts op uw PC of IoT-apparaat op te hal
     1. Werk in het script _IoTHub\IotHubWrapper.cs_ de `s_connectionString` variabele met de juiste Connection String voor uw apparaat. 
     1. Op de Azure Portal, laadt u uw IoT Hub-exemplaar, klikt u op **IOT-apparaten** onder **Explorers**, selecteert u op uw doel apparaat (of maakt u een indien nodig) en zoekt u de Connection String onder **primaire verbindings reeks**. De teken reeks bevat uw IoT Hub naam, apparaat-ID en gedeelde toegangs sleutel. het heeft de volgende indeling: `{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}`.
 
-## <a name="run-the-app"></a>De app uitvoeren
+## <a name="run-the-app"></a>De app kunt uitvoeren
 
 Als u de app op uw PC uitvoert, selecteert u **lokale computer** voor het doel apparaat in Visual Studio en selecteert u **x64** of **x86** voor het doel platform. Druk vervolgens op F5 om het programma uit te voeren. De app moet worden gestart en de live-feed van de camera en een status bericht worden weer gegeven.
 
@@ -116,7 +116,7 @@ Als u dit proces wilt herhalen met uw eigen scenario:
 
 Zodra de app het getrainde model downloadt, wordt er overgeschakeld naar de **Score** status en wordt het Score beeld van de camera in een doorlopende lus gestart.
 
-Voor elke vastgelegde installatie kopie wordt de bovenste tag weer gegeven op het scherm. Als de visuele status niet wordt herkend, worden **er geen overeenkomsten**weer gegeven. De app verzendt deze berichten ook naar de IoT Hub. als er een klasse wordt gedetecteerd, bevat het bericht het label, de betrouwbaarheids Score en een eigenschap met de naam `detectedClassAlert`, die kan worden gebruikt door IoT Hub-clients die geïnteresseerd zijn in het uitvoeren van Fast Message routing op basis van de voor keur rties.
+Voor elke vastgelegde installatie kopie wordt de bovenste tag weer gegeven op het scherm. Als de visuele status niet wordt herkend, worden **er geen overeenkomsten**weer gegeven. De app verzendt deze berichten ook naar de IoT Hub. als er een klasse wordt gedetecteerd, bevat het bericht het label, de betrouwbaarheids Score en een eigenschap met de naam `detectedClassAlert`, die kan worden gebruikt door IoT Hub-clients die zijn geïnteresseerd in een snelle bericht routering op basis van eigenschappen.
 
 Daarnaast gebruikt het voor beeld een [Sense-Hat-bibliotheek](https://github.com/emmellsoft/RPi.SenseHat) om te detecteren wanneer deze wordt uitgevoerd op een Raspberry Pi met een Sense Hat-eenheid, zodat deze kan worden gebruikt als een uitvoer weergave door alle weergave lichten op rood in te stellen wanneer er een klasse wordt gedetecteerd en deze leeg is wanneer er niets wordt gedetecteerd.
 

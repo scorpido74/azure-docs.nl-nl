@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: 3740c42c6b6721af4d885f7b63ee4ca4e58f6fa6
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a833fd808049cfce95b182910e50e38d3c39f4e5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806699"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976601"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Scènes, opnamen en sleutelframes
 
@@ -36,7 +36,7 @@ Video Indexer bepaalt wanneer een foto in de video wordt gewijzigd op basis van 
 
 ## <a name="keyframe-detection"></a>Detectie van keyframe
 
-Selecteert de frames die het beste de afdruk vertegenwoordigen. Keyframes zijn de representatieve frames die zijn geselecteerd uit de volledige video op basis van esthetische eigenschappen (bijvoorbeeld contrast en stabiele gegevens). Video Indexer haalt een lijst met hoofd frame-Id's op als onderdeel van de meta gegevens van de opname, op basis waarvan klanten de hoofd frame miniatuur kunnen uitpakken. 
+Video Indexer selecteert de frame (s) die elke opname het beste vertegenwoordigen. Keyframes zijn de representatieve frames die zijn geselecteerd uit de volledige video op basis van esthetische eigenschappen (bijvoorbeeld contrast en stabiele gegevens). Video Indexer haalt een lijst met hoofd frame-Id's op als onderdeel van de meta gegevens van de opname, op basis waarvan klanten het keyframe kunnen uitpakken als een afbeelding met een hoge resolutie.  
 
 ### <a name="extracting-keyframes"></a>Hoofd frames extra heren
 

@@ -1,5 +1,5 @@
 ---
-title: Een iOS-app bouwen die is geïntegreerd met Azure AD voor aanmelding met OAuth 2,0 | Microsoft Docs
+title: Aanmelden en Microsoft Graph aanroepen vanuit iOS | Azure
 description: Informatie over hoe u gebruikers aanmeldt en de Microsoft Graph API aanroept vanuit uw eigen iOS-app.
 services: active-directory
 author: rwike77
@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: brandwe
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c7064cff695b3aad9be69a7acbc07eb186201c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 055e954251654633bc948a98e0d5e33c9c8e11cb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920937"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963491"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app-v10"></a>Snelstartgids: gebruikers aanmelden en de Microsoft Graph-API aanroepen vanuit een iOS-app (v 1.0)
 

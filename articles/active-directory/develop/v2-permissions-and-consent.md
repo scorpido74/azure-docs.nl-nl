@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 12/10/2019
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48ddb4c3baa40bf70fe12451f048b2228c8bd441
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1ff874ee74864c84c976096ac5f7fa4b20cfab48
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74271503"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997000"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Machtigingen en toestemming in het micro soft Identity platform-eind punt
 
@@ -98,7 +98,10 @@ Het `profile` bereik kan worden gebruikt met het `openid` bereik en andere. Hier
 
 Het [`offline_access` bereik](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) geeft uw app namens de gebruiker een langere periode toegang tot resources. Op de pagina toestemming wordt dit bereik weer gegeven als de machtiging ' toegang tot gegevens waartoe u toegang hebt verleend '. Wanneer een gebruiker het `offline_access` bereik goedkeurt, kan uw app vernieuwings tokens ontvangen van het micro soft Identity platform-token-eind punt. Vernieuwings tokens zijn lang in het geleefde. Uw app kan nieuwe toegangs tokens verkrijgen als oudere versies verlopen.
 
-Als uw app het `offline_access` bereik niet expliciet aanvraagt, worden er geen vernieuwings tokens ontvangen. Dit betekent dat wanneer u een autorisatie code inwisselt in de [OAuth 2,0-autorisatie code stroom](active-directory-v2-protocols.md), alleen een toegangs token van het `/token`-eind punt ontvangt. Het toegangs token is voor korte tijd geldig. Het toegangs token verloopt doorgaans over een uur. Op dat moment moet uw app de gebruiker terugsturen naar het `/authorize`-eind punt om een nieuwe autorisatie code op te halen. Afhankelijk van het type app, moet de gebruiker tijdens deze omleiding mogelijk hun referenties opnieuw invoeren of opnieuw toestemming geven voor machtigingen. Hoewel de `offline_access` scope automatisch wordt aangevraagd door de server, moet uw client deze toch aanvragen om de vernieuwings tokens te kunnen ontvangen.
+> [!NOTE]
+> Deze machtiging wordt weer gegeven op alle toestemmings schermen, zelfs voor stromen die geen vernieuwings token bieden (de [impliciete stroom](v2-oauth2-implicit-grant-flow.md)).  Dit is bedoeld om scenario's te behandelen waarbij een client binnen de impliciete stroom kan beginnen en vervolgens naar de code stroom kunt gaan waar een vernieuwings token wordt verwacht.
+
+Op het micro soft-identiteits platform (aanvragen van het v 2.0-eind punt) moet uw app het `offline_access` bereik expliciet aanvragen om vernieuwings tokens te ontvangen. Dit betekent dat wanneer u een autorisatie code inwisselt in de [OAuth 2,0-autorisatie code stroom](active-directory-v2-protocols.md), alleen een toegangs token van het `/token`-eind punt ontvangt. Het toegangs token is voor korte tijd geldig. Het toegangs token verloopt doorgaans over een uur. Op dat moment moet uw app de gebruiker terugsturen naar het `/authorize`-eind punt om een nieuwe autorisatie code op te halen. Afhankelijk van het type app, moet de gebruiker tijdens deze omleiding mogelijk hun referenties opnieuw invoeren of opnieuw toestemming geven voor machtigingen. 
 
 Zie voor meer informatie over het verkrijgen en gebruiken van vernieuwings tokens de referentie voor het [micro soft Identity platform-protocol](active-directory-v2-protocols.md).
 
@@ -123,7 +126,7 @@ De para meter `scope` is een door spaties gescheiden lijst met gedelegeerde mach
 Nadat de gebruiker zijn of haar referenties heeft ingevoerd, controleert het micro soft Identity platform-eind punt een overeenkomende record van de toestemming van de *gebruiker*. Als de gebruiker zich in het verleden niet heeft ingestemd met een van de aangevraagde machtigingen, noch een beheerder heeft ingestemd met deze machtigingen namens de hele organisatie, wordt de gebruiker door het micro soft Identity platform-eind punt gevraagd om de aangevraagde machtigingen te verlenen.
 
 > [!NOTE]
-> Op dit moment worden de machtigingen voor de eerste toestemming voor een toepassing automatisch opgenomen in de `offline_access` (de toegang tot de gegevens waartoe u toegang hebt verleend) en `user.read` (waarbij u zich aanmeldt en uw profiel leest).  Deze machtigingen zijn over het algemeen vereist voor de juiste functionaliteit van de app-`offline_access` geeft de app toegang tot het vernieuwen van tokens, kritiek voor systeem eigen en web-apps, terwijl `user.read` toegang geeft tot de `sub` claim, waardoor de client of app de gebruiker kan identificeren over een bepaalde periode en toegang krijgen tot elementaire-gebruikers gegevens.  
+> Op dit moment worden de machtigingen voor de eerste toestemming voor een toepassing automatisch opgenomen in de `offline_access` (de toegang tot de gegevens waartoe u toegang hebt verleend) en `user.read` (waarbij u zich aanmeldt en uw profiel leest).  Deze machtigingen zijn over het algemeen vereist voor de juiste functionaliteit van de app-`offline_access` geeft de app toegang tot het vernieuwen van tokens, kritiek voor systeem eigen en web-apps, terwijl `user.read` toegang geeft tot de `sub` claim, waardoor de gebruiker in de loop van de tijd en toegang krijgt tot elementaire gebruikers gegevens.  
 
 ![Voor beeld van een scherm opname met de toestemming van een werk account](./media/v2-permissions-and-consent/work_account_consent.png)
 
@@ -199,11 +202,11 @@ Wanneer u klaar bent om machtigingen aan te vragen bij de beheerder van uw organ
 
 | Parameter     | Voorwaarde     | Beschrijving                                                                               |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | Vereist | De Directory-Tenant waarvan u toestemming wilt aanvragen. Kan worden geleverd in de indeling GUID of beschrijvende naam of in het algemeen waarnaar wordt verwezen met `common`, zoals wordt weer gegeven in het voor beeld. |
-| `client_id` | Vereist | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
-| `redirect_uri` | Vereist |De omleidings-URI waar u het antwoord voor uw app wilt laten afhandelen. Het moet exact overeenkomen met een van de omleidings-Uri's die u hebt geregistreerd in de app-registratie Portal. |
+| `tenant` | Verplicht | De Directory-Tenant waarvan u toestemming wilt aanvragen. Kan worden geleverd in de indeling GUID of beschrijvende naam of in het algemeen waarnaar wordt verwezen met `common`, zoals wordt weer gegeven in het voor beeld. |
+| `client_id` | Verplicht | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
+| `redirect_uri` | Verplicht |De omleidings-URI waar u het antwoord voor uw app wilt laten afhandelen. Het moet exact overeenkomen met een van de omleidings-Uri's die u hebt geregistreerd in de app-registratie Portal. |
 | `state` | Aanbevolen | Een waarde die in de aanvraag is opgenomen en die ook wordt geretourneerd in de token reactie. Dit kan een teken reeks zijn van elke gewenste inhoud. Gebruik de status om informatie over de status van de gebruiker in de app te coderen voordat de verificatie aanvraag is uitgevoerd, zoals de pagina of weer gave waarin deze zijn aangemeld. |
-|`scope`        | Vereist      | Hiermee wordt de set machtigingen gedefinieerd die worden aangevraagd door de toepassing. Dit kan statisch zijn (met behulp van/.default) of dynamische bereiken.  Dit kan bestaan uit de OIDC-bereiken (`openid`, `profile``email`). | 
+|`scope`        | Verplicht      | Hiermee wordt de set machtigingen gedefinieerd die worden aangevraagd door de toepassing. Dit kan statisch zijn (met behulp van/.default) of dynamische bereiken.  Dit kan bestaan uit de OIDC-bereiken (`openid`, `profile``email`). | 
 
 
 Op dit moment heeft Azure AD een Tenant beheerder nodig om zich aan te melden om de aanvraag te volt ooien. De beheerder wordt gevraagd om alle machtigingen die u in de para meter `scope` hebt aangevraagd goed te keuren.  Als u een statische (`/.default`)-waarde hebt gebruikt, werkt deze als het eind punt v 1.0-beheerder toestemming en vraagt u toestemming aan voor alle scopes die zijn gevonden in de vereiste machtigingen voor de app.

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 763a45446771f7b13178e22b0f7a35bd68bfc8bd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4b1c1a963b065411f1a0ab84141bdf1835930ebb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821287"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973540"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Open bare gegevens sets voor testen en prototypen
 
@@ -24,9 +24,9 @@ Blader door deze lijst met open bare gegevens sets voor gegevens die u kunt gebr
 
 ## <a name="us-government-and-agency-data"></a>Amerikaanse overheid en organisatie gegevens
 
-| Gegevens bron | Over de gegevens | Over de bestanden |
+| Gegevensbron | Over de gegevens | Over de bestanden |
 |---|---|---|
-| [Amerikaanse overheids gegevens](https://www.census.gov/data.html) | Meer dan 190.000 gegevens sets die betrekking hebben op de land bouw, klimaat, consument, ecosystemen, onderwijs, energie, financiën, gezondheid, lokale overheid, productie, maritieme, Oceaan, open bare veiligheid en wetenschap en onderzoek in de Verenigde Staten | Bestanden van verschillende grootten in verschillende indelingen, zoals HTML, XML, CSV, JSON, Excel en vele andere. U kunt beschik bare gegevens sets filteren op bestands indeling. |
+| [Amerikaanse overheids gegevens](https://catalog.data.gov/dataset) | Meer dan 250.000 gegevens sets die betrekking hebben op de land bouw, klimaat, consument, ecosystemen, onderwijs, energie, financiën, gezondheid, lokale overheid, productie, maritieme, Oceaan, open bare veiligheid en wetenschap en onderzoek in de Verenigde Staten | Bestanden van verschillende grootten in verschillende indelingen, zoals HTML, XML, CSV, JSON, Excel en vele andere. U kunt beschik bare gegevens sets filteren op bestands indeling. |
 | [Gegevens van Amerikaanse telling](https://www.census.gov/data.html) | Statistische gegevens over de bevolking van de Verenigde Staten | Gegevens sets bevinden zich in verschillende indelingen. |
 | [Gegevens van aarde Wetenschappen van NASA](https://earthdata.nasa.gov/) | Meer dan 32.000 gegevens verzamelingen die betrekking hebben op land bouw, atmosfeer, biobol, klimaat, Cryosphere, menselijke afmetingen, hydrosphere, land oppervlak, oceanen, Sun-Earth-interacties en meer. | Gegevens sets bevinden zich in verschillende indelingen. |
 | [Vertragingen en andere transport gegevens voor de vliegtuig vlucht](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "Het Amerikaanse ministerie van Trans Port-statistieken (BTS) houdt de prestaties bij van binnenlandse vluchten die worden beheerd door grote luchtvaart maatschappijen. Samenvattings informatie over het aantal weer gegeven tijd, vertraagd, geannuleerde en doorlopende vluchten verschijnt... in samenvattings tabellen die zijn gepost op deze website. " | Bestanden hebben de CSV-indeling. |
@@ -37,7 +37,7 @@ Blader door deze lijst met open bare gegevens sets voor gegevens die u kunt gebr
 
 ## <a name="other-statistical-and-scientific-data"></a>Andere statistische en weten schappelijke gegevens
 
-| Gegevens bron | Over de gegevens | Over de bestanden |
+| Gegevensbron | Over de gegevens | Over de bestanden |
 |---|---|---|
 | [Taxi's-gegevens New York City](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Taxi records bevatten velden voor het vastleggen van ophaal-en dropoff-datums/-tijden, ophaal-en dropoff-locaties, reis afstanden, geclassificeerde tarieven, betalings typen en door het stuur programma gemelde passagiers aantallen." | Gegevens sets bevinden zich per maand in CSV-bestanden. |
 | [Gegevens sets van micro soft Research-"data wetenschappen voor onderzoek"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Meerdere gegevens sets voor menselijke-computer interactie, audio/video, gegevens analyse/informatie ophalen, georuimtelijk/locatie, natuurlijke taal verwerking en Robotics/computer visie. | Gegevens sets bevinden zich in verschillende indelingen, gezipte down loads. |
@@ -50,7 +50,7 @@ Blader door deze lijst met open bare gegevens sets voor gegevens die u kunt gebr
 
 ## <a name="online-service-data"></a>Online service gegevens
 
-| Gegevens bron | Over de gegevens | Over de bestanden |
+| Gegevensbron | Over de gegevens | Over de bestanden |
 |---|---|---|
 | [GitHub-archief](https://www.githubarchive.org/) | "GitHub Archive is een project voor het vastleggen van de open bare GitHub-tijd lijn [van gebeurtenissen], archivet deze en maak deze eenvoudig toegankelijk voor verdere analyse." | Down load JSON-encoded Event Archives in. gz-indeling (gzip) van een webclient. |
 | [Activiteit gegevens GitHub uit het GHTorrent-project](http://ghtorrent.org/) | "Het GHTorrent-project [is] een poging om een schaal bare, bedrukte, offline mirror van gegevens te maken die via de GitHub-REST API worden aangeboden. GHTorrent bewaakt de tijd regel van de GitHub-open bare gebeurtenis. Voor elke gebeurtenis wordt de inhoud en de bijbehorende afhankelijkheden volledig opgehaald. " | MySQL-database dumps hebben een CSV-indeling. |
