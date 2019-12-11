@@ -1,15 +1,15 @@
 ---
 title: Visual Studio code gebruiken om verbinding te maken met de Azure Block Chain-Service
 description: Verbinding maken met een Azure Block Chain Service consortium-netwerk met behulp van de Azure Block Chain Development Kit for Ethereum-extensie in Visual Studio code
-ms.date: 11/19/2019
+ms.date: 12/05/2019
 ms.topic: quickstart
 ms.reviewer: chrisseg
-ms.openlocfilehash: 4d4625df1cb07818dcadb88e2c98bf9ae1da1b1f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 1bcdfdafa9253fc4dc20ccb7cc237cb794b0af53
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455982"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977057"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Snelstartgids: Visual Studio code gebruiken om verbinding te maken met een Azure Block Chain Service consortium-netwerk
 
@@ -59,12 +59,12 @@ U kunt verbinding maken met consortium leden met behulp van de Azure Block Chain
 Als u geen toegang hebt tot een lid van een Azure Block Chain Service consortium, voltooit u de vereiste [Snelstartgids: een Block Chain-lid maken met behulp van de Azure Portal](create-member.md) of [Quick Start: een Azure Block Chain Service Block Chain-lid maken met behulp van Azure cli](create-member-cli.md).
 
 1. Vouw in het deel venster VS code Explorer de **Azure Block Chain** -extensie uit.
-1. Selecteer **verbinding maken met consortium**.
+1. Selecteer **verbinding maken met netwerk**.
 
-   ![Verbinding maken met consortium](./media/connect-vscode/connect-consortium.png)
+   ![Verbinding maken met netwerk](./media/connect-vscode/connect-consortium.png)
 
     Als u wordt gevraagd om Azure-verificatie, volgt u de prompts voor verificatie met behulp van een browser.
-1. Kies **verbinding maken met Azure Block Chain Service consortium** in de vervolg keuzelijst voor het opdracht palet.
+1. Kies **Azure Block Chain Service** in het opdracht palet vervolg keuzelijst.
 1. Kies het abonnement en de resource groep die aan uw Azure Block Chain Service consortium-lid zijn gekoppeld.
 1. Kies uw consortium in de lijst.
 

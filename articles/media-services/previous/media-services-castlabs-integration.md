@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
-ms.openlocfilehash: c038480c9a49c96aaba7c7ff7299c8ebea31b81f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 29a344c739d8d99da2e5c81d41a11c601e48022e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74887778"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969136"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>castLabs gebruiken om Widevine-licenties te leveren aan Azure Media Services 
 > [!div class="op_single_selector"]
@@ -114,6 +114,10 @@ Als u een video wilt afspelen die is versleuteld met een gemeen schappelijke ver
    De castLab-licentie server heeft het voor voegsel ' Bearer = ' vóór het token niet nodig. Verwijder deze voordat u het token verzendt.
 7. Werk de speler bij.
 8. De video moet worden afgespeeld.
+
+## <a name="additional-notes"></a>Aanvullende opmerkingen
+
+* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

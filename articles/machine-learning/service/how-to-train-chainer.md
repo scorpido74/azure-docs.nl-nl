@@ -1,7 +1,7 @@
 ---
 title: Trainer-modellen voor diepe leren trainen
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het uitvoeren van uw PyTorch-trainings scripts op ondernemings schaal met behulp van de Estimator-klasse van Azure Machine Learning Chainer.  In het voorbeeld script worden handgeschreven cijfer afbeeldingen geclassificeerd om een diep gaande Neural-netwerk te bouwen met behulp van de keten python-bibliotheek die boven op numpy wordt uitgevoerd.
+description: Meer informatie over hoe u uw PyTorch-trainings scripts kunt uitvoeren op ENTER prise Scale door gebruik te maken van de Azure Machine Learning Chainer Estimator-klasse.  In het voorbeeld script worden handgeschreven cijfer afbeeldingen geclassificeerd om een diep gaande Neural-netwerk te bouwen met behulp van de keten python-bibliotheek die boven op numpy wordt uitgevoerd.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: f384a6a870d891bbaf6fa20a896b0251e62b8d4f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 40c1b7e1e4089db3e95b0da810a961b7fd202aac
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224982"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969170"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Keten modellen trainen en registreren op schaal met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u uw [Chainer](https://chainer.org/) -trainings scripts kunt uitvoeren op ENTER prise Scale met behulp van de [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) -klasse van Azure machine learning. In het voorbeeld script in dit artikel wordt gebruikgemaakt van de populaire [MNIST-gegevensset](http://yann.lecun.com/exdb/mnist/) om handgeschreven cijfers te classificeren met behulp van een diepe Neural Network (DNN) die is gebouwd met behulp van de python-bibliotheek van de keten die boven op [numpy](https://www.numpy.org/)wordt uitgevoerd.
+In dit artikel leert u hoe u uw [Chainer](https://chainer.org/) -trainings scripts kunt uitvoeren op ENTER prise Scale door gebruik te maken van de Azure machine learning classer [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) -klasse. In het voorbeeld script in dit artikel wordt gebruikgemaakt van de populaire [MNIST-gegevensset](http://yann.lecun.com/exdb/mnist/) om handgeschreven cijfers te classificeren met behulp van een diepe Neural Network (DNN) die is gebouwd met behulp van de python-bibliotheek van de keten die boven op [numpy](https://www.numpy.org/)wordt uitgevoerd.
 
 Of u nu een diep gaande leer keten van het model traint of een bestaand model in de Cloud brengt, u kunt Azure Machine Learning gebruiken om open-source trainings taken uit te breiden met behulp van elastische Cloud Compute-resources. U kunt modellen voor productie kwaliteit bouwen, implementeren, versie en bewaken met Azure Machine Learning. 
 
@@ -83,7 +83,7 @@ os.makedirs(project_folder, exist_ok=True)
 
 In deze zelf studie wordt het trainings script **chainer_mnist. py** al voor u ingevuld. In de praktijk moet u een aangepast trainings script kunnen uitvoeren zoals dat is en dit kan worden uitgevoerd met Azure ML zonder dat u de code hoeft te wijzigen.
 
-Als u de mogelijkheden voor bijhouden en metrische gegevens van Azure ML wilt gebruiken, voegt u een kleine hoeveelheid Azure ML-code toe in uw trainings script.  In het trainings script **chainer_mnist. py** wordt uitgelegd hoe u met het `Run`-object in het script bepaalde metrische gegevens registreert bij uw Azure ml.
+Als u de mogelijkheden voor bijhouden en metrische gegevens van Azure ML wilt gebruiken, voegt u een kleine hoeveelheid Azure ML-code toe binnen uw trainings script.  In het trainings script **chainer_mnist. py** wordt uitgelegd hoe u met het `Run`-object in het script bepaalde metrische gegevens registreert bij uw Azure ml.
 
 In het meegeleverde trainings script worden voorbeeld gegevens van de functie Chainer `datasets.mnist.get_mnist` gebruikt.  Voor uw eigen gegevens moet u mogelijk stappen zoals [gegevensset uploaden en scripts](how-to-train-keras.md#data-upload) gebruiken om gegevens beschikbaar te maken tijdens de training.
 
@@ -212,8 +212,8 @@ for f in run.get_file_names():
 
 In dit artikel hebt u een diep gaande training getraind en geregistreerd, Neural Network met Chainer op Azure Machine Learning. Ga verder met ons [model implementatie](how-to-deploy-and-where.md) artikel voor meer informatie over het implementeren van een model.
 
-* [Hyper parameters afstemmen](how-to-tune-hyperparameters.md)
+* [Afstemmen van hyperparameters](how-to-tune-hyperparameters.md)
 
-* [Metrische uitvoerings gegevens tijdens de training volgen](how-to-track-experiments.md)
+* [Metrische gegevens over uitvoeren tijdens de training bijhouden](how-to-track-experiments.md)
 
 * [Bekijk onze referentie architectuur voor gedistribueerde training voor diepe trainingen in azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: c20159d0583e18d0f5e71152fdb600d03db43224
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: e7a6f7b4ba4219483cd3eb8f4600bc94213df131
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73991031"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973408"
 ---
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>Een Azure Database for PostgreSQL-grootschalige maken (Citus)
 
@@ -46,7 +46,7 @@ Volg deze stappen voor het maken van een Azure Database voor PostgreSQL-server:
    client-IP-](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png) ![toegevoegd
 
    > [!NOTE]
-   > De Azure PostgreSQL-server communiceert via poort 5432. Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, wordt uitgaand verkeer via poort 5432 mogelijk niet toegestaan door de firewall van uw netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database-server, tenzij de IT-afdeling poort 5432 openstelt.
+   > De Azure PostgreSQL-server communiceert via poort 5432. Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, wordt uitgaand verkeer via poort 5432 mogelijk niet toegestaan door de firewall van uw netwerk. Als dat het geval is, kunt u geen verbinding maken met uw grootschalige-cluster (Citus), tenzij uw IT-afdeling poort 5432 opent.
    >
 
 9. Klik op **beoordeling + maken** en vervolgens op **maken** om de server in te richten. De inrichting duurt een paar minuten.
@@ -57,10 +57,10 @@ Volg deze stappen voor het maken van een Azure Database voor PostgreSQL-server:
 
 Wanneer u uw Azure Database for PostgreSQL-server maakt, wordt er een standaard database met de naam **Citus** gemaakt. Als u verbinding wilt maken met uw database server, hebt u een connection string en het beheerders wachtwoord nodig.
 
-1. De connection string ophalen. Klik op de pagina Server groep op het menu-item **verbindings reeksen** . (Het is onder **instellingen**.) Zoek de teken reeks die is gemarkeerd  **C++ (libpq)** . Het heeft de volgende vorm:
+1. De connection string ophalen. Klik op de pagina Server groep op het menu-item **verbindings reeksen** . (Het is onder **instellingen**.) Zoek de teken reeks die is gemarkeerd als **psql**. Het heeft de volgende vorm:
 
    ```
-   host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require
+   psql "host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require"
    ```
 
    Kopieer de teken reeks. U moet {uw\_wacht woord} vervangen door het beheerders wachtwoord dat u eerder hebt gekozen. Uw Lees bare wacht woord wordt niet opgeslagen in het systeem en kan dus niet worden weer gegeven in de connection string.
@@ -69,7 +69,7 @@ Wanneer u uw Azure Database for PostgreSQL-server maakt, wordt er een standaard 
 
 3. Maak verbinding met uw Azure Database for PostgreSQL-server via het hulp programma [psql](https://www.postgresql.org/docs/current/app-psql.html) . Geef uw connection string in aanhalings tekens en controleer of het uw wacht woord bevat:
    ```bash
-   psql "{connection_string}"
+   psql "host=..."
    ```
 
    Met de volgende opdracht maakt u bijvoorbeeld verbinding met het coördinator knooppunt van de Server groep **mydemoserver**:

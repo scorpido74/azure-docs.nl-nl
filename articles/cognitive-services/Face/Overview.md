@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 95ea1718682340967d5d39fe5f550f2638273796
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 75f2969562dd2de041ffaa146c394f1a18c7756b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743698"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961536"
 ---
 # <a name="what-is-the-azure-face-api"></a>Wat is de Azure Face-API?
 
@@ -22,7 +22,7 @@ De Azure Cognitive Services Face-API biedt algoritmen die worden gebruikt voor h
 
 De Face-API biedt verschillende functies. Elke functie wordt beschreven in de volgende secties. Lees verder voor meer informatie hierover.
 
-## <a name="face-detection"></a>Gezichtsdetectie
+## <a name="face-detection"></a>Gezichtsherkenning
 
 De Face-API detecteert menselijke gezichten in een afbeelding en retourneert de rechthoek coördinaten van hun locaties. Een voor beeld van gezichts detectie kan een reeks kenmerken met betrekking tot het gezicht extra heren. Voor beelden zijn Head pose, gender, Age, Emotion, gezichts haar en glazen.
 
@@ -35,7 +35,7 @@ Zie het artikel [gezichts detectie](concepts/face-detection.md) concepten voor m
 
 ## <a name="face-verification"></a>Gezichtsverificatie
 
-De Verificatie-API voert een verificatie uit op basis van twee gedetecteerde gezichten of op basis van een gedetecteerd gezicht in relatie tot een object van één persoon. Waar het eigenlijk op neerkomt is dat de Verificatie-API evalueert of twee gezichten van dezelfde persoon zijn. Deze mogelijkheid is mogelijk nuttig in beveiligings scenario's. Voor meer informatie raadpleegt u de hand leiding voor [gezichts herkenning](concepts/face-recognition.md) of de naslag documentatie voor [API-verificatie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) .
+De verify-API voert een verificatie uit op twee gedetecteerde gezichten of van een gedetecteerd gezicht naar één persoons object. Waar het eigenlijk op neerkomt is dat de Verificatie-API evalueert of twee gezichten van dezelfde persoon zijn. Deze mogelijkheid is mogelijk nuttig in beveiligings scenario's. Voor meer informatie raadpleegt u de hand leiding voor [gezichts herkenning](concepts/face-recognition.md) of de naslag documentatie voor [API-verificatie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) .
 
 ## <a name="find-similar-faces"></a>Vergelijkbare gezichten zoeken
 
@@ -45,11 +45,11 @@ In het volgende voor beeld ziet u het doel gezicht:
 
 ![Een glimlachende vrouw](./Images/FaceFindSimilar.QueryFace.jpg)
 
-En dit zijn de kandidaatgezichten:
+En deze installatie kopieën zijn de gezichten van de kandidaat:
 
 ![Vijf afbeeldingen van glimlachende mensen Afbeeldingen a en b tonen dezelfde persoon.](./Images/FaceFindSimilar.Candidates.jpg)
 
-Als u vier vergelijk bare gezichten zoekt, retourneert de matchPerson-modus a en b, die dezelfde persoon als het doel gezicht weergeeft. De matchFace-modus retourneert a, b, c en d, precies vier kandidaten, zelfs als sommige niet dezelfde persoon als het doel zijn of weinig gelijkenis hebben. Voor meer informatie raadpleegt u de hand leiding voor [gezichts herkenning](concepts/face-recognition.md) of de documentatie over het [zoeken naar vergelijk bare API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) .
+Als u vier vergelijk bare gezichten zoekt, retourneert de matchPerson-modus a en b, die dezelfde persoon als het doel gezicht weergeeft. De matchFace-modus retourneert a, b, c en d&mdash;precies vier kandidaten, zelfs als sommige niet dezelfde persoon als het doel zijn of weinig gelijkenis hebben. Voor meer informatie raadpleegt u de hand leiding voor [gezichts herkenning](concepts/face-recognition.md) of de documentatie over het [zoeken naar vergelijk bare API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) .
 
 ## <a name="face-grouping"></a>Gezichtsgroepering
 

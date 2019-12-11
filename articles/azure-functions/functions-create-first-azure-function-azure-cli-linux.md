@@ -4,16 +4,16 @@ description: Informatie over het maken van uw eerste functie die wordt gehost in
 ms.date: 03/12/2019
 ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: 19abfee69db53c560dfa2696d85f8c1c3d770c09
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 57c1b4a0ef5e8f030360bca6d69f66e8752f3da1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230817"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964137"
 ---
 # <a name="quickstart-create-your-first-function-hosted-on-linux-using-command-line-tools"></a>Snelstartgids: uw eerste functie maken die wordt gehost in Linux met behulp van de opdracht regel Programma's
 
-Met Azure Functions kunt u uw code in een [serverloze](https://azure.com/serverless) Linux-omgeving uitvoeren zonder dat u eerst een virtuele machine moet maken of een webtoepassing publiceren. Linux-hosting vereist [de functies 2. x runtime](functions-versions.md). Serverloze functies worden uitgevoerd in het [verbruiks abonnement](functions-scale.md#consumption-plan).
+Met Azure Functions kunt u uw code in een [serverloze](https://azure.com/serverless) Linux-omgeving uitvoeren zonder dat u eerst een virtuele machine moet maken of een webtoepassing publiceren. Linux-hosting vereist [de functies 2. x en latere runtime](functions-versions.md). Serverloze functies worden uitgevoerd in het [verbruiks abonnement](functions-scale.md#consumption-plan).
 
 In dit snelstartartikel leert u hoe u de Azure CLI gebruikt om uw eerste functie-app te maken die in Linux wordt uitgevoerd. De functiecode wordt lokaal gemaakt en vervolgens naar Azure geïmplementeerd met behulp van de [Azure Functions Core Tools](functions-run-local.md).
 

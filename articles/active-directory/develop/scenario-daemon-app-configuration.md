@@ -1,6 +1,6 @@
 ---
-title: Daemon-app die web-Api's aanroept (app-configuratie)-micro soft Identity-platform
-description: Meer informatie over het bouwen van een daemon-app die web-Api's aanroept (app-configuratie)
+title: Daemon-apps configureren die web-Api's aanroepen-micro soft Identity-platform | Azure
+description: Meer informatie over het configureren van de code voor uw daemon-toepassing die web-Api's aanroept (app-configuratie)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32fbd4af78e02dad2a8a74ee21f9cb8c6ef0a976
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b0fd50f730c604ba1359218cf5268bd20e570d3c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175508"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962641"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Daemon-app die web-Api's aanroept-code configuratie
 
@@ -35,7 +35,7 @@ De micro soft libraries ondersteunen daemon-apps zijn:
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Ondersteunde platforms voor het bouwen van een daemon-toepassing zijn .NET Framework en .NET Core-platformen (niet UWP, Xamarin. iOS en Xamarin. Android als deze platformen worden gebruikt voor het bouwen van open bare client toepassingen)
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL python | Ontwikkeling in uitvoering-in open bare preview
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL java | Ontwikkeling in uitvoering-in open bare preview
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Ontwikkeling in uitvoering-in open bare preview
 
 ## <a name="configuration-of-the-authority"></a>Configuratie van de instantie
 
@@ -43,7 +43,7 @@ Omdat de daemon-toepassingen geen gedelegeerde machtigingen gebruiken, maar toep
 
 Daarom moet de in de toepassings configuratie opgegeven instantie Tenant-ED zijn (een Tenant-ID of een domein naam opgeven die is gekoppeld aan uw organisatie).
 
-Als u een ISV bent en een multi tenant hulp programma wilt bieden, kunt u `organizations` gebruiken. Maar houd er rekening mee dat u ook moet uitleggen wat uw klanten zijn om toestemming van de beheerder te verlenen. Zie [toestemming vragen voor een volledige Tenant](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) voor meer informatie. Er is momenteel ook een beperking in MSAL: `organizations` is alleen toegestaan wanneer de client referenties een toepassings geheim zijn (geen certificaat).
+Als u een ISV bent en een multi tenant hulp programma wilt bieden, kunt u `organizations`gebruiken. Maar houd er rekening mee dat u ook moet uitleggen wat uw klanten zijn om toestemming van de beheerder te verlenen. Zie [toestemming vragen voor een volledige Tenant](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) voor meer informatie. Er is momenteel ook een beperking in MSAL: `organizations` is alleen toegestaan wanneer de client referenties een toepassings geheim zijn (geen certificaat).
 
 ## <a name="application-configuration-and-instantiation"></a>Toepassings configuratie en instantiëring
 
@@ -269,7 +269,7 @@ MSAL.NET heeft twee methoden om ondertekende bevestigingen te bieden aan de vert
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-Wanneer u `WithClientAssertion` gebruikt, moet u een ondertekende JWT opgeven. Dit geavanceerde scenario wordt beschreven in [client verklaringen](msal-net-client-assertions.md)
+Wanneer u `WithClientAssertion`gebruikt, moet u een ondertekende JWT opgeven. Dit geavanceerde scenario wordt beschreven in [client verklaringen](msal-net-client-assertions.md)
 
 ```CSharp
 string signedClientAssertion = ComputeAssertion();
@@ -278,7 +278,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-Wanneer u `WithClientClaims` gebruikt, wordt in MSAL.NET een ondertekende bevestiging berekend met de claims die worden verwacht door Azure AD plus aanvullende client claims die u wilt verzenden.
+Wanneer u `WithClientClaims`gebruikt, wordt in MSAL.NET een ondertekende bevestiging berekend met de claims die worden verwacht door Azure AD plus aanvullende client claims die u wilt verzenden.
 Hier volgt een code fragment waarmee u dit kunt doen:
 
 ```CSharp

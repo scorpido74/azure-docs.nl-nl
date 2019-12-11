@@ -1,6 +1,6 @@
 ---
-title: Web-app dat aanroepen van web-API's (app-registratie) - Microsoft identity-platform
-description: Informatie over het bouwen van een web-app dat aanroepen van web-API's (app-registratie)
+title: Een web-app registreren die web-Api's aanroept-micro soft Identity-platform | Azure
+description: Meer informatie over het registreren van een web-app die web-Api's aanroept
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,26 +15,26 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5becdc287f7cad28aa6c7c07ebc107586e9a2b2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 784de823e94aace6f91222c19c1ff8130c3f995f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65075188"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962930"
 ---
-# <a name="web-app-that-calls-web-apis---app-registration"></a>Web-app dat aanroepen van web-API's - app-registratie
+# <a name="web-app-that-calls-web-apis---app-registration"></a>Web-app die web-Api's aanroept-app-registratie
 
-Een Web-app aanroepen van web API's heeft de registratie van de dezelfde als een Web-App-aanmelden-gebruikers. U moet daarom Volg de instructies in [Web-app die zich aanmeldt-gebruikers - app-registratie](scenario-web-app-sign-user-app-registration.md)
+Een web-app die web-Api's aanroept, heeft dezelfde registratie als gebruikers voor het aanmelden via een web-app. Daarom moet u de instructies in de [Web-app volgen waarmee gebruikers zich kunnen aanmelden-app-registratie](scenario-web-app-sign-user-app-registration.md)
 
-Maar omdat de Web-App nu aanroepen van web-API's, wordt een vertrouwelijke client-toepassing. Daarom is er een deel van de extra registratie verplicht: nodig is om te delen van geheimen (clientreferenties) met het Microsoft identity-platform.
+Omdat de web-app nu web-Api's aanroept, wordt het een vertrouwelijke client toepassing. Daarom is er een stukje extra registratie vereist: het moet geheimen (client referenties) delen met het micro soft Identity-platform.
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
 
 ## <a name="api-permissions"></a>API-machtigingen
 
-Web-Apps aanroepen van API's namens de aangemelde gebruiker. Ze moeten overgedragen machtigingen aanvragen. Zie voor meer informatie [machtigingen voor toegang tot web-API's toevoegen](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)
+Webtoepassingen roepen Api's namens de aangemelde gebruiker aan. Ze moeten gedelegeerde machtigingen aanvragen. Zie machtigingen voor [toegang tot Web-Api's toevoegen](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [De configuratie van App-code](scenario-web-app-call-api-app-configuration.md)
+> [Configuratie van de app-code](scenario-web-app-call-api-app-configuration.md)

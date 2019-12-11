@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Een zoekopdracht uitvoeren met PHP - Bing Webzoekopdrachten-API'
+title: 'Snelstart: Een zoekopdracht uitvoeren met PHP - Bing Webzoekopdrachten-API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen naar de REST API van Bing Web Search te verzenden via PHP en een JSON-antwoord te ontvangen
 services: cognitive-services
@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ba132adc6b0fd2b8423a7bce30ad6d52fccc898e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cf3cf1f69f7b45dd90070f4074e85fa21359837d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648564"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961472"
 ---
-# <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Snelstartgids: PHP gebruiken voor het aanroepen van de Bing Webzoekopdrachten-API  
+# <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Snelstart: PHP gebruiken voor het aanroepen van de Bing Webzoekopdrachten-API  
 
-Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en het JSON-antwoord te ontvangen. Deze Node.js-toepassing een zoekaanvraag verzendt naar de API en het antwoord. Hoewel deze toepassing in JavaScript is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Gebruik deze quickstart om voor het eerst de Bing Web Search-API aan te roepen en het JSON-antwoord te ontvangen. Met deze node. js-toepassing wordt een zoek opdracht naar de API verzonden en wordt het antwoord weer gegeven. Hoewel deze toepassing in JavaScript is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u verdergaat met deze snelstart moet u beschikken over:
+U moet over het volgende beschikken voordat u verdergaat met deze snelstartgids:
 
 * [PHP 5.6.x](https://php.net/downloads.php) of later
 * Een abonnementssleutel  
@@ -43,7 +43,7 @@ Voordat we aan de slag gaan, gaat u eerst naar `php.ini` en haalt u de opmerking
 
 Maak een nieuw PHP-project in uw favoriete IDE of editor. Vergeet niet om de tags voor openen en sluiten `<?php` en `?>` toe te voegen.
 
-Er moet een aantal variabelen worden ingesteld voordat we verder kunnen gaan. Controleer of `$endpoint` juist is en vervang de waarde `$accesskey` door een geldige abonnementssleutel uit uw Azure-account. U kunt de zoekquery gerust aanpassen door de waarde voor `$term` te vervangen.
+Er moet een aantal variabelen worden ingesteld voordat we verder kunnen gaan. `$endpoint` kunnen het globale eind punt hieronder zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource. Controleer of `$endpoint` juist is en vervang de waarde `$accesskey` door een geldige abonnementssleutel uit uw Azure-account. U kunt de zoekquery gerust aanpassen door de waarde voor `$term` te vervangen.
 
 ```php
 $accessKey = 'enter key here';
@@ -284,6 +284,6 @@ Antwoorden afkomstig van de Bing Webzoekopdrachten-API worden geretourneerd in d
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie voor app met één pagina voor Bing Web Search](../tutorial-bing-web-search-single-page-app.md)
+> [Zelfstudie voor app met één pagina voor Bing Web Search ](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

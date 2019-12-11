@@ -1,6 +1,6 @@
 ---
 title: Data Factory-.NET API-wijzigings logboek
-description: Beschrijft de belang rijke wijzigingen, functie toevoegingen, fout oplossingen enz... in een specifieke versie van .NET API voor de Azure Data Factory.
+description: Beschrijft de belang rijke wijzigingen, functie toevoegingen, fout oplossingen, enzovoort, in een specifieke versie van .NET API voor de Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: e1902db6bc3a127262f5e37f36e82b07ab15c7c9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: dbbbdebdcf1db7afe485166f5744f2291b757d50
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683198"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978999"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory-.NET API-wijzigings logboek
 > [!NOTE]
@@ -78,7 +78,7 @@ Toevoegingen van functies:
   * Hiermee schakelt u het gebruik van poly base in voor het kopiëren van gegevens naar SQL Data Warehouse.
 
 ## <a name="version-461"></a>Versie 4.6.1
-### <a name="bug-fixes"></a>Oplossingen voor oplossingen
+### <a name="bug-fixes"></a>Opgeloste fouten
 * Hiermee wordt HTTP-aanvraag voor Windows-aanbiedings activiteit opgelost.
   * Hiermee verwijdert u de naam van de resource groep en de naam van het data factory uit de aanvraag lading.
 
@@ -101,7 +101,7 @@ Toevoegingen van functies:
 * De volgende typen gegevensset zijn toegevoegd:
   * [ODataResourceDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odataresourcedataset.aspx), [WebTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.webtabledataset.aspx)
 * De volgende Kopieer bron typen zijn toegevoegd:     
-  * [Websource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.websource.aspx)
+  * [WebSource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.websource.aspx)
 
 ## <a name="version-440"></a>Versie 4.4.0
 ### <a name="feature-additions"></a>Functie toevoegingen
@@ -154,7 +154,7 @@ De naam van de volgende klassen is gewijzigd. De nieuwe namen bevinden zich in d
 | Oude naam | Nieuwe naam |
 |:--- |:--- |
 | ITableOperations |[IDatasetOperations](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.idatasetoperations.aspx) |
-| Tabel |[Sets](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
+| Tabel |[Dataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
 | TableProperties |[DatasetProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetproperties.aspx) |
 | TableTypeProprerties |[DatasetTypeProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasettypeproperties.aspx) |
 | TableCreateOrUpdateParameters |[DatasetCreateOrUpdateParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters.aspx) |

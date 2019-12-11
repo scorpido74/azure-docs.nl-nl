@@ -1,6 +1,6 @@
 ---
-title: Daemon-app die web-Api's aanroept (naar productie)-micro soft Identity-platform
-description: Meer informatie over het bouwen van een daemon-app die web-Api's aanroept (verplaatsen naar productie)
+title: Web-Api's voor daemon-aanroepen naar productie verplaatsen-micro soft Identity-platform | Azure
+description: Meer informatie over het verplaatsen van een daemon-app die web-Api's aanroept voor productie
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05418cde7b31392c1a55f64945764e978daba1bf
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 961928499008445207df3a34a51fc016723c294b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175404"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962590"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Daemon-app voor het aanroepen van web-Api's-verplaatsen naar productie
 

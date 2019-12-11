@@ -1,60 +1,66 @@
 ---
-title: Opbouw functie voor gegevens stroom expressie koppelen
-description: De opbouw functie voor expressies voor het Azure Data Factory toewijzen van gegevens stromen
+title: Opbouw functie voor expressies in gegevens stroom toewijzen
+description: Expressies bouwen met de opbouw functie voor expressies in het toewijzen van gegevens stromen in Azure Data Factory
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 12/06/2019
-ms.openlocfilehash: 7d8f02647224c971c44bff51f09315c53c53e9a3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/9/2019
+ms.openlocfilehash: 01aa2574ac6edd1ce5e1b209eac3e43bbed82fce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928339"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969343"
 ---
-# <a name="mapping-data-flow-expression-builder"></a>Opbouw functie voor gegevens stroom expressie koppelen
+# <a name="building-expressions-in-mapping-data-flow"></a>Expressies bouwen in gegevens stroom toewijzen
 
+Bij het toewijzen van gegevens stroom worden veel trans formatie-eigenschappen ingevoerd als expressies. Deze expressies bestaan uit kolom waarden, para meters, functies, Opera tors en letterlijke tekens die tijdens de uitvoering resulteren in een Spark-gegevens type.
 
+## <a name="opening-the-expression-builder"></a>De opbouw functie voor expressies openen
 
-In Azure Data Factory gegevens stroom toewijzen vindt u expressie vakken waarin u expressies voor gegevens transformatie kunt invoeren. Gebruik kolommen, velden, variabelen, para meters, functies uit uw gegevens stroom in deze vakken. Als u de expressie wilt maken, gebruikt u de opbouw functie voor expressies, die wordt gestart door te klikken in het tekstvak expressie in de trans formatie. Soms ziet u ook de opties berekende kolom bij het selecteren van kolommen voor trans formatie. Als u hierop klikt, ziet u ook de opbouw functie voor expressies.
+De interface voor het bewerken van expressies in de data factory UX is bekend als de **opbouw functie voor expressies**. Bij het invoeren van de expressie logica gebruikt data factory [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense?view=vs-2019) -code voltooiing voor markeren, syntaxis controle en automatisch invullen.
 
 ![Opbouw functie voor expressies](media/data-flow/xpb1.png "Opbouwfunctie voor expressies")
 
-Het hulp programma Expression Builder wordt standaard ingesteld op de tekst editor optie. de functie voor automatisch aanvullen leest uit het hele Azure Data Factory data flow-object model met syntaxis controle en markering.
+In trans formaties zoals de afgeleide kolom en het filter, waar expressies verplicht zijn, opent u de opbouw functie voor expressies door te klikken op het blauwe expressievak.
 
-![Opbouw functie voor expressies automatisch aanvullen](media/data-flow/expb1.png "Opbouw functie voor expressies automatisch aanvullen")
+![Opbouw functie voor expressies](media/data-flow/expressionbox.png "Opbouwfunctie voor expressies")
 
-## <a name="build-schemas-in-output-schema-pane"></a>Schema's maken in het deel venster uitvoer schema
+Bij het verwijzen naar kolommen in een match of Group by-voor waarde, kan een expressie waarden uit kolommen ophalen. Als u een expressie wilt maken, selecteert u de optie berekende kolom.
 
-![Complexe kolom toevoegen](media/data-flow/complexcolumn.png "Kolommen toevoegen")
+![Opbouw functie voor expressies](media/data-flow/computedcolumn.png "Opbouwfunctie voor expressies")
 
-In het deel venster uitvoer schema links ziet u de kolommen die u wijzigt en aan uw schema toevoegt. U kunt hier interactief eenvoudige en complexe gegevens structuren bouwen. Voeg extra velden toe met behulp van kolom toevoegen en maak hiërarchieën met behulp van ' subkolom toevoegen '.
+In gevallen waarin een expressie of letterlijke waarde geldige invoer is, kunt u met ' dynamische inhoud toevoegen ' een expressie bouwen die resulteert in een letterlijke teken reeks.
 
-![Subkolom toevoegen](media/data-flow/addsubcolumn.png "Subkolom toevoegen")
+![Opbouw functie voor expressies](media/data-flow/add-dynamic-content.png "Opbouwfunctie voor expressies")
 
-## <a name="data-preview-in-debug-mode"></a>Voor beeld van gegevens in foutopsporingsmodus
+## <a name="expression-language-reference"></a>Naslag informatie voor expressie taal
+
+Het toewijzen van gegevens stromen heeft ingebouwde functies en Opera tors die kunnen worden gebruikt in expressies. U vindt een lijst met beschik bare functies op de pagina [toewijzing van gegevens stroom expressie taal](data-flow-expression-functions.md) .
+
+## <a name="column-names-with-special-characters"></a>Kolom namen met speciale tekens
+
+Wanneer u kolom namen hebt die speciale tekens of spaties bevatten, plaatst u de naam tussen accolades om ernaar te verwijzen in een expressie.
+
+```{[dbo].this_is my complex name$$$}```
+
+## <a name="previewing-expression-results"></a>Expressie resultaten weer geven
+
+Als de [foutopsporingsmodus-modus](concepts-data-flow-debug-mode.md) is ingeschakeld, kunt u het Live Spark-cluster gebruiken om een voor beeld te bekijken van de voortgang van de expressie. Wanneer u uw logica bouwt, kunt u in realtime fouten opsporen in uw expressie. 
 
 ![Opbouw functie voor expressies](media/data-flow/exp4b.png "Voor beeld van expressie gegevens")
 
-Wanneer u aan uw gegevensstroom expressies werkt, schakelt u over op de foutopsporingsmodus in het ontwerp oppervlak van de Azure Data Factory gegevens stroom, waardoor de resultaten van een live in voortgang van uw gegevens worden weer gegeven op basis van de expressie die u bouwt. Real-time live fout opsporing is ingeschakeld voor uw expressies.
-
-![Foutopsporingsmodus](media/data-flow/debugbutton.png "Knop fout opsporing")
-
-Klik op de knop Vernieuwen om de resultaten van uw expressie bij te werken met een live voor beeld van uw bron in realtime.
+Klik op de knop Vernieuwen om de resultaten van uw expressie bij te werken met een live voor beeld van uw bron.
 
 ![Opbouw functie voor expressies](media/data-flow/exp5.png "Voor beeld van expressie gegevens")
 
-## <a name="comments"></a>Opmerkingen
-
-Voeg opmerkingen toe aan uw expressies met behulp van de syntaxis voor één regel en een opmerking met meerdere regels:
-
-![Opmerkingen](media/data-flow/comments.png "Opmerkingen")
-
 ## <a name="string-interpolation"></a>Interpolatie van teken reeksen
 
-Gebruik dubbele aanhalings tekens om letterlijke teken reeks tekst samen met expressies te sluiten. U kunt expressie functies, kolommen en para meters toevoegen. Dit is zeer nuttig om te voor komen dat teken reeksen samen voegen als u para meters met een query teken reeks opgeeft.
+Gebruik dubbele aanhalings tekens om letterlijke teken reeks tekst samen met expressies te sluiten. U kunt expressie functies, kolommen en para meters toevoegen. Interpolatie van teken reeksen is handig om te voor komen dat teken reeks samenvoeging uitgebreid wordt gebruikt wanneer para meters in query reeksen worden opgenomen. Als u de syntaxis van de expressie wilt gebruiken, plaatst u deze tussen accolades,
+
+Enkele voor beelden van interpolatie van teken reeksen:
 
 * ```"My favorite movie is {iif(instr(title,', The')>0,"The {split(title,', The')[1]}",title)}"```
 
@@ -62,9 +68,28 @@ Gebruik dubbele aanhalings tekens om letterlijke teken reeks tekst samen met exp
 
 * ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
 
+## <a name="commenting-expressions"></a>Expressies voor opmerkingen
+
+Voeg opmerkingen toe aan uw expressies met behulp van de syntaxis voor één regel en een opmerking met meerdere regels:
+
+![Opmerkingen](media/data-flow/comments.png "Opmerkingen")
+
+Hieronder vindt u voor beelden van geldige opmerkingen:
+
+* ```/* This is my comment */```
+
+* ```/* This is a```
+*   ```multi-line comment */```
+   
+* ```// This is a single line comment```
+
+Als u een opmerking boven aan de expressie plaatst, wordt deze weer gegeven in het tekstvak trans formatie om uw transformatie expressies te documenteren:
+
+![Opmerkingen](media/data-flow/comments2.png "Opmerkingen")
+
 ## <a name="regular-expressions"></a>Reguliere expressies
 
-In de Azure Data Factory data flow-expressie taal, [volledige referentie documentatie](https://aka.ms/dataflowexpressions), kunt u hier functies gebruiken die een reguliere expressie syntaxis bevatten. Wanneer reguliere-expressie functies worden gebruikt, probeert de opbouw functie voor expressies backslashes (\\) als escape-teken reeks te interpreteren. Wanneer u backslashes in uw reguliere expressie gebruikt, moet u de volledige regex insluiten in Ticks (\`) of een dubbele back slash gebruiken.
+Veel expressie taal functies gebruiken reguliere expressie syntaxis. Wanneer reguliere-expressie functies worden gebruikt, probeert de opbouw functie voor expressies backslashes (\\) als escape-teken reeks te interpreteren. Wanneer u backslashes in uw reguliere expressie gebruikt, moet u de volledige regex insluiten in Ticks (\`) of een dubbele back slash gebruiken.
 
 Voor beeld met behulp van maat streepjes
 
@@ -84,50 +109,26 @@ Met expressie functies die matrices retour neren, gebruikt u vier Kante haken []
 
 ![Expression Builder-matrix](media/data-flow/expb2.png "Voor beeld van expressie gegevens")
 
-## <a name="handling-names-with-special-characters"></a>Namen verwerken met speciale tekens
-
-Wanneer u kolom namen hebt die speciale tekens of spaties bevatten, plaatst u de naam tussen accolades.
-* ```{[dbo].this_is my complex name$$$}```
-
 ## <a name="keyboard-shortcuts"></a>Toetsencombinaties
 
 * ```Ctrl-K Ctrl-C```: volledige regel commentaar
 * ```Ctrl-K Ctrl-U```: Opmerking opheffen
 * ```F1```: Help-opdrachten voor de editor opgeven
 * ```Alt-Down Arrow```: huidige regel omlaag verplaatsen
-* ```Alt-Up Arrow```: huidige regel omhoog verplaatsen
+* ```Alt-Up Arrow```: huidige regel verplaatsen
 * ```Cntrl-Space```: context afhankelijke Help weer geven
-
-## <a name="manual-comments"></a>Hand matige opmerkingen
-
-* ```/* This is my comment */```
-
-* ```/* This is a```
-*   ```multi-line comment */```
-   
-* ```// This is a single line comment```
-
-Als u een opmerking boven aan de expressie plaatst, wordt deze weer gegeven in het tekstvak trans formatie om uw transformatie expressies te documenteren:
-
-![Opmerkingen](media/data-flow/comments2.png "Opmerkingen")
 
 ## <a name="convert-to-dates-or-timestamps"></a>Converteren naar datums of tijds tempels
 
+Als u letterlijke teken reeksen wilt toevoegen aan de uitvoer van de tijds tempel, moet u de conversie in ```toString()```afronden.
+
 ```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
 
-Als u letterlijke teken reeksen wilt toevoegen aan de uitvoer van de tijds tempel, moet u de conversie binnen ```toString()```afronden.
-
-U kunt als volgt seconden omzetten van epoche naar een datum of tijds tempel:
+Gebruik `toTimestamp(<number of milliseconds>)`om milliseconden van de epoche om te zetten in een datum of tijds tempel. Als de tijd in seconden is, vermenigvuldigt u met 1000.
 
 ```toTimestamp(1574127407*1000l)```
 
-U ziet dat de volgende ' l ' aan het einde van de bovenstaande expressie wordt vermeld. Dit geeft aan dat de conversie zo lang als de regel syntaxis wordt genoemd.
-
-## <a name="handling-column-names-with-special-characters"></a>Verwerken van kolom namen met speciale tekens
-
-Wanneer u kolom namen hebt die speciale tekens of spaties bevatten, plaatst u de naam tussen accolades.
-
-```{[dbo].this_is my complex name$$$}```
+De achteraan ' l ' aan het einde van de bovenstaande expressie geeft een conversie naar een lang type als de regel syntaxis.
 
 ## <a name="next-steps"></a>Volgende stappen
 

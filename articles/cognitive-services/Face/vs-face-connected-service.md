@@ -1,32 +1,32 @@
 ---
-title: 'Zelfstudie: Face-API C#'
+title: 'Zelfstudie: Face API C#'
 titleSuffix: Azure Cognitive Services
-description: Maak een Windows-app die gebruikmaakt van de Cognitive Services Face-API voor het detecteren van functies van gezichten wordt uitgevoerd in een afbeelding.
+description: Maak een Windows-app die gebruikmaakt van de Cognitive Services Face-API om functies van gezichten in een installatie kopie te detecteren.
 services: cognitive-services
 author: ghogen
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: ghogen
-ms.openlocfilehash: 7907a79289149d9e165dd6df0c09bee596e624e2
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 4b204b9895a2afea4c78d1d92f2cca68f77ae708
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606802"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970292"
 ---
 # <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Verbinding maken met de Cognitive Service Face-API met behulp van Connected Services in Visual Studio
 
 Met behulp van de Cognitive Services Face-API, kunt u gezichten in foto's detecteren, analyseren, organiseren en taggen.
 
-Dit artikel en de bijbehorende artikelen bieden details voor het gebruik van de Visual Studio Connected Service-functie voor de Cognitive Services Face-API. De mogelijkheid is beschikbaar in Visual Studio 2017 15.7 of hoger wanneer de Cognitive Services-extensie is geïnstalleerd.
+Dit artikel en de bijbehorende artikelen bieden details voor het gebruik van de Visual Studio Connected Service-functie voor de Cognitive Services Face-API. De mogelijkheid is beschikbaar in Visual Studio 2017 15.7 of hoger, met de Cognitive Services-extensie geïnstalleerd.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-abonnement. Als u nog geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/pricing/free-trial/).
-- Visual Studio 2017 versie 15.7 of hoger met de **webontwikkeling** werkbelasting geïnstalleerd. [Download nu](https://www.visualstudio.com/downloads/).
+- Visual Studio 2017 versie 15,7 of hoger, waarbij de werk belasting voor **Web Development** is geïnstalleerd. [Download nu](https://www.visualstudio.com/downloads/).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -79,7 +79,7 @@ Dit artikel en de bijbehorende artikelen bieden details voor het gebruik van de 
       }
    ```
 
-1. Voeg in de wwwroot-map van uw project een afbeeldingenmap toe en voeg een afbeeldingsbestand toe aan de wwwroot-map. Een voorbeeld: u kunt een van de installatiekopieën gebruiken op deze [Face-API-pagina](https://azure.microsoft.com/services/cognitive-services/face/). Klik met de rechtermuisknop op een van de installatiekopieën, opslaan op uw lokale vaste schijf en klik in Solution Explorer met de rechtermuisknop op de afbeeldingenmap en kies **toevoegen** > **bestaand Item** toe te voegen aan uw project. Uw project ziet er ongeveer als volgt uit in Solution Explorer:
+1. Voeg in de wwwroot-map van uw project een afbeeldingenmap toe en voeg een afbeeldingsbestand toe aan de wwwroot-map. Een voorbeeld: u kunt een van de installatiekopieën gebruiken op deze [Face-API-pagina](https://azure.microsoft.com/services/cognitive-services/face/). Klik met de rechter muisknop op een van de installatie kopieën, sla het bestand op uw lokale harde schijf op, klik in Solution Explorer met de rechter muisknop op de map afbeeldingen en kies > **bestaand item** **toevoegen** om het toe te voegen aan uw project. Uw project ziet er ongeveer als volgt uit in Solution Explorer:
  
    ![afbeeldingenmap met afbeeldingsbestand](media/vs-face-connected-service/Cog-Face-Connected-Service-6.PNG)
 
@@ -147,7 +147,7 @@ Dit artikel en de bijbehorende artikelen bieden details voor het gebruik van de 
             });
         }
    ```
-    De code in deze stap wordt een HTTP-aanvraag met een aanroep naar de Face REST-API met behulp van de sleutel die u hebt toegevoegd toen u de gekoppelde service hebt toegevoegd.
+    De code in deze stap bouwt een HTTP-aanvraag met een aanroep naar het gezichts REST API met behulp van de sleutel die u hebt toegevoegd tijdens het toevoegen van de verbonden service.
 
 1. Voeg de helperfuncties GetImageAsByteArray en JsonPrettyPrint toe.
 

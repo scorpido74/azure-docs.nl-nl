@@ -1,6 +1,6 @@
 ---
-title: AngularJS-app met één pagina bouwen om u aan te melden en af te melden bij Azure AD | Microsoft Docs
-description: Meer informatie over het compileren van een AngularJS-app met één pagina die kan worden geïntegreerd met Azure AD voor aanmelden en Azure AD-beveiligde API-aanroepen met behulp van OAuth.
+title: Azure AD AngularJS-app met één pagina maken voor aanmelden & afmelden | Microsoft Docs
+description: Meer informatie over het bouwen van een AngularJS-app met één pagina die Azure AD integreert voor aanmelding & afmeldings & Azure AD-beveiligde Api's aanroept met behulp van OAuth.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8e97c985d0a19842e4a514705e3e34665eeb499
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6e66b51199d19ea6af2b88c48aa89a93c1ed731c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921240"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963525"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Snelstart: een AngularJS-app met één pagina compileren voor aanmelden en afmelden met Azure Active Directory
 

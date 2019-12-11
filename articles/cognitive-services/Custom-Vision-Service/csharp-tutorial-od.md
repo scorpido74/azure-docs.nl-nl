@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/08/2019
+ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 7baa3e2de00997496edb5b445f8426d899ac65a4
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: ed86a286051ba9240fe23951ef7cb72de1e96201
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383726"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74960567"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-net-sdk"></a>Snelstart: een objectdetectieproject maken met de .NET SDK van Custom Vision
 
-Dit artikel biedt informatie en voorbeeldcode om u op weg te helpen met de Custom Vision-SDK voor C# om een objectdetectiemodel te maken. Wanneer u het project hebt gemaakt, kunt u gelabelde regio's toevoegen, afbeeldingen uploaden, het project trainen, de standaardeindpunt-URL voor voorspellingen ophalen en het eindpunt gebruiken om afbeeldingen programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen .NET-toepassing te maken. 
+In dit artikel wordt beschreven hoe u met behulp van de Custom Vision C# SDK aan de slag gaat met het maken van een object detectie model. Wanneer u het project hebt gemaakt, kunt u gelabelde regio's toevoegen, afbeeldingen uploaden, het project trainen, de standaardeindpunt-URL voor voorspellingen ophalen en het eindpunt gebruiken om afbeeldingen programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen .NET-toepassing te maken. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -28,7 +28,7 @@ Dit artikel biedt informatie en voorbeeldcode om u op weg te helpen met de Custo
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>De Custom Vision-SDK en voorbeeldcode ophalen
 
-Als u een .NET-app wilt schrijven die gebruikmaakt van Custom Vision, hebt u de NuGet-pakketten van Custom Vision nodig. Deze pakketten zijn opgenomen in het voorbeeld project dat u wilt downloaden, maar u kunt ze hier afzonderlijk openen.
+Als u een .NET-app wilt schrijven die gebruikmaakt van Custom Vision, hebt u de NuGet-pakketten van Custom Vision nodig. Deze pakketten zijn opgenomen in het voorbeeld project dat u wilt downloaden, maar u kunt deze afzonderlijk openen.
 
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
@@ -41,7 +41,7 @@ Met dit Visual Studio-project wordt een nieuw Custom Vision-project gemaakt met 
 
 ## <a name="understand-the-code"></a>De code begrijpen
 
-Open het bestand _Program.cs_ en inspecteer de code. [Maak omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor uw trainings-en Voorspellings sleutels met de naam `CUSTOM_VISION_TRAINING_KEY` en `CUSTOM_VISION_PREDICTION_KEY`. Het script zoekt naar deze.
+Open het bestand _Program.cs_ en inspecteer de code. [Maak omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor uw trainings-en Voorspellings sleutels met de naam `CUSTOM_VISION_TRAINING_KEY` en `CUSTOM_VISION_PREDICTION_KEY`. Het script zoekt naar deze variabelen.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_keys)]
 
@@ -70,7 +70,7 @@ Vervolgens wordt deze kaart met koppelingen gebruikt om elke voorbeeldafbeelding
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_upload)]
 
-Op dit punt aangekomen, zijn alle voorbeeldafbeeldingen geüpload en hebben ze allemaal een label (**vork** of **schaar**) en een bijbehorend, uit pixels bestaande rechthoek voor dat label.
+U hebt nu alle voor beelden van afbeeldingen geüpload en elke afbeelding (**Fork** of **schaar**) voorzien van een gekoppelde pixel rechthoek.
 
 ### <a name="train-the-project"></a>Het project trainen
 
@@ -114,7 +114,7 @@ Vervolgens kunt u controleren of de testafbeelding (gevonden in **Images/Test/**
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu gezien hoe elke stap van het objectdetectieproces in code kan worden uitgevoerd. Met dit voorbeeld wordt één trainingsinteratie uitgevoerd, maar vaak zult u uw model meerdere keren willen trainen en testen om het nauwkeuriger te maken. In de volgende handleiding wordt classificatie van afbeeldingen behandeld. De principes zijn soortgelijk aan die van objectdetectie.
+U hebt nu gezien hoe u elke stap van het object detectie proces in code kunt uitvoeren. In dit voor beeld wordt één trainings iteratie uitgevoerd, maar vaak moet u het model meerdere keren trainen en testen om het nauw keuriger te maken. In de volgende handleiding wordt classificatie van afbeeldingen behandeld. De principes zijn soortgelijk aan die van objectdetectie.
 
 > [!div class="nextstepaction"]
 > [Een model testen en opnieuw trainen](test-your-model.md)

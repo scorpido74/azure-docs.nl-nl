@@ -4,16 +4,16 @@ description: Gegevens exporteren uit uw Azure IoT Central-toepassing naar Azure 
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 10/15/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 35415fd1a552328faa8d1ad5812f44d8f4b6d5e4
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1aac5af916e414178676a1caf42fead41109de68
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894862"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974458"
 ---
 # <a name="export-your-azure-iot-central-data-preview-features"></a>Uw Azure IoT Central-gegevens exporteren (preview-functies)
 
@@ -37,7 +37,7 @@ U moet een beheerder zijn in uw IoT Central-toepassing
 
 Het export doel moet bestaan voordat u de continue gegevens export configureert.
 
-### <a name="create-event-hubs-namespace"></a>Event Hubs naam ruimte maken
+### <a name="create-event-hubs-namespace"></a>De Event Hubs-naamruimte maken
 
 Als u geen bestaande Event Hubs naam ruimte hebt om naar te exporteren, voert u de volgende stappen uit:
 
@@ -195,7 +195,7 @@ Elk bericht of record in een moment opname vertegenwoordigt een of meer wijzigin
 - `name` van het apparaat
 - `deviceId` van [Device Provisioning Service](../core/howto-connect-nodejs.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json)
 - Informatie over de apparaatprofiel
-- Eigenschaps waarden
+- Waarden van eigenschappen
 
 De sjabloon van het apparaat waartoe elk apparaat behoort, wordt vertegenwoordigd door de `instanceOf`. Als u de naam en aanvullende informatie over de Device-sjabloon wilt ophalen, moet u de gegevens van de apparaatgegevens ook exporteren.
 
@@ -310,7 +310,7 @@ Dit is een voor beeld van een moment opname met de gegevens apparaten en eigensc
 }
 ```
 
-## <a name="device-templates"></a>Apparaatinstellingen
+## <a name="device-templates"></a>Apparaatsjablonen
 
 Elk bericht of momentopname record vertegenwoordigt een of meer wijzigingen aan een apparaatprofiel sinds het laatste geëxporteerde bericht. De informatie die in elk bericht of record wordt verzonden, omvat:
 

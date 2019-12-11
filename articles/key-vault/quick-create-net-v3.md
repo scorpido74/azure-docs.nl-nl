@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 11/05/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 660235331c2c2d800b52f6e29d0011b9616a748c
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 29e1af5f23b2167a524872731490b5862a14e5c1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158490"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975394"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>Snelstartgids: Azure Key Vault-client bibliotheek voor .NET (SDK v3)
 
@@ -20,7 +20,7 @@ Ga aan de slag met de Azure Key Vault-client bibliotheek voor .NET. Volg de onde
 > [!NOTE]
 > In deze Quick Start wordt de v 3.0.4-versie van de client bibliotheek voor micro soft. Azure.-kluis gebruikt. Zie [Azure Key Vault-client bibliotheek voor .net (SDK v4)](quick-create-net.md)voor het gebruik van de meest recente versie van de Key Vault-client bibliotheek. 
 
-Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-client bibliotheek voor .NET voor het volgende:
+Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-client bibliotheek voor .NET voor het volgende:
 
 - Verbeter de beveiliging en controle over sleutels en wacht woorden.
 - Versleutelings sleutels maken en importeren in een paar minuten.
@@ -139,7 +139,7 @@ Met de Azure Key Vault-client bibliotheek voor .NET kunt u sleutels en gerelatee
 
 De volledige console-app is beschikbaar op https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet.
 
-## <a name="code-examples"></a>Code voorbeelden
+## <a name="code-examples"></a>Codevoorbeelden
 
 ### <a name="add-directives"></a>Instructies toevoegen
 
@@ -190,7 +190,7 @@ Uw geheim wordt nu opgeslagen als `keyvaultSecret.Value;`.
 Wanneer u deze niet meer nodig hebt, kunt u de Azure CLI of Azure PowerShell gebruiken om uw sleutel kluis en de bijbehorende resource groep te verwijderen.
 
 ```azurecli
-az group delete -g "myResourceGroup" -l "EastUS" 
+az group delete -g "myResourceGroup"
 ```
 
 ```azurepowershell

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0463ffad87d00421c2fcb5c8357406d5f692144
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a4c85fbc2c1f926f89dbfe9f2a5ae47cc48edf73
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075332"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966274"
 ---
 # <a name="what-is-conditional-access"></a>Wat is voorwaardelijke toegang?
 
@@ -26,7 +26,7 @@ Voorwaardelijke toegang is het hulp programma dat wordt gebruikt door Azure Acti
 
 ![Conceptuele voorwaardelijke signalen plus beslissing voor het afdwingen van afdwinging](./media/overview/conditional-access-signal-decision-enforcement.png)
 
-Beleids regels voor voorwaardelijke toegang op hun eenvoudigste manier zijn als-then-instructies, als een gebruiker toegang wil tot een resource, dan moeten ze een actie volt ooien. Voorbeeld: Een salaris beheerder wil toegang tot de salaris toepassing en is vereist voor het uitvoeren van multi-factor Authentication voor toegang.
+Beleids regels voor voorwaardelijke toegang op hun eenvoudigste manier zijn als-then-instructies, als een gebruiker toegang wil tot een resource, dan moeten ze een actie volt ooien. Voor beeld: een salaris beheerder wil toegang tot de salaris toepassing en is vereist voor het uitvoeren van multi-factor Authentication voor toegang.
 
 Beheerders worden geconfronteerd met twee primaire doel stellingen:
 
@@ -59,7 +59,7 @@ Veelvoorkomende signalen die bij het maken van een beleids beslissing kunnen wor
 
 ## <a name="common-decisions"></a>Algemene beslissingen
 
-- Toegang blokkeren
+- Toegang blok keren
    - Meest beperkend besluit
 - Toegang verlenen
    - Er kunnen nog steeds een of meer van de volgende opties worden vereist:
@@ -80,6 +80,13 @@ Veel organisaties hebben algemene toegangs problemen die het beleid voor voorwaa
 - Toegang vanaf specifieke locaties blok keren of verlenen
 - Risk ante aanmeldingen blok keren
 - Door de organisatie beheerde apparaten vereisen voor specifieke toepassingen
+
+## <a name="customer-case-studies"></a>Casestudy's van klanten
+
+Ontdek hoe andere organisaties voorwaardelijke toegang van Azure AD gebruiken voor het definiëren en implementeren van geautomatiseerde beslissingen voor toegangs beheer. De volgende verhalen laten zien hoe deze klant aan deze behoeften voldoet.
+
+* [Wipro verstuurt mobiele productiviteit met micro soft Cloud security tools om klant afspraken te verbeteren.](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Het beleid voor voorwaardelijke toegang in azure AD heeft het bedrijf in staat gesteld om documenten, resources en toepassingen te delen met behulp van vertrouwde externe entiteiten---die hun eigen referenties kunnen gebruiken---met behoud van de controle over de eigen bedrijfs gegevens.
+* [Aramex Delivery Limited-wereld wijd logistiek en transport bedrijf maakt met de Cloud verbonden Office met identiteits-en toegangs beheer oplossing](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en). Het garanderen van beveiligde toegang is met name lastig bij de externe werk nemers van Aramex. Het bedrijf past nu voorwaardelijke toegang toe om deze externe werk nemers toegang te geven tot hun SaaS-toepassingen van buiten het netwerk. De regel voor voorwaardelijke toegang bepaalt of Multi-Factor Authentication moet worden afgedwongen, zodat alleen de juiste personen de juiste toegang geven.
 
 ## <a name="license-requirements"></a>Licentievereisten
 
