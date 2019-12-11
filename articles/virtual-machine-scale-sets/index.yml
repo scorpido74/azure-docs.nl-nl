@@ -10,8 +10,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/14/2018
   ms.author: gwallace
-abstract:
-  description: 'Met schaalsets van virtuele Azure-machines kunt u een groep identieke, automatisch schalende VM''s met gelijke taakverdeling maken en beheren. Ontdek met onze snelstarts, zelfstudies en voorbeelden hoe u virtuele-machinesschaalsets maakt, configureert, beheert en automatisch schaalt.'
+  description: Met schaalsets van virtuele Azure-machines kunt u een groep automatisch schalende VM's met gelijke taakverdeling maken en beheren.
 sections:
   - title: Snelstartgidsen
     items:

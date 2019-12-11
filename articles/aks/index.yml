@@ -65,6 +65,7 @@ sections:
           - html: <a href="/azure/aks/tutorial-kubernetes-scale">Een toepassing en Kubernetes-infrastructuur schalen</a>
           - html: <a href="/azure/aks/tutorial-kubernetes-app-update">Een toepassing die wordt uitgevoerd in Kubernetes bijwerken</a>
           - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">Een AKS-cluster upgraden</a>
+          - html: <a href="/azure/architecture/reference-architectures/microservices/aks">Leer de referentiearchitectuur voor microservices kennen en implementeer deze</a>
   - title: Uw vaardigheden ontwikkelen met Microsoft Learn
     items:
       - type: list

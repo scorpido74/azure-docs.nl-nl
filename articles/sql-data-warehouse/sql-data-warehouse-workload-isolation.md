@@ -11,12 +11,12 @@ ms.date: 11/27/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 51990e02eada52263006627be803c4073b9361ac
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 82270c126d8a0894cd3a388dcab62017ed63c2cd
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555409"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974645"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>Isolatie groep van SQL Data Warehouse werk belasting (preview-versie)
 
@@ -24,13 +24,13 @@ In dit artikel wordt uitgelegd hoe werkbelasting groepen kunnen worden gebruikt 
 
 ## <a name="workload-groups"></a>Werkbelasting groepen
 
-Werkbelasting groepen zijn containers voor een set aanvragen en vormen de basis voor de manier waarop werkbelasting beheer, waaronder isolatie van werk belasting, is geconfigureerd op een systeem.  Werkbelasting groepen worden gemaakt met de syntaxis [WERKBELASTING groep maken](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  Een eenvoudige configuratie van werkbelasting beheer kan het laden van gegevens en gebruikers query's beheren.  Bijvoorbeeld, een werkbelasting groep met de naam `wgDataLoads` definieert werkbelasting aspecten voor gegevens die in het systeem worden geladen. Daarnaast worden met een werkbelasting groep met de naam `wgUserQueries` werkbelasting aspecten gedefinieerd voor gebruikers die query's uitvoeren om gegevens van het systeem te lezen.
+Werkbelasting groepen zijn containers voor een set aanvragen en vormen de basis voor de manier waarop werkbelasting beheer, waaronder isolatie van werk belasting, is geconfigureerd op een systeem.  Werkbelasting groepen worden gemaakt met de syntaxis [WERKBELASTING groep maken](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  Een eenvoudige configuratie van werkbelasting beheer kan het laden van gegevens en gebruikers query's beheren.  Bijvoorbeeld, een werkbelasting groep met de naam `wgDataLoads` definieert werkbelasting aspecten voor gegevens die in het systeem worden geladen. Daarnaast worden met een werkbelasting groep met de naam `wgUserQueries` werkbelasting aspecten gedefinieerd voor gebruikers die query's uitvoeren om gegevens van het systeem te lezen.
 
 In de volgende secties wordt uitgelegd hoe werkbelasting groepen de mogelijkheid bieden om isolatie, containment en de resource definitie van de aanvraag te definiëren en om uitvoerings regels aan te houden.
 
 ## <a name="workload-isolation"></a>Isolatie van workloads
 
-Isolatie van werk belasting betekent dat resources gereserveerd zijn, uitsluitend voor een werkbelasting groep.  De isolatie van de werk belasting wordt bereikt door de para meter MIN_PERCENTAGE_RESOURCE in te stellen op een waarde groter dan nul in de syntaxis van de [groep werk belasting maken](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  Voor doorlopende uitvoerings werkbelastingen die moeten voldoen aan de strakke Sla's, wordt door isolatie gegarandeerd dat resources altijd beschikbaar zijn voor de werkbelasting groep. 
+Isolatie van werk belasting betekent dat resources gereserveerd zijn, uitsluitend voor een werkbelasting groep.  De isolatie van de werk belasting wordt bereikt door de para meter MIN_PERCENTAGE_RESOURCE in te stellen op een waarde groter dan nul in de syntaxis van de [groep werk belasting maken](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  Voor doorlopende uitvoerings werkbelastingen die moeten voldoen aan de strakke Sla's, wordt door isolatie gegarandeerd dat resources altijd beschikbaar zijn voor de werkbelasting groep. 
 
 Door workload-isolatie te configureren, wordt impliciet een gegarandeerd niveau van gelijktijdigheid gedefinieerd.  Als een MIN_PERCENTAGE_RESOURCE is ingesteld op 30% en REQUEST_MIN_RESOURCE_GRANT_PERCENT is ingesteld op 2%, wordt een 15-gelijktijdigheids niveau gegarandeerd voor de werkbelasting groep.  Bekijk de onderstaande methode voor het bepalen van gegarandeerde gelijktijdigheid:
 
@@ -50,7 +50,7 @@ Gebruikers moeten een beheer oplossing voor werk belastingen voor komen die 100%
 
 ## <a name="workload-containment"></a>Containment-werk belasting
 
-Insluiting van de werk belasting verwijst naar het beperken van de hoeveelheid resources die een werkbelasting groep mag verbruiken.  Het opnemen van de werk belasting wordt bereikt door de CAP_PERCENTAGE_RESOURCE-para meter in te stellen op minder dan 100 in de syntaxis voor het maken van een [WERKBELASTING groep](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  Denk na over het scenario waarmee gebruikers lees toegang tot het systeem nodig hebben, zodat ze een What-if-analyse kunnen uitvoeren via ad-hoc query's.  Deze typen aanvragen kunnen een negatieve invloed hebben op andere workloads die op het systeem worden uitgevoerd.  Het configureren van de insluiting zorgt ervoor dat de hoeveelheid resources beperkt is.
+Insluiting van de werk belasting verwijst naar het beperken van de hoeveelheid resources die een werkbelasting groep mag verbruiken.  Het opnemen van de werk belasting wordt bereikt door de CAP_PERCENTAGE_RESOURCE-para meter in te stellen op minder dan 100 in de syntaxis voor het maken van een [WERKBELASTING groep](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  Denk na over het scenario waarmee gebruikers lees toegang tot het systeem nodig hebben, zodat ze een What-if-analyse kunnen uitvoeren via ad-hoc query's.  Deze typen aanvragen kunnen een negatieve invloed hebben op andere workloads die op het systeem worden uitgevoerd.  Het configureren van de insluiting zorgt ervoor dat de hoeveelheid resources beperkt is.
 
 Het configureren van een workload-containment definieert impliciet een maximum niveau van gelijktijdigheid.  Als een CAP_PERCENTAGE_RESOURCE is ingesteld op 60% en een REQUEST_MIN_RESOURCE_GRANT_PERCENT is ingesteld op 1%, is er Maxi maal 60-gelijktijdigheids niveau toegestaan voor de werkbelasting groep.  Bekijk de onderstaande methode voor het bepalen van de maximale gelijktijdigheid:
 
@@ -61,7 +61,7 @@ Het configureren van een workload-containment definieert impliciet een maximum n
 
 ## <a name="resources-per-request-definition"></a>Definitie van resources per aanvraag
 
-Werkbelasting groepen bieden een mechanisme voor het definiëren van de minimum-en maximum hoeveelheid resources die worden toegewezen per aanvraag met de REQUEST_MIN_RESOURCE_GRANT_PERCENT en REQUEST_MAX_RESOURCE_GRANT_PERCENT para meters in de syntaxis van de [WERKBELASTING groep maken](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  Resources in dit geval zijn CPU en geheugen.  Als deze waarden worden geconfigureerd, wordt bepaald hoeveel resources en welk niveau van gelijktijdigheid op het systeem kunnen worden behaald.
+Werkbelasting groepen bieden een mechanisme voor het definiëren van de minimum-en maximum hoeveelheid resources die worden toegewezen per aanvraag met de REQUEST_MIN_RESOURCE_GRANT_PERCENT en REQUEST_MAX_RESOURCE_GRANT_PERCENT para meters in de syntaxis van de [WERKBELASTING groep maken](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  Resources in dit geval zijn CPU en geheugen.  Als deze waarden worden geconfigureerd, wordt bepaald hoeveel resources en welk niveau van gelijktijdigheid op het systeem kunnen worden behaald.
 
 > [!NOTE] 
 > REQUEST_MAX_RESOURCE_GRANT_PERCENT is een optionele para meter die wordt ingesteld op de waarde die is opgegeven voor REQUEST_MIN_RESOURCE_GRANT_PERCENT.
@@ -75,7 +75,7 @@ Als u REQUEST_MAX_RESOURCE_GRANT_PERCENT configureert met een waarde die groter 
 
 ## <a name="execution-rules"></a>Uitvoerings regels
 
-In AD-hocrapportage kunnen klanten per ongeluk overmatige query's uitvoeren die de productiviteit van anderen aanzienlijk beïnvloeden.  Systeem beheerders worden gedwongen tijd te best Eden aan het doden van overmatige query's om systeem bronnen vrij te maken.  Werkbelasting groepen bieden de mogelijkheid om een time-outregel voor het uitvoeren van query's te configureren om query's te annuleren die de opgegeven waarde hebben overschreden.  De regel wordt geconfigureerd door de para meter `QUERY_EXECUTION_TIMEOUT_SEC` in te stellen in de syntaxis voor het maken van een [WERKBELASTING groep](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .
+In AD-hocrapportage kunnen klanten per ongeluk overmatige query's uitvoeren die de productiviteit van anderen aanzienlijk beïnvloeden.  Systeem beheerders worden gedwongen tijd te best Eden aan het doden van overmatige query's om systeem bronnen vrij te maken.  Werkbelasting groepen bieden de mogelijkheid om een time-outregel voor het uitvoeren van query's te configureren om query's te annuleren die de opgegeven waarde hebben overschreden.  De regel wordt geconfigureerd door de para meter `QUERY_EXECUTION_TIMEOUT_SEC` in te stellen in de syntaxis voor het maken van een [WERKBELASTING groep](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .
 
 ## <a name="shared-pool-resources"></a>Bronnen van gedeelde groep
 
@@ -88,5 +88,5 @@ Toegang tot resources in de gedeelde groep wordt op basis van [urgentie](sql-dat
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Snelstartgids: isolatie van werk belasting configureren](quickstart-configure-workload-isolation-tsql.md)
-- [WERKBELASTING GROEP MAKEN](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
+- [WERKBELASTING GROEP MAKEN](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
 - [Resource klassen omzetten in werkbelasting groepen](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md).

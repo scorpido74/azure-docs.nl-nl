@@ -3,7 +3,7 @@ documentType: LandingData
 title: Documentatie voor Virtual Machines
 metadata:
   document_id: na
-  title: 'Documentatie voor virtuele Azure-machines - zelfstudies, API-verwijzing | Microsoft Docs'
+  title: 'Documentatie voor virtuele machines in Azure - zelfstudies, API-verwijzing'
   meta.description: 'Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.'
   services: virtual-machines
   author: georgewallace
@@ -13,8 +13,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: gwallace
-abstract:
-  description: 'Meer informatie over het maken van virtuele Azure-machines. Zelfstudies, API-verwijzingen en andere documentatie laten zien hoe u virtuele Windows- en Linux-machines en complexe VM-sjablonen maakt en implementeert.'
+  description: Informatie over hoe u virtuele Linux- en Windows-machines maakt in Azure.
 sections:
   - title: null
     items:

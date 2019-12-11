@@ -1,18 +1,18 @@
 ---
 title: Aangepaste toewijzings beleid met Azure IoT Hub Device Provisioning Service
-description: Aangepaste toewijzings beleid gebruiken met de Azure-IoT Hub Device Provisioning Service
+description: Aangepaste toewijzings beleid gebruiken met Azure IoT Hub Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 2a17cc6c9f2211de31d4551bd12e6c832d4eee38
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b6b7d4614d3c63fe93e213fb830b85d0b7f9c474
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228742"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974867"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Aangepaste toewijzings beleid gebruiken
 
@@ -96,7 +96,7 @@ In deze sectie gebruikt u de Azure Cloud Shell voor het maken van een inrichting
 
 In deze sectie maakt u een Azure-functie waarmee u uw aangepaste toewijzings beleid implementeert. Deze functie bepaalt welke divisie een apparaat moet worden geregistreerd op basis van de vraag of de registratie-ID de teken reeks **-Contoso-tstrsd-007** of **-Contoso-hpsd-088**bevat. Ook wordt de initiële status van het apparaat bepaald op basis van het feit of het apparaat een pop-upprogramma of een hitte pomp is.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer op uw start pagina **+ een resource maken**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer op uw start pagina **+ een resource maken**.
 
 2. Typ ' functie-app ' in het zoekvak *Zoeken in Marketplace* . Selecteer **functie-app**in de vervolg keuzelijst en selecteer vervolgens **maken**.
 

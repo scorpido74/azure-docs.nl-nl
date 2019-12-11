@@ -7,16 +7,16 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: aliceku
-ms.author: aliceku
+author: jaszymas
+ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: b318d4b5076ff24612d5b5ce0ba619f0b38ac280
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c9f59eb8c299eb9319694d392c2b5d1d814ed9b8
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483847"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997323"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Een overzicht van Azure SQL Database beveiligings mogelijkheden
 
@@ -132,17 +132,17 @@ SQL Database dynamische gegevens maskering beperkt de bloot stelling van gevoeli
 
 ## <a name="security-management"></a>Beveiligingsbeheer
 
-### <a name="vulnerability-assessment"></a>Beoordeling van beveiligingslekken
+### <a name="vulnerability-assessment"></a>Evaluatie van beveiligingsproblemen
 
 [Evaluatie van beveiligings problemen](sql-vulnerability-assessment.md) is een eenvoudig te configureren service waarmee mogelijke beveiligings problemen met een Data Base kunnen worden gedetecteerd, gevolgd en opgelost, waardoor de algehele beveiliging van de data base proactief wordt verbeterd. De evaluatie van beveiligings problemen (VA) maakt deel uit van de aanbieding voor geavanceerde gegevens beveiliging (ADS), een uniform pakket voor geavanceerde SQL-beveiligings mogelijkheden. De evaluatie van beveiligings problemen kan worden geopend en beheerd via de centrale SQL ADS-Portal.
 
 ### <a name="data-discovery--classification"></a>Gegevensdetectie en -classificatie
 
-Gegevens detectie & classificatie (momenteel in Preview) biedt geavanceerde mogelijkheden die zijn ingebouwd in Azure SQL Database voor het detecteren, classificeren, labelen en beveiligen van gevoelige gegevens in uw data bases. Het detecteren en classificeren van uw meest gevoelige gegevens (bedrijfs-en financiële, gezondheids zorg, persoonlijke gegevens, enz.) kunnen een rol draaien in uw organisatie voor Information Protection stature. Dit kan dienen als infra structuur voor:
+Gegevens detectie & classificatie (momenteel in Preview) biedt geavanceerde mogelijkheden die zijn ingebouwd in Azure SQL Database voor het detecteren, classificeren, labelen en beveiligen van gevoelige gegevens in uw data bases. Het detecteren en classificeren van uw meest gevoelige gegevens (bedrijfs-en financiële, gezondheids zorg, persoonlijke gegevens, enz.) kunnen een rol draaien in uw organisatie voor Information Protection stature. Dit kan dienen als infrastructuur om:
 
 - Diverse beveiligings scenario's, zoals controle (controle) en waarschuwingen over afwijkende toegang tot gevoelige gegevens.
 - Het beheren van toegang tot en het beveiligen van de beveiliging van data bases met zeer gevoelige gegevens.
-- Helpt te voldoen aan de normen voor gegevens beveiliging en naleving van regelgeving.
+- Te helpen voldoen aan standaarden op het gebied van gegevensbescherming en aan vereisten voor naleving van regelgeving.
 
 Zie [aan de slag met gegevens detectie & classificatie](sql-database-data-discovery-and-classification.md)voor meer informatie.
 

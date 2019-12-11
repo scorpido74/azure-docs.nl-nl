@@ -972,6 +972,8 @@
           href: access-secrets-from-keyvault.md
         - name: Verificatie op basis van certificaat met Azure AD
           href: certificate-based-authentication.md
+        - name: Gebruikerstoegang beperken tot alleen gegevensbewerkingen
+          href: how-to-restrict-user-data.md
     - name: Gereedheid voor bedrijven
       items:
         - name: Gegevens herstellen vanaf back-up

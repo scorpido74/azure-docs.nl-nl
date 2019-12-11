@@ -82,7 +82,11 @@
         - name: Beveiligingsoverzicht
           href: overview-security.md
     - name: Netwerkfuncties
-      href: networking-features.md
+      items:
+        - name: Overzicht
+          href: networking-features.md
+        - name: Application Gateway met service-eindpunten
+          href: networking/app-gateway-with-service-endpoints.md
     - name: Inkomende en uitgaande IP-adressen
       href: overview-inbound-outbound-ips.md
     - name: Integratie van virtueel netwerk

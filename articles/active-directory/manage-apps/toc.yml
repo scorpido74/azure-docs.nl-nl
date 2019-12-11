@@ -387,8 +387,10 @@
           href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: HR-inrichting in de cloud
       items:
-        - name: Verwijzingen van SuccessFactors-kenmerken
+        - name: Verwijzing naar SuccessFactors-kenmerken
           href: sap-successfactors-attribute-reference.md
+        - name: Verwijzing naar Workday-kenmerk
+          href: workday-attribute-reference.md
     - name: Azure AD Connect-inrichtingsagent
       items:
         - name: Versiegeschiedenis van de inrichtingsagent
