@@ -1,6 +1,6 @@
 ---
-title: Aan de slag met Android-micro soft-identiteits platform | Azure
-description: Hoe een Android-app een toegangs token kan verkrijgen en Microsoft Graph API of Api's aanroept waarvoor toegangs tokens van micro soft Identity platform zijn vereist.
+title: Aanmelden gebruikers & Call Microsoft Graph (Android)-micro soft Identity-platform | Azure
+description: Een toegangs Token ophalen en Microsoft Graph of Api's aanroepen waarvoor toegangs tokens zijn vereist van micro soft Identity platform (Android)
 services: active-directory
 documentationcenter: dev-center-name
 author: tylermsft
@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5417c29b62414468064338a67b188c7b7f832ac5
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 7feefc368815b1bfe57b67db2cd94702db799d78
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242214"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961554"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Zelf studie: gebruikers aanmelden en de Microsoft Graph aanroepen vanuit een Android-app
 
@@ -125,7 +125,7 @@ In deze zelf studie wordt een nieuw project gemaakt. Als u in plaats daarvan de 
 
 ### <a name="create-the-apps-ui"></a>De gebruikers interface van de app maken
 
-1. Ga in het venster Android Studio project naar **app** > **src** > **Main** > **Res** > **Layout** en open **activity_main. XML** en open de **tekst** weergave.
+1. Navigeer in het venster Android Studio project naar **app** > **src** > **Main** > **Res** > **Layout** en open **activity_main. XML** en open de **tekst** weergave.
 2. Wijzig de indeling van de activiteit, bijvoorbeeld: `<androidx.coordinatorlayout.widget.CoordinatorLayout` aan `<androidx.coordinatorlayout.widget.DrawerLayout`. 
 3. Voeg de eigenschap `android:orientation="vertical"` toe aan het knoop punt `LinearLayout`.
 4. Plak de volgende code in het knoop punt `LinearLayout` en vervang de huidige inhoud:
@@ -543,7 +543,7 @@ Bouw en implementeer de app op een test apparaat of emulator. U moet zich kunnen
 
 Nadat u zich hebt aangemeld, worden in de app de gegevens weer gegeven die door de Microsoft Graph `/me` eind punt zijn geretourneerd.
 
-### <a name="consent"></a>Vergunning
+### <a name="consent"></a>vergunning
 
 De eerste keer dat een gebruiker zich bij uw app aanmeldt, wordt de micro soft-identiteit gevraagd om toestemming te geven voor de aangevraagde machtigingen.  Hoewel de meeste gebruikers kunnen worden gemachtigd, hebben sommige Azure AD-tenants de toestemming van de gebruiker uitgeschakeld. hiervoor moeten beheerders toestemming geven namens alle gebruikers. Als u dit scenario wilt ondersteunen, moet u de scopes van uw app registreren in de Azure Portal.
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 615c10357e099b547008b128ca5f5a773ff1aa14
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: ae1e537665739c055121fd82cf14f733a90142e4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158320"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964188"
 ---
 # <a name="tutorial-integrate-dropbox-for-business-with-azure-active-directory"></a>Zelf studie: Dropbox voor bedrijven integreren met Azure Active Directory
 
@@ -44,7 +44,7 @@ U hebt de volgende items nodig om aan de slag te gaan:
 
 * In deze zelf studie configureert en test u Azure AD SSO in een test omgeving. Dropbox voor Bedrijven ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 
-* Dropbox voor Bedrijven ondersteunt het **Just In Time** inrichten van gebruikers
+* Dropbox voor bedrijven ondersteunt [automatische gebruikers inrichting en](dropboxforbusiness-tutorial.md) het ongedaan maken van de inrichting
 
 ## <a name="adding-dropbox-for-business-from-the-gallery"></a>Dropbox voor Bedrijven toevoegen vanuit de galerie
 
@@ -157,7 +157,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam Julia S
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `Britta Simon` in.  
-   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `BrittaSimon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `BrittaSimon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Maken**.
 

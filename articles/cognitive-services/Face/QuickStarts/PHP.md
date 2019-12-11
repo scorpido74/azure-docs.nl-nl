@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Gezichten in een afbeelding detecteren met de REST API en PHP'
+title: 'Snelstart: Gezichten in een afbeelding detecteren met de REST API en PHP'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart detecteert u gezichten in een afbeelding met behulp van de Face-API met PHP.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a0704f9e9a77eba2eb0d4f00bc1d880011e767de
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: fb9539c8aa0477cbfbf11ce08635e4e9ccebb2ce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859211"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977927"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Quickstart: Gezichten in een afbeelding detecteren met de REST API en PHP
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Snelstart: Gezichten in een afbeelding detecteren met de REST API en PHP
 
 In deze quickstart gebruikt u de Azure Face REST API met PHP om menselijke gezichten in een afbeelding te detecteren.
 
@@ -25,7 +25,7 @@ In deze quickstart gebruikt u de Azure Face REST API met PHP om menselijke gezic
 
 - Een Face-API-abonnementssleutel. U kunt een abonnementssleutel voor een gratis proefversie downloaden van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op de Face-API-service en uw sleutel op te halen.
 - Een code-editor, zoals [Visual Studio code](https://code.visualstudio.com/download).
-- Het PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) -pakket.
+- Het PHP- [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) pakket.
 - Een webbrowser met PHP-functionaliteit. Als u dit niet hebt ingesteld, kunt u dit doen door [XAMPP](https://www.apachefriends.org/) op uw computer te installeren en in te stellen.
 
 ## <a name="initialize-the-html-file"></a>Het HTML-bestand initialiseren
@@ -99,7 +99,7 @@ catch (HttpException $ex)
 ?>
 ```
 
-U moet het `subscriptionKey` veld bijwerken met de waarde van uw abonnements sleutel en u moet de `uriBase` teken reeks wijzigen zodat deze de juiste eindpunt teken reeks bevat. Het veld `returnFaceAttributes` geeft op welke gezichtskenmerken moeten worden opgehaald. U kunt deze queryreeks wijzigen afhankelijk van het beoogde gebruik.
+U moet het `subscriptionKey` veld bijwerken met de waarde van uw abonnements sleutel en u moet de teken reeks van de `uriBase` wijzigen zodat deze de juiste eindpunt teken reeks bevat. Het veld `returnFaceAttributes` geeft op welke gezichtskenmerken moeten worden opgehaald. U kunt deze queryreeks wijzigen afhankelijk van het beoogde gebruik.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

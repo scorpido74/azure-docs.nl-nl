@@ -1,19 +1,19 @@
 ---
 title: Zelf studie voor het maken, bouwen, & implementeren van Smart contracten-Azure Block Chain-Service
 description: Zelf studie over het gebruik van de Azure Block Chain Development Kit voor Ethereum-extensie in Visual Studio code voor het maken, bouwen en implementeren van een slim contract op de Azure Block Chain-service.
-ms.date: 11/20/2019
+ms.date: 12/06/2019
 ms.topic: tutorial
 ms.reviewer: chrisseg
-ms.openlocfilehash: 2d2cb174656f5ed8f13d4463d416455ebb3f9ec9
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 5b901ab904425a22d2fe9643ffa75a4e978efa88
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325172"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972825"
 ---
 # <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Zelf studie: slimme contracten maken, bouwen en implementeren in azure Block Chain Service
 
-In deze zelf studie gebruikt u de Azure Block Chain Development Kit voor Ethereum-extensie in Visual Studio code voor het maken, bouwen en implementeren van een slim contract op de Azure Block Chain-service. U kunt Truffle ook gebruiken om een slimme contract functie uit te voeren via een trans actie.
+In deze zelf studie gebruikt u de Azure Block Chain Development Kit voor Ethereum-extensie in Visual Studio code voor het maken, bouwen en implementeren van een slim contract op de Azure Block Chain-service. U kunt ook de Development Kit gebruiken om een slimme contract functie uit te voeren via een trans actie.
 
 U gebruikt Azure Block Chain Development Kit voor Ethereum voor het volgende:
 
@@ -21,7 +21,6 @@ U gebruikt Azure Block Chain Development Kit voor Ethereum voor het volgende:
 > * Een slim contract maken
 > * Een slim contract implementeren
 > * Een slimme contract functie uitvoeren via een trans actie
-> * Query contract status
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -65,11 +64,11 @@ Slimme contracten bevinden zich in de map **contracten** van het project. U kunt
 1. Vouw in de VS code Explorer-zijbalk de map **contracten** in uw project uit.
 1. Klik met de rechter muisknop op **HelloBlockchain. Sol** en kies **contracten maken** in het menu.
 
-    ![Contracten samen stellen](./media/send-transaction/build-contracts.png)
+    ![Kies contracten maken menu ](./media/send-transaction/build-contracts.png)
 
 Azure Block Chain Development Kit maakt gebruik van truffle om de slimme contracten te compileren.
 
-![Uitvoer compileren](./media/send-transaction/compile-output.png)
+![Uitvoer van truffle-compiler](./media/send-transaction/compile-output.png)
 
 ## <a name="deploy-a-smart-contract"></a>Een slim contract implementeren
 
@@ -85,113 +84,34 @@ Azure Block Chain Development Kit maakt gebruik van truffle om het migratie scri
 
 ## <a name="call-a-contract-function"></a>Een contract functie aanroepen
 
-De functie **SendRequest** van het **HelloBlockchain** -contract wijzigt de variabele **RequestMessage** -status. Het wijzigen van de status van een Block chain-netwerk wordt uitgevoerd via een trans actie. U kunt een script maken om de functie **SendRequest** uit te voeren via een trans actie.
+De functie **SendRequest** van het **HelloBlockchain** -contract wijzigt de variabele **RequestMessage** -status. Het wijzigen van de status van een Block chain-netwerk wordt uitgevoerd via een trans actie. U kunt de Azure Block Chain Development Kit Smart contract-interactie pagina gebruiken om de functie **SendRequest** via een trans actie aan te roepen.
 
-1. Maak een nieuw bestand in de hoofdmap van uw Truffle-project en geef het de naam `sendrequest.js`. Voeg de volgende Web3 java script-code toe aan het bestand.
+1. Als u met uw slimme contract wilt werken, klikt u met de rechter muisknop op **HelloBlockchain. Sol** en kiest u **pagina slimme contract interactie weer geven** in het menu.
 
-    ```javascript
-    var HelloBlockchain = artifacts.require("HelloBlockchain");
-        
-    module.exports = function(done) {
-      console.log("Getting the deployed version of the HelloBlockchain smart contract")
-      HelloBlockchain.deployed().then(function(instance) {
-        console.log("Calling SendRequest function for contract ", instance.address);
-        return instance.SendRequest("Hello, blockchain!");
-      }).then(function(result) {
-        console.log("Transaction hash: ", result.tx);
-        console.log("Request complete");
-        done();
-      }).catch(function(e) {
-        console.log(e);
-        done();
-      });
-    };
-    ```
+    ![Kies pagina slimme contract interactie weer geven in het menu](./media/send-transaction/contract-interaction.png)
 
-1. Wanneer Azure Block Chain Development Kit een project maakt, wordt het Truffle-configuratie bestand gegenereerd met de details van uw consortium Block chain-netwerk eindpunt. Open **Truffle-config. js** in uw project. In het configuratie bestand worden twee netwerken weer gegeven: een met de naam ontwikkeling en een met dezelfde namen als het consortium.
-1. Gebruik in het Terminal venster van VS code Truffle om het script uit te voeren op uw consortium Block chain-netwerk. Selecteer in de menu balk van het Terminal venster het tabblad **Terminal** en **Power shell** in de vervolg keuzelijst.
+1. Op de pagina interactie kunt u een geïmplementeerde contract versie kiezen, functies aanroepen, de huidige status weer geven en meta gegevens weer geven.
 
-    ```PowerShell
-    truffle exec sendrequest.js --network <blockchain network>
-    ```
+    ![Voor beeld van een Smart contract-interactie pagina](./media/send-transaction/interaction-page.png)
 
-    Vervang \<Block chain-netwerk\> door de naam van het block chain-netwerk dat is gedefinieerd in **Truffle-config. js**.
+1. Als u de functie Slim contract wilt aanroepen, selecteert u de actie contract en geeft u uw argumenten door. Kies **SendRequest** -contract actie en voer **Hallo in, Block Chain!** voor de para meter **requestMessage** . Selecteer **uitvoeren** om de functie **SendRequest** via een trans actie aan te roepen.
 
-Truffle voert het script uit op uw Block chain-netwerk.
+    ![SendRequest-actie uitvoeren](./media/send-transaction/sendrequest-action.png)
 
-![Script uitvoer](./media/send-transaction/execute-transaction.png)
+Zodra de trans actie is verwerkt, worden de status wijzigingen weer gegeven in de sectie interactie.
 
-Wanneer u de functie van een contract uitvoert via een trans actie, wordt de trans actie niet verwerkt totdat er een blok is gemaakt. Functies die via een trans actie moeten worden uitgevoerd, retour neren een trans actie-ID in plaats van een retour waarde.
+![Status wijzigingen contract](./media/send-transaction/contract-state.png)
 
-## <a name="query-contract-state"></a>Query contract status
-
-Met de functies van een slimme opdracht kan de huidige waarde van de status variabelen worden geretourneerd. We gaan een functie toevoegen om de waarde van een status variabele te retour neren.
-
-1. Voeg in **HelloBlockchain. Sol**een **GetMessage** -functie toe aan het slimme **HelloBlockchain** -contract.
-
-    ``` solidity
-    function getMessage() public view returns (string memory)
-    {
-        if (State == StateType.Request)
-            return RequestMessage;
-        else
-            return ResponseMessage;
-    }
-    ```
-
-    De functie retourneert het bericht dat is opgeslagen in een status variabele op basis van de huidige status van het contract.
-
-1. Klik met de rechter muisknop op **HelloBlockchain. Sol** en kies **contracten maken** in het menu om de wijzigingen in het slimme contract te compileren.
-1. Als u wilt implementeren, klikt u met de rechter muisknop op **HelloBlockchain. Sol** en kiest u **contracten implementeren** in het menu. Kies uw Azure Block Chain consortium-netwerk in het opdracht palet wanneer u hierom wordt gevraagd.
-1. Maak vervolgens een script dat wordt gebruikt om de functie **GetMessage** aan te roepen. Maak een nieuw bestand in de hoofdmap van uw Truffle-project en geef het de naam `getmessage.js`. Voeg de volgende Web3 java script-code toe aan het bestand.
-
-    ```javascript
-    var HelloBlockchain = artifacts.require("HelloBlockchain");
-    
-    module.exports = function(done) {
-      console.log("Getting the deployed version of the HelloBlockchain smart contract")
-      HelloBlockchain.deployed().then(function(instance) {
-        console.log("Calling getMessage function for contract ", instance.address);
-        return instance.getMessage();
-      }).then(function(result) {
-        console.log("Request message value: ", result);
-        console.log("Request complete");
-        done();
-      }).catch(function(e) {
-        console.log(e);
-        done();
-      });
-    };
-    ```
-
-1. Gebruik in het Terminal venster van VS code Truffle om het script uit te voeren op uw Block chain-netwerk. Selecteer in de menu balk van het Terminal venster het tabblad **Terminal** en **Power shell** in de vervolg keuzelijst.
-
-    ```bash
-    truffle exec getmessage.js --network <blockchain network>
-    ```
-
-    Vervang \<Block chain-netwerk\> door de naam van het block chain-netwerk dat is gedefinieerd in **Truffle-config. js**.
-
-Het script voert een query uit op het slimme contract door de getMessage-functie aan te roepen. De huidige waarde van de status variabele **RequestMessage** wordt geretourneerd.
-
-![Script uitvoer](./media/send-transaction/execute-get.png)
-
-Let op: de waarde is niet **Hello, Block Chain!** . In plaats daarvan is de geretourneerde waarde een tijdelijke aanduiding. Wanneer u het contract wijzigt en implementeert, wordt het gewijzigde contract geïmplementeerd op een nieuw adres en worden de status variabelen toegewezen waarden in de Smart contract-constructor. Het Truffle-voor beeld **2_deploy_contracts. js** -migratie script implementeert het slimme contract en geeft een tijdelijke aanduiding door als argument. De constructor stelt de **RequestMessage** -status variabele in op de waarde van de tijdelijke aanduiding en dat is wat er wordt geretourneerd.
-
-1. Als u de **RequestMessage** -status variabele wilt instellen en de waarde wilt opvragen, voert u de scripts **SendRequest. js** en **GetMessage. js** opnieuw uit.
-
-    ![Script uitvoer](./media/send-transaction/execute-set-get.png)
-
-    **SendRequest. js** stelt de **RequestMessage** -status variabele in op **Hello, Block Chain!** en **GetMessage. js** vraagt het contract om de waarde van de **RequestMessage** -status variabele en retourneert **Hello, Block Chain!** .
+De functie SendRequest stelt de velden **RequestMessage** en **status** in. De huidige status voor **RequestMessage** is het argument dat u hebt door gegeven als **Hello, Block Chain**. De waarde van het **status** veld blijft **aanvraag**.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Wanneer u deze niet meer nodig hebt, kunt u de resources verwijderen door de `myResourceGroup` resource groep te verwijderen die u hebt gemaakt in de Snelstartgids *een Block Chain-lid maken* .
 
-De resource groep verwijderen:
+De resourcegroep verwijderen:
 
-1. Ga in het Azure Portal naar de **resource groep** in het navigatie deel venster links en selecteer de resource groep die u wilt verwijderen.
-1. Selecteer **Resourcegroep verwijderen**. Controleer het verwijderen door de naam van de resource groep in te voeren en **verwijderen**te selecteren.
+1. In de Azure-portal, gaat u naar **resourcegroep** in het navigatiedeelvenster links en selecteert u de resourcegroep die u wilt verwijderen.
+1. Selecteer **Resourcegroep verwijderen**. Bevestig de verwijdering door de naam van de resourcegroep in te voeren en selecteer **verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

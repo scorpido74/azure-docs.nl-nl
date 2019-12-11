@@ -1,5 +1,5 @@
 ---
-title: Een multi tenant-data base ontwerpen met de zelf studie Azure Database for PostgreSQL – grootschalige (Citus)
+title: 'Zelf studie: een multi tenant-data base ontwerpen-grootschalige (Citus)-Azure Database for PostgreSQL'
 description: In deze zelf studie ziet u hoe u gedistribueerde tabellen maakt, vult en doorzoekt op Azure Database for PostgreSQL grootschalige (Citus).
 author: jonels-msft
 ms.author: jonels
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 130c3e9f5abb24ffcc4e0c4ad6b96af5fca62090
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 17ac29de243f4abfff1cfc83fc6424799978bf0e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496538"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978148"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Zelf studie: een Data Base met meerdere tenants ontwerpen met behulp van Azure Database for PostgreSQL – grootschalige (Citus)
 

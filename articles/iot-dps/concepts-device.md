@@ -1,6 +1,6 @@
 ---
 title: Concepten van apparaten in azure Device Provisioning | Microsoft Docs
-description: Hierin worden de concepten beschreven voor het inrichten van apparaten met Device Provisioning Service en IoT Hub
+description: Hierin worden de concepten beschreven voor het inrichten van apparaten met de Device Provisioning Service (DPS) en IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 11/06/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 0e3557588281cd392a7a8a1c2654f10e8387dd83
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: f5f931622f793a1146c04403e8c5e1a5ef7a7d62
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720529"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975309"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>Concepten van IoT Hub Device Provisioning Service-apparaten
 
@@ -42,7 +42,7 @@ De Hardware Security module, of HSM, wordt gebruikt voor veilige, op hardware ge
 
 Er kunnen ook geheimen voor apparaten worden opgeslagen in software (geheugen), maar dit is een minder veilige opslag ruimte dan een HSM.
 
-## <a name="registration-id"></a>Registratie-ID
+## <a name="registration-id"></a>Registratie-id
 
 De registratie-ID wordt gebruikt om een apparaat in de Device Provisioning-Service op unieke wijze te identificeren. De apparaat-ID moet uniek zijn in het bereik van de service [-id](#id-scope)voor de inrichting. Elk apparaat moet een registratie-ID hebben. De registratie-ID is alfanumeriek, niet hoofdletter gevoelig en kan speciale tekens bevatten, waaronder dubbele punt, punt, onderstrepings teken en afbreek streepje.
 

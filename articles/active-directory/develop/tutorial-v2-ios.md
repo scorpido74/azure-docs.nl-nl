@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met iOS en macOS-micro soft Identity platform | Azure
+title: Aan de slag met iOS-& macOS-micro soft Identity platform | Azure
 description: Hoe iOS-en macOS-toepassingen (SWIFT) een API kunnen aanroepen waarvoor toegangs tokens zijn vereist met behulp van micro soft Identity platform
 services: active-directory
 documentationcenter: dev-center-name
@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e3892a03ffe097a51f294e698168f00e1359f92
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 64f161d94d622ae76932e88be52df6f068bfc945
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960667"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964665"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Gebruikers aanmelden en de Microsoft Graph aanroepen vanuit een iOS-of macOS-app
 
@@ -33,7 +33,7 @@ Wanneer u de hand leiding hebt voltooid, accepteert uw toepassing aanmeldingen v
 
 De app in deze zelf studie meldt zich aan bij gebruikers en haalt gegevens op uit hun naam.  Deze gegevens worden geopend via een beveiligde API (Microsoft Graph-API in dit geval) waarvoor autorisatie is vereist en wordt beveiligd door het micro soft Identity-platform.
 
-Met name:
+Meer details:
 
 * Uw app meldt zich aan bij de gebruiker via een browser of de Microsoft Authenticator.
 * De eind gebruiker accepteert de machtigingen die uw toepassing heeft aangevraagd.
@@ -65,7 +65,7 @@ In deze zelf studie wordt een nieuw project gemaakt. Als u in plaats daarvan de 
 
 ## <a name="register-your-application"></a>Uw toepassing registreren
 
-1. Ga naar [Azure Portal](https://aka.ms/MobileAppReg)
+1. Ga naar de [Azure-portal](https://aka.ms/MobileAppReg)
 2. Open de [blade app-registraties](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) en klik op **+ nieuwe registratie**.
 3. Voer een **naam** in voor uw app en klik vervolgens zonder een omleidings-URI in te stellen op **registreren**.
 4. Selecteer in de sectie **beheren** van het deel venster dat wordt weer gegeven de optie **verificatie**.
@@ -111,7 +111,7 @@ iOS:
 carthage update --platform iOS
 ```
 
-MacOS
+macOS:
 
 ```bash
 carthage update --platform macOS
@@ -649,7 +649,7 @@ De eerste keer dat een gebruiker zich bij uw app aanmeldt, wordt de micro soft-i
 
 Nadat u zich hebt aangemeld, worden in de app de gegevens weer gegeven die door de Microsoft Graph `/me` eind punt zijn geretourneerd.
 
-## <a name="get-help"></a>Help opvragen
+## <a name="get-help"></a>Hulp krijgen
 
 Ga naar [Help en ondersteuning](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) als u problemen ondervindt met deze zelf studie of met het micro soft Identity-platform.
 

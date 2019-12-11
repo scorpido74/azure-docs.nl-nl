@@ -3,23 +3,23 @@ title: host. json-verwijzing voor Azure Functions 2. x
 description: Referentie documentatie voor het Azure Functions host. JSON-bestand met v2 runtime.
 ms.topic: conceptual
 ms.date: 09/08/2018
-ms.openlocfilehash: bb10f15db1d152ff1d8fd8d38ba22e312a2031b7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 08d772fc9b2871262b449a017f8be59a344576b2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74323082"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975445"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x"></a>host. json-verwijzing voor Azure Functions 2. x  
+# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host. json-verwijzing voor Azure Functions 2. x en hoger 
 
 > [!div class="op_single_selector" title1="Selecteer de versie van de Azure Functions runtime die u gebruikt: "]
-> * [Versie 1:](functions-host-json-v1.md)
+> * [Versie 1](functions-host-json-v1.md)
 > * [Versie 2](functions-host-json.md)
 
-Het meta gegevensbestand van de *host. json* bevat globale configuratie opties die van invloed zijn op alle functies voor een functie-app. In dit artikel vindt u de instellingen die beschikbaar zijn voor de v2-runtime.  
+Het meta gegevensbestand van de *host. json* bevat globale configuratie opties die van invloed zijn op alle functies voor een functie-app. In dit artikel vindt u een lijst met de instellingen die vanaf versie 2. x van de Azure Functions runtime beschikbaar zijn.  
 
 > [!NOTE]
-> Dit artikel is voor Azure Functions 2. x.  Zie [host. json Reference voor Azure functions 1. x](functions-host-json-v1.md)voor een verwijzing naar de host. json in functions 1. x.
+> Dit artikel is voor Azure Functions 2. x en latere versies.  Voor een verwijzing van host.json in functies 1.x, Zie [naslaginformatie over host.json voor Azure Functions 1.x](functions-host-json-v1.md).
 
 Andere opties voor de configuratie van de functie-app worden beheerd in de [app-instellingen](functions-app-settings.md).
 
@@ -113,11 +113,11 @@ Hiermee bepaalt u de [sampling functie in Application Insights](./functions-moni
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|isEnabled|true|Hiermee worden steek proeven in-of uitgeschakeld.| 
+|isEnabled|waar|Hiermee worden steek proeven in-of uitgeschakeld.| 
 |maxTelemetryItemsPerSecond|20|De drempel waarde waarmee steek proeven worden gestart.| 
-|EnableLiveMetrics |true|Hiermee wordt de verzameling Live Metrics ingeschakeld.|
-|EnableDependencyTracking|true|Hiermee schakelt u het bijhouden van afhankelijkheden in.|
-|EnablePerformanceCountersCollection|true|Hiermee schakelt u de verzameling kudu-prestatie meter items.|
+|EnableLiveMetrics |waar|Hiermee wordt de verzameling Live Metrics ingeschakeld.|
+|EnableDependencyTracking|waar|Hiermee schakelt u het bijhouden van afhankelijkheden in.|
+|EnablePerformanceCountersCollection|waar|Hiermee schakelt u de verzameling kudu-prestatie meter items.|
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -183,7 +183,7 @@ Configuratie-instellingen voor de [host Health Monitor](https://github.com/Azure
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|enabled|true|Hiermee wordt aangegeven of de functie is ingeschakeld. | 
+|enabled|waar|Hiermee wordt aangegeven of de functie is ingeschakeld. | 
 |healthCheckInterval|10 seconden|Het tijds interval tussen de periodieke status controles voor de achtergrond. | 
 |healthCheckWindow|2 minuten|Een schuif tijd venster dat wordt gebruikt in combi natie met de instelling `healthCheckThreshold`.| 
 |healthCheckThreshold|6|Maximum aantal keer dat de status controle kan mislukken voordat een host recyclen wordt gestart.| 
@@ -193,7 +193,7 @@ Configuratie-instellingen voor de [host Health Monitor](https://github.com/Azure
 
 Configuratie-instellingen vindt u in [http-triggers en-bindingen](functions-bindings-http-webhook.md#hostjson-settings).
 
-## <a name="logging"></a>Userenv
+## <a name="logging"></a>logboekregistratie
 
 Hiermee bepaalt u het gedrag van logboek registratie van de functie-app, met inbegrip van Application Insights.
 
@@ -216,7 +216,7 @@ Hiermee bepaalt u het gedrag van logboek registratie van de functie-app, met inb
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Hiermee wordt gedefinieerd welk niveau van bestands logboek registratie is ingeschakeld.  Opties zijn `never`, `always``debugOnly`. |
-|logLevel|n.v.t.|Object dat de logboek categorie filtering definieert voor functies in de app. Versie 2. x volgt de ASP.NET Core indeling voor het filteren van de logboek categorie. Hiermee kunt u logboek registratie voor specifieke functies filteren. Zie [logboek filtering](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in de ASP.net core-documentatie voor meer informatie. |
+|logLevel|n.v.t.|Object dat de logboek categorie filtering definieert voor functies in de app. Versie 2. x en hoger volgen de ASP.NET Core indeling voor het filteren van de logboek categorie. Hiermee kunt u logboek registratie voor specifieke functies filteren. Zie [logboek filtering](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in de ASP.net core-documentatie voor meer informatie. |
 |console|n.v.t.| De instelling voor de logboek registratie van de [console](#console) . |
 |applicationInsights|n.v.t.| De instelling [applicationInsights](#applicationinsights) . |
 
@@ -238,7 +238,7 @@ Deze instelling is een onderliggend item van [logboek registratie](#logging). He
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|isEnabled|false|Hiermee wordt de logboek registratie van de console in-of uitgeschakeld.| 
+|isEnabled|onwaar|Hiermee wordt de logboek registratie van de console in-of uitgeschakeld.| 
 
 ## <a name="manageddependency"></a>managedDependency
 

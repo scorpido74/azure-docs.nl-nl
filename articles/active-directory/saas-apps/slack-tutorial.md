@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ac464593e14a712cf0f137b5f3522d018d5874d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 0085db3f38fb8af014434f36893182e1682b05a7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884538"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972111"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met toegestane vertraging
 
@@ -45,8 +45,7 @@ U hebt de volgende items nodig om aan de slag te gaan:
 In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
 * Slack ondersteunt eenmalige aanmelding die wordt gestart vanuit **SP**
-* Slack biedt ondersteuning voor het **Just In Time** inrichten van gebruikers
-* Slack biedt ondersteuning voor het [**geautomatiseerd**](slack-provisioning-tutorial.md) inrichten van gebruikers
+* Toegestane vertraging ondersteunt [ **automatische** gebruikers inrichting en](slack-provisioning-tutorial.md) het ongedaan maken van de inrichting (aanbevolen)
 
 > [!NOTE]
 > De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.

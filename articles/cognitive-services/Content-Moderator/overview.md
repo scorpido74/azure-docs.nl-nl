@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a78a92a33075a97ddadb2e1fe677b7ded541d12c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c1ff74bc358f167612b2bfe05ca47e21203d8702
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565584"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973489"
 ---
 # <a name="what-is-azure-content-moderator"></a>Wat is Azure Content Moderator?
 
-De Azure Content Moderator-API is een cognitieve service waarmee tekst, afbeeldingen en video-inhoud van materiaal wordt gecontroleerd op mogelijk aanstootgevende, riskante of anderszins ongewenst inhoud. Wanneer dergelijk materiaal wordt gevonden, past de service de relevante labels (vlaggen) op de inhoud toe. Uw app kan gelabelde inhoud vervolgens afhandelen om te voldoen aan de regelgeving of om een beoogde omgeving voor gebruikers te beheren. Zie de sectie [toezicht api's](#moderation-apis) voor meer informatie over wat de verschillende inhouds vlaggen aangeven.
+Azure Content Moderator is een cognitieve service waarmee tekst-, afbeeldings-en video-inhoud wordt gecontroleerd op materiaal dat mogelijk aanstootgevend, riskant of anderszins ongewenst is. Wanneer dit materiaal wordt gevonden, past de service toepasselijke labels (vlaggen) toe op de inhoud. Uw app kan gelabelde inhoud vervolgens afhandelen om te voldoen aan de regelgeving of om een beoogde omgeving voor gebruikers te beheren. Zie de sectie [toezicht api's](#moderation-apis) voor meer informatie over wat de verschillende inhouds vlaggen aangeven.
 
-## <a name="where-it-is-used"></a>Toepassingen van Content Moderator
+## <a name="where-its-used"></a>Waar wordt gebruikt?
 
 Hieronder vindt u enkele scenario's waarin een softwareontwikkelaar of -team Content Moderator kan gebruiken:
 
@@ -32,7 +32,7 @@ Hieronder vindt u enkele scenario's waarin een softwareontwikkelaar of -team Con
 - Met K-12-onderwijs oplossingen worden inhoud die niet geschikt is voor studenten en docenten, gefilterd.
 
 > [!NOTE]
-> U kunt Content Moderator niet gebruiken om illegale installatie kopieën van onderliggende licenties te detecteren. Gekwalificeerde organisaties kunnen echter het [PhotoDNA Cloud service](https://www.microsoft.com/photodna "micro soft PhotoDNA Cloud service") gebruiken voor het scherm van dit type inhoud.
+> U kunt Content Moderator niet gebruiken om illegale installatie kopieën van onderliggende licenties te detecteren. Gekwalificeerde organisaties kunnen de [PhotoDNA-Cloud service](https://www.microsoft.com/photodna "Micro soft PhotoDNA-Cloud service") echter gebruiken voor het scherm voor dit type inhoud.
 
 ## <a name="what-it-includes"></a>Samenstelling van Content Moderator
 
@@ -46,10 +46,10 @@ De Content Moderator-service omvat moderator-Api's, die inhoud controleren op ma
 
 In de volgende tabel worden de verschillende typen toezicht-Api's beschreven.
 
-| API-groep | Description |
+| API-groep | Beschrijving |
 | ------ | ----------- |
 |[**Teksttoezicht**](text-moderation-api.md)| Hiermee wordt tekst gescand op aanstootgevende inhoud, seksueel expliciete of suggestieve inhoud, groveheid en persoonlijke gegevens.|
-|[**Aangepaste terminologielijsten**](try-terms-list-api.md)| Hiermee wordt tekst niet alleen vergeleken met de ingebouwde termen maar ook met een aangepaste terminologielijst. U kunt aangepaste lijsten gebruiken om inhoud te blokkeren of toe te staan volgens uw eigen beleidsregels voor inhoud.|  
+|[**Aangepaste terminologielijsten**](try-terms-list-api.md)| Hiermee wordt tekst gescand op basis van een aangepaste lijst met voor waarden en de ingebouwde voor waarden. U kunt aangepaste lijsten gebruiken om inhoud te blokkeren of toe te staan volgens uw eigen beleidsregels voor inhoud.|  
 |[**Afbeeldingstoezicht**](image-moderation-api.md)| Hiermee worden afbeeldingen gescand op erotische of racistische inhoud, wordt tekst in afbeeldingen gedetecteerd met de OCR-functie (optische tekenherkenning) en worden gezichten gedetecteerd.|
 |[**Aangepaste afbeeldingslijsten**](try-image-list-api.md)| Hiermee worden afbeeldingen vergeleken met een aangepaste lijst van afbeeldingen. U kunt aangepaste afbeeldingslijsten gebruiken om te filteren op exemplaren van veelvoorkomende terugkerende inhoud die u niet opnieuw wilt classificeren.|
 |[**Videotoezicht**](video-moderation-api.md)| Hiermee worden video's gescand op erotische of racistische inhoud en worden tijdmarkeringen voor deze inhoud geretourneerd.|
@@ -65,7 +65,7 @@ Met de controle-Api's kunt u uw toezicht pijplijn integreren met menselijke revi
 
 ## <a name="the-review-tool"></a>Het beoordelings programma
 
-De Content Moderator-service bevat ook het op het web gebaseerde [revisie programma](Review-Tool-User-Guide/human-in-the-loop.md), dat als host fungeert voor de inhouds recensies die personeel moet verwerken. De service wordt niet getraind door menselijke invoer, maar de combinatie van het werk van de service en de menselijke beoordelingsteams zorgt voor een juiste balans tussen de efficiëntie en de nauwkeurigheid. Het hulp programma beoordeling biedt ook een gebruikers vriendelijke front-end voor diverse Content Moderator resources.
+De Content Moderator-service bevat ook het op het web gebaseerde [revisie programma](Review-Tool-User-Guide/human-in-the-loop.md), dat als host fungeert voor de inhouds recensies die personeel moet verwerken. De menselijke invoer traint de service niet, maar het gecombineerde werk van de service en de personeels teams kunnen ontwikkel aars de juiste balans tussen efficiëntie en nauw keurigheid halen. Het hulp programma voor controle biedt ook een gebruikers vriendelijke front-end voor verschillende Content Moderator-resources.
 
 ![Startpagina van het hulpprogramma voor menselijke beoordeling van Content Moderator](images/homepage.PNG)
 

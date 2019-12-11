@@ -1,22 +1,22 @@
 ---
-title: 'Quickstart: Een aangepast model bouwen, implementeren en gebruiken - Custom Translator'
+title: 'Snelstart: Een aangepast model bouwen, implementeren en gebruiken - Custom Translator'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart doorloopt u stapsgewijs het proces voor het bouwen van een vertaalsysteem met behulp van Custom Translator.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: a450a91f29a9118c9e4c83f6bb964bac2d6ffb3c
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d93c6333b811885eec37e8401bee27afeedf1475
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595555"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975751"
 ---
-# <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Quickstart: Een aangepast vertaalmodel bouwen, implementeren en gebruiken
+# <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Snelstart: Een aangepast model voor vertalen bouwen, implementeren en gebruiken
 
 Dit artikel biedt stapsgewijze instructies voor het bouwen van een vertaalsysteem met Custom Translator.
 

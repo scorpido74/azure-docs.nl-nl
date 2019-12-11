@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a51a8e02ec08b9a4ee353c2c45345c4d01246894
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 199ead07e499575de21c6878cd348e648f604171
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981837"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972656"
 ---
 # <a name="quickstart-computer-vision-client-library-for-nodejs"></a>Snelstartgids: Computer Vision-client bibliotheek voor node. js
 
@@ -88,7 +88,7 @@ De volgende klassen en interfaces verwerken enkele van de belangrijkste functies
 | [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) | Deze klasse is nodig voor alle Computer Vision functionaliteit. U maakt de app met uw abonnements gegevens en gebruikt deze om de meeste installatie kopieën uit te voeren.|
 |[VisualFeatureTypes](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| Deze opsomming definieert de verschillende typen afbeeldings analyse die kunnen worden uitgevoerd in een standaard analyse bewerking. U geeft een set **VisualFeatureTypes** -waarden op, afhankelijk van uw behoeften. |
 
-## <a name="code-examples"></a>Code voorbeelden
+## <a name="code-examples"></a>Codevoorbeelden
 
 Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Computer Vision-client bibliotheek voor node. js:
 
@@ -106,7 +106,7 @@ Exemplaar een client met uw eind punt en sleutel. Maak een [ApiKeyCredentials](h
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_client)]
 
-## <a name="analyze-an-image"></a>Een afbeelding analyseren
+## <a name="analyze-an-image"></a>Analyseer een afbeelding
 
 De code in deze sectie analyseert externe installatie kopieën om verschillende visuele functies uit te pakken. U kunt deze bewerkingen uitvoeren als onderdeel van de methode **analyzeImage** van het client object, of u kunt ze aanroepen met behulp van afzonderlijke methoden. Raadpleeg de [referentie documentatie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) voor meer informatie.
 
@@ -266,5 +266,5 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 > [!div class="nextstepaction"]
 >[Computer Vision-API referentie (node. js)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)
 
-* [Wat is de Computer Vision-API?](../Home.md)
-* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js).
+* [Wat is Computer Vision?](../Home.md)
+* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js).

@@ -5,15 +5,15 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 06/25/2019
+ms.date: 12/09/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: ac1687d371630089436640af15cf46491a38ab51
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 2596351a0db921276ad74c27e30a8e2af93f2f36
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485421"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74980912"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Netwerk limieten-Azure Resource Manager de volgende limieten gelden alleen voor netwerk resources die worden beheerd via **Azure Resource Manager** per regio per abonnement. Meer informatie over het [weer geven van uw huidige resource gebruik op basis van uw abonnements limieten](../articles/networking/check-usage-against-limits.md).
 
@@ -32,9 +32,9 @@ ms.locfileid: "74485421"
 | Privé-IP-adressen per virtuele machine |256 |
 | Open bare IP-adressen per netwerk interface |256 |
 | Open bare IP-adressen per virtuele machine |256 |
-| Gelijktijdige TCP-of UDP-stromen per NIC van een virtuele machine of rolinstantie |500,000 |
-| Netwerk interface kaarten |65.536 |
-| Netwerkbeveiligingsgroepen |5,000 |
+| [Gelijktijdige TCP-of UDP-stromen per NIC van een virtuele machine of rolinstantie](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500,000 |
+| Netwerkinterfacekaarten |65.536 |
+| Netwerkbeveiligingsgroepen |5\.000 |
 | NSG-regels per NSG |1000 |
 | IP-adressen en-bereiken die zijn opgegeven voor bron of doel in een beveiligings groep |4,000 |
 | Toepassingsbeveiligingsgroepen |3\.000 |

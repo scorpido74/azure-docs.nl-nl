@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen van functies met behulp van Po
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 26e52e8aa498c37bd4cef95fb2b54b2fe9322f90
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2fa510e447d4d9b054a37f7665d010382a5db819
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226683"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974237"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions Power shell-ontwikkelaars handleiding
 
@@ -50,7 +50,7 @@ PSFunctionApp
 
 In de hoofdmap van het project bevindt zich een gedeeld [`host.json`](functions-host-json.md) bestand dat kan worden gebruikt voor het configureren van de functie-app. Elke functie heeft een map met een eigen code bestand (. ps1) en een bindings configuratie bestand (`function.json`). De naam van de bovenliggende map van de functie. JSON-bestand is altijd de naam van uw functie.
 
-Voor bepaalde bindingen moet een `extensions.csproj` bestand aanwezig zijn. Bindings uitbreidingen, vereist in [versie 2. x](functions-versions.md) van de functions runtime, worden gedefinieerd in het `extensions.csproj` bestand met de daad werkelijke bibliotheek bestanden in de map `bin`. Wanneer u lokaal ontwikkelt, moet u [bindings uitbreidingen registreren](functions-bindings-register.md#extension-bundles). Bij het ontwikkelen van functies in de Azure Portal, wordt deze registratie voor u uitgevoerd.
+Voor bepaalde bindingen moet een `extensions.csproj` bestand aanwezig zijn. Bindings uitbreidingen, vereist in [versie 2. x en latere versies](functions-versions.md) van de functions runtime, worden gedefinieerd in het `extensions.csproj` bestand met de daad werkelijke bibliotheek bestanden in de map `bin`. Wanneer u lokaal ontwikkelt, moet u [bindings uitbreidingen registreren](functions-bindings-register.md#extension-bundles). Bij het ontwikkelen van functies in de Azure Portal, wordt deze registratie voor u uitgevoerd.
 
 In Power shell-functie-apps kunt u eventueel een `profile.ps1` hebben dat wordt uitgevoerd wanneer een functie-app wordt gestart (anders als een *[koude start](#cold-start)* wordt uitgevoerd. Zie [Power shell profile](#powershell-profile)(Engelstalig) voor meer informatie.
 
@@ -75,9 +75,9 @@ $TriggerMetadata.sys
 
 | Eigenschap   | Beschrijving                                     | Type     |
 |------------|-------------------------------------------------|----------|
-| utcNow     | Wanneer, in UTC, de functie is geactiveerd        | DateTime |
-| MethodName | De naam van de functie die is geactiveerd     | tekenreeks   |
-| RandGuid   | een unieke GUID voor deze uitvoering van de functie | tekenreeks   |
+| UtcNow     | Wanneer, in UTC, de functie is geactiveerd        | Datum/tijd |
+| MethodName | De naam van de functie die is geactiveerd     | string   |
+| RandGuid   | een unieke GUID voor deze uitvoering van de functie | string   |
 
 Elk trigger type heeft een andere set meta gegevens. De `$TriggerMetadata` voor `QueueTrigger` bevat bijvoorbeeld de `InsertionTime`, `Id`, `DequeueCount`, onder andere. Ga naar de [officiële documentatie voor wachtrij Triggers](functions-bindings-storage-queue.md#trigger---message-metadata)voor meer informatie over de meta gegevens van de trigger van de wachtrij. Raadpleeg de documentatie op de [Triggers](functions-triggers-bindings.md) waarmee u werkt om te zien wat er in de meta gegevens van de trigger zit.
 
@@ -125,7 +125,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Hier volgen enkele geldige para meters voor het aanroepen van `Push-OutputBinding`:
 
-| Naam | Type | positie | Beschrijving |
+| Naam | Type | Positie | Beschrijving |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Tekenreeks | 1 | De naam van de uitvoer binding die u wilt instellen. |
 | **`-Value`** | Object | 2 | De waarde van de uitvoer binding die u wilt instellen, die wordt geaccepteerd vanuit de pipeline-ByValue. |
@@ -235,7 +235,7 @@ Logboek registratie in Power shell-functies werkt zoals bij normale Power shell-
 | Fout | **`Write-Error`** |
 | Waarschuwing | **`Write-Warning`**  | 
 | Informatie | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Informatie | Schrijft naar logboek registratie op _informatie_ niveau. |
-| Fouten opsporen | **`Write-Debug`** |
+| Foutopsporing | **`Write-Debug`** |
 | Tracering | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
 Naast deze cmdlets wordt alles wat naar de pijp lijn is geschreven, omgeleid naar het `Information` logboek niveau en weer gegeven met de standaard Power shell-opmaak.
@@ -275,7 +275,7 @@ Er zijn een aantal triggers en bindingen die u kunt gebruiken met uw functie-app
 Alle triggers en bindingen worden in code weer gegeven als enkele echte gegevens typen:
 
 * Hashtabel
-* tekenreeks
+* string
 * byte[]
 * int
 * double
@@ -298,10 +298,10 @@ Het object Request dat is door gegeven aan het script, is van het type `HttpRequ
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | Een object dat de hoofd tekst van de aanvraag bevat. `Body` wordt geserialiseerd in het beste type op basis van de gegevens. Als de gegevens bijvoorbeeld JSON zijn, wordt deze als een hashtabel door gegeven. Als de gegevens een teken reeks is, wordt deze als een teken reeks door gegeven. | object |
 | **`Headers`** | Een woorden lijst die de aanvraag headers bevat.                | Dictionary < teken reeks, teken reeks ><sup>*</sup> |
-| **`Method`** | De HTTP-methode van de aanvraag.                                | tekenreeks                    |
+| **`Method`** | De HTTP-methode van de aanvraag.                                | string                    |
 | **`Params`**  | Een object dat de routerings parameters van de aanvraag bevat. | Dictionary < teken reeks, teken reeks ><sup>*</sup> |
 | **`Query`** | Een object dat de query parameters bevat.                  | Dictionary < teken reeks, teken reeks ><sup>*</sup> |
-| **`Url`** | De URL van de aanvraag.                                        | tekenreeks                    |
+| **`Url`** | De URL van de aanvraag.                                        | string                    |
 
 <sup>*</sup> Alle `Dictionary<string,string>` sleutels zijn niet hoofdletter gevoelig.
 
@@ -312,7 +312,7 @@ Het antwoord object dat u moet terugsturen, is van het type `HttpResponseContext
 | Eigenschap      | Beschrijving                                                 | Type                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | Een object dat de hoofd tekst van het antwoord bevat.           | object                    |
-| **`ContentType`** | Een korte hand voor het instellen van het inhouds type voor de reactie. | tekenreeks                    |
+| **`ContentType`** | Een korte hand voor het instellen van het inhouds type voor de reactie. | string                    |
 | **`Headers`** | Een object dat de antwoord headers bevat.               | Woorden lijst of hashtabel   |
 | **`StatusCode`**  | De HTTP-status code van het antwoord.                       | teken reeks of int             |
 

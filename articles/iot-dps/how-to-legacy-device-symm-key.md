@@ -1,6 +1,6 @@
 ---
 title: Verouderde apparaten inrichten met behulp van symmetrische sleutels-Azure IoT Hub Device Provisioning Service
-description: Symmetrische sleutels gebruiken om verouderde apparaten in te richten met uw Device Provisioning service-exemplaar
+description: Symmetrische sleutels gebruiken om verouderde apparaten in te richten met het DPS-exemplaar (Device Provisioning Service)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 3e3b54592608f5c39d618f5ceda40747ad4fd0fe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c9beda9c271c755c9ea61498b24a9e40bde35a7e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209917"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975105"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Verouderde apparaten inrichten met behulp van symmetrische sleutels
 

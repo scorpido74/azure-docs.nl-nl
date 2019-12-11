@@ -1,17 +1,17 @@
 ---
-title: Gebruikers maken in Azure Database for PostgreSQL-grootschalige (Citus)
+title: Gebruikers maken-grootschalige (Citus)-Azure Database for PostgreSQL
 description: In dit artikel wordt beschreven hoe u nieuwe gebruikers accounts kunt maken om te communiceren met een Azure Database for PostgreSQL-grootschalige (Citus).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7187135b29f0a9a790c032330c73bcb1ae27229b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d093d4c23fcc44e7e9f3461f875607926f4b612d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515939"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977570"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Gebruikers maken in Azure Database for PostgreSQL-grootschalige (Citus)
 
@@ -26,15 +26,13 @@ Een nieuw gemaakte grootschalige-Server groep (Citus) wordt geleverd met verschi
 * *postgres*
 * *citus*
 
-De gebruiker van de server beheerder, *Citus*, is lid van de *azure_pg_admin* -rol.
-Het maakt echter geen deel uit van de rol *post gres* (super gebruiker).  Omdat grootschalige een beheerde PaaS-service is, maakt alleen micro soft deel uit van de rol van super gebruiker.
-
 De PostgreSQL-engine gebruikt bevoegdheden om de toegang tot database objecten te beheren, zoals beschreven in de [product documentatie van postgresql](https://www.postgresql.org/docs/current/static/sql-createrole.html).
-De gebruiker van de server beheerder heeft in Azure Database for PostgreSQL de volgende bevoegdheden verleend: aanmelding, gebruiker, overnemen, CREATEDB, CREATEROLE, replicatie
+De gebruiker van de server beheerder, *Citus*, is lid van de rol *azure_pg_admin* .
+Het maakt echter geen deel uit van de rol *post gres* (super gebruiker).  Omdat grootschalige een beheerde PaaS-service is, maakt alleen micro soft deel uit van de rol van super gebruiker. De *Citus* -gebruiker heeft beperkte machtigingen en kan bijvoorbeeld geen nieuwe data bases maken.
 
 ## <a name="how-to-create-additional-users"></a>Aanvullende gebruikers maken
 
-Het *Citus* -beheerders account heeft geen machtiging voor het maken van extra gebruikers. Als u een gebruiker wilt toevoegen, gebruikt u de Azure Portal in plaats daarvan.
+Het *Citus* -beheerders account heeft geen machtiging voor het maken van extra gebruikers. Gebruik de Azure Portal-interface om een gebruiker toe te voegen.
 
 1. Ga naar de pagina **rollen** voor uw grootschalige-Server groep en klik op **+ toevoegen**:
 
@@ -64,7 +62,7 @@ Als u bijvoorbeeld wilt toestaan dat *db_user* *myTable*lezen, moet u de machtig
 GRANT SELECT ON mytable TO db_user;
 ```
 
-Met grootschalige (Citus) worden GRANT-instructies met één tabel via het hele cluster door gegeven en toegepast op alle worker-knoop punten. Subsidies die volledig zijn voor het hele systeem (bijvoorbeeld voor alle tabellen in een schema), moeten op elk datum knooppunt worden uitgevoerd.  Gebruik de hulp functie *run_command_on_workers ()* :
+Met grootschalige (Citus) worden GRANT-instructies met één tabel via het hele cluster door gegeven en toegepast op alle worker-knoop punten. Subsidies die volledig zijn voor het hele systeem (bijvoorbeeld voor alle tabellen in een schema), moeten op elk datum knooppunt worden uitgevoerd.  Gebruik de Help-functie *run_command_on_workers ()* :
 
 ```sql
 -- applies to the coordinator node

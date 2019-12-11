@@ -3,17 +3,17 @@ title: 'Zelf studie: regels maken en beheren in uw Azure IoT Central-toepassing'
 description: Deze zelf studie laat zien hoe u met Azure IoT Central regels uw apparaten in bijna realtime kunt bewaken en automatisch acties kunt aanroepen, zoals het verzenden van een e-mail bericht wanneer de regel wordt geactiveerd.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/24/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: e2ec01e372ebda79272b585ea6f1708029ea7b13
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 793bb46e14725b14c766569e8b0fc2aa0246858e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702543"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979050"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>Zelf studie: een regel maken en meldingen instellen in uw Azure IoT Central-toepassing (preview-functies)
 

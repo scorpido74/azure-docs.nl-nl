@@ -1,6 +1,6 @@
 ---
 title: Uitgeschakelde Azure Access Control Service (ACS)-naam ruimten opnieuw activeren
-description: Meer informatie over het zoeken naar en inschakelen van uw Azure Access Control Service (ACS)-naam ruimten en een uitbrei ding aanvragen om ze in te scha kelen tot 4 februari 2019.
+description: Zoek en schakel uw Azure Access Control Service (ACS)-naam ruimten in en vraag een uitbrei ding aan om deze in te scha kelen tot 4 februari 2019.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 590fc99861035ce1a5219a3cfd788159c6c2a19b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9cc038e67e5528a52b0b98ea1698da07e8120242
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917706"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966942"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Procedure: uitgeschakelde Access Control Service naam ruimten opnieuw activeren
 

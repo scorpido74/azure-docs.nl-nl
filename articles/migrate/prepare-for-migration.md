@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 12/10/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 2c13bc79fccc74da431ba1a6399870b261b24c57
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 6f5535a57fae847c8a376b8b39e43955675da739
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196423"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974781"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>On-premises machines voorbereiden voor migratie naar Azure
 
@@ -99,7 +99,7 @@ Als uw on-premises installatie bijvoorbeeld gebruikmaakt van een gegevens schijf
 1. Open een opdracht prompt met verhoogde bevoegdheden op de on-premises machine (niet op de hostserver).
 2. Typ **DiskPart**.
 3. Typ **San**. Als de stationsletter van het gast besturingssysteem niet wordt onderhouden, wordt **offline alle** of **offline gedeelde** gegevens weer gegeven.
-4. Typ **SANPOLICY = ONLINEALL**bij de prompt **Disk Part** . Deze instelling zorgt ervoor dat schijven online worden gebracht en zijn zowel leesbaar als beschrijfbaar.
+4. Typ **San POLICY = OnlineAll**bij de **Disk Part** -prompt. Deze instelling zorgt ervoor dat schijven online worden gebracht en zijn zowel leesbaar als beschrijfbaar.
 5. Tijdens de test migratie kunt u controleren of de stationsletters behouden blijven.
 
 

@@ -1,5 +1,5 @@
 ---
-title: Verificatie in het micro soft Identity platform (v 1.0) | Azure
+title: Verificatie van micro soft-identiteits platform (v 1.0) | Azure
 description: "Meer informatie over de basis principes van verificatie in het micro soft Identity-platform: het app-model, de API, het inrichten en de meest voorkomende verificatie scenario's die door micro soft Identity platform worden ondersteund."
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c7bf80c0471853008573bbcbb918fb33c6c43cd
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 445f301e2a526dc8f9e2c261e897fe8b1abe2f1e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149174"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966772"
 ---
 # <a name="what-is-authentication"></a>Wat is verificatie?
 
@@ -64,16 +64,16 @@ In het bovenstaande voorbeeldscenario kunt u apps classificeren aan de hand van 
 
 Afhankelijk van hoe uw client is gebouwd, kunnen er één (of meerdere) verificatie stromen worden gebruikt die worden ondersteund door het micro soft Identity-platform.  Deze stromen kunnen een aantal tokens (id_tokens, vernieuwings tokens, toegangs tokens) en autorisatie codes produceren, en vereisen verschillende tokens om ze te laten werken. Dit diagram bevat een overzicht:
 
-|Stroom | Nodig | id_token | toegangs token | token vernieuwen | autorisatie code | 
+|Stroom | Vereist | id_token | Toegangs token | token vernieuwen | autorisatie code | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Autorisatie code stroom](v1-protocols-oauth-code.md) | | x | x | x | x|  
 |[Impliciete stroom](v1-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[Hybride OIDC-stroom](v1-protocols-openid-connect-code.md#get-access-tokens)| | x  | |          |            x   |
 |[Aflossingen van token vernieuwen](v1-protocols-oauth-code.md#refreshing-the-access-tokens) | token vernieuwen | x | x | x| |
-|[Namens-stroom](v1-oauth2-on-behalf-of-flow.md) | toegangs token| x| x| x| |
+|[Namens-stroom](v1-oauth2-on-behalf-of-flow.md) | Toegangs token| x| x| x| |
 |[Clientreferenties](v1-oauth2-client-creds-grant-flow.md) | | | x (alleen app)| | |
 
-Tokens die zijn uitgegeven via de impliciete modus, hebben een beperkte lengte omdat ze via de URL worden teruggestuurd naar de browser (waarbij `response_mode` is `query` of `fragment`).  Voor sommige browsers geldt een limiet voor de grootte van de URL die in de browser balk kan worden geplaatst en die kan worden uitgevoerd als deze te lang is.  Deze tokens hebben dus geen `groups`-of `wids`-claims. 
+Tokens die zijn uitgegeven via de impliciete modus, hebben een beperkte lengte omdat ze via de URL worden teruggestuurd naar de browser (waarbij `response_mode` is `query` of `fragment`).  Voor sommige browsers geldt een limiet voor de grootte van de URL die in de browser balk kan worden geplaatst en die kan worden uitgevoerd als deze te lang is.  Deze tokens hebben dus geen `groups`-of `wids` claims. 
 
 Nu u een overzicht van de basis principes hebt, leest u meer over het identiteits-app-model en de API, hoe Provisioning werkt in het micro soft Identity platform en koppelingen naar gedetailleerde informatie over de algemene scenario's die door micro soft Identity platform worden ondersteund.
 

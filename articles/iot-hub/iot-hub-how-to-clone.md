@@ -2,18 +2,17 @@
 title: Een Azure IoT hub klonen
 description: Een Azure IoT hub klonen
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: 4d8771d49f30d94aeb6dfa855f5c2ef107076afb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 6e4d110221c7f360e8177505de2a7789f9616d51
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083270"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976142"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Een Azure IoT hub klonen naar een andere regio
 
@@ -73,9 +72,7 @@ Dit is de algemene methode die wordt aanbevolen voor het verplaatsen van een IoT
    1. Voeg iets toe dat niet naar de sjabloon is geëxporteerd. 
    
        Consumenten groepen worden bijvoorbeeld niet geëxporteerd naar de sjabloon. U moet de Consumer groepen hand matig toevoegen aan de sjabloon of de [Azure Portal](https://portal.azure.com) gebruiken nadat de hub is gemaakt. Er is een voor beeld van het toevoegen van één consumer groep aan een sjabloon in het artikel [een Azure Resource Manager sjabloon gebruiken om IOT hub bericht routering te configureren](tutorial-routing-config-message-routing-rm-template.md).
-
-       [Bericht verrijkingen](iot-hub-message-enrichments-overview.md) worden ook niet geëxporteerd naar de sjabloon. Deze worden gebruikt in combi natie met routerings berichten en moeten hand matig worden bijgewerkt op de nieuwe hub wanneer de configuratie van de bericht routering wordt bijgewerkt.
-
+       
    1. Kopieer de apparaten van de oorspronkelijke hub naar de kloon. Dit wordt behandeld in de sectie [het beheren van de apparaten die zijn geregistreerd bij de IOT hub](#managing-the-devices-registered-to-the-iot-hub).
 
 ## <a name="how-to-handle-message-routing"></a>Bericht routering afhandelen
@@ -103,9 +100,6 @@ Als de hub gebruikmaakt van bericht routering, hebt u twee opties.
    * De hub verwijst nog steeds naar de oorspronkelijke routerings resources en stuurt berichten naar deze bronnen zoals ze zijn geconfigureerd.
 
    * U krijgt een klein prestatie niveau omdat de hub en de Routing-eindpunt resources zich niet op dezelfde locatie bevinden.
-
-> [!NOTE]
-> Als uw hub [bericht uitbreidingen](iot-hub-message-enrichments-overview.md)gebruikt, moet u deze hand matig instellen op de nieuwe IOT-hub, aangezien deze niet worden geëxporteerd met de Resource Manager-sjabloon.
 
 ## <a name="prepare-to-migrate-the-hub-to-another-region"></a>De migratie van de hub naar een andere regio voorbereiden
 
@@ -359,7 +353,7 @@ Maak de nieuwe hub op de nieuwe locatie met behulp van de sjabloon. Als u router
 
 1. In het zoekvak plaatst u ' sjabloon implementatie ' en selecteert u ENTER.
 
-1. **Sjabloon implementatie selecteren (implementeren met aangepaste sjablonen)** . Hiermee gaat u naar een scherm voor de Sjabloonimlementatie. Selecteer **Maken**. Dit scherm wordt weer gegeven:
+1. **Sjabloon implementatie selecteren (implementeren met aangepaste sjablonen)** . Hiermee gaat u naar een scherm voor de Sjabloonimlementatie. Selecteer **Maken**. U ziet dit scherm:
 
    ![Scherm afbeelding met de opdracht voor het maken van uw eigen sjabloon](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
 

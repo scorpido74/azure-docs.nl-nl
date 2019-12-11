@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/19/2019
+ms.date: 12/09/2019
 ms.author: takamath
-ms.openlocfilehash: 1bb5d979ff7c9fe6e2afec4c7ebd81649b4488e3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4549ee0f50c06040b70307c96b5ca96cd4162214
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581234"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974280"
 ---
 # <a name="connect-to-your-virtual-machines-through-a-browser"></a>Verbinding maken met uw virtuele machines via een browser 
 
@@ -26,10 +26,9 @@ DevTest Labs kan worden geïntegreerd met [Azure Bastion](https://docs.microsoft
 
 Zodra de *browser verbinding maken* is ingeschakeld, hebben Lab-gebruikers via een browser toegang tot virtuele machines.  
 
-
 ## <a name="create-a-lab-virtual-machine"></a>Een virtuele machine voor het lab maken
 
-U moet eerst de virtuele machine van het lab maken binnen een VNet waarop Bastion is geconfigureerd. U kunt een VNet selecteren tijdens het maken van de virtuele machine door naar het tabblad **Geavanceerde instellingen** te gaan.
+U moet eerst de virtuele machine van het lab maken binnen een virtueel netwerk waarop Bastion is geconfigureerd. Selecteer het tweede **subnet** dat u hebt gemaakt, niet de AzureBastionSubnet. U kunt een virtueel netwerk selecteren tijdens het maken van de virtuele machine door naar het tabblad **Geavanceerde instellingen** te gaan.
 
 ![Virtuele machine maken](./media/connect-virtual-machine-through-browser/create-virtual-machine.png)
 

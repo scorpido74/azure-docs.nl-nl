@@ -1,11 +1,10 @@
 ---
-title: Cloud-init gebruiken voor het bijwerken en installeren van pakketten in een virtuele Linux-machine in azure
+title: Cloud-init gebruiken in een virtuele Linux-machine in azure
 description: Cloud-init gebruiken voor het bijwerken en installeren van pakketten in een Linux-VM tijdens het maken met de Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
-author: rickstercdn
+author: cynthn
 manager: gwallace
-editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
@@ -13,16 +12,16 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: rclaus
-ms.openlocfilehash: ddea412598e02be7d71d5a3efafa444a5dc19e8c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: cynthn
+ms.openlocfilehash: 7bb48ec11ec042f021203c1716968daa9ab45047
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036732"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973132"
 ---
 # <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>Cloud-init gebruiken voor het bijwerken en installeren van pakketten in een virtuele Linux-machine in azure
-Dit artikel laat u zien hoe u [Cloud-init](https://cloudinit.readthedocs.io) kunt gebruiken om pakketten bij te werken op een virtuele Linux-machine (VM) of virtuele-machine schaal sets (VMSS) bij het inrichten van de tijd in Azure. Deze Cloud-init-scripts worden uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure. Zie [Cloud-init Overview](using-cloud-init.md) (Engelstalig) voor meer informatie over hoe Cloud-init standaard werkt in Azure en de ondersteunde Linux-distributies
+Dit artikel laat u zien hoe u [Cloud-init](https://cloudinit.readthedocs.io) kunt gebruiken om pakketten op een virtuele Linux-machine (VM) of virtuele-machine schaal sets bij te werken in Azure. Deze Cloud-init-scripts worden uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure. Zie [Cloud-init Overview](using-cloud-init.md) (Engelstalig) voor meer informatie over hoe Cloud-init standaard werkt in Azure en de ondersteunde Linux-distributies
 
 ## <a name="update-a-vm-with-cloud-init"></a>Een virtuele machine bijwerken met Cloud-init
 Uit veiligheids overwegingen kunt u een virtuele machine configureren om de meest recente updates bij de eerste keer opstarten toe te passen. Als Cloud-init werkt in verschillende Linux-distributies, hoeft u geen `apt` of `yum` op te geven voor de package manager. In plaats daarvan definieert u `package_upgrade` en laat het Cloud-init-proces het juiste mechanisme bepalen voor de distributie die in gebruik zijn. Met deze werk stroom kunt u dezelfde Cloud-init-scripts gebruiken voor distributies.

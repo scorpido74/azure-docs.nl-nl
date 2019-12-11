@@ -3,17 +3,17 @@ title: Een Azure IoT Central-toepassing exporteren | Microsoft Docs
 description: Als oplossings beheerder wilt u een toepassings sjabloon exporteren zodat deze opnieuw kan worden gebruikt.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/17/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 0edc1a7e470b7f0f3773b69635bbc26ab4d283b3
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 9870b18be9fb75e25941a7e1d05e4164239aacbb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480352"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977519"
 ---
 # <a name="export-your-application-preview-features"></a>Uw toepassing exporteren (preview-functies)
 
@@ -30,7 +30,7 @@ U hebt hiervoor twee opties:
 
 U kunt een kopie maken van elke toepassing, min eventuele exemplaren van apparaten, geschiedenis van apparaatgegevens en gebruikers gegevens. De kopie is een betalen per gebruik-toepassing waarvoor u kosten in rekening brengt. U kunt geen proef toepassing maken door een toepassing te kopiëren.
 
-Selecteer **kopiëren**. Voer in het dialoog venster de details in voor de nieuwe toepassing voor betalen naar gebruik. Selecteer vervolgens **kopiëren** om te bevestigen dat u wilt door gaan. Zie de Snelstartgids [een toepassing maken](quick-deploy-iot-central.md) voor meer informatie over de velden in het formulier.
+Selecteer **Kopiëren**. Voer in het dialoog venster de details in voor de nieuwe toepassing voor betalen naar gebruik. Selecteer vervolgens **kopiëren** om te bevestigen dat u wilt door gaan. Zie de Snelstartgids [een toepassing maken](quick-deploy-iot-central.md) voor meer informatie over de velden in het formulier.
 
 > [!NOTE]
 > U kunt **uw toepassing alleen kopiëren** naar **Europa** en de locatie van de **VS** .

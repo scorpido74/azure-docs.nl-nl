@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: d15bfcfbae3b24e1a9b29dc74f9b41a979e63ae9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: d2f4ddfbff791fbfeb2eb006a628c0fdeb4fdce1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014688"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975190"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>Hybride ontwerp van DRM-subsystemen 
 
@@ -69,8 +69,8 @@ Als onderdeel van een uitgebreid video platform in de Cloud heeft Azure Media Se
 
 ### <a name="drm-license-delivery"></a>Levering van DRM-licentie
 
-* AMS DRM-licentie wordt geleverd door de AMS-licentie leverings service.
-* Derde partij: DRM-licentie wordt geleverd door een DRM-licentie server van derden buiten AMS.
+* AMS: DRM-licentie wordt geleverd door de AMS-licentie leverings service.
+* Van derden: DRM-licentie wordt geleverd door een DRM-licentie server van derden buiten AMS.
 
 ## <a name="configure-based-on-your-hybrid-scenario"></a>Configureren op basis van uw hybride scenario
 
@@ -89,11 +89,11 @@ Via de configuratie van een leverings beleid voor assets kunt u de volgende kenm
 
 * De combi natie van het streaming-protocol en de DRM-versleuteling, zoals streepje onder CENC (PlayReady en Widevine), smooth streaming onder PlayReady, HLS onder Widevine of PlayReady.
 * De standaard/Inge sloten Url's voor licentie levering voor elk van de betrokken DRMs.
-* Of Url's voor het verkrijgen van licenties (LA_URLs) in een streepje-MPD of HLS-afspeel lijst de query reeks sleutel-ID (KID) bevatten voor respectievelijk Widevine en FairPlay.
+* Of Url's voor het verkrijgen van licenties (LA_URLs) in een streepje-MPD of HLS-afspeel lijst een query reeks van de sleutel-ID (KID) bevatten voor respectievelijk Widevine en FairPlay.
 
 ## <a name="scenarios-and-samples"></a>Scenario's en voor beelden
 
-Op basis van de uitleg in de vorige sectie gebruiken de volgende vijf hybride scenario's de verschillende configuratie combinaties voor het**leverings beleid** voor de **inhouds sleutel**-. de voor beelden in de laatste kolom volgen de tabel.
+Op basis van de uitleg in de vorige sectie gebruiken de volgende vijf hybride scenario's de respectieve **inhouds sleutel**-**Asset Delivery Policy** -combi Naties (de voor beelden in de laatste kolom volgen de tabel):
 
 |**Inhoud hosten & oorsprong**|**DRM-versleuteling**|**Levering van DRM-licentie**|**Inhouds sleutel configureren**|**Leverings beleid voor assets configureren**|**Voorbeeld**|
 |---|---|---|---|---|---|
@@ -126,6 +126,10 @@ In de voor beelden werkt PlayReady Protection voor zowel het streepje als het sm
 
 * Bron-URL: https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500.ism/manifest 
 * PlayReady LA_URL (streepje & Smooth): https://willzhan12.cloudapp.net/playready/rightsmanager.asmx 
+
+## <a name="additional-notes"></a>Aanvullende opmerkingen
+
+* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="summary"></a>Samenvatting
 

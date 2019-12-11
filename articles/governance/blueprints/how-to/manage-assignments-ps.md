@@ -3,12 +3,12 @@ title: Toewijzingen beheren met Power shell
 description: Meer informatie over het beheren van blauw druk-toewijzingen met de officiële Azure blauw drukken Power shell-module, AZ. blauw druk.
 ms.date: 09/30/2019
 ms.topic: how-to
-ms.openlocfilehash: 5e91197cac97475aa20df8fef8649d98d762d920
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 765ed5e1849443d6ac73fe4507327e97e4fdc4c2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873179"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973642"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Toewijzingen beheren met Power shell
 
@@ -246,6 +246,8 @@ In plaats van para meters door te geven aan de cmdlet, wordt in het voor beeld h
 $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -SubscriptionId '{subId}' `
     -AssignmentFile '.\assignment.json'
 ```
+
+Voor een voor beeld van het definitie bestand van de JSON-toewijzing voor een door de gebruiker toegewezen beheerde identiteit raadpleegt u de hoofd tekst van de aanvraag in het [voor beeld: toewijzing met door de gebruiker toegewezen beheerde identiteit](/rest/api/blueprints/assignments/createorupdate#assignment-with-user-assigned-managed-identity) voor rest API.
 
 ## <a name="update-blueprint-assignments"></a>Blauw druk-toewijzingen bijwerken
 

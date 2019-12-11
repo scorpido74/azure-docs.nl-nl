@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: 52dc0ff27ad2f04b9faeab24c6bdba68d9ec138e
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 62c9ac0020db92c1540d0ecb4fa996d9b8405a58
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307278"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974254"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Zelf studie: uw eerste model trainen en implementeren in R met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -70,7 +70,7 @@ We raden u aan RStudio te gebruiken om deze zelf studie uit te voeren. In RStudi
 > Als u ervaring hebt met RMarkdown, kunt u de code uit dat bestand gebruiken.  Of u kunt de code fragmenten uit deze of van dit artikel kopiëren/plakken in een R-script of de opdracht regel.
 
 
-## <a name="set-up-your-development-environment"></a>De ontwikkelomgeving instellen
+## <a name="set-up-your-development-environment"></a>Uw ontwikkelomgeving instellen
 De configuratie voor uw ontwikkel werkzaamheden in deze zelf studie bevat de volgende acties:
 
 * De vereiste pakketten installeren
@@ -142,7 +142,7 @@ saveRDS(accidents, file="accidents.Rd")
 ```
 
 ### <a name="upload-data-to-the-datastore"></a>Gegevens uploaden naar het gegevens archief
-Gegevens uploaden naar de Cloud, zodat deze toegankelijk is voor uw externe trainings omgeving. Elke Azure ML-werk ruimte wordt geleverd met een standaard gegevens opslag waarin de verbindings gegevens worden opgeslagen in de Azure Blob-container die is ingericht in het opslag account dat is gekoppeld aan de werk ruimte. Met de volgende code worden de ongel ukken die u hierboven hebt gemaakt, geüpload naar het gegevens archief.
+Gegevens uploaden naar de Cloud, zodat deze toegankelijk is voor uw externe trainings omgeving. Elke Azure Machine Learning-werk ruimte wordt geleverd met een standaard gegevens opslag waarin de verbindings gegevens worden opgeslagen in de Azure Blob-container die is ingericht in het opslag account dat is gekoppeld aan de werk ruimte. Met de volgende code worden de ongel ukken die u hierboven hebt gemaakt, geüpload naar het gegevens archief.
 
 ```R
 ds <- get_default_datastore(ws)
@@ -164,10 +164,10 @@ Voor deze zelf studie past u een logistiek regressie model toe op uw geüploade 
 * De taak verzenden
 
 ### <a name="prepare-the-training-script"></a>Het trainings script voorbereiden
-Er is een trainings script met de naam `accidents.R` voor u in dezelfde map als deze zelf studie. Let op de volgende Details **in het trainings script** dat is uitgevoerd om gebruik te maken van de Azure ml-service voor training:
+Er is een trainings script met de naam `accidents.R` voor u in dezelfde map als deze zelf studie. Let op de volgende Details **in het trainings script** dat is gedaan om Azure machine learning te gebruiken voor training:
 
 * Het trainings script gebruikt een argument `-d` om de map te vinden die de trainings gegevens bevat. Wanneer u later uw taak definieert en verzendt, wijst u de gegevens opslag voor dit argument aan. Azure ML koppelt de opslagmap aan het externe cluster voor de trainings taak.
-* Het trainings script registreert de uiteindelijke nauw keurigheid als een metriek voor het uitvoeren van een record in azure ML met behulp van `log_metric_to_run()`. De Azure ML SDK biedt een set logboek registratie-Api's voor het vastleggen van verschillende metrische gegevens tijdens trainings uitvoeringen. Deze metrische gegevens worden vastgelegd en bewaard in de record voor het experiment run. De metrieken kunnen op elk gewenst moment worden geopend of worden weer gegeven op de detail pagina Details in [Azure machine learning Studio](https://ml.azure.com). Zie de [Naslag informatie](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) voor de volledige set registratie methoden `log_*()`.
+* Het trainings script registreert de uiteindelijke nauw keurigheid als een metriek voor het uitvoeren van een record in azure ML met behulp van `log_metric_to_run()`. De Azure ML SDK biedt een set logboek registratie-Api's voor het vastleggen van verschillende metrische gegevens tijdens trainings uitvoeringen. Deze metrische gegevens worden vastgelegd en bewaard in de record voor het experiment run. De metrieken kunnen op elk gewenst moment worden geopend of worden weer gegeven op de detail pagina Details in [Studio](https://ml.azure.com). Zie de [Naslag informatie](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) voor de volledige set registratie methoden `log_*()`.
 * Het trainings script slaat uw model op in een map met de naam **uitvoer**. De `./outputs` map ontvangt een speciale behandeling door Azure ML. Tijdens de training worden bestanden die naar `./outputs` zijn geschreven, automatisch geüpload naar het run-record door Azure ML en persistent gemaakt als artefacten. Door het getrainde model op te slaan op `./outputs`, kunt u uw model bestand openen en ophalen, zelfs nadat de uitvoering is voltooid en u geen toegang meer hebt tot uw externe trainings omgeving.
 
 ### <a name="create-an-estimator"></a>Een estimator maken

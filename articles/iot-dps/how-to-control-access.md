@@ -1,6 +1,6 @@
 ---
-title: Beveiliging-eindpunten in IoT Device Provisioning Service | Microsoft Docs
-description: Concepten - toegang tot IoT Device Provisioning Service voor back-end-apps beheren. Bevat informatie over beveiligingstokens.
+title: Beveiligings eindpunten in IoT Device Provisioning Service | Microsoft Docs
+description: 'Concepten: toegang tot IoT Device Provisioning Service (DPS) beheren voor back-end-apps. Bevat informatie over beveiligings tokens.'
 author: wesmc7777
 manager: philmea
 ms.service: iot-dps
@@ -8,47 +8,47 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
-ms.openlocfilehash: 7ff622ceac9c49eda7ba6bca1a8bb3aaabccb816
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f36a48e0cedc309deda8416face5549a54eb8c73
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626647"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975122"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Toegang tot Azure IoT Hub Device Provisioning Service beheren
 
-In dit artikel beschrijft de opties voor het beveiligen van uw IoT-Device Provisioning service. De provisioning-service wordt gebruikt *machtigingen* toegang verlenen tot elk eindpunt. Machtigingen beperken de toegang tot een service-exemplaar op basis van functionaliteit.
+In dit artikel worden de opties beschreven voor het beveiligen van uw IoT Device Provisioning-Service. De inrichtings service maakt gebruik van *machtigingen* om toegang te verlenen aan elk eind punt. Machtigingen beperken de toegang tot een service-exemplaar op basis van de functionaliteit.
 
 Dit artikel wordt beschreven:
 
-* De andere machtigingen die u aan een back-end-app verlenen kunt voor toegang tot uw provisioning-service.
-* Het verificatieproces en de tokens die wordt gebruikt om machtigingen te controleren.
+* De verschillende machtigingen die u kunt verlenen aan een back-end-app om toegang te krijgen tot uw inrichtings service.
+* Het verificatie proces en de tokens die worden gebruikt om machtigingen te controleren.
 
 ### <a name="when-to-use"></a>Wanneer gebruikt u dit?
 
-U moet de juiste machtigingen voor toegang tot een van de provisioning service-eindpunten hebben. Een back-end-app moet bijvoorbeeld een token met beveiligingsreferenties samen met elk bericht dat wordt verzonden naar de service.
+U moet de juiste machtigingen hebben voor toegang tot een van de inrichtings service-eind punten. Een back-end-app moet bijvoorbeeld een token bevatten met beveiligings referenties, samen met elk bericht dat wordt verzonden naar de service.
 
-## <a name="access-control-and-permissions"></a>Access control en machtigingen
+## <a name="access-control-and-permissions"></a>Toegangs beheer en machtigingen
 
-U kunt verlenen [machtigingen](#device-provisioning-service-permissions) in de volgende manieren:
+U kunt op de volgende manieren [machtigingen](#device-provisioning-service-permissions) verlenen:
 
-* **Gedeeld toegangsbeleid voor autorisatie**. Beleid voor gedeelde toegang kunnen verlenen tot een combinatie van [machtigingen](#device-provisioning-service-permissions). U kunt beleid in definiëren de [Azure-portal][lnk-management-portal], of programmatisch met behulp van de [Device Provisioning Service REST-API's][lnk-resource-provider-apis]. Een nieuwe provisioning-service heeft het standaardbeleid voor het volgende:
+* **Verificatie beleid voor gedeelde toegang**. Beleid voor gedeelde toegang kan elke combi natie van [machtigingen](#device-provisioning-service-permissions)verlenen. U kunt beleids regels definiëren in de [Azure Portal][lnk-management-portal], of programmatisch door gebruik te maken van de [Device Provisioning Service-rest api's][lnk-resource-provider-apis]. Een nieuw gemaakte inrichtings service heeft het volgende standaard beleid:
 
-* **provisioningserviceowner**: Beleid met alle machtigingen.
+* **provisioningserviceowner**: beleid met alle machtigingen.
 
 > [!NOTE]
 > Zie [machtigingen](#device-provisioning-service-permissions) voor gedetailleerde informatie.
 
 ## <a name="authentication"></a>Verificatie
 
-Azure IoT Hub Device Provisioning Service verleent toegang tot eindpunten door te controleren of een token op basis van het beleid voor gedeelde toegang. Beveiligingsreferenties, zoals symmetrische sleutels worden nooit via de kabel verzonden.
+Azure IoT Hub Device Provisioning Service verleent toegang tot eind punten door een token te controleren op basis van het beleid voor gedeelde toegang. Beveiligings referenties, zoals symmetrische sleutels, worden nooit via de kabel verzonden.
 
 > [!NOTE]
-> De Device Provisioning Service-resourceprovider wordt beveiligd via uw Azure-abonnement, omdat alle providers in het [Azure Resource Manager][lnk-azure-resource-manager].
+> De resource provider van de Device Provisioning Service wordt beveiligd met uw Azure-abonnement, evenals alle providers in de [Azure Resource Manager][lnk-azure-resource-manager].
 
-Zie de volgende sectie voor meer informatie over het maken en gebruiken van beveiligingstokens.
+Zie de volgende sectie voor meer informatie over het maken en gebruiken van beveiligings tokens.
 
-HTTP is de enige ondersteunde protocol en deze verificatie wordt geïmplementeerd door te nemen van een geldig token in de **autorisatie** aanvraagheader.
+HTTP is het enige ondersteunde protocol en implementeert verificatie door een geldig token op te nemen in de header van de **autorisatie** aanvraag.
 
 #### <a name="example"></a>Voorbeeld
 ```csharp
@@ -57,34 +57,34 @@ SharedAccessSignature sr =
 ```
 
 > [!NOTE]
-> De [Azure IoT Device Provisioning Service-SDK's] [ lnk-sdks] automatisch genereren van tokens bij het verbinden met de service.
+> De [sdk's van Azure IOT Device Provisioning Service][lnk-sdks] genereren automatisch tokens wanneer er verbinding wordt gemaakt met de service.
 
-## <a name="security-tokens"></a>Beveiligingstokens
+## <a name="security-tokens"></a>Beveiligings tokens
 
-De Device Provisioning Service maakt gebruik van beveiligingstokens voor de verificatie van services om te voorkomen dat sleutels op de kabel verzonden. Bovendien zijn beveiligingstokens beperkt in de geldigheid van de tijd en het bereik. [Azure IoT Device Provisioning Service-SDK's] [ lnk-sdks] automatisch genereren van tokens zonder speciale configuratie. Sommige scenario's hoeven te genereren en beveiligingstokens rechtstreeks gebruiken. Dergelijke scenario's omvatten het direct gebruik van de HTTP-aanvallen.
+De Device Provisioning Service maakt gebruik van beveiligings tokens voor het verifiëren van services om te voor komen dat sleutels op de kabel worden verzonden. Daarnaast worden beveiligings tokens beperkt in de geldigheid van de tijd en het bereik. De [sdk's van Azure IOT Device Provisioning Service][lnk-sdks] genereren automatisch tokens zonder dat hiervoor speciale configuratie is vereist. Voor sommige scenario's moet u beveiligings tokens rechtstreeks genereren en gebruiken. Dit scenario omvat het directe gebruik van het HTTP-Opper vlak.
 
-### <a name="security-token-structure"></a>Token beveiligingsstructuur
+### <a name="security-token-structure"></a>Structuur van beveiligings token
 
-U beveiligingstokens gebruiken om tijd gebonden toegang voor specifieke functionaliteit in IoT Device Provisioning Service-services te verlenen. Als u autorisatie verbinding maken met de provisioning-service, moeten de services beveiligingstokens die zijn ondertekend met een gedeelde toegang of de symmetrische sleutel verzenden.
+U gebruikt beveiligings tokens om tijdgebonden toegang te verlenen aan services aan specifieke functionaliteit in IoT Device Provisioning Service. Om autorisatie te krijgen om verbinding te maken met de inrichtings service, moeten de services beveiligings tokens verzenden die zijn ondertekend met een gedeelde toegang of symmetrische sleutel.
 
-Een token is ondertekend met een gedeelde toegang sleutel verleent toegang tot alle functionaliteit die is gekoppeld met de machtigingen van het beleid voor gedeelde toegang. 
+Een token dat is ondertekend met een gedeelde toegangs sleutel, verleent toegang tot alle functies die zijn gekoppeld aan de machtigingen voor het gedeelde toegangs beleid. 
 
-Het beveiligingstoken heeft de volgende indeling:
+Het beveiligings token heeft de volgende indeling:
 
 `SharedAccessSignature sig={signature}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`
 
-Hier volgen de verwachte waarden:
+Dit zijn de verwachte waarden:
 
-| Value | Description |
+| Waarde | Beschrijving |
 | --- | --- |
-| {handtekening} |Een tekenreeks van de HMAC-SHA256 handtekening van het formulier: `{URL-encoded-resourceURI} + "\n" + expiry`. **Belangrijke**: De sleutel is gedecodeerd op basis van base64 en gebruikt als sleutel voor het uitvoeren van de HMAC-SHA256-berekening.|
-| {expiry} |UTF8-tekenreeksen voor het aantal seconden sinds de epoche 00:00:00 UTC op 1 januari 1970. |
-| {URL-encoded-resourceURI} | Lagere aanvraag-URL-codering van de resource-URI van de kleine letters. URI-voorvoegsel (per segment) van de eindpunten die toegankelijk zijn met dit token, beginnend met de hostnaam van de IoT Device Provisioning Service (Er is geen protocol). Bijvoorbeeld `mydps.azure-devices-provisioning.net`. |
-| {policyName} |De naam van het beleid voor gedeelde toegang waarvoor dit token verwijst. |
+| ondertekening |Een HMAC-SHA256-handtekening teken reeks van de vorm: `{URL-encoded-resourceURI} + "\n" + expiry`. **Belang rijk**: de sleutel wordt gedecodeerd op basis van base64 en gebruikt als sleutel voor het uitvoeren van de HMAC-sha256-berekening.|
+| verloop |UTF8-teken reeksen voor het aantal seconden sinds de epoche 00:00:00 UTC op 1 januari 1970. |
+| {URL-encoded-resourceURI} | Kleine letter-URL-code ring van de resource-URI voor kleine letters. URI-voor voegsel (per segment) van de eind punten die toegankelijk zijn met dit token, te beginnen met de hostnaam van de IoT Device Provisioning Service (geen Protocol). Bijvoorbeeld `mydps.azure-devices-provisioning.net`. |
+| {policyName} |De naam van het gedeelde toegangs beleid waarnaar dit token verwijst. |
 
-**Houd er rekening mee op het voorvoegsel van**: Het URI-voorvoegsel wordt berekend per segment en niet door het teken. Bijvoorbeeld `/a/b` is een voorvoegsel voor `/a/b/c` , maar niet voor `/a/bc`.
+**Opmerking op voor voegsel**: het URI-voor voegsel wordt berekend door een segment en niet op basis van het teken. `/a/b` is bijvoorbeeld een voor voegsel voor `/a/b/c`, maar niet voor `/a/bc`.
 
-Het volgende Node.js-fragment toont een functie met de naam **generateSasToken** die het token van de invoer berekent `resourceUri, signingKey, policyName, expiresInMins`. De volgende secties bevatten informatie over het initialiseren van de verschillende soorten invoer voor de verschillende token use cases.
+Het volgende node. js-fragment bevat een functie met de naam **generateSasToken** die het token van de invoer `resourceUri, signingKey, policyName, expiresInMins`berekent. In de volgende secties wordt beschreven hoe u de verschillende invoer gegevens voor de verschillende token-use cases initialiseert.
 
 ```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
@@ -107,7 +107,7 @@ var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMi
 };
 ```
 
-Als een vergelijking: de equivalente Python-code voor het genereren van een beveiligingstoken is:
+Als vergelijking wordt de equivalente python-code voor het genereren van een beveiligings token:
 
 ```python
 from base64 import b64encode, b64decode
@@ -133,29 +133,29 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 ```
 
 > [!NOTE]
-> Aangezien de geldigheid van het token is gevalideerd op IoT Device Provisioning Service-machines, moet de afwijking van de klok van de computer waarmee het token wordt gegenereerd minimaal zijn.
+> Omdat de geldigheids duur van het token wordt gevalideerd op IoT Device Provisioning Service-machines, moet de drift op de klok van de computer die het token genereert, mini maal zijn.
 
-### <a name="use-security-tokens-from-service-components"></a>Beveiligingstokens van de onderdelen van service gebruiken
+### <a name="use-security-tokens-from-service-components"></a>Beveiligings tokens van service onderdelen gebruiken
 
-Serviceonderdelen kunnen alleen beveiligingstokens met behulp van de juiste machtigingen verlenen zoals hierboven is beleid voor gedeelde toegang genereren.
+Service onderdelen kunnen alleen beveiligings tokens genereren met behulp van Shared Access policies die de juiste machtigingen verlenen, zoals eerder is uitgelegd.
 
-Hier vindt u de servicefuncties beschikbaar gesteld op de eindpunten:
+Hier volgen de service functies die beschikbaar zijn op de eind punten:
 
 | Eindpunt | Functionaliteit |
 | --- | --- |
-| `{your-service}.azure-devices-provisioning.net/enrollments` |Biedt bewerkingen voor apparaat-inschrijving met de Device Provisioning Service. |
-| `{your-service}.azure-devices-provisioning.net/enrollmentGroups` |Biedt bewerkingen voor het beheren van groepen van de inschrijving van apparaten. |
-| `{your-service}.azure-devices-provisioning.net/registrations/{id}` |Biedt bewerkingen voor het ophalen en de status van apparaatregistraties beheren. |
+| `{your-service}.azure-devices-provisioning.net/enrollments` |Biedt registratie bewerkingen voor apparaten met de Device Provisioning Service. |
+| `{your-service}.azure-devices-provisioning.net/enrollmentGroups` |Biedt bewerkingen voor het beheren van registratie groepen voor apparaten. |
+| `{your-service}.azure-devices-provisioning.net/registrations/{id}` |Biedt bewerkingen voor het ophalen en beheren van de status van apparaatregistratie. |
 
 
-Als u bijvoorbeeld een service die zijn gegenereerd met een vooraf gemaakte gedeeld toegangsbeleid met de naam **enrollmentread** zou maken van een token met de volgende parameters:
+Een voor beeld: een service die wordt gegenereerd met een vooraf gemaakt Shared Access-beleid met de naam **enrollmentread** , maakt een token met de volgende para meters:
 
 * resource-URI: `{mydps}.azure-devices-provisioning.net`,
-* ondertekeningssleutel: een van de sleutels van de `enrollmentread` -beleid
-* Beleidsnaam: `enrollmentread`,
-* alle time.backn verlopen
+* handtekening sleutel: een van de sleutels van het `enrollmentread`-beleid,
+* beleids naam: `enrollmentread`,
+* elke verloop tijd. backn
 
-![Maken van een gedeeld toegangsbeleid voor uw Device Provisioning service-exemplaar in de portal][img-add-shared-access-policy]
+![Een gedeeld toegangs beleid voor uw Device Provisioning service-exemplaar maken in de portal][img-add-shared-access-policy]
 
 ```javascript
 var endpoint ="mydps.azure-devices-provisioning.net";
@@ -165,25 +165,25 @@ var policyKey = '...';
 var token = generateSasToken(endpoint, policyKey, policyName, 60);
 ```
 
-Het resultaat toegang tot het lezen van alle inschrijvingsrecords verleent zou, zou zijn:
+Het resultaat, dat toegang zou verlenen om alle inschrijvings records te lezen, zou zijn:
 
 `SharedAccessSignature sr=mydps.azure-devices-provisioning.net&sig=JdyscqTpXdEJs49elIUCcohw2DlFDR3zfH5KqGJo4r4%3D&se=1456973447&skn=enrollmentread`
 
-## <a name="reference-topics"></a>Onderwerpen met naslaginformatie:
+## <a name="reference-topics"></a>Naslag onderwerpen:
 
-De volgende onderwerpen met naslaginformatie bieden u meer informatie over het beheren van toegang tot uw IoT Device Provisioning Service.
+In de volgende onderwerpen vindt u meer informatie over het beheren van de toegang tot uw IoT Device Provisioning-Service.
 
 ### <a name="device-provisioning-service-permissions"></a>Machtigingen voor Device Provisioning Service
 
-De volgende tabel bevat de machtigingen die u gebruiken kunt voor het beheren van toegang tot uw IoT Device Provisioning Service.
+De volgende tabel geeft een lijst van de machtigingen die u kunt gebruiken voor het beheren van de toegang tot uw IoT Device Provisioning-Service.
 
 | Machtiging | Opmerkingen |
 | --- | --- |
-| **ServiceConfig** |Verleent toegang tot het wijzigen van de serviceconfiguraties. <br/>Deze machtiging wordt gebruikt door de back-end cloudservices. |
-| **EnrollmentRead** |Verleent leestoegang heeft tot het apparaatregistraties en Registratiegroepen. <br/>Deze machtiging wordt gebruikt door de back-end cloudservices. |
-| **EnrollmentWrite** |Verleent schrijf-toegang tot het apparaatregistraties en Registratiegroepen. <br/>Deze machtiging wordt gebruikt door de back-end cloudservices. |
-| **RegistrationStatusRead** |Verleent leestoegang heeft tot de status van de apparaatregistratie. <br/>Deze machtiging wordt gebruikt door de back-end cloudservices. |
-| **RegistrationStatusWrite**  |Verleent verwijderen toegang tot de status van de apparaatregistratie. <br/>Deze machtiging wordt gebruikt door de back-end cloudservices. |
+| **ServiceConfig** |Hiermee wordt toegang verleend om de service configuraties te wijzigen. <br/>Deze machtiging wordt gebruikt door de back-end-Cloud Services. |
+| **EnrollmentRead** |Hiermee wordt lees toegang verleend aan de registraties en inschrijvings groepen van het apparaat. <br/>Deze machtiging wordt gebruikt door de back-end-Cloud Services. |
+| **EnrollmentWrite** |Hiermee wordt schrijf toegang verleend aan de registraties en inschrijvings groepen van het apparaat. <br/>Deze machtiging wordt gebruikt door de back-end-Cloud Services. |
+| **RegistrationStatusRead** |Hiermee wordt lees toegang verleend aan de registratie status van het apparaat. <br/>Deze machtiging wordt gebruikt door de back-end-Cloud Services. |
+| **RegistrationStatusWrite**  |Hiermee wordt het verwijderen van toegang verleend aan de registratie status van het apparaat. <br/>Deze machtiging wordt gebruikt door de back-end-Cloud Services. |
 
 <!-- links and images -->
 

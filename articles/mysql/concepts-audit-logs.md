@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: ea536742b6481cb06fbd3130279ca5d08ba1bc08
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: eae7e434ce21b5f9d9f3e6c40f94261df8baa426
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773565"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972350"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Audit Logboeken in Azure Database for MySQL
 
@@ -29,7 +29,7 @@ Andere para meters die u kunt aanpassen zijn onder andere:
 - `audit_log_events`: Hiermee beheert u de gebeurtenissen die moeten worden geregistreerd. Zie de onderstaande tabel voor specifieke controle gebeurtenissen.
 - `audit_log_include_users`: MySQL-gebruikers die moeten worden opgenomen voor logboek registratie. De standaard waarde voor deze para meter is leeg, die alle gebruikers bevat die moeten worden geregistreerd. Dit heeft een hogere prioriteit dan `audit_log_exclude_users`. De maximale lengte van de para meter is 512 tekens.
 > [!Note]
-> `audit_log_include_users` heeft een hogere prioriteit dan `audit_log_exclude_users` bijvoorbeeld als audit_log_include_users = `demouser` en audit_log_exclude_users = `demouser`, worden de logboeken gecontroleerd omdat `audit_log_include_users` een hogere prioriteit heeft.
+> `audit_log_include_users` heeft een hogere prioriteit dan `audit_log_exclude_users`. Als `audit_log_include_users`bijvoorbeeld  = `demouser` en `audit_log_exclude_users` = `demouser`, wordt de gebruiker opgenomen in de audit logboeken, omdat `audit_log_include_users` een hogere prioriteit heeft.
 - `audit_log_exclude_users`: MySQL-gebruikers die moeten worden uitgesloten van logboek registratie. De maximale lengte van de para meter is 512 tekens.
 
 > [!Note]
@@ -129,7 +129,7 @@ Schema hieronder is van toepassing op de gebeurtenis typen algemeen, DML_SELECT,
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Naam van de server |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`of `DELETE` |
+| `event_subclass_s` | `READ`, `INSERT`, `UPDATE` of `DELETE` |
 | `connection_id_d` | Unieke verbindings-ID die is gegenereerd door MySQL |
 | `db_s` | De naam van de data base die wordt geopend |
 | `table_s` | De naam van de tabel die wordt geopend |

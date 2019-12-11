@@ -1,20 +1,20 @@
 ---
 title: Interactie met een IoT Plug en Play preview-apparaat vanuit een Azure IoT-oplossing | Microsoft Docs
 description: Als oplossings ontwikkelaar leert u hoe u de Service SDK kunt gebruiken om te communiceren met IoT Plug en Play-apparaten.
-author: YasinMSFT
-ms.author: yahajiza
+author: Philmea
+ms.author: philmea
 ms.date: 07/24/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 5abfe0300bd61f5ccfbfccedf16659f055eb8ad4
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 543f332087aef4147c9274ca980cb56543a68112
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877996"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977587"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>Verbinding maken met en interactie met een IoT Plug en Play preview-apparaat
 
@@ -30,13 +30,13 @@ npm install
 
 ## <a name="run-the-service-samples"></a>De service voorbeelden uitvoeren
 
-Gebruik de volgende voor beelden om de mogelijkheden van de node. js Service-SDK te verkennen. Zorg ervoor dat de `IOTHUB_CONNECTION_STRING` omgevings variabele is ingesteld in de shell die u gebruikt:
+Gebruik de volgende voor beelden om de mogelijkheden van de node. js Service-SDK te verkennen. Zorg ervoor dat de omgevings variabele `IOTHUB_CONNECTION_STRING` is ingesteld in de shell die u gebruikt:
 
 ### <a name="retrieve-a-digital-twin-and-list-the-interfaces"></a>Een digitale dubbele en een lijst met de interfaces ophalen
 
-**get_digital_twin. js** haalt het digitale element op dat is gekoppeld aan het apparaat en drukt het onderdeel op de opdracht regel. U hoeft geen voor beeld van een actief apparaat te laten slagen.
+**get_digital_twin. js** krijgt de digitale verbinding die is gekoppeld aan uw apparaat en het onderdeel wordt op de opdracht regel afgedrukt. U hoeft geen voor beeld van een actief apparaat te laten slagen.
 
-**get_digital_twin_interface_instance. js** haalt een enkel interface-exemplaar van digitaal aan dat is gekoppeld aan uw apparaat en drukt het af op de opdracht regel. Het is niet nodig om het voor beeld van het apparaat uit te voeren.
+**get_digital_twin_interface_instance. js** krijgt een enkel interface-exemplaar van digitaal, dat is gekoppeld aan uw apparaat en wordt afgedrukt op de opdracht regel. Het is niet nodig om het voor beeld van het apparaat uit te voeren.
 
 ### <a name="get-and-set-properties-using-the-node-service-sdk"></a>Eigenschappen ophalen en instellen met behulp van de node-Service-SDK
 
@@ -70,7 +70,7 @@ In dit voor beeld wordt de **ModelDiscovery** -interface gedownload en wordt dit
 
 ### <a name="run-queries-in-iot-hub-based-on-capability-models-and-interfaces"></a>Query's uitvoeren in IoT Hub op basis van mogelijkheden van modellen en interfaces
 
-De IOT hub query taal ondersteunt `HAS_INTERFACE` en `HAS_CAPABILITYMODEL` zoals wordt weer gegeven in de volgende voor beelden:
+De IoT Hub query taal ondersteunt `HAS_INTERFACE` en `HAS_CAPABILITYMODEL`, zoals wordt weer gegeven in de volgende voor beelden:
 
 ```sql
 select * from devices where HAS_INTERFACE('id without version', version)

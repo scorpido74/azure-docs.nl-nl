@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 19552747db427bf780a140c15f11bed322d1f867
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a56096ffa760bcddd6bd423d1262e57dc1db3e3c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420068"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973557"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model beheer, implementatie en bewaking met Azure Machine Learning
 
@@ -112,14 +112,13 @@ U kunt modellen met IoT-apparaten gebruiken via **Azure IOT Edge-modules**. IoT 
 
 Zie [modellen implementeren](how-to-deploy-and-where.md)voor meer informatie.
 
-### <a name="analytics"></a>Analytische gegevens
+### <a name="analytics"></a>Analyse
 
 Micro soft Power BI ondersteunt het gebruik van machine learning modellen voor gegevens analyse. Zie [Azure machine learning integration in Power bi (preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration)voor meer informatie.
 
-
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Vastleggen van de governance-gegevens die nodig zijn voor het vastleggen van de end-to-end ML levenscyclus
 
-Azure ML biedt u de mogelijkheid om de end-to-end-audittrail van al uw ML-assets bij te houden. Met name:
+Azure ML biedt u de mogelijkheid om de end-to-end-audittrail van al uw ML-assets bij te houden. Specifiek:
 
 - Azure ML [integreert met git](how-to-set-up-training-targets.md#gitintegration) om informatie bij te houden over de opslag plaats/vertakking/het door voeren van uw code.
 - Met de [Azure ml](how-to-create-register-datasets.md) -gegevens sets kunt u gegevens bijhouden, profiel en versie. 
@@ -129,6 +128,7 @@ Azure ML biedt u de mogelijkheid om de end-to-end-audittrail van al uw ML-assets
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Meldingen, automatiseren en waarschuwen voor gebeurtenissen in de levens cyclus van ML
 Azure ML publiceert belang rijke gebeurtenissen in azure EventGrid, die kunnen worden gebruikt voor het melden en automatiseren van gebeurtenissen in de levens cyclus van ML. Raadpleeg [dit document](how-to-use-event-grid.md)voor meer informatie.
 
+
 ## <a name="monitor-for-operational--ml-issues"></a>Controleren op problemen met operationele & ML
 
 Met bewaking kunt u begrijpen welke gegevens worden verzonden naar uw model en welke voor spellingen worden geretourneerd.
@@ -136,7 +136,6 @@ Met bewaking kunt u begrijpen welke gegevens worden verzonden naar uw model en w
 Deze informatie helpt u inzicht te krijgen in het gebruik van uw model. De verzamelde invoer gegevens kunnen ook nuttig zijn bij het trainen van toekomstige versies van het model.
 
 Zie [How to Enable model Data Collection](how-to-enable-data-collection.md)(Engelstalig) voor meer informatie.
-
 
 ## <a name="automate-the-ml-lifecycle"></a>De levens cyclus van ML automatiseren 
 

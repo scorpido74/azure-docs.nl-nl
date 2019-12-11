@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met Azure AD v 2.0 ASP.NET-webserver
+title: Aanmelden toevoegen aan Azure AD ASP.NET-Web-app
 titleSuffix: Microsoft identity platform
 description: Implementatie van micro soft-aanmelding bij een ASP.NET-oplossing met behulp van een traditionele toepassing op basis van de webbrowser en OpenID Connect Connect Standard
 services: active-directory
@@ -17,12 +17,12 @@ ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b66d2a9a958afd536dcffeca211a3fc56cf09ef8
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 9ff89d3c11ca88db14d2efd772be44aef7165a8a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803717"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964732"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Aanmelden bij micro soft toevoegen aan een ASP.NET-Web-app
 

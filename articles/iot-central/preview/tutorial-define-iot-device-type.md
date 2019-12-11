@@ -3,18 +3,18 @@ title: Geef een nieuw IoT-apparaattype op in azure IoT Central | Microsoft Docs
 description: In deze zelf studie wordt uitgelegd hoe u als Builder een nieuwe Azure IoT-apparaatprofiel maakt in uw Azure IoT Central-toepassing. U definieert de telemetrie, de status, de eigenschappen en de opdrachten voor uw type.
 author: rangv
 ms.author: rangv
-ms.date: 10/22/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 177caaa5400c10ed8de80b04a3305dce7cae77d6
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 2127bec4d5fdf0d3bf76fb31c548eab98f910d42
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74407011"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979016"
 ---
 # <a name="tutorial-define-a-new-iot-device-type-in-your-azure-iot-central-application-preview-features"></a>Zelf studie: een nieuw IoT-apparaattype definiëren in uw Azure IoT Central-toepassing (preview-functies)
 
@@ -125,10 +125,10 @@ De volgende tabel bevat de configuratie-instellingen voor een telemetrie-mogelij
 | ----- | ----------- |
 | Weergavenaam | De weergave naam voor de telemetrie-waarde die wordt gebruikt voor dash boards en formulieren. |
 | Naam | De naam van het veld in het telemetrie-bericht. IoT Central genereert een waarde voor dit veld van de weergave naam, maar u kunt indien nodig uw eigen waarde kiezen. |
-| Type capaciteit | Telemetrie. |
+| Type van mogelijkheid | Telemetrie. |
 | Semantisch type | Het semantische type van de telemetrie, zoals de Tempe ratuur, de status of de gebeurtenis. De keuze van semantisch type bepaalt welke van de volgende velden beschikbaar zijn. |
 | Schema | Het gegevens type telemetrie, zoals double, String of vector. Welke opties beschikbaar zijn, wordt bepaald door het semantische type. Schema is niet beschikbaar voor de semantische typen gebeurtenis en status. |
-| Severity | Alleen beschikbaar voor het semantische gebeurtenis type. De ernst is **fout**, **informatie**of **waarschuwing**. |
+| Ernst | Alleen beschikbaar voor het semantische gebeurtenis type. De ernst is **fout**, **informatie**of **waarschuwing**. |
 | Status waarden | Alleen beschikbaar voor het semantische type status. Definieer de mogelijke status waarden, die elk een weergave naam, naam, opsommings type en waarde hebben. |
 | Eenheid | Een eenheid voor de telemetrische waarde, zoals **mph**, **%** of **&deg;C**. |
 | Eenheid weer geven | Een weergave-eenheid voor gebruik in dash boards en formulieren. |
@@ -145,11 +145,11 @@ De volgende tabel bevat de configuratie-instellingen voor een eigenschaps mogeli
 | ----- | ----------- |
 | Weergavenaam | De weergave naam voor de waarde van de eigenschap die wordt gebruikt in dash boards en formulieren. |
 | Naam | De naam van de eigenschap. IoT Central genereert een waarde voor dit veld van de weergave naam, maar u kunt indien nodig uw eigen waarde kiezen. |
-| Type capaciteit | Eigenschap. |
+| Type van mogelijkheid | Eigenschap. |
 | Semantisch type | Het semantische type van de eigenschap, zoals de Tempe ratuur, de status of de gebeurtenis. De keuze van semantisch type bepaalt welke van de volgende velden beschikbaar zijn. |
 | Schema | Het gegevens type van de eigenschap, zoals double, String of vector. Welke opties beschikbaar zijn, wordt bepaald door het semantische type. Schema is niet beschikbaar voor de semantische typen gebeurtenis en status. |
-| Beschrijf bare | Als de eigenschap niet schrijfbaar is, kan het apparaat eigenschaps waarden rapporteren aan IoT Central. Als de eigenschap schrijfbaar is, kan het apparaat eigenschaps waarden rapporteren aan IoT Central en IoT Central eigenschaps updates naar het apparaat verzenden.
-| Severity | Alleen beschikbaar voor het semantische gebeurtenis type. De ernst is **fout**, **informatie**of **waarschuwing**. |
+| Beschrijfbaar | Als de eigenschap niet schrijfbaar is, kan het apparaat eigenschaps waarden rapporteren aan IoT Central. Als de eigenschap schrijfbaar is, kan het apparaat eigenschaps waarden rapporteren aan IoT Central en IoT Central eigenschaps updates naar het apparaat verzenden.
+| Ernst | Alleen beschikbaar voor het semantische gebeurtenis type. De ernst is **fout**, **informatie**of **waarschuwing**. |
 | Status waarden | Alleen beschikbaar voor het semantische type status. Definieer de mogelijke status waarden, die elk een weergave naam, naam, opsommings type en waarde hebben. |
 | Eenheid | Een eenheid voor de waarde van de eigenschap, zoals **mph**, **%** of **&deg;C**. |
 | Eenheid weer geven | Een weergave-eenheid voor gebruik in dash boards en formulieren. |
@@ -166,7 +166,7 @@ De volgende tabel bevat de configuratie-instellingen voor een opdracht mogelijkh
 | ----- | ----------- |
 | Weergavenaam | De weergave naam voor de opdracht die wordt gebruikt voor dash boards en formulieren. |
 | Naam | De naam van de opdracht. IoT Central genereert een waarde voor dit veld van de weergave naam, maar u kunt indien nodig uw eigen waarde kiezen. |
-| Type capaciteit | Cmd. |
+| Type van mogelijkheid | Cmd. |
 | Opdracht | `SynchronousExecutionType`. |
 | Opmerking | Eventuele opmerkingen over de opdracht mogelijkheid. |
 | Beschrijving | Een beschrijving van de opdracht mogelijkheid. |
@@ -229,7 +229,7 @@ Een dash board toevoegen aan een sjabloon voor het apparaat:
 
 ### <a name="configure-preview-device-to-view-dashboard"></a>Preview-apparaat configureren om het dash board weer te geven
 
-Selecteer **Preview-apparaat configureren**om uw dash board weer te geven en te testen. Op deze manier kunt u het dash board weer geven als uw operator ziet na publicatie. Gebruik deze optie om te controleren of de juiste gegevens in uw weer gaven worden weer gegeven. U kunt kiezen uit de volgende opties:
+Selecteer **Preview-apparaat configureren**om uw dash board weer te geven en te testen. Op deze manier kunt u het dash board weer geven als uw operator ziet na publicatie. Gebruik deze optie om te controleren of de juiste gegevens in uw weer gaven worden weer gegeven. U kunt kiezen uit de volgende mogelijkheden:
 
 - Geen preview-apparaat.
 - Het echte test apparaat dat u hebt geconfigureerd voor de sjabloon voor het apparaat.
@@ -250,7 +250,7 @@ Een formulier toevoegen aan een sjabloon voor een apparaat:
 1. De eigenschappen van het formulier rangschikken.
 1. Sla de wijzigingen op.
 
-## <a name="publish-a-device-template"></a>Een sjabloon voor een apparaat publiceren
+## <a name="publish-a-device-template"></a>Een apparaatsjabloon publiceren
 
 Voordat u verbinding kunt maken met een apparaat dat het mogelijkheidsprofiel implementeert, moet u de sjabloon voor het apparaat publiceren.
 
@@ -283,7 +283,7 @@ U kunt als volgt IoT-Device-sjablonen maken:
 
 1. Op de pagina **controleren** selecteert u **maken**. 
 
-   ![Scherm afbeelding van de pagina controleren](./media/tutorial-define-iot-device-type/gateway-downstream-review.png)
+   ![Schermopname van de pagina Beoordelen en maken](./media/tutorial-define-iot-device-type/gateway-downstream-review.png)
 
 1. Er wordt een nieuwe apparaatprofiel gemaakt. 
 
@@ -297,7 +297,7 @@ U kunt als volgt een Device-sjabloon maken voor S1-sensor:
 
 1. Op de pagina **controleren** selecteert u **maken**. 
 
-   ![Scherm afbeelding van de pagina controleren](./media/tutorial-define-iot-device-type/s1-review.png)
+   ![Schermopname van de pagina Beoordelen en maken](./media/tutorial-define-iot-device-type/s1-review.png)
 
 1. Er wordt een nieuwe apparaatprofiel gemaakt. 
 
@@ -359,8 +359,8 @@ Een sjabloon voor een apparaat kan Cloud eigenschappen bevatten. Cloud eigenscha
 
     | Weergavenaam      | Semantisch type | Schema |
     | ----------------- | ------------- | ------ |
-    | Laatste servicedatum | None          | Date   |
-    | Klant naam     | None          | Tekenreeks |
+    | Laatste servicedatum | Geen          | Datum   |
+    | Klantnaam     | Geen          | Tekenreeks |
 
 2. Selecteer **Opslaan**.
 
@@ -376,7 +376,7 @@ U kunt de naam of het type van de mogelijkheid niet aanpassen.
 
 Wanneer u klaar bent met aanpassen, selecteert u **Opslaan**.
 
-### <a name="create-views"></a>Weer gaven maken
+### <a name="create-views"></a>Weergaven aanmaken
 
 Als opbouw functie kunt u de toepassing aanpassen om relevante informatie over het omgevings sensor apparaat weer te geven voor een operator. Met uw aanpassingen kan de operator de omgevings sensor apparaten beheren die zijn verbonden met de toepassing. U kunt twee soorten weer gaven maken voor een operator die u kunt gebruiken om te communiceren met apparaten:
 
@@ -387,7 +387,7 @@ Als opbouw functie kunt u de toepassing aanpassen om relevante informatie over h
 
 Als u **Standaard weergaven genereren**selecteert, kunt u het **overzicht** genereren en **over** Dash boards. 
 
-## <a name="publish-a-device-template"></a>Een sjabloon voor een apparaat publiceren
+## <a name="publish-a-device-template"></a>Een apparaatsjabloon publiceren
 
 Voordat u een gesimuleerde omgevings sensor kunt maken, of als u een echte omgevings sensor wilt verbinden, moet u de sjabloon voor het apparaat publiceren.
 
@@ -427,7 +427,7 @@ Selecteer een sjabloon voor het gateway-apparaat en het exemplaar van het gatewa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 * Maak een nieuwe IoT-gateway als een sjabloon voor een apparaat.
 * Cloud eigenschappen maken.

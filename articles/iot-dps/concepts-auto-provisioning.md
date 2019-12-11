@@ -1,6 +1,6 @@
 ---
-title: IoT Hub Device Provisioning Service - concepten voor automatische inrichting
-description: In dit artikel biedt een conceptueel overzicht van de fasen van het apparaat automatisch inrichten met IoT Device Provisioning Service, IoT-Hub en client-SDK's.
+title: IoT Hub Device Provisioning Service-concepten voor automatische inrichting
+description: Dit artikel bevat een conceptueel overzicht van de fasen van automatische inrichting van apparaten, met behulp van IoT Device Provisioning Service (DPS), IoT Hub en client-Sdk's.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,105 +8,105 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 0df4eb664accd828c47d834fb0014d0d60f57458
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c94fa6b851dfc9923628a738a15f7c245204f73f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60745997"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975326"
 ---
 # <a name="auto-provisioning-concepts"></a>Concepten voor automatische inrichting
 
-Zoals beschreven in de [overzicht](about-iot-dps.md), de Device Provisioning Service is een helper-service die just-in-time inrichting van apparaten naar een IoT-hub zonder menselijke tussenkomst. Inrichting is voltooid, worden apparaten verbinding rechtstreeks met hun aangewezen IoT-Hub. Dit proces wordt aangeduid als automatische inrichting, en biedt dat een out-of-the-box-registratie en eerste configuratie-ervaring voor apparaten.
+Zoals beschreven in het [overzicht](about-iot-dps.md), is de Device Provisioning Service een Helper-service waarmee apparaten met een IOT-hub kunnen worden ingericht, zonder dat hiervoor menselijke tussen komst nodig is. Nadat de inrichting is geslaagd, maken apparaten rechtstreeks verbinding met de aangewezen IoT Hub. Dit proces wordt automatische inrichting genoemd en biedt een out-of-the-box-registratie en initiële configuratie-ervaring voor apparaten.
 
 ## <a name="overview"></a>Overzicht
 
-Azure IoT automatische inrichting kan worden onderverdeeld in drie fasen:
+De automatische inrichting van Azure IoT kan worden onderverdeeld in drie fasen:
 
-1. **Configuratie van de service** -een eenmalige configuratie van de Azure IoT Hub en IoT Hub Device Provisioning Service-exemplaren, tot stand brengen van ze en opeenvolging van koppelingen tussen hen te maken.
+1. **Service configuratie** : een eenmalige configuratie van de Azure IOT hub-en IOT hub Device Provisioning Service-exemplaren, waardoor deze worden ingesteld en de koppeling tussen de Services wordt gemaakt.
 
    > [!NOTE]
-   > Ongeacht de grootte van uw IoT-oplossing, zelfs als u van plan bent voor de ondersteuning van miljoenen apparaten, dit is een **eenmalige configuratie**.
+   > Ongeacht de omvang van uw IoT-oplossing, zelfs als u van plan bent miljoenen apparaten te ondersteunen, is dit een **eenmalige configuratie**.
 
-2. **Apparaatinschrijving** -het proces van het maken van de Device Provisioning Service-exemplaar op de hoogte van de apparaten die u probeert te registreren in de toekomst. [Inschrijving](concepts-service.md#enrollment) wordt bereikt door het configureren van informatie over apparaat-id in de provisioning-service als een 'afzonderlijke inschrijving"voor een enkel apparaat of een 'groepsregistratie' voor meerdere apparaten. Identiteit is gebaseerd op de [attestation-mechanisme](concepts-security.md#attestation-mechanism) het apparaat is ontworpen om te gebruiken, waarmee de provisioning-service de echtheid van het apparaat tijdens de registratie bevestigen:
+2. **Registratie** van apparaten: het proces waarbij de Device Provisioning Service-instantie op de hoogte wordt gebracht van de apparaten die in de toekomst zullen proberen te registreren. De [inschrijving](concepts-service.md#enrollment) wordt gerealiseerd door de gegevens van de apparaat-id in de inrichtings service te configureren, als afzonderlijke inschrijving voor één apparaat of een groeps registratie voor meerdere apparaten. De identiteit is gebaseerd op het [Attestation-mechanisme](concepts-security.md#attestation-mechanism) dat het apparaat is ontworpen om te worden gebruikt, waardoor de inrichtings service de authenticiteit van het apparaat kan verifiëren tijdens de registratie:
 
-   - **TPM**: geconfigureerd als een 'afzonderlijke inschrijving', de apparaat-id is gebaseerd op de TPM-registratie-ID en de openbare goedkeuringssleutel. Gezien het feit dat de TPM is een [specificatie](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/), de service alleen wordt verwacht dat bevestigen volgens de specificatie, ongeacht de TPM-implementatie (hardware of software). Zie [Device provisioning: Identiteitscontrole met TPM](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/) voor meer informatie over op basis van TPM-attestation. 
+   - **TPM**: geconfigureerd als afzonderlijke registratie, de apparaat-id is gebaseerd op de TPM-registratie-id en de open bare goedkeurings sleutel. Omdat TPM een [specificatie](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)is, verwacht de service alleen een verklaring volgens de specificatie, onafhankelijk van de TPM-implementatie (hardware of software). Zie [Device Provisioning: identiteits verklaring met TPM](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/) voor meer informatie over op TPM gebaseerde Attestation. 
 
-   - **X509**: geconfigureerd als een 'afzonderlijke inschrijving' of 'groepsregistratie', de apparaat-id is gebaseerd op een x.509-digitaal certificaat, dat is geüpload naar de inschrijving als een PEM- of cer-bestand.
+   - **X509**: geconfigureerd als "individuele inschrijving" of "groeps inschrijving", de apparaat-id is gebaseerd op een X. 509-digitaal certificaat dat is geüpload naar de registratie als een. pem-of CER-bestand.
 
    > [!IMPORTANT]  
-   > Hoewel het is geen vereiste voor het gebruik van de Device Provisioning Services, wordt aangeraden dat uw apparaat gebruik een Hardware Security Module (HSM) voor het opslaan van identiteitsgegevens van gevoelige apparaat, zoals sleutels en X.509-certificaten.
+   > Hoewel er geen vereiste is voor het gebruik van Device Provisioning Services, raden we u ten zeerste aan dat uw apparaat gebruikmaakt van een HSM (Hardware Security module) voor het opslaan van gevoelige apparaat-identiteits gegevens, zoals sleutels en X. 509-certificaten.
 
-3. **Device Registration service en configuratie** - gestart bij het opstarten van de door van registratiesoftware, die is gebouwd met behulp van een Device Provisioning Service client SDK die geschikt is voor het apparaat en de attestation-mechanisme. De software maakt verbinding met de provisioning-service voor verificatie van het apparaat en de registratie van de volgende in de IoT-Hub. Bij registratie is gelukt, wordt het apparaat aangeboden met de IoT Hub unieke apparaat-ID en verbinding informatie, zodat het voor het ophalen van de eerste configuratie en beginnen met de telemetrie. In een productieomgeving, kan deze fase weken of maanden na de vorige twee fasen optreden.
+3. Apparaatregistratie **en configuratie** : wordt gestart bij het opstarten van de registratie software, die is gebouwd met behulp van een Device Provisioning Service-client SDK die geschikt is voor het apparaat en het Attestation-mechanisme. De software brengt een verbinding tot stand met de inrichtings service voor verificatie van het apparaat en de volgende registratie in de IoT Hub. Bij een geslaagde registratie wordt het apparaat voorzien van de IoT Hub unieke apparaat-ID en verbindings gegevens, zodat de eerste configuratie kan worden opgehaald en het telemetrie-proces kan worden gestart. In productie omgevingen kan deze fase weken of maanden na de vorige twee fasen optreden.
 
 ## <a name="roles-and-operations"></a>Rollen en bewerkingen
 
-De fasen in de vorige sectie besproken, kunnen omvatten weken of maanden, vanwege de realiteit van de productie zoals de tijd van de productie, levering, douane proces, enzovoort. Bovendien kunnen deze activiteiten omvatten diverse meerdere rollen gegeven van de verschillende entiteiten die betrokken zijn. In deze sectie wordt een beter overzicht gegeven van de verschillende functies en bewerkingen die betrekking hebben op elke fase en vervolgens ziet u de stroom in een reeksdiagram. 
+De fasen die in de vorige sectie zijn besproken, kunnen weken of maanden omvatten vanwege productie-vaststaande zoals productie tijd, verzen ding, douane proces, enzovoort. Daarnaast kunnen ze activiteiten omvatten over meerdere rollen, op basis van de verschillende betrokken entiteiten. In deze sectie worden de verschillende rollen en bewerkingen met betrekking tot elke fase dieper gedemonstreerd, waarna de stroom in een sequentie diagram wordt weer gegeven. 
 
-Vereisten voor automatische inrichting ook worden geplaatst op de fabrikant die specifiek zijn voor het inschakelen van de attestation-mechanisme. Productie-bewerkingen kan zich ook voordoen onafhankelijk van de timing van automatische inrichting fasen, met name in gevallen waar nieuwe apparaten worden verkregen nadat de automatische inrichting is tot stand is gebracht.
+Bij automatisch inrichten worden ook vereisten op de fabrikant van het apparaat geplaatst, specifiek voor het inschakelen van het Attestation-mechanisme. Productie bewerkingen kunnen ook worden uitgevoerd onafhankelijk van de timing van automatische inrichtings fasen, met name in gevallen waarin nieuwe apparaten zijn aangeschaft nadat het automatisch inrichten al is ingesteld.
 
-Een reeks snelstartgidsen vindt u in de inhoudsopgave aan de linkerkant, voor een verklaring van automatische inrichting tot en met praktische ervaring. Als u wilt het leerproces vergemakkelijken/vereenvoudigen, wordt software gebruikt voor het simuleren van een fysiek apparaat voor apparaatregistratie en registratiestatus. Sommige QuickStart moet u om te voldoen aan de bewerkingen voor meerdere rollen, met inbegrip van bewerkingen voor niet-bestaande rollen, door de gesimuleerde aard van de Quick starts.
+Er wordt een reeks Quick starts in de inhouds opgave aan de linkerkant beschreven, zodat u de automatische inrichting kunt uitleggen door middel van praktijk ervaring. Om het leer proces te vereenvoudigen/vereenvoudigen, wordt software gebruikt voor het simuleren van een fysiek apparaat voor inschrijving en registratie. Voor sommige Quick starts moet u bewerkingen uitvoeren voor meerdere rollen, waaronder bewerkingen voor niet-bestaande rollen, vanwege de gesimuleerde aard van de Quick starts.
 
-| Rol | Bewerking | Description |
+| Rol | Bewerking | Beschrijving |
 |------| --------- | ------------|
-| Fabrikant | Identiteits- en registratie-URL coderen | Op basis van de attestation-mechanisme dat wordt gebruikt, is de fabrikant verantwoordelijk voor het coderen van de gegevens van de apparaat-id en de URL van de registratie van Device Provisioning Service.<br><br>**Snelstartgidsen**: omdat het apparaat wordt gesimuleerd, er is geen rol fabrikant. Zie de rol van ontwikkelaar voor meer informatie over hoe u deze informatie, die wordt gebruikt voor het coderen van een voorbeeldtoepassing voor registratie krijgen. |
-| | Apparaat-id opgeven | Als de maker van de gegevens van de apparaat-id is de fabrikant verantwoordelijk voor het naar de operator (of een aangewezen agent) communiceren, of rechtstreeks inschrijft bij Device Provisioning Service via API's.<br><br>**Snelstartgidsen**: omdat het apparaat wordt gesimuleerd, er is geen rol fabrikant. Zie de rol Operator voor meer informatie over hoe u de apparaat-id, die wordt gebruikt voor het inschrijven van een gesimuleerd apparaat in uw Device Provisioning Service-exemplaar. |
-| Operator | Automatische inrichting configureren | Met deze bewerking, komt overeen met de eerste fase van de automatische inrichting.<br><br>**Snelstartgidsen**: U uitvoeren de rol Operator voor het configureren van de Device Provisioning Service en IoT Hub-exemplaren in uw Azure-abonnement. |
-|  | Registreren van apparaat-id | Met deze bewerking, komt overeen met de tweede fase van de automatische inrichting.<br><br>**Snelstartgidsen**: U uitvoeren de rol Operator uw gesimuleerde apparaat te registreren in uw Device Provisioning Service-exemplaar. De apparaat-id wordt bepaald door de attestation-methode in de Quick Start (TPM of X.509) wordt gesimuleerd. Zie de rol van ontwikkelaar voor attestation-gegevens. |
-| Device Provisioning Service<br>IoT Hub | \<alle bewerkingen\> | Voor beide een productie-implementatie met fysieke apparaten en snelstartgidsen met gesimuleerde apparaten, worden deze rollen vervuld via de IoT-services die u in uw Azure-abonnement configureren. De rollen/bewerkingen werkt precies hetzelfde, zoals de IoT-services onverschillig zijn voor het inrichten van fysieke versus gesimuleerde apparaten. |
-| Developer | Software voor apparaatregistratie bouwen/implementeren | Met deze bewerking, komt overeen met de derde fase van de automatische inrichting. De ontwikkelaar is verantwoordelijk voor het bouwen en de software voor apparaatregistratie implementeren op het apparaat met de juiste SDK.<br><br>**Snelstartgidsen**: De voorbeeldtoepassing voor registratie die u bouwt simuleert een echt apparaat, voor uw platform/taal naar keuze in, die wordt uitgevoerd op uw werkstation (in plaats van deze is geïmplementeerd op een fysiek apparaat). De aanvraag voert dezelfde bewerkingen uitvoeren als een geïmplementeerd op een fysiek apparaat. U opgeven de attestation-methode (TPM of x.509-certificaat), plus de registratie-URL en 'ID-bereik' van uw Device Provisioning Service-exemplaar. De apparaat-id wordt bepaald door de logica van de attestation SDK tijdens runtime, op basis van de methode die u opgeeft: <ul><li>**TPM-attestation** -uw ontwikkelwerkstation wordt uitgevoerd een [TPM-simulator toepassing](how-to-use-sdk-tools.md#trusted-platform-module-tpm-simulator). Zodra actief is, wordt een afzonderlijke toepassing wordt gebruikt om op te halen van de TPM 'Endorsement Key' en 'registratie-ID"voor gebruik in het registreren van de apparaat-id. De logica van de attestation SDK gebruikt ook de simulator tijdens de registratie, om weer te geven van een ondertekende SAS-token voor verificatie en verificatie voor inschrijving.</li><li>**X509 attestation** -gebruik van een hulpprogramma voor het [een certificaat genereren](how-to-use-sdk-tools.md#x509-certificate-generator). Als die worden gegenereerd, maakt u het certificaatbestand dat vereist is voor gebruik in de inschrijving. De logica van de attestation SDK ook het certificaat wordt gebruikt tijdens de registratie, om weer te geven voor verificatie en verificatie voor inschrijving.</li></ul> |
-| Apparaat | Opstartstatus en registreren | Met deze bewerking komt overeen met de derde fase van de automatische inrichting, voldaan door de software voor apparaatregistratie die zijn gemaakt door de ontwikkelaar. Zie de functie voor ontwikkelaars voor meer informatie. Na de eerste keer opstarten: <ol><li>De toepassing verbinding maakt met het Device Provisioning Service-exemplaar per de algemene URL en de service 'Id-bereik' dat is opgegeven tijdens de ontwikkeling.</li><li>Eenmaal verbinding hebben, wordt het apparaat wordt geverifieerd op basis van de attestation-methode en de identiteit die is opgegeven tijdens de inschrijving.</li><li>Eenmaal is geverifieerd, wordt het apparaat is geregistreerd bij de IoT Hub-instantie die is opgegeven door de provisioning service-exemplaar.</li><li>Na de registratie is gelukt, worden een unieke apparaat-ID en IoT Hub-eindpunt geretourneerd naar de registratietoepassing om te communiceren met IoT Hub.</li><li> Van daaruit, het apparaat de eerste kunt halen [apparaatdubbel](~/articles/iot-hub/iot-hub-devguide-device-twins.md) staat voor de configuratie en beginnen met het proces van het melden van telemetrische gegevens.</li></ol>**Snelstartgidsen**: omdat het apparaat wordt gesimuleerd, de registratiesoftware wordt uitgevoerd op uw ontwikkelwerkstation.|
+| Fabrikant | Identiteits-en registratie-URL coderen | Op basis van het Attestation-mechanisme dat wordt gebruikt, is de fabrikant verantwoordelijk voor het coderen van de apparaat-id-gegevens en de Device Provisioning Service-registratie-URL.<br><br>**Quick**starts: aangezien het apparaat is gesimuleerd, is er geen rol van de fabrikant. Raadpleeg de rol voor ontwikkel aars voor meer informatie over hoe u deze gegevens ophaalt, die wordt gebruikt voor het coderen van een voorbeeld registratie toepassing. |
+| | Apparaat-id opgeven | Als afzender van de apparaat-id-gegevens, is de fabrikant verantwoordelijk voor het communiceren met de operator (of een aangewezen agent) of het rechtstreeks inschrijven bij de Device Provisioning Service via Api's.<br><br>**Quick**starts: aangezien het apparaat is gesimuleerd, is er geen rol van de fabrikant. Zie de rol van de operator voor meer informatie over hoe u de apparaat-id krijgt, die wordt gebruikt om een gesimuleerd apparaat in te schrijven in het Device Provisioning service-exemplaar. |
+| Operator | Automatische inrichting configureren | Deze bewerking komt overeen met de eerste fase van automatische inrichting.<br><br>**Quick**starts: u voert de operator Role uit en configureert de Device Provisioning Service en IOT hub exemplaren in uw Azure-abonnement. |
+|  | Apparaat-id inschrijven | Deze bewerking komt overeen met de tweede fase van automatische inrichting.<br><br>**Quick**starts: u voert de operator rol uit en registreert uw gesimuleerde apparaat in het Device Provisioning service-exemplaar. De apparaat-id wordt bepaald door de Attestation-methode die in de Quick Start (TPM of X. 509) wordt gesimuleerd. Zie de rol voor ontwikkel aars voor meer informatie over de Attestation. |
+| Device Provisioning Service,<br>IoT Hub | \<alle bewerkingen\> | Voor zowel een productie-implementatie met fysieke apparaten als Quick starts met gesimuleerde apparaten worden deze rollen vervuld via de IoT-services die u configureert in uw Azure-abonnement. De functie rollen/bewerkingen is precies hetzelfde, omdat de IoT-Services niet verschillen met het inrichten van fysieke en gesimuleerde apparaten. |
+| Developer | Registratie software bouwen/implementeren | Deze bewerking komt overeen met de derde fase van automatische inrichting. De ontwikkelaar is verantwoordelijk voor het maken en implementeren van de registratie software op het apparaat, met behulp van de juiste SDK.<br><br>**Quick**starts: de voorbeeld registratie toepassing die u bouwt, simuleert een echt apparaat, voor uw platform of taal, die wordt uitgevoerd op uw werk station (in plaats van het te implementeren op een fysiek apparaat). De registratie toepassing voert dezelfde bewerkingen uit als één geïmplementeerd op een fysiek apparaat. U geeft de Attestation-methode (TPM of X. 509-certificaat) op, plus de registratie-URL en de ID-Scope van uw Device Provisioning service-exemplaar. De apparaat-id wordt bepaald door de SDK-Attestation Logic tijdens runtime, op basis van de methode die u opgeeft: <ul><li>**TPM-Attestation** : uw ontwikkel werkstation voert een [TPM Simulator-toepassing](how-to-use-sdk-tools.md#trusted-platform-module-tpm-simulator)uit. Eenmaal uitgevoerd, wordt er een afzonderlijke toepassing gebruikt voor het extra heren van de ' goedkeurings sleutel ' en ' registratie-ID ' van de TPM voor gebruik bij het inschrijven van de apparaat-id. De SDK-Attestation-logica gebruikt de Simulator tijdens de registratie om een ondertekend SAS-token te presen teren voor verificatie en inschrijvings verificatie.</li><li>**X509-Attestation** : u gebruikt een hulp programma voor het [genereren van een certificaat](how-to-use-sdk-tools.md#x509-certificate-generator). Nadat het certificaat bestand is gegenereerd, maakt u het voor gebruik in de inschrijving vereist. De SDK-Attestation-logica gebruikt het certificaat tijdens de registratie om te presen teren voor verificatie en inschrijvings verificatie.</li></ul> |
+| Apparaat | Opstart chassis en registreren | Deze bewerking komt overeen met de derde fase van automatische inrichting, die is voldaan door de software voor apparaatregistratie die is gebouwd door de ontwikkelaar. Zie de rol voor ontwikkel aars voor meer informatie. Bij de eerste keer opstarten: <ol><li>De toepassing maakt verbinding met het Device Provisioning service-exemplaar, volgens de algemene URL en het ID-bereik van de service die tijdens de ontwikkeling zijn opgegeven.</li><li>Zodra de verbinding is gemaakt, wordt het apparaat geverifieerd aan de hand van de Attestation-methode en identiteit die tijdens de inschrijving is opgegeven.</li><li>Na verificatie wordt het apparaat geregistreerd met het IoT Hub exemplaar dat is opgegeven door het inrichtings service-exemplaar.</li><li>Bij een geslaagde registratie worden een unieke apparaat-ID en IoT Hub-eind punt geretourneerd aan de registratie toepassing voor communicatie met IoT Hub.</li><li> Vanaf daar kan het apparaat de eerste dubbele toestand van het [apparaat](~/articles/iot-hub/iot-hub-devguide-device-twins.md) opvangen voor configuratie en het proces van het rapporteren van telemetriegegevens.</li></ol>**Quick**starts: sinds het apparaat is gesimuleerd, wordt de registratie software uitgevoerd op uw werk station voor ontwikkel aars.|
 
-Het volgende diagram geeft een overzicht van de functies en de volgorde van bewerkingen tijdens de automatische inrichting van apparaat:
+In het volgende diagram vindt u een overzicht van de rollen en sequentiëren van bewerkingen tijdens het automatisch inrichten van apparaten:
 <br><br>
-[![Automatische inrichting reeks voor een apparaat](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
+[Volg orde van automatische inrichting ![voor een apparaat](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
 
 > [!NOTE]
-> (Optioneel) de fabrikant kan ook de bewerking niet uitvoeren "voor registratie apparaat-id' met Device Provisioning Service API's (in plaats van via de Operator). Zie voor een gedetailleerde beschrijving van deze sequentiëren en nog veel meer, de [nul touch-apparaatregistratie met Azure IoT-video](https://youtu.be/cSbDRNg72cU?t=2460) (vanaf markering 41:00)
+> Optioneel kan de fabrikant ook de bewerking ' apparaat-id inschrijven ' uitvoeren met Api's van Device Provisioning Service (in plaats van via de-operator). Voor een gedetailleerde bespreking van deze sequentiëren en meer, zie de [nul aanrakende apparaatregistratie met Azure IOT video](https://youtu.be/cSbDRNg72cU?t=2460) (beginnend bij markering 41:00)
 
-## <a name="roles-and-azure-accounts"></a>Functies en Azure-accounts
+## <a name="roles-and-azure-accounts"></a>Rollen en Azure-accounts
 
-Hoe elke rol is toegewezen aan een Azure-account is afhankelijk van het scenario en er zijn een groot aantal scenario's die kunnen worden uitgevoerd. De onderstaande algemene patronen kunnen helpen met het bieden van een algemeen begrip met betrekking tot hoe rollen in het algemeen zijn toegewezen aan een Azure-account.
+Hoe elke rol wordt toegewezen aan een Azure-account, is afhankelijk van het scenario en er zijn enkele scenario's die kunnen worden betrokken. De onderstaande algemene patronen moeten een algemene uitleg geven over hoe rollen doorgaans worden toegewezen aan een Azure-account.
 
-#### <a name="chip-manufacturer-provides-security-services"></a>-Chipfabrikant biedt security-services
+#### <a name="chip-manufacturer-provides-security-services"></a>De chip fabrikant levert beveiligings Services
 
-In dit scenario beheert de fabrikant van de beveiliging voor niveau 1-klanten. In dit scenario kan worden voorkeur van deze klanten niveau één als ze geen hebben voor het beheren van uitgebreide beveiliging. 
+In dit scenario beheert de fabrikant de beveiliging voor niveau-One-klanten. Dit scenario kan de voor keur hebben op dit niveau, één klanten, omdat ze geen gedetailleerde beveiliging hoeven te beheren. 
 
-De fabrikant introduceert beveiliging in Hardware Security Modules (HSM's). Deze beveiliging kan de fabrikant van het verkrijgen van sleutels, certificaten, enzovoort van potentiële klanten die al DPS-exemplaren en inschrijving groepen instellingen hebben bevatten. De fabrikant kan deze beveiligingsgegevens voor de klanten ook genereren.
+De fabrikant introduceert beveiliging in Hardware Security modules (Hsm's). Deze beveiliging kan de fabrikant omvatten: sleutels, certificaten, enzovoort, van potentiële klanten die al instellingen voor DPS-instanties en registratie groepen hebben. De fabrikant kan deze beveiligings informatie ook genereren voor de klanten.
 
-In dit scenario kunnen er twee Azure-accounts die zijn betrokken:
+In dit scenario kunnen er twee Azure-accounts betrokken zijn:
 
-- **Account #1**: Waarschijnlijk gedeeld tussen de rollen operator en ontwikkelaars tot op zekere hoogte. Deze partij kan de HSM-chips aanschaffen van de fabrikant. Deze chips zijn waarnaar wordt verwezen naar de DPS-exemplaren die zijn gekoppeld aan het Account #1. Met DPS-registraties, kan deze partij apparaten aan meerdere niveau twee klanten lease door de instellingen voor de inschrijving van apparaten in DPS opnieuw in te. Deze partij mogelijk ook IoT-hubs die zijn toegewezen voor eindgebruikers back-endsystemen aan voor toegang tot telemetrie van apparaten enzovoort. In het laatste geval, is een tweede account mogelijk niet nodig.
+- **Account #1**: waarschijnlijk gedeeld door de Opera tors en ontwikkelaars rollen. Deze partij kan de HSM-chips kopen bij de fabrikant. Deze chips worden gewijsd naar DPS-instanties die zijn gekoppeld aan het account #1. Met DPS-inschrijvingen kan deze partij apparaten aan meerdere level-twee klanten leaseen door de instellingen voor het inschrijven van apparaten in DPS opnieuw te configureren. Deze partij kan ook IoT-hubs voor eind gebruikers hebben toegewezen aan de interface om toegang te krijgen tot telemetrie van apparaten, enzovoort. In dit laatste geval is een tweede account mogelijk niet nodig.
 
-- **Account #2**: Eindgebruikers, niveau van twee klanten kunnen hun eigen IoT-hubs hebben. De partij die zijn gekoppeld aan Account #1 alleen punten in lease gegeven apparaten naar de juiste hub in dit account. Deze configuratie moet het koppelen van DPS en IoT-hubs in Azure-accounts, die kunnen worden uitgevoerd met Azure Resource Manager-sjablonen.
+- **Account #2**: eind gebruikers kunnen hun eigen IOT-hubs hebben. De partij die is gekoppeld aan account #1, wijst alleen geleasde apparaten toe aan de juiste hub in dit account. Voor deze configuratie moeten DPS-en IoT-hubs over Azure-accounts worden gekoppeld. Dit kan worden gedaan met Azure Resource Manager sjablonen.
 
-#### <a name="all-in-one-oem"></a>Alles-in-een door OEM
+#### <a name="all-in-one-oem"></a>Alles-in-één OEM
 
-De fabrikant kan worden "All-in-one OEM" waar slechts één fabrikant-account nodig zou zijn. De fabrikant verwerkt beveiligings- en end-to-end wordt ingericht.
+De fabrikant kan een ' all-in-One OEM ' zijn, waarbij slechts één fabrikant account nodig is. De fabrikant zorgt voor beveiliging en het inrichten van end-to-end.
 
-De fabrikant kan een cloud-gebaseerde toepassing naar klanten die apparaten kopen bieden. Deze toepassing zou een interface met de IoT-Hub die is toegewezen door de fabrikant.
+De fabrikant kan een Cloud toepassing bieden aan klanten die apparaten kopen. Deze toepassing heeft de interface met de IoT Hub toegewezen door de fabrikant.
 
-Verkoopautomaten of geautomatiseerde koffiezetmachines staan voorbeelden voor dit scenario.
+Verkoop automaten of geautomatiseerde koffie machines vertegenwoordigen voor beelden voor dit scenario.
 
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Wellicht vindt u het handig om als verwijzing, maak een bladwijzer voor dit artikel als u uw eigen manier via de bijbehorende snelstartgidsen voor automatische inrichting werkt. 
+Het kan handig zijn om dit artikel als referentie punt te voorzien van een verwijzing naar de bijbehorende Snelstartgids voor automatische inrichting. 
 
-Beginnen met het voltooien van een 'Automatische inrichting instellen'-snelstartgids die het beste bij uw voorkeur voor het hulpprogramma van management, die u bij de "Service" configuratiefase helpt:
+Begin met het volt ooien van de Snelstartgids voor het instellen van automatische inrichting die het beste past bij de voor keuren van uw beheer programma, waarin u wordt begeleid bij de fase ' Service configuratie ':
 
-- [Instellen van automatische inrichting met behulp van Azure CLI](quick-setup-auto-provision-cli.md)
-- [Instellen van automatische inrichting met behulp van de Azure portal](quick-setup-auto-provision.md)
-- [Automatische inrichting met behulp van Resource Manager-sjabloon instellen](quick-setup-auto-provision-rm.md)
+- [Automatische inrichting instellen met behulp van Azure CLI](quick-setup-auto-provision-cli.md)
+- [Automatische inrichting instellen met behulp van de Azure Portal](quick-setup-auto-provision.md)
+- [Automatische inrichting instellen met behulp van een resource manager-sjabloon](quick-setup-auto-provision-rm.md)
 
-Ga vervolgens door met een 'Automatisch inrichten een gesimuleerd apparaat' Quick Start dat aansluit op uw apparaat attestation-mechanisme en SDK/Taalvoorkeur van Device Provisioning Service. In deze snelstartgids hebt doorlopen u de fasen van de 'Apparaatinschrijving' en 'Device Registration service en -configuratie': 
+Ga vervolgens verder met de Snelstartgids "een gesimuleerd apparaat automatisch inrichten" dat aansluit bij het Attestation-mechanisme van het apparaat en de SDK/taal voorkeur van de Device Provisioning Service. In deze Quick start gaat u de fasen ' apparaatregistratie ' en ' registratie en configuratie van apparaten ' door lopen: 
 
-|  | Gesimuleerd apparaat attestation-mechanisme | Snelstartgids SDK/taal |  |
+|  | Attestation-mechanisme voor gesimuleerde apparaten | Quick Start SDK/taal |  |
 |--|--|--|--|
 |  | Trusted Platform Module (TPM) | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |  |
-|  | X.509-certificaat | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
+|  | X. 509-certificaat | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
 
 
 

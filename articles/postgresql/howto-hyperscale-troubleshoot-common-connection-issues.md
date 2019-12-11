@@ -1,5 +1,5 @@
 ---
-title: Verbindings problemen met Azure Database for PostgreSQL-grootschalige (Citus) oplossen
+title: Problemen met verbindingen oplossen-grootschalige (Citus)-Azure Database for PostgreSQL
 description: Meer informatie over het oplossen van verbindings problemen met Azure Database for PostgreSQL-grootschalige (Citus)
 keywords: postgresql-verbinding, connection string, connectiviteits problemen, tijdelijke fout, verbindings fout
 author: jonels-msft
@@ -7,12 +7,12 @@ ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: b812b730cebba4dbf0735f49f544e53bf7f8787c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c064aca484f85c44dada9888012140784a96863f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952145"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977502"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Verbindings problemen met Azure Database for PostgreSQL-grootschalige (Citus) oplossen
 
@@ -50,7 +50,7 @@ Als de toepassing permanent geen verbinding kan maken met grootschalige (Citus),
 
 * Firewall configuratie van coördinator knooppunt: Zorg ervoor dat de firewall van de grootschalige-server zo is geconfigureerd dat verbindingen van uw client worden toegestaan, inclusief proxy servers en gateways.
 * Firewall configuratie van de client: de firewall op uw client moet verbindingen met uw database server toestaan. Sommige firewalls vereisen niet alleen toepassing op naam, maar kunnen de IP-adressen en poorten van de server toestaan.
-* Gebruikers fout: dubbel Controleer de connection string. Mogelijk hebt u een of meer niet-getypte para meters zoals de server naam of een verg eten *\@servername* -achtervoegsel in de gebruikers naam.
+* Gebruikers fout: dubbel Controleer de connection string. Mogelijk hebt u niet-getypte para meters zoals de server naam. U kunt verbindings reeksen vinden voor verschillende taal frameworks en psql in de Azure Portal. Ga naar de pagina **verbindings reeksen** in de Server groep grootschalige (Citus). Houd er ook wel voor dat grootschalige-clusters (Citus) slechts één data base hebben en dat de vooraf gedefinieerde naam **Citus**is.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Stappen voor het oplossen van problemen met de permanente verbinding
 

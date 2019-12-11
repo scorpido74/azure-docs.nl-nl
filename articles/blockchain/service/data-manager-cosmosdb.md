@@ -4,12 +4,12 @@ description: Gebruik Block Chain Data Manager voor de Azure Block Chain-service 
 ms.date: 12/04/2019
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 642e8b4d9d2492c0d7119f0a5469176765565159
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 79c39d9883b5ba618e368b0ff6d3e95f1af5bd96
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849949"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977388"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Zelf studie: Block Chain Data Manager gebruiken om gegevens te verzenden naar Azure Cosmos DB
 
@@ -78,13 +78,15 @@ In het contract ABI worden de slimme contract interfaces gedefinieerd. Hierin wo
 
 1. Sla de **Abi** -matrix op als een JSON-bestand. Bijvoorbeeld *Abi. json*. U gebruikt het bestand in een latere stap.
 
-Voor Block Chain Data Manager is de geïmplementeerde byte code voor het slimme contract vereist. De geïmplementeerde byte code wijkt af van de byte code van het Smart-contract. U kunt de geïmplementeerde byte code ophalen uit het bestand met meta gegevens van het gecompileerde contract.
+Voor Block Chain Data Manager is de geïmplementeerde byte code voor het slimme contract vereist. De geïmplementeerde byte code wijkt af van de byte code van het Smart-contract. U gebruikt de Azure Block Chain Development Kit-extensie om de byte code naar het klem bord te kopiëren.
 
-1. Open het meta gegevensbestand van de opdracht in de map **Build/contract** van het volheid-project. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
-1. Zoek het element **deployedBytecode** in het JSON-bestand.
-1. Kopieer de hexadecimale waarde zonder de aanhalings tekens.
+1. Vouw in het deel venster Visual Studio code Explorer de map **Build/contract** van het volheid-project uit.
+1. Klik met de rechter muisknop op het JSON-bestand met meta gegevens van het contract. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
+1. Selecteer de **byte code van de kopieer actie**.
 
-    ![Venster Visual Studio code met byte code in de meta gegevens](./media/data-manager-portal/bytecode-metadata.png)
+    ![Deel venster Visual Studio met de optie byte code ring kopiëren](./media/data-manager-cosmosdb/bytecode-devkit.png)
+
+    De byte code wordt gekopieerd naar het klem bord.
 
 1. Sla de **byte code** -waarde op als een JSON-bestand. Bijvoorbeeld: *byte code. json*. U gebruikt het bestand in een latere stap.
 

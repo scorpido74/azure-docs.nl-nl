@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 12/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7838e1930a8ccd190c95740a6a8e3dadc68149f0
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 95f7d71c0de7570eee6e4c94e88fd65ff1d45ec8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422117"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973081"
 ---
 # <a name="create-an-azure-bastion-host"></a>Een Azure bastion-host maken
 
@@ -64,7 +64,7 @@ In deze sectie kunt u een nieuwe Azure Bastion-resource maken op basis van de Az
 
 Als u een bastion-host in de portal maakt met behulp van een bestaande virtuele machine, worden er automatisch verschillende instellingen gebruikt die overeenkomen met de virtuele machines en/of het virtuele netwerk.
 
-1. Open de [Azure Portal](https://portal.azure.com). Ga naar uw virtuele machine en klik vervolgens op **verbinding maken**.
+1. Open de [Azure-portal](https://portal.azure.com). Ga naar uw virtuele machine en klik vervolgens op **verbinding maken**.
 
    ![VM-verbinding](./media/bastion-create-host-portal/vmsettings.png)
 1. Klik in de rechter zijbalk op **Bastion**en **gebruik vervolgens Bastion**.

@@ -1,18 +1,18 @@
 ---
 title: Azure-IoT Hub Device Provisioning Service-beveiligings concepten
-description: Beschrijft de concepten voor het inrichten van beveiliging die specifiek zijn voor apparaten met Device Provisioning Service en IoT Hub
+description: Beschrijft de concepten voor het inrichten van beveiliging die specifiek zijn voor apparaten met de Device Provisioning Service (DPS) en IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: ad392d9d979986723c17b43f210959e2504a8fb8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3191e9886604af9b2a26b71a89cee699197585c4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228826"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973455"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>Beveiligings concepten IoT Hub Device Provisioning Service 
 
@@ -46,7 +46,7 @@ TPM kan verwijzen naar een standaard voor het veilig opslaan van sleutels die wo
 
 TPM-Attestation is gebaseerd op een nonce-Challenge, die gebruikmaakt van de goedkeurings-en opslag basis sleutels om een ondertekend Shared Access Signature-token (SAS) aan te bieden.
 
-### <a name="endorsement-key"></a>Goedkeurings sleutel
+### <a name="endorsement-key"></a>Goedkeuringssleutel
 
 De goedkeurings sleutel is een asymmetrische sleutel in de TPM die intern is gegenereerd of geïnjecteerd tijdens de productie tijd en uniek is voor elke TPM. De goedkeurings sleutel kan niet worden gewijzigd of verwijderd. Het persoonlijke gedeelte van de goedkeurings sleutel wordt nooit buiten de TPM vrijgegeven, terwijl het open bare gedeelte van de goedkeurings sleutel wordt gebruikt om een legitieme TPM te herkennen. Meer informatie over de [goedkeurings sleutel](https://technet.microsoft.com/library/cc770443(v=ws.11).aspx).
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: cd0d09e4d46747b7f3f8e6fb714dd711beef9484
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: 6bd99a200a8f9e6be6d155a334b9b06ac05eacc3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770833"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972180"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Trage query Logboeken in Azure Database for MySQL
 In Azure Database for MySQL is het langzame query logboek beschikbaar voor gebruikers. Toegang tot het transactie logboek wordt niet ondersteund. Het logboek met trage query's kan worden gebruikt om prestatie knelpunten voor het oplossen van problemen te identificeren.
@@ -21,9 +21,11 @@ Voor meer informatie over het MySQL-logboek voor langzame query's raadpleegt u d
 ## <a name="access-slow-query-logs"></a>Toegang tot langzame query logboeken
 U kunt Azure Database for MySQL langzame query logboeken weer geven en downloaden met behulp van de Azure Portal en de Azure CLI.
 
-Selecteer uw Azure Database for MySQL server in het Azure Portal. Selecteer de pagina **Server logboeken** onder de sectie **bewaking** .
+Selecteer uw Azure Database voor MySQL-server in de Azure-portal. Selecteer de pagina **Server logboeken** onder de sectie **bewaking** .
 
 Zie voor meer informatie over Azure CLI [langzame query logboeken configureren en openen met behulp van Azure cli](howto-configure-server-logs-in-cli.md).
+
+Op dezelfde manier kunt u de logboeken door sluizen naar Azure Monitor met behulp van Diagnostische logboeken. Zie [hieronder](concepts-server-logs.md#diagnostic-logs) voor meer informatie.
 
 ## <a name="log-retention"></a>Bewaar periode logboek
 Logboeken zijn Maxi maal zeven dagen beschikbaar vanaf het maken ervan. Als de totale grootte van de beschik bare logboeken groter is dan 7 GB, worden de oudste bestanden verwijderd totdat er ruimte beschikbaar is. 
@@ -35,10 +37,11 @@ Het logboek voor langzame query's is standaard uitgeschakeld. Als u deze functie
 
 Andere para meters die u kunt aanpassen zijn onder andere:
 
-- **long_query_time**: als een query langer duurt dan long_query_time (in seconden) dat de query wordt geregistreerd. De standaard waarde is 10 seconden.
+- **long_query_time**: als een query langer duurt dan long_query_time (in seconden) dat de query wordt geregistreerd. De standaardinstelling is 10 seconden.
 - **log_slow_admin_statements**: als u beheer instructies zoals ALTER_TABLE en ANALYZE_TABLE in de instructies bevat die naar de slow_query_log zijn geschreven.
 - **log_queries_not_using_indexes**: bepaalt of query's die geen indexen gebruiken, worden geregistreerd in het slow_query_log
 - **log_throttle_queries_not_using_indexes**: deze para meter beperkt het aantal niet-index query's dat naar het langzame query logboek kan worden geschreven. Deze para meter wordt van kracht als log_queries_not_using_indexes is ingesteld op aan.
+- **log_output**: als ' bestand ' is, kan het langzame query logboek worden geschreven naar zowel de lokale server opslag als Azure monitor Diagnostische logboeken. Als ' geen ' is, wordt het langzame query logboek alleen naar de lokale server opslag geschreven. 
 
 > [!Note]
 > Voor `sql_text`wordt het logboek afgekapt als dit 2048 tekens overschrijdt.
@@ -78,7 +81,7 @@ In de volgende tabel wordt de inhoud van elk logboek beschreven. Afhankelijk van
 | `insert_id_s` | Invoeg-ID |
 | `sql_text_s` | Volledige query |
 | `server_id_s` | De server-ID |
-| `thread_id_s` | Thread-ID |
+| `thread_id_s` | Thread-id |
 | `\_ResourceId` | Resource-URI |
 
 ## <a name="next-steps"></a>Volgende stappen

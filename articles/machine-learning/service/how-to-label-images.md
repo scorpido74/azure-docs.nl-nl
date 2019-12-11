@@ -1,22 +1,22 @@
 ---
-title: Het hulp programma voor het labelen van Azure Machine Learning-gegevens gebruiken
+title: Afbeeldingen labelen in een label project
 title.suffix: Azure Machine Learning
-description: In dit artikel leert u hoe u de hulpprogram ma's voor gegevens labelen gebruikt in een Azure Machine Learning labelen project.
+description: Meer informatie over het gebruik van de hulpprogram ma's voor gegevens labelen in een Azure Machine Learning label project.
 author: lobrien
 ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: bc7eaeefcef042417b29eb7c887cc19acf8c5c02
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: b36eed1918be2c769bcf74c0d8dee09a5bd62756
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688221"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978131"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Afbeeldingen labelen in een label project
 
-Nadat de Project beheerder een label project heeft gemaakt in Azure Machine Learning, kunt u het hulp programma labelen gebruiken om snel gegevens voor een Machine Learning project voor te bereiden. In dit artikel wordt beschreven:
+Nadat de Project beheerder een label project heeft gemaakt in Azure Machine Learning, kunt u het hulp programma labelen gebruiken om snel gegevens voor een Machine Learning project voor te bereiden. Dit artikel wordt beschreven:
 
 > [!div class="checklist"]
 > * Toegang krijgen tot uw etiket projecten
@@ -106,9 +106,9 @@ Als u *alle* selectie vakjes in de huidige afbeelding wilt verwijderen, selectee
 
 Nadat u de selectie kaders voor een afbeelding hebt gemaakt, selecteert u **verzenden** om uw werk op te slaan of wordt de voortgang van uw werk niet opgeslagen.
 
-## <a name="finish-up"></a>Volt ooien
+## <a name="finish-up"></a>Voltooien
 
-Wanneer u een pagina met gelabelde gegevens verzendt, worden er vanuit een werk wachtrij nieuwe, niet-gelabelde gegevens naar u verzonden. Als er geen niet meer gelabelde gegevens beschikbaar zijn, wordt er een bericht weer gegeven met een koppeling naar de start pagina van de portal.
+Wanneer u een pagina met gelabelde gegevens verzendt, wijst Azure nieuwe niet-gelabelde gegevens toe vanuit een werk wachtrij. Als er geen niet meer gelabelde gegevens beschikbaar zijn, wordt er een bericht weer gegeven met een koppeling naar de start pagina van de portal.
 
 Wanneer u klaar bent met labelen, selecteert u uw naam in de rechter bovenhoek van de portal voor labels en selecteert u vervolgens **Afmelden**. Als u zich niet afmeldt, wordt er uiteindelijk door Azure gevraagd en worden uw gegevens toegewezen aan een andere Labeler.
 

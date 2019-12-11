@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/12/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: edb46bc361c515439a93d9c3d0b9987bebe4b1b1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4b0e5be0e5f71fa61e3a6c6fa39e720c4c298898
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229877"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967934"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Zelfstudie: Maken en beheren van Azure budgetten
 
@@ -27,7 +27,7 @@ Budgetten automatisch opnieuw instellen aan het einde van een punt (maandelijks,
 
 De voorbeelden in deze zelfstudie begeleidt u bij het maken en bewerken van een budget voor een Azure Enterprise Agreement (EA)-abonnement.
 
-Bekijk [hoe u een budget maakt om uw uitgaven te bewaken met Azure Cost Management](https://www.youtube.com/watch?v=ExIVG_Gr45A) video om te zien hoe u budgetten kunt maken in azure om uitgaven te bewaken.
+Bekijk de procedures [voor het Toep assen van budgetten op abonnementen met behulp van de Azure Portal](https://www.youtube.com/watch?v=UrkHiUx19Po) video om te zien hoe u budgetten kunt maken in azure om uitgaven te bewaken.
 
 
 In deze zelfstudie leert u het volgende:
@@ -38,7 +38,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Budgetten worden ondersteund voor diverse typen Azure-accounts. Zie voor de volledige lijst met ondersteunde accounttypen [Gegevens van Azure Cost Management begrijpen](understand-cost-mgt-data.md). Voor het weer geven van budgetten moet u ten minste lees toegang hebben voor uw Azure-account.
+Budgetten worden ondersteund voor diverse typen Azure-accounts. Zie [Gegevens van kostenbeheer begrijpen](understand-cost-mgt-data.md) voor de volledige lijst met ondersteunde accounttypen. Voor het weer geven van budgetten moet u ten minste lees toegang hebben voor uw Azure-account.
 
  Voor Azure EA-abonnementen moet u lees toegang hebben om budgetten weer te geven. Als u wilt maken en beheren van budgetten, moet u de machtiging Inzender hebt. U kunt afzonderlijke budgetten voor EA-abonnementen en resourcegroepen. U kan echter budgetten maken voor facturering van accounts EA.
 
@@ -48,7 +48,7 @@ De volgende Azure-machtigingen of-bereiken worden ondersteund per abonnement op 
 - Inzender en Inzender van Cost Management – kunt maken, wijzigen of verwijderen van hun eigen budgetten. Inzenders kunnen ook de budgetbedragen aanpassen voor budgetten die zijn gemaakt door anderen.
 - Lezer en kostenbeheer lezer – kunt budgetten die ze gemachtigd zijn om te bekijken.
 
-Zie [toegang tot Cost Management gegevens toewijzen](assign-access-acm-data.md)voor meer informatie over het toewijzen van machtigingen aan Cost Management gegevens.
+Zie voor meer informatie over het toewijzen van machtigingen aan gegevens van Cost Management [toegang tot gegevens van kostenbeheer toewijzen](assign-access-acm-data.md).
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -56,50 +56,50 @@ Zie [toegang tot Cost Management gegevens toewijzen](assign-access-acm-data.md)v
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Maken van een budget in de Azure portal
 
-U kunt het budget van een Azure-abonnement maken voor een bepaalde maand, kwartaal of jaar. Uw navigatie-inhoud in de Azure Portal bepaalt of u een budget maakt voor een abonnement of voor een beheer groep.
+U kunt het budget van een Azure-abonnement maken voor een bepaalde maand, kwartaal of jaar. De inhoud waarin u navigeert in Azure Portal bepaalt of u een budget maakt voor een abonnement of voor een beheergroep.
 
-Als u een budget wilt maken of weer geven, opent u het gewenste bereik in de Azure Portal en selecteert u **budgetten** in het menu. Ga bijvoorbeeld naar **abonnementen**, selecteer een abonnement in de lijst en selecteer vervolgens **budgetten** in het menu. Gebruik het **bereik** Pill om over te scha kelen naar een ander bereik, zoals een beheer groep, in budgetten. Zie voor meer informatie over bereiken [begrijpen en werken met scopes](understand-work-scopes.md).
+Als u een budget wilt maken of bekijken, opent u het gewenste bereik in Azure Portal en selecteert u in het menu de optie **Budgetten**. Ga bijvoorbeeld naar **abonnementen**, selecteer een abonnement in de lijst en selecteer vervolgens **budgetten** in het menu. Gebruik het **bereik** Pill om over te scha kelen naar een ander bereik, zoals een beheer groep, in budgetten. Zie voor meer informatie over bereiken [begrijpen en werken met scopes](understand-work-scopes.md).
 
 Nadat u budgetten maakt, worden ze een eenvoudige weergave van uw huidige uitgaven op basis hiervan weergegeven.
 
-Klik op **Toevoegen**.
+Selecteer **Toevoegen**.
 
-![Voor beeld van een lijst met budgetten die al zijn gemaakt](./media/tutorial-acm-create-budgets/budgets01.png)
+![Voorbeeld van een lijst met budgetten die al zijn gemaakt](./media/tutorial-acm-create-budgets/budgets01.png)
 
-Zorg er in het venster **budget maken** voor dat de weer gegeven Scope juist is. Kies de filters die u wilt toevoegen. Filters bieden u de mogelijkheid om budgetten te maken voor specifieke kosten, zoals resource groepen in een abonnement of een service, zoals virtuele machines. Elk filter dat u kunt gebruiken in de kosten analyse kan ook worden toegepast op een budget.
+Controleer in het venster **Budget maken** of het weergegeven bereik juist is. Kies de filters die u wilt toevoegen. Met filters kunt u budgetten maken voor specifieke kosten, zoals resourcegroepen in een abonnement of een service, zoals virtuele machines. Elk filter dat u kunt gebruiken in de kostenanalyse kan ook worden toegepast op een budget.
 
-Nadat u uw bereik en filters hebt geïdentificeerd, typt u de naam van het budget. Kies vervolgens een maand, kwar taal of jaarlijks budget herstelings periode. Deze opnieuw ingestelde periode bepaalt het tijd venster dat door het budget wordt geanalyseerd. De kosten geëvalueerd door het budget beginnen bij nul aan het begin van elke nieuwe periode. Wanneer u een per kwartaal budget maakt, wordt het werkt op dezelfde manier als een maandelijkse budget. Het verschil is dat het budgetbedrag voor het kwartaal gelijkmatig wordt verdeeld over de drie maanden van het kwartaal. Een jaarlijks budget bedrag wordt evenredig verdeeld over de 12 maanden van het kalender jaar.
+Nadat u hebt bepaald welk bereik en welke filters u wilt gebruiken, typt u een naam voor het budget. Kies vervolgens een maand, kwar taal of jaarlijks budget herstelings periode. Deze periode voor opnieuw instellen bepaalt het tijdvenster dat door het budget wordt geanalyseerd. De kosten die door het budget worden geëvalueerd, beginnen bij aanvang van elke nieuwe periode bij nul. Wanneer u een per kwartaal budget maakt, wordt het werkt op dezelfde manier als een maandelijkse budget. Het verschil is dat het budgetbedrag voor het kwartaal gelijkmatig wordt verdeeld over de drie maanden van het kwartaal. Een jaarlijks budgetbedrag wordt gelijkmatig verdeeld over de twaalf maanden van het kalenderjaar.
 
-Als u een abonnement op basis van betalen per gebruik, MSDN of Visual Studio hebt, kan de facturerings periode van uw factuur niet worden uitgelijnd op de kalender maand. Voor deze typen abonnementen en resource groepen kunt u een budget maken dat is afgestemd op uw factuur periode of kalender maanden. Als u een budget wilt maken dat is afgestemd op uw factuur periode, selecteert u een herstel periode van **facturerings maand**, **facturerings kwartaal**of **factuur jaar**. Als u een budget wilt maken dat is afgestemd op de kalender maand, selecteert u een opnieuw ingestelde periode van **elke maand**, **elk kwar taal**of **jaarlijks**.
+Als u een abonnement op basis van betalen per gebruik, een MSDN- of Visual Studio-abonnement hebt, komt de factureringsperiode van uw factuur mogelijk niet overeen met de kalendermaand. Voor deze typen abonnementen en resourcegroepen kunt u een budget maken dat is afgestemd op uw factuurperiode of de kalendermaanden. Als u een budget wilt maken dat is afgestemd op uw factuur periode, selecteert u een herstel periode van **facturerings maand**, **facturerings kwartaal**of **factuur jaar**. Als u een budget wilt maken dat is afgestemd op de kalender maand, selecteert u een opnieuw ingestelde periode van **elke maand**, **elk kwar taal**of **jaarlijks**.
 
-Bepaal vervolgens de verval datum wanneer het budget ongeldig wordt en stopt met het evalueren van de kosten.
+Bepaal vervolgens de vervaldatum wanneer het budget ongeldig wordt en ophoudt met het evalueren van de kosten.
 
-Op basis van de velden die u in het budget hebt gekozen, wordt een grafiek weer gegeven om u te helpen bij het selecteren van een drempel waarde die voor uw budget moet worden gebruikt. Het voorgestelde budget is gebaseerd op de hoogste geraamde kosten die u in toekomstige Peri Oden kunt doen. U kunt het budget bedrag wijzigen.
+Op basis van de velden die u tot nu toe in het budget hebt gekozen, wordt een grafiek weergegeven en kunt u een drempelwaarde voor uw budget kiezen. Het voorgestelde budget is gebaseerd op de hoogst geraamde kosten die in toekomstige perioden in rekening kunnen worden gebracht. U kunt het budgetbedrag wijzigen.
 
-![Voor beeld van het maken van een budget met maandelijkse kosten gegevens ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
+![Voorbeeld voor het maken van een budget met maandelijkse kostgegevens ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-Nadat u het budget bedrag hebt geconfigureerd, klikt u op **volgende** om budget waarschuwingen te configureren. Budgetten moeten ten minste één kosten drempel (% van budget) en een bijbehorende e-mailadres. Eventueel kunt u maximaal vijf drempelwaarden en vijf e-mailadressen in één budget opnemen. Wanneer aan een budget drempel wordt voldaan, worden e-mail meldingen doorgaans in minder dan 20 uur ontvangen. Zie [cost Alerts gebruiken](cost-mgt-alerts-monitor-usage-spending.md)voor meer informatie over meldingen. In het onderstaande voor beeld wordt er een e-mail waarschuwing gegenereerd wanneer 90% van het budget wordt bereikt. Als u een budget maakt met de budgetten-API, kunt u ook rollen toewijzen aan personen om waarschuwingen te ontvangen. Het toewijzen van rollen aan personen wordt niet ondersteund in de Azure Portal. Zie [budgetten-API](/rest/api/consumption/budgets)voor meer informatie over de Azure budgets-API.
+Nadat u het budgetbedrag hebt geconfigureerd, selecteert u **Volgende** om budgetwaarschuwingen te configureren. Budgetten moeten ten minste één kosten drempel (% van budget) en een bijbehorende e-mailadres. Eventueel kunt u maximaal vijf drempelwaarden en vijf e-mailadressen in één budget opnemen. Wanneer aan een budget drempel wordt voldaan, worden e-mail meldingen doorgaans in minder dan 20 uur ontvangen. Zie [cost Alerts gebruiken](cost-mgt-alerts-monitor-usage-spending.md)voor meer informatie over meldingen. In het onderstaande voor beeld wordt er een e-mail waarschuwing gegenereerd wanneer 90% van het budget wordt bereikt. Als u een budget maakt met de budgetten-API, kunt u ook rollen toewijzen aan personen om waarschuwingen te ontvangen. Het toewijzen van rollen aan personen wordt niet ondersteund in de Azure Portal. Zie [budgetten-API](/rest/api/consumption/budgets)voor meer informatie over de Azure budgets-API.
 
 ![Voor beeld van waarschuwings voorwaarden weer geven](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
-Nadat u een budget gemaakt, wordt deze weergegeven in kostenanalyse. Het weer geven van uw budget ten opzichte van uw bestedings trend is een van de eerste stappen wanneer u begint met [het analyseren van uw kosten en uitgaven](quick-acm-cost-analysis.md).
+Nadat u een budget gemaakt, wordt deze weergegeven in kostenanalyse. Een van de eerste stappen wanneer u met begint het weergeven van uw budget ten opzichte van uw uitgaventrend is [analyseren van uw kosten en uitgaven](quick-acm-cost-analysis.md).
 
 ![Voorbeeld van budget en uitgaven wordt weergegeven in kostenanalyse](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
-In het voorgaande voorbeeld, moet u een budget voor een abonnement gemaakt. U kunt echter ook een budget voor een resourcegroep maken. Als u een budget voor een resource groep wilt maken, gaat u naar **Cost Management + facturerings** &gt; **abonnementen** &gt; selecteert u een abonnement > **resource groepen** > selecteert u een resource groep > **budgetten** > en vervolgens **Voeg** een budget toe.
+In het voorgaande voorbeeld, moet u een budget voor een abonnement gemaakt. U kunt echter ook een budget voor een resourcegroep maken. Als u maken van een budget voor een resourcegroep wilt, gaat u naar **kostenbeheer en facturering** &gt; **abonnementen** &gt; Selecteer een abonnement > **Resource groepen** > Selecteer een resourcegroep > **budgetten** > en vervolgens **toevoegen** een budget.
 
 ## <a name="trigger-an-action-group"></a>Een actie groep activeren
 
-Wanneer u een budget voor een abonnement of een bereik van een resource groep maakt of bewerkt, kunt u dit configureren om een actie groep aan te roepen. De actie groep kan verschillende acties uitvoeren wanneer aan uw budget drempel wordt voldaan. Actie groepen worden momenteel alleen ondersteund voor het bereik van abonnementen en resource groepen. Zie voor meer informatie over actie groepen [actie groepen maken en beheren in de Azure Portal](../azure-monitor/platform/action-groups.md). Zie [kosten beheren met Azure-budgetten](../billing/billing-cost-management-budget-scenario.md)voor meer informatie over het gebruik van automatisering op basis van een budget met actie groepen.
+Wanneer u een budget voor een abonnement of een resourcegroepbereik maakt of bewerkt, kunt u dit zo configureren dat een actiegroep wordt aangeroepen. Met de actiegroep kunnen verschillende acties worden uitgevoerd wanneer uw budgetdrempelwaarde wordt bereikt. Actie groepen worden momenteel alleen ondersteund voor het bereik van abonnementen en resource groepen. Zie voor meer informatie over actie groepen [actie groepen maken en beheren in de Azure Portal](../azure-monitor/platform/action-groups.md). Zie [kosten beheren met Azure-budgetten](../billing/billing-cost-management-budget-scenario.md)voor meer informatie over het gebruik van automatisering op basis van een budget met actie groepen.
 
 
 
-Als u actie groepen wilt maken of bijwerken, klikt u op **actie groepen beheren** terwijl u een budget maakt of bewerkt.
+Als u actie groepen wilt maken of bijwerken, selecteert u **actie groepen beheren** tijdens het maken of bewerken van een budget.
 
 ![Voor beeld van het maken van een budget voor het weer geven van beheer actie groepen](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
 
-Klik vervolgens op **actie groep toevoegen** en maak de actie groep.
+Selecteer vervolgens **actie groep toevoegen** en maak de actie groep.
 
 
 ![Afbeelding van het vak actie groep toevoegen](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
@@ -116,9 +116,15 @@ In het volgende voor beeld worden budget drempels weer gegeven die zijn ingestel
 
 Budget integratie met actie groepen werkt alleen voor actie groepen waarvoor het schema common Alerts is uitgeschakeld. Zie voor meer informatie over het uitschakelen van het schema [Hoe kan ik het algemene waarschuwings schema inschakelen?](../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
 
+## <a name="edit-an-existing-budget"></a>Een bestaand budget bewerken
+Als u wijzigingen wilt aanbrengen in een bestaand budget, gaat u naar het hoofd venster budgetten en selecteert u het budget dat u wilt bewerken. Selecteer in het venster Budget Details de optie **budget bewerken** en breng de gewenste wijzigingen aan en selecteer vervolgens **Opslaan**.
+
+![Voor beeld van een bewerkings budget](./media/tutorial-acm-create-budgets/edit-budget.png)
+
+
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Maken van een budget in de Azure portal
@@ -127,4 +133,4 @@ In deze zelfstudie heeft u het volgende geleerd:
 Ga naar de volgende zelfstudie voor het maken van een terugkerende exporteren voor uw gegevens van cost management.
 
 > [!div class="nextstepaction"]
-> [Geëxporteerde gegevens maken en beheren](tutorial-export-acm-data.md)
+> [Maken en beheren van de geëxporteerde gegevens](tutorial-export-acm-data.md)

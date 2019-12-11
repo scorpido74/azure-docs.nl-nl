@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 228b00a19bac9c773fce8e502d302314821fbf39
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1644c00aea8eefa78550c8d0238dbedab0378492
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871640"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968694"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay streaming voor iOS 
 
@@ -114,7 +114,7 @@ Voeg AssetDeliveryPolicyConfigurationKey toe zoals hier wordt weer gegeven:
 
 Na deze stap bevat de < Dictionary_AssetDeliveryPolicyConfigurationKey > teken reeks in het beleid voor het leveren van FPS-activa de volgende drie vermeldingen:
 
-* AssetDeliveryPolicyConfigurationKey. FairPlayBaseLicenseAcquisitionUrl of AssetDeliveryPolicyConfigurationKey. FairPlayLicenseAcquisitionUrl, afhankelijk van factoren zoals de gebruikte FPS KSM/key-server en of u dezelfde levering van het activum opnieuw kunt gebruiken beleid over meerdere assets
+* AssetDeliveryPolicyConfigurationKey. FairPlayBaseLicenseAcquisitionUrl of AssetDeliveryPolicyConfigurationKey. FairPlayLicenseAcquisitionUrl, afhankelijk van factoren zoals de gebruikte FPS KSM/key-server en of u hetzelfde Asset Delivery-beleid opnieuw gebruikt voor meerdere assets
 * AssetDeliveryPolicyConfigurationKey.CommonEncryptionIVForCbcs
 * AssetDeliveryPolicyConfigurationKey.AllowPersistentLicense
 
@@ -123,18 +123,18 @@ Uw Media Services-account is nu geconfigureerd voor het leveren van offline Fair
 ## <a name="sample-ios-player"></a>Voor beeld iOS-Player
 Ondersteuning voor de offline modus van FPS is alleen beschikbaar op iOS 10 en hoger. De FPS Server SDK (versie 3,0 of hoger) bevat het document en het voor beeld voor de offline modus FPS. Met name de server-SDK (versie 3,0 of hoger) van FPS bevat de volgende twee items die betrekking hebben op de offline modus:
 
-* Document: "Offline afspelen met FairPlay streaming en HTTP Live Streaming." Apple, 14 september 2016. In FPS Server SDK versie 4,0 wordt dit document samengevoegd in het hoofd-FPS-document.
-* Voorbeeld code: HLSCatalog-voor beeld voor de offline modus van FPS in de \FairPlay streaming server SDK-versie 3.1 \ Development\Client\HLSCatalog_With_FPS\HLSCatalog\. In de HLSCatalog-voor beeld-app worden de volgende code bestanden gebruikt om de functies van de offline modus te implementeren:
+* Document: ' offline afspelen met FairPlay streaming en HTTP Live Streaming. ' Apple, 14 september 2016. In FPS Server SDK versie 4,0 wordt dit document samengevoegd in het hoofd-FPS-document.
+* Voorbeeld code: HLSCatalog-voor beeld voor FPS offline modus in de \FairPlay streaming server SDK-versie 3.1 \ Development\Client\ HLSCatalog_With_FPS \HLSCatalog\. In de HLSCatalog-voor beeld-app worden de volgende code bestanden gebruikt om de functies van de offline modus te implementeren:
 
-    - AssetPersistenceManager. Swift-code bestand: AssetPersistenceManager is de belangrijkste klasse in dit voor beeld waarin wordt gedemonstreerd hoe u:
+    - AssetPersistenceManager. Swift-code bestand: AssetPersistenceManager is de belangrijkste klasse in dit voor beeld waarin wordt getoond hoe:
 
         - Het downloaden van HLS-streams beheren, zoals de Api's die worden gebruikt om down loads te starten en te annuleren en om bestaande activa van apparaten te verwijderen.
         - De voortgang van de down load bewaken.
-    - Code bestanden voor AssetListTableViewController. Swift en AssetListTableViewCell. Swift: AssetListTableViewController is de belangrijkste interface van dit voor beeld. Het bevat een lijst met assets die het voor beeld kan gebruiken voor het afspelen, downloaden, verwijderen of annuleren van een down load. 
+    - AssetListTableViewController. Swift en AssetListTableViewCell. Swift code files: AssetListTableViewController is de belangrijkste interface van dit voor beeld. Het bevat een lijst met assets die het voor beeld kan gebruiken voor het afspelen, downloaden, verwijderen of annuleren van een down load. 
 
 Deze stappen laten zien hoe u een actieve iOS-speler kunt instellen. Als u begint met het HLSCatalog-voor beeld in FPS Server SDK version 4.0.1, moet u de volgende code wijzigingen aanbrengen:
 
-Implementeer de-methode `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` in HLSCatalog\Shared\Managers\ContentKeyDelegate.Swift met behulp van de volgende code. Stel ' drmUr ' een variabele toe die is toegewezen aan de HLS-URL.
+Implementeer in HLSCatalog\Shared\Managers\ContentKeyDelegate.swift de methode `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` door de volgende code te gebruiken. Stel ' drmUr ' een variabele toe die is toegewezen aan de HLS-URL.
 
 ```swift
     var ckcData: Data? = nil
@@ -167,7 +167,7 @@ Implementeer de-methode `requestContentKeyFromKeySecurityModule(spcData: Data, a
     return ckcData
 ```
 
-Implementeer de-methode `requestApplicationCertificate()`in HLSCatalog\Shared\Managers\ContentKeyDelegate.Swift. Deze implementatie is afhankelijk van het feit of u het certificaat (alleen open bare sleutel) insluit met het apparaat of als host van het certificaat op het web. De volgende implementatie maakt gebruik van het certificaat van de gehoste toepassing die wordt gebruikt in de test voorbeelden. Laat ' certUrl ' een variabele zijn die de URL van het toepassings certificaat bevat.
+Implementeer in HLSCatalog\Shared\Managers\ContentKeyDelegate.swift de methode `requestApplicationCertificate()`. Deze implementatie is afhankelijk van het feit of u het certificaat (alleen open bare sleutel) insluit met het apparaat of als host van het certificaat op het web. De volgende implementatie maakt gebruik van het certificaat van de gehoste toepassing die wordt gebruikt in de test voorbeelden. Laat ' certUrl ' een variabele zijn die de URL van het toepassings certificaat bevat.
 
 ```swift
 func requestApplicationCertificate() throws -> Data {
@@ -208,11 +208,11 @@ De volgende veelgestelde vragen bieden hulp bij het oplossen van problemen:
 - **Waarom wordt alleen audio zonder video afgespeeld tijdens de offline modus nadat ik alleen audio heb toegevoegd = False?** Afhankelijk van het ontwerp van de cache sleutel voor Content Delivery Network (CDN), kan de inhoud in de cache worden opgeslagen. Verwijder de cache.
 - **Is de offline modus voor FPS ook ondersteund op iOS 11 naast iOS 10?** Ja. De offline modus van FPS wordt ondersteund voor iOS 10 en iOS 11.
 - **Waarom kan ik het document ' offline afspelen met FairPlay streaming en HTTP Live Streaming ' niet vinden in de server-SDK van FPS?** Sinds FPS Server SDK versie 4 werd dit document samengevoegd in de programmeer handleiding voor FairPlay-gegevens stromen.
-- **Wat betekent de laatste para meter voor in de volgende API voor de offline modus van FPS?** 
+- **Wat betekent de laatste para meter voor in de volgende API voor de offline modus van fps?** 
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
     Zie de [methode FairPlayConfiguration. CreateSerializedFairPlayOptionConfiguration](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet)voor de documentatie voor deze API. De para meter vertegenwoordigt de duur van het offline huren, met een uur als de eenheid.
-- **Wat is de gedownloade/offline bestands structuur op iOS-apparaten?** De gedownloade bestands structuur op een iOS-apparaat ziet eruit als in de volgende scherm afbeelding. De `_keys` map slaat de gedownloade fps-licenties op, met één archief bestand voor elke host van de licentie service. De `.movpkg` map slaat audio-en video-inhoud op. De eerste map met een naam die eindigt op een streepje gevolgd door een numeriek bevat video-inhoud. De numerieke waarde is de PeakBandwidth van de video weergaven. De tweede map met een naam die eindigt op een streepje gevolgd door 0, bevat audio-inhoud. De derde map met de naam ' data ' bevat de lijst Master van de FPS-inhoud. Ten slotte biedt boot. XML een volledige beschrijving van de `.movpkg` inhoud van de map. 
+- **Wat is de gedownloade/offline bestands structuur op iOS-apparaten?** De gedownloade bestands structuur op een iOS-apparaat ziet eruit als in de volgende scherm afbeelding. In de map `_keys` worden gedownloade FPS-licenties opgeslagen, met één archief bestand voor elke host van de licentie service. De inhoud van audio en video wordt opgeslagen in de map `.movpkg`. De eerste map met een naam die eindigt op een streepje gevolgd door een numeriek bevat video-inhoud. De numerieke waarde is de PeakBandwidth van de video weergaven. De tweede map met een naam die eindigt op een streepje gevolgd door 0, bevat audio-inhoud. De derde map met de naam ' data ' bevat de lijst Master van de FPS-inhoud. Ten slotte biedt boot. XML een volledige beschrijving van de inhoud van de map `.movpkg`. 
 
 ![Bestands structuur van de offline-FairPlay iOS-voorbeeld toepassing](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)
 
@@ -245,6 +245,10 @@ Een voor beeld van een boot. XML-bestand:
 </HLSMoviePackage>
 ```
 
+## <a name="additional-notes"></a>Aanvullende opmerkingen
+
+* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+
 ## <a name="summary"></a>Samenvatting
 Dit document bevat de volgende stappen en informatie die u kunt gebruiken voor het implementeren van de offline modus FPS:
 
@@ -252,3 +256,7 @@ Dit document bevat de volgende stappen en informatie die u kunt gebruiken voor h
 * Een iOS-speler op basis van het voor beeld van de FPS Server-SDK stelt een iOS-speler in die FPS-inhoud kan afspelen in de online modus voor streaming of de offline modus.
 * Voor beelden van FPS Video's worden gebruikt om de offline modus en online streaming te testen.
 * Een veelgestelde vragen vindt u antwoorden op vragen over de offline modus van FPS.
+
+## <a name="next-steps"></a>Volgende stappen
+
+[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

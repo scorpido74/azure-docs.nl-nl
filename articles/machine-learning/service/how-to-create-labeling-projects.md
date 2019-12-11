@@ -1,20 +1,20 @@
 ---
-title: Labels voor gegevens ophalen
+title: Een project voor gegevens label maken
 titleSuffix: Azure Machine Learning
-description: In dit artikel wordt beschreven hoe u labels projecten maakt en uitvoert om gegevens te markeren voor machine learning.
+description: Meer informatie over het maken en uitvoeren van labels projecten voor het labelen van gegevens voor machine learning.
 author: lobrien
 ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: c171310fd1c9caf78288fa156b353ecdd517d602
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bdedc3ee0c76eafc4b4bc95116fb5be846f4bee5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894690"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978233"
 ---
-# <a name="get-labels-for-data"></a>Labels voor gegevens ophalen
+# <a name="create-a-data-labeling-project-and-export-labels"></a>Een gegevens label project maken en labels exporteren 
 
 Het labelen van Voluminous-gegevens in machine learning projecten is vaak een hoofd. Projecten met een computer vision-onderdeel, zoals afbeeldings classificatie of object detectie, hebben doorgaans labels nodig voor duizenden afbeeldingen.
  

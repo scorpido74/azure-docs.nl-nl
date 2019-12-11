@@ -4,12 +4,12 @@ description: Met Azure Backup kunt u gegevens van het netwerk verzenden met behu
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 4c62fed98a37a821907a889e45d582c452961203
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 259be99efdef29e3f7971632adf76c03175bba01
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173251"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996320"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Werk stroom voor offline back-ups voor DPM en Azure Backup Server
 
@@ -218,4 +218,4 @@ Op het moment van de volgende geplande back-up voert Azure Backup incrementele b
 ## <a name="next-steps"></a>Volgende stappen
 
 * Voor vragen over de Azure import/export-werk stroom raadpleegt u [de Microsoft Azure import/export-service gebruiken om gegevens over te dragen naar de Blob-opslag](../storage/common/storage-import-export-service.md).
-* Raadpleeg de sectie offline back-up van de Azure Backup [Veelgestelde vragen](backup-azure-backup-faq.md) voor vragen over de werk stroom.
+

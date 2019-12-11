@@ -11,12 +11,12 @@ ms.date: 12/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d8c3e3c272ce12200ab7506fd7c9759a8cb3aa64
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 30a3be1365f152a88713604570169091f09f0536
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851737"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975428"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Werkbelasting beheer met resource klassen in Azure SQL Data Warehouse
 
@@ -36,7 +36,7 @@ Er zijn twee typen resource klassen:
 
 Resource klassen gebruiken gelijktijdigheids sleuven om het Resource verbruik te meten.  [Gelijktijdigheids sleuven](#concurrency-slots) worden verderop in dit artikel beschreven.
 
-- Zie [geheugen en gelijktijdigheids limieten] geheugen-gelijktijdigheids limits.md) als u het resource gebruik voor de resource klassen wilt weer geven.
+- Zie [geheugen en gelijktijdigheids limieten](memory-concurrency-limits.md)voor het weer geven van het resource gebruik voor de resource klassen.
 - Als u de resource klasse wilt aanpassen, kunt u de query uitvoeren onder een andere gebruiker of [het lidmaatschap van de resource klasse van de huidige gebruiker wijzigen](#change-a-users-resource-class) .
 
 ### <a name="static-resource-classes"></a>Statische resource klassen

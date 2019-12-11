@@ -3,17 +3,17 @@ title: De apparaten in uw Azure IoT Central-toepassing beheren | Microsoft Docs
 description: Als operator vindt u informatie over het beheren van apparaten in uw Azure IoT Central-toepassing.
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 07/17/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 07afe441b9463cace9076a07d89e762586730e1b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: bab5411b63cb71c47656696bd8049855ca797a57
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894771"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974101"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application-preview-features"></a>Apparaten beheren in uw Azure IoT Central-toepassing (preview-functies)
 
@@ -71,7 +71,7 @@ Apparaten in uw toepassing bulksgewijs registreren:
     > [!NOTE]
     > Als u nog geen sjabloon voor het apparaat hebt, kunt u apparaten onder **alle apparaten** importeren en ze zonder een sjabloon registreren. Nadat de apparaten zijn geïmporteerd, kunt u deze migreren naar een sjabloon.
 
-1. Selecteer **importeren**.
+1. Selecteer **Importeren**.
 
     ![Import actie](./media/howto-manage-devices/bulkimport1a.png)
 
@@ -157,7 +157,7 @@ Een echt of gesimuleerd apparaat verwijderen uit uw Azure IoT Central-toepassing
 
 1. Gebruik de filter hulpprogramma's om uw apparaten te filteren en te zoeken. Schakel het selectie vakje in naast de apparaten die u wilt verwijderen.
 
-1. Kies **verwijderen**. U kunt de status van deze verwijdering volgen in het deel venster van het apparaat.
+1. Kies **Verwijderen**. U kunt de status van deze verwijdering volgen in het deel venster van het apparaat.
 
 ## <a name="change-a-property"></a>Een eigenschap wijzigen
 

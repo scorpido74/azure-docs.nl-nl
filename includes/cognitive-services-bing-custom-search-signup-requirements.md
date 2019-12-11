@@ -3,12 +3,26 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/13/2018
-ms.openlocfilehash: a36415b10111787ad3e6b3302703bfa97d2294dd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 12/09/2018
+ms.openlocfilehash: 8f729dfbfdb7933a540a6616335ef64f27040485
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176367"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972694"
 ---
-U hebt een [account voor Cognitive Services-API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met toegang tot de Bing Search-API's nodig. Als u geen Azure-abonnement hebt, kunt u gratis [een account maken](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). Voordat u verdergaat, hebt u de toegangssleutel nodig die wordt verstrekt bij het activeren van uw gratis proefversie of de sleutel van een betaald abonnement vanuit uw Azure-dashboard.
+## <a name="create-an-azure-resource"></a>Een Azure-resource maken
+
+Begin met het gebruik van de Bing Custom Search-API door een van de onderstaande Azure-resources te maken.
+
+* [Een proef resource maken](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api):
+    * Er is geen Azure-abonnement nodig.
+    * Gratis geldig voor zeven dagen. Nadat u zich hebt aangemeld, is een proef sleutel en een eind punt beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).
+
+* [Een Bing aangepaste zoekopdrachten resource maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch):
+    * Beschikbaar via de Azure Portal totdat u de resource verwijdert.
+    * Gebruik de gratis prijs categorie om de service te proberen en pas later bij te werken naar een betaalde laag voor productie.
+
+* [Een resource met meerdere services maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
+    * Beschikbaar via de Azure Portal totdat u de resource verwijdert.  
+    * Gebruik dezelfde sleutel en hetzelfde eind punt voor uw toepassingen, op meerdere Cognitive Services.

@@ -3,12 +3,12 @@ title: Naslag C# informatie voor Azure functions ontwikkel aars
 description: Meer informatie over het ontwikkelen van C#Azure functions met behulp van.
 ms.topic: reference
 ms.date: 09/12/2018
-ms.openlocfilehash: 9ecaff438eb30e6a05a7e744e17d2d713eef21cd
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f412e5ea358fe7b97476802f432616c37b05dbd9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665573"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975479"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Naslag C# informatie voor Azure functions ontwikkel aars
 
@@ -25,7 +25,15 @@ In dit artikel wordt ervan uitgegaan dat u de volgende artikelen al hebt gelezen
 
 ## <a name="supported-versions"></a>Ondersteunde versies
 
-In de runtime van Azure Functions 2. x wordt .NET Core 2,2 gebruikt. Uw functie code kan .NET Core 2,2-Api's gebruiken door de Visual Studio-project instellingen bij te werken. De functie sjablonen worden niet standaard ingesteld op .NET Core 2,2 om te voor komen dat klanten die geen .NET Core-2,2 hebben geïnstalleerd, nadelig worden beïnvloed.
+Versies van de functions-runtime werken met specifieke versies van .NET. De volgende tabel toont het hoogste niveau van .NET core en .NET Framework en .NET core dat kan worden gebruikt met een specifieke versie van functies in uw project. 
+
+| Runtime versie van functions | Maximum versie van .NET |
+| ---- | ---- |
+| Functies 3. x | .NET Core 3,1 |
+| Functions 2.x | .NET Core 2.2 |
+| Functions 1.x | .NET Framework 4.6 |
+
+Zie [Azure functions overzicht van runtime versies](functions-versions.md) voor meer informatie
 
 ## <a name="functions-class-library-project"></a>Class-bibliotheek project voor functies
 
@@ -49,7 +57,7 @@ Wanneer u het project bouwt, wordt een mapstructuur die eruitziet als in het vol
 Deze map wordt geïmplementeerd in uw functie-app in Azure. De binding-uitbrei dingen die zijn vereist in [versie 2. x](functions-versions.md) van de functions-runtime, worden [toegevoegd aan het project als NuGet-pakketten](./functions-bindings-register.md#vs).
 
 > [!IMPORTANT]
-> Het bouw proces maakt een *Function. json* -bestand voor elke functie. Deze *functie. json* -bestand is niet bedoeld om rechtstreeks te worden bewerkt. U kunt de bindings configuratie niet wijzigen of de functie uitschakelen door dit bestand te bewerken. Zie [functies uitschakelen](disable-function.md#functions-2x---c-class-libraries)voor meer informatie over het uitschakelen van een functie.
+> Het bouw proces maakt een *Function. json* -bestand voor elke functie. Deze *functie. json* -bestand is niet bedoeld om rechtstreeks te worden bewerkt. U kunt de bindings configuratie niet wijzigen of de functie uitschakelen door dit bestand te bewerken. Zie [functies uitschakelen](disable-function.md)voor meer informatie over het uitschakelen van een functie.
 
 
 ## <a name="methods-recognized-as-functions"></a>Methoden die worden herkend als functions
@@ -149,7 +157,7 @@ De gegenereerde *functie. json* -bestand bevat een `configurationSource`-eigensc
 }
 ```
 
-## <a name="microsoftnetsdkfunctions"></a>Micro soft. NET. SDK. functions
+## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
 
 Het gegenereerde bestand *Function. json* wordt uitgevoerd door het NuGet-pakket [micro soft\.NET\.SDK\.functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
 

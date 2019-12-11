@@ -1,19 +1,19 @@
 ---
 title: Preview-modellen van IoT Plug en Play beheren in de opslag plaats | Microsoft Docs '
 description: De mogelijkheden voor het beheren van apparaten in de opslag plaats met behulp van de Azure Certified voor IoT-Portal, de Azure CLI en Visual Studio code.
-author: YasinMSFT
+author: Philmea
 manager: philmea
 ms.service: iot-pnp
 services: iot-pnp
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: yahajiza
-ms.openlocfilehash: 1b71d8bd0f0417c7dc408c580a1c73ac654743ce
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.author: philmea
+ms.openlocfilehash: 4320a975f74d000bd492d291f5e610f591536b0d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932864"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979101"
 ---
 # <a name="manage-models-in-the-repository"></a>Modellen in de opslag plaats beheren
 
@@ -39,7 +39,7 @@ In de [Azure Certified voor IOT-Portal](https://preview.catalog.azureiotsolution
 - [Voltooi het certificerings proces voor uw IOT-apparaat](./tutorial-certification-test.md).
 - Zoek IoT Plug en Play Device Capability-modellen. U kunt deze modellen gebruiken om [snel IOT-apparaten te bouwen en deze te integreren met oplossingen](./quickstart-connect-pnp-device-solution.md).
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 De Azure CLI bevat opdrachten voor het beheren van de mogelijkheden en interfaces van de apparaten in de IoT Plug en Play Public en bedrijfs model-opslag plaatsen. Zie voor meer informatie de [Azure IOT-extensie voor Azure cli-hand leiding installeren en gebruiken](./howto-install-pnp-cli.md) .
 
@@ -47,7 +47,7 @@ De Azure CLI bevat opdrachten voor het beheren van de mogelijkheden en interface
 
 Als u de weer gave **model opslagplaats** wilt openen in Visual Studio code.
 
-1. Open Visual Studio code, gebruik **CTRL + SHIFT + P**, typ en selecteer **IOT Plug en Play: Open model opslagplaats**.
+1. Open Visual Studio code, gebruik **CTRL + SHIFT + P**, typ en selecteer **IOT Plug en Play: open model-opslag**.
 
 1. U kunt ervoor kiezen om de **open bare model opslagplaats te openen** of de **opslag plaats voor organisatie modellen te openen**. Voor bedrijfs model opslagplaats moet u uw model opslagplaats connection string invoeren. U vindt deze connection string in het [Azure Certified for IOT-Portal](https://preview.catalog.azureiotsolutions.com) op het tabblad **verbindings reeksen** voor de **opslag plaats**van uw bedrijf.
 
@@ -55,7 +55,7 @@ Als u de weer gave **model opslagplaats** wilt openen in Visual Studio code.
 
     Gebruik deze weer gave om hulp modellen en interfaces voor apparaten toe te voegen, te downloaden en te verwijderen. U kunt een filter gebruiken om specifieke items in de lijst te vinden.
 
-1. Als u wilt scha kelen tussen uw bedrijfs model opslagplaats en de open bare model opslagplaats, gebruikt u **CTRL + SHIFT + P**, typt en selecteert u **IOT Plug en Play: Model opslagplaats**voor afmelden. Gebruik vervolgens de **IOT-Plug en Play: Open de model** opslagplaats opdracht opnieuw.
+1. Als u wilt scha kelen tussen uw bedrijfs model opslagplaats en de open bare model opslagplaats, gebruikt u **CTRL + SHIFT + P**, typt en selecteert u **IOT Plug en Play: model opslagplaats voor afmelden**. Gebruik vervolgens de **IOT-Plug en Play: model opslagplaats** opdracht opnieuw.
 
 > [!NOTE]
 > In VS code is de opslag plaats voor open bare modellen alleen-lezen. Micro soft-partners kunnen de open bare opslag plaats bijwerken in de [Azure Certified voor IOT-Portal](https://preview.catalog.azureiotsolutions.com).

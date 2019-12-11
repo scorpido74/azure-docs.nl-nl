@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 5b473af780bdd68b8fc0dd3dc0430c4f4fd3255b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b2a8ad40092a2c02f00803e699de9d6dd8feebd0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927670"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978625"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
@@ -245,7 +245,7 @@ Dit zijn de huidige beperkingen voor het grootschalige van de service tier.  We 
 | Managed Instance | Azure SQL Database beheerde instantie wordt momenteel niet ondersteund met grootschalige-data bases. |
 | Elastische pools |  Elastische Pools worden momenteel niet ondersteund met SQL Database grootschalige.|
 | Migratie naar grootschalige is momenteel een eenrichtings bewerking | Wanneer een Data Base wordt gemigreerd naar grootschalige, kan deze niet rechtstreeks naar een andere servicelaag worden gemigreerd. Op dit moment is de enige manier om een Data Base te migreren van grootschalige naar een niet-grootschalige, het exporteren/importeren met behulp van een BACPAC-bestand of andere technologieën voor gegevens verplaatsing (Bulk Copy, Azure Data Factory, Azure Databricks, SSIS, enzovoort).|
-| Migratie van data bases met persistente in-Memory objecten | Grootschalige ondersteunt alleen niet-permanente objecten in het geheugen (tabel typen, systeem eigen SPs en functies).  Permanente in-Memory tabellen en andere objecten moeten worden verwijderd en opnieuw worden gemaakt als objecten die geen deel uitmaken van het geheugen voordat een Data Base naar de service tier grootschalige wordt gemigreerd.|
+| Migratie van data bases met in-Memory OLTP-objecten | Grootschalige biedt alleen ondersteuning voor een subset van in-Memory OLTP-object typen, waaronder door het geheugen geoptimaliseerde tabel typen, opgeslagen procedures met systeem eigen compilaties en functies. Als er echter een in-Memory OLTP-object in de data base aanwezig is, wordt direct migreren van Premium-en Bedrijfskritiek-service lagen naar grootschalige niet ondersteund. Voor het migreren van een dergelijke Data Base naar grootschalige zijn drie stappen vereist: (1) Haal alle in-Memory OLTP-objecten en hun afhankelijkheden weg. Als u gegevens in tabellen die zijn geoptimaliseerd voor geheugen, wilt behouden, converteert u deze naar schijf tabellen. (2) Wijzig de servicelaag van de data base in grootschalige. (3) eerder verwijderde objecten opnieuw te maken. Duurzame en niet-duurzame tabellen die zijn geoptimaliseerd voor geheugen, worden momenteel niet ondersteund in grootschalige en moeten schijf tabellen blijven. Tabel variabelen die zijn geoptimaliseerd voor geheugen worden ondersteund. |
 | Tracering wijzigen | Wijzigingen bijhouden is momenteel beschikbaar als open bare preview en kan worden ingeschakeld voor nieuwe of bestaande grootschalige-data bases. |
 | Geo-replicatie  | U kunt geo-replicatie voor Azure SQL Database grootschalige nog niet configureren. |
 | Data base kopiëren | U kunt geen database kopie gebruiken om een nieuwe data base in Azure SQL grootschalige te maken. |

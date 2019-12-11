@@ -1,5 +1,5 @@
 ---
-title: Een real-time dash board ontwerpen met de zelf studie Azure Database for PostgreSQL – grootschalige (Citus)
+title: 'Zelf studie: een real-time dash board ontwerpen-grootschalige (Citus)-Azure Database for PostgreSQL'
 description: In deze zelf studie ziet u hoe u gedistribueerde tabellen maakt, vult en doorzoekt op Azure Database for PostgreSQL grootschalige (Citus).
 author: jonels-msft
 ms.author: jonels
@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 32487d65397a96d9e96ae3bf3476eed23ddb8adc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e38de89902c46c6a77060d0d1e2532ab5bb59bb7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482875"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978097"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Zelf studie: een real-time analyse dashboard ontwerpen met behulp van Azure Database for PostgreSQL – grootschalige (Citus)
 
@@ -128,7 +128,7 @@ De query voegt elke seconde ongeveer acht rijen in. De rijen worden op verschill
    > Verlaat de query voor het genereren van gegevens en open een tweede psql-verbinding voor de resterende opdrachten in deze zelf studie.
    >
 
-## <a name="query"></a>Query’s uitvoeren
+## <a name="query"></a>Query
 
 Met de optie voor het hosten van grootschalige kunnen meerdere knoop punten gelijktijdig query's verwerken voor snelheid. De data base berekent bijvoorbeeld aggregaties zoals SUM en COUNT op worker-knoop punten en combineert de resultaten in een eind antwoord.
 

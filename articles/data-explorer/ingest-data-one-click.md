@@ -7,86 +7,86 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: c4ee4ed81cd4cc443a8f412462a5a7f204c91898
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 0d7c8b2661ee3361b3a485b8cae4eef3a8225120
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688199"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975241"
 ---
 # <a name="use-one-click-ingestion-to-ingest-data-into-azure-data-explorer"></a>Gebruik een opname met één klik om gegevens op te nemen in azure Data Explorer
 
-Dit artikel laat u zien hoe u met één klik kunt klikken voor een snelle opname van een nieuwe tabel in JSON-of CSV-indelingen van opslag of lokaal bestand in een bestaande tabel of een nieuwe tabel in azure Data Explorer. Gebruik de intuïtieve wizard en binnen enkele minuten, uw gegevens worden opgenomen, u kunt de tabel bewerken en query's uitvoeren met de webgebruikersinterface.
+Dit artikel laat u zien hoe u met één klik kunt klikken voor een snelle opname van een nieuwe tabel in de JSON-of CSV-indeling. De gegevens kunnen worden opgenomen van opslag of een lokaal bestand naar een bestaande tabel of een nieuwe tabel. Gebruik de intuïtieve wizard met één klik en uw gegevens worden binnen een paar minuten opgenomen. Vervolgens kunt u de tabel bewerken en query's uitvoeren met behulp van de Web-UI van Azure Data Explorer.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
 * Meld u aan bij [de toepassing](https://dataexplorer.azure.com/).
-* [Een Azure Data Explorer-cluster en-data base](create-cluster-database-portal.md) maken
-* Aanmelden bij de [webgebruikersinterface](https://dataexplorer.azure.com/) en [een verbinding met uw cluster toevoegen](/azure/data-explorer/web-query-data#add-clusters)
-* Bron van de gegevens in Azure Storage.
+* Maak [een Azure Data Explorer-cluster en-data base](create-cluster-database-portal.md).
+* Meld u aan bij de [webgebruikersinterface](https://dataexplorer.azure.com/) en [Voeg een verbinding met uw cluster toe](/azure/data-explorer/web-query-data#add-clusters).
+* Een gegevens bron maken in Azure Storage.
 
 ## <a name="ingest-new-data"></a>Nieuwe gegevens opnemen
 
-1. Klik met de rechter muisknop op de *Data Base* *of tabelrij* in het linkermenu van de Web-UI en selecteer **nieuwe gegevens opnemen (preview-versie)**
+1. Klik met de rechter muisknop op de *Data Base* of *tabelrij* in het linkermenu van de Web-UI en selecteer **nieuwe gegevens opnemen (preview-versie)** .
 
-    ![Selecteer een opname in de Web-UI](media/ingest-data-one-click/one-click-ingestion-in-webui.png)   
+    ![Selecteer in de webgebruikersinterface een opname met één klik.](media/ingest-data-one-click/one-click-ingestion-in-webui.png)   
  
-1. In het venster **nieuwe gegevens opnemen (preview)** op het tabblad **bron** voltooit u de **Project Details**:
+1. Selecteer in het venster **nieuwe gegevens opnemen (preview)** het tabblad **bron** en voltooi de **Project Details**:
 
-    * **Tabel**: Selecteer bestaande tabel naam in de vervolg keuzelijst of selecteer **nieuwe maken** om een nieuwe tabel te maken.
-    * Selecteer **opname type** > **van opslag** of **van bestand**.
-        * Als u **uit de opslag ruimte**hebt gekozen, voert u **koppeling naar opslag** in om de URL toe te voegen aan de opslag. Gebruik de [SAS-URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) van de BLOB voor privé opslag accounts. 
-        * Als u **in het bestand**hebt geselecteerd, selecteert u **Bladeren** en sleept u het bestand naar het vak.
+    * Selecteer voor **tabel**een bestaande tabel naam in de vervolg keuzelijst of selecteer **nieuwe maken** om een nieuwe tabel te maken.
+    * Voor **opname type**selecteert u **uit opslag** of **van bestand**.
+        * Als u **uit de opslag ruimte**hebt gekozen, selecteert u **koppelen aan opslag** om de URL toe te voegen. Gebruik de [SAS-URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) van de BLOB voor privé opslag accounts. 
+            * Als u **in het bestand**hebt geselecteerd, selecteert u **Bladeren** en sleept u het bestand naar het vak.
     * Selecteer **schema bewerken** om de configuratie van de tabel kolom te bekijken en te bewerken.
  
-    ![Eén Klik op opname bron Details](media/ingest-data-one-click/one-click-ingestion-source.png) 
+    ![Details van de bron voor opname met één klik.](media/ingest-data-one-click/one-click-ingestion-source.png) 
 
     > [!TIP]
     > Als u **nieuwe gegevens opnemen (preview)** *op een tabelrij* selecteert, wordt de naam van de geselecteerde tabel weer gegeven in de **Project Details**.
 
 1. Als u een bestaande tabel hebt geselecteerd, wordt het venster **overzichts kolommen** geopend om de kolommen met bron gegevens toe te wijzen aan doel tabel kolommen. 
     * Gebruik de kolom overs **Laan** om een doel kolom uit de tabel te verwijderen. 
-    * **Nieuwe** kolom gebruiken om een nieuwe kolom toe te voegen aan uw tabel. 
+    * **Nieuwe** kolom gebruiken om een nieuwe kolom toe te voegen aan de tabel. 
 
-    ![Venster kolommen toewijzen](media/ingest-data-one-click/one-click-map-columns-window.png)
+    ![Venster kolommen toewijzen.](media/ingest-data-one-click/one-click-map-columns-window.png)
 
 1. Op het tabblad **schema** :
 
-    * Selecteer **compressie type** in de vervolg keuzelijst > niet- **gecomprimeerd** of **gzip**.
-    * Selecteer **gegevens indeling** in vervolg keuzelijst > **JSON**, **CSV**, **TSV**, **SCSV**, **SOHSV**, **TSVE**of **PSV**. 
-        * Wanneer u **JSON** -indeling selecteert, selecteert u **JSON-niveaus**: 1-10. De niveaus zijn van invloed op de weer gave van tabel kolom gegevens. 
-        * Als u een andere indeling dan JSON selecteert: selectie vakje selecteren **kolom namen** om rij met koppen van het bestand te negeren.    
+    * Selecteer **compressie type** in de vervolg keuzelijst en selecteer vervolgens niet- **gecomprimeerd** of **gzip**.
+    * Selecteer **gegevens indeling** in de vervolg keuzelijst en selecteer vervolgens **JSON**, **CSV**, **TSV**, **SCSV**, **SOHSV**, **TSVE**of **PSV**. 
+        * Wanneer u de **JSON** -indeling selecteert, moet u ook **JSON-niveaus**selecteren, van 1 tot 10. De niveaus zijn van invloed op de weer gave van tabel kolom gegevens. 
+        * Als u een andere indeling dan JSON selecteert, schakelt u het selectie vakje **kolom namen insluiten** in om de rij kopregel van het bestand te negeren.
     * De **toewijzings naam** wordt automatisch ingesteld, maar kan worden bewerkt.
-    * Als u een bestaande tabel hebt geselecteerd, kunt u de knop **kolommen toewijzen** selecteren om het venster **kolommen toewijzen** te openen.
+    * Als u een bestaande tabel hebt geselecteerd, kunt u **kolom toewijzen** selecteren om het venster **kolommen toewijzen** te openen.
 
-    ![Eén Klik op opname CSV-indeling schema. png](media/ingest-data-one-click/one-click-csv-format.png)
+    ![Schema met één klik op opname CSV-indeling.](media/ingest-data-one-click/one-click-csv-format.png)
 
-1. Selecteer in de **Editor**de optie **V** aan de rechter kant om de editor te openen. In de editor kunt u de automatische query's weer geven en kopiëren die zijn gegenereerd op basis van uw invoer. 
+1. Selecteer de knop **v** in het deel venster **Editor** om de editor te openen. In de editor kunt u de automatische query's weer geven en kopiëren die zijn gegenereerd op basis van uw invoer. 
 
 1.  In tabel: 
     * Klik met de rechter muisknop op nieuwe kolom koppen voor het wijzigen van het **gegevens type**, de **kolom naam wijzigen**, **kolom verwijderen**, **Oplopend sorteren**of **Aflopend sorteren**. In bestaande kolommen is alleen het sorteren van gegevens beschikbaar. 
     * Dubbel klik op de naam van de nieuwe kolom die u wilt bewerken.
 
-1. Selecteer **opname starten** om tabel, toewijzing maken en gegevens opname te maken.
+1. Selecteer **opname starten** om een tabel en toewijzing te maken en gegevens opname te starten.
 
-    ![schema met één klik voor de JSON-indeling van opname](media/ingest-data-one-click/one-click-json-format.png) 
+    ![Eén Klik op opname schema voor JSON-indeling.](media/ingest-data-one-click/one-click-json-format.png) 
  
 ## <a name="query-data"></a>Querygegevens
 
-1. In het venster **gegevens opname voltooid** worden alle drie de stappen gemarkeerd met een groen vinkje als de gegevens opname is voltooid. 
+1. In het venster **gegevens opname voltooid** worden alle drie de stappen gemarkeerd met een groen vinkje als de gegevens opname is voltooid.
  
-    ![Eén Klik op gegevens opname is voltooid](media/ingest-data-one-click/one-click-data-ingestion-complete.png)
+    ![Gegevens opname met één klik is voltooid.](media/ingest-data-one-click/one-click-data-ingestion-complete.png)
 
-1. Selecteer **V** om query te openen. Kopiëren naar de Web-UI om de query te bewerken.
+1. Selecteer de knop **v** om de query te openen. Kopieer de Web-UI om de query te bewerken.
 
-1. Het menu aan de rechter kant bevat **snelle query's** en **hulpprogram ma's**. 
+1. Het menu aan de rechter kant bevat opties voor **snelle query's** en **hulpprogram ma's** . 
 
     * **Snelle query's** bevatten koppelingen naar de Web-UI met voorbeeld query's.
-    * **Hulpprogram ma's** bevatten koppelingen naar de Web-UI met **opdrachten voor neerzetten** waarmee u problemen kunt oplossen door de relevante `.drop` opdracht uit te voeren.
+    * **Hulpprogram ma's** bevat een koppeling naar **opdrachten neerzetten** in de Web-UI, waarmee u problemen kunt oplossen door de relevante `.drop`-opdrachten uit te voeren.
 
     > [!TIP]
-    > Gegevens kunnen verloren gaan met `.drop` opdrachten. Gebruik deze zorgvuldig.
+    > Gegevens kunnen verloren gaan door gebruik te maken van `.drop`-opdrachten. Gebruik deze zorgvuldig.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 9301f3e685116c8496dd5e0ec986218a046f0c98
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: efc9d7fb31dc9f63780c3f94238bbbfb17756089
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707688"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973625"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Wat is Azure Machine Learning Designer (preview)? 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -86,14 +86,14 @@ Zie voor meer informatie over de beschik bare bibliotheek met machine learning a
 
 ## <a name="compute"></a>Reken resources
 
-Gebruik reken resources van uw werk ruimte om uw pijp lijn uit te voeren en uw geïmplementeerde modellen als realtime-eind punten of pijplijn eindpunten te hosten (voor batch-deinterferentie). De ondersteunde Compute-doelen zijn:
+Gebruik reken resources van uw werk ruimte om uw pijp lijn uit te voeren en uw geïmplementeerde modellen als realtime-eind punten of pijplijn eindpunten te hosten (voor batch-deinterferentie). De ondersteunde compute-doelen zijn:
 
 | Rekendoel | Training | Implementatie |
 | ---- |:----:|:----:|
-| Azure Machine Learning compute | ✓ | |
+| Azure Machine Learning-Computing | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-Reken doelen zijn gekoppeld aan uw Machine Learning- [werk ruimte](concept-workspace.md). U beheert uw reken doelen in uw werk ruimte in [Azure machine learning Studio](https://ml.azure.com).
+Reken doelen zijn gekoppeld aan uw [Azure machine learning-werk ruimte](concept-workspace.md). U beheert uw reken doelen in uw werk ruimte in [Azure machine learning Studio (klassiek)](https://ml.azure.com).
 
 ## <a name="deploy"></a>Implementeren
 
@@ -122,7 +122,7 @@ Als gevolg van deze updates zijn sommige concepten en voor waarden voor de visue
 
 | Concept in de ontwerp functie | Eerder in de visuele interface |
 | ---- |:----:|
-| Pijp lijn concept | Probeer |
+| Pijp lijn concept | Experiment |
 | Real-time eind punt | Webservice |
 
 ### <a name="migrating-to-the-designer"></a>Migreren naar de ontwerp functie

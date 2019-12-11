@@ -7,12 +7,12 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 11/17/2019
-ms.openlocfilehash: 97faa445a286574aa5fc05d084d21c0740bc8a8b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 2574f27b4b86bab276a56f95fda9fa2a1434c095
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173861"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995929"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>Zelf studie: gegevens opnemen en controleren in azure Data Explorer 
 
@@ -200,7 +200,7 @@ Het instellen van een Azure Data Explorer-pijplijn omvat verschillende stappen, 
 
 ### <a name="connect-to-the-azure-data-explorer-web-ui"></a>Verbinding maken met de web-UI van Azure Data Explorer
 
-Selecteer *Query* in uw **TestDatabase**-database van Azure Data Explorer om de web-UI van Azure Data Explorer te openen.
+Selecteer **Query** in uw *TestDatabase*-database van Azure Data Explorer om de web-UI van Azure Data Explorer te openen.
 
 ![Querypagina](media/ingest-data-no-code/query-database.png)
 
@@ -315,10 +315,10 @@ Als u de gegevens van het activiteiten logboek wilt toewijzen aan de tabel, gebr
         | mv-expand events = Records
         | where isnotempty(events.metricName)
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             MetricName = tostring(events.metricName),
-            Count = toint(events.count),
+            Count = toint(events['count']),
             Total = todouble(events.total),
             Minimum = todouble(events.minimum),
             Maximum = todouble(events.maximum),
@@ -409,7 +409,7 @@ Met Diagnostische instellingen voor Azure kunt u metrische gegevens en logboeken
 
     ![Een event hub maken](media/ingest-data-no-code/event-hub.png)
 
-1. Vul in het formulier de volgende gegevens in. Gebruik de standaardwaarden voor alle instellingen die niet worden vermeld in de volgende tabel.
+1. Vul het formulier in met de volgende gegevens. Gebruik de standaardwaarden voor alle instellingen die niet worden vermeld in de volgende tabel.
 
     **Instelling** | **Voorgestelde waarde** | **Beschrijving**
     |---|---|---|
@@ -595,7 +595,7 @@ Queryresultaten:
 
 |   |   |
 | --- | --- |
-|   |  count_ | any_Database | any_Table | any_IngestionSourcePath
+|   |  aantal_ | any_Database | any_Table | any_IngestionSourcePath
 |   | 00:06.156 | TestDatabase | DiagnosticRawRecords | https://rtmkstrldkereneus00.blob.core.windows.net/20190827-readyforaggregation/1133_TestDatabase_DiagnosticRawRecords_6cf02098c0c74410bd8017c2d458b45d.json.zip
 | | |
 

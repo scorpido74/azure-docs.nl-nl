@@ -1,6 +1,6 @@
 ---
 title: Attestation-sleutel voor Azure IoT Hub Device Provisioning Service-symmetrische sleutels
-description: Dit artikel bevat een conceptueel overzicht van de symmetrische sleutel Attestation met IoT Device Provisioning Service.
+description: Dit artikel bevat een conceptueel overzicht van de symmetrische sleutel Attestation met IoT Device Provisioning Service (DPS).
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: b1a849732539dbc9e066bee7cc20141f56ffe10c
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348354"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975292"
 ---
 # <a name="symmetric-key-attestation"></a>Attestation met behulp van een symmetrische sleutel
 
@@ -46,9 +46,9 @@ SAS-tokens hebben de volgende vorm:
 
 Hier volgen de onderdelen van elk token:
 
-| Waarde | Description |
+| Waarde | Beschrijving |
 | --- | --- |
-| ondertekening |Een HMAC-SHA256-handtekening teken reeks. Voor afzonderlijke inschrijvingen wordt deze hand tekening gemaakt met behulp van de symmetrische sleutel (primair of secundair) om de hash uit te voeren. Voor inschrijvings groepen wordt een sleutel die is afgeleid van de sleutel registratie groep gebruikt om de hash uit te voeren. De hash wordt uitgevoerd in een bericht van de volgende indeling `URL-encoded-resourceURI + "\n" + expiry`:. **Belang rijk**: De sleutel moet worden gedecodeerd van Base64 voordat deze wordt gebruikt om de HMAC-SHA256-berekening uit te voeren. Daarnaast moet het handtekening resultaat URL-gecodeerd zijn. |
+| ondertekening |Een HMAC-SHA256-handtekening teken reeks. Voor afzonderlijke inschrijvingen wordt deze hand tekening gemaakt met behulp van de symmetrische sleutel (primair of secundair) om de hash uit te voeren. Voor inschrijvings groepen wordt een sleutel die is afgeleid van de sleutel registratie groep gebruikt om de hash uit te voeren. De hash wordt uitgevoerd in een bericht van de volgende indeling: `URL-encoded-resourceURI + "\n" + expiry`. **Belang rijk**: de sleutel moet worden gedecodeerd van Base64 voordat deze wordt gebruikt om de HMAC-sha256 berekening uit te voeren. Daarnaast moet het handtekening resultaat URL-gecodeerd zijn. |
 | {resourceURI} |De URI van het registratie-eind punt dat met dit token kan worden geopend, beginnend met de scope-ID voor het Device Provisioning service-exemplaar. Bijvoorbeeld: `{Scope ID}/registrations/{Registration ID}` |
 | verloop |UTF8-teken reeksen voor het aantal seconden sinds de epoche 00:00:00 UTC op 1 januari 1970. |
 | {URL-encoded-resourceURI} |Kleine letter-URL-code ring van de resource-URI voor kleine letters |
@@ -71,7 +71,7 @@ Eerst wordt een unieke registratie-ID gedefinieerd voor elk apparaat dat met een
 sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 ```
 
-Dit exacte voor beeld wordt gebruikt in het artikel het inrichten van verouderde [apparaten met behulp van symmetrische sleutels](how-to-legacy-device-symm-key.md) .
+Dit exacte voor beeld wordt gebruikt in het artikel het [inrichten van verouderde apparaten met behulp van symmetrische sleutels](how-to-legacy-device-symm-key.md) .
 
 Zodra een registratie-ID voor het apparaat is gedefinieerd, wordt de symmetrische sleutel voor de registratie groep gebruikt voor het berekenen van een [HMAC-sha256-](https://wikipedia.org/wiki/HMAC) hash van de registratie-id voor het produceren van een afgeleide apparaatwachtwoord. De hashing van de registratie-ID kan worden uitgevoerd met de C# volgende code:
 
@@ -114,6 +114,6 @@ Als de apparaatinstellingen niet in de fabriek zijn geïnstalleerd, moet er een 
 
 Nu u een goed idee hebt van de symmetrische sleutel attest, raadpleegt u de volgende artikelen voor meer informatie:
 
-* [Snelstart: Een gesimuleerd apparaat met symmetrische sleutels inrichten](quick-create-simulated-device-symm-key.md)
+* [Snelstartgids: een gesimuleerd apparaat inrichten met symmetrische sleutels](quick-create-simulated-device-symm-key.md)
 * [Meer informatie over de concepten in automatische inrichting](./concepts-auto-provisioning.md)
 * [Aan de slag met automatische inrichting](./quick-setup-auto-provision.md) 

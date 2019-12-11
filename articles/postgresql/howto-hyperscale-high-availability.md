@@ -1,17 +1,17 @@
 ---
-title: Hoge Beschik baarheid configureren voor een Citus-Server groep (Azure Database for PostgreSQL-grootschalige)
+title: Hoge Beschik baarheid configureren-grootschalige (Citus)-Azure Database for PostgreSQL
 description: Hoge Beschik baarheid in-of uitschakelen
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5ed29be1e890ddf2c4208ce9c03f01ce44f0e0d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a8d4b5949b34d16191e9ec10a1dd39faff3660dc
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515913"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977648"
 ---
 # <a name="configure-hyperscale-citus-high-availability"></a>Hoge Beschik baarheid van grootschalige (Citus) configureren
 
@@ -20,13 +20,15 @@ Azure Database for PostgreSQL-grootschalige (Citus) biedt hoge Beschik baarheid 
 > [!IMPORTANT]
 > Omdat HA het aantal servers in de groep verdubbelt, worden ook de kosten verdubbeld.
 
-Het inschakelen van HA kan tijdens het maken van de Server groep, of later op het tabblad **configureren** voor uw server groep in de Azure Portal. De gebruikers interface ziet er in beide gevallen ongeveer als volgt uit. Sleep de schuif regelaar voor **hoge Beschik baarheid** naar in-of uitschakelen:
+Het inschakelen van HA kan tijdens het maken van de Server groep, of later op het tabblad **configureren** voor uw server groep in de Azure Portal. De gebruikers interface ziet er in beide gevallen ongeveer als volgt uit. Sleep de schuif regelaar voor **hoge Beschik baarheid** naar Ja:
 
 ![ha-schuif regelaar](./media/howto-hyperscale-high-availability/01-ha-slider.png)
 
 Klik op de knop **Opslaan** om uw selectie toe te passen. Het inschakelen van HA kan enige tijd in beslag nemen, omdat de Server groep stand-by staat en gegevens streamt naar deze.
 
 Op het tabblad Overzicht voor de Server groep worden alle knoop punten en de bijbehorende stand-by weer **gegeven** , samen met een kolom met **hoge Beschik baarheid** , die aangeeft of ha voor elk knoop punt is ingeschakeld.
+
+![de kolom ha in het overzicht van de Server groep](./media/howto-hyperscale-high-availability/02-ha-column.png)
 
 ### <a name="next-steps"></a>Volgende stappen
 

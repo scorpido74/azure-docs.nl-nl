@@ -1,17 +1,17 @@
 ---
-title: Waarschuwingen voor metrische gegevens configureren voor Azure Database for PostgreSQL-grootschalige (Citus)
+title: Waarschuwingen configureren-grootschalige (Citus)-Azure Database for PostgreSQL
 description: In dit artikel wordt beschreven hoe u metrische waarschuwingen kunt configureren en benaderen voor Azure Database for PostgreSQL-grootschalige (Citus)
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d5f45df16ac294f50e99cc7e05ab6eba43c0ae85
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 68a830f344023967f07ab809d67833f99e4e2958
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516017"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977604"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Gebruik de Azure Portal om waarschuwingen in te stellen voor de Azure Database for PostgreSQL-grootschalige (Citus)
 
@@ -25,7 +25,7 @@ U kunt een waarschuwing configureren om de volgende acties uit te voeren wanneer
 * Een webhook aanroepen.
 
 U kunt informatie over waarschuwings regels configureren en ophalen met behulp van:
-* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure-portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
@@ -46,7 +46,7 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
 
 6. Selecteer een waarde in de lijst met signalen waarop u wilt worden gewaarschuwd. In dit voor beeld selecteert u ' opslag percentage '.
    
-   ![Metriek selecteren](./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png)
+   ![Metrische waarde selecteren](./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png)
 
 7. De waarschuwings logica configureren:
 
@@ -57,7 +57,7 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
    
    Selecteer **gereed** wanneer u klaar bent.
 
-   ![Metriek selecteren](./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png)
+   ![Metrische waarde selecteren](./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png)
 
 8. Selecteer in de sectie **actie groepen** de optie **nieuwe maken** om een nieuwe groep te maken voor het ontvangen van meldingen over de waarschuwing.
 
@@ -81,7 +81,7 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
 
     Binnen een paar minuten is de waarschuwing actief en worden triggers zoals eerder beschreven.
 
-## <a name="manage-your-alerts"></a>Uw waarschuwingen beheren
+## <a name="manage-your-alerts"></a>De waarschuwingen beheren
 
 Zodra u een waarschuwing hebt gemaakt, kunt u deze selecteren en de volgende acties uitvoeren:
 

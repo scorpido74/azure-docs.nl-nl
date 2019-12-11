@@ -2,19 +2,19 @@
 title: Beveiligde artefacten in sjablonen
 description: Meer informatie over het beveiligen van de gebruikte artefacten in uw Azure Resource Manager-sjablonen.
 author: mumian
-ms.date: 10/08/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b37f7e284b655a362c5a4231a7c1da3719762644
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 1a9d209e843d8e9a1735a3c6907b00d85be6580b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326428"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971725"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Zelf studie: veilige artefacten in Azure Resource Manager sjabloon implementaties
 
-Meer informatie over het beveiligen van de gebruikte artefacten in uw Azure Resource Manager-sjablonen met behulp van een Azure Storage-account met Shared Access Signatures (SAS). Implementatieartefacten zijn, naast het hoofdsjabloonbestand, bestanden die vereist zijn om een implementatie te voltooien. In de [zelf studie: SQL BACPAC-bestanden met Azure Resource Manager sjablonen importeren](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md), wordt met de hoofd sjabloon een Azure SQL database gemaakt. Er wordt ook een BACPAC-bestand aangeroepen om tabellen te maken en gegevens in te voegen. Het BACPAC-bestand is een artefact. Het artefact wordt opgeslagen in een Azure Storage-account met openbare toegang. In deze zelfstudie gebruikt u SAS om beperkte toegang tot het BACPAC-bestand in uw eigen Azure Storage-account te verlenen. Zie [Using Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (Shared Access Signatures (SAS) gebruiken) voor meer informatie.
+Meer informatie over het beveiligen van de gebruikte artefacten in uw Azure Resource Manager-sjablonen met behulp van een Azure Storage-account met Shared Access Signatures (SAS). Implementatieartefacten zijn, naast het hoofdsjabloonbestand, bestanden die vereist zijn om een implementatie te voltooien. In de [zelf studie: SQL BACPAC-bestanden met Azure Resource Manager sjablonen importeren](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md), wordt met de hoofd sjabloon een Azure SQL database gemaakt. Er wordt ook een BACPAC-bestand aangeroepen om tabellen te maken en gegevens in te voegen. Het BACPAC-bestand is een artefact dat is opgeslagen in een Azure-opslag account. De sleutel voor het opslag account is gebruikt voor toegang tot het artefact. In deze zelfstudie gebruikt u SAS om beperkte toegang tot het BACPAC-bestand in uw eigen Azure Storage-account te verlenen. Zie [Using Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (Shared Access Signatures (SAS) gebruiken) voor meer informatie.
 
 Zie [zelf studie: gekoppelde Azure Resource Manager sjablonen maken](./resource-manager-tutorial-create-linked-templates.md)voor meer informatie over het beveiligen van gekoppelde sjablonen.
 
@@ -40,6 +40,7 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
     ```azurecli-interactive
     openssl rand -base64 32
     ```
+
     Azure Key Vault is ontworpen om cryptografische sleutels en andere geheimen te beveiligen. Zie [Zelfstudie: Azure Key Vault integreren in de Resource Manager-sjabloonimplementatie](./resource-manager-tutorial-use-key-vault.md) voor meer informatie. We raden u ook aan om uw wachtwoord elke drie maanden te wijzigen.
 
 ## <a name="prepare-a-bacpac-file"></a>Een BACPAC-bestand voorbereiden
@@ -52,77 +53,63 @@ In dit gedeelte bereidt u het BACPAC-bestand voor zodat het bestand veilig toega
 * Het BACPAC-bestand uploaden naar de container.
 * Het SAS-token van het BACPAC-bestand ophalen.
 
-Als u deze stappen wilt automatiseren met behulp van een PowerShell-script, raadpleegt u het script van [De gekoppelde sjabloon uploaden](./resource-manager-tutorial-create-linked-templates.md#upload-the-linked-template).
+1. Selecteer **proberen** om de Cloud shell te openen en plak het volgende Power shell-script in het shell-venster.
 
-### <a name="download-the-bacpac-file"></a>Het BACPAC-bestand downloaden
+    ```azurepowershell-interactive
+    $projectName = Read-Host -Prompt "Enter a project name"   # This name is used to generate names for Azure resources, such as storage account name.
+    $location = Read-Host -Prompt "Enter a location (i.e. centralus)"
 
-Download het [BACPAC-bestand](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) en sla het bestand op uw lokale computer op onder dezelfde naam, **SQLDatabaseExtension.bacpac**.
+    $resourceGroupName = $projectName + "rg"
+    $storageAccountName = $projectName + "store"
+    $containerName = "bacpacfile" # The name of the Blob container to be created.
 
-### <a name="create-a-storage-account"></a>Een opslagaccount maken
+    $bacpacURL = "https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac"
+    $bacpacFileName = "SQLDatabaseExtension.bacpac" # A file name used for downloading and uploading the BACPAC file.
 
-1. Selecteer de volgende afbeelding om een Resource Manager-sjabloon in Azure Portal te openen.
+    # Download the bacpac file
+    Invoke-WebRequest -Uri $bacpacURL -OutFile "$home/$bacpacFileName"
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json" target="_blank"><img src="./media/resource-manager-tutorial-secure-artifacts/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. Voer de volgende eigenschappen in:
+    # Create a resource group
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-    * **Abonnement**: selecteer uw Azure-abonnement.
-    * **Resource groep**: Selecteer **nieuwe maken** en geef deze een naam. Een resourcegroep is een container voor Azure-resources voor beheerdoeleinden. In deze zelfstudie, kunt u dezelfde resourcegroep voor het opslagaccount en de Azure SQL Database gebruiken. Noteer de naam van deze resourcegroep. U hebt deze nodig wanneer u de Azure SQL Database later in de zelfstudies maakt.
-    * **Locatie**: Selecteer een regio. Bijvoorbeeld **US - centraal**.
-    * **Type opslagaccount**: Gebruik de standaardwaarde, **Standard_LRS**.
-    * **Locatie**: gebruik de standaard waarde **([resourceGroup (). locatie]** . Dit betekent dat u de locatie van de resourcegroep gebruikt voor het opslagaccount.
-    * **Ik ga akkoord met de bovenstaande voorwaarden**: (geselecteerd)
-3. Selecteer **Aankoop**.
-4. Selecteer het meldingspictogram (het belpictogram) in de rechterbovenhoek van de portal om de implementatiestatus te bekijken.
+    # Create a storage account
+    $storageAccount = New-AzStorageAccount `
+        -ResourceGroupName $resourceGroupName `
+        -Name $storageAccountName `
+        -Location $location `
+        -SkuName "Standard_LRS"
 
-    ![Het deelvenster Meldingen in de portal voor de Resource Manager-zelfstudie](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-portal-notifications-pane.png)
-5. Als het opslagaccount met succes is geïmplementeerd, selecteert u **Ga naar resourcegroep** in het deelvenster Meldingen om de resourcegroep te openen.
+    $context = $storageAccount.Context
 
-### <a name="create-a-blob-container"></a>Een blobcontainer maken
+    # Create a container
+    New-AzStorageContainer -Name $containerName -Context $context
 
-Een blobcontainer is vereist voordat u bestanden kunt uploaden.
+    # Upload the bacpac file
+    Set-AzStorageBlobContent `
+        -Container $containerName `
+        -File "$home/$bacpacFileName" `
+        -Blob $bacpacFileName `
+        -Context $context
 
-1. Selecteer de opslag om deze te openen. U ziet slechts één opslagaccount in de resourcegroep. De naam van uw opslagaccount wijkt af van die van het opslagaccount in de volgende schermafbeelding.
+    # Generate a SAS token
+    $bacpacURI = New-AzStorageBlobSASToken `
+        -Context $context `
+        -Container $containerName `
+        -Blob $bacpacFileName `
+        -Permission r `
+        -ExpiryTime (Get-Date).AddHours(8.0) `
+        -FullUri
 
-    ![Opslagaccount in Resource Manager-zelfstudie](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-storage-account.png)
+    $str = $bacpacURI.split("?")
 
-2. Selecteer de tegel **Blobs**.
+    Write-Host "You need the blob url and the SAS token later in the tutorial:"
+    Write-Host $str[0]
+    Write-Host (-join ("?", $str[1]))
 
-    ![Blobs in Resource Manager-zelfstudie](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-blobs.png)
-3. Selecteer **+ Container** bovenaan om een nieuwe container te maken.
-4. Voer de volgende waarden in:
+    Write-Host "Press [ENTER] to continue ..."
+    ```
 
-    * **Naam**: voer **sqlbacpac** in.
-    * **Openbaar toegangsniveau**: gebruik de standaardwaarde, **Privé (geen anonieme toegang)** .
-5. Selecteer **OK**.
-6. Selecteer **sqlbacpac** om de zojuist gemaakte container te openen.
-
-### <a name="upload-the-bacpac-file-to-the-container"></a>Het BACPAC-bestand uploaden naar de container
-
-1. Selecteer **Uploaden**.
-2. Voer de volgende waarden in:
-
-    * **Bestanden**: Volg de instructies om het BACPAC-bestand te selecteren dat u eerder hebt gedownload. De standaardnaam is **SQLDatabaseExtension.bacpac**.
-    * **Verificatie type**: Selecteer **SAS**.  *SAS* is de standaardwaarde.
-3. Selecteer **Uploaden**.  Zodra het bestand is geüpload, wordt de bestandsnaam vermeld in de container.
-
-### <a name="a-namegenerate-a-sas-token-generate-a-sas-token"></a><a name="generate-a-sas-token" />Een SAS-token genereren
-
-1. Klik met de rechtermuisknop op **SQLDatabaseExtension.bacpac** in de container en selecteer vervolgens **SAS genereren**.
-2. Voer de volgende waarden in:
-
-    * **Machtiging**: gebruik de standaard instelling, **Lees**.
-    * **Begin-en eind datum/-tijd**: de standaard waarde biedt u acht uur voor het gebruik van het SAS-token. Als u meer tijd nodig hebt om deze zelfstudie te voltooien, verhoogt u de **verlooptijd**.
-    * **Toegestane IP-adressen**: laat dit veld leeg.
-    * **Toegestane protocollen**: gebruik de standaard waarde: **https**.
-    * **Handtekening sleutel**: gebruik de standaard waarde: **sleutel 1**.
-3. Selecteer **Blob-SAS-token en -URL genereren**.
-4. Kopieer de **Blob-SAS-URL**. In het midden van de URL staat de bestandsnaam **SQLDatabaseExtension.bacpac**.  De bestandsnaam verdeelt de URL in drie delen:
-
-   - **Locatie van het artefact**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/. Zorg ervoor dat de locatie eindigt op een '/'.
-   - **BACPAC bestands naam**: SQLDatabaseExtension. BACPAC.
-   - **SAS-token van artefact locatie**: Zorg ervoor dat het token voorafgaat aan een '? '
-
-     U hebt deze drie waarden nodig voor het [implementeren van de sjabloon](#deploy-the-template).
+1. Noteer de URL van het BACPAC-bestand en het SAS-token. U hebt deze waarden nodig wanneer u de sjabloon implementeert.
 
 ## <a name="open-an-existing-template"></a>Een bestaande sjabloon openen
 
@@ -132,15 +119,15 @@ In deze sessie wijzigt u de sjabloon die u hebt gemaakt in de [zelf studie: IMPO
 2. Plak de volgende URL in **Bestandsnaam**:
 
     ```url
-    https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json
+    https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy2.json
     ```
+
 3. Selecteer **Openen** om het bestand te openen.
 
-    Er zijn vijf resources gedefinieerd in de sjabloon:
+    Er zijn vier resources gedefinieerd in de sjabloon:
 
    * `Microsoft.Sql/servers`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers).
-   * `Microsoft.SQL/servers/securityAlertPolicies`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/securityalertpolicies).
-   * `Microsoft.SQL/servers/filewallRules`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules).
+   * `Microsoft.SQL/servers/firewallRules`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules).
    * `Microsoft.SQL/servers/databases`.  Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
    * `Microsoft.SQL/server/databases/extensions`.  Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions).
 
@@ -149,39 +136,30 @@ In deze sessie wijzigt u de sjabloon die u hebt gemaakt in de [zelf studie: IMPO
 
 ## <a name="edit-the-template"></a>De sjabloon bewerken
 
-Voeg de volgende aanvullende parameters toe:
+1. Vervang de definitie van de storageAccountKey-para meter door de volgende parameter definitie:
 
-```json
-"_artifactsLocation": {
-    "type": "string",
-    "metadata": {
-        "description": "The base URI where artifacts required by this template are located."
-    }
-},
-"_artifactsLocationSasToken": {
-    "type": "securestring",
-    "metadata": {
-        "description": "The sasToken required to access _artifactsLocation."
+    ```json
+    "_artifactsLocationSasToken": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Specifies the SAS token required to access the artifact location."
+      }
     },
-    "defaultValue": ""
-},
-"bacpacFileName": {
-    "type": "string",
-    "defaultValue": "SQLDatabaseExtension.bacpac",
-    "metadata": {
-        "description": "The bacpac for configure the database and tables."
-    }
-}
-```
+    ```
 
-![Parameters voor beveiligde artefacten in Resource Manager-zelfstudie](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-secure-artifacts-parameters.png)
+    ![Parameters voor beveiligde artefacten in Resource Manager-zelfstudie](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-secure-artifacts-parameters.png)
 
-Werk de waarde van de volgende twee elementen bij:
+2. Werk de waarde van de volgende drie elementen van de SQL-extensie bron bij:
 
-```json
-"storageKey": "[parameters('_artifactsLocationSasToken')]",
-"storageUri": "[uri(parameters('_artifactsLocation'), parameters('bacpacFileName'))]",
-```
+    ```json
+    "storageKeyType": "SharedAccessKey",
+    "storageKey": "[parameters('_artifactsLocationSasToken')]",
+    "storageUri": "[parameters('bacpacUrl')]",
+    ```
+
+De voltooide sjabloon ziet er als volgt uit:
+
+[!code-json[](~/resourcemanager-templates/tutorial-sql-extension/azuredeploy3.json?range=1-106&highlight=38-43,95-97)]
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
@@ -190,27 +168,29 @@ Werk de waarde van de volgende twee elementen bij:
 Raadpleeg de sectie [De sjabloon implementeren](./resource-manager-tutorial-create-multiple-instances.md#deploy-the-template) voor de implementatieprocedure. Gebruik in plaats daarvan het volgende PowerShell-implementatiescript:
 
 ```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$adminUsername = Read-Host -Prompt "Enter the virtual machine admin username"
+$projectName = Read-Host -Prompt "Enter the project name that is used earlier"   # This name is used to generate names for Azure resources, such as storage account name.
+$location = Read-Host -Prompt "Enter a location (i.e. centralus)"
+$adminUsername = Read-Host -Prompt "Enter the sql database admin username"
 $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
-$artifactsLocation = Read-Host -Prompt "Enter the artifacts location"
+$bacpacUrl = Read-Host -Prompt "Enter the BACPAC url"
 $artifactsLocationSasToken = Read-Host -Prompt "Enter the artifacts location SAS token" -AsSecureString
-$bacpacFileName = Read-Host -Prompt "Enter the BACPAC file name"
 
-New-AzResourceGroup -Name $resourceGroupName -Location $location
+$resourceGroupName = $projectName + "rg"
+
+#New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -adminUser $adminUsername `
     -adminPassword $adminPassword `
-    -_artifactsLocation $artifactsLocation `
     -_artifactsLocationSasToken $artifactsLocationSasToken `
-    -bacpacFileName $bacpacFileName `
+    -bacpacUrl $bacpacUrl `
     -TemplateFile "$HOME/azuredeploy.json"
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 Gebruik een gegenereerd wachtwoord. Zie [Vereisten](#prerequisites).
-Zie [Een SAS-token genereren](#generate-a-sas-token) voor de waarden van _artifactsLocationSasToken en bacpacFileName.
+Zie [een BACPAC-bestand voorbereiden](#prepare-a-bacpac-file)voor de waarden van _artifactsLocation, _ArtifactsLocationSasToken en bacpacFileName.
 
 ## <a name="verify-the-deployment"></a>De implementatie controleren
 

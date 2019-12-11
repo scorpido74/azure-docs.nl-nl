@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f1f812bb7d31319476e6b940443e067fac895f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 7b00fff9c979fe6bd2c52f67801a94cb50b1c660
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420451"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970343"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Zelf studie: een on-premises toepassing toevoegen voor externe toegang via toepassings proxy in Azure Active Directory
 
@@ -217,8 +217,9 @@ Een testgebruiker toevoegen:
 
 De aanmelding bij de toepassing testen:
 
-1. Navigeer in uw browser naar de externe URL die u hebt geconfigureerd tijdens de stap voor het publiceren. Als het goed is, ziet u nu het startscherm.
-1. Meld u aan als de gebruiker die u hebt gemaakt in de vorige sectie.
+1. Selecteer **toepassings proxy**uit de toepassing die u wilt testen.
+2. Selecteer aan de bovenkant van de pagina **test toepassing** om een test uit te voeren op de toepassing en te controleren of er problemen zijn met de configuratie.
+3. Zorg ervoor dat u de toepassing eerst start om de aanmelding bij de toepassing te testen en down load vervolgens het diagnostische rapport om de oplossings richtlijnen voor eventuele gedetecteerde problemen te bekijken.
 
 Zie [Problemen en foutberichten met Application Proxy oplossen](application-proxy-troubleshoot.md) voor het oplossen van problemen.
 

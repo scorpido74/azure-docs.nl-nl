@@ -1,17 +1,17 @@
 ---
-title: Firewall regels in Azure Database for PostgreSQL-grootschalige (Citus)
+title: Firewall regels-grootschalige (Citus)-Azure Database for PostgreSQL
 description: In dit artikel worden de firewall regels voor Azure Database for PostgreSQL-grootschalige (Citus) beschreven.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 567fb27ed942a24ab7d031d791e18fa487956fad
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: b843cd1528630a21255053f623356a0379daacf6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273729"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975564"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>Firewall regels in Azure Database for PostgreSQL-grootschalige (Citus)
 Azure Database for PostgreSQL Server firewall voor komt dat alle toegang tot uw grootschalige-coördinator knooppunt (Citus) wordt voor komen, totdat u opgeeft welke computers zijn gemachtigd. De firewall verleent toegang tot de server op basis van het oorspronkelijke IP-adres van elke aanvraag.
@@ -31,7 +31,7 @@ Een grootschalige (Citus) Server groep firewall bepaalt wie verbinding kan maken
 
 Wanneer de firewall verbindingen blokkeert, kan dit leiden tot toepassings fouten. Als u het JDBC-stuur programma van PostgreSQL gebruikt, treedt er bijvoorbeeld een fout op als:
 
-> Java. util. gelijktijdige. ExecutionException: Java. lang. RuntimeException: org. postgresql. util. PSQLException: Onherstelbare fout\_: geen PG HBA. conf entry for host "123.45.67.890", User "Citus", data base "Citus", SSL
+> Java. util. gelijktijdige. ExecutionException: Java. lang. RuntimeException: org. postgresql. util. PSQLException: fataal: geen PG\_HBA. conf entry for host "123.45.67.890", User "Citus", data base "Citus", SSL
 
 Zie [firewall regels maken en beheren](howto-hyperscale-manage-firewall-using-portal.md) voor meer informatie over het definiëren van de regels.
 
@@ -43,9 +43,9 @@ Wanneer de toegang tot de Microsoft Azure-Data Base voor PostgreSQL-grootschalig
 * **De gebruiker is niet gemachtigd of er is een onjuist wacht woord gebruikt:** Als een gebruiker geen machtigingen heeft op de server of het gebruikte wacht woord onjuist is, wordt de verbinding met de server geweigerd. Het maken van een firewall instelling biedt clients alleen de mogelijkheid om verbinding te maken met uw server. elke client moet nog steeds de benodigde beveiligings referenties opgeven.
 
 Als u bijvoorbeeld een JDBC-client gebruikt, kan de volgende fout worden weer gegeven.
-> Java. util. gelijktijdige. ExecutionException: Java. lang. RuntimeException: org. postgresql. util. PSQLException: Onherstelbare fout: wachtwoord verificatie is mislukt voor gebruiker ' yourusername '
+> Java. util. gelijktijdige. ExecutionException: Java. lang. RuntimeException: org. postgresql. util. PSQLException: fataal: wachtwoord verificatie mislukt voor gebruiker ' yourusername '
 
-* **Dynamisch IP-adres:** Als u een Internet verbinding hebt met dynamische IP-adres sering en u problemen ondervindt met het verkrijgen van de firewall, kunt u een van de volgende oplossingen proberen:
+* **Dynamisch IP-adres:** als u een internetverbinding hebt met dynamische IP-adressering en problemen ondervindt bij het passeren van de firewall, kunt u een van de volgende oplossingen proberen:
 
 * Neem contact op met uw Internet provider (ISP) voor het IP-adres bereik dat is toegewezen aan uw client computers die toegang hebben tot het grootschalige (Citus)-coördinator knooppunt en voeg het IP-adres bereik vervolgens toe als een firewall regel.
 

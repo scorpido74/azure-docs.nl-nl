@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: 0269b4e611432093ea677e2ea7e429c84ce9db87
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: e002a5fbe38596d6507eec81ba3dd2a05c25153a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257655"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975802"
 ---
 # <a name="what-is-custom-translator"></a>Wat is Custom Translator?
 
@@ -28,7 +28,7 @@ Custom Translator biedt ondersteuning voor meer dan 36 talen en is rechtstreeks 
 
 Custom Translator biedt verschillende mogelijkheden voor het bouwen van een aangepast vertaalsysteem en het verkrijgen van toegang tot het aangepaste vertaalsysteem.
 
-|Functie  |Description  |
+|Functie  |Beschrijving  |
 |---------|---------|
 |[Maak gebruik van neurale technologie voor automatische vertalingen](https://blogs.msdn.microsoft.com/translation/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Verbeter de vertalingen door gebruik te maken van neurale machinevertalingen (NMT) van Custom Translator.       |
 |[Bouw systemen met uw eigen vaktermen](what-are-parallel-documents.md)     |  Bouw vertaalsystemen en pas vertaalsystemen aan met behulp van parallelle documenten in de terminologie van uw eigen bedrijf en bedrijfstak.       |

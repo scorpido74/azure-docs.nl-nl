@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/04/2019
-ms.openlocfilehash: d7a746c170d04ad17b86e8aca63384edffbe75ac
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 53c0601be29c5cac9bddc37158d705f07349323d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806793"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975020"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Zelf studie: SQL Server naar een beheerde instantie van Azure SQL Database migreren met behulp van DMS
 
@@ -214,7 +214,7 @@ Nadat er een exemplaar van de service is gemaakt, zoekt u het exemplaar in de Az
 
 
 > [!NOTE]
-  > Als Azure Database Migration Service de fout ' systeem fout 53 ' of ' systeem fout 57 ' weergeeft, kan dit ertoe leiden dat Azure Database Migration Service geen toegang meer heeft tot de Azure-bestands share. Als u een van deze fouten tegen komt, moet u het account vanuit het virtuele netwerk openen met behulp van de instructies [hier](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network).
+  > Als Azure Database Migration Service de fout ' systeem fout 53 ' of ' systeem fout 57 ' weergeeft, kan dit ertoe leiden dat Azure Database Migration Service geen toegang meer heeft tot de Azure-bestands share. Als u een van deze fouten tegen komt, moet u via [de instructies in](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)het virtuele netwerk toegang verlenen tot het opslag account.
 
 
 2. Selecteer **Opslaan**.

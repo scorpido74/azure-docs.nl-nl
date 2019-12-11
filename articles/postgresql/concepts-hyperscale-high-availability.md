@@ -1,5 +1,5 @@
 ---
-title: Hoge Beschik baarheid in Azure Database for PostgreSQL – grootschalige (Citus)
+title: Hoge Beschik baarheid – grootschalige (Citus)-Azure Database for PostgreSQL
 description: Concepten voor hoge Beschik baarheid en herstel na nood gevallen
 author: jonels-msft
 ms.author: jonels
@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 616b5bff735f52d137c12c58ac6023c38a2d4044
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 10679ab02826fb606af65c72621f2afb609bc81b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514743"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975530"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--hyperscale-citus"></a>Hoge Beschik baarheid in Azure Database for PostgreSQL – grootschalige (Citus)
 
-Hoge Beschik baarheid (HA) vermijdt downtime van de data base door stand-by replica's van elk knoop punt in een server groep te behouden. Als een knoop punt uitvalt, schakelt grootschalige de binnenkomende verbindingen van het knoop punt met de fout naar de stand-bymodus. Failover vindt binnen enkele minuten plaats en gepromoveerde knoop punten bevatten altijd nieuwe gegevens via synchrone replicatie van PostgreSQL.
+Hoge beschikbaarheid vermijdt downtime van databases omdat voor elk knooppunt in een servergroep stand-byreplica's worden onderhouden. Als een knooppunt uitvalt, worden met Hyperscale de binnenkomende verbindingen van het foutieve knooppunt overgeschakeld naar het bijbehorende stand-byknooppunt. Failover wordt binnen enkele minuten uitgevoerd en knooppunten die een niveau zijn verhoogd, beschikken altijd over de nieuwste gegevens dankzij synchrone streamingreplicatie van PostgreSQL.
 
 Om te profiteren van HA op het coördinator knooppunt, moeten database toepassingen de verbindingen en mislukte trans acties detecteren en opnieuw proberen. De zojuist gepromoveerde coördinator is toegankelijk met dezelfde connection string.
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 11/26/2019
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e01c79c5cc9391922333af4e9a60ba44a6a6b13
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: be29f51771e24c67a8cd99a81e6a69be830dacb8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274009"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970632"
 ---
 # <a name="hide-applications-from-end-users-in-azure-active-directory"></a>Toepassingen verbergen voor eind gebruikers in Azure Active Directory
 
@@ -42,6 +42,19 @@ Voer de volgende stappen uit om een toepassing te verbergen in het MyApps-deel v
 7.  Voor de **zicht bare gebruiker?** vraag, klikt u op **Nee**.
 8.  Klik op **Opslaan**.
 
+## <a name="use-azure-ad-powershell-to-hide-an-application"></a>Azure AD Power shell gebruiken om een toepassing te verbergen
+
+Als u een toepassing wilt verbergen in het deel venster MyApps, kunt u de HideApp-tag hand matig toevoegen aan de service-principal voor de toepassing. Voer de volgende [AzureAD Power shell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#service_principals) -opdrachten uit om de eigenschap **zichtbaar voor gebruikers** in te stellen op **Nee**. 
+
+```PowerShell
+Connect-AzureAD
+
+$objectId = "<objectId>"
+$servicePrincipal = Get-AzureADServicePrincipal -ObjectId $objectId
+$tags = $servicePrincipal.tags
+$tags.Add("HideApp")
+Set-AzureADServicePrincipal -ObjectId $objectId -Tags $tags
+```
 
 ## <a name="hide-office-365-applications-from-the-myapps-panel"></a>Office 365-toepassingen verbergen in het deel venster MyApps
 
@@ -49,11 +62,10 @@ Gebruik de volgende stappen om alle Office 365-toepassingen te verbergen in het 
 
 1.  Meld u aan bij de [Azure Portal](https://portal.azure.com) als globale beheerder voor uw Directory.
 2.  Selecteer **Azure Active Directory**.
-3.  **Gebruikers instellingen**selecteren.
+3.  Selecteer **Gebruikersinstellingen**.
 4.  Onder **bedrijfs toepassingen**klikt **u op beheren hoe eind gebruikers hun toepassingen starten en weer geven.**
 5.  Voor **gebruikers kunnen alleen office 365-apps in de office 365-Portal zien**, klikt u op **Ja**.
 6.  Klik op **Opslaan**.
-
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Alle groepen weer geven](../fundamentals/active-directory-groups-view-azure-portal.md)
