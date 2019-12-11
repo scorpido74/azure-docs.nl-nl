@@ -1,6 +1,6 @@
 ---
-title: Overzicht van Media Services PlayReady-licentiesjablonen
-description: In dit onderwerp biedt een overzicht van een PlayReady-licentiesjabloon die wordt gebruikt voor het configureren van PlayReady-licenties.
+title: Overzicht van Media Services PlayReady-licentie sjablonen
+description: Dit onderwerp bevat een overzicht van een PlayReady-licentie sjabloon die wordt gebruikt voor het configureren van PlayReady-licenties.
 author: juliako
 manager: femila
 editor: ''
@@ -14,34 +14,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: d2831472bcddf3480a87e69661b39e4ec715c786
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fb0630f3f7a4acebcfe5dcad343030c9d1184263
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463205"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976397"
 ---
-# <a name="media-services-playready-license-template-overview"></a>Overzicht van Media Services PlayReady-licentiesjablonen
-Azure Media Services biedt nu een service voor het leveren van PlayReady-licenties. Wanneer de speler (bijvoorbeeld Silverlight) probeert uw PlayReady beveiligde inhoud af te spelen, wordt een aanvraag verzonden naar de service voor het leveren van licenties om een licentie te verkrijgen. Als de licentieservice de aanvraag goedkeurt, geeft deze de licentie die is verzonden naar de client en wordt gebruikt om te ontsleutelen en de opgegeven inhoud af te spelen.
+# <a name="media-services-playready-license-template-overview"></a>Overzicht van Media Services PlayReady-licentie sjablonen
+Azure Media Services biedt nu een service voor het leveren van PlayReady-licenties. Als de speler (bijvoorbeeld Silverlight) probeert uw met PlayReady beveiligde inhoud af te spelen, wordt een aanvraag verzonden naar de service voor levering van licenties om een licentie te verkrijgen. Als de licentieservice de aanvraag goedkeurt, geeft deze de licentie die is verzonden naar de client en wordt gebruikt om te ontsleutelen en de opgegeven inhoud af te spelen.
 
-Media Services biedt ook API's die u gebruiken kunt om uw PlayReady-licenties te configureren. Licenties bevatten de rechten en beperkingen die u wilt dat de runtime PlayReady digital rights management (DRM) om af te dwingen wanneer een gebruiker probeert om af te spelen beveiligde inhoud.
-Hier volgen enkele voorbeelden van de beperkingen van de PlayReady-licentie die u kunt opgeven:
+Media Services biedt ook Api's die u kunt gebruiken om uw PlayReady-licenties te configureren. Licenties bevatten de rechten en beperkingen die u wilt dat de runtime van PlayReady Digital Rights Management (DRM) wordt afgedwongen wanneer een gebruiker beveiligde inhoud wil afspelen.
+Hier volgen enkele voor beelden van PlayReady-licentie beperkingen die u kunt opgeven:
 
-* De datum en tijd van waaruit de licentie geldig is.
-* De datum/tijd-waarde wanneer de licentie is verlopen. 
-* Voor de licentie om te worden opgeslagen in een permanente opslag op de client. Permanente licenties worden meestal gebruikt om toe te staan offline afspelen van de inhoud.
-* Het minimale beveiligingsniveau dat een speler hebben moet tot uw inhoud afspelen. 
-* Het beveiligingsniveau van de uitvoer van de uitvoer-besturingselementen voor audio\video inhoud. 
-* Zie voor meer informatie de sectie 'Uitvoer besturingselementen' (3.5) in de [PlayReady Compliantieregels](https://www.microsoft.com/playready/licensing/compliance/) document.
+* De datum en tijd waarop de licentie geldig is.
+* De waarde voor datum/tijd wanneer de licentie verloopt. 
+* De licentie wordt opgeslagen in de permanente opslag op de client. Permanente licenties worden meestal gebruikt om het offline afspelen van de inhoud toe te staan.
+* Het minimale beveiligings niveau dat een speler nodig heeft om uw inhoud af te spelen. 
+* Het beveiligings niveau voor uitvoer voor de uitvoer besturings elementen voor audio\video-inhoud. 
+* Zie voor meer informatie de sectie "uitvoer besturings elementen" (3,5) in het document met [nalevings regels voor PlayReady](https://www.microsoft.com/playready/licensing/compliance/) .
 
 > [!NOTE]
-> U kunt op dit moment alleen de PlayRight van de PlayReady-licentie configureren. Dit recht is vereist. De PlayRight geeft de client de mogelijkheid voor het afspelen van de inhoud. U kunt ook de PlayRight beperkingen die specifiek zijn voor afspelen configureren gebruiken. Zie voor meer informatie, [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight).
+> Op dit moment kunt u alleen de PlayRight van de PlayReady-licentie configureren. Dit recht is vereist. De PlayRight biedt de client de mogelijkheid om de inhoud af te spelen. U kunt ook de PlayRight gebruiken om beperkingen te configureren die specifiek zijn voor afspelen. Zie [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight)voor meer informatie.
 > 
 > 
 
-Als u wilt configureren PlayReady-licenties met behulp van Media Services, moet u de Media Services PlayReady-licentiesjabloon configureren. De sjabloon is gedefinieerd in XML.
+Als u PlayReady-licenties wilt configureren met behulp van Media Services, moet u de Media Services PlayReady-licentie sjabloon configureren. De sjabloon is gedefinieerd in XML.
 
-Het volgende voorbeeld ziet de eenvoudigste (en meest voorkomende)-sjabloon waarmee een basic streaming-licentie worden geconfigureerd. Met deze licentie, kunnen uw clients afspelen uw PlayReady beveiligde inhoud.
+In het volgende voor beeld ziet u de meest eenvoudige (en meest voorkomende) sjabloon waarmee een basis-streaming-licentie wordt geconfigureerd. Met deze licentie kunnen uw clients uw inhoud die is beveiligd met PlayReady, afspelen.
 
     <?xml version="1.0" encoding="utf-8"?>
     <PlayReadyLicenseResponseTemplate xmlns:i="https://www.w3.org/2001/XMLSchema-instance" 
@@ -54,36 +54,36 @@ Het volgende voorbeeld ziet de eenvoudigste (en meest voorkomende)-sjabloon waar
       </LicenseTemplates>
     </PlayReadyLicenseResponseTemplate>
 
-Het XML-bestand voldoet aan de PlayReady-licentie sjabloon XML-schema in de sectie 'PlayReady-licentie sjabloon XML-schema' gedefinieerd.
+De XML voldoet aan het XML-schema voor de PlayReady-licentie sjabloon dat is gedefinieerd in de sectie ' XML-schema van PlayReady-licentie sjablonen '.
 
-Media Services kunt u ook een set van .NET-klassen die kunnen worden gebruikt voor het serialiseren en deserialiseren van en naar het XML-bestand gedefinieerd. Zie voor een beschrijving van de belangrijkste klassen, de [Media Services .NET-klassen](media-services-playready-license-template-overview.md#classes) die worden gebruikt voor het configureren van de licentie-sjablonen.
+Media Services definieert ook een set .NET-klassen die kunnen worden gebruikt voor het serialiseren en deserialiseren van en naar de XML. Zie de [Media Services .net-klassen](media-services-playready-license-template-overview.md#classes) die worden gebruikt voor het configureren van licentie sjablonen voor een beschrijving van de hoofd klassen.
 
-Zie voor een voorbeeld van end-to-end die gebruikmaakt van .NET-klassen voor het configureren van de PlayReady-licentiesjabloon [dynamische versleuteling met PlayReady en de service voor het leveren van licenties](media-services-protect-with-playready-widevine.md).
+Zie voor een end-to-end-voor beeld waarin .NET-klassen worden gebruikt voor het configureren van de PlayReady-licentie sjabloon, [playready Dynamic Encryption en de service License Delivery gebruiken](media-services-protect-with-playready-widevine.md).
 
-## <a id="classes"></a>Media Services .NET-klassen die worden gebruikt voor het configureren van de licentie-sjablonen
-De volgende klassen zijn de belangrijkste .NET-klassen die worden gebruikt voor het configureren van sjablonen voor Media Services PlayReady-licentie. Deze klassen worden toegewezen aan de typen die zijn gedefinieerd [PlayReady-licentie sjabloon XML-schema](media-services-playready-license-template-overview.md#schema).
+## <a id="classes"></a>Media Services .NET-klassen die worden gebruikt voor het configureren van licentie sjablonen
+De volgende klassen zijn de belangrijkste .NET-klassen die worden gebruikt voor het configureren van Media Services PlayReady-licentie sjablonen. Deze klassen worden toegewezen aan de typen die zijn gedefinieerd in het [XML-schema van PlayReady-licentie sjablonen](media-services-playready-license-template-overview.md#schema).
 
-De [MediaServicesLicenseTemplateSerializer](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer.aspx) klasse wordt gebruikt voor het serialiseren en deserialiseren van en naar de Media Services-licentiesjabloon XML.
+De klasse [MediaServicesLicenseTemplateSerializer](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer.aspx) wordt gebruikt voor het serialiseren en deserialiseren van en naar het Media Services licentie sjabloon-XML.
 
 ### <a name="playreadylicenseresponsetemplate"></a>PlayReadyLicenseResponseTemplate
-[PlayReadyLicenseResponseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicenseresponsetemplate.aspx): Deze klasse vertegenwoordigt de sjabloon voor het antwoord terug naar de gebruiker verzonden. Het bevat een veld voor een tekenreeks met aangepaste gegevens tussen de licentieserver en de toepassing (dit kan handig zijn voor aangepaste app-logica). Het bevat ook een lijst met een of meer licentie-sjablonen.
+[PlayReadyLicenseResponseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicenseresponsetemplate.aspx): deze klasse vertegenwoordigt de sjabloon voor het antwoord dat wordt teruggestuurd naar de gebruiker. Het bevat een veld voor een aangepaste gegevens reeks tussen de licentie server en de toepassing (wat nuttig kan zijn voor aangepaste app-logica). Het bevat ook een lijst met een of meer licentie sjablonen.
 
-De antwoord-sjabloon bevat als de klasse 'op het hoogste niveau' in de Sjabloonhiërarchie, een lijst met sjablonen van de licentie. De licentie-sjablonen bevatten (direct of indirect) alle andere klassen die gezamenlijk de sjabloongegevens worden geserialiseerd.
+Als de klasse op het hoogste niveau in de sjabloon hiërarchie bevat de antwoord sjabloon een lijst met licentie sjablonen. De licentie sjablonen bevatten (direct of indirect) alle andere klassen waaruit de sjabloon gegevens moeten worden geserialiseerd.
 
 ### <a name="playreadylicensetemplate"></a>PlayReadyLicenseTemplate
-[PlayReadyLicenseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate.aspx): Deze klasse vertegenwoordigt een licentiesjabloon die wordt gebruikt voor het maken van PlayReady-licenties aan gebruikers worden geretourneerd. Het bevat de gegevens op de inhoudssleutel in de licentie. Dit omvat ook alle rechten en beperkingen die de PlayReady DRM-runtime afdwingen moet wanneer de inhoudssleutel wordt gebruikt.
+[PlayReadyLicenseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate.aspx): deze klasse vertegenwoordigt een licentie sjabloon die wordt gebruikt om PlayReady-licenties te maken die aan gebruikers moeten worden geretourneerd. Het bevat de gegevens van de inhouds sleutel in de licentie. Het bevat ook alle rechten of beperkingen die door PlayReady DRM runtime moeten worden afgedwongen wanneer de inhouds sleutel wordt gebruikt.
 
 ### <a id="PlayReadyPlayRight"></a>PlayReadyPlayRight
-[PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx): Deze klasse vertegenwoordigt de PlayRight van een PlayReady-licentie. Deze geeft de gebruiker de mogelijkheid voor het afspelen van de inhoud onderworpen aan de beperkingen die zijn geconfigureerd in de licentie en op de PlayRight zelf (voor het afspelen van beleid). Veel van de beleidsregels op een PlayRight betreft beperkingen voor uitvoer die welke typen uitvoer die voor de inhoud kan worden afgespeeld bepalen via. Dit omvat ook de beperkingen die moeten worden geplaatst in plaats wanneer een bepaalde uitvoer wordt gebruikt. Bijvoorbeeld, als DigitalVideoOnlyContentRestriction is ingeschakeld, kunt de DRM-runtime alleen de video moet worden weergegeven via digitale uitvoer. (Analoog video-uitgangen zijn niet toegestaan om door te geven van de inhoud.)
+[PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx): deze klasse vertegenwoordigt de PlayRight van een PlayReady-licentie. Hiermee wordt de gebruiker de mogelijkheid geboden om de inhoud af te spelen, onder alle beperkingen die zijn geconfigureerd in de licentie en op de PlayRight zelf (voor het beleid dat specifiek is voor afspelen). Veel van het beleid voor een PlayRight betreft uitvoer beperkingen die de typen uitvoer bepalen waarmee de inhoud kan worden afgespeeld. Het bevat ook alle beperkingen die moeten worden ingevoerd wanneer een bepaalde uitvoer wordt gebruikt. Als DigitalVideoOnlyContentRestriction bijvoorbeeld is ingeschakeld, staat de DRM-runtime alleen toe dat de video wordt weer gegeven via digitale uitvoer. (Analoge video-uitvoer zijn niet toegestaan om de inhoud door te geven.)
 
 > [!IMPORTANT]
-> Dit soort beperkingen kunnen krachtige, maar ze ook kunnen invloed hebben op de ervaring van consumenten. Als de uitvoer goed te beperken, is het mogelijk dat de inhoud afgespeeld op sommige clients. Zie voor meer informatie de [PlayReady Compliantieregels](https://www.microsoft.com/playready/licensing/compliance/).
+> Deze typen beperkingen kunnen krachtig zijn, maar ze kunnen ook van invloed zijn op de ervaring van de gebruiker. Als de uitvoer beveiliging te beperkend is, is de inhoud mogelijk niet kan worden afgespeeld op sommige clients. Zie voor meer informatie de [nalevings regels voor PlayReady](https://www.microsoft.com/playready/licensing/compliance/).
 > 
 > 
 
-Zie voor een voorbeeld van de beveiliging niveaus die Silverlight ondersteunt, [Silverlight-ondersteuning voor uitvoer beveiligingen](https://go.microsoft.com/fwlink/?LinkId=617318).
+Zie [Silverlight-ondersteuning voor uitvoer beveiliging](https://go.microsoft.com/fwlink/?LinkId=617318)voor een voor beeld van de beveiligings niveaus die Silverlight ondersteunt.
 
-## <a id="schema"></a>PlayReady-licentie sjabloon XML-schema
+## <a id="schema"></a>XML-schema voor PlayReady-licentie sjablonen
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:xs="https://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
@@ -306,6 +306,9 @@ Zie voor een voorbeeld van de beveiliging niveaus die Silverlight ondersteunt, [
     </xs:schema>
 
 
+## <a name="additional-notes"></a>Aanvullende opmerkingen
+
+* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

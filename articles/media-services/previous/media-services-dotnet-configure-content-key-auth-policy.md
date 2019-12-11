@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a2d978a68f6f654e3bdeea07c931cd7103f5850c
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 386b49698ca6b8ded2972aba14c1968620fcbb08
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69015534"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974492"
 ---
-# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dynamische versleuteling: Een autorisatie beleid voor de inhouds sleutel configureren
+# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dynamische versleuteling: een autorisatie beleid voor de inhouds sleutel configureren
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>Overzicht
@@ -50,7 +50,7 @@ Raadpleeg voor meer informatie de volgende artikelen:
 * De key delivery service slaat ContentKeyAuthorizationPolicy en de bijbehorende objecten (beleids opties en-beperkingen) gedurende 15 minuten op. U kunt ContentKeyAuthorizationPolicy maken en opgeven dat u een token beperking wilt gebruiken, deze wilt testen en vervolgens het beleid wilt bijwerken naar de beperking open. Dit proces duurt ongeveer 15 minuten voordat het beleid overschakelt naar de open-versie van het beleid.
 * Als u het leveringsbeleid voor uw asset toevoegt of bijwerkt, moet u een eventuele locator verwijderen en een nieuwe locator maken.
 * Op dit moment kunt u geen progressieve down loads versleutelen.
-* Een Media Services streaming-eind punt stelt de waarde in van de CORS ' Access-Control-Allow-Origin ' in het Preflight-antwoord\*als het Joker teken. Deze waarde is goed geschikt voor de meeste spelers, waaronder Azure Media Player, Roku en JWPlayer, en andere. Sommige spelers die gebruikmaken van dashjs werken echter niet omdat, waarbij de referenties modus is ingesteld op ' include ', XMLHttpRequest in hun dashjs geen joker teken\*' ' als waarde van ' toegangs beheer-allow-Origin ' toestaat. Als tijdelijke oplossing voor deze beperking in dashjs, als u uw client vanuit één domein host, kan Media Services dat domein opgeven in de kopregel van het Preflight-antwoord. Open een ondersteunings ticket via de Azure Portal voor hulp.
+* Een Media Services streaming-eind punt stelt de waarde in van de CORS ' Access-Control-Allow-Origin ' in het Preflight-antwoord als het Joker teken '\*'. Deze waarde is goed geschikt voor de meeste spelers, waaronder Azure Media Player, Roku en JWPlayer, en andere. Sommige spelers die gebruikmaken van dashjs werken echter niet omdat, waarbij de referenties modus is ingesteld op ' include ', XMLHttpRequest in hun dashjs geen joker teken '\*' toestaat als de waarde ' Access-Control-Allow-Origin '. Als tijdelijke oplossing voor deze beperking in dashjs, als u uw client vanuit één domein host, kan Media Services dat domein opgeven in de kopregel van het Preflight-antwoord. Open een ondersteunings ticket via de Azure Portal voor hulp.
 
 ## <a name="aes-128-dynamic-encryption"></a>AES-128 dynamische versleuteling
 ### <a name="open-restriction"></a>Beperking openen
@@ -425,6 +425,10 @@ Als u een test token wilt ophalen op basis van de token beperking die voor het s
         JWT = 2,
     }
 ```
+
+## <a name="additional-notes"></a>Aanvullende opmerkingen
+
+* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

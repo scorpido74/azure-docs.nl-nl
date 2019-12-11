@@ -1,18 +1,18 @@
 ---
 title: Meer informatie over Azure IoT Device Provisioning Service MQTT-ondersteuning | Microsoft Docs
-description: 'Ontwikkelaars handleiding: ondersteuning voor apparaten die verbinding maken met het apparaat gericht eind punt van de Azure IoT Device Provisioning Service met behulp van het MQTT-protocol.'
+description: 'Ontwikkelaars gids: ondersteuning voor apparaten die verbinding maken met het op het apparaat gerichte eind punt van de Azure IoT Device Provisioning Service (DPS) met het MQTT-protocol.'
 author: rajeevmv
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: ravokkar
-ms.openlocfilehash: fb39979e321c4815aec74c801cd2d04e81b7e533
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: ea6ece7e34ddb9c25f9f8349239ab3a1c3405abf
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093902"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973370"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>Communiceren met uw DPS met het MQTT-Protocol
 

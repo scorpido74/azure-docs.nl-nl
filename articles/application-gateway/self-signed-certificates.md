@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: fb3d2e70d9485c63d6de156abe9d192afa818814
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3cf4f2314c7de2b2f7d581faeea88fe3c3177e81
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075074"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975054"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Een zelfondertekend certificaat van Azure-toepassing gateway genereren met een aangepaste basis-CA
 
@@ -106,7 +106,7 @@ De CSR is een open bare sleutel die aan een CA wordt toegewezen bij het aanvrage
 1. Gebruik de volgende opdracht om het certificaat te maken:
 
    ```
-   openssl x509 -req -in fabrikam.csr -CA public.crt -CAkey contoso.key -CAcreateserial -out fabrikam.crt -days 365 -sha256
+   openssl x509 -req -in fabrikam.csr -CA  contoso.crt -CAkey contoso.key -CAcreateserial -out fabrikam.crt -days 365 -sha256
    ```
 ### <a name="verify-the-newly-created-certificate"></a>Het zojuist gemaakte certificaat verifiëren
 
@@ -159,7 +159,7 @@ De volgende configuratie is een voor beeld van een [NGINX-server blok](https://n
 
 1. Voeg het basis certificaat toe aan het vertrouwde basis archief van de computer. Wanneer u de website opent, moet u ervoor zorgen dat de volledige certificaat keten wordt weer gegeven in de browser.
 
-   ![Vertrouwde basis certificaten](media/self-signed-certificates/trusted-root-cert.png)
+   ![Vertrouwde basiscertificaten](media/self-signed-certificates/trusted-root-cert.png)
 
    > [!NOTE]
    > Er wordt van uitgegaan dat DNS is geconfigureerd om de naam van de webserver (in dit voor beeld www.fabrikam.com) te laten wijzen aan het IP-adres van uw webserver. Als dat niet het geval is, kunt u het [bestand hosts](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d) bewerken om de naam op te lossen.
@@ -179,7 +179,7 @@ openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
 
 Als u het certificaat in Application Gateway wilt uploaden, moet u het. CRT-certificaat exporteren naar een. CER-indeling basis-64-code ring. Omdat CRT de open bare sleutel in de indeling base-64 bevat, kunt u de bestands extensie alleen wijzigen van. CRT naar. cer. 
 
-### <a name="azure-portal"></a>Azure-portal
+### <a name="azure-portal"></a>Azure Portal
 
 Als u het vertrouwde basis certificaat wilt uploaden vanuit de portal, selecteert u de **http-instellingen** en kiest u het **https** -protocol.
 

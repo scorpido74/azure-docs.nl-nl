@@ -1,18 +1,18 @@
 ---
 title: Apparaat-inschrijvingen beheren met Azure DPS Sdk's
-description: Registratie van apparaten beheren in de IoT Hub Device Provisioning Service met behulp van de service-Sdk's
+description: Registratie van apparaten beheren in de IoT Hub Device Provisioning Service (DPS) met behulp van de service-Sdk's
 author: robinsh
 ms.author: robinsh
 ms.date: 04/04/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 75a24fd6b8cafe03ae8090e6f8bf71a27459c7eb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5cb0e25ec70956e66f7b867f0d0b9473160fc3ad
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228808"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975071"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Registratie van apparaten beheren met de Sdk's van Azure Device Provisioning Service
 Een *apparaatregistratie* maakt een record van één apparaat of een groep apparaten die op een bepaald moment bij de Device Provisioning-Service kunnen worden geregistreerd. De registratie record bevat de eerste gewenste configuratie voor de apparaten die deel uitmaken van deze inschrijving, inclusief de gewenste IoT-hub. In dit artikel leest u hoe u de registratie van apparaten voor uw inrichtings service programmatisch beheert met de Azure IoT Provisioning Service Sdk's.  De Sdk's zijn beschikbaar op GitHub in dezelfde opslag plaats als Azure IoT-Sdk's.
@@ -23,7 +23,7 @@ Een *apparaatregistratie* maakt een record van één apparaat of een groep appar
     * [**Trusted Platform Module (TPM)** ](/azure/iot-dps/concepts-security#trusted-platform-module):
         * Afzonderlijke inschrijving: registratie-ID en TPM-goedkeurings sleutel van een fysiek apparaat of van TPM-Simulator.
         * De registratie groep is niet van toepassing op TPM-Attestation.
-    * [**X. 509**](/azure/iot-dps/concepts-security):
+    * [**X.509**](/azure/iot-dps/concepts-security):
         * Individuele inschrijving: het [Leaf-certificaat](/azure/iot-dps/concepts-security) van een fysiek apparaat of van de SDK- [codec](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) -emulator.
         * Registratie groep: het [CA/basis certificaat](/azure/iot-dps/concepts-security#root-certificate) of het [tussenliggende certificaat](/azure/iot-dps/concepts-security#intermediate-certificate), dat wordt gebruikt om een apparaat certificaat te maken op een fysiek apparaat.  Het kan ook worden gegenereerd met de SDK-codec-emulator.
 * Exacte API-aanroepen kunnen verschillen vanwege taal verschillen. Bekijk de voor beelden die worden weer gegeven op GitHub voor meer informatie:

@@ -12,23 +12,20 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 8809bf25c3bcfb26fb0ad251a2b09dfdca2a3e04
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7ddef1e78b4f8f62145e10b4cabc4537e28aba2f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679193"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969901"
 ---
 # <a name="content-key-policies"></a>Beleid voor inhoudssleutels
 
-Met Media Services kunt u uw Live en on-demand inhoud dynamisch versleutelen met Advanced Encryption Standard (AES-128) of een van de drie belangrijkste Digital Rights Management (DRM)-systemen: Micro soft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM (PlayReady, Widevine en FairPlay) licenties voor geautoriseerde clients. 
+Met Media Services, kunt u uw live en on-demand inhoud dynamisch wordt versleuteld met Advanced Encryption Standard (AES-128) of een van de drie belangrijkste digital rights management (DRM)-systemen leveren: Microsoft PlayReady en Google Widevine Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM (PlayReady, Widevine en FairPlay) licenties voor geautoriseerde clients. 
 
 Als u versleutelings opties wilt opgeven voor uw stream, moet u een [streaming-beleid](streaming-policy-concept.md) maken en dit koppelen aan uw [streaming-Locator](streaming-locators-concept.md). U maakt het [beleid voor inhouds sleutels](https://docs.microsoft.com/rest/api/media/contentkeypolicies) om te configureren hoe de inhouds sleutel (die beveiligde toegang tot uw [assets](assets-concept.md)biedt) wordt geleverd aan de eind clients. U moet de vereisten (beperkingen) instellen voor het beleid voor de inhouds sleutel waaraan moet worden voldaan om sleutels met de opgegeven configuratie aan clients te kunnen leveren. Het beleid voor inhouds sleutels is niet nodig voor het wissen van streams of downloaden. 
 
 Normaal gesp roken koppelt u het beleid voor inhouds sleutels aan uw [streaming-Locator](streaming-locators-concept.md). U kunt ook het beleid voor de inhouds sleutel binnen een [streaming-beleid](streaming-policy-concept.md) opgeven (bij het maken van een aangepast streaming-beleid voor geavanceerde scenario's). 
-
-> [!NOTE]
-> Eigenschappen van het beleid voor de inhouds sleutel van het `Datetime` type zijn altijd in UTC-indeling.
 
 ## <a name="best-practices-and-considerations"></a>Aanbevolen procedures en overwegingen
 
@@ -50,14 +47,19 @@ Normaal gesp roken koppelt u het beleid voor inhouds sleutels aan uw [streaming-
 
 ## <a name="example"></a>Voorbeeld
 
-Als u de sleutel wilt weer geven `GetPolicyPropertiesWithSecretsAsync`, gebruikt u, zoals wordt weer gegeven in het voor beeld [een handtekening sleutel van het bestaande beleid ophalen](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets) .
+Als u de sleutel wilt weer geven, gebruikt u `GetPolicyPropertiesWithSecretsAsync`, zoals wordt weer gegeven in het voor beeld [een handtekening sleutel van het bestaande beleid ophalen](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets) .
 
 ## <a name="filtering-ordering-paging"></a>Filters, bestellen, wisselbestand
 
 Zie [filteren, ordenen, pagineren van Media Services entiteiten](entities-overview.md).
 
+## <a name="additional-notes"></a>Aanvullende opmerkingen
+
+* Eigenschappen van het beleid voor inhouds sleutels van het type `Datetime` zijn altijd in UTC-indeling.
+* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Gebruik dynamische AES-128-versleuteling en de sleutelleveringsservice](protect-with-aes128.md)
-* [Gebruik DRM dynamische versleuteling en licentie leveringsservice voor](protect-with-drm.md)
+* [Dynamische AES-128-versleuteling en de sleutelleveringsservice gebruiken](protect-with-aes128.md)
+* [De Digital Rights Management-service gebruiken voor dynamische versleuteling en licentielevering](protect-with-drm.md)
 * [EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted)

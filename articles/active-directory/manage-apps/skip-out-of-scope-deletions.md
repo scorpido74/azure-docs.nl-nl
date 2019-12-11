@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/03/2019
+ms.date: 12/10/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b4a8005cf308d5cfce02976e3b2eff39d5fe8c0
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: d5a40b699c01f50ceb1bedbc36e7f1467772336f
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958633"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997068"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Verwijdering van gebruikers accounts die buiten het bereik vallen, overs Laan
 
@@ -30,16 +30,16 @@ In deze hand leiding wordt beschreven hoe u de Microsoft Graph-API en de Microso
 * Als ***SkipOutOfScopeDeletions*** is ingesteld op 0 (false), worden de accounts die zich buiten het bereik bevinden, uitgeschakeld in het doel
 * Als ***SkipOutOfScopeDeletions*** is ingesteld op 1 (waar), worden accounts die buiten het bereik vallen niet uitgeschakeld in het doel. deze vlag wordt ingesteld op het niveau van de *inrichtings app* en kan worden geconfigureerd met behulp van de Graph API. 
 
-Omdat deze configuratie veel wordt gebruikt met de *werkdag om de app voor het inrichten van gebruikers te Active Directory* , bevatten de onderstaande stappen scherm opnamen van de werkdag-toepassing. Dit kan echter ook worden gebruikt met andere inrichtings toepassingen.
+Omdat deze configuratie veel wordt gebruikt met de *werkdag om de app voor het inrichten van gebruikers te Active Directory* , bevatten de onderstaande stappen scherm opnamen van de werkdag-toepassing. Dit kan echter ook worden gebruikt met **alle andere apps** , zoals ServiceNow, Sales Force, Dropbox, enzovoort.
 
-## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Stap 1: Uw inrichtings App Service Principal-ID ophalen (object-ID)
+## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Stap 1: de principal-ID van uw inrichtings App Service ophalen (object-ID)
 
 1. Start de [Azure Portal](https://portal.azure.com)en navigeer naar de sectie eigenschappen van uw inrichtings toepassing. Bijvoorbeeld, als u uw werkdag wilt exporteren *naar AD User Provisioning toepassings* toewijzing, navigeert u naar de sectie eigenschappen van de app. 
 1. In de sectie eigenschappen van uw inrichtings app kopieert u de GUID-waarde die is gekoppeld aan het veld *object-id* . Deze waarde wordt ook wel de **ServicePrincipalId** van uw app genoemd en wordt gebruikt in Graph Explorer-bewerkingen.
 
    ![App Service Principal-ID van workday](./media/export-import-provisioning-mappings/wd_export_01.png)
 
-## <a name="step-2-sign-into-microsoft-graph-explorer"></a>Stap 2: Aanmelden bij Microsoft Graph Explorer
+## <a name="step-2-sign-into-microsoft-graph-explorer"></a>Stap 2: aanmelden bij Microsoft Graph Explorer
 
 1. [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) starten
 1. Klik op de knop Aanmelden met micro soft en meld u aan met Azure AD Global admin of de referenties van de app-beheerder.
@@ -48,7 +48,7 @@ Omdat deze configuratie veel wordt gebruikt met de *werkdag om de app voor het i
 
 1. Wanneer de aanmelding is geslaagd, worden de gegevens van het gebruikers account in het linkerdeel venster weer gegeven.
 
-## <a name="step-3-get-existing-app-credentials-and-connectivity-details"></a>Stap 3: Bestaande app-referenties en connectiviteits gegevens ophalen
+## <a name="step-3-get-existing-app-credentials-and-connectivity-details"></a>Stap 3: de bestaande app-referenties en connectiviteits gegevens ophalen
 
 Voer in de Microsoft Graph Explorer de volgende GET-query Vervang [servicePrincipalId] uit met de **servicePrincipalId** geëxtraheerd uit [stap 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id).
 
@@ -71,7 +71,7 @@ Dit is het JSON-blok dat aan de toewijzing moet worden toegevoegd.
         }
 ```
 
-## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>Stap 4: Het geheimen-eind punt bijwerken met de vlag SkipOutOfScopeDeletions
+## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>Stap 4: het geheimen-eind punt bijwerken met de vlag SkipOutOfScopeDeletions
 
 Voer in de Graph Explorer de onderstaande opdracht uit om het geheimen-eind punt bij te werken met de vlag ***SkipOutOfScopeDeletions*** . 
 
@@ -90,7 +90,7 @@ U moet de uitvoer als ' geslaagd – status code 204 ' ophalen.
 
    ![Antwoord plaatsen](./media/skip-out-of-scope-deletions/skip-06.png)
 
-## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>Stap 5: Controleren of gebruikers buiten het bereik niet worden uitgeschakeld
+## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>Stap 5: controleren of gebruikers buiten het bereik niet worden uitgeschakeld
 
 U kunt deze vlag testen op het verwachte gedrag door de scope regels bij te werken om een specifieke gebruiker over te slaan. In het onderstaande voor beeld wordt de werk nemer met ID 21173 (die eerder in bereik was) uitgesloten door een nieuwe scope regel toe te voegen: 
 

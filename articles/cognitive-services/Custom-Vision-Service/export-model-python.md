@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 00d3b1dce9bacc01c8319c678ab27a3d4cc8da88
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d7e3eeeea6bb25b4cddaea1d04e86f23ab7e4f5f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718420"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969836"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Zelfstudie: TensorFlow-model uitvoeren in Python
 
@@ -28,8 +28,8 @@ Nadat u [uw TensorFlow-model](https://docs.microsoft.com/azure/cognitive-service
 
 Als u de zelfstudie wilt gebruiken, moet u het volgende doen:
 
-- Python 2.7 of hoger of Python 3.5 of hoger installeren.
-- Pip installeren.
+- Installeer Python 2.7 + of Python 3.5 +.
+- Installeer pip.
 
 Vervolgens moet u de volgende pakketten installeren:
 
@@ -68,7 +68,7 @@ with open(labels_filename, 'rt') as lf:
 
 ## <a name="prepare-an-image-for-prediction"></a>Een afbeelding voorbereiden voor voorspelling
 
-Er zijn een paar stappen nodig om de afbeelding voor te bereiden, zodat deze de juiste vorm heeft voor voorspelling. Deze stappen bootsen de afbeeldingsbewerking na die wordt uitgevoerd tijdens de training:
+Er zijn een paar stappen die u moet uitvoeren om de installatie kopie voor te bereiden voor de voor spelling. Deze stappen bootsen de afbeeldingsbewerking na die wordt uitgevoerd tijdens de training:
 
 ### <a name="open-the-file-and-create-an-image-in-the-bgr-color-space"></a>Open het bestand en maak een afbeelding in de BGR-kleurruimte
 

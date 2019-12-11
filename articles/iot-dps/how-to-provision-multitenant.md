@@ -1,18 +1,18 @@
 ---
 title: Apparaten inrichten voor multitenancy in azure IoT Hub Device Provisioning Service
-description: Apparaten inrichten voor multitenancy met uw Device Provisioning service-exemplaar
+description: Apparaten voor multitenancy inrichten met het DPS-exemplaar (Device Provisioning Service)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 6d9755c076763a72d54abb66cfdf01b0ac7ffb9d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5703db90307f679ff4728386dc24647437f9f9ba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228796"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974952"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Inrichten voor multitenancy 
 
@@ -146,7 +146,7 @@ Als u het opschonen eenvoudiger wilt maken, worden deze Vm's toegevoegd aan deze
     --authentication-type password
     ```
 
-    Het volt ooien van deze opdracht duurt enkele minuten. Nadat de opdracht is voltooid, noteert u de waarde voor **publicIpAddress** voor de VM in de regio VS-Oost.
+    Het uitvoeren van deze opdracht duurt enkele minuten. Nadat de opdracht is voltooid, noteert u de waarde voor **publicIpAddress** voor de VM in de regio VS-Oost.
 
 1. Voer in het Azure Cloud Shell de opdracht uit voor het maken van een VM met de regio **VS-West** nadat u de volgende para meters in de opdracht hebt gewijzigd:
 
@@ -167,7 +167,7 @@ Als u het opschonen eenvoudiger wilt maken, worden deze Vm's toegevoegd aan deze
     --authentication-type password
     ```
 
-    Het volt ooien van deze opdracht duurt enkele minuten. Nadat de opdracht is voltooid, noteert u de waarde voor **publicIpAddress** voor de VM van de regio vs-West.
+    Het uitvoeren van deze opdracht duurt enkele minuten. Nadat de opdracht is voltooid, noteert u de waarde voor **publicIpAddress** voor de VM van de regio vs-West.
 
 1. Open twee opdracht regel shells. Maak via SSH verbinding met een van de regionale Vm's in elke shell. 
 

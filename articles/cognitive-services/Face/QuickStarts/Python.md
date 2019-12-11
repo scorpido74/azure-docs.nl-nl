@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Gezichten in een afbeelding detecteren met de Azure REST API en Python'
+title: 'Snelstart: gezichten in een afbeelding detecteren met de Azure REST API en Python'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart gebruikt u de Azure Face REST API met Python om gezichten in een afbeelding te detecteren.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a00ec77148433d64f2980b1bb47d753d70a5ec20
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: c4d136eaf0f6c4ac64093f417f144e422e2da52f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859032"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977910"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Quickstart: Gezichten in een afbeelding detecteren met de Face REST API en Python
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Snelstart: Gezichten in een afbeelding detecteren met de Face-REST API en Python
 
 In deze snelstart gebruikt u de Azure Face REST API met Python om menselijke gezichten in een afbeelding te detecteren. Er worden kaders rond de gezichten getekend en informatie over geslacht en leeftijd over de afbeelding heen weergegeven.
 
@@ -40,10 +40,10 @@ U kunt deze snelstart als Jupyter-notebook uitvoeren op [MyBinder](https://mybin
 
 U kunt deze Snelstartgids ook uitvoeren vanaf de opdracht regel met de volgende stappen:
 
-1. Kopieer de volgende code naar een teksteditor.
+1. Kopieer de volgende code in een teksteditor.
 1. Breng waar nodig de volgende wijzigingen in code aan:
     1. Vervang de waarde van `subscription_key` door uw abonnementssleutel.
-    1. Bewerk de waarde van `face_api_url` om de eind punt-URL voor uw face-API-resource op te neemt.
+    1. Bewerk de waarde van `face_api_url` om de eind punt-URL voor uw Face-API resource op te neemt.
     1. Vervang eventueel de waarde van `image_url` door de URL van een andere afbeelding die u wilt analyseren.
 1. Sla de code op als een bestand met de extensie `.py`. Bijvoorbeeld `detect-face.py`.
 1. Open een opdrachtpromptvenster.

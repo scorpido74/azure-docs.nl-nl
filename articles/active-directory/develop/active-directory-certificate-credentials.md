@@ -1,5 +1,5 @@
 ---
-title: Certificaat referenties in azure AD
+title: Certificaat referenties voor Azure AD
 titleSuffix: Microsoft identity platform
 description: In dit artikel worden de registratie en het gebruik van certificaat referenties voor toepassings verificatie beschreven
 services: active-directory
@@ -15,20 +15,21 @@ ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b0dd42aeaa8a7a5d9f1cc28b409a8d8dbf92304
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d37b390e39d2b991ea01468feffbe39c9578af54
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845362"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963865"
 ---
-# <a name="certificate-credentials-for-application-authentication"></a>Certificaat referenties voor toepassings verificatie
+# <a name="azure-ad-application-authentication-certificate-credentials"></a>Referenties voor Azure AD-toepassings verificatie certificaat
 
 Met Azure Active Directory (Azure AD) kan een toepassing eigen referenties gebruiken voor verificatie, bijvoorbeeld in de OAuth 2,0-client referenties toekenning stroom ([v 1.0](v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) en de namens-stroom ([v 1.0](v1-oauth2-on-behalf-of-flow.md), [v 2.0](v2-oauth2-on-behalf-of-flow.md)).
 
 Een van de referenties die een toepassing voor verificatie kan gebruiken is een JSON Web Token (JWT)-verklaring die is ondertekend met een certificaat waarvan de toepassing eigenaar is.
 
 ## <a name="assertion-format"></a>Bevestigings indeling
+
 Als u de bewering wilt berekenen, kunt u een van de vele [JSON Web token](https://jwt.ms/) bibliotheken gebruiken in de taal van uw keuze. De gegevens die door het token worden uitgevoerd, zijn als volgt:
 
 ### <a name="header"></a>Header

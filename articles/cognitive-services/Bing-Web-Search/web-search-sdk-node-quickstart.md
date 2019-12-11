@@ -1,37 +1,36 @@
 ---
 title: 'Snelstartgids: de Bing Web Search SDK voor Node.js gebruiken'
 titleSuffix: Azure Cognitive Services
-description: Met de Bing Web Search SDK kunt u Bing Web Search eenvoudig integreren in uw Node.js-toepassing. In deze snelstartgids leert u hoe u een instantie kunt maken voor een client, een aanvraag kunt verzenden en het antwoord kunt afdrukken.
+description: Met de Bing Web Search SDK kunt u Bing Web Search eenvoudig integreren in uw Node.js-toepassing. In deze snelstartgids leert u hoe u een instantie maakt voor een client, een aanvraag verzendt en het antwoord weergeeft.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 79f0630c65aa438ac5d831b03842cc74b609cd3b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 059862255ca2cf0ce435496bf22d866a37c8be71
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132732"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977162"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>Snelstartgids: de Bing Web Search SDK voor Node.js gebruiken
 
-Met de Bing Web Search SDK kunt u Bing Web Search eenvoudig integreren in uw Node.js-toepassing. In deze snelstartgids leert u hoe u een instantie kunt maken voor een client, een aanvraag kunt verzenden en het antwoord kunt afdrukken.
+Met de Bing Web Search SDK kunt u Bing Web Search eenvoudig integreren in uw Node.js-toepassing. In deze snelstartgids leert u hoe u een instantie maakt voor een client, een aanvraag verzendt en het antwoord weergeeft.
 
 Wilt u de code nu zien? De [voorbeelden voor de Bing Web Search SDK voor Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples) zijn beschikbaar op GitHub.
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-Zie ook [Prijsinformatie Cognitive Services - Bing Zoeken-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="prerequisites"></a>Vereisten
 U moet over het volgende beschikken voordat u verdergaat met deze snelstartgids:
 
 * [Node.js 6](https://nodejs.org/en/download/) of later
 * Een abonnementssleutel  
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
+
 
 ## <a name="set-up-your-development-environment"></a>Uw ontwikkelomgeving instellen
 

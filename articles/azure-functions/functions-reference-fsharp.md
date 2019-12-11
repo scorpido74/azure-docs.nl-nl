@@ -6,19 +6,19 @@ ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: cf080b841e5fb3bbf3b36a2629a619f77fe52ddd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226753"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975003"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Naslag F# informatie voor Azure functions ontwikkel aars
 
 F#voor Azure Functions is een oplossing voor het eenvoudig uitvoeren van kleine stukjes code of ' functions ' in de Cloud. Gegevens stromen naar uw F# functie via functie argumenten. Argument namen zijn opgegeven in `function.json`en er zijn vooraf gedefinieerde namen voor het openen van items zoals de functie logger en annulerings tokens. 
 
 >[!IMPORTANT]
->F#script (. FSX) wordt alleen ondersteund door [versie 1. x](functions-versions.md#creating-1x-apps) van de Azure functions runtime. Als u met versie 2 F# . x runtime wilt gebruiken, moet u een vooraf gecompileerde F# klassen bibliotheek project (. FS) gebruiken. U maakt, beheert en publiceert een F# klassen bibliotheek project met behulp van Visual Studio, zoals u zou doen met een [ C# Class Library-project](functions-dotnet-class-library.md). Zie [Azure functions runtime versies Overview](functions-versions.md)(Engelstalig) voor meer informatie over functies.
+>F#script (. FSX) wordt alleen ondersteund door [versie 1. x](functions-versions.md#creating-1x-apps) van de Azure functions runtime. Als u wilt gebruiken F# met versie 2. x en latere versies van de runtime, moet u een vooraf gecompileerde F# klassen bibliotheek project (. FS) gebruiken. U maakt, beheert en publiceert een F# klassen bibliotheek project met behulp van Visual Studio, zoals u zou doen met een [ C# Class Library-project](functions-dotnet-class-library.md). Zie [Azure functions runtime versies Overview](functions-versions.md)(Engelstalig) voor meer informatie over functies.
 
 In dit artikel wordt ervan uitgegaan dat u de [Azure functions Naslag informatie voor ontwikkel aars](functions-reference.md)al hebt gelezen.
 
@@ -48,7 +48,7 @@ FunctionsProject
 
 Er is een gedeeld [host. json](functions-host-json.md) -bestand dat kan worden gebruikt voor het configureren van de functie-app. Elke functie heeft een eigen code bestand (. FSX) en een bindings configuratie bestand (function. json).
 
-De bindings uitbreidingen vereist in [versie 2. x](functions-versions.md) van de functions runtime worden gedefinieerd in het `extensions.csproj` bestand, met de daad werkelijke bibliotheek bestanden in de map `bin`. Wanneer u lokaal ontwikkelt, moet u [bindings uitbreidingen registreren](./functions-bindings-register.md#extension-bundles). Bij het ontwikkelen van functies in de Azure Portal, wordt deze registratie voor u uitgevoerd.
+De bindings uitbreidingen die zijn vereist in [versie 2. x en latere versies](functions-versions.md) van de functions runtime worden gedefinieerd in het `extensions.csproj` bestand, met de daad werkelijke bibliotheek bestanden in de map `bin`. Wanneer u lokaal ontwikkelt, moet u [bindings uitbreidingen registreren](./functions-bindings-register.md#extension-bundles). Bij het ontwikkelen van functies in de Azure Portal, wordt deze registratie voor u uitgevoerd.
 
 ## <a name="binding-to-arguments"></a>Binding met argumenten
 Elke binding ondersteunt een aantal argumenten, zoals beschreven in de [Naslag informatie over Azure functions triggers en bindingen](functions-triggers-bindings.md). Een van de argument bindingen die een BLOB-trigger ondersteunt, is bijvoorbeeld een POCO die kan worden uitgedrukt met behulp van een F# record. Bijvoorbeeld:

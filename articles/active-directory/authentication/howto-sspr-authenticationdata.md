@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 12/09/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1c00d0f4ba365442762df6e041f02ea0a39f099
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a14338e552250ac63c344365099a16f20616ea9a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847300"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964022"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Wacht woord opnieuw instellen implementeren zonder registratie door eind gebruiker vereist
 
-Voor het implementeren van Azure Active Directory (Azure AD) selfservice voor wachtwoord herstel (SSPR), moeten er verificatie gegevens aanwezig zijn. Sommige organisaties hebben hun gebruikers hun verificatie gegevens zelf invoeren. Maar veel organisaties synchroniseren liever met gegevens die al bestaan in Active Directory. De gesynchroniseerde gegevens worden beschikbaar gesteld aan Azure AD en SSPR zonder tussen komst van de gebruiker als u:
+Voor het implementeren van Azure Active Directory (Azure AD) selfservice voor wachtwoord herstel (SSPR), moeten er verificatie gegevens aanwezig zijn. Sommige organisaties hebben hun gebruikers hun verificatie gegevens zelf invoeren. Andere organisaties synchroniseren liever met gegevens die al bestaan in Active Directory. Deze gesynchroniseerde gegevens worden beschikbaar gesteld aan Azure AD en SSPR zonder tussen komst van de gebruiker als u aan de volgende vereisten voldoet:
 
 * De gegevens in uw on-premises Directory goed indelen.
 * Configureer [Azure AD Connect met behulp van de Express-instellingen](../hybrid/how-to-connect-install-express.md).
@@ -41,21 +41,18 @@ Als u de standaard instellingen in Azure AD Connect gebruikt, worden de volgende
 | telephoneNumber | Zakelijke telefoon |
 | mobiele | Mobiele telefoon |
 
-Zodra een gebruiker zijn of haar mobiele telefoon nummer heeft geverifieerd, wordt het telefoon veld onder verificatie contact gegevens in azure AD ook ingevuld met dat nummer.
+Nadat een gebruiker zijn of haar mobiele telefoon nummer heeft geverifieerd, wordt het *telefoon* veld onder **verificatie contact gegevens** in azure AD ook ingevuld met dit nummer.
 
 ## <a name="authentication-contact-info"></a>Contact gegevens voor verificatie
 
-Een globale beheerder kan de contact gegevens voor de verificatie van een gebruiker hand matig instellen, zoals wordt weer gegeven in de volgende scherm afbeelding.
+Op de pagina **verificatie methoden** voor een Azure AD-gebruiker in de Azure Portal, kan een globale beheerder de contact gegevens voor de verificatie hand matig instellen, zoals wordt weer gegeven in de volgende voorbeeld scherm afbeelding:
 
 ![Contact gegevens voor verificatie voor een gebruiker in azure AD][Contact]
 
-Als het veld telefoon is ingevuld en mobiele telefoon is ingeschakeld in het SSPR-beleid, ziet de gebruiker dat nummer op de registratie pagina voor het opnieuw instellen van het wacht woord en tijdens de werk stroom voor het opnieuw instellen van wacht woorden.
-
-Het veld alternatief telefoon nummer wordt niet gebruikt voor het opnieuw instellen van het wacht woord.
-
-Als het veld E-mail is ingevuld en e-mail adres is ingeschakeld in het SSPR-beleid, ziet de gebruiker dat e-mail bericht op de registratie pagina voor het opnieuw instellen van het wacht woord en tijdens de werk stroom voor wacht woord opnieuw instellen.
-
-Als het veld alternatieve e-mail gevuld is en e-mail adres is ingeschakeld in het SSPR-beleid, wordt dat e-mail bericht **niet** weer geven op de registratie pagina voor het opnieuw instellen van het wacht woord, maar ze worden wel weer geven tijdens de werk stroom voor het opnieuw instellen van het wacht woord.
+* Als het veld **telefoon** is ingevuld en **mobiele telefoon** is ingeschakeld in het SSPR-beleid, ziet de gebruiker dat nummer op de registratie pagina voor het opnieuw instellen van het wacht woord en tijdens de werk stroom voor het opnieuw instellen van wacht woorden.
+* Het veld **alternatief telefoon nummer** wordt niet gebruikt voor het opnieuw instellen van wacht woorden.
+* Als het veld **e-mail** is ingevuld en **e-mail adres** is ingeschakeld in het SSPR-beleid, ziet de gebruiker dat e-mail bericht op de registratie pagina voor het opnieuw instellen van het wacht woord en tijdens de werk stroom voor wacht woord opnieuw instellen.
+* Als het veld **alternatief e-mail** gevuld is en **e-mail adres** is ingeschakeld in het SSPR-beleid, ziet de gebruiker dat e-mail bericht **niet** op de registratie pagina voor het opnieuw instellen van het wacht woord, maar ze worden weer geven tijdens de werk stroom voor wacht woord opnieuw instellen.
 
 ## <a name="security-questions-and-answers"></a>Beveiligings vragen en-antwoorden
 
@@ -69,7 +66,7 @@ Wanneer een gebruiker zich registreert, stelt de registratie pagina de volgende 
 * **E-mail verificatie**
 * **Beveiligings vragen en-antwoorden**
 
-Als u een waarde voor **mobiele telefoon** of **alternatief e-mail adres**hebt ingevoerd, kunnen gebruikers deze waarden direct gebruiken om hun wacht woord opnieuw in te stellen, zelfs als ze niet zijn geregistreerd voor de service. Bovendien zien gebruikers die waarden wanneer ze zich voor de eerste keer registreren en ze kunnen ze wijzigen als ze dat willen. Nadat de registratie is geslaagd, worden deze waarden in de velden **verificatie telefoon** en **verificatie-e** respectievelijk bewaard.
+Als u een waarde voor **mobiele telefoon** of **alternatief e-mail adres**hebt ingevoerd, kunnen gebruikers deze waarden direct gebruiken om hun wacht woord opnieuw in te stellen, zelfs als ze niet zijn geregistreerd voor de service. Bovendien zien gebruikers die waarden wanneer ze zich voor de eerste keer registreren en ze kunnen ze wijzigen als ze dat willen. Nadat de registratie is geslaagd, worden deze waarden respectievelijk opgeslagen in de velden **verificatie telefoon** en **verificatie-e** .
 
 ## <a name="set-and-read-the-authentication-data-through-powershell"></a>De verificatie gegevens instellen en lezen via Power shell
 

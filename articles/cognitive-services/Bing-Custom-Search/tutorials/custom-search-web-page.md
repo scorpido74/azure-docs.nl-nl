@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: tutorial
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: aee84a4d9203d80b81f773df30d68c3539e5ec7c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5a4d797fecca8e040a6e22bf59a5776b1ffff80f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564698"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977196"
 ---
-# <a name="tutorial-build-a-custom-search-web-page"></a>Zelfstudie: Een Aangepaste zoekopdrachten-webpagina bouwen
+# <a name="tutorial-build-a-custom-search-web-page"></a>Zelfstudie: Een webpagina voor aangepaste zoekopdrachten maken
 
 Met Bing Aangepaste zoekopdrachten kunt u op maat gemaakte zoekervaringen maken voor onderwerpen die u interesseren. Als u bijvoorbeeld een website over martial arts hebt die een zoekervaring biedt, kunt u de domeinen, subsites en webpagina's opgeven waarin Bing moet zoeken. Uw gebruikers zien dan zoekresultaten die zijn afgestemd op de inhoud die ze interessant vinden in plaats van dat ze door pagina's met algemene zoekresultaten moeten bladeren die mogelijk niet-relevante inhoud bevatten. 
 
@@ -79,7 +79,7 @@ Als u resultaten van bepaalde websites of URL's wilt uitsluiten, voegt u deze to
 
 ## <a name="add-pinned-entries"></a>Vastgemaakte vermeldingen toevoegen
 
-Als u een bepaalde webpagina altijd aan het begin van de lijst met zoekresultaten wilt weergeven, voegt u de webpagina en zoekterm toe aan het tabblad **Pinned**. Het tabblad **Pinned** bevat een lijst van paren van webpagina's en zoektermen die de webpagina opgeven die als het beste resultaat wordt weergegeven voor een specifieke query. De webpagina wordt alleen vastgemaakt als de querytekenreeks van de gebruiker overeenkomt met de querytekenreeks van de vastgemaakte webpagina, op basis van de voorwaarde voor overeenkomst van de vastgemaakte pagina. In zoekopdrachten worden alleen geïndexeerde webpagina's weergegeven. Zie [Uw aangepaste weergave definiëren](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results) voor meer informatie.
+Als u een specifieke webpagina wilt vastmaken aan de bovenkant van de zoek resultaten, voegt u de webpagina en de query term toe aan het tabblad **vastgemaakt** . Het tabblad **vastgemaakte** bevat een lijst met de webpagina-en query term paren waarmee de webpagina wordt opgegeven die als het beste resultaat voor een specifieke query wordt weer gegeven. De webpagina wordt alleen vastgemaakt als de querytekenreeks van de gebruiker overeenkomt met de querytekenreeks van de vastgemaakte webpagina, op basis van de voorwaarde voor overeenkomst van de vastgemaakte pagina. In zoekopdrachten worden alleen geïndexeerde webpagina's weergegeven. Zie [Uw aangepaste weergave definiëren](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results) voor meer informatie.
 
 1. Klik op de pagina **Configuration** op het tabblad **Pinned** en voer de webpagina en zoekterm in van de webpagina die u als het bovenste resultaat in de lijst wilt weergeven.  
   
@@ -127,10 +127,10 @@ Custom Search biedt een gehoste gebruikersinterface voor het weergeven van het J
 
 Er zijn twee manieren om de gehoste-gebruikersinterface te gebruiken.  
 
-- Optie 1: Het opgegeven JavaScript-fragment integreren in de toepassing.
-- Optie 2: Het opgegeven HTML-eindpunt gebruiken.
+- Optie 1: het opgegeven JavaScript-fragment integreren in uw toepassing.
+- Optie 2: het opgegeven HTML-eindpunt gebruiken.
 
-In de rest van deze zelfstudie wordt het volgende toegelicht: **Optie 1: JavaScript-fragment**.  
+In de rest van deze zelfstudie wordt de **optie met het Javascript-fragment toegelicht**.  
 
 ## <a name="set-up-your-visual-studio-solution"></a>Uw Visual Studio-oplossing instellen
 

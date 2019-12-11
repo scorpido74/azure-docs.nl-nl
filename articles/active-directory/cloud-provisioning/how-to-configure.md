@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 956962503dcb3a6355d455ff96744143c5965d1e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f08a1359cfd8a2793d92315a6b03567b0b3f847d
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794300"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997119"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-new-configuration"></a>Nieuwe configuratie voor het inrichten van Cloud Azure AD Connect
 
@@ -32,8 +32,7 @@ Als u inrichting wilt configureren, gebruikt u de volgende stappen:
 
 4.  Klik op **nieuwe configuratie**.
 5.  Op het scherm configuratie is het on-premises domein vooraf ingevuld
-6. Voer een **e-mail melding**in. Deze e-mail wordt op de hoogte gesteld 
-7. Wanneer het inrichten niet in orde is.  
+6. Voer een **e-mail melding**in. Deze e-mail wordt gewaarschuwd wanneer het inrichten niet in orde is.  
 8. Verplaats de selector om deze in te **scha kelen** en klik op **Opslaan**.
 ![](media/tutorial-single-forest/configure2.png)
 

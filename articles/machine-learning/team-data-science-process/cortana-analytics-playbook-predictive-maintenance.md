@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: ec87146c721222702073eae067a259aa9848d0f7
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: d5201cd2e7c117e1229fcd04d77e8c429c1fc8ba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048988"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977128"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI-handleiding voor oplossingen voor Voorspellend onderhoud
 
@@ -203,7 +203,9 @@ De zakelijke vereisten definiëren hoe ver moet het model in de toekomst te voor
 #### <a name="rolling-aggregates"></a>Rolling statistische functies
 Voor elke record van een asset, een rolling venster van de grootte "letter W" gekozen als het aantal eenheden van de tijd voor het berekenen van de statistische functies. Lag functies vervolgens worden berekend met behulp van de perioden W _vóór de datum_ van dat record. De blauwe regels worden weergegeven in afbeelding 1, sensorwaarden voor een asset met elke eenheid van de tijd geregistreerd. Ze geven aan een oplopende gemiddelde van waarden van de functie over een venster van de grootte W = 3. Het oplopende gemiddelde wordt berekend voor alle records met een tijdstempel in het bereik t<sub>1</sub> (in oranje) op t<sub>2</sub> (in het groen). De waarde voor W is doorgaans in minuten of uren, afhankelijk van de aard van de gegevens. Maar voor bepaalde problemen met een grote W (bijvoorbeeld 12 maanden) verzamelen over de volledige geschiedenis van een asset tot het moment van de record.
 
-![Afbeelding 1. Statistische functies rolling](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png) afbeelding 1. Rolling statistische functies
+![Afbeelding 1. Rolling statistische functies](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png)
+
+Afbeelding 1. Rolling statistische functies
 
 Voorbeelden van het huidige statistische functies gedurende een bepaalde periode zijn aantal, gemiddelde, CUMESUM (cumulatieve som) metingen, min/max-waarden. Bovendien worden afwijking, standaarddeviatie en aantal van de uitschieters dan N standaardafwijkingen vaak gebruikt. Voorbeelden van statistische functies die kunnen worden toegepast voor de [gebruiksvoorbeelden](#sample-pdm-use-cases) in deze handleiding worden hieronder vermeld. 
 - _Vertraging Flight_: aantal foutcodes in de afgelopen dag/week.
@@ -217,7 +219,9 @@ Er is een andere handige techniek in PdM trend wijzigingen, pieken en verandert 
 #### <a name="tumbling-aggregates"></a>Tumblingvenstertrigger statistische functies
 Voor elke gelabelde record van een Asset wordt een venster met een grootte van _w-<sub>k</sub>_  gedefinieerd, waarbij _k_ het aantal vensters van grootte _w_is. Aggregaties worden vervolgens gemaakt over _k_ _tumblingvenstertriggers Windows_ _w-k, w-<sub>(k-1)</sub>,..., w-<sub>2</sub>, W-<sub>1</sub>_  voor de peri Oden vóór de tijds tempel van een record. _k_ mag bestaan uit een klein aantal om vast te leggen op korte termijn effecten of een groot aantal om vast te leggen op de lange termijn verslechtering van de patronen. (Zie afbeelding 2).
 
-![Afbeelding 2. Tumblingvenstertrigger statistische functies](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png) afbeelding 2. Statistische functies tumbling
+![Afbeelding 2. Statistische functies tumbling](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png)
+
+Afbeelding 2. Statistische functies tumbling
 
 Functies bijvoorbeeld vertragingstijd voor de wind maar use-case kan worden gemaakt met W = 1 en k = 3. Ze impliceren de vertraging voor elk van de afgelopen drie maanden met behulp van de boven- en uitbijters.
 
@@ -227,7 +231,7 @@ Technische specificaties van de uitrusting zoals datum van de productie, modelnu
 
 De gegevens voorbereiden pogingen tot nu toe is behandeld moeten leiden tot de gegevens wordt geordend zoals hieronder wordt weergegeven. Training, test en validatie van gegevens, moet deze logische schema (in dit voorbeeld laat zien in eenheden van dagen) hebben.
 
-| Activa-id | Time | \<functie kolommen > | Label |
+| Activa-id | Tijd | \<functie kolommen > | Label |
 | ---- | ---- | --- | --- |
 | A123 |Dag 1 | . . . | . |
 | A123 |Dag 2 | . . . | . |
@@ -262,7 +266,9 @@ Bij deze techniek worden twee soorten training voorbeelden aangeduid. Voorbeeld 
 #### <a name="label-construction-for-binary-classification"></a>Label-constructie voor binaire classificatie
 De vraag hier is: "Wat is de kans dat de asset niet wordt in de volgende X-tijdseenheid?" Beantwoord deze vraag, label X records vóór de fout van een asset als "over naar de mislukt" (label = 1), en alle andere records als zijnde "normale" labelen (label = 0). (Zie afbeelding 3).
 
-![Afbeelding 3. Labels voor binaire classificatie](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png) afbeelding 3. Labels voor binaire classificatie
+![Afbeelding 3. Labels voor binaire classificatie](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png)
+
+Afbeelding 3. Labels voor binaire classificatie
 
 Voorbeelden van de strategie voor enkele van de use cases labels worden hieronder vermeld.
 - _Flight vertragingen_: X 1 dag kan worden gekozen voor het voorspellen van vertragingen in de volgende 24 uur. Vervolgens alle vluchten die zich binnen 24 uur vóór de fouten zijn gelabeld als 1.
@@ -277,7 +283,9 @@ Regressiemodellen worden gebruikt om _compute van de resterende levensduur (RUL)
 #### <a name="label-construction-for-regression"></a>Label-constructie voor regressie
 De vraag hier is: "Wat is de resterende levensduur (RUL) van de apparatuur?" Bereken het label om te worden van het aantal eenheden van de resterende voorafgaand aan de volgende fout tijd voor elke record vóór de fout. Labels zijn bij deze methode hoeft continue variabelen. (Zie afbeelding 4)
 
-![Afbeelding 4. Labels voor regressie](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png) afbeelding 4. Labels voor regressie
+![Afbeelding 4. Labels voor regressie](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png)
+
+Afbeelding 4. Labels voor regressie
 
 Voor regressie, wordt labeling gedaan met een verwijzing naar een punt van mislukken. De berekening is niet mogelijk zonder te weten hoe lang de asset is hebt voordat er een fout. Dus worden daarentegen binaire indeling, activa zonder fouten in de gegevens niet gebruikt voor modellen. Dit probleem beste worden verwerkt met een andere statistische techniek [Overlevingsanalyse](https://en.wikipedia.org/wiki/Survival_analysis). Maar potentiële problemen kunnen ontstaan wanneer deze techniek wordt toegepast op PdM van use cases die betrekking hebben op de tijd heen variëren gegevens met regelmatige intervallen. Zie voor meer informatie over Overlevingsanalyse [dit één pager](https://www.cscu.cornell.edu/news/news.php/stnews78.pdf).
 
@@ -289,11 +297,15 @@ Meerdere klasse classificatietechnieken kunnen worden gebruikt in PdM oplossinge
 #### <a name="label-construction-for-multi-class-classification"></a>Label-constructie voor ROC-classificatie
 De vraag hier is: "Wat is de kans dat een asset niet wordt in de volgende _nZ_ tijdseenheden waar _n_ is het aantal perioden?" Als u wilt deze vraag te beantwoorden, een label nZ records vóór de fout van een asset met behulp van buckets van tijd (3Z, 2Z, Z). Label alle andere records "normale" (label = 0). Bij deze methode hoeft de doelvariabele bevat _categorische_ waarden. (Zie afbeelding 5).
 
-![Afbeelding 5. Fout tijd voorspelling labels voor multiklassen classificatie](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) afbeelding 5. Labels voor classificatie ROC voor fout tijd voorspelling
+![Afbeelding 5. Voorspellings labels voor uitval tijd voor classificatie met een multi klasse](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png)
+
+Afbeelding 5. Labels voor classificatie ROC voor fout tijd voorspelling
 
 De vraag hier is: "Wat is de kans dat de asset niet wordt in de volgende X-tijdseenheid vanwege hoofdmap oorzaak/probleem _P<sub>ik</sub>_ ?" waar _ik_ is het aantal mogelijke oorzaken. Beantwoord deze vraag, label X records vóór de fout van een asset als ' over mislukken vanwege hoofdoorzaak _P<sub>ik</sub>_ ' (label = _P<sub>ik</sub>_ ). Label alle records als zijnde "normale" (label = 0). In deze methode zijn labels ook categorische (Zie afbeelding 6).
 
-![Afbeelding 6. Hoofdoorzaak voorspelling labels voor multiklassen classificatie](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) afbeelding 6. Labels voor classificatie ROC voor hoofdmap oorzaak voorspelling
+![Afbeelding 6. Voor Spellings labels voor de hoofd oorzaak voor de classificatie met een klasse](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png)
+
+Afbeelding 6. Labels voor classificatie ROC voor hoofdmap oorzaak voorspelling
 
 Het model wordt de kans op mislukte vanwege elk toegewezen _P<sub>ik</sub>_  en de kans op fouten. Deze kansen kunnen worden besteld door magnitude om toe te staan voorspelling van de problemen die zijn ondergebracht in de toekomst.
 
@@ -329,7 +341,9 @@ Wordt ervan uitgegaan dat u een stroom gebeurtenissen, zoals de metingen van div
 
 Voor tijdsafhankelijke splitsing, kies een _training breekpunt tijd T<sub>c</sub>_  op waarop u wilt een model te trainen met hyperparameters afgestemd op met behulp van historische gegevens maximaal T<sub>c</sub>. Om te voorkomen dat lekken van toekomstige labels die buiten T<sub>c</sub> in de trainingsgegevens, kiest u de meest recente tijd voor het label training voorbeelden moet X eenheden voordat T<sub>c</sub>. Elke vierkant vertegenwoordigt in het voorbeeld in afbeelding 7 wordt weergegeven, een record in de gegevensset waarop functies en labels worden berekend, zoals hierboven beschreven. De afbeelding ziet u de records die moeten worden geplaatst in trainings- en testsets voor X = 2 en W = 3:
 
-![Afbeelding 7. Tijdafhankelijke splitsing voor binaire classificatie](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png) afbeelding 7. Tijdafhankelijke splitsing voor binaire classificatie
+![Afbeelding 7. Tijdafhankelijke splitsing voor binaire classificatie](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png)
+
+Afbeelding 7. Tijdafhankelijke splitsing voor binaire classificatie
 
 De groene kwadraten vertegenwoordigen records die behoren tot de tijdseenheden die kunnen worden gebruikt voor de training. Elk voorbeeld training wordt gegenereerd op basis van de afgelopen drie perioden voor het genereren van de functie en twee toekomstige perioden voor labelen voordat T<sub>c</sub>. Wanneer een deel van de twee toekomstige perioden is meer dan T<sub>c</sub>, dat voorbeeld uitsluiten van de set trainingsgegevens, omdat er geen zichtbaarheid aangenomen meer dan T dat wordt<sub>c</sub>.
 
@@ -411,11 +425,11 @@ Het laatste gedeelte van deze handleiding bevat een lijst van PdM oplossingssjab
 
 | # | Titel | Beschrijving |
 |--:|:------|-------------|
-| 2 | [De sjabloon voor Voorspellend onderhoud van Azure-oplossing](https://github.com/Azure/AI-PredictiveMaintenance) | Een sjabloon voor open-source oplossing die laat zien van ML-modellen en een volledige Azure-infrastructuur kan ondersteunen van scenario's voor Voorspellend onderhoud in de context van het externe controle IoT. |
+| 2 | [De sjabloon voor Voorspellend onderhoud van Azure-oplossing](https://github.com/Azure/AI-PredictiveMaintenance) | Een open-source oplossings sjabloon waarmee Azure ML-modellering en een volledige Azure-infra structuur kunnen worden ondersteund voor het ondersteunen van voorspellende onderhouds scenario's in de context van IoT externe controle. |
 | 3 | [Deep Learning voor Predictief onderhoud](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Azure-notitieblok met een demo-oplossing van het gebruik van LSTM (lange termijn geheugen)-netwerken (een klasse van terugkerende Neurale netwerken) voor Voorspellend onderhoud, met een [blogbericht op dit voorbeeld](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
 | 4 | [Voorspeld onderhoud model handleiding in R](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | Handleiding voor PdM modellen met behulp van scripts in R.|
 | 5 | [Azure Voorspellend onderhoud voor lucht-en ruimtevaart](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Een van de eerste PdM oplossingssjablonen op basis van Azure ML v1.0 voor het onderhoud van vliegtuigmotoren. Deze handleiding afkomstig is van dit project. |
-| 6 | [Azure AI-werkset voor IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge) | AI in de IoT edge met behulp van TensorFlow; Toolkit pakketten deep learning-modellen in Azure IoT Edge-compatibele Docker-containers en deze modellen als REST-API's weer te geven.
+| 6 | [Azure AI-werkset voor IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge) | AI in het IoT Edge met behulp van tensor flow; Toolkit verpakt uitgebreide leer modellen in Azure IoT Edge-compatibele docker-containers en maakt deze modellen beschikbaar als REST Api's.
 | 7 | [Azure IoT voor voorspeld onderhoud](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT Suite, pc's - vooraf geconfigureerde oplossing. Onderhoud van vliegtuigmotoren-PdM sjabloon met IoT Suite. [Een ander document](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) en [scenario](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) die betrekking hebben op hetzelfde project. |
 | 8 | [Sjabloon voor Voorspellend onderhoud met behulp van SQL Server R Services](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | Demo van resterende levensduur scenario op basis van R services. |
 | 9 | [Handleiding voor voorspeld onderhoud model](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | Gegevensset-functie voor vliegtuigen onderhoud is gebouwd met behulp van R met [experimenten](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1) en [gegevenssets](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1) en [Azure notebook](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) en [experimenten](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)in AzureML v1.0|

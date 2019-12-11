@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b8402279b5c2717b1f73a28f2efc02ade5e479c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ccfbb31c29b9e240a4865c8d7d98d7b6af00d1fd
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175780"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963933"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Aanbevolen procedures voor voorwaardelijke toegang in Azure Active Directory
 
@@ -35,7 +35,7 @@ Wanneer u een nieuw beleid maakt, zijn er geen gebruikers, groepen, apps of toeg
 
 Als u uw beleid wilt laten werken, moet u het volgende configureren:
 
-| Wat           | Werking                                  | Waarom |
+| Wat           | Hoe                                  | Waarom |
 | :--            | :--                                  | :-- |
 | **Cloud-apps** |Selecteer een of meer apps.  | Het doel van een beleid voor voorwaardelijke toegang is om u te laten bepalen hoe geautoriseerde gebruikers toegang hebben tot Cloud-apps.|
 | **Gebruikers en groepen** | Selecteer ten minste één gebruiker of groep die is gemachtigd om toegang te krijgen tot uw geselecteerde Cloud-apps. | Een beleid voor voorwaardelijke toegang waaraan geen gebruikers en groepen zijn toegewezen, wordt nooit geactiveerd. |
@@ -45,17 +45,18 @@ Als u uw beleid wilt laten werken, moet u het volgende configureren:
 
 ### <a name="how-are-conditional-access-policies-applied"></a>Hoe wordt beleid voor voorwaardelijke toegang toegepast?
 
-Er kunnen meer dan één beleid voor voorwaardelijke toegang van toepassing zijn wanneer u een Cloud-app opent. In dit geval moet aan alle beleids regels worden voldaan. Als voor het ene beleid bijvoorbeeld MFA is vereist en de tweede een compatibel apparaat vereist, moet u MFA door lopen en een compatibel apparaat gebruiken. 
+Er kunnen meer dan één beleid voor voorwaardelijke toegang van toepassing zijn wanneer u een Cloud-app opent. In dit geval moet aan alle beleids regels worden voldaan. Als voor het ene beleid bijvoorbeeld multi-factor Authentication (MFA) is vereist en er voor een andere beleids regel een compatibel apparaat is vereist, moet u MFA volt ooien en een compatibel apparaat gebruiken. 
 
 Alle beleids regels worden in twee fasen afgedwongen:
 
-- In de **eerste** fase worden alle beleids regels geëvalueerd en worden alle toegangs controles die niet worden voldaan, verzameld. 
-
-- In de **tweede** fase wordt u gevraagd om te voldoen aan de vereisten die u niet hebt vervuld. Als een van de beleids regels toegang blokkeert, wordt u geblokkeerd en wordt niet gevraagd om te voldoen aan andere beleids elementen. Als geen van de beleids regels u blokkeert, wordt u gevraagd om aan andere beleids besturings elementen te voldoen in de volgende volg orde:
-
-   ![Bestelling](./media/best-practices/06.png)
-    
-   Externe MFA-providers en gebruiks voorwaarden komen nu voor.
+- Fase 1: 
+   - Detail verzameling: Details verzamelen om het beleid te identificeren waaraan al wordt voldaan.
+   - Tijdens deze fase kunnen gebruikers een certificaat prompt zien als de naleving van het apparaat deel uitmaakt van uw beleid voor voorwaardelijke toegang. Deze prompt kan optreden voor browser-apps wanneer het besturings systeem van het apparaat niet Windows 10 is.
+   - Fase 1 van de beleids evaluatie wordt uitgevoerd voor alle ingeschakelde beleids regels en beleids regels in de [modus alleen rapport](concept-conditional-access-report-only.md).
+- Fase 2:
+   - Afdwinging: als u de in fase 1 verzamelde gegevens wilt bekijken, moet u de gebruiker vragen om te voldoen aan aanvullende vereisten waaraan niet is voldaan.
+   - Resultaten Toep assen op sessie. 
+   - Fase 2 van de beleids evaluatie wordt uitgevoerd voor alle ingeschakelde beleids regels.
 
 ### <a name="how-are-assignments-evaluated"></a>Hoe worden toewijzingen geëvalueerd?
 
@@ -140,7 +141,7 @@ U kunt de beleids regels die u niet hebt gemaakt, migreren in de Azure Portal om
 - U kunt al uw beleids regels voor voorwaardelijke toegang beheren op één centrale locatie.
 - De klassieke Azure-Portal is buiten gebruik gesteld.   
 
-Zie [klassiek beleid migreren in de Azure Portal](policy-migration.md)voor meer informatie.
+Zie [Klassiek beleid migreren in Azure Portal](policy-migration.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

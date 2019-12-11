@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: De Bing Web Search SDK voor Python gebruiken'
+title: 'Snelstartgids: de Bing Web Search SDK voor Python gebruiken'
 titleSuffix: Azure Cognitive Services
 description: Met de Bing Web Search SDK kunt u Bing Web Search eenvoudig integreren in uw Python-toepassing. In deze snelstartgids leert u hoe u een aanvraag verzendt, een JSON-antwoord ontvangt en de resultaten filtert en parseert.
 services: cognitive-services
@@ -8,24 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: d6758fc5434406e42acf65ff3b712227b5cec0f8
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0f6dceac3e46f8e36d2da52c15c0b0696e026a0e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991625"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977213"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Quickstart: De Bing Web Search SDK voor Python gebruiken
+# <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Snelstartgids: de Bing Web Search SDK voor Python gebruiken
 
 Met de Bing Web Search SDK kunt u Bing Web Search eenvoudig integreren in uw Python-toepassing. In deze snelstartgids leert u hoe u een aanvraag verzendt, een JSON-antwoord ontvangt en de resultaten filtert en parseert.
 
 Wilt u de code nu zien? De [voorbeelden voor de Bing Web Search SDK voor Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) zijn beschikbaar op GitHub.
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-Zie ook [Prijsinformatie Cognitive Services - Bing Zoeken-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="prerequisites"></a>Vereisten
 De Bing Web Search SDK is compatibel met Python 2.7, 3.3, 3.4, 3.5 en 3.6. We raden u aan om een virtuele omgeving te gebruiken voor deze snelstartgids.
@@ -33,6 +29,8 @@ De Bing Web Search SDK is compatibel met Python 2.7, 3.3, 3.4, 3.5 en 3.6. We ra
 * Python 2.7, 3.3, 3.4, 3.5 of 3.6
 * [virtualenv](https://docs.python.org/3/tutorial/venv.html) voor Python 2.7
 * [venv](https://pypi.python.org/pypi/virtualenv) voor Python 3.x
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-and-configure-your-virtual-environment"></a>Uw virtuele omgeving maken en configureren
 
@@ -82,7 +80,7 @@ Als het antwoord webpagina's, afbeeldingen, nieuws of video's bevat, wordt het e
 
 1. Maak een nieuw Python-project met uw favoriete IDE of editor.
 
-1. Kopieer de volgende voorbeeldcode naar uw project:  
+1. Kopieer deze voorbeeld code naar uw project. `endpoint` kunnen het globale eind punt hieronder zijn of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.:  
 
     ```python
     # Import required modules.
@@ -166,13 +164,13 @@ Als het antwoord webpagina's, afbeeldingen, nieuws of video's bevat, wordt het e
 
 1. Vervang `SUBSCRIPTION_KEY` door een geldige abonnementssleutel.
 
-1. Vervang `YOUR_ENDPOINT` met uw eindpunt-url in de portal.
+1. Vervang `YOUR_ENDPOINT` door de eind punt-URL in de portal.
 
 1. Voer het programma uit. Bijvoorbeeld: `python your_program.py`.
 
 ## <a name="define-functions-and-filter-results"></a>Functies definiëren en resultaten filteren
 
-Nu u de eerste aanroep van de Bing webzoekopdrachten-API hebt aangebracht, gaan we bekijken enkele functies. De volgende gedeelten SDK-functionaliteit voor query's verfijnen en filteren van resultaten. Elke functie kan worden toegevoegd aan het Python-programma dat u in de vorige sectie hebt gemaakt.
+Nu u uw eerste oproep hebt gedaan voor de Bing Webzoekopdrachten-API, gaan we een paar functies eens bekijken. In de volgende secties wordt de SDK-functionaliteit gemarkeerd voor het verfijnen van query's en het filteren van resultaten. Elke functie kan worden toegevoegd aan het python-programma dat u in de vorige sectie hebt gemaakt.
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>Het aantal resultaten beperken dat door Bing wordt geretourneerd
 
@@ -263,7 +261,7 @@ In dit voorbeeld worden de parameters `response_filter` en `freshness` gebruikt 
 
 1. Voer het programma uit.
 
-### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Gebruik de parameters voor veilig zoeken, aantal antwoorden en het filter voor het promoten van zoekresultaten
+### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Gebruik de parameters voor veilig zoeken, aantal antwoorden en de filter voor het promoten van zoekresultaten
 
 In dit voorbeeld worden de parameters `answer_count`, `promote` en `safe_search` gebruikt om de zoekresultaten te filteren met de [`search`-methode](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) van de SDK. De `name` en `url` voor het eerste resultaat worden weergegeven.
 
