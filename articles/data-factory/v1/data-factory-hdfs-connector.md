@@ -4,25 +4,24 @@ description: Meer informatie over het verplaatsen van gegevens van on-premises H
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 3215b82d-291a-46db-8478-eac1a3219614
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ad5695f1bde1013b6a4c010f4a80256eac09fe63
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7652ab72fb972230d98913c2d7e2601737982532
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682565"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924352"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Gegevens verplaatsen van on-premises HDFS met Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1:](data-factory-hdfs-connector.md)
+> * [Versie 1](data-factory-hdfs-connector.md)
 > * [Versie 2 (huidige versie)](../connector-hdfs.md)
 
 > [!NOTE]
@@ -65,12 +64,12 @@ De volgende secties bevatten informatie over de JSON-eigenschappen die worden ge
 ## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 Een gekoppelde service koppelt een gegevens archief aan een data factory. U maakt een gekoppelde service van het type **hdfs** om een on-premises Hdfs te koppelen aan uw Data Factory. De volgende tabel bevat beschrijvingen van de JSON-elementen die specifiek zijn voor de gekoppelde service van HDFS.
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **Hdfs** |Ja |
 | url |URL naar HDFS |Ja |
 | authenticationType |Anoniem of Windows. <br><br> Als u **Kerberos-verificatie** wilt gebruiken voor HDFS-connector, raadpleegt u [deze sectie](#use-kerberos-authentication-for-hdfs-connector) om uw on-premises omgeving dienovereenkomstig in te stellen. |Ja |
-| Gebruikersnaam |Gebruikers naam voor Windows-verificatie. Geef voor Kerberos-verificatie `<username>@<domain>.com`op. |Ja (voor Windows-verificatie) |
+| userName |Gebruikers naam voor Windows-verificatie. Geef voor Kerberos-verificatie `<username>@<domain>.com`op. |Ja (voor Windows-verificatie) |
 | wachtwoord |Wacht woord voor Windows-verificatie. |Ja (voor Windows-verificatie) |
 | gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de HDFS. |Ja |
 | encryptedCredential |[New-AzDataFactoryEncryptValue-](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) uitvoer van de toegangs referentie. |Nee |
@@ -118,7 +117,7 @@ Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een 
 
 De sectie **typeProperties** verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie typeProperties voor de gegevensset van het type **file share** (inclusief HDFS-gegevensset) heeft de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | folderPath |Pad naar de map. Voorbeeld: `myfolder`<br/><br/>Escape teken ' \ ' gebruiken voor speciale tekens in de teken reeks. Bijvoorbeeld: voor folder\subfolder geeft u map\\\\submap en voor d:\samplefolder geeft u d:\\\\SampleFolder.<br/><br/>U kunt deze eigenschap combi neren met **partitionBy** om mappaden te laten baseren op de begin-en eind datum van het segment. |Ja |
 | fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: <br/><br/>`Data.<Guid>.txt` (bijvoorbeeld:: data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt |Nee |
@@ -169,7 +168,7 @@ Voor kopieer activiteit, wanneer bron van het type **FileSystemSource** de volge
 
 **FileSystemSource** ondersteunt de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
+| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
 | --- | --- | --- | --- |
 | recursive |Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen voor de opgegeven map. |True, False (standaard) |Nee |
 
@@ -456,7 +455,7 @@ Er zijn twee opties om de on-premises omgeving in te stellen, zodat u Kerberos-v
 
     1. Ga naar Serverbeheer > groepsbeleid beheer > domein >-Groepsbeleid objecten > het standaard beleid of het actieve domein en bewerk.
 
-    2. Ga in het pop-upvenster **Groepsbeleidsbeheer-editor** naar Computer configuratie > beleids regels > Windows-instellingen > beveiligings instellingen > lokaal beleid > beveiligings opties en configureer **netwerk beveiliging: versleutelings typen configureren toegestaan voor Kerberos**.
+    2. Ga in het pop-upvenster **Groepsbeleidsbeheer-editor** naar Computer Configuratie > beleid > Windows-instellingen > beveiligings instellingen > lokale beleids regels > beveiligings opties en configureer **netwerk beveiliging: Configureer versleutelings typen die zijn toegestaan voor Kerberos**.
 
     3. Selecteer de versleutelings algoritme die u wilt gebruiken bij het maken van verbinding met KDC. Normaal gesp roken hoeft u alleen maar alle opties te selecteren.
 
