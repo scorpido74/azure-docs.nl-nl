@@ -1,5 +1,6 @@
 ---
-title: Pas de gebruikers interface van uw toepassing aan met behulp van een aangepast beleid in Azure Active Directory B2C | Microsoft Docs
+title: De gebruikers interface van uw app aanpassen met een aangepast beleid
+titleSuffix: Azure AD B2C
 description: Meer informatie over het aanpassen van een gebruikers interface met behulp van een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2f0e13b4e68ee4b94a254cb8497a44cc0b8b470f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1ac0f59ea709e25f3d71a78ece5ebf40690bd3be
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209448"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949623"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Pas de gebruikers interface van uw toepassing aan met behulp van een aangepast beleid in Azure Active Directory B2C
 
@@ -63,7 +64,7 @@ Maak HTML-inhoud met de merk naam van uw product in de titel.
 
 Als u deze HTML-inhoud in Blob Storage wilt hosten, voert u de volgende stappen uit:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer in het menu **hub** **nieuwe** > **Storage** - > **opslag account**.
 1. Selecteer een **abonnement** voor uw opslag account.
 1. Maak een **resource groep** of selecteer een bestaande.
@@ -100,7 +101,7 @@ Als u een open bare container in Blob Storage wilt maken, voert u de volgende st
 Configureer de Blob-opslag voor cross-Origin-resource delen door de volgende stappen uit te voeren:
 
 1. Selecteer **CORS**in het menu.
-1. Voer `https://your-tenant-name.b2clogin.com`in voor **toegestane oorsprongen**. Vervang `your-tenant-name` door de naam van uw Azure AD B2C Tenant. Bijvoorbeeld `https://fabrikam.b2clogin.com`. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant.
+1. Voer `https://your-tenant-name.b2clogin.com`in voor **toegestane oorsprongen**. Vervang `your-tenant-name` met de naam van uw Azure AD B2C-tenant. Bijvoorbeeld `https://fabrikam.b2clogin.com`. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant.
 1. Voor **toegestane methoden**selecteert u zowel `GET` als `OPTIONS`.
 1. Voer een asterisk (*) in bij **toegestane headers**.
 1. Voer een asterisk (*) in voor **weer gegeven headers**.
@@ -173,9 +174,9 @@ De map sample_templates/Wingtip bevat de volgende HTML-bestanden:
 
 | HTML5-sjabloon | Beschrijving |
 |----------------|-------------|
-| *Phone factor. html* | Gebruik dit bestand als een sjabloon voor een multi-factor Authentication-pagina. |
-| *resetpassword. html* | Dit bestand gebruiken als een sjabloon voor een verg eten wacht woord pagina. |
-| *selfasserted. html* | Gebruik dit bestand als een sjabloon voor een aanmeldings pagina voor een sociaal account, een aanmeldings pagina voor een lokaal account of een aanmeldings pagina voor een lokaal account. |
+| *phonefactor.html* | Gebruik dit bestand als een sjabloon voor een multi-factor Authentication-pagina. |
+| *resetpassword.html* | Dit bestand gebruiken als een sjabloon voor een verg eten wacht woord pagina. |
+| *selfasserted.html* | Gebruik dit bestand als een sjabloon voor een aanmeldings pagina voor een sociaal account, een aanmeldings pagina voor een lokaal account of een aanmeldings pagina voor een lokaal account. |
 | *Unified. html* | Gebruik dit bestand als een sjabloon voor een uniforme registratie-of aanmeldings pagina. |
 | *updateprofile. html* | Gebruik dit bestand als een sjabloon voor een update pagina van een profiel. |
 
@@ -183,7 +184,7 @@ Hier volgen de stappen voor het gebruik van het voor beeld:
 
 1. Kloon de opslag plaats op uw lokale machine. Kies een sjabloon map onder sample_templates. U kunt `wingtip` of `contoso`gebruiken.
 1. Upload alle bestanden in de mappen `css`, `fonts`en `images` naar Blob-opslag, zoals beschreven in de vorige secties.
-1. Open vervolgens elk \*. html-bestand in de hoofdmap van een `wingtip` of `contoso` (afhankelijk van wat u in de eerste stap hebt geselecteerd) en vervang alle exemplaren van 'http://localhost' door de Url's van de CSS-, afbeeldings-en letter typen bestanden die u in stap 2 hebt geüpload.
+1. Open vervolgens elk \*. html-bestand in de hoofdmap van een `wingtip` of `contoso` (afhankelijk van wat u in de eerste stap hebt geselecteerd) en vervang alle exemplaren van 'http://localhost ' door de Url's van de CSS-, afbeeldings-en letter typen bestanden die u in stap 2 hebt geüpload.
 1. Sla de \*. html-bestanden op en upload deze naar de Blob-opslag.
 1. Wijzig nu het extensie bestand zoals eerder vermeld in [het bestand extensies wijzigen](#modify-the-extensions-file).
 1. Als u ontbrekende letter typen, afbeeldingen of CSS ziet, controleert u uw referenties in het uitbrei ding beleid en de \*. html-bestanden.
@@ -194,16 +195,16 @@ In het gedeelte uw aangepaste beleid voor registreren of aanmelden aanpassen heb
 
 | ID van de inhouds definitie | Beschrijving |
 |-----------------------|-------------|
-| *API. error* | **Fout pagina**. Deze pagina wordt weer gegeven wanneer er een uitzonde ring of een fout wordt aangetroffen. |
-| *API. idpselections* | Pagina voor het selecteren van de **identiteits provider**. Deze pagina bevat een lijst met id-providers waaruit de gebruiker kan kiezen tijdens het aanmelden. Deze opties zijn ondernemings-id-providers, sociale id-providers, zoals Facebook, Google + of lokale accounts. |
-| *API. idpselections. signup* | **Selectie van ID-provider voor registratie**. Deze pagina bevat een lijst met id-providers waaruit de gebruiker kan kiezen tijdens het aanmelden. Deze opties zijn ondernemings-id-providers, sociale id-providers, zoals Facebook, Google + of lokale accounts. |
-| *API. localaccountpasswordreset* | **Wachtwoord pagina verg eten**. Deze pagina bevat een formulier dat de gebruiker moet volt ooien om het opnieuw instellen van een wacht woord te initiëren.  |
-| *API. localaccountsignin* | **Aanmeldings pagina voor het lokale account**. Deze pagina bevat een aanmeld formulier voor het aanmelden met een lokaal account dat is gebaseerd op een e-mail adres of een gebruikers naam. Het formulier kan een tekstvak voor tekst invoer en wacht woord bevatten. |
-| *API. localaccountsignup* | De **registratie pagina van het lokale account**. Deze pagina bevat een aanmeld formulier voor het aanmelden voor een lokaal account dat is gebaseerd op een e-mail adres of een gebruikers naam. Het formulier kan verschillende invoer besturings elementen bevatten, zoals een tekstinvoervak, een vak voor het invoeren van een wacht woord, een keuze rondje, vervolg keuzelijsten met één selectie en selectie vakjes met meerdere selecties. |
-| *API. Phone factor* | **Multi-factor Authentication-pagina**. Op deze pagina kunnen gebruikers hun telefoon nummers (met behulp van tekst of spraak) verifiëren tijdens het registreren of aanmelden. |
-| *API. selfasserted* | De **registratie pagina voor het sociaal account**. Deze pagina bevat een aanmeldings formulier dat gebruikers moeten volt ooien wanneer ze zich aanmelden met een bestaand account van een id-provider voor sociale netwerken, zoals Facebook of Google +. Deze pagina is vergelijkbaar met de voor gaande aanmeldings pagina voor het sociaal account, met uitzonde ring van de velden voor het invoeren van wacht woorden. |
-| *API. selfasserted. profileupdate* | **Pagina Profiel bijwerken**. Deze pagina bevat een formulier dat gebruikers kunnen gebruiken om hun profiel bij te werken. Deze pagina is vergelijkbaar met de aanmeldings pagina voor het sociaal account, met uitzonde ring van de velden voor het invoeren van wacht woorden. |
-| *API. signuporsignin* | **Uniforme registratie-of aanmeldings pagina**. Op deze pagina worden zowel de registratie als het aanmelden van gebruikers verwerkt, wie ondernemings-id-providers, sociale id-providers, zoals Facebook of Google + of lokale accounts kunnen gebruiken.  |
+| *api.error* | **Fout pagina**. Deze pagina wordt weer gegeven wanneer er een uitzonde ring of een fout wordt aangetroffen. |
+| *api.idpselections* | Pagina voor het selecteren van de **identiteits provider**. Deze pagina bevat een lijst met id-providers waaruit de gebruiker kan kiezen tijdens het aanmelden. Deze opties zijn ondernemings-id-providers, sociale id-providers, zoals Facebook, Google + of lokale accounts. |
+| *api.idpselections.signup* | **Selectie van ID-provider voor registratie**. Deze pagina bevat een lijst met id-providers waaruit de gebruiker kan kiezen tijdens het aanmelden. Deze opties zijn ondernemings-id-providers, sociale id-providers, zoals Facebook, Google + of lokale accounts. |
+| *api.localaccountpasswordreset* | **Wachtwoord pagina verg eten**. Deze pagina bevat een formulier dat de gebruiker moet volt ooien om het opnieuw instellen van een wacht woord te initiëren.  |
+| *api.localaccountsignin* | **Aanmeldings pagina voor het lokale account**. Deze pagina bevat een aanmeld formulier voor het aanmelden met een lokaal account dat is gebaseerd op een e-mail adres of een gebruikers naam. Het formulier kan een tekstvak voor tekst invoer en wacht woord bevatten. |
+| *api.localaccountsignup* | De **registratie pagina van het lokale account**. Deze pagina bevat een aanmeld formulier voor het aanmelden voor een lokaal account dat is gebaseerd op een e-mail adres of een gebruikers naam. Het formulier kan verschillende invoer besturings elementen bevatten, zoals een tekstinvoervak, een vak voor het invoeren van een wacht woord, een keuze rondje, vervolg keuzelijsten met één selectie en selectie vakjes met meerdere selecties. |
+| *api.phonefactor* | **Multi-factor Authentication-pagina**. Op deze pagina kunnen gebruikers hun telefoon nummers (met behulp van tekst of spraak) verifiëren tijdens het registreren of aanmelden. |
+| *api.selfasserted* | De **registratie pagina voor het sociaal account**. Deze pagina bevat een aanmeldings formulier dat gebruikers moeten volt ooien wanneer ze zich aanmelden met een bestaand account van een id-provider voor sociale netwerken, zoals Facebook of Google +. Deze pagina is vergelijkbaar met de voor gaande aanmeldings pagina voor het sociaal account, met uitzonde ring van de velden voor het invoeren van wacht woorden. |
+| *api.selfasserted.profileupdate* | **Pagina Profiel bijwerken**. Deze pagina bevat een formulier dat gebruikers kunnen gebruiken om hun profiel bij te werken. Deze pagina is vergelijkbaar met de aanmeldings pagina voor het sociaal account, met uitzonde ring van de velden voor het invoeren van wacht woorden. |
+| *api.signuporsignin* | **Uniforme registratie-of aanmeldings pagina**. Op deze pagina worden zowel de registratie als het aanmelden van gebruikers verwerkt, wie ondernemings-id-providers, sociale id-providers, zoals Facebook of Google + of lokale accounts kunnen gebruiken.  |
 
 ## <a name="next-steps"></a>Volgende stappen
 
