@@ -22,7 +22,7 @@ Met *vertrouwde beveiligings partners* in azure firewall Manager kunt u uw vertr
 
 Zie [Wat zijn vertrouwde beveiligings partners (preview)?](trusted-security-partners.md)voor meer informatie over ondersteunde scenario's en best practice richt lijnen.
 
-De ondersteunde beveiligings partners zijn **ZScaler** en **iboss** voor deze preview. Ondersteunde regio's zijn WestCentralUS, NorthCentralUS, Westus, WestUS2 en Oost-Timor.
+De ondersteunde beveiligings partners zijn **ZScaler** en **iboss** voor deze preview. Ondersteunde regio's zijn WestCentralUS, NorthCentralUS, Westus, WestUS2 en Timor-Leste.
 
 ## <a name="prerequisites"></a>Vereisten
 
