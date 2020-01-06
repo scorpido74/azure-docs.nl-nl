@@ -3,12 +3,12 @@ title: Overzicht van het CAF Foundation-blauwdrukvoorbeeld
 description: Overzicht en architectuur van het Cloud Adoption Framework (CAF) voor Azure Foundation-blauwdrukvoorbeeld
 ms.date: 08/20/2019
 ms.topic: sample
-ms.openlocfilehash: 8339b7335ff2946dcd602db6ece4637ac4bc1d92
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 79b47127b81caf148054f4223e5fa7ad9fbf86fe
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74545438"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562558"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Overzicht van Microsoft Cloud Adoption Framework voor het Azure Foundation-blauwdrukvoorbeeld
 
@@ -43,7 +43,7 @@ Al deze elementen voldoen aan de aanbevolen procedures zoals gepubliceerd in [Az
 > Met CAF Foundation wordt een basisarchitectuur aangelegd voor workloads.
 > Naast dit fundament moet u ook de workloads zelf implementeren.
 
-Zie [Microsoft Cloud Adoption Framework voor Azure - Ready](/azure/architecture/cloud-adoption/ready/azure-readiness-guide/govern-org-compliance?tabs=AzurePolicy) voor meer informatie.
+Zie [Microsoft Cloud Adoption Framework voor Azure - Ready](/azure/cloud-adoption-framework/ready/) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

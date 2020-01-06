@@ -193,7 +193,7 @@
 - name: Verwant
   items:
     - name: Azure Machine Learning
-      href: ../service/
+      href: ../
     - name: Azure AI-galerie
       href: 'https://gallery.azure.ai'
     - name: Cortana Analytics

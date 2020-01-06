@@ -4,8 +4,6 @@
   items:
     - name: Wat is Azure IoT Central
       href: overview-iot-central.md
-    - name: Opties voor IoT-oplossing
-      href: ../core/overview-iot-options.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
     - name: Rondleiding door de gebruikersinterface
       href: overview-iot-central-tour.md
     - name: Verbinding maken
@@ -53,7 +51,7 @@
       href: concepts-architecture.md
     - name: Wat zijn toepassingssjablonen?
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Verbinding maken
       items:

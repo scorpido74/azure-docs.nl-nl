@@ -53,8 +53,6 @@
       items:
         - name: Autorisatie
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Beveiliging voor Azure Storage
-          href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Azure-opslagversleuteling
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Azure Active Directory-verificatie via SMB
@@ -85,7 +83,7 @@
       href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Veelgestelde vragen
       href: storage-files-faq.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Maken
       items:
@@ -193,7 +191,7 @@
   items:
     - name: Azure PowerShell
       href: /powershell/module/az.storage
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/storage
     - name: .NET
       items:

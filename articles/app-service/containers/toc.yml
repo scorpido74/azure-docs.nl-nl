@@ -59,7 +59,7 @@
       href: tutorial-auth-aad.md
 - name: Voorbeelden
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: ../samples-cli.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Azure PowerShell
       href: ../samples-powershell.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
@@ -177,7 +177,7 @@
           href: '../../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-service-limitations'
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/appservice
     - name: Azure PowerShell
       href: /powershell
@@ -192,7 +192,7 @@
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/app-service/'
     - name: Quotumgegevens
-      href: '../../azure-subscription-service-limits.md#app-service-limits'
+      href: '../../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits'
     - name: Service-updates
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: Migration Assistant-handleidingen

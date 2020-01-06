@@ -32,7 +32,7 @@
       href: pim-azure-resource.md
     - name: Voorwaardelijke toegang voor Azure-beheer
       href: conditional-access-azure-management.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Lijst met roldefinities weergeven
       items:
@@ -60,7 +60,7 @@
           href: role-assignments-external-users.md
         - name: PowerShell
           href: role-assignments-powershell.md
-        - name: Azure-CLI
+        - name: Azure CLI
           href: role-assignments-cli.md
         - name: REST-API
           href: role-assignments-rest.md
@@ -82,7 +82,7 @@
           href: custom-roles.md
         - name: PowerShell
           href: custom-roles-powershell.md
-        - name: Azure-CLI
+        - name: Azure CLI
           href: custom-roles-cli.md
         - name: REST-API
           href: custom-roles-rest.md
@@ -99,10 +99,10 @@
     - name: Resourceproviderbewerkingen
       href: resource-provider-operations.md
     - name: RBAC-beperkingen
-      href: '../azure-subscription-service-limits.md#role-based-access-control-limits'
+      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits'
     - name: Azure PowerShell
       href: /powershell/module/az.resources
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/role?view=azure-cli-latest
     - name: REST-API
       href: /rest/api/authorization/

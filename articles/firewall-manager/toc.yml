@@ -19,7 +19,7 @@
       href: trusted-security-partners.md
     - name: Logica voor verwerking van regels
       href: rule-processing.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Vertrouwde beveiligingspartners implementeren
       href: deploy-trusted-security-partner.md
@@ -27,7 +27,7 @@
       href: migrate-to-policy.md
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/ext/azure-firewall/network/firewall
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewall
@@ -42,11 +42,11 @@
     - name: REST
       href: /rest/api/firewall
     - name: Azure Resource Manager
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
 - name: Resources
   items:
     - name: Auteursjablonen
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
+      href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Communitysjablonen

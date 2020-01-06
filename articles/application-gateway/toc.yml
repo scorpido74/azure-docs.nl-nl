@@ -31,7 +31,7 @@
   items:
     - name: Azure PowerShell
       href: powershell-samples.md
-    - name: Azure-CLI
+    - name: Azure CLI
       href: cli-samples.md
     - name: Resource Manager-sjablonen
       href: resource-manager-template-samples.md
@@ -83,13 +83,13 @@
       href: application-gateway-websocket.md
     - name: Veelgestelde vragen
       href: application-gateway-faq.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Eén site hosten
       items:
         - name: Azure PowerShell
           href: tutorial-manage-web-traffic-powershell.md
-        - name: Azure-CLI
+        - name: Azure CLI
           href: tutorial-manage-web-traffic-cli.md
     - name: Een interne load balancer configureren
       items:
@@ -153,13 +153,13 @@
       items:
         - name: Azure PowerShell
           href: tutorial-url-route-powershell.md
-        - name: Azure-CLI
+        - name: Azure CLI
           href: tutorial-url-route-cli.md
     - name: Meerdere sites hosten
       items:
         - name: Azure PowerShell
           href: tutorial-multiple-sites-powershell.md
-        - name: Azure-CLI
+        - name: Azure CLI
           href: tutorial-multiple-sites-cli.md
     - name: Verkeer omleiden
       items:
@@ -167,7 +167,7 @@
           items:
             - name: Azure PowerShell
               href: redirect-external-site-powershell.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: redirect-external-site-cli.md
         - name: HTTP naar HTTPS
           items:
@@ -175,13 +175,13 @@
               href: redirect-http-to-https-portal.md
             - name: Azure PowerShell
               href: redirect-http-to-https-powershell.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: redirect-http-to-https-cli.md
         - name: Intern verkeer omleiden
           items:
             - name: Azure PowerShell
               href: redirect-internal-site-powershell.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: redirect-internal-site-cli.md
         - name: Webverkeer omleiden met Azure PowerShell
           href: tutorial-url-redirect-powershell.md
@@ -231,7 +231,7 @@
   items:
     - name: Inkomend verkeer voor AKS-aantekeningen
       href: ingress-controller-annotations.md
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/network/application-gateway
     - name: Azure PowerShell
       href: /powershell/azure/overview
@@ -247,7 +247,7 @@
       href: /rest/api/applicationgateway
     - name: Azure Resource Manager
       displayName: ARM
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
     - name: Resource Manager-sjabloon
       displayName: ARM
       href: 'https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways'
@@ -255,7 +255,7 @@
   items:
     - name: Auteursjablonen
       displayName: ARM
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
+      href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Communitysjablonen

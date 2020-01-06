@@ -63,7 +63,7 @@
               href: tutorial-routing.md
             - name: Azure RM-sjabloon
               href: tutorial-routing-config-message-routing-RM-template.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: tutorial-routing-config-message-routing-CLI.md
             - name: PowerShell
               href: tutorial-routing-config-message-routing-PowerShell.md
@@ -83,6 +83,8 @@
       href: tutorial-connectivity.md
 - name: Concepten
   items:
+    - name: TLS 1.2 afdwingen
+      href: tls-1.2-everywhere.md
     - name: Overzicht van berichtverrijkingen
       href: iot-hub-message-enrichments-overview.md
     - name: Overzicht van apparaatbeheer
@@ -182,7 +184,7 @@
           href: iot-hub-x509ca-overview.md
         - name: Concepten van beveiliging op basis van X.509-CA-certificaten
           href: iot-hub-x509ca-concept.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Ontwikkelen
       items:
@@ -372,7 +374,7 @@
           href: iot-hub-troubleshoot-connectivity.md
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/iot
     - name: .NET (service)
       href: /dotnet/api/microsoft.azure.devices

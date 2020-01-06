@@ -19,13 +19,15 @@
       href: terminology.md
     - name: Functies en vereisten
       href: concepts-roles-permissions.md
+    - name: Herstel na noodgeval
+      href: disaster-recovery.md
 - name: Voorbeelden
   items:
     - name: Codevoorbeelden
       href: 'https://docs.microsoft.com/samples/browse/?service=data-share/'
     - name: Azure Powershell
       href: samples-powershell.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Controleren
       href: how-to-monitor.md

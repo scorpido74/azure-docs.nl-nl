@@ -13,9 +13,9 @@
       href: search-create-service-portal.md
     - name: Portal
       items:
-        - name: Een zoekindex maken
+        - name: Een index maken
           href: search-get-started-portal.md
-        - name: Een app maken (preview)
+        - name: Een app maken
           href: search-create-app-portal.md
         - name: Een cognitieve-vaardighedenset maken
           href: cognitive-search-quickstart-blob.md
@@ -95,7 +95,7 @@
       href: knowledge-store-projection-overview.md
     - name: Incrementele indexering
       href: cognitive-search-incremental-indexing-conceptual.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Planning
       items:
@@ -315,7 +315,7 @@
           href: cognitive-search-common-errors-warnings.md
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/search?view=azure-cli-latest'
     - name: Azure PowerShell
       href: /powershell/module/az.search

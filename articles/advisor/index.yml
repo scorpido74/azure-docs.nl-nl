@@ -4,18 +4,16 @@ summary: Azure Advisor scant uw Azure-configuratie en raadt wijzigingen aan om i
 metadata:
   title: Documentatie voor Azure Advisor
   description: Azure Advisor is een persoonlijke cloudconsultant die u helpt aanbevolen procedures voor het optimaliseren van uw Azure-implementaties te volgen. Advisor analyseert de configuratie van uw resources en de gebruiksgerelateerde telemetrie. Vervolgens raadt het programma oplossingen aan om de prestaties, beveiliging en beschikbaarheid van uw resources te verbeteren, en zoekt het tegelijkertijd naar manieren om uw totale Azure-uitgaven te verlagen.
-  services: advisor
-  ms.service: advisor
   ms.topic: landing-page
   author: rboucher
   ms.author: robb
   ms.date: 10/16/2019
-  ms.openlocfilehash: d0a5dc66a752e49dd32cd742e3856d7edac0d879
-  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+  ms.openlocfilehash: 43e35c1d6afd96ff78ebd938fa76a503dd4e935d
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/27/2019
-  ms.locfileid: "72963983"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75443023"
 landingContent:
 - title: Over Azure Advisor
   linkLists:

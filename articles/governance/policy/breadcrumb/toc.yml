@@ -12,3 +12,6 @@
         - name: Beleid
           tocHref: /azure/azure-monitor
           topicHref: /azure/governance/policy
+        - name: Beleid
+          tocHref: /azure/key-vault
+          topicHref: /azure/governance/policy

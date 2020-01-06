@@ -46,7 +46,7 @@
       href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-docker-go'
 - name: Voorbeelden
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       items:
         - name: Web Apps
           href: 'https://docs.microsoft.com/azure/app-service/samples-cli'
@@ -180,7 +180,7 @@
           href: 'https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md'
     - name: Opdrachtregelinterfaces
       items:
-        - name: Azure-CLI
+        - name: Azure CLI
           href: 'https://docs.microsoft.com/cli/azure/'
         - name: Azure PowerShell
           href: 'https://docs.microsoft.com/powershell/'
@@ -189,7 +189,7 @@
 - name: Resources
   items:
     - name: Limieten en quota in Azure
-      href: ../../azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json
+      href: ../../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json
     - name: Azure-regio's
       href: 'https://azure.microsoft.com/regions/'
     - name: Azure-roadmap

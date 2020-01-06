@@ -35,7 +35,7 @@
       href: rule-processing.md
     - name: Servicetags
       href: service-tags.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Implementeren met Azure PowerShell
       href: deploy-ps.md
@@ -55,7 +55,7 @@
       href: sql-fqdn-filtering.md
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/ext/azure-firewall/network/firewall
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewall
@@ -70,13 +70,13 @@
     - name: REST
       href: /rest/api/firewall
     - name: Azure Resource Manager
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
 - name: Resources
   items:
     - name: Veelgestelde vragen
       href: firewall-faq.md
     - name: Auteursjablonen
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
+      href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Communitysjablonen

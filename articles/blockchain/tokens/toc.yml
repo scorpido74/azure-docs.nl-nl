@@ -16,17 +16,9 @@
   items:
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/blockchain/'
-    - name: Azure Blockchain Service - Visual Studio Code-extensie
-      href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
-    - name: Codevoorbeelden
-      href: 'https://github.com/Azure-Samples/blockchain'
-    - name: Community
-      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
-    - name: Forum
-      href: 'https://aka.ms/workbenchforum'
     - name: Productfeedback
       href: 'https://feedback.azure.com/forums/586780-blockchain'
+    - name: Community
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/blockchain-tokens'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'

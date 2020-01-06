@@ -22,11 +22,17 @@
       href: quickstarts/python.md
     - name: Ruby
       href: quickstarts/ruby.md
+- name: Clientbibliotheek
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp-sdk.md
+    - name: Aan de slag
+      href: quickstarts/go-sdk.md
 - name: Zelfstudies
   items:
     - name: Web-app van één pagina
       href: tutorials/autosuggest.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Upgrade uitvoeren van v5 naar v7
       href: bing-autosuggest-upgrade-guide-v5-to-v7.md

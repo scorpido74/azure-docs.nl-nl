@@ -10,7 +10,7 @@
       href: avere-vfxt-deploy-plan.md
     - name: Implementatie-overzicht voor Avere vFXT
       href: avere-vfxt-deploy-overview.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Voorbereiden op het maken van de Avere vFXT
       href: avere-vfxt-prereqs.md
