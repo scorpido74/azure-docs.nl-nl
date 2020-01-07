@@ -1,61 +1,68 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie voor Azure Notebooks
+### YamlMime:Landing
+title: Documentatie voor Azure Notebooks Preview
+summary: Azure Notebooks Preview is een gratis gehoste service om zonder installatie Jupyter-notebooks te ontwikkelen en uit te voeren in de cloud. Jupyter (voorheen IPython) is een opensource-project waarmee u eenvoudig Markdown-tekst, uitvoerbare code (Python, R en F#) en permanente gegevens, afbeeldingen en visualisaties kunt combineren op één deelbaar canvas, een notebook genoemd.
 metadata:
-  title: Documentatie voor Azure Notebooks
-  description: 'Ontdek hoe u Jupyter-notebooks kunt maken, uitvoeren en delen via de gehoste Azure Notebooks-service.'
+  title: Documentatie voor Azure Notebooks Preview
+  description: Ontdek hoe u Jupyter-notebooks kunt maken, uitvoeren en delen via de gehoste Azure Notebooks Preview-service.
+  ms.service: azure-notebooks
   ms.topic: landing-page
-  ms.date: 12/04/2018
-abstract:
-  description: 'Azure Notebooks is een gratis gehoste service om Jupyter-notebooks te ontwikkelen en uitvoeren in de cloud, zonder installatie. Jupyter (voorheen IPython) is een opensourceproject waarmee u eenvoudig Markdown-tekst, uitvoerbare code (Python, R en F#) en permanente gegevens, afbeeldingen en visualisaties kunt combineren op één deelbaar canvas: een notebook.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Leer met Azure Notebooks werken aan de hand van deze quickstarts.
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: /azure/notebooks/quickstart-create-share-jupyter-notebook
-            html: <p>Ontdek hoe u een Jupyter-notebook kunt maken en uitvoeren via Azure Notebooks en dat notebook vervolgens kunt delen met anderen.</p>
-            image:
-              src: media/index/Azure_AddNotebook.svg
-            title: Een notebook maken en delen
-          - href: /azure/notebooks/quickstart-clone-jupyter-notebook
-            html: <p>Ontdek hoe u een Jupyter-notebook kunt klonen van een GitHub-opslagplaats en dit kunt uitvoeren in uw Azure Notebooks-account.</p>
-            image:
-              src: media/index/Azure_ClonePage.svg
-            title: Een notebook klonen
-          - href: /azure/notebooks/quickstart-migrate-local-jupyter-notebook
-            html: <p>Ontdek hoe u een Jupyter-notebook kunt overzetten naar Azure Notebooks vanaf uw lokale computer of een web-URL en dit vervolgens kunt delen voor samenwerking.</p>
-            image:
-              src: media/index/Azure_MigrateNotebook.svg
-            title: Een lokaal Jupyter-notebook migreren
-          - href: /azure/notebooks/quickstart-create-jupyter-notebook-project-environment
-            html: <p>Ontdek hoe u een Azure Notebooks-project kunt configureren met een specifieke set geïnstalleerde pakketten en opstartscripts.</p>
-            image:
-              src: media/index/Azure_CustomEnvironment.svg
-            title: Een project met een aangepaste omgeving maken
-          - href: /azure/notebooks/quickstart-sign-in-azure-notebooks
-            html: '<p>Ontdek hoe u zich kunt aanmelden bij Azure Notebooks en een gebruikers-id kunt instellen, zodat u toegang krijgt tot opgeslagen projecten en notebooks met anderen kunt delen.</p>'
-            image:
-              src: media/index/Azure_UserAccount.svg
-            title: Aanmelden en een gebruikers-id instellen
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/notebooks/tutorial-create-run-jupyter-notebook">Alle stappen die nodig zijn om een notebook te maken</a>
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: 'Gebruik de volgende voorbeelden om te werken met Notebooks:'
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/notebooks/azure-notebooks-samples">Voorbeelden van Jupyter-notebooks</a>
+  author: jasonwhowell
+  ms.author: jasonh
+  ms.date: 12/26/2019
+  ms.openlocfilehash: 5044e3d679827982af7259511777f7119188b00b
+  ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 01/04/2020
+  ms.locfileid: "75659114"
+landingContent:
+- title: Over Azure Notebooks
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is de Azure Notebooks-service?
+      url: azure-notebooks-overview.md
+  - linkListType: deploy
+    links:
+    - text: Voorbeelden van Azure Notebooks
+      url: azure-notebooks-samples.md
+  - linkListType: get-started
+    links:
+    - text: Toegang tot Azure Notebooks
+      url: https://notebooks.azure.com/
+- title: Aan de slag met Azure Notebooks
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Klimaatgegevens analyseren met Azure Notebooks
+      url: /learn/modules/analyze-climate-data-with-azure-notebooks/
+  - linkListType: tutorial
+    links:
+    - text: Een Jupyter-notebook maken en uitvoeren met Python
+      url: tutorial-create-run-jupyter-notebook.md
+  - linkListType: quickstart
+    links:
+    - text: Aanmelden en een gebruikers-id instellen
+      url: quickstart-sign-in-azure-notebooks.md
+    - text: Een notebook maken en delen
+      url: quickstart-create-share-jupyter-notebook.md
+    - text: Een notebook klonen
+      url: quickstart-clone-jupyter-notebook.md
+    - text: Een lokaal Jupyter-notebook migreren
+      url: quickstart-migrate-local-jupyter-notebook.md
+    - text: Een project met een aangepaste omgeving maken
+      url: quickstart-create-jupyter-notebook-project-environment.md
+- title: Belangrijkste taken voor Azure Notebooks
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Projecten beheren en configureren
+      url: configure-manage-azure-notebooks-projects.md
+    - text: Werken met gegevensbestanden
+      url: work-with-project-data-files.md
+    - text: Projecten maken en klonen
+      url: create-clone-jupyter-notebooks.md
+    - text: Toegang tot cloudgegevens in een notebook
+      url: access-data-resources-jupyter-notebooks.md
+    - text: Pakketten in een notebook installeren
+      url: install-packages-jupyter-notebook.md

@@ -14,8 +14,12 @@
       href: azure-portal-dashboard-share-access.md
     - name: Op programmatische wijze Azure-dashboards maken
       href: azure-portal-dashboards-create-programmatically.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
+    - name: Uw voorkeuren voor de Azure-portal instellen
+      href: set-preferences.md
+    - name: Time-outinstellingen bij inactief gebruik instellen voor alle gebruikers
+      href: admin-timeout.md
     - name: Hoog contrast inschakelen of het thema wijzigen
       href: azure-portal-change-theme-high-contrast.md
     - name: 'Favorieten toevoegen, verwijderen en sorteren'

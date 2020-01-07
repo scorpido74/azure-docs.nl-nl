@@ -49,7 +49,7 @@
           href: stream-analytics-define-inputs.md
         - name: Verwijzen naar gegevensinvoer
           href: stream-analytics-use-reference-data.md
-        - name: Aangepaste .NET-deserialisatie schrijven
+        - name: Invoergegevens in een willekeurige indeling lezen met behulp van aangepaste deserialisaties
           href: custom-deserializer-examples.md
     - name: Uitvoertypen voor een taak
       items:
@@ -174,9 +174,9 @@
       items:
         - name: Hulpprogramma's installeren
           href: stream-analytics-tools-for-visual-studio-install.md
-        - name: Testen met voorbeeldgegevens
+        - name: Lokaal testen met voorbeeldgegevens
           href: stream-analytics-vs-tools-local-run.md
-        - name: Testen met live gegevens
+        - name: Lokaal testen met livegegevens
           href: stream-analytics-live-data-local-testing.md
         - name: Taken weergeven in Visual Studio
           href: stream-analytics-vs-tools.md
@@ -188,12 +188,14 @@
           href: stream-analytics-edge-csharp-udf-methods.md
     - name: Visual Studio Code
       items:
-        - name: Testen met voorbeeldgegevens
-          href: vscode-local-run.md
+        - name: Lokaal testen met voorbeeldgegevens
+          href: visual-studio-code-local-run.md
+        - name: Lokaal testen met livegegevens
+          href: visual-studio-code-local-run-live-input.md
         - name: Een CI/CD-pijplijn instellen
           href: setup-cicd-vs-code.md
         - name: Taken verkennen
-          href: vscode-explore-jobs.md
+          href: visual-studio-code-explore-jobs.md
     - name: Problemen oplossen
       items:
         - name: Invoer
