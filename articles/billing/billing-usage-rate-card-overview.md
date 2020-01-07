@@ -16,12 +16,12 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: a8e189e8070de0fccf9428e26337e1091ba7f7b4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 34fcaef5416fe976c051317c0273d245f1ff8358
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225634"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449128"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Gebruik Azure Billing-API's voor het op programmatische wijze verkrijgen van inzicht in uw gebruik van Azure
 Gebruik Azure Billing-API's voor het opnemen van gebruiks- en resourcegegevens in uw favoriete hulpprogramma's voor gegevensanalyse. De Azure Resource Usage- en RateCard-API’s kunnen u helpen uw kosten nauwkeurig te voorspellen en te beheren. De API's worden geïmplementeerd als resourceprovider en maken deel uit van de API-familie die beschikbaar wordt gesteld door Azure Resource Manager.  
@@ -38,7 +38,7 @@ Nadat het [aanmelden is voltooid](billing-manage-access.md#opt-in), kunt u factu
 ## <a name="azure-resource-usage-api-preview"></a>Azure-resourcegebruik-API (preview)
 Gebruik de [Azure-resourcegebruik-API](/previous-versions/azure/reference/mt219003(v=azure.100)) om geschatte gegevens over het Azure-gebruik op te halen. De API omvat:
 
-* **Op rollen gebaseerd toegangsbeheer van Azure**: configureer toegangsbeleid op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/overview) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Facturering voor lezer, Lezer, Eigenaar of Bijdrager om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
+* **Op rollen gebaseerd toegangsbeheer van Azure**: configureer toegangsbeleid op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/overview) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
 * **Aggregaties per uur of per dag**: aanroepers kunnen opgeven of ze hun Azure-gebruiksgegevens in buckets per uur of per dag willen. De standaardinstelling is per dag.
 * **Metagegevens van exemplaren (inclusief resourcetags**): haal details op exemplaarniveau op, zoals de volledig gekwalificeerde resource-URI (/subscriptions/{subscription-id}/..), informatie over de resourcegroep en resourcetags. Deze metagegevens helpen u op een deterministische en programmatische manier gebruik toe te wijzen aan de tags, bijvoorbeeld voor kostendoorrekeningen.
 * **Metagegevens van resources**: resourcegegevens zoals de naam, categorie en subcategorie van de meter, eenheid en regio geven de aanroeper een beter inzicht in wat er is verbruikt. We werken ook aan het gelijktrekken van de terminologie voor resourcemetagegevens in de Azure-portal, CSV voor Azure-gebruik, EA Billing CSV en andere openbare ervaringen, zodat u gegevens in verschillende ervaringen kunt correleren.
@@ -71,4 +71,4 @@ Hier volgen enkele van de scenario's die mogelijk worden gemaakt met de combinat
 
   * [Codevoorbeeld RateCard API](https://github.com/Azure-Samples/billing-dotnet-ratecard-api)
 
-* Zie [Overzicht Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) voor meer informatie over Azure Resource Manager.
+* Zie [Overzicht Azure Resource Manager](../azure-resource-manager/management/overview.md) voor meer informatie over Azure Resource Manager.
