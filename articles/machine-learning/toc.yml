@@ -69,6 +69,8 @@
   items:
     - name: Werkruimte
       href: concept-workspace.md
+    - name: Omgevingen
+      href: concept-environments.md
     - name: Gegevens
       href: concept-data.md
     - name: Modeltraining
