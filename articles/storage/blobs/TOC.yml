@@ -107,7 +107,7 @@
           href: ../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure PowerShell
           href: storage-samples-blobs-powershell.md
-        - name: Azure-CLI
+        - name: Azure CLI
           href: storage-samples-blobs-cli.md
     - name: Concepten
       items:
@@ -115,11 +115,11 @@
           href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Beveiliging
           items:
-            - name: Beveiligingsoverzicht
-              href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Aanbevelingen voor beveiliging
+              href: security-recommendations.md
             - name: Azure-opslagversleuteling
               href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Autorisatie
+            - name: Gegevensbewerkingen autoriseren
               href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               items:
                 - name: Autoriseren met Azure AD
@@ -130,6 +130,8 @@
                   href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Anonieme toegang tot blobs
                   href: storage-manage-access-to-resources.md
+            - name: Beheerbewerkingen autoriseren
+              href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Onveranderbare blobs
               href: storage-blob-immutable-storage.md
             - name: Geavanceerde beveiliging tegen bedreigingen
@@ -165,8 +167,6 @@
               href: storage-lifecycle-management-concepts.md
         - name: 'Prestaties, schaalbaarheid en kostenoptimalisatie'
           items:
-            - name: Schaalbaarheids- en prestatiedoelen
-              href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Controlelijst voor prestaties en schaalbaarheid
               href: storage-performance-checklist.md
             - name: Latentie in Blob-opslag
@@ -259,11 +259,9 @@
           items:
             - name: Een opslagaccount voor algemeen gebruik maken
               displayName: 'Resource Manager, Resource Manager template, template, ARM'
-              href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Een blok-blob-opslagaccount maken
               href: storage-blob-create-account-block-blob.md
-            - name: Een opslagaccount beheren
-              href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Een opslagaccount upgraden
               href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Accounttype en SKU-naam (.NET) ophalen
@@ -276,8 +274,6 @@
               href: storage-blob-containers-list.md
             - name: Eigenschappen en metagegevens beheren (.NET)
               href: storage-blob-container-properties-metadata.md
-            - name: Beleid voor onveranderbaarheid instellen en beheren
-              href: storage-blob-immutability-policies-manage.md
         - name: Blobs maken en beheren
           items:
             - name: Blobs vermelden (.NET)
@@ -296,15 +292,17 @@
                   items:
                     - name: Portal
                       href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: PowerShell of Azure CLI
-                      href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                    - name: PowerShell
+                      href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                    - name: Azure CLI
+                      href: ../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Toegangsrechten beheren met RBAC
                   items:
                     - name: Portal
                       href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: PowerShell
                       href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Azure-CLI
+                    - name: Azure CLI
                       href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Verifiëren en autoriseren met Azure AD
                   items:
@@ -314,6 +312,8 @@
                       href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Autoriseren met gedeelde sleutel
                   items:
+                    - name: Accountsleutels weergeven en beheren
+                      href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Verbindingsreeksen configureren
                       href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: De Azure Storage REST API gebruiken
@@ -324,7 +324,7 @@
                       items:
                         - name: PowerShell
                           href: storage-blob-user-delegation-sas-create-powershell.md
-                        - name: Azure-CLI
+                        - name: Azure CLI
                           href: storage-blob-user-delegation-sas-create-cli.md
                         - name: .NET
                           href: storage-blob-user-delegation-sas-create-dotnet.md
@@ -348,7 +348,7 @@
                           href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                         - name: PowerShell
                           href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: Azure-CLI
+                        - name: Azure CLI
                           href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Een versleutelingssleutel opgeven op aanvraag
                   href: storage-blob-customer-provided-key.md
@@ -368,6 +368,8 @@
                   href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Transport Layer Security inschakelen
                   href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Beleid voor onveranderbaarheid instellen en beheren
+              href: storage-blob-immutability-policies-manage.md
         - name: Herstel na noodgeval
           items:
             - name: Failover van account initiëren
@@ -430,7 +432,7 @@
                   href: storage-quickstart-blobs-javascript-client-libraries.md
         - name: Blobs beheren
           items:
-            - name: Azure-CLI
+            - name: Azure CLI
               href: ../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Klassieke versie van Azure CLI
               href: ../common/storage-azure-cli-nodejs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -442,9 +444,21 @@
               href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Naslaginformatie
       items:
+        - name: Schaalbaarheids- en prestatiedoelen
+          items:
+            - name: Blob Storage
+              href: scalability-targets.md
+            - name: Standard-opslagaccounts
+              href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Premium blok-blob-opslagaccounts
+              href: scalability-targets-premium-block-blobs.md
+            - name: Premium pagina-blob-opslagaccounts
+              href: scalability-targets-premium-page-blobs.md
+            - name: Opslagresourceprovider
+              href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure PowerShell
           href: /powershell/module/az.storage
-        - name: Azure-CLI
+        - name: Azure CLI
           href: /cli/azure/storage
         - name: .NET
           items:
@@ -675,8 +689,6 @@
           items:
             - name: Een opslagaccount maken voor uw Data Lake
               href: ../blobs/data-lake-storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Een opslagaccount beheren
-              href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Gegevens beheren met Storage Explorer
               href: ../blobs/data-lake-storage-explorer.md
             - name: Een opslagaccount upgraden
@@ -719,7 +731,7 @@
                   href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: PowerShell
                   href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Azure-CLI
+                - name: Azure CLI
                   href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Toegangsrechten beheren met RBAC
               items:
@@ -727,23 +739,11 @@
                   href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: PowerShell
                   href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Azure-CLI
+                - name: Azure CLI
                   href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Machtigingen instellen op bestands- en directory-niveau
               href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
         - name: Prestaties optimaliseren
-          items:
-            - name: Overzicht
-              href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Spark in HDInsight optimaliseren
-              href: ../blobs/data-lake-storage-performance-tuning-spark.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Hive in HDInsight optimaliseren
-              href: ../blobs/data-lake-storage-performance-tuning-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: MapReduce in HDInsight optimaliseren
-              href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Storm in HDInsight optimaliseren
-              href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Bestanden beheren (blobs)
           items:
             - name: Overzicht
               href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -769,7 +769,7 @@
       items:
         - name: PowerShell
           href: /powershell/module/azure.storage
-        - name: Azure-CLI
+        - name: Azure CLI
           href: /cli/azure/storage
         - name: .NET
           items:

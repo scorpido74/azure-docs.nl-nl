@@ -76,6 +76,8 @@
 - name: Cloud Partner-portal
   href: ./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
   items:
+    - name: Migratie van Cloud Partner-portal naar Partnercentrum
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
     - name: Rondleiding door de portal
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -449,6 +451,8 @@
               href: ./partner-center-portal/create-new-azure-apps-offer.md
             - name: Beoordelingsfeedback verwerken
               href: ./partner-center-portal/azure-apps-review-feedback.md
+            - name: API voor onboarding
+              href: ./partner-center-portal/azure-app-apis.md
         - name: Dynamics 365-aanbiedingen
           items:
             - name: Een Dynamics 365 for Customer Engagement- en PowerApps-aanbieding maken
@@ -512,13 +516,33 @@
     - name: Ondersteuningsopties
       href: ./partner-center-portal/support.md
     - name: Analytische gegevens voor Partnercentrum
-      href: ./partner-center-portal/analytics.md
+      items:
+        - name: Analytische gegevens voor de commerciële marketplace
+          href: ./partner-center-portal/analytics.md
+        - name: Dashboard voor samenvattingen
+          href: ./partner-center-portal/summary-dashboard.md
+        - name: Dashboard voor orders
+          href: ./partner-center-portal/orders-dashboard.md
+        - name: Dashboard voor gebruik
+          href: ./partner-center-portal/usage-dashboard.md
+        - name: Dashboard voor klanten
+          href: ./partner-center-portal/customer-dashboard.md
+        - name: Dashboard voor Marketplace-inzichten
+          href: ./partner-center-portal/insights-dashboard.md
+        - name: Dashboard voor downloads
+          href: ./partner-center-portal/downloads-dashboard.md
+        - name: Dashboard voor classificaties en beoordelingen
+          href: ./partner-center-portal/ratings-reviews.md
+        - name: Veelgestelde vragen en terminologie
+          href: ./partner-center-portal/faq-terminology.md
     - name: Betaald krijgen
       items:
         - name: Betaald krijgen
           href: ./partner-center-portal/get-paid.md
         - name: Stel uw betalingsaccount en belastingformulieren
           href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
+        - name: Factureringsgegevens
+          href: ./partner-center-portal/billing-details.md
         - name: 'Betalingsdrempels, methoden en tijdsbestek'
           href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
         - name: Betalingsoverzicht

@@ -141,7 +141,7 @@
 - name: Concepten
   items:
     - name: Azure Resource Manager
-      href: ../../azure-resource-manager/resource-group-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+      href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Regio's
       href: regions.md
     - name: Beschikbaarheid en prestaties
@@ -186,6 +186,8 @@
               href: sizes-gpu.md
             - name: GPU-stuurprogramma's instellen
               href: n-series-driver-setup.md
+            - name: AMD GPU-stuurprogramma's instellen
+              href: n-series-amd-driver-setup.md
         - name: Krachtig rekenvermogen
           displayName: H-series
           href: sizes-hpc.md
@@ -262,7 +264,7 @@
       href: backup-recovery.md
     - name: Infrastructuurvoorbeeld
       href: infrastructure-example.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Virtuele machines maken
       items:
@@ -650,7 +652,7 @@
   href: ../troubleshooting/index.md
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/vm
     - name: Azure PowerShell
       href: /powershell/azureps-cmdlets-docs
@@ -672,7 +674,7 @@
 - name: Resources
   items:
     - name: Auteursjablonen
-      href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+      href: ../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Uw vaardigheden ontwikkelen met Microsoft Learn
       href: /learn/browse/?products=azure-virtual-machines
     - name: Azure-roadmap

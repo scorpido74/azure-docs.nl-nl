@@ -1,133 +1,109 @@
-### YamlMime:Landing
+### YamlMime:Hub
 title: Documentatie voor Azure Resource Manager
-summary: Resource Manager-sjabloon is een JavaScript Object Notation-bestand (JSON) dat de infrastructuur en configuratie van uw project definieert.
+summary: Azure Resource Manager is de implementatie- en beheersservice voor Azure. Gebruik de infrastructuur als code om uw Azure-oplossingen betrouwbaar te implementeren en beheren.
+brand: azure
 metadata:
   title: Documentatie voor Azure Resource Manager
-  description: Meer informatie over hoe u Azure Resource Manager-sjablonen ontwikkelt en gebruikt om Azure-resources te implementeren
-  services: azure-resource-manager
+  description: Azure Resource Manager is de implementatie- en beheersservice voor Azure.
   ms.service: azure-resource-manager
-  ms.subservice: na
-  ms.topic: landing-page
-  ms.collection: na
-  author: mumian
-  ms.author: jgao
-  ms.date: 09/25/2019
-  ms.openlocfilehash: 1d50556eb09a35857ed9db4ccbbba99397606f8b
-  ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+  ms.topic: hub-page
+  ms.collection: collection
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 2910576517be35652d8e1ed1e82687a56a10467e
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 11/25/2019
-  ms.locfileid: "74483439"
-landingContent:
-- title: Over Resource Manager
-  linkLists:
-  - linkListType: overview
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75642469"
+highlightedContent:
+  items:
+  - title: Wat zijn sjablonen?
+    itemType: overview
+    url: templates/overview.md
+  - title: Uw eerste sjabloon maken
+    itemType: tutorial
+    url: templates/template-tutorial-create-first-template.md
+  - title: Wat is Resource Manager?
+    itemType: overview
+    url: management/overview.md
+conceptualContent:
+  items:
+  - title: Resource Manager-sjablonen implementeren
     links:
-    - text: Wat is Resource Manager?
-      url: resource-group-overview.md
-    - text: Wat is een Resource Manager-sjabloon?
-      url: template-deployment-overview.md
-  - linkListType: concept
+    - url: templates/overview.md
+      itemType: overview
+      text: Overzicht
+    - url: templates/template-tutorial-create-first-template.md
+      itemType: tutorial
+      text: Reeks zelfstudies voor beginners
+    - url: templates/template-syntax.md
+      itemType: reference
+      text: Sjabloonbestandstructuur
+    - url: templates/template-functions.md
+      itemType: reference
+      text: Sjabloonfuncties
+    - url: templates/deploy-powershell.md
+      itemType: how-to-guide
+      text: Implementeren
+    - url: templates/template-best-practices.md
+      itemType: concept
+      text: Aanbevolen procedures
+    footerLink:
+      url: templates/index.yml
+      text: Meer informatie
+  - title: Resources beheren
     links:
-    - text: Aanbevolen procedures
-      url: template-best-practices.md
-    - text: Implementatiemodi
-      url: deployment-modes.md
-    - text: Gekoppelde sjablonen
-      url: resource-group-linked-templates.md
-    - text: Implementatie op abonnementsniveau
-      url: deploy-to-subscription.md
-    - text: Configuratiebeheer
-      url: deployment-manager-overview.md
-  - linkListType: video
+    - url: management/overview.md
+      itemType: overview
+      text: Overzicht
+    - url: management/tag-resources.md
+      itemType: how-to-guide
+      text: Resources taggen
+    - url: management/move-resource-group-and-subscription.md
+      itemType: concept
+      text: Resources verplaatsen
+    - url: management/lock-resources.md
+      itemType: how-to-guide
+      text: Resources vergrendelen
+    - url: management/resource-providers-and-types.md
+      itemType: concept
+      text: Resourceproviders en -typen
+    footerLink:
+      url: management/index.yml
+      text: Meer informatie
+  - title: Managed Applications
     links:
-    - text: Wat is nieuw?
-      url: https://youtu.be/3D-JIKShrws
-- title: Aan de slag
-  linkLists:
-  - linkListType: quickstart
+    - url: managed-applications/overview.md
+      itemType: overview
+      text: Overzicht
+    - url: managed-applications/publish-service-catalog-app.md
+      itemType: tutorial
+      text: Servicecatalogus-app publiceren
+    - url: managed-applications/create-uidefinition-overview.md
+      itemType: how-to-guide
+      text: UI-definitie maken
+    - url: managed-applications/publish-marketplace-app.md
+      itemType: tutorial
+      text: Toevoegen aan Marketplace
+    footerLink:
+      url: managed-applications/index.yml
+      text: Meer informatie
+  - title: Azure Custom-providers
     links:
-    - text: Sjablonen maken - portal
-      url: resource-manager-quickstart-create-templates-use-the-portal.md
-    - text: Sjablonen maken - VS Code
-      url: resource-manager-quickstart-create-templates-use-visual-studio-code.md
-    - text: Sjablonen maken - Visual Studio
-      url: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
-  - linkListType: tutorial
-    links:
-    - text: Zelfstudies voor beginners
-      url: template-tutorial-create-first-template.md
-    - text: Meerdere exemplaren implementeren
-      url: resource-manager-tutorial-create-multiple-instances.md
-    - text: Implementatievolgorde instellen
-      url: resource-manager-tutorial-create-templates-with-dependent-resources.md
-    - text: Key Vault integreren
-      url: resource-manager-tutorial-use-key-vault.md
-- title: Sjablonen ontwikkelen
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: VS Code gebruiken
-      url: resource-manager-tools-vs-code.md
-    - text: Functies gebruiken
-      url: resource-group-template-functions.md
-    - text: Parameters definiëren
-      url: template-parameters.md
-    - text: Variabelen definiëren
-      url: template-variables.md
-    - text: Resources definiëren
-      url: child-resource-name-type.md
-    - text: Uitvoer definiëren
-      url: template-outputs.md
-  - linkListType: reference
-    links:
-    - text: Azure-quickstartsjablonen
-      url: template-deployment-overview.md
-- title: Sjablonen implementeren
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Met PowerShell
-      url: resource-group-template-deploy.md
-    - text: Met CLI
-      url: resource-group-template-deploy-cli.md
-    - text: Met de portal
-      url: resource-group-template-deploy-portal.md
-    - text: Met REST API
-      url: resource-group-template-deploy-rest.md
-- title: Sjablonen beheren
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Sjablonen exporteren
-      url: export-template-portal.md
-    - text: CI/CD
-      url: vs-resource-groups-project-devops-pipelines.md
-- title: Resources beheren
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Resources verplaatsen
-      url: resource-group-move-resources.md
-    - text: Resources taggen
-      url: resource-group-using-tags.md
-    - text: Resources vergrendelen
-      url: resource-group-lock-resources.md
-- title: Controleren en problemen oplossen
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Activiteitenlogboeken bekijken
-      url: resource-group-audit.md
-    - text: Implementatiebewerking bekijken
-      url: resource-manager-deployment-operations.md
-    - text: Implementatiefouten oplossen
-      url: resource-manager-common-deployment-errors.md
-- title: Naslaginhoud verkennen
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: Resourceproviders en -typen
-      url: resource-manager-supported-services.md
-    - text: Sjabloonverwijzing
-      url: /azure/templates/
+    - url: custom-providers/overview.md
+      itemType: overview
+      text: Overzicht
+    - url: custom-providers/create-custom-provider.md
+      itemType: quickstart
+      text: Custom-providers maken
+    - url: custom-providers/tutorial-get-started-with-custom-providers.md
+      itemType: tutorial
+      text: Aangepaste acties en resources maken
+    - url: custom-providers/custom-providers-action-endpoint-how-to.md
+      itemType: how-to-guide
+      text: Aangepaste acties toevoegen aan Azure REST API
+    footerLink:
+      url: custom-providers/index.yml
+      text: Meer informatie

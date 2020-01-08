@@ -1,0 +1,261 @@
+- name: Documentatie voor Azure Resource Manager-sjablonen
+  href: index.yml
+- name: Overzicht
+  items:
+    - name: Wat zijn Azure Resource Manager-sjablonen?
+      href: overview.md
+- name: Snelstartgidsen
+  items:
+    - name: Sjablonen maken - portal
+      href: quickstart-create-templates-use-the-portal.md
+    - name: Sjablonen maken - VS Code
+      href: quickstart-create-templates-use-visual-studio-code.md
+    - name: Sjablonen maken - Visual Studio
+      href: create-visual-studio-deployment-project.md
+    - name: Sjablonen maken - IntelliJ IDEA
+      href: create-templates-use-intellij.md
+- name: Zelfstudies
+  items:
+    - name: Beginner
+      items:
+        - name: '1: Uw eerste sjabloon maken'
+          href: template-tutorial-create-first-template.md
+        - name: '2: Resource toevoegen'
+          href: template-tutorial-add-resource.md
+        - name: '3: Parameters toevoegen'
+          href: template-tutorial-add-parameters.md
+        - name: '4: Sjabloonfuncties toevoegen'
+          href: template-tutorial-add-functions.md
+        - name: '5: Variabelen toevoegen'
+          href: template-tutorial-add-variables.md
+        - name: '6: Uitvoer toevoegen'
+          href: template-tutorial-add-outputs.md
+        - name: '7: Een geëxporteerde sjabloon gebruiken'
+          href: template-tutorial-export-template.md
+        - name: '8: Quickstartsjabloon gebruiken'
+          href: template-tutorial-quickstart-template.md
+        - name: '9: Tags toevoegen'
+          href: template-tutorial-add-tags.md
+        - name: '10: Parameterbestand gebruiken'
+          href: template-tutorial-use-parameter-file.md
+    - name: Geavanceerd
+      items:
+        - name: Sjabloonverwijzing gebruiken
+          href: template-tutorial-create-encrypted-storage-accounts.md
+        - name: Meerdere exemplaren maken
+          displayName: 'iteration,copy'
+          href: template-tutorial-create-multiple-instances.md
+        - name: Implementatievolgorde van resources instellen
+          displayName: 'dependent resources, dependency'
+          href: template-tutorial-create-templates-with-dependent-resources.md
+        - name: Gebruiksvoorwaarden
+          href: template-tutorial-use-conditions.md
+        - name: Key Vault integreren
+          displayName: secrets
+          href: template-tutorial-use-key-vault.md
+        - name: Gekoppelde sjablonen maken
+          href: template-tutorial-create-linked-templates.md
+        - name: VM-extensies implementeren
+          displayName: virtual machine extensions
+          href: template-tutorial-deploy-vm-extensions.md
+        - name: SQL-extensies implementeren
+          href: template-tutorial-deploy-sql-extensions-bacpac.md
+        - name: Artefacten beveiligen
+          href: template-tutorial-secure-artifacts.md
+        - name: Continue integratie met Azure-pijplijnen
+          displayName: DevOps
+          href: template-tutorial-use-azure-pipelines.md
+        - name: VS-implementatiescript bijwerken naar Az PowerShell
+          href: update-visual-studio-deployment-script.md
+        - name: Veilige implementatiemethoden gebruiken
+          displayName: adm
+          href: deployment-manager-tutorial.md
+        - name: Statuscontrole gebruiken in Configuratiebeheer
+          displayName: adm
+          href: deployment-manager-tutorial-health-check.md
+        - name: Problemen met sjabloonimplementatie oplossen
+          href: template-tutorial-troubleshoot.md
+- name: Voorbeelden
+  items:
+    - name: Azure-quickstartsjablonen
+      href: 'https://azure.microsoft.com/resources/templates/'
+    - name: Voorbeelden van sjablonen
+      href: template-samples.md
+- name: Concepten
+  items:
+    - name: Best practices voor sjablonen
+      href: template-best-practices.md
+    - name: Sjablonen voor de consistentie van de cloud
+      href: templates-cloud-consistency.md
+    - name: Implementatiemodi
+      href: deployment-modes.md
+    - name: Configuratiebeheer
+      items:
+        - name: Overzicht
+          displayName: 'adm, deployment manager'
+          href: deployment-manager-overview.md
+        - name: Statuscontrole
+          displayName: 'adm, deployment manager'
+          href: deployment-manager-health-check.md
+- name: Procedures
+  items:
+    - name: Sjablonen maken
+      items:
+        - name: VS Code gebruiken
+          href: use-vs-code-to-create-template.md
+        - name: Sjabloonexpressies schrijven
+          href: template-expressions.md
+        - name: Parameters
+          href: template-parameters.md
+        - name: Variabelen
+          href: template-variables.md
+        - name: Door de gebruiker gedefinieerde functies
+          href: template-user-defined-functions.md
+        - name: Resources
+          items:
+            - name: Naam en type van onderliggende resource
+              href: child-resource-name-type.md
+            - name: Voorwaardelijke implementatie
+              href: conditional-resource-deployment.md
+            - name: Resourceafhankelijkheden instellen
+              href: define-resource-dependency.md
+            - name: Resourcelocatie instellen
+              href: resource-location.md
+            - name: Sjabloonextensies gebruiken
+              href: add-resource-extensions.md
+        - name: Uitvoer
+          href: template-outputs.md
+        - name: Sjablonen modulair maken
+          displayName: 'linked templates, nested templates'
+          href: linked-templates.md
+        - name: Meerdere exemplaren maken
+          href: create-multiple-instances.md
+        - name: Resources op abonnementsniveau
+          href: deploy-to-subscription.md
+        - name: Resources op beheergroepniveau
+          href: deploy-to-management-group.md
+    - name: Sjablonen implementeren
+      items:
+        - name: Implementeren - portal
+          displayName: deployment
+          href: deploy-portal.md
+        - name: Implementeren - CLI
+          displayName: deployment
+          href: deploy-cli.md
+        - name: Implementeren - PowerShell
+          displayName: deployment
+          href: deploy-powershell.md
+        - name: Implementeren - REST API
+          displayName: deployment
+          href: deploy-rest.md
+        - name: What if-implementatie
+          href: template-deploy-what-if.md
+        - name: Opnieuw implementeren bij fout
+          displayName: rollback
+          href: rollback-on-error.md
+        - name: Sjabloon beveiligen met een SAS-token
+          href: secure-template-with-sas-token.md
+        - name: Implementeren naar meerdere resourcegroepen of abonnementen
+          href: cross-resource-group-deployment.md
+    - name: Parameters opgeven
+      items:
+        - name: Parameterbestand maken
+          href: parameter-files.md
+        - name: Gevoelige waarden doorgeven
+          displayname: key vault
+          href: key-vault-parameter.md
+    - name: CI/CD
+      items:
+        - name: VS-project met pijplijnen
+          href: add-template-to-azure-pipelines.md
+    - name: Sjabloon exporteren
+      href: export-template-portal.md
+    - name: Implementatiegeschiedenis weergeven
+      href: deployment-history.md
+    - name: Problemen met implementaties oplossen
+      items:
+        - name: Implementatiefouten oplossen
+          href: common-deployment-errors.md
+        - name: AccountNameInvalid
+          href: error-storage-account-name.md
+        - name: DeploymentQuotaExceeded
+          href: deployment-quota-exceeded.md
+        - name: InvalidTemplate
+          href: error-invalid-template.md
+        - name: Linux-implementatieproblemen
+          href: ../../virtual-machines/linux/troubleshoot-deploy-vm.md
+        - name: NoRegisteredProviderFound
+          href: error-register-resource-provider.md
+        - name: NotFound
+          href: error-not-found.md
+        - name: ParentResourceNotFound
+          href: error-parent-resource.md
+        - name: Problemen met inrichten en toewijzen voor Linux
+          href: ../../virtual-machines/linux/troubleshoot-deployment-new-vm.md
+        - name: Problemen met inrichten en toewijzen voor Windows
+          href: ../../virtual-machines/windows/troubleshoot-deployment-new-vm.md
+        - name: RequestDisallowedByPolicy
+          href: error-policy-requestdisallowedbypolicy.md
+        - name: ReservedResourceName
+          href: error-reserved-resource-name.md
+        - name: ResourceQuotaExceeded
+          href: error-resource-quota.md
+        - name: SkuNotAvailable
+          href: error-sku-not-available.md
+        - name: Windows-implementatieproblemen
+          href: ../../virtual-machines/windows/troubleshoot-deploy-vm.md
+- name: Naslaginformatie
+  items:
+    - name: Sjabloonbestandstructuur
+      displayName: 'parameters,variables,resources,outputs,condition'
+      href: template-syntax.md
+    - name: Sjabloonverwijzing
+      href: /azure/templates/
+    - name: Sjabloonfuncties
+      items:
+        - name: Alle functies
+          href: template-functions.md
+        - name: Matrix- en objectfuncties
+          href: template-functions-array.md
+        - name: Vergelijkingsfuncties
+          href: template-functions-comparison.md
+        - name: Implementatiefuncties
+          href: template-functions-deployment.md
+        - name: Logische functies
+          href: template-functions-logical.md
+        - name: Numerieke functies
+          href: template-functions-numeric.md
+        - name: Resourcefuncties
+          href: template-functions-resource.md
+        - name: Tekenreeksfuncties
+          href: template-functions-string.md
+    - name: Resourcemogelijkheden
+      items:
+        - name: Modus voor volledige verwijdering
+          href: complete-mode-deletion.md
+        - name: Resourcetypen van extensies
+          href: extension-resource-types.md
+    - name: REST
+      href: /rest/api/resources/
+    - name: Azure PowerShell
+      href: /powershell/module/az.resources
+    - name: Azure CLI
+      href: /cli/azure/resource
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.resourcemanager
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.resources
+    - name: Python
+      href: /python/api/overview/azure/resources?view=azure-python
+- name: Resources
+  items:
+    - name: Azure-roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
+    - name: Prijscalculator
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Service-updates
+      href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-resource-manager'
+    - name: Video's
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager'

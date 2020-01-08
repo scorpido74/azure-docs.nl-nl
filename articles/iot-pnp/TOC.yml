@@ -7,18 +7,34 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: Een apparaat maken - Windows
-      href: quickstart-create-pnp-device.md
-    - name: Een apparaat maken - Linux
-      href: quickstart-create-pnp-device-linux.md
-    - name: Een apparaat verbinden met IoT Hub - Windows
-      href: quickstart-connect-pnp-device.md
-    - name: Een apparaat verbinden met IoT Hub - Linux
-      href: quickstart-connect-pnp-device-linux.md
+    - name: Een apparaat maken
+      items:
+        - name: C Linux
+          href: quickstart-create-pnp-device-linux.md
+        - name: C Windows
+          href: quickstart-create-pnp-device-windows.md
+    - name: Een apparaat verbinden met IoT Hub
+      items:
+        - name: C Linux
+          href: quickstart-connect-pnp-device-c-linux.md
+        - name: C Windows
+          href: quickstart-connect-pnp-device-c-windows.md
+        - name: 'C#'
+          href: quickstart-connect-pnp-device-csharp.md
+        - name: Java
+          href: quickstart-connect-pnp-device-java.md
+        - name: Node.js
+          href: quickstart-connect-pnp-device-node.md
     - name: Een apparaat verbinden met IoT Central
-      href: ../iot-central/preview/quick-create-pnp-device.md
+      href: ../iot-central/preview/tutorial-connect-pnp-device.md
     - name: Verbinding maken met een apparaat in uw oplossing
-      href: quickstart-connect-pnp-device-solution.md
+      items:
+        - name: 'C#'
+          href: quickstart-connect-pnp-device-solution-csharp.md
+        - name: Java
+          href: quickstart-connect-pnp-device-solution-java.md
+        - name: Node.js
+          href: quickstart-connect-pnp-device-solution-node.md
 - name: Zelfstudies
   items:
     - name: Een apparaat maken met behulp van VS Code
@@ -39,7 +55,7 @@
       href: concepts-model-discovery.md
     - name: Limieten en quota
       href: concepts-limits-quotas.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Ontwikkelen met Visual Studio en Visual Studio Code
       href: howto-develop-with-vs-vscode.md
