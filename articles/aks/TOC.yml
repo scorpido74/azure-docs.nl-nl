@@ -104,7 +104,7 @@
       href: security-hardened-vm-host-image.md
     - name: Overzicht van de diagnostische gegevens van de Azure Kubernetes Service
       href: concepts-diagnostics.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Clusterbewerkingen
       items:
@@ -218,6 +218,8 @@
           maintainContext: true
         - name: Certificaten roteren
           href: certificate-rotation.md
+        - name: Een privécluster maken
+          href: private-clusters.md
     - name: Bewaking en registratie
       items:
         - name: Azure Monitor voor containers
@@ -309,6 +311,9 @@
         - name: Azure Database for PostgreSQL gebruiken
           href: ../postgresql/concepts-aks.md
           maintainContext: true
+        - name: Azure API Management gebruiken
+          href: ../api-management/api-management-kubernetes.md
+          maintainContext: true
     - name: Een service-mesh selecteren en implementeren
       items:
         - name: Over service-meshes
@@ -357,7 +362,7 @@
           href: ssh.md
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/aks
     - name: REST
       href: /rest/api/aks

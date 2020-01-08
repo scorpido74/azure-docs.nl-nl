@@ -49,6 +49,8 @@
       items:
         - name: Overzicht van beveiligingswaarschuwingen
           href: security-center-alerts-overview.md
+        - name: Verwijzingenlijst met waarschuwingen
+          href: alerts-reference.md
         - name: Beveiligingswaarschuwingen beheren
           href: security-center-managing-and-responding-alerts.md
         - name: Beveiligingsincidenten beheren
@@ -61,7 +63,7 @@
           href: security-center-alerts-data-services.md
         - name: Detectie van bedreigingen voor Azure-servicelagen
           href: security-center-alerts-service-layer.md
-        - name: Integratie met Azure Security-producten
+        - name: Detectie van bedreigingen voor Azure WAF en Azure DDoS Protection
           href: security-center-alerts-integration.md
         - name: Correlatie van Cloud Smart Alert (incidenten)
           href: security-center-alerts-cloud-smart.md
@@ -69,12 +71,20 @@
           href: security-center-threat-intel.md
         - name: Waarschuwingen valideren (EICAR-testbestand)
           href: security-center-alert-validation.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Uw secure score verbeteren
       href: security-center-secure-score.md
     - name: Upgraden naar geavanceerde beveiliging
       href: security-center-onboarding.md
+    - name: Uw VM's scannen op beveiligingsproblemen
+      items:
+        - name: Overzicht van het scannen van beveiligingsproblemen
+          href: security-center-vulnerability-assessment-recommendations.md
+        - name: Geïntegreerde scanner voor beveiligingsproblemen voor VM's
+          href: built-in-vulnerability-assessment.md
+        - name: Externe scanners gebruiken
+          href: partner-vulnerability-assessment.md
     - name: Uw servers beschermen met Microsoft Defender ATP
       href: security-center-wdatp.md
     - name: Geavanceerde gegevensbeveiliging voor SQL in virtuele Azure-machines gebruiken
@@ -125,14 +135,12 @@
           href: security-center-remediate-recommendations.md
         - name: Beveiligingspostuur verbeteren
           href: security-center-monitoring.md
+        - name: Verwijzingenlijst met aanbevelingen
+          href: recommendations-reference.md
         - name: Uw machines en apps beschermen
           href: security-center-virtual-machine-protection.md
-        - name: Naslaginformatie over aanbevelingen voor machines en apps
-          href: recommendations-compute-and-apps.md
         - name: Netwerkresources beschermen
           href: security-center-network-recommendations.md
-        - name: Naslaginformatie over aanbevelingen voor netwerken
-          href: recommendations-network.md
         - name: Gegevens en opslagservices beschermen
           href: security-center-sql-service-recommendations.md
         - name: Identiteit en toegang beveiligen
@@ -155,8 +163,6 @@
           href: security-center-apply-system-updates.md
         - name: Eindpuntbeveiliging installeren
           href: security-center-install-endpoint-protection.md
-        - name: Beoordeling van beveiligingslekken is niet geïnstalleerd
-          href: security-center-vulnerability-assessment-recommendations.md
         - name: Bedreigingsrapporten
           href: security-center-threat-report.md
         - name: Betrouwbaarheidsscore waarschuwing

@@ -1,12 +1,12 @@
-- name: Real-world mobiele toepassingen maken met Microsoft-Services
+- name: Echte mobiele toepassingen maken met Microsoft-services
   href: index.md
 - name: Fasen bij het bouwen van mobiele apps
   items:
     - name: Overzicht
       href: stages-overview.md
-    - name: Mobiel ontwikkelingsframework kiezen
+    - name: Een mobiel ontwikkelingsframework kiezen
       href: front-end-development-platform.md
-    - name: Mobiele apps met back-end-services plannen en ontwerpen
+    - name: Een mobiele app met back-endservices plannen en ontwerpen
       items:
         - name: Verificatie
           href: authentication.md
@@ -32,7 +32,7 @@
           href: continuous-delivery.md
     - name: Gebruik en gedrag van gebruikers analyseren
       href: analytics.md
-    - name: Realtime crash-rapportage
+    - name: Foutrapportage in realtime
       href: diagnostics.md
     - name: Pushmeldingen
       href: push-notifications.md
@@ -42,7 +42,7 @@
       href: cognitive-services.md
     - name: Azure Maps
       href: azure-maps.md
-    - name: Azure CDN
+    - name: Azure Content Delivery Network
       href: azure-cdn.md
     - name: Azure Cognitive Search
       href: azure-search.md

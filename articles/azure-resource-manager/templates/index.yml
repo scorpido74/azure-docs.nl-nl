@@ -1,0 +1,125 @@
+### YamlMime:Landing
+title: Documentatie voor Azure Resource Manager-sjablonen
+summary: Resource Manager-sjabloon is een JavaScript Object Notation-bestand (JSON) dat de infrastructuur en configuratie van uw project definieert.
+metadata:
+  title: Documentatie voor Azure Resource Manager
+  description: Meer informatie over hoe u Azure Resource Manager-sjablonen ontwikkelt en gebruikt om Azure-resources te implementeren
+  services: azure-resource-manager
+  ms.service: azure-resource-manager
+  ms.subservice: templates
+  ms.topic: landing-page
+  ms.collection: na
+  author: mumian
+  ms.author: jgao
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 43cd4dadc33ddc498106084ee26ef0819c14b973
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75469927"
+landingContent:
+- title: Over Azure Resource Manager-sjablonen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat zijn sjablonen?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Aanbevolen procedures
+      url: template-best-practices.md
+    - text: Implementatiemodi
+      url: deployment-modes.md
+    - text: Gekoppelde sjablonen
+      url: linked-templates.md
+    - text: Implementatie op abonnementsniveau
+      url: deploy-to-subscription.md
+  - linkListType: video
+    links:
+    - text: Wat is nieuw?
+      url: https://youtu.be/3D-JIKShrws
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Sjablonen maken - portal
+      url: quickstart-create-templates-use-the-portal.md
+    - text: Sjablonen maken - VS Code
+      url: quickstart-create-templates-use-visual-studio-code.md
+    - text: Sjablonen maken - Visual Studio
+      url: create-visual-studio-deployment-project.md
+  - linkListType: tutorial
+    links:
+    - text: Zelfstudies voor beginners
+      url: template-tutorial-create-first-template.md
+    - text: Meerdere exemplaren implementeren
+      url: template-tutorial-create-multiple-instances.md
+    - text: Implementatievolgorde instellen
+      url: template-tutorial-create-templates-with-dependent-resources.md
+    - text: Key Vault integreren
+      url: template-tutorial-use-key-vault.md
+- title: Sjablonen ontwikkelen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: VS Code gebruiken
+      url: use-vs-code-to-create-template.md
+    - text: Functies gebruiken
+      url: template-functions.md
+    - text: Parameters definiëren
+      url: template-parameters.md
+    - text: Variabelen definiëren
+      url: template-variables.md
+    - text: Resources definiëren
+      url: template-syntax.md#resources
+    - text: Uitvoer definiëren
+      url: template-outputs.md
+  - linkListType: reference
+    links:
+    - text: Syntaxis in sjabloonbestand
+      url: template-syntax.md
+    - text: Azure-quickstartsjablonen
+      url: https://azure.microsoft.com/resources/templates/
+- title: Sjablonen implementeren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Met PowerShell
+      url: deploy-powershell.md
+    - text: Met CLI
+      url: deploy-cli.md
+    - text: Met de portal
+      url: deploy-portal.md
+    - text: Met REST API
+      url: deploy-rest.md
+    - text: What if-implementatie
+      url: template-deploy-what-if.md
+    - text: Implementatiegeschiedenis weergeven
+      url: deployment-history.md
+- title: Sjablonen beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Sjablonen exporteren
+      url: export-template-portal.md
+    - text: CI/CD
+      url: add-template-to-azure-pipelines.md
+- title: Naslaginhoud verkennen
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Sjabloonverwijzing
+      url: /azure/templates/
+    - text: REST-API
+      url: /rest/api/resources/
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources
+    - text: Azure CLI
+      url: /cli/azure/resource
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.resourcemanager
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.resources
+    - text: Python
+      url: /python/api/overview/azure/resources?view=azure-python

@@ -1,0 +1,12 @@
+- name: Overzicht
+  href: redhat-overview.md
+- name: Red Hat Enterprise Linux-installatiekopieën (RHEL)
+  items:
+    - name: Overzicht van Red Hat Enterprise Linux-installatiekopieën
+      href: redhat-images.md
+    - name: Lijst met Red Hat Enterprise Linux-installatiekopieën
+      href: redhat-imagelist.md
+- name: Update-infrastructuur voor Red Hat in Azure
+  href: redhat-rhui.md
+- name: Aanbieding voor Red Hat Enterprise Linux BYOS-installatiekopieën
+  href: redhat-byos.md

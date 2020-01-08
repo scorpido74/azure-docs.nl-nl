@@ -159,6 +159,8 @@
       href: troubleshoot-deploy-vm-linux.md
     - name: Windows
       href: troubleshoot-deploy-vm-windows.md
+    - name: 'Services opnieuw starten, afsluiten of stoppen'
+      href: boot-error-troubleshoot-windows.md
 - name: Apparaatnamen zijn gewijzigd
   href: troubleshoot-device-names-problems.md
 - name: Toegang tot VM voor herstel

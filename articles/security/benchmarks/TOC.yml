@@ -1,0 +1,30 @@
+- name: Azure Security-benchmark
+  href: index.yml
+- name: Inleiding
+  href: introduction.md
+- name: Beveiligingsmaatregelen
+  items:
+    - name: Overzicht
+      href: overview.md
+    - name: Netwerkbeveiliging
+      href: security-control-network-security.md
+    - name: Logboekregistratie en bewaking
+      href: security-control-logging-monitoring.md
+    - name: Identiteits- en toegangsbeheer
+      href: security-control-identity-access-control.md
+    - name: Gegevensbeveiliging
+      href: security-control-data-protection.md
+    - name: Beheer van beveiligingsproblemen
+      href: security-control-vulnerability-management.md
+    - name: Inventarisatie en Asset Management
+      href: security-control-inventory-asset-management.md
+    - name: Veilige configuratie
+      href: security-control-secure-configuration.md
+    - name: Beveiliging tegen malware
+      href: security-control-malware-defense.md
+    - name: Gegevensherstel
+      href: security-control-data-recovery.md
+    - name: Reageren op incidenten
+      href: security-control-incident-response.md
+    - name: Penetratietests en Red Team-oefeningen
+      href: security-control-penetration-tests-red-team-exercises.md

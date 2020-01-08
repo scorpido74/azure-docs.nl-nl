@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 2b83d09932aaa39e31d04f30bc660541efcbb50b
-  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.openlocfilehash: 7ebb44ec1f3483b9bf3f29ddb6dc7a73266b8cea
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 11/09/2019
-  ms.locfileid: "73882808"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75443366"
 landingContent:
 - title: Over toepassingsbeheer
   linkLists:
@@ -53,22 +53,22 @@ landingContent:
     links:
     - text: Wat is automatische inrichting van gebruikers?
       url: user-provisioning.md
-  - linkListType: concept
+    - text: Hoe inrichting werkt
+      url: how-provisioning-works.md
+  - linkListType: tutorial
     links:
-    - text: SCIM gebruiken om gebruikers en groepen in te richten
-      url: use-scim-to-provision-users-and-groups.md
+    - text: Zelfstudies voor het inrichten van SaaS-apps
+      url: /azure/active-directory/saas-apps/
   - linkListType: how-to-guide
     links:
-    - text: Automatische gebruikersinrichting configureren
+    - text: Een app bouwen? SCIM gebruiken voor automatische inrichting
+      url: use-scim-to-provision-users-and-groups.md
+    - text: Een galerie-app toevoegen? Inrichting in de app configureren
       url: configure-automatic-user-provisioning-portal.md
     - text: Kenmerktoewijzingen aanpassen
       url: customize-application-attributes.md
-    - text: De inrichtingsstatus controleren
-      url: application-provisioning-when-will-provisioning-finish-specific-user.md
-  - linkListType: reference
-    links:
-    - text: Expressies schrijven voor kenmerktoewijzingen
-      url: functions-for-customizing-application-data.md
+    - text: Bereikfilters toevoegen
+      url: define-conditional-rules-for-provisioning-user-accounts.md
 - title: On-premises apps publiceren met toepassingsproxy
   linkLists:
   - linkListType: overview

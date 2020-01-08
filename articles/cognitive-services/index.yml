@@ -11,12 +11,12 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 11/04/2019
-  ms.openlocfilehash: fae1321f70d538dcacde83cadd83f5cb15155459
-  ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+  ms.openlocfilehash: 291d2ca69a1f02f76430074b2a548b7d36c942be
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 12/03/2019
-  ms.locfileid: "74775520"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75446398"
 highlightedContent:
   items:
   - title: Wat is Cognitive Services?
@@ -89,7 +89,7 @@ conceptualContent:
     links:
     - url: ./speech-service/index.md
       itemType: overview
-      text: Spraakservices
+      text: Speech Service
     - url: ./speaker-recognition/home.md
       itemType: overview
       text: Sprekerherkenning (preview)
@@ -168,9 +168,9 @@ conceptualContent:
 additionalContent:
   sections:
   - items:
-    - title: Aanvullende resources
+    - title: Aanvullende bronnen
       links:
-      - text: Azure-CLI
+      - text: Azure CLI
         url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
       - text: PowerShell
         url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.5.0#cognitive_services

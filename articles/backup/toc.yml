@@ -36,6 +36,14 @@
       href: tutorial-backup-windows-server-to-azure.md
     - name: Bestanden terugzetten naar Windows Server
       href: tutorial-backup-restore-files-windows-server.md
+    - name: SAP HANA-databases in Azure-VM’s - met behulp van CLI
+      items:
+        - name: Back-ups maken van SAP HANA-databases - CLI
+          href: tutorial-sap-hana-backup-cli.md
+        - name: SAP HANA-databases herstellen - CLI
+          href: tutorial-sap-hana-restore-cli.md
+        - name: Back-ups van SAP HANA-databases beheren - CLI
+          href: tutorial-sap-hana-manage-cli.md
 - name: Voorbeelden
   items:
     - name: Azure PowerShell
@@ -244,6 +252,8 @@
           href: manage-monitor-sql-database-backup.md
     - name: SAP HANA-databases in virtuele Azure-machines
       items:
+        - name: Over SAP HANA-back-ups op Azure-VM’s
+          href: sap-hana-db-about.md
         - name: Back-ups maken van SAP HANA-databases in virtuele Azure-machines
           href: backup-azure-sap-hana-database.md
         - name: SAP HANA-databases in virtuele Azure-machines herstellen
@@ -308,7 +318,7 @@
   items:
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/backup?view=azure-cli-latest
     - name: PowerShell
       href: /powershell/module/az.recoveryservices

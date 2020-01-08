@@ -44,7 +44,7 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
     - name: Ingebouwde beveiligingsmaatregelen
       href: vpn-gateway-security-controls.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Een VPN-gateway maken en beheren
       items:
@@ -54,7 +54,7 @@
               href: create-routebased-vpn-gateway-portal.md
             - name: Azure PowerShell
               href: create-routebased-vpn-gateway-powershell.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: create-routebased-vpn-gateway-cli.md
         - name: Een VPN-gatewayverbinding verifiëren
           href: vpn-gateway-verify-connection-resource-manager.md
@@ -76,7 +76,7 @@
               href: vpn-gateway-howto-site-to-site-resource-manager-portal.md
             - name: Azure PowerShell
               href: vpn-gateway-create-site-to-site-rm-powershell.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: vpn-gateway-howto-site-to-site-resource-manager-cli.md
         - name: Meerdere site-to-siteverbindingen configureren
           href: vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md
@@ -92,7 +92,7 @@
               href: vpn-gateway-howto-vnet-vnet-resource-manager-portal.md
             - name: Azure PowerShell
               href: vpn-gateway-vnet-vnet-rm-ps.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: vpn-gateway-howto-vnet-vnet-cli.md
         - name: Een VNet-naar-VNet-verbinding tussen implementatiemodellen configureren
           items:
@@ -136,6 +136,8 @@
           items:
             - name: Een tenant configureren
               href: openvpn-azure-ad-tenant.md
+            - name: Een tenant met meerdere client-apps configureren
+              href: openvpn-azure-ad-tenant-multi-app.md
             - name: Meervoudige verificatie (MFA) instellen
               href: openvpn-azure-ad-mfa.md
             - name: Een VPN-client configureren
@@ -168,7 +170,7 @@
           items:
             - name: Azure PowerShell
               href: vpn-gateway-bgp-resource-manager-ps.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: bgp-how-to-cli.md
         - name: Geforceerde tunneling configureren
           items:
@@ -184,7 +186,7 @@
           href: vpn-gateway-modify-local-network-gateway-portal.md
         - name: Azure PowerShell
           href: vpn-gateway-modify-local-network-gateway.md
-        - name: Azure-CLI
+        - name: Azure CLI
           href: vpn-gateway-modify-local-network-gateway-cli.md
     - name: VPN-apparaten configureren
       items:
@@ -253,7 +255,7 @@
       href: /rest/api/network/virtualnetworkgateways
     - name: REST (klassiek)
       href: 'https://msdn.microsoft.com/library/jj154113'
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/network/vnet-gateway
 - name: Resources
   items:
@@ -266,7 +268,7 @@
     - name: Forum
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
     - name: Abonnements- en servicebeperkingen
-      href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/vpn-gateway'
     - name: Prijscalculator

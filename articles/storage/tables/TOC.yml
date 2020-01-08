@@ -45,11 +45,6 @@
   items:
     - name: Opslagaccounts
       href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-      items:
-        - name: Een opslagaccount beheren
-          href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-        - name: Een opslagaccount upgraden
-          href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: De gegevensredundantie
       items:
         - name: Opslagreplicatie in Azure
@@ -62,10 +57,8 @@
           href: ../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
         - name: Geografisch zone-redundante opslag
           href: ../common/storage-redundancy-gzrs.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    - name: Prestaties en schalen
+    - name: 'Prestaties, schaalbaarheid en kostenoptimalisatie'
       items:
-        - name: Schaalbaarheids- en prestatiedoelen
-          href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
         - name: Controlelijst voor prestaties en schaalbaarheid
           href: storage-performance-checklist.md
         - name: Schaalbare en beter bruikbare tabellen ontwerpen
@@ -82,14 +75,18 @@
       href: table-storage-design-modeling.md
     - name: Tabelontwerppatronen
       href: table-storage-design-patterns.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Create a storage account
       displayName: 'resource manager, resource manager template, template, ARM'
-      href: /azure/storage/common/storage-quickstart-create-account
+      href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
       maintainContext: true
+    - name: Een opslagaccount upgraden
+      href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: Accountsleutels weergeven en beheren
+      href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: De opslagemulator gebruiken
-      href: /azure/storage/common/storage-use-emulator
+      href: /azure/storage/common/storage-use-emulator?toc=%2fazure%2fstorage%2ftables%2ftoc.json
       maintainContext: true
     - name: Gegevens overdragen
       items:
@@ -105,8 +102,16 @@
       items:
         - name: Latentieproblemen
           href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-- name: Resources
+- name: Naslaginformatie
   items:
+    - name: Schaalbaarheids- en prestatiedoelen
+      items:
+        - name: Table Storage
+          href: scalability-targets.md
+        - name: Standard-opslagaccounts
+          href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: Opslagresourceprovider
+          href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: REST-API's voor Table Storage
       href: 'https://docs.microsoft.com/rest/api/storageservices/table-service-rest-api'
       maintainContext: true

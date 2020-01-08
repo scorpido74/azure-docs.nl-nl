@@ -17,6 +17,8 @@
           href: ./hdinsight-administer-use-dotnet-sdk.md
         - name: HDInsight-clusters beheren - PowerShell
           href: ./hdinsight-administer-use-powershell.md
+        - name: Clusters maken met Runbooks
+          href: ./manage-clusters-runbooks.md
         - name: Een ETL-pijplijn bouwen
           href: ./hdinsight-sales-insights-etl.md
     - name: Voorbeelden
@@ -73,14 +75,29 @@
               href: ./hdinsight-hadoop-create-linux-clusters-curl-rest.md
             - name: Clusters maken met .NET
               href: ./hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
-        - name: Clusteropslag gebruiken
-          items:
-            - name: Met behulp van Azure Storage
-              href: hdinsight-hadoop-use-blob-storage.md
-            - name: Azure Data Lake Storage Gen2 gebruiken
-              href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-            - name: Azure Data Lake Storage Gen1 gebruiken
-              href: hdinsight-hadoop-use-data-lake-store.md
+            - name: Fouten bij het maken van clusters
+              href: ./create-cluster-error-dictionary.md
+              title: null
+              summary: null
+              abstract: null
+              achievement: null
+              iconUrl: null
+              levels:
+                - null
+              roles:
+                - null
+              products:
+                - null
+              units:
+                - null
+                - name: Clusteropslag gebruiken
+                  items:
+                    - name: Met behulp van Azure Storage
+                      href: hdinsight-hadoop-use-blob-storage.md
+                    - name: Azure Data Lake Storage Gen2 gebruiken
+                      href: hdinsight-hadoop-use-data-lake-storage-gen2.md
+                    - name: Azure Data Lake Storage Gen1 gebruiken
+                      href: hdinsight-hadoop-use-data-lake-store.md
         - name: Clusters uitbreiden
           items:
             - name: HDInsight-apps installeren
@@ -533,6 +550,8 @@
           href: ./hdinsight-apache-kafka-spark-structured-streaming.md
     - name: Concepten
       items:
+        - name: Kafka-workloads migreren naar 4.0
+          href: ./kafka/migrate-versions.md
         - name: Opslag en schaalbaarheid
           href: ./kafka/apache-kafka-scalability.md
         - name: Hoge beschikbaarheid van gegevens
@@ -545,6 +564,8 @@
       items:
         - name: Ontwikkelen
           items:
+            - name: Kafka REST-proxy gebruiken
+              href: ./kafka/rest-proxy.md
             - name: Automatisch onderwerp maken inschakelen
               href: ./kafka/apache-kafka-auto-create-topics.md
             - name: Apache Kafka gebruiken met IoT Hub
@@ -707,6 +728,8 @@
               href: ./interactive-query/interactive-query-troubleshoot-query-performance.md
             - name: Trage reducer
               href: ./interactive-query/interactive-query-troubleshoot-slow-reducer.md
+            - name: Time-out van de Apache Hive-gateway
+              href: ./interactive-query/troubleshoot-gateway-timeout.md
             - name: Time-out van de Apache Hive-weergave
               href: ./interactive-query/interactive-query-troubleshoot-view-time-out.md
             - name: Machtigingsfout bij maken van tabel
@@ -835,14 +858,14 @@
           href: ./hdinsight-service-tags.md
     - name: Procedures
       items:
+        - name: Id-broker gebruiken voor referentiebeheer
+          href: ./domain-joined/identity-broker.md
         - name: ESP-clusters maken en synchroniseren met on-premises
           href: ./domain-joined/apache-domain-joined-create-configure-enterprise-security-cluster.md
         - name: VNETs maken voor HDInsight
           href: ./hdinsight-create-virtual-network.md
         - name: HDInsight verbinden met een on-premises netwerk
           href: ./connect-on-premises-network.md
-        - name: Bedrijfsbeveiliging configureren in HDInsight
-          href: ./domain-joined/apache-domain-joined-configure.md
         - name: ESP-clusters configureren met Azure AD DS
           href: ./domain-joined/apache-domain-joined-configure-using-azure-adds.md
         - name: Azure AD-gebruikers synchroniseren met een HDInsight-cluster

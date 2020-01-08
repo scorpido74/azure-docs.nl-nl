@@ -21,6 +21,10 @@
       href: /azure/active-directory/saas-apps/
     - name: Een on-premises app toevoegen met een toepassingsproxy
       href: application-proxy-add-on-premises-application.md
+- name: Voorbeelden
+  items:
+    - name: Voorbeelden van Azure PowerShell voor een toepassingsproxy
+      href: application-proxy-powershell-samples.md
 - name: Concepten
   expanded: true
   items:
@@ -70,12 +74,10 @@
               href: end-user-experiences.md
     - name: Toepassingsinrichting (SCIM)
       items:
+        - name: Hoe inrichting werkt
+          href: how-provisioning-works.md
         - name: Implementatie van een automatische gebruikersinrichting plannen
           href: plan-auto-user-provisioning.md
-        - name: Automatisch inrichten voor apps die SCIM ondersteunen
-          href: use-scim-to-provision-users-and-groups.md
-        - name: Handmatige en automatische inrichting
-          href: application-provisioning-config-how-to.md
     - name: HR-inrichting in de cloud
       items:
         - name: Implementatie van een HR-gebruikersinrichting in de cloud plannen
@@ -98,7 +100,7 @@
           href: application-proxy-high-availability-load-balancing.md
         - name: Vergelijking van toegangsoplossingen op afstand
           href: application-proxy-migration.md
-- name: Handleidingen
+- name: Instructiegidsen
   expanded: true
   items:
     - name: Cloud-apps en eenmalige aanmelding
@@ -139,6 +141,8 @@
           items:
             - name: Gebruikerstoestemming configureren
               href: configure-user-consent.md
+            - name: Beheerderstoestemming verlenen voor de hele tenant
+              href: grant-admin-consent.md
             - name: Beheerderstoestemming voor werkstroom configureren (preview)
               href: configure-admin-consent-workflow.md
             - name: Methoden om gebruikers en groepen toe te wijzen aan een app
@@ -233,28 +237,32 @@
                   href: access-panel-troubleshoot-self-service-access.md
     - name: Toepassingsinrichting (SCIM)
       items:
-        - name: App-inrichting configureren
+        - name: Inrichting configureren voor een galerie-app
+          href: configure-automatic-user-provisioning-portal.md
+        - name: Een SCIM-eindpunt bouwen en inrichting configureren
+          href: use-scim-to-provision-users-and-groups.md
+        - name: De kenmerktoewijzingen bewerken
           items:
-            - name: Automatische gebruikersinrichting configureren
-              href: configure-automatic-user-provisioning-portal.md
-            - name: SCIM gebruiken voor automatische inrichting
-              href: use-scim-to-provision-users-and-groups.md
             - name: Kenmerktoewijzingen aanpassen
               href: Customize-application-attributes.md
             - name: Expressies schrijven voor kenmerktoewijzingen
               href: functions-for-customizing-application-data.md
+        - name: Gebruikers en groepen opnemen of uitsluiten in bereik
+          items:
             - name: Bereik van gebruikers of groepen die moeten worden ingericht
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: Verwijdering overslaan voor gebruikers buiten het bereik
               href: skip-out-of-scope-deletions.md
+        - name: Inrichting bewaken en erover rapporteren
+          items:
             - name: Inrichtingsstatus en prestaties bewaken
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: Rapport over app-inrichting
               href: check-status-user-account-provisioning.md
             - name: Uw configuratie exporteren en importeren
               href: export-import-provisioning-configuration.md
-            - name: Configuratie automatiseren met behulp van MS Graph
-              href: application-provisioning-configure-api.md
+        - name: Configuratie automatiseren met behulp van MS Graph
+          href: application-provisioning-configure-api.md
         - name: Problemen met het automatisch inrichten van gebruikers oplossen
           items:
             - name: Problemen met app-inrichting oplossen

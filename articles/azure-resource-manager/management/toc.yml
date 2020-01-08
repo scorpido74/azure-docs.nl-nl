@@ -1,0 +1,138 @@
+- name: Documentatie voor Azure-resources beheren
+  href: index.yml
+- name: Overzicht
+  items:
+    - name: Wat is Resource Manager?
+      href: overview.md
+- name: Concepten
+  items:
+    - name: Abonnements- en servicebeperkingen
+      href: azure-subscription-service-limits.md
+    - name: Resource Manager en klassieke implementatie
+      href: deployment-models.md
+    - name: Algemene Azure-beveiligingskenmerken
+      href: azure-resource-manager-security-controls.md
+    - name: Resourceproviders per service
+      href: azure-services-resource-providers.md
+    - name: Limiet van resource-exemplaar
+      href: resources-without-resource-group-limit.md
+- name: Procedures
+  items:
+    - name: Verplaatsen - resourcegroepen/abonnementen
+      items:
+        - name: Resources verplaatsen
+          href: move-resource-group-and-subscription.md
+        - name: Ondersteunde resources
+          href: move-support-resources.md
+        - name: Problemen met verplaatsing oplossen
+          href: troubleshoot-move.md
+        - name: Services
+          items:
+            - name: App Service
+              href: ./move-limitations/app-service-move-limitations.md
+            - name: Azure DevOps
+              href: /azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json
+            - name: Klassieke implementatie
+              href: ./move-limitations/classic-model-move-limitations.md
+            - name: Netwerken
+              href: ./move-limitations/networking-move-limitations.md
+            - name: Recovery Services
+              href: ../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Virtuele machines
+              href: ./move-limitations/virtual-machines-move-limitations.md
+    - name: Verplaatsen - regio's
+      items:
+        - name: Verplaatsen tussen regio's
+          href: move-region.md
+        - name: Ondersteunde services
+          href: region-move-support.md
+        - name: Services
+          items:
+            - name: Azure-VM's
+              href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure Storage
+              href: ../../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure SQL
+              href: ../../sql-database/sql-database-move-resources-across-regions.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Virtueel netwerk
+              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Netwerkbeveiligingsgroep (NSG)
+              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Openbare IP-adressen
+              href: ../../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/toc.json
+    - name: Tags
+      items:
+        - name: Resources taggen
+          href: tag-resources.md
+        - name: Tag-ondersteuning
+          href: tag-support.md
+    - name: Beheren
+      items:
+        - name: Resourcegroepen beheren
+          items:
+            - name: Azure Portal gebruiken
+              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+              href: manage-resource-groups-portal.md
+            - name: Azure CLI gebruiken
+              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+              href: manage-resource-groups-cli.md
+            - name: Azure PowerShell gebruiken
+              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+              href: manage-resource-groups-powershell.md
+        - name: Resources beheren
+          items:
+            - name: Azure Portal gebruiken
+              displayName: 'open,delete,deploy,move,lock,tag,monitor'
+              href: manage-resources-portal.md
+            - name: Azure CLI gebruiken
+              displayName: 'open,delete,deploy,move,lock,tag'
+              href: manage-resources-cli.md
+            - name: Azure PowerShell gebruiken
+              displayName: 'open,delete,deploy,move,lock,tag'
+              href: manage-resources-powershell.md
+        - name: Resourcegroepen en resources verwijderen
+          href: delete-resource-group.md
+        - name: Resources vergrendelen
+          href: lock-resources.md
+        - name: EA-abonnementen maken
+          href: programmatically-create-subscription.md
+        - name: Toegang verlenen om EA-abonnementen te maken
+          href: grant-access-to-create-subscription.md
+        - name: Verifiëren in meerdere tenants
+          href: authenticate-multi-tenant.md
+    - name: Activiteitenlogboeken bekijken
+      href: view-activity-logs.md
+    - name: Resourceproviders en -typen
+      href: resource-providers-and-types.md
+    - name: Aanvraagbeperkingen
+      href: request-limits-and-throttling.md
+    - name: Asynchrone bewerkingen bijhouden
+      href: async-operations.md
+- name: Naslaginformatie
+  items:
+    - name: REST
+      href: /rest/api/resources/
+    - name: Azure PowerShell
+      href: /powershell/module/az.resources
+    - name: Azure CLI
+      href: /cli/azure/resource
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.resourcemanager
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.resources
+    - name: Python
+      href: /python/api/overview/azure/resources?view=azure-python
+- name: Resources
+  items:
+    - name: Azure-roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
+    - name: Prijscalculator
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Service-updates
+      href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-resource-manager'
+    - name: Persoonlijke gegevens beheren
+      href: resource-manager-personal-data.md
+    - name: Video's
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager'

@@ -69,6 +69,8 @@
         - name: Beveiligingsoverzicht
           href: sql-database-security-overview.md
           displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
+        - name: Aanbevolen procedures voor beveiliging
+          href: sql-database-security-best-practice.md
         - name: Toegangsbeheer
           items:
             - name: Toegangsbeheer
@@ -292,7 +294,7 @@
               href: sql-database-elastic-scale-introduction.md
             - name: Woordenlijst
               href: sql-database-elastic-scale-glossary.md
-            - name: Elastische clientbibliotheek - consolideren
+            - name: Elastische clientbibliotheek
               href: sql-database-elastic-database-client-library.md
             - name: Shard-kaarten
               href: sql-database-elastic-scale-shard-map-management.md
@@ -674,7 +676,7 @@
               href: elastic-jobs-migrate.md
     - name: Voorbeelden
       items:
-        - name: Azure-CLI
+        - name: Azure CLI
           href: sql-database-cli-samples.md?tabs=single-database
         - name: Azure PowerShell
           href: sql-database-powershell-samples.md?tabs=single-database
@@ -683,15 +685,16 @@
         - name: Codevoorbeelden
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Beheerd SQL-exemplaar
+  href: sql-database-managed-instance-index.yml
   items:
-    - name: Documentatie voor beheerde exemplaren
-      href: sql-database-managed-instance-index.yml
     - name: Overzicht
-      href: sql-database-managed-instance.md
-    - name: Exemplaargroepen
-      href: sql-database-instance-pools.md
-    - name: Veelgestelde vragen
-      href: sql-database-managed-instance-faq.md
+      items:
+        - name: Beheerd exemplaar
+          href: sql-database-managed-instance.md
+        - name: Exemplaargroepen
+          href: sql-database-instance-pools.md
+        - name: Veelgestelde vragen
+          href: sql-database-managed-instance-faq.md
     - name: Snelstartgidsen
       items:
         - name: Maken
@@ -718,14 +721,18 @@
       items:
         - name: Migreren met behulp van DMS
           href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
-        - name: Transactionele replicatie configureren
-          href: replication-with-sql-database-managed-instance.md
         - name: Beveiliging configureren
           href: sql-database-managed-instance-aad-security-tutorial.md
         - name: Een beheerd exemplaar aan een failovergroep toevoegen
           href: sql-database-managed-instance-failover-group-tutorial.md
         - name: On-premises gebruikers en groepen migreren
           href: tutorial-managed-instance-azure-active-directory-migration.md
+        - name: Transactionele replicatie
+          items:
+            - name: MI-pub naar MI-sub
+              href: replication-with-sql-database-managed-instance.md
+            - name: 'MI pub, MI dist, SQL Sub'
+              href: sql-database-managed-instance-configure-replication-tutorial.md
     - name: Concepten
       items:
         - name: Beheer API-referentiemateriaal
@@ -780,7 +787,7 @@
           href: sql-database-managed-instance-connect-app.md
     - name: Voorbeelden
       items:
-        - name: Azure-CLI
+        - name: Azure CLI
           href: sql-database-cli-samples.md?tabs=managed-instance
         - name: Azure PowerShell
           href: sql-database-powershell-samples.md?tabs=managed-instance
@@ -790,7 +797,7 @@
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/sql
     - name: Azure PowerShell
       href: /powershell/module/az.sql

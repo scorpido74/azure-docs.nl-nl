@@ -1,0 +1,100 @@
+### YamlMime:Landing
+title: Documentatie voor Azure Cache voor Redis
+summary: Meer informatie over het gebruik van Azure Cache voor Redis, een veilige gegevenscache en berichtbroker die toepassingen toegang tot gegevens geeft met hoge doorvoer en lage latentie. Zelfstudies, API-verwijzingen en andere documentatie laten zien hoe u Azure Cache voor Redis gebruikt vanuit een willekeurige toepassing in Azure.
+metadata:
+  title: Documentatie voor Azure Cache voor Redis
+  description: Meer informatie over het gebruik van Azure Cache voor Redis, een veilige gegevenscache en berichtbroker die toepassingen snel toegang geeft tot gegevens. Zelfstudies, API-verwijzingen en meer.
+  ms.service: cache
+  ms.topic: landing-page
+  author: yegu-ms
+  ms.author: yegu
+  ms.date: 12/16/2019
+  ms.openlocfilehash: fad78db361927a14f393066fb088354552d880a9
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75470029"
+landingContent:
+- title: Over Azure Cache voor Redis
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Cache voor Redis?
+      url: cache-overview.md
+    - text: Meer informatie over de Premium-laag van Azure Cache voor Redis
+      url: cache-premium-tier-intro.md
+  - linkListType: video
+    links:
+    - text: Beheeropties
+      url: https://azure.microsoft.com/resources/videos/azure-redis-cache-administration-options/
+    - text: In beveiligingscache plaatsen
+      url: https://azure.microsoft.com/resources/videos/azure-redis-security-cacheing/
+    - text: Aanbevolen procedures
+      url: https://azure.microsoft.com/resources/videos/azure-redis-cache-best-practices/
+    - text: Prestaties verbeteren
+      url: https://azure.microsoft.com/resources/videos/increase-performance-through-redis-cluster-in-azure-redis-cache/
+  - linkListType: whats-new
+    links:
+    - text: Veelgestelde vragen
+      url: cache-faq.md
+    - text: Aanbevolen procedures voor Azure Cache voor Redis
+      url: cache-best-practices.md
+    - text: ASP.NET-sessiestatusprovider voor Azure Cache voor Redis
+      url: cache-aspnet-session-state-provider.md
+- title: 'Quickstarts: Azure Cache voor Redis'
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een .NET Framework-app coderen
+      url: cache-dotnet-how-to-use-azure-redis-cache.md
+    - text: Een .NET Core-app coderen
+      url: cache-dotnet-core-quickstart.md
+    - text: Een ASP.NET-web-app coderen
+      url: cache-web-app-howto.md
+    - text: Een Java-app coderen
+      url: cache-java-get-started.md
+    - text: Een Node.js-app coderen
+      url: cache-nodejs-get-started.md
+    - text: Een Python-app coderen
+      url: cache-python-get-started.md
+  - linkListType: tutorial
+    links:
+    - text: een cache-aside-leaderboard maken in ASP.NET
+      url: cache-web-app-cache-aside-leaderboard.md
+  - linkListType: get-started
+    links:
+    - text: Voorbeelden
+      url: cache-redis-samples.md
+- title: SDK's en opdrachtregels
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.redis
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.redis.rediscache
+    - text: REST-API
+      url: /rest/api/redis/
+    - text: Redis-client
+      url: https://redis.io/clients
+    - text: Redis-opdrachten
+      url: https://redis.io/commands
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.rediscache
+    - text: Azure CLI
+      url: /cli/azure/redis
+- title: Problemen oplossen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Problemen aan de clientzijde oplossen
+      url: cache-troubleshoot-client.md
+    - text: Problemen aan de serverzijde oplossen
+      url: cache-troubleshoot-server.md
+    - text: Problemen met time-outs oplossen
+      url: cache-troubleshoot-timeouts.md
+    - text: Problemen met gegevensverlies oplossen
+      url: cache-troubleshoot-data-loss.md

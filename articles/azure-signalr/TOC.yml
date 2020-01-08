@@ -25,11 +25,15 @@
   items:
     - name: 'Een serverloze, realtime app met verificatie bouwen'
       href: signalr-tutorial-authenticate-azure-functions.md
+    - name: Controleren
+      items:
+        - name: Diagnostische logboeken gebruiken om de SignalR-service te bewaken
+          href: signalr-tutorial-diagnostic-logs.md
 - name: Voorbeelden
   items:
     - name: Codevoorbeelden
       href: 'https://github.com/aspnet/AzureSignalR-samples'
-    - name: Azure-CLI
+    - name: Azure CLI
       href: signalr-reference-cli.md
 - name: Concepten
   items:
@@ -57,7 +61,7 @@
       href: signalr-concept-authenticate-oauth.md
     - name: Gebeurtenisverwerking
       href: signalr-concept-event-grid-integration.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Schalen
       items:
@@ -77,7 +81,7 @@
           href: signalr-howto-event-grid-integration.md
 - name: Verwijzingen
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: signalr-reference-cli.md
     - name: REST-API
       href: 'https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md'
@@ -100,7 +104,7 @@
     - name: Veelgestelde vragen
       href: signalr-resource-faq.md
     - name: Niveaubeperkingen voor SignalR-service-abonnement
-      href: 'https://docs.microsoft.com/azure/azure-subscription-service-limits#signalr-service-limits'
+      href: 'https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#signalr-service-limits'
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/signalr-service/'
     - name: Video's

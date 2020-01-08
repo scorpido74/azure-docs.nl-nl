@@ -51,7 +51,7 @@
       href: integrate-ci-cd-pipeline.md
 - name: Voorbeelden
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: cli-samples.md
 - name: Concepten
   items:
@@ -67,7 +67,7 @@
       items:
         - name: Tolerantie en herstel na noodgevallen
           href: concept-disaster-recovery.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Integreren met beheerde Azure-identiteit
       href: howto-integrate-azure-managed-service-identity.md
@@ -81,21 +81,21 @@
   items:
     - name: Configuratie
       items:
-        - name: Azure-CLI
+        - name: Azure CLI
           href: 'https://docs.microsoft.com/cli/azure/ext/appconfig/appconfig?view=azure-cli-latest'
         - name: .NET Core-provider
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
         - name: .NET Framework-ontwikkelaar
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
-        - name: .NET Azure SDK
+        - name: Azure-SDK voor .NET
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
         - name: Java Spring-provider
           href: 'https://go.microsoft.com/fwlink/?linkid=2074659'
-        - name: Java Azure SDK
+        - name: Azure SDK voor Java
           href: 'https://go.microsoft.com/fwlink/?linkid=2098196'
-        - name: Python Azure SDK
+        - name: Azure-SDK voor Python
           href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
-        - name: JavaScript Azure SDK
+        - name: Azure-SDK voor JavaScript
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
         - name: REST
           href: 'https://go.microsoft.com/fwlink/?linkid=2078296'

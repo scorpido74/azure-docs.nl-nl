@@ -76,7 +76,7 @@
       href: sql-api-python-samples.md
     - name: PowerShell
       href: powershell-samples-sql.md
-    - name: Azure-CLI
+    - name: Azure CLI
       href: cli-samples.md
     - name: Azure Resource Manager
       href: resource-manager-samples.md
@@ -129,6 +129,8 @@
           href: set-throughput.md
         - name: Doorvoer inrichten - autopilot-modus
           href: provision-throughput-autopilot.md
+        - name: Veelgestelde vragen over AutoPilot
+          href: autopilot-faq.md
     - name: Naslaginformatie over SQL-query's
       items:
         - name: Aan de slag
@@ -566,7 +568,7 @@
             - name: 4 - Gegevens migreren
               displayName: import
               href: cassandra-import-data.md
-        - name: Handleidingen
+        - name: Instructiegidsen
           items:
             - name: Feed wijzigen
               href: cassandra-change-feed.md
@@ -653,7 +655,7 @@
               href: tutorial-query-mongodb.md
             - name: 4 - Gegevens wereldwijd distribueren
               href: tutorial-global-distribution-mongodb.md
-        - name: Handleidingen
+        - name: Instructiegidsen
           items:
             - name: Pre-migratiehandleiding
               href: mongodb-pre-migration.md
@@ -725,7 +727,7 @@
               href: gremlin-limits.md
             - name: Compatibiliteit
               href: gremlin-compatibility.md
-        - name: Handleidingen
+        - name: Instructiegidsen
           items:
             - name: Grafiekgegevens modelleren
               href: graph-modeling.md
@@ -796,7 +798,7 @@
             - name: 'F#'
               href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
               maintainContext: true
-        - name: Handleidingen
+        - name: Instructiegidsen
           items:
             - name: Apps bouwen met de Table-API
               href: table-support.md
@@ -828,7 +830,7 @@
           href: etcd-api-introduction.md
         - name: Azure Kubernetes met Azure Cosmos DB
           href: bootstrap-kubernetes-cluster.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Werken met een Azure Cosmos-account
       href: how-to-manage-database-account.md
@@ -982,6 +984,8 @@
       items:
         - name: Cosmos DB bewaken
           href: monitor-cosmos-db.md
+        - name: Diagnostische logboeken bewaken
+          href: cosmosdb-monitor-resource-logs.md
         - name: Azure Monitor voor Cosmos (preview)
           href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json
         - name: Metrische gegevens weergeven vanuit Cosmos DB-account

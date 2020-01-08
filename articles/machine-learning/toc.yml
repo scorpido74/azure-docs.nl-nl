@@ -1,6 +1,397 @@
-- name: Azure Machine Learning
-  href: service/overview-what-is-azure-ml.md
-- name: Azure Machine Learning Studio
-  href: studio/index.yml
-- name: Machine learning-producten vergelijken op de Microsoft-site
-  href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/context/ml-context
+- name: Documentatie voor Machine Learning
+  href: index.yml
+- name: Overzicht
+  expanded: true
+  items:
+    - name: Wat is Azure Machine Learning?
+      displayName: 'AML, services, overview, introduction'
+      href: overview-what-is-azure-ml.md
+    - name: Azure Machine Learning versus Studio
+      displayName: 'AML, Studio, designer'
+      href: compare-azure-ml-to-studio-classic.md
+    - name: Architectuur en voorwaarden
+      displayName: 'architecture, concepts, definitions, glossary'
+      href: concept-azure-machine-learning-architecture.md
+- name: Zelfstudies
+  items:
+    - name: Studio & Designer
+      items:
+        - name: 'Designer: 1. Een regressiemodel trainen'
+          displayName: studio
+          href: tutorial-designer-automobile-price-train-score.md
+        - name: 'Designer: 2. Dit model implementeren'
+          displayName: studio
+          href: tutorial-designer-automobile-price-deploy.md
+        - name: Geautomatiseerd ML-experiment maken
+          displayName: 'automl, automated, auto ml, portal, ui'
+          href: tutorial-first-experiment-automated-ml.md
+    - name: Python-SDK
+      items:
+        - name: Uw eerste ML-experiment maken
+          items:
+            - name: 1. Werkruimte en dev-omgeving instellen
+              href: tutorial-1st-experiment-sdk-setup.md
+            - name: 2. Uw eerste model trainen
+              href: tutorial-1st-experiment-sdk-train.md
+        - name: Afbeeldingsclassificatie (MNIST-gegevens)
+          items:
+            - name: 1. Een model trainen
+              displayName: build modeling
+              href: tutorial-train-models-with-aml.md
+            - name: 2. Een model implementeren
+              href: tutorial-deploy-models-with-aml.md
+        - name: Regressie met geautomatiseerde ML (gegevens van taxi's in NYC)
+          items:
+            - name: Een ML-model automatisch trainen
+              displayName: 'automl, automated, auto ml,'
+              href: tutorial-auto-train-models.md
+        - name: Machine Learning-pijplijnen (geavanceerd)
+          items:
+            - name: Een classificatiemodel batchgewijs scoren
+              displayName: pipelines
+              href: tutorial-pipeline-batch-scoring-classification.md
+    - name: R SDK
+      items:
+        - name: Uw eerste Machine Learning-experiment maken (R)
+          href: tutorial-1st-r-experiment.md
+    - name: Machine learning-CLI
+      href: tutorial-train-deploy-model-cli.md
+- name: Voorbeelden
+  items:
+    - name: Jupyter Notebooks
+      displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
+      href: samples-notebooks.md
+    - name: Azure Open-gegevenssets
+      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
+    - name: MLOps-voorbeelden van volledige scenario's
+      href: 'https://github.com/microsoft/MLOps'
+- name: Concepten
+  items:
+    - name: Werkruimte
+      href: concept-workspace.md
+    - name: Gegevens
+      href: concept-data.md
+    - name: Modeltraining
+      displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
+      href: concept-train-machine-learning-model.md
+    - name: Modelbeheer (MLOps)
+      displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
+      href: concept-model-management-and-deployment.md
+    - name: Interpreteerbaarheid
+      displayName: explainability
+      href: how-to-machine-learning-interpretability.md
+    - name: 'Designer: Machine Learning zonder codering'
+      displayName: studio
+      href: concept-designer.md
+    - name: Overzichtskaart algoritmen
+      href: /azure/machine-learning/algorithm-cheat-sheet?context=azure/machine-learning/service/context/ml-context
+    - name: Geautomatiseerde Machine Learning
+      displayName: 'automl, auto ml'
+      href: concept-automated-ml.md
+    - name: Rekenproces
+      displayName: 'resource, dsvm, Data Science Virtual Machine'
+      href: concept-compute-instance.md
+    - name: Rekendoel
+      displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
+      href: concept-compute-target.md
+    - name: Machine learning-pijplijnen
+      href: concept-ml-pipelines.md
+    - name: ONNX
+      href: concept-onnx.md
+    - name: Gereedheid en beveiliging voor bedrijven
+      items:
+        - name: Beveiliging voor bedrijven
+          items:
+            - name: Overzicht van Enterprise-beveiliging
+              displayName: authorization authentication encryption aad azure active directory
+              href: concept-enterprise-security.md
+            - name: Gebruikers en rollen beheren
+              href: how-to-assign-roles.md
+            - name: Virtuele netwerken gebruiken
+              displayName: 'vnet, blob'
+              href: how-to-enable-virtual-network.md
+            - name: Webservices beveiligen met SSL
+              href: how-to-secure-web-service.md
+            - name: Opslagtoegangssleutels opnieuw genereren
+              href: how-to-change-storage-access-key.md
+        - name: Verificatie instellen
+          displayName: 'authentication, auth, oauth'
+          href: how-to-setup-authentication.md
+        - name: Azure Machine Learning bewaken
+          href: monitor-azure-machine-learning.md
+        - name: Event Grid-integratie
+          href: concept-event-grid-integration.md
+    - name: Deep learning
+      displayName: 'deep learning vs machine learning, deep learning, vs, versus'
+      href: concept-deep-learning-vs-machine-learning.md
+- name: Instructiegidsen
+  items:
+    - name: Werkruimten maken en beheren
+      items:
+        - name: Azure Portal gebruiken
+          href: how-to-manage-workspace.md
+        - name: Azure CLI gebruiken
+          href: how-to-manage-workspace-cli.md
+        - name: Resource Manager-sjabloon gebruiken
+          displayName: arm
+          href: how-to-create-workspace-template.md
+    - name: Uw omgeving instellen
+      items:
+        - name: Ontwikkelomgevingen instellen
+          displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
+          href: how-to-configure-environment.md
+        - name: Softwareomgevingen instellen
+          displayName: 'pip, Conda, anaconda'
+          href: how-to-use-environments.md
+        - name: Logboekregistratie inschakelen
+          displayName: 'troubleshoot, log, files, tracing'
+          href: how-to-enable-logging.md
+        - name: Invoer- en uitvoermappen instellen
+          displayName: 'large data, write, experiment files, size limit'
+          href: how-to-save-write-experiment-files.md
+        - name: VS Code-extensie gebruiken
+          displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
+          href: how-to-vscode-tools.md
+        - name: Interactieve foutopsporing
+          displayName: 'Visual Studio Code, VSCode, debug, bugs, remote, compute, instance'
+          href: how-to-set-up-vs-code-remote.md
+        - name: Git-integratie
+          displayName: github gitlab
+          href: concept-train-model-git-integration.md
+    - name: Werken met gegevens
+      items:
+        - name: Verbinding maken met gegevens in Azure Storage
+          displayName: 'blob, get, fileshare, access storage, mount, download'
+          href: how-to-access-data.md
+        - name: Gegevens uit gegevensarchief ophalen
+          displayName: 'data, data set, register, access data'
+          href: how-to-create-register-datasets.md
+        - name: Trainen met gegevenssets
+          displayName: 'data, dataset, mount'
+          href: how-to-train-with-datasets.md
+        - name: Drift op gegevenssets detecteren
+          displayName: 'data, dataset'
+          href: how-to-monitor-datasets.md
+        - name: Versiebeheer van gegevenssets en gegevenssets bijhouden
+          displayName: 'data, data set'
+          href: how-to-version-track-datasets.md
+        - name: Gegevens van labels voorzien
+          displayName: 'data, dataset, labeling'
+          href: how-to-create-labeling-projects.md
+        - name: Afbeeldingen van labels voorzien
+          displayName: 'data, dataset, labeling'
+          href: how-to-label-images.md
+    - name: Modellen trainen
+      items:
+        - name: De ontwerper gebruiken
+          displayName: sample designer experiments
+          items:
+            - name: Prijs voorspellen
+              displayName: 'regression, studio'
+              href: how-to-designer-sample-regression-automobile-price-basic.md
+            - name: Prijs voorspellen (geavanceerd)
+              displayName: 'regression, studio'
+              href: how-to-designer-sample-regression-automobile-price-compare-algorithms.md
+            - name: Inkomen voorspellen
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-classification-predict-income.md
+            - name: Kredietrisico voorspellen (geavanceerd)
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-classification-credit-risk-cost-sensitive.md
+            - name: Verloop voorspellen
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-classification-churn.md
+            - name: Vluchtvertragingen voorspellen
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-classification-flight-delay.md
+            - name: Tekstclassificatie
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-text-classification.md
+        - name: Schattingen gebruiken voor ML
+          items:
+            - name: Schattingen maken tijdens training
+              href: how-to-train-ml-models.md
+            - name: Een trainingsomgeving instellen
+              displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+              href: how-to-set-up-training-targets.md
+            - name: Hyperparameters afstemmen
+              displayName: parameter
+              href: how-to-tune-hyperparameters.md
+            - name: Sleutelkluis gebruiken tijdens training
+              displayName: secrets keyvault
+              href: how-to-use-secrets-in-runs.md
+        - name: Scikit-learn
+          href: how-to-train-scikit-learn.md
+        - name: TensorFlow
+          href: how-to-train-tensorflow.md
+        - name: Keras
+          href: how-to-train-keras.md
+        - name: PyTorch
+          href: how-to-train-pytorch.md
+        - name: Chainer
+          href: how-to-train-chainer.md
+    - name: Modellen interpreteren
+      displayName: interpretability
+      items:
+        - name: Lokale en externe modellen interpreteren
+          displayName: 'SDK, interpret'
+          href: how-to-machine-learning-interpretability-aml.md
+        - name: Geautomatiseerde machine learning-modellen interpreteren
+          displayName: 'SDK, interpret, automl'
+          href: how-to-machine-learning-interpretability-automl.md
+    - name: Machine learning automatiseren
+      displayName: 'automl, auto ml'
+      items:
+        - name: Automatische ML gebruiken (Python)
+          displayName: SDK automl
+          href: how-to-configure-auto-train.md
+        - name: Automatische ML gebruiken (interface)
+          href: how-to-create-portal-experiments.md
+        - name: Externe compute-doelen gebruiken
+          displayName: automl automated auto ml
+          href: how-to-auto-train-remote.md
+        - name: ML-taken definiëren
+          displayName: 'machine learning, task type'
+          href: how-to-define-task-type.md
+        - name: Automatisch een prognosemodel trainen
+          displayName: time series
+          href: how-to-auto-train-forecast.md
+        - name: Inzicht in grafieken en metrische gegevens
+          href: how-to-understand-automated-ml.md
+    - name: Experimenten volgen en bewaken
+      items:
+        - name: 'Uitvoeringen starten, bewaken of annuleren'
+          displayName: 'cancel, fail, status, child run'
+          href: how-to-manage-runs.md
+        - name: Metrische gegevens registreren voor trainingsuitvoeringen
+          href: how-to-track-experiments.md
+        - name: Experimenten bijhouden met MLflow
+          displayName: 'log, monitor, metrics'
+          href: how-to-use-mlflow.md
+        - name: Uitvoeringen visualiseren met TensorBoard
+          displayName: 'log, monitor, metrics'
+          href: how-to-monitor-tensorboard.md
+    - name: Modellen implementeren & bedienen
+      items:
+        - name: Waar en hoe u implementeert
+          displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
+          href: how-to-deploy-and-where.md
+        - name: Azure Kubernetes Service
+          displayName: 'aks, aad, authentication, azure active directory'
+          href: how-to-deploy-azure-kubernetes-service.md
+        - name: Azure Container Instances
+          displayName: aci
+          href: how-to-deploy-azure-container-instance.md
+        - name: IoT Edge
+          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: FPGA-interferentie
+          href: how-to-deploy-fpga-web-service.md
+        - name: Inferentie van GPU
+          href: how-to-deploy-inferencing-gpus.md
+        - name: Azure App Service
+          displayName: web app
+          href: how-to-deploy-app-service.md
+        - name: Azure Functions
+          displayName: functions app
+          href: how-to-deploy-functions.md
+        - name: Rekenprocessen
+          href: how-to-deploy-local-container-notebook-vm.md
+        - name: Aangepaste Docker-afbeelding gebruiken
+          href: how-to-deploy-custom-docker-image.md
+        - name: Bestaande modellen gebruiken
+          displayName: publish existing model
+          href: how-to-deploy-existing-model.md
+        - name: Problemen oplossen en fouten opsporen
+          href: how-to-troubleshoot-deployment.md
+    - name: Webservices gebruiken
+      items:
+        - name: In realtime gebruiken
+          displayName: create client consume request response synchronous
+          href: how-to-consume-web-service.md
+        - name: Batch-voorspellingen uitvoeren
+          displayName: score scoring batch consume pipeline parallelrunstep inference
+          href: how-to-run-batch-predictions.md
+        - name: Batch-voorspellingen ontwerpen
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+          href: how-to-run-batch-predictions-designer.md
+        - name: Fouten in batch-voorspellingen opsporen en oplossen
+          displayName: debug_batch consume pipeline parallelrunstep inference
+          href: how-to-debug-batch-predictions.md
+    - name: Modellen bewaken
+      items:
+        - name: Modelgegevens verzamelen en evalueren
+          displayName: track production
+          href: how-to-enable-data-collection.md
+        - name: Gegevensafwijkingen detecteren
+          href: how-to-monitor-data-drift.md
+        - name: Controleren met behulp van Application Insights
+          href: how-to-enable-app-insights.md
+    - name: Machine Learning-pijplijnen maken en gebruiken
+      displayName: pipelines
+      items:
+        - name: Machine Learning-pijplijnen maken (Python)
+          href: how-to-create-your-first-pipeline.md
+        - name: Een pijplijn plannen (Python)
+          href: how-to-schedule-pipelines.md
+        - name: Problemen met pijplijnen opsporen en oplossen
+          href: how-to-debug-pipelines.md
+        - name: Azure-pijplijnen voor CI/CD
+          displayName: 'continuous, integration, delivery'
+          href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: 'Designer: Opnieuw trainen met behulp van gepubliceerde pijplijnen'
+          displayName: 'retrain, designer, published pipeline'
+          href: how-to-retrain-designer.md
+    - name: Resourcequota beheren
+      displayName: limits
+      href: how-to-manage-quotas.md
+    - name: Gegevens exporteren en verwijderen
+      displayName: GDPR
+      href: how-to-export-delete-data.md
+    - name: Door gebeurtenissen gestuurde werkstromen maken
+      displayName: event grid
+      href: how-to-use-event-grid.md
+- name: Naslaginformatie
+  items:
+    - name: Python-SDK
+      displayName: 'api, core, package, python, class'
+      href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
+    - name: R SDK
+      displayName: 'api, core, package, R, class'
+      href: 'https://azure.github.io/azureml-sdk-for-r/reference/index.html'
+    - name: CLI
+      displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
+      href: reference-azure-machine-learning-cli.md
+    - name: REST-API
+      href: 'https://docs.microsoft.com/rest/api/azureml/'
+    - name: Naslaginformatie voor Designer-module
+      displayName: 'module, reference, algorithm, studio'
+      href: algorithm-module-reference/module-reference.md
+    - name: ML op schaal
+      href: /azure/architecture/data-guide/big-data/machine-learning-at-scale
+    - name: Gegevens bewaken - referentie
+      href: monitor-resource-reference.md
+    - name: YAML-verwijzing voor machine learning-pijplijn
+      href: reference-pipeline-yaml.md
+- name: Resources
+  items:
+    - name: Releaseopmerkingen
+      displayName: 'what''s, new, issues, bugs'
+      href: azure-machine-learning-release-notes.md
+    - name: Azure-roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Prijzen
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
+    - name: Regionale beschikbaarheid
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Bekende problemen
+      displayName: 'bugs, errors, troubleshoot'
+      href: resource-known-issues.md
+    - name: Gebruikersforum
+      href: 'https://aka.ms/aml-forum-service'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
+    - name: Onze ML-producten vergelijken
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/service/context/ml-context
+    - name: Wat is er gebeurd met Workbench?
+      displayName: 'desktop, ui, Workbench, upgrade, update, transfer'
+      href: overview-what-happened-to-workbench.md

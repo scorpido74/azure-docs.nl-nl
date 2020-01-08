@@ -107,7 +107,7 @@
       href: production-checklist.md
     - name: IoT Edge-woordenlijst
       href: iot-edge-glossary.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Een IoT Edge-apparaat registreren
       href: how-to-register-device.md
@@ -125,6 +125,10 @@
           href: how-to-install-iot-edge-ubuntuvm.md
         - name: Kubernetes
           href: how-to-install-iot-edge-kubernetes.md
+        - name: Productiecertificaten installeren
+          href: how-to-install-production-certificates.md
+        - name: Testcertificaten maken
+          href: how-to-create-test-certificates.md
         - name: Runtime-versie bijwerken
           href: how-to-update-iot-edge.md
     - name: Automatisch inrichten met DPS
@@ -147,7 +151,7 @@
       items:
         - name: Azure Portal
           href: how-to-deploy-modules-portal.md
-        - name: Azure-CLI
+        - name: Azure CLI
           href: how-to-deploy-modules-cli.md
         - name: Visual Studio Code
           href: how-to-deploy-modules-vscode.md
@@ -155,7 +159,7 @@
       items:
         - name: Azure Portal
           href: how-to-deploy-monitor.md
-        - name: Azure-CLI
+        - name: Azure CLI
           href: how-to-deploy-monitor-cli.md
     - name: IoT Edge-apparaten als gateways gebruiken
       items:

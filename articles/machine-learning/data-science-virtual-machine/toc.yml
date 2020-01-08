@@ -24,24 +24,24 @@
 - name: Concepten
   items:
     - name: Deep Learning en AI-frameworks
-      href: dsvm-deep-learning-ai-frameworks.md
+      href: dsvm-tools-deep-learning-frameworks.md
     - name: Programmeertalen
-      href: dsvm-languages.md
+      href: dsvm-tools-languages.md
     - name: Ontwikkelhulpprogramma’s
       href: dsvm-tools-development.md
     - name: Hulpprogramma's voor ML en data science
-      href: dsvm-ml-data-science-tools.md
+      href: dsvm-tools-data-science.md
     - name: Gegevensplatforms
-      href: dsvm-data-platforms.md
+      href: dsvm-tools-data-platforms.md
     - name: Gegevensopnamehulpprogramma's
       href: dsvm-tools-ingestion.md
-    - name: Hulpprogramma's voor exploratie en visualisatie van gegevens
-      href: dsvm-tools-explore-and-visualize.md
+    - name: Productiviteitshulpprogramma's
+      href: dsvm-tools-productivity.md
     - name: Enterprisebeveiliging en richtlijnen
       href: dsvm-enterprise-overview.md
 - name: Voorbeelden
   href: dsvm-samples-and-walkthroughs.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Een Windows-DSVM gebruiken
       href: vm-do-ten-things.md

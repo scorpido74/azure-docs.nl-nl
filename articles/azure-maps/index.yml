@@ -1,59 +1,172 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Maps-documentatie
+summary: Microsoft Azure Maps biedt ontwikkelaars uit alle branches krachtige georuimtelijke mogelijkheden, gecombineerd met de meest recente kaartgegevens die beschikbaar zijn, om mobiele toepassingen en webtoepassingen te voorzien van geografische context. Azure Maps is een met compatibele Azure One API set REST API's voor kaarten, zoekfunctionaliteit, routebeschrijvingen, verkeer, mobiliteit, weer, tijdzones, geolocatie, geofencing, kaartgegevens en ruimtelijke bewerkingen, aangevuld met web- en Android-SDK's om het ontwikkelproces eenvoudig, flexibel en platformoverstijgend te maken.
 metadata:
-  document_id: null
   title: Azure Maps-documentatie | Microsoft Docs
-  meta.description: Use Azure Maps to provide geospatial services to your web or mobile application.
-  author: philmea
-  manager: null
+  description: Lees meer informatie over Azure Maps en hoe u deze functie kunt gebruiken om georuimtelijke services te bieden voor uw webtoepassing of mobiele toepassing.
   ms.service: azure-maps
-  services: azure-maps
   ms.topic: landing-page
-  ms.date: 02/14/2019
+  author: philmea
   ms.author: philmea
-abstract:
-  description: 'Azure Maps biedt ontwikkelaars uit alle branches krachtige georuimtelijke mogelijkheden, gecombineerd met de meest recente kaartgegevens die beschikbaar zijn, om mobiele en webapplicaties te voorzien van geografische context. Azure Maps is een Azure One API-conforme set REST API''s voor kaarten, zoekfunctionaliteit, routebeschrijvingen, verkeer, mobiliteit, tijdzones, geolocatie, geofencing, kaartgegevens en ruimtelijke bewerkingen, aangevuld met web- en Android-SDK''s om het ontwikkelproces eenvoudig, flexibel en platformoverstijgend te maken.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Ontdek hoe u georuimtelijke toepassingen maakt met behulp van Azure Maps.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_js.svg'
-            text: Een webtoepassing maken
-            href: /azure/azure-maps/quick-demo-map-app
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - html: <b>Web SDK-zelfstudies</b>
-      - type: paragraph
-        text: Maak georuimtelijke webtoepassingen die gebruikmaken van de Web SDK van Azure Maps.
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/azure-maps/tutorial-search-location">Zoeken naar bezienswaardigheden</a>
-          - html: <a href="/azure/azure-maps/tutorial-route-location">Route naar bezienswaardigheden</a>
-          - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">Routes per vervoersoptie</a>
-          - html: <a href="/azure/azure-maps/tutorial-create-store-locator">Een winkellocator maken</a>
-      - html: <b>REST API-zelfstudies</b>
-      - type: paragraph
-        text: Maak georuimtelijke toepassingen die de Azure Maps REST-services aanroepen.
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/azure-maps/tutorial-geofence">Een geofence instellen</a>
-          - html: <a href="/azure/azure-maps/tutorial-iot-hub-maps">Ruimtelijke analyse</a>
-          - html: <a href=/azure/azure-maps/tutorial-ev-routing">EV-routering met Azure Notebooks (Python)</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsW
-        items:
-          - title: Javascript
-            html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">Kaartbesturingselement</a></p><p><a href="https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/">Module voor tekenprogramma''s</a></p><p><a href="https://docs.microsoft.com/javascript/api/azure-maps-rest/">Services-module</a></p>'
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">Gegevensservice</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">Geolocatie-service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/mobility">Mobility-service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">Service voor rendering</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Routeservice</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Zoekservice</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">Ruimtelijke service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">Tijdzone-service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Verkeersservice</a></p>'
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 66721caadce09816368d673c217c9bf97daf1b6c
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75408655"
+landingContent:
+- title: Over Azure Maps
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Maps?
+      url: about-azure-maps.md
+  - linkListType: concept
+    links:
+    - text: Dekking van Azure Maps
+      url: render-coverage.md
+    - text: Lokalisatieondersteuning
+      url: supported-languages.md
+    - text: Ondersteunde kaartstijlen
+      url: supported-map-styles.md
+  - linkListType: video
+    links:
+    - text: Inleiding tot Azure Maps
+      url: https://sec.ch9.ms/ch9/d498/3d435d2c-ac85-421b-b3a7-5e0c7630d498/IoT_AzureMaps_high.mp4
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een webtoepassing maken met Azure Maps
+      url: quick-demo-map-app.md
+  - linkListType: concept
+    links:
+    - text: De juiste prijscategorie kiezen voor een Maps-account
+      url: choose-pricing-tier.md
+    - text: Verificatie met Azure Maps
+      url: azure-maps-authentication.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Maps-accounts beheren
+      url: how-to-manage-account-keys.md
+    - text: Verificatie met Azure Maps beheren
+      url: how-to-manage-authentication.md
+    - text: Prijscategorieën voor Azure Maps-accounts beheren
+      url: how-to-manage-pricing-tier.md
+    - text: Metrische gegevens over het gebruik van Azure Maps-API weergeven
+      url: how-to-view-api-usage.md
+- title: Ontwikkelen met Web-SDK
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Aan de slag gaan met online kaartbesturingselementen
+      url: how-to-use-map-control.md
+    - text: Voorbeelden van Azure Maps Web SDK-code
+      url: https://azuremapscodesamples.azurewebsites.net/
+    - text: Browsers die Web-SDK ondersteunen
+      url: supported-browsers.md
+  - linkListType: tutorial
+    links:
+    - text: Zoeken naar nuttige plaatsen
+      url: tutorial-search-location.md
+    - text: Route naar een nuttige plaats
+      url: tutorial-route-location.md
+    - text: Een winkellocator maken
+      url: tutorial-create-store-locator.md
+  - linkListType: reference
+    links:
+    - text: Kaartbesturingselement
+      url: https://docs.microsoft.com/javascript/api/azure-maps-control/?view=azure-maps-typescript-latest
+    - text: Module voor tekenprogramma's
+      url: https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/?view=azure-maps-typescript-latest
+    - text: Servicemodule
+      url: https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest
+- title: Ontwikkelen met Android SDK
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Aan de slag gaan met Android-kaartbesturingselementen
+      url: how-to-use-android-map-control-library.md
+    - text: Metagegevens van een functie weergeven
+      url: display-feature-information-android.md
+    - text: Een titellaag toevoegen aan een kaart
+      url: how-to-add-tile-layer-android-map.md
+    - text: Vormen toevoegen aan een kaart
+      url: how-to-add-shapes-to-android-map.md
+- title: Ontwikkelen met Location Based Services
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Zoomniveaus en tegelrasters
+      url: zoom-levels-and-tile-grid.md
+  - linkListType: tutorial
+    links:
+    - text: EV-routering met Azure Notebooks (Python)
+      url: tutorial-ev-routing.md
+  - linkListType: how-to-guide
+    links:
+    - text: Zoeken naar een adres (geocodering)
+      url: how-to-search-for-address.md
+    - text: Aanbevolen procedures voor zoeken
+      url: how-to-use-best-practices-for-search.md
+    - text: Aangepaste gegevens weergeven op een statische kaart
+      url: how-to-render-custom-data.md
+  - linkListType: reference
+    links:
+    - text: Zoekservice
+      url: https://docs.microsoft.com/rest/api/maps/search
+    - text: Routeservice
+      url: https://docs.microsoft.com/rest/api/maps/route
+    - text: Verkeersservice
+      url: https://docs.microsoft.com/rest/api/maps/traffic
+    - text: Service voor tijdzones
+      url: https://docs.microsoft.com/rest/api/maps/timezone
+- title: Ruimtelijke analyse
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure Maps Event Grid-integratie
+      url: azure-maps-event-grid-integration.md
+  - linkListType: tutorial
+    links:
+    - text: Een geofence instellen met behulp van Azure Maps
+      url: tutorial-geofence.md
+    - text: Ruimtelijke IoT-analyse implementeren met behulp van Azure Maps
+      url: tutorial-iot-hub-maps.md
+  - linkListType: reference
+    links:
+    - text: Gegevensservice
+      url: https://docs.microsoft.com/rest/api/maps/data
+    - text: Ruimtelijke service
+      url: https://docs.microsoft.com/rest/api/maps/spatial
+- title: Ontwikkelen met Mobility-services
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Gegevensstructuur van de Mobility-service
+      url: mobility-service-data-structure.md
+  - linkListType: how-to-guide
+    links:
+    - text: Openbare doorvoerroutes aanvragen
+      url: how-to-request-transit-data.md
+    - text: Realtime openbare doorvoergegevens aanvragen
+      url: how-to-request-real-time-data.md
+  - linkListType: reference
+    links:
+    - text: Mobility-service
+      url: https://docs.microsoft.com/rest/api/maps/mobility
+- title: Ontwikkelen met weerservices
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Concept voor weerservice
+      url: weather-services-concepts.md
+  - linkListType: tutorial
+    links:
+    - text: Weergegevens analyseren met Azure Notebooks (Python)
+      url: weather-service-tutorial.md
+  - linkListType: reference
+    links:
+    - text: Weerservices
+      url: https://docs.microsoft.com/rest/api/maps/weather

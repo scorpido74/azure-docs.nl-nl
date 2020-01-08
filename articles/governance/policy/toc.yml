@@ -277,7 +277,7 @@
     - name: Virtuele machines met gastconfiguratie controleren
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Azure Policy-extensie voor VS code
       displayName: visual studio code
@@ -300,6 +300,11 @@
     - name: Niet-compatibele resources herstellen
       displayName: 'managed identity, task, definition, roleDefinitionIds'
       href: ./how-to/remediate-resources.md
+    - name: Integratie van Azure Sleutelkluis
+      items:
+        - name: Key Vault integreren met Azure Policy
+          displayName: 'key vault, certificate, key'
+          href: ../../key-vault/azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: Azure Lighthouse-integratie
       items:
         - name: Een beleid op schaal implementeren
@@ -315,7 +320,7 @@
           href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/policy
     - name: Azure PowerShell
       items:

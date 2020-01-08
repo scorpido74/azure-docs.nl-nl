@@ -63,6 +63,17 @@
         - name: Implementatiestappen
           displayName: 'standards, fedramp, moderate'
           href: ./samples/fedramp-m/deploy.md
+    - name: HIPAA HITRUST
+      items:
+        - name: Overzicht
+          displayName: 'standards, HIPAA HITRUST'
+          href: ./samples/HIPAA-HITRUST/index.md
+        - name: Toewijzing van beheeropties
+          displayName: 'standards, HIPAA HITRUST'
+          href: ./samples/HIPAA-HITRUST/control-mapping.md
+        - name: Implementatiestappen
+          displayName: 'standards, HIPAA HITRUST'
+          href: ./samples/HIPAA-HITRUST/deploy.md
     - name: IRS 1075
       items:
         - name: Overzicht
@@ -184,7 +195,7 @@
     - name: Resourcevergrendeling in Blueprints
       displayName: 'mode, state, read only, edit, denyAssignments'
       href: ./concepts/resource-locking.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Toewijzingen beheren met PowerShell
       displayName: 'create, update, remove'

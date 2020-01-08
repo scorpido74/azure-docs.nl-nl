@@ -1,93 +1,166 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure Service Fabric
+summary: Azure Service Fabric is een platform voor gedistribueerde systemen waarmee u gemakkelijk schaalbare en betrouwbare microservices en containers verpakt, implementeert en beheert.
 metadata:
-  title: 'Documentatie voor Azure Service Fabric - zelfstudies, API-verwijzing | Microsoft Docs'
-  meta.description: 'Learn how to use Service Fabric middleware platform to package and deploy microservices for cloud-scale applications. Tutorials, API references, and code samples.'
-  services: service-fabric
-  author: georgewallace
-  manager: gwallace
-  layout: LandingPage
   ms.service: service-fabric
   ms.topic: landing-page
-  ms.date: 11/03/2017
-  ms.author: gwallace
-abstract:
-  description: 'Azure Service Fabric is een platform voor gedistribueerde systemen waarmee u gemakkelijk schaalbare en betrouwbare microservices en containers verpakt, implementeert en beheert. Ontwikkelaars en beheerders kunnen complexe infrastructuurproblemen voorkomen en zich concentreren op het implementeren van bedrijfsspecifieke, veeleisende werkbelastingen die schaalbaar, betrouwbaar en beheerbaar zijn. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u Azure Service Fabric gebruikt.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Ontdek hoe u uw eerste Service Fabric-toepassing in de cloud implementeert:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_net.svg'
-            text: .NET
-            href: service-fabric-quickstart-dotnet
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_Java.svg'
-            text: Java (Reliable Services)
-            href: service-fabric-quickstart-java-reliable-services
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_Java.svg'
-            text: Java (Spring Boot)
-            href: service-fabric-quickstart-java-spring-boot
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
-            text: Linux-containers
-            href: service-fabric-quickstart-containers-linux
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_Windows.svg'
-            text: Windows-containers
-            href: service-fabric-quickstart-containers
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Ontdek hoe u in Azure beveiligde web-apps implementeert, beheert en bewaakt'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="service-fabric-tutorial-create-dotnet-app">Een .NET-toepassing implementeren</a>
-          - html: <a href="service-fabric-tutorial-create-java-app">Een Java-toepassing implementeren</a>
-          - html: <a href="service-fabric-host-app-in-a-container">Een bestaande .NET-app in een container plaatsen</a>
-          - html: <a href="service-fabric-tutorial-create-container-images">Een Linux-containertoepassing maken</a>
-          - html: Een cluster maken en beheren in <a href="service-fabric-tutorial-create-vnet-and-windows-cluster">Windows</a> of <a href="service-fabric-tutorial-create-vnet-and-linux-cluster">Linux</a>
-  - title: Concepten
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="service-fabric-overview-microservices">Uitleg over microservices</a>
-          - html: <a href="service-fabric-content-roadmap">Het totaalbeeld</a>
-          - html: <a href="service-fabric-application-scenarios">Toepassingsscenario's</a>
-          - html: <a href="service-fabric-technical-overview">Terminologie</a>
-          - html: <a href="service-fabric-choose-framework">Overzicht van toepassingen bouwen</a>
-          - html: <a href="service-fabric-deploy-anywhere">Overzicht van clusters</a>
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: 'Scripts voor veelvoorkomende beheertaken zoeken:'
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Voorbeelden
-            html: <p><a href="service-fabric-powershell-samples">Azure PowerShell</a></p><p><a href="samples-cli">Service Fabric-CLI</a></p>
-          - title: .NET
-            html: '<p><a href="https://azure.microsoft.com/resources/samples/service-fabric-dotnet-getting-started/">Aan de slag</a></p><p><a href="https://github.com/Azure-Samples/service-fabric-dotnet-quickstart">Stemmen</a></p><p><a href="https://azure.microsoft.com/resources/samples/service-fabric-dotnet-web-reference-app/">Webverwijzing</a></p><p><a href="https://azure.microsoft.com/resources/samples/service-fabric-dotnet-iot/">IoT</a></p><p><a href="https://azure.microsoft.com/resources/samples/service-fabric-watchdog-service/">Watchdog</a></p>'
-          - title: Java
-            html: '<p><a href="https://azure.microsoft.com/resources/samples/service-fabric-java-getting-started/">Aan de slag</a></p>'
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: '<p><a href="/cli/azure/sf">Azure-CLI</a></p><p><a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl">Service Fabric-CLI</a></p><p><a href="/powershell/module/az.servicefabric">Azure PowerShell</a></p><p><a href="/powershell/module/servicefabric/?view=azureservicefabricps">PowerShell</a></p>'
-          - title: Talen
-            html: <p><a href="/java/api/overview/azure/servicefabric">Java-API</a></p><p><a href="/dotnet/api/overview/azure/service-fabric?view=azure-dotnet">.NET</a></p><p><a href="/azure/service-fabric/service-fabric-service-model-schema">XML-schema van servicemodel</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/servicefabric">Naslaginformatie over REST-API</a></p>
+  author: erikadoyle
+  ms.author: edoyle
+  ms.date: 12/04/2019
+  ms.openlocfilehash: a2651387a425439d09ad68b0e763ff0c6c3f7f27
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75452214"
+landingContent:
+- title: Over Service Fabric
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Overzicht van Service Fabric
+      url: service-fabric-overview.md
+    - text: Meer informatie over Service Fabric
+      url: service-fabric-content-roadmap.md
+    - text: Overzicht van het Service Fabric-programmeermodel
+      url: service-fabric-choose-framework.md
+  - linkListType: get-started
+    links:
+    - text: Ontwikkelen in Windows
+      url: service-fabric-get-started.md
+    - text: Ontwikkelen in Linux
+      url: service-fabric-get-started-linux.md
+    - text: Ontwikkelen in MacOS
+      url: service-fabric-get-started-mac.md
+    - text: De Azure Service Fabric CLI installeren
+      url: service-fabric-cli.md
+  - linkListType: concept
+    links:
+    - text: Uitleg over microservices
+      url: service-fabric-overview-microservices.md
+    - text: Toepassingsscenario's
+      url: service-fabric-application-scenarios.md
+    - text: Uitvoerbare gastbestanden
+      url: service-fabric-guest-executables-introduction.md
+    - text: Reliable Services
+      url: service-fabric-reliable-services-introduction.md
+  - linkListType: whats-new
+    links:
+    - text: Releaseopmerkingen
+      url: release-notes.md
+- title: Aan de slag gaan met .NET-toepassingen en Windows
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een .NET Service Fabric-app maken
+      url: service-fabric-quickstart-dotnet.md
+    - text: Een Windows-container-app implementeren in Service Fabric
+      url: service-fabric-quickstart-containers.md
+    - text: Uitvoerbare gast-app maken in Windows
+      url: quickstart-guest-app.md
+  - linkListType: tutorial
+    links:
+    - text: Een Service Fabric .NET-app maken, implementeren en beheren
+      url: service-fabric-tutorial-create-dotnet-app.md
+    - text: Een bestaande .NET-app in een container plaatsen voor Service Fabric
+      url: service-fabric-host-app-in-a-container.md
+  - linkListType: how-to-guide
+    links:
+    - text: Apps ontwikkelen met Visual Studio
+      url: service-fabric-manage-application-in-visual-studio.md
+    - text: Aan de slag gaan met Reliable Services (C# in Windows)
+      url: service-fabric-reliable-services-quick-start.md
+    - text: Windows-clusters maken in een virtueel Azure-netwerk
+      url: service-fabric-tutorial-create-vnet-and-windows-cluster.md
+    - text: Diagnostische gegevens voor Windows-clusters
+      url: service-fabric-diagnostics-event-aggregation-wad.md
+- title: Aan de slag gaan met Java-toepassingen en Linux
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Verschillen tussen Service Fabric in Linux en Windows
+      url: service-fabric-linux-windows-differences.md
+  - linkListType: quickstart
+    links:
+    - text: Een Linux-container-app implementeren in Service Fabric
+      url: service-fabric-quickstart-containers-linux.md
+  - linkListType: tutorial
+    links:
+    - text: Een Service Fabric Java-app maken, implementeren en beheren
+      url: service-fabric-tutorial-create-java-app.md
+  - linkListType: how-to-guide
+    links:
+    - text: Apps ontwikkelen met Eclipse
+      url: service-fabric-get-started-eclipse.md
+    - text: Aan de slag gaan met Reliable Services (Java in Linux)
+      url: service-fabric-reliable-services-quick-start-java.md
+    - text: Linux-clusters maken in een virtueel Azure-netwerk
+      url: service-fabric-tutorial-create-vnet-and-linux-cluster.md
+    - text: Diagnostische gegevens voor Linux-clusters
+      url: service-fabric-diagnostics-oms-syslog.md
+- title: Uw cluster beveiligen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Aanbevolen procedures voor beveiliging
+      url: service-fabric-best-practices-security.md
+    - text: Toepassingsbeveiliging
+      url: service-fabric-application-and-service-security.md
+    - text: Clusterbeveiliging
+      url: service-fabric-cluster-security.md
+    - text: Beveiligingsmaatregelen voor Service Fabric
+      url: service-fabric-security-controls.md
+    - text: Service Fabric-geheimenopslag
+      url: service-fabric-application-secret-store.md
+  - linkListType: how-to-guide
+    links:
+    - text: Verbinding maken met een beveiligd cluster
+      url: service-fabric-connect-to-secure-cluster.md
+    - text: Beheerde identiteit voor Service Fabric-apps gebruiken
+      url: configure-existing-cluster-enable-managed-identity-token-service.md
+- title: Uw cluster beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Visualisern van uw cluster met Service Fabric Explorer
+      url: service-fabric-visualizing-your-cluster.md
+    - text: Problemen met toepassingsupgrades oplossen
+      url: service-fabric-application-upgrade-troubleshooting.md
+    - text: Problemen met uw lokale cluster oplossen
+      url: service-fabric-troubleshoot-local-cluster-setup.md
+    - text: Systeemstatusrapporten gebruiken om problemen op te lossen
+      url: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
+    - text: Richtlijnen voor probleemoplossing voor Service Fabric-community’s
+      url: https://github.com/Azure/Service-Fabric-Troubleshooting-Guides
+    - text: PowerShell-voorbeeldscripts voor Service Fabric-beheer
+      url: service-fabric-powershell-samples.md
+    - text: Azure CLI-scripts voor Service Fabric-beheer
+      url: samples-cli.md
+  - linkListType: whats-new
+    links:
+    - text: Veelgestelde vragen over Service Fabric
+      url: service-fabric-common-questions.md
+- title: On-premises Service Fabric gebruiken
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Overzicht van zelfstandige clusters
+      url: service-fabric-standalone-clusters-overview.md
+    - text: Inhoud van het zelfstandige pakket
+      url: service-fabric-cluster-standalone-package-contents.md
+  - linkListType: concept
+    links:
+    - text: Zelfstandige clusters upgraden
+      url: service-fabric-cluster-upgrade-standalone.md
+    - text: Schaal aanpassen van zelfstandig clusters
+      url: service-fabric-cluster-scaling-standalone.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een zelfstandige clusterimplementatie plannen
+      url: service-fabric-cluster-standalone-deployment-preparation.md
+    - text: Een zelfstandig cluster maken dat wordt uitgevoerd in Windows Server
+      url: service-fabric-cluster-creation-for-windows-server.md
+    - text: Periodieke back-ups configureren
+      url: service-fabric-backuprestoreservice-quickstart-standalonecluster.md
+    - text: De Service Fabric-runtime upgraden
+      url: service-fabric-cluster-upgrade-windows-server.md

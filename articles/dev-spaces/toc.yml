@@ -91,6 +91,8 @@
           href: how-to/run-dev-spaces-windows-containers.md
         - name: Traefik gebruiken voor aangepaste opname en HTTPS
           href: how-to/ingress-https-traefik.md
+        - name: Traefik gebruiken voor aangepaste opname en HTTPS
+          href: how-to/ingress-https-nginx.md
         - name: Uw ontwikkelmachine verbinden met een AKS-cluster (preview)
           href: how-to/connect.md
     - name: Problemen oplossen

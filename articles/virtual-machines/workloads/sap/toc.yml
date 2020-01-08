@@ -104,6 +104,8 @@
           href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
         - name: SAP HANA uitschalen met stand-by-knooppunt met Azure NetApp Files op SLES
           href: sap-hana-scale-out-standby-netapp-files-suse.md
+        - name: SAP HANA uitschalen met stand-by-knooppunt met Azure NetApp Files voor RHEL
+          href: sap-hana-scale-out-standby-netapp-files-rhel.md
     - name: Overzicht van back-ups van SAP HANA
       href: sap-hana-backup-guide.md
     - name: Back-ups maken van SAP HANA op bestandsniveau
@@ -214,6 +216,8 @@
               href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
             - name: Windows met SOFS-bestandsshare voor een (A)SCS-exemplaar
               href: sap-ascs-ha-multi-sid-wsfc-file-share.md
+            - name: SLES met Pacemaker multi-SID voor een A(SCS)-exemplaar
+              href: high-availability-guide-suse-multi-sid.md
     - name: Herstel na noodgevallen van SAP met Azure Site Recovery
       href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
     - name: Azure-nabijheidplaatsingsgroepen voor optimale netwerklatentie met SAP-toepassingen

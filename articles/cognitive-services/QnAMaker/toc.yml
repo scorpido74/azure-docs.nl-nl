@@ -14,6 +14,8 @@
       href: quickstarts/add-question-metadata-portal.md
     - name: Antwoord ophalen met behulp van Postman of cURL
       href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
+    - name: Testen met batchbestand
+      href: Quickstarts/batch-testing.md
     - name: REST API's gebruiken
       items:
         - name: Een knowledge base maken
@@ -25,7 +27,7 @@
             - name: Java
               href: Quickstarts/create-new-kb-java.md
             - name: Node.js
-              href: Quickstarts/create-knowledge-rest-api-nodejs.md
+              href: Quickstarts/publish-kb-nodejs.md
             - name: Python
               href: Quickstarts/create-new-kb-python.md
         - name: Een kennisdatabase publiceren
@@ -37,7 +39,7 @@
             - name: Java
               href: Quickstarts/publish-kb-java.md
             - name: Node.js
-              href: 'Quickstarts/create-knowledge-rest-api-nodejs.md##publish-a-knowledge-base'
+              href: 'Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base'
             - name: Python
               href: Quickstarts/publish-kb-python.md
         - name: Antwoord ophalen
@@ -88,7 +90,7 @@
     - name: Ondersteunde gegevensbronnen
       href: Concepts/data-sources-supported.md
       displayName: 'metadata, pair, sharepoint, authentication, permissions, faq, pdf, excel, xls, rtf, html, txt, tsv, url, end of line, new line, carriage return, markdown, commonmark, format, standard'
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Knowledge base bewerken
       items:

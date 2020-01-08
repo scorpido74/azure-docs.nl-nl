@@ -3,21 +3,21 @@ title: Documentatie voor Azure Portal
 summary: De Azure-portal is een geïntegreerde web-console die een alternatief vormt voor opdrachtregelprogramma's. U kunt uw Azure-abonnement beheren met de Azure-portal. U kunt alles bouwen, beheren en controleren, van eenvoudige web-apps tot complexe cloud-implementaties. Maak aangepaste dashboards voor een georganiseerde weergave van resources en configureer toegankelijkheidsopties voor de beste ervaring.
 metadata:
   title: Documentatie voor Azure Portal
-  description: Meer informatie over het beheren van uw Azure-abonnement en -resources met behulp van de webconsole van de Azure-portal.
+  description: Meer informatie over het beheren van uw Azure-abonnementen en -resources met behulp van de webconsole in de Azure-portal. De Azure-portal is een alternatief voor het gebruik van opdrachtregelprogramma's.
   services: Azure portal
   ms.service: azure-portal
   ms.subservice: 
   ms.topic: landing-page
   ms.collection: collection
-  author: kfollis
-  ms.author: kfollis
-  ms.date: 09/17/2019
-  ms.openlocfilehash: 7fdd6f95ee2f84abc151f5c6e6e7929df2bc57a1
-  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+  author: mblythe
+  ms.author: mblythe
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 4c04ae88f69ab4e17ea70e94683ce0add4823040
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 09/17/2019
-  ms.locfileid: "71076657"
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75640037"
 landingContent:
 - title: Over de Azure-portal
   linkLists:
@@ -31,6 +31,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Uw voorkeuren voor de portal instellen
+      url: set-preferences.md
     - text: Aangepaste dashboards maken en delen
       url: azure-portal-dashboards.md
     - text: Uw favorieten beheren

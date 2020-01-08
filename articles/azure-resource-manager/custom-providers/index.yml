@@ -1,0 +1,65 @@
+### YamlMime:Landing
+title: Documentatie over Azure Custom-providers
+summary: Aangepaste API's definiëren die de Azure-ervaring uitbreiden
+metadata:
+  title: Documentatie over Azure Custom-providers
+  description: Azure Custom-providers is een uitbreidbaar platform voor Azure waarmee u aangepaste API’s kunt definiëren
+  ms.service: azure-custom-providers
+  ms.topic: landing-page
+  ms.collection: na
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: 4a778d56aa3d7440715cdd792827b9c4a2837e65
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75648341"
+landingContent:
+- title: Over Azure Custom-providers
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat zijn Azure Custom-providers?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Azure Policy voor aangepaste providerkoppelingen
+      url: concepts-built-in-policy.md
+    - text: Overzicht van onboarding voor resources
+      url: concepts-resource-onboarding.md
+- title: Aangepaste providers maken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een aangepaste resourceprovider maken
+      url: create-custom-provider.md
+  - linkListType: tutorial
+    links:
+    - text: Aan de slag met aangepaste providers
+      url: tutorial-get-started-with-custom-providers.md
+    - text: Azure Functions instellen
+      url: tutorial-custom-providers-function-setup.md
+    - text: Een RESTful-eindpunt maken
+      url: tutorial-custom-providers-function-authoring.md
+    - text: Aangepaste providers maken en gebruiken
+      url: tutorial-custom-providers-create.md
+    - text: Resources uitbreiden
+      url: tutorial-resource-onboarding.md
+  - linkListType: how-to-guide
+    links:
+    - text: Aangepaste acties toevoegen aan Azure
+      url: custom-providers-action-endpoint-how-to.md
+    - text: Aangepaste resources toevoegen aan Azure
+      url: custom-providers-resources-endpoint-how-to.md
+- title: Voorbeelden
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Referentiemateriaal voor aangepaste resource-proxy
+      url: proxy-resource-endpoint-reference.md
+    - text: Referentiemateriaal voor aangepaste resource-cache
+      url: proxy-cache-resource-endpoint-reference.md
+    - text: Naslaginformatie voor RESTful-eindpunt van aangepaste provider
+      url: reference-custom-providers-csharp-endpoint.md
