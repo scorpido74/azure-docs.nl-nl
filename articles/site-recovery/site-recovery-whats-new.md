@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: af1b531ac1b38921a99284aad2108e4027d97f4c
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: aa98509ba71ec0797d4b59be9e4df1dea064c933
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091705"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351466"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
 
@@ -24,7 +24,7 @@ U kunt volgen en u abonneren op Site Recovery update meldingen in het [Azure-upd
 
 ## <a name="supported-updates"></a>Ondersteunde updates
 
-Voor Site Recovery-onderdelen ondersteunen we N-4 versies, waarbij N de meest recente versie is van de release. Deze worden in de volgende tabel samenvatten.
+Voor Site Recovery-onderdelen ondersteunen we N-4 versies, waarbij N de meest recente versie is van de release. Deze worden samengevat in de volgende tabel.
 
 **Update** |  **Unified Setup** | **Eicellen van de configuratie server** | **Mobility Service-agent** | **Site Recovery provider** | **Recovery Services-agent**
 --- | --- | --- | --- | --- | ---
@@ -75,7 +75,7 @@ Voor herstel na nood gevallen van virtuele Azure-machines naar een secundaire re
 
 - Vanaf versie 9.30.5407.1 van de Mobility service-extensie (voor Azure-Vm's) en de Mobility Service-agent (voor VMware/fysieke machines) moeten op sommige besturings systemen van de machine de onderhouds stack-update en SHA-2 worden uitgevoerd. Details worden weer gegeven in de volgende tabel.
 - Installeer de update en SHA-2 in overeenstemming met de gekoppelde KB. SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt.
-- Meer informatie over de [SHA-2-upgrade en de vereisten](https://aka.ms/SHA-2KB).
+- Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
 
 **Besturingssysteem** | **Azure VM** | **VMware-VM/fysieke machine**
 --- | --- | ---
@@ -348,7 +348,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
  
 **Functie** | **Details**
 --- | ---
-**Linux-ondersteuning** | Er is ondersteuning toegevoegd voor redhat Enter prise Linux 7,6, RedHat Workstation 6/7, Oracle Linux 6.10/7,6 en nieuwe kernel-versies voor Ubuntu, Debian en SUSE.
+**Linux-ondersteuning** | Er is ondersteuning toegevoegd voor redhat Enter prise Linux 7,6, RedHat Workstation 6/7, Oracle Linux 6,10 en Oracle Linux 7,6 en nieuwe kernel-versies voor Ubuntu, Debian en SUSE.
 
 
 ### <a name="update-rollup-31"></a>Update pakket 31 
@@ -364,7 +364,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 **Functie** | **Details**
 --- | ---
-**Linux-ondersteuning** | Er is ondersteuning toegevoegd voor Oracle Linux 6,8 en 6,9/7.0 en voor de UEK5-kernel.
+**Linux-ondersteuning** |  Er is ondersteuning toegevoegd voor Oracle Linux 6,8, Oracle Linux 6,9 en Oracle Linux 7,0 met de Red Hat compatible kernel en voor de onbreekbare UEK-versie (Enter prise kernel) 5.
 **LVM** | Ondersteuning toegevoegd voor LVM-en LVM2-volumes.<br/><br/> De/boot-map op een schijf partitie en op LVM-volumes wordt nu ondersteund.
 **Adreslijsten** | Er is ondersteuning toegevoegd voor deze mappen die zijn ingesteld als afzonderlijke partities of bestands systemen die zich niet op dezelfde systeem schijf bevinden:<br/><br/> /(root),/boot,/usr,/usr/local,/var,/etc.
 **Windows Server 2008** | Ondersteuning voor dynamische schijven is toegevoegd.
@@ -376,7 +376,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 **Functie** | **Details**
 --- | ---
-**Linux-ondersteuning** | Ondersteund voor Oracle Linux 6,8 en 6,9/7.0; en voor de UEK5-kernel.
+**Linux-ondersteuning** | Er is ondersteuning toegevoegd voor Oracle Linux 6,8, Oracle Linux 6,9 en Oracle Linux 7,0 met de Red Hat compatible kernel en voor de onbreekbare UEK-versie (Enter prise kernel) 5.
 **Linux BRTFS-bestands systeem** | Ondersteund voor virtuele Azure-machines.
 **Azure-Vm's in beschikbaarheids zones** | U kunt replicatie naar een andere regio inschakelen voor virtuele Azure-machines die zijn geïmplementeerd in beschikbaarheids zones. U kunt nu replicatie inschakelen voor een virtuele Azure-machine en het doel voor failover instellen op een enkele VM-instantie, een virtuele machine in een beschikbaarheidsset of een virtuele machine in een beschikbaarheids zone. De instelling heeft geen invloed op de replicatie. [Lees](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region/) de aankondiging.
 **Firewall-ingeschakelde opslag (Portal/Power shell)** | Ondersteuning voor [opslag accounts met ingeschakelde firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security).<br/><br/> U kunt Azure-Vm's met niet-beheerde schijven op opslag accounts met ingeschakelde firewalls repliceren naar een andere Azure-regio voor herstel na nood gevallen.<br/><br/> U kunt opslag accounts met ingeschakelde firewall gebruiken als doel opslag accounts voor niet-beheerde schijven.<br/><br/> Ondersteund in de portal en met behulp van Power shell.

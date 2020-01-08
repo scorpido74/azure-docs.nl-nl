@@ -1,26 +1,18 @@
 ---
-title: Threat Modeling Tool releases-Microsoft Threat Modeling Tool-Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool release 4/9/2019-Azure
 description: De release opmerkingen voor het hulp programma voor het maken van bedreigingen vastleggen
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: jegeib
-ms.openlocfilehash: 6992ac58ebf8976714e5a478dd7b886efab2a4b7
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 488168b1a17d3f5fac1ae7cca0a37676063bfe03
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934793"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552063"
 ---
 # <a name="threat-modeling-tool-update-release-71604081---492019"></a>Threat Modeling Tool Update release 7.1.60408.1-4/9/2019
 
@@ -47,7 +39,7 @@ De client versie van de Threat Modeling Tool wordt nu weer gegeven op het Start 
 
 ### <a name="support-links-have-been-updated"></a>Ondersteunings koppelingen zijn bijgewerkt
 
-Alle ondersteunings koppelingen in het hulp programma zijn bijgewerkt zodat gebruikers [tmtextsupport@microsoft.com](mailto:tmtextsupport@microsoft.com) worden doorgestuurd naar in plaats van een MSDN-forum.
+Alle ondersteunings koppelingen binnen het hulp programma zijn bijgewerkt om gebruikers te leiden naar [tmtextsupport@microsoft.com](mailto:tmtextsupport@microsoft.com) in plaats van een MSDN-forum.
 
 ## <a name="system-requirements"></a>Systeemvereisten
 

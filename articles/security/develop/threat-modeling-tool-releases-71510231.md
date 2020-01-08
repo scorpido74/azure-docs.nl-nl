@@ -1,30 +1,22 @@
 ---
-title: Threat Modeling Tool releases-Microsoft Threat Modeling Tool-Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool release 11/1/2018-Azure
 description: De release opmerkingen voor het hulp programma voor het maken van bedreigingen vastleggen
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
-ms.author: jegeib
-ms.openlocfilehash: 2fb3756e153a52515e598bb31fea1e999144bb28
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a84d31df491a9cf455a21b9640df36ed29c83cbb
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934761"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552080"
 ---
 # <a name="threat-modeling-tool-update-release-71510231---1112018"></a>Threat Modeling Tool-updaterelease 7.1.51023.1 - 11/1/2018
 
-Zoals oorspronkelijk vermeld in de informatie over de [release](threat-modeling-tool-releases-71509112.md), hebben we een update (7.1.51023.1) uitgebracht voor de Microsoft Threat Modeling tool waarvoor gebruikers van de preview-versie (preview-clients met versie < 7.1.50911.2) moeten worden bijgewerkt naar de ondersteunde Ga heffing. Deze release bevat geen nieuwe functionaliteit of oplossingen.
+Zoals oorspronkelijk vermeld in de informatie over de [release](threat-modeling-tool-releases-71509112.md), hebben we een update (7.1.51023.1) uitgebracht voor de Microsoft Threat Modeling tool waarvoor gebruikers van de preview-versie (preview-clients met versie < 7.1.50911.2) moeten worden bijgewerkt naar de ondersteunde Ga-versie. Deze release bevat geen nieuwe functionaliteit of oplossingen.
 
 - Gebruikers van de preview-versie downloaden automatisch de upgrade wanneer de-client wordt geopend. Als u ervoor kiest om de nieuwe update niet te installeren, wordt de preview-versie van het hulp programma gesloten.
 - Gebruikers van de GA-versie van het hulp programma wordt gevraagd om te kiezen of ze een upgrade willen uitvoeren.

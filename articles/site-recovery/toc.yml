@@ -43,7 +43,7 @@
           href: vmware-azure-tutorial.md
         - name: Noodherstelanalyse uitvoeren
           href: tutorial-dr-drill-azure.md
-        - name: Failover en failback uitvoeren
+        - name: Failover naar Azure
           href: vmware-azure-tutorial-failover-failback.md
     - name: Herstel na noodgevallen van virtuele Hyper-V-machines naar Azure
       items:
@@ -57,7 +57,7 @@
           href: hyper-v-vmm-azure-tutorial.md
         - name: Noodherstelanalyse uitvoeren
           href: tutorial-dr-drill-azure.md
-        - name: Failover en failback uitvoeren
+        - name: Failover naar Azure
           href: hyper-v-azure-failover-failback-tutorial.md
     - name: Migreren naar Azure
       items:
@@ -73,7 +73,7 @@
   items:
     - name: Veelgestelde vragen over Site Recovery
       href: site-recovery-faq.md
-    - name: Over herstel na noodgeval voor Azure-VM's
+    - name: Over herstel na noodgevallen van Azure-VM’s
       items:
         - name: Azure naar Azure-architectuur
           href: azure-to-azure-architecture.md
@@ -87,9 +87,9 @@
           href: azure-vm-disaster-recovery-with-accelerated-networking.md
         - name: ExpressRoute met herstel na noodgevallen voor Azure VM's
           href: azure-vm-disaster-recovery-with-expressroute.md
-    - name: Over het verplaatsen van Azure-VM's
+    - name: Over het verplaatsen van Azure-VM’s naar een andere regio
       href: azure-to-azure-move-overview.md
-    - name: Over herstel na noodgevallen van virtuele VMware-machines naar Azure
+    - name: Over herstel na noodgevallen voor VMware-VM’s
       items:
         - name: Overzicht van herstel na noodgevallen voor VMware
           href: vmware-azure-about-disaster-recovery.md
@@ -103,11 +103,13 @@
           href: vmware-azure-configuration-server-requirements.md
         - name: VMware naar Azure-architectuur
           href: vmware-azure-architecture.md
+        - name: Over het uitsluiten van schijven van replicatie
+          href: exclude-disks-replication.md
         - name: Opties voor failbacklocaties van Azure naar VMware
           href: concepts-types-of-failback.md
         - name: Ondersteuning voor meerdere tenants voor herstel na noodgevallen voor VMware
           href: vmware-azure-multi-tenant-overview.md
-    - name: Over herstel na noodgevallen van virtuele Hyper-V-machines naar Azure
+    - name: Over herstel na noodgevallen van Hyper-V-VM’s
       items:
         - name: Veelgestelde vragen
           href: hyper-v-azure-common-questions.md
@@ -115,13 +117,17 @@
           href: hyper-v-azure-support-matrix.md
         - name: Hyper-V naar Azure-architectuur
           href: hyper-v-azure-architecture.md
-    - name: Over herstel na noodgevallen van fysieke server naar Azure
+        - name: Over het uitsluiten van schijven van replicatie
+          href: exclude-disks-replication.md
+    - name: Over herstel na noodgevallen van fysieke servers
       items:
         - name: Ondersteuningsmatrix voor VMware-/fysieke machines naar Azure
           href: vmware-physical-azure-support-matrix.md
         - name: Fysieke server naar Azure-architectuur
           href: physical-azure-architecture.md
-    - name: Over netwerkinrichting voor herstel na noodgevallen naar Azure
+        - name: Over het uitsluiten van schijven van replicatie
+          href: exclude-disks-replication.md
+    - name: Over netwerken voor herstel na noodgevallen
       items:
         - name: Azure Traffic Manager met Site Recovery
           href: concepts-traffic-manager-with-site-recovery.md
@@ -131,7 +137,9 @@
           href: concepts-network-security-group-with-site-recovery.md
         - name: Openbaar IP-adres gebruiken met Site Recovery
           href: concepts-public-ip-address-with-site-recovery.md
-    - name: Over plannen voor failover en herstel
+    - name: Over failover en failback
+      href: failover-failback-overview.md
+    - name: Over herstelplannen
       href: recovery-plan-overview.md
     - name: Over migratie naar Azure
       href: migrate-overview.md
@@ -231,13 +239,13 @@
               items:
                 - name: Overzicht en installatie van de Mobility-service
                   href: vmware-physical-mobility-service-overview.md
-                - name: Voorbereiden voor push-installatie van de Mobility-service
+                - name: Voorbereiden op push-installatie
                   href: vmware-azure-install-mobility-service.md
-                - name: De Mobility-service implementeren met behulp van System Center Configuration Manager
+                - name: Implementatie Mobility-service automatiseren
                   href: vmware-azure-mobility-install-configuration-mgr.md
             - name: Replicatie inschakelen voor VMware-VM's
               href: vmware-azure-enable-replication.md
-            - name: Schijven uitsluiten
+            - name: Schijven uitsluiten van replicatie
               href: vmware-azure-exclude-disk.md
             - name: Stapsgewijze handleiding om replicatie in te stellen met meerdere tenants en CSP voor VMware-VM's
               href: vmware-azure-multi-tenant-csp-disaster-recovery.md
@@ -249,17 +257,19 @@
               href: site-recovery-test-failover-to-azure.md
             - name: Een failover naar Azure uitvoeren
               href: site-recovery-failover.md
-            - name: Opnieuw beveiligen van Azure naar on-premises VMware
+            - name: Voorbereiden op opnieuw beveiligen/failback
+              href: vmware-azure-prepare-failback.md
+            - name: Opnieuw beveiligen van Azure naar on-premises
               href: vmware-azure-reprotect.md
-            - name: Failback van Azure naar VMware
+            - name: Failback van Azure naar on-premises
               href: vmware-azure-failback.md
-            - name: Processerver voor failback in Azure instellen en beheren
+            - name: Processerver voor failback in Azure instellen
               href: vmware-azure-set-up-process-server-azure.md
             - name: Een Linux-hoofddoelserver voor failback instellen
               href: vmware-azure-install-linux-master-target.md
         - name: Beheren
           items:
-            - name: Mobility-agent voor VMware beheren
+            - name: De Mobility-agent beheren
               href: vmware-physical-manage-mobility-service.md
             - name: De configuratieserver voor VMware beheren
               href: vmware-azure-manage-configuration-server.md
@@ -303,9 +313,9 @@
           href: physical-to-azure-failover-failback.md
         - name: Beheren
           items:
-            - name: Mobility-agent voor fysieke server beheren
+            - name: De Mobility-service beheren
               href: vmware-physical-manage-mobility-service.md
-            - name: De configuratieserver voor replicatie van fysieke server beheren
+            - name: De configuratieserver beheren
               href: physical-manage-configuration-server.md
             - name: Processervers beheren
               href: vmware-azure-manage-process-server.md
@@ -345,7 +355,7 @@
           items:
             - name: Netwerktoewijzing voorbereiden voor herstel na noodgevallen voor Hyper-V-VM
               href: hyper-v-vmm-network-mapping.md
-            - name: Schijven uitsluiten van replicatie voor Hyper-V-naar-Azure
+            - name: Schijven uitsluiten van replicatie
               href: hyper-v-exclude-disk.md
         - name: Failover en failback uitvoeren
           items:

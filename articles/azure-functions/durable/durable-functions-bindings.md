@@ -2,14 +2,14 @@
 title: Bindingen voor Durable Functions-Azure
 description: Triggers en bindingen gebruiken voor de uitbrei ding van de Durable Functions voor Azure Functions.
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 40b5f0f17cbb6867a6ef293a485d728141a012ef
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233029"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410228"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Bindingen voor Durable Functions (Azure Functions)
 
@@ -36,7 +36,7 @@ Wanneer u Orchestrator-functies schrijft in script talen (bijvoorbeeld Java scri
 
 Intern deze trigger roept een reeks wacht rijen aan in het standaard opslag account voor de functie-app. Deze wacht rijen zijn interne implementatie details van de uitbrei ding. Daarom worden ze niet expliciet geconfigureerd in de binding eigenschappen.
 
-### <a name="trigger-behavior"></a>Gedrag activeren
+### <a name="trigger-behavior"></a>Triggergedrag
 
 Hier volgen enkele opmerkingen over de Orchestration-trigger:
 
@@ -143,7 +143,7 @@ Als u VS code gebruikt of de Azure Portal voor ontwikkeling, wordt de activiteit
 
 Intern deze trigger roept een wachtrij aan in het standaard opslag account voor de functie-app. Deze wachtrij is een interne implementatie details van de uitbrei ding, wat daarom niet expliciet is geconfigureerd in de binding eigenschappen.
 
-### <a name="trigger-behavior"></a>Gedrag activeren
+### <a name="trigger-behavior"></a>Triggergedrag
 
 Hier volgen enkele opmerkingen over de trigger voor activiteiten:
 
@@ -372,7 +372,7 @@ Wanneer u de Visual Studio-hulpprogram ma's voor Azure Functions gebruikt, wordt
 
 Intern deze trigger roept een reeks wacht rijen aan in het standaard opslag account voor de functie-app. Deze wacht rijen zijn interne implementatie details van de uitbrei ding. Daarom worden ze niet expliciet geconfigureerd in de binding eigenschappen.
 
-### <a name="trigger-behavior"></a>Gedrag activeren
+### <a name="trigger-behavior"></a>Triggergedrag
 
 Hier volgen enkele opmerkingen over de entiteits trigger:
 
@@ -398,7 +398,7 @@ Elke entiteit functie heeft het parameter type `IDurableEntityContext`, dat de v
 * **DeleteState ()** : de status van de entiteit wordt verwijderd. 
 * **GetInput\<TInput > ()** : Hiermee wordt de invoer voor de huidige bewerking opgehaald. De para meter `TInput` type moet een primitief type of JSON-serializeable zijn.
 * **Retour (ARG)** : retourneert een waarde voor de indeling die de bewerking wordt genoemd. De para meter `arg` moet een primitief-of JSON-serializeable-object zijn.
-* **SignalEntity (EntityId, bewerking, invoer)** : Hiermee verzendt u een bericht in één richting naar een entiteit. De para meter `operation` moet een teken reeks zijn die niet gelijk is aan nul en de para meter `input` moet een primitief of JSON-serializeable-object zijn.
+* **SignalEntity (EntityId, scheduledTimeUtc, Operation, invoer)** : er wordt een eenrichtings bericht naar een entiteit verzonden. De para meter `operation` moet een teken reeks zijn die niet gelijk is aan nul, de optionele `scheduledTimeUtc` moet een UTC-datum zijn waarop de bewerking kan worden aangeroepen en de `input` para meter moet een primitief-of JSON-serializeable-object zijn.
 * **CreateNewOrchestration (orchestratorFunctionName, invoer)** : start een nieuwe indeling. De para meter `input` moet een primitief-of JSON-serializeable-object zijn.
 
 Het `IDurableEntityContext`-object dat is door gegeven aan de functie entiteit, is toegankelijk via de eigenschap `Entity.Current` async-local. Deze methode is handig wanneer u het op klassen gebaseerde programmeer model gebruikt.
@@ -464,7 +464,7 @@ Entiteits klassen hebben speciale mechanismen voor interactie met bindingen en .
 
 De volgende code is een voor beeld van een eenvoudige *teller* -entiteit die is geïmplementeerd als een duurzame functie die is geschreven in Java script. Met deze functie worden drie bewerkingen, `add`, `reset`en `get`gedefinieerd, die allemaal werken met een gehele status.
 
-**function. json**
+**function.json**
 ```json
 {
   "bindings": [
@@ -478,7 +478,7 @@ De volgende code is een voor beeld van een eenvoudige *teller* -entiteit die is 
 }
 ```
 
-**index. js**
+**index.js**
 ```javascript
 const df = require("durable-functions");
 
@@ -519,7 +519,7 @@ Als u script talen (bijvoorbeeld *. CSX* -of *. js* -bestanden) gebruikt voor on
     "taskHub": "<Optional - name of the task hub>",
     "connectionName": "<Optional - name of the connection string app setting>",
     "type": "durableClient",
-    "direction": "out"
+    "direction": "in"
 }
 ```
 
@@ -535,6 +535,7 @@ In .NET functions maakt u doorgaans een binding met `IDurableEntityClient`. Dit 
 
 * **ReadEntityStateAsync\<t >** : Hiermee wordt de status van een entiteit gelezen. Het retourneert een antwoord dat aangeeft of de doel entiteit bestaat en zo ja, wat de status is.
 * **SignalEntityAsync**: Hiermee verzendt u een bericht in één richting naar een entiteit, waarna wordt gewacht tot deze in de wachtrij is geplaatst.
+* **ListEntitiesAsync**: query's voor de status van meerdere entiteiten. Entiteiten kunnen worden opgevraagd met behulp van de *naam* en de tijd van de *laatste bewerking*.
 
 Het is niet nodig om de doel entiteit te maken voordat u een signaal verzendt: de status van de entiteit kan worden gemaakt vanuit de entiteit functie die het signaal verwerkt.
 
@@ -601,7 +602,7 @@ Het is met name niet zinvol om de `Get` bewerking te Signa leren, omdat er geen 
 
 Hier volgt een voor beeld van een door de wachtrij geactiveerde functie waarmee de entiteit Counter in Java script wordt gesignaleerd.
 
-**function. json**
+**function.json**
 ```json
 {
     "bindings": [
@@ -621,7 +622,7 @@ Hier volgt een voor beeld van een door de wachtrij geactiveerde functie waarmee 
   }
 ```
 
-**index. js**
+**index.js**
 ```javascript
 const df = require("durable-functions");
 

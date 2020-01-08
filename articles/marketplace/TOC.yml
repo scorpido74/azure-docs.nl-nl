@@ -51,6 +51,9 @@
           items:
             - name: Best practices voor aanbiedingsvermeldingen
               href: ./gtm-offer-listing-best-practices.md
+              items:
+                - name: Categorieën
+                  href: ./gtm-offer-listing-best-practices-categories.md
             - name: Hoe u wordt uitgelicht
               href: ./gtm-how-to-get-featured.md
             - name: Validatie van Marketplace-inhoud

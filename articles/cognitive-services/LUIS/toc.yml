@@ -66,13 +66,8 @@
           href: luis-tutorial-review-endpoint-utterances.md
         - name: Batchgewijs gegevenssets testen
           href: luis-tutorial-batch-testing.md
-        - name: Algemene vormen voor uitingen toevoegen
+        - name: Patronen toevoegen om voorspellingen te verbeteren
           href: luis-tutorial-pattern.md
-        - name: Contextgerelateerde patronen herkennen
-          href: luis-tutorial-pattern-roles.md
-          displayName: roles
-        - name: Vrije vorm-gegevens herkennen
-          href: luis-tutorial-pattern-any.md
     - name: Gebruiken met een bot
       items:
         - name: 'Met C#'
@@ -154,7 +149,7 @@
         - name: Ontwerpstrategieën
           href: luis-concept-enterprise.md
           displayName: import
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Een nieuwe app starten
       href: luis-how-to-start-new-app.md
@@ -173,6 +168,8 @@
         - name: Descriptor toevoegen
           displayName: 'synonym, interchange, phrase list, descriptor'
           href: luis-how-to-add-features.md
+        - name: Migreren naar V3-creatie
+          href: luis-migration-authoring-entities.md
         - name: Met REST-API's
           items:
             - name: App bouwen met behulp van Node.js
@@ -319,10 +316,10 @@
       href: reference-pattern-syntax.md
     - name: Sentiment
       href: luis-reference-prebuilt-sentiment.md
-    - name: Resources voor ontwikkelaars
+    - name: Bronnen voor ontwikkelaars
       href: developer-reference-resource.md
       displayName: 'SDK, API, quickstart, REST, cli, powershell, azure, rm, resource manager, samples, package, module, tool, dispatch, bot'
-    - name: Azure-CLI
+    - name: Azure CLI
       href: 'https://go.microsoft.com/fwlink/?linkid=2092156'
     - name: PowerShell voor Azure RM
       href: 'https://go.microsoft.com/fwlink/?linkid=2092157'

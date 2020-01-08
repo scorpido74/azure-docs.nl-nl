@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: Documentatie voor resources beheren
+summary: Begrijpen hoe u resources kunt beheren en verbruiken.
+metadata:
+  title: Documentatie voor Azure Resource Manager
+  description: Meer informatie over hoe u Azure Resource Manager-sjablonen ontwikkelt en gebruikt om Azure-resources te implementeren
+  ms.service: azure-resource-manager
+  ms.subservice: management
+  ms.topic: landing-page
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: ba00994808e50f10c7153535f442e03f85fe2202
+  ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 01/04/2020
+  ms.locfileid: "75657927"
+landingContent:
+- title: Over Azure Resource Manager
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Resource Manager?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Resource Manager en klassieke implementatie
+      url: deployment-models.md
+- title: Over Azure-services
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Abonnements- en servicebeperkingen
+      url: azure-subscription-service-limits.md
+    - text: Resourceproviders en -typen
+      url: resource-providers-and-types.md
+    - text: Resourceproviders voor elke Azure-service
+      url: azure-services-resource-providers.md
+- title: Resources beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verplaatsen tussen resourcegroepen en abonnementen
+      url: move-resource-group-and-subscription.md
+    - text: Verplaatsen tussen regio's
+      url: move-region.md
+    - text: Resources taggen
+      url: tag-resources.md
+    - text: Resources vergrendelen
+      url: lock-resources.md
+    - text: Resourcegroepen verwijderen
+      url: delete-resource-group.md
+  - linkListType: reference
+    links:
+    - text: Ondersteuning verplaatsen
+      url: move-support-resources.md
+    - text: Tag-ondersteuning
+      url: tag-support.md
+    - text: Limieten voor resource-instanties
+      url: resources-without-resource-group-limit.md
+- title: SDK's en hulpprogramma's
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources
+    - text: Azure CLI
+      url: /cli/azure/resource
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.resourcemanager
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.resources
+    - text: Python
+      url: /python/api/overview/azure/resources?view=azure-python
+- title: Traceerbewerkingen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Activiteitenlogboeken bekijken
+      url: view-activity-logs.md
+    - text: Limieten en beperking aanvragen
+      url: request-limits-and-throttling.md
+    - text: Asynchrone bewerkingen
+      url: async-operations.md

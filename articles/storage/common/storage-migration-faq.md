@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 1e2c899e0ef98266b5afd2f1bf21443a2debd281
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 8b805f01722c58d60e994a3a6b2440bb115b1bfa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666423"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351282"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Veelgestelde vragen over Azure Storage migratie
 
@@ -47,7 +47,7 @@ Er is geen optie om rechtstreeks een back-up te maken van een volledig opslag ac
 
 1.  Installeer het [AzCopy](storage-use-azcopy.md) -opdracht regel programma. Met dit hulp programma kunt u het VHD-bestand verplaatsen tussen opslag accounts.
 
-2.  Nadat u AzCopy op Windows hebt geïnstalleerd met behulp van het installatie programma, opent u een opdracht prompt venster en bladert u naar de installatiemap van AzCopy op de computer. AzCopy wordt standaard geïnstalleerd op **% Program Files (x86)% \ micro soft SDKs\Azure\AzCopy** of **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**.
+2.  Nadat u AzCopy op Windows hebt geïnstalleerd met behulp van het installatie programma, opent u een opdracht prompt venster en bladert u naar de installatiemap van AzCopy op de computer. AzCopy wordt standaard geïnstalleerd in **% ProgramFiles (x86) %\Microsoft SDKs\Azure\AzCopy** of **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**.
 
 3.  Voer de volgende opdracht uit om de container te verplaatsen. U moet de tekst vervangen door de werkelijke waarden.   
      
@@ -259,7 +259,7 @@ Andere personen toegang geven tot de opslag resources:
 
 -   Gebruik een SAS-token (Shared Access Signature) om toegang te bieden tot een resource. 
 
--   Geef een gebruiker op met de primaire of secundaire sleutel voor het opslag account. Zie [uw opslag account beheren](storage-account-manage.md#access-keys)voor meer informatie.
+-   Geef een gebruiker op met de primaire of secundaire sleutel voor het opslag account. Zie [toegangs sleutels voor opslag accounts beheren](storage-account-keys-manage.md)voor meer informatie.
 
 -   Wijzig het toegangs beleid om anonieme toegang toe te staan. Zie [anonieme gebruikers machtigingen verlenen aan containers en blobs](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)voor meer informatie.
 
@@ -275,7 +275,7 @@ Andere personen toegang geven tot de opslag resources:
 
 -   Als u gebruikmaakt van zone-redundante opslag of geografisch redundante opslag, hebt u geen toegang tot gegevens uit de secundaire regio, tenzij u een failover naar die regio initieert. Zie voor meer informatie over het failoverproces [nood herstel en failover van het opslag account (preview) in azure Storage](storage-disaster-recovery-guidance.md).
 
--   Als u geografisch redundante opslag met lees toegang gebruikt, kunt u op elk gewenst moment toegang krijgen tot gegevens uit de secundaire regio. Gebruik een van de volgende methoden:  
+-   Als u geografisch redundante opslag met lees toegang gebruikt, kunt u op elk gewenst moment toegang krijgen tot gegevens uit de secundaire regio. Hanteer één van de volgende methoden:  
       
     - **AzCopy**: toevoeg **-secundair** aan de naam van het opslag account in de URL voor toegang tot het secundaire eind punt. Bijvoorbeeld:  
      

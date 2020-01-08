@@ -3,12 +3,12 @@ title: Een bestaande toewijzing bijwerken vanuit de portal
 description: Meer informatie over het mechanisme voor het bijwerken van een bestaande blauw druk-toewijzing vanuit de portal in azure-blauw drukken.
 ms.date: 11/21/2019
 ms.topic: how-to
-ms.openlocfilehash: 3cce84127475b2f11388b4ad4eb48dedec19cd1d
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 2c1a24399d8fa1529665bfa60d1b889a84a29a60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873162"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436590"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Een bestaande blauw druk-toewijzing bijwerken
 
@@ -55,7 +55,7 @@ De implementatie van de bijgewerkte toewijzingen volgt enkele belang rijke regel
 
 ## <a name="possible-errors-on-updating-assignments"></a>Mogelijke fouten bij het bijwerken van toewijzingen
 
-Wanneer u toewijzingen bijwerkt, kunt u wijzigingen aanbrengen die onderbreekt wanneer ze worden uitgevoerd. Een voor beeld is het wijzigen van de locatie van een resource groep nadat deze al is geïmplementeerd. Alle wijzigingen die door [Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) worden ondersteund, kunnen worden aangebracht, maar elke wijziging die zou leiden tot een fout via Azure Resource Manager, resulteert ook in het mislukken van de toewijzing.
+Wanneer u toewijzingen bijwerkt, kunt u wijzigingen aanbrengen die onderbreekt wanneer ze worden uitgevoerd. Een voor beeld is het wijzigen van de locatie van een resource groep nadat deze al is geïmplementeerd. Alle wijzigingen die door [Azure Resource Manager](../../../azure-resource-manager/management/overview.md) worden ondersteund, kunnen worden aangebracht, maar elke wijziging die zou leiden tot een fout via Azure Resource Manager, resulteert ook in het mislukken van de toewijzing.
 
 Er is geen limiet voor het aantal keren dat een toewijzing kan worden bijgewerkt. Als er een fout optreedt, controleert u de fout en maakt u een andere update voor de toewijzing.  Voor beelden van fout scenario's:
 

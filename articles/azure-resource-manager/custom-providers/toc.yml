@@ -1,0 +1,57 @@
+- name: Documentatie over Azure Custom-providers
+  href: index.yml
+- name: Overzicht
+  items:
+    - name: Wat zijn Azure Custom-providers?
+      href: overview.md
+- name: Snelstartgidsen
+  expanded: true
+  items:
+    - name: Een aangepaste resourceprovider maken
+      href: create-custom-provider.md
+- name: Zelfstudies
+  items:
+    - name: Aan de slag met aangepaste providers
+      href: tutorial-get-started-with-custom-providers.md
+    - name: Azure Functions instellen
+      href: tutorial-custom-providers-function-setup.md
+    - name: Een RESTful-eindpunt maken
+      href: tutorial-custom-providers-function-authoring.md
+    - name: Aangepaste providers maken en gebruiken
+      href: tutorial-custom-providers-create.md
+    - name: Resources uitbreiden
+      href: tutorial-resource-onboarding.md
+- name: Concepten
+  items:
+    - name: Azure Policy voor koppelingen
+      href: concepts-built-in-policy.md
+    - name: Onboarding van resources
+      href: concepts-resource-onboarding.md
+- name: Instructiegidsen
+  items:
+    - name: Aangepaste acties toevoegen aan Azure
+      href: custom-providers-action-endpoint-how-to.md
+    - name: Aangepaste resources toevoegen aan Azure
+      href: custom-providers-resources-endpoint-how-to.md
+- name: Naslaginformatie
+  items:
+    - name: Referentiemateriaal voor aangepaste resource-proxy
+      href: proxy-resource-endpoint-reference.md
+    - name: Referentiemateriaal voor aangepaste resource-cache
+      href: proxy-cache-resource-endpoint-reference.md
+    - name: Naslaginformatie voor RESTful-eindpunt van aangepaste provider
+      href: reference-custom-providers-csharp-endpoint.md
+    - name: REST
+      href: /rest/api/customproviders/
+- name: Resources
+  items:
+    - name: Azure-roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Prijzen
+      href: 'https://azure.microsoft.com/pricing/details/managed-applications/'
+    - name: Prijscalculator
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Best practices voor Resource Manager-sjablonen
+      href: 'https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-custom-providers'

@@ -8,7 +8,17 @@
       href: terminology.md
 - name: Snelstartgidsen
   items:
-    - name: Toepassingen
+    - name: Azure-resource bewaken
+      href: learn/quick-monitor-azure-resource.md
+    - name: Virtuele machines bewaken
+      items:
+        - name: Verzamelen - Azure-VM's
+          href: learn/quick-collect-azurevm.md
+        - name: Verzamelen - Linux-computer
+          href: learn/quick-collect-linux-computer.md
+        - name: Verzamelen - Windows-computer
+          href: learn/quick-collect-windows-computer.md
+    - name: Toepassingen bewaken
       items:
         - name: .Net-toepassing
           href: learn/quick-monitor-portal.md
@@ -20,26 +30,20 @@
           href: learn/mobile-center-quickstart.md
         - name: Webtoepassing
           href: app/website-monitoring.md
-    - name: Virtuele machines
-      items:
-        - name: Verzamelen - Azure-VM's
-          href: learn/quick-collect-azurevm.md
-        - name: Verzamelen - Linux-computer
-          href: learn/quick-collect-linux-computer.md
-        - name: Verzamelen - Windows-computer
-          href: learn/quick-collect-windows-computer.md
 - name: Zelfstudies
   items:
-    - name: Logboeken
-      items:
-        - name: Log Analytics
-          href: log-query/get-started-portal.md
-        - name: Logboekquery's
-          href: log-query/get-started-queries.md
-        - name: Dashboard met logboekgegevens
-          href: learn/tutorial-logs-dashboards.md
-        - name: Waarschuwing bij logboekgegevens
-          href: learn/tutorial-response.md
+    - name: Een grafiek met metrische gegevens maken
+      href: learn/tutorial-metrics-explorer.md
+    - name: Logboeken verzamelen uit Azure-resource
+      href: learn/tutorial-resource-logs.md
+    - name: Logboekquery's schrijven
+      href: log-query/get-started-queries.md
+    - name: Een dashboard maken op basis van logboekquery
+      href: learn/tutorial-logs-dashboards.md
+    - name: Een waarschuwing maken op basis van logboekquery
+      href: learn/tutorial-response.md
+    - name: Automatisch schalen op basis van prestaties en schema
+      href: learn/tutorial-autoscale-performance-schedule.md
     - name: Application Insights
       items:
         - name: Runtime-toepassingsuitzonderingen vinden
@@ -52,10 +56,6 @@
           href: learn/tutorial-users.md
         - name: Dashboard met toepassingsgegevens
           href: learn/tutorial-app-dashboards.md
-    - name: Metrische gegevens en logboekgegevens van het platform archiveren
-      href: learn/tutorial-archive-data.md
-    - name: Automatisch schalen op basis van prestaties en schema
-      href: learn/tutorial-autoscale-performance-schedule.md
 - name: Voorbeelden
   items:
     - name: Azure PowerShell
@@ -117,7 +117,7 @@
         - name: Application Insights
           displayName: FAQ
           href: app/troubleshoot-faq.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Azure Monitor beheren
       items:
@@ -479,50 +479,46 @@
           href: insights/monitor-azure-resource.md
         - name: Resourcegroepen controleren
           href: insights/resource-group-insights.md
-        - name: Overzicht van platformlogboeken
-          href: platform/platform-logs-overview.md
-        - name: Resourcelogboeken
+        - name: Platformlogboeken
           items:
             - name: Overzicht
-              displayname: Resource logs
-              href: platform/resource-logs-overview.md
-            - name: Verzamelen in Azure Monitor-logboeken
-              displayname: Resource logs
-              href: platform/resource-logs-collect-workspace.md
-            - name: Archiveren naar opslag
-              displayname: Resource logs
-              href: platform/resource-logs-collect-storage.md
-            - name: Streamen naar Event Hubs
-              displayname: Resource logs
-              href: platform/resource-logs-stream-event-hubs.md
-        - name: Activiteitenlogboek
-          items:
-            - name: Overzicht
-              displayname: Activity log
-              href: platform/activity-logs-overview.md
-            - name: Verzamelen met diagnostische instelling
-              displayname: Activity log
-              href: platform/diagnostic-settings-subscription.md
-            - name: Weergeven en ophalen
-              displayname: Activity log
+              displayName: 'Platform logs, Resource logs, Activity log'
+              href: platform/platform-logs-overview.md
+            - name: Activiteitenlogboek weergeven
+              displayName: Platform logs
               href: platform/activity-log-view.md
-            - name: Verzamelen en analyseren
-              displayname: Activity log
-              href: platform/activity-log-collect.md
-            - name: Verzamelen voor meerdere tenants
-              displayname: Activity log
-              href: platform/activity-log-collect-tenants.md
-            - name: Exporteren
-              displayname: Activity log
-              href: platform/activity-log-export.md
-            - name: Schema
-              displayname: Activity log
-              href: platform/activity-log-schema.md
+            - name: Verzenden naar bestemmingen
+              items:
+                - name: Log Analytics-werkruimte
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-collect-workspace.md
+                - name: Azure Storage
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-collect-storage.md
+                - name: Event Hubs
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-stream-event-hubs.md
+            - name: Verzameling verouderde activiteitenlogboeken
+              items:
+                - name: Overzicht
+                  displayName: Resource logs
+                  href: platform/diagnostic-settings-legacy.md
+                - name: Verzamelen en analyseren
+                  displayname: Activity log
+                  href: platform/activity-log-collect.md
+                - name: Verzamelen voor meerdere tenants
+                  displayname: Activity log
+                  href: platform/activity-log-collect-tenants.md
+                - name: Exporteren
+                  displayname: Activity log
+                  href: platform/activity-log-export.md
         - name: Diagnostische instellingen
           items:
             - name: Diagnostische instelling maken
+              displayName: 'Platform logs, Resource logs, Activity log'
               href: platform/diagnostic-settings.md
-            - name: Diagnostische instelling maken met Resource Manager
+            - name: Maken met Resource Manager
+              displayName: 'diagnostic setting, Platform logs, Resource logs, Activity log'
               href: platform/diagnostic-settings-template.md
             - name: Wijzigingen in de blobopslagindeling
               displayname: Diagnostic settings
@@ -579,6 +575,8 @@
                   href: platform/log-analytics-agent.md
                 - name: Windows-agents
                   href: platform/agent-windows.md
+                - name: Linux-agents
+                  href: platform/agent-linux.md
                 - name: VM-extensie voor Windows
                   href: ../virtual-machines/windows/extensions-oms.md
                 - name: VM-extensie voor Linux
@@ -1161,11 +1159,17 @@
       items:
         - name: Ondersteunde metrische gegevens
           href: platform/metrics-supported.md
+        - name: Metrische gegevens die exporteerbaar zijn met diagnostische instellingen
+          href: platform/metrics-supported-export-diagnostic-settings.md
         - name: Ondersteunde metrische gegevens voor nieuwere waarschuwingen
           href: platform/alerts-metric-near-real-time.md
-    - name: 'Logboekservices, categorieën en schema''s van platform'
-      href: platform/diagnostic-logs-schema.md
-    - name: Azure-CLI
+    - name: Platformlogboeken
+      items:
+        - name: 'Resources maken van logboekservices, categorieën en schema''s'
+          href: platform/diagnostic-logs-schema.md
+        - name: Schema voor activiteitenlogboek
+          href: platform/activity-log-schema.md
+    - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Azure CLI - Application Insights (preview)
       href: 'https://docs.microsoft.com/cli/azure/ext/application-insights/monitor?view=azure-cli-latest'

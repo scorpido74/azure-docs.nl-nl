@@ -3,12 +3,12 @@ title: 'Quick Start: een blauw druk maken met REST API'
 description: In deze Quick Start gebruikt u Azure-blauw drukken om artefacten te maken, te definiëren en te implementeren met behulp van de REST API.
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 0338afb3dbcb7b2c6d7d204d4387873ac7607182
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 13a6cce25b17fdfbfa5f62dbf16cd2cfbbdc4fe2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322157"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436600"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Snelstartgids: een Azure Blueprint definiëren en toewijzen met REST API
 
@@ -51,7 +51,7 @@ Vervang `{subscriptionId}` in de bovenstaande variabele **$restUri** om informat
 
 ## <a name="create-a-blueprint"></a>Een blauwdruk maken
 
-De eerste stap bij het definiëren van een standaardpatroon voor naleving is om een blauwdruk samen te stellen uit de beschikbare resources. U maakt een blauwdruk met de naam MyBlueprint om de rol en de beleidstoewijzingen voor het abonnement te configureren. Vervolgens voegt u een resourcegroep en een Resource Manager-sjabloon toe en voegt u een roltoewijzing aan de resourcegroep toe.
+De eerste stap bij het definiëren van een standaardpatroon voor naleving bestaat uit het samenstellen van een blauwdruk uit de beschikbare resources. U maakt een blauwdruk met de naam MyBlueprint om de rol en de beleidstoewijzingen voor het abonnement te configureren. Vervolgens voegt u een resourcegroep en een Resource Manager-sjabloon toe en voegt u een roltoewijzing aan de resourcegroep toe.
 
 > [!NOTE]
 > Wanneer u de REST API gebruikt, wordt het object _blauwdruk_ eerst gemaakt. Voor elk _artefact_ dat wordt toegevoegd en parameters bevat, moeten de parameters vooraf worden gedefinieerd in de eerste _blauwdruk_.
@@ -407,9 +407,11 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
      > [!IMPORTANT]
      > De door een gebruiker toegewezen beheerde identiteit wordt niet beheerd door blauwdrukken. Gebruikers zijn verantwoordelijk voor het toewijzen van voldoende rollen en machtigingen, anders mislukken de blauwdruktoewijzingen.
 
-## <a name="unassign-a-blueprint"></a>De toewijzing van een blauwdruk ongedaan maken
+## <a name="clean-up-resources"></a>Resources opschonen
 
-U kunt een blauwdruk uit een abonnement verwijderen. Het verwijderen wordt vaak uitgevoerd als de artefactresources niet langer nodig zijn. Wanneer een blauwdruk wordt verwijderd, worden de artefacten die als onderdeel van die blauwdruk zijn toegewezen, achtergelaten. Als u de toewijzing van een blauwdruk ongedaan wilt maken, gebruikt u de volgende REST API-bewerking:
+### <a name="unassign-a-blueprint"></a>De toewijzing van een blauwdruk ongedaan maken
+
+U kunt een blauwdruk uit een abonnement verwijderen. Het verwijderen wordt vaak uitgevoerd als de artefactresources niet langer nodig zijn. Wanneer een blauwdruk wordt verwijderd, blijven de artefacten die als onderdeel van die blauwdruk zijn toegewezen, achter. Als u de toewijzing van een blauwdruk ongedaan wilt maken, gebruikt u de volgende REST API-bewerking:
 
 - REST API-URI
 
@@ -417,7 +419,7 @@ U kunt een blauwdruk uit een abonnement verwijderen. Het verwijderen wordt vaak 
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
   ```
 
-## <a name="delete-a-blueprint"></a>Een blauwdruk verwijderen
+### <a name="delete-a-blueprint"></a>Een blauwdruk verwijderen
 
 Als u de blauwdruk zelf wilt verwijderen, gebruikt u de volgende REST API-bewerking:
 

@@ -18,7 +18,7 @@
       href: architecture.md
     - name: Integratiepatronen
       href: integration-patterns.md
-- name: Handleidingen
+- name: Instructiegidsen
   expanded: true
   items:
     - name: Workbench implementeren
@@ -55,14 +55,16 @@
       href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
 - name: Resources
   items:
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
     - name: Codevoorbeelden
       href: 'https://github.com/Azure-Samples/blockchain'
-    - name: Community
-      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
-    - name: Ondersteuningsforum
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: MSDN-ondersteuningsforum
       href: 'https://aka.ms/workbenchforum'
+    - name: Ondersteuning voor community
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: Ondersteuning voor Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-blockchain-workbench'
     - name: Productfeedback
       href: 'https://aka.ms/blockchainuservoice'
 - name: Oplossingssjablonen

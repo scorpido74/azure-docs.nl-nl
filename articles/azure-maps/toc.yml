@@ -31,6 +31,16 @@
           href: tutorial-ev-routing.md
         - name: Weergegevens analyseren met Azure Notebooks (Python)
           href: weather-service-tutorial.md
+    - name: Migreren vanuit Google Maps
+      items:
+        - name: Migreren vanuit Google Maps
+          href: migrate-from-google-maps.md
+        - name: Een web-app migreren
+          href: migrate-from-google-maps-web-app.md
+        - name: Een Android-app migreren
+          href: migrate-from-google-maps-android-app.md
+        - name: Een webservice migreren
+          href: migrate-from-google-maps-web-services.md
 - name: Concepten
   items:
     - name: Verificatie met Azure Maps
@@ -63,7 +73,7 @@
       href: mobility-service-data-structure.md
     - name: Serviceconcepten voor weer
       href: weather-services-concepts.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Maps-accounts beheren
       items:
@@ -103,44 +113,48 @@
               href: create-data-source-web-sdk.md
             - name: Een symboollaag toevoegen
               href: map-add-pin.md
+            - name: Een pop-up toevoegen
+              href: map-add-popup.md
             - name: Een bubbellaag toevoegen
               href: map-add-bubble-layer.md
+            - name: HTML-markeringen toevoegen
+              href: map-add-custom-html.md
             - name: Een lijnlaag toevoegen
               href: map-add-line-layer.md
             - name: Een polygoonlaag toevoegen
               href: map-add-shape.md
-            - name: Een polygoonlaag voor extrusie toevoegen
+            - name: Een laag met een polygooneffect toevoegen
               href: map-extruded-polygon.md
             - name: Een heatmap-laag toevoegen
               href: map-add-heat-map-layer.md
-            - name: Een pop-up toevoegen
-              href: map-add-popup.md
+            - name: Een afbeeldingslaag toevoegen
+              href: map-add-image-layer.md
+            - name: Tegellagen toevoegen
+              href: map-add-tile-layer.md
+            - name: Verkeer weergeven
+              href: map-show-traffic.md
             - name: Gegevens van clusterpunt
               href: clustering-point-data-web-sdk.md
             - name: Gegevensgestuurde stijlexpressies gebruiken
               href: data-driven-style-expressions-web-sdk.md
             - name: Afbeeldingssjablonen gebruiken
               href: how-to-use-image-templates-web-sdk.md
-            - name: Een afbeeldingslaag toevoegen
-              href: map-add-image-layer.md
-            - name: Tegellagen toevoegen
-              href: map-add-tile-layer.md
-            - name: HTML-markeringen
-              href: map-add-custom-html.md
-            - name: Verkeer weergeven
-              href: map-show-traffic.md
             - name: Reageren op gebeurtenissen
               href: map-events.md
             - name: Uw app toegankelijk maken
               href: map-accessibility.md
         - name: Tekenprogramma's
           items:
-            - name: Tekenwerkbalk toevoegen
-              href: map-add-drawing-toolbar.md
-            - name: Tekenopties instellen
+            - name: De module voor tekenprogramma's gebruiken
               href: set-drawing-options.md
+            - name: Een tekenwerkbalk toevoegen
+              href: map-add-drawing-toolbar.md
             - name: Vormgegevens ophalen
               href: map-get-shape-data.md
+            - name: Reageren op tekengebeurtenissen
+              href: drawing-tools-events.md
+            - name: Interactietypen en sneltoetsen
+              href: drawing-tools-interactions-keyboard-shortcuts.md
         - name: Services-module
           items:
             - name: De services-module gebruiken
@@ -231,6 +245,8 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: Azure Maps-video's
       href: 'https://aka.ms/AzureMapsVideos'
+    - name: Opensource-projecten
+      href: open-source-projects.md
     - name: Azure Maps-casestudy's
       href: 'https://aka.ms/AzureMapsCaseStudies'
     - name: Azure Maps-woordenlijst

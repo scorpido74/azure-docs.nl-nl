@@ -4,21 +4,23 @@ description: Met Azure Monitor voor VM's oplossing worden metrische gegevens ver
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
-ms.date: 10/29/2019
-ms.openlocfilehash: 69ed49c0e1b90b4086a40bd15f5d276c6cfe137f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+author: bwren
+ms.author: bwren
+ms.date: 12/19/2019
+ms.openlocfilehash: 690c7ba04cf849d973295a6ec27eaa38f9b807c3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162214"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399322"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Logboeken van Azure Monitor voor VM's opvragen (preview-versie)
+
 Azure Monitor voor VM's verzamelt metrische gegevens over prestaties en verbindingen, computer-en proces inventarisgegevens en status gegevens, en stuurt deze door naar de werk ruimte Log Analytics in Azure Monitor.  Deze gegevens zijn beschikbaar voor [query's](../../azure-monitor/log-query/log-query-overview.md) in azure monitor. U kunt deze gegevens Toep assen op scenario's met inbegrip van migratie planning, capaciteits analyse, detectie en prestatie problemen oplossen op aanvraag.
 
 ## <a name="map-records"></a>Records toewijzen
-Er wordt één record per uur gegenereerd voor elke unieke computer en elk proces, naast de records die worden gegenereerd wanneer een proces of computer wordt gestart of op Azure Monitor voor VM's kaart-functie wordt uitgevoerd. Deze records hebben de eigenschappen in de volgende tabellen. De velden en waarden in de ServiceMapComputer_CL-gebeurtenissen worden toegewezen aan velden van de machine bron in de ServiceMap-Azure Resource Manager-API. De velden en waarden in de ServiceMapProcess_CL-gebeurtenissen worden toegewezen aan de velden van de proces resource in de ServiceMap-Azure Resource Manager-API. Het veld ResourceName_s komt overeen met het veld naam in de bijbehorende resource manager-resource. 
+
+Er wordt één record per uur gegenereerd voor elke unieke computer en elk proces, naast de records die worden gegenereerd wanneer een proces of computer wordt gestart of op Azure Monitor voor VM's kaart-functie wordt uitgevoerd. Deze records hebben de eigenschappen in de volgende tabellen. De velden en waarden in de ServiceMapComputer_CL gebeurtenissen worden toegewezen aan velden van de machine resource in de ServiceMap Azure Resource Manager-API. De velden en waarden in de ServiceMapProcess_CL gebeurtenissen worden toegewezen aan de velden van de proces resource in de ServiceMap Azure Resource Manager-API. Het veld ResourceName_s komt overeen met het veld naam in de bijbehorende resource manager-resource. 
 
 Er zijn intern gegenereerde eigenschappen die u kunt gebruiken om unieke processen en computers te identificeren:
 
@@ -28,16 +30,18 @@ Er zijn intern gegenereerde eigenschappen die u kunt gebruiken om unieke process
 Omdat er meerdere records kunnen bestaan voor een opgegeven proces en computer in een opgegeven tijds bereik, kunnen query's meer dan één record retour neren voor dezelfde computer of hetzelfde proces. Voeg `| summarize arg_max(TimeGenerated, *) by ResourceId` toe aan de query om alleen de meest recente record op te nemen.
 
 ### <a name="connections-and-ports"></a>Verbindingen en poorten
+
 De functie metrische verbindings gegevens introduceert twee nieuwe tabellen in Azure Monitor logs-VMConnection en VMBoundPort. Deze tabellen bevatten informatie over de verbindingen voor een machine (binnenkomend en uitgaand), evenals de server poorten die op de computer zijn geopend/actief. ConnectionMetrics worden ook weer gegeven via Api's die de mogelijkheid bieden om een specifieke metriek te verkrijgen tijdens een tijd venster. TCP-verbindingen die het resultaat zijn van het *accepteren* van een luisterende socket zijn inkomend, terwijl deze worden gemaakt door *verbinding te maken* met een bepaald IP-adres en een andere poort. De richting van een verbinding wordt vertegenwoordigd door de eigenschap direction, die kan worden ingesteld op **Inkomend** of **uitgaand**. 
 
 Records in deze tabellen worden gegenereerd op basis van gegevens die zijn gerapporteerd door de Dependency Agent. Elke record vertegenwoordigt een observatie over een tijds interval van 1 minuut. De eigenschap TimeGenerated geeft het begin van het tijds interval aan. Elke record bevat informatie voor het identificeren van de respectieve entiteit, dat wil zeggen, verbinding of poort, en de metrische gegevens die aan die entiteit zijn gekoppeld. Op dit moment worden alleen netwerk activiteiten gerapporteerd die worden uitgevoerd via TCP via IPv4. 
 
 #### <a name="common-fields-and-conventions"></a>Algemene velden en conventies 
+
 De volgende velden en conventies zijn van toepassing op zowel VMConnection als VMBoundPort: 
 
 - Computer: een volledig gekwalificeerde domein naam van de rapport computer 
-- AgentID: de unieke id voor een machine met de Log Analytics-agent  
-- Machine: naam van de Azure Resource Manager resource voor de machine die door ServiceMap wordt weer gegeven. Het is van het formulier *m-{GUID}* , waarbij *GUID* dezelfde GUID is als AgentID  
+- AgentId: de unieke id voor een machine met de Log Analytics-agent  
+- Machine: naam van de Azure Resource Manager resource voor de machine die door ServiceMap wordt weer gegeven. Het is van het formulier *m-{GUID}* , waarbij *GUID* dezelfde GUID is als AgentId  
 - Proces: de naam van de Azure Resource Manager resource voor het proces dat door ServiceMap wordt weer gegeven. Het is van het formulier *p-{hex string}* . Het proces is uniek binnen een computer bereik en voor het genereren van een unieke proces-ID op verschillende computers, combi neer de velden machine en proces. 
 - Verwerker: naam van het uitvoer bare bestand van het rapportage proces.
 - Alle IP-adressen zijn teken reeksen in de standaard notatie van IPv4, bijvoorbeeld *13.107.3.160* 
@@ -69,7 +73,7 @@ Naast de metrieken voor het aantal verbindingen, worden gegevens over het volume
 
 | Eigenschap | Beschrijving |
 |:--|:--|
-|Bytes sent |Totaal aantal bytes dat is verzonden tijdens het rapportage tijd venster |
+|BytesSent |Totaal aantal bytes dat is verzonden tijdens het rapportage tijd venster |
 |BytesReceived |Totaal aantal bytes dat is ontvangen tijdens het rapportage tijd venster |
 |Antwoorden |Het aantal antwoorden dat is waargenomen tijdens het rapportage tijd venster. 
 |ResponseTimeMax |De grootste reactie tijd (milliseconden) die is waargenomen tijdens het rapportage tijd venster. Als er geen waarde is, is de eigenschap leeg.|
@@ -88,9 +92,11 @@ Hier volgen enkele belang rijke punten om rekening mee te houden:
 4. Voor poorten die alleen zijn gebonden voor een specifieke interface, is IsWildcardBind ingesteld op *False*.
 
 #### <a name="naming-and-classification"></a>Naamgeving en classificatie
+
 Voor het gemak wordt het IP-adres van de externe kant van een verbinding opgenomen in de eigenschap RemoteIp. Voor binnenkomende verbindingen is RemoteIp hetzelfde als SourceIp, terwijl voor uitgaande verbindingen hetzelfde is als DestinationIp. De eigenschap RemoteDnsCanonicalNames vertegenwoordigt de canonieke DNS-namen die door de computer worden gerapporteerd voor RemoteIp. De eigenschappen RemoteDnsQuestions en RemoteClassification zijn gereserveerd voor toekomstig gebruik. 
 
 #### <a name="geolocation"></a>Geolocatie
+
 *VMConnection* bevat ook geolocatie gegevens voor het externe einde van elke verbindings record in de volgende eigenschappen van de record: 
 
 | Eigenschap | Beschrijving |
@@ -100,23 +106,25 @@ Voor het gemak wordt het IP-adres van de externe kant van een verbinding opgenom
 |RemoteLongitude |De geografische locatie lengte. Bijvoorbeeld *-122,12* |
 
 #### <a name="malicious-ip"></a>Schadelijk IP-adres
+
 Elke eigenschap RemoteIp in de tabel *VMConnection* wordt gecontroleerd op basis van een reeks IP-adressen met bekende schadelijke activiteiten. Als de RemoteIp als schadelijk is geïdentificeerd, worden de volgende eigenschappen ingevuld (ze zijn leeg, wanneer het IP-adres niet als schadelijk wordt beschouwd) in de volgende eigenschappen van de record:
 
 | Eigenschap | Beschrijving |
 |:--|:--|
 |MaliciousIp |Het RemoteIp-adres |
-|IndicatorThreadType |Gedetecteerde bedreigings indicator is een van de volgende waarden: *botnet*, *C2*, *CryptoMining*, *Darknet*, *DDoS*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *pua's geblokkeerd*,  *Watch list*.   |
+|IndicatorThreadType |Gedetecteerde bedreigings indicator is een van de volgende waarden: *botnet*, *C2*, *CryptoMining*, *Darknet*, *DDoS*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *pua's geblokkeerd*, *Watch list*.   |
 |Beschrijving |Beschrijving van de waargenomen bedreiging. |
 |TLPLevel |TLP-niveau (Traffic Light Protocol) is een van de gedefinieerde waarden, *wit*, *groen*, *geel*, *rood*. |
-|vallen |De waarden zijn *0 – 100*. |
+|Betrouwbaarheid |De waarden zijn *0 – 100*. |
 |Ernst |De waarden zijn *0 – 5*, waarbij *5* het ernstigste en *0* is. De standaard waarde is *3*.  |
 |FirstReportedDateTime |De eerste keer dat de provider de indicator heeft gerapporteerd. |
 |LastReportedDateTime |De laatste keer dat de indicator door de stroom is gezien. |
-|IsActive |Hiermee wordt aangegeven dat indica toren worden gedeactiveerd met de waarde *True* of *False* . |
+|isActive |Hiermee wordt aangegeven dat indica toren worden gedeactiveerd met de waarde *True* of *False* . |
 |ReportReferenceLink |Koppelingen naar rapporten die zijn gerelateerd aan een gegeven waarneembaar. |
-|additionalInformation |Biedt aanvullende informatie, indien van toepassing, over de waargenomen bedreiging. |
+|AdditionalInformation |Biedt aanvullende informatie, indien van toepassing, over de waargenomen bedreiging. |
 
 ### <a name="ports"></a>Poorten 
+
 Poorten op een computer waarop actief binnenkomend verkeer wordt geaccepteerd of waarvoor mogelijk verkeer kan worden geaccepteerd, maar die niet actief zijn tijdens het rapportage tijd venster, worden naar de tabel VMBoundPort geschreven.  
 
 Elke record in VMBoundPort wordt geïdentificeerd aan de hand van de volgende velden: 
@@ -124,13 +132,14 @@ Elke record in VMBoundPort wordt geïdentificeerd aan de hand van de volgende ve
 | Eigenschap | Beschrijving |
 |:--|:--|
 |Proces | De identiteit van het proces (of groep processen) waarmee de poort is gekoppeld.|
-|Onderzoek | IP-adres van poort (kan *IP-adressen*van joker tekens zijn) |
+|Ip | IP-adres van poort (kan *IP-adressen*van joker tekens zijn) |
 |Port |Het poort nummer |
 |Protocol | Het protocol.  Voor beeld: *TCP* of *UDP* (alleen *TCP* wordt momenteel ondersteund).|
  
 De identiteit van een poort wordt afgeleid van de bovenstaande vijf velden en wordt opgeslagen in de eigenschap PortId. Deze eigenschap kan worden gebruikt om snel records te vinden voor een specifieke poort in de loop van de tijd. 
 
 #### <a name="metrics"></a>Metrische gegevens 
+
 Poort records bevatten metrische gegevens voor de verbindingen die eraan zijn gekoppeld. Op dit moment worden de volgende metrische gegevens gerapporteerd (de details van elke metriek worden in de vorige sectie beschreven): 
 
 - Bytes sent en BytesReceived 
@@ -144,139 +153,201 @@ Hier volgen enkele belang rijke punten om rekening mee te houden:
 - Records met Joker teken-IP worden wegge laten als er een overeenkomende record is (voor hetzelfde proces, dezelfde poort en hetzelfde protocol) als voor een specifiek IP-adres. Wanneer een IP-adres record met Joker tekens wordt wegge laten, wordt de eigenschap *IsWildcardBind* voor de record met het specifieke IP-adressen ingesteld op *True*.  Dit geeft aan dat de poort wordt weer gegeven via elke interface van de rapport computer. 
 - Voor poorten die alleen zijn gebonden voor een specifieke interface, is IsWildcardBind ingesteld op *False*. 
 
-### <a name="servicemapcomputer_cl-records"></a>ServiceMapComputer_CL records
-Records met een type *ServiceMapComputer_CL* hebben inventaris gegevens voor servers met de afhankelijkheids agent. Deze records hebben de eigenschappen in de volgende tabel:
+### <a name="vmcomputer-records"></a>VMComputer records
+
+Records met een type *VMComputer* hebben inventaris gegevens voor servers met de afhankelijkheids agent. Deze records hebben de eigenschappen in de volgende tabel:
 
 | Eigenschap | Beschrijving |
 |:--|:--|
-| Type | *ServiceMapComputer_CL* |
-| SourceSystem | *OpsManager* |
-| ResourceId | De unieke id voor een machine in de werk ruimte |
-| ResourceName_s | De unieke id voor een machine in de werk ruimte |
-| ComputerName_s | De FQDN van de computer |
-| Ipv4Addresses_s | Een lijst met IPv4-adressen van de server |
-| Ipv6Addresses_s | Een lijst met IPv6-adressen van de server |
-| DnsNames_s | Een matrix met DNS-namen |
-| OperatingSystemFamily_s | Windows of Linux |
-| OperatingSystemFullName_s | De volledige naam van het besturings systeem  |
-| Bitness_s | De Bitness van de machine (32-bits of 64-bits)  |
-| PhysicalMemory_d | Het fysieke geheugen in MB |
-| Cpus_d | Het aantal Cpu's |
-| CpuSpeed_d | De CPU-snelheid in MHz|
-| VirtualizationState_s | *onbekend*, *fysiek*, *virtueel*, *Hyper Visor* |
-| VirtualMachineType_s | *hyper-v*, *VMware*, enzovoort |
-| VirtualMachineNativeMachineId_g | De VM-ID die is toegewezen door de Hyper Visor |
-| VirtualMachineName_s | De naam van de virtuele machine |
-| BootTime_t | De opstart tijd |
+|TenantId | De unieke id voor de werk ruimte |
+|SourceSystem | *Inzichten* | 
+|TimeGenerated | Tijds tempel van de record (UTC) |
+|Computer | De FQDN van de computer | 
+|AgentId | De unieke ID van de Log Analytics-agent |
+|Machine | De naam van de Azure Resource Manager resource voor de machine die door ServiceMap wordt weer gegeven. Het is van het formulier *m-{GUID}* , waarbij *GUID* dezelfde GUID is als AgentId. | 
+|DisplayName | Weergavenaam | 
+|FullDisplayName | Volledige weergave naam | 
+|Hostnaam | De naam van de machine zonder domein naam |
+|BootTime | De opstart tijd van de computer (UTC) |
+|Tijdzone | De genormaliseerde tijd zone |
+|VirtualizationState | *virtueel*, *Hyper Visor*, *fysiek* |
+|Ipv4Addresses | Matrix van IPv4-adressen | 
+|Ipv4SubnetMasks | Matrix van IPv4-subnetmaskers (in dezelfde volg orde als Ipv4Addresses). |
+|Ipv4DefaultGateways | Matrix van IPv4-gateways | 
+|Ipv6Addresses | Matrix van IPv6-adressen | 
+|MacAddresses | Matrix van MAC-adressen | 
+|DnsNames | Matrix van DNS-namen die zijn gekoppeld aan de computer. |
+|DependencyAgentVersion | De versie van de afhankelijkheids agent die op de computer wordt uitgevoerd. | 
+|OperatingSystemFamily | *Linux*, *Windows* |
+|OperatingSystemFullName | De volledige naam van het besturings systeem | 
+|PhysicalMemoryMB | Het fysieke geheugen in mega bytes | 
+|Processors | Het aantal processors | 
+|CpuSpeed | De CPU-snelheid in MHz | 
+|VirtualMachineType | *hyper-v*, *VMware*, *xen* |
+|VirtualMachineNativeId | De VM-ID die is toegewezen door de Hyper Visor | 
+|VirtualMachineNativeName | De naam van de virtuele machine |
+|VirtualMachineHypervisorId | De unieke id van de Hyper Visor die als host fungeert voor de virtuele machine |
+|Hyper Visor type | *v* |
+|HypervisorId | De unieke ID van de Hyper Visor | 
+|HostingProvider | *Azure* |
+|_ResourceId | De unieke id voor een Azure-resource |
+|AzureSubscriptionId | Een Globally Unique Identifier die uw abonnement identificeert | 
+|AzureResourceGroup | De naam van de Azure-resource groep waarvan de computer lid is. |
+|AzureResourceName | De naam van de Azure-resource |
+|AzureLocation | De locatie van de Azure-resource |
+|AzureUpdateDomain | De naam van het Azure update-domein |
+|AzureFaultDomain | De naam van het Azure-fout domein |
+|AzureVmId | De unieke id van de virtuele Azure-machine |
+|AzureSize | De grootte van de virtuele machine van Azure |
+|AzureImagePublisher | De naam van de Azure VM-Uitgever |
+|AzureImageOffering | De naam van het type Azure VM-aanbieding | 
+|AzureImageSku | De SKU van de Azure VM-installatie kopie | 
+|AzureImageVersion | De versie van de Azure VM-installatie kopie | 
+|AzureCloudServiceName | De naam van de Azure-Cloud service |
+|AzureCloudServiceDeployment | Implementatie-ID voor de Cloud service |
+|AzureCloudServiceRoleName | Rolnaam van Cloud service |
+|AzureCloudServiceRoleType | Type Cloud service: *werk nemer* of *Web* |
+|AzureCloudServiceInstanceId | ID van instantie van Cloud Service Role |
+|AzureVmScaleSetName | De naam van de schaalset voor virtuele machines |
+|AzureVmScaleSetDeployment | Implementatie-ID van VM-schaalset |
+|AzureVmScaleSetResourceId | De unieke id van de resource voor de schaalset van de virtuele machine.|
+|AzureVmScaleSetInstanceId | De unieke id van de schaalset voor virtuele machines |
+|AzureServiceFabricClusterId | De unieke id van het Azure Service Fabric-cluster | 
+|AzureServiceFabricClusterName | De naam van het Azure Service Fabric-cluster |
 
-### <a name="servicemapprocess_cl-type-records"></a>Records van het type ServiceMapProcess_CL
-Records met een type *ServiceMapProcess_CL* hebben inventaris gegevens voor met TCP verbonden processen op servers met de afhankelijkheids agent. Deze records hebben de eigenschappen in de volgende tabel:
+### <a name="vmprocess-record"></a>Record VMProcess
+
+Records met een type *VMProcess* hebben inventaris gegevens voor met TCP verbonden processen op servers met de afhankelijkheids agent. Deze records hebben de eigenschappen in de volgende tabel:
 
 | Eigenschap | Beschrijving |
 |:--|:--|
-| Type | *ServiceMapProcess_CL* |
-| SourceSystem | *OpsManager* |
-| ResourceId | De unieke id voor een proces in de werk ruimte |
-| ResourceName_s | De unieke id voor een proces in de machine waarop het wordt uitgevoerd|
-| MachineResourceName_s | De resource naam van de machine |
-| ExecutableName_s | De naam van het uitvoer bare proces |
-| StartTime_t | De begin tijd van de proces groep |
-| FirstPid_d | De eerste pincode in de proces groep |
-| Description_s | De proces beschrijving |
-| CompanyName_s | De naam van het bedrijf |
-| InternalName_s | De interne naam |
-| ProductName_s | De naam van het product |
-| ProductVersion_s | De product versie |
-| FileVersion_s | De bestands versie |
-| CommandLine_s | De opdracht regel |
-| ExecutablePath_s | Het pad naar het uitvoer bare bestand |
-| WorkingDirectory_s | De werkmap |
-| Gebruikers | Het account waarmee het proces wordt uitgevoerd |
-| User Domain | Het domein waaronder het proces wordt uitgevoerd |
+|TenantId | De unieke id voor de werk ruimte |
+|SourceSystem | *Inzichten* | 
+|TimeGenerated | Tijds tempel van de record (UTC) |
+|Computer | De FQDN van de computer | 
+|AgentId | De unieke ID van de Log Analytics-agent |
+|Machine | De naam van de Azure Resource Manager resource voor de machine die door ServiceMap wordt weer gegeven. Het is van het formulier *m-{GUID}* , waarbij *GUID* dezelfde GUID is als AgentId. | 
+|Proces | De unieke id van het Servicetoewijzing proces. Deze heeft de indeling *p-{GUID}* . 
+|Uitvoer bare bestand | De naam van het uitvoer bare proces | 
+|DisplayName | Weergave naam van proces |
+|Rol | Rol verwerken: *webserver*, *appServer*, *databaseServer*, *ldapServer*, *smbServer* |
+|Groep | Naam van de proces groep. Processen in dezelfde groep zijn logisch gerelateerd, bijvoorbeeld een deel van hetzelfde product of systeem onderdeel. |
+|StartTime | De begin tijd van de proces groep |
+|FirstPid | De eerste pincode in de proces groep |
+|Beschrijving | De proces beschrijving |
+|CompanyName | De naam van het bedrijf |
+|Internenaam | De interne naam |
+|Productnaam | De naam van het product |
+|ProductVersion | De versie van het product |
+|FileVersion | De versie van het bestand |
+|ExecutablePath |Het pad van het uitvoer bare bestand |
+|CommandLine | De opdracht regel |
+|WorkingDirectory | De werkmap |
+|Services | Een matrix met services waaronder het proces wordt uitgevoerd |
+|UserName | Het account waarmee het proces wordt uitgevoerd |
+|UserDomain | Het domein waaronder het proces wordt uitgevoerd |
+|_ResourceId | De unieke id voor een proces in de werk ruimte |
 
 ## <a name="sample-log-searches"></a>Voorbeeldzoekopdrachten in logboeken
 
 ### <a name="list-all-known-machines"></a>Alle bekende computers weer geven
+
 ```kusto
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId
+VMComputer | summarize arg_max(TimeGenerated, *) by _ResourceId
 ```
 
 ### <a name="when-was-the-vm-last-rebooted"></a>Wanneer is de VM voor het laatst opnieuw opgestart
+
 ```kusto
-let Today = now(); ServiceMapComputer_CL | extend DaysSinceBoot = Today - BootTime_t | summarize by Computer, DaysSinceBoot, BootTime_t | sort by BootTime_t asc
+let Today = now(); VMComputer | extend DaysSinceBoot = Today - BootTime | summarize by Computer, DaysSinceBoot, BootTime | sort by BootTime asc
 ```
 
 ### <a name="summary-of-azure-vms-by-image-location-and-sku"></a>Samen vatting van virtuele Azure-machines op installatie kopie, locatie en SKU
+
 ```kusto
-ServiceMapComputer_CL | where AzureLocation_s != "" | summarize by ComputerName_s, AzureImageOffering_s, AzureLocation_s, AzureImageSku_s
+VMComputer | where AzureLocation != "" | summarize by ComputerName, AzureImageOffering, AzureLocation, AzureImageSku
 ```
 
-### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>De capaciteit van het fysieke geheugen van alle beheerde computers weer geven.
+### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>De capaciteit van het fysieke geheugen van alle beheerde computers weer geven
+
 ```kusto
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s
+VMComputer | summarize arg_max(TimeGenerated, *) by _ResourceId | project PhysicalMemoryMB, Computer
 ```
 
-### <a name="list-computer-name-dns-ip-and-os"></a>Computer naam, DNS, IP en besturings systeem weer geven.
+### <a name="list-computer-name-dns-ip-and-os"></a>Computer naam, DNS, IP en besturings systeem weer geven
+
 ```kusto
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
+VMComputer | summarize arg_max(TimeGenerated, *) by _ResourceId | project Computer, OperatingSystemFullName, DnsNames, Ipv4Addresses
 ```
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>Alle processen zoeken met ' SQL ' in de opdracht regel
+
 ```kusto
-ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId
+VMComputer | where CommandLine contains_cs "sql" | summarize arg_max(TimeGenerated, *) by _ResourceId
 ```
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Zoek een machine (de meest recente record) op resource naam
+
 ```kusto
-search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId
+search in (VMComputer) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by _ResourceId
 ```
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Een machine (meest recente record) zoeken op IP-adres
+
 ```kusto
-search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId
+search in (VMComputer) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by _ResourceId
 ```
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>Alle bekende processen op een opgegeven computer weer geven
+
 ```kusto
-ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId
+VMProcess | where Machine == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by _ResourceId
 ```
 
 ### <a name="list-all-computers-running-sql-server"></a>Alle computers met SQL Server weer geven
+
 ```kusto
-ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s
+VMComputer | where AzureResourceName in ((search in (VMProcess) "\*sql\*" | distinct Machine)) | distinct Computer
 ```
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Alle unieke product versies van krul in mijn Data Center weer geven
+
 ```kusto
-ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s
+VMProcess | where ExecutableName == "curl" | distinct ProductVersion
 ```
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Een computer groep maken van alle computers waarop CentOS wordt uitgevoerd
+
 ```kusto
-ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
+VMComputer | where OperatingSystemFullName contains_cs "CentOS" | distinct ComputerName
 ```
 
 ### <a name="bytes-sent-and-received-trends"></a>Verzonden en trends ontvangen bytes
+
 ```kusto
 VMConnection | summarize sum(BytesSent), sum(BytesReceived) by bin(TimeGenerated,1hr), Computer | order by Computer desc | render timechart
 ```
 
 ### <a name="which-azure-vms-are-transmitting-the-most-bytes"></a>Welke Azure-Vm's de meeste bytes verzenden
+
 ```kusto
-VMConnection | join kind=fullouter(ServiceMapComputer_CL) on $left.Computer == $right.ComputerName_s | summarize count(BytesSent) by Computer, AzureVMSize_s | sort by count_BytesSent desc
+VMConnection | join kind=fullouter(VMComputer) on $left.Computer == $right.Computer | summarize count(BytesSent) by Computer, AzureVMSize | sort by count_BytesSent desc
 ```
 
 ### <a name="link-status-trends"></a>Trends van koppelings status
+
 ```kusto
 VMConnection | where TimeGenerated >= ago(24hr) | where Computer == "acme-demo" | summarize dcount(LinksEstablished), dcount(LinksLive), dcount(LinksFailed), dcount(LinksTerminated) by bin(TimeGenerated, 1h) | render timechart
 ```
 
 ### <a name="connection-failures-trend"></a>Trend van verbindings fouten
+
 ```kusto
 VMConnection | where Computer == "acme-demo" | extend bythehour = datetime_part("hour", TimeGenerated) | project bythehour, LinksFailed | summarize failCount = count() by bythehour | sort by bythehour asc | render timechart
 ```
 
 ### <a name="bound-ports"></a>Gebonden poorten
+
 ```kusto
 VMBoundPort
 | where TimeGenerated >= ago(24hr)
@@ -285,6 +356,7 @@ VMBoundPort
 ```
 
 ### <a name="number-of-open-ports-across-machines"></a>Aantal open poorten op computers
+
 ```kusto
 VMBoundPort
 | where Ip != "127.0.0.1"
@@ -294,6 +366,7 @@ VMBoundPort
 ```
 
 ### <a name="score-processes-in-your-workspace-by-the-number-of-ports-they-have-open"></a>Score processen in uw werk ruimte op het aantal poorten dat ze hebben geopend
+
 ```kusto
 VMBoundPort
 | where Ip != "127.0.0.1"
@@ -303,6 +376,7 @@ VMBoundPort
 ```
 
 ### <a name="aggregate-behavior-for-each-port"></a>Aggregatie gedrag voor elke poort
+
 Deze query kan vervolgens worden gebruikt om poorten te beoordelen op basis van activiteit, bijvoorbeeld poorten met het meeste binnenkomend/uitgaand verkeer, poorten met de meeste verbindingen
 ```kusto
 // 
@@ -314,12 +388,13 @@ VMBoundPort
 ```
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>De uitgaande verbindingen van een groep machines samenvatten
+
 ```kusto
 // the machines of interest
 let machines = datatable(m: string) ["m-82412a7a-6a32-45a9-a8d6-538354224a25"];
 // map of ip to monitored machine in the environment
-let ips=materialize(ServiceMapComputer_CL
-| summarize ips=makeset(todynamic(Ipv4Addresses_s)) by MonitoredMachine=ResourceName_s
+let ips=materialize(VMComputer
+| summarize ips=makeset(todynamic(Ipv4Addresses)) by MonitoredMachine=AzureResourceName
 | mvexpand ips to typeof(string));
 // all connections to/from the machines of interest
 let out=materialize(VMConnection
@@ -356,6 +431,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
+
 * Als u geen logboek query's in Azure Monitor kunt schrijven, raadpleegt u [hoe u log Analytics](../../azure-monitor/log-query/get-started-portal.md) in de Azure Portal gebruikt om logboek query's te schrijven.
 
 * Meer informatie over het [schrijven van zoek query's](../../azure-monitor/log-query/search-queries.md).

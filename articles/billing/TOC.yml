@@ -3,6 +3,12 @@
 - name: Informatie over Azure-facturering
   expanded: true
   items:
+    - name: Factureringsaccounts en -bereiken
+      href: billing-view-all-accounts.md
+    - name: Factureringsaccounts voor Microsoft-klantovereenkomst
+      href: billing-mca-overview.md
+    - name: Factureringsaccounts voor Microsoft-partnerovereenkomst
+      href: mpa-overview.md
     - name: Meer informatie over uw factuur
       href: billing-understand-your-bill.md
     - name: Meer informatie over uw factuur - Microsoft-klantovereenkomst
@@ -29,10 +35,6 @@
       href: billing-mpa-invoice-terms-explained.md
     - name: Uw factuur betalen - Microsoft-klantovereenkomst
       href: billing-how-to-pay-bill.md
-    - name: Factureringsaccounts voor Microsoft-klantovereenkomst
-      href: billing-mca-overview.md
-    - name: Factureringsaccounts voor Microsoft-partnerovereenkomst
-      href: mpa-overview.md
 - name: Kosten beheren
   items:
     - name: Onverwachte kosten voorkomen
@@ -147,8 +149,6 @@
       href: billing-understand-mca-roles.md
     - name: Partner-id koppelen
       href: billing-partner-admin-link-started.md
-    - name: Factureringsaccounts weergeven
-      href: billing-view-all-accounts.md
     - name: Kosten ordenen met factuursecties
       href: billing-mca-section-invoice.md
     - name: EA-taken in Microsoft-klantovereenkomst
@@ -216,7 +216,7 @@
     - name: Een Azure AD-tenant koppelen
       href: ../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json
     - name: Limieten en quota
-      href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
 - name: Problemen oplossen
   items:
     - name: Geen abonnementen gevonden

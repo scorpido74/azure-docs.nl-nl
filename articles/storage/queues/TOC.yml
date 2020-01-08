@@ -13,8 +13,16 @@
           href: storage-quickstart-queues-portal.md
     - name: Ontwerpen met wachtrijen
       items:
-        - name: .NET
+        - name: .NET (v12)
           href: storage-quickstart-queues-dotnet.md
+        - name: .NET (v11)
+          href: storage-quickstart-queues-dotnet-legacy.md
+        - name: Java (v12)
+          href: storage-quickstart-queues-java.md
+        - name: Python (v12)
+          href: storage-quickstart-queues-python.md
+        - name: JavaScript (v12)
+          href: storage-quickstart-queues-nodejs.md
 - name: Zelfstudies
   items:
     - name: Werken met Azure-opslagwachtrijen
@@ -31,11 +39,11 @@
       href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Beveiliging
       items:
-        - name: Beveiligingsoverzicht
-          href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Aanbevelingen voor beveiliging
+          href: security-recommendations.md
         - name: Azure-opslagversleuteling
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Autorisatie
+        - name: Gegevensbewerkingen autoriseren
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
           items:
             - name: Verifiëren en autoriseren met Azure AD
@@ -44,6 +52,8 @@
               href: /rest/api/storageservices/authorize-with-shared-key
             - name: Autoriseren met SAS
               href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Gegevensbewerkingen autoriseren
+          href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Geavanceerde beveiliging tegen bedreigingen
           href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Ingebouwde beveiligingsmaatregelen
@@ -65,12 +75,8 @@
           href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: HA-apps ontwerpen met RA-GRS
           href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Prestaties en schalen
-      items:
-        - name: Schaalbaarheids- en prestatiedoelen
-          href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Controlelijst voor prestaties en schaalbaarheid
-          href: storage-performance-checklist.md
+    - name: Controlelijst voor prestaties en schaalbaarheid
+      href: storage-performance-checklist.md
     - name: Gelijktijdigheid
       href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Controleren en problemen oplossen
@@ -99,9 +105,7 @@
       items:
         - name: Create a storage account
           displayName: 'resource manager, resource manager template, template, ARM'
-          href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Een opslagaccount beheren
-          href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+          href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Een opslagaccount upgraden
           href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Wachtrijgegevens beveiligen
@@ -112,15 +116,17 @@
               items:
                 - name: Portal
                   href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: PowerShell of Azure CLI
-                  href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: PowerShell
+                  href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Toegangsrechten beheren met RBAC
               items:
                 - name: Portal
                   href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: PowerShell
                   href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: Azure-CLI
+                - name: Azure CLI
                   href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Verifiëren en autoriseren met Azure AD
               items:
@@ -130,6 +136,8 @@
                   href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Autoriseren met gedeelde sleutel
               items:
+                - name: Accountsleutels weergeven en beheren
+                  href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: Verbindingsreeksen configureren
                   href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: De Azure Storage REST API gebruiken
@@ -144,7 +152,7 @@
                       href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                     - name: PowerShell
                       href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                    - name: Azure-CLI
+                    - name: Azure CLI
                       href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Versleuteling aan de clientzijde configureren
           items:
@@ -202,9 +210,17 @@
           href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
 - name: Naslaginformatie
   items:
+    - name: Schaalbaarheids- en prestatiedoelen
+      items:
+        - name: Queue Storage
+          href: scalability-targets.md
+        - name: Standard-opslagaccounts
+          href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Opslagresourceprovider
+          href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Azure PowerShell
       href: /powershell/module/az.storage
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/storage
     - name: .NET
       items:

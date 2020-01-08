@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 614d93a16b9149a217b5ff1004031e0a2d7337ca
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: d430d7d94f8eed76bb78042a174aeddf2e6ccaa3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615061"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410221"
 ---
 Configuratie-instellingen voor [Durable functions](../articles/azure-functions/durable-functions-overview.md).
 
@@ -52,14 +52,15 @@ Configuratie-instellingen voor [Durable functions](../articles/azure-functions/d
   "durableTask": {
     "hubName": "MyTaskHub",
     "storageProvider": {
-      "controlQueueBatchSize": 32,
-      "partitionCount": 4,
-      "controlQueueVisibilityTimeout": "00:05:00",
-      "workItemQueueVisibilityTimeout": "00:05:00",
-      "maxQueuePollingInterval": "00:00:30",
       "connectionStringName": "AzureWebJobsStorage",
+      "controlQueueBatchSize": 32,
+      "controlQueueBufferThreshold": 256,
+      "controlQueueVisibilityTimeout": "00:05:00",
+      "maxQueuePollingInterval": "00:00:30",
+      "partitionCount": 4,
       "trackingStoreConnectionStringName": "TrackingStorage",
-      "trackingStoreNamePrefix": "DurableTask"
+      "trackingStoreNamePrefix": "DurableTask",
+      "workItemQueueVisibilityTimeout": "00:05:00",
     },
     "tracing": {
       "traceInputsAndOutputs": false,
@@ -82,7 +83,8 @@ Configuratie-instellingen voor [Durable functions](../articles/azure-functions/d
     "maxConcurrentActivityFunctions": 10,
     "maxConcurrentOrchestratorFunctions": 10,
     "extendedSessionsEnabled": false,
-    "extendedSessionIdleTimeoutInSeconds": 30
+    "extendedSessionIdleTimeoutInSeconds": 30,
+    "useGracefulShutdown": false
   }
 }
 ```
@@ -93,6 +95,7 @@ Namen van taak hubs moeten beginnen met een letter en mogen alleen letters en ci
 |---------|---------|---------|
 |hubName|DurableFunctionsHub|Alternatieve namen van [taak hubs](../articles/azure-functions/durable-functions-task-hubs.md) kunnen worden gebruikt om meerdere Durable functions toepassingen van elkaar te isoleren, zelfs als ze dezelfde opslag back-end gebruiken.|
 |controlQueueBatchSize|32|Het aantal berichten dat tegelijkertijd moet worden opgehaald uit de controle wachtrij.|
+|controlQueueBufferThreshold|256|Het aantal controle wachtrij berichten dat in het geheugen tegelijk kan worden gebufferd, op het moment dat de dispatcher wacht voordat extra berichten worden verwijderd.|
 |partitionCount |4|Het aantal partities voor de controle wachtrij. Dit kan een positief geheel getal zijn tussen 1 en 16.|
 |controlQueueVisibilityTimeout |5 minuten|De time-out voor de zicht baarheid van berichten in de wachtrij voor controle wachtrijen.|
 |workItemQueueVisibilityTimeout |5 minuten|De time-out van de zicht baarheid van berichten in de wachtrij voor werk items in de wachtrij.|
@@ -102,12 +105,13 @@ Namen van taak hubs moeten beginnen met een letter en mogen alleen letters en ci
 |azureStorageConnectionStringName |AzureWebJobsStorage|De naam van de app-instelling met de Azure Storage connection string gebruikt voor het beheren van de onderliggende Azure Storage resources.|
 |trackingStoreConnectionStringName||De naam van een connection string die moet worden gebruikt voor de tabellen geschiedenis en exemplaren. Als deze niet wordt opgegeven, wordt de `azureStorageConnectionStringName`-verbinding gebruikt.|
 |trackingStoreNamePrefix||Het voor voegsel dat moet worden gebruikt voor de tabellen geschiedenis en instanties wanneer `trackingStoreConnectionStringName` is opgegeven. Als deze niet is ingesteld, wordt de standaard voorvoegsel waarde `DurableTask`. Als `trackingStoreConnectionStringName` niet is opgegeven, gebruiken de tabellen geschiedenis en exemplaren de `hubName` waarde als voor voegsel en wordt elke instelling voor `trackingStoreNamePrefix` genegeerd.|
-|traceInputsAndOutputs |onwaar|Een waarde die aangeeft of de invoer en uitvoer van functie aanroepen moeten worden getraceerd. Het standaard gedrag bij het traceren van functie-uitvoerings gebeurtenissen omvat het aantal bytes in de geserialiseerde invoer en uitvoer voor functie aanroepen. Dit gedrag biedt minimale informatie over hoe de invoer en uitvoer eruitzien zonder de logboeken te vertonen of per ongeluk gevoelige informatie weer te geven. Als u deze eigenschap instelt op True, wordt de volledige inhoud van functie-invoer en-uitvoer in de standaard functie vastgelegd.|
-|logReplayEvents|onwaar|Een waarde die aangeeft of het schrijven van Orchestrator replay-gebeurtenissen naar Application Insights.|
+|traceInputsAndOutputs |false|Een waarde die aangeeft of de invoer en uitvoer van functie aanroepen moeten worden getraceerd. Het standaard gedrag bij het traceren van functie-uitvoerings gebeurtenissen omvat het aantal bytes in de geserialiseerde invoer en uitvoer voor functie aanroepen. Dit gedrag biedt minimale informatie over hoe de invoer en uitvoer eruitzien zonder de logboeken te vertonen of per ongeluk gevoelige informatie weer te geven. Als u deze eigenschap instelt op True, wordt de volledige inhoud van functie-invoer en-uitvoer in de standaard functie vastgelegd.|
+|logReplayEvents|false|Een waarde die aangeeft of het schrijven van Orchestrator replay-gebeurtenissen naar Application Insights.|
 |eventGridTopicEndpoint ||De URL van een Azure Event Grid aangepast onderwerp-eind punt. Wanneer deze eigenschap is ingesteld, worden meldings gebeurtenissen van de Orchestration-cyclus naar dit eind punt gepubliceerd. Deze eigenschap ondersteunt de resolutie van de app-instellingen.|
 |eventGridKeySettingName ||De naam van de app-instelling met de sleutel die wordt gebruikt voor de verificatie met het aangepaste onderwerp Azure Event Grid op `EventGridTopicEndpoint`.|
 |eventGridPublishRetryCount|0|Het aantal keren dat het opnieuw moet worden uitgevoerd als het publiceren naar het Event Grid-onderwerp mislukt.|
 |eventGridPublishRetryInterval|5 minuten|Het interval voor nieuwe pogingen Event Grid wordt gepubliceerd in de notatie *uu: mm: SS* .|
 |eventGridPublishEventTypes||Een lijst met gebeurtenis typen die moeten worden gepubliceerd naar Event Grid. Als u niets opgeeft, worden alle gebeurtenis typen gepubliceerd. Toegestane waarden zijn `Started`, `Completed`, `Failed``Terminated`.|
+|useGracefulShutdown|false|Evaluatie Schakel probleemloos afsluiten in om de kans op het afsluiten van de host te verminderen tijdens het uitvoeren van de uitvoering van de functie.|
 
 Veel van deze instellingen zijn voor het optimaliseren van de prestaties. Zie [prestaties en schalen](../articles/azure-functions/durable-functions-perf-and-scale.md)voor meer informatie.

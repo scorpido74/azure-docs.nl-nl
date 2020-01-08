@@ -4,15 +4,15 @@ description: In dit artikel wordt beschreven hoe u de bewaking van uw virtuele m
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/05/2018
-ms.openlocfilehash: 70e71688fde5aff4002c7d49b1408bcefeab1eed
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: b2d58b501429a47c3011fc727f756edeeb7775e6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555163"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399306"
 ---
 # <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms-preview"></a>Bewaking van uw virtuele machines in Azure Monitor voor VM's uitschakelen (preview-versie)
 
@@ -43,7 +43,7 @@ Als u nog steeds de Log Analytics-werk ruimte nodig hebt, volgt u deze stappen o
 >Als u de Servicetoewijzing bewakings oplossing hebt gebruikt voordat u Azure Monitor voor VM's hebt ingeschakeld en u deze nog steeds vertrouwt, verwijdert u die oplossing niet zoals beschreven in de laatste stap van de volgende procedure.  
 >
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Selecteer in de Azure-portal de optie **Alle services**. Typ in de lijst met resources **Log Analytics**. Wanneer u begint te typen, worden in de lijst suggesties weer geven op basis van uw invoer. Selecteer **Log Analytics**.
 3. Selecteer in de lijst met Log Analytics-werk ruimten de werk ruimte die u hebt gekozen bij het inschakelen van Azure Monitor voor VM's.
 4. Selecteer aan de linkerkant **oplossingen**.  
@@ -64,7 +64,7 @@ Als uw Log Analytics-werk ruimte nog steeds ondersteuning moet bieden voor de be
 >
 > Als u de Log Analytics-agent verwijdert, kunt u voor komen dat deze services en oplossingen proactief uw VM beheren. 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). 
 2. Selecteer **virtual machines**In het Azure Portal. 
 3. Selecteer een VM in de lijst. 
 4. Selecteer aan de linkerkant de optie **uitbrei dingen**. Selecteer op de pagina **uitbrei dingen** de optie **DependencyAgent**.

@@ -5,15 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 12/12/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: f9ed841d347d99a2208971d164bbd7b9044e3b09
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 48ecfcc0d6241e7926892a3ca1c9925b0dc07241
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031587"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436846"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Verplaatsen van een openbare peering naar het Microsoft-peering
 
@@ -65,7 +64,7 @@ Controleer of de Microsoft-peering is ingeschakeld en het aangekondigde openbare
 
 * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md#getmsft)<br>
 * [Azure PowerShell](expressroute-howto-routing-arm.md#getmsft)<br>
-* [Azure CLI](howto-routing-cli.md#getmsft)
+* [Azure-CLI](howto-routing-cli.md#getmsft)
 
 ## <a name="routefilter"></a>3. een route filter configureren en koppelen aan het circuit
 
@@ -83,9 +82,8 @@ Configureer routefilters met behulp van een van de volgende artikelen:
 
 Nadat u hebt gecontroleerd dat de Microsoft-peering is geconfigureerd en de voorvoegsels die u wilt gebruiken voor het correct op de Microsoft-peering worden geadverteerd, kunt u vervolgens de openbare peering verwijderen. Als u wilt de openbare peering verwijderen, gebruikt u een van de volgende artikelen:
 
-* [Openbare Azure-peering met behulp van Azure portal verwijderen](expressroute-howto-routing-portal-resource-manager.md#deletepublic)<br>
-* [Verwijderen van de openbare Azure-peering met behulp van Azure PowerShell](expressroute-howto-routing-arm.md#deletepublic)<br>
-* [Verwijderen van de openbare Azure-peering met behulp van CLI](howto-routing-cli.md#deletepublic)
+* [Verwijderen van de openbare Azure-peering met behulp van Azure PowerShell](about-public-peering.md#powershell)
+* [Verwijderen van de openbare Azure-peering met behulp van CLI](about-public-peering.md#cli)
   
 ## <a name="view"></a>5. peerings weer geven
   

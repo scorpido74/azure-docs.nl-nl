@@ -4,16 +4,16 @@ description: In dit artikel worden de REST API's beschreven die u kunt gebruiken
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: ea53ad91dcb411c43b367bfb43bc9dcea3d2bba7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 58f38cc3649c1d08187a4bb93be83422c8e7911b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841418"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644525"
 ---
 # <a name="azure-enterprise-rest-apis"></a>REST API's in Azure Enterprise
 
@@ -75,7 +75,7 @@ Voorbeeld: bearer \&lt;APIKey\&gt; |
 
 ### <a name="swagger"></a>Swagger
 
-Er is voor de volgende API's een Swagger-eindpunt beschikbaar in [Enterprise Reporting v3 APIs](https://consumption.azure.com/swagger/ui/index). Swagger helpt de API te inspecteren. Gebruik Swagger om client-SDK's te genereren met behulp van [AutoRest](https://github.com/Azure/AutoRest) of [Swagger CodeGen](http://swagger.io/swagger-codegen/). Gegevens die na 1 mei 2014 beschikbaar zijn geworden, zijn toegankelijk via de API.
+Er is voor de volgende API's een Swagger-eindpunt beschikbaar in [Enterprise Reporting v3 APIs](https://consumption.azure.com/swagger/ui/index). Swagger helpt de API te inspecteren. Gebruik Swagger om client-SDK's te genereren met behulp van [AutoRest](https://github.com/Azure/AutoRest) of [Swagger CodeGen](https://swagger.io/swagger-codegen/). Gegevens die na 1 mei 2014 beschikbaar zijn geworden, zijn toegankelijk via de API.
 
 ### <a name="api-response-codes"></a>API-responscodes
 
@@ -122,9 +122,9 @@ De JSON-indeling wordt gegenereerd op basis van het CSV-rapport. Als gevolg hier
 | SubscriptionGuid | MOCPSubscriptionGuid | SubscriptionGuid |   |
 | Abonnementsnaam | SubscriptionName | SubscriptionName |   |
 | Date | Date | Date | Hier wordt de datum weergegeven waarop het servicecatalogusrapport is gemaakt. De indeling is een gegevenstekenreeks zonder tijdstempel. |
-| Maand | Maand | Maand |   |
-| Dag | Dag | Dag |   |
-| Jaar | Jaar | Jaar |   |
+| Month | Maand | Month |   |
+| Dag | Day | Day |   |
+| Year | Year | Jaar |   |
 | Product | BillableItemName | Product |   |
 | Id van de meter | ResourceGUID | MeterId |   |
 | De categorie van de meter | Service | MeterCategory | Nuttig voor het zoeken van services. Relevant voor services met meerdere servicetypen (ServiceType). Voorbeeld: virtuele machines. |
@@ -157,9 +157,9 @@ De JSON-indeling wordt gegenereerd op basis van het CSV-rapport. Als gevolg hier
 | SubscriptionGuid | SubscriptionGuid | SubscriptionGuid |
 | Abonnementsnaam | SubscriptionName |  SubscriptionName |
 | Date | BillingCycle |  Datum (Alleen datumreeks. Geen tijdstempel.)
-| Maand | Maand |  Maand |
-| Dag | Dag |  Dag |
-| Jaar | Jaar |  Jaar |
+| Month | Maand |  Month |
+| Dag | Day |  Day |
+| Year | Year |  Year |
 | Id van de meter | MeterResourceId |  MeterId |
 | Naam van de uitgever | PublisherFriendlyName |  PublisherName |
 | Naam van aanbieding | OfferFriendlyName |  OfferName |

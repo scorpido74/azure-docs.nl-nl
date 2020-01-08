@@ -4,15 +4,15 @@ description: Meer informatie over het implementeren en configureren van Azure Mo
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: 40282fdb192037d63bff8b0037f09b8b27cf3b1e
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ce95223e9501ad7bec2bd260a8fe6f1537db5593
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109177"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400622"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Overzicht van Azure Monitor voor VM's inschakelen (preview)
 
@@ -36,24 +36,24 @@ Voordat u begint, zorg ervoor dat u weet dat de informatie in de volgende sectie
 
 Azure Monitor voor VM's ondersteunt een Log Analytics-werk ruimte in de volgende regio's:
 
-- US - west-centraal
-- US - west
-- US - west 2
-- US - zuid-centraal
-- US - oost
+- VS - west-centraal
+- VS - west
+- VS - west 2
+- VS - zuid-centraal
+- VS - oost
 - VS - oost2
-- US - centraal
-- US - noord-centraal
-- Canada - midden
-- Verenigd Koninkrijk Zuid
+- VS - centraal
+- VS - noord-centraal
+- Canada-Midden
+- VK - zuid
 - Europa - noord
-- Europa -west
+- Europa - west
 - Azië - oost
 - Azië - zuidoost
 - India - centraal
-- Japan - oost
-- Australië - oost
-- Australië - zuidoost
+- Japan - Oost
+- Australië Oost
+- Australië Zuidoost
 
 >[!NOTE]
 >U kunt Azure-Vm's implementeren vanuit elke regio. Deze Vm's zijn niet beperkt tot de regio's die worden ondersteund door de Log Analytics-werk ruimte.
@@ -113,7 +113,7 @@ De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen di
 
 | Versie van het besturingssysteem | Kernelversie |
 |:--|:--|
-| 7,6 | 3.10.0-957 |
+| 7.6 | 3.10.0-957 |
 | 7.5 | 3.10.0-862 |
 | 7.4 | 3.10.0-693 |
 
@@ -174,12 +174,12 @@ De volgende tabel beschrijft de verbonden bronnen die ondersteuning biedt voor d
 
 U kunt de afhankelijkheids agent downloaden van de volgende locaties:
 
-| Bestand | OS | Versie | SHA-256 |
+| Bestand | Besturingssysteem | Versie | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.2 | 6DFF19B9690E42CA190E3B69137C77904B657FA02895033EAA4C3A6A41DA5C6A |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
 
-## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
+## <a name="role-based-access-control"></a>Toegangsbeheer op basis van rollen
 
 Als u de functies in Azure Monitor voor VM's wilt inschakelen en gebruiken, moet u de rol *log Analytics Inzender* hebben. Als u de prestaties, de status en de kaart gegevens wilt bekijken, moet u de rol *bewakings lezer* hebben voor de Azure-VM. De Log Analytics-werkruimte moet worden geconfigureerd voor Azure Monitor voor virtuele machines.
 

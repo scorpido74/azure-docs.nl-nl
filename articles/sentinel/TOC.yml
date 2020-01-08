@@ -27,75 +27,83 @@
       href: roles.md
     - name: Geavanceerde detectie van aanvallen met meerdere stappen
       href: fusion.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Verbinding maken met gegevensbronnen
       href: connect-data-sources.md
       items:
-        - name: Verbinding maken met Microsoft-services
+        - name: Service naar service verbinden
           items:
-            - name: Verbinding maken met Azure AD
+            - name: AWS
+              href: connect-aws.md
+            - name: Azure AD
               href: connect-azure-active-directory.md
-            - name: Verbinding maken met Office 365
+            - name: Office 365
               href: connect-office-365.md
-            - name: Verbinding maken met Cloud App Security
+            - name: Cloud App Security
               href: connect-cloud-app-security.md
-            - name: Verbinding maken met Azure-activiteitenlogboek
+            - name: Azure-activiteitenlogboek
               href: connect-azure-activity.md
-            - name: Verbinding maken met Azure AD Identity Protection
+            - name: Azure AD-identiteitsbeveiliging
               href: connect-azure-ad-identity-protection.md
-            - name: Verbinding maken met Azure Information Protection
+            - name: Azure Information Protection
               href: connect-azure-information-protection.md
-            - name: Verbinding maken met Microsoft Defender ATP
+            - name: Microsoft Defender ATP
               href: connect-microsoft-defender-advanced-threat-protection.md
-            - name: Verbinding maken met Azure ATP
+            - name: Azure ATP
               href: connect-azure-atp.md
-            - name: Verbinding maken met Azure Security Center
+            - name: Azure Security Center
               href: connect-azure-security-center.md
-            - name: Verbinding maken met de domeinnaamserver
+            - name: Domeinnaamserver
               href: connect-dns.md
-            - name: Verbinding maken met Microsoft Web Application Firewall
+            - name: Microsoft Web Application Firewall
               href: connect-microsoft-waf.md
-            - name: Verbinding maken met Windows-firewall
+            - name: Windows Firewall
               href: connect-windows-firewall.md
-            - name: Verbinding maken met Windows-beveiligingsgebeurtenissen
+            - name: Windows-beveiligingsgebeurtenissen
               href: connect-windows-security-events.md
         - name: Verbinding maken met externe oplossingen
           items:
-            - name: Verbinding maken met generic CEF
-              href: connect-common-event-format.md
-            - name: Verbinding maken met AWS
-              href: connect-aws.md
-            - name: Verbinding maken met Barracuda
+            - name: Barracuda
               href: connect-barracuda.md
-            - name: Verbinding maken met Check Point
-              href: connect-checkpoint.md
-            - name: Verbinding maken met Palo Alto Networks
-              href: connect-paloalto.md
-            - name: Verbinding maken met Fortinet
-              href: connect-fortinet.md
-            - name: Verbinden maken met F5
-              href: connect-f5.md
-            - name: Verbinding maken met F5 BIG-IP
+            - name: F5 BIG-IP
               href: connect-f5-big-ip.md
-            - name: Verbinding maken met Syslog
+            - name: Syslog
               href: connect-syslog.md
-            - name: Verbinding maken met Symantec ICDX
+            - name: Symantec ICDX
               href: connect-symantec.md
-            - name: Verbinding maken met Cisco
-              href: connect-cisco.md
-            - name: Verbinding maken met Barracuda CloudGen-firewall
+            - name: Barracuda CloudGen-firewall
               href: connect-barracuda-cloudgen-firewall.md
-            - name: Verbinding maken met Citrix Analytics (Security)
+            - name: Citrix Analytics (Security)
               href: connect-citrix-analytics.md
-            - name: Verbinding maken met ExtraHop Reveal(x)
-              href: connect-extrahop.md
-            - name: One Identity Safeguard
-              href: connect-one-identity.md
-            - name: Deep Security van Trend Micro
-              href: connect-trend-micro.md
-            - name: Verbinding maken met Zscaler
-              href: connect-zscaler.md
+            - name: Oplossingen op basis van CEF
+              href: connect-common-event-format.md
+              items:
+                - name: 'STAP 1: de agent implementeren'
+                  href: connect-cef-agent.md
+                - name: 'STAP 2: uw beveiligingsoplossing configureren'
+                  href: connect-cef-solution-config.md
+                  items:
+                    - name: Check Point
+                      href: connect-checkpoint.md
+                    - name: Cisco
+                      href: connect-cisco.md
+                    - name: ExtraHop Reveal(x)
+                      href: connect-extrahop.md
+                    - name: F5
+                      href: connect-f5.md
+                    - name: Fortinet
+                      href: connect-fortinet.md
+                    - name: One Identity Safeguard
+                      href: connect-one-identity.md
+                    - name: Palo Alto Networks
+                      href: connect-paloalto.md
+                    - name: Deep Security van Trend Micro
+                      href: connect-trend-micro.md
+                    - name: Zscaler
+                      href: connect-zscaler.md
+                - name: 'STAP 3: de connectiviteit valideren'
+                  href: connect-cef-verify.md
         - name: Verbinding maken met bedreigingsinformatie
           href: connect-threat-intelligence.md
         - name: Verbinding maken met virtuele Azure Stack-machines

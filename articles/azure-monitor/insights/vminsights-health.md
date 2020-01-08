@@ -4,15 +4,15 @@ description: In dit artikel wordt beschreven hoe u de status van virtuele machin
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: 5fd5295e52f0fef5e1432fdb2f81d2ba0e1717e8
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e01223783130ea6b276db26bab709e2b51a8f76d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109764"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399794"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Inzicht in de status van uw virtuele machines in azure
 
@@ -34,19 +34,19 @@ Zie [Azure monitor voor VM's inschakelen](vminsights-enable-overview.md)voor mee
 
 In deze sectie vindt u een overzicht van de standaard status criteria voor het bewaken van Azure Windows-en Linux-Vm's. Alle status criteria zijn vooraf geconfigureerd om een waarschuwing te verzenden wanneer ze een onjuiste voor waarde detecteren.
 
-| Monitor naam | Frequentie (min.) | Lookback duur (min) | Operator | Drempelwaarde | Waarschuwen over status | Severity | Categorie workload | 
+| Monitor naam | Frequentie (min.) | Lookback duur (min) | Operator | Drempelwaarde | Waarschuwen over status | Ernst | Categorie workload | 
 |--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
 | Logische schijf online | 5 | 15 | <> | 1 (waar) | Kritiek | Sev1 | Linux | 
-| Beschik bare ruimte op logische schijf | 5 | 15 | < | 200 MB (waarschuwing)<br> 100 MB (kritiek) | Waarschuwing | Sev1<br> Sev2 | Linux | 
-| % Vrije inodes voor logische schijf | 5 | 15 | < | 5% | Kritiek | Sev1 | Linux | 
-| Percentage beschik bare ruimte logische schijf | 5 | 15 | < | 5% | Kritiek | Sev1 | Linux | 
+| Vrije ruimte van de logische schijf | 5 | 15 | < | 200 MB (waarschuwing)<br> 100 MB (kritiek) | Waarschuwing | Sev1<br> Sev2 | Linux | 
+| Percentage vrije inodes van logische schijf | 5 | 15 | < | 5% | Kritiek | Sev1 | Linux | 
+| Percentage vrije ruimte van de logische schijf | 5 | 15 | < | 5% | Kritiek | Sev1 | Linux | 
 | Status van de netwerk adapter | 5 | 15 | <> | 1 (waar) | Waarschuwing | Sev2 | Linux | 
-| Beschik bare mega bytes geheugen van besturings systeem | 5 | 10 | < | 2,5 MB | Kritiek | Sev1 | Linux | 
+| Beschikbare megabytes (MB) voor besturingssysteem | 5 | 10 | < | 2,5 MB | Kritiek | Sev1 | Linux | 
 | Aantal seconden/Lees tijd schijf | 5 | 25 | > | 0,05 s | Kritiek | Sev1 | Linux | 
 | Schijf gemiddelde tijd schijf overdracht | 5 | 25 | > | 0,05 s | Kritiek | Sev1 | Linux | 
 | Schijf gemiddelde schrijf tijd schijf | 5 | 25 | > | 0,05 s | Kritiek | Sev1 | Linux | 
 | Schijf status | 5 | 25 | <> | 1 (waar) | Kritiek | Sev1 | Linux | 
-| Totale percentage processor tijd van het besturings systeem | 5 | 10 | >= | 95% | Kritiek | Sev1 | Linux | 
+| Totale percentage processortijd van het besturingssysteem | 5 | 10 | >= | 95% | Kritiek | Sev1 | Linux | 
 | Totaal percentage CPU-gebruik | 5 | 10 | >= | 95% | Kritiek | Sev1 | Windows | 
 | Fout in het bestands systeem of beschadiging | 60 | 60 | <> | 4 | Kritiek | Sev1 | Windows | 
 | Gemiddeld aantal seconden per Lees bewerking voor logische schijf | 1 | 15 | > | 0.04 s | Waarschuwing | Sev2 | Windows | 
@@ -66,7 +66,7 @@ In deze sectie vindt u een overzicht van de standaard status criteria voor het b
 | RPC-Service Health | 5 | 12 | <> | 4 (wordt uitgevoerd) | Kritiek | Sev1 | Windows | 
 | Server Service Health | 5 | 12 | <> | 4 (wordt uitgevoerd) | Kritiek | Sev1 | Windows | 
 | Service Health voor extern beheer van Windows | 5 | 12 | <> | 4 (wordt uitgevoerd) | Kritiek | Sev1 | Windows | 
-| Beschik bare mega bytes aan geheugen | 5 | 10 | < | 100 MB | Kritiek | Sev1 | Windows | 
+| Beschikbaar geheugen (MB) | 5 | 10 | < | 100 MB | Kritiek | Sev1 | Windows | 
 | Vermeldingen in tabel met beschik bare systeem pagina's | 5 | 10 | <= | 5000 | Kritiek | Sev1 | Windows | 
 | Geheugen pagina's per seconde | 5 | 10 | >= | 5000/s | Waarschuwing | Sev1 | Windows | 
 | Percentage toegewezen geheugen in gebruik | 5 | 10 | > | 80% | Kritiek | Sev1 | Windows | 
@@ -218,7 +218,7 @@ De pagina **status diagnostiek** heeft drie hoofd secties:
 
 * Onderdeel model
 * Statuscriteria
-* Status wijzigingen
+* Statuswijzigingen
 
 ![Secties van de pagina status diagnostiek](./media/vminsights-health/health-diagnostics-page-02.png)
 
@@ -264,7 +264,7 @@ Als u meer wilt weten over de status criteria, hebt u kennis artikelen opgenomen
 
 Zie [Azure monitor Health Knowledge-documentatie](https://docs.microsoft.com/azure/monitoring/infrastructure-health/)voor meer informatie over de kennis artikelen die deel uitmaken van Azure monitor voor VM's status.
 
-### <a name="state-changes"></a>Status wijzigingen
+### <a name="state-changes"></a>Statuswijzigingen
 
 De kolom uiterst rechts van de pagina **status diagnostiek** is **status wijzigingen**. Deze kolom bevat alle status wijzigingen die zijn gekoppeld aan de status criteria die zijn geselecteerd in de sectie **status criteria** , of de status wijziging van de virtuele machine als een virtuele machine is geselecteerd in de kolom **onderdeel model** of **status criteria** van de tabel.
 
@@ -305,10 +305,10 @@ U kunt deze weer gave filteren door waarden te selecteren in de vervolg keuzelij
 |Abonnement |Selecteer een Azure-abonnement. Alleen waarschuwingen in het geselecteerde abonnement zijn opgenomen in de weer gave. |
 |Resourcegroep |Selecteer één resource groep. In de weer gave zijn alleen waarschuwingen met doelen in de geselecteerde resource groep opgenomen. |
 |Resourcetype |Selecteer een of meer resource typen. Standaard worden alleen waarschuwingen van virtuele doel **machines** geselecteerd en opgenomen in deze weer gave. Deze kolom is alleen beschikbaar nadat een resource groep is opgegeven. |
-|Resource |Selecteer een resource. De weer gave bevat alleen waarschuwingen met die resource als doel. Deze kolom is alleen beschikbaar nadat een resource type is opgegeven. |
-|Severity |Selecteer een ernst van de waarschuwing of selecteer **Alles** om waarschuwingen van alle ernst op te neemt. |
+|Bron |Selecteer een resource. De weer gave bevat alleen waarschuwingen met die resource als doel. Deze kolom is alleen beschikbaar nadat een resource type is opgegeven. |
+|Ernst |Selecteer een ernst van de waarschuwing of selecteer **Alles** om waarschuwingen van alle ernst op te neemt. |
 |Bewakings voorwaarde |Selecteer een monitor voorwaarde om waarschuwingen te filteren als deze zijn geactiveerd of opgelost door het systeem als de voor waarde niet langer actief is. U kunt ook **Alles** selecteren om waarschuwingen van alle voor waarden op te stellen. |
-|Waarschuwings status |Selecteer een waarschuwings status, **Nieuw**, **bevestigen**, **gesloten**of **Alles** om waarschuwingen van alle statussen op te genomen. |
+|Waarschuwingsstatus |Selecteer een waarschuwings status, **Nieuw**, **bevestigen**, **gesloten**of **Alles** om waarschuwingen van alle statussen op te genomen. |
 |Service bewaken |Selecteer een service of selecteer **Alles** om alle services op te laten gebruiken. Alleen waarschuwingen van VM Insights worden ondersteund voor deze functie.|
 |Tijdsbereik| Alleen waarschuwingen die binnen het geselecteerde tijd venster worden geactiveerd, worden in de weer gave opgenomen. Ondersteunde waarden zijn het afgelopen uur, de afgelopen 24 uur, de afgelopen 7 dagen en de afgelopen 30 dagen. |
 
@@ -325,7 +325,7 @@ Zie [waarschuwingen maken, weer geven en beheren met Azure monitor](../../azure-
 U kunt de status van een waarschuwing wijzigen voor een of meer waarschuwingen door ze te selecteren en vervolgens **status wijzigen** te selecteren op de pagina **alle waarschuwingen** in de linkerbovenhoek. Selecteer een van de statussen in het deel venster **waarschuwings status wijzigen** , voeg een beschrijving van de wijziging in het veld **Opmerking** toe en selecteer **OK** om uw wijzigingen door te voeren. Wanneer de gegevens worden geverifieerd en de wijzigingen worden toegepast, houdt u de voortgang bij **meldingen** in het menu bij.
 
 ### <a name="configure-alerts"></a>Waarschuwingen configureren
-U kunt bepaalde waarschuwingen voor waarschuwings beheer niet beheren vanuit het Azure Portal. Deze taken moeten worden uitgevoerd met behulp van de [Azure Monitor rest API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Met name:
+U kunt bepaalde waarschuwingen voor waarschuwings beheer niet beheren vanuit het Azure Portal. Deze taken moeten worden uitgevoerd met behulp van de [Azure Monitor rest API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Specifiek:
 
 - Inschakelen of uitschakelen van een waarschuwing voor status criteria
 - Meldingen voor status criteria instellen

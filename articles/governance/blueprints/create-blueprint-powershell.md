@@ -3,12 +3,12 @@ title: 'Snelstartgids: een blauw druk maken met Power shell'
 description: In deze Quick Start gebruikt u Azure-blauw drukken om artefacten te maken, te definiëren en te implementeren met behulp van de Power shell.
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: ed337fa040804159dae3194de1befc43ff2b698f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8b418fa2b5244c42b8597bbbe7ed4773133d03a8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327471"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436640"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Snelstartgids: een Azure Blueprint definiëren en toewijzen met Power shell
 
@@ -24,7 +24,7 @@ Als deze nog niet is geïnstalleerd, volgt u de instructies in [add de module AZ
 
 ## <a name="create-a-blueprint"></a>Een blauwdruk maken
 
-De eerste stap bij het definiëren van een standaardpatroon voor naleving is om een blauwdruk samen te stellen uit de beschikbare resources. U maakt een blauwdruk met de naam MyBlueprint om de rol en de beleidstoewijzingen voor het abonnement te configureren. Vervolgens voegt u een resourcegroep en een Resource Manager-sjabloon toe en voegt u een roltoewijzing aan de resourcegroep toe.
+De eerste stap bij het definiëren van een standaardpatroon voor naleving bestaat uit het samenstellen van een blauwdruk uit de beschikbare resources. U maakt een blauwdruk met de naam MyBlueprint om de rol en de beleidstoewijzingen voor het abonnement te configureren. Vervolgens voegt u een resourcegroep en een Resource Manager-sjabloon toe en voegt u een roltoewijzing aan de resourcegroep toe.
 
 > [!NOTE]
 > Wanneer u Power shell gebruikt, wordt het object _Blue Print_ eerst gemaakt. Voor elk _artefact_ dat wordt toegevoegd en parameters bevat, moeten de parameters vooraf worden gedefinieerd in de eerste _blauwdruk_.
@@ -379,9 +379,11 @@ Zodra een blauw druk is gepubliceerd met Power shell, kan deze worden toegewezen
      > [!IMPORTANT]
      > De door een gebruiker toegewezen beheerde identiteit wordt niet beheerd door blauwdrukken. Gebruikers zijn verantwoordelijk voor het toewijzen van voldoende rollen en machtigingen, anders mislukken de blauwdruktoewijzingen.
 
-## <a name="unassign-a-blueprint"></a>De toewijzing van een blauwdruk ongedaan maken
+## <a name="clean-up-resources"></a>Resources opschonen
 
-U kunt een blauwdruk uit een abonnement verwijderen. Het verwijderen wordt vaak uitgevoerd als de artefactresources niet langer nodig zijn. Wanneer een blauwdruk wordt verwijderd, worden de artefacten die als onderdeel van die blauwdruk zijn toegewezen, achtergelaten. Als u een blauw druk toewijzing wilt verwijderen, gebruikt u de cmdlet `Remove-AzBlueprintAssignment`:
+### <a name="unassign-a-blueprint"></a>De toewijzing van een blauwdruk ongedaan maken
+
+U kunt een blauwdruk uit een abonnement verwijderen. Het verwijderen wordt vaak uitgevoerd als de artefactresources niet langer nodig zijn. Wanneer een blauwdruk wordt verwijderd, blijven de artefacten die als onderdeel van die blauwdruk zijn toegewezen, achter. Als u een blauw druk toewijzing wilt verwijderen, gebruikt u de cmdlet `Remove-AzBlueprintAssignment`:
 
 assignMyBlueprint
 

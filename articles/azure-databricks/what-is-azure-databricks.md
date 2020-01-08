@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: 1e86658422e444cb7104c3e3428a74d31d453a72
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ed93f332c6361d2f7cd5189ee5fedf3d9f5cf82d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605976"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410450"
 ---
 # <a name="what-is-azure-databricks"></a>Wat is Azure Databricks?
 
@@ -37,7 +37,7 @@ Azure Databricks omvat de volledige open source clustertechnologieën en -mogeli
 
 * **Streaming**: realtime gegevensverwerking en -analyse voor analytische en interactieve toepassingen. Kan worden geïntegreerd met HDFS, Flume en Kafka.
 
-* **MLib**: Machine Learning-bibliotheek die bestaat uit veelgebruikte leeralgoritmen en hulpprogramma's, zoals voor classificatie, regressie, clustering, gezamenlijke filterfuncties, dimensionaliteitsvermindering en in de vorm van onderliggende optimalisatieprimitieven.
+* **MLlib**: machine learning bibliotheek die bestaat uit gang bare leer algoritmen en-hulpprogram ma's, zoals classificatie, regressie, Clustering, samen filteren, dimensionaliteit en onderliggende optimalisatie primitieven.
 
 * **GraphX**: grafieken en grafiekberekeningen voor een grote diversiteit aan scenario’s, van cognitieve analyses tot gegevensverkenning.
 

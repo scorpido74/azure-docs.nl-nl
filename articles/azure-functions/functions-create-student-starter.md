@@ -6,12 +6,12 @@ author: alexkarcher-msft
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: aa2e0e8be8805187ec1f5b8ea6498e90e2d5a7c4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5c0228feb88296e0c82efa52648ce38d70e5b921
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976873"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409886"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Een functie maken met behulp van Azure for students starter
 
@@ -47,7 +47,7 @@ U moet een functie-app hebben die als host fungeert voor de uitvoering van uw fu
     | ------------ |  ------- | -------------------------------------------------- |
     | **Naam van app** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app wordt aangeduid. Geldige tekens zijn `a-z`, `0-9` en `-`.  | 
     | **Abonnement** | Uw abonnement | Het abonnement waarmee deze nieuwe functie-app is gemaakt. | 
-    | **[Resourcegroep](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Naam voor de nieuwe resourcegroep waarin uw functie-app moet worden gemaakt. |
+    | **[Resourcegroep](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Naam voor de nieuwe resourcegroep waarin uw functie-app moet worden gemaakt. |
    | **[Abonnement/locatie App Service](./functions-scale.md)** | Nieuw | Het hosting abonnement dat bepaalt in welke regio uw functie-app wordt geïmplementeerd en wat de densiteit van uw resources is. Meerdere functie-apps die zijn geïmplementeerd op hetzelfde abonnement, delen dezelfde afzonderlijke gratis instantie. Dit is een beperking van het Student Starter-abonnement. De volledige hosting opties worden [hier beschreven.](./functions-scale.md)|
     | **Runtimestack** | Voorkeurstaal | Kies een runtime die uw favoriete functieprogrammeertaal ondersteunt. Kies **.NET** voor C#- en F#-functies. |
     |**[Application Insights](./functions-monitoring.md)**| Ingeschakeld | Application Insights wordt gebruikt om de logboeken van uw functie-app op te slaan en te analyseren. Deze optie is standaard ingeschakeld als u een locatie kiest die Application Insights ondersteunt. Application Insights kunnen voor elke functie worden ingeschakeld door hand matig een regio in de buurt te kiezen die u wilt implementeren Application Insights. Zonder Application Insights, kunt u alleen live streaming-logboeken weer geven.

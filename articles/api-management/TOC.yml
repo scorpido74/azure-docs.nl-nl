@@ -6,6 +6,8 @@
       href: api-management-key-concepts.md
     - name: Beschikbaarheid van API Management-functies
       href: api-management-features.md
+    - name: Microservices beheren die zijn geïmplementeerd in AKS
+      href: api-management-kubernetes.md
 - name: Snelstartgidsen
   expanded: true
   items:
@@ -63,7 +65,7 @@
       href: api-management-api-import-restrictions.md
     - name: Overzicht van zelf-hostende gateway
       href: self-hosted-gateway-overview.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: API's definiëren
       items:

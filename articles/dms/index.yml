@@ -2,18 +2,18 @@
 title: Documentatie voor Azure Database Migration Service
 summary: Azure Database Migration Service maakt naadloze migratie van meerdere databasebronnen naar Azure-gegevensplatforms mogelijk met slechts minimale downtime. De service maakt gebruik van de Data Migration Assistant voor het genereren van evaluatierapporten. De aanbevelingen hierin kunnen dienen als leidraad bij het doorvoeren van de wijzigingen die nodig zijn voordat u een migratie uitvoert. Wanneer u klaar bent om met het migratieproces te beginnen, voert de Azure Database Migration Service alle vereiste stappen uit.
 metadata:
-  description: " Informatie over hoe u naadloze migraties uitvoert van meerdere databasebronnen naar Azure-gegevensplatforms met minimale downtime door Azure Database Migration Service te gebruiken."
+  description: Informatie over hoe u naadloze migraties uitvoert van meerdere databasebronnen naar Azure-gegevensplatforms met minimale downtime door Azure Database Migration Service te gebruiken.
   author: HJToland3
   ms.author: jtoland
-  ms.date: 10/25/2019
+  ms.date: 12/19/2019
   ms.service: dms
   ms.topic: landing-page
-  ms.openlocfilehash: 1d064144d040a45fbc655879a6869da4ceaa4b79
-  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.openlocfilehash: 8ca7f2618c6415dd3dbe22cada35bccb56be50ee
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73583997"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75437882"
 landingContent:
 - title: Over Azure Database Migration Service
   linkLists:
@@ -33,6 +33,10 @@ landingContent:
       url: quickstart-create-data-migration-service-portal.md
     - text: Service in hybride modus maken - Portal
       url: quickstart-create-data-migration-service-hybrid-portal.md
+  - linkListType: reference
+    links:
+    - text: Bekende problemen - de hybride modus gebruiken
+      url: known-issues-dms-hybrid-mode.md
   - linkListType: video
     links:
     - text: Inleiding tot Azure Data Migration Service
@@ -65,6 +69,8 @@ landingContent:
     links:
     - text: Bekende problemen - Onlinemigratie naar individuele SQL DB-database
       url: known-issues-azure-sql-online.md
+    - text: Bekende problemen - Onlinemigratie naar beheerd exemplaar van SQL Database
+      url: known-issues-azure-sql-db-managed-instance-online.md
     - text: Netwerktopologieën voor migraties van beheerde exemplaren van SQL Database
       url: resource-network-topologies.md
     - text: Aangepaste rollen voor online migratie van SQL Server naar een beheerd SQL Database-exemplaar
@@ -105,7 +111,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Services en hulpprogramma's op gegevensmigratiescenario
+    - text: Services en hulpprogramma's, per gegevensmigratiescenario
       url: dms-tools-matrix.md
     - text: Handleiding voor databasemigratie
       url: https://datamigration.microsoft.com/

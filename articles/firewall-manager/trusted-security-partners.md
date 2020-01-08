@@ -7,14 +7,14 @@ services: firewall-manager
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: victorh
-ms.openlocfilehash: cb8a2fdd14cfa7d361e3d78a64f3aaf60ea7676d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b92242ce9086579d0397f78853402cfc08453f68
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468565"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436779"
 ---
-# <a name="what-are-trusted-security-partners-preview"></a>Wat zijn vertrouwde beveiligings partners (preview)?
+# <a name="what-are-trusted-security-partners-preview"></a>Wat zijn vertrouwde beveiligingspartners (preview)?
 
 > [!IMPORTANT]
 > Deze openbare preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -23,11 +23,11 @@ Met *vertrouwde beveiligings partners (preview)* in azure firewall Manager kunt 
 
 Met een snelle configuratie kunt u een hub met een ondersteunde beveiligings partner beveiligen en Internet verkeer van uw virtuele netwerken (VNets) of vertakkings locaties binnen een regio routeren en filteren. Dit wordt gedaan met behulp van geautomatiseerde route beheer zonder door de gebruiker gedefinieerde routes (Udr's) in te stellen en te beheren.
 
-U kunt beveiligde hubs implementeren die zijn geconfigureerd met de beveiligings partner van uw keuze in meerdere Azure-regio's om connectiviteit en beveiliging voor uw gebruikers overal ter wereld in deze regio's te krijgen. Met de mogelijkheid om de aanbieding van de beveiligings partner voor Internet/SaaS-toepassings verkeer te gebruiken en Azure Firewall voor privé verkeer in de beveiligde hubs, kunt u nu beginnen met het bouwen van uw beveiligings rand op Azure die dicht bij uw wereld wijd gedistribueerde gebruikers ligt en toepassingen.
+U kunt beveiligde hubs implementeren die zijn geconfigureerd met de beveiligings partner van uw keuze in meerdere Azure-regio's om connectiviteit en beveiliging voor uw gebruikers overal ter wereld in deze regio's te krijgen. Met de mogelijkheid om de aanbieding van de beveiligings partner voor Internet/SaaS-toepassings verkeer te gebruiken en Azure Firewall voor privé verkeer in de beveiligde hubs, kunt u nu beginnen met het bouwen van uw beveiligings rand op Azure die dicht bij uw wereld wijd gedistribueerde gebruikers en toepassingen ligt.
 
-Voor deze preview zijn de ondersteunde beveiligings partners **ZScaler** en **iboss**. Ondersteunde regio's zijn WestCentralUS, NorthCentralUS, Westus, WestUS2 en Timor-Leste.
+Voor deze preview zijn de ondersteunde beveiligings partners **ZScaler** en **iboss**. Ondersteunde regio's zijn WestCentralUS, NorthCentralUS, Westus, WestUS2 en Oost-Timor.
 
-![Vertrouwde beveiligings partners](media/trusted-security-partners/trusted-security-partners.png)
+![Vertrouwde beveiligingspartners](media/trusted-security-partners/trusted-security-partners.png)
 
 ## <a name="key-scenarios"></a>Kernscenario's
 
@@ -75,7 +75,7 @@ Voor Office 365 zijn netwerk latentie en prestaties essentieel voor een succes v
 
 [Office 365-netwerk verbindings principes](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles) bellen voor belang rijke Office 365-netwerk verbindingen die lokaal worden gerouteerd van de gebruikers vertakking of het mobiele apparaat en rechtstreeks via internet naar het dichtstbijzijnde micro soft-netwerk punt.
 
-Office 365-verbindingen worden bovendien sterk versleuteld voor privacy en gebruiken efficiënte, eigen protocollen om prestatie redenen. Dit maakt het praktisch en nadelige invloed op deze verbindingen met traditionele beveiligings oplossingen op netwerk niveau. Daarom raden klanten ten zeerste aan Office 365-verkeer rechtstreeks vanuit filialen te verzenden voordat ze het rest verkeer verzenden via Azure. Micro soft heeft een partnerschap gemaakt met verschillende providers van de SD-WAN-oplossing die zijn geïntegreerd met Azure en Office 365, en maakt het eenvoudig voor klanten om Office 365 direct en lokale Internet-groepen in te scha kelen. Zie [Hoe kan ik mijn O365-beleid instellen via Virtual WAN?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview#how-do-i-set-my-o365-policies-via-virtual-wan) voor meer informatie.
+Office 365-verbindingen worden bovendien sterk versleuteld voor privacy en gebruiken efficiënte, eigen protocollen om prestatie redenen. Dit maakt het praktisch en nadelige invloed op deze verbindingen met traditionele beveiligings oplossingen op netwerk niveau. Daarom raden klanten ten zeerste aan Office 365-verkeer rechtstreeks vanuit filialen te verzenden voordat ze het rest verkeer verzenden via Azure. Micro soft heeft een partnerschap gemaakt met verschillende providers van de SD-WAN-oplossing die zijn geïntegreerd met Azure en Office 365, en maakt het eenvoudig voor klanten om Office 365 direct en lokale Internet-groepen in te scha kelen. Zie [Hoe kan ik mijn O365-beleid instellen via Virtual WAN?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview) voor meer informatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen

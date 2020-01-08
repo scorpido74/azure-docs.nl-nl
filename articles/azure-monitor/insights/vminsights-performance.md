@@ -4,15 +4,15 @@ description: Prestaties is een functie van de Azure Monitor voor VM's die toepas
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: f8879ac2d7827732112fa1a7504484209461b196
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 0d679675758b736455c66066f3df4cb9ea43fdea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555170"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399285"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Grafieken van prestaties met Azure Monitor voor VM's (preview-versie)
 
@@ -22,13 +22,13 @@ Azure Monitor voor VM's bevat een reeks prestatie diagrammen die gericht zijn op
 
 De functie prestaties van Azure Monitor biedt een overzicht van alle bewaakte Vm's die zijn geïmplementeerd in werk groepen in uw abonnementen of in uw omgeving. Voer de volgende stappen uit om toegang te krijgen vanaf Azure Monitor. 
 
-1. Selecteer in de Azure Portal **monitor**. 
+1. Selecteer in de Azure portal, **Monitor**. 
 2. Kies **virtual machines (preview)** in het gedeelte **oplossingen** .
 3. Selecteer het tabblad **prestaties** .
 
 ![Top N lijst weergave van VM Insights-prestaties](./media/vminsights-performance/vminsights-performance-aggview-01.png)
 
-Als u meer dan één Log Analytics-werk ruimte hebt, kiest u in het tabblad **eerste N grafieken** de werk ruimte die is ingeschakeld met de oplossing van de **werkruimte** kiezer boven aan de pagina. De **groeps** kiezer retourneert abonnementen, resource groepen, [computer groepen](../platform/computer-groups.md)en virtuele-machine schaal sets van computers die zijn gerelateerd aan de geselecteerde werk ruimte, die u kunt gebruiken om de resultaten verder te filteren die worden weer gegeven in de grafieken op deze pagina en op de andere pagina's. Uw selectie is alleen van toepassing op de prestatie functie en de status of kaart wordt niet overgedragen.  
+Als u meer dan één Log Analytics-werk ruimte hebt, kiest u in het tabblad **eerste N grafieken** de werk ruimte die is ingeschakeld met de oplossing van de **werkruimte** kiezer boven aan de pagina. De **groeps** kiezer retourneert abonnementen, resource groepen, [computer groepen](../platform/computer-groups.md)en virtuele-machine schaal sets van computers die zijn gerelateerd aan de geselecteerde werk ruimte, die u kunt gebruiken om de resultaten verder te filteren die in de grafieken op deze pagina en op de andere pagina's worden weer gegeven. Uw selectie is alleen van toepassing op de prestatie functie en de status of kaart wordt niet overgedragen.  
 
 Standaard worden in de grafieken de afgelopen 24 uur weer gegeven. Met de **time Range** selector kunt u een query uitvoeren voor historische Peri Oden van Maxi maal 30 dagen om te laten zien hoe de prestaties in het verleden zijn bekeken.
 
@@ -38,7 +38,7 @@ De grafieken met vijf capaciteits gebruik die op de pagina worden weer gegeven, 
 * Beschikbaar geheugen: hier worden de vijf meest gebruikte computers weer gegeven met de laagste gemiddelde hoeveelheid beschikbaar geheugen 
 * Gebruikte logische schijf ruimte%: Hiermee worden de vijf meest gebruikte computers weer gegeven met de hoogste gemiddelde schijf ruimte die wordt gebruikt% op alle schijf volumes 
 * Aantal verzonden bytes: toont de vijf meest voorkomende computers met het hoogste gemiddelde aan verzonden bytes 
-* Frequentie van ontvangen bytes: toont de vijf meest voorkomende computers met het hoogste gemiddelde aan verzonden bytes 
+* Aantal ontvangen bytes: toont de vijf meest voorkomende computers met het hoogste gemiddelde van ontvangen bytes 
 
 Als u op het speld pictogram in de rechter bovenhoek van een van de vijf grafieken klikt, wordt de geselecteerde grafiek vastgemaakt aan het laatste Azure-dash board dat u het laatst hebt bekeken.  Vanuit het dash board kunt u het formaat en de positie van de grafiek wijzigen. Als u de grafiek in het dash board selecteert, wordt u omgeleid naar Azure Monitor voor VM's en het juiste bereik en de weer gave te laden.  
 
@@ -74,7 +74,7 @@ Als u het resource gebruik per afzonderlijke virtuele machine in een lijst weerg
 
 Als u de resultaten wilt filteren op een specifieke virtuele machine in de lijst, voert u de computer naam in het tekstvak **zoeken op naam** in.  
 
-Als u liever het gebruik van een andere prestatie metriek wilt weer geven, selecteert u in de vervolg keuzelijst metriek **beschik bare geheugen**, **logische schijf ruimte gebruikt%** , **ontvangen netwerk byte/s**of **netwerk verzonden bytes/sec** . lijst met updates voor het weer geven van gebruiks bereik voor die metriek.  
+Als u liever het gebruik van een andere prestatie metriek wilt weer geven, selecteert u in de vervolg keuzelijst **metriek** het **beschik bare geheugen**, de **logische schijf ruimte die wordt gebruikt%** , het **netwerk ontvangen bytes/s**of het **netwerk heeft bytes per seconde verzonden** , en de lijst bevat updates om het bereik van de metrische gegevens weer te geven.  
 
 Als u een virtuele machine in de lijst selecteert, wordt het deel venster **Eigenschappen** aan de rechter kant van de pagina geopend. hier kunt u **prestatie Details**selecteren.  De detail pagina van de **virtuele machine** wordt geopend en er wordt een scope voor die VM weer gegeven, vergelijkbaar met de ervaring bij het openen van de prestaties van de Azure-generatie vanuit de VM.  
 
@@ -123,7 +123,7 @@ Als u op het speld pictogram in de rechter bovenhoek van een van de grafieken kl
 
 Prestatie gegevens die zijn ingeschakeld als onderdeel van Azure Monitor voor VM's bevatten geen vooraf geconfigureerde waarschuwings regels. Er zijn [status waarschuwingen](vminsights-health.md#alerts) die overeenkomen met prestatie problemen die op uw virtuele Azure-machine zijn gedetecteerd, zoals hoog CPU-gebruik, weinig geheugen beschikbaar, weinig schijf ruimte, enzovoort.  Deze status waarschuwingen zijn echter alleen van toepassing op alle Vm's die zijn ingeschakeld voor Azure Monitor voor VM's. 
 
-We kunnen echter alleen een subset van de prestatie gegevens die u nodig hebt in de werk ruimte Log Analytics verzamelen en opslaan. Als voor uw bewakings strategie analyses of waarschuwingen zijn vereist die andere metrische gegevens over prestaties bevatten om effectief de capaciteit of de status van de virtuele machine te evalueren, of als u de flexibiliteit nodig hebt om uw eigen waarschuwings criteria of logica op te geven, kunt u [verzameling van deze prestatie meter items](../platform/data-sources-performance-counters.md) configureren in log Analytics en [logboek waarschuwingen](../platform/alerts-log.md)definiëren. Terwijl Log Analytics u in staat stelt om complexe analyses uit te voeren met andere gegevens typen en een langere retentie ter ondersteuning van Trend analyse te bieden, zijn de metrieken echter lichter en kunnen ze bijna realtime scenario's ondersteunen. Ze worden verzameld door de [Azure diagnostische agent](../../virtual-machines/windows/monitor.md) en opgeslagen in de Azure monitor metrische gegevens opslag, zodat u waarschuwingen kunt maken met een lagere latentie en tegen lagere kosten.
+We kunnen echter alleen een subset van de prestatie gegevens die u nodig hebt in de werk ruimte Log Analytics verzamelen en opslaan. Als voor uw bewakings strategie analyses of waarschuwingen met andere prestatie gegevens zijn vereist om effectief de capaciteit of de status van de virtuele machine te evalueren, of als u de flexibiliteit nodig hebt om uw eigen waarschuwings criteria of logica op te geven, kunt u een [verzameling van deze prestatie meter items](../platform/data-sources-performance-counters.md) configureren in log Analytics en [logboek waarschuwingen](../platform/alerts-log.md)definiëren. Terwijl Log Analytics u in staat stelt om complexe analyses uit te voeren met andere gegevens typen en een langere retentie ter ondersteuning van Trend analyse te bieden, zijn de metrieken echter lichter en kunnen ze bijna realtime scenario's ondersteunen. Ze worden verzameld door de [Azure diagnostische agent](../../virtual-machines/windows/monitor.md) en opgeslagen in de Azure monitor metrische gegevens opslag, zodat u waarschuwingen kunt maken met een lagere latentie en tegen lagere kosten.
 
 Bekijk het overzicht van [metrische gegevens en logboeken met Azure monitor](../platform/data-platform.md) om inzicht te krijgen in de belangrijkste verschillen en andere overwegingen voordat u verzameling van deze aanvullende metrische gegevens en waarschuwings regels configureert.  
 

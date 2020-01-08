@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 89c7e398e24fb48c1829dbaa2811f440c5485a60
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f3044a2701b0f1cd0e5f9ab3ab60c1d60cfb8f45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038111"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436816"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Een site-naar-site-VPN configureren via ExpressRoute-Microsoft-peering
 
@@ -130,7 +130,7 @@ Het volgende diagram toont de abstracte overzicht van de voorbeeld-netwerk:
 
 ### <a name="about-the-azure-resource-manager-template-examples"></a>Over de Azure Resource Manager sjabloonvoorbeelden
 
-In de voorbeelden wordt de VPN-gateway en de IPsec-tunnel afsluitingen zijn geconfigureerd met een Azure Resource Manager-sjabloon. Als u niet bekend bent met Resource Manager-sjablonen of om te begrijpen van de basisbeginselen van het Resource Manager-sjabloon, Zie [inzicht in de structuur en de syntaxis van Azure Resource Manager-sjablonen](../azure-resource-manager/resource-group-authoring-templates.md). De sjabloon in deze sectie maakt u een greenfield Azure-omgeving (VNet). Echter, als u een bestaand VNet hebt, u ernaar kunt verwijzen in de sjabloon. Als u niet bekend met IPsec/IKE-site-naar-site-configuraties voor VPN-gateway bent, Zie [maken van een site-naar-site-verbinding](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md).
+In de voorbeelden wordt de VPN-gateway en de IPsec-tunnel afsluitingen zijn geconfigureerd met een Azure Resource Manager-sjabloon. Als u niet bekend bent met Resource Manager-sjablonen of om te begrijpen van de basisbeginselen van het Resource Manager-sjabloon, Zie [inzicht in de structuur en de syntaxis van Azure Resource Manager-sjablonen](../azure-resource-manager/templates/template-syntax.md). De sjabloon in deze sectie maakt u een greenfield Azure-omgeving (VNet). Echter, als u een bestaand VNet hebt, u ernaar kunt verwijzen in de sjabloon. Als u niet bekend met IPsec/IKE-site-naar-site-configuraties voor VPN-gateway bent, Zie [maken van een site-naar-site-verbinding](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md).
 
 >[!NOTE]
 >U hoeft niet te gebruiken van Azure Resource Manager-sjablonen om te kunnen maken van deze configuratie. U kunt deze configuratie met behulp van de Azure portal of PowerShell maken.

@@ -1,0 +1,89 @@
+### YamlMime:Landing
+title: Documentatie voor beheerde toepassingen
+summary: Bied cloudoplossingen die consumenten eenvoudig kunnen implementeren en gebruiken.
+metadata:
+  title: Documentatie voor Azure Managed Applications
+  description: Met Azure Managed Applications kunt cloudoplossingen bieden die consumenten eenvoudig kunnen implementeren en gebruiken.
+  ms.service: managed-applications
+  ms.topic: landing-page
+  ms.collection: na
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: 60f7d4b9c9bd9057e0869b3efe1843eeb8d873f8
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75648375"
+landingContent:
+- title: Over beheerde toepassingen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat zijn beheerde Azure-toepassingen?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Definitie-artefact weergeven
+      url: concepts-view-definition.md
+    - text: Azure Policy voor koppelingen
+      url: concepts-built-in-policy.md
+    - text: Roldefinitie-artefact
+      url: concepts-custom-role-definition.md
+- title: Beheerde toepassingen maken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Toepassingsdefinitie publiceren
+      url: publish-managed-app-definition-quickstart.md
+    - text: Servicecatalogus-app implementeren
+      url: deploy-service-catalog-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Definitiebestanden maken
+      url: publish-service-catalog-app.md
+    - text: Marketplace-toepassing publiceren
+      url: publish-marketplace-app.md
+    - text: Een beheerde toepassing met aangepaste provider maken
+      url: tutorial-create-managed-app-with-custom-provider.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een geheim van Key Vault gebruiken
+      url: key-vault-access.md
+    - text: Publiceren via de portal
+      url: publish-portal.md
+- title: Toegangsbeheer
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Just-in-time-toegang aanvragen
+      url: request-just-in-time-access.md
+    - text: Just-in-time-toegang goedkeuren
+      url: approve-just-in-time-access.md
+    - text: Implementeren met beheerde identiteit
+      url: publish-managed-identity.md
+- title: Portal-gebruikersinterface maken
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Portal-interface maken
+      url: create-uidefinition-overview.md
+    - text: Portal-interface testen
+      url: test-createuidefinition.md
+    - text: Elementen van de gebruikersinterface-artefact
+      url: reference-createuidefinition-artifact.md
+    - text: Elementen van de interface
+      url: create-uidefinition-elements.md
+    - text: Functies van de interface
+      url: create-uidefinition-functions.md
+- title: Resources beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Geïmplementeerd exemplaar bewaken
+      url: monitor-managed-application-portal.md
+    - text: Implementeren met meldingen
+      url: publish-notifications.md
+    - text: Beheerde bronnen bijwerken
+      url: update-managed-resources.md

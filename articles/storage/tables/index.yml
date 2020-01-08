@@ -1,0 +1,58 @@
+### YamlMime:Landing
+title: Documentatie over Azure Table Storage
+summary: Azure Table Storage is een service die gestructureerde NoSQL-gegevens opslaat in de cloud en zo een sleutel/kenmerkarchiefontwerp zonder schema biedt.
+metadata:
+  title: Documentatie over Azure Table Storage
+  description: Azure Table Storage is een service die gestructureerde NoSQL-gegevens opslaat in de cloud en zo een sleutel/kenmerkarchiefontwerp zonder schema biedt.
+  ms.service: storage
+  ms.subservice: tables
+  ms.topic: landing-page
+  ms.collection: collection
+  author: tamram
+  ms.author: tamram
+  ms.date: 12/23/2019
+  ms.openlocfilehash: 73dc70fb31508667ebcab4803a9263c716ce35c2
+  ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 12/31/2019
+  ms.locfileid: "75551893"
+landingContent:
+- title: About Table Storage
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Table Storage?
+      url: table-storage-overview.md
+    - text: Kiezen tussen Table Storage en Table API
+      url: ../../cosmos-db/table-support.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fstorage%2Ftables%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fbread%2Ftoc.json
+- title: Begeleiding bij tabelontwerp
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Ontwerp voor efficiënte lees- en schrijfbewerkingen
+      url: table-storage-design-guidelines.md
+    - text: Ontwerp voor query's
+      url: table-storage-design-for-query.md
+    - text: Ontwerp voor gegevenswijziging
+      url: table-storage-design-for-modification.md
+    - text: Tabelontwerppatronen
+      url: table-storage-design-patterns.md
+- title: Prestaties, schaalbaarheid en kostenoptimalisatie
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Prestatiecontrolelijst voor Table Storage
+      url: storage-performance-checklist.md
+    - text: Ontwerp voor optimale prestaties
+      url: table-storage-design.md
+  - linkListType: reference
+    links:
+    - text: Schaalbaarheidsdoelen voor Table Storage
+      url: scalability-targets.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een tabel maken in de Azure-portal
+      url: table-storage-quickstart-portal.md

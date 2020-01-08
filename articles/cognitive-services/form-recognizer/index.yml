@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Documentatie voor Form Recognizer
-summary: Azure Form Recognizer is een Cognitive Service-dienst die gebruikmaakt van machine learning-technologie om sleutel-waardeparen en tabelgegevens uit formulierdocumenten te identificeren en te extraheren. Vervolgens voert het gestructureerde gegevens uit die ook de relaties uit het oorspronkelijke bestand omvatten. Leerprocessen zonder supervisie stellen het model in staat om de lay-out en relaties tussen velden en items te begrijpen zonder handmatige labeling van gegevens of intensieve codering en onderhoud.
+summary: Azure Form Recognizer is een Cognitive Service-dienst die gebruikmaakt van machine learning-technologie om sleutel-waardeparen en tabelgegevens uit formulierdocumenten te identificeren en te extraheren. Vervolgens voert het gestructureerde gegevens uit die ook de relaties uit het oorspronkelijke bestand omvatten. Leerprocessen zonder supervisie stellen het model in staat om de lay-out en veldgegevens te begrijpen, zonder handmatige labeling van gegevens of intensieve codering. U kunt ook leerprocessen met supervisie uitvoeren met handmatig gelabelde gegevens. Modellen die zijn getraind met gelabelde gegevens, presteren beter en kunnen werken met gecompliceerdere documenten.
 metadata:
   title: Documentatie voor Form Recognizer - Quickstarts, zelfstudies, API-referentiemateriaal - Azure Cognitive Services | Microsoft Docs
-  description: Azure Form Recognizer is een Cognitive Service-dienst die gebruikmaakt van machine learning-technologie om sleutel-waardeparen en tabelgegevens uit formulierdocumenten te identificeren en te extraheren. Vervolgens voert het gestructureerde gegevens uit die ook de relaties uit het oorspronkelijke bestand omvatten. Leerprocessen zonder supervisie stellen het model in staat om de lay-out en relaties tussen velden en items te begrijpen zonder handmatige labeling van gegevens of intensieve codering en onderhoud.
+  description: Azure Form Recognizer is een Cognitive Service-dienst die gebruikmaakt van machine learning-technologie om sleutel-waardeparen en tabelgegevens uit formulierdocumenten te identificeren en te extraheren. Vervolgens voert het gestructureerde gegevens uit die ook de relaties uit het oorspronkelijke bestand omvatten. Leerprocessen zonder supervisie stellen het model in staat om de lay-out en veldgegevens te begrijpen, zonder handmatige labeling van gegevens of intensieve codering. U kunt ook leerprocessen met supervisie uitvoeren met handmatig gelabelde gegevens. Modellen die zijn getraind met gelabelde gegevens, presteren beter en kunnen werken met gecompliceerdere documenten.
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: form-recognizer
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 3a3146c6a918916792a331c0dab74683db82a02d
-  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.openlocfilehash: 835eb7bece58e93375c09c51149381d7882702de
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/25/2019
-  ms.locfileid: "72931306"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75446514"
 landingContent:
 - title: Over Form Recognizer
   linkLists:
@@ -24,6 +24,10 @@ landingContent:
     links:
     - text: Wat is Form Recognizer?
       url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: Wat is er nieuw in Form Recognizer?
+      url: whats-new.md
   - linkListType: video
     links:
     - text: Procesautomatisering op basis van AI met Form Recognizer
@@ -38,18 +42,38 @@ landingContent:
       url: quickstarts/python-train-extract.md
     - text: De REST API gebruiken (cURL)
       url: quickstarts/curl-train-extract.md
-- title: Gegevens extraheren uit ontvangsten
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: De .NET SDK gebruiken
-      url: quickstarts/dotnet-sdk.md
 - title: Een set met trainingsgegevens samenstellen
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Een set met trainingsgegevens samenstellen
       url: build-training-data-set.md
+- title: Aangepast model trainen met behulp van labels
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Gelabelde gegevens
+      url: overview.md#train-with-labels
+  - linkListType: quickstart
+    links:
+    - text: Trainen met behulp van het voorbeeldhulpprogramma voor labelen
+      url: quickstarts/label-tool.md
+    - text: Trainen met labels met behulp van de REST API en Python
+      url: quickstarts/python-labeled-data.md
+- title: Gegevens extraheren uit ontvangsten
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: De REST API gebruiken (Python)
+      url: quickstarts/python-receipts.md
+    - text: De REST API gebruiken (cURL)
+      url: quickstarts/curl-receipts.md
+- title: Informatie over tekstindeling ophalen
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: De REST API gebruiken (Python)
+      url: quickstarts/python-layout.md
 - title: Containers gebruiken
   linkLists:
   - linkListType: get-started
@@ -68,8 +92,10 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Form Recognizer-API
-      url: https://aka.ms/form-recognizer/api
+    - text: Form Recognizer-API v2.0
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm
+    - text: Form Recognizer-API v1.0
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel
     - text: .NET SDK
       url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview
     - text: Azure PowerShell

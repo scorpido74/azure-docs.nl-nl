@@ -1,25 +1,16 @@
 ---
-title: Status controle in Service Fabric | Microsoft Docs
+title: Status controle in Service Fabric
 description: Een inleiding tot het Azure Service Fabric Health Monitoring-model, waarmee de cluster en de bijbehorende toepassingen en services kunnen worden bewaakt.
-services: service-fabric
-documentationcenter: .net
 author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: 1d979210-b1eb-4022-be24-799fd9d8e003
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: d0ef9f34d6b657a063e50b0f144197c41905e809
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 473aa2b9a74193a857390cd3e29b2b559b6084d3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60949134"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433900"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Inleiding tot de statuscontrole Service Fabric
 Azure Service Fabric introduceert een status model dat voorziet in uitgebreide, flexibele en uitbreid bare status-en rapportage doeleinden. Het model staat bijna realtime bewaking toe van de status van het cluster en de services die hierop worden uitgevoerd. U kunt eenvoudig status informatie verkrijgen en mogelijke problemen corrigeren voordat ze trapsgewijs worden gecascaded en aanzienlijke storingen veroorzaken. In het typische model verzenden Services rapporten op basis van hun lokale weer gaven en wordt deze informatie geaggregeerd om een algemene weer gave op cluster niveau te bieden.
@@ -41,7 +32,7 @@ De status entiteiten spie gelen de Service Fabric entiteiten. (De **entiteit sta
 
 Met de status entiteiten en-hiërarchie kunnen het cluster en de toepassingen effectief worden gerapporteerd, worden er fouten opgespoord en worden bewaakt. Het status model biedt een nauw keurige, *gedetailleerde* weer gave van de status van de vele bewegende onderdelen in het cluster.
 
-![Status entiteiten.][1]
+![status entiteiten.][1]
 De status entiteiten, geordend in een hiërarchie op basis van relaties tussen bovenliggende en onderliggende items.
 
 [1]: ./media/service-fabric-health-introduction/servicefabric-health-hierarchy.png
@@ -153,7 +144,7 @@ Gebruikers en geautomatiseerde Services kunnen op elk gewenst moment de status v
 ### <a name="health-report-aggregation"></a>Aggregatie van status rapporten
 Eén entiteit kan meerdere status rapporten verzenden door verschillende reporters (systeem onderdelen of watchdog) op verschillende eigenschappen. De aggregatie maakt gebruik van het bijbehorende status beleid, met name het ConsiderWarningAsError-lid van de toepassing of het cluster status beleid. ConsiderWarningAsError geeft aan hoe waarschuwingen moeten worden geëvalueerd.
 
-De geaggregeerde status wordt geactiveerd door de slechtste status rapporten voor de entiteit. Als er ten minste één fout status rapport is, is de geaggregeerde status fout.
+De geaggregeerde status wordt geactiveerd door de *slechtste* status rapporten voor de entiteit. Als er ten minste één fout status rapport is, is de geaggregeerde status fout.
 
 ![Aggregatie van status rapporten met fouten rapport.][2]
 
@@ -188,7 +179,7 @@ Nadat de Health Store alle onderliggende items heeft geëvalueerd, worden de sta
 ## <a name="health-reporting"></a>Status rapportage
 Systeem onderdelen, systeem infrastructuur toepassingen en interne/externe watchdog kunnen rapporteren aan Service Fabric entiteiten. De rapporten maken *lokale* bepalingen van de status van de bewaakte entiteiten, op basis van de voor waarden die ze volgen. Ze hoeven geen globale staats-of aggregatie gegevens te bekijken. Het gewenste gedrag is om eenvoudige rapporten te hebben, en geen complexe organismen die een groot aantal dingen moeten bekijken om te bepalen welke gegevens moeten worden verzonden.
 
-Een rapporter moet de betrokken entiteit identificeren en een status rapport maken om status gegevens naar het Health Store te verzenden. Als u het rapport wilt verzenden, gebruikt u de API [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) , rapporteert u `Partition` de `CodePackageActivationContext` status-api's die worden weer gegeven in de objecten, Power shell-cmdlets of de rest.
+Een rapporter moet de betrokken entiteit identificeren en een status rapport maken om status gegevens naar het Health Store te verzenden. Als u het rapport wilt verzenden, gebruikt u de API [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) , rapporteert u de status-api's die beschikbaar zijn op de `Partition`-of `CodePackageActivationContext`-objecten, Power shell-cmdlets of de rest.
 
 ### <a name="health-reports"></a>Status rapporten
 De [status rapporten](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthreport) voor elk van de entiteiten in het cluster bevatten de volgende informatie:
@@ -229,7 +220,7 @@ De status overgangs velden kunnen worden gebruikt voor Smarter-waarschuwingen of
 * Waarschuw alleen voor voor waarden die in de afgelopen X minuten zijn gewijzigd. Als een rapport al eerder is dan de opgegeven tijd, kan dit worden genegeerd omdat het al eerder is gesignaleerd.
 * Als er een waarschuwing en fout wordt weer gegeven in een eigenschap, moet u bepalen hoe lang het slecht is (dat wil zeggen, niet OK). Bijvoorbeeld: een waarschuwing als de eigenschap meer dan vijf minuten niet in orde is, kan worden vertaald naar (HealthState! = OK en Now-LastOkTransitionTime > 5 minuten).
 
-## <a name="example-report-and-evaluate-application-health"></a>Voorbeeld: De status van de toepassing rapporteren en evalueren
+## <a name="example-report-and-evaluate-application-health"></a>Voor beeld: de status van een toepassing rapporteren en evalueren
 In het volgende voor beeld wordt een status rapport verzonden via Power shell op de Application **Fabric:/WordCount** uit de bron- **MyWatchdog**. Het status rapport bevat informatie over de status van de eigenschap Beschik baarheid in een fout status, met oneindige TimeToLive. Vervolgens wordt een query uitgevoerd op de status van de toepassing, die de geaggregeerde status fouten en de gerapporteerde status gebeurtenissen in de lijst met status gebeurtenissen retourneert.
 
 ```powershell
