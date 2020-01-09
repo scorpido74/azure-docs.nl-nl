@@ -1,31 +1,33 @@
 ---
-title: Geïntegreerde oplossingen | Azure
+title: Geïntegreerde oplossingen-Azure Marketplace
 description: Geïntegreerde oplossingen in azure Marketplace en AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
 author: ChJenk
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/12/2019
+ms.date: 12/16/2019
 ms.author: v-chjen
-ms.openlocfilehash: 420dfbc117a45c325db8e9fa2a622414bc78bd07
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 11f1504e8bd57fe34eb7acdc50598403225adcd9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023604"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427182"
 ---
-# <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Geïntegreerde oplossingen in azure Marketplace en AppSource
+# <a name="integrated-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Geïntegreerde oplossingen in Microsoft AppSource en Azure Marketplace
 
-Met een geïntegreerde oplossing beschikt u over de beste technologieën van micro soft-partners, samen met raadpleging, implementatie en ondersteuning die wordt geboden door experts van de expert systeem integrators (SI).
+Met een geïntegreerde oplossing worden de beste technologieën van micro soft-partners gecombineerd, samen met raadpleging, implementatie en ondersteuning die wordt geboden door partners van de deskundige Services.
 
-Deze oplossingen zijn gebaseerd op een specifieke klant behoefte of-scenario, die begint met een goed idee van de bedrijfstak of de knel punten. Twee of meer eersteklas technologieën zijn geïntegreerd in een SI om een uniforme en herhaal bare implementatie ervaring voor klanten te maken, waardoor ze snel kunnen worden uitgevoerd. De systeem integrator voorziet ook in één aanspreek punt voor de klant, met relevante aanpassing, consulting en ondersteuning rond de oplossing.  Het resultaat is een geïntegreerde oplossing, inclusief technologie en services.
+Twee of meer micro soft-partners integreren hun technologie en services voor het maken van een uniforme, naadloze en herhaal bare implementatie-ervaring, zodat klanten snel aan de slag kunnen.  De lead partner in de oplossing (doorgaans de services-partner) voorziet in één contact punt voor de klant, met relevante aanpassing, consulting en ondersteuning rond de oplossing.
+
+In andere scenario's kunnen partners hun oplossing gezamenlijk verkopen of co-Market, terwijl een geïntegreerde oplossing een gezamenlijk gebouwde oplossing is die de technologie en services in partners integreert.
 
 ## <a name="advantages"></a>Voordelen
 
 Voor delen van een geïntegreerde aanpak zijn:
 
-* *Branche deskundigheid*: systeem integrators die branchespecifieke oplossingen en kennis bieden
+* *Branche deskundigheid*: service partners die branchespecifieke oplossingen en kennis bieden
 * *Time-to-waarde*: geïntegreerde implementatie methode om u te helpen onmiddellijke voor delen te realiseren
 * *Beste oplossingen*: Ontdek het gemak van een geïntegreerde aankoop-en implementatie-ervaring
 

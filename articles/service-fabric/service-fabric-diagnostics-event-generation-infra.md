@@ -1,102 +1,93 @@
 ---
-title: Azure Service Fabric-Platform niveau bewaking | Microsoft Docs
-description: Meer informatie over het platform op gebeurtenissen en logboeken die worden gebruikt om te controleren en een diagnose van Azure Service Fabric-clusters.
-services: service-fabric
-documentationcenter: .net
+title: Bewaking van Azure Service Fabric platform niveau
+description: Meer informatie over gebeurtenissen op platform niveau en logboeken die worden gebruikt voor het bewaken en diagnosticeren van Azure Service Fabric-clusters.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: cbdbedf32e8a3dad85262f287b27a03df780d95a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 720cc157111293146b796f8567f94a4f1f4830c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393058"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376933"
 ---
-# <a name="monitoring-the-cluster"></a>Bewaking van het cluster
+# <a name="monitoring-the-cluster"></a>Het cluster bewaken
 
-Het is belangrijk om te controleren op het niveau van het cluster om te bepalen of uw hardware en het cluster gedragen zich zoals verwacht. Hoewel Service Fabric kunnen toepassingen die worden uitgevoerd tijdens een hardware-uitval houden, maar u toch wilt vaststellen of een fout optreedt in een toepassing of in de onderliggende infrastructuur. Ook moet u controleren uw clusters voor het beter plannen van capaciteit, waardoor in beslissingen te nemen over het toevoegen of verwijderen van hardware.
+Het is belang rijk om op het cluster niveau te controleren om te bepalen of uw hardware en cluster naar verwachting werken. Hoewel Service Fabric de uitvoering van toepassingen tijdens een hardwarestoring kunt blijven gebruiken, moet u nog steeds vaststellen of er een fout optreedt in een toepassing of in de onderliggende infra structuur. U moet ook uw clusters bewaken om de capaciteit beter te plannen, zodat u beslist over het toevoegen of verwijderen van hardware.
 
-Service Fabric beschrijft verschillende gestructureerde platform gebeurtenissen, als [Service Fabric-gebeurtenissen](service-fabric-diagnostics-events.md), via de EventStore en verschillende log kanalen out-of-the-box. 
+Service Fabric biedt verschillende gestructureerd platform gebeurtenissen, zoals [service Fabric gebeurtenissen](service-fabric-diagnostics-events.md), via de Event Store en verschillende logboek kanalen out-of-the-box. 
 
-Op Windows, Service Fabric-gebeurtenissen zijn beschikbaar vanuit één ETW-provider met een set van relevante `logLevelKeywordFilters` gebruikt om te kiezen tussen de operationele gegevens & Messaging en kanalen - dit is de manier waarop we afzonderlijke uitgaande Service Fabric-gebeurtenissen worden gefilterd op die nodig zijn.
+In Windows zijn Service Fabric gebeurtenissen beschikbaar van één ETW-provider met een set relevante `logLevelKeywordFilters` die wordt gebruikt om te kiezen tussen operationele en gegevens & Messa ging channels. Dit is de manier waarop we uitgaande Service Fabric gebeurtenissen die moeten worden gefilterd, scheiden.
 
-* **Operationele** op hoog niveau bewerkingen die worden uitgevoerd door de Service Fabric en het cluster, met inbegrip van gebeurtenissen voor een knooppunt te komen, een nieuwe toepassing wordt geïmplementeerd of een upgrade terugdraaien, enzovoort. Zie de volledige lijst van gebeurtenissen [hier](service-fabric-diagnostics-event-generation-operational.md).  
+* **Operationeel** Bewerkingen op hoog niveau die worden uitgevoerd door Service Fabric en het cluster, met inbegrip van gebeurtenissen voor een knoop punt dat wordt geleverd, een nieuwe toepassing die wordt geïmplementeerd of het terugdraaien van een upgrade, enzovoort. Bekijk [hier](service-fabric-diagnostics-event-generation-operational.md)de volledige lijst met gebeurtenissen.  
 
-* **Operationele - gedetailleerde**  
-Beslissingen voor taakverdeling en statusrapporten.
+* **Operationeel-gedetailleerd**  
+Status rapporten en taken voor taak verdeling.
 
-Het kanaal opnieuw kan worden benaderd met diverse manieren ETW/Windows-gebeurtenislogboeken, inclusief de [EventStore](service-fabric-diagnostics-eventstore.md) (beschikbaar op Windows in versies 6.2 en later voor een Windows-clusters). De EventStore hebt u toegang tot de gebeurtenissen van uw cluster op basis van per entiteit (entiteiten inclusief cluster, knooppunten, toepassingen, services, partities, replica's en containers) en wordt aangegeven dat ze via REST-API's en de Service Fabric-clientbibliotheek. De EventStore gebruiken voor het bewaken van uw dev/test-clusters, en voor het ophalen van een point-in-time-begrip van de status van uw productieclusters.
+Het bewerkings kanaal kan worden geopend via verschillende manieren, waaronder ETW/Windows-gebeurtenis logboeken, de [Event Store](service-fabric-diagnostics-eventstore.md) (beschikbaar op Windows in versie 6,2 en hoger voor Windows-clusters). Met de Event Store krijgt u toegang tot de gebeurtenissen van uw cluster op basis van een eenheid per entiteit (entiteiten zoals cluster, knoop punten, toepassingen, services, partities, replica's en containers) en beschikbaar gesteld via REST-Api's en de Service Fabric-client bibliotheek. Gebruik de Event Store om uw ontwikkel-en test clusters te bewaken en voor het verkrijgen van een Point-in-time-overeenkomst met de status van uw productie clusters.
 
 * **Gegevens & berichten**  
-Kritieke logboeken en gebeurtenissen die worden gegenereerd in de berichten (momenteel alleen de ReverseProxy) en het gegevenspad (modellen van betrouwbare services).
+Kritieke logboeken en gebeurtenissen die in de Messa ging worden gegenereerd (momenteel alleen de ReverseProxy) en het gegevenspad (reliable Services-modellen).
 
-* **& Messaging - gedetailleerde gegevens**  
-Uitgebreide kanaal met alle niet-kritieke logboeken van gegevens en berichten in het cluster (dit kanaal heeft een zeer groot aantal gebeurtenissen).
+* **Gegevens & berichten-detail**  
+Uitgebreid kanaal dat alle niet-kritieke Logboeken bevat van gegevens en berichten in het cluster (dit kanaal heeft een zeer groot aantal gebeurtenissen).
 
-Naast deze zijn er twee gestructureerde EventSource kanalen opgegeven, evenals logboeken die we verzamelen voor ondersteuning.
+Daarnaast zijn er twee gestructureerde Event source-kanalen, evenals logboeken die we verzamelen voor ondersteunings doeleinden.
 
 * [Reliable Services-gebeurtenissen](service-fabric-reliable-services-diagnostics.md)  
-Programming model specifieke gebeurtenissen.
+Specifieke gebeurtenissen voor het programmeer model.
 
 * [Reliable Actors-gebeurtenissen](service-fabric-reliable-actors-diagnostics.md)  
-Programming model specifieke gebeurtenissen en prestatiemeteritems.
+Specifieke gebeurtenissen en prestatie meter items voor het model worden geprogrammeerd.
 
-* Ondersteuning voor logboeken  
-Systeemlogboeken die worden gegenereerd door de Service Fabric alleen moet worden gebruikt door ons wanneer er ondersteuning wordt geboden.
+* Ondersteunings logboeken  
+Systeem logboeken die door Service Fabric worden gegenereerd, moeten alleen door ons worden gebruikt bij het leveren van ondersteuning.
 
-Deze verschillende kanalen beslaat van de logboekregistratie voor platform op die wordt aanbevolen. Voor een betere logboekregistratie op de platform, houd rekening met investeren in betere informatie over het status-model en aangepaste statusrapporten toevoegen en toevoegen van aangepaste **prestatiemeteritems** aan het bouwen van een realtime inzicht in de impact van uw Services en toepassingen op het cluster.
+Deze verschillende kanalen omvatten het grootste deel van de logboek registratie op platform niveau die wordt aanbevolen. Als u de logboek registratie op platform niveau wilt verbeteren, kunt u overwegen investeren in beter inzicht in het status model en aangepaste status rapporten toe te voegen en aangepaste **prestatie meter items** toe te voegen om een real-time inzicht te krijgen in de gevolgen van uw services en toepassingen op het cluster.
 
-Om te profiteren van deze logboeken, is het raadzaam om te laten 'Diagnostische gegevens' ingeschakeld tijdens het maken van een cluster in Azure Portal. Door het inschakelen van diagnostische gegevens, wanneer het cluster wordt geïmplementeerd, Windows Azure Diagnostics kan erkent de operationele, Reliable Services en Reliable actors-kanalen en de gegevens worden opgeslagen als verder uiteengezet in [gebeurtenissen samenstellen met Azure Diagnostische gegevens over](service-fabric-diagnostics-event-aggregation-wad.md).
+Als u gebruik wilt maken van deze logboeken, wordt het ten zeerste aanbevolen om "diagnostiek" in te scha kelen tijdens het maken van het cluster in azure Portal. Door Diagnostische gegevens in te scha kelen, kunt u met Windows Azure Diagnostics de bewerkings-, Reliable Services-en betrouw bare actoren van het cluster bevestigen en de gegevens opslaan zoals wordt uitgelegd in [statistische gebeurtenissen met Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md).
 
-## <a name="azure-service-fabric-health-and-load-reporting"></a>Azure Service Fabric-status en werkbelastingsrapportage
+## <a name="azure-service-fabric-health-and-load-reporting"></a>Azure Service Fabric status en belasting rapportage
 
-Service Fabric heeft een eigen statusmodel, die wordt beschreven in deze artikelen:
+Service Fabric heeft een eigen status model, dat uitvoerig wordt beschreven in deze artikelen:
 
-- [Inleiding tot Service Fabric-statuscontrole](service-fabric-health-introduction.md)
+- [Inleiding tot Service Fabric status controle](service-fabric-health-introduction.md)
 - [Servicestatus rapporteren en controleren](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
-- [Aangepaste statusrapporten van Service Fabric toevoegen](service-fabric-report-health.md)
-- [Service Fabric-statusrapporten weergeven](service-fabric-view-entities-aggregated-health.md)
+- [Aangepaste Service Fabric status rapporten toevoegen](service-fabric-report-health.md)
+- [Service Fabric status rapporten weer geven](service-fabric-view-entities-aggregated-health.md)
 
-Statuscontrole is essentieel dat meerdere aspecten van het besturingssysteem van een service, met name tijdens een upgrade van de toepassing. Na de upgrade van elk upgradedomein van de service, moet het upgradedomein statuscontroles slagen voordat de implementatie wordt verplaatst naar het volgende upgradedomein. Als OK integriteitsstatus niet kan worden bereikt, is de implementatie teruggedraaid, zodat de toepassing een bekende status OK hebben blijft. Hoewel sommige klanten gevolgen van ondervinden mogelijk voordat u de services worden teruggedraaid, wordt niet de meeste klanten een probleem ondervindt. Een oplossing doet zich ook relatief snel zonder te wachten op actie van een menselijke operator komt kijken. De meer statuscontroles die zijn opgenomen in uw code, het beter bestand is tegen die problemen bij de implementatie uw service is.
+Status controle is van cruciaal belang voor meerdere aspecten van het uitvoeren van een service, met name tijdens een toepassings upgrade. Nadat elk upgrade domein van de service is bijgewerkt, moet het upgrade domein status controles door geven voordat de implementatie naar het volgende upgrade domein wordt verplaatst. Als de status van OK niet kan worden bereikt, wordt de implementatie teruggedraaid, zodat de toepassing de status bekend OK heeft. Hoewel sommige klanten mogelijk worden beïnvloed voordat de services worden teruggedraaid, hebben de meeste klanten geen last van het probleem. Daarnaast treedt er relatief snel een oplossing op zonder te hoeven wachten op actie van een menselijke operator. De meer status controles die zijn opgenomen in uw code, des te flexibeler is het implementeren van problemen.
 
-Een ander aspect van de status van de service is metrische gegevens van de service reporting. Metrische gegevens zijn belangrijk in Service Fabric, omdat ze worden gebruikt voor het gebruik van bronnen in balans brengen. Metrische gegevens kan ook worden voor een indicatie van de systeemstatus. Bijvoorbeeld, mogelijk hebt u een toepassing die veel services heeft en elk exemplaar een aanvragen per seconde (RPS) metriek rapporten. Als een service van andere bronnen dan een andere service gebruikmaakt, wordt in Service Fabric service-exemplaren in het cluster, om te proberen te onderhouden, zelfs Resourcegebruik verplaatst. Zie voor een meer gedetailleerde uitleg van de werking van Resourcegebruik [resourceverbruik beheren en laden in Service Fabric met metrische gegevens over](service-fabric-cluster-resource-manager-metrics.md).
+Een ander aspect van de service status is het rapporteren van metrische gegevens van de service. Metrische gegevens zijn belang rijk in Service Fabric omdat ze worden gebruikt om het resource gebruik te verdelen. Metrische gegevens kunnen ook een indicatie van de systeem status zijn. U kunt bijvoorbeeld een toepassing hebben met veel services, en elk exemplaar rapporteert een RPS-metriek (aanvragen per seconde). Als een service meer resources dan een andere service gebruikt, Service Fabric het verplaatsen van service-exemplaren rond het cluster, om het gebruik van zelfs resources te hand haven. Zie [Resource verbruik beheren en laden in service fabric met metrische gegevens](service-fabric-cluster-resource-manager-metrics.md)voor een gedetailleerde uitleg over de werking van resource gebruik.
 
-Metrische gegevens ook kunt u inzicht geven in hoe uw service wordt uitgevoerd. Na verloop van tijd kunt u metrische gegevens om te controleren dat de service wordt uitgevoerd binnen de verwachte parameters. Bijvoorbeeld, als trends weergeven dat de gemiddelde RPS om 9 uur op maandagochtend 1000 is, klikt u vervolgens u mogelijk instellen een health-rapport dat u wordt gewaarschuwd als de RPS minder dan 500 of hoger 1500 is. Alles is mogelijk geen bezwaar, maar het kan zijn waard om ervoor te zorgen dat uw klanten een fantastische ervaring hebt. Uw service kunt een set metrische gegevens die worden gerapporteerd voor de doeleinden van selectievakje, maar die niet van invloed op de bron-balancing van het cluster definiëren. U doet dit door het gewicht van de metrische te ingesteld op nul. U wordt aangeraden dat u alle metrische gegevens met een gewicht van nul beginnen en het gewicht niet verhogen tot u zeker weet dat u hoe een weging van de metrische gegevens is van invloed op bron begrijpt-balancing voor uw cluster.
+Met metrische gegevens kunt u ook inzicht krijgen in de prestaties van uw service. In de loop van de tijd kunt u metrische gegevens gebruiken om te controleren of de service wordt uitgevoerd binnen de verwachte para meters. Als trends bijvoorbeeld laten zien dat op maandag morgen de gemiddelde RPS is 1.000, kunt u een status rapport instellen waarmee u wordt gewaarschuwd als de RPS lager is dan 500 of hoger 1.500. Alles kan perfect zijn, maar het is mogelijk dat u zeker weet dat uw klanten een fantastische ervaring hebben. Met uw service kunt u een set metrische gegevens definiëren die voor de status controle kunnen worden gerapporteerd, maar die geen invloed hebben op de resource verdeling van het cluster. U doet dit door het metrieke gewicht in te stellen op nul. We raden u aan alle metrische gegevens te starten met een gewicht van nul en het gewicht niet te verhogen totdat u zeker weet dat u weet hoe de metrische gegevens van invloed zijn op de resource verdeling voor uw cluster.
 
 > [!TIP]
-> Gebruik niet te veel gewogen metrische gegevens. Het kan lastig zijn om te begrijpen waarom service-exemplaren worden verplaatst om voor taakverdeling. Een aantal metrische gegevens kan worden achterhaald!
+> Gebruik niet te veel gewogen metrische gegevens. Het kan lastig zijn om te begrijpen waarom service-exemplaren worden verplaatst om te worden gebalanceerd. Een aantal metrische gegevens kan een lange manier duren!
 
-Alle informatie die op de status en prestaties van uw toepassing duiden kan is een kandidaat voor metrische gegevens en statusrapporten. **Een prestatiemeteritem CPU kan aangeven hoe het knooppunt wordt gebruikt, maar deze niet u vertellen of een bepaalde service is in orde is, omdat er meerdere services kunnen worden uitgevoerd op een enkel knooppunt.** Metrische gegevens zoals RPS, items verwerkt, maar alle latentie van aanvraag kan duiden op de status van een specifieke service.
+Alle informatie die de status en prestaties van uw toepassing kan aangeven, is een kandidaat voor metrische gegevens en status rapporten. **Met een CPU-prestatie meter item kunt u zien hoe het knoop punt wordt gebruikt, maar wordt niet aangegeven of een bepaalde service in orde is, omdat meerdere services op één knoop punt kunnen worden uitgevoerd.** Maar metrische gegevens, zoals RPS, items verwerkt en latentie van aanvragen, kunnen de status van een specifieke service aangeven.
 
-## <a name="service-fabric-support-logs"></a>Logboeken van de service Fabric-ondersteuning
+## <a name="service-fabric-support-logs"></a>Ondersteunings logboeken Service Fabric
 
-Als u contact opnemen met Microsoft ondersteuning voor hulp bij uw Azure Service Fabric-cluster moet, zijn bijna altijd Ondersteuningslogboeken vereist. Als uw cluster wordt gehost in Azure, worden logboeken automatisch geconfigureerd en die worden verzameld als onderdeel van het maken van een cluster. De logboeken worden opgeslagen in een speciaal opslagaccount in de resourcegroep van uw cluster. De storage-account beschikt niet over een vaste naam, maar in het account, ziet u de blob-containers en tabellen met namen die met beginnen *fabric*. Zie voor meer informatie over het instellen van logboekgegevens voor een zelfstandige cluster [maken en beheren van een zelfstandig Azure Service Fabric-cluster](service-fabric-cluster-creation-for-windows-server.md) en [configuratie-instellingen voor een zelfstandige Windows cluster](service-fabric-cluster-manifest.md). Voor zelfstandige Service Fabric-instanties, moeten de logboeken worden verzonden naar een lokaal bestand-share. U bent **vereist** dat deze logboeken voor ondersteuning, maar ze zijn niet bedoeld om te worden gebruikt door iemand buiten het team van Microsoft customer support.
+Als u contact moet opnemen met micro soft ondersteuning voor hulp bij uw Azure Service Fabric-cluster, zijn de ondersteunings logboeken bijna altijd vereist. Als uw cluster wordt gehost in azure, worden ondersteunings logboeken automatisch geconfigureerd en verzameld als onderdeel van het maken van een cluster. De logboeken worden opgeslagen in een specifiek opslag account in de resource groep van uw cluster. Het opslag account heeft geen vaste naam, maar in het account ziet u BLOB-containers en-tabellen met namen die beginnen met *Fabric*. Zie [een zelfstandige Azure service Fabric-cluster](service-fabric-cluster-creation-for-windows-server.md) en [configuratie-instellingen voor een zelfstandig Windows-cluster](service-fabric-cluster-manifest.md)maken en beheren voor meer informatie over het instellen van logboek verzamelingen voor een zelfstandig cluster. Voor zelfstandige Service Fabric instanties moeten de logboeken worden verzonden naar een lokale bestands share. U **moet** deze logboeken voor ondersteuning hebben, maar deze zijn niet bedoeld om te worden gebruikt door iedereen buiten het micro soft-team voor klanten ondersteuning.
 
-## <a name="measuring-performance"></a>Meten van prestaties
+## <a name="measuring-performance"></a>Prestaties meten
 
-Prestaties van de meting van het cluster krijgt u inzicht in hoe belangrijk het is laden en station beslissingen over het schalen van uw cluster overweg kan met (Zie voor meer informatie over het schalen van een cluster [op Azure](service-fabric-cluster-scale-up-down.md), of [on-premises](service-fabric-cluster-windows-server-add-remove-nodes.md)). Prestatiegegevens is ook handig zijn in vergelijking met acties die u of uw toepassingen en services kunnen hebt genomen, bij het analyseren van Logboeken in de toekomst. 
+Door de prestaties van uw cluster te meten, krijgt u inzicht in de manier waarop het laden en schalen rond uw cluster kan verwerken (Zie meer informatie over het schalen [van een cluster op Azure](service-fabric-cluster-scale-up-down.md)of [on-premises](service-fabric-cluster-windows-server-add-remove-nodes.md)). Prestatie gegevens zijn ook nuttig in vergelijking met de acties die u of uw toepassingen en services mogelijk hebben ondernomen bij het analyseren van Logboeken in de toekomst. 
 
-Zie voor een lijst met prestatiemeteritems voor het verzamelen van bij het gebruik van Service Fabric, [prestatiemeteritems in Service Fabric](service-fabric-diagnostics-event-generation-perf.md)
+Zie [prestatie meter items in service Fabric](service-fabric-diagnostics-event-generation-perf.md) voor een lijst met prestatie meter items die moeten worden verzameld bij het gebruik van service Fabric.
 
-Hier volgen twee algemene manieren waarop u van het verzamelen van prestatiegegevens voor uw cluster kunt instellen:
+Hier volgen twee algemene manieren waarop u het verzamelen van prestatie gegevens voor uw cluster kunt instellen:
 
-* **Met behulp van een agent**  
-Dit is de beste manier van het verzamelen van prestaties van een virtuele machine, aangezien agents hebben meestal een lijst met mogelijke prestaties metrische gegevens die kunnen worden verzameld en het is een relatief eenvoudig proces om te kiezen van de metrische gegevens die u wilt verzamelen of wijzigen. Het lezen over de Azure Monitor biedt Azure Monitor-Logboeken in de Service Fabric [Azure Monitor-integratie van logboeken](service-fabric-diagnostics-event-analysis-oms.md) en [instellen van de Log Analytics-agent](../log-analytics/log-analytics-windows-agent.md) voor meer informatie over de Log Analytics-agent die is een dergelijke monitoring agent die kan verzamelen van prestatiegegevens voor cluster-VM's en containers geïmplementeerd.
+* **Een agent gebruiken**  
+Dit is de voorkeurs methode voor het verzamelen van prestaties van een machine, omdat agents meestal een lijst bevatten met mogelijke prestatie gegevens die kunnen worden verzameld, en een relatief eenvoudig proces is om de metrische gegevens te kiezen die u wilt verzamelen of wijzigen. De informatie over de Azure Monitor aanbieding Azure Monitor Logboeken in Service Fabric [Azure monitor logboeken integreren](service-fabric-diagnostics-event-analysis-oms.md) en [instellen van de log Analytics agent](../log-analytics/log-analytics-windows-agent.md) voor meer informatie over de log Analytics agent, wat een dergelijke bewakings agent is waarmee u prestatie gegevens kunt ophalen voor virtuele machines in het cluster en geïmplementeerde containers.
 
-* **Prestatiemeteritems met Azure Table Storage**  
-U kunt ook metrische gegevens voor prestaties verzenden naar de dezelfde table storage als de gebeurtenissen. Hiervoor moet het wijzigen van de Azure Diagnostics-configuratie om op te halen uit de VM's in uw cluster de juiste prestatiemeteritems en het inschakelen van het docker-statistieken ophalen als u alle containers gaat implementeren. Meer informatie over het configureren van [prestatiemeteritems in WAD](service-fabric-diagnostics-event-aggregation-wad.md) in Service Fabric voor het instellen van het verzamelen van prestatiemeteritems.
+* **Prestatie meter items voor Azure Table Storage**  
+U kunt ook prestatie gegevens verzenden naar dezelfde tabel opslag als de gebeurtenissen. Hiervoor moet u de Azure Diagnostics configuratie wijzigen om de juiste prestatie meter items van de virtuele machines in uw cluster op te halen, zodat u docker-statistieken kunt ophalen als u containers gaat implementeren. Meer informatie over het configureren van [prestatie meter items in wad](service-fabric-diagnostics-event-aggregation-wad.md) in service Fabric voor het instellen van verzameling prestatie meters.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over Service-Fabric [Azure Monitor-integratie van logboeken](service-fabric-diagnostics-event-analysis-oms.md) cluster diagnostische gegevens worden verzameld en aangepaste query's en waarschuwingen maken
-* Meer informatie over Service-Fabric in gebouwde uiterst nuttig de [EventStore](service-fabric-diagnostics-eventstore.md)
-* Doorloop enkele [algemene scenario's voor diagnostische](service-fabric-diagnostics-common-scenarios.md) in Service Fabric
+* Meer informatie over de [integratie van de Azure monitor logboeken](service-fabric-diagnostics-event-analysis-oms.md) van service Fabric voor het verzamelen van cluster diagnostiek en het maken van aangepaste query's en waarschuwingen
+* Meer informatie over Service Fabric in de ingebouwde diagnostische ervaring, de [Event Store](service-fabric-diagnostics-eventstore.md)
+* Door loop enkele [veelvoorkomende diagnostische scenario's](service-fabric-diagnostics-common-scenarios.md) in service Fabric

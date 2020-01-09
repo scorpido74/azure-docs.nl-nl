@@ -1,25 +1,25 @@
 ---
 title: 'Quick Start: spraak herkennen die zijn opgeslagen in de Blob Storage-Speech-Service'
 titleSuffix: Azure Cognitive Services
-description: Nader te bepalen
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
+ms.date: 12/17/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: ef61139056ad194d89e2a67cb4ac1b1414a3380b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 495d2a8e38b58eb3ef1494e6a3a33ee1dc32d049
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74828922"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469642"
 ---
-In deze Quick Start gebruikt u de [rest API voor batch transcriptie](../../../batch-transcription.md) om spraak te herkennen die zijn opgeslagen in een [SAS-BLOB](https://aka.ms/ignite2019/speech/placeholder). Nadat u hebt voldaan aan enkele vereisten, is het herkennen van spraak met een REST API slechts enkele stappen nodig:
-> [!div class="checklist"]
-> * Stuur de JSON-aanvraag naar de speech-service om te beginnen met het transcriberen van spraak.
-> * Controleer de status van de transcriptie.
-> * Down load de transcriptie-resultaten wanneer u klaar bent.
+In deze Quick start gaat u een REST API gebruiken om spraak te herkennen van bestanden in een batch-proces. Een batch-proces voert de spraak transcriptie uit zonder gebruikers interacties. Het biedt u een eenvoudig programmeer model, zonder de nood zaak om gelijktijdigheid, aangepaste spraak modellen of andere gegevens te beheren. Dit omvat geavanceerde beheer opties, terwijl er efficiënt gebruik wordt gemaakt van Azure speech-service bronnen.
+
+In het [batch transcriptie Overview](../../../batch-transcription.md) worden de Details voor het gebruik van deze functie beschreven. De gedetailleerde API is beschikbaar als [Swagger-document](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)onder de kop `Custom Speech transcriptins`. 
+
+In de volgende snelstartgids vindt u een voor beeld van het gebruik.

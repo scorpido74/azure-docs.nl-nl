@@ -5,16 +5,20 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: a30ac638422f99134ebe9cc26e4b418f5de079b9
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: c7d778a0afca4b3552976526d58a2cb2efe12161
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672150"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689607"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Verwijderde App Service-apps herstellen met Power shell
 
 Als u uw app per ongeluk wilt verwijderen in Azure App Service, kunt u deze herstellen met behulp van de opdrachten uit de [AZ Power shell-module](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0).
+
+> [!NOTE]
+> Verwijderde apps worden 30 dagen na de eerste verwijdering uit het systeem verwijderd. Zodra een app is leeg gemaakt, kan deze niet meer worden hersteld.
+>
 
 ## <a name="re-register-app-service-resource-provider"></a>App Service Resource provider opnieuw registreren
 Sommige klanten kunnen een probleem ondervinden waarbij het ophalen van de lijst met verwijderde apps mislukt. Voer de volgende opdracht uit om het probleem op te lossen:

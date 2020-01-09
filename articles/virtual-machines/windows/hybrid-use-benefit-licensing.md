@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 40697925d399962399da499e0469198a0e997f66
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d6e3d4d059e464795c712af1226d8202d00bfd74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038631"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461154"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit voor Windows Server
 Voor klanten met Software Assurance biedt Azure Hybrid Benefit voor Windows Server u de mogelijkheid om uw on-premises Windows Server-licenties te gebruiken en virtuele Windows-machines op Azure uit te voeren tegen lagere kosten. U kunt Azure Hybrid Benefit voor Windows Server gebruiken om nieuwe virtuele machines te implementeren met Windows-besturings systemen. Dit artikel gaat over de stappen voor het implementeren van nieuwe Vm's met Azure Hybrid Benefit voor Windows Server en hoe u bestaande actieve Vm's kunt bijwerken. Zie de [pagina Azure Hybrid Benefit voor Windows Server-licentie verlening](https://azure.microsoft.com/pricing/hybrid-use-benefit/)voor meer informatie over Azure Hybrid Benefit voor Windows Server-licenties en kosten besparingen.
@@ -73,7 +73,7 @@ az vm create \
     --license-type Windows_Server
 ```
 
-### <a name="template"></a>Template
+### <a name="template"></a>Sjabloon
 In uw Resource Manager-sjablonen moet u een extra para meter `licenseType` opgeven. U kunt meer lezen over het [ontwerpen van Azure Resource Manager sjablonen](../../resource-group-authoring-templates.md)
 ```json
 "properties": {
@@ -201,4 +201,4 @@ U kunt ook meer te weten komen over het [wijzigen van een schaalset voor virtuel
 - Meer informatie over [Azure Hybrid Benefit voor Windows Server-licentie verlening gedetailleerde richt lijnen](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)
 - Meer informatie over [Azure Hybrid Benefit voor Windows Server en Azure site Recovery de migratie van toepassingen naar Azure nog rendabeler maken](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)
 - Meer informatie over [Windows 10 op Azure met multi tenant-hosting recht](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
-- Meer informatie over het [gebruik van Resource Manager-sjablonen](../../azure-resource-manager/resource-group-overview.md)
+- Meer informatie over het [gebruik van Resource Manager-sjablonen](../../azure-resource-manager/management/overview.md)

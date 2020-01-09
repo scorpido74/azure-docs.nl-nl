@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/23/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 692b07c82c329a93d79ad3a87beec5dbe1c595d3
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: d58eb333c930d2ffac4eb57340ea776338325181
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669983"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680971"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Continue implementatie naar Azure App Service
 
@@ -27,7 +27,13 @@ Als u Azure opslag plaatsen wilt gebruiken, moet u ervoor zorgen dat uw Azure De
 
 Autoriseer Azure App Service voor bitbucket of GitHub om verbinding te maken met uw opslag plaats. U hoeft slechts één keer te autoriseren met een broncode beheer service. 
 
-1. Selecteer **app Services** in het [Azure Portal](https://portal.azure.com) linkernavigatiebalk en selecteer vervolgens de web-app die u wilt implementeren. 
+1. Zoek in het [Azure Portal](https://portal.azure.com)naar en selecteer **app Services**. 
+
+   ![Zoeken naar app-Services.](media/app-service-continuous-deployment/search-for-app-services.png)
+
+1. Selecteer de web-app die u wilt implementeren.
+
+   ![Selecteer uw app.](media/app-service-continuous-deployment/select-your-app.png)
    
 1. Selecteer op de pagina app het menu **implementatie centrum** in het linkermenu.
    
@@ -45,7 +51,7 @@ Nadat u een broncode beheer service hebt geautoriseerd, configureert u uw app vo
 
 U kunt de ingebouwde kudu-App Service build-server gebruiken om voortdurend te implementeren vanuit GitHub, bitbucket of Azure opslag plaatsen. 
 
-1. Selecteer **app Services** in het [Azure Portal](https://portal.azure.com) linkernavigatiebalk en selecteer vervolgens de web-app die u wilt implementeren. 
+1. In de [Azure Portal](https://portal.azure.com)zoekt en selecteert u **app Services**en selecteert u vervolgens de web-app die u wilt implementeren. 
    
 1. Selecteer op de pagina app het menu **implementatie centrum** in het linkermenu.
    
@@ -63,7 +69,7 @@ U kunt de ingebouwde kudu-App Service build-server gebruiken om voortdurend te i
    - Voor GitHub, vervolg keuzelijst en selecteer de **organisatie**, **opslag plaats**en **vertakking** die u continu wilt implementeren.
      
      > [!NOTE]
-     > Als u geen opslag plaatsen ziet, moet u mogelijk Azure App Service autoriseren in GitHub. Blader naar de GitHub-opslag plaats en ga naar **instellingen** > **toepassingen** > **geautoriseerde OAuth-apps**. Selecteer **Azure app service**en selecteer vervolgens **verlenen**.
+     > Als u geen opslag plaatsen ziet, moet u mogelijk Azure App Service autoriseren in GitHub. Blader naar de GitHub-opslag plaats en ga naar **instellingen** > **toepassingen** > **geautoriseerde OAuth-apps**. Selecteer **Azure app service**en selecteer vervolgens **verlenen**. Voor organisatie opslagplaatsen moet u een eigenaar van de organisatie zijn om de machtigingen te verlenen.
      
    - Selecteer voor bitbucket het bitbucket- **team**, de **opslag plaats**en de **vertakking** die u continu wilt implementeren.
      
@@ -96,7 +102,7 @@ Azure App Service voor het maken van continue levering Azure-pijp lijnen in uw A
 
 Azure-pijp lijnen configureren (preview):
 
-1. Selecteer **app Services** in het [Azure Portal](https://portal.azure.com) linkernavigatiebalk en selecteer vervolgens de web-app die u wilt implementeren. 
+1. In de [Azure Portal](https://portal.azure.com)zoekt en selecteert u **app Services**en selecteert u vervolgens de web-app die u wilt implementeren. 
    
 1. Selecteer op de pagina app het menu **implementatie centrum** in het linkermenu.
    
@@ -107,7 +113,7 @@ Azure-pijp lijnen configureren (preview):
    - Voor GitHub, vervolg keuzelijst en selecteer de **organisatie**, **opslag plaats**en **vertakking** die u continu wilt implementeren.
      
      > [!NOTE]
-     > Als u geen opslag plaatsen ziet, moet u mogelijk Azure App Service autoriseren in GitHub. Blader naar de GitHub-opslag plaats en ga naar **instellingen** > **toepassingen** > **geautoriseerde OAuth-apps**. Selecteer **Azure app service**en selecteer vervolgens **verlenen**.
+     > Als u geen opslag plaatsen ziet, moet u mogelijk Azure App Service autoriseren in GitHub. Blader naar de GitHub-opslag plaats en ga naar **instellingen** > **toepassingen** > **geautoriseerde OAuth-apps**. Selecteer **Azure app service**en selecteer vervolgens **verlenen**. Voor organisatie opslagplaatsen moet u een eigenaar van de organisatie zijn om de machtigingen te verlenen.
      
    - Selecteer voor Azure opslag plaatsen de **Azure DevOps-organisatie**, **het project**, de **opslag plaats**en de **vertakking** die u continu wilt implementeren of configureer een nieuwe Azure DevOps-organisatie.
      
@@ -141,7 +147,7 @@ Als u continue implementatie wilt uitschakelen, selecteert u de **verbinding ver
 
 ## <a name="use-unsupported-repos"></a>Niet-ondersteunde opslag plaatsen gebruiken
 
-Voor Windows-apps kunt u een continue implementatie hand matig configureren vanuit een Git-of mecurial-opslag plaats in de cloud die niet rechtstreeks wordt ondersteund door de portal, zoals [GitLab](https://gitlab.com/). U doet dit door het externe vak op de pagina **implementatie centrum** te kiezen. Zie [continue implementatie instellen met behulp van hand matige stappen](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)voor meer informatie.
+Voor Windows-apps kunt u een continue implementatie hand matig configureren vanuit een Git-of mercurial-opslag plaats in de cloud die niet rechtstreeks wordt ondersteund door de portal, zoals [GitLab](https://gitlab.com/). U doet dit door het externe vak op de pagina **implementatie centrum** te kiezen. Zie [continue implementatie instellen met behulp van hand matige stappen](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)voor meer informatie.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 0f55f3ce4856e7b6eccf665faaa1b1fa45b84b58
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 49dc69eb73bd19509b5e14c5a4976cfa7208545a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72302298"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392358"
 ---
 **Volume en retentie van gegevens verzameling** 
 
@@ -33,37 +33,36 @@ ms.locfileid: "72302298"
 | Gratis laag  | 10 | Deze limiet kan niet worden verhoogd. |
 | Alle andere lagen | Geen limiet | U bent beperkt tot het aantal resources in een resource groep en het aantal resource groepen per abonnement. |
 
-**Azure-portal**
+**Azure Portal**
 
-| Category | Beperkingen | Opmerkingen |
+| Categorie | Beperkingen | Opmerkingen |
 |:---|:---|:---|
 | Maximum aantal records geretourneerd door een logboek query | 10.000 | Verminder de resultaten met behulp van het query bereik, het tijds bereik en filters in de query. |
 
 
 **Data Collector-API**
 
-| Category | Beperkingen | Opmerkingen |
+| Categorie | Beperkingen | Opmerkingen |
 |:---|:---|:---|
 | Maximum grootte voor één bericht | 30 MB | Grotere volumes in meerdere berichten splitsen. |
 | Maximale grootte voor veld waarden  | 32 KB | Velden die langer zijn dan 32 KB worden afgebroken. |
 
 **Zoek-API**
 
-| Category | Beperkingen | Opmerkingen |
+| Categorie | Beperkingen | Opmerkingen |
 |:---|:---|:---|
-| Maximum aantal records dat wordt geretourneerd in één query | 500.000 | |
+| Maximum aantal records dat wordt geretourneerd in één query | 500,000 | |
 | Maximale grootte van geretourneerde gegevens | 64.000.000 bytes (~ 61 MiB)| |
 | Maximale uitvoerings tijd van de query | 10 minuten | Zie [time-outs](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts) voor meer informatie.  |
 | Maximum aantal aanvragen | 200 aanvragen per 30 seconden per AAD-gebruiker of IP-adres van de client | Zie [frequentie limieten](https://dev.loganalytics.io/documentation/Using-the-API/Limits) voor meer informatie. |
 
 **Algemene limieten voor werk ruimten**
 
-| Category | Beperkingen | Opmerkingen |
+| Categorie | Beperkingen | Opmerkingen |
 |:---|:---|:---|
 | Maximum aantal kolommen in een tabel         | 500 | |
 | Maximum aantal tekens voor de kolom naam | 500 | |
-| Regio's op capaciteit | US - west-centraal | U kunt momenteel geen nieuwe werk ruimte maken in deze regio, omdat deze de limiet voor tijdelijke capaciteit heeft. Deze limiet is gepland om te worden verholpen door eind november 2019. |
-| Gegevens export | Momenteel niet beschikbaar | Gebruik Azure function-of Logic-app om gegevens samen te voegen en te exporteren. | 
+| Gegevensexport | Momenteel niet beschikbaar | Gebruik Azure function-of Logic-app om gegevens samen te voegen en te exporteren. | 
 
 **Volume frequentie van gegevens opname**
 

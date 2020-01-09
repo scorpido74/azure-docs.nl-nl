@@ -1,5 +1,6 @@
 ---
-title: Ontwikkelaars accounts beheren met groepen in azure API Management | Microsoft Docs
+title: Ontwikkelaars accounts beheren met groepen in azure API Management
+titleSuffix: Azure API Management
 description: Meer informatie over het beheren van ontwikkelaars accounts met behulp van groepen in azure API Management
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: f83b91933e2aca4bf77fcab4a30f2123f4eb4ed0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 182f0ea93ddfb2ab64de1c15b36958537fa5431f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073640"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430711"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Groepen maken en gebruiken voor het beheren van ontwikkelaars accounts in azure API Management
 
@@ -39,7 +40,7 @@ Naast het maken en beheren van groepen in de Publisher-Portal kunt u uw groepen 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voltooi de taken in dit artikel: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
+Voltooi de taken in dit artikel: [een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -84,12 +85,12 @@ Zodra een product is gekoppeld aan een groep, kunnen ontwikkel aars in die groep
 In deze sectie wordt beschreven hoe u groepen koppelt aan leden.
 
 1. Selecteer het tabblad **groepen** links in het scherm.
-2. Selecteer **leden**.
+2. Selecteer **Leden**.
 
-    ![Een lid toevoegen](./media/api-management-howto-create-groups/groups005.png)
+    ![Lid toevoegen](./media/api-management-howto-create-groups/groups005.png)
 3. Druk op **+ toevoegen** en selecteer een lid.
 
-    ![Een lid toevoegen](./media/api-management-howto-create-groups/groups006.png)
+    ![Lid toevoegen](./media/api-management-howto-create-groups/groups006.png)
 4. Druk op **selecteren**.
 
 Zodra de koppeling tussen de ontwikkelaar en de groep is toegevoegd, kunt u deze weer geven op het tabblad **gebruikers** .

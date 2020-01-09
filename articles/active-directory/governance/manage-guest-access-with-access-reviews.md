@@ -1,5 +1,5 @@
 ---
-title: Gast toegang beheren met toegangs beoordelingen-Azure Active Directory | Microsoft Docs
+title: Gast toegang beheren met toegangs beoordelingen-Azure AD
 description: Gast gebruikers beheren als leden van een groep of toegewezen aan een toepassing met Azure Active Directory toegangs beoordelingen
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 12/13/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a982b97bcef6a24f026bf6ad2943661db18d6af0
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 562a94bbbd1999b9ca9cf0c65cdb816848648133
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499467"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422476"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Gast toegang beheren met Azure AD-toegangs beoordelingen
 
@@ -41,7 +41,7 @@ Zie [welke gebruikers licenties moeten hebben?](access-reviews-overview.md#which
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Een toegangs beoordeling voor gasten maken en uitvoeren
 
-Ga eerst als globale beheerder of gebruikers beheerder naar de [pagina](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) voor het beheer van identiteiten om ervoor te zorgen dat toegangs beoordelingen gereed zijn voor uw organisatie.
+Ga eerst als globale beheerder of gebruikers beheerder naar de pagina voor het beheer van [identiteiten](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) om ervoor te zorgen dat toegangs beoordelingen gereed zijn voor uw organisatie.
 
 Azure AD biedt verschillende scenario's voor het controleren van gast gebruikers.
 

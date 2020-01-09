@@ -1,19 +1,18 @@
 ---
 title: Een Azure Stream Analytics taak starten
 description: In dit artikel wordt beschreven hoe u een Stream Analytics taak start vanuit Azure Portal, Power shell en Visual Studio.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 1e4cb63accf7e89ac02451e9c25b9902a8a10812
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c393eb782c2ff16eb5b3e5967b39938dfe2f1534
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173274"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426469"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>Een Azure Stream Analytics taak starten
 
@@ -21,10 +20,10 @@ U kunt uw Azure Stream Analytics-taak starten met behulp van de Azure Portal, Vi
 
 ## <a name="start-options"></a>Start opties
 De drie volgende opties zijn beschikbaar om een taak te starten. Houd er rekening mee dat alle hieronder genoemde tijden zijn opgegeven in [time stamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics). Als TIJDS tempel door niet is opgegeven, wordt aankomst tijd gebruikt.
-* **Nu**: Hiermee wordt het begin punt van de uitvoer gebeurtenis stroom op dezelfde manier gemaakt als de taak wordt gestart. Als er een tijdelijke operator wordt gebruikt (bijvoorbeeld een tijd venster, een vertraging of een samen voeging), wordt Azure Stream Analytics automatisch teruggestuurd naar de gegevens in de invoer bron. Als u bijvoorbeeld een taak nu start en als uw query een Tumblingvenstertriggers-venster van vijf minuten gebruikt, zoekt Azure Stream Analytics gegevens van vijf minuten geleden in de invoer.
+* **Nu**: maakt het begin punt van de uitvoer gebeurtenis stroom hetzelfde als wanneer de taak wordt gestart. Als er een tijdelijke operator wordt gebruikt (bijvoorbeeld een tijd venster, een vertraging of een samen voeging), wordt Azure Stream Analytics automatisch teruggestuurd naar de gegevens in de invoer bron. Als u bijvoorbeeld een taak nu start en als uw query een Tumblingvenstertriggers-venster van vijf minuten gebruikt, zoekt Azure Stream Analytics gegevens van vijf minuten geleden in de invoer.
 De eerste mogelijke uitvoer gebeurtenis zou een tijds tempel hebben die gelijk is aan of groter is dan de huidige tijd en ASA garandeert dat alle invoer gebeurtenissen die logisch kunnen bijdragen aan de uitvoer, zijn verwerkt. Er worden bijvoorbeeld geen gedeeltelijke venster aggregaties gegenereerd. Het is altijd de volledige geaggregeerde waarde.
 
-* **Aangepast**: U kunt het begin punt van de uitvoer kiezen. Net als bij de Azure Stream Analytics optie **nu** worden de gegevens vóór deze tijd automatisch gelezen als een tijdelijke operator wordt gebruikt 
+* **Aangepast**: u kunt het begin punt van de uitvoer kiezen. Net als bij de Azure Stream Analytics optie **nu** worden de gegevens vóór deze tijd automatisch gelezen als een tijdelijke operator wordt gebruikt 
 
 * **Wanneer de laatste keer is gestopt**. Deze optie is beschikbaar wanneer de taak eerder is gestart, maar niet hand matig is gestopt of mislukt. Wanneer u deze optie kiest, gebruikt Azure Stream Analytics de laatste uitvoer tijd om de taak opnieuw te starten, zodat er geen gegevens verloren gaan. Net als bij vorige opties Azure Stream Analytics de gegevens vóór deze tijd automatisch lezen als er een tijdelijke operator wordt gebruikt. Omdat verschillende invoer partities een andere tijd kunnen hebben, wordt de eerste stop tijd van alle partities gebruikt, omdat er mogelijk dubbele waarden worden weer gegeven in de uitvoer. Meer informatie over eenmalige verwerking is beschikbaar op de pagina [gebeurtenis bezorgings garanties](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics).
 
@@ -55,10 +54,10 @@ Start-AzStreamAnalyticsJob `
 
 Er zijn drie opties voor **output start mode**: *JobStartTime*, *CustomTime*en *LastOutputEventTime*. Als deze eigenschap ontbreekt, is de standaard waarde *JobStartTime*. Zie hierboven voor meer informatie over deze opties.
 
-Voor meer informatie over de `Start-AzStreamAnalyitcsJob` cmdlet bekijkt u de [referentie start-AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob).
+Voor meer informatie over de `Start-AzStreamAnalyitcsJob` cmdlet raadpleegt u de [referentie start-AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Snelstart: Een Stream Analytics taak maken met behulp van de Azure Portal](stream-analytics-quick-create-portal.md)
-* [Snelstart: Een Stream Analytics taak maken met behulp van Azure PowerShell](stream-analytics-quick-create-powershell.md)
-* [Snelstart: Een Stream Analytics taak maken met behulp van de Azure Stream Analytics-hulpprogram ma's voor Visual Studio](stream-analytics-quick-create-vs.md)
+* [Snelstart: Een Stream Analytics-taak maken met behulp van de Azure-portal](stream-analytics-quick-create-portal.md)
+* [Snelstartgids: een Stream Analytics-taak maken met behulp van Azure PowerShell](stream-analytics-quick-create-powershell.md)
+* [Snelstartgids: een Stream Analytics-taak maken met behulp van de Azure Stream Analytics-hulpprogram ma's voor Visual Studio](stream-analytics-quick-create-vs.md)

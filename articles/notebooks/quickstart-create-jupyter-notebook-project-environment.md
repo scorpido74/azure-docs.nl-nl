@@ -1,70 +1,72 @@
 ---
-title: Een Azure-notitieblokken-project met een aangepaste omgeving maken
-description: Een nieuw project maken in Azure-notitieblokken die geconfigureerd met een specifieke set geïnstalleerde pakketten en opstartscripts.
+title: Een Azure Notebooks preview-project maken met een aangepaste omgeving
+description: Maak een nieuw project in Azure Notebooks preview dat is geconfigureerd met een specifieke set geïnstalleerde pakketten en opstart scripts.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: f167d1bf6064cde535d17fa4a336ee13424baba7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 999133dd7d9d792956f9a2c93ec218e458c921e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277482"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647064"
 ---
-# <a name="quickstart-create-a-project-with-a-custom-environment"></a>Snelstartgids: Een project met een aangepaste omgeving maken
+# <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>Snelstartgids: een project met een aangepaste omgeving maken in Azure Notebooks preview
 
 Een project in notitieblokken van Azure is een verzameling van bestanden, zoals laptops, gegevensbestanden, documentatie, afbeeldingen, enzovoort, samen met een omgeving die kan worden geconfigureerd met specifieke setup-opdrachten. Met het definiëren van de omgeving met het project, heeft iedereen die het klonen van het project in hun eigen account Azure-notitieblokken alle informatie die ze nodig hebben om de noodzakelijke omgeving opnieuw te maken.
 
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
 ## <a name="create-a-project"></a>Een project maken
 
-1. Ga naar [Azure notebooks](https://notebooks.azure.com) en meld u aan. (Zie Quick Start ( [Aanmelden bij Azure notebooks](quickstart-sign-in-azure-notebooks.md)) voor meer informatie.
+1. Ga naar [Azure notitieblokken](https://notebooks.azure.com) en meld u aan. (Zie voor meer informatie, [-Snelstart: aanmelden bij Azure-notitieblokken](quickstart-sign-in-azure-notebooks.md)).
 
-1. Selecteer op de pagina openbaar profiel **Mijn projecten** boven aan de pagina:
+1. Selecteer in de pagina van uw openbare profiel **Mijn projecten** aan de bovenkant van de pagina:
 
     ![Mijn projecten koppeling boven aan het browservenster](media/quickstarts/my-projects-link.png)
 
-1. Selecteer op de pagina **Mijn projecten** **+ Nieuw project** (sneltoets: n); de knop kan alleen worden weer gegeven als **+** als het browser venster smal is:
+1. Op de **Mijn projecten** weergeeft, schakelt **+ nieuw Project** (sneltoets: n); de knop wordt mogelijk weergegeven alleen als **+** als het browservenster smal is:
 
     ![Nieuw Project-opdracht op de pagina Mijn projecten](media/quickstarts/new-project-command.png)
 
-1. In de pop-up **Nieuw project maken** die wordt weer gegeven, voert u de volgende gegevens in of stelt u deze in en selecteert u **maken**:
+1. In de **nieuw Project maken** pop-upvenster dat wordt weergegeven, invoeren of stel de volgende details en selecteer vervolgens **maken**:
 
-    - **Project naam**: project met een aangepaste omgeving
-    - **Project-id**: Project-Custom-Environment
-    - **Openbaar project**: (uitgeschakeld)
-    - **Een README.MD maken**: (uitgeschakeld)
+    - **Naam van het project**: Project met een aangepaste omgeving
+    - **Project-ID**: project-aangepaste-omgeving
+    - **Openbare project**: (uitgeschakeld)
+    - **Maken van een README.md**: (uitgeschakeld)
 
-1. Na enkele ogenblikken navigeert Azure notitieblokken u naar het nieuwe project. Voeg een notitie blok toe aan het project door de vervolg keuzelijst **+ Nieuw** te selecteren (dit kan worden weer gegeven als alleen **+** ) en selecteer vervolgens **notebook**.
+1. Na enkele ogenblikken navigeert Azure notitieblokken u naar het nieuwe project. Een notitieblok toevoegen aan het project door het selecteren van de **+ nieuw** vervolgkeuzelijst (die mogelijk weergegeven als alleen **+** ), vervolgens de optie **Notebook**.
 
-1. Geef het notitie blok een naam zoals *aangepaste omgeving. ipynb*, selecteer **python 3,6** voor de taal en selecteer **Nieuw**.
+1. Geef een naam, zoals op de notebook *aangepaste environment.ipynb*, selecteer **Python 3.6** voor de taal en selecteer **nieuw**.
 
 ## <a name="add-a-custom-setup-step"></a>Een aangepaste installatie-stap toevoegen
 
-1. Selecteer op de pagina project de optie **project instellingen**.
+1. Selecteer op de projectpagina **projectinstellingen**.
 
     ![Opdracht van de instellingen voor project](media/quickstarts/project-settings-command.png)
 
-1. Selecteer in het pop-upvenster **project instellingen** het tabblad **omgeving** en selecteer vervolgens onder **Configuratie stappen**voor de omgeving de optie **+ toevoegen**:
+1. In de **projectinstellingen** pop-upvenster, selecteer de **omgeving** tabblad vervolgens onder **omgeving installatiestappen uit**, selecteer **+ toevoegen**:
 
     ![Opdracht voor het toevoegen van een nieuwe omgeving setup stap](media/quickstarts/environment-add-command.png)
 
-1. Met de opdracht **+ add** wordt een stap gemaakt die wordt gedefinieerd door een bewerking en een doel bestand dat is geselecteerd in de bestanden in uw project. De volgende bewerkingen worden ondersteund:
+1. De **+ toevoegen** opdracht maakt u een stap die gedefinieerd door een bewerking en een doelbestand dat geselecteerd in de bestanden in uw project. De volgende bewerkingen worden ondersteund:
 
     | Bewerking | Beschrijving |
     | --- | --- |
-    | Requirements.txt | Python-projecten definiëren hun afhankelijkheden in een requirements.txt-bestand. Met deze optie selecteert u het juiste bestand uit de lijst met bestanden van het project en selecteert u ook de Python-versie in de extra vervolgkeuzelijst die wordt weergegeven. Als dat nodig is, selecteert u **Annuleren** om terug te gaan naar het project, het bestand te uploaden of te maken en gaat u terug naar het tabblad **project instellingen** > **omgeving** en maakt u een nieuwe stap. Tijdens deze stap wordt het uitvoeren van een notitie blok in het project automatisch uitgevoerd `pip install -r <file>` |
-    | Shell-script | Gebruiken om een bash-shell script (meestal een bestand met de extensie *. sh* ) op te geven dat opdrachten bevat die u wilt uitvoeren om de omgeving te initialiseren. |
-    | Environment.yml | Een python-project dat gebruikmaakt van Conda voor het beheren van een omgeving, gebruikt een environments *. yml* -bestand om afhankelijkheden te beschrijven. Met deze optie selecteert u het juiste bestand uit de lijst met bestanden van het project. |
+    | Requirements.txt | Python-projecten definiëren hun afhankelijkheden in een requirements.txt-bestand. Met deze optie selecteert u het juiste bestand uit de lijst met bestanden van het project en selecteert u ook de Python-versie in de extra vervolgkeuzelijst die wordt weergegeven. Selecteer indien nodig, **annuleren** uploaden als u wilt terugkeren naar het project, of maak het bestand en vervolgens gaat u terug naar de **projectinstellingen** > **omgeving** tabblad en maak een nieuwe stap. Met deze stap in de plaats, met een notitieblok in het project automatisch wordt uitgevoerd `pip install -r <file>` |
+    | Shell-script | Gebruiken om aan te geven van een bash-shell-script (meestal een bestand met de *.sh* extensie) die alle opdrachten die u uitvoeren wilt voor het initialiseren van de omgeving bevat. |
+    | Environment.yml | Een Python-project dat conda wordt gebruikt voor het beheren van een omgeving gebruikmaakt van een *environments.yml* bestand om te beschrijven van afhankelijkheden. Met deze optie selecteert u het juiste bestand uit de lijst met bestanden van het project. |
 
-1. Als u een wille keurige installatie stap wilt verwijderen, selecteert u de **X** rechts van de stap.
+1. Als u wilt een setup-stap verwijderen, selecteert u de **X** aan de rechterkant van de stap.
 
-1. Wanneer alle installatie stappen zijn uitgevoerd, selecteert u **Opslaan**. (Selecteer **Annuleren** om de wijzigingen te negeren).
+1. Wanneer alle stappen van de setup gemaakt zijn, selecteert u **opslaan**. (Selecteer **annuleren** om wijzigingen te verwijderen).
 
-1. Als u uw omgeving wilt testen, maakt en voert u een nieuwe notebook uit en maakt u een code-cel met instructies die afhankelijk zijn van een pakket in de omgeving, zoals het gebruik van een python `import`-instructie. Als de instructie is geslaagd, is klikt u vervolgens het benodigde pakket geïnstalleerd in de omgeving.
+1. Als u wilt testen van uw omgeving, maken en uitvoeren op een nieuwe notebook, waarna een codecel maken met de instructies die afhankelijk van een pakket in de omgeving zijn, zoals het gebruik van een Python `import` instructie. Als de instructie is geslaagd, is klikt u vervolgens het benodigde pakket geïnstalleerd in de omgeving.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Projecten beheren en configureren in Azure Notebooks](configure-manage-azure-notebooks-projects.md)
+> [Beheren en configureren van projecten in Azure-notitieblokken](configure-manage-azure-notebooks-projects.md)
 
 > [!div class="nextstepaction"]
-> [Zelf studie: een Jupyter-notitie blok maken om een lineaire regressie uit te voeren](tutorial-create-run-jupyter-notebook.md)
+> [Zelfstudie: een run maken een Jupyter-notebook te doen, lineaire regressie](tutorial-create-run-jupyter-notebook.md)

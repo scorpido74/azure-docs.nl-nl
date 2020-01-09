@@ -1,23 +1,17 @@
 ---
-title: Opslag van sleutelwaarden voor Azure App Configuration | Microsoft Docs
-description: Een overzicht van hoe configuratie gegevens worden opgeslagen in Azure-app configuratie
-services: azure-app-configuration
-documentationcenter: ''
+title: Azure-app configuratie sleutel-waarde Store
+description: Een overzicht van hoe configuratie gegevens worden opgeslagen in Azure-app configuratie.
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.service: azure-app-configuration
-ms.devlang: na
-ms.topic: overview
-ms.workload: tbd
-ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 054de294c9edb0fe5b75da4ac7fd54ce987123de
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.service: azure-app-configuration
+ms.topic: conceptual
+ms.date: 04/19/2019
+ms.openlocfilehash: 11e019e276944e0c3f50d604420046979b5f3fbb
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185226"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495282"
 ---
 # <a name="keys-and-values"></a>Sleutels en waarden
 

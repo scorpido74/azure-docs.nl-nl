@@ -1,19 +1,18 @@
 ---
 title: Realtime Twitter-sentiment analyse met Azure Stream Analytics
 description: In dit artikel wordt beschreven hoe u Stream Analytics gebruikt voor realtime Twitter-sentiment analyse. Stapsgewijze richt lijnen voor het genereren van gebeurtenissen naar gegevens op een live dash board.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 8561789d53c3c1b00ac1477909bcbe356fe6a85d
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: f3ab21d55b7d59bb58760bfba452b4ea2d103496
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173123"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369895"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Realtime Twitter-sentiment analyse in Azure Stream Analytics
 
@@ -23,7 +22,7 @@ Hulpprogram ma's voor sociale media analyse helpen organisaties bij het begrijpe
 
 Realtime-trend analyse van Twitter is een goed voor beeld van een analyse programma omdat u met het hashtag-abonnements model kunt Luis teren naar specifieke sleutel woorden (Hashtags) en sentiment analyse van de feed ontwikkelt.
 
-## <a name="scenario-social-media-sentiment-analysis-in-real-time"></a>Scenario: Analyse van sociale media-sentiment in realtime
+## <a name="scenario-social-media-sentiment-analysis-in-real-time"></a>Scenario: analyse van sociale media-sentiment in realtime
 
 Een bedrijf met een website voor nieuws media is geïnteresseerd in het verkrijgen van een voor deel van zijn concurrenten met behulp van site-inhoud die direct relevant is voor de lezers. Het bedrijf maakt gebruik van sociale media-analyses op onderwerpen die relevant zijn voor lezers door real-time sentiment analyse van Twitter-gegevens uit te voeren.
 
@@ -43,9 +42,9 @@ De voorbeeld toepassing genereert gebeurtenissen en duwt deze naar een Azure-Eve
 ### <a name="create-an-event-hub-namespace-and-event-hub"></a>Een Event Hub naam ruimte en Event Hub maken
 Maak een Event Hub naam ruimte en voeg vervolgens een Event Hub aan die naam ruimte toe. Event hub-naam ruimten worden gebruikt om gerelateerde exemplaren van de gebeurtenis-bus logisch te groeperen. 
 
-1. Meld u aan bij de Azure Portal en klik op **een resource** > maken**Internet of Things** > **Event hub**. 
+1. Meld u aan bij de Azure Portal en klik op **een resource maken** > **Internet of Things** > **Event hub**. 
 
-2. Voer in de Blade **naam ruimte maken** een naam in voor `<yourname>-socialtwitter-eh-ns`de naam ruimte, zoals. U kunt een wille keurige naam voor de naam ruimte gebruiken, maar de naam moet geldig zijn voor een URL en moet uniek zijn binnen Azure. 
+2. Voer in de Blade **naam ruimte maken** een naam van een naam ruimte in, zoals `<yourname>-socialtwitter-eh-ns`. U kunt een wille keurige naam voor de naam ruimte gebruiken, maar de naam moet geldig zijn voor een URL en moet uniek zijn binnen Azure. 
     
 3. Selecteer een abonnement en maak of kies een resource groep en klik vervolgens op **maken**. 
 
@@ -53,15 +52,15 @@ Maak een Event Hub naam ruimte en voeg vervolgens een Event Hub aan die naam rui
  
 4. Wanneer de implementatie van de naam ruimte is voltooid, zoekt u de Event Hub naam ruimte in de lijst met Azure-resources. 
 
-5. Klik op de nieuwe naam ruimte en klik op de Blade naam ruimte op  **+ &nbsp;Event hub**. 
+5. Klik op de nieuwe naam ruimte en klik op de Blade naam ruimte op **+&nbsp;Event hub**. 
 
     ![De knop Event hub toevoegen voor het maken van een nieuwe Event Hub](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-button.png)    
  
-6. Geef de nieuwe Event Hub `socialtwitter-eh`een naam. U kunt ook een andere naam gebruiken. Als u dat wel doet, noteert u deze, omdat u de naam later nodig hebt. U hoeft geen andere opties voor de Event Hub in te stellen.
+6. Geef een naam op voor het nieuwe Event Hub `socialtwitter-eh`. U kunt ook een andere naam gebruiken. Als u dat wel doet, noteert u deze, omdat u de naam later nodig hebt. U hoeft geen andere opties voor de Event Hub in te stellen.
 
     ![Blade voor het maken van een nieuwe Event Hub](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub.png)
  
-7. Klik op **Create**.
+7. Klik op **Maken**.
 
 
 ### <a name="grant-access-to-the-event-hub"></a>Toegang verlenen tot de Event Hub
@@ -70,16 +69,16 @@ Voordat een proces gegevens naar een Event Hub kan verzenden, moet de Event Hub 
 
 1.  Klik in de Blade gebeurtenis naam ruimte op **Event hubs** en klik vervolgens op de naam van uw nieuwe event hub.
 
-2.  Klik op de Blade Event hub op **beleid voor gedeelde toegang** en klik vervolgens op  **+ &nbsp;toevoegen**.
+2.  Klik op de Blade Event Hub op **beleid voor gedeelde toegang** en klik vervolgens op **+&nbsp;toevoegen**.
 
     >[!NOTE]
     >Zorg ervoor dat u werkt met de Event Hub, niet de Event Hub naam ruimte.
 
-3.  Voeg een beleid toe `socialtwitter-access` met de naam en voor **claim**, selecteer **beheren**.
+3.  Voeg een beleid toe met de naam `socialtwitter-access` en voor **claim**, selecteer **beheren**.
 
     ![Blade voor het maken van een nieuw Event Hub-toegangs beleid](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-shared-access-policy-manage.png)
  
-4.  Klik op **Create**.
+4.  Klik op **Maken**.
 
 5.  Nadat het beleid is geïmplementeerd, klikt u erop in de lijst met beleid voor gedeelde toegang.
 
@@ -93,12 +92,12 @@ Voordat een proces gegevens naar een Event Hub kan verzenden, moet de Event Hub 
 
         Endpoint=sb://YOURNAME-socialtwitter-eh-ns.servicebus.windows.net/;SharedAccessKeyName=socialtwitter-access;SharedAccessKey=Gw2NFZw6r...FxKbXaC2op6a0ZsPkI=;EntityPath=socialtwitter-eh
 
-    U ziet dat de Connection String meerdere sleutel-waardeparen bevat, gescheiden door punt komma's: `Endpoint` `SharedAccessKey`, `SharedAccessKeyName` `EntityPath`, en.  
+    U ziet dat de connection string meerdere sleutel-waardeparen bevat, gescheiden door punt komma's: `Endpoint`, `SharedAccessKeyName`, `SharedAccessKey`en `EntityPath`.  
 
     > [!NOTE]
     > Voor de beveiliging zijn delen van de connection string in het voor beeld verwijderd.
 
-8.  Verwijder in de tekst editor het `EntityPath` paar uit de Connection String (Vergeet niet om de punt komma die eraan voorafgaat te verwijderen). Wanneer u klaar bent, ziet de connection string er als volgt uit:
+8.  Verwijder in de tekst editor het `EntityPath` paar uit de connection string (Vergeet niet om de punt komma die eraan voorafgaat te verwijderen). Wanneer u klaar bent, ziet de connection string er als volgt uit:
 
         Endpoint=sb://YOURNAME-socialtwitter-eh-ns.servicebus.windows.net/;SharedAccessKeyName=socialtwitter-access;SharedAccessKey=Gw2NFZw6r...FxKbXaC2op6a0ZsPkI=
 
@@ -116,15 +115,15 @@ Als u nog geen Twitter-toepassing hebt die u voor deze hand leiding kunt gebruik
 
    ![Bevestiging van Twitter-ontwikkelaars account](./media/stream-analytics-twitter-sentiment-analysis-trends/twitter-dev-confirmation.png "Bevestiging van Twitter-ontwikkelaars account")
 
-   ![Gegevens voor Twitter-toepassing](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details.png "Gegevens voor Twitter-toepassing")
+   ![Details van Twitter-toepassing](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details.png "Details van Twitter-toepassing")
 
 2. Voer op de pagina **Create an application** de gegevens voor de nieuwe app in en selecteer **Create your Twitter application**.
 
-   ![Gegevens voor Twitter-toepassing](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details-create.png "Gegevens voor Twitter-toepassing")
+   ![Details van Twitter-toepassing](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details-create.png "Details van Twitter-toepassing")
 
 3. Selecteer op de pagina toepassing het tabblad **sleutels en tokens** en kopieer de waarden voor de **CONSUMer-API-sleutel** en de **geheime sleutel**van de consument-API. Selecteer ook **maken** onder **toegangs token en geheim toegangs token** om de toegangs tokens te genereren. Kopieer de waarden voor **Access Token** en **Access Token Secret**.
 
-    ![Gegevens voor Twitter-toepassing](./media/stream-analytics-twitter-sentiment-analysis-trends/twitter-app-key-secret.png "Gegevens voor Twitter-toepassing")
+    ![Details van Twitter-toepassing](./media/stream-analytics-twitter-sentiment-analysis-trends/twitter-app-key-secret.png "Details van Twitter-toepassing")
 
 Sla de waarden op die u hebt opgehaald voor de Twitter-toepassing. U hebt de waarden later in de instructies.
 
@@ -150,30 +149,30 @@ De volgende procedure documenteert beide benaderingen.
 
 1. Zorg ervoor dat u de [TwitterWPFClient. zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) -toepassing hebt gedownload en uitgepakt, zoals vermeld in de vereisten.
 
-2. Als u de waarden wilt instellen tijdens runtime (en alleen voor de huidige sessie), voert `TwitterWPFClient.exe` u de toepassing uit. Wanneer u door de toepassing wordt gevraagd, voert u de volgende waarden in:
+2. Als u de waarden wilt instellen tijdens runtime (en alleen voor de huidige sessie), voert u de `TwitterWPFClient.exe`-toepassing uit. Wanneer u door de toepassing wordt gevraagd, voert u de volgende waarden in:
 
     * De Twitter-consument sleutel (API-sleutel).
     * Het Twitter-consument geheim (API-geheim).
     * Het Twitter-toegangs token.
     * Het geheim voor het Twitter-toegangs token.
-    * De connection string informatie die u eerder hebt opgeslagen. Zorg ervoor dat u de Connection String gebruikt waarvan u het `EntityPath` sleutel waarde-paar hebt verwijderd.
+    * De connection string informatie die u eerder hebt opgeslagen. Zorg ervoor dat u de connection string gebruikt waarvan u het `EntityPath` sleutel-waardepaar hebt verwijderd.
     * De Twitter-tref woorden waarvoor u sentiment wilt bepalen.
 
    ![TwitterWpfClient toepassing, met verborgen instellingen](./media/stream-analytics-twitter-sentiment-analysis-trends/wpfclientlines.png)
 
-3. Als u de waarden permanent wilt instellen, gebruikt u een tekst editor om het bestand TwitterWpfClient. exe. config te openen. Ga vervolgens als `<appSettings>` volgt te werk in het element:
+3. Als u de waarden permanent wilt instellen, gebruikt u een tekst editor om het bestand TwitterWpfClient. exe. config te openen. Ga vervolgens als volgt te werk in het element `<appSettings>`:
 
-   * Ingesteld `oauth_consumer_key` op de Twitter-consument sleutel (API-sleutel). 
-   * Ingesteld `oauth_consumer_secret` op het Twitter-consument geheim (API-geheim).
+   * `oauth_consumer_key` instellen op de Twitter-consument sleutel (API-sleutel). 
+   * Stel `oauth_consumer_secret` in op het Twitter-consument geheim (API-geheim).
    * Stel `oauth_token` in op het Twitter-toegangs token.
-   * Stel `oauth_token_secret` in op het geheim voor het Twitter-toegangs token.
+   * Stel `oauth_token_secret` in voor het geheim voor het Twitter-toegangs token.
 
-     Ga later in `<appSettings>` het element als volgt te wijzigen:
+     Ga later in het `<appSettings>`-element als volgt te wijzigen:
 
-   * Stel `EventHubName` in op de naam van de Event hub (dat wil zeggen, de waarde van het pad van de entiteit).
-   * Ingesteld `EventHubNameConnectionString` op de Connection String. Zorg ervoor dat u de Connection String gebruikt waarvan u het `EntityPath` sleutel waarde-paar hebt verwijderd.
+   * Stel `EventHubName` in op de naam van het Event Hub (dat wil zeggen, de waarde van het pad van de entiteit).
+   * Stel `EventHubNameConnectionString` in op de connection string. Zorg ervoor dat u de connection string gebruikt waarvan u het `EntityPath` sleutel-waardepaar hebt verwijderd.
 
-     De `<appSettings>` sectie ziet eruit als in het volgende voor beeld. (Voor duidelijkheid en beveiliging hebben we een aantal regels ingepakt en enkele tekens verwijderd.)
+     De sectie `<appSettings>` ziet eruit als in het volgende voor beeld. (Voor duidelijkheid en beveiliging hebben we een aantal regels ingepakt en enkele tekens verwijderd.)
 
      ![TwitterWpfClient toepassings configuratie bestand in een tekst editor, met de Twitter-sleutels en-geheimen en de Event Hub connection string informatie](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-tiwtter-app-config.png)
  
@@ -184,14 +183,14 @@ De volgende procedure documenteert beide benaderingen.
     ![TwitterWpfClient toepassing waarin een vermelding van tweets wordt weer gegeven](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-app-listing.png)
 
     >[!NOTE]
-    >Als er fouten worden weer gegeven en u geen stroom van tweets ziet in het onderste deel van het venster, controleert u de sleutels en geheimen. Controleer ook de Connection String (zorg ervoor dat de sleutel en de `EntityPath` waarde niet worden vermeld.)
+    >Als er fouten worden weer gegeven en u geen stroom van tweets ziet in het onderste deel van het venster, controleert u de sleutels en geheimen. Controleer ook de connection string (zorg ervoor dat de `EntityPath` sleutel en de waarde niet worden vermeld.)
 
 
 ## <a name="create-a-stream-analytics-job"></a>Een Stream Analytics-taak maken
 
 Nu Tweet-gebeurtenissen in realtime worden gestreamd vanuit Twitter, kunt u een Stream Analytics taak instellen om deze gebeurtenissen in realtime te analyseren.
 
-1. Klik in de Azure Portal op **een resource** > maken**Internet of Things** > **Stream Analytics taak**.
+1. Klik in de Azure Portal op **een resource maken** > **Internet of Things** > **Stream Analytics taak**.
 
 2. Noem de taak `socialtwitter-sa-job` en geef een abonnement, resource groep en locatie op.
 
@@ -199,7 +198,7 @@ Nu Tweet-gebeurtenissen in realtime worden gestreamd vanuit Twitter, kunt u een 
 
     ![Een nieuwe Stream Analytics-taak maken](./media/stream-analytics-twitter-sentiment-analysis-trends/newjob.png)
 
-3. Klik op **Create**.
+3. Klik op **Maken**.
 
     De taak wordt gemaakt en er worden taak details weer gegeven in de portal.
 
@@ -208,19 +207,19 @@ Nu Tweet-gebeurtenissen in realtime worden gestreamd vanuit Twitter, kunt u een 
 
 1. Klik in uw Stream Analytics-taak onder **taak topologie** in het midden van de Blade taak op **invoer**. 
 
-2. Klik op de Blade **ingangen** op  **+ &nbsp;toevoegen** en vul vervolgens de Blade met de volgende waarden in:
+2. Klik op de Blade **ingangen** op+&nbsp;de Blade met de volgende waarden **toe te voegen** en in te vullen:
 
-   * **Invoeralias**: Gebruik de naam `TwitterStream`. Als u een andere naam gebruikt, noteert u deze, omdat u deze later nodig hebt.
+   * **Invoer alias**: gebruik de naam `TwitterStream`. Als u een andere naam gebruikt, noteert u deze, omdat u deze later nodig hebt.
    * **Bron type**: Selecteer **gegevens stroom**.
    * **Bron**: Selecteer **Event hub**.
-   * **Optie voor importeren**: Selecteer **Event hub gebruiken uit het huidige abonnement**. 
-   * **Service Bus-naam ruimte**: Selecteer de Event Hub naam ruimte die u eerder hebt`<yourname>-socialtwitter-eh-ns`gemaakt ().
-   * **Event hub**: Selecteer de Event Hub die u eerder hebt gemaakt`socialtwitter-eh`().
-   * **Naam van de Event hub-beleid**: Selecteer het toegangs beleid dat u eerder hebt gemaakt`socialtwitter-access`().
+   * **Import optie**: Selecteer **Event hub gebruiken uit het huidige abonnement**. 
+   * **Service Bus-naam ruimte**: selecteer de Event hub naam ruimte die u eerder hebt gemaakt (`<yourname>-socialtwitter-eh-ns`).
+   * **Event hub**: selecteer de Event hub die u eerder hebt gemaakt (`socialtwitter-eh`).
+   * **Event hub-beleids naam**: Selecteer het toegangs beleid dat u eerder hebt gemaakt (`socialtwitter-access`).
 
      ![Nieuwe invoer voor streaming Analytics-taak maken](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
 
-3. Klik op **Create**.
+3. Klik op **Maken**.
 
 
 ## <a name="specify-the-job-query"></a>De taak query opgeven
@@ -235,7 +234,7 @@ Als u het aantal vermeldingen tussen de onderwerpen wilt vergelijken, kunt u een
 
 3. Zorg ervoor dat de TwitterWpfClient-toepassing wordt uitgevoerd. 
 
-3. Klik in de Blade **query** op de punten naast de `TwitterStream` invoer en selecteer vervolgens **voorbeeld gegevens uit invoer**.
+3. Klik in de Blade **query** op de punten naast het `TwitterStream` invoer en selecteer vervolgens **voorbeeld gegevens uit invoer**.
 
     ![Menu opties voor het gebruik van voorbeeld gegevens voor de stream Analytics-taak vermelding, waarbij ' voorbeeld gegevens van invoer ' is geselecteerd](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-sample-data-from-input.png)
 
@@ -257,7 +256,7 @@ Als u het aantal vermeldingen tussen de onderwerpen wilt vergelijken, kunt u een
     GROUP BY TUMBLINGWINDOW(s, 5), Topic
     ```
 
-    Als u de `TwitterStream` alias voor de invoer niet gebruikt, vervangt u uw alias `TwitterStream` voor in de query.  
+    Als `TwitterStream` als alias voor de invoer niet gebruikt, vervangt u uw alias voor `TwitterStream` in de query.  
 
     Deze query gebruikt de **time stamp by** -sleutel woord om een time stamp-veld in de payload op te geven dat moet worden gebruikt in de tijdelijke berekening. Als dit veld niet is opgegeven, wordt de venster bewerking uitgevoerd met behulp van de tijd dat elke gebeurtenis is aangekomen op het Event Hub. Meer informatie vindt u in de sectie ' aankomst tijd versus toepassings tijd ' van [Stream Analytics query verwijzing](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
 
@@ -278,7 +277,7 @@ De volgende tabel geeft een lijst van de velden die deel uitmaken van de JSON st
 |Onderwerp | Het onderwerp dat overeenkomt met het opgegeven tref woord|
 |SentimentScore | De sentiment-Score van Sentiment140|
 |Auteur | De Twitter-handle die de Tweet heeft verzonden|
-|Text | De volledige hoofd tekst van de Tweet|
+|Tekst | De volledige hoofd tekst van de Tweet|
 
 
 ## <a name="create-an-output-sink"></a>Een uitvoer Sink maken
@@ -291,13 +290,13 @@ In deze hand leiding schrijft u de geaggregeerde Tweet-gebeurtenissen van de taa
 
 1. Klik in de sectie **taak topologie** op het vak **uitvoer** . 
 
-2. Klik op de Blade **uitvoer** op  **+ &nbsp;toevoegen** en vul vervolgens de Blade met de volgende waarden in:
+2. Klik op de Blade **uitvoer** op **+&nbsp;** de Blade met de volgende waarden toe te voegen en in te vullen:
 
-   * **Uitvoeralias**: Gebruik de naam `TwitterStream-Output`. 
-   * **Sink**: Selecteer **Blob-opslag**.
-   * **Opties voor importeren**: Selecteer **Blob Storage gebruiken uit het huidige abonnement**.
-   * **Opslag account**. Selecteer **een nieuw opslag account maken.**
-   * **Opslag account** (tweede vak). Voer `YOURNAMEsa`in, `YOURNAME` waarbij uw naam of een andere unieke teken reeks is. De naam kan alleen kleine letters en cijfers gebruiken en deze moet uniek zijn binnen Azure. 
+   * **Uitvoer alias**: gebruik de naam `TwitterStream-Output`. 
+   * **Sink**: Selecteer **Blob Storage**.
+   * **Opties voor importeren**: Selecteer **Blob-opslag gebruiken uit het huidige abonnement**.
+   * **Opslagaccount**. Selecteer **een nieuw opslag account maken.**
+   * **Opslag account** (tweede vak). Voer `YOURNAMEsa`in, waarbij `YOURNAME` uw naam of een andere unieke teken reeks is. De naam kan alleen kleine letters en cijfers gebruiken en deze moet uniek zijn binnen Azure. 
    * **Container**. Voer `socialtwitter` in.
      De naam van het opslag account en de container naam worden samen gebruikt om een URI voor de Blob-opslag op te geven, zoals: 
 
@@ -305,7 +304,7 @@ In deze hand leiding schrijft u de geaggregeerde Tweet-gebeurtenissen van de taa
     
      ![De Blade nieuwe uitvoer voor Stream Analytics taak](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-output-blob-storage.png)
     
-4. Klik op **Create**. 
+4. Klik op **Maken**. 
 
     Azure maakt het opslag account en genereert automatisch een sleutel. 
 
@@ -341,7 +340,7 @@ U kunt een hulp programma als [Azure Storage Explorer](https://storageexplorer.c
 
 ## <a name="create-another-query-to-identify-trending-topics"></a>Maak een andere query om de onderwerpen over trends te identificeren
 
-Een andere query die u kunt gebruiken om inzicht te krijgen in Twitter sentiment is gebaseerd op een verschuivend [venster](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics). Als u onderwerpen over trends wilt identificeren, zoekt u naar onderwerpen waarin een drempel waarde wordt overschreden voor een bepaalde periode.
+Een andere query die u kunt gebruiken om inzicht te krijgen in Twitter sentiment is gebaseerd op een [verschuivend venster](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics). Als u onderwerpen over trends wilt identificeren, zoekt u naar onderwerpen waarin een drempel waarde wordt overschreden voor een bepaalde periode.
 
 Voor de doel einden van deze procedure controleert u op onderwerpen die in de afgelopen vijf seconden meer dan twintig keer worden vermeld.
 
@@ -365,7 +364,7 @@ Voor de doel einden van deze procedure controleert u op onderwerpen die in de af
 6. Klik op **Start** om de taak opnieuw te starten met de nieuwe query.
 
 
-## <a name="get-support"></a>Ondersteuning krijgen
+## <a name="get-support"></a>Krijg ondersteuning
 Voor verdere ondersteuning kunt u proberen onze [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Volgende stappen

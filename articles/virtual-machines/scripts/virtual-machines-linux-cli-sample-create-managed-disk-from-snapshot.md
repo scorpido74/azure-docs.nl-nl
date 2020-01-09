@@ -1,5 +1,5 @@
 ---
-title: 'Azure CLI-voorbeeldscript: een beheerde schijf maken op basis van een momentopname'
+title: Een beheerde schijf maken op basis van een moment opname-CLI-voor beeld
 description: 'Azure CLI-voorbeeldscript: een beheerde schijf maken op basis van een momentopname'
 services: virtual-machines-linux
 documentationcenter: storage
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 8a219b24c4d4b82363094ccba74db22e3b4018c4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cd50d14ef004007b2c13d295dcb9911b318dd448
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023319"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458479"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-cli"></a>Een beheerde schijf maken met CLI op basis van een momentopname
 
@@ -39,7 +39,7 @@ Met dit script maakt u een beheerde schijf op basis van een momentopname. Gebrui
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script gebruikt de volgende opdrachten om een beheerde schijf te maken op basis van een momentopname. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+Dit script gebruikt de volgende opdrachten om een beheerde schijf te maken op basis van een momentopname. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

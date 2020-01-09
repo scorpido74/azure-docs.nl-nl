@@ -2,19 +2,15 @@
 title: Verbindings assets in Azure Automation
 description: Verbindings assets in Azure Automation bevatten de vereiste informatie om verbinding te maken met een externe service of toepassing vanuit een runbook of DSC-configuratie. In dit artikel worden de details van verbindingen beschreven en wordt uitgelegd hoe u deze kunt gebruiken in tekstuele en grafische ontwerpen.
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
 ms.date: 01/16/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 621441afaa9bef08a8ebf3b0af082c6a17c77b1b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0843277ce74bcc10865792367096aefa7591b244
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850428"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366787"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Verbindings assets in Azure Automation
 
@@ -112,7 +108,7 @@ Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $
 
 U voegt een **Get-AutomationConnection-** activiteit toe aan een grafisch runbook door met de rechter muisknop op de verbinding in het deel venster Bibliotheek van de grafische editor te klikken en **toevoegen aan canvas**te selecteren.
 
-![toevoegen aan canvas](media/automation-connections/connection-add-canvas.png)
+![Toevoegen aan canvas](media/automation-connections/connection-add-canvas.png)
 
 In de volgende afbeelding ziet u een voor beeld van het gebruik van een verbinding in een grafisch runbook.  Dit is hetzelfde voor beeld dat hierboven wordt weer gegeven voor verificatie met behulp van het uitvoeren als-account met een tekst runbook.  In dit voor beeld wordt de gegevensset voor **constante waarden** gebruikt voor de activiteit **runas-verbinding ophalen** die gebruikmaakt van een verbindings object voor verificatie.  Er wordt hier een [pijplijn koppeling](automation-graphical-authoring-intro.md#links-and-workflow) gebruikt omdat de parameterset serviceprincipalcertificate-parameterset één object verwacht.
 

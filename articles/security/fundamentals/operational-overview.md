@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: c5ab994ce7b4e3d195ec3a4c83094974c5767e66
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: bcaf45af4c02dad22e2cc611fa7ea5a32ad3a853
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643771"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443883"
 ---
 # <a name="azure-operational-security-overview"></a>Overzicht van Azure Operational Security
 
@@ -42,13 +42,13 @@ U kunt gegevens uit verschillende bronnen consolideren en gegevens uit uw Azure-
 
 [Azure Automation](/azure/automation/automation-intro) biedt u een manier om de hand matige, langlopende, fout gevoelige en regel matig herhaalde taken te automatiseren die vaak worden uitgevoerd in een Cloud en bedrijfs omgeving. Het bespaart tijd en verhoogt de betrouw baarheid van beheer taken. Deze taken worden zelfs zo gepland dat deze automatisch met regel matige tussen pozen worden uitgevoerd. U kunt processen automatiseren door gebruik te maken van runbooks of configuratie beheer automatiseren door gebruik te maken van de desired state Configuration.
 
-### <a name="backup"></a>Back-up maken
+### <a name="backup"></a>Back-up
 
 [Azure backup](/azure/backup/backup-introduction-to-azure-backup) is de Azure-service die u kunt gebruiken om een back-up te maken van (of te beveiligen) en om uw gegevens in de Microsoft Cloud te herstellen. Azure Backup vervangt uw bestaande on-premises of off-site back-upoplossing met een Cloud oplossing die betrouwbaar, veilig en voordelig is.
 
 Azure Backup biedt onderdelen die u downloadt en implementeert op de juiste computer of server of in de Cloud. Welk onderdeel, of welke agent, u implementeert, is afhankelijk van wat u wilt beveiligen. Alle Azure Backup onderdelen (of u nu gegevens op locatie of in de Cloud beveiligt) kunnen worden gebruikt om een back-up te maken van gegevens in een Azure Recovery Services-kluis in Azure.
 
-Zie de [tabel met Azure backup onderdelen](/azure/backup/backup-introduction-to-azure-backup#which-backup-agent-should-i-use)voor meer informatie.
+Zie de [tabel met Azure backup onderdelen](/azure/backup/backup-overview#what-can-i-back-up)voor meer informatie.
 
 ### <a name="site-recovery"></a>Site Recovery
 
@@ -75,7 +75,7 @@ Azure AD omvat ook een volledige reeks [mogelijkheden voor identiteits beheer](/
 
 Met Azure Active Directory hebben alle toepassingen die u publiceert voor uw partners en klanten (bedrijf of consument) dezelfde mogelijkheden voor identiteits-en toegangs beheer. Zo kunt u uw operationele kosten aanzienlijk verlagen.
 
-## <a name="azure-security-center"></a>Azure Security Center
+## <a name="azure-security-center"></a>Azure Beveiligingscentrum
 
 [Azure Security Center](/azure/security-center/security-center-intro) helpt u bedreigingen te voor komen, te detecteren en erop te reageren met verbeterde zicht baarheid van de beveiliging van uw Azure-resources (en controle over). Het biedt geïntegreerde beveiligings bewaking en beleids beheer in uw abonnementen. Het helpt bedreigingen te detecteren die anders niet kunnen worden opgemerkt en werkt met een uitgebreid ecosysteem van beveiligings oplossingen.
 
@@ -89,7 +89,7 @@ Met Azure Active Directory hebben alle toepassingen die u publiceert voor uw par
 
 Security Center maakt gebruik [van op rollen gebaseerde Access Control (RBAC)](/azure/role-based-access-control/role-assignments-portal). RBAC biedt [ingebouwde rollen](../../role-based-access-control/built-in-roles.md) die kunnen worden toegewezen aan gebruikers, groepen en services in Azure.
 
-Security Center evalueert de configuratie van uw resources om beveiligings problemen en beveiligings lekken te identificeren. In Security Center ziet u alleen informatie met betrekking tot een resource als u de rol van eigenaar, bijdrager of lezer hebt toegewezen aan het abonnement of de resource groep waarvan een resource deel uitmaakt.
+Security Center beoordeelt de configuratie van uw resources om beveiligingsproblemen met zich mee en beveiligingsproblemen te identificeren. In Security Center ziet u alleen informatie met betrekking tot een resource als u de rol van eigenaar, bijdrager of lezer hebt toegewezen aan het abonnement of de resource groep waarvan een resource deel uitmaakt.
 
 >[!Note]
 >Zie voor meer informatie over rollen en toegestane acties in Security Center [machtigingen in azure Security Center](/azure/security-center/security-center-permissions).
@@ -112,7 +112,7 @@ Het [Azure-activiteiten logboek](/azure/monitoring-and-diagnostics/monitoring-ov
 
 ### <a name="azure-diagnostic-logs"></a>Diagnostische logboeken in Azure
 
-[Diagnostische logboeken van Azure](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) worden verzonden door een resource en bieden uitgebreide, frequente gegevens over de werking van die resource. De inhoud van deze logboeken is afhankelijk van het bron type.
+[Diagnostische logboeken van Azure](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) worden verzonden door een resource en bieden uitgebreide, frequente gegevens over de werking van die resource. Resourcetype is afhankelijk van de inhoud van deze logboeken.
 
 Windows-gebeurtenis systeem logboeken zijn een categorie van Diagnostische logboeken voor Vm's. BLOB-, tabel-en wachtrij logboeken zijn categorieën van Diagnostische logboeken voor opslag accounts.
 

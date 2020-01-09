@@ -11,12 +11,12 @@ ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5b33d8fc804d339d3808e5231998fbba41cd4ee9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8a7da1bf80025cfe9b59c42f3338254b86f2ff05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839866"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376338"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Zelf studie: over taxi's-gegevens voor New York laden in Azure SQL Data Warehouse
 
@@ -24,7 +24,7 @@ In deze zelf studie wordt gebruikgemaakt van poly Base voor het laden van nieuwe
 
 > [!div class="checklist"]
 > * Een datawarehouse maken in Azure Portal
-> * Een serverfirewallregel ingesteld in Azure Portal
+> * Een serverfirewallregel instellen in Azure Portal
 > * Verbinding maken met het datawarehouse met SMMS
 > * Een gebruiker maken die wordt aangewezen om gegevens te laden
 > * Externe tabellen maken voor gegevens in Azure Blob Storage
@@ -45,7 +45,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Een lege SQL Data Warehouse maken
 
-Er wordt een Azure SQL Data Warehouse gemaakt met een gedefinieerde set [Compute resources] geheugen-gelijktijdigheids limits.md). De database wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en in een [logische Azure SQL-server](../sql-database/sql-database-features.md). 
+Er wordt een Azure SQL Data Warehouse gemaakt met een gedefinieerde set [Compute resources] geheugen-gelijktijdigheids limits.md). De database wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/management/overview.md) en in een [logische Azure SQL-server](../sql-database/sql-database-features.md). 
 
 Volg deze stappen om een leeg SQL Data Warehouse te maken. 
 
@@ -157,7 +157,7 @@ In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-man
 
     ![verbinding maken met server](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-4. Klik op **Verbinden**. Het venster Objectverkenner wordt geopend in SQL Server Management Studio. 
+4. Klik op **Connect** (Verbinden). Het venster Objectverkenner wordt geopend in SQL Server Management Studio. 
 
 5. Vouw **Databases** uit in Objectverkenner. Vouw **Systeemdatabases** en **Hoofd** uit om de objecten in de hoofddatabase weer te geven.  Vouw **mySampleDatabase** uit om de objecten in uw nieuwe database weer te geven.
 
@@ -208,7 +208,7 @@ De eerste stap voor het laden van gegevens bestaat uit aanmelding als LoaderRC20
 
 2. Voer de volledig gekwalificeerde servernaam in en voer **LoaderRC20** als de aanmelding in.  Voer uw wachtwoord in voor LoaderRC20.
 
-3. Klik op **Verbinden**.
+3. Klik op **Connect** (Verbinden).
 
 4. Wanneer de verbinding gereed is, ziet u twee serververbindingen in Objectverkenner. Eén verbinding als de serverbeheerder en één verbinding als MedRCLogin.
 
@@ -633,7 +633,7 @@ In deze zelfstudie hebt u geleerd hoe u een datawarehouse en een gebruiker voor 
 U hebt het volgende gedaan:
 > [!div class="checklist"]
 > * Een datawarehouse gemaakt in Azure Portal
-> * Een serverfirewallregel ingesteld in Azure Portal
+> * Een serverfirewallregel instellen in Azure Portal
 > * Verbinding gemaakt met het datawarehouse met SMMS
 > * Een gebruiker gemaakt die wordt aangewezen om gegevens te laden
 > * Externe tabellen gemaakt voor gegevens in Azure Storage Blob

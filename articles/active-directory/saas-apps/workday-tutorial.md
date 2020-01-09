@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/20/2019
+ms.date: 11/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fe63ba810724216b1b356896b621f1e5b021bbf
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: d2bf769169b579cb0a06a48b3a5998efb89eb8fb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69891966"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443334"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met workday
 
@@ -84,7 +84,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     b. In het tekstvak **Id** typt u een URL met het volgende patroon: `http://www.workday.com`
 
-    c. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://impl.workday.com/<tenant>/login-saml.htmld`
+    c. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://impl.workday.com/<tenant>/login-saml.htmld`
 
     > [!NOTE]
     > Dit zijn niet de echte waarden. Deze waarden bijwerken met de werkelijke aanmeldings-URL en antwoord-URL. Uw antwoord-URL moet een subdomein hebben, bijvoorbeeld: www, WD2, WD3, WD3-impl, wd5, wd5-impl).
@@ -92,7 +92,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 6. Uw workday-toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerk toewijzingen moet toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **nameidentifier** is toegewezen aan **user.userprincipalname**. Workday-toepassing verwacht **nameidentifier** te worden toegewezen aan **gebruiker. mail**, **UPN**, enzovoort. u moet dus de kenmerk toewijzing bewerken door op het pictogram **bewerken** te klikken en de kenmerk toewijzing te wijzigen.
 
-    ![image](common/edit-attribute.png)
+    ![installatiekopie](common/edit-attribute.png)
 
     > [!NOTE]
     > Hier hebben we de naam-ID met UPN (User. userPrincipalName) als standaard toegewezen. U moet de naam-ID met de werkelijke gebruikers-ID in uw workday-account (uw e-mail adres, UPN, enz.) toewijzen voor een succes volle werking van SSO.
@@ -103,9 +103,9 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Als u de **handtekening** opties wilt wijzigen volgens uw vereiste, klikt u op de knop **bewerken** om het dialoog venster **SAML-handtekening certificaat** te openen.
 
-    ![image](common/edit-certificate.png) 
+    ![installatiekopie](common/edit-certificate.png) 
 
-    ![image](./media/workday-tutorial/signing-option.png)
+    ![installatiekopie](./media/workday-tutorial/signing-option.png)
 
     a. Selecteer **SAML-respons ondertekenen en bevestiging** voor **ondertekening optie**.
 
@@ -122,8 +122,8 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **Naam**`B.Simon` in.  
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Maken**.
 
@@ -167,7 +167,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
    > [!NOTE]
    > De waarde van het omgevings kenmerk is gekoppeld aan de waarde van de Tenant-URL:  
-   > -Als de domein naam van de werkdag-Tenant-URL begint met impl bijvoorbeeld: *https: \//impl.workday.com/\<tenant \>/login-saml2.Flex*), moet het **omgevings** kenmerk worden ingesteld op implementatie.  
+   > -Als de domein naam van de werkdag-Tenant-URL begint met impl bijvoorbeeld: *https://www.myworkday.com/"Tenant"/login-saml2.htmld*), moet het **omgevings** kenmerk worden ingesteld op implementatie.  
    > -Als de domein naam begint met iets anders, neemt u contact op met het [werkdag client ondersteunings team](https://www.workday.com/en-us/partners-services/services/support.html) om de overeenkomende **omgevings** waarde te verkrijgen.
 
 4. Voer in de sectie **SAML Setup** de volgende stappen uit:
@@ -206,7 +206,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     ![X509 open bare sleutel weer geven](./media/workday-tutorial/IC782930.png "X509 open bare sleutel weer geven")
 
-    a. Typ in het tekstvak **naam** een naam voor het certificaat (bijvoorbeeld: computer type *\_SP*).
+    a. Typ in het tekstvak **naam** een naam voor het certificaat (bijvoorbeeld: *beschermings punt\_SP*).
 
     b. Typ in het tekstvak **geldig van** de waarde geldig van kenmerk van het certificaat.
 
@@ -233,7 +233,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     c. Selecteer **sha256**als **handtekening methode voor verificatie aanvragen**.
 
-    ![Handtekening methode voor verificatie aanvraag](./media/workday-tutorial/WorkdaySSOConfiguration.png "Handtekening methode voor verificatie aanvraag") 
+    ![Handtekening methode voor verificatie aanvraag](./media/workday-tutorial/WorkdaySSOConfiguration.png "Handtekening methode voor verificatie aanvraag")
 
     d. Klik op **OK**.
 

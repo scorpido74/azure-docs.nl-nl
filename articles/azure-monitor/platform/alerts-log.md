@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d540912d280302d2ae2166b75fb2d163458d7a61
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: c8d9128e6956c460094be76eccce8d350ed41547
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677832"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658131"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Logboek waarschuwingen maken, weer geven en beheren met behulp van Azure Monitor
 
 ## <a name="overview"></a>Overzicht
 In dit artikel wordt beschreven hoe u logboek waarschuwingen instelt met behulp van de interface waarschuwingen in Azure Portal. De definitie van een waarschuwings regel bevindt zich in drie delen:
-- Doel: Specifieke Azure-resource, die moet worden bewaakt
-- De criteria: Specifieke voor waarde of logica die wordt weer gegeven in signaal, moet actie activeren
-- Actie: Specifieke aanroep verzonden naar een ontvanger van een melding: e-mail, SMS, webhook, enzovoort.
+- Doel: specifieke Azure-resource, die moet worden bewaakt
+- Criteria: specifieke voor waarde of logica die wordt weer gegeven als signaal, moet actie activeren
+- Actie: er is een specifieke aanroep verzonden naar een ontvanger van een melding: e-mail, SMS, webhook, enzovoort.
 
 De term **logboek waarschuwingen** om waarschuwingen te beschrijven waarbij een signaal wordt vastgelegd in een [log Analytics werk ruimte](../learn/tutorial-viewdata.md) of [Application Insights](../app/analytics.md). Meer informatie over de functionaliteit, terminologie en typen in [logboek waarschuwingen-overzicht](alerts-unified-log.md).
 
@@ -36,13 +36,13 @@ Gedetailleerde volgende stapsgewijze instructies voor het gebruik van logboek wa
 
 1. Selecteer in de [Portal](https://portal.azure.com/) **bewaken** en klik onder de sectie monitor op **waarschuwingen**.
 
-    ![Bewaking](media/alerts-log/AlertsPreviewMenu.png)
+    ![Controleren](media/alerts-log/AlertsPreviewMenu.png)
 
 1. Selecteer de knop **nieuwe waarschuwings regel** om een nieuwe waarschuwing in azure te maken.
 
     ![Waarschuwing toevoegen](media/alerts-log/AlertsPreviewOption.png)
 
-1. De sectie waarschuwing maken wordt weer gegeven met de drie onderdelen die bestaan uit: *Definieer een waarschuwings voorwaarde*, *Definieer waarschuwings Details*en *Definieer de actie groep*.
+1. De sectie waarschuwing maken wordt weer gegeven met de drie onderdelen die bestaan uit: *waarschuwings voorwaarde definiëren*, *waarschuwings Details definiëren*en *actie groep definiëren*.
 
     ![Regel maken](media/alerts-log/AlertsPreviewAdd.png)
 
@@ -50,9 +50,9 @@ Gedetailleerde volgende stapsgewijze instructies voor het gebruik van logboek wa
 
    > [!NOTE]
    > Voor het maken van een logboek waarschuwing: Controleer of het **logboek** signaal beschikbaar is voor de geselecteerde resource voordat u doorgaat.
-   >  ![Resource selecteren](media/alerts-log/Alert-SelectResourceLog.png)
+   >  resource](media/alerts-log/Alert-SelectResourceLog.png) ![selecteren
 
-1. *Logboek waarschuwingen*: Zorg ervoor dat het **resource type** een analyse bron is, zoals *log Analytics* , *Application Insights* en signaal type als **logboek**, en klik vervolgens op *gereed*. Gebruik vervolgens de knop **criteria toevoegen** om een lijst weer te geven met signaal opties die beschikbaar zijn voor de resource en uit de lijst met **aangepaste logboeken** voor de geselecteerde logboek monitor service, zoals *log Analytics* of *Application Insights*.
+1. *Waarschuwingen voor logboeken*: Controleer of het **resource type** een analyse bron is, zoals *log Analytics* , *Application Insights* en signaal type als **logboek**, en klik vervolgens op *gereed*. Gebruik vervolgens de knop **criteria toevoegen** om een lijst weer te geven met signaal opties die beschikbaar zijn voor de resource en uit de lijst met **aangepaste logboeken** voor de geselecteerde logboek monitor service, zoals *log Analytics* of *Application Insights*.
 
    ![Selecteer een resource-aangepast zoeken naar Logboeken](media/alerts-log/AlertsPreviewResourceSelectionLog.png)
 
@@ -60,27 +60,27 @@ Gedetailleerde volgende stapsgewijze instructies voor het gebruik van logboek wa
    > 
    > In waarschuwings lijsten kunnen analyse query's worden geïmporteerd als signaal type- **logboek (opgeslagen query)** , zoals in de bovenstaande afbeelding wordt weer gegeven. Gebruikers kunnen uw query in de analyse verbeteren en deze vervolgens opslaan voor toekomstig gebruik in waarschuwingen-meer informatie over het gebruik van de query opslaan [in de logboek query in azure monitor](../log-query/log-query-overview.md) of een [gedeelde query in Application Insights Analytics](../app/app-insights-overview.md).
 
-1. *Logboek waarschuwingen*: Als deze functie is geselecteerd, kan de query voor waarschuwingen worden opgegeven in het **Zoek query** veld; Als de query syntaxis onjuist is, wordt in het veld de fout rood weer gegeven. Als de query syntaxis juist is: voor referentie gegevens van de vermelde query wordt weer gegeven als een grafiek met de optie om het tijd venster van de laatste zes uur tot de vorige week te verfijnen.
+1. *Logboek waarschuwingen*: als u deze hebt geselecteerd, kan de query voor waarschuwingen worden opgegeven in het **Zoek query** veld; Als de query syntaxis onjuist is, wordt in het veld de fout rood weer gegeven. Als de query syntaxis juist is: voor referentie gegevens van de vermelde query wordt weer gegeven als een grafiek met de optie om het tijd venster van de laatste zes uur tot de vorige week te verfijnen.
 
     ![Waarschuwings regel configureren](media/alerts-log/AlertsPreviewAlertLog.png)
 
    > [!NOTE]
    > 
    > Historische gegevens visualisatie kan alleen worden weer gegeven als de query resultaten tijd details bevatten. Als uw query resulteert in samenvattings gegevens of specifieke kolom waarden, wordt deze weer gegeven als een enkelvoudige tekening.
-   > Voor metrische meet typen van logboek waarschuwingen met Application Insights of [overschakelen naar een nieuwe API](alerts-log-api-switch.md), kunt u opgeven welke specifieke variabele de gegevens moet groeperen met behulp **van** de optie aggregate on. zoals hieronder wordt beschreven:
+   > Voor metrische meet typen van logboek waarschuwingen met Application Insights of [overschakelen naar een nieuwe API](alerts-log-api-switch.md), kunt u opgeven welke specifieke variabele de gegevens moet groeperen met behulp **van de optie aggregate on** . zoals hieronder wordt beschreven:
    > 
    > ![aggregatie op optie](media/alerts-log/aggregate-on.png)
 
-1. *Logboek waarschuwingen*: Als de visualisatie is geïmplementeerd, kunt u **waarschuwings logica** selecteren uit de weer gegeven opties voor voor waarde, aggregatie en finally-drempel waarde. Geef ten slotte in de logica de tijd op die moet worden geëvalueerd voor de opgegeven voor waarde, met behulp van de **periode** optie. En hoe vaak de waarschuwing moet worden uitgevoerd door **frequentie**te selecteren. **Logboek waarschuwingen** kunnen worden gebaseerd op:
-    - [Aantal records](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules): Er wordt een waarschuwing gemaakt als het aantal records dat door de query wordt geretourneerd, groter is dan of kleiner is dan de opgegeven waarde.
-    - [Metrische meet waarde](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules): Er wordt een waarschuwing gemaakt als elke *cumulatieve waarde* in de resultaten de opgegeven drempel waarde overschrijdt en wordt *gegroepeerd op basis van* de gekozen waarde. Het aantal schendingen voor een waarschuwing is het aantal keren dat de drempel waarde wordt overschreden in de gekozen tijds periode. U kunt het totale aantal schendingen opgeven voor elke combi natie van inbreuken in de resultatenset of opeenvolgende inbreuken om te vereisen dat de schendingen in opeenvolgende steek proeven moeten plaatsvinden.
+1. *Logboek waarschuwingen*: als de visualisatie is geïmplementeerd, kunt u **waarschuwings logica** selecteren uit de weer gegeven opties voor voor waarde, aggregatie en finally-drempel waarde. Geef ten slotte in de logica de tijd op die moet worden geëvalueerd voor de opgegeven voor waarde, met behulp van de **periode** optie. En hoe vaak de waarschuwing moet worden uitgevoerd door **frequentie**te selecteren. **Logboek waarschuwingen** kunnen worden gebaseerd op:
+    - [Aantal records](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules): er wordt een waarschuwing gemaakt als het aantal records dat door de query wordt geretourneerd, groter is dan of kleiner is dan de opgegeven waarde.
+    - [Metrische meting](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules): er wordt een waarschuwing gemaakt als elke *cumulatieve waarde* in de resultaten de opgegeven drempel waarde overschrijdt en wordt *gegroepeerd op basis van* de gekozen waarde. Het aantal schendingen voor een waarschuwing is het aantal keren dat de drempel waarde wordt overschreden in de gekozen tijds periode. U kunt het totale aantal schendingen opgeven voor elke combi natie van inbreuken in de resultatenset of opeenvolgende inbreuken om te vereisen dat de schendingen in opeenvolgende steek proeven moeten plaatsvinden.
 
 
 1. Als de tweede stap definieert u een naam voor uw waarschuwing in het veld **naam van waarschuwings regel** , samen met een **Beschrijving** van Details voor de waarschuwing en **Ernst** waarde van de opgegeven opties. Deze details worden opnieuw gebruikt in alle waarschuwings-e-mails, meldingen of pushen die door Azure Monitor worden uitgevoerd. Daarnaast kan de gebruiker ervoor kiezen om de waarschuwings regel direct te activeren bij het maken van de optie **regel inschakelen bij het maken** .
 
     Voor alleen **logboek waarschuwingen** is een aantal aanvullende functies beschikbaar in waarschuwings Details:
 
-    - **Waarschuwingen onderdrukken**: Wanneer u onderdrukking inschakelt voor de waarschuwings regel, worden acties voor de regel gedurende een gedefinieerde tijds duur uitgeschakeld nadat een nieuwe waarschuwing is gemaakt. De regel wordt nog uitgevoerd en er worden waarschuwings records gemaakt aan de criteria waaraan wordt voldaan. U de tijd om het probleem op te lossen zonder dat er dubbele acties worden uitgevoerd.
+    - **Waarschuwingen onderdrukken**: wanneer u onderdrukking inschakelt voor de waarschuwings regel, worden acties voor de regel gedurende een gedefinieerde tijds duur uitgeschakeld nadat een nieuwe waarschuwing is gemaakt. De regel wordt nog uitgevoerd en er worden waarschuwings records gemaakt aan de criteria waaraan wordt voldaan. U de tijd om het probleem op te lossen zonder dat er dubbele acties worden uitgevoerd.
 
         ![Waarschuwingen onderdrukken voor waarschuwingen in Logboeken](media/alerts-log/AlertsPreviewSuppress.png)
 
@@ -90,12 +90,12 @@ Gedetailleerde volgende stapsgewijze instructies voor het gebruik van logboek wa
 1. Geef als derde en laatste stap op of een **actie groep** moet worden geactiveerd voor de waarschuwings regel wanneer aan de waarschuwings voorwaarde wordt voldaan. U kunt elke bestaande actie groep met een waarschuwing kiezen of een nieuwe actie groep maken. Op basis van de geselecteerde actie groep, wanneer de waarschuwing Azure wordt geactiveerd: e-mail (s) verzenden, SMS (s) verzenden, webhook (s) aanroepen, met behulp van Azure Runbooks, pushen naar uw ITSM-programma, enzovoort. Meer informatie over [actie groepen](action-groups.md).
 
     > [!NOTE]
-    > Raadpleeg de [service limieten voor Azure-abonnementen](../../azure-subscription-service-limits.md) voor limieten voor de nettolading van de Runbook die zijn geactiveerd voor logboek waarschuwingen via Azure-actie groepen
+    > Raadpleeg de [service limieten voor Azure-abonnementen](../../azure-resource-manager/management/azure-subscription-service-limits.md) voor limieten voor de nettolading van de Runbook die zijn geactiveerd voor logboek waarschuwingen via Azure-actie groepen
 
     Voor **logboek waarschuwingen** is extra functionaliteit beschikbaar voor het overschrijven van de standaard acties:
 
-    - **E-mail melding**: Hiermee wordt het *onderwerp* van de e-mail in het e-mail bericht overschreven, verzonden via actie groep; Als er een of meer e-mail acties bestaan in de bedoelde actie groep. U kunt de hoofd tekst van de e-mail niet wijzigen en dit veld is **niet** voor e-mail adres.
-    - **Aangepaste JSON-nettolading toevoegen**: Hiermee wordt de JSON van de webhook die wordt gebruikt door actie groepen, overschreven. Als er een of meer webhook-acties bestaan in de bedoelde actie groep. De gebruiker kan de indeling van JSON opgeven die moet worden gebruikt voor alle webhooks die zijn geconfigureerd in de gekoppelde actie groep. Zie webhook- [actie voor logboek waarschuwingen](../../azure-monitor/platform/alerts-log-webhook.md)voor meer informatie over de indeling van webhooks. U kunt de optie webhook weer geven gebruiken om de indeling te controleren met behulp van JSON-voorbeeld gegevens.
+    - **E-mail melding**: onderdrukt het *onderwerp* van de e-mail in het e-mail bericht, verzonden via actie groep; Als er een of meer e-mail acties bestaan in de bedoelde actie groep. U kunt de hoofd tekst van de e-mail niet wijzigen en dit veld is **niet** voor e-mail adres.
+    - **Aangepaste JSON-nettolading toevoegen**: vervangt de JSON van de webhook die wordt gebruikt door actie groepen; Als er een of meer webhook-acties bestaan in de bedoelde actie groep. De gebruiker kan de indeling van JSON opgeven die moet worden gebruikt voor alle webhooks die zijn geconfigureerd in de gekoppelde actie groep. Zie [webhook-actie voor logboek waarschuwingen](../../azure-monitor/platform/alerts-log-webhook.md)voor meer informatie over de indeling van webhooks. U kunt de optie webhook weer geven gebruiken om de indeling te controleren met behulp van JSON-voorbeeld gegevens.
 
         ![Actie onderdrukkingen voor waarschuwingen in Logboeken](media/alerts-log/AlertsPreviewOverrideLog.png)
 
@@ -106,7 +106,7 @@ Gedetailleerde volgende stapsgewijze instructies voor het gebruik van logboek wa
 
      Binnen een paar minuten is de waarschuwing actief en worden triggers zoals eerder beschreven.
 
-Gebruikers kunnen hun analyse query ook in [log Analytics](../log-query/portals.md) hebben voltooid en vervolgens pushen om een waarschuwing te maken met behulp van de knop ' waarschuwing instellen ', gevolgd door de volgende instructies van stap 6 en hoger in de bovenstaande zelf studie.
+Gebruikers kunnen ook hun analyse query in [log Analytics](../log-query/portals.md) volt ooien en vervolgens pushen om een waarschuwing te maken met de knop ' waarschuwing instellen ', gevolgd door de volgende instructies van stap 6 en hoger in de bovenstaande zelf studie.
 
  ![Log Analytics-ingestelde waarschuwing](media/alerts-log/AlertsAnalyticsCreate.png)
 
@@ -119,11 +119,11 @@ Gebruikers kunnen hun analyse query ook in [log Analytics](../log-query/portals.
     > Waarschuwings regels voor logboeken bestaan uit aangepaste op query's gebaseerde logica die door gebruikers wordt verschaft en daarom zonder een opgeloste status. Omdat er telkens wordt voldaan aan de voor waarden die zijn opgegeven in de waarschuwings regel voor logboeken, wordt deze geactiveerd.
 
 1. Selecteer de knop **regels beheren** op de bovenste balk om naar de sectie regel beheer te gaan, waarin alle gemaakte waarschuwings regels worden weer gegeven. inclusief waarschuwingen die zijn uitgeschakeld.
-    ![waarschuwings regels beheren](media/alerts-log/manage-alert-rules.png)
+    waarschuwings regels ![ beheren](media/alerts-log/manage-alert-rules.png)
 
 ## <a name="managing-log-alerts-using-azure-resource-template"></a>Logboek waarschuwingen beheren met Azure-resource sjabloon
 
-Waarschuwingen in het logboek in Azure Monitor zijn gekoppeld aan `Microsoft.Insights/scheduledQueryRules/`het resource type. Zie [Azure monitor-geplande query regels API-verwijzing](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)voor meer informatie over dit resource type. Logboek waarschuwingen voor Application Insights of Log Analytics kunnen worden gemaakt met behulp van [geplande query regel-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
+Waarschuwingen in het logboek in Azure Monitor zijn gekoppeld aan het resource type `Microsoft.Insights/scheduledQueryRules/`. Zie [Azure monitor-geplande query regels API-verwijzing](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)voor meer informatie over dit resource type. Logboek waarschuwingen voor Application Insights of Log Analytics kunnen worden gemaakt met behulp van [geplande query regel-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
 
 > [!NOTE]
 > Waarschuwingen voor logboeken voor Log Analytics kunnen ook worden beheerd met verouderde [log Analytics waarschuwings-API](api-alerts.md) en verouderde sjablonen van [log Analytics opgeslagen Zoek opdrachten en waarschuwingen](../insights/solutions-resources-searches-alerts.md) . Zie voor meer informatie over het gebruik van de nieuwe ScheduledQueryRules-API die hier wordt beschreven, [overschakelen naar nieuwe API voor log Analytics-waarschuwingen](alerts-log-api-switch.md).
@@ -202,12 +202,12 @@ Hieronder volgt de structuur voor [geplande query regels maken](https://docs.mic
 
 ```
 
-De bovenstaande voor beeld-JSON kan worden opgeslagen als (zeg) sampleScheduledQueryRule. json voor het doel van deze procedure en kan worden geïmplementeerd met behulp van [Azure Resource Manager in azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+De bovenstaande voor beeld-JSON kan worden opgeslagen als (zeg) sampleScheduledQueryRule. json voor het doel van deze procedure en kan worden geïmplementeerd met behulp van [Azure Resource Manager in azure Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
 
 ### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>Logboek waarschuwing met een query tussen meerdere resources met behulp van een Azure-resource sjabloon
 
-Hieronder ziet u de structuur voor het maken van een resource sjabloon op basis van een [geplande query regel](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) met behulp van een logboek registratie voor [het vastleggen](../../azure-monitor/log-query/cross-workspace-query.md) van gegevens in Logboeken van het [metrische meet type](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules), waarbij een voor beeld van gegevensset als variabelen is ingesteld.
+Hieronder ziet u de structuur voor het maken van een resource sjabloon op basis van een [geplande query regel](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) met behulp van een logboek registratie voor het vastleggen van gegevens in [Logboeken](../../azure-monitor/log-query/cross-workspace-query.md) van het [metrische meet type](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules), waarbij een voor beeld van gegevensset als variabelen is ingesteld.
 
 ```json
 
@@ -299,7 +299,7 @@ Hieronder ziet u de structuur voor het maken van een resource sjabloon op basis 
 > [!IMPORTANT]
 > Wanneer u een query voor meerdere resources gebruikt in de logboek waarschuwing, is het gebruik van [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) verplicht en moet de gebruiker toegang hebben tot de vermelde lijst met resources
 
-De bovenstaande voor beeld-JSON kan worden opgeslagen als (zeg) sampleScheduledQueryRule. json voor het doel van deze procedure en kan worden geïmplementeerd met behulp van [Azure Resource Manager in azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+De bovenstaande voor beeld-JSON kan worden opgeslagen als (zeg) sampleScheduledQueryRule. json voor het doel van deze procedure en kan worden geïmplementeerd met behulp van [Azure Resource Manager in azure Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
 ## <a name="managing-log-alerts-using-powershell"></a>Logboek waarschuwingen beheren met Power shell
 
@@ -309,18 +309,18 @@ Azure Monitor- [geplande query regels-API](https://docs.microsoft.com/rest/api/m
 
 1. [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) : Power shell-cmdlet voor het maken van een nieuwe waarschuwings regel voor het logboek.
 1. [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) : Power shell-cmdlet om een bestaande waarschuwings regel voor het logboek bij te werken.
-1. [New-AzScheduledQueryRuleSource](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulesource) : Power shell-cmdlet voor het maken of bijwerken van een object waarmee de bron parameters voor een logboek waarschuwing worden opgegeven. Wordt gebruikt als invoer door de cmdlet [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) en [set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) .
+1. [New-AzScheduledQueryRuleSource](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulesource) : Power shell-cmdlet voor het maken of bijwerken van een object dat de bron parameters voor een logboek waarschuwing opgeeft. Wordt gebruikt als invoer door de cmdlet [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) en [set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) .
 1. [New-AzScheduledQueryRuleSchedule](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleSchedule): Power shell-cmdlet voor het maken of bijwerken van een object dat de plannings parameters voor een logboek waarschuwing opgeeft. Wordt gebruikt als invoer door de cmdlet [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) en [set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) .
 1. [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) : Power shell-cmdlet voor het maken of bijwerken van een object waarmee actie parameters voor een logboek waarschuwing worden opgegeven. Wordt gebruikt als invoer door de cmdlet [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) en [set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) .
-1. [New-AzScheduledQueryRuleAznsActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) : Power shell-cmdlet voor het maken of bijwerken van een object waarmee actie groeps parameters worden opgegeven voor een logboek waarschuwing. Wordt gebruikt als invoer door de cmdlet [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) .
+1. [New-AzScheduledQueryRuleAznsActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) : Power shell-cmdlet voor het maken of bijwerken van een object waarmee actie groepen para meters voor een logboek waarschuwing worden opgegeven. Wordt gebruikt als invoer door de cmdlet [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) .
 1. [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) : Power shell-cmdlet voor het maken of bijwerken van een object waarmee trigger voorwaarde parameters voor de logboek waarschuwing worden opgegeven. Wordt gebruikt als invoer door de cmdlet [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) .
-1. [New-AzScheduledQueryRuleLogMetricTrigger](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) : Power shell-cmdlet voor het maken of bijwerken van een object dat de metrische trigger voorwaarde parameters opgeeft voor de waarschuwing voor het [meting type van metrische gegevens](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules). Wordt gebruikt als invoer door de cmdlet [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) .
-1. [Get-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule) : Power shell-cmdlet voor het weer geven van bestaande waarschuwings regels voor Logboeken of een specifieke waarschuwings regel voor het logboek
-1. [Update-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule) : Power shell-cmdlet voor het in-of uitschakelen van waarschuwings regel voor logboek
+1. [New-AzScheduledQueryRuleLogMetricTrigger](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) : Power shell-cmdlet voor het maken of bijwerken van een object waarvoor metrische trigger voorwaarde parameters worden opgegeven voor de waarschuwing voor het [meting type van metrische](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)gegevens. Wordt gebruikt als invoer door de cmdlet [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) .
+1. [Get-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule) : Power shell-cmdlet voor het weer geven van de bestaande logboek waarschuwings regels of een specifieke waarschuwings regel voor het logboek
+1. [Update-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule) : Power shell-cmdlet voor het in-of uitschakelen van de waarschuwings regel voor logboek registratie
 1. [Remove-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule): Power shell-cmdlet voor het verwijderen van een bestaande waarschuwings regel voor het logboek
 
 > [!NOTE]
-> ScheduledQueryRules Power shell-cmdlets kunnen alleen regels maken die zelf de cmdlet zelf hebben gemaakt of die gebruikmaken van Azure Monitor- [geplande query regels-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Waarschuwings regels in logboek registreren die zijn gemaakt met verouderde [log Analytics-waarschuwings-API](api-alerts.md) en verouderde sjablonen van [log Analytics opgeslagen Zoek opdrachten en waarschuwingen](../insights/solutions-resources-searches-alerts.md) kunnen worden beheerd met behulp van ScheduledQueryRules Power shell-cmdlets pas nadat de gebruikers switching API-voor [ Analytics-waarschuwingen](alerts-log-api-switch.md).
+> ScheduledQueryRules Power shell-cmdlets kunnen alleen regels maken die zelf de cmdlet zelf hebben gemaakt of die gebruikmaken van Azure Monitor- [geplande query regels-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Waarschuwings regels in logboek registreren die zijn gemaakt met verouderde [log Analytics-waarschuwings-API](api-alerts.md) en verouderde sjablonen van [log Analytics opgeslagen Zoek opdrachten en waarschuwingen](../insights/solutions-resources-searches-alerts.md) kunnen worden beheerd met behulp van ScheduledQueryRules Power shell-cmdlets, nadat de gebruikers-API-voor [keur voor log Analytics](alerts-log-api-switch.md)
 
 Hieronder ziet u de stappen voor het maken van een waarschuwings regel voor een voorbeeld logboek met behulp van de scheduledQueryRules Power shell-cmdlets.
 ```powershell

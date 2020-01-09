@@ -4,19 +4,19 @@ description: Vereenvoudig complexe rapportage met vooraf gedefinieerde en aangep
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: dff5027f2ff9ff244f0fa04177a04e446e98465b
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: b89e61f0c268df0ed6dd69ae1c6d97f00678fc32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200545"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365917"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Interactieve rapporten maken Azure Monitor voor VM's met werkmappen
 
-Werkmappen combi neren tekst, [logboek query's](../log-query/query-language.md), metrische gegevens en para meters in uitgebreide interactieve rapporten. Werkmappen kunnen worden bewerkt door andere team leden die toegang hebben tot dezelfde Azure-resources.
+Werkmappen combi neren tekst, [logboek query's](../log-query/query-language.md), metrische gegevens en para meters in uitgebreide interactieve rapporten. Werkmappen kunnen worden bewerkt door andere teamleden die toegang hebben tot dezelfde Azure-resources.
 
 Werkmappen zijn handig voor scenario's zoals:
 
@@ -45,13 +45,13 @@ Azure Monitor voor VM's bevat verschillende werkmappen om aan de slag te gaan, e
 
 Een werkmap bestaat uit secties die bestaan uit onafhankelijk Bewerk bare grafieken, tabellen, tekst en invoer besturings elementen. Voor een beter begrip van werkmappen kunt u beginnen met het openen van een sjabloon en het maken van een aangepaste werkmap door lopen. 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
-2. Selecteer **virtual machines**.
+2. Selecteer **virtuele Machines**.
 
 3. Selecteer een VM in de lijst.
 
-4. Selecteer op de pagina VM, in de sectie **bewaking** , de optie **inzichten (preview)** .
+4. Op de pagina virtuele machine in de **bewaking** sectie, selecteer **inzichten (preview)** .
 
 5. Selecteer op de pagina voor het maken van de VM-inzichten het tabblad **prestaties** of **kaarten** en selecteer vervolgens **werkmappen weer geven** op de koppeling op de pagina. 
 

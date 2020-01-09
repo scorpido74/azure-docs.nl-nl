@@ -1,45 +1,51 @@
 ---
-title: Maken en delen van een Jupyter-notebook op Azure
-description: Snel maken en uitvoeren van een Jupyter-notebook op Azure-Notebooks en vervolgens die laptop met anderen delen.
+title: Een Jupyter-notebook maken en delen in Azure Notebooks preview
+description: U kunt snel een Jupyter-notebook maken en uitvoeren op Azure Notebooks preview en vervolgens die notebook delen met anderen.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 71220fa5aa0367d1cb1694582b4f96459a3016e7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7b983d927bfd789cddb8d00675294cefc9f55e08
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277504"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647081"
 ---
-# <a name="quickstart-create-and-share-a-notebook"></a>QuickStart: Maken en delen van een laptop
+# <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Snelstartgids: een notitie blok maken en delen in Azure Notebooks preview
 
-1. Ga naar [Azure notebooks](https://notebooks.azure.com) en meld u aan. (Zie Quick Start ( [Aanmelden bij Azure notebooks](quickstart-sign-in-azure-notebooks.md)) voor meer informatie.
+In deze Quick Start leert u hoe u snel een Jupyter-notebook kunt maken en uitvoeren op Azure Notebooks en dat notitie blok met anderen kunt delen.
 
-1. Selecteer op de pagina openbaar profiel **Mijn projecten** boven aan de pagina:
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+## <a name="create-a-new-project-and-notebook"></a>Een nieuw project en een nieuwe notebook maken
+
+1. Ga naar de [Azure notebooks-site (https://notebooks.azure.com)](https://notebooks.azure.com) en meld u aan. (Zie voor meer informatie, [-Snelstart: aanmelden bij Azure-notitieblokken](quickstart-sign-in-azure-notebooks.md)).
+
+1. Selecteer in de pagina van uw openbare profiel **Mijn projecten** aan de bovenkant van de pagina:
 
     ![Mijn projecten koppeling boven aan het browservenster](media/quickstarts/my-projects-link.png)
 
-1. Selecteer op de pagina **Mijn projecten** **+ Nieuw project** (sneltoets: n); de knop kan alleen worden weer gegeven als **+** als het browser venster smal is:
+1. Op de **Mijn projecten** weergeeft, schakelt **+ nieuw Project** (sneltoets: n); de knop wordt mogelijk weergegeven alleen als **+** als het browservenster smal is:
 
     ![Nieuw Project-opdracht op de pagina Mijn projecten](media/quickstarts/new-project-command.png)
 
-1. In de pop-up **Nieuw project maken** die wordt weer gegeven, voert u de volgende gegevens in of stelt u deze in en selecteert u **maken**:
+1. In de **nieuw Project maken** pop-upvenster dat wordt weergegeven, invoeren of stel de volgende details en selecteer vervolgens **maken**:
 
-   - **Project naam**: Hallo wereld in python
-   - **Project-id**: Hallo-wereld-python
-   - **Openbaar project**: (uitgeschakeld)
-   - **Een README.MD maken**: (uitgeschakeld)
+   - **Naam van het project**: Hello World in Python
+   - **Project-ID**: hello-world-python
+   - **Openbare project**: (uitgeschakeld)
+   - **Maken van een README.md**: (uitgeschakeld)
 
      ![Nieuw Project met ingevulde details](media/quickstarts/new-project-popup.png)
 
-1. Na enkele ogenblikken navigeert Azure notitieblokken u naar het nieuwe project. Voeg een notitie blok toe aan het project door de vervolg keuzelijst **+ Nieuw** te selecteren (dit kan worden weer gegeven als alleen **+** ) en selecteer vervolgens **notebook**:
+1. Na enkele ogenblikken navigeert Azure notitieblokken u naar het nieuwe project. Een notitieblok toevoegen aan het project door het selecteren van de **+ nieuw** vervolgkeuzelijst (die mogelijk weergegeven als alleen **+** ), vervolgens de optie **Notebook**:
 
     [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
 
-1. Voer in de pop-up **Nieuw notitie blok maken** die verschijnt een bestands naam in voor uw notitie blok, zoals *HelloWorldInPython. ipynb* ( *. ipynb* betekent ironpython (Jupyter) notebook) en selecteer **python 3,6** voor de taal (ook wel de *kernel*genoemd):
+1. In de **nieuwe Notebook maken** pop-upvenster dat wordt weergegeven, Geef een bestandsnaam voor uw laptop, zoals *HelloWorldInPython.ipynb* ( *.ipynb* betekent dat de Notebook v Ironpythonu (Jupyter) ), en selecteer **Python 3.6** voor de taal (ook wel de *kernel*):
 
     ![Het pop-upvenster voor de nieuwe Notebook maken](media/quickstarts/new-notebook-popup.png)
 
-1. Selecteer **Nieuw** om het notitie blok te maken dat vervolgens wordt weer gegeven in de lijst met bestanden van uw project:
+1. Selecteer **nieuw** te maken van de notebook wordt vervolgens in de lijst met bestanden van uw project weergegeven voltooien:
 
     ![Nieuwe notebook wordt weergegeven in de lijst met bestanden van het project](media/quickstarts/new-notebook-created.png)
 
@@ -49,7 +55,7 @@ ms.locfileid: "74277504"
 
     ![Weergave van een nieuwe notebook in Azure-notitieblokken](media/quickstarts/create-notebook-first-open.png)
 
-1. De notebook heeft standaard een lege codecel. Als u het type van de cel wilt wijzigen in **verlaagd, gebruikt**u de vervolg keuzelijst cellen type om **prijs verlaging**te selecteren:
+1. De notebook heeft standaard een lege codecel. Het celtype te wijzigen **Markdown**, de cel type vervolgkeuzelijst gebruiken om te selecteren **Markdown**:
 
     ![Wijzigen van het celtype in een nieuwe notebook](media/quickstarts/create-notebook-cell-type.png)
 
@@ -59,7 +65,7 @@ ms.locfileid: "74277504"
     # Hello World in Python
     ```
 
-1. Omdat het bewerken van Markdown, is de tekst wordt weergegeven als een header met de "#". Selecteer de knop **uitvoeren** om de prijs verlaging in HTML weer te geven. Azure-notitieblokken automatisch maakt vervolgens een nieuwe codecel daarna:
+1. Omdat het bewerken van Markdown, is de tekst wordt weergegeven als een header met de "#". Voor het renderen van de Markdown in HTML, selecteer de **uitvoeren** knop. Azure-notitieblokken automatisch maakt vervolgens een nieuwe codecel daarna:
 
     ![De knop uitvoeren voor een cel en het gerenderde Markdown](media/quickstarts/run-cell-markdown-render.png)
 
@@ -73,7 +79,7 @@ ms.locfileid: "74277504"
     print(msg)
     ```
 
-1. Selecteer **uitvoeren** (sneltoets: Shift + Enter) om de code uit te voeren. U ziet onder de cel geslaagde uitvoer is vergelijkbaar met de volgende tekst:
+1. Selecteer **uitvoeren** (sneltoets: Shift + Enter) de code uit te voeren. U ziet onder de cel geslaagde uitvoer is vergelijkbaar met de volgende tekst:
 
     ```output
     Hello, Azure Notebooks! Today is Thursday, 15 November, 2018
@@ -87,13 +93,13 @@ ms.locfileid: "74277504"
 
 ## <a name="share-the-notebook"></a>Delen van de notebook
 
-Als u uw notitie blok wilt delen, gaat u terug naar de pagina project, klikt u met de rechter muisknop op het notitie blok, selecteert u **koppeling kopiëren** (sneltoets: y) en plakt u die koppeling in een geschikt bericht (e-mail adres, im, enzovoort).
+Als u wilt uw laptop delen, gaat u terug naar de projectpagina indien nodig, met de rechtermuisknop op de notebook-bestand, selecteer **koppeling kopiëren** (sneltoets: y), en plak de koppeling in een toepasselijk bericht (e-mail, IM, enz.).
 
-Op de pagina project kunt u ook het menu **delen** gebruiken om een koppeling te verkrijgen, een e-mail bericht met de koppeling te maken of HTML-code op te nemen en in te sluiten:
+Op de projectpagina ook kunt u de **Share** invoegcode menu Haal een koppeling, het maken van een e-mailbericht met de koppeling of het verkrijgen van HTML en Markdown:
 
 ![Opdracht voor project delen](media/quickstarts/share-project-command.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelf studie: een Jupyter-notitie blok maken om een lineaire regressie uit te voeren](tutorial-create-run-jupyter-notebook.md)
+> [Zelfstudie: een run maken een Jupyter-notebook te doen, lineaire regressie](tutorial-create-run-jupyter-notebook.md)

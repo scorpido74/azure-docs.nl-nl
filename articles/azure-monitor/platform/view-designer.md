@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: a1a4dbffed37480178d1b94a77587ca251396db6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 05d849aa0edf5892e568c4078ca619490cfcd98e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931941"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363197"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Aangepaste weer gaven maken met behulp van de weer gave designer in Azure Monitor
 Met behulp van View designer in Azure Monitor kunt u verschillende aangepaste weer gaven maken in de Azure Portal die u kan helpen bij het visualiseren van gegevens in uw Log Analytics-werk ruimte. Dit artikel bevat een overzicht van de ontwerp functies en-procedures voor het maken en bewerken van aangepaste weer gaven.
@@ -32,9 +32,9 @@ Weer gaven worden weer gegeven op de pagina **overzicht** van Azure monitor in d
 
 De weer gaven die u maakt met de weer gave Designer bevatten de elementen die in de volgende tabel worden beschreven:
 
-| Webonderdeelpagina's | Beschrijving |
+| Onderdeel | Beschrijving |
 |:--- |:--- |
-| Pagina's | Worden weer gegeven op de **overzichts** pagina van Azure monitor. Elke tegel bevat een visueel overzicht van de aangepaste weer gave die het vertegenwoordigt. Elk tegel type biedt een andere visualisatie van uw records. U selecteert een tegel om een aangepaste weer gave weer te geven. |
+| Tegels | Worden weer gegeven op de **overzichts** pagina van Azure monitor. Elke tegel bevat een visueel overzicht van de aangepaste weer gave die het vertegenwoordigt. Elk tegel type biedt een andere visualisatie van uw records. U selecteert een tegel om een aangepaste weer gave weer te geven. |
 | Aangepaste weer gave | Wordt weer gegeven wanneer u een tegel selecteert. Elke weer gave bevat een of meer visualisatie onderdelen. |
 | Visualisatie onderdelen | Een visualisatie van gegevens weer geven in de werk ruimte Log Analytics op basis van een of meer [logboek query's](../log-query/log-query-overview.md). De meeste onderdelen bevatten een kop, die een visualisatie op hoog niveau en een lijst bevat waarin de belangrijkste resultaten worden weer gegeven. Elk onderdeel type biedt een andere visualisatie van de records in de werk ruimte Log Analytics. U selecteert elementen in het onderdeel om een logboek query uit te voeren die gedetailleerde records bevat. |
 
@@ -59,7 +59,7 @@ De opties worden beschreven in de volgende tabel:
 | +          | Definieer een aangepast filter dat is gedefinieerd voor de weer gave. |
 
 
-## <a name="create-a-new-view"></a>Een nieuwe weer gave maken
+## <a name="create-a-new-view"></a>Een nieuwe weergave maken
 U kunt een nieuwe weer gave maken in de ontwerp functie voor weer gaven door **weer gave Designer** te selecteren in het menu van uw log Analytics-werk ruimte.
 
 ![Tegel Designer weer geven](media/view-designer/view-designer-tile.png)
@@ -99,8 +99,8 @@ De opties voor het werken met weer gaven in de bewerkings modus worden beschreve
 |:--|:--|
 | Opslaan        | Hiermee slaat u de wijzigingen op en sluit u de weer gave. |
 | Annuleren      | Hiermee worden de wijzigingen genegeerd en wordt de weer gave gesloten. |
-| Weer gave verwijderen | Hiermee verwijdert u de weer gave. |
-| Exporteren      | Hiermee wordt de weer gave geëxporteerd naar een [Azure Resource Manager sjabloon](../../azure-resource-manager/resource-group-authoring-templates.md) die u kunt importeren in een andere werk ruimte. De naam van het bestand is de naam van de weer gave en heeft een *omsview* -extensie. |
+| Weergave verwijderen | Hiermee verwijdert u de weer gave. |
+| Exporteren      | Hiermee wordt de weer gave geëxporteerd naar een [Azure Resource Manager sjabloon](../../azure-resource-manager/templates/template-syntax.md) die u kunt importeren in een andere werk ruimte. De naam van het bestand is de naam van de weer gave en heeft een *omsview* -extensie. |
 | Importeren      | Hiermee wordt het *omsview* -bestand geïmporteerd dat u hebt geëxporteerd uit een andere werk ruimte. Met deze actie wordt de configuratie van de bestaande weer gave overschreven. |
 | Kloon       | Hiermee maakt u een nieuwe weer gave en opent u deze in de ontwerp functie voor weer gaven. De naam van de nieuwe weer gave is hetzelfde als de oorspronkelijke naam, maar er wordt een *kopie* aan toegevoegd. |
 

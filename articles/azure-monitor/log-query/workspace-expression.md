@@ -1,18 +1,17 @@
 ---
 title: de expressie Workspace () in Azure Monitor-logboek query | Microsoft Docs
 description: De werkruimte expressie wordt gebruikt in een Azure Monitor logboek query om gegevens op te halen uit een specifieke werk ruimte in dezelfde resource groep, een andere resource groep of een ander abonnement.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
-ms.openlocfilehash: f26b9534fbf95cc301ae782d47ab7030988fa469
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 255888acf5da6149b6a964b23ed038b99715481c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932841"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364948"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>de expressie Workspace () in Azure Monitor-logboek query
 
@@ -30,9 +29,9 @@ De `workspace` expressie wordt gebruikt in een Azure Monitor query om gegevens o
 | Id | Beschrijving | Voorbeeld
 |:---|:---|:---|
 | Naam resource | Door de mens lees bare naam van de werk ruimte (ook wel "onderdeel naam") | werk ruimte ("contosoretail") |
-| Gekwalificeerde naam | Volledige naam van de werk ruimte in de vorm: "subscriptionname/resourceGroup/onderdeel naam" | werk ruimte (' contoso/ContosoResource/ContosoWorkspace ') |
-| Id | GUID van de werk ruimte | werk ruimte ("b438b3f6-912a-46d5-9db1-b42069242ab4") |
-| Azure-Resource-ID | Id voor de Azure-resource | werk ruimte ("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
+| Gekwalificeerde naam | Volledige naam van de werk ruimte in de vorm: "subscriptionname/resourceGroup/onderdeel naam" | workspace('Contoso/ContosoResource/ContosoWorkspace') |
+| Id | GUID van de werk ruimte | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
+| Azure-Resource-ID | Id voor de Azure-resource | workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 
 ## <a name="notes"></a>Opmerkingen

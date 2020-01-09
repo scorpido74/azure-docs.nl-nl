@@ -4,14 +4,14 @@ description: Hoe u opslag doelen definieert zodat uw Azure HPC-cache uw on-premi
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 12/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 396ed84856604c297551c4593e0d7b82b92ac924
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 75d657fd9f3ee13c331450b324fd3b99e9cb6ca5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166688"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647209"
 ---
 # <a name="add-storage-targets"></a>Opslagdoelen toevoegen
 
@@ -33,6 +33,8 @@ Open in de Azure Portal uw cache-exemplaar en klik op **opslag doelen** op de zi
 
 Een nieuw Blob-opslag doel vereist een lege BLOB-container of een container die is gevuld met gegevens in de bestandssysteem indeling van de Azure HPC-cache. Lees meer over het vooraf laden van een BLOB-container in [gegevens verplaatsen naar Azure Blob-opslag](hpc-cache-ingest.md).
 
+U kunt op deze pagina een nieuwe container maken voordat u deze toevoegt.
+
 Als u een Azure Blob-container wilt definiëren, voert u deze informatie in.
 
 ![scherm afbeelding van de pagina opslag doel toevoegen, gevuld met informatie voor een nieuw Azure Blob-opslag doel](media/hpc-cache-add-blob.png)
@@ -41,13 +43,15 @@ Als u een Azure Blob-container wilt definiëren, voert u deze informatie in.
 
 * **Naam van opslag doel** : Stel een naam in die dit opslag doel identificeert in de Azure HPC-cache.
 * **Doel type** : Kies **BLOB**.
-* **Opslag account** : Selecteer het account met de container die u wilt gebruiken.
+* **Opslag account** : Selecteer het account dat u wilt gebruiken.
 
   U moet het cache-exemplaar toestemming geven om toegang te krijgen tot het opslag account zoals beschreven in [de toegangs functies toevoegen](#add-the-access-control-roles-to-your-account).
 
   Lees [vereisten voor Blob Storage](hpc-cache-prereqs.md#blob-storage-requirements)voor meer informatie over het type opslag account dat u kunt gebruiken.
 
-* **Opslag container** : Selecteer de BLOB-container voor dit doel.
+* **Opslag container** : Selecteer de BLOB-container voor dit doel of klik op **nieuwe maken**.
+
+  ![scherm afbeelding van het dialoog venster voor het opgeven van naam en toegangs niveau (privé) voor een nieuwe container](media/add-blob-new-container.png)
 
 * **Pad naar virtuele naam ruimte** : Stel het client gerichte bestandspad in voor dit opslag doel. Lees de [geaggregeerde naam ruimte configureren](hpc-cache-namespace.md) voor meer informatie over de functie virtuele naam ruimte.
 
@@ -146,9 +150,9 @@ Deze tabel bevat een overzicht van de verschillen in het gebruiks model:
 
 | Gebruiks model | Cache modus | Back-end-verificatie | Maximale vertraging voor terugschrijven |
 | ---- | ---- | ---- | ---- |
-| Zware, incidentele schrijf bewerkingen lezen | Lezen | Nooit | None |
+| Zware, incidentele schrijf bewerkingen lezen | Lezen | Nooit | Geen |
 | Meer dan 15% schrijf bewerkingen | Lezen/schrijven | Nooit | 1 uur |
-| Clients slaan de cache over | Lezen | 30 seconden | None |
+| Clients slaan de cache over | Lezen | 30 seconden | Geen |
 
 ## <a name="next-steps"></a>Volgende stappen
 

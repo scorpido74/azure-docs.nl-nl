@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 30fffa6264411238c3ff0a5e829e1567c00f4f97
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 12/17/2019
+ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794198"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460745"
 ---
 # <a name="create-a-basic-index-in-azure-cognitive-search"></a>Een Basic-index maken in azure Cognitive Search
 
@@ -158,7 +158,7 @@ Bij het definiëren van het schema moet u de naam, het type en de kenmerken van 
 
 Hier vindt u meer gedetailleerde informatie over de [ondersteunde gegevens typen](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)van Azure Cognitive Search.
 
-### <a name="index-attributes"></a>Index kenmerken
+### <a name="index-attributes"></a>Indexkenmerken
 
 Er moet precies één veld in de index zijn opgegeven als een **sleutel** veld dat elk document uniek identificeert.
 
@@ -175,10 +175,9 @@ De Api's die u gebruikt om een index te maken, hebben verschillende standaard ge
 | `facetable` |Hiermee kunt u een veld gebruiken in een [meervoudige navigatie](search-faceted-navigation.md)structuur om op de gebruiker te filteren. Doorgaans werken velden met terugkerende waarden die u kunt gebruiken om meerdere documenten te groeperen (bijvoorbeeld meerdere documenten die in een bepaalde merk- of servicecategorie vallen) het beste als facetten. |
 | `searchable` |Hiermee kunt u in dit veld in de volledige tekst zoeken. |
 
+## <a name="index-size"></a>Index grootte
 
-## <a name="storage-implications"></a>Opslag implicaties
-
-De kenmerken die u selecteert, hebben invloed op de opslag. In de volgende scherm afbeelding ziet u de index opslag patronen die voortkomen uit verschillende combi Naties van kenmerken.
+De grootte van een index wordt bepaald door de grootte van de documenten die u uploadt, plus de index configuratie, zoals of u Voorst Ellen opneemt en hoe u kenmerken instelt voor afzonderlijke velden. In de volgende scherm afbeelding ziet u de index opslag patronen die voortkomen uit verschillende combi Naties van kenmerken.
 
 De index is gebaseerd op de [ingebouwde voorbeeld](search-get-started-portal.md) gegevens bron van onroerend goed, die u in de portal kunt indexeren en doorzoeken. Hoewel de index schema's niet worden weer gegeven, kunt u de kenmerken afleiden op basis van de naam van de index. *Realestate-Doorzoek bare* index heeft bijvoorbeeld het kenmerk dat kan worden **doorzocht** en niets anders, het ophalen van *realestate-* index heeft het kenmerk **retrievable** selected en niets anders, enzovoort.
 
@@ -186,13 +185,13 @@ De index is gebaseerd op de [ingebouwde voorbeeld](search-get-started-portal.md)
 
 Hoewel deze index varianten kunst matig zijn, kunnen we ernaar verwijzen naar een uitgebreidere vergelijking van de manier waarop kenmerken van opslag worden beïnvloed. Kan de indexerings grootte die kan worden **opgehaald** , worden ingesteld? Nee. Voegt velden toe aan een **suggestie** voor het verg Roten van index grootte? Ja.
 
-Indexen die ondersteuning bieden voor filteren en sorteren, zijn proportioneel groter dan indexen die alleen zoeken in volledige tekst ondersteunen. De reden hiervoor is dat filter-en sorteer query op exacte overeenkomsten, zodat documenten intact worden opgeslagen. In tegens telling tot Doorzoek bare velden die ondersteuning bieden voor volledige tekst en fuzzy Search, worden omgekeerde indexen gebruikt. deze worden gevuld met tokens met een sleutel die minder ruimte in beslag neemt dan hele documenten.
+Indexen die ondersteuning bieden voor filteren en sorteren, zijn proportioneel groter dan het ondersteunen van de volledige zoek opdracht voor tekst. Filter-en sorteer bewerkingen scannen op exacte overeenkomsten, waardoor de aanwezigheid van intacte documenten vereist is. In tegens telling tot Doorzoek bare velden die ondersteuning bieden voor volledige tekst en fuzzy Search, worden omgekeerde indexen gebruikt. deze worden gevuld met tokens met een sleutel die minder ruimte in beslag neemt dan hele documenten. 
 
 > [!Note]
 > Opslag architectuur wordt beschouwd als een implementatie details van Azure Cognitive Search en kan zonder kennisgeving worden gewijzigd. Er is geen garantie dat het huidige gedrag in de toekomst blijft behouden.
 
 ## <a name="suggesters"></a>Suggesties
-Een suggestie is een sectie van het schema waarmee wordt gedefinieerd welke velden in een index worden gebruikt voor het ondersteunen van automatisch aanvullen of het type-ahead query's in Zoek opdrachten. Normaal gesp roken worden gedeeltelijke Zoek reeksen naar de [suggesties (rest API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) verzonden terwijl de gebruiker een zoek opdracht typt. de API retourneert een aantal voorgestelde woord groepen. 
+Een suggestie is een sectie van het schema waarmee wordt gedefinieerd welke velden in een index worden gebruikt voor het ondersteunen van automatisch aanvullen of het type-ahead query's in Zoek opdrachten. Normaal gesp roken worden gedeeltelijke Zoek reeksen naar de [suggesties (rest API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) verzonden terwijl de gebruiker een zoek opdracht typt. de API retourneert een aantal voorgestelde documenten of zinsdelen. 
 
 Velden die zijn toegevoegd aan een suggestie, worden gebruikt voor het bouwen van type-ahead zoek termen. Alle zoek termen worden tijdens het indexeren gemaakt en afzonderlijk opgeslagen. Zie Voorst [Ellen toevoegen](index-add-suggesters.md)voor meer informatie over het maken van een boom structuur.
 
@@ -218,9 +217,9 @@ De volgende opties kunnen worden ingesteld voor CORS:
 
 + **maxAgeInSeconds** (optioneel): browsers gebruiken deze waarde om de duur (in seconden) te bepalen voor het cachen van CORS-Preflight-reacties. Dit moet een niet-negatief geheel getal zijn. Hoe groter deze waarde is, hoe beter de prestaties, maar hoe langer het duurt om de wijzigingen van het CORS-beleid van kracht te laten worden. Als deze niet is ingesteld, wordt een standaard duur van 5 minuten gebruikt.
 
-## <a name="encryption-key"></a>Versleutelings sleutel
+## <a name="encryption-key"></a>Coderingssleutel
 
-Hoewel alle Azure Cognitive Search-indexen standaard worden versleuteld met behulp van door micro soft beheerde sleutels, kunnen indexen worden geconfigureerd om te worden versleuteld met door de **klant beheerde sleutels** in Key Vault. Zie [versleutelings sleutels beheren in Azure Cognitive Search](search-security-manage-encryption-keys.md)voor meer informatie.
+Hoewel alle Azure Cognitive Search-indexen standaard worden versleuteld met door micro soft beheerde sleutels, kunnen indexen worden geconfigureerd om te worden versleuteld met door de **klant beheerde sleutels** in Key Vault. Zie [versleutelings sleutels beheren in Azure Cognitive Search](search-security-manage-encryption-keys.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

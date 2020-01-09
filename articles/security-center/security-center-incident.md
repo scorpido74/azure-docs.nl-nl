@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: memildin
-ms.openlocfilehash: 2a22039b3499f1ba0f2d7acb2e86a1991d35a380
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b2ab769fc2595af9fd1ea41f1ef492944cb5e7fa
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202116"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665765"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Beveiligings incidenten beheren in Azure Security Center
 
@@ -40,7 +40,7 @@ In het Beveiligingscentrum is een beveiligingsincident een samenloop van alle wa
    > [!NOTE]
    > Dezelfde waarschuwing kan bestaan als onderdeel van een incident, en als een zelfstandige waarschuwing worden weer gegeven.
 
-    ![Waarschuwingsdetails](./media/security-center-incident/security-center-incident-alert.png)
+    ![Meldingsdetails](./media/security-center-incident/security-center-incident-alert.png)
 
 1. Volg de stappen voor herstel die zijn opgegeven voor elke waarschuwing.
 
@@ -55,10 +55,10 @@ De volgende onderwerpen helpen u bij het door lopen van de verschillende waarsch
 In de volgende onderwerpen wordt uitgelegd hoe Security Center de verschillende telemetrie gebruikt die wordt verzameld van integratie met de Azure-infra structuur, om extra beveiligings lagen toe te passen voor resources die in azure zijn geïmplementeerd:
 
 * [Waarschuwingen voor service lagen](security-center-alerts-service-layer.md)
-* [Integratie met Azure-beveiligings producten](security-center-alerts-integration.md)
+* [Detectie van bedreigingen voor Azure WAF en Azure DDoS Protection](security-center-alerts-integration.md)
 
 ## <a name="see-also"></a>Zie ook
-In dit document hebt u kunnen lezen hoe u de mogelijkheid beveiligingsincidenten in Azure Security Center gebruikt. Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
+In dit document hebt u kunnen lezen hoe u de mogelijkheid beveiligingsincidenten in Azure Security Center gebruikt. Zie de volgende onderwerpen voor meer informatie over Security Center:
 
 * [Beveiligings waarschuwingen in azure Security Center](security-center-alerts-overview.md).
 * [Beveiligingswaarschuwingen beheren](security-center-managing-and-responding-alerts.md)

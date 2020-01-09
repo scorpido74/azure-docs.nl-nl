@@ -6,16 +6,22 @@ ms.service: site-recovery
 ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 1cc1ee82b45ecab17e4bcfb3a909fc90b33a1545
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 10b3e572ec61d1eff342f24a6a5a7bcba6276983
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954437"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495385"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Replicatie naar Azure inschakelen voor virtuele VMware-machines
 
 In dit artikel wordt beschreven hoe u replicatie van on-premises virtuele VMware-machines naar Azure inschakelt.
+
+## <a name="resolve-common-issues"></a>Veelvoorkomende problemen oplossen
+
+* Elke schijf moet kleiner zijn dan 4 TB.
+* De besturingssysteem schijf moet een standaard schijf zijn, niet een dynamische schijf.
+* Voor virtuele machines van generatie 2/UEFI moet de besturingssysteem familie Windows zijn en moet de opstart schijf kleiner zijn dan 300 GB.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -23,6 +29,11 @@ In dit artikel wordt ervan uitgegaan dat u hebt:
 
 - [Stel uw on-premises bron omgeving in](vmware-azure-set-up-source.md).
 - [Stel uw doel omgeving in op Azure](vmware-azure-set-up-target.md).
+- [Controleer de vereisten](vmware-physical-azure-support-matrix.md) voordat u begint. Belang rijke aandachtspunten voor:
+    - [Ondersteunde besturings systemen](vmware-physical-azure-support-matrix.md#replicated-machines) voor gerepliceerde machines.
+    - Ondersteuning voor [opslag/schijf](vmware-physical-azure-support-matrix.md#storage) .
+    - [Azure-vereisten](vmware-physical-azure-support-matrix.md#azure-vm-requirements) waaraan on-premises machines moeten voldoen.
+
 
 ## <a name="before-you-start"></a>Voordat u begint
 Houd rekening met de volgende informatie wanneer u virtuele VMware-machines repliceert:
@@ -123,11 +134,7 @@ Klanten van micro soft-Software Assurance kunnen Azure Hybrid Benefit gebruiken 
 
 Meer informatie over [Azure Hybrid Benefit](https://aka.ms/azure-hybrid-benefit-pricing).
 
-## <a name="resolve-common-issues"></a>Veelvoorkomende problemen oplossen
 
-* Elke schijf moet kleiner zijn dan 4 TB.
-* De besturingssysteem schijf moet een standaard schijf zijn, niet een dynamische schijf.
-* Voor virtuele machines van generatie 2/UEFI moet de besturingssysteem familie Windows zijn en moet de opstart schijf kleiner zijn dan 300 GB.
 
 ## <a name="next-steps"></a>Volgende stappen
 

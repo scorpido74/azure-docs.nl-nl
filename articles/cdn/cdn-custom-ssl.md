@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: bacd26cdba24e7ad503a3ae58d5c77d5a3311537
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177749"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361655"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Zelfstudie: HTTPS op een aangepast Azure CDN-domein configureren
 
@@ -50,7 +50,7 @@ In deze zelfstudie leert u het volgende:
 
 Voordat u de stappen in deze zelfstudie kunt voltooien, moet u eerst een CDN-profiel en ten minste één CDN-eindpunt maken. Zie voor meer informatie [Snelstartgids: Een Azure CDN-profiel en een eindpunt maken](cdn-create-new-endpoint.md).
 
-Daarnaast moet u een aangepast Azure CDN-domein koppelen aan uw CDN-eindpunt. Zie [Zelfstudie: Een aangepast domein toevoegen aan uw Azure CDN-eindpunt](cdn-map-content-to-custom-domain.md) voor meer informatie 
+Daarnaast moet u een aangepast Azure CDN-domein koppelen aan uw CDN-eindpunt. Zie [zelf studie: een aangepast domein toevoegen aan uw Azure CDN-eind punt](cdn-map-content-to-custom-domain.md)voor meer informatie.
 
 > [!IMPORTANT]
 > CDN-beheerde certificaten zijn niet beschikbaar voor root-of Apex-domeinen. Als uw Azure CDN aangepast domein een root-of Apex-domein is, moet u de functie uw eigen certificaat gebruiken. 
@@ -68,27 +68,29 @@ Wanneer u een door CDN beheerd certificaat gebruikt, kan de HTTPS-functie met ee
 
 Volg deze stappen om HTTPS in te schakelen in een aangepast domein:
 
-1. Ga in de [Microsoft Azure-portal](https://portal.azure.com) naar uw profiel in **Azure CDN Standard van Microsoft**, **Azure CDN Standard van Akamai**, **Azure CDN Standard van Verizon** of **Azure CDN Premium van Verizon**.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om een certificaat te vinden dat wordt beheerd door uw Azure CDN. Zoek en selecteer **CDN-profielen**. 
 
-2. Selecteer in de lijst met CDN-eindpunten het eindpunt met het aangepaste domein.
+2. Kies uw **Azure CDN standaard van micro soft**, **Azure CDN Standard van Akamai**, **Azure CDN Standard van Verizon**of **Azure CDN Premium van Verizon** profile.
+
+3. Selecteer in de lijst met CDN-eindpunten het eindpunt met het aangepaste domein.
 
     ![Lijst met eindpunten](./media/cdn-custom-ssl/cdn-select-custom-domain-endpoint.png)
 
     De pagina **Eindpunt** wordt weergegeven.
 
-3. Selecteer in de lijst met aangepaste domeinen het aangepaste domein waarvoor u HTTPS wilt inschakelen.
+4. Selecteer in de lijst met aangepaste domeinen het aangepaste domein waarvoor u HTTPS wilt inschakelen.
 
     ![Lijst met aangepaste domeinen](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
     De pagina **Aangepast domein** wordt weergegeven.
 
-4. Kies onder Certificaatbeheertype **CDN-beheerd** .
+5. Kies onder Certificaatbeheertype **CDN-beheerd** .
 
-5. Selecteer **Aan** om HTTPS in te schakelen.
+6. Selecteer **Aan** om HTTPS in te schakelen.
 
     ![HTTP-status voor aangepast domein](./media/cdn-custom-ssl/cdn-select-cdn-managed-certificate.png)
 
-6. Ga door naar [Domein valideren](#validate-the-domain).
+7. Ga door naar [Domein valideren](#validate-the-domain).
 
 
 # <a name="option-2-enable-https-with-your-own-certificatetaboption-2-enable-https-with-your-own-certificate"></a>[Optie 2: HTTPS met uw eigen certificaat inschakelen](#tab/option-2-enable-https-with-your-own-certificate)
@@ -176,7 +178,7 @@ Als u uw eigen certificaat gebruikt, is domeinvalidatie niet nodig.
 
 Uw CNAME-record moet de volgende indeling hebben, waarbij *Naam* de naam van het aangepaste domein is, en *Waarde* de hostnaam van het CDN-eindpunt:
 
-| Naam            | Type  | Waarde                 |
+| Name            | Type  | Waarde                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
@@ -204,7 +206,7 @@ webmaster@&lt;uw-domeinnaam.com&gt;
 hostmaster@&lt;uw-domeinnaam.com&gt;  
 postmaster@&lt;uw-domeinnaam.com&gt;  
 
-U ontvangt binnen enkele minuten een e-mailbericht, vergelijkbaar met het bericht in het volgende voorbeeld, waarin u wordt gevraagd om de aanvraag goed te keuren. Als u een spamfilter gebruikt, voegt u verification@digicert.com toe aan de lijst met toegestane e-mailadressen. Als u na 24 uur nog geen e-mailbericht hebt ontvangen, neemt u contact op met Microsoft Ondersteuning.
+U ontvangt binnen enkele minuten een e-mailbericht, vergelijkbaar met het bericht in het volgende voorbeeld, waarin u wordt gevraagd om de aanvraag goed te keuren. Als u een spam filter gebruikt, voegt u verification@digicert.com toe aan de acceptatie lijst. Als u na 24 uur nog geen e-mailbericht hebt ontvangen, neemt u contact op met Microsoft Ondersteuning.
     
 ![E-mailbericht voor domeinvalidatie](./media/cdn-custom-ssl/domain-validation-email.png)
 
@@ -260,15 +262,17 @@ In de voorgaande stappen hebt u het HTTPS-protocol in uw aangepaste domein inges
 
 ### <a name="disable-the-https-feature"></a>De HTTPS-functie uitschakelen 
 
-1. Ga in [Azure Portal](https://portal.azure.com) naar uw profiel in **Azure CDN Standard van Microsoft**, **Azure CDN Standard van Verizon** of **Azure CDN Premium van Verizon**.
+1. Zoek in het [Azure Portal](https://portal.azure.com)naar **CDN-profielen**en selecteer deze. 
 
-2. Klik in de lijst met eindpunten op het eindpunt met het aangepaste domein.
+2. Kies uw **Azure CDN standaard van micro soft**, **Azure CDN Standard van Verizon**of **Azure CDN Premium van Verizon** -profiel.
 
-3. Klik op het aangepaste domein waarvoor u HTTPS wilt uitschakelen.
+3. Kies het eind punt met het aangepaste domein in de lijst met eind punten.
+
+4. Kies het aangepaste domein waarvoor u HTTPS wilt uitschakelen.
 
     ![Lijst met aangepaste domeinen](./media/cdn-custom-ssl/cdn-custom-domain-HTTPS-enabled.png)
 
-4. Klik op **Uit** om HTTPS uit te schakelen. Klik vervolgens op **Toepassen**.
+5. Kies **uit** om HTTPS uit te scha kelen en selecteer vervolgens **Toep assen**.
 
     ![Dialoogvenster Aangepaste HTTPS](./media/cdn-custom-ssl/cdn-disable-custom-ssl.png)
 
@@ -316,11 +320,11 @@ In de volgende tabel wordt de bewerkingsvoortgang weergegeven die plaatsvindt na
 
 7. *Hoe werkt het vernieuwen van certificaten met uw eigen certificaat?*
 
-    Als u er zeker van wilt zijn dat een nieuwere certificaat wordt geïmplementeerd op de PoP-infra structuur, uploadt u uw nieuwe certificaat naar Azure-sleutel kluis en kiest u vervolgens in uw SSL-instellingen op Azure CDN de nieuwste certificaat versie en klikt u op opslaan. Azure CDN wordt vervolgens uw nieuwe bijgewerkte certificaat propogate. 
+    Als u er zeker van wilt zijn dat een nieuwere certificaat wordt geïmplementeerd op de PoP-infra structuur, uploadt u uw nieuwe certificaat naar Azure-sleutel kluis en kiest u vervolgens in uw SSL-instellingen op Azure CDN de nieuwste certificaat versie en klikt u op opslaan. Azure CDN wordt vervolgens uw nieuwe bijgewerkte certificaat door gegeven. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > - Het HTTPS-protocol inschakelen in uw aangepast domein

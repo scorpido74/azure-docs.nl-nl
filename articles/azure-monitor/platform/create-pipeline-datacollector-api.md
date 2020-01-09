@@ -4,15 +4,15 @@ description: U kunt de Azure Monitor HTTP data collector API gebruiken om POST J
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/09/2018
-ms.openlocfilehash: 8b739d86ec557ca8c7de7e0999c905b51d1d97a7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3074d8d9dfcb3dbca31821d73cfd6daee056edb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932619"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363962"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Een gegevens pijplijn maken met de Data Collector-API
 
@@ -21,7 +21,7 @@ Met de [Azure Monitor Data Collector-API](data-collector-api.md) kunt u aangepas
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>Voorbeeld probleem
-In de rest van dit artikel gaan we pagina weergave gegevens bekijken in Application Insights. In het hypothetische scenario willen we geografische gegevens die standaard door de Application Insights SDK worden verzameld, correleren aan aangepaste gegevens die de populatie van elk land/regio in de wereld bevatten, met het doel om te bepalen waar wij moeten worden gespendeerd de meeste marketing dollars. 
+In de rest van dit artikel gaan we pagina weergave gegevens bekijken in Application Insights. In het hypothetische scenario willen we de geografische gegevens die standaard door de Application Insights SDK worden verzameld, correleren aan aangepaste gegevens die de populatie van elk land/regio in de wereld bevatten, met het doel van het identificeren van de meeste marketing dollars. 
 
 We gebruiken een open bare gegevens bron, zoals de [kandidaten voor Onwerelde populaties](https://esa.un.org/unpd/wpp/) voor dit doel. De gegevens hebben het volgende eenvoudige schema:
 

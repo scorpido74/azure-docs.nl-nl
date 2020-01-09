@@ -4,19 +4,19 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: eb61bf5734d0aea1534735b23a2b95b52000f5ad
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8946da455b4a395814d4cb5a833932c2e3d56f0a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322908"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75658522"
 ---
-| Resource | [Verbruiks abonnement](../articles/azure-functions/functions-scale.md#consumption-plan) | [Premium-abonnement](../articles/azure-functions/functions-scale.md#premium-plan) | [App service abonnement](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
+| Bron | [Verbruiks abonnement](../articles/azure-functions/functions-scale.md#consumption-plan) | [Premium-abonnement](../articles/azure-functions/functions-scale.md#premium-plan) | [App service abonnement](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
-| Uitschalen | Gestuurde gebeurtenis | Gestuurde gebeurtenis | [Hand matig/automatisch schalen](../articles/app-service/manage-scale-up.md) | 
+| Uitschalen | Gebeurtenisgestuurd | Gebeurtenisgestuurd | [Hand matig/automatisch schalen](../articles/app-service/manage-scale-up.md) | 
 | Maximumaantal exemplaren | 200 | 100 | 10-20 |
 |Standaard [time-outduur](../articles/azure-functions/functions-scale.md#timeout) (min) |5 | 30 |30<sup>2</sup> |
-|Maximale [time-outduur](../articles/azure-functions/functions-scale.md#timeout) (min.) |10 | 60 | niet-gebonden<sup>3</sup> |
+|Maximale [time-outduur](../articles/azure-functions/functions-scale.md#timeout) (min) |10 | 60 | niet-gebonden<sup>3</sup> |
 | Maximum aantal uitgaande verbindingen (per instantie) | 600 actief (1200 totaal) | unbounded | unbounded |
 | Maximale aanvraag grootte (MB)<sup>4</sup> | 100 | 100 | 100 |
 | Maximale lengte van de query teken reeks<sup>4</sup> | 4096 | 4096 | 4096 |
@@ -29,7 +29,7 @@ ms.locfileid: "74322908"
 | </a> voor aangepaste domeinen per app |500<sup>7</sup> |500 |500 |
 | SSL- [ondersteuning](../articles/app-service/configure-ssl-bindings.md) voor aangepaste domeinen |niet-gebonden SNI SSL verbinding opgenomen | niet-gebonden SNI SSL en 1 IP SSL verbindingen inbegrepen |niet-gebonden SNI SSL en 1 IP SSL verbindingen inbegrepen | 
 
-<sup>1</sup> zie de [app service plan limieten](../articles/azure-subscription-service-limits.md#app-service-limits)voor specifieke limieten voor de verschillende opties voor het app service plan.  
+<sup>1</sup> zie de [app service plan limieten](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)voor specifieke limieten voor de verschillende opties voor het app service plan.  
 <sup>2</sup> standaard is de time-out voor de functies 1. x runtime in een app service plan ongebonden.  
 <sup>3</sup> vereist dat het app service-abonnement is ingesteld op [Always on](../articles/azure-functions/functions-scale.md#always-on). Betaal op basis van standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/).  
 <sup>4</sup> deze limieten worden [ingesteld op de host](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config).  

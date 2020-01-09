@@ -2,31 +2,39 @@
 title: Zelf studie-een verrijking van Azure IoT Hub-berichten gebruiken
 description: Zelf studie waarin wordt getoond hoe u verrijkingen van berichten gebruikt voor Azure IoT Hub berichten
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 12/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 0dd6c410040eea9eb4039ab5da183cc0b6799493
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 323730fff4659c87058669016b69808a880994cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005786"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453833"
 ---
 # <a name="tutorial-using-azure-iot-hub-message-enrichments"></a>Zelf studie: verrijkingen van Azure IoT Hub-berichten gebruiken
 
 *Verrijkingen* van berichten is de mogelijkheid van de IOT hub om berichten met aanvullende informatie af te *stem pelen* voordat de berichten naar het aangewezen eind punt worden verzonden. Een reden voor het gebruik van verrijkingen van berichten is het insluiten van gegevens die kunnen worden gebruikt voor het vereenvoudigen van de downstream-verwerking. Het verrijken van telemetriegegevens van een apparaat met een dubbele tag van een apparaat kan bijvoorbeeld de belasting van klanten verminderen om deze informatie te laten opleveren voor Device-dubbele API-aanroepen. Zie het [overzicht van verrijkingen van berichten](iot-hub-message-enrichments-overview.md)voor meer informatie.
 
-In deze zelf studie gebruikt u de Azure CLI om de resources in te stellen, waaronder twee eind punten die naar twee verschillende opslag containers verwijzen: **verrijkt** en **Origineel**. Vervolgens gebruikt u de [Azure Portal](https://portal.azure.com) voor het configureren van verrijkingen van berichten die alleen worden toegepast op berichten die naar het eind punt worden verzonden met de **verrijkte** opslag container. U stuurt berichten naar de IoT Hub, die worden doorgestuurd naar beide opslag containers. Alleen de berichten die naar het eind punt voor de **verrijkte** opslag container worden verzonden, worden verrijkt.
+In deze zelf studie ziet u twee manieren om de resources te maken en te configureren die nodig zijn om de verrijkingen van het bericht voor een IoT Hub te testen. De resources bevatten één opslag account met twee opslag containers: een voor de verrijkte berichten en één voor de oorspronkelijke berichten. Ook is een IoT-hub opgenomen om de berichten te ontvangen en deze te routeren naar de juiste opslag container, afhankelijk van het feit of ze zijn verrijkt of niet. 
 
-Hier volgen de taken die u moet uitvoeren om deze zelf studie te volt ooien:
+* De eerste methode is het gebruik van de Azure CLI om de resources te maken en de bericht routering te configureren. Vervolgens definieert u de verrijkingen hand matig met behulp van de [Azure Portal](https://portal.azure.com). 
+
+* De tweede methode is het gebruik van een Azure Resource Manager sjabloon voor het maken van de resources *en* de configuraties voor de bericht Routering en het verrijkings bericht van berichten. 
+
+Nadat de configuraties voor de bericht Routering en de verrijkingen van berichten zijn voltooid, gebruikt u een toepassing om berichten naar de IoT Hub te verzenden, die vervolgens naar beide opslag containers worden doorgestuurd. Alleen de berichten die worden verzonden naar het eind punt voor de **verrijkte** opslag container, worden uitgebreid.
+
+Hier volgen de taken die u uitvoert om deze zelf studie te volt ooien:
 
 **IoT Hub-bericht verrijkingen gebruiken**
 > [!div class="checklist"]
-> * Maak met behulp van de Azure CLI de resources--een IoT-hub, een opslag account met twee eind punten en de routerings configuratie.
-> * Gebruik de Azure Portal voor het configureren van verrijkingen van berichten.
+> * Eerste methode: verrijkingen hand matig bericht
+>   - Maak bronnen en configureer bericht routering met behulp van de Azure CLI.
+>   - Configureer de verrijkingen van het bericht hand matig met behulp van de [Azure Portal](https://portal.azure.com).
+> * Tweede methode: een RM-sjabloon gebruiken
+>   - Maak resources, Configureer bericht Routering en verrijkingen van berichten met behulp van een Azure Resource Manager sjabloon. 
 > * Voer een app uit die een IoT-apparaat simuleert die berichten naar de hub verzendt.
 > * Bekijk de resultaten en controleer of de verrijkingen van het bericht werken zoals verwacht.
 
@@ -38,17 +46,19 @@ Hier volgen de taken die u moet uitvoeren om deze zelf studie te volt ooien:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="retrieve-the-sample-code"></a>De voorbeeld code ophalen
+## <a name="retrieve-the-iot-c-samples-repository"></a>De opslag plaats C# voor de IOT-voor beelden ophalen
 
-Down load [IOT Device simulatie](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) en pak deze uit. Deze opslag plaats bevat meerdere toepassingen, waaronder het account dat u gaat gebruiken om berichten te verzenden naar de IoT-hub.
+Down load [de C# IOT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) -voor beelden van github en pak deze uit. Deze opslag plaats bevat verschillende toepassingen, scripts en Resource Manager-sjablonen. De items die voor deze zelf studie moeten worden gebruikt, zijn als volgt:
 
-Deze down load bevat ook het script voor het maken van de resources die worden gebruikt voor het testen van de verrijkingen van berichten. Het script bevindt zich in/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli. azcli. U kunt het script nu bekijken en gebruiken. U kunt het script ook rechtstreeks vanuit het artikel kopiëren.
+* Voor de hand matige methode is er een CLI-script voor het maken van de resources. Dit script bevindt zich in **/azure-iot-samples-csharp/iot-hub/tutorials/routing/simulateddevice/resources/iothub_msgenrichment_cli. azcli**. Met dit script worden de resources gemaakt en wordt de bericht routering geconfigureerd. Nadat u dit hebt uitgevoerd, maakt u de verrijkingen van het bericht hand matig met behulp van de [Azure Portal](https://portal.azure.com) en voert u vervolgens de DeviceSimulation-app uit om te zien welke verrijkingen werken.
 
-Wanneer u klaar bent om te testen, gebruikt u de toepassing Device simulatie van deze down load om een bericht te verzenden naar uw IoT-hub.
+* Voor de geautomatiseerde methode is er een Azure Resource Manager sjabloon. De sjabloon bevindt zich in **/azure-iot-samples-csharp/iot-hub/tutorials/routing/simulateddevice/resources/template_msgenrichments. json**. Met deze sjabloon maakt u de resources, configureert u de bericht Routering en configureert u ten slotte de verrijkingen van het bericht. Nadat u deze sjabloon hebt geladen, voert u de app voor het simuleren van apparaten uit om te zien welke verrijkingen werken.
 
-## <a name="set-up-and-configure-resources"></a>Bronnen instellen en configureren
+* De derde toepassing die u gebruikt, is de app voor het simuleren van apparaten, die u gebruikt om berichten te verzenden naar de IoT-hub en de verrijkingen van het bericht te testen.
 
-Naast het maken van de benodigde resources, configureert het Azure CLI-script ook de twee routes naar de eind punten die afzonderlijke opslag containers zijn. Zie de [zelf studie voor route ring](tutorial-routing.md)voor meer informatie over het configureren van de route ring. Nadat de resources zijn ingesteld, gebruikt u de [Azure Portal](https://portal.azure.com) voor het configureren van verrijkingen van berichten voor elk eind punt en gaat u verder met de test stap.
+## <a name="manual-set-up-and-configuration-using-azure-cli"></a>Hand matige installatie en configuratie met behulp van Azure CLI
+
+Naast het maken van de benodigde resources, configureert het Azure CLI-script ook de twee routes naar de eind punten die afzonderlijke opslag containers zijn. Voor meer informatie over het configureren van de bericht routering raadpleegt u de [zelf studie voor route ring](tutorial-routing.md). Nadat de resources zijn ingesteld, gebruikt u de [Azure Portal](https://portal.azure.com) voor het configureren van verrijkingen van berichten voor elk eind punt en gaat u verder met de test stap.
 
 > [!NOTE]
 > Alle berichten worden doorgestuurd naar beide eind punten, maar alleen de berichten naar het eind punt met geconfigureerde bericht verrijkingen worden uitgebreid.
@@ -65,11 +75,11 @@ U kunt het onderstaande script gebruiken of het script openen in de map/resource
 
 Er zijn verschillende resource namen die wereld wijd uniek moeten zijn, zoals de naam van de IoT Hub en de naam van het opslag account. Om het script eenvoudiger te kunnen uitvoeren, worden deze resource namen toegevoegd met een wille keurige alfanumerieke waarde met de naam *randomValue*. De randomValue wordt eenmaal aan het begin van het script gegenereerd en aan de resource namen toegevoegd, zoals nodig is in het script. Als u niet wilt dat deze wille keurig worden ingesteld, kunt u deze instellen op een lege teken reeks of op een specifieke waarde.
 
-Als u dit nog niet hebt gedaan, opent u een [Cloud shell-venster](https://shell.azure.com) en zorgt u ervoor dat het is ingesteld op bash. Open het script in de uitgepakte opslag plaats, druk op CTRL-A om alles te selecteren en druk vervolgens op CTRL + C om de map te kopiëren. U kunt ook het volgende CLI-script kopiëren of het rechtstreeks openen in Cloud Shell. Plak het script in het venster Cloud Shell door met de rechter muisknop op de opdracht regel te klikken en **Plakken**te selecteren. Het script wordt één instructie per keer uitgevoerd. Nadat het script is uitgevoerd, selecteert u **Enter** om te controleren of de laatste opdracht wordt uitgevoerd. In het volgende code blok ziet u het script dat wordt gebruikt, met opmerkingen waarin wordt uitgelegd wat er gebeurt.
+Als u dit nog niet hebt gedaan, opent u een [Cloud shell-venster](https://shell.azure.com) en zorgt u ervoor dat het is ingesteld op bash. Open het script in de uitgepakte opslag plaats, druk op CTRL-A om alles te selecteren en druk vervolgens op CTRL + C om de map te kopiëren. U kunt ook het volgende CLI-script kopiëren of het rechtstreeks openen in Cloud Shell. Plak het script in het venster Cloud Shell door met de rechter muisknop op de opdracht regel te klikken en **Plakken**te selecteren. Het script voert één instructie per keer uit. Nadat het script is uitgevoerd, selecteert u **Enter** om te controleren of de laatste opdracht wordt uitgevoerd. In het volgende code blok ziet u het script dat wordt gebruikt, met opmerkingen waarin wordt uitgelegd wat er gebeurt.
 
 Dit zijn de resources die zijn gemaakt door het script. **Verrijkt** betekent dat de resource is bedoeld voor berichten met verrijkingen. **Oorspronkelijk** betekent dat de resource is bedoeld voor berichten die niet zijn verrijkt.
 
-| Naam | Waarde |
+| Name | Waarde |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | container naam | Origineel  |
@@ -237,11 +247,11 @@ az iot hub route create \
   --condition $condition
 ```
 
-Op dit moment worden de resources allemaal ingesteld en wordt de route ring geconfigureerd. U kunt de configuratie voor bericht routering bekijken in de portal en de bericht verrijkingen instellen voor berichten die worden verzonden naar de **verrijkde** opslag container.
+Op dit moment worden de resources allemaal ingesteld en wordt de bericht routering geconfigureerd. U kunt de configuratie voor bericht routering bekijken in de portal en de bericht verrijkingen instellen voor berichten die worden verzonden naar de **verrijkde** opslag container.
 
-### <a name="view-routing-and-configure-the-message-enrichments"></a>Route ring weer geven en de bericht verrijkingen configureren
+### <a name="manually-configure-the-message-enrichments-using-the-azure-portal"></a>Configureer de bericht verrijkingen hand matig met behulp van de Azure Portal
 
-1. Ga naar uw IoT Hub door **resource groepen**te selecteren en selecteer vervolgens de resource groep die u voor deze zelf studie hebt ingesteld (**ContosoResources_MsgEn**). Zoek de IoT Hub in de lijst en selecteer deze. Selecteer **bericht routering** voor de IOT-hub.
+1. Ga naar uw IoT Hub door **resource groepen**te selecteren en selecteer vervolgens de resource groep die u voor deze zelf studie hebt ingesteld (**ContosoResourcesMsgEn**). Zoek de IoT Hub in de lijst en selecteer deze. Selecteer **bericht routering** voor de IOT-hub.
 
    ![Bericht routering selecteren](./media/tutorial-message-enrichments/select-iot-hub.png)
 
@@ -254,7 +264,7 @@ Op dit moment worden de resources allemaal ingesteld en wordt de route ring geco
    | Sleutel | Waarde | Eind punt (vervolg keuzelijst) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
-   | deviceLocation | $twin. Tags. locatie | AzureStorageContainers > ContosoStorageEndpointEnriched |
+   | DeviceLocation | $twin. Tags. locatie | AzureStorageContainers > ContosoStorageEndpointEnriched |
    |Nummer | 6ce345b8-1e4a-411e-9398-d34587459a3a | AzureStorageContainers > ContosoStorageEndpointEnriched |
 
    > [!NOTE]
@@ -266,9 +276,58 @@ Op dit moment worden de resources allemaal ingesteld en wordt de route ring geco
 
    ![Tabel met alle verrijkingen toegevoegd](./media/tutorial-message-enrichments/all-message-enrichments.png)
 
-4. Selecteer **Toep assen** om de wijzigingen op te slaan.
+4. Selecteer **Toep assen** om de wijzigingen op te slaan. Ga verder naar de sectie [verrijkingen](#testing-message-enrichments) van het testen van berichten.
 
-## <a name="send-messages-to-the-iot-hub"></a>Berichten verzenden naar de IoT Hub
+## <a name="use-an-rm-template-to-create-and-configure-the-resources-message-routing-and-message-enrichments"></a>Een RM-sjabloon gebruiken voor het maken en configureren van de resources, bericht Routering en bericht verrijkingen 
+
+1. Meld u aan bij de Azure-portal. Klik op **+ een resource maken**. Hiermee wordt het zoekvak geopend. Zoek naar de **sjabloon implementatie**. Selecteer in het deel venster met resultaten **Sjabloonimlementatie (implementeren met aangepaste sjabloon)** .
+
+   ![Sjabloonimlementatie in de Azure Portal](./media/tutorial-message-enrichments/template-select-deployment.png)
+
+1. Selecteer **maken** in het deel venster sjabloon implementatie. 
+
+1. In het deel venster aangepaste implementatie. Selecteer **uw eigen sjabloon bouwen in de editor**.
+
+1. Selecteer in het deel venster sjabloon bewerken de optie **bestand laden**. U ziet de Windows Verkenner. Zoek het bestand **template_messageenrichments. json** in het uitgepakte bestand opslag plaats in **/IOT-hub/tutorials/Routing/SimulatedDevice/resources**. 
+
+   ![Sjabloon selecteren op de lokale computer](./media/tutorial-message-enrichments/template-select.png)
+
+1. Selecteer **openen** om het sjabloon bestand vanaf de lokale machine te laden. Het wordt geladen in het bewerkings venster en wordt weer gegeven.
+
+   Deze sjabloon is ingesteld voor het gebruik van een globaal unieke IoT Hub naam en opslag accountnaam door een wille keurige waarde toe te voegen aan het einde van de standaard namen, zodat u de sjabloon kunt gebruiken zonder wijzigingen aan te brengen. 
+
+   Hier vindt u de resources die zijn gemaakt door het laden van de sjabloon. **Verrijkt** betekent dat de resource is bedoeld voor berichten met verrijkingen. **Oorspronkelijk** betekent dat de resource is bedoeld voor berichten die niet zijn verrijkt. Dit zijn dezelfde waarden die worden gebruikt in het Azure CLI-script.
+
+   | Name | Waarde |
+   |-----|-----|
+   | resourceGroup | ContosoResourcesMsgEn |
+   | container naam | Origineel  |
+   | container naam | geavanceerde  |
+   | IoT-apparaatnaam | Contoso-Test-Device |
+   | IoT Hub naam | ContosoTestHubMsgEn |
+   | Naam van opslag account | contosostorage |
+   | eindpunt naam 1 | ContosoStorageEndpointOriginal |
+   | Naam van eind punt 2 | ContosoStorageEndpointEnriched|
+   | route naam 1 | ContosoStorageRouteOriginal |
+   | route naam 2 | ContosoStorageRouteEnriched |
+
+1. Selecteer **Opslaan**en het deel venster aangepaste implementatie wordt weer gegeven, met alle para meters die worden gebruikt door de sjabloon. Het enige veld dat u moet instellen is de **resource groep**. Maak een nieuw item of selecteer er een in de vervolg keuzelijst.
+
+   Hier volgt de bovenste helft van het aangepaste implementatie deel venster. U kunt zien waar u de resource groep invult.
+
+   ![Bovenste helft van het deel venster voor aangepaste implementatie](./media/tutorial-message-enrichments/template-deployment-top.png)
+
+1. Hier volgt de onderste helft van het aangepaste implementatie deel venster. U kunt de rest van de para meters en de voor waarden zien. 
+
+   ![Onderste helft van het deel venster voor aangepaste implementatie](./media/tutorial-message-enrichments/template-deployment-bottom.png)
+
+1. Schakel het selectie vakje in om aan te geven dat u akkoord gaat met de voor waarden en selecteer vervolgens **aankoop** om door te gaan met de implementatie van de sjabloon.
+
+1. Wacht tot de sjabloon volledig is geïmplementeerd. U kunt het klok pictogram boven aan het scherm selecteren om de voortgang te controleren. Wanneer het proces is voltooid, kunt u door gaan met het testen van de [bericht verrijkingen](#testing-message-enrichments).
+
+## <a name="testing-message-enrichments"></a>Verrijkingen van berichten testen
+
+U kunt de verrijkingen van het bericht weer geven door **resource groepen**te selecteren en vervolgens de resource groep te selecteren die u voor deze zelf studie gebruikt. Selecteer vervolgens de IoT Hub in de lijst met resources en ga naar **berichten**. Hier ziet u de configuratie van de bericht Routering en de geconfigureerde verrijkingen.
 
 Nu de verrijkingen van het bericht zijn geconfigureerd voor het eind punt, voert u de toepassing voor gesimuleerde apparaten uit om berichten naar de IoT Hub te verzenden. De hub is ingesteld met instellingen die de volgende taken uitvoeren:
 
@@ -290,9 +349,9 @@ Als u de apparaatcode niet hebt, kunt u deze ophalen uit de portal. Nadat u zich
         private readonly static string s_deviceKey = "{your device key}";
    ```
 
-## <a name="run-and-test"></a>Uitvoeren en testen
+### <a name="run-and-test"></a>Uitvoeren en testen
 
-Voer de consoletoepassing uit. Wacht enkele minuten. De berichten die worden verzonden, worden weer gegeven in het console scherm van de toepassing.
+Voer de console toepassing enkele minuten uit. De berichten die worden verzonden, worden weer gegeven in het console scherm van de toepassing.
 
 Deze app verzendt elke seconde een nieuw apparaat-naar-cloud-bericht naar de IoT Hub. Het bericht bevat een JSON-geserialiseerd object met een apparaat-id, temperatuur, vochtigheid en berichtniveau, die als standaardwaarde `normal` heeft. Er wordt wille keurig een niveau van `critical` of `storage`toegewezen, waardoor het bericht wordt doorgestuurd naar het opslag account of het standaard eindpunt. De berichten die worden verzonden naar de uitgebreide container in het opslag account, worden **verrijkt** .
 
@@ -328,7 +387,7 @@ Als u alle resources wilt verwijderen die u in deze zelf studie hebt gemaakt, ve
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>De Azure CLI gebruiken om resources op te schonen
 
-U kunt de resourcegroep verwijderen met de opdracht [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). `$resourceGroup` is ingesteld op **ContosoResources** terug aan het begin van deze zelf studie.
+U kunt de resourcegroep verwijderen met de opdracht [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). `$resourceGroup` is ingesteld op **ContosoResourcesMsgEn** terug aan het begin van deze zelf studie.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -340,9 +399,12 @@ In deze zelf studie hebt u geconfigureerd en getest hoe u verrijkingen van beric
 
 **IoT Hub-bericht verrijkingen gebruiken**
 > [!div class="checklist"]
-> * Maak met behulp van de Azure CLI de resources--een IoT-hub, een opslag account met twee enendpoints en de routerings configuratie.
-> * Gebruik de Azure Portal voor het configureren van verrijkingen van berichten.
-> * Voer een app uit die een IoT-apparaat simuleert dat een bericht verzendt naar de hub.
+> * Eerste methode
+>   * Maak bronnen en configureer bericht routering met behulp van de Azure CLI.
+>   * Configureer de verrijkingen van het bericht hand matig met behulp van de [Azure Portal](https://portal.azure.com).
+> * Tweede methode
+>   * Maak resources, Configureer bericht Routering en verrijkingen van berichten met behulp van een Azure Resource Manager sjabloon. 
+> * Voer een app uit die een IoT-apparaat simuleert die berichten naar de hub verzendt.
 > * Bekijk de resultaten en controleer of de verrijkingen van het bericht werken zoals verwacht.
 
 Zie voor meer informatie over het verrijken van berichten het [overzicht van verrijkingen van berichten](iot-hub-message-enrichments-overview.md).

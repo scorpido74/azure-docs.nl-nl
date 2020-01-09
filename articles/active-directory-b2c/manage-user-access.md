@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 98d3fa50f405658b33f879ed8e7b95667cddcedf
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e0fc09ca77e4fb0c3666478873d5d09a13d23ec8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064133"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367107"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Gebruikers toegang beheren in Azure Active Directory B2C
 
@@ -34,11 +34,11 @@ Toepassingen en organisaties kunnen ervoor kiezen om minder jarigen te blok kere
 
 Als een gebruiker is geïdentificeerd als een kleine, kunt u de gebruikers stroom in Azure AD B2C instellen op een van de volgende drie opties:
 
-- **Een ondertekende JWT-id_token opnieuw verzenden naar de toepassing**: De gebruiker is geregistreerd in de map en er wordt een token naar de toepassing geretourneerd. De toepassing gaat vervolgens verder met het Toep assen van bedrijfs regels. De toepassing kan bijvoorbeeld door gaan met een proces voor het uitvoeren van een ouder toestemming. Als u deze methode wilt gebruiken, moet u ervoor kiezen om de **ageGroup** -en **consentProvidedForMinor** -claims van de toepassing te ontvangen.
+- **Een ondertekende JWT-id_token terugsturen naar de toepassing**: de gebruiker is geregistreerd in de Directory en er wordt een token naar de toepassing geretourneerd. De toepassing gaat vervolgens verder met het Toep assen van bedrijfs regels. De toepassing kan bijvoorbeeld door gaan met een proces voor het uitvoeren van een ouder toestemming. Als u deze methode wilt gebruiken, moet u ervoor kiezen om de **ageGroup** -en **consentProvidedForMinor** -claims van de toepassing te ontvangen.
 
-- **Een niet-ondertekend JSON-token verzenden naar de toepassing**: Azure AD B2C waarschuwt de toepassing dat de gebruiker een kleine is en geeft de status van de ouderlijke toestemming van de gebruiker. De toepassing gaat vervolgens verder met het Toep assen van bedrijfs regels. Een JSON-token heeft geen geslaagde verificatie met de toepassing voltooid. De toepassing moet de niet-geverifieerde gebruiker verwerken volgens de claims die zijn opgenomen in het JSON-token, zoals **naam**, **e-mail adres**, **ageGroup**en **consentProvidedForMinor**.
+- **Een niet-ondertekend JSON-token naar de toepassing verzenden**: met Azure AD B2C wordt de toepassing gewaarschuwd dat de gebruiker een kleine is en de status van de ouderlijke toestemming van de gebruiker wordt verstrekt. De toepassing gaat vervolgens verder met het Toep assen van bedrijfs regels. Een JSON-token heeft geen geslaagde verificatie met de toepassing voltooid. De toepassing moet de niet-geverifieerde gebruiker verwerken volgens de claims die zijn opgenomen in het JSON-token, zoals **naam**, **e-mail adres**, **ageGroup**en **consentProvidedForMinor**.
 
-- **De gebruiker blok keren**: Als een gebruiker een kleine en een ouderlijke toestemming heeft gekregen, kan Azure AD B2C de gebruiker waarschuwen dat ze zijn geblokkeerd. Er is geen token uitgegeven, de toegang wordt geblokkeerd en het gebruikers account is niet gemaakt tijdens een registratie traject. Als u deze melding wilt implementeren, geeft u een geschikte HTML/CSS-inhouds pagina op waarmee de gebruiker op de hoogte wordt gebracht en de relevante opties worden weer gegeven. Er is geen verdere actie vereist voor de toepassing voor nieuwe registraties.
+- **De gebruiker blok keren**: als een gebruiker een kleine en een ouderlijke toestemming heeft gekregen, kan Azure AD B2C de gebruiker op de hoogte stellen dat ze zijn geblokkeerd. Er is geen token uitgegeven, de toegang wordt geblokkeerd en het gebruikers account is niet gemaakt tijdens een registratie traject. Als u deze melding wilt implementeren, geeft u een geschikte HTML/CSS-inhouds pagina op waarmee de gebruiker op de hoogte wordt gebracht en de relevante opties worden weer gegeven. Er is geen verdere actie vereist voor de toepassing voor nieuwe registraties.
 
 ## <a name="get-parental-consent"></a>Ouderlijke toestemming ophalen
 
@@ -56,7 +56,7 @@ Hier volgt een voor beeld van een gebruikers stroom voor het verzamelen van de o
 
 5. Wanneer de secundaire of volwassene toestemming intrekt, kan de Azure AD-Graph API worden gebruikt om **consentProvidedForMinor** te wijzigen in **geweigerd**. De toepassing kan er ook voor kiezen om een secundaire te verwijderen waarvan de toestemming is ingetrokken. Het is optioneel om de gebruikers stroom aan te passen, zodat de geverifieerde secundaire (of bovenliggende site die gebruikmaakt van het account van de secundaire) toestemming kan intrekken. Azure AD B2C records **consentProvidedForMinor** als **geweigerd**.
 
-Zie het [resource type](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)van de gebruiker voor meer informatie over **legalAgeGroupClassification**, **consentProvidedForMinor**en **ageGroup**. Zie [aangepaste kenmerken gebruiken om informatie over uw consumenten te verzamelen](active-directory-b2c-reference-custom-attr.md)voor meer informatie over aangepaste kenmerken. Wanneer u uitgebreide kenmerken met de Azure AD-Graph API adresseert, moet u de lange versie van het kenmerk gebruiken, zoals *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
+Zie het [resource type](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)van de gebruiker voor meer informatie over **legalAgeGroupClassification**, **consentProvidedForMinor**en **ageGroup**. Zie [aangepaste kenmerken gebruiken om informatie over uw consumenten te verzamelen](active-directory-b2c-reference-custom-attr.md)voor meer informatie over aangepaste kenmerken. Wanneer u uitgebreide kenmerken met behulp van de Azure AD-Graph API, moet u de lange versie van het kenmerk gebruiken, zoals *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>Gegevens over geboorte datum en land/regio verzamelen
 
@@ -176,3 +176,4 @@ Hier volgt een voor beeld van een gebruiksrecht overeenkomst in een claim:
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [gebruikers gegevens beheren](manage-user-data.md)voor meer informatie over het verwijderen en exporteren van gebruikers gegevens.
+- Voor een voor beeld van een aangepast beleid waarmee een prompt van het gebruik van de gebruiksrecht overeenkomst wordt geïmplementeerd, raadpleegt [u een aangepast beleid voor B2C IEF-aanmelden en aanmelden met de prompt ' gebruiksrecht overeenkomst '](https://github.com/azure-ad-b2c/samples/tree/master/policies/sign-in-sign-up-versioned-tou).

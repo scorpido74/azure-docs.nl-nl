@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 46e5af9d54cf818366bd2730de0da85dcbe6cade
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: d039373d3e70076149da2b970a234b59d7aa661a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535299"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422952"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Naslag informatie over Azure Active Directory algemene bedienings handleiding
 
@@ -90,9 +90,9 @@ Voor sommige services voor identiteits-en toegangs beheer zijn on-premises agent
 
 #### <a name="on-premises-agents-logs-recommended-reading"></a>On-premises agents logboeken aanbevolen lezen
 
-- [Problemen met toepassings proxy oplossen](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot)
+- [Application Proxy oplossen](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot)
 - [Oplossen van problemen met de selfservice voor wachtwoord herstel-Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#password-writeback-event-log-error-codes)
-- [Azure AD-toepassingsproxy-connectors begrijpen](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors)
+- [Meer informatie over Azure AD Application Proxy connectors](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors)
 - [Azure AD Connect: problemen met Pass Through-verificatie oplossen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication#collecting-pass-through-authentication-agent-logs)
 - [Fout codes voor de Azure MFA NPS-extensie oplossen](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-nps-errors)
 
@@ -106,8 +106,8 @@ Het hand nemen van aanbevolen procedures kan de optimale werking van on-premises
 
 #### <a name="on-premises-agents-management-recommended-reading"></a>Beheer van on-premises agents aanbevolen lezen
 
-- [Azure AD-toepassingsproxy-connectors begrijpen](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors)
-- [Pass-Through-verificatie van Azure AD-Quick Start](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start#step-5-ensure-high-availability)
+- [Meer informatie over Azure AD Application Proxy connectors](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors)
+- [Pass-Through-verificatie van Azure AD-Quick Start](../hybrid/how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)
 
 ## <a name="management-at-scale"></a>Beheer op schaal
 
@@ -131,10 +131,10 @@ Er zijn twee ' from '-adressen die worden gebruikt door Azure AD: <o365mc@email2
 
 - [Azure AD-toegangs beoordelingen](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 - [Azure AD Connect Health (Engelstalig)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations#enable-email-notifications)
-- [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/notifications)
+- [Azure AD Identity Protection](/azure/active-directory/identity-protection/howto-identity-protection-configure-notifications)
 - [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-email-notifications)
 - [Certificaat meldingen voor de Enter prise-app verlopen](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on#add-email-notification-addresses-for-certificate-expiration)
-- Service meldingen voor de Enter prise-app inrichten
+- Servicemeldingen voor inrichting van Enterprise-App
 
 Raadpleeg de volgende tabel voor meer informatie over het type meldingen dat wordt verzonden en waar u deze kunt controleren:
 
@@ -162,13 +162,13 @@ Als AD FS alleen wordt gebruikt voor Azure AD Federation, zijn er een aantal ein
 
 Organisaties moeten de toegang tot de machines met on-premises hybride onderdelen op dezelfde manier als uw on-premises domein vergren delen. Zo mag een back-upoperator of Hyper-V-beheerder zich niet kunnen aanmelden bij de Azure AD Connect server om regels te wijzigen.
 
-Het Active Directory administratieve laag model is ontworpen om identiteits systemen te beveiligen met behulp van een set buffer zones tussen volledig beheer van de omgeving (laag 0) en de werk station-assets met een hoog risico dat aanvallers vaak misbruiken. ![Diagram van de drie lagen van het laag model](./media/active-directory-ops-guide/active-directory-ops-img18.png)
+Het Active Directory administratieve laag model is ontworpen om identiteits systemen te beveiligen met behulp van een set buffer zones tussen volledig beheer van de omgeving (laag 0) en de werk station-assets met een hoog risico dat aanvallers vaak misbruiken. ![Diagram van de drie lagen van het lagenmodel](./media/active-directory-ops-guide/active-directory-ops-img18.png)
 
 Het [laag model](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) bestaat uit drie niveaus en bevat alleen administratieve accounts, niet standaard gebruikers accounts.
 
-- **Laag 0** -direct beheer van ondernemings identiteiten in de omgeving. Laag 0 bevat accounts, groepen en andere assets die directe of indirecte administratieve controle hebben over het Active Directory forest, domeinen of domein controllers en alle assets hierin. De beveiligings gevoeligheid van alle activa op laag 0 is gelijkwaardig, omdat ze allemaal effectief zijn in het beheer van elkaar.
-- **Laag 1** beheer van bedrijfs servers en-toepassingen. Activa op laag 1 zijn onder andere server besturingssystemen, Cloud Services en bedrijfs toepassingen. Beheerders accounts op laag 1 hebben beheer over een aanzienlijke hoeveelheid bedrijfs waarde die wordt gehost op deze activa. Een veelvoorkomende voorbeeld functie is server beheerders die deze besturings systemen onderhouden met de mogelijkheid om alle Enter prise-services te beïnvloeden.
-- **Laag 2** - beheer van werk stations en apparaten van gebruikers. Beheerders accounts voor Tier 2 hebben beheer over een aanzienlijke hoeveelheid bedrijfs waarde die wordt gehost op werk stations en apparaten van gebruikers. Voor beelden zijn beheerders van helpdesk-en computer ondersteuning, omdat ze de integriteit van bijna alle gebruikers gegevens kunnen beïnvloeden.
+- **Laag 0** -direct beheer van ondernemings identiteiten in de omgeving. Laag 0 bevat accounts, groepen en andere activa die directe of indirecte controle hebben over het beheer van Active Directory-forest, -domeinen of -domeincontrollers en alle activa daarvan. De beveiliging van alle activa op laag 0 is even gevoelig omdat ze elkaar in stand houden.
+- **Laag 1** beheer van bedrijfs servers en-toepassingen. De activa op laag 1 zijn serverbesturingssystemen, cloudservices en bedrijfstoepassingen. De administratoraccounts op laag 1 hebben controle over het beheer van een groot deel van de bedrijfswaarde die op deze activa wordt gehost. Een veelgebruikt voorbeeld is de rol van de serverbeheerders. Zij onderhouden deze besturingssystemen en kunnen invloed uitoefenen op alle bedrijfsservices.
+- **Laag 2** - beheer van werk stations en apparaten van gebruikers. De administratoraccounts op laag 2 hebben controle over het beheer van een groot deel van de bedrijfswaarde die op werkstations en apparaten van gebruikers wordt gehost. Voorbeelden zijn de medewerkers van de helpdesk en computerondersteuning. Zij hebben immers invloed op de integriteit van nagenoeg alle gebruikersgegevens.
 
 Vergrendel de toegang tot on-premises identiteits onderdelen, zoals Azure AD Connect, AD FS en SQL-services op dezelfde manier als voor domein controllers.
 

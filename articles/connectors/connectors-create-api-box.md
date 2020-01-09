@@ -1,20 +1,20 @@
 ---
 title: Verbinding maken met Box
-description: Bestanden maken en beheren met Box-REST Api's en Azure Logic Apps
+description: Taken en werk stromen automatiseren waarmee u bestanden in box maakt en beheert met behulp van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 38e061e918d445de07961af1789891f44c59090a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c7f97ff33742eb545cbfbd7521ba135584851e5e
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789866"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666768"
 ---
-# <a name="create-and-manage-files-in-box-with-azure-logic-apps"></a>Bestanden in box maken en beheren met Azure Logic Apps
+# <a name="create-and-manage-files-in-box-by-using-azure-logic-apps"></a>Bestanden in box maken en beheren met behulp van Azure Logic Apps
 
 In dit artikel wordt beschreven hoe u uw bestanden kunt maken en beheren in box vanuit een logische app met de box-connector. Op die manier kunt u logische apps maken voor het automatiseren van taken en werk stromen voor het beheren van uw bestanden en andere acties, bijvoorbeeld:
 

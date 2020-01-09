@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: df7d0fde05c974ef4cec739236a3ac0aebd63ecc
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0ed2bd7f1e03d8d5fa11f7e76010d087605f0fe1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534543"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460697"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>De wizard gegevens importeren voor Azure Cognitive Search
 
@@ -68,7 +68,7 @@ U moet deze afzonderlijke tabel of weer gave maken voordat u de wizard uitvoert,
 | [**Azure SQL Database**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |De servicenaam, referenties voor een databasegebruiker met leesmachtiging en de naam van een database kunnen worden opgegeven op de pagina of via een ADO.NET-verbindingsreeks. Kies de verbindingsreeksoptie om eigenschappen te bekijken of aan te passen. <br/><br/>De tabel of weergave die de rijenset bevat, moet worden opgegeven op de pagina. Deze optie wordt weergegeven nadat de verbinding tot stand is gebracht, waarna een vervolgkeuzelijst wordt weergegeven zodat u een selectie kunt maken.|
 | **SQL Server op virtuele Azure-machine** |Geef een volledig gekwalificeerde service naam, gebruikers-ID en wacht woord en Data Base als connection string op. Voor het gebruik van deze gegevensbron moet u eerder een certificaat hebben geïnstalleerd in het lokale archief dat de verbinding versleutelt. Zie [SQL VM-verbinding met Azure Cognitive Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)voor instructies. <br/><br/>De tabel of weergave die de rijenset bevat, moet worden opgegeven op de pagina. Deze optie wordt weergegeven nadat de verbinding tot stand is gebracht, waarna een vervolgkeuzelijst wordt weergegeven zodat u een selectie kunt maken. |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|Vereisten zijn het account, de database en de verzameling. Alle documenten in de verzameling worden opgenomen in de index. U kunt een query definiëren om de rijenset samen te voegen of te filteren, of de query leeg laten. Er is geen query vereist in deze wizard.|
-| [**Azure Blob Storage**](search-howto-indexing-azure-blob-storage.md) |Vereisten zijn het opslagaccount en een container. Als blob-namen een virtuele naamconventie voor groeperingsdoeleinden volgen, kunt u desgewenst het gedeelte van de virtuele map van de naam als een map onder de container opgeven. Zie [Blob Storage indexeren](search-howto-indexing-azure-blob-storage.md) voor meer informatie. |
+| [**Azure Blob-opslag**](search-howto-indexing-azure-blob-storage.md) |Vereisten zijn het opslagaccount en een container. Als blob-namen een virtuele naamconventie voor groeperingsdoeleinden volgen, kunt u desgewenst het gedeelte van de virtuele map van de naam als een map onder de container opgeven. Zie [Blob Storage indexeren](search-howto-indexing-azure-blob-storage.md) voor meer informatie. |
 | [**Azure Table Storage**](search-howto-indexing-azure-tables.md) |Vereisten zijn het opslagaccount en een tabelnaam. U kunt desgewenst een query opgeven om een subset van de tabellen op te halen. Zie [Table Storage indexeren](search-howto-indexing-azure-tables.md) voor meer informatie. |
 
 ## <a name="wizard-output"></a>Wizard-uitvoer
@@ -109,7 +109,7 @@ De wizard genereert een onvolledige index, die wordt gevuld met documenten die z
 
 1. Stel kenmerken in om te bepalen hoe dit veld wordt gebruikt in een index. 
 
-   Neem even de tijd met deze stap omdat de kenmerken de fysieke expressie van velden in de index bepalen. Als u later de kenmerken wilt wijzigen, zelfs via een programma, moet u de index bijna altijd verwijderen en opnieuw bouwen. Kern kenmerken, zoals **doorzoekbaar** en **ophalen** , hebben een [Verwaarloos bare invloed op de opslag](search-what-is-an-index.md#storage-implications). Door filters in te scha kelen en Voorst Ellen te gebruiken, worden de opslag vereisten verhoogd. 
+   Neem even de tijd met deze stap omdat de kenmerken de fysieke expressie van velden in de index bepalen. Als u later de kenmerken wilt wijzigen, zelfs via een programma, moet u de index bijna altijd verwijderen en opnieuw bouwen. Kern kenmerken, zoals **doorzoekbaar** en **ophalen** , hebben een [Verwaarloos bare invloed op de opslag](search-what-is-an-index.md#index-size). Door filters in te scha kelen en Voorst Ellen te gebruiken, worden de opslag vereisten verhoogd. 
    
    + **Doorzoekbaar** maakt zoeken in volledige tekst mogelijk. Elk veld dat wordt gebruikt in vrije-vorm query's of in query-expressies moet dit kenmerk hebben. Er worden omgekeerde indexen gemaakt voor elk veld dat u als **doorzoekbaar**markeert.
 

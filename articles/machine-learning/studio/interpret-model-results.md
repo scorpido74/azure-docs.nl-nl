@@ -10,23 +10,23 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: acac881a790644532121697e6b79e57a98b168fe
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3fc369c59626faae4c97f896650269820626b1ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839848"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454706"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Model resultaten interpreteren in Azure Machine Learning Studio (klassiek)
 In dit onderwerp wordt uitgelegd hoe u de Voorspellings resultaten in Azure Machine Learning Studio (klassiek) kunt visualiseren en interpreteren. Nadat u een model hebt getraind en voor spellingen hebt uitgevoerd (het ' gescoorde ' model '), moet u het Voorspellings resultaat begrijpen en interpreteren.
 
 
 
-Er zijn vier belang rijke soorten machine learning modellen in de klassieke versie van Azure Machine Learning Studio:
+Er zijn vier hoofd soorten machine learning modellen in Azure Machine Learning Studio (klassiek):
 
 * Classificatie
 * Clustering
-* regressie
+* Regressie
 * Aanbevolen systemen
 
 De modules die worden gebruikt voor de voor spelling boven op deze modellen zijn:
@@ -39,7 +39,7 @@ In dit document wordt uitgelegd hoe u de Voorspellings resultaten voor elk van d
 
 In dit onderwerp wordt de interpretatie van voor spellingen, maar geen model evaluatie beschreven. Zie voor meer informatie over het evalueren van uw model de [prestaties van modellen in azure machine learning Studio (klassiek) evalueren](evaluate-model-performance.md).
 
-Als u geen ervaring hebt met de klassieke versie van Azure Machine Learning Studio en u hulp nodig hebt bij het maken van een eenvoudig experiment om aan de slag te gaan, raadpleegt u [een eenvoudig experiment maken in azure machine learning Studio (klassiek)](create-experiment.md).
+Als u geen ervaring hebt met Azure Machine Learning Studio (klassiek) en u hulp nodig hebt bij het maken van een eenvoudig experiment om aan de slag te gaan, raadpleegt u [een eenvoudig experiment maken in azure machine learning Studio (klassiek)](create-experiment.md).
 
 ## <a name="classification"></a>Classificatie
 Er zijn twee subcategorieën van classificatie problemen:
@@ -52,7 +52,7 @@ Azure Machine Learning Studio (klassiek) heeft verschillende modules die met elk
 ### <a name="two-class-classification"></a>Classificatie met twee klassen
 **Voorbeeld experiment**
 
-Een voor beeld van een classificatie probleem met twee klassen is de classificatie van Iris bloemen. De taak is het classificeren van Iris bloemen op basis van hun functies. De Iris gegevensset die in de klassieke versie van Azure Machine Learning Studio is opgegeven, is een subset van de populaire [Iris gegevensset](https://en.wikipedia.org/wiki/Iris_flower_data_set) met slechts exemplaren van twee bloem soorten (klassen 0 en 1). Er zijn vier functies voor elke bloem (SEPA-lengte, breedte van het SEPA, lengte van de bloem en breedte van het bloem).
+Een voor beeld van een classificatie probleem met twee klassen is de classificatie van Iris bloemen. De taak is het classificeren van Iris bloemen op basis van hun functies. De Iris gegevensset die is opgegeven in Azure Machine Learning Studio (klassiek) is een subset van de populaire [Iris gegevensset](https://en.wikipedia.org/wiki/Iris_flower_data_set) met slechts exemplaren van twee bloem soorten (klassen 0 en 1). Er zijn vier functies voor elke bloem (SEPA-lengte, breedte van het SEPA, lengte van de bloem en breedte van het bloem).
 
 ![Scherm opname van Iris experiment](./media/interpret-model-results/1.png)
 
@@ -137,7 +137,7 @@ Nadat u de webservice hebt gepubliceerd en uitgevoerd en enkele invoer waarden h
 
 Afbeelding 10. Webservice resultaat van een classificatie met meer klassen
 
-## <a name="regression"></a>regressie
+## <a name="regression"></a>Regressie
 Regressie problemen verschillen van classificatie problemen. In een classificatie probleem probeert u afzonderlijke klassen te voors pellen, bijvoorbeeld op welke klasse een Iris bloem is aangesloten. Maar zoals u kunt zien in het volgende voor beeld van een regressie probleem, probeert u een continue variabele te voors pellen, zoals de prijs van een auto.
 
 **Voorbeeld experiment**
@@ -224,9 +224,9 @@ Voor aanbevolen systemen kunt u het advies probleem van het restaurant als voor 
 
 * Restaurant beoordelingen van klanten
 * Gegevens van klant functie
-* Gegevens van het restaurant onderdeel
+* Gegevens van functies van restaurant
 
-Er zijn verschillende dingen die u kunt doen met de module [Train matchbox aanbevelen][train-matchbox-recommender] in de klassieke versie van Azure machine learning studio:
+Er zijn verschillende dingen die u kunt doen met de module [Train matchbox aanbevelen][train-matchbox-recommender] in azure machine learning Studio (klassiek):
 
 * Beoordelingen voor een bepaalde gebruiker en een bepaald item voors pellen
 * Het aanbevelen van items aan een bepaalde gebruiker

@@ -1,37 +1,37 @@
 ---
-title: Gebruik van toepassingen voor rendering - Azure Batch
-description: Het gebruik van toepassingen voor rendering met Azure Batch
+title: Rendering-toepassingen gebruiken-Azure Batch
+description: Rendering van toepassingen gebruiken met Azure Batch. In dit artikel vindt u een korte beschrijving van het uitvoeren van elke rendering-toepassing.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4c93abdfb5c523d48ce115ed7d3251a346937f5f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc0ce23c90a4ba6575ba26b37d97f94ba8fa1f63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775386"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390487"
 ---
-# <a name="rendering-applications"></a>Toepassingen weergeven
+# <a name="rendering-applications"></a>Rendering van toepassingen
 
-Rendering-toepassingen worden gebruikt door het maken van Batch-taken en taken. De taak vanaf de opdrachtregel-eigenschap geeft de juiste vanaf de opdrachtregel en parameters.  De eenvoudigste manier om de taken van de taak te maken is met de Batch Explorer-sjablonen die zijn opgegeven in [in dit artikel](https://docs.microsoft.com/azure/batch/batch-rendering-using#using-batch-explorer).  De sjablonen kunnen worden bekeken en gewijzigd van versies die zijn gemaakt, indien nodig.
+Rendering van toepassingen wordt gebruikt door batch taken en taken te maken. Met de opdracht regel eigenschap taak geeft u de juiste opdracht regel en para meters op.  De eenvoudigste manier om de taak taken te maken, is door de Batch Explorer-sjablonen te gebruiken zoals opgegeven in [dit artikel](https://docs.microsoft.com/azure/batch/batch-rendering-using#using-batch-explorer).  De sjablonen kunnen worden weer gegeven en gewijzigde versies die worden gemaakt, indien nodig.
 
-Dit artikel bevat een korte beschrijving van hoe u elke renderingtoepassing uit te voeren.
+In dit artikel vindt u een korte beschrijving van het uitvoeren van elke rendering-toepassing.
 
-## <a name="rendering-with-autodesk-3ds-max"></a>Rendering met Autodesk 3ds Max.
+## <a name="rendering-with-autodesk-3ds-max"></a>Rendering met auto Desk 3ds Max
 
 ### <a name="renderer-support"></a>Ondersteuning voor renderer
 
-Naast de renderers die is ingebouwd in 3ds Max, de volgende renderers zijn beschikbaar op de VM-installatiekopieën voor rendering en kan worden verwezen door de 3ds Max-scène-bestand:
+Naast de renderers die zijn ingebouwd in 3ds Max, zijn de volgende renderers beschikbaar op de VM-installatie kopieën voor rendering en kan ernaar worden verwezen door het bestand 3ds Max scène:
 
 * Autodesk Arnold
 * Chaos Group V-Ray
 
-### <a name="task-command-line"></a>Taak vanaf de opdrachtregel
+### <a name="task-command-line"></a>Opdracht regel van taak
 
-Aanroepen van de `3dsmaxcmdio.exe` toepassing uit te voeren vanaf de opdrachtregel rendering op een knooppunt in de pool.  Deze toepassing is op het pad wanneer de taak wordt uitgevoerd. De `3dsmaxcmdio.exe` toepassing heeft de dezelfde beschikbare parameters als de `3dsmaxcmd.exe` toepassing, die wordt beschreven in de [3ds Max help-documentatie](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (Rendering | Opdrachtregel Rendering sectie).
+Roep de `3dsmaxcmdio.exe` toepassing aan om de opdracht regel weergave uit te voeren op een groeps knooppunt.  Deze toepassing bevindt zich op het pad wanneer de taak wordt uitgevoerd. De `3dsmaxcmdio.exe`-toepassing heeft dezelfde beschik bare para meters als de `3dsmaxcmd.exe` toepassing, die wordt beschreven in de [Help-documentatie van 3ds Max](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (Rendering | Sectie voor het weer geven van de opdracht regel).
 
 Bijvoorbeeld:
 
@@ -41,48 +41,48 @@ Bijvoorbeeld:
 
 Opmerkingen:
 
-* Uiterst voorzichtig moet worden genomen om te controleren of dat de assetbestanden worden gevonden.  Zorg ervoor dat de paden zijn juist en relatieve met behulp van de **activa bijhouden** -venster, of gebruik de `-bitmapPath` parameter op de opdrachtregel.
-* Zien of er problemen met de render, zoals de modeldatabase groter te zoeken naar activa, door het controleren van de `stdout.txt` bestand geschreven door 3ds Max. wanneer de taak wordt uitgevoerd.
+* Zorg ervoor dat u zeker weet dat de Asset-bestanden worden gevonden.  Zorg ervoor dat de paden juist en relatief zijn met behulp van het venster voor het bijhouden van de **activa** , of gebruik de para meter `-bitmapPath` op de opdracht regel.
+* Kijk of er problemen zijn met de weer gave, zoals het onvermogen om assets te vinden, door het `stdout.txt` bestand te controleren dat is geschreven door 3ds Max wanneer de taak wordt uitgevoerd.
 
-### <a name="batch-explorer-templates"></a>Batch Explorer-sjablonen
+### <a name="batch-explorer-templates"></a>Batch Explorer sjablonen
 
-Groep van toepassingen en -taak sjablonen kunnen worden benaderd vanaf de **galerie** in Batch Explorer.  De bronbestanden van de sjabloon zijn beschikbaar in de [Batch Explorer-gegevensopslagplaats op GitHub](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax).
+Groeps-en taak sjablonen kunnen worden geopend vanuit de **Galerie** in batch Explorer.  De bron bestanden van de sjabloon zijn beschikbaar in de [batch Explorer gegevens opslagplaats op github](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax).
 
 ## <a name="rendering-with-autodesk-maya"></a>Rendering met Autodesk Maya
 
 ### <a name="renderer-support"></a>Ondersteuning voor renderer
 
-Naast de renderers die is ingebouwd in Maya, worden de volgende renderers zijn beschikbaar op de VM-installatiekopieën voor rendering en kunnen worden verwezen door de 3ds Max-scène-bestand:
+Naast de renderers die zijn ingebouwd in Maya, zijn de volgende renderers beschikbaar op de rendering-VM-installatie kopieën en kan ernaar worden verwezen door het bestand 3ds Max scène:
 
 * Autodesk Arnold
 * Chaos Group V-Ray
 
-### <a name="task-command-line"></a>Taak vanaf de opdrachtregel
+### <a name="task-command-line"></a>Opdracht regel van taak
 
-De `renderer.exe` opdrachtregel renderer wordt gebruikt in de opdrachtregel van de taak. De renderer voor de opdrachtregel wordt gedocumenteerd in [Maya help](https://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4).
+De `renderer.exe` opdracht regel weergave wordt gebruikt op de opdracht regel van de taak. De opdracht regel weergave wordt beschreven in [Maya Help](https://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4).
 
-In het volgende voorbeeld wordt een jobvoorbereidingstaak wordt gebruikt om te kopiëren van de scènebestanden en assets naar de werkmap van de taak-voorbereiding, een map voor uitvoer wordt gebruikt voor het opslaan van de installatiekopie van het rendering en frame 10 wordt weergegeven.
+In het volgende voor beeld wordt de taak voor het voorbereiden van een taak gebruikt om de scène bestanden en-assets te kopiëren naar de werkmap van de taak voorbereiding, een uitvoermap wordt gebruikt voor het opslaan van de afbeelding voor rendering en frame 10 wordt weer gegeven.
 
 ```
 render -renderer sw -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_BATCH_TASK_WORKING_DIR%\output" -s 10 -e 10 -x 1920 -y 1080 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scene-file.ma"
 ```
 
-Voor de rendering van V-Ray, zou het scène-bestand voor Maya normaal V-Ray opgeven als de renderer.  Het kan ook worden opgegeven op de opdrachtregel:
+Voor een V-Ray-rendering geeft het Maya-scène bestand doorgaans V-Ray op als de renderer.  Het kan ook worden opgegeven op de opdracht regel:
 
 ```
 render -renderer vray -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_BATCH_TASK_WORKING_DIR%\output" -s 10 -e 10 -x 1920 -y 1080 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scene-file.ma"
 ```
 
-Voor Arnold rendering, het scène-bestand voor Maya normaal gesproken geeft Arnold als de renderer.  Het kan ook worden opgegeven op de opdrachtregel:
+Voor Arnold-rendering geeft het Maya-scène bestand doorgaans Arnold als de renderer op.  Het kan ook worden opgegeven op de opdracht regel:
 
 ```
 render -renderer arnold -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_BATCH_TASK_WORKING_DIR%\output" -s 10 -e 10 -x 1920 -y 1080 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scene-file.ma"
 ```
 
-### <a name="batch-explorer-templates"></a>Batch Explorer-sjablonen
+### <a name="batch-explorer-templates"></a>Batch Explorer sjablonen
 
-Groep van toepassingen en -taak sjablonen kunnen worden benaderd vanaf de **galerie** in Batch Explorer.  De bronbestanden van de sjabloon zijn beschikbaar in de [Batch Explorer-gegevensopslagplaats op GitHub](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya).
+Groeps-en taak sjablonen kunnen worden geopend vanuit de **Galerie** in batch Explorer.  De bron bestanden van de sjabloon zijn beschikbaar in de [batch Explorer gegevens opslagplaats op github](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik de groep van toepassingen en -taak sjablonen van de [gegevensopslagplaats in GitHub](https://github.com/Azure/BatchExplorer-data/tree/master/ncj) met behulp van Batch Explorer.  Indien nodig, nieuwe sjablonen maken of wijzigen van een van de opgegeven sjablonen.
+Gebruik de groeps-en taak sjablonen van de [Gegevens opslagplaats in github](https://github.com/Azure/BatchExplorer-data/tree/master/ncj) met behulp van batch Explorer.  Indien nodig kunt u nieuwe sjablonen maken of een van de opgegeven sjablonen wijzigen.

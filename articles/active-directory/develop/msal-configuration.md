@@ -1,5 +1,5 @@
 ---
-title: Configuratie bestand voor Android micro soft Authentication Library | Azure
+title: Android MSAL-configuratie bestand | Azure
 titleSuffix: Microsoft identity platform
 description: Een overzicht van het configuratie bestand van de Android micro soft Authentication Library (MSAL), dat de configuratie van een toepassing vertegenwoordigt in Azure Active Directory.
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f643022c85a44b2202fcbd91be50664882c8ba7b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e2d366a48adf536276697959be3418f36e10d8ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916823"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424392"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Configuratie bestand voor micro soft-verificatie bibliotheek voor Android
 
@@ -48,7 +48,7 @@ De client-ID of App-ID die is gemaakt tijdens het registreren van uw toepassing.
 
 De omleidings-URI die u hebt geregistreerd tijdens het registreren van uw toepassing. Als de omleidings-URI naar een Broker-app verwijst, raadpleegt u de [omleidings-URI voor open bare client-apps](msal-client-application-configuration.md#redirect-uri-for-public-client-apps) om te controleren of u de juiste omleidings-URI-indeling gebruikt voor uw broker-app
 
-### <a name="authorities"></a>Ca's
+### <a name="authorities"></a>ca's
 
 De lijst met instanties die bekend zijn en worden vertrouwd door u. Naast de instanties die hier worden vermeld, vraagt MSAL ook micro soft om een lijst met Clouds en instanties te verkrijgen die bekend zijn bij micro soft. Geef in deze lijst met vermeldingen het type van de instantie en eventuele aanvullende optionele para meters op, zoals `"audience"`, die moeten worden uitgelijnd met de doel groep van uw app op basis van de registratie van uw app. Hier volgt een voor beeld van een lijst met instanties:
 

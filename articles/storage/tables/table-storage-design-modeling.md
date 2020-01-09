@@ -1,6 +1,6 @@
 ---
-title: Modellering van relaties in Azure storage-tabelontwerp | Microsoft Docs
-description: Inzicht in het modelleringsproces bij het ontwerpen van uw oplossing voor tabel.
+title: Model relaties in azure Table Storage-ontwerp | Microsoft Docs
+description: Inzicht in het model proces bij het ontwerpen van uw oplossing voor tabel opslag.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 5d83e61282d2f21a3016997e324d0f58eff15e78
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 25082c107fbc0feeb533aa2b4fc56cff960e778d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502500"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457558"
 ---
 # <a name="modeling-relationships"></a>Relaties modelleren
-Dit artikel wordt het modelleringsproces om te helpen bij het ontwerpen van uw Azure Table storage-oplossingen.
+In dit artikel wordt het modelleer proces beschreven om u te helpen bij het ontwerpen van uw Azure Table Storage-oplossingen.
 
 Het ontwikkelen van domeinmodellen is een belangrijke stap in het ontwerp van complexe systemen. Meestal gebruikt u het modelleringsproces om entiteiten en de relaties tussen deze als een manier om te begrijpen van het bedrijfsdomein en kennis van het ontwerp van uw systeem te identificeren. Deze sectie richt zich op hoe u enkele van de algemene relatietypen gevonden in de domeinmodellen te ontwerpen voor de Table-service kunt vertalen. Het proces van de toewijzing van een logische gegevensmodel naar een fysieke op NoSQL gebaseerde gegevens-model verschilt van die bij het ontwerpen van een relationele database gebruikt. Relationele databases ontwerp wordt meestal ervan uitgegaan dat een gegevens-normalisatieproces die is geoptimaliseerd voor het minimaliseren van redundantie – en een declaratieve query-functie die isoleert de implementatie van hoe u de database de werking van.  
 
@@ -26,7 +26,7 @@ Een-op-veel-relaties tussen zakelijke domeinobjecten vaak optreden: één afdeli
 Bekijk het voorbeeld van een grote onderneming met meerdere nationale met tienduizenden afdelingen en werknemer entiteiten waarbij elke afdeling heeft veel werknemers en elke werknemer als die zijn gekoppeld aan een bepaalde afdeling. Eén aanpak is het opslaan van afzonderlijke afdeling en werknemer entiteiten zoals deze:  
 
 
-![Afzonderlijke afdeling en werknemer entiteiten Store](media/storage-table-design-guide/storage-table-design-IMAGE01.png)
+![Afzonderlijke afdelingen en entiteiten van werk nemers opslaan](media/storage-table-design-guide/storage-table-design-IMAGE01.png)
 
 In dit voorbeeld ziet u een impliciete een-op-veel-relatie tussen de typen die op basis van de **PartitionKey** waarde. Elke afdeling kan veel werknemers hebben.  
 
@@ -63,7 +63,7 @@ De volgende tabel geeft een overzicht van de voor- en nadelen van elk van de met
 </td>
 </tr>
 <tr>
-<td>Afzonderlijke Entiteitstypen, verschillende partities of tabellen of storage-accounts</td>
+<td>Afzonderlijke entiteits typen, verschillende partities of tabellen of opslag accounts</td>
 <td>
 <ul>
 <li>U kunt een entiteit van de afdeling of de werknemer entiteit bijwerken met een eenmalige bewerking.</li>
@@ -101,28 +101,28 @@ Domeinmodellen kunnen-op-een-relaties tussen entiteiten bevatten. Als u nodig he
 Er zijn ook overwegingen bij de implementatie die kunnen leiden bij de implementatie-op-een-relaties in de Table-service:  
 
 * Verwerken van grote entiteiten (Zie voor meer informatie, [grote entiteiten patroon](table-storage-design-patterns.md#large-entities-pattern)).  
-* Besturingselementen voor toegang implementeren (Zie voor meer informatie, beheren van toegang met handtekeningen voor gedeelde toegang).  
+* Toegangs beheer implementeren (Zie toegang beheren met hand tekeningen voor gedeelde toegang) voor meer informatie.  
 
 ## <a name="join-in-the-client"></a>Deelnemen aan de client
 Hoewel er manieren grafiekverwerking om relaties in de tabelservice zijn, moet u niet vergeet dat de twee belangrijkste redenen voor het gebruik van de Table-service schaalbaarheid en prestaties zijn. Als u dat u veel relaties die een bedreiging vormen van de prestaties en schaalbaarheid van uw oplossing modelleert vindt, vraagt u uzelf als is het nodig zijn om te maken van alle de relaties tussen de gegevens in het tabelontwerp van de. U mogelijk het ontwerp vereenvoudigen en verbeteren van de schaalbaarheid en prestaties van uw oplossing als u toestaat dat uw clienttoepassing uitvoeren die nodig zijn joins.  
 
-Bijvoorbeeld als u kleine tabellen met gegevens die niet vaak wijzigen hebt, kunt klikt u vervolgens u deze gegevens eenmaal ophalen en opslaan in cache deze op de client. Dit kunt herhaalde interactie om op te halen van dezelfde gegevens voorkomen. In de voorbeelden die in deze handleiding hebt bekeken, is de set afdelingen in een klein bedrijf waarschijnlijk klein en wijzig weinig waardoor het een goede kandidaat voor gegevens die client-toepassing één keer kunt downloaden en de cache als opzoeken van gegevens.  
+Bijvoorbeeld als u kleine tabellen met gegevens die niet vaak wijzigen hebt, kunt klikt u vervolgens u deze gegevens eenmaal ophalen en opslaan in cache deze op de client. Dit kunt herhaalde interactie om op te halen van dezelfde gegevens voorkomen. In de voor beelden die we in deze hand leiding hebben bekeken, is de set van afdelingen in een kleine organisatie waarschijnlijk klein en is het niet vaak een goede kandidaat te maken voor gegevens die client toepassing kan downloaden en opslaan als opzoek gegevens.  
 
 ## <a name="inheritance-relationships"></a>Overname van relaties
 Als de clienttoepassing gebruikmaakt van een set klassen die deel van een overnamerelatie uitmaken voor bedrijfsentiteiten, kunt u eenvoudig deze entiteiten in de Table-service behouden. Bijvoorbeeld, u mogelijk de volgende set klassen gedefinieerd in uw clienttoepassing waar **persoon** is een abstracte klasse.
 
-![Abstracte klasse van de persoon](media/storage-table-design-guide/storage-table-design-IMAGE03.png)
+![Abstracte persoons klasse](media/storage-table-design-guide/storage-table-design-IMAGE03.png)
 
 U kunt zich blijven voordoen exemplaren van de twee concrete klassen in de tabel-service met behulp van één personentabel met behulp van entiteiten in dat er als volgt:  
 
-![Personentabel](media/storage-table-design-guide/storage-table-design-IMAGE04.png)
+![Tabel persoon](media/storage-table-design-guide/storage-table-design-IMAGE04.png)
 
-Zie de sectie voor meer informatie over het werken met meerdere Entiteitstypen in dezelfde tabel in clientcode werken met heterogene Entiteitstypen verderop in deze handleiding. Dit bevat voorbeelden van het entiteitstype in clientcode herkennen.  
+Zie de sectie werken met heterogene entiteits typen verderop in deze hand leiding voor meer informatie over het werken met meerdere entiteits typen in dezelfde tabel in client code. Dit bevat voorbeelden van het entiteitstype in clientcode herkennen.  
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Ontwerppatronen voor tabel](table-storage-design-patterns.md)
-- [Ontwerp voor het uitvoeren van query 's](table-storage-design-for-query.md)
-- [Versleutelen van gegevens in een tabel](table-storage-design-encrypt-data.md)
-- [Ontwerp voor wijziging van gegevens](table-storage-design-for-modification.md)
+- [Tabel ontwerp patronen](table-storage-design-patterns.md)
+- [Ontwerpen voor het uitvoeren van query's](table-storage-design-for-query.md)
+- [Tabel gegevens versleutelen](table-storage-design-encrypt-data.md)
+- [Ontwerp voor gegevens aanpassing](table-storage-design-for-modification.md)

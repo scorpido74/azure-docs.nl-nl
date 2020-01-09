@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 12/30/2019
 ms.author: rkarlin
-ms.openlocfilehash: b2be563efa3c09cffaf14dec2b871f3881af1a7a
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: d5f3d24d10262f28023523668c22f4571799cff9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240039"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610468"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Verbinding maken met uw externe oplossing met behulp van syslog
 
@@ -28,14 +28,18 @@ U kunt elk on-premises apparaat dat syslog ondersteunt, verbinden met Azure Sent
 > [!NOTE]
 > Als uw apparaat syslog CEF ondersteunt, is de verbinding meer voltooid en moet u deze optie kiezen en de instructies volgen bij het [verbinden van gegevens van CEF](connect-common-event-format.md).
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Het werkt als volgt
 
 Syslog is een protocol voor het vastleggen van gebeurtenis die geldt voor Linux. Toepassingen wordt berichten die kunnen worden opgeslagen op de lokale computer of worden geleverd met een Syslog-collector verzonden. Wanneer de Log Analytics-agent voor Linux is geïnstalleerd, wordt de lokale syslog-daemon geconfigureerd voor het door sturen van berichten naar de agent. De agent verzendt het bericht vervolgens naar Azure Monitor waar een corresponderende record wordt gemaakt.
 
 Zie [syslog-gegevens bronnen in azure monitor](../azure-monitor/platform/data-sources-syslog.md)voor meer informatie.
 
 > [!NOTE]
-> De agent kan Logboeken van meerdere bronnen verzamelen, maar moet op een specifieke proxy computer worden geïnstalleerd.
+> - De agent kan Logboeken van meerdere bronnen verzamelen, maar moet op een specifieke proxy computer worden geïnstalleerd.
+> - Als u connectors wilt ondersteunen voor zowel CEF als syslog op dezelfde VM, voert u de volgende stappen uit om te voor komen dat gegevens worden gedupliceerd:
+>    1. Volg de instructies om [verbinding te maken met uw CEF](connect-common-event-format.md).
+>    2. Als u de syslog-gegevens wilt verbinden, gaat u naar **instellingen** > **werk ruimte-instellingen** > **Geavanceerde instellingen** > **Data** > **syslog** en stelt u de voorzieningen en hun prioriteiten in, zodat ze niet dezelfde faciliteiten en eigenschappen zijn die u in uw CEF-configuratie hebt gebruikt. <br></br>Als u **de onderstaande configuratie Toep assen op mijn machines**selecteert, worden deze instellingen toegepast op alle vm's die zijn verbonden met deze werk ruimte.
+
 
 ## <a name="connect-your-syslog-appliance"></a>Uw syslog-apparaat aansluiten
 
@@ -55,7 +59,7 @@ Zie [syslog-gegevens bronnen in azure monitor](../azure-monitor/platform/data-so
 
 5. Selecteer op de Blade **Geavanceerde instellingen** de optie **gegevens** > **syslog**. Voeg vervolgens de voorzieningen toe die door de connector moeten worden verzameld.
     
-    Voeg de faciliteiten toe die uw syslog-apparaat in de logboek headers heeft opgenomen. U kunt deze configuratie bekijken in uw syslog-apparaat in **syslog-d** in `/etc/rsyslog.d/security-config-omsagent.conf` de map en in **r-syslog** van `/etc/syslog-ng/security-config-omsagent.conf`.
+    Voeg de faciliteiten toe die uw syslog-apparaat in de logboek headers heeft opgenomen. U kunt deze configuratie bekijken in uw syslog-apparaat in **syslog-d** in de map `/etc/rsyslog.d/security-config-omsagent.conf` en in **r-syslog** vanaf `/etc/syslog-ng/security-config-omsagent.conf`.
     
     Als u afwijkende SSH-aanmeldings detectie wilt gebruiken met de gegevens die u verzamelt, voegt u **auth** en **authpriv**toe. Raadpleeg de [volgende sectie](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) voor meer informatie.
 
@@ -86,7 +90,7 @@ Voor deze detectie is een specifieke configuratie van de syslog-gegevens connect
 1. Zorg ervoor dat voor stap 5 in de vorige procedure zowel **auth** als **authpriv** zijn geselecteerd als te bewaken faciliteiten. Behoud de standaard instellingen voor de ernst opties, zodat deze allemaal zijn geselecteerd. Bijvoorbeeld:
     
     > [!div class="mx-imgBorder"]
-    > ![Voorzieningen die zijn vereist voor afwijkende SSH-aanmeldings detectie](./media/connect-syslog/facilities-ssh-detection.png)
+    > Er zijn ![faciliteiten vereist voor het detecteren van afwijkende SSH-aanmeldingen](./media/connect-syslog/facilities-ssh-detection.png)
 
 2. Zorg dat er voldoende tijd is om syslog-gegevens te verzamelen. Ga vervolgens naar **Azure Sentinel-logs**en kopieer en plak de volgende query:
     
@@ -96,9 +100,11 @@ Voor deze detectie is een specifieke configuratie van de syslog-gegevens connect
     
     Als het resulterende aantal nul is, bevestigt u de configuratie van de connector en controleert u of de bewaakte computers geslaagde aanmeldings activiteiten hebben voor de periode die u voor uw query hebt opgegeven.
     
-    Als het resulterende aantal groter is dan nul, zijn uw syslog-gegevens geschikt voor afwijkende SSH-aanmeldings detectie. U schakelt deze detectie in op basis van **analyse** >  **regel sjablonen** >  **(preview) afwijkende SSH-aanmeldings detectie**.
+    Als het resulterende aantal groter is dan nul, zijn uw syslog-gegevens geschikt voor afwijkende SSH-aanmeldings detectie. U schakelt deze detectie in vanuit **Analytics** >  **regel sjablonen** >  **(preview) afwijkende SSH-aanmeldings detectie**.
 
 ## <a name="next-steps"></a>Volgende stappen
 In dit document hebt u geleerd hoe u op on-premises syslog-apparaten verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
 - Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
 - Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+- [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.
+

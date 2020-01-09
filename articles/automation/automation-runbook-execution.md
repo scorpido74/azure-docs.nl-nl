@@ -2,19 +2,15 @@
 title: Uitvoering van Runbook in Azure Automation
 description: Hierin worden de details van het verwerken van een runbook in Azure Automation beschreven.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: ddeeaeccc0a10d19a070a91d7bd9bef2b31c0570
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4f9fd3a94cf2b6d6ca077b7363e01085e134babd
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850751"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658114"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Uitvoering van Runbook in Azure Automation
 
@@ -37,11 +33,11 @@ Runbooks in Azure Automation kunnen worden uitgevoerd op een sandbox in azure of
 |Integreren met Azure-resources|Azure sandbox|Verificatie is eenvoudiger in Azure. Als u een Hybrid Runbook Worker op een virtuele Azure-machine gebruikt, kunt u [beheerde identiteiten gebruiken voor Azure-resources](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)|
 |Optimale prestaties om Azure-resources te beheren|Azure sandbox|Script wordt uitgevoerd in dezelfde omgeving, die op zijn beurt minder latentie heeft|
 |Beperk operationele kosten|Azure sandbox|Er is geen reken belasting, geen behoefte aan een VM|
-|Lang uitgevoerd script|Hybrid Runbook Worker|Azure-sandboxes hebben [beperkingen op resources](../azure-subscription-service-limits.md#automation-limits)|
+|Lang uitgevoerd script|Hybrid Runbook Worker|Azure-sandboxes hebben [beperkingen op resources](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)|
 |Interactie met lokale services|Hybrid Runbook Worker|Kan rechtstreeks toegang hebben tot de hostcomputer|
 |Externe software en uitvoer bare bestanden van derden vereisen|Hybrid Runbook Worker|U beheert het besturings systeem en kan software installeren|
 |Een bestand of map bewaken met een runbook|Hybrid Runbook Worker|Een [Watcher-taak](automation-watchers-tutorial.md) gebruiken op een Hybrid Runbook worker|
-|Resource-intensieve script|Hybrid Runbook Worker| Azure-sandboxes hebben [beperkingen op resources](../azure-subscription-service-limits.md#automation-limits)|
+|Resource-intensieve script|Hybrid Runbook Worker| Azure-sandboxes hebben [beperkingen op resources](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)|
 |Modules met specifieke vereisten gebruiken| Hybrid Runbook Worker|Een aantal voorbeelden:</br> **WinSCP** -afhankelijkheid op WinSCP. exe </br> **IISAdministration** -IIS moet zijn ingeschakeld|
 |Module installeren waarvoor Installer is vereist|Hybrid Runbook Worker|Modules voor sandbox moeten worden copiable|
 |Runbooks of modules gebruiken waarvoor .NET Framework anders is dan 4.7.2|Hybrid Runbook Worker|Er zijn .NET Framework 4.7.2 voor Automation-sandboxes en er is geen manier om deze te upgraden|
@@ -320,7 +316,7 @@ $JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 
 Als u resources wilt delen tussen alle runbooks in de Cloud, wordt met Azure Automation tijdelijk een taak verwijderd die langer dan drie uur is uitgevoerd. Taken voor [runbooks op basis van Power shell](automation-runbook-types.md#powershell-runbooks) en [python-runbooks](automation-runbook-types.md#python-runbooks) worden gestopt en niet opnieuw gestart en de taak status wordt gestopt weer gegeven.
 
-Voor langlopende taken kunt u het beste een [Hybrid Runbook worker](automation-hrw-run-runbooks.md#job-behavior)gebruiken. Hybrid Runbook Workers worden niet beperkt door een billijke share en hebben geen beperking voor de manier waarop een Runbook kan worden uitgevoerd. De overige taak [limieten](../azure-subscription-service-limits.md#automation-limits) zijn van toepassing op zowel Azure-sandboxes als Hybrid Runbook Workers. Hoewel Hybrid Runbook Workers niet beperkt zijn tot een billijke share limiet van drie uur, moeten runbooks die op deze werk nemers worden uitgevoerd, worden ontwikkeld ter ondersteuning van het opnieuw opstarten van de problemen met de lokale infra structuur.
+Voor langlopende taken kunt u het beste een [Hybrid Runbook worker](automation-hrw-run-runbooks.md#job-behavior)gebruiken. Hybrid Runbook Workers worden niet beperkt door een billijke share en hebben geen beperking voor de manier waarop een Runbook kan worden uitgevoerd. De overige taak [limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) zijn van toepassing op zowel Azure-sandboxes als Hybrid Runbook Workers. Hoewel Hybrid Runbook Workers niet beperkt zijn tot een billijke share limiet van drie uur, moeten runbooks die op deze werk nemers worden uitgevoerd, worden ontwikkeld ter ondersteuning van het opnieuw opstarten van de problemen met de lokale infra structuur.
 
 Een andere optie is om het runbook te optimaliseren door onderliggende runbooks te gebruiken. Als uw runbook met dezelfde functie wordt uitgevoerd op verschillende resources, zoals een database bewerking op verschillende data bases, kunt u die functie verplaatsen naar een [onderliggend runbook](automation-child-runbooks.md) en aanroepen met de cmdlet [Start-AzureRMAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) . Elk van deze onderliggende runbooks wordt parallel uitgevoerd in afzonderlijke processen. Dit gedrag vermindert de totale tijd voor het volt ooien van het bovenliggende runbook. U kunt de cmdlet [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/Get-AzureRmAutomationJob) in uw runbook gebruiken om de taak status voor elk onderliggend item te controleren als er bewerkingen zijn die worden uitgevoerd nadat het onderliggende runbook is voltooid.
 

@@ -7,15 +7,15 @@ author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
-ms.topic: overview
-ms.date: 06/19/2019
+ms.topic: conceptual
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: b70cf50bb33ca7962116586a347c508b15abcd0c
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6fa12febe99e77efde45bcd2d538de78f618e641
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423888"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448564"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Nieuws zoeken met de Bing Nieuws zoeken-API
 
@@ -107,7 +107,7 @@ Als Bing de categorie van het nieuwsartikel kan bepalen, bevat het artikel het v
 
 ## <a name="get-todays-top-news"></a>Het belangrijkste nieuws van vandaag ophalen
 
-Als u de meest voorkomende nieuws artikelen wilt ontvangen, kunt u dezelfde algemene nieuws aanvraag verzenden als voorheen, terwijl de `q` para meter wordt uitgeschakeld.
+Als u de meest voorkomende nieuws artikelen wilt ontvangen, kunt u dezelfde algemene nieuws aanvraag verzenden als voorheen, terwijl de para meter `q` uitgeschakeld blijft.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
@@ -119,7 +119,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-De reactie op het ophalen van het hoogste nieuws is bijna hetzelfde als het antwoord voor het verkrijgen van algemeen nieuws. met als verschil dat de respons `news` geen veld `totalEstimatedMatches` bevat omdat het om een bepaald aantal resultaten gaat. Het aantal belangrijke nieuwsartikelen kan variëren, afhankelijk van de nieuwscyclus. Zorg ervoor dat u het `provider` veld gebruikt om het artikel te kenmerk.
+De reactie op het ophalen van het hoogste nieuws is bijna hetzelfde als het antwoord voor het verkrijgen van algemeen nieuws. met als verschil dat de respons `news` geen veld `totalEstimatedMatches` bevat omdat het om een bepaald aantal resultaten gaat. Het aantal belangrijke nieuwsartikelen kan variëren, afhankelijk van de nieuwscyclus. Zorg ervoor dat u het veld `provider` gebruikt voor het kenmerk van het artikel.
 
 ## <a name="get-news-by-category"></a>Nieuws ophalen per categorie
 

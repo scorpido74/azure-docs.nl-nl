@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 612b6caf47ec4764aa2bbef162592100198ed0c4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 47c1ce3391129525237566fb92cec2e9b33ca08f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832213"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443419"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Veelgestelde vragen over de toepassings proxy van Active Directory (Azure AD)
 
@@ -53,9 +53,9 @@ Zie [hoge Beschik baarheid en taak verdeling voor de connectors en toepassingen 
 
 Nee, dit scenario wordt niet ondersteund. Alleen de connector-en Update Services kunnen worden geconfigureerd voor het gebruik van een doorstuur proxy voor uitgaand verkeer naar Azure. Zie [werken met bestaande on-premises proxy servers](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers)
 
-### <a name="is-ssl-termination-sslhhtps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Is SSL-beëindiging (SSL/HHTPS-inspectie of-versnelling) op verkeer van de connector servers naar Azure ondersteund?
+### <a name="is-ssl-termination-sslhttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Wordt SSL-beëindiging (SSL/HTTPS-inspectie of-versnelling) op verkeer van de connector servers naar Azure ondersteund?
 
-De Application proxy-connector voert verificatie op basis van certificaten uit voor Azure. SSL-beëindiging (SSL/HHTPS-inspectie of-versnelling) verbreekt deze verificatie methode en wordt niet ondersteund. Verkeer van de connector naar Azure moet alle apparaten die SSL-beëindiging uitvoeren, overs Laan.  
+De Application proxy-connector voert verificatie op basis van certificaten uit voor Azure. SSL-beëindiging (SSL/HTTPS-inspectie of-versnelling) verbreekt deze verificatie methode en wordt niet ondersteund. Verkeer van de connector naar Azure moet alle apparaten die SSL-beëindiging uitvoeren, overs Laan.  
 
 ### <a name="should-i-create-a-dedicated-account-to-register-the-connector-with-azure-ad-application-proxy"></a>Moet ik een toegewezen account maken om de connector te registreren bij Azure AD-toepassingsproxy?
 
@@ -63,7 +63,7 @@ Er is geen reden voor. Een globale beheerder of een beheerders account voor de t
 
 ### <a name="how-can-i-monitor-the-performance-of-the-azure-ad-application-proxy-connector"></a>Hoe kan ik de prestaties van de Azure AD-toepassingsproxy-connector controleren?
 
-Er zijn prestatie meter items die samen met de connector worden geïnstalleerd. Ze bekijken:  
+Er zijn prestatie meter items die samen met de connector worden geïnstalleerd. Als u deze wilt weergeven:  
 
 1. Selecteer **Start**, typ ' perfmon ' en druk op ENTER.
 2. Selecteer **prestatie meter** en klik op het pictogram groen **+** .

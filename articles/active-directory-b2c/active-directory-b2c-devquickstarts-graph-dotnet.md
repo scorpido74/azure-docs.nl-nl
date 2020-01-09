@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42378c4377057902937b718555489636bc5dcbaa
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 74375fdb5bf8d571cbdbc778c3c6e7b7b93f59ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900016"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367996"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: de Azure AD-Graph API gebruiken
 
@@ -29,9 +29,6 @@ Voor B2C-tenants zijn er twee primaire modi om te communiceren met de Graph API:
 * Voor **geautomatiseerde**, doorlopende taken moet u een type service account gebruiken dat u opgeeft met de benodigde bevoegdheden voor het uitvoeren van beheer taken. In azure AD kunt u dit doen door een toepassing te registreren en te verifiëren bij Azure AD. Dit wordt gedaan met behulp van een *toepassings-id* die gebruikmaakt van de [OAuth 2,0-client referenties toewijzen](../active-directory/develop/service-to-service.md). In dit geval fungeert de toepassing als zichzelf, niet als gebruiker, om de Graph API aan te roepen.
 
 In dit artikel leert u hoe u de geautomatiseerde use-case uitvoert. U bouwt een .NET 4,5-`B2CGraphClient` op waarmee gebruikers ruwe, lees-, update-en delete-bewerkingen (ruw) uitvoeren. De client heeft een Windows-opdracht regel interface (CLI) waarmee u verschillende methoden kunt aanroepen. De code wordt echter geschreven zodat deze zich op een niet-interactieve, geautomatiseerde manier bevindt.
-
->[!IMPORTANT]
-> U **moet** de [Azure AD-Graph API](../active-directory/develop/active-directory-graph-api-quickstart.md) gebruiken om gebruikers in een Azure AD B2C Directory te beheren. De Azure AD-Graph API wijkt af van de Microsoft Graph-API. Meer informatie vindt u in dit MSDN-blog bericht: [Microsoft Graph of Azure AD Graph](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -63,8 +60,9 @@ De machtiging voor het *lezen en schrijven van Directory gegevens* die u eerder 
 
 Als u uw toepassing de mogelijkheid wilt geven om gebruikers te verwijderen of wacht woorden bij te werken, moet u de *gebruiker* de rol van de beheerder verlenen.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en ga naar de map met uw Azure AD B2C Tenant.
-1. Selecteer **Azure AD B2C** in het menu links. U kunt ook **alle services** selecteren en vervolgens zoeken naar en **Azure AD B2C**selecteren.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
+1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
 1. Selecteer onder **beheren**de optie **rollen en beheerders**.
 1. Selecteer de rol **gebruikers beheerder** .
 1. Selecteer **toewijzing toevoegen**.

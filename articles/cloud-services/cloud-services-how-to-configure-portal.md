@@ -3,17 +3,17 @@ title: Een Cloud service (Portal) configureren | Microsoft Docs
 description: Meer informatie over het configureren van Cloud Services in Azure. Meer informatie over het bijwerken van de configuratie van de Cloud service en het configureren van externe toegang tot rolinstanties. In deze voor beelden wordt gebruikgemaakt van de Azure Portal.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 12/07/2016
-ms.author: gwallace
-ms.openlocfilehash: 8b60a81e06b95c69a02f88ff3275743b056c191d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 554d3e465b42ca889ba03565e87193f80e89ed1d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359653"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361004"
 ---
 # <a name="how-to-configure-cloud-services"></a>Cloud Services configureren
 
@@ -29,7 +29,7 @@ Ga na het openen van de [Azure Portal](https://portal.azure.com/)naar uw Cloud s
 
 ![Pagina instellingen](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 
-Met de koppelingen **instellingen** of **alle instellingen** worden **instellingen** geopend waarbij u de **Eigenschappen**kunt wijzigen, de **configuratie**wijzigen, de **certificaten**beheert, **waarschuwings regels**instelt en de **gebruikers beheert** wie heeft toegang tot deze Cloud service.
+Met de koppelingen **instellingen** of **alle instellingen** worden **instellingen** geopend, waar u de **Eigenschappen**kunt wijzigen, de **configuratie**wijzigen, de **certificaten**beheert, **waarschuwings regels**instelt en de **gebruikers** beheert die toegang hebben tot deze Cloud service.
 
 ![Instellingen van de Azure-Cloud service](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
 
@@ -44,7 +44,7 @@ Als u een specifieke versie van het besturings systeem nodig hebt, kunt u deze i
 >[!IMPORTANT]
 > Als u een specifieke versie van het besturings systeem kiest, worden automatisch updates van het besturings systeem uitgeschakeld en wordt er patch voor uw verantwoordelijkheid gemaakt. U moet ervoor zorgen dat uw rolinstanties updates ontvangen of u kunt uw toepassing bloot stellen aan beveiligings problemen.
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controleren
 
 U kunt waarschuwingen toevoegen aan uw Cloud service. Klik op **instellingen** > **waarschuwings regels** > **waarschuwing toevoegen**.
 
@@ -56,13 +56,13 @@ Hier kunt u een waarschuwing instellen. In de vervolg keuzelijst **metriek** kun
 * Schijf schrijven
 * Netwerk - inkomend
 * Netwerk - uitgaand
-* Processorpercentage
+* CPU-percentage
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>Bewaking configureren op basis van een metrische tegel
 
-In plaats van **instellingen** > voor**waarschuwings regels**te gebruiken, kunt u klikken op een van de metrische tegels in de sectie **bewaking** van de Cloud service.
+In plaats van **instellingen** > **waarschuwings regels**te gebruiken, kunt u klikken op een van de metrische tegels in de sectie **bewaking** van de Cloud service.
 
 ![Cloud service bewaken](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 
@@ -92,7 +92,7 @@ Mogelijk moet u de Cloud service opnieuw configureren via het [cscfg-bestand (se
     ![Blade configuratie](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
 3. Klik op de knop **Downloaden**.
 
-    ![Downloaden](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
+    ![Download](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
 4. Nadat u het service configuratie bestand hebt bijgewerkt, uploadt u de configuratie-updates en past u deze toe:
 
     ![Uploaden](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
@@ -104,3 +104,6 @@ Mogelijk moet u de Cloud service opnieuw configureren via het [cscfg-bestand (se
 * Een [aangepaste domein naam](cloud-services-custom-domain-name-portal.md)configureren.
 * [Uw Cloud service beheren](cloud-services-how-to-manage-portal.md).
 * [SSL-certificaten](cloud-services-configure-ssl-certificate-portal.md)configureren.
+
+
+

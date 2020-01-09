@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: d7b4755bb2e69c4a852901b71d917c6baa5d63ae
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: c7c4da97101ae1277474e62466d78ffbc66b1ce0
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406415"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563272"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>Zelf studie: een AI-verrijkings pijplijn maken met behulp van REST en python
 
@@ -87,7 +87,7 @@ Er zijn andere manieren om de verbindingsreeks op te geven, zoals een Shared Acc
 ## <a name="create-a-jupyter-notebook"></a>Een Jupyter-notebook maken
 
 > [!Note]
-> In dit artikel wordt beschreven hoe u een gegevens bron, index, Indexeer functie en vakkennisset maakt met behulp van een reeks python-scripts. Als u het voor beeld van een volledig notitie blok wilt downloaden, gaat u naar [Azure-Search-python-samples opslag plaats](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment-Jupyter-Notebook).
+> In dit artikel wordt beschreven hoe u een gegevens bron, index, Indexeer functie en vakkennisset maakt met behulp van een reeks python-scripts. Als u het voor beeld van een volledig notitie blok wilt downloaden, gaat u naar [Azure-Search-python-samples opslag plaats](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment).
 
 Gebruik Anaconda Navigator om Jupyter Notebook te starten en een nieuw python 3-notebook te maken.
 

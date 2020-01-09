@@ -4,12 +4,12 @@ description: In dit artikel leert u hoe u de configuratie van de kluis kunt bijw
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: cbd958dd71d2d62f7b4c7e8d66ab7e56dc679a51
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 3739f95e3962def9ab669970c48b2d1c546fdc0e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74998743"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390543"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Recovery Services kluis configuraties van Azure bijwerken met behulp van REST API
 
@@ -43,7 +43,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Het geslaagde antwoord voor de GET-bewerking wordt hieronder weer gegeven:
 
-|Naam  |Type  |Beschrijving  |
+|Name  |Type  |Beschrijving  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
@@ -83,7 +83,7 @@ De volgende algemene definities worden gebruikt voor het maken van een aanvraag 
 
 Raadpleeg [de rest API-documentatie](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) voor meer informatie.
 
-|Naam  |Verplicht  |Type  |Beschrijving  |
+|Name  |Verplicht  |Type  |Beschrijving  |
 |---------|---------|---------|---------|
 |eTag     |         |   Tekenreeks      |  Optionele eTag       |
 |location     |  waar       |Tekenreeks         |   Resource locatie      |
@@ -92,7 +92,7 @@ Raadpleeg [de rest API-documentatie](https://docs.microsoft.com/rest/api/backup/
 
 #### <a name="example-request-body"></a>Voorbeeld aanvraag tekst
 
-Het volgende voor beeld wordt gebruikt om de soft-delete-sate bij te werken naar disabled.
+Het volgende voor beeld wordt gebruikt om de status van zacht verwijderen bij te werken naar disabled.
 
 ```json
 {
@@ -107,7 +107,7 @@ Het volgende voor beeld wordt gebruikt om de soft-delete-sate bij te werken naar
 
 Het geslaagde antwoord voor de PATCH bewerking wordt hieronder weer gegeven:
 
-|Naam  |Type  |Beschrijving  |
+|Name  |Type  |Beschrijving  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 1d100f17130594ace6169f5840915c88435cb9a8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3ba4ac665df45ab6d53d2195ab59ec577f8bab05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615781"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422291"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Beveiligings concepten voor toepassingen en clusters in azure Kubernetes service (AKS)
 
@@ -36,7 +36,7 @@ De Kubernetes API-server gebruikt standaard een openbaar IP-adres en met Fully Q
 
 AKS-knoop punten zijn virtuele Azure-machines die u beheert en onderhoudt. Linux-knoop punten voeren een geoptimaliseerde Ubuntu-distributie uit met behulp van de Moby container runtime. Windows Server-knoop punten (momenteel in de preview-versie van AKS) voert u een geoptimaliseerde versie van Windows Server 2019 uit en gebruikt u ook de Moby container runtime. Wanneer een AKS-cluster wordt gemaakt of geschaald, worden de knoop punten automatisch geïmplementeerd met de meest recente beveiligings updates en-configuraties van het besturings systeem.
 
-Het Azure-platform past automatisch de beveiligings patches van het besturings systeem op een nacht in op Linux-knoop punten. Als voor een Linux-beveiligings update een host opnieuw moet worden opgestart, wordt dat opnieuw opstarten niet automatisch uitgevoerd. U kunt de Linux-knoop punten hand matig opnieuw opstarten of een gemeen schappelijke aanpak gebruiken [Kured][kured], een open source-daemon voor opnieuw opstarten voor Kubernetes. Kured wordt uitgevoerd als [][aks-daemonsets] een daemonset en bewaakt elk knoop punt voor de aanwezigheid van een bestand dat aangeeft dat de computer opnieuw moet worden opgestart. Opnieuw opstarten wordt via het cluster beheerd met hetzelfde Cordon- [en afvoer proces](#cordon-and-drain) als een cluster upgrade.
+Het Azure-platform past automatisch de beveiligings patches van het besturings systeem op een nacht in op Linux-knoop punten. Als voor een Linux-beveiligings update een host opnieuw moet worden opgestart, wordt dat opnieuw opstarten niet automatisch uitgevoerd. U kunt de Linux-knoop punten hand matig opnieuw opstarten of een gemeen schappelijke aanpak gebruiken [Kured][kured], een open source-daemon voor opnieuw opstarten voor Kubernetes. Kured wordt uitgevoerd als een [daemonset][aks-daemonsets] en bewaakt elk knoop punt voor de aanwezigheid van een bestand dat aangeeft dat de computer opnieuw moet worden opgestart. Opnieuw opstarten wordt via het cluster beheerd met hetzelfde Cordon- [en afvoer proces](#cordon-and-drain) als een cluster upgrade.
 
 Voor Windows Server-knoop punten (momenteel in de preview-versie van AKS) wordt Windows Update niet automatisch uitgevoerd en worden de nieuwste updates toegepast. U moet een upgrade uitvoeren op de Windows Server-knooppunt groep (en) in uw AKS-cluster, volgens een regel matige planning rond de Windows Update release cyclus en uw eigen validatie proces. Dit upgrade proces maakt knoop punten waarop de nieuwste installatie kopie en patches van Windows Server worden uitgevoerd, waarna de oudere knoop punten worden verwijderd. Zie [een knooppunt groep bijwerken in AKS][nodepool-upgrade]voor meer informatie over dit proces.
 
@@ -65,7 +65,7 @@ Zie [een AKS-cluster upgraden][aks-upgrade-cluster]voor meer informatie.
 
 Voor connectiviteit en beveiliging met on-premises netwerken kunt u uw AKS-cluster implementeren in bestaande subnetten van het virtuele Azure-netwerk. Deze virtuele netwerken kunnen een Azure site-naar-site VPN-of Express route-verbinding weer naar uw on-premises netwerk hebben. Kubernetes ingress-controllers kunnen worden gedefinieerd met persoonlijke, interne IP-adressen, zodat services alleen toegankelijk zijn via deze interne netwerk verbinding.
 
-### <a name="azure-network-security-groups"></a>Azure-netwerk beveiligings groepen
+### <a name="azure-network-security-groups"></a>Netwerkbeveiligingsgroepen in Azure
 
 Azure gebruikt regels voor netwerk beveiligings groepen om de stroom van verkeer in virtuele netwerken te filteren. Met deze regels worden de bron-en doel-IP-adresbereiken, poorten en protocollen gedefinieerd die toegang tot bronnen toestaan of weigeren. Standaard regels worden gemaakt om TLS-verkeer toe te staan voor de Kubernetes-API-server. Bij het maken van services met load balancers, poort toewijzingen of ingangs routes, wijzigt AKS automatisch de netwerk beveiligings groep voor verkeer dat op de juiste wijze stroomt.
 
@@ -79,7 +79,7 @@ Het gebruik van geheimen vermindert de gevoelige informatie die is gedefinieerd 
 
 Zie [een AKS-cluster upgraden][aks-upgrade-cluster]om aan de slag te gaan met het beveiligen van uw AKS-clusters.
 
-Zie [Aanbevolen procedures voor cluster beveiliging en upgrades in AKS][operator-best-practices-cluster-security]voor de bijbehorende aanbevolen procedures.
+Zie [Aanbevolen procedures voor het beveiligen van clusters en upgrades in AKS][operator-best-practices-cluster-security] en [Aanbevolen procedures voor pod Security in AKS][developer-best-practices-pod-security]voor de bijbehorende aanbevolen procedures.
 
 Raadpleeg de volgende artikelen voor meer informatie over de belangrijkste Kubernetes-en AKS-concepten:
 
@@ -105,4 +105,5 @@ Raadpleeg de volgende artikelen voor meer informatie over de belangrijkste Kuber
 [aks-concepts-network]: concepts-network.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
+[developer-best-practices-pod-security]:developer-best-practices-pod-security.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

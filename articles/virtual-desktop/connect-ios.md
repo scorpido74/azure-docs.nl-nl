@@ -5,31 +5,24 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 12/13/2019
 ms.author: helohr
-ms.openlocfilehash: bfc7efa6e8ead3b53704e3c9bd189b18cb787618
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 472b8800a09cb12bc3e703ef53d0aab2b578e0d3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605833"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460221"
 ---
 # <a name="connect-with-the-ios-client"></a>Verbinding maken met de iOS-client
 
-> Van toepassing op: iOS 8,0 of hoger. Compatibel met iPhone, iPad en iPod Touch.
-
->[!NOTE]
-> De iOS-client is momenteel nog in preview.
+> Van toepassing op: iOS 13,0 of hoger. Compatibel met iPhone, iPad en iPod Touch.
 
 U kunt toegang krijgen tot virtuele bureau blad-resources van Windows vanaf uw iOS-apparaat met onze Download bare client. In deze hand leiding wordt uitgelegd hoe u de iOS-client kunt instellen.
 
-## <a name="install-the-ios-beta-client"></a>De iOS bèta-client installeren
-De iOS bèta-client installeren:
+## <a name="install-the-ios-client"></a>De iOS-client installeren
 
-1. Installeer de [Apple TestFlight](https://apps.apple.com/us/app/testflight/id899247664) -app op uw IOS-apparaat.
-2. Open een browser op uw iOS-apparaat en ga naar [aka.MS/rdiosbeta](https://aka.ms/rdiosbeta).
-3. Onder het label **stap 2: deel nemen aan de bèta versie**, selecteer **testen starten**.
-4. Wanneer u bent omgeleid naar de TestFlight-app, selecteert u **accepteren**en selecteert u **installeren**.
+[Down load](https://aka.ms/rdios) en installeer de-client op uw IOS-apparaat om aan de slag te gaan.
 
 ## <a name="subscribe-to-a-feed"></a>Abonneren op een feed
 
@@ -41,7 +34,7 @@ Abonneren op een feed:
 2. Voer de URL van de feed in het veld URL van de **feed** in. De feed-URL kan een URL of een e-mail adres zijn.
    - Als u een URL gebruikt, gebruikt u de beheerder die u hebt ontvangen. Normaal gesp roken is de URL <https://rdweb.wvd.microsoft.com>.
    - Als u e-mail wilt gebruiken, voert u uw e-mail adres in. Dit geeft de client de opdracht om te zoeken naar een URL die is gekoppeld aan uw e-mail adres als uw beheerder de server op die manier heeft geconfigureerd.
-3. Tik op **volgende**.
+3. Tik op **Volgende**.
 4. Geef uw referenties op wanneer u hierom wordt gevraagd.
    - Geef voor de **gebruikers naam**de gebruikers naam op met machtigingen voor toegang tot resources.
    - Geef bij **wacht woord**het wacht woord op dat is gekoppeld aan de gebruikers naam.

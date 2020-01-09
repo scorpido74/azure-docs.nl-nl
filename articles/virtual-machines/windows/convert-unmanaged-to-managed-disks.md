@@ -1,17 +1,17 @@
 ---
-title: Een virtuele Windows-machine van niet-beheerde schijven converteren naar beheerde schijven-Azure Managed Disks
+title: Een virtuele Windows-machine van niet-beheerde schijven converteren naar beheerde schijven
 description: Een Windows-VM van niet-beheerde schijven converteren naar beheerde schijven met behulp van Power shell in het Resource Manager-implementatie model
 author: roygara
 ms.service: virtual-machines-windows
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 92f70cbfcf261c218ea43b159ed49126f7b2ecd5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 8c180cfc597c0ade27b1fe8cca5a8751176ea12e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033900"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460129"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Een virtuele Windows-machine van niet-beheerde schijven converteren naar beheerde schijven
 

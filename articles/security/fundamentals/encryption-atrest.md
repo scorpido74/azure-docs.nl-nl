@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2019
 ms.author: barclayn
-ms.openlocfilehash: fc3c7ea2f0060fc6ab20fa821c9e45d6e5173d4f
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: da8dfe61e92c4839deb1f7fbc289be0136087720
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795803"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497294"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-gegevens versleuteling-at-rest
 
@@ -117,7 +117,7 @@ Het client versleutelings model verwijst naar de versleuteling die buiten de res
 
 Versleutelings modellen aan de server zijde verwijzen naar versleuteling die wordt uitgevoerd door de Azure-service. In dat model voert de resource provider de bewerkingen versleutelen en ontsleutelen uit. Azure Storage kunnen bijvoorbeeld gegevens ontvangen in bewerkingen met tekst zonder opmaak en de versleuteling en ontsleuteling intern uitvoeren. De resource provider kan gebruikmaken van versleutelings sleutels die door micro soft of door de klant worden beheerd, afhankelijk van de ingestelde configuratie.
 
-![Server](./media/encryption-atrest/azure-security-encryption-atrest-fig3.png)
+![server](./media/encryption-atrest/azure-security-encryption-atrest-fig3.png)
 
 ### <a name="server-side-encryption-key-management-models"></a>Beheer modellen voor versleutelings sleutels aan server zijde
 
@@ -127,7 +127,7 @@ Elk van de versleuteling aan de server zijde bij rest modellen impliceert de ond
 
 Voor veel klanten is de essentiële vereiste om ervoor te zorgen dat de gegevens worden versleuteld wanneer deze in rust zijn. Versleuteling aan de server zijde met door service beheerde sleutels maakt dit model mogelijk door klanten toe te staan om de specifieke resource (opslag account, SQL-data base, enzovoort) te markeren voor versleuteling en alle aspecten van het sleutel beheer, zoals sleutel uitgifte, rotatie en back-up naar micro soft, te laten staan . De meeste Azure-Services die ondersteuning bieden voor versleuteling in rust, bieden doorgaans ondersteuning voor dit model van het beheer van de versleutelings sleutels naar Azure. De Azure-resource provider maakt de sleutels, plaatst deze in beveiligde opslag en haalt ze op wanneer dat nodig is. Dit betekent dat de service volledige toegang heeft tot de sleutels en dat de service volledige controle heeft over het beheer van de referentie levenscyclus.
 
-![bijgehouden](./media/encryption-atrest/azure-security-encryption-atrest-fig4.png)
+![Bijgehouden](./media/encryption-atrest/azure-security-encryption-atrest-fig4.png)
 
 Versleuteling aan de server zijde met door service beheerde sleutels maakt daarom snel de nood zaak om versleuteling op rest te hebben met lage overhead voor de klant. Als er een klant beschikbaar is, wordt doorgaans de Azure Portal voor het doel abonnement en de resource provider geopend en wordt een vak gecontroleerd waarin wordt aangegeven dat de gegevens moeten worden versleuteld. In sommige bron beheer server versleuteling met door service beheerde sleutels is standaard ingeschakeld.
 
@@ -264,7 +264,7 @@ Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund
 | **AI en Machine Learning**      |                    |                    |                    |
 | Azure Cognitive Search                     | Ja                | Preview            | -                  |
 | Azure Machine Learning   | Ja                | -                  | -                  |
-| Azure Machine Learning Studio    | Ja                | Preview, RSA 2048-bits | -               |
+| Microsoft Azure Machine Learning Studio    | Ja                | Preview, RSA 2048-bits | -               |
 | Power BI                         | Ja                | Preview, RSA 2048-bits | -                  |
 | **Analytische gegevens**                    |                    |                    |                    |
 | Azure Stream Analytics           | Ja                | -                  | -                  |
@@ -279,7 +279,7 @@ Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund
 | Azure Kubernetes Service         | Ja                | -                  | -                  |
 | Container Registry               | Ja                | -                  | -                  |
 | **Compute**                      |                    |                    |                    |
-| Virtuele machines                 | Ja                | Ja, RSA 2048-bits  | -                  |
+| Virtual Machines                 | Ja                | Ja, RSA 2048-bits  | -                  |
 | Schaalset voor virtuele machines        | Ja                | Ja, RSA 2048-bits  | -                  |
 | SAP HANA                         | Ja                | Ja, RSA 2048-bits  | -                  |
 | **Databases**                    |                    |                    |                    |
@@ -290,7 +290,7 @@ Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund
 | Azure SQL Database voor PostgreSQL | Ja                | -                  | -                  |
 | Azure SQL Data Warehouse         | Ja                | Ja, RSA 2048-bits  | Ja                |
 | SQL Server Stretch Database      | Ja                | Ja, RSA 2048-bits  | Ja                |
-| Table Storage                    | Ja                | -                  | Ja                |
+| Tabel Storage                    | Ja                | -                  | Ja                |
 | Azure Cosmos DB                  | Ja                | -                  | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps                     | Ja                | -                  | Ja                |
@@ -298,25 +298,25 @@ Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund
 | **Identity**                     |                    |                    |                    |
 | Azure Active Directory           | Ja                | -                  | -                  |
 | Azure Active Directory Domain Services | Ja          | Ja, RSA 2048-bits  | -                  |
-| **Opneming**                  |                    |                    |                    |
+| **Integratie**                  |                    |                    |                    |
 | Service Bus                      | Ja                | -                  | Ja                |
 | Event Grid                       | Ja                | -                  | -                  |
 | API Management                   | Ja                | -                  | -                  |
 | **IoT-Services**                 |                    |                    |                    |
 | IoT Hub                          | Ja                | -                  | Ja                |
 | **Beheer en governance**    |                    |                    |                    |
-| Azure Site Recovery              | Ja                | Ja, RSA 2048-bits  | Ja                |
-| **Tussenliggend**                        |                    |                    |                    |
+| Azure Site Recovery              | Ja                | -                  | -                  |
+| **Media**                        |                    |                    |                    |
 | Media Services                   | Ja                | -                  | Ja                |
 | **Opslag**                      |                    |                    |                    |
-| Blob Storage                     | Ja                | Ja, RSA 2048-bits  | Ja                |
-| Disk Storage                     | Ja                | -                  | -                  |
+| Blobopslag                     | Ja                | Ja, RSA 2048-bits  | Ja                |
+| Disk-opslag                     | Ja                | -                  | -                  |
 | Beheerde schijfopslag             | Ja                | -                  | -                  |
-| File Storage                     | Ja                | Ja, RSA 2048-bits  | -                  |
+| Bestandsopslag                     | Ja                | Ja, RSA 2048-bits  | -                  |
 | Queue Storage                    | Ja                | -                  | Ja                |
 | Avere vFXT                       | Ja                | -                  | -                  |
 | Azure NetApp Files               | Ja                | -                  | -                  |
-| Archive Storage                  | Ja                | Ja, RSA 2048-bits  | -                  |
+| Archiefopslag                  | Ja                | Ja, RSA 2048-bits  | -                  |
 | StorSimple                       | Ja                | Ja, RSA 2048-bits  | Ja                |
 | Azure Backup                     | Ja                | -                  | Ja                |
 | Data Box                         | Ja                | -                  | Ja                |

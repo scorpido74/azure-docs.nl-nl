@@ -4,15 +4,15 @@ description: Overzicht van Azure Monitor voor VM's waarmee de status en prestati
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: e9a3df0172f276800a3049675f6e858db7f0370c
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 17aa81c626c1bfa8a8a344552b7a0fe61dd85a7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307280"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365781"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Wat is Azure Monitor voor virtuele machines (preview)?
 
@@ -22,7 +22,7 @@ Het bevat ondersteuning voor het bewaken van de prestaties en toepassings afhank
 
 - **Vooraf gedefinieerde diagrammen voor trend prestaties**: de metrische prestatie gegevens weer geven van het gast-VM-besturings systeem.
 
-- **Afhankelijkheids kaart**: geeft de onderling verbonden onderdelen weer met de virtuele machine uit verschillende resource groepen en abonnementen.  
+- **Kaart van afhankelijkheden**: bevat de onderdelen met elkaar verbonden met de virtuele machine vanuit de verschillende resourcegroepen en abonnementen.  
 
 >[!NOTE]
 >We hebben onlangs [Wijzigingen aangekondigd](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
@@ -38,7 +38,7 @@ Azure Monitor voor VM's kunt voorspel bare prestaties en beschik baarheid van es
 
 ## <a name="data-usage"></a>Gegevensgebruik
 
-Wanneer u Azure Monitor voor virtuele machines implementeert, wordt de gegevens die worden verzameld door uw virtuele machines die zijn opgenomen en opgeslagen in Azure Monitor. De verzamelde prestaties en afhankelijkheids gegevens worden opgeslagen in een Log Analytics-werk ruimte. Op basis van de prijzen die worden gepubliceerd op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/), wordt Azure monitor voor VM's gefactureerd voor:
+Wanneer u Azure Monitor voor virtuele machines implementeert, wordt de gegevens die worden verzameld door uw virtuele machines die zijn opgenomen en opgeslagen in Azure Monitor. De verzamelde prestaties en afhankelijkheids gegevens worden opgeslagen in een Log Analytics-werk ruimte. Op de prijzen die gepubliceerd op basis van de [Azure Monitor-pagina met prijzen](https://azure.microsoft.com/pricing/details/monitor/), Azure-Monitor voor virtuele machines wordt in rekening gebracht voor:
 
 - De gegevens die is opgenomen en opgeslagen.
 - De regels voor waarschuwingen die zijn gemaakt.
@@ -48,4 +48,4 @@ De logboek grootte is afhankelijk van de teken reeks lengte van prestatie meter 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg [Deploy Azure monitor voor VM's](vminsights-enable-overview.md)voor meer informatie over de vereisten en methoden die u helpen bij het bewaken van uw virtuele machines.
+Bekijk voor meer informatie over de vereisten en de methoden die u helpen bij uw virtuele machines controleren, [implementeert Azure Monitor voor virtuele machines](vminsights-enable-overview.md).

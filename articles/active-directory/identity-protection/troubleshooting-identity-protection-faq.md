@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 10/18/2019
+ms.date: 12/13/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d22973867782ddb64ced2ac95e84c0b27a3addd
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887596"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443576"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Veelgestelde vragen over identiteits beveiliging in Azure Active Directory
 
@@ -42,6 +42,14 @@ Query's op het veld **username** zijn hoofdletter gevoelig, terwijl query's op h
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
+### <a name="why-is-a-user-is-at-risk"></a>Waarom is een gebruiker risico?
+
+Als u een Azure AD Identity Protection klant bent, gaat u naar de weer gave [Risk ante gebruikers](howto-identity-protection-investigate-risk.md#risky-users) en klikt u op een gebruiker met een risico. In de lade aan de onderkant worden in het tabblad risico geschiedenis alle gebeurtenissen weer gegeven die hebben geleid tot een wijziging in de gebruikers risico. Als u alle Risk ante aanmeldingen voor de gebruiker wilt weer geven, klikt u op Risk ante aanmeldingen van gebruiker. Als u alle risico detecties voor deze gebruiker wilt weer geven, klikt u op risico detectie gebruiker.
+
+### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>Hoe kan ik een rapport met detecties van een specifiek type krijgen?
+
+Ga naar de weer gave risico detecties en filter op detectie type. U kunt dit rapport vervolgens downloaden in. CSV of. JSON-indeling met behulp van de knop **downloaden** bovenaan. Zie voor meer informatie het artikel [How to: risico onderzoeken](howto-identity-protection-investigate-risk.md#risk-detections).
+
 ### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-detection"></a>Waarom kan ik mijn eigen risico niveaus niet instellen voor elke risico detectie?
 
 Risico niveaus in identiteits beveiliging zijn gebaseerd op de nauw keurigheid van de detectie en worden mogelijk gemaakt door onze gecontroleerde machine learning. Als u wilt aanpassen welke gebruikers ervaring worden gepresenteerd, kan de beheerder bepaalde gebruikers/groepen opnemen/uitsluiten van het risico beleid voor gebruikers Risico's en aanmeldings Risico's.
@@ -49,6 +57,20 @@ Risico niveaus in identiteits beveiliging zijn gebaseerd op de nauw keurigheid v
 ### <a name="why-does-the-location-of-a-sign-in-not-match-where-the-user-truly-signed-in-from"></a>Waarom komt de locatie van een aanmelding niet overeen met waar de gebruiker zich daad werkelijk heeft aangemeld?
 
 Toewijzing van IP-geolocatie is een toonaangevende uitdaging. Als u denkt dat de locatie die wordt vermeld in het rapport aanmeldingen niet overeenkomt met de werkelijke locatie, neemt u contact op met micro soft ondersteuning. 
+
+### <a name="how-can-i-close-specific-risk-detections-like-i-did-in-the-old-ui"></a>Hoe kan ik specifieke risico detecties sluiten, zoals ik heb in de oude gebruikers interface?
+
+U kunt feedback geven over risico detectie door de gekoppelde aanmelding te bevestigen als aangetast of veilig. De feedback die is gegeven op het aanmeldings trickles naar alle detecties die zijn uitgevoerd op die aanmelding. Als u detecties wilt sluiten die niet aan een aanmelding zijn gekoppeld, kunt u de feedback op het gebruikers niveau opgeven. Zie voor meer informatie het artikel [How to: feedback geven over Risico's in azure AD Identity Protection](howto-identity-protection-risk-feedback.md).
+
+### <a name="how-far-can-i-go-back-in-time-to-understand-whats-going-on-with-my-user"></a>Hoe ver kan ik teruggaan in de tijd om te begrijpen wat er gebeurt met mijn gebruiker?
+
+- In de weer gave [Risk ante gebruikers](howto-identity-protection-investigate-risk.md#risky-users) wordt het risico van een gebruiker weer gegeven op basis van alle eerdere aanmeldingen. 
+- In de weer gave [Risk ante aanmeldingen](howto-identity-protection-investigate-risk.md#risky-sign-ins) worden in de afgelopen 30 dagen een risico teken weer gegeven. 
+- De weer gave [risico detectie](howto-identity-protection-investigate-risk.md#risk-detections) toont de risico detecties die zijn gemaakt in de afgelopen 90 dagen.
+
+### <a name="how-can-i-learn-more-about-a-specific-detection"></a>Hoe kan ik meer informatie vinden over een specifieke detectie?
+
+Alle risico detecties worden beschreven in het artikel [Wat is risico](concept-identity-protection-risks.md#risk-types-and-detection). U kunt de muis aanwijzer boven het symbool (i) naast de detectie op de Azure Portal voor meer informatie over een detectie.
 
 ### <a name="how-do-the-feedback-mechanisms-in-identity-protection-work"></a>Hoe werken de feedback mechanismen voor identiteits beveiliging?
 

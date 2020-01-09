@@ -1,26 +1,28 @@
 ---
-title: Aanmelden bij Azure-laptops
-description: Snel Meld u aan bij Azure-notitieblokken en stel een gebruikers-ID, waardoor u de mogelijkheid voor toegang tot opgeslagen projecten en laptops met anderen delen.
+title: Meld u aan bij Azure Notebooks preview
+description: Meld u snel aan Azure Notebooks preview en stel een gebruikers-ID in die u de mogelijkheid biedt om opgeslagen projecten te openen en notitie blokken te delen met anderen.
 ms.topic: quickstart
 ms.date: 04/15/2019
-ms.openlocfilehash: 234703da9662380a59c7673ca3b34a1b01b7dbef
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b6572a7c0b965b2b72916db577b47eff4f1921c0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277440"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647013"
 ---
-# <a name="quickstart-sign-in-and-set-a-user-id"></a>Snelstart: Aanmelden en instellen van een gebruikers-ID
+# <a name="quickstart-sign-in-and-set-a-user-id-for-azure-notebooks-preview"></a>Snelstartgids: Meld u aan en stel een gebruikers-ID in voor Azure Notebooks preview
 
 Hoewel u altijd Azure-notitieblokken weergeven kunt zonder dat u aangemeld, moet u zich aanmelden bij uitvoeren van notitieblokken, toegang tot opgeslagen projecten en -laptops en uw notitieblokken delen met anderen.
 
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
 ## <a name="sign-in"></a>Aanmelden
 
-1. Selecteer **aanmelden in** de rechter bovenhoek van [notebooks.Azure.com](https://notebooks.azure.com/).
+1. Selecteer **aanmelden** in de rechterbovenhoek van [notebooks.azure.com](https://notebooks.azure.com/).
 
     ![Locatie van de opdracht aanmelden op de Azure-laptops](media/accounts/sign-in-command.png)
 
-1. Wanneer u hierom wordt gevraagd, voert u het e-mail adres van een micro soft-account of een werk-of school account in en selecteert u **volgende**. Account typen worden beschreven [voor uw gebruikers account voor Azure notebooks](azure-notebooks-user-account.md). Als u geen micro soft-account hebt of als u er een wilt maken voor gebruik met Azure Notebooks, selecteert u **een**van de volgende opties:
+1. Wanneer u hierom wordt gevraagd, typt u het e-mailadres van een Microsoft-Account of een werk of school-account en selecteer **volgende**. Accounttypen zijn beschreven op [uw gebruikersaccount voor Azure-laptops](azure-notebooks-user-account.md). Als u geen Microsoft-Account hebt of wilt maken voor gebruik met Azure-laptops, selecteert u **maakt u er een**:
 
     ![Nieuwe opdracht voor Microsoft-account maken in een overbodige aanmeldingsprompt](media/accounts/create-new-microsoft-account.png)
 
@@ -39,9 +41,9 @@ Hoewel u altijd Azure-notitieblokken weergeven kunt zonder dat u aangemeld, moet
 
     ![Prompt om in te voeren van een gebruikers-ID voor Azure-laptops](media/accounts/create-user-id.png)
 
-    Als u **Nee bedankt**selecteert, wordt u telkens wanneer u zich aanmeldt, door Azure notebooks gevraagd om een gebruikers-id. Uw gebruikers-ID kan ook op elk gewenst moment worden ingesteld in uw [gebruikers profiel](azure-notebooks-user-profile.md).
+    Als u selecteert **Nee bedankt**,-laptops Azure blijft u gevraagd om een gebruikers-ID elke keer dat u zich aanmeldt. Uw gebruikers-ID kan ook worden ingesteld op elk gewenst moment in uw [gebruikersprofiel](azure-notebooks-user-profile.md).
 
-1. Nadat u zich hebt aangemeld, gaat Azure Notebooks naar de pagina met het open bare profiel, waarop u **Profiel gegevens bewerken** kunt selecteren om de rest van uw gegevens in te vullen (Zie [uw profiel en gebruikers-id](azure-notebooks-user-profile.md)) voor meer informatie.
+1. Na de is aanmelding, Azure-notitieblokken navigeert naar de pagina openbaar profiel, waarop u kunt selecteren **profielgegevens bewerken** om de rest van uw gegevens in te vullen (Zie voor meer informatie, [uw profiel en gebruikers-ID](azure-notebooks-user-profile.md)):
 
     ![Weergave van de profielpagina van een Azure-laptops](media/accounts/profile-page-new.png)
 
@@ -50,11 +52,11 @@ Hoewel u altijd Azure-notitieblokken weergeven kunt zonder dat u aangemeld, moet
 
 ## <a name="sign-out"></a>Afmelden
 
-Als u zich wilt afmelden, selecteert u uw gebruikers naam in de rechter bovenhoek van de pagina en selecteert u vervolgens **Afmelden**:
+Op Afmelden, selecteert u uw gebruikersnaam in de rechterbovenhoek van de pagina en selecteer vervolgens **Afmelden**:
 
 ![Locatie van de afmelding opdracht op de Azure-laptops](media/accounts/sign-out-command.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: een notitie blok maken en delen](quickstart-create-share-jupyter-notebook.md)
+> [QuickStart: Maken en delen van een laptop](quickstart-create-share-jupyter-notebook.md)

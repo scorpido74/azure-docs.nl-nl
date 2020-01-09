@@ -4,18 +4,18 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over het m
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 30036d6cf241e1ac840b2be67ca78fbda6c60061
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b8e259c6212e9a1e81b6b0c8825287f3025f9068
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172562"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680525"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Veelgestelde vragen: back-ups maken van virtuele Azure-machines
 
 In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van back-ups van virtuele Azure-machines met de [Azure backup](backup-introduction-to-azure-backup.md) -service.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Back-up
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>Welke VM-installatie kopieën kunnen worden ingeschakeld voor back-up wanneer ik ze Maak?
 
@@ -111,16 +111,9 @@ U kunt de optie voor het herstellen van de schijf gebruiken als u het volgende w
 
 Ja, u kunt back-ups gebruiken die zijn gemaakt voordat schijven zijn gemigreerd van niet-beheerd naar beheerd.
 
-- Een VM-taak herstellen maakt standaard een niet-beheerde virtuele machine.
-- U kunt echter schijven herstellen en gebruiken om een beheerde virtuele machine te maken.
-
 ### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>Hoe herstel ik een VM naar een herstelpunt vóór de migratie van de VM naar beheerde schijven?
 
-Een VM-taak herstellen maakt standaard een virtuele machine met onbeheerde schijven. Een virtuele machine maken met Managed disks:
-
-1. [Herstellen naar niet-beheerde schijven](tutorial-restore-disk.md#restore-a-vm-disk).
-2. [Converteer de herstelde schijven naar Managed disks](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk).
-3. [Maak een virtuele machine met Managed disks](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk).
+Het herstel proces blijft hetzelfde. Als het herstel punt een bepaald tijdstip heeft wanneer de virtuele machine niet-beheerde schijven bevat, kunt u de [schijven herstellen als](tutorial-restore-disk.md#unmanaged-disks-restore)niet-beheerd. Als de virtuele machine schijven heeft beheerd, kunt u [schijven herstellen als managed disks](tutorial-restore-disk.md#managed-disk-restore). Vervolgens kunt u [een virtuele machine maken op basis van die schijven](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk).
 
 Meer [informatie hierover vindt](backup-azure-vms-automation.md#restore-an-azure-vm) u in Power shell.
 

@@ -1,24 +1,16 @@
 ---
-title: Uw ontwikkelomgeving in Mac OS X instellen voor gebruik met Azure Service Fabric | Microsoft Docs
-description: Installeer de runtime, SDK en hulpprogramma's en maak een lokaal ontwikkelcluster. Zodra u dit hebt gedaan, kunt u toepassingen bouwen in Mac OS X.
-services: service-fabric
-documentationcenter: linux
+title: Uw ontwikkel omgeving instellen op macOS
+description: Installeer de runtime, SDK en hulpprogramma's en maak een lokaal ontwikkelcluster. Nadat u deze installatie hebt voltooid, kunt u toepassingen bouwen op macOS.
 author: suhuruli
-manager: chackdan
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 2ce8d944e7334b071a4a48f38f8c4fafaeff4c47
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 178b8c120bc7a886eaca94d1551e489f96ba22b2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035288"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609873"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Uw ontwikkelomgeving instellen in Mac OS X
 > [!div class="op_single_selector"]
@@ -109,7 +101,7 @@ Als u een lokale Docker-container wilt instellen en daarop een Service Fabric-cl
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
     >
 
-5. Het kan even duren voordat het cluster is gestart. Wanneer deze wordt uitgevoerd, kunt u logboeken weer geven met behulp van de volgende opdracht of naar het dash board [http://localhost:19080](http://localhost:19080)gaan om de status van het cluster weer te geven:
+5. Het kan even duren voordat het cluster is gestart. Wanneer deze wordt uitgevoerd, kunt u logboeken weer geven met de volgende opdracht of naar het dash board gaan om de status van de clusters te bekijken [http://localhost:19080](http://localhost:19080):
 
     ```bash 
     docker logs sftestcluster
@@ -174,7 +166,7 @@ Service Fabric biedt hulpprogramma's waarmee u vanuit de terminal een Service Fa
     ```
 
     > [!IMPORTANT]
-    > De huidige versies `brew cask install java` van kunnen een recentere versie van de JDK installeren.
+    > Met de huidige versies van `brew cask install java` kan een recentere versie van de JDK worden geïnstalleerd.
     > Zorg ervoor dat u JDK 8 installeert.
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>Toepassingen implementeren op uw Mac vanuit de terminal

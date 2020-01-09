@@ -5,17 +5,17 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9ec3a6b39a857f888514b0a3872ae411e1819f3a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 1168faa1f39546dc75af28b885c9095cfffa1135
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671825"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422137"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Micro services zoals verwacht inrichten en implementeren in azure
 Deze zelf studie laat zien hoe u een toepassing kunt inrichten en implementeren die is samengesteld uit micro [Services](https://en.wikipedia.org/wiki/Microservices) in [Azure app service](https://azure.microsoft.com/services/app-service/) als één eenheid en op een voorspel bare manier met behulp van JSON-resource groeps sjablonen en Power shell-scripts. 
 
-Bij het inrichten en implementeren van grootschalige toepassingen die bestaan uit zeer ontkoppelde micro Services, zijn Herhaal baarheid en voorspel baarheid cruciaal voor succes. Met [Azure app service](https://azure.microsoft.com/services/app-service/) kunt u micro Services maken die web-apps, mobiele back-ends en API apps bevatten. Met [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) kunt u alle micro Services als eenheid beheren, samen met bron afhankelijkheden zoals data base-en broncode beheer instellingen. Nu kunt u een dergelijke toepassing ook implementeren met behulp van JSON-sjablonen en eenvoudige Power shell-scripts. 
+Bij het inrichten en implementeren van grootschalige toepassingen die bestaan uit zeer ontkoppelde micro Services, zijn Herhaal baarheid en voorspel baarheid cruciaal voor succes. Met [Azure app service](https://azure.microsoft.com/services/app-service/) kunt u micro Services maken die web-apps, mobiele back-ends en API apps bevatten. Met [Azure Resource Manager](../azure-resource-manager/management/overview.md) kunt u alle micro Services als eenheid beheren, samen met bron afhankelijkheden zoals data base-en broncode beheer instellingen. Nu kunt u een dergelijke toepassing ook implementeren met behulp van JSON-sjablonen en eenvoudige Power shell-scripts. 
 
 ## <a name="what-you-will-do"></a>Wat u moet doen
 In de zelf studie gaat u een toepassing implementeren die het volgende bevat:
@@ -29,7 +29,7 @@ In de zelf studie gaat u een toepassing implementeren die het volgende bevat:
 In deze zelf studie gebruikt u de volgende hulpprogram ma's. Omdat het geen uitgebreide discussie over hulpprogram ma's is, gaan we naar het end-to-end-scenario en geven we u een korte inleiding tot elke en waar u er meer informatie over kunt vinden. 
 
 ### <a name="azure-resource-manager-templates-json"></a>Azure Resource Manager sjablonen (JSON)
-Telkens wanneer u een app maakt in Azure App Service, gebruikt Azure Resource Manager bijvoorbeeld een JSON-sjabloon om de hele resource groep te maken met de onderdeel resources. Een complexe sjabloon van [Azure Marketplace](/azure/marketplace) kan de data base, opslag accounts, het app service plan, de app zelf, waarschuwings regels, app-instellingen, instellingen voor automatisch schalen en meer bevatten, en al deze sjablonen zijn beschikbaar voor u via Power shell. Zie [Azure Resource Manager sjablonen ontwerpen](../azure-resource-manager/resource-group-authoring-templates.md) voor meer informatie over de Azure Resource Manager sjablonen
+Telkens wanneer u een app maakt in Azure App Service, gebruikt Azure Resource Manager bijvoorbeeld een JSON-sjabloon om de hele resource groep te maken met de onderdeel resources. Een complexe sjabloon van [Azure Marketplace](/azure/marketplace) kan de data base, opslag accounts, het app service plan, de app zelf, waarschuwings regels, app-instellingen, instellingen voor automatisch schalen en meer bevatten, en al deze sjablonen zijn beschikbaar voor u via Power shell. Zie [Azure Resource Manager sjablonen ontwerpen](../azure-resource-manager/templates/template-syntax.md) voor meer informatie over de Azure Resource Manager sjablonen
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>Azure SDK 2,6 voor Visual Studio
 De nieuwste SDK bevat verbeteringen in de ondersteuning van Resource Manager-sjablonen in de JSON-editor. U kunt deze gebruiken om snel een volledig nieuwe sjabloon voor een resource groep te maken of een bestaande JSON-sjabloon (zoals een gedownloade galerie sjabloon) te openen om deze te wijzigen, het parameter bestand in te vullen en de resource groep zelfs rechtstreeks vanuit een Azure-resource te implementeren Groeps oplossing.
@@ -90,7 +90,7 @@ Ik wil niet alle details van de JSON-indeling beschrijven, maar de sectie [meer 
 ### <a name="parameters"></a>Parameters
 Bekijk het gedeelte para meters om te zien dat de meeste van deze para meters de knop **implementeren naar Azure** u vraagt om in te voeren. De site achter de knop **implementeren naar Azure** vult de gebruikers interface in met behulp van de para meters die zijn gedefinieerd in azuredeploy. json. Deze para meters worden gebruikt in de resource definities, zoals resource namen, eigenschaps waarden enzovoort.
 
-### <a name="resources"></a>Bronnen
+### <a name="resources"></a>Resources
 In het knoop punt resources ziet u dat er vier resources op het hoogste niveau zijn gedefinieerd, met inbegrip van een SQL Server exemplaar, een App Service plan en twee apps. 
 
 #### <a name="app-service-plan"></a>App Service-plan
@@ -117,7 +117,7 @@ Let op het volgende over de gemarkeerde JSON-code:
 * De geneste resources in `“resources”: […]`, waar de-data base en de firewall regels zijn gedefinieerd, hebben een `dependsOn`-element dat de resource-ID van de SQLServer-resource op hoofd niveau specificeert. Dit geeft aan Azure Resource Manager, ' voordat u deze resource maakt, moet deze andere resource al bestaan. en als de andere bron in de sjabloon is gedefinieerd, moet u die eerst een maken.
   
   > [!NOTE]
-  > Zie [Azure Resource Manager-sjabloon functies](../azure-resource-manager/resource-group-template-functions-resource.md#resourceid)voor meer informatie over het gebruik van de functie `resourceId()`.
+  > Zie [Azure Resource Manager-sjabloon functies](../azure-resource-manager/templates/template-functions-resource.md#resourceid)voor meer informatie over het gebruik van de functie `resourceId()`.
   > 
   > 
 * Het effect van het `dependsOn` element is dat Azure Resource Manager kan weten welke resources parallel kunnen worden gemaakt en welke resources opeenvolgend moeten worden gemaakt. 
@@ -250,8 +250,8 @@ DevOps, REPEAT baarheid en voorspel baarheid zijn sleutels voor een succes volle
 <a name="resources"></a>
 
 ## <a name="more-resources"></a>Meer informatiebronnen
-* [Taal van Azure Resource Manager sjabloon](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Azure Resource Manager sjablonen ontwerpen](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Taal van Azure Resource Manager sjabloon](../azure-resource-manager/templates/template-syntax.md)
+* [Azure Resource Manager sjablonen ontwerpen](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager-sjabloon functies](../azure-resource-manager/resource-group-template-functions.md)
 * [Een toepassing implementeren met Azure Resource Manager sjabloon](../azure-resource-manager/resource-group-template-deploy.md)
 * [Azure PowerShell gebruiken met Azure Resource Manager](../azure-resource-manager/powershell-azure-resource-manager.md)
@@ -264,7 +264,7 @@ Zie voor meer informatie over de JSON-syntaxis en eigenschappen voor de resource
 * [Microsoft.Sql/servers](/azure/templates/microsoft.sql/servers)
 * [Micro soft. SQL/servers/data bases](/azure/templates/microsoft.sql/servers/databases)
 * [Micro soft. SQL/servers/firewallRules](/azure/templates/microsoft.sql/servers/firewallrules)
-* [Micro soft. web/server farms](/azure/templates/microsoft.web/serverfarms)
-* [Micro soft. web/sites](/azure/templates/microsoft.web/sites)
-* [Micro soft. web/sites/sleuven](/azure/templates/microsoft.web/sites/slots)
-* [Micro soft. Insights/autoscalesettings](/azure/templates/microsoft.insights/autoscalesettings)
+* [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)
+* [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)
+* [Microsoft.Web/sites/slots](/azure/templates/microsoft.web/sites/slots)
+* [Microsoft.Insights/autoscalesettings](/azure/templates/microsoft.insights/autoscalesettings)

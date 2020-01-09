@@ -1,44 +1,35 @@
 ---
-title: Azure Service Fabric programmatische schalen | Microsoft Docs
-description: Een Azure Service Fabric-cluster in- of uitschalen via een programma, op basis van aangepaste triggers
-services: service-fabric
-documentationcenter: .net
+title: Service Fabric programmatisch schalen van Azure
+description: Een Azure Service Fabric cluster in-of uitschalen in een programma, volgens aangepaste triggers
 author: mjrousos
-manager: jonjung
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: 128f28d2a8b97feb3d20c34b7468b60c446a78a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ffe07960c6d32bea8ec31b1fe8248b6abc2b63af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306937"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458281"
 ---
-# <a name="scale-a-service-fabric-cluster-programmatically"></a>Een Service Fabric-cluster programmatisch schalen 
+# <a name="scale-a-service-fabric-cluster-programmatically"></a>Een Service Fabric cluster via een programma schalen 
 
-Service Fabric-clusters die worden uitgevoerd in Azure zijn gebouwd boven op de virtuele-machineschaalsets.  [Clusterschaling](./service-fabric-cluster-scale-up-down.md) beschrijft hoe Service Fabric-clusters kunnen worden geschaald handmatig of met regels voor automatisch schalen. In dit artikel wordt beschreven hoe u referenties beheren en schalen van een cluster in of uit met de fluent Azure compute-SDK, die een meer geavanceerde scenario. Lees voor een overzicht [programmatische methoden voor het coördineren van Azure schalen herverdelen](service-fabric-cluster-scaling.md#programmatic-scaling). 
+Service Fabric clusters die worden uitgevoerd in azure, zijn gebouwd op schaal sets van virtuele machines.  [Cluster schaalt](./service-fabric-cluster-scale-up-down.md) een beschrijving van hoe service Fabric clusters hand matig of met regels voor automatisch schalen kunnen worden geschaald. In dit artikel wordt beschreven hoe u referenties beheert en een cluster in-of uitschaalt met behulp van de Fluent Azure Compute SDK, een meer geavanceerd scenario. Lees voor een overzicht de [programmatische methoden voor het coördineren van Azure-schaal bewerkingen](service-fabric-cluster-scaling.md#programmatic-scaling). 
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>Referenties beheren
-Eén uitdaging van het schrijven van een service voor het afhandelen van schalen is dat de service moet toegang hebben tot de virtuele machine schaalsetresources zonder een interactieve aanmelding. Het is eenvoudig om toegang tot de Service Fabric-cluster als de service vergroten/verkleinen is een eigen Service Fabric-toepassing wijzigen, maar de referenties zijn nodig voor toegang tot de schaalset. Als u wilt aanmelden, kunt u een [service-principal](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) die zijn gemaakt met de [Azure CLI](https://github.com/azure/azure-cli).
+Een uitdaging voor het schrijven van een service voor het afhandelen van schalen is dat de service toegang moet hebben tot bronnen van virtuele-machine schaal sets zonder interactieve aanmelding. Toegang tot het Service Fabric cluster is eenvoudig als de schaal service een eigen Service Fabric toepassing wijzigt, maar er zijn referenties nodig om toegang te krijgen tot de schaalset. Als u zich wilt aanmelden, kunt u een [Service-Principal](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) gebruiken die is gemaakt met de [Azure cli](https://github.com/azure/azure-cli).
 
-Een service-principal kan worden gemaakt met de volgende stappen uit:
+U kunt een service-principal maken met de volgende stappen:
 
-1. Aanmelden bij de Azure CLI (`az login`) ingesteld als een gebruiker met toegang tot de virtuele-machineschaalset
-2. De service-principal met maken `az ad sp create-for-rbac`
-    1. Noteer de toepassings-id (elders 'client-ID' genoemd), naam, wachtwoord en tenant voor later gebruik.
-    2. U moet ook uw abonnements-ID, dat kan worden weergegeven met `az account list`
+1. Meld u aan bij de Azure CLI (`az login`) als gebruiker met toegang tot de schaalset voor virtuele machines
+2. De service-principal maken met `az ad sp create-for-rbac`
+    1. Noteer de appId (client-ID elders genoemd), de naam, het wacht woord en de Tenant voor later gebruik.
+    2. U hebt ook uw abonnements-ID nodig, die kan worden weer gegeven met `az account list`
 
-De fluent compute-bibliotheek kan zich aanmelden met deze referenties als volgt (Houd er rekening mee dat core fluent Azure typen, zoals `IAzure` zijn de [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) pakket):
+De Fluent Compute-bibliotheek kan als volgt worden aangemeld met deze referenties (Houd er rekening mee dat de belangrijkste Fluent-typen van Azure, zoals `IAzure`, zich in het pakket [micro soft. Azure. Management. Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) bevinden:
 
 ```csharp
 var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {
@@ -57,10 +48,10 @@ else
 }
 ```
 
-Wanneer u bent aangemeld, scale set-exemplaren kan worden opgevraagd `AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId).Capacity`.
+Wanneer u bent aangemeld, kan het aantal exemplaren van de schaalset worden opgevraagd via `AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId).Capacity`.
 
 ## <a name="scaling-out"></a>Uitschalen
-Met de fluent Azure compute-SDK, exemplaren kunnen worden toegevoegd aan de virtuele-machineschaalset met slechts een paar aanroepen:
+Met behulp van de Fluent Azure Compute SDK kunnen instanties worden toegevoegd aan de schaalset voor virtuele machines met slechts enkele aanroepen:
 
 ```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
@@ -68,15 +59,15 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-U kunt ook kan de grootte van virtuele machine scale set ook worden beheerd met PowerShell-cmdlets. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) de virtuele machine schaalsetobject kunnen worden opgehaald. De huidige capaciteit is beschikbaar via de `.sku.capacity` eigenschap. Na het wijzigen van de capaciteit op de gewenste waarde, de virtuele-machineschaalset in Azure kan worden bijgewerkt met de [ `Update-AzVmss` ](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) opdracht.
+U kunt ook de grootte van de schaalset voor virtuele machines beheren met Power shell-cmdlets. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) kan het object voor de schaalset van de virtuele machine ophalen. De huidige capaciteit is beschikbaar via de eigenschap `.sku.capacity`. Nadat u de capaciteit hebt gewijzigd in de gewenste waarde, kan de schaalset voor virtuele machines in Azure worden bijgewerkt met de [`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) opdracht.
 
-Wanneer een knooppunt handmatig toe te voegen, toe te voegen een schaalsetinstantie moet worden bevat alles wat nodig is om te beginnen een nieuw Service Fabric-knooppunt omdat de sjabloon voor schaalsets uitbreidingen automatisch nieuwe exemplaren toevoegen aan de Service Fabric-cluster. 
+Net als bij het hand matig toevoegen van een knoop punt, moet u een instantie van een schaalset toevoegen die nodig is om een nieuw Service Fabric knoop punt te starten omdat de sjabloon voor de schaalset extensies bevat om automatisch nieuwe exemplaren toe te voegen aan het Service Fabric cluster. 
 
-## <a name="scaling-in"></a>Inschalen
+## <a name="scaling-in"></a>Schalen in
 
-Inschalen is vergelijkbaar met het uitschalen. De werkelijke virtuele-machineschaalset wijzigingen zijn vrijwel hetzelfde. Maar zoals eerder is besproken, Service Fabric alleen automatisch opschonen van verwijderde knooppunten met de Gold- of Silver duurzaamheid. In het geval Brons duurzaamheid schaal het is dus nodig om te communiceren met de Service Fabric-cluster om het knooppunt moet worden verwijderd af te sluiten en vervolgens te verwijderen van de status.
+Schalen in is vergelijkbaar met uitschalen. De werkelijke wijzigingen in de schaalset van virtuele machines zijn nagenoeg hetzelfde. Maar zoals eerder is besproken, reinigt Service Fabric alleen verwijderde knoop punten automatisch met een duurzaamheid van goud of zilver. In het geval van de schaal van Bronze-duurzaamheid is het echter nodig om te communiceren met het Service Fabric-cluster om het knoop punt dat moet worden verwijderd af te sluiten en de status ervan te verwijderen.
 
-Het knooppunt voorbereiden voor afsluiten omvat het zoeken naar het knooppunt dat moet worden verwijderd (meest recent toegevoegde virtuele machine exemplaar in de schaalset) en het deactiveren. Virtual machine scale set exemplaren worden genummerd in de volgorde waarin die ze zijn toegevoegd, zodat nieuwere knooppunten vindt u door het vergelijken van het achtervoegsel in namen van de knooppunten (welke overeen met de onderliggende virtuele-machineschaalset instantienamen). 
+Voor het voorbereiden van het knoop punt voor afsluiten moet u het knoop punt vinden dat moet worden verwijderd (de laatst toegevoegde instantie van de virtuele-machine schaalset) en deactiveren. Exemplaren van virtuele-machine schaal sets worden genummerd in de volg orde waarin ze worden toegevoegd, zodat er nieuwe knoop punten kunnen worden gevonden door het achtervoegsel van het nummer in de namen van de knoop punten te vergelijken (die overeenkomen met de onderliggende exemplaar namen van de virtuele-machine schaal sets). 
 
 ```csharp
 using (var client = new FabricClient())
@@ -93,7 +84,7 @@ using (var client = new FabricClient())
         .FirstOrDefault();
 ```
 
-Zodra het knooppunt moet worden verwijderd, wordt gevonden, deze kan worden gedeactiveerd en worden verwijderd met behulp van dezelfde `FabricClient` exemplaar en de `IAzure` -exemplaar van de eerder.
+Nadat het knoop punt dat moet worden verwijderd, is gevonden, kan het worden gedeactiveerd en worden verwijderd met behulp van hetzelfde `FabricClient` exemplaar en het `IAzure` exemplaar van eerdere versies.
 
 ```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
@@ -118,7 +109,7 @@ var newCapacity = (int)Math.Max(MinimumNodeCount, scaleSet.Capacity - 1); // Che
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ```
 
-Als met wilt uitschalen, PowerShell-cmdlets voor het wijzigen van virtuele-machineschaalset kan capaciteit ook hier worden gebruikt als een scripting aanpak is het beter. Wanneer het exemplaar van de virtuele machine is verwijderd, kan de status van Service Fabric-knooppunt kan worden verwijderd.
+Net als bij uitschalen kunt u Power shell-cmdlets voor het wijzigen van de capaciteit van de schaalset voor virtuele machines hier ook gebruiken als u de voor keur geeft aan een script benadering. Zodra het exemplaar van de virtuele machine is verwijderd, kan Service Fabric knooppunt status worden verwijderd.
 
 ```csharp
 await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
@@ -126,8 +117,8 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u wilt gaan implementeren van uw eigen logica automatisch schalen, kunt u dat raken met de volgende concepten en handige API's:
+Raadpleeg de volgende concepten en nuttige Api's om aan de slag te gaan met het implementeren van uw eigen logica voor automatisch schalen:
 
-- [Schaal handmatig of met regels voor automatisch schalen](./service-fabric-cluster-scale-up-down.md)
-- [Fluent Azure-beheerbibliotheken voor .NET](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (dit is handig voor interactie met een Service Fabric-cluster onderliggende virtual machine scale sets)
-- [System.Fabric.FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (dit is handig voor interactie met Service Fabric-cluster en de knooppunten ervan)
+- [Hand matig schalen of met regels voor automatisch schalen](./service-fabric-cluster-scale-up-down.md)
+- [Fluent Azure-beheer bibliotheken voor .net](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (geschikt voor interactie met de onderliggende virtuele-machine schaal sets van een service Fabric cluster)
+- [System. Fabric. FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (handig voor interactie met een service Fabric cluster en de bijbehorende knoop punten)

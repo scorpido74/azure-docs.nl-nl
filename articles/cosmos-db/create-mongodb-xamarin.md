@@ -1,5 +1,5 @@
 ---
-title: Een Xamarin.Forms-app ontwikkelen met .NET en Azure Cosmos DB-API voor MongoDB
+title: Bouw een Xamarin-app met .NET en de API van Azure Cosmos DB voor MongoDB
 description: Deze snelstart bevat een voorbeeld van Xamarin-code dat u kunt gebruiken om verbinding te maken met de Azure Cosmos DB-API voor MongoDB en er query's op uit te voeren
 author: codemillmatt
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: a0612ea06c71b2a93e6fb76f5d82516cfbad8657
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: a21e3705fe367e478ec02b82ec83c4ad7cfb4151
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65860332"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445446"
 ---
-# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Snelstartgids: Een Xamarin.Forms-app ontwikkelen met de .NET SDK en Azure Cosmos DB-API voor MongoDB
+# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Quick Start: een Xamarin. Forms-app maken met .NET SDK en de API van Azure Cosmos DB voor MongoDB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -26,7 +26,7 @@ ms.locfileid: "65860332"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel databases maken van documenten, sleutel/waarde-paren en grafieken en hier query’s op uitvoeren. Deze databases genieten allemaal het voordeel van de globale distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Azure Cosmos DB.
+Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel databases maken van documenten, sleutel/waarde-paren en grafen en hier query’s op uitvoeren. Deze databases genieten allemaal het voordeel van de wereldwijde distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Azure Cosmos DB.
 
 In deze snelstart laten we u zien hoe u een [Cosmos-account maakt dat is geconfigureerd met Azure Cosmos DB-API voor MongoDB](mongodb-introduction.md) en een documentdatabase en verzameling kunt maken met behulp van Azure Portal. U bouwt vervolgens een todo-app van de app Xamarin.Forms met behulp van het [MongoDB .NET-stuurprogramma](https://docs.mongodb.com/ecosystem/drivers/csharp/).
 
@@ -34,7 +34,7 @@ In deze snelstart laten we u zien hoe u een [Cosmos-account maakt dat is geconfi
 
 Als u het voorbeeld wilt uitvoeren, hebt u [Visual Studio](https://www.visualstudio.com/downloads/) of [Visual Studio voor Mac](https://visualstudio.microsoft.com/vs/mac/) en een geldig Azure Cosmos DB-account nodig.
 
-Als u Visual Studio nog niet hebt, kunt u downloaden [Community Edition van Visual Studio 2019](https://www.visualstudio.com/downloads/) met de **ontwikkeling van mobiele Apps met .NET** werkbelasting met setup geïnstalleerd.
+Als u Visual Studio nog niet hebt, downloadt u [Visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/) met de **mobiele ontwikkeling met de .net** -werk belasting die is geïnstalleerd met Setup.
 
 Als u liever op een Mac werkt, download dan [Visual Studio voor Mac](https://visualstudio.microsoft.com/vs/mac/) en voer de installatie uit.
 
@@ -46,7 +46,7 @@ Als u liever op een Mac werkt, download dan [Visual Studio voor Mac](https://vis
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
-Het voorbeeld dat in dit artikel wordt beschreven, is compatibel met MongoDB.Driver versie 2.6.1.
+Het voorbeeld dat in dit artikel is beschreven, is compatibel met MongoDB.Driver versie 2.6.1.
 
 ## <a name="clone-the-sample-app"></a>De voorbeeld-app klonen
 

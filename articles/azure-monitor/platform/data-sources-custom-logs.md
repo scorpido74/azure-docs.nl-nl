@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 3bd40e9a266305ac94ed53806bf394891e89c125
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6d85ada428ab448bd8e96545999ca038e532a32b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932501"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450668"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Aangepaste Logboeken in Azure Monitor
 
@@ -52,7 +52,7 @@ De wizard aangepast logboek wordt uitgevoerd in de Azure Portal en stelt u in st
 
 1. Selecteer in de Azure Portal **log Analytics werk ruimten** > uw werk ruimte > **Geavanceerde instellingen**.
 2. Klik op **gegevens** > **aangepaste logboeken**.
-3. Standaard worden alle configuratie wijzigingen automatisch naar alle agents gepusht. Voor Linux-agents wordt een configuratie bestand verzonden naar de gefluente gegevens verzamelaar.
+3. Standaard worden alle wijzigingen in de configuratie automatisch doorgegeven naar alle agents. Voor Linux-agents wordt een configuratie bestand verzonden naar de gefluente gegevens verzamelaar.
 4. Klik op **toevoegen +** om de wizard Aangepaste logboeken te openen.
 
 ### <a name="step-2-upload-and-parse-a-sample-log"></a>Stap 2. Een voorbeeld logboek uploaden en parseren
@@ -71,16 +71,16 @@ Als er een tijds tempel scheidings teken wordt gebruikt, wordt de eigenschap Tim
 ### <a name="step-3-add-log-collection-paths"></a>Stap 3. Paden voor logboek verzameling toevoegen
 U moet een of meer paden definiëren op de agent waar het aangepaste logboek kan worden gevonden.  U kunt een specifiek pad en naam opgeven voor het logboek bestand, of u kunt een pad met een Joker teken voor de naam. Dit biedt ondersteuning voor toepassingen die elke dag een nieuw bestand maken of wanneer een bestand een bepaalde grootte heeft bereikt. U kunt ook meerdere paden opgeven voor één logboek bestand.
 
-Een toepassing kan bijvoorbeeld elke dag een logboek bestand maken met de datum die is opgenomen in de naam in log20100316. txt. Een patroon voor een dergelijk logboek kan *log\*.txt* zijn die van toepassing zou zijn op elk logboek bestand volgens het naamgevings schema van de toepassing.
+Een toepassing kan bijvoorbeeld elke dag een logboek bestand maken met de datum die is opgenomen in de naam in log20100316. txt. Een patroon voor een dergelijk logboek kan *logboek\*. txt* zijn dat van toepassing is op elk logboek bestand volgens het naamgevings schema van de toepassing.
 
 De volgende tabel bevat voor beelden van geldige patronen om andere logboek bestanden op te geven.
 
 | Beschrijving | Pad |
 |:--- |:--- |
-| Alle bestanden in *C:\Logs* met de extensie. txt op de Windows-agent |C:\Logs\\\*. txt |
-| Alle bestanden in *C:\Logs* met een naam die begint met log en een. txt-extensie in Windows-agent |C:\Logs\ log\*.txt |
+| Alle bestanden in *C:\Logs* met de extensie. txt op de Windows-agent |C:\Logs\\\*.txt |
+| Alle bestanden in *C:\Logs* met een naam die begint met log en een. txt-extensie in Windows-agent |C:\Logs\log\*.txt |
 | Alle bestanden in */var/log/audit* met de extensie. txt in de Linux-agent |/var/log/audit/*. txt |
-| Alle bestanden in */var/log/audit* met een naam die begint met log en een. txt-extensie in de Linux-agent |/var/log/audit/log\*.txt |
+| Alle bestanden in */var/log/audit* met een naam die begint met log en een. txt-extensie in de Linux-agent |/var/log/audit/log\*. txt |
 
 1. Selecteer Windows of Linux om op te geven welke indeling u wilt toevoegen.
 2. Typ het pad en klik op de knop **+** .
@@ -123,7 +123,7 @@ Aangepaste logboek records hebben een type met de naam van het logboek dat u opg
 | TimeGenerated |De datum en tijd waarop de record is verzameld door Azure Monitor.  Als in het logboek een scheidings teken op basis van tijd wordt gebruikt, is dit de tijd die van de vermelding is verzameld. |
 | SourceSystem |Type agent waaruit het record is verzameld. <br> OpsManager: Windows-agent, Direct Connect of System Center Operations Manager <br> Linux: alle Linux-agents |
 | RawData |Volledige tekst van het verzamelde item. Waarschijnlijk wilt u [deze gegevens in afzonderlijke eigenschappen parseren](../log-query/parse-text.md). |
-| ManagementGroupName |Naam van de beheer groep voor System Center Operations-agents.  Voor andere agents is dit AOI-\<werk ruimte-ID\> |
+| ManagementGroupName |Naam van de beheer groep voor System Center Operations-agents.  Voor andere agents is dit AOI -\<werkruimte-ID\> |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Voorbeeld scenario voor het toevoegen van een aangepast logboek
@@ -146,9 +146,9 @@ De logboek bestanden worden opgeslagen in *C:\MyApp\Logs*.  Er wordt elke dag ee
 ![Pad naar logboek verzameling](media/data-sources-custom-logs/collection-path.png)
 
 ### <a name="provide-a-name-and-description-for-the-log"></a>Geef een naam en beschrijving voor het logboek op
-We gebruiken de naam *MyApp_CL* en voeren een **Beschrijving**in.
+We gebruiken de naam van *MyApp_CL* en typen een **Beschrijving**.
 
-![Logboek naam](media/data-sources-custom-logs/log-name.png)
+![Logboeknaam](media/data-sources-custom-logs/log-name.png)
 
 ### <a name="validate-that-the-custom-logs-are-being-collected"></a>Controleren of de aangepaste logboeken worden verzameld
 We gebruiken een eenvoudige query van *MyApp_CL* om alle records uit het verzamelde logboek te retour neren.
@@ -170,4 +170,4 @@ In de gevallen waarin uw gegevens niet kunnen worden verzameld met aangepaste lo
 
 ## <a name="next-steps"></a>Volgende stappen
 * Zie [tekst gegevens parseren in azure monitor](../log-query/parse-text.md) voor methoden om elke geïmporteerde logboek vermelding te parseren in meerdere eigenschappen.
-* Meer informatie over [logboek query's](../log-query/log-query-overview.md) voor het analyseren van de gegevens die zijn verzameld uit gegevens bronnen en oplossingen.
+* Meer informatie over [query's bijgehouden](../log-query/log-query-overview.md) om de gegevens die worden verzameld van gegevensbronnen en oplossingen te analyseren.

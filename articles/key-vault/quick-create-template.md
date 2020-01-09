@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/17/2019
 ms.author: jgao
-ms.openlocfilehash: 1e993ec50694d8672fbe05f982d5dbc45a815abb
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: d3c1070577ee57f18018e9b74be5e29998cc3e64
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161476"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453670"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Quickstart: Een geheim instellen en ophalen uit Azure Key Vault met behulp van Resource Manager-sjabloon
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Snelstartgids: een geheim instellen en ophalen uit Azure Key Vault met Resource Manager-sjabloon
 
 [Azure Key Vault](./key-vault-overview.md) is een Cloud service die een veilig archief voor geheimen levert, zoals sleutels, wacht woorden, certificaten en andere geheimen. Deze Snelstartgids is gericht op het proces van het implementeren van een resource manager-sjabloon om een sleutel kluis en een geheim te maken.
 
@@ -83,7 +83,7 @@ Meer Azure Key Vault sjabloon voorbeelden vindt u [hier](https://azure.microsoft
     * **AD-gebruikers-id**: Voer uw Azure AD-gebruikers object-id in die u hebt opgehaald uit de [vereisten](#prerequisites).
     * **Geheime naam**: Voer een naam in voor het geheim dat u opslaat in de sleutel kluis.  Bijvoorbeeld **AdminPassword**.
     * **Geheime waarde**: Voer de geheime waarde in.  Als u een wacht woord opslaat, wordt u aangeraden het gegenereerde wacht woord te gebruiken dat u hebt gemaakt in vereisten.
-    * **Ik ga akkoord met de bovenstaande voorwaarden**: Selecteren.
+    * **Ik ga akkoord met de bovenstaande voorwaarden**: selecteer dit.
 3. Selecteer **Aankoop**. Nadat de sleutel kluis is geïmplementeerd, ontvangt u een melding:
 
     ![Resource Manager-sjabloon, integratie van Key Vault, portal-melding implementeren](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
@@ -153,6 +153,6 @@ Write-Host "Press [ENTER] to continue..."
 In deze Quick Start hebt u een sleutel kluis en een geheim gemaakt met behulp van een Azure Resource Manager sjabloon en de implementatie gevalideerd. Ga verder met de volgende artikelen voor meer informatie over Key Vault en Azure Resource Manager.
 
 - Een [overzicht van Azure Key Vault](key-vault-overview.md) lezen
-- Meer informatie over [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
+- Meer informatie over [Azure Resource Manager](../azure-resource-manager/management/overview.md)
 - Meer informatie over [sleutels, geheimen en certificaten](about-keys-secrets-and-certificates.md)
 - [Azure Key Vault aanbevolen procedures](key-vault-best-practices.md) controleren

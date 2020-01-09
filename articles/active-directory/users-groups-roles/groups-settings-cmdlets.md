@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef0bfcb8c82d3f3caf90500e8852ca9e02c725aa
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7547608e227ca6b8d57bc1d4384ccdee181d9970
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382979"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430857"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory cmdlets voor het configureren van groepsinstellingen
 
@@ -36,7 +36,7 @@ De cmdlets maken deel uit van de Azure Active Directory Power shell V2-module. Z
 
 ## <a name="install-powershell-cmdlets"></a>PowerShell-cmdlets installeren
 
-Verwijder een oudere versie van Azure Active Directory PowerShell voor Graph Module voor Windows PowerShell en installeer [Azure Active Directory PowerShell for Graph - Public Preview Release 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) (Azure Active Directory PowerShell voor Graph - Release 2.0.0.137 voor openbare preview) voordat u de PowerShell-opdrachten uitvoert.
+Zorg ervoor dat u een oudere versie van de Azure Active Directory Power shell for Graph-module voor Windows Power shell verwijdert en Installeer [Azure Active Directory Power shell for graph-open bare preview-versie (later dan 2.0.0.137)](https://www.powershellgallery.com/packages/AzureADPreview) voordat u de Power shell-opdrachten uitvoert.
 
 1. Open de Windows PowerShell-app als beheerder.
 2. Verwijder eventuele oudere versies van AzureADPreview.
@@ -53,7 +53,7 @@ Verwijder een oudere versie van Azure Active Directory PowerShell voor Graph Mod
    ```
    
 ## <a name="create-settings-at-the-directory-level"></a>Instellingen maken op mapniveau
-Met deze stappen maakt u instellingen op mapniveau, die van toepassing zijn op alle Office 365-groepen in de map. De cmdlet Get-AzureADDirectorySettingTemplate is alleen beschikbaar in de [module Azure AD Power shell Preview voor Graph](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
+Met deze stappen maakt u instellingen op mapniveau, die van toepassing zijn op alle Office 365-groepen in de map. De cmdlet Get-AzureADDirectorySettingTemplate is alleen beschikbaar in de [module Azure AD Power shell Preview voor Graph](https://www.powershellgallery.com/packages/AzureADPreview).
 
 1. In de DirectorySettings-cmdlets moet u de ID opgeven van de SettingsTemplate die u wilt gebruiken. Als u deze ID niet weet, retourneert deze cmdlet de lijst met alle instellingen sjablonen:
   
@@ -76,12 +76,13 @@ Met deze stappen maakt u instellingen op mapniveau, die van toepassing zijn op a
 2. Als u een URL voor gebruiks richtlijn wilt toevoegen, moet u eerst het SettingsTemplate-object ophalen dat de URL-waarde voor de gebruiks richtlijn definieert. dat wil zeggen, de sjabloon Group. Unified:
   
    ```powershell
-   $Template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+   $TemplateId = (Get-AzureADDirectorySettingTemplate | where { $_.DisplayName -eq "Group.Unified" }).Id
+   $Template = Get-AzureADDirectorySettingTemplate -Id $TemplateId
    ```
 3. Maak vervolgens een nieuw instellingen object op basis van deze sjabloon:
   
    ```powershell
-   $Setting = $template.CreateDirectorySetting()
+   $Setting = $Template.CreateDirectorySetting()
    ```  
 4. Werk vervolgens de waarde voor het gebruik van de richt lijn bij:
   
@@ -91,22 +92,57 @@ Met deze stappen maakt u instellingen op mapniveau, die van toepassing zijn op a
 5. Pas vervolgens de instelling toe:
   
    ```powershell
-   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+   New-AzureADDirectorySetting -DirectorySetting $Setting
    ```
 6. U kunt de waarden lezen met behulp van:
 
    ```powershell
    $Setting.Values
-   ```  
+   ```
+   
 ## <a name="update-settings-at-the-directory-level"></a>Instellingen bijwerken op mapniveau
-Als u de waarde voor UsageGuideLinesUrl in de instellings sjabloon wilt bijwerken, bewerkt u de URL gewoon met stap 4 hierboven en voert u vervolgens stap 5 uit om de nieuwe waarde in te stellen.
+Als u de waarde voor UsageGuideLinesUrl in de instellings sjabloon wilt bijwerken, leest u de huidige instellingen van Azure AD, anders kunnen de bestaande instellingen niet meer worden overschreven dan de UsageGuideLinesUrl.
 
-Als u de waarde van UsageGuideLinesUrl wilt verwijderen, bewerkt u de URL in een lege teken reeks met behulp van stap 4 hierboven:
-
+1. De huidige instellingen ophalen uit de groep. Unified SettingsTemplate:
+   
+   ```powershell
+   $Setting = Get-AzureADDirectorySetting | ? { $_.DisplayName -eq "Group.Unified"}
+   ```  
+2. Controleer de huidige instellingen:
+   
+   ```powershell
+   $Setting.Values
+   ```
+   
+   Uitvoer:
+   ```powershell
+    Name                          Value
+    ----                          -----
+    EnableMIPLabels               false
+    CustomBlockedWordsList
+    EnableMSStandardBlockedWords  False
+    ClassificationDescriptions
+    DefaultClassification
+    PrefixSuffixNamingRequirement
+    AllowGuestsToBeGroupOwner     False
+    AllowGuestsToAccessGroups     True
+    GuestUsageGuidelinesUrl
+    GroupCreationAllowedGroupId
+    AllowToAddGuests              True
+    UsageGuidelinesUrl            https://guideline.example.com
+    ClassificationList
+    EnableGroupCreation           True
+    ```
+3. Als u de waarde van UsageGuideLinesUrl wilt verwijderen, bewerkt u de URL in een lege teken reeks:
+   
    ```powershell
    $Setting["UsageGuidelinesUrl"] = ""
    ```  
-Voer vervolgens stap 5 uit om de nieuwe waarde in te stellen.
+4. Sla de update op in de map:
+   
+   ```powershell
+   Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
+   ```  
 
 ## <a name="template-settings"></a>Sjabloon instellingen
 Dit zijn de instellingen die zijn gedefinieerd in de groep. Unified SettingsTemplate. Tenzij anders aangegeven, is voor deze functies een Azure Active Directory Premium P1-licentie vereist. 
@@ -288,4 +324,4 @@ U kunt meer Azure Active Directory Power shell-documentatie vinden op [Azure Act
 ## <a name="additional-reading"></a>Meer lezen
 
 * [Managing access to resources with Azure Active Directory groups](../fundamentals/active-directory-manage-groups.md) (Toegang tot resources beheren met Azure Active Directory-groepen)
-* [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](../hybrid/whatis-hybrid-identity.md)
+* [Uw on-premises identiteiten integreren met Azure Active Directory](../hybrid/whatis-hybrid-identity.md)

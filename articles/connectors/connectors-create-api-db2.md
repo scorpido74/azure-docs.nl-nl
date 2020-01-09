@@ -1,22 +1,22 @@
 ---
-title: Verbinding maken met IBM DB2
-description: Resources beheren met IBM DB2 REST Api's en Azure Logic Apps
+title: Toegang tot en beheer van IBM DB2-resources
+description: IBM DB2-resources lezen, bewerken, bijwerken en beheren door automatische werk stromen te bouwen met behulp van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 3c2bb01254b19c42fdd704544a6812177fecf4ca
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0f6e32056783a816d847db191de4fcdae2616ab7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789899"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446183"
 ---
-# <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>IBM DB2-resources beheren met Azure Logic Apps
+# <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Toegang tot en beheer van IBM DB2-resources met behulp van Azure Logic Apps
 
-Met Azure Logic Apps en de IBM DB2-connector kunt u geautomatiseerde taken en werk stromen maken op basis van de resources die in de DB2-Data Base zijn opgeslagen. Uw werk stromen kunnen verbinding maken met de resources in uw data base, uw database tabellen lezen en weer geven, rijen toevoegen, rijen wijzigen, rijen verwijderen en nog veel meer. U kunt acties in uw Logic apps toevoegen die reacties ophalen uit uw data base en de uitvoer beschikbaar maken voor andere acties.
+Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de [IBM DB2-connector](/connectors/db2/)kunt u geautomatiseerde taken en werk stromen maken op basis van de resources die in de DB2-Data Base zijn opgeslagen. Uw werk stromen kunnen verbinding maken met de resources in uw data base, uw database tabellen lezen en weer geven, rijen toevoegen, rijen wijzigen, rijen verwijderen en nog veel meer. U kunt acties in uw Logic apps toevoegen die reacties ophalen uit uw data base en de uitvoer beschikbaar maken voor andere acties.
 
 In dit artikel wordt beschreven hoe u een logische app kunt maken waarmee verschillende database bewerkingen worden uitgevoerd. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
@@ -26,7 +26,7 @@ De DB2-connector bevat een micro soft-client die communiceert met externe DB2-se
 
 De IBM DB2-connector ondersteunt deze IBM DB2-platforms en-versies samen met IBM DB2-compatibele producten die ondersteuning bieden voor Distributed relation data base Architecture (DRDA) SQL Access Manager (SQLAM)-versies 10 en 11:
 
-| Platform | Version | 
+| Platform | Versie | 
 |----------|---------|
 | IBM DB2 voor z/O'S | 11,1, 10,1 |
 | IBM DB2 voor i | 7,3, 7,2, 7,1 |

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 47a77def43a9577e5a3506899da47db2f684b495
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a1fb3b1260beb6bd85363f4611dae23cd3d321f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61429491"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427353"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Gegevens verplaatsen naar SQL Server op een virtuele Azure-machine
 
@@ -28,8 +28,8 @@ De volgende tabel geeft een overzicht van de opties voor het verplaatsen van geg
 
 | <b>BRON</b> | <b>BESTEMMING: SQL Server op Azure VM</b> |
 | --- | --- |
-| <b>Plat bestand</b> |1. <a href="#insert-tables-bcp">Hulpprogramma voor opdrachtregelprogramma voor het bulksgewijs kopiëren (BCP) </a><br> 2. <a href="#insert-tables-bulkquery">Bulksgewijs invoegen SQL-Query </a><br> 3. <a href="#sql-builtin-utilities">Grafische ingebouwde hulpprogramma's in SQL Server</a> |
-| <b>On-Premises SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">Een SQL Server-Database implementeren op een Microsoft Azure VM-wizard</a><br> 2. <a href="#export-flat-file">Exporteren naar een plat bestand </a><br> 3. <a href="#sql-migration">SQL Database-migratiewizard </a> <br> 4. <a href="#sql-backup">Database back-en herstellen </a><br> |
+| <b>Plat bestand</b> |1. <a href="#insert-tables-bcp">opdracht regel programma voor bulksgewijs kopiëren (BCP)</a><br> 2. <a href="#insert-tables-bulkquery">SQL-query bulksgewijs invoegen</a><br> 3. <a href="#sql-builtin-utilities">ingebouwde grafische Hulpprogram ma's in SQL Server</a> |
+| <b>On-Premises SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">een SQL Server-Data Base implementeren op een Microsoft Azure VM-wizard</a><br> 2. <a href="#export-flat-file">exporteren naar een plat bestand</a><br> 3. <a href="#sql-migration">SQL database wizard Migratie</a> <br> 4. <a href="#sql-backup">back-up en herstel van data base</a><br> |
 
 Merk op dat in dit document wordt ervan uitgegaan dat de SQL-opdrachten worden uitgevoerd in SQL Server Management Studio of Visual Studio-Database Explorer.
 
@@ -42,7 +42,7 @@ Merk op dat in dit document wordt ervan uitgegaan dat de SQL-opdrachten worden u
 In deze zelfstudie wordt ervan uitgegaan dat u hebt:
 
 * Een **Azure-abonnement**. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/pricing/free-trial/).
-* Een **Azure storage-account**. U gebruikt een Azure storage-account voor het opslaan van gegevens in deze zelfstudie. Zie het artikel [Een opslagaccount maken](../../storage/common/storage-quickstart-create-account.md) als u geen account Azure-opslagaccount hebt. Nadat u de storage-account hebt gemaakt, moet u het ophalen van de accountsleutel gebruikt voor toegang tot de opslag. Zie [beheren van uw toegangssleutels voor opslag](../../storage/common/storage-account-manage.md#access-keys).
+* Een **Azure storage-account**. U gebruikt een Azure storage-account voor het opslaan van gegevens in deze zelfstudie. Zie het artikel [Een opslagaccount maken](../../storage/common/storage-quickstart-create-account.md) als u geen account Azure-opslagaccount hebt. Nadat u de storage-account hebt gemaakt, moet u het ophalen van de accountsleutel gebruikt voor toegang tot de opslag. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md).
 * Ingericht **SQL Server op een Azure-VM**. Zie voor instructies [een virtuele machine van Azure SQL-Server instellen als IPython Notebook-server voor geavanceerde analyses](../data-science-virtual-machine/setup-sql-server-virtual-machine.md).
 * Geïnstalleerd en geconfigureerd **Azure PowerShell** lokaal. Zie voor instructies [hoe u Azure PowerShell installeren en configureren](/powershell/azure/overview).
 
@@ -90,11 +90,11 @@ CREATE TABLE <tablename>
 Als de gegevens die u verplaatst groot is, kunt u dingen van versnellen door tegelijkertijd meerdere BCP opdrachten parallel in een PowerShell-Script wordt uitgevoerd.
 
 > [!NOTE]
-> **BIG data opname** om te optimaliseren voor grote en zeer grote gegevenssets het laden van gegevens, in de tabellen in uw logische en fysieke database met behulp van meerdere bestandsgroepen partities en tabellen partitioneren. Zie voor meer informatie over het maken en het laden van gegevens naar partitietabellen [Parallel laden in SQL-partitietabellen](parallel-load-sql-partitioned-tables.md).
+> **Opname van Big Data** Voor het optimaliseren van het laden van gegevens voor grote en zeer grote gegevens sets kunt u de logische en fysieke database tabellen partitioneren met meerdere bestands groepen en partitie tabellen. Zie voor meer informatie over het maken en het laden van gegevens naar partitietabellen [Parallel laden in SQL-partitietabellen](parallel-load-sql-partitioned-tables.md).
 >
 >
 
-De volgende PowerShell-voorbeeldscript laat zien parallelle ingevoegd met behulp van bcp:
+In het volgende Power shell-voorbeeld script worden parallelle invoeg bladen gedemonstreerd met behulp van BCP:
 
 ```powershell
 $NO_OF_PARALLEL_JOBS=2

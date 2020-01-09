@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 04/25/2019
-ms.openlocfilehash: c1f9a9248494344cd6577ca2bf743a4c80730cda
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bc4eea53c026eef9dc8f390976442426e2ba1067
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837986"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427533"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Power shell-modules voor Azure Machine Learning Studio (klassiek)
 
 U kunt met behulp van Power shell-modules uw studio-resources en-assets programmatisch beheren, zoals werk ruimten, gegevens sets en webservices.
 
-U kunt communiceren met de klassieke versie van Studio-resources met behulp van drie Power shell-modules:
+U kunt werken met Studio-resources (klassiek) met behulp van drie Power shell-modules:
 
 * [Azure PowerShell AZ](#az-rm) uitgebracht in 2018, bevat alle functionaliteit van AzureRM, maar met verschillende cmdlet-namen
 * [AzureRM](#az-rm) uitgebracht in 2016, vervangen door Power shell AZ

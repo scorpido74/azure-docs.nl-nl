@@ -1,7 +1,7 @@
 ---
 title: Gebruikers gedrag bijhouden met Application Insights
 titleSuffix: Azure AD B2C
-description: Meer informatie over het inschakelen van gebeurtenis Logboeken in Application Insights van Azure AD B2C gebruikers trajecten met aangepaste beleids regels (preview).
+description: Meer informatie over het inschakelen van gebeurtenis Logboeken in Application Insights van Azure AD B2C gebruikers trajecten door aangepaste beleids regels te gebruiken.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6643759688817811890fd022c7aa061607270b9e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8376deecb5e184c01b41495b868b57bd8fd745d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948943"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367957"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Gebruikers gedrag bijhouden in Azure Active Directory B2C met behulp van Application Insights
 
@@ -33,7 +33,7 @@ Wanneer u Azure Active Directory B2C (Azure AD B2C) gebruikt in combi natie met 
 
 Het Framework voor identiteits ervaring in Azure AD B2C bevat de provider `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`. Er worden gebeurtenis gegevens rechtstreeks naar Application Insights verzonden met behulp van de instrumentatie sleutel die aan Azure AD B2C wordt gegeven.
 
-Met een technisch profiel wordt deze provider gebruikt voor het definiëren van een gebeurtenis van Azure AD B2C. Het profiel bevat de naam van de gebeurtenis, de claims die worden vastgelegd en de instrumentatie sleutel. Als u een evenement wilt plaatsen, wordt het technische profiel toegevoegd als `orchestration step`of als een `validation technical profile` in een aangepaste gebruikers traject.
+Met een technisch profiel wordt deze provider gebruikt voor het definiëren van een gebeurtenis van Azure AD B2C. Het profiel bevat de naam van de gebeurtenis, de claims die worden vastgelegd en de instrumentatie sleutel. Als u een evenement wilt plaatsen, wordt het technische profiel vervolgens toegevoegd als een `orchestration step` in een aangepaste gebruikers traject.
 
 Application Insights kunt de gebeurtenissen samen voegen met behulp van een correlatie-ID om een gebruikers sessie vast te leggen. Application Insights maakt de gebeurtenis en sessie binnen enkele seconden beschikbaar en biedt veel visualisatie-, export-en analytische hulpprogram ma's.
 
@@ -45,7 +45,7 @@ Voer de stappen in aan de [slag met aangepast beleid](active-directory-b2c-get-s
 
 Wanneer u Application Insights met Azure AD B2C gebruikt, hoeft u alleen maar een resource te maken en de instrumentatie sleutel op te halen.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Zorg ervoor dat u de map met uw Azure-abonnement gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw abonnement bevat. Deze Tenant is niet uw Azure AD B2C-Tenant.
 3. Kies **een resource maken** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **Application Insights**.
 4. Klik op **Maken**.

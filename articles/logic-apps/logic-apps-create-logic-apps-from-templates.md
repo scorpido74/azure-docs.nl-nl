@@ -1,6 +1,6 @@
 ---
-title: Werk stromen maken op basis van sjablonen
-description: Sneller werk stromen bouwen met behulp van Logic app-sjablonen in Azure Logic Apps
+title: Sneller werk stromen voor logische apps maken met behulp van vooraf ontwikkelde sjablonen
+description: Snel werk stromen voor logische apps bouwen met behulp van vooraf gemaakte sjablonen van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: kevinlam1
@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: c7033185ac3a5411568195d788242a674b569183
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 58c0ff8cf8a579e2b97ebbe195f47e4baef4621a
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793180"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666819"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Logische app-werk stromen maken op basis van vooraf ontwikkelde sjablonen
 
@@ -48,7 +48,7 @@ Als u nog geen abonnement op Azure hebt, [meld u dan aan voor een gratis Azure-a
    | ------- | ----- | ----------- | 
    | **Naam** | *naam-van-uw-logische-app* | Geef een unieke naam voor de logische app op. | 
    | **Abonnement** | *naam-van-uw-Azure-abonnement* | Selecteer het Azure-abonnement dat u wilt gebruiken. | 
-   | **Resourcegroep** | *naam-van-uw-Azure-resourcegroep* | Maak of selecteer een [Azure-resource groep](../azure-resource-manager/resource-group-overview.md) voor deze logische app en beheer alle resources die zijn gekoppeld aan deze app. | 
+   | **Resourcegroep** | *naam-van-uw-Azure-resourcegroep* | Maak of selecteer een [Azure-resource groep](../azure-resource-manager/management/overview.md) voor deze logische app en beheer alle resources die zijn gekoppeld aan deze app. | 
    | **Locatie** | *uw-Azure-datacenter-regio* | Selecteer de regio van het datacenter voor het implementeren van uw logische app, bijvoorbeeld US - west. | 
    | **Log Analytics** | **Uit** (standaard) of **op** | Schakel [Diagnostische logboek registratie](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) in voor uw logische app via [Azure monitor-logboeken](../log-analytics/log-analytics-overview.md). Hiervoor hebt u al een Log Analytics-werk ruimte nodig. | 
    |||| 

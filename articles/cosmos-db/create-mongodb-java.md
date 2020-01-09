@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: een web-app maken met behulp van de Azure API voor Mongo DB en Java SDK-Azure Cosmos DB'
-description: Biedt een voorbeeld van Java-code dat u kunt gebruiken om met de API van Azure Cosmos DB voor MongoDB verbinding te maken met gegevens en er query's op uit te voeren.
+title: 'Quick Start: een web-app bouwen met de Azure Cosmos DB-API voor Mongo DB en Java SDK'
+description: Meer informatie over het maken van een Java-code voorbeeld dat u kunt gebruiken om verbinding te maken met en query's uit te zoeken met de API van Azure Cosmos DB voor MongoDB.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: bfded407790d01d65feec0b6e069c23739064e97
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 05a796e5bf197bf9ea4f8f47adfbf30851b300ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756925"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445510"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Quick Start: een console-app maken met Java en de MongoDB-API in Azure Cosmos DB
 
@@ -118,7 +118,7 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
 2. Open het bestand `Program.java`, vervang het argument voor de MongoClientURI-constructor door de verbindingsreeks. U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicatie met Azure Cosmos DB. 
     
-## <a name="run-the-console-app"></a>De console-app uitvoeren
+## <a name="run-the-console-app"></a>De app console uitvoeren
 
 1. Voer `mvn package` uit op een terminal zodat de vereiste npm-modules worden geïnstalleerd.
 
@@ -136,7 +136,7 @@ U kunt nu [Robomongo](mongodb-robomongo.md) / [Studio 3T](mongodb-mongochef.md) 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u geleerd hoe u een Cosmos DB-account kunt maken, hoe u een verzameling kunt maken en hoe u een console-app kunt uitvoeren. Nu kunt u aanvullende gegevens in uw Cosmos database importeren.
+In deze snelstart hebt u geleerd hoe u een Cosmos DB-account kunt maken, hoe u een verzameling kunt maken en hoe u een console-app kunt uitvoeren. Nu kunt u aanvullende gegevens in uw Cosmos-database importeren.
 
 > [!div class="nextstepaction"]
 > [MongoDB-gegevens importeren in Azure Cosmos DB](mongodb-migrate.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d899f477612e4c738314187f61551fe5c0b17f8d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 83a839d75757bcee14d7f696d2d11d1d7d8fa4cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932409"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422847"
 ---
 # <a name="what-are-security-defaults"></a>Wat zijn de standaard beveiligings instellingen?
 
@@ -73,13 +73,16 @@ De meeste pogingen om zich aan te melden, zijn van verouderde verificatie. Verou
 
 Nadat de standaard instellingen voor beveiliging zijn ingeschakeld in uw Tenant, worden alle verificatie aanvragen die door een ouder protocol worden uitgevoerd, geblokkeerd. Standaard instellingen voor beveiliging blok keren Exchange ActiveSync niet.
 
+> [!WARNING]
+> Voordat u standaard instellingen voor beveiliging inschakelt, moet u ervoor zorgen dat uw beheerders geen oudere verificatie protocollen gebruiken. Zie voor meer informatie [hoe u de verouderde verificatie verlaat](concept-fundamentals-block-legacy-authentication.md).
+
 ### <a name="protecting-privileged-actions"></a>Beschermde acties beveiligen
 
 Organisaties gebruiken verschillende Azure-Services die worden beheerd via de Azure Resource Manager-API, waaronder:
 
 - Azure Portal 
 - Azure PowerShell 
-- Azure CLI
+- Azure-CLI
 
 Het gebruik van Azure Resource Manager voor het beheren van uw services is een zeer geprivilegieerde actie. Azure Resource Manager kunt de configuratie van de Tenant breed wijzigen, zoals service-instellingen en abonnements facturering. Verificatie met één factor is kwetsbaar voor diverse aanvallen zoals phishing en wachtwoord spray. 
 
@@ -89,22 +92,30 @@ Nadat u de standaard instellingen voor beveiliging in uw Tenant hebt ingeschakel
 
 Als de gebruiker niet is geregistreerd voor Multi-Factor Authentication, moet de gebruiker zich registreren met behulp van de Microsoft Authenticator-app om door te gaan. Er wordt geen Multi-Factor Authentication registratie periode van 14 dagen gegeven.
 
+> [!NOTE]
+> Het Azure AD Connect synchronisatie account wordt uitgesloten van de standaard instellingen voor beveiliging en wordt niet gevraagd om u te registreren voor of om multi-factor Authentication uit te voeren. Organisaties mogen dit account niet voor andere doel einden gebruiken.
+
 ## <a name="deployment-considerations"></a>Overwegingen bij de implementatie
 
 De volgende aanvullende overwegingen zijn gerelateerd aan de implementatie van de standaard instellingen voor de beveiliging van uw Tenant.
 
-### <a name="older-protocols"></a>Oudere protocollen
+### <a name="authentication-methods"></a>Authenticatiemethoden
 
-E-mailclients gebruiken oudere verificatie protocollen (zoals IMAP, SMTP en POP3) om verificatie aanvragen te maken. Deze protocollen bieden geen ondersteuning voor Multi-Factor Authentication. Het grootste deel van het account is inbreuk op het verloopt van aanvallen op oudere protocollen die proberen Multi-Factor Authentication te omzeilen. 
+Met de standaard instellingen voor beveiliging kunt u de registratie en het gebruik van Azure Multi-Factor Authentication toestaan met behulp van **de Microsoft Authenticator app**. Voorwaardelijke toegang staat het gebruik toe van elke verificatie methode die de beheerder inschakelt.
 
-Om ervoor te zorgen dat Multi-Factor Authentication vereist is om u aan te melden bij een beheerders account en dat aanvallers deze niet kunnen negeren, worden in standaard instellingen alle verificatie aanvragen geblokkeerd voor beheerders accounts uit oudere protocollen.
+|   | Standaardinstellingen voor de beveiliging | Voorwaardelijke toegang |
+| --- | --- | --- |
+| Melding via mobiele app | X | X |
+| Verificatiecode van mobiele app of hardwaretoken |   | X |
+| Sms-bericht naar telefoon |   | X |
+| Bellen naar telefoon |   | X |
+| App-wachtwoorden |   | X * * |
 
-> [!WARNING]
-> Voordat u deze instelling inschakelt, moet u ervoor zorgen dat uw beheerders geen oudere verificatie protocollen gebruiken. Zie voor meer informatie [hoe u de verouderde verificatie verlaat](concept-fundamentals-block-legacy-authentication.md).
+\* * App-wacht woorden zijn alleen beschikbaar in MFA per gebruiker met verouderde verificatie scenario's als deze zijn ingeschakeld door beheerders.
 
 ### <a name="conditional-access"></a>Voorwaardelijke toegang
 
-U kunt voorwaardelijke toegang gebruiken voor het configureren van beleids regels die hetzelfde gedrag bieden als ingeschakeld door de standaard instellingen van de beveiliging. Als u voorwaardelijke toegang gebruikt en beleid voor voorwaardelijke toegang hebt ingeschakeld in uw omgeving, zijn de standaard instellingen voor beveiliging niet voor u beschikbaar. Als u een licentie hebt die voorwaardelijke toegang biedt, maar geen beleid voor voorwaardelijke toegang hebt ingeschakeld in uw omgeving, kunt u de standaard instellingen voor beveiliging gebruiken totdat u beleid voor voorwaardelijke toegang inschakelt.
+U kunt voorwaardelijke toegang gebruiken voor het configureren van beleids regels die vergelijkbaar zijn met de standaard instellingen voor beveiliging, maar met meer granulatie, inclusief gebruikers uitsluitingen, die niet beschikbaar zijn in de standaard instellingen van de beveiliging. Als u voorwaardelijke toegang gebruikt en beleid voor voorwaardelijke toegang hebt ingeschakeld in uw omgeving, zijn de standaard instellingen voor beveiliging niet voor u beschikbaar. Als u een licentie hebt die voorwaardelijke toegang biedt, maar geen beleid voor voorwaardelijke toegang hebt ingeschakeld in uw omgeving, kunt u de standaard instellingen voor beveiliging gebruiken totdat u beleid voor voorwaardelijke toegang inschakelt. Meer informatie over Azure AD-licentie verlening vindt u op de [Azure AD-pagina met prijzen](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ![Waarschuwings bericht dat u standaard instellingen of voorwaardelijke toegang kunt hebben](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 

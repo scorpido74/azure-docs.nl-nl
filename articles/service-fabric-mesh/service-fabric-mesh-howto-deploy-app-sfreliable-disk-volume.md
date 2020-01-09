@@ -1,25 +1,17 @@
 ---
-title: Maxi maal beschik bare Service Fabric betrouw bare schijf volume gebruiken in een Azure Service Fabric mesh-toepassing | Microsoft Docs
+title: Betrouw bare schijf volume Service Fabric met Service Fabric net
 description: Meer informatie over het opslaan van de status in een Azure Service Fabric mesh-toepassing door Service Fabric betrouw bare schijf volume in de container te koppelen met behulp van de Azure CLI.
-services: service-fabric-mesh
-documentationcenter: .net
 author: ashishnegi
-manager: raunakpandya
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 25bd298c412db38ec4d3b7859580d58ac9b151fb
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: f26fe70afe7d9e2872f06ac6da7143556278b1b0
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036158"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497970"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Maxi maal beschik bare Service Fabric betrouw bare schijf op basis van schijven koppelen in een Service Fabric mesh-toepassing 
 De algemene methode voor het persistent maken van de status met container-apps is het gebruik van externe opslag, zoals Azure File Storage of Data Base, zoals Azure Cosmos DB. Dit resulteert in een aanzienlijke Lees-en schrijf latentie voor de externe opslag.
@@ -29,11 +21,11 @@ Service Fabric betrouw bare schijf biedt volumes voor lokale Lees bewerkingen wa
 
 In dit voor beeld heeft de teller-toepassing een ASP.NET Core Service met een webpagina waarop de item waarde in een browser wordt weer gegeven.
 
-De `counterService` waarde van een item wordt periodiek gelezen uit een bestand, verhoogd en teruggeschreven naar het bestand. Het bestand wordt opgeslagen in een map die is gekoppeld aan het volume dat wordt ondersteund door Service Fabric betrouw bare schijf.
+De `counterService` leest regel matig een item waarde uit een bestand, verhoogt deze en schrijft deze terug naar het bestand. Het bestand wordt opgeslagen in een map die is gekoppeld aan het volume dat wordt ondersteund door Service Fabric betrouw bare schijf.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om deze taak te volt ooien. Als u de Azure cli wilt gebruiken met dit artikel, `az --version` moet u ervoor `azure-cli (2.0.43)`zorgen dat u ten minste een waarde retourneert.  Installeer de module Azure Service Fabric mesh CLI (of werk deze bij) door deze [instructies](service-fabric-mesh-howto-setup-cli.md)te volgen.
+U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om deze taak te volt ooien. Als u de Azure CLI wilt gebruiken met dit artikel, moet u ervoor zorgen dat `az --version` ten minste `azure-cli (2.0.43)`retourneert.  Installeer de module Azure Service Fabric mesh CLI (of werk deze bij) door deze [instructies](service-fabric-mesh-howto-setup-cli.md)te volgen.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -46,7 +38,7 @@ az account set --subscription "<subscriptionID>"
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Maak een resourcegroep waarin u de toepassing wilt implementeren. Met de volgende opdracht maakt u een resource `myResourceGroup` groep met de naam op een locatie in het Eastern-Verenigde Staten. Als u de naam van de resource groep in de onderstaande opdracht wijzigt, vergeet dan niet om deze te wijzigen in alle opdrachten die volgen.
+Maak een resourcegroep waarin u de toepassing wilt implementeren. Met de volgende opdracht maakt u een resource groep met de naam `myResourceGroup` op een locatie in het Eastern Verenigde Staten. Als u de naam van de resource groep in de onderstaande opdracht wijzigt, vergeet dan niet om deze te wijzigen in alle opdrachten die volgen.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -66,7 +58,7 @@ U kunt ook de status van de implementatie bekijken met de opdracht
 az group deployment show --name counter.sfreliablevolume.linux --resource-group myResourceGroup
 ```
 
-Let op de naam van de gateway resource die het resource `Microsoft.ServiceFabricMesh/gateways`type heeft als. Dit wordt gebruikt om het open bare IP-adres van de app op te halen.
+Let op de naam van de gateway resource die het resource type heeft als `Microsoft.ServiceFabricMesh/gateways`. Dit wordt gebruikt om het open bare IP-adres van de app op te halen.
 
 ## <a name="open-the-application"></a>De toepassing openen
 
@@ -75,11 +67,11 @@ Zodra de toepassing is geïmplementeerd, haalt u het IP-adres van de gateway bro
 az mesh gateway show --resource-group myResourceGroup --name counterGateway
 ```
 
-De uitvoer moet een eigenschap `ipAddress` hebben die het open bare IP-adres van het service-eind punt is. Open het bestand vanuit een browser. Er wordt een webpagina weer gegeven met de item waarde die elke seconde wordt bijgewerkt.
+De uitvoer moet een eigenschap hebben `ipAddress` dat het open bare IP-adres van het service-eind punt is. Open het bestand vanuit een browser. Er wordt een webpagina weer gegeven met de item waarde die elke seconde wordt bijgewerkt.
 
 ## <a name="verify-that-the-application-is-able-to-use-the-volume"></a>Controleer of de toepassing het volume kan gebruiken
 
-De toepassing maakt een bestand met `counter.txt` de naam in het `counter/counterService` volume in de map. De inhoud van dit bestand is de item waarde die op de webpagina wordt weer gegeven.
+De toepassing maakt een bestand met de naam `counter.txt` in het volume in `counter/counterService` map. De inhoud van dit bestand is de item waarde die op de webpagina wordt weer gegeven.
 
 ## <a name="delete-the-resources"></a>De resources verwijderen
 

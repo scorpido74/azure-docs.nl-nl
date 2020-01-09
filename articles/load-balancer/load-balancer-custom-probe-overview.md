@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: fdc7254b4c6e798c0f32f5fac3575474ed6ec1d0
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c093cea9f8719722cc44c9d6424c06039360e90f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077079"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690393"
 ---
 # <a name="load-balancer-health-probes"></a>Status van Load Balancer testen
 
-Wanneer u taakverdelings regels met Azure Load Balancer gebruikt, moet u een status test opgeven zodat Load Balancer de status van het back-end-eind punt kan detecteren.  De configuratie van de status test en test reacties bepalen welke back-endadresgroep instanties nieuwe stromen ontvangen. U kunt Health tests gebruiken om het mislukken van een toepassing op een back-end-eind punt te detecteren. U kunt ook een aangepast antwoord op een status test genereren en de status test voor datatransport besturing gebruiken om de belasting of geplande downtime te beheren. Wanneer een status test is mislukt, verzendt Load Balancer geen nieuwe stromen meer naar het respectieve beschadigde exemplaar.
+Wanneer u taakverdelings regels met Azure Load Balancer gebruikt, moet u een status test opgeven zodat Load Balancer de status van het back-end-eind punt kan detecteren.  De configuratie van de status test en test reacties bepalen welke back-endadresgroep instanties nieuwe stromen ontvangen. U kunt Health tests gebruiken om het mislukken van een toepassing op een back-end-eind punt te detecteren. U kunt ook een aangepast antwoord op een status test genereren en de status test voor datatransport besturing gebruiken om de belasting of geplande downtime te beheren. Wanneer een status test is mislukt, verzendt Load Balancer geen nieuwe stromen meer naar het respectieve beschadigde exemplaar. De uitgaande connectiviteit heeft geen invloed op de toegang tot binnenkomende verbindingen.
 
 Status controles bieden ondersteuning voor meerdere protocollen. De beschik baarheid van een specifiek Health probe protocol verschilt per Load Balancer SKU.  Daarnaast is het gedrag van de service afhankelijk van de SKU van Load Balancer, zoals wordt weer gegeven in deze tabel:
 
@@ -49,8 +49,8 @@ De status test configuratie bestaat uit de volgende elementen:
 - Poort van de test
 - Het HTTP-pad dat moet worden gebruikt voor HTTP ophalen wanneer HTTP (S)-tests worden gebruikt
 
-> [!NOTE]
-> Een test definitie is niet verplicht of wordt gecontroleerd op het gebruik van Azure PowerShell, Azure CLI, sjablonen of API. Test validatie tests worden alleen uitgevoerd wanneer de Azure-portal wordt gebruikt.
+>[!NOTE]
+>Een test definitie is niet verplicht of wordt gecontroleerd op het gebruik van Azure PowerShell, Azure CLI, sjablonen of API. Test validatie tests worden alleen uitgevoerd wanneer de Azure-portal wordt gebruikt.
 
 ## <a name="understanding-application-signal-detection-of-the-signal-and-reaction-of-the-platform"></a>Informatie over het toepassings signaal, de detectie van het signaal en de reactie van het platform
 
@@ -120,6 +120,9 @@ Hieronder ziet u hoe u dit type test configuratie kunt uitdrukken in een resourc
 HTTP-en HTTPS-tests bouwen op de TCP-test en geven een HTTP-GET met het opgegeven pad. Beide van deze tests ondersteuning voor relatieve paden voor de HTTP GET. HTTPS-tests zijn hetzelfde als HTTP-tests met de toevoeging van een Transport Layer Security (TLS, voorheen bekend als SSL) wrapper. De statustest is gemarkeerd als het exemplaar met een HTTP-statuscode 200 binnen de time-outperiode reageert.  Met de status test wordt standaard elke 15 seconden geprobeerd om de geconfigureerde poort voor Health probe te controleren. De minimale testinterval is 5 seconden. De totale duur van alle intervallen mag niet langer zijn dan 120 seconden.
 
 HTTP/HTTPS-tests kunnen ook handig zijn om uw eigen logica te implementeren om exemplaren te verwijderen uit load balancer draaiing als de test poort ook de listener voor de service zelf is. Bijvoorbeeld, kan u wilt verwijderen van een exemplaar als deze hoger dan 90% CPU is en een niet - 200 HTTP-status retourneren. 
+
+> [!NOTE] 
+> De HTTPS-test vereist het gebruik van certificaten op basis van een minimale handtekening hash van SHA256 in de hele keten.
 
 Als u gebruik van Cloudservices en web-functies die gebruikmaken van w3wp.exe hebben, bereikt u ook automatische bewaking van uw website. De status van een niet-200 terug fouten in de websitecode van uw naar de load balancer-test.
 

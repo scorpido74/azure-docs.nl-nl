@@ -5,25 +5,25 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/28/2019
+ms.date: 12/17/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 518c57bc3327511b70deef143826f2a1b9df8639
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 74ef8270b5efcd3b7cdf756c103dcc2e1c935508
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175705"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460488"
 ---
-Voordat u een RBAC-rol aan een beveiligings-principal toewijzen, bepalen het bereik van toegang dat de beveiligings-principal moet hebben. Aanbevolen procedures leggen dat is het altijd verstandig om alleen de smalst mogelijke bereik verlenen.
+Voordat u een RBAC-rol toewijst aan een beveiligingsprincipal, bepaalt u het bereik van toegang dat de beveiligingsprincipal moet hebben. Aanbevolen procedures bepalen dat het altijd het beste is om alleen het smalle mogelijke bereik toe te kennen.
 
-De volgende lijst beschrijft de niveaus waarop u kunt het bereik van toegang tot Azure blob- en wachtrijservices-resources, beginnen met het kleinst mogelijke bereik:
+In de volgende lijst worden de niveaus beschreven waarmee u toegang tot Azure Blob-en wachtrij bronnen kunt bereiken, te beginnen met het smalle bereik:
 
-- **Als een afzonderlijke container.** Op dit bereik een roltoewijzing is van toepassing op alle van de blobs in de container, evenals de eigenschappen van de container en de metagegevens.
-- **Een afzonderlijke wachtrij.** Op dit bereik een roltoewijzing is van toepassing op berichten in de wachtrij, evenals wachtrij-eigenschappen en metagegevens.
-- **Het opslagaccount.** Een roltoewijzing binnen dit bereik is van toepassing op alle containers en hun blobs of naar alle wachtrijen en hun berichten.
-- **De resourcegroep.** Op dit bereik een roltoewijzing is van toepassing op alle containers of wachtrijen in alle van de storage-accounts in de resourcegroep.
-- **Het abonnement.** Op dit bereik een roltoewijzing is van toepassing op alle containers of wachtrijen in alle van de storage-accounts in alle resourcegroepen in het abonnement.
+- **Een afzonderlijke container.** In dit bereik is een roltoewijzing van toepassing op alle blobs in de container, evenals container eigenschappen en meta gegevens.
+- **Een afzonderlijke wachtrij.** In dit bereik geldt een roltoewijzing voor berichten in de wachtrij, evenals wachtrij-eigenschappen en meta gegevens.
+- **Het opslag account.** In dit bereik is een roltoewijzing van toepassing op alle containers en de bijbehorende blobs, of op alle wacht rijen en hun berichten.
+- **De resource groep.** In dit bereik is een roltoewijzing van toepassing op alle containers of wacht rijen in alle opslag accounts in de resource groep.
+- **Het abonnement.** In dit bereik is een roltoewijzing van toepassing op alle containers of wacht rijen in alle opslag accounts in alle resource groepen in het abonnement.
 
 > [!IMPORTANT]
-> Als uw abonnement een Azure DataBricks-naamruimte bevat, wordt rollen toegewezen op het abonnementsbereik geblokkeerd verlenen van toegang tot blobopslag-en wachtrij.
+> Als uw abonnement een Azure DataBricks-naam ruimte bevat, zullen rollen die zijn gericht aan het abonnement geen toegang verlenen tot Blob-en wachtrij gegevens. Bereik rollen in plaats daarvan naar de resource groep, het opslag account of de container of de wachtrij.     

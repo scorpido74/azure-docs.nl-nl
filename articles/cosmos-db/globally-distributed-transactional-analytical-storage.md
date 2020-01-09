@@ -1,5 +1,5 @@
 ---
-title: Wereld wijd gedistribueerde transactionele en analytische opslag voor Azure Cosmos-containers
+title: Wereld wijd gedistribueerde transactionele en analytische opslag (in private preview) voor Azure Cosmos-containers
 description: Meer informatie over transactionele en analytische opslag en hun configuratie opties voor Azure Cosmos-containers.
 author: markjbrown
 ms.author: mjbrown
@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 22bb36e3b22f65bbf9922bd31e4b2e041cdb8979
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 18cf43ba137c92fc00d5f8e82e13501d03b4b6a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601237"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445408"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Wereld wijd gedistribueerde transactionele en analytische opslag voor Azure Cosmos-containers
 
-Azure Cosmos-container wordt intern ondersteund door twee opslag engines: transactionele opslag engine en een bij te werken engine voor analytische opslag. Beide opslag engines zijn in het logboek gestructureerd en zijn geoptimaliseerd voor snelle updates. Elk van deze wordt echter anders gecodeerd:
+De Azure Cosmos-container wordt intern ondersteund door twee opslag engines: transactionele opslag engine en een bij te werken analytische-opslag engine (in private preview). Beide opslag engines zijn in het logboek gestructureerd en zijn geoptimaliseerd voor snelle updates. Elk van deze wordt echter anders gecodeerd:
 
 * **Transactionele opslag engine** : deze wordt gecodeerd in een rij-georiënteerde indeling voor snelle trans actie-lees bewerkingen en-query's.
 

@@ -4,20 +4,20 @@ description: In deze zelf studie leert u hoe Log Analytics Dash boards al uw opg
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/19/2019
 ms.custom: mvc
-ms.openlocfilehash: baa510e060a3bca46110842600262345072b1a18
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d06ead285321b780490c816dc3d902dac1b6916f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894801"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365560"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Dashboards van Log Analytics-gegevens maken en delen
 
-Log Analytics Dash boards kunnen al uw opgeslagen logboek query's visualiseren, zodat u IT-operationele gegevens in de organisatie kunt vinden, correleren en delen.  In deze zelf studie wordt gebruikgemaakt van het maken van een logboek query die wordt gebruikt ter ondersteuning van een gedeeld dash board dat toegankelijk is voor uw IT-ondersteunings team.  In deze zelfstudie leert u procedures om het volgende te doen:
+Log Analytics Dash boards kunnen al uw opgeslagen logboek query's visualiseren, zodat u IT-operationele gegevens in de organisatie kunt vinden, correleren en delen.  In deze zelf studie wordt gebruikgemaakt van het maken van een logboek query die wordt gebruikt ter ondersteuning van een gedeeld dash board dat toegankelijk is voor uw IT-ondersteunings team.  Procedures voor:
 
 > [!div class="checklist"]
 > * Een gedeeld dashboard maken in de Azure-portal
@@ -27,13 +27,13 @@ Log Analytics Dash boards kunnen al uw opgeslagen logboek query's visualiseren, 
 
 Om het voorbeeld in deze zelfstudie uit te voeren, moet u een bestaande virtuele machine [hebben verbonden met de Log Analytics-werkruimte](quick-collect-azurevm.md).  
  
-## <a name="sign-in-to-azure-portal"></a>Meld u aan bij Azure Portal
+## <a name="sign-in-to-azure-portal"></a>Aanmelden bij Azure Portal
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="create-a-shared-dashboard"></a>Een gedeeld dashboard maken
 Selecteer **dash board** om uw standaard [Dashboard](../../azure-portal/azure-portal-dashboards.md)te openen. Het dash board ziet er anders uit dan het onderstaande voor beeld.
 
-![Azure Portal dash board](media/tutorial-logs-dashboards/log-analytics-portal-dashboard.png)
+![Azure portal-dashboard](media/tutorial-logs-dashboards/log-analytics-portal-dashboard.png)
 
 Hier verzamelt u de belangrijkste operationele IT-gegevens van al uw Azure-resources, waaronder telemetrie van Azure Log Analytics.  Voordat we een logboek query Step Into visualiseren, gaan we eerst een dash board maken en delen.  We kunnen vervolgens zich richten op de voorbeeld query van het prestatie logboek, die als een lijn diagram wordt weer gegeven en deze aan het dash board toevoegt.  
 

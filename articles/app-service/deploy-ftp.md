@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: bccf4fa0b17f261d41c0a80d9f75fe391f591bfb
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 7bc637b5719da3c5f5e5607436aa7da0721f5a9e
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671728"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680909"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Uw app implementeren op Azure App Service met behulp van FTP/S
 
@@ -21,15 +21,21 @@ Het FTP/S-eind punt voor uw app is al actief. Er is geen configuratie nodig om d
 
 ## <a name="open-ftp-dashboard"></a>FTP-dash board openen
 
-Open de [resource pagina](../azure-resource-manager/manage-resources-portal.md#manage-resources)van uw app In de [Azure Portal](https://portal.azure.com).
+1. Zoek in het [Azure Portal](https://portal.azure.com)naar en selecteer **app Services**.
 
-Om het FTP-dash board te openen, klikt u op **Deployment Center** > **FTP** > **dash board**.
+    ![Zoeken naar app-Services.](media/app-service-continuous-deployment/search-for-app-services.png)
 
-![FTP-dash board openen](./media/app-service-deploy-ftp/open-dashboard.png)
+2. Selecteer de web-app die u wilt implementeren.
+
+    ![Selecteer uw app.](media/app-service-continuous-deployment/select-your-app.png)
+
+3. Selecteer **Deployment Center** > **FTP** > **dash board**.
+
+    ![FTP-dash board openen](./media/app-service-deploy-ftp/open-dashboard.png)
 
 ## <a name="get-ftp-connection-information"></a>FTP-verbindings gegevens ophalen
 
-Klik in het FTP-dash board op **kopiëren** om het FTPS-eind punt en de app-referenties te kopiëren.
+Selecteer in het FTP-dash board **kopiëren** om het FTPS-eind punt en de app-referenties te kopiëren.
 
 ![FTP-gegevens kopiëren](./media/app-service-deploy-ftp/ftp-dashboard.png)
 

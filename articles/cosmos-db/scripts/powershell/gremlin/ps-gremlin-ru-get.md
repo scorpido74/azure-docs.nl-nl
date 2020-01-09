@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell script-Azure Cosmos DB de door Voer (RU/s) voor de Gremlin-API ophalen
+title: Power shell-script voor het ophalen van door Voer (RU/s) voor Azure Cosmos DB Gremlin-API
 description: Azure PowerShell script-Azure Cosmos DB de door Voer (RU/s) voor de Gremlin-API ophalen
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1da7559d67be94013ea829a533a09db6c8abcad4
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: de02a524e163c1843e5117e8a4471e686a2f5764
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178937"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441462"
 ---
 # <a name="get-throughput-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>De door Voer (RU/s) voor een Data Base of grafiek voor de Azure Cosmos DB-Gremlin-API ophalen
 
@@ -34,7 +34,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

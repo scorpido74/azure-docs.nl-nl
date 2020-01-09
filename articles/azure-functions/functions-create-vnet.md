@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 5/03/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 12815d3ca0136cec8af294118ff192a4f31df6a0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0c70c69f547405eb8ebdcf6dcc6ae597db151e53
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227088"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433216"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Zelf studie: functies integreren met een virtueel Azure-netwerk
 
@@ -61,8 +61,8 @@ Maak vervolgens een vooraf geconfigureerde virtuele machine die WordPress in een
     | Instelling      | Voorgestelde waarde  | Beschrijving      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Uw abonnement | Het abonnement waarmee uw resources worden gemaakt. | 
-    | **[Resource groep](../azure-resource-manager/resource-group-overview.md)**  | myResourceGroup | Kies `myResourceGroup`, of de resource groep die u hebt gemaakt met uw functie-app. Als u dezelfde resource groep gebruikt voor de functie-app, WordPress VM en hosting plan, is het eenvoudiger om resources op te schonen wanneer u met deze zelf studie klaar bent. |
-    | **Naam van de virtuele machine** | VNET-WordPress | De naam van de virtuele machine moet uniek zijn in de resource groep |
+    | **[Resource groep](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Kies `myResourceGroup`, of de resource groep die u hebt gemaakt met uw functie-app. Als u dezelfde resource groep gebruikt voor de functie-app, WordPress VM en hosting plan, is het eenvoudiger om resources op te schonen wanneer u met deze zelf studie klaar bent. |
+    | **Naam van virtuele machine** | VNET-WordPress | De naam van de virtuele machine moet uniek zijn in de resource groep |
     | **[Deel](https://azure.microsoft.com/regions/)** | (Europa) Europa - west | Kies een regio bij u in de buurt of in de buurt van de functies die toegang hebben tot de virtuele machine. |
     | **Grootte** | B1s | Kies **grootte wijzigen** en selecteer vervolgens de B1s standaard installatie kopie met 1 vCPU en 1 GB aan geheugen. |
     | **Verificatie type** | Wachtwoord | Als u wachtwoord verificatie wilt gebruiken, moet u ook een **gebruikers naam**, een veilig **wacht woord**opgeven en vervolgens het **wacht woord bevestigen**. Voor deze zelf studie hoeft u zich niet aan te melden bij de VM, tenzij u problemen moet oplossen. |
@@ -138,13 +138,13 @@ Als VNet-integratie is ingeschakeld, kunt u een proxy in uw functie-app maken om
 
     | Instelling  | Voorgestelde waarde  | Beschrijving      |
     | -------- | ---------------- | ---------------- |
-    | **Naam** | Brand | De naam kan een wille keurige waarde zijn. Dit wordt gebruikt om de proxy te identificeren. |
+    | **Naam** | Fabriek | De naam kan een wille keurige waarde zijn. Dit wordt gebruikt om de proxy te identificeren. |
     | **Route sjabloon** | /plant | Route die is toegewezen aan een VM-resource. |
     | **Back-end-URL** | http://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | Vervang `<YOUR_VM_IP>` door het IP-adres van de WordPress-VM die u eerder hebt gemaakt. Deze toewijzing retourneert één bestand van de site. |
 
 1. Selecteer **maken** om de proxy toe te voegen aan uw functie-app.
 
-## <a name="try-it-out"></a>Uitproberen
+## <a name="try-it-out"></a>Probeer het
 
 1. Probeer in uw browser toegang te krijgen tot de URL die u hebt gebruikt als de **back-end-URL**. Zoals verwacht, is er een time-out voor de aanvraag. Er treedt een time-out op omdat uw WordPress-site alleen is verbonden met uw virtuele netwerk en niet via internet.
 

@@ -1,14 +1,14 @@
 ---
 title: Aanbiedingen voor beheerde services in Azure Marketplace
 description: Met beheerde services kunnen service providers resource beheer aanbiedingen verkopen aan klanten in azure Marketplace.
-ms.date: 09/19/2019
+ms.date: 12/16/2019
 ms.topic: conceptual
-ms.openlocfilehash: f7dcaa34b1fb471823acd74a7d9b05e42dd44161
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 1b4f0d7457a74afe710a48f429cfe47535a9b122
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463997"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453590"
 ---
 # <a name="managed-services-offers-in-azure-marketplace"></a>Aanbiedingen voor beheerde services in Azure Marketplace
 
@@ -22,19 +22,20 @@ Daarna kunnen gebruikers in uw organisatie beheer taken uitvoeren voor deze reso
 
 ## <a name="public-and-private-offers"></a>Open bare en persoonlijke aanbiedingen
 
-Elk managed services-aanbod omvat een of meer abonnementen. Deze abonnementen kunnen privé of openbaar zijn.
+Elk managed services-aanbod omvat een of meer abonnementen. Plannen kunnen privé of openbaar zijn. 
 
-Als u uw aanbieding wilt beperken tot specifieke klanten, kunt u een privé-abonnement publiceren. Wanneer u dit doet, kan het abonnement alleen worden aangeschaft voor de specifieke] abonnements-Id's die u opgeeft. Zie voor meer informatie [persoonlijke aanbiedingen](https://docs.microsoft.com/azure/marketplace/private-offers).
+Als u uw aanbieding wilt beperken tot specifieke klanten, kunt u een privé-abonnement publiceren. Wanneer u dit doet, kan het abonnement alleen worden aangeschaft voor de specifieke] abonnements-Id's die u opgeeft. Zie voor meer informatie [persoonlijke aanbiedingen](../../marketplace/private-offers.md).
 
 Met open bare abonnementen kunt u uw services promo veren tot nieuwe klanten. Dit zijn doorgaans handiger wanneer u alleen beperkte toegang tot de Tenant van de klant nodig hebt. Zodra u een relatie met een klant tot stand hebt gebracht, kunt u dit doen door een nieuw privé-abonnement alleen voor die klant te publiceren of door [ze voor verdere toegang te gebruiken met behulp van Azure Resource Manager sjablonen](../how-to/onboard-customer.md).
 
-Houd er rekening mee dat wanneer een plan als openbaar is gepubliceerd, u het niet kunt wijzigen in persoonlijk. Daarnaast kunt u de beschik baarheid van een openbaar abonnement voor bepaalde klanten of zelfs voor een bepaald aantal klanten niet beperken, hoewel u de verkoop van het abonnement niet helemaal als u kiest.
-
 Indien nodig kunt u zowel open bare als privé-abonnementen in dezelfde aanbieding toevoegen.
+
+> [!IMPORTANT]
+> Zodra een plan als openbaar is gepubliceerd, kunt u het niet wijzigen in persoonlijk. Gebruik een privé abonnement om te bepalen welke klanten uw aanbieding mogen accepteren en resources kunnen delegeren. Met een openbaar abonnement kunt u de beschik baarheid van bepaalde klanten of zelfs voor een bepaald aantal klanten niet beperken (hoewel u ervoor kiest om het abonnement niet volledig te verkopen). Er is momenteel geen mechanisme om delegaties af te wijzen of te verwijderen wanneer een klant een aanbieding accepteert, maar u kunt altijd contact opnemen met een klant en vragen om [uw toegang te verwijderen](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers).
 
 ## <a name="publish-managed-service-offers"></a>Aanbiedingen voor beheerde services publiceren
 
-Zie [een Managed Services-aanbieding naar Azure Marketplace publiceren](../how-to/publish-managed-services-offers.md)voor meer informatie over het publiceren van een managed services-aanbod. Voor algemene informatie over publiceren naar Azure Marketplace met behulp van de Cloud Partner-portal raadpleegt u [Azure Marketplace en AppSource Publishing Guide](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) en [beheert u Azure en AppSource Marketplace-aanbiedingen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers).
+Zie [een Managed Services-aanbieding naar Azure Marketplace publiceren](../how-to/publish-managed-services-offers.md)voor meer informatie over het publiceren van een managed services-aanbod. Voor algemene informatie over publiceren naar Azure Marketplace met behulp van de Cloud Partner-portal raadpleegt u [Azure Marketplace en AppSource Publishing Guide](../../marketplace/marketplace-publishers-guide.md) en [beheert u Azure en AppSource Marketplace-aanbiedingen](../../marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

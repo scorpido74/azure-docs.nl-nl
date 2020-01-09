@@ -3,12 +3,12 @@ title: Azure Functions ontwikkelen met Visual Studio code
 description: Meer informatie over het ontwikkelen en testen van Azure Functions met behulp van de Azure Functions-extensie voor Visual Studio code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: cf96a0630440904282f076de2f916fb3dbf3eb1c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 54bbc46c703646f4680f6dc22d5c4b6781614ae7
+ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975581"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75667546"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions ontwikkelen met Visual Studio code
 
@@ -94,10 +94,6 @@ U kunt ook [een nieuwe functie toevoegen aan uw project](#add-a-function-to-your
 
 Met uitzonde ring van HTTP-en timer-triggers, worden bindingen geïmplementeerd in uitbreidings pakketten. U moet de uitbreidings pakketten installeren voor de triggers en bindingen die deze nodig hebben. Het proces voor het installeren van bindings uitbreidingen is afhankelijk van de taal van uw project.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
-
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Voer de [DotNet-opdracht add package](/dotnet/core/tools/dotnet-add-package) uit in het Terminal venster om de uitbreidings pakketten te installeren die u nodig hebt in uw project. Met de volgende opdracht wordt de extensie Azure Storage geïnstalleerd, waarmee bindingen voor blob-, wachtrij-en tabel opslag worden geïmplementeerd.
@@ -105,6 +101,10 @@ Voer de [DotNet-opdracht add package](/dotnet/core/tools/dotnet-add-package) uit
 ```bash
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
 ---
 
@@ -114,13 +114,13 @@ U kunt een nieuwe functie toevoegen aan een bestaand project door een van de voo
 
 De resultaten van deze actie zijn afhankelijk van de taal van uw project:
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-Er wordt een nieuwe map gemaakt in het project. De map bevat een nieuwe functie. JSON-bestand en het nieuwe Java script-code bestand.
-
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Er wordt C# een nieuw Class Library-bestand (. cs) toegevoegd aan uw project.
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+Er wordt een nieuwe map gemaakt in het project. De map bevat een nieuwe functie. JSON-bestand en het nieuwe Java script-code bestand.
 
 ---
 
@@ -129,6 +129,24 @@ Er wordt C# een nieuw Class Library-bestand (. cs) toegevoegd aan uw project.
 U kunt de functie uitbreiden door invoer-en uitvoer bindingen toe te voegen. Het proces voor het toevoegen van bindingen is afhankelijk van de taal van uw project. Zie [Azure functions triggers en bindingen](functions-triggers-bindings.md)voor meer informatie over bindingen.
 
 In de volgende voor beelden wordt verbinding gemaakt met een opslag wachtrij met de naam `outqueue`, waarbij de connection string voor het opslag account is ingesteld in de instelling `MyStorageConnection` toepassing in lokale. settings. json.
+
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+
+Werk de functie methode bij om de volgende para meter toe te voegen aan de `Run` methode definitie:
+
+```cs
+[Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
+```
+
+Voor deze code moet u de volgende `using`-instructie toevoegen:
+
+```cs
+using Microsoft.Azure.WebJobs.Extensions.Storage;
+```
+
+De para meter `msg` is een `ICollector<T>` type dat een verzameling berichten vertegenwoordigt die naar een uitvoer binding worden geschreven wanneer de functie is voltooid. U voegt een of meer berichten aan de verzameling toe. Deze berichten worden verzonden naar de wachtrij wanneer de functie is voltooid.
+
+Zie de documentatie voor de binding van de [wachtrij opslag](functions-bindings-storage-queue.md#output---c-example) voor meer informatie.
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
@@ -144,7 +162,7 @@ Hieronder volgen enkele voor beelden van prompts voor het definiëren van een ni
 | **Binding met richting selecteren** | `Azure Queue Storage` | De binding is een Azure Storage wachtrij binding. |
 | **De naam die wordt gebruikt om deze binding in uw code aan te duiden** | `msg` | Naam die de bindings parameter identificeert waarnaar in uw code wordt verwezen. |
 | **De wachtrij waarnaar het bericht wordt verzonden** | `outqueue` | De naam van de wachtrij waarnaar de binding wordt geschreven. Wanneer de *wachtrij* naam niet bestaat, wordt deze door de binding gemaakt bij het eerste gebruik. |
-| **Selecteer de instelling in ' lokaal. instelling. json '** | `MyStorageConnection` | De naam van een toepassings instelling die de connection string voor het opslag account bevat. De instelling `AzureWebJobsStorage` bevat de connection string voor het opslag account dat u hebt gemaakt met de functie-app. |
+| **Selecteer de instelling in ' local. settings. json '** | `MyStorageConnection` | De naam van een toepassings instelling die de connection string voor het opslag account bevat. De instelling `AzureWebJobsStorage` bevat de connection string voor het opslag account dat u hebt gemaakt met de functie-app. |
 
 In dit voor beeld wordt de volgende binding toegevoegd aan de matrix `bindings` in het bestand function. json:
 
@@ -168,25 +186,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 Zie voor meer informatie de referentie voor de uitvoer van de [wachtrij opslag](functions-bindings-storage-queue.md#output---javascript-example) .
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
-
-Werk de functie methode bij om de volgende para meter toe te voegen aan de `Run` methode definitie:
-
-```cs
-[Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
-```
-
-Voor deze code moet u de volgende `using`-instructie toevoegen:
-
-```cs
-using Microsoft.Azure.WebJobs.Extensions.Storage;
-```
-
 ---
-
-De para meter `msg` is een `ICollector<T>` type dat een verzameling berichten vertegenwoordigt die naar een uitvoer binding worden geschreven wanneer de functie is voltooid. U voegt een of meer berichten aan de verzameling toe. Deze berichten worden verzonden naar de wachtrij wanneer de functie is voltooid.
-
-Zie de documentatie voor de binding van de [wachtrij opslag](functions-bindings-storage-queue.md#output---c-example) voor meer informatie.
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 

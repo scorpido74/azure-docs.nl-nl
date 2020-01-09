@@ -1,7 +1,7 @@
 ---
 title: Problemen met een werk ruimte oplossen
 titleSuffix: ML Studio (classic) - Azure
-description: Deze hand leiding bevat oplossingen voor enkele vaak voorkomende uitdagingen bij het instellen van de klassieke versie van Azure Machine Learning Studio-werk ruimten.
+description: Deze hand leiding bevat oplossingen voor enkele vaak voorkomende uitdagingen bij het instellen van Azure Machine Learning Studio (klassieke) werk ruimten.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 88f4e1edae84892892d1a8a9e76499d71d551abf
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3f2cc3dcc5c9e34590d1cb2d0d3747fd1255f0e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838027"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427467"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-classic-workspace"></a>Probleemoplossings gids: maken en verbinding maken met een Azure Machine Learning Studio (klassieke) werk ruimte
 Deze hand leiding bevat oplossingen voor enkele vaak voorkomende uitdagingen bij het instellen van Azure Machine Learning Studio (klassieke) werk ruimten.
@@ -34,7 +34,7 @@ Machine Learning is momenteel beschikbaar in een beperkt aantal regio's. Als uw 
 
 Als u een regio wilt toevoegen aan uw abonnement, maakt u een nieuwe micro soft-ondersteunings aanvraag van de Azure Portal, kiest u **facturering** als het probleem type en volgt u de aanwijzingen om uw aanvraag in te dienen.
 
-## <a name="storage-account"></a>Storage-account
+## <a name="storage-account"></a>Opslagaccount
 De Machine Learning-service heeft een opslag account nodig om gegevens op te slaan. U kunt een bestaand opslag account gebruiken of u kunt een nieuw opslag account maken wanneer u de nieuwe Machine Learning Studio (klassieke) werk ruimte maakt (als u een quotum hebt om een nieuw opslag account te maken).
 
 Nadat de nieuwe Machine Learning Studio (klassieke) werk ruimte is gemaakt, kunt u zich aanmelden bij Machine Learning Studio (klassiek) met behulp van de Microsoft-account die u hebt gebruikt om de werk ruimte te maken. Als het fout bericht ' werk ruimte niet gevonden ' (vergelijkbaar met de volgende scherm afbeelding) wordt weer gegeven, moet u de volgende stappen gebruiken om uw browser cookies te verwijderen.
@@ -45,7 +45,7 @@ Nadat de nieuwe Machine Learning Studio (klassieke) werk ruimte is gemaakt, kunt
 
 1. Als u Internet Explorer gebruikt, klikt u op de knop **extra** in de rechter bovenhoek en selecteert u **Internet opties**.  
 
-   ![Internet opties](media/troubleshooting-creating-ml-workspace/screen4.png)
+   ![Internetopties](media/troubleshooting-creating-ml-workspace/screen4.png)
 
 2. Klik op het tabblad **Algemeen** op **verwijderen...**
 

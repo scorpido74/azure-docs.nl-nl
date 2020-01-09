@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 508fa7e33cd8572d70b7ebf261edba67fd40dd93
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 16892ec729f56f8c8e1713379285e07fbc0dd4d1
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084168"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495422"
 ---
-# <a name="common-questions-about-vmware-to-azure-replication"></a>Veelgestelde vragen over VMware naar Azure-replicatie
+# <a name="common-questions-about-vmware-to-azure-replication"></a>Algemene vragen over replicatie van VMware naar Azure
 
 In dit artikel vindt u antwoorden op veelgestelde vragen die mogelijk worden gemaakt wanneer u herstel na nood gevallen van on-premises virtuele VMware-machines (Vm's) naar Azure implementeert.
 
@@ -176,7 +176,7 @@ Ja, u kunt nieuwe virtuele machines toevoegen aan een bestaande replicatie groep
 
 ### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>Kan ik virtuele machines die repliceren, wijzigen door schijven toe te voegen of te wijzigen?
 
-U kunt de schijf grootte wijzigen voor VMware-replicatie naar Azure. Als u nieuwe schijven wilt toevoegen, moet u de schijf toevoegen en de beveiliging voor de virtuele machine opnieuw inschakelen.
+Voor VMware-replicatie naar Azure kunt u de schijf grootte van de bron-Vm's wijzigen. Als u nieuwe schijven wilt toevoegen, moet u de schijf toevoegen en de beveiliging voor de virtuele machine opnieuw inschakelen.
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>Kan ik on-premises machines migreren naar een nieuwe vCenter Server zonder dat dit van invloed is op de continue replicatie?
 
@@ -188,7 +188,7 @@ Nee, Site Recovery biedt geen ondersteuning voor replicatie naar Azure Storage o
 
 ## <a name="component-upgrade"></a>Upgrade van onderdelen
 
-### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Mijn versie van de Mobility Services-agent of configuratie server is verouderd en mijn upgrade is mislukt. Wat moet ik doen?
+### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Mijn versie van de Mobility Services-agent of configuratie server is verouderd en mijn upgrade is mislukt. Wat kan ik doen?
 
 Site Recovery volgt het ondersteunings model N-4. Meer [informatie](https://aka.ms/asr_support_statement) over het uitvoeren van een upgrade van zeer oudere versies.
 
@@ -344,9 +344,6 @@ Ja. Als u een failover naar Azure hebt uitgevoerd, kunt u een failback uitvoeren
 
 Wanneer u een failback van Azure hebt uitgevoerd, worden de gegevens van Azure naar uw on-premises VM gekopieerd en is de persoonlijke toegang vereist.
 
-### <a name="can-i-resize-the-azure-vm-after-failover"></a>Kan ik het formaat van de virtuele Azure-machine wijzigen na een failover?
-
-Nee, u kunt de grootte of het type van de doel-VM niet wijzigen na de failover.
 
 ## <a name="automation-and-scripting"></a>Automation en scripting
 

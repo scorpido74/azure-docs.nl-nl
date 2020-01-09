@@ -1,6 +1,6 @@
 ---
-title: Geef de resourcegroep voor virtuele machines in Azure DevTest Labs | Microsoft Docs
-description: Informatie over het opgeven van een resourcegroep voor virtuele machines in een lab in Azure DevTest Labs.
+title: Geef een resource groep voor Vm's op in Azure DevTest Labs | Microsoft Docs
+description: Meer informatie over het opgeven van een resource groep voor Vm's in een lab in Azure DevTest Labs.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -12,43 +12,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: spelluru
-ms.openlocfilehash: 574cc0c41ce645c71302178afcf6e7deaec69d8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6f51dee948d9e4d9e3f8594f9f7e60fb11b7057
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476080"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647336"
 ---
-# <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Geef een resourcegroep voor de virtuele machines in Azure DevTest Labs
+# <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Geef een resource groep op voor Lab-virtuele machines in Azure DevTest Labs
 
-Als de eigenaar van een lab, kunt u uw lab-virtuele machines worden gemaakt in een specifieke resourcegroep configureren. Deze functie kunt u in de volgende scenario's:
+Als eigenaar van een lab kunt u de virtuele lab-machines configureren die moeten worden gemaakt in een specifieke resource groep. Deze functie helpt u bij de volgende scenario's:
 
-- Minder resourcegroepen die zijn gemaakt door labs in uw abonnement hebt.
-- Zijn uw labs werken binnen een vaste set van resourcegroepen die u configureert.
-- Tijdelijke oplossing voor beperkingen en -goedkeuringen vereist voor het maken van resourcegroepen binnen uw Azure-abonnement.
-- Consolideren van uw labresources binnen een enkele resourcegroep voor het vereenvoudigen van deze resources tracking en toepassen van [beleid](../governance/policy/overview.md) om resources op het niveau van de resource te beheren.
+- U hebt minder resource groepen gemaakt door Labs in uw abonnement.
+- Laat uw Labs binnen een vaste set met resource groepen die u configureert.
+- Tijdelijke beperkingen en goed keuringen die zijn vereist voor het maken van resource groepen binnen uw Azure-abonnement.
+- Consolideer al uw Lab-resources in één resource groep om het bijhouden van die resources en het Toep assen van [beleid](../governance/policy/overview.md) voor het beheren van resources op het niveau van de resource groep te vereenvoudigen.
 
-Met deze functie kunt u een script gebruiken om op te geven van een nieuwe of bestaande resourcegroep in uw Azure-abonnement voor alle uw lab VM's. Azure DevTest Labs ondersteunt momenteel deze functie via een API.
+Met deze functie kunt u een script gebruiken om een nieuwe of bestaande resource groep in uw Azure-abonnement op te geven voor al uw Lab-Vm's. Azure DevTest Labs ondersteunt deze functie momenteel via een API.
 
 > [!NOTE]
-> Alle abonnementen van toepassing wanneer u labs in DevTest Labs maken. Een lab beschouwen als een andere resource in uw abonnement. In het geval van resourcegroepen, de limiet is [980 resourcegroepen per abonnement](../azure-subscription-service-limits.md#subscription-limits---azure-resource-manager). 
+> Alle abonnements limieten zijn van toepassing wanneer u Labs maakt in DevTest Labs. Beschouw een Lab als andere resources in uw abonnement. In het geval van resource groepen is de limiet [980 resource groepen per abonnement](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager). 
 
 ## <a name="use-azure-portal"></a>Azure Portal gebruiken
-Volg deze stappen voor het opgeven van een resourcegroep voor alle virtuele machines die zijn gemaakt in het lab. 
+Volg deze stappen om een resource groep op te geven voor alle Vm's die in het lab zijn gemaakt. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Selecteer **alle Services** in het linkermenu van de navigatie. 
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+2. Selecteer **alle services** in het navigatie menu links. 
 3. Selecteer **DevTest Labs** uit de lijst.
-4. Selecteer in de lijst met labs, uw **lab**.  
-5. Selecteer **configuratie en het beleid** in de **instellingen** sectie in het menu links. 
-6. Selecteer **Lab instellingen** in het menu links. 
-7. Selecteer **alle virtuele machines in één resourcegroep**. 
-8. Selecteer een bestaande resourcegroep in de vervolgkeuzelijst lijst (of) select **nieuw**, voer een **naam** voor de resourcegroep en selecteer **OK**. 
+4. Selecteer in de lijst met Labs uw **Lab**.  
+5. Selecteer **configuratie en beleid** in de sectie **instellingen** in het menu links. 
+6. Selecteer **Lab-instellingen** in het menu links. 
+7. Selecteer **alle virtuele machines in één resource groep**. 
+8. Selecteer een bestaande resource groep in de vervolg keuzelijst (of) Selecteer **nieuwe maken**, voer een **naam** in voor de resource groep en selecteer **OK**. 
 
-    ![Selecteer de resourcegroep voor alle lab-virtuele machines](./media/resource-group-control/select-resource-group.png)
+    ![Selecteer de resource groep voor alle Lab-Vm's](./media/resource-group-control/select-resource-group.png)
 
 ## <a name="use-powershell"></a>PowerShell gebruiken 
-Het volgende voorbeeld ziet hoe u een PowerShell-script gebruiken om te maken van alle virtuele machines in een nieuwe resourcegroep.
+In het volgende voor beeld ziet u hoe u een Power shell-script gebruikt voor het maken van alle virtuele lab-machines in een nieuwe resource groep.
 
 ```powershell
 [CmdletBinding()]
@@ -72,14 +72,14 @@ az resource update -g $labRg -n $labName --resource-type "Microsoft.DevTestLab/l
 "Done. New virtual machines will now be created in the resource group '$vmRg'."
 ```
 
-Het script worden aangeroepen met behulp van de volgende opdracht uit. ResourceGroup.ps1 is het bestand dat het vorige script bevat:
+Roep het script aan met behulp van de volgende opdracht. ResourceGroup. ps1 is het bestand dat het voor gaande script bevat:
 
 ```powershell
 .\ResourceGroup.ps1 -subId <subscriptionID> -labRg <labRGNAme> -labName <LanName> -vmRg <RGName> 
 ```
 
-## <a name="use-an-azure-resource-manager-template"></a>Een Azure Resource Manager-sjabloon gebruiken
-Als u een Azure Resource Manager-sjabloon gebruikt om een lab te maken, gebruikt u de **vmCreationResourceGroupId** eigenschap in het gedeelte lab eigenschappen van uw sjabloon, zoals wordt weergegeven in het volgende voorbeeld:
+## <a name="use-an-azure-resource-manager-template"></a>Een Azure Resource Manager sjabloon gebruiken
+Als u een Azure Resource Manager sjabloon gebruikt om een lab te maken, gebruikt u de eigenschap **vmCreationResourceGroupId** in het gedeelte Lab-eigenschappen van uw sjabloon, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```json
         {
@@ -101,24 +101,24 @@ Als u een Azure Resource Manager-sjabloon gebruikt om een lab te maken, gebruikt
 ```
 
 
-## <a name="api-to-configure-a-resource-group-for-lab-vms"></a>API voor het configureren van een resourcegroep voor lab-virtuele machines
-U hebt de volgende opties als de eigenaar van een lab bij het gebruik van deze API:
+## <a name="api-to-configure-a-resource-group-for-lab-vms"></a>API voor het configureren van een resource groep voor Lab-Vm's
+U hebt de volgende opties als eigenaar van het lab wanneer u deze API gebruikt:
 
-- Kies de **lab van resourcegroep** voor alle virtuele machines.
-- Kies een **bestaande resourcegroep** dan de resourcegroep van de testomgeving voor alle virtuele machines.
-- Voer een **nieuwe resourcegroep** naam voor alle virtuele machines.
-- Ga door met behulp van het bestaande gedrag, waarin een resourcegroep is gemaakt voor elke virtuele machine in het lab.
+- Kies de **resource groep van het lab** voor alle virtuele machines.
+- Kies een **bestaande resource groep** , anders dan de resource groep van het lab voor alle virtuele machines.
+- Voer een nieuwe naam in voor de **resource groep** voor alle virtuele machines.
+- Ga verder met het bestaande gedrag, waarbij een resource groep voor elke virtuele machine in het lab wordt gemaakt.
  
-Deze instelling is van toepassing op nieuwe virtuele machines die zijn gemaakt in het lab. Oudere VM's in uw testomgeving die zijn gemaakt in hun eigen resourcegroepen blijven ongewijzigd. Omgevingen die zijn gemaakt in uw testomgeving gaan om te blijven in hun eigen resourcegroepen.
+Deze instelling is van toepassing op nieuwe virtuele machines die zijn gemaakt in het lab. De oudere virtuele machines in uw Lab die in hun eigen resource groepen zijn gemaakt, blijven ongewijzigd. Omgevingen die in uw Lab worden gemaakt, blijven behouden in hun eigen resource groepen.
 
-Het gebruik van deze API:
+Deze API gebruiken:
 - Gebruik API-versie **2018_10_15_preview**.
-- Als u een nieuwe resourcegroep opgeeft, zorgt u ervoor dat u hebt **schrijfmachtigingen op resourcegroepen** in uw abonnement. Als u schrijfmachtigingen ontbreken, mislukken het maken van nieuwe virtuele machines in de opgegeven resourcegroep.
-- Tijdens het gebruik van de API, doorgeven de **volledige resourcegroep-ID**. Bijvoorbeeld: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Zorg ervoor dat de resourcegroep bevindt zich in hetzelfde abonnement bevinden als het lab. 
+- Als u een nieuwe resource groep opgeeft, moet u ervoor zorgen dat u **schrijf machtigingen hebt voor resource groepen** in uw abonnement. Als u geen schrijf machtigingen hebt, zullen het maken van nieuwe virtuele machines in de opgegeven resource groep mislukken.
+- Geef tijdens het gebruik van de API de **volledige resource groep-ID**door. Bijvoorbeeld: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Zorg ervoor dat de resource groep zich in hetzelfde abonnement bevindt als het lab. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen: 
 
-- [Beleidsregels op te stellen voor een lab](devtest-lab-get-started-with-lab-policies.md)
+- [Beleids regels instellen voor een Lab](devtest-lab-get-started-with-lab-policies.md)
 - [Veelgestelde vragen](devtest-lab-faq.md)

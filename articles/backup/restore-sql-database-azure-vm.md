@@ -3,12 +3,12 @@ title: SQL Server data bases herstellen op een virtuele Azure-machine
 description: In dit artikel wordt beschreven hoe u SQL Server-data bases herstelt die worden uitgevoerd op een virtuele Azure-machine en waarvan een back-up is gemaakt met Azure Backup.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 0dbf5c48884dc665355d2806ff343facfbeffc29
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 58525069af28be250c3536db076a38fb350bc1da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171909"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390750"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server data bases herstellen op virtuele Azure-machines
 
@@ -110,7 +110,15 @@ Als u de back-upgegevens wilt herstellen als. bak-bestanden in plaats van een Da
 
 1. Selecteer in het menu **herstellen configuratie** onder **herstel van herstellen** **als bestanden**.
 2. Selecteer de SQL Server naam waarnaar u de back-upbestanden wilt herstellen.
-3. Voer in het doelpad **op de server** het mappad in op de server die u hebt geselecteerd in stap 2. Dit is de locatie waar de service alle benodigde back-upbestanden zal dumpen. Normaal gesp roken is een pad naar de netwerk share of het pad van een gekoppelde Azure-bestands share indien opgegeven als doelpad, waardoor de toegang tot deze bestanden wordt vereenvoudigd door andere computers in hetzelfde netwerk of met dezelfde Azure-bestands share die eraan is gekoppeld.
+3. Voer in het doelpad **op de server** het mappad in op de server die u hebt geselecteerd in stap 2. Dit is de locatie waar de service alle benodigde back-upbestanden zal dumpen. Normaal gesp roken is een pad naar de netwerk share of het pad van een gekoppelde Azure-bestands share indien opgegeven als doelpad, waardoor de toegang tot deze bestanden wordt vereenvoudigd door andere computers in hetzelfde netwerk of met dezelfde Azure-bestands share die eraan is gekoppeld.<BR>
+
+>Als u de back-upbestanden van de Data Base wilt herstellen op een Azure-bestands share die is gekoppeld aan de geregistreerde virtuele machine van het doel, zorgt u ervoor dat NT AUTHORITY\SYSTEM toegang heeft tot de bestands share. U kunt de onderstaande stappen uitvoeren om de machtigingen lezen/schrijven toe te kennen aan de AFS die is gekoppeld aan de virtuele machine:
+>- Voer `PsExec -s cmd` uit om de NT AUTHORITY\SYSTEM-shell in te voeren
+>   - Voer `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>` uit
+>   - Toegang met `dir \\<storageacct>.file.core.windows.net\<filesharename>` controleren
+>- Een terugzet bewerking starten als bestanden van de back-upkluis om `\\<storageacct>.file.core.windows.net\<filesharename>` als pad<BR>
+U kunt PsExec downloaden via <https://docs.microsoft.com/sysinternals/downloads/psexec>
+
 4. Selecteer **OK**.
 
 ![Herstellen als bestanden selecteren](./media/backup-azure-sql-database/restore-as-files.png)

@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 6aaa98bea5e6cf1bdffc3dbe28e42e9545a626ea
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4158df06b4eea175a4225e478325f8f151795850
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593615"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660627"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Wat is een netwerk voor contentlevering in Azure?
 Een netwerk voor contentlevering (CDN) is een gedistribueerd netwerk van servers dat webinhoud efficiënt aan gebruikers kan leveren. In CDN's wordt gecachede inhoud opgeslagen op randservers in aanwezigheidspunt (POP)-locaties in de buurt van eindgebruikers om de latentie zo klein mogelijk te maken. 
@@ -35,7 +35,7 @@ De voordelen van het gebruik van Azure CDN voor het leveren van websitemateriaal
 
 Zie [Azure CDN POP-locaties](cdn-pop-locations.md) om een lijst met de huidige CDN-knooppuntlocaties te bekijken.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Het werkt als volgt
 ![Overzicht van CDN](./media/cdn-overview/cdn-overview.png)
 
 1. Een gebruiker (Alice) gebruikt een URL met een speciale domeinnaam, zoals _&lt;endpoint name&gt;_ .azureedge.net, om een bestand (ook wel een asset genoemd) aan te vragen. Deze naam kan een hostnaam van een eindpunt of een aangepast domein zijn. De DNS stuurt de aanvraag door naar de best presterende POP-locatie, die meestal de POP is die zich geografisch gezien het dichtstbij de gebruiker bevindt.
@@ -59,7 +59,7 @@ Elk Azure-abonnement kent standaardlimieten voor de volgende resources:
  - Het aantal eindpunten dat kan worden gemaakt in een CDN-profiel. 
  - Het aantal aangepaste domeinen dat kan worden toegewezen aan een eindpunt.
 
-Zie [CDN-limieten](https://docs.microsoft.com/azure/azure-subscription-service-limits) voor meer informatie over limieten van CDN-abonnementen.
+Zie [CDN-limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) voor meer informatie over limieten van CDN-abonnementen.
     
 ## <a name="azure-cdn-features"></a>Functies van Azure CDN
 Azure CDN biedt de volgende belangrijke functies:

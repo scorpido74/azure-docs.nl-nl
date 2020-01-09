@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 729ae34d90fd2415fc44fc75391950f18fee6fc0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: ffcbeb311a91791432bb285b59f5486393ffe4f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083078"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386983"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Quickstart: Een Azure Storage-account integreren met Azure CDN
 In deze snelstart gaat u ervoor zorgen dat [Azure Content Delivery Network (CDN)](cdn-overview.md) inhoud van Azure Storage in de cache kan opslaan. Azure CDN biedt ontwikkelaars een mondiale oplossing voor het leveren van inhoud met hoge bandbreedte. Het kan worden gebruikt om blobs en statische inhoud van rekeninstanties in de cache op fysieke knooppunten in de Verenigde Staten, Europa, Azië, Australië en Zuid-Amerika op te slaan.
@@ -30,7 +30,7 @@ In deze snelstart gaat u ervoor zorgen dat [Azure Content Delivery Network (CDN)
 ## <a name="log-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 Meld u met uw Azure-account aan bij het [Azure Portal](https://portal.azure.com).
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Maak een opslagaccount
 Gebruik de volgende procedure om een nieuw opslagaccount voor een Azure-abonnement te maken. Een opslagaccount biedt toegang tot Azure Storage-services. Het opslagaccount vertegenwoordigt het hoogste niveau van de naamruimte voor het verkrijgen van toegang tot elk van de onderdelen van de Azure Storage-service: Azure Blob Storage, Queue Storage en Table Storage. Zie [Inleiding tot Microsoft Azure Storage](../storage/common/storage-introduction.md) voor meer informatie.
 
 Als u een opslagaccount wilt maken, moet u de servicebeheerder of een co-beheerder voor het gekoppelde abonnement zijn.
@@ -69,13 +69,13 @@ U kunt verschillende methoden, waaronder Azure Portal en PowerShell gebruiken om
     | Instelling  | Waarde |
     | -------- | ----- |
     | **Implementatiemodel** | Gebruik de standaardwaarde. |
-    | **Soort account** | Gebruik de standaardwaarde. |
-    | **Location**    | Selecteer **US - centraal** in de vervolgkeuzelijst. |
+    | **Type account** | Gebruik de standaardwaarde. |
+    | **Locatie**    | Selecteer **US - centraal** in de vervolgkeuzelijst. |
     | **Replicatie** | Gebruik de standaardwaarde. |
     | **Prestaties** | Gebruik de standaardwaarde. |
     | **Veilige overdracht vereist** | Gebruik de standaardwaarde. |
     | **Abonnement** | Kies een Azure-abonnement in de vervolgkeuzelijst. |
-    | **Resourcegroep** | Selecteer **Nieuwe maken** en voer *my-resource-group-123* in als naam voor de resourcegroep. Deze naam moet wereldwijd uniek zijn. Als deze al in gebruik is, kunt u een andere naam invoeren of **Bestaande gebruiken** selecteren en **my-resource-group-123** in de vervolgkeuzelijst selecteren. <br />Zie [Overzicht van Azure Resource Manager](../azure-resource-manager/resource-group-overview.md#resource-groups) voor informatie over resourcegroepen.| 
+    | **Resourcegroep** | Selecteer **Nieuwe maken** en voer *my-resource-group-123* in als naam voor de resourcegroep. Deze naam moet wereldwijd uniek zijn. Als deze al in gebruik is, kunt u een andere naam invoeren of **Bestaande gebruiken** selecteren en **my-resource-group-123** in de vervolgkeuzelijst selecteren. <br />Zie [Overzicht van Azure Resource Manager](../azure-resource-manager/management/overview.md#resource-groups) voor informatie over resourcegroepen.| 
     | **Virtuele netwerken configureren** | Gebruik de standaardwaarde. |  
     
 5. Selecteer **Aan dashboard vastmaken** om het opslagaccount in het dashboard op te slaan nadat het is gemaakt.

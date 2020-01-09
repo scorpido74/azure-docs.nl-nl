@@ -1,5 +1,5 @@
 ---
-title: De Azure CLI gebruiken met Azure Storage | Microsoft Docs
+title: De Azure CLI gebruiken met Azure Storage
 description: Informatie over het gebruik van de Azure-opdracht regel interface (Azure CLI) met Azure Storage om opslag accounts te maken en te beheren en te werken met Azure-blobs en-bestanden.
 services: storage
 author: tamram
@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 46ae70bf4f1c2fe0276a3327ff37650dd57341d0
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: f8e745b214ced865ac41d72bdfd5e44ca36b803a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259390"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460467"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>De Azure CLI gebruiken met Azure Storage
 
@@ -33,8 +33,8 @@ In de voor beelden in de hand leiding wordt uitgegaan van het gebruik van de bas
 In deze hand leiding wordt ervan uitgegaan dat u bekend bent met de basis concepten van Azure Storage. Er wordt ook van uitgegaan dat u voldoet aan de vereisten voor het maken van het account die hieronder zijn opgegeven voor Azure en de Storage-service.
 
 ### <a name="accounts"></a>Accounts
-* **Azure-account**: Als u nog geen Azure-abonnement hebt, [maakt u een gratis Azure-account](https://azure.microsoft.com/free/).
-* **Opslagaccount**: Zie [een opslag account maken](storage-quickstart-create-account.md) in [over Azure-opslag accounts](storage-create-storage-account.md).
+* **Azure-account**: als u nog geen Azure-abonnement hebt, [maakt u een gratis Azure-account](https://azure.microsoft.com/free/).
+* **Opslagaccount**: zie [Een opslagaccount maken](storage-quickstart-create-account.md) in [Over Azure-opslagaccounts](storage-create-storage-account.md).
 
 ### <a name="install-the-azure-cli"></a>Azure-CLI installeren
 
@@ -46,7 +46,7 @@ Down load en installeer de Azure CLI door de instructies te volgen die worden be
 
 ## <a name="working-with-the-cli"></a>Werken met de CLI
 
-Nadat u de CLI hebt geïnstalleerd, kunt u de `az` opdracht in de opdracht regel interface (bash, Terminal, opdracht prompt) gebruiken om toegang te krijgen tot de Azure cli-opdrachten. Typ de `az` opdracht voor een volledige lijst met basis opdrachten (de volgende voorbeeld uitvoer is afgekapt):
+Nadat u de CLI hebt geïnstalleerd, kunt u de opdracht `az` in de opdracht regel interface (bash, Terminal, opdracht prompt) gebruiken om toegang te krijgen tot de Azure CLI-opdrachten. Typ de `az` opdracht om een volledige lijst met basis opdrachten te bekijken (de volgende voorbeeld uitvoer is afgekapt):
 
 ```
      /\
@@ -68,7 +68,7 @@ Here are the base commands:
     ...
 ```
 
-Voer in de opdracht regel interface de opdracht `az storage --help` uit om de subgroepen van de `storage` opdracht weer te geven. De beschrijvingen van de subgroepen bieden een overzicht van de functionaliteit die de Azure CLI biedt voor het werken met uw opslag resources.
+Voer in de opdracht regel interface de opdracht uit `az storage --help` om de `storage` opdracht subgroepen weer te geven. De beschrijvingen van de subgroepen bieden een overzicht van de functionaliteit die de Azure CLI biedt voor het werken met uw opslag resources.
 
 ```
 Group
@@ -92,12 +92,12 @@ Subgroups:
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>De CLI koppelen aan uw Azure-abonnement
 
-Als u wilt werken met de resources in uw Azure-abonnement, moet u zich eerst aanmelden bij uw `az login`Azure-account met. Er zijn verschillende manieren om u aan te melden:
+Als u wilt werken met de resources in uw Azure-abonnement, moet u zich eerst aanmelden bij uw Azure-account met `az login`. Er zijn verschillende manieren om u aan te melden:
 
-* **Interactieve aanmelding**:`az login`
-* **Meld u aan met de gebruikers naam en het wacht woord**:`az login -u johndoe@contoso.com -p VerySecret`
+* **Interactieve aanmelding**: `az login`
+* **Meld u aan met de gebruikers naam en het wacht woord**: `az login -u johndoe@contoso.com -p VerySecret`
   * Dit werkt niet met micro soft-accounts of-accounts die gebruikmaken van multi-factor Authentication.
-* **Meld u aan met een Service-Principal**:`az login --service-principal -u http://azure-cli-2016-08-05-14-31-15 -p VerySecret --tenant contoso.onmicrosoft.com`
+* **Meld u aan met een Service-Principal**: `az login --service-principal -u http://azure-cli-2016-08-05-14-31-15 -p VerySecret --tenant contoso.onmicrosoft.com`
 
 ## <a name="azure-cli-sample-script"></a>Azure CLI-voorbeeld script
 
@@ -136,18 +136,18 @@ echo "Done"
 
 2. Werk vervolgens de variabelen van het script bij om uw configuratie-instellingen weer te geven. Vervang de volgende waarden zoals opgegeven:
 
-   * storage_account_name de naam van uw opslag account. **\<\>**
-   * storage_account_key de primaire of secundaire toegangs sleutel voor uw opslag account. **\<\>**
-   * container_name een naam van de nieuwe container die moet worden gemaakt, zoals ' Azure-cli-sample-container '. **\<\>**
-   * blob_name een naam voor de doel-Blob in de container. **\<\>**
-   * file_to_upload het pad naar het kleine bestand op uw lokale computer, zoals "~/images/HelloWorld.png". **\<\>**
-   * destination_file het pad van het doel bestand, zoals "~/downloadedImage.png". **\<\>**
+   * **\<storage_account_name\>** De naam van uw opslag account.
+   * **\<storage_account_key\>** De primaire of secundaire toegangs sleutel voor uw opslag account.
+   * **\<container_name\>** Een naam van de nieuwe container die moet worden gemaakt, zoals ' Azure-cli-sample-container '.
+   * **\<blob_name\>** Een naam voor de doel-Blob in de container.
+   * **\<file_to_upload\>** Het pad naar het kleine bestand op uw lokale computer, zoals ' ~/images/HelloWorld.png '.
+   * **\<destination_file\>** Het pad naar het doel bestand, zoals ' ~/downloadedImage.png '.
 
 3. Nadat u de benodigde variabelen hebt bijgewerkt, slaat u het script op en sluit u de editor af. Bij de volgende stappen wordt ervan uitgegaan dat u de naam van het script **my_storage_sample. sh**.
 
-4. Markeer het script als uitvoerbaar als dat nodig is:`chmod +x my_storage_sample.sh`
+4. Markeer het script als uitvoerbaar als dat nodig is: `chmod +x my_storage_sample.sh`
 
-5. Voer het script uit. Bijvoorbeeld in bash:`./my_storage_sample.sh`
+5. Voer het script uit. Bijvoorbeeld in bash: `./my_storage_sample.sh`
 
 De uitvoer ziet er ongeveer als volgt uit en de **\<destination_file\>** die u in het script hebt opgegeven, moet op de lokale computer worden weer gegeven.
 
@@ -170,7 +170,7 @@ Done
 ```
 
 > [!TIP]
-> De voor gaande uitvoer is in **tabel** indeling. U kunt opgeven welke uitvoer indeling moet worden gebruikt door het `--output` argument in uw cli-opdrachten op te geven of het `az configure`globaal in te stellen met.
+> De voor gaande uitvoer is in **tabel** indeling. U kunt opgeven welke uitvoer indeling moet worden gebruikt door het argument `--output` op te geven in uw CLI-opdrachten of het globaal in te stellen met behulp van `az configure`.
 >
 
 ## <a name="manage-storage-accounts"></a>Opslagaccounts beheren
@@ -186,17 +186,17 @@ az storage account create \
     --sku <account_sku>
 ```
 
-* `--location`[Vereist]: Locatie. Bijvoorbeeld ' vs-West '.
-* `--name`[Vereist]: De naam van het opslagaccount. De naam moet 3 tot 24 tekens lang zijn en mag alleen kleine letters alfanumerieke tekens bevatten.
-* `--resource-group`[Vereist]: De naam van de resource groep.
-* `--sku`[Vereist]: De SKU van het opslag account. Toegestane waarden:
+* `--location` [vereist]: locatie. Bijvoorbeeld ' vs-West '.
+* `--name` [vereist]: de naam van het opslag account. De naam moet 3 tot 24 tekens lang zijn en mag alleen kleine letters alfanumerieke tekens bevatten.
+* `--resource-group` [vereist]: naam van de resource groep.
+* `--sku` [vereist]: de SKU van het opslag account. Toegestane waarden:
   * `Premium_LRS`
   * `Standard_GRS`
   * `Standard_LRS`
   * `Standard_RAGRS`
   * `Standard_ZRS`
-  * `Standard_GZRS`evaluatie
-  * `Standard_RAGZRS`evaluatie
+  * `Standard_GZRS` (preview-versie)
+  * `Standard_RAGZRS` (preview-versie)
 
 ### <a name="set-default-azure-storage-account-environment-variables"></a>Standaard omgevings variabelen van Azure Storage-account instellen
 
@@ -218,7 +218,7 @@ export AZURE_STORAGE_ACCOUNT=<account_name>
 export AZURE_STORAGE_KEY=<key>
 ```
 
-Een andere manier om een standaard-opslag account in te stellen, is met behulp van een connection string. Haal eerst de Connection String op met de `show-connection-string` opdracht:
+Een andere manier om een standaard-opslag account in te stellen, is met behulp van een connection string. Haal eerst de connection string op met de `show-connection-string` opdracht:
 
 ```azurecli
 az storage account show-connection-string \
@@ -226,35 +226,35 @@ az storage account show-connection-string \
     --resource-group <resource_group>
 ```
 
-Kopieer vervolgens de uitvoer Connection String en stel de `AZURE_STORAGE_CONNECTION_STRING` omgevings variabele in (mogelijk moet u de Connection String tussen aanhalings tekens plaatsen):
+Kopieer vervolgens de uitvoer connection string en stel de omgevings variabele `AZURE_STORAGE_CONNECTION_STRING` in (mogelijk moet u de connection string tussen aanhalings tekens plaatsen):
 
 ```azurecli
 export AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
 ```
 
 > [!NOTE]
-> Voor alle voor beelden in de volgende secties van dit artikel wordt ervan uitgegaan `AZURE_STORAGE_ACCOUNT` dat `AZURE_STORAGE_KEY` u de omgevings variabelen en hebt ingesteld.
+> Bij alle voor beelden in de volgende secties van dit artikel wordt ervan uitgegaan dat u de omgevings variabelen `AZURE_STORAGE_ACCOUNT` en `AZURE_STORAGE_KEY` hebt ingesteld.
 
 ## <a name="create-and-manage-blobs"></a>Blobs maken en beheren
 Azure Blob-opslag is een service voor het opslaan van grote hoeveel heden ongestructureerde gegevens, zoals tekst of binaire gegevens, die overal ter wereld toegankelijk zijn via HTTP of HTTPS. In deze sectie wordt ervan uitgegaan dat u al bekend bent met Azure Blob Storage-concepten. Zie voor meer informatie aan de [slag met Azure Blob Storage met behulp](../blobs/storage-dotnet-how-to-use-blobs.md) van de concepten van .net en [BLOB-service](/rest/api/storageservices/blob-service-concepts).
 
 ### <a name="create-a-container"></a>Een container maken
-Elke Blob in azure Storage moet zich in een container bevinden. U kunt een container maken met behulp `az storage container create` van de opdracht:
+Elke Blob in azure Storage moet zich in een container bevinden. U kunt een container maken met behulp van de `az storage container create` opdracht:
 
 ```azurecli
 az storage container create --name <container_name>
 ```
 
-U kunt een van de drie Lees toegang voor een nieuwe container instellen door het optionele `--public-access` argument op te geven:
+U kunt een van de drie niveaus voor lees toegang instellen voor een nieuwe container door het optionele argument `--public-access` op te geven:
 
-* `off`(standaard instelling): Container gegevens zijn privé voor de account eigenaar.
-* `blob`: Open bare Lees toegang voor blobs.
-* `container`: Open bare Lees-en lijst toegang tot de volledige container.
+* `off` (standaard): container gegevens zijn privé voor de account eigenaar.
+* `blob`: open bare Lees toegang voor blobs.
+* `container`: open bare Lees-en lijst toegang tot de volledige container.
 
 Zie [Anonieme leestoegang tot containers en blobs beheren](../blobs/storage-manage-access-to-resources.md) voor meer informatie.
 
 ### <a name="upload-a-blob-to-a-container"></a>Een blob uploaden naar een container
-Azure Blob-opslag ondersteunt blok-, toevoeg-en pagina-blobs. Upload blobs naar een container met behulp `blob upload` van de opdracht:
+Azure Blob-opslag ondersteunt blok-, toevoeg-en pagina-blobs. Upload blobs naar een container met behulp van de opdracht `blob upload`:
 
 ```azurecli
 az storage blob upload \
@@ -263,9 +263,9 @@ az storage blob upload \
     --name <blob_name>
 ```
 
-Als u rechtstreeks wilt uploaden naar een map in de container in uw opslag account, vervangt `--name <blob_name>` `--name <folder/blob_name>`u door.
+Als u rechtstreeks wilt uploaden naar een map in de container in uw opslag account, moet u `--name <blob_name>` vervangen door `--name <folder/blob_name>`.
 
- De `blob upload` opdracht uploadt standaard *. VHD-bestanden naar pagina-blobs of blok-blobs. Als u een ander type wilt opgeven wanneer u een BLOB uploadt, `--type` kunt u het argument-- `append`toegestane `block`waarden gebruiken `page`, en.
+ De `blob upload` opdracht uploadt standaard *. VHD-bestanden naar pagina-blobs of blok-blobs. Als u een ander type wilt opgeven wanneer u een BLOB uploadt, kunt u het `--type` argument gebruiken: toegestane waarden zijn `append`, `block`en `page`.
 
  Zie voor meer informatie over de verschillende typen blobs ' [blok-blobs, toevoeg-blobs en pagina-blobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)'.
 
@@ -323,7 +323,7 @@ az storage blob copy start \
 In het bovenstaande voor beeld moet de doel container al aanwezig zijn in het doel opslag account om de Kopieer bewerking te kunnen volt ooien. Bovendien moet de bron-blob die in het argument `--source-uri` is opgegeven, een SAS-token (Shared Access Signature) bevatten of openbaar toegankelijk zijn, zoals in dit voorbeeld.
 
 ### <a name="delete-a-blob"></a>Een blob verwijderen
-Als u een BLOB wilt verwijderen, `blob delete` gebruikt u de opdracht:
+Als u een BLOB wilt verwijderen, gebruikt u de opdracht `blob delete`:
 
 ```azurecli
 az storage blob delete --container-name <container_name> --name <blob_name>
@@ -331,7 +331,7 @@ az storage blob delete --container-name <container_name> --name <blob_name>
 
 ### <a name="set-the-content-type"></a>Type bestandsinhoud instellen
 
-Het type inhoud, ook wel het MIME-type genoemd, geeft de indeling aan van de gegevens in de blob. Browsers en andere software maken gebruik van het type inhoud om te bepalen hoe de gegevens verwerkt moeten worden. Het inhouds type voor PNG-afbeeldingen is `image/png`bijvoorbeeld. Als u het inhouds type wilt instellen, `blob update` gebruikt u de opdracht:
+Het type inhoud, ook wel het MIME-type genoemd, geeft de indeling aan van de gegevens in de blob. Browsers en andere software maken gebruik van het type inhoud om te bepalen hoe de gegevens verwerkt moeten worden. Het inhouds type voor PNG-afbeeldingen is bijvoorbeeld `image/png`. Als u het inhouds type wilt instellen, gebruikt u de opdracht `blob update`:
 
 ```azurecli
 az storage blob update
@@ -360,7 +360,7 @@ az storage directory create --name myDir --share-name myshare
 Een mappad kan meerdere niveaus bevatten, bijvoorbeeld **dir1/dir2**. U moet er echter voor zorgen dat alle bovenliggende directory's bestaan voordat u een submap maakt. Voor het pad **dir1/dir2**moet u eerst Directory **dir1**maken en vervolgens Directory- **dir2**maken.
 
 ### <a name="upload-a-local-file-to-a-share"></a>Een lokaal bestand uploaden naar een share
-In het volgende voor beeld wordt een bestand geüpload van **~/temp/samplefile.txt** naar de hoofdmap van de **MyShare** -bestands share. Met `--source` het argument geeft u het bestaande lokale bestand op dat moet worden geüpload.
+In het volgende voor beeld wordt een bestand geüpload van **~/temp/samplefile.txt** naar de hoofdmap van de **MyShare** -bestands share. Met het argument `--source` geeft u het bestaande lokale bestand op dat moet worden geüpload.
 
 ```azurecli
 az storage file upload --share-name myshare --source ~/temp/samplefile.txt
@@ -375,7 +375,7 @@ az storage file upload --share-name myshare/myDir --source ~/temp/samplefile.txt
 Een bestand in de share kan Maxi maal 1 TB groot zijn.
 
 ### <a name="list-the-files-in-a-share"></a>De bestanden in een share weer geven
-U kunt bestanden en mappen in een share weer geven met behulp van de `az storage file list` opdracht:
+U kunt bestanden en mappen in een share weer geven met behulp van de opdracht `az storage file list`:
 
 ```azurecli
 # List the files in the root of a share
@@ -398,13 +398,13 @@ az storage file copy start \
 ```
 
 ## <a name="create-share-snapshot"></a>Moment opname van de share maken
-U kunt een moment opname van een share maken `az storage share snapshot` met behulp van de opdracht:
+U kunt een moment opname van een share maken met behulp van de `az storage share snapshot` opdracht:
 
 ```cli
 az storage share snapshot -n <share name>
 ```
 
-Voorbeeld uitvoer
+Voorbeelduitvoer
 ```json
 {
   "metadata": {},
@@ -420,7 +420,7 @@ Voorbeeld uitvoer
 
 ### <a name="list-share-snapshots"></a>Momentopnamen van shares opvragen
 
-U kunt moment opnamen van shares van een bepaalde share weer geven met`az storage share list --include-snapshots`
+U kunt moment opnamen van shares van een bepaalde share weer geven met behulp van `az storage share list --include-snapshots`
 
 ```cli
 az storage share list --include-snapshots
@@ -463,7 +463,7 @@ az storage share list --include-snapshots
 ```
 
 ### <a name="browse-share-snapshots"></a>Bladeren door momentopnamen van shares
-U kunt ook naar een bepaalde moment opname van `az storage file list`een share bladeren om de inhoud ervan te bekijken. Een moet de share naam `--share-name <snare name>` en de tijds tempel opgeven`--snapshot '2017-10-04T19:45:18.0000000Z'`
+U kunt ook naar een bepaalde moment opname van een share bladeren om de inhoud ervan weer te geven met behulp van `az storage file list`. Een moet de share naam opgeven `--share-name <snare name>` en de tijds tempel `--snapshot '2017-10-04T19:45:18.0000000Z'`
 
 ```azurecli-interactive
 az storage file list --share-name sharesnapshotdefs --snapshot '2017-10-04T19:45:18.0000000Z' -otable
@@ -485,7 +485,7 @@ IMG_1635.JPG    974058            file
 ```
 ### <a name="restore-from-share-snapshots"></a>Herstellen vanaf moment opnamen van shares
 
-U kunt een bestand herstellen door een bestand te kopiëren of te downloaden van een moment `az storage file download` opname van een share met behulp van de opdracht
+U kunt een bestand herstellen door een bestand te kopiëren of te downloaden van een moment opname van een share met `az storage file download` opdracht
 
 ```azurecli-interactive
 az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --snapshot '2017-10-04T19:45:18.0000000Z'
@@ -521,13 +521,13 @@ az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --sn
 }
 ```
 ## <a name="delete-share-snapshot"></a>Moment opname van share verwijderen
-U kunt een moment opname van een share verwijderen `az storage share delete` met behulp `--snapshot` van de opdracht door een para meter met de time stamp van de moment opname van share
+U kunt een moment opname van een share verwijderen met behulp van de `az storage share delete` opdracht door `--snapshot` para meter op te geven met de time stamp van de moment opname:
 
 ```cli
 az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z' 
 ```
 
-Voorbeeld uitvoer
+Voorbeelduitvoer
 ```json
 {
   "deleted": true
@@ -538,5 +538,5 @@ Voorbeeld uitvoer
 Hier volgen enkele aanvullende bronnen voor meer informatie over het werken met de Azure CLI. 
 
 * [Aan de slag met Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
-* [Naslag informatie over Azure CLI-opdrachten](/cli/azure)
+* [Azure CLI-opdrachtenreferentie](/cli/azure)
 * [Azure CLI op GitHub](https://github.com/Azure/azure-cli)

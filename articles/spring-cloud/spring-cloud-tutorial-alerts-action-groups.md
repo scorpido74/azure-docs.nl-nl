@@ -5,13 +5,13 @@ author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.date: 11/18/2019
-ms.openlocfilehash: 2be21b20c394ae8505ad18f2c411db7aab06215f
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.date: 12/29/2019
+ms.openlocfilehash: 49fea7d568e356169f8bbf0dfd1f4ce5c80a7223
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74694003"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690268"
 ---
 # <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Zelf studie: lente-cloud resources bewaken met behulp van waarschuwingen en actie groepen
 
@@ -26,7 +26,7 @@ Naast de vereisten voor Azure lente, is deze zelf studie afhankelijk van de volg
 
 * Een geïmplementeerd Azure veer Cloud-instantie.  Volg onze [Snelstartgids](spring-cloud-quickstart-launch-app-cli.md) om aan de slag te gaan.
 
-* Een Azure-resource die u wilt bewaken, bijvoorbeeld de data base die in dit artikel wordt geïmplementeerd: [lente gegevens gebruiken Apache Cassandra-API met Azure Cosmos DB](https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
+* Een Azure-resource die moet worden bewaakt. In dit voor beeld wordt een lente-Cloud instantie bewaakt.
  
 De volgende procedures worden beide **actie groepen** en **waarschuwingen** geïnitialiseerd, te beginnen met de optie **waarschuwingen** in het navigatie deel venster links van een lente-Cloud exemplaar. (De procedure kan ook worden gestart op de **overzichts** pagina van de monitor van de Azure Portal.) 
 
@@ -70,21 +70,46 @@ Als u een **waarschuwing**wilt configureren, gaat u terug naar de pagina **waars
 
 1. Klik op **+ nieuwe waarschuwings regel**.
 
-  ![Nieuwe waarschuwings regel voor de scherm opname Portal](media/alerts-action-groups/alerts-3.png)
+   ![Nieuwe waarschuwings regel voor de scherm opname Portal](media/alerts-action-groups/alerts-3.png)
 
-1. Geef op de pagina **regel maken** de **resource**, **voor waarde**en **acties**op.  Selecteer in het deel venster **acties** de eerder gedefinieerde **actie groep**.
+1. Geef op de pagina **regel maken** de **resource**op.
 
-1. Geef onder **WAARSCHUWINGS Details**de naam van de waarschuwings regel op.
+1. De instelling **voor waarde** biedt veel opties voor het bewaken van uw **lente-Cloud** resources.  Klik op **toevoegen** om het deel venster **signalerings logica configureren** te openen.
+
+1. Selecteer een voor waarde. In dit voor beeld wordt het **CPU-gebruiks percentage**van het systeem gebruikt.
+
+   ![Nieuwe waarschuwings regel voor de scherm opname Portal](media/alerts-action-groups/alerts-3-1.png)
+
+1. Schuif omlaag in het deel venster **signaal logica configureren** om de **drempel waarde** in te stellen die moet worden bewaakt.
+
+   ![Nieuwe waarschuwings regel voor de scherm opname Portal](media/alerts-action-groups/alerts-3-2.png)
+
+1. Klik op **Gereed**.
+
+Zie Opties voor metrische gegevens van de [gebruikers Portal](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)voor meer informatie over de beschik bare voor waarden om te controleren.
+
+ Klik onder **acties**op **actie groep selecteren**. Selecteer in het deel venster **acties** de eerder gedefinieerde **actie groep**.
+
+   ![Nieuwe waarschuwings regel voor de scherm opname Portal](media/alerts-action-groups/alerts-3-3.png) 
+
+1. Schuif omlaag en geef onder **WAARSCHUWINGS Details**de naam van de waarschuwings regel op.
+
+1. Stel de **Ernst**in.
 
 1. Klik op **waarschuwings regel maken**.
 
-  ![Nieuwe waarschuwings regel voor de scherm opname Portal](media/alerts-action-groups/alerts-4.png)
+   ![Nieuwe waarschuwings regel voor de scherm opname Portal](media/alerts-action-groups/alerts-3-4.png)
 
 Controleer of de nieuwe waarschuwings regel is ingeschakeld.
 
-  ![Nieuwe waarschuwings regel voor de scherm opname Portal](media/alerts-action-groups/alerts-5.png)
+   ![Nieuwe waarschuwings regel voor de scherm opname Portal](media/alerts-action-groups/alerts-4.png)
+
+Een regel kan ook worden gemaakt met behulp van de pagina **metrische gegevens** :
+
+   ![Nieuwe waarschuwings regel voor de scherm opname Portal](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>Volgende stappen
+* [Opties voor metrische gegevens van gebruikers Portal](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
 * [Actie groepen maken en beheren in de Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
 * [Gedrag van SMS-waarschuwingen in actie groepen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
 * [Zelf studie: gedistribueerde tracering met Azure lente-Cloud gebruiken](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)

@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: a3ad3314b8a18ec6a63b5d51bc7d8b3f9d7a6260
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7557ed43d9ecb8fc7a584e7e8239bc7ccb972e99
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818291"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647166"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Azure SQL Database servers en hun beheer
 
 ## <a name="what-is-an-azure-sql-database-server"></a>Wat is een Azure SQL Database-Server
 
-Een SQL Database-Server is een logische constructie die fungeert als een centraal beheer punt voor meerdere data bases of [gepoolde](sql-database-elastic-pool.md) gegevens sets, [aanmeldingen](sql-database-manage-logins.md), [firewall regels](sql-database-firewall-configure.md), [controle regels](sql-database-auditing.md), [beleid voor detectie van dreigingen](sql-database-threat-detection.md)en [ failover-groepen](sql-database-auto-failover-group.md) een SQL database server kan zich in een andere regio bevinden dan de bijbehorende resource groep. De SQL Database-Server moet bestaan voordat u de Azure-SQL database kunt maken. Alle data bases die door een SQL Database-Server worden beheerd, worden in dezelfde regio gemaakt als de SQL Database-Server.
+Een SQL Database-Server is een logische constructie die fungeert als een centraal beheer punt voor meerdere data bases of [gepoolde](sql-database-elastic-pool.md) gegevens sets, [aanmeldingen](sql-database-manage-logins.md), [firewall regels](sql-database-firewall-configure.md), [controle regels](sql-database-auditing.md), [beleid voor detectie van dreigingen](sql-database-threat-detection.md)en failover- [groepen](sql-database-auto-failover-group.md) een SQL database server kan zich in een andere regio bevinden dan de resource groep. De SQL Database-Server moet bestaan voordat u de Azure-SQL database kunt maken. Alle data bases die door een SQL Database-Server worden beheerd, worden in dezelfde regio gemaakt als de SQL Database-Server.
 
 Een SQL Database Server verschilt van een SQL Server exemplaar dat u mogelijk kent in de on-premises wereld. De SQL Database-Service biedt met name geen garanties met betrekking tot de locatie van de data bases ten opzichte van de SQL Database-Server die deze beheert, en geeft geen toegang tot of functies op instantie niveau. De instance-data bases in een beheerd exemplaar zijn daarentegen allemaal hetzelfde, op dezelfde manier als u bekend bent met SQL Server in de on-premises wereld.
 
@@ -40,12 +40,12 @@ Een SQL Database-Server:
 - Biedt een verbindingseindpunt voor databasetoegang (`<serverName>`.database.windows.net)
 - Biedt toegang tot metagegevens van ingesloten resources via DMV's door verbinding te maken met een hoofddatabase
 - Voorziet in het bereik voor beheer beleid dat van toepassing is op de data bases-aanmeldingen, firewall, controle, detectie van bedreigingen en dergelijke
-- Wordt beperkt door een quotum binnen het bovenliggende abonnement (zes servers per abonnement standaard: [Zie de limieten voor abonnementen hier](../azure-subscription-service-limits.md))
+- Wordt beperkt door een quotum binnen het bovenliggende abonnement (zes servers per abonnement standaard: [Zie de limieten voor abonnementen hier](../azure-resource-manager/management/azure-subscription-service-limits.md))
 - Voorziet in het bereik voor database quota en DTU-of vCore-quotum voor de resources die het bevat (zoals 45.000 DTU)
 - Is het versie bereik voor mogelijkheden die zijn ingeschakeld in opgenomen resources
 - Hoofdaanmeldingen op serverniveau kunnen alle databases op een server beheren
 - Kunnen aanmeldingen bevatten die vergelijkbaar zijn met die in de exemplaren van SQL Server op uw locaties die toegang hebben tot een of meer databases op de server, en waaraan beperkte beheerrechten kunnen worden verleend. Zie [Aanmeldingen](sql-database-manage-logins.md) voor meer informatie.
-- De standaard sortering voor alle data bases die op een SQL Database Server zijn gemaakt, is `SQL_LATIN1_GENERAL_CP1_CI_AS`, waarbij `LATIN1_GENERAL` Engels (Verenigde Staten) is, code pagina 1252, `CP1` niet hoofdletter gevoelig is en `CI` accent gevoelig is.`AS`
+- De standaard sortering voor alle data bases die op een SQL Database Server zijn gemaakt, is `SQL_LATIN1_GENERAL_CP1_CI_AS`, waarbij `LATIN1_GENERAL` Engels (Verenigde Staten) is, code pagina 1252, `CP1` niet hoofdletter gevoelig is en `CI` accent gevoelig is.
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>Azure SQL-servers, data bases en firewalls beheren met behulp van de Azure Portal
 
@@ -117,7 +117,7 @@ Als u Azure SQL Server, data bases en firewalls wilt maken en beheren met de [Az
 |[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Hiermee maakt u een Data Base|
 |[AZ SQL DB List](/cli/azure/sql/db#az-sql-db-list)|Een lijst met alle data bases en data warehouses in een server, of alle data bases in een elastische pool|
 |[AZ SQL DB List-edities](/cli/azure/sql/db#az-sql-db-list-editions)|Een lijst met beschik bare service doelstellingen en opslag limieten|
-|[AZ SQL DB List-usages](/cli/azure/sql/db#az-sql-db-list-usages)|Retourneert database gebruik|
+|[az sql db list-usages](/cli/azure/sql/db#az-sql-db-list-usages)|Retourneert database gebruik|
 |[AZ SQL DB show](/cli/azure/sql/db#az-sql-db-show)|Hiermee wordt een Data Base of Data Warehouse opgehaald|
 |[az sql db update](/cli/azure/sql/db#az-sql-db-update)|Hiermee wordt een Data Base bijgewerkt|
 |[AZ SQL DB Delete](/cli/azure/sql/db#az-sql-db-delete)|Hiermee verwijdert u een Data Base|
@@ -148,14 +148,14 @@ Gebruik de volgende T-SQL-opdrachten om Azure SQL Server, data bases en firewall
 
 | Opdracht | Beschrijving |
 | --- | --- |
-|[DATA base maken (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Hiermee maakt u een nieuwe data base. U moet zijn verbonden met de hoofd database om een nieuwe Data Base te kunnen maken.|
+|[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Een nieuwe database maken. U moet zijn verbonden met de hoofd database om een nieuwe Data Base te kunnen maken.|
 | [ALTER data base (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Hiermee wijzigt u een Azure-SQL database. |
 |[ALTER data base (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|Hiermee wijzigt u een Azure SQL Data Warehouse.|
-|[DROP data base (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Hiermee verwijdert u een Data Base.|
+|[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Hiermee verwijdert u een Data Base.|
 |[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Retourneert de editie (service tier), de service doelstelling (prijs categorie) en de naam van de elastische groep, indien van toepassing, voor een Azure-SQL database of een Azure SQL Data Warehouse. Als u bent aangemeld bij de hoofd database in een Azure SQL Database-Server, wordt er informatie over alle data bases geretourneerd. Voor Azure SQL Data Warehouse moet u verbinding hebben met de hoofd database.|
 |[sys. dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Retourneert CPU, i/o en geheugen verbruik voor een Azure SQL Database-data base. Er bestaat één rij voor elke 15 seconden, zelfs als er geen activiteit in de data base is.|
 |[sys. resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Retourneert het CPU-gebruik en de opslag gegevens voor een Azure SQL Database. De gegevens worden binnen een interval van vijf minuten verzameld en geaggregeerd.|
-|[sys. database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Bevat statistieken voor SQL Database database connectiviteits gebeurtenissen, met een overzicht van geslaagde en mislukte database verbindingen. |
+|[sys.database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Bevat statistieken voor SQL Database database connectiviteits gebeurtenissen, met een overzicht van geslaagde en mislukte database verbindingen. |
 |[sys. event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Hiermee worden geslaagde Azure SQL Database database verbindingen, verbindings fouten en deadlocks geretourneerd. U kunt deze informatie gebruiken om uw database activiteit bij SQL Database bij te houden of problemen op te lossen.|
 |[sp_set_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Hiermee worden de firewall instellingen op server niveau voor uw SQL Database-Server gemaakt of bijgewerkt. Deze opgeslagen procedure is alleen beschikbaar in de hoofd database voor de principal-aanmelding op server niveau. Een firewall regel op server niveau kan alleen worden gemaakt met behulp van Transact-SQL nadat de eerste firewall regel op server niveau is gemaakt door een gebruiker met machtigingen op Azure-niveau|
 |[sys. firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Retourneert informatie over de firewall instellingen op server niveau die zijn gekoppeld aan uw Microsoft Azure SQL Database.|

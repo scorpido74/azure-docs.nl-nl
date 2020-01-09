@@ -1,5 +1,5 @@
 ---
-title: Met de API van Azure Cosmos DB voor MongoDB en de Golang-SDK een console-app maken
+title: Console-app met behulp van de API van Azure Cosmos DB voor MongoDB en Golang SDK
 description: Biedt een voorbeeld van Golang-code dat u kunt gebruiken om verbinding te maken met de Azure Cosmos DB-API's voor MongoDB en er query's op uit te voeren.
 author: markjbrown
 ms.author: mjbrown
@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: e16b9b7e591fcc089d74794c98ddfc951cbdced9
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c717a8d5baa57ce780fbbc0d25e67c2509ca86fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755119"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441952"
 ---
 # <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Snelstartgids: een console-app bouwen met de API van Azure Cosmos DB voor MongoDB en Golang SDK
 
@@ -212,7 +212,7 @@ if err != nil {
 }
 ```
     
-## <a name="run-the-app"></a>De app kunt uitvoeren
+## <a name="run-the-app"></a>De app uitvoeren
 
 1. In Golang controleert u of uw GOPATH (beschikbaar via **Bestand**, **Instellingen**, **Go**, **GOPATH**) de locatie bevat waarin de gopkg is geïnstalleerd. Standaard is dit USERPROFILE\go. 
 2. Markeer de regels waarmee het document wordt verwijderd (regel 103-107) als commentaar, zodat u het document na het uitvoeren van de app kunt bekijken.
@@ -248,7 +248,7 @@ Ga terug naar Azure Portal om uw document te bekijken in Data Explorer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u geleerd hoe u een Cosmos-account kunt maken en hoe u een Golang-app kunt uitvoeren. Nu kunt u aanvullende gegevens in uw Cosmos database importeren. 
+In deze snelstart hebt u geleerd hoe u een Cosmos-account kunt maken en hoe u een Golang-app kunt uitvoeren. Nu kunt u aanvullende gegevens in uw Cosmos-database importeren. 
 
 > [!div class="nextstepaction"]
 > [MongoDB-gegevens importeren in Azure Cosmos DB](mongodb-migrate.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: c3134988452efe16044ab7b7740cafd02e8cf27a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 46ed2af51f34a25c1cdc1abb6152169feedd989e
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201915"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666292"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Beveiligings waarschuwingen beheren en erop reageren in Azure Security Center
 
@@ -65,7 +65,7 @@ Security Center verzamelt, analyseert en integreert automatisch logboekgegevens 
     > [!NOTE]
     >In sommige gevallen is het bron-IP-adres niet beschikbaar. sommige logboeken voor Windows-beveiligings gebeurtenissen bevatten niet het IP-adres.
 
-1. De herstels tappen die door Security Center worden voorgesteld, zijn afhankelijk van de beveiligings waarschuwing. Volg deze voor elke waarschuwing. In sommige gevallen moet u mogelijk andere Azure-besturings elementen of-services gebruiken om het aanbevolen herstel te implementeren, om een waarschuwing voor de detectie van bedreigingen te verhelpen. 
+1. De herstelstappen die door Security Center worden voorgesteld, verschillen per beveiligingswaarschuwing. Volg deze voor elke waarschuwing. In sommige gevallen moet u mogelijk andere Azure-besturings elementen of-services gebruiken om het aanbevolen herstel te implementeren, om een waarschuwing voor de detectie van bedreigingen te verhelpen. 
 
     De volgende onderwerpen helpen u bij het door lopen van de verschillende waarschuwingen, volgens de resource typen:
     
@@ -76,11 +76,11 @@ Security Center verzamelt, analyseert en integreert automatisch logboekgegevens 
     In de volgende onderwerpen wordt uitgelegd hoe Security Center de verschillende telemetrie gebruikt die wordt verzameld van integratie met de Azure-infra structuur, om extra beveiligings lagen toe te passen voor resources die in azure zijn geïmplementeerd:
     
     * [Waarschuwingen voor service lagen](security-center-alerts-service-layer.md)
-    * [Integratie met Azure-beveiligings producten](security-center-alerts-integration.md)
+    * [Detectie van bedreigingen voor Azure WAF en Azure DDoS Protection](security-center-alerts-integration.md)
     
 ## <a name="see-also"></a>Zie ook
 
-In dit document hebt u kunnen lezen hoe u het beveiligingsbeleid in Security Center configureert. Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
+In dit document hebt u kunnen lezen hoe u het beveiligingsbeleid in Security Center configureert. Zie de volgende onderwerpen voor meer informatie over Security Center:
 
 * [Beveiligings waarschuwingen in azure Security Center](security-center-alerts-overview.md).
 * [Beveiligings incidenten afhandelen](security-center-incident.md)

@@ -1,20 +1,20 @@
 ---
 title: Verbinding maken met Bing Search
-description: Zoek nieuws met Bing Search REST Api's en Azure Logic Apps
+description: Taken en werk stromen automatiseren die resultaten in Bing Search vinden met behulp van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: c3b6cb61e2f7b91b3b1e3595da2d105c5cdb01c8
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e547ae59f7b3260f46756825bca2bef1c10bcc97
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789962"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665884"
 ---
-# <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Zoek nieuws met Bing Search en Azure Logic Apps
+# <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>Resultaten zoeken in Bing Search met behulp van Azure Logic Apps
 
 In dit artikel wordt beschreven hoe u nieuws, Video's en andere items kunt vinden via Bing Search vanuit een logische app met de Bing Search-connector. Op die manier kunt u logische apps maken die taken en werk stromen automatiseren voor het verwerken van zoek resultaten en deze items beschikbaar maken voor andere acties. 
 
@@ -52,10 +52,10 @@ Als uw verbinding al bestaat, geeft u de benodigde informatie op voor de trigger
 
    | Eigenschap | Verplicht | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | Zoek query | Ja | <*Zoek woorden*> | Voer de zoek woorden in die u wilt gebruiken. |
-   | Market | Ja | <*land instelling*> | De land instellingen voor zoeken. De standaard instelling is "en-US", maar u kunt een andere waarde selecteren. |
-   | Veilig zoeken | Ja | > op *Zoek niveau* < | Het filter niveau voor het uitsluiten van inhoud voor volwassenen. De standaard waarde is ' matig ', maar u selecteert een ander niveau. |
-   | Aantal | Nee | *aantal <resultaten*> | Retourneert het opgegeven aantal resultaten. De standaard instelling is 20, maar u kunt een andere waarde opgeven. Het werkelijke aantal geretourneerde resultaten kan kleiner zijn dan het opgegeven aantal. |
+   | Search Query | Ja | <*search-words*> | Voer de zoek woorden in die u wilt gebruiken. |
+   | Market | Ja | <*locale*> | De land instellingen voor zoeken. De standaard instelling is "en-US", maar u kunt een andere waarde selecteren. |
+   | Safe Search | Ja | <*search-level*> | Het filter niveau voor het uitsluiten van inhoud voor volwassenen. De standaard waarde is ' matig ', maar u selecteert een ander niveau. |
+   | Aantal | Nee | <*results-count*> | Retourneert het opgegeven aantal resultaten. De standaard instelling is 20, maar u kunt een andere waarde opgeven. Het werkelijke aantal geretourneerde resultaten kan kleiner zijn dan het opgegeven aantal. |
    | Offset | Nee | <*Skip-waarde*> | Het aantal resultaten dat moet worden overgeslagen voordat resultaten worden geretourneerd |
    |||||
 
@@ -103,10 +103,10 @@ Selecteer in de lijst acties de gewenste actie.
 
    | Eigenschap | Verplicht | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | Zoek query | Ja | <*Zoek expressie*> | Voer een expressie in voor het uitvoeren van query's op de trigger resultaten. U kunt kiezen uit de velden in de lijst met dynamische inhoud of een expressie maken met de opbouw functie voor expressies. |
-   | Market | Ja | <*land instelling*> | De land instellingen voor zoeken. De standaard instelling is "en-US", maar u kunt een andere waarde selecteren. |
-   | Veilig zoeken | Ja | > op *Zoek niveau* < | Het filter niveau voor het uitsluiten van inhoud voor volwassenen. De standaard waarde is ' matig ', maar u selecteert een ander niveau. |
-   | Aantal | Nee | *aantal <resultaten*> | Retourneert het opgegeven aantal resultaten. De standaard instelling is 20, maar u kunt een andere waarde opgeven. Het werkelijke aantal geretourneerde resultaten kan kleiner zijn dan het opgegeven aantal. |
+   | Search Query | Ja | <*search-expression*> | Voer een expressie in voor het uitvoeren van query's op de trigger resultaten. U kunt kiezen uit de velden in de lijst met dynamische inhoud of een expressie maken met de opbouw functie voor expressies. |
+   | Market | Ja | <*locale*> | De land instellingen voor zoeken. De standaard instelling is "en-US", maar u kunt een andere waarde selecteren. |
+   | Safe Search | Ja | <*search-level*> | Het filter niveau voor het uitsluiten van inhoud voor volwassenen. De standaard waarde is ' matig ', maar u selecteert een ander niveau. |
+   | Aantal | Nee | <*results-count*> | Retourneert het opgegeven aantal resultaten. De standaard instelling is 20, maar u kunt een andere waarde opgeven. Het werkelijke aantal geretourneerde resultaten kan kleiner zijn dan het opgegeven aantal. |
    | Offset | Nee | <*Skip-waarde*> | Het aantal resultaten dat moet worden overgeslagen voordat resultaten worden geretourneerd |
    |||||
 
@@ -152,7 +152,7 @@ Selecteer in de lijst acties de gewenste actie.
    |----------|----------|-------|-------------|
    | Verbindingsnaam | Ja | <*naam* van de verbinding> | De naam die voor uw verbinding moet worden gemaakt |
    | API-versie | Ja | < *-API-versie*> | De Bing Search API-versie is standaard ingesteld op de huidige versie. U kunt indien nodig een eerdere versie selecteren. |
-   | API-sleutel | Ja | < *-API-sleutel*> | De Bing Search-API-sleutel die u eerder hebt verkregen. Als u geen sleutel hebt, kunt u [nu uw API-sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)ophalen. |  
+   | API-sleutel | Ja | <*API-key*> | De Bing Search-API-sleutel die u eerder hebt verkregen. Als u geen sleutel hebt, kunt u [nu uw API-sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)ophalen. |  
    |||||  
 
    Bijvoorbeeld:
@@ -163,7 +163,7 @@ Selecteer in de lijst acties de gewenste actie.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Zie de [referentie pagina van de connector](/connectors/bingsearch/)voor technische details, zoals triggers, acties en limieten, zoals beschreven in het OpenAPI (voorheen Swagger)-bestand van de connector.
+Zie de [referentie pagina van de connector](/connectors/bingsearch/)voor technische details, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector.
 
 ## <a name="next-steps"></a>Volgende stappen
 

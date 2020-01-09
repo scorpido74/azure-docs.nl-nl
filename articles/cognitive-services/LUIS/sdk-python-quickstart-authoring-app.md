@@ -1,7 +1,7 @@
 ---
 title: 'Quick Start: Language Understanding (LUIS) de ontwerp-client bibliotheek voor python'
 titleSuffix: Azure Cognitive Services
-description: Ga aan de slag met de LUIS-client bibliotheek voor python. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.
+description: Ga met deze Snelstartgids aan de slag met de LUIS-client bibliotheek voor python. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: 97bb86dc702802fd071015364cf205c4f1bb11d5
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 398220306fad4dc3459446fa5f77371ac669dd7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422708"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381491"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>Quick Start: Language Understanding (LUIS) de ontwerp-client bibliotheek voor python
 
@@ -103,7 +103,7 @@ Nadat de client is gemaakt, gebruikt u deze client voor toegang tot de functiona
 * [Versies](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.versionsoperations?view=azure-python) : beheren met klonen, exporteren en verwijderen
 
 
-## <a name="code-examples"></a>Code voorbeelden
+## <a name="code-examples"></a>Codevoorbeelden
 
 Deze code fragmenten laten zien hoe u het volgende kunt doen met de Language Understanding (LUIS) ontwerp-client bibliotheek voor python:
 
@@ -197,7 +197,7 @@ python quickstart-file.py
 Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#clean-up-resources)
-* [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli#clean-up-resources) 
+* [Azure-CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli#clean-up-resources) 
 
 ## <a name="next-steps"></a>Volgende stappen
 

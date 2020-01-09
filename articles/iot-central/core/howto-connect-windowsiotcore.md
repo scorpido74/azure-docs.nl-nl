@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 43e99c54249738436f24369ed3525e78ff971a12
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 452d18908406214bb7e1253363a42d8ba8287d96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930213"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454040"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Een Windows IoT core-apparaat verbinden met uw Azure IoT Central-toepassing
 
@@ -25,19 +25,24 @@ In dit artikel wordt beschreven hoe u als een ontwikkelaar van een apparaat een 
 
 U hebt het volgende nodig om de stappen in dit artikel uit te voeren:
 
-- Een Azure IoT Central-toepassing gemaakt op basis van de voor beeld-toepassings sjabloon **Devkits** . Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
+- Een Azure IoT Central-toepassing die is gemaakt op basis van de **oude** toepassings sjabloon. Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
 
 - Een apparaat met het Windows 10 IoT core-besturings systeem. Zie [uw Windows 10 IOT core-apparaat instellen](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)voor meer informatie.
 
 - Een ontwikkelings machine waarop de [node. js](https://nodejs.org/) -versie 8.0.0 of hoger is geïnstalleerd. U kunt `node --version` uitvoeren op de opdracht regel om uw versie te controleren. Node.js is beschikbaar voor een groot aantal verschillende besturingssystemen.
 
-## <a name="the-sample-devkits-application"></a>De voorbeeld toepassing Devkits
+## <a name="add-a-device-template"></a>Een apparaatsjabloon toevoegen
 
-Een toepassing die is gemaakt op basis van de voor **beeld-Devkits** -toepassings sjabloon bevat een **Windows IOT** -apparaat sjabloon met de volgende kenmerken:
+Voeg in uw Azure IoT Central-toepassing een nieuw **Windows IOT core** -apparaat sjabloon toe met de volgende kenmerken:
 
 - Telemetrie-metingen voor het apparaat: **vochtigheid**, **Tempe ratuur**en **Druk**.
 - Instelling voor het beheren van de snelheid van de **ventilator**.
 - Een **berekenings** -en Cloud eigenschaps **locatie**van een apparaat.
+
+1. Selecteer **+ Nieuw** uit Apparaatinstellingen ![-apparaatprofiel](media/howto-connect-windowsiotcore/adddevicetemplate.png)
+   
+
+2. Selecteer **Windows IOT core** en maak de sjabloon Windows IOT core-apparaat ![een apparaatprofiel toevoegen](media/howto-connect-windowsiotcore/newdevicetemplate.png)
 
 Zie voor volledige informatie over de configuratie van de sjabloon de [Details van Windows IOT core-apparaatgegevens](#device-template-details).
 
@@ -107,14 +112,14 @@ Een toepassing die is gemaakt op basis van de voor **beeld-Devkits** -toepassing
 | Veldnaam     | Eenheden  | Minimum | Maximum | Aantal decimalen |
 | -------------- | ------ | ------- | ------- | -------------- |
 | vochtigheid       | %      | 0       | 100     | 0              |
-| ratuur           | D20     | -40     | 120     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
 | pressure       | hPa    | 260     | 1260    | 0              |
 
 ### <a name="settings"></a>Instellingen
 
 Numerieke instellingen
 
-| Weergavenaam | Veldnaam | Eenheden | Aantal decimalen | Minimum | Maximum | Itiaal |
+| Weergavenaam | Veldnaam | Eenheden | Aantal decimalen | Minimum | Maximum | Oorspronkelijk |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Snelheid van ventilator    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
@@ -123,7 +128,7 @@ Numerieke instellingen
 | Type            | Weergavenaam | Veldnaam | Gegevenstype |
 | --------------- | ------------ | ---------- | --------- |
 | Eigenschap apparaat | Aantal dobbelten   | dieNumber  | getal    |
-| Tekst            | Locatie     | locatie   | N.v.t.       |
+| Tekst            | Locatie     | location   | N/A       |
 
 ## <a name="next-steps"></a>Volgende stappen
 

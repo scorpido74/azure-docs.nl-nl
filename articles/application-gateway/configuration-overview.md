@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 79867bd048be882414e247af11c133ed481788a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: ce6f07a20044efed43cf24b3f0652691dff8b8aa
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996627"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658335"
 ---
 # <a name="application-gateway-configuration-overview"></a>Overzicht van Application Gateway configuratie
 
@@ -46,9 +46,9 @@ U wordt aangeraden een subnet-grootte van Mini maal/28 te gebruiken. Met deze gr
 
 #### <a name="network-security-groups-on-the-application-gateway-subnet"></a>Netwerk beveiligings groepen op het Application Gateway subnet
 
-Netwerk beveiligings groepen (Nsg's) worden ondersteund op Application Gateway. Er zijn echter verschillende beperkingen:
+Netwerk beveiligings groepen (Nsg's) worden ondersteund op Application Gateway. Er zijn echter enkele beperkingen:
 
-- U moet binnenkomend Internet verkeer toestaan op TCP-poorten 65503-65534 voor de Application Gateway v1-SKU en TCP-poorten 65200-65535 voor de v2 SKU met het doel- *subnet.* Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Deze poorten worden beveiligd (vergrendeld) door Azure-certificaten. Externe entiteiten, met inbegrip van de klanten van deze gateways, kunnen geen wijzigingen op deze eind punten initiëren zonder dat er geschikte certificaten aanwezig zijn.
+- U moet binnenkomend Internet verkeer toestaan op TCP-poorten 65503-65534 voor de Application Gateway v1-SKU en TCP-poorten 65200-65535 voor de v2-SKU met het doel-subnet als **enige** en bron als **GatewayManager** -service label. Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Deze poorten worden beveiligd (vergrendeld) door Azure-certificaten. Externe entiteiten, met inbegrip van de klanten van deze gateways, kunnen niet communiceren op deze eind punten.
 
 - De uitgaande Internet verbinding kan niet worden geblokkeerd. Standaard regels voor uitgaande verbindingen in de NSG staan Internet connectiviteit toe. U wordt aangeraden dat u:
 
@@ -57,12 +57,12 @@ Netwerk beveiligings groepen (Nsg's) worden ondersteund op Application Gateway. 
 
 - Verkeer van het label **AzureLoadBalancer** moet zijn toegestaan.
 
-##### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Application Gateway toegang tot een aantal bron-Ip's toestaan
+#### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Application Gateway toegang tot een aantal bron-Ip's toestaan
 
 Voor dit scenario gebruikt u Nsg's in het subnet Application Gateway. Plaats de volgende beperkingen op het subnet in deze volg orde van prioriteit:
 
-1. Sta binnenkomend verkeer van een bron-IP of IP-bereik en de bestemming toe als het gehele Application Gateway subnet of op het specifieke geconfigureerde persoonlijke front-end-IP-adres. De NSG werkt niet op een openbaar IP-adres.
-2. Sta inkomende aanvragen van alle bronnen toe aan poorten 65503-65534 voor de Application Gateway v1-SKU en poorten 65200-65535 voor v2 SKU voor [back-end status communicatie](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics). Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Deze poorten worden beveiligd (vergrendeld) door Azure-certificaten. Zonder de juiste certificaten kunnen externe entiteiten geen wijzigingen op deze eind punten initiëren.
+1. Sta binnenkomend verkeer van een bron-IP of IP-bereik met de bestemming als het gehele adres bereik van Application Gateway subnet en de doel poort toe als uw binnenkomende toegangs poort, bijvoorbeeld poort 80 voor HTTP-toegang.
+2. Sta binnenkomende aanvragen van de bron als **GatewayManager** -service label en-bestemming toe als **wille keurige** en doel poorten als 65503-65534 voor de Application Gateway v1-SKU en poorten 65200-65535 voor v2-SKU voor de [status communicatie van back-end](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics). Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Deze poorten worden beveiligd (vergrendeld) door Azure-certificaten. Zonder de juiste certificaten kunnen externe entiteiten geen wijzigingen op deze eind punten initiëren.
 3. Sta binnenkomende Azure Load Balancer tests (*AzureLoadBalancer* tag) en binnenkomend virtueel netwerk verkeer (*VirtualNetwork* -tag) toe aan de [netwerk beveiligings groep](https://docs.microsoft.com/azure/virtual-network/security-overview).
 4. Alle andere binnenkomende verkeer blok keren met behulp van de regel deny-all.
 5. Uitgaand verkeer naar Internet toestaan voor alle bestemmingen.
@@ -74,10 +74,10 @@ Voor de V1-SKU worden door de gebruiker gedefinieerde routes (Udr's) ondersteund
 Voor de v2-SKU worden Udr's niet ondersteund op het Application Gateway subnet. Zie [Azure-toepassing gateway v2 SKU](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku)voor meer informatie.
 
 > [!NOTE]
-> Udr's worden niet ondersteund voor de v2-SKU.  Als u Udr's nodig hebt, moet u nog steeds v1 SKU implementeren.
+> Udr's worden op dit moment niet ondersteund voor de v2-SKU.
 
 > [!NOTE]
-> Het gebruik van Udr's op het Application Gateway subnet zorgt ervoor dat de status in de [weer gave back-end](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) wordt weer gegeven als ' onbekend '. Het is ook mogelijk dat Application Gateway logboeken en de metrische gegevens niet worden gegenereerd. U wordt aangeraden Udr's niet te gebruiken op het Application Gateway subnet, zodat u de status, logboeken en metrische gegevens van de back-end kunt bekijken.
+> Het gebruik van Udr's op het Application Gateway subnet kan ertoe leiden dat de status in de [weer gave status van de back-end](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) wordt weer gegeven als ' onbekend '. Het kan ook leiden tot het genereren van Application Gateway logboeken en de metrische gegevens. U wordt aangeraden Udr's niet te gebruiken op het Application Gateway subnet, zodat u de status, logboeken en metrische gegevens van de back-end kunt bekijken.
 
 ## <a name="front-end-ip"></a>Front-end-IP
 
@@ -165,7 +165,7 @@ Als u een algemene aangepaste fout pagina wilt configureren, raadpleegt u [Azure
 
 U kunt het SSL-certificaat beheer centraliseren en de overhead voor het ontsleutelen van versleuteling voor een back-endserver verlagen. Met gecentraliseerde SSL-verwerking kunt u ook een centraal SSL-beleid opgeven dat geschikt is voor uw beveiligings vereisten. U kunt *standaard*, *vooraf gedefinieerd*of *aangepast* SSL-beleid kiezen.
 
-U configureert SSL-beleid om de SSL-protocol versies te beheren. U kunt een toepassings gateway configureren voor het gebruik van een minimale-Protocol versie voor TLS-Handshakes van TLS 1.0, TLS 1.1 en TLS 1.2. SSL 2,0 en 3,0 zijn standaard uitgeschakeld en kunnen niet worden geconfigureerd. Zie [Application Gateway overzicht van SSL-beleid](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview)voor meer informatie.
+U configureert SSL-beleid om de SSL-protocol versies te beheren. U kunt een toepassings gateway configureren voor het gebruik van een minimale Protocol versie voor TLS-Handshakes van TLS 1.0, TLS 1.1 en TLS 1.2. SSL 2,0 en 3,0 zijn standaard uitgeschakeld en kunnen niet worden geconfigureerd. Zie [Application Gateway overzicht van SSL-beleid](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview)voor meer informatie.
 
 Nadat u een listener hebt gemaakt, koppelt u deze aan een regel voor het door sturen van aanvragen. Deze regel bepaalt hoe aanvragen die worden ontvangen op de listener worden doorgestuurd naar de back-end.
 
@@ -256,7 +256,7 @@ Deze functie is handig als u een gebruikers sessie op dezelfde server wilt blijv
 
 ### <a name="connection-draining"></a>Verwerkingsstop voor verbindingen
 
-Met de verbinding verbreken kunt u de leden van de back-end groep tijdens geplande service-updates zonder problemen verwijderen. U kunt deze instelling Toep assen op alle leden van een back-end-groep tijdens het maken van de regel. Zo zorgt u ervoor dat alle ongedaan maken van de registratie van exemplaren van een back-end-groep de bestaande verbindingen blijven behouden en dat er doorlopende aanvragen voor een Configureer bare time-out worden verzonden en geen nieuwe aanvragen of verbindingen worden ontvangen. De enige uitzonde ring hierop is het aantal aanvragen dat is gebonden voor deregistring-instanties vanwege de gateway beheer sessie-affiniteit en zal blijven worden doorgestuurd naar de deregistring-exemplaren. Het afbreken van de verbinding is van toepassing op back-end-exemplaren die expliciet uit de back-end-pool worden verwijderd.
+Met de verbinding verbreken kunt u de leden van de back-end groep tijdens geplande service-updates zonder problemen verwijderen. U kunt deze instelling Toep assen op alle leden van een back-end-groep tijdens het maken van de regel. Zo zorgt u ervoor dat alle ongedaan maken van de registratie van exemplaren van een back-end-groep de bestaande verbindingen blijven behouden en dat er doorlopende aanvragen voor een Configureer bare time-out worden verzonden en geen nieuwe aanvragen of verbindingen worden ontvangen. De enige uitzonde ring hierop is het aantal aanvragen dat is gebonden voor het deregistreren van instanties vanwege gateway beheer sessie-affiniteit en zal worden doorgestuurd naar de instanties van de registratie. Het afbreken van de verbinding is van toepassing op back-end-exemplaren die expliciet uit de back-end-pool worden verwijderd.
 
 ### <a name="protocol"></a>Protocol
 

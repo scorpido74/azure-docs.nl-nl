@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: dd2c29632d70da64251c5e1736a9cb7d82f5d0dc
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 495f53bc97835c4940f7b36d23349b768a7a637f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667357"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440971"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>De follower-Data Base gebruiken om data bases in azure Data Explorer te koppelen
 
@@ -127,7 +127,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Een Data Base koppelen met behulp van een Azure Resource Manager sjabloon
 
-In deze sectie leert u hoe u een Data Base kunt koppelen met behulp van een [Azure Resource Manager sjabloon](../azure-resource-manager/resource-group-overview.md). 
+In deze sectie leert u hoe u een Data Base kunt koppelen met behulp van een [Azure Resource Manager sjabloon](../azure-resource-manager/management/overview.md). 
 
 ```json
 {

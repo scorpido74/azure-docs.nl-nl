@@ -1,20 +1,18 @@
 ---
 title: Azure Stream Analytics uitvoer naar Azure SQL Database
 description: Meer informatie over het uitvoeren van gegevens naar SQL Azure van Azure Stream Analytics en een hogere doorvoer snelheid voor schrijf bewerkingen.
-services: stream-analytics
 author: chetanmsft
 ms.author: chetang
-manager: katiiceva
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: 7845833a0269514c8fdbd093e18d4516ff9567d9
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: f68f973882af28d80b3a27bc4591c5ee932404a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173006"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443606"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics uitvoer naar Azure SQL Database
 
@@ -29,7 +27,7 @@ Hier vindt u enkele configuraties binnen elke service die de algehele door Voer 
 - **Partities overnemen** : met deze configuratie optie voor SQL-uitvoer kunt u het partitie schema van uw vorige query stap of-invoer overnemen. Als u deze functie inschakelt en schrijft naar een tabel op basis van een schijf en een [volledig parallelle](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) topologie voor uw taak hebt, wordt verwacht dat u betere door voeren ziet. Deze partitionering vindt al veel andere [uitvoer](stream-analytics-parallelization.md#partitions-in-sources-and-sinks)plaats. Tabel vergrendeling (TABLOCK hebt) is ook uitgeschakeld voor bulk toevoegingen die zijn gemaakt met deze optie.
 
 > [!NOTE] 
-> Wanneer er meer dan 8 invoer partities zijn, is het overnemen van het schema voor de invoer partitie mogelijk niet de juiste keuze. Deze bovengrens is waargenomen in een tabel met één identiteits kolom en een geclusterde index. In dit geval kunt u overwegen [](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) om het aantal uitvoer schrijvers expliciet op te geven in 8 in uw query. Uw opmerkingen zijn afhankelijk van het schema en de keuze van de indexen.
+> Wanneer er meer dan 8 invoer partities zijn, is het overnemen van het schema voor de invoer partitie mogelijk niet de juiste keuze. Deze bovengrens is waargenomen in een tabel met één identiteits kolom en een geclusterde index. In dit geval kunt u overwegen om het aantal uitvoer schrijvers expliciet op te geven [in 8 in](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) uw query. Uw opmerkingen zijn afhankelijk van het schema en de keuze van de indexen.
 
 - **Batch grootte** -SQL-uitvoer configuratie Hiermee kunt u de maximale Batch grootte in een Azure stream Analytics SQL-uitvoer opgeven op basis van de aard van de doel tabel of-workload. Batch grootte is het maximum aantal records dat wordt verzonden met elke bulksgewijze insert-trans actie. In geclusterde column Store-indexen kunnen batch grootten rond [100.000](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) meer parallel Lise ring, minimale logboek registratie en vergrendelings optimalisaties bieden. In op schijven gebaseerde tabellen kan 10K (standaard) of lager optimaal zijn voor uw oplossing, omdat een hogere Batch grootte de vergrendelings escalatie kan activeren tijdens bulksgewijs invoegen.
 
@@ -37,9 +35,9 @@ Hier vindt u enkele configuraties binnen elke service die de algehele door Voer 
 
 ## <a name="sql-azure"></a>SQL Azure
 
-- **Gepartitioneerde tabel en indexen** : door [](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) gebruik te maken van een gepartitioneerde SQL-tabel en gepartitioneerde indexen in de tabel met dezelfde kolom als uw partitie sleutel (bijvoorbeeld PartitionId) kunnen de conflicten tussen partities tijdens het schrijven aanzienlijk verminderen. Voor een gepartitioneerde tabel moet u een [partitie functie](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) en een [partitie schema](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) maken voor de primaire bestands groep. Hierdoor wordt ook de beschik baarheid van bestaande gegevens verhoogd terwijl er nieuwe gegevens worden geladen. De i/o-limiet voor logboeken kan worden bereikt op basis van het aantal partities dat kan worden verhoogd door de SKU bij te werken.
+- **Gepartitioneerde tabel en indexen** : door gebruik te maken van een [gepartitioneerde](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) SQL-tabel en gepartitioneerde indexen in de tabel met dezelfde kolom als uw partitie sleutel (bijvoorbeeld PartitionId) kunnen de conflicten tussen partities tijdens het schrijven aanzienlijk verminderen. Voor een gepartitioneerde tabel moet u een [partitie functie](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) en een [partitie schema](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) maken voor de primaire bestands groep. Hierdoor wordt ook de beschik baarheid van bestaande gegevens verhoogd terwijl er nieuwe gegevens worden geladen. De i/o-limiet voor logboeken kan worden bereikt op basis van het aantal partities dat kan worden verhoogd door de SKU bij te werken.
 
-- **Vermijd unieke sleutel schendingen** : als u [waarschuwingen met meerdere sleutel](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) overtredingen ontvangt in het activiteiten logboek van Azure stream Analytics, moet u ervoor zorgen dat uw taak niet wordt beïnvloed door de schendingen van unieke beperkingen die waarschijnlijk optreden tijdens herstel cases. Dit kan worden vermeden door [de\_sleutel\_optie dubbele negeren](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) in te stellen op uw indexen.
+- **Vermijd unieke sleutel schendingen** : als u [waarschuwingen met meerdere sleutel overtredingen](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) ontvangt in het activiteiten logboek van Azure stream Analytics, moet u ervoor zorgen dat uw taak niet wordt beïnvloed door de schendingen van unieke beperkingen die waarschijnlijk optreden tijdens herstel cases. Dit kan worden vermeden door de [dubbele\_sleutel optie ignore\_](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) op uw indexen in te stellen.
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory-en in-Memory-tabellen
 

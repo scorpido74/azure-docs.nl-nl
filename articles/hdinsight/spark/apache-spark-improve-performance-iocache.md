@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/29/2019
-ms.openlocfilehash: 3ef2def6329dc31eb1b175133b4525f87de9181c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/23/2019
+ms.openlocfilehash: 43875b87d26f144b85454077fd3c044c820132bf
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494653"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494982"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Verbeter de prestaties van Apache Spark werk belastingen met behulp van de Azure HDInsight IO-cache
 
@@ -22,7 +22,7 @@ De meeste Ssd's bieden meer dan 1 GByte per seconde band breedte. Deze band bree
 
 > [!Note]  
 > I/o-cache maakt momenteel gebruik van RubiX als een cache onderdeel, maar dit kan worden gewijzigd in toekomstige versies van de service. Gebruik de i/o-cache interfaces en neem geen afhankelijkheden op de RubiX-implementatie.
->I/o-cache wordt op dit moment alleen ondersteund met Azure BLOB Storage. 
+>I/o-cache wordt op dit moment alleen ondersteund met Azure BLOB Storage.
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Voor delen van de Azure HDInsight IO-cache
 
@@ -32,21 +32,19 @@ U hoeft geen wijzigingen aan te brengen in uw Spark-taken om de prestatie verhog
 
 ## <a name="getting-started"></a>Aan de slag
 
-De Azure HDInsight IO-cache is standaard uitgeschakeld in de preview-versie. I/o-cache is beschikbaar in azure HDInsight 3.6 + Spark-clusters, die Apache Spark 2,3 worden uitgevoerd.  Ga als volgt te werk om de i/o-cache te activeren:
+De Azure HDInsight IO-cache is standaard uitgeschakeld in de preview-versie. I/o-cache is beschikbaar in azure HDInsight 3.6 + Spark-clusters, die Apache Spark 2,3 worden uitgevoerd.  Voer de volgende stappen uit om de i/o-cache te activeren op HDInsight 4,0:
 
-1. Selecteer uw HDInsight-cluster in [de Azure Portal](https://portal.azure.com).
-
-1. Selecteer op de pagina **overzicht** (standaard geopend wanneer u het cluster selecteert) **Ambari start** onder **cluster dashboards**.
+1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`, waarbij `CLUSTERNAME` de naam van uw cluster is.
 
 1. Selecteer de **i/o-cache** service aan de linkerkant.
 
-1. Selecteer **acties** en **activeren**.
+1. Selecteer **acties** (**service acties** in HDI 3,6) en **Activeer**.
 
     ![De i/o-cache service inschakelen in Ambari](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "De i/o-cache service inschakelen in Ambari")
 
 1. Opnieuw opstarten bevestigen van alle betrokken services op het cluster.
 
->[!NOTE]  
+> [!NOTE]  
 > Hoewel de voortgangs balk geactiveerd wordt weer gegeven, wordt de i/o-cache niet daad werkelijk ingeschakeld totdat u de andere betrokken services opnieuw opstart.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
@@ -71,7 +69,7 @@ Er kunnen schijf ruimte fouten optreden bij het uitvoeren van Spark-taken na het
 
 1. Selecteer **opnieuw opstarten** > **alle betrokken problemen opnieuw**op te starten.
 
-    ![Apache Ambari alle betrokken software opnieuw opstarten](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Alle betrokken software opnieuw opstarten")
+    ![Apache Ambari start alle betrokken](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Alle betrokken software opnieuw opstarten")
 
 1. Selecteer **Bevestig opnieuw opstarten**.
 
@@ -79,4 +77,4 @@ Als dat niet werkt, schakelt u de i/o-cache uit.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over i/o-cache, inclusief benchmarks voor prestaties in dit blog bericht: [Apache Spark-taken kunnen Maxi maal 9x versnellen met HDINSIGHT io-cache](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)
+Meer informatie over i/o-cache, inclusief benchmarks voor prestaties in dit blog bericht: [Apache Spark-taken kunnen Maxi maal 9x versnellen met HDINSIGHT io-cache](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)

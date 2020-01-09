@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 83644ac7144adaa664b13b6e7d7993c50da0e779
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 056c64657f42d56879928f518598206d45493f60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851888"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447783"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>Zelf studie: exacte tekst-overeenkomende gegevens ophalen uit een utterance met een lijst entiteit
 
 In deze zelf studie leert u hoe u gegevens kunt ophalen die exact overeenkomen met een vooraf gedefinieerde lijst met items.
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 **In deze zelfstudie leert u het volgende:**
 
@@ -51,7 +49,7 @@ Een entiteit List is een goede keuze voor dit type gegevens wanneer:
 
 ## <a name="import-example-json-and-add-utterances"></a>Voor beeld van import. json en uitingen toevoegen
 
-1.  Down load en sla het [JSON-bestand](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)van de app op.
+1.  Down load en sla het [JSON-bestand](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)van de app op.
 
     [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
@@ -74,7 +72,7 @@ Voor beelden van de primaire naam en synoniemen zijn:
 |Canonieke naam|Synoniemen|
 |--|--|
 |Diep gerecht|Deep<br>diepe schotel crust<br>Haas<br>dik crust|
-|Pannen|Standaard<br>Origineel<br>opmaakprofiel<br>normale crust<br>oorspronkelijke crust<br>normale crust|
+|Pannen|standaard<br>Origineel<br>opmaakprofiel<br>normale crust<br>oorspronkelijke crust<br>normale crust|
 |Knuffel|gevulde crust|
 |Dun|dunne crust<br>dun<br>smal crust|
 

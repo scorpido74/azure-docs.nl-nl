@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: dcohen
-ms.openlocfilehash: b42314d1c8c1bd734181f02c36ae3f43507e9b79
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 0c26f94d0a51b7912d3f964e3cc96ec392fec69b
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815207"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495176"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Zelf studie: spraak-uw bot inschakelen met de Speech SDK
 
@@ -65,7 +65,7 @@ Dit is wat u moet doen om deze zelf studie te volt ooien:
 
 De client-app die u in deze zelf studie maakt, maakt gebruik van een aantal Azure-Services. Als u de retour tijd voor reacties van uw bot wilt beperken, moet u ervoor zorgen dat deze services zich in dezelfde Azure-regio bevinden. In deze sectie maakt u een resource groep in de regio **VS-West** . Deze resource groep wordt gebruikt bij het maken van afzonderlijke resources voor het bot-Framework, het directe lijn spraak kanaal en de spraak service.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Selecteer **resource groepen**in de linkernavigatiebalk. Klik vervolgens op **toevoegen** om een nieuwe resource groep toe te voegen.
 1. U wordt gevraagd om de volgende informatie op te geven:
    * Stel **abonnement** in op **gratis proef versie** (u kunt ook een bestaand abonnement gebruiken).
@@ -172,7 +172,7 @@ De [bot Framework-emulator](https://github.com/microsoft/botframework-emulator) 
    http://localhost:3978/api/messages
    ```
    en klik op verbinden.
-4. De bot moet u onmiddellijk begroeten met ' Hallo en Welkom! ' . Typ een tekst bericht en bevestig dat u een reactie van de bot ontvangt.
+4. De bot moet u onmiddellijk begroeten met ' Hallo en Welkom! ' weergegeven. Typ een tekst bericht en bevestig dat u een reactie van de bot ontvangt.
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>Uw bot implementeren op een Azure App Service
 
@@ -187,7 +187,7 @@ De volgende stap is het implementeren van de echo-bot in Azure. Er zijn enkele m
    samples\csharp_dotnetcore\02.echo-bot\EchoBot.sln
    ```
 
-1. Klik in de **Solution Explorer**met de rechter muisknop op de oplossing **EchoBot** en selecteer **publiceren...**
+1. Klik in de **Solution Explorer**met de rechter muisknop op het **EchoBot** -project en selecteer **publiceren...**
 1. Er wordt een nieuw venster met **de titel Kies een publicatie doel** geopend.
 1. Selecteer **app service** in de linkernavigatiebalk, selecteer **nieuwe maken**en klik vervolgens op **publiceren**.
 1. Wanneer het venster **app service maken** wordt weer gegeven:
@@ -237,7 +237,7 @@ Nu u een Azure App Service hebt gemaakt om uw bot te hosten, is de volgende stap
 2. Selecteer in de **bot**van het type zoek balk, nadat de resultaten worden weer gegeven, de **registratie bot-kanalen**.
 3. Klik op **Maken**.
 4. U wordt gevraagd om de volgende informatie op te geven:
-   * Voer voor **bot naam** **SpeechEchoBotTutorial-BotRegistration**in.
+   * Voer voor **bot**-ingang **SpeechEchoBotTutorial-BotRegistration**in.
    * Selecteer voor **abonnement**een **gratis proef versie**.
    * Voor **resource groep**selecteert u **SpeechEchoBotTutorial-ResourceGroup**.
    * Selecteer voor **locatie**de optie **VS-West**.
@@ -245,7 +245,7 @@ Nu u een Azure App Service hebt gemaakt om uw bot te hosten, is de volgende stap
      * Voor **berichten eind punt**voert u de URL voor uw web-app in met het `/api/messages` pad toegevoegd aan het einde. Bijvoorbeeld: als uw wereld wijde unieke app-naam **EchoBot20190805125647**is, zou uw bericht eind punt worden: `https://EchoBot20190805125647.azurewebsites.net/api/messages/`.
      * Voor **Application Insights**kunt u dit instellen op **uit**. Zie [bot Analytics](https://docs.microsoft.com/azure/bot-service/bot-service-manage-analytics?view=azure-bot-service-4.0)voor meer informatie.
      * **Automatisch maken van app-id en wacht woord**negeren.
-5. Ga terug naar de **registratie bot-kanalen** en klik op **maken**.
+5. Klik onder aan de Blade **registratie van bot-kanalen** op **maken**.
 
 Controleer op dit punt de resource groep **SpeechEchoBotTutorial-ResourceGroup** in de Azure Portal. Er moeten nu vier resources worden weer gegeven:
 
@@ -383,29 +383,50 @@ Bekijk in de bron code van de directe-spraak client de volgende bestanden om de 
 1. [`DLSpeechClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/Models.cs) bevat een aanroep van de methode Speech SDK [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-), die wordt gebruikt om het model te instantiëren vanuit een lokaal bestand op schijf.
 1. [`DLSpeechClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/MainWindow.xaml.cs) bevat een aanroep naar de Speech SDK-methode [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync), waarmee doorlopende trefwoord detectie wordt geactiveerd.
 
-## <a name="optional-change-the-language-and-redeploy-your-bot"></a>Beschrijving De taal wijzigen en uw bot opnieuw implementeren
+## <a name="optional-change-the-language-and-bot-voice"></a>Beschrijving De taal-en bot-stem wijzigen
 
-De bot die u hebt gemaakt, luistert naar en reageert in het Engels. U bent echter niet beperkt tot het gebruik van Engels. In deze sectie leert u hoe u de taal kunt wijzigen die door uw bot wordt geluisterd en hierop wordt gereageerd en de bot opnieuw te implementeren.
+De bot die u hebt gemaakt, luistert naar en reageert in het Engels, met een standaard Amerikaans-Engelse tekst-naar-spraak-stem. U bent echter niet beperkt tot het gebruik van Engels of een standaard stem. In deze sectie leert u hoe u de taal kunt wijzigen die door uw bot wordt geluisterd en hoe deze reageert. U leert ook hoe u een andere stem selecteert voor die taal.
 
 ### <a name="change-the-language"></a>De taal wijzigen
 
-1. Laten we beginnen met het openen van `samples\csharp_dotnetcore\02.echo-bot\echo-bot.cs`.
-2. Zoek vervolgens de SSML op. Het is eenvoudig te vinden, omdat het zich in `<speak></speak>` Tags bevindt.
-3. Zoek in de teken reeks SSML de `<voice name>` tag, vervang deze door `<voice name='de-DE-Stefan-Apollo'>`en sla het bestand op. Deze opgemaakte teken reeks vertelt de service tekst naar spraak om een gesynthesizerd spraak antwoord te retour neren met behulp van de Voice `de-DE-Stefan-Apollo`, dat is geoptimaliseerd voor Duits.
+U kunt kiezen uit een van de talen die worden vermeld in de tabel met [spraak-naar-tekst](language-support.md#speech-to-text) . In het onderstaande voor beeld wijzigen we de taal in het Duits.
 
->[!NOTE]
-> U bent niet beperkt tot Duits en u kunt kiezen uit de lijst met beschik bare stemmen van de [Speech-Service](language-support.md#text-to-speech).
+1. Open de client-app direct line speech, klik op de knop instellingen (bovenste tandwiel pictogram) en voer `de-de` in het veld taal in (dit is de waarde van de land instelling die wordt vermeld in de tabel met [spraak-naar-tekst](language-support.md#speech-to-text) ). Hiermee wordt de gesp roken taal herkend en wordt de standaard `en-us`overschreven. Dit geeft ook een direct lijn spraak kanaal om een standaard Duitse stem te gebruiken voor het antwoord van de bot.
+2. Sluit de pagina instellingen en klik op de knop opnieuw verbinding maken om een nieuwe verbinding met uw ECHO-bot tot stand te brengen.
+3. Klik op de knop microfoon en zeg een zin in het Duits. U ziet de herkende tekst en de reactie van de echo met de standaard Duitse stem.
+
+
+### <a name="change-the-default-bot-voice"></a>De standaard bot voice wijzigen
+
+Het selecteren van de stem tekst-naar-spraak en het beheren van de uitspraak kan worden uitgevoerd als de bot het antwoord opgeeft in de vorm van een SSML ( [Speech synthese Markup Language](speech-synthesis-markup.md) ) in plaats van eenvoudige tekst. De echo bot maakt geen gebruik van SSML, maar we kunnen de code eenvoudig aanpassen. In het onderstaande voor beeld voegen we SSML toe aan het antwoord op de echo-bot, zodat de Duitse Voice Stefan Apollo (een mannelijk stem) wordt gebruikt in plaats van de standaard vrouwelijke stem. Bekijk de lijst met [standaard stemmen](language-support.md#standard-voices) en [Neural stemmen](language-support.md#neural-voices) die voor uw taal worden ondersteund.
+
+1. Laten we beginnen met het openen van `samples\csharp_dotnetcore\02.echo-bot\echo-bot.cs`.
+2. Ga naar deze twee regels:
+    ```csharp
+    var replyText = $"Echo: {turnContext.Activity.Text}";
+    await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replyText), cancellationToken);
+    ```
+3. Vervang deze door:
+    ```csharp
+    var replyText = $"Echo: {turnContext.Activity.Text}";
+    var replySpeak = @"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='de-DE'>
+                    <voice name='Microsoft Server Speech Text to Speech Voice (de-DE, Stefan, Apollo)'>" +
+                    $"{replyText}" + "</voice></speak>";
+    await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replySpeak), cancellationToken);
+    ```
+4. Bouw uw oplossing in Visual Studio en los eventuele build-fouten op.
+
+Met het tweede argument in de methode ' MessageFactory. Text ' wordt het veld voor de [activiteit speak](https://github.com/Microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) in het antwoord van de bot ingesteld. Met de bovenstaande wijziging is deze vervangen van eenvoudige tekst in SSML om een niet-standaard Duitse stem op te geven.
 
 ### <a name="redeploy-your-bot"></a>Uw bot opnieuw implementeren
 
 Nu u de nood zakelijke wijziging hebt aangebracht in de bot, is de volgende stap het opnieuw publiceren naar uw Azure App Service en probeer het uit:
 
-1. Bouw uw oplossing in Visual Studio en los eventuele build-fouten op.
-2. Klik in het venster Solution Explorer met de rechter muisknop op het project **EchoBot** en selecteer **publiceren**.
-3. De vorige implementatie configuratie is al geladen als standaard. Klik op **publiceren** naast **EchoBot20190805125647-Web Deploy**.
-4. Het bericht **publiceren is voltooid** wordt weer gegeven in het venster Visual Studio-uitvoer en er wordt een webpagina geopend met het bericht ' uw bot is klaar! '.
-5. Open de client-app direct line speech, klik op de knop instellingen (bovenste tandwiel pictogram) en voer `de-de` in het veld taal in. Hiermee wordt de gesp roken taal herkend en wordt de standaard `en-us`overschreven.
-6. Volg de instructies in [Build the direct line speech client](#build-the-direct-line-speech-client) om opnieuw verbinding te maken met de zojuist geïmplementeerde bot, praat in de nieuwe taal en luistert u in die taal met de nieuwe stem.
+1. Klik in het venster Solution Explorer met de rechter muisknop op het project **EchoBot** en selecteer **publiceren**.
+2. De vorige implementatie configuratie is al geladen als standaard. Klik op **publiceren** naast **EchoBot20190805125647-Web Deploy**.
+3. Het bericht **publiceren is voltooid** wordt weer gegeven in het venster Visual Studio-uitvoer en er wordt een webpagina geopend met het bericht ' uw bot is klaar! '.
+4. Open de client-app direct line speech en klik op de knop instellingen (bovenste tandwiel pictogram) en zorg ervoor dat u nog steeds `de-de` hebt in het veld taal.
+5. Volg de instructies in [Build the direct line speech client](#build-the-direct-line-speech-client) om opnieuw verbinding te maken met de zojuist geïmplementeerde bot, praat in de nieuwe taal en luistert u in die taal met de nieuwe stem.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

@@ -2,18 +2,28 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/28/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 2fe3104d61b5fe2fbf9624ed2fd4fdb2de5686a2
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b6b0b7b857e109997afb441aa60972c6da61f54b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750202"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446242"
 ---
-Haal een sleutel en eind punt op om uw toepassingen te verifiëren. Maak een resource voor Text Analytics met behulp van de [Azure Portal](../../../cognitive-services-apis-create-account.md) of [Azure cli](../../../cognitive-services-apis-create-account-cli.md) op uw lokale machine. U kunt ook het volgende doen:
+Begin met het gebruik van de Text Analytics-API met een van de volgende opties.
 
-* Ontvang een [proef versie](https://azure.microsoft.com/try/cognitive-services/#decision) die 7 dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
-* Bekijk uw resource op het [Azure Portal](https://portal.azure.com/)
 
-Nadat u een sleutel en eind punt van uw proef abonnement of resource hebt ontvangen, maakt u twee [omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication). Een met de naam `TEXT_ANALYTICS_SUBSCRIPTION_KEY` voor uw sleutel en één met de naam `TEXT_ANALYTICS_ENDPOINT` voor uw eind punt.
+* <a href="https://azure.microsoft.com/try/cognitive-services/my-apis/?api=text-analytics" title="een proef Text Analytics resource maken" target="_blank">een proef resource <span class="docon docon-navigate-external x-hidden-focus"></span> maken</a>
+    * Er is geen Azure-abonnement nodig. 
+    * Gratis geldig voor zeven dagen. Nadat u zich hebt aangemeld, is een proef sleutel en een eind punt beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/). 
+    * Dit is een uitstekende optie als u de Text Analytics-API wilt proberen, maar geen Azure-abonnement hebt.
+    
+* <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="een Text Analytics resource maken"  target="_blank">een Text Analytics resource <span class="docon docon-navigate-external x-hidden-focus"></span> maken</a>
+    * Beschikbaar via de Azure Portal totdat u de resource verwijdert.
+    * Gebruik de gratis prijs categorie om de service te proberen en pas later bij te werken naar een betaalde laag voor productie.
+     
+* <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne"  title="een resource maken voor meerdere services" target="_blank">een resource <span class="docon docon-navigate-external x-hidden-focus"></span> voor meerdere Service maken</a>
+    * Beschikbaar via de Azure Portal totdat u de resource verwijdert.  
+    * Gebruik dezelfde sleutel en hetzelfde eind punt voor uw toepassingen, op meerdere Cognitive Services.
+    

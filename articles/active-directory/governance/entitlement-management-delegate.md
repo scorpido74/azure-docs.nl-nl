@@ -1,5 +1,5 @@
 ---
-title: Delegering en rollen in het beheer van rechten van Azure AD-Azure Active Directory
+title: Delegering en rollen in rechten beheer-Azure AD
 description: Meer informatie over het overdragen van toegangs beheer van IT-beheerders aan afdelings managers en project managers zodat ze de toegang zelf kunnen beheren.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d68728c4ca4f9fe511faedcf2ca177b7160f112
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174256"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422588"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Overdracht en rollen in het beheer van rechten van Azure AD
 
@@ -84,14 +84,14 @@ Het beheer van rechten heeft de volgende rollen die specifiek zijn voor het behe
 
 Daarnaast hebben een aangewezen goed keurder en een aanvrager van een toegangs pakket ook rechten, hoewel ze geen rollen zijn.
 
-| Onder | Beschrijving |
+| Rechts | Beschrijving |
 | --- | --- |
 | Fiatteur | Geautoriseerd door een beleid voor het goed keuren of weigeren van aanvragen voor toegang tot pakketten, hoewel ze de toegangs pakket definities niet kunnen wijzigen. |
-| Aanvrager | Geautoriseerd door een beleid van een toegangs pakket om het toegangs pakket aan te vragen. |
+| Requestor | Geautoriseerd door een beleid van een toegangs pakket om het toegangs pakket aan te vragen. |
 
 De volgende tabel geeft een lijst van de taken die de rechten voor het beheer kunnen uitvoeren.
 
-| Taak | Beheerder | Maker van catalogus | Catalogus eigenaar | Toegangs pakket beheer |
+| Taak | beheerder | Maker van catalogus | Catalogus eigenaar | Toegangs pakket beheer |
 | --- | :---: | :---: | :---: | :---: |
 | [Delegeren aan een maker van de catalogus](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
 | [Een verbonden organisatie toevoegen](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |
@@ -125,7 +125,7 @@ Voor een gebruiker die geen globale beheerder of gebruikers beheerder is, om gro
 | [Globale beheerder](../users-groups-roles/directory-assign-admin-roles.md) | n.v.t. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Gebruikers beheerder](../users-groups-roles/directory-assign-admin-roles.md) | n.v.t. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [InTune-beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar | :heavy_check_mark: | :heavy_check_mark: |  |  |
-| [Exchange-beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  | :heavy_check_mark: |  |  |
+| [Beheerder uitwisselen](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  | :heavy_check_mark: |  |  |
 | [Teams service-beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  | :heavy_check_mark: |  |  |
 | [Share point-beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  | :heavy_check_mark: |  | :heavy_check_mark: |
 | [Toepassings beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  |  | :heavy_check_mark: |  |

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 01/06/2020
 ms.author: dapine
-ms.openlocfilehash: aecbb9bb94fc251ee0142b611c54d16304793e50
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 30fd19634f6054b8b636dabcb4ef83b118554468
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73901818"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689451"
 ---
 # <a name="deploy-the-language-understanding-luis-container-to-azure-container-instances"></a>De Language Understanding-container (LUIS) implementeren in azure container instances
 
@@ -25,7 +25,20 @@ Meer informatie over het implementeren van de Cognitive Services [Luis](luis-con
 
 [!INCLUDE [Create LUIS resource](includes/create-luis-resource.md)]
 
-[!INCLUDE [Create LUIS Container instance resource](../containers/includes/create-container-instances-resource.md)]
+## <a name="create-an-azure-file-share"></a>Een Azure-bestandsshare maken
+
+De LUIS-container vereist een `.gz` model bestand dat tijdens runtime wordt opgehaald. De container moet toegang hebben tot dit model bestand via een volume koppeling vanuit het container exemplaar. Zie [een bestands share maken](../../storage/files/storage-how-to-create-file-share.md)voor meer informatie over het maken van een Azure-bestands share. Noteer de naam van het Azure Storage account, de sleutel en de naam van de bestands share die u later nodig hebt.
+
+### <a name="export-and-upload-packaged-luis-app"></a>Een verpakte LUIS-app exporteren en uploaden
+
+Als u het LUIS-model (verpakte app) naar de Azure-bestands share wilt uploaden, moet u het <a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener">eerst <span class="docon docon-navigate-external x-hidden-focus"> </span>exporteren vanuit de Luis-Portal </a>. Ga vanuit het Azure Portal naar de **overzichts** pagina van de bron van het opslag account en selecteer **Bestands shares**. Selecteer de naam van de bestands share die u onlangs hebt gemaakt en selecteer vervolgens de knop **uploaden** .
+
+> [!div class="mx-imgBorder"]
+> ![uploaden naar de bestands share](media/luis-how-to-deploy-to-aci/upload-file-share.png)
+
+Upload het LUIS-model bestand.
+
+[!INCLUDE [Create LUIS Container instance resource](../containers/includes/create-container-instances-resource-from-azure-cli.md)]
 
 [!INCLUDE [API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 

@@ -1,22 +1,22 @@
 ---
-title: Verbinding maken met Excel online
-description: Gegevens beheren met Excel online REST Api's en Azure Logic Apps
+title: Gegevens, werk bladen en tabellen in Excel online beheren
+description: Gegevens beheren in werk bladen en tabellen in Excel online voor bedrijven of Excel online voor OneDrive met behulp van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: a4356b4f88df3fc457917be563a79e9054a1638e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b1df1219590aa94331a4404b1315eb7231c59699
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789798"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445870"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Excel online-gegevens beheren met Azure Logic Apps
 
-Met Azure Logic Apps en de Excel Online-connector kunt u geautomatiseerde taken en werk stromen maken op basis van uw gegevens in Excel online voor bedrijven of OneDrive. Deze connector bevat acties die u helpen bij het werken met uw gegevens en voor het beheren van spread sheets, bijvoorbeeld:
+Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de [Excel online voor bedrijven](/connectors/excelonlinebusiness/) -connector of [Excel online voor OneDrive](/connectors/excelonline/) -connector kunt u geautomatiseerde taken en werk stromen maken op basis van uw gegevens in Excel online voor bedrijven of OneDrive. Deze connector bevat acties die u helpen bij het werken met uw gegevens en voor het beheren van spread sheets, bijvoorbeeld:
 
 * Nieuwe werk bladen en tabellen maken.
 * Werk bladen, tabellen en rijen ophalen en beheren.

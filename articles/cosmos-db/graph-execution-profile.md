@@ -1,5 +1,5 @@
 ---
-title: Evalueer uw query's met de functie voor het uitvoerings profiel voor Azure Cosmos DB Gremlin-API
+title: Het uitvoerings profiel gebruiken om query's te evalueren in Azure Cosmos DB Gremlin-API
 description: Meer informatie over het oplossen van uw Gremlin-query's met behulp van de stap uitvoerings profiel.
 services: cosmos-db
 author: luisbosquez
@@ -9,18 +9,18 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: lbosq
-ms.openlocfilehash: ab5c55105eeb912281f35e3d6094c0c43a76f89a
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 5705ef4fb6aa895009d554617c968543cc3fcd63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915887"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441853"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>De stap uitvoerings profiel gebruiken om uw Gremlin-query's te evalueren
 
 Dit artikel bevat een overzicht van het gebruik van de stap uitvoerings profiel voor Azure Cosmos DB Gremlin API Graph-data bases. Deze stap bevat relevante informatie voor het oplossen van problemen en het uitvoeren van query optimalisaties, en is compatibel met elke Gremlin-query die kan worden uitgevoerd met een Cosmos DB Gremlin-API-account.
 
-Als u deze stap wilt gebruiken, voegt `executionProfile()` u de functie aanroep toe aan het einde van uw Gremlin-query. **Uw Gremlin-query wordt uitgevoerd** en het resultaat van de bewerking retourneert een JSON-antwoord object met het uitvoerings profiel voor de query.
+Als u deze stap wilt gebruiken, voegt u de `executionProfile()` functie aanroep toe aan het einde van uw Gremlin-query. **Uw Gremlin-query wordt uitgevoerd** en het resultaat van de bewerking retourneert een JSON-antwoord object met het uitvoerings profiel voor de query.
 
 Bijvoorbeeld:
 
@@ -32,7 +32,7 @@ Bijvoorbeeld:
     g.V('mary').out().executionProfile()
 ```
 
-Na het aanroepen van de `executionProfile()` stap is het antwoord een JSON-object dat de uitgevoerde Gremlin-stap bevat, de totale tijd die nodig was en een matrix van de Cosmos DB runtime-Opera tors die de instructie heeft opgeleverd.
+Na het aanroepen van de `executionProfile()` stap is het antwoord een JSON-object dat de uitgevoerde Gremlin-stap bevat, de totale tijd die nodig was en een matrix van de Opera tors van de Cosmos DB runtime die de instructie heeft opgeleverd.
 
 > [!NOTE]
 > Deze implementatie voor het uitvoerings profiel is niet gedefinieerd in de Apache Tinkerpop-specificatie. Het is specifiek voor de implementatie van de Gremlin-API van Azure Cosmos DB.
@@ -134,28 +134,28 @@ Hieronder ziet u een voor beeld van de uitvoer die wordt geretourneerd:
 ```
 
 > [!NOTE]
-> In de stap executionProfile wordt de Gremlin-query uitgevoerd. Dit omvat de `addV` of `addE`-stappen, wat resulteert in het maken en de wijzigingen doorvoert die zijn opgegeven in de query. Als gevolg hiervan worden er ook kosten in rekening gebracht voor de aanvraag eenheden die zijn gegenereerd door de Gremlin-query.
+> In de stap executionProfile wordt de Gremlin-query uitgevoerd. Dit omvat de `addV`-of `addE`-stappen, wat resulteert in het maken en de wijzigingen doorvoert die zijn opgegeven in de query. Als gevolg hiervan worden er ook kosten in rekening gebracht voor de aanvraag eenheden die zijn gegenereerd door de Gremlin-query.
 
 ## <a name="execution-profile-response-objects"></a>Reactie objecten uitvoerings profiel
 
 Het antwoord van een executionProfile ()-functie levert een hiërarchie van JSON-objecten met de volgende structuur:
-  - **Gremlin-bewerkings object**: Vertegenwoordigt de gehele Gremlin-bewerking die is uitgevoerd. Bevat de volgende eigenschappen.
-    - `gremlin`: De expliciete Gremlin-instructie die is uitgevoerd.
-    - `totalTime`: De tijd, in milliseconden, die de uitvoering van de stap is gemaakt in. 
-    - `metrics`: Een matrix die alle Cosmos DB runtime-Opera tors bevat die zijn uitgevoerd om te voldoen aan de query. Deze lijst wordt in volg orde van uitvoering gesorteerd.
+  - **Gremlin-bewerkings object**: vertegenwoordigt de gehele Gremlin-bewerking die is uitgevoerd. Bevat de volgende eigenschappen.
+    - `gremlin`: de expliciete Gremlin-instructie die is uitgevoerd.
+    - `totalTime`: de tijd, in milliseconden, die de uitvoering van de stap is gemaakt in. 
+    - `metrics`: een matrix die alle Cosmos DB runtime-Opera tors bevat die zijn uitgevoerd om te voldoen aan de query. Deze lijst wordt in volg orde van uitvoering gesorteerd.
     
-  - **Cosmos DB runtime-Opera tors**: Vertegenwoordigt elk van de onderdelen van de hele Gremlin-bewerking. Deze lijst wordt in volg orde van uitvoering gesorteerd. Elk object bevat de volgende eigenschappen:
-    - `name`: De naam van de operator. Dit is het type fase dat is geëvalueerd en uitgevoerd. Meer informatie vindt u in de onderstaande tabel.
-    - `time`: De hoeveelheid tijd, in milliseconden, dat een bepaalde operator heeft geduurd.
-    - `annotations`: Bevat aanvullende informatie die specifiek is voor de operator die is uitgevoerd.
-    - `annotations.percentTime`: Percentage van de totale tijd die nodig is om de specifieke operator uit te voeren.
-    - `counts`: Het aantal objecten dat door deze operator van de opslaglaag is geretourneerd. Dit is opgenomen in de `counts.resultCount` scalaire waarde binnen.
-    - `storeOps`: Hiermee wordt een opslag bewerking aangeduid die een of meer partities kan omvatten.
-    - `storeOps.fanoutFactor`: Hiermee wordt het aantal partities aangegeven waarvoor deze specifieke opslag bewerking wordt gebruikt.
-    - `storeOps.count`: Hiermee wordt het aantal resultaten aangegeven dat deze opslag bewerking heeft geretourneerd.
-    - `storeOps.size`: Vertegenwoordigt de grootte in bytes van het resultaat van een bepaalde opslag bewerking.
+  - **Cosmos DB runtime-Opera tors**: vertegenwoordigt elk van de onderdelen van de hele Gremlin-bewerking. Deze lijst wordt in volg orde van uitvoering gesorteerd. Elk object bevat de volgende eigenschappen:
+    - `name`: de naam van de operator. Dit is het type fase dat is geëvalueerd en uitgevoerd. Meer informatie vindt u in de onderstaande tabel.
+    - `time`: de hoeveelheid tijd, in milliseconden, dat een bepaalde operator heeft geduurd.
+    - `annotations`: bevat aanvullende informatie die specifiek is voor de operator die is uitgevoerd.
+    - `annotations.percentTime`: percentage van de totale tijd die nodig is om de specifieke operator uit te voeren.
+    - `counts`: het aantal objecten dat door deze operator van de opslaglaag is geretourneerd. Dit is opgenomen in de `counts.resultCount` scalaire waarde binnen.
+    - `storeOps`: vertegenwoordigt een opslag bewerking die een of meer partities kan omvatten.
+    - `storeOps.fanoutFactor`: geeft het aantal partities aan waarvoor deze specifieke opslag bewerking is geopend.
+    - `storeOps.count`: geeft het aantal resultaten dat deze opslag bewerking heeft geretourneerd.
+    - `storeOps.size`: vertegenwoordigt de grootte in bytes van het resultaat van een bepaalde opslag bewerking.
 
-Cosmos DB-operator Gremlin runtime|Description
+Cosmos DB-operator Gremlin runtime|Beschrijving
 ---|---
 `GetVertices`| In deze stap wordt een gegroepeerde set objecten opgehaald van de laag persistentie. 
 `GetEdges`| Met deze stap worden de randen opgehaald die grenzen aan een set hoek punten. Deze stap kan leiden tot een of meer opslag bewerkingen.
@@ -219,17 +219,17 @@ Stel dat de volgende uitvoerings profiel reactie van een **gepartitioneerde graf
 ```
 
 De volgende conclusies kunnen worden gemaakt:
-- De query is een enkelvoudige ID-zoek opdracht, omdat de Gremlin- `g.V('id')`instructie het patroon volgt.
+- De query is een enkelvoudige ID-zoek opdracht, omdat de Gremlin-instructie het patroon volgt `g.V('id')`.
 - Beoordelings van de `time` metriek lijkt de latentie van deze query hoog te zijn, omdat het [meer is dan 10 MS voor één punt-Lees bewerking](https://docs.microsoft.com/azure/cosmos-db/introduction#guaranteed-low-latency-at-99th-percentile-worldwide).
-- Als we het `storeOps` object bekijken, kunnen we zien dat de `fanoutFactor` is `5`. Dit betekent dat er [vijf partities](https://docs.microsoft.com/azure/cosmos-db/partition-data) zijn geopend door deze bewerking.
+- Als we het `storeOps`-object bekijken, kunnen we zien dat de `fanoutFactor` `5`is. Dit betekent dat er [vijf partities](https://docs.microsoft.com/azure/cosmos-db/partition-data) zijn geopend door deze bewerking.
 
-Als gevolg van deze analyse kunnen we bepalen dat de eerste query toegang krijgt tot meer partities dan nodig is. Dit kan worden verholpen door de partitie sleutel in de query als een predikaat op te geven. Dit leidt tot minder latentie en minder kosten per query. Meer informatie over [Graph-partitionering](graph-partitioning.md). Een meer optimale query zou zijn `g.V('tt0093640').has('partitionKey', 't1001')`.
+Als gevolg van deze analyse kunnen we bepalen dat de eerste query toegang krijgt tot meer partities dan nodig is. Dit kan worden verholpen door de partitie sleutel in de query als een predikaat op te geven. Dit leidt tot minder latentie en minder kosten per query. Meer informatie over [Graph-partitionering](graph-partitioning.md). Er wordt een optimale query `g.V('tt0093640').has('partitionKey', 't1001')`.
 
 ### <a name="unfiltered-query-patterns"></a>Niet-gefilterde query patronen
 
 Vergelijk de volgende twee uitvoerings profiel reacties. Voor de eenvoud gebruiken deze voor beelden één gepartitioneerde grafiek.
 
-Met deze eerste query worden alle hoek punten opgehaald `tweet` met het label en worden vervolgens de naburige hoek punten verkregen:
+Met deze eerste query worden alle hoek punten opgehaald met het label `tweet` en worden vervolgens de naburige hoek punten opgehaald:
 
 ```json
 [
@@ -306,7 +306,7 @@ Met deze eerste query worden alle hoek punten opgehaald `tweet` met het label en
 ]
 ```
 
-Let op het profiel van dezelfde query, maar nu met een extra filter, `has('lang', 'en')`voordat de aangrenzende hoek punten worden geverkennen:
+Let op het profiel van dezelfde query, maar nu met een extra filter, `has('lang', 'en')`, voordat u de aangrenzende hoek punten kunt verkennen:
 
 ```json
 [
@@ -384,8 +384,8 @@ Let op het profiel van dezelfde query, maar nu met een extra filter, `has('lang'
 ```
 
 Deze twee query's bereiken hetzelfde resultaat, maar in het eerste geval zijn er meer aanvraag eenheden nodig, omdat er een grotere initiële gegevensset moet worden herhaald voordat de aangrenzende items kunnen worden opgevraagd. Er kunnen indica toren van dit gedrag worden weer geven bij het vergelijken van de volgende para meters van beide antwoorden:
-- De `metrics[0].time` waarde is hoger in het eerste antwoord. Dit geeft aan dat deze enkele stap langer duurde om op te lossen.
-- De `metrics[0].counts.resultsCount` waarde is in het eerste antwoord ook hoger, wat aangeeft dat de oorspronkelijke werk gegevensset groter is.
+- De waarde van `metrics[0].time` is hoger in het eerste antwoord, wat aangeeft dat deze enkele stap langer duurde om op te lossen.
+- De `metrics[0].counts.resultsCount` waarde is ook hoger in het eerste antwoord, wat aangeeft dat de oorspronkelijke werk gegevensset groter is.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over de [ondersteunde Gremlin-functies](gremlin-support.md) in azure Cosmos db. 

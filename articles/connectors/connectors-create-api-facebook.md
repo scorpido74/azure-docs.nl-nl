@@ -1,18 +1,18 @@
 ---
 title: Verbinding maken met Facebook
-description: Uw tijd lijn en pagina beheren met de Facebook REST Api's en Azure Logic Apps
+description: Taken en werk stromen automatiseren waarmee u uw Facebook-tijd lijn en-pagina beheert met behulp van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 1aa936f902dc17c9a401959c19824f6c581547b1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 803453291b5cab2c51fec6641f8b096f62336325
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789849"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665799"
 ---
 # <a name="manage-your-facebook-timeline-and-page-by-using-azure-logic-apps"></a>Uw Facebook-tijd lijn en-pagina beheren met Azure Logic Apps
 

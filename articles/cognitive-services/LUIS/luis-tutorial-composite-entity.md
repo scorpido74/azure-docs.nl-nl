@@ -1,7 +1,7 @@
 ---
 title: 'Zelf studie: zelf studie samengestelde entiteit-LUIS'
 titleSuffix: Azure Cognitive Services
-description: Voeg een samengestelde entiteit die u wilt de opgehaalde gegevens van verschillende typen te bundelen in een enkele containerentiteit. De clienttoepassing kan door de gegevens bundeling, gerelateerde gegevens in verschillende gegevenstypen eenvoudig extraheren.
+description: In deze zelfstudie voegt u een samengestelde entiteit die u wilt de opgehaalde gegevens van verschillende typen in een enkele containerentiteit bundelen. De clienttoepassing kan door de gegevens bundeling, gerelateerde gegevens in verschillende gegevenstypen eenvoudig extraheren.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 0e72563f366330f841d1a61ed67956b6314c769a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f2b2c3f52610cd9fae0845b15aebf032a088000b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447953"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Zelf studie: gerelateerde gegevens groeperen en extra heren
 In deze zelfstudie voegt u een samengestelde entiteit die u wilt de opgehaalde gegevens van verschillende typen in een enkele containerentiteit bundelen. De clienttoepassing kan door de gegevens bundeling, gerelateerde gegevens in verschillende gegevenstypen eenvoudig extraheren.
@@ -28,8 +28,6 @@ De samengestelde entiteit is geschikt voor dit type gegevens omdat de gegevens:
 * Aan elkaar zijn gerelateerd.
 * Verschillende Entiteitstypen gebruiken.
 * Moet als eenheid informatie worden gegroepeerd en verwerkt door de client-app.
-
-[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **In deze zelfstudie leert u het volgende:**
 
@@ -46,9 +44,10 @@ De samengestelde entiteit is geschikt voor dit type gegevens omdat de gegevens:
 
 ## <a name="import-example-app"></a>Voorbeeld-app importeren
 
-1.  Down load en sla het [JSON-bestand](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json) van de app op in de zelf studie voor de lijst-entiteit.
+1.  Down load en sla het [JSON-bestand](
+https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json?raw=true) van de app op in de zelf studie voor de lijst-entiteit.
 
-2. Importeer de JSON in een nieuwe app.
+2. Importeer de JSON in een nieuwe app met behulp van de [Luis-Portal](https://www.luis.ai).
 
 3. Ga naar het gedeelte **Beheren**, open het tabblad **Versies**, kloon de versie en noem deze `composite`. Klonen is een uitstekende manier om te experimenteren met verschillende functies van LUIS zonder dat de oorspronkelijke versie wordt gewijzigd. Omdat de versienaam wordt gebruikt als onderdeel van de URL-route, kan de naam geen tekens bevatten die niet zijn toegestaan in een URL.
 

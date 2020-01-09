@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-voorbeeldscript - Beheerde schijven kopiëren (verplaatsen) naar hetzelfde of een ander abonnement
-description: Azure PowerShell-voorbeeldscript - Beheerde schijven kopiëren (verplaatsen) naar hetzelfde of een ander abonnement
+title: Managed disks kopiëren naar een abonnement-Power shell-voor beeld
+description: 'Azure PowerShell script voorbeeld: beheerde schijven kopiëren (of verplaatsen) naar hetzelfde of een ander abonnement'
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.openlocfilehash: bb473a2f543c1621b99904b5a58dc7fc6625f6fc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9e655ce33c8952acab7228f4caae81f09c2d56ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021470"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75375896"
 ---
 # <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>Met PowerShell beheerde schijven kopiëren naar hetzelfde of een ander abonnement
 
@@ -37,7 +37,7 @@ Met dit script maakt u een kopie van een bestaande beheerde schijf in hetzelfde 
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt om een nieuwe beheerde schijf te maken in het doelabonnement met gebruikmaking van de id van de beheerde bronschijf. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt om een nieuwe beheerde schijf te maken in het doelabonnement met gebruikmaking van de id van de beheerde bronschijf. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

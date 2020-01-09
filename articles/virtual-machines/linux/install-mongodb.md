@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 7f5fdd625eb49bfcac0bd58bca7a8415ac877517
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 643d4b918dd8677e8ed02a7def383efa77e71fce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035996"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430296"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>MongoDB installeren en configureren op een virtuele Linux-machine
 
@@ -215,7 +215,7 @@ In deze voor beelden maakt u lokaal verbinding met het MongoDB-exemplaar van de 
 
 In deze voor beelden wordt de kern MongoDB-omgeving voor ontwikkelings doeleinden geïmplementeerd. Pas de vereiste beveiligings configuratie opties voor uw omgeving toe. Zie [MongoDb Security docs](https://docs.mongodb.com/manual/security/)(Engelstalig) voor meer informatie.
 
-Zie [Azure Resource Manager-overzicht](../../azure-resource-manager/resource-group-overview.md)voor meer informatie over het maken van sjablonen.
+Zie [Azure Resource Manager-overzicht](../../azure-resource-manager/management/overview.md)voor meer informatie over het maken van sjablonen.
 
 De Azure Resource Manager sjablonen gebruiken de aangepaste script extensie om scripts op uw Vm's te downloaden en uit te voeren. Zie [de aangepaste script extensie van Azure gebruiken met Linux virtual machines](extensions-customscript.md)voor meer informatie.
 

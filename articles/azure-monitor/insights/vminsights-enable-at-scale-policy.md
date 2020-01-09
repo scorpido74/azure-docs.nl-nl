@@ -4,15 +4,15 @@ description: In dit artikel wordt beschreven hoe u Azure Monitor voor VM's voor 
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 4a89eb36c9aa7369d6145304b572b4245cef3483
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d9458230d07c1c40a3eec2d51879f58fac6543b5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109317"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365815"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>Azure Monitor voor VM's inschakelen (preview) met behulp van Azure Policy
 
@@ -77,7 +77,7 @@ Zie voor meer informatie over het toewijzen van Azure Policy [overzicht van Azur
 
 De beleids definities voor een virtuele machine van Azure worden weer gegeven in de volgende tabel.
 
-|Naam |Beschrijving |Type |
+|Name |Beschrijving |Type |
 |-----|------------|-----|
 |\[Preview-versie\]: Azure Monitor voor virtuele machines inschakelen |Schakel Azure Monitor in voor de virtuele machines in het opgegeven bereik (beheer groep, abonnement of resource groep). Log Analytics-werkruimte wordt gebruikt als parameter. |Initiatief |
 |\[preview-\]: implementatie van afhankelijkheids agent controleren-VM-installatie kopie (OS) niet vermeld |Rapporteert Vm's als niet-compatibel als de VM-installatie kopie (OS) niet is gedefinieerd in de lijst en de agent niet is geïnstalleerd. |Beleid |
@@ -91,7 +91,7 @@ De beleids definities voor een virtuele machine van Azure worden weer gegeven in
 
 De beleids definities voor een schaalset voor virtuele Azure-machines worden in de volgende tabel weer gegeven.
 
-|Naam |Beschrijving |Type |
+|Name |Beschrijving |Type |
 |-----|------------|-----|
 |\[preview\]: Azure Monitor inschakelen voor schaal sets voor virtuele machines |Schakel Azure Monitor in voor de virtuele-machine schaal sets in het opgegeven bereik (beheer groep, abonnement of resource groep). Log Analytics-werkruimte wordt gebruikt als parameter. Opmerking: als het upgrade beleid van uw schaalset is ingesteld op hand matig, past u de extensie toe op alle virtuele machines in de set door de upgrade op de Vm's aan te roepen. In de CLI is dit `az vmss update-instances`. |Initiatief |
 |\[preview\]: implementatie van afhankelijkheids agent controleren in virtuele-machine schaal sets – VM-installatie kopie (OS) niet vermeld |Rapporteert de schaalset voor virtuele machines als niet-compatibel als de VM-installatie kopie (OS) niet is gedefinieerd in de lijst en de agent niet is geïnstalleerd. |Beleid |
@@ -103,7 +103,7 @@ De beleids definities voor een schaalset voor virtuele Azure-machines worden in 
 
 Beleid voor zelfstandige (niet opgenomen in het initiatief) wordt hier beschreven:
 
-|Naam |Beschrijving |Type |
+|Name |Beschrijving |Type |
 |-----|------------|-----|
 |\[preview-\]: audit Log Analytics-werk ruimte voor VM-niet-overeenkomend rapport |Rapport Vm's als niet-compatibel als ze niet worden vastgelegd in de Log Analytics werk ruimte die is opgegeven in het beleid of initiatief toewijzing. |Beleid |
 
@@ -145,10 +145,10 @@ De volgende matrix wijst elke mogelijke compatibiliteits status voor het initiat
 
 | Nalevingsstatus | Beschrijving | 
 |------------------|-------------|
-| **ACPI** | Voor alle Vm's in het bereik zijn de Log Analytics-en Dependency agents geïmplementeerd.|
+| **Compatibel** | Voor alle Vm's in het bereik zijn de Log Analytics-en Dependency agents geïmplementeerd.|
 | **Niet compatibel** | Niet alle virtuele machines in het bereik hebben de Log Analytics-en Dependency-agents geïmplementeerd en vereisen mogelijk herstel.|
 | **Niet gestart** | Er is een nieuwe toewijzing toegevoegd. |
-| **Vergren delen** | U hebt onvoldoende bevoegdheden voor de beheer groep. <sup>1</sup> | 
+| **Vergrendelen** | U hebt onvoldoende bevoegdheden voor de beheer groep. <sup>1</sup> | 
 | **Leeg** | Er is geen beleid toegewezen. | 
 
 <sup>1</sup> als u geen toegang hebt tot de beheer groep, vraagt u een eigenaar om toegang te bieden. U kunt ook naleving bekijken en toewijzingen beheren via de onderliggende beheer groepen of-abonnementen. 
@@ -160,7 +160,7 @@ In de volgende tabel wordt elke mogelijke toewijzings status voor het initiatief
 | **Geleverd** | Voor alle Vm's in het bereik zijn de Log Analytics-en Dependency agents geïmplementeerd.|
 | **Waarschuwing** | Het abonnement bevindt zich niet in een beheer groep.|
 | **Niet gestart** | Er is een nieuwe toewijzing toegevoegd. |
-| **Vergren delen** | U hebt onvoldoende bevoegdheden voor de beheer groep. <sup>1</sup> | 
+| **Vergrendelen** | U hebt onvoldoende bevoegdheden voor de beheer groep. <sup>1</sup> | 
 | **Leeg** | Er bestaan geen Vm's of er is geen beleid toegewezen. | 
 | **Actie** | Wijs een beleid toe of bewerk een toewijzing. | 
 
@@ -197,7 +197,7 @@ U kunt op elk gewenst moment nadat u een initiatief aan een beheer groep of abon
 - Toewijzings naam
 - Beschrijving
 - Toegewezen door
-- Log Analytics werk ruimte
+- Log Analytics-werkruimte
 - Uitzonderingen
 
 ## <a name="next-steps"></a>Volgende stappen

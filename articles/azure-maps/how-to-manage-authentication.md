@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 057bd18c50d7074e8a88b8273bec766a306a3776
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b44b48b504fc080971a2797b89026e14be5cdd17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484358"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432993"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Verificatie in Azure Maps beheren
 
@@ -21,11 +21,11 @@ Nadat u een Azure Maps-account hebt gemaakt, worden er een client-ID en-sleutels
 
 ## <a name="view-authentication-details"></a>Verificatie gegevens weer geven
 
+Nadat het Azure Maps-account is gemaakt, worden de primaire en secundaire sleutels gegenereerd. Het is raadzaam om de primaire sleutel als abonnements sleutel te gebruiken wanneer u Azure Maps aanroept met behulp van [gedeelde sleutel verificatie](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication). Secundaire sleutel kan worden gebruikt in scenario's zoals het wijzigen van de toetstoewijzingen. Zie [verificatie met Azure Maps](https://aka.ms/amauth)voor meer informatie.
+
 U kunt uw verificatie gegevens weer geven op de Azure Portal. Ga naar uw account en selecteer **verificatie** in het menu **instellingen** .
 
 ![Verificatie gegevens](./media/how-to-manage-authentication/how-to-view-auth.png)
-
- Zie [verificatie met Azure Maps](https://aka.ms/amauth)voor meer informatie.
 
 
 ## <a name="set-up-azure-ad-app-registration"></a>Azure AD-App-registratie instellen
@@ -91,11 +91,11 @@ Nadat u uw app hebt geregistreerd en aan Azure Maps hebt gekoppeld, kunt u toega
 
 * Als uw toepassing gebruikmaakt van verificatie op basis van gebruikers tokens met de Azure Maps Web-SDK, moet u uw HTML-pagina configureren met de Azure Maps-client-ID en de Azure AD-App-ID.
 
-* Als uw toepassing server/toepassings verificatie gebruikt, moet u een token aanvragen bij Azure AD token endpoint `https://login.microsoftonline.com` met de Azure AD-Resource-ID `https://atlas.microsoft.com/`, de Azure Maps client-ID, de Azure AD-App-ID en het Azure AD-App-registratie wachtwoord of certificaat.
+* Als uw toepassing server/toepassings verificatie gebruikt, moet u een token aanvragen bij Azure AD token endpoint `https://login.microsoftonline.com` met de Azure AD-Resource-ID `https://atlas.microsoft.com/`, de Azure Maps client-ID, de Azure AD-App-ID en het Azure AD-App-registratie wachtwoord of-certificaat.
 
 | Azure-omgeving   | Azure AD-token eindpunt | Azure-Resource-ID |
 | --------------------|-------------------------|-------------------|
-| Open bare Azure        | https://login.microsoftonline.com | https://atlas.microsoft.com/ |
+| Openbare Azure-peering        | https://login.microsoftonline.com | https://atlas.microsoft.com/ |
 | Azure Government    | https://login.microsoftonline.us  | https://atlas.microsoft.com/ | 
 
 Zie [verificatie scenario's voor Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)voor meer informatie over het aanvragen van toegangs tokens van Azure AD voor gebruikers en service-principals.

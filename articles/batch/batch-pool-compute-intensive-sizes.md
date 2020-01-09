@@ -1,6 +1,6 @@
 ---
-title: Reken intensief Azure-Vm's gebruiken met batch | Microsoft Docs
-description: Profiteren van de grootte van HPC-en GPU-VM'S in Azure Batch Pools
+title: Reken intensief Azure-Vm's gebruiken met batch
+description: Profiteren van de grootte van HPC en GPU-virtuele machines in Azure Batch groepen. Meer informatie over afhankelijkheden van besturings systemen en een aantal voor beelden van scenario's weer geven.
 documentationcenter: ''
 author: laurenhughes
 manager: gwallace
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: c8fa96e41b98cfa227fd25dc4b3bd66a171ff3c8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 47d406eadbd3f5d608bfe0d13e82d0e32ae44ab1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350132"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390493"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>RDMA-of GPU-instanties gebruiken in batch-Pools
 
@@ -42,23 +42,23 @@ De RDMA-of GPU-mogelijkheden van Compute-grootten in batch worden alleen onderst
 
 ### <a name="linux-pools---virtual-machine-configuration"></a>Linux-Pools-virtuele-machine configuratie
 
-| Size | Mogelijkheid | Besturingssystemen | Vereiste software | Poolinstellingen |
+| Grootte | Mogelijkheid | Besturingssystemen | Vereiste software | Poolinstellingen |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16,04 LTS, of<br/>HPC op basis van CentOS<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Linux RDMA-Stuur Programma's | Communicatie tussen knoop punten inschakelen, gelijktijdige taak uitvoering uitschakelen |
 | [NC, NCv2, NCv3, NDv2-serie](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU (per serie) | Ubuntu 16,04 LTS, of<br/>CentOS 7,3 of 7,4<br/>(Azure Marketplace) | NVIDIA CUDA-of CUDA Toolkit-Stuur Programma's | N/A | 
 | [NV, NVv2-serie](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16,04 LTS, of<br/>CentOS 7.3<br/>(Azure Marketplace) | NVIDIA-raster Stuur Programma's | N/A |
 
-<sup>*</sup>RDMA-compatibele N-serie grootten omvatten ook NVIDIA Tesla-Gpu's
+<sup>*</sup> RDMA-compatibele N-serie grootten omvatten ook NVIDIA Tesla-Gpu's
 
 ### <a name="windows-pools---virtual-machine-configuration"></a>Windows-Pools-virtuele-machine configuratie
 
-| Size | Mogelijkheid | Besturingssystemen | Vereiste software | Poolinstellingen |
+| Grootte | Mogelijkheid | Besturingssystemen | Vereiste software | Poolinstellingen |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016, 2012 R2 of<br/>2012 (Azure Marketplace) | Micro soft MPI 2012 R2 of hoger, of<br/> Intel MPI 5<br/><br/>Windows RDMA-Stuur Programma's | Communicatie tussen knoop punten inschakelen, gelijktijdige taak uitvoering uitschakelen |
 | [NC, NCv2, NCv3, ND, NDv2-serie](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (per serie) | Windows Server 2016 of <br/>2012 R2 (Azure Marketplace) | NVIDIA CUDA-of CUDA Toolkit-Stuur Programma's| N/A | 
 | [NV, NVv2-serie](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 of<br/>2012 R2 (Azure Marketplace) | NVIDIA-raster Stuur Programma's | N/A |
 
-<sup>*</sup>RDMA-compatibele N-serie grootten omvatten ook NVIDIA Tesla-Gpu's
+<sup>*</sup> RDMA-compatibele N-serie grootten omvatten ook NVIDIA Tesla-Gpu's
 
 ### <a name="windows-pools---cloud-services-configuration"></a>Windows-Pools-Cloud Services configureren
 
@@ -66,7 +66,7 @@ De RDMA-of GPU-mogelijkheden van Compute-grootten in batch worden alleen onderst
 > De grootte van een N-serie wordt niet ondersteund in batch-Pools met de configuratie van de Cloud service.
 >
 
-| Size | Mogelijkheid | Besturingssystemen | Vereiste software | Poolinstellingen |
+| Grootte | Mogelijkheid | Besturingssystemen | Vereiste software | Poolinstellingen |
 | -------- | ------- | -------- | -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016, 2012 R2, 2012 of<br/>2008 R2 (gast besturingssysteem familie) | Micro soft MPI 2012 R2 of hoger, of<br/>Intel MPI 5<br/><br/>Windows RDMA-Stuur Programma's | Communicatie tussen knoop punten inschakelen,<br/> gelijktijdige taak uitvoering uitschakelen |
 
@@ -97,7 +97,7 @@ Als u een speciale VM-grootte voor de batch-pool wilt configureren, hebt u versc
 * Met [batch Shipyard](https://github.com/Azure/batch-shipyard) worden de GPU-en RDMA-Stuur Programma's automatisch geconfigureerd om transparant te werken met in containers geplaatste workloads op Azure batch. Batch Shipyard wordt volledig gestuurd met configuratie bestanden. Er zijn veel voor beeld van recept configuraties beschikbaar waarmee GPU-en RDMA-workloads kunnen worden ingeschakeld, zoals het [CNTK GPU-recept](https://github.com/Azure/batch-shipyard/tree/master/recipes/CNTK-GPU-OpenMPI) , waarmee GPU-Stuur Programma's worden geconfigureerd op vm's uit de N-serie en Microsoft Cognitive Toolkit software wordt geladen als docker-installatie kopie.
 
 
-## <a name="example-nvidia-gpu-drivers-on-windows-nc-vm-pool"></a>Voorbeeld: NVIDIA GPU-Stuur Programma's in Windows NC VM-groep
+## <a name="example-nvidia-gpu-drivers-on-windows-nc-vm-pool"></a>Voor beeld: NVIDIA GPU-Stuur Programma's in Windows NC VM-groep
 
 Als u CUDA-toepassingen wilt uitvoeren op een groep Windows NC-knoop punten, moet u NVDIA GPU-Stuur Programma's installeren. In de volgende voorbeeld stappen wordt een toepassings pakket gebruikt om de NVIDIA GPU-Stuur Programma's te installeren. U kunt deze optie kiezen als uw werk belasting afhankelijk is van een specifieke versie van het GPU-stuur programma.
 
@@ -106,7 +106,7 @@ Als u CUDA-toepassingen wilt uitvoeren op een groep Windows NC-knoop punten, moe
 3. Upload het pakket naar uw batch-account. Zie de richt lijnen voor [toepassings pakketten](batch-application-packages.md) voor instructies. Geef een toepassings-id, zoals *GPUDriver*, en een versie, zoals *411,82*, op.
 1. Maak met behulp van de batch-Api's of de Azure Portal een pool in de virtuele-machine configuratie met het gewenste aantal knoop punten en schaal. De volgende tabel bevat voor beelden van instellingen voor het op de achtergrond installeren van de NVIDIA GPU-Stuur Programma's met behulp van een begin taak:
 
-| Instelling | Value |
+| Instelling | Waarde |
 | ---- | ----- | 
 | **Type installatiekopie** | Marketplace (Linux/Windows) |
 | **Publisher** | MicrosoftWindowsServer |
@@ -114,39 +114,39 @@ Als u CUDA-toepassingen wilt uitvoeren op een groep Windows NC-knoop punten, moe
 | **SKU** | 2016-Datacenter |
 | **Knooppunt grootte** | NC6 Standard |
 | **Toepassings pakket verwijzingen** | GPUDriver, versie 411,82 |
-| **Taak starten is ingeschakeld** | Waar<br>**Opdracht regel** - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**Gebruikers identiteit** : groeps beleidsgebruiker, beheerder<br/>**Wachten op geslaagd** -True
+| **Taak starten is ingeschakeld** | Waar<br> - van de **opdracht regel** `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**Gebruikers identiteit** : groeps beleidsgebruiker, beheerder<br/>**Wachten op geslaagd** -True
 
-## <a name="example-nvidia-gpu-drivers-on-a-linux-nc-vm-pool"></a>Voorbeeld: NVIDIA GPU-Stuur Programma's in een Linux NC-VM-groep
+## <a name="example-nvidia-gpu-drivers-on-a-linux-nc-vm-pool"></a>Voor beeld: NVIDIA GPU-Stuur Programma's in een Linux NC-VM-groep
 
 Als u CUDA-toepassingen wilt uitvoeren op een groep Linux NC-knoop punten, moet u de benodigde NVIDIA Tesla GPU-Stuur Programma's installeren vanuit de CUDA Toolkit. In de volgende voorbeeld stappen wordt een aangepaste Ubuntu 16,04 LTS-installatie kopie gemaakt en geïmplementeerd met de GPU-Stuur Programma's:
 
 1. Implementeer een Azure NC-Series-VM met Ubuntu 16,04 LTS. Maak bijvoorbeeld de virtuele machine in de regio VS Zuid-Centraal. 
-2. Voeg de [uitbrei ding](../virtual-machines/extensions/hpccompute-gpu-linux.md
-) NVIDIA GPU-Stuur Programma's toe aan de virtuele machine met behulp van de Azure Portal, een client computer die verbinding maakt met het Azure-abonnement of Azure Cloud shell. U kunt ook de stappen volgen om verbinding te maken met de virtuele machine en [CUDA-Stuur Programma's](../virtual-machines/linux/n-series-driver-setup.md) hand matig te installeren.
+2. Voeg de [uitbrei ding NVIDIA GPU-Stuur Programma's](../virtual-machines/extensions/hpccompute-gpu-linux.md
+) toe aan de virtuele machine met behulp van de Azure Portal, een client computer die verbinding maakt met het Azure-abonnement of Azure Cloud shell. U kunt ook de stappen volgen om verbinding te maken met de virtuele machine en [CUDA-Stuur Programma's](../virtual-machines/linux/n-series-driver-setup.md) hand matig te installeren.
 3. Volg de stappen voor het maken van een afbeelding voor de [Galerie met gedeelde afbeeldingen](batch-sig-images.md) voor batch.
 4. Maak een batch-account in een regio die NC-Vm's ondersteunt.
 5. Maak met behulp van de batch-Api's of de Azure Portal een pool [met behulp van de aangepaste installatie kopie](batch-sig-images.md) en met het gewenste aantal knoop punten en schaal. De volgende tabel bevat voor beelden van groeps instellingen voor de installatie kopie:
 
-| Instelling | Value |
+| Instelling | Waarde |
 | ---- | ---- |
 | **Type installatiekopie** | Aangepaste installatiekopie |
 | **Aangepaste installatie kopie** | *Naam van de afbeelding* |
 | **SKU van knoop punt agent** | batch.node.ubuntu 16.04 |
 | **Knooppunt grootte** | NC6 Standard |
 
-## <a name="example-microsoft-mpi-on-a-windows-h16r-vm-pool"></a>Voorbeeld: Micro soft MPI in een VM-groep van Windows H16r
+## <a name="example-microsoft-mpi-on-a-windows-h16r-vm-pool"></a>Voor beeld: micro soft MPI in een VM-groep van Windows H16r
 
 Als u Windows MPI-toepassingen wilt uitvoeren op een groep Azure H16r VM-knoop punten, moet u de HpcVmDrivers-extensie configureren en [micro soft mpi](https://docs.microsoft.com/message-passing-interface/microsoft-mpi)installeren. Hier volgen enkele voor beelden van stappen voor het implementeren van een aangepaste installatie kopie van Windows Server 2016 met de benodigde Stuur Programma's en software:
 
 1. Implementeer een Azure H16r-VM met Windows Server 2016. Maak bijvoorbeeld de virtuele machine in de regio vs West. 
-2. Voeg de uitbrei ding HpcVmDrivers toe aan [de virtuele machine door](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances
-) een Azure PowerShell opdracht uit te voeren vanaf een client computer die verbinding maakt met uw Azure-abonnement of Azure Cloud shell gebruikt. 
+2. Voeg de uitbrei ding HpcVmDrivers toe aan de virtuele machine door [een Azure PowerShell opdracht](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances
+) uit te voeren vanaf een client computer die verbinding maakt met uw Azure-abonnement of Azure Cloud shell gebruikt. 
 1. Een Extern bureaublad verbinding maken met de virtuele machine.
 1. Down load het [installatie pakket](https://www.microsoft.com/download/details.aspx?id=57467) (MSMpiSetup. exe) voor de nieuwste versie van micro soft MPI en installeer micro soft MPI.
 1. Volg de stappen voor het maken van een afbeelding voor de [Galerie met gedeelde afbeeldingen](batch-sig-images.md) voor batch.
 1. Maak met behulp van de batch-Api's of de Azure Portal een pool [met behulp van de galerie met gedeelde afbeeldingen](batch-sig-images.md) en met het gewenste aantal knoop punten en schaal. De volgende tabel bevat voor beelden van groeps instellingen voor de installatie kopie:
 
-| Instelling | Value |
+| Instelling | Waarde |
 | ---- | ---- |
 | **Type installatiekopie** | Aangepaste installatiekopie |
 | **Aangepaste installatie kopie** | *Naam van de afbeelding* |
@@ -155,13 +155,13 @@ Als u Windows MPI-toepassingen wilt uitvoeren op een groep Azure H16r VM-knoop p
 | **Communicatie tussen knoop punten is ingeschakeld** | Waar |
 | **Maximum aantal taken per knoop punt** | 1 |
 
-## <a name="example-intel-mpi-on-a-linux-h16r-vm-pool"></a>Voorbeeld: Intel MPI op een Linux H16r VM-groep
+## <a name="example-intel-mpi-on-a-linux-h16r-vm-pool"></a>Voor beeld: Intel MPI op een Linux H16r VM-groep
 
 Voor het uitvoeren van MPI-toepassingen in een groep van Linux-knoop punten van de H-serie, is het gebruik van de op [CentOS 7,4 gebaseerde HPC-](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74HPC?tab=Overview) installatie kopie op basis van de Azure Marketplace. Linux RDMA-Stuur Programma's en Intel MPI zijn vooraf geïnstalleerd. Deze installatie kopie ondersteunt ook docker-container werkbelastingen.
 
 Maak met behulp van de batch-Api's of de Azure Portal een pool met behulp van deze installatie kopie en met het gewenste aantal knoop punten en schaal. De volgende tabel bevat voor beelden van groeps instellingen:
 
-| Instelling | Value |
+| Instelling | Waarde |
 | ---- | ---- |
 | **Type installatiekopie** | Marketplace (Linux/Windows) |
 | **Publisher** | OpenLogic |

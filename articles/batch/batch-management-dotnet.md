@@ -15,17 +15,17 @@ ms.workload: big-compute
 ms.date: 04/24/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: f7554993e2e3d8d2f6bce71db57a746a4392ce1a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 32133fc5c01544250075ece2458babe2f0b6a62a
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095070"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660695"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Batch-accounts en-quota's beheren met de batch-beheer-client bibliotheek voor .NET
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](batch-account-create-portal.md)
+> * [Azure Portal](batch-account-create-portal.md)
 > * [Batch Management .NET](batch-management-dotnet.md)
 > 
 > 
@@ -45,7 +45,7 @@ U kunt onderhouds overhead in uw Azure Batch-toepassingen verlagen door de [Batc
 ## <a name="create-and-delete-batch-accounts"></a>Batch-accounts maken en verwijderen
 Zoals gezegd, is een van de primaire functies van de API voor batch beheer het maken en verwijderen van batch-accounts in een Azure-regio. Gebruik hiervoor [BatchManagementClient. account. CreateAsync][net_create] en [DeleteAsync][net_delete], of hun synchrone tegen hangers.
 
-Met het volgende code fragment wordt een account gemaakt, wordt het zojuist gemaakte account opgehaald uit de batch-service en vervolgens verwijderd. In dit code fragment en de andere in dit artikel `batchManagementClient` is een volledig geïnitialiseerd exemplaar van [BatchManagementClient][net_mgmt_client].
+Met het volgende code fragment wordt een account gemaakt, wordt het zojuist gemaakte account opgehaald uit de batch-service en vervolgens verwijderd. In dit code fragment en de andere in dit artikel is `batchManagementClient` een volledig geïnitialiseerd exemplaar van [BatchManagementClient][net_mgmt_client].
 
 ```csharp
 // Create a new Batch account
@@ -95,7 +95,7 @@ BatchAccountRegenerateKeyResponse newKeys =
 > 
 
 ## <a name="check-azure-subscription-and-batch-account-quotas"></a>Azure-abonnement en batch-account quota's controleren
-Azure-abonnementen en de afzonderlijke Azure-Services, zoals batch, hebben allemaal standaard quota's die het aantal bepaalde entiteiten in de service beperken. Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-subscription-service-limits.md)voor de standaard Quota's voor Azure-abonnementen. Zie [quota's en limieten voor de Azure batch-service](batch-quota-limit.md)voor de standaard quota's van de batch-service. U kunt deze quota's in uw toepassingen controleren met behulp van de Batch Management .NET-bibliotheek. Zo kunt u toewijzings beslissingen nemen voordat u accounts toevoegt of resources zoals groepen en reken knooppunten.
+Azure-abonnementen en de afzonderlijke Azure-Services, zoals batch, hebben allemaal standaard quota's die het aantal bepaalde entiteiten in de service beperken. Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md)voor de standaard Quota's voor Azure-abonnementen. Zie [quota's en limieten voor de Azure batch-service](batch-quota-limit.md)voor de standaard quota's van de batch-service. U kunt deze quota's in uw toepassingen controleren met behulp van de Batch Management .NET-bibliotheek. Zo kunt u toewijzings beslissingen nemen voordat u accounts toevoegt of resources zoals groepen en reken knooppunten.
 
 ### <a name="check-an-azure-subscription-for-batch-account-quotas"></a>Een Azure-abonnement voor batch-account quota's controleren
 Voordat u een batch-account in een regio maakt, kunt u uw Azure-abonnement controleren om te zien of u een account in die regio kunt toevoegen.
@@ -124,10 +124,10 @@ Console.WriteLine("Accounts in {0}: {1}", region, accountsInRegion);
 Console.WriteLine("You can create {0} accounts in the {1} region.", quotaResponse.AccountQuota - accountsInRegion, region);
 ```
 
-In het bovenstaande `creds` code fragment is een instantie van [TokenCloudCredentials][azure_tokencreds]. Zie het [AccountManagement][acct_mgmt_sample] -code voorbeeld op github voor een voor beeld van het maken van dit object.
+In het bovenstaande code fragment is `creds` een instantie van [TokenCloudCredentials][azure_tokencreds]. Zie het [AccountManagement][acct_mgmt_sample] -code voorbeeld op github voor een voor beeld van het maken van dit object.
 
 ### <a name="check-a-batch-account-for-compute-resource-quotas"></a>Een batch-account voor reken resource quota's controleren
-Voordat u de reken resources in uw batch-oplossing verhoogt, kunt u controleren of de resources die u wilt toewijzen, de quota van het account niet overschrijden. In het onderstaande code fragment worden de quotum gegevens voor het batch-account met de `mybatchaccount`naam afgedrukt. In uw eigen toepassing kunt u deze informatie gebruiken om te bepalen of het account kan omgaan met de extra resources die moeten worden gemaakt.
+Voordat u de reken resources in uw batch-oplossing verhoogt, kunt u controleren of de resources die u wilt toewijzen, de quota van het account niet overschrijden. In het onderstaande code fragment worden de quotum gegevens voor het batch-account met de naam `mybatchaccount`afgedrukt. In uw eigen toepassing kunt u deze informatie gebruiken om te bepalen of het account kan omgaan met de extra resources die moeten worden gemaakt.
 
 ```csharp
 // First obtain the Batch account
@@ -198,7 +198,7 @@ Als u de voorbeeld toepassing wilt uitvoeren, moet u deze eerst registreren bij 
 [resman_api]: https://msdn.microsoft.com/library/azure/mt418626.aspx
 [resman_client]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.resources.resourcemanagementclient.aspx
 [resman_subclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.subscriptions.subscriptionclient.aspx
-[resman_overview]: ../azure-resource-manager/resource-group-overview.md
+[resman_overview]: ../azure-resource-manager/management/overview.md
 
 [1]: ./media/batch-management-dotnet/portal-01.png
 [2]: ./media/batch-management-dotnet/portal-02.png

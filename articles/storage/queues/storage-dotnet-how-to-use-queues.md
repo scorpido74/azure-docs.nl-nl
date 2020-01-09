@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: aa92b72b09ed28b41d85ac7c7605077761657d40
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5ffee146bdbd666d4175af2f49f6b447743b2bc0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721566"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457698"
 ---
-# <a name="get-started-with-azure-queue-storage-using-net"></a>Aan de slag met Azure Queue Storage met .NET
+# <a name="get-started-with-azure-queue-storage-using-net"></a>Aan de slag met Azure Queue Storage met behulp van .NET
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
@@ -29,7 +29,7 @@ Azure Queue Storage biedt uitwisseling van berichten tussen toepassingsonderdele
 
 Deze zelfstudie laat zien hoe u .NET-code kunt schrijven voor een aantal algemene scenario's die gebruikmaken van Azure Queue Storage. Scenario's die aan bod komen, zijn onder meer het maken en verwijderen van wachtrijen en het toevoegen, lezen en verwijderen van wachtrijberichten.
 
-**Geschatte tijdsduur:** 45 minuten
+**Geschatte duur:** 45 minuten
 
 ### <a name="prerequisites"></a>Vereisten
 
@@ -43,7 +43,7 @@ Deze zelfstudie laat zien hoe u .NET-code kunt schrijven voor een aantal algemen
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="set-up-your-development-environment"></a>De ontwikkelomgeving instellen
+## <a name="set-up-your-development-environment"></a>Uw ontwikkelomgeving instellen
 
 Vervolgens stelt u in Visual Studio uw ontwikkelomgeving in, zodat u de codevoorbeelden in deze handleiding kunt uitproberen.
 
@@ -52,7 +52,7 @@ Vervolgens stelt u in Visual Studio uw ontwikkelomgeving in, zodat u de codevoor
 Maak in Visual Studio een nieuwe Windows-consoletoepassing. De volgende stappen laten zien hoe u een console toepassing maakt in Visual Studio 2019. De stappen zijn nagenoeg gelijk in andere versies van Visual Studio.
 
 1. Selecteer **Bestand** > **Nieuw** > **Project**
-2. **Platform** > **Vensters** selecteren
+2. **Platform** selecteren > **Windows**
 3. Selecteer **Consoletoepassing (.NET Framework)**
 4. Selecteer **Volgende**
 5. Voer in het veld **project naam** een naam in voor uw toepassing
@@ -66,9 +66,9 @@ U kunt de Azure Storage-client bibliotheken gebruiken in elk type .NET-toepassin
 
 U moet verwijzen naar de volgende drie pakketten in uw project om deze zelf studie te volt ooien:
 
-* [Microsoft Azure Storage algemene client bibliotheek voor .net](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Dit pakket biedt programmatisch toegang tot gegevensbronnen in uw opslagaccount.
-* [Microsoft Azure Storage wachtrij bibliotheek voor .net](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Met deze client bibliotheek kunt u werken met de Microsoft Azure Storage Queue-service om berichten op te slaan die toegankelijk zijn voor een client.
-* [Microsoft Azure Configuration Manager-bibliotheek voor .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): dit pakket biedt een klasse voor het parseren van een verbindingsreeks in een configuratiebestand, ongeacht waar de toepassing wordt uitgevoerd.
+* [Microsoft Azure Storage algemene client bibliotheek voor .net](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): dit pakket biedt programmatische toegang tot gegevens bronnen in uw opslag account.
+* [Microsoft Azure Storage wachtrij bibliotheek voor .net](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): deze client bibliotheek biedt de mogelijkheid om te werken met de Microsoft Azure Storage Queue-service voor het opslaan van berichten die toegankelijk zijn voor een client.
+* [Configuration Manager-bibliotheek van Microsoft Azure voor .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): dit pakket biedt een klasse voor het parseren van een verbindingsreeks in een configuratiebestand, ongeacht waar de toepassing wordt uitgevoerd.
 
 U kunt NuGet gebruiken om deze pakketten te verkrijgen. Volg deze stappen:
 
@@ -89,7 +89,7 @@ U kunt de voorbeelden in deze gids in twee omgevingen uitvoeren:
 * U kunt de code uitvoeren met een Azure Storage-account in de cloud.
 * U kunt de code uitvoeren met de Azure-opslagemulator. De opslagemulator is een lokale omgeving die een Azure Storage-account in de cloud emuleert. De emulator is een gratis optie waarmee u uw code kunt testen en fouten in de code kunt opsporen terwijl de toepassing nog in ontwikkeling is. De emulator maakt gebruik van een bekend account en een bekende sleutel. Zie [De Azure-opslagemulator gebruiken voor ontwikkeling en testen](../common/storage-use-emulator.md) voor meer informatie.
 
-Als u een opslagaccount in de cloud wilt gebruiken, kopieert u de primaire toegangssleutel voor uw opslagaccount vanuit Azure Portal. Ga voor meer informatie naar [Toegangssleutels](../common/storage-account-manage.md#access-keys).
+Als u een opslagaccount in de cloud wilt gebruiken, kopieert u de primaire toegangssleutel voor uw opslagaccount vanuit Azure Portal. Zie [toegangs sleutels voor opslag accounts beheren](../common/storage-account-keys-manage.md)voor meer informatie.
 
 > [!NOTE]
 > Gebruik de opslagemulator als u mogelijke kosten in verband met Azure-opslag wilt vermijden. Als u er echter voor kiest om een Azure-opslagaccount in de cloud te gebruiken, zijn de kosten voor de uitvoering van deze zelfstudie te verwaarlozen.
@@ -103,7 +103,7 @@ Zie [Azure Storage-verbindingsreeksen configureren](../common/storage-configure-
 > [!NOTE]
 > De sleutel van uw opslagaccount is vergelijkbaar met het hoofdwachtwoord voor uw opslagaccount. Zorg dat de sleutel van uw opslagaccount altijd is beveiligd. Geef deze niet aan andere gebruikers en bewaar of noteer de sleutel op een veilige manier en plaats. Genereer een nieuwe sleutel via de Azure-portal als er mogelijk inbreuk op de sleutel heeft plaatsgevonden.
 
-Als u uw connection string wilt configureren, opent u het bestand **app. config** vanuit Solution Explorer in Visual Studio. Voeg de inhoud van het  **\<element\> appSettings** toe dat hieronder wordt weer gegeven. Vervang de *account naam* door de naam van uw opslag account en de *account sleutel* met de toegangs sleutel van uw account:
+Als u uw connection string wilt configureren, opent u het bestand **app. config** vanuit Solution Explorer in Visual Studio. Voeg de inhoud van het **\<element appSettings\>** toe dat hieronder wordt weer gegeven. Vervang de *account naam* door de naam van uw opslag account en de *account sleutel* met de toegangs sleutel van uw account:
 
 ```xml
 <configuration>

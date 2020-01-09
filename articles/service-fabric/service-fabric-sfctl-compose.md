@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI-sfctl opstellen | Microsoft Docs
-description: Beschrijft de Service Fabric-opdracht voor het opstellen van sfctl-CLI.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI-sfctl opstellen
+description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor docker-compositie toepassingen.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 561616fca7401f5251c4fbac67173260a665b602
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 3a9fa142dd45674e4a3e88745acffef225b80a64
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901654"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645392"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Docker opstellen toepassingen maken, verwijderen en beheren.
@@ -30,9 +21,9 @@ Docker opstellen toepassingen maken, verwijderen en beheren.
 | --- | --- |
 | maken | Hiermee maakt u een implementatie voor Service Fabric opstellen. |
 | list | Hiermee haalt u de lijst met opstel implementaties op die zijn gemaakt in het Service Fabric cluster. |
-| verwijdert | Hiermee verwijdert u een bestaande Service Fabric voor het opstellen van een implementatie uit het cluster. |
+| verwijderen | Hiermee verwijdert u een bestaande Service Fabric voor het opstellen van een implementatie uit het cluster. |
 | status | Hiermee haalt u informatie op over een implementatie van Service Fabric opstellen. |
-| Upgrades | Hiermee wordt een upgrade van een opstel implementatie in het Service Fabric cluster gestart. |
+| upgrade | Hiermee wordt een upgrade van een opstel implementatie in het Service Fabric cluster gestart. |
 | upgrade-terugdraai actie | Start een opstel implementatie-upgrade in het Service Fabric cluster. |
 | upgrade-status | Hiermee worden gegevens opgehaald voor de laatste upgrade die is uitgevoerd op deze Service Fabric een implementatie op te stellen. |
 
@@ -46,7 +37,7 @@ Hiermee maakt u een implementatie voor Service Fabric opstellen.
 | --implementatie-naam [vereist] | De naam van de implementatie. |
 | --bestandspad [vereist] | Het pad naar het doel bestand van docker voor samen stelling. |
 | --versleuteld-door geven | In plaats van te vragen om een container register wachtwoord, gebruikt u een al versleutelde wachtwoordzin. |
-| --heeft de bewerking | Wordt gevraagd om een wacht woord voor het container register. |
+| --has-pass | Wordt gevraagd om een wacht woord voor het container register. |
 | --time-out-t | Standaard\: 60. |
 | --user | De gebruikers naam om verbinding te maken met het container register. |
 
@@ -54,7 +45,7 @@ Hiermee maakt u een implementatie voor Service Fabric opstellen.
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -70,14 +61,14 @@ Hiermee wordt de status opgehaald van de opstellen-implementaties die zijn gemaa
 |Argument|Beschrijving|
 | --- | --- |
 | --vervolg token | De vervolg token parameter wordt gebruikt om de volgende set resultaten op te halen. Een vervolg token met een niet-lege waarde wordt opgenomen in het antwoord van de API wanneer de resultaten van het systeem niet in één antwoord passen. Wanneer deze waarde wordt door gegeven aan de volgende API-aanroep, retourneert de API de volgende set resultaten. Als er geen verdere resultaten zijn, bevat het vervolg token geen waarde. De waarde van deze para meter mag geen URL-code ring zijn. |
-| --Max-resultaten | Het maximum aantal resultaten dat moet worden geretourneerd als onderdeel van de query's in de pagina. Met deze para meter wordt de bovengrens gedefinieerd voor het aantal geretourneerde resultaten. De geretourneerde resultaten kunnen kleiner zijn dan de opgegeven maximum resultaten als ze niet in het bericht passen conform de maximale grootte van de berichten die in de configuratie is gedefinieerd. Als deze para meter nul is of niet is opgegeven, bevat de opgevraagde query zoveel mogelijk resultaten die in het retour bericht passen. |
+| --max-results | Het maximum aantal resultaten dat moet worden geretourneerd als onderdeel van de query's in de pagina. Met deze para meter wordt de bovengrens gedefinieerd voor het aantal geretourneerde resultaten. De geretourneerde resultaten kunnen kleiner zijn dan de opgegeven maximum resultaten als ze niet in het bericht passen conform de maximale grootte van de berichten die in de configuratie is gedefinieerd. Als deze para meter nul is of niet is opgegeven, bevat de opgevraagde query zoveel mogelijk resultaten die in het retour bericht passen. |
 | --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -99,7 +90,7 @@ Hiermee verwijdert u een bestaande Service Fabric opstellen-implementatie.
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -121,7 +112,7 @@ Retourneert de status van de opstel implementatie die is gemaakt of in het proce
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -142,7 +133,7 @@ Valideert de opgegeven upgrade parameters en begint met het upgraden van de impl
 | --versleuteld-door geven | In plaats van te vragen om een container register wachtwoord, gebruikt u een al versleutelde wachtwoordzin. |
 | --fout-actie | Mogelijke waarden zijn\: ' ongeldig ', ' rollback ', ' Manual '. |
 | --Force-restart | Processen worden geforceerd opnieuw gestart tijdens de upgrade, zelfs wanneer de code versie niet is gewijzigd. <br><br> Bij de upgrade worden alleen configuratie of gegevens gewijzigd. |
-| --heeft de bewerking | Wordt gevraagd om een wacht woord voor het container register. |
+| --has-pass | Wordt gevraagd om een wacht woord voor het container register. |
 | --status-controle-opnieuw | De tijds duur tussen pogingen om status controles uit te voeren als de toepassing of het cluster niet in orde is. |
 | --status-controle stabiel | De hoeveelheid tijd die de toepassing of het cluster in orde moet blijven voordat de upgrade wordt voortgezet naar het volgende upgrade domein. <br><br> Het wordt eerst geïnterpreteerd als een teken reeks die een ISO 8601-duur vertegenwoordigt. Als dat mislukt, wordt dit geïnterpreteerd als een getal dat het totale aantal milliseconden aangeeft. |
 | --status-check-wait | De tijds duur die moet worden gewacht na het volt ooien van een upgrade domein voordat het proces status controles wordt gestart. |
@@ -161,7 +152,7 @@ Valideert de opgegeven upgrade parameters en begint met het upgraden van de impl
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -183,7 +174,7 @@ Een implementatie-upgrade voor een service Fabric-samen stel ongedaan maken.
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -205,7 +196,7 @@ Retourneert informatie over de status van de upgrade voor de samen stellen van d
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |

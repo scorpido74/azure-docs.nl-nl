@@ -1,7 +1,7 @@
 ---
 title: 'Quick Start: een query naar de API in python verzenden-zoeken in lokale bedrijfs-Bing'
 titleSuffix: Azure Cognitive Services
-description: Gebruik dit artikel om te beginnen met het gebruik van de Bing Local Business Search-API in python.
+description: Gebruik deze Quick Start om de Bing lokale zakelijke zoek-API in python te gebruiken.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: a73851a4c88998a377a5123d411948946173fa89
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: c7e7ef7f052fccfea18b246f41109d5fa7528b4b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664927"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379740"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Snelstartgids: een query naar de Bing Local Business Search-API in python verzenden
 
@@ -31,7 +31,7 @@ U moet een [Cognitive Services-API-account](https://docs.microsoft.com/azure/cog
 
 ## <a name="run-the-complete-application"></a>De volledige toepassing uitvoeren
 
-De volgende code haalt gelokaliseerde resultaten op. De code wordt geïmplementeerd in de volgende stappen:
+De volgende code haalt gelokaliseerde resultaten op. De code wordt in de volgende stappen geïmplementeerd:
 1. Declareer variabelen om het eindpunt op te geven met een host en pad.
 2. Geef de query parameter op. 
 3. Definieer de zoek functie die de aanvraag maakt en voegt de header van de APIM-abonnements sleutel toe.

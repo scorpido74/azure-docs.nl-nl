@@ -6,18 +6,18 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: 43972bc8e64e0bf88aae00126735d3e0c8751254
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d1665ef3e845491f116174cf1914c38e7cf5c691
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499386"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660797"
 ---
 # <a name="what-is-azure-data-share"></a>Wat is Azure Data Share?
 
 In de huidige wereld worden gegevens weer gegeven als een belang rijk strategisch activum dat veel organisaties eenvoudig en veilig willen delen met hun klanten en partners. Er zijn veel manieren om dit te doen, met inbegrip van FTP, e-mail, Api's om een paar te noemen. Organisaties kunnen het bijhouden van wie ze hun gegevens hebben gedeeld, gemakkelijk verliezen. Het delen van gegevens via FTP of het door lopen van een eigen API-infra structuur is vaak kostbaar om in te richten en te beheren. Er zijn beheer overhead gekoppeld aan het gebruik van deze methoden voor delen op grote schaal. 
 
-Veel organisaties moeten verantwoordelijk zijn voor de gegevens die ze hebben gedeeld. Afgezien van de verantwoording moeten veel organisaties al hun gegevens delen op een eenvoudige manier kunnen beheren, beheren en bewaken. In de huidige wereld, waar gegevens naar verwachting in een exponentieel tempo zullen blijven groeien, hebben organisaties een eenvoudige manier nodig om big data te delen. Klanten vereisen de meest actuele gegevens om ervoor te zorgen dat ze tijdig inzicht kunnen verkrijgen.
+Veel organisaties moeten verantwoordelijk zijn voor de gegevens die ze hebben gedeeld. Afgezien van de verantwoording moeten veel organisaties al hun gegevens delen op een eenvoudige manier kunnen beheren, beheren en bewaken. In de huidige wereld, waar gegevens naar verwachting zullen blijven groeien in een exponentieel tempo, hebben organisaties een eenvoudige manier nodig om big data te delen. Klanten vereisen de meest actuele gegevens om ervoor te zorgen dat ze tijdig inzicht kunnen verkrijgen.
 
 Met Azure data share kunnen organisaties eenvoudig en veilig gegevens delen met meerdere klanten en partners. Met slechts enkele muis klikken kunt u een nieuw gegevens share-account inrichten, gegevens sets toevoegen en uw klanten en partners uitnodigen voor uw gegevens share. Gegevens providers hebben altijd controle over de gegevens die ze hebben gedeeld. Azure data share maakt het eenvoudig om te beheren en te controleren welke gegevens er worden gedeeld, wanneer en door wie. 
 
@@ -47,7 +47,7 @@ Gegevens providers kunnen hun klanten incrementele updates bieden voor de gegeve
 
 Wanneer een gegevens verbruiker een gegevens share accepteert, kunnen ze de gegevens in een gegevens archief van hun keuze ontvangen. Als de gegevens provider bijvoorbeeld gegevens deelt met Azure Blob Storage, kan de gegevens verbruiker deze gegevens in Azure Data Lake Store ontvangen. En als de gegevens provider gegevens deelt van een Azure SQL Data Warehouse, kan de gegevens verbruiker kiezen of ze de gegevens willen ontvangen in een Azure Data Lake Store, een Azure SQL Database of een Azure SQL Data Warehouse. In het geval van delen van bronnen op basis van SQL kan de gebruiker van gegevens ook kiezen of ze gegevens in Parquet of CSV ontvangen. 
 
-In-place delen is momenteel een beperkte preview voor Azure Data Explorer. Gegevens providers kunnen gegevens delen waar ze zich bevinden, zonder dat er gegevens worden verplaatst via een symbolische koppeling. Meld u aan voor de beperkte preview-versie van in-place delen voor [Azure Data Explorer.](https://aka.ms/azuredatasharepreviewsignup) 
+In-place delen is momenteel een beperkte preview voor Azure Data Explorer. Gegevens providers kunnen gegevens delen waar ze zich bevinden, zonder dat er gegevens worden verplaatst via een symbolische koppeling. Meld u aan voor de beperkte preview-versie van Azure Data Explorer in- [Place delen.](https://aka.ms/azuredatasharepreviewsignup) 
 
 ## <a name="key-capabilities"></a>Belangrijkste mogelijkheden
 

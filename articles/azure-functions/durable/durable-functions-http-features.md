@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 3fcb777969f7d29b0e8698156dbdd0724f16f0b5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1c8f56810edb39db66cbb83750e5cff02e22662a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232874"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433291"
 ---
 # <a name="http-features"></a>HTTP-functies
 
@@ -32,7 +32,8 @@ De volgende ingebouwde HTTP-Api's worden ondersteund.
 * [Een externe gebeurtenis naar een indeling verzenden](durable-functions-http-api.md#raise-event)
 * [Orchestration-geschiedenis opschonen](durable-functions-http-api.md#purge-single-instance-history)
 * [Een bewerkings gebeurtenis naar een entiteit verzenden](durable-functions-http-api.md#signal-entity)
-* [Een query uitvoeren op de status van een entiteit](durable-functions-http-api.md#query-entity)
+* [De status van een entiteit ophalen](durable-functions-http-api.md#get-entity)
+* [De lijst met entiteiten opvragen](durable-functions-http-api.md#list-entities)
 
 Zie het [artikel http-api's](durable-functions-http-api.md) voor een volledige beschrijving van alle ingebouwde http-api's die door de Durable functions-extensie worden weer gegeven.
 
@@ -178,7 +179,7 @@ public static async Task RunOrchestrator(
 }
 ```
 
-In het vorige voor beeld is de para meter `tokenSource` geconfigureerd voor het verkrijgen van Azure AD-tokens voor [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). De tokens worden geïdentificeerd door de resource-URI `https://management.core.windows.net`. In het voor beeld wordt ervan uitgegaan dat de huidige functie-app lokaal wordt uitgevoerd of is geïmplementeerd als een functie-app met een beheerde identiteit. Er wordt van uitgegaan dat de lokale identiteit of de beheerde identiteit gemachtigd is voor het beheren van virtuele machines in de opgegeven resource groep `myRG`.
+In het vorige voor beeld is de para meter `tokenSource` geconfigureerd voor het verkrijgen van Azure AD-tokens voor [Azure Resource Manager](../../azure-resource-manager/management/overview.md). De tokens worden geïdentificeerd door de resource-URI `https://management.core.windows.net`. In het voor beeld wordt ervan uitgegaan dat de huidige functie-app lokaal wordt uitgevoerd of is geïmplementeerd als een functie-app met een beheerde identiteit. Er wordt van uitgegaan dat de lokale identiteit of de beheerde identiteit gemachtigd is voor het beheren van virtuele machines in de opgegeven resource groep `myRG`.
 
 Tijdens runtime retourneert de geconfigureerde token bron automatisch een OAuth 2,0-toegangs token. De bron voegt vervolgens het token toe als een Bearer-token aan de autorisatie-header van de uitgaande aanvraag. Dit model is een verbetering ten aanzien van het hand matig toevoegen van autorisatie headers aan HTTP-aanvragen om de volgende redenen:
 

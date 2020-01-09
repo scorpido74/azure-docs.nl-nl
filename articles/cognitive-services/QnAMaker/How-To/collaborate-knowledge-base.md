@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 01/03/2020
 ms.author: diberry
-ms.openlocfilehash: d9c91d54fb357807682cd57f46b04454e4e2cfec
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: b5adc7ebacde056a141ca3b361b9eb2ea7900a39
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876654"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660746"
 ---
 # <a name="collaborate-on-your-knowledge-base"></a>Samen werken aan uw Knowledge Base
 
-Met QnA Maker kunnen meerdere personen samen werken aan een Knowledge Base. Deze functie wordt meegeleverd met de [op rollen gebaseerde Access Control](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)van Azure. 
+Met QnA Maker kunnen meerdere mensen samen werken aan alle kennis grondslagen in dezelfde QnA Maker resource. Deze functie wordt meegeleverd met de [op rollen gebaseerde Access Control](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)van Azure.
 
 Voer de volgende stappen uit om uw QnA Maker-service te delen met iemand:
 

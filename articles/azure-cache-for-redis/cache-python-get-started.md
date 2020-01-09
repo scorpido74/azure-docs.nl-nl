@@ -1,21 +1,21 @@
 ---
-title: 'Snelstartgids: een python-app maken die gebruikmaakt van Azure cache voor redis'
+title: 'Snelstartgids: een python-app maken-Azure cache voor redis'
 description: In deze Quick Start leert u hoe u een python-app maakt die gebruikmaakt van Azure cache voor redis.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: yegu
 ms.custom:
 - mvc
 - seo-python-october2019
-ms.openlocfilehash: 1ac1767d1ac3f6333d73a1e1c66ff7250942d266
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.date: 11/05/2019
+ms.openlocfilehash: 7b05f12ad3fd3a0f56605d708bbbf06df7e341ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122663"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433469"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Snelstartgids: een python-app maken die gebruikmaakt van Azure cache voor redis
 

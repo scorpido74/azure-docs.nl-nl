@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 1fd59bd18947d2c7aaba787ff7ce286e76f4f890
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 21acbde147d5c1751480332e5cd9c89cdb43f8e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150047"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644950"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informatie over het gebruik van HDInsight in Linux
 
@@ -34,7 +34,7 @@ Tenzij een [domein is toegevoegd](./domain-joined/hdinsight-security-overview.md
 
 HDInsight die lid is van een domein ondersteunt meerdere gebruikers en gedetailleerde instellingen voor machtigingen en rollen. Zie [HDInsight-clusters die zijn gekoppeld](./domain-joined/apache-domain-joined-manage.md)aan een domein voor meer informatie.
 
-## <a name="domain-names"></a>Domein namen
+## <a name="domain-names"></a>Domeinnamen
 
 De Fully Qualified Domain Name (FQDN) die moet worden gebruikt bij het maken van verbinding met het cluster via internet, is `CLUSTERNAME.azurehdinsight.net` of `CLUSTERNAME-ssh.azurehdinsight.net` (alleen voor SSH).
 
@@ -52,7 +52,7 @@ Met deze opdracht wordt een JSON-document geretourneerd dat de service beschrijf
 
 ## <a name="remote-access-to-services"></a>Externe toegang tot services
 
-* **Ambari (web)**  - https://CLUSTERNAME.azurehdinsight.net
+* **Ambari (web)**  - `https://CLUSTERNAME.azurehdinsight.net`
 
     Verificatie met behulp van de gebruiker en het wacht woord van de Cluster beheerder en meld u vervolgens aan bij Ambari.
 
@@ -63,14 +63,14 @@ Met deze opdracht wordt een JSON-document geretourneerd dat de service beschrijf
     >
     > Als u de volledige functionaliteit van de Ambari-webgebruikersinterface wilt gebruiken, gebruikt u een SSH-tunnel om webverkeer te proxy naar het hoofd knooppunt van het cluster. Zie [ssh-tunneling gebruiken om toegang te krijgen tot Apache Ambari Web UI, Resource Manager, JobHistory, NameNode, Oozie en andere web-UIs](hdinsight-linux-ambari-ssh-tunnel.md)
 
-* **Ambari (REST)**  - https://CLUSTERNAME.azurehdinsight.net/ambari
+* **Ambari (REST)**  - `https://CLUSTERNAME.azurehdinsight.net/ambari`
 
     > [!NOTE]  
     > Verificatie met behulp van de gebruikers naam en het wacht woord van de Cluster beheerder.
     >
     > Verificatie is in tekst zonder opmaak: gebruik altijd HTTPS om ervoor te zorgen dat de verbinding beveiligd is.
 
-* **WebHCat (Templeton)**  - https://CLUSTERNAME.azurehdinsight.net/templeton
+* **WebHCat (Templeton)**  - `https://CLUSTERNAME.azurehdinsight.net/templeton`
 
     > [!NOTE]  
     > Verificatie met behulp van de gebruikers naam en het wacht woord van de Cluster beheerder.
@@ -84,7 +84,7 @@ Met deze opdracht wordt een JSON-document geretourneerd dat de service beschrijf
 
 Zie voor meer informatie de [poorten die worden gebruikt door Apache Hadoop Services in HDInsight](hdinsight-hadoop-port-settings-for-services.md) -document.
 
-## <a name="file-locations"></a>Bestands locaties
+## <a name="file-locations"></a>Bestandslocaties
 
 Hadoop-gerelateerde bestanden kunnen worden gevonden op de cluster knooppunten op `/usr/hdp`. Deze map bevat de volgende submappen:
 

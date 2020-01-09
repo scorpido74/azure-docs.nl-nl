@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7fac09ff236e4bb2c63691f9dc1ad41bb49edae4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 099dc723db44ba71fc4672c382d24ac93ffe742f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793362"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689131"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
@@ -50,12 +50,13 @@ Niet-beheerde VM-schijven worden niet ondersteund in accounts met een hiërarchi
 
 ## <a name="filesystem-support-in-sdks"></a>Bestandssysteem ondersteuning in Sdk's
 
-- .NET, Java en python bevinden zich in de open bare preview. Andere Sdk's worden momenteel niet ondersteund.
-- Het ophalen en instellen van Acl's-bewerkingen zijn momenteel niet recursief.
+- [.Net](data-lake-storage-directory-file-acl-dotnet.md)-, [Java](data-lake-storage-directory-file-acl-java.md) -en [python](data-lake-storage-directory-file-acl-python.md) -ondersteuning bevinden zich in de open bare preview. Andere Sdk's worden momenteel niet ondersteund.
+- Het ophalen en instellen van ACL-bewerkingen is momenteel niet recursief.
 
 ## <a name="filesystem-support-in-powershell-and-azure-cli"></a>Bestandssysteem ondersteuning in Power shell en Azure CLI
 
-Het ophalen en instellen van Acl's-bewerkingen zijn momenteel niet recursief.
+- [Power shell](data-lake-storage-directory-file-acl-powershell.md) en [Azure cli](data-lake-storage-directory-file-acl-cli.md) -ondersteuning zijn beschikbaar als open bare preview.
+- Het ophalen en instellen van ACL-bewerkingen is momenteel niet recursief.
 
 ## <a name="support-for-other-blob-storage-features"></a>Ondersteuning voor andere Blob Storage-functies
 
@@ -63,9 +64,10 @@ De volgende tabel bevat alle andere functies en hulpprogram ma's die nog niet wo
 
 | Functie/hulp programma    | Meer informatie    |
 |--------|-----------|
+| **Account-failover** |Nog niet ondersteund|
 | **AzCopy** | Versie-specifieke ondersteuning <br><br>Gebruik alleen de meest recente versie van AzCopy ([AzCopy V10 toevoegen](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Eerdere versies van AzCopy, zoals AzCopy v 8.1, worden niet ondersteund.|
 | **Beheer beleid voor Azure Blob Storage levenscyclus** | Levenscyclus beheer beleid wordt ondersteund (preview-versie).  Alle toegangs lagen worden ondersteund. De Access-laag voor het archief is momenteel beschikbaar als preview-versie. Het verwijderen van BLOB-moment opnamen wordt nog niet ondersteund. <br><br> Er zijn momenteel een aantal fouten die het levenscyclus beheer beleid en de Access-laag voor archieven beïnvloeden.  Meld u aan voor de preview van levenscyclus beheer-beleid en Archive Access [-laag.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)   |
-| **Azure-Content Delivery Network (CDN)** | Nog niet ondersteund|
+| **Azure Content Delivery Network (CDN)** | Nog niet ondersteund|
 | **Azure Search** |Ondersteund (preview-versie)|
 | **Azure-opslagverkenner** | Versie-specifieke ondersteuning. <br><br>Gebruik alleen versies `1.6.0` of hoger. <br> Er is momenteel een opslag fout die van invloed is op de versie `1.11.0` die kan leiden tot verificatie fouten in bepaalde scenario's. Er wordt een oplossing voor de opslag fout geïmplementeerd, maar als tijdelijke oplossing wordt u aangeraden versie `1.10.x` te gebruiken die beschikbaar is als [gratis down load](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes). `1.10.x` wordt niet beïnvloed door de opslag fout.|
 | **BLOB-container-Acl's** |Nog niet ondersteund|

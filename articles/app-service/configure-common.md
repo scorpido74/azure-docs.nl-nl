@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45de3b79263fd43a93fcea73c271ede4bc5f96fe
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: e4ba7326d9c23bed2406e62fe1a206501d05a1b1
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671950"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666177"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Een App Service-app configureren in het Azure Portal
 
@@ -21,9 +21,13 @@ In dit onderwerp wordt uitgelegd hoe u algemene instellingen configureert voor w
 
 In App Service zijn app-instellingen variabelen die als omgevings variabelen worden door gegeven aan de toepassings code. Voor Linux-apps en aangepaste containers App Service de app-instellingen door gegeven aan de container met behulp van de `--env`-markering om de omgevings variabele in de container in te stellen.
 
-Ga in het [Azure Portal]naar de beheer pagina van uw app. Klik in het menu links van de app op **configuratie** > **Toepassings instellingen**.
+In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervolgens uw app. 
 
-![Toepassings instellingen](./media/configure-common/open-ui.png)
+![Zoeken naar App Services](./media/configure-common/search-for-app-services.png)
+
+Selecteer **configuratie** > **Toepassings instellingen**in het menu van de app.
+
+![Toepassingsinstellingen](./media/configure-common/open-ui.png)
 
 Voor ASP.NET-en ASP.NET Core-ontwikkel aars is het instellen van de app-instellingen in App Service vergelijkbaar met het instellen hiervan in `<appSettings>` in *Web. config* of *appSettings. json*, maar de waarden in app service negeren deze in *Web. config* of *appSettings. json*. U kunt de ontwikkelings instellingen (bijvoorbeeld lokaal MySQL-wacht woord) in *Web. config* of *appSettings. json*blijven gebruiken, maar productie geheimen (bijvoorbeeld Azure MySQL-database wachtwoord) veilig in app service. Dezelfde code maakt gebruik van uw ontwikkelings instellingen wanneer u lokaal fouten opspoort en uw productie geheimen gebruikt wanneer deze worden geïmplementeerd in Azure.
 
@@ -82,9 +86,9 @@ App-instellingen hebben de volgende JSON-indeling:
 
 ## <a name="configure-connection-strings"></a>Verbindingsreeksen configureren
 
-Ga in het [Azure Portal]naar de beheer pagina van de app. Klik in het menu links van de app op **configuratie** > **Toepassings instellingen**.
+In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervolgens uw app. Selecteer **configuratie** > **Toepassings instellingen**in het menu van de app.
 
-![Toepassings instellingen](./media/configure-common/open-ui.png)
+![Toepassingsinstellingen](./media/configure-common/open-ui.png)
 
 Voor ASP.NET-en ASP.NET Core-ontwikkel aars is het instellen van verbindings reeksen in App Service vergelijkbaar met het instellen hiervan in `<connectionStrings>` in *Web. config*, maar met de waarden die u in app service instelt, worden deze in *Web. config*genegeerd. U kunt de ontwikkelings instellingen (bijvoorbeeld een database bestand) in *Web. config* en productie geheimen (bijvoorbeeld SQL database referenties) veilig in app service blijven. Dezelfde code maakt gebruik van uw ontwikkelings instellingen wanneer u lokaal fouten opspoort en uw productie geheimen gebruikt wanneer deze worden geïmplementeerd in Azure.
 
@@ -153,7 +157,7 @@ Verbindings reeksen hebben de volgende JSON-indeling:
 
 ## <a name="configure-general-settings"></a>Algemene instellingen configureren
 
-Ga in het [Azure Portal]naar de beheer pagina van de app. Klik in het menu links van de app op **configuratie** > **Toepassings instellingen**.
+In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervolgens uw app. Selecteer **configuratie** > **algemene instellingen**in het menu van de app.
 
 ![Algemene instellingen](./media/configure-common/open-general.png)
 
@@ -176,9 +180,9 @@ Hier kunt u enkele algemene instellingen voor de app configureren. Voor sommige 
 
 Deze instelling geldt alleen voor Windows-apps.
 
-Ga in het [Azure Portal]naar de beheer pagina van de app. Klik in het menu links van de app op **configuratie** > **standaard documenten**.
+In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervolgens uw app. Selecteer **configuratie** > **standaard documenten**in het menu van de app.
 
-![Algemene instellingen](./media/configure-common/open-documents.png)
+![Standaarddocumenten](./media/configure-common/open-documents.png)
 
 Het standaard document is de webpagina die wordt weer gegeven op de basis-URL voor een website. Het eerste overeenkomende bestand in de lijst wordt gebruikt. Als u een nieuw standaard document wilt toevoegen, klikt u op **Nieuw document**. Vergeet niet op **Opslaan**te klikken.
 
@@ -186,9 +190,9 @@ Als de app gebruikmaakt van modules die worden gerouteerd op basis van URL in pl
 
 ## <a name="configure-path-mappings"></a>Paden configureren
 
-Ga in het [Azure Portal]naar de beheer pagina van de app. Klik in het menu links van de app op **configuratie** > **paden worden toegewezen**.
+In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervolgens uw app. Selecteer in het menu links van de app **configuratie** > **paden worden toegewezen**.
 
-![Algemene instellingen](./media/configure-common/open-path.png)
+![Padtoewijzingen](./media/configure-common/open-path.png)
 
 Op de pagina **paden toewijzen** worden verschillende dingen weer gegeven op basis van het type besturings systeem.
 

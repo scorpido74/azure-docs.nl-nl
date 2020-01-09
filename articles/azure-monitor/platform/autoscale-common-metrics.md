@@ -1,19 +1,15 @@
 ---
 title: Algemene metrische gegevens automatisch schalen
 description: Meer informatie over de metrische gegevens die vaak worden gebruikt voor het automatisch schalen van uw Cloud Services, Virtual Machines en Web Apps.
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/6/2016
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7b9c19ba3b85813eb12f6b906427f3cfdc9a0f67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129730"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364591"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor automatisch schalen van algemene metrische gegevens
 
@@ -26,7 +22,7 @@ Azure Monitor automatisch schalen is alleen van toepassing op [Virtual Machine S
 ## <a name="compute-metrics-for-resource-manager-based-vms"></a>Reken gegevens voor virtuele machines op basis van Resource Manager
 Standaard worden metrische gegevens op basis van Resource Manager Virtual Machines en Virtual Machine Scale Sets basis waarden (op het niveau van de host). Wanneer u de diagnostische gegevens verzameling voor een Azure-VM en VMSS configureert, worden de diagnostische Azure-extensie bovendien ook prestatie meter items van het gast besturingssysteem (meestal ' metrische gegevens van het besturings systeem ' genoemd).  U gebruikt al deze metrische gegevens in regels voor automatisch schalen.
 
-U kunt de `Get MetricDefinitions` API/PoSH/CLI gebruiken om de metrische gegevens weer te geven die beschikbaar zijn voor uw VMSS-resource.
+U kunt de `Get MetricDefinitions`-API/PoSH/CLI gebruiken om de metrische gegevens weer te geven die beschikbaar zijn voor uw VMSS-resource.
 
 Als u VM-schaal sets gebruikt en er geen specifieke metriek wordt weer gegeven, is deze waarschijnlijk *uitgeschakeld* in de uitbrei ding voor diagnostische gegevens.
 
@@ -53,33 +49,33 @@ U kunt een waarschuwing maken voor de volgende metrische gegevens:
 
 | Naam van meetwaarde | Eenheid |
 | --- | --- |
-| \Processor(_Total)\% Processor Time |Percent |
-| \Processor (_Totaal)\% beschermde tijd |Percent |
-| \Processor (_Totaal)\% tijd van gebruiker |Percent |
-| \Processor Information (_Totaal) \Processor frequentie |Count |
-| \System\Processes |Count |
-| \Process(_Total)\Thread Count |Count |
-| \Process(_Total)\Handle Count |Count |
-| \Memory\% toegewezen bytes in gebruik |Percent |
+| \Processor(_Total)\% Processor Time |Procent |
+| \Processor (_Total)\% geprivilegieerde tijd |Procent |
+| \Processor (_Total)\% gebruikers tijd |Procent |
+| \Processor-frequentie \Processor Information (_Total) |Aantal |
+| \System\Processes |Aantal |
+| \Process(_Total)\Thread Count |Aantal |
+| \Process(_Total)\Handle Count |Aantal |
+| \Memory toegewezen bytes in gebruik\% |Procent |
 | \Memory\Available Bytes |Bytes |
 | \Memory\Committed bytes |Bytes |
 | Limiet voor \Memory\Commit |Bytes |
 | \Memory\Pool Paged Bytes |Bytes |
 | Niet-wisselbaar \Memory\Pool bytes |Bytes |
-| \PhysicalDisk (_Totaal)\% schijf tijd |Percent |
-| \PhysicalDisk (_Totaal)\% Lees tijd schijf |Percent |
-| \PhysicalDisk (_Totaal)\% schrijf tijd schijf |Percent |
+| \PhysicalDisk (_Total)\% schijf tijd |Procent |
+| \PhysicalDisk (_Total)\% Lees tijd schijf |Procent |
+| \PhysicalDisk (_Total)\% schrijf tijd schijf |Procent |
 | \PhysicalDisk(_Total)\Disk Transfers/sec |CountPerSecond |
 | \PhysicalDisk(_Total)\Disk Reads/sec |CountPerSecond |
 | \PhysicalDisk(_Total)\Disk Writes/sec |CountPerSecond |
 | \PhysicalDisk(_Total)\Disk Bytes/sec |BytesPerSecond |
-| \PhysicalDisk (_Totaal) \Gelezen Lees bewerkingen in bytes per seconde |BytesPerSecond |
+| \PhysicalDisk (_Total) \Gelezen Lees bewerkingen in bytes per seconde |BytesPerSecond |
 | \PhysicalDisk(_Total)\Disk Write Bytes/sec |BytesPerSecond |
-| \PhysicalDisk(_Total)\Avg. Lengte van de wachtrij voor de schijf |Count |
-| \PhysicalDisk(_Total)\Avg. Wachtrij lengte voor lezen van schijf |Count |
-| \PhysicalDisk(_Total)\Avg. Wachtrij lengte schrijf bewerking schijf |Count |
-| \LogicalDisk (_Totaal)\% beschik bare ruimte |Percent |
-| \LogicalDisk(_Total)\Free Megabytes |Count |
+| \PhysicalDisk (_Total) \Avg.-wachtrij lengte voor de schijf |Aantal |
+| \PhysicalDisk (_Total) \Avg.-wachtrij lengte voor lezen van schijf |Aantal |
+| \PhysicalDisk (_Total) \Avg. schijf lengte schrijf wachtrij |Aantal |
+| \LogicalDisk (_Total)\% beschik bare ruimte |Procent |
+| \LogicalDisk(_Total)\Free Megabytes |Aantal |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Gegevens van virtuele machines van het gast besturingssysteem Linux-Vm's
 Wanneer u een virtuele machine in azure maakt, wordt de diagnostische gegevens standaard ingeschakeld met behulp van de diagnostische extensie.
@@ -95,25 +91,25 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | Naam van meetwaarde | Eenheid |
 | --- | --- |
 | \Memory\AvailableMemory |Bytes |
-| \Memory\PercentAvailableMemory |Percent |
+| \Memory\PercentAvailableMemory |Procent |
 | \Memory\UsedMemory |Bytes |
-| \Memory\PercentUsedMemory |Percent |
-| \Memory\PercentUsedByCache |Percent |
+| \Memory\PercentUsedMemory |Procent |
+| \Memory\PercentUsedByCache |Procent |
 | \Memory\PagesPerSec |CountPerSecond |
 | \Memory\PagesReadPerSec |CountPerSecond |
 | \Memory\PagesWrittenPerSec |CountPerSecond |
 | \Memory\AvailableSwap |Bytes |
-| \Memory\PercentAvailableSwap |Percent |
+| \Memory\PercentAvailableSwap |Procent |
 | \Memory\UsedSwap |Bytes |
-| \Memory\PercentUsedSwap |Percent |
-| \Processor\PercentIdleTime |Percent |
-| \Processor\PercentUserTime |Percent |
-| \Processor\PercentNiceTime |Percent |
-| \Processor\PercentPrivilegedTime |Percent |
-| \Processor\PercentInterruptTime |Percent |
-| \Processor\PercentDPCTime |Percent |
-| \Processor\PercentProcessorTime |Percent |
-| \Processor\PercentIOWaitTime |Percent |
+| \Memory\PercentUsedSwap |Procent |
+| \Processor\PercentIdleTime |Procent |
+| \Processor\PercentUserTime |Procent |
+| \Processor\PercentNiceTime |Procent |
+| \Processor\PercentPrivilegedTime |Procent |
+| \Processor\PercentInterruptTime |Procent |
+| \Processor\PercentDPCTime |Procent |
+| \Processor\PercentProcessorTime |Procent |
+| \Processor\PercentIOWaitTime |Procent |
 | \PhysicalDisk\BytesPerSecond |BytesPerSecond |
 | \PhysicalDisk\ReadBytesPerSecond |BytesPerSecond |
 | \PhysicalDisk\WriteBytesPerSecond |BytesPerSecond |
@@ -123,15 +119,15 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk\AverageReadTime |Seconden |
 | \PhysicalDisk\AverageWriteTime |Seconden |
 | \PhysicalDisk\AverageTransferTime |Seconden |
-| \PhysicalDisk\AverageDiskQueueLength |Count |
+| \PhysicalDisk\AverageDiskQueueLength |Aantal |
 | \NetworkInterface\BytesTransmitted |Bytes |
 | \NetworkInterface\BytesReceived |Bytes |
-| \NetworkInterface\PacketsTransmitted |Count |
-| \NetworkInterface\PacketsReceived |Count |
+| \NetworkInterface\PacketsTransmitted |Aantal |
+| \NetworkInterface\PacketsReceived |Aantal |
 | \NetworkInterface\BytesTotal |Bytes |
-| \NetworkInterface\TotalRxErrors |Count |
-| \NetworkInterface\TotalTxErrors |Count |
-| \NetworkInterface\TotalCollisions |Count |
+| \NetworkInterface\TotalRxErrors |Aantal |
+| \NetworkInterface\TotalTxErrors |Aantal |
+| \NetworkInterface\TotalCollisions |Aantal |
 
 ## <a name="commonly-used-web-server-farm-metrics"></a>Veelgebruikte metrische gegevens voor Web (server-farm)
 U kunt ook automatisch schalen uitvoeren op basis van algemene gegevens van webservers, zoals de lengte van de http-wachtrij. De naam van de metrische waarde is **HttpQueueLength**.  In de volgende sectie worden metrische gegevens van de beschik bare server farm (Web Apps) weer gegeven.
@@ -147,10 +143,10 @@ U kunt een melding ontvangen over of schalen op basis van deze metrische gegeven
 
 | Naam van meetwaarde | Eenheid |
 | --- | --- |
-| CpuPercentage |Percent |
-| MemoryPercentage |Percent |
-| DiskQueueLength |Count |
-| HttpQueueLength |Count |
+| CpuPercentage |Procent |
+| MemoryPercentage |Procent |
+| DiskQueueLength |Aantal |
+| HttpQueueLength |Aantal |
 | BytesReceived |Bytes |
 | BytesSent |Bytes |
 

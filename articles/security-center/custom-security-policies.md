@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 3e60c0e165b8f9ec79aac2048011d9e315b0ce18
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 34dbace304ccf70891ef53dd768de60d87e26967
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483959"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666632"
 ---
 # <a name="using-custom-security-policies-preview"></a>Aangepaste beveiligings beleidsregels gebruiken (preview-versie)
 
 Azure Security Center beveiligings aanbevelingen worden gegenereerd om uw systemen en omgeving te beveiligen. Deze aanbevelingen zijn gebaseerd op de best practices van de branche, die zijn opgenomen in het algemene standaard beveiligings beleid dat aan alle klanten wordt verstrekt. Ze kunnen ook afkomstig zijn van de kennis van de branche-en regelgevings normen van Security Center.
 
-Met deze preview-functie kunt u uw eigen *aangepaste* initiatieven toevoegen. U ontvangt dan aanbevelingen als uw omgeving niet voldoet aan het beleid dat u maakt.
+Met deze preview-functie kunt u uw eigen *aangepaste* initiatieven toevoegen. U ontvangt dan aanbevelingen als uw omgeving niet voldoet aan het beleid dat u maakt. Alle aangepaste initiatieven die u maakt, worden weer gegeven naast de ingebouwde initiatieven in het dash board nalevings beleid dat in de zelf studie wordt beschreven en de [naleving van regelgeving verbeteren](security-center-compliance-dashboard.md).
 
 Zoals beschreven [in](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) de documentatie van Azure Policy, moet u, wanneer u een locatie opgeeft voor uw aangepaste initiatief, een beheer groep of een abonnement zijn. 
 
@@ -58,6 +58,12 @@ Zoals beschreven [in](https://docs.microsoft.com/azure/governance/policy/concept
 
     > [!NOTE]
     > Voor het maken van nieuwe initiatieven zijn referenties van abonnements eigenaren vereist. Zie [machtigingen in azure Security Center](security-center-permissions.md)voor meer informatie over Azure-rollen.
+
+    Het nieuwe initiatief gaat in op de volgende twee manieren:
+
+    * Selecteer op de Security Center zijbalk onder beleids & naleving de optie naleving van **regelgeving**. Het compatibiliteits dashboard wordt geopend om uw nieuwe aangepaste initiatief naast de ingebouwde initiatieven weer te geven.
+    
+    * U ontvangt aanbevelingen als uw omgeving niet voldoet aan het beleid dat u hebt gedefinieerd.
 
 1. Als u de resulterende aanbevelingen voor uw beleid wilt zien, klikt u op de zijbalk op **aanbevelingen** om de pagina aanbevelingen te openen. De aanbevelingen worden weer gegeven met een aangepast label en zijn binnen ongeveer een uur beschikbaar.
 

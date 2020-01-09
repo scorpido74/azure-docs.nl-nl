@@ -1,6 +1,6 @@
 ---
-title: Resource bestanden maken en gebruiken-Azure Batch | Microsoft Docs
-description: Meer informatie over het maken van Azure Batch bron bestanden van verschillende invoer bronnen.
+title: Resource bestanden maken en gebruiken-Azure Batch
+description: Meer informatie over het maken van batch-resource bestanden uit verschillende invoer bronnen. In dit artikel worden enkele algemene methoden beschreven voor het maken en plaatsen van deze op een virtuele machine.
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
-ms.openlocfilehash: 9c55b22d1cb85fb645087cf48b54f9d5ac12d58f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e890bce378327fe5b1f4068d6719e6b905404f3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322172"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390057"
 ---
 # <a name="creating-and-using-resource-files"></a>Bron bestanden maken en gebruiken
 
@@ -32,9 +32,9 @@ Er zijn een aantal verschillende opties beschikbaar voor het genereren van bron 
 
 Opties voor het maken van een bron bestand:
 
-- [URL van opslag container](#storage-container-url): Hiermee wordt een bron bestand gegenereerd vanuit een opslag container in azure
-- [Naam van opslag container](#storage-container-name): Hiermee wordt een bron bestand gegenereerd op basis van de naam van een container in een Azure-opslag account dat aan een batch is gekoppeld
-- [Web-eind punt](#web-endpoint): Hiermee wordt een bron bestand van een geldige HTTP-URL gegenereerd
+- [Opslag container-URL](#storage-container-url): Hiermee wordt een bron bestand uit een opslag container in azure gegenereerd
+- [Naam van opslag container](#storage-container-name): genereert een bron bestand van de naam van een container in een Azure Storage-account dat is gekoppeld aan batch
+- [Web-eind punt](#web-endpoint): genereert een bron bestand van een geldige http-URL
 
 ### <a name="storage-container-url"></a>URL van de opslag container
 
@@ -53,9 +53,9 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 ```
 
 > [!NOTE]
-> Voor toegang tot de container moet u zowel `Read` als `List` machtigingen hebben, terwijl BLOB-toegang u alleen toestemming `Read` nodig heeft.
+> Voor toegang tot de container moet u zowel `Read` als `List` machtigingen hebben, terwijl u met Blob-toegang alleen `Read` machtigingen nodig hebt.
 
-Nadat de machtigingen zijn geconfigureerd, maakt u het SAS-token en formatteert u de SAS-URL voor toegang tot de opslag container. Genereer met de opgemaakte SAS-URL voor de opslag container een [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet)bron bestand met.
+Nadat de machtigingen zijn geconfigureerd, maakt u het SAS-token en formatteert u de SAS-URL voor toegang tot de opslag container. Genereer met behulp van de geformatteerde SAS-URL voor de opslag container een bron bestand met [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet).
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);

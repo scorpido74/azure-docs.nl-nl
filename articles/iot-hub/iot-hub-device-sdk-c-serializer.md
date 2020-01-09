@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: robinsh
-ms.openlocfilehash: a18f52f0d0979477ff8d6de6745694676f4b4d0e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: dfea53e62383409411925f2fe2f18d61a6855ec1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883150"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429366"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Azure IoT Device SDK voor C: meer informatie over serialisatiefunctie
 
@@ -25,13 +25,13 @@ In dit artikel wordt beschreven hoe u de **serialisatiefunctie** -bibliotheek ge
 
 Ten slotte worden in het artikel enkele onderwerpen die in eerdere artikelen worden behandeld, zoals de verwerking van berichten en eigenschappen, opnieuw bezocht. Zoals u ziet, werken deze functies op dezelfde manier als de **serialisatiefunctie** -bibliotheek, net als bij de **IoTHubClient** -bibliotheek.
 
-Alles wat in dit artikel wordt beschreven, is gebaseerd op de voor beelden van de **serialisatiefunctie** -SDK. Als u de volg orde wilt volgen, raadpleegt u de **http\_-** toepassingen **Simple\_sample AMQP** en simple sample die zijn opgenomen in de Azure IOT Device SDK voor C.
+Alles wat in dit artikel wordt beschreven, is gebaseerd op de voor beelden van de **serialisatiefunctie** -SDK. Als u de volg orde wilt volgen, raadpleegt u de **simple sample\_AMQP** and **simple sample\_http-** toepassingen die zijn opgenomen in de Azure IOT Device SDK voor C.
 
 U vindt de [**Azure IOT Device SDK voor c**](https://github.com/Azure/azure-iot-sdk-c) github-opslag plaats en Raadpleeg de details van de API in de [C API-referentie](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/).
 
 ## <a name="the-modeling-language"></a>De modelleer taal
 
-De [Azure IOT Device SDK voor c](iot-hub-device-sdk-c-intro.md) -artikel in deze reeks heeft de **Azure IOT Device SDK voor** de model taal c geïntroduceerd via het voor beeld in de toepassing **Simple\_sample AMQP** :
+In het artikel [Azure IOT Device SDK voor c](iot-hub-device-sdk-c-intro.md) in deze reeks is de **Azure IOT Device SDK voor** de model taal c geïntroduceerd via het voor beeld in de toepassing **simple sample\_AMQP** :
 
 ```C
 BEGIN_NAMESPACE(WeatherStation);
@@ -47,7 +47,7 @@ WITH_ACTION(SetAirResistance, int, Position)
 END_NAMESPACE(WeatherStation);
 ```
 
-Zoals u kunt zien, is de model taal gebaseerd op C-macro's. U begint altijd met de definitie **met\_begin naam ruimte** en eindigt altijd met **\_end naam ruimte**. Het is gebruikelijk om de naam ruimte voor uw bedrijf te noemen of, zoals in dit voor beeld, het project waaraan u werkt.
+Zoals u kunt zien, is de model taal gebaseerd op C-macro's. U begint altijd met de definitie met **begin\_naam ruimte** en eindigt altijd met **End\_naam ruimte**. Het is gebruikelijk om de naam ruimte voor uw bedrijf te noemen of, zoals in dit voor beeld, het project waaraan u werkt.
 
 Wat er binnen de naam ruimte komt, zijn model definities. In dit geval is er één model voor een anemometer. Het model kan opnieuw worden benoemd, maar het model krijgt meestal een naam voor het apparaat of type gegevens dat u wilt uitwisselen met IoT Hub.  
 
@@ -64,17 +64,17 @@ Wat niet wordt beschreven in dit voor beeld zijn extra gegevens typen die door d
 
 De volgende gegevens typen worden ondersteund in modellen die zijn gemaakt met de **serialisatiefunctie** -bibliotheek:
 
-| type | Description |
+| Type | Beschrijving |
 | --- | --- |
 | double |drijvende-komma getal met dubbele precisie |
-| int |32 bits geheel getal |
+| int |32-bits geheel getal |
 | float |drijvende-komma getal met enkele precisie |
-| long |lange integer |
+| lang |lange integer |
 | int8\_t |8-bits geheel getal |
 | int16\_t |16-bits geheel getal |
-| Int32\_t |32 bits geheel getal |
-| int64\_t |64 bits geheel getal |
-| bool |boolean |
+| Int32\_t |32-bits geheel getal |
+| int64\_t |64-bits geheel getal |
+| bool |booleaans |
 | ascii\_char\_ptr |ASCII-teken reeks |
 | EDM\_DATE\_TIME\_OFFSET |datum en tijd verschuiving |
 | EDM\_GUID |GUID |
@@ -168,9 +168,9 @@ void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent
 }
 ```
 
-Deze functie serializeert de gegeven gegevens gebeurtenis en verzendt deze naar IOT hub met behulp van **IoTHubClient\_SendEventAsync**. Dit is dezelfde code die wordt besproken in eerdere artikelen (**SendAsync** bevat de logica in een handige functie).
+Deze functie serializeert de gegeven gegevens gebeurtenis en verzendt deze naar IoT Hub met behulp van **IoTHubClient\_SendEventAsync**. Dit is dezelfde code die wordt besproken in eerdere artikelen (**SendAsync** bevat de logica in een handige functie).
 
-Een andere Help-functie die wordt gebruikt in de vorige code is **GetDateTimeOffset**. Met deze functie wordt de opgegeven tijd getransformeerd naar een waarde van het type **EDM\_date\_time\_offset**:
+Een andere Help-functie die wordt gebruikt in de vorige code is **GetDateTimeOffset**. Met deze functie wordt de opgegeven tijd getransformeerd naar een waarde van het type **EDM\_datum\_tijd\_offset**:
 
 ```C
 EDM_DATE_TIME_OFFSET GetDateTimeOffset(time_t time)
@@ -233,7 +233,7 @@ WITH_DATA(HumidityEvent, Humidity)
 END_NAMESPACE(Contoso);
 ```
 
-Houd er rekening mee dat het model twee gegevens gebeurtenissen bevat: **Tempe ratuur** en **vochtigheid**. In tegens telling tot eerdere voor beelden is het type van elke gebeurtenis een structuur die is gedefinieerd met behulp van **STRUCT\_declareren**. **TemperatureEvent** bevat een meting van de Tempe ratuur en een tijds tempel; **HumidityEvent** bevat een meting van vochtigheid en een tijds tempel. Dit model biedt ons een natuurlijke manier om de gegevens te model leren voor het hierboven beschreven scenario. Wanneer we een gebeurtenis naar de Cloud verzenden, verzenden we een Tempe ratuur/tijds tempel of een paar van vochtigheid/tijds tempel.
+Houd er rekening mee dat het model twee gegevens gebeurtenissen bevat: **Tempe ratuur** en **vochtigheid**. In tegens telling tot eerdere voor beelden is het type van elke gebeurtenis een structuur die is gedefinieerd met behulp van **\_STRUCT declareren**. **TemperatureEvent** bevat een meting van de Tempe ratuur en een tijds tempel; **HumidityEvent** bevat een meting van vochtigheid en een tijds tempel. Dit model biedt ons een natuurlijke manier om de gegevens te model leren voor het hierboven beschreven scenario. Wanneer we een gebeurtenis naar de Cloud verzenden, verzenden we een Tempe ratuur/tijds tempel of een paar van vochtigheid/tijds tempel.
 
 We kunnen een temperatuur gebeurtenis naar de Cloud verzenden met behulp van de volgende code:
 
@@ -253,7 +253,7 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature) == IOT_AG
 
 We gebruiken hardcoded waarden voor de Tempe ratuur en vochtigheid in de voorbeeld code, maar stel dat we deze waarden daad werkelijk ophalen door de overeenkomstige Sens oren op de Thermo staat te bemonsteren.
 
-De bovenstaande code maakt gebruik van het **GetDateTimeOffset** -hulp programma dat eerder is geïntroduceerd. Met deze code wordt de taak voor het serialiseren en verzenden van de gebeurtenis expliciet gescheiden. Met de vorige code wordt de temperatuur gebeurtenis in een buffer geserialiseerd. Vervolgens is **SendMessage** een hulp functie (opgenomen in **simple sample\_AMQP**) waarmee de gebeurtenis wordt verzonden naar IOT hub:
+De bovenstaande code maakt gebruik van het **GetDateTimeOffset** -hulp programma dat eerder is geïntroduceerd. Met deze code wordt de taak voor het serialiseren en verzenden van de gebeurtenis expliciet gescheiden. Met de vorige code wordt de temperatuur gebeurtenis in een buffer geserialiseerd. Vervolgens is **SendMessage** een hulp functie (opgenomen in **simple sample\_AMQP**) die de gebeurtenis naar IOT hub verzendt:
 
 ```C
 static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
@@ -278,7 +278,7 @@ Wanneer we de vorige code voor het verzenden van de temperatuur gebeurtenis uitv
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Er wordt een Tempe ratuur verzonden van het type **TemperatureEvent** en die struct bevat een **Tempe ratuur** en **tijd** lid. Dit wordt rechtstreeks weer gegeven in de geserialiseerde gegevens.
+Er wordt een Tempe ratuur verzonden die van het type **TemperatureEvent**is en die struct bevat een **Tempe ratuur** en **tijd** lid. Dit wordt rechtstreeks weer gegeven in de geserialiseerde gegevens.
 
 Op dezelfde manier kunnen we een vochtigheids gebeurtenis met deze code verzenden:
 
@@ -299,7 +299,7 @@ Het geserialiseerde formulier dat naar IoT Hub wordt verzonden, ziet er als volg
 
 Opnieuw, dit is zoals verwacht.
 
-Met dit model kunt u zien hoe extra gebeurtenissen eenvoudig kunnen worden toegevoegd. U definieert meer structuren met **\_declareren van STRUCT**en bevatten de bijbehorende gebeurtenis in het model met behulp **van\_gegevens**.
+Met dit model kunt u zien hoe extra gebeurtenissen eenvoudig kunnen worden toegevoegd. U kunt meer structuren definiëren met behulp van **\_STRUCT declareren**en de bijbehorende gebeurtenis in het model met behulp **van\_gegevens**toevoegen.
 
 Nu gaan we het model wijzigen zodat het dezelfde gegevens bevat, maar met een andere structuur.
 
@@ -315,7 +315,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-In dit geval hebben we de **Declare\_-STRUCT** macro's geëlimineerd en worden de gegevens items uit ons scenario door middel van eenvoudige typen uit de model taal gedefinieerd.
+In dit geval hebben we het **declareren van\_STRUCT** -macro's geëlimineerd en worden de gegevens items uit ons scenario door middel van eenvoudige typen uit de model taal gedefinieerd.
 
 U kunt de **tijd** gebeurtenis gewoon negeren. Dit is de code voor ingangs **temperatuur**:
 
@@ -369,7 +369,7 @@ Het resultaat van deze code is dat er twee gegevens gebeurtenissen naar IoT Hub 
 
 [{"Tempe ratuur": 75}, {"vochtigheids graad": 45}]
 
-Met andere woorden, u zult kunnen verwachten dat deze code hetzelfde is als het verzenden van de **Tempe ratuur** en **vochtigheid** afzonderlijk. Het is slechts een gemak om beide gebeurtenissen door te geven om in dezelfde oproep te serialiseren. Dat is echter niet het geval. In plaats daarvan verzendt de bovenstaande code deze enkele gegevens gebeurtenis naar IoT Hub:
+Met andere woorden, u zult kunnen verwachten dat deze code hetzelfde is als het verzenden van de **Tempe ratuur** en **vochtigheid** afzonderlijk. Het is slechts een gemak om beide gebeurtenissen door te geven om in dezelfde oproep te **serialiseren** . Dat is echter niet het geval. In plaats daarvan verzendt de bovenstaande code deze enkele gegevens gebeurtenis naar IoT Hub:
 
 {"Tempe ratuur": 75, "vochtigheids graad": 45}
 
@@ -398,7 +398,7 @@ WITH_DATA(TemperatureAndHumidityEvent, TemperatureAndHumidity),
 
 Als we dit model hebben gebruikt, is het eenvoudiger om te begrijpen hoe de **Tempe ratuur** en **vochtigheids graad** in hetzelfde geserialiseerde bericht zouden worden verzonden. Het kan echter niet duidelijk zijn waarom het werkt op die manier wanneer u beide gegevens gebeurtenissen doorgeeft aan een **serialisatie** met behulp van model 2.
 
-Dit gedrag is gemakkelijker te begrijpen als u weet wat de veronderstellingen zijn die de serializer-bibliotheek maakt. U kunt het volgende model weer geven:
+Dit gedrag is gemakkelijker te begrijpen als u weet wat de veronderstellingen zijn die de **serializer** -bibliotheek maakt. Om dit te maken, gaan we terug naar ons model:
 
 ```C
 DECLARE_MODEL(Thermostat,
@@ -431,13 +431,13 @@ Soms wilt u mogelijk slechts *enkele* eigenschappen van het model naar de Cloud 
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Hiermee wordt exact dezelfde geserialiseerde gebeurtenis gegenereerd alsof er een **TemperatureEvent** is gedefinieerd met een **Tempe ratuur** en **tijd** lid, net zoals bij model 1. In dit geval kunnen we exact dezelfde geserialiseerde gebeurtenis genereren met behulp van een ander model (model 2) omdat we serialisatie op een andere manier hebben genoemd.
+Hiermee wordt exact dezelfde geserialiseerde gebeurtenis gegenereerd alsof er een **TemperatureEvent** is gedefinieerd met een **Tempe ratuur** en **tijd** lid, net zoals bij model 1. In dit geval kunnen we exact dezelfde geserialiseerde gebeurtenis genereren met behulp van een ander model (model 2) omdat we **serialisatie** op een andere manier hebben genoemd.
 
 Het belang rijk punt is dat als u meerdere gegevens gebeurtenissen doorgeeft om te **serialiseren,** ervan wordt uitgegaan dat elke gebeurtenis een eigenschap in één JSON-object is.
 
-De beste benadering is afhankelijk van u en hoe u uw model vindt. Als u gebeurtenissen naar de Cloud verzendt en elke gebeurtenis een gedefinieerde set eigenschappen bevat, is de eerste benadering veel zinvol. In dat geval kunt u **STRUCT\_declareren** gebruiken om de structuur van elke gebeurtenis te definiëren en deze vervolgens opnemen in uw model met de macro **with\_data** . Vervolgens verzendt u elke gebeurtenis als in het eerste voor beeld hierboven. In deze benadering geeft u slechts één gegevens gebeurtenis door aan **serializer**.
+De beste benadering is afhankelijk van u en hoe u uw model vindt. Als u gebeurtenissen naar de Cloud verzendt en elke gebeurtenis een gedefinieerde set eigenschappen bevat, is de eerste benadering veel zinvol. In dat geval kunt u **\_STRUCT declareren** om de structuur van elke gebeurtenis te definiëren en deze vervolgens opnemen in uw model met de macro **with\_data** . Vervolgens verzendt u elke gebeurtenis als in het eerste voor beeld hierboven. In deze benadering geeft u slechts één gegevens gebeurtenis door aan **serializer**.
 
-Als u uw model op een objectgeoriënteerd manier wilt bedenken, kan de tweede benadering bij u aansluiten. In dit geval zijn de elementen die zijn **gedefinieerd\_** met behulp van gegevens de ' Eigenschappen ' van uw object. U geeft een subset van de gebeurtenissen die u wilt serialiseren, afhankelijk van de hoeveelheid van de status van het object dat u naar de Cloud wilt verzenden.
+Als u uw model op een objectgeoriënteerd manier wilt bedenken, kan de tweede benadering bij u aansluiten. In dit geval zijn de elementen die zijn gedefinieerd met **met\_gegevens** de ' Eigenschappen ' van uw object. U geeft een subset van de gebeurtenissen die u wilt **serialiseren** , afhankelijk van de hoeveelheid van de status van het object dat u naar de Cloud wilt verzenden.
 
 De Nether-benadering is correct of onjuist. U hoeft alleen maar op de hoogte te zijn van de werking van de **serialisatiefunctie** -bibliotheek en de model benadering te kiezen die het beste bij uw behoeften past.
 
@@ -514,7 +514,7 @@ Als u een bericht naar een apparaat verzendt, kunt u dit doen via de Azure IoT S
 {"Name" : "", "Parameters" : "" }
 ```
 
-U verzendt een geserialiseerd JSON-object met twee eigenschappen: **Naam** is de naam van de actie (bericht) en de **para meters** bevatten de para meters van die actie.
+U verzendt een geserialiseerd JSON-object met twee eigenschappen: **name** is de naam van de actie (bericht) en de **para meters** bevatten de para meters van die actie.
 
 Als u bijvoorbeeld **SetAirResistance** aanroept, kunt u dit bericht verzenden naar een apparaat:
 
@@ -537,7 +537,7 @@ In deze sectie wordt beschreven wat u moet weten wanneer u gebeurtenissen verzen
 
 Als u de **serialisatiefunctie** -bibliotheek gebruikt, is er een belang rijk onderdeel van de SDK waarmee u rekening moet houden, is te vinden in de bibliotheek van Azure-c-Shared-Utility.
 
-Als u de Azure-IOT-SDK-c-opslag plaats hebt gekloond van GitHub met behulp van de optie-recursief, vindt u hier deze gedeelde hulpprogramma bibliotheek:
+Als u de Azure-IOT-SDK-c-opslag plaats hebt gekloond van GitHub en de opdracht `git submodule update --init` hebt uitgegeven, vindt u deze gedeelde hulpprogramma bibliotheek hier:
 
 ```C
 .\\c-utility
@@ -551,13 +551,13 @@ In de bibliotheek van het gedeelde hulp programma vindt u de volgende map:
 azure-c-shared-utility\\macro\_utils\_h\_generator.
 ```
 
-Deze map bevat een Visual Studio-oplossing met de naam **macro\_hulppra\_\_generator. SLN**:
+Deze map bevat een Visual Studio-oplossing met de naam **macro\_hulppr.\_h\_generator. SLN**:
 
   ![Scherm afbeelding van de Visual Studio-oplossing maco_utils_h_generator](media/iot-hub-device-sdk-c-serializer/01-macro_utils_h_generator.png)
 
-Het programma in deze oplossing genereert het **bestand\_macro hulppr. h** . Er is een standaard macro\_van het bestand hulppr. h dat is opgenomen in de SDK. Met deze oplossing kunt u enkele para meters wijzigen en vervolgens het header-bestand opnieuw maken op basis van deze para meters.
+Het programma in deze oplossing genereert de **macro\_hulppr. h** -bestand. Er is een standaard macro\_hulppr. h-bestand dat is opgenomen in de SDK. Met deze oplossing kunt u enkele para meters wijzigen en vervolgens het header-bestand opnieuw maken op basis van deze para meters.
 
-De twee belang rijke para meters zijn **nArithmetic** en **nMacroParameters** die in de volgende twee regels zijn gedefinieerd in macro\_utils.tt:
+De twee belang rijke para meters die u wilt uitvoeren, zijn **nArithmetic** en **nMacroParameters**, die worden gedefinieerd in de volgende twee regels in macro\_utils.tt:
 
 ```C
 <#int nArithmetic=1024;#>
@@ -566,7 +566,7 @@ De twee belang rijke para meters zijn **nArithmetic** en **nMacroParameters** di
 
 Deze waarden zijn de standaard parameters die in de SDK zijn opgenomen. Elke para meter heeft de volgende betekenis:
 
-* nMacroParameters: bepaalt het aantal para meters dat u kunt hebben\_in één Declareer model macro definitie.
+* nMacroParameters: bepaalt het aantal para meters dat u kunt hebben in één DECLAReer\_MODEL macro definitie.
 * nArithmetic: bepaalt het totale aantal leden dat is toegestaan in een model.
 
 De reden hiervoor is dat deze para meters belang rijk zijn omdat ze bepalen hoe groot uw model kan zijn. Denk bijvoorbeeld aan deze model definitie:
@@ -577,7 +577,7 @@ WITH_DATA(int, MyData)
 );
 ```
 
-Zoals eerder vermeld, **is\_declare model** gewoon a C macro. De namen van het model en de **instructie\_with data** (nog een andere macro) zijn para meters van het **Declare\_-model**. **nMacroParameters** definieert hoeveel para meters in het **Declare\_-model**kunnen worden opgenomen. Dit bepaalt effectief hoeveel gegevens gebeurtenissen en actie declaraties u kunt hebben. Als zodanig, met de standaard limiet van 124, betekent dit dat u een model kunt definiëren met een combi natie van ongeveer 60 acties en gegevens gebeurtenissen. Als u deze limiet overschrijdt, ontvangt u compilatie fouten die er ongeveer als volgt uitzien:
+Zoals eerder vermeld, **declareren\_model** is gewoon een C-macro. De namen van het model en de **gegevens instructie WITH\_** (nog een andere macro) zijn para meters van het **declareren van\_model**. **nMacroParameters** definieert het aantal para meters dat kan worden opgenomen in het **declareren van\_model**. Dit bepaalt effectief hoeveel gegevens gebeurtenissen en actie declaraties u kunt hebben. Als zodanig, met de standaard limiet van 124, betekent dit dat u een model kunt definiëren met een combi natie van ongeveer 60 acties en gegevens gebeurtenissen. Als u deze limiet overschrijdt, ontvangt u compilatie fouten die er ongeveer als volgt uitzien:
 
   ![Scherm afbeelding van de compiler fouten van macro parameters](media/iot-hub-device-sdk-c-serializer/02-nMacroParametersCompilerErrors.png)
 
@@ -585,9 +585,9 @@ De para meter **nArithmetic** is meer informatie over de interne werking van de 
 
    ![Scherm opname van reken kundige Compileer fouten](media/iot-hub-device-sdk-c-serializer/03-nArithmeticCompilerErrors.png)
 
-Als u deze para meters wilt wijzigen, wijzigt u de waarden in\_het utils.tt-bestand van de macro\_, compileert u de macro hulppr\_&\_generator. SLN en voert u het gecompileerde programma uit. Wanneer u dit doet, wordt een nieuwe\_macro van het bestand hulppr. h gegenereerd en in de\\ geplaatst. algemene\\Inc-Directory.
+Als u deze para meters wilt wijzigen, wijzigt u de waarden in de macro\_utils.tt-bestand, compileert u de macro\_hulppr.\_h\_generator. SLN-oplossing en voert u het gecompileerde programma uit. Wanneer u dit doet, wordt er een nieuwe macro\_hulppr. h-bestand wordt gegenereerd en in de opgenomen.\\algemene\\Inc-Directory.
 
-Als u de nieuwe versie van macro\_hulppr. h wilt gebruiken, verwijdert u het **serializer** NuGet-pakket uit uw oplossing en op de plaats daarvan voegt u het **serializer** Visual Studio-project toe. Hierdoor kan uw code worden gecompileerd op basis van de bron code van de serialisatiefunctie-bibliotheek. Dit omvat de bijgewerkte macro\_hulppr. h. Als u dit wilt doen voor **simple sample\_AMQP**, moet u eerst het NuGet-pakket voor de serialisatiefunctie-bibliotheek verwijderen uit de oplossing:
+Als u de nieuwe versie van de macro wilt gebruiken\_hulppr. h, verwijdert u het **serializer** NuGet-pakket uit uw oplossing. in plaats daarvan neemt u het **serializer** Visual Studio-project op. Hierdoor kan uw code worden gecompileerd op basis van de bron code van de serialisatiefunctie-bibliotheek. Dit omvat de bijgewerkte macro\_hulppr. h. Als u dit wilt doen voor **simple sample\_AMQP**, moet u eerst het NuGet-pakket voor de serialisatiefunctie verwijderen uit de oplossing:
 
    ![Scherm opname van het verwijderen van het NuGet-pakket voor de serialisatiefunctie-bibliotheek](media/iot-hub-device-sdk-c-serializer/04-serializer-github-package.png)
 
@@ -601,14 +601,14 @@ Wanneer u klaar bent, moet uw oplossing er als volgt uitzien:
 
    ![Scherm afbeelding van de simplesample_amqp Visual Studio-oplossing](media/iot-hub-device-sdk-c-serializer/05-serializer-project.png)
 
-Wanneer u de oplossing nu compileert, wordt de\_bijgewerkte macro hulppr. h opgenomen in uw binaire bestand.
+Wanneer u de oplossing nu compileert, wordt de bijgewerkte macro\_hulppr. h opgenomen in uw binaire bestand.
 
 Houd er rekening mee dat het verhogen van deze waarden groot genoeg kan zijn voor de compilatie limieten. Op dit punt is de **nMacroParameters** de belangrijkste para meter waarmee de taak moet worden betrokken. De C99 SPEC geeft aan dat er mini maal 127 para meters zijn toegestaan in een macro definitie. De micro soft compiler volgt precies de specificatie (en heeft een limiet van 127), zodat u de **nMacroParameters** niet meer kunt verhogen dan de standaard waarde. Met andere compilers kunt u dit doen (bijvoorbeeld omdat de GNU-compiler een hogere limiet ondersteunt).
 
 Tot nu toe hebben we precies uitgelegd wat u nodig hebt om te weten te komen over het schrijven van code met de **serialisatiefunctie** -bibliotheek. Voordat u een sluiting maakt, gaan we enkele onderwerpen opnieuw bezoeken uit eerdere artikelen die u mogelijk vraagt.
 
 ## <a name="the-lower-level-apis"></a>De lagere Api's
-De voorbeeld toepassing waarop dit artikel is gericht, **is\_simple sample AMQP**. In dit voor beeld wordt gebruikgemaakt van de api's op hoger niveau (de niet-**ll**) om gebeurtenissen te verzenden en berichten te ontvangen. Als u deze Api's gebruikt, wordt er een achtergrond thread uitgevoerd die zorgt voor zowel het verzenden van gebeurtenissen als het ontvangen van berichten. U kunt echter de Api's van het lagere niveau (LL) gebruiken om deze achtergrond thread te elimineren en expliciet controle te krijgen over wanneer u gebeurtenissen verzendt of berichten ontvangt van de Cloud.
+De voorbeeld toepassing waarop dit artikel is gericht, is **simple sample\_AMQP**. In dit voor beeld wordt gebruikgemaakt van de api's op hoger niveau (de niet-**ll**) om gebeurtenissen te verzenden en berichten te ontvangen. Als u deze Api's gebruikt, wordt er een achtergrond thread uitgevoerd die zorgt voor zowel het verzenden van gebeurtenissen als het ontvangen van berichten. U kunt echter de Api's van het lagere niveau (LL) gebruiken om deze achtergrond thread te elimineren en expliciet controle te krijgen over wanneer u gebeurtenissen verzendt of berichten ontvangt van de Cloud.
 
 Zoals beschreven in een voor [gaande artikel](iot-hub-device-sdk-c-iothubclient.md), is er een set functies die bestaat uit de api's van het hogere niveau:
 
@@ -617,7 +617,7 @@ Zoals beschreven in een voor [gaande artikel](iot-hub-device-sdk-c-iothubclient.
 * IoTHubClient\_SetMessageCallback
 * IoTHubClient\_Destroy
 
-Deze api's worden in **simple sample\_AMQP**gedemonstreerd.
+Deze Api's worden gedemonstreerd in **simple sample\_AMQP**.
 
 Er is ook een analoge set Api's met een lager niveau.
 
@@ -628,10 +628,10 @@ Er is ook een analoge set Api's met een lager niveau.
 
 Houd er rekening mee dat de Api's van het lagere niveau precies dezelfde manier werken als in de vorige artikelen. U kunt de eerste set Api's gebruiken als u wilt dat een achtergrond thread het verzenden van gebeurtenissen en het ontvangen van berichten verwerkt. U gebruikt de tweede set Api's als u expliciete controle wilt over wanneer u gegevens van IoT Hub verzendt en ontvangt. Een set Api's werkt gelijk goed met de **serialisatiefunctie** -bibliotheek.
 
-Voor een voor beeld van hoe de api's met een lager niveau worden gebruikt met de **serialisatiefunctie** -bibliotheek, raadpleegt u de **http\_-toepassing simple sample** .
+Zie voor een voor beeld van hoe de lagere Api's worden gebruikt in combi natie met de **serializer** -bibliotheek de **http-toepassing simple sample\_** .
 
 ## <a name="additional-topics"></a>Extra onderwerpen
-Enkele andere onderwerpen over het opnieuw vermelden van eigenschappen zijn het afhandelen van een eigenschap, het gebruik van alternatieve referenties voor apparaten en configuratie opties. Dit zijn alle onderwerpen die in een [vorig artikel](iot-hub-device-sdk-c-iothubclient.md)worden behandeld. Het belangrijkste punt is dat al deze functies op dezelfde manier werken als de **serialisatiefunctie** -bibliotheek, net zoals met de **IoTHubClient** -bibliotheek. Als u bijvoorbeeld eigenschappen aan een gebeurtenis van uw model wilt koppelen, gebruikt u **IoTHubMessage\_-eigenschappen** en **wijst**\_u**AddorUpdate**, op dezelfde manier zoals eerder beschreven:
+Enkele andere onderwerpen over het opnieuw vermelden van eigenschappen zijn het afhandelen van een eigenschap, het gebruik van alternatieve referenties voor apparaten en configuratie opties. Dit zijn alle onderwerpen die in een [vorig artikel](iot-hub-device-sdk-c-iothubclient.md)worden behandeld. Het belangrijkste punt is dat al deze functies op dezelfde manier werken als de **serialisatiefunctie** -bibliotheek, net zoals met de **IoTHubClient** -bibliotheek. Als u bijvoorbeeld eigenschappen aan een gebeurtenis van uw model wilt koppelen, gebruikt u **IoTHubMessage-\_eigenschappen** en **wijst** u\_**AddorUpdate**, op dezelfde manier zoals eerder beschreven:
 
 ```C
 MAP_HANDLE propMap = IoTHubMessage_Properties(message.messageHandle);
@@ -641,9 +641,9 @@ Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 
 Of de gebeurtenis is gegenereerd op basis van de **serialisatiefunctie** -bibliotheek of hand matig is gemaakt met behulp van de **IoTHubClient** -bibliotheek.
 
-Voor de referenties van het alternatieve apparaat **gebruikt\_u\_IoTHubClient ll maken** , maar ook **voor\_IoTHubClient API createfromconnectionstring** voor het toewijzen van een **\_IOTHUB-client\_ INGANG**.
+Voor de referenties van het alternatieve apparaat gebruikt u **IoTHubClient\_LL\_maken** alleen en **IoTHubClient\_API createfromconnectionstring** voor het toewijzen van een **IOTHUB\_client\_-ingang**.
 
-Ten slotte kunt u, als u de **serialisatiefunctie** -bibliotheek gebruikt, configuratie opties instellen met **IoTHubClient\_ll\_SetOption** , net zoals u dat hebt gedaan bij het gebruik van de **IoTHubClient** -bibliotheek.
+Ten slotte kunt u, als u de **serializer** -bibliotheek gebruikt, configuratie opties instellen met **IoTHubClient\_ll\_SetOption** , net zoals u dat hebt gedaan bij het gebruik van de **IoTHubClient** -bibliotheek.
 
 Een functie die uniek is voor de **serialisatiefunctie** -bibliotheek, zijn de initialisatie-api's. Voordat u met de bibliotheek kunt gaan werken, moet u **serializer\_init**aanroepen:
 
@@ -653,13 +653,13 @@ serializer_init(NULL);
 
 Dit doet u net voordat u **IoTHubClient\_API createfromconnectionstring**aanroept.
 
-Wanneer u klaar bent met het werken met de bibliotheek, is de laatste aanroep die u maakt, de **\_serialisatie deinit**:
+Op dezelfde manier kunt u, wanneer u klaar bent met de bibliotheek, de laatste aanroep die u maakt, **serialiseren\_deinit**:
 
 ```C
 serializer_deinit();
 ```
 
-Als dat niet het geval is, worden alle andere functies die hierboven worden genoemd, op dezelfde manier uitgevoerd als in de **IoTHubClient** -bibliotheek. Zie het [vorige artikel](iot-hub-device-sdk-c-iothubclient.md) in deze serie voor meer informatie over deze onderwerpen.
+Als dat niet het geval is, worden alle andere functies die hierboven worden genoemd, op dezelfde manier uitgevoerd als **in de** **IoTHubClient** -bibliotheek. Zie het [vorige artikel](iot-hub-device-sdk-c-iothubclient.md) in deze serie voor meer informatie over deze onderwerpen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

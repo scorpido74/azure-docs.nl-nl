@@ -3,19 +3,19 @@ title: Beheerde container registers
 description: Kennismaking met de Azure Container Registry-service, waarmee u cloudgebaseerde, beheerde en persoonlijke Docker-registers kunt maken.
 author: stevelas
 ms.topic: overview
-ms.date: 06/28/2019
+ms.date: 12/03/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 2ceae0a6d6eb4dc989a53b35dc4a2f64472a5f54
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 863b93497505443b79f41f580150a4dbf790a6f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892971"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445717"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Inleiding tot privé-Docker-containerregisters in Azure
 
-Azure Container Registry is een beheerde, persoonlijke docker-register service op basis van het open source-docker-REGI ster 2,0. Azure-container registers maken en onderhouden om uw persoonlijke docker-container installatie kopieën op te slaan en te beheren.
+Azure Container Registry is een beheerde, persoonlijke docker-register service op basis van het open source-docker-REGI ster 2,0. Azure-container registers maken en onderhouden om uw persoonlijke docker-container installatie kopieën en gerelateerde artefacten op te slaan en te beheren.
 
 Gebruik Azure-container registers met uw bestaande pijp lijnen voor het ontwikkelen en implementeren van containers, of gebruik Azure Container Registry taken om container installatie kopieën in azure te maken. Bouw op aanvraag of volledig Automatiseer builds met triggers, zoals het door voeren van de bron code en updates van de basis installatie kopie.
 
@@ -38,11 +38,18 @@ Azure biedt hulp middelen zoals Azure Command-Line Interface, Azure Portal en AP
 
 * **Register-sku's** : Maak een of meer container registers in uw Azure-abonnement. Registers zijn beschikbaar in drie Sku's: [Basic, Standard en Premium](container-registry-skus.md), die allemaal ondersteuning bieden voor integratie van webhooks, register verificatie met Azure Active Directory en functionaliteit voor verwijderen. Maak een register op dezelfde Azure-locatie als uw implementaties om te profiteren van lokale opslag dichtbij in het netwerk van uw containerinstallatiekopieën. Gebruik de [geo-replicatie](container-registry-geo-replication.md)functie van Premium-registers voor geavanceerde replicatie- en distributiescenario's voor containerinstallatiekopieën. 
 
-  U kunt [toegang beheren](container-registry-authentication.md) tot een containerregister met behulp van een Azure-identiteit, een door Azure Active Directory ondersteunde [service-principal](../active-directory/develop/app-objects-and-service-principals.md) of een opgegeven beheeraccount. Meld u aan bij het REGI ster met de Azure CLI of de standaard `docker login` opdracht.
+* **Beveiliging en toegang** : u meldt zich aan bij een REGI ster met behulp van de Azure CLI of de standaard `docker login` opdracht. Azure Container Registry container installatie kopieën overdraagt via HTTPS en TLS ondersteunt om client verbindingen te beveiligen. 
+
+  > [!IMPORTANT]
+  > Vanaf 13 januari 2020 moeten voor Azure Container Registry alle beveiligde verbindingen van servers en toepassingen worden gebruikt om TLS 1,2 te gebruiken. Ondersteuning voor TLS 1,0 en 1,1 wordt buiten gebruik gesteld.
+
+  U kunt [toegang beheren](container-registry-authentication.md) tot een containerregister met behulp van een Azure-identiteit, een door Azure Active Directory ondersteunde [service-principal](../active-directory/develop/app-objects-and-service-principals.md) of een opgegeven beheeraccount. Gebruik op rollen gebaseerd toegangs beheer (RBAC) voor het toewijzen van gebruikers of systemen met een nauw keurige machtiging voor een REGI ster.
+
+  Beveiligings functies van de Premium-SKU bevatten [inhoud vertrouwen](container-registry-content-trust.md) voor het ondertekenen van installatie kopieën van tags en [firewalls en virtuele netwerken (preview)](container-registry-vnet.md) om de toegang tot het REGI ster te beperken. Azure Security Center optioneel kan worden geïntegreerd met Azure Container Registry om [afbeeldingen te scannen](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) wanneer een installatie kopie naar een REGI ster wordt gepusht.
 
 * **Ondersteunde installatie kopieën en artefacten** : gegroepeerd in een opslag plaats is elke afbeelding een alleen-lezen moment opname van een met docker compatibele container. Azure-containerregisters kunnen zowel Windows- als Linux-installatiekopieën bevatten. U beheert de namen van de installatiekopieën voor al uw containerimplementaties. Gebruik standaard-[Docker-opdrachten](https://docs.docker.com/engine/reference/commandline/) om installatiekopieën naar een opslagplaats te pushen of een installatiekopie uit een opslagplaats op te halen. Naast docker-container installatie kopieën worden met Azure Container Registry [gerelateerde inhouds indelingen](container-registry-image-formats.md) opgeslagen, zoals [helm-grafieken](container-registry-helm-repos.md) en installatie kopieën die zijn gemaakt in de indeling van het [opening container Initiative (OCI)-afbeelding](https://github.com/opencontainers/image-spec/blob/master/spec.md).
 
-* **Azure container Registry taken** : gebruik [Azure container Registry taken](container-registry-tasks-overview.md) (ACR taken) om het bouwen, testen, pushen en implementeren van installatie kopieën in azure te stroom lijnen. Gebruik bijvoorbeeld ACR-taken om uw ontwikkeling binnenste lus uit te breiden naar de Cloud door `docker build` bewerkingen over te dragen naar Azure. Configureer buildtaken om uw container-OS- en frameworkpatchingpijplijn te automatiseren en automatisch installatiekopieën te maken wanneer uw team code met bronbeheer doorvoert.
+* **Automatische installatie kopieën-builds** : gebruik [Azure container Registry taken](container-registry-tasks-overview.md) (ACR taken) om het bouwen, testen, pushen en implementeren van installatie kopieën in azure te stroom lijnen. Gebruik bijvoorbeeld ACR-taken om uw ontwikkeling binnenste lus uit te breiden naar de Cloud door `docker build` bewerkingen over te dragen naar Azure. Configureer buildtaken om uw container-OS- en frameworkpatchingpijplijn te automatiseren en automatisch installatiekopieën te maken wanneer uw team code met bronbeheer doorvoert.
 
   [Taken met meerdere stappen](container-registry-tasks-overview.md#multi-step-tasks) bieden taak definitie en uitvoering op basis van een stap voor het bouwen, testen en bijwerken van container installatie kopieën in de Cloud. Taakstappen definiëren afzonderlijke ontwikkel- en pushbewerkingen voor containerinstallatiekopieën. Ze kunnen ook de uitvoering definiëren van een of meer containers, waarbij elke stap de container als uitvoeringsomgeving gebruikt.
 

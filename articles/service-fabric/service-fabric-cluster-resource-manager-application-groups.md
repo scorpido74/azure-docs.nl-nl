@@ -1,50 +1,41 @@
 ---
-title: Service Fabric Cluster Resource Manager - toepassingsgroepen | Microsoft Docs
-description: Overzicht van de functionaliteit van de groep van toepassingen in de Service Fabric Cluster Resource Manager
-services: service-fabric
-documentationcenter: .net
+title: Cluster resource Manager Service Fabric-toepassings groepen
+description: Overzicht van de functionaliteit van de toepassings groep in de Service Fabric cluster resource manager
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 4cae2370-77b3-49ce-bf40-030400c4260d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7e90dc00a8e042e48d8016e25dda04c15ce9f619
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 988c7ce52125800c16aa785d5b1458604a927ecd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62114070"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452155"
 ---
-# <a name="introduction-to-application-groups"></a>Inleiding tot toepassingsgroepen
-De service Fabric Cluster Resource Manager beheert doorgaans de clusterbronnen door de belasting te spreiden (vertegenwoordigd [metrische gegevens](service-fabric-cluster-resource-manager-metrics.md)) gelijkmatig in het cluster. Service Fabric beheert de capaciteit van de knooppunten in het cluster en het cluster als geheel via [capaciteit](service-fabric-cluster-resource-manager-cluster-description.md). Metrische gegevens en -capaciteit werken ideaal voor veel werkbelastingen, maar de patronen die intensief gebruik van verschillende exemplaren van Service Fabric-toepassing soms binnenhalen van de aanvullende vereisten. U kunt bijvoorbeeld op:
+# <a name="introduction-to-application-groups"></a>Inleiding tot toepassings groepen
+Service Fabric cluster resource manager beheert cluster bronnen doorgaans door de belasting gelijkmatig te verdelen (vertegenwoordigd door [metrische gegevens](service-fabric-cluster-resource-manager-metrics.md)) in het hele cluster. Service Fabric beheert de capaciteit van de knoop punten in het cluster en het cluster als geheel via [capaciteit](service-fabric-cluster-resource-manager-cluster-description.md). Metrische gegevens en capaciteit werken prima voor veel werk belastingen, maar patronen die een zwarer gebruik maken van verschillende Service Fabric toepassings exemplaren, kunnen soms extra vereisten in beslag nemen. U kunt bijvoorbeeld het volgende doen:
 
-- Sommige capaciteit op de knooppunten in het cluster voor de services binnen een benoemde toepassingsexemplaar reserveren
-- Het totale aantal knooppunten die de services binnen een benoemde toepassingsexemplaar uitvoeren op (in plaats van ze uit te spreiden over het hele cluster)
-- Capaciteit op het benoemde exemplaar zelf om te beperken het nummer van services of totaal resourceverbruik van de services binnen definiëren
+- Reserveer enige capaciteit op de knoop punten in het cluster voor de services binnen sommige benoemde toepassings exemplaren
+- Beperk het totale aantal knoop punten waarop de services binnen een benoemd toepassings exemplaar worden uitgevoerd (in plaats van ze te spreiden over het hele cluster)
+- Definieer de capaciteit van het benoemde toepassings exemplaar zelf om het aantal services of het totale Resource verbruik van de services erin te beperken
 
-Om te voldoen aan deze vereisten, de Service Fabric Cluster Resource Manager biedt ondersteuning voor een functie met de naam van toepassingsgroepen.
+Om aan deze vereisten te voldoen, ondersteunt de Service Fabric cluster resource manager een functie genaamd toepassings groepen.
 
-## <a name="limiting-the-maximum-number-of-nodes"></a>Het maximum aantal knooppunten te beperken
-De eenvoudigste use-case voor capaciteit van een toepassing is wanneer een exemplaar van de toepassing moet worden beperkt tot een bepaalde maximum aantal knooppunten. Hiermee worden alle services in de toepassingsinstantie van die naar een bepaald aantal machines samengevoegd. Consolidatie is nuttig wanneer u probeert te voorspellen of fysieke resource gebruiken door de services binnen die met de naam toepassingsexemplaar cap. 
+## <a name="limiting-the-maximum-number-of-nodes"></a>Het maximum aantal knoop punten beperken
+Het eenvoudigste gebruiks scenario voor toepassings capaciteit is wanneer een toepassings exemplaar moet worden beperkt tot een bepaald maximum aantal knoop punten. Hiermee worden alle services binnen het toepassings exemplaar geconsolideerd op een ingesteld aantal machines. Consolidatie is handig als u wilt voors pellen of het gebruik van fysieke resources door de services binnen dat toepassings exemplaar. 
 
-De volgende afbeelding ziet het exemplaar van een toepassing met en zonder een maximum aantal knooppunten dat is gedefinieerd:
+De volgende afbeelding toont een toepassings exemplaar met en zonder een maximum aantal knoop punten dat is gedefinieerd:
 
 <center>
 
-![Maximum aantal knooppunten definiëren toepassingsexemplaar][Image1]
-</center>
+![toepassings exemplaar dat het maximum aantal knoop punten][Image1]
+</center> definieert
 
-De toepassing beschikt niet over een maximum aantal knooppunten dat is gedefinieerd in het voorbeeld naar links en er drie services. Cluster Resource Manager heeft van alle replica's verdeeld over de zes beschikbare knooppunten om de beste balans in het cluster (de standaardinstelling). In de juiste voorbeeld ziet u dezelfde toepassing beperkt tot drie knooppunten.
+In het linkerdeel voor beeld heeft de toepassing niet het maximum aantal knoop punten dat is gedefinieerd en zijn er drie services. Cluster resource manager heeft alle replica's verdeeld over zes beschik bare knoop punten om het beste evenwicht in het cluster te krijgen (het standaard gedrag). In het juiste voor beeld zien we dat dezelfde toepassing is beperkt tot drie knoop punten.
 
-De parameter die het gedrag van deze bepaalt wordt MaximumNodes genoemd. Deze parameter kan worden ingesteld tijdens het maken van de toepassing of bijgewerkt in verband met het exemplaar van een toepassing die al is uitgevoerd.
+De para meter die dit gedrag bepaalt, wordt MaximumNodes genoemd. Deze para meter kan worden ingesteld tijdens het maken van een toepassing of worden bijgewerkt voor een instantie van een toepassing die al wordt uitgevoerd.
 
-PowerShell
+Powershell
 
 ``` posh
 New-ServiceFabricApplication -ApplicationName fabric:/AppName -ApplicationTypeName AppType1 -ApplicationTypeVersion 1.0.0.0 -MaximumNodes 3
@@ -67,15 +58,15 @@ await fc.ApplicationManager.UpdateApplicationAsync(adUpdate);
 
 ```
 
-In de set knooppunten, worden met Cluster Resource Manager biedt geen garantie welke serviceobjecten samen worden geplaatst of welke knooppunten ophalen gebruikt.
+Binnen de set knoop punten garandeert het cluster resource manager niet welke service objecten tegelijk worden geplaatst of welke knoop punten worden gebruikt.
 
-## <a name="application-metrics-load-and-capacity"></a>Metrische toepassingsgegevens, laden en capaciteit
-Toepassingsgroepen kunnen ook u metrische gegevens die zijn gekoppeld aan een bepaalde naam toepassingsexemplaar en capaciteit voor deze metrische gegevens van de toepassingsinstantie van die definiëren. Metrische toepassingsgegevens kunt u bijhouden, reserveren en het brongebruik van de services binnen die toepassingsexemplaar beperken.
+## <a name="application-metrics-load-and-capacity"></a>Metrische gegevens van toepassingen, laden en capaciteit
+Met toepassings groepen kunt u ook metrische gegevens definiëren die zijn gekoppeld aan een opgegeven benoemd toepassings exemplaar en de capaciteit van die toepassings instantie voor deze metrische gegevens. Met metrische gegevens van toepassingen kunt u het Resource verbruik van de services in dat toepassings exemplaar bijhouden, reserveren en beperken.
 
-Er zijn twee waarden die kunnen worden ingesteld voor elke toepassingsmetrieken:
+Voor elke toepassings metriek zijn er twee waarden die kunnen worden ingesteld:
 
-- **Totale capaciteit van een toepassing** : deze instelling geeft de totale capaciteit van de toepassing voor een bepaalde meetwaarde. Cluster Resource Manager is niet toegestaan door het maken van nieuwe services in deze toepassingsinstantie die ertoe kan leiden dat de totale werklast groter zijn dan deze waarde. Stel dat bijvoorbeeld exemplaar van de toepassing heeft een maximale capaciteit van 10 en al had load van vijf. Het maken van een service met een totale standaard belasting van 10 zou zijn niet toegestaan.
-- **Maximale capaciteit van het knooppunt** : deze instelling geeft u de maximale totale belasting voor de toepassing op een enkel knooppunt. Als load via deze capaciteit gaat, verplaatst met Cluster Resource Manager replica's naar andere knooppunten, zodat de belasting afneemt.
+- **Totale toepassings capaciteit** : deze instelling vertegenwoordigt de totale capaciteit van de toepassing voor een bepaalde metriek. Het maken van nieuwe services binnen deze toepassings instantie door cluster resource manager wordt niet toegestaan, waardoor de totale belasting deze waarde kan overschrijden. Stel bijvoorbeeld dat het toepassings exemplaar een capaciteit van 10 had en al vijf belasting had. Het maken van een service met een totale standaard belasting van 10 zou niet zijn toegestaan.
+- **Maximale knooppunt capaciteit** : deze instelling bepaalt de maximale totale belasting voor de toepassing op één knoop punt. Als de belasting deze capaciteit overschrijdt, verplaatst de cluster resource manager replica's naar andere knoop punten zodat de belasting afneemt.
 
 
 PowerShell:
@@ -101,36 +92,36 @@ await fc.ApplicationManager.CreateApplicationAsync(ad);
 ```
 
 ## <a name="reserving-capacity"></a>Capaciteit reserveren
-Een ander algemeen gebruik voor toepassingsgroepen is om ervoor te zorgen dat bronnen binnen het cluster zijn gereserveerd voor een bepaalde toepassing-exemplaar. De ruimte wordt altijd gereserveerd wanneer het exemplaar wordt gemaakt.
+Een ander algemeen gebruik voor toepassings groepen is ervoor te zorgen dat resources binnen het cluster worden gereserveerd voor een bepaald toepassings exemplaar. De ruimte is altijd gereserveerd wanneer het toepassings exemplaar wordt gemaakt.
 
-Reserveren van ruimte in het cluster voor de toepassing onmiddellijk gebeurt ook wanneer:
-- exemplaar van de toepassing is gemaakt, maar geen services binnen het nog
-- het aantal services binnen het toepassingsexemplaar verandert telkens wanneer 
-- de services aanwezig zijn, maar worden niet de resources verbruikt 
+Het reserveren van ruimte in het cluster voor de toepassing gebeurt onmiddellijk zelfs wanneer:
+- het exemplaar van de toepassing is gemaakt, maar heeft nog geen services
+- het aantal services binnen het toepassings exemplaar wordt elke keer gewijzigd 
+- de services bestaan, maar verbruiken geen gebruik van de resources 
 
-Reserveren van resources voor het exemplaar van een toepassing, moet twee extra parameters op te geven: *MinimumNodes* en *NodeReservationCapacity*
+Voor het reserveren van resources voor een toepassings exemplaar moet u twee extra para meters opgeven: *MinimumNodes* en *NodeReservationCapacity*
 
-- **MinimumNodes** -definieert het minimum aantal knooppunten dat exemplaar van de toepassing moet worden uitgevoerd op.  
-- **NodeReservationCapacity** -deze instelling is per metrisch gegeven voor de toepassing. De waarde is de hoeveelheid die gereserveerd voor de toepassing op een willekeurig knooppunt metriek waar die de services in die toepassing worden uitgevoerd.
+- **MinimumNodes** : Hiermee definieert u het minimum aantal knoop punten waarop het toepassings exemplaar moet worden uitgevoerd.  
+- **NodeReservationCapacity** : deze instelling is per metriek voor de toepassing. De waarde is de hoeveelheid gegevens die voor de toepassing is gereserveerd op een wille keurig knoop punt waar de services in die toepassing worden uitgevoerd.
 
-Combineren **MinimumNodes** en **NodeReservationCapacity** garandeert een minimale belasting reservering voor de toepassing binnen het cluster. Als er minder resterende capaciteit in het cluster dan de totale reservering vereist, mislukt het maken van de toepassing. 
+Het combi neren van **MinimumNodes** en **NodeReservationCapacity** garandeert een minimale laad reservering voor de toepassing binnen het cluster. Als er minder resterende capaciteit is in het cluster dan de totale reserve ring vereist, mislukt het maken van de toepassing. 
 
-We bekijken een voorbeeld van de capaciteitsreservering:
+We kijken naar een voor beeld van capaciteits reservering:
 
 <center>
 
-![Exemplaren van een toepassing reservecapaciteit definiëren][Image2]
-</center>
+![toepassings exemplaren die gereserveerde capaciteit][Image2]
+</center> definiëren
 
-In het voorbeeld links hoeft toepassingen niet elke capaciteit van een toepassing gedefinieerd. Cluster Resource Manager saldi alles volgens normale regels.
+In het linkerdeel voor beeld is er geen toepassings capaciteit gedefinieerd voor toepassingen. Het cluster resource manager verdeelt alles op basis van normale regels.
 
-In het voorbeeld aan de rechterkant, laten we zeggen dat Toepassing1 is gemaakt met de volgende instellingen:
+In het voor beeld aan de rechter kant laten we zeggen dat Application1 is gemaakt met de volgende instellingen:
 
-- Ingesteld op twee MinimumNodes
-- Een toepassing waarde die is gedefinieerd met
+- MinimumNodes ingesteld op twee
+- Een toepassings metriek die is gedefinieerd met
   - NodeReservationCapacity van 20
 
-PowerShell
+Powershell
 
  ``` posh
  New-ServiceFabricApplication -ApplicationName fabric:/AppName -ApplicationTypeName AppType1 -ApplicationTypeVersion 1.0.0.0 -MinimumNodes 2 -Metrics @("MetricName:Metric1,NodeReservationCapacity:20")
@@ -154,10 +145,10 @@ ad.Metrics.Add(appMetric);
 await fc.ApplicationManager.CreateApplicationAsync(ad);
 ```
 
-Service Fabric capaciteit op twee knooppunten reserveert voor Toepassing1 en services van Toepassing2 die capaciteit gebruiken, zelfs als er zijn dat geen load wordt verbruikt door de services binnen Toepassing1 op het moment niet toestaan. Deze toepassing gereserveerde capaciteit wordt beschouwd als verbruikt en geteld op basis van de resterende capaciteit op dat knooppunt en binnen het cluster.  De reservering wordt in mindering gebracht op de resterende capaciteit van het cluster onmiddellijk, maar het gereserveerde verbruik wordt afgetrokken van de capaciteit van een specifiek knooppunt alleen wanneer ten minste één service-object wordt geplaatst op het. Deze reservering hoger kunt u flexibiliteit en beter brongebruik omdat alleen de bronnen worden gereserveerd op knooppunten wanneer dat nodig is.
+Service Fabric reserveert capaciteit op twee knoop punten voor Application1 en staat services van Application2 niet toe dat deze capaciteit wordt gebruikt, zelfs niet als er op het moment geen belasting door de services binnen Application1 wordt verbruikt. Deze gereserveerde toepassings capaciteit wordt beschouwd als verbruikt en telt op basis van de resterende capaciteit van het knoop punt en binnen het cluster.  De reserve ring wordt onmiddellijk in mindering gebracht op de resterende cluster capaciteit. het gereserveerde verbruik wordt echter alleen van de capaciteit van een specifiek knoop punt in mindering gebracht wanneer er ten minste één service object wordt geplaatst. Deze latere reserve ring biedt flexibiliteit en beter bron gebruik, aangezien bronnen alleen worden gereserveerd op knoop punten wanneer dat nodig is.
 
-## <a name="obtaining-the-application-load-information"></a>Het ophalen van de toepassing-informatie laden
-Voor elke toepassing heeft die een capaciteit van een toepassing gedefinieerd voor een of meer waarden die u kunt de informatie over de cumulatieve load gerapporteerd door replica's van de services te verkrijgen.
+## <a name="obtaining-the-application-load-information"></a>Informatie over het laden van de toepassing verkrijgen
+Voor elke toepassing waarvoor een toepassings capaciteit is gedefinieerd voor een of meer metrische gegevens, kunt u de informatie verkrijgen over de cumulatieve belasting die wordt gerapporteerd door replica's van de bijbehorende services.
 
 PowerShell:
 
@@ -178,44 +169,44 @@ foreach (ApplicationLoadMetricInformation metric in metrics)
 }
 ```
 
-De query ApplicationLoad retourneert de algemene informatie over de capaciteit van een toepassing die is opgegeven voor de toepassing. Deze informatie omvat de gegevens van de knooppunten van de Minimum en maximum aantal knooppunten en het getal dat de toepassing is momenteel bezet. Het bevat ook informatie over metrische gegevens laden van elke toepassing met inbegrip van:
+De ApplicationLoad-query retourneert de basis informatie over de toepassings capaciteit die voor de toepassing is opgegeven. Deze informatie omvat het minimale knoop punt en het maximum aantal knoop punten en het nummer dat de toepassing momenteel bezet is. Het bevat ook informatie over de metrische gegevens van de belasting van de toepassing, waaronder:
 
-* Naam van de metrische gegevens: De naam van de metrische gegevens.
-* Capaciteit van de reservering: Clustercapaciteit die in het cluster is gereserveerd voor deze toepassing.
-* Belasting van toepassing: Totale belasting van deze toepassing onderliggende replica's.
-* Capaciteit van een toepassing: Maximale toegestane waarde van de belasting van toepassing.
+* Metrische naam: naam van de metriek.
+* Reserverings capaciteit: cluster capaciteit die is gereserveerd in het cluster voor deze toepassing.
+* Laden van toepassingen: totale belasting van de onderliggende replica's van deze toepassing.
+* Toepassings capaciteit: Maxi maal toegestane waarde voor het laden van toepassingen.
 
-## <a name="removing-application-capacity"></a>Capaciteit van een toepassing verwijderen
-Wanneer de capaciteit van een toepassing-parameters zijn ingesteld voor een toepassing, kunnen ze worden verwijderd met behulp van de Update-toepassing-API's of PowerShell-cmdlets. Bijvoorbeeld:
+## <a name="removing-application-capacity"></a>Toepassings capaciteit verwijderen
+Zodra de para meters voor de toepassings capaciteit zijn ingesteld voor een toepassing, kunnen ze worden verwijderd met behulp van Application Api's of Power shell-cmdlets. Bijvoorbeeld:
 
 ``` posh
 Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicationCapacity
 
 ```
 
-Met deze opdracht verwijdert u alle capaciteit management toepassingsparameters exemplaar van de toepassing. Dit omvat MinimumNodes, MaximumNodes en metrische gegevens van de toepassing, indien van toepassing. Het effect van de opdracht is direct. Nadat u deze opdracht is voltooid, met Cluster Resource Manager maakt gebruik van het standaardgedrag voor het beheren van toepassingen. Capaciteit parameters voor de toepassing opnieuw kunnen worden opgegeven `Update-ServiceFabricApplication` / `System.Fabric.FabricClient.ApplicationManagementClient.UpdateApplicationAsync()`.
+Met deze opdracht worden alle beheer parameters voor toepassings capaciteit verwijderd uit het toepassings exemplaar. Dit omvat MinimumNodes, MaximumNodes en de metrische gegevens van de toepassing, indien aanwezig. Het effect van de opdracht is direct. Wanneer deze opdracht is voltooid, gebruikt cluster resource manager het standaard gedrag voor het beheren van toepassingen. U kunt de para meters voor de toepassings capaciteit opnieuw opgeven via `Update-ServiceFabricApplication`/`System.Fabric.FabricClient.ApplicationManagementClient.UpdateApplicationAsync()`.
 
-### <a name="restrictions-on-application-capacity"></a>Beperkingen van de capaciteit van een toepassing
-Er zijn enkele beperkingen met betrekking tot de capaciteit van een toepassing parameters die in acht worden genomen. Als er validatiefouten zijn plaatsvinden geen wijzigingen.
+### <a name="restrictions-on-application-capacity"></a>Beperkingen voor de toepassings capaciteit
+Er zijn verschillende beperkingen voor de para meters van de toepassings capaciteit die moeten worden gerespecteerd. Als er validatie fouten zijn, worden er geen wijzigingen doorgevoerd.
 
-- Alle parameters van geheel getal moet niet-negatieve getallen.
-- Nooit moet MinimumNodes groter zijn dan MaximumNodes.
-- Als de capaciteit voor metrische gegevens laden zijn gedefinieerd, moeten ze deze regels volgen:
-  - Reservering Knooppuntcapaciteit mag niet groter zijn dan de maximale capaciteit van het knooppunt zijn. U kunt geen bijvoorbeeld de capaciteit voor de metriek 'Processor' op het knooppunt naar twee eenheden beperken en probeert te reserveren drie eenheden op elk knooppunt.
-  - Als MaximumNodes is opgegeven, klikt u vervolgens moet het product van MaximumNodes en de maximale capaciteit van het knooppunt niet groter zijn dan de totale capaciteit van een toepassing. Stel bijvoorbeeld de maximale capaciteit van knooppunt voor de load metrische waarde 'Processor' is ingesteld op acht. Ook Stel dat u het maximumaantal knooppunten ingesteld op 10. In dit geval moet totale capaciteit van een toepassing groter zijn dan 80 voor deze load metrische gegevens.
+- Alle para meters voor geheel getal moeten niet-negatieve getallen zijn.
+- MinimumNodes mag nooit groter zijn dan MaximumNodes.
+- Als er capaciteit voor een metrische belasting worden gedefinieerd, moeten ze de volgende regels volgen:
+  - De capaciteit van de knooppunt reservering mag niet groter zijn dan de maximale knooppunt capaciteit. U kunt bijvoorbeeld de capaciteit voor de metrische gegevens ' CPU ' op het knoop punt niet naar twee eenheden beperken en proberen drie eenheden op elk knoop punt te reserveren.
+  - Als MaximumNodes is opgegeven, mag het product van MaximumNodes en de maximale knooppunt capaciteit niet groter zijn dan de totale toepassings capaciteit. Stel bijvoorbeeld dat de maximum capaciteit van het knoop punt voor belasting gegevens ' CPU ' is ingesteld op acht. U kunt er ook voor zorgen dat u het maximum aantal knoop punten instelt op 10. In dit geval moet de totale capaciteit van de toepassing groter zijn dan 80 voor deze belasting metriek.
 
-De beperkingen gelden voor zowel tijdens het maken van de toepassing en updates.
+De beperkingen worden beide afgedwongen tijdens het maken en bijwerken van de toepassing.
 
-## <a name="how-not-to-use-application-capacity"></a>Over niet het gebruik van de capaciteit van een toepassing
-- Probeer niet de groep van toepassingen om functies te gebruiken om te beperken van de toepassing naar een _specifieke_ subset knooppunten. Met andere woorden, u kunt opgeven dat de toepassing wordt uitgevoerd op maximaal vijf knooppunten, maar niet welke specifieke vijf knooppunten in het cluster. Beperken van specifieke knooppunten van een toepassing kan worden bereikt met behulp van plaatsingsbeperkingen voor services.
-- Probeer niet de capaciteit van een toepassing gebruiken om ervoor te zorgen dat de twee services van dezelfde toepassing op de dezelfde knooppunten zijn geplaatst. Gebruik in plaats daarvan [affiniteit](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md) of [plaatsingsbeperkingen](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
+## <a name="how-not-to-use-application-capacity"></a>Hoe kan ik toepassings capaciteit niet gebruiken?
+- Probeer niet de functies van de toepassings groep te gebruiken om de toepassing te beperken tot een _specifieke_ subset van knoop punten. Met andere woorden, u kunt opgeven dat de toepassing wordt uitgevoerd op Maxi maal vijf knoop punten, maar niet de specifieke vijf knoop punten in het cluster. Het beperken van een toepassing voor specifieke knoop punten kan worden bereikt met behulp van plaatsings beperkingen voor services.
+- Probeer niet de capaciteit van de toepassing te gebruiken om ervoor te zorgen dat twee services van dezelfde toepassing op dezelfde knoop punten worden geplaatst. Gebruik in plaats daarvan [affiniteits](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md) -of [plaatsings beperkingen](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
 
 ## <a name="next-steps"></a>Volgende stappen
-- Voor meer informatie over het configureren van services, [meer informatie over het configureren van Services](service-fabric-cluster-resource-manager-configure-services.md)
-- Als u wilt weten over hoe met Cluster Resource Manager beheert en verdeelt de taken in het cluster, Zie het artikel op [taakverdeling](service-fabric-cluster-resource-manager-balancing.md)
-- Vanaf het begin starten en [een inleiding tot de Service Fabric Cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md)
-- Lees voor meer informatie over de werking metrische gegevens over het algemeen, van op [meetwaarden van Service Fabric](service-fabric-cluster-resource-manager-metrics.md)
-- Cluster Resource Manager beschikt over veel opties voor het beschrijven van het cluster. Meer informatie over deze, Bekijk dit artikel op [met een beschrijving van een Service Fabric-cluster](service-fabric-cluster-resource-manager-cluster-description.md)
+- Meer informatie over het configureren van Services vindt u op het [configureren van services](service-fabric-cluster-resource-manager-configure-services.md)
+- Raadpleeg het artikel over het [verdelen](service-fabric-cluster-resource-manager-balancing.md) van de taken in het cluster voor meer informatie over hoe de cluster resource manager de belasting beheert en balanceert.
+- Begin vanaf het begin en [krijg een inleiding tot de service Fabric cluster resource manager](service-fabric-cluster-resource-manager-introduction.md)
+- Voor meer informatie over hoe metrische gegevens in het algemeen werken, lees dan [service Fabric metrische gegevens over belasting](service-fabric-cluster-resource-manager-metrics.md)
+- Cluster resource manager heeft veel opties voor het beschrijven van het cluster. Lees dit artikel over [het beschrijven van een service Fabric cluster](service-fabric-cluster-resource-manager-cluster-description.md) voor meer informatie.
 
 [Image1]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-max-nodes.png
 [Image2]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-reserved-capacity.png

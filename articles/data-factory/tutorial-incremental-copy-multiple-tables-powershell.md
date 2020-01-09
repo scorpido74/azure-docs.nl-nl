@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 46e0815ea341b732e20ebe7ffa9af355e1f35e87
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f9d426562f4403776e3926564857b4cdbf0d4390
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926477"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439231"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Incrementeel gegevens uit meerdere tabellen in SQL Server naar een Azure SQL-database kopiëren
 
@@ -26,7 +26,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
 > * Bereid de bron- en doelserver gegevensopslag voor.
-> * Een gegevensfactory maakt.
+> * Een gegevensfactory maken.
 > * Een zelf-hostende Integration Runtime maken.
 > * De Integration Runtime installeren. 
 > * Maak gekoppelde services. 
@@ -229,8 +229,8 @@ END
 ### <a name="azure-powershell"></a>Azure PowerShell
 Installeer de nieuwste Azure PowerShell-modules met de instructies in [Azure PowerShell installeren en configureren](/powershell/azure/azurerm/install-azurerm-ps).
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
-1. Definieer een variabele voor de naam van de resourcegroep die u later gaat gebruiken in PowerShell-opdrachten. Kopieer de tekst van de volgende opdracht naar PowerShell, geef tussen dubbele aanhalingstekens een naam op voor de [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en voer de opdracht uit. Een voorbeeld is `"adfrg"`. 
+## <a name="create-a-data-factory"></a>Een data factory maken
+1. Definieer een variabele voor de naam van de resourcegroep die u later gaat gebruiken in PowerShell-opdrachten. Kopieer de tekst van de volgende opdracht naar PowerShell, geef tussen dubbele aanhalingstekens een naam op voor de [Azure-resourcegroep](../azure-resource-manager/management/overview.md) en voer de opdracht uit. Een voorbeeld is `"adfrg"`. 
    
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
@@ -335,8 +335,8 @@ In deze stap gaat u uw on-premises SQL Server-database aan de data factory koppe
     ```
     > [!IMPORTANT]
     > - Selecteer de juiste sectie op basis van de verificatie die u gebruikt om verbinding te maken met SQL Server.
-    > - Vervang de &lt;naam> van de integration runtime door de naam van uw integration runtime.
-    > - Vervang &lt;servername>, &lt;databasename>, &lt;username> en &lt;password> door de waarden van uw SQL Server-exemplaar voordat u het bestand opslaat.
+    > - Vervang &lt;integration runtime name> door de naam van uw integration runtime.
+    > - Vervang &lt;servername>, &lt;databasename>,&lt; username> en&lt; password> door de waarden van uw SQL Server-exemplaar voordat u het bestand opslaat.
     > - Als u een slash wilt gebruiken (`\`) in de naam van uw gebruikersaccount of server, moet u het escapeteken (`\`) gebruiken. Een voorbeeld is `mydomain\\myuser`.
 
 1. Voer in Power shell de volgende cmdlet uit om over te scha kelen naar de map C:\ADFTutorials\IncCopyMultiTableTutorial.
@@ -795,7 +795,7 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De **for
 
 ## <a name="monitor-the-pipeline"></a>De pijplijn bewaken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **Alle services**, zoek met het trefwoord *gegevensfactory's* en selecteer **Gegevensfactory's**. 
 
@@ -891,7 +891,7 @@ VALUES
     ```
 1. Volg de pijplijnuitvoeringen met behulp van de instructies in de sectie [De pijplijn bewaken](#monitor-the-pipeline). Wanneer de status van de pijp lijn wordt **uitgevoerd**, ziet u een andere actie koppeling onder **acties** om de uitvoering van de pijp lijn te annuleren. 
 
-1. Klik op **Vernieuwen** om te lijst te vernieuwen totdat de uitvoering van de pijplijn is voltooid. 
+1. Klik op **Vernieuwen** om de lijst te vernieuwen totdat de uitvoering van de pijplijn is voltooid. 
 
 1. Selecteer desgewenst de koppeling **Uitvoeringen van activiteit weergeven** onder **Acties** om alle activiteitsuitvoeringen te bekijken die gekoppeld zijn aan deze pijplijnuitvoering. 
 
@@ -960,7 +960,7 @@ In deze zelfstudie hebt u de volgende stappen uitgevoerd:
 
 > [!div class="checklist"]
 > * Bereid de bron- en doelserver gegevensopslag voor.
-> * Een gegevensfactory maakt.
+> * Een gegevensfactory maken.
 > * Een zelf-hostende integration runtime (IR) maken.
 > * De Integration Runtime installeren.
 > * Maak gekoppelde services. 

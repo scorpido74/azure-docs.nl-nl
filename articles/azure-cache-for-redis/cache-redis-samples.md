@@ -1,18 +1,17 @@
 ---
 title: Voorbeelden voor Azure Cache voor Redis
-description: Azure Cache voor Redis gebruiken
+description: 'Meer informatie over het gebruik van Azure cache voor redis met de volgende code voorbeelden: verbinding maken met een cache, gegevens lezen en schrijven in een cache, ASP.NET Azure cache voor redis-providers.'
 author: yegu-ms
-ms.service: cache
-ms.devlang: multiple
-ms.topic: conceptual
-ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 9097a25c0223faebd91fe3c01ff3edea6c4e6f9f
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.service: cache
+ms.topic: sample
+ms.date: 01/23/2017
+ms.openlocfilehash: 8057a7db3d1a2db0e51ec15e4966ed0b31c84226
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122596"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433409"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Voorbeelden voor Azure Cache voor Redis
 In dit onderwerp vindt u een lijst met Azure cache voor redis-voor beelden, waarbij scenario's zoals het maken van verbinding met een cache, het lezen en schrijven van gegevens van en naar een cache en het ASP.NET Azure cache voor redis-providers worden gebruikt. Sommige van de voor beelden zijn Download bare projecten en sommige bieden stapsgewijze instructies en bevatten code fragmenten, maar ze kunnen niet worden gekoppeld aan een downloadbaar project.
@@ -62,4 +61,3 @@ Het [Retwis](https://github.com/SyntaxC4-MSFT/retwis) -voor beeld is de Redis-Ha
 
 ## <a name="bandwidth-monitor"></a>Bandbreedte monitor
 Met het voor beeld van [bandbreedte monitor](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor) kunt u de band breedte bewaken die op de client wordt gebruikt. Als u de band breedte wilt meten, voert u het voor beeld op de cache-client computer uit, maakt u aanroepen naar de cache en bekijkt u de band breedte die wordt gerapporteerd door het voor beeld van de bandbreedte monitor.
-

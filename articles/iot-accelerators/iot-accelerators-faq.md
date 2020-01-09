@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: b448099dab0e79dca38310396896be46cf2e0ff6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826262"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647710"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Veelgestelde vragen over Accelerators voor IoT-oplossingen
 
@@ -23,10 +23,10 @@ Zie ook de [verbonden specifieke, vooraf](iot-accelerators-faq-cf.md) gevraagde 
 
 De bron code wordt opgeslagen in de volgende GitHub-opslag plaatsen:
 
-* [De oplossingsversneller voor externe bewaking (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
-* [De oplossingsversneller voor externe bewaking (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
-* [De oplossingsversneller voor predictief onderhoud](https://github.com/Azure/azure-iot-predictive-maintenance)
-* [De oplossingsversneller voor verbonden factory's](https://github.com/Azure/azure-iot-connected-factory)
+* [Oplossings versneller voor externe controle (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
+* [Oplossings versneller voor externe controle (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
+* [Oplossings versneller voor voorspellend onderhoud](https://github.com/Azure/azure-iot-predictive-maintenance)
+* [Oplossings versneller Connected Factory](https://github.com/Azure/azure-iot-connected-factory)
 
 ### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Welke SDK's kan ik gebruiken om apparaatclients voor de oplossingversnellers te ontwikkelen?
 
@@ -82,7 +82,7 @@ Ja. Alle oplossingen die nu bestaan, blijven werken in uw Azure-abonnement en de
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Hoeveel IoT Hub exemplaren kan ik inrichten in een abonnement?
 
-U kunt standaard [10 IOT-hubs inrichten per abonnement](../azure-subscription-service-limits.md#iot-hub-limits). U kunt een [ondersteunings ticket voor Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) maken om deze limiet te verhogen. Omdat elke oplossings versneller een nieuw IoT Hub heeft, kunt u Maxi maal 10 oplossings Accelerators inrichten in een bepaald abonnement.
+U kunt standaard [10 IOT-hubs inrichten per abonnement](../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-limits). U kunt een [ondersteunings ticket voor Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) maken om deze limiet te verhogen. Omdat elke oplossings versneller een nieuw IoT Hub heeft, kunt u Maxi maal 10 oplossings Accelerators inrichten in een bepaald abonnement.
 
 ### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>Hoeveel Azure Cosmos DB exemplaren kan ik inrichten in een abonnement?
 

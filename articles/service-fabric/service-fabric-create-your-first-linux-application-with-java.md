@@ -1,25 +1,14 @@
 ---
-title: Een betrouwbare Azure Service Fabric Java-actortoepassing maken in Linux | Microsoft Docs
+title: Een Java-toepassing met Azure Service Fabric reliable actors maken in Linux
 description: Lees hoe u een betrouwbare Service Fabric Java-actortoepassing in vijf minuten kunt maken en implementeren.
-services: service-fabric
-documentationcenter: java
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/18/2018
-ms.author: atsenthi
-ms.openlocfilehash: 4b008c001e1c4749b6ab6f9f21eff479f007c05c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 82d4446d76254657adfe64ed41386c06a0a873eb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599680"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458163"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Uw eerste betrouwbare Service Fabric Java-actortoepassing maken in Linux
 > [!div class="op_single_selector"]
@@ -50,8 +39,8 @@ Om aan de slag te gaan met Reliable Actors hoeft u slechts enkele basisbegrippen
 * **Actor-interface**. De Actor-interface wordt gebruikt voor het definiëren van een sterk getypeerde openbare interface van een actor. In de terminologie van Reliable Actor-modellen definieert de actorinterface de typen berichten die de actor kan begrijpen en verwerken. De actorinterface wordt door andere actors en clienttoepassingen gebruikt om (asynchroon) berichten naar de actor te 'verzenden'. Reliable Actors kunnen meerdere interfaces implementeren.
 * **Klasse ActorProxy**. De klasse ActorProxy wordt door clienttoepassingen gebruikt voor het aanroepen van de methoden die toegankelijk zijn via de actorinterface. De klasse ActorProxy heeft twee belangrijke functies:
   
-  * Naam omzetting: De actor kan in het cluster worden gevonden (Zoek het knoop punt van het cluster waar deze wordt gehost).
-  * Afhandeling van fouten: Het kan methode-aanroepen opnieuw proberen en de actor-locatie opnieuw oplossen na bijvoorbeeld een storing waarbij de actor moet worden verplaatst naar een ander knoop punt in het cluster.
+  * Naamomzetting: de klasse kan de actor in het cluster vinden (het knooppunt van het cluster waar de actor wordt gehost).
+  * Foutafhandeling: de klasse kan methodes opnieuw proberen aan te roepen en de locatie van een actor opnieuw omzetten, bijvoorbeeld na een storing waardoor de actor is verplaatst naar een ander knooppunt in het cluster.
 
 De volgende regels met betrekking tot actorinterfaces zijn het noemen waard:
 
@@ -303,7 +292,7 @@ Ondersteuning van Reliable Services in Service Fabric voor uw toepassing.
   }
   ```
 
-### <a name="others"></a>Andere
+### <a name="others"></a>Overige
 #### <a name="transport"></a>Transport
 
 Ondersteuning van transportlaag voor Service Fabric Java-toepassing. U hoeft deze afhankelijkheid niet expliciet toe te voegen aan uw Reliable Actor- of Service-toepassingen, tenzij u programmeert op de transportlaag.

@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
 ms.date: 09/09/2019
-ms.openlocfilehash: 482fc3f08fb986908efcab83a82338ced36ee689
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5cfccd6e79b7289b6fd59abcabba05abab6ab09b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821010"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443844"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Snelstartgids: een enkele data base in Azure SQL Database maken met behulp van de Azure Portal, Power shell en Azure CLI
 
@@ -33,7 +33,7 @@ U kunt één data base maken in de ingerichte of serverloze Compute-laag.
 - Een enkele data base in de ingerichte Compute-laag is vooraf toegewezen een vaste hoeveelheid reken resources, inclusief CPU en geheugen, met behulp van een van twee [aankoop modellen](sql-database-purchase-models.md).
 - Eén data base in de compute-laag zonder server heeft een bereik van reken resources, inclusief CPU en geheugen die automatisch worden geschaald en alleen beschikbaar is in de [vCore-gebaseerde aankoop modellen](sql-database-service-tiers-vcore.md).
 
-Wanneer u een individuele database maakt, definieert u ook een [SQL Database-server](sql-database-servers.md) om die te beheren en in een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) in een opgegeven regio te plaatsen.
+Wanneer u een individuele database maakt, definieert u ook een [SQL Database-server](sql-database-servers.md) om die te beheren en in een [Azure-resourcegroep](../azure-resource-manager/management/overview.md) in een opgegeven regio te plaatsen.
 
 > [!NOTE]
 > Deze Quick Start maakt gebruik [van het op vCore gebaseerde aankoop model](sql-database-service-tiers-vcore.md), maar het [op DTU gebaseerde aankoop model](sql-database-service-tiers-DTU.md) is ook beschikbaar.

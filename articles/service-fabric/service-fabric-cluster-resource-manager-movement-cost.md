@@ -1,28 +1,19 @@
 ---
-title: 'Cluster resource Manager Service Fabric: verplaatsings kosten | Microsoft Docs'
-description: Overzicht van de verplaatsings kosten voor Service Fabric Services
-services: service-fabric
-documentationcenter: .net
+title: 'Cluster resource Manager Service Fabric: verplaatsings kosten'
+description: Meer informatie over de verplaatsings kosten voor Service Fabric Services en hoe deze kunnen worden opgegeven om te voldoen aan de behoeften van de architectuur, inclusief dynamische configuratie.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: f022f258-7bc0-4db4-aa85-8c6c8344da32
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 80845fca8d163a4ebe9257f19825624acef3a815
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73243011"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563340"
 ---
 # <a name="service-movement-cost"></a>Kosten voor service verplaatsing
-Een factor die de Service Fabric cluster resource manager beschouwt wanneer wordt geprobeerd te bepalen welke wijzigingen aan een cluster moeten worden aangebracht, zijn de kosten van die wijzigingen. Het principe van ' kosten ' wordt verhandeld op basis van de mate waarin het cluster kan worden verbeterd. Kosten worden in rekening gehouden bij het verplaatsen van services voor Balancing, defragmentatie en andere vereisten. Het doel is om te voldoen aan de vereisten in de minst verstorende of dure manier. 
+Een factor die de Service Fabric cluster resource manager beschouwt wanneer wordt geprobeerd te bepalen welke wijzigingen aan een cluster moeten worden aangebracht, zijn de kosten van die wijzigingen. Het principe van ' kosten ' wordt verhandeld op basis van de mate waarin het cluster kan worden verbeterd. Kosten worden in rekening gehouden bij het verplaatsen van services voor Balancing, defragmentatie en andere vereisten. Het doel is om te voldoen aan de vereisten in de minst verstorende of dure manier.
 
 Het verplaatsen van Services kost CPU-tijd en netwerk bandbreedte mini maal. Voor stateful Services moet de status van die services worden gekopieerd, waardoor er extra geheugen en schijf ruimte in beslag neemt. Het minimaliseren van de kosten van oplossingen die door Azure Service Fabric cluster resource manager worden geleverd, helpt ervoor te zorgen dat de resources van het cluster onnodig niet worden gebruikt. U wilt echter ook geen oplossingen negeren waarmee de toewijzing van resources in het cluster aanzienlijk wordt verbeterd.
 

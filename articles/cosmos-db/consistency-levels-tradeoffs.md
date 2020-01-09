@@ -1,5 +1,5 @@
 ---
-title: Beschik baarheid en prestaties voor diverse consistentie niveaus in Azure Cosmos DB
+title: Azure Cosmos DB consistentie, Beschik baarheid en prestatie afweging
 description: Beschik baarheid en prestaties voor diverse consistentie niveaus in Azure Cosmos DB.
 author: markjbrown
 ms.author: mjbrown
@@ -7,23 +7,23 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f241f243860635db443b732f94d12956bbe0f9d8
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: a16acfc8f9be820e9cc9b3bd59d6675b7f75d2ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990625"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445548"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Compromissen tussen consistentie, beschikbaarheid en prestaties 
 
-Gedistribueerde data bases die afhankelijk zijn van replicatie voor hoge Beschik baarheid, lage latentie of beide moeten afwegingen maken. De nadelen liggen tussen lees consistentie versus Beschik baarheid, latentie en door voer.
+Gedistribueerde databases die afhankelijk zijn van replicatie voor hoge beschikbaarheid, lage latentie of beide moeten afwegingen maken. Er moet een afweging worden gemaakt tussen leesconsistentie versus beschikbaarheid, latentie en doorvoer.
 
 Azure Cosmos DB consistentie van gegevens als een breed scala aan mogelijkheden. Deze aanpak bevat meer opties dan de twee extreme, sterke en uiteindelijke consistentie. U kunt kiezen uit vijf goed gedefinieerde modellen op het consistentie spectrum. De modellen zijn van sterk tot zwakste:
 
-- *Strakk*
+- *Sterke*
 - *Gebonden veroudering*
-- *Beëindigen*
-- *Consistent voor voegsel*
+- *Sessie*
+- *Consistent voorvoegsel*
 - *Uiteindelijke*
 
 Elk model biedt Beschik baarheid en prestatie-afwegingen en wordt ondersteund door de uitgebreide service overeenkomsten.
@@ -50,14 +50,14 @@ Binnen een wereld wijd gedistribueerde database omgeving is er een rechtstreekse
 
 In de onderstaande tabel wordt de relatie tussen consistentie model en gegevens duurzaamheid gedefinieerd in aanwezigheid van een regionale storing. Het is belang rijk te weten dat u in een gedistribueerd systeem, zelfs met een sterke consistentie, geen gedistribueerde data base met een RPO en RTO van nul hebt als gevolg van de CAP theorema. Zie voor meer informatie over waarom de [consistentie niveaus in azure Cosmos DB](consistency-levels.md).
 
-|**Regio (s)**|**Replicatie modus**|**Consistentie niveau**|**RPO**|**RTO**|
+|**Regio (s)**|**Replicatie modus**|**Consistentieniveau**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
-|1|Eén of meerdere masters|Elk consistentie niveau|< 240 minuten|< 1 week|
-|> 1|Eén Master|Sessie, consistent voor voegsel, uiteindelijk|< 15 minuten|< 15 minuten|
-|> 1|Eén Master|Gebonden veroudering|*K*  & *t*|< 15 minuten|
-|> 1|Eén Master|Sterk|0|< 15 minuten|
-|> 1|Multi-Master|Sessie, consistent voor voegsel, uiteindelijk|< 15 minuten|0|
-|> 1|Multi-Master|Gebonden veroudering|*K*  & *t*|0|
+|1|Eén of meerdere masters|Elk consistentie niveau|< 240 minuten|<1 Week|
+|>1|Eén Master|Sessie, consistent voor voegsel, uiteindelijk|< 15 minuten|< 15 minuten|
+|>1|Eén Master|Gebonden veroudering|*K* & *T*|< 15 minuten|
+|>1|Eén Master|Sterk|0|< 15 minuten|
+|>1|Multi-Master|Sessie, consistent voor voegsel, uiteindelijk|< 15 minuten|0|
+|>1|Multi-Master|Gebonden veroudering|*K* & *T*|0|
 
 *K* = het aantal *"K"* versies (bijvoorbeeld updates) van een item.
 
@@ -73,4 +73,4 @@ Meer informatie over globale distributie en algemene consistentie-afwegingen in 
 
 - [Consistentie-afwegingen in het moderne ontwerp van gedistribueerde database systemen](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 - [Hoge beschikbaarheid](high-availability.md)
-- [SLA voor Azure Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)
+- [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

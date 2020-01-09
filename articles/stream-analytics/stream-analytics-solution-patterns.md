@@ -1,18 +1,18 @@
 ---
 title: Azure Stream Analytics-oplossingspatronen
 description: Meer informatie over algemene oplossings patronen voor Azure Stream Analytics, zoals Dash boards, gebeurtenis berichten, gegevens archieven, verrijkingen van referentie gegevens en bewaking.
-author: zhongc
-ms.author: zhongc
+author: mamccrea
+ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 2d936a538a54edce9e3f13ea7865d57b8243c4a5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 2a449c55a0998f1a114f6aa9d2c067e48cc0cdce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901679"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443668"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics-oplossingspatronen
 
@@ -174,7 +174,7 @@ Voor backfilling is het nog steeds belang rijk om ten minste tijdelijk meer bron
 |**Dash boards**   |Maakt tussen ruimte    |OK voor korte onderbreking    |Gebruiken voor lange onderbreking |
 |**Waarschuwingen**   |Aanvaardbaar |OK voor korte onderbreking    |Niet nodig |
 |**App voor gebeurtenis bronnen** |Aanvaardbaar |OK voor korte onderbreking    |Gebruiken voor lange onderbreking |
-|**Gegevens opslag**   |Gegevens verlies  |Aanvaardbaar |Niet nodig |
+|**Gegevensopslag**   |Gegevens verlies  |Aanvaardbaar |Niet nodig |
 |**Offline analyse**  |Gegevens verlies  |Aanvaardbaar |Niet nodig|
 
 ## <a name="putting-it-all-together"></a>Alles samenvoegen

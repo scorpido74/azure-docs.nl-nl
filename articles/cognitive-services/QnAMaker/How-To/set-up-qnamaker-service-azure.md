@@ -1,7 +1,7 @@
 ---
 title: Een QnA Maker-service instellen-QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Voordat u QnA Maker Knowledge bases kunt maken, moet u eerst een QnA Maker service in azure instellen. Iedereen met een machtiging voor het maken van nieuwe resources in een abonnement kan een QnA Maker-service instellen.
+description: Voordat u een QnA Maker knowledge bases maken kunt, moet u eerst een QnA Maker-service in Azure instellen. Iedereen met autorisatie voor het maken van nieuwe resources in een abonnement kunt een QnA Maker-service instellen.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 6d52062561e3f08a214f3e191706583edc844786
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ec19f4b4140fb6f4a1dc968f4e2cac3c3d7a1e76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794214"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447717"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker-resources beheren
 
-Voordat u QnA Maker Knowledge bases kunt maken, moet u eerst een QnA Maker service in azure instellen. Iedereen met een machtiging voor het maken van nieuwe resources in een abonnement kan een QnA Maker-service instellen.
+Voordat u een QnA Maker knowledge bases maken kunt, moet u eerst een QnA Maker-service in Azure instellen. Iedereen met autorisatie voor het maken van nieuwe resources in een abonnement kunt een QnA Maker-service instellen.
 
 ## <a name="types-of-keys-in-qna-maker"></a>Typen sleutels in QnA Maker
 
@@ -28,10 +28,10 @@ Uw QnA Maker-service behandelt twee soorten sleutels: **abonnements sleutels** e
 
 ![Sleutelbeheer](../media/qnamaker-how-to-key-management/key-management.png)
 
-|Naam|Locatie|Doel|
+|Name|Locatie|Doel|
 |--|--|--|
 |Abonnementssleutel|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Deze sleutels worden gebruikt voor toegang tot de Api's van de [QnA Maker Management-service](https://go.microsoft.com/fwlink/?linkid=2092179). Met deze Api's kunt u de vragen en antwoorden in uw Knowledge Base bewerken en uw kennis database publiceren. Deze sleutels worden gemaakt wanneer u een nieuwe QnA Maker-service maakt.<br><br>Deze sleutels vindt u op de pagina **sleutels** van de **Cognitive Services** resource.|
-|Eindpunt sleutel|[QnA Maker Portal](http://www.qnamaker.ai)|Deze sleutels worden gebruikt om toegang te krijgen tot het gepubliceerde Knowledge Base-eind punt om een antwoord te krijgen op de vraag van een gebruiker. Normaal gesp roken gebruikt u dit eind punt in uw chat-bot of in de client toepassings code die verbinding maakt met de QnA Maker-service. Deze sleutels worden gemaakt wanneer u uw QnA Maker Knowledge Base publiceert.<br><br>Deze sleutels vindt u op de pagina **Service-instellingen** . Ga naar deze pagina vanuit het menu van de gebruiker in de rechter bovenhoek van de pagina in de vervolg keuzelijst.|
+|Eindpuntsleutel|[QnA Maker Portal](https://www.qnamaker.ai)|Deze sleutels worden gebruikt om toegang te krijgen tot het gepubliceerde Knowledge Base-eind punt om een antwoord te krijgen op de vraag van een gebruiker. Normaal gesp roken gebruikt u dit eind punt in uw chat-bot of in de client toepassings code die verbinding maakt met de QnA Maker-service. Deze sleutels worden gemaakt wanneer u uw QnA Maker Knowledge Base publiceert.<br><br>Deze sleutels vindt u op de pagina **Service-instellingen** . Ga naar deze pagina vanuit het menu van de gebruiker in de rechter bovenhoek van de pagina in de vervolg keuzelijst.|
 
 ## <a name="create-a-new-qna-maker-service"></a>Een nieuwe QnA Maker-service maken
 
@@ -45,7 +45,7 @@ Met deze procedure maakt u de Azure-resources die nodig zijn voor het beheren va
 
 1. Selecteer in **QnA Maker**de juiste lagen en regio's:
 
-    ![Een nieuwe QnA Maker prijs categorie en regio's voor services maken](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
+    ![Een nieuwe QnA Maker-service - prijscategorie en regio's maken](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
 
     * Voer in het veld **naam** een unieke naam in om deze QnA Maker service aan te duiden. Deze naam duidt ook het QnA Maker-eind punt aan waaraan uw kennis grondslagen worden gekoppeld.
     * Kies het **abonnement** waarmee de QnA Maker resource wordt geïmplementeerd.
@@ -55,21 +55,21 @@ Met deze procedure maakt u de Azure-resources die nodig zijn voor het beheren va
     * Kies de **prijs categorie voor zoeken** in de Azure Cognitive Search-service. Als de optie gratis laag niet beschikbaar is (grijs weer gegeven), betekent dit dat u al een gratis service hebt geïmplementeerd via uw abonnement. In dat geval moet u beginnen met de laag basis. Zie de [prijs informatie voor Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/).
     * Kies de **Zoek locatie** waar u Azure Cognitive Search-indexen wilt implementeren. Beperkingen voor het opslaan van klant gegevens kunnen helpen bij het bepalen van de locatie die u kiest voor Azure Cognitive Search.
     * Voer in het veld **app-naam** een naam in voor uw Azure app service-exemplaar.
-    * Standaard App Service standaard ingesteld op de standaard laag (S1). U kunt het abonnement wijzigen nadat u het hebt gemaakt. Meer informatie over [app service prijzen](https://azure.microsoft.com/pricing/details/app-service/).
+    * Standaard App Service standaard ingesteld op de standaard laag (S1). U kunt het abonnement wijzigen nadat de is gemaakt. Meer informatie over [app service prijzen](https://azure.microsoft.com/pricing/details/app-service/).
     * Kies de **locatie** van de Website waar app service worden geïmplementeerd.
 
         > [!NOTE]
         > De **Zoek locatie** kan afwijken van de **locatie**van de website.
 
-    * Kies of u **Application Insights**wilt inschakelen. Als **Application Insights** is ingeschakeld, verzamelt QnA Maker telemetrie in verkeer, chat logboeken en fouten.
+    * Kies of u **Application Insights**wilt inschakelen. Als **Application Insights** is ingeschakeld, QnA Maker telemetrie verzamelt op verkeer, chatlogs en fouten.
     * Kies de **app Insights-locatie** waar de Application Insights resource wordt geïmplementeerd.
-    * Voor kosten besparingen kunt u enkele, maar niet alle Azure-resources die zijn gemaakt voor QnA Maker [delen](#share-existing-services-with-qna-maker) . 
+    * Voor kosten besparingen kunt u enkele, maar niet alle Azure-resources die zijn gemaakt voor QnA Maker [delen](#share-existing-services-with-qna-maker) .
 
 1. Nadat alle velden zijn gevalideerd, selecteert u **maken**. Het proces kan een paar minuten duren.
 
 1. Nadat de implementatie is voltooid, ziet u de volgende resources die zijn gemaakt in uw abonnement:
 
-   ![Resource heeft een nieuwe QnA Maker service gemaakt](../media/qnamaker-how-to-setup-service/resources-created.png)
+   ![De resource gemaakt in een nieuwe QnA Maker-service](../media/qnamaker-how-to-setup-service/resources-created.png)
 
     De resource met het _Cognitive Services_ type heeft uw _abonnements_ sleutels.
 
@@ -79,7 +79,7 @@ U kunt uw abonnements sleutels weer geven en opnieuw instellen in de Azure Porta
 
 1. Ga naar de QnA Maker resource in de Azure Portal en selecteer de resource met het _Cognitive Services_ type:
 
-    ![QnA Maker Resource lijst](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
+    ![Lijst met resources voor QnA Maker](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
 
 2. Ga naar **sleutels**:
 
@@ -89,11 +89,11 @@ U kunt uw abonnements sleutels weer geven en opnieuw instellen in de Azure Porta
 
 Het eind punt bevindt zich in dezelfde regio als de resource omdat de eindpunt sleutels worden gebruikt voor het aanroepen van de Knowledge Base.
 
-Eindpunt sleutels kunnen worden beheerd vanuit de [QnA Maker Portal](https://qnamaker.ai).
+Eindpunt-sleutels kunnen worden beheerd vanuit de [QnA Maker portal](https://qnamaker.ai).
 
 1. Meld u aan bij de [QnA Maker-Portal](https://qnamaker.ai), ga naar uw profiel en selecteer vervolgens service- **instellingen**:
 
-    ![Eindpunt sleutel](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
+    ![Eindpuntsleutel](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
 
 2. Uw sleutels weer geven of herstellen:
 
@@ -185,13 +185,13 @@ Op dit moment kunt u geen in-place upgrade van de SKU voor Azure Search uitvoere
 
 ## <a name="get-the-latest-runtime-updates"></a>Down load de meest recente runtime-updates
 
-De QnAMaker-runtime maakt deel uit van het Azure App Service-exemplaar dat wordt geïmplementeerd wanneer u [een QnAMaker-service](./set-up-qnamaker-service-azure.md) in de Azure Portal maakt. Er worden regel matig updates uitgevoerd voor de runtime. Het QnA Maker App Service-exemplaar bevindt zich in de modus automatisch bijwerken na de site-extensie release van april 2019 (versie 5 +). Deze update is ontworpen om te zorgen dat er geen downtime is tijdens de upgrade.
+De QnAMaker-runtime maakt deel uit van het Azure App Service-exemplaar dat wordt geïmplementeerd wanneer u [een QnAMaker-service](./set-up-qnamaker-service-azure.md) in de Azure Portal maakt. Updates worden periodiek gesteld in de runtime. Het QnA Maker App Service-exemplaar bevindt zich in de modus automatisch bijwerken na de site-extensie release van april 2019 (versie 5 +). Deze update is ontworpen om te zorgen dat er geen downtime is tijdens de upgrade.
 
 U kunt uw huidige versie controleren op https://www.qnamaker.ai/UserSettings. Als uw versie ouder is dan versie 5. x, moet u App Service opnieuw opstarten om de meest recente updates toe te passen:
 
 1. Ga naar de QnAMaker-service (resource groep) in het [Azure Portal](https://portal.azure.com).
 
-    ![Azure-resource groep QnAMaker](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
+    ![QnAMaker-Azure-resourcegroep](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
 
 1. Selecteer de App Service instantie en open de sectie **overzicht** .
 
@@ -210,4 +210,4 @@ De beheer service van QnA Maker wordt alleen gebruikt voor de QnA Maker Portal e
 Meer informatie over de [app service](../../../app-service/index.yml) en de [Zoek service](../../../search/index.yml).
 
 > [!div class="nextstepaction"]
-> [Een Knowledge Base maken en publiceren](../Quickstarts/create-publish-knowledge-base.md)
+> [Maken en een kennisdatabase publiceren](../Quickstarts/create-publish-knowledge-base.md)

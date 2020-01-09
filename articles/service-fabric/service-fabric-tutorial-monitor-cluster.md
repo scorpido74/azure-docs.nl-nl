@@ -1,28 +1,19 @@
 ---
-title: Een Service Fabric cluster in azure controleren | Microsoft Docs
+title: Een Service Fabric cluster in azure bewaken
 description: In deze zelf studie leert u hoe u een cluster kunt bewaken door Service Fabric gebeurtenissen te bekijken, query's uit te geven op de Event Store-Api's, prestatie meter items te controleren en status rapporten weer te geven.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: 63069dcdebf19c64d7bcde298fa234622a6d9a2b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ab58d622511e0d5793eb6df312bc3fd6dd15bfd6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385272"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376627"
 ---
-# <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Zelfstudie: Een Service Fabric cluster in azure bewaken
+# <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Zelf studie: een Service Fabric cluster in azure bewaken
 
 Bewaking en diagnose zijn essentieel voor het ontwikkelen, testen en implementeren van werk belastingen in elke cloud omgeving. Deze zelf studie is deel twee van een reeks en laat zien hoe u een Service Fabric cluster kunt controleren en diagnosticeren met gebeurtenissen, prestatie meter items en status rapporten.   Lees voor meer informatie het overzicht over [cluster bewaking](service-fabric-diagnostics-overview.md#platform-cluster-monitoring) en [infrastructuur bewaking](service-fabric-diagnostics-overview.md#infrastructure-performance-monitoring).
 
@@ -49,7 +40,7 @@ In deze zelfstudiereeks leert u het volgende:
 
 Voor u met deze zelfstudie begint:
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Installeer [Azure Power shell](https://docs.microsoft.com/powershell/azure/install-Az-ps) of [Azure cli](/cli/azure/install-azure-cli).
 * Een beveiligd [Windows-cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) maken 
 * De [verzameling diagnostische gegevens](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configurediagnostics_anchor) instellen voor het cluster
@@ -219,7 +210,7 @@ Betrouw bare actor gebeurtenissen kunnen op een vergelijk bare manier worden wee
 ServiceFabricReliableActorEvent
 | sort by TimeGenerated desc
 ```
-Als u meer gedetailleerde gebeurtenissen voor betrouw bare actors wilt configureren `scheduledTransferKeywordFilter` , kunt u de in de configuratie voor de diagnostische extensie in de cluster sjabloon wijzigen. Details over de waarden hiervoor vindt u in de [Naslag informatie over betrouw bare evenementen](service-fabric-reliable-actors-diagnostics.md#keywords)van actors.
+Als u gedetailleerdere gebeurtenissen voor betrouw bare actoren wilt configureren, kunt u de `scheduledTransferKeywordFilter` in de configuratie voor de diagnostische extensie in de cluster sjabloon wijzigen. Details over de waarden hiervoor vindt u in de [Naslag informatie over betrouw bare evenementen van actors](service-fabric-reliable-actors-diagnostics.md#keywords).
 
 ```json
 "EtwEventSourceProviderConfiguration": [
@@ -484,7 +475,7 @@ Get-ServiceFabricService -ApplicationName fabric:/System | Get-ServiceFabricServ
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Service Fabric gebeurtenissen weer geven

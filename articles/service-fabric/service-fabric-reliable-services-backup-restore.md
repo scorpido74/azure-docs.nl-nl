@@ -1,75 +1,66 @@
 ---
-title: Service Fabric-back-up en herstellen | Microsoft Docs
-description: Algemene documentatie voor Service Fabric-back-up en herstel
-services: service-fabric
-documentationcenter: .net
+title: Back-up en herstel Service Fabric
+description: Conceptuele documentatie voor Service Fabric back-up en herstel, een service voor het configureren van back-ups van betrouw bare stateful Services en Reliable Actors.
 author: mcoskun
-manager: chackdan
-editor: subramar,zhol
-ms.assetid: 91ea6ca4-cc2a-4155-9823-dcbd0b996349
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: cd40f59cfa7846911c68206c3bc1e85a770b0fcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 712069a34b6bc5d8aa4bcbab3fdbf9fc9cd8958b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723841"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645545"
 ---
-# <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Back-up en herstellen van Reliable Services en Reliable Actors
-Azure Service Fabric is een hoge beschikbaarheid-platform die de status over meerdere knooppunten voor deze hoge beschikbaarheid zijn gerepliceerd.  Dus zelfs als één knooppunt in het cluster is mislukt, blijven de services beschikbaar. Hoewel deze ingebouwde redundantie die wordt geleverd door het platform mogelijk voldoende zijn voor sommige, in bepaalde gevallen is het wenselijk zijn voor de service naar de back-ups (naar een externe opslag).
+# <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Back-up en herstel Reliable Services en Reliable Actors
+Azure Service Fabric is een platform met hoge Beschik baarheid dat de status van meerdere knoop punten repliceert om deze hoge Beschik baarheid te behouden.  Dus zelfs als één knoop punt in het cluster uitvalt, blijven de services beschikbaar. Hoewel deze door het platform verschafte redundantie mogelijk voldoende is voor sommige, is het wenselijk dat de service back-ups maakt van gegevens (naar een externe opslag).
 
 > [!NOTE]
-> Het is essentieel dat de back-up maken en uw gegevens te herstellen (en test deze naar verwachting werkt), zodat u vanaf gegevensverlies herstellen kunt.
+> Het is essentieel om een back-up te maken van uw gegevens en deze te herstellen (en te testen of deze werkt zoals verwacht), zodat u kunt herstellen vanuit scenario's voor gegevens verlies.
 > 
 
 > [!NOTE]
-> Microsoft raadt aan om te gebruiken [periodieke back-up en herstel](service-fabric-backuprestoreservice-quickstart-azurecluster.md) voor het configureren van gegevensback-up van betrouwbare Stateful services en Reliable Actors. 
+> Micro soft raadt u aan om [periodieke back-ups en herstel bewerkingen](service-fabric-backuprestoreservice-quickstart-azurecluster.md) te gebruiken voor het configureren van gegevens back-ups van betrouw bare stateful services en reliable actors. 
 > 
 
 
-Een service wilt bijvoorbeeld een back-up van gegevens om u te beschermen tegen de volgende scenario's:
+Een service kan bijvoorbeeld een back-up van gegevens maken om te beschermen tegen de volgende scenario's:
 
-- In het geval van het permanente verlies van gegevens van een hele Service Fabric-cluster.
-- Permanent verlies van een meerderheid van de replica's van de servicepartitie van een
-- Administratieve fouten waarbij de status per ongeluk wordt verwijderd of beschadigd. Dit kan bijvoorbeeld gebeuren als een beheerder met voldoende bevoegdheden per ongeluk worden verwijderd van de service.
-- Fouten in de service die leiden gegevensbeschadiging tot. Dit kan bijvoorbeeld gebeuren wanneer een upgrade van de code service begint beschadigde gegevens schrijven naar een betrouwbare verzameling. In dat geval, zowel de code en de gegevens mogelijk teruggezet naar een eerdere toestand.
-- Offline gegevens verwerken. Het is mogelijk handig zijn als offline verwerking van gegevens voor business intelligence die plaatsvindt afzonderlijk van de service die de gegevens worden gegenereerd.
+- In het geval van een permanent verlies van een volledig Service Fabric cluster.
+- Permanent verlies van een meerderheid van de replica's van een service partitie
+- Administratieve fouten waarbij de status per ongeluk wordt verwijderd of beschadigd. Dit kan bijvoorbeeld gebeuren als een beheerder met voldoende bevoegdheden de service ten onrechte verwijdert.
+- Fouten in de service die leiden tot beschadigde gegevens. Dit kan bijvoorbeeld gebeuren wanneer een service code-upgrade begint met het schrijven van fout gegevens naar een betrouw bare verzameling. In dat geval kunnen zowel de code als de gegevens worden teruggedraaid naar een eerdere status.
+- Offline gegevens verwerking. Het kan handig zijn om gegevens offline te verwerken voor business intelligence die los van de service worden uitgevoerd waardoor de gegevens worden gegenereerd.
 
-De functie back-up/herstel kunnen services die zijn gebouwd op de betrouwbare Services-API maken en herstellen van back-ups. De back-API die is geleverd door het platform kunt back-upbestand(en) van de status van de servicepartitie van een, zonder blokkering lees- of schrijfbewerkingen. Het terugzetten van API's maken van de servicepartitie van een staat worden hersteld vanuit een gekozen back-up.
+Met de functie voor back-up/herstel kunt u op de Reliable Services-API ingebouwde services maken en back-ups herstellen. Met de back-upapi's van het platform wordt de back-up (s) van de status van een service partitie toegestaan zonder dat lees-of schrijf bewerkingen worden geblokkeerd. Met de Restore-Api's kan de status van een service partitie worden hersteld van een gekozen back-up.
 
-## <a name="types-of-backup"></a>Typen back-up
-Er zijn twee opties voor back-up: Volledige en incrementele.
-Een volledige back-up is een back-up waarin alle gegevens die nodig zijn om de status van de replica opnieuw te maken: controlepunten en alle records in logboek registreren.
-Omdat dit de controlepunten en het logboek heeft, kan een volledige back-up kan worden hersteld op zichzelf.
+## <a name="types-of-backup"></a>Typen back-ups
+Er zijn twee opties voor back-up: volledig en incrementeel.
+Een volledige back-up is een back-up die alle gegevens bevat die nodig zijn om de status van de replica opnieuw te maken: controle punten en alle logboek records.
+Omdat deze de controle punten en het logboek bevat, kan een volledige back-up zelf worden hersteld.
 
-Het probleem met volledige back-ups daartoe zich voordoet wanneer de controlepunten groot zijn.
-Bijvoorbeeld, heeft een replica waarvoor de status van 16 GB controlepunten die toevoegen tot ongeveer 16 GB.
-Als we een beoogd herstelpunt van vijf minuten hebt, moet de replica een back-up om de vijf minuten.
-Telkens wanneer het back-ups van nodig is om te kopiëren van controlepunten naast 50 MB van 16 GB (met behulp van configureerbare `CheckpointThresholdInMB`) aan logboeken.
+Het probleem met volledige back-ups doet zich voor wanneer de controle punten groot zijn.
+Een replica met een status van 16 GB heeft bijvoorbeeld controle punten die ongeveer tot 16 GB optellen.
+Als we een herstel punt hebben van vijf minuten, moet elke vijf minuten een back-up worden gemaakt van de replica.
+Telkens wanneer er een back-up wordt gemaakt, moet er 16 GB aan controle punten worden gekopieerd, naast 50 MB (configureerbaar met `CheckpointThresholdInMB`) aan logboeken.
 
-![Voorbeeld van de volledige back-up.](media/service-fabric-reliable-services-backup-restore/FullBackupExample.PNG)
+![Voor beeld van volledige back-up.](media/service-fabric-reliable-services-backup-restore/FullBackupExample.PNG)
 
-De oplossing voor dit probleem is incrementele back-ups, waarbij back-up bevat alleen de gewijzigde logboekrecords sinds de laatste back-up.
+De oplossing voor dit probleem is incrementele back-ups, waarbij alleen back-ups de gewijzigde logboek records sinds de laatste back-up bevatten.
 
-![Voorbeeld van incrementele back-up.](media/service-fabric-reliable-services-backup-restore/IncrementalBackupExample.PNG)
+![Voor beeld van incrementele back-up.](media/service-fabric-reliable-services-backup-restore/IncrementalBackupExample.PNG)
 
-Omdat de incrementele back-ups worden alleen wijzigingen sinds de laatste back-up (bevat geen controlepunten), ze vaak sneller zijn, maar ze op hun eigen kunnen niet worden hersteld.
-Als u een incrementele back-up herstellen, zijn de volledige back-keten is vereist.
-Een back-keten is van een keten van back-ups die beginnen met een volledige back-up en gevolgd door een aantal aaneengesloten incrementele back-ups.
+Omdat incrementele back-ups alleen wijzigingen zijn sinds de laatste back-up (bevat niet de controle punten), zijn ze vaak sneller, maar ze kunnen niet zelf worden hersteld.
+Als u een incrementele back-up wilt herstellen, is de volledige back-upketen vereist.
+Een back-upketen is een keten van back-ups, te beginnen met een volledige back-up en gevolgd door een aantal aaneengesloten incrementele back-ups.
 
-## <a name="backup-reliable-services"></a>Back-up Reliable Services
-De auteur van de service heeft volledige controle over wanneer u het beste back-ups en waar de back-ups worden opgeslagen.
+## <a name="backup-reliable-services"></a>Back-upReliable Services
+De auteur van de service heeft volledige controle over wanneer back-ups moeten worden gemaakt en waar back-ups worden opgeslagen.
 
-Voor het starten van een back-up, de service moet aanroepen van de lidfunctie overgenomen `BackupAsync`.  
-Back-ups kunnen alleen vanaf de primaire replica's worden gemaakt en ze nodig hebben schrijven status om te worden toegekend.
+Om een back-up te starten, moet de service de overgenomen leden functie `BackupAsync`aanroepen.  
+Back-ups kunnen alleen worden gemaakt op basis van primaire replica's en de schrijf status moet worden toegekend.
 
-Zoals hieronder aangegeven, `BackupAsync` wordt in een `BackupDescription` -object, een waar een volledige of incrementele back-up, evenals een retouraanroepfunctie opgeven kunt, `Func<< BackupInfo, CancellationToken, Task<bool>>>` die wordt aangeroepen wanneer de back-upmap lokaal is gemaakt en gereed om te worden verplaatst is uit tot een aantal externe opslag.
+Zoals hieronder wordt weer gegeven, neemt `BackupAsync` in een `BackupDescription`-object, waarbij een volledige of incrementele back-up kan worden opgegeven, evenals een call back-functie, `Func<< BackupInfo, CancellationToken, Task<bool>>>` die wordt aangeroepen wanneer de back-upmap lokaal is gemaakt en gereed is om te worden verplaatst naar een externe opslag.
 
 ```csharp
 
@@ -79,17 +70,17 @@ await this.BackupAsync(myBackupDescription);
 
 ```
 
-Aanvraag voor een incrementele back-up kan mislukken met `FabricMissingFullBackupException`. Deze uitzondering geeft aan dat er een van de volgende dingen gebeurt:
+De aanvraag om een incrementele back-up te maken kan mislukken met `FabricMissingFullBackupException`. Deze uitzonde ring geeft aan dat een van de volgende dingen gebeurt:
 
-- de replica is een volledige back-up nooit genomen, omdat deze is geworden primaire,
-- enkele van de records in logboek registreren omdat de laatste back-up is afgekapt of
-- replica doorgegeven de `MaxAccumulatedBackupLogSizeInMB` limiet.
+- de replica heeft nooit een volledige back-up gemaakt, omdat deze primair is geworden.
+- enkele logboek records sinds de laatste back-up zijn afgekapt of
+- replica heeft de `MaxAccumulatedBackupLogSizeInMB` limiet door gegeven.
 
-Gebruikers kunnen vergroot de kans dat kunnen incrementele back-ups doen door het configureren van `MinLogSizeInMB` of `TruncationThresholdFactor`.
-Verhoging van deze waarden verhoogt de per gebruik van de replica.
-Zie voor meer informatie, [Reliable Services-configuratie](service-fabric-reliable-services-configuration.md)
+Gebruikers kunnen de kans verg Roten dat er incrementele back-ups kunnen worden gemaakt door het configureren van `MinLogSizeInMB` of `TruncationThresholdFactor`.
+Als u deze waarden verhoogt, neemt het schijf gebruik per replica toe.
+Zie [reliable Services-configuratie](service-fabric-reliable-services-configuration.md) voor meer informatie.
 
-`BackupInfo` bevat informatie met betrekking tot de back-up, met inbegrip van de locatie van de map waarin de runtime opgeslagen voor de back-up (`BackupInfo.Directory`). De callback-functie kunt verplaatsen de `BackupInfo.Directory` naar een externe opslag of een andere locatie.  Deze functie retourneert ook een Boole-waarde die aangeeft of het is de back-upmap overstappen naar de doellocatie.
+`BackupInfo` biedt informatie over de back-up, met inbegrip van de locatie van de map waarin de back-up is opgeslagen (`BackupInfo.Directory`). De call back functie kan het `BackupInfo.Directory` verplaatsen naar een extern archief of een andere locatie.  Deze functie retourneert ook een Boole-waarde die aangeeft of de back-upmap met succes kan worden verplaatst naar de doel locatie.
 
 De volgende code laat zien hoe de `BackupCallbackAsync` methode kan worden gebruikt voor het uploaden van de back-up naar Azure Storage:
 
@@ -104,34 +95,34 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, Cancellation
 }
 ```
 
-In het voorgaande voorbeeld `ExternalBackupStore` is de voorbeeldklasse die wordt gebruikt voor interactie met Azure Blob-opslag en `UploadBackupFolderAsync` is de methode die de map gecomprimeerd en plaatst het in de Azure Blob-archief.
+In het vorige voor beeld is `ExternalBackupStore` de voorbeeld klasse die wordt gebruikt voor de interface met Azure Blob Storage. `UploadBackupFolderAsync` is de methode waarmee de map wordt gecomprimeerd en geplaatst in de Azure Blob Store.
 
-Houd rekening met het volgende:
+Opmerking:
 
-  - Er mag slechts één back-upbewerking die onderweg zijn per replica op een bepaald moment. Meer dan één `BackupAsync` aanroep tegelijk genereert `FabricBackupInProgressException` actieve back-ups op een beperken.
-  - Als een replica failover optreedt terwijl een back-up uitgevoerd wordt, kan de back-up niet zijn voltooid. Nadat de failover is voltooid, het is dus de verantwoordelijkheid van de service opnieuw starten van de back-up door aan te roepen `BackupAsync` indien nodig.
+  - Er kan op elk gewenst moment slechts één back-upbewerking per replica worden uitgevoerd. Als er meer dan één `BackupAsync` oproep per keer wordt aangeroepen, wordt `FabricBackupInProgressException` om back-ups van de invlucht te beperken tot één.
+  - Als er een failover wordt uitgevoerd voor een replica terwijl er een back-up wordt gemaakt, is de back-up mogelijk niet voltooid. Zodra de failover is voltooid, is het de verantwoordelijkheid van de service om de back-up opnieuw te starten door zo nodig `BackupAsync` aan te roepen.
 
-## <a name="restore-reliable-services"></a>Herstellen van Reliable Services
-In het algemeen de gevallen wanneer u nodig hebt mogelijk om uit te voeren van een herstelbewerking worden onderverdeeld in een van deze categorieën:
+## <a name="restore-reliable-services"></a>Reliable Services herstellen
+In het algemeen zijn de gevallen waarin het nodig is om een herstel bewerking uit te voeren in een van deze categorieën:
 
-  - De service verloren gegevens partitioneren. Bijvoorbeeld, wordt de schijf voor twee van de drie replica's voor een partitie (met inbegrip van de primaire replica) beschadigd of wordt gewist. De nieuwe primaire mogelijk gegevens uit een back-up te herstellen.
-  - De hele service gaat verloren. Bijvoorbeeld, een beheerder verwijdert de hele service, en dus de service en de gegevens moeten worden teruggezet.
-  - De service gerepliceerd beschadigd toepassingsgegevens (bijvoorbeeld vanwege de fout van een toepassing). In dit geval de service worden bijgewerkt of als u wilt verwijderen van de oorzaak van de beschadiging hersteld, en niet beschadigd gegevens kunnen worden hersteld.
+  - De gegevens van de service partitie zijn verloren gegaan. Bijvoorbeeld: de schijf voor twee van de drie replica's voor een partitie (met inbegrip van de primaire replica) wordt beschadigd of gewist. De nieuwe primaire gegevens moeten mogelijk worden teruggezet vanuit een back-up.
+  - De volledige service gaat verloren. Een beheerder verwijdert bijvoorbeeld de volledige service en dus de service en de gegevens moeten worden hersteld.
+  - De service heeft beschadigde toepassings gegevens gerepliceerd (bijvoorbeeld vanwege een toepassings fout). In dit geval moet de service worden bijgewerkt of teruggezet om de oorzaak van de beschadiging te verwijderen en moeten niet-beschadigde gegevens worden hersteld.
 
-Hoewel veel benaderingen mogelijk, bieden we enkele voorbeelden over het gebruik van `RestoreAsync` om te herstellen van de bovenstaande scenario's.
+Hoewel er veel benaderingen kunnen zijn, bieden we enkele voor beelden van het gebruik van `RestoreAsync` om de bovenstaande scenario's te herstellen.
 
-## <a name="partition-data-loss-in-reliable-services"></a>Partitie gegevensverlies in Reliable Services
-In dit geval de runtime automatisch wilt detecteren van het verlies van gegevens en aanroepen de `OnDataLossAsync` API.
+## <a name="partition-data-loss-in-reliable-services"></a>Gegevens verlies in Reliable Services partitioneren
+In dit geval detecteert de runtime automatisch het gegevens verlies en roept de `OnDataLossAsync`-API aan.
 
-De auteur van de service moet uitvoeren van het volgende herstellen:
+De auteur van de service moet het volgende doen om het probleem te verhelpen:
 
-  - De virtuele basisklasse-methode overschrijven `OnDataLossAsync`.
-  - De meest recente back-up niet vinden in de externe locatie met back-ups van de service.
-  - Download de meest recente back-up (en decomprimeren van de back-up in de back-upmap als deze is gecomprimeerd).
-  - De `OnDataLossAsync` methode biedt een `RestoreContext`. Roep de `RestoreAsync` API op de opgegeven `RestoreContext`.
-  - Retourneert waar als de herstelbewerking gelukt is.
+  - Overschrijf de methode van de virtuele-basis klasse `OnDataLossAsync`.
+  - Zoek de meest recente back-up op de externe locatie die de back-ups van de service bevat.
+  - Down load de meest recente back-up (en decomprimeer de back-up in de map back-up als deze is gecomprimeerd).
+  - De methode `OnDataLossAsync` biedt een `RestoreContext`. Roep de `RestoreAsync`-API aan op de gegeven `RestoreContext`.
+  - Retourneert waar als de herstel bewerking is geslaagd.
 
-Hieronder volgt een voorbeeld van de implementatie van de `OnDataLossAsync` methode:
+Hier volgt een voor beeld van de implementatie van de `OnDataLossAsync` methode:
 
 ```csharp
 protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, CancellationToken cancellationToken)
@@ -146,44 +137,44 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 }
 ```
 
-`RestoreDescription` doorgegeven aan de `RestoreContext.RestoreAsync` aanroep van een lid met de naam bevat `BackupFolderPath`.
-Bij het herstellen van een eenmalige volledige back-up, dit `BackupFolderPath` moet worden ingesteld op het lokale pad van de map waarin uw volledige back-up.
-Bij het herstellen van een volledige back-up en een aantal incrementele back-ups, `BackupFolderPath` moet worden ingesteld op het lokale pad naar de map die niet alleen de volledige back-up, maar ook alle de incrementele back-ups bevat.
-`RestoreAsync` gesprek kunt throw `FabricMissingFullBackupException` als de `BackupFolderPath` opgegeven bevat een volledige back-up.
-Het kan ook throw `ArgumentException` als `BackupFolderPath` bevat een verbroken keten van incrementele back-ups.
-Bijvoorbeeld, als deze de volledige back-up, bevat de eerste incrementele en de derde incrementele back-up, maar niet de tweede incrementele back-up.
+`RestoreDescription` die is door gegeven aan de `RestoreContext.RestoreAsync`-aanroep bevat een lid met de naam `BackupFolderPath`.
+Bij het herstellen van één volledige back-up moet deze `BackupFolderPath` worden ingesteld op het lokale pad van de map met de volledige back-up.
+Bij het herstellen van een volledige back-up en een aantal incrementele back-ups moet `BackupFolderPath` worden ingesteld op het lokale pad van de map die niet alleen de volledige back-up bevat, maar ook alle incrementele back-ups.
+`RestoreAsync` aanroep kan `FabricMissingFullBackupException` genereren als het gegeven `BackupFolderPath` geen volledige back-up bevat.
+Het kan ook `ArgumentException` genereren als `BackupFolderPath` een verbroken keten van incrementele back-ups heeft.
+Bijvoorbeeld, als het de volledige back-up bevat, de eerste incrementele en derde incrementele back-up, maar geen tweede incrementele back-up.
 
 > [!NOTE]
-> De RestorePolicy is standaard ingesteld op Safe.  Dit betekent dat de `RestoreAsync` API mislukt en ArgumentException als wordt gedetecteerd dat de back-upmap een status die ouder zijn dan of gelijk is aan de status die deel uitmaken van deze replica bevat.  `RestorePolicy.Force` kan worden gebruikt om deze veiligheidscontrole overslaan. Dit is opgegeven als onderdeel van `RestoreDescription`.
+> De RestorePolicy is standaard ingesteld op veilig.  Dit betekent dat de `RestoreAsync`-API mislukt met ArgumentException als wordt gedetecteerd dat de back-upmap een status bevat die ouder is dan of gelijk is aan de status in deze replica.  `RestorePolicy.Force` kunnen worden gebruikt om deze veiligheids controle over te slaan. Dit wordt opgegeven als onderdeel van `RestoreDescription`.
 > 
 
-## <a name="deleted-or-lost-service"></a>Verwijderde of verloren-service
-Als een service wordt verwijderd, moet u eerst opnieuw maken de service voordat de gegevens kunnen worden hersteld.  Het is belangrijk om te maken van de service met dezelfde configuratie, bijvoorbeeld partitieschema, zodat de gegevens kunnen naadloos worden hersteld.  Zodra de service is ingeschakeld, de API om gegevens te herstellen (`OnDataLossAsync` hierboven) moet worden aangeroepen in elke partitie van deze service. Een manier om dit is met behulp van [FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx) op elke partitie.  
+## <a name="deleted-or-lost-service"></a>Service verwijderd of verloren
+Als een service wordt verwijderd, moet u eerst de service opnieuw maken voordat de gegevens kunnen worden hersteld.  Het is belang rijk om de service te maken met dezelfde configuratie, bijvoorbeeld voor het partitioneren van het schema, zodat de gegevens naadloos kunnen worden hersteld.  Zodra de service is ingeschakeld, moet de API voor het herstellen van gegevens (`OnDataLossAsync` hierboven) worden aangeroepen op elke partitie van deze service. Een manier om dit te bereiken, is door [FabricClient. TestManagementClient. StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx) op elke partitie te gebruiken.  
 
-Vanaf dit punt is implementatie hetzelfde als het bovenstaande scenario. Elke partitie moet de nieuwste relevante back-up herstellen vanuit de externe opslag. Een nadeel is dat de partitie-ID mogelijk is nu gewijzigd, omdat de runtime partitie-id dynamisch gemaakt. Daarom moet de service voor het opslaan van de gewenste partitie informatie en service-naam voor het identificeren van de juiste meest recente back-up te herstellen uit voor elke partitie.
+Vanaf dit punt is de implementatie hetzelfde als het bovenstaande scenario. Elke partitie moet de meest recente relevante back-up herstellen vanuit de externe opslag. Een voor behoud is dat de partitie-ID nu is gewijzigd, omdat de runtime partitie-Id's dynamisch maakt. De service moet dus de juiste partitie gegevens en service naam opslaan om de juiste meest recente back-up te identificeren voor herstel vanaf elke partitie.
 
 > [!NOTE]
-> Het wordt afgeraden om te gebruiken `FabricClient.ServiceManager.InvokeDataLossAsync` op elke partitie om terug te zetten van de hele service, omdat dat de clusterstatus van uw mogelijk beschadigd.
+> Het is niet raadzaam om `FabricClient.ServiceManager.InvokeDataLossAsync` op elke partitie te gebruiken om de volledige service te herstellen, omdat de cluster status mogelijk is beschadigd.
 > 
 
-## <a name="replication-of-corrupt-application-data"></a>Replicatie van gegevens beschadigd van toepassing
-Als de upgrade van de geïmplementeerde toepassing een fout, die leiden tot beschadiging van gegevens heeft kan. Een upgrade van de toepassing kan bijvoorbeeld starten record bij te werken elke telefoon nummer in een betrouwbare Dictionary met een ongeldige netnummer.  In dit geval worden de ongeldige telefoonnummers gerepliceerd sinds de Service Fabric is niet op de hoogte van de aard van de gegevens die worden opgeslagen.
+## <a name="replication-of-corrupt-application-data"></a>Replicatie van beschadigde toepassings gegevens
+Als de nieuwe geïmplementeerde toepassings upgrade een bug heeft, kan dit een beschadiging van gegevens tot gevolg hebben. Een upgrade van een toepassing kan bijvoorbeeld beginnen met het bijwerken van elke telefoonnummer record in een betrouw bare woorden lijst met een ongeldige netnummer.  In dit geval worden de ongeldige telefoon nummers gerepliceerd, omdat Service Fabric niet op de hoogte is van de aard van de gegevens die worden opgeslagen.
 
-Allereerst moet doen nadat u deze een egregious bug die ervoor zorgt beschadigde gegevens dat detecteren is blokkeren van de service op het toepassingsniveau van de en, indien mogelijk een upgrade uitvoert naar de versie van de toepassingscode die beschikt niet over de fout.  Echter, zelfs nadat de servicecode is opgelost, de gegevens nog steeds mogelijk beschadigd, en dus gegevens moeten mogelijk worden hersteld.  In dergelijke gevallen kan deze mogelijk niet voldoende om terug te zetten van de meest recente back-up, omdat de meest recente back-ups ook beschadigd zijn kunnen.  U moet dus vinden van de laatste back-up die is gemaakt voordat de gegevens is beschadigd.
+Het eerste wat u moet doen nadat u een dergelijke egregious-fout hebt gedetecteerd die gegevens beschadiging veroorzaakt, is om de service op toepassings niveau te blok keren en om, indien mogelijk, een upgrade uit te voeren naar de versie van de toepassings code die de fout niet bevat.  Zelfs nadat de service code is gecorrigeerd, kunnen de gegevens nog steeds zijn beschadigd en kunnen de gegevens worden hersteld.  In dergelijke gevallen is het mogelijk niet voldoende om de meest recente back-up te herstellen, omdat de meest recente back-ups mogelijk ook zijn beschadigd.  U moet dus de laatste back-up vinden die is gemaakt voordat de gegevens zijn beschadigd.
 
-Als u niet zeker weet welke back-ups zijn beschadigd, kan u een nieuw Service Fabric-cluster implementeren en de back-ups van de betrokken partities net als de bovenstaande 'Verwijderd of verloren service' scenario.  Voor elke partitie, start de back-up van de meest recente terugzetten naar minst. Als u een back-up waarop de beschadiging niet is gevonden, verplaatsen en verwijderen alle back-ups van deze partitie die (dan deze back-up waren). Herhaal dit proces voor elke partitie. Nu als `OnDataLossAsync` wordt aangeroepen op de partitie in de productiecluster, de laatste back-up gevonden in de externe opslag zal worden verzameld door de bovenstaande proces.
+Als u niet zeker weet welke back-ups zijn beschadigd, kunt u een nieuw Service Fabric-cluster implementeren en de back-ups van betrokken partities herstellen, net als in het bovenstaande scenario ' verwijderde of verloren service '.  Voor elke partitie start u de back-ups van de meest recente naar de minst. Wanneer u een back-up hebt gevonden die niet is beschadigd, verplaatst of verwijdert u alle back-ups van deze partitie die recenter zijn (dan die back-up). Herhaal dit proces voor elke partitie. Wanneer `OnDataLossAsync` nu wordt aangeroepen op de partitie in het productie cluster, wordt de laatste back-up die is gevonden in de externe Store, de versie die is gekozen door het bovenstaande proces.
 
-Nu de stappen in 'verwijderd of verloren service' sectie kan worden gebruikt om te herstellen van de status van de service naar de status voordat de status van de buggy code beschadigd.
+Nu kunt u de stappen in de sectie verwijderde of verloren Services gebruiken om de status van de service terug te zetten naar de status voordat de code van de fout opsporing de status beschadigd had.
 
-Houd rekening met het volgende:
+Opmerking:
 
-  - Wanneer u herstelt, wordt er een kans dat de back-up wordt hersteld ouder is dan de status van de partitie is voordat de gegevens verbroken is. Als gevolg hiervan moet u herstellen alleen als laatste redmiddel om zo veel gegevens mogelijk te herstellen.
-  - De tekenreeks die de back-upmap pad en de paden van bestanden in de back-upmap vertegenwoordigt kan niet groter zijn dan 255 tekens, afhankelijk van het pad FabricDataRoot en de lengte van de naam van het Type toepassing. Hierdoor kunnen sommige .NET-methoden, zoals `Directory.Move`, om de `PathTooLongException` uitzondering. Een tijdelijke oplossing is om aan te roepen rechtstreeks kan kernel32-API's, zoals `CopyFile`.
+  - Wanneer u herstelt, is er een kans dat de back-up die wordt hersteld ouder is dan de status van de partitie voordat de gegevens verloren zijn gegaan. Daarom moet u alleen herstellen als laatste redmiddel om zoveel mogelijk gegevens te herstellen.
+  - De teken reeks voor het pad van de back-upmap en de paden van bestanden in de map back-up kan langer zijn dan 255 tekens, afhankelijk van het pad van de FabricDataRoot en de naam van het toepassings type. Dit kan tot gevolg hebben dat sommige .NET-methoden, zoals `Directory.Move`, de `PathTooLongException` uitzonde ring genereren. Een tijdelijke oplossing is het rechtstreeks aanroepen van Kernel32 Api's, zoals `CopyFile`.
 
-## <a name="back-up-and-restore-reliable-actors"></a>Back-up en herstellen van Reliable Actors
+## <a name="back-up-and-restore-reliable-actors"></a>Back-ups maken en herstellen Reliable Actors
 
 
-Reliable Actors-Framework is gebaseerd op Reliable Services. De ActorService, die als host fungeert voor de actor(s) is een stateful betrouwbare service. Alle back-up en herstel functionaliteit beschikbaar zijn in Reliable Services is daarom ook beschikbaar voor Reliable Actors (met uitzondering van gedrag die specifieke state-provider). Sinds de back-ups moeten worden ondernomen op basis van per partitie, statussen voor alle actoren in deze partitie worden back-ups (en herstel is vergelijkbaar en wordt uitgevoerd op basis van per partitie). Om uit te voeren back-up/herstellen, moet de eigenaar van de service maakt u een aangepaste actor-service-klasse die is afgeleid van klasse ActorService en voer back-up/herstel die vergelijkbaar is met Reliable Services zoals hierboven is beschreven in de vorige secties.
+Reliable Actors Framework is boven op Reliable Services gebouwd. De ActorService, die als host fungeert voor de actor (s) is een stateful betrouw bare service. Daarom is alle functionaliteit voor back-up en herstel in Reliable Services ook beschikbaar voor Reliable Actors (met uitzonde ring van gedrag dat specifiek is voor de State-provider). Omdat back-ups per partitie worden gemaakt, krijgen de statussen voor alle actors in die partitie een back-up (en wordt herstel op dezelfde manier uitgevoerd). Als u back-up/herstel wilt uitvoeren, moet de eigenaar van de service een aangepaste actor service-klasse maken die is afgeleid van de ActorService-klasse en vervolgens back-up/herstellen lijkt op Reliable Services zoals hierboven beschreven in de vorige secties.
 
 ```csharp
 class MyCustomActorService : ActorService
@@ -199,14 +190,14 @@ class MyCustomActorService : ActorService
 }
 ```
 
-Wanneer u een aangepaste actor-service-klasse maakt, moet u die ook registreren bij het registreren van de actor.
+Wanneer u een aangepaste actor service-klasse maakt, moet u deze ook registreren bij het registreren van de actor.
 
 ```csharp
 ActorRuntime.RegisterActorAsync<MyActor>(
     (context, typeInfo) => new MyCustomActorService(context, typeInfo)).GetAwaiter().GetResult();
 ```
 
-De status standaardprovider voor betrouwbare actoren `KvsActorStateProvider`. Incrementele back-up is niet standaard ingeschakeld voor `KvsActorStateProvider`. U kunt de incrementele back-up inschakelen door het maken van `KvsActorStateProvider` met de juiste instelling in de constructor en vervolgens doorgegeven aan de constructor ActorService zoals wordt weergegeven in het volgende codefragment:
+De standaard status provider voor Reliable Actors is `KvsActorStateProvider`. Incrementele back-up is standaard niet ingeschakeld voor `KvsActorStateProvider`. U kunt incrementele back-up inschakelen door `KvsActorStateProvider` te maken met de juiste instelling in de bijbehorende constructor en deze vervolgens door te geven aan de ActorService-constructor, zoals wordt weer gegeven in het volgende code fragment:
 
 ```csharp
 class MyCustomActorService : ActorService
@@ -222,51 +213,51 @@ class MyCustomActorService : ActorService
 }
 ```
 
-Nadat incrementele back-up is ingeschakeld, een incrementele back-up maken voor een van de volgende redenen mislukken met FabricMissingFullBackupException en moet u een volledige back-up uitvoeren voordat u incrementeel back-upbestand(en):
+Nadat incrementele back-up is ingeschakeld, kan het maken van een incrementele back-up mislukken met FabricMissingFullBackupException om een van de volgende redenen, en moet u een volledige back-up maken voordat u incrementele back-ups kunt maken:
 
-  - De replica heeft nooit genomen voor een volledige back-up omdat deze primair zijn geworden.
-  - Enkele van de records in logboek registreren zijn afgekapt sinds de laatste back-up is gemaakt.
+  - De replica heeft nooit een volledige back-up gemaakt, omdat deze primair is geworden.
+  - Enkele van de logboek records zijn afgekapt sinds de laatste back-up is gemaakt.
 
-Als incrementele back-up is ingeschakeld, `KvsActorStateProvider` circulaire buffer niet gebruikt voor het beheren van de records in logboek registreren en periodiek worden afgekapt. Als er geen back-up is gemaakt door gebruiker gedurende een periode van 45 minuten, wordt de records in logboek registreren in het systeem automatisch afgekapt. Dit interval kan worden geconfigureerd door op te geven `logTruncationIntervalInMinutes` in `KvsActorStateProvider` constructor (net als bij het inschakelen van incrementele back-up). De records in logboek registreren kunnen ook ophalen afgekapt als primaire replica moet een andere replica kunt maken met alle bijbehorende gegevens te verzenden.
+Wanneer incrementele back-up is ingeschakeld, gebruikt `KvsActorStateProvider` geen circulaire buffer voor het beheren van de logboek records en wordt deze regel matig afgekapt. Als er gedurende een periode van 45 minuten geen back-up wordt gemaakt door de gebruiker, worden de records in het logboek automatisch afgekapt. Dit interval kan worden geconfigureerd door `logTruncationIntervalInMinutes` op te geven in `KvsActorStateProvider` constructor (vergelijkbaar met het inschakelen van incrementele back-up). De logboek records kunnen ook worden afgekapt als voor de primaire replica een andere replica moet worden gemaakt door alle gegevens te verzenden.
 
-Bij het uitvoeren van terugzetten vanuit een back-keten, vergelijkbaar met Reliable Services de BackupFolderPath moet bevatten submappen met een submap met de volledige back-up en anderen met incrementele back-upbestand(en) submappen. De API terugzetten genereert FabricException met foutbericht weergegeven als de validatie van de back-certificaatketen mislukt. 
-
-> [!NOTE]
-> `KvsActorStateProvider` op dit moment wordt de optie RestorePolicy.Safe genegeerd. Ondersteuning voor deze functie is gepland in een toekomstige release.
-> 
-
-## <a name="testing-back-up-and-restore"></a>Testen van een Back-up en herstel
-Het is belangrijk om ervoor te zorgen dat essentiële gegevens back-up en van kan worden hersteld. Dit kan worden gedaan door het aanroepen van de `Start-ServiceFabricPartitionDataLoss` cmdlet in PowerShell die een bepaalde partitie om te testen of de gegevens back-up en herstellen van functionaliteit voor uw service werkt zoals verwacht verlies van gegevens kan veroorzaken.  Het is ook mogelijk om via een programma gegevensverlies aanroepen en herstellen van die gebeurtenis ook.
+Bij het herstellen van een back-upketen, vergelijkbaar met Reliable Services, moet de BackupFolderPath submappen bevatten met één submap met volledige back-up en andere submappen met incrementele back-ups. De Restore-API genereert FabricException met het juiste fout bericht als de validatie van de back-upketen mislukt. 
 
 > [!NOTE]
-> U vindt een Voorbeeldimplementatie van back-up en herstel functionaliteit in de Web-App voor verwijzing op GitHub. Bekijk de `Inventory.Service` service voor meer informatie.
+> `KvsActorStateProvider` wordt momenteel de optie RestorePolicy. safe genegeerd. Ondersteuning voor deze functie is gepland in een toekomstige release.
+> 
+
+## <a name="testing-back-up-and-restore"></a>Back-ups testen en herstellen
+Het is belang rijk om ervoor te zorgen dat er een back-up van essentiële gegevens wordt gemaakt en kan worden hersteld. U kunt dit doen door de `Start-ServiceFabricPartitionDataLoss`-cmdlet in Power shell aan te roepen, waardoor gegevens verlies kan optreden in een bepaalde partitie om te testen of de functionaliteit voor het maken en herstellen van gegevens voor uw service werkt zoals verwacht.  Het is ook mogelijk gegevens verlies op programmatische wijze aan te roepen en uit die gebeurtenis te herstellen.
+
+> [!NOTE]
+> U vindt een voorbeeld implementatie van de functionaliteit voor back-up en herstel in de Web Reference-app op GitHub. Raadpleeg de `Inventory.Service`-service voor meer informatie.
 > 
 > 
 
-## <a name="under-the-hood-more-details-on-backup-and-restore"></a>Achter de schermen: meer informatie over back-up en herstel
-Hier volgt wat meer informatie over back-up en herstel.
+## <a name="under-the-hood-more-details-on-backup-and-restore"></a>Onder de motorkap: meer informatie over back-up en herstel
+Hier vindt u meer informatie over back-up en herstel.
 
-### <a name="backup"></a>Backup
-De betrouwbare status Manager biedt de mogelijkheid toepassingsconsistente back-ups maken zonder dat alle lezen wordt geblokkeerd of schrijfbewerkingen. Om dit te doen, maakt het gebruik van een persistentie controlepunt- en logboekbestanden.  De betrouwbare status Manager duurt fuzzy (lichtgewicht) controlepunten op bepaalde tijdstippen om te ontlasten van het logboek voor transactionele zwaar wordt belast en hersteltijden verbeteren.  Wanneer `BackupAsync` wordt aangeroepen, de betrouwbare status Manager geeft alle betrouwbare objecten hun meest recente om controlepuntbestanden te kopiëren naar een lokale back-upmap.  Vervolgens kopieert de betrouwbare status Manager alle records in logboek registreren, vanaf de wijzer' start' naar de meest recente record voor de logboekbestanden in de back-upmap.  Aangezien alle logboekrecords tot de meest recente logboekrecord zijn opgenomen in de back-up en de betrouwbare status Manager write-ahead logboekregistratie behoudt, de betrouwbare status Manager zorgt ervoor dat alle transacties die toegewezen zijn (`CommitAsync` met succes heeft geretourneerd ) zijn opgenomen in de back-up.
+### <a name="backup"></a>Back-up
+De betrouw bare status beheerder biedt de mogelijkheid om consistente back-ups te maken zonder lees-of schrijf bewerkingen te blok keren. Hiervoor wordt een controle punt en logboek persistentie mechanisme gebruikt.  De betrouw bare status beheerder bewaart op bepaalde punten onduidelijke controle punten om druk uit het transactionele logboek te ontlasten en herstel tijden te verbeteren.  Als `BackupAsync` wordt aangeroepen, zorgt de betrouw bare status beheerder ervoor dat alle betrouw bare objecten hun meest recente controlepunt bestanden kopiëren naar een lokale back-upmap.  Vervolgens kopieert de betrouw bare status Manager alle logboek records, beginnend bij ' Start pointer ' naar de meest recente logboek record naar de map backup.  Omdat alle logboek records tot de meest recente logboek record zijn opgenomen in de back-up en de betrouw bare status beheerder behoudt logboek registratie, garandeert de betrouw bare status beheerder dat alle trans acties die zijn vastgelegd (`CommitAsync` zijn geretourneerd) zijn opgenomen in de back-up.
 
-De transactie die doorvoeringen na `BackupAsync` mei is aangeroepen of mogelijk niet in de back-up.  Zodra de lokale back-upmap is ingevuld door het platform (dat wil zeggen, lokale back-up is voltooid door de runtime), back-callback van de service wordt aangeroepen.  Deze aanroep is verantwoordelijk voor het verplaatsen van de back-upmap op een externe locatie, zoals Azure Storage.
+Een trans actie die wordt doorgevoerd nadat `BackupAsync` is aangeroepen, kan al dan niet een back-up zijn.  Zodra de lokale back-upmap is gevuld door het platform (dat wil zeggen, de lokale back-up is voltooid door de runtime), wordt de back-up van de service aangeroepen.  Deze retour aanroep is verantwoordelijk voor het verplaatsen van de map backup naar een externe locatie, zoals Azure Storage.
 
 ### <a name="restore"></a>Herstellen
-De betrouwbare status Manager biedt de mogelijkheid om terug te zetten vanuit een back-up met behulp van de `RestoreAsync` API.  
-De `RestoreAsync` methode voor `RestoreContext` kan worden aangeroepen alleen binnen het `OnDataLossAsync` methode.
-De bool geretourneerd door `OnDataLossAsync` geeft aan of de service de status hersteld vanuit een externe bron.
-Als de `OnDataLossAsync` resulteert in waar, Service Fabric wordt opnieuw opgebouwd alle andere replica's van deze primaire. Service Fabric zorgt ervoor dat replica's die worden ontvangen `OnDataLossAsync` aanroepen van de eerste overgang naar de primaire rol, maar zijn niet de status verleend lezen of schrijven van de status.
-Dit houdt in dat voor StatefulService implementers, `RunAsync` zal niet worden aangeroepen totdat `OnDataLossAsync` is voltooid.
-Vervolgens `OnDataLossAsync` wordt aangeroepen op de nieuwe primaire.
-Totdat een service sluitstuk van deze API is (waar of onwaar retourneren) en de relevante nieuwe configuratie is voltooid, de API wordt behouden die wordt aangeroepen één voor één.
+De betrouw bare status beheerder biedt de mogelijkheid om vanaf een back-up te herstellen met behulp van de `RestoreAsync`-API.  
+De methode `RestoreAsync` op `RestoreContext` kan alleen binnen de methode `OnDataLossAsync` worden aangeroepen.
+De Boole-waarde die wordt geretourneerd door `OnDataLossAsync` geeft aan of de service de status van een externe bron heeft hersteld.
+Als de `OnDataLossAsync` waar retourneert Service Fabric, worden alle andere replica's van deze primaire replica opnieuw opgebouwd. Service Fabric zorgt ervoor dat replica's die `OnDataLossAsync` de eerste overgang naar de primaire rol ontvangen, maar geen Lees status of schrijf status krijgen.
+Dit houdt in dat voor StatefulService-Implementers `RunAsync` pas wordt aangeroepen nadat `OnDataLossAsync` is voltooid.
+Vervolgens wordt `OnDataLossAsync` aangeroepen op de nieuwe primaire.
+Totdat een service deze API met succes heeft voltooid (door het retour neren van waar of onwaar) en de relevante herconfiguratie te volt ooien, wordt de API één keer aangeroepen.
 
-`RestoreAsync` eerst komt alle bestaande statussen van de primaire replica die er is met de naam op. De betrouwbare status Manager maakt vervolgens de betrouwbare objecten die zijn opgenomen in de back-upmap. Vervolgens wordt de betrouwbare objecten terugzetten vanuit hun controlepunten in de back-upmap geïnstrueerd. Ten slotte de betrouwbare status Manager Hiermee herstelt u een eigen status van de records in logboek registreren in de back-upmap en herstel wordt uitgevoerd. Als onderdeel van het herstelproces opnieuw vanaf het "beginpunt" bewerkingen die records in logboek registreren in de back-upmap hebt doorgevoerd afgespeeld op de betrouwbare objecten. Deze stap zorgt ervoor dat de status van de herstelde consistent is.
+`RestoreAsync` eerst alle bestaande statussen in de primaire replica waarop deze werd aangeroepen, weglaten. Vervolgens maakt de betrouw bare status beheerder alle betrouw bare objecten die voor komen in de back-upmap. Vervolgens worden de betrouw bare objecten in de back-upmap teruggezet op basis van hun controle punten. Ten slotte herstelt de betrouw bare status beheerder zijn eigen status uit de logboek records in de map backup en voert het herstel uit. Als onderdeel van het herstel proces worden bewerkingen vanaf het ' begin punt ' die vastgelegde logboek records hebben in de back-upmap, opnieuw afgespeeld naar de betrouw bare objecten. Met deze stap zorgt u ervoor dat de herstelde status consistent is.
 
 ## <a name="next-steps"></a>Volgende stappen
   - [Betrouwbare verzamelingen](service-fabric-work-with-reliable-collections.md)
-  - [Snelstartgids voor betrouwbare Services](service-fabric-reliable-services-quick-start.md)
-  - [Meldingen van betrouwbare Services](service-fabric-reliable-services-notifications.md)
-  - [Configuratie van betrouwbare Services](service-fabric-reliable-services-configuration.md)
-  - [Referentie voor ontwikkelaars voor betrouwbare verzamelingen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  - [Snelstartgids Reliable Services](service-fabric-reliable-services-quick-start.md)
+  - [Reliable Services meldingen](service-fabric-reliable-services-notifications.md)
+  - [Reliable Services configuratie](service-fabric-reliable-services-configuration.md)
+  - [Naslag informatie voor ontwikkel aars voor betrouw bare verzamelingen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
   - [Periodic backup and restore in Azure Service Fabric](service-fabric-backuprestoreservice-quickstart-azurecluster.md) (Periodieke back-up en herstel in Azure Service Fabric)
 

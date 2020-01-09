@@ -1,6 +1,6 @@
 ---
-title: Tabel kopiëren bewerkingen op Azure Cosmos DB Cassandra-API van Spark.
-description: Dit artikel wordt uitgelegd hoe u het kopiëren van gegevens tussen tabellen in Azure Cosmos DB Cassandra-API
+title: Tabel Kopieer bewerkingen op Azure Cosmos DB Cassandra-API vanuit Spark
+description: In dit artikel wordt beschreven hoe u gegevens kopieert tussen tabellen in Azure Cosmos DB Cassandra-API
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: c98582d5fe11b87d2ba88d5fb247a87cc905e1dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32714e216e59565c787f92bf1e8da62957bc7233
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60895178"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445616"
 ---
-# <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>Tabel kopiëren bewerkingen op Azure Cosmos DB Cassandra-API van Spark
+# <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>Tabel Kopieer bewerkingen op Azure Cosmos DB Cassandra-API vanuit Spark
 
-Dit artikel wordt beschreven hoe u het kopiëren van gegevens tussen tabellen in Azure Cosmos DB Cassandra-API van Spark. De opdrachten die worden beschreven in dit artikel kunnen ook worden gebruikt om gegevens te kopiëren van Apache Cassandra-tabellen met Cassandra-API van Azure Cosmos DB-tabellen.
+In dit artikel wordt beschreven hoe u gegevens uit Spark kopieert tussen tabellen in Azure Cosmos DB Cassandra-API. De opdrachten die in dit artikel worden beschreven, kunnen ook worden gebruikt voor het kopiëren van gegevens uit Apache Cassandra-tabellen naar Azure Cosmos DB Cassandra-API tabellen.
 
 ## <a name="cassandra-api-configuration"></a>Configuratie van de Cassandra-API
 
@@ -46,7 +46,7 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="insert-sample-data"></a>Voorbeeldgegevens ingevoegd 
+## <a name="insert-sample-data"></a>Voorbeeld gegevens invoegen 
 ```scala
 val booksDF = Seq(
    ("b00001", "Arthur Conan Doyle", "A study in scarlet", 1887,11.33),
@@ -65,7 +65,7 @@ booksDF.write
 
 ## <a name="copy-data-between-tables"></a>Gegevens kopiëren tussen tabellen
 
-### <a name="copy-data-between-tables-destination-table-exists"></a>Gegevens kopiëren tussen tabellen (doeltabel bestaat)
+### <a name="copy-data-between-tables-destination-table-exists"></a>Gegevens kopiëren tussen tabellen (doel tabel bestaat)
 
 ```scala
 //1) Create destination table
@@ -93,7 +93,7 @@ sqlContext
   .show
 ```
 
-### <a name="copy-data-between-tables-destination-table-does-not-exist"></a>Gegevens kopiëren tussen tabellen (doeltabel niet bestaat)
+### <a name="copy-data-between-tables-destination-table-does-not-exist"></a>Gegevens kopiëren tussen tabellen (doel tabel bestaat niet)
 
 ```scala
 import com.datastax.spark.connector._

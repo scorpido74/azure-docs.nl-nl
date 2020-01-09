@@ -2,18 +2,18 @@
 title: Backup &-replicatie voor Apache HBase, Phoenix-Azure HDInsight
 description: Back-ups en replicatie instellen voor Apache HBase en Apache Phoenix in azure HDInsight
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: ashishth
-ms.openlocfilehash: 9611199cf08084505381223ef485ae2b6f00cb21
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.custom: hdinsightactive
+ms.date: 12/19/2019
+ms.openlocfilehash: c6d33158b581bf4394a0d1bac2b277830328e110
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044700"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495944"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Back-up en replicatie instellen voor Apache HBase en Apache Phoenix op HDInsight
 
@@ -44,7 +44,7 @@ HBase in HDInsight maakt gebruik van de standaard opslag die is geselecteerd bij
     wasbs://<containername>@<accountname>.blob.core.windows.net/hbase
     ```
 
-* In Azure Data Lake Storage de map `hbase` zich bevindt onder het hoofdpad dat u hebt opgegeven bij het inrichten van een cluster. Dit hoofdpad heeft doorgaans een `clusters` map met een submap met de naam na uw HDInsight-cluster:
+* In Azure Data Lake Storage bevindt de map `hbase` zich onder het hoofdpad dat u hebt opgegeven bij het inrichten van een cluster. Dit hoofdpad heeft doorgaans een `clusters` map met een submap met de naam na uw HDInsight-cluster:
 
     ```
     /clusters/<clusterName>/hbase
@@ -60,15 +60,19 @@ Nadat u het cluster hebt verwijderd, kunt u de gegevens op de gewenste plaats la
 
 ## <a name="export-then-import"></a>Exporteren en vervolgens importeren
 
-Gebruik op het bron HDInsight-cluster het export programma (opgenomen in HBase) om gegevens uit een bron tabel te exporteren naar de standaard Attached Storage. U kunt de geëxporteerde map vervolgens kopiëren naar de locatie van de doel opslag en het hulp programma importeren uitvoeren op het HDInsight-doel cluster.
+Gebruik op het bron HDInsight-cluster het [export programma](https://hbase.apache.org/book.html#export) (opgenomen in HBase) om gegevens uit een bron tabel te exporteren naar de standaard Attached Storage. U kunt de geëxporteerde map vervolgens kopiëren naar de locatie van de doel opslag en het [hulp programma importeren](https://hbase.apache.org/book.html#import) uitvoeren op het HDInsight-doel cluster.
 
-Als u een tabel wilt exporteren, moet u eerst SSH in het hoofd knooppunt van uw bron-HDInsight-cluster en vervolgens de volgende `hbase` opdracht uitvoeren:
+Als u tabel gegevens wilt exporteren, moet u eerst SSH in het hoofd knooppunt van uw bron-HDInsight-cluster en vervolgens de volgende `hbase` opdracht uitvoeren:
 
     hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>"
 
-Als u een tabel wilt importeren, moet u SSH in het hoofd knooppunt van uw doel-HDInsight-cluster en vervolgens de volgende `hbase` opdracht uitvoeren:
+De exportmap mag niet al bestaan. De tabel naam is hoofdletter gevoelig.
+
+Als u tabel gegevens wilt importeren, moet u SSH in het hoofd knooppunt van uw doel-HDInsight-cluster en vervolgens de volgende `hbase`-opdracht uitvoeren:
 
     hbase org.apache.hadoop.hbase.mapreduce.Import "<tableName>" "/<path>/<to>/<export>"
+
+De tabel moet al bestaan.
 
 Geef het volledige exportpad op naar de standaard opslag of naar een van de gekoppelde opslag opties. Bijvoorbeeld in Azure Storage:
 
@@ -90,11 +94,12 @@ Houd er rekening mee dat u het aantal versies van elke rij moet opgeven dat u wi
 
 ## <a name="copy-tables"></a>Tabellen kopiëren
 
-Het hulp programma CopyTable kopieert gegevens van een bron tabel, rij voor rij, naar een bestaande doel tabel met hetzelfde schema als de bron. De doel tabel kan zich in hetzelfde cluster of een ander HBase-cluster bevindt.
+Het [hulp programma CopyTable](https://hbase.apache.org/book.html#copy.table) kopieert gegevens van een bron tabel, rij voor rij, naar een bestaande doel tabel met hetzelfde schema als de bron. De doel tabel kan zich in hetzelfde cluster of een ander HBase-cluster bevindt. De tabel namen zijn hoofdletter gevoelig.
 
 Als u CopyTable binnen een cluster wilt gebruiken, moet u SSH in het hoofd knooppunt van uw bron-HDInsight-cluster en vervolgens deze `hbase` opdracht uitvoeren:
 
     hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> <srcTableName>
+
 
 Als u CopyTable wilt gebruiken om te kopiëren naar een tabel in een ander cluster, voegt u de `peer` switch toe met het adres van het doel cluster:
 
@@ -106,11 +111,11 @@ Het doel adres bestaat uit de volgende drie onderdelen:
 
 * `<ZooKeeperQuorum>` is een door komma's gescheiden lijst met Apache ZooKeeper knooppunten, bijvoorbeeld:
 
-    zk0-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, ZK4-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
+    zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
 
 * `<Port>` op HDInsight standaard ingesteld op 2181 en `<ZnodeParent>` is `/hbase-unsecure`, dus de volledige `<destinationAddress>` zou zijn:
 
-    zk0-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, ZK4-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, zk3-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net: 2181:/hbase-UNSECURE
+    zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net:2181:/hbase-unsecure
 
 Zie [hand matig de Apache ZooKeeper-quorum lijst](#manually-collect-the-apache-zookeeper-quorum-list) in dit artikel verzamelen voor meer informatie over het ophalen van deze waarden voor uw HDInsight-cluster.
 
@@ -155,7 +160,7 @@ In ons voor beeld:
 
 ## <a name="snapshots"></a>Momentopnamen
 
-Met moment opnamen kunt u een tijdrovende back-up maken van gegevens in uw HBase-opslag plaats. Moment opnamen hebben minimale overhead en zijn binnen enkele seconden voltooid, omdat een momentopname bewerking in feite een meta gegevens bewerking is die de namen van alle bestanden in de opslag op dat moment vastlegt. Op het moment van een moment opname worden er geen werkelijke gegevens gekopieerd. Moment opnamen zijn afhankelijk van het onveranderbare karakter van de gegevens die zijn opgeslagen in HDFS, waarbij updates, verwijderingen en invoegingen worden weer gegeven als nieuwe gegevens. U kunt een moment opname op hetzelfde cluster herstellen (*klonen*) of een moment opname exporteren naar een ander cluster.
+Met [moment opnamen](https://hbase.apache.org/book.html#ops.snapshots) kunt u een tijdrovende back-up maken van gegevens in uw HBase-opslag plaats. Moment opnamen hebben minimale overhead en zijn binnen enkele seconden voltooid, omdat een momentopname bewerking in feite een meta gegevens bewerking is die de namen van alle bestanden in de opslag op dat moment vastlegt. Op het moment van een moment opname worden er geen werkelijke gegevens gekopieerd. Moment opnamen zijn afhankelijk van het onveranderbare karakter van de gegevens die zijn opgeslagen in HDFS, waarbij updates, verwijderingen en invoegingen worden weer gegeven als nieuwe gegevens. U kunt een moment opname op hetzelfde cluster herstellen (*klonen*) of een moment opname exporteren naar een ander cluster.
 
 Als u een moment opname wilt maken, maakt u een SSH-verbinding met het hoofd knooppunt van uw HDInsight HBase-cluster en start u de `hbase` shell:
 
@@ -183,13 +188,13 @@ Het `<hdfsHBaseLocation>` kan een van de opslag locaties zijn die toegankelijk z
 
     hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
 
-Nadat de moment opname is geëxporteerd, gaat u naar het hoofd knooppunt van het doel cluster en herstelt u de moment opname met de restore_snapshot-opdracht, zoals eerder is beschreven.
+Nadat de moment opname is geëxporteerd, gaat u naar het hoofd knooppunt van het doel cluster en herstelt u de moment opname met de restore_snapshot opdracht, zoals eerder is beschreven.
 
-Moment opnamen bieden een volledige back-up van een tabel op het moment van de `snapshot` opdracht. Met moment opnamen kunt u niet de mogelijkheid bieden om incrementele moment opnamen te maken op Windows of om subsets van kolom families op te geven die moeten worden opgenomen in de moment opname.
+Moment opnamen bieden een volledige back-up van een tabel op het moment van de `snapshot` opdracht. Met moment opnamen kunt u niet de mogelijkheid bieden om incrementele moment opnamen op te zetten en kunt u geen subsets van kolom families opgeven die moeten worden opgenomen in de moment opname.
 
 ## <a name="replication"></a>Replicatie
 
-Met HBase-replicatie worden automatisch trans acties van een bron cluster naar een doel cluster gepusht, met behulp van een asynchroon mechanisme met minimale overhead op het bron cluster. In HDInsight kunt u replicatie instellen tussen clusters waar:
+Met [HBase-replicatie](https://hbase.apache.org/book.html#_cluster_replication) worden automatisch trans acties van een bron cluster naar een doel cluster gepusht, met behulp van een asynchroon mechanisme met minimale overhead op het bron cluster. In HDInsight kunt u replicatie instellen tussen clusters waar:
 
 * De bron-en doel clusters bevinden zich in hetzelfde virtuele netwerk.
 * De bron-en doel clusters bevinden zich in verschillende virtuele netwerken die zijn verbonden via een VPN-gateway, maar beide clusters bestaan op dezelfde geografische locatie.
@@ -209,3 +214,4 @@ Als u replicatie op HDInsight wilt inschakelen, moet u een script actie Toep ass
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Apache HBase-replicatie configureren](apache-hbase-replication.md)
+* [Werken met het HBase-hulp programma voor importeren en exporteren](https://blogs.msdn.microsoft.com/data_otaku/2016/12/21/working-with-the-hbase-import-and-export-utility/)

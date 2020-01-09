@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: d589215cf79154bcc8aead1d6695bd4cf870fc0a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: faa73874d7e662eb23e85d46ecaf21a11d10ce73
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423972"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443742"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-python"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V12 voor python
 
@@ -99,7 +99,7 @@ Vanuit de projectmap:
 
 1. Sla het nieuwe bestand op als *BLOB-QuickStart-V12.py* in de map *BLOB-Quick Start-V12* .
 
-[!INCLUDE [storage-quickstart-connection-string-include](../../../includes/storage-quickstart-credentials-include.md)]
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>Object model
 
@@ -119,7 +119,7 @@ Gebruik de volgende python-klassen om te communiceren met deze resources:
 * [ContainerClient](/python/api/azure-storage-blob/azure.storage.blob.containerclient): met de klasse `ContainerClient` kunt u Azure Storage containers en de bijbehorende blobs bewerken.
 * [BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient): met de klasse `BlobClient` kunt u Azure Storage blobs bewerken.
 
-## <a name="code-examples"></a>Code voorbeelden
+## <a name="code-examples"></a>Codevoorbeelden
 
 In deze voorbeeld code fragmenten ziet u hoe u het volgende kunt uitvoeren met de Azure Blob Storage-client bibliotheek voor python:
 
@@ -139,11 +139,11 @@ Voeg deze code toe binnen het `try` blok:
 ```python
 # Retrieve the connection string for use with the application. The storage
 # connection string is stored in an environment variable on the machine
-# running the application called CONNECT_STR. If the environment variable is
+# running the application called AZURE_STORAGE_CONNECTION_STRING. If the environment variable is
 # created after the application is launched in a console or with Visual Studio,
 # the shell or application needs to be closed and reloaded to take the
 # environment variable into account.
-connect_str = os.getenv('CONNECT_STR')
+connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING')
 ```
 
 ### <a name="create-a-container"></a>Een container maken

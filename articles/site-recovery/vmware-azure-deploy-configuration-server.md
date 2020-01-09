@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: f2e9387af3c5922ec5eb0dded3d0d1d4bcee6a01
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084148"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376287"
 ---
 # <a name="deploy-a-configuration-server"></a>Een configuratieserver implementeren
 
@@ -92,7 +92,7 @@ U moet een gebruiker hebben met een van de volgende machtigingen die zijn ingest
 Als u een extra NIC aan de configuratie server wilt toevoegen, voegt u deze toe voordat u de server in de kluis registreert. Het toevoegen van extra adapters wordt niet ondersteund na registratie.
 
 1. Klik in de vSphere Client-inventaris met de rechtermuisknop op de VM en selecteer **Instellingen bewerken**.
-2. Selecteer **Toevoegen**Ethernet-adapter >  bij **Hardware**. Selecteer vervolgens **Volgende**.
+2. Selecteer **Toevoegen** > **Ethernet-adapter** bij **Hardware**. Selecteer vervolgens **Volgende**.
 3. Selecteer een adaptertype en een netwerk.
 4. Als u de virtuele NIC wilt verbinden wanneer de VM is ingeschakeld, selecteert u **verbinden bij inschakelen**. Selecteer vervolgens **volgende** > **volt ooien** > **OK**.
 
@@ -132,7 +132,7 @@ Als u een extra NIC aan de configuratie server wilt toevoegen, voegt u deze toe 
 7. Voer referenties in die door de configuratieserver moeten worden gebruikt voor verbinding met de VMware-server. Site Recovery gebruikt deze referenties voor het automatisch detecteren van VMware-VM’s die beschikbaar zijn voor replicatie. Selecteer **toevoegen** > **door gaan**. De referenties die u hier opgeeft, worden lokaal opgeslagen.
 8. Voer bij **referenties voor virtuele machine configureren**de gebruikers naam en het wacht woord van de virtuele machines in om de Mobility-service automatisch te installeren tijdens de replicatie. Voor **Windows** -computers heeft het account lokale beheerders rechten nodig voor de computers die u wilt repliceren. Voor **Linux**geeft u Details voor het hoofd account op.
 9. Selecteer **Configuratie voltooien** om de registratie te voltooien.
-10. Nadat de registratie is voltooid, opent u de Azure Portal en controleert u of de configuratie server en de VMware-Server worden vermeld op **Recovery Services kluis** >  > **site Recovery-infra structuur** **beheren** >  **Configuratie servers**.
+10. Nadat de registratie is voltooid, opent u de Azure Portal en controleert u of de configuratie server en de VMware-Server worden weer gegeven op **Recovery Services kluis** >  > **site Recovery infrastructuur** > **configuratie servers** **beheren** .
 
 ## <a name="upgrade-the-configuration-server"></a>De configuratie Server upgraden
 
@@ -141,6 +141,10 @@ Als u de configuratie server wilt bijwerken naar de nieuwste versie, raadpleegt 
 ## <a name="manage-the-configuration-server"></a>De configuratieserver beheren
 
 Om onderbrekingen te voor komen, moet u ervoor zorgen dat het IP-adres van de configuratie server niet verandert nadat de configuratie server is geregistreerd bij een kluis. Zie [de configuratie server voor nood herstel voor VMware-Vm's beheren](vmware-azure-manage-configuration-server.md)voor meer informatie over algemene beheer taken voor configuratie servers.
+
+## <a name="troubleshoot-deployment-issues"></a>Oplossen van implementatieproblemen
+
+Raadpleeg het [artikel over probleem oplossing](vmware-azure-troubleshoot-configuration-server.md) voor het oplossen van problemen met de implementatie & verbinding.
 
 ## <a name="faqs"></a>Veelgestelde vragen
 
@@ -183,13 +187,11 @@ Om onderbrekingen te voor komen, moet u ervoor zorgen dat het IP-adres van de co
 
     Stel in een on-premises omgeving een configuratie server in met een directe detectie lijn met behulp van het v-centrum en om latentie van gegevens overdracht te minimaliseren. U kunt geplande back-ups maken van configuratie server voor [failback-doel einden](vmware-azure-manage-configuration-server.md#failback-requirements).
 
+* Kan ik het cache stuur programma wijzigen op een configuratie server of scale-out proces server?
+
+    Nee, het cache stuur programma kan niet worden gewijzigd nadat het instellen is voltooid.
+
 Zie [Veelgestelde vragen over Configuration Server](vmware-azure-common-questions.md#configuration-server)voor meer informatie over configuratie servers.
-
-## <a name="troubleshoot-deployment-issues"></a>Oplossen van implementatieproblemen
-
-[!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
-
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

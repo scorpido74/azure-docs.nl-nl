@@ -1,26 +1,16 @@
 ---
-title: Fouten opsporen in uw toepassing in Visual Studio | Microsoft Docs
+title: Fouten in uw toepassing opsporen met Visual Studio
 description: Verbeter de betrouw baarheid en prestaties van uw services door deze te ontwikkelen en fouten op te sporen in Visual Studio op een lokaal ontwikkelings cluster.
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: cb888532-bcdb-4e47-95e4-bfbb1f644da4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.custom: vs-azure
-ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: ee5354845efba0cce92ccf4f11eb3480684e7509
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 18b32c0fb0b2d203b3536e7a859e149da8453f76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947902"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458113"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Fouten opsporen in uw Service Fabric-toepassing met behulp van Visual Studio
 > [!div class="op_single_selector"]
@@ -33,7 +23,7 @@ ms.locfileid: "71947902"
 U kunt tijd en geld besparen door uw Azure Service Fabric-toepassing te implementeren en op te sporen in een cluster voor lokale computer ontwikkeling. Visual Studio 2019 of 2015 kan de toepassing implementeren in het lokale cluster en de Debugger automatisch verbinden met alle exemplaren van uw toepassing. Visual Studio moet als beheerder worden uitgevoerd om verbinding te maken met het fout opsporingsprogramma.
 
 1. Start een lokaal ontwikkel cluster door de stappen in [uw service Fabric-ontwikkel omgeving](service-fabric-get-started.md)in te stellen.
-2. Druk op **F5** of klik op **fouten opsporen** > **fout opsporing starten**.
+2. Druk op **F5** of klik op **fouten opsporen** > de **fout opsporing te starten**.
    
     ![Fout opsporing in een toepassing starten][startdebugging]
 3. Stel onderbrekings punten in uw code in en door loop de toepassing door te klikken op opdrachten in het menu **fout opsporing** .

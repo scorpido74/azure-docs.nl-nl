@@ -1,5 +1,5 @@
 ---
-title: Apache Cassandra-functies en opdrachten ondersteund door Azure Cosmos DB Cassandra API
+title: Door Azure Cosmos DB Cassandra API ondersteunde Apache Cassandra-functies
 description: Meer informatie over de ondersteuning van Apache Cassandra-functies in Azure Cosmos DB Cassandra-API
 author: kanshiG
 ms.author: govindk
@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: c0a47e922ae8cdca3c70cb53f9fa2f7dafe191c6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 8598be504f62089cf20123918779c310b2fb8ec8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889227"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445644"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Door Azure Cosmos DB Cassandra API ondersteunde Apache Cassandra-functies 
 
-Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt communiceren met de Azure Cosmos DB Cassandra-API via open-source Cassandra client[stuurprogramma's](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec) die compatibel zijn met Cassandra Query Language (CQL) v4 [wire-protocol](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver). 
+Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt communiceren met de Azure Cosmos DB Cassandra-API via open-source Cassandra client[stuurprogramma's](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) die compatibel zijn met Cassandra Query Language (CQL) v4 [wire-protocol](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec). 
 
 Door de Azure Cosmos DB Cassandra API te gebruiken, kunt u profiteren van de voordelen van de Apache Cassandra API’s en van de enterprise-mogelijkheden die Azure Cosmos DB biedt. De enterprise-mogelijkheden zijn onder andere [wereldwijde distributie](distribute-data-globally.md), [automatische scale-out partitionering](partition-data.md), beschikbaarheid- en latentiegaranties, versleuteling van gegevens in rust, back-ups en nog veel meer.
 
@@ -75,7 +75,7 @@ Azure Cosmos DB Cassandra-API ondersteunt de volgende CQL-functies:
 
 * Token  
 * Statistische functies
-  * min, Max, Gem, aantal
+  * min, max, avg, count
 * Blob-conversiefuncties 
   * typeAsBlob(value)  
   * blobAsType(value)
@@ -98,7 +98,7 @@ Azure Cosmos DB Cassandra-API ondersteunt de volgende CQL-functies:
 
 Azure Cosmos DB Cassandra-API heeft geen limiet wat betreft de grootte van gegevens die in een tabel worden opgeslagen. Er kunnen honderden terabytes of petabytes aan gegevens worden opgeslagen terwijl de partitiesleutellimieten worden gerespecteerd. Op dezelfde manier heeft elke entiteit of een gelijkwaardige rij geen limieten voor het aantal kolommen. De totale grootte van de entiteit mag echter niet meer zijn dan 2 MB. De gegevens per partitie sleutel mogen niet groter zijn dan 10 GB, zoals in alle andere Api's.
 
-## <a name="tools"></a>Hulpprogramma's 
+## <a name="tools"></a>Tools 
 
 Azure Cosmos DB Cassandra-API is een beheerd serviceplatform. Het vereist geen beheeroverhead of hulpprogramma's zoals Garbage Collector, Java Virtual Machine (JVM) en nodetool om het cluster te beheren. Het ondersteunt hulpprogramma’s zoals cqlsh, dat binaire CQLv4-compatibiliteit gebruikt. 
 

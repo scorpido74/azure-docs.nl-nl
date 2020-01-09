@@ -4,12 +4,12 @@ description: Azure direct Restore-mogelijkheid en veelgestelde vragen over VM-ba
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 7a962ff42125b262f6ec6673f75b0afd2954de24
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 19ecd6843422f1843631278626ef8971b0791b1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806368"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391307"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Profiteer van verbeterde prestaties voor back-up en herstel met Azure Backup functie voor direct terugzetten
 
@@ -52,7 +52,7 @@ Moment opnamen worden standaard twee dagen bewaard. Met deze functie kan de hers
 
 ## <a name="cost-impact"></a>Impact op kosten
 
-De incrementele moment opnamen worden opgeslagen in het opslag account van de virtuele machine, die wordt gebruikt voor direct herstel. Incrementele moment opname is de ruimte die wordt ingen Omen door een moment opname, is gelijk aan de ruimte die wordt ingen Omen door pagina's die zijn geschreven nadat de moment opname is gemaakt. Facturering is nog steeds beschikbaar voor de beschik bare ruimte per GB die wordt ingen Omen door de moment opname en de prijs per GB is hetzelfde als vermeld op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/managed-disks/).
+De incrementele moment opnamen worden opgeslagen in het opslag account van de virtuele machine, die wordt gebruikt voor instant Recovery. Incrementele moment opname is de ruimte die wordt ingen Omen door een moment opname, is gelijk aan de ruimte die wordt ingen Omen door pagina's die zijn geschreven nadat de moment opname is gemaakt. De facturering is nog steeds beschikbaar voor de gebruikte ruimte per GB die wordt ingen Omen door de moment opname, en de prijs per GB is hetzelfde als vermeld op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/managed-disks/). Voor virtuele machines die gebruikmaken van niet-beheerde schijven, kunnen de moment opnamen worden weer gegeven in het menu voor het VHD-bestand van elke schijf. Voor beheerde schijven worden moment opnamen opgeslagen in een resource voor het verzamelen van herstel punten in een aangewezen resource groep en de moment opnamen zelf zijn niet direct zichtbaar.
 
 >[!NOTE]
 > Het bewaren van moment opnamen is vastgesteld op 5 dagen voor wekelijks beleid.

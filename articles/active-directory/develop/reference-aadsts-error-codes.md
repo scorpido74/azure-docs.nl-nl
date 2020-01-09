@@ -1,5 +1,5 @@
 ---
-title: Fout codes voor Azure AD-verificatie en-autorisatie | Azure
+title: Fout codes voor verificatie van Azure AD-&
 description: Meer informatie over de AADSTS-fout codes die worden geretourneerd door de Azure AD Security Token Service (STS).
 services: active-directory
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/30/2019
+ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02ed0b84a29ea0c3ce3b58db1c029798655bfb06
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8979481452b0c4e8bf862c306a7916ddcabf1307
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965803"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423972"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Fout codes voor Azure AD-verificatie en-autorisatie
 
@@ -133,6 +133,8 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS50178 | SessionControlNotSupportedForPassthroughUsers: sessie beheer wordt niet ondersteund voor passthrough-gebruikers. |
 | AADSTS50180 | Geïntegreerde Windows-verificatie is vereist voor WindowsIntegratedAuthMissing. Schakel de tenant in voor een naadloze eenmalige aanmelding (SSO). |
 | AADSTS50187 | DeviceInformationNotProvided: de service kan de verificatie van het apparaat niet uitvoeren. |
+| AADSTS50196 | LoopDetected-er is een client-lus gedetecteerd. Controleer de logica van de app om te controleren of de tokens in de cache zijn geïmplementeerd en of de fout condities correct worden afgehandeld.  De app heeft te veel van dezelfde aanvraag in te korte tijd gedaan, wat aangeeft dat het een fout status heeft of abusively aanvraag tokens. |
+| AADSTS50199 | CmsiInterrupt: gebruikers interactie is vereist voor deze authenticatie.  Omdat dit een interaction_required-fout is, moet de client interactieve verificatie uitvoeren.  Dit gebeurt omdat een webweergave van het systeem is gebruikt voor het aanvragen van een token voor een systeem eigen toepassing. de gebruiker moet daarom worden gevraagd of dit eigenlijk de app is waarmee ze zich kunnen aanmelden.|
 | AADSTS51000 | RequiredFeatureNotEnabled: de functie is uitgeschakeld. |
 | AADSTS51001 | De DomainHintMustbePresent-domein Hint moet aanwezig zijn met een lokale beveiligings-id of een on-premises UPN. |
 | AADSTS51004 | UserAccountNotInDirectory: het gebruikers account bestaat niet in de Directory. |

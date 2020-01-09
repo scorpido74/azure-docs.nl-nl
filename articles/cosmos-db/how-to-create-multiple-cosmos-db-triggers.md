@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 987136bf8aba1313e1bef21f58691bf9a860ea32
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fbf1e11d7a283ca6c93356f055198c35350e0332
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093381"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445354"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Meerdere Azure Functions triggers maken voor Cosmos DB
 
-In dit artikel wordt beschreven hoe u meerdere Azure Functions triggers zo kunt configureren dat Cosmos DB parallel werken en onafhankelijk reageren op wijzigingen.
+In dit artikel wordt beschreven hoe u meerdere Azure Functions-triggers zo kunt configureren dat Cosmos DB parallel werkt en onafhankelijk reageert op wijzigingen.
 
 ![Functies die zijn gebaseerd op gebeurtenissen op basis van een server werken met de Azure Functions trigger voor het Cosmos DB en delen van een lease-container](./media/change-feed-functions/multi-trigger.png)
 
@@ -31,20 +31,20 @@ Gezien de *vereisten* van de Azure functions trigger voor Cosmos DB hebben we ee
 
 Hier hebt u twee opties:
 
-* **Eén leases-container maken per functie**: Deze methode kan worden omgezet in aanvullende kosten, tenzij u een [gedeelde doorvoer database](./set-throughput.md#set-throughput-on-a-database)gebruikt. Houd er rekening mee dat de minimale door Voer op het container niveau 400 [aanvraag eenheden](./request-units.md)is, en in het geval van de container leases, wordt dit alleen gebruikt om de voortgang te controleren en de status te onderhouden.
-* Hebben **één lease container en delen deze** voor al uw functies: Deze tweede optie maakt beter gebruik van de ingerichte aanvraag eenheden in de container, omdat het meerdere Azure Functions mogelijk maakt om dezelfde ingerichte door voer te delen en te gebruiken.
+* **Eén leases-container maken per functie**: deze aanpak kan worden omgezet in aanvullende kosten, tenzij u een [Data Base met gedeelde door Voer](./set-throughput.md#set-throughput-on-a-database)gebruikt. Houd er rekening mee dat de minimale door Voer op het container niveau 400 [aanvraag eenheden](./request-units.md)is, en in het geval van de container leases, wordt dit alleen gebruikt om de voortgang te controleren en de status te onderhouden.
+* Beschikken over **één lease container en delen deze** voor al uw functies: met deze tweede optie wordt het gebruik van de ingerichte aanvraag eenheden in de container verbeterd, omdat het meerdere Azure functions mogelijk maakt om dezelfde ingerichte door voer te delen en te gebruiken.
 
 Het doel van dit artikel is om u te helpen bij het uitvoeren van de tweede optie.
 
 ## <a name="configuring-a-shared-leases-container"></a>Een gedeelde lease-container configureren
 
-Als u de container gedeelde leases wilt configureren, is de enige extra configuratie die u nodig hebt om uw triggers te `LeaseCollectionPrefix` maken, het [kenmerk](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes) toe C# te `leaseCollectionPrefix` voegen als u of- [kenmerk](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example) gebruikt als u Java script. De waarde van het kenmerk moet een logische descriptor zijn van wat de betreffende trigger is.
+Als u de container gedeelde leases wilt configureren, is de enige extra configuratie die u nodig hebt om uw triggers te maken, het `LeaseCollectionPrefix` [kenmerk](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes) toe C# te voegen als u of `leaseCollectionPrefix` [kenmerk](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example) gebruikt als u Java script gebruikt. De waarde van het kenmerk moet een logische descriptor zijn van wat de betreffende trigger is.
 
-Als u bijvoorbeeld drie triggers hebt: een die e-mail berichten verzendt, een die een aggregatie maakt om een gerealiseerde weer gave te maken en een die de wijzigingen naar een andere opslag verzendt, kunt u voor latere analyse `LeaseCollectionPrefix` het e-mail berichten toewijzen aan de eerste. gerealiseerd naar de tweede en ' analyse ' tot de derde.
+Als u bijvoorbeeld drie triggers hebt: een die e-mail berichten verzendt, een die een aggregatie maakt om een gerealiseerde weer gave te maken en een die de wijzigingen naar een andere opslag verzendt, kunt u voor latere analyse de `LeaseCollectionPrefix` ' e-mailen ' toewijzen aan het eerste, ' bemateriald ' en ' analyse ' tot de derde.
 
-Het belang rijk deel is dat alle drie **de triggers dezelfde container configuratie** voor leases (account, data base en container naam) kunnen gebruiken.
+Het belang rijk deel is dat alle drie **de triggers dezelfde container configuratie voor leases** (account, data base en container naam) kunnen gebruiken.
 
-Een eenvoudige code voorbeelden die gebruikmaken van `LeaseCollectionPrefix` het kenmerk C#in, ziet er als volgt uit:
+Een eenvoudige code voorbeelden met het `LeaseCollectionPrefix` kenmerk in, C#ziet er als volgt uit:
 
 ```cs
 using Microsoft.Azure.Documents;
@@ -78,7 +78,7 @@ public static void MaterializedViews([CosmosDBTrigger(
 }
 ```
 
-En voor Java script kunt u de configuratie Toep assen op `function.json` het bestand, met `leaseCollectionPrefix` het kenmerk:
+En voor Java script kunt u de configuratie Toep assen op het `function.json` bestand met het kenmerk `leaseCollectionPrefix`:
 
 ```json
 {

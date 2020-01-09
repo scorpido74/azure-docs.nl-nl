@@ -14,33 +14,33 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/24/2019
 ms.author: spelluru
-ms.openlocfilehash: 0977c4537e409b59be7f9031c488b3317f9f2f0f
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 8c252870a82a60a561f12fab9d728c028458212a
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415799"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562099"
 ---
-# <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Zelfstudie: Een lab-account instellen met Azure Lab Services
+# <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Zelfstudie: een lab-account instellen met Azure Lab Services
 In Azure Lab Services fungeert een lab-account als het centrale account waarin alle labs in uw organisatie worden beheerd. In uw lab-account machtigt u anderen om labs te maken en stelt u beleidsregels in die van toepassing zijn op alle labs in het lab-account. In deze zelfstudie leert u hoe u een lab-account maakt als lab-beheerder. 
 
 In deze zelfstudie voert u de volgende acties uit:
 
 > [!div class="checklist"]
-> * Een lab-account maken
+> * Maak een lab-account
 > * Een gebruiker toevoegen aan de rol Labmaker
 > * Microsoft Azure Marketplace-installatiekopieën die beschikbaar zijn voor eigenaars van een lab opgeven
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
-## <a name="create-a-lab-account"></a>Een lab-account maken
+## <a name="create-a-lab-account"></a>Maak een lab-account
 In de volgende stappen ziet u hoe u Azure Portal kunt gebruiken om een lab te maken met Azure Lab Services. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Selecteer in het menu links **Alle services**. Selecteer **Lab Services** in de **DEVOPS** sectie. Als u een ster (`*`) naast **Lab Services**, wordt deze toegevoegd aan de **Favorieten** sectie in het menu links. In de volgende keer dat en hoger, selecteert u **Lab Services** onder **Favorieten**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+2. Selecteer in het menu links **Alle services**. Selecteer **Lab Services** in de sectie **DEVOPS** . Als u ster (`*`) selecteert naast **Lab-Services**, wordt deze toegevoegd aan de sectie **Favorieten** in het menu links. Vanaf de volgende keer kunt u **Lab-Services** selecteren onder **Favorieten**.
 
-    ![Alle Services -> Lab-Services](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
-3. Op de **Lab Services** weergeeft, schakelt **toevoegen** op de werkbalk. 
+    ![Alle services-> Lab-Services](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
+3. Op de pagina **Lab-Services** selecteert u **toevoegen** op de werk balk. 
 
     ![Selecteer de Toevoegen op de pagina Lab-accounts](../media/tutorial-setup-lab-account/add-lab-account-button.png)
 4. Voer op de pagina **Lab-account** de volgende acties uit: 
@@ -48,9 +48,9 @@ In de volgende stappen ziet u hoe u Azure Portal kunt gebruiken om een lab te ma
     2. Selecteer het **Azure-abonnement** waarin u het lab-account wilt maken.
     3. Selecteer voor **Resourcegroep** de optie **Nieuwe maken** en voer een naam in voor de resourcegroep.
     4. Selecteer voor **Locatie** een locatie/regio waarin het lab-account moet worden gemaakt. 
-    5. Selecteer een bestaande **gedeelde afbeeldingengalerie** of er een maken. U kunt de VM-sjabloon opslaan in de galerie met installatiekopieën van de gedeelde voor het opnieuw door anderen worden gebruikt. Zie voor gedetailleerde informatie over gedeelde afbeeldingsgalerieën [een galerie met gedeelde installatiekopieën in Azure Lab Services gebruikt](how-to-use-shared-image-gallery.md). 
-    6. Voor **virtuele peernetwerk**, selecteert u een peer-netwerk (VNet voor het testlabnetwerk). Labs gemaakt in dit account zijn verbonden met het geselecteerde VNet en hebben toegang tot de resources in het geselecteerde VNet. 
-    7. Geef een **adresbereik** voor virtuele machines in het lab. Het adresbereik moet zich in de notatie klasseloze routing tussen domeinen (CIDR) (voorbeeld: 10.20.0.0/23). Virtuele machines in de testomgeving wordt in dit adresbereik worden gemaakt. Zie voor meer informatie, [Geef een adresbereik voor virtuele machines in het lab](how-to-configure-lab-accounts.md#specify-an-address-range-for-vms-in-the-lab).
+    5. Selecteer een bestaande **Galerie met gedeelde afbeeldingen** of maak er een. U kunt de sjabloon-VM in de galerie met gedeelde afbeeldingen opslaan, zodat deze door anderen opnieuw kan worden gebruikt. Zie [een galerie met gedeelde afbeeldingen gebruiken in Azure Lab Services](how-to-use-shared-image-gallery.md)voor meer informatie over de galerieën met gedeelde afbeeldingen. 
+    6. Selecteer voor het **virtuele netwerk**van de peer een virtueel netwerk (VNet) voor het lab-netwerk. Labs die in dit account is gemaakt, zijn verbonden met het geselecteerde VNet en hebben toegang tot de resources in het geselecteerde VNet. 
+    7. Geef een **adres bereik** voor vm's op in het lab. Het adres bereik moet in de CIDR-notatie (Classless Inter-Domain Routing) staan (voor beeld: 10.20.0.0/23). Virtuele machines in het lab worden gemaakt in dit adres bereik. Zie [een adres bereik voor vm's in het lab opgeven](how-to-configure-lab-accounts.md#specify-an-address-range-for-vms-in-the-lab)voor meer informatie.
     8. Voor het veld **Labmaker toestaan om lablocatie te kiezen** geeft u op of u wilt dat labmakers een locatie voor het lab kunnen selecteren. De optie is standaard uitgeschakeld. Wanneer deze is uitgeschakeld, kunnen labmakers geen locatie opgeven voor het lab dat ze maken. De labs worden gemaakt in de dichtstbijzijnde geografische locatie in het labaccount. Wanneer deze is ingeschakeld, kan de labmaker een locatie selecteren wanneer hij een lab maakt. 
     9. Selecteer **Maken**. 
 
@@ -69,7 +69,7 @@ Om een leslokaallab in een labaccount in te kunnen stellen, moet de gebruiker li
 
 Als u machtigingen wilt toekennen aan docenten om labs te maken voor hun lessen, voegt u hen toe aan de rol **Labmaker**:
 
-1. Selecteer op de pagina **Labaccount** de optie **Toegangsbeheer (IAM)**, selecteer **+ Toevoegen** op de werkbalk en klik vervolgens op **+ Roltoewijzing toevoegen** in de werkbalk. 
+1. Selecteer op de pagina **Labaccount** de optie **Toegangsbeheer (IAM)** , selecteer **+ Toevoegen** op de werkbalk en klik vervolgens op **+ Roltoewijzing toevoegen** in de werkbalk. 
 
     ![Access Control -> Knop Roltoewijzing toevoegen](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
 1. Selecteer op de pagina **Roltoewijzing toevoegen** de optie **Labmaker** als **Rol**. Selecteer de gebruiker die u wilt toevoegen aan de rol Labmaker en selecteer **Opslaan**. 
@@ -100,8 +100,8 @@ Als eigenaar van een labaccount kunt u de Marketplace-installatiekopieën opgeve
     2. Selecteer een of meer installatiekopieën in de lijst door de selectievakjes bij de namen van de installatiekopieën in de lijst te selecteren en **Geselecteerde installatiekopieën inschakelen** te selecteren. 
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt u een lab-account gemaakt. Ga voor meer informatie over het maken van een lab voor het leslokaal naar de volgende zelfstudie:
+In deze zelfstudie hebt u een lab-account gemaakt. Ga verder met de volgende zelf studie voor meer informatie over het maken van een leslokaal Lab als docent:
 
 > [!div class="nextstepaction"]
-> [Een leslokaal-lab instellen](tutorial-setup-classroom-lab.md)
+> [Een leslokaallab instellen](tutorial-setup-classroom-lab.md)
 

@@ -1,27 +1,27 @@
 ---
-title: Implementatie referenties configureren
+title: Implementatiereferenties configureren
 description: Meer informatie over de typen implementatie referenties in Azure App Service en hoe u deze kunt configureren en gebruiken.
 ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: c4e7a66a9535812da505045c26e7b1e6fbc6c661
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 15b556781f8ba620ab61c502b6f55e55e98df83c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669975"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430533"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Implementatie referenties voor Azure App Service configureren
 [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714) ondersteunt twee typen referenties voor [lokale Git-implementatie](deploy-local-git.md) en [FTP/S-implementatie](deploy-ftp.md). Deze referenties zijn niet hetzelfde als de referenties van uw Azure-abonnement.
 
-* **Referenties op gebruikers niveau**: één set referenties voor het hele Azure-account. Het kan worden gebruikt om te implementeren in App Service voor elke app, in elk abonnement, dat het Azure-account toegangs rechten heeft. Dit is de standaard instelling die wordt weer gegeven in de gebruikers interface van de portal (zoals het **overzicht** en de **Eigenschappen** van de [resource pagina](../azure-resource-manager/manage-resources-portal.md#manage-resources)van de app). Wanneer een gebruiker toegang tot de app heeft verleend via op rollen gebaseerde Access Control (RBAC) of coadmin-machtigingen, kan die gebruiker hun eigen referenties op gebruikers niveau gebruiken tot de toegang is ingetrokken. Deel deze referenties niet met andere Azure-gebruikers.
+* **Referenties op gebruikers niveau**: één set referenties voor het hele Azure-account. Het kan worden gebruikt om te implementeren in App Service voor elke app, in elk abonnement, dat het Azure-account toegangs rechten heeft. Dit is de standaard instelling die wordt weer gegeven in de gebruikers interface van de portal (zoals het **overzicht** en de **Eigenschappen** van de [resource pagina](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)van de app). Wanneer een gebruiker toegang tot de app heeft verleend via op rollen gebaseerde Access Control (RBAC) of coadmin-machtigingen, kan die gebruiker hun eigen referenties op gebruikers niveau gebruiken tot de toegang is ingetrokken. Deel deze referenties niet met andere Azure-gebruikers.
 
 * **Referenties op app-niveau**: één set referenties voor elke app. Het kan alleen worden gebruikt voor de implementatie van deze app. De referenties voor elke app worden automatisch gegenereerd bij het maken van een app. Ze kunnen niet hand matig worden geconfigureerd, maar kan altijd opnieuw worden ingesteld. Als u wilt dat een gebruiker toegang krijgt tot referenties op app-niveau via (RBAC), moet die gebruiker Inzender of hoger zijn op de app. Lezers mogen niet publiceren en hebben geen toegang tot deze referenties.
 
 ## <a name="userscope"></a>Referenties op gebruikers niveau configureren
 
-U kunt uw referenties op gebruikers niveau configureren op de [resource pagina](../azure-resource-manager/manage-resources-portal.md#manage-resources)van elke app. Ongeacht in welke app u deze referenties configureert, is dit van toepassing op alle apps en voor alle abonnementen in uw Azure-account. 
+U kunt uw referenties op gebruikers niveau configureren op de [resource pagina](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)van elke app. Ongeacht in welke app u deze referenties configureert, is dit van toepassing op alle apps en voor alle abonnementen in uw Azure-account. 
 
 ### <a name="in-the-cloud-shell"></a>In de Cloud Shell
 

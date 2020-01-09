@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: ac5599a38c3fcbc4a6c331d2b14c6b6c55c31d82
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8d13d5d93dba66fa0dce08ffbf569164fb03398d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73850329"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467446"
 ---
 ## <a name="how-to-create-a-classic-vnet-in-the-azure-portal"></a>Een klassiek VNet maken in de Azure Portal
 Voer de volgende stappen uit om een klassiek VNet te maken op basis van het voor gaande scenario.
@@ -25,7 +25,7 @@ Voer de volgende stappen uit om een klassiek VNet te maken op basis van het voor
 4. In het deel venster **virtueel netwerk** typt u de **naam** van het VNet en klikt u op **adres ruimte**. Configureer uw adres ruimte-instellingen voor het VNet en het eerste subnet en klik vervolgens op **OK**. In de volgende afbeelding ziet u de CIDR-blok instellingen voor ons scenario.
    
     ![Deel venster adres ruimte](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure2.png)
-5. Klik op **resource groep** en selecteer een resource groep waaraan u het vnet wilt toevoegen, of klik op **nieuwe resource groep maken** om het vnet toe te voegen aan een nieuwe resource groep. In de volgende afbeelding ziet u de instellingen van de resource groep voor een nieuwe resource groep met de naam **TestRG**. Zie [Azure Resource Manager Overview](../articles/azure-resource-manager/resource-group-overview.md#resource-groups) (Overzicht van Azure Resource Manager) voor meer informatie over resourcegroepen.
+5. Klik op **resource groep** en selecteer een resource groep waaraan u het vnet wilt toevoegen, of klik op **nieuwe resource groep maken** om het vnet toe te voegen aan een nieuwe resource groep. In de volgende afbeelding ziet u de instellingen van de resource groep voor een nieuwe resource groep met de naam **TestRG**. Zie [Azure Resource Manager Overview](../articles/azure-resource-manager/management/overview.md#resource-groups) (Overzicht van Azure Resource Manager) voor meer informatie over resourcegroepen.
    
     ![Deel venster Resource groep maken](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure3.png)
 6. Wijzig zo nodig de instellingen van het **Abonnement** en de **Locatie** voor uw VNet. 

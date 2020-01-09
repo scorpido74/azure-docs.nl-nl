@@ -1,17 +1,17 @@
 ---
 title: Azure data Science Virtual Machines gebruiken
-description: Maak verbinding met een Azure-Data Science Virtual Machine (DSVM) om de reken kracht die beschikbaar is voor Azure Notebooks uit te breiden.
+description: Meer informatie over hoe u verbinding maakt met een Azure Data Science Virtual Machine (DSVM) om de reken kracht uit te breiden die beschikbaar is voor Azure Notebooks preview.
 author: getroyer
 manager: andneil
 ms.author: getroyer
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 0559442cb3f6c3937e6930082940e9354c43bc30
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7a47be46818c633c016c791d0c52eb9393029973
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277408"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646991"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Azure data Science Virtual Machines gebruiken
 
@@ -19,6 +19,8 @@ Standaard worden projecten uitgevoerd op de **gratis Compute** -laag. Dit is bep
 
 > [!Note]
 > Azure Notebooks wordt alleen ondersteund op Dsvm die zijn gemaakt met de Ubuntu-installatie kopie op Linux. Notebooks worden niet ondersteund in Windows 2012-, Windows 2016-of Linux CentOS-installatie kopieën.
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="create-a-dsvm-instance"></a>Een DSVM-exemplaar maken
 
@@ -56,7 +58,7 @@ Wanneer een project wordt uitgevoerd op een virtuele machine, worden de bestande
 
 Als meerdere gebruikers een DSVM delen, kunt u voor komen dat elkaar worden geblokkeerd door een DSVM-gebruiker te maken en te gebruiken voor elke notebook-gebruiker:
 
-1. Ga in [Azure Portal](https://portal.azure.com)naar de virtuele machine.
+1. Ga op het [Azure Portal](https://portal.azure.com)naar de virtuele machine.
 1. Onder **ondersteuning en probleem oplossing** in de linkermarge selecteert u **wacht woord opnieuw instellen**.
 1. Voer een nieuwe gebruikers naam en wacht woord in en selecteer **bijwerken**. (Bestaande gebruikers namen worden niet beïnvloed.)
 1. Herhaal de vorige stap voor extra gebruikers.

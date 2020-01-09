@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 1da1bc330af9d2b652c44114e44dc6d6c9f0d575
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 2530c9b2f366bd64013c7125b4d7984ca2a69248
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559174"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454275"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Inleiding tot stroom logboek registratie voor netwerk beveiligings groepen
 
-Stroom logboeken voor netwerk beveiligings groepen (NSG) zijn een functie van Network Watcher waarmee u informatie kunt bekijken over binnenkomend en IP-verkeer via een NSG. Stroom logboeken worden geschreven in JSON-indeling en weer gegeven uitgaande en inkomende stromen per regel. de netwerk interface (NIC) van de stroom is van toepassing op 5-tuple-informatie over de stroom (bron/doel-IP, bron/doel poort en Protocol), als het verkeer is toegestaan of geweigerd, en in versie 2, gegevens over door Voer (bytes en pakketten).
+Stroomlogboeken voor netwerkbeveiligingsgroepen zijn een functie van Network Watcher waarmee u informatie kunt bekijken over inkomend en uitgaand IP-verkeer via een netwerkbeveiligingsgroep (NSG). Stroomlogboeken hebben de JSON-indeling en bevatten uitgaand en binnenkomend verkeer per regel, de netwerkinterface (NIC) waarop de stroom betrekking heeft, een tuple met vijf gegevens over de stroom (bron-/doel-IP, bron-/doelpoort en protocol), of het verkeer is toegestaan of geweigerd en, in versie 2, informatie over doorvoer (bytes en pakketten).
 
 
 ![overzicht van stroom logboeken](./media/network-watcher-nsg-flow-logging-overview/figure1.png)
@@ -36,7 +36,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 ```
 U kunt stroom logboeken analyseren en inzicht krijgen in uw netwerk verkeer met behulp van [Traffic Analytics](traffic-analytics.md).
 
-Dezelfde Bewaar beleidsregels voor andere logboeken zijn van toepassing op stroom Logboeken. U kunt het Bewaar beleid voor logboek registratie instellen van 1 dag tot 2147483647 dagen. Als geen bewaarbeleid is ingesteld, worden de logboeken voor altijd bewaard.
+Dezelfde Bewaar beleidsregels voor andere logboeken zijn van toepassing op stroom Logboeken. U kunt het Bewaar beleid voor logboek registratie instellen van 1 dag tot 365 dagen. Als geen bewaarbeleid is ingesteld, worden de logboeken voor altijd bewaard.
 
 > [!NOTE] 
 > Het gebruik van de functie voor het retentie beleid met NSG-stroom registratie kan leiden tot een groot aantal opslag bewerkingen en de bijbehorende kosten. Als u de functie voor het Bewaar beleid niet nodig hebt, raden we u aan deze waarde in te stellen op 0.
@@ -50,7 +50,7 @@ Stroom logboeken bevatten de volgende eigenschappen:
 * **systemId** -resource-id van de netwerk beveiligings groep.
 * **categorie** : de categorie van de gebeurtenis. De categorie is altijd **NetworkSecurityGroupFlowEvent**
 * **ResourceID** -de resource-id van de NSG
-* **operationname** -altijd NetworkSecurityGroupFlowEvents
+* **operationName** - Always NetworkSecurityGroupFlowEvents
 * **Eigenschappen** : een verzameling eigenschappen van de stroom
     * **Versie** -versie nummer van het gebeurtenis schema voor het stroom logboek
     * **stromen** : een verzameling stromen. Deze eigenschap heeft meerdere vermeldingen voor verschillende regels
@@ -93,16 +93,15 @@ De volgende tekst is een voor beeld van een stroom logboek. Zoals u ziet, zijn e
 1. Locatie: het gebruikte opslag account moet zich in dezelfde regio bevinden als de NSG.
 2. Geen firewall: NSG-stroom logboeken worden niet voorbereid als [vertrouwde micro soft-service voor Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services). Zie [Hoe kan ik de firewall op mijn opslag account uitschakelen?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-disable-the--firewall-on-my-storage-account) om de firewall uit te scha kelen. 
 3. Geen service-eind punten: vanwege een huidige beperking kunnen Logboeken alleen rechtstreeks worden verzonden naar opslag accounts en niet via service-eind punten. Zie [Hoe kan ik NSG-stroom Logboeken gebruiken met Service-eind punten?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-use-nsg-flow-logs-with-service-endpoints) voor hulp bij het verwijderen van bestaande service-eind punten.
-4. Zelfs wisseling van sleutels: als u de toegangs sleutels wijzigt/roteert naar uw opslag account, werken NSG-stroom logboeken niet meer. Om dit probleem op te lossen, moet u NSG-stroom Logboeken uitschakelen en opnieuw inschakelen.
+4. Zelfs wisseling van sleutels: als u de toegangs sleutels wijzigt/roteert naar uw opslag account, werken NSG-stroom logboeken niet meer. U kunt dit probleem oplossen door de NSG-stroom Logboeken uit te scha kelen en opnieuw in te scha kelen.
 
-**Schakel logboek registratie van de NSG-stroom in op alle nsg's die zijn gekoppeld aan een resource**: stroom logboek registratie in Azure is geconfigureerd op de NSG-resource. Een stroom wordt alleen gekoppeld aan één NSG-regel. In scenario's waarin meerdere Nsg's worden gebruikt, raden wij aan dat logboek registratie voor NSG-flow is ingeschakeld op alle Nsg's het subnet of de netwerk interface van een resource heeft toegepast om ervoor te zorgen dat alle verkeer wordt geregistreerd. Bekijk [hoe verkeer wordt geëvalueerd](../virtual-network/security-overview.md#how-traffic-is-evaluated) voor meer informatie over netwerk beveiligings groepen. 
+**Schakel logboek registratie van de NSG-stroom in op alle nsg's die zijn gekoppeld aan een resource**: stroom logboek registratie in Azure is geconfigureerd op de NSG-resource. Een stroom wordt alleen gekoppeld aan één NSG-regel. In scenario's waarin meerdere Nsg's worden gebruikt, raden wij aan dat logboek registratie voor NSG-flow is ingeschakeld op alle Nsg's het subnet of de netwerk interface van een resource heeft toegepast om ervoor te zorgen dat alle verkeer wordt geregistreerd. Zie [hoe verkeer wordt geëvalueerd](../virtual-network/security-overview.md#how-traffic-is-evaluated) in netwerk beveiligings groepen voor meer informatie.
 
-**Kosten**voor het vastleggen van de stroom: de logboek registratie voor NSG wordt gefactureerd op het volume van de logboeken die zijn gegenereerd. High Traffic volume kan leiden tot een groot stroom logboek volume en de bijbehorende kosten. De prijzen voor het NSG-stroom logboek bevatten geen onderliggende kosten voor opslag. Het gebruik van de functie voor het retentie beleid met NSG-stroom registratie kan leiden tot een groot aantal opslag bewerkingen en de bijbehorende kosten. Als u de functie voor het Bewaar beleid niet nodig hebt, raden we u aan deze waarde in te stellen op 0. Zie [Network Watcher prijzen](https://azure.microsoft.com/pricing/details/network-watcher/) en [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/) voor meer informatie.
-
-> [!IMPORTANT]
-> Er is momenteel een probleem waarbij de [NSG-stroom Logboeken (netwerk beveiligings groep)](network-watcher-nsg-flow-logging-overview.md) voor Network Watcher niet automatisch worden verwijderd uit Blob Storage op basis van de instellingen voor het Bewaar beleid. Als u een bestaand Bewaar beleid voor niet-nul hebt, raden we u aan om regel matig de opslag-blobs te verwijderen die de Bewaar periode hebben verstreken om te voor komen dat er kosten in rekening worden gebracht. Zie voor meer informatie over het verwijderen van de opslag blog van het NSG-stroom logboek de [opslag-blobs voor NSG stroom logboeken verwijderen](network-watcher-delete-nsg-flow-log-blobs.md).
+**Kosten**voor het vastleggen van de stroom: de logboek registratie voor NSG wordt gefactureerd op het volume van de logboeken die zijn gegenereerd. High Traffic volume kan leiden tot een groot stroom logboek volume en de bijbehorende kosten. De prijzen voor het NSG-stroom logboek bevatten geen onderliggende kosten voor opslag. Het gebruik van de functie voor het retentie beleid met NSG-stroom registratie kan leiden tot een groot aantal opslag bewerkingen en de bijbehorende kosten. Als u de functie voor het Bewaar beleid niet nodig hebt, raden we u aan deze waarde in te stellen op 0. Zie voor meer informatie [Network Watcher prijzen](https://azure.microsoft.com/pricing/details/network-watcher/) en [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/) voor meer informatie.
 
 **Binnenkomende stromen die zijn geregistreerd van Internet ip's naar vm's zonder open bare ip's**: vm's waaraan geen openbaar IP-adres is toegewezen via een openbaar IP-adres dat is gekoppeld aan de NIC als instantie niveau openbaar IP of die deel uitmaken van een basis Load Balancer back-end-groep, gebruiken [standaard SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) en hebben een IP-adres dat is toegewezen door Azure om uitgaande connectiviteit te vergemakkelijken. Als gevolg hiervan ziet u mogelijk stroom logboek vermeldingen voor stromen van IP-adressen van Internet, als de stroom bestemd is voor een poort in het bereik van poorten die zijn toegewezen voor SNAT. Hoewel Azure deze stromen naar de virtuele machine niet toestaat, wordt de poging geregistreerd en wordt deze weer gegeven in het NSG-stroom logboek van Network Watcher. U wordt aangeraden ongewenste binnenkomend Internet verkeer expliciet met NSG te blok keren.
+
+**Onjuist aantal bytes en pakket voor stateless stromen**: [netwerk beveiligings groepen (nsg's)](https://docs.microsoft.com/azure/virtual-network/security-overview) worden geïmplementeerd als een [stateful firewall](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true). Veel standaard-en interne regels die de stroom van verkeer regelen, worden echter op een staatloze manier geïmplementeerd. Als gevolg van de beperkingen van het platform worden het aantal bytes en pakketten niet vastgelegd voor stateless stromen (dat wil zeggen, verkeer stromen via stateless regels), worden ze alleen opgenomen voor stateful stromen. Het aantal bytes en pakketten dat in de NSG-stroom Logboeken (en Traffic Analytics) wordt gerapporteerd, kan daarom afwijken van de werkelijke stromen. Deze beperking is gepland om te worden vastgesteld op 2020 juni.
 
 ## <a name="sample-log-records"></a>Voorbeeld logboek records
 

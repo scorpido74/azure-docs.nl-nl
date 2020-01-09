@@ -4,12 +4,12 @@ description: Overzicht van de preview-versie van Azure Block Chain Workbench en 
 ms.date: 09/05/2019
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: 9c40f95aa1490362b9232ec8d87a199d7a41c731
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 88c162539e5d0480d7f938c674b96c2f396774e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74324551"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387068"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Wat is Azure Blockchain Workbench?
 
@@ -44,6 +44,20 @@ Bij bestaande blockchain-protocollen worden blockchain-identiteiten voorgesteld 
 ## <a name="synchronize-on-chain-data-with-off-chain-storage"></a>Gegevens in de blockchain synchroniseren met opslag buiten de blockchain
 
 Met Azure Blockchain Workbench is het eenvoudiger om blockchain-gebeurtenissen en -gegevens te analyseren doordat gegevens in de blockchain automatisch worden gesynchroniseerd naar opslag buiten de blockchain. In plaats van de gegevens rechtstreeks uit de blockchain te extraheren, kunt u query's uitvoeren op databasesystemen buiten de blockchain, zoals SQL Server. Block Chain-expertise is niet vereist voor eind gebruikers die taken voor gegevens analyse uitvoeren.
+
+## <a name="support-and-feedback"></a>Ondersteuning en feedback
+
+Voor Azure Block Chain News gaat u naar de [Azure Block Chain-blog](https://azure.microsoft.com/blog/topics/blockchain/) om op de hoogte te blijven van Block Chain service aanbiedingen en informatie van het technische team van Azure Block chain.
+
+Als u productfeedback wilt geven of als u nieuwe functies wilt aanvragen, kunt u het beste stemmen voor een idee via het [Azure feedback forum voor Block Chain](https://aka.ms/blockchainuservoice).
+
+### <a name="community-support"></a>Ondersteuning door community
+
+Neem contact op met micro soft-technici en Azure Block Chain community-experts.
+
+* [MSDN-forum voor Azure Block Chain](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
 ## <a name="next-steps"></a>Volgende stappen
 

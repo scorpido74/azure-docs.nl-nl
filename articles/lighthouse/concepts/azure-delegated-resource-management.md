@@ -3,12 +3,12 @@ title: Meer informatie over gedelegeerd resourcebeheer
 description: Met beheerde services kunnen service providers resource beheer aanbiedingen verkopen aan klanten in azure Marketplace.
 ms.date: 07/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: ccbd09cd51216f9076e3b5bd462ee2180ac8f3ab
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 2baa66acb4abc250ff69a1560f1bc6fe9a531ba8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464018"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453627"
 ---
 # <a name="azure-delegated-resource-management"></a>Meer informatie over gedelegeerd resourcebeheer
 
@@ -33,7 +33,7 @@ U kunt [het nieuwe aanbieding voor het managed services-aanbod publiceren naar A
 
 Op hoog niveau is dit de manier waarop Azure gedelegeerd resource management werkt:
 
-1. Als service provider identificeert u de toegang (rollen) die uw groepen, service-principals of gebruikers nodig hebben voor het beheren van de Azure-resources van de klant. De toegangs definitie bevat de Tenant-ID van de service provider, samen met de vereiste toegang voor de aanbieding, die is gedefinieerd met behulp van **principalId** -identiteiten uit uw Tenant die is toegewezen aan [ingebouwde **roleDefinition** -waarden](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (Inzender, VM Inzender, lezer, enz.).
+1. Als service provider identificeert u de toegang (rollen) die uw groepen, service-principals of gebruikers nodig hebben voor het beheren van de Azure-resources van de klant. De toegangs definitie bevat de Tenant-ID van de service provider, samen met de vereiste toegang voor de aanbieding, die is gedefinieerd met behulp van **principalId** -identiteiten uit uw Tenant die is toegewezen aan [ingebouwde **roleDefinition** -waarden](../../role-based-access-control/built-in-roles.md) (Inzender, VM-bijdrager, lezer, enzovoort).
 2. U geeft deze toegang op een van de volgende twee manieren op om de klant in te delen voor het beheer van Azure-resources:
    - [Een Azure Marketplace Managed Services-aanbieding](../how-to/publish-managed-services-offers.md) (privé of openbaar) publiceren die door de klant wordt geaccepteerd
    - [Een Azure Resource Manager-sjabloon implementeren naar de Tenant van de klant](../how-to/onboard-customer.md) voor een of meer specifieke abonnementen of resource groepen

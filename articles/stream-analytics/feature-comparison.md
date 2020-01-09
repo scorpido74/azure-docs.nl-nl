@@ -1,18 +1,17 @@
 ---
 title: Vergelijking van Azure Stream Analytics-functies
 description: In dit artikel worden de functies vergeleken die worden ondersteund voor Azure Stream Analytics Cloud-en IoT Edge-taken in de Azure Portal, Visual Studio en Visual Studio code.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 4eb19a5b344cc5bda5ecad724daaddf9b0000d7e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8cdba27ac949584e1fa96e3f7b0874f4fc0d4212
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580911"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443660"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Vergelijking van Azure Stream Analytics-functies
 
@@ -26,27 +25,27 @@ Met Azure Stream Analytics kunt u streaming-oplossingen maken in de Cloud en op 
 |Kruis platform     |Mac</br>Linux</br>Windows         |Windows        |Mac</br>Linux</br>Windows          |
 |Ontwerpen van scripts     |Ja         |Ja         |Ja         |
 |Script IntelliSense     |Syntaxis markering         |Syntaxis markering</br>Code volt ooien</br>Fout markering         |Syntaxis markering</br>Code volt ooien</br>Fout markering         |
-|Invoer, uitvoer en taak configuraties definiëren     |Ja         |Ja         |Ja         |
-|BLOB-uitvoer partitioneren     |Ja         |Ja         |Ja         |
-|Power BI als uitvoer     |Ja         |Ja         |Nee         |
-|Referentie gegevens SQL database     |Ja         |Ja         |Ja         |
-|Aangepaste bericht eigenschappen     |Ja         |Nee         |Nee         |
-|Invoer en uitvoer over meerdere query's delen     |Nee         |Ja         |Ja         |
-|Java script UDF en UDA     |Ja         |Ja         |Alleen Windows         |
-|Machine Learning toelichtingen     |Ja, maar de query kan niet worden getest        |Ja, maar kan niet lokaal worden getest         |Nee         |
-|Compatibiliteitsniveau     |1.0</br>1.1</br>1.2         |1.0</br>1.1</br>1.2          |1.0</br>1.1</br>1.2          |
-|Ingebouwde op ML gebaseerde anomalie detectie functies     |Ja         |Ja         |Ja         |
-|Ingebouwde georuimtelijke functies     |Ja         |Ja         |Ja         |
-|Query's testen met een voorbeeld bestand     |Ja         |Ja         |Ja         |
-|Lokale tests voor dynamische gegevens     |Nee         |Ja         |Nee         |
-|Taken weer geven en taak entiteiten bekijken     |Ja         |Ja         |Ja         |
-|Een taak exporteren naar een lokaal project     |Nee         |Ja         |Ja         |
-|Taken verzenden, starten en stoppen     |Ja         |Ja         |Ja         |
+|Alle typen invoer, uitvoer en taak configuraties definiëren     |Ja         |Ja         |Ja         |
 |Broncodebeheer     |Nee         |Ja         |Ja         |
 |Ondersteuning voor CI/CD     |Gedeeltelijk         |Ja         |Ja         |
+|Invoer en uitvoer over meerdere query's delen     |Nee         |Ja         |Ja         |
+|Query's testen met een voorbeeld bestand     |Ja         |Ja        |Ja         |
+|Lokale tests voor dynamische gegevens     |Nee         |Ja       |Ja      |
+|Taken weer geven en taak entiteiten bekijken     |Ja         |Ja        |Ja         |
+|Een taak exporteren naar een lokaal project     |Nee         |Ja         |Ja         |
+|Taken verzenden, starten en stoppen     |Ja         |Ja         |Ja         |
 |Metrische gegevens van de taak en het diagram weer geven     |Ja         |Ja         |Openen in portal         |
 |Runtime fouten van taken weer geven     |Ja         |Ja         |Nee         |
 |Diagnostische logboeken     |Ja         |Nee         |Nee         |
+|Aangepaste bericht eigenschappen     |Ja         |Ja         |Nee       |
+|C#aangepaste code functie en deserializer|Alleen-lezen modus|Ja|Nee|
+|Java script UDF en UDA     |Ja         |Ja         |Alleen op Windows         |
+|Machine Learning-service     |Ja, maar de query kan niet worden getest        |Ja         |Nee         |
+|Machine Learning Studio     |Ja, maar de query kan niet worden getest        |Ja |Nee         |
+|Compatibiliteitsniveau     |1.0</br>1.1</br>1,2 (standaard)         |1.0</br>1.1</br>1,2 (standaard)           |1.0</br>1.1</br>1,2 (standaard)           |
+|Ingebouwde op ML gebaseerde anomalie detectie functies     |Ja         |Ja         |Ja         |
+|Ingebouwde georuimtelijke functies     |Ja         |Ja         |Ja         |
+
 
 
 ## <a name="iot-edge-job-features"></a>IoT Edge taak functies
@@ -58,7 +57,7 @@ Met Azure Stream Analytics kunt u streaming-oplossingen maken in de Cloud en op 
 |Een taak exporteren naar een lokaal project     |Nee         |Ja         |Nee         |
 |Query's testen met een voorbeeld bestand     |Ja         |Ja         |Nee         |
 |Invoer en uitvoer over meerdere query's delen     |Nee         |Ja         |Nee         |
-|C#UDF     |Nee         |Ja         |Nee         |
+|C# UDF     |Nee         |Ja         |Nee         |
 |Taken verzenden     |Ja         |Ja         |Nee         |
 |Taken weer geven en taak entiteiten bekijken     |Ja         |Ja         |Nee         |
 |Metrische gegevens van de taak en het diagram weer geven     |Ja         |Gedeeltelijk         |Nee         |
@@ -72,6 +71,6 @@ Met Azure Stream Analytics kunt u streaming-oplossingen maken in de Cloud en op 
 * [Zelf studie: een C# door de gebruiker gedefinieerde functie schrijven voor Azure stream Analytics IOT Edge taak (preview-versie)](stream-analytics-edge-csharp-udf.md)
 * [Stream Analytics IoT Edge taken ontwikkelen met behulp van Visual Studio-hulpprogram ma's](stream-analytics-tools-for-visual-studio-edge-jobs.md)
 * [Visual Studio gebruiken om Azure Stream Analytics-taken weer te geven](stream-analytics-vs-tools.md)
-* [Azure Stream Analytics verkennen met Visual Studio code (preview)](vscode-explore-jobs.md)
+* [Azure Stream Analytics verkennen met Visual Studio code (preview)](visual-studio-code-explore-jobs.md)
 
 

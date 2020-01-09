@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 11/08/2019
-ms.openlocfilehash: 9c4dca6dc5def1b1c458f28aa2d3ab992bd705d2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/16/2019
+ms.openlocfilehash: d6bb57c8163f7653f4b10142d7ec2b34f50456f1
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792725"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75527855"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Toegang tot Azure Virtual Network resources vanuit Azure Logic Apps met behulp van integratie service omgevingen (ISEs)
 
 Soms hebben uw Logic apps en integratie accounts toegang nodig tot beveiligde bronnen, zoals virtuele machines (Vm's) en andere systemen of services die zich in een [virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md)bevinden. Als u deze toegang wilt instellen, kunt u [een ISE ( *Integration service Environment* ) maken](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) waarin u uw Logic apps kunt uitvoeren en uw integratie accounts maakt.
 
-Wanneer u een ISE maakt, *injecteert* Azure die ISE in uw virtuele Azure-netwerk, dat vervolgens een privé-en geïsoleerde instantie van de Logic apps-service implementeert in uw virtuele Azure-netwerk. Deze persoonlijke instantie gebruikt speciale resources zoals opslag, en wordt afzonderlijk van de open bare ' wereld wijde ' Logic Apps-service uitgevoerd. Het scheiden van uw geïsoleerde privé-exemplaar en het open bare Global-exemplaar verminderen ook de invloed die andere Azure-tenants mogelijk hebben op de prestaties van uw apps, ook wel bekend als het [effect "ruiserende neighbors"](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors).
+Wanneer u een ISE maakt, *injecteert* Azure die ISE in uw virtuele Azure-netwerk, dat vervolgens een privé-en geïsoleerde instantie van de Logic apps-service implementeert in uw virtuele Azure-netwerk. Dit privé-exemplaar maakt gebruik van speciale resources zoals opslag en wordt afzonderlijk uitgevoerd vanuit de open bare, ' wereld wijde ' multi tenant-Logic Apps service. Het scheiden van uw geïsoleerde privé-exemplaar en het open bare Global-exemplaar verminderen ook de invloed die andere Azure-tenants mogelijk hebben op de prestaties van uw apps, ook wel bekend als het [effect "ruiserende neighbors"](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors). Een ISE biedt u ook uw eigen vaste IP-adressen. Deze IP-adressen zijn gescheiden van de statische IP-adressen die worden gedeeld door de Logic apps in de open bare multi tenant-service.
 
 Nadat u uw ISE hebt gemaakt, kunt u uw ISE als de logische app of de locatie van het integratie account selecteren wanneer u de logische app of het integratie account gaat maken:
 
@@ -47,7 +47,7 @@ Logic apps in een ISE bieden dezelfde gebruikers ervaringen en vergelijk bare mo
 
 * Azure Blob Storage, File Storage en Table Storage
 * Azure-wacht rijen, Azure Service Bus, Azure Event Hubs en IBM MQ
-* Bestands systeem, FTP en SFTP-SSH
+* FTP en SFTP-SSH
 * SQL Server, Azure SQL Data Warehouse Azure Cosmos DB
 * AS2, X12 en EDIFACT
 
@@ -86,11 +86,13 @@ Zie [Logic apps prijzen](https://azure.microsoft.com/pricing/details/logic-apps/
 
 ## <a name="ise-endpoint-access"></a>Toegang tot ISE-eind punt
 
-Wanneer u uw ISE maakt, kunt u kiezen of u interne of Externe toegangs punten wilt gebruiken. Deze eind punten bepalen of de aanvraag of webhook triggers op Logic apps in uw ISE kan ontvangen van buiten uw virtuele netwerk. Deze eind punten zijn ook van invloed op de toegang tot invoer en uitvoer in de geschiedenis van de run Logic-app.
+Wanneer u uw ISE maakt, kunt u kiezen of u interne of Externe toegangs punten wilt gebruiken. Uw selectie bepaalt of aanvragen of webhooks worden geactiveerd op Logic apps in uw ISE kan aanroepen ontvangen van buiten uw virtuele netwerk.
 
-* **Intern**: privé-eind punten die aanroepen naar Logic apps in uw ISE plus toegang tot invoer en uitvoer in de uitvoerings geschiedenis alleen *vanuit uw virtuele netwerk*
+Deze eind punten zijn ook van invloed op de manier waarop u toegang tot invoer en uitvoer kunt krijgen in de uitvoerings geschiedenis van de Logic apps.
 
-* **Externe**: open bare eind punten die aanroepen naar Logic apps in uw ISE plus toegang tot invoer en uitvoer in de uitvoerings geschiedenis *van buiten uw virtuele netwerk*
+* **Intern**: privé-eind punten die aanroepen naar Logic apps in uw ISE waar u de invoer en uitvoer van uw logische apps in de uitvoerings geschiedenis *alleen vanuit uw virtuele netwerk* kunt weer geven en openen
+
+* **Externe**: open bare eind punten die aanroepen naar Logic apps in uw ISE waar u de invoer en uitvoer van uw Logic apps kunt bekijken en openen in de uitvoerings geschiedenis *van buiten uw virtuele netwerk*. Als u netwerk beveiligings groepen (Nsg's) gebruikt, moet u ervoor zorgen dat deze zijn ingesteld met regels voor binnenkomende verbindingen zodat de invoer en uitvoer van de uitvoerings geschiedenis toegankelijk zijn. Zie [Enable Access for ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)voor meer informatie.
 
 > [!IMPORTANT]
 > De optie voor het toegangs punt is alleen beschikbaar bij het maken van ISE en kan later niet worden gewijzigd.

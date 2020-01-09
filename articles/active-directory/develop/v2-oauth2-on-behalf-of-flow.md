@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa58f63e70c09e17328b849e7728604a65cb7ae1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 811fc7a4fc5d8ffba894bad837e95d6b27ecc8c3
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964316"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689417"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Micro soft Identity platform en OAuth 2,0-of-flow
 
@@ -35,12 +35,12 @@ In dit artikel wordt beschreven hoe u direct kunt Program meren met het protocol
 
 > [!NOTE]
 >
-> - Het micro soft Identity platform-eind punt biedt geen ondersteuning voor alle scenario's en functies. Lees over [micro soft Identity platform-beperkingen](active-directory-v2-limitations.md)om te bepalen of u het micro soft Identity platform-eind punt moet gebruiken. In het bijzonder worden bekende client toepassingen niet ondersteund voor apps met Microsoft-account (MSA) en Azure AD-doel groepen. Daarom werkt een gemeen schappelijke toestemmings patroon voor OBO niet voor clients die zich aanmelden op zowel persoonlijke als werk-of school accounts. Zie voor meer informatie over het afhandelen van deze stap van de stroom het [verkrijgen van toestemming voor de middelste toepassing](#gaining-consent-for-the-middle-tier-application).
+> - Het micro soft Identity platform-eind punt biedt geen ondersteuning voor alle scenario's en functies. Lees over [micro soft Identity platform-beperkingen](active-directory-v2-limitations.md)om te bepalen of u het micro soft Identity platform-eind punt moet gebruiken. 
 > - Vanaf mei 2018 kan sommige impliciete stroom die is afgeleid `id_token` niet worden gebruikt voor OBO-stroom. Apps met één pagina (SPAs) moeten een **toegangs** token door geven aan een vertrouwelijke client voor de middelste laag om in plaats daarvan OBO stromen uit te voeren. Zie [beperkingen](#client-limitations)voor meer informatie over welke clients OBO-aanroepen kunnen uitvoeren.
 
 ## <a name="protocol-diagram"></a>Protocol diagram
 
-Stel dat de gebruiker is geverifieerd op een toepassing met behulp van de [OAuth 2,0-autorisatie code toekenning stroom](v2-oauth2-auth-code-flow.md). Op dit moment heeft de toepassing een toegangs token *voor API a* (token a) met de claims van de gebruiker en toestemming om toegang te krijgen tot de Web-API (API a) van de middelste laag. Nu moet API A een geverifieerde aanvraag indienen bij de downstream Web API (API B).
+Stel dat de gebruiker is geverifieerd op een toepassing met behulp van de [OAuth 2,0-autorisatie code subsidie stroom](v2-oauth2-auth-code-flow.md) of een andere aanmeldings stroom. Op dit moment heeft de toepassing een toegangs token *voor API a* (token a) met de claims van de gebruiker en toestemming om toegang te krijgen tot de Web-API (API a) van de middelste laag. Nu moet API A een geverifieerde aanvraag indienen bij de downstream Web API (API B).
 
 De volgende stappen vormen de OBO-stroom en worden uitgelegd in de Help van het onderstaande diagram.
 
@@ -48,9 +48,9 @@ De volgende stappen vormen de OBO-stroom en worden uitgelegd in de Help van het 
 
 1. De client toepassing maakt een aanvraag voor API A met token A (met een `aud` claim van API A).
 1. API A wordt geverifieerd bij het micro soft Identity platform token uitgifte-eind punt en vraagt een token aan voor toegang tot API B.
-1. Het micro soft Identity platform-eind punt voor de uitgifte van tokens valideert API A met token A en geeft het toegangs token voor API B (token B).
-1. Token B is ingesteld in de autorisatie-header van de aanvraag voor API B.
-1. Gegevens van de beveiligde bron worden geretourneerd door API B.
+1. Met het micro soft Identity platform uitgifte-eind punt worden de referenties van de API A gevalideerd samen met token A en wordt het toegangs token voor API B (token B) naar API A uitgegeven.
+1. Token B wordt ingesteld door API A in de autorisatie-header van de aanvraag voor API B.
+1. Gegevens van de beveiligde bron worden door API B naar API A en van daaruit naar de client geretourneerd.
 
 > [!NOTE]
 > In dit scenario heeft de middelste laag service geen interactie van de gebruiker om de toestemming van de gebruiker voor toegang tot de downstream API te verkrijgen. Daarom wordt de optie voor het verlenen van toegang tot de downstream API vooraf weer gegeven als onderdeel van de stap voor toestemming tijdens de verificatie. Zie [toestemming geven voor de middelste toepassing](#gaining-consent-for-the-middle-tier-application)voor meer informatie over het instellen van dit voor uw app.
@@ -74,7 +74,7 @@ Bij gebruik van een gedeeld geheim bevat een aanvraag voor service-naar-service-
 | `grant_type` | Verplicht | Het type van de token aanvraag. Voor een aanvraag met behulp van een JWT moet de waarde `urn:ietf:params:oauth:grant-type:jwt-bearer`zijn. |
 | `client_id` | Verplicht | De ID van de toepassing (client) waaraan [de Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina is toegewezen aan uw app. |
 | `client_secret` | Verplicht | Het client geheim dat u hebt gegenereerd voor uw app op de pagina Azure Portal-App-registraties. |
-| `assertion` | Verplicht | De waarde van het token dat in de aanvraag wordt gebruikt. |
+| `assertion` | Verplicht | De waarde van het token dat in de aanvraag wordt gebruikt.  Dit token moet een doel groep hebben van de app die deze OBO-aanvraag maakt (de app wordt aangeduid met het `client-id` veld). |
 | `scope` | Verplicht | Een lijst met door spaties gescheiden bereiken voor de token aanvraag. Zie [scopes](v2-permissions-and-consent.md)voor meer informatie. |
 | `requested_token_use` | Verplicht | Hiermee geeft u op hoe de aanvraag moet worden verwerkt. In de OBO-stroom moet de waarde worden ingesteld op `on_behalf_of`. |
 
@@ -161,7 +161,7 @@ In het volgende voor beeld ziet u een reactie op een aanvraag voor een toegangs 
 ```
 
 > [!NOTE]
-> Het bovenstaande toegangs token is een token met de indeling v 1.0. Dit komt doordat het token wordt aangeboden op basis van de bron waartoe toegang wordt verkregen. Het Microsoft Graph aanvragen v 1.0-tokens, waardoor het micro soft Identity-platform v 1.0 toegangs tokens produceert wanneer een client tokens voor Microsoft Graph aanvraagt. Alleen toepassingen moeten de toegangs tokens bekijken. Clients hoeven ze niet te controleren.
+> Het bovenstaande toegangs token is een token met de indeling v 1.0. Dit komt doordat het token wordt aangeboden op basis van de **bron** waartoe toegang wordt verkregen. De Microsoft Graph is ingesteld om v 1.0-tokens te accepteren, waardoor het micro soft Identity-platform v 1.0 toegangs tokens produceert wanneer een client tokens voor Microsoft Graph aanvraagt. Alleen toepassingen moeten de toegangs tokens bekijken. Clients **mogen deze niet** controleren.
 
 ### <a name="error-response-example"></a>Voor beeld van fout antwoorden
 
@@ -193,29 +193,24 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>Toestemming geven voor de toepassing in de middelste laag
 
-Afhankelijk van de doel groep voor uw toepassing, kunt u verschillende strategieën overwegen om ervoor te zorgen dat de OBO-stroom slaagt. In alle gevallen is het uiteindelijk doel om ervoor te zorgen dat de juiste toestemming wordt gegeven. Hoe dit gebeurt, is echter afhankelijk van welke gebruikers door uw toepassing worden ondersteund.
+Afhankelijk van de architectuur of het gebruik van uw toepassing, kunt u verschillende strategieën overwegen om ervoor te zorgen dat de OBO-stroom slaagt. In alle gevallen is het ultieme doel om ervoor te zorgen dat de client-app de middelste laag kan aanroepen, en de app voor de middelste laag is gemachtigd om de back-end-bron aan te roepen. 
 
-### <a name="consent-for-azure-ad-only-applications"></a>Toestemming voor Azure AD-toepassingen
+> [!NOTE]
+> Voorheen heeft het Microsoft-account systeem (persoonlijke accounts) het veld ' bekende client toepassing ' niet ondersteund, noch kon er geen gecombineerde toestemming worden weer gegeven.  Dit is toegevoegd en alle apps in het micro soft Identity-platform kunnen gebruikmaken van de benadering van een bekende client toepassing voor gettign toestemming voor OBO-aanroepen. 
 
-#### <a name="default-and-combined-consent"></a>/.default en gecombineerde toestemming
+### <a name="default-and-combined-consent"></a>/.default en gecombineerde toestemming
 
-Voor toepassingen die alleen werk-of school accounts moeten aanmelden, is de traditionele benadering ' bekende client toepassingen ' voldoende. De middelste laag toepassing voegt de client toe aan de lijst met bekende client toepassingen in het manifest en vervolgens kan de client een gecombineerde toestemmings stroom voor zowel zichzelf als de middelste laag toepassing activeren. Op het micro soft Identity platform-eind punt wordt dit gedaan met behulp van het [`/.default` bereik](v2-permissions-and-consent.md#the-default-scope). Wanneer een goedkeurings scherm wordt geactiveerd met behulp van bekende client toepassingen en `/.default`, toont het venster toestemming de machtigingen voor zowel de client op de middenlaag van de middelste laag, en vraagt ook welke machtigingen voor de middelste laag-API vereist zijn. De gebruiker geeft toestemming voor beide toepassingen en vervolgens werkt de OBO-stroom.
+De middelste laag toepassing voegt de client toe aan de lijst met bekende client toepassingen in het manifest en vervolgens kan de client een gecombineerde toestemmings stroom voor zowel zichzelf als de middelste laag toepassing activeren. Op het micro soft Identity platform-eind punt wordt dit gedaan met behulp van het [`/.default` bereik](v2-permissions-and-consent.md#the-default-scope). Wanneer een goedkeurings scherm wordt geactiveerd met behulp van bekende client toepassingen en `/.default`, toont het venster toestemming de machtigingen voor **zowel** de client op de middenlaag van de middelste laag, en vraagt ook welke machtigingen voor de middelste laag-API vereist zijn. De gebruiker geeft toestemming voor beide toepassingen en vervolgens werkt de OBO-stroom.
 
-Op dit moment biedt het persoonlijke Microsoft-account systeem geen ondersteuning voor gecombineerde toestemming. deze benadering werkt daarom niet voor apps die specifiek persoonlijke accounts willen ondertekenen. Persoonlijke micro soft-accounts die worden gebruikt als gast accounts in een Tenant worden verwerkt met behulp van het Azure AD-systeem en kunnen door de gecombineerde toestemming gaan.
+### <a name="pre-authorized-applications"></a>Vooraf geautoriseerde toepassingen
 
-#### <a name="pre-authorized-applications"></a>Vooraf geautoriseerde toepassingen
+Resources kunnen aangeven dat een bepaalde toepassing altijd gemachtigd is om bepaalde bereiken te ontvangen. Dit is vooral handig om verbindingen te maken tussen een front-end-client en een back-end-bron naadloos. Een resource kan meerdere vooraf geautoriseerde toepassingen declareren: elke toepassing kan deze machtigingen aanvragen in een OBO-stroom en ze ontvangen zonder toestemming te geven aan de gebruiker.
 
-Een functie van de toepassings Portal is ' vooraf geautoriseerde toepassingen '. Op deze manier kan een resource aangeven dat een bepaalde toepassing altijd gemachtigd is om bepaalde bereiken te ontvangen. Dit is vooral handig om verbindingen te maken tussen een front-end-client en een back-end-bron naadloos. Een resource kan meerdere vooraf geautoriseerde toepassingen declareren: elke toepassing kan deze machtigingen aanvragen in een OBO-stroom en ze ontvangen zonder toestemming te geven aan de gebruiker.
-
-#### <a name="admin-consent"></a>toestemming van de beheerder
+### <a name="admin-consent"></a>toestemming van de beheerder
 
 Een Tenant beheerder kan garanderen dat toepassingen gemachtigd zijn om de vereiste Api's aan te roepen door toestemming van de beheerder voor de middelste laag toepassing op te geven. Om dit te doen, kan de beheerder de toepassing voor het middelste niveau vinden in hun Tenant, de pagina vereiste machtigingen openen en ervoor kiezen om toestemming te geven voor de app. Zie de [documentatie voor toestemming en machtigingen](v2-permissions-and-consent.md)voor meer informatie over de toestemming van de beheerder.
 
-### <a name="consent-for-azure-ad--microsoft-account-applications"></a>Toestemming voor Azure AD + Microsoft-account-toepassingen
-
-Vanwege beperkingen in het machtigings model voor persoonlijke accounts en het ontbreken van een Tenant, zijn de vereisten voor toestemming voor persoonlijke accounts een andere bit dan Azure AD. Er is geen Tenant voor het bieden van toestemming voor de hele Tenant, noch de mogelijkheid om gecombineerde toestemming uit te voeren. Daarom zijn er ook andere strategieën aanwezig: Houd er rekening mee dat deze werk voor toepassingen die alleen Azure AD-accounts moeten ondersteunen.
-
-#### <a name="use-of-a-single-application"></a>Gebruik van één toepassing
+### <a name="use-of-a-single-application"></a>Gebruik van één toepassing
 
 In sommige scenario's is het mogelijk dat u slechts één paar van de middelste laag en front-end-client hoeft te koppelen. In dit scenario is het mogelijk dat u deze app gemakkelijker kunt maken, waardoor het niet meer nodig is om een toepassing met een middelste laag te verbinden. Als u wilt verifiëren tussen de front-end en de Web-API, kunt u cookies, een id_token of een toegangs token gebruiken dat is aangevraagd voor de toepassing zelf. Vraag vervolgens toestemming van deze enkele toepassing aan de back-end-bron.
 

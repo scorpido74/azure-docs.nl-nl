@@ -1,6 +1,6 @@
 ---
 title: Azure-snelstartgids - Batch-taak uitvoeren - .NET
-description: Voer snel een Batch-taak en taken uit met behulp van de Batch .NET-clientbibliotheek.
+description: U kunt snel een Azure Batch voorbeeld taak en-taken C# uitvoeren vanuit een toepassing met de batch .net-client bibliotheek.
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 37cd6fdd2f82af581e27f9341292c484b1cc601e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 613f771af71c4f03f7ccf9283b98c09836c312cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322332"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390322"
 ---
-# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Quickstart: Uw eerste Azure Batch-taak uitvoeren met de .NET API
+# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Snelstartgids: Uw eerste Azure Batch-taak uitvoeren met .NET API
 
 In deze snelstartgids wordt een Azure Batch-taak uitgevoerd vanuit een C#-toepassing die is gebouwd op de Azure Batch .NET API. Met de app worden verschillende invoerbestanden geüpload naar Azure-opslag en wordt vervolgens een *pool* met Batch-rekenknooppunten (virtuele machines) gemaakt. Vervolgens wordt een *Batch-voorbeeldtaak* gemaakt waarmee *taken* worden uitgevoerd om elk invoerbestand in de pool te verwerken met behulp van een basisopdracht. Nadat u deze snelstartgids hebt voltooid, begrijpt u de belangrijkste principes van de Batch-service en bent u er klaar voor om Batch op grotere schaal te gebruiken voor meer realistische workloads.
 
@@ -29,7 +29,7 @@ In deze snelstartgids wordt een Azure Batch-taak uitgevoerd vanuit een C#-toepas
 
 * [Visual Studio 2017 of hoger](https://www.visualstudio.com/vs), of [.net Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) voor Linux, macOS of Windows. 
 
-* Een Batch-account en een gekoppeld Azure Storage-account. Raadpleeg de Batch-quickstarts met behulp van [Azure Portal](quick-create-portal.md) of [Azure CLI](quick-create-cli.md) voor instructies voor het maken van deze accounts. 
+* Een Batch-account en een gekoppeld Azure Storage-account. Raadpleeg de Batch-snelstartgidsen via de [Azure Portal](quick-create-portal.md) of [Azure CLI](quick-create-cli.md) voor instructies over het maken van deze accounts. 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -47,7 +47,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-quickstart.git
 
 Ga naar de map met het Visual Studio-oplossingsbestand `BatchDotNetQuickstart.sln`.
 
-Open het oplossingsbestand in Visual Studio en werk de referentietekenreeksen in `Program.cs` bij met de waarden die u hebt verkregen voor uw accounts. Bijvoorbeeld:
+Open het oplossingsbestand in Visual Studio en werk de referentietekenreeksen in `Program.cs` bij met de waarden die u voor uw accounts hebt verkregen. Bijvoorbeeld:
 
 ```csharp
 // Batch account credentials
@@ -68,7 +68,7 @@ Als u de Batch-werkstroom in actie wilt zien, bouwt u de toepassing in Visual St
 
 * Klik met de rechtermuisknop op de oplossing in Solution Explorer en klik op **Build-oplossing**. 
 
-* Bevestig het herstel van alle NuGet-pakketten als dit wordt gevraagd. Als u ontbrekende pakketten wilt downloaden, zorgt u ervoor dat [NuGet-pakketbeheer](https://docs.nuget.org/consume/installing-nuget) is geïnstalleerd.
+* Bevestig het herstel van alle NuGet-pakketten als dit wordt gevraagd. Als u ontbrekende pakketten moet downloaden, zorgt u ervoor dat [NuGet Package Manager](https://docs.nuget.org/consume/installing-nuget) is geïnstalleerd.
 
 Voer dit pakketbeheer vervolgens uit. Wanneer u de voorbeeldtoepassing uitvoert, ziet de uitvoer van de console er ongeveer als volgt uit. De actieve uitvoering wordt bij `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` onderbroken terwijl de rekenknooppunten van de pool worden gestart. Taken worden in de wachtrij geplaatst om te worden uitgevoerd zodra het eerste rekenknooppunt actief is. Ga naar uw Batch-account in [Azure Portal](https://portal.azure.com) om de pool, rekenknooppunten en taken te controleren.
 
@@ -119,7 +119,7 @@ De app gebruikt de Azure Storage-clientbibliotheek voor .NET om te kunnen werken
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 ```
 
-De app gebruikt de `blobClient`-verwijzing om een container te maken in het opslagaccount en om gegevensbestanden naar de container te uploaden. De bestanden in de opslag zijn gedefinieerd als Batch [ResourceFile](/dotnet/api/microsoft.azure.batch.resourcefile)-objecten die later met Batch kunnen worden gedownload op rekenknooppunten.
+De app gebruikt de `blobClient`-verwijzing om een container te maken in het opslagaccount en om gegevensbestanden naar de container te uploaden. De bestanden in de opslag zijn gedefinieerd als Batch [ResourceFile](/dotnet/api/microsoft.azure.batch.resourcefile)-objecten die Batch later kan downloaden naar rekenknooppunten.
 
 ```csharp
 List<string> inputFilePaths = new List<string>
@@ -137,7 +137,7 @@ foreach (string filePath in inputFilePaths)
 }
 ```
 
-De app maakt een [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient)-object om pools, Batch-taken en taken in de Batch-service te maken en te beheren. De Batch-client in het voorbeeld gebruikt verificatie op basis van gedeelde sleutels. (Batch ondersteunt ook Azure Active Directory-verificatie.)
+De app maakt een [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient)-object om pools, jobs en taken in de Batch-service te maken en te beheren. De Batch-client in het voorbeeld gebruikt verificatie op basis van gedeelde sleutels. (Batch ondersteunt ook Azure Active Directory-verificatie.)
 
 ```csharp
 BatchSharedKeyCredentials cred = new BatchSharedKeyCredentials(BatchAccountUrl, BatchAccountName, BatchAccountKey);
@@ -146,9 +146,9 @@ using (BatchClient batchClient = BatchClient.Open(cred))
 ...
 ```
 
-### <a name="create-a-pool-of-compute-nodes"></a>Een pool van rekenknooppunten maken
+### <a name="create-a-pool-of-compute-nodes"></a>Een pool met rekenknooppunten maken
 
-Voor het maken van een Batch-pool gebruikt de app de [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool)-methode om het aantal knooppunten, de VM-grootte en de poolconfiguratie in te stellen. Hier geeft het [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration)-object een [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) naar een Windows Server-installatiekopie op die is gepubliceerd in Azure Marketplace. Batch ondersteunt diverse Linux- en Windows Server-installatiekopieën in Azure Marketplace, evenals aangepaste VM-installatiekopieën.
+Voor het maken van een Batch-pool gebruikt de app de [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool)-methode om het aantal knooppunten, de VM-grootte en de poolconfiguratie in te stellen. Hier geeft het object [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) een [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) op naar een Windows Server-installatiekopie die is gepubliceerd in de Azure Marketplace. Batch ondersteunt diverse Linux- en Windows Server-installatiekopieën in Azure Marketplace, evenals aangepaste VM-installatiekopieën.
 
 Het aantal knooppunten (`PoolNodeCount`) en de VM-grootte (`PoolVMSize`) zijn gedefinieerde constanten. In het voorbeeld wordt standaard een pool met *Standard_A1_v2*-knooppunten van 2 grootten gemaakt. De voorgestelde grootte in dit snelle voorbeeld biedt een goede balans tussen prestaties en kosten.
 

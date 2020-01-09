@@ -1,5 +1,5 @@
 ---
-title: Migratie handleiding voor ADAL naar MSAL voor Java | Azure
+title: ADAL naar MSAL-migratie handleiding (MSAL4j) | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het migreren van uw ADAL-java-app (Azure Active Directory Authentication Library) naar de micro soft Authentication Library (MSAL).
 services: active-directory
@@ -16,12 +16,12 @@ ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e99cee3f21a4e0088fa97dcbec8fdcfdf982d80
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c228e708988d9d1ec9f58fce4f1289fd61f817b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917383"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424443"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Migratie handleiding voor ADAL naar MSAL voor Java
 
@@ -32,7 +32,7 @@ Zowel micro soft Authentication Library voor Java (MSAL4J) als Azure AD-verifica
 MSAL biedt de volgende voor delen:
 
 - Omdat er gebruik wordt gemaakt van het nieuwere micro soft Identity platform-eind punt, kunt u een uitgebreidere set micro soft-identiteiten, zoals Azure AD-identiteiten, micro soft-accounts en sociale en lokale accounts, verifiëren via Azure AD Business to consumer (B2C).
-- Uw gebruikers krijgen de beste ervaring voor eenmalige aanmelding.
+- uw gebruikers krijgen de beste ervaring voor eenmalige aanmelding.
 - Uw toepassing kan stapsgewijze toestemming bieden en het ondersteunen van voorwaardelijke toegang is eenvoudiger.
 
 MSAL voor Java is de verificatie bibliotheek die u kunt gebruiken met het micro soft Identity-platform. Er worden geen nieuwe functies geïmplementeerd op ADAL4J. Alle inspanningen die worden door lopen, zijn gericht op het verbeteren van MSAL.

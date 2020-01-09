@@ -1,6 +1,6 @@
 ---
-title: Trainings handleiding voor het overstappen van App-registraties (verouderd) naar de nieuwe App-registraties ervaring in de Azure Portal
-description: Een inleiding tot de nieuwe app-registratie ervaring in de Azure Portal
+title: Nieuwe trainingshandleiding voor app-registratie in de Azure-portal
+description: Introduceert de nieuwe app registratie-ervaring van Azure Portal
 services: active-directory
 author: archieag
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.author: aragra
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f49cac5c8c49fb5c53d3320cb0ab52e0f61acda
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 3726ebbe0ebc3725a885c847f33760ebd7e2e8b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844257"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424664"
 ---
-# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Overstappen van app-registraties (verouderd) naar de nieuwe ervaring voor app-registratie in de Azure-portal
+# <a name="new-azure-portal-app-registration-training-guide"></a>Nieuwe trainingshandleiding voor app-registratie in de Azure-portal
 
 U kunt een groot aantal verbeteringen vinden in de nieuwe [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) -ervaring in de Azure Portal. Als u bekend bent met de App-registraties (verouderde) ervaring in de Azure Portal, gebruikt u deze hand leiding om aan de slag te gaan met de nieuwe ervaring.
 

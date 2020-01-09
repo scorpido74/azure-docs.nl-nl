@@ -1,17 +1,17 @@
 ---
-title: Verificatie toevoegen aan aangepaste Api's
-description: Verificatie instellen voor het aanroepen van aangepaste Api's van Azure Logic Apps
+title: Verificatie toevoegen voor het beveiligen van aanroepen naar aangepaste Api's
+description: Verificatie instellen voor het beveiligen van aanroepen naar aangepaste Api's van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: f6dfa98550dcfb092ca1fb52a5cf0bed32e697ad
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2f8b1cc002fe3f340ff6d5329329507316577885
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793158"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666887"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Beveiligde aanroepen van aangepaste Api's van Azure Logic Apps
 
@@ -199,8 +199,8 @@ Open de definitie van de logische app in de code weergave, ga naar de **http-** 
 
 | Eigenschap | Verplicht | Beschrijving | 
 | -------- | -------- | ----------- | 
-| bouw | Ja | De GUID voor de Azure AD-Tenant | 
-| gericht | Ja | De GUID voor de doel resource waartoe u toegang wilt krijgen, wat de client-ID is van de toepassings identiteit voor uw web-app of API-app | 
+| tenant | Ja | De GUID voor de Azure AD-Tenant | 
+| audience | Ja | De GUID voor de doel resource waartoe u toegang wilt krijgen, wat de client-ID is van de toepassings identiteit voor uw web-app of API-app | 
 | clientId | Ja | De GUID voor de client die toegang vraagt, de client-ID van de toepassings identiteit voor uw logische app | 
 | geheim | Ja | De sleutel of het wacht woord van de toepassings-id voor de client die het toegangs token aanvraagt | 
 | type | Ja | Het verificatie type. Voor ActiveDirectoryOAuth-verificatie is de waarde `ActiveDirectoryOAuth`. | 

@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: uw Bing Aangepaste zoekopdrachten-eind punt aanroepen met de C# SDK | Microsoft Docs'
+title: 'Snelstartgids: uw Bing Aangepaste zoekopdrachten-eind punt aanroepen met de C# SDK'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze Quick Start om te beginnen met het aanvragen van zoek resultaten van C# uw Bing aangepaste zoekopdrachten-exemplaar met behulp van de SDK.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: scottwhi
-ms.openlocfilehash: 21b192d29f30d66e3d5f0ce6e04317d3ca7c860e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5e932b1ff597fc0170a6bb83841bc6ca7306693a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977145"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448719"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-c-sdk"></a>Snelstartgids: uw Bing Aangepaste zoekopdrachten-eind punt aanroepen met de C# SDK 
 
-Gebruik deze quickstart om te beginnen met het opvragen van zoekresultaten van uw Bing Custom Search-instantie met behulp van de C# SDK. Hoewel Bing Custom Search een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de Bing Custom Search SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch).
+Gebruik deze quickstart om te beginnen met het opvragen van zoekresultaten van uw Bing Custom Search-instantie met behulp van de C# SDK. Hoewel Bing Custom Search een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de Bing Custom Search SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch).
 
 ## <a name="prerequisites"></a>Vereisten
 

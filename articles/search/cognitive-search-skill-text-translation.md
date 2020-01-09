@@ -1,24 +1,21 @@
 ---
-title: Tekst vertaling cognitieve vaardigheid (preview-versie)
+title: Tekst vertaling cognitieve vaardigheid
 titleSuffix: Azure Cognitive Search
-description: Evalueert tekst en retourneert voor elke record tekst die wordt vertaald naar de opgegeven doel taal in een AI-verrijkings pijplijn in azure Cognitive Search. Deze vaardigheid is momenteel beschikbaar als open bare preview.
+description: Evalueert tekst en retourneert voor elke record tekst die wordt vertaald naar de opgegeven doel taal in een AI-verrijkings pijplijn in azure Cognitive Search.
 manager: nitinme
 author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7c42c9033fac057c12426726a96ae6079f3080da
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5089174fcfd5a97128c1f789b818243243a5282f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715413"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460767"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Tekst vertaling cognitieve vaardigheid
-
-> [!IMPORTANT] 
-> Deze vaardigheid is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
 
 De **tekst Vertaal** vaardigheid evalueert tekst en retourneert voor elke record de tekst die wordt vertaald naar de opgegeven doel taal. Deze vaardigheid maakt gebruik van de [Translator text-API v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) beschikbaar in cognitive Services.
 
@@ -39,7 +36,7 @@ De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [
 
 ## <a name="skill-parameters"></a>Vaardigheids parameters
 
-Para meters zijn hoofdletter gevoelig.
+Parameters zijn hoofdlettergevoelig.
 
 | Invoer                | Beschrijving |
 |---------------------|-------------|

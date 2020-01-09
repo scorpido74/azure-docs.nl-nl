@@ -7,18 +7,35 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: b597ecb67ab30c8617029fe741af1014444a9b70
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b577b82585ffad0547818b4f19554a2f39cb830c
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693144"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498100"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Problemen met failback naar on-premises vanuit Azure oplossen
 
 In dit artikel wordt beschreven hoe u problemen oplost die kunnen optreden wanneer u back-ups van virtuele Azure-machines naar uw on-premises VMware-infra structuur uitvoert, nadat u de failover naar Azure hebt uitgevoerd met behulp van [Azure site Recovery](site-recovery-overview.md).
 
 Voor failback zijn in feite twee belang rijke stappen vereist. Voor de eerste stap moet u na een failover de Azure-Vm's opnieuw beveiligen naar on-premises zodat ze worden gerepliceerd. De tweede stap bestaat uit het uitvoeren van een failover vanuit Azure om een failback uit te voeren naar uw on-premises site.
+
+## <a name="common-issues"></a>Algemene problemen
+
+- Als u een alleen-lezen gebruikers-vCenter-detectie uitvoert en virtuele machines beveiligt, is de beveiliging geslaagd en werkt failover. Tijdens het opnieuw beveiligen mislukt de failover omdat de gegevens opslag niet kan worden gedetecteerd. Een symptoom is dat de gegevens opslag niet wordt weer gegeven tijdens het opnieuw beveiligen. U kunt dit probleem oplossen door de vCenter-referenties bij te werken met een geschikt account dat machtigingen heeft en de taak vervolgens opnieuw uit te voeren.
+- Wanneer u een back-up van een virtuele Linux-machine maakt en deze on-premises uitvoert, kunt u zien dat het pakket met de netwerk beheerder is verwijderd van de computer. Dit wordt veroorzaakt doordat het pakket voor netwerk beheer wordt verwijderd wanneer de virtuele machine wordt hersteld in Azure.
+- Wanneer een virtuele Linux-machine is geconfigureerd met een statisch IP-adres en failover naar Azure wordt uitgevoerd, wordt het IP-adres verkregen van DHCP. Wanneer u een failover naar on-premises doorvoert, blijft de virtuele machine DHCP gebruiken voor het verkrijgen van het IP-adres. Meld u hand matig aan bij de computer en stel het IP-adres vervolgens weer in op een statisch adres, indien nodig. Een virtuele Windows-machine kan het vaste IP-adres opnieuw verkrijgen.
+- Als u de ESXi 5,5 Free Edition of de gratis versie van vSphere 6 Hyper Visor gebruikt, mislukt de failover, maar failback mislukt. Als u failback wilt inschakelen, moet u een upgrade uitvoeren naar de evaluatie licentie van het programma.
+- Als u de configuratie server niet kunt bereiken vanaf de proces server, gebruikt u Telnet om de verbinding met de configuratie server op poort 443 te controleren. U kunt ook proberen de configuratie server te pingen vanaf de proces server. Een proces server moet ook een heartbeat hebben als deze is verbonden met de configuratie server.
+- Een Windows Server 2008 R2 SP1-server die wordt beveiligd als een fysieke on-premises server kan niet worden teruggezet van Azure naar een on-premises site.
+- U kunt geen failback uitvoeren in de volgende situaties:
+    - U hebt computers gemigreerd naar Azure. [Meer informatie](migrate-overview.md#what-do-we-mean-by-migration).
+    - U hebt een virtuele machine naar een andere resource groep verplaatst.
+    - U hebt de Azure-VM verwijderd.
+    - U hebt de beveiliging van de virtuele machine uitgeschakeld.
+    - U hebt de virtuele machine hand matig in azure gemaakt. De machine moet eerst on-premises en failover naar Azure worden uitgevoerd voordat de beveiliging opnieuw wordt beschermd.
+    - U kunt alleen een failover uitvoeren naar een ESXi-host. U kunt geen failback uitvoeren voor virtuele VMware-machines of fysieke servers naar Hyper-V-hosts, fysieke machines of VMware-werk stations.
+
 
 ## <a name="troubleshoot-reprotection-errors"></a>Fouten bij het opnieuw beveiligen oplossen
 
@@ -65,7 +82,7 @@ Als u een failover-VM opnieuw wilt beveiligen, moet de virtuele machine van Azur
 
 **De gegevens opslag is niet toegankelijk vanaf de ESXi-host.**
 
-Controleer de [vereisten voor het hoofd doel en ondersteunde gegevens archieven](vmware-azure-reprotect.md#deploy-a-separate-master-target-server) voor failback.
+Controleer de [vereisten voor het hoofd doel en ondersteunde gegevens archieven](vmware-azure-prepare-failback.md#deploy-a-separate-master-target-server) voor failback.
 
 
 ## <a name="troubleshoot-failback-errors"></a>Failback-fouten oplossen

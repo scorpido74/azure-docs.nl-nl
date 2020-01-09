@@ -1,5 +1,5 @@
 ---
-title: Aanvraag proces en e-mail meldingen in het beheer van rechten van Azure AD-Azure Active Directory
+title: Aanvraag proces & meldingen-beheer van rechten van Azure AD
 description: Meer informatie over het aanvraag proces voor een toegangs pakket en wanneer e-mail meldingen worden verzonden in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f336e9f2bdf1553a72bdc35fecc1b0b735fad274
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b86e4019b26eebb8b805a4846e583c68acb53ad6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206942"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422610"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Aanvraag proces en e-mail meldingen in het beheer van rechten van Azure AD
 
@@ -33,12 +33,12 @@ Een gebruiker die toegang tot een toegangs pakket nodig heeft, kan een toegangs 
 
 ![Diagram goedkeurings proces](./media/entitlement-management-process/request-process.png)
 
-| Status | Beschrijving |
+| Staat | Beschrijving |
 | --- | --- |
-| Gestelde | Gebruiker een aanvraag indient. |
+| Verzonden | Gebruiker een aanvraag indient. |
 | Wachten op goedkeuring | Als voor het beleid voor een toegangs pakket goed keuring is vereist, wordt een aanvraag verplaatst naar wachtende goed keuring. |
 | Verlopen | Als geen goed keurders een aanvraag binnen de time-out van de goedkeurings aanvraag goed keuren, verloopt de aanvraag. Als u het opnieuw wilt proberen, moet de gebruiker de aanvraag opnieuw verzenden. |
-| Verboden | Goed keurder weigert een aanvraag. |
+| Geweigerd | Goed keurder weigert een aanvraag. |
 | Goedgekeurd | Goed keurder keurt een aanvraag goed. |
 | Leveren | Aan de gebruiker is **geen** toegang toegewezen tot alle resources in het toegangs pakket. Als dit een externe gebruiker is, heeft de gebruiker mogelijk nog geen toegang tot de resource directory. Ze hebben de toestemming ook mogelijk niet geaccepteerd. |
 | Afgeleverd | Aan de gebruiker is toegang toegewezen tot alle resources in het toegangs pakket. |
@@ -79,8 +79,8 @@ De volgende tabel bevat meer details over elk van deze e-mail meldingen. Als u d
 | 6 | De aanvraag is verlopen voor *[access_package]* | Deze e-mail wordt verzonden naar de eerste goed keurder en fase 1 alternatieve goed keurders nadat de aanvraag is verlopen. | Eerste goed keurder, fase-1 alternatieve goed keurders |
 | 7 | Aanvraag goedgekeurd voor *[aanvrager]* naar *[access_package]* | Deze e-mail wordt verzonden naar de eerste goed keurder en fase 1 alternatieve goed keurders wanneer de aanvraag is voltooid. | Eerste goed keurder, fase-1 alternatieve goed keurders |
 | 8 | Aanvraag goedgekeurd voor *[aanvrager]* naar *[access_package]* | Deze e-mail wordt verzonden naar de eerste goed keurder en fase 1 alternatieve goed keurders van een aanvraag met twee fasen wanneer de fase-1-aanvraag is goedgekeurd. | Eerste goed keurder, fase-1 alternatieve goed keurders |
-| 9 | Aanvraag geweigerd tot *[access_package]* | Dit e-mail bericht wordt naar de aanvrager verzonden wanneer de aanvraag wordt geweigerd | Aanvrager |
-| 10 | Uw aanvraag is verlopen voor *[access_package]* | Deze e-mail wordt aan het einde van een aanvraag met één of twee fasen verzonden naar de aanvrager. In het e-mail bericht wordt de aanvrager gewaarschuwd dat de aanvraag is verlopen. | Aanvrager |
+| 9 | Aanvraag geweigerd tot *[access_package]* | Dit e-mail bericht wordt naar de aanvrager verzonden wanneer de aanvraag wordt geweigerd | Requestor |
+| 10 | Uw aanvraag is verlopen voor *[access_package]* | Deze e-mail wordt aan het einde van een aanvraag met één of twee fasen verzonden naar de aanvrager. In het e-mail bericht wordt de aanvrager gewaarschuwd dat de aanvraag is verlopen. | Requestor |
 | 11 | Actie vereist: aanvraag goed keuren of weigeren voor *[date]* | Deze e-mail wordt verzonden naar de tweede goed keurder als escalatie is uitgeschakeld, om actie te ondernemen. | Tweede goed keurder |
 | 12 | Herinnering voor actie vereist: de aanvraag goed keuren of weigeren voor *[date]* | Deze herinnerings-e-mail wordt verzonden naar de tweede goed keurder als de escalatie is uitgeschakeld. De melding vraagt hen om actie te ondernemen als ze nog niet zijn uitgevoerd. | Tweede goed keurder |
 | 13 | Actie vereist: de aanvraag goed keuren of weigeren voor [ *date]* voor *[aanvrager]* | Deze e-mail wordt verzonden naar de tweede goed keurder als escalatie is ingeschakeld, om actie te ondernemen. | Tweede goed keurder |
@@ -88,9 +88,9 @@ De volgende tabel bevat meer details over elk van deze e-mail meldingen. Als u d
 | 15 | Actie vereist: doorgestuurde aanvraag goed keuren of weigeren voor *[date]* | Deze e-mail wordt verzonden naar fase 2 alternatieve goed keurders, als escalatie is ingeschakeld, om actie te ondernemen. | Fase-2 alternatieve goed keurders |
 | 16 | Aanvraag goedgekeurd voor *[aanvrager]* naar *[access_package]* | Deze e-mail wordt verzonden naar de tweede goed keurder en fase 2 alternatieve goed keurders bij het goed keuren van de aanvraag. | Tweede goed keurder, fase 2 alternatieve goed keurders |
 | 17 | Een aanvraag is verlopen voor *[access_package]* | Deze e-mail wordt verzonden naar de tweede goed keurder of alternatieve goed keurders, nadat de aanvraag is verlopen. | Tweede goed keurder, fase 2 alternatieve goed keurders |
-| 18 | U hebt nu toegang tot *[access_package]* | Dit e-mail bericht wordt naar de eind gebruikers verzonden om hun toegang te gebruiken. | Aanvrager |
-| 19 | Toegang uitbreiden voor *[access_package]* op *[date]* | Deze e-mail wordt verzonden naar de eind gebruikers voordat hun toegang verloopt. | Aanvrager |
-| 20 | De toegang is beëindigd voor *[access_package]* | Deze e-mail wordt verzonden naar de eind gebruikers nadat de toegang is verlopen. | Aanvrager |
+| 18 | U hebt nu toegang tot *[access_package]* | Dit e-mail bericht wordt naar de eind gebruikers verzonden om hun toegang te gebruiken. | Requestor |
+| 19 | Toegang uitbreiden voor *[access_package]* op *[date]* | Deze e-mail wordt verzonden naar de eind gebruikers voordat hun toegang verloopt. | Requestor |
+| 20 | De toegang is beëindigd voor *[access_package]* | Deze e-mail wordt verzonden naar de eind gebruikers nadat de toegang is verlopen. | Requestor |
 
 ### <a name="access-request-emails"></a>E-mail berichten voor toegang
 

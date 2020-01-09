@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f98daf301e8e17ad3f0bfb850ded1a8ed8bce417
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793114"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666734"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Gegevens bewerkingen uitvoeren in Azure Logic Apps
 
@@ -29,12 +29,12 @@ Deze tabellen zijn een overzicht van de gegevens bewerkingen die u kunt gebruike
 
 Deze acties helpen u bij het werken met gegevens in matrices.
 
-| Bewerking | Beschrijving |
+| Actie | Beschrijving |
 |--------|-------------|
 | [**CSV-tabel maken**](#create-csv-table-action) | Een tabel met door komma's gescheiden waarden (CSV) maken op basis van een matrix. |
 | [**HTML-tabel maken**](#create-html-table-action) | Een HTML-tabel maken op basis van een matrix. |
 | [**Matrix filteren**](#filter-array-action) | Maak een matrix subset van een matrix op basis van het opgegeven filter of voor waarde. |
-| [**Jointypen**](#join-action) | Maak een teken reeks van alle items in een matrix en scheid elk item met het opgegeven teken. |
+| [**Join**](#join-action) | Maak een teken reeks van alle items in een matrix en scheid elk item met het opgegeven teken. |
 | [**Uitgeschakeld**](#select-action) | Een matrix maken op basis van de opgegeven eigenschappen voor alle items in een andere matrix. |
 ||| 
 
@@ -42,7 +42,7 @@ Deze acties helpen u bij het werken met gegevens in matrices.
 
 Deze acties helpen u bij het werken met gegevens in de indeling van JavaScript Object Notation (JSON).
 
-| Bewerking | Beschrijving |
+| Actie | Beschrijving |
 |--------|-------------|
 | [**Compose**](#compose-action) | Maak een bericht of teken reeks van meerdere invoer die verschillende gegevens typen kan hebben. U kunt deze teken reeks vervolgens als één invoer gebruiken, in plaats van dezelfde invoer herhaaldelijk in te voeren. U kunt bijvoorbeeld één JSON-bericht maken van verschillende invoer. |
 | [**JSON parseren**](#parse-json-action) | Maak gebruikers vriendelijke gegevens tokens voor eigenschappen in JSON-inhoud zodat u de eigenschappen in uw Logic apps gemakkelijker kunt gebruiken. |
@@ -443,6 +443,9 @@ Gebruik de actie **matrix filteren** om een kleinere matrix te maken die items b
 > Alle filter tekst die u in uw voor waarde gebruikt, is hoofdletter gevoelig. Deze actie kan ook de indeling of onderdelen van items in de matrix niet wijzigen. 
 > 
 > Voor acties om de matrix uitvoer van de **filter matrix** actie te gebruiken, moeten die acties matrices accepteren als invoer, of moet u de uitvoer matrix omzetten in een andere compatibele indeling.
+> 
+> Als u een HTTP-eind punt aanroept en een JSON-antwoord ontvangt, gebruikt u de actie **JSON parseren** om de JSON-reactie te verwerken. 
+> Anders kan de actie **filter matrix** alleen de tekst van het antwoord lezen en niet de structuur van de JSON-nettolading.
 
 Als u liever aan de slag gaat met de code weergave-editor, kunt u de voorbeeld **filter matrix** kopiëren en variabele actie definities **initialiseren** vanuit dit artikel in de onderliggende werk stroom definitie van uw eigen logische app: [Data operation code-voor beelden-filter matrix](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 

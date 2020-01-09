@@ -1,46 +1,45 @@
 ---
-title: Meer informatie over invoer voor Azure Stream Analytics
-description: Het concept van de invoer in een Azure Stream Analytics-taak vergelijken streaming invoer voor de referentie-invoer voor gegevens in dit artikel beschreven.
-services: stream-analytics
+title: Wat is invoer van Azure Stream Analytics?
+description: In dit artikel wordt het concept van invoer in een Azure Stream Analytics-taak beschreven, waarbij de invoer van streaming wordt vergeleken met de invoer van gegevens.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 87e260c97a748807929a0e7021e3efb2ae8f8e7b
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 6b841d6b47e009c3b01d9925e11d352c00ed5c19
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329285"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426437"
 ---
-# <a name="understand-inputs-for-azure-stream-analytics"></a>Meer informatie over invoer voor Azure Stream Analytics
+# <a name="understand-inputs-for-azure-stream-analytics"></a>Wat is invoer van Azure Stream Analytics?
 
-Azure Stream Analytics-taken verbinden met een of meer gegevensinvoer. Elke invoer definieert een verbinding met een bestaande gegevensbron. Stream Analytics accepteert binnenkomende gegevens vanuit verschillende soorten bronnen van gebeurtenissen, inclusief Event Hubs, IoT-Hub en Blob-opslag. De invoer wordt verwezen door de naam in de streaming SQL-query die u voor elke taak schrijven. U kunt in de query, deelnemen aan meerdere invoeren voor het combineren van gegevens of het vergelijken van streaming gegevens met een zoekopdracht verwijzen naar gegevens en de resultaten geven aan uitvoer. 
+Azure Stream Analytics-taken maken verbinding met een of meer gegevens invoer. Elke invoer definieert een verbinding met een bestaande gegevens bron. Stream Analytics accepteert gegevens die binnenkomen van verschillende soorten gebeurtenis bronnen, waaronder Event Hubs-, IoT Hub-en Blob-opslag. Er wordt naar de invoer verwezen met de naam in de streaming SQL-query die u voor elke taak schrijft. In de query kunt u meerdere invoer bewerkingen uitvoeren om gegevens te combi neren of streaminggegevens te vergelijken met een zoek opdracht om te verwijzen naar gegevens en de resultaten door te geven aan uitvoer. 
 
-Stream Analytics is een uitstekende integratie met drie soorten resources als invoer:
+Stream Analytics heeft eersteklas integratie met drie soorten resources als invoer:
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
 - [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) 
 
-Deze invoer resources kunnen bevinden zich in hetzelfde Azure-abonnement als uw Stream Analytics-taak, of vanuit een ander abonnement.
+Deze invoer resources kunnen in hetzelfde Azure-abonnement wonen als uw Stream Analytics-taak of vanuit een ander abonnement.
 
-U kunt de [Azure-portal](stream-analytics-quick-create-portal.md#configure-job-input), [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput), [.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [REST-API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input), en [Visual Studio](stream-analytics-tools-for-visual-studio-install.md)maken, bewerken en testen van de invoer van Stream Analytics.
+U kunt de [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-input), [Azure POWERSHELL](https://docs.microsoft.com/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput), [.net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [rest API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input)en [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) gebruiken voor het maken, bewerken en testen van stream Analytics taak invoer.
 
-## <a name="stream-and-reference-inputs"></a>Stream en referentie-invoer
-Wanneer er gegevens binnenkomen met een gegevensbron, heeft die worden gebruikt door de Stream Analytics-taak en verwerkt in realtime. Invoer worden onderverdeeld in twee typen: gegevens streamen van invoer en verwijzen naar gegevensinvoer.
+## <a name="stream-and-reference-inputs"></a>Invoer van Stream en referentie
+Wanneer gegevens worden gepusht naar een gegevens bron, wordt deze door de Stream Analytics-taak verbruikt en in realtime verwerkt. Invoer wordt onderverdeeld in twee typen: gegevensstroominvoer en verwijzingsgegevensinvoer.
 
-### <a name="data-stream-input"></a>Gegevens streamen invoer
-Een gegevensstroom is een niet-gebonden reeks gebeurtenissen na verloop van tijd. Stream Analytics-taken moeten ten minste één gegevensstroominvoer bevatten. Eventhubs, IoT-Hub en Blob-opslag worden ondersteund als invoer gegevensbronnen stream. Eventhubs worden gebruikt om gebeurtenisstromen te verzamelen van meerdere apparaten en services. Deze stromen advies inwinnen activiteit socialemediafeeds, gegevens over voorraad handel of gegevens van sensoren. IoT-Hubs zijn geoptimaliseerd voor het verzamelen van gegevens van verbonden apparaten in scenario's met Internet of Things (IoT).  BLOB-opslag kan worden gebruikt als een invoerbron voor het opnemen van grote hoeveelheden gegevens als een stroom, zoals logboekbestanden.  
+### <a name="data-stream-input"></a>Invoer van gegevens stroom
+Een gegevens stroom is na verloop van tijd een niet-gebonden reeks gebeurtenissen. Stream Analytics-taken moeten minimaal één gegevensstroominvoer bevatten. Event Hubs, IoT Hub en Blob-opslag worden ondersteund als gegevensstroominvoerbronnen. Event Hubs worden gebruikt voor het verzamelen van gebeurtenis stromen van meerdere apparaten en services. Deze stromen kunnen activiteiten voor sociale media, aandelen handel of gegevens van Sens oren bevatten. IoT-hubs zijn geoptimaliseerd voor het verzamelen van gegevens van verbonden apparaten in Internet of Things-scenario's (IoT).  Blob-opslag kan worden gebruikt als invoer bron voor het opnemen van bulk gegevens als een stroom, zoals logboek bestanden.  
 
-Zie voor meer informatie over de gegevensinvoer streamen [Stream gegevens als invoer in Stream Analytics](stream-analytics-define-inputs.md)
+Zie [gegevens streamen als invoer in stream Analytics](stream-analytics-define-inputs.md) voor meer informatie over het streamen van gegevens.
 
-### <a name="reference-data-input"></a>Referentie-invoer voor gegevens
-Stream Analytics ondersteunt ook bekend als invoer *verwijzen naar gegevens*. Referentiegegevens is een volledig statische of langzaam wordt gewijzigd. Dit wordt meestal gebruikt om uit te voeren van de correlatie en zoekacties. U kan bijvoorbeeld gegevens in de invoer van de gegevens stream met gegevens in de referentiegegevens, samenvoegen, net als u een SQL-join om te controleren of statische waarden wilt uitvoeren. Azure Blob storage en Azure SQL Database worden momenteel ondersteund als invoerbronnen voor referentiegegevens. Referentiegegevens-blobs bron hebben een limiet van 300 MB in grootte, afhankelijk van de complexiteit van de query en Streaming-eenheden toegewezen (Zie de [formaat beperking](stream-analytics-use-reference-data.md#size-limitation) gedeelte van de referentie-gegevens-documentatie voor meer informatie).
+### <a name="reference-data-input"></a>Invoer van referentie gegevens
+Stream Analytics biedt ook ondersteuning voor invoer die bekend staat als *referentie gegevens*. Referentie gegevens zijn volledig statisch of veranderen langzaam. Het wordt doorgaans gebruikt om correlatie en lookups uit te voeren. U kunt bijvoorbeeld gegevens in de gegevens stroom invoer toevoegen aan gegevens in de referentie gegevens, net zoals u een SQL-koppeling uitvoert om statische waarden op te zoeken. Azure Blob-opslag en Azure SQL Database worden momenteel ondersteund als invoer bronnen voor referentie gegevens. Referentie gegevens bron-blobs hebben een limiet van Maxi maal 300 MB, afhankelijk van de query complexiteit en toegewezen streaming-eenheden (Zie de sectie [grootte beperking](stream-analytics-use-reference-data.md#size-limitation) van de documentatie voor referentie gegevens voor meer informatie).
 
-Zie voor meer informatie over het verwijzen naar gegevensinvoer [met referentiegegevens voor zoekacties in Stream Analytics](stream-analytics-use-reference-data.md)
+Zie [referentie gegevens gebruiken voor zoek acties in stream Analytics](stream-analytics-use-reference-data.md) voor meer informatie over het invoeren van referentie gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
-> [Snelstart: Een Stream Analytics-taak maken met behulp van Azure portal](stream-analytics-quick-create-portal.md)
+> [Snelstart: Een Stream Analytics-taak maken met behulp van de Azure-portal](stream-analytics-quick-create-portal.md)

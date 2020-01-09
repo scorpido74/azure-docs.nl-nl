@@ -1,6 +1,6 @@
 ---
-title: Fouten en oplossingen voor B2B-scenario's
-description: Zoek naar fouten en oplossingen voor B2B-scenario's in Azure Logic Apps
+title: Oplossingen voor veelvoorkomende fouten en problemen in B2B-scenario's
+description: Oplossingen voor veelvoorkomende fouten en problemen vinden bij het oplossen van problemen met B2B-scenario's in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/02/2017
-ms.openlocfilehash: 176bc3642f7c923b50cbf2f7a97096f88dc02817
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 38e281ce3d8117bff719b1bb572f09acbbb89669
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790708"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666683"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>B2B-fouten en oplossingen voor Azure Logic Apps
 
@@ -26,7 +26,7 @@ Dit artikel helpt u bij het oplossen van fouten die zich in Logische apps B2B sc
 |   |   |  
 |---|---|
 | Foutbeschrijving | Er is geen overeenkomst gevonden met de para meters voor de overeenkomst oplossing. | 
-| Gebruikers actie | De overeenkomst moet worden toegevoegd aan het integratie account met overeengekomen bedrijfs identiteiten. </br>De bedrijfs identiteiten moeten overeenkomen met de invoer bericht-Id's. |  
+| Actie van de gebruiker | De overeenkomst moet worden toegevoegd aan het integratie account met overeengekomen bedrijfs identiteiten. </br>De bedrijfs identiteiten moeten overeenkomen met de invoer bericht-Id's. |  
 |   |   |
 
 ### <a name="no-agreement-found-with-identities"></a>Geen overeenkomst gevonden met identiteiten
@@ -34,7 +34,7 @@ Dit artikel helpt u bij het oplossen van fouten die zich in Logische apps B2B sc
 |   |   | 
 |---|---|
 | Foutbeschrijving | Er is geen overeenkomst gevonden met identiteiten: ' AS2Identity ':: ' Partner1 ' and'AS2Identity ':: ' Partner3 ' | 
-| Gebruikers actie | Ongeldige AS2-from of AS2-to is geconfigureerd voor de overeenkomst. </br>Corrigeer de AS2-bericht ' AS2-from ' of ' AS2-to '-headers of de overeenkomst om te voldoen aan de AS2-Id's in de AS2-bericht koppen met overeenkomst configuraties. |
+| Actie van de gebruiker | Ongeldige AS2-from of AS2-to is geconfigureerd voor de overeenkomst. </br>Corrigeer de AS2-bericht ' AS2-from ' of ' AS2-to '-headers of de overeenkomst om te voldoen aan de AS2-Id's in de AS2-bericht koppen met overeenkomst configuraties. |
 |   |   |     
 
 ## <a name="as2"></a>AS2
@@ -44,7 +44,7 @@ Dit artikel helpt u bij het oplossen van fouten die zich in Logische apps B2B sc
 |   |   |  
 |---|---|
 | Foutbeschrijving | Ongeldige AS2-headers. Een van de headers "AS2-to" of "AS2-from" is leeg. | 
-| Gebruikers actie | Er is een AS2-bericht ontvangen dat niet de AS2-from of AS2-to of beide-headers bevat. </br> Controleer AS2-bericht AS2-from-en AS2-to-headers en corrigeer deze op basis van de configuratie van de overeenkomst. |
+| Actie van de gebruiker | Er is een AS2-bericht ontvangen dat niet de AS2-from of AS2-to of beide-headers bevat. </br> Controleer AS2-bericht AS2-from-en AS2-to-headers en corrigeer deze op basis van de configuratie van de overeenkomst. |
 |  |  | 
 
 ### <a name="missing-as2-message-body-and-headers"></a>Ontbrekende AS2 bericht tekst en kopteksten    
@@ -52,7 +52,7 @@ Dit artikel helpt u bij het oplossen van fouten die zich in Logische apps B2B sc
 |   |   |  
 |---|---|
 | Foutbeschrijving | De aanvraag inhoud is null of leeg. | 
-| Gebruikers actie | Er is een AS2-bericht ontvangen dat de bericht tekst niet bevat. |
+| Actie van de gebruiker | Er is een AS2-bericht ontvangen dat de bericht tekst niet bevat. |
 |  |  | 
 
 ### <a name="as2-message-decryption-failure"></a>Fout bij het ontsleutelen van AS2-berichten
@@ -60,7 +60,7 @@ Dit artikel helpt u bij het oplossen van fouten die zich in Logische apps B2B sc
 |   |   | 
 |---|---|
 | Foutbeschrijving |  [verwerkte/fout: ontsleuteling-mislukt] | 
-| Gebruikers actie | Voeg @base64ToBinary toe aan AS2Message voordat u deze naar de partner verzendt. |
+| Actie van de gebruiker | Voeg @base64ToBinary toe aan AS2Message voordat u deze naar de partner verzendt. |
 |||
 
 Bijvoorbeeld:
@@ -80,7 +80,7 @@ Bijvoorbeeld:
 |   |   | 
 |---|---|
 | Foutbeschrijving |  [verwerkte/fout: ontsleuteling-mislukt] | 
-| Gebruikers actie | Voeg @base64ToBinary toe aan MDN voordat u deze naar de partner verzendt. | 
+| Actie van de gebruiker | Voeg @base64ToBinary toe aan MDN voordat u deze naar de partner verzendt. | 
 |||
 
 Bijvoorbeeld:
@@ -99,7 +99,7 @@ Bijvoorbeeld:
 |   |   |  
 |---|---|
 | Foutbeschrijving| Het handtekening certificaat is niet geconfigureerd voor AS2 Party. </br>AS2-from: partner1 AS2-to: partner2 | 
-| Gebruikers actie | Configureer instellingen voor de AS2-overeenkomst met het juiste certificaat voor hand tekening. |
+| Actie van de gebruiker | Configureer instellingen voor de AS2-overeenkomst met het juiste certificaat voor hand tekening. |
 |  |  | 
 
 ## <a name="x12-and-edifact"></a>X12 en EDIFACT
@@ -109,7 +109,7 @@ Bijvoorbeeld:
 |   |   | 
 |---|---|
 | Foutbeschrijving | Er is een fout opgetreden tijdens het parseren. De EDIFACT-transactieset met de ID ' 123456 ' die is opgenomen in Interchange (zonder groep) met ID ' 987654 ', met afzender-ID ' Partner1 ', ontvanger-ID ' Partner2 ' wordt onderbroken met de volgende fouten: <p>"Vooraan afsluitend scheidings teken gevonden" |
-| Gebruikers actie | De instellingen van de overeenkomst die moeten worden geconfigureerd voor het toestaan van voor loop-en volg spaties. </br>Overeenkomst instellingen bewerken om voorloop-en volg spaties toe te staan. |
+| Actie van de gebruiker | De instellingen van de overeenkomst die moeten worden geconfigureerd voor het toestaan van voor loop-en volg spaties. </br>Overeenkomst instellingen bewerken om voorloop-en volg spaties toe te staan. |
 |   |   |
 
 ![ruimte toestaan](./media/logic-apps-enterprise-integration-b2b-list-errors-solutions/leadingandtrailing.png)
@@ -119,7 +119,7 @@ Bijvoorbeeld:
 |   |   | 
 |---|---| 
 | Foutbeschrijving | Dubbel controle nummer |
-| Gebruikers actie | Deze fout geeft aan dat het ontvangen bericht dubbele controle nummers heeft. </br>Corrigeer het controle nummer en verzend het bericht opnieuw. |
+| Actie van de gebruiker | Deze fout geeft aan dat het ontvangen bericht dubbele controle nummers heeft. </br>Corrigeer het controle nummer en verzend het bericht opnieuw. |
 |   |   |
 
 ### <a name="missing-schema-in-the-agreement"></a>Ontbrekend schema in de overeenkomst
@@ -127,7 +127,7 @@ Bijvoorbeeld:
 |   |   | 
 |---|---| 
 | Foutbeschrijving | Er is een fout opgetreden tijdens het parseren. De X12-transactieset met ID ' 564220001 ' die is opgenomen in de functionele groep met de ID ' 56422 ' in de uitwisseling met ID 000056422, met afzender-ID ' 12345678 ' 87654321, wordt onderbroken met de volgende fouten: <p>"Het bericht heeft een onbekend document type en is niet omgezet naar een van de bestaande schema's die in de overeenkomst zijn geconfigureerd" |
-| Gebruikers actie | Configureer het schema in de instellingen van de overeenkomst.  |
+| Actie van de gebruiker | Configureer het schema in de instellingen van de overeenkomst.  |
 |   |   |
 
 ### <a name="incorrect-schema-in-the-agreement"></a>Onjuist schema in de overeenkomst
@@ -135,7 +135,7 @@ Bijvoorbeeld:
 |   |   | 
 |---|---| 
 | Foutbeschrijving | Het bericht bevat een onbekend document type en is niet omgezet in een van de bestaande schema's die in de overeenkomst zijn geconfigureerd. |
-| Gebruikers actie | Configureer het juiste schema in de instellingen van de overeenkomst. |
+| Actie van de gebruiker | Configureer het juiste schema in de instellingen van de overeenkomst. |
 |   |   |
 
 ## <a name="flat-file"></a>Plat bestand
@@ -145,6 +145,6 @@ Bijvoorbeeld:
 |   |   | 
 |---|---|
 | Foutbeschrijving | InvalidTemplate. Kan de sjabloon taal expressies niet verwerken in de invoer van de actie ' Flat_File_Decoding ' op regel ' 1 ' en in kolom ' 1902 ': ' de vereiste eigenschap ' content ' verwacht een waarde, maar is null. Pad. |
-| Gebruikers actie | Deze fout geeft aan dat het invoer bericht geen hoofd tekst bevat. |
+| Actie van de gebruiker | Deze fout geeft aan dat het invoer bericht geen hoofd tekst bevat. |
 |   |   | 
 

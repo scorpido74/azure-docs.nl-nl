@@ -1,18 +1,18 @@
 ---
-title: Toegang beperken voor IP-adressen
-description: Lees hoe u uw app in Azure App Service kunt beveiligen door expliciet client-IP-adressen of-adresbereiken white list.
+title: Toegangs beperkingen Azure App Service
+description: Meer informatie over het beveiligen van uw app in Azure App Service door toegangs beperkingen op te geven.
 author: ccompy
 ms.assetid: 3be1f4bd-8a81-4565-8a56-528c037b24bd
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 64ce74c84f8f69e72510be76a1309e1a5ea42f2f
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 42f25c1b66261ac644f015290bed2c7473acbdaa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672172"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422226"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Toegangs beperkingen Azure App Service #
 
@@ -24,7 +24,7 @@ Wanneer een aanvraag wordt gedaan voor uw app, wordt het van-adres geëvalueerd 
 
 De functie voor toegangs beperkingen wordt geïmplementeerd in de front-end rollen van App Service, die een upstream zijn van de werk nemers waar de code wordt uitgevoerd. Toegangs beperkingen zijn daarom effectief netwerk-Acl's.
 
-De mogelijkheid om de toegang tot uw web-app vanuit een Azure Virtual Network (VNet) te beperken, wordt [service-eind punten][serviceendpoints]genoemd. Met Service-eind punten kunt u de toegang beperken tot een multi tenant-service van geselecteerde subnetten. Deze moet worden ingeschakeld op zowel de netwerk kant als de service waarmee deze wordt ingeschakeld. Het werkt niet om het verkeer te beperken tot apps die worden gehost in een App Service Environment.  Als u een App Service Environment hebt, kunt u de toegang tot uw app beheren met de regels voor IP-adressen.
+De mogelijkheid om de toegang tot uw web-app vanuit een Azure Virtual Network (VNet) te beperken, wordt [service-eind punten][serviceendpoints]genoemd. Met Service-eind punten kunt u de toegang beperken tot een multi tenant-service van geselecteerde subnetten. Deze moet worden ingeschakeld op zowel de netwerk kant als de service waarmee deze wordt ingeschakeld. Het werkt niet om het verkeer te beperken tot apps die worden gehost in een App Service Environment. Als u een App Service Environment hebt, kunt u de toegang tot uw app beheren met de regels voor IP-adressen.
 
 ![toegangs beperkingen stroom](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
@@ -58,7 +58,7 @@ Met Service-eind punten kunt u de toegang tot geselecteerde subnetten van het vi
 
 Service-eind punten kunnen niet worden gebruikt om de toegang te beperken tot apps die worden uitgevoerd in een App Service Environment. Wanneer uw app zich in een App Service Environment bevindt, kunt u de toegang tot uw app beheren met de IP-toegangs regels. 
 
-Met Service-eind punten kunt u uw app configureren met toepassings gateways of andere WAF-apparaten. U kunt ook toepassingen met meerdere lagen configureren met beveiligde back-endservers. Lees voor meer informatie over een aantal mogelijkheden de [functies en app service](networking-features.md)van het netwerk.
+Met Service-eind punten kunt u uw app configureren met toepassings gateways of andere WAF-apparaten. U kunt ook toepassingen met meerdere lagen configureren met beveiligde back-endservers. Lees voor meer informatie over sommige mogelijkheden [netwerk functies en app service](networking-features.md) en [Application Gateway integratie met Service-eind punten](networking/app-gateway-with-service-endpoints.md).
 
 ## <a name="managing-access-restriction-rules"></a>Toegangs beperkings regels beheren
 
@@ -90,34 +90,49 @@ Naast het beheren van de toegang tot uw app, kunt u ook de toegang beperken tot 
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Programmatische manipulatie van toegangs beperkings regels ##
 
-Er is momenteel geen CLI of Power shell voor de mogelijkheid tot nieuwe toegangs beperkingen, maar de waarden kunnen hand matig worden ingesteld met een [Azure rest API](https://docs.microsoft.com/rest/api/azure/) put-bewerking in de app-configuratie in Resource Manager. U kunt bijvoorbeeld resources.azure.com gebruiken en het ipSecurityRestrictions-blok bewerken om de vereiste JSON toe te voegen.
+[Azure cli](https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest) en [Azure PowerShell](https://docs.microsoft.com/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule?view=azps-3.1.0) biedt ondersteuning voor het bewerken van toegangs beperkingen. Voor beeld van het toevoegen van een toegangs beperking met behulp van Azure CLI:
+
+```azurecli-interactive
+az webapp config access-restriction add --resource-group ResourceGroup --name AppName \
+    --rule-name 'IP example rule' --action Allow --ip-address 122.133.144.0/24 --priority 100
+```
+Voor beeld van het toevoegen van een toegangs beperking met behulp van Azure PowerShell:
+
+```azurepowershell-interactive
+Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName"
+    -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
+```
+
+Waarden kunnen ook hand matig worden ingesteld met een [Azure rest API](https://docs.microsoft.com/rest/api/azure/) put-bewerking in de app-configuratie in Resource Manager of met behulp van een Azure Resource Manager sjabloon. U kunt bijvoorbeeld resources.azure.com gebruiken en het ipSecurityRestrictions-blok bewerken om de vereiste JSON toe te voegen.
 
 De locatie voor deze informatie in Resource Manager is:
 
 management.azure.com/subscriptions/-**abonnements-id**/resourceGroups/**resource groepen**/providers/Microsoft.web/sites/**Web-app-naam**/config/Web? API-Version = 2018-02-01
 
 De JSON-syntaxis voor het vorige voor beeld is:
-
-    {
-      "properties": {
-        "ipSecurityRestrictions": [
-          {
-            "ipAddress": "122.133.144.0/24",
-            "action": "Allow",
-            "tag": "Default",
-            "priority": 100,
-            "name": "IP example rule"
-          }
-        ]
+```json
+{
+  "properties": {
+    "ipSecurityRestrictions": [
+      {
+        "ipAddress": "122.133.144.0/24",
+        "action": "Allow",
+        "priority": 100,
+        "name": "IP example rule"
       }
-    }
+    ]
+  }
+}
+```
 
-## <a name="function-app-ip-restrictions"></a>functie-app IP-beperkingen
+## <a name="azure-function-app-access-restrictions"></a>Toegangs beperkingen voor Azure functie-app
 
-Er zijn IP-beperkingen beschikbaar voor beide functie-apps met dezelfde functionaliteit als App Service-abonnementen. Door IP-beperkingen in te scha kelen wordt de portal code-editor uitgeschakeld voor alle niet-toegestane IP-adressen.
+Toegangs beperkingen zijn beschikbaar voor beide functie-apps met dezelfde functionaliteit als App Service-abonnementen. Als u toegangs beperkingen inschakelt, wordt de portal code-editor uitgeschakeld voor alle niet-toegestane IP-adressen.
 
-[Meer informatie vindt u hier](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
+## <a name="next-steps"></a>Volgende stappen
+[Toegangs beperkingen voor Azure function-apps](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
+[Integratie met Service-eind punten Application Gateway](networking/app-gateway-with-service-endpoints.md)
 
 <!--Links-->
 [serviceendpoints]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview

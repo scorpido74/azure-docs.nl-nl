@@ -1,17 +1,17 @@
 ---
 title: Apps migreren naar het laatste schema
-description: Logische apps migreren naar de meest recente schema versie
+description: De JSON-definities van de werk stroom voor logische apps migreren naar de meest recente schema versie van de werk stroom definitie taal
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
-ms.openlocfilehash: dc967c90f28b29a63a1f26d0aae86b6d769c1ccf
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: cef0fcb990cd2c5c6583822d4dc4c6993c52eac2
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786925"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666785"
 ---
 # <a name="migrate-logic-apps-to-latest-schema-version"></a>Logische apps migreren naar de meest recente schema versie
 

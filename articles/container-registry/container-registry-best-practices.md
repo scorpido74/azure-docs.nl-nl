@@ -3,16 +3,18 @@ title: Best practices voor het register
 description: Leer hoe u Azure Container Registry effectief gebruikt door deze aanbevolen procedures te volgen.
 ms.topic: article
 ms.date: 09/27/2018
-ms.openlocfilehash: 4b0512674358d4db2e29596408ebbf44af4ea2a9
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 7efea468a6c5c042f709d8a5bb493516458ce52b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455330"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445792"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Aanbevolen procedures voor Azure Container Registry
 
 Door deze aanbevolen procedures te volgen, kunt u de prestaties en het rendabele gebruik van uw privé-Docker-register in Azure maximaliseren.
+
+Zie ook [aanbevelingen voor het labelen en versie beheer van container installatie kopieën](container-registry-image-tag-version.md) voor strategieën voor het labelen en de installatie kopieën in het REGI ster. 
 
 ## <a name="network-close-deployment"></a>Implementatie dichtbij het netwerk
 
@@ -31,7 +33,7 @@ Zie de driedelige zelfstudie [Geo-replicatie in Azure Container Registry](contai
 
 Dankzij het gebruik van opslagplaatsnaamruimten kunt u toestaan dat een enkel register tussen meerdere groepen binnen uw organisatie kan worden gedeeld. Registers kunnen worden gedeeld tussen implementaties en teams. Azure Container Registry biedt ondersteuning voor geneste naamruimten, waardoor met geïsoleerde groepen kan worden gewerkt.
 
-Neem bijvoorbeeld de volgende container installatiekopielabels in overweging. Installatiekopieën die in het hele bedrijf worden gebruikt, zoals `aspnetcore`, worden in de hoofdnaamruimte geplaatst, terwijl containerinstallatiekopieën die eigendom zijn van de productie- of marketinggroepen hun eigen naamruimten gebruiken.
+Neem bijvoorbeeld de volgende container installatiekopielabels in overweging. Afbeeldingen die in het hele bedrijf worden gebruikt, zoals `aspnetcore`, worden in de hoofd naam ruimte geplaatst, terwijl container installatie kopieën die eigendom zijn van de producten en marketing groepen elk hun eigen naam ruimten gebruiken.
 
 ```
 contoso.azurecr.io/aspnetcore:2.0
@@ -46,7 +48,7 @@ Omdat container registers resources zijn die worden gebruikt in meerdere contain
 
 Hoewel u mogelijk aan het experimenteren bent met een specifiek type host, zoals Azure Container Instances, wilt u de containerinstantie waarschijnlijk verwijderen wanneer u klaar bent. Maar misschien wilt u de verzameling installatiekopieën die u naar Azure Container Registry hebt gepusht, wel houden. Door uw register in een eigen resourcegroep te plaatsen, verkleint u het risico dat u de verzameling installatiekopieën in het register per ongeluk verwijdert als u de resourcegroep van de containerinstantie verwijdert.
 
-## <a name="authentication"></a>Verificatie
+## <a name="authentication"></a>Authentication
 
 Voor de verificatie van een Azure-containerregister bestaan er twee primaire scenario's: afzonderlijke verificatie en serviceverificatie (ook wel een 'headless'-verificatie genoemd). De volgende tabel bevat een kort overzicht van deze scenario's en de verificatiemethode die voor elk ervan wordt aanbevolen.
 

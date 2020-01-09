@@ -1,19 +1,18 @@
 ---
 title: Referentie gegevens gebruiken voor Zoek opdrachten in Azure Stream Analytics
 description: In dit artikel wordt beschreven hoe u referentie gegevens kunt gebruiken om gegevens in het query ontwerp van een Azure Stream Analytics-taak te zoeken of correleren.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: d058fdd48b8a271c8a2db7d327267de053c02c44
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b3808524706b13761dd8eccffa301c602d08f481
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244861"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369561"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Referentie gegevens gebruiken voor Zoek opdrachten in Stream Analytics
 
@@ -33,13 +32,13 @@ Als u uw referentie gegevens wilt configureren, moet u eerst een invoer maken va
 |---------|---------|
 |Invoeralias   | Een beschrijvende naam die wordt gebruikt in de taak query om te verwijzen naar deze invoer.   |
 |Opslagaccount   | De naam van het opslag account waarin uw blobs zich bevinden. Als deze zich in hetzelfde abonnement bevindt als uw Stream Analytics-taak, kunt u deze selecteren in de vervolg keuzelijst.   |
-|Sleutel van het opslag account   | De geheime sleutel die is gekoppeld aan het opslag account. Dit wordt automatisch ingevuld als het opslag account zich in hetzelfde abonnement als uw Stream Analytics-taak bevindt.   |
-|Opslag container   | Containers bieden een logische groepering voor blobs die zijn opgeslagen in de Microsoft Azure Blob service. Wanneer u een BLOB uploadt naar de Blob service, moet u een container voor die BLOB opgeven.   |
+|Opslagaccountsleutel   | De geheime sleutel die is gekoppeld aan de storage-account. Dit wordt automatisch ingevuld als het opslag account zich in hetzelfde abonnement als uw Stream Analytics-taak bevindt.   |
+|Storage-Container   | Containers bieden een logische groepering van blobs die zijn opgeslagen in de Microsoft Azure Blob-service. Wanneer u een blob geüpload naar de Blob-service, moet u een container voor die blob opgeven.   |
 |Padpatroon   | Het pad dat wordt gebruikt om de blobs binnen de opgegeven container te vinden. Binnen het pad kunt u een of meer exemplaren van de volgende twee variabelen opgeven:<BR>{date}, {time}<BR>Voor beeld 1: producten/{date}/{time}/product-list. CSV<BR>Voor beeld 2: producten/{date}/product-list. CSV<BR>Voor beeld 3: product-list. CSV<BR><br> Als de BLOB niet bestaat in het opgegeven pad, wacht de Stream Analytics taak oneindig voordat de BLOB beschikbaar wordt.   |
 |Datum notatie [Optioneel]   | Als u {date} hebt gebruikt binnen het door u opgegeven pad-patroon, kunt u de datum notatie selecteren waarin uw blobs zijn ingedeeld in de vervolg keuzelijst met ondersteunde indelingen.<BR>Voor beeld: JJJJ/MM/DD, MM/DD/JJJJ, enzovoort.   |
 |Tijd notatie [Optioneel]   | Als u {time} hebt gebruikt binnen het door u opgegeven pad-patroon, kunt u de tijd notatie selecteren waarin uw blobs zijn ingedeeld in de vervolg keuzelijst met ondersteunde indelingen.<BR>Voor beeld: HH, HH/mm of uu-mm.  |
 |Serialisatie-indeling voor gebeurtenissen   | Om ervoor te zorgen dat uw query's werken zoals verwacht, Stream Analytics moet weten welke serialisatie-indeling u gebruikt voor binnenkomende gegevens stromen. Voor referentie gegevens zijn de ondersteunde indelingen CSV en JSON.  |
-|Encoding   | UTF-8 is op dit moment de enige coderings indeling die wordt ondersteund.  |
+|Encoding   | Alleen de coderingsindeling UTF-8 wordt momenteel ondersteund.  |
 
 ### <a name="static-reference-data"></a>Statische referentie gegevens
 
@@ -47,16 +46,16 @@ Als uw referentie gegevens niet naar verwachting worden gewijzigd, wordt onderst
 
 ### <a name="generate-reference-data-on-a-schedule"></a>Referentie gegevens op basis van een planning genereren
 
-Als uw referentie gegevens een langzaam gewijzigde gegevensset zijn, wordt de ondersteuning voor het vernieuwen van referentie gegevens ingeschakeld door een pad patroon op te geven in de invoer configuratie met behulp van de {date}-en {time} substitutie tokens. Stream Analytics worden de bijgewerkte definities voor referentie gegevens opgehaald op basis van dit pad patroon. Een patroon van `sample/{date}/{time}/products.csv` met de datum notatie **' jjjj-mm-dd '** en een tijd notatie van **' uu-mm '** zorgt er stream Analytics voor het ophalen van de bijgewerkte BLOB `sample/2015-04-16/17-30/products.csv` om 5:30 uur op basis van 16 april 2015 UTC-tijd zone.
+Als uw referentie gegevens een langzaam gewijzigde gegevensset zijn, wordt de ondersteuning voor het vernieuwen van referentie gegevens ingeschakeld door een pad patroon op te geven in de invoer configuratie met behulp van de {date}-en {time} substitutie tokens. Stream Analytics worden de bijgewerkte definities voor referentie gegevens opgehaald op basis van dit pad patroon. Een patroon van `sample/{date}/{time}/products.csv` met de datum notatie **' jjjj-mm-dd '** en een tijd notatie van **' uu-mm '** zorgt er stream Analytics voor het ophalen van de bijgewerkte BLOB `sample/2015-04-16/17-30/products.csv` bij 5:30 pm op zestiende, 2015 UTC-tijd zone.
 
 Azure Stream Analytics automatisch wordt gescand op vernieuwde referentie gegevens-blobs met een interval van één minuut. Als een blob met tijds tempel 10:30:00 met een kleine vertraging is geüpload (bijvoorbeeld 10:30:30), ziet u een kleine vertraging in Stream Analytics taak die naar deze BLOB verwijst. Om dergelijke scenario's te voor komen, is het raadzaam om de BLOB vóór de effectief beoogde doel tijd (10:30:00 in dit voor beeld) te uploaden om de Stream Analytics taak genoeg tijd te geven om deze in het geheugen te detecteren en te laden en bewerkingen uit te voeren. 
 
 > [!NOTE]
-> Momenteel Stream Analytics taken alleen voor het vernieuwen van blobs kijken wanneer de machine tijd overgaat op de tijd die in de naam van de blob is gecodeerd. De taak zoekt bijvoorbeeld `sample/2015-04-16/17-30/products.csv` zo snel mogelijk, maar niet eerder dan 5:30 uur op zestiende, 2015 UTC-tijd zone. Er wordt *nooit* gezocht naar een blob met een gecodeerde tijd die ouder is dan de laatste die is gedetecteerd.
+> Momenteel Stream Analytics taken alleen voor het vernieuwen van blobs kijken wanneer de machine tijd overgaat op de tijd die in de naam van de blob is gecodeerd. De taak zoekt bijvoorbeeld `sample/2015-04-16/17-30/products.csv` zo snel mogelijk, maar niet eerder dan 5:30 uur op zestien april, 2015 UTC-tijd zone. Er wordt *nooit* gezocht naar een blob met een gecodeerde tijd die ouder is dan de laatste die is gedetecteerd.
 > 
-> Zodra de taak de BLOB `sample/2015-04-16/17-30/products.csv` heeft gevonden, worden alle bestanden met een versleutelde datum die ouder is dan 5:30 uur, 16 april, 2015, dus als er in dezelfde container een eindige `sample/2015-04-16/17-25/products.csv`-BLOB wordt gemaakt, wordt deze niet door de taak gebruikt.
+> Zodra de taak bijvoorbeeld de BLOB heeft gevonden `sample/2015-04-16/17-30/products.csv` worden alle bestanden met een versleutelde datum die ouder is dan 5:30 uur, 16 april, 2015, dus als er een late aankomt `sample/2015-04-16/17-25/products.csv` Blob in dezelfde container wordt gemaakt, zal de taak deze niet gebruiken.
 > 
-> Als `sample/2015-04-16/17-30/products.csv` alleen is geproduceerd op 10:03 uur 16 april, 2015 maar er is geen blob met een eerdere datum aanwezig in de container, zal de taak dit bestand gebruiken vanaf 10:03 uur vanaf 16 april, 2015 en de vorige referentie gegevens tot en met.
+> Als `sample/2015-04-16/17-30/products.csv` echter alleen wordt geproduceerd op 10:03 uur 16 april, 2015 maar er is geen blob met een eerdere datum aanwezig in de container, gebruikt de taak dit bestand vanaf 10:03 uur 16 april, 2015 en de vorige referentie gegevens tot en met.
 > 
 > Een uitzonde ring hierop is wanneer de taak gegevens in een keer opnieuw moet verwerken of wanneer de taak voor het eerst wordt gestart. Op het moment dat de taak wordt gezocht naar de meest recente blob die is geproduceerd voordat de begin tijd van de taak is opgegeven. Dit wordt gedaan om ervoor te zorgen dat er een **niet-lege** referentie gegevensverzameling is wanneer de taak wordt gestart. Als er geen kan worden gevonden, wordt in de taak de volgende diagnose weer gegeven: `Initializing input without a valid reference data blob for UTC time <start time>`.
 
@@ -111,11 +110,11 @@ Stream Analytics ondersteunt referentie gegevens met een **maximale grootte van 
 
 Wanneer het aantal streaming-eenheden van een taak groter wordt dan 6, wordt de Maxi maal ondersteunde grootte van referentie gegevens niet verhoogd.
 
-Ondersteuning voor compressie is niet beschikbaar voor referentie gegevens. 
+Ondersteuning voor compressie is niet beschikbaar voor referentiegegevens. 
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
-> [Snelstartgids: een Stream Analytics-taak maken met behulp van de Azure Portal](stream-analytics-quick-create-portal.md)
+> [Snelstart: Een Stream Analytics-taak maken met behulp van de Azure-portal](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

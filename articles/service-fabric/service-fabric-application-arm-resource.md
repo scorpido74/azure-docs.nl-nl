@@ -1,25 +1,14 @@
 ---
-title: Toepassingen en services implementeren en upgraden met Azure Resource Manager | Microsoft Docs
+title: Implementeren en upgraden met Azure Resource Manager
 description: Meer informatie over het implementeren van toepassingen en services naar een Service Fabric cluster met behulp van een Azure Resource Manager sjabloon.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 0bec430cbb98452f8c852c96053f3f699ce5098e
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: a2dfe54bf2c6b4fa8814f10c10576a73727a7417
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71153592"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610247"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Toepassingen en services beheren als Azure Resource Manager resources
 
@@ -28,8 +17,8 @@ U kunt toepassingen en services implementeren in uw Service Fabric-cluster via A
 Dit is de aanbevolen manier om de installatie-, governance-of cluster beheer toepassingen te implementeren die u nodig hebt in uw cluster. Dit omvat de [patch](service-fabric-patch-orchestration-application.md)-indelings toepassing, watchdog of toepassingen die in uw cluster moeten worden uitgevoerd voordat andere toepassingen of services worden geïmplementeerd. 
 
 Als dit van toepassing is, kunt u uw toepassingen beheren als Resource Manager-resources om te verbeteren:
-* Audittrail: Resource Manager controleert elke bewerking en houdt een gedetailleerd *activiteiten logboek* bij waarmee u wijzigingen kunt traceren die zijn aangebracht in deze toepassingen en uw cluster.
-* Op rollen gebaseerd toegangs beheer (RBAC): Het beheren van toegang tot clusters en toepassingen die op het cluster zijn geïmplementeerd, kunnen worden uitgevoerd via dezelfde resource manager-sjabloon.
+* Audittrail: in Resource Manager wordt elke bewerking gecontroleerd en wordt een gedetailleerd *activiteiten logboek* bijgehouden waarmee u wijzigingen kunt traceren die zijn aangebracht in deze toepassingen en uw cluster.
+* Op rollen gebaseerd toegangs beheer (RBAC): het beheren van toegang tot clusters en toepassingen die op het cluster zijn geïmplementeerd, kunnen worden uitgevoerd via dezelfde resource manager-sjabloon.
 * Azure Resource Manager (via Azure Portal) wordt een one-stop-shop voor het beheren van uw cluster en essentiële toepassings implementaties.
 
 Het volgende code fragment toont de verschillende soorten resources die kunnen worden beheerd via een sjabloon:
@@ -255,7 +244,7 @@ Het volgende code fragment toont de verschillende soorten resources die kunnen w
    ```
 
    > [!NOTE] 
-   > De *apiVersion* moet worden ingesteld op `"2019-03-01"`. Deze sjabloon kan ook onafhankelijk van het cluster worden geïmplementeerd, zolang het cluster al is geïmplementeerd.
+   > De *apiVersion* moet zijn ingesteld op `"2019-03-01"`. Deze sjabloon kan ook onafhankelijk van het cluster worden geïmplementeerd, zolang het cluster al is geïmplementeerd.
 
 5. Zetten! 
 
@@ -275,7 +264,7 @@ Als u micro soft. ServiceFabric/clusters/Application uit uw ARM-sjabloon verwijd
 Als uw cluster al is geïnstalleerd en sommige toepassingen die u wilt beheren als Resource Manager-resources, al zijn geïmplementeerd, kunt u in plaats van de toepassingen te verwijderen en ze opnieuw te implementeren, een PUT-aanroep gebruiken met dezelfde Api's om de toepassingen te laten ophalen erkend als Resource Manager-resources. Zie [Wat is het service Fabric-toepassings bron model?](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model) voor meer informatie.
 
 > [!NOTE]
-> Als u wilt toestaan dat een cluster upgrade de beschadigde apps negeert, kan de klant "maxPercentUnhealthyApplications: 100 ' in de sectie ' upgradeDescription/healthPolicy '; gedetailleerde beschrijvingen voor alle instellingen bevinden zich in [service fabrics rest API documentatie voor het upgrade beleid](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)van het cluster.
+> Als u een cluster upgrade wilt toestaan om beschadigde apps te negeren, kan de klant ' maxPercentUnhealthyApplications: 100 ' in de sectie ' upgradeDescription/healthPolicy ' opgeven. gedetailleerde beschrijvingen voor alle instellingen bevinden zich in [service fabrics rest API documentatie voor het upgrade beleid](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)van het cluster.
 
 ## <a name="next-steps"></a>Volgende stappen
 

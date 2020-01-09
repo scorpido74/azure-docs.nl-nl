@@ -7,24 +7,33 @@ author: LuisCabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d65b9b60ce93656c9acdc76c77291114468d345a
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 12/17/2019
+ms.openlocfilehash: 7ec18cab74d683e4547843f965d22026e7ba22aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113940"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461137"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Een Cognitive Services resource koppelen aan een vaardig heden in azure Cognitive Search 
 
-AI-algoritmen stations de [verrijkings pijplijnen](cognitive-search-concept-intro.md) die worden gebruikt voor inhouds transformatie in azure Cognitive Search. Deze algoritmen zijn gebaseerd op Azure Cognitive Services-resources, waaronder [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/) voor het analyseren van afbeeldingen en optische teken herkenning (OCR) en [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) voor entiteits herkenning, extractie van sleutel zinnen en andere verrijkingen. Zoals gebruikt door Azure Cognitive Search voor verrijkings doeleinden van documenten, worden de algoritmen in een *vaardigheid*verpakt, in een *vakkennisset*geplaatst en tijdens het indexeren naar een *indexer* verwezen.
+Bij het configureren van een verrijkings pijplijn in azure Cognitive Search, kunt u een beperkt aantal gratis documenten verrijken. Voor grotere en frequentere werk belastingen moet u een factureer bare Cognitive Services resource koppelen.
 
-U kunt een beperkt aantal gratis documenten verrijken. U kunt ook een factureer bare Cognitive Services resource koppelen aan een *vaardig heden* voor grotere en frequentere workloads. In dit artikel leert u hoe u een factureer bare Cognitive Services resource kunt koppelen aan verrijkte documenten tijdens het [indexeren](search-what-is-an-index.md)van Azure Cognitive Search.
+In dit artikel leert u hoe u een resource kunt koppelen door een sleutel toe te wijzen aan een vaardig heden die een verrijkings pijplijn definieert.
 
-> [!NOTE]
-> Factureer bare gebeurtenissen omvatten aanroepen naar Cognitive Services-API's en extractie van afbeeldingen als onderdeel van de fase voor het kraken van documenten in azure Cognitive Search. Er worden geen kosten in rekening gebracht voor de extractie van tekst uit documenten of voor vaardig heden die Cognitive Services niet aanroepen.
->
-> Het uitvoeren van factureer bare vaardig heden bevindt zich op de Cognitive Services prijs op basis van [betalen per gebruik](https://azure.microsoft.com/pricing/details/cognitive-services/). Zie de [pagina met prijzen voor Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400)voor meer informatie over het ophalen van images.
+## <a name="resources-used-during-enrichment"></a>Bronnen die worden gebruikt tijdens de verrijking
+
+Azure Cognitive Search heeft een afhankelijkheid op Cognitive Services, waaronder [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/) voor het analyseren van afbeeldingen en optische teken herkenning (OCR), [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) voor de verwerking van natuurlijke taal en andere verrijkingen zoals [tekst vertalingen](https://azure.microsoft.com/services/cognitive-services/translator-text-api/). In de context van verrijking in azure Cognitive Search worden deze AI-algoritmen in een *vaardigheid*verpakt, in een *vakkennisset*geplaatst en tijdens het indexeren naar een *indexer* verwezen.
+
+## <a name="how-billing-works"></a>Werking van facturering
+
++ Azure Cognitive Search maakt gebruik van de Cognitive Services resource sleutel die u op een vaardighedenset hebt geboden om afbeeldings-en tekst verrijking te factureren. Het uitvoeren van factureer bare vaardig heden bevindt zich op de Cognitive Services prijs op basis van [betalen per gebruik](https://azure.microsoft.com/pricing/details/cognitive-services/).
+
++ Afbeeldings extractie is een Azure Cognitive Search bewerking die optreedt wanneer documenten worden gekraakt voordat verrijking wordt uitgevoerd. De afbeeldings extractie is Factureerbaar. Zie de [pagina met prijzen voor Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400)voor meer informatie over het ophalen van images.
+
++ Tekst extractie vindt ook plaats tijdens het kraken van documenten. Het is niet factureerbaar.
+
++ Vaardig heden die geen Cognitive Services aanroepen, zoals voorwaardelijke tekst, shaper, tekst samenvoeging en gesplitste vaardig heden, zijn niet factureerbaar.
 
 ## <a name="same-region-requirement"></a>Dezelfde regio vereiste
 
@@ -33,7 +42,7 @@ Azure Cognitive Search en Azure Cognitive Services zijn vereist in dezelfde regi
 Er is geen manier om een service te verplaatsen tussen regio's. Als u deze fout ontvangt, moet u een nieuwe Cognitive Services-resource maken in dezelfde regio als Azure Cognitive Search.
 
 > [!NOTE]
-> Sommige ingebouwde vaardig heden zijn gebaseerd op niet-regionale Cognitive Services (bijvoorbeeld de [tekst Vertaal vaardigheid](cognitive-search-skill-text-translation.md)). Houd er rekening mee dat als u een van deze vaardig heden aan uw vaardig heden toevoegt die niet gegarandeerd dat uw gegevens in dezelfde regio blijven als uw Azure-Cognitive Search of Cognitive Services-resource. Raadpleeg de [pagina service status](https://aka.ms/allinoneregioninfo) voor meer informatie.
+> Sommige ingebouwde vaardig heden zijn gebaseerd op niet-regionale Cognitive Services (bijvoorbeeld de [tekst Vertaal vaardigheid](cognitive-search-skill-text-translation.md)). Als u een niet-regionale vaardigheid gebruikt, kan het zijn dat uw aanvraag wordt verwerkt in een andere regio dan de Azure Cognitive Search-regio. Zie de pagina [Cognitive Services product per regio](https://aka.ms/allinoneregioninfo) voor meer informatie over niet-regionale Services.
 
 ## <a name="use-free-resources"></a>Gratis bronnen gebruiken
 

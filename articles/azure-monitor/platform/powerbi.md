@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 62a010480dc83561a11c6ee99c76f35b29e808c1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 8c703cc2fd93900e13d39021992bc11247881b47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932121"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75394706"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Azure Monitor logboek gegevens importeren in Power BI
 
@@ -51,7 +51,7 @@ Power BI Desktop is een bureaublad toepassing waarmee u gegevens sets en rapport
 
 
 
-## <a name="publish-to-power-bi"></a>Publiceren naar Power BI
+## <a name="publish-to-power-bi"></a>Publiceren in Power BI
 Wanneer u naar Power BI publiceert, worden er een gegevensset en een rapport gemaakt.  Als u een rapport in Power BI Desktop maakt, wordt dit gepubliceerd met uw gegevens.  Als dat niet het geval is, wordt er een leeg rapport gemaakt.  U kunt het rapport wijzigen in Power BI of een nieuw item maken op basis van de gegevensset.
 
 1. Een rapport maken op basis van uw gegevens.  Gebruik [Power bi desktop documentatie](https://docs.microsoft.com/power-bi/desktop-report-view) als u er niet vertrouwd mee bent.  

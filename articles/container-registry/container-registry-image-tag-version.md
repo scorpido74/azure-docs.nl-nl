@@ -5,12 +5,12 @@ author: stevelasker
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
-ms.openlocfilehash: 2d407f041456ea3856fbeedf98147356eaeb61d6
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454995"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445735"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>Aanbevelingen voor het labelen en versie beheer van container installatie kopieën
 
@@ -38,6 +38,10 @@ Als er updates voor de basis installatie kopie beschikbaar zijn of een type onde
 
 In dit geval worden de primaire en secundaire Tags voortdurend onderhouden. Met een basis installatie kopie scenario kan de eigenaar van de afbeelding geservicede installatie kopieën aanbieden.
 
+### <a name="delete-untagged-manifests"></a>Niet-gecodeerde manifesten verwijderen
+
+Als een afbeelding met een stabiele tag wordt bijgewerkt, is de eerder gelabelde afbeelding niet-gelabeld, wat resulteert in een zwevende afbeelding. Het manifest van de vorige afbeelding en de unieke laag gegevens blijven in het REGI ster. Als u de register grootte wilt behouden, kunt u regel matig niet-gecodeerde manifesten verwijderen die het resultaat zijn van het bijwerken van stabiele beelden. U kunt bijvoorbeeld niet-gecodeerde manifesten die ouder zijn dan een opgegeven duur [automatisch opschonen](container-registry-auto-purge.md) of een [Bewaar beleid](container-registry-retention-policy.md) voor niet-gecodeerde manifesten instellen.
+
 ## <a name="unique-tags"></a>Unieke labels
 
 **Aanbeveling**: Gebruik unieke labels voor **implementaties**, met name in een omgeving die kan worden geschaald op meerdere knoop punten. Waarschijnlijk wilt u opzettelijk implementaties van een consistente versie van onderdelen. Als uw container opnieuw wordt opgestart of als een Orchestrator meer exemplaren uitbreidt, halen uw hosts niet per ongeluk een nieuwere versie op, inconsistent met de andere knoop punten.
@@ -50,6 +54,12 @@ Unieke labels betekenen gewoon dat elke afbeelding die naar een REGI ster is gep
 * **Build-id** : deze optie is mogelijk het beste omdat deze waarschijnlijk incrementeel is, en Hiermee kunt u weer correleren met de specifieke build om alle artefacten en logboeken te vinden. Net als bij een samen vatting van een manifest is het echter mogelijk moeilijk te lezen.
 
   Als uw organisatie verschillende build-systemen heeft, wordt het voor voegsel van de tag met de naam van het build-systeem een variant voor deze optie: `<build-system>-<build-id>`. U kunt bijvoorbeeld samen stellingen onderscheiden van het Jenkins build-systeem van het API-team en het build-systeem van Azure pipelines van het webteam.
+
+### <a name="lock-deployed-image-tags"></a>Geïmplementeerde afbeeldings Tags vergren delen
+
+Als best practice wordt u aangeraden elke geïmplementeerde installatie kopie code te [vergren delen](container-registry-image-lock.md) door het kenmerk `write-enabled` in te stellen op `false`. In deze oefening wordt voor komen dat u per ongeluk een installatie kopie uit het REGI ster verwijdert en mogelijk uw implementaties verstoort. U kunt de vergrendelings stap in uw release pijplijn toevoegen.
+
+Als u een geïmplementeerde installatie kopie vergrendelt, kunt u andere, niet-geïmplementeerde installatie kopieën uit het REGI ster verwijderen met Azure Container Registry-functies om uw REGI ster te onderhouden. U kunt bijvoorbeeld niet-gelabelde manifesten of niet-vergrendelde installatie kopieën die ouder zijn dan een opgegeven duur [automatisch opschonen](container-registry-auto-purge.md) of een [Bewaar beleid](container-registry-retention-policy.md) voor niet-gecodeerde manifesten instellen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

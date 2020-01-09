@@ -1,25 +1,14 @@
 ---
 title: Preview van Azure Service Fabric docker-implementatie
-description: Azure Service Fabric accepteert de indeling docker opstellen, waarmee u gemakkelijker bestaande containers kunt organiseren met behulp van Service Fabric. Deze ondersteuning is momenteel beschikbaar als preview-versie.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
+description: Azure Service Fabric accepteert de indeling docker opstellen, waarmee u gemakkelijker bestaande containers kunt organiseren met behulp van Service Fabric. Deze ondersteuning is momenteel in preview.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: d9d135136efea72017399b5888bc6591582ffe67
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 6dd45e81a0db06cbaa75da3f94b9e7624b0acd69
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553555"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458043"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker-ondersteuning voor implementatie in azure Service Fabric (preview-versie)
 
@@ -35,7 +24,7 @@ Als u deze preview wilt gebruiken, maakt u uw cluster met versie 5,7 of hoger va
 
 ## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>Een docker-bestand voor opstellen implementeren op Service Fabric
 
-Met de volgende opdrachten maakt u een Service Fabric-toepassing (met de naam `fabric:/TestContainerApp`), die u kunt controleren en beheren, zoals elke andere Service Fabric-toepassing. U kunt de opgegeven toepassings naam voor status query's gebruiken.
+Met de volgende opdrachten maakt u een Service Fabric-toepassing (met de naam `fabric:/TestContainerApp`), die u kunt bewaken en beheren, zoals elke andere Service Fabric-toepassing. U kunt de opgegeven toepassings naam voor status query's gebruiken.
 Service Fabric herkent "Implementatienaam" als de id van de opstellende implementatie.
 
 ### <a name="use-powershell"></a>PowerShell gebruiken
@@ -123,7 +112,7 @@ Deze preview ondersteunt een subset van de configuratie opties in de indeling ve
 * Services > > Resources > limieten implementeren
     * -CPU-shares
     * -geheugen
-    * -Memory-swap
+    * -memory-swap
 * > Opdrachten voor services
 * Services > omgeving
 * Poorten voor Services >
@@ -148,7 +137,7 @@ Geef het HTTP-of HTTPS-protocol op in de sectie poorten die wordt gebruikt door 
 
 Als de service naam die u opgeeft in een opstellend bestand een Fully Qualified Domain Name is (dat wil zeggen, het bevat een punt [.]), wordt de DNS-naam die is geregistreerd door Service Fabric `<ServiceName>` (inclusief de punt). Als dat niet het geval is, wordt elk padsegment in de naam van de toepassing een domein label in de DNS-naam van de service, waarbij het eerste padsegment het domein label op het hoogste niveau wordt.
 
-Als de naam van de opgegeven toepassing bijvoorbeeld `fabric:/SampleApp/MyComposeApp`, is `<ServiceName>.MyComposeApp.SampleApp` de geregistreerde DNS-naam.
+Als de naam van de opgegeven toepassing bijvoorbeeld `fabric:/SampleApp/MyComposeApp`is, is `<ServiceName>.MyComposeApp.SampleApp` de geregistreerde DNS-naam.
 
 ## <a name="compose-deployment-instance-definition-versus-service-fabric-app-model-type-definition"></a>Een implementatie (exemplaar definitie) versus Service Fabric app-model (type definitie) opstellen
 

@@ -1,21 +1,21 @@
 ---
-title: Resource-implementatie voor een functie-app in Azure Functions automatiseren
+title: Functie implementatie van app-resources automatiseren naar Azure
 description: Meer informatie over het bouwen van een Azure Resource Manager sjabloon waarmee uw functie-app wordt geïmplementeerd.
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 9c222937831c0e8017a390b16ef192783e9e564a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 10efe5d09771f4c5f3a2564ef99ff9cae8cf06c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230528"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433149"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>De implementatie van resources voor uw functie-app in Azure Functions automatiseren
 
 U kunt een Azure Resource Manager sjabloon gebruiken om een functie-app te implementeren. In dit artikel vindt u een overzicht van de vereiste resources en para meters. Mogelijk moet u aanvullende bronnen implementeren, afhankelijk van de [Triggers en bindingen](functions-triggers-bindings.md) in uw functie-app.
 
-Zie [Azure Resource Manager sjablonen ontwerpen](../azure-resource-manager/resource-group-authoring-templates.md)voor meer informatie over het maken van sjablonen.
+Zie [Azure Resource Manager sjablonen ontwerpen](../azure-resource-manager/templates/template-syntax.md)voor meer informatie over het maken van sjablonen.
 
 Zie voor voorbeeld sjablonen:
 - [Functie-app voor verbruiks abonnement]
@@ -27,10 +27,10 @@ Een Azure Functions-implementatie bestaat meestal uit de volgende bronnen:
 
 | Bron                                                                           | Vereiste | Naslag informatie en eigenschappen                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| Een functie-app                                                                     | Vereist    | [Micro soft. web/sites](/azure/templates/microsoft.web/sites)                             |   |
-| Een [Azure Storage](../storage/index.yml) -account                                   | Vereist    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
-| Een [Application Insights](../azure-monitor/app/app-insights-overview.md) onderdeel | Optioneel    | [Micro soft. Insights/onderdelen](/azure/templates/microsoft.insights/components)         |   |
-| Een [hosting abonnement](./functions-scale.md)                                             | Optioneel<sup>1</sup>    | [Micro soft. web/server farms](/azure/templates/microsoft.web/serverfarms)                 |   |
+| Een functie-app                                                                     | Verplicht    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
+| Een [Azure Storage](../storage/index.yml) -account                                   | Verplicht    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
+| Een [Application Insights](../azure-monitor/app/app-insights-overview.md) onderdeel | Optioneel    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |   |
+| Een [hosting abonnement](./functions-scale.md)                                             | Optioneel<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
 
 <sup>1</sup> Een hosting plan is alleen vereist wanneer u uw functie-app wilt uitvoeren in een [Premium-abonnement](./functions-premium-plan.md) (in Preview) of op een [app service plan](../app-service/overview-hosting-plans.md).
 
@@ -139,7 +139,7 @@ Een functie-app moet deze toepassings instellingen bevatten:
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Een connection string naar een opslag account dat de functions-runtime voor interne wachtrij bewerkingen | Zie [Storage-account](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | De versie van de Azure Functions runtime                                                | `~2`                                  |
-| FUNCTIONS_WORKER_RUNTIME     | De taal stack die moet worden gebruikt voor functies in deze app                                   | `dotnet`, `node`, `java`of `python` |
+| FUNCTIONS_WORKER_RUNTIME     | De taal stack die moet worden gebruikt voor functies in deze app                                   | `dotnet`, `node`, `java` of `python` |
 | WEBSITE_NODE_DEFAULT_VERSION | Dit is alleen nodig als u de `node` taal stack gebruikt. Hiermee geeft u de versie op die moet worden gebruikt              | `10.14.1`                             |
 
 Deze eigenschappen zijn opgegeven in de verzameling `appSettings` van de eigenschap `siteConfig`:
@@ -462,7 +462,7 @@ De eigenschap `serverFarmId` van een functie-app voor een App Service plan moet 
 
 Linux-apps moeten ook een `linuxFxVersion` eigenschap bevatten onder `siteConfig`. Als u alleen code implementeert, wordt de waarde voor dit bepaald door de gewenste runtime stack:
 
-| Kolommen            | Voorbeeldwaarde                                         |
+| Stack            | Voorbeeldwaarde                                         |
 |------------------|-------------------------------------------------------|
 | Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
 | JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |
@@ -638,9 +638,9 @@ Een functie-app heeft veel onderliggende resources die u kunt gebruiken in uw im
 U kunt een van de volgende manieren gebruiken om uw sjabloon te implementeren:
 
 * [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
-* [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Azure-CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
 * [Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
-* [REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Knop implementeren naar Azure
 

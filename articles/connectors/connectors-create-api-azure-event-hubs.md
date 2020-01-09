@@ -1,18 +1,18 @@
 ---
 title: Verbinding maken met Azure Event Hubs
-description: Gebeurtenissen beheren en bewaken met Azure Event Hubs en Azure Logic Apps
+description: Maak geautomatiseerde taken en werk stromen die gebeurtenissen bewaken en beheren met Azure Event Hubs en Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 77ff24f3af77e012b9ae9bc702d6a5a2639a5b11
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a0ba747fcc3015df961aa40de794071828d73a33
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789936"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446172"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Gebeurtenissen bewaken, ontvangen en verzenden met Azure Event Hubs en Azure Logic Apps
 
@@ -33,7 +33,7 @@ Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](
 
 Als u ervoor wilt zorgen dat uw logische app toegang heeft tot uw event hub, controleert u uw machtigingen en haalt u de connection string voor uw Event Hubs naam ruimte op.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 1. Ga naar uw Event Hubs *naam ruimte*, niet een specifieke Event hub. 
 
@@ -76,7 +76,7 @@ In dit voor beeld ziet u hoe u een werk stroom van een logische app kunt starten
 
    | Eigenschap | Verplicht | Beschrijving |
    |----------|----------|-------------|
-   | **Event hub-naam** | Ja | De naam van de Event hub die u wilt bewaken |
+   | **Event Hub-naam** | Ja | De naam van de Event hub die u wilt bewaken |
    | **Inhoudstype** | Nee | Het inhouds type van de gebeurtenis. De standaardwaarde is `application/octet-stream`. |
    | **Naam van consumentengroep** | Nee | De [naam van de Event hub-consumenten groep](../event-hubs/event-hubs-features.md#consumer-groups) die moet worden gebruikt voor het lezen van gebeurtenissen. Als niet wordt opgegeven, wordt de standaard Consumer groep gebruikt. |
    | **Maximum aantal gebeurtenissen** | Nee | Het maximum aantal gebeurtenissen. De trigger retourneert tussen één en het aantal gebeurtenissen dat door deze eigenschap is opgegeven. |
@@ -132,10 +132,10 @@ Selecteer in de lijst acties deze actie: **gebeurtenis verzenden-Event hubs**
 
    | Eigenschap | Verplicht | Beschrijving |
    |----------|----------|-------------|
-   | **Event hub-naam** | Ja | De Event hub waarnaar u de gebeurtenis wilt verzenden |
+   | **Event Hub-naam** | Ja | De Event hub waarnaar u de gebeurtenis wilt verzenden |
    | **Inhoud** | Nee | De inhoud voor de gebeurtenis die u wilt verzenden |
    | **Eigenschappen** | Nee | De app-eigenschappen en-waarden die moeten worden verzonden |
-   | **Partitie sleutel** | Nee | De [partitie](../event-hubs/event-hubs-features.md#partitions) -id voor het verzenden van de gebeurtenis |
+   | **Partitiesleutel** | Nee | De [partitie](../event-hubs/event-hubs-features.md#partitions) -id voor het verzenden van de gebeurtenis |
    ||||
 
    U kunt bijvoorbeeld de uitvoer van uw Event Hubs trigger naar een andere Event hub verzenden:
@@ -155,7 +155,7 @@ Selecteer in de lijst acties deze actie: **gebeurtenis verzenden-Event hubs**
    | Eigenschap | Verplicht | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
    | **Verbindingsnaam** | Ja | <*naam* van de verbinding> | De naam die voor uw verbinding moet worden gemaakt |
-   | **Event Hubs naam ruimte** | Ja | <*gebeurtenis-hubs-naam ruimte*> | Selecteer de Event Hubs naam ruimte die u wilt gebruiken. |
+   | **Event Hubs naam ruimte** | Ja | <*event-hubs-namespace*> | Selecteer de Event Hubs naam ruimte die u wilt gebruiken. |
    |||||  
 
    Bijvoorbeeld:

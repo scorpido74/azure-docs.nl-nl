@@ -1,24 +1,26 @@
 ---
-title: Een Jupyter-notebook worden weergegeven als een diavoorstelling op Azure
-description: Over het configureren van cellen voor diavoorstellingsmodus in een Jupyter-notebook en Presenteer de diavoorstelling met de extensie leiden.
-ms.topic: article
+title: Een Jupyter-notebook presen teren als een diapresentatie op Azure Notebooks preview
+description: Meer informatie over het configureren van cellen voor de diavoorstellings modus in een Jupyter-notebook en de diavoorstelling vervolgens presen teren met de toename extensie.
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: d180eaf571fa57191e3b0856020b02f05d05e344
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 05dd3d9c5580e208ecf6f9e6d762476b0b493a6c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277594"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647115"
 ---
-# <a name="run-a-notebook-slideshow"></a>Voer een diavoorstelling notebook
+# <a name="run-a-notebook-slideshow-in-azure-notebooks-preview"></a>Een diapresentatie van een notebook uitvoeren in Azure Notebooks preview
 
 Azure-laptops is vooraf geconfigureerd met de Jupyter/IPython diavoorstelling extensie (stijging) waarmee u een notitieblok rechtstreeks als een diavoorstelling presenteren. In een diavoorstelling zijn cellen doorgaans weergegeven één bewerking tegelijk met behulp van een grootte die geschikt is voor presenteren op grote schermen en u kunt de code nog steeds uitgevoerd in plaats van overschakelen naar een afzonderlijke demo-computer.
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 De volgende afbeelding ziet u de standaard-notebook-weergave, waarin u Markdown en de code cellen alles bij elkaar ziet:
 
 ![Een notitieblok in de standaardweergave](media/slideshow/slideshow-notebook-view.png)
 
-Wanneer u een diavoorstelling start, wordt de eerste cel verg root om de browser te vullen, waarbij de **X** in de linkerbovenhoek de diavoorstelling afsluit **?** in het onderste links weergegeven navigeren sneltoetsen, en de pijlen in de rechterbenedenhoek tussen de dia's:
+Wanneer u een diavoorstelling start, de eerste cel is vergroot om op te vullen van de browser, waarbij de **X** in de linkerbovenhoek verlaat de diavoorstelling **?** in het onderste links weergegeven navigeren sneltoetsen, en de pijlen in de rechterbenedenhoek tussen de dia's:
 
 ![Een notitieblok in de diavoorstellingsmodus](media/slideshow/slideshow-slide-view.png)
 
@@ -32,11 +34,11 @@ Een notitieblok voorbereiden voor een diavoorstelling bestaat uit twee primaire 
 
 Als u een willekeurige notebook nemen en deze voor een diavoorstelling gebruiken, merken u meestal dat alle cellen zijn samen elkaar, en veel van de inhoud van de onderkant van het browservenster wordt verborgen. Als u wilt maken van een doeltreffende presentatie, vervolgens moet u een type diavoorstelling toewijzen aan elke cel met de werkbalk van de cel diavoorstelling:
 
-1. Selecteer in het menu **weer gave** de optie **werk balk cel** > **Diavoorstelling**:
+1. Op de **weergave** in het menu **cel werkbalk** > **diavoorstelling**:
 
     ![De cel diavoorstelling werkbalk inschakelen](media/slideshow/slideshow-view-cell-toolbar.png)
 
-1. Er wordt een vervolg keuzelijst van het **type dia** weer gegeven in de rechter bovenhoek van elke cel in het notitie blok:
+1. Een **Type dia** vervolgkeuzelijst wordt weergegeven in de rechterbovenhoek van elke cel in het notitieblok:
 
     ![Cel diavoorstelling werkbalk](media/slideshow/slideshow-cell-toolbar.png)
 
@@ -53,11 +55,11 @@ Als u een willekeurige notebook nemen en deze voor een diavoorstelling gebruiken
     | Overslaan | Cel wordt niet weergegeven in de diavoorstelling. |
     | Opmerkingen | Cel bevat als sprekersnotities, worden niet in de diavoorstelling weergegeven. |
 
-1. In eerste instantie is het handig om de **dia** voor elke cel te kiezen. Vervolgens kunt u de diavoorstelling uitvoeren en juiste aanpassingen.
+1. In eerste instantie is het handig om te kiezen **dia** voor elke cel. Vervolgens kunt u de diavoorstelling uitvoeren en juiste aanpassingen.
 
 ### <a name="example-fragment-cells-for-bullet-items"></a>Voorbeeld: fragment cellen voor items met opsommingstekens
 
-Als u wilt dat opsommings tekens op een dia één voor één worden weer gegeven, plaatst u de rijkop in een cel met een prijs opgave met het type **dia** en plaatst u elk opsommings teken in een afzonderlijke afkortings cel met het **fragment** type:
+Om te maken van opsommingstekens in een dia die worden weergegeven door één, plaats de dia-header in een Markdown-cel met de **dia** en typ vervolgens elk opsommingsteken plaatsen in een afzonderlijke Markdown cel met de **Fragment** type:
 
 ![Voorbeeld van het maken van meerdere Markdown cellen voor items met opsommingstekens](media/slideshow/slideshow-fragments.png)
 
@@ -65,13 +67,13 @@ Omdat de diavoorstelling fragmenten op basis van meer verticale afstand dan wann
 
 ## <a name="run-the-slideshow"></a>Voer de diavoorstelling
 
-1. Als u verkortings cellen hebt bewerkt, moet u ervoor zorgen dat ze worden uitgevoerd om hun HTML weer te geven. anders worden ze weer gegeven *als* prijs verlaging in de diavoorstelling.
+1. Als u een Markdown-cellen hebt bewerkt, zorg ervoor dat u ze voor het renderen van de HTML-code, anders wordt deze weergegeven uit te voeren *als* Markdown in de diavoorstelling.
 
-1. Zodra u het **type dia** voor elke cel hebt geconfigureerd, selecteert u de cel waarmee de diavoorstelling moet worden gestart en selecteert u de knop Diavoorstelling op het scherm **invoeren/afsluiten** op de hoofdwerk balk:
+1. Wanneer u hebt geconfigureerd de **Type dia** voor elke cel, selecteert u de cel waarmee u de diavoorstelling te starten, en selecteer vervolgens de **Enter/afsluiten STIJGEN diavoorstelling** op de werkbalk van de belangrijkste:
 
     ![Knop op de werkbalk van de belangrijkste/uitschakelen voor de STIJGEN diavoorstelling](media/slideshow/slideshow-start.png)
 
-1. Als u wilt navigeren tussen de dia's, evenals fragmenten, gebruikt u de linker- en pijlen in de navigatiebesturingselement. De tekst in het besturings element bevat een getal dat de *dia. subslide*vertegenwoordigt.
+1. Als u wilt navigeren tussen de dia's, evenals fragmenten, gebruikt u de linker- en pijlen in de navigatiebesturingselement. De tekst in het besturingselement bevat een *slide.sub dia*.
 
     ![Diavoorstelling voor paginanavigatie](media/slideshow/slideshow-navigation-control.png)
 
@@ -86,13 +88,13 @@ Omdat de diavoorstelling fragmenten op basis van meer verticale afstand dan wann
     ![Code-cel-uitvoer wordt weergegeven in de diavoorstelling](media/slideshow/slideshow-run-code-cell-output.png)
 
     > [!Tip]
-    > Uitvoer van de cel wordt beschouwd als onderdeel van de cel in een diavoorstelling. Als u een cel in het notitieblok of diavoorstelling uitvoert, wordt de uitvoer wordt weergegeven in de andere weergave ook. Als u de uitvoer wilt wissen, gebruikt u de **cel** > **huidige uitvoer** > opdracht **wissen** (voor de huidige cel) of de **cel** > **alle uitvoer** > **wissen** (voor alle cellen).
+    > Uitvoer van de cel wordt beschouwd als onderdeel van de cel in een diavoorstelling. Als u een cel in het notitieblok of diavoorstelling uitvoert, wordt de uitvoer wordt weergegeven in de andere weergave ook. Schakelt u de uitvoer, gebruikt u de **cel** > **huidige uitvoer** > **wissen** opdracht (voor de huidige cel) of **cel**  >  **Alle uitvoer** > **wissen** (voor alle cellen).
 
-1. Wanneer u klaar bent met de diavoorstelling, gebruikt u de **X** om terug te keren naar de notebook weergave.
+1. Wanneer u klaar bent met de diavoorstelling, gebruikt u de **X** om terug te keren naar de weergave van de notebook.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Procedure: projecten configureren en beheren](configure-manage-azure-notebooks-projects.md)
-- [Procedure: pakketten installeren vanuit een notitie blok](install-packages-jupyter-notebook.md)
-- [Procedure: werken met gegevens bestanden](work-with-project-data-files.md)
-- [Informatie over toegang tot gegevens bronnen](access-data-resources-jupyter-notebooks.md)
+- [Hoe: configureren en beheren van projecten](configure-manage-azure-notebooks-projects.md)
+- [Hoe: installatie van pakketten van binnen een laptop](install-packages-jupyter-notebook.md)
+- [Hoe: werken met bestanden](work-with-project-data-files.md)
+- [Hoe: toegang tot gegevensbronnen](access-data-resources-jupyter-notebooks.md)

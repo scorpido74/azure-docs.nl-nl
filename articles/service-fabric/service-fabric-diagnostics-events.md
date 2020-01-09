@@ -1,29 +1,20 @@
 ---
-title: Azure Service Fabric-gebeurtenissen | Microsoft Docs
-description: Meer informatie over de Service Fabric-gebeurtenissen die buiten het vak om u te helpen bij het controleren van uw Azure Service Fabric-cluster.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric-gebeurtenissen
+description: Meer informatie over de Service Fabric gebeurtenissen die uit het vak zijn gegeven om u te helpen bij het bewaken van uw Azure Service Fabric-cluster.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: b4270b9438a397ec09537c9d6343515ebc21af98
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 638b650e485ad3e83bd6021639a7e55b540d9cdc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393024"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451730"
 ---
 # <a name="service-fabric-events"></a>Service Fabric-gebeurtenissen 
 
-De Service Fabric-platform schrijft verschillende gestructureerde gebeurtenissen voor belangrijke operationele activiteiten die plaatsvinden binnen uw cluster. Deze variëren van cluster-upgrades tot replica plaatsing beslissingen. Elke gebeurtenis die Service Fabric wordt aangegeven dat is toegewezen aan een van de volgende entiteiten in het cluster:
+Het Service Fabric-platform schrijft diverse gestructureerde gebeurtenissen voor belang rijke operationele activiteiten binnen uw cluster. Dit bereik van het cluster wordt bijgewerkt naar de beslissingen over het plaatsen van replica's. Elke gebeurtenis die Service Fabric beschikbaar maakt, wordt toegewezen aan een van de volgende entiteiten in het cluster:
 * Cluster
 * Toepassing
 * Service
@@ -31,23 +22,23 @@ De Service Fabric-platform schrijft verschillende gestructureerde gebeurtenissen
 * Replica 
 * Container
 
-Een volledige lijst van gebeurtenissen die worden weergegeven door het platform - [lijst van Service Fabric-gebeurtenissen](service-fabric-diagnostics-event-generation-operational.md).
+Voor een volledige lijst van gebeurtenissen die worden weer gegeven in de [lijst met Service Fabric gebeurtenissen van](service-fabric-diagnostics-event-generation-operational.md)het platform.
 
-Hier volgen enkele voorbeelden van scenario's dat u gebeurtenissen voor in het cluster moet zien. 
-* Levenscyclusgebeurtenissen voor het knooppunt: als knooppunten zijn beschikbaar, gaat u naar beneden, in/uit te schalen, opnieuw opstarten en ingeschakeld/uitgeschakeld zijn, deze gebeurtenissen weergegeven van wat is er gebeurd en helpt u identificeren als er iets mis is met de computer of als er is een API die is aangeroepen via SF te wijzigen van de status van een knooppunt.
-* Upgrade voor clusters: de upgrade van uw cluster (SF versie of de configuratie wijzigen), ziet u de upgrade starten en voltooien draaien door elk van uw Upgrade-domeinen (of Rollback is opgegeven). 
-* Upgrades van toepassingen: net als het cluster, upgrades, er is een uitgebreide set met gebeurtenissen als de upgrade doorloopt. Deze gebeurtenissen kunnen zijn handig om te begrijpen wanneer een upgrade is gepland, de huidige status van een upgrade, en de algemene volgorde van gebeurtenissen. Dit is handig voor het zoeken naar terug om te zien wat upgrades zijn teruggedraaid uit is of of terugdraaien is geactiveerd.
-* Implementatie van de toepassing/Service / verwijderen: Er zijn gebeurtenissen voor elke toepassing, service en -container, die wordt gemaakt of verwijderd en handig wanneer u in- of uitgeschaald bijvoorbeeld verhoging van het aantal replica's
-* Partitie worden verplaatst (herconfiguratie): wanneer een stateful partitie gaat via een herconfiguratie (een wijziging in de replicaset), een gebeurtenis wordt geregistreerd. Dit is handig als u probeert te begrijpen hoe vaak uw replicaset partitie is gewijzigd of Failover-overschakeling uitvoeren, of welk knooppunt de primaire replica werd uitgevoerd op elk gewenst moment in de tijd bijhouden.
-* Chaos-gebeurtenissen: bij het gebruik van Service Fabric [Chaos](service-fabric-controlled-chaos.md) service, ziet u gebeurtenissen telkens wanneer de service is gestart of gestopt, of wanneer het injects een storing in het systeem.
-* Health-gebeurtenissen: Service Fabric wordt aangegeven dat statusgebeurtenissen telkens wanneer een waarschuwing of een statusrapport van de fout is gemaakt, of een entiteit terug naar de status OK status gaat of een statusrapport is verlopen. Deze gebeurtenissen zijn zeer nuttig zijn voor het bijhouden van statistieken van de historische status voor een entiteit. 
+Hier volgen enkele voor beelden van scenario's waarvan u gebeurtenissen in uw cluster zou moeten zien. 
+* Gebeurtenissen voor levens cyclus van knoop punt: als knoop punten worden weer gegeven, kunt u deze uitbreiden, schalen, opnieuw opstarten en activeren/deactiveren. deze gebeurtenissen zijn zichtbaar in de vorm van wat er is gebeurd en helpt u te bepalen of er iets mis is met de computer zelf, of dat er een API is aangeroepen die via SF was om de status van een knoop punt te wijzigen.
+* Cluster upgrade: als uw cluster wordt geüpgraded (SF-versie of configuratie wijziging), ziet u dat de upgrade is gestart, worden alle upgrade domeinen door lopen en worden voltooid (of teruggedraaid). 
+* Toepassings upgrades: net als bij cluster upgrades is er een uitgebreide set gebeurtenissen die de upgrade doorloopt. Deze gebeurtenissen kunnen nuttig zijn om te begrijpen wanneer een upgrade is gepland, de huidige status van een upgrade en de algehele volg orde van de gebeurtenissen. Dit is handig om te zien welke upgrades zijn geïmplementeerd en of een terugdraai bewerking is geactiveerd.
+* Toepassings-en service-implementatie/verwijderen: er zijn gebeurtenissen voor elke toepassing, service en container die worden gemaakt of verwijderd, en die handig zijn bij het schalen in of uit, bijvoorbeeld het aantal replica's verhogen
+* Partitie verplaatsen (herconfiguratie): wanneer een stateful partitie een herconfiguratie doorloopt (een wijziging in de replicaset), wordt een gebeurtenis vastgelegd in het logboek. Dit is handig als u wilt weten hoe vaak uw partitie replicaset wordt gewijzigd of mislukt, of dat het knoop punt op elk gewenst moment de primaire replica uitvoert.
+* Chaos-gebeurtenissen: wanneer u de [chaos](service-fabric-controlled-chaos.md) -service van service Fabric gebruikt, ziet u gebeurtenissen elke keer dat de service wordt gestart of gestopt, of wanneer deze een fout in het systeem injecteert.
+* Status gebeurtenissen: Service Fabric alle status gebeurtenissen weer gegeven wanneer een waarschuwing of fout status rapport wordt gemaakt, of een entiteit wordt teruggestuurd naar de status OK of het status rapport verloopt. Deze gebeurtenissen zijn zeer nuttig om historische status statistieken voor een entiteit bij te houden. 
 
-## <a name="how-to-access-events"></a>Hoe u toegang tot gebeurtenissen
+## <a name="how-to-access-events"></a>Toegang tot gebeurtenissen
 
-Er zijn een aantal verschillende manieren waarmee de Service Fabric-gebeurtenissen kunnen worden geopend:
-* De gebeurtenissen worden geregistreerd via standaard kanalen zoals ETW/Windows-gebeurtenislogboeken en kunnen worden gevisualiseerd door een controleprogramma die ondersteuning biedt voor deze zoals Azure Monitor-Logboeken. Standaard clusters die zijn gemaakt in de portal voor diagnostische gegevens zijn ingeschakeld en de Windows Azure diagnostics-agent de gebeurtenissen verzenden naar Azure-tabelopslag hebben, maar u moet nog steeds dit integreren in uw log analytics-resource. Meer informatie over het configureren van de [Azure Diagnostics-agent](service-fabric-diagnostics-event-aggregation-wad.md) de configuratie van diagnostische gegevens van uw cluster om op te halen meer logboeken of prestatiemeteritems wijzigen en de [integratie van Azure Monitor-Logboeken](service-fabric-diagnostics-event-analysis-oms.md)
-* EventStore service Rest API's waarmee u kunt query uitvoeren op het cluster rechtstreeks of via de Service Fabric-clientbibliotheek. Zie [Query EventStore APIs voor Clustergebeurtenissen](service-fabric-diagnostics-eventstore-query.md).
+Er zijn een aantal verschillende manieren om Service Fabric gebeurtenissen toegankelijk te maken:
+* De gebeurtenissen worden geregistreerd via de standaard kanalen, zoals ETW/Windows-gebeurtenis logboeken en kunnen worden gevisualiseerd door elk bewakings programma dat ondersteuning biedt voor deze gegevens, zoals Azure Monitor Logboeken. Clusters die zijn gemaakt in de portal, hebben standaard de diagnostische gegevens ingeschakeld en hebben de Windows Azure Diagnostics-agent de gebeurtenissen naar Azure Table Storage verzenden, maar u moet deze wel integreren met uw log Analytics-resource. Meer informatie over het configureren van de [Azure Diagnostics-agent](service-fabric-diagnostics-event-aggregation-wad.md) voor het wijzigen van de diagnostische configuratie van uw cluster om meer logboeken of prestatie meter items op te halen en de integratie van de [Azure monitor logboeken](service-fabric-diagnostics-event-analysis-oms.md)
+* De rest Api's van de Event Store-service waarmee u rechtstreeks query's kunt uitvoeren op het cluster of via de Service Fabric-client bibliotheek. Zie [query Event Store-api's voor cluster gebeurtenissen](service-fabric-diagnostics-eventstore-query.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie op het cluster - bewaking [bewaking van het cluster en het platform](service-fabric-diagnostics-event-generation-infra.md).
-* Meer informatie over de service EventStore - [overzicht van EventStore-service](service-fabric-diagnostics-eventstore.md)
+* Meer informatie over het bewaken van [het cluster en het platform](service-fabric-diagnostics-event-generation-infra.md).
+* Meer informatie over het event Store service- [Event Store service-overzicht](service-fabric-diagnostics-eventstore.md)

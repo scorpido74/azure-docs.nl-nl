@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f757819e16db9908e80c5e7350c082dbf1573677
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: dce9894b26d03c351a2209792cc076de91feba54
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547236"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429980"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Beheerde identiteiten configureren voor Azure-resources op een schaalset voor virtuele machines met behulp van REST API-aanroepen
 
@@ -35,7 +35,7 @@ In dit artikel, met behulp van krul om aanroepen naar het Azure Resource Manager
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de [sectie Overzicht](overview.md). **Controleer het [verschil tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
+- Als u niet bekend met beheerde identiteiten voor Azure-resources bent, lees de [overzichtssectie](overview.md). **Lees de [verschil tussen een beheerde identiteit door het systeem is toegewezen en de gebruiker toegewezen](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
 - Als u de beheer bewerkingen in dit artikel wilt uitvoeren, moet uw account de volgende toegangs beheer toewijzingen op basis van Azure-rollen hebben:
 
@@ -60,7 +60,7 @@ In deze sectie leert u hoe u door het systeem toegewezen beheerde identiteit kun
 
 Als u een schaalset voor virtuele machines wilt maken waarvoor een door het systeem toegewezen beheerde identiteit is ingeschakeld, moet u een schaalset voor virtuele machines maken en een toegangs Token ophalen om krul te gebruiken om het Resource Manager-eind punt aan te roepen van de waarde van het door het systeem toegewezen beheerde identiteits type.
 
-1. Maak een [resource groep](../../azure-resource-manager/resource-group-overview.md#terminology) voor insluiting en implementatie van uw schaalset voor virtuele machines en de bijbehorende gerelateerde resources met behulp van [AZ Group Create](/cli/azure/group/#az-group-create). U kunt deze stap overslaan als u al een resourcegroep hebt die u in plaats daarvan wilt gebruiken:
+1. Maak een [resource groep](../../azure-resource-manager/management/overview.md#terminology) voor insluiting en implementatie van uw schaalset voor virtuele machines en de bijbehorende gerelateerde resources met behulp van [AZ Group Create](/cli/azure/group/#az-group-create). U kunt deze stap overslaan als u al een resourcegroep hebt die u in plaats daarvan wilt gebruiken:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus

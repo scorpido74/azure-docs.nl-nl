@@ -1,5 +1,6 @@
 ---
-title: Api's beveiligen met verificatie op basis van client certificaten in API Management-Azure API Management | Microsoft Docs
+title: Api's beveiligen met verificatie op basis van client certificaten in API Management
+titleSuffix: Azure API Management
 description: Meer informatie over het beveiligen van de toegang tot Api's met behulp van client certificaten
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: apimpm
-ms.openlocfilehash: 263f8495b9dbb0a1c5b3c54301b4b4deab425e31
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 85eeaaa052604c3198ca2ab8988f9e7a77e2a63d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072368"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430653"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Api's beveiligen met verificatie op basis van client certificaten in API Management
 
@@ -28,7 +29,7 @@ Voor informatie over het beveiligen van de toegang tot de back-end-service van e
 > [!IMPORTANT]
 > Als u client certificaten wilt ontvangen en verifiëren in de laag verbruik, moet u eerst de instelling client certificaat aanvragen inschakelen op de Blade aangepaste domeinen, zoals hieronder wordt weer gegeven.
 
-![Client certificaat aanvragen](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
+![Clientcertificaat aanvragen](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 
 ## <a name="checking-the-issuer-and-subject"></a>De uitgever en het onderwerp controleren
 
@@ -45,8 +46,8 @@ Onder beleids regels kunnen worden geconfigureerd om de uitgever en het onderwer
 ```
 
 > [!NOTE]
-> Als u het controleren van de lijst met `context.Request.Certificate.VerifyNoRevocation()` ingetrokken certificaten `context.Request.Certificate.Verify()`wilt uitschakelen, gebruikt u in plaats van.
-> Als het client certificaat zelfondertekend is, moeten de basis-(of tussenliggende) CA-certificaten worden [geüpload](api-management-howto-ca-certificates.md) naar API Management for `context.Request.Certificate.Verify()` en `context.Request.Certificate.VerifyNoRevocation()` to work.
+> Als u het controleren van de lijst met ingetrokken certificaten wilt uitschakelen, gebruikt u `context.Request.Certificate.VerifyNoRevocation()` in plaats van `context.Request.Certificate.Verify()`.
+> Als het client certificaat zelfondertekend is, moeten er basis (of tussenliggende) CA-certificaten worden [geüpload](api-management-howto-ca-certificates.md) naar API Management voor `context.Request.Certificate.Verify()` en `context.Request.Certificate.VerifyNoRevocation()` te kunnen werken.
 
 ## <a name="checking-the-thumbprint"></a>De vinger afdruk controleren
 
@@ -63,8 +64,8 @@ Onder beleids regels kunnen worden geconfigureerd om de vinger afdruk van een cl
 ```
 
 > [!NOTE]
-> Als u het controleren van de lijst met `context.Request.Certificate.VerifyNoRevocation()` ingetrokken certificaten `context.Request.Certificate.Verify()`wilt uitschakelen, gebruikt u in plaats van.
-> Als het client certificaat zelfondertekend is, moeten de basis-(of tussenliggende) CA-certificaten worden [geüpload](api-management-howto-ca-certificates.md) naar API Management for `context.Request.Certificate.Verify()` en `context.Request.Certificate.VerifyNoRevocation()` to work.
+> Als u het controleren van de lijst met ingetrokken certificaten wilt uitschakelen, gebruikt u `context.Request.Certificate.VerifyNoRevocation()` in plaats van `context.Request.Certificate.Verify()`.
+> Als het client certificaat zelfondertekend is, moeten er basis (of tussenliggende) CA-certificaten worden [geüpload](api-management-howto-ca-certificates.md) naar API Management voor `context.Request.Certificate.Verify()` en `context.Request.Certificate.VerifyNoRevocation()` te kunnen werken.
 
 ## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>Een vinger afdruk controleren op certificaten die zijn geüpload naar API Management
 
@@ -82,14 +83,14 @@ In het volgende voor beeld ziet u hoe u de vinger afdruk van een client certific
 ```
 
 > [!NOTE]
-> Als u het controleren van de lijst met `context.Request.Certificate.VerifyNoRevocation()` ingetrokken certificaten `context.Request.Certificate.Verify()`wilt uitschakelen, gebruikt u in plaats van.
-> Als het client certificaat zelfondertekend is, moeten de basis-(of tussenliggende) CA-certificaten worden [geüpload](api-management-howto-ca-certificates.md) naar API Management for `context.Request.Certificate.Verify()` en `context.Request.Certificate.VerifyNoRevocation()` to work.
+> Als u het controleren van de lijst met ingetrokken certificaten wilt uitschakelen, gebruikt u `context.Request.Certificate.VerifyNoRevocation()` in plaats van `context.Request.Certificate.Verify()`.
+> Als het client certificaat zelfondertekend is, moeten er basis (of tussenliggende) CA-certificaten worden [geüpload](api-management-howto-ca-certificates.md) naar API Management voor `context.Request.Certificate.Verify()` en `context.Request.Certificate.VerifyNoRevocation()` te kunnen werken.
 
 > [!TIP]
-> Probleem met het publiceren van het client certificaat dat in dit [artikel](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) wordt beschreven, kan zich op verschillende manieren manifesteren, `403 Forbidden` zoals het blok keren van aanvragen `context.Request.Certificate` , `null`aanvragen met de status code na een time-out. Dit probleem is doorgaans `POST` van `PUT` invloed op en aanvragen met een inhouds lengte van ongeveer 60KB of hoger.
+> Probleem met het publiceren van het client certificaat dat in dit [artikel](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) wordt beschreven, kan zich op verschillende manieren manifesteren, zoals het blok keren van aanvragen, de aanvraag resulteert in `403 Forbidden` status code na een time-out, `context.Request.Certificate` is `null`. Dit probleem is doorgaans van invloed op `POST` en `PUT` aanvragen met een inhouds lengte van ongeveer 60KB of groter.
 > Als u wilt voor komen dat dit probleem optreedt, schakelt u de instelling onderhandelend client certificaat in voor gewenste hostnamen op de Blade ' aangepaste domeinen ', zoals hieronder wordt weer gegeven. Deze functie is niet beschikbaar in de laag verbruik.
 
-![Onderhandelen over clientcertificaat](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
+![Onderhandelen over client certificaat](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

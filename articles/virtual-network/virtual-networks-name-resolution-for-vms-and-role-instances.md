@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 69e9e09b3f2c488f62732e0a74d212126826e8bf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 246af99cfec5ca41347da70e80bfc6dfff448eb3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707576"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368032"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Naam omzetting voor bronnen in azure Virtual Networks
 
@@ -34,7 +34,7 @@ Welk type naamomzetting u gebruikt, is afhankelijk van hoe uw resources met elka
 > Afhankelijk van uw scenario wilt u mogelijk de functie Azure DNS Private Zones gebruiken, die momenteel beschikbaar is als open bare preview. Zie voor meer informatie [Azure DNS gebruiken voor privédomeinen](../dns/private-dns-overview.md).
 >
 
-| **Scenario** | **Oplossing** | **Achtervoegsel** |
+| **Scenario** | **Oplossing** | **Suffix** |
 | --- | --- | --- |
 | Naam omzetting tussen virtuele machines die zich in hetzelfde virtuele netwerk bevinden, of Azure Cloud Services Role-instanties in dezelfde Cloud service. | [Naam omzetting van](#azure-provided-name-resolution) [Azure DNS private zones](../dns/private-dns-overview.md) of door Azure |Hostnaam of FQDN |
 | Naam omzetting tussen Vm's in verschillende virtuele netwerken of rolinstanties in verschillende Cloud Services. |[Azure DNS private zones](../dns/private-dns-overview.md) of, door de klant beheerde DNS-servers, waarmee query's tussen virtuele netwerken worden doorgestuurd voor omzetting door Azure (DNS-proxy). Zie [naam omzetting met uw eigen DNS-server](#name-resolution-that-uses-your-own-dns-server). |Alleen FQDN |
@@ -193,22 +193,16 @@ Wanneer u uw eigen DNS-servers gebruikt, biedt Azure de mogelijkheid om meerdere
 
 > [!NOTE]
 > De eigenschappen van de netwerk verbinding, zoals DNS-server-Ip's, mogen niet rechtstreeks worden bewerkt in Vm's. Dit komt doordat ze tijdens het herstellen van de service mogelijk worden gewist wanneer de virtuele netwerk adapter wordt vervangen. Dit is van toepassing op virtuele Windows-en Linux-machines.
->
->
 
 Wanneer u het Azure Resource Manager-implementatie model gebruikt, kunt u DNS-servers voor een virtueel netwerk en een netwerk interface opgeven. Zie [een virtueel netwerk beheren](manage-virtual-network.md) en [een netwerk interface beheren](virtual-network-network-interface.md)voor meer informatie.
 
 > [!NOTE]
 > Als u een aangepaste DNS-server voor uw virtuele netwerk kiest, moet u ten minste één IP-adres van de DNS-server opgeven. anders wordt de configuratie door het virtuele netwerk genegeerd en wordt in plaats daarvan Azure-DNS gebruikt.
->
->
 
 Wanneer u het klassieke implementatie model gebruikt, kunt u DNS-servers voor het virtuele netwerk opgeven in het Azure Portal of het [netwerk configuratie bestand](https://msdn.microsoft.com/library/azure/jj157100). Voor Cloud Services kunt u DNS-servers opgeven via het [Service configuratie bestand](https://msdn.microsoft.com/library/azure/ee758710) of met behulp van Power shell, met [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm).
 
 > [!NOTE]
-> Als u de DNS-instellingen voor een virtueel netwerk of een virtuele machine die al is geïmplementeerd, wijzigt, moet u de DHCP-lease vernieuwing uitvoeren op alle betrokken Vm's in het virtuele netwerk om de nieuwe DNS-instellingen van kracht te laten worden. Voor virtuele machines waarop het Windows-besturings systeem wordt uitgevoerd, kunt u dit doen door `ipconfig /renew` rechtstreeks in de virtuele machine te typen. De stappen variëren afhankelijk van het besturings systeem. Raadpleeg de relevante documentatie voor het type besturings systeem. 
->
->
+> Als u de DNS-instellingen voor een virtueel netwerk of een virtuele machine die al is geïmplementeerd, wijzigt, moet u de DHCP-lease vernieuwing uitvoeren op alle betrokken Vm's in het virtuele netwerk om de nieuwe DNS-instellingen van kracht te laten worden. Voor virtuele machines waarop het Windows-besturings systeem wordt uitgevoerd, kunt u dit doen door `ipconfig /renew` rechtstreeks in de virtuele machine te typen. De stappen variëren afhankelijk van het besturings systeem. Raadpleeg de relevante documentatie voor het type besturings systeem.
 
 ## <a name="next-steps"></a>Volgende stappen
 

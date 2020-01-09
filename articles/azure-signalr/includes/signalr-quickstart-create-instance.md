@@ -7,14 +7,14 @@ ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: ac77f0b6a1d90fd78db64618c1e03ade198a67c0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0a228f6d8b4f72acd3783f27bf192fe6bd13f988
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882146"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392158"
 ---
-## <a name="create-an-azure-signalr-service-instance"></a>Een exemplaar van de Azure SignalR Service maken
+## <a name="create-an-azure-signalr-service-instance"></a>Een Azure SignalR Service-exemplaar maken
 
 Uw toepassing maakt verbinding met een SignalR-Service-exemplaar in Azure.
 
@@ -26,17 +26,17 @@ Uw toepassing maakt verbinding met een SignalR-Service-exemplaar in Azure.
 
 1. Voer de volgende instellingen in.
 
-    | Instelling      | Voorgestelde waarde  | Description                                        |
+    | Instelling      | Voorgestelde waarde  | Beschrijving                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Resourcenaam** | Wereldwijd unieke naam | Naam ter identificatie van uw nieuwe SignalR Service-exemplaar. Geldige tekens zijn `a-z`, `0-9` en `-`.  | 
     | **Abonnement** | Uw abonnement | Het abonnement waarin dit nieuwe SignalR Service-exemplaar is gemaakt. | 
-    | **[Resourcegroep](../../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Naam voor de nieuwe resourcegroep waarin het SignalR Service-exemplaar moet worden gemaakt. | 
-    | **Location** | US - west | Kies een [regio](https://azure.microsoft.com/regions/) bij u in de buurt. |
-    | **Prijscategorie** | Free | Probeer Azure SignalR Service gratis uit. |
+    | **[Resourcegroep](../../azure-resource-manager/management/overview.md)** |  myResourceGroup | Naam voor de nieuwe resourcegroep waarin het SignalR Service-exemplaar moet worden gemaakt. | 
+    | **Locatie** | VS - west | Kies een [regio](https://azure.microsoft.com/regions/) bij u in de buurt. |
+    | **Prijscategorie** | Gratis | Probeer Azure SignalR Service gratis uit. |
     | **Aantal eenheden** |  Niet van toepassing | Het aantal eenheden geeft aan hoeveel verbindingen uw SignalR Service-exemplaar kan accepteren. Dit kan alleen worden geconfigureerd in de Standard-laag. |
-    | **Service modus** |  Serverloos | Voor gebruik met Azure Functions of REST API. |
+    | **Service modus** |  Serverless | Voor gebruik met Azure Functions of REST API. |
 
-    ![De service SignalR maken](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
+    ![SignalR Service maken](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
 
 1. Selecteer **Maken** om te beginnen met het implementeren van het SignalR-Service-exemplaar.
 

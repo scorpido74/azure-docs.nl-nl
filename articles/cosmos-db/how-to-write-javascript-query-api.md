@@ -1,17 +1,17 @@
 ---
-title: Opgeslagen procedures en triggers schrijven met de JavaScript-query-API in Azure Cosmos DB
+title: Opgeslagen procedures en triggers schrijven met behulp van de Java script-query-API in Azure Cosmos DB
 description: Leer opgeslagen procedures en triggers schrijven met de JavaScript-query-API in Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 96ecd77cb955d5e63cdcae8657e3096bbbadba89
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 221a3118808a044ef1b1b822b9c95772bf792f34
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092885"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441714"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Opgeslagen procedures en triggers schrijven in Azure Cosmos DB met de JavaScript-query-API
 
@@ -19,7 +19,7 @@ In Azure Cosmos DB kunt u geoptimaliseerde query's uitvoeren door gebruik te mak
 
 ## <a id="stored-procedures"></a>Opgeslagen procedure met behulp van de JavaScript-query-API
 
-Het volgende codevoorbeeld geeft aan hoe de JavaScript-query-API wordt gebruikt in de context van een opgeslagen procedure. Met de opgeslagen procedure wordt een Azure Cosmos-item ingevoegd dat is opgegeven door een invoer parameter en wordt een meta gegevens document `__.filter()` bijgewerkt met behulp van de methode, met minSize, maxSize en totalSize op basis van de eigenschap Size van het invoer item.
+Het volgende codevoorbeeld geeft aan hoe de JavaScript-query-API wordt gebruikt in de context van een opgeslagen procedure. Met de opgeslagen procedure wordt een Azure Cosmos-item ingevoegd dat is opgegeven door een invoer parameter en wordt een meta gegevens document bijgewerkt met behulp van de methode `__.filter()`, met minSize, maxSize en totalSize op basis van de eigenschap Size van het invoer item.
 
 > [!NOTE]
 > `__` (dubbele onderstreping) is een alias naar `getContext().getCollection()` bij gebruik van de JavaScript-query-API.

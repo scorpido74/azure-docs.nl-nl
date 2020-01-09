@@ -1,24 +1,14 @@
 ---
-title: Een Azure Service Fabric-cluster implementatie plannen | Microsoft Docs
+title: Een Azure Service Fabric-cluster implementatie plannen
 description: Meer informatie over het plannen en voorbereiden van een productie-Service Fabric cluster implementatie naar Azure.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/20/2019
-ms.author: atsenthi
-ms.openlocfilehash: a130e9bc8859360704c9be1c0a7fe066d2ed4567
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 69fb97e4e679b3ce5817a51d619799a3384fd753
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599997"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463315"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Plannen en voorbereiden voor een cluster implementatie
 
@@ -28,7 +18,7 @@ Het plannen en voorbereiden van een productie cluster implementatie is zeer bela
 Voor het beheren van Azure Service Fabric-toepassingen en-clusters zijn er bewerkingen die u het beste kunt uitvoeren om de betrouw baarheid van uw productie omgeving te optimaliseren.  Lees [service Fabric aanbevolen procedures voor toepassingen en clusters](service-fabric-best-practices-overview.md)voor meer informatie.
 
 ## <a name="select-the-os-for-the-cluster"></a>Het besturings systeem voor het cluster selecteren
-Met Service Fabric kunt u Service Fabric-clusters maken op alle Vm's of computers met Windows Server of Linux.  Voordat u het cluster implementeert, moet u het besturings systeem kiezen:  Windows of Linux.  Elk knoop punt (virtuele machine) in het cluster voert hetzelfde besturings systeem uit. u kunt geen Windows-en Linux-Vm's in hetzelfde cluster combi neren.
+Met Service Fabric kunt u Service Fabric-clusters maken op alle Vm's of computers met Windows Server of Linux.  Voordat u het cluster implementeert, moet u het besturings systeem: Windows of Linux kiezen.  Elk knoop punt (virtuele machine) in het cluster voert hetzelfde besturings systeem uit. u kunt geen Windows-en Linux-Vm's in hetzelfde cluster combi neren.
 
 ## <a name="capacity-planning"></a>Capaciteitsplanning
 Voor een productie-implementatie is capaciteits planning een belang rijke stap. Hier volgen enkele aandachtspunten voor dat proces.
@@ -57,13 +47,13 @@ De laag duurzaamheid wordt gebruikt om aan het systeem de bevoegdheden aan te ge
 De betrouwbaarheids categorie wordt gebruikt om het aantal replica's in te stellen van de systeem services die u wilt uitvoeren in dit cluster op het primaire knooppunt type. Hoe langer het aantal replica's, hoe betrouwbaarder de systeem services zijn in uw cluster.  Zie [de betrouw baarheids kenmerken van het cluster][reliability]voor meer voor delen van de verschillende niveaus en aanbevelingen voor het niveau dat moet worden gebruikt en wanneer. 
 
 ## <a name="enable-reverse-proxy-andor-dns"></a>Omgekeerde proxy en/of DNS inschakelen
-Services die met elkaar in een cluster verbinding maken, hebben doorgaans rechtstreeks toegang tot de eind punten van andere services, omdat de knoop punten in een cluster zich op hetzelfde lokale netwerk bevinden. Service Fabric biedt extra services om het maken van verbinding tussen services gemakkelijker te maken: Een [DNS-service](service-fabric-dnsservice.md) en een reverse [Proxy service](service-fabric-reverseproxy.md).  Beide services kunnen worden ingeschakeld wanneer u een cluster implementeert.
+Services die met elkaar in een cluster verbinding maken, hebben doorgaans rechtstreeks toegang tot de eind punten van andere services, omdat de knoop punten in een cluster zich op hetzelfde lokale netwerk bevinden. Service Fabric biedt extra services: een [DNS-service](service-fabric-dnsservice.md) en een [reverse proxy service](service-fabric-reverseproxy.md)om het maken van verbinding tussen services gemakkelijker te maken.  Beide services kunnen worden ingeschakeld wanneer u een cluster implementeert.
 
 Omdat veel services, met name in container Services, een bestaande URL-naam kunnen hebben, kunt u deze omzetten met het standaard-DNS-protocol (in plaats van het Naming Service-Protocol), met name in de scenario's ' lift and Shift '. Dit is precies wat de DNS-service doet. Hiermee kunt u DNS-namen toewijzen aan een service naam en daarom IP-adres van het eind punt omzetten.
 
 De services voor omgekeerde proxy adressen in het cluster die HTTP-eind punten (inclusief HTTPS) beschikbaar stellen. De omgekeerde proxy vereenvoudigt het aanroepen van andere services door een specifieke URI-indeling op te geven.  De omgekeerde proxy zorgt er ook voor dat de stappen voor probleem oplossing, verbinding maken en opnieuw proberen voor één service worden uitgevoerd om met elkaar te communiceren.
 
-## <a name="prepare-for-disaster-recovery"></a>Voorbereiden voor herstel na noodgevallen
+## <a name="prepare-for-disaster-recovery"></a>Voorbereiden op herstel na noodgeval
 Een essentieel onderdeel van het leveren van hoge Beschik baarheid zorgt ervoor dat Services alle verschillende soorten storingen kunnen overlaten. Dit is vooral belang rijk voor storingen die ongepland zijn en buiten uw besturings element vallen. [Voor bereiding op herstel na nood gevallen](service-fabric-disaster-recovery.md) worden enkele veelvoorkomende fout modi beschreven die nood gevallen kunnen zijn als ze niet correct worden gemodelleerd en beheerd. Er worden ook oplossingen en acties beschreven die moeten worden uitgevoerd als er toch een nood geval is opgetreden.
 
 ## <a name="production-readiness-checklist"></a>Controlelijst voor productiegereedheid

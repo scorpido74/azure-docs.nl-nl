@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 691b2ae7e497c9292975083e3687d9240ce6f3e6
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: ec9f7ecf218b635588065c14bd4d11283d027c11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286123"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364081"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>De metrische gegevens van het gast besturingssysteem naar het Azure Monitor metrische archief verzenden met behulp van een Azure Resource Manager sjabloon voor een Windows-schaalset voor virtuele machines
 
@@ -23,7 +23,7 @@ Met de Azure Monitor [-uitbrei ding Windows Azure Diagnostics (WAD)](diagnostics
 
 In dit artikel wordt het proces beschreven voor het verzenden van de prestatie gegevens voor het gast besturingssysteem voor een Windows-schaalset voor virtuele machines naar het Azure Monitor-gegevens archief. Vanaf Windows Azure Diagnostics versie 1,11 kunt u metrische gegevens rechtstreeks naar de opslag voor metrische gegevens van Azure Monitor schrijven, waar de standaard waarden voor het platform al zijn verzameld. Door ze op deze locatie op te slaan, hebt u toegang tot dezelfde acties die beschikbaar zijn voor de metrische gegevens van het platform. Acties omvatten bijna realtime waarschuwingen, grafieken, route ring, toegang vanaf de REST API, en meer. In het verleden schreef de Windows Azure Diagnostics-uitbrei ding naar Azure Storage, maar niet voor het gegevens archief van Azure Monitor.  
 
-Als u niet bekend bent met Resource Manager-sjablonen, kunt u meer te weten komen over [sjabloon implementaties](../../azure-resource-manager/resource-group-overview.md) en de bijbehorende structuur en syntaxis.  
+Als u niet bekend bent met Resource Manager-sjablonen, kunt u meer te weten komen over [sjabloon implementaties](../../azure-resource-manager/management/overview.md) en de bijbehorende structuur en syntaxis.  
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -238,7 +238,7 @@ Sla beide bestanden op en sluit deze.
 
 Als u de Resource Manager-sjabloon wilt implementeren, gebruikt u Azure PowerShell:  
 
-1. Start Power shell. 
+1. Start PowerShell. 
 1. Meld u aan bij Azure met `Login-AzAccount`.
 1. U kunt uw lijst met abonnementen ophalen met behulp van `Get-AzSubscription`.
 1. Stel het abonnement in dat u maakt of werk de virtuele machine bij: 

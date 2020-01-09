@@ -1,18 +1,15 @@
 ---
 title: Overzicht van automatisch schalen in Virtual Machines, Cloud Services en Web Apps
 description: Automatisch schalen in Microsoft Azure. Is van toepassing op Virtual Machines, virtuele-machine schaal sets, Cloud Services en Web Apps.
-ms.service: azure-monitor
 ms.subservice: autoscale
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 09/24/2018
-ms.openlocfilehash: 2aeb0bc174eb5a94d485f4eafe000ecb3f693e5f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: a60c03f1928b38c78a59edca4b5493307d7d19d3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552280"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364370"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Overzicht van automatisch schalen in Microsoft Azure Virtual Machines, Cloud Services en Web Apps
 In dit artikel wordt beschreven wat Microsoft Azure automatisch schalen is, wat de voor delen zijn en hoe u het kunt gaan gebruiken.  
@@ -94,7 +91,7 @@ Verticaal schalen daarentegen wijkt af van elkaar af. Het houdt hetzelfde aantal
 ## <a name="methods-of-access"></a>Toegangs methoden
 U kunt automatisch schalen instellen via
 
-* [Azure-portal](../../azure-monitor/platform/autoscale-get-started.md)
+* [Azure Portal](../../azure-monitor/platform/autoscale-get-started.md)
 * [PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 * [Platformonafhankelijke opdrachtregelinterface (CLI)](../../azure-monitor/platform/cli-samples.md#autoscale)
 * [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx)
@@ -102,7 +99,7 @@ U kunt automatisch schalen instellen via
 ## <a name="supported-services-for-autoscale"></a>Ondersteunde services voor automatisch schalen
 | Service | & Documenten voor schema |
 | --- | --- |
-| Web Apps |[Web Apps schalen](../../azure-monitor/platform/autoscale-get-started.md) |
+| Web-apps |[Web Apps schalen](../../azure-monitor/platform/autoscale-get-started.md) |
 | Cloud Services |[Een Cloud service automatisch schalen](../../cloud-services/cloud-services-how-to-scale-portal.md) |
 | Virtual Machines: klassiek |[De beschik baarheid van klassieke virtuele machines schalen](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
 | Virtual Machines: Windows-schaal sets |[Schaal sets voor virtuele machines in Windows schalen](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |

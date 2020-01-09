@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.custom: seo-lt-2019
-ms.date: 12/06/2019
-ms.openlocfilehash: b972bbeac419d88afdd257a7fd19587dbaedf0d9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 06746cfc3b39a242c16a6b4f4c95b3c212a9abd5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443949"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Problemen met Azure Data Factory gegevens stromen oplossen
 
@@ -92,8 +92,18 @@ In dit artikel worden algemene probleemoplossings methoden voor gegevens stromen
 
 - **Oorzaak**: de stromen die worden toegevoegd, hebben algemene kolom namen
 
-- **Oplossing**: Voeg een SELECT-transforamtion toe na de koppeling en selecteer ' Remove Duplicate columns ' voor de invoer en uitvoer.
+- **Oplossing**: Voeg een trans formatie toe die volgt op de koppeling en selecteer dubbele kolommen verwijderen voor zowel de invoer als de uitvoer.
 
+### <a name="error-message-possible-cartesian-product"></a>Fout bericht: mogelijk Cartesisch product
+
+- **Symptomen**: trans formatie koppelen of opzoeken detecteert mogelijk Cartesisch product bij de uitvoering van uw gegevens stroom
+
+- **Oorzaak**: als u ADF niet expliciet hebt aangegeven om een cross-koppeling te gebruiken, kan de gegevens stroom mislukken
+
+- **Oplossing**: Wijzig uw opzoek-of koppelings transformatie in een samen voeging met behulp van aangepaste cross-koppeling en voer in de expressie-editor uw zoek-of samenvoeg voorwaarde in. Als u een volledig Cartesisch product expliciet wilt maken, gebruikt u de afgeleide kolom transformatie in elk van de twee onafhankelijke streams voordat de koppeling wordt gemaakt om een synthetische sleutel te maken die overeenkomt met. Maak bijvoorbeeld een nieuwe kolom in de afgeleide kolom in elke stroom met de naam ```SyntheticKey``` en stel deze in op ```1```. Gebruik vervolgens ```a.SyntheticKey == b.SyntheticKey``` als uw aangepaste joinexpressie voor samen voegen.
+
+> [!NOTE]
+> Zorg ervoor dat u ten minste één kolom toevoegt aan elke zijde van uw linker-en rechter relatie in een aangepaste cross-koppeling. Het uitvoeren van cross-join's met statische waarden in plaats van kolommen van elke kant resulteert in volledige scans van de hele gegevensset, waardoor uw gegevens stroom slecht kan worden uitgevoerd.
 
 ## <a name="general-troubleshooting-guidance"></a>Algemene richt lijnen voor probleem oplossing
 

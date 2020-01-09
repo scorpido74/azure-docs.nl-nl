@@ -1,5 +1,6 @@
 ---
-title: Voor beeld van Azure API management-beleid-een koptekst met een correlatie-id toevoegen | Microsoft Docs
+title: 'Voor beeld-API-beheer beleid: een kop met de correlatie-id toevoegen'
+titleSuffix: Azure API Management
 description: 'Voor beeld van Azure API management-beleid: demonstreert hoe u een koptekst met een correlatie-id aan de inkomende aanvraag kunt toevoegen.'
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 9f091345a4eaf174c47959cad3cb4525fd926689
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 79910aa60602a80cbe79c4ce9899f6ff73fbfde9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074217"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422257"
 ---
 # <a name="add-a-header-containing-a-correlation-id"></a>Een koptekst met een correlatie-id toevoegen
 

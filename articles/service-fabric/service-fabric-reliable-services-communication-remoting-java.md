@@ -1,41 +1,33 @@
 ---
-title: Service voor externe toegang met behulp van Java in Azure Service Fabric | Microsoft Docs
-description: Externe communicatie met Service Fabric kan clients en services om te communiceren met Java-services met behulp van een externe procedureaanroep.
-services: service-fabric
-documentationcenter: java
+title: Externe service met behulp van java in azure Service Fabric
+description: Met Service Fabric externe toegang kunnen clients en services communiceren met Java-Services met behulp van een externe procedure aanroep.
 author: PavanKunapareddyMSFT
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 51c8c689bd3fe3e8967bab77e776ad02f9cb59f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eef63d7a2c8a4b15938dfbffd7db5f9d1b22d426
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123632"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426640"
 ---
-# <a name="service-remoting-in-java-with-reliable-services"></a>Service voor externe toegang in Java met Reliable Services
+# <a name="service-remoting-in-java-with-reliable-services"></a>Externe service in Java met Reliable Services
 > [!div class="op_single_selector"]
 > * [C# op Windows](service-fabric-reliable-services-communication-remoting.md)
 > * [Java op Linux](service-fabric-reliable-services-communication-remoting-java.md)
 >
 >
 
-Voor services die niet zijn gekoppeld aan een bepaalde communicatieprotocol of stack, zoals WebAPI, Windows Communication Foundation (WCF) of andere resources, biedt het framework van Reliable Services een mechanisme voor externe toegang snel en eenvoudig instellen van externe procedureaanroepen voor Services.  In dit artikel wordt beschreven hoe het instellen van externe procedureaanroepen voor services die zijn geschreven met behulp van Java.
+Voor services die niet zijn gekoppeld aan een bepaald communicatie protocol of stack, zoals WebAPI, Windows Communication Foundation (WCF) of anderen, biedt het Reliable Services Framework een extern mechanisme om snel en eenvoudig externe procedure-aanroepen in te stellen voor Onderzoeksservices.  In dit artikel wordt beschreven hoe u externe procedure aanroepen instelt voor services die zijn geschreven met Java.
 
-## <a name="set-up-remoting-on-a-service"></a>Instellen van een service voor externe toegang
-Instellen van externe toegang tot een service wordt uitgevoerd in twee eenvoudige stappen:
+## <a name="set-up-remoting-on-a-service"></a>Externe toegang instellen voor een service
+Het instellen van externe toegang voor een service geschiedt in twee eenvoudige stappen:
 
-1. Maak een interface voor uw service te implementeren. Deze interface definieert de methoden die beschikbaar voor een externe procedureaanroep op uw service zijn. De methoden retourneren van de taak moeten zijn asynchrone methoden. De interface moet implementeren `microsoft.serviceFabric.services.remoting.Service` om aan te geven dat de service een externe communicatie-interface heeft.
-2. Gebruik een listener voor externe toegang in uw service. Dit is een `CommunicationListener` mogelijkheden voor externe toegang biedt-implementatie. `FabricTransportServiceRemotingListener` kan worden gebruikt om te maken van een externe listener met behulp van het standaardprotocol voor het transport van externe toegang.
+1. Maak een interface voor uw service die u wilt implementeren. Deze interface definieert de methoden die beschikbaar zijn voor een externe procedure aanroep voor uw service. De methoden moeten asynchrone methoden van het taak resultaat hebben. De interface moet `microsoft.serviceFabric.services.remoting.Service` implementeren om aan te geven dat de service een externe interface heeft.
+2. Gebruik een externe listener in uw service. Dit is een `CommunicationListener` implementatie die mogelijkheden biedt voor externe communicatie. `FabricTransportServiceRemotingListener` kan worden gebruikt om een externe listener te maken met behulp van het standaard externe transport protocol.
 
-Bijvoorbeeld, een één methode voor het "Hallo wereld" ophalen via een externe procedureaanroep wordt aangegeven dat de volgende stateless service.
+De volgende stateless service biedt bijvoorbeeld een enkele methode om Hallo wereld te verkrijgen via een externe procedure aanroep.
 
 ```java
 import java.util.ArrayList;
@@ -70,12 +62,12 @@ class MyServiceImpl extends StatelessService implements MyService {
 ```
 
 > [!NOTE]
-> De argumenten en de typen retourneren die in de service-interface kunnen een eenvoudige, complexe of aangepaste typen zijn, maar ze moeten worden geserialiseerd.
+> De argumenten en de retour typen in de service-interface kunnen eenvoudige, complexe of aangepaste typen zijn, maar ze moeten serialiseerbaar zijn.
 >
 >
 
-## <a name="call-remote-service-methods"></a>Externe servicemethoden aanroepen
-Methoden voor het aanroepen van een service met behulp van de stack voor externe toegang wordt uitgevoerd met behulp van een lokale proxyserver naar de service via de `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` klasse. De `ServiceProxyBase` methode maakt u een lokale proxyserver met behulp van dezelfde interface die de service implementeert. Met deze proxy, kunt u gewoon methoden aanroepen op de interface op afstand.
+## <a name="call-remote-service-methods"></a>Externe service methoden aanroepen
+Het aanroepen van methoden voor een service met behulp van de externe stack wordt uitgevoerd met behulp van een lokale proxy voor de service via de `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase`-klasse. Met de methode `ServiceProxyBase` wordt een lokale proxy gemaakt met behulp van de interface die door de service wordt geïmplementeerd. Met die proxy kunt u eenvoudig methoden op de interface aanroepen op afstand.
 
 ```java
 
@@ -85,25 +77,25 @@ CompletableFuture<String> message = helloWorldClient.helloWorldAsync();
 
 ```
 
-Het framework voor externe toegang geeft uitzonderingen op de service naar de client. Dus uitzonderingsverwerking logica op de client met behulp van `ServiceProxyBase` uitzonderingen die de service genereert kunnen rechtstreeks worden verwerkt.
+Het externe Framework geeft uitzonde ringen door die zijn gegenereerd bij de service naar de client. De logica voor het verwerken van uitzonde ringen op de client met behulp van `ServiceProxyBase` kan rechtstreeks uitzonde ring verwerken die door de service wordt gegenereerd.
 
-## <a name="service-proxy-lifetime"></a>De levensduur van de service-Proxy
-Het maken van ServiceProxy is een lichte bewerking, zodat u zoveel behoefte kunt maken. Proxy-service-exemplaren kunnen worden hergebruikt, zolang ze wel nodig zijn. Als een externe procedureaanroep is een uitzondering genereert, kunt u nog steeds hetzelfde exemplaar van de proxy opnieuw gebruiken. Elke ServiceProxy bevat een communicatie-client gebruikt voor het verzenden van berichten via de kabel. Tijdens het aanroepen van externe oproepen, interne controles uitgevoerd om te bepalen of de client communicatie geldig is. Op basis van de resultaten van deze controles, de client communicatie wordt opnieuw gemaakt indien nodig. Dus als er een uitzondering optreedt, u hoeft niet opnieuw maken `ServiceProxy`.
+## <a name="service-proxy-lifetime"></a>Levens duur van Service proxy
+Het maken van een ServiceProxy is een licht gewicht bewerking, zodat u zoveel mogelijk kunt maken. Service proxy-exemplaren kunnen opnieuw worden gebruikt zolang ze nodig zijn. Als een externe procedure aanroep een uitzonde ring genereert, kunt u nog steeds hetzelfde proxy-exemplaar gebruiken. Elk ServiceProxy bevat een communicatie-client die wordt gebruikt voor het verzenden van berichten via de kabel. Tijdens het aanroepen van externe aanroepen worden interne controles uitgevoerd om te bepalen of de communicatie client geldig is. Op basis van de resultaten van die controles wordt de communicatie client indien nodig opnieuw gemaakt. Als er een uitzonde ring optreedt, hoeft u `ServiceProxy`dus niet opnieuw te maken.
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory Lifetime
-[FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) is een factory die proxy voor externe communicatie van andere interfaces worden gemaakt. Als u API `ServiceProxyBase.create` voor het maken van proxy, framework maakt vervolgens een `FabricServiceProxyFactory`.
-Het is handig om een handmatig maken wanneer u nodig hebt voor de onderdrukking [ServiceRemotingClientFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) eigenschappen.
-Factory is een dure bewerking. `FabricServiceProxyFactory` behoudt de cache van clients voor communicatie.
-Best practice is om de cache `FabricServiceProxyFactory` zo lang mogelijk.
+[FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) is een Factory waarmee proxy voor verschillende externe interfaces wordt gemaakt. Als u API `ServiceProxyBase.create` gebruikt voor het maken van een proxy, maakt Framework een `FabricServiceProxyFactory`.
+Het is handig om een hand matig te maken wanneer u [ServiceRemotingClientFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) -eigenschappen wilt overschrijven.
+Factory is een dure bewerking. `FabricServiceProxyFactory` houdt cache van communicatie-clients in.
+De aanbevolen procedure is om `FabricServiceProxyFactory` zo lang mogelijk op te slaan in de cache.
 
-## <a name="remoting-exception-handling"></a>Afhandeling van uitzonderingen voor externe toegang
-De externe uitzondering gegenereerd door de service-API, worden als RuntimeException of FabricException terug naar de client verzonden.
+## <a name="remoting-exception-handling"></a>Afhandeling van externe uitzonde ringen
+Alle externe uitzonde ringen die worden veroorzaakt door Service-API, worden teruggestuurd naar de client, hetzij RuntimeException of FabricException.
 
-ServiceProxy kan overweg met alle failover-uitzondering voor de servicepartitie deze wordt gemaakt. Dit opnieuw de eindpunten oplost als er Failover Exceptions(Non-Transient Exceptions) en probeert om opnieuw de aanroep met het juiste eindpunt. Aantal nieuwe pogingen voor failover-uitzondering is onbepaalde tijd.
-In het geval van TransientExceptions, het alleen opnieuw probeert de aanroep.
+ServiceProxy verwerkt alle failover-uitzonde ringen voor de service partitie waarvoor deze is gemaakt. De eind punten worden opnieuw omgezet als er failover-uitzonde ringen zijn (geen tijdelijke uitzonde ringen) en de aanroep opnieuw probeert met het juiste eind punt. Aantal nieuwe pogingen voor failover-uitzonde ring is oneindig.
+In het geval van TransientExceptions wordt de aanroep alleen opnieuw geprobeerd.
 
-Standaardparameters voor nieuwe pogingen worden opgegeven door [OperationRetrySettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings).
-U kunt deze waarden configureren doordat OperationRetrySettings object doorgegeven aan de constructor ServiceProxyFactory.
+De standaard parameters voor nieuwe pogingen zijn geleverde door [OperationRetrySettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings).
+U kunt deze waarden configureren door OperationRetrySettings object door te geven aan ServiceProxyFactory constructor.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Beveiliging van de communicatie voor Reliable Services](service-fabric-reliable-services-secure-communication-java.md)
+* [Communicatie beveiligen voor Reliable Services](service-fabric-reliable-services-secure-communication-java.md)

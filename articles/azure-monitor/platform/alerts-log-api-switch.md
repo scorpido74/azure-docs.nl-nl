@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 7b3a09c9227110d6dba205987903a2c97dccf1b8
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 5d6b8ce557cb794b3a56ecb3a938a2fe184156ab
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677794"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680746"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>API-voorkeur voor logboekwaarschuwingen wijzigen
 
@@ -44,12 +44,15 @@ De gevolgen van de switch van de voor keur voor de scheduledQueryRules-API worde
 
 - Alle interacties die worden uitgevoerd voor het beheer van logboek waarschuwingen via programmatische interfaces, moeten nu worden uitgevoerd met behulp van [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) . Zie voor meer informatie, voor [beeld van gebruik via een Azure-resource sjabloon](alerts-log.md#managing-log-alerts-using-azure-resource-template) en voor [beeld gebruik via Power shell](alerts-log.md#managing-log-alerts-using-powershell)
 - Nieuwe waarschuwings regels voor logboeken die zijn gemaakt in Azure Portal, worden alleen gemaakt met [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) en toestaan dat gebruikers de [extra functionaliteit van nieuwe API](#benefits-of-switching-to-new-azure-api) via Azure Portal gebruiken
-- Ernst van de regels voor logboek waarschuwingen worden verplaatst van: *Kritiek, waarschuwing & informatie*, op *Ernst waarden van 0, 1 & 2*. En de optie voor het maken/bijwerken van waarschuwings regels met Ernst 3 en 4.
+- De ernst van de regels voor logboek waarschuwingen verschuift van: *kritiek, waarschuwing & informatie*, naar *Ernst waarden van 0, 1 & 2*. En de optie voor het maken/bijwerken van waarschuwings regels met Ernst 3 en 4.
 
-Door het proces van het verplaatsen van waarschuwings regels van de [verouderde log Analytics-waarschuwings-API](api-alerts.md) hoeft u de waarschuwingen definitie,-query of-configuratie op geen enkele manier te wijzigen. Uw waarschuwings regels en controle worden niet beïnvloed en de waarschuwingen worden niet gestopt of niet meer tijdens of na de switch. De enige wijziging is een wijziging in de API-voor keur en toegang tot uw regels via een nieuwe API.
+Door het proces van het verplaatsen van waarschuwings regels van de [verouderde log Analytics-waarschuwings-API](api-alerts.md) hoeft u de waarschuwingen definitie,-query of-configuratie op geen enkele manier te wijzigen. Uw waarschuwings regels en controle worden niet beïnvloed en de waarschuwingen worden niet gestopt of niet meer tijdens of na de switch. De enige wijzigingen zijn:
+
+- Een wijziging in de API-voor keur en toegang tot uw regels via een nieuwe API.
+- Een gewijzigde resource-URI voor een waarschuwings regel met de Id's die worden gebruikt in de [verouderde API voor log Analytics waarschuwingen](api-alerts.md) in plaats van de naam van de waarschuwings regel in deze structuur `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`. De weergave naam van de waarschuwings regel blijft ongewijzigd.
 
 > [!NOTE]
-> Zodra een gebruiker ervoor kiest om voor keur te scha kelen naar de nieuwe [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules), kunt u niet teruggaan naar of terugkeren naar het gebruik van de oudere [verouderde log Analytics alert-API](api-alerts.md).
+> Zodra een gebruiker heeft gekozen om de voor keur te wijzigen naar de nieuwe [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , is het niet mogelijk om terug te gaan naar het gebruik van de oudere [verouderde waarschuwing](api-alerts.md)voor de API van log Analytics.
 
 Elke klant die vrijwillig wil overschakelen naar de nieuwe [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) en het gebruik van de [verouderde log Analytics alert-API](api-alerts.md)wilt blok keren. kan dit doen door een PUT-aanroep uit te voeren op de onderstaande API om alle waarschuwings regels te wijzigen die zijn gekoppeld aan de specifieke Log Analytics-werk ruimte.
 

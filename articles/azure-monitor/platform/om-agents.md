@@ -4,15 +4,15 @@ description: Als u uw bestaande investering in System Center Operations Manager 
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 79fcbb6f972eb022ce4d0e47a608e6f0d053a9ad
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5dc9412c7884eb62795fd04240f6cfa7d103e3be
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162236"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363656"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager verbinden met Azure Monitor
 
@@ -94,9 +94,9 @@ Hieronder vindt u de informatie over de proxy-en firewall configuratie die is ve
 |api.loganalytics.io| 80 en 443||
 |docs.loganalytics.io| 80 en 443||  
 
-### <a name="tls-12-protocol"></a>TLS 1,2-protocol
+### <a name="tls-12-protocol"></a>TLS 1.2-protocol
 
-Om ervoor te zorgen dat de beveiliging van gegevens die onderweg zijn Azure Monitor, kunt u het beste de agent en beheer groep configureren om ten minste Transport Layer Security (TLS) 1,2 te gebruiken. Er zijn oudere versies van TLS/Secure Sockets Layer (SSL) gevonden die kwetsbaar zijn en terwijl ze nog steeds werken om achterwaartse compatibiliteit mogelijk te maken, worden ze **niet aanbevolen**. Raadpleeg voor meer informatie [veilig verzenden van gegevens met behulp van TLS 1,2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12).
+Om ervoor te zorgen dat de beveiliging van gegevens die onderweg zijn Azure Monitor, kunt u het beste de agent en beheer groep configureren om ten minste Transport Layer Security (TLS) 1,2 te gebruiken. Oudere versies van TLS/Secure Sockets Layer (SSL) kwetsbaar zijn gevonden en hoewel ze op dit moment nog steeds werken om toe te staan achterwaartse compatibiliteit, zijn ze onderling **niet aanbevolen**. Raadpleeg voor meer informatie, [verzenden van gegevens veilig gebruik TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12).
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Operations Manager verbinding maken met Azure Monitor
 
@@ -105,8 +105,8 @@ Voer de volgende stappen uit om uw Operations Manager-beheergroep te verbinden m
 Tijdens de eerste registratie van uw Operations Manager-beheer groep met een Log Analytics-werk ruimte is de optie om de proxy configuratie voor de beheer groep op te geven niet beschikbaar in de operations-console.  Deze optie is pas beschikbaar als de beheergroep bij de service is geregistreerd.  Als u dit wilt omzeilen, moet u de systeem proxy configuratie bijwerken met behulp van Netsh op het systeem waarop de operations-console wordt uitgevoerd om de integratie te configureren en alle beheerser vers in de beheer groep.  
 
 1. Open een opdrachtprompt met verhoogde bevoegdheid.
-   a. Ga naar **Start** en typ **cmd**.
-   b. Klik met de rechter muisknop op **opdracht prompt** en selecteer als administrator uitvoeren * *.
+   a. Ga naar **Start** en het type **cmd**.
+   b. Met de rechtermuisknop op **opdrachtprompt** en selecteert u uitvoeren als beheerder **.
 1. Voer de volgende opdracht in en druk op **Enter**:
 
     `netsh winhttp set proxy <proxy>:<port>`

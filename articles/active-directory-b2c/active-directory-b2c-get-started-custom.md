@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 66b361a7eb82610d12a10c9c190f2872c072d7ba
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f802c2d1f986f5da62f4ffd3205523423f04e49c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664060"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367889"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Aan de slag met aangepast beleid in Azure Active Directory B2C
 
@@ -31,10 +31,10 @@ ms.locfileid: "74664060"
 
 ## <a name="add-signing-and-encryption-keys"></a>Ondertekenings-en versleutelings sleutels toevoegen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com)
-1. Gebruik het filter voor **adres lijst en abonnementen** in het bovenste menu om de map te selecteren die uw Azure AD B2C Tenant bevat.
-1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
-1. Selecteer op de pagina overzicht de optie **identiteits ervaring-Framework** in het deel venster **beleid** .
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
+1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
+1. Selecteer op de pagina overzicht onder **beleids regels**het **Framework identiteits ervaring**.
 
 ### <a name="create-the-signing-key"></a>De handtekening sleutel maken
 
@@ -77,10 +77,9 @@ Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de huidi
 
 #### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
 
-1. Selecteer **alle services** in de linkerbovenhoek van de Azure Portal.
-1. Typ `Azure Active Directory` in het zoekvak.
-1. Selecteer **Azure Active Directory** in de zoekresultaten.
-1. Onder **beheren** in het linkermenu selecteert u **app-registraties (verouderd)** .
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
+1. Selecteer in het menu **Azure Active Directory** overzicht onder **beheren**de optie **app-registraties (verouderd)** .
 1. Selecteer **Nieuwe toepassing registreren**.
 1. Voer bij **naam**`IdentityExperienceFramework`in.
 1. Kies voor **toepassings type** **Web-app/API**.

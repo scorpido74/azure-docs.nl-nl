@@ -1,5 +1,5 @@
 ---
-title: Rapporten en logboeken weer geven in het beheer van rechten van Azure AD-Azure Active Directory
+title: Rapporten weer geven & Logboeken in rechten beheer-Azure AD
 description: Meer informatie over het weer geven van het rapport van gebruikers toewijzingen en controle Logboeken in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3302fc3b2513794cd66d1ebf6db2cbcdb0f713dd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 819badb85e532275b4d5d6ca84c3e6e7fe527fa0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173878"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422559"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Rapporten en logboeken weer geven in het beheer van rechten van Azure AD
 
@@ -85,7 +85,7 @@ Als u meer wilt weten over de manier waarop een gebruiker toegang tot een toegan
 
 1. Wijzig bovenaan de **categorie** in `EntitlementManagement` of `UserManagement`, afhankelijk van de controle record die u zoekt.  
 
-1. Klik op **Apply** (Toepassen).
+1. Klik op **Toepassen**.
 
 1. Klik op **downloaden**om de logboeken te downloaden.
 
@@ -93,7 +93,7 @@ Wanneer Azure AD een nieuwe aanvraag ontvangt, wordt een controle record geschre
 
 Azure AD schrijft extra audit records tijdens de uitvoering van de aanvraag, waaronder:
 
-| Category | Activiteit | Aanvraag status |
+| Categorie | Activiteit | Aanvraag status |
 | :---- | :------------ | :------------ |
 | `EntitlementManagement` | `Auto approve access package assignment request` | Aanvraag heeft geen goed keuring vereist |
 | `UserManagement` | `Create request approval` | Aanvraag moet worden goedgekeurd |

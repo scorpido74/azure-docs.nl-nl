@@ -2,19 +2,15 @@
 title: Mijn eerste python-runbook in Azure Automation
 description: Zelf studie die u helpt bij het maken, testen en publiceren van een eenvoudig python-runbook.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/19/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 54b008939b3d083769756b9ac3c3c9e3f7aebea5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b17a0403a3b2a3ff8c3586ed26a4b833db54922d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850275"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365934"
 ---
 # <a name="my-first-python-runbook"></a>Mijn eerste python-runbook
 
@@ -83,7 +79,7 @@ In dit geval hebt u nog geen gepubliceerde versie omdat u het runbook zojuist he
 1. Schuif terug naar rechts om het deel venster voor **MyFirstRunbook-python**weer te geven.
    Met de opties bovenaan kunnen we het runbook starten, het runbook weer geven of plannen dat het op een bepaald moment in de toekomst wordt gestart.
 2. U wilt het runbook starten, dus klik op **Start** en klik vervolgens op **OK** wanneer de Blade runbook starten wordt geopend.
-3. Er wordt een taak venster geopend voor de runbook-taak die u hebt gemaakt. u kunt dit deel venster sluiten, maar in dit geval laat u het geopend, zodat u de voortgang van de taak kunt bekijken.
+3. Er wordt een taak venster geopend voor de runbook-taak die u hebt gemaakt. U kunt dit deel venster sluiten, maar in dit geval laat u het geopend, zodat u de voortgang van de taak kunt bekijken.
 1. De taak status wordt weer gegeven in **taak samenvatting** en komt overeen met de statussen die u hebt gezien tijdens het testen van het runbook.
 2. Zodra voor het runbook de status *Voltooid* wordt weergegeven, klikt u op **Uitvoer**. Het deel venster uitvoer wordt geopend en u kunt uw *Hallo wereld*zien.
 3. Sluit het deelvenster Uitvoer.

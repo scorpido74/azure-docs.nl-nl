@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 2ebc678bffbbbe5d512d620b8f77ac0a245c0aff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bdd364c097552d3a1b52073af97d33db70d78556
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60713832"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647438"
 ---
 # <a name="enable-containers-to-use-azure-virtual-network-capabilities"></a>Containers inschakelen voor gebruik van mogelijkheden van Azure Virtual Network
 
@@ -47,22 +47,22 @@ Pods worden gegenereerd op een virtuele machine die deel uitmaakt van een virtue
 
 ![Details van netwerkomgeving voor containers](./media/container-networking/container-networking-detail.png)
 
-## <a name="internet-access"></a>Toegang tot het internet
+## <a name="internet-access"></a>Internettoegang
 
 Om Pods toegang te geven tot het internet, configureert de invoegtoepassing *iptables*-regels om NAT (omzetting van netwerkadressen) toe te passen op het voor het internet bedoelde verkeer vanaf Pods. Het bron-IP-adres van het pakket wordt omgezet in het primaire IP-adres op de netwerkinterface van de virtuele machine. Virtuele Windows-machines passen automatisch 'source NAT' (SNAT) toe op verkeer dat is bestemd voor een IP-adres buiten het subnet van de virtuele machine. Normaal gesproken wordt al het verkeer dat is bestemd voor een IP-adres buiten het IP-adresbereik van het virtuele netwerk omgezet.
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>Beperkingen
 
-De invoegtoepassing ondersteunt maximaal 250 Pods per virtuele machine en maximaal 16.000 Pods in een virtueel netwerk. Voor de [Azure Kubernetes Service](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-kubernetes-service-limits) gelden andere limieten.
+De invoegtoepassing ondersteunt maximaal 250 Pods per virtuele machine en maximaal 16.000 Pods in een virtueel netwerk. Voor de [Azure Kubernetes Service](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-kubernetes-service-limits) gelden andere limieten.
 
 ## <a name="using-the-plug-in"></a>De invoegtoepassing gebruiken
 
 De invoegtoepassing kan op de volgende manieren worden gebruikt om een eenvoudige koppeling met een virtueel netwerk tot stand te brengen voor Pods of Docker-containers:
 
-- **Azure Kubernetes Service**: De invoegtoepassing is geïntegreerd in de Azure Kubernetes Service (AKS), en kan worden gebruikt door het kiezen van de *geavanceerde netwerken* optie. Met deze optie kunt u een Kubernetes-cluster implementeren in een bestaand of een nieuw virtueel netwerk. Zie [Network configuration in Azure Kubernetes Service (AKS)](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Netwerkconfiguratie in AKS (Azure Kubernetes Service)) voor meer informatie over de optie Geavanceerd en de stappen om de optie in te stellen.
-- **AKS-Engine**: AKS-Engine is een hulpprogramma dat genereert een Azure Resource Manager-sjabloon voor de implementatie van een Kubernetes-cluster in Azure. Zie voor gedetailleerde instructies [implementeren de invoegtoepassing voor AKS-Engine, Kubernetes-clusters](deploy-container-networking.md#deploy-the-azure-virtual-network-container-network-interface-plug-in).
-- **Het maken van uw eigen Kubernetes-cluster in Azure**: De invoegtoepassing kan worden gebruikt om het netwerkgebruik voor schillen in een Kubernetes-clusters bieden u zelf implementeren zonder AKS of hulpprogramma's, zoals de AKS-Engine. In dit geval wordt de invoegtoepassing geïnstalleerd en ingeschakeld op elke virtuele machine in een cluster. Zie [Deploy plug-in for a Kubernetes cluster](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster) (Invoegtoepassing implementeren voor een Kubernetes-cluster) voor gedetailleerde instructies.
-- **Virtueel netwerk koppelen voor Docker-containers in Azure**: De invoegtoepassing kan worden gebruikt in gevallen waar u niet wilt maken van een Kubernetes-cluster en wilt maken van Docker-containers met virtueel netwerk koppelen, op virtuele machines. Zie [Deploy plug-in for Docker containers](deploy-container-networking.md#deploy-plug-in-for-docker-containers) (Invoegtoepassing implementeren voor Docker-containers) voor gedetailleerde instructies.
+- **Azure Kubernetes Service**: de invoegtoepassing is geïntegreerd in Azure Kubernetes Service (AKS) en kan worden gebruikt door de optie *Geavanceerd* (bij Netwerkconfiguratie) te kiezen. Met deze optie kunt u een Kubernetes-cluster implementeren in een bestaand of een nieuw virtueel netwerk. Zie [Network configuration in Azure Kubernetes Service (AKS)](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Netwerkconfiguratie in AKS (Azure Kubernetes Service)) voor meer informatie over de optie Geavanceerd en de stappen om de optie in te stellen.
+- **AKS-engine**: aks-engine is een hulp programma waarmee een Azure Resource Manager sjabloon wordt gegenereerd voor de implementatie van een Kubernetes-cluster in Azure. Zie [Deploying the plug-in for AKS-engine Kubernetes clusters](deploy-container-networking.md#deploy-the-azure-virtual-network-container-network-interface-plug-in)(Engelstalig) voor gedetailleerde instructies.
+- **Uw eigen Kubernetes-cluster maken in azure**: de invoeg toepassing kan worden gebruikt om basis netwerken te bieden voor een Peul in Kubernetes-clusters die u zelf implementeert, zonder dat u gebruikmaakt van AKS of hulpprogram ma's zoals de AKS-engine. In dit geval wordt de invoegtoepassing geïnstalleerd en ingeschakeld op elke virtuele machine in een cluster. Zie [Deploy plug-in for a Kubernetes cluster](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster) (Invoegtoepassing implementeren voor een Kubernetes-cluster) voor gedetailleerde instructies.
+- **Virtueel netwerk koppelen voor Docker-containers in Azure**: de invoegtoepassing kan worden gebruikt in gevallen waarin u geen Kubernetes-cluster wilt maken en u Docker-containers wilt maken die zijn gekoppeld aan een virtueel netwerk, op virtuele machines. Zie [Deploy plug-in for Docker containers](deploy-container-networking.md#deploy-plug-in-for-docker-containers) (Invoegtoepassing implementeren voor Docker-containers) voor gedetailleerde instructies.
 
 ## <a name="next-steps"></a>Volgende stappen
 

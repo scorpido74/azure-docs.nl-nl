@@ -1,116 +1,107 @@
 ---
-title: Verschillen tussen Cloudservices en Service Fabric | Microsoft Docs
+title: Verschillen tussen Cloud Services en Service Fabric
 description: Een conceptueel overzicht voor het migreren van toepassingen van Cloud Services naar Service Fabric.
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 0b87b1d3-88ad-4658-a465-9f05a3376dee
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 8b486e617389e1611dfebf3d347d2d64df088593
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 283ad2c63bb59771dab7881522e737f773ab1705
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258639"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463380"
 ---
-# <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Meer informatie over de verschillen tussen Cloud Services en Service Fabric voor het migreren van toepassingen.
-Microsoft Azure Service Fabric is de volgende generatie toepassingen cloudplatform voor uiterst schaalbare webhostingservice met uiterst betrouwbare gedistribueerde toepassingen. Het geeft veel nieuwe functies voor het verpakken, implementeren, bijwerken en beheren van gedistribueerde cloud-Apps. 
+# <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Meer informatie over de verschillen tussen Cloud Services en Service Fabric voordat u toepassingen migreert.
+Microsoft Azure Service Fabric is het Cloud toepassings platform van de volgende generatie voor zeer schaal bare, zeer betrouw bare gedistribueerde toepassingen. Het bevat een groot aantal nieuwe functies voor het verpakken, implementeren, bijwerken en beheren van gedistribueerde Cloud toepassingen. 
 
-Dit is een inleidende handleiding voor het migreren van toepassingen van Cloud Services naar Service Fabric. Het richt zich voornamelijk op architectuur en ontwerp van de verschillen tussen Cloud Services en Service Fabric.
+Dit is een inleidende hand leiding voor het migreren van toepassingen van Cloud Services naar Service Fabric. Het richt zich voornamelijk op architectuur-en ontwerp verschillen tussen Cloud Services en Service Fabric.
 
-## <a name="applications-and-infrastructure"></a>Toepassingen en infrastructuur
-Een fundamenteel verschil tussen Cloud Services en Service Fabric is de relatie tussen virtuele machines, workloads en toepassingen. Hier een werkbelasting wordt gedefinieerd als de code schrijven naar een specifieke taak uitvoeren- of -service biedt.
+## <a name="applications-and-infrastructure"></a>Toepassingen en infra structuur
+Een fundamenteel verschil tussen Cloud Services en Service Fabric is de relatie tussen Vm's, werk belastingen en toepassingen. Hier is een workload gedefinieerd als de code die u schrijft om een specifieke taak uit te voeren of een service te bieden.
 
-* **Cloudservices is over het implementeren van toepassingen, zoals virtuele machines.** De code die u schrijft is nauw gekoppeld aan een VM-exemplaar, zoals een Web- of Werkrol. Is het implementeren van een of meer VM-exemplaren die worden uitgevoerd van de werkbelasting voor het implementeren van een workload in Cloud Services. Er is geen scheiding van toepassingen en virtuele machines en dus er is geen officiële definitie van een toepassing. Een toepassing kan van worden beschouwd als een reeks Web- of Werkrol-exemplaren in een implementatie van Cloud Services of als een volledige implementatie van Cloud Services. In dit voorbeeld wordt wordt een toepassing weergegeven als een set rolinstanties.
+* **Cloud Services is het implementeren van toepassingen als Vm's.** De code die u schrijft, is nauw gekoppeld aan een VM-exemplaar, zoals een web-of worker-rol. Voor het implementeren van een werk belasting in Cloud Services is het implementeren van een of meer VM-exemplaren die de werk belasting uitvoeren. Er zijn geen schei ding van toepassingen en Vm's, en daarom is er geen formele definitie van een toepassing. Een toepassing kan worden beschouwd als een reeks web-of worker-instanties binnen een Cloud Services-implementatie of als een volledige Cloud Services-implementatie. In dit voor beeld wordt een toepassing weer gegeven als een set rolinstanties.
 
-![Cloud Services-toepassingen en -topologie][1]
+![Cloud Services toepassingen en topologie][1]
 
-* **Service Fabric is over het implementeren van toepassingen aan bestaande virtuele machines of machines waarop Windows of Linux, Service Fabric.** De services die u schrijft zijn volledig elkaar zijn losgekoppeld van de onderliggende infrastructuur, die abstract opgeslagen door de Service Fabric-toepassing-platform gemaakt is, zodat een toepassing kan worden geïmplementeerd op meerdere omgevingen. Een workload in Service Fabric is een 'service' genoemd en een of meer services worden gegroepeerd in een formeel gedefinieerde toepassing die wordt uitgevoerd op het platform voor Service Fabric-toepassingen. Meerdere toepassingen kunnen worden geïmplementeerd in een Service Fabric-cluster.
+* **Service Fabric is het implementeren van toepassingen op bestaande Vm's of machines met Service Fabric in Windows of Linux.** De services die u schrijft, zijn volledig losgekoppeld van de onderliggende infra structuur, die wordt afgeleid van het Service Fabric toepassings platform, zodat een toepassing in meerdere omgevingen kan worden geïmplementeerd. Een werk belasting in Service Fabric wordt een ' service ' genoemd en een of meer services worden gegroepeerd in een formeel gedefinieerde toepassing die wordt uitgevoerd op het Service Fabric toepassings platform. Meerdere toepassingen kunnen worden geïmplementeerd op één Service Fabric cluster.
 
-![Service Fabric-toepassingen en -topologie][2]
+![Service Fabric toepassingen en topologie][2]
 
-Service Fabric zelf is een platform toepassingslaag die wordt uitgevoerd op Windows of Linux, terwijl Cloud Services een systeem is voor het implementeren van virtuele machines van Azure worden beheerd met werkbelastingen die zijn gekoppeld.
-De Service Fabric-toepassingsmodel heeft een aantal voordelen:
+Service Fabric zichzelf is een Application platform-laag die wordt uitgevoerd op Windows of Linux, terwijl Cloud Services een systeem is voor de implementatie van door Azure beheerde virtuele machines waaraan werk belastingen zijn gekoppeld.
+Het Service Fabric toepassings model heeft een aantal voor delen:
 
-* Snelle implementatietijden. Het maken van VM-exemplaren kan enige tijd duren. Virtuele machines worden in Service Fabric, alleen geïmplementeerd zodra u een cluster wordt gevormd die als host fungeert voor het Service Fabric-platform voor toepassingen. Vanaf dat moment op kunnen toepassingspakketten worden geïmplementeerd met het cluster erg snel.
-* Hosting met hoge dichtheid. In Cloud Services, een Worker-rol virtuele machine fungeert als host een werkbelasting. In Service Fabric zijn de toepassingen gescheiden van de virtuele machines die worden uitgevoerd, wat betekent dat u een groot aantal toepassingen op een klein aantal virtuele machines, die de totale kosten voor grotere implementaties kan verlagen kunt implementeren.
-* De Service Fabric platform overal kan worden uitgevoerd die is Windows Server of Linux-machines, of u nu Azure of on-premises. Het platform biedt een abstractielaag over de onderliggende infrastructuur, zodat uw toepassing op verschillende omgevingen uitvoeren kunt. 
-* Beheer van gedistribueerde toepassingen. Service Fabric is een platform dat niet alleen hosts toepassingen gedistribueerde, maar ook helpt hun levensduur onafhankelijk van de host virtuele machine of computer levenscyclus beheren.
+* Snelle implementatie tijden. Het maken van VM-exemplaren kan tijdrovend zijn. In Service Fabric worden Vm's slechts eenmaal geïmplementeerd om een cluster te vormen dat als host fungeert voor het Service Fabric toepassings platform. Vanaf dat moment kunnen toepassings pakketten zeer snel worden geïmplementeerd in het cluster.
+* Hosting met hoge dichtheid. In Cloud Services wordt een VM van een werk rollen gehost op één werk belasting. In Service Fabric zijn toepassingen gescheiden van de virtuele machines waarop ze worden uitgevoerd, wat betekent dat u een groot aantal toepassingen kunt implementeren op een klein aantal virtuele machines, wat de totale kosten voor grotere implementaties kan verlagen.
+* Het Service Fabric-platform kan overal worden uitgevoerd met Windows Server-of Linux-machines, of het nu Azure of on-premises is. Het platform biedt een abstractie laag voor de onderliggende infra structuur, zodat uw toepassing kan worden uitgevoerd in verschillende omgevingen. 
+* Gedistribueerd toepassings beheer. Service Fabric is een platform dat niet alleen als host fungeert voor gedistribueerde toepassingen, maar ook voor het beheren van de levens cyclus onafhankelijk van de hosting-VM of de levens cyclus van machines.
 
 ## <a name="application-architecture"></a>Toepassingsarchitectuur
-De architectuur van een Cloud Services-toepassing omvat gewoonlijk talrijke externe service-afhankelijkheden, zoals Service Bus, Azure Table en Blob Storage, SQL, Redis en anderen voor het beheren van de status en gegevens van een toepassing en de communicatie tussen Web en Werkrollen in een implementatie van Cloud Services. Een voorbeeld van een volledige Cloud Services-toepassing kan er als volgt uitzien:  
+De architectuur van een Cloud Services toepassing omvat meestal talloze externe service afhankelijkheden, zoals Service Bus, Azure Table en Blob Storage, SQL, redis en andere voor het beheren van de status en de gegevens van een toepassing en communicatie tussen internet en Werk rollen in een Cloud Services-implementatie. Een voor beeld van een complete Cloud Services-toepassing ziet er ongeveer als volgt uit:  
 
-![Architectuur van cloud Services][9]
+![Cloud Services architectuur][9]
 
-Service Fabric-toepassingen kunt ook de dezelfde externe services gebruiken in een volledige toepassing. Met behulp van dit voorbeeld van de architectuur van Cloud Services, wordt het eenvoudigste migratiepad van Cloud Services naar Service Fabric vervangen door de implementatie van de Cloudservices met een Service Fabric-toepassing, de algehele architectuur blijven hetzelfde. De Web- en werkrollen worden overgezet naar de stateless Service Fabric-services met minimale codewijzigingen.
+Service Fabric toepassingen kunnen er ook voor kiezen om dezelfde externe services in een volledige toepassing te gebruiken. Met dit voor beeld Cloud Services architectuur, het eenvoudigste migratie traject van Cloud Services naar Service Fabric, is om alleen de implementatie van Cloud Services te vervangen door een Service Fabric toepassing, waardoor de algehele architectuur hetzelfde blijft. De web-en werk rollen kunnen worden geporteerd naar Service Fabric stateless Services met minimale code wijzigingen.
 
-![Service Fabric-architectuur na de migratie van eenvoudige][10]
+![Service Fabric architectuur na eenvoudige migratie][10]
 
-In deze fase, moet het systeem nog steeds werken hetzelfde als voorheen. U gebruik blijft maken van Service Fabric van stateful functies, externe status stores kunt worden internalized zoals stateful services waar van toepassing. Dit is meer betrokken dan een eenvoudige migratie van Web- en werkrollen naar de stateless Service Fabric-services, zoals het schrijven van aangepaste services die eerder voor de externe services bieden dezelfde functionaliteit voor uw toepassing vereist. De voordelen hiervan zijn: 
+In deze fase moet het systeem blijven werken zoals voorheen. Als u gebruikmaakt van stateful functies van Service Fabric, kunnen externe status archieven worden geinternal als stateful Services, indien van toepassing. Dit is meer betrokken dan een eenvoudige migratie van web-en werk rollen naar Service Fabric stateless Services, omdat hiervoor aangepaste services moeten worden geschreven die vergelijk bare functionaliteit bieden voor uw toepassing als de externe services. De voor delen hiervan zijn: 
 
 * Externe afhankelijkheden verwijderen 
-* Werking van de implementatie, beheer en upgrade-modellen. 
+* De implementatie-, beheer-en upgrade modellen worden aaneengeschakeld. 
 
-Een voorbeeld van de resulterende architectuur van deze services internalizing kan er als volgt:
+Een voor beeld van een architectuur van internalizing deze services kan er als volgt uitzien:
 
-![Service Fabric-architectuur na volledige migratie][11]
+![Architectuur Service Fabric na volledige migratie][11]
 
-## <a name="communication-and-workflow"></a>Communicatie en werkstroom
-De meeste Cloud Service-toepassingen bestaan uit meer dan één laag. Op dezelfde manier, een Service Fabric-toepassing bestaat uit meer dan één service (meestal veel services). Twee algemene communicatie-modellen zijn rechtstreekse communicatie en via een externe, duurzame opslag.
+## <a name="communication-and-workflow"></a>Communicatie en werk stroom
+De meeste Cloud service toepassingen bestaan uit meer dan één laag. Op dezelfde manier bestaat een Service Fabric toepassing uit meer dan één service (meestal veel services). Twee veelvoorkomende communicatie modellen zijn directe communicatie en via een externe, duurzame opslag.
 
-### <a name="direct-communication"></a>Rechtstreekse communicatie
-Met rechtstreekse communicatie communiceren lagen rechtstreeks met eindpunt door elke laag beschikbaar gesteld. In de stateless omgevingen zoals Cloud Services, dit betekent dat een exemplaar van een VM-rol, een willekeurig selecteren of round-robin saldo load en rechtstreeks verbinding maken met het eindpunt.
+### <a name="direct-communication"></a>Directe communicatie
+Met directe communicatie kunnen lagen rechtstreeks communiceren via het eind punt dat door elke laag wordt weer gegeven. In stateless omgevingen, zoals Cloud Services, betekent dit dat u een exemplaar van een VM-rol selecteert, wille keurig of Round Robin om de belasting te verdelen en direct verbinding te maken met het eind punt.
 
-![Cloud Services rechtstreekse communicatie][5]
+![Cloud Services directe communicatie][5]
 
- Rechtstreekse communicatie is een algemene communicatiemodel in Service Fabric. Het belangrijkste verschil tussen Service Fabric en Cloud Services is dat in Cloud-Services dat u verbinding met een virtuele machine maakt, terwijl in Service Fabric u verbinding met een service maken. Dit is een belangrijke onderscheidende factor zijn voor een aantal redenen:
+ Directe communicatie is een gemeen schappelijk communicatie model in Service Fabric. Het belangrijkste verschil tussen Service Fabric en Cloud Services is dat in Cloud Services u verbinding maakt met een virtuele machine, terwijl u in Service Fabric verbinding maakt met een service. Dit is een belang rijk onderscheid om een paar redenen:
 
-* Services in Service Fabric zijn niet gebonden aan de virtuele machines die als host fungeren. Services kunnen worden verplaatst in het cluster, en in feite wordt verwacht dat het om diverse redenen verplaatsen: Bron-balancing, failover, toepassingen en infrastructuur upgrades en plaatsing of load-beperkingen. Dit betekent dat-adres van een service-exemplaar kunt op elk gewenst moment wijzigen. 
-* Een virtuele machine in Service Fabric kan meerdere services, elk met unieke eindpunten hosten.
+* Services in Service Fabric zijn niet gebonden aan de virtuele machines die deze hosten; Services kunnen zich in het cluster voordoen, en zullen naar verwachting om verschillende redenen worden omzeild: resource verdeling, failover, toepassings-en infrastructuur upgrades en beperkingen voor plaatsing of laden. Dit betekent dat het adres van een service-exemplaar op elk gewenst moment kan worden gewijzigd. 
+* Een virtuele machine in Service Fabric kan meerdere services hosten, elk met unieke eind punten.
 
-Service Fabric biedt een mechanisme service detectie, met de naam de Naming-Service, die kan worden gebruikt om op te lossen eindpuntadressen van services. 
+Service Fabric biedt een service detectie mechanisme, de Naming Service, die kan worden gebruikt voor het omzetten van eindpunt adressen van services. 
 
-![Service Fabric rechtstreekse communicatie][6]
+![Service Fabric directe communicatie][6]
 
-### <a name="queues"></a>Wachtrijen
-Een algemene mechanisme voor communicatie tussen lagen in stateless omgevingen zoals Cloud Services is het gebruik van een externe storage-wachtrij voor het opslaan van blijvend Werktaken van één laag naar een andere. Een veelvoorkomend scenario is een weblaag waarmee taken worden verzonden naar een Azure-wachtrij of een Service Bus waarbij instanties van de werknemer kunnen uit de wachtrij verwijderen en de taken worden verwerkt.
+### <a name="queues"></a>Queues
+Een gemeen schappelijk communicatie mechanisme tussen lagen in stateless omgevingen, zoals Cloud Services, is het gebruik van een externe opslag wachtrij om werk taken van de ene laag naar de andere te blijvend. Een veelvoorkomend scenario is een weblaag die taken verzendt naar een Azure-wachtrij of Service Bus waar werk rollen instanties de taken in de wachtrij kunnen plaatsen en verwerken.
 
 ![Cloud Services wachtrij communicatie][7]
 
-Het communicatiemodel met dezelfde kan worden gebruikt in Service Fabric. Dit kan nuttig zijn bij het migreren van een bestaande Cloud Services-toepassing in Service Fabric. 
+Hetzelfde communicatie model kan worden gebruikt in Service Fabric. Dit kan handig zijn bij het migreren van een bestaande Cloud Services-toepassing naar Service Fabric. 
 
-![Service Fabric rechtstreekse communicatie][8]
+![Service Fabric directe communicatie][8]
 
-## <a name="parity"></a>Pariteit
-[Cloudservices is vergelijkbaar met Service Fabric in de mate van controle tegenover gebruiksgemak gebruikt, maar het is nu een verouderde service en Service Fabric wordt aanbevolen voor de ontwikkeling van nieuwe](https://docs.microsoft.com/azure/app-service/overview-compare); een vergelijking van de API, is het volgende:
+## <a name="parity"></a>Parity
+[Cloud Services is vergelijkbaar met Service fabric in de mate van beheer en gebruiks gemak, maar het is nu een verouderde service en service Fabric wordt aanbevolen voor nieuwe ontwikkeling](https://docs.microsoft.com/azure/app-service/overview-compare). Hier volgt een API-vergelijking:
 
 
 | **Cloud Service-API** | **Service Fabric-API** | **Opmerkingen** |
 | --- | --- | --- |
-| RoleInstance.GetID | FabricRuntime.GetNodeContext.NodeId of. Knooppuntnaam | -ID is een eigenschap van de knooppuntnaam |
-| RoleInstance.GetFaultDomain | FabricClient.QueryManager.GetNodeList | Filteren op knooppuntnaam en gebruik FD-eigenschap |
-| RoleInstance.GetUpgradeDomain | FabricClient.QueryManager.GetNodeList | Filteren op knooppuntnaam en Upgrade eigenschap gebruiken |
-| RoleInstance.GetInstanceEndpoints | FabricRuntime.GetActivationContext of Naming (ResolveService) | CodePackageActivationContext die wordt geleverd door FabricRuntime.GetActivationContext zowel in de replica's via ServiceInitializationParameters.CodePackageActivationContext tijdens de opgegeven. Initialisatie is mislukt |
-| RoleEnvironment.GetRoles | FabricClient.QueryManager.GetNodeList | Als u wilt de dezelfde soort filteren op type krijgt u de lijst met wordt knooppunttypen uit het cluster via FabricClient.ClusterManager.GetClusterManifest manifest en downloaden van de rol/knooppunttypen van daaruit. |
-| RoleEnvironment.GetIsAvailable | Verbinding maken met WindowsFabricCluster of maak een FabricRuntime waarnaar wordt verwezen naar een bepaald knooppunt | * |
+| RoleInstance. GetID | FabricRuntime. GetNodeContext. NodeId of. NodeName | ID is een eigenschap van de knooppunt naam |
+| RoleInstance.GetFaultDomain | FabricClient. QueryManager. GetNodeList | Filteren op knooppunt naam en eigenschap FD gebruiken |
+| RoleInstance.GetUpgradeDomain | FabricClient. QueryManager. GetNodeList | Filteren op knooppunt naam en de eigenschap upgrade gebruiken |
+| RoleInstance.GetInstanceEndpoints | FabricRuntime. GetActivationContext of Naming (ResolveService) | CodePackageActivationContext die wordt weer gegeven door FabricRuntime. GetActivationContext en binnen de replica's via ServiceInitializationParameters. CodePackageActivationContext dat is gegeven tijdens. Initialiseren |
+| RoleEnvironment.GetRoles | FabricClient. QueryManager. GetNodeList | Als u hetzelfde Sorteer filter op type wilt uitvoeren, kunt u de lijst met knooppunt typen uit het cluster manifest ophalen via FabricClient. ClusterManager. GetClusterManifest en daar de rol/knooppunt typen uit te pakken. |
+| RoleEnvironment.GetIsAvailable | Connect-WindowsFabricCluster of maak een FabricRuntime punt naar een bepaald knoop punt | * |
 | RoleEnvironment.GetLocalResource | CodePackageActivationContext.Log/Temp/Work | * |
 | RoleEnvironment.GetCurrentRoleInstance | CodePackageActivationContext.Log/Temp/Work | * |
 | LocalResource.GetRootPath | CodePackageActivationContext.Log/Temp/Work | * |
-| Role.GetInstances | FabricClient.QueryManager.GetNodeList of ResolveService | * |
-| RoleInstanceEndpoint.GetIPEndpoint | FabricRuntime.GetActivationContext of Naming (ResolveService) | * |
+| Role.GetInstances | FabricClient. QueryManager. GetNodeList of ResolveService | * |
+| RoleInstanceEndpoint.GetIPEndpoint | FabricRuntime. GetActivationContext of Naming (ResolveService) | * |
 
 ## <a name="next-steps"></a>Volgende stappen
-Het eenvoudigste migratiepad van Cloud Services naar Service Fabric wordt vervangen door de implementatie van de Cloudservices met een Service Fabric-toepassing, blijven de algehele architectuur van uw toepassing ongeveer hetzelfde. Het volgende artikel bevat richtlijnen om u te helpen bij het converteren van een Web- of Werkrol naar een stateless Service Fabric-service.
+Het eenvoudigste migratie traject van Cloud Services naar Service Fabric is om alleen de implementatie van Cloud Services te vervangen door een Service Fabric toepassing, waardoor de algehele architectuur van uw toepassing ongeveer hetzelfde blijft. Het volgende artikel bevat een hand leiding voor het converteren van een web-of worker-rol naar een Service Fabric stateless service.
 
-* [Eenvoudige migratie: een Web- of Werkrol converteren naar een stateless Service Fabric-service](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
+* [Eenvoudige migratie: een web-of worker-rol converteren naar een Service Fabric stateless service](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
 
 <!--Image references-->
 [1]: ./media/service-fabric-cloud-services-migration-differences/topology-cloud-services.png

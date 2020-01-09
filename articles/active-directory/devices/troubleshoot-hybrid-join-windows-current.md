@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 932540c830940ec18c439352d54f671db7387b94
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7e0339f5118d4745b6abe0268f021f8284a5f11f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379169"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689118"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Problemen oplossen met hybride Azure Active Directory gekoppelde apparaten 
 
@@ -26,7 +26,7 @@ Zie voor andere Windows-clients het artikel [problemen oplossen met hybride Azur
 
 In dit artikel wordt ervan uitgegaan dat u [hybride Azure Active Directory gekoppelde apparaten hebt geconfigureerd](hybrid-azuread-join-plan.md) om de volgende scenario's te ondersteunen:
 
-- Voorwaardelijke toegang op basis van een apparaat
+- Voorwaardelijke toegang op basis van het apparaat
 - [Zwervende instellingen voor ondernemingen](../active-directory-windows-enterprise-state-roaming-overview.md)
 - [Windows Hello voor Bedrijven](../active-directory-azureadjoin-passport-deployment.md)
 
@@ -102,7 +102,8 @@ Dit veld geeft aan of het apparaat is geregistreerd bij Azure AD als persoonlijk
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined: Ja  
 
-Dit veld geeft aan of het apparaat is gekoppeld aan Azure AD. Als de waarde **Nee**is, is de koppeling naar Azure AD nog niet voltooid. 
+Dit veld geeft aan of het apparaat is gekoppeld. De waarde is **Ja** als het apparaat een gekoppeld Azure AD-apparaat of een hybride Azure AD-apparaat is.
+Als de waarde **Nee**is, is de koppeling naar Azure AD nog niet voltooid. 
 
 Ga verder met de volgende stappen voor meer informatie over het oplossen van problemen.
 
@@ -371,13 +372,13 @@ Gebruik Logboeken Logboeken om de fase en fout code voor het samen voegen van fo
 
 ##### <a name="federated-join-server-errors"></a>Fouten van federatieve lid server
 
-| Fout code server | Fout bericht server | Mogelijke redenen | Oplossing |
+| Fout code server | Fout bericht server | Mogelijke redenen | Resolutie |
 | --- | --- | --- | --- |
 | Directory fout | Uw aanvraag is tijdelijk beperkt. Probeer na 300 seconden een ogen blik. | Verwachte fout. Mogelijk omdat er snel meerdere registratie aanvragen worden gedaan. | Na de cooldown-periode opnieuw verbinding maken |
 
 ##### <a name="sync-join-server-errors"></a>Fouten bij het samen voegen van servers
 
-| Fout code server | Fout bericht server | Mogelijke redenen | Oplossing |
+| Fout code server | Fout bericht server | Mogelijke redenen | Resolutie |
 | --- | --- | --- | --- |
 | Directory fout | AADSTS90002: kan de Tenant <UUID> niet vinden. Deze fout kan optreden als er geen actieve abonnementen voor de Tenant zijn. Neem contact op met de beheerder van uw abonnement. | De Tenant-ID in het SCP-object is onjuist | Zorg ervoor dat het SCP-object is geconfigureerd met de juiste Azure AD-Tenant-ID en actieve abonnementen en aanwezig is in de Tenant. |
 | Directory fout | Het apparaatobject met de opgegeven ID is niet gevonden. | Verwachte fout voor Sync-koppeling. Het apparaatobject is niet gesynchroniseerd van AD naar Azure AD | Wacht tot de Azure AD Connect synchronisatie is voltooid en de volgende stap na het synchroniseren van de synchronisatie het probleem heeft opgelost |

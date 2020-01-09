@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 12/16/2019
 ms.author: juliako
-ms.openlocfilehash: 4f8491e31747eda9cbe8689ba7db3026df0ff3ad
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f3825f6c9186c5e04807dd3890a14fcc6d370989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892767"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454664"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Een Video Indexer account beheren dat is verbonden met Azure
 
@@ -49,6 +49,17 @@ Als uw video indexer-account is verbonden met Azure, ziet u het volgende:
 * Het aantal en het type toegewezen gereserveerde eenheden.
 
 Als uw account aanpassingen vereist, worden relevante fouten en waarschuwingen over uw account configuratie weer gegeven op de pagina **instellingen** . De berichten bevatten koppelingen naar exacte locaties in Azure Portal waar u wijzigingen moet aanbrengen. Zie de sectie met [fouten en waarschuwingen](#errors-and-warnings) voor meer informatie.
+
+## <a name="repair-the-connection-to-azure"></a>De verbinding met Azure herstellen
+
+In het dialoog venster **verbinding bijwerken met Azure Media Services** van uw [video indexer](https://www.videoindexer.ai/) pagina, wordt u gevraagd waarden op te geven voor de volgende instellingen: 
+
+|Instelling|Beschrijving|
+|---|---|
+|Azure-abonnements-ID|De abonnements-ID kan worden opgehaald uit de Azure Portal. Klik op **alle services** in het linkerdeel venster en zoek naar ' Abonnementen '. Selecteer **abonnementen** en kies de gewenste id in de lijst met uw abonnementen.|
+|Naam van de resource groep Azure Media Services|De naam voor de resource groep waarin u het Media Services-account hebt gemaakt.|
+|Toepassings-id|De Azure AD-toepassings-ID (met machtigingen voor het opgegeven Media Services-account) dat u voor dit Video Indexer account hebt gemaakt. <br/><br/>Als u de App-ID wilt ophalen, gaat u naar Azure Portal. Kies onder het Media Services account uw account en ga naar **API-toegang**. Klik op **verbinding maken met Media Services-API met service-principal** -> **Azure AD-App**. Kopieer de relevante para meters.|
+|Toepassingssleutel|De Azure AD-toepassings sleutel die is gekoppeld aan uw Media Services account dat u hierboven hebt opgegeven. <br/><br/>Als u de app-sleutel wilt ophalen, gaat u naar Azure Portal. Kies onder het Media Services account uw account en ga naar **API-toegang**. Klik op **verbinding maken met Media Services-API met service-principal** -> toepassings -> **certificaten & geheimen**te **beheren** . Kopieer de relevante para meters.|
 
 ## <a name="auto-scale-reserved-units"></a>Gereserveerde eenheden automatisch schalen
 

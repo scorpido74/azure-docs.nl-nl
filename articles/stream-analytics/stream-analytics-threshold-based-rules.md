@@ -1,20 +1,17 @@
 ---
 title: Configureer bare regels op basis van drempel waarden in Azure Stream Analytics
 description: In dit artikel wordt beschreven hoe u referentie gegevens gebruikt voor het bezorgen van een waarschuwings oplossing met geconfigureerde regels voor drempel waarden in Azure Stream Analytics.
-services: stream-analytics
-author: zhongc
-ms.author: zhongc
-manager: kfile
-ms.reviewer: jasonh
+author: mamccrea
+ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: f8fd21f411093e22b2b1dc5afd6da9cb26db6ff8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 94fdddf11acb6763ed98a4b7e17304fbde0e25dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934264"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369708"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Configureer bare op drempel waarden gebaseerde regels verwerken in Azure Stream Analytics
 In dit artikel wordt beschreven hoe u referentie gegevens gebruikt voor het bezorgen van een waarschuwings oplossing die gebruikmaakt van Configureer bare regels op basis van drempel waarden in Azure Stream Analytics.
@@ -39,7 +36,7 @@ In de query, voor elk deviceId en elke metrische waarde onder het apparaat-id, k
 
 Stel dat er een Stream Analytics-taak is met een referentie gegevens invoer met de naam **regels**en de gegevens invoer streamen met de naam **Metrics**. 
 
-## <a name="reference-data"></a>Referentie gegevens
+## <a name="reference-data"></a>Referentiegegevens
 In dit voor beeld wordt uitgelegd hoe een regel op basis van een drempel waarde kan worden weer gegeven. Een JSON-bestand bevat de referentie gegevens en wordt opgeslagen in Azure Blob Storage en die Blob Storage-container wordt gebruikt als referentie gegevens invoer met de naam **regels**. U kunt dit JSON-bestand overschrijven en de regel configuratie vervangen wanneer de tijd verloopt, zonder de streaming-taak te stoppen of te starten.
 
 - De voorbeeld regel wordt gebruikt om een aanpas bare waarschuwing weer te geven wanneer de CPU groter is dan of gelijk is aan de waarde `90` percentage. Het `value` veld kan zo nodig worden geconfigureerd.

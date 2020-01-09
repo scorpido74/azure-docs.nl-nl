@@ -3,12 +3,12 @@ title: Over Azure VM Backup
 description: In dit artikel leest u hoe de Azure Backup-service een back-up maakt van virtuele Azure-machines en hoe u de aanbevolen procedures volgt.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 4bd42acbf682b51e17f60702e5695cfb29db812b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: b38c61adaf334eacb7d85292d4174189d6fddc46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806436"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391904"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Een overzicht van Azure VM backup
 
@@ -109,7 +109,6 @@ Wanneer u back-ups van virtuele machines configureert, kunt u het volgende doen:
 - Wijzig de standaard plannings tijden die in een beleid zijn ingesteld. Als de standaard tijd in het beleid bijvoorbeeld 12:00 uur is, verhoogt u de timing met enkele minuten zodat de resources optimaal worden gebruikt.
 - Als u virtuele machines herstelt vanuit één kluis, raden we u ten zeerste aan om andere [v2-opslag accounts voor algemeen](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) gebruik te gebruiken om ervoor te zorgen dat het doel-opslag account niet wordt beperkt. Elke virtuele machine moet bijvoorbeeld een ander opslag account hebben. Als er bijvoorbeeld tien Vm's zijn teruggezet, gebruikt u 10 verschillende opslag accounts.
 - Voor back-ups van virtuele machines die gebruikmaken van Premium Storage, kunt u met direct terugzetten *50%* beschik bare ruimte toewijzen aan de totale toegewezen opslag ruimte. Dit is **alleen** vereist voor de eerste back-up. De 50% beschik bare ruimte is geen vereiste voor back-ups nadat de eerste back-up is voltooid.
-- De herstel bewerkingen van een v1-opslaglaag (een moment opname) voor algemeen gebruik worden binnen enkele minuten voltooid, omdat de moment opname zich in hetzelfde opslag account bevindt. Het herstellen van de opslag laag voor algemeen gebruik van v2 (kluis) kan uren duren. In gevallen waarin de gegevens beschikbaar zijn in opslag voor algemeen gebruik, wordt u aangeraden de functie voor [direct terugzetten](backup-instant-restore-capability.md) te gebruiken voor sneller herstel. (Als de gegevens moeten worden hersteld vanuit een kluis, neemt het meer tijd in beslag.)
 - De limiet voor het aantal schijven per opslag account is relatief ten opzichte van de mate waarin de schijven worden geopend door toepassingen die worden uitgevoerd op een IaaS-VM (Infrastructure as a Service). In het algemeen is het zo dat als 5 tot 10 schijven of meer aanwezig zijn op één opslag account, de belasting kan verdelen door sommige schijven te verplaatsen naar afzonderlijke opslag accounts.
 
 ## <a name="backup-costs"></a>Back-upkosten
@@ -124,14 +123,14 @@ De berekening van de grootte van beveiligde instanties is gebaseerd op de *werke
 
 Op dezelfde manier is de factuur voor back-upopslag gebaseerd op de hoeveelheid gegevens die is opgeslagen in Azure Backup, wat de som is van de werkelijke gegevens in elk herstel punt.
 
-Neem bijvoorbeeld een VM met a2-standaard met twee extra gegevens schijven met een maximale grootte van 4 TB. In de volgende tabel ziet u de werkelijke gegevens die op elk van deze schijven zijn opgeslagen:
+Neem bijvoorbeeld een VM met a2-standaard met twee extra gegevens schijven met een maximale grootte van 32 TB. In de volgende tabel ziet u de werkelijke gegevens die op elk van deze schijven zijn opgeslagen:
 
 **Schijf** | **Maximale grootte** | **Werkelijke gegevens aanwezig**
 --- | --- | ---
-Besturingssysteemschijf | 4095 GB | 17 GB
+Besturingssysteemschijf | 32 TB | 17 GB
 Lokale/tijdelijke schijf | 135 GB | 5 GB (niet inbegrepen voor back-up)
-Gegevensschijf 1 | 4095 GB | 30 GB
-Gegevens schijf 2 | 4095 GB | 0 GB
+Gegevensschijf 1 | 32 TB| 30 GB
+Gegevens schijf 2 | 32 TB | 0 GB
 
 De werkelijke grootte van de virtuele machine in dit geval 17 GB + 30 GB + 0 GB = 47 GB. Deze beveiligde-instantie grootte (47 GB) wordt de basis voor de maandelijkse factuur. Naarmate de hoeveelheid gegevens in de virtuele machine groeit, wordt de grootte van de beveiligde instantie die wordt gebruikt voor het aanpassen van de facturering, gewijzigd.
 

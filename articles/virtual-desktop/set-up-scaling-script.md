@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/10/2019
 ms.author: helohr
-ms.openlocfilehash: 744f7d5c191180757620e87d926422c9f1e0baba
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a991a41466d216b9f245c20dbd8054f3ae5ef3d0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607444"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451337"
 ---
 # <a name="scale-session-hosts-dynamically"></a>Schaalsessie host dynamisch
 
@@ -50,7 +50,7 @@ Bereid eerst uw omgeving voor op het schaal script:
 
 1. Meld u aan bij de virtuele machine (scaleer VM) waarmee de geplande taak wordt uitgevoerd met een domein beheerders account.
 2. Maak een map op de schaal machine om het schaal script en de configuratie ervan te bewaren (bijvoorbeeld **C:\\scaling-HostPool1**).
-3. Down load de bestanden **basicScale. ps1**, **config. XML**en **functions-PSStoredCredentials. ps1** en de map **PowershellModules** van de [opslag plaats](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) voor het schalen van het script en kopieer deze naar de map die u in stap 2 hebt gemaakt. Er zijn twee manieren om de bestanden op te halen voordat u ze naar de scaleer-machine kopieert:
+3. Down load de bestanden **basicScale. ps1**, **config. json**en **functions-PSStoredCredentials. ps1** en de map **PowershellModules** van de [opslag plaats](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) voor het schalen van het script en kopieer deze naar de map die u in stap 2 hebt gemaakt. Er zijn twee manieren om de bestanden op te halen voordat u ze naar de scaleer-machine kopieert:
     - Kloon de Git-opslag plaats naar uw lokale computer.
     - Bekijk de **onbewerkte** versie van elk bestand, kopieer en plak de inhoud van elk bestand in een tekst editor en sla de bestanden vervolgens op met de bijbehorende bestands naam en dit bestands type. 
 
@@ -73,13 +73,13 @@ Vervolgens moet u de veilig opgeslagen referenties maken:
     ```
     
     **Stel: set-variable-name-pad-het bereik Global-value "c:\\scaling-HostPool1"**
-5. Voer de cmdlet **New-StoredCredential-sleutelpad \$** sleutelpad uit. Wanneer u hierom wordt gevraagd, voert u de referenties voor uw Windows-bureau blad in met machtigingen voor het opvragen van de hostgroep (de hostgroep is opgegeven in het **bestand config. XML**).
+5. Voer de cmdlet **New-StoredCredential-sleutelpad \$** sleutelpad uit. Wanneer u hierom wordt gevraagd, voert u de referenties voor uw Windows-bureau blad in met machtigingen voor het opvragen van de hostgroep (de hostgroep is opgegeven in het **bestand config. json**).
     - Als u verschillende service-principals of standaard account gebruikt, voert u de cmdlet **New-StoredCredential \$-** sleutelpad uit voor elke account om lokale opgeslagen referenties te maken.
 6. Voer **Get-StoredCredential-List** uit om te bevestigen dat de referenties zijn gemaakt.
 
-### <a name="configure-the-configxml-file"></a>Het bestand config. xml configureren
+### <a name="configure-the-configjson-file"></a>Het bestand config. json configureren
 
-Voer de relevante waarden in de volgende velden in om de instellingen voor het schalen van het script bij te werken in config. XML:
+Voer de relevante waarden in de volgende velden in om de instellingen voor het schalen van het script bij te werken in config. json:
 
 | Veld                     | Beschrijving                    |
 |-------------------------------|------------------------------------|
@@ -103,7 +103,7 @@ Voer de relevante waarden in de volgende velden in om de instellingen voor het s
 
 ### <a name="configure-the-task-scheduler"></a>De taak planner configureren
 
-Nadat u het XML-configuratie bestand hebt geconfigureerd, moet u de taak planner configureren om het basicScaler. ps1-bestand met een regel matig interval uit te voeren.
+Nadat u het JSON-configuratie bestand hebt geconfigureerd, moet u de taak planner configureren om het basicScaler. ps1-bestand met een regel matig interval uit te voeren.
 
 1. Start de **taak planner**.
 2. Selecteer in het venster **taak planner** de optie **taak maken...**
@@ -117,13 +117,13 @@ Nadat u het XML-configuratie bestand hebt geconfigureerd, moet u de taak planner
 
 ## <a name="how-the-scaling-script-works"></a>Hoe het schaal script werkt
 
-Met dit schaal script worden de instellingen van een config. XML-bestand, inclusief het begin en het einde van de piek gebruiks periode gedurende de dag, gelezen.
+Met dit schaal script worden de instellingen van een bestand config. json gelezen, inclusief het begin en het einde van de piek gebruiks periode gedurende de dag.
 
-Tijdens de piek gebruiks tijd controleert het script het huidige aantal sessies en de huidige actieve RDSH-capaciteit voor elke hostgroep. Er wordt berekend of de actieve host-Vm's voldoende capaciteit hebben voor de ondersteuning van bestaande sessies op basis van de para meter SessionThresholdPerCPU die is gedefinieerd in het bestand config. XML. Als dat niet het geval is, start het script extra Vm's voor de host van hosts in de hostgroep.
+Tijdens de piek gebruiks tijd controleert het script het huidige aantal sessies en de huidige actieve RDSH-capaciteit voor elke hostgroep. Er wordt berekend of de actieve host-Vm's voldoende capaciteit hebben voor de ondersteuning van bestaande sessies op basis van de para meter SessionThresholdPerCPU die is gedefinieerd in het bestand config. json. Als dat niet het geval is, start het script extra Vm's voor de host van hosts in de hostgroep.
 
-Tijdens de gebruiks tijd bepaalt het script welke host-Vm's moeten worden afgesloten op basis van de para meter MinimumNumberOfRDSH in het bestand config. XML. Met het script worden de Vm's van de host ingesteld op drain-modus om te voor komen dat nieuwe sessies verbinding maken met de hosts. Als u de para meter **LimitSecondsToForceLogOffUser** in het bestand config. XML instelt op een positieve waarde die niet gelijk is aan nul, zal het script alle momenteel aangemelde gebruikers op de hoogte stellen om werk op te slaan, de ingestelde tijd te wachten en de gebruikers vervolgens af te dwingen om af te melden. Zodra alle gebruikers sessies zijn afgemeld op een host-VM, wordt de server door het script afgesloten.
+Tijdens de gebruiks tijd bepaalt het script welke host-Vm's moeten worden afgesloten op basis van de para meter MinimumNumberOfRDSH in het bestand config. json. Met het script worden de Vm's van de host ingesteld op drain-modus om te voor komen dat nieuwe sessies verbinding maken met de hosts. Als u de para meter **LimitSecondsToForceLogOffUser** in het bestand config. json instelt op een positieve waarde die niet gelijk is aan nul, wordt door het script alle momenteel aangemelde gebruikers gewaarschuwd om werk op te slaan, de geconfigureerde tijds duur te wachten en vervolgens af te dwingen dat de gebruikers zich afmelden. Zodra alle gebruikers sessies zijn afgemeld op een host-VM, wordt de server door het script afgesloten.
 
-Als u de para meter **LimitSecondsToForceLogOffUser** in het bestand config. XML instelt op nul, staat het script de instelling van de sessie configuratie toe in de eigenschappen van de hostgroep om het afmelden van gebruikers sessies af te handelen. Als er sessies op een host-VM worden uitgevoerd, wordt de VM van de host verlaten. Als er geen sessies zijn, wordt de host-VM van de sessie afgesloten door het script.
+Als u de para meter **LimitSecondsToForceLogOffUser** in het bestand config. json instelt op nul, staat het script de instelling van de sessie configuratie toe in de eigenschappen van de hostgroep om het afmelden van gebruikers sessies af te handelen. Als er sessies op een host-VM worden uitgevoerd, wordt de VM van de host verlaten. Als er geen sessies zijn, wordt de host-VM van de sessie afgesloten door het script.
 
 Het script is ontworpen om periodiek te worden uitgevoerd op de scaleer-VM-server met behulp van de taak planner. Selecteer het juiste tijds interval op basis van de grootte van uw Extern bureaublad-services omgeving en houd er rekening mee dat het starten en afsluiten van virtuele machines enige tijd kan duren. U wordt aangeraden om de 15 minuten het schaal script uit te voeren.
 

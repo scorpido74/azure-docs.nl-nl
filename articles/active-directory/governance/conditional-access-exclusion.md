@@ -1,5 +1,5 @@
 ---
-title: Toegangs beoordelingen gebruiken voor het beheren van gebruikers die zijn uitgesloten van beleid voor voorwaardelijke toegang-Azure Active Directory | Microsoft Docs
+title: Gebruikers beheren die zijn uitgesloten van beleid voor voorwaardelijke toegang-Azure AD
 description: Meer informatie over het gebruik van Azure Active Directory (Azure AD) toegangs Beoordelingen voor het beheren van gebruikers die zijn uitgesloten van het beleid voor voorwaardelijke toegang
 services: active-directory
 documentationcenter: ''
@@ -16,19 +16,19 @@ ms.date: 09/25/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 246503fec6436bf49dcd5fb89c2dc0ed345a43ca
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: d1d7bce940f2b614c239e8b5e5719d96da10a6c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499916"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422715"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Azure AD-toegangs beoordelingen gebruiken voor het beheren van gebruikers die zijn uitgesloten van het beleid voor voorwaardelijke toegang
 
 In een ideale wereld volgen alle gebruikers het toegangs beleid om de toegang tot de resources van uw organisatie te beveiligen. Soms zijn er echter zakelijke cases waarvoor u uitzonde ringen moet maken. In dit artikel worden enkele voor beelden beschreven waarin uitsluitingen mogelijk vereist zijn en hoe u, als IT-beheerder, deze taak kan beheren, het toezicht op beleids uitzonderingen te voor komen en Audi tors te voorzien van een bewijs dat deze uitzonde ringen regel matig worden gecontroleerd met behulp van Azure Toegangs beoordelingen van Active Directory (Azure AD).
 
 > [!NOTE]
-> Een geldige Azure AD Premium P2, Enterprise Mobility + Security E5 betaalde of een proef licentie is vereist voor het gebruik van Azure AD-toegangs Beoordelingen. Zie [Azure Active Directory-edities](../fundamentals/active-directory-whatis.md) voor meer informatie.
+> Een geldige Azure AD Premium P2, Enterprise Mobility + Security E5 betaalde of een proef licentie is vereist voor het gebruik van Azure AD-toegangs Beoordelingen. Zie [Azure Active Directory editions](../fundamentals/active-directory-whatis.md) (Engelstalig) voor meer informatie.
 
 ## <a name="why-would-you-exclude-users-from-policies"></a>Waarom zou u gebruikers uitsluiten van beleid?
 
@@ -40,7 +40,7 @@ Een ander voor beeld is het mogelijk om [benoemde locaties](../conditional-acces
 
 In sommige gevallen kunnen gebruikers echter een rechtmatige reden hebben om zich aan te melden bij deze geblokkeerde landen/regio's. Gebruikers kunnen bijvoorbeeld op reis zijn voor werk of persoonlijke redenen. In dit voor beeld kan het beleid voor voorwaardelijke toegang om deze landen/regio's te blok keren, een specifieke Cloud beveiligings groep hebben voor de gebruikers die zijn uitgesloten van het beleid. Gebruikers die toegang nodig hebben tijdens het reizen, kunnen zichzelf toevoegen aan de groep met [Azure AD self-service groeps beheer](../users-groups-roles/groups-self-service-management.md).
 
-Een ander voor beeld is mogelijk dat u een beleid voor voorwaardelijke toegang hebt waarmee verouderde [verificatie voor de meeste gebruikers wordt geblokkeerd](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/). Micro soft raadt u ten zeerste aan het gebruik van verouderde protocollen in uw Tenant te blok keren om uw beveiligings postuur te verbeteren. Als u echter een aantal gebruikers hebt die absoluut gebruikmaken van verouderde verificatie methoden om toegang te krijgen tot uw resources via Office 2010-of IMAP/SMTP/POP-clients, kunt u deze gebruikers uitsluiten van het beleid waarmee verouderde verificatie methoden worden geblokkeerd.
+Een ander voor beeld is mogelijk dat u een beleid voor voorwaardelijke toegang hebt waarmee [verouderde verificatie voor de meeste gebruikers wordt geblokkeerd](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/). Micro soft raadt u ten zeerste aan het gebruik van verouderde protocollen in uw Tenant te blok keren om uw beveiligings postuur te verbeteren. Als u echter een aantal gebruikers hebt die absoluut gebruikmaken van verouderde verificatie methoden om toegang te krijgen tot uw resources via Office 2010-of IMAP/SMTP/POP-clients, kunt u deze gebruikers uitsluiten van het beleid waarmee verouderde verificatie methoden worden geblokkeerd.
 
 ## <a name="why-are-exclusions-challenging"></a>Waarom zijn uitsluitingen lastig?
 
@@ -97,7 +97,7 @@ U kunt nu een beleid voor voorwaardelijke toegang maken waarin deze uitsluitings
 
 Laten we twee voor beelden gebruiken waarmee u uitsluitingen kunt beheren in beleids regels voor voorwaardelijke toegang.
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>Voorbeeld 1: Toegangs beoordeling voor gebruikers die toegang hebben tot geblokkeerde landen/regio's
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>Voor beeld 1: toegangs beoordeling voor gebruikers die toegang hebben tot geblokkeerde landen/regio's
 
 Stel dat u een beleid voor voorwaardelijke toegang hebt waarmee de toegang vanuit bepaalde landen/regio's wordt geblokkeerd. Het bevat een groep die niet is uitgesloten van het beleid. Hier volgt een aanbevolen toegangs beoordeling waar leden van de groep worden gecontroleerd.
 
@@ -118,7 +118,7 @@ Stel dat u een beleid voor voorwaardelijke toegang hebt waarmee de toegang vanui
 
     ![Een toegangs beoordelings venster maken bijvoorbeeld 1](./media/conditional-access-exclusion/create-access-review-1.png)
 
-## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>Voorbeeld 2: Toegangs beoordeling voor gebruikers die toegang hebben tot verouderde verificatie
+## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>Voor beeld 2: toegangs beoordeling voor gebruikers die toegang hebben tot verouderde verificatie
 
 Stel dat u een beleid voor voorwaardelijke toegang hebt waarmee de toegang wordt geblokkeerd voor gebruikers die gebruikmaken van verouderde verificatie en oudere client versies. Het bevat een groep die niet is uitgesloten van het beleid. Hier volgt een aanbevolen toegangs beoordeling waar leden van de groep worden gecontroleerd.
 
@@ -136,7 +136,7 @@ Stel dat u een beleid voor voorwaardelijke toegang hebt waarmee de toegang wordt
 
     ![Een toegangs beoordelings venster maken bijvoorbeeld 2](./media/conditional-access-exclusion/create-access-review-2.png)
 
-**Pro-Tip**: Als u veel uitsluitings groepen hebt en daarom meerdere toegangs beoordelingen moet maken, hebben we nu een API in het Microsoft Graph bèta-eind punt waarmee u ze programmatisch kunt maken en beheren. Als u aan de slag wilt gaan, raadpleegt u de [Azure AD Access beoordelingen API-referentie](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) en [voor beeld van het ophalen van Azure AD-toegangs beoordelingen via Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
+**Pro-Tip**: als u veel uitsluitings groepen hebt en daarom meerdere toegangs beoordelingen moet maken, hebben we nu een API in het Microsoft Graph bèta-eind punt waarmee u ze programmatisch kunt maken en beheren. Als u aan de slag wilt gaan, raadpleegt u de [Azure AD Access beoordelingen API-referentie](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) en [voor beeld van het ophalen van Azure AD-toegangs beoordelingen via Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
 
 ## <a name="access-review-results-and-audit-logs"></a>Resultaten en audit logboeken voor toegang controleren
 

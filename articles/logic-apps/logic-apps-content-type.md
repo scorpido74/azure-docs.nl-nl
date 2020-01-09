@@ -1,17 +1,17 @@
 ---
 title: Inhoudstypen verwerken
-description: Meer informatie over hoe Logic Apps inhouds typen tijdens ontwerp tijd en uitvoerings tijd verwerkt
+description: Meer informatie over het verwerken van verschillende inhouds typen in werk stromen tijdens de ontwerp tijd en uitvoerings tijd in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
-ms.openlocfilehash: 75d9285c4a838c2057c0f23841c3a2f465789c7c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ae0abe288edda2ce01311d8533b1f104409efce0
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791533"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666870"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Inhouds typen in Azure Logic Apps verwerken
 
@@ -111,7 +111,7 @@ Logic Apps biedt de mogelijkheid om gebruikers vriendelijke tokens te genereren 
 
 <a name="text-plain"></a>
 
-## <a name="textplain"></a>tekst/zonder opmaak
+## <a name="textplain"></a>text/plain
 
 Wanneer uw logische app HTTP-berichten ontvangt waarvan de `Content-Type` header is ingesteld op `text/plain`, slaat uw logische app deze berichten op in onbewerkte vorm. Als u deze berichten opneemt in volgende acties zonder Casting, worden aanvragen uitgevoerd met de `Content-Type` header ingesteld op `text/plain`. 
 

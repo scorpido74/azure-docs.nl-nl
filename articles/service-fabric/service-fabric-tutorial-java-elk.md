@@ -1,28 +1,19 @@
 ---
-title: Uw apps bewaken in Service Fabric met ELK in Azure | Microsoft Docs
+title: Uw apps controleren in Service Fabric met behulp van ELK in azure
 description: In deze zelfstudie vindt u Informatie over het instellen van ELK en het controleren van uw Service Fabric-toepassingen.
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 689207339db0250d42fc64c33f43c42c18317d41
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b283982e11449d234da966f15b86cc5b638a026c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61388685"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376652"
 ---
-# <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Zelfstudie: Uw Service Fabric-toepassingen met behulp van ELK bewaken
+# <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Zelfstudie: Uw Service Fabric-toepassingen bewaken met behulp van ELK
 
 Deze zelfstudie is deel vier een serie. Er wordt weergegeven hoe ELK (Elasticsearch, Logstash en Kibana) moet worden gebruikt voor het bewaken van Service Fabric-toepassingen die worden uitgevoerd in Azure.
 
@@ -44,14 +35,14 @@ In deze zelfstudiereeks leert u het volgende:
 
 Voor u met deze zelfstudie begint:
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Stel uw toepassing in voor het verzenden van logboeken naar de locatie die is opgegeven in [deel twee](service-fabric-tutorial-debug-log-local-cluster.md).
 * Voltooi [deel drie](service-fabric-tutorial-java-deploy-azure.md) en configureer een actief Service Fabric-cluster om logboeken te verzenden naar Event Hubs.
 * Het beleid in Event Hubs met de machtiging Luisteren en de bijbehorende primaire sleutel van reeks drie.
 
 ## <a name="download-the-voting-sample-application"></a>De voorbeeldtoepassing om te stemmen downloaden
 
-Als u in [deel één van deze zelfstudiereeks](service-fabric-tutorial-create-java-app.md) niet de voorbeeldtoepassing om te stemmen hebt gemaakt, kunt u deze downloaden. Voer in een opdrachtvenster de volgende opdracht uit om de voorbeeld-app-opslagplaats te klonen op de lokale computer.
+Als u in [deel één van deze zelfstudiereeks](service-fabric-tutorial-create-java-app.md) niet de voorbeeldtoepassing om te stemmen hebt gemaakt, kunt u deze downloaden. Voer in een opdrachtvenster de volgende opdracht uit om de opslagplaats van de voorbeeld-app te klonen op uw lokale computer.
 
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
@@ -109,7 +100,7 @@ U kunt een vooraf geconfigureerde ELK-omgeving gebruiken voor deze zelfstudie en
     logstash-plugin install logstash-input-azureeventhub
     ```
 
-4. Maken of wijzigen van uw bestaande Logstash config-bestand met de volgende inhoud: Wanneer u het bestand maakt, heeft dat moet worden gemaakt op ```/opt/bitnami/logstash/conf/access-log.conf``` als met behulp van de installatiekopie voor ELK Bitnami in Azure.
+4. Maak of wijzig uw bestaande Logstash config-bestand met de volgende inhoud: als u het bestand maakt, moet het op ```/opt/bitnami/logstash/conf/access-log.conf``` worden gemaakt als u de installatiekopie voor ELK Bitnami in Azure gebruikt.
 
     ```json
     input
@@ -149,13 +140,13 @@ U kunt een vooraf geconfigureerde ELK-omgeving gebruiken voor deze zelfstudie en
     curl 'localhost:9200/_cat/indices?v'
     ```
 
-8. Toegang tot de Kibana-dashboard op **http:\//SERVER-IP** en voer de gebruikersnaam en het wachtwoord in voor Kibana. Als u de installatiekopie voor ELK in Azure gebruikt, is de standaardgebruikersnaam 'user' en het wachtwoord hetgeen dat is verkregen van de **Diagnostische gegevens over opstarten**.
+8. Open uw Kibana-dash board op **http:\//server-IP** en voer de gebruikers naam en het wacht woord in voor Kibana. Als u de installatiekopie voor ELK in Azure gebruikt, is de standaardgebruikersnaam 'user' en het wachtwoord hetgeen dat is verkregen van de **Diagnostische gegevens over opstarten**.
 
     ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een ELK-server actief en werkend krijgen in Azure

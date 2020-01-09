@@ -1,20 +1,21 @@
 ---
 title: Verbinding maken met Office 365-gebruikers
-description: Gebruikers profielen beheren met Office 365-gebruikers REST Api's en Azure Logic Apps
+description: Taken en werk stromen automatiseren waarmee profielen in Office 365-gebruikers profielen worden opgehaald en beheerd met behulp van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 08/18/2016
 ms.topic: article
 tags: connectors
-ms.openlocfilehash: addb64a9b43c51af8363caa6f0fb3261a618e893
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 179c7538d8072f0e1a4f7d049cf521971efd7a21
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789513"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666853"
 ---
-# <a name="get-started-with-the-office-365-users-connector"></a>Aan de slag met de connector Office 365-gebruikers
+# <a name="get-and-manage-profiles-in-office-365-users-by-using-azure-logic-apps"></a>Profielen in Office 365-gebruikers ophalen en beheren met behulp van Azure Logic Apps
+
 Maak verbinding met Office 365-gebruikers om profielen op te halen, gebruikers te zoeken, en meer. Met Office 365-gebruikers kunt u het volgende doen:
 
 * Bouw uw bedrijfs stroom op basis van de gegevens die u van Office 365-gebruikers krijgt. 
@@ -23,7 +24,8 @@ Maak verbinding met Office 365-gebruikers om profielen op te halen, gebruikers t
 U kunt nu aan de slag met het maken van een logische app, Zie [een logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-a-connection-to-office-365-users"></a>Een verbinding maken met Office 365-gebruikers
-Wanneer u deze connector toevoegt aan uw Logic apps, moet u zich aanmelden bij uw Office 365-gebruikers account en logische apps toestaan om verbinding te maken met uw account.
+
+Wanneer u deze connector toevoegt aan uw Logic apps, moet u zich aanmelden bij uw Office 365-gebruikers account zodat Azure Logic Apps verbinding kan maken met uw account.
 
 > [!INCLUDE [Steps to create a connection to Office 365 Users](../../includes/connectors-create-api-office365users.md)]
 > 
@@ -33,7 +35,8 @@ Nadat u de verbinding hebt gemaakt, voert u de eigenschappen van Office 365-gebr
 
 ## <a name="connector-specific-details"></a>Connector-specifieke Details
 
-Bekijk de triggers en acties die zijn gedefinieerd in Swagger en Zie ook eventuele limieten in de details van de [connector](/connectors/officeusers/).
+Raadpleeg de [referentie pagina van de connector](/connectors/officeusers/)voor technische informatie over triggers, acties en limieten die worden beschreven door de Swagger-beschrijving van de connector.
 
-## <a name="more-connectors"></a>Meer connectors
-Ga terug naar de [lijst met api's](apis-list.md).
+## <a name="next-steps"></a>Volgende stappen
+
+* Meer informatie over andere [Logic apps-connectors](apis-list.md)

@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6a24f2dd52c3ac3c51df54bf5c01c7b31ca16147
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f026957b5f9fceab8a0df1f339e7cb459ec1078d
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985754"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562133"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Key Vault Soft-verwijdering gebruiken met Power shell
 
@@ -39,11 +39,11 @@ Zie [Azure Key Vault Power shell Reference](/powershell/module/az.keyvault)(Enge
 
 Key Vault bewerkingen worden als volgt afzonderlijk beheerd via machtigingen op basis van op rollen gebaseerde toegangs beheer (RBAC):
 
-| Bewerking | Description | Gebruikers machtiging |
+| Bewerking | Beschrijving | Gebruikers machtiging |
 |:--|:--|:--|
-|List|Een lijst met verwijderde sleutel kluizen.|Microsoft.KeyVault/deletedVaults/read|
+|Lijst|Een lijst met verwijderde sleutel kluizen.|Microsoft.KeyVault/deletedVaults/read|
 |Herstellen|Hiermee herstelt u een verwijderde sleutel kluis.|Microsoft.KeyVault/vaults/write|
-|Leegmaken|Verwijdert permanent een verwijderde sleutel kluis en alle bijbehorende inhoud.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
+|Opschonen|Verwijdert permanent een verwijderde sleutel kluis en alle bijbehorende inhoud.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
 Zie [uw sleutel kluis beveiligen](key-vault-secure-your-key-vault.md)voor meer informatie over machtigingen en toegangs beheer.
 
@@ -160,11 +160,11 @@ Een voorlopig verwijderde sleutel permanent verwijderen (ook wel het verwijderen
 Remove-AzKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey -InRemovedState
 ```
 
-De **herstel** - en opschoon acties hebben hun eigen machtigingen die zijn gekoppeld aan een sleutel kluis toegangs beleid. Als een gebruiker of service-principal een **herstel** -of opschoon actie kan uitvoeren, moeten ze beschikken over de juiste machtiging voor die sleutel of dit geheim. Standaard wordt **leegmaken** niet toegevoegd aan het toegangs beleid van een sleutel kluis wanneer de snelkoppeling ' alle ' wordt gebruikt om alle machtigingen te verlenen. U moet de machtiging **verwijderen** specifiek verlenen. 
+De **herstel** -en **opschoon** acties hebben hun eigen machtigingen die zijn gekoppeld aan een sleutel kluis toegangs beleid. Als een gebruiker of service-principal een **herstel** -of **opschoon** actie kan uitvoeren, moeten ze beschikken over de juiste machtiging voor die sleutel of dit geheim. Standaard wordt **leegmaken** niet toegevoegd aan het toegangs beleid van een sleutel kluis wanneer de snelkoppeling ' alle ' wordt gebruikt om alle machtigingen te verlenen. U moet de machtiging **verwijderen** specifiek verlenen. 
 
 #### <a name="set-a-key-vault-access-policy"></a>Een sleutel kluis toegangs beleid instellen
 
-Met de volgende opdracht user@contoso.com wordt een machtiging verleend voor het gebruik van verschillende bewerkingen op sleutels in *ContosoVault* , waaronder opschonen:
+Met de volgende opdracht wordt user@contoso.com toestemming verleend voor het gebruik van verschillende bewerkingen op sleutels in *ContosoVault* , waaronder **opschonen**:
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@contoso.com -PermissionsToKeys get,create,delete,list,update,import,backup,restore,recover,purge
@@ -216,7 +216,7 @@ Dit geldt ook voor de sleutel kluis. Als u een voorlopig verwijderde sleutel klu
 
 ### <a name="purging-a-key-vault"></a>Een sleutel kluis verwijderen
 
-Wanneer een sleutel kluis wordt leeg gemaakt, wordt de volledige inhoud definitief verwijderd, inclusief de sleutels, geheimen en certificaten. Als u een voorlopig verwijderde sleutel kluis wilt verwijderen, gebruikt u `Remove-AzKeyVault` de opdracht met de `-InRemovedState` optie en geeft u de locatie van de verwijderde sleutel kluis met `-Location location` het argument op. U kunt de locatie van een verwijderde kluis vinden met behulp `Get-AzKeyVault -InRemovedState`van de opdracht.
+Wanneer een sleutel kluis wordt leeg gemaakt, wordt de volledige inhoud definitief verwijderd, inclusief de sleutels, geheimen en certificaten. Als u een voorlopig verwijderde sleutel kluis wilt verwijderen, gebruikt u de opdracht `Remove-AzKeyVault` met de optie `-InRemovedState` en geeft u de locatie van de verwijderde sleutel kluis op met het argument `-Location location`. U kunt de locatie van een verwijderde kluis vinden met behulp van de opdracht `Get-AzKeyVault -InRemovedState`.
 
 ```powershell
 Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
@@ -254,7 +254,7 @@ Gebruik de cmdlets [Get-AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVaul
 Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 ```
 
-## <a name="other-resources"></a>Meer informatie
+## <a name="other-resources"></a>Overige bronnen
 
 - Zie [Azure Key Vault overzicht van tijdelijke verwijdering](key-vault-ovw-soft-delete.md)voor een overzicht van de functie voor voorlopig verwijderen van Key Vault.
-- Zie [Wat is Azure Key Vault?](key-vault-overview.md)voor een algemeen overzicht van Azure Key Vault gebruik. Aken = geslaagd}
+- Zie [Wat is Azure Key Vault?](key-vault-overview.md)voor een algemeen overzicht van Azure Key Vault gebruik.

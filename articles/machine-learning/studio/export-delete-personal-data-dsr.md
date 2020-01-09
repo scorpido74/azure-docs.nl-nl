@@ -1,7 +1,7 @@
 ---
 title: Uw gegevens exporteren en verwijderen
 titleSuffix: ML Studio (classic) - Azure
-description: In-product gegevens die zijn opgeslagen door Azure Machine Learning Studio (klassiek), kunnen worden geëxporteerd en verwijderd via de Azure Portal en ook via geverifieerde REST-Api's. Telemetriegegevens kunnen worden geopend via de Azure-privacybeleid. In dit artikel wordt beschreven hoe u dit kunt doen.
+description: In-product gegevens die zijn opgeslagen door Azure Machine Learning Studio (klassiek), kunnen worden geëxporteerd en verwijderd via de Azure Portal en ook via geverifieerde REST-Api's. Telemetriegegevens kunnen worden geopend via de Azure-privacybeleid. In dit artikel ziet u hoe u.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 9d17ff38ad521dcc282be4f06d33021faeb495b8
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 51aad01d5b03335bd1b57f6e5a9c775556187cca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837620"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427592"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Gebruikers gegevens in het product exporteren en verwijderen uit Azure Machine Learning Studio (klassiek)
 
 U kunt gegevens uit het product die zijn opgeslagen door Azure Machine Learning Studio (klassiek) verwijderen of exporteren met behulp van de Azure Portal, de Studio-interface, de Power shell en de geverifieerde REST-Api's. In dit artikel leest u hoe. 
 
-Telemetriegegevens kunnen worden geopend via de Azure-privacybeleid. 
+Telemetriegegevens zijn toegankelijk via de Privacy van de Azure-portal. 
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -61,7 +61,7 @@ Gebruikers kunnen assets in een werk ruimte verwijderen door ze te selecteren en
 
 ![Assets in Machine Learning Studio verwijderen (klassiek)](./media/export-delete-personal-data-dsr/delete-studio-asset.png)
 
-### <a name="delete-an-entire-workspace"></a>Een hele werk ruimte verwijderen
+### <a name="delete-an-entire-workspace"></a>Een volledige-werkruimte verwijderen
 
 Gebruikers kunnen ook hun hele werk ruimte verwijderen:
 - Betaalde werk ruimte: verwijderen via de Azure Portal.
@@ -70,7 +70,7 @@ Gebruikers kunnen ook hun hele werk ruimte verwijderen:
 ![Een gratis werk ruimte in Machine Learning Studio verwijderen (klassiek)](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  
 ## <a name="export-studio-classic-data-with-powershell"></a>Studio-gegevens exporteren met Power shell
-Gebruik Power shell om al uw gegevens te exporteren naar een draag bare indeling vanuit de klassieke versie van Azure Machine Learning Studio met behulp van-opdrachten. Zie het artikel [Power shell-module voor Azure machine learning Studio (klassiek)](powershell-module.md) voor meer informatie.
+Met Power shell kunt u al uw gegevens exporteren naar een Verwissel bare indeling van Azure Machine Learning Studio (klassiek) met behulp van-opdrachten. Zie het artikel [Power shell-module voor Azure machine learning Studio (klassiek)](powershell-module.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

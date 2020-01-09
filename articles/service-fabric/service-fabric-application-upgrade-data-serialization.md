@@ -1,66 +1,56 @@
 ---
-title: 'Toepassingsupgrade: gegevensserialisatie | Microsoft Docs'
-description: Aanbevolen procedures voor serialisatie van gegevens en hoe dit van invloed op rolling upgrades van toepassingen.
-services: service-fabric
-documentationcenter: .net
+title: 'Toepassingsupgrade: gegevensserialisatie'
+description: Aanbevolen procedures voor het serialiseren van gegevens en hoe dit van invloed is op upgrades van Rolling toepassingen.
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: a5f36366-a2ab-4ae3-bb08-bc2f9533bc5a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 55cbd869e7434469ebddd7af493c91bfedafc594
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7dc60c28b56982f82c1ac90db55ac752977ea2d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60614452"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457496"
 ---
-# <a name="how-data-serialization-affects-an-application-upgrade"></a>Hoe serialisatie van gegevens is van invloed op een toepassingsupgrade
-In een [rolling upgrade van de toepassing](service-fabric-application-upgrade.md), de upgrade wordt toegepast op een subset van knooppunten, één upgradedomein tegelijk. Tijdens dit proces, aantal upgradedomeinen zijn op de nieuwere versie van uw toepassing en sommige upgradedomeinen zijn op de oudere versie van uw toepassing. Tijdens de implementatie, de nieuwe versie van uw toepassing moet in staat om te lezen van de oude versie van uw gegevens zijn en de oude versie van uw toepassing moet in staat om te lezen van de nieuwe versie van uw gegevens zijn. Als de gegevensindeling niet compatibel met voorwaartse en achterwaartse is, wordt de upgrade mislukken, of nog erger, gegevens mogelijk verloren of beschadigd. In dit artikel wordt beschreven wat de gegevensindeling van uw om te achterhalen en biedt aanbevolen procedures om ervoor te zorgen dat uw gegevens vooruit en achteruit is compatibel.
+# <a name="how-data-serialization-affects-an-application-upgrade"></a>Hoe gegevens serialisatie van toepassing is op een toepassings upgrade
+Bij een [upgrade van een rolling toepassing](service-fabric-application-upgrade.md)wordt de upgrade toegepast op een subset knoop punten, één upgrade domein per keer. Tijdens dit proces bevinden sommige upgrade domeinen zich op de nieuwere versie van uw toepassing. sommige upgrade domeinen bevinden zich op de oudere versie van uw toepassing. Tijdens de implementatie moet de nieuwe versie van uw toepassing de oude versie van uw gegevens kunnen lezen, en de oude versie van uw toepassing moet de nieuwe versie van uw gegevens kunnen lezen. Als de gegevens indeling niet voorwaarts en achterwaarts compatibel is, kan de upgrade mislukken of kunnen de gegevens verloren gaan of beschadigd raken. In dit artikel wordt beschreven wat uw gegevens indeling vormt en worden aanbevolen procedures geboden om ervoor te zorgen dat uw gegevens voorwaarts en achterwaarts compatibel zijn.
 
-## <a name="what-makes-up-your-data-format"></a>Waaruit bestaat de gegevensindeling van uw?
-In Azure Service Fabric, de gegevens die worden opgeslagen en gerepliceerd afkomstig is van uw C# klassen. Voor toepassingen die gebruikmaken van [betrouwbare verzamelingen](service-fabric-reliable-services-reliable-collections.md), dat gegevens de objecten in de betrouwbare woordenboeken en wachtrijen worden. Voor toepassingen die gebruikmaken van [Reliable Actors](service-fabric-reliable-actors-introduction.md), dat wil zeggen de status van back-ups maken voor de actor. Deze C# klassen moeten worden geserialiseerd worden opgeslagen en gerepliceerd. Daarom wordt de gegevensindeling gedefinieerd door de velden en eigenschappen die zijn geserialiseerd, evenals hoe ze worden geserialiseerd. Bijvoorbeeld, in een `IReliableDictionary<int, MyClass>` de gegevens is een geserialiseerde `int` en een geserialiseerde `MyClass`.
+## <a name="what-makes-up-your-data-format"></a>Wat is uw gegevens indeling?
+In azure Service Fabric worden de gegevens die persistent zijn en gerepliceerd afkomstig van uw C# klassen. Voor toepassingen die gebruikmaken van [betrouw bare verzamelingen](service-fabric-reliable-services-reliable-collections.md), zijn deze gegevens de objecten in de betrouw bare woorden lijsten en wacht rijen. Voor toepassingen die gebruikmaken van [reliable actors](service-fabric-reliable-actors-introduction.md)is dit de status van de back-up voor de actor. Deze C# klassen moeten serialiseerbaar zijn om persistent te kunnen worden gemaakt en gerepliceerd. Daarom wordt de gegevens indeling gedefinieerd door de velden en eigenschappen die geserialiseerd zijn, en hoe ze worden geserialiseerd. Zo is een `IReliableDictionary<int, MyClass>` de gegevens een geserialiseerd `int` en een geserialiseerde `MyClass`.
 
-### <a name="code-changes-that-result-in-a-data-format-change"></a>Code wijzigt die resulteren in een gegevens-indeling wijzigen
-Omdat de gegevensindeling wordt bepaald door C# klassen, wijzigingen in de klassen die kunnen leiden tot een gegevenswijziging-indeling. Wees voorzichtig om ervoor te zorgen dat de wijziging van de indeling gegevens kan worden verwerkt door een rolling upgrade. Voorbeelden en leiden gegevenswijzigingen van de indeling tot kunnen:
+### <a name="code-changes-that-result-in-a-data-format-change"></a>Code wijzigingen die resulteren in een wijziging in de gegevens indeling
+Omdat de gegevens indeling wordt bepaald door C# klassen, kunnen wijzigingen aan de klassen een wijziging in de gegevens indeling veroorzaken. Zorg ervoor dat een rolling upgrade de wijziging van de gegevens indeling kan verwerken. Voor beelden die wijzigingen in de gegevens indeling kunnen veroorzaken:
 
-* Toevoegen of verwijderen van velden of properties
-* Wijzigen van velden of properties
-* Het wijzigen van de typen velden of properties
-* Wijzigen van de naam van klasse of naamruimte
+* Velden of eigenschappen toevoegen of verwijderen
+* Naam wijzigen van velden of eigenschappen
+* Het type velden of eigenschappen wijzigen
+* De klassenaam of naam ruimte wijzigen
 
-### <a name="data-contract-as-the-default-serializer"></a>Als de serializer van de standaard-gegevenscontract
-De serializer is doorgaans verantwoordelijk voor het lezen van gegevens en bij het deserialiseren van het in de huidige versie, zelfs als de gegevens zich in een oudere of *nieuwere* versie. De serializer van de standaard is de [gegevenscontract serializer](https://msdn.microsoft.com/library/ms733127.aspx), die is voorzien van versiebeheer goed gedefinieerde regels. Betrouwbare verzamelingen kunnen de serializer kunnen worden overschreven, maar Reliable Actors op dit moment niet. De serializer van de gegevens speelt een belangrijke rol bij het inschakelen van rolling upgrades. De serializer van de Data Contract is de serializer die wij voor Service Fabric-toepassingen aanraden.
+### <a name="data-contract-as-the-default-serializer"></a>Gegevens contract als standaard-serialisatiefunctie
+De serialisatiefunctie is over het algemeen verantwoordelijk voor het lezen van de gegevens en het deserialiseren ervan naar de huidige versie, zelfs als de gegevens zich in een oudere of *nieuwere* versie bevindt. De standaardserialisatiefunctie is de serialisatiefunctie voor het [gegevens contract](https://msdn.microsoft.com/library/ms733127.aspx), met goed gedefinieerde versies van regels. Met betrouw bare verzamelingen kan de serialisatiefunctie worden overschreven, maar Reliable Actors momenteel niet. De data serializer speelt een belang rijke rol bij het inschakelen van rolling upgrades. De serialisatiefunctie van het gegevens contract is de serialisatiefunctie die wordt aanbevolen voor Service Fabric toepassingen.
 
-## <a name="how-the-data-format-affects-a-rolling-upgrade"></a>Hoe de gegevensindeling van invloed is op een rolling upgrade
-Tijdens een rolling upgrade, er zijn twee hoofdscenario's waar de serializer van een oudere kan optreden of *nieuwere* versie van uw gegevens:
+## <a name="how-the-data-format-affects-a-rolling-upgrade"></a>Hoe de gegevens indeling van invloed is op een rolling upgrade
+Tijdens een rolling upgrade zijn er twee belang rijke scenario's waarin de serialisatiefunctie een oudere of *nieuwere* versie van uw gegevens kan ondervinden:
 
-1. Nadat een knooppunt wordt bijgewerkt en opnieuw is gestart, de serializer van de nieuwe zal worden gebruikt voor het laden van de gegevens dat is aangehouden op schijf op de oude versie.
-2. Tijdens de rolling upgrade wordt het cluster een combinatie van de oude en nieuwe versies van uw code bevatten. Omdat de replica's kunnen worden geplaatst in verschillende domeinen van de upgrade en replica's verzenden van gegevens met elkaar, kan de nieuwe en/of de oude versie van uw gegevens worden aangetroffen door de nieuwe en/of de oude versie van de serializer.
+1. Nadat een knoop punt is bijgewerkt en een back-up wordt gemaakt, worden de gegevens die door de oude versie zijn opgeslagen, door de nieuwe serialisatiefunctie geladen op schijf.
+2. Tijdens de rolling upgrade bevat het cluster een combi natie van de oude en nieuwe versies van uw code. Omdat replica's in verschillende upgrade domeinen kunnen worden geplaatst en replica's gegevens naar elkaar verzenden, kunnen de nieuwe en/of oude versie van uw gegevens worden gevonden door de nieuwe en/of oude versie van de serialisatiefunctie.
 
 > [!NOTE]
-> De ' nieuwe ' en 'oude versie' hier verwijzen naar de versie van de code die wordt uitgevoerd. De 'nieuwe serializer"verwijst naar de serializer-code die wordt uitgevoerd in de nieuwe versie van uw toepassing. De 'nieuwe gegevens"verwijst naar de geserialiseerde C# klasse van de nieuwe versie van uw toepassing.
+> De ' nieuwe versie ' en ' oude versie ' verwijzen hier naar de versie van de code die wordt uitgevoerd. De ' nieuwe serialisatiefunctie ' verwijst naar de serialisatiefunctie-code die wordt uitgevoerd in de nieuwe versie van uw toepassing. De ' nieuwe gegevens ' verwijst naar de geserialiseerde C# klasse van de nieuwe versie van uw toepassing.
 > 
 > 
 
-De twee versies van de indeling van code en gegevens moeten vooruit en achteruit compatibel is. Als ze niet compatibel is zijn, de rolling upgrade mislukken of gegevens verloren kunnen gaan. De rolling upgrade mislukken omdat de code of serializer kan throw uitzonderingen of een fout wanneer wordt vastgesteld dat de andere versie. Mogelijk gaan gegevens verloren als u bijvoorbeeld een nieuwe eigenschap is toegevoegd, maar de serializer van de oude verwijdert alle tijdens de deserialisatie.
+De twee versies van code en gegevens indeling moeten voorwaarts en achterwaarts compatibel zijn. Als ze niet compatibel zijn, kunnen de rolling upgrade mislukken of kunnen gegevens verloren gaan. De rolling upgrade kan mislukken omdat de code of de serialisatiefunctie uitzonde ringen of een fout kan veroorzaken wanneer de andere versie wordt aangetroffen. Gegevens kunnen verloren gaan als er bijvoorbeeld een nieuwe eigenschap is toegevoegd, maar de oude serialisatiefunctie deze negeert tijdens deserialisatie.
 
-Data Contract is de aanbevolen oplossing om ervoor te zorgen dat uw gegevens compatibel is. Het bevat versiebeheer van goed gedefinieerde regels voor het toevoegen, verwijderen en wijzigen van velden. Het bevat ook ondersteuning voor het omgaan met onbekende velden en omgaan met klassenovername Inhaken op het proces van serialisatie en deserialisatie. Zie voor meer informatie, [met behulp van Data Contract](https://msdn.microsoft.com/library/ms733127.aspx).
+Data contract is de aanbevolen oplossing om ervoor te zorgen dat uw gegevens compatibel zijn. Er zijn goed gedefinieerde versie regels voor het toevoegen, verwijderen en wijzigen van velden. Het biedt ook ondersteuning voor het afhandelen van onbekende velden, het koppelen van het serialisatie proces en het afhandelen van klasse-overname. Zie [using data contract](https://msdn.microsoft.com/library/ms733127.aspx)(Engelstalig) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Een upgrade van uw toepassing met behulp van Visual Studio](service-fabric-application-upgrade-tutorial.md) begeleidt u bij de upgrade van een toepassing met Visual Studio.
+Als u een [upgrade uitvoert van uw toepassing met behulp van Visual Studio](service-fabric-application-upgrade-tutorial.md) , wordt u begeleid bij een toepassings upgrade met Visual Studio.
 
-[Een upgrade van uw toepassing met behulp van Powershell](service-fabric-application-upgrade-tutorial-powershell.md) begeleidt u bij de upgrade van een toepassing met behulp van PowerShell.
+Als u uw toepassing bijwerkt [met Power shell](service-fabric-application-upgrade-tutorial-powershell.md) , kunt u een toepassings upgrade uitvoeren met behulp van Power shell.
 
-Bepalen hoe uw toepassing met behulp van upgrades [Parameters Upgrade](service-fabric-application-upgrade-parameters.md).
+Bepalen hoe uw toepassing wordt bijgewerkt met behulp van [upgrade parameters](service-fabric-application-upgrade-parameters.md).
 
-Informatie over het gebruik van geavanceerde functionaliteit tijdens het bijwerken van uw toepassing door te verwijzen naar [geavanceerde onderwerpen](service-fabric-application-upgrade-advanced.md).
+Meer informatie over het gebruik van geavanceerde functionaliteit bij het upgraden van uw toepassing door te verwijzen naar [Geavanceerde onderwerpen](service-fabric-application-upgrade-advanced.md).
 
-Oplossen van veelvoorkomende problemen in upgrades van toepassingen door te verwijzen naar de stappen in [toepassingsupgrades oplossen van problemen](service-fabric-application-upgrade-troubleshooting.md).
+Corrigeer veelvoorkomende problemen in toepassings upgrades door te verwijzen naar de stappen in [Troubleshooting Application upgrades](service-fabric-application-upgrade-troubleshooting.md).
 

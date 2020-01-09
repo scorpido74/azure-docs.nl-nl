@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 7224c6a77df496624903830f0a2cbd8d193517cc
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: cab63a17ddfed49684cc37609d9f2ae5bde9bdd3
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178187"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689373"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>IP-adressen van Azure API Management
 
@@ -57,17 +57,17 @@ Open bare IP-adressen zullen deel uitmaken van het antwoord:
 
 In [meerdere regionale implementaties](api-management-howto-deploy-multi-region.md)heeft elke regionale implementatie één openbaar IP-adres.
 
-## <a name="ip-addresses-of-api-management-service-in-vnet"></a>IP-adressen van API Management service in VNET
+## <a name="ip-addresses-of-api-management-service-in-vnet"></a>IP-adressen van API Management service in VNet
 
 Als uw API Management-service zich in een virtueel netwerk bevindt, heeft deze twee typen IP-adressen: openbaar en privé.
 
-Open bare IP-adressen worden gebruikt voor interne communicatie `3443` op poort-voor het beheren van de configuratie (bijvoorbeeld via Azure Resource Manager). In de externe VNET-configuratie worden ze ook gebruikt voor runtime-API-verkeer. Wanneer een aanvraag wordt verzonden van API Management naar een open bare back-end (Internet Facing), is een openbaar IP-adres zichtbaar als de oorsprong van de aanvraag.
+Open bare IP-adressen worden gebruikt voor interne communicatie op poort `3443`-voor het beheren van de configuratie (bijvoorbeeld via Azure Resource Manager). In de externe VNet-configuratie worden ze ook gebruikt voor runtime-API-verkeer. Wanneer een aanvraag wordt verzonden van API Management naar een open bare back-end (Internet Facing), is een openbaar IP-adres zichtbaar als de oorsprong van de aanvraag.
 
 Persoonlijke VIP-adressen (virtuele IP) worden gebruikt om vanuit het netwerk verbinding te maken met API Management eind punten-gateways, de ontwikkelaars Portal en het beheer vlak voor directe API-toegang. U kunt deze gebruiken voor het instellen van DNS-records in het netwerk.
 
 U ziet adressen van beide typen in de Azure Portal en in het antwoord van de API-aanroep:
 
-![API Management in IP-adres van VNET](media/api-management-howto-ip-addresses/vnet-ip.png)
+![API Management in IP-adres van VNet](media/api-management-howto-ip-addresses/vnet-ip.png)
 
 
 ```json
@@ -89,6 +89,8 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 }
 ```
 
+API Management gebruikt een openbaar IP-adres voor verbindingen buiten het VNet en een privé-IP-adres voor verbindingen binnen het VNet.
+
 ## <a name="ip-addresses-of-consumption-tier-api-management-service"></a>IP-adressen van API Management service voor verbruiks lagen
 
 Als uw API Management-service een verbruiks tier-service is, heeft deze geen toegewezen IP-adres. De service verbruiks tier wordt uitgevoerd op een gedeelde infra structuur en zonder een deterministisch IP-adres. 
@@ -102,6 +104,6 @@ In de lagen ontwikkelaar, basis, standaard en Premium van API Management zijn de
 * De service wordt verwijderd en vervolgens opnieuw gemaakt.
 * Het service abonnement wordt [opgeschort](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) of [gewaarschuwd](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) (bijvoorbeeld voor niet-betaling) en vervolgens opnieuw ingesteld.
 * Azure Virtual Network wordt toegevoegd aan of verwijderd uit de service.
-* API Management-service wordt overgeschakeld tussen de externe en interne Vnet-implementatie modus.
+* API Management-service wordt overgeschakeld tussen de externe en interne VNet-implementatie modus.
 
 In [meerdere regionale implementaties](api-management-howto-deploy-multi-region.md)verandert het regionale IP-adres als een regio leeg is en opnieuw wordt ingesteld.

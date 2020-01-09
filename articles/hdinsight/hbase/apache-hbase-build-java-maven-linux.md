@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.openlocfilehash: c948d07bed99f1286e27d645fde7b96fdc699c02
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive,seodec18
+ms.date: 12/24/2019
+ms.openlocfilehash: 3e9b23ce450e45dfedcee8b20e09b1c2b52b6e68
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311704"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495780"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Ontwikkel Java-toepassingen voor Apache HBase
 
@@ -35,7 +35,8 @@ De stappen in dit document gebruiken [Apache Maven](https://maven.apache.org/) o
 
 * Een teksteditor. In dit artikel wordt micro soft Klad blok gebruikt.
 
-## <a name="test-environment"></a>Test omgeving
+## <a name="test-environment"></a>Testomgeving
+
 De omgeving die voor dit artikel wordt gebruikt, is een computer met Windows 10.  De opdrachten zijn uitgevoerd in een opdracht prompt en de verschillende bestanden zijn bewerkt met Klad blok. Wijzig dienovereenkomstig voor uw omgeving.
 
 Voer vanaf een opdracht prompt de onderstaande opdrachten in om een werk omgeving te maken:
@@ -71,7 +72,7 @@ cd C:\HDI
 
 ## <a name="update-the-project-object-model"></a>Het object model van het project bijwerken
 
-Zie https://maven.apache.org/pom.htmlvoor een volledige referentie van het bestand pom. XML.  Open `pom.xml` door de volgende opdracht in te voeren:
+Zie https://maven.apache.org/pom.html voor een volledige referentie van het bestand pom. XML.  Open `pom.xml` door de volgende opdracht in te voeren:
 
 ```cmd
 notepad pom.xml
@@ -84,7 +85,7 @@ In `pom.xml`voegt u de volgende tekst toe aan de sectie `<dependencies>`:
 ```xml
 <dependency>
     <groupId>org.apache.hbase</groupId>
-    <artifactId>hbase-client</artifactId>
+    <artifactId>hbase-shaded-client</artifactId>
     <version>1.1.2</version>
 </dependency>
 <dependency>
@@ -128,7 +129,7 @@ Voeg de volgende code toe aan het `pom.xml`-bestand, sla het bestand op en sluit
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
         <configuration>
             <source>1.8</source>
             <target>1.8</target>
@@ -408,7 +409,7 @@ De volgende stappen gebruiken `scp` om het JAR te kopiëren naar het primaire ho
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
- 3. Als u een HBase-tabel wilt maken met behulp van de Java-toepassing, gebruikt u de volgende opdracht in uw open SSH-verbinding:
+3. Als u een HBase-tabel wilt maken met behulp van de Java-toepassing, gebruikt u de volgende opdracht in uw open SSH-verbinding:
 
     ```bash
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable

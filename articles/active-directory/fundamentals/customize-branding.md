@@ -1,5 +1,5 @@
 ---
-title: Huisstijl van uw organisatie aanmelden pagina - Azure Active Directory toevoegen | Microsoft Docs
+title: Een huis stijl toevoegen aan de aanmeldings pagina van uw organisatie-Azure AD
 description: Instructies over het toevoegen van de huisstijl van uw organisatie op de aanmeldingspagina van Azure Active Directory.
 services: active-directory
 author: msaburnley
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7caf6eff9f5bd497ab6c3a500f3940549b198576
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ea0bc131f7eb3fc66f3b024b4c9902f8c73f9a7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959041"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422822"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Huisstijl van uw organisatie Azure Active Directory-aanmelden pagina toevoegen
 Het logo en de aangepaste kleurenschema's van uw organisatie gebruiken om een consistent uiterlijk-en-werking op uw Azure Active Directory (Azure AD) aanmeldingspagina's. Uw aanmeldingspagina's worden weergegeven wanneer gebruikers zich aanmelden bij uw organisatie op basis van een web-apps, zoals Office 365, dat gebruikmaakt van Azure AD als id-provider.
@@ -29,7 +29,7 @@ Het logo en de aangepaste kleurenschema's van uw organisatie gebruiken om een co
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Uw Azure AD-aanmeldingspagina aanpassen
 U kunt uw Azure AD-aanmelden pagina's aanpassen, die worden weergegeven wanneer gebruikers zich aanmelden bij apps van de tenant-specifieke van uw organisatie, zoals [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), of als een domeinvariabele, zoals wordtdoorgegeven[ *https://passwordreset.microsoftonline.com/?whr=contoso.com* ](https://passwordreset.microsoftonline.com/?whr=contoso.com).
 
-Uw aangepaste huis stijl wordt niet onmiddellijk weer gegeven wanneer uw gebruikers naar sites gaan,\.zoals www-Office.com. In plaats daarvan wordt de gebruiker heeft om aan te melden voordat uw aangepaste huisstijl weergegeven. Nadat de gebruiker zich heeft aangemeld, kan het 15 minuten of langer duren voordat de huis stijl wordt weer gegeven. 
+Uw aangepaste huis stijl wordt niet onmiddellijk weer gegeven wanneer uw gebruikers naar sites zoals www\.office.com. In plaats daarvan wordt de gebruiker heeft om aan te melden voordat uw aangepaste huisstijl weergegeven. Nadat de gebruiker zich heeft aangemeld, kan het 15 minuten of langer duren voordat de huis stijl wordt weer gegeven. 
 
 > [!NOTE]
 > Alle huisstijl elementen zijn optioneel. Als u een logo in banner met geen afbeelding opgeeft, wordt de aanmeldingspagina uw logo met een standaardinstallatiekopie van achtergrond van de doelsite (bijvoorbeeld Office 365) weergegeven.<br><br>Bovendien branding-aanmeldingspagina niet meegenomen naar persoonlijke Microsoft-accounts. Als uw gebruikers- of zakelijke gasten zich hebt aangemeld met een persoonlijk Microsoft-account, wordt niet de aanmeldingspagina doorgevoerd in de huisstijl van uw organisatie.
@@ -76,7 +76,7 @@ Uw aangepaste huis stijl wordt niet onmiddellijk weer gegeven wanneer uw gebruik
     
         - **Afbeelding met vierkant logo, donkere thema.** Hetzelfde als de bovenstaande afbeelding met vierkant logo. Deze logoafbeelding gebruikt in plaats van de afbeelding met vierkant logo bij gebruik met een donkere achtergrond, zoals met Windows 10 Azure AD verbonden schermen tijdens de out-of-box experience (OOBE).  Als uw logo mooi op wit, donker blauw en zwarte achtergronden, moet u niet om toe te voegen deze installatiekopie. 
         
-        - **Optie om aangemeld te blijven weergeven.** U kunt ervoor kiezen om uw gebruikers blijven aangemeld bij Azure AD pas expliciet afmelden. Als u ervoor kiest **Nee**, deze optie verborgen is en gebruikers moeten zich in elke keer dat de browser wordt gesloten en heropend.
+        - **Optie om aangemeld te blijven weergeven.** U kunt ervoor kiezen uw gebruikers aangemeld te blijven bij Azure AD voordat ze zich expliciet afmelden. Als u **Nee**kiest, wordt deze optie verborgen en moeten gebruikers zich aanmelden telkens wanneer de browser wordt gesloten en opnieuw wordt geopend.
         
             >[!Note]
             >Of sommige functies van SharePoint Online en Office 2010 beschikbaar zijn, hangt ervan af of gebruikers ervoor kunnen kiezen aangemeld te blijven. Als u deze instelling op **Nee** instelt, krijgen uw gebruikers mogelijk extra en onverwachte prompts te zien om zich aan te melden.

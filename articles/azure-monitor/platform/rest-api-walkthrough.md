@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/19/2018
-ms.openlocfilehash: 68c90f6c763fe7cd634aee886c5c8c6b8153253e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 4ce1272c38bcb066f9e88ca739561ccd7696c989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551823"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363503"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure monitoring REST API-overzicht
 
@@ -97,7 +97,7 @@ Gebruik de [Azure monitor metrische definities rest API](https://docs.microsoft.
 
 **Methode**: ophalen
 
-**Aanvraag-URI**: https: \/ \/management. Azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /providers/ *{resourceProviderNamespace}* / *{resource type}* / *{ResourceName}* /providers/Microsoft.Insights/metricDefinitions? API-Version = *{apiVersion}*
+**Aanvraag-URI**: https:\/\/management.Azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /providers/ *{resourceProviderNamespace}* / *{resource type* }/ *{ResourceName}* /providers/Microsoft.Insights/metricDefinitions? API-Version = *{apiVersion}*
 
 Als u bijvoorbeeld de metrische definities voor een Azure Storage account wilt ophalen, ziet de aanvraag er als volgt uit:
 
@@ -241,7 +241,7 @@ Gebruik de naam waarde van de metriek (niet het ' localizedValue ') voor filter 
 
 **Methode**: ophalen
 
-**Aanvraag-URI**: https \://*Management.Azure.com/subscriptions/{abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/ *{resource-Provider-namespace}* / *{resource-type}* / *{resource-name}* /providers/Microsoft.Insights/Metrics? metricnames = *{metric}* & time span = *{starttime/EndTime}* & $filter = *{filter}* & resultType = meta gegevens & API-Version = *{ apiVersion}*
+**Aanvraag-URI**: https\://*Management.Azure.com/subscriptions/{abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/ *{resource-Provider-namespace}* / *{resource-type}* / *{resource naam}* /providers/Microsoft.Insights/Metrics? metricnames = *{metric}* & time span = *{starttime/EndTime}* & $filter = *{filter}* & resultType = meta gegevens & API-Version = *{ apiVersion}*
 
 Als u bijvoorbeeld de lijst met dimensie waarden wilt ophalen die zijn verzonden voor de ' API-naam dimensie ' voor de metriek ' trans acties ', waarbij de geotype dimensie = ' primary ' tijdens het opgegeven tijds bereik, zou de aanvraag er als volgt uitzien:
 
@@ -314,7 +314,7 @@ Gebruik de naam waarde van de metriek (niet het ' localizedValue ') voor filter 
 
 **Methode**: ophalen
 
-**Aanvraag-URI**: *https://management.azure.com/subscriptions/ {abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/ *{resource-Provider-namespace}* / *{resource-type}* / *{resource name}* /providers/ micro soft. Insights/metrische gegevens? metricnames = *{metric}* & time span = *{StartTime/endtime}* & $filter = *{filter}* & interval = *{timeGrain}* & Aggregation = *{aggreation}* & API-Version = *{apiVersion}*
+**Aanvraag-URI**: *https://management.azure.com/subscriptions/ {abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/ *{resource-Provider-namespace}* / *{resource-type}* / *{resource-name}* /providers/Microsoft.Insights/Metrics? metricnames = *{metric}* & time span = *{StartTime/EndTime}* & $filter = *{filter}* & interval = *{timeGrain}* & aggregatie = *{aggreation}* & API-Version = *{apiVersion}*
 
 Als u bijvoorbeeld de top-3 Api's wilt ophalen, in aflopende waarde, door het aantal ' trans acties ' tijdens een periode van 5 minuten, waarbij de GeotType ' primair ' was, zou de aanvraag er als volgt uitzien:
 
@@ -393,7 +393,7 @@ Gebruik de [Azure monitor metrische definities rest API](https://msdn.microsoft.
 
 **Methode**: ophalen
 
-**Aanvraag-URI**: https: \/ \/management. Azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /providers/ *{resourceProviderNamespace}* / *{resource type}* / *{ResourceName}* /providers/Microsoft.Insights/metricDefinitions? API-Version = *{apiVersion}*
+**Aanvraag-URI**: https:\/\/management.Azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /providers/ *{resourceProviderNamespace}* / *{resource type* }/ *{ResourceName}* /providers/Microsoft.Insights/metricDefinitions? API-Version = *{apiVersion}*
 
 Als u bijvoorbeeld de metrische definities voor een Azure Logic-app wilt ophalen, ziet de aanvraag er als volgt uit:
 
@@ -466,7 +466,7 @@ Zodra de beschik bare metrische definities bekend zijn, is het mogelijk om de ge
 
 **Methode**: ophalen
 
-**Aanvraag-URI**: *https://management.azure.com/subscriptions/ {abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/ *{resource-Provider-namespace}* / *{resource-type}* / *{resource name}* /providers/ micro soft. Insights/metrische gegevens? $filter = *{filter}* & API-Version = *{apiVersion}*
+**Aanvraag-URI**: https://management.azure.com/subscriptions/ *{abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/ *{resource-Provider-namespace}* / *{resource-type}* / *{resource-name}* /providers/Microsoft.Insights/Metrics? $filter = *{filter}* & API-Version = *{apiVersion}*
 
 Als u bijvoorbeeld de RunsSucceeded metric data Points wilt ophalen voor het opgegeven tijds bereik en voor een tijd korrel van 1 uur, zou de aanvraag er als volgt uitzien:
 
@@ -604,13 +604,13 @@ Voor de voor gaande code is de resource-ID die moet worden gebruikt het volledig
 
 De volgende lijst bevat enkele voor beelden van Resource-ID-indelingen voor verschillende Azure-resources:
 
-* **IOT hub** -/Subscriptions/ *{abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.devices/IotHubs/ *{IOT-hub-name}*
+* **IoT Hub** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Devices/IotHubs/ *{iot-hub-name}*
 * **Elastische SQL-pool** -/Subscriptions/ *{abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.SQL/servers/ *{pool-DB}* /elasticpools/ *{SQL-pool-name}*
 * **SQL database (V12)** -/Subscriptions/ *{abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.SQL/servers/ *{server-name}* /databases/ *{Data Base-name}*
 * **Service Bus** -/Subscriptions/ *{abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.ServiceBus/ *{Namespace}* / *{ServiceBus-name}*
 * **Schaal sets voor virtuele machines** -/Subscriptions/ *{abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Compute/virtualMachineScaleSets/ *{VM-name}*
-* **Vm's** -/Subscriptions/ *{abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Compute/virtualMachines/ *{VM-name}*
-* **Event hubs** -/Subscriptions/ *{abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.EventHub/namespaces/ *{EventHub-namespace}*
+* **VMs** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Compute/virtualMachines/ *{vm-name}*
+* **Event Hubs** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.EventHub/namespaces/ *{eventhub-namespace}*
 
 Er zijn alternatieve benaderingen voor het ophalen van de resource-ID, inclusief het gebruik van Azure Resource Explorer, het weer geven van de gewenste resource in de Azure Portal en via Power shell of de Azure CLI.
 
@@ -654,7 +654,7 @@ PlanId         :
 Version        : 08586982649483762729
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 Als u de resource-ID voor een Azure Storage-account wilt ophalen met behulp van de Azure CLI, voert u de `az storage account show` opdracht uit, zoals in het volgende voor beeld wordt weer gegeven:
 

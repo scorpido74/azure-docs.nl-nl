@@ -2,19 +2,15 @@
 title: Onderliggende runbooks in Azure Automation
 description: Hierin worden de verschillende methoden beschreven voor het starten van een runbook in Azure Automation vanuit een ander runbook en het delen van gegevens ertussen.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 01/17/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: e7341a8c270d16497430a70c2a1b21354a775787
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a35ee69e6a167f4907294c88710d0484353d4cb2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850445"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367006"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Onderliggende runbooks in Azure Automation
 
@@ -114,7 +110,7 @@ De volgende tabel geeft een overzicht van de verschillen tussen de twee methoden
 
 |  | Inline | Cmdlet |
 |:--- |:--- |:--- |
-| Job |Onderliggende runbooks worden uitgevoerd in dezelfde taak als het bovenliggende item. |Een afzonderlijke taak is voor het onderliggende runbook gemaakt. |
+| Taak |Onderliggende runbooks worden uitgevoerd in dezelfde taak als het bovenliggende item. |Een afzonderlijke taak is voor het onderliggende runbook gemaakt. |
 | Uitvoering |Bovenliggend runbook wacht tot het onderliggende runbook om te voltooien voordat u doorgaat. |Het bovenliggende runbook blijft onmiddellijk nadat het onderliggende runbook is gestart *of* het bovenliggende runbook wacht totdat de onderliggende taak is voltooid. |
 | Uitvoer |Bovenliggend runbook kan uitvoer rechtstreeks van onderliggend runbook ophalen. |Bovenliggend runbook moet uitvoer ophalen van onderliggend runbook-taak *of* bovenliggend runbook kan rechtstreeks uitvoer ophalen van onderliggend runbook. |
 | Parameters |Waarden voor de parameters van onderliggend runbook worden afzonderlijk opgegeven en elk gegevenstype kunnen gebruiken. |Waarden voor de para meters van het onderliggende runbook moeten worden gecombineerd in één hashtabel. Deze hashtabel kan alleen eenvoudige, matrix-en object gegevens typen bevatten die gebruikmaken van JSON-serialisatie. |

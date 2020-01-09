@@ -6,18 +6,18 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 06/20/2019
-ms.openlocfilehash: eb73551c4226df8bc20428558720c0ebbfff96d9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e14ee617aca20fc18226651acfadab6ab2bdd939
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873587"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445295"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos-emulator-opmerkingen bij de release en informatie over downloaden
 
 Dit artikel bevat de release opmerkingen voor de Azure Cosmos-emulator met een lijst met onderdeel updates die zijn gemaakt in elke release. Ook wordt de meest recente versie van de emulator weer gegeven die u kunt downloaden en gebruiken.
 
-## <a name="download"></a>Downloaden
+## <a name="download"></a>Download
 
 | | |
 |---------|---------|
@@ -25,6 +25,10 @@ Dit artikel bevat de release opmerkingen voor de Azure Cosmos-emulator met een l
 |**Aan de slag**|[Lokaal ontwikkelen met Azure Cosmos-emulator](local-emulator.md)|
 
 ## <a name="release-notes"></a>Releaseopmerkingen
+
+### <a name="272"></a>2.7.2
+
+- Deze release voegt MongoDB versie 3,6-server ondersteuning toe aan de Cosmos-emulator. Als u een MongoDB-eind punt met de doel versie 3,6 van de service wilt starten, start u de emulator vanaf een opdracht regel van de beheerder met de optie '/EnableMongoDBEndpoint = 3.6 '.
 
 ### <a name="270"></a>2.7.0
 

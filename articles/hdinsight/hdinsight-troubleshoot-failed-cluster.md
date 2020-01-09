@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 69711f7ac20882617de175b1b90d8df4f2858c4d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 22bf4dcd472cf2d7804b571e09093535f30b053f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498086"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647421"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Problemen oplossen met een trage of mislukte taak in een HDInsight-cluster
 
@@ -90,7 +90,7 @@ HDInsight is afhankelijk van verschillende Azure-Services. Hiermee worden virtue
 
 #### <a name="check-azure-service-usage-limits"></a>Gebruiks limieten van Azure-service controleren
 
-Als u een groot cluster start of meerdere clusters tegelijkertijd hebt gestart, kan een cluster mislukken als u een limiet van Azure-Services hebt overschreden. Service limieten variëren, afhankelijk van uw Azure-abonnement. Zie [Azure-abonnement en servicelimieten, quota en beperkingen](https://docs.microsoft.com/azure/azure-subscription-service-limits) voor meer informatie.
+Als u een groot cluster start of meerdere clusters tegelijkertijd hebt gestart, kan een cluster mislukken als u een limiet van Azure-Services hebt overschreden. Service limieten variëren, afhankelijk van uw Azure-abonnement. Zie [Azure-abonnement en servicelimieten, quota en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) voor meer informatie.
 U kunt aanvragen dat micro soft het aantal HDInsight-resources dat beschikbaar is (zoals VM-kernen en VM-exemplaren), verg Roten met een aanvraag voor het verhogen van de [kern quota van Resource Manager](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 #### <a name="check-the-release-version"></a>De release versie controleren

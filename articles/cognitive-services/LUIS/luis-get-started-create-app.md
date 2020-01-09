@@ -1,7 +1,7 @@
 ---
 title: 'Quick Start: app maken-LUIS'
 titleSuffix: Azure Cognitive Services
-description: Maak een LUIS-app die gebruikmaakt van het vooraf gemaakte domein `HomeAutomation` voor het in- en uitschakelen van lichten en apparaten. Dit vooraf gemaakte domein biedt u intenties, entiteiten voorbeelden van utterances. Wanneer u klaar bent, hebt u een LUIS-eindpunt in de cloud.
+description: In deze Quick start ziet u hoe u een LUIS-app maakt die gebruikmaakt van de vooraf gebouwde domein `HomeAutomation` voor het in-en uitschakelen van lampen en apparaten. Dit vooraf gemaakte domein biedt u intenties, entiteiten voorbeelden van utterances. Wanneer u klaar bent, hebt u een LUIS-eindpunt in de cloud.
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -9,42 +9,36 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 22a37dbd0b76710a14183aec1795639614207d16
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 302321a36a6ce7526ad5e3144f87b88edbfaaec7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73613739"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448101"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Snelstart: Een vooraf gemaakte app voor huisautomatisering gebruiken
 
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
-
 In deze snelstart maakt u een LUIS-app die gebruikmaakt van het vooraf gemaakte domein `HomeAutomation` voor het in- en uitschakelen van lichten en apparaten. Dit vooraf gemaakte domein biedt u intenties, entiteiten voorbeelden van utterances. Wanneer u klaar bent, hebt u een LUIS-eindpunt in de cloud.
-
-## <a name="prerequisites"></a>Vereisten
-
-Voor dit artikel hebt u een gratis LUIS-account nodig, dat u kunt maken in de LUIS-portal op [https://www.luis.ai](https://www.luis.ai). 
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 [!INCLUDE [Select authoring resource](./includes/select-authoring-resource.md)]
 
 ## <a name="create-a-new-app"></a>Een nieuwe app maken
-U kunt uw toepassingen maken en beheren in **Mijn apps**. 
+U kunt uw toepassingen maken en beheren in **Mijn apps**.
 
 1. Selecteer **+ maken**in de Luis-Portal in de lijst mijn apps.
 
     ![Selecteer in de LUIS-Portal in de lijst mijn apps de optie + maken.](./media/create-app-in-portal.png)
 
-1. Geef in het dialoog venster de naam van uw toepassing `Home Automation` Selecteer vervolgens **gereed**. LUIS maakt de app. De beschrijving is optioneel en wordt niet gebruikt voor ontwerpen of voor spellingen. De Voorspellings bron is ook optioneel bij het maken van een LUIS-app. Wanneer u uw app naar productie publiceert, moet u een Voorspellings resource toewijzen, zodat uw app veel aanvragen kan verwerken.  
+1. Geef in het dialoog venster de naam van uw toepassing `Home Automation` Selecteer vervolgens **gereed**. LUIS maakt de app. De beschrijving is optioneel en wordt niet gebruikt voor ontwerpen of voor spellingen. De Voorspellings bron is ook optioneel bij het maken van een LUIS-app. Wanneer u uw app naar productie publiceert, moet u een Voorspellings resource toewijzen, zodat uw app veel aanvragen kan verwerken.
 
     ![Geef in het dialoog venster de naam Start Automation van uw toepassing op](./media/create-new-app-details.png)
 
     >[!NOTE]
-    >De cultuur kan niet worden gewijzigd nadat de toepassing is gemaakt. 
+    >De cultuur kan niet worden gewijzigd nadat de toepassing is gemaakt.
 
 ## <a name="add-prebuilt-domain"></a>Vooraf gemaakt domein toevoegen
 
@@ -61,18 +55,18 @@ Selecteer **intenties** om de HomeAutomation-domein intentie te controleren. De 
 ![Scherm opname van de lijst met HomeAutomation intentie](media/luis-quickstart-new-app/home-automation-intents.png "Scherm opname van de lijst met HomeAutomation intentie")
 
 > [!NOTE]
-> **None** is een intentie die door alle LUIS-apps wordt geboden. U kunt deze gebruiken voor het afhandelen van utterances die niet overeenkomen met de functionaliteit die uw app biedt. 
+> **None** is een intentie die door alle LUIS-apps wordt geboden. U kunt deze gebruiken voor het afhandelen van utterances die niet overeenkomen met de functionaliteit die uw app biedt.
 
 Selecteer de intentie **HomeAutomation.TurnOff**. U kunt zien dat de intentie een lijst met utterances bevat die zijn gelabeld met entiteiten.
 
 [![Scherm opname van HomeAutomation. TurnOff intentie](media/luis-quickstart-new-app/home-automation-turnoff.png "Scherm opname van HomeAutomation. TurnOff intentie")](media/luis-quickstart-new-app/home-automation-turnoff.png)
 
-## <a name="train-the-luis-app"></a>LUIS-app inleren
+## <a name="train-the-luis-app"></a>LUIS-app trainen
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="test-your-app"></a>Uw app testen
-Nadat u uw app hebt getraind, kunt u deze testen. Selecteer **testen**. Typ een test utterance zoals `Turn off the lights` in het deel venster interactieve test en druk op ENTER. 
+Nadat u uw app hebt getraind, kunt u deze testen. Selecteer **testen**. Typ een test utterance zoals `Turn off the lights` in het deel venster interactieve test en druk op ENTER.
 
 ```
 Turn off the lights
@@ -88,7 +82,7 @@ Selecteer **controleren** om meer informatie over de voor spelling te bekijken.
 
 ![Scherm afbeelding van het test paneel met inspectie-informatie](media/luis-quickstart-new-app/test.png)
 
-Selecteer **Test** nogmaals om het deelvenster samen te vouwen. 
+Selecteer **Test** nogmaals om het deelvenster samen te vouwen.
 
 <a name="publish-your-app"></a>
 
@@ -100,7 +94,7 @@ Selecteer **Test** nogmaals om het deelvenster samen te vouwen.
 
 ## <a name="query-the-v3-api-prediction-endpoint"></a>Een query uitvoeren op het prediction-eind punt van de V3 API
 
-[!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)] 
+[!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)]
 
 1. Zorg ervoor dat in de adres balk van de browser voor de query reeks de volgende naam-en waarde balken in de URL staan. Als ze niet voor komen in de query reeks, voegt u deze toe:
 
@@ -201,7 +195,7 @@ Selecteer **Test** nogmaals om het deelvenster samen te vouwen.
     ```
 
     Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
-    
+
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

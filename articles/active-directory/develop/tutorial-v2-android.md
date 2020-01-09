@@ -1,5 +1,5 @@
 ---
-title: Aanmelden gebruikers & Call Microsoft Graph (Android)-micro soft Identity-platform | Azure
+title: Gebruikers in-en uitloggen &-oproep Microsoft Graph (Android)-micro soft Identity-platform | Azure
 description: Een toegangs Token ophalen en Microsoft Graph of Api's aanroepen waarvoor toegangs tokens zijn vereist van micro soft Identity platform (Android)
 services: active-directory
 documentationcenter: dev-center-name
@@ -11,30 +11,31 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/10/2019
-ms.author: jmprieur
+ms.date: 11/26/2019
+ms.author: hahamil
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7feefc368815b1bfe57b67db2cd94702db799d78
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b4c4c9bc025e8fd506b298ed676674899e318481
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961554"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689348"
 ---
-# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Zelf studie: gebruikers aanmelden en de Microsoft Graph aanroepen vanuit een Android-app
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Zelf studie: gebruikers aanmelden en de Microsoft Graph aanroepen vanuit een Android-toepassing 
 
-> [!NOTE]
-> Deze zelf studie is nog niet bijgewerkt voor gebruik met de MSAL-bibliotheek voor Android versie 1,0. Het werkt met een eerdere versie, zoals is geconfigureerd in deze zelf studie.
+>[!NOTE]
+>In deze zelf studie worden vereenvoudigde voor beelden van het werken met MSAL voor Android beschreven. Ter vereenvoudiging maakt deze zelf studie alleen gebruik van de modus voor één account. U kunt ook de opslag plaats bekijken en [de vooraf geconfigureerde voor beeld-app](https://github.com/Azure-Samples/ms-identity-android-java/) klonen om complexere scenario's te verkennen. Bekijk de [Quick](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-android) start voor meer informatie over de voor beeld-app, configuratie en registratie. 
 
-In deze zelf studie leert u hoe u een Android-app integreert met het micro soft-identiteits platform. Uw app meldt zich aan bij een gebruiker, haalt een toegangs token op om de Microsoft Graph-API aan te roepen en brengt een aanvraag naar de Microsoft Graph-API.  
+In deze zelf studie leert u hoe u uw Android-app integreert met het micro soft-identiteits platform met behulp van de micro soft-verificatie bibliotheek voor Android. U leert hoe u zich kunt aanmelden en een gebruiker kunt afmelden, een toegangs token krijgt om de Microsoft Graph-API aan te roepen en een aanvraag naar de Graph API te verzenden. 
 
 > [!div class="checklist"]
-> * Een Android-app integreren met het micro soft Identity-platform
-> * Een gebruiker aanmelden
-> * Een toegangs Token ophalen om de Microsoft Graph-API aan te roepen
-> * Roep de Microsoft Graph-API aan.  
+> * Uw Android-app integreren met het micro soft Identity-platform 
+> * Een gebruiker aanmelden 
+> * Een toegangs Token ophalen om de Microsoft Graph-API aan te roepen 
+> * De Microsoft Graph-API aanroepen 
+> * Een gebruiker afmelden 
 
 Wanneer u deze zelf studie hebt voltooid, accepteert uw toepassing aanmeldingen van persoonlijke micro soft-accounts (waaronder outlook.com, live.com en anderen), evenals werk-of school accounts van een bedrijf of organisatie die gebruikmaakt van Azure Active Directory.
 
@@ -44,7 +45,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ![Toont hoe de voor beeld-app die door deze zelf studie wordt gegenereerd, werkt](../../../includes/media/active-directory-develop-guidedsetup-android-intro/android-intro.svg)
 
-De app in deze zelf studie meldt zich aan bij gebruikers en haalt gegevens op uit hun naam.  Deze gegevens worden geopend via een beveiligde API (Microsoft Graph-API) waarvoor autorisatie is vereist en wordt beveiligd door het micro soft Identity-platform.
+De app in deze zelf studie meldt zich aan bij gebruikers en haalt gegevens op uit hun naam. Deze gegevens worden geopend via een beveiligde API (Microsoft Graph-API) waarvoor autorisatie is vereist en wordt beveiligd door het micro soft Identity-platform.
 
 Meer details:
 
@@ -58,13 +59,12 @@ In dit voor beeld wordt de micro soft-verificatie bibliotheek voor Android (MSAL
 
  MSAL zal tokens automatisch vernieuwen, eenmalige aanmelding (SSO) leveren tussen andere apps op het apparaat en de account (s) beheren.
 
-## <a name="prerequisites"></a>Vereisten
+### <a name="prerequisites"></a>Vereisten
 
-* Voor deze zelf studie is Android Studio versie 3,5 vereist.
+* Voor deze zelf studie is Android Studio versie 3.5 + vereist
 
 ## <a name="create-a-project"></a>Een project maken
-
-In deze zelf studie wordt een nieuw project gemaakt. Als u in plaats daarvan de voltooide zelf studie wilt downloaden, [downloadt u de code](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip).
+Als u nog geen Android-toepassing hebt, voert u de volgende stappen uit om een nieuw project in te stellen. 
 
 1. Open Android Studio en selecteer **een nieuw Android Studio-project starten**.
 2. Selecteer **basis activiteit** en selecteer **volgende**.
@@ -74,11 +74,13 @@ In deze zelf studie wordt een nieuw project gemaakt. Als u in plaats daarvan de 
 6. Stel het **minimale API-niveau** in op **API 19** of hoger en klik op **volt ooien**.
 7. Kies in de Project weergave **project** in de vervolg keuzelijst om bron-en niet-bron project bestanden weer te geven, open **app/build. gradle** en stel `targetSdkVersion` in op `28`.
 
-## <a name="register-your-application"></a>Uw toepassing registreren
+## <a name="integrate-with-microsoft-authentication-library"></a>Integreren met micro soft-verificatie bibliotheek 
+
+### <a name="register-your-application"></a>Uw toepassing registreren
 
 1. Ga naar de [Azure Portal](https://aka.ms/MobileAppReg).
-2. Open de [blade app-registraties](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) en klik op **+ nieuwe registratie**.
-3. Voer een **naam** in voor uw app en klik vervolgens zonder een omleidings-URI in te stellen op **registreren**.
+2. Open de [blade app-registraties](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) en klik op **+ nieuwe registratie**.
+3. Voer een **naam** in voor uw app en klik vervolgens **zonder** een OMleidings-URI in te stellen op **registreren**.
 4. Selecteer in de sectie **beheren** van het deel venster dat wordt weer gegeven **verificatie** >  **+ een platform toevoegen** > **Android**. (Mogelijk moet u ' overschakelen naar de nieuwe ervaring ' boven aan de Blade selecteren om deze sectie weer te geven.
 5. Voer de pakket naam van uw project in. Als u de code hebt gedownload, is deze waarde `com.azuresamples.msalandroidapp`.
 6. Klik in de sectie **hash van hand tekening** van de pagina **uw Android-app configureren** op **een hash voor ontwikkel handtekeningen genereren.** Kopieer de opdracht voor het hulp programma om te gebruiken voor uw platform.
@@ -89,13 +91,38 @@ In deze zelf studie wordt een nieuw project gemaakt. Als u in plaats daarvan de 
 7. Voer de **hand tekening-hash** gegenereerd door het hulp programma.
 8. Klik op `Configure` en sla de **MSAL-configuratie** op die wordt weer gegeven op de pagina Android- **configuratie** zodat u deze kunt invoeren wanneer u de app later configureert.  Klik op **Gereed**.
 
-## <a name="build-your-app"></a>Uw app ontwikkelen
-
-### <a name="add-your-app-registration"></a>Uw app-registratie toevoegen
+### <a name="configure-your-application"></a>Uw toepassing configureren 
 
 1. Ga in het deel venster Project van Android Studio naar **app\src\main\res**.
 2. Klik met de rechter muisknop op **Res** en kies **nieuwe** > **Directory**. Voer `raw` in als de naam van de nieuwe map en klik op **OK**.
-3. Maak in **app** > **src** > **hoofd** > **Res** > **raw**een nieuw JSON-bestand met de naam `auth_config.json` en plak de MSAL-configuratie die u eerder hebt opgeslagen. Zie [MSAL-configuratie voor meer informatie](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app).
+3. Maak in **app** > **src** > **hoofd** > **Res** > **raw**een nieuw JSON-bestand met de naam `auth_configbn_single_account.json` en plak de MSAL-configuratie die u eerder hebt opgeslagen. 
+
+    Plak onder de omleidings-URI: 
+    ```json
+      "account_mode" : "SINGLE",
+    ```
+    Het configuratie bestand moet er als volgt uitzien: 
+    ```json   
+    {
+      "client_id" : "0984a7b6-bc13-4141-8b0d-8f767e136bb7",
+      "authorization_user_agent" : "DEFAULT",
+      "redirect_uri" : "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D",
+      "account_mode" : "SINGLE",
+      "authorities" : [
+        {
+          "type": "AAD",
+          "audience": {
+            "type": "AzureADandPersonalMicrosoftAccount",
+            "tenant_id": "common"
+          }
+        }
+      ]
+    }
+   ```
+    
+   >[!NOTE]
+   >In deze zelf studie wordt alleen gedemonstreerd hoe u een app kunt configureren in de modus voor één account. Raadpleeg de documentatie voor meer informatie over [één versus meerdere account modus](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account) en [het configureren van uw app](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration)
+   
 4. In **app** > **src** > **Main** > **AndroidManifest. xml**, voegt u de onderstaande activiteit `BrowserTabActivity` toe aan de hoofd tekst van de toepassing. Met deze vermelding kan micro soft terugbellen naar uw toepassing nadat de verificatie is voltooid:
 
     ```xml
@@ -114,43 +141,402 @@ In deze zelf studie wordt een nieuw project gemaakt. Als u in plaats daarvan de 
     ```
 
     Vervang de naam van het pakket die u hebt geregistreerd in het Azure Portal voor de `android:host=` waarde.
-    Vervang de sleutel-hash die u hebt geregistreerd in het Azure Portal voor de `android:path=` waarde. De hash van de hand tekening mag geen URL-code ring zijn.
+    Vervang de sleutel-hash die u hebt geregistreerd in het Azure Portal voor de `android:path=` waarde. De hash van de hand tekening mag **geen** URL-code ring zijn. Zorg ervoor dat er een toonaangevende `/` aan het begin van uw hand tekening-hash. 
+    >[!NOTE]
+    >De "pakket naam" u vervangt de `android:host` waarde met moet er ongeveer als volgt uitzien: "com. azuresamples. msalandroidapp" de "Signature hash" u vervangt uw `android:path` waarde met moet er ongeveer als volgt uitzien: "/1wIqXSqBj7w + h11ZifsnqwgyKrY =" u kunt deze waarden ook vinden in de Blade verificatie van de app-registratie. Houd er rekening mee dat de omleidings-URI er ongeveer als volgt uitziet: "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D". Hoewel de hash van de hand tekening een URL-code ring aan het einde van deze waarde heeft, mag de hand tekening-hash **geen** URL-code ring in uw `android:path` waarde zijn. 
 
-5. Voeg in het **AndroidManifest. XML-bestand**de volgende machtigingen toe, net boven de `<application>`-tag:
+## <a name="use-msal"></a>MSAL gebruiken 
 
-    ```xml
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+### <a name="add-msal-to-your-project"></a>MSAL toevoegen aan uw project
+
+1. Ga in het venster Android Studio project naar **app** > **src** > **Build. gradle** en voeg het volgende toe: 
+
+    ```gradle
+    repositories{
+        jcenter()
+    }  
+    dependencies{
+        implementation 'com.microsoft.identity.client:msal:1.0.+'
+        implementation 'com.microsoft.graph:microsoft-graph:1.5.+'
+    }
     ```
+    [Meer informatie over de Microsoft Graph SDK](https://github.com/microsoftgraph/msgraph-sdk-java/)
 
-### <a name="create-the-apps-ui"></a>De gebruikers interface van de app maken
+### <a name="required-imports"></a>Vereiste Imports 
 
-1. Navigeer in het venster Android Studio project naar **app** > **src** > **Main** > **Res** > **Layout** en open **activity_main. XML** en open de **tekst** weergave.
-2. Wijzig de indeling van de activiteit, bijvoorbeeld: `<androidx.coordinatorlayout.widget.CoordinatorLayout` aan `<androidx.coordinatorlayout.widget.DrawerLayout`. 
-3. Voeg de eigenschap `android:orientation="vertical"` toe aan het knoop punt `LinearLayout`.
-4. Plak de volgende code in het knoop punt `LinearLayout` en vervang de huidige inhoud:
+Voeg het volgende toe boven aan de **app** > **src** > **Main**> **Java** > **com. voor beeld (yourapp)**  > **MainActivity. java** 
 
-    ```xml
-    <TextView
-        android:text="Welcome, "
-        android:textColor="#3f3f3f"
-        android:textSize="50px"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="15dp"
-        android:id="@+id/welcome"
-        android:visibility="invisible"/>
+```java
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import com.google.gson.JsonObject;
+import com.microsoft.graph.authentication.IAuthenticationProvider; //Imports the Graph sdk Auth interface
+import com.microsoft.graph.concurrency.ICallback;
+import com.microsoft.graph.core.ClientException;
+import com.microsoft.graph.http.IHttpRequest;
+import com.microsoft.graph.models.extensions.*;
+import com.microsoft.graph.requests.extensions.GraphServiceClient;
+import com.microsoft.identity.client.AuthenticationCallback; // Imports MSAL auth methods
+import com.microsoft.identity.client.*;
+import com.microsoft.identity.client.exception.*;
+```
 
-    <Button
-        android:id="@+id/callGraph"
-        android:text="Call Microsoft Graph"
-        android:textColor="#FFFFFF"
-        android:background="#00a1f1"
+## <a name="instantiate-publicclientapplication"></a>PublicClientApplication instantiëren
+#### <a name="initialize-variables"></a>Variabelen initialiseren 
+```java
+private final static String[] SCOPES = {"User.Read"};
+/* Azure AD v2 Configs */
+final static String AUTHORITY = "https://login.microsoftonline.com/common";
+private ISingleAccountPublicClientApplication mSingleAccountApp;
+
+private static final String TAG = MainActivity.class.getSimpleName();
+
+/* UI & Debugging Variables */
+Button signInButton;
+Button signOutButton;
+Button callGraphApiInteractiveButton;
+Button callGraphApiSilentButton;
+TextView logTextView;
+TextView currentUserTextView;
+```
+
+### <a name="oncreate"></a>onCreate
+In de klasse `MainActivity` raadpleegt u de volgende onCreate ()-methode om MSAL te instantiëren met behulp van de `SingleAccountPublicClientApplication`.
+
+```java
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    initializeUI();
+
+    PublicClientApplication.createSingleAccountPublicClientApplication(getApplicationContext(),
+            R.raw.auth_config_single_account, new IPublicClientApplication.ISingleAccountApplicationCreatedListener() {
+                @Override
+                public void onCreated(ISingleAccountPublicClientApplication application) {
+                    mSingleAccountApp = application;
+                    loadAccount();
+                }
+                @Override
+                public void onError(MsalException exception) {
+                    displayError(exception);
+                }
+            });
+}
+```
+
+### <a name="loadaccount"></a>loadAccount 
+
+```java
+//When app comes to the foreground, load existing account to determine if user is signed in 
+private void loadAccount() {
+    if (mSingleAccountApp == null) {
+        return;
+    }
+
+    mSingleAccountApp.getCurrentAccountAsync(new ISingleAccountPublicClientApplication.CurrentAccountCallback() {
+        @Override
+        public void onAccountLoaded(@Nullable IAccount activeAccount) {
+            // You can use the account data to update your UI or your app database.
+            updateUI(activeAccount);
+        }
+        
+        @Override
+        public void onAccountChanged(@Nullable IAccount priorAccount, @Nullable IAccount currentAccount) {
+            if (currentAccount == null) {
+                // Perform a cleanup task as the signed-in account changed.
+                performOperationOnSignOut();
+            }
+        }
+
+        @Override
+        public void onError(@NonNull MsalException exception) {
+            displayError(exception);
+        }
+    });
+}
+```
+
+### <a name="initializeui"></a>initializeUI
+Luister naar knoppen en oproep methoden of logboek fouten dienovereenkomstig. 
+```java
+private void initializeUI(){
+        signInButton = findViewById(R.id.signIn);
+        callGraphApiSilentButton = findViewById(R.id.callGraphSilent);
+        callGraphApiInteractiveButton = findViewById(R.id.callGraphInteractive);
+        signOutButton = findViewById(R.id.clearCache);
+        logTextView = findViewById(R.id.txt_log);
+        currentUserTextView = findViewById(R.id.current_user);
+        
+        //Sign in user 
+        signInButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                if (mSingleAccountApp == null) {
+                    return;
+                }
+                mSingleAccountApp.signIn(MainActivity.this, null, SCOPES, getAuthInteractiveCallback());
+            }
+        });
+        
+        //Sign out user
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mSingleAccountApp == null){
+                    return;
+                }
+                mSingleAccountApp.signOut(new ISingleAccountPublicClientApplication.SignOutCallback() {
+                    @Override
+                    public void onSignOut() {
+                        updateUI(null);
+                        performOperationOnSignOut();
+                    }
+                    @Override
+                    public void onError(@NonNull MsalException exception){
+                        displayError(exception);
+                    }
+                });
+            }
+        });
+        
+        //Interactive 
+        callGraphApiInteractiveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mSingleAccountApp == null) {
+                    return;
+                }
+                mSingleAccountApp.acquireToken(MainActivity.this, SCOPES, getAuthInteractiveCallback());
+            }
+        });
+
+        //Silent
+        callGraphApiSilentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mSingleAccountApp == null){
+                    return;
+                }
+                mSingleAccountApp.acquireTokenSilentAsync(SCOPES, AUTHORITY, getAuthSilentCallback());
+            }
+        });
+    }
+```
+
+> [!Important]
+> Als u zich afmeldt bij MSAL, worden alle bekende gegevens van een gebruiker uit de toepassing verwijderd, maar de gebruiker heeft nog steeds een actieve sessie op het apparaat. Als de gebruiker zich opnieuw probeert aan te melden, zien ze mogelijk de gebruikers interface voor aanmelden, maar hoeven ze hun referenties mogelijk niet opnieuw op te geven omdat de sessie van het apparaat nog steeds actief is. 
+
+### <a name="getauthinteractivecallback"></a>getAuthInteractiveCallback
+Call back die wordt gebruikt voor interactieve aanvragen.
+
+```java 
+private AuthenticationCallback getAuthInteractiveCallback() {
+    return new AuthenticationCallback() {
+        @Override
+        public void onSuccess(IAuthenticationResult authenticationResult) {
+            /* Successfully got a token, use it to call a protected resource - MSGraph */
+            Log.d(TAG, "Successfully authenticated");
+            /* Update UI */
+            updateUI(authenticationResult.getAccount());
+            /* call graph */
+            callGraphAPI(authenticationResult);
+        }
+
+        @Override
+        public void onError(MsalException exception) {
+            /* Failed to acquireToken */
+            Log.d(TAG, "Authentication failed: " + exception.toString());
+            displayError(exception);
+        }
+        @Override
+        public void onCancel() {
+            /* User canceled the authentication */
+            Log.d(TAG, "User cancelled login.");
+        }
+    };
+}
+```
+
+### <a name="getauthsilentcallback"></a>getAuthSilentCallback
+Call back gebruikt voor Silent-aanvragen 
+```java 
+private SilentAuthenticationCallback getAuthSilentCallback() {
+    return new SilentAuthenticationCallback() {
+        @Override
+        public void onSuccess(IAuthenticationResult authenticationResult) {
+            Log.d(TAG, "Successfully authenticated");
+            callGraphAPI(authenticationResult);
+        }
+        @Override
+        public void onError(MsalException exception) {
+            Log.d(TAG, "Authentication failed: " + exception.toString());
+            displayError(exception);
+        }
+    };
+}
+```
+
+## <a name="call-microsoft-graph-api"></a>Microsoft Graph API aanroepen 
+
+De volgende code laat zien hoe u de GraphAPI aanroept met de Graph SDK. 
+
+### <a name="callgraphapi"></a>callGraphAPI 
+
+```java
+private void callGraphAPI(IAuthenticationResult authenticationResult) {
+
+    final String accessToken = authenticationResult.getAccessToken();
+
+    IGraphServiceClient graphClient =
+            GraphServiceClient
+                    .builder()
+                    .authenticationProvider(new IAuthenticationProvider() {
+                        @Override
+                        public void authenticateRequest(IHttpRequest request) {
+                            Log.d(TAG, "Authenticating request," + request.getRequestUrl());
+                            request.addHeader("Authorization", "Bearer " + accessToken);
+                        }
+                    })
+                    .buildClient();
+    graphClient
+            .me()
+            .drive()
+            .buildRequest()
+            .get(new ICallback<Drive>() {
+                @Override
+                public void success(final Drive drive) {
+                    Log.d(TAG, "Found Drive " + drive.id);
+                    displayGraphResult(drive.getRawObject());
+                }
+
+                @Override
+                public void failure(ClientException ex) {
+                    displayError(ex);
+                }
+            });
+}
+```
+
+## <a name="add-ui"></a>Gebruikersinterface toevoegen
+### <a name="activity"></a>Activiteit 
+Als u uw gebruikers interface wilt model leren van deze zelf studie, bieden de volgende methoden een hand leiding voor het bijwerken van tekst en het Luis teren naar knoppen.
+
+#### <a name="updateui"></a>updateUI
+Knoppen in-of uitschakelen op basis van de aanmeldings status en tekst instellen.  
+```java 
+private void updateUI(@Nullable final IAccount account) {
+    if (account != null) {
+        signInButton.setEnabled(false);
+        signOutButton.setEnabled(true);
+        callGraphApiInteractiveButton.setEnabled(true);
+        callGraphApiSilentButton.setEnabled(true);
+        currentUserTextView.setText(account.getUsername());
+    } else {
+        signInButton.setEnabled(true);
+        signOutButton.setEnabled(false);
+        callGraphApiInteractiveButton.setEnabled(false);
+        callGraphApiSilentButton.setEnabled(false);
+        currentUserTextView.setText("");
+        logTextView.setText("");
+    }
+}
+```
+#### <a name="displayerror"></a>Display error
+```java 
+private void displayError(@NonNull final Exception exception) {
+       logTextView.setText(exception.toString());
+   }
+```
+
+#### <a name="displaygraphresult"></a>displayGraphResult
+
+```java
+private void displayGraphResult(@NonNull final JsonObject graphResponse) {
+      logTextView.setText(graphResponse.toString());
+  }
+```
+#### <a name="performoperationonsignout"></a>performOperationOnSignOut
+Methode voor het bijwerken van de tekst in de gebruikers interface om afmelden weer te geven. 
+
+```java
+private void performOperationOnSignOut() {
+    final String signOutText = "Signed Out.";
+    currentUserTextView.setText("");
+    Toast.makeText(getApplicationContext(), signOutText, Toast.LENGTH_SHORT)
+            .show();
+}
+```
+### <a name="layout"></a>Layout 
+
+Voor beeld `activity_main.xml`-bestand om knoppen en tekst vakken weer te geven. 
+
+```xml 
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:textAllCaps="false" />
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:weightSum="10">
+
+        <Button
+            android:id="@+id/signIn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:text="Sign In"/>
+
+        <Button
+            android:id="@+id/clearCache"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:text="Sign Out"
+            android:enabled="false"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/callGraphInteractive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="Get Graph Data Interactively"
+            android:enabled="false"/>
+
+        <Button
+            android:id="@+id/callGraphSilent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="Get Graph Data Silently"
+            android:enabled="false"/>
+    </LinearLayout>
 
     <TextView
         android:text="Getting Graph Data..."
@@ -161,379 +547,23 @@ In deze zelf studie wordt een nieuw project gemaakt. Als u in plaats daarvan de 
         android:id="@+id/graphData"
         android:visibility="invisible"/>
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/current_user"
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
-        android:gravity="center|bottom"
-        android:orientation="vertical" >
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="0.8"
+        android:text="Account info goes here..." />
 
-        <Button
-            android:text="Sign Out"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:textColor="#FFFFFF"
-            android:background="#00a1f1"
-            android:textAllCaps="false"
-            android:id="@+id/clearCache"
-            android:visibility="invisible" />
-    </LinearLayout>
-    ```
-
-### <a name="add-msal-to-your-project"></a>MSAL toevoegen aan uw project
-
-1. Navigeer in het venster Android Studio project naar **app** > **src** > **Build. gradle**.
-2. Plak het volgende onder **afhankelijkheden**:
-
-    ```gradle  
-    implementation 'com.android.volley:volley:1.1.1'
-    implementation 'com.microsoft.identity.client:msal:0.3+'
-    ```
-
-### <a name="use-msal"></a>MSAL gebruiken
-
-Breng nu wijzigingen aan in `MainActivity.java` om MSAL toe te voegen aan en te gebruiken in uw app.
-Navigeer in het venster Android Studio project naar **app** > **src** > **Main** > **Java** > **com. example. ( uw app)** en open `MainActivity.java`.
-
-#### <a name="required-imports"></a>Vereiste Imports
-
-Voeg de volgende invoer toe aan de bovenkant van `MainActivity.java`:
-
-```java
-import android.app.Activity;
-import android.content.Intent;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.android.volley.*;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import org.json.JSONObject;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import com.microsoft.identity.client.*;
-import com.microsoft.identity.client.exception.*;
+    <TextView
+        android:id="@+id/txt_log"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="0.8"
+        android:text="Output goes here..." />
+</LinearLayout>
 ```
-
-#### <a name="instantiate-msal"></a>MSAL instantiëren
-
-In de `MainActivity`-klasse moeten we MSAL maken, samen met enkele configuraties over wat de app doet, met inbegrip van de bereiken en Web-API die we willen gebruiken.
-
-Kopieer de volgende variabelen in de klasse `MainActivity`:
-
-```java
-final static String SCOPES [] = {"https://graph.microsoft.com/User.Read"};
-final static String MSGRAPH_URL = "https://graph.microsoft.com/v1.0/me";
-
-/* UI & Debugging Variables */
-private static final String TAG = MainActivity.class.getSimpleName();
-Button callGraphButton;
-Button signOutButton;
-
-/* Azure AD Variables */
-private PublicClientApplication sampleApp;
-private IAuthenticationResult authResult;
-```
-
-Vervang de inhoud van `onCreate()` door de volgende code om MSAL te instantiëren:
-
-```java
-super.onCreate(savedInstanceState);
-setContentView(R.layout.activity_main);
-
-callGraphButton = (Button) findViewById(R.id.callGraph);
-signOutButton = (Button) findViewById(R.id.clearCache);
-
-callGraphButton.setOnClickListener(new View.OnClickListener() {
-    public void onClick(View v) {
-        onCallGraphClicked();
-    }
-});
-
-signOutButton.setOnClickListener(new View.OnClickListener() {
-    public void onClick(View v) {
-        onSignOutClicked();
-    }
-});
-
-/* Configure your sample app and save state for this activity */
-sampleApp = new PublicClientApplication(
-        this.getApplicationContext(),
-        R.raw.auth_config);
-
-/* Attempt to get a user and acquireTokenSilent */
-sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
-    @Override
-    public void onAccountsLoaded(final List<IAccount> accounts) {
-        if (!accounts.isEmpty()) {
-            /* This sample doesn't support multi-account scenarios, use the first account */
-            sampleApp.acquireTokenSilentAsync(SCOPES, accounts.get(0), getAuthSilentCallback());
-        } else {
-            /* No accounts */
-        }
-    }
-});
-```
-
-De code hierboven probeert gebruikers op de achtergrond te registreren wanneer ze uw toepassing openen via `getAccounts()` en, als dit is gelukt, `acquireTokenSilentAsync()`.  In de volgende gedeelten implementeren we de call back-handler voor het geval er geen accounts zijn aangemeld.
-
-#### <a name="use-msal-to-get-tokens"></a>MSAL gebruiken om tokens op te halen
-
-Nu kunnen we de UI-verwerkings logica van de app implementeren en tokens interactief ophalen via MSAL.
-
-MSAL beschrijft twee primaire methoden voor het ophalen van tokens: `acquireTokenSilentAsync()` en `acquireToken()`.  
-
-`acquireTokenSilentAsync()` zich bij een gebruiker aanmeldt en tokens ophalen zonder tussen komst van de gebruiker als er een account aanwezig is. Als de service slaagt, worden de tokens door MSAL naar uw app gestuurt. als dit mislukt, wordt er een `MsalUiRequiredException`gegenereerd.  Als deze uitzonde ring wordt gegenereerd of als u wilt dat de gebruiker een interactieve aanmeldings ervaring (referenties, MFA of een ander beleid voor voorwaardelijke toegang mogelijk niet vereist), gebruikt u `acquireToken()`.  
-
-`acquireToken()` de gebruikers interface wordt weer gegeven wanneer wordt geprobeerd de gebruiker aan te melden en tokens op te halen. Het kan echter gebruik maken van sessie cookies in de browser of een account in micro soft Authenticator om de interactieve-SSO-ervaring te bieden.
-
-Maak de volgende drie UI-methoden in de klasse `MainActivity`:
-
-```java
-/* Set the UI for successful token acquisition data */
-private void updateSuccessUI() {
-    callGraphButton.setVisibility(View.INVISIBLE);
-    signOutButton.setVisibility(View.VISIBLE);
-    findViewById(R.id.welcome).setVisibility(View.VISIBLE);
-    ((TextView) findViewById(R.id.welcome)).setText("Welcome, " +
-            authResult.getAccount().getUsername());
-    findViewById(R.id.graphData).setVisibility(View.VISIBLE);
-}
-
-/* Set the UI for signed out account */
-private void updateSignedOutUI() {
-    callGraphButton.setVisibility(View.VISIBLE);
-    signOutButton.setVisibility(View.INVISIBLE);
-    findViewById(R.id.welcome).setVisibility(View.INVISIBLE);
-    findViewById(R.id.graphData).setVisibility(View.INVISIBLE);
-    ((TextView) findViewById(R.id.graphData)).setText("No Data");
-
-    Toast.makeText(getBaseContext(), "Signed Out!", Toast.LENGTH_SHORT)
-            .show();
-}
-
-/* Use MSAL to acquireToken for the end-user
- * Callback will call Graph api w/ access token & update UI
- */
-private void onCallGraphClicked() {
-    sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());
-}
-```
-
-Voeg de volgende methoden toe om de huidige activiteit en het stil & van interactieve retour aanroepen te verkrijgen:
-
-```java
-public Activity getActivity() {
-    return this;
-}
-
-/* Callback used in for silent acquireToken calls.
- * Looks if tokens are in the cache (refreshes if necessary and if we don't forceRefresh)
- * else errors that we need to do an interactive request.
- */
-private AuthenticationCallback getAuthSilentCallback() {
-    return new AuthenticationCallback() {
-
-        @Override
-        public void onSuccess(IAuthenticationResult authenticationResult) {
-            /* Successfully got a token, call graph now */
-            Log.d(TAG, "Successfully authenticated");
-
-            /* Store the authResult */
-            authResult = authenticationResult;
-
-            /* call graph */
-            callGraphAPI();
-
-            /* update the UI to post call graph state */
-            updateSuccessUI();
-        }
-
-        @Override
-        public void onError(MsalException exception) {
-            /* Failed to acquireToken */
-            Log.d(TAG, "Authentication failed: " + exception.toString());
-
-            if (exception instanceof MsalClientException) {
-                /* Exception inside MSAL, more info inside the exception */
-            } else if (exception instanceof MsalServiceException) {
-                /* Exception when communicating with the STS, likely config issue */
-            } else if (exception instanceof MsalUiRequiredException) {
-                /* Tokens expired or no session, retry with interactive */
-            }
-        }
-
-        @Override
-        public void onCancel() {
-            /* User cancelled the authentication */
-            Log.d(TAG, "User cancelled login.");
-        }
-    };
-}
-
-/* Callback used for interactive request.  If succeeds we use the access
- * token to call the Microsoft Graph. Does not check cache
- */
-private AuthenticationCallback getAuthInteractiveCallback() {
-    return new AuthenticationCallback() {
-
-        @Override
-        public void onSuccess(IAuthenticationResult authenticationResult) {
-            /* Successfully got a token, call graph now */
-            Log.d(TAG, "Successfully authenticated");
-            Log.d(TAG, "ID Token: " + authenticationResult.getIdToken());
-
-            /* Store the auth result */
-            authResult = authenticationResult;
-
-            /* call graph */
-            callGraphAPI();
-
-            /* update the UI to post call graph state */
-            updateSuccessUI();
-        }
-
-        @Override
-        public void onError(MsalException exception) {
-            /* Failed to acquireToken */
-            Log.d(TAG, "Authentication failed: " + exception.toString());
-
-            if (exception instanceof MsalClientException) {
-                /* Exception inside MSAL, more info inside the exception */
-            } else if (exception instanceof MsalServiceException) {
-                /* Exception when communicating with the STS, likely config issue */
-            }
-        }
-
-        @Override
-        public void onCancel() {
-            /* User cancelled the authentication */
-            Log.d(TAG, "User cancelled login.");
-        }
-    };
-}
-```
-
-#### <a name="use-msal-for-sign-out"></a>MSAL gebruiken voor afmelden
-
-Voeg vervolgens ondersteuning toe voor afmelden.
-
-> [!Important]
-> Als u zich afmeldt bij MSAL, worden alle bekende gegevens van een gebruiker uit de toepassing verwijderd, maar de gebruiker heeft nog steeds een actieve sessie op het apparaat. Als de gebruiker zich opnieuw probeert aan te melden, zien ze mogelijk de gebruikers interface voor aanmelden, maar hoeven ze hun referenties mogelijk niet opnieuw op te geven omdat de sessie van het apparaat nog steeds actief is.
-
-Voeg de volgende methode toe aan de klasse `MainActivity` om de afmeldings functie toe te voegen. Deze methode doorloopt alle accounts en verwijdert deze:
-
-```java
-/* Clears an account's tokens from the cache.
- * Logically similar to "sign out" but only signs out of this app.
- * User will get interactive SSO if trying to sign back-in.
- */
-private void onSignOutClicked() {
-    /* Attempt to get a user and acquireTokenSilent
-     * If this fails we do an interactive request
-     */
-    sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
-        @Override
-        public void onAccountsLoaded(final List<IAccount> accounts) {
-
-            if (accounts.isEmpty()) {
-                /* No accounts to remove */
-
-            } else {
-                for (final IAccount account : accounts) {
-                    sampleApp.removeAccount(
-                            account,
-                            new PublicClientApplication.AccountsRemovedCallback() {
-                        @Override
-                        public void onAccountsRemoved(Boolean isSuccess) {
-                            if (isSuccess) {
-                                /* successfully removed account */
-                            } else {
-                                /* failed to remove account */
-                            }
-                        }
-                    });
-                }
-            }
-
-            updateSignedOutUI();
-        }
-    });
-}
-```
-
-#### <a name="call-the-microsoft-graph-api"></a>De Microsoft Graph-API aanroepen
-
-Zodra we een token hebben ontvangen, kunnen we een aanvraag indienen voor de [Microsoft Graph-API](https://graph.microsoft.com) . het toegangs token bevindt zich in de `AuthenticationResult` in de methode `onSuccess()` van de auth-call back. Als u een geautoriseerde aanvraag wilt maken, moet uw app het toegangs token toevoegen aan de HTTP-header:
-
-| header sleutel    | waarde                 |
-| ------------- | --------------------- |
-| Autorisatie | Toegang tot \<-token van Bearer-> |
-
-Voeg de volgende twee methoden toe aan de klasse `MainActivity` om Graph aan te roepen en de gebruikers interface bij te werken:
-
-```java
-/* Use Volley to make an HTTP request to the /me endpoint from MS Graph using an access token */
-private void callGraphAPI() {
-    Log.d(TAG, "Starting volley request to graph");
-
-    /* Make sure we have a token to send to graph */
-    if (authResult.getAccessToken() == null) {return;}
-
-    RequestQueue queue = Volley.newRequestQueue(this);
-    JSONObject parameters = new JSONObject();
-
-    try {
-        parameters.put("key", "value");
-    } catch (Exception e) {
-        Log.d(TAG, "Failed to put parameters: " + e.toString());
-    }
-    JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, MSGRAPH_URL,
-            parameters,new Response.Listener<JSONObject>() {
-        @Override
-        public void onResponse(JSONObject response) {
-            /* Successfully called graph, process data and send to UI */
-            Log.d(TAG, "Response: " + response.toString());
-
-            updateGraphUI(response);
-        }
-    }, new Response.ErrorListener() {
-        @Override
-        public void onErrorResponse(VolleyError error) {
-            Log.d(TAG, "Error: " + error.toString());
-        }
-    }) {
-        @Override
-        public Map<String, String> getHeaders() {
-            Map<String, String> headers = new HashMap<>();
-            headers.put("Authorization", "Bearer " + authResult.getAccessToken());
-            return headers;
-        }
-    };
-
-    Log.d(TAG, "Adding HTTP GET to Queue, Request: " + request.toString());
-
-    request.setRetryPolicy(new DefaultRetryPolicy(
-            3000,
-            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-    queue.add(request);
-}
-
-/* Sets the graph response */
-private void updateGraphUI(JSONObject graphResponse) {
-    TextView graphText = findViewById(R.id.graphData);
-    graphText.setText(graphResponse.toString());
-}
-```
-
-#### <a name="multi-account-applications"></a>Toepassingen met meerdere accounts
-
-Deze app is gebouwd voor een enkel account scenario. MSAL biedt ook ondersteuning voor scenario's met meerdere accounts, maar hiervoor is extra werk van apps vereist. U moet een gebruikers interface maken om te helpen bij het selecteren van het account dat u wilt gebruiken voor elke actie waarvoor tokens vereist zijn. Uw app kan ook een heuristiek implementeren om te selecteren welk account u wilt gebruiken via de `getAccounts()` methode.
 
 ## <a name="test-your-app"></a>Uw app testen
 
@@ -543,9 +573,9 @@ Bouw en implementeer de app op een test apparaat of emulator. U moet zich kunnen
 
 Nadat u zich hebt aangemeld, worden in de app de gegevens weer gegeven die door de Microsoft Graph `/me` eind punt zijn geretourneerd.
 
-### <a name="consent"></a>vergunning
+### <a name="consent"></a>Vergunning
 
-De eerste keer dat een gebruiker zich bij uw app aanmeldt, wordt de micro soft-identiteit gevraagd om toestemming te geven voor de aangevraagde machtigingen.  Hoewel de meeste gebruikers kunnen worden gemachtigd, hebben sommige Azure AD-tenants de toestemming van de gebruiker uitgeschakeld. hiervoor moeten beheerders toestemming geven namens alle gebruikers. Als u dit scenario wilt ondersteunen, moet u de scopes van uw app registreren in de Azure Portal.
+De eerste keer dat een gebruiker zich bij uw app aanmeldt, wordt de micro soft-identiteit gevraagd om toestemming te geven voor de aangevraagde machtigingen. Sommige Azure AD-tenants hebben de toestemming van de gebruiker uitgeschakeld. hiervoor moeten beheerders toestemming geven namens alle gebruikers. Ter ondersteuning van dit scenario moet u uw eigen Tenant maken of toestemming van de beheerder ontvangen. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

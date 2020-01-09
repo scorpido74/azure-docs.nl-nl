@@ -16,12 +16,12 @@ ms.date: 08/05/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65def17622f026aa4869a4c60e7cb5146d56c5b0
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 4d9922f1c4cbb0afca74c911d9b2bc9f0eab0714
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389528"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422786"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Wat zijn toegangsbeoordelingen in Azure AD?
 
@@ -66,11 +66,13 @@ Afhankelijk van wat u wilt controleren, maakt u uw toegangs beoordeling in azure
 
 Volg deze stappen om toegangs beoordelingen uit te voeren.
 
-1. Als globale beheerder of gebruikers beheerder meldt u zich aan bij de [Azure Portal](https://portal.azure.com) waarvoor u toegangs beoordelingen wilt gebruiken.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om toegangs beoordelingen te beheren en u aan te melden als een globale beheerder of gebruikers beheerder.
 
-1. Klik in de linkernavigatiebalk op **Azure Active Directory**.
+1. Zoek en selecteer **Azure Active Directory**.
 
-1. Klik in het linkermenu op **Identity governance**.
+      ![Azure Portal zoeken naar Azure Active Directory](media/access-reviews-overview/search-azure-active-directory.png)
+
+1. Selecteer **Identity governance**.
 
 1. Klik op **toegangs beoordelingen**.
  

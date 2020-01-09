@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: bce0620ed6be4937c95a2ce01f3d4c175c8bc18d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 87c95d8bbf199f232eca5475f4d8f0c64427a198
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687082"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680882"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Overzicht van lokale cache Azure App Service
 
@@ -36,7 +36,7 @@ De functie Azure App Service lokale cache biedt een weer gave van webrollen van 
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Hoe de lokale cache het gedrag van App Service wijzigt
 * _D:\home_ verwijst naar de lokale cache, die op het VM-exemplaar wordt gemaakt wanneer de app wordt gestart. _D:\Local_ blijft verwijzen naar de tijdelijke VM-specifieke opslag.
-* De lokale cache bevat een eenmalige kopie van de _/site_ -en _/siteextensions_ -mappen van het gedeelde inhouds archief, respectievelijk op _D:\home\site_ en _D:\home\siteextensions_. De bestanden worden gekopieerd naar de lokale cache wanneer de app wordt gestart. De grootte van de twee mappen voor elke app is standaard beperkt tot 300 MB, maar u kunt deze verhogen tot 2 GB.
+* De lokale cache bevat een eenmalige kopie van de _/site_ -en _/siteextensions_ -mappen van het gedeelde inhouds archief, respectievelijk op _D:\home\site_ en _D:\home\siteextensions_. De bestanden worden gekopieerd naar de lokale cache wanneer de app wordt gestart. De grootte van de twee mappen voor elke app is standaard beperkt tot 300 MB, maar u kunt deze verhogen tot 2 GB. Als de gekopieerde bestanden de grootte van de lokale cache overschrijden, App Service lokale cache op de achtergrond negeren en lezen van de externe bestands share.
 * De lokale cache is lezen/schrijven. Elke wijziging wordt echter verwijderd wanneer de app virtuele machines verplaatst of opnieuw wordt gestart. Gebruik niet de lokale cache voor apps die essentiële gegevens in het inhouds archief opslaan.
 * _D:\home\LogFiles_ en _D:\home\Data_ bevatten logboek bestanden en app-gegevens. De twee submappen worden lokaal opgeslagen in het VM-exemplaar en worden periodiek naar het gedeelde inhouds archief gekopieerd. Apps kunnen logboek bestanden en gegevens persistent maken door deze te schrijven naar deze mappen. De kopie naar het gedeelde inhouds archief is echter het meest geschikt voor het geval dat logboek bestanden en gegevens verloren gaan als gevolg van een plotselinge crash van een VM-exemplaar.
 * Het [streamen van Logboeken](troubleshoot-diagnostic-logs.md#stream-logs) wordt beïnvloed door de best mogelijke kopieer activiteit. U kunt in de gestreamde Logboeken een vertraging van één minuut opvolgen.
@@ -48,7 +48,7 @@ De functie Azure App Service lokale cache biedt een weer gave van webrollen van 
 ## <a name="enable-local-cache-in-app-service"></a>Lokale cache inschakelen in App Service
 U kunt de lokale cache configureren met behulp van een combi natie van gereserveerde app-instellingen. U kunt deze app-instellingen configureren met behulp van de volgende methoden:
 
-* [Azure-portal](#Configure-Local-Cache-Portal)
+* [Azure Portal](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Lokale cache configureren met behulp van de Azure Portal
@@ -83,7 +83,7 @@ U schakelt lokale cache per web-app in met behulp van deze app-instelling: `WEBS
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>De instelling grootte in lokale cache wijzigen
-De grootte van de lokale cache is standaard **1 GB**. Dit geldt ook voor de mappen/site en/siteextensions die worden gekopieerd uit het inhouds archief, evenals alle lokaal gemaakte logboeken en gegevens mappen. Gebruik de app-instelling `WEBSITE_LOCAL_CACHE_SIZEINMB`als u deze limiet wilt verhogen. U kunt de grootte verhogen tot **2 GB** (2000 MB) per app.
+De grootte van de lokale cache is standaard **300 MB**. Dit geldt ook voor de mappen/site en/siteextensions die worden gekopieerd uit het inhouds archief, evenals alle lokaal gemaakte logboeken en gegevens mappen. Gebruik de app-instelling `WEBSITE_LOCAL_CACHE_SIZEINMB`als u deze limiet wilt verhogen. U kunt de grootte verhogen tot **2 GB** (2000 MB) per app.
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>Aanbevolen procedures voor het gebruik van App Service lokale cache
 U wordt aangeraden lokale cache te gebruiken in combi natie met de functie [staging Environment](../app-service/deploy-staging-slots.md) .
@@ -108,7 +108,7 @@ Als uw app gebruikmaakt van lokale cache, moet u de site opnieuw opstarten om de
 ### <a name="where-are-my-logs"></a>Waar bevinden zich mijn logboeken?
 In het geval van een lokale cache zien uw logboeken en gegevens mappen er iets anders uit. De structuur van uw submappen blijft echter hetzelfde, behalve dat de submappen worden Nestled onder een submap met de notatie ' unieke VM-id ' + tijds tempel.
 
-### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Er is een lokale cache ingeschakeld, maar mijn app wordt nog steeds opnieuw gestart. Waarom is dat? Ik dacht dat lokale cache is geholpen bij het opnieuw starten van een app.
+### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Er is een lokale cache ingeschakeld, maar mijn app wordt nog steeds opnieuw gestart. De reden hiervoor? Ik dacht dat lokale cache is geholpen bij het opnieuw starten van een app.
 Lokale cache helpt te voor komen dat de app voor opslag is gestart. Uw app kan echter nog steeds opnieuw worden gestart tijdens de geplande infrastructuur upgrades van de virtuele machine. De algemene app wordt opnieuw gestart, zodat de lokale cache minder hoeft te worden gebruikt.
 
 ### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>Sluit de lokale cache alle directory's uit die naar het snellere lokale station worden gekopieerd?

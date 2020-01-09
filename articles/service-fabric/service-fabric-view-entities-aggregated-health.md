@@ -1,25 +1,16 @@
 ---
-title: De cumulatieve status van Azure Service Fabric-entiteiten weer geven | Microsoft Docs
+title: De cumulatieve status van Azure Service Fabric-entiteiten weer geven
 description: Hierin wordt beschreven hoe u de geaggregeerde status van Azure Service Fabric-entiteiten kunt opvragen, bekijken en evalueren via status query's en algemene query's.
-services: service-fabric
-documentationcenter: .net
 author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: fa34c52d-3a74-4b90-b045-ad67afa43fe5
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: c4a312654fb54660a229c334071d33a5d6bc172f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d02d8f717801bf51e43c9dafa5eb9379d0737674
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496371"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464130"
 ---
 # <a name="view-service-fabric-health-reports"></a>Service Fabric status rapporten weer geven
 Azure Service Fabric introduceert een [status model](service-fabric-health-introduction.md) met status entiteiten waarop systeem onderdelen en watchdog lokale voor waarden kunnen rapporteren die ze controleren. Met de [Health Store](service-fabric-health-introduction.md#health-store) worden alle status gegevens geaggregeerd om te bepalen of de entiteiten in orde zijn.
@@ -677,7 +668,7 @@ DeployedApplicationHealth health = await fabricClient.HealthManager.GetDeployedA
 ### <a name="powershell"></a>PowerShell
 De cmdlet [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps)voor het ophalen van de status van de geïmplementeerde toepassing. Maak eerst verbinding met het cluster met behulp van de cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) . Als u wilt weten waar een toepassing is geïmplementeerd, voert u [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) uit en bekijkt u de onderliggende toepassingen van de toepassing.
 
-Met de volgende cmdlet wordt de status opgehaald van de **Fabric:/WordCount-** toepassing die is geïmplementeerd op **_Node_2**.
+Met de volgende cmdlet wordt de status opgehaald van de toepassing **Fabric:/WordCount** die is geïmplementeerd op **_Node_2**.
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricDeployedApplicationHealth -ApplicationName fabric:/WordCount -NodeName _Node_0
@@ -735,7 +726,7 @@ DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeploy
 ### <a name="powershell"></a>PowerShell
 De cmdlet [Get-ServiceFabricDeployedServicePackageHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth)voor het ophalen van de status van het geïmplementeerde service pakket. Maak eerst verbinding met het cluster met behulp van de cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) . Als u wilt zien waar een toepassing is geïmplementeerd, voert u [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) uit en kijkt u naar de geïmplementeerde toepassingen. Als u wilt zien welke service pakketten zich in een toepassing bevinden, bekijkt u de onderliggende items van het geïmplementeerde service pakket in de [Get-ServiceFabricDeployedApplicationHealth-](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps) uitvoer.
 
-Met de volgende cmdlet wordt de status opgehaald van het **WordCountServicePkg** -service pakket van de **Fabric:/WordCount-** toepassing die is geïmplementeerd op **_Node_2**. De entiteit heeft **System. hosting** rapporten voor een succes volle service-en ingangs punt activering en een geslaagde Service-type registratie.
+Met de volgende cmdlet wordt de status opgehaald van het **WordCountServicePkg** -service pakket van de toepassing **Fabric:/WordCount** die is geïmplementeerd op **_Node_2**. De entiteit heeft **System. hosting** rapporten voor een succes volle service-en ingangs punt activering en een geslaagde Service-type registratie.
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricDeployedApplication -ApplicationName fabric:/WordCount -NodeName _Node_2 | Get-ServiceFabricDeployedServicePackageHealth -ServiceManifestName WordCountServicePkg
@@ -1031,20 +1022,20 @@ Als algemene query's een onbekende status retour neren voor een entiteit, is het
 De query's die **HealthState** bevatten voor entiteiten zijn:
 
 * Knooppunt lijst: retourneert de lijst knooppunten in het cluster (in pagina's).
-  * API: [FabricClient. QueryClient. GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
-  * Power shell: Get-ServiceFabricNode
+  * API: [FabricClient.QueryClient.GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
+  * PowerShell: Get-ServiceFabricNode
 * Lijst met toepassingen: Hiermee wordt de lijst met apps in het cluster (wisselbaar) geretourneerd.
   * API: [FabricClient. QueryClient. GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
   * Power shell: Get-ServiceFabricApplication
 * Service lijst: retourneert de lijst met Services in een toepassing (wisselbaar).
-  * API: [FabricClient. QueryClient. GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
-  * Power shell: Get-ServiceFabricService
+  * API: [FabricClient.QueryClient.GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
+  * PowerShell: Get-ServiceFabricService
 * Partitie lijst: retourneert de lijst met partities in een service (wisselt).
   * API: [FabricClient. QueryClient. GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
   * Power shell: Get-ServiceFabricPartition
 * Replica lijst: retourneert de lijst met replica's in een partitie (wisselt).
-  * API: [FabricClient. QueryClient. GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
-  * Power shell: Get-ServiceFabricReplica
+  * API: [FabricClient.QueryClient.GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
+  * PowerShell: Get-ServiceFabricReplica
 * Lijst met geïmplementeerde toepassingen: retourneert de lijst met geïmplementeerde toepassingen op een knoop punt.
   * API: [FabricClient. QueryClient. GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
   * Power shell: Get-ServiceFabricDeployedApplication

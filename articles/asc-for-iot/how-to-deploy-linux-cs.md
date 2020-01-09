@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 0d77a1be2a3469282dabb646b02c43e350313ce5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b675198756ff7bc0791d49fee3649717e3e4da7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596302"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367413"
 ---
-# <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Azure Security Center implementeren voor IoT C# -beveiligings agent voor Linux
+# <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Een beveiligingsagent voor Azure Security Center for IoT op basis van C# implementeren voor Linux
 
 
 In deze hand leiding wordt uitgelegd hoe u de Azure Security Center voor IoT C#-gebaseerde beveiligings Agent installeert en implementeert in Linux.
 
 In deze handleiding leert u het volgende: 
 > [!div class="checklist"]
-> * Installeren
+> * Installatie
 > * Implementatie verifiëren
-> * De agent verwijderen
+> * Agent verwijderen
 > * Problemen oplossen 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -42,7 +42,7 @@ Zie [de juiste beveiligings agent kiezen](how-to-deploy-agent.md)voor andere pla
 
 1. [Maak een beveiligings module](quickstart-create-security-twin.md) voor het apparaat.
 
-## <a name="installation"></a>Installatie 
+## <a name="installation"></a>Installeren 
 
 Als u de beveiligings agent wilt implementeren, voert u de volgende stappen uit:
 
@@ -50,9 +50,9 @@ Als u de beveiligings agent wilt implementeren, voert u de volgende stappen uit:
 
 1. Pak de inhoud van het pakket uit en navigeer naar de map _/install_ .
 
-1. Actieve machtigingen toevoegen aan het **InstallSecurityAgent-script** door uit te voeren`chmod +x InstallSecurityAgent.sh` 
+1. Actieve machtigingen toevoegen aan het **InstallSecurityAgent-script** door `chmod +x InstallSecurityAgent.sh` uit te voeren 
 
-1. Voer vervolgens de volgende handelingen uit: 
+1. Voer vervolgens de volgende opdracht uit met **machtigingen voor het hoofd niveau**: 
 
    ```
    ./InstallSecurityAgent.sh -i -aui <authentication identity>  -aum <authentication method> -f <file path> -hn <host name>  -di <device id> -cl <certificate location kind>
@@ -66,18 +66,18 @@ Met dit script worden de volgende acties uitgevoerd:
 
 - Hiermee wordt een service gebruiker (met interactieve aanmelding uitgeschakeld) toegevoegd.
 
-- Installeert de agent als een **daemon** : er wordt ervan uitgegaan dat het apparaat is gesystemeerd voor het klassieke implementatie model.
+- Installeert de agent als een **daemon** : er wordt ervan uitgegaan dat het apparaat is **gesystemeerd** voor het klassieke implementatie model.
 
 - Hiermee configureert u **sudo** zodat de agent bepaalde taken kan uitvoeren als basis.
 
 - Hiermee configureert u de agent met de opgegeven verificatie parameters.
 
 
-Voer het script uit met de para meter – Help voor meer informatie.`./InstallSecurityAgent.sh --help`
+Voor meer informatie voert u het script uit met de para meter – Help: `./InstallSecurityAgent.sh --help`
 
-### <a name="uninstall-the-agent"></a>De agent verwijderen
+### <a name="uninstall-the-agent"></a>Agent verwijderen
 
-Als u de agent wilt verwijderen, voert u het script uit met de `./InstallSecurityAgent.sh -u`para meter – u:. 
+Als u de agent wilt verwijderen, voert u het script uit met de para meter-u: `./InstallSecurityAgent.sh -u`. 
 
 > [!NOTE]
 > Met verwijderen worden ontbrekende vereiste onderdelen die tijdens de installatie zijn geïnstalleerd, niet verwijderd.
@@ -116,7 +116,7 @@ Als u de agent wilt verwijderen, voert u het script uit met de `./InstallSecurit
 
    1. Raadpleeg het logboek bestand voor meer informatie over de fout.  
 
-       De locatie van het logboek bestand is:`/var/ASCIoTAgent/IotAgentLog.log`
+       De locatie van het logboek bestand is: `/var/ASCIoTAgent/IotAgentLog.log`
 
        Wijzig het pad naar de bestands locatie op basis van de naam die u in stap 2 hebt gekozen voor de **logFilePath** . 
 

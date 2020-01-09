@@ -1,6 +1,6 @@
 ---
-title: Met behulp van Java-bibliotheek voor bulksgewijs executor bulksgewijs importeren en bijwerken van bewerkingen in Azure Cosmos DB
-description: Bulksgewijs importeren en bijwerken van Azure Cosmos DB-documenten met behulp van grote hoeveelheden executor Java-bibliotheek.
+title: Gebruik de Java-bibliotheek voor bulksgewijs uitvoeren in Azure Cosmos DB voor het uitvoeren van bulk import-en update bewerkingen
+description: Azure Cosmos DB documenten bulksgewijs importeren en bijwerken met behulp van de Java-bibliotheek voor bulk-uitvoerder
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: ef006e94ee22886f1129c7c9ca31e20503312fe3
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: bf2a2385b3129ddf24ede7f6d851701186b0e33c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616935"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445715"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Bulksgewijs executor Java-clientbibliotheek gebruiken om te bulksgewijs bewerkingen uitvoeren op Azure Cosmos DB-gegevens
 
@@ -26,7 +26,7 @@ Op dit moment wordt de bibliotheek voor bulksgewijs uitvoering alleen ondersteun
 
 * Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.  
 
-* U kunt [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, gratis en toezeg gingen. U kunt ook de Azure Cosmos DB- [emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) gebruiken met het `https://localhost:8081` eind punt. De primaire sleutel wordt gegeven in [Aanvragen verifiëren](local-emulator.md#authenticating-requests).  
+* U kunt [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, gratis en toezeg gingen. U kunt ook de Azure Cosmos DB- [emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) gebruiken met het `https://localhost:8081`-eind punt. De primaire sleutel wordt gegeven in [Aanvragen verifiëren](local-emulator.md#authenticating-requests).  
 
 * [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)  
   - Voer op Ubuntu `apt-get install default-jdk` uit om de JDK te installeren.  
@@ -118,7 +118,7 @@ De gekloonde opslagplaats bevat twee voorbeelden "bulkimport" en "bulkupdate" te
    |int getNumberOfDocumentsImported()  |   Het totale aantal documenten die zijn geïmporteerd uit de documenten die zijn opgegeven voor het bulksgewijs importeren API-aanroep.      |
    |dubbele getTotalRequestUnitsConsumed()   |  Het totaal aantal aanvragen van aanvraageenheden (RU) die worden gebruikt door de bulksgewijs importeren API-aanroep.       |
    |Duur getTotalTimeTaken()   |    De totale tijd die door de bulkimport API-aanroep uitgevoerd.     |
-   |Uitzonde ring > getErrors () weer geven\< |  Hiermee haalt u de lijst met fouten als bepaalde documenten in de batch doorgegeven aan de bulksgewijs importeren API-aanroep kan niet worden ingevoegd ophalen.       |
+   |\<uitzonde ring > getErrors () weer geven |  Hiermee haalt u de lijst met fouten als bepaalde documenten in de batch doorgegeven aan de bulksgewijs importeren API-aanroep kan niet worden ingevoegd ophalen.       |
    |List\<Object> getBadInputDocuments()  |    De lijst met slechte indeling documenten die zijn niet geïmporteerd in de bulksgewijs importeren API-aanroep. Gebruiker moet de geretourneerde documenten los en probeer het opnieuw importeren. -Ongeldige indeling of meer documenten waarvan u de id-waarde geen tekenreeks is (null of een andere gegevenstype is als ongeldig wordt beschouwd).     |
 
 5. Nadat u de bulksgewijs importeren van de toepassing gereed hebt, bouw het opdrachtregelprogramma van bron met de opdracht 'mvn opschonen pakket'. Met deze opdracht wordt een jar-bestand gegenereerd in de doelmap:  
@@ -182,7 +182,7 @@ U kunt bestaande documenten met behulp van de API BulkUpdateAsync bijwerken. In 
    |int getNumberOfDocumentsUpdated()  |   Het totale aantal documenten die zijn bijgewerkt uit de documenten die is opgegeven voor de Bulkupdate-API-aanroep.      |
    |dubbele getTotalRequestUnitsConsumed() |  Het totale aantal aanvraageenheden (RU) die worden gebruikt door de bulk-update-API-aanroep.       |
    |Duur getTotalTimeTaken()  |   De totale tijd die door de bulksgewijs bijwerken API-aanroep uitgevoerd.      |
-   |Uitzonde ring > getErrors () weer geven\<   |    Hiermee haalt u de lijst met fouten als bepaalde documenten in de batch is opgegeven voor de bulk-update API-aanroep kan niet worden ingevoegd ophalen.      |
+   |\<uitzonde ring > getErrors () weer geven   |    Hiermee haalt u de lijst met fouten als bepaalde documenten in de batch is opgegeven voor de bulk-update API-aanroep kan niet worden ingevoegd ophalen.      |
 
 3. Nadat u het grootste deel bij het bijwerken van de toepassing gereed hebt, bouw het opdrachtregelprogramma van bron met de opdracht 'mvn opschonen pakket'. Met deze opdracht wordt een jar-bestand gegenereerd in de doelmap:  
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: d28893133c27fe4945918071c60b889e997b775b
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 01327d24aebee02c3b14594c2b0b2f2f175211fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424152"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450812"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Een punt-naar-site-verbinding configureren met behulp van verificatie via een certificaat (klassiek)
 
@@ -91,7 +91,7 @@ Als u nog geen virtueel netwerk (VNet) hebt, maakt u er een. De schermafbeelding
 
 1. Selecteer in het menu [Azure Portal](https://portal.azure.com) of op de **Start** pagina de optie **een resource maken**. De pagina **Nieuw** wordt geopend.
 
-2. Voer in het veld **Search the marketplace** *virtueel netwerk* in en selecteer **Virtueel netwerk** in de geretourneerde lijst. De pagina **Virtueel netwerk** wordt geopend.
+2. Voer in het veld **Search the marketplace***virtueel netwerk* in en selecteer **Virtueel netwerk** in de geretourneerde lijst. De pagina **Virtueel netwerk** wordt geopend.
 
 3. Selecteer in de lijst **Select a deployment model** de optie **Klassiek** en selecteer vervolgens **Maken**. De pagina **Virtueel netwerk maken** wordt geopend.
 
@@ -101,7 +101,7 @@ Als u nog geen virtueel netwerk (VNet) hebt, maakt u er een. De schermafbeelding
 
 5. Selecteer in de vervolgkeuzelijst het **abonnement** dat u wilt gebruiken.
 
-6. Selecteer een bestaande **resourcegroep**. Of maak een nieuwe resourcegroep door **Nieuwe maken** te selecteren en een naam in te voeren. Geef de resourcegroep een naam die aansluit bij de geplande configuratiewaarden wanneer u een nieuwe resourcegroep maakt. Zie [Overzicht van Azure Resource Manager](../azure-resource-manager/resource-group-overview.md#resource-groups) voor meer informatie over resourcegroepen.
+6. Selecteer een bestaande **resourcegroep**. Of maak een nieuwe resourcegroep door **Nieuwe maken** te selecteren en een naam in te voeren. Geef de resourcegroep een naam die aansluit bij de geplande configuratiewaarden wanneer u een nieuwe resourcegroep maakt. Zie [Overzicht van Azure Resource Manager](../azure-resource-manager/management/overview.md#resource-groups) voor meer informatie over resourcegroepen.
 
 7. Selecteer een **locatie** voor uw VNet. Deze instelling bepaalt de geografische locatie van de resources die u voor dit VNet implementeert.
 

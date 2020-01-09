@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 91a71f914cff25dcdf4a85f3baafcfd9bc96b104
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 63b778379dda39a795cccdcfa0c1443870d50365
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74218876"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440980"
 ---
 # <a name="understand-and-work-with-scopes"></a>Bereiken begrijpen en gebruiken
 
@@ -45,7 +45,7 @@ Azure ondersteunt drie bereiken voor resource beheer. Elk bereik biedt ondersteu
 
     Resource type: [micro soft. resources/abonnementen](/rest/api/resources/subscriptions)
 
-- [**Resource groepen**](../azure-resource-manager/resource-group-overview.md#resource-groups) : logische groeperingen van gerelateerde resources voor een Azure-oplossing die dezelfde levens cyclus delen. Bijvoorbeeld resources die samen worden geïmplementeerd en verwijderd.
+- [**Resource groepen**](../azure-resource-manager/management/overview.md#resource-groups) : logische groeperingen van gerelateerde resources voor een Azure-oplossing die dezelfde levens cyclus delen. Bijvoorbeeld resources die samen worden geïmplementeerd en verwijderd.
 
     Resource type: [micro soft. resources/abonnementen/resourceGroups](/rest/api/resources/resourcegroups)
 
@@ -63,7 +63,7 @@ Cost Management ondersteunt de volgende ingebouwde rollen voor elk van de volgen
 - [**Cost Management Inzender**](../role-based-access-control/built-in-roles.md#cost-management-contributor) : kan kosten bekijken, kosten configuratie beheren en aanbevelingen weer geven.
 - [**Cost Management lezer**](../role-based-access-control/built-in-roles.md#cost-management-reader) : kan kosten gegevens, kosten configuratie en aanbevelingen weer geven.
 
-Cost Management Inzender is de aanbevolen rol met minimale bevoegdheden. Hiermee kunnen gebruikers budgetten maken en beheren en exporteren om de kosten effectiever te controleren en te rapporteren. Cost Management inzenders kunnen ook extra rollen vereisen om end-to-end kosten beheer scenario's te ondersteunen. Houd rekening met de volgende scenario's:
+Cost Management Inzender is de aanbevolen rol met minimale bevoegdheden. Hiermee kunnen gebruikers budgetten maken en beheren en exporteren om de kosten effectiever te controleren en te rapporteren. Cost Management inzenders kunnen ook extra rollen vereisen om end-to-end kosten beheer scenario's te ondersteunen. Neem de volgende scenario's:
 
 - **Reageren wanneer budgetten worden overschreden** : Cost Management mede werkers moeten ook toegang hebben tot het maken en/of beheren van actie groepen om automatisch te reageren op overschrijdingen. Overweeg het verlenen van [bewakings bijdrage](../role-based-access-control/built-in-roles.md#monitoring-contributor) aan een resource groep die de actie groep bevat die moet worden gebruikt wanneer de budget drempels worden overschreden. Voor het automatiseren van specifieke acties zijn aanvullende rollen vereist voor de specifieke services die worden gebruikt, zoals automatisering en Azure Functions.
 - **Schedule cost data export** : Cost Management-mede werkers moeten ook toegang hebben tot het beheren van opslag accounts om een export te plannen om gegevens naar een opslag account te kopiëren. Overweeg het verlenen van [Inzender voor opslag accounts](../role-based-access-control/built-in-roles.md#storage-account-contributor) aan een resource groep die het opslag account bevat waarin kosten gegevens worden geëxporteerd.
@@ -252,4 +252,4 @@ Cost Management wordt momenteel ondersteund in [Azure Global](https://management
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u de eerste Snelstartgids voor Cost Management nog niet hebt voltooid, kunt u deze lezen bij het analyseren van de [kosten](quick-acm-cost-analysis.md).
+- Als u dit nog niet hebt al de eerste snelstartgids voltooid voor kostenbeheer, lezen via [kosten analyseren](quick-acm-cost-analysis.md).

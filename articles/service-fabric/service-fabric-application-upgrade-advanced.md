@@ -1,25 +1,14 @@
 ---
-title: Geavanceerde onderwerpen over toepassings upgrades | Microsoft Docs
+title: Geavanceerde onderwerpen over toepassings upgrades
 description: In dit artikel vindt u een aantal geavanceerde onderwerpen met betrekking tot het bijwerken van een Service Fabric-toepassing.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: e29585ff-e96f-46f4-a07f-6682bbe63281
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: c37ee8177ba31ac8a5da90fef175a6fbd63a6d75
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: bd95d651e02cb61bcbe7a108db92afce8b5484bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167588"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457525"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric toepassings upgrade: geavanceerde onderwerpen
 ## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>Toevoegen of verwijderen van service typen tijdens een toepassings upgrade
@@ -126,9 +115,9 @@ ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAft
 
 ## <a name="rolling-back-application-upgrades"></a>Upgrades van toepassingen terugdraaien
 
-Hoewel upgrades kunnen worden doorgevoerd in een van de drie modi (*bewaakt*, *UnmonitoredAuto*of *UnmonitoredManual*), kunnen ze alleen worden teruggedraaid in de modus *UnmonitoredAuto* of *UnmonitoredManual* . Terugdraaien in de *UnmonitoredAuto* -modus werkt op dezelfde manier als met de uitzonde ring dat de standaard waarde van *UpgradeReplicaSetCheckTimeout* verschilt-Zie [para meters](service-fabric-application-upgrade-parameters.md)voor de upgrade van de toepassing. Terugdraaien in de *UnmonitoredManual* -modus werkt op dezelfde manier als door sturen: de terugdraai actie wordt na het volt ooien van elke UD onderbroken en moet expliciet worden hervat met behulp van [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) om door te gaan met de actie.
+Hoewel upgrades kunnen worden doorgevoerd in een van de drie modi (*bewaakt*, *UnmonitoredAuto*of *UnmonitoredManual*), kunnen ze alleen worden teruggedraaid in de modus *UnmonitoredAuto* of *UnmonitoredManual* . Terugdraaien in de *UnmonitoredAuto* -modus werkt op dezelfde manier als met de uitzonde ring dat de standaard waarde van *UpgradeReplicaSetCheckTimeout* verschilt-Zie [para meters](service-fabric-application-upgrade-parameters.md)voor de upgrade van de toepassing. Terugdraaien in de *UnmonitoredManual* -modus werkt op dezelfde manier als vooruit draaien: de terugdraai actie wordt na elke UD onderbroken en moet expliciet worden hervat met behulp van [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) om door te gaan met het terugdraaien.
 
-Terugdraai bewerkingen kunnen automatisch worden geactiveerd wanneer het status beleid van een upgrade in de *bewaakte* modus met een *FailureAction* van het *terugdraaien* is geschonden (Zie [para meters voor de toepassings upgrade](service-fabric-application-upgrade-parameters.md)) of expliciet gebruikt [ Start-ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps).
+Terugdraai bewerkingen kunnen automatisch worden geactiveerd wanneer het status beleid van een upgrade in de *bewaakte* modus met een *FailureAction* van het *terugdraaien* is geschonden (Zie [para meters](service-fabric-application-upgrade-parameters.md)voor de upgrade van de toepassing) of expliciet gebruikmaakt van [Start-ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps).
 
 Tijdens het terugdraaien kan de waarde van *UpgradeReplicaSetCheckTimeout* en de modus op elk gewenst moment nog steeds worden gewijzigd met behulp van [Update-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps).
 

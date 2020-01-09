@@ -1,18 +1,18 @@
 ---
 title: Verbinding maken met de FTP-server
-description: Bestanden maken, bewaken en beheren op een FTP-server met Azure Logic Apps
+description: Taken en werk stromen automatiseren die bestanden op een FTP-server maken, bewaken en beheren met behulp van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: c7b8c1ac94fd35a4a0cb30ad32d8c6ce39edc058
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 71f768506d7cec575c6bd765447397d8d0406859
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789783"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445940"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>FTP-bestanden maken, controleren en beheren met behulp van Azure Logic Apps
 
@@ -23,7 +23,7 @@ Met Azure Logic Apps en de FTP-connector kunt u geautomatiseerde taken en werk s
 * Bestands inhoud en meta gegevens ophalen.
 * Haal archief naar mappen.
 
-U kunt triggers gebruiken die reacties ontvangen van uw FTP-server en de uitvoer beschikbaar maken voor andere acties. U kunt acties uitvoeren in uw Logic apps gebruiken voor het beheren van bestanden op uw FTP-server. U kunt ook andere acties uitvoeren met de uitvoer van FTP-acties. Als u bijvoorbeeld regel matig bestanden van uw FTP-server ontvangt, kunt u e-mail over deze bestanden en hun inhoud verzenden met behulp van de Office 365 Outlook-Connector of de Outlook.com-connector. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
+U kunt triggers gebruiken die reacties ontvangen van uw FTP-server en de uitvoer beschikbaar maken voor andere acties. U kunt acties uitvoeren in uw Logic apps gebruiken voor het beheren van bestanden op uw FTP-server. U kunt ook andere acties uitvoeren met de uitvoer van FTP-acties. Als u bijvoorbeeld regel matig bestanden van uw FTP-server ontvangt, kunt u e-mail over deze bestanden en hun inhoud verzenden met behulp van de Office 365 Outlook-Connector of de Outlook.com-connector. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md).
 
 ## <a name="limits"></a>Beperkingen
 
@@ -41,7 +41,7 @@ U kunt triggers gebruiken die reacties ontvangen van uw FTP-server en de uitvoer
 
 FTP-triggers worden uitgevoerd door het FTP-bestands systeem te pollen en te zoeken naar een bestand dat sinds de laatste poll is gewijzigd. Met sommige hulpprogram ma's kunt u de tijds tempel behouden wanneer de bestanden worden gewijzigd. In deze gevallen moet u deze functie uitschakelen zodat de trigger kan werken. Hier volgen enkele algemene instellingen:
 
-| SFTP-client | Bewerking |
+| SFTP-client | Actie |
 |-------------|--------|
 | WinSCP | Ga naar **opties** > **voor keuren** > **overdracht** > **bewerken** > **tijds tempel behouden** > **uitschakelen** |
 | FileZilla | Ga naar **overdracht** > de **tijds tempels van overgebrachte bestanden te behouden** > **uitschakelen** |
@@ -65,81 +65,107 @@ Wanneer een trigger een nieuw bestand vindt, controleert de trigger of het nieuw
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps.
 
-1. Voor lege logische apps voert u in het zoekvak ' FTP ' in als uw filter. Selecteer de gewenste trigger onder de lijst met triggers.
+1. Voor lege logische apps voert u in het zoekvak `ftp` in als uw filter. Selecteer de gewenste trigger in de lijst met **Triggers** .
 
    -of-
 
-   Voor bestaande Logic apps selecteert u onder de laatste stap waar u een actie wilt toevoegen de optie **nieuwe stap**en vervolgens **een actie toevoegen**. Voer in het zoekvak ' FTP ' in als uw filter. Selecteer in de lijst acties de gewenste actie.
+   Voor bestaande Logic apps, onder de laatste stap waar u een actie wilt toevoegen, selecteert u **nieuwe stap**en vervolgens **een actie toevoegen**. Voer in het zoekvak `ftp` in als uw filter. Selecteer in de lijst **acties** de gewenste actie.
 
-   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Kies het plus teken ( **+** ) dat wordt weer gegeven en selecteer **een actie toevoegen**.
+   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-1. Geef de benodigde gegevens voor de verbinding op en kies vervolgens **maken**.
+1. Geef uw verbindings gegevens op en selecteer **maken**.
 
-1. Geef de benodigde gegevens op voor de geselecteerde trigger of actie en ga door met het bouwen van de werk stroom van uw logische app.
+1. Geef de gegevens voor de geselecteerde trigger of actie op en blijf door gaan met het bouwen van de werk stroom van uw logische app.
 
 ## <a name="examples"></a>Voorbeelden
 
 <a name="file-added-modified"></a>
 
-### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>FTP-trigger: wanneer een bestand wordt toegevoegd of gewijzigd
+### <a name="add-ftp-trigger"></a>FTP-trigger toevoegen
 
-Deze trigger start een werk stroom voor logische apps wanneer de trigger detecteert wanneer een bestand wordt toegevoegd of gewijzigd op een FTP-server. U kunt bijvoorbeeld een voor waarde toevoegen waarmee de inhoud van het bestand wordt gecontroleerd en beslist of deze inhoud wordt opgehaald, op basis van de vraag of die inhoud voldoet aan een opgegeven voor waarde. Ten slotte kunt u een actie toevoegen waarmee de inhoud van het bestand wordt opgehaald en die inhoud in een map op de SFTP-server plaatsen.
+De trigger **Wanneer een bestand wordt toegevoegd of gewijzigd (alleen eigenschappen)** start een werk stroom voor logische apps wanneer de trigger detecteert dat een bestand wordt toegevoegd of gewijzigd op een FTP-server. U kunt bijvoorbeeld een voor waarde toevoegen waarmee de inhoud van het bestand wordt gecontroleerd en beslist of deze inhoud wordt opgehaald, op basis van de vraag of die inhoud voldoet aan een opgegeven voor waarde. Ten slotte kunt u een actie toevoegen waarmee de inhoud van het bestand wordt opgehaald en die inhoud in een andere map op de SFTP-server plaatsen.
 
-**Enter prise-voor beeld**: u kunt deze trigger gebruiken om een FTP-map te bewaken voor nieuwe bestanden die klant orders beschrijven. U kunt vervolgens een FTP-actie gebruiken, zoals het **ophalen van bestands inhoud**, zodat u de inhoud van de bestelling kunt ophalen voor verdere verwerking en die order opslaan in een Data Base voor orders.
+U kunt deze trigger bijvoorbeeld gebruiken om een FTP-map te bewaken voor nieuwe bestanden die klant orders beschrijven. U kunt vervolgens een FTP-actie gebruiken, zoals **meta gegevens ophalen** om de eigenschappen voor dat nieuwe bestand op te halen, en vervolgens **Bestands inhoud ophalen** gebruiken om de inhoud van dat bestand op te halen voor verdere verwerking en deze order op te slaan in een Data Base voor orders.
 
-Hier volgt een voor beeld waarin deze trigger wordt weer gegeven: **Wanneer een bestand wordt toegevoegd of gewijzigd**
+Hier volgt een voor beeld waarin wordt getoond hoe u de trigger **Wanneer een bestand wordt toegevoegd of gewijzigd (alleen eigenschappen)** kunt gebruiken.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
-1. Voor lege logische apps voert u in het zoekvak ' FTP ' in als uw filter. Selecteer in de lijst met triggers deze trigger: **Wanneer een ingediend wordt toegevoegd of gewijzigd-FTP**
+1. Voor lege logische apps voert u in het zoekvak `ftp` in als uw filter. Selecteer deze trigger onder de lijst triggers: **Wanneer een gearchiveerd of gewijzigd wordt toegevoegd (alleen eigenschappen)**
 
-   ![FTP-trigger zoeken en selecteren](./media/connectors-create-api-ftp/select-ftp-trigger.png)  
+   ![Zoek en selecteer de FTP-trigger](./media/connectors-create-api-ftp/select-ftp-trigger-logic-app.png)
 
-1. Geef de benodigde gegevens voor de verbinding op en kies vervolgens **maken**.
+1. Geef de benodigde gegevens voor de verbinding op en selecteer vervolgens **maken**.
 
    Deze connector brengt standaard bestanden over in een tekst indeling. Als u bestanden wilt overdragen in binaire indeling, bijvoorbeeld wanneer en wanneer code ring wordt gebruikt, selecteert u **binair Trans Port**.
 
-   ![FTP-server verbinding maken](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)  
+   ![Verbinding maken met de FTP-server](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)
 
-1. Klik naast het vak **map** op het mappictogram zodat er een lijst wordt weer gegeven. Als u de map wilt vinden die u wilt bewaken voor nieuwe of bewerkte bestanden, selecteert u de pijl-rechts ( **>** ), bladert u naar de map en selecteert u de map.
+1. Selecteer in het vak **map** het mappictogram zodat er een lijst wordt weer gegeven. Als u de map wilt vinden die u wilt bewaken voor nieuwe of bewerkte bestanden, selecteert u de pijl-rechts ( **>** ), bladert u naar de map en selecteert u de map.
 
-   ![Zoeken en selecteren welke map u wilt bewaken](./media/connectors-create-api-ftp/select-folder.png)  
+   ![Zoeken en selecteren welke map u wilt bewaken](./media/connectors-create-api-ftp/select-folder-ftp-trigger.png)
 
    De geselecteerde map wordt weer gegeven in het vak **map** .
 
-   ![Geselecteerde map](./media/connectors-create-api-ftp/selected-folder.png)  
+   ![De geselecteerde map wordt weer gegeven in de eigenschap ' folder '](./media/connectors-create-api-ftp/selected-folder-ftp-trigger.png)
+
+1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
 
 Nu de logische app een trigger heeft, voegt u de acties toe die u wilt uitvoeren wanneer de logische app een nieuw of bewerkt bestand vindt. Voor dit voor beeld kunt u een FTP-actie toevoegen die de nieuwe of bijgewerkte inhoud ontvangt.
 
 <a name="get-content"></a>
 
-### <a name="ftp-action-get-content"></a>FTP-actie: inhoud ophalen
+### <a name="add-ftp-action"></a>FTP-actie toevoegen
 
-Met deze actie wordt de inhoud van een bestand op een FTP-server opgehaald wanneer dat bestand wordt toegevoegd of bijgewerkt. U kunt bijvoorbeeld de trigger uit het vorige voor beeld toevoegen en een actie waarmee de inhoud van het bestand wordt opgehaald nadat het bestand is toegevoegd of bewerkt.
+Met de actie **meta gegevens van bestand ophalen** worden de eigenschappen opgehaald voor een bestand op uw FTP-server en de actie **Bestands inhoud ophalen** haalt de bestands inhoud op basis van de informatie over dat bestand op uw FTP-server. U kunt bijvoorbeeld de trigger uit het vorige voor beeld toevoegen en deze acties om de inhoud van het bestand op te halen nadat het bestand is toegevoegd of bewerkt.
 
-Hier volgt een voor beeld waarin deze actie wordt weer gegeven: **inhoud ophalen**
+1. Selecteer **nieuwe stap**onder de trigger of een andere actie.
 
-1. Kies **nieuwe stap**onder de trigger of een andere actie.
+1. Voer in het zoekvak `ftp` in als uw filter. Selecteer in de lijst acties deze actie: **meta gegevens van bestand ophalen**
 
-1. Voer in het zoekvak ' FTP ' in als uw filter. Selecteer in de lijst acties deze actie: **Bestands inhoud ophalen-FTP**
+   ![Selecteer de actie ' meta gegevens van bestand ophalen '](./media/connectors-create-api-ftp/select-get-file-metadata-ftp-action.png)
 
-   ![FTP-actie selecteren](./media/connectors-create-api-ftp/select-ftp-action.png)  
-
-1. Als u al een verbinding met uw FTP-server en account hebt, gaat u naar de volgende stap. Geef anders de benodigde gegevens op voor die verbinding en kies vervolgens **maken**.
+1. Als u al een verbinding met uw FTP-server en account hebt, gaat u naar de volgende stap. Geef anders de benodigde gegevens op voor die verbinding en selecteer vervolgens **maken**.
 
    ![FTP-server verbinding maken](./media/connectors-create-api-ftp/create-ftp-connection-action.png)
 
-1. Nadat de actie **Bestands inhoud ophalen** wordt geopend, klikt u in het vak **bestand** zodat de lijst met dynamische inhoud wordt weer gegeven. U kunt nu eigenschappen selecteren voor de uitvoer van de vorige stappen. Selecteer in de lijst met dynamische inhoud de eigenschap **Bestands inhoud** , die de inhoud bevat voor het toegevoegde of bijgewerkte bestand.  
+1. Nadat de actie **meta gegevens van bestand ophalen** wordt weer gegeven, klikt u in het vak **bestand** zodat de lijst met dynamische inhoud wordt weer gegeven. U kunt nu eigenschappen selecteren voor de uitvoer van de vorige stappen. Selecteer in de lijst dynamische inhoud onder **Bestands metagegevens ophalen**de **lijst met bestands-id-** eigenschappen, die verwijst naar de verzameling waar het bestand is toegevoegd of bijgewerkt.
 
-   ![Bestand zoeken en selecteren](./media/connectors-create-api-ftp/ftp-action-get-file-content.png)
+   ![Zoek en selecteer de eigenschap lijst met bestands-Id's](./media/connectors-create-api-ftp/select-list-of-files-id-output.png)
 
-   De eigenschap **Bestands inhoud** wordt nu weer gegeven in het vak **bestand** .
+   De **lijst met bestands-id-** eigenschappen wordt nu weer gegeven in het vak **bestand** .
 
-   ![Geselecteerde eigenschap bestands inhoud](./media/connectors-create-api-ftp/ftp-action-selected-file-content-property.png)
+   ![Geselecteerde eigenschap van de lijst met bestands-Id's](./media/connectors-create-api-ftp/selected-list-file-ids-ftp-action.png)
 
-1. Sla uw logische app op. Als u uw werk stroom wilt testen, voegt u een bestand toe aan de FTP-map die nu wordt bewaakt door uw logische app.
+1. Voeg deze FTP-actie nu toe: **Bestands inhoud ophalen**
+
+   ![Zoek en selecteer de actie bestands inhoud ophalen](./media/connectors-create-api-ftp/select-get-file-content-ftp-action.png)
+
+1. Nadat de actie **Bestands inhoud ophalen** wordt weer gegeven, klikt u in het vak **bestand** zodat de lijst met dynamische inhoud wordt weer gegeven. U kunt nu eigenschappen selecteren voor de uitvoer van de vorige stappen. Selecteer in de lijst dynamische inhoud onder **Get File meta data**de eigenschap **id** , die verwijst naar het bestand dat is toegevoegd of bijgewerkt.
+
+   ![Zoek en selecteer de eigenschap ID](./media/connectors-create-api-ftp/get-file-content-id-output.png)
+
+   De eigenschap **id** wordt nu weer gegeven in het vak **bestand** .
+
+   ![Geselecteerde id-eigenschap](./media/connectors-create-api-ftp/selected-get-file-content-id-ftp-action.png)
+
+1. Sla uw logische app op.
+
+## <a name="test-your-logic-app"></a>Uw logische app testen
+
+Als u wilt controleren of uw werk stroom de verwachte inhoud retourneert, voegt u een andere actie toe waarmee u de inhoud van het geüploade of bijgewerkte bestand verzendt.
+
+1. Voeg onder de actie **Bestands inhoud ophalen** een actie toe waarmee u de inhoud van het bestand kunt verzenden. In dit voor beeld wordt de actie **een E-mail verzenden** toegevoegd voor Office 365 Outlook.
+
+   ![Een actie voor het verzenden van e-mail toevoegen](./media/connectors-create-api-ftp/select-send-email-action.png)
+
+1. Nadat de actie wordt weer gegeven, geeft u de informatie op en voegt u de eigenschappen toe die u wilt testen. Voeg bijvoorbeeld de eigenschap **Bestands inhoud** toe, die wordt weer gegeven in de lijst met dynamische inhoud nadat u in de sectie **Bestands inhoud ophalen** de optie **meer weer geven** hebt geselecteerd.
+
+   ![Informatie opgeven over e-mail actie](./media/connectors-create-api-ftp/selected-send-email-action.png)
+
+1. Sla uw logische app op. Als u de logische app wilt uitvoeren en activeren, selecteert u **uitvoeren**op de werk balk en vervolgens voegt u een bestand toe aan de FTP-map die nu door uw logische app wordt bewaakt.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 

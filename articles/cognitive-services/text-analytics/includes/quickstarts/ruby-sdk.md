@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/02/2019
 ms.author: aahi
-ms.openlocfilehash: 847b2d0489dc04b4275465dbe957b72418bbf1a4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ffa14a4e3628bdc3453e8d536797b0edf6129a12
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750244"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446204"
 ---
 [Referentie documentatie](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [pakket (rubygems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | -voor [beelden](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
@@ -45,12 +45,14 @@ Importeer in uw ruby-bestand de volgende pakketten.
 
 [!code-ruby[Import statements](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=includeStatement)]
 
-Maak variabelen voor het Azure-eind punt en de sleutel van uw resource, met de naam `TEXT_ANALYTICS_ENDPOINT` en `TEXT_ANALYTICS_SUBSCRIPTION_KEY`. Als u de omgevings variabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell waarmee deze wordt uitgevoerd, sluiten en opnieuw openen om toegang te krijgen tot de variabele. 
+Maak variabelen voor het Azure-eind punt en de sleutel van uw resource. 
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
-
-[!code-ruby[endpoint, key variables](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=vars)]
+```ruby
+const subscription_key = '<paste-your-text-analytics-key-here>'
+const endpoint = `<paste-your-text-analytics-endpoint-here>`
+```
 
 ## <a name="object-model"></a>Object model 
 
@@ -60,7 +62,7 @@ Tekst wordt naar de API verzonden als een lijst met `documents`. Dit zijn `dicti
 
 Het antwoord object is een lijst met de analyse-informatie voor elk document. 
 
-## <a name="code-examples"></a>Code voorbeelden
+## <a name="code-examples"></a>Codevoorbeelden
 
 Deze code fragmenten laten zien hoe u het volgende kunt doen met de Text Analytics-client bibliotheek voor python:
 
@@ -81,7 +83,7 @@ class TextAnalyticsClient
 end
 ```
 
-Maak in deze klasse een functie met de naam `initialize` om de client te verifiëren. Gebruik uw `TEXT_ANALYTICS_SUBSCRIPTION_KEY` en `TEXT_ANALYTICS_ENDPOINT` omgevings variabelen. 
+Maak in deze klasse een functie met de naam `initialize` om de client te verifiëren met behulp van uw sleutel en eind punt. 
 
 [!code-ruby[initialize function for authentication](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=initialize)]
 
@@ -204,7 +206,7 @@ Document ID: 2
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="key-phrase-extraction"></a>Sleuteltermextractie
+## <a name="key-phrase-extraction"></a>Sleuteluitdrukkingen extraheren
 
 Maak in het client object een functie met de naam `ExtractKeyPhrases()` die een lijst met invoer documenten maakt die later worden gemaakt. Roep de `key_phrases()`-functie aan en ontvang het resultaat. Herhaal vervolgens de resultaten en druk de document-ID en de geëxtraheerde sleutel zinnen af.
 

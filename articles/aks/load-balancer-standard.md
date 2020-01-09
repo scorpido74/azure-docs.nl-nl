@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: ef826239bc916b4ccf25785f92397286017d00f7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 43a2c64560b145531e15a35deb9321b6553782a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171392"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430823"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Een standaard SKU-load balancer gebruiken in azure Kubernetes service (AKS)
 
@@ -54,6 +54,10 @@ De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en behe
 * Het definiëren van de load balancer SKU kan alleen worden uitgevoerd wanneer u een AKS-cluster maakt. U kunt de load balancer SKU niet wijzigen nadat er een AKS-cluster is gemaakt.
 * U kunt slechts één type load balancer SKU (Basic of Standard) gebruiken in één cluster.
 * *Standaard* Load balancers van SKU bieden alleen ondersteuning voor *standaard* -SKU-IP-adressen.
+
+## <a name="use-the-standard-sku-load-balancer"></a>De *standaard* SKU-Load Balancer gebruiken
+
+Wanneer u een AKS-cluster maakt, wordt standaard de *standaard* -SKU Load Balancer gebruikt wanneer u services in dat cluster uitvoert. De Snelstartgids die gebruikmaakt van [Azure cli][aks-quickstart-cli] , implementeert bijvoorbeeld een voorbeeld toepassing die gebruikmaakt van de *standaard* -SKU Load Balancer. 
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>Configureer de load balancer intern
 
@@ -177,12 +181,34 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 
 In de voorbeeld uitvoer is *AllocatedOutboundPorts* 0. De waarde voor *AllocatedOutboundPorts* betekent dat de toewijzing van de SNAT-poort terugkeert naar automatische toewijzing op basis van de grootte van de back-endserver. Zie [Load Balancer uitgaande regels][azure-lb-outbound-rules] en [uitgaande verbindingen in azure][azure-lb-outbound-connections] voor meer informatie.
 
+## <a name="restrict-access-to-specific-ip-ranges"></a>De toegang tot specifieke IP-bereiken beperken
+
+De netwerk beveiligings groep (NSG) die is gekoppeld aan het virtuele netwerk voor de load balancer, heeft standaard een regel om al het inkomende externe verkeer toe te staan. U kunt deze regel bijwerken zodat alleen specifieke IP-adresbereiken voor inkomend verkeer worden toegestaan. In het volgende manifest wordt *loadBalancerSourceRanges* gebruikt om een nieuw IP-adres bereik op te geven voor binnenkomend extern verkeer:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-vote-front
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-vote-front
+  loadBalancerSourceRanges:
+  - MY_EXTERNAL_IP_RANGE
+```
+
+In het bovenstaande voor beeld wordt de regel bijgewerkt zodat alleen binnenkomend extern verkeer van het *MY_EXTERNAL_IP_RANGE* bereik wordt toegestaan. Meer informatie over het gebruik van deze methode voor het beperken van de toegang tot de load balancer-service is beschikbaar in de [Kubernetes-documentatie][kubernetes-cloud-provider-firewall].
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over Kubernetes Services vindt u in de [documentatie van Kubernetes Services][kubernetes-services].
 
 <!-- LINKS - External -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
+[kubernetes-cloud-provider-firewall]: https://kubernetes.io/docs/tasks/access-application-cluster/configure-cloud-provider-firewall/#restrict-access-for-loadbalancer-service
 [kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

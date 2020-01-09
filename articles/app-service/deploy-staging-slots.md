@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 09/19/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1fec6de65fade0bbb35907f9c69334e16d9193bf
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 63070b2c1e6adbb0149446b218e6e58023b2d409
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671760"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666449"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Faserings omgevingen instellen in Azure App Service
 <a name="Overview"></a>
@@ -23,20 +23,24 @@ Het implementeren van uw toepassing in een niet-productie sleuf biedt de volgend
 * Als u eerst een app implementeert in een sleuf en deze naar productie verwisselt, zorgt u ervoor dat alle exemplaren van de sleuf worden opgewarmd voordat ze in productie worden gewisseld. Dit elimineert downtime wanneer u uw app implementeert. Het omleiden van verkeer is naadloos en er worden geen aanvragen verwijderd vanwege wissel bewerkingen. U kunt deze volledige werk stroom automatiseren door [automatisch wisselen](#Auto-Swap) te configureren wanneer de validatie vooraf verwisselen niet nodig is.
 * Na een swap heeft de sleuf met eerder gefaseerde app nu de vorige productie-app. Als de wijzigingen die worden gewisseld naar de productie sleuf niet zoals verwacht, kunt u dezelfde swap direct uitvoeren om uw ' laatste bekende goede site ' terug te krijgen.
 
-Elke App Service plan tier ondersteunt een verschillend aantal implementatie sleuven. Er worden geen extra kosten in rekening gebracht voor het gebruik van implementatie sites. Zie [app service limieten](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits)voor meer informatie over het aantal sleuven dat door de laag van de app wordt ondersteund. 
+Elke App Service plan tier ondersteunt een verschillend aantal implementatie sleuven. Er worden geen extra kosten in rekening gebracht voor het gebruik van implementatie sites. Zie [app service limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#app-service-limits)voor meer informatie over het aantal sleuven dat door de laag van de app wordt ondersteund. 
 
 Als u uw app wilt schalen naar een andere laag, zorgt u ervoor dat de doellaag het aantal sleuven ondersteunt dat uw app al gebruikt. Als uw app bijvoorbeeld meer dan vijf sleuven heeft, kunt u deze niet omlaag schalen naar de **Standard** -laag, omdat de laag **standaard** slechts vijf implementatie sleuven ondersteunt. 
 
 <a name="Add"></a>
 
-## <a name="add-a-slot"></a>Een sleuf toevoegen
+## <a name="add-a-slot"></a>Site toevoegen
 De app moet worden uitgevoerd in de **Standard**-, **Premium**-of **geïsoleerde** laag zodat u meerdere implementatie sleuven kunt inschakelen.
 
-1. Open de [resource pagina](../azure-resource-manager/manage-resources-portal.md#manage-resources)van uw app In de [Azure Portal](https://portal.azure.com/).
+
+1. in de [Azure Portal](https://portal.azure.com/)zoekt en selecteert u **app Services** en selecteert u uw app. 
+   
+    ![Zoeken naar App Services](./media/web-sites-staged-publishing/search-for-app-services.png)
+   
 
 2. Selecteer in het linkerdeel venster **implementatie sleuven** > **sleuf toevoegen**.
    
-    ![Een nieuwe implementatie site toevoegen](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
+    ![Een nieuwe implementatiesite toevoegen](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
    > Als de app zich nog niet in de **standaard**-, **Premium**-of **geïsoleerde** laag bevindt, wordt er een bericht weer gegeven met de ondersteunde lagen voor het inschakelen van gefaseerde publicatie. Op dit moment kunt u de optie **upgrade** selecteren en naar het tabblad **schaal** van uw app gaan voordat u doorgaat.
@@ -44,7 +48,7 @@ De app moet worden uitgevoerd in de **Standard**-, **Premium**-of **geïsoleerde
 
 3. Geef in het dialoog venster **een sleuf toevoegen** een naam op voor de sleuf en selecteer of u een app-configuratie wilt klonen vanuit een andere implementatie site. Selecteer **toevoegen** om door te gaan.
    
-    ![Configuratie bron](./media/web-sites-staged-publishing/ConfigurationSource1.png)
+    ![Configuratiebron](./media/web-sites-staged-publishing/ConfigurationSource1.png)
    
     U kunt een configuratie klonen vanuit elke bestaande sleuf. Instellingen die kunnen worden gekloond zijn onder andere app-instellingen, verbindings reeksen, taal raamwerk versies, Web-sockets, HTTP-versie en platform Bitness.
 
@@ -97,7 +101,7 @@ Op een wille keurig punt van de wissel bewerking wordt al het werk van het initi
 
 Als u een app-instelling of connection string wilt configureren voor een specifieke sleuf (niet gewisseld), gaat u naar de pagina **configuratie** voor die sleuf. Voeg een instelling toe of bewerk deze en selecteer vervolgens **implementatie sleuf instelling**. Als u dit selectie vakje inschakelt, wordt App Service dat de instelling niet kan worden gewisseld. 
 
-![Sleuf instelling](./media/web-sites-staged-publishing/SlotSetting.png)
+![Sleufinstelling](./media/web-sites-staged-publishing/SlotSetting.png)
 
 <a name="Swap"></a>
 
@@ -206,7 +210,7 @@ Zie voor meer informatie over het aanpassen van het `applicationInitialization`-
 
 U kunt ook het opwarm gedrag aanpassen met een of beide van de volgende [app-instellingen](configure-common.md):
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: het pad naar de ping om uw site te laten opwarmen. Voeg deze app-instelling toe door een aangepast pad op te geven dat begint met een slash als waarde. Een voorbeeld is `/statuscheck`. De standaard waarde is `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: het pad naar de ping om uw site te laten opwarmen. Voeg deze app-instelling toe door een aangepast pad op te geven dat begint met een slash als waarde. Een voorbeeld is `/statuscheck`. De standaardwaarde is `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: geldige HTTP-antwoord codes voor de opwarm bewerking. Voeg deze app-instelling toe met een door komma's gescheiden lijst met HTTP-codes. Een voor beeld is `200,202`. Als de geretourneerde status code zich niet in de lijst bevindt, worden de opwarm-en swap-bewerkingen gestopt. Standaard zijn alle antwoord codes geldig.
 
 > [!NOTE]
@@ -241,7 +245,7 @@ Nadat de instelling is opgeslagen, wordt het opgegeven percentage clients wille 
 Nadat een client automatisch naar een specifieke sleuf is doorgestuurd, wordt deze voor de levens duur van die client sessie vastgemaakt aan die sleuf. Op de client browser kunt u zien op welke sleuf uw sessie is vastgemaakt door te kijken naar het `x-ms-routing-name` cookie in uw HTTP-headers. Voor een aanvraag die naar de staging-sleuf wordt doorgestuurd, wordt de cookie `x-ms-routing-name=staging`. Voor een aanvraag die naar de productie site wordt doorgestuurd, wordt de cookie `x-ms-routing-name=self`.
 
    > [!NOTE]
-   > Naast Azure Portal kunt u ook de [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) opdracht in de Azure CLI gebruiken om de routerings percentages van CI/cd-hulpprogram ma's, zoals DevOps-pijp lijnen of andere automatiserings systemen, in te stellen.
+   > Naast de Azure Portal kunt u ook de [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) opdracht in de Azure CLI gebruiken om de routerings percentages van CI/cd-hulpprogram ma's, zoals DevOps-pijp lijnen of andere automatiserings systemen, in te stellen.
    > 
 
 ### <a name="route-production-traffic-manually"></a>Productie verkeer hand matig omleiden
@@ -268,7 +272,7 @@ Standaard krijgen nieuwe sleuven een routerings regel van `0%`die grijs wordt we
 
 ## <a name="delete-a-slot"></a>Een sleuf verwijderen
 
-Ga naar de resource pagina van uw app. Selecteer **implementatie sleuven** >  *\<sleuf om >* **overzicht**van > te verwijderen. Selecteer **verwijderen** op de opdracht balk.  
+Zoek en selecteer uw app. Selecteer **implementatie sleuven** >  *\<sleuf om >* **overzicht**van > te verwijderen. Selecteer **verwijderen** op de opdracht balk.  
 
 ![Een implementatie site verwijderen](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -327,16 +331,16 @@ Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller Slo
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
-## <a name="automate-with-arm-templates"></a>Automatiseren met ARM-sjablonen
+## <a name="automate-with-resource-manager-templates"></a>Automatiseren met Resource Manager-sjablonen
 
-[Arm-sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) zijn DECLARATIEve json-bestanden die worden gebruikt voor het automatiseren van de implementatie en configuratie van Azure-resources. Als u sleuven wilt wisselen met ARM-sjablonen, stelt u twee eigenschappen in op de resources *micro soft. web/sites/sleuven* en *micro soft. web/sites* :
+[Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) zijn DECLARATIEve json-bestanden die worden gebruikt voor het automatiseren van de implementatie en configuratie van Azure-resources. Als u sleuven wilt wisselen met behulp van Resource Manager-sjablonen, stelt u twee eigenschappen in op de resources *micro soft. web/sites/sleuven* en *micro soft. web/sites* :
 
 - `buildVersion`: dit is een teken reeks eigenschap die de huidige versie vertegenwoordigt van de app die in de sleuf is geïmplementeerd. Bijvoorbeeld: "v1", "1.0.0.1" of "2019-09-20T11:53:25.2887393-07:00".
 - `targetBuildVersion`: dit is een teken reeks eigenschap waarmee wordt opgegeven wat `buildVersion` de sleuf moet hebben. Als de targetBuildVersion niet gelijk is aan de huidige `buildVersion`, wordt de wissel bewerking geactiveerd door de sleuf te zoeken met de opgegeven `buildVersion`.
 
-### <a name="example-arm-template"></a>Voor beeld van ARM-sjabloon
+### <a name="example-resource-manager-template"></a>Voor beeld van Resource Manager-sjabloon
 
-Met de volgende ARM-sjabloon wordt de `buildVersion` van de faserings sleuf bijgewerkt en wordt de `targetBuildVersion` ingesteld op de productie site. Hierdoor worden de twee sleuven gewisseld. In de sjabloon wordt ervan uitgegaan dat u al een webapp hebt gemaakt met een sleuf met de naam "staging".
+Met de volgende Resource Manager-sjabloon wordt de `buildVersion` van de faserings sleuf bijgewerkt en wordt de `targetBuildVersion` ingesteld op de productie site. Hierdoor worden de twee sleuven gewisseld. In de sjabloon wordt ervan uitgegaan dat u al een webapp hebt gemaakt met een sleuf met de naam "staging".
 
 ```json
 {
@@ -380,7 +384,7 @@ Met de volgende ARM-sjabloon wordt de `buildVersion` van de faserings sleuf bijg
 }
 ```
 
-Deze ARM-sjabloon is idempotent, wat inhoudt dat deze herhaaldelijk kan worden uitgevoerd en de status van de sleuven kan genereren. Na de eerste uitvoering komt `targetBuildVersion` overeen met de huidige `buildVersion`, waardoor een wissel niet wordt geactiveerd.
+Deze Resource Manager-sjabloon is idempotent, wat inhoudt dat deze regel matig kan worden uitgevoerd en dezelfde status van de sleuven produceert. Na de eerste uitvoering komt `targetBuildVersion` overeen met de huidige `buildVersion`, waardoor een wissel niet wordt geactiveerd.
 
 <!-- ======== Azure CLI =========== -->
 

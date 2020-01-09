@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 6ff095d674a11d95ed4fd2d008c3e664dd595fef
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d659be5b817317e7cec5726718f154825674349e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894221"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365339"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Werken met datum-en tijd waarden in Azure Monitor-logboek query's
 
@@ -31,11 +31,11 @@ TimeSpans worden uitgedrukt als een decimaal gevolgd door een tijds eenheid:
 
 |Steno   | tijds eenheid    |
 |:---|:---|
-|!           | profieldag          |
+|d           | dag          |
 |u           | uur         |
-|m           | Notulen       |
-|s           | tweede       |
-|Mevrouw          | milliseconde  |
+|m           | minuut       |
+|s           | seconde       |
+|ms          | milliseconde  |
 |wacht | wacht  |
 |beurs        | nano seconden   |
 
@@ -128,7 +128,7 @@ Event
 
 Deze query levert de volgende resultaten op:
 
-|tijdstempel|aantal|
+|tijdstempel|aantal_|
 |--|--|
 |2018-07-28T00:00:00.000|7\.136|
 |2018-07-29T00:00:00.000|12.315|
@@ -147,7 +147,7 @@ Event
 
 ## <a name="related-functions"></a>Gerelateerde functies
 
-| Category | Functie |
+| Categorie | Functie |
 |:---|:---|
 | Gegevens typen converteren | [todatetime](/azure/kusto/query/todatetimefunction)  [totimespan](/azure/kusto/query/totimespanfunction)  |
 | Waarde afronden naar bin-grootte | [dockopslaglocatie](/azure/kusto/query/binfunction) |
@@ -164,4 +164,4 @@ Zie andere lessen voor het gebruik van de [Kusto-query taal](/azure/kusto/query/
 - [JSON en gegevens structuren](json-data-structures.md)
 - [Geavanceerde query's schrijven](advanced-query-writing.md)
 - [Joins](joins.md)
-- [Diagrammen](charts.md)
+- [Grafieken](charts.md)

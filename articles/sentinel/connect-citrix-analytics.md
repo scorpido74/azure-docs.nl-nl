@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 12/30/2019
 ms.author: cabailey
-ms.openlocfilehash: 36a0c36de7b3f6c6aa4932770e6264bc14c2790f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4a720702cdadf641665c4c8dc3754edd1c42361
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518084"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610621"
 ---
-# <a name="connect-citrix-analytics-security"></a>Citrix Analytics (beveiliging) verbinden 
+# <a name="connect-citrix-analytics-security"></a>Verbinding maken met Citrix Analytics (Security) 
 
 Citrix Analytics (Security) integratie met Azure Sentinel helpt u bij het exporteren van gegevens die zijn geanalyseerd op Risk ante gebeurtenissen van Citrix Analytics (beveiliging) in azure Sentinel. U kunt aangepaste Dash boards maken, gegevens uit andere bronnen analyseren, samen met die van Citrix Analytics (beveiliging) en aangepaste werk stromen maken met behulp van Logic Apps om beveiligings gebeurtenissen te controleren en te verhelpen. 
 
@@ -46,4 +46,6 @@ Citrix Analytics (Security) integratie met Azure Sentinel helpt u bij het export
 In dit document hebt u geleerd hoe u Citrix Analytics (Security) kunt verbinden met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
 - Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
 - Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+- [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.
+
 

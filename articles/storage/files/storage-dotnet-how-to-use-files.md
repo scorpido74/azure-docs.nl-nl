@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6f2159ddf3e3039dc0c38fc8f942c508ac177f06
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: dfb1d71a02ae3bf06a5f2d8a93bcb3ac83433a86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038170"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460361"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Ontwikkelen voor Azure Files met .NET
 
@@ -23,7 +23,7 @@ In deze zelfstudie worden de basisbeginselen uitgelegd van het gebruik van .NET 
 
 * De inhoud van een bestand ophalen.
 * Stel de maximale grootte of het *quotum* voor de bestands share in.
-* Een Shared Access Signature (SAS-sleutel) maken voor een bestand dat gebruikmaakt van een gedeeld toegangsbeleid dat voor de share is gedefinieerd.
+* Maak een Shared Access Signature (SAS-sleutel) voor een bestand dat gebruikmaakt van een opgeslagen toegangs beleid dat op de share is gedefinieerd.
 * Een bestand kopiëren naar een ander bestand in hetzelfde opslagaccount.
 * Een bestand kopiëren naar een blob in hetzelfde opslagaccount.
 * Gebruik Azure Storage metrische gegevens voor het oplossen van problemen.
@@ -49,7 +49,7 @@ Maak in Visual Studio een nieuwe Windows-consoletoepassing. De volgende stappen 
 1. Kies in **een nieuw project maken de**optie **console-app (.NET Framework)** voor C#en selecteer vervolgens **volgende**.
 1. In **uw nieuwe project configureren**voert u een naam in voor de app en selecteert u **maken**.
 
-U kunt alle code voorbeelden in deze zelf studie toevoegen aan de `Main()`-methode van het `Program.cs`-bestand van uw console toepassing.
+U kunt alle code voorbeelden in deze zelf studie toevoegen aan de `Main()` methode van het `Program.cs`-bestand van uw console toepassing.
 
 U kunt de Azure Storage-client bibliotheek in elk type .NET-toepassing gebruiken. Deze typen zijn onder andere een Azure-Cloud service of web-app, en desktop-en mobiele toepassingen. In deze gids gebruiken we een consoletoepassing voor de eenvoud.
 
@@ -84,7 +84,7 @@ Met NuGet kunt u beide pakketten verkrijgen. Volg deze stappen:
 
 ## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>Sla de referenties van uw opslag account op in het bestand app. config
 
-Sla vervolgens uw referenties op in het `App.config`-bestand van uw project. Dubbel klik in **Solution Explorer**op `App.config` en bewerk het bestand zodat dit overeenkomt met het volgende voor beeld. Vervang `myaccount` door de naam van uw opslag account en `mykey` met de sleutel van uw opslag account.
+Sla vervolgens uw referenties op in het `App.config`-bestand van uw project. Dubbel klik in **Solution Explorer**op `App.config` en bewerk het bestand, zodat dit overeenkomt met het volgende voor beeld. Vervang `myaccount` door de naam van uw opslag account en `mykey` met de sleutel van uw opslag account.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -116,7 +116,7 @@ using Microsoft.Azure.Storage.File; // Namespace for Azure Files
 
 ## <a name="access-the-file-share-programmatically"></a>Via een programma toegang krijgen tot de bestandsshare
 
-Voeg vervolgens de volgende inhoud toe aan de `Main()`-methode, na de hierboven weer gegeven code, om de connection string op te halen. Met deze code wordt een verwijzing opgehaald naar het bestand dat we eerder hebben gemaakt en de inhoud ervan wordt uitgevoerd.
+Voeg vervolgens de volgende inhoud toe aan de methode `Main()`, na de hierboven weer gegeven code, om de connection string op te halen. Met deze code wordt een verwijzing opgehaald naar het bestand dat we eerder hebben gemaakt en de inhoud ervan wordt uitgevoerd.
 
 ```csharp
 // Create a CloudFileClient object for credentialed access to Azure Files.
@@ -192,9 +192,9 @@ if (share.Exists())
 
 ### <a name="generate-a-shared-access-signature-for-a-file-or-file-share"></a>Een Shared Access Signature genereren voor een bestand of bestandsshare
 
-Vanaf versie 5.x van de Azure Storage-clientbibliotheek kunt u een Shared Access Signature (SAS) genereren voor een bestandsshare of voor een afzonderlijk bestand. U kunt op een bestandsshare ook een beleid voor gedeelde toegang maken om handtekeningen voor gedeelde toegang te beheren. Het is raadzaam om een beleid voor gedeelde toegang te maken, omdat u hiermee de SAS kunt intrekken als deze wordt aangetast.
+Vanaf versie 5.x van de Azure Storage-clientbibliotheek kunt u een Shared Access Signature (SAS) genereren voor een bestandsshare of voor een afzonderlijk bestand. U kunt ook een opgeslagen toegangs beleid maken op een bestands share om hand tekeningen voor gedeelde toegang te beheren. We raden u aan om een opgeslagen toegangs beleid te maken, omdat u hiermee de SAS kunt intrekken als deze wordt aangetast.
 
-In het volgende voor beeld wordt een gedeeld toegangs beleid voor een share gemaakt. In het voor beeld wordt dat beleid gebruikt om de beperkingen voor een SAS op een bestand in de share op te geven.
+In het volgende voor beeld wordt een opgeslagen toegangs beleid gemaakt op een share. In het voor beeld wordt dat beleid gebruikt om de beperkingen voor een SAS op een bestand in de share op te geven.
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -212,7 +212,7 @@ if (share.Exists())
 {
     string policyName = "sampleSharePolicy" + DateTime.UtcNow.Ticks;
 
-    // Create a new shared access policy and define its constraints.
+    // Create a new stored access policy and define its constraints.
     SharedAccessFilePolicy sharedPolicy = new SharedAccessFilePolicy()
         {
             SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
@@ -222,7 +222,7 @@ if (share.Exists())
     // Get existing permissions for the share.
     FileSharePermissions permissions = share.GetPermissions();
 
-    // Add the shared access policy to the share's policies. Note that each policy must have a unique name.
+    // Add the stored access policy to the share's policies. Note that each policy must have a unique name.
     permissions.SharedAccessPolicies.Add(policyName, sharedPolicy);
     share.SetPermissions(permissions);
 
@@ -428,14 +428,14 @@ U kunt de metrische gegevens voor Azure Files inschakelen vanuit de [Azure Porta
 
 In het volgende codevoorbeeld ziet u hoe u de Storage-clientbibliotheek voor .NET gebruikt om metrische gegevens in te schakelen voor Azure Files.
 
-Voeg eerst de volgende `using`-instructies toe aan uw `Program.cs`-bestand, samen met de regels die u hierboven hebt toegevoegd:
+Voeg eerst de volgende `using`-instructies toe aan uw `Program.cs`-bestand, samen met de aanwijzingen die u hierboven hebt toegevoegd:
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;
 using Microsoft.Azure.Storage.Shared.Protocol;
 ```
 
-Hoewel Azure-blobs, Azure-tabellen en Azure-wacht rijen gebruikmaken van het gedeelde `ServiceProperties`-type in de naam ruimte `Microsoft.Azure.Storage.Shared.Protocol`, Azure Files gebruikt van een eigen type, het type `FileServiceProperties` in de `Microsoft.Azure.Storage.File.Protocol`-naam ruimte. U moet vanuit uw code naar beide naam ruimten verwijzen om de volgende code te kunnen compileren.
+Hoewel Azure-blobs, Azure-tabellen en Azure-wacht rijen gebruikmaken van het gedeelde `ServiceProperties` type in de naam ruimte `Microsoft.Azure.Storage.Shared.Protocol`, Azure Files gebruikt van een eigen type, het `FileServiceProperties` type in de `Microsoft.Azure.Storage.File.Protocol` naam ruimte. U moet vanuit uw code naar beide naam ruimten verwijzen om de volgende code te kunnen compileren.
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.
@@ -497,8 +497,8 @@ Raadpleeg de volgende bronnen voor meer informatie over Azure Files:
 
 ### <a name="reference"></a>Referentie
 
-* [Azure Storage-Api's voor .NET](/dotnet/api/overview/azure/storage)
-* [Bestands service REST API](/rest/api/storageservices/File-Service-REST-API)
+* [Azure Storage-API's voor .NET](/dotnet/api/overview/azure/storage)
+* [Bestandsservice REST API](/rest/api/storageservices/File-Service-REST-API)
 
 ### <a name="blog-posts"></a>Blogberichten
 

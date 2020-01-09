@@ -1,25 +1,14 @@
 ---
-title: Upgrade van toepassing Service Fabric | Microsoft Docs
+title: Upgrade van Service Fabric-toepassing uitvoeren
 description: Dit artikel bevat een inleiding tot het upgraden van een Service Fabric-toepassing, inclusief het kiezen van upgrade modi en het uitvoeren van status controles.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 3c50ee149f5bcdda6cbb697830945cdc7f7a15f4
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 2dc484b49c5250510e5f018cbbc2da107573d452
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167274"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426775"
 ---
 # <a name="service-fabric-application-upgrade"></a>Upgrade van Service Fabric-toepassing uitvoeren
 Een Azure Service Fabric-toepassing is een verzameling van services. Tijdens een upgrade vergelijkt Service Fabric het nieuwe [toepassings manifest](service-fabric-application-and-service-manifests.md) met de vorige versie en bepaalt u welke services in de toepassing moeten worden bijgewerkt. Service Fabric vergelijkt de versie nummers in de service manifesten met de versie nummers in de vorige versie. Als een service niet is gewijzigd, wordt die service niet geüpgraded.
@@ -67,7 +56,7 @@ Daarom biedt Service Fabric geen ondersteuning voor het upgraden van twee versch
 Als een upgrade mislukt met https, wordt een fout melding weer gegeven dat de Windows HTTP-Server-API niet meerdere certificaten ondersteunt voor toepassingen die een poort delen.
 
 ## <a name="application-upgrade-flowchart"></a>Stroom diagram voor toepassings upgrades
-Het stroom diagram dat volgt op deze alinea, kan u helpen inzicht te krijgen in het upgrade proces van een Service Fabric-toepassing. Met name wordt met de stroom beschreven hoe de time-outs, waaronder *HealthCheckStableDuration*, *HealthCheckRetryTimeout*en *UpgradeHealthCheckInterval*, kunnen worden beheerd wanneer de upgrade in één update domein als geslaagd wordt beschouwd of een fout.
+Het stroom diagram dat volgt op deze alinea, kan u helpen inzicht te krijgen in het upgrade proces van een Service Fabric-toepassing. Met name wordt met de stroom beschreven hoe de time-outs, waaronder *HealthCheckStableDuration*, *HealthCheckRetryTimeout*en *UpgradeHealthCheckInterval*, kunnen worden beheerd wanneer de upgrade in één update domein als geslaagd of mislukt wordt beschouwd.
 
 ![Het upgrade proces voor een Service Fabric-toepassing][image]
 

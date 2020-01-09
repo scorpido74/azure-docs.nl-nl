@@ -8,29 +8,29 @@ ms.topic: include
 ms.date: 11/05/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: bc4ac68cb415a43ac34d36afc2adc30307e6d37c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6707e844948ac76d4cec29faf69d80b3c9cb3c0f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795250"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392412"
 ---
-| Resource | Basic | Standard | Premium |
+| Bron | Basic | Standard | Premium |
 |---|---|---|---|
 | Opslag<sup>1</sup> | 10 GiB | 100 GiB| 500 GiB |
 | Maximale grootte van de afbeelding slaag | 200 GiB | 200 GiB | 200 GiB |
 | ReadOps per minuut<sup>2, 3</sup> | 1000 | 3\.000 | 10.000 |
-| WriteOps per minuut<sup>2, 4</sup> | 100 | 500 | 2\.000 |
+| WriteOps per minuut<sup>2, 4</sup> | 100 | 500 | 2,000 |
 | Down load bandbreedte MBps<sup>2</sup> | 30 | 60 | 100 |
 | Upload bandbreedte MBps<sup>2</sup> | 10 | 20 | 50 |
-| Webhooks | 2 | 10 | 100 |
-| Geo-replicatie | N.v.t. | N.v.t. | [Ondersteund][geo-replication] |
-| Inhoud vertrouwen | N.v.t. | N.v.t. | [Ondersteund][content-trust] |
-| Toegang tot virtueel netwerk | N.v.t. | N.v.t. | [Preview][vnet] |
-| Machtigingen voor opslag plaatsen-scoped | N.v.t. | N.v.t. | [Preview][token]|
-| &bull;-tokens | N.v.t. | N.v.t. | 20.000 |
-| &bull; Scope Maps | N.v.t. | N.v.t. | 20.000 |
-| &bull; opslag plaatsen per scope toewijzing | N.v.t. | N.v.t. | 500 |
+| Webhooks | 2 | 10 | 500 |
+| Geo-replicatie | N/A | N/A | [Ondersteund][geo-replication] |
+| Inhoud vertrouwen | N/A | N/A | [Ondersteund][content-trust] |
+| Toegang tot virtueel netwerk | N/A | N/A | [Preview][vnet] |
+| Machtigingen voor opslag plaatsen-scoped | N/A | N/A | [Preview][token]|
+| &bull;-tokens | N/A | N/A | 20,000 |
+| &bull; Scope Maps | N/A | N/A | 20,000 |
+| &bull; opslag plaatsen per scope toewijzing | N/A | N/A | 500 |
 
 
 <sup>1</sup> De opgegeven opslag limieten zijn de hoeveelheid *opgenomen* opslag ruimte voor elke laag. Boven deze limieten wordt een extra dagelijks tarief per GiB in rekening gebracht voor afbeeldings opslag. Zie voor informatie over de rente [Azure container Registry prijzen][pricing].

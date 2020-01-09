@@ -1,5 +1,5 @@
 ---
-title: De kosten van Azure Cosmos DB resources met gereserveerde capaciteit optimaliseren
+title: Gereserveerde capaciteit in Azure Cosmos DB om de kosten te optimaliseren
 description: Meer informatie over het kopen van Azure Cosmos DB gereserveerde capaciteit om uw reken kosten op te slaan.
 author: bandersmsft
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: 0ee43fe0996c05f4e59f6107ba52fac19b83cdef
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0a956a1372ba1535b9d918333bd7411a4ca6abe4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756959"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441935"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Kosten optimaliseren met gereserveerde capaciteit in Azure Cosmos DB
 
@@ -40,7 +40,7 @@ De grootte van de reserve ring moet worden gebaseerd op de totale hoeveelheid do
 
 ## <a name="buy-azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB gereserveerde capaciteit kopen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).  
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).  
 
 2. Selecteer **alle services** > **reserve ringen** > **toevoegen**.  
 
@@ -76,7 +76,7 @@ Wanneer de reserve ring verloopt, blijven uw Azure Cosmos DB-exemplaren actief e
 
 Zie [begrijpen hoe de reserverings korting wordt toegepast op Azure Cosmos DB](../billing/billing-understand-cosmosdb-reservation-charges.md)voor hulp bij het identificeren van de juiste gereserveerde capaciteit.
 
-Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfservice voor ruiling en terugbetaling van Azure-reserveringen](../billing/billing-azure-reservations-self-service-exchange-and-refund.md) voor meer informatie.
+Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen](../billing/billing-azure-reservations-self-service-exchange-and-refund.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

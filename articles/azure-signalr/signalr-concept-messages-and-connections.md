@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 2785d85db47ed3b214044e673566a2837b83e984
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 5f6428231a3639738e8fb52e7dc3f2f2a3d2a26e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285485"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392816"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Berichten en verbindingen in Azure SignalR Service
 
@@ -38,8 +38,6 @@ Een bericht dat groter is dan 2 kB, wordt beschouwd als meerdere berichten van e
 
 Stel u hebt drie clients en één toepassingsserver. Vanaf één client wordt een bericht van 4 kB verzonden dat via de server moet worden uitgezonden naar alle clients. Het aantal berichten is acht: één bericht van de service naar de toepassingsserver, en drie berichten van de service naar de clients. Elk bericht wordt geteld als twee berichten van 2 kB.
 
-Het aantal berichten dat in de Azure-portal wordt weergegeven, blijft 0 totdat het aantal boven de 100 komt.
-
 ## <a name="how-connections-are-counted"></a>Hoe verbindingen worden geteld
 
 Er zijn server verbindingen en client verbindingen met de Azure signalerings service. Standaard begint elke toepassings server met vijf initiële verbindingen per hub, en elke client heeft één client verbinding.
@@ -54,7 +52,7 @@ Tijdens de levens duur van de toepassings server houdt de service en de toepassi
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>Hoe binnenkomend/uitgaand verkeer wordt geteld
 
-Het verschil tussen binnenkomend en uitgaand verkeer is gebaseerd op het perspectief van Azure SignalR Service. Verkeer wordt geteld in bytes. Net zoals het aantal berichten, heeft het verkeer ook een samplefrequentie. De grafiek met binnenkomend/uitgaand verkeer in de Azure-portal wordt elke 100 kB per hub bijgewerkt.
+Het verschil tussen binnenkomend en uitgaand verkeer is gebaseerd op het perspectief van Azure SignalR Service. Verkeer wordt geteld in bytes.
 
 ## <a name="related-resources"></a>Gerelateerde bronnen
 

@@ -1,25 +1,16 @@
 ---
-title: De upgrade van een Service Fabric toepassing configureren | Microsoft Docs
+title: De upgrade van een Service Fabric-toepassing configureren
 description: Meer informatie over het configureren van de instellingen voor het upgraden van een Service Fabric-toepassing met behulp van micro soft Visual Studio.
-services: service-fabric
-documentationcenter: na
 author: mikkelhegn
-manager: mfussell
-editor: tglee
-ms.assetid: 1757ba85-0b7b-4f16-8a23-2ddaa61c86c6
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/29/2017
 ms.author: mikhegn
-ms.openlocfilehash: 5979541146b7cd7b854f35c5bf204e71208f066b
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: ef88a528dbb6d326e5cc742d14c27218eb7502f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876759"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464073"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>De upgrade van een Service Fabric-toepassing in Visual Studio configureren
 Visual Studio Tools voor Azure Service Fabric bieden upgrade ondersteuning voor het publiceren naar lokale of externe clusters. Er zijn drie scenario's waarin u uw toepassing wilt bijwerken naar een nieuwere versie in plaats van de toepassing te vervangen tijdens het testen en fout opsporing:
@@ -31,7 +22,7 @@ Visual Studio Tools voor Azure Service Fabric bieden upgrade ondersteuning voor 
 ## <a name="parameters-needed-to-upgrade"></a>Vereiste para meters voor upgrade
 U kunt kiezen uit twee typen implementatie: standaard of upgrade. Bij een reguliere implementatie worden alle eerdere implementatie-informatie en-gegevens op het cluster gewist, terwijl de implementatie van een upgrade wordt behouden. Wanneer u een Service Fabric-toepassing in Visual Studio bijwerkt, moet u de para meters voor de toepassings upgrade en het status controlebeleid opgeven. De para meters voor de upgrade van de toepassing helpen de upgrade te beheren, terwijl het status controlebeleid bepaalt of de upgrade is geslaagd. Zie [service Fabric Application upgrade: upgrade-para meters](service-fabric-application-upgrade-parameters.md) voor meer informatie.
 
-Er zijn drie upgrade modi: *Bewaakt*, *UnmonitoredAuto*en *UnmonitoredManual*.
+Er zijn drie upgrade modi: *bewaakt*, *UnmonitoredAuto*en *UnmonitoredManual*.
 
 * Met een bewaakte upgrade wordt de upgrade en de status controle van de toepassing geautomatiseerd.
 * Met een UnmonitoredAuto-upgrade wordt de upgrade geautomatiseerd, maar wordt de status controle van de toepassing overgeslagen.

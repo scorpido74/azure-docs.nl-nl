@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 68315b1b0d290b107fe2d28a9e3b49be009b78b8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: d2c8e599e44e48517920862e1fcf83e1a5e24910
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782240"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647625"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Voor beeld: Azure spot-Vm's voor schaal sets voor virtuele machines 
 
@@ -50,8 +50,8 @@ Gebruikers kunnen zich aanmelden om in-VM-meldingen te ontvangen via [Azure Sche
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Implementatie-Vm's in schaal sets implementeren
 
 Als u virtuele-machine bewerkingen wilt implementeren op schaal sets, kunt u de vlag nieuwe *prioriteit* instellen op *Spot*. Alle virtuele machines in uw schaalset worden ingesteld op spot. Gebruik een van de volgende methoden voor het maken van een schaalset met behulp van spot-Vm's:
-- [Azure-portal](#portal)
-- [Azure CLI](#azure-cli)
+- [Azure Portal](#portal)
+- [Azure-CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
 - [Azure Resource Manager sjablonen](#resource-manager-templates)
 
@@ -60,7 +60,7 @@ Als u virtuele-machine bewerkingen wilt implementeren op schaal sets, kunt u de 
 Het proces voor het maken van een schaalset die gebruikmaakt van stapsgewijze Vm's, is gelijk aan die in het [artikel aan](quick-create-portal.md)de slag. Wanneer u een schaalset implementeert, kunt u kiezen voor het instellen van de vlag spot en het verwijderings beleid: ![een schaalset maken met behulp van een vaste virtuele machine](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
 
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure-CLI
 
 Het proces voor het maken van een schaalset met stapsgewijze Vm's is hetzelfde als die in het [artikel aan](quick-create-cli.md)de slag. Voeg alleen de '---Priority spot ' toe en voeg `--max-price`toe. In dit voor beeld gebruiken we `-1` voor `--max-price` zodat het exemplaar niet wordt verwijderd op basis van de prijs.
 
@@ -151,7 +151,7 @@ In het volgende voor beeld wordt een schaalset voor Linux gemaakt met de naam *m
 
 **V:** Hoe wordt het quotum voor steun beheerd?
 
-**A:** Spot instanties en standaard instanties hebben afzonderlijke quota groepen. Het steun quotum wordt gedeeld tussen Vm's en scale-set-exemplaren. Zie [Azure-abonnement en servicelimieten, quota en beperkingen](https://docs.microsoft.com/azure/azure-subscription-service-limits) voor meer informatie.
+**A:** Spot instanties en standaard instanties hebben afzonderlijke quota groepen. Het steun quotum wordt gedeeld tussen Vm's en scale-set-exemplaren. Zie [Azure-abonnement en servicelimieten, quota en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) voor meer informatie.
 
 
 **V:** Kan ik een extra quotum voor plaats vragen?

@@ -1,5 +1,5 @@
 ---
-title: Overstappen van de portal voor app-registratie naar de nieuwe ervaring voor app-registratie in de Azure-portal
+title: Nieuwe ervaring voor app-registratie in de Azure-portal
 titleSuffix: Microsoft identity platform
 description: Een inleiding tot de nieuwe app-registratie ervaring in de Azure Portal
 services: active-directory
@@ -14,27 +14,27 @@ ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93af32e99e725a72c20c05690b2a96c74082e2ff
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2f7ed8902da40dc7b5783ebb116a6c993bbbba5b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844513"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424641"
 ---
-# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Overstappen van de portal voor app-registratie naar de nieuwe ervaring voor app-registratie in de Azure-portal
+# <a name="the-new-azure-portal-app-registration-experience"></a>De nieuwe app registratie-ervaring voor Azure Portal
 
 Er zijn veel verbeteringen aangebracht in de nieuwe [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring in de Azure Portal. Als u bekend bent met de apps.dev.microsoft.com-ervaring (Application Registration Portal) voor het registreren of beheren van geconvergeerde toepassingen, krijgt u in deze trainings gids de mogelijkheid om aan de slag te gaan met de nieuwe ervaring.
 
 ## <a name="whats-not-changing"></a>Wat wordt er niet gewijzigd?
 
--   Uw toepassingen en gerelateerde configuraties kunnen worden gevonden in de nieuwe ervaring. U hoeft de toepassingen niet opnieuw te registreren, en gebruikers van uw toepassingen hoeven zich niet opnieuw aan te melden.
+- Uw toepassingen en gerelateerde configuraties kunnen worden gevonden in de nieuwe ervaring. U hoeft de toepassingen niet opnieuw te registreren, en gebruikers van uw toepassingen hoeven zich niet opnieuw aan te melden.
 
     > [!NOTE]
     > U moet zich aanmelden met het account dat u hebt gebruikt om toepassingen te registreren om ze te vinden in de Azure Portal. We raden u aan de aangemelde gebruiker te controleren in de Azure Portal overeenkomt met de gebruiker die is aangemeld bij de portal voor toepassings registratie door het e-mail adres te vergelijken met uw profiel.
     > 
     > In sommige gevallen, met name wanneer u zich aanmeldt met persoonlijke micro soft-accounts (bijvoorbeeld Outlook, Live, Xbox, enzovoort) met een Azure AD-e-mail adres, hebben we ontdekt dat wanneer u naar de Azure Portal van de oude ervaring gaat, u zich aanmeldt bij een ander account met dezelfde e-mail in uw Azure AD-Tenant. Als u nog steeds denkt dat uw toepassingen ontbreken, meldt u zich af en meldt u zich aan met het juiste account.
 
--   Live SDK-apps die zijn gemaakt met persoonlijke micro soft-accounts worden nog niet ondersteund in de Azure Portal en blijven in de nabije toekomst in de oude ervaring.
+- Live SDK-apps die zijn gemaakt met persoonlijke micro soft-accounts worden nog niet ondersteund in de Azure Portal en blijven in de nabije toekomst in de oude ervaring.
 
 ## <a name="key-changes"></a>Sleutel wijzigingen
 

@@ -1,5 +1,5 @@
 ---
-title: Een toegangs beoordeling van groepen of toepassingen volt ooien-Azure Active Directory | Microsoft Docs
+title: Een toegangs beoordeling van groepen & toepassingen volt ooien-Azure AD
 description: Meer informatie over het volt ooien van een toegangs beoordeling van groeps leden of toegang tot toepassingen in Azure Active Directory toegangs Beoordelingen.
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97c405032368ffd06f5808bc4518302d2f6d66b9
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 0c6f3405354136e11600ae059f3e05890d3534ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489150"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422725"
 ---
-# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Een toegangs beoordeling van groepen of toepassingen in azure AD-toegangs beoordelingen volt ooien
+# <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Een toegangs beoordeling van groepen en toepassingen in azure AD-toegangs beoordelingen volt ooien
 
 Als beheerder [maakt u een toegangs beoordeling van groepen of toepassingen](create-access-review.md) en revisoren die [de toegangs beoordeling uitvoeren](perform-access-review.md). In dit artikel wordt beschreven hoe u de resultaten van de toegangs beoordeling kunt bekijken en de resultaten kunt Toep assen.
 
@@ -40,7 +40,7 @@ Zie [welke gebruikers licenties moeten hebben?](access-reviews-overview.md#which
 
 U kunt de voortgang volgen wanneer de revisoren hun beoordelingen hebben voltooid.
 
-1. Meld u aan bij de Azure Portal en open de [pagina](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)voor identiteits beheer.
+1. Meld u aan bij de Azure Portal en open de [pagina voor identiteits](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)beheer.
 
 1. Klik in het menu links op **toegangs beoordelingen**.
 

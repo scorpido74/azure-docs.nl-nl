@@ -1,5 +1,5 @@
 ---
-title: Problemen met Azure AD-beheer oplossen-Azure Active Directory
+title: Problemen met het beheer van rechten oplossen-Azure AD
 description: Meer informatie over sommige items die u moet controleren om u te helpen bij het oplossen van Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f7e5e6168e8b365a04040f595f30e68e4e82f0a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e291a032c1aac45ebc783126e69b524e1d0af95b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173332"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422480"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Het beheer van rechten voor Azure AD oplossen
 
@@ -33,7 +33,7 @@ In dit artikel worden enkele items beschreven die u moet controleren om te helpe
 
 * Als u een bericht krijgt dat toegang wordt geweigerd bij het maken of weer geven van toegangs pakketten en u lid bent van een maker van een catalogus, moet u [een catalogus maken](entitlement-management-catalog-create.md) voordat u uw eerste toegangs pakket maakt.
 
-## <a name="resources"></a>Bronnen
+## <a name="resources"></a>Resources
 
 * Rollen voor toepassingen worden gedefinieerd door de toepassing zelf en worden beheerd in azure AD. Als een toepassing geen resource rollen heeft, wijst het rechten beheer gebruikers toe aan een **standaard-Access** -rol.
 

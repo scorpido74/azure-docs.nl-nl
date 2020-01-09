@@ -1,5 +1,6 @@
 ---
-title: Kan geen aangepast domein toevoegen met behulp van Key Vault certificaat in azure API Management | Microsoft Docs
+title: Kan geen aangepast domein toevoegen met behulp van Key Vault certificaat
+titleSuffix: Azure API Management
 description: Meer informatie over het oplossen van het probleem waarbij u een aangepast domein in azure API Management niet kunt toevoegen met behulp van een sleutel kluis certificaat.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
-ms.openlocfilehash: 5d31ec21e341c46c2f2d0ab49fdb2d4302c29dc6
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: a09c15466a4a9f62b2696b087cb7ab23cc767379
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121521"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430581"
 ---
 # <a name="failed-to-update-api-management-service-hostnames"></a>Kan de hostnamen van de API Management-service niet bijwerken
 
@@ -27,7 +28,7 @@ In dit artikel wordt de fout ' kan de hostnamen van de API Management-service ni
 
 Wanneer u een aangepast domein probeert toe te voegen voor uw API Management-service met behulp van een certificaat van Azure Key Vault, wordt het volgende fout bericht weer gegeven:
 
-- Kan de hostnamen van de API Management-service niet bijwerken. De aanvraag voor de https://vaultname.vault.azure.net/secrets/secretname/?api-version=7.0 resource is mislukt met status code: Niet toegestaan voor aanvraag-{0}:. Uitzonderings bericht: De bewerking heeft een ongeldige status code ' verboden ' geretourneerd.
+- Kan de hostnamen van de API Management-service niet bijwerken. De aanvraag voor de resource https://vaultname.vault.azure.net/secrets/secretname/?api-version=7.0 is mislukt met de status code: verboden voor de aanvraag-code:. Uitzonderings bericht: de bewerking heeft een ongeldige status code ' verboden ' geretourneerd.
 
 ## <a name="cause"></a>Oorzaak
 
@@ -38,16 +39,16 @@ De API Management-service heeft geen machtiging voor toegang tot de sleutel klui
 Volg deze stappen om dit probleem op te lossen:
 
 1. Ga naar de [Azure Portal](Https://portal.azure.com), selecteer uw API Management exemplaar en selecteer vervolgens **beheerde identiteiten**. Zorg ervoor dat de optie **registreren met Azure Active Directory** is ingesteld op **Ja**. 
-    ![Registreren bij Azure Active Director](./media/api-management-troubleshoot-cannot-add-custom-domain/register-with-aad.png)
+    ![registreren bij Azure Active Director](./media/api-management-troubleshoot-cannot-add-custom-domain/register-with-aad.png)
 1. Open in de Azure Portal de service **sleutel kluizen** en selecteer de sleutel kluis die u wilt gebruiken voor het aangepaste domein.
 1. Selecteer **toegangs beleid**en controleer of er een Service-Principal is die overeenkomt met de naam van het API Management service-exemplaar. Als dat het geval is, selecteert u de Service-Principal en zorgt u ervoor dat de machtiging ' **Get** ' wordt weer gegeven onder **geheime machtigingen**.  
-    ![Toegangs beleid voor Service-Principal toevoegen](./media/api-management-troubleshoot-cannot-add-custom-domain/access-policy.png)
+    ![het toegangs beleid voor de Service-Principal](./media/api-management-troubleshoot-cannot-add-custom-domain/access-policy.png) toe te voegen
 1. Als de API Management-service zich niet in de lijst bevindt, selecteert u **toegangs beleid toevoegen**en maakt u vervolgens het volgende toegangs beleid:
-    - **Configureren op basis van sjabloon**: Geen
-    - **Principal selecteren**: Zoek de naam van de API Management-service en selecteer deze in de lijst
-    - **Sleutel machtigingen**: Geen
-    - **Geheime machtigingen**: Ophalen
-    - **Certificaat machtigingen**: Geen
+    - **Configureren van sjabloon**: geen
+    - **Selecteer Principal**: Zoek de naam van de API Management-service en selecteer deze in de lijst
+    - **Sleutel machtigingen**: geen
+    - **Geheime machtigingen**: ophalen
+    - **Certificaat machtigingen**: geen
 1. Selecteer **OK** om het toegangs beleid te maken.
 1. Selecteer **opslaan** de wijzigingen op te slaan.
 

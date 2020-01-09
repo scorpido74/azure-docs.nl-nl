@@ -1,58 +1,49 @@
 ---
-title: Beveiligde verbindingen van Azure Service Fabric-cluster configureren | Microsoft Docs
-description: Leer hoe u Visual Studio gebruiken voor beveiligde verbindingen configureren die worden ondersteund door de Azure Service Fabric-cluster.
-services: service-fabric
-documentationcenter: na
+title: Beveiligde Azure Service Fabric-cluster verbindingen configureren
+description: Meer informatie over het gebruik van Visual Studio voor het configureren van beveiligde verbindingen die worden ondersteund door het Azure Service Fabric-cluster.
 author: cawaMS
-manager: paulyuk
-editor: tglee
-ms.assetid: 80501867-dd7a-4648-8bd6-d4f26b68402d
-ms.service: multiple
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 8/04/2017
 ms.author: cawa
-ms.openlocfilehash: 8d76a2144234591792359ed8dd4a0779e6a2fc5c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11f76153726d3fc92118fb46cc61b4627ab6a1b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60628277"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464089"
 ---
-# <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Beveiligde verbindingen configureren met een Service Fabric-cluster vanuit Visual Studio
-Informatie over het gebruik van Visual Studio veilig toegang krijgen tot een Azure Service Fabric-cluster met beleid voor toegangsbeheer geconfigureerd.
+# <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Beveiligde verbindingen met een Service Fabric-cluster configureren vanuit Visual Studio
+Meer informatie over hoe u Visual Studio kunt gebruiken om veilig toegang te krijgen tot een Azure Service Fabric-cluster met beleids regels voor toegangs beheer die zijn geconfigureerd.
 
-## <a name="cluster-connection-types"></a>Cluster-verbindingstypen
-Twee typen verbindingen worden ondersteund door de Azure Service Fabric-cluster: **niet-beveiligde** verbindingen en **x509 op basis van certificaten** beveiligde verbindingen. (Voor Service Fabric-clusters die worden gehost on-premises **Windows** en **dSTS** verificaties worden ook ondersteund.) U moet het verbindingstype van het cluster configureren wanneer het cluster wordt gemaakt. Zodra deze gemaakt, kan het verbindingstype kan niet worden gewijzigd.
+## <a name="cluster-connection-types"></a>Cluster verbindings typen
+Er worden twee typen verbindingen ondersteund door het Azure Service Fabric-cluster: **niet-beveiligde** verbindingen en beveiligde verbindingen **op basis van x509-certificaten** . (Voor Service Fabric clusters die on-premises worden gehost, worden ook **Windows** -en **dSTS** -verificaties ondersteund.) U moet het verbindings type van het cluster configureren wanneer het cluster wordt gemaakt. Zodra de app is gemaakt, kan het verbindings type niet worden gewijzigd.
 
-De Visual Studio Service Fabric-hulpprogramma's bieden ondersteuning voor alle verificatietypen voor het verbinden met een cluster voor publicatie. Zie [instellen van een Service Fabric-cluster in Azure portal](service-fabric-cluster-creation-via-portal.md) voor instructies over het instellen van een beveiligd Service Fabric-cluster.
+De Visual Studio Service Fabric-hulpprogram ma's ondersteunen alle verificatie typen voor het maken van verbinding met een cluster voor publicatie. Zie [een service Fabric cluster instellen vanuit de Azure Portal](service-fabric-cluster-creation-via-portal.md) voor instructies over het instellen van een beveiligd service Fabric-cluster.
 
-## <a name="configure-cluster-connections-in-publish-profiles"></a>Clusterverbindingen configureren in profielen publiceren
-Als u een Service Fabric-project in Visual Studio publiceert, gebruikt u de **Service Fabric-toepassing publiceren** in het dialoogvenster voor het kiezen van een Azure Service Fabric-cluster. Onder **verbindingseindpunt**, selecteert u een bestaand cluster in uw abonnement.
+## <a name="configure-cluster-connections-in-publish-profiles"></a>Cluster verbindingen configureren in publicatie profielen
+Als u een Service Fabric project publiceert vanuit Visual Studio, gebruikt u het dialoog venster **service Fabric toepassing publiceren** om een Azure service Fabric-cluster te kiezen. Onder **verbindings eindpunt**selecteert u een bestaand cluster onder uw abonnement.
 
-![De ** publiceert Service Fabric Application ** in het dialoogvenster wordt gebruikt om een Service Fabric-verbinding te configureren.][publishdialog]
+![Het dialoog venster * * Service Fabric toepassing publiceren * * wordt gebruikt om een Service Fabric verbinding te configureren.][publishdialog]
 
-De **Service Fabric-toepassing publiceren** in het dialoogvenster automatisch valideert de clusterverbinding. Als u hierom wordt gevraagd, moet u zich aanmelden bij uw Azure-account. Als de validatie is geslaagd, betekent dit dat het systeem de juiste certificaten zijn geïnstalleerd heeft om veilig verbinding maken met het cluster of het cluster niet-beveiligde is. Validatiefouten kunnen worden veroorzaakt door netwerkproblemen of omdat u niet hoeft uw systeem correct zijn geconfigureerd voor het verbinding maken met een beveiligd cluster.
+In het dialoog venster **service Fabric toepassing publiceren** wordt de cluster verbinding automatisch gevalideerd. Meld u aan bij uw Azure-account als u hierom wordt gevraagd. Als de validatie is geslaagd, betekent dit dat het systeem de juiste certificaten heeft geïnstalleerd om veilig verbinding te maken met het cluster, of dat uw cluster niet veilig is. Validatie fouten kunnen worden veroorzaakt door netwerk problemen of doordat uw systeem niet op de juiste wijze is geconfigureerd om verbinding te maken met een beveiligd cluster.
 
-![De ** publiceert Service Fabric Application ** in het dialoogvenster valideert een bestaande correct geconfigureerd verbinding van Service Fabric-cluster.][selectsfcluster]
+![Het dialoog venster * * Service Fabric toepassing publiceren * * valideert een bestaande, correct geconfigureerde Service Fabric cluster verbinding.][selectsfcluster]
 
 ### <a name="to-connect-to-a-secure-cluster"></a>Verbinding maken met een beveiligd cluster
-1. Zorg ervoor dat u hebt toegang tot een van de clientcertificaten die het doelcluster vertrouwt. Het certificaat wordt gewoonlijk gedeeld als een Personal Information Exchange (PFX)-bestand. Zie [instellen van een Service Fabric-cluster in Azure portal](service-fabric-cluster-creation-via-portal.md) voor het configureren van de server om toegang te verlenen aan een client.
-2. Installeer het vertrouwde certificaat. Dubbelklik op het pfx-bestand om dit te doen, of de Import-PfxCertificate-PowerShell-script gebruiken om te importeren van de certificaten. Het certificaat te installeren **Cert: \LocalMachine\My**. Wilt u alle standaardinstellingen accepteren tijdens het importeren van het certificaat is.
-3. Kies de **publiceren...**  opdracht in het snelmenu van het project te openen de **Publish Azure Application** in het dialoogvenster en selecteer vervolgens het doelcluster. Het hulpprogramma automatisch de verbinding wordt omgezet en worden de parameters van de beveiligde verbinding opgeslagen in het publicatieprofiel.
-4. Optioneel: U kunt het publicatieprofiel om op te geven van een beveiligd cluster-verbinding bewerken.
+1. Zorg ervoor dat u toegang hebt tot een van de client certificaten die door het doel cluster worden vertrouwd. Het certificaat wordt meestal gedeeld als een pfx-bestand (Personal Information Exchange). Zie [een service Fabric cluster instellen van de Azure Portal](service-fabric-cluster-creation-via-portal.md) voor het configureren van de server om toegang te verlenen aan een client.
+2. Installeer het vertrouwde certificaat. Hiervoor dubbelklikt u op het pfx-bestand of gebruikt u het Power shell-script import-pfx om de certificaten te importeren. Installeer het certificaat op **certificaat: \ LocalMachine\My**. Het is OK om alle standaard instellingen te accepteren tijdens het importeren van het certificaat.
+3. Kies in het snelmenu van het project de opdracht **publiceren...** om het dialoog venster **publiceren Azure-toepassing** te openen en selecteer vervolgens het doel cluster. Het hulp programma lost de verbinding automatisch op en slaat de para meters voor de beveiligde verbinding op in het publicatie profiel.
+4. Optioneel: u kunt het publicatie profiel bewerken om een beveiligde cluster verbinding op te geven.
    
-   Nadat u het publiceren profiel XML-bestand voor het opgeven van informatie over het certificaat en noteer de naam van het certificaatarchief handmatig bewerkt, locatie en de vingerafdruk van certificaat opslaan. U moet voor deze waarden voor het certificaatarchief van de naam en locatie opslaan. Raadpleeg [Uitleg: De vingerafdruk van een certificaat ophalen](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx) voor meer informatie.
+   Omdat u het XML-bestand voor het publicatie profiel hand matig bewerkt om de certificaat gegevens op te geven, noteert u de naam van het certificaat archief, de opslag locatie en de vinger afdruk van het certificaat. U moet deze waarden opgeven voor de archief naam en opslag locatie van het certificaat. Zie [How to: de vinger afdruk van een certificaat ophalen](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx) voor meer informatie.
    
-   U kunt de *ClusterConnectionParameters* parameters om op te geven van de PowerShell-parameters gebruiken bij het verbinden met de Service Fabric-cluster. Geldige parameters zijn die worden geaccepteerd door de cmdlet Connect-ServiceFabricCluster. Zie [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) voor een lijst met beschikbare parameters.
+   U kunt de para meters *ClusterConnectionParameters* gebruiken om de Power shell-para meters op te geven die moeten worden gebruikt om verbinding te maken met het service Fabric cluster. Geldige para meters worden geaccepteerd door de cmdlet Connect-ServiceFabricCluster. Zie [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) voor een lijst met beschik bare para meters.
    
-   Als u in een extern cluster publiceren wilt, moet u de juiste parameters voor dat specifieke cluster opgeven. Hier volgt een voorbeeld van verbinding maken met een niet-beveiligde cluster:
+   Als u naar een extern cluster publiceert, moet u de juiste para meters voor dat specifieke cluster opgeven. Hier volgt een voor beeld van het maken van een verbinding met een niet-beveiligd cluster:
    
    `<ClusterConnectionParameters ConnectionEndpoint="mycluster.westus.cloudapp.azure.com:19000" />`
    
-   Hier volgt een voorbeeld voor het verbinden met een x509 beveiligd cluster op basis van certificaat:
+   Hier volgt een voor beeld voor het maken van een verbinding met een op een x509-certificaat gebaseerd beveiligd cluster:
    
    ```xml
    <ClusterConnectionParameters
@@ -64,10 +55,10 @@ De **Service Fabric-toepassing publiceren** in het dialoogvenster automatisch va
    StoreLocation="CurrentUser"
    StoreName="My" />
    ```
-5. Eventuele andere benodigde instellingen, zoals parameters voor het bijwerken en toepassing Parameter bestandslocatie, bewerken en vervolgens Publiceer de toepassing uit de **Service Fabric-toepassing publiceren** in het dialoogvenster in Visual Studio.
+5. Bewerk alle andere nood zakelijke instellingen, zoals upgrade parameters en de locatie van het toepassings parameter bestand, en publiceer uw toepassing vanuit het dialoog venster **service Fabric toepassing publiceren** in Visual Studio.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over het openen van Service Fabric-clusters [uw cluster visualiseren met behulp van Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
+Zie voor meer informatie over het openen van Service Fabric-clusters [uw cluster visualiseren met behulp van service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 
 <!--Image references-->
 [publishdialog]:./media/service-fabric-visualstudio-configure-secure-connections/publishdialog.png

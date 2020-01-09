@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/22/2019
+ms.date: 12/10/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73a5d30761b25f6233e298cac2602fb701a2987f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1c4e820867e22d23135f9c50255902447e6063ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917774"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424475"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Procedure: aanmelden bij een Azure Active Directory gebruiker met het toepassings patroon met meerdere tenants
 
@@ -38,7 +38,7 @@ Er zijn vier eenvoudige stappen om uw toepassing te converteren naar een Azure A
 3. [Uw code bijwerken om meerdere uitgevers waarden te verwerken](#update-your-code-to-handle-multiple-issuer-values)
 4. [Meer informatie over de toestemming van gebruikers en beheerders en het maken van passende code wijzigingen](#understand-user-and-admin-consent)
 
-Laten we eens kijken naar elke stap. U kunt ook direct naar [deze lijst met voor beelden van multi tenants][AAD-Samples-MT]gaan.
+Laten we eens kijken naar elke stap. U kunt ook direct naar [deze lijst met voor beelden van multi tenants](https://docs.microsoft.com/samples/browse/?products=azure-active-directory)gaan.
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Registratie bijwerken naar multi tenant
 
@@ -177,7 +177,7 @@ In dit artikel hebt u geleerd hoe u een toepassing bouwt die kan worden aangemel
 
 ## <a name="related-content"></a>Verwante inhoud
 
-* [Voor beelden van multi tenant-toepassingen][AAD-Samples-MT]
+* [Voor beelden van multi tenant-toepassingen](https://docs.microsoft.com/samples/browse/?products=azure-active-directory)
 * [Huisstijl richtlijnen voor toepassingen][AAD-App-Branding]
 * [Toepassings objecten en Service-Principal-objecten][AAD-App-SP-Objects]
 * [Toepassingen integreren met Azure Active Directory][AAD-Integrating-Apps]
@@ -196,7 +196,7 @@ In dit artikel hebt u geleerd hoe u een toepassing bouwt die kan worden aangemel
 [AAD-Graph-Overview]: https://azure.microsoft.com/documentation/articles/active-directory-graph-api/
 [AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
-[AAD-Samples-MT]: https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multitenant
+[AAD-Samples-MT]: https://docs.microsoft.com/samples/browse/?products=azure-active-directory
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
 [MSFT-Graph-overview]: https://developer.microsoft.com/graph/docs/overview/overview

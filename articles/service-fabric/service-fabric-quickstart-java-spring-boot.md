@@ -1,40 +1,31 @@
 ---
-title: 'Quickstart: Een Spring boot-app maken in azure Service Fabric'
+title: 'Snelstartgids: een Spring boot-app maken in azure Service Fabric'
 description: In deze snelstart implementeert u een Spring Boot-toepassing voor Azure Service Fabric met behulp van een Spring Boot-voorbeeldtoepassing.
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 4ec6addb348b8c13f124ec225e056d2003a93c38
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: c12cd53b55cac48aae3d69506204c9d107e34aa6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703528"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464375"
 ---
-# <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>Quickstart: Een Java Spring boot-app implementeren op Azure Service Fabric
+# <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>Snelstartgids: een Java Spring boot-app implementeren op Azure Service Fabric
 
 In deze Quick start ziet u hoe u een Java Spring boot-toepassing implementeert in azure Service Fabric. Azure Service Fabric is een platform voor gedistribueerde systemen voor het implementeren en distribueren van microservices en containers. 
 
-Deze snelstart gebruikt het [Aan de slag](https://spring.io/guides/gs/spring-boot/)-voorbeeld van de Spring-website. Met gebruik van vertrouwde opdrachtregelprogramma’s wordt u in deze snelstart stapsgewijs begeleid bij het implementeren van het Spring Boot-voorbeeld als een Service Fabric-toepassing. Als u klaar bent, werkt het Spring Boot Aan de slag-voorbeeld in Service Fabric.
+Deze quickstart gebruikt het [Aan de slag](https://spring.io/guides/gs/spring-boot/)-voorbeeld van de Spring-website. Met gebruik van vertrouwde opdrachtregelprogramma’s wordt u in deze snelstart stapsgewijs begeleid bij het implementeren van het Spring Boot-voorbeeld als een Service Fabric-toepassing. Als u klaar bent, werkt het Spring Boot Aan de slag-voorbeeld in Service Fabric.
 
 ![Voor beeld van Spring boot Service Fabric](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
 
-In deze snelstart leert u de volgende zaken:
+In deze snelstartgids leert u de volgende zaken:
 
 * Een Spring Boot-toepassing implementeren in Service Fabric
 * De toepassing implementeren in het lokale cluster
-* De toepassing uitschalen over meerdere knooppunten
+* De toepassing op meerdere knooppunten uitschalen
 * Failover van de service uitvoeren met geen beschikbaarheid
 
 ## <a name="prerequisites"></a>Vereisten
@@ -161,7 +152,7 @@ In dit stadium hebt u een Service Fabric-toepassing voor het Spring Boot Aan de 
     ./install.sh
     ```
 
-1. Open uw favoriete webbrowser om `http://localhost:8080`toegang te krijgen tot de toepassing.
+1. Open uw favoriete webbrowser om toegang te krijgen tot de toepassing via `http://localhost:8080`.
 
     ![Voor beeld van Spring boot Service Fabric](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
 
@@ -216,11 +207,11 @@ Het opnieuw opstarten van een knooppunt kan worden gesimuleerd met behulp van Se
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u de volgende zaken geleerd:
+In deze snelstartgids hebt u de volgende zaken geleerd:
 
 * Een Spring Boot-toepassing implementeren in Service Fabric
 * De toepassing implementeren in het lokale cluster
-* De toepassing uitschalen over meerdere knooppunten
+* De toepassing op meerdere knooppunten uitschalen
 * Failover van de service uitvoeren met geen beschikbaarheid
 
 Meer informatie over het werken met Java-apps in Service Fabric vindt u in de zelfstudie voor Java-apps.

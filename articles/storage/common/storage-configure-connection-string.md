@@ -1,20 +1,21 @@
 ---
-title: Een connection string configureren voor Azure Storage
+title: Een connection string configureren
+titleSuffix: Azure Storage
 description: Een connection string configureren voor een Azure-opslag account. Een connection string bevat de informatie die nodig is om tijdens runtime toegang te verlenen tot een opslag account vanuit uw toepassing met behulp van gedeelde sleutel verificatie.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 06/20/2019
+ms.date: 12/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d1106865b3a2ea3164090896c5b90ab08f996f3d
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: f617beec8a53570ede7755040cfbb92a7d1712b7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640495"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460545"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage-verbindingsreeksen configureren
 
@@ -23,8 +24,6 @@ Een connection string bevat de autorisatie-informatie die is vereist voor uw toe
 * Maak verbinding met de Azure-opslag emulator.
 * Toegang tot een opslag account in Azure.
 * Toegang krijgen tot opgegeven resources in azure via een Shared Access Signature (SAS).
-
-[!INCLUDE [storage-recommend-azure-ad-include](../../../includes/storage-recommend-azure-ad-include.md)]
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
@@ -52,7 +51,7 @@ Zie [de Azure-opslag emulator gebruiken voor ontwikkeling en testen](storage-use
 
 ## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>Een connection string configureren voor een Azure-opslag account
 
-Als u een connection string voor uw Azure-opslag account wilt maken, gebruikt u de volgende indeling. Geef aan of u verbinding wilt maken met het opslag account met behulp van HTTPS (aanbevolen) `myAccountName` of http, vervang door de naam van uw opslag `myAccountKey` account en vervang door de toegangs sleutel van uw account:
+Als u een connection string voor uw Azure-opslag account wilt maken, gebruikt u de volgende indeling. Geef aan of u verbinding wilt maken met het opslag account met behulp van HTTPS (aanbevolen) of HTTP, vervang `myAccountName` door de naam van uw opslag account en vervang `myAccountKey` door de toegangs sleutel van uw account:
 
 `DefaultEndpointsProtocol=[http|https];AccountName=myAccountName;AccountKey=myAccountKey`
 
@@ -114,12 +113,12 @@ De eind punt waarden in een connection string worden gebruikt voor het maken van
 Als u een opslag eindpunt hebt toegewezen aan een aangepast domein en dat eind punt weglaat van een connection string, kunt u die connection string niet gebruiken voor toegang tot gegevens in die service vanuit uw code.
 
 > [!IMPORTANT]
-> De waarden van de service-eind punten in de verbindings reeksen moeten een juist `https://` opgemaakte uri's `http://`zijn, waaronder (aanbevolen) of. Omdat Azure Storage geen HTTPS ondersteunt voor aangepaste domeinen, *moet* u opgeven `http://` voor elke eind punt-URI die verwijst naar een aangepast domein.
+> De waarden van de service-eind punten in de verbindings reeksen moeten een juist opgemaakte Uri's zijn, waaronder `https://` (aanbevolen) of `http://`. Omdat Azure Storage geen HTTPS ondersteunt voor aangepaste domeinen, *moet* u `http://` opgeven voor elke eind punt-URI die verwijst naar een aangepast domein.
 >
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>Een connection string met een eind punt achtervoegsel maken
 
-Als u een connection string wilt maken voor een opslag service in regio's of exemplaren met verschillende eindpunt achtervoegsels, zoals voor Azure-China 21Vianet of Azure Government, gebruikt u de volgende connection string-indeling. Geef aan of u verbinding wilt maken met het opslag account met behulp van HTTPS (aanbevolen) `myAccountName` of http, vervang door de naam van uw `myAccountKey` opslag account, vervang door de toegangs sleutel `mySuffix` van uw account en vervang door het URI-achtervoegsel:
+Als u een connection string wilt maken voor een opslag service in regio's of exemplaren met verschillende eindpunt achtervoegsels, zoals voor Azure-China 21Vianet of Azure Government, gebruikt u de volgende connection string-indeling. Geef aan of u verbinding wilt maken met het opslag account met behulp van HTTPS (aanbevolen) of HTTP, vervang `myAccountName` door de naam van uw opslag account, vervang `myAccountKey` door de toegangs sleutel van uw account en vervang `mySuffix` door het URI-achtervoegsel:
 
 ```
 DefaultEndpointsProtocol=[http|https];

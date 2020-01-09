@@ -1,20 +1,18 @@
 ---
 title: Azure Stream Analytics query's lokaal testen in Visual Studio
 description: In dit artikel wordt beschreven hoe u query's lokaal test met Azure Stream Analytics-Hulpprogram Ma's voor Visual Studio.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: 01383531293635af8c15f891928eec004e05b54d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c4854d050cce18082def436243a669ba09c474ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925045"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369657"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>Stream Analytics query's lokaal testen met Visual Studio
 
@@ -26,7 +24,7 @@ Gebruik deze [Quick](stream-analytics-quick-create-vs.md) start om te leren hoe 
 
 Dubbel klik in uw Azure Stream Analytics project op **script. asaql** om het script in de editor te openen. U kunt de query compileren om te zien of er syntaxis fouten zijn. De query-editor ondersteunt IntelliSense, syntaxis kleuren en een fout markering.
 
-![Query-Editor](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-query-01.png)
+![Query-editor](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-query-01.png)
  
 ### <a name="add-local-input"></a>Lokale invoer toevoegen
 

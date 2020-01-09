@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: c0f06f02a274780085fdb3c4c270ad541a0daa8c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: decfeb9c46c32c6388228de6597db0c840354c19
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930701"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448574"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Zelfstudie: Een app van één pagina maken met de Bing Afbeeldingen zoeken-API
 
 Met de Bing Afbeeldingen zoeken-API kunt u internet doorzoeken op hoogwaardige en relevante afbeeldingen. Gebruik deze zelfstudie om een webtoepassing van één pagina te bouwen waarmee zoekquery's naar de API kunnen worden verzonden. De resultaten worden dan op de webpagina weergegeven. Deze zelfstudie is vergelijkbaar met de [bijbehorende zelfstudie](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md) voor Bing Web Search.
 
-In de zelfstudie-app ziet u hoe u de volgende acties kunt uitvoeren:
+In de zelfstudie-app leert u het volgende:
 
 > [!div class="checklist"]
 > * Een Bing Afbeeldingen zoeken-API-aanroep uitvoeren in JavaScript
@@ -29,7 +29,7 @@ In de zelfstudie-app ziet u hoe u de volgende acties kunt uitvoeren:
 > * De zoekresultaten weergeven en erdoor bladeren
 > * Een API-abonnementssleutel en een Bing-client-id aanvragen en verwerken.
 
-De volledige broncode voor deze zelfstudie is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Image-Search).
+De volledig broncode voor deze zelfstudie is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Image-Search).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -95,7 +95,7 @@ function getSubscriptionKey() {
 }
 ```
 
-Met de HTML-`<form>`-code `onsubmit` wordt de functie `bingWebSearch` aangeroepen om de zoekresultaten te retourneren. `bingWebSearch` gebruikt `getSubscriptionKey` om elke query te verifiëren. Zoals weergegeven in de vorige definitie, wordt de gebruiker in `getSubscriptionKey` om de sleutel gevraagd, indien de sleutel niet is ingevoerd. De sleutel wordt vervolgens opgeslagen voor verder gebruik in de toepassing.
+Met de HTML-`<form>`-tag `onsubmit` wordt de functie `bingWebSearch` aangeroepen om de zoekresultaten te retourneren. `bingWebSearch` gebruikt `getSubscriptionKey` om elke query te verifiëren. Zoals weergegeven in de vorige definitie, wordt de gebruiker in `getSubscriptionKey` om de sleutel gevraagd, indien de sleutel niet is ingevoerd. De sleutel wordt vervolgens opgeslagen voor verder gebruik in de toepassing.
 
 ```html
 <form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value,
@@ -318,7 +318,7 @@ Met de Bing Afbeeldingen zoeken-API kunnen vier typen zoeksuggesties worden gere
 
 | Suggestie         | Beschrijving                                                                                                                                                                                                         |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `pivotSuggestions` | Query's die een beschrijvend woord in de oorspronkelijke zoekopdracht vervangen door een ander beschrijvend woord. Als u bijvoorbeeld zoekt naar ‘rode bloemen', is ‘rood' een beschrijvend woord, en is ‘gele bloemen' een mogelijke suggestie. |
+| `pivotSuggestions` | Query’s die een beschrijvend woord in de oorspronkelijke zoekopdracht vervangen door een ander beschrijvend woord. Als u bijvoorbeeld zoekt naar ‘rode bloemen', is ‘rood' een beschrijvend woord, en is ‘gele bloemen' een mogelijke suggestie. |
 | `queryExpansions`  | Query's die de oorspronkelijke zoekopdracht verfijnen door meer zoektermen toe te voegen. Als u bijvoorbeeld zoekt naar ‘Microsoft Surface', is ‘Microsoft Surface Pro' een mogelijke uitbreiding van de query.                                   |
 | `relatedSearches`  | Query's die ook zijn ingevoerd door andere gebruikers die de oorspronkelijke zoekopdracht hebben ingevoerd. Als u bijvoorbeeld zoekt naar ‘Mount Rainier', is ‘Mt. Saint Helens' een gerelateerde zoekopdracht.                       |
 | `similarTerms`     | Query's die qua betekenis vergelijkbaar zijn met de oorspronkelijke zoekopdracht. Als u bijvoorbeeld zoekt naar 'kittens', is 'schattig' een vergelijkbare term.                                                                   |
@@ -347,7 +347,7 @@ In de weergavefuncties worden de volgende parameters geaccepteerd:
 De parameters `index` en `count` worden gebruikt om resultaten te nummeren, HTML voor collecties te genereren en inhoud te ordenen. Met name gebeurt het volgende:
 
 * De grootte van de miniatuur van de afbeelding berekenen (de breedte varieert, met een minimum van 120 pixels, terwijl de hoogte altijd 90 pixels bedraagt).
-* De HTML-`<img>`-code wordt gebouwd om de miniatuur weer te geven.
+* De HTML-`<img>`-tag wordt gebouwd om de miniatuur weer te geven.
 * De HTML-`<a>`-tags worden gebouwd die zijn gekoppeld aan de afbeelding en aan de pagina die de afbeelding bevat.
 * De beschrijving met informatie over de afbeelding en de bijbehorende site wordt samengesteld.
 
@@ -373,7 +373,7 @@ De `height` en `width` van de miniatuurafbeelding worden gebruikt in de tag `<im
 
 ## <a name="persisting-client-id"></a>Permanente client-id
 
-Antwoorden van de Bing Zoeken-API’s kunnen een `X-MSEdge-ClientID`-header omvatten die bij volgende aanvragen moet worden teruggestuurd naar de API. Als er meerdere Bing Zoeken-API’s worden gebruikt, moet voor al deze API’s, indien mogelijk, dezelfde client-id worden gebruikt.
+Antwoorden van de Bing Zoeken-API’s kunnen een `X-MSEdge-ClientID`-header omvatten die bij volgende aanvragen moet worden teruggestuurd naar de API. Als er meerdere Bing Search-API's worden gebruikt, moet voor al deze API's, indien mogelijk, dezelfde client-id worden gebruikt.
 
 Door de `X-MSEdge-ClientID`-header op te geven kunnen met Bing-API's alle zoekopdrachten van een gebruiker worden gekoppeld. Dit is handig, want
 

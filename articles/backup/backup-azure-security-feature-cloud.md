@@ -3,16 +3,16 @@ title: Beveiligings functies voor het beveiligen van Cloud werkbelastingen
 description: Meer informatie over het gebruik van beveiligings functies in Azure Backup om back-ups veiliger te maken.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 0be85bf57510f575f238012b9bd1ef21e44e3cf1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 9a3c13856d3c130f2396488fed09313578dda79c
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894025"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75496920"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Beveiligings functies voor het beveiligen van Cloud werkbelastingen die gebruikmaken van Azure Backup
 
-Zorgen over beveiligingsproblemen, zoals malware, ransomware en inbraak nemen toe. Deze beveiligingsproblemen kunnen kostbaar zijn, zowel met betrekking tot geld als gegevens. Azure Backup biedt nu beveiligings functies die u helpen bij het beveiligen van back-upgegevens, zelfs na het verwijderen. Een dergelijke functie is zacht verwijderen. Met zacht verwijderen, zelfs als een schadelijke actor de back-up van een virtuele machine verwijdert (of als er per ongeluk back-upgegevens worden verwijderd), worden de back-upgegevens 14 extra dagen bewaard, zodat het back-upitem zonder gegevens verlies kan worden hersteld. Deze extra 14 dagen retentie van back-upgegevens in de status ' voorlopig verwijderen ' zijn niet van toepassing op de klant.
+Zorgen over beveiligingsproblemen, zoals malware, ransomware en inbraak nemen toe. Deze beveiligingsproblemen kunnen kostbaar zijn, zowel met betrekking tot geld als gegevens. Azure Backup biedt nu beveiligings functies die u helpen bij het beveiligen van back-upgegevens, zelfs na het verwijderen. Een dergelijke functie is zacht verwijderen. Met zacht verwijderen, zelfs als een schadelijke actor de back-up van een virtuele machine verwijdert (of als er per ongeluk back-upgegevens worden verwijderd), worden de back-upgegevens 14 extra dagen bewaard, zodat het back-upitem zonder gegevens verlies kan worden hersteld. Deze extra 14 dagen retentie van back-upgegevens in de status ' voorlopig verwijderen ' zijn niet van toepassing op de klant. Azure versleutelt ook alle back-upgegevens op rest met behulp van [Storage service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) om uw gegevens verder te beveiligen.
 
 > [!NOTE]
 > Met zacht verwijderen worden verwijderde back-upgegevens alleen beveiligd. Als een virtuele machine wordt verwijderd zonder een back-up, worden de gegevens niet bewaard met de functie voor voorlopig verwijderen. Alle resources moeten worden beveiligd met Azure Backup om volledige tolerantie te garanderen.
@@ -114,6 +114,11 @@ AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM
 
 De ' DeleteState ' van het back-upitem wordt teruggezet op ' NotDeleted '. De beveiliging is echter nog steeds gestopt. U moet [de back-up hervatten](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items) om de beveiliging opnieuw in te scha kelen.
 
+### <a name="soft-delete-for-vms-using-rest-api"></a>Voorlopig verwijderen voor Vm's met behulp van REST API
+
+- Verwijder de back-ups met REST API zoals [hier](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)wordt vermeld.
+- Als de gebruiker deze Verwijder bewerkingen ongedaan wil maken, raadpleegt u de stappen die [hier](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)worden beschreven.
+
 ## <a name="disabling-soft-delete"></a>Tijdelijke verwijdering uitschakelen
 
 Voorlopig verwijderen is standaard ingeschakeld op nieuwe kluizen om back-upgegevens te beschermen tegen onbedoelde of schadelijke verwijderingen.  Het uitschakelen van deze functie wordt niet aanbevolen. De enige omstandigheid waarbij het uitschakelen van de functie voor het verwijderen van uw beveiligde items naar een nieuwe kluis moet worden aangeraden, is dat de 14 dagen die vereist zijn voor het verwijderen en opnieuw beveiligen van de gegevens (zoals in een test omgeving), niet kunnen worden gewacht. Alleen een back-upbeheerder kan deze functie uitschakelen. Als u deze functie uitschakelt, worden alle verwijderde beveiligde items onmiddellijk verwijderd, zonder dat u de mogelijkheid hebt om te herstellen. Back-upgegevens in de modus zacht verwijderd voordat deze functie wordt uitgeschakeld, blijft de status voorlopig verwijderd. Als u deze onmiddellijk permanent wilt verwijderen, moet u het verwijderen ongedaan maken en opnieuw verwijderen om het permanent te laten worden verwijderd.
@@ -146,6 +151,10 @@ EnhancedSecurityState  : Enabled
 SoftDeleteFeatureState : Disabled
 ```
 
+### <a name="disabling-soft-delete-using-rest-api"></a>Zacht verwijderen uitschakelen met REST API
+
+Als u de functie voor voorlopig verwijderen wilt uitschakelen met behulp van REST API, raadpleegt u de stappen die [hier](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)worden beschreven.
+
 ## <a name="permanently-deleting-soft-deleted-backup-items"></a>Voorlopig verwijderde back-upitems permanent verwijderen
 
 Back-upgegevens in de modus zacht verwijderd voordat deze functie wordt uitgeschakeld, blijft de status voorlopig verwijderd. Als u deze onmiddellijk permanent wilt verwijderen, moet u deze verwijderen en weer verwijderen om het permanent te verwijderen.
@@ -154,7 +163,7 @@ Back-upgegevens in de modus zacht verwijderd voordat deze functie wordt uitgesch
 
 Volg deze stappen:
 
-1. Volg de stappen om [zacht verwijderen uit te scha kelen](#disabling-soft-delete). 
+1. Volg de stappen om [zacht verwijderen uit te scha kelen](#disabling-soft-delete).
 2. Ga in het Azure Portal naar uw kluis, ga naar **Back-upitems** en kies de voorlopig verwijderde virtuele machine
 
 ![Zacht verwijderde virtuele machine kiezen](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
@@ -215,6 +224,14 @@ WorkloadName     Operation            Status               StartTime            
 AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
 ```
 
+### <a name="using-rest-api"></a>REST API gebruiken
+
+Als er items zijn verwijderd voordat de Soft-verwijdering werd uitgeschakeld, wordt de status voorlopig verwijderd. Als u deze onmiddellijk wilt verwijderen, moet de verwijderings bewerking worden omgekeerd en opnieuw worden uitgevoerd.
+
+1. Verwijder eerst de stappen die [hier](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)worden beschreven.
+2. Schakel vervolgens de functie voor voorlopig verwijderen met REST API uit met behulp van de stappen die [hier](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)worden beschreven.
+3. Verwijder vervolgens de back-ups met REST API zoals [hier](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)wordt vermeld.
+
 ## <a name="other-security-features"></a>Andere beveiligings functies
 
 ### <a name="storage-side-encryption"></a>Versleuteling van opslag aan de serverzijde
@@ -223,7 +240,7 @@ Azure Storage worden uw gegevens automatisch versleuteld wanneer deze persistent
 
 Binnen Azure worden gegevens in transit tussen Azure Storage en de kluis beveiligd door HTTPS. Deze gegevens blijven op het Azure-backbone-netwerk.
 
-Zie [Azure Storage versleuteling voor Data-at-rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)voor meer informatie.
+Zie [Azure Storage versleuteling voor Data-at-rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)voor meer informatie.  Raadpleeg de [Veelgestelde vragen over Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) voor het beantwoorden van vragen die u mogelijk hebt over versleuteling.
 
 ### <a name="vm-encryption"></a>VM-versleuteling
 
@@ -237,7 +254,7 @@ Zie voor meer informatie Access Control op [basis van rollen gebruiken om Azure 
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-### <a name="soft-delete"></a>Voorlopig verwijderen
+### <a name="for-soft-delete"></a>Voor zacht verwijderen
 
 #### <a name="do-i-need-to-enable-the-soft-delete-feature-on-every-vault"></a>Moet ik de functie voor voorlopig verwijderen inschakelen voor elke kluis?
 

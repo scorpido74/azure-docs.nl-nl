@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: bd538d436d1c900a370f522bccf724eaf87210b4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3cd3cef4d70ea3f78d7e135ad01e0e00b38c60b9
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582605"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666275"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Beveiligingswaarschuwingen in Azure Security Center
 
@@ -35,7 +35,7 @@ Daarnaast hebben aanvallers hun methoden ontwikkeld om veel op hand tekeningen g
 
 ## <a name="what-are-security-alerts"></a>Wat zijn beveiligingswaarschuwingen?
 
-Waarschuwingen zijn de meldingen die Security Center gegenereerd wanneer er bedreigingen voor uw resources worden gedetecteerd. Security Center prioriteiten en de waarschuwingen weer gegeven, samen met de informatie die u nodig hebt om snel het probleem te onderzoeken. Security Center biedt ook aanbevelingen voor het oplossen van een aanval.
+Waarschuwingen zijn de meldingen die Security Center genereert wanneer het bedreigingen op uw resources detecteert. Security Center prioriteiten en de waarschuwingen weer gegeven, samen met de informatie die u nodig hebt om snel het probleem te onderzoeken. Security Center geeft ook aanbevelingen voor hoe u een aanval kunt oplossen.
 
 ## Hoe detecteert Security Center bedreigingen? <a name="detect-threats"> </a>
 
@@ -63,7 +63,7 @@ Gedragsanalyse is een techniek waarbij gegevens worden geanalyseerd en vergeleke
 
 Daarnaast is er een correlatie met andere signalen om te controleren op ondersteunende bewijs van een verbreide campagne. Aan de hand van dit verband kan beter worden vastgesteld welke gebeurtenissen samenhangen met de opgestelde indicatoren van inbreuk. 
 
-### <a name="anomaly-detection"></a>Afwijkingsdetectie
+### <a name="anomaly-detection"></a>Anomaliedetectie
 
 Azure Security Center maakt ook gebruik van afwijkingsdetectie om bedreigingen te identificeren. In tegenstelling tot gedragsanalyses (die afhankelijk zijn van bekende patronen die zijn afgeleid van grote gegevenssets) is afwijkingsdetectie meer "gepersonaliseerd" en richt het zich op basislijnen die specifiek voor uw implementaties zijn. Machine learning wordt toegepast om de normale activiteit voor uw implementaties te bepalen en vervolgens worden regels gegenereerd om afwijkende omstandigheden te definiëren die een veiligheidsrisico zouden kunnen vormen.
 
@@ -105,13 +105,17 @@ De volgende onderwerpen helpen u bij het door lopen van de verschillende waarsch
 In de volgende onderwerpen wordt uitgelegd hoe Security Center de verschillende telemetrie gebruikt die wordt verzameld van integratie met de Azure-infra structuur, om extra beveiligings lagen toe te passen voor resources die in azure zijn geïmplementeerd:
 
 * [Waarschuwingen voor service lagen](security-center-alerts-service-layer.md)
-* [Integratie met Azure-beveiligings producten](security-center-alerts-integration.md)
+* [Detectie van bedreigingen voor Azure WAF en Azure DDoS Protection](security-center-alerts-integration.md)
 
 ## <a name="what-are-security-incidents"></a>Wat zijn beveiligings incidenten?
 
 Een beveiligings incident is een verzameling van gerelateerde waarschuwingen, in plaats van elke waarschuwing afzonderlijk weer te geven. Security Center maakt gebruik van de correlatie van een [Smart-waarschuwing](security-center-alerts-cloud-smart.md) in de cloud om verschillende waarschuwingen en signalen met lage betrouw baarheid te correleren in beveiligings incidenten
 
 Met behulp van incidenten Security Center biedt u één weer gave van een aanvals campagne en alle gerelateerde waarschuwingen. Met deze weer gave kunt u snel inzicht krijgen in welke acties de aanvaller heeft geduurd en welke resources zijn beïnvloed. Zie [Cloud Smart alert correlatie](security-center-alerts-cloud-smart.md)(Engelstalig) voor meer informatie.
+
+## <a name="security-alerts-in-azure-activity-log"></a>Beveiligings waarschuwingen in azure-activiteiten logboek
+
+Beveiligings waarschuwingen en incidenten worden niet alleen beschikbaar in de Azure Portal of via een programma, maar ook als gebeurtenissen in [Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)gecontroleerd. Zie [beveiligings waarschuwingen in azure-activiteiten logboek](https://go.microsoft.com/fwlink/?linkid=2114113)voor meer informatie over het gebeurtenis schema.
 
 ## <a name="next-steps"></a>Volgende stappen
 

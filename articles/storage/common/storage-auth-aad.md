@@ -6,24 +6,30 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 445d98ab07a91b056d4cf747f7c0f4cf1cdf9d53
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0678d437a5c24b8193e7440a62445fb30ec97759
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891810"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460495"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Toegang verlenen tot blobs en wacht rijen met behulp van Azure Active Directory
 
-Azure Storage ondersteunt het gebruik van Azure Active Directory (AD) om aanvragen voor Blob-en wachtrij opslag te autoriseren. Met Azure AD kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen toe te kennen aan een beveiligingsprincipal. Dit kan een gebruiker, groep of toepassings Service-Principal zijn. De beveiligingsprincipal wordt door Azure AD geverifieerd om een OAuth 2,0-token te retour neren. Het token kan worden gebruikt voor het autoriseren van een aanvraag voor toegang tot een bron in BLOB-of queue-opslag.
+Azure Storage ondersteunt het gebruik van Azure Active Directory (Azure AD) voor het machtigen van aanvragen voor Blob-en wachtrij opslag. Met Azure AD kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen toe te kennen aan een beveiligingsprincipal. Dit kan een gebruiker, groep of toepassings Service-Principal zijn. De beveiligingsprincipal wordt door Azure AD geverifieerd om een OAuth 2,0-token te retour neren. Het token kan vervolgens worden gebruikt voor het autoriseren van een aanvraag voor BLOB-of wachtrij opslag.
 
-Het autoriseren van gebruikers of toepassingen met een OAuth 2,0-token dat wordt geretourneerd door Azure AD biedt een superieure beveiliging en gebruiks vriendelijk gebruik van gedeelde sleutel autorisatie en Shared Access signatures (SAS). Met Azure AD hoeft u de toegangs sleutel voor het account niet op te slaan met uw code en mogelijke beveiligings problemen. U kunt de verificatie van de gedeelde sleutel blijven gebruiken met uw toepassingen, maar met Azure AD wordt de nood zaak om uw account toegangs sleutel op te slaan met uw code. U kunt ook door gaan met het gebruik van Shared Access signatures (SAS) om nauw keurige toegang tot resources in uw opslag account te verlenen, maar Azure AD biedt soort gelijke mogelijkheden zonder de behoefte aan het beheer van SAS-tokens of een probleem bij het intrekken van een aangetaste SAS. Micro soft raadt u aan gebruik te maken van Azure AD-autorisatie met uw Azure Storage-toepassingen wanneer dat mogelijk is.
+Het autoriseren van aanvragen voor Azure Storage met Azure AD biedt een superieure beveiliging en gebruiks gemak voor de verificatie van gedeelde sleutels. Micro soft raadt u aan Azure AD-autorisatie te gebruiken met uw Blob-en wachtrij toepassingen wanneer dat mogelijk is om mogelijke beveiligings problemen die inherent zijn aan de gedeelde sleutel, te minimaliseren.
 
-Verificatie met Azure AD is beschikbaar voor alle accounts voor algemeen gebruik en Blob Storage in alle open bare regio's en nationale Clouds. Alleen opslag accounts die zijn gemaakt met het Azure Resource Manager implementatie model ondersteunen Azure AD-autorisatie. Autorisatie met Azure AD wordt niet ondersteund voor Azure-tabel opslag.
+Verificatie met Azure AD is beschikbaar voor alle accounts voor algemeen gebruik en Blob Storage in alle open bare regio's en nationale Clouds. Alleen opslag accounts die zijn gemaakt met het Azure Resource Manager implementatie model ondersteunen Azure AD-autorisatie.
+
+Blob-opslag biedt ook ondersteuning voor het maken van Shared Access signatures (SAS) die zijn ondertekend met Azure AD-referenties. Zie [beperkte toegang verlenen tot gegevens met hand tekeningen voor gedeelde toegang](storage-sas-overview.md)voor meer informatie.
+
+Azure Files ondersteunt alleen autorisatie met Azure AD via SMB voor Vm's die zijn toegevoegd aan een domein. Zie [overzicht van Azure Active Directory autorisatie via SMB voor Azure files](../files/storage-files-active-directory-overview.md)voor meer informatie over het gebruik van Azure ad over smb voor Azure files.
+
+Autorisatie met Azure AD wordt niet ondersteund voor Azure-tabel opslag. Gedeelde sleutel gebruiken om aanvragen voor Table-opslag te autoriseren.
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>Overzicht van Azure AD voor blobs en wacht rijen
 
@@ -78,10 +84,6 @@ De Azure Portal geeft aan welk verificatie schema wordt gebruikt wanneer u naar 
 ### <a name="data-access-from-powershell-or-azure-cli"></a>Gegevens toegang vanuit Power shell of Azure CLI
 
 Azure CLI en Power shell ondersteunen het aanmelden met Azure AD-referenties. Nadat u zich hebt aangemeld, wordt uw sessie uitgevoerd onder deze referenties. Zie voor meer informatie [Azure CLI of Power shell-opdrachten uitvoeren met Azure AD-referenties voor toegang tot BLOB-of wachtrij gegevens](storage-auth-aad-script.md).
-
-## <a name="azure-ad-authorization-over-smb-for-azure-files"></a>Azure AD-autorisatie via SMB voor Azure Files
-
-Azure Files ondersteunt alleen verificatie met Azure AD via SMB voor Vm's die zijn toegevoegd aan een domein (preview). Zie [overzicht van Azure Active Directory autorisatie via SMB voor Azure files (preview)](../files/storage-files-active-directory-overview.md)voor meer informatie over het gebruik van Azure ad over smb voor Azure files.
 
 ## <a name="next-steps"></a>Volgende stappen
 

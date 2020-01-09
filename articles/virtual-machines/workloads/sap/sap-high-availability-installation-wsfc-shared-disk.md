@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a22d77de80c7440fc120d2c48f9e73e606388848
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bfbff1f95eaad41813ee0741a6b133dccdae181d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078175"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647523"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>SAP NetWeaver HA installeren op een Windows-failovercluster en gedeelde schijf voor een SAP ASCS/SCS-exemplaar in azure
 
@@ -33,8 +33,8 @@ ms.locfileid: "70078175"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -142,7 +142,7 @@ ms.locfileid: "70078175"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -152,7 +152,7 @@ In dit artikel wordt beschreven hoe u een SAP-systeem met hoge Beschik baarheid 
 
 Lees de volgende documenten voordat u met de installatie begint:
 
-* [Architectuur handleiding: Een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van een gedeelde cluster schijf][sap-high-availability-guide-wsfc-shared-disk]
+* [Architectuur handleiding: een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van een gedeelde cluster schijf][sap-high-availability-guide-wsfc-shared-disk]
 
 * [De Azure-infra structuur voor SAP HA voorbereiden met behulp van een Windows-failovercluster en een gedeelde schijf voor een SAP ASCS/SCS-exemplaar][sap-high-availability-infrastructure-wsfc-shared-disk]
 
@@ -185,7 +185,7 @@ Het installeren van SAP met een ASCS/SCS-exemplaar met hoge Beschik baarheid omv
 1. Maak een DNS-vermelding voor de naam van de virtuele host van het ASCS/SCS-exemplaar in Windows DNS-beheer.
 
    > [!IMPORTANT]
-   > Het IP-adres dat u toewijst aan de naam van de virtuele host van het ASCS/SCS-exemplaar moet hetzelfde zijn als het IP-adres\<dat\>u hebt toegewezen aan Azure Load Balancer (sid-lb-ASCS).  
+   > Het IP-adres dat u toewijst aan de naam van de virtuele host van het ASCS/SCS-exemplaar moet hetzelfde zijn als het IP-adres dat u hebt toegewezen aan Azure Load Balancer (\<SID\>-lb-ASCS).  
    >
    >
 
@@ -197,7 +197,7 @@ Het installeren van SAP met een ASCS/SCS-exemplaar met hoge Beschik baarheid omv
 
 2. Als u het IP-adres wilt definiëren dat is toegewezen aan de naam van de virtuele host, selecteert u **DNS-beheer** > **domein**.
 
-   ![Afbeelding 2: Nieuwe virtuele naam en TCP/IP-adres voor de SAP-ASCS/SCS-cluster configuratie][sap-ha-guide-figure-3047]
+   ![Afbeelding 2: nieuwe virtuele naam en TCP/IP-adres voor SAP ASCS/SCS-cluster configuratie][sap-ha-guide-figure-3047]
 
    _**Afbeelding 2:** Nieuwe virtuele naam en TCP/IP-adres voor de SAP-ASCS/SCS-cluster configuratie_
 
@@ -206,9 +206,9 @@ Het installeren van SAP met een ASCS/SCS-exemplaar met hoge Beschik baarheid omv
 1. Voer de eerste cluster knooppunt optie uit op cluster knooppunt A. Bijvoorbeeld op de host PR1-ascs-0 *.
 2. Als u de standaard poorten voor de interne Azure-load balancer wilt gebruiken, selecteert u:
 
-   * **ABAP systeem**: **ASCS** -instantie nummer **00**
-   * **Java-systeem**: **SCS** -instantie nummer **01**
-   * **ABAP + Java-systeem**: **ASCS** -instantie nummer **00** en **SCS** -exemplaar nummer **01**
+   * **ABAP systeem**: **ASCS** -exemplaar nummer **00**
+   * **Java-systeem**: **SCS** -exemplaar nummer **01**
+   * **ABAP + Java-systeem**: **ASCS** -exemplaar nummer **00** en **SCS** -exemplaar nummer **01**
 
    Als u voor het ABAP ASCS-exemplaar en 01 voor het exemplaar van de Java SCS eerst andere exemplaren dan 00 wilt gebruiken, wijzigt u de interne load balancer standaard taakverdelings regels van Azure. Zie [de ASCS/SCS-standaard regels voor taak verdeling voor de interne Azure-Load Balancer wijzigen voor][sap-ha-guide-8.9]meer informatie.
 
@@ -221,7 +221,7 @@ De volgende taken worden niet beschreven in de standaard-SAP-installatie documen
 
 ### <a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a>Het SAP-Profiel van het ASCS/SCS-exemplaar wijzigen
 
-Voeg eerst een nieuwe profiel parameter toe. De profiel parameter voor komt dat verbindingen tussen SAP-werk processen en de bewerkings server worden afgesloten wanneer ze te lang niet actief zijn. We vermelden het probleem scenario in [Register vermeldingen toevoegen op cluster knooppunten van het SAP ASCS/SCS-exemplaar][sap-ha-guide-8.11]. In deze sectie worden ook twee wijzigingen aangebracht in enkele eenvoudige para meters voor TCP/IP-verbindingen. In een tweede stap moet u de server voor het plaatsen van een `keep_alive` signaal zo instellen dat de verbindingen de drempel waarde voor de inactieve periode van Azure Internal Load Balancer niet bereiken.
+Voeg eerst een nieuwe profiel parameter toe. De profiel parameter voor komt dat verbindingen tussen SAP-werk processen en de bewerkings server worden afgesloten wanneer ze te lang niet actief zijn. We vermelden het probleem scenario in [Register vermeldingen toevoegen op cluster knooppunten van het SAP ASCS/SCS-exemplaar][sap-ha-guide-8.11]. In deze sectie worden ook twee wijzigingen aangebracht in enkele eenvoudige para meters voor TCP/IP-verbindingen. In een tweede stap moet u de server voor plaatsen instellen om een `keep_alive` signaal te verzenden, zodat de verbindingen niet de inactieve drempel waarde van de interne load balancer van Azure bereiken.
 
 Het SAP-Profiel van het ASCS/SCS-exemplaar wijzigen:
 
@@ -261,13 +261,13 @@ Een test poort toevoegen:
 
 2. Definieer een test poort. Het standaard poort nummer voor de test is 0. In ons voor beeld gebruiken we test poort 62000.
 
-   ![Afbeelding 3: De test poort van de cluster configuratie is standaard 0][sap-ha-guide-figure-3048]
+   ![Afbeelding 3: de test poort van de cluster configuratie is standaard 0][sap-ha-guide-figure-3048]
 
    _**Afbeelding 3:** De standaard poort voor de cluster configuratie test is 0_
 
    Het poort nummer wordt gedefinieerd in SAP Azure Resource Manager-sjablonen. U kunt het poort nummer toewijzen in Power shell.
 
-   Als u een nieuwe ProbePort-waarde voor de \<SAP\> sid IP-cluster bron wilt instellen, voert u het volgende Power shell-script uit om de Power shell-variabelen voor uw omgeving bij te werken:
+   Voer het volgende Power shell-script uit om de Power shell-variabelen voor uw omgeving bij te werken om een nieuwe ProbePort-waarde in te stellen voor de SAP-\<SID\> IP-cluster Bron:
 
    ```powershell
    $SAPSID = "PR1"      # SAP <SID>
@@ -325,7 +325,7 @@ Een test poort toevoegen:
    }
    ```
 
-   Nadat u de SAP \<-sid\> -cluster functie online hebt gebracht, controleert u of **ProbePort** is ingesteld op de nieuwe waarde.
+   Nadat u de SAP-\<SID\> cluster functie online hebt gebracht, controleert u of **ProbePort** is ingesteld op de nieuwe waarde.
 
    ```powershell
    $SAPSID = "PR1"     # SAP <SID>
@@ -336,7 +336,7 @@ Een test poort toevoegen:
    ```
    Nadat het script is uitgevoerd, wordt u gevraagd om de SAP-cluster groep opnieuw op te starten om de wijzigingen te activeren.
 
-   ![Afbeelding 4: De cluster poort testen nadat u de nieuwe waarde hebt ingesteld][sap-ha-guide-figure-3049]
+   ![Afbeelding 4: de cluster poort testen nadat u de nieuwe waarde hebt ingesteld][sap-ha-guide-figure-3049]
 
    _**Afbeelding 4:** De cluster poort testen nadat u de nieuwe waarde hebt ingesteld_
 
@@ -370,11 +370,11 @@ _**Afbeelding 5:** Wijzig het Service type voor het SAP ERS-exemplaar in delayed
 
 ## <a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a>De SAP-primaire toepassings server installeren
 
-Installeer de \<sid\>van de primaire toepassings server (pas)-di-0 op de virtuele machine die u hebt aangewezen voor het hosten van de pas. Er zijn geen afhankelijkheden voor Azure. Er zijn geen data keeper instellingen.
+Installeer het exemplaar van de primaire toepassings server (PAS) \<SID\>-di-0 op de virtuele machine die u hebt ingesteld voor het hosten van de PAS. Er zijn geen afhankelijkheden voor Azure. Er zijn geen data keeper instellingen.
 
 ## <a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a>De SAP-aanvullende toepassings server installeren
 
-Installeer een extra SAP-toepassings server (AAS) op alle virtuele machines die u hebt aangewezen voor het hosten van een SAP-toepassings Server exemplaar. Bijvoorbeeld \<op&gt;sid\>-di-1 tot \<sid\>-di-&lt;n.
+Installeer een extra SAP-toepassings server (AAS) op alle virtuele machines die u hebt aangewezen voor het hosten van een SAP-toepassings Server exemplaar. Bijvoorbeeld op \<SID\>-di-1 om SID te \<\>-di-&lt;n&gt;.
 
 > [!NOTE]
 > Hiermee voltooit u de installatie van een SAP NetWeaver-systeem met een hoge Beschik baarheid. Ga vervolgens verder met het testen van de failover.
@@ -388,19 +388,19 @@ Het is eenvoudig om een SAP-ASCS/SCS-exemplaar-failover en SIOS-schijf replicati
 
 De SAP PR1-cluster groep wordt uitgevoerd op cluster knooppunt A. Bijvoorbeeld op PR1-ascs-0. Wijs de gedeelde schijf stations, die deel uitmaakt van de SAP PR1-cluster groep, toe aan cluster knooppunt A. De ASCS/SCS-instantie gebruikt ook schijf station S. 
 
-![Afbeelding 6: Failoverclusterbeheer: De SAP \<sid\> -cluster groep wordt uitgevoerd op het cluster knooppunt A][sap-ha-guide-figure-5000]
+![Afbeelding 6: Failoverclusterbeheer: de SAP \<SID\> cluster groep wordt uitgevoerd op het cluster knooppunt A][sap-ha-guide-figure-5000]
 
-_**Afbeelding 6:** Failoverclusterbeheer: De SAP \<sid\> -cluster groep wordt uitgevoerd op het cluster knooppunt A_
+_**Afbeelding 6:** Failoverclusterbeheer: de SAP \<-SID\> cluster groep wordt uitgevoerd op het cluster knooppunt A_
 
 In het hulp programma z-data keeper beheer en configuratie kunt u zien dat de gegevens van de gedeelde schijf synchroon worden gerepliceerd van de bron volume stations op cluster knooppunt A naar het doel volume station S op cluster knooppunt B. Het wordt bijvoorbeeld gerepliceerd van PR1-ascs-0 [10.0.0.40] naar PR1-ascs-1 [10.0.0.41].
 
-![Afbeelding 7: Repliceer in SIOS data keeper het lokale volume van cluster knooppunt A naar cluster knooppunt B][sap-ha-guide-figure-5001]
+![Afbeelding 7: in data keeper SIOS het lokale volume repliceren van cluster knooppunt A naar cluster knooppunt B][sap-ha-guide-figure-5001]
 
 _**Afbeelding 7:** Repliceer in SIOS data keeper het lokale volume van cluster knooppunt A naar cluster knooppunt B_
 
 ### <a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a>Failover van knoop punt A naar knoop punt B
 
-1. Kies een van deze opties voor het initiëren van een failover van \<de\> SAP sid-cluster groep van cluster knooppunt a naar cluster knooppunt B:
+1. Kies een van deze opties om een failover van de SAP \<-SID te initiëren\> cluster groep van cluster knooppunt A naar cluster knooppunt B:
    - Failoverclusterbeheer  
    - Failover cluster Power shell
 
@@ -411,18 +411,18 @@ _**Afbeelding 7:** Repliceer in SIOS data keeper het lokale volume van cluster k
    Move-ClusterGroup -Name $SAPClusterGroup
 
    ```
-2. Start cluster knooppunt A opnieuw op in het Windows-gast besturingssysteem. Hiermee initieert u een automatische failover van de \<SAP\> sid-cluster groep van knoop punt A naar knoop punt B.  
-3. Start het cluster knooppunt A opnieuw vanaf het Azure Portal. Hiermee initieert u een automatische failover van de \<SAP\> sid-cluster groep van knoop punt A naar knoop punt B.  
-4. Start cluster knooppunt A opnieuw met behulp van Azure PowerShell. Hiermee initieert u een automatische failover van de \<SAP\> sid-cluster groep van knoop punt A naar knoop punt B.
+2. Start cluster knooppunt A opnieuw op in het Windows-gast besturingssysteem. Hiermee initieert u een automatische failover van de SAP-\<SID\> cluster groep van knoop punt A naar knoop punt B.  
+3. Start het cluster knooppunt A opnieuw vanaf het Azure Portal. Hiermee initieert u een automatische failover van de SAP-\<SID\> cluster groep van knoop punt A naar knoop punt B.  
+4. Start cluster knooppunt A opnieuw met behulp van Azure PowerShell. Hiermee initieert u een automatische failover van de SAP-\<SID\> cluster groep van knoop punt A naar knoop punt B.
 
-   Na de failover wordt de \<SAP\> sid-cluster groep uitgevoerd op cluster knooppunt B. Het wordt bijvoorbeeld uitgevoerd op PR1-ascs-1.
+   Na de failover wordt de SAP \<-SID\> cluster groep uitgevoerd op cluster knooppunt B. Het wordt bijvoorbeeld uitgevoerd op PR1-ascs-1.
 
-   ![Afbeelding 8: In Failoverclusterbeheer wordt de SAP \<-\> sid-cluster groep uitgevoerd op cluster knooppunt B][sap-ha-guide-figure-5002]
+   ![Afbeelding 8: in Failoverclusterbeheer wordt de SAP \<SID\> cluster groep uitgevoerd op cluster knooppunt B][sap-ha-guide-figure-5002]
 
-   _**Afbeelding 8**: In Failoverclusterbeheer wordt de SAP \<-\> sid-cluster groep uitgevoerd op cluster knooppunt B_
+   _**Afbeelding 8**: in Failoverclusterbeheer wordt de SAP \<sid\> cluster groep uitgevoerd op cluster knooppunt B_
 
    De gedeelde schijf is nu gekoppeld op cluster knooppunt B. SIOS data keeper is bezig met het repliceren van gegevens van het bron volume station S op cluster knooppunt B naar het doel volume station S op cluster knooppunt A. Het is bijvoorbeeld repliceren van PR1-ascs-1 [10.0.0.41] naar PR1-ascs-0 [10.0.0.40].
 
-   ![Afbeelding 9: SIOS data keeper kopieert het lokale volume van cluster knooppunt B naar cluster knooppunt A][sap-ha-guide-figure-5003]
+   ![Afbeelding 9: SIOS data keeper repliceert het lokale volume van cluster knooppunt B naar cluster knooppunt A][sap-ha-guide-figure-5003]
 
    _**Afbeelding 9:** SIOS data keeper kopieert het lokale volume van cluster knooppunt B naar cluster knooppunt A_

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 0dde7bd9bd3372f0f5eddbbd56727eca3ae4a9dd
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 78678474430792eb7fe419ef4f15828d461c1fec
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950469"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647404"
 ---
 # <a name="what-is-azure-iot-hub"></a>Wat is Azure IoT Hub?
 
@@ -23,7 +23,7 @@ IoT Hub biedt ondersteuning voor communicatie van het apparaat naar de cloud en 
 
 De mogelijkheden van IoT Hub helpen u bij het bouwen van schaalbare, complete IoT-oplossingen, bijvoorbeeld voor het beheren van industriële apparatuur die worden gebruikt in productieomgevingen, het volgen van waardevolle items in de gezondheidszorg en het monitoren van het gebruik van kantoorgebouwen.
 
-## <a name="scale-your-solution"></a>Uw oplossing schalen
+## <a name="scale-your-solution"></a>Schaal uw oplossing
 
 IoT Hub kan worden opgeschaald naar miljoenen gelijktijdig verbonden apparaten en miljoenen gebeurtenissen per seconde om zo uw IoT-workloads te ondersteunen. Zie [IOT hub schalen](iot-hub-scaling.md?branch=release-iotbasic)voor meer informatie over het schalen van uw IOT hub. Bekijk de [pagina met prijzen](https://azure.microsoft.com/pricing/details/iot-hub/)voor meer informatie over de verschillende lagen van de service die worden aangeboden door IOT hub en hoe u de schaal baarheid optimaal kunt aanpassen aan uw behoeften.
 
@@ -107,11 +107,11 @@ Als uw oplossing geen van de ondersteunde protocollen kan gebruiken, kunt u IoT 
 
 * Pas de [protocolgateway van Azure IoT](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) aan om protocolomzetting uit te voeren in de cloud.
 
-## <a name="quotas-and-limits"></a>Quota en limieten
+## <a name="quotas-and-limits"></a>Quota's en beperkingen
 
 Voor elk Azure-abonnement gelden standaardquotalimieten ter voorkoming van misbruik van de service. Deze limieten kunnen invloed hebben op het bereik van uw IoT-oplossing. De huidige limiet voor per abonnement is 50 IoT hubs per abonnement. U kunt een verzoek voor een groter quota indienen door contact op te nemen met de ondersteuning. Zie [IOT hub quota's en beperking](iot-hub-devguide-quotas-throttling.md)voor meer informatie. Raadpleeg een van de volgende artikelen voor meer informatie over quotum limieten:
 
-* [Limieten, quota en beperkingen van Azure-abonnementen en -services](../azure-subscription-service-limits.md)
+* [Limieten, quota en beperkingen van Azure-abonnementen en -services](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 * [IoT Hub throttling and you](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
@@ -119,4 +119,8 @@ Voor elk Azure-abonnement gelden standaardquotalimieten ter voorkoming van misbr
 
 Bekijk de snelstartgidsen voor IoT Hub als u een end-to-end IoT-oplossing wilt uitproberen:
 
-* [Snelstart: Telemetrie van een apparaat naar een IoT-hub verzenden](quickstart-send-telemetry-node.md)
+* [Snelstartgids: Telemetrie verzenden van een apparaat naar een IoT-hub](quickstart-send-telemetry-node.md)
+
+Voor meer informatie over de manieren waarop u IoT-oplossingen kunt bouwen en implementeren met Azure IoT, gaat u naar:
+
+* [Fundamentals: Azure IOT-technologieën en-oplossingen](../iot-fundamentals/iot-services-and-technologies.md).

@@ -2,13 +2,14 @@
 title: Resource beschikbaarheid per regio
 description: Beschik baarheid van reken-en geheugen resources voor de Azure Container Instances-service in verschillende Azure-regio's.
 ms.topic: article
-ms.date: 05/14/2019
-ms.openlocfilehash: aef66a9fdbe73ccd4da79ce972b7beb061e9fe35
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/17/2019
+ms.author: danlep
+ms.openlocfilehash: 456b9754d7a6e88705853d4c4d701110e4841eb0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533475"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445848"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Beschik baarheid van resources voor Azure Container Instances in azure-regio's
 
@@ -25,24 +26,23 @@ Zie [quota's en limieten voor Azure container instances](container-instances-quo
 
 De volgende regio's en resources zijn beschikbaar voor container groepen met Linux en [ondersteunde](container-instances-faq.md#what-windows-base-os-images-are-supported) containers op Windows Server 2016.
 
-| Locatie | Besturingssysteem | CPU | Geheugen (GB) |
+| Regio's | Besturingssysteem | Maximaal CPU | Maxi maal geheugen (GB) |
 | -------- | -- | :---: | :-----------: |
-| Canada-centraal, Centraal-India, centraal VS, Azië-oost, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, VS-West | Linux | 4 | 16 |
-| Europa-west, VS-West 2 | Linux | 4 | 14 |
+| Brazilië-zuid, Canada-centraal, Centraal-India, VS-midden, Azië-oost, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, Europa-west, VS-West, VS-West 2 | Linux | 4 | 16 |
 | Australië-oost, Japan-Oost | Linux | 2 | 8 |
-| VS Noord-Centraal, India-zuid | Linux | 2 | 3,5 |
-| Europa - west | Windows | 4 | 16 |
+| VS - noord-centraal | Linux | 2 | 3,5 |
+| Brazilië-zuid, Japan-Oost, Europa-west | Windows | 4 | 16 |
 | US - oost, US - west | Windows | 4 | 14 |
-| Australië-oost, Canada-centraal, Centraal-India, VS-midden, Azië-oost, VS-Oost 2, Japan-Oost, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, VS-West 2 | Windows | 2 | 3,5 |
+| Australië-oost, Canada-centraal, Centraal-India, VS-midden, Azië-oost, VS-Oost 2, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, VS-West 2 | Windows | 2 | 3,5 |
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>Beschik baarheid-Windows Server 2019 LTSC, 1809-implementaties (preview)
 
 De volgende regio's en bronnen zijn beschikbaar voor container groepen met Windows Server 2019-containers (preview).
 
-| Locatie | Besturingssysteem | CPU | Geheugen (GB) |
+| Regio's | Besturingssysteem | Maximaal CPU | Maxi maal geheugen (GB) |
 | -------- | -- | :---: | :-----------: |
-| Zuidoost-Azië, Europa-noord, Europa-west, VS-midden, VS-Oost, VS-West, VS-West 2 | Windows | 4 | 16 |
-| VS - oost 2 | Windows | 2 | 3,5 |
+| Australië-oost, Brazilië-zuid, Canada-centraal, Centraal-India, centraal VS, Azië-oost, VS-Oost, Japan-Oost, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, Europa-west | Windows | 4 | 16 |
+| VS-Oost 2, VS-West 2 | Windows | 2 | 3,5 |
 
 
 ## <a name="availability---virtual-network-deployment-preview"></a>Beschik baarheid-implementatie van virtueel netwerk (preview-versie)

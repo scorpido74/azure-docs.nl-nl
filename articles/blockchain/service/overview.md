@@ -4,12 +4,12 @@ description: Overzicht van de Azure Block Chain-Service
 ms.date: 11/21/2019
 ms.topic: overview
 ms.reviewer: janders
-ms.openlocfilehash: 02cc955822987e3be6f5a2184fc49e5510b29626
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 55e1be191b21c7c66b013f70d83fe6c046488e05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455908"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387374"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Wat is Azure Blockchain Service?
 
@@ -19,7 +19,7 @@ De Azure Block Chain-service is een volledig beheerde grootboek service waarmee 
 * Ingebouwd consortiumbeheer
 * Slimme contracten ontwikkelen met vertrouwde ontwikkel Programma's
 
-De Azure Block Chain-service is ontworpen om meerdere grootboek protocollen te ondersteunen. Dit biedt momenteel ondersteuning voor het Ethereum- [quorum](https://www.jpmorgan.com/Quorum) grootboek met behulp van het [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) consensus-mechanisme.
+De Azure Block Chain-service is ontworpen om meerdere grootboek protocollen te ondersteunen. Dit biedt momenteel ondersteuning voor het Ethereum- [quorum](https://www.goquorum.com/) grootboek met behulp van het [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) consensus-mechanisme.
 
 Deze mogelijkheden vereisen nauwelijks beheer, en alles wordt zonder extra kosten geleverd. U kunt zich richten op het ontwikkelen van apps en bedrijfs logica in plaats van het toewijzen van tijd en resources voor het beheren van virtuele machines en infra structuur. Daarnaast kunt u uw toepassing blijven ontwikkelen met de open source-hulpprogram ma's en het platform van uw keuze om uw oplossingen te leveren zonder dat u nieuwe vaardig heden hoeft te leren.
 
@@ -41,7 +41,7 @@ Nadat u uw eerste Block Chain-lid hebt ingericht, hebt u de mogelijkheid om extr
 
 Als beheerde service zorgt Azure Block Chain-service ervoor dat de knoop punten van uw Block Chain-lid worden bijgewerkt met het nieuwste besturings systeem van de host en de software stack-updates van het groot boek, geconfigureerd voor hoge Beschik baarheid (alleen Standard-laag), waardoor veel van de DevOps vereist voor traditionele IaaS Block Chain-knoop punten.  Zie [ondersteunde Azure Block Chain Service Ledger-versies](ledger-versions.md)voor meer informatie over patches en updates.
 
-### <a name="monitoring-and-logging"></a>Bewaking en registratie
+### <a name="monitoring-and-logging"></a>Bewaking en logboekregistratie
 
 Daarnaast biedt de Azure Block Chain-service uitgebreide metrische gegevens via Azure Monitor service die inzichten biedt in het CPU-, geheugen-en opslag gebruik van knoop punten.  Azure Monitor biedt ook nuttige inzichten in Block chain-netwerk activiteit, zoals trans acties en blokken ook niet gebruikt, de transactie wachtrij diepte en actieve verbindingen.  Metrische gegevens kunnen worden aangepast om weer gaven te bieden in de inzichten die belang rijk zijn voor uw Block Chain-toepassing.  Daarnaast kunnen drempel waarden worden gedefinieerd via waarschuwingen, waardoor gebruikers acties activeren, zoals het verzenden van een e-mail of SMS-bericht, het uitvoeren van een logische app, een Azure function of het verzenden naar een aangepaste webhook.
 
@@ -67,10 +67,17 @@ Block Chain Data Manager voor Azure Block Chain service registreert, transformee
 
 ## <a name="support-and-feedback"></a>Ondersteuning en feedback
 
-Hebt u hulp nodig of hebt u feedback?
+Voor Azure Block Chain News gaat u naar de [Azure Block Chain-blog](https://azure.microsoft.com/blog/topics/blockchain/) om op de hoogte te blijven van Block Chain service aanbiedingen en informatie van het technische team van Azure Block chain.
 
-* Ga naar de [Azure Block Chain-blog](https://azure.microsoft.com/blog/topics/blockchain/), het [micro soft tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)en het [Azure Block Chain-Forum](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain).
-* Als u feedback wilt geven of een nieuwe functie wilt aanvragen, maakt u een vermelding via [UserVoice](https://feedback.azure.com/forums/921130-azure-blockchain-service).
+Als u productfeedback wilt geven of als u nieuwe functies wilt aanvragen, kunt u het beste stemmen voor een idee via het [Azure feedback forum voor Block Chain](https://aka.ms/blockchainuservoice).
+
+### <a name="community-support"></a>Ondersteuning door community
+
+Neem contact op met micro soft-technici en Azure Block Chain community-experts.
+
+* [MSDN-forum voor Azure Block Chain](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
 
 ## <a name="next-steps"></a>Volgende stappen
 

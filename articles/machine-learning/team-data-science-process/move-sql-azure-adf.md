@@ -11,20 +11,20 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 59f8b8b253fc914e5723a9c41475ec78bc3f376e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4b95fb8d5a0c05d2d66744a91f4200d58a71470d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61429345"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427369"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Gegevens verplaatsen van een on-premises SQL server naar SQL Azure met Azure Data Factory
 
-In dit artikel laat zien hoe gegevens uit een on-premises SQL Server-Database verplaatsen naar een SQL Azure-Database via Azure Blob Storage met behulp van de Azure Data Factory (ADF).
+In dit artikel wordt beschreven hoe u gegevens verplaatst van een on-premises SQL Server Data Base naar een SQL Azure-data base via Azure Blob Storage met behulp van de Azure Data Factory (ADF): deze methode is een ondersteunde verouderde benadering die de voor delen van een gerepliceerde staging-kopie biedt, maar [we raden u aan om onze Datamigration-pagina te bekijken voor de nieuwste opties](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1).
 
 Zie voor een tabel met een overzicht van verschillende opties voor het verplaatsen van gegevens naar een Azure SQL Database, [gegevens verplaatsen naar een Azure SQL Database voor Azure Machine Learning](move-sql-azure.md).
 
-## <a name="intro"></a>Introductie: Wat is ADF en wanneer moet deze worden gebruikt om gegevens te migreren?
+## <a name="intro"></a>Inleiding: Wat is er ADF en wanneer moet deze worden gebruikt om gegevens te migreren?
 Azure Data Factory is een volledig beheerde cloud-gebaseerde service voor gegevensintegratie die wordt georganiseerd en de verplaatsing en transformatie van gegevens worden geautomatiseerd. Het belangrijkste concept in het model ADF is de pijplijn. Een pijplijn is een logische groepering van activiteiten, die elk de acties die worden uitgevoerd op de gegevens die zijn opgenomen in gegevenssets definieert. Gekoppelde services worden gebruikt om de informatie die nodig zijn voor Data Factory verbinding maken met de gegevensbronnen die worden gedefinieerd.
 
 Met ADF, kunnen bestaande services voor gegevensverwerking bestaan in gegevenspijplijnen die maximaal beschikbaar en beheerd in de cloud. Deze gegevens-pipelines voor het opnemen, voorbereiden, transformeren, analyseren en publiceren van gegevens kunnen worden gepland en ADF beheert en orkestreert de complexe gegevens en de verwerking van afhankelijkheden. Oplossingen kunnen snel worden gebouwd en geïmplementeerd in de cloud, verbinding te maken van een groeiend aantal on-premises en cloudgegevensbronnen.
@@ -43,7 +43,7 @@ We instellen een ADF-pijplijn waarmee twee gegevens migratieactiviteiten stelt h
 * gegevens kopiëren van de Azure Blob Storage-account naar een Azure SQL Database.
 
 > [!NOTE]
-> De stappen die hieronder zijn gebaseerd op de gedetailleerdere zelfstudie die door het team ADF: [Gegevens kopiëren van een on-premises SQL Server-database naar Azure Blob-opslag](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) verwijzingen naar de relevante secties van dit onderwerp vindt u indien van toepassing.
+> De stappen die hier zijn aangepast van de meer gedetailleerde zelfstudie die door het team ADF weergegeven: [gegevens kopiëren van een on-premises SQL Server-database naar Azure Blob-opslag](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) verwijzingen naar de relevante secties van dit onderwerp vindt u bij van toepassing.
 >
 >
 
@@ -51,8 +51,8 @@ We instellen een ADF-pijplijn waarmee twee gegevens migratieactiviteiten stelt h
 In deze zelfstudie wordt ervan uitgegaan dat u hebt:
 
 * Een **Azure-abonnement**. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/pricing/free-trial/).
-* Een **Azure storage-account**. U kunt een Azure storage-account gebruiken voor het opslaan van de gegevens in deze zelfstudie. Zie het artikel [Een opslagaccount maken](../../storage/common/storage-quickstart-create-account.md) als u geen account Azure-opslagaccount hebt. Nadat u het opslagaccount hebt gemaakt, moet u de accountsleutel ophalen die wordt gebruikt voor toegang tot de opslag. Zie [beheren van uw toegangssleutels voor opslag](../../storage/common/storage-account-manage.md#access-keys).
-* Toegang tot een **Azure SQL Database**. Als u een Azure SQL-Database het onderwerp moet instellen [aan de slag met Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) bevat informatie over hoe u een nieuw exemplaar van een Azure SQL-Database inricht.
+* Een **Azure storage-account**. U kunt een Azure storage-account gebruiken voor het opslaan van de gegevens in deze zelfstudie. Zie het artikel [Een opslagaccount maken](../../storage/common/storage-quickstart-create-account.md) als u geen account Azure-opslagaccount hebt. Nadat u het opslagaccount hebt gemaakt, moet u de accountsleutel ophalen die wordt gebruikt voor toegang tot de opslag. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md).
+* Toegang tot een **Azure SQL Database**. Als u een Azure SQL Database moet instellen, bevat het onderwerp aan de [slag met Microsoft Azure SQL database](../../sql-database/sql-database-get-started.md) informatie over het inrichten van een nieuw exemplaar van een Azure SQL database.
 * Geïnstalleerd en geconfigureerd **Azure PowerShell** lokaal. Zie voor instructies [hoe u Azure PowerShell installeren en configureren](/powershell/azure/overview).
 
 > [!NOTE]
@@ -71,14 +71,14 @@ De instructies voor het maken van een nieuwe Azure Data Factory en een resourceg
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Installeren en configureren van Azure Data Factory Integration Runtime
 De Integration Runtime is een klant beheerde gegevensintegratie-infrastructuur door Azure Data Factory gebruikt om u te bieden mogelijkheden voor gegevensintegratie in verschillende netwerkomgevingen. Deze runtime heette voorheen 'Data Management Gateway'.
 
-Om in te stellen, [Volg de instructies voor het maken van een pijplijn](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
+Als u wilt instellen, [volgt u de instructies voor het maken van een pijp lijn](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
 
 ## <a name="adflinkedservices"></a>Maak gekoppelde services verbinding maken met de gegevensbronnen
 De informatie die nodig zijn voor Azure Data Factory verbinding maken met een Gegevensresource definieert de gekoppelde service. We hebben drie resources in dit scenario waarvoor gekoppelde services nodig zijn:
 
 1. On-premises SQL Server
 2. Azure Blob Storage
-3. Azure SQL Database
+3. Azure SQL-database
 
 De stapsgewijze procedure voor het maken van gekoppelde services vindt u in [gekoppelde services](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline).
 
@@ -99,7 +99,7 @@ De definities van JSON-indeling in de tabellen gebruiken de volgende namen:
 Drie tabeldefinities die nodig zijn voor deze ADF-pijplijn:
 
 1. [On-premises SQL-tabel](#adf-table-onprem-sql)
-2. [Blobtabel](#adf-table-blob-store)
+2. [BLOB-tabel](#adf-table-blob-store)
 3. [SQL Azure-tabel](#adf-table-azure-sql)
 
 > [!NOTE]

@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 5219ff94b29d4fd02edb8567ae59884ced07b37e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 969f2f6b2e25d9eb804349eccbed66e17b7fbb87
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791347"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427162"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Mogelijkheden en overwegingen voor commerciële Marketplace-trans acties
 
@@ -223,7 +223,7 @@ De Transact-vereisten voor de verschillende aanbiedings typen zijn opgenomen in 
 - Er zijn een Microsoft-account en financiële informatie vereist voor de optie voor het publiceren van de Transact, ongeacht het prijs model van de aanbieding.
 - Verplichte financiële informatie omvat het uitbetalings account en het BTW-profiel.
 
-Zie [uw partner Center-account beheren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#financial-details)voor meer informatie over het instellen van deze accounts.
+Zie [uw partner centrum-account beheren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)voor meer informatie over het instellen van deze accounts.
 
 
 ### <a name="requirements-for-specific-offer-types"></a>Vereisten voor specifieke aanbiedings typen
@@ -240,5 +240,5 @@ U moet een of meer virtuele machines inrichten en de som van de prijzen van de v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bekijk de geschiktheids vereisten in de sectie publicatie opties per aanbiedings type om de selectie en configuratie van uw aanbieding te volt ooien.
-* Bekijk de publicatie patronen per winkel voor voor beelden van hoe uw oplossing is gekoppeld aan een type en configuratie van een aanbieding.
+* Bekijk de vereisten voor geschiktheid in de opties voor publiceren door de sectie type aanbieding voor het voltooien van de selectie en configuratie van uw aanbieding.
+* Bekijk de publishing patronen door webwinkel voor voorbeelden van hoe uw oplossing wordt toegewezen aan een aanbiedingtype en de configuratie.

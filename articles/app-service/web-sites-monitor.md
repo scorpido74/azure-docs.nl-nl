@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 4c0d3822b5000611d1b5229924cb44d055795468
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 2bca4521184fa42002e6649a90bb9101fded595c
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688279"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658437"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Apps in Azure App Service bewaken
-[Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714) biedt ingebouwde bewakings functionaliteit voor web-apps, mobiele back-ends en API-apps in de [Azure Portal](https://portal.azure.com).
+[Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714) biedt ingebouwde functionaliteit voor het controleren van web apps, mobiele apps en api's in de [Azure Portal](https://portal.azure.com).
 
-In de Azure Portal kunt u *quota's* en *metrische gegevens* voor een app bekijken en app service plannen, en *waarschuwingen* en *Automatische schaling* instellen die zijn gebaseerd op metrische gegevens.
+U kunt in de Azure Portal *quota's* en *metrische gegevens* voor een app bekijken en app service plannen, *waarschuwingen* en automatisch *schalen* instellen die zijn gebaseerd op metrische gegevens.
 
 ## <a name="understand-quotas"></a>Meer informatie over quota's
 
@@ -35,13 +35,13 @@ Quota voor gratis of gedeelde apps zijn:
 | --- | --- |
 | **CPU (kort)** | De hoeveelheid CPU die is toegestaan voor deze app in een interval van 5 minuten. Dit quotum wordt om de vijf minuten opnieuw ingesteld. |
 | **CPU (dag)** | De totale hoeveelheid CPU die op een dag is toegestaan voor deze app. Dit quotum wordt om de 24 uur opnieuw ingesteld om middernacht UTC. |
-| **Geheugenmetabase** | De totale hoeveelheid geheugen die is toegestaan voor deze app. |
-| **BAP** | De totale hoeveelheid uitgaande band breedte die op een dag is toegestaan voor deze app. Dit quotum wordt om de 24 uur opnieuw ingesteld om middernacht UTC. |
+| **Geheugen** | De totale hoeveelheid geheugen die is toegestaan voor deze app. |
+| **Bandwidth** | De totale hoeveelheid uitgaande band breedte die op een dag is toegestaan voor deze app. Dit quotum wordt om de 24 uur opnieuw ingesteld om middernacht UTC. |
 | **System** | De totale hoeveelheid toegestane opslag ruimte. |
 
 Het enige quotum dat van toepassing is op apps die worden gehost in *Basic*, *Standard*en *Premium* , is bestands systeem.
 
-Zie [service limieten voor Azure-abonnementen](../azure-subscription-service-limits.md#app-service-limits)voor meer informatie over de specifieke quota's, limieten en functies die beschikbaar zijn voor de verschillende app service sku's.
+Zie [service limieten voor Azure-abonnementen](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)voor meer informatie over de specifieke quota's, limieten en functies die beschikbaar zijn voor de verschillende app service sku's.
 
 ### <a name="quota-enforcement"></a>Quota afdwingen
 
@@ -79,15 +79,15 @@ De beschik bare metrische gegevens voor een app zijn:
 | **1 garbagecollection-verzamelingen** | Het aantal keren dat de generatie 1-objecten permanent zijn verzameld sinds het begin van het app-proces. Een hogere generatie GCs bevatten alle lagere GCs.|
 | **Opschoon verzamelingen van generatie 2** | Het aantal keren dat de generatie 2-objecten permanent zijn verzameld sinds het begin van het app-proces.|
 | **Aantal ingangen** | Het totale aantal ingangen dat momenteel door het app-proces is geopend.|
-| **Http-2xx** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 200, maar < 300. |
-| **HTTP-3xx** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 300, maar < 400. |
+| **Http 2xx** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 200, maar < 300. |
+| **Http 3xx** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 300, maar < 400. |
 | **HTTP 401** | Het aantal aanvragen dat resulteert in de HTTP 401-status code. |
 | **HTTP 403** | Het aantal aanvragen dat resulteert in de HTTP 403-status code. |
 | **Http 404** | Het aantal aanvragen dat resulteert in de HTTP 404-status code. |
 | **Http 406** | Het aantal aanvragen dat resulteert in de HTTP 406-status code. |
-| **Http-4xx** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 400, maar < 500. |
+| **Http 4xx** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 400, maar < 500. |
 | **Http-server fouten** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 500, maar < 600. |
-| **Andere i/o-bytes per seconde** | De snelheid waarmee het app-proces bytes uitgeeft aan I/O-bewerkingen die geen gegevens bevatten, zoals controle bewerkingen.|
+| **Andere i/o-bytes per seconde** | De snelheid waarmee het app-proces bytes uitgeeft aan I/O-bewerkingen die geen gegevens omvatten, zoals controle bewerkingen.|
 | **Andere i/o-bewerkingen per seconde** | De snelheid waarmee I/O-bewerkingen worden uitgevoerd die geen lees-of schrijf bewerkingen zijn.|
 | **I/o gelezen bytes per seconde** | De snelheid waarmee het app-proces bytes van I/O-bewerkingen leest.|
 | **I/o-Lees bewerkingen per seconde** | De snelheid waarmee het app-proces Lees-I/O-bewerkingen uitgeeft.|
@@ -114,7 +114,7 @@ De beschik bare metrische gegevens voor een App Service plan zijn:
 | **Geheugen percentage** | Het gemiddelde geheugen dat wordt gebruikt voor alle exemplaren van het plan. |
 | **Gegevens in** | De gemiddelde binnenkomende band breedte die wordt gebruikt voor alle exemplaren van het abonnement. |
 | **Gegevens uit** | De gemiddelde uitgaande band breedte die wordt gebruikt voor alle exemplaren van het abonnement. |
-| **Wachtrij lengte voor schijf** | Het gemiddelde aantal lees-en schrijf aanvragen dat in de wachtrij is geplaatst op opslag. Een hoge wachtrij lengte voor de schijf is een indicatie van een app die mogelijk vertraagd is vanwege buitensporige schijf-I/O's. |
+| **Wachtrij lengte voor schijf** | Het gemiddelde aantal lees-en schrijf aanvragen dat in de wachtrij is geplaatst op opslag. Een hoge wachtrij lengte voor de schijf is een indicatie van een app die kan vertragen vanwege een buitensporige schijf-I/O. |
 | **Lengte van http-wachtrij** | Het gemiddelde aantal HTTP-aanvragen dat aan de wachtrij is gewacht voordat wordt voldaan. Een hoge of verhoogde HTTP-wachtrij lengte is een symptoom van een plan onder zware belasting. |
 
 ### <a name="cpu-time-vs-cpu-percentage"></a>CPU-tijd versus CPU-percentage
@@ -131,7 +131,7 @@ Metrische gegevens voor een app-en app service-plan worden vastgelegd en geaggre
 
 * De metrische gegevens over **de nauw** keurigheid van de granulatie worden 30 uur bewaard.
 * De metrische granulatie waarden voor het **uur** worden 30 dagen bewaard.
-* **Dag** granulatie waarden worden gedurende 30 dagen bewaard.
+* **Dag** granulatie waarden worden 30 dagen bewaard.
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Quota en metrische gegevens bewaken in de Azure Portal
 Als u de status van de verschillende quota's en metrische gegevens wilt bekijken die van invloed zijn op een app, gaat u naar de [Azure Portal](https://portal.azure.com).
@@ -144,19 +144,16 @@ Als u quota's wilt zoeken, selecteert u **instellingen** > **quota's**. In de gr
 1. De huidige limiet.
 1. De huidige waarde.
 
-![grafiek met metrische gegevens in de Azure Portal][metrics] u de gegevens rechtstreeks vanaf de pagina **resource** kunt openen. De grafiek aanpassen: 
-1. Selecteer de grafiek.
-1. Selecteer **grafiek bewerken**.
-1. Bewerk het **tijds bereik**.
-1. Bewerk het **grafiek type**.
-1. Bewerk de metrische gegevens die u wilt weer geven.  
+![grafiek met metrische gegevens in het Azure Portal][metrics] kunt u rechtstreeks toegang krijgen tot gegevens op de pagina **overzicht** van resources. Hier ziet u grafieken die enkele van de metrische gegevens van de app vertegenwoordigen.
+
+Wanneer u op een van deze grafieken klikt, wordt u naar de weer gave metrische gegevens geleid, waar u aangepaste grafieken kunt maken, verschillende metrische gegevens en nog veel meer wilt opvragen. 
 
 Zie [metrische service gegevens bewaken](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)voor meer informatie over metrische gegevens.
 
 ## <a name="alerts-and-autoscale"></a>Waarschuwingen en automatisch schalen
 Metrische gegevens voor een app of een App Service plan kunnen worden aangesloten op waarschuwingen. Zie [Meldingen van waarschuwingen ontvangen](../monitoring-and-diagnostics/insights-alerts-portal.md) voor meer informatie.
 
-App Service-apps die worden gehost in Basic-, Standard-of Premium-App Service plannen ondersteunen automatisch schalen. Met automatisch schalen kunt u regels configureren die de metrische gegevens van het App Service plan bewaken. Regels kunnen het aantal instanties verg Roten of verkleinen, zodat u indien nodig aanvullende bronnen kunt opgeven. Regels kunnen u helpen bij het besparen van geld wanneer de app te veel is ingericht.
+App Service-apps die worden gehost in basis-of snellere App Service plannen ondersteunen automatisch schalen. Met automatisch schalen kunt u regels configureren die de metrische gegevens van het App Service plan bewaken. Regels kunnen het aantal instanties verg Roten of verkleinen, zodat u indien nodig aanvullende bronnen kunt opgeven. Regels kunnen u helpen bij het besparen van geld wanneer de app te veel is ingericht.
 
 Zie [How to scale](../monitoring-and-diagnostics/insights-how-to-scale.md) and [Best practices for Azure monitor automatisch schalen](../azure-monitor/platform/autoscale-best-practices.md)voor meer informatie over automatisch schalen.
 

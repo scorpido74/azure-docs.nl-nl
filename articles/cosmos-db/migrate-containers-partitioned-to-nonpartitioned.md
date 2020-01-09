@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1afca920a8146ce5501900bcc9e36bdebcccca09
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b7eed4089a65f62056027c70f08902f531567c17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706072"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445272"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Niet-gepartitioneerde containers migreren naar gepartitioneerde containers
 
@@ -117,6 +117,14 @@ Zie de GitHub-opslag plaats voor .net-voor [beelden][1] voor het volledige voor 
 Oudere versie van Azure Cosmos DB Sdk's zoals v2. x. x en v1. x. x biedt geen ondersteuning voor de door het systeem gedefinieerde partitie sleutel eigenschap. Als u de container definitie van een oudere SDK leest, bevat deze dus geen partitie sleutel definitie en deze containers gedragen zich precies hetzelfde als voorheen. Toepassingen die zijn gebouwd met de oudere versie van Sdk's, blijven werken met niet-gepartitioneerde zonder wijzigingen. 
 
 Als een gemigreerde container wordt gebruikt door de nieuwste/V3-versie van de SDK en u begint met het vullen van de door het systeem gedefinieerde partitie sleutel in de nieuwe documenten, hebt u geen toegang tot (lezen, bijwerken, verwijderen en opvragen van) documenten van de oudere Sdk's meer.
+
+## <a name="known-issues"></a>Bekende problemen
+
+**Voor het tellen van items die zijn ingevoegd zonder een partitie sleutel met behulp van de V3 SDK is mogelijk een hoger doorvoer verbruik vereist**
+
+Als u een query uitvoert vanuit de V3 SDK voor de items die worden ingevoegd met behulp van v2 SDK, of de items die zijn ingevoegd met behulp van de V3 SDK met `PartitionKey.None` para meter, kan de Count-query meer RU/s verbruiken als de `PartitionKey.None`-para meter wordt opgegeven in het FeedOptions. We raden u aan de para meter `PartitionKey.None` niet op te geven als er geen andere items zijn ingevoegd met een partitie sleutel.
+
+Als er nieuwe items worden ingevoegd met verschillende waarden voor de partitie sleutel, kunt u een query voor dit item tellen door de juiste sleutel te geven in `FeedOptions` geen problemen heeft. Als u na het invoegen van nieuwe documenten met de partitie sleutel een query wilt uitvoeren op alleen het aantal documenten zonder de partitie sleutel waarde, kan deze query meer dan RU/s hebben die vergelijkbaar is met de reguliere gepartitioneerde verzamelingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

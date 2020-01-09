@@ -4,118 +4,124 @@ description: In dit artikel wordt beschreven hoe u VMware vCenter kunt toevoegen
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 12/24/2019
 ms.author: ramamill
-ms.openlocfilehash: 8f339103f67f37d10999ef43fa57a6eb27b60f37
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: ba5f31049b599cd55a4a9a4261080c1672d336b1
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083979"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495343"
 ---
 # <a name="manage-vmware-vcenter-server"></a>VMware vCenter-Server beheren
 
-In dit artikel worden de verschillende Site Recovery bewerkingen beschreven die kunnen worden uitgevoerd op een VMware vCenter. Controleer de [vereisten](vmware-physical-azure-support-matrix.md#replicated-machines) voordat u begint.
+In dit artikel vindt u een overzicht van de beheer acties op een VMware vCenter Server in [Azure site Recovery](site-recovery-overview.md). 
+
+## <a name="verify-prerequisites-for-vcenter-server"></a>Vereisten voor vCenter Server controleren
+
+De vereisten voor vCenter-servers en Vm's tijdens nood herstel van virtuele VMware-machines naar Azure worden weer gegeven in de [ondersteunings matrix](vmware-physical-azure-support-matrix.md#replicated-machines).
 
 
 ## <a name="set-up-an-account-for-automatic-discovery"></a>Een account instellen voor automatische detectie
 
-Site Recovery moet toegang hebben tot VMware voor de proces server om automatisch virtuele machines te detecteren en voor failover en failback van virtuele machines. Maak als volgt een account voor toegang:
+Wanneer u herstel na nood gevallen instelt voor on-premises VMware-Vm's, moet Site Recovery toegang tot de vCenter Server/vSphere-host hebben zodat de Site Recovery proces server Vm's automatisch kan detecteren en failover naar behoefte kan uitvoeren. Standaard wordt de proces server uitgevoerd op de configuratie Server Site Recovery. Voeg als volgt een account toe voor de configuratie server om verbinding te maken met de vCenter Server/vSphere-host:
 
 1. Meld u aan bij de computer met de configuratie server.
-2. Open de cspsconfigtool. exe starten met behulp van de snelkoppeling op het bureau blad.
-3. Klik op het tabblad **account beheren** op **account toevoegen** .
+2. Open het hulp programma voor de configuratie server (cspsconfigtool. exe) met behulp van de snelkoppeling op het bureau blad.
+3. Klik op het tabblad **account beheren** op **account toevoegen**. 
 
    ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
-1. Geef de account gegevens op en klik op **OK** om deze toe te voegen.  Het account moet de bevoegdheden in de volgende tabel hebben. 
+4. Geef de account gegevens op en klik op **OK** om deze toe te voegen.  Het account moet de bevoegdheden in de volgende tabel hebben. 
 
-Het duurt ongeveer 15 minuten voordat de account gegevens worden gesynchroniseerd met de Site Recovery-service.
+Het duurt ongeveer 15 minuten om account gegevens te synchroniseren met Site Recovery.
 
 ### <a name="account-permissions"></a>Account machtigingen
 
 |**Taak** | **Account** | **Machtigingen** | **Details**|
 |--- | --- | --- | ---|
-|**Automatische detectie/migratie (zonder failback)** | U hebt mini maal een alleen-lezen gebruiker nodig | Datacentrumobject –> doorgeven naar onderliggend object, rol=Alleen-lezen | Gebruiker wordt toegewezen op datacentrumniveau, en heeft toegang tot alle objecten in het datacentrum.<br/><br/> Als u de toegang wilt beperken, wijst u de rol **geen toegang** met het object **door geven naar onderliggend** item toe aan de onderliggende objecten (vSphere-hosts, gegevens opslag, virtuele machines en netwerken).|
-|**Replicatie/failover** | U hebt mini maal een alleen-lezen gebruiker nodig| Datacentrumobject –> doorgeven naar onderliggend object, rol=Alleen-lezen | Gebruiker wordt toegewezen op datacentrumniveau, en heeft toegang tot alle objecten in het datacentrum.<br/><br/> Als u de toegang wilt beperken, wijst u de rol **geen toegang** met het object **door geven naar** onderliggend item toe aan de onderliggende objecten (vSphere-hosts, gegevens opslag, virtuele machines en netwerken).<br/><br/> Nuttig voor migratie doeleinden, maar niet de volledige replicatie, failover, failback.|
-|**Replicatie/failover/failback** | U wordt aangeraden een rol (AzureSiteRecoveryRole) met de vereiste machtigingen te maken en vervolgens de rol toe te wijzen aan een VMware-gebruiker of-groep | Data Center-object-> door geven naar onderliggend object, Role = AzureSiteRecoveryRole<br/><br/> Gegevensopslag –> Ruimte toewijzen, browsen in de gegevensopslag, bestandsbewerkingen op laag niveau, bestand verwijderen, bestanden van virtuele machines bijwerken<br/><br/> Netwerk –> Netwerk toewijzen<br/><br/> Resource –> VM toewijzen aan resourcegroep, uitgeschakelde VM migreren, ingeschakelde VM migreren<br/><br/> Taken –> Taak maken, taak bijwerken<br/><br/> Virtuele machine –> Configuratie<br/><br/> Virtuele machine –> Interactie –> vraag beantwoorden, apparaatverbinding, CD's configureren, diskettes configureren, uitschakelen, inschakelen, VMware-hulpprogramma's installeren<br/><br/> Virtuele machine -> Inventaris –> Maken, registreren, registratie opheffen<br/><br/> Virtuele machine –> Inrichten –> Downloaden van virtuele machine toestaan, toestaan dat bestanden van virtuele machines worden geüpload<br/><br/> Virtuele machine –> Momentopnamen -> Momentopnamen verwijderen | Gebruiker wordt toegewezen op datacentrumniveau, en heeft toegang tot alle objecten in het datacentrum.<br/><br/> Als u de toegang wilt beperken, wijst u de rol **geen toegang** met het object **door geven naar onderliggend** item toe aan de onderliggende objecten (vSphere-hosts, gegevens opslag, virtuele machines en netwerken).|
+|**Detectie/migratie van VM'S (zonder failback)** | Mini maal een alleen-lezen gebruikers account. | Datacentrumobject –> doorgeven naar onderliggend object, rol=Alleen-lezen | Gebruiker wordt toegewezen op datacentrumniveau, en heeft toegang tot alle objecten in het datacentrum.<br/><br/> Als u de toegang wilt beperken, wijst u de rol **geen toegang** met het object **door geven naar onderliggend** item toe aan de onderliggende objecten (vSphere-hosts, gegevens opslag, virtuele machines en netwerken).|
+|**Replicatie/failover** | Mini maal een alleen-lezen gebruikers account. | Datacentrumobject –> doorgeven naar onderliggend object, rol=Alleen-lezen | Gebruiker wordt toegewezen op datacentrumniveau, en heeft toegang tot alle objecten in het datacentrum.<br/><br/> Als u de toegang wilt beperken, wijst u de rol **geen toegang** met het object **door geven naar** onderliggend item toe aan de onderliggende objecten (vSphere-hosts, gegevens opslag, virtuele machines en netwerken).<br/><br/> Nuttig voor migratie doeleinden, maar niet de volledige replicatie, failover, failback.|
+|**Replicatie/failover/failback** | U wordt aangeraden een rol (AzureSiteRecoveryRole) met de vereiste machtigingen te maken en vervolgens de rol toe te wijzen aan een VMware-gebruiker of-groep. | Data Center-object-> door geven naar onderliggend object, Role = AzureSiteRecoveryRole<br/><br/> Gegevensopslag –> Ruimte toewijzen, browsen in de gegevensopslag, bestandsbewerkingen op laag niveau, bestand verwijderen, bestanden van virtuele machines bijwerken<br/><br/> Netwerk –> Netwerk toewijzen<br/><br/> Resource –> VM toewijzen aan resourcegroep, uitgeschakelde VM migreren, ingeschakelde VM migreren<br/><br/> Taken –> Taak maken, taak bijwerken<br/><br/> Virtuele machine –> Configuratie<br/><br/> Virtuele machine –> Interactie –> vraag beantwoorden, apparaatverbinding, CD's configureren, diskettes configureren, uitschakelen, inschakelen, VMware-hulpprogramma's installeren<br/><br/> Virtuele machine -> Inventaris –> Maken, registreren, registratie opheffen<br/><br/> Virtuele machine –> Inrichten –> Downloaden van virtuele machine toestaan, toestaan dat bestanden van virtuele machines worden geüpload<br/><br/> Virtuele machine –> Momentopnamen -> Momentopnamen verwijderen | Gebruiker wordt toegewezen op datacentrumniveau, en heeft toegang tot alle objecten in het datacentrum.<br/><br/> Als u de toegang wilt beperken, wijst u de rol **geen toegang** met het object **door geven naar onderliggend** item toe aan de onderliggende objecten (vSphere-hosts, gegevens opslag, virtuele machines en netwerken).|
 
 
 ## <a name="add-vmware-server-to-the-vault"></a>VMware-Server toevoegen aan de kluis
 
-1. Open in de Azure Portal uw kluis > **site Recovery infra structuur** > **configuratie**servers en open de configuratie server.
-2. Klik op de pagina **Details** op **+ vCenter**.
+Wanneer u herstel na nood gevallen instelt voor on-premises VMware-Vm's, voegt u de vCenter Server-vSphere-host waarop u de virtuele machines op de Site Recovery kluis detecteert, als volgt toe:
 
-[!INCLUDE [site-recovery-add-vcenter](../../includes/site-recovery-add-vcenter.md)]
+1. Open in kluis > **site Recovery infrastructuur** > **configuratie**servers de configuratie server.
+2. Klik op de pagina **Details** op **vCenter**.
+3. Geef in **VCenter toevoegen**een beschrijvende naam op voor de vSphere-host of vCenter-Server.
+4. Geef het IP-adres of de FQDN van de server op.
+5. Behoud poort 443 tenzij de VMware-servers zijn geconfigureerd om te luisteren naar aanvragen van een andere poort.
+6. Selecteer het account dat wordt gebruikt om verbinding te maken met de VMware vCenter-of vSphere ESXi-server. Klik vervolgens op **OK**.
+
+
 
 ## <a name="modify-credentials"></a>Referenties wijzigen
 
-Wijzig de referenties die worden gebruikt om als volgt verbinding te maken met de vCenter-Server of de ESXi-host:
+Indien nodig kunt u de referenties die worden gebruikt om verbinding te maken met de vCenter Server-vSphere als volgt wijzigen:
 
-1. Meld u aan bij de configuratie server en start cspsconfigtool. exe op het bureau blad.
+1. Meld u aan bij de configuratie.
+2. Open het hulp programma voor de configuratie server (cspsconfigtool. exe) met behulp van de snelkoppeling op het bureau blad.
 2. Klik op het tabblad **account beheren** op **account toevoegen** .
 
    ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
-3. Geef de nieuwe account gegevens op en klik op **OK** om deze toe te voegen. Het account moet beschikken over de bevoegdheden die [hierboven](#account-permissions)worden vermeld.
-4. Open op het Azure Portal de kluis > **site Recovery infra structuur** > **configuratie**servers en open de configuratie server.
-5. Klik op de pagina **Details** op **server vernieuwen**.
-6. Nadat de taak server vernieuwen is voltooid, selecteert u de vCenter Server om de **overzichts** pagina van vCenter te openen.
-7. Selecteer het zojuist toegevoegde account in het veld **vCenter-Server-vSphere** en klik op **Opslaan**.
+   
+3. Geef de nieuwe account gegevens op en klik op **OK**. Aan het account zijn de machtigingen vereist die [hierboven](#account-permissions)worden vermeld.
+4. Open de configuratie server in de kluis > **site Recovery infrastructuur** > **configuratie**servers.
+5. Klik in **Details**op **server vernieuwen**.
+6. Nadat de taak server vernieuwen is voltooid, selecteert u de vCenter Server.
+7. In **samen vatting**selecteert u het zojuist toegevoegde account in **Center Server/vSphere host-account**en klikt u op **Opslaan**.
 
    ![modify-account](./media/vmware-azure-manage-vcenter/modify-vcente-creds.png)
 
-## <a name="delete-a-vcenter-server"></a>Een vCenter-Server verwijderen
+## <a name="delete-a-vcenter-server"></a>Een vCenter Server verwijderen 
 
-1. Open in de Azure Portal uw kluis > **site Recovery infra structuur** > **configuratie**servers en open de configuratie server.
+1. Open de configuratie server in de kluis > **site Recovery infrastructuur** > **configuratie**servers.
 2. Selecteer op de pagina **Details** de vCenter-Server.
 3. Klik op de knop **verwijderen** .
 
    ![delete-account](./media/vmware-azure-manage-vcenter/delete-vcenter.png)
 
-## <a name="modify-the-vcenter-ip-address-and-port"></a>Het IP-adres en de poort van vCenter wijzigen
+## <a name="modify-the-ip-address-and-port"></a>Wijzig het IP-adres en de poort
 
-1. Meld u aan bij Azure Portal.
-2. Navigeer naar **Recovery Services kluis** > **Site Recovery infra structuur** > **configuratie servers**.
-3. Klik op de configuratie server waaraan de vCenter is toegewezen.
-4. Klik in de sectie **vCenter-servers** op de vCenter die u wilt wijzigen.
-5. Werk op de overzichts pagina vCenter het IP-adres en de poort van de vCenter in de desbetreffende velden bij en sla de wijzigingen op.
+U kunt het IP-adres van de vCenter Server wijzigen of de poorten die worden gebruikt voor communicatie tussen de server en Site Recovery. Site Recovery heeft standaard toegang tot de hostgegevens vCenter Server/vSphere via poort 443.
+
+1. Klik in de kluis > **site Recovery infrastructuur** > **configuratie servers**op de configuraties server waaraan de vCenter Server is toegevoegd.
+2. Klik in **vCenter-servers**op de vCenter Server u wilt wijzigen.
+5. Werk in **samen vatting**het IP-adres en de poort bij en sla de wijzigingen op.
 
    ![add_ip_new_vcenter](media/vmware-azure-manage-vcenter/add-ip.png)
 
 6. Als u de wijzigingen van kracht wilt laten worden, wacht u 15 minuten of [vernieuwt u de configuratie server](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 
-## <a name="migrate-all-protected-virtual-machines-to-a-new-vcenter"></a>Alle beveiligde virtuele machines migreren naar een nieuwe vCenter
 
-Als u alle virtuele machines naar de nieuwe vCenter wilt migreren, moet u geen ander vCenter-account toevoegen. Dit kan leiden tot dubbele vermeldingen. U hoeft alleen het IP-adres van de nieuwe vCenter bij te werken:
+## <a name="migrate-all-vms-to-a-new-server"></a>Alle Vm's migreren naar een nieuwe server
 
-1. Meld u aan bij Azure Portal.
-2. Navigeer naar **Recovery Services kluis** > **Site Recovery infra structuur** > **configuratie servers**.
-3. Klik op de configuratie server waaraan de oude vCenter is toegewezen.
-4. Klik in de sectie **vCenter-servers** op de vCenter waarvan u de migratie wilt plannen.
-5. Werk op de overzichts pagina van vCenter het IP-adres van de nieuwe vCenter in het veld **vCenter-Server/vSphere hostname of IP-adres**bij. Sla uw wijzigingen op.
+Als u alle Vm's wilt migreren om een nieuwe vCenter Server te gebruiken, hoeft u alleen het IP-adres bij te werken dat aan de vCenter Server is toegewezen. Voeg nog geen VMware-account toe, want dit kan leiden tot dubbele vermeldingen. Werk het adres als volgt bij:
 
-Zodra het IP-adres is bijgewerkt, worden Site Recovery-onderdelen detectie gegevens van virtuele machines ontvangen van de nieuwe vCenter. Dit heeft geen invloed op de voortdurende replicatie activiteiten.
+1. In de kluis > **site Recovery infrastructuur** > **configuratie servers**, Lick op de configuratie server waaraan de vCenter Server is toegevoegd.
+2. Klik in de sectie **vCenter-servers** op de vCenter Server waaruit u wilt migreren.
+5. Werk in **samen vatting**het IP-adres bij naar dat van de nieuwe vCenter Server en sla de wijzigingen op.
+6. Zodra het IP-adres is bijgewerkt, begint Site Recovery met het ontvangen van de detectie gegevens van de virtuele machine vanuit de nieuwe vCenter Server. Dit heeft geen invloed op lopende replicatie activiteiten.
 
-## <a name="migrate-few-protected-virtual-machines-to-a-new-vcenter"></a>Enkele beveiligde virtuele machines migreren naar een nieuwe vCenter
+## <a name="migrate-a-few-vms-to-a-new-server"></a>Een aantal virtuele machines migreren naar een nieuwe server
 
-> [!NOTE]
-> Deze sectie is alleen van toepassing wanneer u een aantal van uw beveiligde virtuele machines migreert naar een nieuwe vCenter. Als u een nieuwe set virtuele machines vanuit een nieuwe vCenter wilt beveiligen, voegt u [nieuwe vCenter-gegevens toe aan de configuratie server](#add-vmware-server-to-the-vault) en begint u met **[beveiliging inschakelen](vmware-azure-tutorial.md#enable-replication)** .
+Ga als volgt te werk als u slechts enkele van uw replicerende virtuele machines naar een nieuwe vCenter-Server wilt migreren:
 
-Een paar virtuele machines verplaatsen naar een nieuwe vCenter:
+1. [Voeg](#add-vmware-server-to-the-vault) de nieuwe vCenter Server toe aan de configuratie server.
+2. [Schakel replicatie uit](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) voor virtuele machines die worden verplaatst naar de nieuwe server.
+3. Migreer de virtuele machines in VMware naar de nieuwe vCenter Server. 
+4. [Schakel de replicatie](vmware-azure-tutorial.md#enable-replication) voor de gemigreerde Vm's opnieuw in en selecteer de nieuwe vCenter Server.
 
-1. [Voeg de nieuwe vCenter-gegevens toe aan de configuratie server](#add-vmware-server-to-the-vault).
-2. [Schakel de replicatie uit van de virtuele machines](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) die u wilt migreren.
-3. Voltooi de migratie van de geselecteerde virtuele machines naar de nieuwe vCenter.
-4. Beveilig nu gemigreerde virtuele machines door [de nieuwe vCenter te selecteren wanneer u beveiliging inschakelt](vmware-azure-tutorial.md#enable-replication).
 
-> [!TIP]
-> Als het aantal virtuele machines dat wordt gemigreerd **groter** is dan het aantal virtuele machines dat in de oude vCenter wordt bewaard, werkt u het IP-adres van de nieuwe vCenter bij met behulp van de instructies die hier worden gegeven. Voor de paar virtuele machines die in de oude vCenter worden bewaard, [schakelt u replicatie uit](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure). [Voeg nieuwe vCenter-gegevens toe aan de configuratie server](#add-vmware-server-to-the-vault)en start de **[beveiliging inschakelen](vmware-azure-tutorial.md#enable-replication)** .
+## <a name="migrate-most-vms-to-a-new-server"></a>De meeste Vm's migreren naar een nieuwe server
+ Als het aantal Vm's dat u wilt migreren naar een nieuwe vCenter Server hoger is dan het aantal Vm's dat op de oorspronkelijke vCenter Server blijft, gaat u als volgt te werk
 
-## <a name="frequently-asked-questions"></a>Veelgestelde vragen
-
-1. Als de beveiligde virtuele machines van de ene ESXi-host naar een andere worden verplaatst, heeft dit invloed op de replicatie?
-
-    Nee, dit heeft geen invloed op de doorlopende replicatie. [Zorg er echter voor dat u de hoofddoel server met voldoende bevoegdheden implementeert](vmware-azure-reprotect.md#deploy-a-separate-master-target-server)
-
-2. Wat zijn de poort nummers die worden gebruikt voor communicatie tussen vCenter en andere Site Recovery-onderdelen?
-
-    De standaard poort is 443. De configuratie server heeft via deze poort toegang tot de vCenter-vSphere. Als u deze informatie wilt bijwerken, klikt u [hier](#modify-the-vcenter-ip-address-and-port).
+1. [Werk het IP-adres](#modify-the-ip-address-and-port) dat is toegewezen aan de vCenter Server in de instellingen van de configuratie server, bij naar het adres van de nieuwe vCenter Server.
+2. [Schakel replicatie uit](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) voor de andere vm's die resteren op de oude server.
+3. [Voeg de oude vCenter Server](#add-vmware-server-to-the-vault) en het bijbehorende IP-adres toe aan de configuratie server.
+4. [Schakel replicatie opnieuw](vmware-azure-tutorial.md#enable-replication) in voor de vm's die op de oude server achterblijven.
+ 
+ ## <a name="next-steps"></a>Volgende stappen
+Als u problemen ondervindt, kunt u vCenter Server fouten [oplossen](vmware-azure-troubleshoot-vcenter-discovery-failures.md) .

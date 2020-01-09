@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b7bdd1e1922d9d8845a8187cabb3fd39af4694ab
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 75fe9c8587a15ed37366dceda05b5befb353ebb3
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70077901"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647506"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Een hoge Beschik baarheid van SAP NetWeaver installeren op een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-exemplaren in azure
 
@@ -36,8 +36,8 @@ ms.locfileid: "70077901"
 
 [sap-powershell-scrips]:https://github.com/Azure-Samples/sap-powershell
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [s2d-in-win-2016]:https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview
 [sofs-overview]:https://technet.microsoft.com/library/hh831349(v=ws.11).aspx
@@ -193,7 +193,7 @@ ms.locfileid: "70077901"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -203,7 +203,7 @@ In dit artikel wordt beschreven hoe u een SAP-systeem met hoge Beschik baarheid 
 
 Lees de volgende artikelen voordat u de installatie start:
 
-* [Architectuur handleiding: Een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van de bestands share][sap-high-availability-guide-wsfc-file-share]
+* [Architectuur handleiding: een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van de bestands share][sap-high-availability-guide-wsfc-file-share]
 
 * [Azure Infrastructure SAP-hoge Beschik baarheid voorbereiden met behulp van een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-instanties][sap-high-availability-infrastructure-wsfc-file-share]
 
@@ -231,13 +231,13 @@ Er zijn geen speciale overwegingen wanneer verschillende DBMS-services communice
 
 Maak het volgende volume en deze bestands share op het SOFS-cluster:
 
-* SAP GLOBALHOST- `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` bestands structuur op SOFS cluster Shared volume (CSV)
+* `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\`-structuur van het SAP GLOBALHOST-bestand op SOFS cluster Shared volume (CSV)
 
 * SAPMNT-bestands share
 
 * Stel beveiliging in voor de bestands share SAPMNT en de map met volledig beheer voor:
-    * Het \<domein > \SAP_\<sid > _GlobalAdmin-gebruikers groep
-    * Het SAP ASCS/SCS-cluster knooppunt computer \<objecten domein > $ en \<domein > \ClusterNode2 $
+    * De \<domein > \ SAP_\<SID > _GlobalAdmin gebruikers groep
+    * De SAP ASCS/SCS-cluster knooppunt computer objecten \<domein > \ClusterNode1 $ en \<domein > \ClusterNode2 $
 
 Als u een CSV-volume met mirror-tolerantie wilt maken, voert u de volgende Power shell-cmdlet uit op een van de SOFS-cluster knooppunten:
 
@@ -299,7 +299,7 @@ Maak een SAP ASCS/SCS-cluster netwerk naam (bijvoorbeeld **PR1-ASCS [10.0.6.7]**
 
 Installeer een SAP ASCS/SCS-exemplaar op het eerste cluster knooppunt. Als u het exemplaar wilt installeren, gaat u in het SAP SWPM-installatie programma naar:
 
-**\<Product >**  >  >  **DBMS>\<** installatie >  van toepassingsServerABAP(ofJava)>systeemmethogeBeschikbaarheid >  **ASCS/SCS-instantie** **Eerste cluster knooppunt.**  > 
+**\<Product >**  >  **\<DBMS >**  > **installatie** > **toepassings server ABAP** (of **Java**) > **systeem met hoge Beschik baarheid** > **ASCS/SCS-exemplaar** > **eerste cluster knooppunt**.
 
 ### <a name="add-a-probe-port"></a>Een test poort toevoegen
 
@@ -309,12 +309,12 @@ Configureer een SAP-cluster bron, de SAP-SID-IP-test poort, met behulp van Power
 
 Installeer een SAP ASCS/SCS-exemplaar op het tweede cluster knooppunt. Als u het exemplaar wilt installeren, gaat u in het SAP SWPM-installatie programma naar:
 
-**\<Product >**  >  >  **DBMS>\<** installatie >  van toepassingsServerABAP(ofJava)>systeemmethogeBeschikbaarheid >  **ASCS/SCS-instantie** **Extra cluster knooppunt.**  > 
+**\<Product >**  >  **\<DBMS >**  > **installatie** > **toepassings server ABAP** (of **Java**) > **systeem met hoge Beschik baarheid** > **ASCS/SCS-exemplaar** > **extra cluster knooppunt**.
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>Het SAP ASCS/SCS-exemplaar profiel bijwerken
 
-Werk de para meters bij in de ASCS/ \<SCS-instantie profiel-sid van SAP >_ASCS/SCS\<nr >_ \<host >.
+Werk de para meters bij in het SAP ASCS/SCS-exemplaar profiel \<SID >_ASCS/SCS\<Nr >_ \<host >.
 
 
 | Parameternaam | Parameterwaarde |
@@ -323,7 +323,7 @@ Werk de para meters bij in de ASCS/ \<SCS-instantie profiel-sid van SAP >_ASCS/S
 | enque/encni/set_so_keepalive  | **true** |
 | service/ha_check_node | **1** |
 
-Start het SAP ASCS/SCS-exemplaar opnieuw op. Para `KeepAlive` meters instellen op beide SAP ASCS/SCS-cluster knooppunten volgen de instructies voor [het instellen van Register vermeldingen op de cluster knooppunten van het SAP ASCS/SCS-exemplaar][high-availability-guide]. 
+Start het SAP ASCS/SCS-exemplaar opnieuw op. Stel `KeepAlive` para meters in op beide SAP ASCS/SCS-cluster knooppunten Volg de instructies voor [het instellen van Register vermeldingen op de cluster knooppunten van het SAP ASCS/SCS-exemplaar][high-availability-guide]. 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Een DBMS-exemplaar en SAP-toepassings servers installeren
 

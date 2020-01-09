@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cc1eb4c4fce1398365145b2f3d63db984635d667
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 34bc62a9cb7e5d1358322500a8929b6f8b36d422
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196238"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454558"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware-Vm's voorbereiden voor evaluatie en migratie naar Azure
 
@@ -124,7 +124,7 @@ Controleer de vereisten van het apparaat voordat u het apparaat implementeert.
 
 1. [Controleer](migrate-support-matrix-vmware.md#assessment-appliance-requirements) de vereisten en beperkingen van het apparaat.
 2. Als u een firewall proxy op basis van een URL gebruikt, [controleert](migrate-support-matrix-vmware.md#assessment-url-access-requirements) u de Azure-url's die het apparaat nodig heeft voor toegang. Zorg ervoor dat de proxy alle CNAME-records die zijn ontvangen, verhelpt tijdens het opzoeken van de Url's.
-3. Controleer de [prestatie gegevens](migrate-appliance.md#collected-performance-data-vmware)] en de [meta gegevens](migrate-appliance.md#collected-metadata-vmware) die door het apparaat worden verzameld tijdens de detectie en evaluatie.
+3. Controleer de [prestatie gegevens](migrate-appliance.md#collected-performance-data-vmware) en [meta gegevens](migrate-appliance.md#collected-metadata-vmware) die het apparaat tijdens detectie en evaluatie verzamelt.
 4. [Noteer](migrate-support-matrix-vmware.md#assessment-port-requirements) de poorten die door het apparaat worden gebruikt.
 5. Zorg er op vCenter Server voor dat uw account machtigingen heeft voor het maken van een virtuele machine met behulp van een bestand met eicellen. U implementeert het Azure Migrate-apparaat als een VMware-VM met behulp van een bestand met eicellen.
 

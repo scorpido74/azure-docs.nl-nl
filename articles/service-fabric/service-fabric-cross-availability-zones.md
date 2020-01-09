@@ -1,54 +1,45 @@
 ---
-title: Een Azure Service Fabric-cluster implementeren in meerdere Beschikbaarheidszones | Microsoft Docs
-description: Informatie over het maken van een Azure Service Fabric-cluster in meerdere Beschikbaarheidszones.
-services: service-fabric
-documentationcenter: .net
+title: Een cluster implementeren in Beschikbaarheidszones
+description: Meer informatie over het maken van een Azure Service Fabric cluster in Beschikbaarheidszones.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: b664c3d655ab45c89a65a0aea31622f57ddc8d9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6da9517f822c9c157d26a1bda8dab2c694b08b12
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65077453"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609975"
 ---
-# <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Een Azure Service Fabric-cluster implementeren in meerdere Beschikbaarheidszones
-Beschikbaarheidszones in Azure is een aanbieding die uw toepassingen en gegevens beveiligt tegen storingen in datacenters hoge beschikbaarheid. Een Beschikbaarheidszone is een unieke fysieke locatie zijn uitgerust met onafhankelijke voeding, koeling en netwerken binnen een Azure-regio.
+# <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Een Azure Service Fabric-cluster implementeren via Beschikbaarheidszones
+Beschikbaarheidszones in Azure is een aanbieding met hoge Beschik baarheid die uw toepassingen en gegevens beveiligt tegen Data Center-fouten. Een beschikbaarheids zone is een unieke fysieke locatie die is voorzien van onafhankelijke voeding, koeling en netwerken binnen een Azure-regio.
 
-Service Fabric biedt ondersteuning voor clusters die door te typen die zijn gekoppeld aan specifieke zones implementeren in meerdere Beschikbaarheidszones. Dit zorgt ervoor dat hoge beschikbaarheid van uw toepassingen. Azure-Beschikbaarheidszones zijn alleen beschikbaar in bepaalde regio's. Zie voor meer informatie, [overzicht van Beschikbaarheidszones Azure](https://docs.microsoft.com/azure/availability-zones/az-overview).
+Service Fabric ondersteunt clusters die over meerdere Beschikbaarheidszones beschikken door knooppunt typen te implementeren die zijn vastgemaakt aan specifieke zones. Dit zorgt voor een hoge Beschik baarheid van uw toepassingen. Azure-beschikbaarheidszones zijn alleen beschikbaar in bepaalde regio's. Zie [Azure-beschikbaarheidszones Overview](https://docs.microsoft.com/azure/availability-zones/az-overview)voor meer informatie.
 
-Voorbeeldsjablonen zijn beschikbaar: [Service Fabric cross-sjabloon van de zone beschikbaarheid](https://github.com/Azure-Samples/service-fabric-cluster-templates)
+Er zijn voorbeeld sjablonen beschikbaar: [service Fabric sjabloon voor meerdere beschikbaarheids zones](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 
-## <a name="recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones"></a>Aanbevolen topologie voor het primaire knooppunttype van Azure Service Fabric-clusters verdelen over Beschikbaarheidszones
-Een Service Fabric-cluster verdeeld over Beschikbaarheidszones zorgt voor hoge beschikbaarheid van de clusterstatus. Als u wilt een Service Fabric-cluster in zones omvatten, moet u een primaire knooppunttype maken in elke Beschikbaarheidszone ondersteund door de regio. Dit wordt seed-knooppunten gelijkmatig verdelen over elk van de typen van het primaire knooppunt.
+## <a name="recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones"></a>Aanbevolen topologie voor het primaire knooppunt type van Azure-Service Fabric clusters voor meerdere Beschikbaarheidszones
+Een Service Fabric cluster gedistribueerd over Beschikbaarheidszones zorgt voor een hoge Beschik baarheid van de cluster status. Als u een Service Fabric cluster over zones wilt verdelen, moet u een primair knooppunt type maken in elke beschikbaarheids zone die wordt ondersteund door de regio. Hiermee worden Seed-knoop punten gelijkmatig verdeeld over alle typen van het primaire knoop punt.
 
-De aanbevolen topologie voor het primaire knooppunttype is vereist voor de resources worden hieronder beschreven:
+De aanbevolen topologie voor het primaire knooppunt type vereist de onderstaande bronnen:
 
-* Het niveau van het cluster-betrouwbaarheid ingesteld op Platinum.
-* Drie typen gemarkeerd als primair.
-    * Elk knooppunttype moet worden toegewezen aan een eigen virtuele-machineschaalset die zich in verschillende zones.
-    * Elke virtuele-machineschaalset moet ten minste vijf knooppunten (Silver duurzaamheid) hebben.
-* Een enkel openbaar IP-Resource met behulp van standaard-SKU.
-* Een eenmalige Load Balancer-Resource met behulp van standaard-SKU.
-* Een NSG waarnaar wordt verwezen door het subnet waarin u uw virtuele machine-schaalsets implementeren.
+* Het betrouwbaarheids niveau van het cluster is ingesteld op Platinum.
+* Drie knooppunt typen die als primair zijn gemarkeerd.
+    * Elk knooppunt type moet worden toegewezen aan de eigen virtuele-machine schaalset die zich in verschillende zones bevindt.
+    * Elke schaalset voor virtuele machines moet ten minste vijf knoop punten bevatten (Silver duurzaamheid).
+* Eén open bare IP-resource met behulp van standaard-SKU.
+* Een enkele Load Balancer resource met standaard-SKU.
+* Een NSG waarnaar wordt verwezen door het subnet waarin u de schaal sets voor virtuele machines implementeert.
 
 >[!NOTE]
-> De virtuele-machineschaalset één plaatsing ResourceGroup-eigenschap moet worden ingesteld op true, omdat de Service Fabric biedt geen ondersteuning voor een enkele virtuele machine van een schaalset die meerdere zones.
+> De groeps eigenschap voor de schaalset voor virtuele machines moet worden ingesteld op True, omdat Service Fabric geen ondersteuning biedt voor een schaalset voor virtuele machines die zones omspant.
 
- ![Architectuur van Azure Service Fabric-Beschikbaarheidszone][sf-architecture]
+ ![Architectuur van Azure Service Fabric-beschikbaarheids zone][sf-architecture]
 
-## <a name="networking-requirements"></a>Netwerkvereisten
-### <a name="public-ip-and-load-balancer-resource"></a>Openbare IP-Adressen en Load Balancer-Resource
-Om in te schakelen van de zones die de eigenschap voor een virtuele-machineschaalset ingesteld resource, de load balancer en het IP-resource waarnaar wordt verwezen door deze virtuele-machineschaalset moeten beide gebruikmaken van een *Standard* SKU. Het maken van een load balancer of een IP-resource zonder de SKU-eigenschap maakt u een basis-SKU, die geen ondersteuning biedt voor Beschikbaarheidszones. Een standaard-SKU load balancer blokkeert al het verkeer van buiten standaard; om toe te staan buiten verkeer, moet een NSG aan het subnet worden geïmplementeerd.
+## <a name="networking-requirements"></a>Netwerk vereisten
+### <a name="public-ip-and-load-balancer-resource"></a>Openbaar IP-adres en Load Balancer bron
+Als u de eigenschap zones wilt inschakelen voor een resource met een schaalset voor virtuele machines, moet de load balancer en IP-resource waarnaar wordt verwezen door deze schaalset voor virtuele machines, beide gebruikmaken van een *standaard* -SKU. Als u een load balancer of IP-bron maakt zonder de SKU-eigenschap, wordt een basis-SKU gemaakt die geen ondersteuning biedt voor Beschikbaarheidszones. Een standaard-SKU load balancer blokkeert standaard al het verkeer van de buiten kant. Als u buiten verkeer wilt toestaan, moet er een NSG in het subnet worden geïmplementeerd.
 
 ```json
 {
@@ -96,10 +87,10 @@ Om in te schakelen van de zones die de eigenschap voor een virtuele-machineschaa
 ```
 
 >[!NOTE]
-> Het is niet mogelijk een wijziging in plaats van de SKU op het openbare IP-adres en de load balancer-resources. Als u uit bestaande resources waarvoor een basis-SKU migreert, ziet u de migratie-sectie van dit artikel.
+> Het is niet mogelijk om een in-place wijziging van de SKU in het open bare IP-adres en load balancer resources uit te voeren. Zie de sectie migratie in dit artikel als u migreert van bestaande resources die een basis-SKU hebben.
 
-### <a name="virtual-machine-scale-set-nat-rules"></a>Virtuele-machineschaalset NAT-regels
-De load balancer inkomende NAT-regels moeten overeenkomen met de NAT-groepen van de virtuele-machineschaalset. Elke virtuele-machineschaalset moet een unieke binnenkomende NAT-pool hebben.
+### <a name="virtual-machine-scale-set-nat-rules"></a>NAT-regels voor schaal sets voor virtuele machines
+De load balancer binnenkomende NAT-regels moeten overeenkomen met de NAT-groepen van de virtuele-machine schaalset. Elke schaalset voor virtuele machines moet een unieke binnenkomende NAT-groep hebben.
 
 ```json
 {
@@ -144,18 +135,18 @@ De load balancer inkomende NAT-regels moeten overeenkomen met de NAT-groepen van
 }
 ```
 
-### <a name="standard-sku-load-balancer-outbound-rules"></a>Standaard SKU Load Balancer regels voor uitgaand verkeer
-Standard Load Balancer en Standard openbaar IP-adres leiden tot nieuwe mogelijkheden en ander gedrag voor uitgaande connectiviteit vergelijking met basis-SKU's. Als u uitgaande connectiviteit wilt bij het werken met standaard-SKU's, moet u deze met standaard openbare IP-adressen of standaard openbare Load Balancer expliciet definiëren. Zie voor meer informatie, [uitgaande verbindingen](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatexhaust) en [Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
+### <a name="standard-sku-load-balancer-outbound-rules"></a>Standaard SKU Load Balancer uitgaande regels
+Standard Load Balancer en standaard open bare IP introduceren nieuwe mogelijkheden en verschillende gedragingen voor uitgaande connectiviteit in vergelijking met de basis-Sku's. Als u een uitgaande verbinding wilt gebruiken bij het werken met standaard-Sku's, moet u deze expliciet definiëren met een openbaar IP-adres of standaard open bare Load Balancer. Zie voor meer informatie [uitgaande verbindingen](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatexhaust) en [Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
 
 >[!NOTE]
-> De standaard sjabloon verwijst naar een NSG waarmee al het uitgaande verkeer standaard. Binnenkomend verkeer is beperkt tot de poorten die vereist voor Service Fabric-beheerbewerkingen zijn. De NSG-regels kunnen worden gewijzigd om te voldoen aan uw vereisten.
+> De standaard sjabloon verwijst naar een NSG waarmee al het uitgaande verkeer standaard wordt toegestaan. Binnenkomend verkeer is beperkt tot de poorten die vereist zijn voor Service Fabric-beheer bewerkingen. De NSG-regels kunnen worden aangepast om te voldoen aan uw vereisten.
 
-### <a name="enabling-zones-on-a-virtual-machine-scale-set"></a>Inschakelen van de zones op een virtuele-machineschaalset instellen
-Inschakelen van een zone, ingesteld op een virtuele-machineschaalset die u moet de volgende drie waarden bevatten in de virtual machine scale set-resource.
+### <a name="enabling-zones-on-a-virtual-machine-scale-set"></a>Zones inschakelen op een schaalset voor virtuele machines
+Als u een zone wilt inschakelen, moet u op een schaalset voor virtuele machines de volgende drie waarden in de resource van de virtuele-machine schaalset opgeven.
 
-* De eerste waarde is de **zones** eigenschap, die aangeeft welke de virtuele-machineschaalset wordt geïmplementeerd binnen een Beschikbaarheidszone.
-* De tweede waarde is de eigenschap "singlePlacementGroup", die moet worden ingesteld op true.
-* De derde waarde is de eigenschap 'faultDomainOverride' in de extensie van de Service Fabric virtuele-machineschaalset. De waarde voor deze eigenschap moet bevatten de regio en zone waarin deze virtuele-machineschaalset wordt geplaatst. Voorbeeld: "faultDomainOverride": "VS-Oost/az1' alle virtuele-resources machineschaalset moeten in dezelfde regio worden geplaatst, omdat Azure Service Fabric-clusters nog geen cross-ondersteuning voor regio.
+* De eerste waarde is de eigenschap **zones** , waarmee wordt opgegeven in welke beschikbaarheids zone de schaalset voor virtuele machines wordt geïmplementeerd.
+* De tweede waarde is de eigenschap ' singlePlacementGroup ', die moet worden ingesteld op True.
+* De derde waarde is de eigenschap ' faultDomainOverride ' in de Service Fabric extensie voor de virtuele-machine schaalset. De waarde voor deze eigenschap moet de regio en zone bevatten waarin deze schaalset voor virtuele machines wordt geplaatst. Voor beeld: "faultDomainOverride": "oostus/Az1" alle resources voor de schaalset van virtuele machines moeten in dezelfde regio worden geplaatst, omdat Azure Service Fabric clusters geen ondersteuning bieden voor meerdere regio's.
 
 ```json
 {
@@ -195,8 +186,8 @@ Inschakelen van een zone, ingesteld op een virtuele-machineschaalset die u moet 
 }
 ```
 
-### <a name="enabling-multiple-primary-node-types-in-the-service-fabric-cluster-resource"></a>Inschakelen van meerdere primaire knooppunttypen in de Service Fabric-Cluster-bron
-Als u wilt een of meer knooppunttypen instellen als primaire in een cluster-bron, stelt u de eigenschap 'isPrimary' op 'true'. Wanneer u een Service Fabric-cluster in meerdere Beschikbaarheidszones implementeert, moet u drie typen hebben in verschillende zones.
+### <a name="enabling-multiple-primary-node-types-in-the-service-fabric-cluster-resource"></a>Meerdere primaire knooppunt typen inschakelen in de Service Fabric cluster resource
+Als u een of meer knooppunt typen als primair wilt instellen in een cluster bron, stelt u de eigenschap ' isPrimary ' in op ' True '. Bij het implementeren van een Service Fabric cluster via Beschikbaarheidszones, moet u drie knooppunt typen hebben in verschillende zones.
 
 ```json
 {
@@ -254,20 +245,20 @@ Als u wilt een of meer knooppunttypen instellen als primaire in een cluster-bron
 }
 ```
 
-## <a name="migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>Migreren met Beschikbaarheidszones uit een cluster met behulp van een basis SKU Load Balancer en een Basic SKU-IP-adres
-Als u wilt migreren van een cluster, wat is met een Load Balancer en het IP-met een basis-SKU, moet u eerst een geheel nieuwe Load Balancer en IP-resource met behulp van de standaard-SKU maken. Het is niet mogelijk om bij te werken van deze resources in-place.
+## <a name="migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>Migreren naar met behulp van Beschikbaarheidszones van een cluster met behulp van een basis-SKU Load Balancer en een basis-SKU-IP
+Als u een cluster wilt migreren dat gebruikmaakt van een Load Balancer en IP met een basis-SKU, moet u eerst een volledig nieuwe Load Balancer en IP-bron maken met behulp van de standaard-SKU. Het is niet mogelijk om deze resources in-place bij te werken.
 
-De nieuwe LB en IP moet naar worden verwezen in de nieuwe cross binnen een Beschikbaarheidszone knooppunttypen dat u wilt gebruiken. In het voorbeeld hierboven drie nieuwe virtuele-machineschaalset zijn set resources toegevoegd in zones 1,2 en 3. Deze virtuele-machineschaalset verwijzing naar de zojuist gemaakte LB en IP-ingesteld en zijn gemarkeerd als primaire knooppunttypen in de Resource voor de Service Fabric-Cluster.
+Er moet naar de nieuwe LB en IP worden verwezen in de nieuwe knooppunt typen voor de zone voor meerdere Beschik baarheid die u wilt gebruiken. In het bovenstaande voor beeld zijn drie nieuwe resources voor virtuele-machine schaal sets toegevoegd in zones 1, 2 en 3. Deze schaal sets voor virtuele machines verwijzen naar de nieuw gemaakte LB en IP en worden gemarkeerd als primaire knooppunt typen in de Service Fabric cluster bron.
 
-Als u wilt beginnen, moet u de nieuwe resources toevoegen aan uw bestaande Resource Manager-sjabloon. Deze resources omvatten:
-* Een openbare IP-Resource met behulp van standaard-SKU.
-* Een Load Balancer-Resource met behulp van standaard-SKU.
-* Een NSG waarnaar wordt verwezen door het subnet waarin u uw virtuele machine-schaalsets implementeren.
-* Drie typen gemarkeerd als primair.
-    * Elk knooppunttype moet worden toegewezen aan een eigen virtuele-machineschaalset die zich in verschillende zones.
-    * Elke virtuele-machineschaalset moet ten minste vijf knooppunten (Silver duurzaamheid) hebben.
+U moet de nieuwe resources toevoegen aan uw bestaande resource manager-sjabloon om te beginnen. Deze resources omvatten:
+* Een open bare IP-resource met een standaard-SKU.
+* Een Load Balancer resource met standaard-SKU.
+* Een NSG waarnaar wordt verwezen door het subnet waarin u de schaal sets voor virtuele machines implementeert.
+* Drie knooppunt typen die als primair zijn gemarkeerd.
+    * Elk knooppunt type moet worden toegewezen aan de eigen virtuele-machine schaalset die zich in verschillende zones bevindt.
+    * Elke schaalset voor virtuele machines moet ten minste vijf knoop punten bevatten (Silver duurzaamheid).
 
-Een voorbeeld van deze resources vindt u de [voorbeeldsjabloon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-Ubuntu-2-NodeType-Secure).
+Een voor beeld van deze resources vindt u in de [voorbeeld sjabloon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-Ubuntu-2-NodeType-Secure).
 
 ```powershell
 New-AzureRmResourceGroupDeployment `
@@ -276,7 +267,7 @@ New-AzureRmResourceGroupDeployment `
     -TemplateParameterFile $Parameters
 ```
 
-Zodra de resources hebt geïmplementeerd, kunt u beginnen met het uitschakelen van de knooppunten in het primaire knooppunttype uit het oorspronkelijke cluster. Als de knooppunten zijn uitgeschakeld, wordt de systeemservices worden gemigreerd naar de nieuwe primaire knooppunttype die in de bovenstaande stap had is geïmplementeerd.
+Zodra de implementatie van de resources is voltooid, kunt u beginnen met het uitschakelen van de knoop punten in het primaire knooppunt type van het oorspronkelijke cluster. Wanneer de knoop punten zijn uitgeschakeld, worden de systeem services gemigreerd naar het nieuwe primaire knooppunt type dat in de bovenstaande stap is geïmplementeerd.
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterName `
@@ -298,7 +289,7 @@ foreach($name in $nodeNames) {
 }
 ```
 
-Nadat de knooppunten zijn alle uitgeschakeld, wordt het system-services worden uitgevoerd op het primaire knooppunttype, verdeeld over zones. U kunt vervolgens de uitgeschakelde knooppunten verwijderen uit het cluster. Wanneer de knooppunten zijn verwijderd, kunt u het oorspronkelijke IP-adres, Load Balancer, verwijderen en resources voor virtuele-machineschaalset.
+Zodra alle knoop punten zijn uitgeschakeld, worden de systeem services uitgevoerd op het primaire knooppunt type, dat over meerdere zones wordt verspreid. U kunt de uitgeschakelde knoop punten vervolgens verwijderen uit het cluster. Nadat de knoop punten zijn verwijderd, kunt u de oorspronkelijke IP-, Load Balancer-en virtuele-machine schaal sets verwijderen.
 
 ```powershell
 foreach($name in $nodeNames){
@@ -318,9 +309,9 @@ Remove-AzureRmLoadBalancer -Name $lbname -ResourceGroupName $groupname -Force
 Remove-AzureRmPublicIpAddress -Name $oldPublicIpName -ResourceGroupName $groupname -Force
 ```
 
-Vervolgens moet u de verwijzingen naar deze resources van de Resource Manager-sjabloon die u had geïmplementeerd.
+Vervolgens verwijdert u de verwijzingen naar deze resources uit de Resource Manager-sjabloon die u hebt geïmplementeerd.
 
-De laatste stap wordt hebben betrekking op de DNS-naam en een openbaar IP-adres bijwerken.
+Bij de laatste stap moet de DNS-naam en het open bare IP-adres worden bijgewerkt.
 
 ```powershell
 $oldprimaryPublicIP = Get-AzureRmPublicIpAddress -Name $oldPublicIpName  -ResourceGroupName $groupname

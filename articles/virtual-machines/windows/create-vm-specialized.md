@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: ac18056f9bfdf22c55b5effac810b8c24ab4d81d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fc157c2253a718860e028fa493574cb9aa2ccdf2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033862"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460182"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Een Windows-VM maken op basis van een gespecialiseerde schijf met behulp van Power shell
 
@@ -70,7 +70,7 @@ U kunt nu een VHD rechtstreeks uploaden naar een beheerde schijf. Zie [een VHD u
 
 U kunt een kopie maken van een virtuele machine die gebruikmaakt van beheerde schijven door een moment opname van de virtuele machine uit te voeren en vervolgens met die moment opname een nieuwe beheerde schijf en een nieuwe virtuele machine te maken.
 
-Als u een bestaande VM wilt kopiëren naar een andere regio, wilt u mogelijk azcopy gebruiken om [een kopie van een schijf in een andere regio](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)te bevinden. 
+Als u een bestaande VM wilt kopiëren naar een andere regio, wilt u mogelijk azcopy gebruiken om [een kopie van een schijf in een andere regio te maken](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk). 
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>Een moment opname maken van de besturingssysteem schijf
 

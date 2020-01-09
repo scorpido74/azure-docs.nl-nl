@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric-bewakings partners | Microsoft Docs
-description: Meer informatie over het bewaken van Azure Service Fabric met oplossingen voor het controleren van partners
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric-bewakings partners
+description: Meer informatie over het bewaken van Azure Service Fabric-toepassingen,-clusters en-infra structuur met oplossingen voor partner bewaking.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 8353c8846820aa996214e6b119a2f9027b8b6fe6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fd24d65ebdf4e458870819286024d1ea2e13d83e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232453"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645715"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric-bewakings partners
 
@@ -43,11 +34,11 @@ Nieuwe Relic is een hulp programma voor het beheren van toepassings prestaties d
 
 ## <a name="elk"></a>ELK 
 
-De ELK-stack is een verzameling van open-source technologieën: Elasticsearch, Logstash en Kibana. Door deze in combi natie te gebruiken, kunt u Service Fabric bewakings-en diagnostische gegevens verzamelen, opslaan en analyseren. [Hier vindt](service-fabric-tutorial-java-elk.md)u een zelf studie over hoe u dit doet met Service Fabric systeem eigen Java-toepassingen. 
+De ELK-stack is een verzameling open-source technologieën: Elasticsearch, Logstash en Kibana. Door deze technologieën in combi natie te gebruiken, kunt u Service Fabric bewakings-en diagnostische gegevens verzamelen, opslaan en analyseren. [Hier vindt](service-fabric-tutorial-java-elk.md)u een zelf studie over hoe u dit doet met Service Fabric systeem eigen Java-toepassingen. 
 
 ## <a name="humio"></a>Humio
 
-Humio is een logboek verzamelings service waarmee u logboeken van uw toepassingen en gebeurtenissen van Service Fabric in de Cloud of on-premises in realtime kunt verzamelen. Naast Live waarneem bare informatie biedt Humio de status van de functies voor het analyseren van illustraties en visualisaties voor het weer geven en verzamelen van inzichten van uw diagnostische gegevens. Humio heeft rendabele prijs plannen en is gebouwd om te worden geschaald terwijl de snelle snelheid wordt verlicht. Het wordt rechtstreeks geïntegreerd met Service Fabric platform gebeurtenissen en toepassings-telemetrie. U kunt [hier](https://github.com/humio/service-fabric-humio)meer lezen over de Humio-en service Fabric-integratie.
+Humio is een logboek verzamelings service waarmee u logboeken van uw toepassingen en gebeurtenissen van Service Fabric in de Cloud of on-premises in realtime kunt verzamelen. Naast Live waarneem bare Humio biedt de geavanceerde analyse-en visualisatie mogelijkheden voor het weer geven en verzamelen van informatie van uw diagnostische gegevens. Humio heeft rendabele prijs plannen en is gebouwd om te worden geschaald terwijl de snelle snelheid wordt verlicht. Het wordt rechtstreeks geïntegreerd met Service Fabric platform gebeurtenissen en toepassings-telemetrie. U kunt [hier](https://github.com/humio/service-fabric-humio)meer lezen over de Humio-en service Fabric-integratie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: bcc4af837cc28a18345e49cd39ddf88d24e44dd8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8b338f25e9771f5947fd494cfb00d0f6cb9ef67a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489015"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450840"
 ---
 1. Selecteer **VPN-sites verbinden** om de pagina **verbinding maken met sites** te openen.
 
@@ -22,13 +22,13 @@ ms.locfileid: "73489015"
    Vul de volgende velden in:
 
    * Geef een vooraf gedeelde sleutel op. Als u geen sleutel invoert, wordt er door Azure automatisch een voor u gegenereerd.
-   * Selecteer het protocol en de IPsec-instellingen. Raadpleeg standaard/aangepaste IPSec-Details (plaats de koppeling naar de pagina)
+   * Selecteer het protocol en de IPsec-instellingen. Raadpleeg [standaard/aangepaste IPSec-Details] (https://docs.microsoft.com/azure/virtual-wan/virtual-wan-ipsec)
    * Selecteer de juiste optie voor het **door geven van de standaard route**. Met de optie **Enable** kan de virtuele hub een geleerde standaard route naar deze verbinding door geven. Met deze vlag wordt de standaard route doorgifte alleen naar een verbinding alleen als de standaard route al door de virtuele WAN-hub is geleerd als gevolg van het implementeren van een firewall in de hub, of als een andere verbonden site geforceerde tunneling heeft ingeschakeld. De standaard route is niet afkomstig van de virtuele WAN-hub.
 
 2. Selecteer **Verbinden**.
 3. In een paar minuten wordt de verbinding en connectiviteits status weer gegeven op de site.
 
-   ![hebben](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
+   ![status](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
 
    **Verbindings status:** Dit is de status van de Azure-resource voor de verbinding die de VPN-site verbindt met de VPN-gateway van de Azure-hub. Zodra de bewerking voor het besturings vlak is voltooid, wordt de verbinding met Azure VPN gateway en het on-premises VPN-apparaat voortgezet.
 

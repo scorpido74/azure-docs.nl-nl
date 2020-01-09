@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 32ac91df042eb29c39cc54b738dbb96aff3104f3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/10/2019
+ms.openlocfilehash: 2e4a6ab8825982969ffa4654c2418f7a9d168d2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496510"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460716"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Analyse functies voor tekst verwerking in azure Cognitive Search
 
@@ -39,7 +39,7 @@ Deze wordt automatisch gebruikt voor elk Doorzoek bare veld. U kunt de standaard
 
 In de volgende lijst wordt beschreven welke analyse functies beschikbaar zijn in azure Cognitive Search.
 
-| Category | Beschrijving |
+| Categorie | Beschrijving |
 |----------|-------------|
 | [Standard-lucene Analyzer](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Standaard. Er is geen specificatie of configuratie vereist. Deze General-Purpose Analyzer werkt goed voor de meeste talen en scenario's.|
 | Vooraf gedefinieerde analyse functies | Wordt aangeboden als een voltooid product dat is bedoeld om te worden gebruikt als-is. <br/>Er zijn twee typen: speciaal en taal. Wat maakt het ' vooraf gedefinieerd ' dat u naar de naam verwijst, zonder configuratie of aanpassing. <br/><br/>[Gespecialiseerde analyse functies (taal-neutraal)](index-add-custom-analyzers.md#AnalyzerTable) worden gebruikt wanneer tekst invoer gespecialiseerde verwerking of minimale verwerking vereist. Vooraf gedefinieerde analyse functies zonder taal zijn **Asciifolding**, **tref woord**, **patroon**, **eenvoudig**, **Stop**, **spatie**.<br/><br/>[Taal analysen](index-add-language-analyzers.md) worden gebruikt wanneer u ondersteuning voor uitgebreide taal functionaliteit voor afzonderlijke talen nodig hebt. Azure Cognitive Search biedt ondersteuning voor taal analyses van 35 en 50 micro soft voor de verwerking van natuurlijke taal. |
@@ -55,11 +55,14 @@ Een paar vooraf gedefinieerde analyse functies, zoals **patroon** of **Stop**, o
 
 3. U kunt eventueel, in plaats van één **analyse** -eigenschap, verschillende analyse functies instellen voor indexering en query's uitvoeren met behulp van de veld parameters **indexAnalyzer** en **searchAnalyzer** . U gebruikt verschillende analyse functies voor het voorbereiden en ophalen van gegevens als een van deze activiteiten vereist dat een specifieke trans formatie niet nodig is voor de andere.
 
+> [!NOTE]
+> Het is niet mogelijk om een andere [taal analyse](index-add-language-analyzers.md) te gebruiken tijdens de indexerings tijd dan bij het opvragen van een veld. Deze mogelijkheid is gereserveerd voor [aangepaste analyse](index-add-custom-analyzers.md)functies. Als u daarom probeert de eigenschappen **searchAnalyzer** of **indexAnalyzer** in te stellen op de naam van een taal analyse, retourneert de rest API een fout bericht. U moet in plaats daarvan de eigenschap **Analyzer** gebruiken.
+
 Het is niet toegestaan om **analyse** -of **indexAnalyzer** toe te wijzen aan een veld dat al fysiek is gemaakt. Als dat niet het geval is, raadpleegt u de volgende tabel voor een overzicht van de acties die moeten worden opgebouwd.
  
  | Scenario | Impact | Stappen |
  |----------|--------|-------|
- | Een nieuw veld toevoegen | Minimale | Als het veld nog niet in het schema bestaat, is er geen veld revisie om te maken, omdat het veld nog geen fysieke aanwezigheid in uw index heeft. U kunt [update-index](https://docs.microsoft.com/rest/api/searchservice/update-index) gebruiken om een nieuw veld toe te voegen aan een bestaande index en [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) te vullen.|
+ | Een nieuw veld toevoegen | minimale | Als het veld nog niet in het schema bestaat, is er geen veld revisie om te maken, omdat het veld nog geen fysieke aanwezigheid in uw index heeft. U kunt [update-index](https://docs.microsoft.com/rest/api/searchservice/update-index) gebruiken om een nieuw veld toe te voegen aan een bestaande index en [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) te vullen.|
  | Een **Analyzer** -of **indexAnalyzer** toevoegen aan een bestaand geïndexeerd veld. | [opnieuw opbouwen](search-howto-reindex.md) | De omgekeerde index voor dat veld moet vanaf het begin opnieuw worden gemaakt en de inhoud voor deze velden moet opnieuw worden geïndexeerd. <br/> <br/>Voor indexen onder actieve ontwikkeling [verwijdert](https://docs.microsoft.com/rest/api/searchservice/delete-index) en [maakt](https://docs.microsoft.com/rest/api/searchservice/create-index) u de index om de nieuwe veld definitie op te halen. <br/> <br/>Voor indexen in productie kunt u een nieuwe build uitstellen door een nieuw veld te maken om de gereviseerde definitie te geven en te gebruiken in plaats van de oude. Gebruik [update-index](https://docs.microsoft.com/rest/api/searchservice/update-index) om het nieuwe veld en [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) op te nemen. Later kunt u als onderdeel van de geplande index onderhoud de index opschonen om verouderde velden te verwijderen. |
 
 ## <a name="when-to-add-analyzers"></a>Wanneer u analyse functies wilt toevoegen
@@ -113,8 +116,8 @@ Dit voor beeld door lopen:
 
 * Analyse functies zijn een eigenschap van de veld klasse voor een doorzoekbaar veld.
 * Een aangepaste analyse functie maakt deel uit van een index definitie. Het kan licht worden aangepast (u kunt bijvoorbeeld één optie in één filter aanpassen) of op meerdere locaties aangepast.
-* In dit geval is de aangepaste Analyzer "my_analyzer", die op zijn beurt een aangepaste standaard tokenizer "my_standard_tokenizer" en twee token filters gebruikt: kleine en aangepaste asciifolding filter "my_asciifolding".
-* Het definieert ook 2 aangepaste teken filters ' map_dash ' en ' remove_whitespace '. De eerste Hiermee vervangt u alle streepjes door onderstrepings tekens, terwijl de tweede een spatie verwijdert. Spaties moeten UTF-8-code ring zijn in de toewijzings regels. De teken filters worden vóór het tokenen toegepast en beïnvloeden de resulterende tokens (de standaard-tokenizer pauzes op een streepje en spaties, maar niet op een onderstrepings teken).
+* In dit geval is de aangepaste Analyzer "my_analyzer", die op zijn beurt gebruikmaakt van een aangepaste standaard tokenizer "my_standard_tokenizer" en twee token filters: kleine en aangepaste asciifolding-filter "my_asciifolding".
+* Ook worden er 2 aangepaste teken filters map_dash en remove_whitespace gedefinieerd. De eerste Hiermee vervangt u alle streepjes door onderstrepings tekens, terwijl de tweede een spatie verwijdert. Spaties moeten UTF-8-code ring zijn in de toewijzings regels. De teken filters worden vóór het tokenen toegepast en beïnvloeden de resulterende tokens (de standaard-tokenizer pauzes op een streepje en spaties, maar niet op een onderstrepings teken).
 
 ~~~~
   {
@@ -346,11 +349,11 @@ Maak een [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.
 
 ## <a name="see-also"></a>Zie ook
 
- [Zoeken naar documenten REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
+ [REST API voor documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 
  [Vereenvoudigde querysyntaxis](query-simple-syntax.md) 
 
- [Volledige lucene-query syntaxis](query-lucene-syntax.md) 
+ [Volledige Lucene-querysyntaxis](query-lucene-syntax.md) 
  
  [Zoekresultaten verwerken](search-pagination-page-layout.md)
 

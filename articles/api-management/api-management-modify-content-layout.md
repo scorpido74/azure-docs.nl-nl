@@ -1,5 +1,6 @@
 ---
-title: Pagina-inhoud bewerken in de ontwikkelaarsportal in Azure API Management | Microsoft Docs
+title: Pagina-inhoud in de ontwikkelaars Portal in API Management wijzigen
+titleSuffix: Azure API Management
 description: Informatie over het bewerken van pagina-inhoud in de ontwikkelaarsportal in Azure API Management.
 services: api-management
 documentationcenter: ''
@@ -13,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: vlvinogr
-ms.openlocfilehash: 0a333b1fac78889b61829b869c23efea5e312adf
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ebf2cbd430339378a09d10d91ad61327d24842e4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072276"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430638"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>De inhoud en opmaak van pagina’s bewerken in de ontwikkelaarsportal in Azure API Management
 Er zijn die manieren waarop u de ontwikkelaarsportal in Azure API Management kunt aanpassen:
 
-* [De inhoud van statische pagina's en pagina-indelings elementen bewerken][modify-content-layout] (dit wordt uitgelegd in deze hand leiding)
+* [De inhoud van statische pagina's en pagina-indelings elementen bewerken][modify-content-layout] (in deze hand leiding wordt uitgelegd)
 * [De stijlen bijwerken die worden gebruikt voor pagina-elementen in de ontwikkelaars Portal][customize-styles]
-* [De sjablonen bewerken die worden gebruikt voor pagina's die worden gegenereerd door de portal][portal-templates] (bijvoorbeeld API-documenten, producten, gebruikers verificatie, enzovoort)
+* [Wijzig de sjablonen die worden gebruikt voor pagina's die worden gegenereerd door de portal][portal-templates] (bijvoorbeeld API-documenten, producten, gebruikers verificatie, enzovoort)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="page-structure"> </a>Structuur van pagina's in de ontwikkelaarsportal
+## <a name="page-structure"> </a>Structuur van pagina's van de ontwikkelaars Portal
 
 De ontwikkelaarsportal is gebaseerd op een inhoudsbeheersysteem. De indeling van elke pagina is opgebouwd op basis van een reeks kleine pagina-elementen die ook wel widgets worden genoemd:
 
@@ -41,7 +42,7 @@ Alle widgets kunnen worden bewerkt.
 
 Voor de alledaagse paginabewerkingen bewerkt u meestal alleen de widget Inhoud, die op elke afzonderlijke pagina andere inhoud bevat.
 
-## <a name="modify-layout-widget"> </a>De inhoud van een indelingswidget wijzigen
+## <a name="modify-layout-widget"> </a>De inhoud van een indelings widget wijzigen
 
 De Developer-portal is toegankelijk via de Azure Portal.
 
@@ -56,7 +57,7 @@ U zou nu de nieuwe header op elke pagina moeten zien binnen de ontwikkelaarsport
 
 ## <a name="next-steps"> </a>Volgende stappen
 * [De stijlen bijwerken die worden gebruikt voor pagina-elementen in de ontwikkelaars Portal][customize-styles]
-* [De sjablonen bewerken die worden gebruikt voor pagina's die worden gegenereerd door de portal][portal-templates] (bijvoorbeeld API-documenten, producten, gebruikers verificatie, enzovoort)
+* [Wijzig de sjablonen die worden gebruikt voor pagina's die worden gegenereerd door de portal][portal-templates] (bijvoorbeeld API-documenten, producten, gebruikers verificatie, enzovoort)
 
 [Structure of developer portal pages]: #page-structure
 [Modifying the contents of a layout widget]: #modify-layout-widget

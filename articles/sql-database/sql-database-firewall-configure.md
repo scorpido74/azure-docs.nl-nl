@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 5c1a146a12fd8881982826e0a87868a6eaf05cb1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9db6b5ff517a1b0d67e59591ee634dfad685527b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851813"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461467"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database en Azure SQL Data Warehouse IP-firewall regels
 
@@ -101,7 +101,7 @@ Wanneer een computer via Internet verbinding probeert te maken met uw database s
 
 ### <a name="connections-from-inside-azure"></a>Verbindingen van binnen Azure
 
-Azure-verbindingen moeten zijn ingeschakeld om toepassingen die in Azure worden gehost, toe te staan om verbinding te maken met uw SQL Server. Wanneer een toepassing van Azure probeert verbinding te maken met uw database server, controleert de firewall of Azure-verbindingen zijn toegestaan. Een firewall instelling met IP-begin-en eind adres die gelijk is aan *0.0.0.0* geeft aan dat Azure-verbindingen zijn toegestaan. Als de verbinding niet is toegestaan, wordt de SQL Database Server niet bereikt door de aanvraag.
+Azure-verbindingen moeten zijn ingeschakeld om toepassingen die in Azure worden gehost, toe te staan om verbinding te maken met uw SQL Server. Wanneer een toepassing van Azure probeert verbinding te maken met uw database server, controleert de firewall of Azure-verbindingen zijn toegestaan. Een firewall instelling met IP-begin-en eind adres die gelijk is aan *0.0.0.0* geeft aan dat Azure-verbindingen zijn toegestaan. Dit kan rechtstreeks op de Blade van de Azure-Portal worden ingeschakeld door firewall regels in te stellen en de optie **Azure-Services en-resources toegang geven tot deze server** om in te scha **kelen in de** **firewalls en virtuele netwerken** . Als de verbinding niet is toegestaan, wordt de SQL Database Server niet bereikt door de aanvraag.
 
 > [!IMPORTANT]
 > Met deze optie configureert u de firewall om alle verbindingen van Azure toe te staan, met inbegrip van verbindingen van de abonnementen van andere klanten. Als u deze optie selecteert, moet u ervoor zorgen dat uw aanmelding en gebruikers machtigingen alleen toegang tot geautoriseerde gebruikers beperken.
@@ -149,9 +149,9 @@ De overzichts pagina voor de server wordt geopend. De volledig gekwalificeerde s
 
 | Catalogus weergave of opgeslagen procedure | Niveau | Beschrijving |
 | --- | --- | --- |
-| [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |Server |Hiermee worden de huidige IP-firewall regels op server niveau weer gegeven |
-| [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |Server |Hiermee worden IP-firewall regels op server niveau gemaakt of bijgewerkt |
-| [sp_delete_firewall_rule](https://msdn.microsoft.com/library/dn270024.aspx) |Server |Hiermee worden IP-firewall regels op server niveau verwijderd |
+| [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |server |Hiermee worden de huidige IP-firewall regels op server niveau weer gegeven |
+| [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |server |Hiermee worden IP-firewall regels op server niveau gemaakt of bijgewerkt |
+| [sp_delete_firewall_rule](https://msdn.microsoft.com/library/dn270024.aspx) |server |Hiermee worden IP-firewall regels op server niveau verwijderd |
 | [sys.database_firewall_rules](https://msdn.microsoft.com/library/dn269982.aspx) |Database |Hiermee worden de huidige IP-firewall regels op database niveau weer gegeven |
 | [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) |Database |Hiermee worden de IP-firewall regels op database niveau gemaakt of bijgewerkt |
 | [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx) |Databases |Hiermee verwijdert u IP-firewall regels op database niveau |
@@ -183,10 +183,10 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 
 | Cmdlet | Niveau | Beschrijving |
 | --- | --- | --- |
-| [Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |Server |Retourneert de huidige firewallregels op serverniveau |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |Server |Maakt een nieuwe firewallregel op serverniveau |
-| [Set-AzSqlServerFirewallRule](/powershell/module/az.sql/set-azsqlserverfirewallrule) |Server |Werkt de eigenschappen van een bestaande firewallregel op serverniveau bij |
-| [Remove-AzSqlServerFirewallRule](/powershell/module/az.sql/remove-azsqlserverfirewallrule) |Server |Verwijdert firewallregels op serverniveau |
+| [Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |server |Retourneert de huidige firewallregels op serverniveau |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |server |Maakt een nieuwe firewallregel op serverniveau |
+| [Set-AzSqlServerFirewallRule](/powershell/module/az.sql/set-azsqlserverfirewallrule) |server |Werkt de eigenschappen van een bestaande firewallregel op serverniveau bij |
+| [Remove-AzSqlServerFirewallRule](/powershell/module/az.sql/remove-azsqlserverfirewallrule) |server |Verwijdert firewallregels op serverniveau |
 
 In het volgende voor beeld wordt Power shell gebruikt om een IP-firewall regel op server niveau in te stellen:
 
@@ -205,11 +205,11 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 | Cmdlet | Niveau | Beschrijving |
 | --- | --- | --- |
-|[AZ SQL Server firewall-Rule Create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Server|Hiermee maakt u een server-IP-firewall regel|
-|[AZ SQL Server firewall-Rule List](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Server|Een lijst met de IP-firewall regels op een server|
-|[AZ SQL Server firewall-Rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Server|Toont de details van een IP-firewall regel|
-|[AZ SQL Server firewall-Rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Server|Hiermee wordt een IP-firewall regel bijgewerkt|
-|[AZ SQL Server firewall-Rule Delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Server|Hiermee verwijdert u een IP-firewall regel|
+|[AZ SQL Server firewall-Rule Create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|server|Hiermee maakt u een server-IP-firewall regel|
+|[AZ SQL Server firewall-Rule List](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|server|Een lijst met de IP-firewall regels op een server|
+|[AZ SQL Server firewall-Rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|server|Toont de details van een IP-firewall regel|
+|[AZ SQL Server firewall-Rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|server|Hiermee wordt een IP-firewall regel bijgewerkt|
+|[AZ SQL Server firewall-Rule Delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|server|Hiermee verwijdert u een IP-firewall regel|
 
 In het volgende voor beeld wordt CLI gebruikt om een IP-firewall regel op server niveau in te stellen:
 
@@ -227,10 +227,10 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 | API | Niveau | Beschrijving |
 | --- | --- | --- |
-| [Firewall regels weer geven](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |Server |Hiermee worden de huidige IP-firewall regels op server niveau weer gegeven |
-| [Firewall regels maken of bijwerken](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |Server |Hiermee worden IP-firewall regels op server niveau gemaakt of bijgewerkt |
-| [Firewall regels verwijderen](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |Server |Hiermee worden IP-firewall regels op server niveau verwijderd |
-| [Firewall regels ophalen](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | Server | Hiermee worden IP-firewall regels op server niveau opgehaald |
+| [Firewall regels weer geven](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |server |Hiermee worden de huidige IP-firewall regels op server niveau weer gegeven |
+| [Firewall regels maken of bijwerken](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |server |Hiermee worden IP-firewall regels op server niveau gemaakt of bijgewerkt |
+| [Firewall regels verwijderen](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |server |Hiermee worden IP-firewall regels op server niveau verwijderd |
+| [Firewall regels ophalen](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | server | Hiermee worden IP-firewall regels op server niveau opgehaald |
 
 ## <a name="troubleshoot-the-database-firewall"></a>Problemen met de database firewall oplossen
 

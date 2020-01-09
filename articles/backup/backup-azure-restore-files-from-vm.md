@@ -3,12 +3,12 @@ title: Bestanden en mappen herstellen vanuit een back-up van Azure VM
 description: In dit artikel vindt u informatie over het herstellen van bestanden en mappen vanaf een herstel punt van een virtuele Azure-machine.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 3fff957e542a039fcc5121f13c062f710f9292c9
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4fd5de0c199bfe104b8bb4f5b33b9ed8a86924f6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172848"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392565"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -203,7 +203,7 @@ In Linux moet het besturings systeem van de computer die wordt gebruikt om besta
 
 Het script vereist ook python-en bash-onderdelen om het herstel punt veilig uit te voeren en te verbinden.
 
-|Onderdeel | Versie  |
+|Component | Versie  |
 | --------------- | ---- |
 | bash | 4 en hoger |
 | python | 2.6.6 en hoger  |
@@ -211,9 +211,9 @@ Het script vereist ook python-en bash-onderdelen om het herstel punt veilig uit 
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Bestands herstel van back-ups van virtuele machines met grote schijven
 
-In deze sectie wordt uitgelegd hoe u bestands herstel kunt uitvoeren vanuit back-ups van virtuele Azure-machines waarvan het aantal schijven > 16 is en elke schijf grootte > 4 TB.
+In deze sectie wordt uitgelegd hoe u bestands herstel kunt uitvoeren vanuit back-ups van virtuele Azure-machines waarvan het aantal schijven > 16 is en elke schijf grootte > 32 TB.
 
-Omdat bestands herstel proces alle schijven van de back-up koppelt, worden de volgende actie punten aanbevolen wanneer een groot aantal schijven (> 16) of grote schijven (> 4 TB elke) worden gebruikt:
+Omdat bestands herstel proces alle schijven van de back-up koppelt, worden de volgende actie punten aanbevolen wanneer een groot aantal schijven (> 16) of grote schijven (> 32 TB elk) wordt gebruikt:
 
 - Bewaar een afzonderlijke herstel server (virtuele machines van Azure VM D2v3) voor bestands herstel. U kunt dat alleen bestands herstel gebruiken en vervolgens uitschakelen wanneer dat niet vereist is. Het terugzetten op de oorspronkelijke machine wordt niet aanbevolen, omdat het aanzienlijke gevolgen heeft voor de VM zelf.
 - Voer vervolgens het script opnieuw uit om te controleren of de bestands herstel bewerking is gelukt.

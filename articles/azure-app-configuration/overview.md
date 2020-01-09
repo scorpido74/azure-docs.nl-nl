@@ -1,24 +1,17 @@
 ---
-title: Wat is Azure-app configuratie? | Microsoft Docs
+title: Wat is Azure-app configuratie?
 description: Een overzicht van de service Azure App Configuration.
-services: azure-app-configuration
-documentationcenter: ''
 author: yegu-ms
-manager: balans
-editor: ''
+ms.author: yegu
 ms.service: azure-app-configuration
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
-ms.author: yegu
-ms.openlocfilehash: 01644054868ffc08738e67654ba181c76e7aed39
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 40630bbbbcea344fb74d8ad971eb4c808bf0c142
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185070"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495249"
 ---
 # <a name="what-is-azure-app-configuration"></a>Wat is Azure-app configuratie?
 
@@ -65,7 +58,7 @@ De eenvoudigste manier om een app-configuratie archief toe te voegen aan uw toep
 | .NET core en ASP.NET Core | App-configuratie provider voor .NET core |
 | .NET Framework en ASP.NET | App Configuration Builder voor .NET |
 | Java Spring | App-configuratie client voor lente-Cloud |
-| Andere | REST API app-configuratie |
+| Overige | REST API app-configuratie |
 
 ## <a name="next-steps"></a>Volgende stappen
 

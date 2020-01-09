@@ -1,5 +1,6 @@
 ---
-title: Herstel na nood geval met behulp van back-up en herstel implementeren in azure API Management | Microsoft Docs
+title: Herstel na nood geval met behulp van back-up en herstel in API Management implementeren
+titleSuffix: Azure API Management
 description: Meer informatie over het gebruik van back-up en herstel om herstel na nood gevallen in azure API Management uit te voeren.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 9c97723687484e8af82d63b6fb4999401a69fb2c
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: fccb9dfe88d39849fb87bdce4b81ac9ee22fada5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958535"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430701"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Herstel na nood geval implementeren met behulp van back-up en herstel van de service in azure API Management
 
@@ -147,7 +148,7 @@ Als u een back-up wilt maken van een API Management service, geeft u de volgende
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}
 ```
 
-positie
+Hierbij
 
 -   `subscriptionId`-ID van het abonnement dat de API Management-service bevat waarvan u een back-up wilt maken
 -   `resourceGroupName`-naam van de resource groep van uw Azure API Management-service
@@ -188,7 +189,7 @@ Als u een API Management-service van een eerder gemaakte back-up wilt herstellen
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}
 ```
 
-positie
+Hierbij
 
 -   `subscriptionId`-ID van het abonnement dat de API Management-service bevat waarvan u een back-up wilt terugzetten
 -   `resourceGroupName`: de naam van de resource groep die de Azure API Management-service bevat waarnaar u een back-up wilt herstellen

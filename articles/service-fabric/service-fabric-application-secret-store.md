@@ -1,20 +1,16 @@
 ---
-title: Archief met Service Fabric geheimen | Microsoft Docs
+title: Service Fabric-geheimenopslag
 description: In dit artikel wordt beschreven hoe u Service Fabric geheimen-archief gebruikt.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: 5315a8806f45e40204e8500e97c3440bfa9ab8b2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 16608d9eaf12fc9abc535ef316d7b5e8b74a8b37
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077347"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457505"
 ---
-#  <a name="service-fabric-secrets-store"></a>Archief met Service Fabric geheimen
+#  <a name="service-fabric-secrets-store"></a>Service Fabric-geheimenopslag
 In dit artikel wordt beschreven hoe u geheimen maakt en gebruikt in Service Fabric-toepassingen met behulp van Service Fabric geheimen-archief (CSS). CSS is een lokale archief cache, die wordt gebruikt om gevoelige gegevens te bewaren, zoals een wacht woord, tokens en sleutels die in het geheugen zijn versleuteld.
 
 ## <a name="enabling-secrets-store"></a>Archief met geheimen inschakelen
@@ -24,8 +20,8 @@ In dit artikel wordt beschreven hoe u geheimen maakt en gebruikt in Service Fabr
     [
         ...
     {
+        "name":  "CentralSecretService",
         "parameters":  [
-            "name":  "CentralSecretService"
                 {
                     "name":  "IsEnabled",
                     "value":  "true"
@@ -46,6 +42,9 @@ In dit artikel wordt beschreven hoe u geheimen maakt en gebruikt in Service Fabr
                 ],
             },
             ]
+     }
+        ...
+     ]
 ```
 ## <a name="declare-secret-resource"></a>Geheime resource declareren
 U kunt een geheime bron maken met behulp van de Resource Manager-sjabloon of met behulp van de REST API.

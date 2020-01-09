@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2fea3bca40d8a5783448e68ea89c3b238a0104d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 758b14a53927e00a5546147f8d67e556b45acc3c
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074021"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689761"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Amazon Web Services (AWS)
 
@@ -74,10 +74,10 @@ In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
 Om de integratie van Amazon Web Services (AWS) met Azure AD te configureren, moet u Amazon Web Services (AWS) vanuit de galerie toevoegen aan de lijst met beheerde SaaS-apps.
 
-1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met een werk account, school account of persoonlijke Microsoft-account.
+1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
+1. Kies in het menu Azure Active Directory overzicht de optie **bedrijfs toepassingen** > **alle toepassingen**.
+1. Selecteer **nieuwe toepassing** om een toepassing toe te voegen.
 1. In de sectie **toevoegen vanuit de galerie** typt u **Amazon Web Services (AWS)** in het zoekvak.
 1. Selecteer **Amazon Web Services (AWS)** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
@@ -123,10 +123,11 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
+1. Kies in het menu Azure Active Directory overzicht de optie **gebruikers** > **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Maken**.
@@ -135,8 +136,9 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 
 In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Amazon Web Services (AWS).
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer **Amazon Web Services (AWS)** in de lijst toepassingen.
+1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
+1. Kies in het menu Azure Active Directory overzicht de optie **bedrijfs toepassingen** > **alle toepassingen**.
+1. Selecteer **Amazon Web Services (AWS)** in de lijst met toepassingen.
 1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
@@ -262,7 +264,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     b. Voer voor **Beschrijving** **dit beleid in om de functies van AWS-accounts op te halen**.
 
-    c. Selecteer **beleid maken**.
+    c. Selecteer **Beleid maken**.
 
 17. Maak een nieuw gebruikers account in de AWS IAM-service.
 
@@ -326,7 +328,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     b. Voer het gebruikersgeheim van AWS in het veld **Token voor geheim** in.
 
-    c. Selecteer **verbinding testen**.
+    c. Selecteer **Verbinding testen**.
 
     d. Sla de instelling op door **Opslaan**te selecteren.
 

@@ -1,5 +1,6 @@
 ---
-title: Advanced Threat Protection voor Azure Storage
+title: Geavanceerde bedreigingen beveiliging configureren
+titleSuffix: Azure Storage
 description: Geavanceerde bedreigings beveiliging configureren voor Azure Storage om afwijkingen in de account activiteit te detecteren en op de hoogte te worden gesteld van mogelijk schadelijke pogingen om toegang te krijgen tot uw account.
 services: storage
 author: tamram
@@ -8,14 +9,14 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: b9413807cda096adf1056c07e026373ea19359b9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8efbf2107104f31bcfc5e4e5669dbed1835a034b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495959"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457408"
 ---
-# <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection voor Azure Storage
+# <a name="configure-advanced-threat-protection-for-azure-storage"></a>Geavanceerde bedreigings beveiliging voor Azure Storage configureren
 
 Advanced Threat Protection voor Azure Storage biedt een extra beveiligingslaag waarmee ongebruikelijke en mogelijk schadelijke pogingen voor het openen of exploiteren van opslag accounts worden gedetecteerd. Deze beveiligingslaag biedt u de mogelijkheid bedreigingen te verhelpen zonder beveiligings expert of beveiligings bewakings systemen te beheren.
 
@@ -100,7 +101,7 @@ Gebruik de volgende Power shell-cmdlets:
 Wanneer er afwijkingen optreden bij de opslag activiteit, ontvangt u een e-mail melding met informatie over de verdachte beveiligings gebeurtenis. Details van de gebeurtenis zijn onder andere:
 
 * De aard van de anomalie
-* De naam van het opslag account
+* Naam van het opslagaccount
 * De tijd van de gebeurtenis
 * Het opslag type
 * De mogelijke oorzaken

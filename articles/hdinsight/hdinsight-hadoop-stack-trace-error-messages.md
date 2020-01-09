@@ -1,34 +1,36 @@
 ---
-title: Hadoop-stack-trace foutberichten - Azure HDInsight
-description: Index van Hadoop-stack-trace foutberichten in Azure HDInsight. Zoek de fout in de lijst om te zien met informatie over probleemoplossing.
-keywords: stack-trace, foutberichten
-ms.service: hdinsight
+title: Fout berichten voor Hadoop Stack-tracering-Azure HDInsight
+description: Index van Hadoop stack trace-fout berichten in azure HDInsight. Zoek de fout in de lijst om informatie over het oplossen van problemen weer te geven.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: troubleshooting
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/14/2018
-ms.openlocfilehash: 0fb884c46525c0d5d14deb1521f086451a969656
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/03/2020
+ms.openlocfilehash: 3987a2d208bb96120d443300068ea739acbb4131
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64691713"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680244"
 ---
-# <a name="index-of-apache-hadoop-in-hdinsight-troubleshooting-articles"></a>Index van Apache Hadoop in HDInsight artikelen over probleemoplossing
-Artikelen zijn geordend op typen fouten.
+# <a name="index-of-apache-hadoop-in-hdinsight-troubleshooting-articles"></a>Index van Apache Hadoop in artikelen over het oplossen van problemen met HDInsight
 
-## <a name="out-of-memory-error"></a>Fout door onvoldoende geheugen
-* [Een Apache Hive fout door onvoldoende geheugen in HDInsight lossen](hdinsight-hadoop-hive-out-of-memory-error-oom.md): Herstel een out-of geheugenfout (OOM) van een Hive-query. De klant-scenario omvat een query voor veel grote tabellen.
+De artikelen zijn ingedeeld op basis van typen fouten.
 
-## <a name="apache-hive-query-performance"></a>Apache Hive-queryprestaties
-* [Apache Hive-query's optimaliseren voor Apache Hadoop in HDInsight](hdinsight-hadoop-optimize-hive-query.md): Dit artikel vindt u enkele veelgebruikte Hive prestaties optimalisatie methoden die u op de Hive-query's toepassen kunt.
-* [Apache Hive oplossen met behulp van Azure HDInsight](hdinsight-troubleshoot-hive.md).
+## <a name="out-of-memory-error"></a>Fout vanwege onvoldoende geheugen
 
-## <a name="more-troubleshooting-articles"></a>Meer artikelen over probleemoplossing
+* [Een Apache Hive onvoldoende geheugen oplossen fout in HDInsight](hdinsight-hadoop-hive-out-of-memory-error-oom.md): Corrigeer de fout ' onvoldoende geheugen ' (oom) bij een Hive-query. Het scenario van de klant bevat een query in veel grote tabellen.
+
+## <a name="apache-hive-query-performance"></a>Query prestaties Apache Hive
+
+* [Apache Hive query's voor Apache Hadoop in HDInsight optimaliseren: in](hdinsight-hadoop-optimize-hive-query.md)dit artikel worden enkele algemene optimalisatie methoden voor Hive-prestaties beschreven die u kunt Toep assen op Hive-query's.
+* [Problemen met Apache Hive oplossen met behulp van Azure HDInsight](hdinsight-troubleshoot-hive.md).
+
+## <a name="more-troubleshooting-articles"></a>Meer artikelen over probleem oplossing
+
 * [Informatie over het gebruik van HDInsight in Linux](hdinsight-hadoop-linux-information.md)
-* [Toegang tot Apache Hadoop YARN-toepassingslogboeken op Linux gebaseerde Hadoop op HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [Heapdumps voor Apache Hadoop-services op Linux gebaseerde HDInsight inschakelen](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [Opmerkingen bij de release voor Apache Hadoop-componenten op Azure HDInsight](hdinsight-release-notes.md)
-
+* [Toegang tot de toepassings logboeken van Apache Hadoop garen op op Linux gebaseerde Hadoop op HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Heap-dumps inschakelen voor Apache Hadoop Services op HDInsight op basis van Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Release opmerkingen voor Apache Hadoop onderdelen in azure HDInsight](hdinsight-release-notes.md)

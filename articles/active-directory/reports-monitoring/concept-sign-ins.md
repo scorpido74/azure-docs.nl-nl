@@ -17,12 +17,12 @@ ms.date: 12/09/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc996c7b5d8a63834f548689c83f7a72685120d2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 256194d8b0b5e6b08210e9338d945774603ac328
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951170"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429772"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Aanmeldactiviteitenrapporten in Azure Active Directory Portal
 
@@ -57,9 +57,15 @@ Het rapport gebruikers aanmeldingen bevat antwoorden op de volgende vragen:
 * Hoeveel gebruikers hebben zich gedurende een week aangemeld?
 * Wat is de status van deze aanmeldingen?
 
-Begin met [Azure Portal](https://portal.azure.com). Als u het rapport aanmeldingen wilt openen, selecteert u **aanmeldingen**en gaat u verder met de **bewaking.** Het kan tot twee uur duren voordat sommige registratie records worden weer gegeven in de portal.
+Selecteer in het menu [Azure Portal](https://portal.azure.com) **Azure Active Directory**of zoek en selecteer **Azure Active Directory** op een wille keurige pagina.
 
-![Aanmeldings activiteit](./media/concept-sign-ins/reporting-azure-sign-in-screen.png "Aanmeldingsactiviteit")
+![Azure Active Directory selecteren](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
+
+Onder **bewaking**selecteert u **aanmeldingen** om het [rapport aanmeldingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)te openen.
+
+![Aanmeldings activiteit](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "Aanmeldingsactiviteit")
+
+Het kan tot twee uur duren voordat sommige registratie records worden weer gegeven in de portal.
 
 > [!IMPORTANT]
 > Het rapport met aanmeldingen bevat alleen de **interactieve** aanmeldingen, dat wil zeggen, aanmeldingen waarbij een gebruiker zich hand matig aanmeldt met de gebruikers naam en het wacht woord. Niet-interactieve aanmeldingen, zoals service-naar-service-verificatie, worden niet weer gegeven in het rapport aanmeldingen. 
@@ -79,7 +85,7 @@ U kunt de lijstweergave aanpassen door te klikken op **Kolommen** op de werkbalk
 
 ![Aanmeldings activiteit](./media/concept-sign-ins/19.png "Aanmeldingsactiviteit")
 
-Het dialoog venster **kolommen** biedt u toegang tot de selecteerbaar kenmerken. In een aanmeldings rapport kunt u alleen kenmerken hebben die geen een-op-veel-relatie hebben met andere kenmerken als kolom.
+Het dialoog venster **kolommen** biedt u toegang tot de selecteerbaar kenmerken. In een aanmeldings rapport kunt u geen velden hebben met meer dan één waarde voor een bepaalde aanmeldings aanvraag als kolom. Dit is bijvoorbeeld waar voor verificatie Details, gegevens van voorwaardelijke toegang en de netwerk locatie.   
 
 ![Aanmeldings activiteit](./media/concept-sign-ins/columns.png "Aanmeldingsactiviteit")
 
@@ -153,7 +159,7 @@ Als u extra velden toevoegt aan uw aanmeldingsweergave, worden deze velden autom
 
 Klik op de **Download** optie om een CSV-of JSON-bestand te maken van de meest recente 250.000 records. Begin met [het downloaden van de gegevens van de aanmeldingen](quickstart-download-sign-in-report.md) als u wilt werken buiten de Azure Portal.  
 
-![Downloaden](./media/concept-sign-ins/71.png "Downloaden")
+![Downloaden](./media/concept-sign-ins/71.png "Download")
 
 > [!IMPORTANT]
 > Het aantal records dat u kunt downloaden, is beperkt door het [Bewaar beleid](reference-reports-data-retention.md)voor de Azure Active Directory-rapport.  

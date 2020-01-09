@@ -1,5 +1,5 @@
 ---
-title: Problemen met MSAL. js in Internet Explorer & micro soft Edge | Azure
+title: Problemen met Internet Explorer & micro soft Edge (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over problemen met het gebruik van de micro soft-verificatie bibliotheek voor Java script (MSAL. js) met Internet Explorer en micro soft Edge-browsers.
 services: active-directory
@@ -14,14 +14,14 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe9f8ff420698d5afe617973abc7874256efe260
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a3a4e847bc0d297f3aa41551fbf56242ae1a566f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916380"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424328"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>Bekende problemen met Internet Explorer en micro soft Edge-browsers met MSAL. js
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Bekende problemen met Internet Explorer en micro soft Edge-browsers (MSAL. js)
 
 ## <a name="issues-due-to-security-zones"></a>Problemen als gevolg van beveiligings zones
 Er zijn meerdere meldingen over problemen met verificatie in IE en micro soft Edge (sinds de update van de *micro soft Edge-browser versie naar 40.15063.0.0*). We volgen deze en hebben het micro soft Edge-team op de hoogte gebracht. Micro soft Edge werkt met een oplossing. Hier volgt een beschrijving van de vaak voorkomende problemen en de mogelijke oplossingen die kunnen worden geïmplementeerd.

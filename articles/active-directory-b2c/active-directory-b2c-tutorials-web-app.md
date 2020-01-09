@@ -11,21 +11,21 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b4305e9b3cfdb5e05ce76ee1811dc0d2dcc265b7
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 6fa0379f2f8194356ed122e86b5a225f72adfe7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950193"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367600"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Zelf studie: verificatie inschakelen in een webtoepassing met behulp van Azure Active Directory B2C
 
-In deze zelf studie wordt uitgelegd hoe u Azure Active Directory B2C (Azure AD B2C) gebruikt om u aan te melden en gebruikers te registreren in een ASP.NET-webtoepassing. Met Azure AD B2C zijn uw toepassingen in staat om zich met behulp van open-standaardprotocollen te verifiëren bij sociale accounts, Enterprise-accounts en Azure Active Directory-accounts.
+In deze zelf studie wordt uitgelegd hoe u Azure Active Directory B2C (Azure AD B2C) gebruikt om u aan te melden en gebruikers te registreren in een ASP.NET-webtoepassing. Met Azure AD B2C kunnen uw toepassingen zich met behulp van open-standaardprotocollen verifiëren bij sociale accounts, Enterprise-accounts en Azure Active Directory-accounts.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * De toepassing bijwerken in Azure AD B2C
+> * Bijwerken van de toepassing in Azure AD B2C
 > * Het voorbeeld configureren voor gebruik van de toepassing
 > * Aanmelden met behulp van de gebruikersstroom
 
@@ -46,17 +46,17 @@ U kunt de huidige **toepassingen** ervaring of onze nieuwe **Preview-ervaring (U
 
 #### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Selecteer **Toepassingen** en selecteer vervolgens de toepassing *webapp1*.
-1. Voeg onder **Antwoord-URL** `https://localhost:44316` toe.
+1. Voeg onder **Antwoord-URL**`https://localhost:44316` toe.
 1. Selecteer **Opslaan**.
 1. Noteer de toepassings-ID voor gebruik in een latere stap wanneer u de webtoepassing configureert op de pagina Eigenschappen.
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
 1. Selecteer **app-registraties (preview)** , selecteer het tabblad **toepassingen die eigendom** zijn en selecteer vervolgens de toepassing *webapp1* .
@@ -73,7 +73,7 @@ Maak vervolgens een client geheim voor de geregistreerde webtoepassing. In het v
 
 [!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
-## <a name="configure-the-sample"></a>Voorbeeld configureren
+## <a name="configure-the-sample"></a>Configureren van het voorbeeld
 
 In deze zelfstudie configureert u een voorbeeld dat u kunt downloaden uit GitHub. Het voorbeeld maakt gebruik van ASP.NET voor een eenvoudige takenlijst. In het voorbeeld worden [Microsoft OWIN-middlewareonderdelen](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/) gebruikt. [Download een ZIP-bestand ](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip) of kloon de voorbeeld-web-app vanuit GitHub. Zorg ervoor dat u het voorbeeldbestand uitpakt in een map en dat het aantal tekens van het pad minder is dan 260.
 
@@ -92,9 +92,9 @@ Werk de instellingen in het bestand Web. config bij om met uw gebruikers stroom 
 
 1. Open de oplossing **B2C-WebAPI-DotNet** in Visual Studio.
 1. Open in het project **TaskWebApp** het bestand **Web.config**.
-    1. Werk de waarde van `ida:Tenant` en `ida:AadInstance` bij met de naam van de Azure AD B2C-Tenant die u hebt gemaakt. Vervang `fabrikamb2c` bijvoorbeeld door `contoso`.
+    1. Werk de waarde van `ida:Tenant` en `ida:AadInstance` bij met de naam van de Azure AD B2C-Tenant die u hebt gemaakt. Vervang bijvoorbeeld `fabrikamb2c` door `contoso`.
     1. Vervang de waarde van `ida:ClientId` door de toepassings-ID die u hebt vastgelegd.
-    1. Vervang de waarde voor `ida:ClientSecret` door de sleutel die u hebt geregistreerd. U moet het client geheim coderen voordat u het toevoegt aan web. config.
+    1. Vervang de waarde voor `ida:ClientSecret` door de sleutel die u hebt geregistreerd. Als het client geheim een vooraf gedefinieerde XML-entiteit bevat, bijvoorbeeld kleiner dan (`<`), groter dan (`>`), en-en-teken (`&`) of dubbel aanhalings teken (`"`), moet u deze tekens met XML-code ring door het client geheim coderen voordat u het toevoegt aan het web. config.
     1. Vervang de waarde van `ida:SignUpSignInPolicyId` door `b2c_1_signupsignin1`.
     1. Vervang de waarde van `ida:EditProfilePolicyId` door `b2c_1_profileediting1`.
     1. Vervang de waarde van `ida:ResetPasswordPolicyId` door `b2c_1_passwordreset1`.
@@ -123,7 +123,7 @@ De functie **taken lijst** werkt echter pas nadat u de volgende zelf studie in d
 In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
-> * De toepassing bijwerken in Azure AD B2C
+> * Bijwerken van de toepassing in Azure AD B2C
 > * Het voorbeeld configureren voor gebruik van de toepassing
 > * Aanmelden met behulp van de gebruikersstroom
 

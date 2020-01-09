@@ -1,26 +1,17 @@
 ---
-title: Fout opsporing voor Windows-containers met Service Fabric en VS | Microsoft Docs
+title: Fouten opsporen in Windows-containers met Service Fabric en VS
 description: Meer informatie over het opsporen van fouten in Windows-containers in azure Service Fabric met behulp van Visual Studio 2019.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/14/2019
 ms.author: mikhegn
-ms.openlocfilehash: a5ccf527850e1c05c5d7e273ada905d65d64cee4
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2a00a352d09562ffe46dc8e6e63a5d4963ac3a3f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073964"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464565"
 ---
-# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Procedure: Fout opsporing voor Windows-containers in azure Service Fabric met behulp van Visual Studio 2019
+# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Procedure: fouten opsporen in Windows-containers in azure Service Fabric met behulp van Visual Studio 2019
 
 Met Visual Studio 2019 kunt u fouten opsporen in .NET-toepassingen in containers als Service Fabric Services. Dit artikel laat u zien hoe u uw omgeving kunt configureren en vervolgens fouten kunt opsporen in een .NET-toepassing in een container die wordt uitgevoerd in een lokaal Service Fabric cluster.
 
@@ -36,31 +27,31 @@ Met Visual Studio 2019 kunt u fouten opsporen in .NET-toepassingen in containers
 
 1. Ter ondersteuning van de DNS-omzetting tussen containers moet u uw lokale ontwikkel cluster instellen met behulp van de computer naam. Deze stappen zijn ook nodig als u services wilt adresseren via de omgekeerde proxy.
    1. Power shell openen als Administrator
-   2. Ga doorgaans `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`naar de map voor het instellen van het SDK-cluster.
-   3. Het script uitvoeren`DevClusterSetup.ps1`
+   2. Ga naar de map voor het instellen van het SDK-cluster, meestal `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`.
+   3. Voer het script uit `DevClusterSetup.ps1`
 
       ``` PowerShell
         C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1
       ```
 
       > [!NOTE]
-      > U kunt de `-CreateOneNodeCluster` gebruiken om een cluster met één knoop punt te installeren. Met de standaard instelling wordt een lokaal cluster met vijf knoop punten gemaakt.
+      > U kunt de `-CreateOneNodeCluster` gebruiken voor het instellen van een cluster met één knoop punt. Met de standaard instelling wordt een lokaal cluster met vijf knoop punten gemaakt.
       >
 
-      Zie [DNS-service in Azure service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice)voor meer informatie over de DNS-service in service Fabric. Zie voor meer informatie over het gebruik van Service Fabric reverse proxy van services die in een container worden uitgevoerd, reverse [proxy rehandling for services die in containers worden uitgevoerd](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers).
+      Zie [DNS-service in Azure service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice)voor meer informatie over de DNS-service in service Fabric. Zie voor meer informatie over het gebruik van Service Fabric reverse proxy van services die in een container worden uitgevoerd, [reverse proxy rehandling for services die in containers worden uitgevoerd](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers).
 
 ### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>Bekende beperkingen bij het opsporen van fouten in containers in Service Fabric
 
 Hieronder vindt u een lijst met bekende beperkingen met containers voor fout opsporing in Service Fabric en mogelijke oplossingen:
 
 * Het gebruik van localhost voor ClusterFQDNorIP biedt geen ondersteuning voor DNS-omzetting in containers.
-    * Oplossing: Het lokale cluster instellen met behulp van machine naam (zie hierboven)
+    * Oplossing: het lokale cluster instellen met behulp van machine naam (zie hierboven)
 * Als Windows10 wordt uitgevoerd op een virtuele machine, wordt DNS-antwoord niet teruggestuurd naar de container.
-    * Oplossing: Offload van UDP-controlesom voor IPv4 uitschakelen op de Virtual Machines NIC
+    * Oplossing: Schakel de UDP-checksum-offload voor IPv4 uit op de Virtual Machines NIC
     * Als u Windows10 uitvoert, worden de netwerk prestaties op de computer verslechterd.
     * https://github.com/Azure/service-fabric-issues/issues/1061
 * Het omzetten van services in dezelfde toepassing met behulp van de DNS-service naam werkt niet in Windows10, als de toepassing is geïmplementeerd met behulp van docker opstellen
-    * Oplossing: Gebruik ServiceName. ApplicationName om service-eind punten op te lossen
+    * Oplossing: gebruik ServiceName. ApplicationName om service-eind punten op te lossen
     * https://github.com/Azure/service-fabric-issues/issues/1062
 * Als u IP-adres gebruikt voor ClusterFQDNorIP, verbreekt het wijzigen van de primaire IP op de host de DNS-functionaliteit.
     * Oplossing: Maak het cluster opnieuw met het nieuwe primaire IP-adres op de host of gebruik de computer naam. Deze uitsplitsing is per ontwerp.

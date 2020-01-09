@@ -1,5 +1,6 @@
 ---
-title: Het type opslag account en de SKU-naam ophalen met .NET-Azure Storage
+title: Het type opslag account en de SKU-naam ophalen met .NET
+titleSuffix: Azure Storage
 description: Meer informatie over het verkrijgen van Azure Storage account type en SKU-naam met behulp van de .NET-client bibliotheek.
 services: storage
 author: mhopkins-msft
@@ -8,12 +9,12 @@ ms.date: 08/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 0008d8fa9a33db95b0695ce998d4fc267d6222da
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1cff950f2c420651ffa09ffe76a0d1389da84c10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985351"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457482"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>Het type opslag account en de SKU-naam ophalen met .NET
 
@@ -23,9 +24,9 @@ Account gegevens zijn beschikbaar in service versies vanaf versie 2018-03-28.
 
 ## <a name="about-account-type-and-sku-name"></a>Over het account type en de SKU-naam
 
-**Account type**: Geldige account typen zijn `BlobStorage`, `BlockBlobStorage`, `FileStorage` `Storage`, en .`StorageV2` [Overzicht van Azure Storage-account](storage-account-overview.md) bevat meer informatie, inclusief beschrijvingen van de verschillende opslag accounts.
+**Account type**: geldige account typen zijn `BlobStorage`, `BlockBlobStorage`, `FileStorage`, `Storage`en `StorageV2`. [Overzicht van Azure Storage-account](storage-account-overview.md) bevat meer informatie, inclusief beschrijvingen van de verschillende opslag accounts.
 
-**SKU-naam**: Geldige `Premium_LRS`SKU `Standard_GZRS` `Premium_ZRS` -namen`Standard_LRS`zijn onder andere,, `Standard_RAGRS`, ,`Standard_RAGZRS`, ,`Standard_ZRS`en. `Standard_GRS` SKU-namen zijn hoofdletter gevoelig en zijn teken reeks velden in de [SkuName-klasse](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet).
+**SKU-naam**: geldige SKU-namen zijn onder andere `Premium_LRS`, `Premium_ZRS`, `Standard_GRS`, `Standard_GZRS`, `Standard_LRS`, `Standard_RAGRS`, `Standard_RAGZRS`en `Standard_ZRS`. SKU-namen zijn hoofdletter gevoelig en zijn teken reeks velden in de [SkuName-klasse](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet).
 
 ## <a name="retrieve-account-information"></a>Account gegevens ophalen
 
@@ -63,6 +64,4 @@ private static async Task GetAccountInfoAsync(CloudBlob blob)
 
 Meer informatie over andere bewerkingen die u kunt uitvoeren op een opslag account via de [Azure Portal](https://portal.azure.com) en de Azure rest API.
 
-- [Een opslag account beheren](storage-account-manage.md)
-- [Een opslag account upgraden](storage-account-upgrade.md)
 - [Bewerking account gegevens ophalen (REST)](/rest/api/storageservices/get-account-information)

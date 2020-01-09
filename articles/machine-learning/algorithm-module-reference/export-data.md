@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 5badcbe2a76c41bdc1431abae617e35b7555eb88
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9544d086eb9535af779bf2febe0cc63c180f7fd3
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497899"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529589"
 ---
 # <a name="export-data-module"></a>Gegevens module exporteren
 
@@ -29,7 +29,7 @@ Deze module biedt ondersteuning voor het exporteren van uw gegevens naar de volg
 - Azure Data Lake
 - Azure Data Lake Gen2
 
-Voordat u uw gegevens exporteert, moet u eerst een gegevens opslag registreren in uw Azure Machine Learning-werk ruimte. Zie [toegang tot gegevens](../service/how-to-access-data.md)voor meer informatie.
+Voordat u uw gegevens exporteert, moet u eerst een gegevens opslag registreren in uw Azure Machine Learning-werk ruimte. Zie [toegang tot gegevens](../how-to-access-data.md)voor meer informatie.
 
 ## <a name="how-to-configure-export-data"></a>Export gegevens configureren
 
@@ -39,7 +39,7 @@ Voordat u uw gegevens exporteert, moet u eerst een gegevens opslag registreren i
 
 1. Selecteer **gegevens exporteren** om het deel venster **Eigenschappen** te openen.
 
-1. Selecteer een bestaande gegevens opslag in de vervolg keuzelijst voor **gegevens opslag**. U kunt ook een nieuw gegevens archief maken. Ga na [hoe-to-Access-Data](../service/how-to-access-data.md)
+1. Selecteer een bestaande gegevens opslag in de vervolg keuzelijst voor **gegevens opslag**. U kunt ook een nieuw gegevens archief maken. Ga na [hoe-to-Access-Data](../how-to-access-data.md)
 
 1. Definieer het pad in het gegevens archief waarnaar de gegevens moeten worden geschreven. 
 

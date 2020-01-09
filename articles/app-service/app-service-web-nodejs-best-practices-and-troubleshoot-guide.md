@@ -1,19 +1,19 @@
 ---
 title: Aanbevolen procedures en probleem oplossing voor node. js
 description: Meer informatie over de aanbevolen procedures en stappen voor het oplossen van problemen met node. js-toepassingen die worden uitgevoerd in Azure App Service.
-author: ranjithr
+author: msangapu-msft
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: bwren
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 75195bd7ad228bb66dfd21d2c65997cc8c02680e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672050"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430567"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Aanbevolen procedures en richt lijnen voor probleem oplossing voor knooppunt toepassingen op Azure App Service Windows
 
@@ -29,7 +29,7 @@ In dit [schema bestand](https://github.com/Azure/iisnode/blob/master/src/config/
 
 ### <a name="nodeprocesscountperapplication"></a>nodeProcessCountPerApplication
 
-Met deze instelling bepaalt u het aantal knooppunt processen dat per IIS-toepassing wordt gestart. De standaard waarde is 1. U kunt net zoveel node. exe starten als het aantal vCPU van uw virtuele machine door de waarde te wijzigen in 0. De aanbevolen waarde is 0 voor de meeste toepassingen, zodat u alle Vcpu's op uw computer kunt gebruiken. Node. exe heeft één thread, waardoor één node. exe een maximum van 1 vCPU verbruikt. Als u de maximale prestaties van uw knooppunt toepassing wilt ontvangen, wilt u alle Vcpu's gebruiken.
+Met deze instelling bepaalt u het aantal knooppunt processen dat per IIS-toepassing wordt gestart. De standaardwaarde is 1. U kunt net zoveel node. exe starten als het aantal vCPU van uw virtuele machine door de waarde te wijzigen in 0. De aanbevolen waarde is 0 voor de meeste toepassingen, zodat u alle Vcpu's op uw computer kunt gebruiken. Node. exe heeft één thread, waardoor één node. exe een maximum van 1 vCPU verbruikt. Als u de maximale prestaties van uw knooppunt toepassing wilt ontvangen, wilt u alle Vcpu's gebruiken.
 
 ### <a name="nodeprocesscommandline"></a>nodeProcessCommandLine
 
@@ -83,11 +83,11 @@ Daarnaast moet u voor streaming-toepassingen ook responseBufferLimit van uw iisn
 
 ### <a name="watchedfiles"></a>watchedFiles
 
-Een door punt komma's gescheiden lijst met bestanden die worden bekeken voor wijzigingen. Elke wijziging in een bestand zorgt ervoor dat de toepassing wordt gerecycled. Elk item bestaat uit een optionele mapnaam en een vereiste bestands naam, die relatief is ten opzichte van de map waar het hoofd toepassings ingangs punt zich bevindt. Joker tekens zijn alleen toegestaan in het gedeelte bestands naam. De standaard waarde is `*.js;iisnode.yml`
+Een door punt komma's gescheiden lijst met bestanden die worden bekeken voor wijzigingen. Elke wijziging in een bestand zorgt ervoor dat de toepassing wordt gerecycled. Elk item bestaat uit een optionele mapnaam en een vereiste bestands naam, die relatief is ten opzichte van de map waar het hoofd toepassings ingangs punt zich bevindt. Joker tekens zijn alleen toegestaan in het gedeelte bestands naam. De standaardwaarde is `*.js;iisnode.yml`
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
-De standaard waarde is False. Als deze functie is ingeschakeld, kan de knooppunt toepassing verbinding maken met een named pipe (omgevings variabele IISNODE\_besturings\_PIPE) en een ' recycle ' bericht verzenden. Dit zorgt ervoor dat de W3wp zonder problemen wordt gerecycled.
+De standaardwaarde is false. Als deze functie is ingeschakeld, kan de knooppunt toepassing verbinding maken met een named pipe (omgevings variabele IISNODE\_besturings\_PIPE) en een ' recycle ' bericht verzenden. Dit zorgt ervoor dat de W3wp zonder problemen wordt gerecycled.
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
@@ -99,7 +99,7 @@ De standaard waarde is 0, wat betekent dat deze functie is uitgeschakeld. Wannee
 
 ### <a name="debugheaderenabled"></a>debugHeaderEnabled
 
-De standaard waarde is False. Als deze eigenschap is ingesteld op True, voegt iisnode een HTTP-antwoord header toe `iisnode-debug` toe aan elke HTTP-reactie die de `iisnode-debug` header-waarde verzendt een URL. Afzonderlijke stukjes diagnostische gegevens kunnen worden verkregen door te kijken naar het URL-fragment, maar een visualisatie is beschikbaar door de URL in een browser te openen.
+De standaardwaarde is false. Als deze eigenschap is ingesteld op True, voegt iisnode een HTTP-antwoord header toe `iisnode-debug` toe aan elke HTTP-reactie die de `iisnode-debug` header-waarde verzendt een URL. Afzonderlijke stukjes diagnostische gegevens kunnen worden verkregen door te kijken naar het URL-fragment, maar een visualisatie is beschikbaar door de URL in een browser te openen.
 
 ### <a name="loggingenabled"></a>loggingEnabled
 
@@ -107,7 +107,7 @@ Met deze instelling bepaalt u de logboek registratie van stdout en stderr door i
 
 ### <a name="deverrorsenabled"></a>devErrorsEnabled
 
-De standaard waarde is False. Als deze eigenschap is ingesteld op True, worden in iisnode de HTTP-status code en de Win32-fout code in uw browser weer gegeven. De Win32-code is handig bij het opsporen van fouten in bepaalde typen problemen.
+De standaardwaarde is false. Als deze eigenschap is ingesteld op True, worden in iisnode de HTTP-status code en de Win32-fout code in uw browser weer gegeven. De Win32-code is handig bij het opsporen van fouten in bepaalde typen problemen.
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled (niet inschakelen op de live productie site)
 

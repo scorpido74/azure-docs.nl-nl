@@ -1,24 +1,25 @@
 ---
-title: Gelijktijdigheid beheren in Microsoft Azure Storage
-description: Gelijktijdigheid beheren voor de blob-, wachtrij-, tabel-en bestands Services
+title: Gelijktijdigheid beheren
+titleSuffix: Azure Storage
+description: Meer informatie over het beheren van gelijktijdigheid voor de blob-, wachtrij-, tabel-en bestands Services.
 services: storage
-author: jasontang501
+author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 427cc34cc5a2801a2da98259f932678cdcf71ef7
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 9879f98e72e22fc0745a9e91f29216cbe74ab8fe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67870831"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460479"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Gelijktijdigheid beheren in Microsoft Azure Storage
-## <a name="overview"></a>Overzicht
-Moderne op internet gebaseerde toepassingen hebben meestal meerdere gebruikers tegelijk de gegevens weer geven en bijwerken. Hiervoor moeten ontwikkel aars van toepassingen zorgvuldig nadenken hoe ze een voorspel bare ervaring kunnen bieden aan hun eind gebruikers, met name voor scenario's waarin meerdere gebruikers dezelfde gegevens kunnen bijwerken. Er zijn drie hoofd strategieën voor het gelijktijdigheid van gegevens die ontwikkel aars doorgaans overwegen:  
+
+Moderne op internet gebaseerde toepassingen hebben doorgaans meerdere gebruikers tegelijk de gegevens weer geven en bijwerken. Hiervoor moeten ontwikkel aars van toepassingen zorgvuldig nadenken hoe ze een voorspel bare ervaring kunnen bieden aan hun eind gebruikers, met name voor scenario's waarin meerdere gebruikers dezelfde gegevens kunnen bijwerken. Er zijn drie hoofd strategieën voor het gelijktijdigheid van gegevens die ontwikkel aars doorgaans overwegen:  
 
 1. Optimistische gelijktijdigheid: een toepassing die een update uitvoert, wordt beschouwd als onderdeel van de update Controleer of de gegevens zijn gewijzigd sinds de laatste keer dat de toepassing de gegevens heeft gelezen. Als bijvoorbeeld twee gebruikers die een wikipagina bekijken, een update op dezelfde pagina maken, moet het wiki-platform ervoor zorgen dat de tweede update de eerste update niet overschrijft, en dat beide gebruikers begrijpen of hun update is geslaagd of niet. Deze strategie wordt meestal gebruikt in webtoepassingen.
 2. Pessimistische gelijktijdigheid: een toepassing die een update wil uitvoeren, kan een object vergren delen voor komen dat andere gebruikers de gegevens kunnen bijwerken tot de vergren deling is opgeheven. Bijvoorbeeld: in een scenario met een hoofd-en onderliggend gegevens replicatie waarbij alleen de Master updates gaat uitvoeren, wordt doorgaans een exclusieve vergren deling voor een lange periode op de gegevens gehouden om ervoor te zorgen dat niemand anders deze kan bijwerken.
@@ -26,15 +27,18 @@ Moderne op internet gebaseerde toepassingen hebben meestal meerdere gebruikers t
 
 Dit artikel bevat een overzicht van de manier waarop het Azure Storage-platform de ontwikkeling vereenvoudigt door de eerste klasse ondersteuning te bieden voor alle drie deze gelijktijdigheids strategieën.  
 
-## <a name="azure-storage--simplifies-cloud-development"></a>Azure Storage: maakt het ontwikkelen van Clouds eenvoudiger
+## <a name="azure-storage-simplifies-cloud-development"></a>Azure Storage vereenvoudigt de ontwikkeling van Clouds
+
 De Azure Storage-service ondersteunt alle drie de strategieën, hoewel het een onderscheidende mogelijkheid is om volledige ondersteuning te bieden voor optimistische en pessimistische gelijktijdigheid, omdat deze is ontworpen om te voorzien in een krachtig consistentie model dat waarborgt dat wanneer de Opslag service voert een INSERT-of update-bewerking van een gegevens in alle verdere toegang tot die gegevens wordt de laatste update weer gegeven. Opslag platforms die een uiteindelijke consistentie model gebruiken, hebben een vertraging tussen het moment dat een schrijf bewerking wordt uitgevoerd door één gebruiker en wanneer de bijgewerkte gegevens door andere gebruikers worden gezien, waardoor de ontwikkeling van client toepassingen kan worden voor komen om inconsistenties van gevolgen voor eind gebruikers.  
 
 Naast het selecteren van een passende gelijktijdigheids strategie ontwikkel aars moet er ook rekening mee worden gehouden met de manier waarop een opslag platform wijzigingen kan isoleren: met name wijzigingen in hetzelfde object in trans acties. De Azure Storage-service maakt gebruik van snap shot-isolatie zodat Lees bewerkingen gelijktijdig met schrijf bewerkingen binnen één partitie kunnen plaatsvinden. In tegens telling tot andere isolatie niveaus zorgt de snap shot-isolatie ervoor dat alle Lees bewerkingen een consistente moment opname van de gegevens zien, zelfs wanneer er updates worden uitgevoerd. de laatste vastgelegde waarden worden geretourneerd tijdens het verwerken van een update transactie.  
 
 ## <a name="managing-concurrency-in-blob-storage"></a>Gelijktijdigheid beheren in Blob Storage
-U kunt ervoor kiezen om een optimistische of pessimistische gelijktijdigheids modellen te gebruiken voor het beheren van de toegang tot blobs en containers in de BLOB-service. Als u geen expliciete strategie opgeeft, is WINS de standaard instelling.  
+
+U kunt ervoor kiezen om een optimistische of pessimistische gelijktijdigheids modellen te gebruiken voor het beheren van de toegang tot blobs en containers in de Blob service. Als u geen expliciete strategie opgeeft, is WINS de standaard instelling.  
 
 ### <a name="optimistic-concurrency-for-blobs-and-containers"></a>Optimistische gelijktijdigheid voor blobs en containers
+
 De opslag service wijst een id toe aan elk opgeslagen object. Deze id wordt bijgewerkt wanneer een update bewerking wordt uitgevoerd op een object. De id wordt geretourneerd naar de client als onderdeel van een HTTP GET-antwoord met de ETag-header (entiteits code) die is gedefinieerd in het HTTP-protocol. Een gebruiker die een update uitvoert op een dergelijk object kan in de oorspronkelijke ETag worden verzonden, samen met een voorwaardelijke koptekst om ervoor te zorgen dat een update alleen plaatsvindt als aan een bepaalde voor waarde is voldaan. in dit geval is de voor waarde een if-match-header, waarvoor de opslag service t vereist is. o Controleer of de waarde van de ETag die is opgegeven in de update aanvraag hetzelfde is als die in de opslag service is opgeslagen.  
 
 Het overzicht van dit proces is als volgt:  
@@ -45,12 +49,12 @@ Het overzicht van dit proces is als volgt:
 4. Als de huidige ETag-waarde van de BLOB een andere versie is dan de ETag in de voorwaardelijke koptekst in de **if-match-** header in de aanvraag, retourneert de service een 412-fout naar de client. Dit geeft aan de client door dat een ander proces de BLOB heeft bijgewerkt sinds de client deze heeft opgehaald.
 5. Als de huidige ETag-waarde van de BLOB dezelfde versie is als de ETag in de voorwaardelijke koptekst in de **if-match-** header in de aanvraag, wordt de aangevraagde bewerking door de service uitgevoerd en wordt de huidige ETAG-waarde van de BLOB bijgewerkt om aan te tonen dat er een nieuwe versie is gemaakt.  
 
-Het volgende C# code fragment (met behulp van de client opslag bibliotheek 4.2.0) toont een eenvoudig voor beeld van het samen stellen van een **if-match AccessCondition** op basis van de ETAG-waarde die wordt geopend vanuit de eigenschappen van een blob die eerder is opgehaald of sloten. Vervolgens wordt het **AccessCondition** -object gebruikt bij het bijwerken van de blob: het **AccessCondition** -object voegt de **if-match-** header toe aan de aanvraag. Als een ander proces de BLOB heeft bijgewerkt, retourneert de BLOB-service een status bericht HTTP 412 (voor waarde is mislukt). U kunt het volledige voor beeld hier downloaden: [Gelijktijdigheid beheren met behulp van Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).  
+Het volgende C# code fragment (met behulp van de client opslag bibliotheek 4.2.0) toont een eenvoudig voor beeld van het samen stellen van een **if-match AccessCondition** op basis van de ETAG-waarde die wordt geopend vanuit de eigenschappen van een blob die eerder is opgehaald of ingevoegd. Vervolgens wordt het **AccessCondition** -object gebruikt bij het bijwerken van de blob: het **AccessCondition** -object voegt de **if-match-** header toe aan de aanvraag. Als een ander proces de BLOB heeft bijgewerkt, retourneert de Blob service het status bericht HTTP 412 (voor waarde is mislukt). U kunt het volledige voor beeld hier downloaden: [gelijktijdigheid beheren met behulp van Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).  
 
 ```csharp
 // Retrieve the ETag from the newly created blob
 // Etag is already populated as UploadText should cause a PUT Blob call
-// to storage blob service which returns the ETag in response.
+// to storage Blob service which returns the ETag in response.
 string originalETag = blockBlob.Properties.ETag;
 
 // This code simulates an update by a third party.
@@ -80,7 +84,7 @@ catch (StorageException ex)
 }  
 ```
 
-De opslag service biedt ook ondersteuning voor aanvullende voorwaardelijke kopteksten, zoals **If-Modified-sinds**, **als-ongewijzigd, omdat** en **If-None-Match** , evenals combi Naties daarvan. Zie [voorwaardelijke headers opgeven voor BLOB-service bewerkingen](https://msdn.microsoft.com/library/azure/dd179371.aspx) op MSDN voor meer informatie.  
+Azure Storage biedt ook ondersteuning voor aanvullende voorwaardelijke kopteksten, zoals **If-Modified-sinds**, **als-ongewijzigd-sinds** en **als-None-Match** , evenals combi Naties daarvan. Zie [voorwaardelijke headers opgeven voor BLOB-service bewerkingen](https://msdn.microsoft.com/library/azure/dd179371.aspx)voor meer informatie.  
 
 De volgende tabel bevat een overzicht van de container bewerkingen die voorwaardelijke kopteksten accepteren, zoals **if-match** in de aanvraag en die een ETag-waarde Retour neren in het antwoord.  
 
@@ -122,11 +126,12 @@ De volgende tabel bevat een overzicht van de BLOB-bewerkingen die voorwaardelijk
 (*) De lease-BLOB wijzigt de ETag op een BLOB niet.  
 
 ### <a name="pessimistic-concurrency-for-blobs"></a>Pessimistische gelijktijdigheid voor blobs
-Als u een BLOB wilt vergren delen voor exclusief gebruik, kunt u er een [lease](https://msdn.microsoft.com/library/azure/ee691972.aspx) op verkrijgen. Wanneer u een lease aanschaft, geeft u op hoelang u de lease nodig hebt: dit kan tussen 15 en 60 seconden of oneindig zijn, wat een exclusieve vergren deling is. U kunt een beperkte lease vernieuwen om deze uit te breiden en u kunt elke lease vrijgeven wanneer u er klaar mee bent. Wanneer de BLOB-service verloopt, worden er automatisch beperkte leases vrijgegeven.  
+
+Als u een BLOB wilt vergren delen voor exclusief gebruik, kunt u er een [lease](https://msdn.microsoft.com/library/azure/ee691972.aspx) op verkrijgen. Wanneer u een lease aanschaft, geeft u op hoelang u de lease nodig hebt: dit kan tussen 15 en 60 seconden of oneindig zijn, wat een exclusieve vergren deling is. U kunt een beperkte lease vernieuwen om deze uit te breiden en u kunt elke lease vrijgeven wanneer u er klaar mee bent. Wanneer de Blob service afloopt, worden er automatisch beperkte leases vrijgegeven.  
 
 Met leases kunnen verschillende synchronisatie strategieën worden ondersteund, waaronder exclusieve schrijf-en gedeelde Lees-, exclusieve write/exclusieve Lees-en gedeelde write/exclusieve Lees bewerking. Als er een lease bestaat, worden exclusieve schrijf bewerkingen (put, set en Delete) door de opslag service afgedwongen, maar moet de ontwikkelaar ervoor zorgen dat alle client toepassingen een lease-ID gebruiken en dat er slechts één client tegelijk een geldige lease-ID. Lees bewerkingen die geen lease-ID bevatten, resulteren in gedeelde Lees bewerkingen.  
 
-Het volgende C# code fragment toont een voor beeld van het ophalen van een exclusieve lease gedurende 30 seconden op een blob, het bijwerken van de inhoud van de BLOB en het vrijgeven van de lease. Als er al een geldige lease op de BLOB wordt weer gegeven wanneer u probeert een nieuwe lease te verkrijgen, retourneert de BLOB-service het status resultaat ' HTTP (409) '. In het volgende code fragment wordt een **AccessCondition** -object gebruikt om de lease gegevens op te slaan wanneer er een aanvraag wordt gemaakt om de BLOB in de opslag service bij te werken.  U kunt het volledige voor beeld hier downloaden: [Gelijktijdigheid beheren met behulp van Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
+Het volgende C# code fragment toont een voor beeld van het ophalen van een exclusieve lease gedurende 30 seconden op een blob, het bijwerken van de inhoud van de BLOB en het vrijgeven van de lease. Als er al een geldige lease in de blob is wanneer u een nieuwe lease wilt verkrijgen, retourneert de Blob service het status resultaat ' HTTP (409) '. In het volgende code fragment wordt een **AccessCondition** -object gebruikt om de lease gegevens op te slaan wanneer er een aanvraag wordt gemaakt om de BLOB in de opslag service bij te werken.  U kunt het volledige voor beeld hier downloaden: [gelijktijdigheid beheren met behulp van Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -174,10 +179,11 @@ De volgende BLOB-bewerkingen kunnen leases gebruiken voor het beheren van pessim
 * Moment opname-BLOB-lease-ID optioneel als er een lease bestaat
 * Kopiëren van BLOB-lease-ID vereist als er een lease bestaat op de doel-BLOB
 * Kopiëren van BLOB afbreken-lease-ID vereist als er een oneindige lease bestaat op de doel-BLOB
-* Lease-BLOB  
+* Lease Blob  
 
 ### <a name="pessimistic-concurrency-for-containers"></a>Pessimistische gelijktijdigheid voor containers
-Met leases in containers kunnen dezelfde synchronisatie strategieën worden ondersteund als op blobs (exclusief schrijven/gedeeld lezen, exclusieve write/exclusieve Lees-en gedeelde write/exclusieve Lees bewerking). in tegens telling tot blobs wordt alleen de exclusiviteit afgedwongen door de opslag service. Verwijder bewerkingen. Als u een container met een actieve lease wilt verwijderen, moet een client de actieve lease-ID met de aanvraag verwijderen bevatten. Alle andere container bewerkingen slagen op een geleasde container zonder de lease-ID op te nemen, in welk geval ze gedeelde bewerkingen zijn. Als de meeste updates (put of set) of lees bewerkingen zijn vereist, moeten ontwikkel aars ervoor zorgen dat alle clients een lease-ID gebruiken en dat slechts één client tegelijk een geldige lease-ID heeft.  
+
+Met leases in containers kunnen dezelfde synchronisatie strategieën worden ondersteund als op blobs (exclusief schrijven/gedeeld lezen, exclusieve write/exclusieve Lees-en gedeelde write/exclusieve Lees bewerking). in tegens telling tot blobs dwingt de opslag service alleen de exclusiviteit af voor verwijderings bewerkingen. Als u een container met een actieve lease wilt verwijderen, moet een client de actieve lease-ID met de aanvraag verwijderen bevatten. Alle andere container bewerkingen slagen op een geleasde container zonder de lease-ID op te nemen, in welk geval ze gedeelde bewerkingen zijn. Als de meeste updates (put of set) of lees bewerkingen zijn vereist, moeten ontwikkel aars ervoor zorgen dat alle clients een lease-ID gebruiken en dat slechts één client tegelijk een geldige lease-ID heeft.  
 
 De volgende container bewerkingen kunnen leases gebruiken voor het beheren van pessimistische gelijktijdigheid:  
 
@@ -191,12 +197,13 @@ De volgende container bewerkingen kunnen leases gebruiken voor het beheren van p
 
 Zie voor meer informatie:  
 
-* [Voorwaardelijke headers opgeven voor BLOB-service bewerkingen](https://msdn.microsoft.com/library/azure/dd179371.aspx)
+* [Voorwaardelijke headers opgeven voor bewerkingen van de blob-service](https://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Lease-container](https://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Lease-BLOB](https://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Lease-blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
-## <a name="managing-concurrency-in-the-table-service"></a>Gelijktijdigheid beheren in de tabel service
-In de tabel service worden optimistische gelijktijdigheid controles gebruikt als het standaard gedrag bij het werken met entiteiten, in tegens telling tot de BLOB-service, waar u expliciet moet kiezen voor het uitvoeren van optimistische gelijktijdigheids controles. Het andere verschil tussen de Table-en BLOB-Services is dat u alleen het gelijktijdigheids gedrag van entiteiten kunt beheren, terwijl u met de BLOB-service de gelijktijdigheid van zowel containers als blobs kunt beheren.  
+## <a name="managing-concurrency-in-table-storage"></a>Gelijktijdigheid beheren in tabel opslag
+
+In het Table service worden optimistische gelijktijdigheid controles gebruikt als het standaard gedrag bij het werken met entiteiten, in tegens telling tot de Blob service waar u expliciet moet kiezen om optimistische gelijktijdigheids controles uit te voeren. Het andere verschil tussen de Table-en BLOB-Services is dat u alleen het gelijktijdigheids gedrag van entiteiten kunt beheren, terwijl u met de Blob service u de gelijktijdigheid van zowel containers als blobs kunt beheren.  
 
 Als u optimistische gelijktijdigheid wilt gebruiken en wilt controleren of een ander proces een entiteit heeft gewijzigd sinds u deze hebt opgehaald uit de Table Storage-service, kunt u de ETag-waarde gebruiken die u ontvangt wanneer de tabel service een entiteit retourneert. Het overzicht van dit proces is als volgt:  
 
@@ -204,11 +211,11 @@ Als u optimistische gelijktijdigheid wilt gebruiken en wilt controleren of een a
 2. Wanneer u de entiteit bijwerkt, neemt u de ETag-waarde op die u in stap 1 hebt ontvangen in de verplichte **if-match-** header van de aanvraag die u naar de service verzendt.
 3. De service vergelijkt de ETag-waarde in de aanvraag met de huidige ETag-waarde van de entiteit.
 4. Als de huidige ETag-waarde van de entiteit verschilt van de ETag in de verplichte koptekst **if-match** in de aanvraag, retourneert de service een 412-fout naar de client. Dit geeft aan de client door dat een andere proces de entiteit heeft bijgewerkt sinds de client deze heeft opgehaald.
-5. Als de huidige ETag-waarde van de entiteit hetzelfde is als de ETag in de verplichte koptekst **if-match** in de aanvraag of als de header **if-match** het Joker teken (*) bevat, wordt de aangevraagde bewerking door de service uitgevoerd en wordt de huidige ETAG bijgewerkt de waarde van de entiteit die moet worden weer gegeven. deze is bijgewerkt.  
+5. Als de huidige ETag-waarde van de entiteit hetzelfde is als de ETag in de verplichte koptekst **if-** match in de aanvraag of als de header **if-match** het Joker teken (*) bevat, wordt de aangevraagde bewerking door de service uitgevoerd en wordt de huidige ETAG-waarde van de entiteit bijgewerkt om aan te geven dat deze is bijgewerkt.  
 
-Houd er rekening mee dat, in tegens telling tot de BLOB-service, de client een **if-match-** header moet bevatten in update aanvragen. Het is echter wel mogelijk om een onvoorwaardelijke update (de laatste WINS-strategie van de schrijver) af te dwingen en gelijktijdigheids controles over te slaan als de client de header **if-match** instelt op het Joker teken (*) in de aanvraag.  
+In tegens telling tot de Blob service, moet de client in de tabel service een **if-match-** header in update aanvragen bevatten. Het is echter wel mogelijk om een onvoorwaardelijke update (de laatste WINS-strategie van de schrijver) af te dwingen en gelijktijdigheids controles over te slaan als de client de header **if-match** instelt op het Joker teken (*) in de aanvraag.  
 
-In het C# volgende code fragment wordt een klant entiteit weer gegeven die eerder is gemaakt of opgehaald bij het bijwerken van het e-mail adres. Met de eerste INSERT of Retrieve-bewerking wordt de ETag-waarde opgeslagen in het klant-object, en omdat het voor beeld hetzelfde object exemplaar gebruikt wanneer het de Vervang bewerking uitvoert, stuurt het automatisch de ETag-waarde terug naar de tabel service, waardoor de service kan worden controleren op schendingen van gelijktijdigheid. Als een ander proces de entiteit heeft bijgewerkt in tabel opslag, retourneert de service het status bericht HTTP 412 (voor waarde is mislukt).  U kunt het volledige voor beeld hier downloaden: [Gelijktijdigheid beheren met behulp van Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
+In het C# volgende code fragment wordt een klant entiteit weer gegeven die eerder is gemaakt of opgehaald bij het bijwerken van het e-mail adres. Met de eerste INSERT of Retrieve-bewerking wordt de ETag-waarde opgeslagen in het klant-object, en omdat het voor beeld hetzelfde object exemplaar gebruikt wanneer het de Vervang bewerking uitvoert, stuurt het automatisch de ETag-waarde terug naar de tabel service, waardoor de service kan worden controleren op schendingen van gelijktijdigheid. Als een ander proces de entiteit heeft bijgewerkt in tabel opslag, retourneert de service het status bericht HTTP 412 (voor waarde is mislukt).  U kunt het volledige voor beeld hier downloaden: [gelijktijdigheid beheren met behulp van Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
 ```csharp
 try
@@ -254,16 +261,18 @@ Zie voor meer informatie:
 * [Bewerkingen op entiteiten](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
 ## <a name="managing-concurrency-in-the-queue-service"></a>Gelijktijdigheid beheren in de Queue-service
+
 Een scenario waarbij gelijktijdig gebruik wordt gedaan van een probleem in de wachtrij service, is dat meerdere clients berichten uit een wachtrij ophalen. Wanneer een bericht uit de wachtrij wordt opgehaald, bevat het antwoord het bericht en een pop-ontvangst waarde, die vereist is voor het verwijderen van het bericht. Het bericht wordt niet automatisch verwijderd uit de wachtrij, maar nadat het is opgehaald, is het niet zichtbaar voor andere clients voor het tijds interval dat is opgegeven door de para meter visibilitytimeout. De client die het bericht haalt, wordt verwacht het bericht te verwijderen nadat het is verwerkt en vóór de tijd die is opgegeven door het TimeNextVisible-element van het antwoord, dat wordt berekend op basis van de waarde van de para meter visibilitytimeout. De waarde van visibilitytimeout wordt toegevoegd aan het tijdstip waarop het bericht wordt opgehaald om de waarde van TimeNextVisible te bepalen.  
 
 De Queue-service biedt geen ondersteuning voor optimistische of pessimistische gelijktijdigheid en daarom moeten clients die berichten ophalen die zijn opgehaald uit een wachtrij ervoor zorgen dat berichten op een idempotente manier worden verwerkt. Een laatste WINS-strategie van schrijver wordt gebruikt voor update bewerkingen, zoals SetQueueServiceProperties, SetQueueMetaData, SetQueueACL en UpdateMessage.  
 
 Zie voor meer informatie:  
 
-* [REST API Queue-service](https://msdn.microsoft.com/library/azure/dd179363.aspx)
+* [Wachtrijservice REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [Berichten ophalen](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
 
-## <a name="managing-concurrency-in-the-file-service"></a>Gelijktijdigheid beheren in de bestands service
+## <a name="managing-concurrency-in-azure-files"></a>Gelijktijdigheid beheren in Azure Files
+
 De bestands service kan worden geopend met twee verschillende protocol eindpunten: SMB en REST. De REST-service biedt geen ondersteuning voor optimistische vergren deling of pessimistische vergren deling, en alle updates volgen een WINS-strategie van de laatste schrijver. SMB-clients die bestands shares koppelen, kunnen gebruikmaken van mechanismen voor bestandssysteem vergrendeling om de toegang tot gedeelde bestanden te beheren, met inbegrip van de mogelijkheid om pessimistische vergren deling uit te voeren. Wanneer een SMB-client een bestand opent, wordt de bestands toegang en de deel modus. Als u een optie voor bestands toegang van ' schrijven ' of ' lezen/schrijven ' instelt, samen met de bestands share modus ' geen ', wordt het bestand vergrendeld door een SMB-client totdat het bestand is gesloten. Als er een REST-bewerking wordt uitgevoerd voor een bestand waarbij een SMB-client het bestand heeft vergrendeld, retourneert de REST-service de status code 409 (conflict) met de fout code SharingViolation.  
 
 Wanneer een SMB-client een bestand opent om te verwijderen, wordt het bestand gemarkeerd als verwijderen in behandeling totdat alle andere SMB-client open ingangen voor dat bestand worden gesloten. Terwijl een bestand is gemarkeerd als verwijderen in behandeling, retourneert elke REST-bewerking in dat bestand de status code 409 (conflict) met de fout code SMBDeletePending. Status code 404 (niet gevonden) wordt niet geretourneerd, omdat het mogelijk is dat de SMB-client de markering voor verwijdering in behandeling verwijdert voordat het bestand wordt gesloten. Met andere woorden, de status code 404 (niet gevonden) wordt alleen verwacht wanneer het bestand is verwijderd. Houd er rekening mee dat als een bestand een SMB in behandeling heeft verwijderings status, dit niet wordt opgenomen in de resultaten van de lijst bestanden. Houd er ook rekening mee dat het REST verwijderen van bestanden en REST verwijderen Directory-bewerkingen op een andere manier wordt doorgevoerd en niet resulteert in een verwijderings status in behandeling.  
@@ -272,8 +281,7 @@ Zie voor meer informatie:
 
 * [Bestands vergrendelingen beheren](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 
-## <a name="summary-and-next-steps"></a>Samen vatting en volgende stappen
-De Microsoft Azure Storage-service is ontworpen om te voldoen aan de behoeften van de meest complexe online toepassingen zonder dat ontwikkel aars de belang rijke veronderstellingen op basis van de belangrijkste ontwerpen kunnen verhelpen, zoals gelijktijdigheid en consistentie van gegevens die ze nodig hebben voor krijgt.  
+## <a name="next-steps"></a>Volgende stappen
 
 Voor de volledige voorbeeld toepassing waarnaar wordt verwezen in deze blog:  
 
@@ -284,5 +292,5 @@ Voor meer informatie over Azure Storage raadpleegt u:
 * [Start pagina van Microsoft Azure Storage](https://azure.microsoft.com/services/storage/)
 * [Kennismaking met Azure Storage](storage-introduction.md)
 * Opslag aan de slag voor [BLOB](../blobs/storage-dotnet-how-to-use-blobs.md), [Table](../../cosmos-db/table-storage-how-to-use-dotnet.md), [Queues](../storage-dotnet-how-to-use-queues.md)en [files](../storage-dotnet-how-to-use-files.md)
-* Opslag architectuur – [Azure Storage: Een Maxi maal beschik bare Cloud opslag service met sterke consistentie](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+* Opslag architectuur – [Azure Storage: een Maxi maal beschik bare Cloud opslag service met sterke consistentie](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

@@ -11,12 +11,12 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 10/31/2018
-ms.openlocfilehash: 2b83c61d05cbc9d84c74d03004839a21505519fa
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a2f24d8203ac5fb9724370cbdf4309bdc43c166a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928468"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444105"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Een gedeelde zelf-hostende Integration runtime maken in Azure Data Factory
 
@@ -45,7 +45,7 @@ Als u een gedeelde zelf-hostende IR wilt maken met behulp van Azure Data Factory
 ## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Een gedeelde zelf-hostende IR maken met behulp van Azure PowerShell
 
 Als u een gedeelde zelf-hostende IR wilt maken met behulp van Azure PowerShell, kunt u de volgende stappen uitvoeren: 
-1. Een gegevensfactory maakt. 
+1. Een gegevensfactory maken. 
 1. Een zelf-hostende Integration Runtime maken.
 1. Deel de zelf-hostende Integration runtime met andere gegevens fabrieken.
 1. Maak een gekoppelde Integration runtime.
@@ -62,7 +62,7 @@ Als u een gedeelde zelf-hostende IR wilt maken met behulp van Azure PowerShell, 
 > [!NOTE]  
 > Voor een lijst met Azure-regio's waarin Data Factory op dit moment beschikbaar is, selecteert u de regio's die u interesseren op de [beschik bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
 
-### <a name="create-a-data-factory"></a>Een gegevensfactory maken
+### <a name="create-a-data-factory"></a>Een data factory maken
 
 1. Start Windows PowerShell ISE (Integrated Scripting Environment).
 
@@ -99,7 +99,7 @@ Als u een gedeelde zelf-hostende IR wilt maken met behulp van Azure PowerShell, 
     > [!NOTE]  
     > Deze stap is optioneel. Als u al een data factory hebt, kunt u deze stap overs Laan. 
 
-    Maak een [Azure-resource groep](../azure-resource-manager/resource-group-overview.md) met behulp van de opdracht [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) . Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd. In het volgende voor beeld wordt een resource groep met de naam `myResourceGroup` gemaakt op de locatie Europa West: 
+    Maak een [Azure-resource groep](../azure-resource-manager/management/overview.md) met behulp van de opdracht [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) . Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd. In het volgende voor beeld wordt een resource groep met de naam `myResourceGroup` gemaakt op de locatie Europa West: 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName

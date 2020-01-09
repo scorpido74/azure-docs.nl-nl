@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 10/15/2019
+ms.date: 12/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d31e30991056cc891e63347a2c88e7fc4caeab28
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c085ce4aba6760b09dcc3eaf2f6232c5cc904706
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74875439"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469376"
 ---
 ### <a name="regions"></a>Welke regio's zijn er beschikbaar?
 
@@ -22,6 +22,10 @@ ms.locfileid: "74875439"
 ### <a name="publicip"></a>Heb ik een openbaar IP-adres nodig op mijn virtuele machine?
 
 U hebt geen openbaar IP-adres nodig op de virtuele Azure-machine waarmee u verbinding maakt met de Azure Bastion-service. De Bastion-service opent de RDP/SSH-sessie/verbinding met uw virtuele machine via het privé-IP-adres van uw virtuele machine in het virtuele netwerk.
+
+### <a name="is-ipv6-supported"></a>Wordt IPv6 ondersteund?
+
+Op dit moment wordt IPv6 niet ondersteund. Azure Bastion ondersteunt alleen IPv4.
 
 ### <a name="rdpssh"></a>Heb ik een RDP-of SSH-client?
 

@@ -1,96 +1,87 @@
 ---
-title: Azure Service Fabric reverse proxy | Microsoft Docs
-description: Omgekeerde proxy van Service Fabric gebruikt voor communicatie met microservices van binnen en buiten het cluster.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric reverse-proxy
+description: Gebruik Service Fabric omgekeerde proxy voor communicatie met micro services van binnen en buiten het cluster.
 author: BharatNarasimman
-manager: chackdan
-editor: vturecek
-ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 6ce6f1f6559b43a64fb7edd0773a20f8ee0cf8a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837936"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464295"
 ---
-# <a name="reverse-proxy-in-azure-service-fabric"></a>Omgekeerde proxy in Azure Service Fabric
-Omgekeerde proxy die is ingebouwd in Azure Service Fabric kunt u microservices die worden uitgevoerd in een Service Fabric-cluster detecteren en te communiceren met andere services die http-eindpunten hebben.
+# <a name="reverse-proxy-in-azure-service-fabric"></a>Reverse proxy in azure Service Fabric
+Met omgekeerde proxy die in azure Service Fabric is ingebouwd, kunnen micro services die worden uitgevoerd in een Service Fabric cluster worden gedetecteerd en gecommuniceerd met andere services met http-eind punten.
 
-## <a name="microservices-communication-model"></a>Communicatie-Microservices-model
-Microservices in Service Fabric worden uitgevoerd op een subset van de knooppunten in het cluster en kunt migreren tussen de knooppunten om verschillende redenen. Als gevolg hiervan kunnen de eindpunten voor microservices dynamisch wijzigen. Als u wilt detecteren en communiceren met andere services in het cluster, moet microservice gaan via de volgende stappen uit:
+## <a name="microservices-communication-model"></a>Communicatie model micro Services
+Micro Services in Service Fabric worden uitgevoerd op een subset van knoop punten in het cluster en kunnen om verschillende redenen worden gemigreerd tussen de knoop punten. Als gevolg hiervan kunnen de eind punten voor micro services dynamisch worden gewijzigd. Micro service moet de volgende stappen uitvoeren om te ontdekken en te communiceren met andere services in het cluster:
 
-1. Los de servicelocatie via de naming-service.
-2. Verbinding maken met de service.
-3. De voorgaande stappen verpakken in een lus die service-oplossing implementeert en beleidsregels toepassen op fouten bij het verbinden voor opnieuw proberen
+1. Los de service locatie op via de naamgevings service.
+2. Maak verbinding met de service.
+3. De voor gaande stappen in een lus afronden waarmee service omzetting wordt geïmplementeerd en beleid voor opnieuw proberen wordt toegepast op verbindings fouten
 
-Zie voor meer informatie, [Connect en communiceren met services](service-fabric-connect-and-communicate-with-services.md).
+Zie [verbinding maken en communiceren met Services](service-fabric-connect-and-communicate-with-services.md)voor meer informatie.
 
 ### <a name="communicating-by-using-the-reverse-proxy"></a>Communiceren met behulp van de omgekeerde proxy
-Omgekeerde proxy is een service die wordt uitgevoerd op elk knooppunt en verwerkt eindpunt resolutie, automatische nieuwe pogingen en andere verbindingsfouten namens de client-services. Omgekeerde proxy kan worden geconfigureerd voor verschillende beleidsregels van toepassing als het aanvragen van client-services worden verwerkt. Met behulp van een omgekeerde proxy kan de clientservice op elke client-side HTTP-communicatie-bibliotheken en geen speciale oplossing vereisen en Pogingslogica in de service. 
+Omgekeerde proxy is een service die op elk knoop punt wordt uitgevoerd en die de eindpunt resolutie, automatische nieuwe pogingen en andere verbindings fouten afhandelt namens client services. Omgekeerde proxy kan worden geconfigureerd voor het Toep assen van verschillende beleids regels wanneer deze aanvragen van client services verwerken. Door gebruik te maken van een reverse-proxy kan de client service alle HTTP-communicatie bibliotheken aan de client zijde gebruiken en is er geen speciale oplossing vereist en wordt de logica opnieuw geprobeerd in de service. 
 
-Omgekeerde proxy wordt aangegeven dat een of meer eindpunten op het lokale knooppunt voor clientservices moet worden gebruikt voor het verzenden van aanvragen naar andere services.
+Met omgekeerde proxy worden een of meer eind punten op het lokale knoop punt voor client services gebruikt voor het verzenden van aanvragen naar andere services.
 
 ![Interne communicatie][1]
 
 > [!NOTE]
-> **Ondersteunde Platforms**
+> **Ondersteunde platforms**
 >
-> Omgekeerde proxy in Service Fabric ondersteunt momenteel de volgende platforms
-> * *Windows-Cluster*: Windows 8 en hoger of WindowsServer 2012 en hoger
-> * *Linux-Cluster*: Omgekeerde Proxy is momenteel niet beschikbaar voor Linux-clusters
+> Reverse proxy in Service Fabric ondersteunt momenteel de volgende platformen
+> * *Windows-cluster*: Windows 8 en hoger of windows server 2012 en hoger
+> * *Linux-cluster*: reverse proxy is momenteel niet beschikbaar voor Linux-clusters
 >
 
-## <a name="reaching-microservices-from-outside-the-cluster"></a>Microservices van buiten het cluster is bereikt
-De standaard externe communicatiemodel voor microservices, is een opt-in voor waar elke service kan niet worden geopend rechtstreeks vanuit externe clients. [Azure Load Balancer](../load-balancer/load-balancer-overview.md), dit is een netwerkgrens tussen microservices en externe clients, voert u netwerkadresomzetting en externe stuurt aanvragen door naar interne IP: poort-eindpunten. Als u wilt maken van een microservice-eindpunt rechtstreeks toegankelijk is voor externe clients, moet u eerst de Load Balancer voor het doorsturen van verkeer naar elke poort die de service in het cluster gebruikt configureren. De meeste microservices, met name stateful microservices, live geen bovendien op alle knooppunten van het cluster. De microservices kunt verplaatsen tussen knooppunten bij failover. In dergelijke gevallen kan geen Load Balancer effectief te bepalen de locatie van het doelknooppunt van de replica's waaraan moet het doorsturen van verkeer.
+## <a name="reaching-microservices-from-outside-the-cluster"></a>Micro services van buiten het cluster bereiken
+Het standaard externe communicatie model voor micro Services is een opt-in-model waarbij elke service niet rechtstreeks vanuit externe clients kan worden geopend. [Azure Load Balancer](../load-balancer/load-balancer-overview.md), een netwerk grens tussen micro Services en externe clients, voert Network Address Translation en stuurt externe aanvragen door naar interne IP: poort-eind punten. Als u het eind punt van een micro service rechtstreeks toegankelijk wilt maken voor externe clients, moet u eerst Load Balancer configureren om verkeer door te sturen naar elke poort die door de service in het cluster wordt gebruikt. Daarnaast hebben de meeste micro Services, met name micro Services, niet live op alle knoop punten van het cluster. De micro Services kunnen tussen knoop punten in de failover worden verplaatst. In dergelijke gevallen kan Load Balancer niet in staat zijn om de locatie van het doel knooppunt te bepalen van de replica's waarnaar het verkeer moet worden doorgestuurd.
 
-### <a name="reaching-microservices-via-the-reverse-proxy-from-outside-the-cluster"></a>Microservices via de omgekeerde proxy van buiten het cluster is bereikt
-In plaats van het configureren van de poort van een afzonderlijke service in de Load Balancer, kunt u alleen de poort van de omgekeerde proxy configureren in de Load Balancer. Deze configuratie kiest, kunnen clients buiten het cluster services binnen het cluster bereiken met behulp van de omgekeerde proxy zonder aanvullende configuratie.
+### <a name="reaching-microservices-via-the-reverse-proxy-from-outside-the-cluster"></a>Micro Services bereiken via de omgekeerde proxy van buiten het cluster
+In plaats van de poort van een afzonderlijke service in Load Balancer te configureren, kunt u alleen de poort van de omgekeerde proxy in Load Balancer configureren. Met deze configuratie kunnen clients buiten het cluster services binnen het cluster bereiken met behulp van de omgekeerde proxy zonder extra configuratie.
 
 ![Externe communicatie][0]
 
 > [!WARNING]
-> Wanneer u de omgekeerde proxy poort in de Load Balancer configureert, kunnen alle microservices in het cluster die beschikbaar maken van een HTTP-eindpunt worden opgevraagd van buiten het cluster. Dit betekent dat de microservices is bedoeld voor intern mogelijk kunnen worden gedetecteerd door een bepaald kwaadwillende gebruiker. Dit geeft kunnen ernstige problemen die kunnen worden misbruikt; bijvoorbeeld:
+> Wanneer u de poort van de reverse proxy in Load Balancer configureert, zijn alle micro Services in het cluster die een HTTP-eind punt beschikbaar maken, adresseerbaar van buiten het cluster. Dit betekent dat de micro services die intern bedoeld zijn, kunnen worden gedetecteerd door een bepaalde kwaadwillende gebruiker. Dit biedt mogelijk ernstige beveiligings problemen die kunnen worden misbruikt. bijvoorbeeld:
 >
-> * Een kwaadwillende gebruiker mogelijk een denial of service-aanval starten door een interne service beschikt niet over een voldoende beperkte kwetsbaarheid voor aanvallen herhaaldelijk aan te roepen.
-> * Een kwaadwillende gebruiker mogelijk onjuist ingedeelde pakketten leveren aan een interne service, wat resulteert in onbedoeld gedrag.
-> * Een service die is bedoeld voor intern opleveren persoonlijke of gevoelige gegevens niet zijn bedoeld om te worden blootgesteld aan services buiten het cluster, dus wanneer deze gevoelige gegevens naar een kwaadwillende gebruiker beschikbaar komen. 
+> * Een kwaadwillende gebruiker kan een DOS-aanval (Denial of service) starten door herhaaldelijk een interne service aan te roepen die geen voldoende harde kwets baarheid heeft.
+> * Een kwaadwillende gebruiker kan misvormde pakketten leveren aan een interne service, wat leidt tot onbedoeld gedrag.
+> * Een service die als intern is bedoeld, kan persoonlijke of gevoelige informatie retour neren die niet bedoeld is om te worden blootgesteld aan services buiten het cluster, waardoor deze gevoelige informatie beschikbaar wordt gesteld aan een kwaadwillende gebruiker. 
 >
-> Zorg ervoor dat u volledig begrijpen en oplossen van de mogelijke gevolgen voor de beveiliging voor uw cluster en de apps die zijn uitgevoerd, voordat u de omgekeerde-proxypoort openbaar maken. 
+> Zorg ervoor dat u de mogelijke beveiligings implicaties voor uw cluster en de apps die erop worden uitgevoerd, volledig begrijpt en verhelpt voordat u de omgekeerde proxy poort openbaar maakt. 
 >
 
 
 ## <a name="uri-format-for-addressing-services-by-using-the-reverse-proxy"></a>URI-indeling voor het adresseren van services met behulp van de omgekeerde proxy
-De omgekeerde proxy maakt gebruik van een specifieke uniform resource identifier (URI)-indeling voor het identificeren van de servicepartitie waarnaar de binnenkomende aanvraag moet worden doorgestuurd:
+De omgekeerde proxy gebruikt een specifieke URI-indeling (Uniform Resource Identifier) om de service partitie te identificeren waarnaar de binnenkomende aanvraag moet worden doorgestuurd:
 
 ```
 http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?PartitionKey=<key>&PartitionKind=<partitionkind>&ListenerName=<listenerName>&TargetReplicaSelector=<targetReplicaSelector>&Timeout=<timeout_in_seconds>
 ```
 
-* **http(s):** De omgekeerde proxy kan worden geconfigureerd voor het accepteren van HTTP of HTTPS-verkeer. Raadpleeg voor het doorsturen van HTTPS, [verbinding maken met een beveiligd service met de omgekeerde proxy](service-fabric-reverseproxy-configure-secure-communication.md) beschikt u over omgekeerde proxy-instellingen om te luisteren op HTTPS.
-* **Cluster volledig gekwalificeerde domeinnaam (FQDN) | intern IP:** U kunt de omgekeerde proxy voor externe clients configureren zodat deze bereikbaar is via de clusterdomein, zoals mycluster.eastus.cloudapp.azure.com. De omgekeerde proxy wordt standaard uitgevoerd op elk knooppunt. Voor interne verkeer, kan de omgekeerde proxy worden bereikt op localhost of op elk knooppunt van interne IP-, bijvoorbeeld 10.0.0.1.
+* **http (s):** De omgekeerde proxy kan worden geconfigureerd voor het accepteren van HTTP-of HTTPS-verkeer. Voor het door sturen van HTTPS, raadpleegt u [verbinding maken met een beveiligde service met de reverse proxy](service-fabric-reverseproxy-configure-secure-communication.md) nadat u de installatie van de proxy ongedaan hebt gemaakt om te Luis teren op https
+* **Cluster Fully Qualified Domain Name (FQDN) | intern IP-adres:** Voor externe clients kunt u de omgekeerde proxy configureren zodat deze bereikbaar is via het cluster domein, zoals mycluster.eastus.cloudapp.azure.com. Standaard wordt de omgekeerde proxy uitgevoerd op elk knoop punt. Voor intern verkeer kan de omgekeerde proxy worden bereikt op localhost of op een IP-adres van een intern knoop punt, zoals 10.0.0.1.
 * **Poort:** Dit is de poort, zoals 19081, die is opgegeven voor de omgekeerde proxy.
-* **ServiceInstanceName:** Dit is de volledig gekwalificeerde naam van de geïmplementeerde service-exemplaar dat u probeert te bereiken zonder de ' fabric: / "schema. Bijvoorbeeld, om te bereiken het *fabric: / Mijntoep/MijnService/* -service, gebruikt u *Mijntoep/MijnService*.
+* **ServiceInstanceName:** Dit is de volledig gekwalificeerde naam van het geïmplementeerde service-exemplaar dat u probeert te bereiken zonder ' Fabric:/' niveaus. Als u bijvoorbeeld de *Fabric:/Mijntoep/myservice/* service wilt bereiken, gebruikt u *MyApp/myservice*.
 
-    De naam van de service-exemplaar is hoofdlettergevoelig. Gebruik een ander hoofdlettergebruik voor de naam van de service-exemplaar in de URL zorgt ervoor dat de aanvragen mislukt met 404 (niet gevonden).
-* **Pad naar het achtervoegsel:** Dit is het werkelijke URL-pad, zoals *myapi/waarden/toevoegen/3*, voor de service waarmee u verbinding wilt maken.
-* **PartitionKey:** Dit is de berekende partitiesleutel van de partitie die u wilt bereiken voor een gepartitioneerde service. Houd er rekening mee dat dit *niet* de partitie-ID GUID. Deze parameter is niet vereist voor services die gebruikmaken van het partitieschema singleton.
-* **PartitionKind:** Dit is het partitieschema van de service. Dit kan zijn 'Int64Range' of 'Met de naam'. Deze parameter is niet vereist voor services die gebruikmaken van het partitieschema singleton.
-* **ListenerName** de eindpunten van de service van het formulier zijn {"Eindpunten": {"Listener1": "1", "Listener2": "Endpoint2"...}}. Wanneer de service wordt aangegeven dat meerdere eindpunten, maar Hiermee wordt aangegeven het eindpunt dat de aanvraag van de client moet worden doorgestuurd. Dit kan worden genegeerd als de service slechts één listener heeft.
-* **TargetReplicaSelector** Hiermee wordt aangegeven hoe de doelreplica of het exemplaar moet worden geselecteerd.
-  * Wanneer de doelservice stateful is, kan de TargetReplicaSelector een van de volgende zijn:  'PrimaryReplica', 'RandomSecondaryReplica' of 'RandomReplica'. Als deze parameter niet is opgegeven, is de standaardwaarde 'PrimaryReplica'.
-  * Wanneer de doelservice stateless is, kiest de omgekeerde proxy een willekeurig exemplaar van de servicepartitie voor het doorsturen van de aanvraag voor het.
-* **Time-out voor:**  Hiermee geeft u de time-out voor de HTTP-aanvraag die zijn gemaakt door de omgekeerde proxy voor de service namens de clientaanvraag. De standaardwaarde is 60 seconden. Dit is een optionele parameter.
+    De naam van het service-exemplaar is hoofdletter gevoelig. Het gebruik van een andere behuizing voor de naam van het service-exemplaar in de URL zorgt ervoor dat de aanvragen mislukken met 404 (niet gevonden).
+* **Pad naar achtervoegsel:** Dit is het werkelijke URL-pad, zoals *myapi/values/add/3*, voor de service waarmee u verbinding wilt maken.
+* **PartitionKey:** Voor een gepartitioneerde service is dit de berekende partitie sleutel van de partitie die u wilt bereiken. Houd er rekening mee dat dit *niet* de GUID van de partitie-id is. Deze para meter is niet vereist voor services die gebruikmaken van het Singleton-partitie schema.
+* **PartitionKind:** Dit is het schema voor service partities. Dit kan ' Int64Range ' of ' name ' zijn. Deze para meter is niet vereist voor services die gebruikmaken van het Singleton-partitie schema.
+* **ListenerName** De eind punten van de service hebben de vorm {"eind punten": {"Listener1": "Endpoint1", "Listener2": "Endpoint2"...}}. Wanneer de service meerdere eind punten beschikbaar stelt, wordt het eind punt geïdentificeerd waarnaar de client aanvraag moet worden doorgestuurd. Dit kan worden wegge laten als de service slechts één listener heeft.
+* **TargetReplicaSelector** Hiermee wordt aangegeven hoe de doel replica of-instantie moet worden geselecteerd.
+  * Wanneer de doel service stateful is, kan de TargetReplicaSelector een van de volgende zijn: ' PrimaryReplica ', ' RandomSecondaryReplica ' of ' RandomReplica '. Als deze para meter niet wordt opgegeven, is de standaard waarde ' PrimaryReplica '.
+  * Wanneer de doel service stateless is, pickt reverse proxy een wille keurig exemplaar van de service partitie om de aanvraag door te sturen naar.
+* **Time-out:**  Hiermee geeft u de time-out op voor de HTTP-aanvraag die is gemaakt door de omgekeerde proxy naar de service namens de client aanvraag. De standaard waarde is 60 seconden. Dit is een optionele para meter.
 
-### <a name="example-usage"></a>Voorbeeld van gebruik
-Als u bijvoorbeeld eerst even de *fabric: / Mijntoep/MijnService* service waarmee een HTTP-listener op de volgende URL:
+### <a name="example-usage"></a>Gebruiksvoorbeelden
+Als voor beeld gaat u naar de service *Fabric:/MyApp/MyService* waarmee een HTTP-listener wordt geopend op de volgende URL:
 
 ```
 http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
@@ -101,71 +92,71 @@ Hieronder vindt u de resources voor de service:
 * `/index.html`
 * `/api/users/<userId>`
 
-Als de service gebruikt de singleton partitieschema, de *PartitionKey* en *PartitionKind* queryreeksparameters zijn niet vereist en de service kan worden bereikt met behulp van de gateway als:
+Als de service het Singleton-partitie schema gebruikt, zijn de *PartitionKey* -en *PartitionKind* -query teken reeks parameters niet vereist en de service kan worden bereikt door de gateway te gebruiken als:
 
 * Extern: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService`
 * Intern: `http://localhost:19081/MyApp/MyService`
 
-Als de service het partitieschema Uniform Int64 gebruikt de *PartitionKey* en *PartitionKind* queryreeksparameters moeten worden gebruikt voor het bereiken van een partitie van de service:
+Als de service gebruikmaakt van het uniforme Int64-partitie schema, moeten de *PartitionKey* -en *PartitionKind* -query teken reeks parameters worden gebruikt om een partitie van de service te bereiken:
 
 * Extern: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
 * Intern: `http://localhost:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
 
-Als u wilt de resources die wordt aangegeven dat de service is bereikt, plaatst u het resourcepad nadat de naam van de service in de URL:
+Als u de resources die door de service worden weer gegeven, wilt bereiken, plaatst u het bronpad na de service naam in de URL:
 
 * Extern: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
 * Intern: `http://localhost:19081/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
 
-De gateway wordt deze aanvragen vervolgens doorsturen naar de URL van de service:
+De gateway stuurt deze aanvragen vervolgens door naar de URL van de service:
 
 * `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/index.html`
 * `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/api/users/6`
 
-## <a name="special-handling-for-port-sharing-services"></a>Speciale handelingen voor het delen van de poort services
-De Service Fabric reverse proxy probeert opnieuw omzetten van een serviceadres en de aanvraag opnieuw uitvoeren wanneer een service kan niet worden bereikt. Over het algemeen als een service kan niet worden bereikt, is de service-exemplaar of de replica verplaatst naar een ander knooppunt als onderdeel van de normale levenscyclus. Als dit gebeurt, kan de omgekeerde proxy een netwerkfout verbinding waarmee wordt aangegeven dat een eindpunt niet meer geopend op het oorspronkelijk omgezette adres is ontvangt.
+## <a name="special-handling-for-port-sharing-services"></a>Speciale verwerking voor services voor het delen van poorten
+De Service Fabric reverse-proxy probeert een service adres opnieuw op te lossen en voer de aanvraag opnieuw uit wanneer een service niet kan worden bereikt. Over het algemeen geldt dat als een service niet kan worden bereikt, het service-exemplaar of de replica is verplaatst naar een ander knoop punt als onderdeel van de normale levens cyclus. Als dit gebeurt, kan de omgekeerde proxy een netwerk verbindings fout ontvangen die aangeeft dat een eind punt niet meer is geopend op het oorspronkelijk opgeloste adres.
 
-Echter, replica's of service-exemplaren kunnen delen met een hostproces en mogelijk ook een poort wanneer deze wordt gehost door een http.sys gebaseerde webserver, delen met inbegrip van:
+Replica's of service-exemplaren kunnen echter een hostproces delen en kunnen ook een poort delen wanneer deze wordt gehost door een http. sys-gebaseerde webserver, waaronder:
 
 * [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
-* [ASP.NET Core WebListener](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
+* [Weblistener ASP.NET Core](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 
-In dit geval is het waarschijnlijk dat de webserver is beschikbaar in het hostproces en reageren op aanvragen, maar de opgelost service-exemplaar of de replica niet meer beschikbaar op de host is. In dit geval wordt de gateway een HTTP 404-antwoord ontvangen van de webserver. Een HTTP 404-respons kan dus twee verschillende betekenis hebben:
+In dit geval is het waarschijnlijk dat de webserver beschikbaar is in het hostproces en reageert op aanvragen, maar het omgezette service-exemplaar of de replica is niet meer beschikbaar op de host. In dit geval ontvangt de gateway een HTTP 404-antwoord van de webserver. Een HTTP 404-antwoord kan dus twee verschillende betekenissen hebben:
 
-- Geval #1: Het serviceadres juist is, maar de resource die de gebruiker heeft aangegeven bestaat niet.
-- Geval #2: Het serviceadres is onjuist en de resource die de gebruiker heeft aangegeven bestaat mogelijk op een ander knooppunt.
+- Case #1: het service adres is juist, maar de resource die de aangevraagde gebruiker niet bestaat.
+- Case #2: het service adres is onjuist en de resource die de gebruiker heeft aangevraagd, kan bestaan op een ander knoop punt.
 
-Het eerste geval is een normale HTTP 404-fout, die wordt beschouwd als een gebruikersfout opgetreden. De gebruiker heeft echter in het tweede geval verzocht een resource die bestaat. De omgekeerde proxy is niet vinden omdat de service zelf is verplaatst. De omgekeerde proxy moet het adres opnieuw omzetten en de aanvraag opnieuw.
+De eerste aanvraag is een normale HTTP 404, die als een gebruikers fout wordt beschouwd. In het tweede geval heeft de gebruiker echter een resource aangevraagd die wel bestaat. De omgekeerde proxy kan deze niet vinden omdat de service zelf is verplaatst. De omgekeerde proxy moet het adres opnieuw omzetten en de aanvraag opnieuw proberen.
 
-De omgekeerde proxy moet daarom een methode onderscheid maken tussen deze twee gevallen. Als u dit onderscheid, is een hint van de server vereist.
+De omgekeerde proxy vereist daarom een manier om onderscheid te maken tussen deze twee gevallen. Om dat onderscheid te maken, is een hint van de server vereist.
 
-* Standaard wordt de omgekeerde proxy wordt ervan uitgegaan dat het geval #2 en wil oplossen en de aanvraag opnieuw.
-* Om aan te geven geval #1 naar de omgekeerde proxy, moet de service de volgende HTTP-antwoordheader geretourneerd:
+* De omgekeerde proxy veronderstelt standaard #2 en probeert de aanvraag opnieuw te verhelpen.
+* De service moet de volgende HTTP-antwoord header retour neren om aan te geven dat de reverse proxy is #1:
 
   `X-ServiceFabric : ResourceNotFound`
 
-Deze HTTP-antwoordheader geeft aan dat een normale HTTP 404-situatie waarin de aangevraagde resource bestaat niet en de omgekeerde proxy niet voor het omzetten van de serviceadres opnieuw probeert.
+Deze HTTP-antwoord header duidt op een normale HTTP 404-situatie waarin de aangevraagde bron niet bestaat en probeert de omgekeerde proxy het service adres niet opnieuw op te lossen.
 
-## <a name="special-handling-for-services-running-in-containers"></a>Speciale handelingen Services in containers wordt uitgevoerd
+## <a name="special-handling-for-services-running-in-containers"></a>Speciale verwerking voor services die in containers worden uitgevoerd
 
-Voor services die in containers worden uitgevoerd, kunt u de omgevingsvariabele `Fabric_NodeIPOrFQDN` om samen te stellen de [reverse proxy-URL](#uri-format-for-addressing-services-by-using-the-reverse-proxy) zoals in de volgende code:
+Voor services die in containers worden uitgevoerd, kunt u de omgevings variabele gebruiken `Fabric_NodeIPOrFQDN` om de [omgekeerde proxy-URL](#uri-format-for-addressing-services-by-using-the-reverse-proxy) te maken, zoals in de volgende code:
 
 ```csharp
     var fqdn = Environment.GetEnvironmentVariable("Fabric_NodeIPOrFQDN");
     var serviceUrl = $"http://{fqdn}:19081/DockerSFApp/UserApiContainer";
 ```
-Voor het lokale cluster `Fabric_NodeIPOrFQDN` is standaard ingesteld op 'localhost'. Start het lokale cluster met de `-UseMachineName` parameter om ervoor te zorgen dat containers omgekeerde proxy's die worden uitgevoerd op het knooppunt kunnen bereiken. Zie voor meer informatie, [configureren van uw ontwikkelomgeving instellen om op te sporen containers](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers).
+Voor het lokale cluster is `Fabric_NodeIPOrFQDN` standaard ingesteld op localhost. Start het lokale cluster met de para meter `-UseMachineName` om ervoor te zorgen dat containers een omgekeerde proxy kunnen bereiken die op het knoop punt wordt uitgevoerd. Zie [uw ontwikkelaars omgeving configureren voor het opsporen van fouten in containers](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers)voor meer informatie.
 
-Service Fabric-services die worden uitgevoerd binnen containers met Docker Compose vereisen een speciale docker-compose.yml *poorten sectie* http: of https: configuratie. Zie voor meer informatie, [ondersteuning voor implementatie van Docker Compose in Azure Service Fabric](service-fabric-docker-compose.md).
+Voor Service Fabric services die worden uitgevoerd binnen docker-samenstel bare containers is een speciale docker-Compose. yml- *poorten sectie* http: of https: configuratie vereist. Zie voor meer informatie [docker opstellen implementatie ondersteuning in Azure service Fabric](service-fabric-docker-compose.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Instellen en configureren van omgekeerde proxy op een cluster](service-fabric-reverseproxy-setup.md).
-* [Doorsturen naar beveiligde HTTP-service met de omgekeerde proxy instellen](service-fabric-reverseproxy-configure-secure-communication.md)
-* [Omgekeerde proxy gebeurtenissen onderzoeken](service-fabric-reverse-proxy-diagnostics.md)
-* Bekijk een voorbeeld van HTTP-communicatie tussen services in een [voorbeeldproject op GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
-* [Externe procedureaanroepen met externe communicatie Reliable Services](service-fabric-reliable-services-communication-remoting.md)
+* [Stel een omgekeerde proxy in op een cluster en configureer](service-fabric-reverseproxy-setup.md)deze.
+* [Door sturen naar beveiligde HTTP-service instellen met de omgekeerde proxy](service-fabric-reverseproxy-configure-secure-communication.md)
+* [Omgekeerde proxy gebeurtenissen diagnosticeren](service-fabric-reverse-proxy-diagnostics.md)
+* Bekijk een voor beeld van HTTP-communicatie tussen services in een [voorbeeld project op github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
+* [Externe procedure aanroepen met Reliable Services externe toegang](service-fabric-reliable-services-communication-remoting.md)
 * [Web-API die gebruikmaakt van OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md)
-* [WCF-communicatie via Reliable Services](service-fabric-reliable-services-communication-wcf.md)
+* [WCF-communicatie met behulp van Reliable Services](service-fabric-reliable-services-communication-wcf.md)
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png

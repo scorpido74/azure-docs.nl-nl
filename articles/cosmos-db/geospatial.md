@@ -1,17 +1,17 @@
 ---
-title: Werken met georuimtelijke gegevens in Azure Cosmos DB SQL API-account
+title: Georuimtelijke gegevens gebruiken in Azure Cosmos DB SQL-API-account
 description: Informatie over het maken, indexeren en query uitvoeren op ruimtelijke objecten met Azure Cosmos DB en de SQL-API.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 1b26f78c6d44123ef1baa3c55fd16c3340d59dd4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e48f6c52aa2d633ea20fd0dae70c7aa1380bb50d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616842"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441888"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Georuimtelijke en GeoJSON locatiegegevens gebruiken met Azure Cosmos DB SQL API-account
 
@@ -94,7 +94,7 @@ Naast Point, LineString en Veelhoek GeoJSON ook Hiermee geeft u de weergave voor
 ### <a name="coordinate-reference-systems"></a>Coördinaat referentiesystemen
 Omdat de vorm van de aarde onregelmatig is, worden in veel coördinaat referentiesystemen (CRS), elk met hun eigen frames van referentie- en maateenheden coördinaten van georuimtelijke gegevens weergegeven. Bijvoorbeeld, de 'nationale raster van Brittannië' is een referentiesysteem juist is voor het Verenigd Koninkrijk, maar niet daarbuiten wordt weergegeven. 
 
-De meest populaire CRS in gebruik is vandaag de wereld geodetisch systeem [WGS 84](http://earth-info.nga.mil/GandG/wgs84/). Gebruik WGS 84 GPS-apparaten en veel toewijzing diensten, waaronder Google Maps en Bing Maps-API's. Azure Cosmos DB biedt ondersteuning voor indexeren en query's naar georuimtelijke gegevens met behulp van de WGS 84 CRS alleen. 
+De meest populaire CRS in gebruik is vandaag de wereld geodetisch systeem [WGS 84](https://earth-info.nga.mil/GandG/update/index.php). Gebruik WGS 84 GPS-apparaten en veel toewijzing diensten, waaronder Google Maps en Bing Maps-API's. Azure Cosmos DB biedt ondersteuning voor indexeren en query's naar georuimtelijke gegevens met behulp van de WGS 84 CRS alleen. 
 
 ## <a name="creating-documents-with-spatial-data"></a>Het maken van documenten met ruimtelijke gegevens
 Bij het maken van documenten die de GeoJSON-waarden bevatten, worden ze automatisch geïndexeerd met een ruimtelijke index in overeenstemming met het indexeringsbeleid van de container. Als u met een Azure Cosmos DB SDK in een dynamisch getypeerde taal, zoals Python of Node.js werkt, moet u geldige GeoJSON maken.

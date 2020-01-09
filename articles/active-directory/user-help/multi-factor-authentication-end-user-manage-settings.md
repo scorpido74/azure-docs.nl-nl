@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7fbc18d8141c44c2b0863547c33b5c5193e928b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7e557ca1bfc7587b6a65957177440041bf4e902f
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231929"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681324"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>De twee ledige verificatie methode en-instellingen wijzigen
 
@@ -32,16 +32,16 @@ Nadat u de beveiligings verificatie methoden voor uw werk-of school account hebt
 
 ## <a name="using-the-additional-security-verification-page"></a>De extra beveiligings verificatie pagina gebruiken
 
-Als uw organisatie u heeft voorzien van specifieke stappen voor het inschakelen en beheren van uw twee ledige verificatie, moet u deze instructies volgen. Als dat niet het geval is, kunt u de instellingen voor de beveiligings verificatie methode van de [extra beveiligings verificatie](https://aka.ms/mfasetup) pagina.
+Als uw organisatie u heeft voorzien van specifieke stappen voor het inschakelen en beheren van uw twee ledige verificatie, moet u deze instructies volgen. Als dat niet het geval is, kunt u de instellingen voor de beveiligings verificatie methode van de [extra beveiligings verificatie](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) pagina.
 
 >[!Note]
 >Als datgene wat u op uw scherm ziet, niet overeenkomt met wat er in dit artikel wordt behandeld, betekent dit dat de beheerder de beveiligings gegevens (preview-versie) heeft ingeschakeld of dat uw organisatie een eigen aangepaste portal heeft. Zie voor meer informatie over de beveiligings informatie, [overzicht van beveiligings gegevens (preview)](user-help-security-info-overview.md). Voor meer informatie over de aangepaste portal van uw organisatie moet u contact opnemen met uw Help Desk.
 
 ### <a name="to-get-to-the-additional-security-verification-page"></a>De extra beveiligings verificatie pagina weer geven
 
-- Ga naar https://aka.ms/mfasetup.
+- Ga naar de pagina [aanvullende beveiligings verificatie](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) .
 
-    ![Aanvullende beveiligings verificatie scherm, met de beschik bare beveiligings verificatie methode Details](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
+    ![Aanvullende beveiligings verificatie pagina, met de beschik bare beveiligings verificatie methode Details](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
 
     Als u op de koppeling klikt, kunt u ook naar de pagina **aanvullende beveiligings verificatie** gaan door de volgende stappen uit te voeren:
 

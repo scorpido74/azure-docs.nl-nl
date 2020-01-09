@@ -1,24 +1,23 @@
 ---
 title: Een Azure Stream Analytics-taak testen met voorbeeld gegevens
 description: In dit artikel wordt beschreven hoe u met behulp van de Azure Portal een Azure Stream Analytics-taak, voorbeeld invoer en het uploaden van voorbeeld gegevens kunt testen.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: d68c1ee084efc146d69d8404aadb8acbb4cc33d1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 85d32e96335a9fffa874f1f370f72883ff420df0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891760"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369861"
 ---
 # <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Een Azure Stream Analytics-taak testen met voorbeeld gegevens
 
-In Azure Stream Analytics kunt u uw query testen zonder de taak te starten of te stoppen. U kunt query's testen op binnenkomende gegevens van uw invoer sink of voorbeeld gegevens uit een lokaal bestand in azure Portal uploaden. U kunt query's ook lokaal testen vanuit uw lokale voorbeeld gegevens of met Live-gegevens in [Visual Studio](stream-analytics-live-data-local-testing.md) en [Visual Studio code](vscode-local-run.md). 
+In Azure Stream Analytics kunt u uw query testen zonder de taak te starten of te stoppen. U kunt query's testen op binnenkomende gegevens van uw invoer sink of voorbeeld gegevens uit een lokaal bestand in azure Portal uploaden. U kunt query's ook lokaal testen vanuit uw lokale voorbeeld gegevens of met Live-gegevens in [Visual Studio](stream-analytics-live-data-local-testing.md) en [Visual Studio code](visual-studio-code-local-run-live-input.md).
 
 ## <a name="sample-incoming-data-from-input"></a>Voor beeld van binnenkomende gegevens van invoer
 
@@ -30,7 +29,7 @@ Azure Stream Analytics worden automatisch gebeurtenissen opgehaald uit de invoer
 
 3. Selecteer op de pagina Stream Analytics taak onder de kop **taak topologie** de optie **query** om het venster query-editor te openen. 
 
-4. Als u een voor beeld van een lijst met binnenkomende gebeurtenissen wilt zien, selecteert u het pictogram invoer met bestand en worden de voorbeeld gebeurtenissen automatisch weer gegeven in de **invoer voorbeeld**. 
+4. Als u een voor beeld van een lijst met binnenkomende gebeurtenissen wilt zien, selecteert u het pictogram invoer met bestand en worden de voorbeeld gebeurtenissen automatisch weer gegeven in de **invoer voorbeeld**.
 
    a. Het type serialisatie voor uw gegevens wordt automatisch gedetecteerd als de JSON of CSV. U kunt dit ook hand matig wijzigen in JSON, CSV, AVRO door de optie in het vervolg keuzemenu te wijzigen.
     
@@ -74,7 +73,7 @@ In plaats van live data te gebruiken, kunt u voorbeeld gegevens uit een lokaal b
 
 1. Meld u aan bij Azure Portal.
    
-2. Zoek uw bestaande Stream Analytics-taak en selecteer deze.
+2. Zoek uw bestaande Stream Analytics-taak en selecteert u deze.
 
 3. Selecteer op de pagina Stream Analytics taak onder de kop **taak topologie** de optie **query** om het venster query-editor te openen.
 
@@ -106,4 +105,4 @@ In plaats van live data te gebruiken, kunt u voorbeeld gegevens uit een lokaal b
 
 * [Wat is invoer van Azure Stream Analytics?](stream-analytics-add-inputs.md)
 
-* [Meer informatie over de uitvoer van Azure Stream Analytics](stream-analytics-define-outputs.md)
+* [Inzicht in de uitvoer van Azure Stream Analytics](stream-analytics-define-outputs.md)

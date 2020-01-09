@@ -3,65 +3,56 @@ title: 'Zelf studie: Linux python-app met Postgre'
 description: Meer informatie over hoe u een Linux python-app kunt ophalen in Azure App Service, met verbinding met een PostgreSQL-data base in Azure. Django wordt in deze zelf studie gebruikt.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 12/14/2019
 ms.custom:
 - mvc
 - seodec18
 - seo-python-october2019
-ms.openlocfilehash: d23097c9674d2b7e60e779304a2d08c734bd614d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: e0880cd1c16a8a0080551bbeaefe04f2f8dd705b
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688865"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681017"
 ---
-# <a name="tutorial-build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Zelf studie: een Python-web-app (Django) bouwen met PostgreSQL in Azure App Service
+# <a name="tutorial-run-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Zelf studie: een Python-web-app (Django) uitvoeren met PostgreSQL in Azure App Service
 
-[App Service on Linux](app-service-linux-intro.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie. Deze zelf studie laat zien hoe u een gegevensgestuurde python-web-app (Django) kunt maken met behulp van PostgreSQL als de back-end van de data base. Wanneer u klaar bent, hebt u een Django-webtoepassing die wordt uitgevoerd in Azure App Service op Linux.
+[Azure App Service](app-service-linux-intro.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie. In deze zelf studie ziet u hoe u een gegevensgestuurde python django-Web-App verbindt met een Azure Database for PostgreSQL-data base en hoe u de app op Azure App Service implementeert en uitvoert.
 
-![Python django-web-app in Azure App Service in Linux](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
+![Python django-web-app in Azure App Service](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een PostgreSQL-database maken in Azure
-> * Een Python-web-app verbinden met PostgreSQL
-> * De Python-web-app implementeren in azure
+> * Een Azure Database for PostgreSQL-data base maken en er een web-app aan koppelen
+> * De web-app implementeren op Azure App Service
 > * Diagnostische logboeken weergeven
-> * De python-Web-App beheren in de Azure Portal
+> * De web-app in de Azure Portal beheren
 
-> [!NOTE]
-> Kijk [hier](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores) voordat u een Azure Database for PostgreSQL gaat maken om te zien welke compute-generatie beschikbaar is in uw regio.
-
-U kunt de stappen in dit artikel voor macOS-, Linux-en Windows-instructies volgen in de meeste gevallen, maar de verschillen worden niet in deze zelf studie beschreven.
-
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+U kunt de stappen in dit artikel volgen op macOS, Linux of Windows. De stappen zijn in de meeste gevallen vergelijkbaar, maar verschillen worden niet in deze zelf studie beschreven. In de meeste van de onderstaande voor beelden wordt een `bash`-Terminal venster in Linux gebruikt. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor het voltooien van deze zelfstudie:
+Voordat u met deze zelf studie begint:
 
-1. [Git installeren](https://git-scm.com/)
-2. [Python installeren](https://www.python.org/downloads/)
-3. [PostgreSQL installeren en uitvoeren](https://www.postgresql.org/download/)
+- [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+- Installeer [Git](https://git-scm.com/).
+- Installeer [python 3](https://www.python.org/downloads/).
+- Installeer en voer [postgresql](https://www.postgresql.org/download/)uit.
 
-## <a name="test-local-postgresql-installation-and-create-a-database"></a>Lokale installatie van PostgreSQL testen en een database maken
+## <a name="test-postgresql-installation-and-create-a-database"></a>PostgreSQL-installatie testen en een Data Base maken
 
-Voer in het lokale terminalvenster `psql` uit om verbinding te maken met de lokale PostgreSQL-server.
+Eerst maakt u verbinding met de lokale PostgreSQL-server en maakt u een Data Base: 
 
-```bash
-sudo -u postgres psql postgres
-```
-
-Als er een foutbericht weergegeven dat vergelijkbaar is met `unknown user: postgres`, is het mogelijk dat uw PostgreSQL-installatie is geconfigureerd met uw aangemelde gebruikersnaam. Probeer in dat geval de volgende opdracht.
+Voer in een lokaal Terminal venster `psql` uit om verbinding te maken met de lokale PostgreSQL-server als de ingebouwde `postgres` gebruiker.
 
 ```bash
-psql postgres
+psql -U postgres
 ```
 
 Als de verbinding is geslaagd, wordt de PostgreSQL-database uitgevoerd. Zo niet, controleer dan of de lokale PostgreSQL-database wordt gestart door de instructies voor uw besturingssysteem te volgen op [Downloads - PostgreSQL Core Distribution](https://www.postgresql.org/download/).
 
-Maak een database met de naam *pollsdb* en stel een afzonderlijke databasegebruiker in met de naam *manager* en het wachtwoord *supersecretpass*.
+Maak een nieuwe Data Base met de naam *pollsdb*en stel een database gebruiker met de naam *Manager* in met wacht woord *supersecretpass*:
 
 ```sql
 CREATE DATABASE pollsdb;
@@ -72,45 +63,46 @@ GRANT ALL PRIVILEGES ON DATABASE pollsdb TO manager;
 Typ `\q` om de PostgreSQL-client af te sluiten.
 
 <a name="step2"></a>
+## <a name="create-and-run-the-local-python-app"></a>De lokale python-app maken en uitvoeren
 
-## <a name="create-local-python-app"></a>Lokale Python-app maken
+Vervolgens stelt u de voor beeld-web-app python django in en voert u deze uit.
 
-In deze stap stelt u het lokale Python Django-project in.
+De [djangoapp](https://github.com/Azure-Samples/djangoapp) -voorbeeld opslagplaats bevat de gegevensgestuurde [Django](https://www.djangoproject.com/) -polls-app die u krijgt door [uw eerste Django-app te schrijven](https://docs.djangoproject.com/en/2.1/intro/tutorial01/) in de Django-documentatie.
 
 ### <a name="clone-the-sample-app"></a>De voorbeeld-app klonen
 
-Open het terminalvenster en `CD` naar een werkmap.
-
-Voer de volgende opdrachten uit om de voorbeeldopslagplaats te klonen.
+Voer in een Terminal venster de volgende opdrachten uit om de opslag plaats van de voor beeld-app te klonen en ga naar de nieuwe werkmap:
 
 ```bash
 git clone https://github.com/Azure-Samples/djangoapp.git
 cd djangoapp
 ```
 
-Deze voorbeeldopslagplaats bevat een [Django](https://www.djangoproject.com/)-toepassing. Het is dezelfde gegevensgestuurde app die u krijgt door de [zelfstudie Aan de slag in de Django-documentatie](https://docs.djangoproject.com/en/2.1/intro/tutorial01/) te volgen. In deze zelf studie leert u niet Django, maar laat u zien hoe u een Django-web-app (of een andere gegevensgestuurde python-app) kunt implementeren en uitvoeren om Azure App Service.
+### <a name="configure-the-python-virtual-environment"></a>De virtuele python-omgeving configureren
 
-### <a name="configure-environment"></a>Omgeving configureren
-
-Maak een virtuele Python-omgeving en gebruik een script om de instellingen voor de databaseverbinding in te stellen.
+Maak en activeer een virtuele python-omgeving om uw app uit te voeren.
 
 ```bash
-# Bash
 python3 -m venv venv
 source venv/bin/activate
-source ./env.sh
-
-# PowerShell
+```
+of
+```PowerShell
 py -3 -m venv venv
 venv\scripts\activate
+```
+
+Voer in de `venv` omgeving *env.sh* of *env. ps1* in om de omgevings variabelen in te stellen die *azuresite/Settings. py* gebruiken voor de verbindings instellingen van de data base.
+
+```bash
+source ./env.sh
+```
+of
+```PowerShell
 .\env.ps1
 ```
 
-De omgevingsvariabelen die worden gedefinieerd in *env.sh* en *env.ps1* worden in _azuresite/settings.py_ gebruikt om de database-instellingen te definiëren.
-
-### <a name="run-app-locally"></a>De app lokaal uitvoeren
-
-Installeer de vereiste pakketten, [voer Django-migraties uit](https://docs.djangoproject.com/en/2.1/topics/migrations/) en [maak een gebruiker met beheerdersrechten](https://docs.djangoproject.com/en/2.1/intro/tutorial02/#creating-an-admin-user).
+Installeer de vereiste pakketten vanuit *Requirements. txt*, Voer [Django-migraties](https://docs.djangoproject.com/en/2.1/topics/migrations/)uit en [Maak een gebruiker met beheerders](https://docs.djangoproject.com/en/2.1/intro/tutorial02/#creating-an-admin-user)rechten:
 
 ```bash
 pip install -r requirements.txt
@@ -118,66 +110,75 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-Zodra de gebruiker met beheerdersrechten is gemaakt, voert u de Django-server uit.
+### <a name="run-the-web-app"></a>De web-app uitvoeren
+
+Nadat u de gebruiker met beheerders rechten hebt gemaakt, voert u de Django-server uit.
 
 ```bash
 python manage.py runserver
 ```
 
-Wanneer de Django-web-app volledig is geladen, ziet u iets dat lijkt op het volgende bericht:
+Wanneer de Django-web-app volledig is geladen, wordt het volgende bericht weer gegeven:
 
 ```bash
 Performing system checks...
 
 System check identified no issues (0 silenced).
-October 26, 2018 - 10:54:59
+December 13, 2019 - 10:54:59
 Django version 2.1.2, using settings 'azuresite.settings'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
 
-Ga naar `http://localhost:8000` in een browser. Als het goed is, ziet u nu het bericht `No polls are available.`. 
+Ga naar *http:\//localhost: 8000* in een browser. Er wordt een bericht weer gegeven dat **er geen polls beschikbaar zijn**. 
 
-Ga naar `http://localhost:8000/admin` en meld u aan met de beheerders gebruiker die u in de laatste stap hebt gemaakt. Selecteer **toevoegen** naast **vragen** en maak een poll-vraag met enkele keuzes.
+Ga naar *http:\//localhost: 8000/admin* en meld u aan met de beheerders gebruiker die u in de laatste stap hebt gemaakt. Selecteer **toevoegen** naast **vragen**en maak een poll-vraag met enkele keuzes.
 
 ![Python django-app in App Services lokaal uitvoeren](./media/tutorial-python-postgresql-app/run-python-django-app-locally.png)
 
-Ga opnieuw naar `http://localhost:8000` en Bekijk de poll-vraag die wordt weer gegeven.
+Ga opnieuw naar *http:\//localhost: 8000* om de vraag van de vragen te zien en de vraag te beantwoorden. De lokale Django-voorbeeld toepassing schrijft en slaat gebruikers gegevens op in de lokale PostgreSQL-data base.
 
-Met de Django-voorbeeldtoepassing worden gebruikersgegevens opgeslagen in de database. Als het gelukt is om een poll-vraag toe te voegen, worden met de app gegevens naar de lokale PostgreSQL-database geschreven.
-
-U kunt op elk gewenst moment in het terminalvenster op Ctrl+C drukken om de Django-server te stoppen.
-
-## <a name="create-a-production-postgresql-database"></a>Productie-PostgreSQL-database maken
-
-In deze stap maakt u een PostgreSQL-database in Azure. Als de app is geïmplementeerd in Azure, wordt deze cloud-database gebruikt.
+Als u de Django-server wilt stoppen, typt u CTRL + C in de Terminal.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
+De meeste resterende stappen in dit artikel gebruiken Azure CLI-opdrachten in de Azure Cloud Shell. 
+
+## <a name="create-and-connect-to-azure-database-for-postgresql"></a>Azure Database for PostgreSQL maken en verbinden
+
+In deze sectie maakt u een Azure Database for PostgreSQL-server en-data base en verbindt u uw web-app. Wanneer u uw web-app op Azure App Service implementeert, gebruikt de app deze Cloud database. 
+
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
+
+U kunt een nieuwe resource groep maken voor uw Azure Database for PostgreSQL-server of een bestaande resource groep gebruiken. 
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)]
 
 ### <a name="create-an-azure-database-for-postgresql-server"></a>Een Azure-database voor PostgreSQL-server maken
 
-Maak een PostgreSQL-server met de opdracht [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) in Cloud Shell.
+U maakt een PostgreSQL-server met de opdracht [AZ post gres server Create](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) in de Cloud shell.
 
-Vervang in de volgende voorbeeld opdracht *\<postgresql-naam >* door een unieke server naam en vervang *\<admin-gebruikers naam >* en *\<admin-wachtwoord >* met de gewenste gebruikers referenties. De gebruikersreferenties zijn voor het gebruikersaccount van de databasebeheerder. De servernaam wordt gebruikt als onderdeel van het PostgreSQL-eindpunt (`https://<postgresql-name>.postgres.database.azure.com`). De naam moet dus uniek zijn voor alle servers in Azure.
+> [!NOTE]
+> Controleer voordat u een Azure Database for PostgreSQL server maakt of [Compute Generation](/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores) beschikbaar is in uw regio. Als uw regio geen Gen4-hardware ondersteunt, wijzigt u *--SKU-naam* in de volgende opdracht regel in een waarde die wordt ondersteund in uw regio, zoals GEN5. 
+
+Vervang in de volgende opdracht *\<postgresql-name >* door een unieke server naam. De server naam maakt deel uit van uw PostgreSQL *-eind punt https://\<postgresql-name >. post gres. data base. Azure. com*, dus de naam moet uniek zijn voor alle servers in Azure. 
+
+Vervang *\<ResourceGroup-naam >* en *\<regio >* door de naam en de regio van de resource groep die u wilt gebruiken. Voor *\<beheerder-gebruikers naam >* en *\<beheerders wachtwoord >* , maakt u gebruikers referenties voor het beheerders account van de data base. Onthoud de *\<beheerder-gebruikers naam >* en *\<beheerders wachtwoord >* om later te gebruiken voor het aanmelden bij de postgresql-server en-data bases.
 
 ```azurecli-interactive
-az postgres server create --resource-group myResourceGroup --name <postgresql-name> --location "West Europe" --admin-user <admin-username> --admin-password <admin-password> --sku-name B_Gen4_1
+az postgres server create --resource-group <resourcegroup-name> --name <postgresql-name> --location "<region>" --admin-user <admin-username> --admin-password <admin-password> --sku-name B_Gen4_1
 ```
 
-Wanneer de Azure Database for PostgreSQL-server wordt gemaakt, toont de Azure CLI informatie die lijkt op het volgende voorbeeld:
+Wanneer de Azure Database for PostgreSQL-server wordt gemaakt, retourneert de Azure CLI JSON-code zoals in het volgende voor beeld:
 
 ```json
 {
-  "administratorLogin": "<admin-username>",
-  "fullyQualifiedDomainName": "<postgresql-name>.postgres.database.azure.com",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql-name>",
+  "administratorLogin": "myusername",
+  "fullyQualifiedDomainName": "myservername.postgres.database.azure.com",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.DBforPostgreSQL/servers/myservername",
   "location": "westus",
-  "name": "<postgresql-name>",
-  "resourceGroup": "myResourceGroup",
+  "name": "myservername",
+  "resourceGroup": "myresourcegroup",
   "sku": {
     "capacity": 1,
     "family": "Gen4",
@@ -189,39 +190,32 @@ Wanneer de Azure Database for PostgreSQL-server wordt gemaakt, toont de Azure CL
 }
 ```
 
-> [!NOTE]
-> Onthoud \<beheerder-gebruikers naam > en \<beheerders wachtwoord > voor later. U hebt deze later nodig als u zich gaat aanmelden bij de Postgre-server en de bijbehorende databases.
+### <a name="create-firewall-rules-for-the-azure-database-for-postgresql-server"></a>Firewall regels voor de Azure Database for PostgreSQL-server maken
 
-### <a name="create-firewall-rules-for-the-postgresql-server"></a>Firewallregels maken voor de PostgreSQL-server
-
-Voer in Cloud Shell de volgende Azure CLI-opdracht uit om toegang te verlenen tot de database vanaf Azure-resources.
+Voer de opdracht [AZ post gres Server firewall-Rule Create](/cli/azure/postgres/server/firewall-rule#az-postgres-server-firewall-rule-create) uit om toegang tot de data base vanuit Azure-resources toe te staan. Vervang de *\<postgresql-naam >* en *\<resourcegroup-naam >* tijdelijke aanduidingen door uw waarden.
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql-name> --start-ip-address=0.0.0.0 --end-ip-address=0.0.0.0 --name AllowAllAzureIPs
+az postgres server firewall-rule create --resource-group <resourcegroup-name> --server-name <postgresql-name> --start-ip-address=0.0.0.0 --end-ip-address=0.0.0.0 --name AllowAllAzureIPs
 ```
 
 > [!NOTE]
-> Met deze instelling worden netwerkverbindingen toegestaan vanaf alle IP-adressen binnen het Azure-netwerk. Voor gebruik in productieomgevingen moet u proberen om de meest beperkende firewallregels te configureren door [alleen de uitgaande IP-adressen te gebruiken die uw app gebruikt](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
+> Met de voor gaande instelling worden netwerk verbindingen van alle IP-adressen binnen het Azure-netwerk toegestaan. Voor productie gebruik kunt u de meest beperkende firewall regels configureren door [alleen de uitgaande IP-adressen toe te staan die uw app gebruikt](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 
-Voer in de Cloud Shell de opdracht opnieuw uit om toegang vanaf uw lokale computer toe te staan door *\<uw-IP-adres >* te vervangen door [uw lokale IPv4-IP-adres](https://www.whatsmyip.org/).
+Voer de `firewall-rule create` opdracht opnieuw uit om toegang vanaf uw lokale computer toe te staan. Vervang *\<uw IP-adres >* door [uw lokale IPv4 IP-adres](https://www.whatsmyip.org/). Vervang de *\<postgresql-naam >* en *\<resourcegroup-naam >* tijdelijke aanduidingen door uw eigen waarden.
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql-name> --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address> --name AllowLocalClient
+az postgres server firewall-rule create --resource-group <resourcegroup-name> --server-name <postgresql-name> --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address> --name AllowLocalClient
 ```
 
-## <a name="connect-python-app-to-production-database"></a>De Python-app verbinden met de productiedatabase
+### <a name="create-and-connect-to-the-azure-database-for-postgresql-database"></a>Maken en verbinding maken met de Azure Database for PostgreSQL-data base
 
-In deze stap verbindt u uw Django-web-app met de Azure Database for PostgreSQL-server die u hebt gemaakt.
-
-### <a name="create-empty-database-and-user-access"></a>Lege database maken en gebruikerstoegang
-
-Maak in Cloud Shell verbinding met de database door de onderstaande opdracht uit te voeren. Wanneer u wordt gevraagd om uw beheerderswachtwoord, gebruikt u hetzelfde wachtwoord dat u hebt opgegeven in [Een Azure Database for PostgreSQL-server maken](#create-an-azure-database-for-postgresql-server).
+Maak verbinding met uw Azure Database for PostgreSQL-server door de volgende opdracht uit te voeren. Gebruik uw eigen *\<postgresql >* en *\<beheerder-gebruikers naam >* en meld u aan met het wacht woord dat u hebt gemaakt.
 
 ```bash
 psql -h <postgresql-name>.postgres.database.azure.com -U <admin-username>@<postgresql-name> postgres
 ```
 
-Net zoals bij uw lokale Postgres-server, maakt u de database en de gebruiker op de Azure-Postgres-server.
+Net zoals u in de lokale PostgreSQL-server hebt gedaan, maakt u een Data Base en gebruiker op de Azure Database for PostgreSQL-server:
 
 ```sql
 CREATE DATABASE pollsdb;
@@ -229,30 +223,39 @@ CREATE USER manager WITH PASSWORD 'supersecretpass';
 GRANT ALL PRIVILEGES ON DATABASE pollsdb TO manager;
 ```
 
+> [!NOTE]
+> Het is een best practice voor het maken van database gebruikers met beperkte machtigingen voor specifieke apps, in plaats van de gebruiker met beheerders rechten. De `manager` gebruiker heeft volledige bevoegdheden voor *alleen* de `pollsdb`-data base.
+
 Typ `\q` om de PostgreSQL-client af te sluiten.
 
-> [!NOTE]
-> Het wordt aanbevolen om databasegebruikers te maken met beperkte machtigingen voor specifieke toepassingen, in plaats van de gebruiker met beheerdersrechten te gebruiken. In dit voorbeeld heeft de gebruiker `manager` volledige rechten voor _alleen_ de database `pollsdb`.
+### <a name="test-app-connectivity-to-the-azure-postgresql-database"></a>App-verbinding met de Azure PostgreSQL-data base testen
 
-### <a name="test-app-connectivity-to-production-database"></a>De app-verbinding met de productiedatabase testen
-
-Wijzig in het lokale terminalvenster de omgevingsvariabelen voor de database (die u eerder hebt geconfigureerd door *env.sh* of  *env.ps1* uit te voeren):
+Bewerk het bestand Local *env.sh* of *env. ps1* om naar uw Cloud postgresql-data base te verwijzen door *\<postgresql name >* te vervangen door de naam van uw Azure database for postgresql-server.
 
 ```bash
-# Bash
 export DBHOST="<postgresql-name>.postgres.database.azure.com"
 export DBUSER="manager@<postgresql-name>"
 export DBNAME="pollsdb"
 export DBPASS="supersecretpass"
-
-# PowerShell
+```
+of
+```powershell
 $Env:DBHOST = "<postgresql-name>.postgres.database.azure.com"
 $Env:DBUSER = "manager@<postgresql-name>"
 $Env:DBNAME = "pollsdb"
 $Env:DBPASS = "supersecretpass"
 ```
 
-Voer Django-migratie uit in de Azure-database en maak een gebruiker met beheerdersrechten.
+Voer in de omgeving `venv` in uw lokale terminal venster de bewerking *env.sh* of *env. ps1*uit. 
+```bash
+source ./env.sh
+```
+of
+```PowerShell
+.\env.ps1
+```
+
+Voer Django-migratie uit naar de Azure-data base en maak een gebruiker met beheerders rechten.
 
 ```bash
 python manage.py migrate
@@ -265,58 +268,61 @@ Zodra de gebruiker met beheerdersrechten is gemaakt, voert u de Django-server ui
 python manage.py runserver
 ```
 
-Ga opnieuw naar `http://localhost:8000`. Als het goed is, ziet u het bericht `No polls are available.` opnieuw. 
+Ga in een browser naar *http:\//localhost: 8000*en u ziet het bericht dat **er geen polls meer beschikbaar zijn** . 
 
-Ga naar `http://localhost:8000/admin` en meld u aan met de door de gebruiker gemaakte beheerder en maak een poll-vraag zoals voorheen.
+Ga naar *http:\//localhost: 8000/admin*, Meld u aan met de door de gebruiker gemaakte beheerder en maak een poll vraag zoals eerder.
 
 ![Python django-app in App Services lokaal uitvoeren](./media/tutorial-python-postgresql-app/run-python-django-app-locally.png)
 
-Ga opnieuw naar `http://localhost:8000` en Bekijk de poll-vraag die wordt weer gegeven. Er worden nu via de app gegevens naar de database in Azure geschreven.
+Ga opnieuw naar *http:\//localhost: 8000* en zie de poll-vraag die wordt weer gegeven. Uw app is nu bezig met het schrijven van gegevens naar de Azure Database for PostgreSQL-data base.
 
-## <a name="deploy-to-azure"></a>Implementatie in Azure
+## <a name="deploy-the-web-app-to-azure-app-service"></a>De web-app implementeren op Azure App Service
 
-In deze step implementeert u de met Postgres verbonden Python-toepassing naar Azure App Service.
+In deze stap implementeert u de met Azure Database for PostgreSQL data base gekoppelde python-app op Azure App Service.
 
 ### <a name="configure-repository"></a>Opslagplaats configureren
 
-In Django wordt de `HTTP_HOST`-header gevalideerd in binnenkomende aanvragen. Als u wilt dat uw Django-web-app werkt in App Service, moet u de volledig gekwalificeerde domein naam van de app toevoegen aan de toegestane hosts. Open _azuresite/settings.py_ en ga naar de `ALLOWED_HOSTS`-instelling. Wijzig de regel in:
+Omdat in deze zelf studie een Django-voor beeld wordt gebruikt, moet u enkele instellingen in het bestand *djangoapp/azuresite/Settings. py* wijzigen en toevoegen om met Azure app service te werken. 
 
-```python
-ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
-```
-
-Django biedt geen ondersteuning voor [het gebruiken van statische bestanden in een productieomgeving](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/). U moet dit dus handmatig inschakelen. Voor deze zelfstudie gebruikt u [WhiteNoise](https://whitenoise.evans.io/en/stable/). Het WhiteNoise-pakket is al opgenomen in _requirements.txt_. U hoeft alleen maar Django te configureren om dit pakket te gebruiken. 
-
-Ga in _azuresite/settings.py_ naar de `MIDDLEWARE`-instelling en voeg de middleware `whitenoise.middleware.WhiteNoiseMiddleware` toe aan de lijst, net onder de middleware `django.middleware.security.SecurityMiddleware`. De `MIDDLEWARE`-instelling ziet er ongeveer als volgt uit:
-
-```python
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    ...
-]
-```
-
-Voeg aan het eind van _azuresite/settings.py_ de volgende regels toe.
-
-```python
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-```
-
-Zie de [WhiteNoise-documentatie](https://whitenoise.evans.io/en/stable/) voor meer informatie over het configureren van WhiteNoise.
+1. In Django wordt de `HTTP_HOST`-header gevalideerd in binnenkomende aanvragen. Als u wilt dat uw Django-web-app werkt in App Service, moet u de Fully Qualified Domain Name van de app toevoegen aan de toegestane hosts. 
+   
+   Bewerk *azuresite/Settings. py* om de `ALLOWED_HOSTS` regel als volgt te wijzigen:
+   
+   ```python
+   ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
+   ```
+   
+1. Django biedt geen ondersteuning voor het leveren [van statische bestanden in de productie](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/). Voor deze zelf studie gebruikt u [WhiteNoise](https://whitenoise.evans.io/en/stable/) om de bestanden in te scha kelen. Het WhiteNoise-pakket is al geïnstalleerd met de *vereisten. txt*. 
+   
+   Als u Django wilt configureren voor het gebruik van WhiteNoise, gaat u in *azuresite/Settings. py*naar de instelling `MIDDLEWARE` en voegt u `whitenoise.middleware.WhiteNoiseMiddleware` toe aan de lijst, net na de `django.middleware.security.SecurityMiddleware` regel. De `MIDDLEWARE`-instelling ziet er ongeveer als volgt uit:
+   
+   ```python
+   MIDDLEWARE = [
+       'django.middleware.security.SecurityMiddleware',
+       'whitenoise.middleware.WhiteNoiseMiddleware',
+       ...
+   ]
+   ```
+   
+1. Voeg aan het einde van *azuresite/Settings. py*de volgende regels toe:
+   
+   ```python
+   STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+   STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+   ```
+   
+   Zie de [WhiteNoise-documentatie](https://whitenoise.evans.io/en/stable/)voor meer informatie over het configureren van WhiteNoise.
 
 > [!IMPORTANT]
-> In de sectie met database-instellingen worden de aanbevolen beveiligingsprocedures gevolgd voor het gebruik van omgevingsvariabelen. Zie de [Django-documentatie: controlelijst voor implementaties](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/) voor de volledige aanbevelingen voor implementaties.
+> In de sectie met database-instellingen worden de aanbevolen beveiligingsprocedures gevolgd voor het gebruik van omgevingsvariabelen. Zie [Django-documentatie: implementatie controlelijst](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/)voor volledige aanbevelingen voor de implementatie.
 
-Voer de wijzigingen door in de opslagplaats.
+Voer uw wijzigingen door in uw Fork van de *djangoapp* -opslag plaats:
 
 ```bash
 git commit -am "configure for App Service"
 ```
 
-### <a name="configure-deployment-user"></a>Implementatie gebruiker configureren
+### <a name="configure-a-deployment-user"></a>Een implementatiegebruiker configureren
 
 [!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user-no-h.md)]
 
@@ -332,15 +338,15 @@ git commit -am "configure for App Service"
 
 Eerder in de zelfstudie hebt u omgevingsvariabelen gedefinieerd om verbinding te kunnen maken met de PostgreSQL-database.
 
-In App Service stelt u omgevingsvariabelen in als _app-instellingen_ met behulp van de opdracht [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell.
+In Azure App Service stelt u omgevings variabelen in als *app-instellingen*met behulp van de opdracht [AZ webapp config appSettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) .
 
-In het volgende voorbeeld worden de details van de databaseverbinding als app-instellingen opgegeven. 
+Voer in de Azure Cloud Shell de volgende opdracht uit om de details van de database verbinding op te geven als app-instellingen. Vervang\<naam van de *app >* , *\<resourcegroup-name >* en *\<postgresql-name >* met uw eigen waarden.
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DBHOST="<postgresql-name>.postgres.database.azure.com" DBUSER="manager@<postgresql-name>" DBPASS="supersecretpass" DBNAME="pollsdb"
+az webapp config appsettings set --name <app-name> --resource-group <resourcegroup-name> --settings DBHOST="<postgresql-name>.postgres.database.azure.com" DBUSER="manager@<postgresql-name>" DBPASS="supersecretpass" DBNAME="pollsdb"
 ```
 
-Zie [toegang tot omgevings variabelen](how-to-configure-python.md#access-environment-variables)voor meer informatie over de manier waarop deze app-instellingen in uw code worden geopend.
+Zie [Access Environment Varia bles](how-to-configure-python.md#access-environment-variables)(Engelstalig) voor meer informatie over de manier waarop uw code toegang heeft tot deze app-instellingen.
 
 ### <a name="push-to-azure-from-git"></a>Pushen naar Azure vanaf Git
 
@@ -368,21 +374,17 @@ To https://<app-name>.scm.azurewebsites.net/<app-name>.git
    06b6df4..6520eea  master -> master
 ```  
 
-_requirements.txt_ in de hoofdmap van de opslagplaats is zichtbaar voor de App Service-implementatieserver. Vervolgens wordt Python-pakketbeheer automatisch uitgevoerd na `git push`.
+*requirements.txt* in de hoofdmap van de opslagplaats is zichtbaar voor de App Service-implementatieserver. Vervolgens wordt Python-pakketbeheer automatisch uitgevoerd na `git push`.
 
 ### <a name="browse-to-the-azure-app"></a>Naar de Azure-app bladeren
 
-Blader naar de geïmplementeerde app. Het duurt even voordat de web-app wordt gestart omdat de container moet worden gedownload en uitgevoerd wanneer de app voor het eerst wordt aangevraagd. Als er een time-out optreedt op de pagina of als er een foutbericht wordt weergegeven, wacht u een paar minuten en vernieuwt u de pagina.
+Blader naar de geïmplementeerde app met URL *http:\//\<app-name >. azurewebsites. net*. Het duurt enige tijd om te starten omdat de container moet worden gedownload en uitgevoerd wanneer de app voor de eerste keer wordt aangevraagd. Als er een time-out optreedt op de pagina of als er een foutbericht wordt weergegeven, wacht u een paar minuten en vernieuwt u de pagina.
 
-```bash
-http://<app-name>.azurewebsites.net
-```
+U moet de poll vragen zien die u eerder hebt gemaakt. 
 
-Als het goed is, ziet u de poll-vraag die u eerder hebt gemaakt. 
+App Service detecteert een Django-project in uw opslag plaats door te zoeken naar een *wsgi.py* -bestand in elke submap, die `manage.py startproject` standaard wordt gemaakt. Wanneer App Service het bestand vindt, wordt de Django-web-app geladen. Zie [Ingebouwde Python-installatiekopie configureren](how-to-configure-python.md) voor meer informatie over het laden van Python-apps in App Service.
 
-In App Service wordt een Django-project gedetecteerd in de opslagplaats door in elke submap te zoeken naar een _wsgi.py_ die standaard wordt gemaakt met `manage.py startproject`. Wanneer het bestand wordt gevonden, wordt de Django-web-app geladen. Zie [Ingebouwde Python-installatiekopie configureren](how-to-configure-python.md) voor meer informatie over het laden van Python-apps in App Service.
-
-Ga naar `<app-name>.azurewebsites.net` en meld u aan met dezelfde beheerders gebruiker die u hebt gemaakt. Als u wilt, kunt u meer poll-vragen maken.
+Ga naar *http:\//\<app-name >. azurewebsites. net/admin* en meld u aan met de door u gemaakte beheer gebruiker. Als u wilt, kunt u nog wat vragen stellen.
 
 ![Python django-app uitvoeren in App Services in azure](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
 
@@ -394,13 +396,11 @@ Ga naar `<app-name>.azurewebsites.net` en meld u aan met dezelfde beheerders geb
 
 ## <a name="manage-your-app-in-the-azure-portal"></a>Uw app beheren in de Azure Portal
 
-Ga naar de [Azure-portal](https://portal.azure.com) om de app te zien die u hebt gemaakt.
-
-Selecteer in het menu links **app Services**en selecteer vervolgens de naam van uw Azure-app.
+Zoek in het [Azure Portal](https://portal.azure.com)naar en selecteer de app die u hebt gemaakt.
 
 ![Navigeer naar uw python django-app in de Azure Portal](./media/tutorial-python-postgresql-app/navigate-to-django-app-in-app-services-in-the-azure-portal.png)
 
-In de portal wordt standaard de pagina **Overzicht** van de app weergegeven. Deze pagina geeft u een overzicht van hoe uw app presteert. Hier kunt u ook algemene beheertaken uitvoeren, zoals bladeren, stoppen, starten, opnieuw opstarten en verwijderen. De tabbladen aan de linkerkant van de pagina tonen de verschillende configuratiepagina's die u kunt openen.
+In de portal wordt standaard de pagina **Overzicht** van de app weergegeven. Deze pagina geeft u een overzicht van hoe uw app presteert. Hier kunt u ook algemene beheer taken uitvoeren, zoals bladeren, stoppen, opnieuw starten en verwijderen. De tabbladen aan de linkerkant van de pagina tonen de verschillende configuratiepagina's die u kunt openen.
 
 ![Beheer uw python django-app op de pagina overzicht in de Azure Portal](./media/tutorial-python-postgresql-app/manage-django-app-in-app-services-in-the-azure-portal.png)
 
@@ -408,21 +408,12 @@ In de portal wordt standaard de pagina **Overzicht** van de app weergegeven. Dez
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
-
-> [!div class="checklist"]
-> * Een PostgreSQL-database maken in Azure
-> * Een Python-web-app verbinden met PostgreSQL
-> * De Python-web-app implementeren in azure
-> * Diagnostische logboeken weergeven
-> * De python-Web-App beheren in de Azure Portal
-
-Ga door naar de volgende zelfstudie om te leren hoe u een aangepaste DNS-naam aan uw app kunt toewijzen.
+Ga naar de volgende zelf studie voor meer informatie over het toewijzen van een aangepaste DNS-naam aan uw app:
 
 > [!div class="nextstepaction"]
 > [Zelf studie: aangepaste DNS-naam toewijzen aan uw app](../app-service-web-tutorial-custom-domain.md)
 
-U kunt ook andere resources bekijken:
+Of Bekijk andere bronnen:
 
 > [!div class="nextstepaction"]
 > [Python-app configureren](how-to-configure-python.md)

@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 08/16/2016
 ms.author: deli
 ms.custom: include file
-ms.openlocfilehash: b3788ede23a423bebf96661ea88b227bfb5fdf4c
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: eb13d889cb72911e2268b7538a74336befe3320b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67176411"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392424"
 ---
 In de volgende tabel worden de belangrijkste quota's, limieten, standaard waarden en beperkingen in azure scheduler beschreven.
 
-| Resource | Limiet beschrijving |
+| Bron | Limiet beschrijving |
 | -------- | ----------------- |
 | **Taak grootte** | De maximale taak grootte is 16.000. Als een PUT-of een PATCH-bewerking resulteert in een grootte van een taak die groter is dan deze limiet, wordt de status code van een ongeldige aanvraag van 400 geretourneerd. | 
 | **Taak verzamelingen** | Het maximum aantal taak verzamelingen per Azure-abonnement is 200.000. | 
-| **Taken per verzameling** | Het maximum aantal taken is standaard vijf taken in een gratis taak verzameling en 50-taken in een standaard taak verzameling. <p>U kunt het maximum aantal taken voor een taak verzameling wijzigen. Alle taken in een taak verzameling zijn beperkt tot de waarde die is ingesteld voor de taak verzameling. Als u probeert meer taken te maken dan het quotum voor het maximum aantal taken, mislukt de aanvraag met een status code van 409-conflicten. | 
+| **Taken per verzameling** | Het maximum aantal taken is standaard vijf taken in een gratis taak verzameling en 50-taken in een standaard taak verzameling. U kunt het maximum aantal taken voor een taak verzameling wijzigen. Alle taken in een taak verzameling zijn beperkt tot de waarde die is ingesteld voor de taak verzameling. Als u probeert meer taken te maken dan het quotum voor het maximum aantal taken, mislukt de aanvraag met een status code van 409-conflicten. | 
 | **Tijd tot begin tijd** | De maximum tijd voor het starten van is 18 maanden. |
 | **Herhalings bereik** | De maximale terugkeer patroon is 18 maanden. | 
 | **Frequentie** | Het maximum frequentie quotum is standaard één uur in een gratis taak verzameling en één minuut in een standaard taak verzameling. <p>U kunt de maximum frequentie voor een taak verzameling lager maken dan het maximum. Alle taken in de taak verzameling zijn beperkt tot de waarde die is ingesteld voor de taak verzameling. Als u probeert een taak te maken met een hogere frequentie dan de maximum frequentie voor de taak verzameling, mislukt de aanvraag met een status code van 409-conflicten. | 

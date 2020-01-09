@@ -1,21 +1,21 @@
 ---
 title: 'Snelstartgids: digitale inkt herkennen met de inkt Recognizer REST API en node. js'
 titleSuffix: Azure Cognitive Services
-description: Gebruik de API voor inkt herkenning om te beginnen met het herkennen van digitale inkt streken.
+description: Gebruik de API voor inkt herkenning om digitale inkt streken in deze Quick Start te herkennen.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 09/23/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 19626bd68ad82108b2ebaa823d196d0f22008e29
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: a37f2b7044fcba04ca18093aa73563961e9e35de
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996913"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448132"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Snelstartgids: digitale inkt herkennen met de inkt Recognizer REST API en Java script
 

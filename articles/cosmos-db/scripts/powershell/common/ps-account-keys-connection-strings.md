@@ -1,17 +1,17 @@
 ---
-title: Azure PowerShell script-account sleutel en connection string bewerkingen voor een Azure Cosmos-account
+title: Power shell-script voor het ophalen van sleutel-en connection string bewerkingen voor een Azure Cosmos-account
 description: Voor beeld-account sleutel en connection string bewerkingen Azure PowerShell script voor een Azure Cosmos-account
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1eb9cc4c35584b94d3d16654b1bec253e21a91ff
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 96be5f09cddf5eefec6b471d30cf87d0f687485d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154751"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441519"
 ---
 # <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-account-using-powershell"></a>Verbindings reeks en account sleutel bewerkingen voor een Azure Cosmos-account met behulp van Power shell
 
@@ -36,7 +36,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

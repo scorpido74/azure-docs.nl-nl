@@ -1,25 +1,16 @@
 ---
-title: Herstel na nood gevallen voor Azure Service Fabric | Microsoft Docs
+title: Herstel na nood gevallen voor Azure Service Fabric
 description: Azure Service Fabric biedt de mogelijkheden die nodig zijn om alle typen nood gevallen te behandelen. In dit artikel worden de soorten rampen beschreven die zich kunnen voordoen en hoe u deze kunt verwerken.
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 1be891d38eb918d65cd8efda86e9a81fa629cf38
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f23624dd0be1e700731e3f5a63c8cd7a00ec4e16
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73883994"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458062"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Herstel na nood geval in azure Service Fabric
 Een essentieel onderdeel van het leveren van hoge Beschik baarheid zorgt ervoor dat Services alle verschillende soorten storingen kunnen overlaten. Dit is vooral belang rijk voor storingen die ongepland zijn en buiten uw besturings element vallen. In dit artikel worden enkele veelvoorkomende fout modi beschreven die nood herstel kunnen zijn als ze niet correct worden gemodelleerd en beheerd. Ook worden de beperkingen en acties besproken die moeten worden uitgevoerd als er toch een nood geval is opgetreden. Het doel is om het risico van uitval tijd of gegevens verlies te beperken of te elimineren wanneer er fouten optreden, gepland of anders optreden.

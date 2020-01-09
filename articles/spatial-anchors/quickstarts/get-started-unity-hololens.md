@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 561b5391f125cf845eff940a0d3548fc6ade541e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5ea82d88099b0f5fdd00624db4417bbb02777581
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277050"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457779"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Snelstartgids: een unit HoloLens-app maken die gebruikmaakt van ruimtelijke ankers van Azure
 
@@ -31,9 +31,9 @@ U leert het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Dit zijn de vereisten voor het voltooien van deze snelstartgids:
+Dit zijn de vereisten voor het voltooien van deze snelstart:
 
-- U hebt een Windows-computer nodig waarop <a href="https://unity3d.com/get-unity/download" target="_blank">eenheid 2019,1</a> of hoger en <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> of hoger zijn geïnstalleerd. Uw Visual Studio-installatie moet de **universeel Windows-platform Development** -werk belasting en het onderdeel **Windows 10 SDK (10.0.18362.0 of recenter)** bevatten. U moet ook <a href="https://git-scm.com/download/win" target="_blank">git voor Windows</a>installeren.
+- U hebt een Windows-computer nodig waarop <a href="https://unity3d.com/get-unity/download" target="_blank">eenheid 2019,1</a> of hoger en <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> of hoger zijn geïnstalleerd. Uw Visual Studio-installatie moet de **universeel Windows-platform Development** -werk belasting en het onderdeel **Windows 10 SDK (10.0.18362.0 of recenter)** bevatten. U moet ook <a href="https://git-scm.com/download/win" target="_blank">git installeren voor Windows</a> en <a href="https://git-lfs.github.com/">Git LF</a>.
 - U hebt een HoloLens-apparaat nodig waarop de [ontwikkelaars modus](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) is ingeschakeld. [Windows 10 oktober 2018-update](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (ook wel bekend als RS5) moet op het apparaat zijn geïnstalleerd. Als u wilt bijwerken naar de nieuwste versie van HoloLens, opent u de app **instellingen** , gaat u naar **Update & Security**en selecteert u vervolgens **controleren op updates**.
 - In uw app moet u de **SpatialPerception** -mogelijkheid inschakelen. Deze instelling bevindt zich in de instellingen voor **Build** -instellingen > **Player** > **publicatie-instellingen** > **mogelijkheden**.
 - In uw app moet u **Virtual Reality** inschakelen die wordt ondersteund met de **SDK voor Windows Mixed Reality**. Deze instelling bevindt zich in instellingen voor **Build** -instellingen > **Player** > **XR-instellingen**.
@@ -62,7 +62,7 @@ Ga in het deel venster **project** naar `Assets/AzureSpatialAnchors.Examples/Sce
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
-Sla de scène op door **Bestand** > **Opslaan** te selecteren.
+Sla de scène op door **File** > **Save** te selecteren.
 
 ## <a name="export-the-hololens-visual-studio-project"></a>Het HoloLens Visual Studio-project exporteren
 

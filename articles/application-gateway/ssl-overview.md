@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: e52a32c1897a7add939880fbe27d6b4b7fbee0bd
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 64b90afd598b96604fc9c3ddc4bc10586e714363
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883585"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75657978"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Overzicht van SSL-beëindiging en end-to-end SSL met Application Gateway
 
@@ -42,15 +42,15 @@ Voor een goede werking van de SSL-verbinding moet u controleren of het SSL-certi
 
 Application Gateway ondersteunt de volgende typen certificaten:
 
-- CA-certificaat (certificerings instantie): Een CA-certificaat is een digitaal certificaat dat is uitgegeven door een certificerings instantie (CA)
-- EV-certificaat (Extended validatie): Een EV-certificaat is een industrie standaard certificaat richtlijnen. Hiermee wordt de browser-Locator-balk groen en wordt de bedrijfs naam ook gepubliceerd.
-- Joker certificaat: Dit certificaat ondersteunt een wille keurig aantal subdomeinen op basis van *. site.com, waarbij uw subdomein de * vervangen. Het biedt echter geen ondersteuning voor site.com, dus als de gebruikers toegang hebben tot uw website zonder de toonaangevende ' www ' te hoeven typen, heeft het Joker certificaat hier geen betrekking op.
-- Zelfondertekende certificaten: Client browsers vertrouwen deze certificaten niet en de gebruiker wordt gewaarschuwd dat het certificaat van de virtuele service geen deel uitmaakt van een vertrouwens keten. Zelfondertekende certificaten zijn geschikt voor testen of omgevingen waarin beheerders de clients beheren en de beveiligings waarschuwingen van de browser veilig kunnen passeren. Werk belastingen voor productie moeten nooit zelfondertekende certificaten gebruiken.
+- CA-certificaat (certificerings instantie): een CA-certificaat is een digitaal certificaat dat is uitgegeven door een certificerings instantie (CA)
+- EV-certificaat (Extended validatie): een EV-certificaat is een standaard certificaat richtlijn voor certificaten. Hiermee wordt de browser-Locator-balk groen en wordt de bedrijfs naam ook gepubliceerd.
+- Joker certificaat: dit certificaat ondersteunt een wille keurig aantal subdomeinen op basis van *. site.com, waarbij uw subdomein de * vervangen. Het biedt echter geen ondersteuning voor site.com, dus als de gebruikers toegang hebben tot uw website zonder de toonaangevende ' www ' te hoeven typen, heeft het Joker certificaat hier geen betrekking op.
+- Zelfondertekende certificaten: client browsers vertrouwen deze certificaten niet en de gebruiker wordt gewaarschuwd dat het certificaat van de virtuele service geen deel uitmaakt van een vertrouwens keten. Zelfondertekende certificaten zijn geschikt voor testen of omgevingen waarin beheerders de clients beheren en de beveiligings waarschuwingen van de browser veilig kunnen passeren. Werk belastingen voor productie moeten nooit zelfondertekende certificaten gebruiken.
 
 Zie voor meer informatie [SSL-beëindiging configureren met Application Gateway](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
 
 ### <a name="size-of-the-certificate"></a>Grootte van het certificaat
-Controleer de sectie limieten van [Application Gateway](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits) om de maximale grootte van SSL-certificaten te bepalen die wordt ondersteund.
+Controleer de sectie [limieten van Application Gateway](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#application-gateway-limits) om de maximale grootte van SSL-certificaten te bepalen die wordt ondersteund.
 
 ## <a name="end-to-end-ssl-encryption"></a>End-to-end SSL-versleuteling
 

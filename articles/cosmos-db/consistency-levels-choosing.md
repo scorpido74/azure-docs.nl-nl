@@ -1,5 +1,5 @@
 ---
-title: Het juiste consistentie niveau kiezen voor uw toepassing die gebruikmaakt van Azure Cosmos DB
+title: Kies het juiste consistentie niveau voor uw Azure Cosmos DB-app
 description: Het juiste consistentie niveau voor uw toepassing kiezen in Azure Cosmos DB.
 author: markjbrown
 ms.author: mjbrown
@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 89c81e978c5f3dbbb8fac1ea5e75fc506612308f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: cea157e272a2bf464141e592b8e742f314a83233
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384900"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441921"
 ---
 # <a name="choose-the-right-consistency-level"></a>Het juiste consistentieniveau kiezen 
 
-Gedistribueerde data bases die gebruikmaken van replicatie voor hoge Beschik baarheid, lage latentie of beide, maken de fundamentele verhouding tussen de Lees consistentie versus Beschik baarheid, latentie en door voer. De meeste commerciële beschik bare gedistribueerde data bases vragen ontwikkel aars om te kiezen tussen de twee uiterst consistente consistentie modellen: *sterke* consistentie en *uiteindelijke* consistentie. Met Azure Cosmos DB kunnen ontwikkel aars kiezen uit de vijf goed gedefinieerde consistentie modellen: *Strong*, *gebonden veroudering*, *sessie*, *consistent voor voegsel* en *uiteindelijk*. Elk van deze consistentie modellen is goed gedefinieerd, intuïtief en kan worden gebruikt voor specifieke praktijk scenario's. Elk van de vijf consistentie modellen biedt nauw keurige [Beschik baarheid en prestatie](consistency-levels-tradeoffs.md) -afwegingen en wordt ondersteund door de uitgebreide service overeenkomsten. Met de volgende eenvoudige overwegingen kunt u de juiste keuze maken in veel algemene scenario's.
+Gedistribueerde data bases die gebruikmaken van replicatie voor hoge Beschik baarheid, lage latentie of beide, maken de fundamentele verhouding tussen de Lees consistentie versus Beschik baarheid, latentie en door voer. De meeste commerciële beschik bare gedistribueerde data bases vragen ontwikkel aars om te kiezen tussen de twee uiterst consistente consistentie modellen: *sterke* consistentie en *uiteindelijke* consistentie. Met Azure Cosmos DB kunnen ontwikkel aars kiezen uit de vijf goed gedefinieerde consistentie modellen: *Strong*, *gebonden veroudering*, *sessie*, *consistent voor voegsel* en *uiteindelijk*. Elk van deze consistentie modellen is goed gedefinieerd, intuïtief en kan worden gebruikt voor specifieke praktijk scenario's. Elk van de vijf consistentie modellen biedt nauw keurige [Beschik baarheid en prestatie-afwegingen](consistency-levels-tradeoffs.md) en wordt ondersteund door de uitgebreide service overeenkomsten. Met de volgende eenvoudige overwegingen kunt u de juiste keuze maken in veel algemene scenario's.
 
 ## <a name="sql-api-and-table-api"></a>SQL-API en Table-API
 
@@ -50,9 +50,9 @@ In de praktijk kunt u vaak sterkere consistentie garanties krijgen. Consistentie
 
 * Wanneer het consistentie niveau is ingesteld op **Strong**, is het verouderde venster gelijk aan nul en zijn de clients gegarandeerd de laatste doorgevoerde waarde van de schrijf bewerking te lezen.
 
-* Voor de resterende drie consistentie niveaus is het verouderde venster grotendeels afhankelijk van uw werk belasting. Als er bijvoorbeeld geen schrijf bewerkingen zijn op de data base, kan een Lees **bewerking met een**mogelijke consistentie **-of**consistentie niveau van het **voor voegsel** dezelfde resultaten opleveren als een lees bewerking met een hoog consistentie niveau.
+* Voor de resterende drie consistentie niveaus is het verouderde venster grotendeels afhankelijk van uw werk belasting. Als er bijvoorbeeld geen schrijf bewerkingen zijn op de data base, kan een lees bewerking met een mogelijke **consistentie-of**consistentie **niveau van het** **voor voegsel** dezelfde resultaten opleveren als een lees bewerking met een hoog consistentie niveau.
 
-Als uw Azure Cosmos-account is geconfigureerd met een ander consistentie niveau dan de sterke consistentie, kunt u de kans opsporen dat uw clients sterke en consistente Lees bewerkingen voor uw workloads krijgen door te kijken naar de Probabilistically die is *gebonden* Waarde voor veroudering (PBS). Deze metriek wordt weer gegeven in de Azure Portal voor meer informatie, Zie [Probabilistically gebonden verouderde waarde (PBS) controleren](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
+Als uw Azure Cosmos-account is geconfigureerd met een ander consistentie niveau dan de sterke consistentie, kunt u de kans ontdekken dat uw clients sterke en consistente Lees bewerkingen voor uw werk belastingen krijgen door te kijken naar de metrische gegevens van de *Probabilistically-gebonden veroudering* (PBS). Deze metriek wordt weer gegeven in de Azure Portal voor meer informatie, Zie [Probabilistically gebonden verouderde waarde (PBS) controleren](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
 
 Probabilistic gebonden veroudering laten zien hoe uiteindelijk uw uiteindelijke consistentie is. Deze metrische gegevens bieden een inzicht in hoe vaak u een sterkere consistentie kunt krijgen dan het consistentie niveau dat u momenteel hebt geconfigureerd in uw Azure Cosmos-account. Met andere woorden, u kunt de waarschijnlijkheid (gemeten in milliseconden) voor het verkrijgen van sterk consistente Lees bewerkingen voor een combi natie van de regio's schrijven en lezen zien.
 

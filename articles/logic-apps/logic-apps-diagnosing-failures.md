@@ -1,17 +1,17 @@
 ---
-title: Problemen oplossen en fouten vaststellen
-description: Meer informatie over het oplossen en diagnosticeren van werk stroom fouten in Azure Logic Apps
+title: Problemen met werk stromen oplossen en fouten opsporen
+description: Meer informatie over het oplossen en diagnosticeren van problemen, fouten en fouten in uw werk stromen in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 93b6d9d2975aa1758afffd19deb1d315b974cc47
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 79cc9d1bf7aa9e8848197525646b0a3646a558d2
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790778"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666802"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Problemen met werk stromen oplossen en fouten opsporen in Azure Logic Apps
 

@@ -1,5 +1,5 @@
 ---
-title: Token &-aanroep Microsoft Graph Api's ophalen uit console-apps (v 1.0) | Azure
+title: Microsoft Graph voor het verkrijgen van token &-aanroepen (.NET Core-Console) (v 1.0) | Azure
 description: Een .NET daemon-toepassing bouwen die kan worden geïntegreerd met Azure AD & Azure AD-beveiligde Api's aanroepen met OAuth 2,0
 services: active-directory
 author: rwike77
@@ -14,14 +14,14 @@ ms.author: jmprieur
 ms.reviewer: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2858a0b14863195ee0f56c89fe2c55c9e63873de
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d44dfe3eb03ff086d3785311c34ab1a6a5b3982a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965922"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424053"
 ---
-# <a name="quickstart-acquire-token-and-call-microsoft-graph-api-with-console-apps-identity-v10"></a>Quick Start: token verkrijgen en Microsoft Graph-API aanroepen met de id van de console-app (v 1.0) 
+# <a name="quickstart-acquire-token-and-call-microsoft-graph-using-console-apps-identity-v10"></a>Snelstartgids: tokens verkrijgen en Microsoft Graph aanroepen met behulp van de identiteit van de console-app (v 1.0)
 
 [Micro soft Identity platform](v2-overview.md) is een evolutie van het ontwikkel platform van de Azure Active Directory (Azure AD). Met het Microsoft Identity Platform kunnen ontwikkelaars toepassingen maken waarbij gebruikers zich met alle Microsoft-identiteiten kunnen aanmelden en waarmee tokens worden opgehaald voor het aanroepen van Microsoft-API's, zoals Microsoft Graph, of API's die door ontwikkelaars zijn gemaakt.
 

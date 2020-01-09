@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 258410bcd4f916ac381188bb38d90a3b89c87c89
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3daa567a916bd0abeb407028c7d06bd1f2bd464b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954238"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454069"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Een Raspberry Pi verbinden met uw Azure IoT Central-toepassing (python)
 
@@ -27,31 +27,36 @@ In dit artikel wordt beschreven hoe u als een ontwikkelaar van een apparaat een 
 
 U hebt de volgende onderdelen nodig om de stappen in dit artikel uit te voeren:
 
-* Een Azure IoT Central-toepassing gemaakt op basis van de voor beeld-toepassings sjabloon **Devkits** . Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
+* Een Azure IoT Central-toepassing die is gemaakt op basis van de **oude** toepassings sjabloon. Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
 * Een Raspberry Pi-apparaat met het Raspbian-besturings systeem. De Raspberry Pi moet verbinding kunnen maken met internet. Zie [uw Raspberry Pi instellen](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3)voor meer informatie.
 
 > [!TIP]
 > Ga aan de [slag met Raspberry Pi](https://projects.raspberrypi.org/en/pathways/getting-started-with-raspberry-pi) voor meer informatie over het instellen en verbinding maken met een Raspberry Pi-apparaat.
 
-## <a name="sample-devkits-application"></a>Voor **beeld van Devkits** -toepassing
+## <a name="add-a-device-template"></a>Een apparaatsjabloon toevoegen
 
-Een toepassing die is gemaakt op basis van de voor **beeld-Devkits** -toepassings sjabloon bevat een **Raspberry Pi** -sjabloon met de volgende kenmerken:
+Voeg in uw Azure IoT Central-toepassing een nieuwe **Raspberry Pi** -apparaatprofiel toe met de volgende kenmerken:
 
 - Telemetrie, met inbegrip van de volgende metingen die door het apparaat worden verzameld:
   - Vochtigheid
   - Temperatuur
-  - Tegen
+  - Druk
   - Magnetometer (X, Y, Z)
   - Versnellings meter (X, Y, Z)
   - Gyroscope (X, Y, Z)
 - Instellingen
   - Verbruik
-  - VLOTT
+  - Huidig
   - Snelheid van ventilator
   - Scha kelen tussen IR.
 - Eigenschappen
   - Eigenschap van het aantal apparaten van de dobbel steen
   - Eigenschap Location Cloud
+
+1. Selecteer **+ Nieuw** uit Apparaatinstellingen ![-apparaatprofiel](media/howto-connect-raspberry-pi-python/adddevicetemplate.png)
+   
+
+2. Selecteer **Raspberry Pi** en maak de Raspberry Pi-apparaatprofiel ![Device-sjabloon toevoegen](media/howto-connect-raspberry-pi-python/newdevicetemplate.png)
 
 Zie de [Raspberry Pi-Details](howto-connect-raspberry-pi-python.md#raspberry-pi-device-template-details)van het apparaat voor meer informatie over de configuratie van de sjabloon.
 
@@ -108,12 +113,12 @@ Een toepassing die is gemaakt op basis van de voor **beeld-Devkits** -toepassing
 | Veldnaam     | Eenheden  | Minimum | Maximum | Aantal decimalen |
 | -------------- | ------ | ------- | ------- | -------------- |
 | vochtigheid       | %      | 0       | 100     | 0              |
-| ratuur           | D20     | -40     | 120     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
 | pressure       | hPa    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1000    | 0              |
-| versnellings meterx | mg     | -2000   | 2000    | 0              |
+| accelerometerX | mg     | -2000   | 2000    | 0              |
 | versnellings meter | mg     | -2000   | 2000    | 0              |
 | accelerometerZ | mg     | -2000   | 2000    | 0              |
 | gyroscopeX     | mdps   | -2000   | 2000    | 0              |
@@ -124,15 +129,15 @@ Een toepassing die is gemaakt op basis van de voor **beeld-Devkits** -toepassing
 
 Numerieke instellingen
 
-| Weergavenaam | Veldnaam | Eenheden | Aantal decimalen | Minimum | Maximum | Itiaal |
+| Weergavenaam | Veldnaam | Eenheden | Aantal decimalen | Minimum | Maximum | Oorspronkelijk |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Verbruik      | setVoltage | Volt | 0              | 0       | 240     | 0       |
-| VLOTT      | setCurrent | Amp  | 0              | 0       | 100     | 0       |
+| Huidig      | setCurrent | Amp  | 0              | 0       | 100     | 0       |
 | Snelheid van ventilator    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 Instellingen in-/uitschakelen
 
-| Weergavenaam | Veldnaam | In tekst | Uit tekst | Itiaal |
+| Weergavenaam | Veldnaam | In tekst | Uit tekst | Oorspronkelijk |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | AAN      | UIT      | Uit     |
 

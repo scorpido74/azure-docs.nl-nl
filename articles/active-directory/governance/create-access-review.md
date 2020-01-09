@@ -1,5 +1,5 @@
 ---
-title: Een toegangs beoordeling maken voor groepen of toepassingen-Azure Active Directory | Microsoft Docs
+title: Een toegangs beoordeling maken voor groepen & toepassingen-Azure AD
 description: Meer informatie over het maken van een toegangs beoordeling van groeps leden of toegang tot toepassingen in Azure Active Directory toegangs Beoordelingen.
 services: active-directory
 author: msaburnley
@@ -15,14 +15,14 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 230fb40c8e3a100d2fdfa0af6b40c93c3e5b47d2
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 583eb62e6eeaaa799d2ea75261ee511fb8ddb7ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499728"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422675"
 ---
-# <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Een toegangs beoordeling maken voor groepen of toepassingen in azure AD-toegangs beoordelingen
+# <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Een toegangs beoordeling maken voor groepen en toepassingen in azure AD-toegangs beoordelingen
 
 De toegang tot groepen en toepassingen voor werk nemers en gasten verandert in de loop van de tijd. Beheerders kunnen Azure Active Directory (Azure AD) gebruiken voor het maken van toegangs Beoordelingen voor groeps leden of toegang tot toepassingen om het risico te verminderen dat is gekoppeld aan verouderde toegangs toewijzingen. Als u de toegang regel matig wilt controleren, kunt u ook terugkerende toegangs beoordelingen maken. Zie [gebruikers toegang beheren](manage-user-access-with-access-reviews.md) en [gast toegang beheren](manage-guest-access-with-access-reviews.md)voor meer informatie over deze scenario's.
 
@@ -37,7 +37,7 @@ Zie [welke gebruikers licenties moeten hebben?](access-reviews-overview.md#which
 
 ## <a name="create-one-or-more-access-reviews"></a>Een of meer toegangs beoordelingen maken
 
-1. Meld u aan bij de Azure Portal en open de [pagina](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)voor identiteits beheer.
+1. Meld u aan bij de Azure Portal en open de [pagina voor identiteits](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)beheer.
 
 1. Klik in het menu links op **toegangs beoordelingen**.
 
@@ -75,7 +75,7 @@ Zie [welke gebruikers licenties moeten hebben?](access-reviews-overview.md#which
     
     ![Een toegangs beoordeling maken-toepassing selecteren](./media/create-access-review/select-application.png)
 
-1. Selecteer in  de sectie controleurs een of meer personen om alle gebruikers in het bereik te controleren. Of u kunt ervoor kiezen om de leden hun eigen toegang te laten beoordelen. Als de resource een groep is, kunt u de groeps eigenaren vragen om te controleren. U kunt er ook voor zorgen dat de controleurs een reden opgeven wanneer ze de toegang goed keuren.
+1. Selecteer in de sectie **controleurs** een of meer personen om alle gebruikers in het bereik te controleren. Of u kunt ervoor kiezen om de leden hun eigen toegang te laten beoordelen. Als de resource een groep is, kunt u de groeps eigenaren vragen om te controleren. U kunt er ook voor zorgen dat de controleurs een reden opgeven wanneer ze de toegang goed keuren.
 
     ![Een toegangs beoordeling maken-revisoren](./media/create-access-review/reviewers.png)
 
@@ -87,7 +87,7 @@ Zie [welke gebruikers licenties moeten hebben?](access-reviews-overview.md#which
 
     Als u een lijst met Program ma's wilt weer geven, gaat u naar de pagina toegangs beoordelingen en selecteert u **Program ma's**. Als u een globale beheerder of beheerderrol hebt, kunt u extra Program ma's maken. U kunt bijvoorbeeld kiezen voor een programma voor elk nalevings initiatief of zakelijk doel. Als u een programma niet meer nodig hebt en er geen besturings elementen meer aan zijn gekoppeld, kunt u deze verwijderen.
 
-### <a name="upon-completion-settings"></a>Na voltooiing van de instellingen
+### <a name="upon-completion-settings"></a>Bij voltooiings instellingen
 
 1. Als u wilt opgeven wat er gebeurt nadat een controle is voltooid, vouwt u de sectie **bij voltooiings instellingen** uit.
 
@@ -108,7 +108,7 @@ Zie [welke gebruikers licenties moeten hebben?](access-reviews-overview.md#which
 
     ![Een toegangs beoordeling maken-geavanceerde instellingen](./media/create-access-review/advanced-settings.png)
 
-1. Stel **aanbevelingen weer geven** **in om** de controleurs weer te geven op basis van de toegangs gegevens van de gebruiker.
+1. Stel **aanbevelingen weer geven** in om de controleurs **weer te geven** op basis van de toegangs gegevens van de gebruiker.
 
 1. Stel een **reden in voor de goed keuring vereisen** om te **zorgen** dat de revisor een reden voor goed keuring moet opgeven.
 

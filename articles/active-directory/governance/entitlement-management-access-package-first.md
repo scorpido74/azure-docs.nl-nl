@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: uw eerste toegangs pakket maken in het beheer van rechten van Azure AD-Azure Active Directory'
+title: Zelf studie-toegangs pakket maken-beheer van rechten van Azure AD
 description: Stapsgewijze zelf studie voor het maken van uw eerste toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/22/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de4d4a1825149a512d7abdb192d8fb9d49e85a20
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cd4feeb83acc3842874e7a2e4bbd32dacabcc00d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174871"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422656"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Zelf studie: uw eerste toegangs pakket maken in het beheer van rechten van Azure AD
 
@@ -65,7 +65,7 @@ Een resource directory bevat een of meer resources om te delen. In deze stap maa
 
 1. De volgende twee gebruikers maken of configureren. U kunt deze namen of andere namen gebruiken. **Admin1** kan de gebruiker zijn met wie u momenteel bent aangemeld.
 
-    | Naam | Directory-functie |
+    | Name | Directory-rol |
     | --- | --- |
     | **Admin1** | Globale beheerder<br/>-of-<br/>Gebruikers beheerder |
     | **Requestor1** | Gebruiker |

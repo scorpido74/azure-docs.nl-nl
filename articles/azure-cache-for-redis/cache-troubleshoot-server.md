@@ -1,17 +1,17 @@
 ---
 title: Problemen met Azure-cache oplossen voor redis aan de server zijde
-description: Meer informatie over het oplossen van veelvoorkomende problemen aan de server zijde met Azure cache voor redis
+description: Informatie over het oplossen van veelvoorkomende problemen aan de server zijde met Azure cache voor redis, zoals geheugen belasting, hoge CPU, langdurende opdrachten of bandbreedte beperkingen.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.author: yegu
-ms.openlocfilehash: 22cb4beb3411c617882972e1b91c5f538019fae4
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: a68c27de304a0da6470745ee4abf69590d9bf78c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122571"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433353"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Problemen met Azure-cache oplossen voor redis aan de server zijde
 
@@ -75,7 +75,7 @@ Voor het beperken van situaties waarbij het netwerk bandbreedte gebruik bijna de
 
 ## <a name="additional-information"></a>Aanvullende informatie
 
-- [Problemen met Azure-cache oplossen voor redis aan client zijde](cache-troubleshoot-client.md)
+- [Problemen met Azure Cache voor Redis aan clientzijde oplossen](cache-troubleshoot-client.md)
 - [Wat is Azure cache voor redis aanbieding en grootte moet ik gebruiken?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 - [Hoe kan ik Bench Mark en test de prestaties van mijn cache?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 - [Azure-cache bewaken voor redis](cache-how-to-monitor.md)

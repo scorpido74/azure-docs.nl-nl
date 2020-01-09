@@ -1,96 +1,96 @@
 ---
-title: Automatische, online back-up en gegevens op aanvraag voor herstellen in Azure Cosmos DB
-description: Dit artikel wordt beschreven hoe automatische, online back-up en op aanvraag gegevens werkt in Azure Cosmos DB herstellen.
+title: Herstel van online back-ups en gegevens op aanvraag in Azure Cosmos DB
+description: In dit artikel wordt beschreven hoe automatische, online back-ups en gegevens herstel op aanvraag in Azure Cosmos DB werken.
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 066549f1343eaceb9a47fccc3b5d4508f226a89b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ca4fa8699d9bd4b35f26983f2f7004c63da180f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967470"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441542"
 ---
-# <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Online back-up en gegevens op aanvraag voor herstellen in Azure Cosmos DB
+# <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Herstel van online back-ups en gegevens op aanvraag in Azure Cosmos DB
 
-Azure Cosmos DB maakt back-ups van uw gegevens automatisch met regelmatige intervallen. De automatische back-ups worden genomen zonder gevolgen voor de prestaties of beschikbaarheid van de databasebewerkingen. De back-ups apart zijn opgeslagen in een storage-service, en deze back-ups wereldwijd voor bescherming tegen regionale rampen zijn gerepliceerd. De automatische back-ups zijn nuttig in scenario's als u per ongeluk verwijderen of bijwerken van uw Azure Cosmos-account, een database of een container en het herstel van gegevens later nodig.
+Azure Cosmos DB maakt met regel matige tussen pozen automatisch back-ups van uw gegevens. De automatische back-ups worden gemaakt zonder dat dit van invloed is op de prestaties of Beschik baarheid van de database bewerkingen. Alle back-ups worden afzonderlijk in een opslag service opgeslagen en deze back-ups worden wereld wijd gerepliceerd voor flexibiliteit tegen regionale rampen. De automatische back-ups zijn handig in scenario's wanneer u per ongeluk uw Azure Cosmos-account,-data base of-container verwijdert of bijwerkt en later het gegevens herstel vereist.
 
 ## <a name="automatic-and-online-backups"></a>Automatische en online back-ups
 
-Met Azure Cosmos DB zijn niet alleen uw gegevens, maar ook de back-ups van uw gegevens maximaal redundante en tegen regionale rampen. De volgende stappen laten zien hoe de back-up wordt uitgevoerd in Azure Cosmos DB:
+Met Azure Cosmos DB, niet alleen uw gegevens, maar ook de back-ups van uw gegevens zijn zeer redundant en robuust voor regionale rampen. De volgende stappen laten zien hoe Azure Cosmos DB gegevens back-up uitvoert:
 
-* Azure Cosmos DB maakt automatisch een back-up van uw database elke 4 uur en op elk moment, alleen de meest recente 2 back-ups worden opgeslagen. Echter, als de container of de database wordt verwijderd, behoudt Azure Cosmos DB de bestaande momentopnamen van een bepaalde container of de database gedurende 30 dagen.
+* In Azure Cosmos DB wordt elke 4 uur automatisch een back-up van uw database gemaakt. Op elk gewenst moment worden alleen de twee meest recente back-ups opgeslagen. Als de container of database echter wordt verwijderd, blijven in Azure Cosmos DB de bestaande momentopnamen van een opgegeven container of database gedurende 30 dagen behouden.
 
-* Azure Cosmos DB slaat deze back-ups in Azure Blob-opslag terwijl de werkelijke gegevens lokaal aanwezig is in Azure Cosmos DB.
+* Azure Cosmos DB slaat deze back-ups op in Azure Blob-opslag terwijl de daad werkelijke gegevens lokaal zijn opgeslagen in Azure Cosmos DB.
 
-*  Om te waarborgen met lage latentie, de momentopname van de back-up wordt opgeslagen in Azure Blob-opslag in dezelfde regio als de huidige schrijfregio (of een van de schrijfregio's, u hebt een configuratie met meerdere masters) van uw Azure-Cosmos-database account. Voor bescherming tegen regionale na noodgevallen, wordt elke momentopname van de back-upgegevens in Azure Blob-opslag opnieuw gerepliceerd naar een andere regio via geo-redundante opslag (GRS). De regio waarnaar de back-up worden gerepliceerd is gebaseerd op de regio van de gegevensbron en de regionaal paar die zijn gekoppeld aan de bronregio. Zie voor meer informatie, de [lijst met geografisch redundante paren van Azure-regio's](../best-practices-availability-paired-regions.md) artikel. U kunt geen rechtstreeks toegang hebben tot deze back-up. Azure Cosmos DB wordt deze back-up alleen gebruiken als een back-up herstellen wordt gestart.
+*  Om een lage latentie te garanderen, wordt de moment opname van uw back-up opgeslagen in Azure Blob Storage in dezelfde regio als de huidige schrijf regio (of een van de schrijf regio's, voor het geval u een configuratie met meerdere masters hebt) van uw Azure Cosmos-database account. Voor tolerantie tegen regionale nood gevallen wordt elke moment opname van de back-upgegevens in Azure Blob-opslag opnieuw gerepliceerd naar een andere regio via Geo-redundante opslag (GRS). De regio waarnaar de back-up wordt gerepliceerd, is gebaseerd op de bron regio en het regionale paar dat is gekoppeld aan de bron regio. Zie de [lijst met geo-redundante paren van Azure-regio's](../best-practices-availability-paired-regions.md) voor meer informatie. U hebt geen rechtstreekse toegang tot deze back-up. Azure Cosmos DB maakt alleen gebruik van deze back-up als er een back-up wordt gemaakt.
 
-* De back-ups zijn uitgevoerd zonder gevolgen voor de prestaties of beschikbaarheid van uw toepassing. Azure Cosmos DB kunt u gegevensback-up op de achtergrond zonder eventuele extra ingerichte doorvoer (ru's) verbruikt of die betrekking hebben op de prestaties en beschikbaarheid van uw database.
+* De back-ups worden gemaakt zonder dat dit van invloed is op de prestaties of Beschik baarheid van uw toepassing. Azure Cosmos DB voert gegevens back-ups op de achtergrond uit zonder enige extra ingerichte door Voer (RUs) te gebruiken of de prestaties en beschik baarheid van uw data base te beïnvloeden.
 
-* Als u hebt per ongeluk verwijderd of beschadigd van uw gegevens, moet u contact opnemen [ondersteuning van Azure](https://azure.microsoft.com/support/options/) binnen acht uur zodat het team van Azure Cosmos DB kunt u de gegevens herstelt vanaf de back-ups.
+* Als u uw gegevens per ongeluk hebt verwijderd of beschadigd, neemt u binnen 8 uur contact op met [Azure-ondersteuning](https://azure.microsoft.com/support/options/) , zodat het Azure Cosmos DB team u kan helpen bij het herstellen van de gegevens van de back-ups.
 
-De volgende afbeelding ziet u hoe een Azure Cosmos-container met alle drie primaire fysieke partities in VS-West is een back-up in een externe Azure Blob Storage-account in VS-West en vervolgens gerepliceerd naar VS-Oost:
+In de volgende afbeelding ziet u hoe een Azure Cosmos-container met alle drie primaire fysieke partities in West VS een back-up maakt in een extern Azure Blob Storage-account in VS-West en vervolgens wordt gerepliceerd naar VS-Oost:
 
-![Periodieke volledige back-ups van alle Cosmos DB-entiteiten in GRS Azure Storage](./media/online-backup-and-restore/automatic-backup.png)
+![Periodieke volledige back-ups van alle Cosmos DB entiteiten in GRS Azure Storage](./media/online-backup-and-restore/automatic-backup.png)
 
 ## <a name="options-to-manage-your-own-backups"></a>Opties voor het beheren van uw eigen back-ups
 
-Met Azure Cosmos DB SQL API-accounts, kunt u ook uw eigen back-ups behouden met behulp van een van de volgende methoden:
+Met Azure Cosmos DB SQL-API-accounts kunt u ook uw eigen back-ups onderhouden met behulp van een van de volgende benaderingen:
 
-* Gebruik [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) gegevens periodiek te verplaatsen naar een opslag van uw keuze.
+* Gebruik [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) om gegevens regel matig te verplaatsen naar een opslag van uw keuze.
 
-* Azure Cosmos DB gebruiken [wijzigingenfeed](change-feed.md) te lezen van gegevens periodiek voor volledige back-ups, evenals incrementele wijzigingen, en op te slaan in uw eigen opslag.
+* Gebruik Azure Cosmos DB [Change feed](change-feed.md) om gegevens regel matig te lezen voor volledige back-ups, en voor incrementele wijzigingen en op te slaan in uw eigen opslag.
 
-## <a name="backup-retention-period"></a>Bewaarperiode voor back-up
+## <a name="backup-retention-period"></a>Bewaar periode voor back-ups
 
-Azure Cosmos DB duurt momentopnamen van uw gegevens om de vier uur. Op elk moment worden alleen de laatste twee momentopnamen worden bewaard. Echter, als de container of de database wordt verwijderd, behoudt Azure Cosmos DB de bestaande momentopnamen van een bepaalde container of de database gedurende 30 dagen.
+Azure Cosmos DB maakt moment opnamen van uw gegevens om de vier uur. Op elk gewenst moment worden alleen de laatste twee moment opnamen bewaard. Als de container of database echter wordt verwijderd, blijven in Azure Cosmos DB de bestaande momentopnamen van een opgegeven container of database gedurende 30 dagen behouden.
 
-## <a name="restoring-data-from-online-backups"></a>Herstellen van gegevens uit de online back-ups
+## <a name="restoring-data-from-online-backups"></a>Gegevens herstellen vanuit online back-ups
 
-Per ongeluk verwijderen of wijzigen van gegevens kan gebeuren in een van de volgende scenario's:  
+Het onbedoeld verwijderen of wijzigen van gegevens kan zich in een van de volgende scenario's voordoen:  
 
-* Het gehele Azure-Cosmos-account is verwijderd
+* Het hele Azure Cosmos-account wordt verwijderd
 
-* Een of meer Azure Cosmos-databases zijn verwijderd
+* Een of meer Azure Cosmos-data bases zijn verwijderd
 
 * Een of meer Azure Cosmos-containers zijn verwijderd
 
-* Azure Cosmos-items (bijvoorbeeld documenten) in een container zijn verwijderd of gewijzigd. Dit specifieke geval wordt meestal aangeduid als 'beschadiging van gegevens'.
+* Azure Cosmos-items (bijvoorbeeld documenten) binnen een container worden verwijderd of gewijzigd. Dit specifieke geval wordt meestal ' gegevens beschadiging ' genoemd.
 
-* De database van een gedeelde aanbieding of containers in een gedeelde aanbieding-database zijn verwijderd of beschadigd
+* Een Data Base of containers van een gedeeld aanbod binnen een Data Base van het gedeelde aanbod worden verwijderd of beschadigd
 
-Azure Cosmos DB kunt herstellen van gegevens in de bovenstaande scenario's. Het herstelproces wordt altijd gemaakt voor een nieuw Azure Cosmos-account voor het opslaan van de herstelde gegevens. De naam van het nieuwe account, indien niet opgegeven, heeft de indeling `<Azure_Cosmos_account_original_name>-restored1`. De laatste cijfers wordt verhoogd als meerdere herstelacties worden uitgevoerd. U kunt gegevens niet herstellen naar een vooraf gemaakte Azure-Cosmos-account.
+Azure Cosmos DB kunt de gegevens in alle bovenstaande scenario's herstellen. Tijdens het herstelproces wordt altijd een nieuw Azure Cosmos-account gemaakt om de herstelde gegevens in te bewaren. De naam van het nieuwe account, indien niet opgegeven, heeft de indeling `<Azure_Cosmos_account_original_name>-restored1`. Het laatste cijfer wordt verhoogd als er meerdere herstel pogingen worden uitgevoerd. U kunt geen gegevens herstellen naar een vooraf gemaakt Azure Cosmos-account.
 
-Wanneer een Azure Cosmos-account wordt verwijderd, kunnen we de gegevens herstellen bij een account met dezelfde naam, mits de accountnaam niet gebruikt wordt. In dergelijke gevallen is het aanbevolen om het niet het account opnieuw maken nadat u hebt verwijderd, omdat deze niet alleen wordt voorkomen de herstelde gegevens dat voor het gebruik van dezelfde naam, maar ook het juiste account is uit de moeilijker te detecteren. 
+Wanneer een Azure Cosmos-account wordt verwijderd, kunnen we de gegevens herstellen naar een account met dezelfde naam, op voor waarde dat de account naam niet wordt gebruikt. In dergelijke gevallen is het raadzaam om het account niet opnieuw te maken na het verwijderen, omdat het niet alleen voor komt dat de herstelde gegevens dezelfde naam gebruiken, maar ook het juiste account wordt gedetecteerd om te herstellen van moeilijker. 
 
-Wanneer een Azure Cosmos-database wordt verwijderd, is het mogelijk om de gehele database of een subset van de containers in die database te herstellen. Het is ook mogelijk om te selecteren van containers voor databases en herstel ze en alle de herstelde gegevens wordt geplaatst in een nieuw Azure Cosmos-account.
+Wanneer een Azure Cosmos-data base wordt verwijderd, is het mogelijk om de gehele data base of een subset van de containers in die data base te herstellen. Het is ook mogelijk om containers in data bases te selecteren en deze te herstellen en alle herstelde gegevens worden opgeslagen in een nieuw Azure Cosmos-account.
 
-Wanneer een of meer items in een container per ongeluk zijn verwijderd of gewijzigd (de gegevens beschadigd case), moet u om op te geven van de tijd om naar te herstellen. Tijd is van de essentie voor deze aanvraag. Omdat de container actief is, wordt nog steeds de back-up uitgevoerd, dus als u na de bewaarperiode (de standaardwaarde is de acht uur) wacht voordat de back-ups wordt overschreven. In het geval van verwijdert, worden uw gegevens worden niet meer opgeslagen omdat ze niet worden overschreven door de back-cyclus. Back-ups voor de verwijderde databases of containers worden voor 30 dagen opgeslagen.
+Wanneer een of meer items in een container per ongeluk worden verwijderd of gewijzigd (de gegevens zijn beschadigd), moet u de tijd opgeven waarop u wilt herstellen. De tijd is in essentie voor deze aanvraag. Omdat de container Live is, wordt de back-up nog steeds uitgevoerd. Als u na de Bewaar periode blijft (de standaard waarde is acht uur), worden de back-ups overschreven. In het geval van verwijderen worden uw gegevens niet meer opgeslagen, omdat deze niet worden overschreven door de back-upcyclus. Back-ups voor verwijderde data bases of containers worden 30 dagen bespaard.
 
-Als u de doorvoer op het databaseniveau van de inrichten (dat wil zeggen, waarbij een set van containers deelt de ingerichte doorvoer), het proces van back-up en herstel in dit geval gebeuren op het niveau van de volledige database en niet op het niveau van de afzonderlijke containers. In dergelijke gevallen kunt kan u een subset van containers om terug te zetten niet worden gebruikt.
+Als u de door Voer inricht op het niveau van de data base (dat wil zeggen, waarbij een set containers de ingerichte door Voer deelt), gebeurt het back-up-en herstel proces in dit geval op het hele database niveau en niet op het niveau van de afzonderlijke containers. In dergelijke gevallen is het selecteren van een subset van containers die moeten worden hersteld, geen optie.
 
-## <a name="migrating-data-to-the-original-account"></a>Gegevens migreren naar de oorspronkelijke account
+## <a name="migrating-data-to-the-original-account"></a>Gegevens migreren naar het oorspronkelijke account
 
-Het voornaamste doel van het herstellen van de gegevens is een manier om te herstellen van gegevens die u niet verwijderen of per ongeluk wijzigen. Daarom is het raadzaam eerst de inhoud van de herstelde gegevens om te controleren of dat deze bevat wat u verwacht te inspecteren. Vervolgens worden gebruikt voor het migreren van de gegevens terug naar de primaire-account. Hoewel het mogelijk met gebruik van de herstelde account als de live-account, is het geen aanbevolen optie als u werkbelastingen voor productie.  
+Het belangrijkste doel van het terugzetten van gegevens is het bieden van een manier om gegevens te herstellen die u per ongeluk wist of wijzigt. Daarom raden we u aan eerst de inhoud van de herstelde gegevens te controleren om er zeker van te zijn dat deze bevat wat u verwacht. Vervolgens werkt u de gegevens terug naar het primaire account. Hoewel het mogelijk is om het teruggezette account als het Live-account te gebruiken, is het geen aanbevolen optie als u werk belastingen voor productie hebt.  
 
-Hier volgen de verschillende manieren om gegevens te migreren naar de oorspronkelijke Azure Cosmos-account:
+Hier volgen verschillende manieren om gegevens terug te migreren naar het oorspronkelijke Azure Cosmos-account:
 
-* Met behulp van [hulpprogramma voor gegevensmigratie Cosmos DB](import-data.md)
-* Met behulp van [Azure Data Factory]( ../data-factory/connector-azure-cosmos-db.md)
-* Met behulp van [wijzigingenfeed](change-feed.md) in Azure Cosmos DB 
+* [Cosmos DB Data Migration Tool](import-data.md) gebruiken
+* [Azure Data Factory]( ../data-factory/connector-azure-cosmos-db.md) gebruiken
+* [Change feed](change-feed.md) gebruiken in azure Cosmos db 
 * Aangepaste code schrijven
 
-Verwijder de teruggezette gebruikersaccounts zodra u klaar bent migreren, omdat ze de lopende kosten in rekening gebracht.
+Verwijder de herstelde accounts zodra u klaar bent met de migratie, omdat er lopende kosten in rekening worden gebracht.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Vervolgens vindt u informatie over hoe u gegevens uit een Azure Cosmos-account te herstellen of informatie over het migreren van gegevens naar een Azure Cosmos-account
+Hierna vindt u informatie over het herstellen van gegevens uit een Azure Cosmos-account of over het migreren van gegevens naar een Azure Cosmos-account
 
-* Om te maken van een herstelpunt aanvragen, contact op met ondersteuning voor Azure, [bestand een ticket van de Azure-portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
-* [Het herstellen van gegevens uit een Azure Cosmos-account](how-to-backup-and-restore.md)
-* [Gebruik Cosmos DB-wijzigingenfeed](change-feed.md) om gegevens te verplaatsen met Azure Cosmos DB.
-* [Gebruik Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) om gegevens te verplaatsen met Azure Cosmos DB.
+* Neem contact op met de ondersteuning van Azure, maak [een ticket van de Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om een herstel aanvraag te doen.
+* [Gegevens herstellen vanuit een Azure Cosmos-account](how-to-backup-and-restore.md)
+* [Gebruik Cosmos DB Change feed](change-feed.md) om gegevens naar Azure Cosmos DB te verplaatsen.
+* [Gebruik Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) om gegevens te verplaatsen naar Azure Cosmos db.
 

@@ -1,26 +1,17 @@
 ---
-title: Jenkins voor een Java-app voor Service Fabric in Azure configureren | Microsoft Docs
+title: Jenkins configureren voor een Java-app op Service Fabric in azure
 description: Deze zelfstudie geeft u informatie over het instellen van continue integratie met Jenkins voor het implementeren van een Java Service Fabric-toepassing.
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0a0f7cc8e3810a28fdbec914a9f37808c33ab878
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dee1d5a744ddfc2ad38cbe93447377a8af27a2f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61387729"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376645"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Zelfstudie: Een Jenkins-omgeving configureren om CI/CD in te schakelen voor een Java-toepassing voor Service Fabric
 
@@ -94,7 +85,7 @@ U kunt Jenkins instellen binnen of buiten een Service Fabric-cluster. De volgend
 
    a. Selecteer in het algemene gedeelte het selectievakje voor **GitHub project** en geef de URL van het GitHub-project. Dit is de URL waarop de Service Fabric Java-toepassing wordt gehost die u wilt integreren met de CI-/CD-stroom van Jenkins (Continue integratie, Continue implementatie), bijvoorbeeld ``https://github.com/testaccount/dev_test``.
 
-   b. Selecteer onder de sectie **Broncodebeheer** de optie **Git**. Geef de opslagplaats-URL op waarop de Service Fabric Java-toepassing wordt gehost die u wilt integreren met de CI-/CD-stroom van Jenkins, (bijvoorbeeld *https://github.com/testaccount/dev_test.git*). U kunt hier ook opgeven welke vertakking u wilt maken, bijvoorbeeld **/master**.
+   b. Selecteer onder de sectie **Broncodebeheer** de optie **Git**. Geef de opslagplaats-URL op waarop de Service Fabric Java-toepassing wordt gehost die u wilt integreren met de CI-/CD-stroom van Jenkins, (bijvoorbeeld *https://github.com/testaccount/dev_test.git* ). U kunt hier ook opgeven welke vertakking u wilt maken, bijvoorbeeld **/master**.
 
 1. Configureer uw *GitHub* (waar de opslagplaats wordt gehost), zodat deze kan communiceren met Jenkins. Voer de volgende stappen uit:
 
@@ -112,9 +103,9 @@ U kunt Jenkins instellen binnen of buiten een Service Fabric-cluster. De volgend
 
 1. Ga naar de sectie **Build** en selecteer in de vervolgkeuzelijst **Add build step** de optie **Invoke Gradle Script**. Geef in de volgende widget het pad op naar het **hoofdscript** van uw toepassing. Het haalt build.gradle op uit het opgegeven pad en werkt dienovereenkomstig.
 
-    ![Service Fabric Jenkins Build action](./media/service-fabric-tutorial-java-jenkins/jenkinsbuildscreenshot.png)
+    ![Service Fabric Jenkins Build-actie](./media/service-fabric-tutorial-java-jenkins/jenkinsbuildscreenshot.png)
 
-1. Selecteer in de vervolgkeuzelijst **Post-Build Actions** de optie **Post-Build Actions**. Hier moet u clustergegevens opgeven, zoals waar de via Jenkins gecompileerde Service Fabric-toepassing wordt geïmplementeerd. Het pad naar het certificaat is waar het volume is gekoppeld (/tmp/myCerts).
+1. Selecteer in de vervolgkeuzelijst **Post-Build Actions** de optie **Post-Build Actions**. Hier moet u clustergegevens opgeven, zoals waar de via Jenkins gecompileerde Service Fabric-toepassing wordt geïmplementeerd. Het pad naar het certificaat is waar het volume was gekoppeld (/ tmp/myCerts).
 
     U kunt ook aanvullende toepassingsgegevens opgeven. Deze worden gebruikt om de toepassing te implementeren. Bekijk de volgende schermafbeelding voor een voorbeeld van de details van de toepassing:
 
@@ -193,7 +184,7 @@ U kunt Jenkins instellen binnen of buiten een Service Fabric-cluster. De volgend
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Service Fabric Jenkins-container implementeren op uw machine

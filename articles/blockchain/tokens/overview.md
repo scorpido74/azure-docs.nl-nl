@@ -4,12 +4,12 @@ description: Azure Block Chain-tokens is een platform as a Service (PaaS) voor h
 ms.date: 11/04/2019
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: c1c18298ba82775c9b10bb79c420704bd462e2b4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e7c106ffee8ea06c7c0ce738aa8be0aba96a38ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326092"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387170"
 ---
 # <a name="what-is-azure-blockchain-tokens"></a>Wat is Azure Blockchain Tokens?
 
@@ -40,6 +40,14 @@ Zie [Azure Block Chain tokens account management](account-management.md)voor mee
 ## <a name="token-taxonomy-framework"></a>Token taxonomie Framework
 
 Azure Block Chain-tokens is gebaseerd op op standaarden gebaseerde Foundation met de naam token taxonomie Framework (TTF). TTF is een set van producten die zijn gemaakt op basis van de werk groep [token taxonomie](https://entethalliance.org/participate/token-taxonomy-initiative/) (TTI). De werk groep TTI definieert een bedrijfs taxonomie voor tokens en hun gedrag dat kan worden toegepast op alle grote grootten, met inbegrip van Ethereum, quorum, Kabela en Hyperledger Fabric. Het doel van de werk groep is het maken van een framework waarmee het gebruik van tokens van een bedrijfs perspectief wordt gestandaardiseerd om vereenvoudiging en democratisch op basis van tokens te ontwikkelen. Doordat de branche deze tokens en hun gedrag op het niveau van de onderneming definieert, wordt de gedetailleerde implementatie van de tokens afgeleid van de bedrijfs logica die de tokens manipuleert.
+
+## <a name="support-and-feedback"></a>Ondersteuning en feedback
+
+Voor Azure Block Chain News gaat u naar de [Azure Block Chain-blog](https://azure.microsoft.com/blog/topics/blockchain/) om op de hoogte te blijven van Block Chain service aanbiedingen en informatie van het technische team van Azure Block chain.
+
+[Neem contact op met het Azure Block Chain-tokens-team](https://aka.ms/PreviewForm)om toegang te krijgen tot de Azure Block Chain-tokens.
+
+Als u productfeedback wilt geven of als u nieuwe functies wilt aanvragen, kunt u het beste stemmen voor een idee via het [Azure feedback forum voor Block Chain](https://aka.ms/blockchainuservoice).
 
 ## <a name="next-steps"></a>Volgende stappen
 

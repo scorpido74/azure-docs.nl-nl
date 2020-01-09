@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 91d5827a08a600c19c24ac0a96a5f4e3e98e22f2
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 2ae8b71a7d48949cd82765112752192aba54521f
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671766"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680950"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Lokale Git-implementatie naar Azure App Service
 
@@ -97,7 +97,9 @@ Als uw account over de benodigde machtigingen beschikt, kunt u Azure-pijp lijnen
 
 Lokale Git-implementatie voor uw app inschakelen met Azure-pijp lijnen (preview):
 
-1. Ga naar de pagina Azure App Service-app in de [Azure Portal](https://portal.azure.com)en selecteer **implementatie centrum** in het linkermenu.
+1. Zoek in het [Azure Portal](https://portal.azure.com)naar en selecteer **app Services**. 
+
+1. Selecteer uw Azure App Service-app en selecteer **implementatie centrum** in het menu links.
    
 1. Selecteer **lokale Git**op de pagina **implementatie centrum** en selecteer **door gaan**. 
    

@@ -1,26 +1,17 @@
 ---
-title: 'Zelfstudie: Een toepassing voor meerdere services maken, foutvrij maken, implementeren en bewaken in Service Fabric Mesh | Microsoft Docs'
+title: Een app met meerdere services maken, implementeren op Service Fabric net
 description: In deze zelfstudie maakt u een Azure Service Fabric Mesh-toepassing voor meerdere services, bestaande uit een ASP.NET Core-website die communiceert met een back-endwebservice. U spoort de fouten in de toepassing lokaal op en publiceert de toepassing in Azure.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2053706aac2e6136e35e8574dcd19150fe3d3b6a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e3a6ee382208119e46a816790c15ae47f16be57e
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810822"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495188"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Zelfstudie: Een Service Fabric Mesh-toepassing met meerdere services bouwen, foutvrij maken, implementeren en upgraden
 
@@ -90,7 +81,7 @@ U hebt nu een Service Fabric Mesh-toepassing gemaakt. Vervolgens maakt u het mod
 
 Ter vereenvoudiging worden de taakitems in-memory in een lijst opgeslagen. Maak een klassebibliotheek voor de taakitems en een lijst om ze in te bewaren. In Visual Studio, waarin momenteel de oplossing **todolistapp** is geladen, selecteert u **File** > **Add** > **New Project**.
 
-In het dialoogvenster **Add New Project** typt u `C# .net core class` in het vak **Search**. Selecteer de sjabloon **Class Library (.NET Core)**.
+In het dialoogvenster **Add New Project** typt u `C# .net core class` in het vak **Search**. Selecteer de sjabloon **Class Library (.NET Core)** .
 
 Typ `Model` in het vak **Name**. Klik op **OK** om de klassebibliotheek te maken.
 
@@ -194,7 +185,7 @@ Vervolgens wordt het dialoogvenster **New ASP.NET Core Web Application** weergeg
 
 Omdat de back-endservice geen gebruikersinterface heeft, schakelt u het starten van de browser uit als de service wordt gestart. Klik in **Solution Explorer** met de rechtermuisknop op **ToDoService** en selecteer **Properties**. Selecteer in het eigenschappenvenster aan de linkerkant het tabblad **Debug** en schakel het selectievakje **Launch browser** in. Druk op **Ctrl+S** om de wijziging op te slaan.
 
-Omdat deze service de taakinformatie onderhoudt, voegt u een verwijzing aan de klassenbibliotheek Model toe. Klik in Solution Explorer met de rechtermuisknop op **ToDoService** en selecteer **Add** > **Reference...**. Het dialoogvenster **Reference Manager** wordt weergegeven.
+Omdat deze service de taakinformatie onderhoudt, voegt u een verwijzing aan de klassenbibliotheek Model toe. Klik in de Solution Explorer met de rechter muisknop op **ToDoService** en selecteer vervolgens > verwijzing **toevoegen** **...** . Het dialoog venster **referentie beheer** wordt weer gegeven.
 
 Schakel in **Reference Manager** het selectievakje in voor **Model** en klik op **OK**.
 
@@ -277,7 +268,7 @@ In deze zelfstudie wordt het toevoegen, verwijderen en dergelijke niet behandelt
 Nu de back-endservice is geïmplementeerd, codeert u de website waarop de bijbehorende taakitems worden weergegeven. De volgende stappen vinden plaats binnen het project **WebFrontEnd**.
 
 De webpagina waarop de taakitems worden weergegeven, heeft toegang nodig tot de klasse **ToDoItem** en de lijst.
-Voeg in **Solution Explorer** een verwijzing toe naar het modelproject door met de rechtermuisknop op **WebFrontEnd** te klikken en **Add** > **Reference...** te selecteren Het dialoogvenster **Reference Manager** wordt weergegeven.
+Voeg in de **Solution Explorer**een verwijzing naar het model project toe door met de rechter muisknop op **webfrontend** te klikken en > verwijzing **toevoegen** te selecteren **...** Het dialoog venster **referentie beheer** wordt weer gegeven.
 
 Schakel in **Reference Manager** het selectievakje in voor **Model** en klik op **OK**.
 
@@ -362,7 +353,8 @@ Ga in **Solution Explorer** naar het project **ToDoService** en open **Service R
 
 ![Afbeelding 1: het ToDoService-bestand service.yaml](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-serviceyaml-port.png)
 
-* De servicenaam `ToDoService` bevindt zich onder `services:`. Zie (1) in de bovenstaande afbeelding.
+ De servicenaam `ToDoService` bevindt zich onder `services:`. Zie (1) in de bovenstaande afbeelding.
+
 * De poort `80` bevindt zich onder `endpoints:`. Zie (2) in de bovenstaande afbeelding. Het poortnummer van uw project wijkt hier mogelijk van af.
 
 Vervolgens moet we omgevingsvariabelen definiëren die de servicenaam en het poortnummer in het project WebFrontEnd representeren zodat dit de back-endservice kan aanroepen.

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: f39355613382bd5d02b7ef6918598f38737e850f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: b907b1ed945cd72d51d0b1acd037dbfc93be4873
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327143"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448647"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Snelstartgids: een zoek opdracht verzenden met de Bing Entity Search SDK voor Java
 
@@ -67,7 +67,7 @@ Installeer de afhankelijkheden van Bing Entity Search SDK met Maven, Gradle of e
 
 ## <a name="create-a-search-client"></a>Een zoekclient maken
 
-1. Implementeer de client `dominantEntityLookup`, die uw API-eindpunt en een exemplaar van de klasse `ServiceClientCredentials` vereist.
+1. Implementeer de client `dominantEntityLookup`, die uw API-eindpunt en een exemplaar van de klasse `ServiceClientCredentials` vereist. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {
@@ -92,7 +92,7 @@ Installeer de afhankelijkheden van Bing Entity Search SDK met Maven, Gradle of e
        //...
        ```
     
-   2. Roep binnen `applyCredentialsFilter()` `builder.addNetworkInterceptor()` aan. Maak een nieuw `Interceptor`-object en overschrijf de methode `intercept()` ervan om een `Chain`-interceptorobject te nemen.
+   2. Roep binnen `applyCredentialsFilter()``builder.addNetworkInterceptor()` aan. Maak een nieuw `Interceptor`-object en overschrijf de methode `intercept()` ervan om een `Chain`-interceptorobject te nemen.
 
        ```java
        //...

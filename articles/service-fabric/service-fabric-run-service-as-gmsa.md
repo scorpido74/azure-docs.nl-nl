@@ -1,25 +1,16 @@
 ---
-title: Een Azure Service Fabric-service uitvoeren onder een gMSA-account | Microsoft Docs
+title: Een Azure Service Fabric-service uitvoeren onder een gMSA-account
 description: Meer informatie over het uitvoeren van een service als een gMSA op een zelfstandige Windows-cluster Service Fabric.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/29/2018
 ms.author: dekapur
-ms.openlocfilehash: d00eceffebb222196191a389058c0feb496e169a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 99d8089bd12d05e46f91e55c933d58d50baa92f5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307647"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464269"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Een service uitvoeren als door een groep beheerd serviceaccount
 Op een zelfstandige Windows Server-cluster kunt u een service uitvoeren als een door een groep beheerd service account (gMSA) met behulp van een runas-beleid.  Service Fabric toepassingen worden standaard uitgevoerd onder het account waaronder het Fabric. exe-proces wordt uitgevoerd. Door toepassingen onder verschillende accounts uit te voeren, zelfs in een gedeelde gehoste omgeving, zijn ze beter te beveiligen tegen elkaar. Houd er rekening mee dat dit Active Directory on-premises binnen uw domein gebruikt en niet Azure Active Directory (Azure AD). Als u een gMSA gebruikt, is er geen wacht woord of versleuteld wacht woord opgeslagen in het toepassings manifest.  U kunt ook een service uitvoeren als een [Active Directory gebruiker of groep](service-fabric-run-service-as-ad-user-or-group.md).
@@ -30,13 +21,13 @@ Vereisten:
 - Het domein heeft een KDS-basis sleutel nodig.
 - Het domein moet ten minste één Windows Server 2012 (of R2)-domein controller bevatten.
 
-1. Laat een Active Directory domein beheerder een beheerd service account voor een groep maken `New-ADServiceAccount` met behulp van de `PrincipalsAllowedToRetrieveManagedPassword` commandlet en zorg ervoor dat het alle service Fabric-cluster knooppunten bevat. `AccountName`, `DnsHostName` en`ServicePrincipalName` moeten uniek zijn.
+1. Laat een Active Directory domein beheerder een beheerd service account voor een groep maken met behulp van de `New-ADServiceAccount`-commandlet en zorg ervoor dat de `PrincipalsAllowedToRetrieveManagedPassword` alle service Fabric-cluster knooppunten bevat. `AccountName`, `DnsHostName`en `ServicePrincipalName` moeten uniek zijn.
 
     ```powershell
     New-ADServiceAccount -name svc-Test$ -DnsHostName svc-test.contoso.com  -ServicePrincipalNames http/svc-test.contoso.com -PrincipalsAllowedToRetrieveManagedPassword SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$
     ```
 
-2. Installeer en test de gMSA op elk van de service Fabric cluster `SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$`knooppunten (bijvoorbeeld).
+2. Installeer en test de gMSA op elk van de Service Fabric cluster knooppunten (bijvoorbeeld `SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$`).
     
     ```powershell
     Add-WindowsFeature RSAT-AD-PowerShell

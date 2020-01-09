@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c05ad3eace1219e19e0bfb117d3ec8de68a756f9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3b3edbbe037c3874d639476e516b3732b7573d9b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232302"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443378"
 ---
 # <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>Kies het juiste Federatie protocol voor uw multi tenant-toepassing
 
@@ -44,7 +44,7 @@ De volgende tabel vergelijkt
 
 ## <a name="oauth-20-and-open-id-connect"></a>OAuth 2,0 en open ID Connect
 
-OAuth 2,0 is een protocol voor de [industrie standaard](https://oauth.net/2/) voor autorisatie. OIDC (OpenID Connect Connect) is een [industrie standaard](https://openid.net/connect/) -identiteits verificatie laag die boven op het Oath 2,0-protocol is gebouwd.
+OAuth 2,0 is een protocol voor de [industrie standaard](https://oauth.net/2/) voor autorisatie. OIDC (OpenID Connect Connect) is een [industrie standaard](https://openid.net/connect/) -identiteits verificatie laag die boven op het OAuth 2,0-protocol is gebouwd.
 
 ### <a name="benefits"></a>Voordelen
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 8b089a1b32ee70479072522372c060713108957c
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: b63032baa60d18f3d9d98fc403bdc1087c6c9b6b
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350094"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660678"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Quota en limieten voor Batch-service
 
@@ -41,7 +41,7 @@ Houd er ook rekening mee dat quota's geen gegarandeerde waarden zijn. Quota kunn
 
 ### <a name="cores-quotas-in-user-subscription-mode"></a>Kernen quota's in de modus gebruikers abonnement
 
-Als u een batch-account hebt gemaakt met de groeps toewijzings modus ingesteld op **gebruikers abonnement**, worden quota anders toegepast. In deze modus worden batch-Vm's en andere resources rechtstreeks in uw abonnement gemaakt wanneer er een groep wordt gemaakt. De quota voor de Azure Batch-kernen zijn niet van toepassing op een account dat in deze modus wordt gemaakt. In plaats daarvan worden de quota's in uw abonnement voor regionale reken kernen en andere resources toegepast. Meer informatie over deze quota's vindt u in [Azure-abonnement en service limieten, quota's en beperkingen](../azure-subscription-service-limits.md).
+Als u een batch-account hebt gemaakt met de groeps toewijzings modus ingesteld op **gebruikers abonnement**, worden quota anders toegepast. In deze modus worden batch-Vm's en andere resources rechtstreeks in uw abonnement gemaakt wanneer er een groep wordt gemaakt. De quota voor de Azure Batch-kernen zijn niet van toepassing op een account dat in deze modus wordt gemaakt. In plaats daarvan worden de quota's in uw abonnement voor regionale reken kernen en andere resources toegepast. Meer informatie over deze quota's vindt u in [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 ## <a name="pool-size-limits"></a>Limieten voor groeps grootte
 
@@ -66,7 +66,7 @@ Aanvullende limieten die zijn ingesteld door de batch-service. In tegens telling
 | --- | --- |
 | [Gelijktijdige taken](batch-parallel-node-tasks.md) per reken knooppunt | 4 x het aantal knooppunt kernen |
 | [Toepassingen](batch-application-packages.md) per batch-account | 20 |
-| Toepassingspakketten per toepassing | 40 |
+| Toepassings pakketten per toepassing | 40 |
 | Toepassings pakketten per pool | 10 |
 | Maximale levens duur van taken | 180 dagen<sup>1</sup> |
 | [Koppelingen](virtual-file-mount.md) per Compute-knoop punt | 10 |
@@ -90,16 +90,16 @@ Volg deze stappen om een quotum verhoging aan te vragen voor uw batch-account of
 ### <a name="increase-cores-quota-in-batch"></a>Het quotum voor kernen in batch verhogen 
 
 1. Selecteer de tegel **Help + ondersteuning** in het dash board van de portal of het vraag teken ( **?** ) in de rechter bovenhoek van de portal.
-1. Selecteer**basis principes** **nieuwe ondersteunings aanvraag** > .
+1. Selecteer een **nieuwe ondersteunings aanvraag** > **basis beginselen**.
 1. In de **basis beginselen**:
    
-    a.  > Limieten voor de service en abonnementen van het probleem type **(quota's)**
+    a. **Probleem Type** > **service-en abonnements limieten (quota's)**
    
     b. Selecteer uw abonnement.
    
-    c.  > **Batch** voor quotum type
+    c. Het **quotum type** > **batch**
       
-    Selecteer **Volgende**.
+    Selecteer **Next**.
     
 1. In **Details**:
       
@@ -115,11 +115,11 @@ Volg deze stappen om een quotum verhoging aan te vragen voor uw batch-account of
     * **Per regio**  
         Waarden die van toepassing zijn op alle batch-accounts in een regio en bevat het aantal batch-accounts per regio per abonnement.
 
-    Quota met lage prioriteit is één waarde in alle VM-reeksen. Als u beperkte Sku's nodig hebt, moet u kernen **met een lage prioriteit** selecteren en de te aanvragen VM-families toevoegen.
+    Quota met lage prioriteit is één waarde in alle VM-reeksen. Als u beperkte Sku's nodig hebt, moet u **kernen met een lage prioriteit** selecteren en de te aanvragen VM-families toevoegen.
 
     b. Selecteer een **Ernst** op basis van uw [bedrijfs impact][support_sev].
 
-    Selecteer **Volgende**.
+    Selecteer **Next**.
 
 1. Bij **contact gegevens**:
    
@@ -139,13 +139,13 @@ Batch-Pools in de virtuele-machine configuratie die is geïmplementeerd in een v
 * Eén [openbaar IP-adres](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * Een [Load Balancer](../load-balancer/load-balancer-overview.md)
 
-Deze resources worden toegewezen in het abonnement met het virtuele netwerk dat is geleverd bij het maken van de batch-pool. De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](../azure-subscription-service-limits.md) van het abonnement. Als u implementaties van grote groepen plant in een virtueel netwerk, controleert u de quota van het abonnement voor deze resources. Vraag, indien nodig, een verhoging van de Azure Portal aan door **Help en ondersteuning**te selecteren.
+Deze resources worden toegewezen in het abonnement met het virtuele netwerk dat is geleverd bij het maken van de batch-pool. De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](../azure-resource-manager/management/azure-subscription-service-limits.md) van het abonnement. Als u implementaties van grote groepen plant in een virtueel netwerk, controleert u de quota van het abonnement voor deze resources. Vraag, indien nodig, een verhoging van de Azure Portal aan door **Help en ondersteuning**te selecteren.
 
 
 ## <a name="related-topics"></a>Verwante onderwerpen
 * [Een Azure Batch-account maken met behulp van de Azure Portal](batch-account-create-portal.md)
 * [Overzicht van Azure Batch-functies](batch-api-basics.md)
-* [Azure subscription and service limits, quotas, and constraints](../azure-subscription-service-limits.md) (Limieten, quota's en beperkingen voor het Azure-abonnement en de Azure-service)
+* [Azure subscription and service limits, quotas, and constraints](../azure-resource-manager/management/azure-subscription-service-limits.md) (Limieten, quota's en beperkingen voor het Azure-abonnement en de Azure-service)
 
 [portal]: https://portal.azure.com
 [portal_classic_increase]: https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/

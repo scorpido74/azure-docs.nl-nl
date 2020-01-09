@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b5c886625c944e2f5501859e78506ca89ec3d765
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: af5e511cbf273bc4e4fa0a08d089a955426fe75c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71203687"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454198"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>De OPC-kluis certificaat beheer service gebruiken
 
@@ -36,7 +36,7 @@ Als u dit nog niet hebt gedaan, maakt u het CA-certificaat van de certificaat ve
 > [!IMPORTANT]
 > De rol schrijver is vereist voor het registreren van een toepassing.
 
-1. Open uw certificaat service op `https://myResourceGroup-app.azurewebsites.net` en meld u aan.
+1. Open uw certificaat service op `https://myResourceGroup-app.azurewebsites.net`en meld u aan.
 2. Ga naar **Nieuw registreren**. Voor een toepassings registratie moet aan een gebruiker ten minste de rol van schrijver zijn toegewezen.
 2. Het invoer formulier volgt naam conventies in OPC UA. Zo wordt in de volgende scherm afbeelding de instellingen voor het voor beeld van het [OPC UA-referentie server](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference) in de OPC ua .NET Standard stack weer gegeven:
 
@@ -57,7 +57,7 @@ Beveilig uw OPC UA-toepassing door een ondertekend certificaat uit te geven op b
 
 3. Selecteer **Nieuw sleutel paar en certificaat aanvragen** om een persoonlijke en een nieuw ondertekend certificaat aan te vragen met de open bare sleutel voor uw toepassing.
 
-   ![Scherm opname van een nieuwe sleutel paar en een nieuw certificaat genereren](media/howto-opc-vault-secure/generate-new-key-pair.png "Nieuw sleutel paar genereren")
+   ![Scherm opname van een nieuwe sleutel paar en een nieuw certificaat genereren](media/howto-opc-vault-secure/generate-new-key-pair.png "Nieuw sleutelpaar genereren")
 
 4. Vul het formulier in met een onderwerp en de domein namen. Kies voor de persoonlijke sleutel PEM of PFX met wacht woord. Selecteer **Nieuw sleutel paar genereren** om de certificaat aanvraag te maken.
 
@@ -90,7 +90,7 @@ Nu is het afhankelijk van het OPC UA-apparaat hoe het nieuwe sleutel paar moet w
 
 5. Voor goed keuring is een gebruiker met de rol goed keurder en met handtekening machtigingen in Azure Key Vault vereist. Selecteer **goed keuren** of **afwijzen** om de werkelijke ondertekening bewerking te starten of te annuleren. Het resulterende certificaat met de open bare sleutel is ondertekend door de CA. Het kan een paar seconden duren voordat deze bewerking is voltooid.
 
-   ![Scherm opname van Details van certificaat aanvragen weer geven, met goedkeurings bericht onderaan](media/howto-opc-vault-secure/view-cert-csr.png "Certificaat weer geven")
+   ![Scherm opname van Details van certificaat aanvragen weer geven, met goedkeurings bericht onderaan](media/howto-opc-vault-secure/view-cert-csr.png "Certificaat weergeven")
 
 6. Het resulterende certificaat (DER) kan hier worden gedownload als binair bestand. Er is ook een met base64 gecodeerde versie beschikbaar, bijvoorbeeld om het certificaat te kopiëren en te plakken naar een opdracht regel of tekst invoer. 
 10. Nadat het certificaat is gedownload en beveiligd is opgeslagen, kunt u **certificaat verwijderen**selecteren.
@@ -98,7 +98,7 @@ Nu is het afhankelijk van het OPC UA-apparaat hoe het nieuwe sleutel paar moet w
 
 Nu is het afhankelijk van het OPC UA-apparaat hoe het nieuwe certificaat moet worden toegepast. Normaal gesp roken worden het CA-certificaat en de CRL gekopieerd naar een `trusted` map, terwijl het toepassings certificaat wordt toegepast op een `own` map in het certificaat archief. Sommige apparaten ondersteunen mogelijk al server push voor certificaat updates. Raadpleeg de documentatie van uw OPC UA-apparaat.
 
-### <a name="step-4-device-secured"></a>Stap 4: apparaat beveiligd
+### <a name="step-3-device-secured"></a>Stap 3: het apparaat is beveiligd
 
 Het OPC UA-apparaat is nu klaar om te communiceren met andere OPC UA-apparaten die zijn beveiligd door door certificerings instanties ondertekende certificaten, zonder verdere configuratie.
 

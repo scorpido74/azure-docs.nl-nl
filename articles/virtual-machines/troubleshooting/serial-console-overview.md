@@ -14,21 +14,21 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/30/2019
 ms.author: alsin
-ms.openlocfilehash: 2ae1f3769254575e33eaa5b4e3a24c47b9eb1aff
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 20bc22661f9faad1b289dbbe7200f4f83c097f0e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194155"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451228"
 ---
 # <a name="azure-serial-console"></a>Azure Serial Console
 
-De seriële console in de Azure Portal biedt toegang tot een op tekst gebaseerde console voor virtuele machines (Vm's) en installatie kopieën van virtuele-machine schaal sets met Linux of Windows. Deze seriële verbinding maakt verbinding met de seriële ttyS0-of COM1-poort van de virtuele machine of het exemplaar van de VM-schaalset, waardoor toegang onafhankelijk is van de status van het netwerk of het besturings systeem. De seriële console is alleen toegankelijk via de Azure Portal en is alleen toegestaan voor gebruikers met een toegangs rol van Inzender of een hoger niveau voor virtuele-machine schaal sets.
+De seriële console in de Azure Portal biedt toegang tot een op tekst gebaseerde console voor virtuele machines (Vm's) en installatie kopieën van virtuele-machine schaal sets met Linux of Windows. Deze seriële verbinding maakt verbinding met de seriële poort ttyS0 of COM1 van de VM of exemplaar van de virtuele-machineschaalset, en biedt zo toegang onafhankelijk van de status van het netwerk of het besturingssysteem. De seriële console is alleen toegankelijk via de Azure Portal en is alleen toegestaan voor gebruikers met een toegangs rol van Inzender of een hoger niveau voor virtuele-machine schaal sets.
 
 Seriële console werkt op dezelfde manier voor Vm's en exemplaren van virtuele-machine schaal sets. In dit document bevatten alle vermeldingen aan Vm's impliciet instanties voor schaal sets voor virtuele machines, tenzij anders vermeld.
 
 > [!NOTE]
-> De seriële console is algemeen beschikbaar in de wereld wijde Azure-regio's. Het is nog niet beschikbaar in de Azure government en Azure China clouds.
+> De seriële console is algemeen beschikbaar in de wereld wijde Azure-regio's en in de open bare preview-versie van Azure Government. Het is nog niet beschikbaar in de Azure China-Cloud.
 
 ## <a name="prerequisites-to-access-the-azure-serial-console"></a>Vereisten voor toegang tot de Azure-seriële console
 U hebt het volgende nodig om toegang te krijgen tot de seriële console op uw VM of virtuele-machine Scale set-instantie:

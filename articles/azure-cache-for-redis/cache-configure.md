@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 7c0642377e75e621e1774936262ffddd166ff06d
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 62e0c9bbf8b1c7cef9b1cc239810cb554b5ffa45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122872"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433535"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure-cache configureren voor redis
 In dit onderwerp worden de configuraties beschreven die beschikbaar zijn voor uw Azure-cache voor redis-exemplaren. In dit onderwerp wordt ook de standaard redis-server configuratie voor Azure cache voor redis-exemplaren besproken.
@@ -70,7 +70,7 @@ U kunt de volgende instellingen weer geven en configureren met behulp van het **
 
 Klik op **activiteiten logboek** om de acties weer te geven die zijn uitgevoerd op uw cache. U kunt ook filteren gebruiken om deze weer gave uit te breiden tot ook andere resources. Zie [bewerkingen controleren met Resource Manager](../azure-resource-manager/resource-group-audit.md)voor meer informatie over het werken met audit Logboeken. Zie [bewerkingen en waarschuwingen](cache-how-to-monitor.md#operations-and-alerts)voor meer informatie over het bewaken van Azure cache voor redis-gebeurtenissen.
 
-### <a name="access-control-iam"></a>Toegangs beheer (IAM)
+### <a name="access-control-iam"></a>Toegangsbeheer (IAM)
 
 De sectie **toegangs beheer (IAM)** biedt ondersteuning voor op rollen gebaseerd toegangs beheer (RBAC) in de Azure Portal. Met deze configuratie kunnen organisaties eenvoudig en nauw keurig voldoen aan de vereisten voor toegangs beheer. Zie op [rollen gebaseerd toegangs beheer in de Azure Portal](../role-based-access-control/role-assignments-portal.md)voor meer informatie.
 
@@ -120,7 +120,7 @@ De volgende instellingen worden geconfigureerd op de Blade **Geavanceerde instel
 Voor nieuwe caches is niet-SSL-toegang standaard uitgeschakeld. Als u de niet-SSL-poort wilt inschakelen, klikt u op **Nee** voor **alleen toegang via SSL toestaan** op de Blade **Geavanceerde instellingen** en klikt u vervolgens op **Opslaan**.
 
 > [!NOTE]
-> SSL-toegang tot Azure cache voor redis biedt standaard ondersteuning voor TLS 1,0. De mini maal ondersteunde TLS-versie kan worden verhoogd tot TLS 1,2, indien gewenst, met behulp van de vervolg keuzelijst **minimale TLS-versie** op de Blade **Geavanceerde instellingen** en klik vervolgens op **Opslaan**.
+> SSL-toegang tot Azure cache voor redis ondersteunt momenteel TLS 1,0, 1,1 en 1,2, maar versies 1,0 en 1,1 worden binnenkort buiten gebruik gesteld.  Lees onze [pagina Remove TLS 1,0 en 1,1](cache-remove-tls-10-11.md) voor meer informatie.
 
 ![Azure-cache voor redis-toegangs poorten](./media/cache-configure/redis-cache-access-ports.png)
 
@@ -185,15 +185,15 @@ Elke prijs categorie heeft verschillende limieten voor client verbindingen, gehe
 
 | Azure-cache voor redis-metriek | Meer informatie |
 | --- | --- |
-| Gebruik van netwerk bandbreedte |[Beschik bare band breedte in cache opslaan](cache-faq.md#cache-performance) |
+| Gebruik van netwerkbandbreedte |[Beschik bare band breedte in cache opslaan](cache-faq.md#cache-performance) |
 | Verbonden clients |[Standaard redis-server configuratie-MaxClients](#maxclients) |
 | Server belasting |[Gebruiks grafieken-redis-server belasting](cache-how-to-monitor.md#usage-charts) |
-| Geheugen gebruik |[Cache prestaties-grootte](cache-faq.md#cache-performance) |
+| Geheugengebruik |[Cache prestaties-grootte](cache-faq.md#cache-performance) |
 
 Als u uw cache wilt bijwerken, klikt u op **Nu bijwerken** om de prijs categorie te wijzigen en uw cache te [schalen](#scale) . Zie voor meer informatie over het kiezen van een prijs categorie [Wat is Azure cache voor redis aanbieding en grootte moet ik gebruiken?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 
-### <a name="scale"></a>Schalen
+### <a name="scale"></a>Schaal
 Klik op **schalen** om de prijs categorie voor uw cache weer te geven of te wijzigen. Zie [Azure-cache schalen voor redis](cache-how-to-scale.md)voor meer informatie over schalen.
 
 ![Azure cache voor redis-prijs categorie](./media/cache-configure/pricing-tier.png)
@@ -255,7 +255,7 @@ De Blade **geo-replicatie** biedt een mechanisme voor het koppelen van twee Prem
 > 
 > 
 
-### <a name="virtual-network"></a>Virtueel netwerk
+### <a name="virtual-network"></a>Virtual Network
 Met de sectie **Virtual Network** kunt u de instellingen van het virtuele netwerk voor uw cache configureren. Zie [Virtual Network ondersteuning configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-vnet.md)voor meer informatie over het maken van een Premium-cache met VNET-ondersteuning en het bijwerken van de instellingen.
 
 > [!IMPORTANT]
@@ -286,7 +286,7 @@ Klik op **Eigenschappen** om informatie over uw cache weer te geven, met inbegri
 ### <a name="locks"></a>Vergrendelingen
 Met de sectie **vergren** delen kunt u een abonnement, een resource groep of een resource om te voor komen dat andere gebruikers in uw organisatie per ongeluk essentiële bronnen verwijderen of wijzigen. Zie voor meer informatie [Resources vergrendelen met Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md).
 
-### <a name="automation-script"></a>Automatiserings script
+### <a name="automation-script"></a>Automatiseringsscript
 
 Klik op **Automation script** om een sjabloon van uw geïmplementeerde resources te bouwen en exporteren voor toekomstige implementaties. Zie [resources implementeren met Azure Resource Manager sjablonen](../azure-resource-manager/resource-group-template-deploy.md)voor meer informatie over het werken met sjablonen.
 
@@ -300,7 +300,7 @@ Met de instellingen in de sectie **beheer** kunt u de volgende beheer taken voor
 * [Opnieuw opstarten](#reboot)
 
 
-### <a name="importexport"></a>Import/Export
+### <a name="importexport"></a>Import/export
 Import/export is een Azure cache voor redis-gegevens beheer bewerking, waarmee u gegevens in de cache kunt importeren en exporteren door een Azure-cache voor een redis-data base (RDB)-moment opname te importeren en exporteren van een Premium-cache naar een pagina-Blob in een Azure Storage-account. Met importeren/exporteren kunt u tussen verschillende Azure-caches migreren voor redis-exemplaren of de cache vullen met gegevens voor gebruik.
 
 Importeren kan worden gebruikt om redis compatibele RDB-bestanden te halen van elke redis-server die in een wille keurige Cloud of omgeving wordt uitgevoerd, waaronder redis die wordt uitgevoerd op Linux, Windows of een Cloud provider zoals Amazon Web Services en anderen. Het importeren van gegevens is een eenvoudige manier om een cache met vooraf gevulde gegevens te maken. Tijdens het import proces laadt Azure cache voor redis de RDB-bestanden vanuit Azure Storage in het geheugen en voegt vervolgens de sleutels in de cache in.
@@ -333,7 +333,7 @@ Als u een of meer knoop punten van uw cache opnieuw wilt opstarten, selecteert u
 
 In de sectie **bewaking** kunt u Diagnostische gegevens en bewaking configureren voor uw Azure-cache voor redis. Zie [Azure-cache bewaken voor redis](cache-how-to-monitor.md)voor meer informatie over Azure cache voor redis-controle en-diagnose.
 
-![Diagnostiek](./media/cache-configure/redis-cache-diagnostics.png)
+![Diagnostics](./media/cache-configure/redis-cache-diagnostics.png)
 
 * [Metrische gegevens van redis](#redis-metrics)
 * [Waarschuwings regels](#alert-rules)
@@ -346,7 +346,7 @@ Klik op **redis metrische gegevens** om de [metrische gegevens](cache-how-to-mon
 
 Klik op **waarschuwings regels** om waarschuwingen te configureren op basis van Azure cache voor redis metrische gegevens. Zie [waarschuwingen](cache-how-to-monitor.md#alerts)voor meer informatie.
 
-### <a name="diagnostics"></a>Diagnostiek
+### <a name="diagnostics"></a>Diagnostics
 
 Standaard worden de metrische gegevens in de cache van Azure Monitor [30 dagen opgeslagen](../azure-monitor/platform/data-platform-metrics.md) en vervolgens verwijderd. Als u de cache gegevens langer dan 30 dagen wilt behouden, klikt u op **diagnose** om [het opslag account te configureren](cache-how-to-monitor.md#export-cache-metrics) dat wordt gebruikt voor het opslaan van de diagnostische gegevens van de cache.
 
@@ -358,7 +358,7 @@ Standaard worden de metrische gegevens in de cache van Azure Monitor [30 dagen o
 ## <a name="support--troubleshooting-settings"></a>Ondersteuning voor het oplossen van problemen met instellingen &
 De instellingen in de sectie **ondersteuning en probleem oplossing** bieden u opties voor het oplossen van problemen met uw cache.
 
-![Ondersteuning en probleem oplossing](./media/cache-configure/redis-cache-support-troubleshooting.png)
+![Ondersteuning + probleemoplossing](./media/cache-configure/redis-cache-support-troubleshooting.png)
 
 * [Resource status](#resource-health)
 * [Nieuwe ondersteunings aanvraag](#new-support-request)

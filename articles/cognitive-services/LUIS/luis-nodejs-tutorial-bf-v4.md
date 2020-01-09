@@ -1,7 +1,7 @@
 ---
 title: 'Zelf studie: bot node. js v4 Language Understanding'
 titleSuffix: Azure Cognitive Services
-description: Bouw met behulp van Node.js een chatbot met ingebouwd taalbegrip (LUIS). Deze chatbot maakt gebruik van de app Human Resources om snel een botoplossing te implementeren. De bot is gebouwd met Bot Framework versie 4 en de Azure-web-app-bot.
+description: Gebruik node. js om in deze zelf studie een chat-bot te bouwen die is geïntegreerd met language Standing (LUIS). Deze chatbot maakt gebruik van de app Human Resources om snel een botoplossing te implementeren. De bot is gebouwd met Bot Framework versie 4 en de Azure-web-app-bot.
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 9a38f43b24e5db6a60ff38cd0f1d9b59b9875bba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 754d9d74a5d2c74a873145eaaddaaced29aa2ca8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492692"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448001"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Zelf studie: een web-app-bot gebruiken die is ingeschakeld met Language Understanding in node. js 
 
@@ -56,9 +56,9 @@ Gebruik node. js om een chat-bot te maken die is geïntegreerd met language Stan
     |Naam van app|Deze naam wordt gebruikt als subdomein wanneer uw bot wordt geïmplementeerd in de cloud (bijvoorbeeld humanresourcesbot.azurewebsites.net).|`luis-nodejs-bot-` + `<your-name>`, bijvoorbeeld, `luis-nodejs-bot-johnsmith`|
     |Botsjabloon|Instellingen voor het botframework - zie de volgende tabel|
     |Locatie van LUIS-app|Moet hetzelfde zijn als de regio waarin de LUIS-resource zich bevindt|`westus`|
-    |App service-plan/-locatie|Wijzig niet van de beschik bare standaard waarde.|
+    |App Service-plan/-locatie|Wijzig niet van de beschik bare standaard waarde.|
     |Application Insights|Wijzig niet van de beschik bare standaard waarde.|
-    |Micro soft App-ID en-wacht woord|Wijzig niet van de beschik bare standaard waarde.|
+    |Microsoft-app-id en -wachtwoord|Wijzig niet van de beschik bare standaard waarde.|
 
 1. Selecteer in de **bot-sjabloon**het volgende en kies vervolgens de knop **selecteren** onder deze instellingen:
 
@@ -66,7 +66,7 @@ Gebruik node. js om een chat-bot te maken die is geïntegreerd met language Stan
     |--|--|--|
     |SDK-versie|Versie van het botframework|**SDK v4**|
     |SDK-taal|Computertaal van de bot|**Node.js**|
-    |Tape|Type bot|**Basisbot**|
+    |Bot|Type bot|**Basisbot**|
     
 1. Selecteer **Maken**. Hiermee maakt u de botservice en implementeert u deze in Azure. Bij dit proces wordt een LUIS-app gemaakt met de naam `luis-nodejs-bot-XXXX`. Deze naam is gebaseerd op de naam van de/Azure bot service-app.
 

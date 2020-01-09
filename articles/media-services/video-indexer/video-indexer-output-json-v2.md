@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
-ms.openlocfilehash: c978fed1675ea80ae9b2f6fb7fbe9a4c84472638
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ab48787edcdd8c28891ca49d0f8b64305ce0e747
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978301"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454643"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Bekijk de Video Indexer uitvoer die door de API is geproduceerd
 
-Wanneer u de API **Get video-index** aanroept en de reactie status OK is, krijgt u een gedetailleerde JSON-uitvoer als de antwoord inhoud. De JSON-inhoud bevat details van de opgegeven video inzichten. De inzichten bevatten dimensies als: transcripten, OCRs, gezichten, onderwerpen, blokken, enzovoort. De dimensies hebben exemplaren van peri Oden die laten zien wanneer elke dimensie in de video wordt weer gegeven.  
+Wanneer u de API **Get video-index** aanroept en de reactie status OK is, krijgt u een gedetailleerde JSON-uitvoer als de antwoord inhoud. De JSON-inhoud bevat details van de opgegeven video inzichten. De inzichten zijn onder andere: transcripten, OCRs, gezichten, onderwerpen, blokken, enzovoort. Elk inzicht type bevat exemplaren van peri Oden die laten zien wanneer het inzicht in de video wordt weer gegeven. 
 
 1. Als u het JSON-bestand wilt ophalen, roept u [video-index ophalen](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?) op
 1. Als u ook specifieke artefacten wilt ontvangen, roept u [video artefact downloaden URL API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?) op
@@ -38,7 +38,7 @@ In dit artikel wordt de JSON-inhoud onderzocht die wordt geretourneerd door de A
 
 ## <a name="root-elements"></a>Hoofd elementen
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |accountId|De VI-account-ID van de afspeel lijst.|
 |id|De ID van de afspeel lijst.|
@@ -94,11 +94,11 @@ In deze sectie vindt u een overzicht van de inzichten.
 |merken| Kan nul of meer merken bevatten. Zie [Brands](#brands)voor meer gedetailleerde informatie.|
 |statistieken | Zie [Statistieken](#statistics)voor meer informatie.|
 |emoties| Kan nul of meer emoties bevatten. Zie [emoties](#emotions)voor meer gedetailleerde informatie.|
-|-onderwerpen|Kan nul of meer onderwerpen bevatten. De dimensie [onderwerpen](#topics) .|
+|-onderwerpen|Kan nul of meer onderwerpen bevatten. De [onderwerpen](#topics) begrijpen.|
 
 ## <a name="videos"></a>video's
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |accountId|De VI-account-ID van de video.|
 |id|De ID van de video.|
@@ -150,28 +150,28 @@ In deze sectie vindt u een overzicht van de inzichten.
 ```
 ### <a name="insights"></a>Insights
 
-De inzichten zijn een set dimensies (bijvoorbeeld transcript regels, gezichten, Brands enz.), waarbij elke dimensie een lijst met unieke elementen is (bijvoorbeeld face1, face2, face3), en elk element heeft zijn eigen meta gegevens en een lijst met de bijbehorende instanties (die peri Oden zijn met aanvullende optionele meta gegevens).
+Elk inzicht (bijvoorbeeld transcript regels, gezichten, Brands enz.) bevat een lijst met unieke elementen (bijvoorbeeld face1, face2, face3), en elk element heeft zijn eigen meta gegevens en een lijst met de bijbehorende instanties (een tijds bereik met aanvullende optionele meta gegevens).
 
 Een gezicht kan een ID, een naam, een miniatuur, andere meta gegevens en een lijst met de tijdelijke instanties hebben (bijvoorbeeld: 00:00:05 – 00:00:10, 00:01:00-00:02:30 en 00:41:21 – 00:41:49.) Elke tijdelijke instantie kan aanvullende meta gegevens bevatten. Bijvoorbeeld: de coördinaten van het gezicht (20230, 60, 60).
 
-|Version|De code versie|
+|Versie|De code versie|
 |---|---|
 |sourceLanguage|De bron taal van de video (uitgaande van één hoofd taal). In de vorm van een [bcp-47-](https://tools.ietf.org/html/bcp47) teken reeks.|
 |language|De Insights-taal (vertaald van de bron taal). In de vorm van een [bcp-47-](https://tools.ietf.org/html/bcp47) teken reeks.|
-|verslag|De dimensie [transcript](#transcript) .|
-|optische|De [OCR](#ocr) -dimensie.|
-|trefwoorden|De dimensie [tref woorden](#keywords) .|
+|verslag|Het [transcript](#transcript) inzicht.|
+|optische|Het [OCR](#ocr) -inzicht.|
+|trefwoorden|De [Zoek woorden](#keywords) begrijpen.|
 |blokken|Kan een of meer [blokken](#blocks) bevatten|
-|aanhoudende|De dimensie [gezichten](#faces) .|
-|labels|De dimensie [labels](#labels) .|
-|afzonderlijke|De dimensie voor de [opnamen](#shots) .|
-|merken|De dimensie [Brands](#brands) .|
-|audioEffects|De dimensie [audioEffects](#audioEffects) .|
-|gevoel|De dimensie [gevoel](#sentiments) .|
-|visualContentModeration|De dimensie [visualContentModeration](#visualcontentmoderation) .|
-|textualContentModeration|De dimensie [textualContentModeration](#textualcontentmoderation) .|
-|emoties| De dimensie [emoties](#emotions) .|
-|-onderwerpen|De dimensie [onderwerpen](#topics) .|
+|aanhoudende|De [gezichten](#faces) begrijpen.|
+|labels|De [labels](#labels) begrijpen.|
+|afzonderlijke|De [Foto's](#shots) begrijpen.|
+|merken|De [Brands](#brands) begrijpen.|
+|audioEffects|[AudioEffects](#audioEffects) Insight.|
+|gevoel|[Gevoel](#sentiments) Insight.|
+|visualContentModeration|[VisualContentModeration](#visualcontentmoderation) Insight.|
+|textualContentModeration|[TextualContentModeration](#textualcontentmoderation) Insight.|
+|emoties| [Emoties](#emotions) Insight.|
+|-onderwerpen|De [onderwerpen](#topics) begrijpen.|
 
 Voorbeeld:
 
@@ -203,7 +203,7 @@ instanties|Een lijst met tijds bereiken van dit blok.|
 
 #### <a name="transcript"></a>verslag
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |id|De regel-ID.|
 |tekst|De transcriptie zelf.|
@@ -241,7 +241,7 @@ Voorbeeld:
 
 #### <a name="ocr"></a>optische
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |id|De OCR-regel-ID.|
 |tekst|De OCR-tekst.|
@@ -276,7 +276,7 @@ Voorbeeld:
 
 #### <a name="keywords"></a>trefwoorden
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |id|De ID van het sleutel woord.|
 |tekst|De tekst van het sleutel woord.|
@@ -307,7 +307,7 @@ Voorbeeld:
 
 #### <a name="faces"></a>aanhoudende
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |id|De face-ID.|
 |name|De naam van het gezicht. Dit kan ' onbekend #0, een geïdentificeerde beroemdheden of een door de klant getrainde persoon zijn.|
@@ -352,7 +352,7 @@ Voorbeeld:
 
 #### <a name="labels"></a>labels
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |id|De label-ID.|
 |name|De naam van het label (bijvoorbeeld ' computer ', ' TV ').|
@@ -411,7 +411,7 @@ Voorbeeld:
 
 #### <a name="scenes"></a>scene
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |id|De scène-ID.|
 |instanties|Een lijst met tijds bereiken van deze scène (een scène kan slechts één exemplaar hebben).|
@@ -444,7 +444,7 @@ Voorbeeld:
 
 #### <a name="shots"></a>afzonderlijke
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |id|De opname-ID.|
 |keyFrames|Een lijst met keyframes in de foto (elke bevat een ID en een lijst met tijds bereik exemplaren). Elk keyframe-exemplaar heeft een thumbnailId-veld met de miniatuur-ID van het keyframe.|
@@ -494,7 +494,7 @@ Voorbeeld:
 
 Merk namen van bedrijven en producten die worden herkend in de spraak naar tekst transcriptie en/of video OCR. Dit omvat geen visuele herkenning van merken of logo detectie.
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |id|De merk-ID.|
 |name|De naam van het merk.|
@@ -553,7 +553,7 @@ Merk namen van bedrijven en producten die worden herkend in de spraak naar tekst
 
 #### <a name="statistics"></a>statistieken
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |CorrespondenceCount|Aantal correspondentie in de video.|
 |SpeakerWordCount|Het aantal woorden per spreker.|
@@ -563,7 +563,7 @@ Merk namen van bedrijven en producten die worden herkend in de spraak naar tekst
 
 #### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |id|De audio-effect-ID.|
 |type|Het type audio-effect (bijvoorbeeld Clapping, Speech, stilte).|
@@ -592,7 +592,7 @@ Merk namen van bedrijven en producten die worden herkend in de spraak naar tekst
 
 Gevoel worden geaggregeerd met het veld sentimentType (positief/neutraal/negatief). Bijvoorbeeld: 0-0,1, 0,1-0,2.
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |id|De sentiment-ID.|
 |averageScore |Het gemiddelde van alle scores van alle exemplaren van dat sentiment type-positief/neutraal/negatief|
@@ -631,7 +631,7 @@ Het visualContentModeration-blok bevat Peri Oden die Video Indexer mogelijk inho
 
 Video's die een inhoud van volwassenen of ongepaste bevatten, zijn mogelijk alleen beschikbaar voor de persoonlijke weer gave. Gebruikers hebben de mogelijkheid om een aanvraag in te dienen voor een menselijke beoordeling van de inhoud. in dat geval zal het kenmerk IsAdult het resultaat van de beoordeling van de mens bevatten.
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |id|De controle-ID van de visuele inhoud.|
 |adultScore|De volwassen Score (van content moderator).|
@@ -667,7 +667,7 @@ Video's die een inhoud van volwassenen of ongepaste bevatten, zijn mogelijk alle
 
 #### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |id|De moderator-ID van de tekst inhoud.|
 |bannedWordsCount |Het aantal verboden woorden.|
@@ -677,7 +677,7 @@ Video's die een inhoud van volwassenen of ongepaste bevatten, zijn mogelijk alle
 
 Video Indexer identificeert emoties op basis van spraak-en audio-hints. De geïdentificeerde Emotion kan zijn: Joy, verdriet, boosheid of vrezen.
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |id|De Emotion-ID.|
 |type|Het EMOTION-tijdstip dat is geïdentificeerd, is gebaseerd op spraak-en audio hints. De EMOTION kan worden: Joy, verdriet, boosheid of vrezen.|
@@ -767,7 +767,7 @@ Video Indexer identificeert emoties op basis van spraak-en audio-hints. De geïd
 
 Video Indexer van de belangrijkste onderwerpen van transcripten wordt verduidelijkt. Als dat mogelijk is, wordt de [IPTC](https://iptc.org/standards/media-topics/) -taxonomie van het 2de niveau opgenomen. 
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |id|De onderwerp-ID.|
 |name|De naam van het onderwerp, bijvoorbeeld ' Farmaceutischen '.|

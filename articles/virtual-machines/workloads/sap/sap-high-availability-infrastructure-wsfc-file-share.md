@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f9b7ac97cb190073966f9be450e9f9e04014fbd7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cc2295f6151b3cde81c27c8ed1116013e1a3f9a9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078059"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647540"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Azure-infra structuur voor SAP-hoge Beschik baarheid voorbereiden met behulp van een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-instanties
 
@@ -39,8 +39,8 @@ ms.locfileid: "70078059"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -203,47 +203,47 @@ ms.locfileid: "70078059"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-In dit artikel worden de voorbereidende stappen voor Azure-infra structuur beschreven die nodig zijn voor het installeren en configureren van hoogwaardige SAP-systemen op een Windows Server failover clustering cluster (WSFC) met scale-out bestands share als optie voor het clusteren van SAP ASCS/SCS vaak.
+In dit artikel worden de voorbereidende stappen voor Azure-infra structuur beschreven die nodig zijn voor het installeren en configureren van hoogwaardige SAP-systemen op een Windows Server failover clustering cluster (WSFC) met scale-out bestands share als optie voor het clusteren van SAP ASCS/SCS-instanties.
 
-## <a name="prerequisite"></a>Vereiste
+## <a name="prerequisite"></a>Vereisten
 
 Lees het volgende artikel voordat u de installatie start:
 
-* [Architectuur handleiding: ASCS/SCS-exemplaren op een Windows-failovercluster met behulp van een bestands share gebruiken][sap-high-availability-guide-wsfc-file-share]
+* [Architectuur handleiding: cluster SAP ASCS/SCS instances op een Windows-failovercluster met behulp van de bestands share][sap-high-availability-guide-wsfc-file-share]
 
 
 ## <a name="host-names-and-ip-addresses"></a>Hostnamen en IP-adressen
 
-| Rol van virtuele hostnaam | Naam van virtuele host | Vast IP-adres | Beschikbaarheidsset |
+| Rol van virtuele hostnaam | Naam van virtuele host | Statisch IP-adres | Beschikbaarheidsset |
 | --- | --- | --- | --- |
 | Eerste cluster knooppunt ASCS/SCS-cluster | ascs-1 | 10.0.6.4 | ascs-as |
 | Tweede cluster knooppunt ASCS/SCS-cluster | ascs-2 | 10.0.6.5 | ascs-as |
-| Cluster netwerk naam |ascs-cl | 10.0.6.6 | N.v.t. |
-| Naam van SAP PR1 ASCS-cluster netwerk |PR1-ascs | 10.0.6.7 | N.v.t. |
+| Cluster netwerk naam |ascs-cl | 10.0.6.6 | n.v.t. |
+| Naam van SAP PR1 ASCS-cluster netwerk |PR1-ascs | 10.0.6.7 | n.v.t. |
 
 
 **Tabel 1**: ASCS/SCS-cluster
 
-| SAP \<-SID > | SAP-ASCS/SCS-instantie nummer |
+| SAP \<SID > | SAP-ASCS/SCS-instantie nummer |
 | --- | --- |
 | PR1 | 00 |
 
 **Tabel 2**: Details van SAP ASCS/SCS-instantie
 
 
-| Rol van virtuele hostnaam | Naam van virtuele host | Vast IP-adres | Beschikbaarheidsset |
+| Rol van virtuele hostnaam | Naam van virtuele host | Statisch IP-adres | Beschikbaarheidsset |
 | --- | --- | --- | --- |
 | Eerste cluster knooppunt | sofs-1 | 10.0.6.10 | sofs-as |
 | Tweede cluster knooppunt | sofs-2 | 10.0.6.11 | sofs-as |
 | Derde cluster knooppunt | sofs-3 | 10.0.6.12 | sofs-as |
-| Cluster netwerk naam | sofs-cl | 10.0.6.13 | N.v.t. |
-| SAP Global host name | sapglobal | IP-adressen van alle cluster knooppunten gebruiken | N.v.t. |
+| Cluster netwerk naam | sofs-cl | 10.0.6.13 | n.v.t. |
+| SAP Global host name | sapglobal | IP-adressen van alle cluster knooppunten gebruiken | n.v.t. |
 
-**Tabel 3**: Scale-out bestandsserver cluster
+**Tabel 3**: cluster scale-out bestandsserver
 
 
 ## <a name="deploy-vms-for-an-sap-ascsscs-cluster-a-database-management-system-dbms-cluster-and-sap-application-server-instances"></a>Vm's implementeren voor een SAP ASCS/SCS-cluster, een DBMS-cluster (Data Base Management System) en SAP-toepassings server exemplaren
@@ -316,15 +316,15 @@ U kunt de implementatie van Scale-out bestandsserver ook automatiseren door Azur
 > In de gebruikers interface van de Scale-out bestandsserver Resource Manager-sjabloon moet u het aantal VM'S opgeven.
 >
 
-### <a name="use-managed-disks"></a>Managed Disks gebruiken
+### <a name="use-managed-disks"></a>Beheerde schijven gebruiken
 
 De Azure Resource Manager sjabloon voor het implementeren van Scale-out bestandsserver met Opslagruimten Direct en Azure Managed Disks is beschikbaar op [github][arm-sofs-s2d-managed-disks].
 
 U wordt aangeraden Managed Disks te gebruiken.
 
-![Afbeelding 1: Scherm van de gebruikers interface voor Scale-out bestandsserver Resource Manager-sjabloon met Managed disks][sap-ha-guide-figure-8010]
+![Afbeelding 1: scherm van de gebruikers interface voor Scale-out bestandsserver Resource Manager-sjabloon met beheerde schijven][sap-ha-guide-figure-8010]
 
-_**Afbeelding 1**: Scherm van de gebruikers interface voor Scale-out bestandsserver Resource Manager-sjabloon met Managed disks_
+_**Afbeelding 1**: scherm van de gebruikers interface voor scale-out bestandsserver Resource Manager-sjabloon met beheerde schijven_
 
 Ga als volgt te werk in de sjabloon:
 1. Voer in het vak **aantal vm's** het minimum aantal van **2**in.
@@ -336,15 +336,15 @@ Ga als volgt te werk in de sjabloon:
 
 De Azure Resource Manager sjabloon voor het implementeren van Scale-out bestandsserver met Opslagruimten Direct en Azure unmanaged disks is beschikbaar op [github][arm-sofs-s2d-non-managed-disks].
 
-![Afbeelding 2: Het scherm van de gebruikers interface voor de Scale-out bestandsserver Azure Resource Manager sjabloon zonder beheerde schijven][sap-ha-guide-figure-8011]
+![Afbeelding 2: het scherm van de gebruikers interface voor de Scale-out bestandsserver Azure Resource Manager sjabloon zonder Managed disks][sap-ha-guide-figure-8011]
 
-_**Afbeelding 2**: Het scherm van de gebruikers interface voor de Scale-out bestandsserver Azure Resource Manager sjabloon zonder beheerde schijven_
+_**Afbeelding 2**: het scherm van de gebruikers interface voor de scale-out bestandsserver Azure Resource Manager sjabloon zonder Managed disks_
 
 Selecteer **Premium Storage**in het vak **type opslag account** . Alle andere instellingen zijn hetzelfde als de instellingen voor beheerde schijven.
 
 ## <a name="adjust-cluster-timeout-settings"></a>Time-outinstellingen voor het cluster aanpassen
 
-Nadat u het Windows Scale-out bestandsserver-cluster hebt geïnstalleerd, past u de drempel waarden voor time-outs voor failover detectie aan voor waarden in Azure. De para meters die moeten worden gewijzigd, worden beschreven in de drempel waarden voor het afstemmen van [failover cluster netwerk][tuning-failover-cluster-network-thresholds]. Ervan uitgaande dat uw geclusterde virtuele machines zich in hetzelfde subnet bevinden, wijzigt u de volgende para meters in deze waarden:
+Nadat u het Windows Scale-out bestandsserver-cluster hebt geïnstalleerd, past u de drempel waarden voor time-outs voor failover detectie aan voor waarden in Azure. De para meters die moeten worden gewijzigd, worden beschreven in de [drempel waarden voor het afstemmen van failover cluster netwerk][tuning-failover-cluster-network-thresholds]. Ervan uitgaande dat uw geclusterde virtuele machines zich in hetzelfde subnet bevinden, wijzigt u de volgende para meters in deze waarden:
 
 - SameSubNetDelay = 2000
 - SameSubNetThreshold = 15

@@ -3,19 +3,19 @@ title: Advanced Threat Protection voor Azure Cosmos DB
 description: Meer informatie over het Azure Cosmos DB versleutelen van gegevens in rust en hoe deze worden geïmplementeerd.
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 12/13/2019
 ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: c816c9877a9c796ee76310f2452f3505531c3018
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 5cea2f1dac50744c974917347b4428bc39aa737d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555035"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445533"
 ---
-# <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Advanced Threat Protection voor Azure Cosmos DB
+# <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Advanced Threat Protection voor Azure Cosmos DB (preview-versie)
 
 Advanced Threat Protection voor Azure Cosmos DB biedt een extra beveiligingslaag die ongebruikelijke en mogelijk schadelijke pogingen detecteert om Azure Cosmos DB accounts te openen of misbruik te maken. Met deze beveiligingslaag kunt u bedreigingen aanpakken, zelfs zonder een beveiligings expert, en ze integreren met centrale beveiligings bewakings systemen.
 
@@ -27,6 +27,14 @@ Beveiligings waarschuwingen worden geactiveerd wanneer afwijkingen in de activit
 > * Advanced Threat Protection voor Azure Cosmos DB is momenteel niet beschikbaar in azure Government en soevereine Cloud regio's.
 
 Voor een volledige onderzoek van de beveiligings waarschuwingen, is het aanbevolen om [Diagnostische logboek registratie in azure Cosmos db in](https://docs.microsoft.com/azure/cosmos-db/logging)te scha kelen, waarmee bewerkingen op de data base zelf worden geregistreerd, inclusief ruwe bewerkingen op alle documenten, containers en data bases.
+
+## <a name="threat-types"></a>Bedreigingstypen
+
+Advanced Threat Protection voor Azure Cosmos DB detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot of misbruik te maken van data bases. De volgende waarschuwingen kunnen momenteel worden geactiveerd:
+
+- **Toegang vanaf ongebruikelijke locaties**: deze waarschuwing wordt geactiveerd wanneer er een wijziging is in het toegangs patroon voor een Azure Cosmos-account, waarbij iemand verbinding heeft gemaakt met het Azure Cosmos DB-eind punt vanaf een ongebruikelijke geografische locatie. In sommige gevallen detecteert de waarschuwing een rechtmatige actie, wat een nieuwe toepassing of onderhouds bewerking van de ontwikkelaar is. In andere gevallen detecteert de waarschuwing een schadelijke actie van een voormalige werk nemer, externe aanvaller, enzovoort.
+
+- **Ongebruikelijke gegevens extractie**: deze waarschuwing wordt geactiveerd wanneer een client een ongebruikelijke hoeveelheid gegevens uit een Azure Cosmos DB-account uitpakt. Dit kan het symptoom zijn van sommige gegevens exfiltration die worden uitgevoerd om alle gegevens die zijn opgeslagen in het account over te dragen naar een extern gegevens archief.
 
 ## <a name="set-up-advanced-threat-protection"></a>Geavanceerde bedreigings beveiliging instellen
 
@@ -41,7 +49,7 @@ Voor een volledige onderzoek van de beveiligings waarschuwingen, is het aanbevol
 3. Op de Blade **Geavanceerde beveiligings** configuratie:
 
     * Klik op de optie **geavanceerde beveiliging tegen bedreigingen** om deze **in**te stellen op aan.
-    * Klik op **Opslaan** om het nieuwe of bijgewerkte geavanceerde beveiligings beleid voor bedreigingen op te slaan.   
+    * Klik op **Opslaan** om het nieuwe of bijgewerkte Advanced Threat Protection-beleid op te slaan.   
 
 ### <a name="set-up-atp-using-rest-api"></a>ATP instellen met behulp van REST API
 
@@ -101,5 +109,5 @@ Er wordt ook een e-mail melding met de waarschuwings Details en aanbevolen actie
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Diagnostische logboek registratie in azure Cosmos DB](monitor-cosmos-db.md#diagnostic-settings)
+* Meer informatie over [Diagnostische logboek registratie in azure Cosmos DB](cosmosdb-monitor-resource-logs.md)
 * Meer informatie over [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

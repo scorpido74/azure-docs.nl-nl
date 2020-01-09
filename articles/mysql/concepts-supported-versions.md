@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: b4029d49eeba53e7a502a7ac68081bb5a2d549f8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 12/12/2019
+ms.openlocfilehash: 05d4ecd58f6febff75212f1ad88b60be4f23c2a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971924"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454339"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Ondersteunde Azure Database for MySQL server versies
 
@@ -37,9 +37,6 @@ Release van de fout oplossing: 5.7.27
 Raadpleeg de opmerkingen bij de [versie](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-27.html) van MySQL voor meer informatie over verbeteringen en oplossingen in deze versie.
 
 ## <a name="mysql-version-80"></a>MySQL-versie 8,0
-
-> [!IMPORTANT]
-> MySQL 8,0 is momenteel beschikbaar als preview-versie.
 
 Release van de fout oplossing: 8.0.15
 

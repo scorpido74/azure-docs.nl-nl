@@ -1,20 +1,20 @@
 ---
 title: EDI-berichten batch verwerken als een groep
-description: EDI-berichten verzenden en ontvangen als batches, groepen of verzamelingen in Azure Logic Apps
+description: U kunt EDI-berichten verzenden en ontvangen als batches, groepen of verzamelingen met batch verwerking in Azure Logic Apps
 services: logic-apps
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: 1c4b32bfec667620101d588974e0411a9c7438d2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793001"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666666"
 ---
-# <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>EDI-berichten in batches verzenden naar handels partners met Azure Logic Apps
+# <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>EDI-berichten uitwisselen als batches of groepen tussen handels partners in Azure Logic Apps
 
 In Business to Business (B2B)-scenario's wisselen partners vaak berichten uit in groepen of *batches*. Wanneer u een batch-oplossing met Logic Apps bouwt, kunt u berichten verzenden naar handels partners en deze berichten samen in batches verwerken. In dit artikel wordt beschreven hoe u EDI-berichten kunt verwerken met behulp van X12 als voor beeld door een logische app voor het maken van een batch-Sender en een logische receiver-toepassing. 
 
@@ -71,7 +71,7 @@ Voor deze batch-ontvanger geeft u de batch modus, naam, release criteria, X12 ov
    | **Release criteria** | Aantal berichten op basis van planning | Alleen beschikbaar in de **inline** batch modus | 
    | **Aantal berichten** | 10 | Alleen beschikbaar voor release criteria **op basis van het aantal berichten** | 
    | **Interval** | 10 | Alleen beschikbaar met release criteria **op basis van een planning** | 
-   | **Frequentie** | notulen | Alleen beschikbaar met release criteria **op basis van een planning** | 
+   | **Frequentie** | minuut | Alleen beschikbaar met release criteria **op basis van een planning** | 
    ||| 
 
    ![Details van batch trigger opgeven](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-release-criteria.png)
@@ -96,7 +96,7 @@ Voor deze batch-ontvanger geeft u de batch modus, naam, release criteria, X12 ov
       | Eigenschap | Beschrijving |
       |----------|-------------|
       | **Naam van de X12-overeenkomst** | Open de lijst en selecteer uw bestaande overeenkomst. <p>Als de lijst leeg is, zorgt u ervoor dat u [uw logische app koppelt aan het integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account) dat de gewenste overeenkomst heeft. | 
-      | **Batch-naam** | Klik in dit vak en wanneer de lijst met dynamische inhoud wordt weer gegeven, selecteert u het token **batch naam** . | 
+      | **BatchName** | Klik in dit vak en wanneer de lijst met dynamische inhoud wordt weer gegeven, selecteert u het token **batch naam** . | 
       | **PartitionName** | Klik in dit vak en selecteer nadat de lijst met dynamische inhoud wordt weer gegeven, het **partitie naam** token. | 
       | **Items** | Sluit het vak item Details en klik vervolgens in dit vak. Nadat de lijst met dynamische inhoud wordt weer gegeven, selecteert u het token **batch-items** . | 
       ||| 
@@ -126,7 +126,7 @@ Als u er zeker van wilt zijn dat uw batch-ontvanger werkt zoals verwacht, kunt u
    | Eigenschap | Beschrijving | 
    |----------|-------------|
    | **Methode** | Selecteer in deze lijst de optie **post**. | 
-   | **URI** | Genereer een URI voor uw aanvraag-bak en voer deze URI in dit vak in. | 
+   | **Uri** | Genereer een URI voor uw aanvraag-bak en voer deze URI in dit vak in. | 
    | **Hoofdtekst** | Klik in dit vak en nadat de lijst met dynamische inhoud wordt geopend, selecteert u het token **Body** , dat wordt weer gegeven in de sectie **batch-code ring op overeenkomst naam**. <p>Als u het token **Body** niet ziet, klikt u naast **batch-code ring op overeenkomst naam**op **meer weer geven**. | 
    ||| 
 

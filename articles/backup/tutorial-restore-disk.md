@@ -4,12 +4,12 @@ description: Leer hoe u een schijf kunt herstellen en een herstel-VM maken in Az
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 9b2048d8683ba2dde00a874445eb936cfb775cf1
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f0300930d4dbfb7745f0837eb5fa9605a2e766d7
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171745"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680547"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Een schijf herstellen en een herstelde VM maken in Azure
 
@@ -57,7 +57,43 @@ az backup recoverypoint list \
 
 ## <a name="restore-a-vm-disk"></a>Een VM-schijf herstellen
 
-Om uw schijf te herstellen vanaf het herstelpunt, maakt u eerst een Azure opslagaccount. Dit opslagaccount wordt gebruikt voor het opslaan van de herstelde schijf. In latere stappen wordt de herstelde schijf gebruikt voor het maken van een VM.
+> [!IMPORTANT]
+> Het wordt zeer ten zeerste aanbevolen AZ CLI version 2.0.74 of hoger te gebruiken om alle voor delen van een snelle herstel bewerking te krijgen, inclusief het terugzetten van de beheerde schijf. Het is het beste als de gebruiker altijd de nieuwste versie gebruikt.
+
+### <a name="managed-disk-restore"></a>Beheer van beheerde schijven
+
+Als de virtuele machine waarvoor een back-up is gemaakt, beheerde schijven heeft en de bedoeling is om beheerde schijven te herstellen vanaf het herstel punt, geeft u eerst een Azure-opslag account op. Dit opslag account wordt gebruikt voor het opslaan van de VM-configuratie en de implementatie sjabloon die later kunnen worden gebruikt om de virtuele machine vanaf de herstelde schijven te implementeren. Vervolgens geeft u ook een doel resource groep op voor de beheerde schijven die moeten worden hersteld.
+
+1. Gebruik [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) om een opslagaccount te maken. De naam van het opslagaccount mag alleen kleine letters bevatten, en moet globaal uniek zijn. Vervang *mystorageaccount* door uw eigen unieke naam:
+
+    ```azurecli-interactive
+    az storage account create \
+        --resource-group myResourceGroup \
+        --name mystorageaccount \
+        --sku Standard_LRS
+    ```
+
+2. Herstel de schijf vanaf uw herstelpunt met [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks). Vervang *mystorageaccount* door de naam van het opslagaccount dat u met de vorige opdracht hebt gemaakt. Vervang *myRecoveryPointName* door de naam van het herstel punt dat u hebt verkregen in de uitvoer van de vorige opdracht [AZ backup Recovery Point List](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) . ***Geef ook de doel resource groep op waarop de beheerde schijven worden teruggezet***.
+
+    ```azurecli-interactive
+    az backup restore restore-disks \
+        --resource-group myResourceGroup \
+        --vault-name myRecoveryServicesVault \
+        --container-name myVM \
+        --item-name myVM \
+        --storage-account mystorageaccount \
+        --rp-name myRecoveryPointName
+        --target-resource-group targetRG
+    ```
+
+> [!WARNING]
+> Als de doel bron-groep niet is opgegeven, worden de beheerde schijven teruggezet als onbeheerde schijven naar het opgegeven opslag account. Dit heeft belang rijke gevolgen voor de herstel tijd sinds de tijd die nodig is om de schijven volledig te herstellen, is afhankelijk van het opgegeven opslag account.
+
+### <a name="unmanaged-disks-restore"></a>Onbeheerde schijven herstellen
+
+Als de back-up van de virtuele machine niet-beheerde schijven bevat en als de bedoeling is om schijven te herstellen vanaf het herstel punt, geeft u eerst een Azure-opslag account op. Dit opslag account wordt gebruikt voor het opslaan van de VM-configuratie en de implementatie sjabloon die later kunnen worden gebruikt om de virtuele machine vanaf de herstelde schijven te implementeren. Standaard worden de niet-beheerde schijven teruggezet naar de oorspronkelijke opslag accounts. Als de gebruiker alle niet-beheerde schijven op één locatie wil herstellen, kan het opgegeven opslag account ook worden gebruikt als tijdelijke locatie voor die schijven.
+
+In latere stappen wordt de herstelde schijf gebruikt voor het maken van een VM.
 
 1. Gebruik [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) om een opslagaccount te maken. De naam van het opslagaccount mag alleen kleine letters bevatten, en moet globaal uniek zijn. Vervang *mystorageaccount* door uw eigen unieke naam:
 
@@ -80,9 +116,22 @@ Om uw schijf te herstellen vanaf het herstelpunt, maakt u eerst een Azure opslag
         --rp-name myRecoveryPointName
     ```
 
-## <a name="monitor-the-restore-job"></a>De hersteltaak bewaken
+Zoals hierboven vermeld, worden de niet-beheerde schijven teruggezet naar hun oorspronkelijke opslag account. Dit biedt de beste prestaties voor herstel. Maar als alle niet-beheerde schijven moeten worden hersteld naar een opgegeven opslag account, gebruikt u de relevante vlag zoals hieronder wordt weer gegeven.
 
-U kunt de status van hersteltaken controleren met [az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list):
+```azurecli-interactive
+    az backup restore restore-disks \
+        --resource-group myResourceGroup \
+        --vault-name myRecoveryServicesVault \
+        --container-name myVM \
+        --item-name myVM \
+        --storage-account mystorageaccount \
+        --rp-name myRecoveryPointName
+        --restore-to-staging-storage-account
+    ```
+
+## Monitor the restore job
+
+To monitor the status of restore job, use [az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list):
 
 ```azurecli-interactive
 az backup job list \
@@ -101,65 +150,105 @@ a0a8e5e6  Backup           Completed   myvm         2017-09-19T03:09:21  0:15:26
 fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31.191807
 ```
 
-Wanneer de *Status* van de hersteltaak *Voltooid* is, is de schijf hersteld naar het opslagaccount.
-
-## <a name="convert-the-restored-disk-to-a-managed-disk"></a>De herstelde schijf converteren naar een beheerde schijf
-
-Met de hersteltaak wordt een niet-beheerde schijf gemaakt. Om een VM ta maken op basis van de schijf, moet u deze eerst converteren naar een beheerde schijf.
-
-1. Haal de verbindingsgegevens voor uw opslagaccount op met [az storage account show-connection-string](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string). Vervang *mystorageaccount* door de naam van uw opslagaccount, als volgt:
-
-    ```azurecli-interactive
-    export AZURE_STORAGE_CONNECTION_STRING=$( az storage account show-connection-string \
-        --resource-group myResourceGroup \
-        --output tsv \
-        --name mystorageaccount )
-    ```
-
-2. Uw onbeheerde schijf wordt beveiligd in het opslagaccount. Met de volgende opdrachten wordt informatie over uw onbeheerde schijf opgehaald en wordt een variabele met de naam *uri* gemaakt, die wordt gebruikt in de volgende stap, wanneer u de beheerde schijf maakt.
-
-    ```azurecli-interactive
-    container=$(az storage container list --query [0].name -o tsv)
-    blob=$(az storage blob list --container-name $container --query [0].name -o tsv)
-    uri=$(az storage blob url --container-name $container --name $blob -o tsv)
-    ```
-
-3. Nu kunt u [az disk create](https://docs.microsoft.com/cli/azure/disk?view=azure-cli-latest#az-disk-create) gebruiken om van uw herstelde schijf een beheerde schijf te maken. De variabele *uri* uit de vorige stap wordt gebruikt als bron voor de beheerde schijf.
-
-    ```azurecli-interactive
-    az disk create \
-        --resource-group myResourceGroup \
-        --name myRestoredDisk \
-        --source $uri
-    ```
-
-4. Nu u een beheerde schijf van uw herstelde schijf hebt, kunt u de onbeheerde schijf en het opslagaccount opschonen met [az storage account delete](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-delete). Vervang *mystorageaccount* door de naam van uw opslagaccount, als volgt:
-
-    ```azurecli-interactive
-    az storage account delete \
-        --resource-group myResourceGroup \
-        --name mystorageaccount
-    ```
+Wanneer de *status* van de herstel taak rapporten *is voltooid*, zijn de benodigde gegevens (VM-configuratie en de implementatie sjabloon) hersteld naar het opslag account.
 
 ## <a name="create-a-vm-from-the-restored-disk"></a>Een VM maken op basis van de herstelde schijf
 
-De laatste stap is het maken van een VM van de beheerde schijf.
+De laatste stap bestaat uit het maken van een virtuele machine op basis van de herstelde schijven. U kunt de implementatie sjabloon die is gedownload naar het opgegeven opslag account gebruiken om de virtuele machine te maken.
 
-1. Gebruik [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) om als volgt een VM te maken van uw beheerde schijf:
+### <a name="fetch-the-job-details"></a>De taak Details ophalen
 
-    ```azurecli-interactive
-    az vm create \
-        --resource-group myResourceGroup \
-        --name myRestoredVM \
-        --attach-os-disk myRestoredDisk \
-        --os-type linux
-    ```
+De resulterende taak details geven de sjabloon-URI die kan worden opgevraagd en geïmplementeerd. Gebruik de opdracht show command om meer informatie te krijgen over de geactiveerde herstelde taak.
 
-2. Om te bevestigen dat uw VM van uw herstelde schijf is gemaakt, maakt u als volgt een lijst van de VM's in uw resourcegroep met [az vm list](/cli/azure/vm?view=azure-cli-latest#az-vm-list):
+```azurecli-interactive
+az backup job show \
+    -v myRecoveryServicesVault \
+    -g myResourceGroup \
+    -n 1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414
+```
 
-    ```azurecli-interactive
-    az vm list --resource-group myResourceGroup --output table
-    ```
+De uitvoer van deze query geeft alle details, maar we zijn alleen geïnteresseerd in de inhoud van het opslag account. We kunnen de [query mogelijkheid](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest) van Azure CLI gebruiken om de relevante gegevens op te halen
+
+```azurecli-interactive
+az backup job show \
+    -v myRecoveryServicesVault \
+    -g myResourceGroup \
+    -n 1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414 \
+    --query properties.extendedInfo.propertyBag
+
+{
+  "Config Blob Container Name": "myVM-daa1931199fd4a22ae601f46d8812276",
+  "Config Blob Name": "config-myVM-1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414.json",
+  "Config Blob Uri": "https://mystorageaccount.blob.core.windows.net/myVM-daa1931199fd4a22ae601f46d8812276/config-appvm8-1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json",
+  "Job Type": "Recover disks",
+  "Recovery point time ": "12/25/2019 10:07:11 PM",
+  "Target Storage Account Name": "mystorageaccount",
+  "Target resource group": "mystorageaccountRG",
+  "Template Blob Uri": "https://mystorageaccount.blob.core.windows.net/myVM-daa1931199fd4a22ae601f46d8812276/azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json"
+}
+```
+
+### <a name="fetch-the-deployment-template"></a>De implementatie sjabloon ophalen
+
+De sjabloon is niet direct toegankelijk omdat deze zich onder het opslag account van de klant bevindt en de opgegeven container. U hebt de volledige URL (samen met een tijdelijk SAS-token) nodig om toegang te krijgen tot deze sjabloon.
+
+Extraheer eerst de URI van de sjabloon-Blob uit taak Details
+
+```azurecli-interactive
+az backup job show \
+    -v myRecoveryServicesVault \
+    -g myResourceGroup \
+    -n 1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414 \
+    --query properties.extendedInfo.propertyBag."""Template Blob Uri"""
+
+"https://mystorageaccount.blob.core.windows.net/myVM-daa1931199fd4a22ae601f46d8812276/azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json"
+```
+
+De URI van de sjabloon-BLOB heeft de volgende indeling en extraheert de sjabloon naam
+
+```https
+https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName>
+```
+
+De naam van de sjabloon in het bovenstaande voor beeld wordt dus ```azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json``` en de naam van de container is ```myVM-daa1931199fd4a22ae601f46d8812276```
+
+Down load nu het SAS-token voor deze container en sjabloon, zoals [hier](https://docs.microsoft.com/azure/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-cli#provide-sas-token-during-deployment) wordt beschreven
+
+```azurecli-interactive
+expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
+connection=$(az storage account show-connection-string \
+    --resource-group mystorageaccountRG \
+    --name mystorageaccount \
+    --query connectionString)
+token=$(az storage blob generate-sas \
+    --container-name myVM-daa1931199fd4a22ae601f46d8812276 \
+    --name azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json \
+    --expiry $expiretime \
+    --permissions r \
+    --output tsv \
+    --connection-string $connection)
+url=$(az storage blob url \
+   --container-name myVM-daa1931199fd4a22ae601f46d8812276 \
+    --name azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json \
+    --output tsv \
+    --connection-string $connection)
+```
+
+### <a name="deploy-the-template-to-create-the-vm"></a>De sjabloon implementeren om de virtuele machine te maken
+
+Implementeer nu de sjabloon voor het maken van de virtuele machine, zoals [hier](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli)wordt uitgelegd.
+
+```azurecli-interactive
+az group deployment create \
+  --resource-group ExampleGroup \
+  --template-uri $url?$token
+```
+
+Om te bevestigen dat uw VM van uw herstelde schijf is gemaakt, maakt u als volgt een lijst van de VM's in uw resourcegroep met [az vm list](/cli/azure/vm?view=azure-cli-latest#az-vm-list):
+
+```azurecli-interactive
+az vm list --resource-group myResourceGroup --output table
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

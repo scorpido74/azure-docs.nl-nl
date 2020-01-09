@@ -3,14 +3,14 @@ title: Duurzame entiteiten-Azure Functions
 description: Meer informatie over duurzame entiteiten en hoe u deze kunt gebruiken in de Durable Functions extensie voor Azure Functions.
 author: cgillum
 ms.topic: overview
-ms.date: 11/02/2019
+ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: aa4d1c4bfab349659c42a34ca5a73f676a2ea2b8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8aaa19a9d5bd5d7b2764320d5d91c8a6c010b3c8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232932"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433324"
 ---
 # <a name="entity-functions"></a>Entiteit functies
 
@@ -34,13 +34,14 @@ Entiteiten worden geopend via een unieke id, de *entiteit-id*. Een Entiteits-ID 
 
 Bijvoorbeeld, een functie voor het `Counter` entiteit kan worden gebruikt om de score in een online spel te bewaren. Elk exemplaar van het spel heeft een unieke entiteit-ID, zoals `@Counter@Game1` en `@Counter@Game2`. Alle bewerkingen die gericht zijn op een bepaalde entiteit, moeten een entiteit-ID opgeven als para meter.
 
-### <a name="entity-operations"></a>Entiteits bewerkingen ###
+### <a name="entity-operations"></a>Entiteitsbewerkingen ###
 
 Als u een bewerking wilt aanroepen voor een entiteit, geeft u het volgende op:
 
 * **Entiteit-id** van de doel entiteit.
 * **Bewerkings naam**: een teken reeks die de bewerking specificeert die moet worden uitgevoerd. De `Counter` entiteit kan bijvoorbeeld bewerkingen voor `add`, `get`of `reset` ondersteunen.
 * **Invoer**van de bewerking. Dit is een optionele invoer parameter voor de bewerking. De toevoeg bewerking kan bijvoorbeeld een geheel getal als invoer hebben.
+* **geplande tijd*, een optionele para meter voor het opgeven van de lever tijd van de bewerking. Een bewerking kan bijvoorbeeld betrouwbaar worden gepland om enkele dagen in de toekomst uit te voeren.
 
 Bewerkingen kunnen resulteren in een resultaat waarde of een fout resultaat, zoals een Java script-fout of een .NET-uitzonde ring. Dit resultaat of deze fout kan worden waargenomen door integraties die de bewerking worden genoemd.
 
@@ -110,7 +111,7 @@ Zie [entity branches definiëren](durable-functions-dotnet-entities.md#defining-
 
 Duurzame entiteiten zijn beschikbaar in Java script vanaf versie **1.3.0** van het NPM-pakket van `durable-functions`. De volgende code is de `Counter` entiteit die is geïmplementeerd als een duurzame functie die is geschreven in Java script.
 
-**function. json**
+**function.json**
 ```json
 {
   "bindings": [
@@ -124,7 +125,7 @@ Duurzame entiteiten zijn beschikbaar in Java script vanaf versie **1.3.0** van h
 }
 ```
 
-**index. js**
+**index.js**
 ```javascript
 const df = require("durable-functions");
 
@@ -165,7 +166,7 @@ In de volgende voor beelden ziet u de verschillende manieren waarop entiteiten w
 
 ### <a name="example-client-signals-an-entity"></a>Voor beeld: client geeft een entiteit aan
 
-Als u toegang wilt krijgen tot entiteiten van een normale Azure-functie, ook wel bekend als een client functie, gebruikt u de [entiteit client uitvoer binding](durable-functions-bindings.md#entity-client). In het volgende voor beeld ziet u een door de wachtrij geactiveerde functie waarmee een entiteit wordt gesignaleerd met behulp van deze binding.
+Als u toegang wilt krijgen tot entiteiten van een normale Azure-functie, ook wel bekend als een client functie, gebruikt u de [client binding](durable-functions-bindings.md#entity-client)van de entiteit. In het volgende voor beeld ziet u een door de wachtrij geactiveerde functie waarmee een entiteit wordt gesignaleerd met behulp van deze binding.
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -186,7 +187,7 @@ const df = require("durable-functions");
 module.exports = async function (context) {
     const client = df.getClient(context);
     const entityId = new df.EntityId("Counter", "myCounter");
-    await context.df.signalEntity(entityId, "add", 1);
+    await client.signalEntity(entityId, "add", 1);
 };
 ```
 
@@ -203,8 +204,8 @@ public static async Task<HttpResponseMessage> Run(
     [DurableClient] IDurableEntityClient client)
 {
     var entityId = new EntityId(nameof(Counter), "myCounter");
-    JObject state = await client.ReadEntityStateAsync<JObject>(entityId);
-    return req.CreateResponse(HttpStatusCode.OK, state);
+    EntityStateResponse<JObject> stateResponse = await client.ReadEntityStateAsync<JObject>(entityId);
+    return req.CreateResponse(HttpStatusCode.OK, stateResponse.EntityState);
 }
 ```
 
@@ -214,7 +215,8 @@ const df = require("durable-functions");
 module.exports = async function (context) {
     const client = df.getClient(context);
     const entityId = new df.EntityId("Counter", "myCounter");
-    return context.df.readEntityState(entityId);
+    const stateResponse = await context.df.readEntityState(entityId);
+    return stateResponse.entityState;
 };
 ```
 
@@ -249,12 +251,11 @@ module.exports = df.orchestrator(function*(context){
 
     // Two-way call to the entity which returns a value - awaits the response
     currentValue = yield context.df.callEntity(entityId, "get");
-    if (currentValue < 10) {
-        // One-way signal to the entity which updates the value - does not await a response
-        yield context.df.signalEntity(entityId, "add", 1);
-    }
 });
 ```
+
+> [!NOTE]
+> Java script biedt momenteel geen ondersteuning voor het Signa leren van een entiteit vanuit een Orchestrator. Gebruik in plaats daarvan `callEntity`.
 
 Alleen indelingen kunnen het aanroepen van entiteiten en het verkrijgen van een reactie zijn, wat een retour waarde of een uitzonde ring kan zijn. Client functies die gebruikmaken van de [client binding](durable-functions-bindings.md#entity-client) kunnen alleen entiteiten Signa leren.
 
@@ -385,7 +386,7 @@ Veel van de functies van duurzame entiteiten zijn geïnspireerd op het [actor mo
 Er zijn enkele belang rijke verschillen die moeten worden opgemerkt:
 
 * Duurzame entiteiten bepalen de duurzaamheid over de latentie en zijn dus mogelijk niet geschikt voor toepassingen met strikte latentie vereisten.
-* Duurzame entiteiten hebben geen ingebouwde time-outs voor berichten. In Orleans time-out voor alle berichten na een Configureer bare tijd. De standaard waarde is 30 seconden.
+* Duurzame entiteiten hebben geen ingebouwde time-outs voor berichten. In Orleans time-out voor alle berichten na een Configureer bare tijd. De standaardwaarde is 30 seconden.
 * Berichten die tussen entiteiten worden verzonden, worden betrouwbaar en in de juiste volg orde bezorgd. In Orleans wordt een betrouw bare of bestelde levering ondersteund voor inhoud die via stromen wordt verzonden, maar niet wordt gegarandeerd voor alle berichten tussen korrels.
 * Aanvraag-antwoord patronen in entiteiten zijn beperkt tot de integratie. Vanuit entiteiten is alleen eenrichtings berichten (ook wel Signa lering genoemd) toegestaan, zoals in het oorspronkelijke actor model en in tegens telling tot korrels in Orleans. 
 * Duurzame entiteiten hebben geen deadlock. In Orleans kunnen deadlocks optreden en worden er pas een time-out van berichten opgelost.

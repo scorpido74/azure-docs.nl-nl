@@ -2,19 +2,15 @@
 title: Azure Automation Hybrid Runbook Worker
 description: Dit artikel bevat informatie over het installeren en gebruiken van Hybrid Runbook Worker, een functie van Azure Automation die u kunt gebruiken om runbooks uit te voeren op computers in uw lokale Data Center of in de Cloud provider.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/05/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 7329d32c01f005f4f5a727f80c6af0b58982b41f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fd90b98f4df195297e31a5dda91f64efcc1f5212
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850258"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658034"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Resources in uw Data Center of Cloud automatiseren met behulp van Hybrid Runbook Worker
 
@@ -26,7 +22,7 @@ In de volgende afbeelding ziet u deze functionaliteit:
 
 Elke Hybrid Runbook Worker is lid van een Hybrid Runbook Worker groep die u opgeeft wanneer u de Agent installeert. Een groep kan één agent bevatten, maar u kunt meerdere agents in een groep installeren voor een hoge Beschik baarheid. Elke machine kan één Hybrid Worker melden aan één Automation-account.
 
-Wanneer u een runbook op een Hybrid Runbook Worker start, geeft u de groep op waarop deze wordt uitgevoerd. Elke werk nemer in de groep pollt Azure Automation om te zien of er taken beschikbaar zijn. Als een taak beschikbaar is, haalt de eerste werk nemer de taak op. De verwerkings tijd van de taken wachtrij is afhankelijk van het hardwareprofiel en de belasting van de Hybrid Worker. U kunt een bepaalde werk nemer niet opgeven. Hybrid Runbook Workers delen niet veel van de limieten die Azure-sandboxes hebben. Ze hebben niet dezelfde limieten op schijf ruimte, geheugen of netwerk sockets. Hybrid Runbook Workers worden alleen beperkt door de resources op het Hybrid Runbook Worker zelf. Daarnaast delen Hybrid Runbook Workers de 180 minuut [fair share](automation-runbook-execution.md#fair-share) tijd limiet die Azure-sandboxes wel hebben. Zie de pagina met taak [limieten](../azure-subscription-service-limits.md#automation-limits) voor meer informatie over de service limieten voor Azure-sandboxes en Hybrid Runbook Workers.
+Wanneer u een runbook op een Hybrid Runbook Worker start, geeft u de groep op waarop deze wordt uitgevoerd. Elke werk nemer in de groep pollt Azure Automation om te zien of er taken beschikbaar zijn. Als een taak beschikbaar is, haalt de eerste werk nemer de taak op. De verwerkings tijd van de taken wachtrij is afhankelijk van het hardwareprofiel en de belasting van de Hybrid Worker. U kunt een bepaalde werk nemer niet opgeven. Hybrid Runbook Workers delen niet veel van de limieten die Azure-sandboxes hebben. Ze hebben niet dezelfde limieten op schijf ruimte, geheugen of netwerk sockets. Hybrid Runbook Workers worden alleen beperkt door de resources op het Hybrid Runbook Worker zelf. Daarnaast delen Hybrid Runbook Workers de 180 minuut [fair share](automation-runbook-execution.md#fair-share) tijd limiet die Azure-sandboxes wel hebben. Zie de pagina met taak [limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) voor meer informatie over de service limieten voor Azure-sandboxes en Hybrid Runbook Workers.
 
 ## <a name="install-a-hybrid-runbook-worker"></a>Een Hybrid Runbook Worker installeren
 

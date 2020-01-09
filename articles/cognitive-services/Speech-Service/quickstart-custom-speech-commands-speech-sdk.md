@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 3301c43aa71f041de1c53fb4083de73b6d2e4450
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 69a03ce5a8da7c8af6c17d122be3744e7b79e246
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976754"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381100"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Quick Start: verbinding maken met een toepassing voor aangepaste opdrachten met de spraak-SDK (preview)
 
@@ -23,7 +23,7 @@ Nadat u een gehoste aangepaste opdrachten toepassing hebt gemaakt, kunt u aan de
 
 In dit artikel voert u de volgende handelingen uit:
 
-- Een toepassing voor aangepaste opdrachten publiceren en een toepassings-id ophalen (app-id)
+- Een toepassing voor aangepaste opdrachten publiceren en een toepassings-id ophalen (App-ID)
 - Een client-app maken met behulp van de Speech SDK zodat u kunt communiceren met uw toepassing voor aangepaste opdrachten
 
 ## <a name="prerequisites"></a>Vereisten
@@ -36,7 +36,7 @@ Er is een toepassing voor aangepaste opdrachten vereist om dit artikel te volt o
 U hebt ook het volgende nodig:
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Een Azure-abonnementssleutel voor de Spraakservice. [Ontvang een gratis versie](get-started.md) of maak deze op de [Azure Portal](https://portal.azure.com)
+- Een Azure-abonnements sleutel voor spraak Services. [Ontvang een gratis versie](get-started.md) of maak deze op de [Azure Portal](https://portal.azure.com)
 
 ## <a name="optional-get-started-fast"></a>Optioneel: snel aan de slag
 
@@ -49,7 +49,7 @@ In deze Snelstartgids wordt stapsgewijs beschreven hoe u een client toepassing k
    > [!div class="mx-imgBorder"] 
    > ![](media/custom-speech-commands/fulfill-sdk-publish-application.png) toepassing publiceren
 
-1. De app-id uit de publicatie melding kopiëren voor later gebruik
+1. De App-ID uit de publicatie melding kopiëren voor later gebruik
 
 ## <a name="step-2-create-a-visual-studio-project"></a>Stap 2: een Visual Studio-project maken
 
@@ -309,7 +309,7 @@ Voeg als volgt de code-behind bron toe:
    const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
    const string region = "YourServiceRegion"; // The subscription service region. Note: only 'westus2' is currently supported
 
-   var speechCommandsConfig = DialogServiceConfig.FromSpeechCommandsAppId(speechCommandsApplicationId, speechSubscriptionKey, region);
+   var speechCommandsConfig = CustomCommandsConfig.FromSubscription(speechCommandsApplicationId, speechSubscriptionKey, region);
    speechCommandsConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-us");
    connector = new DialogServiceConnector(speechCommandsConfig);
    ```

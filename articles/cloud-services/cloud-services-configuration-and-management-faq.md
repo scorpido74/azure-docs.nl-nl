@@ -1,5 +1,6 @@
 ---
-title: Configuratie-en beheer problemen voor Microsoft Azure Cloud Services Veelgestelde vragen | Microsoft Docs
+title: Veelgestelde vragen over configuratie-en beheer problemen
+titleSuffix: Azure Cloud Services
 description: In dit artikel vindt u de veelgestelde vragen over de configuratie en het beheer van Microsoft Azure Cloud Services.
 services: cloud-services
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 704d6d4a12550507a8e38be4777e5abc7b57fe74
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 47a75d10f6016eb49061f9e7158b00899a387f2f
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161763"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660610"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Configuratie-en beheer problemen voor Azure Cloud Services: veelgestelde vragen (FAQ)
 
@@ -189,7 +190,7 @@ Micro soft bewaakt voortdurend servers, netwerken en toepassingen om bedreiginge
 Windows 10 en Windows Server 2016 worden geleverd met ondersteuning voor HTTP/2 op client-en server zijde. Als uw client (browser) verbinding maakt met de IIS-server via TLS die HTTP/2 via TLS-uitbrei dingen onderhandelt, hoeft u geen wijzigingen aan te brengen aan de server zijde. Dit komt doordat via TLS de H2-14-header die het gebruik van HTTP/2 opgeeft, standaard wordt verzonden. Als uw client op de andere kant een upgrade-header verzendt om een upgrade naar HTTP/2 uit te voeren, moet u de wijziging hieronder aan de server zijde door nemen om ervoor te zorgen dat de upgrade werkt en dat er een HTTP/2-verbinding wordt gemaakt. 
 
 1. Voer regedit. exe uit.
-2. Blader naar de register sleutel: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
+2. Blader naar de register sleutel: HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. Maak een nieuwe DWORD-waarde met de naam **DuoEnabled**.
 4. Stel de waarde in op 1.
 5. Start de server opnieuw op.
@@ -218,7 +219,7 @@ Cloud Services biedt geen ondersteuning voor het RBAC-model (op rollen gebaseerd
 
 Zie [inzicht krijgen in de verschillende rollen in azure](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-## <a name="remote-desktop"></a>Extern bureau blad
+## <a name="remote-desktop"></a>Extern bureaublad
 
 ### <a name="can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission"></a>Kunnen interne technici van micro soft extern bureau blad naar Cloud service-instanties zonder toestemming?
 Micro soft volgt een strikt proces dat interne technici niet in staat stelt om extern bureau blad in uw Cloud service te plaatsen zonder schrijf machtiging (e-mail adres of andere schriftelijke communicatie) van de eigenaar of de gebruiker.
@@ -249,7 +250,7 @@ Zie [Application Insights voor Azure Cloud Services](https://docs.microsoft.com/
 
 Zie voor meer informatie over het inschakelen van Azure Diagnostics logboek registratie voor Cloud Services voor het [instellen van diagnostische gegevens voor Azure Cloud Services en virtuele machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 
-## <a name="generic"></a>Encarta
+## <a name="generic"></a>Algemeen
 
 ### <a name="how-do-i-add-nosniff-to-my-website"></a>Kunt u ' all sniff ' toevoegen aan mijn website? Hoe kan ik
 Als u wilt voor komen dat clients de MIME-typen sniffen, voegt u een instelling toe in het bestand *Web. config* .
@@ -276,7 +277,7 @@ U kunt deze ook toevoegen als een instelling in IIS. Gebruik de volgende opdrach
 Gebruik het opstart script van IIS vanuit het artikel [veelvoorkomende opstart taken](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe) .
 
 ### <a name="what-is-the-quota-limit-for-my-cloud-service"></a>Wat is de quotum limiet voor mijn Cloud service?
-Zie [servicespecifieke limieten](../azure-subscription-service-limits.md#subscription-limits).
+Zie [servicespecifieke limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits).
 
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Waarom geeft het station op mijn Cloud service-VM weinig vrije schijf ruimte weer?
 Dit is normaal gedrag en er mag geen problemen met uw toepassing optreden. Logboeken is ingeschakeld voor het% AppRoot%-station in azure PaaS-Vm's, wat in feite de hoeveelheid ruimte in beslag neemt die normaal gesp roken wordt geconsumeerd. Er zijn echter verschillende zaken waarmee u rekening moet houden, waardoor dit een niet-probleem is.

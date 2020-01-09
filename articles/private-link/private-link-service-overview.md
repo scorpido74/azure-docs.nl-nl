@@ -2,17 +2,17 @@
 title: Wat is Azure Private Link service?
 description: Meer informatie over Azure Private Link service.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: f9bdc180bf0dfd6f35fb18f5c76176a68d8f1644
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f8d49a62ae9006e65ef86db1ae90cd5a5e9f1c6d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74912985"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647370"
 ---
 # <a name="what-is-azure-private-link-service"></a>Wat is Azure Private Link service?
 
@@ -68,7 +68,7 @@ Een persoonlijke koppelings service specificeert de volgende eigenschappen:
  
 - Eén persoonlijke koppelings service kan worden geopend vanuit meerdere persoonlijke eind punten die deel uitmaken van verschillende VNets, abonnementen en/of Active Directory tenants. De verbinding wordt tot stand gebracht via een werk stroom voor verbindingen. 
  
-- Er kunnen meerdere services voor persoonlijke koppelingen worden gemaakt op hetzelfde Standard Load Balancer met verschillende front-end IP-configuraties. Er zijn limieten voor het aantal persoonlijke koppelings Services dat u kunt maken per Standard Load Balancer en per abonnement. Zie [Azure-limieten](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)voor meer informatie.
+- Er kunnen meerdere services voor persoonlijke koppelingen worden gemaakt op hetzelfde Standard Load Balancer met verschillende front-end IP-configuraties. Er zijn limieten voor het aantal persoonlijke koppelings Services dat u kunt maken per Standard Load Balancer en per abonnement. Zie [Azure-limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)voor meer informatie.
  
 - Aan de persoonlijke koppelings service kunnen meer dan één NAT IP-configuratie zijn gekoppeld. Bij het kiezen van meer dan één NAT IP-configuratie kunnen service providers worden geschaald. Op dit moment kunnen service providers Maxi maal acht NAT IP-adressen per privé koppelings service toewijzen. Met elk IP-adres van NAT kunt u meer poorten toewijzen voor uw TCP-verbindingen en daarom uitschalen. Nadat u meerdere NAT IP-adressen aan een persoonlijke koppelings service hebt toegevoegd, kunt u de NAT IP-adressen niet verwijderen. Dit wordt gedaan om ervoor te zorgen dat actieve verbindingen niet worden beïnvloed tijdens het verwijderen van de NAT IP-adressen.
 

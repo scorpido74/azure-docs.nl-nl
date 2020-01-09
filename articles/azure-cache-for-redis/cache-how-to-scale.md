@@ -1,17 +1,17 @@
 ---
 title: Azure-cache schalen voor redis
-description: Meer informatie over het schalen van uw Azure-cache voor redis-instanties
+description: Meer informatie over het schalen van uw Azure-cache voor redis-exemplaren met behulp van de Azure Portal en hulpprogram ma's zoals Azure PowerShell en Azure CLI.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
-ms.author: yegu
-ms.openlocfilehash: 0fe4092a93e34d6e6b4bb4c4441609f696518b86
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: e8a1cf0e197841b6af8c65fe00c25aa42dbd0e7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122120"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433504"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Azure-cache schalen voor redis
 Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies. Nadat u een cache hebt gemaakt, kunt u de grootte en de prijs categorie van de cache schalen als de vereisten van de toepassing veranderen. Dit artikel laat u zien hoe u uw cache kunt schalen met behulp van de Azure Portal en hulpprogram ma's zoals Azure PowerShell en Azure CLI.
@@ -22,7 +22,7 @@ U kunt de [bewakings](cache-how-to-monitor.md) functies van Azure cache gebruike
 U kunt de volgende metrische gegevens controleren om te helpen bepalen of u wilt schalen.
 
 * Redis-server belasting
-* Geheugen gebruik
+* Geheugengebruik
 * Netwerk bandbreedte
 * CPU-gebruik
 
@@ -31,7 +31,7 @@ Als u vaststelt dat uw cache niet langer voldoet aan de vereisten van uw toepass
 ## <a name="scale-a-cache"></a>Een cache schalen
 Als u de cache wilt schalen, [bladert u naar de cache](cache-configure.md#configure-azure-cache-for-redis-settings) in de [Azure Portal](https://portal.azure.com) en klikt u op **schalen** in het **menu resource**.
 
-![Schalen](./media/cache-how-to-scale/redis-cache-scale-menu.png)
+![Schaal](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
 Selecteer de gewenste prijs categorie op de Blade **prijs categorie selecteren** en klik op **selecteren**.
 

@@ -2,17 +2,17 @@
 title: Een persoonlijk Azure-eind punt maken met behulp van Azure PowerShell | Microsoft Docs
 description: Meer informatie over persoonlijke Azure-koppelingen
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 83f1cbc3f8da61370c90744be3f0a7b230e016c3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 60032677594537f1e7791b7108eebd5d4cfad5b4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229406"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430351"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Een persoonlijk eind punt maken met Azure PowerShell
 Een persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hiermee kunnen Azure-resources, zoals Virtual Machines (Vm's), privé communiceren met persoonlijke koppelings bronnen. 
@@ -32,10 +32,10 @@ New-AzResourceGroup `
   -Location westcentralus
 ```
 
-## <a name="create-a-virtual-network"></a>Een Virtual Network maken
+## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 In deze sectie maakt u een virtueel netwerk en een subnet. Vervolgens koppelt u het subnet aan uw Virtual Network.
 
-### <a name="create-a-virtual-network"></a>Een Virtual Network maken
+### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
 Maak een virtueel netwerk voor uw persoonlijke eind punt met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). In het volgende voor beeld wordt een Virtual Network gemaakt met de naam *MyVirtualNetwork*:
  
@@ -59,6 +59,9 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -PrivateEndpointNetworkPoliciesFlag "Disabled" `
   -VirtualNetwork $virtualNetwork
 ```
+
+> [!CAUTION]
+> Het is eenvoudig om de para meter `PrivateEndpointNetworkPoliciesFlag` te verwarren met een andere beschik bare vlag `PrivateLinkServiceNetworkPoliciesFlag`, omdat deze beide lange woorden zijn en een vergelijk bare vormgeving hebben.  Zorg ervoor dat u de juiste `PrivateEndpointNetworkPoliciesFlag`gebruikt.
 
 ### <a name="associate-the-subnet-to-the-virtual-network"></a>Het subnet aan de Virtual Network koppelen
 

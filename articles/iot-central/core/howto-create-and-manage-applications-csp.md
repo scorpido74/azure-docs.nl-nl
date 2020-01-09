@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: d74bd67dedb70308061e54c05d23a4bb63adc8f8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0e49a5c8edd074c71d5972ee8d9c2e81f9c512ea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851329"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453977"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Een Azure IoT Central-toepassing maken en beheren vanuit de CSP-Portal
 
@@ -33,7 +33,7 @@ U bent op de pagina Azure IoT Central Application Manager. Azure IoT Central hou
 
 ![Manager voor Csp's maken](media/howto-create-application-csp/image3.png)
 
-Als u een Azure IoT Central-toepassing wilt maken, selecteert u **samen stellen** in het menu links. Kies een van de branche sjablonen of kies **aangepaste app** om een volledig nieuwe toepassing te maken. Hiermee wordt de pagina voor het maken van de toepassing geladen. U moet alle velden op deze pagina volt ooien en vervolgens **maken**kiezen. U vindt meer informatie over elk van de onderstaande velden.
+Als u een Azure IoT Central-toepassing wilt maken, selecteert u **samen stellen** in het menu links. Kies een van de branche sjablonen of kies **verouderde toepassing** om een volledig nieuwe toepassing te maken. Hiermee wordt de pagina voor het maken van de toepassing geladen. U moet alle velden op deze pagina volt ooien en vervolgens **maken**kiezen. U vindt meer informatie over elk van de onderstaande velden.
 
 ![Toepassings pagina voor Csp's maken](media/howto-create-application-csp/image4.png)
 
@@ -85,13 +85,12 @@ U kunt de regio's bekijken waarin Azure IoT Central beschikbaar is op de pagina 
 
 ## <a name="application-template"></a>Toepassingsjabloon
 
-U kunt een van de beschik bare toepassings sjablonen voor uw nieuwe Azure IoT Central-toepassing kiezen. Een toepassingssjabloon kan vooraf gedefinieerde items bevatten, zoals apparaatsjablonen en dashboards om u op weg te helpen.
+U kunt de onderstaande toepassings sjabloon kiezen voor uw nieuwe Azure IoT Central-toepassing.
 
 | Toepassingsjabloon | Beschrijving |
 | -------------------- | ----------- |
-| Aangepaste toepassing   | Hiermee maakt u een lege toepassing die u kunt vullen met uw eigen apparaatsjablonen en apparaten. |
-| Contoso-voorbeeld       | Hiermee maakt u een toepassing die een Device-sjabloon bevat voor een eenvoudig verbonden apparaat. Gebruik deze sjabloon als u wilt beginnen met het verkennen van Azure IoT Central. |
-| Devkits-voorbeeld       | Hiermee maakt u een toepassing met apparaatsjablonen die u in staat stelt verbinding te maken met een MXChip- of Raspberry Pi-apparaat. Gebruik deze sjabloon als u een ontwikkelaar van een apparaat wilt experimenteren met code op een van deze apparaten. |
+| Oudere toepassing   | Hiermee maakt u een lege toepassing die u kunt vullen met uw eigen apparaatsjablonen en apparaten. |
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

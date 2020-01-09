@@ -3,19 +3,15 @@ title: Mijn eerste Power shell-runbook in Azure Automation
 description: Zelfstudie die u helpt bij het maken, testen en publiceren van een eenvoudig PowerShell-runbook.
 keywords: azure powershell, zelfstudie powershell-script, powershell-automatisering
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/27/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: f950a2fed2fbd355fc99453f09b655463e67102d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 07be9aa9ab576845c5b2ad94b1a2b3fb828ea514
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850870"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366393"
 ---
 # <a name="my-first-powershell-runbook"></a>Mijn eerste PowerShell-runbook
 
@@ -34,7 +30,7 @@ Voor het voltooien van deze zelfstudie moet aan de volgende vereisten worden vol
 * Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Automation-account](automation-quickstart-create-account.md) om het runbook te bevatten en te verifiëren voor Azure-resources. Dit account moet machtigingen hebben om de virtuele machine te starten en stoppen.
 * Een virtuele machine van Azure. u stopt en start deze machine, dus het mag geen productie-VM zijn.
-* Mogelijk moet u [uw Azure-modules bijwerken](automation-update-azure-modules.md) op basis van de cmdlets die u gebruikt.
+* Mogelijk moet u [uw Azure-modules](automation-update-azure-modules.md) [importeren](shared-resources/modules.md)/bijwerken op basis van de cmdlets die u gebruikt.
 
 ## <a name="create-new-runbook"></a>Nieuw runbook maken
 

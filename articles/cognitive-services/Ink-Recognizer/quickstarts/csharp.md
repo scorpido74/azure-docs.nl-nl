@@ -1,21 +1,21 @@
 ---
 title: 'Snelstartgids: digitale inkt herkennen met de inkt Recognizer REST API enC#'
 titleSuffix: Azure Cognitive Services
-description: Gebruik de API voor inkt herkenning om te beginnen met het herkennen van digitale inkt streken.
+description: In deze Quick start ziet u hoe u de API voor inkt herkenning kunt gebruiken om te beginnen met het herkennen van digitale inkt streken.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 09/23/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 6ef58d1444eb0ec7b2b8891f944b428a613edf3a
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: c5379452449188f17b75036eb09c3ca15bae0c2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515609"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448164"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Snelstartgids: digitale inkt herkennen met de inkt Recognizer REST API enC#
 
@@ -32,11 +32,11 @@ De bron code voor deze snelstartgids vindt u op [github](https://go.microsoft.co
 ## <a name="prerequisites"></a>Vereisten
 
 - Eender welke versie van [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/).
-- [Newton soft. json](https://www.newtonsoft.com/json)
+- [Newtonsoft.Json](https://www.newtonsoft.com/json)
     - Newton soft. json installeren als een NuGet-pakket in Visual Studio:
         1. Klik met de rechter muisknop op **Solution Manager**
         2. Klik op **NuGet-pakketten beheren...**
-        3. @No__t_0 zoeken en het pakket installeren
+        3. `Newtonsoft.Json` zoeken en het pakket installeren
 - Als u Linux/MacOS gebruikt, kan deze toepassing met [mono](https://www.mono-project.com/)worden uitgevoerd.
 
 - De voorbeeld gegevens voor de inkt lijn voor deze snelstartgids vindt u op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-ink-strokes.json).

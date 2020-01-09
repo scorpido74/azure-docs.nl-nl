@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 012b13c440b8d0873e387c7d185803dc07852bf7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 340017a121d12c95c7c04bbfe67b336638209e9c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683023"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439017"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Zelfstudie: uw eerste data factory bouwen met Azure Portal
 > [!div class="op_single_selector"]
@@ -110,7 +110,7 @@ In deze stap koppelt u uw opslagaccount aan uw data factory. Voor deze zelfstudi
 
    ![Gekoppelde Storage-service](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. Vervang de **accountnaam** door de naam van uw opslagaccount. Vervang de **accountsleutel** met de toegangssleutel van uw opslagaccount. Raadpleeg de informatie over het weergeven, kopiëren en opnieuw genereren van toegangssleutels voor opslag in [Uw opslagaccount beheren](../../storage/common/storage-account-manage.md#access-keys) als u meer wilt weten over het verkrijgen van uw toegangssleutel voor opslag.
+1. Vervang de **accountnaam** door de naam van uw opslagaccount. Vervang de **accountsleutel** met de toegangssleutel van uw opslagaccount. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md)voor meer informatie over het verkrijgen van uw toegangs sleutel voor opslag.
 
 1. Selecteer in de opdrachtbalk **Implementeren** om de gekoppelde service te implementeren.
 
@@ -211,11 +211,11 @@ In deze stap maakt u gegevenssets die de invoer- en uitvoergegevens voor Hive-ve
    | Eigenschap | Genest onder | Beschrijving |
    |:--- |:--- |:--- |
    | type | properties |De eigenschap type wordt ingesteld op **AzureBlob**, omdat de gegevens zich in de blobopslag bevinden. |
-   | linkedServiceName | Formatteer |Deze eigenschap verwijst naar AzureStorageLinkedService, die u eerder hebt gemaakt. |
+   | linkedServiceName | format |Deze eigenschap verwijst naar AzureStorageLinkedService, die u eerder hebt gemaakt. |
    | folderPath | typeProperties | Deze eigenschap verwijst naar de blobcontainer en de map die de blobs voor invoer bevat. | 
    | fileName | typeProperties |Deze eigenschap is optioneel. Als u deze eigenschap niet opgeeft, worden alle bestanden uit folderPath gekozen. In deze zelfstudie wordt alleen het input.log-bestand verwerkt. |
-   | type | Formatteer |Omdat de logboekbestanden tekstbestanden zijn, gebruikt u **TextFormat**. |
-   | columnDelimiter | Formatteer |De kolommen in de logboekbestanden worden gescheiden door een komma (`,`). |
+   | type | format |Omdat de logboekbestanden tekstbestanden zijn, gebruikt u **TextFormat**. |
+   | columnDelimiter | format |De kolommen in de logboekbestanden worden gescheiden door een komma (`,`). |
    | frequency/interval | availability |Als frequency wordt ingesteld op **Month** en de interval **1** is, betekent dit dat de invoersegmenten één keer per maand beschikbaar worden gemaakt. |
    | external | properties | Deze eigenschap wordt ingesteld op **true** als de invoergegevens niet worden gegenereerd door deze pijplijn. In deze zelfstudie wordt het bestand input.log niet gegenereerd door deze pijplijn. Daarom is de eigenschap ingesteld op **true**. |
 
@@ -424,7 +424,7 @@ U kunt de app Bewaking en beheer ook gebruiken om uw pijplijnen te bewaken. Voor
 ## <a name="summary"></a>Samenvatting
 In deze zelfstudie hebt u een data factory gemaakt voor het verwerken van gegevens. Dit hebt u gedaan door een Hive-script uit te voeren op een HDInsight Hadoop-cluster. U hebt de Data Factory Editor in Azure Portal gebruikt om het volgende te doen:  
 
-* Maak een gegevensfactory.
+* Een gegevensfactory maken.
 * Twee gekoppelde services maken:
    * Een gekoppelde Storage-service om te koppelen aan de blobopslag die de invoer-/uitvoerbestanden van de data factory bevat.
    * Een gekoppelde on-demand HDInsight-service om te koppelen aan een on-demand HDInsight Hadoop-cluster van de data factory. Data Factory maakt op tijd een HDInsight Hadoop-cluster om invoergegevens te verwerken en uitvoergegevens te produceren.

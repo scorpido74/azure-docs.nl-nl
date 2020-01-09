@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d98fdab6dcd0abb70967d1e17d138a860a31da5f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 0610b235d218c24c108e39aeb9bd3b2cf8c9c663
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039308"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463432"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Een beheerde gegevensschijf koppelen aan een virtuele Windows-machine met behulp van Azure portal
 
@@ -21,7 +21,7 @@ In dit artikel wordt beschreven hoe u een nieuwe beheerde gegevensschijf koppele
 
 ## <a name="add-a-data-disk"></a>Een gegevensschijf toevoegen
 
-1. In de [Azure-portal](https://portal.azure.com), selecteer in het menu aan de linkerkant, **virtuele machines**.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om een gegevens schijf toe te voegen. Zoek en selecteer **virtuele machines**.
 2. Selecteer een virtuele machine in de lijst.
 3. Op de **virtuele machine** weergeeft, schakelt **schijven**.
 4. Op de **schijven** weergeeft, schakelt **gegevensschijf toevoegen**.

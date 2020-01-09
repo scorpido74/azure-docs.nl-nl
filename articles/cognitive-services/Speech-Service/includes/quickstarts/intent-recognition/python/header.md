@@ -1,20 +1,20 @@
 ---
 title: 'Snelstartgids: spraak, intenties en entiteiten herkennen, python-Speech-Service'
 titleSuffix: Azure Cognitive Services
-description: Nader te bepalen
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: f95a6c5166c77e99abdb6cba359387eebda85a7e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 649f3897b023504bd936c9d1d371454487ce21d1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816016"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466849"
 ---
 Als u liever meteen aan de slag gaat, kunt u alle voor <a href="https://aka.ms/speech/github-python">beelden van Speech SDK python</a> bekijken of downloaden op github. Zo niet, dan gaan we aan de slag.

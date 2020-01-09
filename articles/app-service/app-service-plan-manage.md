@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d628031515a9b0fdf3aa7b7ec88ee1b6b7f41f51
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 68cabbd00dd0b738590109cc39d8df82f5b7362d
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672196"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681164"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Een App Service-abonnement beheren in azure
 
@@ -24,11 +24,15 @@ Een [Azure app service plan](overview-hosting-plans.md) bevat de resources die e
 
 U kunt een leeg App Service plan maken of u kunt een plan maken als onderdeel van het maken van een app.
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com) **nieuwe** > **Web-app** of een ander soort app service-app.
+1. Selecteer in [Azure Portal](https://portal.azure.com)**Een resource maken**.
 
-   ![Maak een app in de Azure Portal.][createWebApp]
+   ![Maak een resource in de Azure Portal.][createResource] 
 
-2. Configureer de sectie met **instantie Details** voordat u het app service-abonnement configureert. Instellingen zoals **publiceren** en **besturings systemen** kunnen de beschik bare prijs categorieën voor uw app service plan wijzigen. De **regio** bepaalt waar uw app service plan wordt gemaakt.
+1. Selecteer **nieuw** > **Web-app** of een ander soort app service-app.
+
+   ![Maak een app in de Azure Portal.][createWebApp] 
+
+2. Configureer de sectie met **instantie Details** voordat u het app service-abonnement configureert. Instellingen zoals **publiceren** en **besturings systemen** kunnen de beschik bare prijs categorieën voor uw app service plan wijzigen. De **regio** bepaalt waar uw app service plan wordt gemaakt. 
    
 3. Selecteer in de sectie **app service plan** een bestaand abonnement of maak een plan door **Nieuw maken**te selecteren.
 
@@ -48,7 +52,7 @@ U kunt een app naar een andere App Service plan verplaatsen, zolang het bron pla
 > U kunt de gewenste webruimte niet opgeven wanneer u een plan maakt, maar het is mogelijk om ervoor te zorgen dat een plan wordt gemaakt in dezelfde webruimte als een bestaand abonnement. In het kort worden alle abonnementen die zijn gemaakt met dezelfde resource groep en regio combinatie, geïmplementeerd in dezelfde webruimte. Als u bijvoorbeeld een plan hebt gemaakt in resource groep A en regio B, wordt een plan dat u vervolgens in resource groep A en regio B maakt, geïmplementeerd in dezelfde webruimte. Houd er rekening mee dat het niet mogelijk is om webruimten te verplaatsen nadat ze zijn gemaakt. u kunt een plan niet verplaatsen naar dezelfde webruimte als een ander abonnement door het te verplaatsen naar een andere resource groep.
 > 
 
-1. Blader in het [Azure Portal](https://portal.azure.com)naar de app die u wilt verplaatsen.
+1. Zoek in het [Azure Portal](https://portal.azure.com)naar en selecteer **app Services** en selecteer de app die u wilt verplaatsen.
 
 2. Selecteer in het menu links de optie **app service abonnement wijzigen**.
 
@@ -61,7 +65,7 @@ U kunt een app naar een andere App Service plan verplaatsen, zolang het bron pla
    >
    > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
 
-5. Wanneer u klaar bent, selecteert u **OK**.
+5. Selecteer **OK** als u klaar bent.
    
    ![App Service plan kiezer.][change] 
 
@@ -92,8 +96,9 @@ Om onverwachte kosten te voor komen, wordt het plan ook standaard verwijderd wan
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een app omhoog schalen in azure](manage-scale-up.md)
+> [Een app omhoog schalen in Azure](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
+[createResource]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-a-resource.png

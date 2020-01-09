@@ -1,25 +1,14 @@
 ---
-title: Capaciteits planning voor Service Fabric-apps | Microsoft Docs
+title: Capaciteits planning voor Service Fabric-apps
 description: Hierin wordt beschreven hoe u het aantal reken knooppunten kunt identificeren dat vereist is voor een Service Fabric toepassing
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: markfuss
-editor: ''
-ms.assetid: 9fa47be0-50a2-4a51-84a5-20992af94bea
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: cae701e34c3934e8ba8a289e7804e8852f6b5288
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: cd5a5c55ff873e4891ac63361d0c4a0b56d70109
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167390"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377205"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Capaciteits planning voor Service Fabric toepassingen
 In dit document leert u hoe u de hoeveelheid resources (Cpu's, RAM, schijf opslag) kunt schatten die u nodig hebt om uw Azure Service Fabric-toepassingen uit te voeren. Het is gebruikelijk dat uw resource vereisten na verloop van tijd veranderen. Normaal gesp roken hebt u weinig resources nodig bij het ontwikkelen/testen van uw service, en hebt u meer bronnen nodig tijdens de productie en wordt uw toepassing uitgebreid in populariteit. Wanneer u uw toepassing ontwerpt, bedenkt u door de vereisten voor de lange termijn en maakt u keuzen waarmee uw service kan worden geschaald om te voldoen aan de vraag naar een hoge klant.
@@ -33,7 +22,7 @@ Voor services die grote hoeveel heden gegevens op de Vm's beheren, moet de capac
 ## <a name="determine-how-many-nodes-you-need"></a>Bepalen hoeveel knoop punten u nodig hebt
 Door uw service te partitioneren, kunt u de gegevens van uw service schalen. Zie [partitioneren service Fabric](service-fabric-concepts-partitioning.md)voor meer informatie over partitioneren. Elke partitie moet binnen één virtuele machine passen, maar er kunnen meerdere (kleine) partities op één virtuele machine worden geplaatst. Als u meer kleine partities hebt, beschikt u dus over meer flexibiliteit dan met een paar grotere partities. Als de trans actie veel partities heeft, neemt Service Fabric overhead toe en kunt u geen trans acties uitvoeren tussen partities. Er is ook meer potentieel netwerk verkeer als uw service code regel matig toegang nodig heeft tot delen van gegevens die zich in verschillende partities bevinden. Bij het ontwerpen van uw service moet u deze voor-en nadelen aandachtig door nemen om te komen aan een efficiënte partitie strategie.
 
-We gaan ervan uit dat uw toepassing één stateful service heeft met een archief grootte die u verwacht tot DB_Size GB in een jaar. U bereidt meer toepassingen (en partities) toe als u de groei buiten dat jaar hebt.  De replicatie factor (RF) waarmee het aantal replica's voor uw service wordt bepaald, is van invloed op de totale DB_Size. De totale DB_Size in alle replica's is de replicatie factor vermenigvuldigd met DB_Size.  Node_Size vertegenwoordigt de schijf ruimte/het RAM per knoop punt dat u wilt gebruiken voor uw service. Voor de beste prestaties moet de DB_Size in het geheugen van het cluster passen en moet er een Node_Size worden gekozen dat rond het RAM-geheugen van de virtuele machine ligt. Door een Node_Size toe te wijzen dat groter is dan de RAM-capaciteit, vertrouwt u op het wissel bestand dat wordt verschaft door de Service Fabric-runtime. Het is dus mogelijk dat uw prestaties niet optimaal zijn als uw volledige gegevens worden beschouwd als dynamisch (sinds de gegevens worden in-of uitgewisseld). Voor veel services waarbij slechts een fractie van de gegevens heet, is het echter rendabeler.
+We gaan ervan uit dat uw toepassing één stateful service heeft met een archief grootte die u verwacht te groeien tot DB_Size GB in een jaar. U bereidt meer toepassingen (en partities) toe als u de groei buiten dat jaar hebt.  De replicatie factor (RF) waarmee het aantal replica's voor uw service wordt bepaald, is van invloed op de totale DB_Size. De totale DB_Size in alle replica's is de replicatie factor vermenigvuldigd met DB_Size.  Node_Size staat voor de schijf ruimte/het RAM per knoop punt dat u wilt gebruiken voor uw service. Voor de beste prestaties moet de DB_Size in het geheugen passen in het cluster en moet er een Node_Size dat rond het RAM-geheugen van de virtuele machine ligt, worden gekozen. Door een Node_Size toe te wijzen dat groter is dan de RAM-capaciteit, vertrouwt u op het wissel bestand dat wordt verschaft door de Service Fabric-runtime. Het is dus mogelijk dat uw prestaties niet optimaal zijn als uw volledige gegevens worden beschouwd als dynamisch (sinds de gegevens worden in-of uitgewisseld). Voor veel services waarbij slechts een fractie van de gegevens heet, is het echter rendabeler.
 
 Het aantal knoop punten dat is vereist voor de maximale prestaties kan als volgt worden berekend:
 

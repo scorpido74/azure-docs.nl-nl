@@ -1,25 +1,14 @@
 ---
-title: Een Azure Service Fabric-containertoepassing maken in Linux | Microsoft Docs
+title: Een Azure Service Fabric-container toepassing maken in Linux
 description: Maak uw eerste Linux-containertoepassing in Azure Service Fabric. Bouw een Docker-installatiekopie met uw toepassing, push de installatiekopie naar een containerregister, en bouw en implementeer een Service Fabric-containertoepassing.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 1/4/2019
-ms.author: atsenthi
-ms.openlocfilehash: 2bb9a5e8e42901f22d9f68d691684614c7161620
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f2f8c7884323667f843382b02c73a570e58617f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650659"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457969"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Uw eerste Service Fabric-containertoepassing maken in Linux
 > [!div class="op_single_selector"]
@@ -124,9 +113,9 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 Bij *naam* kunt de actieve container een naam geven (in plaats van de container-id).
 
-Maak verbinding met de actieve container. Open een webbrowser die verwijst naar het IP-adres dat is geretourneerd op poort 4000, bijvoorbeeld '\/http:/localhost: 4000 '. Als het goed is, ziet u de koptekst Hallo wereld! weergegeven in de browser.
+Maak verbinding met de actieve container. Open een webbrowser die verwijst naar het IP-adres dat is geretourneerd op poort 4000, bijvoorbeeld ' http:\//localhost: 4000 '. Als het goed is, ziet u de koptekst Hallo wereld! weergegeven in de browser.
 
-![Hallo wereld!][hello-world]
+![Hello World!][hello-world]
 
 Als u de container wilt stoppen, voert u dit uit:
 
@@ -143,7 +132,7 @@ docker rm my-web-site
 ## <a name="push-the-image-to-the-container-registry"></a>De installatiekopie naar het containerregister pushen
 Nadat u hebt gecontroleerd of de toepassing wordt uitgevoerd in Docker, pusht u de installatiekopie naar het register in Azure Container Registry.
 
-Voer `docker login` uit om u aan te melden bij uw container register met uw [register referenties](../container-registry/container-registry-authentication.md).
+Voer `docker login` uit om u aan te melden bij het container register met uw [register referenties](../container-registry/container-registry-authentication.md).
 
 In het volgende voorbeeld worden de id en het wachtwoord van een [service-principal](../active-directory/develop/app-objects-and-service-principals.md) van Azure Active Directory doorgegeven. U hebt bijvoorbeeld een service-principal aan uw register toegewezen voor een automatiseringsscenario. U kunt zich ook aanmelden met uw gebruikers naam en wacht woord voor het REGI ster.
 
@@ -176,7 +165,7 @@ Omdat voor deze installatiekopie een workloadinvoerpunt is gedefinieerd, hoeft u
 
 Geef '1' exemplaar op.
 
-Geef de poort toewijzing in de juiste indeling op. Voor dit artikel moet u de poort toewijzing ```80:4000``` opgeven. Als u dit doet, worden alle binnenkomende aanvragen die afkomstig zijn van poort 4000 op de hostmachine omgeleid naar poort 80 van de container.
+Geef de poort toewijzing in de juiste indeling op. Voor dit artikel moet u ```80:4000``` als poort toewijzing opgeven. Als u dit doet, worden alle binnenkomende aanvragen die afkomstig zijn van poort 4000 op de hostmachine omgeleid naar poort 80 van de container.
 
 ![Service Fabric Yeoman-generator voor containers][sf-yeoman]
 
@@ -185,7 +174,7 @@ Geef de poort toewijzing in de juiste indeling op. Voor dit artikel moet u de po
 Bekijk [container opslagplaats verificatie](configure-container-repository-credentials.md)voor meer informatie over het configureren van verschillende verificatie typen voor het downloaden van container installatie kopieën.
 
 ## <a name="configure-isolation-mode"></a>Isolatiemodus configureren
-Met de 6,3-runtime versie wordt VM-isolatie ondersteund voor Linux-containers, waardoor er twee isolatie modi voor containers zijn: proces-en Hyper-V-ondersteuning. Met de isolatie modus voor Hyper-V worden de kernels geïsoleerd tussen elke container en de container-host. De Hyper-V-isolatie wordt geïmplementeerd met behulp van [Clear-containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). De isolatie modus wordt opgegeven voor Linux-clusters in `ServicePackageContainerPolicy` het-element in het manifest bestand van de toepassing. De isolatiemodi die kunnen worden opgegeven zijn `process`, `hyperv` en `default`. De standaard instelling is proces isolatie modus. Het volgende codefragment toont hoe de isolatiemodus wordt opgegeven in het manifestbestand van de toepassing.
+Met de 6,3-runtime versie wordt VM-isolatie ondersteund voor Linux-containers, waardoor er twee isolatie modi voor containers zijn: proces-en Hyper-V-ondersteuning. Met de isolatie modus voor Hyper-V worden de kernels geïsoleerd tussen elke container en de container-host. De Hyper-V-isolatie wordt geïmplementeerd met behulp van [Clear-containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). De isolatie modus wordt opgegeven voor Linux-clusters in het `ServicePackageContainerPolicy`-element in het manifest bestand van de toepassing. De isolatiemodi die kunnen worden opgegeven zijn `process`, `hyperv` en `default`. De standaard instelling is proces isolatie modus. Het volgende codefragment toont hoe de isolatiemodus wordt opgegeven in het manifestbestand van de toepassing.
 
 ```xml
 <ServiceManifestImport>
@@ -200,7 +189,7 @@ Met de 6,3-runtime versie wordt VM-isolatie ondersteund voor Linux-containers, w
 
 
 ## <a name="configure-resource-governance"></a>Resourcebeheer configureren
-[Resourcebeheer](service-fabric-resource-governance.md) beperkt de resources die de container op de host kan gebruiken. Het element `ResourceGovernancePolicy`, dat is opgegeven in het toepassingsmanifest, wordt gebruikt om resourcebeperkingen te declareren voor een servicecodepakket. Resource limieten kunnen worden ingesteld voor de volgende resources: Geheugen, Memory, kunnen (CPU-relatief gewicht), MemoryReservationInMB, BlkioWeight (BlockIO relatief gewicht). In dit voorbeeld krijgt het servicepakket Guest1Pkg één kern op de clusterknooppunten waar het wordt geplaatst. Geheugenlimieten zijn absoluut, dus het codepakket wordt beperkt tot 1024 MB aan geheugen (en een gegarandeerde flexibele reservering hierop). Codepakketten (containers of processen) kunnen niet meer geheugen toewijzen dan deze limiet. Een poging dit toch te doen, leidt tot een Onvoldoende geheugen-uitzondering. Voor een effectieve handhaving van resourcebeperkingen moeten voor alle pakketten binnen een servicepakket geheugenlimieten zijn opgegeven.
+[Resourcebeheer](service-fabric-resource-governance.md) beperkt de resources die de container op de host kan gebruiken. Het element `ResourceGovernancePolicy`, dat is opgegeven in het toepassingsmanifest, wordt gebruikt om resourcebeperkingen te declareren voor een servicecodepakket. Er kunnen resourcebeperkingen worden ingesteld voor de volgende resources: geheugen, MemorySwap, CpuShares (relatief CPU-gewicht), MemoryReservationInMB, BlkioWeight (relatief BlockIO-gewicht). In dit voorbeeld krijgt het servicepakket Guest1Pkg één kern op de clusterknooppunten waar het wordt geplaatst. Geheugenlimieten zijn absoluut, dus het codepakket wordt beperkt tot 1024 MB aan geheugen (en een gegarandeerde flexibele reservering hierop). Codepakketten (containers of processen) kunnen niet meer geheugen toewijzen dan deze limiet. Een poging dit toch te doen, leidt tot een Onvoldoende geheugen-uitzondering. Voor een effectieve handhaving van resourcebeperkingen moeten voor alle pakketten binnen een servicepakket geheugenlimieten zijn opgegeven.
 
 ```xml
 <ServiceManifestImport>
@@ -243,13 +232,13 @@ U kunt het gedrag van de **STATUSCONTROLE** voor elke container configureren doo
     </Policies>
 </ServiceManifestImport>
 ```
-*IncludeDockerHealthStatusInSystemHealthReport* is standaard ingesteld op **True**, *RestartContainerOnUnhealthyDockerHealthStatus* is ingesteld op **False**en *TreatContainerUnhealthyStatusAsError* is ingesteld op **False** . 
+*IncludeDockerHealthStatusInSystemHealthReport* is standaard ingesteld op **True**, *RestartContainerOnUnhealthyDockerHealthStatus* is ingesteld op **False**en *TreatContainerUnhealthyStatusAsError* is ingesteld op **False**. 
 
 Als *RestartContainerOnUnhealthyDockerHealthStatus* is ingesteld op **true**, wordt een herhaaldelijk niet goed werkende container opnieuw opgestart (mogelijk op andere knooppunten).
 
 Als *TreatContainerUnhealthyStatusAsError* is ingesteld op **True**, worden **fouten** rapporten weer gegeven wanneer de *health_status* van de container *beschadigd*is.
 
-Als u de **STATUSCONTROLE**-integratie voor het hele Service Fabric-cluster wilt uitschakelen, stelt u [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) in op **false**.
+Als u de integratie van **STATUSCONTROLE** wilt uitschakelen voor de hele Service Fabric-cluster, moet u [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) instellen op **onwaar**.
 
 ## <a name="deploy-the-application"></a>De toepassing implementeren
 Als de toepassing is gemaakt, kunt u deze met behulp van de Service Fabric-CLI implementeren in het lokale cluster.
@@ -260,18 +249,18 @@ Maak verbinding met het lokale cluster van Service Fabric.
 sfctl cluster select --endpoint http://localhost:19080
 ```
 
-Gebruik het installatie script https://github.com/Azure-Samples/service-fabric-containers/ dat is opgenomen in de sjablonen om het toepassings pakket te kopiëren naar de installatie kopie opslag van het cluster, het toepassings type te registreren en een exemplaar van de toepassing te maken.
+Gebruik het installatie script dat is opgenomen in de sjablonen op https://github.com/Azure-Samples/service-fabric-containers/ om het toepassings pakket te kopiëren naar de installatie kopie opslag van het cluster, het toepassings type te registreren en een exemplaar van de toepassing te maken.
 
 
 ```bash
 ./install.sh
 ```
 
-Open een browser en ga naar service Fabric Explorer op http:\//localhost: 19080/Explorer (Vervang localhost door het privé-IP-adres van de virtuele machine als u Vagrant op Mac OS X gebruikt). Vouw het knooppunt Toepassingen uit. U ziet dat er nu een vermelding is voor uw toepassingstype en nog een voor het eerste exemplaar van dat type.
+Open een browser en ga naar Service Fabric Explorer op http:\//localhost: 19080/Explorer (Vervang localhost door het privé-IP-adres van de virtuele machine als u Vagrant op Mac OS X gebruikt). Vouw het knooppunt Toepassingen uit. U ziet dat er nu een vermelding is voor uw toepassingstype en nog een voor het eerste exemplaar van dat type.
 
-Maak verbinding met de actieve container. Open een webbrowser die verwijst naar het IP-adres dat is geretourneerd op poort 4000, bijvoorbeeld '\/http:/localhost: 4000 '. Als het goed is, ziet u de koptekst Hallo wereld! weergegeven in de browser.
+Maak verbinding met de actieve container. Open een webbrowser die verwijst naar het IP-adres dat is geretourneerd op poort 4000, bijvoorbeeld ' http:\//localhost: 4000 '. Als het goed is, ziet u de koptekst Hallo wereld! weergegeven in de browser.
 
-![Hallo wereld!][hello-world]
+![Hello World!][hello-world]
 
 
 ## <a name="clean-up"></a>Opruimen
@@ -431,7 +420,7 @@ U kunt het Service Fabric-cluster configureren voor het verwijderen van ongebrui
 
 De installatiekopieën die niet moeten worden verwijderd, kunt u opgeven met de parameter `ContainerImagesToSkip`. 
 
-## <a name="configure-container-image-download-time"></a>Downloadtijd van de containerinstallatiekopie configureren
+## <a name="configure-container-image-download-time"></a>Downloadtijd van containerinstallatiekopie configureren
 
 De Service Fabric-runtime wijst 20 minuten toe om containerinstallatiekopieën te downloaden en uit te pakken. Voor de meeste containerinstallatiekopieën is dat voldoende. Voor grote kopieën, of als de netwerkverbinding langzaam is, kan het echter nodig zijn om de toegewezen tijd te verlengen, zodat het downloaden en uitpakken van de installatiekopie niet voortijdig wordt afgebroken. Deze time-out wordt ingesteld met het kenmerk **ContainerImageDownloadTimeout** in de sectie **Hosting** van het clustermanifest, zoals u in het volgende fragment ziet:
 
