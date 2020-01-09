@@ -1,128 +1,119 @@
 ---
-title: .NET Core Azure Service Fabric-toepassingen ontwikkelen met Visual Studio Code | Microsoft Docs
-description: In dit artikel laat zien hoe bouwen, implementeren en fouten opsporen in .NET Core-Service Fabric-toepassingen met behulp van Visual Studio Code.
-services: service-fabric
-documentationcenter: .net
+title: .NET core-toepassingen ontwikkelen met Visual Studio code
+description: In dit artikel wordt beschreven hoe u .NET Core Service Fabric-toepassingen bouwt, implementeert en oplost met Visual Studio code.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 60b634b0b927804249148737ee7a99c0e86dd7d6
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 1d7478e6b81ef2c53ca6194197336e91d3ff250b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537785"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614520"
 ---
-# <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Ontwikkel C# Service Fabric-toepassingen met Visual Studio Code
+# <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Service Fabric C# -toepassingen ontwikkelen met Visual Studio code
 
-De [Service Fabric Reliable Services-extensie voor VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-service-fabric-reliable-services) gemakkelijk om .NET Core-Service Fabric-toepassingen op Windows, Linux en macOS-besturingssystemen te bouwen.
+Met de [uitbrei ding Service Fabric reliable Services voor VS code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-service-fabric-reliable-services) kunt u eenvoudig .net core service Fabric-toepassingen bouwen op Windows-, Linux-en macOS-besturings systemen.
 
-Dit artikel ziet u hoe u kunt bouwen, implementeren en fouten opsporen in een .NET Core-Service Fabric-toepassing met behulp van Visual Studio Code.
+In dit artikel leest u hoe u een .NET Core Service Fabric-toepassing bouwt, implementeert en oplost met Visual Studio code.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u al hebt geïnstalleerd VS Code, de Service Fabric Reliable Services-extensie voor VS Code en eventuele afhankelijkheden die nodig zijn voor uw ontwikkelomgeving. Zie voor meer informatie, [aan de slag](./service-fabric-get-started-vs-code.md#prerequisites).
+In dit artikel wordt ervan uitgegaan dat u al VS code, het Service Fabric Reliable Services uitbrei ding voor VS code en eventuele afhankelijkheden hebt geïnstalleerd die voor uw ontwikkel omgeving zijn vereist. Zie [aan](./service-fabric-get-started-vs-code.md#prerequisites)de slag voor meer informatie.
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
-In dit artikel wordt de CounterService toepassing in de [Service Fabric .NET Core aan de slag-voorbeelden voor GitHub-opslagplaats](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started). 
+In dit artikel wordt de CounterService-toepassing gebruikt in de [github-opslag plaats service Fabric .net core aan](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)de slag. 
 
-Als u wilt klonen van de opslagplaats naar uw ontwikkelmachine, voer de volgende opdracht uit vanuit een terminalvenster (opdrachtvenster op Windows):
+Als u de opslag plaats naar uw ontwikkel computer wilt klonen, voert u de volgende opdracht uit vanuit een Terminal venster (opdracht venster in Windows):
 
 ```
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started.git
 ```
 
-## <a name="open-the-application-in-vs-code"></a>Open de toepassing in VS Code
+## <a name="open-the-application-in-vs-code"></a>Open de toepassing in VS code
 
 ### <a name="windows"></a>Windows
-Met de rechtermuisknop op het pictogram VS Code in het Menu Start en kies **als administrator uitvoeren**. Als u wilt het foutopsporingsprogramma koppelen aan uw services, moet u VS Code als administrator uitvoeren.
+Klik met de rechter muisknop op het VS-code pictogram in het menu Start en kies **als administrator uitvoeren**. Als u het fout opsporingsprogramma wilt koppelen aan uw services, moet u VS code uitvoeren als beheerder.
 
 ### <a name="linux"></a>Linux
-Met behulp van de terminal, bladert u naar de /service-fabric-dotnet-core-getting-started/Services/CounterService pad vanuit de map die de toepassing lokaal is gekloond in.
+Ga met behulp van de terminal naar het pad/service-fabric-dotnet-core-getting-started/Services/CounterService van de Directory waarnaar de toepassing lokaal is gekloond.
 
-Voer de volgende opdracht om te openen van VS Code als een hoofdgebruiker zodat het foutopsporingsprogramma aan uw services koppelen kunt.
+Voer de volgende opdracht uit om VS code te openen als een hoofd gebruiker zodat het fout opsporingsprogramma kan koppelen aan uw services.
 ```
 sudo code . --user-data-dir='.'
 ```
 
-De toepassing wordt nu weergegeven in de VS Code-werkruimte.
+De toepassing moet nu worden weer gegeven in de VS code-werk ruimte.
 
-![Teller-servicetoepassing in de werkruimte](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-application-in-workspace.png)
+![Counter service-toepassing in werk ruimte](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-application-in-workspace.png)
 
 ## <a name="build-the-application"></a>De toepassing bouwen
-1. Druk op (Ctrl + Shift + p) te openen de **Command Palette** in VS Code.
-2. Zoek en selecteer de **Service Fabric: -Toepassing ontwikkelen** opdracht. Uitvoer van de build wordt verzonden naar de geïntegreerde terminal.
+1. Druk op (CTRL + SHIFT + p) om het **opdracht palet** te openen in VS code.
+2. Zoek en selecteer de **service Fabric: toepassings opdracht bouwen** . De build-uitvoer wordt verzonden naar de geïntegreerde Terminal.
 
-   ![Opdracht van de toepassing in VS Code bouwen](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-build-application.png)
+   ![Toepassings opdracht in VS code maken](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-build-application.png)
 
 ## <a name="deploy-the-application-to-the-local-cluster"></a>De toepassing implementeren in het lokale cluster
-Nadat u de toepassing hebt gebouwd, kunt u deze kunt implementeren met het lokale cluster. 
+Nadat u de toepassing hebt gemaakt, kunt u deze implementeren in het lokale cluster. 
 
-1. Uit de **Command Palette**, selecteer de **Service Fabric: Implementatie van toepassing (Localhost) opdracht**. De uitvoer van het installatieproces wordt verzonden naar de geïntegreerde terminal.
+1. Selecteer in het **opdracht palet**de **opdracht service Fabric: Deploy toepassing (localhost)** . De uitvoer van het installatie proces wordt verzonden naar de geïntegreerde Terminal.
 
-   ![Opdracht van de toepassing in VS Code implementeren](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
+   ![Opdracht toepassing implementeren in VS code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
-4. Wanneer de implementatie voltooid is, start u een browser en opent u Service Fabric Explorer: http:\//localhost:19080 / Explorer. U ziet dat de toepassing wordt uitgevoerd. Dit kan enige tijd duren, dus zorg patiënt. 
+4. Wanneer de implementatie is voltooid, start u een browser en opent u Service Fabric Explorer: http:\//localhost: 19080/Explorer. U ziet dat de toepassing wordt uitgevoerd. Dit kan enige tijd duren. het is dus een ogen blik geduld. 
 
-   ![Teller-servicetoepassing in Service Fabric Explorer](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
+   ![Counter service-toepassing in Service Fabric Explorer](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
 
-4. Nadat u hebt gecontroleerd dat de toepassing wordt uitgevoerd, start u een browser en opent u deze pagina: http:\//localhost:31002. Dit is de web-front-end van de toepassing. Vernieuw de pagina om te zien van de huidige waarde van de teller, zoals wordt opgehoogd.
+4. Nadat u hebt gecontroleerd of de toepassing wordt uitgevoerd, start u een browser en opent u deze pagina: http:\//localhost: 31002. Dit is de web-front-end van de toepassing. Vernieuw de pagina om de huidige waarde van de teller te zien wanneer deze wordt verhoogd.
 
-   ![Teller-servicetoepassing in Browser](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
+   ![Counter service-toepassing in browser](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
 
 ## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>De toepassing publiceren in een Azure Service Fabric-cluster
-Samen met het implementeren van de toepassing op het lokale cluster, kunt u ook de toepassing naar een externe Azure Service Fabric-cluster publiceren. 
+Naast het implementeren van de toepassing naar het lokale cluster, kunt u de toepassing ook publiceren naar een extern Azure Service Fabric-cluster. 
 
-1. Zorg ervoor dat u uw toepassing met behulp van de bovenstaande instructies hebt gebouwd. Het gegenereerde configuratiebestand bijwerken `Cloud.json` met de details van het externe cluster die u wilt publiceren.
+1. Zorg ervoor dat u uw toepassing hebt gemaakt met behulp van de bovenstaande instructies. Werk het gegenereerde configuratie bestand bij `Cloud.json` met de details van het externe cluster waarnaar u wilt publiceren.
 
-2. Uit de **Command Palette**, selecteer de **Service Fabric: Opdracht van de toepassing publiceren**. De uitvoer van het installatieproces wordt verzonden naar de geïntegreerde terminal.
+2. Selecteer in het **opdracht palet**de **service Fabric: opdracht toepassing publiceren**. De uitvoer van het installatie proces wordt verzonden naar de geïntegreerde Terminal.
 
-   ![Opdracht van de toepassing publiceren in VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
+   ![Opdracht toepassing publiceren in VS code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
 
-3. Wanneer de implementatie voltooid is, start u een browser en opent u Service Fabric Explorer: `https:<clusterurl>:19080/Explorer`. U ziet dat de toepassing wordt uitgevoerd. Dit kan enige tijd duren, dus zorg patiënt. 
+3. Wanneer de implementatie is voltooid, start u een browser en opent u Service Fabric Explorer: `https:<clusterurl>:19080/Explorer`. U ziet dat de toepassing wordt uitgevoerd. Dit kan enige tijd duren. het is dus een ogen blik geduld. 
 
 ## <a name="debug-the-application"></a>Fouten in de toepassing opsporen
-Wanneer foutopsporing in toepassingen in VS Code, moet de toepassing worden uitgevoerd op een lokaal cluster. Onderbrekingspunten kunnen vervolgens worden toegevoegd aan de code.
+Bij het opsporen van fouten in toepassingen in VS code moet de toepassing worden uitgevoerd op een lokaal cluster. Onderbrekings punten kunnen vervolgens worden toegevoegd aan de code.
 
-Om in te stellen een onderbrekingspunt en fouten opsporen, voert u de volgende stappen uit:
-1. Openen in Explorer de */src/CounterServiceApplication/CounterService/CounterService.cs* bestands- en stel een onderbrekingspunt in op de regel 62 binnen de `RunAsync` methode.
-3. Klik op het pictogram Debug in de **Activiteitenbalk** het foutopsporingsprogramma-weergave openen in VS Code. Klik op het tandwielpictogram aan de bovenkant van de weergave voor foutopsporing en selecteer **.NET Core** in de vervolgkeuzelijst omgeving. Het bestand launch.json wordt geopend. U kunt dit bestand kunt sluiten. U ziet nu de configuratie-opties in het menu voor het configureren van foutopsporing naast de knop uitvoeren (groene pijl).
+Voer de volgende stappen uit om een onderbrekings punt en fout opsporing in te stellen:
+1. Open het */src/CounterServiceApplication/CounterService/CounterService.cs* -bestand in Verkenner en stel een onderbrekings punt in op regel 62 in de `RunAsync` methode.
+3. Klik op het pictogram fout opsporing op de **activiteiten balk** om de weer gave fout opsporing in VS code te openen. Klik boven aan de weer gave van het fout opsporingsprogramma op het tandwiel pictogram en selecteer **.net core** in het menu van de vervolg keuzelijst omgeving. Het bestand Launch. json wordt geopend. U kunt dit bestand sluiten. U ziet nu configuratie opties in het menu Debug Configuration naast de knop uitvoeren (groene pijl).
 
-   ![Fouten opsporen in pictogram in de VS Code-werkruimte](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-icon-workspace.png)
+   ![Pictogram fout opsporing in VS code-werk ruimte](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-icon-workspace.png)
 
-2. Selecteer **.NET Core koppelen** in het menu debug-configuratie.
+2. Selecteer **.net core-koppeling** in het menu configuratie voor fout opsporing.
 
-   ![Fouten opsporen in pictogram in de VS Code-werkruimte](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
+   ![Pictogram fout opsporing in VS code-werk ruimte](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
-3. Open Service Fabric Explorer in een browser: http:\//localhost:19080 / Explorer. Klik op **toepassingen** en inzoomen naar beneden om te bepalen van het primaire knooppunt dat de CounterService op wordt uitgevoerd. In de afbeelding hieronder het primaire knooppunt voor de CounterService is 0-knooppunt.
+3. Open Service Fabric Explorer in een browser: http:\//localhost: 19080/Explorer. Klik op **toepassingen** en zoom in om het primaire knoop punt te bepalen waarop de CounterService wordt uitgevoerd. In de afbeelding onder het primaire knoop punt voor de CounterService is knoop punt 0.
 
-   ![Primaire knooppunt voor CounterService](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
+   ![Primair knoop punt voor CounterService](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
 
-4. In VS Code, klikt u op het uitvoeren (groene pijl)-pictogram naast de **.NET Core koppelen** foutopsporing configuratie. Selecteer in het dialoogvenster voor het selecteren van proces het CounterService proces dat wordt uitgevoerd op het primaire knooppunt dat u in stap 4 hebt geïdentificeerd.
+4. In VS code klikt u op het pictogram uitvoeren (groene pijl) naast de **.net core** -configuratie voor fout opsporing koppelen. Selecteer in het dialoog venster proces selectie het CounterService-proces dat wordt uitgevoerd op het primaire knoop punt dat u in stap 4 hebt geïdentificeerd.
 
-   ![Primaire proces](./media/service-fabric-develop-csharp-applications-with-vs-code/select-process.png)
+   ![Primair proces](./media/service-fabric-develop-csharp-applications-with-vs-code/select-process.png)
 
-5. Het onderbrekingspunt in de *CounterService.cs* bestand zeer snel worden bereikt. U kunt vervolgens de waarden van de lokale variabelen verkennen. Gebruik de werkbalk Foutopsporing aan de bovenkant van VS Code wilt uitvoeren, stap over regels en-methoden, stap doorgaan of stap uit de huidige methode. 
+5. Het onderbrekings punt in het *CounterService.cs* -bestand wordt zeer snel bereikt. Vervolgens kunt u de waarden van de lokale variabelen verkennen. Gebruik de werk balk fout opsporing boven aan de code om door te gaan met de uitvoering, stap over lijnen, Step Into methoden of stap uit te voeren van de huidige methode. 
 
-   ![Fouten opsporen in waarden](./media/service-fabric-develop-csharp-applications-with-vs-code/breakpoint-hit.png)
+   ![Debug-waarden](./media/service-fabric-develop-csharp-applications-with-vs-code/breakpoint-hit.png)
 
-6. Als u de foutopsporingssessie beëindigen, klikt u op de plug-pictogram op de werkbalk Foutopsporing aan de bovenkant van VS Code...
+6. Als u de foutopsporingssessie wilt beëindigen, klikt u op het pictogram Plug op de werk balk fout opsporing boven aan VS-code...
    
-   ![Foutopsporing voor verbreken](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-bar-disconnect.png)
+   ![Verbinding met fout opsporingsprogramma verbreken](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-bar-disconnect.png)
        
-7. Wanneer u klaar bent met het opsporen van fouten, kunt u de **Service Fabric: Toepassing verwijderen** opdracht aan de CounterService toepassing verwijderen uit uw lokale cluster. 
+7. Wanneer u de fout opsporing hebt voltooid, kunt u de **service Fabric: toepassing verwijderen** gebruiken om de toepassing CounterService uit het lokale cluster te verwijderen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [ontwikkelen en fouten opsporen in Service Fabric Java-toepassingen met VS Code](./service-fabric-develop-java-applications-with-vs-code.md).
+* Meer informatie over het [ontwikkelen en opsporen van fouten in Java service Fabric-toepassingen met VS code](./service-fabric-develop-java-applications-with-vs-code.md).
 
 
 

@@ -3,14 +3,14 @@ title: 'Meerdere afhankelijke services uitvoeren: node. js & Visual Studio code'
 services: azure-dev-spaces
 ms.date: 11/21/2018
 ms.topic: tutorial
-description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
+description: Deze zelf studie laat zien hoe u Azure dev Spaces en Visual Studio code kunt gebruiken om fouten op te sporen in een multi-service node. js-toepassing in azure Kubernetes service
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: 357a03e154e3c0146d3275e8cba64bc2d966f5b8
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a5fa0aae3a966dd96ee95e6bcafc3b2eec4e6837
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325666"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438293"
 ---
 # <a name="running-multiple-dependent-services-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>Meerdere afhankelijke services uitvoeren: node. js en Visual Studio code met Azure dev Spaces
 

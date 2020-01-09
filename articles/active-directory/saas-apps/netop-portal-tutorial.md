@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 715e9b4f3baace39cfe8bebe011ae284fc4c6b2b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c2e456114d186e548cede656da8e8d227efa09aa
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893259"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550091"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netop-portal"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met de NetOp-Portal
 
@@ -84,15 +84,15 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. In het gedeelte van de **basis configuratie van SAML** is de toepassing vooraf geconfigureerd in de modus **IDP** gestart en de benodigde url's zijn al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door te klikken op de knop  **Opslaan** .
+1. In de sectie **basis configuratie van SAML** is de toepassing vooraf geconfigureerd in de gestarte modus **IDP** en de benodigde url's zijn al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door te klikken op de knop **Opslaan** .
 
 1. De NetOp-Portal toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![image](common/edit-attribute.png)
+    ![installatiekopie](common/edit-attribute.png)
 
 1. De NetOp-Portal toepassing verwacht nog maar enkele kenmerken die in de SAML-respons worden door gegeven, die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereiste.
 
-    | Naam |  Bronkenmerk|
+    | Name |  Bronkenmerk|
     | ---------------| --------- |
     | NRC-ACCOUNT-ID | "adfs-demo" |
     | NRC-EMAIL | user.userprincipalname |
@@ -117,7 +117,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Maken**.
@@ -146,7 +146,7 @@ Als u eenmalige aanmelding wilt configureren op de **NetOp-Portal** , moet u de 
 
 ### <a name="create-netop-portal-test-user"></a>Testgebruiker voor Netop Portal maken
 
-In deze sectie maakt u een gebruiker met de naam Britta Simon in Netop Portal. Werk met het  [ondersteuningsteam van Netop Portal](mailto:casemanager@netop.com) om de gebruikers in het Netop Portal-platform toe te voegen. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Britta Simon in Netop Portal. Werk met [NetOp Portal-ondersteunings team](mailto:casemanager@netop.com) om de gebruikers toe te voegen in het NetOp-portal platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ## <a name="test-sso"></a>SSO testen 
 

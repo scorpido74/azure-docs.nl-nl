@@ -1,19 +1,14 @@
 ---
-title: 'Azure-Service Fabric: een Service Fabric toepassing toegang verlenen tot andere Azure-resources | Microsoft Docs'
+title: Een toepassing toegang verlenen tot andere Azure-resources
 description: In dit artikel wordt uitgelegd hoe u uw beheerde identiteits Service Fabric toegang tot toepassingen kunt verlenen aan andere Azure-resources die op Azure Active Directory gebaseerde verificatie ondersteunen.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/08/2019
-ms.author: atsenthi
-ms.openlocfilehash: 467b202cf6b981969316a2646aac99f788f7a2f4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 12/09/2019
+ms.openlocfilehash: 3b1feab1e67e993df771564a1a7c1aba4236b2c0
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091184"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614790"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Het verlenen van toegang tot Azure-resources door de beheerde identiteit van een Service Fabric-toepassing (preview)
 
@@ -29,18 +24,18 @@ U kunt de Service Fabric beheerde identiteit van de toepassing (in dit geval toe
 3. Beschrijving Controleer de bestaande toegang: een door het systeem of de gebruiker toegewezen beheerde identiteit selecteren in het besturings element ' zoeken '; Selecteer de juiste identiteit in de lijst met resultaten
 4. Klik boven aan de pagina op functie toewijzing toevoegen om een nieuwe roltoewijzing toe te voegen voor de identiteit van de toepassing.
 Selecteer onder rol in de vervolg keuzelijst Storage BLOB data Reader.
-5. Kies `User assigned managed identity`in de volgende vervolg keuzelijst toegang toewijzen aan.
+5. Kies in de volgende vervolg keuzelijst onder toegang toewijzen aan de optie `User assigned managed identity`.
 6. Controleer vervolgens of het juiste abonnement wordt weer gegeven in de vervolg keuzelijst abonnement en stel de resource groep vervolgens in op alle resource groepen.
 7. Kies onder selecteren de UAI die overeenkomt met de Service Fabric toepassing en klik vervolgens op opslaan.
 
-Ondersteuning voor door het systeem toegewezen Service Fabric beheerde identiteiten omvatten geen integratie in de Azure Portal; Als uw toepassing gebruikmaakt van een door het systeem toegewezen identiteit, moet u eerst de client-id van de identiteit van de toepassing zoeken en vervolgens de bovenstaande stappen herhalen, maar `Azure AD user, group, or service principal` de optie selecteren in het besturings element zoeken.
+Ondersteuning voor door het systeem toegewezen Service Fabric beheerde identiteiten omvatten geen integratie in de Azure Portal; Als uw toepassing een door het systeem toegewezen identiteit gebruikt, moet u eerst de client-ID van de identiteit van de toepassing zoeken en vervolgens de bovenstaande stappen herhalen, maar de optie `Azure AD user, group, or service principal` selecteren in het besturings element zoeken.
 
 ## <a name="granting-access-to-azure-key-vault"></a>Toegang verlenen tot Azure Key Vault
 Net als bij het openen van opslag kunt u gebruikmaken van de beheerde identiteit van een Service Fabric toepassing om toegang te krijgen tot een Azure-sleutel kluis. De stappen voor het verlenen van toegang in de Azure Portal zijn vergelijkbaar met die hierboven vermeld, en worden hier niet herhaald. Raadpleeg de onderstaande afbeelding voor verschillen.
 
 ![Toegangs beleid Key Vault](../key-vault/media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-Het volgende voor beeld illustreert het verlenen van toegang tot een kluis via een sjabloon implementatie. Voeg de onderstaande fragmenten toe als een andere vermelding onder het `resources` element van de sjabloon. In het voor beeld wordt gedemonstreerd hoe toegang wordt verleend voor door de gebruiker toegewezen en door het systeem toegewezen identiteits typen, respectievelijk het betreffende type kiezen.
+Het volgende voor beeld illustreert het verlenen van toegang tot een kluis via een sjabloon implementatie. Voeg de onderstaande fragment (en) toe als een andere vermelding onder het element `resources` van de sjabloon. In het voor beeld wordt gedemonstreerd hoe toegang wordt verleend voor door de gebruiker toegewezen en door het systeem toegewezen identiteits typen, respectievelijk het betreffende type kiezen.
 
 ```json
     # under 'variables':

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 0225405c5d3a511bbb2bbb08c1c13e5adedd5096
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: ad408df140be49da2e50ef810285dd850e9da6a1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903779"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638864"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Gegevens kopiëren van Azure Storage-blobs naar Azure Data Lake Storage Gen1
 
@@ -90,7 +90,7 @@ De para meters in de syntaxis worden hieronder beschreven:
 
 ### <a name="performance-considerations"></a>Prestatieoverwegingen
 
-Als u kopieert vanuit een Azure Blob Storage-account, wordt u mogelijk beperkt tijdens het kopiëren van de Blob-opslag. Hierdoor worden de prestaties van uw Kopieer taak verslechterd. Zie Azure Storage limieten bij [Azure-abonnement en service limieten](../azure-subscription-service-limits.md)voor meer informatie over de limieten van Azure Blob Storage.
+Als u kopieert vanuit een Azure Blob Storage-account, wordt u mogelijk beperkt tijdens het kopiëren van de Blob-opslag. Hierdoor worden de prestaties van uw Kopieer taak verslechterd. Zie Azure Storage limieten bij [Azure-abonnement en service limieten](../azure-resource-manager/management/azure-subscription-service-limits.md)voor meer informatie over de limieten van Azure Blob Storage.
 
 ## <a name="use-adlcopy-as-standalone-to-copy-data-from-another-data-lake-storage-gen1-account"></a>AdlCopy (als zelfstandig) gebruiken om gegevens te kopiëren van een andere Data Lake Storage Gen1-account
 

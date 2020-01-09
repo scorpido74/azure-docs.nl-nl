@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: f36906bfa6bbef43c0e3133bfa1e8a163810086f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 450f40c8ba49028d99143d7cf2b2995eb354f8fd
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928701"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551621"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Aan de slag met SQL Database Auditing
 
@@ -243,7 +243,7 @@ In productie zult u uw opslag sleutels waarschijnlijk periodiek vernieuwen. Wann
 - Wanneer u AAD-verificatie gebruikt, worden records met mislukte aanmeldingen *niet* weer gegeven in het SQL-controle logboek. Als u mislukte aanmeldings controle records wilt weer geven, gaat u naar de [Azure Active Directory-Portal]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), waarin de details van deze gebeurtenissen worden vastgelegd.
 
 
-## <a id="subheading-7"></a>SQL database controles beheren met Azure PowerShell
+## <a id="subheading-7"></a>Beheer van Azure SQL Server en data bases controleren met behulp van Azure PowerShell
 
 **Power shell-cmdlets (inclusief WHERE-component ondersteuning voor aanvullende filters)** :
 
@@ -256,7 +256,7 @@ In productie zult u uw opslag sleutels waarschijnlijk periodiek vernieuwen. Wann
 
 Zie [controle en detectie van bedreigingen configureren met Power shell](scripts/sql-database-auditing-and-threat-detection-powershell.md)voor een voor beeld van een script.
 
-## <a id="subheading-9"></a>SQL database controles beheren met REST API
+## <a id="subheading-8"></a>Beheer van Azure SQL Server en data bases controleren met behulp van REST API
 
 **REST API**:
 
@@ -272,7 +272,7 @@ Uitgebreid beleid met de component WHERE ondersteuning voor extra filtering:
 - [*Uitgebreide* controle beleid voor data base ophalen](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [*Uitgebreid* controle beleid voor server ophalen](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
-## <a id="subheading-10"></a>SQL database controle beheren met behulp van Azure Resource Manager sjablonen
+## <a id="subheading-9"></a>Azure SQL Server en database controle beheren met behulp van Azure Resource Manager sjablonen
 
 U kunt Azure SQL database auditing beheren met behulp van [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) sjablonen, zoals in deze voor beelden wordt weer gegeven:
 
@@ -289,10 +289,9 @@ U kunt Azure SQL database auditing beheren met behulp van [Azure Resource Manage
 [Analyze audit logs and reports]: #subheading-3
 [Practices for usage in production]: #subheading-5
 [Storage Key Regeneration]: #subheading-6
-[Manage SQL database auditing using Azure PowerShell]: #subheading-7
-[Blob/Table differences in Server auditing policy inheritance]: (#subheading-8)
-[Manage SQL database auditing using REST API]: #subheading-9
-[Manage SQL database auditing using ARM templates]: #subheading-10
+[Manage Azure SQL Server and Database auditing using Azure PowerShell]: #subheading-7
+[Manage SQL database auditing using REST API]: #subheading-8
+[Manage Azure SQL Server and Database auditing using ARM templates]: #subheading-9
 
 <!--Image references-->
 [1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png

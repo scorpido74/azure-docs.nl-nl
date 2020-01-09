@@ -6,14 +6,14 @@ ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: conceptual
 manager: gwallace
-description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
+description: Meer informatie over het instellen van continue integratie/continue implementatie met Azure DevOps met Azure dev Spaces
 keywords: Docker, Kubernetes, azure, AKS, Azure Container Service, containers
-ms.openlocfilehash: 525e18cba48756e725cbc7d837c2352b0fec74fe
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 66ff2080ad44098757a5d9360fd3307e65f7431a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280025"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438446"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Gebruik CI/CD met Azure dev Spaces
 
@@ -99,7 +99,7 @@ U hebt nu een CI-oplossing die automatisch *mywebapi* en Webfront- *End* bouwt v
 1. Voor de **standaard versie**kiest u **meest recent in de standaard vertakking build pijplijn met Tags**.
 1. Laat **labels** leeg.
 1. Stel de **bron alias** in op `drop`. De waarde van de **bron alias** wordt gebruikt door de vooraf gedefinieerde release taken zodat deze moet worden ingesteld.
-1. Klik op **Toevoegen**.
+1. Klik op **Add**.
 1. Klik nu op het pictogram bliksem flits op de nieuw gemaakte `drop` artefact bron, zoals hieronder wordt weer gegeven:
 
     ![Setup van continue implementatie van release artefact](../media/common/release-artifact-cd-setup.png)
@@ -119,7 +119,7 @@ U hebt nu een CI-oplossing die automatisch *mywebapi* en Webfront- *End* bouwt v
 1. Klik op **Opslaan** in de rechter bovenhoek en **OK**.
 1. Klik op **+ release** (naast de knop Opslaan) en **Maak een release**.
 1. Controleer onder **artefacten**de meest recente build van uw build-pijp lijn is geselecteerd.
-1. Klik op **Create**.
+1. Klik op **Maken**.
 
 Er wordt nu een geautomatiseerd release proces gestart, waarbij de *mywebapi* -en Webfront- *End* grafieken worden geïmplementeerd in uw Kubernetes-cluster in de _ontwikkel_ ruimte op het hoogste niveau. U kunt de voortgang van uw release bewaken in de Azure DevOps-webportal:
 

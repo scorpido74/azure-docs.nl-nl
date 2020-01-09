@@ -1,31 +1,22 @@
 ---
-title: Aanbevolen procedures voor Azure Service Fabric-netwerken | Microsoft Docs
-description: Aanbevolen procedures voor het beheren van Service Fabric netwerk.
-services: service-fabric
-documentationcenter: .net
+title: Aanbevolen procedures voor Azure Service Fabric-netwerken
+description: Aanbevolen procedures en ontwerp overwegingen voor het beheer van netwerk verbindingen met behulp van Azure Service Fabric.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 317977af9d41163013545a6e5f60bee887da596c
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: de2a74ad2d61de18d2150b72be3251e5b5583f2e
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262252"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551791"
 ---
-# <a name="networking"></a>Netwerken
+# <a name="networking"></a>Networking
 
 Wanneer u Azure Service Fabric-clusters maakt en beheert, biedt u netwerk connectiviteit voor uw knoop punten en toepassingen. De netwerk bronnen omvatten IP-adresbereiken, virtuele netwerken, load balancers en netwerk beveiligings groepen. In dit artikel vindt u aanbevolen procedures voor deze resources.
 
-Bekijk Azure [service Fabric-netwerk patronen](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking) voor meer informatie over het maken van clusters die gebruikmaken van de volgende functies: Bestaand virtueel netwerk of subnet, statisch openbaar IP-adres, intern alleen load balancer, of intern en extern load balancer.
+Bekijk Azure [service Fabric-netwerk patronen](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking) voor meer informatie over het maken van clusters die gebruikmaken van de volgende functies: bestaand virtueel netwerk of subnet, statisch openbaar IP-adres, alleen intern Load Balancer of interne en externe Load Balancer.
 
 ## <a name="infrastructure-networking"></a>Infrastructuur netwerken
 Maximaliseer de prestaties van uw virtuele machine met versneld netwerken door de eigenschap enableAcceleratedNetworking in uw Resource Manager-sjabloon te declareren, het volgende code fragment is van een Networkinterfaceconfigurations schaalset voor virtuele-machine schaal sets die versnelde netwerken inschakelen:
@@ -48,13 +39,13 @@ Maximaliseer de prestaties van uw virtuele machine met versneld netwerken door d
 ```
 Service Fabric cluster kan worden ingericht op [Linux met versneld netwerken](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)en [Windows met versneld netwerken](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell).
 
-Versnelde netwerken worden ondersteund voor Sku's van de Azure-machine serie: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 en MS/MMS. Versneld netwerken zijn getest met behulp van de Standard_DS8_v3-SKU op 1/23/2019 voor een Service Fabric Windows-cluster, en met Standard_DS12_v2 op 01/29/2019 voor een Service Fabric Linux-cluster.
+Versnelde netwerken worden ondersteund voor virtuele machines uit de Azure-machine serie: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 en MS/MMS. Versneld netwerken zijn getest met behulp van de Standard_DS8_v3 SKU op 1/23/2019 voor een Service Fabric Windows-cluster en gebruiken Standard_DS12_v2 op 01/29/2019 voor een Service Fabric Linux-cluster.
 
 Als u versneld netwerken op een bestaand Service Fabric cluster wilt inschakelen, moet u eerst [een service Fabric cluster uitschalen door een schaalset voor virtuele machines toe te voegen](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out), zodat u het volgende kunt doen:
 1. Een NodeType inrichten met versneld netwerken ingeschakeld
 2. Migreer uw services en hun status naar het ingerichte NodeType met versneld netwerken ingeschakeld
 
-Er is een uitbrei ding van de infra structuur vereist om versnelde netwerken in te scha kelen op een bestaand cluster, omdat het inschakelen van versnelde netwerken op de juiste manier downtime zou veroorzaken, omdat alle virtuele machines in een beschikbaarheidsset moeten worden gestopt en de toewijzing wordt ongedaan gemaakt [voordat versnelde netwerken inschakelen op een bestaande NIC](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms).
+Er is een uitbrei ding van de infra structuur vereist om versnelde netwerken in te scha kelen op een bestaand cluster, omdat het inschakelen van versneld netwerken op locatie downtime zou kunnen veroorzaken, omdat alle virtuele machines in een beschikbaarheidsset moeten worden gestopt en de toewijzing ongedaan wordt gemaakt [voordat er versnelde netwerken op een bestaande NIC worden ingeschakeld](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms).
 
 ## <a name="cluster-networking"></a>Cluster netwerken
 
@@ -76,8 +67,8 @@ Er is een uitbrei ding van de infra structuur vereist om versnelde netwerken in 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Een cluster maken op Vm's of computers met Windows Server: [Service Fabric cluster maken voor Windows Server](service-fabric-cluster-creation-for-windows-server.md)
-* Een cluster maken op Vm's of op computers met Linux: [Een Linux-cluster maken](service-fabric-cluster-creation-via-portal.md)
+* Een cluster maken op Vm's of computers met Windows Server: [service Fabric cluster maken voor Windows Server](service-fabric-cluster-creation-for-windows-server.md)
+* Een cluster maken op Vm's of computers met Linux: [een Linux-cluster maken](service-fabric-cluster-creation-via-portal.md)
 * Meer informatie over [ondersteuningsopties voor Service Fabric](service-fabric-support.md)
 
 [NSGSetup]: ./media/service-fabric-best-practices/service-fabric-nsg-rules.png

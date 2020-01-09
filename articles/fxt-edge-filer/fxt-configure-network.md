@@ -1,25 +1,25 @@
 ---
-title: Netwerk instellingen aanpassen voor de Microsoft Azure FXT Edge-cluster
+title: 'Zelf studie: netwerk configureren in een Azure FXT Edge-bestands cluster'
 description: Netwerk instellingen aanpassen na het maken van het Azure FXT Edge-bestands cluster
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: d250e566d884760244ee25e4c43d30fbe5323a7c
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: a40ff50dcb0934cbf1ea5222675bd75948ac1d03
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254889"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551060"
 ---
-# <a name="tutorial-configure-the-clusters-network-settings"></a>Zelf studie: de netwerk instellingen van het cluster configureren 
+# <a name="tutorial-configure-the-clusters-network-settings"></a>Zelf studie: de netwerk instellingen van het cluster configureren
 
 Voordat u een nieuw gemaakt Azure FXT Edge-cluster gebruikt, moet u verschillende netwerk instellingen voor uw werk stroom controleren en aanpassen. 
 
 In deze zelf studie worden de netwerk instellingen beschreven die u mogelijk moet aanpassen voor een nieuw cluster. 
 
-U leert: 
+U leert het volgende: 
 
 > [!div class="checklist"]
 > * Welke netwerk instellingen moeten mogelijk worden bijgewerkt na het maken van een cluster
@@ -64,7 +64,7 @@ Lees voor meer informatie over netwerk instellingen voor het cluster [netwerk se
 
 * [Versleutelings certificaten](#encryption-certificates) uploaden voor het cluster dat moet worden gebruikt (optioneel)
 
-### <a name="encryption-certificates"></a>Versleutelings certificaten
+### <a name="encryption-certificates"></a>Versleutelingscertificaten
 
 Het FXT Edge-bestands cluster maakt gebruik van X. 509-certificaten voor deze functies:
 

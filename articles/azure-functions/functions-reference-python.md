@@ -2,13 +2,13 @@
 title: Python-ontwikkelaars referentie voor Azure Functions
 description: Meer informatie over het ontwikkelen van functies met python
 ms.topic: article
-ms.date: 04/16/2018
-ms.openlocfilehash: 7c8ce87fdf396bc488a7deaf576eea28f989e0e4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.date: 12/13/2019
+ms.openlocfilehash: 55eb1fe53aa4256f1b7eee44547703328816cd32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226651"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409095"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions python-ontwikkelaars handleiding
 
@@ -280,28 +280,30 @@ In deze functie wordt de waarde van de `name` query parameter opgehaald uit de p
 
 Op dezelfde manier kunt u de `status_code` en `headers` instellen voor het antwoord bericht in het geretourneerde [HttpResponse] -object.
 
-## <a name="concurrency"></a>Gelijktijdigheid
+## <a name="scaling-and-concurrency"></a>Schalen en gelijktijdigheid
 
-De functies python runtime kunnen standaard slechts één aanroep van een functie tegelijk verwerken. Dit gelijktijdigheids niveau kan niet toereikend zijn onder een of meer van de volgende voor waarden:
+Standaard controleert Azure Functions automatisch de belasting van uw toepassing en worden er indien nodig extra exemplaren van de host voor python gemaakt. Functies gebruiken ingebouwde (niet door de gebruiker te configureren) drempel waarden voor verschillende trigger typen om te bepalen wanneer instanties moeten worden toegevoegd, zoals de leeftijd van berichten en de grootte van de wachtrij voor Queue trigger. Zie [hoe het verbruik en de Premium-abonnementen werken](functions-scale.md#how-the-consumption-and-premium-plans-work)voor meer informatie.
 
-+ U probeert een aantal aanroepen op hetzelfde moment te verwerken.
-+ U verwerkt een groot aantal I/O-gebeurtenissen.
-+ Uw toepassing is I/O-gebonden.
+Dit gedrag voor schalen is voldoende voor veel toepassingen. Toepassingen met een van de volgende kenmerken kunnen echter niet zo effectief worden geschaald:
 
-In deze situaties kunt u de prestaties verbeteren door asynchroon en door gebruik te maken van werk processen in meerdere talen.  
+- De toepassing moet veel gelijktijdige aanroepen verwerken.
+- De toepassing verwerkt een groot aantal I/O-gebeurtenissen.
+- De toepassing is I/O-gebonden.
+
+In dergelijke gevallen kunt u de prestaties verder verbeteren door gebruik te maken van async-patronen en werk processen in meerdere talen te gebruiken.
 
 ### <a name="async"></a>Asynchroon
 
-U wordt aangeraden de `async def`-instructie te gebruiken om de functie uit te voeren als een asynchrone coroutine.
+Omdat python een single-threaded runtime is, kan een host-exemplaar voor python slechts één functie aanroep tegelijk verwerken. Voor toepassingen die een groot aantal I/O-gebeurtenissen verwerken en/of I/O-gebonden zijn, kunt u de prestaties verbeteren door functions asynchroon uit te voeren.
+
+Als u een functie asynchroon wilt uitvoeren, gebruikt u de instructie `async def`, waarmee de functie rechtstreeks wordt uitgevoerd met [asyncio](https://docs.python.org/3/library/asyncio.html) :
 
 ```python
-# Runs with asyncio directly
-
 async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-Wanneer de functie `main()` synchroon is (zonder de `async` kwalificatie), wordt de functie automatisch uitgevoerd in een `asyncio` thread-pool.
+Een functie zonder het sleutel woord `async` wordt automatisch uitgevoerd in een asyncio-thread groep:
 
 ```python
 # Runs in an asyncio thread-pool
@@ -312,7 +314,9 @@ def main():
 
 ### <a name="use-multiple-language-worker-processes"></a>Werk processen in meerdere talen gebruiken
 
-Elk functions-exemplaar heeft standaard een werk proces met één taal. Er is echter wel ondersteuning voor meerdere taal werk processen per exemplaar van de host. Functie aanroepen kunnen vervolgens gelijkmatig worden verdeeld over deze werk processen van de taal. Gebruik de instelling [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) toepassing om deze waarde te wijzigen. 
+Elk functions-exemplaar heeft standaard een werk proces met één taal. U kunt het aantal werk processen per host (Maxi maal 10) verhogen met behulp van de [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) toepassings instelling. Azure Functions probeert vervolgens gelijktijdige functie aanroepen voor deze werk nemers gelijkmatig te verdelen. 
+
+De FUNCTIONS_WORKER_PROCESS_COUNT is van toepassing op elke host die functies maakt wanneer uw toepassing wordt geschaald om aan de vraag te voldoen. 
 
 ## <a name="context"></a>Context
 

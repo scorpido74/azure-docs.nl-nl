@@ -4,12 +4,12 @@ description: Informatie over het maken van Azure Functions uitgevoerd op een aan
 ms.date: 09/27/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 7bf079f84978539735f3bbf5bb13b18130871fb1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
-ms.translationtype: MT
+ms.openlocfilehash: 5a7fbecca2dc7585ff7110d53deccbbbbf23087c
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484390"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551485"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Een functie in Linux maken met behulp van een aangepaste installatie kopie
 
@@ -101,7 +101,7 @@ docker build --tag <docker-id>/mydockerimage:v1.0.0 .
 Wanneer de opdracht is voltooid, kunt u de nieuwe container lokaal uitvoeren.
 
 ### <a name="run-the-image-locally"></a>De installatie kopie lokaal uitvoeren
-Controleer of de installatiekopie die u hebt gebouwd werkt door de Docker-installatiekopie uit te voeren in een lokale container. Geef de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) en geef de naam en het label van de installatiekopie door. Zorg ervoor dat u de poort opgeeft met behulp van het argument `-p`.
+Controleer of de installatiekopie die u hebt gebouwd werkt door de Docker-installatiekopie uit te voeren in een lokale container. Geef de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) en geef de naam en het label van de installatiekopie door. Zorg ervoor dat u de poort specificeert met behulp van het argument `-p`.
 
 ```bash
 docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
@@ -118,7 +118,7 @@ Nadat u de functie-app in de container hebt geverifieerd, stopt u de uitvoering.
 
 ## <a name="push-to-docker-hub"></a>Pushen naar docker hub
 
-Een register is een toepassing die als host fungeert voor installatiekopieën en biedt installatiekopie- en containerservices. Om uw installatiekopie te delen, moet u deze naar een register pushen. Docker Hub is een register voor Docker-installatiekopieën waarmee u uw eigen openbare of particuliere opslagplaatsen kunt hosten.
+Een register is een toepassing die als host fungeert voor installatiekopieën en installatiekopie- en containerservices biedt. Om uw installatiekopie te delen, moet u deze naar een register pushen. Docker Hub is een register voor de Docker-installatiekopieën waarmee u uw eigen openbare of particuliere opslagplaatsen kunt hosten.
 
 Voordat u een installatiekopie kunt pushen, moet u zich aanmelden bij Docker Hub met behulp van de opdracht [docker login](https://docs.docker.com/engine/reference/commandline/login/). Vervang `<docker-id>` door uw accountnaam en typ uw wachtwoord bij de opdrachtprompt in de console. Zie [documentatie bij de opdracht voor dockeraanmelding](https://docs.docker.com/engine/reference/commandline/login/) voor andere wachtwoordopties voor Docker Hub.
 
@@ -175,8 +175,7 @@ storageConnectionString=$(az storage account show-connection-string \
 
 az functionapp config appsettings set --name <app_name> \
 --resource-group myResourceGroup \
---settings AzureWebJobsDashboard=$storageConnectionString \
-AzureWebJobsStorage=$storageConnectionString
+--settings AzureWebJobsStorage=$storageConnectionString
 ```
 
 > [!NOTE]
@@ -278,7 +277,7 @@ Nadat de verbinding tot stand is gebracht, voert u de `top` opdracht uit om de a
 
 ## <a name="write-to-queue-storage"></a>Schrijven naar wachtrij opslag
 
-Met functies kunt u Azure-Services en andere resources verbinden met functies zonder dat u uw eigen integratie code hoeft te schrijven. Deze *bindingen*, die zowel invoer als uitvoer vertegenwoordigen, worden gedeclareerd in de functie definitie. Gegevens van bindingen worden aan de functie door gegeven als para meters. Een *trigger* is een speciaal type invoer binding. Hoewel een functie slechts één trigger heeft, kan deze meerdere invoer-en uitvoer bindingen hebben. Zie [Azure functions triggers en bindingen](functions-triggers-bindings.md)voor meer informatie.
+Met functies kunt u Azure-Services en andere resources verbinden met functies zonder dat u uw eigen integratie code hoeft te schrijven. Deze *bindingen*, die zowel invoer als uitvoer vertegenwoordigen, worden gedeclareerd in de functie definitie. Gegevens van bindingen worden als parameters aan de functie geleverd. Een *trigger* is een speciaal type invoer binding. Hoewel een functie slechts één trigger heeft, kan deze meerdere invoer-en uitvoer bindingen hebben. Zie [Azure functions triggers en bindingen](functions-triggers-bindings.md)voor meer informatie.
 
 In deze sectie wordt beschreven hoe u uw functie integreert met een Azure Storage wachtrij. De uitvoer binding die u aan deze functie toevoegt, schrijft gegevens van een HTTP-aanvraag naar een bericht in de wachtrij.
 

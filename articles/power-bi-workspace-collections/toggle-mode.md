@@ -1,6 +1,6 @@
 ---
-title: Schakelen tussen weergeven en bewerken van modus voor rapporten in Power BI Workspace Collections | Microsoft Docs
-description: Informatie over het schakelen tussen weergeven en de modus voor uw rapporten in Power BI Workspace Collections bewerken.
+title: Scha kelen tussen de weer gave-en bewerkings modus voor rapporten
+description: Meer informatie over hoe u kunt scha kelen tussen de weer gave-en bewerkings modus voor uw rapporten in Power BI werkruimte verzamelingen.
 services: power-bi-workspace-collections
 ms.service: power-bi-embedded
 author: rkarlin
@@ -8,26 +8,26 @@ ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 327f2fdcd4d1bc9e71e3aabb3541c6fd30f02811
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: b2696560b5d5013fe337b51ec61cbfac9e512610
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672374"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357661"
 ---
-# <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Schakelen tussen weergeven en bewerken van modus voor rapporten in Power BI-Werkruimteverzamelingen
+# <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Scha kelen tussen de weer gave-en bewerkings modus voor rapporten in Power BI werkruimte verzamelingen
 
-Informatie over het schakelen tussen weergeven en de modus voor uw rapporten in Power BI Workspace Collections bewerken.
+Meer informatie over hoe u kunt scha kelen tussen de weer gave-en bewerkings modus voor uw rapporten in Power BI werkruimte verzamelingen.
 
 > [!IMPORTANT]
 > Power BI Workspace Collections is afgeschaft en is beschikbaar tot juni 2018 of tot de datum die in uw contract wordt aangegeven. Om onderbreking van uw toepassing te voorkomen, wordt u geadviseerd om een migratie naar Power BI Embedded te plannen. Voor meer informatie over het migreren van gegevens naar Power BI Embedded raadpleegt u [How to migrate Power BI Workspace Collections content to Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/) (Inhoud van Power BI-werkruimteverzamelingen migreren naar Power BI Embedded).
 
-## <a name="creating-an-access-token"></a>Een toegangstoken maken
+## <a name="creating-an-access-token"></a>Een toegangs token maken
 
-U moet een toegangstoken dat u de mogelijkheid biedt zowel bekijken en bewerken van een rapport maken. Als u wilt bewerken en opslaan van een rapport, moet u de **Report.ReadWrite** token machtiging. Zie voor meer informatie, [Authenticating en autoriseren in Power BI Workspace Collections](app-token-flow.md).
+U moet een toegangs token maken dat u de mogelijkheid biedt om een rapport weer te geven en te bewerken. Als u een rapport wilt bewerken en opslaan, moet u de machtiging **Report. readwrite** -token hebben. Zie [verifiëren en autoriseren in Power bi werkruimte verzamelingen](app-token-flow.md)voor meer informatie.
 
 > [!NOTE]
-> Hiermee kunt u om te bewerken en wijzigingen in een bestaand rapport opslaan. Als u ook de functie ondersteunende **OpslaanAls**, moet u extra machtigingen opgeven. Zie voor meer informatie, [Scopes](app-token-flow.md#scopes).
+> Zo kunt u wijzigingen in een bestaand rapport bewerken en opslaan. Als u ook de functie van **Opslaan als**wilt ondersteunen, moet u extra machtigingen opgeven. Zie [scopes](app-token-flow.md#scopes)voor meer informatie.
 
 ```csharp
 using Microsoft.PowerBI.Security;
@@ -41,9 +41,9 @@ var token = embedToken.Generate("{access key}");
 
 ## <a name="embed-configuration"></a>Configuratie insluiten
 
-U moet opgeven van machtigingen en een weergavemodus om te zien van het opslaan in de bewerkingsmodus knop. Zie voor meer informatie, [configuratiedetails insluiten](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
+U moet machtigingen en een View mode opgeven om de knop Opslaan te zien in de bewerkings modus. Zie [Configuratie Details insluiten](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details)voor meer informatie.
 
-Bijvoorbeeld, in JavaScript:
+Bijvoorbeeld in Java script:
 
 ```html
    <div id="reportContainer"></div>
@@ -77,11 +77,11 @@ Bijvoorbeeld, in JavaScript:
     </script>
 ```
 
-Hiermee geeft u aan dat het rapport insluiten in de weergavemodus op basis van **weergavemodus** wordt ingesteld op **modellen. ViewMode.View**.
+Dit geeft aan dat het rapport wordt Inge sloten in de weergave modus op basis van **View mode** wordt ingesteld op **modellen. View mode. View**.
 
-## <a name="view-mode"></a>Weergavemodus
+## <a name="view-mode"></a>Weergave modus
 
-U kunt de volgende JavaScript gebruiken om te schakelen naar de modus weergeven, als u zich in de modus bewerken.
+U kunt de volgende Java script gebruiken om over te scha kelen naar de weergave modus, als u zich in de bewerkings modus bevindt.
 
 ```javascript
 // Get a reference to the embedded report HTML element
@@ -95,9 +95,9 @@ report.switchMode("view");
 
 ```
 
-## <a name="edit-mode"></a>De modus bewerken
+## <a name="edit-mode"></a>De modus Bewerken
 
-U kunt de volgende JavaScript gebruiken om over te schakelen naar de bewerkingsmodus, als u in de weergave modus.
+U kunt de volgende Java script gebruiken om over te scha kelen naar de bewerkings modus, als u zich in de weergave modus bevindt.
 
 ```javascript
 // Get a reference to the embedded report HTML element
@@ -118,7 +118,7 @@ report.switchMode("edit");
 [Authenticating and authorizing in Power BI Workspace Collections](app-token-flow.md) (Verifiëren en autoriseren in Power BI Workspace Collections)  
 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
 [Voorbeeld van ingesloten JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
-[Git-opslagplaats voor Power BI-CSharp](https://github.com/Microsoft/PowerBI-CSharp)  
-[Git-opslagplaats voor Power BI-knooppunt](https://github.com/Microsoft/PowerBI-Node)  
+[PowerBI-CSharp Git opslag plaats](https://github.com/Microsoft/PowerBI-CSharp)  
+[Git opslag plaats voor het PowerBI-knoop punt](https://github.com/Microsoft/PowerBI-Node)  
 
 Nog vragen? [Probeer de Power BI-community](https://community.powerbi.com/)

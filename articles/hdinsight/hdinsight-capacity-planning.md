@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: d8d5ecd64ba689dc9cce342513702d8359038162
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9080a0f327aae50a87b5e69ec157a46181a38a65
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682262"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640938"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Capaciteits planning voor HDInsight-clusters
 
@@ -47,7 +47,7 @@ Als u al een opslag account of Data Lake Storage hebt met uw gegevens en deze op
 
 Nadat u een HDInsight-cluster hebt geïmplementeerd, kunt u aanvullende Azure Storage accounts koppelen of andere Data Lake Storage gebruiken. Al uw opslag accounts moeten zich op dezelfde locatie bevinden als uw cluster. Een Data Lake Storage kan zich op een andere locatie bevinden, hoewel dit een latentie voor lezen/schrijven van gegevens kan veroorzaken.
 
-Azure Storage heeft een aantal [capaciteits limieten](../azure-subscription-service-limits.md#storage-limits), terwijl data Lake Storage gen1 vrijwel onbeperkt is.
+Azure Storage heeft een aantal [capaciteits limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits), terwijl data Lake Storage gen1 vrijwel onbeperkt is.
 
 Een cluster kan toegang krijgen tot een combi natie van verschillende opslag accounts. Typische voor beelden zijn:
 
@@ -92,7 +92,17 @@ Soms kunnen er fouten optreden vanwege de parallelle uitvoering van meerdere toe
 
 ## <a name="quotas"></a>Quota
 
-Nadat u de VM-grootte,-schaal en-type van het doel cluster hebt bepaald, controleert u de huidige limieten voor quotum capaciteit van uw abonnement. Wanneer u een quotum limiet bereikt, kunt u mogelijk geen nieuwe clusters implementeren of bestaande clusters uitschalen door meer werk knooppunten toe te voegen. De enige quotum limiet is het quotum voor CPU-kernen dat voor elk abonnement bestaat op het niveau van de regio. Het is bijvoorbeeld mogelijk dat uw abonnement 30 kern limieten heeft in de regio VS-Oost. Als u een quota verhoging wilt aanvragen, voert u de volgende stappen uit:
+Nadat u de VM-grootte,-schaal en-type van het doel cluster hebt bepaald, controleert u de huidige limieten voor quotum capaciteit van uw abonnement. Wanneer u een quotum limiet bereikt, kunt u mogelijk geen nieuwe clusters implementeren of bestaande clusters uitschalen door meer werk knooppunten toe te voegen. De enige quotum limiet is het quotum voor CPU-kernen dat voor elk abonnement bestaat op het niveau van de regio. Het is bijvoorbeeld mogelijk dat uw abonnement 30 kern limieten heeft in de regio VS-Oost. 
+
+Voer de volgende stappen uit om de beschik bare kernen te controleren:
+
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+2. Ga naar de **overzichts** pagina voor het HDInsight-cluster. 
+3. Klik in het menu links op **quotum limieten**.
+
+   Op de pagina wordt het aantal kern geheugens weer gegeven dat in gebruik is, het aantal beschik bare kernen en de totale kernen.
+
+Als u een quota verhoging wilt aanvragen, voert u de volgende stappen uit:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 1. Selecteer **Help en ondersteuning** aan de linkerkant van de pagina.
@@ -115,7 +125,7 @@ Nadat u de VM-grootte,-schaal en-type van het doel cluster hebt bepaald, control
 
 U kunt [contact opnemen met de ondersteuning om een quotum verhoging aan te vragen](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
-Er zijn echter enkele vaste quota limieten, bijvoorbeeld één Azure-abonnement kan Maxi maal 10.000 kernen hebben. Zie [Azure-abonnement en service limieten, quota's en beperkingen](https://docs.microsoft.com/azure/azure-subscription-service-limits)voor meer informatie over deze limieten.
+Er zijn echter enkele vaste quota limieten, bijvoorbeeld één Azure-abonnement kan Maxi maal 10.000 kernen hebben. Zie [Azure-abonnement en service limieten, quota's en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)voor meer informatie over deze limieten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

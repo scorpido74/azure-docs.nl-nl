@@ -1,17 +1,17 @@
 ---
-title: Python en tensor flow in Azure Functions gebruiken om machine learning deverzekers
+title: Python en tensor flow gebruiken voor machine learning in azure
 description: In deze zelf studie wordt gedemonstreerd hoe u tensor flow machine learning modellen toepast in Azure Functions
 author: anthonychu
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: e7c4e1bbd23d43d5e11ab8b26c3d4e1215b4946b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f8122a828f19c3daf6c23a866a99a214ee2c4427
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230507"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409774"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Zelf studie: machine learning modellen Toep assen in Azure Functions met python en tensor flow
 

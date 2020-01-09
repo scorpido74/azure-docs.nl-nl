@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric reverse proxy beveiligde communicatie | Microsoft Docs
-description: Configureer omgekeerde proxy voor het inschakelen van beveiligde end-to-end-communicatie.
-services: service-fabric
-documentationcenter: .net
+title: Beveiligde communicatie van Azure Service Fabric reverse proxy
+description: Configureer omgekeerde proxy zo dat beveiligde end-to-end-communicatie mogelijk is in een Azure Service Fabric-toepassing.
 author: kavyako
-manager: vipulm
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: e915e689f09ba7f5c92958ebf8531aa67eef4493
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4cfeaf34a39231ffa91ea970a61f66632bae40c7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933957"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639391"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Verbinding maken met een beveiligde service met de omgekeerde proxy
 
@@ -30,7 +22,7 @@ Raadpleeg [reverse proxy instellen in Azure service Fabric](service-fabric-rever
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Beveiligde verbinding tot stand brengen tussen de omgekeerde proxy en services 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>Omgekeerde proxy verificatie bij Services:
-De omgekeerde proxy identificeert zichzelf bij Services met behulp van het certificaat. Voor Azure-clusters wordt het certificaat opgegeven met de eigenschap ***reverseProxyCertificate*** in het [resource type](../azure-resource-manager/resource-group-authoring-templates.md) [**micro soft. ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) van de Resource Manager-sjabloon. Voor zelfstandige clusters wordt het certificaat opgegeven met de ***ReverseProxyCertificate*** of de eigenschap ***ReverseProxyCertificateCommonNames*** in het gedeelte **beveiliging** van ClusterConfig. json. Zie [reverse proxy inschakelen op zelfstandige clusters](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)voor meer informatie. 
+De omgekeerde proxy identificeert zichzelf bij Services met behulp van het certificaat. Voor Azure-clusters wordt het certificaat opgegeven met de eigenschap ***reverseProxyCertificate*** in het [resource type](../azure-resource-manager/templates/template-syntax.md) [**micro soft. ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) van de Resource Manager-sjabloon. Voor zelfstandige clusters wordt het certificaat opgegeven met de ***ReverseProxyCertificate*** of de eigenschap ***ReverseProxyCertificateCommonNames*** in het gedeelte **beveiliging** van ClusterConfig. json. Zie [reverse proxy inschakelen op zelfstandige clusters](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)voor meer informatie. 
 
 Services kunnen de logica implementeren om het certificaat te verifiëren dat door de omgekeerde proxy wordt aangeboden. De services kunnen de geaccepteerde client certificaat gegevens opgeven als configuratie-instellingen in het configuratie pakket. Dit kan tijdens runtime worden gelezen en wordt gebruikt om het certificaat te valideren dat door de omgekeerde proxy wordt aangeboden. Raadpleeg [toepassings parameters beheren](service-fabric-manage-multiple-environment-app-configuration.md) om de configuratie-instellingen toe te voegen. 
 
@@ -42,7 +34,7 @@ In de volgende sectie worden de configuratie Details voor elk van deze opties we
 
 ### <a name="service-certificate-validation-options"></a>Opties voor validatie van service certificaat 
 
-- **Geen**: omgekeerde proxy slaat de verificatie van het certificaat van de proxy service over en brengt de beveiligde verbinding tot stand. Dit is het standaard gedrag.
+- **Geen**: omgekeerde proxy slaat de verificatie van het certificaat van de proxy service over en brengt de beveiligde verbinding tot stand. Dit is de standaardinstelling.
 Geef de **ApplicationCertificateValidationPolicy** op met de waarde **none** in de sectie [**toepassings Gateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) .
 
    ```json
@@ -63,7 +55,7 @@ Geef de **ApplicationCertificateValidationPolicy** op met de waarde **none** in 
    }
    ```
 
-- **ServiceCommonNameAndIssuer**: omgekeerde proxy controleert het certificaat dat door de service wordt gepresenteerd op basis van de algemene naam van het certificaat en de vinger afdruk van de Uitgever: Geef de **ApplicationCertificateValidationPolicy** met de waarde **op ServiceCommonNameAndIssuer** in de sectie [**toepassings Gateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) .
+- **ServiceCommonNameAndIssuer**: omgekeerde proxy verifieert het certificaat dat door de service wordt gepresenteerd op basis van de algemene naam van het certificaat en de vinger afdruk van de verlener: Geef de **ApplicationCertificateValidationPolicy** met de waarde **ServiceCommonNameAndIssuer** op in de sectie [**toepassings Gateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) .
 
    ```json
    {
@@ -110,7 +102,7 @@ Geef de **ApplicationCertificateValidationPolicy** op met de waarde **none** in 
    }
    ```
 
-- **ServiceCertificateThumbprints**: bij een omgekeerde proxy wordt het certificaat van de proxy service gecontroleerd op basis van de vinger afdruk. U kunt ervoor kiezen om deze route te gaan wanneer de services worden geconfigureerd met zelfondertekende certificaten: Geef de **ApplicationCertificateValidationPolicy** op met de waarde **ServiceCertificateThumbprints** in de [**toepassings Gateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) Section.
+- **ServiceCertificateThumbprints**: bij een omgekeerde proxy wordt het certificaat van de proxy service gecontroleerd op basis van de vinger afdruk. U kunt ervoor kiezen om deze route te gaan wanneer de services worden geconfigureerd met zelfondertekende certificaten: Geef de **ApplicationCertificateValidationPolicy** op met de waarde **ServiceCertificateThumbprints** in het gedeelte [**toepassings Gateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) .
 
    ```json
    {
@@ -184,7 +176,7 @@ Omgekeerde proxy selecteert een van de eind punten om de aanvraag door te sturen
 SSL-beëindiging gebeurt bij de omgekeerde proxy en alle client certificaat gegevens gaan verloren. Geef voor de services verificatie van client certificaten op de **ForwardClientCertificate** -instelling in de sectie [**toepassings Gateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) op.
 
 1. Wanneer **ForwardClientCertificate** is ingesteld op **False**, vraagt reverse proxy het client certificaat niet aan tijdens de SSL-Handshake van de client.
-Dit is het standaard gedrag.
+Dit is de standaardinstelling.
 
 2. Wanneer **ForwardClientCertificate** is ingesteld op **True**, vraagt reverse proxy het client certificaat aan tijdens de SSL-Handshake van de client.
 De client certificaat gegevens worden vervolgens doorgestuurd naar een aangepaste HTTP-header met de naam **X-client-certificaat**. De waarde van de header is de base64-gecodeerde PEM-indelings teken reeks van het certificaat van de client. De service kan de aanvraag slagen of afwijzen met de juiste status code na het controleren van de certificaat gegevens.

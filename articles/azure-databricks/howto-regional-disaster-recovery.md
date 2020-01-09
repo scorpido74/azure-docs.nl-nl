@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: b9a5dbd8e24659493bbbefd50c3e234dca3dbdd9
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 800b51c8f900d2ea99900ea147b33010452348f5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129338"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639868"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionale nood herstel voor Azure Databricks clusters
 
@@ -21,7 +21,7 @@ In dit artikel wordt een nood herstel architectuur beschreven die nuttig is voor
 
 ## <a name="azure-databricks-architecture"></a>Azure Databricks architectuur
 
-Wanneer u op hoog niveau een Azure Databricks-werk ruimte maakt op basis van de Azure Portal, wordt een [beheerd apparaat](../managed-applications/overview.md) geïmplementeerd als een Azure-resource in uw abonnement, in de gekozen Azure-regio (bijvoorbeeld VS-West). Dit apparaat wordt geïmplementeerd in een [Azure-Virtual Network](../virtual-network/virtual-networks-overview.md) met een [netwerk beveiligings groep](../virtual-network/manage-network-security-group.md) en een Azure Storage account dat beschikbaar is in uw abonnement. Het virtuele netwerk biedt beveiliging op beveiligings niveau voor de Databricks-werk ruimte en wordt beveiligd via de netwerk beveiligings groep. In de werk ruimte kunt u Databricks-clusters maken door de werk nemer en het VM-type van het stuur programma en de Databricks-runtime versie op te geven. De persistente gegevens zijn beschikbaar in uw opslag account. Dit kan zowel Azure Blob Storage als Azure Data Lake Storage zijn. Zodra het cluster is gemaakt, kunt u taken uitvoeren via notebooks, REST Api's, ODBC/JDBC-eind punten door ze te koppelen aan een specifiek cluster.
+Wanneer u op hoog niveau een Azure Databricks-werk ruimte maakt op basis van de Azure Portal, wordt een [beheerd apparaat](../azure-resource-manager/managed-applications/overview.md) geïmplementeerd als een Azure-resource in uw abonnement, in de gekozen Azure-regio (bijvoorbeeld VS-West). Dit apparaat wordt geïmplementeerd in een [Azure-Virtual Network](../virtual-network/virtual-networks-overview.md) met een [netwerk beveiligings groep](../virtual-network/manage-network-security-group.md) en een Azure Storage account dat beschikbaar is in uw abonnement. Het virtuele netwerk biedt beveiliging op beveiligings niveau voor de Databricks-werk ruimte en wordt beveiligd via de netwerk beveiligings groep. In de werk ruimte kunt u Databricks-clusters maken door de werk nemer en het VM-type van het stuur programma en de Databricks-runtime versie op te geven. De persistente gegevens zijn beschikbaar in uw opslag account. Dit kan zowel Azure Blob Storage als Azure Data Lake Storage zijn. Zodra het cluster is gemaakt, kunt u taken uitvoeren via notebooks, REST Api's, ODBC/JDBC-eind punten door ze te koppelen aan een specifiek cluster.
 
 Het Databricks-besturings vlak beheert en bewaakt de Databricks-werkruimte omgeving. Een beheer bewerking zoals het maken van een cluster wordt gestart vanuit het besturings vlak. Alle meta gegevens, zoals geplande taken, worden opgeslagen in een Azure-data base met geo-replicatie voor fout tolerantie.
 

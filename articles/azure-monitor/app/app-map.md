@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 305de556cc6e50af21cb38aa1b8073b420efbf43
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 006ea071ce1ab0354ecf191cdde2e031255ef4ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887759"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407700"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Toepassings overzicht: gedistribueerde toepassingen sorteren
 
@@ -45,7 +45,7 @@ Klik op een onderdeel om gerelateerde inzichten te bekijken en ga naar de presta
 
 ![Flyout](media/app-map/application-map-002.png)
 
-### <a name="investigate-failures"></a>Fouten onderzoeken
+### <a name="investigate-failures"></a>Mislukte pogingen onderzoeken
 
 Selecteer **fouten onderzoeken** om het deel venster fouten te starten.
 
@@ -69,13 +69,13 @@ Selecteer **Ga naar Details** om de end-to-end-transactie ervaring te verkennen,
 
 ![Scherm opname van end-to-end-transactie Details](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>Weer geven in Analytics
+### <a name="view-logs-analytics"></a>Logboeken weer geven (analyse)
 
-Als u de gegevens van uw toepassing verder wilt opvragen en onderzoeken, klikt u op **weer geven in Analytics**.
+Als u de gegevens van uw toepassing verder wilt opvragen en onderzoeken, klikt u op **weer geven in Logboeken (analyse)** .
 
-![Scherm afbeelding van de knop voor de analyse](media/app-map/view-in-analytics.png)
+![Scherm afbeelding van de knop voor de analyse](media/app-map/view-logs.png)
 
-![Scherm opname van analyse-ervaring](media/app-map/analytics.png)
+![Scherm opname van analyse-ervaring. Lijn diagram een samen vatting van de gemiddelde reactie duur van een aanvraag in de afgelopen 12 uur.](media/app-map/log-analytics.png)
 
 ### <a name="alerts"></a>Waarschuwingen
 
@@ -230,7 +230,7 @@ Voor de [officiële definities](https://github.com/Microsoft/ApplicationInsights
     715: string      CloudRoleInstance = "ai.cloud.roleInstance";
 ```
 
-Het is ook mogelijk dat het exemplaar van de **Cloud functie** nuttig is voor scenario's waarbij de naam van de **Cloud-rol** aangeeft dat het probleem zich ergens in de Webfront-end bevindt, maar dat u uw Webfront-end op meerdere servers met gelijke taak verdeling kunt uitvoeren, zodat u kunt Zoom in op een laag dieper via Kusto-query's en weet of het probleem invloed heeft op alle Webfront-end-servers/-exemplaren of dat er slechts één belang rijk kan zijn.
+U kunt ook het exemplaar van de **Cloud** kan handig zijn voor scenario's waarbij de naam van een **Cloud** het probleem ergens in uw Webfront-end bevindt, maar u mogelijk uw Webfront-end op meerdere servers met gelijke taak verdeling uitvoert, zodat u kunt inzoomen op een laag met Kusto-query's en weet of het probleem invloed heeft op alle Webfront-end-servers/-exemplaren, of kan
 
 Een scenario waarin u de waarde voor het exemplaar van de Cloud functie mogelijk wilt onderdrukken, kan zijn als uw app wordt uitgevoerd in een omgeving met containers, waarbij alleen de afzonderlijke server mogelijk niet voldoende informatie bevat om een bepaald probleem te vinden.
 

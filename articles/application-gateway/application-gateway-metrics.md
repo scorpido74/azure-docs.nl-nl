@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: f0937ee53e66cb1bf0c5d6b55a8dde045570e924
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 12ecacf1266c0d8211f5928a933cfd4acf8c49f0
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309811"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551383"
 ---
 # <a name="metrics-for-application-gateway"></a>Metrische gegevens voor Application Gateway
 
@@ -22,19 +22,21 @@ Application Gateway publiceert gegevens punten, met de naam metrieken, naar [Azu
 
 ### <a name="timing-metrics"></a>Metrische gegevens over timing
 
-De volgende metrische gegevens met betrekking tot de timing van de aanvraag en het antwoord zijn beschikbaar. Door deze metrische gegevens te analyseren, kunt u bepalen of de vertraging in toepassing is in verband met het WAN, het Application Gateway, het netwerk tussen de Application Gateway en de back-end of de prestaties van de toepassing.
+De volgende metrische gegevens met betrekking tot de timing van de aanvraag en het antwoord zijn beschikbaar. Door deze metrische gegevens voor een specifieke listener te analyseren, kunt u bepalen of de vertraging in toepassing is in verband met het WAN, het Application Gateway, het netwerk tussen de Application Gateway en de back-end-toepassing, of de back-end-toepassings prestaties.
+
+> [!NOTE]
+>
+> Als er meer dan één listener is in de Application Gateway, filtert u altijd op de dimensie *listener* terwijl u verschillende latentie gegevens vergelijkt om zinvolle interferentie te verkrijgen.
 
 - **Client RTT**
 
-  Gemiddelde Round-retour tijd tussen clients en Application Gateway. Met deze metriek wordt aangegeven hoe lang het duurt om verbindingen en retour bevestigingen tot stand te brengen.
+  Gemiddelde Round-retour tijd tussen clients en Application Gateway. Met deze metriek wordt aangegeven hoe lang het duurt om verbindingen en retour bevestigingen tot stand te brengen. 
 
 - **Totale tijd toepassings gateway**
 
   De gemiddelde tijd die nodig is voor het verwerken van een aanvraag en het antwoord op verzen ding. Dit wordt berekend als gemiddelde van het interval van de tijd dat Application Gateway de eerste byte van een HTTP-aanvraag ontvangt naar het tijdstip waarop de bewerking voor het verzenden van het antwoord is voltooid. Het is belang rijk te weten dat dit doorgaans de verwerkings tijd van Application Gateway, de tijd dat de aanvraag-en antwoord pakketten op het netwerk onderweg zijn en het tijdstip waarop de back-end-server heeft gereageerd.
-
-- **Moment back-end verbinding**
-
-  De tijd die is besteed aan het tot stand brengen van een verbinding met een back-endserver. 
+  
+Als de *RTT* van de client veel meer is dan de *totale tijd van de toepassings gateway*, kan deze worden afgeleid dat de door de client waargenomen latentie wordt veroorzaakt door de netwerk verbinding tussen de client en Application Gateway. Als beide latenties vergelijkbaar zijn, kan de hoge latentie worden veroorzaakt door een van de volgende: Application Gateway, het netwerk tussen de Application Gateway en de back-end-toepassing, of de back-end-toepassings prestaties.
 
 - **Reactie tijd eerste byte van back-end**
 
@@ -43,6 +45,13 @@ De volgende metrische gegevens met betrekking tot de timing van de aanvraag en h
 - **Reactie tijd laatste byte van back-end**
 
   Tijds interval tussen begin van het tot stand brengen van een verbinding met de back-endserver en het ontvangen van de laatste byte van de antwoord tekst
+  
+Als de *totale tijd van de toepassings gateway* veel meer is dan de *reactie tijd van de laatste byte* van de back-end voor een specifieke listener, dan kan deze worden afgeleid dat de maximale latentie kan worden bereikt door de Application Gateway. Daarentegen, als de twee meet waarden vergelijkbaar zijn, kan het probleem worden veroorzaakt door het netwerk tussen de Application Gateway en de back-end-toepassing, of de prestaties van de back-end-toepassing.
+
+- **Moment back-end verbinding**
+
+  Tijd die is besteed aan het tot stand brengen van een verbinding met een back-end-toepassing. In het geval van SSL omvat het de tijd die is besteed aan handshake. Houd er rekening mee dat deze waarde afwijkt van de andere latentie-metrische gegevens omdat dit alleen de verbindings tijd meet en daarom mag niet rechtstreeks worden vergeleken met de andere latenties. Het vergelijken van het patroon van *back-uptijden* met het patroon van de andere latenties kan echter aangeven of een toename in andere latenties kan worden afgeleid als gevolg van een variatie in het netwerk tussen de toepassing GATWAY en de back-end-toepassing. 
+  
 
 ### <a name="application-gateway-metrics"></a>Application Gateway metrische gegevens
 
@@ -62,7 +71,7 @@ De volgende metrische gegevens zijn beschikbaar voor Application Gateway:
 
 - **Huidige capaciteits eenheden**
 
-   Aantal verbruikte capaciteits eenheden. Capaciteits eenheden meten kosten op basis van verbruik en worden naast de vaste kosten in rekening gebracht. Er zijn drie determinanten voor de capaciteits eenheid: reken eenheid, permanente verbindingen en door voer. Elke capaciteitseenheid bestaat ten minste uit: 1 reken eenheid of 2500 permanente verbindingen, of door Voer van 2,22-Mbps.
+   Aantal verbruikte capaciteits eenheden. Capaciteits eenheden meten kosten op basis van verbruik en worden naast de vaste kosten in rekening gebracht. Er zijn drie determinanten voor de capaciteits eenheid: reken eenheid, permanente verbindingen en door voer. Elke capaciteits eenheid bestaat uit Maxi maal 1 Compute-eenheid of 2500 permanente verbindingen, of door Voer van 2,22-Mbps.
 
 - **Huidige reken eenheden**
 
@@ -115,6 +124,10 @@ De volgende metrische gegevens zijn beschikbaar voor Application Gateway:
 
 De volgende metrische gegevens zijn beschikbaar voor Application Gateway:
 
+- **CPU-gebruik**
+
+  Hier wordt het gebruik van de Cpu's weer gegeven die zijn toegewezen aan de Application Gateway.  Onder normale omstandigheden mag het CPU-gebruik niet regel matig 90% overschrijden, omdat dit een latentie kan veroorzaken in de websites die achter de Application Gateway worden gehost en de client ervaring verstoort. U kunt het CPU-gebruik indirect beheren of verbeteren door de configuratie van de Application Gateway te wijzigen door het aantal exemplaren te verhogen of door naar een grotere SKU-grootte te verplaatsen of beide te doen.
+
 - **Huidige verbindingen**
 
   Aantal actieve verbindingen dat tot stand is gebracht met Application Gateway
@@ -157,7 +170,7 @@ Blader naar een toepassings gateway onder **bewaking** **metrische gegevens**sel
 
 In de volgende afbeelding ziet u een voor beeld met drie metrische gegevens die gedurende de laatste 30 minuten worden weer gegeven:
 
-[![](media/application-gateway-diagnostics/figure5.png "Metrische weer gave")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
+[![](media/application-gateway-diagnostics/figure5.png "Metric view")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
 
 Zie [ondersteunde metrische gegevens met Azure monitor](../azure-monitor/platform/metrics-supported.md)voor een actuele lijst met metrische gegevens.
 
@@ -173,7 +186,7 @@ In het volgende voor beeld wordt stapsgewijs uitgelegd hoe u een waarschuwings r
 
 2. Vul op de pagina **regel toevoegen** de naam, de voor waarde en de meldings secties in en selecteer **OK**.
 
-   * Selecteer een van de vier waarden in de **voor waarden** kiezer: **Groter dan**, **groter dan of gelijk**aan, **kleiner**dan of **kleiner dan of gelijk aan**.
+   * Selecteer in de **voor waarden** kiezer een van de vier waarden: **groter dan**, **groter dan of gelijk**aan, **kleiner dan**of **kleiner dan of gelijk aan**.
 
    * Selecteer in de **periode** kiezer een periode van vijf minuten tot zes uur.
 

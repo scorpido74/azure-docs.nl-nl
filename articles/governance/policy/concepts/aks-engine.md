@@ -3,16 +3,16 @@ title: Azure Policy voor AKS-engine leren
 description: Meer informatie over hoe Azure Policy CustomResourceDefinitions gebruikt en de beleids agent van Gate v3 kunt openen om clusters met AKS-engine te beheren.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2d1ae33755dcb52c5fe65ec46f0d02e090f6f417
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c41a9d84dfe43e356e9a4a17af523a37209c2933
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267252"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436431"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>Azure Policy voor AKS-engine begrijpen
 
-Azure Policy integreert met de [AKS-engine](https://github.com/Azure/aks-engine/blob/master/docs/README.md), een systeem dat handige hulp middelen biedt om snel een zelf beheerd Kubernetes-cluster in azure te Boots trappen. Dankzij deze integratie kunnen op een gecentraliseerde, consistente manier afdwingingen en beveiliging op uw eigen beheerde clusters van de AKS-engine worden uitgebreid. Door het gebruik van [Open Policy Agent](https://www.openpolicyagent.org/) (opa) [gate keeper](https://github.com/open-policy-agent/gatekeeper) v3 (bèta), een _toegangs controller webhook_ voor Kubernetes te verlengen, kunt Azure Policy de nalevings status van uw Azure-resources en AKS-engine beheren en rapporteren. zelf-beheerde clusters vanaf één locatie.
+Azure Policy integreert met de [AKS-engine](https://github.com/Azure/aks-engine/blob/master/docs/README.md), een systeem dat handige hulp middelen biedt om snel een zelf beheerd Kubernetes-cluster in azure te Boots trappen. Dankzij deze integratie kunnen op een gecentraliseerde, consistente manier afdwingingen en beveiliging op uw eigen beheerde clusters van de AKS-engine worden uitgebreid. Door het gebruik van [Open Policy Agent](https://www.openpolicyagent.org/) (opa) [gate keeper](https://github.com/open-policy-agent/gatekeeper) v3 (bèta), een _toegangs controller webhook_ voor Kubernetes te verlengen, kunt Azure Policy de nalevings status van uw Azure-resources en AKS engine-eigen beheerde clusters van één locatie beheren en rapporteren.
 
 > [!NOTE]
 > Azure Policy voor de AKS-engine bevindt zich in de open bare preview en heeft geen SLA. Gate keeper v3 is een bèta versie en wordt ondersteund door de open source-community. De service ondersteunt alleen ingebouwde beleids definities en één AKS engine-cluster voor elke resource groep die is geconfigureerd met een service-principal.
@@ -33,7 +33,7 @@ Voer de volgende acties uit om Azure Policy voor de AKS-engine met uw zelf-behee
 
 Voordat u de Azure Policy invoeg toepassing installeert of een van de service functies inschakelt, moet uw abonnement de resource provider **micro soft. PolicyInsights** inschakelen en een roltoewijzing maken voor de Cluster-service-principal. 
 
-1. Als u de resource provider wilt inschakelen, volgt u de stappen in [resource providers en typen](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal) of voert u de Azure CLI-of Azure PowerShell opdracht uit:
+1. Als u de resource provider wilt inschakelen, volgt u de stappen in [resource providers en typen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) of voert u de Azure CLI-of Azure PowerShell opdracht uit:
 
    - Azure-CLI
 

@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 833e7788a5b17b12ad883f705d56f660c2f1d832
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 69c32370b1f7f7cabb642ab140d69dcec57fb4aa
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033791"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551978"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Connectiviteit ExpressRoute controleren
 Dit artikel helpt u bij het controleren en oplossen van problemen met ExpressRoute-connectiviteit. Met ExpressRoute wordt een on-premises netwerk uitgebreid naar de micro soft-Cloud via een particuliere verbinding die meestal wordt vereenvoudigd door een connectiviteits provider. Voor ExpressRoute-connectiviteit is traditioneel drie afzonderlijke netwerk zones vereist:
 
--   Klant netwerk
+-   Klantnetwerk
 -   Provider netwerk
 -   Micro soft Data Center
 
 > [!NOTE]
-> In het ExpressRoute direct Connectivity-model (aangeboden bij een band breedte van 10/100 Gbps) kan cusomters rechtstreeks verbinding maken met de poort van de micro soft Enter prise Edge (MSEE)-routers. Daarom zijn er alleen klant-en micro soft-netwerk zones in het model voor directe connectiviteit.
+> In het ExpressRoute direct Connectivity-model (aangeboden voor een band breedte van 10/100 Gbps) kunnen klanten rechtstreeks verbinding maken met de poort van de micro soft Enter prise Edge (MSEE)-routers. Daarom zijn er alleen klant-en micro soft-netwerk zones in het model voor directe connectiviteit.
 >
 
 

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 12/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 62ee248c06d2b26b935f72b3bb73cf708f949c72
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: dada1a8ed8b1725905ee2ad159e385d1bee62fc6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014713"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75615095"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Gegevens opslag en inkomend verkeer in Azure Time Series Insights preview
 
@@ -23,7 +23,9 @@ In dit artikel worden updates beschreven voor de gegevens opslag en het binnenko
 
 ## <a name="data-ingress"></a>Gegevens binnenkomend
 
-Uw Azure Time Series Insights omgeving bevat een opname-engine voor het verzamelen, verwerken en opslaan van gegevens in de tijd reeks. Bij het plannen van uw omgeving moet u rekening houden met een aantal aandachtspunten om ervoor te zorgen dat alle binnenkomende gegevens worden verwerkt, en om een hoge ingangs schaal te bewerkstelligen en de opname latentie te minimaliseren (de tijd die door de TSI wordt gebruikt om gegevens van de gebeurtenis te lezen en te verwerken) Bron). In Time Series Insights preview bepaalt het beleid voor gegevens inkomend verkeer welke gegevens kunnen worden gebrond en welke indeling de gegevens moeten hebben.
+Uw Azure Time Series Insights omgeving bevat een opname-engine voor het verzamelen, verwerken en opslaan van gegevens in de tijd reeks. Bij het plannen van uw omgeving moet u rekening houden met een aantal aandachtspunten om ervoor te zorgen dat alle binnenkomende gegevens worden verwerkt, en om een hoge ingangs schaal te bewerkstelligen en de opname latentie te minimaliseren (de tijd die door de TSI wordt gebruikt om gegevens van de gebeurtenis te lezen en te verwerken) Bron). 
+
+In Time Series Insights preview bepaalt het beleid voor gegevens inkomend verkeer welke gegevens kunnen worden gebrond en welke indeling de gegevens moeten hebben.
 
 ### <a name="ingress-policies"></a>Ingangs beleid
 
@@ -32,12 +34,12 @@ Time Series Insights preview ondersteunt de volgende gebeurtenis bronnen:
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
-Time Series Insights preview ondersteunt Maxi maal twee gebeurtenis bronnen per instantie.
-  
-Azure Time Series Insights ondersteunt JSON die via Azure IoT Hub of Azure Event Hubs is verzonden.
+Time Series Insights preview ondersteunt Maxi maal twee gebeurtenis bronnen per instantie. Azure Time Series Insights ondersteunt JSON die via Azure IoT Hub of Azure Event Hubs is verzonden.
 
 > [!WARNING] 
-> Wanneer u een nieuwe gebeurtenis bron aan uw Time Series Insights-voorbeeld omgeving koppelt, afhankelijk van het aantal gebeurtenissen dat zich momenteel in uw IoT Hub of event hub bevindt, kan er een hoge initiële opname latentie optreden. Wanneer gegevens worden opgenomen, moet u deze hoge latentie verwachten, maar als uw ervaring anders aangeeft, neemt u contact met ons op door een ondersteunings ticket in te dienen via de Azure Portal.
+> * U kunt een hoge initiële latentie ervaren wanneer u een gebeurtenis bron koppelt aan uw preview-omgeving. 
+> De gebeurtenis bron latentie is afhankelijk van het aantal gebeurtenissen dat zich momenteel in uw IoT Hub of event hub bevinden.
+> * Hoge latentie wordt weer gegeven nadat de bron gegevens van de gebeurtenis voor het eerst zijn opgenomen. Neem contact met ons op door een ondersteunings ticket in te dienen via de Azure Portal als u de continue hoge latentie hebt.
 
 ## <a name="ingress-best-practices"></a>Best practices voor binnenkomend verkeer
 
@@ -49,12 +51,19 @@ U wordt aangeraden de volgende aanbevolen procedures te gebruiken:
 
 ### <a name="ingress-scale-and-limitations-in-preview"></a>Inkomend schalen en beperkingen in Preview
 
-Time Series Insights preview biedt standaard ondersteuning voor een eerste ingangs schaal van Maxi maal 1 MB per seconde (MB/s) per omgeving. Als dat nodig is, kunt u de door Voer van Maxi maal 16 MB/s beschikbaar maken door een ondersteunings ticket in te dienen in het Azure Portal als dit nodig is. Daarnaast is er een limiet van 0,5 MB/s per partitie. Dit heeft gevolgen voor klanten die IoT Hub met name, gezien de affiniteit tussen een IoT Hub apparaat een partitie. In scenario's waarbij één gateway apparaat berichten doorstuurt naar de hub met behulp van de eigen apparaat-ID en connection string, is er een risico dat de limiet van 0,5 MB/s wordt bereikt, omdat berichten in één partitie worden ontvangen, zelfs als de nettolading van de gebeurtenis verschillende TS bevat Id's. In het algemeen wordt ingangs snelheid weer gegeven als een factor van het aantal apparaten in uw organisatie, een gebeurtenis emissie frequentie en de grootte van een gebeurtenis. Bij het berekenen van opname frequentie moeten IoT Hub gebruikers het aantal hub-verbindingen gebruiken dat in gebruik is, in plaats van het totaal aantal apparaten in de organisatie. Verbeterde ondersteuning voor schalen is actief. Deze documentatie wordt bijgewerkt om deze verbeteringen weer te geven. 
+Standaard ondersteunen voorbeeld omgevingen ingangs snelheden van Maxi maal **1 MB per seconde (MB/s) per omgeving**. Klanten kunnen hun voorbeeld omgevingen zo nodig schalen tot een door Voer van **16 MB/s** .
+Er is ook een limiet van **0,5 MB/s**per partitie. 
 
-> [!WARNING]
-> Voor omgevingen met IoT Hub als gebeurtenis bron, berekent u de opname frequentie met het aantal Hub-apparaten dat in gebruik is.
+De limiet per partitie heeft gevolgen voor klanten die IoT Hub gebruiken. In het bijzonder, gezien de affiniteit tussen een IoT Hub apparaat en een partitie. In scenario's waarbij één gateway apparaat berichten doorstuurt naar de hub met behulp van een eigen apparaat-ID en connection string, is het gevaar om de limiet van 0,5 MB/s te bereiken, omdat berichten in één partitie arriveren, zelfs als de nettolading van de gebeurtenis verschillende tijd reeks-Id's opgeeft. 
 
-Raadpleeg de volgende koppelingen voor meer informatie over doorvoer eenheden en partities:
+Over het algemeen worden de ingangs snelheden weer gegeven als de factor van het aantal apparaten in uw organisatie, de gebeurtenis emissie frequentie en de grootte van elke gebeurtenis:
+
+*  **Aantal apparaten** × **gebeurtenis emissie frequentie** × **grootte van elke gebeurtenis**.
+
+> [!TIP]
+> Voor omgevingen die IoT Hub als gebeurtenis bron gebruiken, berekent u het opname percentage met het aantal gebruikte hub-verbindingen, in plaats van het totale aantal apparaten in gebruik of in de organisatie.
+
+Voor meer informatie over doorvoer eenheden, limieten en partities:
 
 * [IoT Hub schaal](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
 * [Event hub-schaal](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
@@ -74,7 +83,7 @@ Met Time Series Insights preview worden uw koude Store-gegevens opgeslagen in Az
 > [!WARNING]
 > Als eigenaar van het Azure Blob Storage-account waar koud opgeslagen gegevens zich bevinden, hebt u volledige toegang tot alle gegevens in het account. Deze toegang omvat machtigingen voor schrijven en verwijderen. Bewerk of verwijder geen gegevens die Time Series Insights preview-schrijf bewerkingen, omdat dat gegevens verlies kan veroorzaken.
 
-### <a name="data-availability"></a>Beschik baarheid van gegevens
+### <a name="data-availability"></a>Beschikbaarheid van gegevens
 
 Time Series Insights preview-partities en gegevens indexeren voor optimale query prestaties. Er worden gegevens beschikbaar voor query's na de index. De hoeveelheid gegevens die wordt opgenomen, kan van invloed zijn op deze Beschik baarheid.
 
@@ -109,11 +118,11 @@ U kunt op drie manieren toegang krijgen tot uw gegevens:
 
 * Vanuit de Time Series Insights preview Explorer. U kunt gegevens exporteren als een CSV-bestand vanuit de Explorer. Zie [Time Series Insights preview Explorer](./time-series-insights-update-explorer.md)voor meer informatie.
 * Van de Time Series Insights preview-API. U kunt het API-eind punt bereiken op `/getRecorded`. Zie [Time Series query](./time-series-insights-update-tsq.md)(Engelstalig) voor meer informatie over deze API.
-* Rechtstreeks vanuit een Azure-opslag account. U hebt lees toegang nodig tot het account dat u gebruikt voor toegang tot uw Time Series Insights preview-gegevens. Zie [toegang tot de resources van uw opslag account beheren](../storage/blobs/storage-manage-access-to-resources.md)voor meer informatie.
+* Rechtstreeks vanuit een Azure Storage-account. U hebt lees toegang nodig tot het account dat u gebruikt voor toegang tot uw Time Series Insights preview-gegevens. Zie [toegang tot de resources van uw opslag account beheren](../storage/blobs/storage-manage-access-to-resources.md)voor meer informatie.
 
 ### <a name="data-deletion"></a>Gegevens verwijderen
 
-Verwijder de Time Series Insights Preview-bestanden niet. U moet gerelateerde gegevens alleen beheren vanuit Time Series Insights preview.
+Verwijder de Time Series Insights Preview-bestanden niet. Gerelateerde gegevens alleen beheren vanuit Time Series Insights preview.
 
 ## <a name="parquet-file-format-and-folder-structure"></a>Parquet bestands indeling en mapstructuur
 
@@ -136,7 +145,7 @@ In beide gevallen komen de tijd waarden overeen met de aanmaak tijd van de blob.
 > [!NOTE]
 > * `<YYYY>` is toegewezen aan een jaar representatie van vier cijfers.
 > * `<MM>` is toegewezen aan een maand weergave met twee cijfers.
-> * `<YYYYMMDDHHMMSSfff>` is toegewezen aan een tijds tempel weergave met vier cijfers per jaar (`YYYY`), een maand van twee cijfers (`MM`), een tweecijferige dag (`DD`), een uur van twee cijfers (`HH`), een minuut (`MM`) van twee cijfers, een tweede cijfer (`SS`) en een milliseconde van drie cijfers (`fff`).
+> * `<YYYYMMDDHHMMSSfff>` is toegewezen aan een tijds tempel aanduiding met een jaar van vier cijfers (`YYYY`), een maand van twee cijfers (`MM`), een tweecijferige dag (`DD`), een uur van twee cijfers (`HH`), een minuut van twee cijfers (`MM`), een tweede cijfer (`SS`) en een milliseconde van drie cijfers (`fff`).
 
 Time Series Insights preview-gebeurtenissen worden als volgt toegewezen aan de Parquet-bestands inhoud:
 

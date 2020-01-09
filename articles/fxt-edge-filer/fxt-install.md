@@ -1,18 +1,17 @@
 ---
-title: Zelf studie over het installeren van een Azure FXT Edge-fysieke apparaat | Microsoft Docs
+title: 'Zelf studie: een fysiek Azure FXT edge-apparaat installeren'
 description: Het uitpakken, het rek en de kabel van het fysieke apparaat onderdeel van de Microsoft Azure FXT Edge filer hybride opslag cache
-services: ''
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 0f3c7b01ee9d4a62ec0d563af55f2086894081be
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 7c77e25d0dcabc49f2e6672645c6bc41e8662ec8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256044"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551026"
 ---
 # <a name="tutorial-install-azure-fxt-edge-filer"></a>Zelf studie: Azure FXT Edge-Bestandsr installeren 
 
@@ -29,7 +28,7 @@ Deze zelf studie bevat de volgende installatie stappen:
 > * Het apparaat in een rek koppelen
 > * De omlijsting vooraan installeren (optioneel)
 
-## <a name="installation-prerequisites"></a>Installatie vereisten 
+## <a name="installation-prerequisites"></a>Installatievereisten 
 
 Voordat u begint, moet u ervoor zorgen dat het Data Center en het rek dat u wilt gebruiken, over de volgende functies beschikken:
 
@@ -95,11 +94,11 @@ Zoek de onderdelen voor het installeren van de Rail Kit-assembly:
 
 Voor racks met snap-in Square of ronde gaten, volgt u deze procedure om de rails samen te stellen en te installeren. 
 
-1. Plaats het linker-en rechter uiteinde van de eind stukken met het label aan de **voor grond** . Plaats elk eind stuk zodanig dat het stoelen in de gaten aan de voor zijde van de verticale rack flenss. i
+1. Plaats het linker-en rechter uiteinde van de eind stukken met het label aan de **voor grond** . Plaats elk eind stuk zodanig dat het stoelen in de gaten aan de voor zijde van de verticale rack flenss. (1)
 
-2. U kunt elk eind stuk in de onderste en bovenste gaten van het rek uitlijnen in de ruimte die u wilt koppelen. twee
+2. U kunt elk eind stuk in de onderste en bovenste gaten van het rek uitlijnen in de ruimte die u wilt koppelen. (2)
 
-3. Zet de back-end van de Rail totdat deze volledig is gekoppeld aan de verticale rack flens en klik op de vergren deling. Herhaal deze stappen om het front-end-gedeelte op de verticale rack flens te plaatsen en positioneren. 3D
+3. Zet de back-end van de Rail totdat deze volledig is gekoppeld aan de verticale rack flens en klik op de vergren deling. Herhaal deze stappen om het front-end-gedeelte op de verticale rack flens te plaatsen en positioneren. (3)
 
 > [!TIP]
 > Als u de rails wilt verwijderen, geeft u de knop voor de vergren deling op het eind punt van het gedeelte (4) en de afzonderlijke rails ongedaan.
@@ -110,10 +109,10 @@ Voor racks met snap-in Square of ronde gaten, volgt u deze procedure om de rails
 
 Voor racks met geschroefde gaten moet u deze procedure volgen om de rails samen te voegen en te installeren.
 
-1. Verwijder de pincodes van de voor-en hand haakjes met een vlakke draaier. i
-1. Haal de subassemblages van de Rail hendel op en Roteer ze om ze te verwijderen van de beugels. twee
-1. Koppel de linker-en rechter-koppel rails aan de voor zijde verticale rack flenss met behulp van twee combi Naties van schroeven. 3D
-1. Schuif de linker-en rechter kant omhoog en klik op de pijl naar rechts op de verticale rack flens en voeg deze toe met behulp van twee combi Naties van schroeven. 3
+1. Verwijder de pincodes van de voor-en hand haakjes met een vlakke draaier. (1)
+1. Haal de subassemblages van de Rail hendel op en Roteer ze om ze te verwijderen van de beugels. (2)
+1. Koppel de linker-en rechter-koppel rails aan de voor zijde verticale rack flenss met behulp van twee combi Naties van schroeven. (3)
+1. Schuif de linker-en rechter kant omhoog en klik op de pijl naar rechts op de verticale rack flens en voeg deze toe met behulp van twee combi Naties van schroeven. (4)
 
 ![Diagram van het installeren en verwijderen van rails met hulp middelen, met genummerde stappen](media/fxt-install/installing-removing-tooled-rails-400.png)
 
@@ -121,9 +120,9 @@ Voor racks met geschroefde gaten moet u deze procedure volgen om de rails samen 
 
 Volg deze stappen om het Azure FXT edge-apparaat te koppelen aan het rek.
 
-1. Haal de binnenste schuif rails uit het rek totdat ze zijn vergrendeld. i
-1. Zoek de achterstandoff aan de achterzijde van het apparaat en verlaag deze naar de eerste J-sleuven op de dia-verzamelingen. twee 
-1. Het apparaat omlaag draaien totdat alle Rail standoffs in de J-sleuven zijn geplaatst. 3D
+1. Haal de binnenste schuif rails uit het rek totdat ze zijn vergrendeld. (1)
+1. Zoek de achterstandoff aan de achterzijde van het apparaat en verlaag deze naar de eerste J-sleuven op de dia-verzamelingen. (2) 
+1. Het apparaat omlaag draaien totdat alle Rail standoffs in de J-sleuven zijn geplaatst. (3)
 1. Push het apparaat naar binnen totdat de vergren delingen worden geplaatst.
 1. Druk op de vergrendelings knoppen van de schuif regelaar op beide rails (4) en schuif het apparaat naar het rek.
 
@@ -171,7 +170,7 @@ Er wordt een optionele arm voor kabel beheer (CMA) met de FXT-Edge-bestand meege
    De CMA-lade biedt ondersteuning en fungeert als Behouder voor de CMA. 
 
    1. Lijn de zijkanten van de lade af en deel ze aan de rand van de rails. 
-   1. De lade voorwaarts pushen tot deze op plaats klikt. i
+   1. De lade voorwaarts pushen tot deze op plaats klikt. (1)
    1. Als u de lade wilt verwijderen, maakt u de vergrendelings knoppen in het midden en haalt u de lade op van de haakjes van de ontvanger (2).
 
    ![Afbeelding van de installatie van CMA tray](media/fxt-install/cma-tray-install-400.png)

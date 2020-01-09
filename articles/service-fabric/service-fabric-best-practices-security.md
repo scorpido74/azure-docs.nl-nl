@@ -1,25 +1,16 @@
 ---
-title: Aanbevolen procedures voor Azure Service Fabric-beveiliging | Microsoft Docs
-description: Aanbevolen procedures voor Azure Service Fabric Security.
-services: service-fabric
-documentationcenter: .net
+title: Best practices voor Azure Service Fabric-beveiliging
+description: Aanbevolen procedures en ontwerp overwegingen voor het beveiligen van Azure Service Fabric-clusters en-toepassingen.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: fec81e843753656d651c6d5d0b73077a964be9d4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: dcdc338bdcdb2c04f6b8894ccb358bc773b95c07
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807439"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551757"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric-beveiliging 
 

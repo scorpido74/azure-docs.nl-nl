@@ -1,6 +1,6 @@
 ---
-title: Azure kaarten-woordenlijst | Microsoft Docs
-description: Een lijst van veelgebruikte termen die zijn gekoppeld aan Azure-kaarten, Location Based Services en GIS.
+title: Woorden lijst Azure Maps | Microsoft Docs
+description: Een verklarende woorden lijst met veelgebruikte termen die zijn gekoppeld aan Azure Maps, locatie op basis van services en GIS.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 09/18/2018
@@ -8,395 +8,405 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 9be99bc9ac4683fea97333c9d6cb783f0fde35c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02bf5ba30a1fc7b4ee739cb0a591ffe084269541
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64575349"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408863"
 ---
 # <a name="glossary"></a>Woordenlijst
 
-Hier volgt een lijst met veelvoorkomende woorden die worden gebruikt in combinatie met Azure-kaarten.
+Hier volgt een lijst met veelgebruikte woorden die worden gebruikt met Azure Maps.
 
 ## <a name="a"></a>A
 
-<a name="address-validation"></a> **Validatie adres**: Het proces van de verificatie van de aanwezigheid van een adres.
+<a name="address-validation"></a>**Adres validatie**: het proces voor het controleren van het bestaan van een adres.
 
-<a name="advanced-routing"></a> **Geavanceerde routering**: Een verzameling van services die geavanceerde bewerkingen met behulp van gegevens uit de weg-routering, zoals het berekenen van bereikbaar bereiken (van isochronen), afstand matrices en batch routeren van aanvragen uitvoeren.
+<a name="advanced-routing"></a>**Geavanceerde route ring**: een verzameling van services die voorbereidings bewerkingen uitvoeren met behulp van verkeers routerings gegevens, zoals het berekenen van bereik bare bereiken (van isochronen), afstands matrices en batch route aanvragen.
 
-<a name="aerial-imagery"></a> **Satelliet beeldmateriaal**: Zie [satelliet beeldmateriaal](#satellite-imagery). 
+<a name="aerial-imagery"></a>**Foto afbeelding**: Zie [satelliet afbeelding](#satellite-imagery). 
 
-<a name="along-a-route-search"></a> **Langs een zoekopdracht route**: Een ruimtelijke query zoekt naar gegevens die zich binnen een opgegeven detour tijd of de opgegeven afstand van een route-pad.
+<a name="along-a-route-search"></a>**Langs een route zoeken**: een ruimtelijke query die zoekt naar gegevens binnen een opgegeven afronding tijd of afstand van een routenet pad.
 
-<a name="altitude"></a> **Hoogte**: De hoogte of verticale onrechtmatige uitbreiding van een punt een verwijzing voor aanvallen. Hoogte-metingen zijn gebaseerd op een gegeven verwijzing datum, zoals gemiddelde zeeniveau. Zie ook tot misbruik van bevoegdheden.
+<a name="altitude"></a>**Hoogte**: de hoogte of verticale verhoging van een punt boven een referentie-Opper vlak. De hoogte metingen zijn gebaseerd op een gegeven referentie datum, zoals gemiddeld Sea-niveau. Zie ook uitbrei ding van bevoegdheden.
 
-<a name="ambiguous"></a> **Niet-eenduidige**: Een status van de onzekerheid in gegevensclassificatie die bestaat wanneer een object kan op de juiste wijze worden toegewezen aan twee of meer waarden voor een bepaald kenmerk. Bijvoorbeeld, wanneer geocodering "CA" twee niet-eenduidige resultaten worden geretourneerd; Is een code land en staat voor elke respectievelijk 'Canada' en 'Californië' als "CA". 
+<a name="ambiguous"></a>**Ambigu**: een status van onzekerheid in de gegevens classificatie die bestaat wanneer een object twee of meer waarden voor een bepaald kenmerk kan toewijzen. Bijvoorbeeld, wanneer geocodering "CA" twee dubbel zinnige resultaten worden geretourneerd; "Canada" en "Californië" als "CA" zijn de land-en provincie code voor elk van beide. 
 
-<a name="annotation"></a> **Aantekening**: De tekst of afbeeldingen die worden weergegeven op de kaart om informatie te verstrekken aan de gebruiker. Aantekening kan bepalen of een specifieke kaart-entiteit wordt beschreven, Geef algemene informatie over een gebied op de kaart of informatie over de kaart zelf opgeven.
+<a name="annotation"></a>**Aantekening**: tekst of afbeeldingen die worden weer gegeven op de kaart om informatie aan de gebruiker toe te voegen. Aantekening kan een specifieke kaart entiteit identificeren of beschrijven, algemene informatie geven over een gebied op de kaart of informatie over de kaart zelf opgeven.
 
-<a name="antimeridian"></a> **Antimeridian**: Ook wel bekend als de 180<sup>th</sup> Kaartmeridiaan is het punt waar-180 graden en 180 graden van lengtegraad voldoen aan. Dit is tegenover de nulmeridiaan op de hele wereld.
+<a name="antimeridian"></a>**Antimeridian**: ook wel bekend als de 180<sup>th</sup> meridiaan is het punt waar-180 en 180 graden van de lengte graad overeenkomen. Die zich tegenover de Prime meridiaan op de hele wereld bevindt.
 
-<a name="application-programming-interface-api"></a> **Application Programming Interface (API)** : Een specificatie waarmee ontwikkelaars om toepassingen te maken.
+<a name="application-programming-interface-api"></a>**API (Application Programming Interface)** : een specificatie waarmee ontwikkel aars toepassingen kunnen maken.
 
-<a name="api-key"></a> **API-sleutel**: Zie Azure kaarten-sleutel.
+<a name="api-key"></a>**API-sleutel**: Zie [verificatie van gedeelde sleutel](#shared-key-authentication).
 
-<a name="area-of-interest-aoi"></a> **Interessegebied (AOI)** : De omvang die wordt gebruikt voor het definiëren van een aandachtsgebied voor productie van een kaart of de database.
+<a name="area-of-interest-aoi"></a>**Interesse gebied (AOI)** : de mate waarin wordt gebruikt om een focus gebied te definiëren voor een kaart of database productie.
 
-<a name="asset-tracking"></a> **Bijhouden van Assets**: Het proces van het volgen van de locatie van een asset, zoals een persoon, voertuig of een ander object.
+<a name="asset-tracking"></a>**Tracering van activa**: het proces van het volgen van de locatie van een activum, zoals een persoon, een voer tuig of een ander object.
 
-<a name="asynchronous-request"></a> **Asynchrone aanvraag**: Een HTTP-aanvraag die een verbinding wordt geopend en een aanvraag indient bij de server die een id voor de asynchrone aanvraag retourneert, en vervolgens de verbinding wordt gesloten. De server blijft om de aanvraag te verwerken en de gebruiker kan de status van de id controleren. De aanvraag is wanneer het verwerken is voltooid, en de gebruiker kan vervolgens het downloaden van het antwoord. Dit type aanvraag wordt meestal gebruikt voor lange-processen.
+<a name="asynchronous-request"></a>**Asynchrone aanvraag**: een HTTP-aanvraag waarmee een verbinding wordt geopend en een aanvraag wordt gemaakt naar de server die een id voor de asynchrone aanvraag retourneert, waarna de verbinding wordt gesloten. De server blijft de aanvraag verwerken en de gebruiker kan de status controleren met behulp van de id. Wanneer de verwerking van de aanvraag is voltooid, kan de gebruiker de reactie downloaden. Dit type aanvraag wordt gebruikt voor langlopende processen.
 
-<a name="autocomplete"></a> **Automatisch aanvullen**: Een functie in een toepassing voorspelt de rest van een woord dat een gebruiker typt. 
+<a name="autocomplete"></a>**Automatisch aanvullen**: een functie in een toepassing voor spelt de rest van een woord dat een gebruiker typt. 
 
-<a name="autosuggest"></a> **Automatische suggestie**: Een functie in een toepassing de voorspelt logische mogelijkheden voor wat de gebruiker te typen.
+<a name="autosuggest"></a>**Automatische suggestie**: een functie in een toepassing waarin de logische mogelijkheden voor het typen van de gebruiker worden voor speld.
 
-<a name="azure-location-based-services-lbs"></a> **Azure Location Based Services (LBS)** : De oude naam van Azure Maps werd in preview.
+<a name="azure-location-based-services-lbs"></a>**Azure Location Based Services (lbs)** : de oude naam van Azure Maps bij de preview-versie.
 
-<a name="azure-maps-key"></a> **Azure kaarten-sleutel**: Een Azure kaarten-sleutel is een unieke tekenreeks die wordt gebruikt voor verificatie van een gebruiker Azure kaarten-toepassing of service-aanvraag. 
+<a name="azure-active-directory"></a>**Azure Active Directory (Azure AD)** : Azure AD is de cloud-gebaseerde service voor identiteits-en toegangs beheer van micro soft. Azure Maps Azure AD-integratie is momenteel beschikbaar als preview-versie voor alle Azure Maps-Api's. Azure AD biedt ondersteuning voor op rollen gebaseerd toegangs beheer (RBAC) voor het toestaan van verfijnde toegang tot Azure Maps-resources. Zie [Azure Maps en Azure AD](azure-maps-authentication.md) en [verificatie beheren in azure Maps](how-to-manage-authentication.md)voor meer informatie over Azure Maps Azure AD-integratie.
+
+<a name="azure-maps-key"></a>**Azure Maps sleutel**: Zie [verificatie van gedeelde sleutel](#shared-key-authentication).
 
 ## <a name="b"></a>B
 
-<a name="base-map"></a> **Basiskaart**: Het gedeelte van de toepassing van een kaart waarop achtergrond referentie-informatie, zoals wegen, monumenten en politieke grenzen.
+<a name="base-map"></a>**Basis kaart**: het gedeelte van een kaart toepassing dat achtergrond referentie-informatie, zoals wegen, bezienswaardigheden en politieke grenzen, weergeeft.
 
-<a name="batch-request"></a> **Batch-aanvraag**: Het proces van het combineren van meerdere aanvragen in één aanvraag.
+<a name="batch-request"></a>**Batch-aanvraag**: het proces waarbij meerdere aanvragen worden gecombineerd tot één aanvraag.
 
-<a name="bearing"></a> **Met inachtneming van**: De horizontale richting van een punt ten opzichte van een ander punt. Dit wordt uitgedrukt als een hoek ten opzichte van Noord van 0-graden tot en met 360-graden met de klok mee. 
+<a name="bearing"></a>**Voorzien**van: de horizontale richting van een punt ten opzichte van een ander punt. Dit wordt uitgedrukt als een hoek ten opzichte van Noord, van 0 tot 360 graden in de richting van de klok. 
 
-<a name="boundary"></a> **Grens**: Een regel of een veelhoek aangrenzende politieke entiteiten, zoals landen/regio's, gemeenten en eigenschappen te scheiden. Een grens is een regel die al dan niet gaat u als volgt fysieke kenmerken, zoals rivieren, bergen of wanden.
+<a name="boundary"></a>**Grens**: een lijn of veelhoek die de aangrenzende politieke entiteiten scheidt, zoals landen/regio's, districten en eigenschappen. Een grens is een lijn die al dan niet mag worden gevolgd door fysieke functies, zoals rivieren, bergen of wanden.
 
-<a name="bounds"></a> **Grenzen**: Zie [Bounding vak](#bounding-box).
+<a name="bounds"></a>**Grenzen**: Zie [selectie kader](#bounding-box).
 
-<a name="bounding-box"></a> **Selectiekader**: Een reeks coördinaten vertegenwoordigt een rechthoekig gebied op de kaart. 
+<a name="bounding-box"></a>**Begrenzingsvak**: een set coördinaten die wordt gebruikt om een rechthoekig gebied op de kaart weer te geven. 
 
 ## <a name="c"></a>C
 
-<a name="cadastre"></a> **Cadastre**: Een record van geregistreerde land en eigenschappen. Zie ook [pakket](#parcel).
+<a name="cadastre"></a>**Cadastre**: een record met geregistreerde land en eigenschappen. Zie ook [pakket](#parcel).
 
-<a name="camera"></a> **Camera**: In de context van een besturingselement voor interactieve kaart definieert een camera het gezichtsveld van maps. De viewport van de camera wordt bepaald op basis van verschillende parameters van de kaart. Center, zoomniveau, presentatie, gevolgen. 
+<a name="camera"></a>**Camera**: in de context van een interactief kaart besturings element, definieert een camera het veld kaarten van weer gave. De View Port van de camera wordt bepaald op basis van verschillende kaart parameters. gecentreerd, zoom niveau, Toon hoogte. 
 
-<a name="centroid"></a> **Massamiddelpunt**: Het geometrische midden van een functie. De massamiddelpunt van de regel wordt het middelpunt terwijl de massamiddelpunt van een polygoon zou het middelpunt van gebied.
+<a name="centroid"></a>**Massa middelpunt**: het geometrische midden van een functie. De massa middelpunt van een lijn zou het middel punt zijn terwijl de massa middelpunt van een veelhoek het midden van het gebied zou zijn.
 
-<a name="choropleth-map"></a> **Kaart van Choropleth**: Een thematische kaart waarin gebieden grijs worden weergegeven in verhouding tot een waarde van een statistische variabele die wordt weergegeven op de kaart. Bijvoorbeeld, worden dan de grens van elke Amerikaanse staat op basis van de relatieve populatie naar alle andere Staten.
+<a name="choropleth-map"></a>**Choropleth kaart**: een thematische kaart waarin gebieden worden gearceerd in verhouding tot een meting van een statistische variabele die wordt weer gegeven op de kaart. U kunt bijvoorbeeld de grens van elke Amerikaanse staat op basis van de relatieve populatie naar alle andere statussen kleuren.
 
-<a name="concave-hull"></a> **Holle voorzien**: Een vorm die een mogelijk holle geometrie die alle shapes in de opgegeven gegevensset omsluit vertegenwoordigt. De gegenereerde vorm is vergelijkbaar met de gegevens met plastic wrap wrapping en vervolgens verwarming deze, tussen verwijst naar naar andere gegevenspunten cave ertoe leidt dat grote omvat.
+<a name="concave-hull"></a>**Holle romp**: een vorm die een mogelijke holle geometrie vertegenwoordigt die alle vormen in de opgegeven gegevensset omsluit. De gegenereerde vorm is vergelijkbaar met het inpakken van de gegevens met een plastic terugloop en deze vervolgens te verhitten, waardoor grote hoeveel heden van punten naar grot in andere gegevens punten worden verkleind.
 
-<a name="consumption-model"></a> **Verbruik model**: De informatie die definieert u de snelheid waarmee een vehicle brandstof of elektriciteit verbruikt. Zie ook de [verbruik model documentatie](consumption-model.md).
+<a name="consumption-model"></a>**Verbruiks model**: informatie die de snelheid definieert waarmee een voer tuig brand stof of elektriciteit verbruikt. Zie ook de [documentatie over het verbruiks model](consumption-model.md).
 
-<a name="control"></a> **Besturingselement**: Een zelfstandige of herbruikbare component die bestaan uit een grafische gebruikersinterface die een reeks gedrag voor de interface definieert. Bijvoorbeeld, is een besturingselement, doorgaans het gedeelte van de gebruikersinterface die een interactieve kaart wordt geladen.
+<a name="control"></a>**Besturings element**: een zelfstandig of herbruikbaar onderdeel dat bestaat uit een Graphical User Interface dat een set gedrag definieert voor de interface. Bijvoorbeeld: een kaart besturings element is doorgaans het gedeelte van de gebruikers interface dat een interactieve kaart laadt.
 
-<a name="convex-hull"></a> **Convexe voorzien**: Een convexe voorzien is een vorm die staat voor de minimale convexe geometrie die alle shapes in de opgegeven gegevensset omsluit. De gegenereerde vorm is vergelijkbaar met het overschrijven van een band elastische rond de gegevensset.
+<a name="convex-hull"></a>**Convexe romp**: een convexe romp is een vorm die de minimale bol-geometrie vertegenwoordigt die alle vormen in de opgegeven gegevensset omsluit. De gegenereerde vorm is vergelijkbaar met het inpakken van een elastische band rond de gegevensset.
 
-<a name="coordinate"></a> **Coördineren**: Bestaat uit de lengtegraad en breedtegraad waarden gebruikt voor een locatie op een kaart.
+<a name="coordinate"></a>**Coördinaat**: bestaat uit de lengte-en breedte waarden die worden gebruikt om een locatie op een kaart weer te geven.
 
-<a name="coordinate-system"></a> **Coördinatensysteem**: Een referentie-framework gebruikt voor het definiëren van de posities van punten in de ruimte in twee of drie dimensies.
+<a name="coordinate-system"></a>**Coördinaten systeem**: een referentie raamwerk dat wordt gebruikt voor het definiëren van de posities van punten in ruimte in twee of drie dimensies.
 
-<a name="country-code"></a> **Landcode**: Een unieke id voor een land/de regio op basis van de ISO-norm. ISO-2-is een code van twee tekens voor een land/regio (bijvoorbeeld US), welke ISO3 vertegenwoordigt een drieletterige (bijvoorbeeld Verenigde Staten code).
+<a name="country-code"></a>**Land nummer**: een unieke id voor een land/regio op basis van de ISO-standaard. ISO2 is een code van twee tekens voor een land (bijvoorbeeld Verenigde Staten), die ISO3 staat voor een code van drie tekens (bijvoorbeeld USA).
 
-<a name="country-subdivision"></a> **Land/regio onderverdeling**: Een onderverdeling eerste niveau van een land/regio, bekend als een staat of provincie.
+<a name="country-subdivision"></a>**Lands streek**: een deelvak van het hoogste niveau van een land/regio, algemeen bekend als een staat of provincie.
 
-<a name="country-secondary-subdivision"></a> **Land/regio secundaire onderverdeling**: Een tweede niveau onderverdeling van een land/regio, bekend als een regio.
+<a name="country-secondary-subdivision"></a>**Land secundaire deelvak**: een indeling op het tweede niveau van een land/regio, algemeen bekend als een regio.
 
-<a name="country-tertiary-subdivision"></a> **Tertiaire onderverdeling land**: Een derde niveau onderverdeling van een land/regio, doorgaans een benoemde gebied, zoals een district.
+<a name="country-tertiary-subdivision"></a>**Lands tertiaire onderverdeling**: een indeling van een derde niveau van een land/regio, meestal een benoemd gebied, zoals een naar boven.
 
-<a name="cross-street"></a> **Cross-straat**: Een punt waar twee of meer Streets (straten).
+<a name="cross-street"></a>**Kruis straat**: een punt waar twee of meer straten INTERSECT.
 
-<a name="cylindrical-projection"></a> **Cilindrische projectie**: Een projectie waarmee punten uit een spheroid of sphere naar een cilinder tangens of secans worden getransformeerd. De 3D-cilinder wordt vervolgens gesegmenteerd van boven naar beneden en "afgevlakt" tot een gegevenslaag.
+<a name="cylindrical-projection"></a>**Cilindrische projectie**: een projectie waarmee punten van een spheroid of bol worden getransformeerd naar een Tangent of een secans cilinder. De cilinder wordt vervolgens van boven naar beneden gesegmenteerd en afgevlakt in een vlak.
 
 ## <a name="d"></a>D
 
-<a name="datum"></a> **Datum**: De specificaties van de verwijzing van een meetsysteem, een systeem van coördinaat geplaatst op een oppervlak (een horizontale datum) of hoogten boven of onder een oppervlak (een verticale datum).
+<a name="datum"></a>**Datum**: de referentie specificaties van een meet systeem, een systeem van coördinaten posities op een Opper vlak (een horizontale datum) of de hoogte boven of onder een Opper vlak (een verticale datum).
 
-<a name="dbf-file"></a> **DBF-bestand**: Een database-indeling die wordt gebruikt in combinatie met Vormbestanden (SHP).
+<a name="dbf-file"></a>**DBF-bestand**: een bestands indeling voor de data base die wordt gebruikt in combi natie met ESRI (SHP).
 
-<a name="degree-minutes-seconds-dms"></a> **Mate minuten seconden (DMS)** : De maateenheid voor de beschrijving van de breedtegraad en lengtegraad. Een zekere mate wordt 1/360<sup>th</sup> van een cirkel. Een zekere mate verder wordt onderverdeeld in 60 minuten en een paar minuten is onderverdeeld in 60 seconden.
+<a name="degree-minutes-seconds-dms"></a>**Graden minuten seconden (DMS)** : de maat eenheid voor het beschrijven van breedte graad en lengte graad. Een diploma is 1/360 de<sup>th</sup> van een cirkel. Een diploma is verder onderverdeeld in 60 minuten en een minuut wordt in 60 seconden verdeeld.
 
-<a name="delaunay-triangulation"></a> **Delaunay triangulatie**: Een techniek voor het maken van een net van aaneengesloten, niet-overlappende driehoeken uit een gegevensset van punten. Van elke driehoek circumscribing cirkel bevat geen punten van de gegevensset in de binnenkant.
+<a name="delaunay-triangulation"></a>**Delaunay triangulatie**: een techniek voor het maken van een net van aaneengesloten, niet-overlappende drie hoeken van een gegevensset van punten. De circumscribing cirkel van elke drie hoek bevat geen punten uit de gegevensset in de binnenkant.
 
-<a name="demographics"></a> **Demografische gegevens**: De statistische kenmerken (zoals leeftijd, geboortecijfers en inkomsten) van een menselijke populatie.
+<a name="demographics"></a>**Demografische**gegevens: de statistische kenmerken (zoals leeftijd, geboorte rente en inkomsten) van een menselijke populatie.
 
-<a name="destination"></a> **Bestemming**: Een eindpunt of een locatie waarin iemand anders wordt verzonden naar.
+<a name="destination"></a>**Doel**: een eind punt of locatie waar iemand op reis is.
 
-<a name="digital-elevation-model-dem"></a> **Digitale bevoegdheden Model (DEM)** : Een gegevensset van uitbreiding van bevoegdheden waarden met betrekking tot een gebied, vastgelegd over een gebied in regelmatige intervallen met behulp van een algemene datum. DEMs worden meestal gebruikt om aan te duiden terrein vrijstelling.
+<a name="digital-elevation-model-dem"></a>**Digital Elevation Model (DEM)** : een gegevensset van verhogings waarden die betrekking hebben op een Opper vlak, met behulp van een gemeen schappelijke datum vastgelegd in een gebied met regel matige tussen pozen. DEMs worden meestal gebruikt om terrein verlichting te vertegenwoordigen.
 
-<a name="dijkstra's-algorithm"></a> **De Dijkstra algoritme**: Een algoritme die de connectiviteit van een netwerk te vinden van het kortste pad tussen twee punten onderzoekt.
+<a name="dijkstra's-algorithm"></a>**Algoritme van Dijkstra**: een algoritme waarmee de verbinding van een netwerk wordt onderzocht om het kortste pad tussen twee punten te vinden.
 
-<a name="distance-matrix"></a> **Afstandsmatrix**: Een matrix met reisgegevens tijd en de afstand tussen een set oorsprongen en bestemmingen. 
+<a name="distance-matrix"></a>**Afstands matrix**: een matrix die reis tijd-en afstands gegevens tussen een reeks oorsprongen en bestemmingen bevat. 
 
 ## <a name="e"></a>E
 
-<a name="elevation"></a> **Uitbreiding van bevoegdheden**: De verticale afstand van een punt of het object boven of onder een verwijzing surface of een datum (in het algemeen gemiddelde zeeniveau). Uitbreiding van bevoegdheden is in het algemeen heeft betrekking op de hoogte van de grond.
+<a name="elevation"></a>**Uitbrei ding**: de verticale afstand van een punt of object boven of onder een referentie-Opper vlak of datum (meestal Sea-niveau). Uitbrei ding van bevoegdheden heeft doorgaans betrekking op de verticale hoogte van het land.
 
-<a name="envelope"></a> **Envelop**: Zie [Bounding vak](#bounding-box).
+<a name="envelope"></a>**Envelop**: Zie [selectie kader](#bounding-box).
 
-<a name="extended-postal-code"></a> **Uitgebreide postcode**: Een postcode die bijvoorbeeld aanvullende informatie bevatten. Bijvoorbeeld, in de Verenigde Staten, postcodes vijf cijfers hebben maar een uitgebreide postcode, postcode + 4, ook wel bevat vier extra cijfers. Deze extra cijfers worden gebruikt voor identificatie van een geografische segment in het gebied van vijf cijfers levering, zoals een blok stad, een groep appartementen of een postbus efficiënte e sorteren en afleveren helpt.
+<a name="extended-postal-code"></a>**Uitgebreide post code**: een post code die mogelijk aanvullende informatie bevat. In de Verenigde Staten hebben Post codes bijvoorbeeld vijf cijfers, maar een uitgebreide post code, ook wel zip + 4 genoemd, bevat vier extra cijfers. Deze extra cijfers worden gebruikt voor het identificeren van een geografisch segment binnen het leverings gebied van vijf cijfers, zoals een stads blok, een groep appartementen of een postbus van het bedrijf, die u helpt bij het sorteren en leveren van efficiënte e-mail berichten.
 
-<a name="extent"></a> **Voor zover**: Zie [Bounding vak](#bounding-box).
+<a name="extent"></a>**Gebied**: Zie [selectie kader](#bounding-box).
 
 ## <a name="f"></a>F
 
-<a name="federated-authentication"></a> **Federatieve verificatie**: Een verificatiemethode waarmee een mechanisme voor eenmalige aanmelding/verificatie moet worden gebruikt voor meerdere web en mobiele apps. 
+<a name="federated-authentication"></a>**Federatieve verificatie**: een verificatie methode waarmee één aanmeldings-of authenticatie mechanisme kan worden gebruikt voor meerdere web-en mobiele apps. 
 
-<a name="feature"></a> **Functie**: Een object dat een geometrie met een aanvullende metagegevens combineert. 
+<a name="feature"></a>**Functie**: een object dat een geometrie combineert met aanvullende meta gegevens. 
 
-<a name="feature-collection"></a> **Functie verzameling**: Een verzameling van objecten van de functie.
+<a name="feature-collection"></a>**Functie verzameling**: een verzameling functie objecten.
 
-<a name="find-along-route"></a> **Zoeken op route**: Een ruimtelijke query zoekt naar gegevens die zich binnen een opgegeven detour tijd of de opgegeven afstand van een route-pad.
+<a name="find-along-route"></a>Volgende **route zoeken**: een ruimtelijke query die zoekt naar gegevens binnen een opgegeven afronding tijd of afstand van een routenet pad.
 
-<a name="find-nearby"></a> **Zoeken in de buurt**: Een ruimtelijke query waarmee wordt gezocht binnen een vaste lineaire afstand (zoals de breedte naar vliegen) een punt.
+<a name="find-nearby"></a>**Nabijgelegen zoeken**: een ruimtelijke query die een vaste lineaire afstand (als de hanen, vliegt) doorzoekt vanaf een punt.
 
-<a name="fleet-management"></a> **Beheer van de vissersvloot**: Het beheer van commerciële voertuigen, zoals auto's, vrachtwagens wordt verzonden en vlakken. Beheer van de vloot kan tal van functies, zoals vehicle financiering, onderhoud, telematica (tracerings- en diagnostische gegevens), evenals stuurprogramma, snelheid, brandstof en gezondheid en veiligheid management bevatten. Apparatenpark is een proces dat wordt gebruikt door bedrijven die afhankelijk van transport in hun bedrijf zijn te minimaliseren van de risico's en hun algehele vervoer en personeel kosten verlagen terwijl u ervoor te zorgen dat de naleving van overheidswetgeving.
+<a name="fleet-management"></a>**Vloot beheer**: het beheer van commerciële Voer tuigen, zoals auto's, vracht wagens, schepen en plannen. Vloot beheer kan bestaan uit een reeks functies, zoals het financieren van het Voer tuig, onderhoud, telematica (tracering en diagnose), alsook stuur programma, snelheid, brand stof en gezondheids-en veiligheids beheer. Vloot beheer is een proces dat wordt gebruikt door bedrijven die afhankelijk zijn van het Trans Port in hun bedrijf om de Risico's tot een minimum te beperken en hun totale kosten voor vervoer en personeel te verminderen, en tegelijkertijd te voldoen aan overheids wetgeving.
 
-<a name="free-flow-speed"></a> **Snelheid van flow gratis**: De snelheid van de gratis flow verwacht ideaal voorwaarden wordt voldaan. Meestal de limiet van snelheid.
+<a name="free-flow-speed"></a>**Vrije stroom snelheid**: de vrije stroom snelheid die wordt verwacht onder ideale omstandigheden. Doorgaans de snelheids limiet.
 
-<a name="free-form-address"></a> **Vrije vorm van het adres**: Een volledige-adres dat wordt weergegeven als één regel tekst.
+<a name="free-form-address"></a>**Vrije-vorm adres**: een volledig adres dat wordt weer gegeven als één regel tekst.
 
-<a name="fuzzy-search"></a> **Fuzzy zoekopdrachten**: Een zoekopdracht die in een tekenreeks van de tekst die mogelijk een adres of een nuttige plaats. 
+<a name="fuzzy-search"></a>**Zoek actie op fuzzy**: een zoek opdracht die in een vrije teken reeks wordt gebruikt voor tekst die een adres of interesse kan zijn. 
 
 ## <a name="g"></a>G
 
-<a name="geocode"></a> **Geocode**: Een adres of de locatie die is geconverteerd naar een coördinaat die kan worden gebruikt om die locatie op een kaart weer te geven. 
+<a name="geocode"></a>**Geocode**: een adres of locatie die is geconverteerd naar een coördinaat die kan worden gebruikt om die locatie weer te geven op een kaart. 
 
-<a name="geocoding"></a> **Geocodering**: Doorsturen geocodering, wordt ook wel bekend als het proces van het converteren van-adres van de locatiegegevens in coördinaten. 
+<a name="geocoding"></a>**Geocodering**: ook wel ' geocodering ' genoemd, is het proces waarbij de locatie gegevens worden geconverteerd naar coördinaten. 
 
-<a name="geodesic-path"></a> **Geodesic pad**: Het kortste pad tussen twee punten op een kromme voor aanvallen. Wanneer ze worden weergegeven op de Azure-kaarten dit pad wordt weergegeven als een kromme lijn vanwege de Mercator-projectie.
+<a name="geodesic-path"></a>**Geodesic pad**: het kortste pad tussen twee punten op een gekromd Opper vlak. Wanneer dit pad wordt weer gegeven op Azure Maps, wordt dit weer gegeven als een gekromde lijn als gevolg van de Mercator-projectie.
 
-<a name="geofence"></a> **Geofence**: Een gedefinieerde geografische regio die kan worden gebruikt voor het activeren van gebeurtenissen wanneer een apparaat wordt ingevoerd of de regio bestaat.
+<a name="geofence"></a>**Geofence**: een gedefinieerde geografische regio die kan worden gebruikt voor het activeren van gebeurtenissen wanneer een apparaat de regio binnenkomt of bestaat.
 
-<a name="geojson"></a> **GeoJSON**: Een algemene indeling van JSON-bestand wordt gebruikt voor het opslaan van vectorgegevens, zoals punten, regels en veelhoeken geografische. **Opmerking**: Azure kaarten maakt gebruik van een uitgebreide versie van GeoJSON als [hier beschreven](extend-geojson.md).
+<a name="geojson"></a>**Geojson**: is een gemeen schappelijke JSON-bestands indeling die wordt gebruikt voor het opslaan van geografische vector gegevens zoals punten, lijnen en veelhoeken. **Opmerking**: in azure Maps wordt een uitgebreide versie van geojson gebruikt, zoals [hier wordt beschreven](extend-geojson.md).
 
-<a name="geometry"></a> **Geometrie**: Een ruimtelijke-object, zoals een punt, een regel of een veelhoek vertegenwoordigt.
+<a name="geometry"></a>**Geometrie**: vertegenwoordigt een ruimtelijke object, zoals een punt, lijn of veelhoek.
 
-<a name="geometrycollection"></a> **GeometryCollection**: Een verzameling van geometrie-objecten.
+<a name="geometrycollection"></a>**GeometryCollection**: een verzameling Geometry-objecten.
 
-<a name="geopol"></a> **GeoPol**: Verwijst naar geopolitieke gevoelige gegevens, zoals betwiste randen en het geocoderen van plaatsnamen.
+<a name="geopol"></a>**GeoPol**: verwijst naar geopolitieke gevoelige gegevens, zoals betwiste randen en namen van locaties.
 
-<a name="georeference"></a> **Georeference**: Het proces van het uitlijnen van geografische gegevens of beeldmateriaal naar een bekende coördinatensysteem. Dit proces kan bestaan uit verschuiven, roteren, schalen of scheeftrekken van de gegevens.
+<a name="georeference"></a>**Georeferentie**: het proces van het afstemmen van geografische gegevens of installatie kopieën naar een bekend coördinaten systeem. Dit proces kan bestaan uit het verplaatsen, draaien, schalen of scheef trekken van de gegevens.
 
-<a name="georss"></a> **GeoRSS**: Een XML-extensie voor het toevoegen van ruimtelijke gegevens op RSS-feeds.
+<a name="georss"></a>**GeoRSS**: een XML-extensie voor het toevoegen van ruimtelijke gegevens aan RSS-feeds.
 
-<a name="gis"></a> **GIS**: Een afkorting voor 'Geographic Information System'. Een algemene term die wordt gebruikt om te beschrijven de bedrijfstak van de toewijzing.
+<a name="gis"></a>**GIS**: een acroniem voor "geografisch informatie systeem". Een algemene term die wordt gebruikt om de toewijzings branche te beschrijven.
 
-<a name="gml"></a> **GML**: Ook wel bekend als Geography Markup Language. Een XML-extensie voor het opslaan van ruimtelijke gegevens.
+<a name="gml"></a>**GML**: ook wel bekend als de taal voor geografische markeringen. Een XML-bestands extensie voor het opslaan van ruimtelijke gegevens.
 
-<a name="gps"></a> **GPS**: Global Positioning System wordt ook wel bekend als een systeem van satellieten die worden gebruikt voor het bepalen van de positie van een apparaten op de aarde. De orbiting satellieten signalen waarmee een GPS-ontvanger overal op aarde voor het berekenen van de eigen locatie via trilateration verzenden.
+<a name="gps"></a>**GPS**: ook wel bekend als Global Positioning System, is een systeem van satellieten dat wordt gebruikt om de positie van apparaten op de aarde te bepalen. De banen satellieten verzenden signalen waarmee een GPS-ontvanger overal op de aarde een eigen locatie kan berekenen via trilateration.
 
-<a name="gpx"></a> **GPX**: Ook wel bekend als indeling voor uitwisseling GPS, is een XML-indeling vaak gemaakt op basis van GPS-apparaten.  
+<a name="gpx"></a>**GPX**: ook bekend als GPS Exchange-indeling, is een XML-bestands indeling die meestal wordt gemaakt op basis van GPS-apparaten.  
 
-<a name="great-circle-distance"></a> **Great cirkel afstand**: De kortste afstand tussen de twee punten op het oppervlak van een bol.
+<a name="great-circle-distance"></a>**Uitstekende cirkel afstand**: de kortste afstand tussen twee punten op het Opper vlak van een bol.
 
-<a name="greenwich-mean-time-gmt"></a> **Greenwich Mean Time (GMT)** : De tijd op de nulmeridiaan die wordt uitgevoerd via de Royal voor de audiovisuele sector in Greenwich, Engeland.
+<a name="greenwich-mean-time-gmt"></a>**Greenwich Mean Time (GMT)** : de tijd op de Prime meridiaan, die wordt uitgevoerd via de Royal-post in GMT, England.
 
-<a name="guid"></a> **GUID**: Een globally unique identifier. Een tekenreeks die wordt gebruikt voor het aanduiden van een interface, klasse, typebibliotheek, categorie onderdeel of een record.
+<a name="guid"></a>**GUID**: een Globally Unique Identifier. Een teken reeks die wordt gebruikt om een unieke identificatie van een interface, klasse, type bibliotheek, onderdeel categorie of record op te geven.
 
 ## <a name="h"></a>H
 
-<a name="haversine-formula"></a> **De formule Haversine**: Een algemene vergelijking voor het berekenen van de great cirkel afstand tussen de twee punten op een bol gebruikt.
+<a name="haversine-formula"></a>**Haversine formule**: een algemene vergelijking die wordt gebruikt voor het berekenen van de afstand tussen twee punten op een bol.
 
-<a name="hd-maps"></a> **HD-kaarten**: Ook wel bekend als bestaat hoge definitie Maps, uit gegevens van hoge kwaliteit weg netwerk zoals lane markeringen, aankondigingen en richting van verlichting vereist voor het aansturen van autonome.
+<a name="hd-maps"></a>**HD-kaarten**: ook wel bekend als high-definition Maps, bestaat uit hoogwaardige wegnetwerk informatie, zoals Lane-markeringen, ondertekening en richtingaanwijzers die vereist zijn voor autonoom rijden.
 
-<a name="heading"></a> **Kop**: De richting is iets aan te wijzen of vooraf. Zie ook [voorzien](#heading).
+<a name="heading"></a>**Kop**: de richting waarin wordt verwezen naar of gericht is. Zie ook [.](#heading)
 
-<a name="heatmap"></a> **Heatmap**: Een gegevensvisualisatie waarin een aantal kleuren vertegenwoordigen de dichtheid van punten in een bepaald gebied. Zie ook thematische kaart.
+<a name="heatmap"></a>**Heatmap**: een gegevens visualisatie waarin een reeks kleuren de dichtheid van punten in een bepaald gebied vertegenwoordigen. Zie ook thematische kaart.
 
-<a name="hybrid-imagery"></a> **Gecombineerde beelden**: Satelliet of luchtfoto beeldmateriaal waarvoor weg gegevens en ze daar boven op elkaar overlappen.
+<a name="hybrid-imagery"></a>**Hybride installatie kopie**: satelliet-of lucht afbeelding met weg gegevens en labels boven op de afbeelding.
 
 ## <a name="i"></a>I
 
-<a name="iana"></a> **IANA**: Een acroniem voor de Internet Assigned Numbers Authority. Een groep voor non-profitorganisatie die verantwoordelijk is voor globale IP-adrestoewijzing.
+<a name="iana"></a>**IANA**: een acroniem voor de Internet Assigned Numbers Authority. Een non-profit groep die de toewijzing van globale IP-adressen overziet.
 
-<a name="isochrone"></a> **Isochrone**: Een isochrone definieert het gebied waarin kan iemand getransporteerd binnen een opgegeven periode voor een transport in een willekeurige richting van een bepaalde locatie. Zie ook [bereikbaar bereik](#reachable-range).
+<a name="isochrone"></a>**Isochrone**: een isochrone definieert het gebied waarin iemand binnen een bepaalde tijd kan reizen voor een transport modus in elke richting van een bepaalde locatie. Zie ook [bereikbaar bereik](#reachable-range).
 
-<a name="isodistance"></a> **Isodistance**: Een locatie wordt opgegeven, definieert een isochrone het gebied waarin iemand binnen een bepaalde afstand voor een transport in alle richtingen kunt reizen. Zie ook [bereikbaar bereik](#reachable-range).
+<a name="isodistance"></a>**Isodistance**: op basis van een locatie definieert een isochrone het gebied waarin iemand binnen een bepaalde afstand voor een transport methode in een wille keurige richting kan reizen. Zie ook [bereikbaar bereik](#reachable-range).
 
 ## <a name="k"></a>K
 
-<a name="kml"></a> **KML**: Keyhole Markup Language, wordt ook wel bekend als een algemene XML-indeling voor het opslaan van vectorgegevens van de geografische zoals punten, regels en veelhoeken. 
+<a name="kml"></a>**KML**: ook wel bekend als de taal voor het opmaken van een vector, is een algemene XML-bestands indeling voor het opslaan van geografische gegevens zoals punten, lijnen en veelhoeken. 
 
 ## <a name="l"></a>L
 
-<a name="landsat"></a> **Landsat**: Multispectral, die de aarde zijn om satellieten die zijn ontwikkeld door NASA die beelden van de grond die wordt gebruikt in veel bedrijfstakken, zoals landbouw, bosbouw en cartografie verzamelen.
+<a name="landsat"></a>**Landsat**: MultiSpectral, satellieten die zijn ontwikkeld door NASA die installatie kopieën van gronden verzamelen die in veel branches, zoals land bouw, bosbouw en Cartography, worden gebruikt.
 
-<a name="latitude"></a> **Breedtegraad**: De hoekvormige afstand wordt gemeten in graden van de evenaar in een Noord of Zuid-richting.
+<a name="latitude"></a>**Latitude**: de hoek afstand gemeten in graden van de gelijkheid in een Noord-of Zuid-richting.
 
-<a name="level-of-detail"></a> **Detailniveau**: Zie Inzoomen op niveau.
+<a name="level-of-detail"></a>**Detail niveau**: Zie zoom niveau.
 
-<a name="lidar"></a> **Lidar**: Acroniem voor lichte detectie en het bereik. Een extern detecterende techniek die gebruikmaakt van lasers voor het meten van afstanden bij reflectieve oppervlak.
+<a name="lidar"></a>**LIDAR**: een acroniem voor lichte detectie en bereik. Een techniek voor externe detectie die gebruikmaakt van lasers om afstanden te meten naar reflecterende Opper vlakken.
 
-<a name="linear-interpolation"></a> **Lineaire interpolatie**: De schatting van een onbekende waarde met behulp van de afstand tussen de bekende waarden.
+<a name="linear-interpolation"></a>**Lineaire interpolatie**: de schatting van een onbekende waarde met behulp van de lineaire afstand tussen bekende waarden.
 
-<a name="linestring"></a> **LineString**: Een geometrie vertegenwoordigt een regel. Ook wel bekend als een polylijn. 
+<a name="linestring"></a>**Lines Tring**: een geometrie die wordt gebruikt om een lijn aan te duiden. Ook wel een poly lijn genoemd. 
 
-<a name="localization"></a> **Lokalisatie**: Ondersteuning voor verschillende talen en culturen.
+<a name="localization"></a>**Lokalisatie**: ondersteuning voor verschillende talen en cult uren.
 
-<a name="logistics"></a> **Logistiek**: Het proces van het verplaatsen van mensen, voertuigen, leveringen of activa op een gecoördineerde manier.
+<a name="logistics"></a>**Logistiek**: het proces van het verplaatsen van personen, voer tuigen, leveringen of activa op een gecoördineerde manier.
 
-<a name="longitude"></a> **Lengtegraad**: De hoekvormige afstand wordt gemeten in graden van de nulmeridiaan in VS-Oost of west richting.
+<a name="longitude"></a>**Lengte graad**: de afstand van de hoek gemeten in graden van de Prime meridiaan in een Oost-of-West-richting.
 
-## <a name="m"></a>M
+## <a name="m"></a>mln.
 
-<a name="map-tile"></a> **Tegel toewijzen**: Een installatiekopie van het rechthoekige die staat voor een partitie van een kaart-canvas. Zie voor meer informatie de [zoomniveaus en documentatie voor grid tegel](zoom-levels-and-tile-grid.md).
+<a name="map-tile"></a>**Kaart tegel**: een rechthoekige afbeelding die een partitie van een kaart doek vertegenwoordigt. Zie de [documentatie voor zoom niveaus en tegel raster](zoom-levels-and-tile-grid.md)voor meer informatie.
 
-<a name="marker"></a> **Marker**: Een pincode of het markeringspunt, wordt ook wel bekend als een pictogram dat staat voor een locatie op een kaart.
+<a name="marker"></a>**Markering**: ook wel een pincode of Punaise genoemd, is een pictogram dat een punt locatie op een kaart vertegenwoordigt.
 
-<a name="mercator-projection"></a> **Mercator-projectie**: Een cilindrische kaartprojectie die de standaard kaartprojectie voor nautische doeleinden is geworden vanwege de mogelijkheid om weer te geven van de regels van constante cursus, bekend als rhumb regels rechte segmenten die de hoeken met de meridianen besparen. Alle platte kaart projecties vervalsen de vormen of de grootte van de kaart in vergelijking met de waarde true indeling van het aardoppervlak. De Mercator-projectie verhoogt gebieden ver van de evenaar, ligt dat kleinere gebieden worden weergegeven op de kaart groter als u de palen benaderen. 
+<a name="mercator-projection"></a>**Mercator-projectie**: een cilindrische kaart projectie die de standaard kaart projectie voor zeemijl is geworden vanwege de mogelijkheid om regels van constante cursus, ook wel rhumb-lijnen, te vertegenwoordigen als rechte segmenten waarmee de hoeken met de meridianen worden bewaard. Alle vlakke kaart projecties vervormen de vormen of grootten van de kaart in vergelijking met de werkelijke indeling van het Opper vlak van de aarde. De Mercator-projectie exaggerates gebieden die ver van de vergelijkend zijn, zodat kleinere gebieden groter worden weer gegeven op de kaart wanneer u de palen benadert. 
 
-<a name="multilinestring"></a> **MultiLineString**: Een geometrie die een verzameling van objecten LineString vertegenwoordigt. 
+<a name="multilinestring"></a>**Multi line string**: een geometrie die een verzameling Lines Tring-objecten vertegenwoordigt. 
 
-<a name="multipoint"></a> **MultiPoint**: Een geometrie die staat voor een verzameling van Point-objecten.
+<a name="multipoint"></a>**Multi point**: een geometrie die een verzameling punt objecten vertegenwoordigt.
 
-<a name="multipolygon"></a> **MultiPolygon**: Een geometrie die staat voor een verzameling van objecten van de Polygoon. Bijvoorbeeld, om weer te geven de grens van Hawaï, elke eiland zou worden aangegeven met een veelhoek en de grens van Hawaï zou dus een MultiPolygon.
+<a name="multipolygon"></a>**Multiveelhoek**: een geometrie die een verzameling veelhoek objecten vertegenwoordigt. Als u bijvoorbeeld de grens van Hawaï wilt weer geven, wordt elk eiland met een veelhoek omlijnd en is de grens van Hawaï een multiveelhoek.
 
-<a name="municipality"></a> **Gemeenteraad**: Een stad of plaats. 
+<a name="municipality"></a>**Gemeente**: een stad of stad. 
 
-<a name="municipality-subdivision"></a> **Gemeenteraad onderverdeling**: Een onderverdeling van een gemeenteraad, zoals een groep of lokale gebiedsnaam zoals 'centrum'.
+<a name="municipality-subdivision"></a>**Gemeentelijke deelvak**: een deelvak van een gemeente, zoals een groep of een naam van een lokaal gebied, zoals ' centrum '.
 
 ## <a name="n"></a>N
 
-<a name="navigation-bar"></a> **Navigatiebalk**: De set besturingselementen op een kaart die wordt gebruikt voor het aanpassen van het zoomniveau, presentatie, draaien en schakelen tussen de basiskaart-laag.
+<a name="navigation-bar"></a>**Navigatie balk**: de set besturings elementen in een kaart die wordt gebruikt voor het aanpassen van het zoom niveau, de hoogte, de draaiing en de omschakeling van de laag van de basis kaart.
 
-<a name="nearby-search"></a> **In de buurt zoeken**: Een ruimtelijke query waarmee wordt gezocht binnen een vaste lineaire afstand (zoals de breedte naar vliegen) een punt.
+<a name="nearby-search"></a>**Zoek naar**in de buurt: een ruimtelijke query die een vaste lineaire afstand (als de hanen, vliegt) vanaf een punt doorzoekt.
 
-<a name="neutral-ground-truth"></a> **Neutraal begin waarheid**: Een kaart waarop de labels in de officiële taal van de regio staat en lokale scripts, indien beschikbaar wordt weergegeven.
+<a name="neutral-ground-truth"></a>**Onpartijdige waarheid**: een kaart die labels weergeeft in de officiële taal van de regio die het vertegenwoordigt en in lokale scripts, indien beschikbaar.
 
 ## <a name="o"></a>O
 
-<a name="origin"></a> **Origin**: Een beginpunt of de locatie waarin een gebruiker is.
+<a name="origin"></a>**Oorsprong**: een begin punt of locatie waar een gebruiker zich bevindt.
 
 ## <a name="p"></a>P
 
-<a name="panning"></a> **Pannen**: Het proces van het verplaatsen van de kaart in een willekeurige richting behoud van een constante zoomniveau.
+<a name="panning"></a>**Pannen**: het proces van het verplaatsen van de kaart in een wille keurige richting en het behoud van een constant zoom niveau.
 
-<a name="parcel"></a> **Parcel**: Een diagram van land of de eigenschap grens.
+<a name="parcel"></a>**Perceel**: een waarnemings punt of grens van een eigenschap.
 
-<a name="pitch"></a> **Presentatie**: Het bedrag van de hoek van de kaart is ten opzichte van de verticale waar 0 is kijken rechtstreeks op de kaart.
+<a name="pitch"></a>**Pitch**: de hoeveelheid kanteling van de kaart ten opzichte van de verticale plaats op de kaart.
 
-<a name="point"></a> **Point**: Een geometrie die staat voor een enkele positie op de kaart. 
+<a name="point"></a>**Punt**: een geometrie die een enkele positie op de kaart vertegenwoordigt. 
 
-<a name="points-of-interest-poi"></a> **Punten van belang (pijl)** : Een bedrijf, oriëntatiepunt of algemene plaats van belang zijn.
+<a name="points-of-interest-poi"></a>**Points of Interest (POI)** : een bedrijf, oriëntatie punt of gemeen schappelijke plaats van belang.
 
-<a name="polygon"></a> **Veelhoek**: Een solide geometrie die Hiermee geeft u een gebied op een kaart. 
+<a name="polygon"></a>**Veelhoek**: een effen geometrie die een gebied op een kaart vertegenwoordigt. 
 
-<a name="polyline"></a> **Polylijn**: Een geometrie vertegenwoordigt een regel. Ook wel bekend als een LineString. 
+<a name="polyline"></a>**Poly lijn**: een geometrie die wordt gebruikt om een lijn aan te duiden. Ook wel bekend als een Lines Tring. 
 
-<a name="position"></a> **Positie**: De lengtegraad, breedtegraad en hoogte (x, y, z-coördinaten) van een punt.
+<a name="position"></a>**Positie**: de lengte graad, breedte graad en hoogte (x, y, z-coördinaten) van een punt.
 
-<a name="post-code"></a> **Postcode**: Zie [postcode](#postal-code).
+<a name="post-code"></a>**Post code**: Zie [Post code](#postal-code).
 
-<a name="postal-code"></a> **Postcode**: Een reeks letters of cijfers of beide in een specifieke indeling, gebruikt door de postservice van een land/regio voor het delen van geografische gebieden in zones vereenvoudigt de bezorging van e-mail.
+<a name="postal-code"></a>**Post code**: een reeks letters of cijfers, of beide, in een specifieke indeling, die door de post dienst van een land/regio wordt gebruikt om geografische gebieden in zones te verdelen, zodat de levering van e-mail wordt vereenvoudigd.
 
-<a name="prime-meridian"></a> **Nulmeridiaan**: Een line-of lengtegraad die 0 graden lengtegraad aangeeft. Over het algemeen waarden voor lengtegraad verkleinen als u onderweg bent in een westerly richting tot 180 graden en verhogen als u onderweg bent in easterly richtingen te-180-graden. 
+<a name="primary-key"></a>**Primaire sleutel**: de eerste van twee abonnements sleutels die zijn verschaft voor Azure Maps gedeelde sleutel verificatie. Zie [verificatie van de gedeelde sleutel](#shared-key-authentication).
 
-<a name="prj"></a> **PRJ**: Een tekstbestand die wordt meegestuurd met vaak een Vormbestand-bestand dat informatie over de verwachte coördinatensysteem bevat de gegevensset is in.
+<a name="prime-meridian"></a>**Prime meridiaan**: een lijn met een lengte graad die een lengte van 0 graden aangeeft. Over het algemeen zijn de lengte waarden kleiner wanneer ze in een Westerly-richting tot 180 graden worden gereisd en verg Roten wanneer ze in een Paasdag-richtingen naar-180-graden reizen. 
 
-<a name="projection"></a> **Projectie**: Een verwachte coördinatensysteem op basis van een kaartprojectie zoals transversale Mercator, Albers gelijk zijn aan vlak- en Robinson. Deze bieden de mogelijkheid om de project-kaarten van het bolvormige aardoppervlak op het vlak van een tweedimensionale Cartesisch coördinaat. Geschatte coördinaat systemen worden soms aangeduid als kaart projecties.
+<a name="prj"></a>**PRJ**: een tekst bestand dat vaak vergezeld gaat van een vorm bestand-bestand dat informatie bevat over het geprojecteerde coördinaten systeem waarin de gegevensset zich bevindt.
+
+<a name="projection"></a>**Projectie**: een geprojecteerd coördinaten systeem op basis van een kaart projectie, zoals transversale Mercator, Albers equally Area en Robinson. Dit biedt de mogelijkheid om kaarten van het bolvormige vlak van de aarde te projecteren op een tweedimensionale Cartesisch coördinaten vlak. Geprojecteerde coördinaten systemen worden soms een kaart projectie genoemd.
 
 ## <a name="q"></a>Q
 
-<a name="quadkey"></a> **Quadkey**: Een index base-4-adres voor een tegel in een systeem van quadtree naast elkaar. Zie voor meer informatie, [zoomniveaus en tegelraster](zoom-levels-and-tile-grid.md) documentatie voor meer informatie.
+<a name="quadkey"></a>**Quadkey**: een base-4-adres index voor een tegel binnen een quadtree-systeem. Zie [zoom niveaus en tegel grid](zoom-levels-and-tile-grid.md) -documentatie voor meer informatie.
 
-<a name="quadtree"></a> **Quadtree**: Een gegevensstructuur waarin elk knooppunt exact vier onderliggende items heeft. Het naast elkaar systeem dat wordt gebruikt in Azure Maps maakt gebruik van een structuur quadtree zo dat als een gebruiker zoomt u in één niveau, elke kaarttegel in vier onderdelen tegels breekt.  Zie voor meer informatie, [zoomniveaus en tegelraster](zoom-levels-and-tile-grid.md) documentatie voor meer informatie.
+<a name="quadtree"></a>**Quadtree**: een gegevens structuur waarin elk knoop punt precies vier onderliggende items heeft. Het tegel systeem dat in Azure Maps wordt gebruikt, maakt gebruik van een quadtree-structuur, zoals een gebruiker op één niveau zoomt, waarbij elke kaart tegel in vier subtegels wordt onderverdeeld.  Zie [zoom niveaus en tegel grid](zoom-levels-and-tile-grid.md) -documentatie voor meer informatie.
 
-<a name="queries-per-second-qps"></a> **Query's Per seconde (QPS)** : Het aantal query's of aanvragen dat kunnen worden uitgevoerd met een service of platform binnen één seconde. 
+<a name="queries-per-second-qps"></a>**Query's per seconde (qps)** : het aantal query's of aanvragen dat binnen één seconde kan worden gemaakt aan een service of platform. 
 
 ## <a name="r"></a>R
 
-<a name="radial-search"></a> **Radiale zoeken**: Een ruimtelijke query waarmee wordt gezocht binnen een vaste lineaire afstand (zoals de breedte naar vliegen) een punt. 
+<a name="radial-search"></a>**Radiaal zoekactie**: een ruimtelijke query die een vaste lineaire afstand (als de hanen en andere) doorzoekt vanaf een punt. 
 
-<a name="raster-data"></a> **Rastergegevens**: Een matrix van cellen (of pixels) die is ingedeeld in rijen en kolommen (of een raster) waarbij elke cel bevat een waarde van gegevens, zoals temperatuur. Raster van bevatten digitale luchtfoto's, beeldmateriaal van satellieten, digitale foto's en gescande kaarten.
+<a name="raster-data"></a>**Raster gegevens**: een matrix met cellen (of pixels) die zijn ingedeeld in rijen en kolommen (of een raster) waarbij elke cel een waarde bevat, zoals de Tempe ratuur. Rasters bevatten digitale lucht Foto's, afbeelding van satellieten, digitale afbeeldingen en gescande kaarten.
 
-<a name="raster-layer"></a> **Raster laag**: Een tegellaag die uit rasterafbeeldingen bestaat.
+<a name="raster-layer"></a>**Raster laag**: een tegel laag die uit raster afbeeldingen bestaat.
 
-<a name="reachable-range"></a> **Bereikbaar bereik**: Een bereikbaar bereik definieert het gebied waarin iemand binnen een opgegeven periode of afstand, voor een transport op reis in een willekeurige richting vanaf een locatie kunt reizen. Zie ook [Isochrone](#isochrone) en [Isodistance](#isodistance).
+<a name="reachable-range"></a>Bereikbaar **bereik**: een bereikbaar bereik definieert het gebied waarin iemand binnen een opgegeven tijd of afstand kan reizen, voor een transport wijze, in elke richting van een locatie. Zie ook [isochrone](#isochrone) en [Isodistance](#isodistance).
 
-<a name="remote-sensing"></a> **Externe detectie**: Het proces van het verzamelen en interpreteren van sensorgegevens op afstand.
+<a name="remote-sensing"></a>**Externe detectie**: het proces van het verzamelen en interpreteren van sensor gegevens van een afstand.
 
-<a name="rest-service"></a> **REST service**: Het acroniem REST staat voor Representational State Transfer. Een REST-service is een URL-gebaseerde webservice die is gebaseerd op algemene web-technologie om te communiceren, de meest voorkomende methoden wordt HTTP GET en POST-aanvragen. Deze typen services meestal aan mij veel sneller en kleiner dan traditionele SOAP gebaseerde services.
+<a name="rest-service"></a>**Rest-service**: de acroniem rest staat voor een representatieve status overdracht. Een REST-service is een URL-gebaseerde webservice die gebruikmaakt van de eenvoudige webtechnologie om te communiceren, de meest voorkomende methoden om HTTP GET-en POST-aanvragen te verzenden. Deze typen services worden vaak veel sneller en kleiner dan traditionele op SOAP gebaseerde services.
 
-<a name="reverse-geocode"></a> **Reverse-geocode**: Hiermee geeft u het proces van een coördinaat nemen en het bepalen van het adres in dat is op een kaart.
+<a name="reverse-geocode"></a>**Omgekeerde Geocode**: het proces van het nemen van een coördinaat en het bepalen van het adres dat op een kaart staat.
 
-<a name="reproject"></a> **Reproject**: Zie [transformatie](#transformation).
+<a name="reproject"></a>Opnieuw **projecteren**: Zie [trans formatie](#transformation).
 
-<a name="rest-service"></a> **REST service**: Acroniem voor Representational State Transfer. Een architectuur voor het uitwisselen van gegevens tussen peers in een gedecentraliseerde, gedistribueerde omgeving. REST kan programma's op verschillende computers om te communiceren onafhankelijk van een besturingssysteem of platform door een aanvraag Hypertext Transfer Protocol (HTTP) te verzenden naar een uniform resource locator (URL) en terughalen van gegevens.
+<a name="rest-service"></a>**Rest-service**: een acroniem voor representatieve status overdracht. Een architectuur voor het uitwisselen van gegevens tussen peers in een gecentraliseerde, gedistribueerde omgeving. REST Hiermee kunnen Program ma's op verschillende computers onafhankelijk van een besturings systeem of platform communiceren door een Hypertext Transfer Protocol (HTTP)-aanvraag naar een URL (Uniform Resource Locator) te verzenden en gegevens terug te halen.
 
-<a name="route"></a> **Route**: Het pad tussen twee of meer locaties, waaronder ook aanvullende informatie, zoals instructies voor het waypoints langs de route.
+<a name="route"></a>**Route**: een pad tussen twee of meer locaties, dat ook aanvullende informatie kan bevatten, zoals instructies voor waypoints over de route.
 
-<a name="requests-per-second-rps"></a> **Aanvragen Per seconde (RPS)** : Zie [query's Per seconde (QPS)](#queries-per-second-qps). 
+<a name="requests-per-second-rps"></a>**Aanvragen per seconde (RPS)** : Zie [query's per seconde (qps)](#queries-per-second-qps). 
 
-<a name="rss"></a> **RSS**: Acroniem voor heel eenvoudig Syndication, Resource beschrijving Framework (RDF) Site Summary of Rich Site Summary, afhankelijk van de bron. Een eenvoudige, gestructureerde XML-indeling voor het delen van inhoud tussen verschillende websites. RSS-documenten zijn de van de belangrijkste metagegevenselementen zoals auteur, datum, titel, een korte beschrijving en een koppeling. Deze informatie helpt een gebruiker (of een service van de uitgever RSS) bepalen wat materialen zijn het noemen waard verder onderzoek.
+<a name="rss"></a>**RSS**: acroniem voor een echt eenvoudige syndicatie, een RDF-site samen vatting (Resource Description Framework) of een uitgebreid site overzicht, afhankelijk van de bron. Een eenvoudige, gestructureerde XML-indeling voor het delen van inhoud tussen verschillende websites. RSS-documenten bevatten meta gegevenselementen zoals auteur, datum, titel, korte beschrijving en een hypertekst koppeling. Deze informatie helpt een gebruiker (of een RSS-uitgever service) om te bepalen welke materialen verder moeten worden onderzocht.
 
 ## <a name="s"></a>S
 
-<a name="satellite-imagery"></a> **Satelliet beeldmateriaal**: Beelden die is vastgelegd door te vlakken en rechtstreeks omlaag wijzende satellieten.
+<a name="satellite-imagery"></a>**Satelliet installatie kopie**: afbeelding die is vastgelegd door plannen en satellieten die naar beneden wijzen.
 
-<a name="software-development-kit-sdk"></a> **Software development kit (SDK)** : Een verzameling van documentatie, voorbeeldcode en voorbeeld-apps om u te helpen bij het gebruik van een ontwikkelaars een API om apps te bouwen.
+<a name="secondary-key"></a>**Secundaire sleutel**: de tweede van twee abonnements sleutels die zijn verschaft voor Azure Maps gedeelde sleutel verificatie. Zie [verificatie van de gedeelde sleutel](#shared-key-authentication).
 
-<a name="shapefile-shp"></a> **Vormbestand (SHP)** : Een ESRI-Vormbestand wordt ook wel bekend als een indeling voor gegevensopslag vector voor het opslaan van de locatie, vorm en kenmerken van geografische functies. Een shape-bestand wordt opgeslagen in een set van gerelateerde bestanden.
+<a name="shapefile-shp"></a>**Vorm bestand (SHP)** : ook wel ESRI vorm bestand genoemd, is een indeling voor vector gegevens opslag voor het opslaan van de locatie, vorm en kenmerken van geografische functies. Een vorm bestand wordt opgeslagen in een set gerelateerde bestanden.
 
-<a name="spherical-mercator-projection"></a> **Bolvormige Mercator-projectie**: Zie [Mercator Web](#web-mercator). 
+<a name="shared-key-authentication"></a>**Gedeelde sleutel verificatie**: gedeelde sleutel verificatie is afhankelijk van het door geven van Azure Maps accounts gegenereerde sleutels met elke aanvraag naar Azure Maps. Deze sleutels worden vaak abonnements sleutels genoemd. Het wordt aanbevolen dat sleutels regel matig opnieuw worden gegenereerd voor beveiliging. Er worden twee sleutels gegeven, zodat u verbindingen met één sleutel kunt onderhouden tijdens het opnieuw genereren van de andere. Als u de sleutels opnieuw genereert, dient u elke toepassing bij te werken die toegang heeft tot dit account om de nieuwe sleutels te kunnen gebruiken. Zie [Azure Maps en Azure AD](azure-maps-authentication.md) en [verificatie beheren in azure Maps](how-to-manage-authentication.md)voor meer informatie over Azure Maps-verificatie.
 
-<a name="spatial-query"></a> **Ruimtelijke query**: Een aanvraag aan een service die een ruimtelijke-bewerking uitvoert. Bijvoorbeeld als een radiale zoeken of langs een zoekopdracht route.
+<a name="software-development-kit-sdk"></a>**Software Development Kit (SDK)** : een verzameling documentatie, voorbeeld code en voor beeld-apps om een ontwikkelaar te helpen bij het maken van apps met behulp van een API.
 
-<a name="spatial-reference"></a> **Ruimtelijke verwijzing**: Een coördinaat op basis van lokale, regionale en globale systeem gebruikt om te zoeken nauwkeurig geografische entiteiten. Hiermee definieert u het coördinatensysteem gebruikt kaartcoördinaten op locaties in de praktijk betrekking heeft. Ruimtelijke verwijzingen ervoor te zorgen dat ruimtelijke gegevens uit verschillende lagen of bronnen voor nauwkeurige weergave of analyse kan worden geïntegreerd. Azure kaarten maakt gebruik van de [EPSG:3857](https://epsg.io/3857) referentiesysteem en WGS 84 coördineren voor invoer geometriegegevens. 
+<a name="spherical-mercator-projection"></a>**Bolvormige Mercator-projectie**: Zie [Web Mercator](#web-mercator). 
 
-<a name="sql-spatial"></a> **SQL ruimtelijke**: Verwijst naar de ruimtelijke functionaliteit die is ingebouwd in SQL Azure en SQL Server 2008 en hoger. Deze ruimtelijke functionaliteit is ook beschikbaar als een .NET-bibliotheek die onafhankelijk van SQL Server kan worden gebruikt. Zie voor meer informatie de [ruimtelijke gegevens (SQL Server) documentatie](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) voor meer informatie.
+<a name="spatial-query"></a>**Ruimtelijke query**: een aanvraag voor een service die een ruimtelijke bewerking uitvoert. Zoals een radiaal zoekactie of via een zoek opdracht in de route.
 
-<a name="synchronous-request"></a> **Synchrone aanvraag**: Een HTTP-aanvraag wordt een verbinding geopend en wachten op antwoord. Browsers beperkt het aantal gelijktijdige HTTP-aanvragen die kan worden gemaakt van een pagina. Als meerdere langlopende synchrone aanvragen worden gemaakt op hetzelfde moment, kan deze limiet wordt bereikt en aanvragen worden uitgesteld totdat een van de andere aanvragen is voltooid.
+<a name="spatial-reference"></a>**Ruimtelijke verwijzing**: een lokaal, regionaal of globaal systeem op basis van coördinaten dat wordt gebruikt om geografische entiteiten nauw keurig te vinden. Hiermee wordt het coördinaten systeem gedefinieerd dat wordt gebruikt om kaart coördinaten te koppelen aan locaties in de praktijk. Ruimtelijke verwijzingen zorgen ervoor dat ruimtelijke gegevens uit verschillende lagen of bronnen kunnen worden geïntegreerd voor nauw keurige weer gave of analyse. Azure Maps maakt gebruik van het referentie systeem [EPSG: 3857](https://epsg.io/3857) coördinaten en WGS 84 voor het invoeren van geometrie gegevens. 
+
+<a name="sql-spatial"></a>**Ruimtelijke**bewaarde SQL: verwijst naar de ruimtelijke functionaliteit die is ingebouwd in SQL Azure en SQL Server 2008 en hoger. Deze ruimtelijke functionaliteit is ook beschikbaar als een .NET-bibliotheek die onafhankelijk van SQL Server kan worden gebruikt. Zie de [documentatie over ruimtelijke gegevens (SQL Server)](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) voor meer informatie.
+
+<a name="subscription-key"></a>**Abonnements sleutel**: Zie [gedeelde sleutel verificatie](#shared-key-authentication).
+
+<a name="synchronous-request"></a>**Synchrone aanvraag**: een HTTP-aanvraag opent een verbinding en wacht op een reactie. Browsers beperken het aantal gelijktijdige HTTP-aanvragen dat vanaf een pagina kan worden gemaakt. Als er tegelijkertijd meerdere langdurige synchrone aanvragen worden gedaan, kan deze limiet worden bereikt en aanvragen worden uitgesteld totdat een van de andere aanvragen is voltooid.
 
 ## <a name="t"></a>T
 
-<a name="telematics"></a> **Telematica**: Verzenden, ontvangen en opslaan van gegevens via apparaten telecommunicatie in combinatie met het besturingselement in het externe objecten verrichten. 
+<a name="telematics"></a>**Telematica**: het verzenden, ontvangen en opslaan van informatie via telecommunicatie apparaten in combi natie met invloed op externe objecten. 
 
-<a name="temporal-data"></a> **Tijdelijke gegevens**: Gegevens die specifiek naar tijden verwijst of datums. Tijdelijke gegevens kunnen verwijzen naar afzonderlijke gebeurtenissen, zoals een dubbele kracht; het verplaatsen van objecten, zoals treinen; of herhaalde opmerkingen, zoals tellingen van verkeerssensoren.
+<a name="temporal-data"></a>**Tijdelijke gegevens**: gegevens die specifiek verwijzen naar tijden of datums. Tijdelijke gegevens kunnen verwijzen naar discrete gebeurtenissen, zoals bliksem aantekeningen; objecten verplaatsen, zoals treinen; of herhaalde waarnemingen, zoals aantallen van Traffic Sens oren.
 
-<a name="terrain"></a> **Terrein**: Een gedeelte van een bepaald kenmerk, zoals zandvlakten terrein of bergen terrein dat land.
+<a name="terrain"></a>**Terrein**: een gebied van land dat een bepaald kenmerk heeft, zoals zand of berg terrein.
 
-<a name="thematic-maps"></a> **Thematische kaarten**: Een thematische kaart is een eenvoudige toewijzing gemaakt om weer te geven van een thema over een geografisch gebied. Een veelvoorkomend scenario voor dit type kaart is op de kleur van de administratieve regio's, zoals landen/regio's op basis van bepaalde meetwaarde van gegevens.
+<a name="thematic-maps"></a>**Thematische kaarten**: een thematische kaart is een eenvoudige kaart die is gemaakt op basis van een thema over een geografisch gebied. Een veelvoorkomend scenario voor dit type kaart is het kleuren van de administratieve regio's, zoals landen/regio's, op basis van een aantal gegevens waarden.
 
-<a name="tile-layer"></a> **Tegellaag**: Een laag door aan elkaar te koppelen kaart tegels (rechthoekige secties) in een continue laag weergegeven. De tegels zijn beide tegels installatiekopie of vector tegels. Raster tegellagen worden doorgaans weergegeven vooraf en opgeslagen als afbeeldingen op een server. Dit kan een groot aantal opslagruimte duren. Tegellagen Vector worden weergegeven op elk gewenst moment binnen de clienttoepassing, dus de opslagvereisten voor server-side kleiner zijn.
+<a name="tile-layer"></a>**Laag van Tegel**: een laag die wordt weer gegeven door kaart tegels (rechthoekige secties) samen te stellen in een doorlopende laag. De tegels zijn raster afbeeldings tegels of vector tegels. Raster tegel lagen worden doorgaans vooraf weer gegeven en opgeslagen als installatie kopieën op een server. Dit kan veel opslag ruimte in beslag nemen. Vector tegel lagen worden weer gegeven aan de linkerkant binnen de client toepassing, waardoor de opslag vereisten aan de server zijde kleiner zijn.
 
-<a name="time-zone"></a> **Tijdzone**: Een gedeelte van de hele wereld die een uniform standaardtijd voor juridische, commerciële en sociale doeleinden toetsenbordinvoer. Tijdzones vaak volgt u de grenzen van de landen/regio's en hun onderverdelingen.
+<a name="time-zone"></a>**Tijd zone**: een gebied van de wereld met een uniforme standaard tijd voor juridische, commerciële en sociale doel einden. Tijd zones volgen doorgaans de grenzen van landen/regio's en hun onderverdelingen.
 
-<a name="transaction"></a> **Transactie**: Azure kaarten maakt gebruik van een transactionele licentiemodel waar;
+<a name="transaction"></a>**Trans actie**: Azure Maps gebruikt een transactionele licentie model waarbij;
 
-- Een transactie is gemaakt voor elke 15 tekens of verkeer tegels aangevraagd.
-- Een transactie is gemaakt voor elke API-aanroep naar een van de services van Azure Maps, zoals zoeken of routering.
+- Er wordt één trans actie gemaakt voor elke 15 kaart of de gevraagde verkeers tegels.
+- Er wordt één trans actie gemaakt voor elke API-aanroep naar een van de services in Azure Maps, zoals zoeken of route ring.
 
-<a name="transformation"></a> **Transformatie**: Het proces van het converteren van gegevens tussen verschillende geografische coördinaat-systemen. Bijvoorbeeld, wellicht sommige gegevens die zijn opgenomen in het Verenigd Koninkrijk en op basis van het systeem van OSGB 1936 geografische coördinaten. Azure kaarten maakt gebruik van de [EPSG:3857](https://epsg.io/3857) coördinaat verwijzing system variant van WGS84. Als u wilt de gegevens correct weergegeven, moet deze wordt als zodanig hebben de coördinaten van het ene systeem omgezet naar een andere.
+<a name="transformation"></a>**Trans formatie**: het proces van het converteren van gegevens tussen verschillende geografische coördinaten systemen. U kunt bijvoorbeeld een aantal gegevens hebben die zijn vastgelegd in het Verenigd Konink rijk en op basis van het OSGB 1936 geografische coördinaten systeem. Azure Maps maakt gebruik van de [EPSG: 3857](https://epsg.io/3857) -coördinaten referentie systeem variant van WGS84. Om de gegevens op de juiste manier weer te geven, moet de coördinaten van het ene naar het andere systeem worden getransformeerd.
 
-<a name="traveling-salesmen-problem-tsp"></a> **Traveling verkopers probleem (TSP)** :  Een Hamiltonian circuit probleem waarin de meest efficiënte manier om te een reeks stopt, gaat u naar moet zoeken, een verkoper Ga vervolgens terug naar de eerste locatie.  
+<a name="traveling-salesmen-problem-tsp"></a>**Traveling salesmen-probleem (TSP)** : een Hamiltonian-circuit probleem waarbij een verkoper de meest efficiënte manier moet vinden om een reeks stops te bezoeken en vervolgens terug te keren naar de start locatie.  
 
-<a name="trilateration"></a> **Trilateration**: Het proces voor het bepalen van de positie van een distributiepunt op het aardoppervlak met betrekking tot de twee andere punten door te meten of de afstand tussen alle drie punten.
+<a name="trilateration"></a>**Trilateration**: het proces van het bepalen van de positie van een punt op het Opper vlak van de aarde ten opzichte van twee andere punten, door de afstand tussen de drie punten te meten.
 
-<a name="turn-by-turn-navigation"></a> **Schakel door inschakelen navigatie**: Een toepassing met route instructies voor elke stap van een route als de gebruikers nadert de volgende bewegingsdetectie.
+<a name="turn-by-turn-navigation"></a>**Scha kelen tussen navigatie**: een toepassing die route-instructies biedt voor elke stap van een route wanneer de gebruikers de volgende bewegings nadert.
 
 ## <a name="v"></a>V
 
-<a name="vector-data"></a> **Vectorgegevens**: Op basis van gegevens die wordt weergegeven als punten, lijnen of polygonen coördineren.
+<a name="vector-data"></a>**Vector gegevens**: gegevens op basis van een coördinaat die als punten, lijnen of veelhoeken worden weer gegeven.
 
-<a name="vector-tile"></a> **Tegel vector**: Een specificatie van het gegevensbestand voor het opslaan van georuimtelijke vectorgegevens met behulp van de dezelfde tegel als het kaartbesturingselement. Zie ook [tegellaag](#tile-layer).
+<a name="vector-tile"></a>**Vector tegel**: een open gegevens specificatie voor het opslaan van georuimtelijke vector gegevens met hetzelfde tegel systeem als het kaart besturings element. Zie ook [laag voor tegels](#tile-layer).
 
-<a name="vehicle-routing-problem-vrp"></a> **Vehicle routeringsprobleem (VRP)** : Een klasse van problemen waarbij een set geordende routes voor een hele vloot van voertuigen tijdens het in aanmerking genomen als set met beperkingen wordt berekend. Deze beperkingen kunnen bevatten, zoals tijdvensters levering, meerdere route capaciteiten en reizen duur beperkingen.
+<a name="vehicle-routing-problem-vrp"></a>**Probleem met route ring van het Voer tuig (VRP)** : een klasse van problemen waarbij een reeks bestelde routes voor een vloot van Voer tuigen wordt berekend terwijl rekening wordt gehouden met de beperkingen. Deze beperkingen kunnen bestaan uit zaken zoals de lever tijd Windows, meerdere route capaciteiten en beperkingen voor de reis duur.
 
-<a name="voronoi-diagram"></a> **Diagram van Voronoi**: Een partitie van de ruimte in gebieden of cellen rond een set van geometrische objecten (meestal punt functies). Deze cellen, of polygonen, moeten voldoen aan de criteria voor Delaunay driehoeken. Alle locaties binnen een gebied zich dichter bij het object pagina dan naar een ander object in de set. Voronoi diagrammen worden vaak gebruikt om af te bakenen gebieden van invloed rond geografische functies. 
+<a name="voronoi-diagram"></a>**Voronoi-diagram**: een schijf ruimte in gebieden, of cellen, die een reeks geometrische objecten (doorgaans punt functies) rond zijn. Deze cellen, of veelhoeken, moeten voldoen aan de criteria voor Delaunay-drie hoeken. Alle locaties binnen een gebied bevinden zich dichter bij het object dat wordt omgeven door een ander object in de set. Voronoi-diagrammen worden vaak gebruikt om gebieden van invloed op geografische functies af te bakenen. 
 
 ## <a name="w"></a>W
 
-<a name="waypoint"></a> **Waypoint**: Een beginpunt is een opgegeven geografische locatie die is gedefinieerd door de lengtegraad en breedtegraad die wordt gebruikt voor navigatie. Vaak gebruikt om weer te geven van een punt waarbij iemand een route via navigeert.
+<a name="waypoint"></a>**Waypoint**: een waypoint is een opgegeven geografische locatie die wordt gedefinieerd door lengte graad en breedte graad die wordt gebruikt voor navigatie doeleinden. Wordt vaak gebruikt om een punt weer te geven waarin iemand naar een route navigeert.
 
-<a name="waypoint-optimization"></a> **Optimalisatie van beginpunt**: Het proces opnieuw ordenen van een set waypoints te minimaliseren, de reis tijd of de opgegeven afstand van vereist om door te geven tot en met alle opgegeven waypoints. Vaak aangeduid als de [Traveling verkopers probleem](#traveling-salesmen-problem-tsp) of [Vehicle routering probleem](#vehicle-routing-problem-vrp) afhankelijk van de complexiteit van de optimalisatie.
+<a name="waypoint-optimization"></a>**Waypoint optimalisatie**: het proces waarbij een set van waypoints wordt gewijzigd om de reis tijd of de afstand die nodig is voor het door geven van alle opgegeven waypoints, te minimaliseren. Dit wordt vaak het [Traveling salesmen-probleem](#traveling-salesmen-problem-tsp) of het [routerings probleem van het Voer tuig](#vehicle-routing-problem-vrp) genoemd, afhankelijk van de complexiteit van de optimalisatie.
 
-<a name="web-map-service-wms"></a> **Webservice voor kaart (WMS)** : WMS is een Open geografische Consortium (OGC)-standaard waarmee wordt gedefinieerd toewijzing op basis van een installatiekopie van services. WMS-services bieden Kaartafbeeldingen voor specifieke gebieden binnen een kaart op aanvraag. Afbeeldingen vooraf gerenderde symbolen bevatten en kunnen worden weergegeven in een van de verschillende stijlen voor benoemde als gedefinieerd door de service.
+<a name="web-map-service-wms"></a>**Web map service (WMS)** : WMS is een open geografische Consortium (OGC) die op afbeeldingen gebaseerde kaart Services definieert. WMS-services bieden installatie kopieën voor specifieke gebieden binnen een kaart op aanvraag. Afbeeldingen bevatten vooraf gerenderde symbology en kunnen worden weer gegeven in een van de verschillende benoemde stijlen, indien gedefinieerd door de service.
 
-<a name="web-mercator"></a> **Web-Mercator**: Ook wel bekend als is bolvormige Mercator-projectie een lichte variant van de Mercator-projectie, een voornamelijk gebruikt voor toewijzing op basis van een Web-programma's. Deze dezelfde formules gebruikt als de standaard Mercator-projectie als gebruikt voor kleinschalige kaarten. Echter gebruiken de Web Mercator gebruikt de bolvormige formules helemaal kan worden geschaald dat grootschalige Mercator normaal gesproken wijst de ellipsvormige vorm van de projectie. Het verschil is niet zichtbaar op de wereldwijde schaal, maar zorgt ervoor dat de toewijzingen van lokale gebieden af te wijken enigszins van true die ellipsvormige Mercator-op de dezelfde schaal kaarten.
+<a name="web-mercator"></a>**Web-Mercator**: ook wel bolvormig Mercator-projectie genoemd, is een lichte variant van de Mercator-projectie, een die hoofd zakelijk wordt gebruikt in webgebaseerde toewijzings Programma's. Het maakt gebruik van dezelfde formules als de standaard Mercator-projectie die wordt gebruikt voor kleinschalige kaarten. De Mercator maakt echter gebruik van de bolvormige formules op alle schalen, terwijl grootschalige Mercator-kaarten normaal gesp roken gebruikmaken van de Ellipsoidal vorm van de projectie. Het verschil is onmerkbaar op de wereld wijde schaal, maar zorgt ervoor dat kaarten van lokale gebieden iets afwijkt van waar Ellipsoidal Mercator kaarten op dezelfde schaal.
 
-<a name="wgs84"></a> **WGS84**: Een set van constanten die worden gebruikt om te koppelen van ruimtelijke coördinaten aan locaties op het vlak van de kaart. De datum WGS84 is de standaard die worden gebruikt door de meest online toewijzing providers en GPS-apparaten. Azure kaarten maakt gebruik van de [EPSG:3857](https://epsg.io/3857) coördinaat verwijzing system variant van WGS84.
+<a name="wgs84"></a>**WGS84**: een set constanten die wordt gebruikt om ruimtelijke coördinaten te koppelen aan locaties op het Opper vlak van de kaart. De datum WGS84 is de standaard die wordt gebruikt door de meeste online toewijzings providers en GPS-apparaten. Azure Maps maakt gebruik van de [EPSG: 3857](https://epsg.io/3857) -coördinaten referentie systeem variant van WGS84.
 
 ## <a name="z"></a>Z
 
-<a name="z-coordinate"></a> **Z-coördinaat**: Zie [hoogte](#altitude). 
+<a name="z-coordinate"></a>**Z-coördinaat**: Zie [hoogte](#altitude). 
 
-<a name="zip-code"></a> **Postcode**: Zie [postcode](#postal-code).
+<a name="zip-code"></a>**Post code**: Zie [Post code](#postal-code).
 
-<a name="Zoom level"></a> **Zoomniveau**: Hiermee geeft u de mate van detail en welk deel van de kaart wordt weergegeven. Wanneer ingezoomd helemaal uit een niveau 0, wordt de volledige wereldkaart worden vaak in de weergave maar beperkte informatie zoals de namen van land/regio randen en de namen in de Indische Oceaan wordt weergegeven. Wanneer ingezoomd dichter naar niveau 17, wordt de kaart een gebied van enkele plaats blokken met gedetailleerde weg informatie weergegeven. Zie voor meer informatie de [zoomniveaus en tegelraster](zoom-levels-and-tile-grid.md) documentatie.
+<a name="Zoom level"></a>**Zoom niveau**: Hiermee geeft u het detail niveau en het gedeelte van de kaart weer gegeven. Wanneer u helemaal ingezoomd op een niveau 0, wordt de volledige wereld kaart vaak weer gegeven, maar worden de beperkte gegevens weer gegeven, zoals land/regio namen en randen, evenals de namen en Oceaan. Wanneer u inzoomt op niveau 17, wordt in de kaart een gebied van een aantal plaatsings blokken weer gegeven met gedetailleerde informatie over de weg. Zie de documentatie voor [zoom niveaus en tegel raster](zoom-levels-and-tile-grid.md) voor meer informatie.
 

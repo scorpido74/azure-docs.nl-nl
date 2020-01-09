@@ -1,25 +1,14 @@
 ---
 title: Azure Service Fabric-implementatie met Power shell
-description: Toepassingen implementeren en verwijderen in Service Fabric met behulp van Power shell.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: b120ffbf-f1e3-4b26-a492-347c29f8f66b
-ms.service: service-fabric
-ms.devlang: dotnet
+description: Meer informatie over het verwijderen en implementeren van toepassingen in azure Service Fabric en het uitvoeren van deze acties in Power shell.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/19/2018
-ms.author: atsenthi
-ms.openlocfilehash: 0080ba0807a4cb31fedeb132932e2e08137dd40b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e3fdd194f2949f1246e991968e02b3278f33f7db
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013277"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614499"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Toepassingen implementeren en verwijderen met behulp van Power shell
 

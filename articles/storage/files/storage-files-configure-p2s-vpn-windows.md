@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 527ab905997d18433d1dba5c16ee67c8146f5afa
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 90995b1c9d10c7b589706f5abf37f92d76e4362b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73141736"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560348"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Een punt-naar-site-VPN (P2S) in Windows configureren voor gebruik met Azure Files
 U kunt een punt-naar-site-VPN-verbinding (P2S) gebruiken om uw Azure-bestands shares te koppelen via SMB van buiten Azure, zonder dat u poort 445 hoeft te openen. Een punt-naar-site-VPN-verbinding is een VPN-verbinding tussen Azure en een afzonderlijke client. Als u een P2S VPN-verbinding met Azure Files wilt gebruiken, moet er een P2S VPN-verbinding worden geconfigureerd voor elke client die verbinding wil maken. Als u veel clients hebt die verbinding moeten maken met uw Azure-bestands shares van uw on-premises netwerk, kunt u een S2S-VPN-verbinding (site-naar-site) gebruiken in plaats van een punt-naar-site-verbinding voor elke client. Zie [een site-naar-site-VPN configureren voor gebruik met Azure files voor](storage-files-configure-s2s-vpn.md)meer informatie.
@@ -161,7 +161,7 @@ foreach($ipconfig in $internalNic.Properties.ipConfigurations) {
         $recordName = $fqdn.split('.', 2)[0]
         $dnsZone = $fqdn.split('.', 2)[1]
         New-AzPrivateDnsRecordSet `
-            -ResourceGroupName $resourceGroupName ` 
+            -ResourceGroupName $resourceGroupName `
             -Name $recordName `
             -RecordType A `
             -ZoneName $zone.Name `

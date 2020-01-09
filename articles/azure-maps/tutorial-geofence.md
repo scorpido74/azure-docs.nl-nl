@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 62005546c653796773083eaf625820ab532a8a2c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 2998c67bf00c74422baa19af0b389118600ba1c7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107095"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407836"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Zelf studie: een geofence instellen met behulp van Azure Maps
 
@@ -36,7 +36,7 @@ In deze zelfstudie leert u het volgende:
 
 ### <a name="create-an-azure-maps-account"></a>Een Azure Maps-account maken 
 
-Als u de stappen in deze zelf studie wilt uitvoeren, volgt u de instructies in [Manage account](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) om een abonnement voor een Azure Maps account te maken met de prijs categorie S1 en volgt u de stappen in [primaire sleutel ophalen](./tutorial-search-location.md#getkey) om de primaire abonnements sleutel voor uw account op te halen.
+Als u de stappen in deze zelf studie wilt uitvoeren, volgt u de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) voor het maken van een abonnement op een Azure Maps account met de prijs categorie S1 en volgt u de stappen in [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
 
 ## <a name="upload-geofences"></a>Geofences uploaden
 
@@ -56,7 +56,7 @@ Open de Postman-app en volg de volgende stappen om de geofence van de bouwplaats
     
     De GEOJSON-parameter in het URL-pad geeft de gegevensindeling aan van de gegevens die worden geüpload.
 
-3. Klik op **Params** en voer de volgende sleutel/waarde-paren in die voor de POST-aanvraag-URL moeten worden gebruikt. Vervang de abonnements sleutel waarde door uw Azure Maps primaire abonnements sleutel.
+3. Klik op **Params** en voer de volgende sleutel/waarde-paren in die voor de POST-aanvraag-URL moeten worden gebruikt. Vervang de abonnee sleutel waarde door uw Azure Maps sleutel.
    
     ![Key-Value-parameters in Postman](./media/tutorial-geofence/postman-key-vals.png)
 

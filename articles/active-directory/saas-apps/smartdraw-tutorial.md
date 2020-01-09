@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 01/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7d4a400681113736c52046fb6aa5c04098ddda
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: fe08f1523b4b61653d89a9b3472355dd3eeaf69f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893226"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640088"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartdraw"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met SmartDraw
 
@@ -44,13 +43,8 @@ U hebt de volgende items nodig om aan de slag te gaan:
 
 In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-
-
 * SmartDraw ondersteunt SSO die door **SP en IDP** is geïnitieerd
 * SmartDraw ondersteunt **just-in-time** -gebruikers inrichting
-
-> [!NOTE]
-> De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
 
 ## <a name="adding-smartdraw-from-the-gallery"></a>SmartDraw toevoegen uit de galerie
 
@@ -63,7 +57,6 @@ Als u de integratie van SmartDraw in azure AD wilt configureren, moet u SmartDra
 1. Typ in de sectie **toevoegen vanuit de galerie** **SmartDraw** in het zoekvak.
 1. Selecteer **SmartDraw** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-smartdraw"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor SmartDraw
 
 Azure AD SSO met SmartDraw configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in SmartDraw.
@@ -71,10 +64,10 @@ Azure AD SSO met SmartDraw configureren en testen met behulp van een test gebrui
 Als u Azure AD SSO wilt configureren en testen met SmartDraw, voltooit u de volgende bouw stenen:
 
 1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
 1. **[SMARTDRAW SSO configureren](#configure-smartdraw-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. **[Maak een SmartDraw-test gebruiker](#create-smartdraw-test-user)** -om een equivalent van B. Simon in SmartDraw te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+    * **[Maak een SmartDraw-test gebruiker](#create-smartdraw-test-user)** -om een equivalent van B. Simon in SmartDraw te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
@@ -87,22 +80,24 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. In het gedeelte van de **basis configuratie van SAML** is de toepassing vooraf geconfigureerd in de modus **IDP** gestart en de benodigde url's zijn al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door te klikken op de knop  **Opslaan** .
+1. In de sectie **SAML-basisconfiguratie** hoeft de gebruiker geen enkele stap uit te voeren omdat de app al vooraf is geïntegreerd met Azure.
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://cloud.smartdraw.com/sso/saml/login/<domain>`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://cloud.smartdraw.com/sso/saml/login/<domain>`
 
     > [!NOTE]
     > De waarde voor de aanmeldings-URL is niet echt. Vervang de waarde voor de aanmeldings-URL door de echte URL. Dit wordt later in de zelfstudie uitgelegd. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
+1. Klik op **Opslaan**.
+
 1. De SmartDraw-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![image](common/edit-attribute.png)
+    ![installatiekopie](common/default-attributes.png)
 
-1. Daarnaast verwacht SmartDraw toepassing nog maar weinig kenmerken die worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereiste.
+1. Daarnaast verwacht SmartDraw toepassing nog maar weinig kenmerken die worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
 
-    | Naam | Bronkenmerk|
+    | Name | Bronkenmerk|
     | ---------------| --------------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
@@ -117,7 +112,6 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
@@ -125,7 +119,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Maken**.
@@ -150,20 +144,28 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ## <a name="configure-smartdraw-sso"></a>SmartDraw SSO configureren
 
-1. Meld u in een ander browser venster aan bij SmartDraw als beheerder.
+1. Als u de configuratie wilt automatiseren in SmartDraw, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
 
-2. Klik op **eenmalige aanmelding** onder uw SmartDraw-licentie beheren.
+    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
+
+1. Nadat u de extensie hebt toegevoegd aan de browser, klikt u op **SmartDraw instellen** gaat u naar de SmartDraw-toepassing. Geef de beheerders referenties op om u aan te melden bij SmartDraw. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-5 geautomatiseerd.
+
+    ![Configuratie van Setup](common/setup-sso.png)
+
+1. Als u SmartDraw hand matig wilt instellen, opent u een nieuw webbrowser venster en meldt u zich aan bij uw SmartDraw-bedrijfs site als beheerder en voert u de volgende stappen uit:
+
+1. Klik op **eenmalige aanmelding** onder uw SmartDraw-licentie beheren.
 
     ![SmartDraw-configuratie](./media/smartdraw-tutorial/configure01.png)
 
-3. Voer de volgende stappen uit op de pagina configuratie:
+1. Voer de volgende stappen uit op de pagina configuratie:
 
     ![SmartDraw-configuratie](./media/smartdraw-tutorial/configure02.png)
 
     a. Typ in het tekstvak **uw domein (zoals acme.com)** uw domein.
 
     b. Kopieer de URL voor uw door **SP geïnitieerde aanmelding** voor uw exemplaar en plak deze in het tekstvak URL voor aanmelden in de **basis-SAML-configuratie** op Azure Portal.
-    
+
     c. In de **beveiligings groepen om SmartDraw toegang toe te staan** , typt u **iedereen**.
 
     d. Plak in het tekstvak **URL van uw SAML-Uitgever** de waarde van de **Azure ad-id** die u hebt gekopieerd uit de Azure Portal.
@@ -174,9 +176,9 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ### <a name="create-smartdraw-test-user"></a>SmartDraw-test gebruiker maken
 
-In deze sectie wordt een gebruiker met de naam Julia Simon gemaakt in SmartDraw. SmartDraw biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in SmartDraw, wordt er een nieuwe gemaakt na verificatie.
+In deze sectie wordt een gebruiker met de naam B. Simon gemaakt in SmartDraw. SmartDraw biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in SmartDraw, wordt er een nieuwe gemaakt na verificatie.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>SSO testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
@@ -191,4 +193,3 @@ Wanneer u op de tegel SmartDraw in het toegangs venster klikt, moet u automatisc
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Probeer SmartDraw met Azure AD](https://aad.portal.azure.com/)
-

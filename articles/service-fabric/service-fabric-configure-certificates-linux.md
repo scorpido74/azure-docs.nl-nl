@@ -1,24 +1,15 @@
 ---
-title: Certificaten configureren voor Azure Service Fabric-toepassingen in Linux | Microsoft Docs
+title: Certificaten configureren voor toepassingen op Linux
 description: Certificaten voor uw app configureren met de Service Fabric runtime op een Linux-cluster
-services: service-fabric
-documentationcenter: NA
-author: JimacoMS2
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/06/2019
 ms.author: pepogors
-ms.openlocfilehash: 8ae25a02e6170972972c5b2b7e159ef39d1a3673
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 802e76614f51e1f6479a311e61a49d83b8125546
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167340"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614584"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Certificaten en beveiliging op Linux-clusters
 
@@ -42,7 +33,7 @@ Voor sommige services kunt u X. 509-certificaten configureren in [ConfigPackage]
 
 ### <a name="using-x509-securitycredentialstype"></a>X509-SecurityCredentialsType gebruiken
 
-Met de .NET-of Java-Sdk's kunt u **x509** opgeven voor de **SecurityCredentialsType**. Dit komt overeen met het `X509Credentials` ([.net](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials)) type `SecurityCredentials` ([.net](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)).
+Met de .NET-of Java-Sdk's kunt u **x509** opgeven voor de **SecurityCredentialsType**. Dit komt overeen met het `X509Credentials`-type ([.net](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[java](https://docs.microsoft.com/java/api/system.fabric.x509credentials)) van `SecurityCredentials` ([.net](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)).
 
 De **x509** -verwijzing zoekt naar het certificaat in een certificaat archief. Het volgende XML-bestand toont de para meters die worden gebruikt om de locatie van het certificaat op te geven:
 
@@ -52,7 +43,7 @@ De **x509** -verwijzing zoekt naar het certificaat in een certificaat archief. H
     <Parameter Name="CertificateStoreName" Value="My" />
 ```
 
-Voor een service die op Linux wordt uitgevoerd, **LocalMachine**/**mijn** wijst naar de standaard locatie voor certificaten, de */var/lib/sfcerts* -map. Voor Linux zijn alle andere Combi Naties van **CertificateStoreLocation** en **naam certificaat archief** niet gedefinieerd. 
+Voor een service die op Linux wordt uitgevoerd, **LocalMachine**/**mijn** punten naar de standaard locatie voor certificaten, de */var/lib/sfcerts* -map. Voor Linux zijn alle andere Combi Naties van **CertificateStoreLocation** en **naam certificaat archief** niet gedefinieerd. 
 
 Geef altijd **LocalMachine** op voor de para meter **CertificateStoreLocation** . U hoeft de para meter **naam certificaat archief** niet op te geven omdat deze standaard is ingesteld op My. Met een **x509** -verwijzing moeten de certificaat bestanden zich in de map */var/lib/sfcerts* op het cluster knooppunt bevinden.  
 
@@ -71,11 +62,11 @@ In het volgende XML-bestand wordt een **TransportSettings** -sectie weer gegeven
 </Section>
 ```
 
-### <a name="using-x509_2-securitycredentialstype"></a>X509_2 SecurityCredentialsType gebruiken
+### <a name="using-x509_2-securitycredentialstype"></a>Using X509_2 SecurityCredentialsType
 
-Met de Java-SDK kunt u **X509_2** opgeven voor de **SecurityCredentialsType**. Dit komt overeen met het `X509Credentials2`-type ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) van `SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)). 
+Met de Java-SDK kunt u **X509_2** opgeven voor de **SecurityCredentialsType**. Dit komt overeen met het `X509Credentials2` type ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) van `SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)). 
 
-Met een **X509_2** -verwijzing geeft u een pad-para meter op, zodat u het certificaat in een andere map dan */var/lib/sfcerts*kunt vinden.  Het volgende XML-bestand toont de para meters die worden gebruikt om de locatie van het certificaat op te geven: 
+Met een **X509_2** referentie geeft u een pad para meter op, zodat u het certificaat in een andere map dan */var/lib/sfcerts*kunt vinden.  Het volgende XML-bestand toont de para meters die worden gebruikt om de locatie van het certificaat op te geven: 
 
 ```xml
      <Parameter Name="SecurityCredentialsType" Value="X509_2" />

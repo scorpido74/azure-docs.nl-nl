@@ -1,14 +1,14 @@
 ---
 title: Richtlijnen voor vertraagde aanvragen
-description: Meer informatie over batch, sprei ding, pagineren en query's parallel om te voor komen dat aanvragen worden beperkt door Azure resource Graph.
-ms.date: 11/21/2019
+description: Meer informatie over Group, sprei ding, pagineren en query's parallel om te voor komen dat aanvragen worden beperkt door Azure resource Graph.
+ms.date: 12/02/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4405cce567a75f83823cc2d441b2a59985c196ad
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304668"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436065"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Richt lijnen voor vertraagde aanvragen in azure resource Graph
 
@@ -17,7 +17,7 @@ Bij het maken van een programma en veelvuldig gebruik van gegevens van Azure-res
 In dit artikel worden vier gebieden en patronen besproken die betrekking hebben op het maken van query's in azure resource Graph:
 
 - Informatie over beperkings headers
-- Query's uitvoeren op batch
+- Query's groeperen
 - Sprong query's
 - De impact van de paginering
 
@@ -37,9 +37,9 @@ Voor een demonstratie van de manier waarop de headers werken, bekijken we een an
 
 Als u een voor beeld wilt van het gebruik van de kopteksten voor _uitstel_ op query aanvragen, raadpleegt u het voor beeld in [query parallel](#query-in-parallel).
 
-## <a name="batching-queries"></a>Query's uitvoeren op batch
+## <a name="grouping-queries"></a>Query's groeperen
 
-Het batcheren van query's op het abonnement, de resource groep of de afzonderlijke resource is efficiënter dan gelijktijdig query's. De quota kosten van een grotere query zijn vaak lager dan de quota kosten van veel kleine en doel query's. De Batch grootte wordt aanbevolen om minder dan _300_te zijn.
+Het groeperen van query's op het abonnement, de resource groep of de afzonderlijke resource is efficiënter dan gelijktijdig query's. De quota kosten van een grotere query zijn vaak lager dan de quota kosten van veel kleine en doel query's. De groeps grootte wordt aanbevolen om minder dan _300_te zijn.
 
 - Voor beeld van een slecht geoptimaliseerde benadering
 
@@ -62,19 +62,19 @@ Het batcheren van query's op het abonnement, de resource groep of de afzonderlij
   }
   ```
 
-- Voor beeld #1 van een geoptimaliseerde methode voor batch verwerking
+- Voor beeld #1 van een geoptimaliseerde groeperings benadering
 
   ```csharp
   // RECOMMENDED
   var header = /* your request header */
   var subscriptionIds = /* A big list of subscriptionIds */
 
-  const int batchSize = 100;
-  for (var i = 0; i <= subscriptionIds.Count / batchSize; ++i)
+  const int groupSize = 100;
+  for (var i = 0; i <= subscriptionIds.Count / groupSize; ++i)
   {
-      var currSubscriptionBatch = subscriptionIds.Skip(i * batchSize).Take(batchSize).ToList();
+      var currSubscriptionGroup = subscriptionIds.Skip(i * groupSize).Take(groupSize).ToList();
       var userQueryRequest = new QueryRequest(
-          subscriptions: currSubscriptionBatch,
+          subscriptions: currSubscriptionGroup,
           query: "Resources | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
@@ -85,21 +85,25 @@ Het batcheren van query's op het abonnement, de resource groep of de afzonderlij
   }
   ```
 
-- Voor beeld #2 van een geoptimaliseerde methode voor batch verwerking
+- Voor beeld #2 van een geoptimaliseerde groeperings benadering voor het ophalen van meerdere resources in één query
+
+  ```kusto
+  Resources | where id in~ ({resourceIdGroup}) | project name, type
+  ```
 
   ```csharp
   // RECOMMENDED
   var header = /* your request header */
   var resourceIds = /* A big list of resourceIds */
 
-  const int batchSize = 100;
-  for (var i = 0; i <= resourceIds.Count / batchSize; ++i)
+  const int groupSize = 100;
+  for (var i = 0; i <= resourceIds.Count / groupSize; ++i)
   {
-      var resourceIdBatch = string.Join(",",
-          resourceIds.Skip(i * batchSize).Take(batchSize).Select(id => string.Format("'{0}'", id)));
+      var resourceIdGroup = string.Join(",",
+          resourceIds.Skip(i * groupSize).Take(groupSize).Select(id => string.Format("'{0}'", id)));
       var userQueryRequest = new QueryRequest(
           subscriptions: subscriptionList,
-          query: $"Resources | where id in~ ({resourceIds}) | project name, type");
+          query: $"Resources | where id in~ ({resourceIdGroup}) | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -149,12 +153,12 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>Parallelle query
 
-Hoewel batch verwerking wordt aangeraden voor parallel Lise ring, zijn er situaties waarin query's niet eenvoudig kunnen worden gebatcheerd. In dergelijke gevallen kunt u een query uitvoeren op Azure resource Graph door meerdere query's op parallelle wijze te verzenden. Hieronder ziet u een voor beeld van hoe u _uitstel_ op basis van het beperken van headers in dergelijke scenario's:
+Hoewel groepering wordt aanbevolen voor parallel Lise ring, zijn er momenten waarop query's niet eenvoudig kunnen worden gegroepeerd. In dergelijke gevallen kunt u een query uitvoeren op Azure resource Graph door meerdere query's op parallelle wijze te verzenden. Hieronder ziet u een voor beeld van hoe u _uitstel_ op basis van het beperken van headers in dergelijke scenario's:
 
 ```csharp
-IEnumerable<IEnumerable<string>> queryBatches = /* Batches of queries  */
-// Run batches in parallel.
-await Task.WhenAll(queryBatches.Select(ExecuteQueries)).ConfigureAwait(false);
+IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
+// Run groups in parallel.
+await Task.WhenAll(queryGroup.Select(ExecuteQueries)).ConfigureAwait(false);
 
 async Task ExecuteQueries(IEnumerable<string> queries)
 {

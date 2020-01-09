@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 1ec1856508588d07e55e60e251a1369ecc3fa985
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 7fd06a620c695b3be49a116c89f63507cee9c07c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174063"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355930"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Azure CLI-opdrachten in de Resource Manager-modus
-In dit artikel vindt u de syntaxis en opties voor de Azure-opdracht regel interface (CLI)-opdrachten die u vaak gebruikt voor het maken en beheren van Azure-resources in het Azure Resource Manager-implementatie model. U opent deze opdrachten door de CLI in de modus Resource Manager (arm) uit te voeren. Dit is geen volledige verwijzing en uw CLI-versie kan enigszins verschillende opdrachten of para meters bevatten. Zie [Azure Resource Manager Overview](../azure-resource-manager/resource-group-overview.md)voor een algemeen overzicht van Azure-resources en-resource groepen.  
+In dit artikel vindt u de syntaxis en opties voor de Azure-opdracht regel interface (CLI)-opdrachten die u vaak gebruikt voor het maken en beheren van Azure-resources in het Azure Resource Manager-implementatie model. U opent deze opdrachten door de CLI in de modus Resource Manager (arm) uit te voeren. Dit is geen volledige verwijzing en uw CLI-versie kan enigszins verschillende opdrachten of para meters bevatten. Zie [Azure Resource Manager Overview](../azure-resource-manager/management/overview.md)voor een algemeen overzicht van Azure-resources en-resource groepen.  
 
 > [!NOTE]
 > In dit artikel worden de opdrachten van de modus Resource Manager in de Azure CLI weer gegeven, ook wel Azure Classic CLI genoemd. Als u wilt werken in het Resource Manager-model, kunt u ook de [Azure cli](/cli/azure/install-az-cli2)proberen, onze volgende generatie multi-platform cli.
@@ -32,11 +32,11 @@ In dit artikel vindt u de syntaxis en opties voor de Azure-opdracht regel interf
 
 Als u aan de slag wilt gaan, installeert u eerst [de Azure cli](../cli-install-nodejs.md) en [maakt u verbinding met uw Azure-abonnement](/cli/azure/authenticate-azure-cli).
 
-Voor de syntaxis en opties van de huidige opdracht op de opdracht regel in de modus `azure help` Resource Manager typt of, om de Help voor een `azure help [command]`specifieke opdracht weer te geven. Ook vindt u hier CLI-voor beelden in de documentatie voor het maken en beheren van specifieke Azure-Services.
+Voor de syntaxis en opties van de huidige opdracht op de opdracht regel in de modus Resource Manager typt u `azure help` of, om de Help voor een specifieke opdracht weer te geven `azure help [command]`. Ook vindt u hier CLI-voor beelden in de documentatie voor het maken en beheren van specifieke Azure-Services.
 
-Optionele para meters worden weer gegeven tussen vier Kante haken `[parameter]`(bijvoorbeeld). Alle andere para meters zijn vereist.
+Optionele para meters worden weer gegeven tussen vier Kante haken (bijvoorbeeld `[parameter]`). Alle andere para meters zijn vereist.
 
-Naast opdracht-specifieke optionele para meters die hier worden beschreven, zijn er drie optionele para meters die kunnen worden gebruikt voor het weer geven van gedetailleerde uitvoer, zoals aanvraag opties en status codes. De `-v` para meter biedt uitgebreide uitvoer en de `-vv` para meter biedt nog gedetailleerde uitgebreide uitvoer. De `--json` optie levert het resultaat op in onbewerkte JSON-indeling.
+Naast opdracht-specifieke optionele para meters die hier worden beschreven, zijn er drie optionele para meters die kunnen worden gebruikt voor het weer geven van gedetailleerde uitvoer, zoals aanvraag opties en status codes. De para meter `-v` biedt uitgebreide uitvoer en de para meter `-vv` biedt nog meer gedetailleerde uitvoer. Met de optie `--json` wordt het resultaat uitgevoerd in de onbewerkte JSON-indeling.
 
 ## <a name="setting-the-resource-manager-mode"></a>De Resource Manager-modus instellen
 Gebruik de volgende opdracht om de modus opdrachten van Azure CLI Resource Manager in te scha kelen.
@@ -48,7 +48,7 @@ Gebruik de volgende opdracht om de modus opdrachten van Azure CLI Resource Manag
 > 
 > 
 
-## <a name="azure-account-manage-your-account-information"></a>Azure-account: Uw account gegevens beheren
+## <a name="azure-account-manage-your-account-information"></a>Azure-account: uw account gegevens beheren
 Uw Azure-abonnements gegevens worden gebruikt door het hulp programma om verbinding te maken met uw account.
 
 **De geïmporteerde abonnementen weer geven**
@@ -75,7 +75,7 @@ Uw Azure-abonnements gegevens worden gebruikt door het hulp programma om verbind
     account env set [options] [environment]
     account env delete [options] [environment]
 
-## <a name="azure-ad-commands-to-display-active-directory-objects"></a>Azure AD: Opdrachten voor het weer geven van Active Directory objecten
+## <a name="azure-ad-commands-to-display-active-directory-objects"></a>Azure AD: opdrachten voor het weer geven van Active Directory objecten
 **Opdrachten voor het weer geven van Active Directory-toepassingen**
 
     ad app create [options]
@@ -132,7 +132,7 @@ Uw Azure-abonnements gegevens worden gebruikt door het hulp programma om verbind
 
     config set <name> <value>
 
-**Hiermee wordt de Azure cli-werk modus `arm` ingesteld op ofwel of`asm`**
+**Hiermee wordt de Azure CLI-werk modus ingesteld op `arm` of `asm`**
 
     config mode [options] <modename>
 
@@ -150,7 +150,7 @@ Uw Azure-abonnements gegevens worden gebruikt door het hulp programma om verbind
 
     feature register [options] <providerName> <featureName>
 
-## <a name="azure-group-commands-to-manage-your-resource-groups"></a>Azure-groep: Opdrachten voor het beheren van uw resource groepen
+## <a name="azure-group-commands-to-manage-your-resource-groups"></a>Azure-groep: opdrachten voor het beheren van uw resource groepen
 **Hiermee maakt u een resource groep**
 
     group create [options] <name> <location>
@@ -189,14 +189,14 @@ Uw Azure-abonnements gegevens worden gebruikt door het hulp programma om verbind
     group template download [options] [name] [file]
     group template validate [options] <resource-group>
 
-## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>Azure hdinsight: Opdrachten voor het beheren van HDInsight-clusters
+## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>Azure hdinsight: opdrachten voor het beheren van uw HDInsight-clusters
 **Opdrachten om een cluster configuratie bestand te maken of toe te voegen**
 
     hdinsight config create [options] <configFilePath> <overwrite>
     hdinsight config add-config-values [options] <configFilePath>
     hdinsight config add-script-action [options] <configFilePath>
 
-Voorbeeld: Maak een configuratie bestand dat een script actie bevat die moet worden uitgevoerd bij het maken van een cluster.
+Voor beeld: Maak een configuratie bestand dat een script actie bevat die moet worden uitgevoerd bij het maken van een cluster.
 
     hdinsight config create "C:\myFiles\configFile.config"
     hdinsight config add-script-action --configFilePath "C:\myFiles\configFile.config" --nodeType HeadNode --uri <scriptActionURI> --name myScriptAction --parameters "-param value"
@@ -205,7 +205,7 @@ Voorbeeld: Maak een configuratie bestand dat een script actie bevat die moet wor
 
     hdinsight cluster create [options] <clusterName>
 
-Voorbeeld: Een storm maken op Linux-cluster
+Voor beeld: een storm maken op een Linux-cluster
 
     azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Storm --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 myNewCluster01
 
@@ -213,7 +213,7 @@ Voorbeeld: Een storm maken op Linux-cluster
     + Submitting the request to create cluster...
     info:    hdinsight cluster create command OK
 
-Voorbeeld: Een cluster met een script actie maken
+Voor beeld: een cluster met een script actie maken
 
     azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Hadoop --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 –configurationPath "C:\myFiles\configFile.config" myNewCluster01
 
@@ -307,17 +307,17 @@ Parameter opties:
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>Azure Insights: Opdrachten met betrekking tot het bewaken van inzichten (gebeurtenissen, waarschuwings regels, instellingen voor automatisch schalen, metrische gegevens)
+## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>Azure Insights: opdrachten met betrekking tot het bewaken van inzichten (gebeurtenissen, waarschuwings regels, instellingen voor automatisch schalen, metrische gegevens)
 **Bewerkings logboeken ophalen voor een abonnement, een correlationId, een resource groep, resource of resource provider**
 
     insights logs list [options]
 
-## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>Azure-locatie: Opdrachten voor het ophalen van de beschik bare locaties voor alle resource typen
+## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>Azure-locatie: opdrachten voor het ophalen van de beschik bare locaties voor alle resource typen
 **De beschik bare locaties weer geven**
 
     location list [options]
 
-## <a name="azure-network-commands-to-manage-network-resources"></a>Azure-netwerk: Opdrachten voor het beheren van netwerk bronnen
+## <a name="azure-network-commands-to-manage-network-resources"></a>Azure-netwerk: opdrachten voor het beheren van netwerk bronnen
 **Opdrachten voor het beheren van virtuele netwerken**
 
     network vnet create [options] <resource-group> <name> <location>
@@ -1509,7 +1509,7 @@ Parameter opties:
 
     network gateway list [options] <resource-group>
 
-## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>Azure-provider: Opdrachten voor het beheren van resource provider registraties
+## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>Azure-provider: opdrachten voor het beheren van resource provider registraties
 **Geregistreerde providers in Resource Manager weer geven**
 
     provider list [options]
@@ -1526,7 +1526,7 @@ Parameter opties:
 
     provider unregister [options] <namespace>
 
-## <a name="azure-resource-commands-to-manage-your-resources"></a>Azure-resource: Opdrachten voor het beheren van uw resources
+## <a name="azure-resource-commands-to-manage-your-resources"></a>Azure-resource: opdrachten voor het beheren van uw resources
 **Hiermee maakt u een resource in een resource groep**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>
@@ -1547,7 +1547,7 @@ Parameter opties:
 
     resource delete [options] <resource-group> <name> <resource-type> <api-version>
 
-## <a name="azure-role-commands-to-manage-your-azure-roles"></a>Azure-rol: Opdrachten voor het beheren van uw Azure-rollen
+## <a name="azure-role-commands-to-manage-your-azure-roles"></a>Azure Role: opdrachten voor het beheren van uw Azure-rollen
 **Alle beschik bare roldefinities ophalen**
 
     role list [options]
@@ -1562,7 +1562,7 @@ Parameter opties:
     role assignment list [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
     role assignment delete [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
 
-## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>Azure-opslag: Opdrachten voor het beheren van uw opslag objecten
+## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>Azure Storage: opdrachten voor het beheren van uw opslag objecten
 **Opdrachten voor het beheren van uw opslag accounts**
 
     storage account list [options]
@@ -1685,7 +1685,7 @@ Parameter opties:
     storage table policy set [options] [table] [name]
     storage table policy delete [options] [table] [name]
 
-## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>Azure-tag: Opdrachten voor het beheren van uw Resource Manager-tag
+## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>Azure tag: opdrachten voor het beheren van uw Resource Manager-tag
 **Een tag toevoegen**
 
     tag create [options] <name> <value>
@@ -1702,7 +1702,7 @@ Parameter opties:
 
     tag show [options] [name]
 
-## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>Azure VM: Opdrachten voor het beheren van uw Azure Virtual Machines
+## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>Azure VM: opdrachten voor het beheren van uw Azure-Virtual Machines
 **Een virtuele machine maken**
 
     vm create [options] <resource-group> <name> <location> <os-type>
@@ -1712,7 +1712,7 @@ Parameter opties:
     vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password
 
 > [!TIP]
-> Vanaf CLI versie 0,10 kunt u een korte alias opgeven, zoals "UbuntuLTS" of "Win2012R2Datacenter" `image-urn` , voor een aantal populaire Marketplace-installatie kopieën. Uitvoeren `azure help vm quick-create` voor opties. Vanaf versie 0,10 `azure vm quick-create` maakt bovendien gebruik van Premium Storage standaard als deze beschikbaar is in de geselecteerde regio.
+> Vanaf CLI versie 0,10 kunt u een korte alias opgeven, zoals "UbuntuLTS" of "Win2012R2Datacenter" als de `image-urn` voor een populaire Marketplace-installatie kopieën. Voer `azure help vm quick-create` uit voor opties. Vanaf versie 0,10 gebruikt `azure vm quick-create` ook Premium-opslag als deze beschikbaar is in de geselecteerde regio.
 > 
 > 
 

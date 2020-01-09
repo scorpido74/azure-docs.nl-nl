@@ -1,17 +1,17 @@
 ---
-title: FXT-cluster maken met Microsoft Azure Edge-bestands extensie
+title: 'Zelf studie: het Azure FXT Edge-cache cluster maken'
 description: Een hybride opslag cache cluster maken met de Azure FXT Edge-Bestandsr
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 54d70f60d4b7290b60c864817c756648fef1f481
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: bfe1d1aeeac55039acf0c7eb295001277be9cd2e
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256085"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551264"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Zelf studie: het Azure FXT Edge-bestands cluster maken
 
@@ -103,7 +103,7 @@ Als u de netwerk verbinding wilt controleren, controleert u of de netwerk koppel
 
 Wanneer het knoop punt wordt opgestart, wordt een IP-adres aangevraagd. Als deze is verbonden met een DHCP-server, wordt het IP-adres geaccepteerd dat door DHCP wordt verschaft. (Dit IP-adres is tijdelijk. Het wordt gewijzigd wanneer u het cluster maakt.)
 
-Als deze niet is verbonden met een DHCP-server of als er geen antwoord wordt ontvangen, gebruikt het knoop punt Bonjour-software om een zelf toegewezen IP-adres in de vorm 169,254. \*. \* in te stellen. U moet echter een tijdelijk statisch IP-adres op een van de netwerk kaarten van het knoop punt instellen voordat u het gebruikt om een cluster te maken. Instructies zijn opgenomen in dit oudere document. Neem contact op met de service en ondersteuning van micro soft voor bijgewerkte informatie: [bijlage A: een statisch IP-adres instellen op een FXT-knoop punt](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/static_ip.html).
+Als het niet is verbonden met een DHCP-server of als er geen antwoord wordt ontvangen, gebruikt het knoop punt Bonjour-software om een zelf toegewezen IP-adres in de notatie 169,254 in te stellen.\*.\*. U moet echter een tijdelijk statisch IP-adres op een van de netwerk kaarten van het knoop punt instellen voordat u het gebruikt om een cluster te maken. Instructies zijn opgenomen in dit oudere document. Neem contact op met de service en ondersteuning van micro soft voor bijgewerkte informatie: [bijlage A: een statisch IP-adres instellen op een FXT-knoop punt](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/static_ip.html).
 
 ### <a name="find-the-ip-address"></a>Het IP-adres zoeken
 
@@ -115,7 +115,7 @@ Nadat u zich hebt aangemeld, moet u het IP-adres van het knoop punt bepalen.
 
 Gebruik de opdracht `ifconfig` om de adressen weer te geven die aan dit systeem zijn toegewezen.
 
-De opdracht `ifconfig | grep -B5 inet` zoekt bijvoorbeeld naar poorten met Internet adressen en biedt vijf regels context om de poort-id weer te geven.
+Met de opdracht `ifconfig | grep -B5 inet` bijvoorbeeld zoeken naar poorten met Internet adressen en vijf regels context om de poort-id weer te geven.
 
 Noteer elk IP-adres dat wordt weer gegeven in het ifconfig-rapport. Adressen die worden weer gegeven met poort namen, zoals e0a of e0b, zijn goede opties. Gebruik geen IP-adressen die worden vermeld met E7 * names, omdat deze namen alleen worden gebruikt voor iDRAC/IPMI-service poorten.  
 
@@ -174,9 +174,9 @@ Vul in het bovenste gedeelte basis informatie in voor het nieuwe cluster.
 
 * **Beheerders wachtwoord** : Stel het wacht woord in voor de standaard gebruiker met beheerders rechten, `admin`.
   
-  U moet afzonderlijke gebruikers accounts instellen voor elke persoon die het cluster beheert, maar u kunt de gebruiker `admin` niet verwijderen. Meld u aan als `admin` als u extra gebruikers wilt maken.
+  U moet afzonderlijke gebruikers accounts instellen voor elke persoon die het cluster beheert, maar u kunt de gebruikers `admin`niet verwijderen. Meld u aan als `admin` als u extra gebruikers wilt maken.
  
-  U kunt het wacht woord voor `admin` wijzigen op de pagina **beheer** > **gebruikers** instellingen in het configuratie scherm van het cluster. Lees voor meer informatie de documentatie over **gebruikers** in de [cluster configuratie handleiding](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html).
+  U kunt het wacht woord voor `admin` wijzigen op de pagina **beheer** > **gebruikers** instellingen in het deel venster cluster configuratie. Lees voor meer informatie de documentatie over **gebruikers** in de [cluster configuratie handleiding](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html).
 
 <!-- to do: update "legacy" URLs when docs are ported to Microsoft site -->
 
@@ -204,7 +204,7 @@ De instellingen in de sectie **beheer** zijn voor het netwerk dat beheerders toe
 
 * **Beheer-IP** : Geef het IP-adres op dat u gaat gebruiken voor toegang tot het configuratie scherm van het cluster. Dit adres wordt geclaimd door het primaire knoop punt van het cluster, maar wordt automatisch verplaatst naar een goed knoop punt als het oorspronkelijke primaire knoop punt niet meer beschikbaar is.
 
-  Voor de meeste clusters wordt slechts één IP-adres voor beheer gebruikt. Als u meer dan één wilt, kunt u ze toevoegen nadat u het cluster hebt gemaakt met behulp van de pagina **cluster** >  netwerk instellingen voor**beheer** . Meer informatie vindt u in de [hand leiding voor cluster configuratie](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html).
+  Voor de meeste clusters wordt slechts één IP-adres voor beheer gebruikt. Als u meer dan één wilt, kunt u ze toevoegen nadat u het cluster hebt gemaakt met behulp van de pagina **cluster** > **Administrative Network** Settings. Meer informatie vindt u in de [hand leiding voor cluster configuratie](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html).
 
 * **Netmask** : Geef het netmask op voor het beheer netwerk.
 
@@ -226,7 +226,7 @@ De cluster netwerk instellingen zijn van toepassing op verkeer tussen de cluster
 
 * **Eerste IP** -adres en **laatste IP** -Voer de IP-adressen in die het bereik definiëren dat moet worden gebruikt voor interne cluster communicatie. De IP-adressen die hier worden gebruikt, moeten aaneengesloten zijn en niet door DHCP worden toegewezen.
 
-  U kunt meer IP-adressen toevoegen nadat u het cluster hebt gemaakt. Gebruik de pagina **cluster** > **cluster Networks** Settings ([documentatie over de cluster configuratie handleiding](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cluster_networks.html#gui-cluster-networks)).
+  U kunt meer IP-adressen toevoegen nadat u het cluster hebt gemaakt. Gebruik de pagina **cluster** -netwerk > instellingen voor cluster **netwerken** ([documentatie over de cluster configuratie handleiding](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cluster_networks.html#gui-cluster-networks)).
 
   De waarde in het **aantal ip's in het bereik** wordt automatisch berekend en weer gegeven.
 
@@ -371,7 +371,7 @@ Met het Azure FXT Edge-bestands cluster kunnen automatisch ondersteunings gegeve
 
 Volg deze stappen voor het instellen van ondersteunings-uploads.
 
-1. Ga naar de pagina **Cluster** >  instellingen voor**ondersteuning** . Accepteer het privacybeleid. 
+1. Navigeer naar de pagina **Cluster** > instellingen voor **ondersteuning** . Accepteer het privacybeleid. 
 
    ![Scherm opname van het configuratie scherm en het pop-upvenster met de knop bevestigen om het privacybeleid te accepteren](media/fxt-cluster-create/fxt-privacy-policy.png)
 

@@ -1,54 +1,45 @@
 ---
-title: Fouten opsporen in uw Azure Service Fabric-toepassing in Eclipse | Microsoft Docs
-description: De betrouwbaarheid en prestaties van uw services verbeteren door de ontwikkeling en foutopsporing van hen in Eclipse op een lokaal ontwikkelcluster.
-services: service-fabric
-documentationcenter: .net
+title: Fouten opsporen in uw toepassing in eclips
+description: Verbeter de betrouw baarheid en prestaties van uw services door deze te ontwikkelen en fouten op te sporen in eclips op een lokaal ontwikkelings cluster.
 author: suhuruli
-manager: chackdan
-editor: ''
-ms.assetid: cb888532-bcdb-4e47-95e4-bfbb1f644da4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 2f00636da2b29e7815569a683fdf51c6a4e3b0e0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 15448a9bd8998a99e8fce578b05130694ecd5fd0
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393585"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614482"
 ---
-# <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Fouten opsporen in uw Service Fabric Java-toepassing met behulp van Eclipse
+# <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Fout opsporing voor uw Java Service Fabric-toepassing met behulp van eclips
 > [!div class="op_single_selector"]
-> * [Visual Studio/CSharp](service-fabric-debugging-your-application.md) 
-> * [Eclipse/Java](service-fabric-debugging-your-application-java.md)
+> * [Visual Studio-CSharp](service-fabric-debugging-your-application.md) 
+> * [Eclips/java](service-fabric-debugging-your-application-java.md)
 > 
 
-1. Een lokaal ontwikkelcluster starten met de volgende stappen in [instellen van uw Service Fabric-ontwikkelomgeving](service-fabric-get-started-linux.md).
+1. Start een lokaal ontwikkel cluster door de stappen in [uw service Fabric-ontwikkel omgeving](service-fabric-get-started-linux.md)in te stellen.
 
-2. Werk entryPoint.sh van de service die u fouten opsporen, wilt zodat deze het java-proces wordt gestart met de externe foutopsporing voor parameters. Dit bestand kan worden gevonden op de volgende locatie: `ApplicationName\ServiceNamePkg\Code\entrypoint.sh`. Poort 8001 is in dit voorbeeld voor foutopsporing ingesteld.
+2. Update entryPoint.sh van de service waarvoor u fouten wilt opsporen, zodat het Java-proces wordt gestart met externe debug-para meters. Dit bestand bevindt zich op de volgende locatie: `ApplicationName\ServiceNamePkg\Code\entrypoint.sh`. Poort 8001 is in dit voorbeeld voor foutopsporing ingesteld.
 
     ```sh
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
     ```
-3. Manifest van de toepassing bij te werken als u het aantal instanties of het aantal replica's voor de service die foutopsporing wordt uitgevoerd op 1. Deze instelling voorkomt conflicten voor de poort die wordt gebruikt voor het opsporen van fouten. Stel bijvoorbeeld voor stateless services `InstanceCount="1"` in en stel voor stateful services de doel- en min-replicasetgrootten als volgt in op 1: `TargetReplicaSetSize="1" MinReplicaSetSize="1"`.
+3. Werk het toepassings manifest bij door het aantal exemplaren of het aantal replica's voor de service waarvoor fouten worden opgespoord, in te stellen op 1. Deze instelling voorkomt conflicten voor de poort die wordt gebruikt voor het opsporen van fouten. Stel bijvoorbeeld voor stateless services `InstanceCount="1"` in en stel voor stateful services de doel- en min-replicasetgrootten als volgt in op 1: `TargetReplicaSetSize="1" MinReplicaSetSize="1"`.
 
 4. De toepassing implementeren.
 
-5. Selecteer in de Eclipse IDE **Run -> Debug Configurations -> Remote Java Application en voer de verbindingseigenschappen** en stel de eigenschappen als volgt:
+5. Selecteer in de eclips IDE de optie **Run-> debug-configuraties: > externe Java-toepassing en eigenschappen van de invoer verbinding** en stel de eigenschappen als volgt in:
 
    ```
    Host: ipaddress
    Port: 8001
    ```
-6.  Onderbrekingspunten instellen op de gewenste plaatsen en fouten opsporen in de toepassing.
+6.  Stel onderbrekings punten in op de gewenste posities en spoor fouten op in de toepassing.
 
-Als de toepassing is gecrasht, wilt u mogelijk ook coredumps inschakelen. Voer `ulimit -c` in een shell en als het resultaat 0, wordt de coredumps zijn niet ingeschakeld. Om in te schakelen onbeperkte coredumps, dan de volgende opdracht: `ulimit -c unlimited`. U kunt ook controleren of de status van de opdracht `ulimit -a`.  Als u bijwerken van het pad van de generatie coredump wilt, voeren `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern`. 
+Als de toepassing vastloopt, wilt u mogelijk ook coredumps inschakelen. Voer `ulimit -c` uit in een shell en als deze 0 retourneert, zijn coredumps niet ingeschakeld. Als u onbeperkte coredumps wilt inschakelen, voert u de volgende opdracht uit: `ulimit -c unlimited`. U kunt ook de status controleren met behulp van de opdracht `ulimit -a`.  Als u het pad voor het genereren van coredump wilt bijwerken, voert u `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern`uit. 
 
 ### <a name="next-steps"></a>Volgende stappen
 
-* [Logboeken verzamelen met Linux Azure Diagnostics](service-fabric-diagnostics-how-to-setup-lad.md).
-* [Controle en diagnose van services lokaal](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).
+* [Verzamelen van logboeken met Linux Azure Diagnostics](service-fabric-diagnostics-how-to-setup-lad.md).
+* [Services lokaal controleren en diagnosticeren](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).

@@ -1,60 +1,51 @@
 ---
-title: Meer informatie over het maken en publiceren van .net Core-toepassingen naar een externe Azure Service Fabric Linux-cluster | Microsoft Docs
-description: Maken en publiceren van .net Core-apps die zijn gericht op een externe Linux-cluster op basis van Visual Studio
-services: service-fabric
-documentationcenter: .net
+title: A.Net core-app maken en publiceren naar een extern Linux-cluster
+description: .Net Core-Apps maken en publiceren die gericht zijn op een extern Linux-cluster vanuit Visual Studio
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: troubleshooting
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 5/20/2019
 ms.author: pepogors
-ms.openlocfilehash: 46d76edbe8cede12e8c7811f43c28a65c1ebaed0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c30eedb6782e4172d677f16e27441f28c78cdd89
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078662"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614346"
 ---
-# <a name="use-visual-studio-to-create-and-publish-net-core-applications-targeting-a-remote-linux-service-fabric-cluster"></a>Visual Studio gebruiken om te maken en publiceren van .net Core-toepassingen die zijn gericht op een externe Linux Service Fabric-cluster
-Met Visual Studio-hulpmiddelen u kunt ontwikkelen en publiceren van Service Fabric .net Core-toepassingen die zijn gericht op een Linux Service Fabric-cluster. De SDK-versie moet 3.4 of hoger implementeren van een .net Core-toepassing die gericht is op Linux Service Fabric-clusters vanuit Visual Studio.
+# <a name="use-visual-studio-to-create-and-publish-net-core-applications-targeting-a-remote-linux-service-fabric-cluster"></a>Visual Studio gebruiken om .net core-toepassingen te maken en te publiceren die gericht zijn op een extern Linux Service Fabric-cluster
+Met Visual Studio-hulp middelen kunt u Service Fabric .net core-toepassingen ontwikkelen en publiceren die gericht zijn op een Linux Service Fabric-cluster. De SDK-versie moet 3,4 of hoger zijn om een .net core-toepassing te implementeren die is gericht op Linux Service Fabric-clusters vanuit Visual Studio.
 
 > [!Note]
-> Visual Studio biedt geen ondersteuning voor foutopsporing Service Fabric-toepassingen die gericht op Linux.
+> Visual Studio biedt geen ondersteuning voor fout opsporing Service Fabric toepassingen die gericht zijn op Linux.
 >
 
-## <a name="create-a-service-fabric-application-targeting-net-core"></a>Maken van een Service Fabric-toepassing die gericht is op .net Core
+## <a name="create-a-service-fabric-application-targeting-net-core"></a>Een Service Fabric-toepassing maken die gericht is op .net core
 1. Start Visual Studio als **beheerder**.
-2. Maak een project met **File -> Nieuw Project ->** .
-3. In de **nieuw Project** dialoogvenster kiezen **Cloud > Service Fabric-toepassing**.
-![toepassing maken]
-4. Noem de toepassing en klikt u op **Ok**.
-5. Op de **New Service Fabric Service** pagina, selecteert u het type van de service die u maken wilt onder de **.Net Core-sectie**.
+2. Maak een project met **bestand-> New->-project**.
+3. Kies in het dialoog venster **Nieuw project** de optie **Cloud-> Service Fabric toepassing**.
+![maken-toepassing]
+4. Geef de toepassing een naam en klik op **OK**.
+5. Selecteer op de pagina **nieuwe service Fabric-service** het type service dat u wilt maken in de **sectie .net core**.
 ![create-service]
 
-## <a name="deploy-to-a-remote-linux-cluster"></a>Op een externe Linux-cluster implementeren
-1. In de solution explorer, klik met de rechtermuisknop op de toepassing en selecteer **bouwen**.
-![Build-toepassing]
-2. Nadat het bouwproces voor de toepassing is voltooid, klik met de rechtermuisknop op de service en selecteer Bewerken de **csproj-bestand**.
+## <a name="deploy-to-a-remote-linux-cluster"></a>Implementeren in een extern Linux-cluster
+1. Klik in de Solution Explorer met de rechter muisknop op de toepassing en selecteer **Build**.
+![build-toepassing]
+2. Zodra het bouw proces voor de toepassing is voltooid, klikt u met de rechter muisknop op de service en selecteert u het **bestand csproj**bewerken.
 ![edit-csproj]
-3. Bewerk de eigenschap UpdateServiceFabricManifestEnabled van de waarde True **False** als de service is een **actor projecttype**. Als uw toepassing heeft geen een actor-service, gaat u naar stap 4.
+3. Bewerk de eigenschap UpdateServiceFabricManifestEnabled van waar in **Onwaar** als de service een **actor-project type**is. Als uw toepassing geen actor service heeft, gaat u verder met stap 4.
 ```xml
     <UpdateServiceFabricManifestEnabled>False</UpdateServiceFabricManifestEnabled>
 ```
 > [!Note]
-> UpdateServiceFabricManifestEnabled is ingesteld op false, worden updates voor de ServiceManifest.xml tijdens een build uitgeschakeld. Eventuele wijzigingen van dergelijke wordt zoals toevoegen, verwijderen of naar de service Hernoemen niet worden doorgevoerd in de ServiceManifest.xml. Als er wijzigingen zijn aangebracht u moet het bestand servicemanifest.XML handmatig of tijdelijk ingesteld UpdateServiceFabricManifestEnabled true en de service die de ServiceManifest.xml bijwerken en vervolgens terugkeren bouwt werken back-ups maken op false.
+> Als UpdateServiceFabricManifestEnabled is ingesteld op False, worden updates voor de ServiceManifest. XML tijdens een build uitgeschakeld. Wijzigingen, zoals toevoegen, verwijderen of wijzigen van de naam van de service, worden niet weer gegeven in ServiceManifest. XML. Als er wijzigingen worden aangebracht, moet u de ServiceManifest hand matig bijwerken of UpdateServiceFabricManifestEnabled instellen op True en de service bouwen waarmee de ServiceManifest. XML wordt bijgewerkt en teruggezet naar false.
 >
 
-4. Werk de RuntimeIndetifier van win7 x64 naar het doelplatform in het service-project.
+4. Werk de RuntimeIndetifier van Win7-x64 bij naar het doel platform in het service project.
 ```xml
     <RuntimeIdentifier>ubuntu.16.04-x64</RuntimeIdentifier>
 ```
-5. Update het programma entrypoint .exe verwijderen in het ServiceManifest. 
+5. Werk in het ServiceManifest het entry point-programma bij om. exe te verwijderen. 
 ```xml
     <EntryPoint> 
     <ExeHost> 
@@ -62,16 +53,16 @@ Met Visual Studio-hulpmiddelen u kunt ontwikkelen en publiceren van Service Fabr
     </ExeHost> 
     </EntryPoint>
 ```
-6. Klik in Solution Explorer met de rechtermuisknop op de toepassing en selecteer **publiceren**. Het dialoogvenster **Publiceren** wordt weergegeven.
-7. In **verbindingseindpunt**, selecteert u het eindpunt voor de externe Linux Service Fabric-cluster die u wilt richten.
+6. Klik in Solution Explorer met de rechter muisknop op de toepassing en selecteer **publiceren**. Het dialoogvenster **Publiceren** wordt weergegeven.
+7. Selecteer in **verbindings eindpunt**het eind punt voor het externe service Fabric Linux-cluster dat u wilt instellen als doel.
 ![publish-application]
 
 <!--Image references-->
-[toepassing maken]:./media/service-fabric-how-to-vs-remote-linux-cluster/create-application-remote-linux.png
-[create-service]:./media/service-fabric-how-to-vs-remote-linux-cluster/create-service-remote-linux.png
+[maken-toepassing]:./media/service-fabric-how-to-vs-remote-linux-cluster/create-application-remote-linux.png
+[Create-service]:./media/service-fabric-how-to-vs-remote-linux-cluster/create-service-remote-linux.png
 [Build-toepassing]:./media/service-fabric-how-to-vs-remote-linux-cluster/build-application-remote-linux.png
 [edit-csproj]:./media/service-fabric-how-to-vs-remote-linux-cluster/edit-csproj-remote-linux.png
 [publish-application]:./media/service-fabric-how-to-vs-remote-linux-cluster/publish-remote-linux.png
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [aan de slag met Service Fabric met .net Core](https://azure.microsoft.com/resources/samples/service-fabric-dotnet-core-getting-started/)
+* Meer informatie over [aan de slag met Service fabric met .net core](https://azure.microsoft.com/resources/samples/service-fabric-dotnet-core-getting-started/)

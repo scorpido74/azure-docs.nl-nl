@@ -1,54 +1,43 @@
 ---
-title: Eenheidstests voor stateful services in Azure Service Fabric ontwikkelen | Microsoft Docs
-description: Informatie over het ontwikkelen van eenheidstests voor Service Fabric-Stateful Services.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Eenheids tests ontwikkelen voor stateful Services
+description: Meer informatie over het testen van de eenheid in azure Service Fabric voor stateful Services en speciale overwegingen om tijdens de ontwikkeling rekening mee te houden.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/04/2018
-ms.author: atsenthi
-ms.openlocfilehash: b066296ca52d3067f8985245161eb4fa7b484a07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c657bd8295d01a4e0fa4e44e969b33946684bfa
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720124"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639833"
 ---
-# <a name="create-unit-tests-for-stateful-services"></a>Eenheidstests voor Stateful Services maken
-Eenheidstesten stateful Service Fabric-services kunt verwerven op basis veelvoorkomende fouten die zou niet per se worden opgepikt door conventionele toepassing of domeinspecifieke Eenheidstesten. Tijdens het ontwikkelen van eenheidstests voor stateful services, zijn er enkele speciale overwegingen die moeten worden opgeslagen in gedachten.
+# <a name="create-unit-tests-for-stateful-services"></a>Eenheids tests maken voor stateful Services
+Door de eenheid te testen Service Fabric stateful-Services, worden veelvoorkomende fouten gedetecteerd die niet noodzakelijkerwijs zouden worden onderschept door conventionele toepassingen of specifieke eenheids tests op basis van een domein. Tijdens het ontwikkelen van eenheids tests voor stateful Services, zijn er enkele speciale aandachtspunten die u in acht moet nemen.
 
-1. Elke replica toepassingscode wordt uitgevoerd, maar in verschillende context. Als de service gebruikmaakt van drie replica's, wordt de servicecode wordt uitgevoerd op drie knooppunten parallel onder andere context/rol.
-2. Status die zijn opgeslagen in de stateful service moet consistent zijn met alle replica's. De status manager en de betrouwbare verzamelingen biedt deze consistentie out-of-the-box. De status in het geheugen moet echter worden beheerd door de toepassingscode.
-3. Elke replica verandert rollen op een bepaald moment tijdens het uitvoeren van op het cluster. Een secundaire replica als primair, in het geval dat het hosten van het primaire knooppunt niet beschikbaar of overbelast raakt. Dit is natuurlijk gedrag voor Service Fabric daarom services voor het uitvoeren van uiteindelijk onder een andere rol moeten plannen.
+1. Elke replica voert toepassings code uit, maar onder een andere context. Als de service gebruikmaakt van drie replica's, wordt de service code uitgevoerd op drie knoop punten parallel onder verschillende context/rol.
+2. De status opgeslagen in de stateful service moet consistent zijn voor alle replica's. De status Manager en de betrouw bare verzamelingen geven deze consistentie out-of-the-box. De status in het geheugen moet echter worden beheerd door de toepassings code.
+3. Elke replica wijzigt rollen op een bepaald moment tijdens het uitvoeren van het cluster. Een secundaire replica wordt een primair, in het geval dat het knoop punt dat als host fungeert voor de primaire, niet beschikbaar of overbelast is. Dit is natuurlijk gedrag voor Service Fabric daarom moeten services moeten plannen die uiteindelijk onder een andere rol moeten worden uitgevoerd.
 
-In dit artikel wordt ervan uitgegaan dat [Eenheidstesten stateful services in Service Fabric](service-fabric-concepts-unit-testing.md) is gelezen.
+In dit artikel wordt ervan uitgegaan dat de [Services voor het testen van de eenheid zijn gelezen in service Fabric](service-fabric-concepts-unit-testing.md) .
 
-## <a name="the-servicefabricmocks-library"></a>De bibliotheek ServiceFabric.Mocks
-Vanaf versie 3.3.0, [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) biedt een API voor het simuleren van zowel de indeling van de replica's en het beheer staat. Dit wordt gebruikt in de voorbeelden.
+## <a name="the-servicefabricmocks-library"></a>De bibliotheek ServiceFabric. modelers
+Vanaf versie 3.3.0 biedt [ServiceFabric.-modellen](https://www.nuget.org/packages/ServiceFabric.Mocks/) een API voor het aftrekken van de indeling van de replica's en het status beheer. Dit wordt gebruikt in de voor beelden.
 
 [Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/)
 [GitHub](https://github.com/loekd/ServiceFabric.Mocks)
 
-*ServiceFabric.Mocks is niet het eigendom of beheerd door Microsoft. Dit is echter op dat moment de Microsoft-bibliotheek voor stateful services Eenheidstesten aanbevolen.*
+*ServiceFabric.-modellen zijn geen eigendom van of worden onderhouden door micro soft. Dit is echter de aanbevolen bibliotheek van micro soft voor de stateful Services voor het testen van eenheden.*
 
-## <a name="set-up-the-mock-orchestration-and-state"></a>Instellen van de mock-indeling en de status
-Als onderdeel van het gedeelte rangschikken van een test, een mock replicaset en status manager wordt gemaakt. Het maken van een exemplaar van de geteste service voor elke replica wordt vervolgens eigenaar van de replicaset. Levenscyclusgebeurtenissen voor het uitvoeren wordt tevens zoals eigenaar `OnChangeRole` en `RunAsync`. Het model de status manager zorgt ervoor dat alle bewerkingen die worden uitgevoerd op basis van de status manager worden uitgevoerd en bewaard als de huidige status manager.
+## <a name="set-up-the-mock-orchestration-and-state"></a>De indeling en status van het model instellen
+Als onderdeel van de rang schikking van een test, worden er een model replicaset en status Manager gemaakt. De replicaset maakt vervolgens een eigen exemplaar van de geteste service voor elke replica. Er wordt ook eigenaar van levenscyclus gebeurtenissen, zoals `OnChangeRole` en `RunAsync`. De status Manager van de Modeler zorgt ervoor dat alle bewerkingen die worden uitgevoerd op de status Manager worden uitgevoerd en bewaard als de daad werkelijke status Manager.
 
-1. Maak een service factory gemachtigde die wordt een exemplaar van de service worden getest. Dit moet lijken op of hetzelfde zijn als de service factory callback gewoonlijk in `Program.cs` voor een Service Fabric-service of een actor. Dit moet de volgende handtekening volgen:
+1. Maak een service Factory-gemachtigde waarmee wordt geïnstantieerd dat de service wordt getest. Dit moet gelijk zijn aan of hetzelfde zijn als de call back service Factory die meestal wordt gevonden in `Program.cs` voor een Service Fabric service of actor. Dit moet de volgende hand tekening volgen:
    ```csharp
    MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
    ```
-2. Maak een instantie van `MockReliableStateManager` klasse. Hiermee worden alle interacties met de status manager model.
-3. Maak een instantie van `MockStatefulServiceReplicaSet<TStatefulService>` waar `TStatefulService` is het type van de service worden getest. Hiervoor moet de gemachtigde die zijn gemaakt in stap 1 # en de status manager geïnstantieerd in #2
-4. Replica's toevoegen aan de replicaset. Geef de rol (zoals primair, ActiveSecondary, IdleSecondary) en de ID van de replica
-   > Houd de replica-id's! Deze zal waarschijnlijk worden gebruikt tijdens de handeling en delen van een moduletest assert.
+2. Maak een instantie van `MockReliableStateManager` klasse. Hiermee worden alle interacties met de status Manager gesimuleerd.
+3. Maak een instantie van `MockStatefulServiceReplicaSet<TStatefulService>` waarbij `TStatefulService` het type is van de service die wordt getest. Hiervoor moet de gemachtigde die is gemaakt in stap #1 en de status beheerder in #2
+4. Replica's toevoegen aan de replicaset. Geef de rol op (zoals primair, ActiveSecondary, IdleSecondary) en de ID van de replica
+   > Wacht op de replica-Id's. Deze worden waarschijnlijk gebruikt tijdens de Act-en bevestigings delen van een eenheids test.
 
 ```csharp
 //service factory to instruct how to create the service instance
@@ -65,8 +54,8 @@ await replicaSet.AddReplicaAsync(ReplicaRole.ActiveSecondary, 2);
 await replicaSet.AddReplicaAsync(ReplicaRole.ActiveSecondary, 3);
 ```
 
-## <a name="execute-service-requests"></a>Uitvoeren van serviceaanvragen
-Aanvragen van een service kunnen worden uitgevoerd op een specifieke replica met behulp van de eigenschappen voor uw gemak en zoekacties.
+## <a name="execute-service-requests"></a>Service aanvragen uitvoeren
+Service aanvragen kunnen worden uitgevoerd op een specifieke replica met behulp van de gebruiks gemak eigenschappen en lookups.
 ```csharp
 const string stateName = "test";
 var payload = new Payload(StatePayload);
@@ -81,8 +70,8 @@ await replicaSet[2].ServiceInstance.InsertAsync(stateName, payload);
 await replicaSet.FirstActiveSecondary.InsertAsync(stateName, payload);
 ```
 
-## <a name="execute-a-service-move"></a>Het verplaatsen van een service uitvoeren
-De mock replicaset beschrijft de verschillende methoden voor gebruiksgemak voor het activeren van verschillende typen service verplaatsen.
+## <a name="execute-a-service-move"></a>Een service verplaatsing uitvoeren
+De replicaset van de Modeler stelt verschillende manieren voor het activeren van verschillende typen service verplaatsingen.
 ```csharp
 //promote the first active secondary to primary
 replicaSet.PromoteNewReplicaToPrimaryAsync();
@@ -101,7 +90,7 @@ PromoteNewReplicaToPrimaryAsync(4)
 ```
 
 ## <a name="putting-it-all-together"></a>Alles samenvoegen
-De volgende test ziet u een verzameling met drie knooppunten replica instellen en gecontroleerd of de gegevens van een secundaire beschikbaar na een rolwijziging is. Een typisch probleem dit kan variabel is als de gegevens toegevoegd tijdens de `InsertAsync` is opgeslagen op iets in het geheugen of op een betrouwbare verzameling zonder uitgevoerd `CommitAsync`. In beide gevallen zou de secundaire server worden gesynchroniseerd met de primaire. Dit zou leiden tot inconsistent antwoorden nadat service is verplaatst.
+De volgende test laat zien hoe u een replicaset met drie knoop punten instelt en controleert of de gegevens beschikbaar zijn vanaf een secundaire nadat een rol is gewijzigd. Een veelvoorkomend probleem is dat als de gegevens die tijdens `InsertAsync` zijn toegevoegd, zijn opgeslagen in een geheugen of een betrouw bare verzameling zonder `CommitAsync`uit te voeren. In beide gevallen is het secundaire is niet gesynchroniseerd met de primaire. Dit zou leiden tot inconsistente reacties na het verplaatsen van de service.
 
 ```csharp
 [TestMethod]
@@ -139,4 +128,4 @@ public async Task TestServiceState_InMemoryState_PromoteActiveSecondary()
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het testen [service-naar-servicecommunicatie](service-fabric-testability-scenarios-service-communication.md) en [storingen simuleren met gecontroleerde chaos](service-fabric-controlled-chaos.md).
+Leer hoe u [service-naar-service-communicatie](service-fabric-testability-scenarios-service-communication.md) kunt testen en [fouten kunt simuleren met behulp van beheerde chaos](service-fabric-controlled-chaos.md).

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI-sfctl rpm | Microsoft Docs
-description: Hierin worden de Service Fabric CLI-opdrachten voor sfctl rpm beschreven.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI-sfctl rpm
+description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor de reparatie Manager-service.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 9c37dc8131f14a3b35e68b3e88502c91f96810f6
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 674970276046034d13801db7c1bb4ab5175385fb
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901037"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639085"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 Query's uitvoeren en opdrachten verzenden naar de service reparatie beheer.
@@ -48,7 +39,7 @@ Deze API ondersteunt het Service Fabric-platform. het is niet bedoeld om rechtst
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -70,7 +61,7 @@ Deze API ondersteunt het Service Fabric-platform. het is niet bedoeld om rechtst
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -87,13 +78,13 @@ Deze API ondersteunt het Service Fabric-platform. het is niet bedoeld om rechtst
 | --- | --- |
 | --uitvoerbaar filter | De naam van de reparatie-uitvoerder waarvan de gedeclareerde taken moeten worden opgenomen in de lijst. |
 | --status-filter | Een bitsgewijze-of van de volgende waarden, opgeven welke taak statussen moeten worden opgenomen in de lijst met resultaten. <br> 1-gemaakt <br>2-geclaimd  <br>4: voorbereiden  <br>8-goedgekeurd  <br>16-uitvoeren  <br>32-herstellen  <br>64-voltooid |
-| --taak-id-filter | Het voor voegsel van de reparatie taak-ID moet worden gevonden. |
+| --task-id-filter | Het voor voegsel van de reparatie taak-ID moet worden gevonden. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |

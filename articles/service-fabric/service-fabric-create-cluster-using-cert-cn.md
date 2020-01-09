@@ -1,25 +1,14 @@
 ---
-title: Een Azure Service Fabric-cluster maken met de algemene naam van het certificaat | Microsoft Docs
+title: Een cluster maken met een algemene certificaat naam
 description: Meer informatie over het maken van een Service Fabric cluster met behulp van een algemene certificaat naam uit een sjabloon.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/06/2019
-ms.author: atsenthi
-ms.openlocfilehash: 73e02b4482f69ec0c9d5a602f30cefea77279778
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 4a4448c88fa9493979f075f6b9c669927dd1d39e
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764727"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614550"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Een Service Fabric cluster implementeren dat de algemene certificaat naam gebruikt in plaats van een vinger afdruk
 Er kunnen niet twee certificaten dezelfde vinger afdruk hebben, waardoor de rollover van het cluster certificaat of het beheer lastig wordt. Meerdere certificaten kunnen echter dezelfde algemene naam of hetzelfde onderwerp hebben.  Een cluster met behulp van algemene namen van certificaten maakt certificaat beheer veel eenvoudiger. In dit artikel wordt beschreven hoe u een Service Fabric cluster implementeert voor het gebruik van de algemene naam van het certificaat in plaats van de vinger afdruk van het certificaat.
@@ -28,7 +17,7 @@ Er kunnen niet twee certificaten dezelfde vinger afdruk hebben, waardoor de roll
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-a-certificate"></a>Een certificaat ophalen
-Haal eerst een certificaat op bij een certificerings [instantie (CA)](https://wikipedia.org/wiki/Certificate_authority).  De algemene naam van het certificaat moet gelden voor het aangepaste domein dat u bezit en dat u hebt gekocht van een domein registratie service. Bijvoorbeeld ' azureservicefabricbestpractices.com '; gebruikers die geen micro soft-werk nemers zijn, kunnen geen certificaten voor MS-domeinen inrichten, dus u kunt de DNS-namen van uw LB of Traffic Manager niet gebruiken als algemene namen voor uw certificaat en u moet een [Azure DNS zone](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) inrichten als uw aangepaste domein wordt resolvabl e in Azure. U moet ook uw aangepaste domein met de naam ' managementEndpoint ' declareren als u wilt dat de Portal de aangepaste domein alias voor uw cluster weergeeft.
+Haal eerst een certificaat op bij een certificerings [instantie (CA)](https://wikipedia.org/wiki/Certificate_authority).  De algemene naam van het certificaat moet gelden voor het aangepaste domein dat u bezit en dat u hebt gekocht van een domein registratie service. Bijvoorbeeld ' azureservicefabricbestpractices.com '; personen die geen mede werkers van micro soft zijn, kunnen geen certificaten voor MS-domeinen inrichten, dus u kunt de DNS-namen van uw LB of Traffic Manager niet gebruiken als algemene namen voor uw certificaat, en u moet een [Azure DNS zone](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) inrichten als uw aangepaste domein kan worden omgezet in Azure. U moet ook uw aangepaste domein met de naam ' managementEndpoint ' declareren als u wilt dat de Portal de aangepaste domein alias voor uw cluster weergeeft.
 
 Voor test doeleinden kunt u een door een CA ondertekend certificaat ontvangen van een gratis of open certificerings instantie.
 
@@ -131,14 +120,14 @@ Open vervolgens het bestand *azuredeploy. json* in een tekst editor en maak drie
     "sfrpApiVersion": "2018-02-01",
     ```
 
-3. In de resource **micro soft. Compute/virtualMachineScaleSets** werkt u de extensie van de virtuele machine bij voor het gebruik van de algemene naam in certificaat instellingen in plaats van de vinger afdruk.  In->**instellingen**->->voor eigenschappenvanvirtualMachineProfileextensionProfile-extensiescertificaattoevoegen->-> 
+3. In de resource **micro soft. Compute/virtualMachineScaleSets** werkt u de extensie van de virtuele machine bij voor het gebruik van de algemene naam in certificaat instellingen in plaats van de vinger afdruk.  In **virtualMachineProfile**->**extensionProfile**->**uitbrei dingen**->**Eigenschappen**->**instellingen**->**certificaat**toevoegen 
     ```json
        "commonNames": [
         "[parameters('certificateCommonName')]"
        ],
     ```
 
-    en verwijderen `"thumbprint": "[parameters('certificateThumbprint')]",`.
+    en verwijder `"thumbprint": "[parameters('certificateThumbprint')]",`.
 
     ```json
     "virtualMachineProfile": {

@@ -2,19 +2,15 @@
 title: Doel-Updates met behulp van SCCM-verzamelingen in Azure Automation - updatebeheer
 description: Dit artikel is bedoeld om u te helpen bij het configureren van System Center Configuration Manager met deze oplossing voor het beheren van updates van met SCCM beheerde computers.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/19/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 345adeee37f5f9bc4c794eb9bb624e7797197f22
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
-ms.translationtype: MT
+ms.openlocfilehash: b52db95b6a6ce21a5e5b68342ac123526d11ca62
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850207"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417626"
 ---
 # <a name="integrate-system-center-configuration-manager-with-update-management"></a>System Center Configuration Manager integreren met updatebeheer
 

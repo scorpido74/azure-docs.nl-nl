@@ -1,25 +1,15 @@
 ---
-title: Veelgestelde vragen over Microsoft Azure Service Fabric | Microsoft Docs
-description: Veelgestelde vragen over Service Fabric en hun antwoorden
-services: service-fabric
-documentationcenter: .net
-author: chackdan
-manager: chackdan
-editor: ''
-ms.assetid: 5a179703-ff0c-4b8e-98cd-377253295d12
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Veelgestelde vragen over Microsoft Azure Service Fabric
+description: Veelgestelde vragen over Service Fabric, inclusief mogelijkheden, use cases en algemene scenario's.
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: dd514bb7c600c99518983855dae1d3b7fb8a1efb
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7638a360821e73b7485014c8e6f006e91bbea551
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481647"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614635"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Veelgestelde vragen over Service Fabric
 
@@ -94,7 +84,7 @@ Voor werk belastingen van de productie moet u overstappen op gelijktijdige stori
 
 ### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Kan ik mijn cluster 's nachts of in het weekend uitschakelen om kosten te besparen?
 
-In het algemeen, nee. Als de virtuele machine wordt verplaatst naar een andere host, worden de gegevens in de lokale, tijdelijke schijven Service Fabric opgeslagen. Bij een normale werking is dat geen probleem omdat het nieuwe knoop punt up-to-date wordt gebracht door andere knoop punten. Als u echter alle knoop punten stopt en deze later opnieuw opstart, is er een aanzienlijke kans dat de meeste knoop punten op nieuwe hosts worden gestart en dat het systeem niet kan worden hersteld.
+In het algemeen niet. Als de virtuele machine wordt verplaatst naar een andere host, worden de gegevens in de lokale, tijdelijke schijven Service Fabric opgeslagen. Bij een normale werking is dat geen probleem omdat het nieuwe knoop punt up-to-date wordt gebracht door andere knoop punten. Als u echter alle knoop punten stopt en deze later opnieuw opstart, is er een aanzienlijke kans dat de meeste knoop punten op nieuwe hosts worden gestart en dat het systeem niet kan worden hersteld.
 
 Als u clusters wilt maken voor het testen van uw toepassing voordat deze wordt geïmplementeerd, raden we u aan om die clusters dynamisch te maken als onderdeel van de [pijp lijn voor continue integratie/continue implementatie](service-fabric-tutorial-deploy-app-with-cicd-vsts.md).
 
@@ -111,13 +101,13 @@ Nee. Vm's met een lage prioriteit worden niet ondersteund.
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Wat zijn de mappen en processen die ik moet uitsluiten bij het uitvoeren van een antivirus programma in mijn cluster?
 
-| **Uitgesloten mappen van anti virus** |
+| **Antivirus uitgesloten mappen** |
 | --- |
 | Program Files\Microsoft Service Fabric |
 | FabricDataRoot (van de configuratie van het cluster) |
 | FabricLogRoot (van de configuratie van het cluster) |
 
-| **Uitgesloten processen van anti virus** |
+| **Antivirus uitgesloten processen** |
 | --- |
 | Fabric.exe |
 | FabricHost.exe |

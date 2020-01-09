@@ -1,17 +1,17 @@
 ---
-title: FXT Edge-netwerk verbindingen en-voeding Microsoft Azure
+title: 'Zelf studie: kabels aansluiten op een Azure FXT Edge-Bestandsr'
 description: De netwerk poorten bekabelen en kracht koppelen voor Azure FXT edge-hardware
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 474172284383bc9ba0e5b5c11c66e1b990010184
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 1e3c60fd955bd899955c46b7670acd3f088d0f86
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254854"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550941"
 ---
 # <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Zelf studie: netwerk verbindingen maken en energie leveren aan het Azure FXT Edge-knoop punt
 

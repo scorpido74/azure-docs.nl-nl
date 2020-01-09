@@ -3,17 +3,17 @@ title: 'Fouten opsporen en herhalen op Kubernetes: Visual Studio & .NET core'
 services: azure-dev-spaces
 ms.date: 11/13/2019
 ms.topic: quickstart
-description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
+description: In deze Quick Start leert u hoe u Azure dev Spaces en Visual Studio kunt gebruiken om fouten op te sporen en snel een .NET-kern toepassing te herhalen in azure Kubernetes service
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: a151314bef14e302879f4db0f7c0094779bdcfec
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
-ms.translationtype: MT
+ms.openlocfilehash: bfa798027a3905eff29bf1ce11251ce900bd7267
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325611"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438249"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Quick Start: fouten opsporen en herhalen op Kubernetes: Visual Studio & .NET core-Azure dev Spaces
 
@@ -44,7 +44,7 @@ U moet een AKS-cluster in een [ondersteunde regio][supported-regions]maken. Een 
     ![AKS maken in de Azure Portal](media/get-started-netcore-visualstudio/create-aks-portal.png)
 
 1. Klik op *Controleren + maken*.
-1. Klik op *Create*.
+1. Klik op *Maken*.
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Azure dev Spaces inschakelen op uw AKS-cluster
 
@@ -60,7 +60,7 @@ Navigeer naar uw AKS-cluster in de Azure Portal en klik op *dev Spaces*. Wijzig 
 1. Geef uw project *webfrontend* een naam en klik op *maken*.
 1. Als u hierom wordt gevraagd, kiest u *Web Application (model-view-controller)* voor de sjabloon.
 1. Selecteer in de bovenste versie van *.net core* en *ASP.net Core 2,1* .
-1. Klik op *Create*.
+1. Klik op *Maken*.
 
 ## <a name="connect-your-project-to-your-dev-space"></a>Verbind uw project met uw ontwikkel ruimte
 

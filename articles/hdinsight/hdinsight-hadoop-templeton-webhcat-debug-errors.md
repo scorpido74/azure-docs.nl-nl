@@ -2,18 +2,18 @@
 title: WebHCat-fouten in HDInsight-Azure begrijpen en oplossen
 description: Meer informatie over veelvoorkomende fouten die worden geretourneerd door WebHCat in HDInsight en hoe u deze kunt oplossen.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
-ms.author: hrasheed
-ms.openlocfilehash: 5c103482771b829730d009d65283a54ec1d8eb8a
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 011ef4f192bbae12be7d2464d5b0526f584821a6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555017"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638847"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Fouten die zijn ontvangen van WebHCat in HDInsight begrijpen en oplossen
 
@@ -21,17 +21,11 @@ Meer informatie over fouten die zijn ontvangen bij het gebruik van WebHCat met H
 
 ## <a name="what-is-webhcat"></a>Wat is WebHCat
 
-[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) is een rest API voor [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), een tabel en een opslag beheer-laag voor Apache Hadoop. WebHCat is standaard ingeschakeld op HDInsight-clusters en wordt door diverse hulpprogram ma's gebruikt om taken te verzenden, de taak status op te halen, enzovoort zonder dat u zich hoeft aan te melden bij het cluster.
+[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) is een rest API voor [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), een tabel en een opslag beheer-laag voor Apache Hadoop. WebHCat is standaard ingeschakeld op HDInsight-clusters en wordt door diverse hulpprogram ma's gebruikt om taken te verzenden, de taak status op te halen, enzovoort, zonder dat u zich hoeft aan te melden bij het cluster.
 
 ## <a name="modifying-configuration"></a>Configuratie wijzigen
 
-> [!IMPORTANT]  
-> Verschillende van de fouten die in dit document worden vermeld, treden op omdat een geconfigureerd maximum is overschreden. Wanneer de oplossings stap vermeldt dat u een waarde kunt wijzigen, moet u een van de volgende opties gebruiken om de wijziging uit te voeren:
-
-* Voor **Windows** -clusters: gebruik een script actie om de waarde te configureren tijdens het maken van het cluster. Zie [script acties ontwikkelen](hdinsight-hadoop-script-actions-linux.md)voor meer informatie.
-
-* Voor **Linux** -clusters: gebruik Apache Ambari (web of rest API) om de waarde te wijzigen. Zie [HDInsight beheren met Apache Ambari](hdinsight-hadoop-manage-ambari.md) voor meer informatie.
-
+Verschillende van de fouten die in dit document worden vermeld, treden op omdat een geconfigureerd maximum is overschreden. Wanneer de oplossings stap vermeldt dat u een waarde kunt wijzigen, gebruikt u Apache Ambari (Web of REST API) om de waarde te wijzigen. Zie [HDInsight beheren met Apache Ambari](hdinsight-hadoop-manage-ambari.md) voor meer informatie.
 
 ### <a name="default-configuration"></a>Standaard configuratie
 

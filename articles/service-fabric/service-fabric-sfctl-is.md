@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI-sfctl is | Microsoft Docs
-description: Beschrijft de Service Fabric CLI sfctl is-opdrachten.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI-sfctl is
+description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het beheren van de infra structuur.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 9a09d8c36fd282450767880a9ad144e1192dcd2e
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c3c98e8da0c2a5449296a0fd108977ec0633f83d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901568"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639119"
 ---
 # <a name="sfctl-is"></a>sfctl is
 Query's uitvoeren en opdrachten verzenden naar de infrastructuur service.
@@ -48,7 +39,7 @@ Voor clusters waarvoor een of meer exemplaren van de infrastructuur service zijn
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -71,7 +62,7 @@ Voor clusters waarvoor een of meer exemplaren van de infrastructuur service zijn
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |

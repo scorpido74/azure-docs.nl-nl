@@ -7,15 +7,15 @@ services: iot-pnp
 ms.topic: tutorial
 ms.author: koichih
 author: konichi3
-ms.date: 06/21/2019
-ms.openlocfilehash: 1516a132372a81d06d82de2409c48220f27b8d87
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.date: 12/27/2019
+ms.openlocfilehash: dc2c33659f3f3a3df0f11fcc6ab36a9fc993da43
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878080"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550159"
 ---
-# <a name="tutorial-certify-your-iot-plug-and-play-preview-device"></a>Zelfstudie: Uw IoT Plug en Play-preview-apparaat certificeren
+# <a name="tutorial-certify-your-iot-plug-and-play-preview-device"></a>Zelf studie: uw IoT Plug en Play-preview-apparaat certificeren
 
 Voor het publiceren van een IoT Plug en Play preview-apparaat in de [catalogus met Azure Certified for IOT-apparaten](https://aka.ms/iotdevcat)moet er een set certificerings tests worden door gegeven. Gebruik de [Azure Certified voor IOT](https://aka.ms/ACFI) -Portal om uw apparaat in te dienen voor certificering. De [Azure IOT-certificerings service](https://aka.ms/azure-iot-aics) voert de certificerings tests uit.
 
@@ -37,14 +37,14 @@ Voor deze zelfstudie hebt u het volgende nodig:
 
 Zie [How to unboard to the Azure Certified for IOT](howto-onboard-portal.md) Portal (Engelstalig) voor meer informatie.
 
-## <a name="certification-requirements"></a>Certificerings vereisten
+## <a name="certification-requirements"></a>Vereisten voor certificering
 
 Als u uw IoT Plug en Play-apparaat wilt certificeren, moet uw apparaat voldoen aan de volgende vereisten:
 
 * Uw IoT Plug en Play-apparaatcode moet op uw apparaat zijn geïnstalleerd.
 * Uw IoT Plug en Play-apparaatcode zijn gebouwd met de Azure IoT SDK.
 * Uw apparaatcode moet de [Azure-IOT hub Device Provisioning Service](../iot-dps/about-iot-dps.md)ondersteunen.
-* Op de apparaatcode moet de [Interface](concepts-common-interfaces.md)voor de apparaatgegevens worden geïmplementeerd.
+* Op de apparaatcode moet de [interface voor de apparaatgegevens](concepts-common-interfaces.md)worden geïmplementeerd.
 * Het bekwaamheids model en de apparaatcode werken met IoT Central.
 
 Alle apparaten die zich momenteel in de catalogus bevinden, worden beschouwd als vooraf gecertificeerde IoT Plug en Play-apparaten. Het biedt geen garantie voor de kwaliteit en naleving van het uiteindelijke product van IoT-Plug en Play software onderdelen zoals SDK en de taal van de digitale dubbele definitie.
@@ -78,7 +78,7 @@ Deze stappen zijn één tijd stap voor het uitvoeren van certificerings tests en
 1. Klik op **verbinding + testen** om de certificerings stroom te starten.
 1. Kies de [verificatie methode](../iot-dps/concepts-security.md#attestation-mechanism) om uw apparaat in te RICHTEN op AICS met behulp van de [Azure-IOT hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
    * Als u een [x. 509-certificaat](../iot-hub/iot-hub-security-x509-get-started.md#prerequisites)gebruikt, uploadt u het gegenereerde x. 509-certificaat. U kunt de voorbeeld code bekijken waarin wordt getoond hoe u X. 509-certificaten gebruikt: [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/iothub_ll_client_x509_sample/iothub_ll_client_x509_sample.c), [C#](../iot-hub/iot-hub-security-x509-get-started.md).
-   * Als u een symmetrische [sleutel](../iot-dps/concepts-symmetric-key-attestation.md)gebruikt, kopieert en plakt u de symmetrische sleutel in de code van uw apparaat.
+   * Als u een [symmetrische sleutel](../iot-dps/concepts-symmetric-key-attestation.md)gebruikt, kopieert en plakt u de symmetrische sleutel in de code van uw apparaat.
    * De TPM-verificatie methode wordt op dit moment niet ondersteund.
 1. Kopieer de volgende gegenereerde Id's en plak ze in de code van uw apparaat.
    * [Registratie-ID](../iot-dps/use-hsm-with-sdk.md)

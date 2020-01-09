@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 005e93837d1d420526f6fb33e79d25a94da6fab7
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fa60cbeb3dc2dea928168529a7e7a58cf01657c4
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838538"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75615005"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Problemen met Azure Files oplossen in Linux
 
@@ -31,11 +31,11 @@ Veelvoorkomende oorzaken van dit probleem zijn:
 |   | SMB 2.1 <br>(Koppelt op Vm's binnen dezelfde Azure-regio) | SMB 3.0 <br>(Koppelt van on-premises en kruis regio's) |
 | --- | :---: | :---: |
 | Ubuntu Server | 14.04 + | 16.04 + |
-| RHEL | 7 + | 7.5 + |
-| CentOS | 7 + |  7.5 + |
+| RHEL | 7+ | 7.5 + |
+| CentOS | 7+ |  7.5 + |
 | Debian | 8 + |   |
 | openSUSE | 13.2 + | 42.3 + |
-| SUSE Linux Enterprise Server | 12 | 12 SP3 + |
+| SUSE Linux Enterprise Server | 12 | 12 SP3+ |
 
 - CIFS-hulpprogram ma's (CIFS-hulppr.) zijn niet geïnstalleerd op de client.
 - De minimale versie van SMB/CIFS, 2,1, is niet geïnstalleerd op de client.
@@ -142,7 +142,7 @@ U hebt geen toegang
 
 ### <a name="solution-for-cause-1"></a>Oplossing voor oorzaak 1
 
-Blader naar het opslag account waar de Azure-bestands share zich bevindt, klik op **toegangs beheer (IAM)** en controleer of uw gebruikers account toegang heeft tot het opslag account. Zie [uw opslag account beveiligen met op rollen gebaseerd Access Control (RBAC)](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac)voor meer informatie.
+Blader naar het opslag account waar de Azure-bestands share zich bevindt, klik op **toegangs beheer (IAM)** en controleer of uw gebruikers account toegang heeft tot het opslag account. Zie [uw opslag account beveiligen met op rollen gebaseerd Access Control (RBAC)](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)voor meer informatie.
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Oorzaak 2: het virtuele netwerk of de firewall regels zijn ingeschakeld voor het opslag account
 
@@ -228,9 +228,9 @@ Wanneer u bestanden in een Azure-bestands share probeert weer te geven met behul
 ### <a name="solution"></a>Oplossing
 Voer een upgrade uit voor de Linux-kernel naar de volgende versies met een oplossing voor dit probleem:
 
-- 4.4.87 +
-- 4.9.48 +
-- 4.12.11 +
+- 4.4.87+
+- 4.9.48+
+- 4.12.11+
 - Alle versies die groter zijn dan of gelijk zijn aan 4,13
 
 ## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Kan geen symbolische koppelingen maken-ln: kan geen symbolische koppeling maken ': de bewerking wordt niet ondersteund
@@ -289,6 +289,6 @@ U kunt dit probleem omzeilen door een harde koppeling op te geven. Met een harde
 
 Als u geen upgrade kunt uitvoeren naar de nieuwste kernelversies, kunt u dit probleem omzeilen door een bestand in de Azure-bestandsshare te bewaren waarnaar u elke 30 seconden, of minder, schrijft. Dit moet een schrijfbewerking zijn, zoals het herschrijven van de aanmaakdatum of wijzigingsdatum van het bestand. Anders ontvangt u wellicht de resultaten die in de cache zijn opgeslagen, en wordt het opnieuw verbinden mogelijk niet geactiveerd.
 
-## <a name="need-help-contact-support"></a>Hulp nodig? Neem contact op met ondersteuning.
+## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Neem contact op met ondersteuning.
 
 Als u nog steeds hulp nodig hebt, [neemt u contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.

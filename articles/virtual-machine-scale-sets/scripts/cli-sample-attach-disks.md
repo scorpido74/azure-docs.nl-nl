@@ -1,6 +1,6 @@
 ---
-title: Voorbeelden van Azure CLI - Gegevensschijven toevoegen en gebruiken | Microsoft Docs
-description: Azure CLI-voorbeelden
+title: Azure CLI-voor beelden-gegevens schijven koppelen en gebruiken
+description: Met dit script maakt u een virtuele-machine schaalset van Azure en voegt u gegevens schijven samen met Azure CLI.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6966aead6ced88e0ff9b201dd12bec0a16799907
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 04d0c557dcca3ca0acd736d3013cf9119490af52
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60615469"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351059"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-the-azure-cli"></a>Gegevensschijven toevoegen en gebruiken met een virtuele-machineschaalset met Azure CLI
 Met dit script maakt u een virtuele-machineschaalset, koppelt u gegevensschijven en bereidt u deze voor.
@@ -41,7 +41,7 @@ az group delete --name myResourceGroup
 ```
 
 ## <a name="script-explanation"></a>Uitleg van het script
-In dit script worden de volgende opdrachten gebruikt voor het maken van een resourcegroep, een virtuele-machineschaalset en alle gerelateerde resources. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt voor het maken van een resourcegroep, een virtuele-machineschaalset en alle gerelateerde resources. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

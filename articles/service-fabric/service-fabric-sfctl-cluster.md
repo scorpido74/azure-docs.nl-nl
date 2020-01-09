@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI-sfctl-cluster | Microsoft Docs
-description: Hierin worden de Service Fabric CLI sfctl-cluster opdrachten beschreven.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI-sfctl-cluster
+description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het beheren van clusters.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: a42062f6f6b671d853f47e3f170b366799829a62
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 807457f3edaef8e0edcdbf53b482e2e4ffee174c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901495"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639153"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 Service Fabric clusters selecteren, beheren en uitvoeren.
@@ -31,17 +22,17 @@ Service Fabric clusters selecteren, beheren en uitvoeren.
 | code-versies | Hiermee haalt u een lijst met infrastructuur code versies op die zijn ingericht in een Service Fabric cluster. |
 | configuratie-versies | Hiermee haalt u een lijst op met de Fabric-configuratie versies die zijn ingericht in een Service Fabric cluster. |
 | gezondheidszorg | Hiermee wordt de status van een Service Fabric cluster opgehaald. |
-| Merkt | Down load het Service Fabric cluster manifest. |
+| manifest | Down load het Service Fabric cluster manifest. |
 | bewerking-annuleren | Hiermee wordt een door de gebruiker veroorzaakte fout bewerking geannuleerd. |
 | bewerking-lijst | Hiermee wordt een lijst met door de gebruiker veroorzaakte fout bewerkingen opgehaald, gefilterd op de opgegeven invoer. |
-| aanbieden | De code-of configuratie pakketten van een Service Fabric cluster inrichten. |
+| provision | De code-of configuratie pakketten van een Service Fabric cluster inrichten. |
 | herstellen-systeem | Hiermee geeft u aan het Service Fabric cluster op dat moet worden geprobeerd om de systeem services te herstellen die momenteel zijn vastgelopen in quorum verlies. |
-| rapport-status | Hiermee verzendt u een status rapport op het Service Fabric cluster. |
-| Uitgeschakeld | Hiermee maakt u verbinding met een Service Fabric cluster eindpunt. |
+| report-health | Hiermee verzendt u een status rapport op het Service Fabric cluster. |
+| selecteert u | Hiermee maakt u verbinding met een Service Fabric cluster eindpunt. |
 | weer geven-verbinding | Weer geven met welke Service Fabric cluster dit sfctl-exemplaar is verbonden. |
-| inrichting verwijderen | De inrichting van de code-of configuratie pakketten van een Service Fabric cluster ongedaan maken. |
-| Upgrades | Het bijwerken van de code of configuratie versie van een Service Fabric cluster starten. |
-| upgrade uitvoeren-hervatten | Zorg ervoor dat de upgrade van het cluster wordt verplaatst naar het volgende upgrade domein. |
+| unprovision | De inrichting van de code-of configuratie pakketten van een Service Fabric cluster ongedaan maken. |
+| upgrade | Het bijwerken van de code of configuratie versie van een Service Fabric cluster starten. |
+| upgrade-resume | Zorg ervoor dat de upgrade van het cluster wordt verplaatst naar het volgende upgrade domein. |
 | upgrade-terugdraai actie | De upgrade van een Service Fabric cluster terugdraaien. |
 | upgrade-status | Hiermee wordt de voortgang van de huidige cluster upgrade opgehaald. |
 | upgrade uitvoeren-update | Update de upgrade parameters van een Service Fabric cluster upgrade. |
@@ -62,7 +53,7 @@ Hiermee wordt een lijst met gegevens opgehaald over infrastructuur code-versies 
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -84,7 +75,7 @@ Hiermee wordt een lijst met gegevens opgehaald over infrastructuur configuratie 
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -110,7 +101,7 @@ Gebruik EventsHealthStateFilter om de verzameling van status gebeurtenissen die 
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -131,7 +122,7 @@ Down load het Service Fabric cluster manifest. Het cluster manifest bevat eigens
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -154,7 +145,7 @@ De volgende Api's starten fout bewerkingen die kunnen worden geannuleerd met beh
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -177,7 +168,7 @@ Hiermee wordt de lijst met door de gebruiker veroorzaakte fout bewerkingen opgeh
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -200,7 +191,7 @@ Valideer en richt de code-of configuratie pakketten van een Service Fabric clust
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -221,7 +212,7 @@ Hiermee geeft u aan het Service Fabric cluster op dat moet worden geprobeerd om 
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -241,16 +232,16 @@ Hiermee verzendt u een status rapport op een Service Fabric cluster. Het rapport
 | --bron-id [vereist] | De bron naam die het client/watchdog/systeem onderdeel identificeert dat de status informatie heeft gegenereerd. |
 | --Beschrijving | De beschrijving van de status informatie. <br><br> Hiermee wordt de vrije tekst aangegeven die wordt gebruikt om informatie over het rapport toe te voegen dat wordt gelezen. De maximale teken reeks lengte van de beschrijving is 4096 tekens. Als de gegeven teken reeks langer is, wordt deze automatisch afgekapt. Wanneer de laatste tekens van de beschrijving worden afgekapt, bevatten ze een markering [afgekapt] en de totale teken reeks grootte is 4096 tekens. De aanwezigheid van de markering geeft aan dat gebruikers de afkap ping hebben plaatsgevonden. Houd er rekening mee dat de beschrijving kleiner is dan 4096 tekens uit de oorspronkelijke teken reeks. |
 | --Immediate | Een vlag die aangeeft of het rapport direct moet worden verzonden. <br><br> Een status rapport wordt verzonden naar een Service Fabric gateway-toepassing, die wordt doorgestuurd naar de Health Store. Als direct is ingesteld op True, wordt het rapport direct van de HTTP-gateway naar de Health Store verzonden, ongeacht de instellingen van de Fabric-client die door de HTTP-gateway toepassing worden gebruikt. Dit is handig voor kritieke rapporten die zo snel mogelijk moeten worden verzonden. Afhankelijk van de timing en andere voor waarden, kan het verzenden van het rapport nog steeds mislukken, bijvoorbeeld als de HTTP-gateway is gesloten of als het bericht de gateway niet bereikt. Als direct is ingesteld op False, wordt het rapport verzonden op basis van de status client instellingen van de HTTP-gateway. Daarom wordt deze batch gebaseerd op de HealthReportSendInterval-configuratie. Dit is de aanbevolen instelling omdat de Health-client de status rapport berichten kan optimaliseren naar Health Store en dat de status rapporten worden verwerkt. Standaard worden rapporten niet onmiddellijk verzonden. |
-| --verwijderen-verlopen | Waarde die aangeeft of het rapport wordt verwijderd uit Health Store wanneer het is verlopen. <br><br> Als deze eigenschap is ingesteld op True, wordt het rapport verwijderd uit de Health Store nadat het is verlopen. Als deze eigenschap is ingesteld op False, wordt het rapport als een fout beschouwd wanneer het is verlopen. De waarde van deze eigenschap is standaard onwaar. Wanneer clients periodiek een rapport rapporteren, moeten ze RemoveWhenExpired False instellen (standaard). Op deze manier heeft de rapporter problemen (bijvoorbeeld deadlock) en kan het rapport niet worden gerapporteerd. de entiteit wordt geëvalueerd als er een fout optreedt wanneer het status rapport verloopt. Hiermee wordt de entiteit gemarkeerd als de fout status. |
+| --remove-when-expired | Waarde die aangeeft of het rapport wordt verwijderd uit Health Store wanneer het is verlopen. <br><br> Als deze eigenschap is ingesteld op True, wordt het rapport verwijderd uit de Health Store nadat het is verlopen. Als deze eigenschap is ingesteld op False, wordt het rapport als een fout beschouwd wanneer het is verlopen. De waarde van deze eigenschap is standaard onwaar. Wanneer clients periodiek een rapport rapporteren, moeten ze RemoveWhenExpired False instellen (standaard). Op deze manier heeft de rapporter problemen (bijvoorbeeld deadlock) en kan het rapport niet worden gerapporteerd. de entiteit wordt geëvalueerd als er een fout optreedt wanneer het status rapport verloopt. Hiermee wordt de entiteit gemarkeerd als de fout status. |
 | --Volg nummer | Het Volg nummer voor dit status rapport als een numerieke teken reeks. <br><br> Het Volg nummer van het rapport wordt door de Health Store gebruikt voor het detecteren van verouderde rapporten. Als u niets opgeeft, wordt er automatisch een Volg nummer gegenereerd door de Health-client wanneer een rapport wordt toegevoegd. |
 | --time-out-t | Standaard\: 60. |
-| --TTL | De duur waarvoor dit status rapport geldig is. Dit veld maakt gebruik van de ISO8601-indeling voor het opgeven van de duur. <br><br> Wanneer clients periodiek rapporteren, moeten ze rapporten met een hogere frequentie verzenden dan live. Als clients rapporteren over overgang, kunnen ze de tijd te Live instellen op oneindig. Wanneer time to Live verloopt, wordt de status gebeurtenis die de status informatie bevat verwijderd uit Health Store, als RemoveWhenExpired is ingesteld op True, of bij fout geëvalueerd als RemoveWhenExpired False is. Als u niets opgeeft, wordt de time-to-Live-waarde standaard ingesteld op oneindig. |
+| --ttl | De duur waarvoor dit status rapport geldig is. Dit veld maakt gebruik van de ISO8601-indeling voor het opgeven van de duur. <br><br> Wanneer clients periodiek rapporteren, moeten ze rapporten met een hogere frequentie verzenden dan live. Als clients rapporteren over overgang, kunnen ze de tijd te Live instellen op oneindig. Wanneer time to Live verloopt, wordt de status gebeurtenis die de status informatie bevat verwijderd uit Health Store, als RemoveWhenExpired is ingesteld op True, of bij fout geëvalueerd als RemoveWhenExpired False is. Als u niets opgeeft, wordt de time-to-Live-waarde standaard ingesteld op oneindig. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -265,19 +256,19 @@ Als u verbinding maakt met een beveiligd cluster, geeft u een absoluut pad op na
 
 |Argument|Beschrijving|
 | --- | --- |
-| --Aad | Gebruik Azure Active Directory voor authenticatie. |
+| --aad | Gebruik Azure Active Directory voor authenticatie. |
 | --ca | Absolute pad naar CA-certificaat Directory om te behandelen als geldig of CA-bundel bestand. Als u een directory met CA-certificaten gebruikt, moet `c_rehash <directory>` die door OpenSSL wordt gegeven eerst worden uitgevoerd om de certificaat-hashes te berekenen en de juiste symbolische koppelingen te maken. Dit wordt gebruikt om te controleren of het certificaat dat door het cluster wordt geretourneerd, geldig is. |
 | --CERT | Absoluut pad naar een client certificaat bestand. |
 | --eind punt | URL van cluster eindpunt, inclusief poort en HTTP-of HTTPS-voor voegsel. Normaal gesp roken ziet het eind punt er ongeveer als HTTPS\://< uw-URL >\:19080. Als er geen eind punt wordt opgegeven, wordt de standaard waarde voor http\://localhost\:19080.  Standaard\: http-\://localhost\:19080. |
 | --sleutel | Het absolute pad naar het sleutel bestand van het client certificaat. |
 | --geen verificatie | Verificatie uitschakelen voor certificaten bij gebruik van HTTPS, Let op\: dit een onveilige optie is en niet moet worden gebruikt voor productie omgevingen. |
-| --PEM | Het absolute pad naar het client certificaat als een. pem-bestand. |
+| --pem | Het absolute pad naar het client certificaat als een. pem-bestand. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -290,7 +281,7 @@ Weer geven met welke Service Fabric cluster dit sfctl-exemplaar is verbonden.
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -313,7 +304,7 @@ Het wordt ondersteund om de inrichting van code en configuratie afzonderlijk ong
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -340,7 +331,7 @@ Valideer de opgegeven upgrade parameters en begin met het upgraden van de code o
 | --status-controle stabiel | De hoeveelheid tijd die de toepassing of het cluster in orde moet blijven voordat de upgrade wordt voortgezet naar het volgende upgrade domein. <br><br> Het wordt eerst geïnterpreteerd als een teken reeks die een ISO 8601-duur vertegenwoordigt. Als dat mislukt, wordt dit geïnterpreteerd als een getal dat het totale aantal milliseconden aangeeft. |
 | --status-check-wait | De tijds duur die moet worden gewacht na het volt ooien van een upgrade domein voordat het proces status controles wordt gestart. |
 | --replica-set-check-timeout | De maximale tijds duur voor het blok keren van de verwerking van een upgrade domein en het voor komen van Beschik baarheid wanneer er onverwachte problemen zijn. <br><br> Wanneer deze time-out is verlopen, wordt de verwerking van het upgrade domein voortgezet, ongeacht de problemen met het Beschikbaarheids verlies. De time-out wordt opnieuw ingesteld aan het begin van elk upgrade domein. Geldige waarden zijn 0 tot en met 42949672925. |
-| --rolling upgrade-modus | Mogelijke waarden zijn\: ' ongeldig ', ' UnmonitoredAuto ', ' UnmonitoredManual ', ' bewaakt '.  Standaard\: UnmonitoredAuto. |
+| --rolling-upgrade-mode | Mogelijke waarden zijn\: ' ongeldig ', ' UnmonitoredAuto ', ' UnmonitoredManual ', ' bewaakt '.  Standaard\: UnmonitoredAuto. |
 | --time-out-t | Standaard\: 60. |
 | --toepassingen met een slechte status | Het Maxi maal toegestane percentage van toepassingen met een slechte status voordat een fout wordt gemeld. <br><br> Als u bijvoorbeeld wilt toestaan dat 10% van de toepassingen een slechte status heeft, is deze waarde 10. Het percentage vertegenwoordigt het Maxi maal toegestane percentage van toepassingen die een slechte status kunnen hebben voordat het cluster als fout wordt beschouwd. Als het percentage wordt geëerbiedigd, maar er ten minste één slechte toepassing is, wordt de status als een waarschuwing geëvalueerd. Dit wordt berekend door het aantal toepassingen met een slechte status te delen ten opzichte van het totale aantal toepassings exemplaren in het cluster, met uitzonde ring van toepassings typen die zijn opgenomen in de ApplicationTypeHealthPolicyMap. De berekening wordt afgerond om één fout te verdragen bij een klein aantal toepassingen. |
 | --onjuiste knoop punten | Het Maxi maal toegestane percentage van beschadigde knoop punten voordat een fout wordt gemeld. <br><br> Als u bijvoorbeeld wilt toestaan dat 10% van de knoop punten een slechte status heeft, is deze waarde 10. Het percentage vertegenwoordigt het Maxi maal toegestane percentage van knoop punten waarvan de status niet in orde kan zijn voordat het cluster als fout wordt beschouwd. Als het percentage wordt geëerbiedigd maar er ten minste één slecht knoop punt is, wordt de status als waarschuwing geëvalueerd. Het percentage wordt berekend door het aantal knoop punten met een slechte status te delen ten opzichte van het totale aantal knoop punten in het cluster. De berekening wordt afgerond om één fout te verdragen op een klein aantal knoop punten. In grote clusters zijn bepaalde knoop punten altijd actief of uitgaand voor reparaties, dus dit percentage moet zo worden geconfigureerd dat het wordt toegestaan. |
@@ -353,7 +344,7 @@ Valideer de opgegeven upgrade parameters en begin met het upgraden van de code o
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -375,7 +366,7 @@ Zorg ervoor dat de cluster code of configuratie-upgrade wordt verplaatst naar he
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -396,7 +387,7 @@ Terugdraaien van de code of configuratie-upgrade van een Service Fabric cluster.
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -417,7 +408,7 @@ Hiermee wordt de huidige voortgang van de upgrade van het cluster opgehaald. Als
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -440,7 +431,7 @@ Update de upgrade parameters van een Service Fabric cluster upgrade.
 | --status-controle stabiel | De hoeveelheid tijd die de toepassing of het cluster in orde moet blijven voordat de upgrade wordt voortgezet naar het volgende upgrade domein. <br><br> Het wordt eerst geïnterpreteerd als een teken reeks die een ISO 8601-duur vertegenwoordigt. Als dat mislukt, wordt dit geïnterpreteerd als een getal dat het totale aantal milliseconden aangeeft. |
 | --status-check-wait | De tijds duur die moet worden gewacht na het volt ooien van een upgrade domein voordat het proces status controles wordt gestart. |
 | --replica-set-check-timeout | De maximale tijds duur voor het blok keren van de verwerking van een upgrade domein en het voor komen van Beschik baarheid wanneer er onverwachte problemen zijn. <br><br> Wanneer deze time-out is verlopen, wordt de verwerking van het upgrade domein voortgezet, ongeacht de problemen met het Beschikbaarheids verlies. De time-out wordt opnieuw ingesteld aan het begin van elk upgrade domein. Geldige waarden zijn 0 tot en met 42949672925. |
-| --rolling upgrade-modus | Mogelijke waarden zijn\: ' ongeldig ', ' UnmonitoredAuto ', ' UnmonitoredManual ', ' bewaakt '.  Standaard\: UnmonitoredAuto. |
+| --rolling-upgrade-mode | Mogelijke waarden zijn\: ' ongeldig ', ' UnmonitoredAuto ', ' UnmonitoredManual ', ' bewaakt '.  Standaard\: UnmonitoredAuto. |
 | --time-out-t | Standaard\: 60. |
 | --toepassingen met een slechte status | Het Maxi maal toegestane percentage van toepassingen met een slechte status voordat een fout wordt gemeld. <br><br> Als u bijvoorbeeld wilt toestaan dat 10% van de toepassingen een slechte status heeft, is deze waarde 10. Het percentage vertegenwoordigt het Maxi maal toegestane percentage van toepassingen die een slechte status kunnen hebben voordat het cluster als fout wordt beschouwd. Als het percentage wordt geëerbiedigd, maar er ten minste één slechte toepassing is, wordt de status als een waarschuwing geëvalueerd. Dit wordt berekend door het aantal toepassingen met een slechte status te delen ten opzichte van het totale aantal toepassings exemplaren in het cluster, met uitzonde ring van toepassings typen die zijn opgenomen in de ApplicationTypeHealthPolicyMap. De berekening wordt afgerond om één fout te verdragen bij een klein aantal toepassingen. |
 | --onjuiste knoop punten | Het Maxi maal toegestane percentage van beschadigde knoop punten voordat een fout wordt gemeld. <br><br> Als u bijvoorbeeld wilt toestaan dat 10% van de knoop punten een slechte status heeft, is deze waarde 10. Het percentage vertegenwoordigt het Maxi maal toegestane percentage van knoop punten waarvan de status niet in orde kan zijn voordat het cluster als fout wordt beschouwd. Als het percentage wordt geëerbiedigd maar er ten minste één slecht knoop punt is, wordt de status als waarschuwing geëvalueerd. Het percentage wordt berekend door het aantal knoop punten met een slechte status te delen ten opzichte van het totale aantal knoop punten in het cluster. De berekening wordt afgerond om één fout te verdragen op een klein aantal knoop punten. In grote clusters zijn bepaalde knoop punten altijd actief of uitgaand voor reparaties, dus dit percentage moet zo worden geconfigureerd dat het wordt toegestaan. |
@@ -454,7 +445,7 @@ Update de upgrade parameters van een Service Fabric cluster upgrade.
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |

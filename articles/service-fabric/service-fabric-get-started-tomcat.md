@@ -1,24 +1,15 @@
 ---
-title: Een Azure Service Fabric-container maken voor Apache Tomcat server op Linux | Microsoft Docs
+title: Een container maken voor Apache Tomcat op Linux
 description: Maak een Linux-container om een toepassing beschikbaar te maken die wordt uitgevoerd op Apache Tomcat server op Azure Service Fabric. Bouw een docker-installatie kopie met uw toepassing en Apache Tomcat-server, push de installatie kopie naar een container register, bouw en implementeer een Service Fabric-container toepassing.
-services: service-fabric
-documentationcenter: .net
-author: JimacoMS2
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/08/2018
 ms.author: pepogors
-ms.openlocfilehash: 7e14a027f17c15c83a4ce25a211ef6106f2d2eaa
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170602"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614414"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Service Fabric-container maken met Apache Tomcat server op Linux
 Apache Tomcat is een populaire, open-source implementatie van de Java-servlet en Java-Server technologieën. In dit artikel wordt beschreven hoe u een container bouwt met Apache Tomcat en een eenvoudige webtoepassing, de container implementeert in een Service Fabric cluster met Linux en verbinding maakt met de webtoepassing.  
@@ -84,11 +75,11 @@ Volg de stappen in deze sectie om een docker-installatie kopie te maken op basis
    docker run -itd --name tomcat-site -p 8080:8080 tomcattest.
    ```
    
-   * `--name` namen de container, zodat u deze kunt gebruiken met een beschrijvende naam in plaats van de ID.
-   * `-p` geeft de poort toewijzing aan tussen de container en het besturings systeem van de host. 
+   * `--name` de naam van de container, zodat u er met een beschrijvende naam in plaats van de ID naar kunt verwijzen.
+   * `-p` geeft de poort toewijzing aan tussen de container en het hostbesturingssysteem. 
 
    > [!Note]
-   > De poort die u met de para meter `-p` opent, moet de poort zijn waarop uw Tomcat-toepassing luistert naar aanvragen. In het huidige voor beeld is er een connector geconfigureerd in het *ApacheTomcat/conf/server. XML-* bestand om te Luis teren op poort 8080 voor HTTP-aanvragen. Deze poort is toegewezen aan poort 8080 op de host. 
+   > De poort die u opent met de para meter `-p` moet de poort zijn waarop uw Tomcat-toepassing luistert naar aanvragen. In het huidige voor beeld is er een connector geconfigureerd in het *ApacheTomcat/conf/server. XML-* bestand om te Luis teren op poort 8080 voor HTTP-aanvragen. Deze poort is toegewezen aan poort 8080 op de host. 
 
    Zie de [documentatie van docker run](https://docs.docker.com/engine/reference/commandline/run/)voor meer informatie over andere para meters.
 
@@ -110,7 +101,7 @@ Volg de stappen in deze sectie om een docker-installatie kopie te maken op basis
 ## <a name="push-the-tomcat-image-to-your-container-registry"></a>De tomcat-installatie kopie naar het container register pushen
 Nu u hebt gecontroleerd of de tomcat-installatie kopie wordt uitgevoerd in een container op uw ontwikkel computer, pusht u deze naar een opslag plaats in een container register. In dit artikel wordt gebruikgemaakt van Azure Container Registry voor het opslaan van de installatie kopie, maar u kunt elk gewenst container register gebruiken als u een aantal stappen hebt gewijzigd. In dit artikel wordt ervan uitgegaan dat de register naam *myregistry* is en dat de volledige register naam myregistry.azurecr.io is. Wijzig deze op de juiste manier voor uw scenario. 
 
-1. Voer `docker login` uit om u aan te melden bij uw container register met de referenties van uw [REGI ster](../container-registry/container-registry-authentication.md).
+1. Voer `docker login` uit om u aan te melden bij het container register met uw [register referenties](../container-registry/container-registry-authentication.md).
 
    In het volgende voorbeeld worden de id en het wachtwoord van een [service-principal](../active-directory/develop/app-objects-and-service-principals.md) van Azure Active Directory doorgegeven. U hebt bijvoorbeeld een service-principal aan uw register toegewezen voor een automatiseringsscenario. U kunt zich ook aanmelden met uw gebruikers naam en wacht woord voor het REGI ster.
 
@@ -210,8 +201,8 @@ Nu u de tomcat-installatie kopie naar een container register hebt gepusht, kunt 
 
    Nadat u het installatie script hebt uitgevoerd, opent u een browser en navigeert u naar Service Fabric Explorer:
     
-   * Gebruik op een lokaal cluster `http://localhost:19080/Explorer` (Vervang *localhost* door het privé-IP-adres van de virtuele machine als u Vagrant op Mac OS X gebruikt).
-   * Gebruik `https://PublicIPorFQDN:19080/Explorer` op een veilig Azure-cluster. 
+   * Gebruik `http://localhost:19080/Explorer` op een lokaal cluster (Vervang *localhost* door het privé-IP-adres van de virtuele machine als u Vagrant op Mac OS X gebruikt).
+   * Gebruik `https://PublicIPorFQDN:19080/Explorer`voor een veilig Azure-cluster. 
     
    Vouw het knoop punt **toepassingen** uit en houd er rekening mee dat er nu een vermelding is voor uw toepassings type, **ServiceFabricTomcatType**en een andere voor het eerste exemplaar van dat type. Het kan enkele minuten duren voordat de toepassing volledig is geïmplementeerd, dus een ogen blik geduld.
 

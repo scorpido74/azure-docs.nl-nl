@@ -1,25 +1,14 @@
 ---
-title: Azure Active Directory instellen voor Service Fabric-client verificatie | Microsoft Docs
+title: Azure Active Directory instellen voor client verificatie
 description: Meer informatie over het instellen van Azure Active Directory (Azure AD) voor het verifiëren van clients voor Service Fabric clusters.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: chackdan
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/28/2019
-ms.author: atsenthi
-ms.openlocfilehash: 77814d04daca0ebb649ffa2e8ff46becddec4f0f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bbad991e955a31e3f3c53931889f630e521e1a8c
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901510"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614686"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Azure Active Directory instellen voor client verificatie
 
@@ -31,6 +20,11 @@ Een Service Fabric-cluster biedt verschillende toegangspunten bij de management-
 
 > [!NOTE]
 > Op Linux moet u de volgende stappen uitvoeren voordat u het cluster maakt. In Windows hebt u ook de mogelijkheid om [Azure AD-verificatie te configureren voor een bestaand cluster](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/Configure%20Azure%20Active%20Directory%20Authentication%20for%20Existing%20Cluster.md).
+
+> [!NOTE]
+> Het is een [bekend probleem](https://github.com/microsoft/service-fabric/issues/399) dat toepassingen en knoop punten op Linux Aad-clusters niet kunnen worden weer gegeven in azure Portal.
+
+
 
 ## <a name="prerequisites"></a>Vereisten
 In dit artikel nemen we aan dat u al een tenant hebt gemaakt. Als u dit nog niet hebt gedaan, begint u door [Een Azure Active Directory-tenant verkrijgen][active-directory-howto-tenant] te lezen.

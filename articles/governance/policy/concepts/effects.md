@@ -3,12 +3,12 @@ title: Inzicht krijgen in de werking van effecten
 description: Azure Policy definities hebben verschillende effecten die bepalen hoe de naleving wordt beheerd en gerapporteerd.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8338f3bf965f121a553a56c551d2095bf60e4880
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: fec2f966260d997b45be50554e0f41d5fd0491aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279515"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436365"
 ---
 # <a name="understand-azure-policy-effects"></a>Informatie over Azure Policy-effecten
 
@@ -28,14 +28,14 @@ Deze effecten worden momenteel ondersteund in een beleids definitie:
 
 ## <a name="order-of-evaluation"></a>Volgorde van de evaluatie
 
-Aanvragen voor het maken of bijwerken van een bron via Azure Resource Manager worden eerst geëvalueerd door Azure Policy. Azure Policy maakt een lijst met alle toewijzingen die van toepassing zijn op de resource en evalueert vervolgens de resource op basis van elke definitie. Azure Policy verschillende effecten verwerkt voordat de aanvraag aan de juiste resource provider wordt door gegeven. Dit voor komt het voor komen van onnodige verwerking door een resource provider wanneer een resource niet voldoet aan de ontworpen governance-besturings elementen van Azure Policy.
+Aanvragen voor het maken of bijwerken van een ​​resource via Azure Resource Manager worden eerst door Azure Policy geëvalueerd. Azure Policy maakt een lijst met alle toewijzingen die van toepassing zijn op de resource en evalueert vervolgens de resource op basis van elke definitie. Azure Policy verschillende effecten verwerkt voordat de aanvraag aan de juiste resource provider wordt door gegeven. Dit voor komt het voor komen van onnodige verwerking door een resource provider wanneer een resource niet voldoet aan de ontworpen governance-besturings elementen van Azure Policy.
 
-- **Uitgeschakeld** wordt eerst gecontroleerd om te bepalen of de beleids regel moet worden geëvalueerd.
+- **Uitgeschakelde** wordt eerst gecontroleerd om te bepalen als de beleidsregel moet worden geëvalueerd.
 - **Toevoegen** en **wijzigen** worden vervolgens geëvalueerd. Omdat de aanvraag kan worden gewijzigd, is het mogelijk dat er een wijziging is aangebracht waardoor een controle of weigering van een trigger kan worden verhinderd.
-- De **weigering** wordt vervolgens geëvalueerd. Weigeren voordat controleren, dubbele logboekregistratie van een resource die ongewenst is voorkomen door te evalueren.
-- De **controle** wordt vervolgens geëvalueerd voordat de aanvraag naar de resource provider wordt verzonden.
+- **Weigeren** wordt vervolgens geëvalueerd. Weigeren voordat controleren, dubbele logboekregistratie van een resource die ongewenst is voorkomen door te evalueren.
+- **Audit** wordt vervolgens geëvalueerd vóór de aanvraag naar de Resource Provider.
 
-Nadat de resource provider een succes code heeft geretourneerd, wordt **AuditIfNotExists** en **DeployIfNotExists** geëvalueerd om te bepalen of er aanvullende logboek registratie of actie vereist is.
+Nadat de Resource Provider een succescode, **AuditIfNotExists** en **DeployIfNotExists** evalueren om te bepalen of extra naleving logboekregistratie of actie vereist is.
 
 Er is momenteel geen volg orde voor de evaluatie van de **EnforceOPAConstraint** -of **EnforceRegoPolicy** -effecten.
 
@@ -55,13 +55,13 @@ Toevoeg-wordt gebruikt voor het toevoegen van extra velden naar de aangevraagde 
 
 ### <a name="append-evaluation"></a>Toevoeg-evaluatie
 
-Toevoeg-evalueert voordat de aanvraag wordt verwerkt door een Resourceprovider tijdens het maken of bijwerken van een resource. Append voegt velden toe aan de resource wanneer aan de **voor waarde van de beleids** regel wordt voldaan. Als het effect append een waarde in de oorspronkelijke aanvraag met een andere waarde overschrijven zou, klikt u vervolgens deze fungeert als een weigeractie en weigert de aanvraag. Als u een nieuwe waarde aan een bestaande matrix wilt toevoegen, gebruikt u de **[\*]** -versie van de alias.
+Toevoeg-evalueert voordat de aanvraag wordt verwerkt door een Resourceprovider tijdens het maken of bijwerken van een resource. Toevoeg-velden toevoegt aan de resource als de **als** wordt voldaan aan de voorwaarde van de beleidsregel. Als het effect append een waarde in de oorspronkelijke aanvraag met een andere waarde overschrijven zou, klikt u vervolgens deze fungeert als een weigeractie en weigert de aanvraag. Als u een nieuwe waarde aan een bestaande matrix wilt toevoegen, gebruikt u de **[\*]** -versie van de alias.
 
-Wanneer de beleidsdefinitie van een met behulp van het effect toevoegen wordt uitgevoerd als onderdeel van een evaluatiecyclus van een, aanbrengen niet het wijzigingen in resources die al bestaan. In plaats daarvan wordt er een resource gemarkeerd die voldoet aan de **if** -voor waarde als niet-compatibel.
+Wanneer de beleidsdefinitie van een met behulp van het effect toevoegen wordt uitgevoerd als onderdeel van een evaluatiecyclus van een, aanbrengen niet het wijzigingen in resources die al bestaan. In plaats daarvan het markeert een resource die voldoet aan de **als** voorwaarde als niet-compatibel.
 
 ### <a name="append-properties"></a>Eigenschappen toevoegen
 
-Een toevoeg effect heeft alleen een **detail** matrix, wat vereist is. Omdat **Details** een matrix is, kan het één **veld/waarde-** paar of meerdere waarden hebben. Raadpleeg de [definitie structuur](definition-structure.md#fields) voor de lijst met geaccepteerde velden.
+Een toevoeg-effect heeft alleen een **details** matrix, maar dit vereist is. Als **details** is een matrix, duurt het één **veld/waarde** paar of veelvouden. Raadpleeg [structuur van beleidsdefinities](definition-structure.md#fields) voor een lijst van toegestane velden.
 
 ### <a name="append-examples"></a>Append-voorbeelden
 
@@ -106,14 +106,14 @@ Modify wordt gebruikt om tags toe te voegen, bij te werken of te verwijderen tij
 
 Met modify worden geëvalueerd voordat de aanvraag wordt verwerkt door een resource provider tijdens het maken of bijwerken van een resource. Met modify worden tags voor een resource toegevoegd of bijgewerkt wanneer wordt voldaan aan de **indienings** voorwaarde van de beleids regel.
 
-Wanneer een beleids definitie die gebruikmaakt van het Modify-effect, wordt uitgevoerd als onderdeel van een evaluatie cyclus, worden er geen wijzigingen aangebracht in resources die al bestaan. In plaats daarvan wordt er een resource gemarkeerd die voldoet aan de **if** -voor waarde als niet-compatibel.
+Wanneer een beleids definitie die gebruikmaakt van het Modify-effect, wordt uitgevoerd als onderdeel van een evaluatie cyclus, worden er geen wijzigingen aangebracht in resources die al bestaan. In plaats daarvan het markeert een resource die voldoet aan de **als** voorwaarde als niet-compatibel.
 
 ### <a name="modify-properties"></a>Eigenschappen wijzigen
 
 De eigenschap **Details** van het effect Modify heeft alle subeigenschappen die de machtigingen definiëren die nodig zijn voor herstel en de **bewerkingen** die worden gebruikt om label waarden toe te voegen, bij te werken of te verwijderen.
 
-- **roleDefinitionIds** [vereist]
-  - Deze eigenschap moet een matrix met tekenreeksen die overeenkomen met toegankelijk is op basis van de rol beheer rol-ID van het abonnement zijn. Zie voor meer informatie [herstel-beleids definitie configureren](../how-to/remediate-resources.md#configure-policy-definition).
+- **roleDefinitionIds** (vereist)
+  - Deze eigenschap moet een matrix met tekenreeksen die overeenkomen met toegankelijk is op basis van de rol beheer rol-ID van het abonnement zijn. Zie voor meer informatie, [herstel - beleidsdefinitie configureren](../how-to/remediate-resources.md#configure-policy-definition).
   - De gedefinieerde rol moet alle bewerkingen bevatten die zijn toegewezen aan de rol [Inzender](../../../role-based-access-control/built-in-roles.md#contributor) .
 - **bewerkingen** [vereist]
   - Een matrix met alle label bewerkingen die moeten worden voltooid voor overeenkomende resources.
@@ -222,7 +222,7 @@ Tijdens de evaluatie van bestaande resources, resources die overeenkomen met een
 
 ### <a name="deny-properties"></a>Eigenschappen weigeren
 
-Het deny-effect heeft geen aanvullende eigenschappen voor gebruik in de **voor waarde voor de beleids** definitie.
+Het effect weigeren geen eventuele aanvullende eigenschappen voor gebruik in de **vervolgens** voorwaarde van de beleidsdefinitie.
 
 ### <a name="deny-example"></a>Voorbeeld weigeren
 
@@ -244,7 +244,7 @@ Controle is het laatste effect dat door Azure Policy is gecontroleerd tijdens he
 
 ### <a name="audit-properties"></a>Audit-eigenschappen
 
-Het controle-effect heeft geen aanvullende eigenschappen voor gebruik in de **voor waarde voor de beleids** definitie.
+Het effect van de audit heeft geen eventuele aanvullende eigenschappen voor gebruik in de **vervolgens** voorwaarde van de beleidsdefinitie.
 
 ### <a name="audit-example"></a>Audit-voorbeeld
 
@@ -258,17 +258,17 @@ Voorbeeld: Met behulp van het effect van de audit.
 
 ## <a name="auditifnotexists"></a>AuditIfNotExists
 
-Met AuditIfNotExists kunt **u** controleren op resources die overeenkomen met de **if** -voor waarde, maar waarvoor geen onderdelen zijn opgegeven in de **Details** van de voor waarde.
+AuditIfNotExists kunt controleren voor bronnen die voldoen aan de **als** voorwaarde, maar beschikt niet over de onderdelen die zijn opgegeven in de **details** van de **vervolgens** voorwaarde.
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists-evaluatie
 
-AuditIfNotExists wordt uitgevoerd nadat een Resourceprovider is afgehandeld door een resourceaanvraag maken of bijwerken en een code van de status geslaagd heeft geretourneerd. De controle treedt op als er geen gerelateerde resources zijn of als de resources die zijn gedefinieerd door **ExistenceCondition** niet naar waar worden geëvalueerd. Azure Policy voegt een `Microsoft.Authorization/policies/audit/action` bewerking aan het activiteiten logboek op dezelfde manier toe als het controle-effect. Als deze wordt geactiveerd, is de resource die voldoet aan de **if** -voor waarde de resource die is gemarkeerd als niet-compatibel.
+AuditIfNotExists wordt uitgevoerd nadat een Resourceprovider is afgehandeld door een resourceaanvraag maken of bijwerken en een code van de status geslaagd heeft geretourneerd. De controle vindt plaats als er geen verwante bronnen zijn of als de resources die zijn gedefinieerd door **ExistenceCondition** niet resulteren in waar. Azure Policy voegt een `Microsoft.Authorization/policies/audit/action` bewerking aan het activiteiten logboek op dezelfde manier toe als het controle-effect. Wanneer ze worden geactiveerd, de resource die voldaan aan de **als** situatie doet zich voor de resource die is gemarkeerd als niet-compatibel.
 
 ### <a name="auditifnotexists-properties"></a>AuditIfNotExists eigenschappen
 
-De eigenschap **Details** van de AuditIfNotExists-effecten heeft alle subeigenschappen waarmee de gerelateerde resources worden gedefinieerd.
+De **details** eigenschap van de gevolgen AuditIfNotExists heeft alle subeigenschappen die de gerelateerde resources zodat deze overeenkomen met definiëren.
 
-- **Type** [vereist]
+- **Type** (vereist)
   - Hiermee geeft u het type van de bijbehorende resource aan.
   - Als **Details. type** een resource type onder de **if** -voor waarde-resource is, wordt in het beleid query's voor bronnen van dit **type** binnen het bereik van de geëvalueerde resource beschreven. Anders worden er beleids query's uitgevoerd binnen dezelfde resource groep als de geëvalueerde resource.
 - **Naam** (optioneel)
@@ -276,21 +276,21 @@ De eigenschap **Details** van de AuditIfNotExists-effecten heeft alle subeigensc
   - Wanneer de voorwaarde waarden voor **if. Field. type** en **then. Details. type** overeenkomen, wordt de **naam** _vereist_ en moet `[field('name')]`zijn. In plaats daarvan moet echter een [controle](#audit) -effect worden overwogen.
 - **ResourceGroupName** (optioneel)
   - Kan de overeenkomst van de bijbehorende resource afkomstig zijn van een andere resourcegroep.
-  - Is niet van toepassing als **type** een resource is die onder de **if** -voor waarde-resource zou vallen.
-  - De standaard waarde is de resource groep voor de **indienings** voorwaarde resource.
+  - Niet van toepassing als **type** is een resource die onder de **als** resource-voorwaarde.
+  - Standaard is de **als** resourcegroep van de resource-voorwaarde.
 - **ExistenceScope** (optioneel)
-  - Toegestane waarden zijn _abonnements_ -en _ResourceGroup_.
+  - Toegestane waarden zijn _abonnement_ en _ResourceGroup_.
   - Hiermee stelt u het bereik van de locatie voor het ophalen van de bijbehorende resource waarop uit.
-  - Is niet van toepassing als **type** een resource is die onder de **if** -voor waarde-resource zou vallen.
-  - Voor _ResourceGroup_zou de resource groep van de **if** -voor waarde worden beperkt of de resource groep die is opgegeven in **ResourceGroupName**.
-  - Voor het _abonnement_voert u een query uit op het hele abonnement voor de gerelateerde resource.
-  - De standaard waarde is _ResourceGroup_.
+  - Niet van toepassing als **type** is een resource die onder de **als** resource-voorwaarde.
+  - Voor _ResourceGroup_, wilt beperken tot de **als** voorwaarde van de resource, resourcegroep of de resourcegroep die is opgegeven in **ResourceGroupName**.
+  - Voor _abonnement_, vraagt het hele abonnement voor de bijbehorende resource.
+  - De standaardwaarde is _ResourceGroup_.
 - **ExistenceCondition** (optioneel)
-  - Als u niets opgeeft, wordt een gerelateerde bron van het **type** voldoet aan het effect en wordt de controle niet geactiveerd.
-  - Maakt gebruik van dezelfde taal als de beleids regel voor de **if** -voor waarde, maar wordt voor elke gerelateerde resource afzonderlijk geëvalueerd.
+  - Indien niet opgegeven, alle verwante resources van **type** voldoet aan de kracht en de controle niet activeren.
+  - Maakt gebruik van dezelfde taal als de beleidsregel voor de **als** voorwaarde echter geëvalueerd op basis van elke resource gerelateerde afzonderlijk.
   - Als een overeenkomende gerelateerde resource in waar resulteert, wordt het effect is voldaan aan en de controle niet activeren.
-  - Kan [Field ()] gebruiken om de gelijkwaardigheid te controleren met waarden in de **if** -voor waarde.
-  - Kan bijvoorbeeld worden gebruikt om te controleren of de bovenliggende resource (in de **if** -voor waarde) zich op dezelfde resource locatie bevindt als de overeenkomende gerelateerde resource.
+  - [Field()] kunt gebruiken om te controleren of gelijkwaardig met waarden in de **als** voorwaarde.
+  - Bijvoorbeeld, kan worden gebruikt om te controleren of de bovenliggende resource (in de **als** voorwaarde) is op dezelfde Resourcelocatie als de overeenkomende resource gerelateerde.
 
 ### <a name="auditifnotexists-example"></a>Voorbeeld van de AuditIfNotExists
 
@@ -327,11 +327,11 @@ Voorbeeld: Evalueert virtuele Machines om te bepalen of de anti-malware-extensie
 Net als bij AuditIfNotExists voert een DeployIfNotExists-beleids definitie een sjabloon implementatie uit wanneer aan de voor waarde wordt voldaan.
 
 > [!NOTE]
-> [Geneste sjablonen](../../../azure-resource-manager/resource-group-linked-templates.md#nested-template) worden ondersteund met **deployIfNotExists**, maar [gekoppelde sjablonen](../../../azure-resource-manager/resource-group-linked-templates.md) worden momenteel niet ondersteund.
+> [Geneste sjablonen](../../../azure-resource-manager/templates/linked-templates.md#nested-template) worden ondersteund met **deployIfNotExists**, maar [gekoppelde sjablonen](../../../azure-resource-manager/templates/linked-templates.md#linked-template) worden momenteel niet ondersteund.
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists-evaluatie
 
-DeployIfNotExists uitgevoerd nadat een Resourceprovider is afgehandeld door een resourceaanvraag maken of bijwerken en een code van de status geslaagd heeft geretourneerd. Een sjabloon implementatie treedt op als er geen gerelateerde resources zijn of als de resources die zijn gedefinieerd door **ExistenceCondition** niet naar waar worden geëvalueerd.
+DeployIfNotExists uitgevoerd nadat een Resourceprovider is afgehandeld door een resourceaanvraag maken of bijwerken en een code van de status geslaagd heeft geretourneerd. De sjabloonimplementatie van een treedt op als er geen verwante bronnen zijn of als de resources die zijn gedefinieerd door **ExistenceCondition** niet resulteren in waar.
 
 Tijdens een evaluatiecyclus beleidsdefinities met een DeployIfNotExists-effect die overeenkomen met de resources zijn gemarkeerd als niet-compatibel, maar er is geen actie ondernomen voor die bron.
 
@@ -339,42 +339,42 @@ Tijdens een evaluatiecyclus beleidsdefinities met een DeployIfNotExists-effect d
 
 De eigenschap **Details** van het effect DeployIfNotExists heeft alle subeigenschappen waarmee de gerelateerde resources worden gedefinieerd en de sjabloon implementatie moet worden uitgevoerd.
 
-- **Type** [vereist]
+- **Type** (vereist)
   - Hiermee geeft u het type van de bijbehorende resource aan.
-  - U begint met het ophalen van een resource onder de **if** -voor waarde resource en vervolgens query's in dezelfde resource groep als de **indienings** voorwaarde resource.
+  - Begint met het ophalen van een resource onder de **als** voorwaarde resource en vervolgens query's in dezelfde resourcegroep bevinden als de **als** resource-voorwaarde.
 - **Naam** (optioneel)
   - Hiermee geeft u de exacte naam van de resource waarop en zorgt ervoor dat het beleid voor het ophalen van een bepaalde resource in plaats van alle resources van het opgegeven type.
   - Wanneer de voorwaarde waarden voor **if. Field. type** en **then. Details. type** overeenkomen, wordt de **naam** _vereist_ en moet `[field('name')]`zijn.
 - **ResourceGroupName** (optioneel)
   - Kan de overeenkomst van de bijbehorende resource afkomstig zijn van een andere resourcegroep.
-  - Is niet van toepassing als **type** een resource is die onder de **if** -voor waarde-resource zou vallen.
-  - De standaard waarde is de resource groep voor de **indienings** voorwaarde resource.
+  - Niet van toepassing als **type** is een resource die onder de **als** resource-voorwaarde.
+  - Standaard is de **als** resourcegroep van de resource-voorwaarde.
   - Als de sjabloonimplementatie van een wordt uitgevoerd, wordt deze geïmplementeerd in de resourcegroep van deze waarde.
 - **ExistenceScope** (optioneel)
-  - Toegestane waarden zijn _abonnements_ -en _ResourceGroup_.
+  - Toegestane waarden zijn _abonnement_ en _ResourceGroup_.
   - Hiermee stelt u het bereik van de locatie voor het ophalen van de bijbehorende resource waarop uit.
-  - Is niet van toepassing als **type** een resource is die onder de **if** -voor waarde-resource zou vallen.
-  - Voor _ResourceGroup_zou de resource groep van de **if** -voor waarde worden beperkt of de resource groep die is opgegeven in **ResourceGroupName**.
-  - Voor het _abonnement_voert u een query uit op het hele abonnement voor de gerelateerde resource.
-  - De standaard waarde is _ResourceGroup_.
+  - Niet van toepassing als **type** is een resource die onder de **als** resource-voorwaarde.
+  - Voor _ResourceGroup_, wilt beperken tot de **als** voorwaarde van de resource, resourcegroep of de resourcegroep die is opgegeven in **ResourceGroupName**.
+  - Voor _abonnement_, vraagt het hele abonnement voor de bijbehorende resource.
+  - De standaardwaarde is _ResourceGroup_.
 - **ExistenceCondition** (optioneel)
-  - Als u niets opgeeft, wordt een gerelateerde bron van het **type** voldoet aan het effect en wordt de implementatie niet geactiveerd.
-  - Maakt gebruik van dezelfde taal als de beleids regel voor de **if** -voor waarde, maar wordt voor elke gerelateerde resource afzonderlijk geëvalueerd.
+  - Indien niet opgegeven, alle verwante resources van **type** voldoet aan de kracht en de implementatie niet worden geactiveerd.
+  - Maakt gebruik van dezelfde taal als de beleidsregel voor de **als** voorwaarde echter geëvalueerd op basis van elke resource gerelateerde afzonderlijk.
   - Als een overeenkomende gerelateerde resource in waar resulteert, wordt het effect is voldaan aan en de implementatie niet worden geactiveerd.
-  - Kan [Field ()] gebruiken om de gelijkwaardigheid te controleren met waarden in de **if** -voor waarde.
-  - Kan bijvoorbeeld worden gebruikt om te controleren of de bovenliggende resource (in de **if** -voor waarde) zich op dezelfde resource locatie bevindt als de overeenkomende gerelateerde resource.
-- **roleDefinitionIds** [vereist]
-  - Deze eigenschap moet een matrix met tekenreeksen die overeenkomen met toegankelijk is op basis van de rol beheer rol-ID van het abonnement zijn. Zie voor meer informatie [herstel-beleids definitie configureren](../how-to/remediate-resources.md#configure-policy-definition).
+  - [Field()] kunt gebruiken om te controleren of gelijkwaardig met waarden in de **als** voorwaarde.
+  - Bijvoorbeeld, kan worden gebruikt om te controleren of de bovenliggende resource (in de **als** voorwaarde) is op dezelfde Resourcelocatie als de overeenkomende resource gerelateerde.
+- **roleDefinitionIds** (vereist)
+  - Deze eigenschap moet een matrix met tekenreeksen die overeenkomen met toegankelijk is op basis van de rol beheer rol-ID van het abonnement zijn. Zie voor meer informatie, [herstel - beleidsdefinitie configureren](../how-to/remediate-resources.md#configure-policy-definition).
 - **DeploymentScope** (optioneel)
-  - Toegestane waarden zijn _abonnements_ -en _ResourceGroup_.
+  - Toegestane waarden zijn _abonnement_ en _ResourceGroup_.
   - Hiermee stelt u het type implementatie in dat moet worden geactiveerd. Met het _abonnement_ wordt een [implementatie op abonnements niveau](../../../azure-resource-manager/deploy-to-subscription.md)aangegeven. _ResourceGroup_ wijst op een implementatie naar een resource groep.
   - Een _locatie_ -eigenschap moet worden opgegeven in de _implementatie_ bij het gebruik van implementaties op abonnements niveau.
-  - De standaard waarde is _ResourceGroup_.
-- **Implementatie** [vereist]
-  - Deze eigenschap moet de volledige sjabloon implementatie bevatten, aangezien deze wordt door gegeven aan de `Microsoft.Resources/deployments` PUT-API. Zie [implementaties rest API](/rest/api/resources/deployments)voor meer informatie.
+  - De standaardwaarde is _ResourceGroup_.
+- **Implementatie** (vereist)
+  - Deze eigenschap moet de volledige sjabloonimplementatie bevatten, zoals deze zou worden doorgegeven aan de `Microsoft.Resources/deployments` API plaatsen. Zie voor meer informatie de [implementaties REST-API](/rest/api/resources/deployments).
 
   > [!NOTE]
-  > Alle functies in de **implementatie** -eigenschap worden geëvalueerd als onderdelen van de sjabloon, niet het beleid. De uitzonde ring is de eigenschap **para meters** waarmee waarden van het beleid worden door gegeven aan de sjabloon. De **waarde** in deze sectie onder een sjabloon parameter naam wordt gebruikt om deze waarde door te geven (Zie _FullDbName_ in het DeployIfNotExists-voor beeld).
+  > Alle functies in de **implementatie** eigenschap worden geëvalueerd als onderdelen van de sjabloon, niet van het beleid. De uitzondering hierop is de **parameters** eigenschap waarmee waarden worden doorgegeven van het beleid aan de sjabloon. De **waarde** in deze sectie onder een sjabloon de parameternaam van de wordt gebruikt om uit te voeren van deze waarde wordt doorgegeven (Zie _fullDbName_ in het voorbeeld DeployIfNotExists).
 
 ### <a name="deployifnotexists-example"></a>DeployIfNotExists-voorbeeld
 
@@ -564,7 +564,7 @@ Als heeft gevolgen voor zowel beleid 1 en 2 van weigeren, wordt de situatie gewi
 - Een nieuwe resource in abonnement A niet in 'westus' wordt geweigerd door beleid 1
 - Een nieuwe resource in de resourcegroep B voor abonnement die a is geweigerd
 
-Elke toewijzing afzonderlijk geëvalueerd. Daarom is er geen een kans op een resource voor vertraging via een onderbreking van de verschillen in het bereik. Het netto resultaat van het lagen beleid of de overlap ping van het beleid wordt als **cumulatief het meest beperkend**beschouwd. Een voorbeeld: als beide beleid 1 en 2 had een weigeractie een bron zou worden geblokkeerd door de overlappende en conflicterende beleidsregels. Als u nog steeds de resource moet worden gemaakt in de doel-scope, Controleer de uitsluitingen voor elke toewijzing voor het valideren van de juiste beleidsregels van invloed zijn op de juiste bereiken.
+Elke toewijzing afzonderlijk geëvalueerd. Daarom is er geen een kans op een resource voor vertraging via een onderbreking van de verschillen in het bereik. Het resultaat van het beleid voor lagen of het beleid overlapping wordt beschouwd als **cumulatieve meest beperkende**. Een voorbeeld: als beide beleid 1 en 2 had een weigeractie een bron zou worden geblokkeerd door de overlappende en conflicterende beleidsregels. Als u nog steeds de resource moet worden gemaakt in de doel-scope, Controleer de uitsluitingen voor elke toewijzing voor het valideren van de juiste beleidsregels van invloed zijn op de juiste bereiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

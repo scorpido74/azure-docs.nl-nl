@@ -5,15 +5,15 @@ author: stepro
 ms.author: stephpr
 ms.date: 09/26/2018
 ms.topic: tutorial
-description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
+description: In deze zelf studie leert u hoe u Azure dev Spaces en Visual Studio code kunt gebruiken om fouten op te sporen en snel een Java-toepassing te herhalen in azure Kubernetes service
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 5888547939759984effb10aa2c7c6b2add135d12
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
-ms.translationtype: MT
+ms.openlocfilehash: fcfbdfb371f50601bf1f58bceab51d4299f2847a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708396"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438607"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Maak een Kubernetes dev-ruimte: Visual Studio code en Java met Azure dev Spaces
 
@@ -26,7 +26,7 @@ In deze handleiding leert u het volgende:
 > [!Note]
 > Zie de sectie [probleem oplossing](troubleshooting.md) **Als u** op elk gewenst moment aan de slag gaat.
 
-## <a name="install-the-azure-cli"></a>Azure CLI installeren
+## <a name="install-the-azure-cli"></a>Azure-CLI installeren
 Azure Dev Spaces vereist minimale instellingen voor de lokale computer. De configuratie van uw ontwikkelomgeving wordt grotendeels opgeslagen in de cloud en kan worden gedeeld met andere gebruikers. Begin met het downloaden en uitvoeren van de [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ### <a name="sign-in-to-azure-cli"></a>Aanmelden bij Azure CLI

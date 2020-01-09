@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell-voorbeeldscript - RDP-gebruikersnaam en -wachtwoord bijwerken| Microsoft Docs
+title: De RDP-gebruikers naam en het wacht woord bijwerken in Power shell
 description: Azure PowerShell-voorbeeldscript - RDP-gebruikersnaam en -wachtwoord bijwerken voor alle Service Fabric-clusterknooppunten van een bepaald knooppunttype.
 services: service-fabric
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 03/19/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 2618d9100c81cdb35b4a3a82436e94068a9f9bf0
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 0cf9f8362d3fa683084aef840cf35cd9a843608a
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035518"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614805"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>Gebruikersnaam en wachtwoord van de beheerder van de VM's in een cluster bijwerken
 

@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-voorbeeld script-een Service Fabric-toepassing upgraden | Microsoft Docs
-description: Azure PowerShell-voorbeeld script-een Service Fabric-toepassing bijwerken.
+title: Een Service Fabric-toepassing bijwerken in Power shell
+description: Azure PowerShell script voorbeeld-een Azure Service Fabric-toepassing bijwerken en bewaken met behulp van Power shell.
 services: service-fabric
 documentationcenter: ''
 author: athinanthny
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 45186f497371b533451ff374e68b38f9a7eebe51
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3a4ef9fad8567eb145d51c6fef61773cc3a00b11
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035486"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614737"
 ---
 # <a name="upgrade-a-service-fabric-application"></a>Een Service Fabric-toepassing bijwerken
 
@@ -33,7 +33,7 @@ Installeer indien nodig de Service Fabric PowerShell-module met de [Service Fabr
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

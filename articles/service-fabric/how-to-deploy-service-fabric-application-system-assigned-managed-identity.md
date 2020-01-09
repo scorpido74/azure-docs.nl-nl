@@ -1,18 +1,14 @@
 ---
-title: Azure Service Fabric-een Azure Service Fabric-toepassing implementeren met een door het systeem toegewezen beheerde identiteit | Microsoft Docs
+title: Een Service Fabric-app implementeren met aan het systeem toegewezen MI
 description: In dit artikel wordt beschreven hoe u een door het systeem toegewezen beheerde identiteit toewijst aan een Azure Service Fabric-toepassing
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: cf971d71c2566d91bc5a2490d47521725c62b17d
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: d5a14722363d642957904f9c7c699d3cf1d66c0f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973411"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614822"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Service Fabric-toepassing implementeren met door het systeem toegewezen beheerde identiteit (preview)
 

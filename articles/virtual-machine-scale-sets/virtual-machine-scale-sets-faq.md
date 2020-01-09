@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen over schaalsets voor virtuele Azure-machine | Microsoft Docs
-description: Krijg antwoorden op veelgestelde vragen over schaalsets voor virtuele machines.
+title: Veelgestelde vragen over schaalsets voor virtuele Azure-machine
+description: Krijg antwoorden op veelgestelde vragen over schaal sets voor virtuele machines in Azure.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 429e201ba1d15103ae130ee2fb767cd1b4fa909a
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 47ea23f3018e9d28c0ccfd6640b3d365103ab9ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779416"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356218"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Veelgestelde vragen over schaalsets voor virtuele Azure-machine
 
@@ -229,17 +229,17 @@ Wanneer u een Linux-VM maakt, kunt u openbare SSH-sleutels als tekst zonder opma
 }
 ```
 
-de naam van de linuxConfiguration-element | Vereist | Type | Description
+de naam van de linuxConfiguration-element | Verplicht | Type | Beschrijving
 --- | --- | --- | ---
 SSH | Nee | Verzameling | Hiermee geeft u de SSH-sleutel-configuratie voor een Linux-besturingssysteem
-pad | Ja | Reeks | Hiermee geeft u de Linux-bestandspad waarin de SSH-sleutels of het certificaat moet zich bevinden
-keyData | Ja | Reeks | Hiermee geeft u een met base64 gecodeerde openbare SSH-sleutel
+Pad | Ja | Tekenreeks | Hiermee geeft u de Linux-bestandspad waarin de SSH-sleutels of het certificaat moet zich bevinden
+keyData | Ja | Tekenreeks | Hiermee geeft u een met base64 gecodeerde openbare SSH-sleutel
 
 Zie voor een voorbeeld [101-vm-SSH-sleutelbestand GitHub quickstart-sjabloon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Wanneer ik uitvoeren `Update-AzVmss` na het toevoegen van meer dan één certificaat vanuit de dezelfde key vault, zie ik het volgende bericht:
 
->Update-AzVmss: Lijst geheim bevat herhaalde exemplaren van\</Subscriptions/mijn-abonnement-id >/resourceGroups/Internal-RG-dev/providers/Microsoft.KeyVault/vaults/Internal-keyvault-dev, wat niet is toegestaan.
+>Update-AzVmss: List Secret bevat herhaalde exemplaren van/Subscriptions/\<mijn abonnement-id >/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev, die niet is toegestaan.
 
 Dit kan gebeuren als u probeert toe te voegen opnieuw de dezelfde kluis in plaats van een nieuwe kluis-certificaat voor de bestaande bronkluis. De `Add-AzVmssSecret` opdracht werkt niet goed als u extra geheimen toevoegt.
 
@@ -343,6 +343,13 @@ Zie [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/Compliance/PC
 
 Ja. U ziet enkele voor beelden van MSI-sjablonen in azure Quick Start-sjablonen voor [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) en [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi).
 
+## <a name="deleting"></a>Deleting 
+
+### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>Worden de vergren delingen die ik heb ingesteld voor instanties van virtuele-machine schaal sets gerespecteerd bij het verwijderen van instanties?
+
+In azure Portal kunt u een afzonderlijk exemplaar of bulksgewijs verwijderen verwijderen door meerdere exemplaren te selecteren. Als u probeert een enkele instantie te verwijderen die een vergren deling heeft, wordt de vergren deling gerespecteerd en kunt u het exemplaar niet verwijderen. Als u echter meerdere instanties tegelijk selecteert en een van deze instanties een vergren deling heeft, worden de vergren delingen niet geëerbiedigd en worden alle geselecteerde exemplaren verwijderd. 
+ 
+In azure CLI hebt u alleen de mogelijkheid om een afzonderlijk exemplaar te verwijderen. Als u probeert om één exemplaar te verwijderen dat een vergren deling heeft, wordt de vergren deling gerespecteerd en kunt u dat exemplaar niet verwijderen. 
 
 ## <a name="extensions"></a>Extensies
 
@@ -463,7 +470,7 @@ Er zijn twee manieren voor het wijzigen van het wachtwoord voor virtuele machine
     Update-AzVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
     ```
 
-## <a name="networking"></a>Netwerken
+## <a name="networking"></a>Networking
 
 ### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-applies-to-all-the-vm-nics-in-the-set"></a>Is het mogelijk een Netwerkbeveiligingsgroep (NSG) toewijzen aan een schaalset, zodat deze wordt toegepast op alle VM NIC's in de set?
 
@@ -507,7 +514,7 @@ Ja. Een Netwerkbeveiligingsgroep kan rechtstreeks aan een schaalset door te verw
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>Hoe doe ik geen VIP's wisselen voor schaalsets voor virtuele machines in hetzelfde abonnement en dezelfde regio?
 
-Als u twee virtuele-machineschaalsets met de Azure Load Balancer van front-ends, en ze zich in hetzelfde abonnement en regio, kan u het openbare IP-adressen van elkaar toewijzing ongedaan maken en toewijzen aan de andere. Zie [VIP swap: Blue-groene implementatie in azure Resource Manager](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) bijvoorbeeld. Dit betekent dat er een vertraging hoofdgeheugen niveau echter de resources zijn de toewijzing ongedaan gemaakt/toegewezen op het netwerk. Een snellere optie is het gebruik van Azure Application Gateway met twee back-endpools en een regel voor doorsturen. U kunt ook u uw toepassing met kan hosten [Azure App service](https://azure.microsoft.com/services/app-service/) die ondersteuning biedt voor het snel schakelen tussen fasering en productie-sleuven.
+Als u twee virtuele-machineschaalsets met de Azure Load Balancer van front-ends, en ze zich in hetzelfde abonnement en regio, kan u het openbare IP-adressen van elkaar toewijzing ongedaan maken en toewijzen aan de andere. Zie [wisselen van VIP: Blue-green implementatie in Azure Resource Manager](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) bijvoorbeeld. Dit betekent dat er een vertraging hoofdgeheugen niveau echter de resources zijn de toewijzing ongedaan gemaakt/toegewezen op het netwerk. Een snellere optie is het gebruik van Azure Application Gateway met twee back-endpools en een regel voor doorsturen. U kunt ook u uw toepassing met kan hosten [Azure App service](https://azure.microsoft.com/services/app-service/) die ondersteuning biedt voor het snel schakelen tussen fasering en productie-sleuven.
 
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>Hoe geef ik een bereik van particuliere IP-adressen te gebruiken voor statische privé IP-adrestoewijzing?
 
@@ -564,7 +571,7 @@ Voor het maken van een virtuele-machineschaalset waarmee een openbaar IP-adres w
 
 Ja. U kunt de resource-Id's voor meerdere Application Gateway back-end-adres groepen toevoegen aan de lijst _applicationGatewayBackendAddressPools_ in het gedeelte _ipConfigurations_ van het netwerk profiel van de schaalset.
 
-## <a name="scale"></a>Schalen
+## <a name="scale"></a>Schaal
 
 ### <a name="in-what-case-would-i-create-a-virtual-machine-scale-set-with-fewer-than-two-vms"></a>In welk geval zou ik een virtuele-machineschaalset met minder dan twee VM's maken?
 

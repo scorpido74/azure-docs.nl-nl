@@ -1,80 +1,77 @@
 ---
-title: Azure service health waarschuwingen verzenden met PagerDuty met behulp van webhooks
-description: Ophalen persoonlijke meldingen over service health-gebeurtenissen naar uw PagerDuty-exemplaar.
-author: stephbaron
-ms.author: stbaron
+title: Azure service Health-waarschuwingen verzenden met PagerDuty
+description: Krijg persoonlijke meldingen over service status gebeurtenissen aan uw PagerDuty-exemplaar.
 ms.topic: article
-ms.service: service-health
 ms.date: 06/10/2019
-ms.openlocfilehash: ab3bcffb6453b284c3c8bb0d0373c7155fe8ef23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 746113622b746949a0fae3fd0d7f1f9c7d170707
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067157"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551649"
 ---
-# <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Azure service health waarschuwingen verzenden met PagerDuty met behulp van webhooks
+# <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Azure service Health-waarschuwingen verzenden met PagerDuty met behulp van webhooks
 
-In dit artikel leest u hoe u Azure service health meldingen via PagerDuty instelt met behulp van een webhook. Met behulp van [PagerDuty](https://www.pagerduty.com/)van aangepaste type voor Microsoft Azure-integratie, kunt u moeiteloos servicestatus waarschuwingen toevoegen aan uw nieuwe of bestaande PagerDuty-services.
+Dit artikel laat u zien hoe u Azure service Health Notifications kunt instellen via PagerDuty met behulp van een webhook. Met het aangepaste Microsoft Azure integratie type van [PagerDuty](https://www.pagerduty.com/)kunt u moeiteloos service Health waarschuwingen toevoegen aan uw nieuwe of bestaande PagerDuty-Services.
 
-## <a name="creating-a-service-health-integration-url-in-pagerduty"></a>Het maken van een service-URL voor de integratie van health in PagerDuty
-1.  Zorg ervoor dat u hebt zich heeft aangemeld en bent aangemeld bij uw [PagerDuty](https://www.pagerduty.com/) account.
+## <a name="creating-a-service-health-integration-url-in-pagerduty"></a>Een service Health Integration-URL maken in PagerDuty
+1.  Zorg ervoor dat u zich hebt aangemeld voor en bent aangemeld bij uw [PagerDuty](https://www.pagerduty.com/) -account.
 
-1.  Navigeer naar de **Services** sectie in PagerDuty.
+1.  Navigeer naar het gedeelte **Services** in PagerDuty.
 
-    ![De sectie 'Services' in PagerDuty](./media/webhook-alerts/pagerduty-services-section.png)
+    ![De sectie ' Services ' in PagerDuty](./media/webhook-alerts/pagerduty-services-section.png)
 
-1.  Selecteer **nieuwe Service toevoegen** of open een bestaande service die u hebt ingesteld.
+1.  Selecteer **nieuwe service toevoegen** of open een bestaande service die u hebt ingesteld.
 
-1.  In de **instellingen voor Adreslijstintegratie**, selecteert u het volgende:
+1.  Selecteer in de **integratie-instellingen**het volgende:
 
-    a. **Van Integratietype**: Microsoft Azure
+    a. **Integratie type**: Microsoft Azure
 
-    b. **De naam van de integratie van**: \<De naam\>
+    b. **Integratie naam**: \<naam\>
 
-    ![De 'integratie-instellingen' in PagerDuty](./media/webhook-alerts/pagerduty-integration-settings.png)
+    ![De integratie-instellingen in PagerDuty](./media/webhook-alerts/pagerduty-integration-settings.png)
 
-1.  Vul alle vereiste velden en selecteer **toevoegen**.
+1.  Vul alle vereiste velden in en selecteer **toevoegen**.
 
-1.  Deze nieuwe integratie en exemplaar te openen en sla de **URL voor de integratie**.
+1.  Open deze nieuwe integratie en kopieer de integratie- **URL**en sla deze op.
 
-    ![De 'integratie-URL' in PagerDuty](./media/webhook-alerts/pagerduty-integration-url.png)
+    ![De integratie-URL in PagerDuty](./media/webhook-alerts/pagerduty-integration-url.png)
 
-## <a name="create-an-alert-using-pagerduty-in-the-azure-portal"></a>Een waarschuwing met behulp van PagerDuty in Azure portal maken
-### <a name="for-a-new-action-group"></a>Voor een nieuwe actiegroep:
-1. Volg de stappen 1 tot en met 8 in [een waarschuwing op een melding van de health service voor een nieuwe actiegroep maken met behulp van de Azure-portal](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+## <a name="create-an-alert-using-pagerduty-in-the-azure-portal"></a>Een waarschuwing maken met behulp van PagerDuty in de Azure Portal
+### <a name="for-a-new-action-group"></a>Voor een nieuwe actie groep:
+1. Volg de stappen 1 tot en met 8 in een [waarschuwing maken voor een service status melding voor een nieuwe actie groep met behulp van de Azure Portal](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
-1. In de lijst van definiëren **acties**:
+1. Definieer in de lijst met **acties**:
 
-    a. **Actietype:** *Webhook*
+    a. **Actie Type:** *webhook*
 
-    b. **Details:** De PagerDuty **URL voor de integratie** u eerder hebt opgeslagen.
+    b. **Details:** De URL van de PagerDuty- **integratie** die u eerder hebt opgeslagen.
 
-    c. **Naam:** De Webhook naam, alias of id.
+    c. **Naam:** Naam, alias of id van de webhook.
 
-1. Selecteer **opslaan** wanneer u klaar bent om de waarschuwing te genereren.
+1. Selecteer **Opslaan** wanneer u klaar bent om de waarschuwing te maken.
 
-### <a name="for-an-existing-action-group"></a>Voor een bestaande actiegroep:
-1. In de [Azure-portal](https://portal.azure.com/), selecteer **Monitor**.
+### <a name="for-an-existing-action-group"></a>Voor een bestaande actie groep:
+1. Selecteer in de [Azure Portal](https://portal.azure.com/) **monitor**.
 
-1. In de **instellingen** sectie, selecteer **actiegroepen**.
+1. Selecteer in de sectie **instellingen** de optie **actie groepen**.
 
-1. Zoek en selecteer de actiegroep die u wilt bewerken.
+1. Zoek en selecteer de actie groep die u wilt bewerken.
 
 1. Toevoegen aan de lijst met **acties**:
 
-    a. **Actietype:** *Webhook*
+    a. **Actie Type:** *webhook*
 
-    b. **Details:** De PagerDuty **URL voor de integratie** u eerder hebt opgeslagen.
+    b. **Details:** De URL van de PagerDuty- **integratie** die u eerder hebt opgeslagen.
 
-    c. **Naam:** De Webhook naam, alias of id.
+    c. **Naam:** Naam, alias of id van de webhook.
 
-1. Selecteer **opslaan** wanneer u klaar bent voor het bijwerken van de actiegroep.
+1. Selecteer **Opslaan** wanneer u klaar bent om de actie groep bij te werken.
 
-## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testen van de integratie van webhooks via een HTTP POST-aanvraag
-1. Maak de nettolading van de service health die u wilt verzenden. U vindt een voorbeeld van de service health webhookpayload op [Webhooks voor Azure-activiteit waarschuwingen voor activiteitenlogboeken](../azure-monitor/platform/activity-log-alerts-webhook.md).
+## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Uw integratie van webhooks testen via een HTTP POST-aanvraag
+1. Maak de service status Payload die u wilt verzenden. U kunt een voor beeld van een service Health-webhook Payload vinden op [webhooks voor Azure-activiteiten logboek waarschuwingen](../azure-monitor/platform/activity-log-alerts-webhook.md).
 
-1. Maak een HTTP POST-aanvraag als volgt:
+1. Maak als volgt een HTTP POST-aanvraag:
 
     ```
     POST        https://events.pagerduty.com/integration/<IntegrationKey>/enqueue
@@ -83,12 +80,12 @@ In dit artikel leest u hoe u Azure service health meldingen via PagerDuty instel
 
     BODY        <service health payload>
     ```
-1. U ontvangt een `202 Accepted` met een bericht met uw 'gebeurtenis-ID."
+1. U ontvangt een `202 Accepted` met een bericht dat uw ' gebeurtenis-ID ' bevat.
 
-1. Ga naar [PagerDuty](https://www.pagerduty.com/) om te bevestigen dat uw integratie met succes is ingesteld.
+1. Ga naar [PagerDuty](https://www.pagerduty.com/) om te bevestigen dat de integratie is ingesteld.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over het [configureren van de webhook-meldingen voor bestaande beheersystemen voor probleem](service-health-alert-webhook-guide.md).
-- Controleer de [activiteit log waarschuwing webhook-schema](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Meer informatie over [health servicemeldingen](../azure-monitor/platform/service-notifications.md).
-- Meer informatie over [actiegroepen](../azure-monitor/platform/action-groups.md).
+- Meer informatie over het [configureren van webhook-meldingen voor bestaande probleem beheersystemen](service-health-alert-webhook-guide.md).
+- Controleer het [webhook-schema](../azure-monitor/platform/activity-log-alerts-webhook.md)van de waarschuwing voor het activiteiten logboek. 
+- Meer informatie over [service status meldingen](../azure-monitor/platform/service-notifications.md).
+- Meer informatie over [actie groepen](../azure-monitor/platform/action-groups.md).

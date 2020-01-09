@@ -1,27 +1,20 @@
 ---
-title: Aanbevelingen voor de prestaties van benchmark tests voor Azure NetApp Files | Microsoft Docs
-description: Biedt Bench Mark-test aanbevelingen voor de prestaties en metrische gegevens van het volume met behulp van Azure NetApp Files.
-services: azure-netapp-files
-documentationcenter: ''
+title: Aanbevolen benchmark tests voor prestaties-Azure NetApp Files
+description: Meer informatie over aanbevelingen voor benchmark tests voor de prestaties en metrische gegevens van het volume met behulp van Azure NetApp Files.
 author: b-juche
-manager: ''
-editor: ''
-ms.assetid: ''
+ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.author: b-juche
-ms.openlocfilehash: 1969b3c237a4133df6f53bd6426ca4d50581cbcb
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 8f354152c23dd7ad0413f27585d724f8070ca003
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881733"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551519"
 ---
-# <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Aanbevelingen voor de prestaties van benchmark tests voor Azure NetApp Files
+# <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Aanbevelingen van prestatiebenchmarks voor Azure NetApp Files
 
 In dit artikel vindt u aanbevelingen voor het testen van de prestaties en metrische gegevens van het volume met behulp van Azure NetApp Files.
 
@@ -56,7 +49,7 @@ De FIO-voor beelden in deze sectie gebruiken de volgende configuratie:
 
 In de volgende voor beelden ziet u de FIO wille keurige Lees-en schrijf bewerkingen.
 
-### <a name="fio-8k-block-size-100-random-reads"></a>FIO: 8k-blok grootte van 100% wille keurige Lees bewerkingen
+### <a name="fio-8k-block-size-100-random-reads"></a>FIO: 8k-blok grootte 100% wille keurige Lees bewerkingen
 
 `fio --name=8krandomreads --rw=randread --direct=1 --ioengine=libaio --bs=8k --numjobs=4 --iodepth=128 --size=4G --runtime=600 --group_reporting`
 
@@ -65,11 +58,11 @@ In de volgende voor beelden ziet u de FIO wille keurige Lees-en schrijf bewerkin
 `Starting 4 processes`  
 `Jobs: 4 (f=4): [r(4)][84.4%][r=537MiB/s,w=0KiB/s][r=68.8k,w=0 IOPS][eta 00m:05s]`
 
-### <a name="fio-8k-block-size-100-random-writes"></a>FIO: 8k-blok grootte van 100% wille keurige schrijf bewerkingen
+### <a name="fio-8k-block-size-100-random-writes"></a>FIO: 8k-blok grootte 100% wille keurige schrijf bewerkingen
 
 `fio --name=8krandomwrites --rw=randwrite --direct=1 --ioengine=libaio --bs=8k --numjobs=4 --iodepth=128  --size=4G --runtime=600 --group_reporting`
 
-### <a name="output-73k-write-iops-displayed"></a>Uitvoer: 73k write IOPS weer gegeven
+### <a name="output-73k-write-iops-displayed"></a>Uitvoer: 73k write IOPS wordt weer gegeven
 
 `Starting 4 processes`  
 `Jobs: 4 (f=4): [w(4)][26.7%][r=0KiB/s,w=571MiB/s][r=0,w=73.0k IOPS][eta 00m:22s]`
@@ -82,16 +75,16 @@ In de voor beelden in deze sectie ziet u de FIO sequentiële Lees-en schrijf bew
 
 `fio --name=64kseqreads --rw=read --direct=1 --ioengine=libaio --bs=64k --numjobs=4 --iodepth=128  --size=4G --runtime=600 --group_reporting`
 
-### <a name="output-118-gbits-throughput-displayed"></a>Uitvoer: Gbit-door Voer van 11,8/s weer gegeven
+### <a name="output-118-gbits-throughput-displayed"></a>Uitvoer: 11,8 Gbit/s-door Voer weer gegeven
 
 `Starting 4 processes`  
 `Jobs: 4 (f=4): [R(4)][40.0%][r=1313MiB/s,w=0KiB/s][r=21.0k,w=0 IOPS][eta 00m:09s]`
 
-### <a name="fio-64k-block-size-100-sequential-writes"></a>FIO: 64k blok grootte 100% sequentiële Schrijf bewerkingen
+### <a name="fio-64k-block-size-100-sequential-writes"></a>FIO: 64k blok grootte 100% opeenvolgende schrijf bewerkingen
 
 `fio --name=64kseqwrites --rw=write --direct=1 --ioengine=libaio --bs=64k --numjobs=4 --iodepth=128  --size=4G --runtime=600 --group_reporting`
 
-### <a name="output-122-gbits-throughput-displayed"></a>Uitvoer: Gbit-door Voer van 12,2/s weer gegeven
+### <a name="output-122-gbits-throughput-displayed"></a>Uitvoer: 12,2 Gbit/s-door Voer weer gegeven
 
 `Starting 4 processes`  
 `Jobs: 4 (f=4): [W(4)][85.7%][r=0KiB/s,w=1356MiB/s][r=0,w=21.7k IOPS][eta 00m:02s]`
@@ -120,7 +113,7 @@ U kunt ook een dash board maken in Azure Monitor voor Azure NetApp Files door na
 
 ### <a name="azure-monitor-api-access"></a>Azure Monitor API-toegang
 
-U kunt toegang krijgen tot Azure NetApp Files meter items door gebruik te maken van REST API-aanroepen. Zie [ondersteunde metrische gegevens met Azure monitor: Micro soft. NetApp/netAppAccounts/capacityPools/](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes) volumes voor tellers voor capaciteits Pools en volumes.
+U kunt toegang krijgen tot Azure NetApp Files meter items door gebruik te maken van REST API-aanroepen. Zie [ondersteunde metrische gegevens met Azure monitor: micro soft. NetApp/netAppAccounts/capacityPools/volumes](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes) voor tellers voor capaciteits Pools en volumes.
 
 In het volgende voor beeld wordt een GET URL weer gegeven voor het weer geven van logische volume grootte:
 

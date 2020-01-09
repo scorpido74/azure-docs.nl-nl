@@ -3,19 +3,15 @@ title: Toegangsbeheer op basis van rollen in Azure Automation
 description: Met op rollen gebaseerd toegangsbeheer (RBAC) beschikt u over toegangsbeheer voor Azure-resources. In dit artikel wordt beschreven hoe u RBAC instelt in Azure Automation.
 keywords: automatisering rbac, rolgebaseerde toegangscontrole, azure rbac
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
 ms.date: 05/17/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 0ee524768f46de965b1755f2cfffdf9e2034bec8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 122e1f69e952acc00aba3cad2d75cb87b8fd08ee
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850785"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421591"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Toegangsbeheer op basis van rollen in Azure Automation
 

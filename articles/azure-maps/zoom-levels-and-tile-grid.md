@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 6dced7106b59f0e5a05c7ed6ff3e3368978cb083
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 68fbb9b8cd65e24d0fea0c571e5cf01b53560ba7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975995"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407574"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Zoomniveaus en tegelraster
 
-Azure Maps het bolvormig Mercator projectie Coordinate-systeem (EPSG: 3857). Een projectie is het mathematische model dat wordt gebruikt om de bolvormige wereld te transformeren naar een platte kaart. Met de bolvormige Mercator-projectie wordt de kaart in de palen uitgerekt om een vier Kante kaart te maken. Hierdoor worden de schaal en het Opper vlak van de kaart aanzienlijk vervormd, maar er zijn twee belang rijke eigenschappen die zwaarder zijn dan:
+Azure Maps het bolvormige Mercator-projectie coördinaten systeem (EPSG: 3857) gebruiken. Een projectie is het mathematische model dat wordt gebruikt om de bolvormige wereld te transformeren naar een platte kaart. Met de bolvormige Mercator-projectie wordt de kaart in de palen uitgerekt om een vier Kante kaart te maken. Hierdoor worden de schaal en het Opper vlak van de kaart aanzienlijk vervormd, maar er zijn twee belang rijke eigenschappen die zwaarder zijn dan:
 
 - Het is een conformele projectie, wat betekent dat de vorm van relatief kleine objecten wordt behouden. Dit is met name belang rijk bij het weer geven van foto-afbeelding, omdat we willen voor komen dat de vorm van gebouwen wordt vervalst. Vier Kante gebouwen moeten vier kant en niet rechthoekig worden weer gegeven.
 - Het is een cilindrische projectie, wat betekent dat North en South altijd direct omhoog en omlaag zijn, en dat West en Oost altijd direct links en rechts is. 
@@ -26,13 +26,13 @@ De kaart is onderverdeeld in vier Kante tegels om de prestaties van het ophalen 
 
 <center>
 
-![Wereld wijde tegel](./media/zoom-levels-and-tile-grid/world0.png)</center>
+![wereld tegel](./media/zoom-levels-and-tile-grid/world0.png)</center>
 
 Zoom niveau 1 maakt gebruik van vier tegels voor het weer geven van de wereld: a 2 x 2 vier kant
 
 <center>
 
-![tegel indeling 2x2 kaart](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
+indeling van ![2x2 kaart tegel](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
 
 Elk extra zoom niveau Quad-splitst de tegels van de vorige, waardoor een raster van 2<sup>zoomen</sup> x 2<sup>zoomen</sup>wordt gemaakt. Zoom niveau 22 is een raster 2<sup>22</sup> x 2<sup>22</sup>of 4.194.304 x 4.194.304 tegels (17.592.186.044.416 tegels in totaal).
 
@@ -82,7 +82,7 @@ Omdat de breedte en hoogte van de kaart verschillen voor elk zoom niveau, zijn d
 
 <center>
 
-![Kaart met pixel afmetingen](media/zoom-levels-and-tile-grid/map-width-height.png)</center>
+![toewijzing met Pixel dimensies](media/zoom-levels-and-tile-grid/map-width-height.png)</center>
 
 Gezien de breedte graad en de lengte graad in graden en het detail niveau, kunnen de pixels XY-coördinaten als volgt worden berekend:
 
@@ -110,7 +110,7 @@ Elke tegel krijgt XY-coördinaten, variërend van (0,0) in de linkerbovenhoek to
 
 <center>
 
-![Toewijzing van Tegel coördinaten](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
+![toewijzing van Tegel coördinaten](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
 
 Op basis van een paar pixels XY-coördinaten kunt u eenvoudig de tegel XY-coördinaten bepalen van de tegel die deze pixel bevat:
 
@@ -126,7 +126,7 @@ Wanneer u bepaalt welk zoom niveau u wilt gebruiken, onthoud dan dat elke locati
 
 <center>
 
-![Inzoomen op demo schaal](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
+schaal van ![in-/uitzoomen](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
 
 Zodra het zoom niveau is bepaald, kunnen de x-en y-waarden worden berekend. De tegel linksboven in elk zoom raster is x = 0, y = 0; de tegel aan de rechter kant is x = 2<sup>Zoom-1</sup>, y = 2<sup>Zoom-1</sup>.
 
@@ -134,16 +134,16 @@ Dit is het zoom raster voor zoom niveau 1:
 
 <center>
 
-![Zoom raster voor zoom niveau 1](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
+Zoom raster ![voor zoom niveau 1](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
 
 ## <a name="quadkey-indices"></a>Quadkey-indexen
 
-Sommige toewijzings platforms maken gebruik van een quadkey-naamgevings Conventie waarbij de tegel ZY coördinaten worden gecombineerd in een teken reeks met één dimensie, met de naam quadtree Keys of ' quadkeys '. Elke quadkey identificeert een afzonderlijke tegel op een bepaald detail niveau en kan worden gebruikt als een sleutel in algemene data base B-structuur indexen. De Azure Maps Sdk's bieden ondersteuning voor het bedekken van Tegel lagen die gebruikmaken van quadkey-naamgevings Conventie naast andere naam conventies zoals beschreven in het document [tegel laag toevoegen](map-add-tile-layer.md) .
+Sommige toewijzings platformen gebruiken een `quadkey` naamgevings Conventie voor indexering waarmee de tegel ZY coördinaten worden gecombineerd in een teken reeks met één dimensie, met de naam `quadtree` Keys of `quadkeys` short. Elk `quadkey` identificeert een afzonderlijke tegel op een bepaald detail niveau en kan worden gebruikt als een sleutel in algemene data base B-structuur indexen. De Azure Maps Sdk's bieden ondersteuning voor het bedekken van Tegel lagen die gebruikmaken van `quadkey` naam Conventie naast andere naam conventies zoals beschreven in het document [tegel laag toevoegen](map-add-tile-layer.md) .
 
 > [!NOTE]
-> De quadkeys-naamgevings Conventie werkt alleen voor zoom niveaus van een of meer. De ondersteuning van het zoom niveau voor de Azure Maps SDK is 0, een enkele kaart tegel voor de hele wereld. 
+> De `quadkeys` naam Conventie werkt alleen voor zoom niveaus van een of meer. De ondersteuning van het zoom niveau voor de Azure Maps SDK is 0, een enkele kaart tegel voor de hele wereld. 
 
-Als u tegel coördinaten wilt omzetten in een quadkey, zijn de bits van de Y-en X-coördinaten Interleaved en wordt het resultaat geïnterpreteerd als een getal met grondtal 4 (waarbij voorloop nullen worden bijgehouden) en omgezet in een teken reeks. Voor de gegeven tegel XY-coördinaten van (3, 5) op niveau 3 wordt de quadkey als volgt bepaald:
+Als u tegel coördinaten wilt omzetten in een `quadkey`, zijn de bits van de Y-en X-coördinaten Interleaved en wordt het resultaat geïnterpreteerd als een getal met grondtal 4 (waarbij voorloop nullen worden bijgehouden) en omgezet in een teken reeks. Voor de gegeven tegel XY-coördinaten van (3, 5) op niveau 3 wordt de `quadkey` als volgt bepaald:
 
 ```
 tileX = 3 = 011 (base 2)
@@ -153,13 +153,13 @@ tileY = 5 = 1012 (base 2)
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-Quadkeys hebben verschillende interessante eigenschappen. Ten eerste is de lengte van een quadkey (het aantal cijfers) gelijk aan het zoom niveau van de corresponderende tegel. Ten tweede begint de quadkey van een tegel met de quadkey van de bovenliggende Tegel (de bevatde tegel op het vorige niveau). Zoals u in het onderstaande voor beeld ziet, is tegel 2 het bovenliggende element van de tegels 20 tot en met 23:
+`Qquadkeys` hebben verschillende interessante eigenschappen. Ten eerste is de lengte van een `quadkey` (het aantal cijfers) gelijk aan het zoom niveau van de corresponderende tegel. Ten tweede begint de `quadkey` van een tegel met de `quadkey` van de bovenliggende Tegel (de bevatde tegel op het vorige niveau). Zoals u in het onderstaande voor beeld ziet, is tegel 2 het bovenliggende element van de tegels 20 tot en met 23:
 
 <center>
 
-![Tegel piramide Quadkey](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
+![tegel piramide](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center> Quadkey
 
-Ten slotte biedt quadkeys een eendimensionale index sleutel die gewoonlijk de nabijheid van tegels in de XY-ruimte behoudt. Met andere woorden, twee tegels met een nabijgelegen XY-coördinaten hebben doorgaans quadkeys die relatief dicht bij elkaar passen. Dit is belang rijk voor het optimaliseren van de prestaties van de data base, omdat naburige tegels vaak worden aangevraagd in groepen. het is wenselijk dat deze tegels op dezelfde schijf blokken worden bewaard, zodat het aantal lees bewerkingen van de schijf wordt geminimaliseerd.
+Ten slotte biedt `quadkeys` een eendimensionale index sleutel die doorgaans de nabijheid van tegels in de XY-ruimte behoudt. Met andere woorden, twee tegels die nabijgelegen XY-coördinaten hebben, hebben doorgaans `quadkeys` die relatief dicht bij elkaar passen. Dit is belang rijk voor het optimaliseren van de prestaties van de data base, omdat naburige tegels vaak worden aangevraagd in groepen. het is wenselijk dat deze tegels op dezelfde schijf blokken worden bewaard, zodat het aantal lees bewerkingen van de schijf wordt geminimaliseerd.
 
 ## <a name="tile-math-source-code"></a>Mathematische bron code van Tegel
 
@@ -422,6 +422,7 @@ namespace AzureMaps
             var sinLatitude = Math.Sin(latitude * Math.PI / 180);
             var y = 0.5 - Math.Log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * Math.PI);
 
+            //tileSize needed in calculations as in rare cases the multiplying/rounding/dividing can make the difference of a pixel which can result in a completely different tile. 
             var mapSize = MapSize(zoom, tileSize);
             tileX = (int)Math.Floor(Clip(x * mapSize + 0.5, 0, mapSize - 1) / tileSize);
             tileY = (int)Math.Floor(Clip(y * mapSize + 0.5, 0, mapSize - 1) / tileSize);
@@ -802,6 +803,7 @@ module AzureMaps {
             var sinLatitude = Math.sin(latitude * Math.PI / 180);
             var y = 0.5 - Math.log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * Math.PI);
 
+            //tileSize needed in calculations as in rare cases the multiplying/rounding/dividing can make the difference of a pixel which can result in a completely different tile. 
             var mapSize = this.MapSize(zoom, tileSize);
 
             return {
@@ -945,7 +947,7 @@ module AzureMaps {
 
 > [!NOTE]
 > De besturings elementen voor interactieve kaarten in de Azure Maps SDK hebben hulp functies voor het converteren tussen georuimtelijke posities en View Port pixels. 
-> - [Web-SDK: Pixel-en positie berekeningen toewijzen](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
+> - [Web-SDK: berekeningen van pixels en posities toewijzen](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
 
 ## <a name="next-steps"></a>Volgende stappen
 

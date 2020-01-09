@@ -1,17 +1,17 @@
 ---
-title: Hardware-Microsoft Azure-FXT-rand bestand initialiseren
+title: 'Zelf studie: een hardware-Azure FXT Edge-bestand initialiseren'
 description: Een eerste wacht woord instellen voor Azure FXT Edge-knoop punten
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: 080aa05af77b996bc0eb71287a3dfef25c24629a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8cb5f639deb0630575c46db30efe70ad967324a8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256014"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550888"
 ---
 # <a name="tutorial-set-hardware-passwords"></a>Zelf studie: Hardware-wacht woorden instellen
 
@@ -80,7 +80,7 @@ Het wacht woord dat u invoert, wordt gebruikt voor twee dingen:
 
 * Het is het tijdelijke wacht woord voor dit knoop punt van de Azure FXT Edge-Bestands server. 
 
-  Dit wacht woord wordt gewijzigd wanneer u een cluster met dit knoop punt maakt of wanneer u dit knoop punt aan het cluster toevoegt. Het wacht woord voor cluster beheer (gekoppeld aan de gebruiker ``admin``) is ook het hoofd wachtwoord voor alle knoop punten in een cluster.
+  Dit wacht woord wordt gewijzigd wanneer u een cluster met dit knoop punt maakt of wanneer u dit knoop punt aan het cluster toevoegt. Het wacht woord voor cluster beheer (gekoppeld aan de gebruikers ``admin``) is ook het hoofd wachtwoord voor alle knoop punten in een cluster.
 
 * Het is het wacht woord voor de lange termijn voor de iDRAC/IPMI-hardwarematige poort.
 
@@ -94,7 +94,7 @@ Re-enter password:**********
 Loading AvereOS......
 ```
 
-Nadat u het wacht woord hebt ingevoerd, wordt het systeem voortgezet met opstarten. Wanneer deze is voltooid, wordt een ``login:``-prompt. 
+Nadat u het wacht woord hebt ingevoerd, wordt het systeem voortgezet met opstarten. Wanneer deze is voltooid, wordt er een ``login:`` prompt. 
 
 ## <a name="sign-in-as-root"></a>Aanmelden als root
 

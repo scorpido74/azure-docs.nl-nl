@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 0b977cb9fe2df1627ad9a2e07b00ffb0e749ed39
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 39f22cc3cb026d4bed1dbe937e0e220b7bdceec7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498249"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435561"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Clusters in HDInsight instellen met Apache Hadoop, Apache Spark, Apache Kafka en meer
 
@@ -31,11 +31,11 @@ Een Hadoop-cluster bestaat uit meerdere virtuele machines (knoop punten) die wor
 
 In de volgende tabel ziet u de verschillende methoden die u kunt gebruiken om een HDInsight-cluster in te stellen.
 
-| Clusters die zijn gemaakt met | Webbrowser | Opdrachtregel | REST-API | SDK |
+| Clusters die zijn gemaakt met | Webbrowser | Opdrachtregel | REST API | SDK |
 | --- |:---:|:---:|:---:|:---:|
 | [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
-| [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
+| [Azure-CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
 | [.NET-SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) |&nbsp; |&nbsp; |&nbsp; |✔ |
@@ -57,7 +57,7 @@ Volg de instructies op het scherm. Details worden hieronder vermeld voor:
 
 ## <a name="resource-group-name"></a>Naam van de resourcegroep
 
-[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) helpt u bij het werken met de resources in uw toepassing als een groep, een Azure-resource groep genoemd. U kunt in één gecoördineerde bewerking alle resources voor uw toepassing implementeren, bijwerken, bewaken of verwijderen.
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) helpt u bij het werken met de resources in uw toepassing als een groep, een Azure-resource groep genoemd. U kunt in één gecoördineerde bewerking alle resources voor uw toepassing implementeren, bijwerken, bewaken of verwijderen.
 
 ## <a name="cluster-types"></a>Cluster typen en configuratie
 
@@ -108,7 +108,7 @@ De SSH-gebruikers naam heeft de volgende beperkingen:
 * Toegestane speciale tekens: _ en @
 * Tekens zijn niet toegestaan: #;.,\/:! *? $ (){}[] < > | &--= +% ~ ^ ruimte
 * Maximale lengte: 64
-* Gereserveerde namen: Hadoop, users, oozie, Hive, mapred, ambari-QA, Zookeeper, TEZ, hdfs, sqoop, garens, hcat, AMS, hbase, Storm, beheerder, admin, gebruiker, gebruiker1, test,//-naam, test1, user3, admin1, 1, 123, a, actuser, adm, Admin2, ASPNET, backup, console, David, gast, John, owner, root, Server, SQL, ondersteuning, Support_388945a0, sys, Test2, Test3, user4, user5, Spark
+* Gereserveerde namen: Hadoop, users, oozie, Hive, mapred, ambari-QA, Zookeeper, TEZ, hdfs, sqoop, garens, hcat, AMS, hbase, Storm, beheerder, admin, gebruiker, gebruiker1, test,//-naam, test1, user3, admin1, 1, 123, a, actuser, adm, Admin2, ASPNET, backup, console, David, gast, John, owner, root, Server, SQL, ondersteuning, support_388945a0, sys, Test2, Test3, user4, user5, Spark
 
 Met het beveiligings pakket van de onderneming kunt u HDInsight integreren met Active Directory en Apache zwerver. Meerdere gebruikers kunnen worden gemaakt met behulp van het Enter prise-beveiligings pakket.
 
@@ -226,7 +226,7 @@ Als u wilt weten welke waarde u moet gebruiken om een VM-grootte op te geven tij
 > [!IMPORTANT]  
 > Als u meer dan 32 worker-knoop punten in een cluster nodig hebt, moet u een hoofd knooppunt grootte selecteren met ten minste 8 kernen en 14 GB aan RAM-geheugen.
 
-Zie [grootten voor virtuele machines](../virtual-machines/windows/sizes.md)voor meer informatie. Zie [prijzen voor HDInsight](https://azure.microsoft.com/pricing/details/hdinsight)voor meer informatie over de prijzen van de verschillende grootten.
+Zie voor meer informatie, [grootten voor virtuele machines](../virtual-machines/windows/sizes.md). Zie [prijzen voor HDInsight](https://azure.microsoft.com/pricing/details/hdinsight)voor meer informatie over de prijzen van de verschillende grootten.
 
 ## <a name="classic-cluster-setup"></a>Klassieke cluster installatie
 
@@ -254,20 +254,20 @@ Sommige systeem eigen Java-onderdelen, zoals Apache mahout en trapsgewijs, kunne
 
 Soms wilt u tijdens het aanmaak proces de volgende configuratie bestanden configureren:
 
-* clusterIdentity. XML
+* clusterIdentity.xml
 * bestand core-site. XML
 * gateway. XML
-* hbase-env. XML
-* hbase-site. XML
-* hdfs-site. XML
-* Hive-env. XML
+* hbase-env.xml
+* hbase-site.xml
+* hdfs-site.xml
+* hive-env.xml
 * Hive-site. XML
 * mapred-site
-* oozie-site. XML
-* oozie-env. XML
+* oozie-site.xml
+* oozie-env.xml
 * Storm-site. XML
-* TEZ-site. XML
-* webhcat-site. XML
+* tez-site.xml
+* webhcat-site.xml
 * yarn-site. XML
 
 Zie [HDInsight-clusters aanpassen met Boots trap](hdinsight-hadoop-customize-cluster-bootstrap.md)voor meer informatie.

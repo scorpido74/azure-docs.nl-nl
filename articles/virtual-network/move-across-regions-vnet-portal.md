@@ -6,18 +6,18 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: d6f417e53e7d7a1a242a0c0dc56c2356f78f5344
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: c54725d9a947b0c912a822686d7b2cffe1a7b5c9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828955"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640785"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Een virtueel Azure-netwerk verplaatsen naar een andere regio met behulp van de Azure Portal
 
 Er zijn verschillende scenario's voor het verplaatsen van een bestaand virtueel Azure-netwerk van de ene regio naar een andere. Stel dat u een virtueel netwerk met dezelfde configuratie wilt maken voor testen en beschik baarheid als uw bestaande virtuele netwerk. Het is ook mogelijk dat u een virtueel netwerk voor productie naar een andere regio wilt verplaatsen als onderdeel van de planning voor herstel na nood gevallen.
 
-U kunt een Azure Resource Manager sjabloon gebruiken om de verplaatsing van het virtuele netwerk naar een andere regio te volt ooien. Hiervoor exporteert u het virtuele netwerk naar een sjabloon, wijzigt u de para meters zodat deze overeenkomen met de doel regio en implementeert u de sjabloon vervolgens in de nieuwe regio. Zie voor meer informatie over Resource Manager-sjablonen [Quickstart: Azure Resource Manager-sjablonen maken en implementeren via Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+U kunt een Azure Resource Manager sjabloon gebruiken om de verplaatsing van het virtuele netwerk naar een andere regio te volt ooien. Hiervoor exporteert u het virtuele netwerk naar een sjabloon, wijzigt u de para meters zodat deze overeenkomen met de doel regio en implementeert u de sjabloon vervolgens in de nieuwe regio. Voor meer informatie over Resource Manager-sjablonen raadpleegt [u Quick Start: Azure Resource Manager sjablonen maken en implementeren met behulp van de Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -32,7 +32,7 @@ U kunt een Azure Resource Manager sjabloon gebruiken om de verplaatsing van het 
 
 - Controleer of u met uw Azure-abonnement virtuele netwerken in de doel regio kunt maken. Neem contact op met de ondersteuning om het vereiste quotum in te scha kelen.
 
-- Zorg ervoor dat uw abonnement voldoende bronnen heeft ter ondersteuning van het toevoegen van virtuele netwerken voor dit proces. Zie [Azure-abonnement en servicelimieten, quota en beperkingen](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits) voor meer informatie.
+- Zorg ervoor dat uw abonnement voldoende bronnen heeft ter ondersteuning van het toevoegen van virtuele netwerken voor dit proces. Zie [Azure-abonnement en servicelimieten, quota en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits) voor meer informatie.
 
 
 ## <a name="prepare-for-the-move"></a>Voorbereiden voor de verhuizing
@@ -42,7 +42,7 @@ Ga als volgt te werk om het virtuele netwerk te exporteren en het virtuele doel 
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en selecteer vervolgens **resource groepen**.
 1. Zoek de resource groep die het virtuele bron netwerk bevat en selecteer deze.
-1. **Instellingen** > **export sjabloon**selecteren.
+1. Selecteer **instellingen** > **sjabloon exporteren**.
 1. Selecteer in het deel venster **sjabloon exporteren** de optie **implementeren**.
 1. Als u het bestand *para meters. json* in uw online editor wilt openen, selecteert u **sjabloon** > **para meters bewerken**.
 1. Als u de para meter van de naam van het virtuele netwerk wilt bewerken, wijzigt u de eigenschap **Value** onder **para meters**:
@@ -63,7 +63,7 @@ Ga als volgt te werk om het virtuele netwerk te exporteren en het virtuele doel 
 
 1. Selecteer **Opslaan** in de editor.
 
-1. Als u het bestand *Template. json* in de online editor wilt openen, selecteert u **sjabloon** > -**sjabloon bewerken**.
+1. Als u het bestand *Template. json* in de online editor wilt openen, selecteert u **sjabloon** > **sjabloon bewerken**.
 
 1. Als u in de online editor de doel regio wilt bewerken waar het virtuele netwerk wordt verplaatst, wijzigt u de eigenschap **Location** onder **resources**:
 
@@ -85,11 +85,11 @@ Ga als volgt te werk om het virtuele netwerk te exporteren en het virtuele doel 
 
     ```
 
-1. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes. De code voor een regio is de naam van de regio, zonder spaties (bijvoorbeeld **centrale vs** = **centraalus**).
+1. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes. De code voor een regio is de naam van de regio, zonder spaties (bijvoorbeeld **Central vs** = **centralus**).
 
 1. Beschrijving U kunt ook andere para meters in de sjabloon wijzigen, afhankelijk van uw vereisten:
 
-    * **Adres ruimte**: Voordat u het bestand opslaat, kunt u de adres ruimte van het virtuele netwerk wijzigen door de sectie **resources** > **addressSpace** te wijzigen en de eigenschap **addressPrefixes** te wijzigen:
+    * **Adres ruimte**: voordat u het bestand opslaat, kunt u de adres ruimte van het virtuele netwerk wijzigen door de **resources** > sectie **addressSpace** te wijzigen en de eigenschap **addressPrefixes** te wijzigen:
 
         ```json
                 "resources": [
@@ -109,7 +109,7 @@ Ga als volgt te werk om het virtuele netwerk te exporteren en het virtuele doel 
 
         ```
 
-    * **Subnet**: U kunt de naam van het subnet en de adres ruimte van het subnet wijzigen of toevoegen door de sectie **subnetten** van de sjabloon te wijzigen. U kunt de naam van het subnet wijzigen door de eigenschap **name** te wijzigen. En u kunt de adres ruimte van het subnet wijzigen door de eigenschap **addressPrefix** te wijzigen:
+    * **Subnet**: u kunt wijzigen of toevoegen aan de naam van het subnet en de adres ruimte van het subnet door de sectie **subnetten** van de sjabloon te wijzigen. U kunt de naam van het subnet wijzigen door de eigenschap **name** te wijzigen. En u kunt de adres ruimte van het subnet wijzigen door de eigenschap **addressPrefix** te wijzigen:
 
         ```json
                 "subnets": [
@@ -178,9 +178,9 @@ Ga als volgt te werk om het virtuele netwerk te exporteren en het virtuele doel 
 
 1. Selecteer in de online editor **Opslaan**.
 
-1. Als u het abonnement wilt kiezen waarin het virtuele netwerk van het doel wordt geïmplementeerd, selecteert u **basis** > -**abonnement**.
+1. Als u het abonnement wilt kiezen waarin het virtuele netwerk van het doel wordt geïmplementeerd, selecteert u **basis** > **abonnement**.
 
-1. Selecteer **basis** > **resource groep**om de resource groep te kiezen waarin het virtuele netwerk van het doel wordt geïmplementeerd. 
+1. Als u de resource groep wilt kiezen waarin het virtuele netwerk van het doel wordt geïmplementeerd, selecteert u **basis principes** > **resource groep**. 
 
     Als u een nieuwe resource groep voor het virtuele doel netwerk wilt maken, selecteert u **nieuwe maken**. Zorg ervoor dat de naam niet hetzelfde is als de naam van de bron resource groep in het bestaande virtuele netwerk.
 

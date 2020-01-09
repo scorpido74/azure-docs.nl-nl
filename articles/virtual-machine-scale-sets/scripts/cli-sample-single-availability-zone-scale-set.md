@@ -1,6 +1,6 @@
 ---
-title: Voorbeelden van Azure CLI - Schaalset met één zone | Microsoft Docs
-description: Azure CLI-voorbeelden
+title: Azure CLI-voor beelden-schaalset met één zone
+description: Met dit script maakt u een virtuele-machine schaalset van Azure waarop Ubuntu wordt uitgevoerd in één beschikbaarheids zone.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 12e8ebea994b39b7c4324b52068b574749002117
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45cef0e0e7d56baf8a5af3514f167d3a4565d15f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60883931"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350990"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-the-azure-cli"></a>Een virtuele-machineschaalset met één zone maken met Azure CLI
 Met dit script maakt u een virtuele-machineschaalset met Ubuntu in één beschikbaarheidszone. Nadat het script is uitgevoerd, hebt u via RDP toegang tot de virtuele machine.
@@ -41,7 +41,7 @@ az group delete --name myResourceGroup
 ```
 
 ## <a name="script-explanation"></a>Uitleg van het script
-In dit script worden de volgende opdrachten gebruikt voor het maken van een resourcegroep, een virtuele-machineschaalset en alle gerelateerde resources. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt voor het maken van een resourcegroep, een virtuele-machineschaalset en alle gerelateerde resources. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

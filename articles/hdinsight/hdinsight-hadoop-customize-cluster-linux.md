@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: 16b0fdcbae51b30e14fbf7ea4d98699dfaf19804
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
-ms.translationtype: MT
+ms.openlocfilehash: 6df7eebae0f0e7cfab790a4fca12dbb6ee5a5acf
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035730"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638983"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Azure HDInsight-clusters aanpassen met behulp van script acties
 
@@ -144,7 +144,7 @@ Script actie scripts kunnen worden gebruikt via de volgende hulpprogram ma's:
 
 HDInsight biedt scripts voor het installeren van de volgende onderdelen op HDInsight-clusters:
 
-| Naam | Script |
+| Name | Script |
 | --- | --- |
 | Een Azure Storage-account toevoegen |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Zie [extra opslag accounts toevoegen aan HDInsight](hdinsight-hadoop-add-storage.md). |
 | Hue installeren |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Zie [kleur Toon installeren en gebruiken op HDInsight Hadoop-clusters](hdinsight-hadoop-hue-linux.md). |
@@ -170,7 +170,7 @@ In deze sectie worden de verschillende manieren beschreven waarop u script actie
     | Eigenschap | Waarde |
     | --- | --- |
     | Een script selecteren | Selecteer __aangepast__om uw eigen script te gebruiken. Anders selecteert u een van de meegeleverde scripts. |
-    | Naam |Geef een naam op voor de script actie. |
+    | Name |Geef een naam op voor de script actie. |
     | Bash-script-URI |Geef de URI van het script op. |
     | Hoofd/werk-ZooKeeper |Geef de knoop punten op waarop het script wordt uitgevoerd: **Head**, **worker**of **ZooKeeper**. |
     | Parameters |Geef de para meters op, indien vereist door het script. |
@@ -250,7 +250,7 @@ Ga naar de [Azure Portal](https://portal.azure.com):
     | Eigenschap | Waarde |
     | --- | --- |
     | Een script selecteren | Selecteer __aangepast__om uw eigen script te gebruiken. Als dat niet het geval is, selecteert u een gegeven script. |
-    | Naam |Geef een naam op voor de script actie. |
+    | Name |Geef een naam op voor de script actie. |
     | Bash-script-URI |Geef de URI van het script op. |
     | Hoofd/werk-Zookeeper |Geef de knoop punten op waarop het script wordt uitgevoerd: **Head**, **worker**of **ZooKeeper**. |
     | Parameters |Geef de para meters op, indien vereist door het script. |
@@ -422,7 +422,7 @@ U kunt de Ambari-web-gebruikers interface gebruiken om informatie te bekijken di
 
 ### <a name="the-apache-ambari-web-ui"></a>De Apache Ambari-webgebruikersinterface
 
-1. Ga in uw browser naar https://CLUSTERNAME.azurehdinsight.net. Vervang **CLUSTERNAME** door de naam van uw HDInsight-cluster.
+1. Ga in uw browser naar `https://CLUSTERNAME.azurehdinsight.net`. Vervang **CLUSTERNAME** door de naam van uw HDInsight-cluster.
 
     Wanneer u hierom wordt gevraagd, voert u de account naam, de **beheerder**en het wacht woord voor het cluster in. Mogelijk moet u de beheerders referenties opnieuw invoeren in een webformulier.
 

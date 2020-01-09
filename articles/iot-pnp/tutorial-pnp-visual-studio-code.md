@@ -3,18 +3,18 @@ title: Een IoT Plug en Play preview-apparaat maken en testen | Microsoft Docs
 description: Meer informatie over het gebruik van VS code voor het maken en testen van een nieuw mogelijkheidsprofiel voor een IoT Plug en Play preview-apparaat.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/10/2019
+ms.date: 12/30/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: b7b9cd1040accda4d39af4d0a18940b56a45f929
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 209c63207653e98967a5a66e36c0cae53b7e044f
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569886"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550278"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Zelf studie: een mogelijkheidsprofiel maken en testen met Visual Studio code
 
@@ -259,7 +259,7 @@ U hebt nu de drie bestanden waaruit het mogelijkheidsprofiel kan worden gemaakt:
 * EnvironmentalSensor. interface. json
 * SensorboxModel. capabilitymodel. json
 
-## <a name="publish-the-model"></a>Het model publiceren
+## <a name="publish-the-model"></a>Publiceer het model
 
 Als u het hulp programma Azure IoT Explorer wilt gebruiken om uw mogelijkheidsprofiel te lezen, moet u dit publiceren in de opslag plaats van uw bedrijf. Als u wilt publiceren vanuit VS code, hebt u de connection string nodig voor de bedrijfs opslagplaats:
 
@@ -335,7 +335,7 @@ Volg de instructies in het **README.MD** -bestand in de map **sensorbox_app** om
 
 Wanneer u de code uitvoert, maakt deze verbinding met IoT Hub en wordt het verzenden van voor beeld-telemetrie en eigenschaps waarden gestart. Het apparaat reageert ook op opdrachten die vanuit IoT Hub worden verzonden. U kunt dit gedrag als volgt controleren:
 
-1. Een IoT-hub maken:
+1. Een IoT Hub maken:
 
     ```azurecli-interactive
     az group create --name environmentalsensorresources --location centralus

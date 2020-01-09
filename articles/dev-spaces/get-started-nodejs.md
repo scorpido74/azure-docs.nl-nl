@@ -3,14 +3,14 @@ title: 'Maak een Kubernetes dev-ruimte: Visual Studio code & node. js'
 services: azure-dev-spaces
 ms.date: 09/26/2018
 ms.topic: tutorial
-description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
+description: Deze zelf studie laat zien hoe u Azure dev Spaces en Visual Studio code kunt gebruiken om fouten op te sporen en snel een node. js-toepassing te herhalen in azure Kubernetes service
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: 64d4f7560325429fc2a36be066c6c475d4d60e90
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
-ms.translationtype: MT
+ms.openlocfilehash: a5cfd0281b7f68a416f47e478292341bd708ed1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708602"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438536"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Maak een Kubernetes dev-ruimte: Visual Studio code en node. js met Azure dev Spaces
 
@@ -23,7 +23,7 @@ In deze handleiding leert u het volgende:
 > [!Note]
 > Zie de sectie [probleem oplossing](troubleshooting.md) **Als u** op elk gewenst moment aan de slag gaat.
 
-## <a name="install-the-azure-cli"></a>Azure CLI installeren
+## <a name="install-the-azure-cli"></a>Azure-CLI installeren
 Azure Dev Spaces vereist minimale instellingen voor de lokale computer. De configuratie van uw ontwikkelomgeving wordt grotendeels opgeslagen in de cloud en kan worden gedeeld met andere gebruikers. Begin met het downloaden en uitvoeren van de [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ### <a name="sign-in-to-azure-cli"></a>Aanmelden bij Azure CLI
@@ -212,7 +212,7 @@ Hiermee wordt de foutopsporingsconfiguratie voor Azure Dev Spaces toegevoegd ond
 
 ### <a name="select-the-azds-debug-configuration"></a>Selecteer de AZDS-foutopsporingsconfiguratie
 1. Om de foutopsporingsweergave te openen, klikt u op het pictogram Foutopsporing in de **activiteitenbalk** van VS Code.
-1. Selecteer **Launch Program (AZDS)** als de actieve foutopsporingsconfiguratie.
+1. Selecteer **Programma starten (AZDS)** als de actieve foutopsporingsconfiguratie.
 
 ![](media/get-started-node/debug-configuration-nodejs2.png)
 

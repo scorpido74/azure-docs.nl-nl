@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 33ae3f9f928a55f50f4ecd0c6c98790a384e880b
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 11df1557fdcad059910dd2a87e9056e19a90bf01
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684187"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640827"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Aan de slag met de Azure WebJobs SDK voor gebeurtenis gerichte achtergrond verwerking
 
@@ -320,13 +320,13 @@ In deze sectie voert u de volgende taken uit om Application Insights logboek reg
 
 1. Voeg in het vak **verbindings reeksen** de volgende vermelding toe.
 
-   |Naam  |verbindings reeks  |Database type|
+   |Name  |verbindings reeks  |Database type|
    |---------|---------|------|
    |AzureWebJobsStorage | {de opslag connection string die u eerder hebt gekopieerd}|Aangepast|
 
 1. Als het vak **Toepassings instellingen** geen Application Insights instrumentatie sleutel heeft, voegt u het toe dat u eerder hebt gekopieerd. (De instrumentatie sleutel is mogelijk al aanwezig, afhankelijk van hoe u de App Service-app hebt gemaakt.)
 
-   |Naam  |Waarde  |
+   |Name  |Waarde  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentatie sleutel} |
 
@@ -399,7 +399,7 @@ Als u wilt profiteren van [Application Insights](../azure-monitor/app/app-insigh
 
 In deze sectie voert u lokaal opnieuw uit om te controleren of logboek gegevens nu worden Application Insights en naar de-console.
 
-1. Gebruik **Server Explorer** in Visual Studio om een wachtrij bericht te maken op dezelfde manier als u [eerder](#trigger-the-function-in-azure)hebt gedaan, met uitzonde ring van *Hello app Insights invoeren.* Als de bericht tekst.
+1. Gebruik **Server Explorer** in Visual Studio om een wachtrij bericht te maken zoals u [eerder](#test-locally)hebt gedaan, met uitzonde ring van *Hallo app Insights.* Als de bericht tekst.
 
 1. Voer het project uit.
 
@@ -407,13 +407,15 @@ In deze sectie voert u lokaal opnieuw uit om te controleren of logboek gegevens 
 
 1. Sluit het console venster.
 
-1. Open de [Azure Portal](https://portal.azure.com/)en ga naar uw Application Insights resource.
+1. Ga naar de [Azure Portal](https://portal.azure.com/) om uw Application Insights resource weer te geven. Zoek en selecteer **Application Insights**.
+
+1. Kies uw Application Insights-exemplaar.
 
 1. Selecteer **zoeken**.
 
    ![Zoek opdracht selecteren](./media/webjobs-sdk-get-started/select-search.png)
 
-1. Als u de *Hello app Insights* niet ziet. bericht, selecteert u regel matig **vernieuwen** gedurende enkele minuten. (De logboeken worden niet onmiddellijk weer gegeven omdat het even duurt voordat de Application Insights-client de logboeken die IT-processen heeft leeg gemaakt.)
+1. Als u de *Hello app Insights* niet ziet. bericht, selecteert u regel matig **vernieuwen** gedurende enkele minuten. (Logboeken worden niet onmiddellijk weer gegeven, omdat het even duurt voordat de Application Insights-client de logboeken die IT-processen heeft leeg gemaakt.)
 
    ![Logboeken in Application Insights](./media/webjobs-sdk-get-started/logs-in-ai.png)
 

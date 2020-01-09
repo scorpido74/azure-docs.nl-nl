@@ -1,24 +1,14 @@
 ---
-title: Schijf versleuteling inschakelen voor Azure Service Fabric Windows-clusters | Microsoft Docs
+title: Schijf versleuteling inschakelen voor Windows-clusters
 description: In dit artikel wordt beschreven hoe u schijf versleuteling voor Azure Service Fabric cluster knooppunten inschakelt met behulp van Azure Key Vault in Azure Resource Manager.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: navya
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/22/2019
-ms.author: atsenthi
-ms.openlocfilehash: 64abc48d57196fe20466032652c4b9bfb2e6c71f
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 24405c3c34bfd7b88932101c42a8d0fc96c90fa1
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599541"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614448"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-windows"></a>Schijf versleuteling inschakelen voor Azure Service Fabric cluster knooppunten in Windows 
 > [!div class="op_single_selector"]
@@ -61,7 +51,7 @@ Voor de preview-versie van schijf versleuteling voor de schaalset voor virtuele 
 2. Installeer de nieuwste versie van de [Azure cli](/cli/azure/install-azure-cli), die de nieuwe versleutelings opdrachten heeft.
 3. Installeer de nieuwste versie van de [Azure SDK vanuit Azure PowerShell](https://github.com/Azure/azure-powershell/releases) release. Hieronder vindt u de virtuele-machine schaalset Azure Disk Encryption-cmdlets voor het inschakelen ([instellen](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) van versleuteling, ophalen ([Get](/powershell/module/az.compute/get-azvmssvmdiskencryption)) versleutelings status en verwijderen ([uitschakelen](/powershell/module/az.compute/disable-azvmssdiskencryption)) voor het exemplaar van de schaalset.
 
-| Opdracht | Version |  Source  |
+| Opdracht | Versie |  Bron  |
 | ------------- |-------------| ------------|
 | Get-AzVmssDiskEncryptionStatus   | 1.0.0 of hoger | Az.Compute |
 | Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 of hoger | Az.Compute |

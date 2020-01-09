@@ -1,56 +1,47 @@
 ---
-title: Meldingen van betrouwbare Services | Microsoft Docs
-description: Algemene documentatie voor Service Fabric Reliable Services-meldingen
-services: service-fabric
-documentationcenter: .net
+title: Reliable Services meldingen
+description: Conceptuele documentatie voor Service Fabric Reliable Services meldingen voor betrouw bare status Manager en betrouw bare woorden lijst
 author: mcoskun
-manager: chackdan
-editor: masnider,vturecek
-ms.assetid: cdc918dd-5e81-49c8-a03d-7ddcd12a9a76
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: d009749b7bc31595be26124b9d1eee7666e95bd4
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 1f3239ea1da252ccd84c6572b562756c8fd1677d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551672"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639561"
 ---
-# <a name="reliable-services-notifications"></a>Meldingen van betrouwbare Services
-Kennisgevingen kunnen clients de wijzigingen bijhouden die worden aangebracht in een object waarin ze geïnteresseerd bent. Twee typen objecten ondersteunen meldingen: *Betrouwbare Toestandmanager* en *betrouwbare Dictionary*.
+# <a name="reliable-services-notifications"></a>Reliable Services meldingen
+Met meldingen kunnen clients de wijzigingen bijhouden die worden aangebracht in een object waarin ze zijn geïnteresseerd. Twee typen objecten ondersteunen meldingen: *betrouw bare status Manager* en *betrouw bare woorden lijst*.
 
 Veelvoorkomende redenen voor het gebruik van meldingen zijn:
 
-* Het bouwen van gerealiseerde weergaven, zoals secundaire indexen of geaggregeerde gefilterde weergaven van de status van de replica. Een voorbeeld is een gesorteerde index van alle sleutels in een betrouwbare Dictionary.
-* Verzonden gegevens, zoals het aantal gebruikers die zijn toegevoegd in het afgelopen uur.
+* Het bouwen van gerealiseerde weer gaven, zoals secundaire indexen of geaggregeerde gefilterde weer gaven van de status van de replica. Een voor beeld is een gesorteerde index van alle sleutels in een betrouw bare woorden lijst.
+* Het verzenden van bewakings gegevens, zoals het aantal gebruikers dat het afgelopen uur is toegevoegd.
 
-Meldingen worden gestart als onderdeel van het toepassen van bewerkingen. Vanwege die worden meldingen zo snel mogelijk en synchrone gebeurtenissen mag niet bevatten dure bewerkingen behandeld.
+Meldingen worden gestart als onderdeel van het Toep assen van bewerkingen. Als gevolg hiervan moeten meldingen zo snel mogelijk worden verwerkt en synchrone gebeurtenissen mogen geen dure bewerkingen omvatten.
 
-## <a name="reliable-state-manager-notifications"></a>Betrouwbare status Manager-meldingen
-Betrouwbare status Manager biedt meldingen voor de volgende gebeurtenissen:
+## <a name="reliable-state-manager-notifications"></a>Betrouw bare status Manager-meldingen
+Betrouw bare status beheerder biedt meldingen voor de volgende gebeurtenissen:
 
 * Transactie
   * Doorvoeren
-* Status manager
+* Status Manager
   * Opnieuw samenstellen
-  * Toevoeging van een betrouwbare status
-  * Het verwijderen van een betrouwbare status
+  * Toevoeging van een betrouw bare status
+  * Verwijdering van een betrouw bare status
 
-Betrouwbare status Manager houdt bij of de huidige actieve transacties. De enige wijziging in de status van de transactie die ervoor zorgt dat een melding om te worden geactiveerd is een transactie wordt doorgevoerd.
+Betrouw bare status manager houdt de huidige invlucht transacties bij. De enige wijziging in de transactie status waardoor een melding wordt gestart, is een trans actie die wordt vastgelegd.
 
-Betrouwbare status Manager onderhoudt een verzameling van betrouwbare statussen, zoals betrouwbare Dictionary en betrouwbare wachtrij. Meldingen van betrouwbare status Manager wordt geactiveerd wanneer deze verzameling wordt gewijzigd: een betrouwbare status is toegevoegd of verwijderd, of de hele verzameling is opnieuw opgebouwd.
-De verzameling van betrouwbare status Manager is opnieuw opgebouwd in drie gevallen:
+Betrouw bare status beheerder houdt een verzameling betrouw bare statussen, zoals een betrouw bare dictionary en een betrouw bare wachtrij. Betrouw bare status Manager wordt gebrand meldingen wanneer deze verzameling wordt gewijzigd: er wordt een betrouw bare status toegevoegd of verwijderd, of de volledige verzameling wordt opnieuw opgebouwd.
+De betrouw bare status beheer-verzameling wordt in drie gevallen opnieuw opgebouwd:
 
-* Herstel: Wanneer een replica wordt gestart, worden de oorspronkelijke staat van de schijf hersteld. Aan het einde van het herstel wordt **NotifyStateManagerChangedEventArgs** een gebeurtenis die de set van herstelde betrouwbare statussen bevat.
-* Volledige kopie: Voordat een replica kan deelnemen aan de configuratieset, heeft deze kunnen worden gebouwd. Soms moet een volledige kopie van betrouwbare status Manager de status van de primaire replica moet worden toegepast op de niet-actieve secundaire replica. Maakt gebruik van betrouwbare status Manager op de secundaire replica **NotifyStateManagerChangedEventArgs** een gebeurtenis die de set van betrouwbare statussen die wordt verkregen via de primaire replica bevat.
-* Herstellen: In noodgevallen herstelscenario's van de replica-status kan worden hersteld vanuit een back-up via **RestoreAsync**. In dergelijke gevallen betrouwbare status Manager op de primaire replica gebruikt **NotifyStateManagerChangedEventArgs** een gebeurtenis die de set van betrouwbare statussen die wordt hersteld op basis van de back-up bevat.
+* Herstel: wanneer een replica wordt gestart, wordt de vorige status van de schijf hersteld. Aan het einde van de herstel bewerking wordt **NotifyStateManagerChangedEventArgs** gebruikt om een gebeurtenis te starten die de set betrouw bare statussen bevat.
+* Volledige kopie: voordat een replica kan worden toegevoegd aan de configuratieset, moet deze zijn gebouwd. Soms moet er een volledige kopie van de status van een betrouw bare status Manager van de primaire replica worden toegepast op de niet-actieve secundaire replica. Betrouw bare status Manager voor de secundaire replica maakt gebruik van **NotifyStateManagerChangedEventArgs** om een gebeurtenis te starten die de set betrouw bare statussen bevat die het verkregen is van de primaire replica.
+* Herstellen: in scenario's voor herstel na nood gevallen kan de status van de replica worden hersteld vanuit een back-up via **RestoreAsync**. In dergelijke gevallen maakt een betrouw bare status Manager voor de primaire replica gebruik van **NotifyStateManagerChangedEventArgs** om een gebeurtenis te starten die de set betrouw bare statussen bevat die deze van de back-up heeft hersteld.
 
-Als u wilt registreren voor meldingen en/of de status manager-meldingen, moet u registreren bij de **TransactionChanged** of **StateManagerChanged** gebeurtenissen op betrouwbare status Manager. Een algemene plaats om u te registreren bij deze gebeurtenis-handlers is de constructor van de stateful service. Wanneer u zich bij de constructor registreren, kunt u een melding die wordt veroorzaakt door een wijziging tijdens de levensduur van wordt niet missen **IReliableStateManager**.
+Als u zich wilt registreren voor transactie meldingen en/of status Manager-meldingen, moet u zich registreren bij de **TransactionChanged** -of **StateManagerChanged** -gebeurtenissen op betrouw bare status Manager. Een gemeen schappelijke plaats voor registratie bij deze gebeurtenis-handlers is de constructor van uw stateful service. Wanneer u zich registreert bij de constructor, mist u geen meldingen die worden veroorzaakt door een wijziging tijdens de levens duur van **IReliableStateManager**.
 
 ```csharp
 public MyService(StatefulServiceContext context)
@@ -61,14 +52,14 @@ public MyService(StatefulServiceContext context)
 }
 ```
 
-De **TransactionChanged** maakt gebruik van gebeurtenis-handler **NotifyTransactionChangedEventArgs** voor meer informatie over de gebeurtenis. Deze bevat de eigenschap action (bijvoorbeeld **NotifyTransactionChangedAction.Commit**) die aangeeft dat het type wijziging. Het bevat ook de transactie-eigenschap waarmee een verwijzing naar de transactie die gewijzigd.
+De gebeurtenis-handler **TransactionChanged** maakt gebruik van **NotifyTransactionChangedEventArgs** om details over de gebeurtenis op te geven. Het bevat de eigenschap Action (bijvoorbeeld **NotifyTransactionChangedAction. commit**) waarmee het type wijziging wordt opgegeven. Het bevat ook de trans actie-eigenschap die een verwijzing geeft naar de trans actie die is gewijzigd.
 
 > [!NOTE]
-> Vandaag de dag **TransactionChanged** gebeurtenissen worden gegenereerd, alleen als de transactie doorgevoerd wordt. De actie is gelijk aan **NotifyTransactionChangedAction.Commit**. Maar in de toekomst gebeurtenissen voor andere soorten statuswijzigingen transactie kunnen worden verhoogd. U wordt aangeraden de actie controleren en verwerken van de gebeurtenis alleen als het is een App die u verwacht.
+> Vandaag worden **TransactionChanged** -gebeurtenissen alleen gegenereerd als de trans actie is doorgevoerd. De actie is vervolgens gelijk aan **NotifyTransactionChangedAction. commit**. Maar in de toekomst kunnen gebeurtenissen worden gegenereerd voor andere typen transactie status wijzigingen. U wordt aangeraden de actie te controleren en de gebeurtenis alleen te verwerken als deze wordt verwacht.
 > 
 > 
 
-Hieronder volgt een voorbeeld **TransactionChanged** gebeurtenis-handler.
+Hier volgt een voor beeld van een **TransactionChanged** -gebeurtenis-handler.
 
 ```csharp
 private void OnTransactionChangedHandler(object sender, NotifyTransactionChangedEventArgs e)
@@ -83,14 +74,14 @@ private void OnTransactionChangedHandler(object sender, NotifyTransactionChanged
 }
 ```
 
-De **StateManagerChanged** maakt gebruik van gebeurtenis-handler **NotifyStateManagerChangedEventArgs** voor meer informatie over de gebeurtenis.
+De gebeurtenis-handler **StateManagerChanged** maakt gebruik van **NotifyStateManagerChangedEventArgs** om details over de gebeurtenis op te geven.
 **NotifyStateManagerChangedEventArgs** heeft twee subklassen: **NotifyStateManagerRebuildEventArgs** en **NotifyStateManagerSingleEntityChangedEventArgs**.
-Gebruikmaken van de eigenschap actie **NotifyStateManagerChangedEventArgs** gecast **NotifyStateManagerChangedEventArgs** voor de juiste subklasse:
+U gebruikt de actie-eigenschap in **NotifyStateManagerChangedEventArgs** om **NotifyStateManagerChangedEventArgs** naar de juiste subklasse te casten:
 
 * **NotifyStateManagerChangedAction.Rebuild**: **NotifyStateManagerRebuildEventArgs**
-* **NotifyStateManagerChangedAction.Add** en **NotifyStateManagerChangedAction.Remove**: **NotifyStateManagerSingleEntityChangedEventArgs**
+* **NotifyStateManagerChangedAction. add** en **NotifyStateManagerChangedAction. Remove**: **NotifyStateManagerSingleEntityChangedEventArgs**
 
-Hieronder volgt een voorbeeld **StateManagerChanged** wijzigingsmelding.
+Hier volgt een voor beeld van een **StateManagerChanged** -meldings-handler.
 
 ```csharp
 public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChangedEventArgs e)
@@ -106,17 +97,17 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 }
 ```
 
-## <a name="reliable-dictionary-notifications"></a>Betrouwbare woordenlijst meldingen
-Betrouwbare Dictionary biedt meldingen voor de volgende gebeurtenissen:
+## <a name="reliable-dictionary-notifications"></a>Betrouw bare woordenlijst meldingen
+Betrouw bare woorden lijst biedt meldingen voor de volgende gebeurtenissen:
 
-* Opnieuw opbouwen: Wanneer met de naam **ReliableDictionary** de status van een herstelde of gekopieerd lokale status- of back-up is hersteld.
-* Wissen: Aangeroepen wanneer de status van **ReliableDictionary** is uitgeschakeld via de **ClearAsync** methode.
-* Voeg toe: Wordt aangeroepen wanneer een item is toegevoegd aan **ReliableDictionary**.
-* Update: Wordt aangeroepen wanneer een item in **IReliableDictionary** is bijgewerkt.
-* Verwijderen: Wordt aangeroepen wanneer een item in **IReliableDictionary** is verwijderd.
+* Rebuild: wordt aangeroepen wanneer de status van de **ReliableDictionary** is hersteld van een herstelde of gekopieerde lokale status of back-up.
+* Clear: wordt aangeroepen wanneer de status van **ReliableDictionary** is gewist via de methode **ClearAsync** .
+* Add: wordt aangeroepen wanneer een item is toegevoegd aan **ReliableDictionary**.
+* Update: wordt aangeroepen wanneer een item in **IReliableDictionary** is bijgewerkt.
+* Remove: aangeroepen wanneer een item in **IReliableDictionary** is verwijderd.
 
-Als u betrouwbare Dictionary-meldingen, moet u registreren bij de **DictionaryChanged** gebeurtenis-handler op **IReliableDictionary**. Een algemene plaats om u te registreren bij deze gebeurtenis-handlers is in de **ReliableStateManager.StateManagerChanged** melding toevoegen.
-Registreren bij **IReliableDictionary** wordt toegevoegd aan **IReliableStateManager** zorgt ervoor dat u meldingen wordt niet mist.
+Als u betrouw bare woordenlijst meldingen wilt ontvangen, moet u zich registreren bij de **DictionaryChanged** -gebeurtenis-handler op **IReliableDictionary**. Een veelvoorkomende plaats voor registratie bij deze gebeurtenis-handlers vindt u in de **ReliableStateManager. StateManagerChanged** -melding toevoegen.
+Wanneer **IReliableDictionary** wordt toegevoegd aan **IReliableStateManager** , weet u zeker dat u geen meldingen meer mist.
 
 ```csharp
 private void ProcessStateManagerSingleEntityNotification(NotifyStateManagerChangedEventArgs e)
@@ -136,11 +127,11 @@ private void ProcessStateManagerSingleEntityNotification(NotifyStateManagerChang
 ```
 
 > [!NOTE]
-> **ProcessStateManagerSingleEntityNotification** is de voorbeeldmethode die de voorgaande **OnStateManagerChangedHandler** voorbeeld aanroepen.
+> **ProcessStateManagerSingleEntityNotification** is de voorbeeld methode die het voor beeld van de voor gaande **OnStateManagerChangedHandler** -voor beelden aanroept.
 > 
 > 
 
-De bovenstaande code wordt de **IReliableNotificationAsyncCallback** interface, samen met **DictionaryChanged**. Omdat **NotifyDictionaryRebuildEventArgs** bevat een **iasyncenumerable geretourneerd** interface--die moet worden geïnventariseerd asynchroon--meldingen opnieuw worden gestart via  **RebuildNotificationAsyncCallback** in plaats van **OnDictionaryChangedHandler**.
+Met de voor gaande code wordt de **IReliableNotificationAsyncCallback** -interface ingesteld, samen met **DictionaryChanged**. Omdat **NotifyDictionaryRebuildEventArgs** een **IAsyncEnumerable** -interface bevat, die asynchroon moet worden geïnventariseerd, worden meldingen die opnieuw worden opgebouwd, geactiveerd via **RebuildNotificationAsyncCallback** in plaats van **OnDictionaryChangedHandler**.
 
 ```csharp
 public async Task OnDictionaryRebuildNotificationHandlerAsync(
@@ -158,17 +149,17 @@ public async Task OnDictionaryRebuildNotificationHandlerAsync(
 ```
 
 > [!NOTE]
-> In de bovenstaande code, als onderdeel van de verwerking van de melding opnieuw maken eerst de onderhouden geaggregeerde status gewist. Omdat de betrouwbare verzameling wordt opnieuw opgebouwd met een nieuwe status, zijn alle eerdere meldingen niet relevant.
+> In de voor gaande code, als onderdeel van het verwerken van de melding over het opnieuw opbouwen, wordt eerst de status beheerd verzameld gewist. Omdat de betrouw bare verzameling opnieuw wordt gemaakt met een nieuwe status, zijn alle eerdere meldingen niet relevant.
 > 
 > 
 
-De **DictionaryChanged** maakt gebruik van gebeurtenis-handler **NotifyDictionaryChangedEventArgs** voor meer informatie over de gebeurtenis.
-**NotifyDictionaryChangedEventArgs** vijf subklassen heeft. Gebruik de actie-eigenschap in **NotifyDictionaryChangedEventArgs** gecast **NotifyDictionaryChangedEventArgs** voor de juiste subklasse:
+De gebeurtenis-handler **DictionaryChanged** maakt gebruik van **NotifyDictionaryChangedEventArgs** om details over de gebeurtenis op te geven.
+**NotifyDictionaryChangedEventArgs** heeft vijf subklassen. Gebruik de eigenschap Action in **NotifyDictionaryChangedEventArgs** om **NotifyDictionaryChangedEventArgs** naar de juiste subklasse te casten:
 
 * **NotifyDictionaryChangedAction.Rebuild**: **NotifyDictionaryRebuildEventArgs**
 * **NotifyDictionaryChangedAction.Clear**: **NotifyDictionaryClearEventArgs**
-* **NotifyDictionaryChangedAction.Add**: **NotifyDictionaryItemAddedEventArgs**
-* **NotifyDictionaryChangedAction.Update**: **NotifyDictionaryItemUpdatedEventArgs**
+* **NotifyDictionaryChangedAction. add**: **NotifyDictionaryItemAddedEventArgs**
+* **NotifyDictionaryChangedAction. update**: **NotifyDictionaryItemUpdatedEventArgs**
 * **NotifyDictionaryChangedAction.Remove**: **NotifyDictionaryItemRemovedEventArgs**
 
 ```csharp
@@ -203,21 +194,21 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 ```
 
 ## <a name="recommendations"></a>Aanbevelingen
-* *Voer* meldingsgebeurtenissen zo snel mogelijk te voltooien.
-* *Geen* dure bewerkingen (bijvoorbeeld: i/o-bewerkingen) worden uitgevoerd als onderdeel van de synchrone gebeurtenissen.
-* *Voer* controleert u het actietype voordat u de gebeurtenis verwerkt. Nieuwe actietypen mogelijk in de toekomst worden toegevoegd.
+* *Voltooi de* meldings gebeurtenissen zo snel mogelijk.
+* Voer *geen* dure bewerkingen uit (bijvoorbeeld I/O-bewerkingen) als onderdeel van synchrone gebeurtenissen.
+* *Controleer het* actie type voordat u de gebeurtenis verwerkt. Nieuwe actie typen kunnen in de toekomst worden toegevoegd.
 
-Hier volgen een aantal zaken waarmee u rekening moet houden:
+Hier volgen enkele dingen die u moet onthouden:
 
-* Meldingen worden gestart als onderdeel van de uitvoering van een bewerking. Bijvoorbeeld, wordt een melding terugzetten geactiveerd als de laatste stap van een herstelbewerking uit. Een herstelpunt wordt niet voltooien totdat de meldingsgebeurtenis is verwerkt.
-* Omdat de meldingen worden geactiveerd als onderdeel van de toepassing bewerkingen, Zie clients alleen meldingen voor lokaal toegezegde bewerkingen. En omdat bewerkingen worden gegarandeerd alleen te worden lokaal toegepast (met andere woorden, vastgelegd), ze kunnen wel of kan niet ongedaan worden gemaakt in de toekomst.
-* Op het pad opnieuw wordt één melding geactiveerd voor elke bewerking toegepast. Dit betekent dat als transactie T1 Create(X) Delete(X) en Create(X) bevat, u een melding voor het maken van de X-en één voor de verwijdering, en één voor het maken, in die volgorde ontvangt.
-* Voor transacties die meerdere bewerkingen bevatten, worden de bewerkingen in de volgorde waarin ze zijn ontvangen op de primaire replica van de gebruiker toegepast.
-* Als onderdeel van de verwerking van de waarde false wordt uitgevoerd, bepaalde bewerkingen mogelijk ongedaan worden gemaakt. Meldingen worden gegenereerd voor deze bewerkingen ongedaan maken, de status van de replica worden teruggedraaid naar een stabiel punt. Een belangrijk verschil van meldingen voor ongedaan maken is dat de gebeurtenissen die dubbele sleutels hebben worden samengevoegd. Bijvoorbeeld, als transactie T1 is ongedaan wordt gemaakt, ziet u een eenmalige kennisgeving aan Delete(X).
+* Meldingen worden gestart als onderdeel van het uitvoeren van een bewerking. Een herstel melding wordt bijvoorbeeld geactiveerd als de laatste stap van een herstel bewerking. Een herstel bewerking kan pas worden voltooid als de meldings gebeurtenis is verwerkt.
+* Omdat meldingen worden geactiveerd als onderdeel van het Toep assen van bewerkingen, zien clients alleen meldingen voor lokaal doorgevoerde bewerkingen. En omdat bewerkingen alleen worden gegarandeerd lokaal worden doorgevoerd (met andere woorden, geregistreerd), kunnen ze in de toekomst mogelijk niet worden uitgevoerd.
+* Op het pad opnieuw uitvoeren wordt één melding gestart voor elke toegepaste bewerking. Dit betekent dat als de trans actie T1 Create (X), Delete (X) en Create (X) bevat, u één melding krijgt voor het maken van X, een voor het verwijderen en één voor het maken, in die volg orde.
+* Voor trans acties die meerdere bewerkingen bevatten, worden bewerkingen toegepast in de volg orde waarin ze zijn ontvangen op de primaire replica van de gebruiker.
+* Als onderdeel van de verwerking van ONWAAR voortgang, zijn bepaalde bewerkingen mogelijk ongedaan. Er worden meldingen gegenereerd voor dergelijke bewerkingen voor ongedaan maken. de status van de replica wordt teruggedraaid naar een stabiel punt. Een belang rijk verschil bij het ongedaan maken van meldingen is dat gebeurtenissen die dubbele sleutels hebben, worden geaggregeerd. Als bijvoorbeeld T1 trans actie ongedaan wordt gemaakt, ziet u één melding om te verwijderen (X).
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Betrouwbare verzamelingen](service-fabric-work-with-reliable-collections.md)
-* [Snel starten met betrouwbare Services](service-fabric-reliable-services-quick-start.md)
-* [Reliable Services back-up en herstellen (herstel na noodgevallen)](service-fabric-reliable-services-backup-restore.md)
-* [Referentie voor ontwikkelaars voor betrouwbare verzamelingen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Reliable Services snel starten](service-fabric-reliable-services-quick-start.md)
+* [Back-up en herstel (nood herstel) Reliable Services](service-fabric-reliable-services-backup-restore.md)
+* [Naslag informatie voor ontwikkel aars voor betrouw bare verzamelingen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
 

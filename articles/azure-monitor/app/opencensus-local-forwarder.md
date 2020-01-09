@@ -1,5 +1,5 @@
 ---
-title: Azure-toepassing Insights opentelling gedistribueerde tracering lokale doorstuur server (preview) | Micro soft docs
+title: Azure-toepassing inzichten opentellt lokale doorstuur server (preview-versie)
 description: Voorwaarts gedistribueerde traceringen en intervallen van de open telling van talen zoals python en ga naar Azure-toepassing Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
-ms.openlocfilehash: b0d0bc4d711b05dd2206b7437f1f4c7b3444a0c6
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 25c6c82fa1179a9173f42c3a5a4e95a371dd49c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819220"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406609"
 ---
 # <a name="local-forwarder-preview"></a>Lokale doorstuur server (preview-versie)
 
@@ -25,13 +25,13 @@ Lokale doorstuur server is een [open-source project op github](https://github.co
 
 ### <a name="windows"></a>Windows
 
-#### <a name="windows-service"></a>Windows-service
+#### <a name="windows-service"></a>Windows Service
 
 De eenvoudigste manier om een lokale doorstuur server uit te voeren onder Windows is door deze te installeren als een Windows-service. De release wordt geleverd met een Windows-service-uitvoerbaar bestand (*WindowsServiceHost/Microsoft. LocalForwarder. WindowsServiceHost. exe*), dat eenvoudig kan worden geregistreerd bij het besturings systeem.
 
 > [!NOTE]
-> Voor de lokale doorstuur server is mini maal .NET Framework 4,7 vereist. Als u niet beschikt over .NET Framework 4,7, wordt de service niet geïnstalleerd, maar wordt deze niet gestart. **[Ga naar de pagina .NET Framework downloaden](
-https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)** om toegang te krijgen tot de recentste versie van de .NET Framework.
+> Voor de lokale doorstuur server is mini maal .NET Framework 4,7 vereist. Als u niet beschikt over .NET Framework 4,7, wordt de service niet geïnstalleerd, maar wordt deze niet gestart. Voor toegang tot de meest recente versie van .NET Framework **[gaat u naar de downloadpagina van .NET Framework](
+https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)** .
 
 1. Down load het BF. WindowsServiceHost. zip-bestand van de pagina voor de [lokale doorstuur server](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) op github.
 
@@ -78,7 +78,7 @@ Voor bepaalde gebruiks gevallen kan het handig zijn om een lokale doorstuur serv
   ```batchfile
   E:\uncdrop\ConsoleHost\publish>dotnet Microsoft.LocalForwarder.ConsoleHost.dll
   ```
-* een op zichzelf staande, .NET core-set binaire bestanden voor x86-en x64-platforms. Hiervoor is geen .NET core runtime vereist om te worden uitgevoerd. */ConsoleHost/Win-x86/Publish/Microsoft.LocalForwarder.ConsoleHost.exe*, */ConsoleHost/Win-x64/Publish/Microsoft.LocalForwarder.ConsoleHost.exe*.
+* een op zichzelf staande, .NET core-set binaire bestanden voor x86-en x64-platforms. Hiervoor is geen .NET core runtime vereist om te worden uitgevoerd. */ConsoleHost/win-x86/publish/Microsoft.LocalForwarder.ConsoleHost.exe*, */ConsoleHost/win-x64/publish/Microsoft.LocalForwarder.ConsoleHost.exe*.
   ```batchfile
   E:\uncdrop\ConsoleHost\win-x86\publish>Microsoft.LocalForwarder.ConsoleHost.exe
   E:\uncdrop\ConsoleHost\win-x64\publish>Microsoft.LocalForwarder.ConsoleHost.exe
@@ -93,7 +93,7 @@ Net als bij Windows wordt de release geleverd met de volgende uitvoer bare versi
 dotnet Microsoft.LocalForwarder.ConsoleHost.dll
 ```
 
-* een op zichzelf staande .NET-hoofdset binaire bestanden voor Linux-64. Voor deze versie hoeft geen .NET core runtime te worden uitgevoerd. */ConsoleHost/Linux-x64/Publish/Microsoft.LocalForwarder.ConsoleHost*.
+* een op zichzelf staande .NET-hoofdset binaire bestanden voor Linux-64. Voor deze versie hoeft geen .NET core runtime te worden uitgevoerd. */ConsoleHost/linux-x64/publish/Microsoft.LocalForwarder.ConsoleHost*.
 
 ```batchfile
 user@machine:~/ConsoleHost/linux-x64/publish$ sudo chmod +x Microsoft.LocalForwarder.ConsoleHost
@@ -105,7 +105,7 @@ Veel Linux-gebruikers willen een lokale doorstuur server als daemon uitvoeren. L
 U kunt bijvoorbeeld een daemon-service maken met behulp van systemed. We gebruiken de Framework-afhankelijke versie, maar dit kan ook worden gedaan voor een zelfstandig deel van het abonnement.
 
 * Maak het volgende service bestand met de naam *localforwarder. service* en plaats het in */lib/systemd/System*.
-In dit voor beeld wordt ervan uitgegaan dat uw gebruikers naam SAMPLE_USER is en dat u lokale binaire bestanden voor doorstuur servers (van */ConsoleHost/Publish*) naar */Home/SAMPLE_USER/LOCALFORWARDER_DIR*hebt gekopieerd.
+In dit voor beeld wordt ervan uitgegaan dat uw gebruikers naam SAMPLE_USER is en dat u lokale binaire bestanden voor doorstuur servers (van */ConsoleHost/Publish*) hebt gekopieerd naar */home/SAMPLE_USER/LOCALFORWARDER_DIR*.
 
 ```
 # localforwarder.service
@@ -179,4 +179,4 @@ Als er geen configuratie bestand wordt gegeven (dit is de standaard instelling),
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Open telling](https://opencensus.io/)
+* [Open Census](https://opencensus.io/)

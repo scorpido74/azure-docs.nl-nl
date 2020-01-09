@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: fa9de74c89ba3f0351169f143146dc21b80ee666
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 39051014e5e474264a44983fb366bc08f02c31e0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790524"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639851"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Veelgestelde vragen over de Azure front-deur service
 
@@ -132,7 +132,7 @@ Voor de Azure-deur (AFD) is een openbaar IP-adres of een openbaar omgezette DNS-
 
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door-service"></a>Wat zijn de verschillende time-outs en limieten voor de Azure front-deur service?
 
-Meer informatie over alle gedocumenteerde [time-outs en limieten voor de Azure front-deur service](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-front-door-service-limits).
+Meer informatie over alle gedocumenteerde [time-outs en limieten voor de Azure front-deur service](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits).
 
 ## <a name="performance"></a>Prestaties
 

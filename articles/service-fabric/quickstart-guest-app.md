@@ -1,25 +1,14 @@
 ---
-title: Een bestaande app snel implementeren in een Azure Service Fabric-cluster
+title: Een bestaande app snel implementeren in een cluster
 description: Een Azure Service Fabric-cluster gebruiken voor het hosten van een bestaande Node.js-toepassing met Visual Studio.
-services: service-fabric
-documentationcenter: nodejs
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 6cf9594e6e1db3e163d25843b1fec0c0ff98c250
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9153fc4cd60cb892532db49bf4339b517320b1a6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592444"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614839"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Een Node.js-toepassing hosten in Azure Service Fabric
 
@@ -52,7 +41,7 @@ In het volgende dialoogvenster kunt u elk type Service Fabric-service maken. Kie
 
 Noem de service **MyGuestService** en stel de opties aan de rechterkant in op de volgende waarden:
 
-| Instelling                   | Value |
+| Instelling                   | Waarde |
 | ------------------------- | ------ |
 | Map met codepakket       | _&lt;de map met uw Node.js-app&gt;_ |
 | Gedrag codepakket     | Mapinhoud naar project kopiëren |
@@ -83,7 +72,7 @@ Zie [Aan de slag met Reliable Services](service-fabric-reliable-services-quick-s
 
 De voorbeeld-Node.js-app die we implementeren gebruikt poort **80** en we moeten Service Fabric doorgeven dat deze poort open moet zijn.
 
-Open het bestand **ServiceManifest.xml** in het project. Onder aan het manifest is er al een `<Resources> \ <Endpoints>` met een vermelding gedefinieerd. Wijzig deze vermelding om `Port`, `Protocol` en `Type` toe te voegen. 
+Open het bestand **ServiceManifest.xml** in het project. Onder aan het manifest bevindt zich een `<Resources> \ <Endpoints>` met een vermelding die al is gedefinieerd. Wijzig deze vermelding om `Port`, `Protocol` en `Type` toe te voegen. 
 
 ```xml
   <Resources>
@@ -96,7 +85,7 @@ Open het bestand **ServiceManifest.xml** in het project. Onder aan het manifest 
   </Resources>
 ```
 
-## <a name="deploy-to-azure"></a>Implementeren in Azure
+## <a name="deploy-to-azure"></a>Implementatie in Azure
 
 Als u op **F5** drukt en het project uitvoert, wordt het geïmplementeerd naar het lokale cluster. Echter, we gaan in plaats daarvan implementeren in Azure.
 
@@ -108,7 +97,7 @@ Selecteer het doelprofiel **PublishProfiles\Cloud.xml**.
 
 Kies een Azure-account waarnaar u wilt implementeren als u dit nog niet hebt gedaan. Als u nog geen account hebt, [meldt u zich aan voor één][create-account].
 
-Selecteer onder **Verbindingseindpunt** het Service Fabric-cluster waarin u wilt implementeren. Als u er nog geen hebt, selecteert **&lt;u nieuw cluster maken... Hiermee&gt;** opent u het browser venster voor de Azure Portal. Zie [Een cluster maken in de portal](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal) voor meer informatie. 
+Selecteer onder **Verbindingseindpunt** het Service Fabric-cluster waarin u wilt implementeren. Als u er nog geen hebt, selecteert u **&lt;nieuw cluster maken...&gt;** waarmee het browser venster wordt geopend voor de Azure Portal. Zie [Een cluster maken in de portal](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal) voor meer informatie. 
 
 Wanneer u de Service Fabric-cluster maakt, zorg er dan voor dat u de **Aangepaste eindpunten** instelt op **80**.
 
@@ -130,7 +119,7 @@ Controleer de overzichtsblade van het serviceadres. Gebruik de domeinnaam van de
 
 ![Overzichtsblade van Service Fabric in Azure Portal][overview]
 
-Navigeer naar dit adres waar u het `HELLO WORLD` antwoord ziet.
+Navigeer naar dit adres waar het `HELLO WORLD`-antwoord wordt weer geven.
 
 ## <a name="delete-the-cluster"></a>Het cluster verwijderen
 
