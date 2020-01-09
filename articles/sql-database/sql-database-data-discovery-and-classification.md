@@ -12,22 +12,22 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 7a8fe0f21ea8b31fb26727e2220f7395e2d71c2c
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: bb6961d87fd08af78db495b700acf34fbf4944a1
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555361"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552546"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>& Classificatie Azure SQL Database en SQL Data Warehouse voor gegevens detectie
 
-Gegevens detectie & classificatie biedt geavanceerde mogelijkheden die zijn ingebouwd in Azure SQL Database voor het **detecteren**, **classificeren**, **labelen** & **beveiligen** van gevoelige gegevens in uw data bases.
+Gegevens detectie & classificatie biedt geavanceerde mogelijkheden die zijn ingebouwd in Azure SQL Database voor het **detecteren**, **classificeren**, **labelen** & **rapportage** van de gevoelige gegevens in uw data bases.
 
-Het detecteren en classificeren van uw meest gevoelige gegevens (zakelijke, financiële, gezondheids zorg, persoonlijke Identificeer bare gegevens (PII), enzovoort.) kan een draai functie in uw organisatie voor gegevens beveiliging van stature afspelen. Dit kan dienen als infra structuur voor:
+Het detecteren en classificeren van uw meest gevoelige gegevens (zakelijke, financiële, gezondheids zorg, persoonlijke Identificeer bare gegevens (PII), enzovoort.) kan een draai functie in uw organisatie voor gegevens beveiliging van stature afspelen. Dit kan dienen als infrastructuur om:
 
-- Helpt te voldoen aan de normen voor gegevens beveiliging en naleving van regelgeving.
+- Te helpen voldoen aan standaarden op het gebied van gegevensbescherming en aan vereisten voor naleving van regelgeving.
 - Diverse beveiligings scenario's, zoals controle (controle) en waarschuwingen over afwijkende toegang tot gevoelige gegevens.
-- Het beheren van de toegang tot en het beveiligen van de beveiliging van data bases met zeer gevoelige gegevens.
+- De toegang tot en verbetering van de beveiliging van databases met uiterst gevoelige gegevens te beheren.
 
 Gegevens detectie & classificatie maakt deel uit van de aanbieding voor [geavanceerde gegevens beveiliging](sql-database-advanced-data-security.md) (ADS), een uniform pakket voor geavanceerde SQL-beveiligings mogelijkheden. gegevens detectie & classificatie kan worden gebruikt en beheerd via de centrale SQL ADS-Portal.
 
@@ -40,11 +40,11 @@ Gegevens detectie & classificatie introduceert een aantal geavanceerde services 
 
 - **Aanbevelingen voor detectie &**
 
-  De classificatie-engine scant uw data base en identificeert kolommen die mogelijk gevoelige gegevens bevatten. Vervolgens krijgt u een eenvoudige manier om de juiste classificatie aanbevelingen te controleren en toe te passen via de Azure Portal.
+  De classificatie-engine scant uw data base en identificeert kolommen die mogelijk gevoelige gegevens bevatten. Vervolgens kunt u in Azure Portal op een gemakkelijke manier de juiste classificatieaanbevelingen controleren en toepassen.
 
 - **Labels**
 
-  Labels voor de gevoeligheids classificatie kunnen permanent worden gelabeld op kolommen met behulp van nieuwe classificatie meta gegevens kenmerken die zijn geïntroduceerd in de SQL-engine. Deze meta gegevens kunnen vervolgens worden gebruikt voor geavanceerde op gevoeligheid gebaseerde controle-en beveiligings scenario's.
+  Labels voor de gevoeligheids classificatie kunnen permanent worden gelabeld op kolommen met behulp van nieuwe classificatie meta gegevens kenmerken die zijn geïntroduceerd in de SQL-engine. Deze metagegevens kunnen daarna worden gebruikt voor geavanceerde audit- en beschermingscenario’s op basis van gevoeligheid.
 
 - **Gevoeligheid van query resultaten instellen**
 
@@ -52,7 +52,7 @@ Gegevens detectie & classificatie introduceert een aantal geavanceerde services 
 
 - **Zichtbaarheid**
 
-  De classificatie status van de data base kan worden weer gegeven in een gedetailleerd dash board in de portal. Daarnaast kunt u een rapport (in Excel-indeling) downloaden dat moet worden gebruikt voor naleving & controle doeleinden, evenals andere behoeften.
+  De classificatie status van de data base kan worden weer gegeven in een gedetailleerd dash board in de portal. Daarnaast kunt u een rapport (in Excel-indeling) downloaden dat kan worden gebruikt voor naleving en controle en voor andere behoeften.
 
 ## <a id="subheading-2"></a>& Label gevoelige kolommen detecteren, classificeren
 
@@ -69,7 +69,7 @@ De classificatie van SQL-gegevens detectie & wordt geleverd met een ingebouwde s
 
 De definitie en aanpassing van uw classificatie taxonomie wordt uitgevoerd op één centrale locatie voor uw hele Azure-Tenant. Deze locatie bevindt zich in [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro), als onderdeel van uw beveiligings beleid. Alleen iemand met beheerders rechten voor de hoofd beheer groep van de Tenant kan deze taak uitvoeren.
 
-Als onderdeel van het beheer van Information Protection-beleid kunt u aangepaste labels definiëren, ze rangschikken en koppelen aan een geselecteerde set met gegevens typen. U kunt ook uw eigen aangepaste gegevens typen toevoegen en ze configureren met teken reeks patronen die worden toegevoegd aan de detectie logica voor het identificeren van dit type gegevens in uw data bases.
+Als onderdeel van het beheer van Information Protection-beleid kunt u aangepaste labels definiëren, ze rangschikken en koppelen aan een geselecteerde set met gegevens typen. U kunt ook uw eigen aangepaste informatietypen toevoegen en deze configureren met tekenreekspatronen, die worden toegevoegd aan de detectielogica voor het identificeren van dit type gegevens in uw databases.
 Meer informatie over het aanpassen en beheren van uw beleid in de [hand leiding voor Information Protections beleid](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409).
 
 Zodra het beleid voor de hele Tenant is gedefinieerd, kunt u door gaan met de classificatie van afzonderlijke data bases met behulp van uw aangepaste beleids regel.
@@ -148,8 +148,8 @@ U kunt T-SQL gebruiken om kolom classificaties toe te voegen of te verwijderen, 
 - De classificatie verwijderen uit een of meer kolommen: [gevoeligheids classificatie voor neerzetten](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Alle classificaties weer geven in de Data Base: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-# <a name="rest-apistabazure-rest-api"></a>[Rest-Api's](#tab/azure-rest-api)
-U kunt ook REST-Api's gebruiken om classificaties programmatisch te beheren. De gepubliceerde REST Api's ondersteunen de volgende bewerkingen:
+# <a name="rest-apistabazure-rest-api"></a>[REST API's](#tab/azure-rest-api)
+U kunt REST-Api's gebruiken om classificaties en aanbevelingen programmatisch te beheren. De gepubliceerde REST Api's ondersteunen de volgende bewerkingen:
 
 - [Maken of bijwerken](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) : Hiermee wordt het gevoeligheids label van een bepaalde kolom gemaakt of bijgewerkt
 - [Verwijderen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) : Hiermee verwijdert u het gevoeligheids label van een bepaalde kolom
@@ -157,13 +157,12 @@ U kunt ook REST-Api's gebruiken om classificaties programmatisch te beheren. De 
 - [Aanbeveling inschakelen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation) : Hiermee schakelt u gevoeligheids aanbevelingen in voor een bepaalde kolom (aanbevelingen zijn standaard ingeschakeld voor alle kolommen)
 - [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) -haalt het gevoeligheids label van een bepaalde kolom op
 - [Lijst huidige per data base](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) : Hiermee worden de huidige gevoeligheids labels van een bepaalde data base opgehaald
-
 - [Lijst aanbevolen door data base](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) : Hiermee wordt de aanbevolen gevoeligheids labels van een bepaalde data base opgehaald
 
 # <a name="powershell-cmdlettabazure-powelshell"></a>[Power shell-cmdlet](#tab/azure-powelshell)
-U kunt Power shell gebruiken om alle aanbevolen kolommen op te halen in een Azure SQL database en in een beheerd exemplaar.
+U kunt Power shell gebruiken om classificaties en aanbevelingen voor Azure SQL Database en een beheerd exemplaar te beheren.
 
-### <a name="powershell-cmdlet-for-azure-sql-database"></a>Power shell-cmdlet voor Azure SQL database
+### <a name="powershell-cmdlet-for-azure-sql-database"></a>Power shell-cmdlet voor Azure SQL Database
 - [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
 - [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
 - [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)

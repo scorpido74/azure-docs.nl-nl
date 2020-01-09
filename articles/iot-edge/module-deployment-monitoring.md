@@ -4,35 +4,31 @@ description: Gebruik van automatische implementaties in Azure IoT Edge voor groe
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/27/2018
+ms.date: 12/12/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: eb45f2b929c08ce77c83af450726a00dd6af458e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 13390de8d3008907a0b55bf3a61c931dfdcd84e6
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456725"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552352"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Informatie over IoT Edge-automatische implementaties voor individuele apparaten of op schaal
 
-Azure IoT Edge apparaten volgen een [levens cyclus](../iot-hub/iot-hub-device-management-overview.md) van een apparaat die vergelijkbaar is met andere typen IOT-apparaten:
+Automatische implementaties en gelaagde implementaties helpen u bij het beheren en configureren van modules op grote aantallen IoT Edge apparaten. 
 
-1. Richt nieuwe IoT Edge-apparaten in door een apparaat te Imaging met een besturings systeem en de [IOT Edge-runtime](iot-edge-runtime.md)te installeren.
-2. Configureer de apparaten om [IOT Edge modules](iot-edge-modules.md)uit te voeren en controleer hun status. 
-3. Ten slotte apparaten buiten gebruik stellen wanneer ze worden vervangen of verouderd raken.  
-
-Azure IoT Edge biedt twee manieren om de modules te configureren voor uitvoering op IoT Edge apparaten: een voor ontwikkeling en snelle herhalingen op één apparaat (u hebt deze methode gebruikt in de Azure IoT Edge [zelf studies](tutorial-deploy-function.md)) en één voor het beheren van grote vloots van IOT edge apparaten. Beide van deze methoden zijn beschikbaar in Azure portal en programmatisch. Voor doel groepen of een groot aantal apparaten kunt u opgeven welke apparaten u wilt implementeren met behulp van [labels](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) in het apparaat. De volgende stappen uit praten over een implementatie op een apparaatgroep de staat Washington is geïdentificeerd door de eigenschap tags. 
+Azure IoT Edge biedt twee manieren om de modules te configureren die op IoT Edge apparaten kunnen worden uitgevoerd. De eerste methode is om modules per apparaat te implementeren. U maakt een implementatie manifest en past dit vervolgens op naam toe op een bepaald apparaat. Bij de tweede methode worden modules automatisch geïmplementeerd op alle geregistreerde apparaten die voldoen aan een set gedefinieerde voor waarden. U maakt een implementatie manifest en definieert vervolgens op basis van [Tags](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) op het apparaat dubbele. 
 
 In dit artikel is gericht op de configuratie en bewaking van de fasen voor vloten van apparaten, gezamenlijk aangeduid als automatische IoT Edge-implementaties. De algemene implementaties tappen zijn als volgt: 
 
 1. Een operator definieert een implementatie die een reeks modules, evenals de doelapparaten beschrijft. Elke implementatie heeft een implementatie manifest dat deze informatie weergeeft. 
 2. De IoT Hub-service communiceert met alle apparaten uit de doelgroep om deze te configureren met de gewenste modules. 
 3. De IoT Hub-service wordt de status opgehaald van de IoT Edge-apparaten en maakt ze beschikbaar voor de operator.  Een operator kan bijvoorbeeld zien wanneer een edge-apparaat niet is geconfigureerd of als een module tijdens runtime mislukt. 
-4. Op elk gewenst moment zijn nieuwe IoT Edge-apparaten die voldoen aan de doelitems voorwaarden geconfigureerd voor de implementatie. Zo configureert een implementatie die gericht is op alle IoT Edge apparaten in de status Washington automatisch een nieuw IoT Edge-apparaat nadat het is ingericht en toegevoegd aan de apparaatgroep status van Washington. 
+4. Op elk gewenst moment zijn nieuwe IoT Edge-apparaten die voldoen aan de doelitems voorwaarden geconfigureerd voor de implementatie. 
  
-Dit artikel wordt beschreven voor elk onderdeel is betrokken bij het configureren en controleren van een implementatie. Zie [IOT Edge modules op schaal implementeren en bewaken](how-to-deploy-monitor.md)voor een overzicht van het maken en bijwerken van een implementatie.
+Dit artikel wordt beschreven voor elk onderdeel is betrokken bij het configureren en controleren van een implementatie. Zie voor een overzicht van het maken en bijwerken van een implementatie [implementeren en controleren van IoT Edge-modules op schaal](how-to-deploy-monitor.md).
 
 ## <a name="deployment"></a>Implementatie
 
@@ -65,7 +61,7 @@ De doel voorwaarde wordt continu geëvalueerd gedurende de levens duur van de im
 
 Bijvoorbeeld, hebt u een A-implementatie met een doel voorwaarde tags.environment = 'prod'. Wanneer u een vliegende start de implementatie, zijn er 10 productieapparaten. De modules zijn geïnstalleerd in deze 10-apparaten. De Status van de IoT Edge-Agent wordt weergegeven als het totaal aantal apparaten 10, 10 gelukt-antwoorden, 0 mislukte reacties en 0 in behandeling-antwoorden. Nu u bij het toevoegen van vijf meer apparaten met tags.environment = 'prod'. De service detecteert de wijziging en de Status van de IoT Edge-Agent wordt 15 totaal aantal apparaten, 10 gelukt-antwoorden, 0 mislukte reacties en 5 in behandeling-antwoorden als er wordt geprobeerd om in de vijf nieuwe apparaten te implementeren.
 
-Gebruik een Boole-voorwaarde op device twins tags of deviceId de doelapparaten selecteren. Als u voor waarde met tags wilt gebruiken, moet u ' Tags ' toevoegen:{} sectie in het apparaat dubbele onder hetzelfde niveau als eigenschappen. [Meer informatie over tags op het apparaat, dubbele](../iot-hub/iot-hub-devguide-device-twins.md)
+Gebruik een Boole-voorwaarde op device twins tags of deviceId de doelapparaten selecteren. Als u wilt de voorwaarde met tags gebruiken, moet u 'tags' toevoegen:{} sectie in de apparaatdubbel onder hetzelfde niveau als eigenschappen. [Meer informatie over tags in de apparaatdubbel](../iot-hub/iot-hub-devguide-device-twins.md)
 
 Voorbeelden van de doel-voorwaarden:
 
@@ -79,8 +75,8 @@ Hier volgen enkele beperkingen wanneer u een doelvoorwaarde maken:
 
 * In de apparaatdubbel, kunt u alleen een doelvoorwaarde met behulp van labels of deviceId bouwen.
 * Dubbele aanhalingstekens zijn niet toegestaan in een gedeelte van de doelvoorwaarde. Gebruikt u enkele aanhalingstekens.
-* Enkele aanhalingstekens vertegenwoordigen de waarden van de doelvoorwaarde. Daarom moet u de enkel aanhalingsteken met een andere enkel aanhalingsteken escape-als het deel van de naam van het apparaat uitmaakt. Als u bijvoorbeeld een apparaat met de naam `operator'sDevice`wilt richten, schrijft u `deviceId='operator''sDevice'`.
-* Cijfers, letters en de volgende tekens zijn toegestaan in doel voorwaarde waarden: `-:.+%_#*?!(),=@;$`.
+* Enkele aanhalingstekens vertegenwoordigen de waarden van de doelvoorwaarde. Daarom moet u de enkel aanhalingsteken met een andere enkel aanhalingsteken escape-als het deel van de naam van het apparaat uitmaakt. Bijvoorbeeld: op een apparaat met de naam `operator'sDevice`, schrijven `deviceId='operator''sDevice'`.
+* Cijfers, letters en de volgende tekens zijn toegestaan in de voorwaarde doelwaarden: `-:.+%_#*?!(),=@;$`.
 
 ### <a name="priority"></a>Prioriteit
 
@@ -88,25 +84,96 @@ Een prioriteit bepaalt of een implementatie moet worden toegepast op een doelapp
 
 ### <a name="labels"></a>Labels 
 
-Labels zijn een reeks sleutel/waarde-paren die u om te filteren en groeperen van implementaties gebruiken kunt. Een implementatie kan meerdere labels hebben. Labels zijn optioneel en niet van invloed op de werkelijke configuratie van IoT Edge-apparaten uitvoeren. 
+Labels zijn teken reeks sleutel-waardeparen die u kunt gebruiken voor het filteren en groeperen van implementaties. Een implementatie kan meerdere labels hebben. Labels zijn optioneel en zijn niet van invloed op de werkelijke configuratie van IoT Edge apparaten. 
 
-### <a name="deployment-status"></a>Implementatiestatus
+### <a name="metrics"></a>Metrische gegevens
 
-Een implementatie kan worden gecontroleerd om te bepalen of deze is toegepast voor alle betreffende IoT Edge-apparaat.  Een doel apparaat wordt weer gegeven in een of meer van de volgende status Categorieën: 
+Standaard worden alle implementaties gerapporteerd op basis van vier metrische gegevens:
 
-* **Doel** toont de IOT edge-apparaten die overeenkomen met de voor waarde voor de implementatie van doelen.
-* Met **werkelijk** worden de beoogde IOT edge-apparaten weer gegeven die niet zijn gericht op een andere implementatie van een hogere prioriteit.
-* **In orde** worden de IOT edge-apparaten weer gegeven die zijn gerapporteerd aan de service dat de modules zijn geïmplementeerd. 
-* Een **slechte status** geeft aan dat de IOT edge apparaten zijn gerapporteerd aan de service dat er niet met succes een of meerdere modules zijn geïmplementeerd. Voor verder onderzoek van de fout, extern verbinding maken met deze apparaten en de logboekbestanden.
-* **Onbekend** toont de IOT edge apparaten die geen status hebben gerapporteerd voor deze implementatie. Verder te onderzoeken, service-gegevens en logboekbestanden bestanden weergeven
+* **Doel** geeft de IOT edge apparaten weer die overeenkomen met de voor waarde voor de implementatie doelstelling.
+* **Toegepast** toont de doel IOT edge apparaten die niet zijn gericht op een andere implementatie van een hogere prioriteit.
+* Bij **geslaagde rapportage** worden de IOT edge-apparaten weer gegeven die zijn gerapporteerd aan de service dat de modules zijn geïmplementeerd. 
+* **Fout bij het rapporteren** geeft de IOT edge-apparaten weer die zijn gerapporteerd aan de service dat een of meer modules niet met succes zijn geïmplementeerd. Voor verder onderzoek van de fout, extern verbinding maken met deze apparaten en de logboekbestanden.
+
+Daarnaast kunt u uw eigen aangepaste metrische gegevens definiëren om de implementatie te bewaken en beheren. 
+
+Metrische gegevens geven samen vattingen van de verschillende statussen die apparaten kunnen terugsturen als gevolg van het Toep assen van een implementatie configuratie. Met metrische gegevens kunt u een query uitvoeren op [dubbele gerapporteerde eigenschappen](module-edgeagent-edgehub.md#edgehub-reported-properties)van de edgeHub-module, zoals de laatste gewenste status of de laatste verbindings tijd. Bijvoorbeeld: 
+
+```sql
+SELECT deviceId FROM devices
+  WHERE properties.reported.lastDesiredStatus.code = 200
+```
+
+Het toevoegen van uw eigen metrische gegevens is optioneel en heeft geen invloed op de werkelijke configuratie van IoT Edge apparaten. 
+
+## <a name="layered-deployment"></a>Gelaagde implementatie
+
+Gelaagde implementaties zijn automatische implementaties die samen kunnen worden gecombineerd om het aantal unieke implementaties te verminderen dat moet worden gemaakt. Gelaagde implementaties zijn handig in scenario's waarin dezelfde modules opnieuw worden gebruikt in verschillende combi Naties in veel automatische implementaties. 
+
+Gelaagde implementaties hebben dezelfde basis onderdelen als automatische implementatie. Ze zijn gericht op apparaten op basis van tags in de apparaatdubbels van het apparaat en bieden dezelfde functionaliteit voor labels, metrische gegevens en status rapportage. Aan gelaagde implementaties zijn ook prioriteiten toegewezen, maar in plaats van de prioriteit te gebruiken om te bepalen welke implementatie op een apparaat wordt toegepast, bepaalt de prioriteit hoe meerdere implementaties op een apparaat worden gerangschikt. Als twee gelaagde implementaties bijvoorbeeld een module of een route met dezelfde naam hebben, wordt de gelaagde implementatie met de hogere prioriteit toegepast terwijl de lagere prioriteit wordt overschreven. 
+
+De System runtime modules, edgeAgent en edgeHub, zijn niet geconfigureerd als onderdeel van een gelaagde implementatie. Op alle IoT Edge apparaten waarop een gelaagde implementatie is gericht, moet eerst een standaard automatische implementatie worden toegepast om de basis op te geven waarop gelaagde implementaties kunnen worden toegevoegd. 
+
+Een IoT Edge apparaat kan één en slechts één standaard automatische implementatie Toep assen, maar kan meerdere gelaagde automatische implementaties Toep assen. Gelaagde implementaties die zijn gericht op een apparaat, moeten een hogere prioriteit hebben dan de automatische implementatie voor dat apparaat. 
+
+Denk bijvoorbeeld aan het volgende scenario van een bedrijf dat gebouwen beheert. Ze hebben IoT Edge modules ontwikkeld voor het verzamelen van gegevens uit beveiligings camera's, bewegings Sens oren en liften. Niet al hun gebouwen kunnen echter alle drie de modules gebruiken. Met standaard automatische implementaties moet het bedrijf afzonderlijke implementaties maken voor alle module combinaties die hun gebouwen nodig hebben. 
+
+![Standaard automatische implementaties moeten elke module combinatie bevatten](./media/module-deployment-monitoring/standard-deployment.png)
+
+Zodra het bedrijf overschakelt naar gelaagde automatische implementaties, kunnen ze echter dezelfde module combinaties voor hun gebouwen maken met minder implementaties om te beheren. Elke module heeft een eigen gelaagde implementatie en de labels van apparaten bepalen welke modules aan elk gebouw worden toegevoegd. 
+
+![Gelaagde automatische implementatie vereenvoudigt scenario's waarbij dezelfde modules op verschillende manieren worden gecombineerd](./media/module-deployment-monitoring/layered-deployment.png)
+
+### <a name="module-twin-configuration"></a>Dubbele configuratie van module
+
+Wanneer u werkt met gelaagde implementaties, kunt u op een of andere manier twee implementaties met dezelfde module richten als een apparaat. In die gevallen kunt u bepalen of de implementatie met een hogere prioriteit de module moet overschrijven of toevoegen. U hebt bijvoorbeeld een implementatie met dezelfde module op 100 verschillende apparaten. 10 van die apparaten bevinden zich echter in beveiligde faciliteiten en hebben extra configuratie nodig om te communiceren via proxy servers. U kunt een gelaagde implementatie gebruiken om module dubbele eigenschappen toe te voegen die ervoor zorgen dat deze 10 apparaten veilig kunnen communiceren zonder de bestaande module dubbele informatie van de basis implementatie te overschrijven. 
+
+U kunt module dubbele gewenste eigenschappen toevoegen in het implementatie manifest. Wanneer u in een standaard implementatie eigenschappen zou toevoegen in de **Eigenschappen. gewenste** sectie van de module dubbele, in een gelaagde implementatie kunt u een nieuwe subset van gewenste eigenschappen declareren. 
+
+In een standaard implementatie kunt u bijvoorbeeld de gesimuleerde temperatuur sensor module toevoegen met de volgende gewenste eigenschappen die aangeven dat gegevens in vijf seconden moeten worden verzonden:
+
+```json
+"SimulatedTemperatureSensor": {
+  "properties.desired": {
+    "SendData": true,
+    "SendInterval": 5
+  }
+}
+```
+
+In een gelaagde implementatie die gericht is op dezelfde apparaten of een subset van dezelfde apparaten, wilt u mogelijk een extra eigenschap toevoegen die aangeeft dat de gesimuleerde sensor 1000 berichten verzendt en vervolgens stopt. U wilt de bestaande eigenschappen niet overschrijven, dus u maakt een nieuwe sectie in de gewenste eigenschappen `layeredProperties` die de nieuwe eigenschap bevat:
+
+```json
+"SimulatedTemperatureSensor": {
+  "properties.desired.layeredProperties": {
+    "StopAfterCount": 1000
+  }
+}
+```
+
+Op een apparaat waarop zowel implementaties zijn toegepast, wordt het volgende weer gegeven in de module twee voor de gesimuleerde temperatuur sensor: 
+
+```json
+"properties": {
+  "desired": {
+    "SendData": true,
+    "SendInterval": 5,
+    "layeredProperties": {
+      "StopAfterCount": 1000
+    }
+  }
+}
+```
+
+Als u het `properties.desired` veld van de module dubbele in een gelaagde implementatie instelt, worden de gewenste eigenschappen voor die module overschreven in een implementatie met een lagere prioriteit. 
 
 ## <a name="phased-rollout"></a>Gefaseerde implementatie 
 
-Een gefaseerde implementatie is een algemene proces waarbij wijzigingen in een operator worden geïmplementeerd op een leven set IoT Edge-apparaten. Het doel is om wijzigingen aanbrengen geleidelijk in vermindert het risico van het maken van grote schaal belangrijke wijzigingen.  
+Een gefaseerde implementatie is een algemene proces waarbij wijzigingen in een operator worden geïmplementeerd op een leven set IoT Edge-apparaten. Het doel is om wijzigingen aanbrengen geleidelijk in vermindert het risico van het maken van grote schaal belangrijke wijzigingen. Automatische implementaties helpen gefaseerde implementaties te beheren in een vloot van IoT Edge apparaten. 
 
 Een gefaseerde implementatie wordt uitgevoerd in de volgende fasen en stappen: 
 
-1. Stel een test omgeving van IoT Edge apparaten in door deze in te richten en een apparaat-dubbele tag in te stellen, zoals `tag.environment='test'`. In de test omgeving moet de productie omgeving worden gespiegeld die de implementatie uiteindelijk gaat richten. 
+1. Een testomgeving van IoT Edge-apparaten tot stand brengen door ze inrichting en het instellen van een label van het dubbele apparaat, zoals `tag.environment='test'`. In de test omgeving moet de productie omgeving worden gespiegeld die de implementatie uiteindelijk gaat richten. 
 2. Maak een implementatie met inbegrip van de gewenste modules en configuraties. De doelitems voorwaarde moet het doel de test-omgeving van IoT Edge-apparaten.   
 3. Valideer de moduleconfiguratie van de nieuwe in de testomgeving.
 4. De implementatie zodat een subset van de productie IoT Edge-apparaten die door een nieuwe tag toe te voegen aan de voorwaarde doelitems bijwerken. Zorg er ook voor dat de prioriteit voor de implementatie hoger dan andere implementaties op dit moment is gericht op deze apparaten is 
@@ -115,7 +182,9 @@ Een gefaseerde implementatie wordt uitgevoerd in de volgende fasen en stappen: 
 
 ## <a name="rollback"></a>Terugdraaien
 
-Implementaties kunnen worden teruggedraaid terug als er fouten of onjuiste configuraties.  Omdat een implementatie de absolute module configuratie voor een IoT Edge apparaat definieert, moet een extra implementatie ook met een lagere prioriteit op hetzelfde apparaat worden gericht, zelfs als het doel is om alle modules te verwijderen.  
+Implementaties kunnen worden teruggedraaid terug als er fouten of onjuiste configuraties. Omdat een implementatie de absolute module configuratie voor een IoT Edge apparaat definieert, moet een extra implementatie ook met een lagere prioriteit op hetzelfde apparaat worden gericht, zelfs als het doel is om alle modules te verwijderen.  
+
+Als u een implementatie verwijdert, worden de modules niet verwijderd van de doel apparaten. Er moet een andere implementatie zijn die een nieuwe configuratie voor de apparaten definieert, zelfs als het een lege implementatie is. 
 
 Terugdraaiacties in de volgende handelingen uitvoeren: 
 
@@ -128,6 +197,6 @@ Terugdraaiacties in de volgende handelingen uitvoeren: 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Door loop de stappen om een implementatie te maken, bij te werken of te verwijderen in [IOT Edge modules implementeren en bewaken op schaal](how-to-deploy-monitor.md).
-* Meer informatie over andere IoT Edge concepten, zoals de modules [IOT Edge runtime](iot-edge-runtime.md) en [IOT Edge](iot-edge-modules.md).
+* Doorloop de stappen voor het maken, bijwerken of verwijderen van een implementatie in [implementeren en controleren van IoT Edge-modules op schaal](how-to-deploy-monitor.md).
+* Meer informatie over andere IoT Edge-concepten, zoals de [IoT Edge-runtime](iot-edge-runtime.md) en [IoT Edge-modules](iot-edge-modules.md).
 

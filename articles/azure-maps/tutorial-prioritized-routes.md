@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 07391633436931a8f7cc46c430387f5877d10674
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: cec7027ee0eadae2284e9aa2b127c195870ee929
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106707"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613632"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>Zelf studie: routes voor verschillende manieren van reizen zoeken met behulp van Azure Maps
 
@@ -27,8 +27,7 @@ Deze zelfstudie laat zien hoe u uw Azure Maps-account en de routeservice gebruik
 > * Meerdere routes op de kaart weergeven
 
 ## <a name="prerequisites"></a>Vereisten
-
-Voordat u doorgaat, volgt u de instructies in [account beheren](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) om een abonnement voor een Azure Maps account te maken met de prijs categorie S1 en volgt u de stappen in [primaire sleutel ophalen](./tutorial-search-location.md#getkey) om de primaire abonnements sleutel voor uw account op te halen.
+Voordat u verdergaat, volgt u de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) voor het maken van een abonnement op een Azure Maps account met de prijs categorie S1 en volgt u de stappen in [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [verificatie beheren in azure Maps](how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
 
 ## <a name="create-a-new-map"></a>Een nieuwe kaart maken
 
@@ -275,7 +274,7 @@ In deze sectie wordt beschreven hoe u de Maps route Service-API gebruikt om meer
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een nieuwe webpagina maken met de kaartbesturingselement-API

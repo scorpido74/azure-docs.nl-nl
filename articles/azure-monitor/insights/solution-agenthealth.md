@@ -4,15 +4,15 @@ description: Dit artikel is bedoeld om u te helpen begrijpen hoe u deze oplossin
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/19/2017
-ms.openlocfilehash: 5a48bbff89f0d6a0be9adf2ad242dbca41eec6db
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: cbeaa3e148d6fbe20d7ddb4d04cd00d6300f9818
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555334"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402435"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Status van agent oplossing in Azure Monitor
 De Status van agent oplossing in azure helpt u te begrijpen, voor alle agents die rechtstreeks aan de Log Analytics-werk ruimte rapporteren in Azure Monitor of een System Center Operations Manager beheer groep die is verbonden met Azure Monitor, die niet reageert en het verzenden van operationele gegevens.  U kunt ook bijhouden hoeveel agents er zijn geïmplementeerd en waar deze zich geografisch gezien bevinden. Bovendien kunt u query's uitvoeren om op de hoogte te blijven van de verdeling van agents over Azure, andere cloudomgevingen of on-premises.    
@@ -54,9 +54,9 @@ Klik op de tegel **Status van agent** om het **gelijknamige** dashboard te opene
 | Agent count over time | Een trend van het aantal agents gedurende een periode van zeven dagen voor Linux- en Windows-agents.|
 | Count of unresponsive agents | Een lijst met agents die in de afgelopen 24 uur geen heartbeat hebben verzonden.|
 | Distribution by OS Type | Een visualisatie van het aantal Windows- en Linux-agents in uw omgeving.|
-| Distribution by Agent Version | Een visualisatie van de verschillende agentversies die zijn geïnstalleerd in uw omgeving en het aantal van elke versie.|
-| Distribution by Agent Category | Een visualisatie van de verschillende categorieën agents die heartbeat-gebeurtenissen verzenden: directe agents, OpsMgr-agents of OpsMgr Management Server.|
-| Distribution by Management Group | Een partitie van de verschillende Operations Manager-beheer groepen in uw omgeving.|
+| Verdeling naar agent-versie | Een visualisatie van de verschillende agentversies die zijn geïnstalleerd in uw omgeving en het aantal van elke versie.|
+| Verdeling naar agent-catgeorie | Een visualisatie van de verschillende categorieën agents die heartbeat-gebeurtenissen verzenden: directe agents, OpsMgr-agents of OpsMgr Management Server.|
+| Verdeling naar beheergroep | Een partitie van de verschillende Operations Manager-beheer groepen in uw omgeving.|
 | Geo-location of Agents | Een partitie van de verschillende landen/regio's waar u agents hebt en het totale aantal agents dat in elk land of elke regio is geïnstalleerd.|
 | Count of Gateways Installed | Het aantal servers waarop de Log Analytics-gateway is geïnstalleerd en een lijst met deze servers.|
 
@@ -86,7 +86,7 @@ Er wordt een record van het type **Heartbeat** gemaakt.  Deze records hebben de 
 | `RemoteIPLongitude` | De lengtegraad van geografische locatie van de computer.|
 | `RemoteIPLatitude` | De breedtegraad van de geografische locatie van de computer.|
 
-Elke agent die aan een Operations Manager-beheer Server rapporteert, verzendt twee heartbeats en de waarde van de eigenschap SCAgentChannel bevatten zowel **directe** als **SCManagementServer** , afhankelijk van de gegevens bronnen en bewakings oplossingen die u hebt ingeschakeld in uw abonnement. Als u intrekt, worden gegevens van oplossingen rechtstreeks van een Operations Manager-beheer server naar Azure Monitor verzonden, of vanwege het volume van de gegevens die op de agent zijn verzameld, worden ze rechtstreeks van de agent naar Azure Monitor verzonden. Voor heartbeat-gebeurtenissen met de waarde **SCManagementServer** bestaat de waarde van ComputerIP uit het IP-adres van de beheerserver, aangezien de gegevens door deze server worden geüpload.  Voor heartbeats waarvan de eigenschap SCAgentChannel is ingesteld op **Direct**, is de waarde het openbare IP-adres van de agent.  
+Elke agent die aan een Operations Manager-beheer Server rapporteert, verzendt twee heartbeats en de waarde van de SCAgentChannel-eigenschap bevat zowel **directe** als **SCManagementServer** , afhankelijk van de gegevens bronnen en bewakings oplossingen die u in uw abonnement hebt ingeschakeld. Als u intrekt, worden gegevens van oplossingen rechtstreeks van een Operations Manager-beheer server naar Azure Monitor verzonden, of vanwege het volume van de gegevens die op de agent zijn verzameld, worden ze rechtstreeks van de agent naar Azure Monitor verzonden. Voor heartbeat-gebeurtenissen met de waarde **SCManagementServer** bestaat de waarde van ComputerIP uit het IP-adres van de beheerserver, aangezien de gegevens door deze server worden geüpload.  Voor heartbeats waarvan de eigenschap SCAgentChannel is ingesteld op **Direct**, is de waarde het openbare IP-adres van de agent.  
 
 ## <a name="sample-log-searches"></a>Voorbeeldzoekopdrachten in logboeken
 De volgende tabel bevat voorbeelden van zoekopdrachten in logboeken voor records die zijn verzameld met deze oplossing.
@@ -100,9 +100,9 @@ De volgende tabel bevat voorbeelden van zoekopdrachten in logboeken voor records
 | Heartbeat &#124; where TimeGenerated > ago(24h) and Computer !in ((Heartbeat &#124; where TimeGenerated > ago(30m) &#124; distinct Computer)) &#124; summarize LastCall = max(TimeGenerated) by Computer |Het totale aantal agents dat offline was in de afgelopen 30 minuten (voor de afgelopen 24 uur) |
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by OSType |Een trend van het aantal agents in de tijd per type besturingssysteem|
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by OSType |Distribution by OS Type |
-| Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by Version |Distribution by Agent Version |
-| Heartbeat &#124; summarize AggregatedValue = count() by Category |Distribution by Agent Category |
-| Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by ManagementGroupName | Distribution by Management Group |
+| Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by Version |Verdeling naar agent-versie |
+| Heartbeat &#124; summarize AggregatedValue = count() by Category |Verdeling naar agent-catgeorie |
+| Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by ManagementGroupName | Verdeling naar beheergroep |
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by RemoteIPCountry |Geo-location of Agents |
 | Heartbeat &#124; where iff(isnotnull(toint(IsGatewayInstalled)), IsGatewayInstalled == true, IsGatewayInstalled == "true") == true &#124; distinct Computer |Aantal geïnstalleerde Log Analytics gateways |
 

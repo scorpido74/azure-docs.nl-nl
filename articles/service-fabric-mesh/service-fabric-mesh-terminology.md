@@ -1,20 +1,16 @@
 ---
-title: Terminologie voor Azure Service Fabric mesh | Microsoft Docs
+title: Terminologie voor Azure Service Fabric net
 description: In dit artikel vindt u informatie over de terminologie die wordt gebruikt door Azure Service Fabric mesh, zodat u beter inzicht krijgt in de termen die in de documentatie worden gebruikt.
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: cacf3a7419982e8c0e8d55700c903e3414cfcbb4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6df7a6b708bca81f1390ac879f24ea4c22c38bee
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663014"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351979"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric net-terminologie
 
@@ -77,7 +73,7 @@ Verschillende omgevingen hebben een ander ondersteunings niveau voor frameworks 
 
 In de volgende tabel worden de verschillende toepassings modellen en de hulp middelen beschreven die voor hen bestaan, vergeleken met Service Fabric.
 
-| Type toepassing | Beschreven door | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
+| Type toepassing | Beschreven door | Visual Studio | Eclipse | SFCTL | AZ CLI | Powershell|
 |---|---|---|---|---|---|---|
 | Service Fabric mesh-toepassingen | Resource model (YAML & JSON) | VS 2017 |Niet ondersteund |Niet ondersteund | Alleen ondersteunde mesh-omgeving | Niet ondersteund|
 |Service Fabric systeem eigen toepassingen | Systeem eigen toepassings model (XML) | VS 2017 en VS 2015| Ondersteund|Ondersteund|Ondersteund|Ondersteund|

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: d67270896792ea506d2df04dcc3745a43d3d8251
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: dcbc20f768ae80404979d47f23e7e08098757b41
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012869"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613326"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Een toepassingsgateway maken met HTTP naar HTTPS-omleiding via Azure portal
 
@@ -63,7 +63,7 @@ Export-PfxCertificate `
   -Password $pwd
 ```
 
-## <a name="create-an-application-gateway"></a>Een toepassingsgateway maken
+## <a name="create-an-application-gateway"></a>Een Application Gateway maken
 
 U hebt een virtueel netwerk nodig voor communicatie tussen de resources die u maakt. In dit voorbeeld worden twee subnetten gemaakt: één voor de toepassingsgateway en de andere voor de back-endservers. U kunt een virtueel netwerk maken op hetzelfde moment dat u de toepassingsgateway maakt.
 
@@ -118,15 +118,15 @@ Voeg eerst de listener met de naam toe *myListener* voor poort 80.
 
 ### <a name="add-a-routing-rule-with-a-redirection-configuration"></a>Toevoegen van een regel voor doorsturen met de configuratie van een omleiding
 
-1. Op **myAppGateway**, selecteer **regels** en selecteer vervolgens **+ Basic**.
-2. Voor de **naam**, type *regel 2*.
+1. Selecteer op **myAppGateway**de optie **regels** en selecteer vervolgens **routerings regel voor aanvraag**.
+2. Typ *firewallregel2*voor de naam van de **regel**.
 3. Zorg ervoor dat **MyListener** is geselecteerd voor de listener.
-4. Selecteer de **omleiding configureren** selectievakje.
+4. Klik op het tabblad **backend-doelen** en selecteer **doel type** als *omleiding*.
 5. Voor **type omleiding**, selecteer **permanente**.
 6. Voor **doel van omleiding**, selecteer **Listener**.
 7. Zorg ervoor dat de **doel-listener** is ingesteld op **appGatewayHttpListener**.
-8. Selecteer de **querytekenreeks opnemen** en **Include-pad** selectievakjes.
-9. Selecteer **OK**.
+8. Selecteer *Ja*in het deel **reeks query toevoegen** en het **pad include** .
+9. Selecteer **Toevoegen**.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Een virtuele-machineschaalset maken
 

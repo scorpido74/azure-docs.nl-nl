@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
 ms.reviewer: bensack
-ms.openlocfilehash: d76ea317271ae0e8eb0d54fcfee5dc005d836fc1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 156999c6b6d8451516ac1c0f095e1a864420d0b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984947"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354819"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>Gegevens in Azure Data Lake Storage Gen2 analyseren met behulp van Power BI
 
@@ -26,8 +26,9 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
 > [!div class="checklist"]
 > * Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
 > * Een opslag account met een hiërarchische naam ruimte. Volg [deze](data-lake-storage-quickstart-create-account.md) instructies om er een te maken.
-> In dit artikel wordt ervan uitgegaan dat u een account `myadlsg2`hebt gemaakt met de naam.
-> * Een voor beeld van een `Drivers.txt` gegevens bestand bevindt zich in uw opslag account.
+> In dit artikel wordt ervan uitgegaan dat u een account hebt gemaakt met de naam `myadlsg2`.
+> * U hebt een van de volgende rollen verleend voor het opslag account: **BLOB data Reader**, **BLOB data contributor**of **BLOB data eigenaar**.
+> * Een voor beeld van een gegevens bestand met de naam `Drivers.txt` zich in uw opslag account bevindt.
 > U kunt dit voor beeld downloaden van [Azure data Lake Git-opslag plaats](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)en dat bestand vervolgens uploaden naar uw opslag account.
 > * **Power bi Desktop**. U kunt dit downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=45331). 
 
@@ -39,7 +40,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
 
     ![Pagina gegevens ophalen](media/data-lake-storage-use-power-bi/get-data-page.png)
 
-4. In het dialoog venster **Azure data Lake Storage Gen2** kunt u de URL naar uw Azure data Lake Storage Gen2 account, bestands systeem of submap, met de indeling van het container eindpunt opgeven. Url's voor data Lake Storage Gen2 hebben het volgende patroon `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` en klik vervolgens op **OK**.
+4. In het dialoog venster **Azure data Lake Storage Gen2** kunt u de URL naar uw Azure data Lake Storage Gen2 account, bestands systeem of submap, met de indeling van het container eindpunt opgeven. Url's voor Data Lake Storage Gen2 hebben het volgende patroon `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` en klik vervolgens op **OK**.
 
     ![URL](media/data-lake-storage-use-power-bi/adls-url.png)
 
@@ -53,7 +54,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
 
 7. In het volgende dialoog venster worden alle bestanden weer gegeven onder de URL die u in stap 4 hierboven hebt gegeven, inclusief het bestand dat u hebt geüpload naar uw opslag account. Controleer de informatie en klik vervolgens op **laden**.
 
-    ![Bestands systemen](media/data-lake-storage-use-power-bi/file-systems.png)
+    ![Bestandssystemen](media/data-lake-storage-use-power-bi/file-systems.png)
 
 8. Nadat de gegevens zijn geladen in Power BI, ziet u de volgende velden op het tabblad **velden** .
 
@@ -71,7 +72,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
 
 10. Klik in de **query-editor**, onder de kolom **inhoud** , op **binair**. Het bestand wordt automatisch gedetecteerd als CSV en u ziet een uitvoer zoals hieronder wordt weer gegeven. Uw gegevens zijn nu beschikbaar in een indeling die u kunt gebruiken om visualisaties te maken.
 
-    ![Output](media/data-lake-storage-use-power-bi/binary.png)
+    ![Uitvoer](media/data-lake-storage-use-power-bi/binary.png)
 
 11. Klik op het tabblad **Start** op het lint op **sluiten** en **Toep assen**en klik vervolgens op **sluiten** en **Toep assen**.
 

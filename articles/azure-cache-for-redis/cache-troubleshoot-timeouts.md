@@ -1,17 +1,17 @@
 ---
 title: Problemen met Azure-cache oplossen voor redis-outs
-description: Meer informatie over het oplossen van veelvoorkomende time-outproblemen met Azure cache voor redis
+description: Meer informatie over het oplossen van veelvoorkomende time-outproblemen met Azure cache voor redis, zoals redis server patches en stack Exchange. redis time-out-uitzonde ringen.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.author: yegu
-ms.openlocfilehash: e58b305a43cc5ad339fb87b9b8a09af04c410839
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 4b8cfed883ffef780de2e82e3f309e97bcb5515c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121383"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412079"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Problemen met Azure-cache oplossen voor redis-outs
 
@@ -45,7 +45,7 @@ Dit fout bericht bevat metrische gegevens die u kunnen helpen bij de oorzaak en 
 | qs |67 van de bewerkingen die momenteel worden uitgevoerd, zijn verzonden naar de server, maar er is nog geen antwoord beschikbaar. Het antwoord kan worden `Not yet sent by the server` of `sent by the server but not yet processed by the client.` |
 | qc |0 van de bewerkingen die worden uitgevoerd, hebben geen antwoorden gezien, maar zijn nog niet als voltooid gemarkeerd, omdat ze wachten op de voltooiings lus |
 | WR |Er is een actieve schrijver (wat betekent dat de 6 niet-verzonden aanvragen niet worden genegeerd) bytes/activewriters |
-| Naast |Er zijn geen actieve lezers en er zijn geen null-bytes beschikbaar om te worden gelezen op het NIC-aantal bytes/activereaders |
+| in |Er zijn geen actieve lezers en er zijn geen null-bytes beschikbaar om te worden gelezen op het NIC-aantal bytes/activereaders |
 
 U kunt de volgende stappen gebruiken om mogelijke hoofd oorzaken te onderzoeken.
 
@@ -113,7 +113,7 @@ U kunt de volgende stappen gebruiken om mogelijke hoofd oorzaken te onderzoeken.
 
 ## <a name="additional-information"></a>Aanvullende informatie
 
-- [Problemen met Azure-cache oplossen voor redis aan client zijde](cache-troubleshoot-client.md)
-- [Problemen met Azure-cache oplossen voor redis aan de server zijde](cache-troubleshoot-server.md)
+- [Problemen met Azure Cache voor Redis aan clientzijde oplossen](cache-troubleshoot-client.md)
+- [Problemen met Azure Cache voor Redis aan serverzijde oplossen](cache-troubleshoot-server.md)
 - [Hoe kan ik Bench Mark en test de prestaties van mijn cache?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 - [Azure-cache bewaken voor redis](cache-how-to-monitor.md)

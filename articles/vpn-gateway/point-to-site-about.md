@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 12/17/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7305976060cb5df01f683b3310e59644d7e45b35
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 55433efabea516151cfb858bb61f504e180f5fb7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975088"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353557"
 ---
 # <a name="about-point-to-site-vpn"></a>Over punt-naar-site-VPN
 
@@ -51,11 +51,11 @@ Met systeem eigen Azure AD-verificatie kunt u gebruikmaken van de voorwaardelijk
 
 Op hoog niveau moet u de volgende stappen uitvoeren om Azure AD-verificatie te configureren:
 
-[1. een Azure AD-Tenant configureren](openvpn-azure-ad-tenant.md)
+1. [Een Azure AD-Tenant configureren](openvpn-azure-ad-tenant.md)
 
-[2. Azure AD-verificatie inschakelen op de gateway](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
+2. [Azure AD-verificatie inschakelen op de gateway](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
 
-[3. Azure VPN-client downloaden en configureren (preview)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
+3. [Azure VPN-client downloaden en configureren (preview-versie)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Verifiëren met behulp van de domein server van Active Directory (AD)
@@ -67,10 +67,6 @@ De RADIUS-server kan on-premises of in uw Azure VNET worden geïmplementeerd. Ti
 De RADIUS-server kan ook worden geïntegreerd met AD Certificate Services. Hiermee kunt u de RADIUS-server en de implementatie van het ondernemings certificaat voor P2S-certificaat verificatie gebruiken als alternatief voor de Azure-certificaat verificatie. Het voor deel is dat u geen basis certificaten en ingetrokken certificaten naar Azure hoeft te uploaden.
 
 Een RADIUS-server kan ook worden geïntegreerd met andere externe identiteits systemen. Hiermee opent u veel verificatie opties voor P2S VPN, waaronder multi-factor-opties.
-
->[!NOTE]
->**OpenVPN®-protocol** wordt niet ondersteund met RADIUS-verificatie.
->
 
 ![punt-naar-site](./media/point-to-site-about/p2s.png "Point-to-Site")
 

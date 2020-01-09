@@ -1,29 +1,19 @@
 ---
-title: Failover uitvoeren voor een Service Fabric-app voor containers in Azure en deze schalen | Microsoft Docs
+title: Een app voor containers failoveren en schalen
 description: In deze zelfstudie leert u hoe failovers worden verwerkt in een Azure Service Fabric-containertoepassing.  U leert ook hoe u de containers en services schaalt die in een cluster worden uitgevoerd.
-services: service-fabric
-documentationcenter: ''
 author: suhuruli
-manager: chackdan
-editor: suhuruli
-tags: servicefabric
-keywords: Docker, Containers, Microservices, Service Fabric, Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: a13ce98eeebf60a6b61ee9aff01107c61fa94641
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bef1c42712c881296c5ab7b8096deb50fe94ee55
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385104"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614091"
 ---
-# <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Zelfstudie: Demonstratie van failover en schalen van container Services met Service Fabric
+# <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Zelfstudie: Failover uitvoeren voor containerservices met Service Fabric en deze schalen
 
 Deze zelfstudie is deel drie van een serie. In deze zelfstudie leert u hoe failovers worden verwerkt in Service Fabric-containertoepassingen. Bovendien leert u hoe u containers kunt schalen. In deze zelfstudie hebt u:
 

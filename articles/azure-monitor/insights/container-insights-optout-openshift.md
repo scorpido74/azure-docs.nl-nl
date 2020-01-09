@@ -1,18 +1,14 @@
 ---
 title: Stoppen met het bewaken van uw Azure Red Hat open Shift-cluster | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de bewaking van uw Azure Red Hat open Shift-cluster kunt stoppen met Azure Monitor voor containers.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/21/2019
-ms.openlocfilehash: f769749532a05260bf3c2c9f99483c5607d985a6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: e726d2d8254598869f1c6305421c674c870e3d31
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384329"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404291"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-cluster-with-azure-monitor-for-containers"></a>Het bewaken van uw Azure Red Hat open Shift-cluster stoppen met Azure Monitor voor containers
 
@@ -26,7 +22,7 @@ Als u niet bekend met het concept bent van het implementeren van resources met b
 * [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md)
 * [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer `az --version`uit om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voor het identificeren van uw versie uitvoeren `az --version`. Als u wilt installeren of upgraden van de Azure CLI, Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 ### <a name="create-template"></a>Sjabloon maken
 
@@ -69,7 +65,7 @@ Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lo
     }
     ```
 
-2. Sla dit bestand op als **OptOutTemplate. json** naar een lokale map.
+2. Sla dit bestand als **OptOutTemplate.json** naar een lokale map.
 
 3. Plak de volgende JSON-syntaxis in het bestand:
 
@@ -92,7 +88,7 @@ Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lo
 
     ![De eigenschappenpagina van container](media/container-insights-optout-openshift/cluster-properties-page.png)
 
-5. Sla dit bestand op als **OptOutParam. json** naar een lokale map.
+5. Sla dit bestand als **OptOutParam.json** naar een lokale map.
 
 6. U kunt deze sjabloon nu implementeren. 
 

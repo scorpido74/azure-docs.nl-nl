@@ -1,19 +1,19 @@
 ---
 title: Phoenix Query Server REST-SDK-Azure HDInsight
 description: Installeer en gebruik de REST-SDK voor de Phoenix Query Server in azure HDInsight.
-ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/04/2017
-ms.openlocfilehash: c9e9258fb7ace93d0866463563d328456cbd1daa
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 84c2bad1004029fe61dcfc19321957a170284587
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311674"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612254"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>REST SDK van Apache Phoenix query server
 
@@ -94,7 +94,7 @@ Dit zijn de `TransactionIsolation` waarden:
 
 HBase, zoals andere RDBMS, slaat gegevens op in tabellen. Phoenix gebruikt standaard SQL-query's voor het maken van nieuwe tabellen, terwijl de primaire sleutel en kolom typen worden gedefinieerd.
 
-Dit voor beeld en alle volgende voor beelden gebruiken het geïnstantieerd `PhoenixClient`-object zoals gedefinieerd in [instantiëren van een nieuw PhoenixClient-object](#instantiate-new-phoenixclient-object).
+Dit voor beeld en alle latere voor beelden gebruiken het geïnstantieerd `PhoenixClient`-object zoals gedefinieerd in [instantiëren van een nieuw PhoenixClient-object](#instantiate-new-phoenixclient-object).
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -170,7 +170,7 @@ In dit voor beeld wordt een afzonderlijke gegevensset weer gegeven, die verwijst
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
-De waarde van de `StateProvince` kolom van de tabel wordt gebruikt bij een volgende SELECT-bewerking.
+De waarde van de `StateProvince` kolom van de tabel wordt gebruikt in een latere Selecteer bewerking.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -537,7 +537,7 @@ MH: 6
 FM: 5
 ```
 
-## <a name="next-steps"></a>Volgende stappen 
+## <a name="next-steps"></a>Volgende stappen
 
 * [Apache Phoenix in HDInsight](../hdinsight-phoenix-in-hdinsight.md)
 * [De Apache HBase REST SDK gebruiken](apache-hbase-rest-sdk.md)

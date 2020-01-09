@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: rohogue
-ms.openlocfilehash: 7839530463ea834ed5f8ae2ae06854985a77c673
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 5340952d6d30ae80d53234530a7e2ca6c067cf1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847372"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415344"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Veelgestelde vragen over Avere vFXT for Azure
 
@@ -77,7 +77,7 @@ Ja, avere vFXT wordt uitsluitend uitgevoerd als een HA-oplossing.
 
 Ja, klanten kunnen meer dan één Cloud provider gebruiken met het avere vFXT-cluster. Het ondersteunt AWS S3 Standard buckets, Google Cloud Services Standard buckets en Azure Blob-containers.
 
-> [!NOTE] 
+> [!NOTE]
 > Een software vergoeding is van toepassing op het gebruik van AVERE vFXT in AWS of Google Cloud, maar niet met Azure.
 
 ## <a name="technical-compute"></a>Technisch: berekenen
@@ -97,7 +97,6 @@ No, you must choose one virtual machine type or the other.
 ### Can I move between virtual machine types?
 
 Yes, there is a migration path to move from one VM type to the other. [Open a support ticket](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) to learn how.
-
 -->
 
 ### <a name="does-the-avere-vfxt-environment-scale"></a>Wordt de omgeving van de avere-vFXT geschaald?
@@ -130,7 +129,7 @@ Nee. Het model voor hoge Beschik baarheid in avere vFXT biedt momenteel geen ond
 
 ### <a name="can-i-clone-avere-vfxt-virtual-machines"></a>Kan ik virtuele machines van AVERE vFXT klonen?
 
-Nee, u moet het ondersteunde python-script gebruiken om knoop punten toe te voegen aan of te verwijderen uit het avere vFXT-cluster. Lees [Manage the avere vFXT cluster](avere-vfxt-manage-cluster.md)voor meer informatie.  
+Nee, u moet het ondersteunde python-script gebruiken om knoop punten toe te voegen aan of te verwijderen uit het avere vFXT-cluster. Lees [Manage the avere vFXT cluster](avere-vfxt-manage-cluster.md)voor meer informatie.
 
 ### <a name="is-there-a-vm-version-of-the-software-i-can-run-in-my-own-local-environment"></a>Is er een VM-versie van de software die ik in mijn eigen lokale omgeving kan uitvoeren?
 
@@ -270,7 +269,7 @@ U kunt BLOB-versleuteling configureren in azure (bij voor keur) of op het niveau
 
 Standaard worden gegevens versleuteld met door micro soft beheerde sleutels voor Azure Blob, Table en Queue Storage, plus Azure Files. U kunt uw eigen sleutel voor versleuteling van de Blob-opslag en Azure Files. Als u ervoor kiest om avere vFXT-versleuteling te gebruiken, moet u de door avere gegenereerde sleutel gebruiken en deze lokaal opslaan.
 
-## <a name="purchasing"></a>Aanschaffen
+## <a name="purchasing"></a>Inkopen
 
 ### <a name="how-do-i-get-avere-vfxt-for-azure-licensing"></a>Hoe kan ik avere vFXT voor Azure-licenties ophalen?
 
