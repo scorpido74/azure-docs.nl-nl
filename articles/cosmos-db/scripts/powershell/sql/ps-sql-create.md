@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell script-Azure Cosmos DB SQL-API-data base en-container maken
+title: Power shell-script voor het maken van Azure Cosmos DB SQL-API-data base en-container
 description: Azure PowerShell script-Azure Cosmos DB SQL-API-data base en-container maken
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: eee1e31808412dc5e4308dee92f3685507e771f3
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 5a57b8cb3e4e7076d3be73a9010d9a29a8b004a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178809"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441360"
 ---
 # <a name="create-a-database-and-container-for-azure-cosmos-db---sql-core-api"></a>Een Data Base en container maken voor de API van Azure Cosmos DB-SQL (core)
 
@@ -22,7 +22,7 @@ ms.locfileid: "71178809"
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
-Met dit script maakt u een Cosmos-account voor SQL-API (core) in twee regio's met consistentie op sessie niveau, een Data Base met een gedeelde door Voer en een container met een partitie sleutel, aangepast indexerings beleid, uniek sleutel beleid, TTL, specifieke door Voer en de laatste schrijver WINS beleid voor conflict oplossing met een aangepast pad voor conflict oplossing dat wordt gebruikt `multipleWriteLocations=true`wanneer.
+Met dit script maakt u een Cosmos-account voor SQL-API (core) in twee regio's met consistentie op sessie niveau, een Data Base met een gedeelde door Voer en een container met een partitie sleutel, aangepast indexerings beleid, uniek sleutel beleid, TTL, toegewezen door Voer en laatste schrijver WINS conflict oplossings beleid met een aangepast pad voor conflict oplossing dat wordt gebruikt wanneer `multipleWriteLocations=true`.
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-create.ps1 "Create an account, database, and container for SQL (Core) API")]
 
@@ -36,7 +36,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

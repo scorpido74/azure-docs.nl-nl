@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell script-Azure Cosmos DB ingerichte door Voer (RU/s) voor SQL-API (core)
+title: Power shell-script voor het ophalen van ingerichte door Voer (RU/s) voor de Azure Cosmos DB SQL-API (core)
 description: Azure PowerShell script-Azure Cosmos DB ingerichte door Voer (RU/s) voor SQL-API (core)
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: c7d7f295589d4e3b152016c2b55cfe07355d1cb0
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 9b4450e18aa2666806faf2c0baed8af2285e69dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178773"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441331"
 ---
 # <a name="get-the-provisioned-throughput-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>De ingerichte door Voer (RU/s) ophalen voor een Data Base of container voor de API van Azure Cosmos DB-SQL (core)
 
@@ -34,7 +34,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

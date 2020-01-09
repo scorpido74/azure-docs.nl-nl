@@ -3,18 +3,18 @@ title: Diagnostische gegevens inschakelen in azure Cloud Services met behulp van
 description: Meer informatie over het inschakelen van diagnostische gegevens voor Cloud Services met behulp van Power shell
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
-ms.author: gwallace
-ms.openlocfilehash: f2b7e51971cc2e540ee7745b3b44571c58359613
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.author: tagore
+ms.openlocfilehash: 76cdffed813fd182980b36f848e0ae42f3226539
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860211"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386541"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Diagnostische gegevens inschakelen in azure Cloud Services met behulp van Power shell
 U kunt Diagnostische gegevens verzamelen, zoals toepassings logboeken, prestatie meter items etc. vanuit een Cloud service met de uitbrei ding Azure Diagnostics. In dit artikel wordt beschreven hoe u de Azure Diagnostics-extensie voor een Cloud service inschakelt met behulp van Power shell.  Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor de vereiste onderdelen voor dit artikel.
@@ -37,7 +37,7 @@ $workerrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "Worke
 New-AzureDeployment -ServiceName $service_name -Slot Production -Package $service_package -Configuration $service_config -ExtensionConfiguration @($webrole_diagconfig,$workerrole_diagconfig)
 ```
 
-Als in het configuratie bestand voor diagnostische `StorageAccount` gegevens een element met de naam van een opslag `New-AzureServiceDiagnosticsExtensionConfig` account is opgegeven, gebruikt de cmdlet automatisch dat opslag account. Om dit te laten werken, moet het opslag account zich in hetzelfde abonnement benemen als de Cloud service die wordt geïmplementeerd.
+Als in het configuratie bestand voor diagnostische gegevens een `StorageAccount` element met de naam van een opslag account is opgegeven, gebruikt de `New-AzureServiceDiagnosticsExtensionConfig` cmdlet dat opslag account automatisch. Om dit te laten werken, moet het opslag account zich in hetzelfde abonnement benemen als de Cloud service die wordt geïmplementeerd.
 
 Vanuit Azure SDK 2,6 gaat u naar de extensie configuratie bestanden die worden gegenereerd door de MSBuild-doel uitvoer, de naam van het opslag account op basis van de diagnostische configuratie teken reeks die is opgegeven in het service configuratie bestand (. cscfg). In het onderstaande script ziet u hoe u de extensie configuratie bestanden kunt parseren vanuit de uitvoer van de publicatie doel en de uitbrei ding diagnostische gegevens configureren voor elke rol bij het implementeren van de Cloud service.
 
@@ -82,7 +82,7 @@ New-AzureDeployment -ServiceName $service_name -Slot Production -Package $servic
 
 Visual Studio Online maakt gebruik van een vergelijk bare methode voor automatische implementaties van Cloud Services met de uitbrei ding voor diagnostische gegevens. Zie [Publish-AzureCloudDeployment. ps1](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureCloudPowerShellDeploymentV1/Publish-AzureCloudDeployment.ps1) voor een volledig voor beeld.
 
-Als er `StorageAccount` geen is opgegeven in de diagnostische configuratie, moet u de para meter *StorageAccountName* door geven aan de cmdlet. Als de para meter *StorageAccountName* is opgegeven, gebruikt de cmdlet altijd het opslag account dat is opgegeven in de para meter en niet de-naam die is opgegeven in het configuratie bestand voor diagnostische gegevens.
+Als er geen `StorageAccount` is opgegeven in de diagnostische configuratie, moet u de para meter *StorageAccountName* door geven aan de cmdlet. Als de para meter *StorageAccountName* is opgegeven, gebruikt de cmdlet altijd het opslag account dat is opgegeven in de para meter en niet de-naam die is opgegeven in het configuratie bestand voor diagnostische gegevens.
 
 Als het diagnostische opslag account zich in een ander abonnement dan de Cloud service bevindt, moet u de para meters *StorageAccountName* en *StorageAccountKey* expliciet door geven aan de cmdlet. De para meter *StorageAccountKey* is niet nodig wanneer het diagnostische opslag account zich in hetzelfde abonnement bevindt, omdat de cmdlet automatisch de sleutel waarde kan opvragen en instellen bij het inschakelen van de uitbrei ding voor diagnostische gegevens. Als het opslag account voor diagnostische gegevens echter zich in een ander abonnement bevindt, kan de cmdlet de sleutel mogelijk niet automatisch ophalen en moet u de sleutel expliciet opgeven via de para meter *StorageAccountKey* .
 
@@ -121,7 +121,7 @@ Als u Diagnostische gegevens in een Cloud service wilt uitschakelen, kunt u de c
 Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
-Als u de uitbrei ding voor diagnostische gegevens hebt ingeschakeld met behulp van *set-AzureServiceDiagnosticsExtension* of de *New-AzureServiceDiagnosticsExtensionConfig* zonder de para meter *Role* , kunt u de extensie verwijderen met  *Remove-AzureServiceDiagnosticsExtension* zonder de para meter *Role* . Als de para meter *Role* is gebruikt bij het inschakelen van de uitbrei ding, moet deze ook worden gebruikt bij het verwijderen van de extensie.
+Als u de uitbrei ding voor diagnostische gegevens hebt ingeschakeld met behulp van *set-AzureServiceDiagnosticsExtension* of de *New-AzureServiceDiagnosticsExtensionConfig* zonder de para meter *Role* , kunt u de extensie verwijderen met *Remove-AzureServiceDiagnosticsExtension* zonder de para meter *Role* . Als de para meter *Role* is gebruikt bij het inschakelen van de uitbrei ding, moet deze ook worden gebruikt bij het verwijderen van de extensie.
 
 De extensie voor diagnostische gegevens verwijderen voor elke afzonderlijke rol:
 
@@ -133,3 +133,6 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 * Zie voor meer informatie over het gebruik van Azure Diagnostics en andere technieken voor het oplossen van problemen, [Diagnostische gegevens inschakelen in Azure Cloud Services en virtual machines](cloud-services-dotnet-diagnostics.md).
 * Het [Configuratie schema voor diagnostische gegevens](/azure/azure-monitor/platform/diagnostics-extension-schema-1dot3) bevat uitleg over de verschillende XML-configuratie opties voor de uitbrei ding van diagnostische gegevens.
 * Zie [een virtuele Windows-machine met behulp van Azure Resource Manager sjabloon maken](../virtual-machines/windows/extensions-diagnostics-template.md) voor informatie over het inschakelen van de uitbrei ding voor diagnostische gegevens voor virtual machines.
+
+
+

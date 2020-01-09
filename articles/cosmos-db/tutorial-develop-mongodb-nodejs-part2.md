@@ -1,6 +1,5 @@
 ---
-title: Een Angular-app maken met de API van Azure Cosmos DB voor MongoDB - een Node.js Express-app maken
-titleSuffix: Azure Cosmos DB
+title: Een node. js Express-app maken met de API van Azure Cosmos DB voor MongoDB (Part2)
 description: Deel 2 van de serie zelfstudies voor het maken van een MongoDB-app met Angular en Node op Azure Cosmos DB, waarbij gebruik wordt gemaakt van dezelfde API's als voor MongoDB.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 8dd725bed6364979a9388d5741bf17f667bda0b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 693222f4c1abd9bda128d18dc4dd67703a245bc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60404915"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441135"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Een Angular-app maken met de API van Azure Cosmos DB voor MongoDB - een Node.js Express-app maken
 
@@ -103,7 +102,7 @@ Voor deze zelfstudie hebt u verder nodig:
     * Behandelt alles dat zich in de map dist bevindt, dat wil zeggen de statische inhoud
     * Haalt de app op en behandelt index.html voor alle GET-aanvragen die niet op de server worden gevonden (voor dieptekoppelingen)
     * Start de server met app.listen
-    * Maakt gebruik van een functie van de pijl om aan te melden dat de poort actief is
+    * Gebruikt een pijl functie om te registreren dat de poort actief is
     
    ```node
    const express = require('express');
@@ -148,11 +147,11 @@ Voor deze zelfstudie hebt u verder nodig:
 
 7. Sla al uw gewijzigde bestanden op. 
 
-8. In Visual Studio Code klikt u op de knop **Debug** ![pictogram Debug in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png), klik u op de knop Gear ![knop Gear in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png). Het nieuwe bestand launch.json wordt geopend in Visual Studio Code.
+8. In Visual Studio Code klikt u op de knop **Debug**![pictogram Debug in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png), klik u op de knop Gear ![knop Gear in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png). Het nieuwe bestand launch.json wordt geopend in Visual Studio Code.
 
 8. Wijzig in regel 11 van het bestand launch.json `"${workspaceFolder}\\server"` in `"program": "${workspaceRoot}/src/server/index.js"` en sla het bestand op.
 
-9. Klik op de knop **Start Debugging** ![pictogram Debug in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png) om de app uit te voeren.
+9. Klik op de knop **Start Debugging**![pictogram Debug in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png) om de app uit te voeren.
 
     De app moet nu foutloos worden uitgevoerd.
 

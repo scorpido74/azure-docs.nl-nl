@@ -1,5 +1,6 @@
 ---
-title: Zelf studie voor het gebruik van Azure-app configuratie dynamische configuratie in een .NET core-app | Microsoft Docs
+title: 'Zelf studie: dynamische configuratie in een .NET core-app gebruiken'
+titleSuffix: Azure App Configuration
 description: In deze zelf studie leert u hoe u de configuratie gegevens voor .NET Core-Apps dynamisch kunt bijwerken
 services: azure-app-configuration
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: ae753758a3cd5b7dfa8794ccf98f7a8a063f5b18
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: afecc84748ae8ce85c07e3b482bd9b596bdca251
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185200"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433683"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Zelf studie: dynamische configuratie in een .NET core-app gebruiken
 
@@ -95,7 +96,7 @@ De methode `ConfigureRefresh` wordt gebruikt om de instellingen op te geven die 
 > [!NOTE]
 > De standaard waarde voor de verval tijd van de cache voor een configuratie-instelling is 30 seconden, maar kan worden overschreven door de `SetCacheExpiration`-methode aan te roepen voor de initialisatie functie voor opties die als een argument aan de `ConfigureRefresh`-methode is door gegeven.
 
-## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
+## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
 
 1. Stel een omgevings variabele met de naam **Connections Tring**in en stel deze in op de toegangs sleutel voor uw app-configuratie archief. Als u de Windows-opdracht prompt gebruikt, voert u de volgende opdracht uit en start u de opdracht prompt zodat de wijziging kan worden doorgevoerd:
 
@@ -119,7 +120,7 @@ De methode `ConfigureRefresh` wordt gebruikt om de instellingen op te geven die 
 
     ![Quickstart voor het lokaal starten van een app](./media/quickstarts/dotnet-core-app-run.png)
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
 
 1. Selecteer **Configuration Explorer**en werk de waarden van de volgende sleutels bij:
 

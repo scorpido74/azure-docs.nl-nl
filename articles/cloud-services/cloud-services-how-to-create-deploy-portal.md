@@ -3,20 +3,20 @@ title: Een Cloud service maken en implementeren | Microsoft Docs
 description: Meer informatie over het maken en implementeren van een Cloud service met behulp van de Azure Portal.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 3d5b3f291eb42edc1f7999f33cf6c0879c33bcf4
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 53f53976b20359afc45abe1b25ca60325b5d6a2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359127"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386167"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Een Cloud service maken en implementeren
-De Azure Portal biedt twee manieren waarop u een Cloud service kunt maken en implementeren: *Snel maken* en *aangepast maken*.
+De Azure Portal biedt twee manieren om een Cloud service te maken en te implementeren: *snel maken* en *aangepast maken*.
 
 In dit artikel wordt uitgelegd hoe u de methode voor snel maken gebruikt om een nieuwe Cloud service te maken en vervolgens **uploaden** kunt gebruiken om een Cloud service-pakket te uploaden en te implementeren in Azure. Wanneer u deze methode gebruikt, maakt de Azure Portal handige koppelingen beschikbaar voor het volt ooien van alle vereisten. Als u klaar bent voor het implementeren van uw Cloud service wanneer u deze maakt, kunt u beide op hetzelfde moment doen met behulp van aangepaste maken.
 
@@ -44,7 +44,7 @@ Voor drie Cloud service functies zijn speciale configuraties vereist voordat u e
 
 * Als u een Cloud service wilt implementeren die gebruikmaakt van Secure Sockets Layer (SSL) voor gegevens versleuteling, moet u [uw toepassing configureren](cloud-services-configure-ssl-certificate-portal.md#modify) voor SSL.
 * Als u Extern bureaublad verbindingen met rolinstanties wilt configureren, configureert u [de functies](cloud-services-role-enable-remote-desktop-new-portal.md) voor extern bureaublad.
-* Als u uitgebreide bewaking voor uw Cloud service wilt configureren, schakelt u Azure Diagnostics in voor de Cloud service. *Minimale controle* (het standaard bewakings niveau) gebruikt prestatie meter items die worden verzameld van de besturings systemen van de host voor rolinstanties (virtuele machines). Met *uitgebreide bewaking* worden extra metrische gegevens verzameld op basis van de prestaties in de rolinstanties om een nauwere analyse van problemen mogelijk te maken die zich voordoen tijdens de verwerking van toepassingen. Zie voor meer informatie over het inschakelen van Azure Diagnostics [Diagnostische gegevens inschakelen in azure](cloud-services-dotnet-diagnostics.md).
+* Als u uitgebreide bewaking voor uw Cloud service wilt configureren, schakelt u Azure Diagnostics in voor de Cloud service. *Minimale bewaking* (het standaard bewakings niveau) gebruikt prestatie meter items die worden verzameld van de besturings systemen van de host voor rolinstanties (virtuele machines). Met *uitgebreide bewaking* worden extra metrische gegevens verzameld op basis van de prestaties in de rolinstanties om een nauwere analyse van problemen mogelijk te maken die zich voordoen tijdens de verwerking van toepassingen. Zie voor meer informatie over het inschakelen van Azure Diagnostics [Diagnostische gegevens inschakelen in azure](cloud-services-dotnet-diagnostics.md).
 
 Als u een Cloud service wilt maken met implementaties van webrollen of werk rollen, moet u [het service pakket maken](cloud-services-model-and-package.md#servicepackagecspkg).
 
@@ -91,3 +91,6 @@ Als uw implementatie pakket is [geconfigureerd voor het gebruik van certificaten
 * Een [aangepaste domein naam](cloud-services-custom-domain-name-portal.md)configureren.
 * [Uw Cloud service beheren](cloud-services-how-to-manage-portal.md).
 * [SSL-certificaten](cloud-services-configure-ssl-certificate-portal.md)configureren.
+
+
+

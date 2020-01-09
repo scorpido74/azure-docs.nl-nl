@@ -1,5 +1,5 @@
 ---
-title: Problemen vaststellen en oplossen bij het gebruik van Azure Functions trigger voor Cosmos DB
+title: Problemen oplossen bij het gebruik van Azure Functions trigger voor Cosmos DB
 description: Veelvoorkomende problemen, tijdelijke oplossingen en diagnostische stappen bij het gebruik van de Azure Functions trigger voor Cosmos DB
 author: ealsur
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e3ff86770ec0337c9a4a11b30c6d88e8365bfa24
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: f3af350c96d1dd9eaf4773db503acb10d8a08a8f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064111"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441121"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Problemen vaststellen en oplossen bij het gebruik van Azure Functions trigger voor Cosmos DB
 
@@ -78,7 +78,7 @@ Als uw Azure-functie de wijzigingen ontvangt, worden deze vaak verwerkt en kunne
 
 Als sommige wijzigingen op de bestemming ontbreken, kan dit betekenen dat er een fout optreedt tijdens de uitvoering van de Azure-functie nadat de wijzigingen zijn ontvangen.
 
-In dit scenario is het de beste actie om `try/catch` blokken toe te voegen aan uw code en in de lussen die de wijzigingen kunnen verwerken, om eventuele fouten voor een bepaalde subset van items te detecteren en ze dienovereenkomstig te verwerken (naar een andere opslag locatie sturen). analyse of nieuwe poging). 
+In dit scenario is het raadzaam om `try/catch` blokken toe te voegen aan uw code en in de lussen die de wijzigingen kunnen verwerken, om eventuele fouten voor een bepaalde subset van items te detecteren en ze dienovereenkomstig te verwerken (stuur ze naar een andere opslag voor verdere analyse of probeer het opnieuw). 
 
 > [!NOTE]
 > Als er een onverwerkte uitzonde ring is opgetreden tijdens het uitvoeren van de code, wordt de Azure Functions trigger voor Cosmos DB standaard niet opnieuw geprobeerd een batch wijzigingen uit te voeren. Dit betekent dat de wijzigingen niet zijn doorgevoerd op de bestemming omdat u deze niet kunt verwerken.

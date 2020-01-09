@@ -16,12 +16,12 @@ ms.date: 04/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 3aaa99caca461d4b8e339cf4c1f7847adef4027a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c84277603420567485b5199cdd2fa63ee3a2654
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076852"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378378"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Problemen met verwijderde meldingen in azure Notification Hubs vaststellen
 
@@ -103,7 +103,7 @@ Elke batch wordt verzonden naar de Push Notification Service, die op zijn beurt 
 
 In dit geval wordt de fout registratie verwijderd uit de data base. Vervolgens wordt de meldings levering voor de rest van de apparaten in die batch opnieuw geprobeerd.
 
-Als u meer informatie wilt over de mislukte bezorgings poging voor een registratie, kunt u de Notification Hubs REST-Api's [per bericht-telemetrie gebruiken: Ontvang een telemetrie-meldings bericht](https://msdn.microsoft.com/library/azure/mt608135.aspx) en [PNS feedback](https://msdn.microsoft.com/library/azure/mt705560.aspx). Zie de [rest-voor beeld verzenden](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)voor een voorbeeld code.
+Als u meer informatie wilt over de mislukte bezorgings poging voor een registratie, kunt u de Notification Hubs REST-Api's [per bericht-telemetrie gebruiken: Ontvang een telemetrie-meldings bericht](https://docs.microsoft.com/rest/api/notificationhubs/get-notification-message-telemetry) en [PNS feedback](https://msdn.microsoft.com/library/azure/mt705560.aspx). Zie de [rest-voor beeld verzenden](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)voor een voorbeeld code.
 
 ## <a name="push-notification-service-issues"></a>Problemen met Push Notification Service
 
@@ -127,7 +127,7 @@ Hier vindt u de paden voor het vaststellen van de hoofd oorzaak van verwijderde 
 
 Controleer de referenties in de respectieve Push Notification Service Developer-Portal (APNs, FCM, Windows Notification Service, enzovoort). Zie [zelf studie: meldingen verzenden naar universeel Windows-platform-apps met behulp van Azure notification hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification)voor meer informatie.
 
-#### <a name="azure-portal"></a>Azure-portal ####
+#### <a name="azure-portal"></a>Azure Portal ####
 
 Ga naar het tabblad **toegangs beleid** in het Azure Portal om de referenties te controleren en te vergelijken met de gegevens die u hebt verkregen via de Push Notification Service-ontwikkelaars Portal.
 
@@ -168,7 +168,7 @@ Veel klanten gebruiken [Service Bus Explorer](https://github.com/paolosalvatori/
 
 ### <a name="verify-message-notifications"></a>Bericht meldingen controleren
 
-#### <a name="azure-portal"></a>Azure-portal ####
+#### <a name="azure-portal"></a>Azure Portal ####
 
 Als u een test melding naar uw clients wilt verzenden zonder dat er een back-up van een service wordt uitgevoerd, selecteert u onder **ondersteuning en probleem oplossing**de optie **Test verzenden**.
 
@@ -245,7 +245,7 @@ Dit bericht geeft aan dat de referenties die zijn geconfigureerd in Notification
 
 ### <a name="review-telemetry"></a>Telemetrie controleren ###
 
-#### <a name="azure-portal"></a>Azure-portal ####
+#### <a name="azure-portal"></a>Azure Portal ####
 
 In de portal kunt u een snel overzicht krijgen van alle activiteiten in uw notification hub.
 

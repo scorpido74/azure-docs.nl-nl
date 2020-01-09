@@ -1,6 +1,5 @@
 ---
-title: Een Angular-app maken met de API voor MongoDB van Azure Cosmos DB - CRUD-functies toevoegen aan de app
-titleSuffix: Azure Cosmos DB
+title: RUWE functies toevoegen aan een hoek-app met de API van Azure Cosmos DB voor MongoDB
 description: Deel 6 van de serie zelfstudies voor het maken van een MongoDB-app met Angular en Node op Azure Cosmos DB, waarbij gebruik wordt gemaakt van dezelfde API's als voor MongoDB
 author: johnpapa
 ms.service: cosmos-db
@@ -11,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 42015ca816f2744ef28660c5396db4cfd93a76f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0c39ffe40a490ee23ac65f892c46fba2578bce74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60766365"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441108"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Een Angular-app maken met de API voor MongoDB van Azure Cosmos DB - CRUD-functies toevoegen aan de app
 
@@ -37,7 +36,7 @@ Voltooi de stappen in [deel 5](tutorial-develop-mongodb-nodejs-part5.md) van de 
 
 ## <a name="add-a-post-function-to-the-hero-service"></a>Een Post-functie aan de hero-service toevoegen
 
-1. In Visual Studio Code opent u **routes.js** en **hero.service.js** naast elkaar door op de knop **Split Editor** ![knop Split Editor in Visual Studio](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png) te drukken.
+1. In Visual Studio Code opent u **routes.js** en **hero.service.js** naast elkaar door op de knop **Split Editor**![knop Split Editor in Visual Studio](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png) te drukken.
 
     U ziet dat regel 7 van routes.js de functie `getHeroes` aanroept in regel 5 van **hero.service.js**.  Voor de functies Post, Put en Delete moet dezelfde koppeling worden gemaakt. 
 
@@ -85,7 +84,7 @@ Voltooi de stappen in [deel 5](tutorial-develop-mongodb-nodejs-part5.md) van de 
     });
     ```
 
-5. Controleer of alles werkt door de app uit te voeren. Sla uw wijzigingen op in Visual Studio Code, selecteer aan de linkerkant de knop **Fouten opsporen** ![pictogram Fouten opsporen in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) en selecteer vervolgens de knop **Start Debugging** ![pictogram Start Debugging in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png).
+5. Controleer of alles werkt door de app uit te voeren. Sla uw wijzigingen op in Visual Studio Code, selecteer aan de linkerkant de knop **Fouten opsporen**![pictogram Fouten opsporen in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) en selecteer vervolgens de knop **Start Debugging**![pictogram Start Debugging in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png).
 
 6. Ga terug naar de internetbrowser en open het tabblad Netwerk in de hulpmiddelen voor ontwikkelaars door op F12 te drukken (op de meeste computers). Ga naar [http://localhost:3000](http://localhost:3000) om de aanroepen te bekijken die via het netwerk zijn gedaan.
 
@@ -170,7 +169,7 @@ Voltooi de stappen in [deel 5](tutorial-develop-mongodb-nodejs-part5.md) van de 
     };
     ```
 
-4. De code is nu bijgewerkt. Selecteer de knop **Opnieuw opstarten** ![knop Opnieuw opstarten in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png) in Visual Studio Code.
+4. De code is nu bijgewerkt. Selecteer de knop **Opnieuw opstarten**![knop Opnieuw opstarten in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png) in Visual Studio Code.
 
 5. Vernieuw de pagina in uw internetbrowser en selecteer de knop **Add New Hero**. Voeg een nieuwe hero toe met de id '9', de naam 'Starlord' en de uitspraak 'Hi’. Selecteer de knop **Opslaan** om de nieuwe hero op te slaan.
 

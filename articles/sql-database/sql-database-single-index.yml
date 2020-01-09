@@ -2,7 +2,6 @@
 documentType: LandingData
 title: 'Azure SQL Database: Individuele database'
 metadata:
-  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
   title: Documentatie - individuele database
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database
@@ -75,7 +74,7 @@ sections:
             title: Azure Portal
           - image:
               src: media/index/cli.svg
-            title: Azure-CLI
+            title: Azure CLI
           - image:
               src: media/index/logo_powershell.svg
             title: PowerShell

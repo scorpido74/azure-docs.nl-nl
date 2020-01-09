@@ -1,6 +1,5 @@
 ---
-title: Een Angular-app maken met de API voor MongoDB van Azure Cosmos DB - Een Cosmos-account maken
-titleSuffix: Azure Cosmos DB
+title: Een hoek-app maken met de API van Azure Cosmos DB voor MongoDB (Part1)
 description: Deel 4 van de serie zelfstudies voor het maken van een MongoDB-app met Angular en Node op Azure Cosmos DB, waarbij gebruik wordt gemaakt van dezelfde API's als voor MongoDB
 author: johnpapa
 ms.service: cosmos-db
@@ -11,12 +10,12 @@ ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 8320204f75e583dae0449f83e7c38f6638371c2a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: d5ed706a0577423f0a95b8eb5f7a563da74a0e7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130395"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441174"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Een Angular-app maken met de API voor MongoDB van Azure Cosmos DB - Een Cosmos-account maken
 
@@ -69,7 +68,7 @@ Zodra het Azure Cosmos DB-account is gemaakt:
 
 4. Scrol omlaag op de navigatiebalk aan de linkerkant en klik op het tabblad **Gegevens globaal repliceren**. Er wordt een kaart weergegeven waarop u de verschillende gebieden ziet waarin u kunt repliceren. U kunt bijvoorbeeld klikken op Australië - zuidoost of Australië - oost en uw gegevens repliceren naar Australië. Meer informatie over globale replicatie vindt u in [Gegevens globaal distribueren met Azure Cosmos DB](distribute-data-globally.md). Voorlopig behouden we dit exemplaar. Wanneer we willen repliceren, weten we hoe dit moet.
 
-    ![Nieuw Azure Cosmos DB-account in Azure Portal](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png)
+    ![Nieuw Azure Cosmos DB-account in de Azure Portal](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

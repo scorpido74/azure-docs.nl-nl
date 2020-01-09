@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: d8707e2edccf144cbe58a530bcfe2c176e656915
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2b4e78db9f3aa3a8f678212c7fcd1b97ed4834b1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582402"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378208"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Veelgestelde vragen over Azure Red Hat open Shift
 
@@ -121,7 +121,7 @@ Syslog, docker-logboeken, logboeken en dmesg worden verwerkt door de beheerde se
 
 ## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Hoe kan een klant toegang krijgen tot metrische gegevens, zoals CPU/geheugen op knooppunt niveau, om actie te ondernemen om te schalen, problemen op te lossen, enzovoort. Ik kan `kubectl top` niet uitvoeren op een ARO-cluster.
 
-`kubectl top` is niet beschikbaar op Red Hat open SHIFT. Hiervoor is een gegevens bron voor een back-up vereist, ofwel Heapster (afgeschaft) of metrieken-server (cubeing of alpha), waarvan geen van beide zijn opgenomen in de open Shift-bewakings stack.
+Klanten hebben toegang tot de metrische gegevens van de CPU/het geheugen op knooppunt niveau met behulp van de opdracht `oc adm top nodes` of `kubectl top nodes` met de beheerder clusterrole van de klant.  Klanten hebben ook toegang tot de metrische gegevens van de CPU/het geheugen van `pods` met de opdracht `oc adm top pods` of `kubectl top pods`
 
 ## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>Wat is de standaard configuratie van de pod Scheduler voor ARO?
 
@@ -137,7 +137,7 @@ Raadpleeg [het juiste aantal fout domeinen voor de schaalset voor virtuele machi
 
 ## <a name="is-there-a-way-to-manage-pod-placement"></a>Is er een manier om pod-plaatsing te beheren?
 
-Met de aanstaande klant-beheerders update kunnen klanten knoop punten ophalen en labels weer geven.  Dit biedt een manier om een virtuele machine in de schaalset te richten.
+Klanten hebben de mogelijkheid om knoop punten op te halen en labels te bekijken als de beheerder van de klant.  Dit biedt een manier om een virtuele machine in de schaalset te richten.
 
 Let op wanneer u specifieke labels gebruikt:
 
@@ -147,7 +147,7 @@ Let op wanneer u specifieke labels gebruikt:
 
 ## <a name="what-is-the-maximum-number-of-pods-in-an-aro-cluster-what-is-the-maximum-number-of-pods-per-node-in-aro"></a>Wat is het maximum aantal peulen in een ARO-cluster?  Wat is het maximum aantal peulen per knoop punt in ARO?
 
-Raadpleeg [upstream-documenten](https://docs.openshift.com/container-platform/3.11/scaling_performance/cluster_limits.html#scaling-performance-current-cluster-limits) voor open Shift voor meer informatie. Red Hat open Shift 3,11 heeft een limiet van 250 pod/knoop punten, terwijl [Aro een limiet heeft van 20 reken knooppunten](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available), zodat het maximum aantal peulen dat in een Aro-cluster wordt ondersteund, wordt gecaps naar 250 * 20 = 5000.
+ Azure Red Hat open Shift 3,11 heeft een limiet van 50-pod per knoop punt met [Aro met een limiet van 20 reken knooppunten](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available), zodat het maximum aantal peulingen in een Aro-cluster wordt gecaps tot 50 * 20 = 1000.
 
 ## <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Kunnen we IP-bereiken voor implementatie op het privé-VNET opgeven, waardoor er geen conflict is met andere bedrijfs VNETs zodra het peerend is?
 

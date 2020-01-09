@@ -1,5 +1,5 @@
 ---
-title: Werken met opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies in Azure Cosmos DB
+title: Werken met opgeslagen procedures, triggers en Udf's in Azure Cosmos DB
 description: In dit artikel worden de concepten geïntroduceerd, zoals opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies in Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 700cd6c0c75b25d56e812a394d6bdd193e4fb57c
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 706f52a6cda2bbcb0e5ca1cfe9372600fa6709d0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614051"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441240"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies
 
-Azure Cosmos DB biedt taal geïntegreerde, transactionele uitvoering van Java script. Wanneer u de SQL-API gebruikt in Azure Cosmos DB, kunt u **opgeslagen procedures**, **Triggers**en door de **gebruiker gedefinieerde functies (Udf's)** schrijven in de Java script-taal. U kunt uw logica schrijven in Java script dat wordt uitgevoerd in de data base-engine. U kunt triggers, opgeslagen procedures en UDFs maken en uitvoeren met behulp van [Azure Portal](https://portal.azure.com/), de [geïntegreerde Java script language-query-API in azure Cosmos DB](javascript-query-api.md) of de client-SDK'S van de [Cosmos DB SQL API](how-to-use-stored-procedures-triggers-udfs.md).
+Azure Cosmos DB biedt taalgeïntegreerde, transactionele uitvoering van Java script. Wanneer u de SQL-API gebruikt in Azure Cosmos DB, kunt u **opgeslagen procedures**, **Triggers**en door de **gebruiker gedefinieerde functies (Udf's)** schrijven in de Java script-taal. U kunt uw logica schrijven in JavaScript die wordt uitgevoerd binnen de database-engine. U kunt triggers, opgeslagen procedures en UDFs maken en uitvoeren met behulp van [Azure Portal](https://portal.azure.com/), de [geïntegreerde Java script language-query-API in azure Cosmos DB](javascript-query-api.md) of de client-SDK'S van de [Cosmos DB SQL API](how-to-use-stored-procedures-triggers-udfs.md).
 
 ## <a name="benefits-of-using-server-side-programming"></a>Voor delen van het gebruik van programmering aan de server zijde
 
@@ -26,22 +26,22 @@ Door opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies
 
 * **Atomische trans acties:** Azure Cosmos DB garandeert dat de database bewerkingen die worden uitgevoerd binnen één opgeslagen procedure of een trigger, atomisch zijn. Met deze Atomic-functionaliteit kunt u gerelateerde bewerkingen combi neren in één batch, zodat alle bewerkingen slagen of geen van deze acties slagen.
 
-* **Nemen** De JSON-gegevens zijn intrinsiek toegewezen aan het taal type systeem van Java script. Deze toewijzing biedt een aantal optimalisaties zoals een luie materialisatie van JSON-documenten in de buffer groep en maakt ze beschikbaar op aanvraag voor de code die wordt uitgevoerd. Er zijn andere prestatie voordelen verbonden aan het verzenden van bedrijfs logica naar de-data base, waaronder:
+* **Prestaties:** De JSON-gegevens zijn intrinsiek toegewezen aan het taal type systeem van Java script. Deze toewijzing biedt een aantal optimalisaties zoals een luie materialisatie van JSON-documenten in de buffer groep en maakt ze beschikbaar op aanvraag voor de code die wordt uitgevoerd. Er zijn andere prestatie voordelen verbonden aan het verzenden van bedrijfs logica naar de-data base, waaronder:
 
-   * *Batch verwerking* U kunt bewerkingen als toevoegingen groeperen en deze bulksgewijs verzenden. De latentie kosten van het netwerk verkeer en de opslag overhead voor het maken van afzonderlijke trans acties worden aanzienlijk verminderd.
+   * *Batch verwerking:* U kunt bewerkingen als toevoegingen groeperen en deze bulksgewijs verzenden. De latentie kosten van het netwerk verkeer en de opslag overhead voor het maken van afzonderlijke trans acties worden aanzienlijk verminderd.
 
    * *Pre-compilatie:* Opgeslagen procedures, triggers en Udf's worden impliciet vooraf gecompileerd naar de byte code-indeling om te voor komen dat compilatie kosten worden berekend op het moment van elke aanroepen van het script. Vanwege de vooraf-compilatie is het aanroepen van opgeslagen procedures snel en heeft deze een geringe footprint.
 
-   * *Sequentiëren* Bewerkingen hebben soms een activerings mechanisme nodig waarmee een of meer updates voor de gegevens kunnen worden uitgevoerd. Naast de atomiciteit zijn er ook prestatie voordelen bij de uitvoering van aan de server zijde.
+   * *Sequentiëren:* Bewerkingen hebben soms een activerings mechanisme nodig waarmee een of meer updates voor de gegevens kunnen worden uitgevoerd. Naast de atomiciteit zijn er ook prestatie voordelen bij de uitvoering van aan de server zijde.
 
-* **Encapsulation** Opgeslagen procedures kunnen worden gebruikt om logica op één locatie te groeperen. Encapsulation voegt een abstractie laag toe boven op de gegevens, zodat u uw toepassingen onafhankelijk van de gegevens kunt ontwikkelen. Deze laag van abstractie is handig wanneer de gegevens schema-minder zijn en u niet hoeft te beheren om extra logica rechtstreeks in uw toepassing toe te voegen. De abstractie zorgt ervoor dat de gegevens veilig blijven door de toegang vanuit de scripts te stroom lijnen.
+* **Inkapseling:** Opgeslagen procedures kunnen worden gebruikt om logica op één locatie te groeperen. Encapsulation voegt een abstractie laag toe boven op de gegevens, zodat u uw toepassingen onafhankelijk van de gegevens kunt ontwikkelen. Deze laag van abstractie is handig wanneer de gegevens schema-minder zijn en u niet hoeft te beheren om extra logica rechtstreeks in uw toepassing toe te voegen. De abstractie zorgt ervoor dat de gegevens veilig blijven door de toegang vanuit de scripts te stroom lijnen.
 
 > [!TIP]
 > Opgeslagen procedures zijn het meest geschikt voor bewerkingen die zijn geschreven, en vereisen een trans actie op basis van een partitie sleutel waarde. Wanneer u beslist of opgeslagen procedures moeten worden gebruikt, optimaliseer dan het inkapselen van de maximale schrijf tijd die mogelijk is. Over het algemeen zijn opgeslagen procedures niet de meest efficiënte manier om grote hoeveel heden Lees-of query bewerkingen uit te voeren. Als u opgeslagen procedures gebruikt om te retour neren naar de client, wordt het gewenste voor deel niet in rekening gebracht. Voor de beste prestaties moeten deze Lees bewerkingen worden uitgevoerd aan de client zijde, met behulp van de Cosmos-SDK. 
 
 ## <a name="transactions"></a>Transacties
 
-Transactie in een typische database kan worden gedefinieerd als een reeks bewerkingen die worden uitgevoerd als één logische eenheid van het werk. Elke trans actie biedt **ACID-eigenschappen garanties**. ZUUR is een bekend acroniem dat staat voor: **Een**tomicity, **C**onsistency, **I**solation en **D**urability. 
+Transactie in een typische database kan worden gedefinieerd als een reeks bewerkingen die worden uitgevoerd als één logische eenheid van het werk. Elke trans actie biedt **ACID-eigenschappen garanties**. ZUUR is een bekend acroniem dat staat voor: **een**tomicity, **C**onsistency, **I**solation en **D**urability. 
 
 * Atomiciteit garandeert dat alle bewerkingen die worden uitgevoerd binnen een trans actie, worden behandeld als één eenheid en dat allemaal zijn doorgevoerd of niet. 
 
@@ -59,7 +59,7 @@ Als een opgeslagen procedure is gekoppeld aan een Azure Cosmos-container, wordt 
 
 ### <a name="commit-and-rollback"></a>Doorvoeren en ongedaan maken
 
-Trans acties zijn systeem eigen geïntegreerd in het Azure Cosmos DB java script-programmeer model. Binnen een Java script-functie worden alle bewerkingen automatisch verpakt onder één trans actie. Als de Java script-logica in een opgeslagen procedure zonder uitzonde ringen is voltooid, worden alle bewerkingen binnen de trans actie doorgevoerd naar de data base. Instructies, `BEGIN TRANSACTION` zoals `COMMIT TRANSACTION` en (vertrouwde relationele data bases) zijn impliciet in azure Cosmos db. Als er uitzonde ringen van het script zijn, wordt de hele trans actie teruggedraaid met de Azure Cosmos DB Java Script runtime. Als zodanig is een uitzonde ring opgetreden die in `ROLLBACK TRANSACTION` feite overeenkomt met een in azure Cosmos db.
+Trans acties zijn systeem eigen geïntegreerd in het Azure Cosmos DB java script-programmeer model. Binnen een Java script-functie worden alle bewerkingen automatisch verpakt onder één trans actie. Als de Java script-logica in een opgeslagen procedure zonder uitzonde ringen is voltooid, worden alle bewerkingen binnen de trans actie doorgevoerd naar de data base. Instructies als `BEGIN TRANSACTION` en `COMMIT TRANSACTION` (vertrouwd met relationele data bases) zijn impliciet in Azure Cosmos DB. Als er uitzonde ringen van het script zijn, wordt de hele trans actie teruggedraaid met de Azure Cosmos DB Java Script runtime. Als zodanig is het activeren van een uitzonde ring in feite gelijk aan een `ROLLBACK TRANSACTION` in Azure Cosmos DB.
 
 ### <a name="data-consistency"></a>Gegevensconsistentie
 
@@ -75,11 +75,11 @@ Java script-functies zijn ook onderhevig aan [ingerichte doorvoer capaciteit](re
 
 ## <a name="triggers"></a>Triggers
 
-Azure Cosmos DB ondersteunt twee soorten triggers:
+Azure Cosmos DB biedt ondersteuning voor twee typen triggers:
 
 ### <a name="pre-triggers"></a>Pretriggers
 
-Azure Cosmos DB biedt triggers die kunnen worden aangeroepen door een bewerking uit te voeren op een Azure Cosmos-item. U kunt bijvoorbeeld een pre-trigger opgeven wanneer u een item maakt. In dit geval wordt de pre-trigger uitgevoerd voordat het item wordt gemaakt. Vooraf triggers kunnen geen invoer parameters hebben. Indien nodig kan het aanvraag object worden gebruikt voor het bijwerken van de hoofd tekst van het document van de oorspronkelijke aanvraag. Als triggers zijn geregistreerd, kunnen gebruikers de bewerkingen die het kan worden uitgevoerd met opgeven. Als er een trigger is gemaakt `TriggerOperation.Create`met, betekent dit dat het gebruik van de trigger in een vervangings bewerking niet is toegestaan. Zie [het artikel triggers schrijven](how-to-write-stored-procedures-triggers-udfs.md#triggers) voor voor beelden.
+Azure Cosmos DB biedt triggers die kunnen worden aangeroepen door een bewerking uit te voeren op een Azure Cosmos-item. U kunt bijvoorbeeld een pre-trigger opgeven wanneer u een item maakt. In dit geval wordt de pre-trigger uitgevoerd voordat het item wordt gemaakt. Pre-triggers kunnen geen invoerparameters hebben. Indien nodig kan het aanvraagobject worden gebruikt om de hoofdtekst van het document van de oorspronkelijke aanvraag bij te werken. Wanneer triggers zijn geregistreerd, kunnen gebruikers de bewerkingen opgeven waarmee deze kunnen worden uitgevoerd. Als er een trigger is gemaakt met `TriggerOperation.Create`, betekent dit dat het gebruik van de trigger in een vervangende bewerking niet is toegestaan. Zie [het artikel triggers schrijven](how-to-write-stored-procedures-triggers-udfs.md#triggers) voor voor beelden.
 
 ### <a name="post-triggers"></a>Post-triggers
 

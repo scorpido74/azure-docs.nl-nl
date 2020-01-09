@@ -1,5 +1,6 @@
 ---
-title: Zelf studie voor het integreren van een continue integratie-en leverings pijplijn met behulp van Azure-app configuratie | Microsoft Docs
+title: 'Zelf studie: integreren met een pijp lijn voor continue integratie en levering'
+titleSuffix: Azure App Configuration
 description: In deze zelf studie leert u hoe u een configuratie bestand genereert met behulp van gegevens in Azure-app configuratie tijdens continue integratie en levering
 services: azure-app-configuration
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: e9b81baed14b18c6db736bd94a2aba43a4e671ad
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f8adfee1e707181e78f4e845f61477b08af935e9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185108"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433640"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integreren met een CI/CD-pijplijn
 
@@ -72,7 +73,7 @@ Als u een Cloud-build wilt maken, kunt u met Azure DevOps bijvoorbeeld controler
             .UseStartup<Startup>();
     ```
 
-### <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
+### <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
 
 1. Stel een omgevings variabele met de naam **Connections Tring**in en stel deze in op de toegangs sleutel voor uw app-configuratie archief. Als u de Windows-opdracht prompt gebruikt, voert u de volgende opdracht uit en start u de opdracht prompt zodat de wijziging kan worden doorgevoerd:
 

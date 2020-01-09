@@ -1,23 +1,24 @@
 ---
-title: De stroom in een Cloud Services toepassing traceren met Azure Diagnostics | Microsoft Docs
+title: De stroom in Cloud Services toepassing traceren met Azure Diagnostics
+titleSuffix: Azure Cloud Services
 description: Voeg tracerings berichten toe aan een Azure-toepassing voor het opsporen van fouten, het meten van prestaties, bewaking, verkeers analyse en meer.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/20/2016
-ms.author: gwallace
-ms.openlocfilehash: b8d195fba934ceae98af383b96a8c0d9a9b88c5f
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.author: tagore
+ms.openlocfilehash: 47a33ba27dd6d2df626d93695c421303bace6a0b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808088"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386507"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>De stroom van een Cloud Services toepassing traceren met Azure Diagnostics
-Tracering is een manier om de uitvoering van uw toepassing te bewaken terwijl deze wordt uitgevoerd. U kunt de klassen [System. Diagnostics. trace](/dotnet/api/system.diagnostics.trace), [System. Diagnostics. debug](/dotnet/api/system.diagnostics.debug)en [System. Diagnostics. TraceSource](/dotnet/api/system.diagnostics.tracesource) gebruiken om informatie vast te leggen over fouten en de uitvoering van toepassingen in Logboeken, tekst bestanden of andere apparaten voor later bepaling. Zie [toepassingen traceren en instrumenteren](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications)voor meer informatie over tracering.
+Tracering is een manier om de uitvoering van uw toepassing te bewaken terwijl deze wordt uitgevoerd. U kunt de klassen [System. Diagnostics. trace](/dotnet/api/system.diagnostics.trace), [System. Diagnostics. debug](/dotnet/api/system.diagnostics.debug)en [System. Diagnostics. TraceSource](/dotnet/api/system.diagnostics.tracesource) gebruiken om informatie vast te leggen over fouten en de uitvoering van toepassingen in Logboeken, tekst bestanden of andere apparaten voor latere analyse. Zie [toepassingen traceren en instrumenteren](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications)voor meer informatie over tracering.
 
 ## <a name="use-trace-statements-and-trace-switches"></a>Trace-instructies en tracerings switches gebruiken
 Implementeer tracering in uw Cloud Services-toepassing door de [DiagnosticMonitorTraceListener](/previous-versions/azure/reference/ee758610(v=azure.100)) toe te voegen aan de toepassings configuratie en aanroepen naar System. Diagnostics. trace of System. Diagnostics. debug te maken in de toepassings code. Gebruik het configuratie bestand *app. config* voor werk rollen en *Web. config* voor webrollen. Wanneer u een nieuwe gehoste service maakt met behulp van een Visual Studio-sjabloon, wordt Azure Diagnostics automatisch toegevoegd aan het project en wordt de DiagnosticMonitorTraceListener toegevoegd aan het juiste configuratie bestand voor de functies die u toevoegt.
@@ -71,4 +72,7 @@ Nadat u de stappen hebt voltooid om de listener toe te voegen, kunt u tracerings
     ```
 3. Voeg tracerings instructies toe waarin u informatie wilt vastleggen over de status van uw toepassing. U kunt verschillende methoden gebruiken om de uitvoer van de instructie trace op te maken. Zie [How to: trace-instructies toevoegen aan de toepassings code](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code)voor meer informatie.
 4. Sla het bron bestand op.
+
+
+
 

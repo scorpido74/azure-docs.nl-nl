@@ -1,22 +1,22 @@
 ---
-title: Verbinding maken met OneDrive
-description: Bestanden uploaden en beheren met REST-Api's van OneDrive en Azure Logic Apps
+title: Bestanden openen en beheren in micro soft OneDrive
+description: Bestanden uploaden en beheren in OneDrive door automatische werk stromen te maken in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: 93528e257ab45644a79c58fbf600dca10317eb0b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: edfbf090c3409d583cda6fd2c9957c37be5dfb7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789675"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378429"
 ---
-# <a name="get-started-with-the-onedrive-connector"></a>Aan de slag met de OneDrive-connector
+# <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Bestanden in OneDrive connector openen en beheren met behulp van Azure Logic Apps
 
-Maak verbinding met OneDrive om uw bestanden te beheren, met inbegrip van het uploaden, ophalen, verwijderen van bestanden en meer. Met OneDrive kunt u de volgende taken uitvoeren:
+Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de [OneDrive-connector](/connectors/onedriveconnector/)kunt u geautomatiseerde taken en werk stromen maken om uw bestanden te beheren, waaronder het uploaden, ophalen, verwijderen van bestanden en nog veel meer. Met OneDrive kunt u de volgende taken uitvoeren:
 
 * Bouw uw werk stroom door bestanden op te slaan in OneDrive of bestaande bestanden in OneDrive bij te werken. 
 * Gebruik triggers om uw werk stroom te starten wanneer een bestand wordt gemaakt of bijgewerkt in uw OneDrive.
@@ -26,7 +26,7 @@ Dit artikel laat u zien hoe u de OneDrive-connector kunt gebruiken in een logisc
 
 Zie [Wat zijn logische apps](../logic-apps/logic-apps-overview.md) en [Maak een logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)om meer te weten te komen over Logic apps.
 
-## <a name="connect-to-onedrive"></a>Verbinding maken met OneDrive
+## <a name="connect-to-onedrive"></a>Verbinden met OneDrive
 
 Voordat uw logische app toegang kan krijgen tot een service, maakt u eerst een *verbinding* met de service. Een verbinding biedt connectiviteit tussen een logische app en een andere service. Als u bijvoorbeeld verbinding wilt maken met OneDrive, hebt u eerst een OneDrive- *verbinding*nodig. Als u een verbinding wilt maken, voert u de referenties in die u normaal gebruikt voor toegang tot de service waarmee u verbinding wilt maken. In OneDrive voert u de referenties voor uw OneDrive-account in om de verbinding te maken.
 
@@ -38,7 +38,7 @@ Voordat uw logische app toegang kan krijgen tot een service, maakt u eerst een *
 
 Een trigger is een gebeurtenis die kan worden gebruikt om de werk stroom te starten die is gedefinieerd in een logische app. Hiermee wordt de service ' Poll ' geactiveerd met een interval en frequentie die u wilt. Meer [informatie over triggers](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. In de logische app typt u ' onedrive ' om een lijst met triggers op te halen:  
+1. Typ `onedrive` in de ontwerp functie voor logische apps om een lijst met de triggers op te halen:  
 
    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
 
@@ -66,7 +66,7 @@ Een actie is een bewerking die wordt uitgevoerd door de werk stroom die is gedef
 
 2. Kies **een actie toevoegen**.
 
-3. Typ in het tekstvak ' onedrive ' om een lijst met alle beschik bare acties weer te geven.
+3. Typ `onedrive` in het zoekvak om een lijst met alle beschik bare acties weer te geven.
 
    ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 

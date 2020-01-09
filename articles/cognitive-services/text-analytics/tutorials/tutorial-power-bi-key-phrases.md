@@ -1,23 +1,23 @@
 ---
-title: 'Zelfstudie: Power BI Desktop integreren met de Text Analytics Cognitive service'
+title: Zelfstudie Integreer Power BI Desktop met de Text Analytics Cognitive service
 titleSuffix: Azure Cognitive Services
-description: Leer hoe u Text Analytics gebruikt om belangrijke woordgroepen te extraheren uit tekst die in Power BI is opgeslagen.
+description: Meer informatie over het gebruik van de Text Analytics-API om sleutel zinnen te extra heren uit tekst die is opgeslagen in Power BI.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 07/30/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 97245a10602f763c3269218d87c6b1a5ba309817
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241016"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378531"
 ---
-# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Zelfstudie: Power BI Desktop integreren met de Text Analytics Cognitive service
+# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Zelfstudie Integreer Power BI Desktop met de Text Analytics Cognitive service
 
 Microsoft Power BI Desktop is een gratis toepassing waarmee u verbinding kunt maken met uw gegevens en deze kunt transformeren en visualiseren. De Text Analytics-service is onderdeel van Microsoft Azure Cognitive Services, en biedt verwerking van natuurlijke taal. Bij onbewerkte ongestructureerde tekst, kan het de belangrijkste woordgroepen extraheren, sentiment analyseren en belangrijke entiteiten identificeren zoals merken. Samen kunnen deze hulpmiddelen u helpen snel te zien waar uw klanten het over hebben en wat ze ervan vinden.
 
@@ -114,7 +114,7 @@ Er verschijnt een nieuwe query met de initiële naam `Query1` in de lijst met qu
 In het **Start**-lint, in de groep **Query**, klik op de **Geavanceerde editor** om het venster Geavanceerde editor te openen. Verwijder de code die al in dat venster staat, en plak de volgende code. 
 
 > [!NOTE]
-> Vervang het onderstaande voor beeld-eind `<your-custom-subdomain>`punt (met) door het eind punt dat voor uw Text Analytics resource is gegenereerd. U kunt dit eind punt vinden door u aan te melden bij de [Azure Portal](https://azure.microsoft.com/features/azure-portal/), uw Text Analytics-abonnement `Quick start`te selecteren en te selecteren.
+> Vervang het onderstaande voor beeld-eind punt (met `<your-custom-subdomain>`) door het eind punt dat voor uw Text Analytics resource is gegenereerd. U kunt dit eind punt vinden door u aan te melden bij de [Azure Portal](https://azure.microsoft.com/features/azure-portal/), uw Text Analytics-abonnement te selecteren en `Quick start`te selecteren.
 
 
 ```fsharp
@@ -145,7 +145,7 @@ In Power BI Desktop, in het venster Query-Editor gaat u terug naar de `FabrikamC
 
 Het dialoogvenster aangepaste functie aanroepen wordt weergegeven. In **Nieuwe kolomnaam**, voert u `keyphrases` in. In **Functie query**, selecteert u de aangepaste functie die u hebt gemaakt, `KeyPhrases`.
 
-Een nieuw veld wordt weergegeven in het dialoogvenster **tekst (optioneel)** . Dit veld vraagt welke kolom we willen gebruiken voor de waarden van de `text` parameter van de Sleuteltermen-API. (Houd er rekening mee dat u al de waarden voor de parameters `language` en `id` hebt vastgelegd in de code) Kies `Merged` (de kolom die we [eerder](#PreparingData) hebben gemaakt door het onderwerp- en berichtveld samen te voegen) uit de vervolgkeuzelijst.
+Een nieuw veld wordt weergegeven in het dialoogvenster **tekst (optioneel)** . Dit veld vraagt welke kolom we willen gebruiken voor de waarden van de `text` parameter van de Sleuteltermen-API. (Houd er rekening mee dat u de waarden voor de para meters `language` en `id` al hebt vastgelegd.) Selecteer `Merged` (de kolom die u [eerder](#PreparingData) hebt gemaakt door het onderwerp en de bericht velden samen te voegen) in de vervolg keuzelijst.
 
 ![[Een aangepaste functie aanroepen]](../media/tutorials/power-bi/invoke-custom-function.png)
 
@@ -160,7 +160,7 @@ Nadat u het dialoogvenster Aangepaste functie aanroepen hebt gesloten, verschijn
 
 ![[referentiebanner]](../media/tutorials/power-bi/credentials-banner.png)
 
-Klik op **Referenties bewerken**, zorg dat `Anonymous` is geselecteerd in het dialoogvenster en klik vervolgens op **Verbinding maken.** 
+Klik op **Referenties bewerken**, zorg dat `Anonymous` is geselecteerd in het dialoogvenster en klik vervolgens op **Verbinding maken.** . 
 
 > [!NOTE]
 > U kiest `Anonymous` omdat de Text Analytics-service u verifieert met behulp van de toegangssleutel, zodat Power BI zelf geen referenties voor de HTTP-aanvraag hoeft te bieden.
@@ -168,7 +168,7 @@ Klik op **Referenties bewerken**, zorg dat `Anonymous` is geselecteerd in het di
 > [!div class="mx-imgBorder"]
 > ![[verificatie instellen op anoniem]](../media/tutorials/power-bi/access-web-content.png)
 
-Als u de banner ‘Referenties bewerken’ ziet nadat u anonieme toegang hebt gekozen, bent u mogelijk vergeten uw Text Analytics-sleutel in de code te plakken in de `KeyPhrases` [Aangepaste functie](#CreateCustomFunction).
+Als u het span doek voor het bewerken van referenties hebt gekozen, kunt u uw Text Analytics toegangs sleutel wellicht verg eten in de code in de [aangepaste functie](#CreateCustomFunction)`KeyPhrases`.
 
 Vervolgens verschijnt er mogelijk een banner waarin u wordt gevraagd informatie op te geven over de privacy van uw gegevensbronnen. 
 
@@ -217,7 +217,7 @@ Klik op het hulpmiddel Focusmodus in het rapport om onze woordwolk beter te beki
 
 De Text Analytics-service, een van de Cognitive Services die worden aangeboden door Microsoft Azure, biedt ook sentimentanalyse en taaldetectie. Met name de taaldetectie is handig als uw klantenfeedback niet allemaal in het Engels is.
 
-Deze andere API's lijken allebei heel erg op de Sleuteltermen-API. Dit betekent dat u ze kan integreren met Power BI Desktop met behulp van aangepaste functies die bijna identiek zijn aan de functies die u in deze zelfstudie hebt gemaakt. Maak gewoon een lege query en plak de toepasselijke code hieronder in de Geavanceerde editor, net zoals u eerder hebt gedaan. (Vergeet uw toegangssleutel niet!) Gebruik de functie vervolgens, net zoals eerder, om een nieuwe kolom aan de tabel toe te voegen.
+Deze andere API's lijken allebei heel erg op de Sleuteltermen-API. Dit betekent dat u ze kan integreren met Power BI Desktop met behulp van aangepaste functies die bijna identiek zijn aan de functies die u in deze zelfstudie hebt gemaakt. Maak gewoon een lege query en plak de toepasselijke code hieronder in de Geavanceerde editor, net zoals u eerder hebt gedaan. (Vergeet niet uw toegangs sleutel.) Daarna kunt u, net als voorheen, de functie gebruiken om een nieuwe kolom toe te voegen aan de tabel.
 
 De functie Sentimentanalyse hieronder retourneert een score die aangeeft hoe positief het in de tekst uitgedrukte sentiment is.
 

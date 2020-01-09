@@ -3,21 +3,21 @@ title: Communicatie voor rollen in Cloud Services | Microsoft Docs
 description: Voor rolinstanties in Cloud Services kunnen eind punten (http, HTTPS, TCP, UDP) worden gedefinieerd die communiceren met de buiten-of andere rolinstanties.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.topic: article
 ms.date: 12/14/2016
-ms.author: gwallace
-ms.openlocfilehash: 74ef5567becee27b4af837a6977119d7cf0f3e4b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359101"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386337"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Communicatie inschakelen voor rolinstanties in azure
-Cloud service rollen communiceren via interne en externe verbindingen. Externe verbindingen worden **invoer** eindpunten genoemd terwijl interne verbindingen **interne eind punten**worden genoemd. In dit onderwerp wordt beschreven hoe u de [service definitie](cloud-services-model-and-package.md#csdef) wijzigt om eind punten te maken.
+Cloud service rollen communiceren via interne en externe verbindingen. Externe verbindingen worden **invoer eindpunten** genoemd terwijl interne verbindingen **interne eind punten**worden genoemd. In dit onderwerp wordt beschreven hoe u de [service definitie](cloud-services-model-and-package.md#csdef) wijzigt om eind punten te maken.
 
 ## <a name="input-endpoint"></a>Invoer eindpunt
 Het invoer eindpunt wordt gebruikt wanneer u een poort aan de buiten kant beschikbaar wilt stellen. U geeft het protocol type en de poort van het eind punt op die vervolgens worden toegepast voor de externe en interne poorten voor het eind punt. Als u wilt, kunt u een andere interne poort voor het eind punt opgeven met het kenmerk [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) .
@@ -73,7 +73,7 @@ U kunt ook een poort bereik gebruiken.
 ```
 
 
-## <a name="worker-roles-vs-web-roles"></a>Werk rollen versus Webrollen
+## <a name="worker-roles-vs-web-roles"></a>Werk rollen versus webrollen
 Er is een klein verschil met eind punten wanneer u werkt met zowel werk nemers als webrollen. De webrole moet mini maal één invoer eindpunt hebben met het **http-** protocol.
 
 ```xml
@@ -99,7 +99,7 @@ Wanneer u via de .NET SDK verbinding maakt met een rolinstantie, is het relatief
 int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].IPEndpoint.Port;
 ```
 
-De  eigenschap instances retourneert een verzameling **RoleInstance** -objecten. Deze verzameling bevat altijd het huidige exemplaar. Als de rol geen intern eind punt definieert, bevat de verzameling het huidige exemplaar, maar geen andere exemplaren. Het aantal rolinstanties in de verzameling zal altijd 1 zijn als er geen intern eind punt voor de rol is gedefinieerd. Als de rol een intern eind punt definieert, worden de instanties gedetecteerd tijdens runtime. het aantal exemplaren in de verzameling komt overeen met het aantal exemplaren dat is opgegeven voor de rol in het service configuratie bestand.
+De eigenschap **instances** retourneert een verzameling **RoleInstance** -objecten. Deze verzameling bevat altijd het huidige exemplaar. Als de rol geen intern eind punt definieert, bevat de verzameling het huidige exemplaar, maar geen andere exemplaren. Het aantal rolinstanties in de verzameling zal altijd 1 zijn als er geen intern eind punt voor de rol is gedefinieerd. Als de rol een intern eind punt definieert, worden de instanties gedetecteerd tijdens runtime. het aantal exemplaren in de verzameling komt overeen met het aantal exemplaren dat is opgegeven voor de rol in het service configuratie bestand.
 
 > [!NOTE]
 > De door Azure beheerde bibliotheek biedt geen manier om de status van andere rolinstanties te bepalen, maar u kunt dergelijke status beoordelingen zelf implementeren als uw service deze functionaliteit nodig heeft. U kunt [Azure Diagnostics](cloud-services-dotnet-diagnostics.md) gebruiken om informatie te verkrijgen over actieve rolinstanties.
@@ -367,4 +367,7 @@ Een verwijzing naar een XML-schema voor de elementen die hierboven worden gebrui
 
 ## <a name="next-steps"></a>Volgende stappen
 Meer informatie over het Cloud service [model](cloud-services-model-and-package.md).
+
+
+
 

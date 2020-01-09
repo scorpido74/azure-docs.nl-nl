@@ -1,20 +1,18 @@
 ---
 title: Controleren en beheren van Azure Stream Analytics-taken via een programma
 description: In dit artikel wordt beschreven hoe u programmatisch bewaken Stream Analytics-taken die zijn gemaakt via de REST-API's, Azure-SDK of PowerShell.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: bf84a5b89e4769e37c45714a30d5d98300a4328d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 23c0cc0d0e4a007fdf46021f857b559266f6a193
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612256"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431673"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Een Stream Analytics-taak monitor via een programma maken
 
@@ -22,7 +20,7 @@ In dit artikel ziet u hoe u bewaking voor een Stream Analytics-taak inschakelen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u dit proces, hebt u de volgende vereisten:
+Voordat u met dit proces begint, moet u beschikken over de volgende vereisten:
 
 * Visual Studio 2019 of 2015
 * [Azure SDK voor .NET](https://azure.microsoft.com/downloads/) gedownload en geïnstalleerd
@@ -137,7 +135,7 @@ De volgende code stelt de benodigde variabelen en beheer van clients.
 
 ## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Schakel bewaking voor een bestaande Stream Analytics-taak
 
-De volgende code wordt de bewaking voor een **bestaande** Stream Analytics-taak. Het eerste deel van de code wordt een GET-aanvraag indient voor de Stream Analytics-service informatie ophalen over de specifieke Stream Analytics-taak uitgevoerd. Hierbij de *ID* eigenschap (opgehaald uit de GET-aanvraag) als een parameter voor de Put-methode in de tweede helft van de code, die een PUT verzendt naar de service Insights aanvragen bewaking voor de Stream Analytics-taak wilt inschakelen.
+De volgende code wordt de bewaking voor een **bestaande** Stream Analytics-taak. Het eerste deel van de code wordt een GET-aanvraag indient voor de Stream Analytics-service informatie ophalen over de specifieke Stream Analytics-taak uitgevoerd. De eigenschap *id* (opgehaald van de GET-aanvraag) wordt gebruikt als een para meter voor de put-methode in de tweede helft van de code, waarmee een put-aanvraag wordt verzonden naar de Insights-service om controle voor de stream Analytics-taak in te scha kelen.
 
 > [!WARNING]
 > Als u eerder hebt ingeschakeld bewaking voor een andere taak van Stream Analytics, via Azure portal of programmatisch via de onderstaande code, **wordt aangeraden dat u dezelfde naam van het opslagaccount dat u hebt gebruikt tijdens leveren u eerder hebt ingeschakeld voor bewaking.**
@@ -169,7 +167,7 @@ De volgende code wordt de bewaking voor een **bestaande** Stream Analytics-taak.
 >   ```
 
 
-## <a name="get-support"></a>Ondersteuning krijgen
+## <a name="get-support"></a>Krijg ondersteuning
 
 Voor verdere ondersteuning kunt u proberen onze [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 

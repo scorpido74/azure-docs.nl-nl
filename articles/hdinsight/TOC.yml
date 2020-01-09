@@ -82,22 +82,14 @@
               abstract: null
               achievement: null
               iconUrl: null
-              levels:
-                - null
-              roles:
-                - null
-              products:
-                - null
-              units:
-                - null
-                - name: Clusteropslag gebruiken
-                  items:
-                    - name: Met behulp van Azure Storage
-                      href: hdinsight-hadoop-use-blob-storage.md
-                    - name: Azure Data Lake Storage Gen2 gebruiken
-                      href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-                    - name: Azure Data Lake Storage Gen1 gebruiken
-                      href: hdinsight-hadoop-use-data-lake-store.md
+        - name: Clusteropslag gebruiken
+          items:
+            - name: Met behulp van Azure Storage
+              href: hdinsight-hadoop-use-blob-storage.md
+            - name: Azure Data Lake Storage Gen2 gebruiken
+              href: hdinsight-hadoop-use-data-lake-storage-gen2.md
+            - name: Azure Data Lake Storage Gen1 gebruiken
+              href: hdinsight-hadoop-use-data-lake-store.md
         - name: Clusters uitbreiden
           items:
             - name: HDInsight-apps installeren

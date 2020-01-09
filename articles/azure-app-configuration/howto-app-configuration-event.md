@@ -1,5 +1,6 @@
 ---
-title: Zelf studie voor het instellen van Azure-app configuratie voor het verzenden van gebeurtenissen naar een webeindpunt | Microsoft Docs
+title: 'Zelf studie: Azure-app configuratie gebruiken om gebeurtenissen naar een eind punt van een web te verzenden'
+titleSuffix: Azure App Configuration
 description: In deze zelf studie leert u hoe u Azure-app configuratie gebeurtenis abonnementen kunt instellen om gebeurtenissen voor het wijzigen van de sleutel waarde naar een webeindpunt te verzenden.
 services: azure-app-configuration
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 32a3131c8ff6a01a35fbe42750384dd303a23140
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4943a64f72191981fc1b655c431cab00f180e503
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185180"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433693"
 ---
 # <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Snelstartgids: Azure-app configuratie gebeurtenissen naar een webeindpunt routeren met Azure CLI
 

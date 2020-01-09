@@ -1,5 +1,5 @@
 ---
-title: Azure Table Storage of de Azure Cosmos DB Table-API van Node.js gebruiken
+title: Azure-tabel opslag of Azure Cosmos DB Table-API van node. js gebruiken
 description: Sla gestructureerde gegevens op in de cloud met Azure Table Storage of de Azure Cosmos DB Table-API.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 7611af5f4d5b79ddb2abb7546f2e3ea6c0d4c4c5
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: a5246ed4018fd4d5bc38649d6a476bc82bcbbf7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308413"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441210"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Azure Table Storage of de Azure Cosmos DB Table-API van Node.js gebruiken
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -94,7 +94,7 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 `result.created` is `true` als een nieuwe tabel wordt gemaakt, en `false` als de tabel al bestaat. De `response` bevat informatie over de aanvraag.
 
 ### <a name="filters"></a>Filters
-U optioneel filters toepassen op de bewerkingen die worden uitgevoerd met behulp van **TableService**. Filterbewerkingen kunnen logboekregistratie, automatische nieuwe pogingen, enzovoort bevatten. Filters zijn objecten die een methode implementeren met de handtekening:
+U optioneel filters toepassen op de bewerkingen die worden uitgevoerd met behulp van **TableService**. Filter bewerkingen kunnen logboek registratie, automatische nieuwe pogingen, enzovoort zijn. Filters zijn objecten die een methode implementeren met de hand tekening:
 
 ```javascript
 function handle (requestOptions, next)
@@ -365,7 +365,7 @@ dc.table.queryEntities(tableName,
 
 Als u het `continuationToken`-object inspecteert, vindt u eigenschappen zoals `nextPartitionKey`, `nextRowKey` en `targetLocation`, die kunnen worden gebruikt om door alle resultaten te lopen.
 
-U kunt ook `continuationToken` samen `top` gebruiken om de pagina grootte in te stellen. 
+U kunt `top` ook gebruiken in combi natie met `continuationToken` om de pagina grootte in te stellen. 
 
 ## <a name="work-with-shared-access-signatures"></a>Werken met handtekeningen voor gedeelde toegang
 Shared Access Signatures (SAS) zijn een veilige manier om op detailniveau toegang te bieden tot tabellen zonder dat u de naam of sleutels van uw opslagaccount hoeft te geven. SAS wordt vaak gebruikt voor beperkte toegang tot uw gegevens, bijvoorbeeld om een mobiele app toe te staan om een query uit te voeren op records.

@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: efaa1ef4c5b82da9b905f75483daf9eb3536b15a
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 483f13f89acd1bce0ceb8486ac252e6f844d881f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219341"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431739"
 ---
 # <a name="cloud-tiering-overview"></a>Overzicht van Cloud lagen
-Cloud lagen is een optionele functie van Azure File Sync waarbij veelgebruikte bestanden lokaal op de server worden opgeslagen in de cache, terwijl alle andere bestanden worden gelaagd op Azure Files op basis van beleids instellingen. Wanneer een bestand wordt getierd, wordt het bestand met de Azure File Sync bestandssysteem filter (StorageSync. sys) vervangen door een aanwijzer of een reparsepunt. Het reparsepunt vertegenwoordigt een URL naar het bestand in Azure Files. Een gelaagd bestand heeft zowel het kenmerk offline als het kenmerk FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS in NTFS, zodat toepassingen van derden veilig gelaagde bestanden kunnen identificeren.
+Cloud lagen is een optionele functie van Azure File Sync waarbij veelgebruikte bestanden lokaal op de server worden opgeslagen in de cache, terwijl alle andere bestanden worden gelaagd op Azure Files op basis van beleids instellingen. Wanneer een bestand wordt getierd, wordt het bestand met de Azure File Sync bestandssysteem filter (StorageSync. sys) vervangen door een aanwijzer of een reparsepunt. Het reparsepunt vertegenwoordigt een URL naar het bestand in Azure Files. Een gelaagd bestand heeft zowel het kenmerk ' offline ' als het kenmerk FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS in NTFS ingesteld, zodat toepassingen van derden veilig gelaagde bestanden kunnen identificeren.
  
 Wanneer een gebruiker een gelaagd bestand opent, Azure File Sync de bestands gegevens naadloos terugroepen van Azure Files zonder dat de gebruiker moet weten dat het bestand daad werkelijk is opgeslagen in Azure. 
  
@@ -72,8 +72,9 @@ Er zijn verschillende manieren om te controleren of een bestand naar uw Azure-be
         
         | Kenmerk letter | Kenmerk | Definitie |
         |:----------------:|-----------|------------|
-        | A | Archiveren | Geeft aan dat er een back-up moet worden gemaakt van het bestand met back-upsoftware. Dit kenmerk is altijd ingesteld, ongeacht of het bestand op de schijf is gelaagd of volledig wordt opgeslagen. |
-        | P | Sparse-bestand | Geeft aan dat het bestand een sparse-bestand is. Een sparse-bestand is een speciaal type bestand dat NTFS biedt voor efficiënt gebruik wanneer het bestand op de schijf stroom grotendeels leeg is. Azure File Sync maakt gebruik van verspreide bestanden omdat een bestand volledig is gelaagd of gedeeltelijk wordt ingetrokken. In een volledig gelaagd bestand wordt de bestands stroom opgeslagen in de Cloud. Het deel van het bestand bevindt zich al op schijf in een gedeeltelijk ingetrokken bestand. Als een bestand volledig wordt ingetrokken, wordt Azure File Sync geconverteerd van een sparse-bestand naar een gewoon bestand. |
+        | A | Archief | Geeft aan dat er een back-up moet worden gemaakt van het bestand met back-upsoftware. Dit kenmerk is altijd ingesteld, ongeacht of het bestand op de schijf is gelaagd of volledig wordt opgeslagen. |
+        | P | Sparse-bestand | Geeft aan dat het bestand een sparse-bestand is. Een sparse-bestand is een speciaal type bestand dat NTFS biedt voor efficiënt gebruik wanneer het bestand op de schijf stroom grotendeels leeg is. Azure File Sync maakt gebruik van verspreide bestanden omdat een bestand volledig is gelaagd of gedeeltelijk wordt ingetrokken. In een volledig gelaagd bestand wordt de bestands stroom opgeslagen in de Cloud. Het deel van het bestand bevindt zich al op schijf in een gedeeltelijk ingetrokken bestand. Als een bestand volledig wordt ingetrokken, wordt Azure File Sync geconverteerd van een sparse-bestand naar een gewoon bestand. Dit kenmerk wordt alleen ingesteld op Windows Server 2016 en ouder.|
+        | mln. | Gegevens toegang intrekken | Geeft aan dat de gegevens van het bestand niet volledig aanwezig zijn in de lokale opslag. Als u het bestand leest, wordt er ten minste een deel van de bestands inhoud opgehaald van een Azure-bestands share waarop het server-eind punt is aangesloten. Dit kenmerk wordt alleen ingesteld op Windows Server 2019. |
         | L | Reparsepunt | Geeft aan dat het bestand een reparsepunt heeft. Een reparsepunt is een speciale verwijzing voor gebruik door een bestandssysteem filter. Azure File Sync maakt gebruik van reparsepunten om te definiëren dat de Azure File Sync bestandssysteem filter (StorageSync. sys) de locatie van de Cloud waar het bestand is opgeslagen. Dit biedt ondersteuning voor naadloze toegang. Gebruikers hoeven niet te weten dat Azure File Sync wordt gebruikt of hoe ze toegang krijgen tot het bestand in de Azure-bestands share. Wanneer een bestand volledig wordt ingetrokken, verwijdert Azure File Sync het reparsepunt uit het bestand. |
         | O | Offline | Geeft aan dat sommige of alle inhoud van het bestand niet op de schijf worden opgeslagen. Wanneer een bestand volledig is ingetrokken, Azure File Sync dit kenmerk verwijdert. |
 
@@ -81,17 +82,17 @@ Er zijn verschillende manieren om te controleren of een bestand naar uw Azure-be
         
         U kunt de kenmerken van alle bestanden in een map weer geven door het veld **kenmerken** toe te voegen aan de tabel weergave van bestanden Verkenner. Als u dit wilt doen, klikt u met de rechter muisknop op een bestaande kolom (bijvoorbeeld **grootte**), selecteert u **meer**en selecteert u vervolgens **kenmerken** in de vervolg keuzelijst.
         
-   * **Gebruiken `fsutil` om te controleren op reparsepunten voor een bestand.**
-       Zoals beschreven in de voor gaande optie, bevat een gelaagd bestand altijd een reparsepunt set. Een reparse-wijzer is een speciale verwijzing voor het Azure File Sync bestandssysteem filter (StorageSync. sys). Voer het `fsutil` hulp programma uit om te controleren of een bestand een reparsepunt heeft, in een opdracht prompt met verhoogde bevoegdheid of een Power shell-venster:
+   * **Gebruik `fsutil` om op reparsepunten te controleren op een bestand.**
+       Zoals beschreven in de voor gaande optie, bevat een gelaagd bestand altijd een reparsepunt set. Een reparse-wijzer is een speciale verwijzing voor het Azure File Sync bestandssysteem filter (StorageSync. sys). Als u wilt controleren of een bestand een reparsepunt heeft, voert u in een opdracht prompt met verhoogde bevoegdheid of een Power shell-venster het `fsutil`-hulp programma uit:
     
         ```powershell
         fsutil reparsepoint query <your-file-name>
         ```
 
-        Als het bestand een reparsepunt heeft, kunt u de waarde van **de reparse-tag zien: 0x8000001e**. Deze hexadecimale waarde is de reparsepunt waarde die het eigendom is van Azure File Sync. De uitvoer bevat ook de reparsegegevens die het pad naar het bestand op uw Azure-bestands share vertegenwoordigt.
+        Als het bestand een reparsepunt heeft, kunt u de waarde van het **reparse-label zien: 0x8000001e**. Deze hexadecimale waarde is de reparsepunt waarde die het eigendom is van Azure File Sync. De uitvoer bevat ook de reparsegegevens die het pad naar het bestand op uw Azure-bestands share vertegenwoordigt.
 
         > [!WARNING]  
-        > De `fsutil reparsepoint` opdracht voor het hulp programma heeft ook de mogelijkheid om een reparsepunt te verwijderen. Voer deze opdracht niet uit, tenzij het Azure File Sync technisch team u vraagt. Als u deze opdracht uitvoert, kan dit leiden tot gegevens verlies. 
+        > De opdracht `fsutil reparsepoint` Utility kan ook een reparsepunt verwijderen. Voer deze opdracht niet uit, tenzij het Azure File Sync technisch team u vraagt. Als u deze opdracht uitvoert, kan dit leiden tot gegevens verlies. 
 
 <a id="afs-recall-file"></a>
 
@@ -105,18 +106,18 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
 
-Als `-Order CloudTieringPolicy` u opgeeft, worden de meest recent gewijzigde bestanden eerst ingetrokken.
+Als u `-Order CloudTieringPolicy` opgeeft, worden de meest recent gewijzigde bestanden eerst ingetrokken.
 Andere optionele para meters:
-* `-ThreadCount`Hiermee wordt bepaald hoeveel bestanden parallel kunnen worden ingetrokken.
+* `-ThreadCount` bepaalt hoeveel bestanden parallel kunnen worden ingetrokken.
 * `-PerFileRetryCount`bepaalt hoe vaak een terugroep bewerking wordt uitgevoerd voor een bestand dat momenteel is geblokkeerd.
 * `-PerFileRetryDelaySeconds`bepaalt de tijd in seconden tussen nieuwe pogingen en moet altijd worden gebruikt in combi natie met de vorige para meter.
 
 > [!Note]  
-> Als het lokale volume dat als host fungeert voor de server onvoldoende beschik bare ruimte heeft om alle gelaagde `Invoke-StorageSyncFileRecall` gegevens in te trekken, mislukt de cmdlet.  
+> Als het lokale volume dat als host fungeert voor de server onvoldoende beschik bare ruimte heeft om alle gelaagde gegevens in te trekken, mislukt de `Invoke-StorageSyncFileRecall`-cmdlet.  
 
 <a id="sizeondisk-versus-size"></a>
 ### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Waarom wordt de eigenschap *grootte op schijf* voor een bestand niet overeenkomen met de eigenschap *grootte* na gebruik van Azure file sync? 
-In Windows Verkenner worden twee eigenschappen beschikbaar gesteld die de grootte van een bestand vertegenwoordigen: **Grootte** en **grootte op schijf**. Deze eigenschappen wijken in betekenis. **Grootte** vertegenwoordigt de volledige grootte van het bestand. **Grootte op schijf** staat voor de grootte van de bestands stroom die op de schijf is opgeslagen. De waarden voor deze eigenschappen kunnen verschillende oorzaken hebben, zoals compressie, het gebruik van Gegevensontdubbeling of Cloud lagen met Azure File Sync. Als een bestand wordt gelaagd voor een Azure-bestands share, is de grootte op de schijf nul, omdat de bestands stroom wordt opgeslagen in de Azure-bestands share en niet op de schijf. Het is ook mogelijk dat een bestand gedeeltelijk wordt gelaagd (of gedeeltelijk wordt ingetrokken). In een gedeeltelijk gelaagd bestand bevindt zich een deel van het bestand op schijf. Dit kan gebeuren wanneer bestanden gedeeltelijk worden gelezen door toepassingen als multimedia spelers of zip-hulpprogram ma's. 
+In Windows Verkenner worden twee eigenschappen beschikbaar gesteld om de grootte van een bestand weer te geven: **grootte** en **grootte op schijf**. Deze eigenschappen wijken in betekenis. **Grootte** vertegenwoordigt de volledige grootte van het bestand. **Grootte op schijf** staat voor de grootte van de bestands stroom die op de schijf is opgeslagen. De waarden voor deze eigenschappen kunnen verschillende oorzaken hebben, zoals compressie, het gebruik van Gegevensontdubbeling of Cloud lagen met Azure File Sync. Als een bestand wordt gelaagd voor een Azure-bestands share, is de grootte op de schijf nul, omdat de bestands stroom wordt opgeslagen in de Azure-bestands share en niet op de schijf. Het is ook mogelijk dat een bestand gedeeltelijk wordt gelaagd (of gedeeltelijk wordt ingetrokken). In een gedeeltelijk gelaagd bestand bevindt zich een deel van het bestand op schijf. Dit kan gebeuren wanneer bestanden gedeeltelijk worden gelezen door toepassingen als multimedia spelers of zip-hulpprogram ma's. 
 
 <a id="afs-force-tiering"></a>
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>Hoe kan ik moet een bestand of map geforceerd worden getierd?

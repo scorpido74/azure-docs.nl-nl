@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: client bibliotheek voor persoonlijke instellingen voor python | Microsoft Docs'
+title: 'Quick Start: client bibliotheek voor persoonlijke instellingen voor python'
 titleSuffix: Azure Cognitive Services
-description: Ga aan de slag met de Personaler-client bibliotheek voor python met behulp van een Learning-lus.
+description: In deze Quick start ziet u hoe u aan de slag gaat met de Personaler-client bibliotheek voor python met behulp van een Learning-lus.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 02c4e0142ed7b3719cc07306f089769c532d6653
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f999a54c7841437e169205fed2edea1630aa81a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494431"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378939"
 ---
 # <a name="quickstart-personalizer-client-library-for-python"></a>Quick Start: client bibliotheek voor persoonlijke instellingen voor python
 
@@ -86,7 +86,7 @@ Als u een beloning naar persoonlijker wilt verzenden, maakt u een RewardRequest 
 
 Het bepalen van de beloning, in deze Snelstartgids is trivial. In een productie systeem kan de bepaling van wat invloed heeft op de [belonings Score](concept-rewards.md) en wat een complex proces kan zijn, u mogelijk besluiten om de tijd te wijzigen. Dit moet een van de belangrijkste ontwerp beslissingen zijn in uw persoonlijke architectuur. 
 
-## <a name="code-examples"></a>Code voorbeelden
+## <a name="code-examples"></a>Codevoorbeelden
 
 Deze code fragmenten laten zien hoe u het volgende kunt doen met de Personaler-client bibliotheek voor python:
 
@@ -175,7 +175,7 @@ python sample.py
 Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+* [Azure-CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -184,5 +184,5 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 
 * [Wat is persoonlijkere?](what-is-personalizer.md)
 * [Waar kunt u Personaler gebruiken?](where-can-you-use-personalizer.md)
-* [Problemen oplossen](troubleshooting.md)
-* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py).
+* [Probleemoplossing](troubleshooting.md)
+* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py).

@@ -1,27 +1,26 @@
 ---
-title: Power BI-dashboard-integratie met Azure Stream Analytics
-description: In dit artikel wordt beschreven hoe u een realtime Power BI-dashboard gebruiken om gegevens uit een Azure Stream Analytics-taak te visualiseren.
-services: stream-analytics
+title: Integratie van dash board Power BI met Azure Stream Analytics
+description: In dit artikel wordt beschreven hoe u een real-time Power BI dash board gebruikt om gegevens uit een Azure Stream Analytics taak te visualiseren.
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: c415bdecdaf55f3068dcd804ab34de402fe7a31f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 76f5c1f0cd3186244e9a262358c9c9a652a73fdb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612292"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431632"
 ---
-# <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics en Power BI: Een realtime analytics-dashboard voor het streamen van gegevens
+# <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics en Power BI: een real-time analyse dashboard voor het streamen van gegevens
 
-Azure Stream Analytics kunt u profiteren van een van de toonaangevende hulpprogramma's voor bedrijfsinformatie [Microsoft Power BI](https://powerbi.com/). In dit artikel leert u hoe business intelligence-hulpmiddelen te maken met behulp van Power BI als uitvoer voor uw Azure Stream Analytics-taken. U leert ook hoe u het maken en gebruiken van een realtime dashboard.
+Met Azure Stream Analytics kunt u profiteren van een van de toonaangevende hulpprogram ma's voor business intelligence, [micro soft power bi](https://powerbi.com/). In dit artikel leert u hoe u business intelligence-hulpprogram ma's maakt door Power BI als uitvoer voor uw Azure Stream Analytics taken te gebruiken. U leert ook hoe u een real-time dash board maakt en gebruikt.
 
-Dit artikel gaat verder uit de Stream Analytics [fraudebewaking in realtime](stream-analytics-real-time-fraud-detection.md) zelfstudie. Het bouwt voort op de werkstroom in deze zelfstudie hebt gemaakt en wordt toegevoegd een Power BI uitvoeren zodat u frauduleuze telefoongesprekken die zijn gedetecteerd door een stream Analytics-taak kunt visualiseren. 
+Dit artikel gaat verder met de Stream Analytics zelf studie voor [fraude detectie in realtime](stream-analytics-real-time-fraud-detection.md) . Het is gebaseerd op de werk stroom die in deze zelf studie is gemaakt en voegt een Power BI uitvoer toe, zodat u frauduleuze telefoon gesprekken kunt visualiseren die worden gedetecteerd door een streaming Analytics-taak. 
 
-U kunt bekijken [een video](https://www.youtube.com/watch?v=SGUpT-a99MA) die dit scenario laat zien.
+U kunt [een video](https://www.youtube.com/watch?v=SGUpT-a99MA) bekijken waarin dit scenario wordt geïllustreerd.
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -29,56 +28,56 @@ U kunt bekijken [een video](https://www.youtube.com/watch?v=SGUpT-a99MA) die dit
 Zorg ervoor dat u het volgende hebt voordat u begint:
 
 * Een Azure-account.
-* Een account voor Power BI. U kunt een werkaccount of school-account gebruiken.
-* Een voltooide versie van de [fraudebewaking in realtime](stream-analytics-real-time-fraud-detection.md) zelfstudie. De zelfstudie bevat een app die wordt gegenereerd fictieve telefoongesprek metagegevens. In de zelfstudie een event hub maken en verzenden van de streaminggegevens telefonische oproep naar de event hub. U schrijft een query die frauduleuze gesprekken (aanroepen van het aantal op hetzelfde moment op verschillende locaties) wordt gedetecteerd. 
+* Een account voor Power BI. U kunt een werk account of een school account gebruiken.
+* Een voltooide versie van de zelf studie voor [fraude detectie in realtime](stream-analytics-real-time-fraud-detection.md) . De zelf studie bevat een app die fictieve telefonische meta gegevens genereert. In de zelf studie maakt u een Event Hub en verzendt u de gegevens van de telefoon oproep naar de Event Hub. U schrijft een query die frauduleuze aanroepen detecteert (aanroepen vanaf hetzelfde nummer op hetzelfde tijdstip op verschillende locaties). 
 
 
-## <a name="add-power-bi-output"></a>Power BI-uitvoer toevoegen
-In de zelfstudie realtime fraude-detectie wordt de uitvoer verzonden naar Azure Blob-opslag. In deze sectie voegt u uitvoer gegevens naar Power BI verzendt.
+## <a name="add-power-bi-output"></a>Power BI uitvoer toevoegen
+In de zelf studie voor fraude detectie wordt de uitvoer naar Azure Blob-opslag verzonden. In deze sectie voegt u een uitvoer toe waarmee gegevens naar Power BI worden verzonden.
 
-1. Open de stream Analytics-taak die u eerder hebt gemaakt in de Azure-portal. Als u de voorgestelde naam gebruikt, wordt de taak met de naam `sa_frauddetection_job_demo`.
+1. Open in de Azure Portal de streaming Analytics-taak die u eerder hebt gemaakt. Als u de voorgestelde naam hebt gebruikt, heeft de taak de naam `sa_frauddetection_job_demo`.
 
-2. Selecteer in het menu links **uitvoer** onder **taaktopologie**. Selecteer **+ toevoegen** en kies **Power BI** in de vervolgkeuzelijst.
+2. Selecteer in het linkermenu **uitvoer** onder **taak topologie**. Selecteer vervolgens **+ toevoegen** en kies **Power bi** in het vervolg keuzemenu.
 
 3. Selecteer **+ Toevoegen** > **Power BI**. Vul vervolgens het formulier in met de volgende gegevens en selecteer **Autoriseren**:
 
    |**Instelling**  |**Voorgestelde waarde**  |
    |---------|---------|
    |Uitvoeralias  |  CallStream-PowerBI  |
-   |Naam van de gegevensset  |   sa-dataset  |
-   |Tabelnaam |  fraudulent-calls  |
+   |Naam van de gegevensset  |   sa-gegevensset  |
+   |Tabelnaam |  frauduleuze oproepen  |
 
    ![Azure Stream Analytics-uitvoer configureren](media/stream-analytics-power-bi-dashboard/configure-stream-analytics-output.png)
 
    > [!WARNING]
-   > Als Power BI een gegevensset en een tabel met dezelfde namen als degene die u in de Stream Analytics-taak opgeeft heeft, worden de bestaande bestanden overschreven.
-   > Het is raadzaam dat u geen expliciet deze gegevensset en de tabel in uw Power BI-account maakt. Ze worden automatisch gemaakt wanneer u uw Stream Analytics-taak starten en de taak wordt gestart reageert uitvoer naar Power BI. Als uw job query geen resultaten oplevert, worden de gegevensset en de tabel niet gemaakt.
+   > Als Power BI een gegevensset en tabel heeft met dezelfde namen als de records die u in de Stream Analytics taak opgeeft, worden de bestaande gegevens overschreven.
+   > U wordt aangeraden deze gegevensset en tabel niet expliciet in uw Power BI-account te maken. Ze worden automatisch gemaakt wanneer u de Stream Analytics-taak start en de taak wordt gestart met de pomp uitvoer in Power BI. Als uw taak query geen resultaten oplevert, worden de gegevensset en tabel niet gemaakt.
    >
 
 4. Als u **Autoriseren** hebt geselecteerd, wordt er een pop-upvenster geopend en wordt u gevraagd referenties te verstrekken als verificatie voor uw Power BI-account. Zodra de autorisatie geslaagd is, kunt u de instellingen **Opslaan**.
 
-8. Klik op **Create**.
+8. Klik op **Maken**.
 
-De gegevensset is gemaakt met de volgende instellingen:
+De gegevensset wordt gemaakt met de volgende instellingen:
 
-* **defaultRetentionPolicy: BasicFIFO** -gegevens zijn FIFO, met een maximum van 200.000 rijen.
-* **defaultMode: pushStreaming** -de gegevensset ondersteunt zowel streamingtegels en traditionele rapport op basis van visuele elementen (ook wel bekend als push).
+* **defaultRetentionPolicy: BasicFIFO** -data is FIFO, met maxi maal 200.000 rijen.
+* **defaultMode: pushStreaming** -de gegevensset ondersteunt zowel streaming-tegels als traditionele op rapporten gebaseerde visuele elementen (ook wel pushen genoemd).
 
-U kunt op dit moment gegevenssets maken met andere vlaggen.
+Op dit moment kunt u geen gegevens sets maken met andere vlaggen.
 
-Zie voor meer informatie over Power BI-gegevenssets, de [Power BI REST-API](https://msdn.microsoft.com/library/mt203562.aspx) verwijzing.
+Zie voor meer informatie over Power BI gegevens sets de referentie [Power BI rest API](https://msdn.microsoft.com/library/mt203562.aspx) .
 
 
 ## <a name="write-the-query"></a>De query schrijven
 
-1. Sluit de **uitvoer** blade en keer terug naar de taakblade.
+1. Sluit de Blade **uitvoer** en ga terug naar de taak Blade.
 
-2. Klik op de **Query** vak. 
+2. Klik op het **query** -vak. 
 
-3. Voer de volgende query. Deze query is vergelijkbaar met de query self-join die u hebt gemaakt in de zelfstudie van fraude. Het verschil is dat deze query resultaten verstuurt naar de nieuwe uitvoer die u hebt gemaakt (`CallStream-PowerBI`). 
+3. Voer de volgende query in. Deze query is vergelijkbaar met de Self-deelname query die u hebt gemaakt in de zelf studie voor fraude detectie. Het verschil is dat met deze query resultaten worden verzonden naar de nieuwe uitvoer die u hebt gemaakt (`CallStream-PowerBI`). 
 
     >[!NOTE]
-    >Als u de invoer heeft niet de naam `CallStream` vervangen door uw naam in de zelfstudie van fraude `CallStream` in de **FROM** en **JOIN** componenten in de query.
+    >Als u de invoer `CallStream` niet in de zelf studie voor fraude detectie hebt benoemen, vervangt u de naam van `CallStream` door de component **from** en **joinexpressie** in de query.
 
    ```SQL
    /* Our criteria for fraud:
@@ -107,112 +106,112 @@ Zie voor meer informatie over Power BI-gegevenssets, de [Power BI REST-API](http
 
 Deze sectie is optioneel, maar wordt aanbevolen. 
 
-1. Als de app TelcoStreaming is niet wordt uitgevoerd, start de service door de volgende stappen:
+1. Als de TelcoStreaming-app momenteel niet wordt uitgevoerd, start u deze door de volgende stappen uit te voeren:
 
-    * Open de opdrachtprompt.
-    * Ga naar de map waar de telcogenerator.exe en de gewijzigde telcodatagen.exe.config bestanden zijn.
+    * Open de opdracht prompt.
+    * Ga naar de map met telcogenerator. exe en gewijzigde telcodatagen. exe. config-bestanden.
     * Voer de volgende opdracht uit:
 
        `telcodatagen.exe 1000 .2 2`
 
-2. Op de **Query** pagina voor uw Stream Analytics-taak, klikt u op de puntjes naast de `CallStream` invoer en selecteer vervolgens **voorbeeldgegevens van uitvoer**.
+2. Klik op de **query** pagina voor uw stream Analytics-taak op de punten naast het `CallStream` invoer en selecteer vervolgens **voorbeeld gegevens uit invoer**.
 
-3. Opgeven dat u drie minuten aan gegevens en klik op **OK**. Wacht tot u een melding krijgt dat de gegevens zijn verzameld.
+3. Geef op dat u wilt dat er drie minuten aan gegevens zijn en klik op **OK**. Wacht tot u een melding krijgt dat de gegevens zijn verzameld.
 
-4. Klik op **Test** en bekijk de resultaten.
+4. Klik op **testen** en Bekijk de resultaten.
 
 ## <a name="run-the-job"></a>De taak uitvoeren
 
 1. Zorg ervoor dat de TelcoStreaming-app wordt uitgevoerd.
 
-2. Navigeer naar de **overzicht** pagina voor uw Stream Analytics-taak en selecteer **Start**.
+2. Ga naar de **overzichts** pagina voor uw stream Analytics-taak en selecteer **starten**.
 
     ![De Stream Analytics-taak starten](./media/stream-analytics-power-bi-dashboard/stream-analytics-sa-job-start-output.png)
 
-Uw stream Analytics-taak wordt gestart op zoek naar frauduleuze gesprekken in de stroom inkomende. De taak wordt gemaakt van de gegevensset en de tabel in Power BI ook en begint met het verzenden van gegevens over de frauduleuze gesprekken toe.
+De stream Analytics-taak begint met zoeken naar frauduleuze aanroepen in de binnenkomende stroom. De taak maakt ook de gegevensset en de tabel in Power BI en begint met het verzenden van gegevens over de frauduleuze aanroepen.
 
 
-## <a name="create-the-dashboard-in-power-bi"></a>Maken van het dashboard in Power BI
+## <a name="create-the-dashboard-in-power-bi"></a>Het dash board maken in Power BI
 
-1. Ga naar [Powerbi.com](https://powerbi.com) en meld u aan met uw werk of school-account. Als de query van de Stream Analytics-taak resultaten produceert, ziet u dat uw gegevensset al is gemaakt:
+1. Ga naar [Powerbi.com](https://powerbi.com) en meld u aan met uw werk-of school account. Als de Stream Analytics taak query resultaten oplevert, ziet u dat uw gegevensset al is gemaakt:
 
-    ![Streaming van locatie van de gegevensset in Power BI](./media/stream-analytics-power-bi-dashboard/stream-analytics-streaming-dataset.png)
+    ![Locatie van streaming-gegevensset in Power BI](./media/stream-analytics-power-bi-dashboard/stream-analytics-streaming-dataset.png)
 
-2. Klik in uw werkruimte  **+ &nbsp;maken**.
+2. Klik in uw werk ruimte op **+&nbsp;maken**.
 
-    ![De knop maken in Power BI-werkruimte](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard.png)
+    ![De knop maken in Power BI werk ruimte](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard.png)
 
-3. Maak een nieuw dashboard en noem dit `Fraudulent Calls`.
+3. Maak een nieuw dash board en geef het de naam `Fraudulent Calls`.
 
-    ![Een dashboard maken en geef deze een naam in Power BI-werkruimte](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard-name.png)
+    ![Een dash board maken en dit een naam geven in Power BI werk ruimte](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard-name.png)
 
-4. Aan de bovenkant van het venster, klikt u op **tegel toevoegen**, selecteer **aangepaste STREAMINGGEGEVENS**, en klik vervolgens op **volgende**.
+4. Klik boven aan het venster op **tegel toevoegen**, selecteer **aangepaste streaminggegevens**en klik vervolgens op **volgende**.
 
-    ![Aangepaste streaming-gegevensset-tegel in Power BI](./media/stream-analytics-power-bi-dashboard/custom-streaming-data.png)
+    ![Tegel aangepaste streaming-gegevensset in Power BI](./media/stream-analytics-power-bi-dashboard/custom-streaming-data.png)
 
-5. Onder **uw DATSETS**, selecteert u uw gegevensset en klik vervolgens op **volgende**.
+5. Selecteer uw gegevensset onder **uw DATSETS**en klik vervolgens op **volgende**.
 
     ![Uw streaming-gegevensset in Power BI](./media/stream-analytics-power-bi-dashboard/your-streaming-dataset.png)
 
-6. Onder **Visualisatietype**, selecteer **kaart**, en klik vervolgens in de **velden** in de lijst met **fraudulentcalls**.
+6. Selecteer **kaart**onder **type visualisatie**en selecteer vervolgens **fraudulentcalls**in de lijst **velden** .
 
-    ![Details van de visualisatie voor nieuwe tegel](./media/stream-analytics-power-bi-dashboard/add-fraudulent-calls-tile.png)
+    ![Visualisatie Details voor nieuwe tegel](./media/stream-analytics-power-bi-dashboard/add-fraudulent-calls-tile.png)
 
 7. Klik op **Volgende**.
 
-8. Vul de details van de tegel, zoals een titel en subtitel.
+8. Vul de tegel gegevens in, zoals een titel en een ondertitel.
 
-    ![Titel en subtitel van de nieuwe tegel](./media/stream-analytics-power-bi-dashboard/pbi-new-tile-details.png)
+    ![Titel en Ondertitel voor nieuwe tegel](./media/stream-analytics-power-bi-dashboard/pbi-new-tile-details.png)
 
 9. Klik op **Toepassen**.
 
-    U hebt nu een teller fraude.
+    U hebt nu een fraude teller.
 
-    ![Fraude teller in Power BI-dashboard](./media/stream-analytics-power-bi-dashboard/power-bi-fraud-counter-tile.png)
+    ![Fraude teller in Power BI dash board](./media/stream-analytics-power-bi-dashboard/power-bi-fraud-counter-tile.png)
 
-8. Volg de stappen voor het toevoegen van een tegel (te beginnen met stap 4). Deze keer het volgende doen:
+8. Volg de stappen opnieuw om een tegel toe te voegen (te beginnen met stap 4). Deze keer doet u het volgende:
 
-    * Wanneer **Visualisatietype**, selecteer **lijndiagram**. 
+    * Wanneer u het **visualisatie type**krijgt, selecteert u **lijn diagram**. 
     * Voeg een as toe en selecteer **windowend**. 
     * Voeg een waarde toe en selecteer **fraudulentcalls**.
     * Selecteer bij **Tijdvenster voor weergave** de laatste 10 minuten.
 
-      ![Een tegel voor lijndiagram maken in Power BI](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
+      ![Tegel maken voor lijn diagram in Power BI](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
 
-9. Klik op **volgende**, een titel en subtitel toevoegen en klik op **toepassen**.
+9. Klik op **volgende**, voeg een titel en subtitel toe en klik op **Toep assen**.
 
-     De Power BI-dashboard nu kunt u twee weergaven van gegevens over frauduleuze gesprekken als gedetecteerd in de streaming-gegevens.
+     Het Power BI-dash board biedt nu twee weer gaven van gegevens over frauduleuze aanroepen zoals gedetecteerd in de streaminggegevens.
 
-     ![Power BI-dashboard met twee tegels frauduleuze gesprekken voltooid](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
+     ![Voltooide Power BI dash board met twee tegels voor frauduleuze aanroepen](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
 
 
 ## <a name="learn-more-about-power-bi"></a>Meer informatie over Power BI
 
-Deze zelfstudie wordt gedemonstreerd hoe u slechts een paar soorten visualisaties voor een gegevensset maken. Power BI kunt u bij het maken van andere klanten business intelligence-hulpmiddelen voor uw organisatie. Zie de volgende bronnen voor meer ideeën:
+In deze zelf studie wordt gedemonstreerd hoe u slechts enkele soorten visualisaties voor een gegevensset maakt. Power BI kunt u hulp middelen voor het maken van andere klanten business intelligence voor uw organisatie. Raadpleeg de volgende bronnen voor meer ideeën:
 
-* Bekijk voor een ander voorbeeld van een Power BI-dashboard de [aan de slag met Power BI](https://youtu.be/L-Z_6P56aas?t=1m58s) video.
-* Voor meer informatie over het configureren van stream Analytics job uitvoer naar Power BI en Power BI-groepen gebruikt, Controleer de [Power BI](stream-analytics-define-outputs.md#power-bi) sectie van de [Stream Analytics levert](stream-analytics-define-outputs.md) artikel. 
-* Zie voor meer informatie over het gebruik van Power BI algemeen [Dashboards in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
+* Bekijk de video aan de slag [met Power bi](https://youtu.be/L-Z_6P56aas?t=1m58s) voor een ander voor beeld van een Power bi-dash board.
+* Raadpleeg de sectie [Power bi](stream-analytics-define-outputs.md#power-bi) van het artikel [Stream Analytics outputs](stream-analytics-define-outputs.md) voor meer informatie over het configureren van de uitvoer van streaming Analytics-taken naar Power bi en het gebruik van Power bi groepen. 
+* Zie [Dash boards in Power bi](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)voor meer informatie over het gebruik van Power bi over het algemeen.
 
 
-## <a name="learn-about-limitations-and-best-practices"></a>Meer informatie over de beperkingen en aanbevolen procedures
-Op dit moment kan Power BI ongeveer één keer per seconde worden aangeroepen. Visuele elementen ondersteuning bieden voor pakketten van 15 KB. Verder, mislukt de visuele elementen (maar push blijft werken). Vanwege deze beperkingen, Power BI meest is van nature geschikt in gevallen waarbij Azure Stream Analytics een vermindering van belangrijke gegevens laden biedt. We adviseren een Tumblingvenstertrigger venster of Hopping gebruiken om ervoor te zorgen dat gegevens-push is maximaal één push per seconde en dat uw query binnen de vereisten voor doorvoer terechtkomt.
+## <a name="learn-about-limitations-and-best-practices"></a>Meer informatie over beperkingen en aanbevolen procedures
+Op dit moment kunnen Power BI ongeveer één keer per seconde worden aangeroepen. Het streamen van visuele elementen ondersteunt pakketten van 15 KB. Dit houdt in dat het streamen van visuele elementen mislukt (maar pushen blijft werken). Als gevolg van deze beperkingen heeft Power BI zichzelf het belangrijkst voor gevallen waarin Azure Stream Analytics een aanzienlijke vermindering van gegevens belasting ondergaat. We raden u aan om een Tumblingvenstertriggers-venster of verspringen-venster te gebruiken om ervoor te zorgen dat de gegevens push per seconde Maxi maal één push is en dat uw query binnen de doorvoer vereisten valt.
 
-U kunt de volgende vergelijking gebruiken om de waarde zodat het venster in een paar seconden te berekenen:
+U kunt de volgende vergelijking gebruiken om de waarde voor het venster in seconden te berekenen:
 
-![Vergelijking waarde zodat venster in een paar seconden te berekenen](./media/stream-analytics-power-bi-dashboard/compute-window-seconds-equation.png)  
+![Vergelijking voor het berekenen van de waarde om binnen een paar seconden een venster te geven](./media/stream-analytics-power-bi-dashboard/compute-window-seconds-equation.png)  
 
 Bijvoorbeeld:
 
-* U hebt 1000 apparaten verzenden van gegevens met tussenpozen van één seconde.
-* U kunt de Power BI Pro-SKU die ondersteuning biedt voor 1.000.000 rijen per uur worden gebruikt.
-* Wilt u de hoeveelheid gemiddelde gegevens per apparaat publiceren naar Power BI.
+* Met 1.000 apparaten worden gegevens per seconde verzonden.
+* U gebruikt de Power BI Pro SKU die 1.000.000 rijen per uur ondersteunt.
+* U wilt de hoeveelheid gemiddelde gegevens per apparaat publiceren naar Power BI.
 
 Als gevolg hiervan wordt de vergelijking:
 
-![Vergelijking op basis van voorbeeldcriteria](./media/stream-analytics-power-bi-dashboard/power-bi-example-equation.png)  
+![Vergelijking op basis van voorbeeld criteria](./media/stream-analytics-power-bi-dashboard/power-bi-example-equation.png)  
 
-Deze configuratie worden gegeven, kunt u de oorspronkelijke query wijzigen met de volgende:
+Op basis van deze configuratie kunt u de oorspronkelijke query wijzigen in het volgende:
 
 ```SQL
     SELECT
@@ -229,18 +228,18 @@ Deze configuratie worden gegeven, kunt u de oorspronkelijke query wijzigen met d
 ```
 
 ### <a name="renew-authorization"></a>Autorisatie vernieuwen
-Als het wachtwoord is gewijzigd sinds de taak is gemaakt of laatst geverifieerd, moet u uw Power BI-account te verifiëren. Als u Azure multi-factor Authentication is geconfigureerd op uw tenant Azure Active Directory (Azure AD), moet u ook om te vernieuwen van Power BI-autorisatie elke twee weken. Als u niet verlengt, kan er problemen, zoals een gebrek aan taakuitvoer of een `Authenticate user error` in de logboeken voor bewerkingen.
+Als het wacht woord is gewijzigd sinds de taak is gemaakt of de laatste keer is geverifieerd, moet u uw Power BI-account opnieuw verifiëren. Als Azure Multi-Factor Authentication is geconfigureerd op uw Azure Active Directory-Tenant (Azure AD), moet u Power BI autorisatie ook elke twee weken vernieuwen. Als u het abonnement niet verlengt, ziet u symptomen zoals een gebrek aan taak uitvoer of een `Authenticate user error` in de bewerkings Logboeken.
 
-Op dezelfde manier als een taak wordt gestart nadat het token is verlopen, een fout optreedt en de taak is mislukt. U lost dit probleem, de taak die wordt uitgevoerd stoppen en Ga naar de uitvoer van uw Power BI. Om te voorkomen dat gegevens verloren gaan, selecteert u de **autorisatie vernieuwen** koppelen en start de taak van de **gestopt laatst**.
+Als een taak wordt gestart nadat het token is verlopen, treedt er een fout op en wordt de taak mislukt. U kunt dit probleem oplossen door de taak die wordt uitgevoerd, te stoppen en naar uw Power BI-uitvoer te gaan. Om gegevens verlies te voor komen, selecteert u de koppeling **autorisatie vernieuwen** en start u de taak opnieuw vanaf de **laatste keer**dat deze is gestopt.
 
-Nadat de autorisatie is vernieuwd met Power BI, wordt een waarschuwing met een groen weergegeven in de autorisatie om weer te geven dat het probleem is opgelost.
+Nadat de autorisatie is vernieuwd met Power BI, wordt een groene waarschuwing weer gegeven in het autorisatie gebied om aan te geven dat het probleem is opgelost.
 
-## <a name="get-help"></a>Help opvragen
+## <a name="get-help"></a>Hulp krijgen
 Voor verdere ondersteuning kunt u proberen onze [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
 * [Aan de slag met Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics-taken schalen](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics query language-referentie](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics Management REST API-naslaginformatie](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Naslag informatie voor de query taal Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Naslag informatie over Azure Stream Analytics beheer REST API](https://msdn.microsoft.com/library/azure/dn835031.aspx)

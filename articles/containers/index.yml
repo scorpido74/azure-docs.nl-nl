@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Azure voor containers
 metadata:
-  document_id: null
   title: 'Azure voor containers - Quickstarts, zelfstudies, API-verwijzing'
   description: 'Aan de slag met containerapps beheren en implementeren met Azure met quickstarts, zelfstudies en hulpprogramma''s voor containers.'
   keywords: 'Azure, containers, Docker, API, Kubernetes'

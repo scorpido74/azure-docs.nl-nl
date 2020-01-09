@@ -1,25 +1,16 @@
 ---
-title: Overzicht van Azure Service Fabric met API Management | Microsoft Docs
+title: Overzicht van Azure Service Fabric met API Management
 description: Dit artikel is een inleiding tot het gebruik van Azure API Management als een gateway voor uw Service Fabric toepassingen.
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 52f9584a2f793ff513100afcb7b7bd6acd2a4742
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 656bb6d400461c93540b77d871502b738c679f47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900515"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378107"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Overzicht van Service Fabric met Azure API Management
 
@@ -48,7 +39,7 @@ In dit scenario wordt de Web-UI nog steeds aangeboden via een webservice, terwij
 
 ## <a name="application-scenarios"></a>Toepassingsscenario's
 
-Services in Service Fabric kunnen stateless of stateful zijn, en ze kunnen worden gepartitioneerd met behulp van een van de drie schema's: Singleton, int-64-bereik en met de naam. Voor de service-eindpunt resolutie moet een specifieke partitie van een specifiek service-exemplaar worden geïdentificeerd. Bij het omzetten van een eind punt van een service moet zowel de naam van het service- `fabric:/myapp/myservice`exemplaar (bijvoorbeeld) als de specifieke partitie van de service worden opgegeven, behalve in het geval van een singleton-partitie.
+Services in Service Fabric kunnen stateless of stateful zijn, en ze kunnen worden gepartitioneerd met behulp van een van de drie schema's: Singleton, int-64-bereik en met de naam. Voor de service-eindpunt resolutie moet een specifieke partitie van een specifiek service-exemplaar worden geïdentificeerd. Bij het omzetten van een eind punt van een service moet zowel de naam van het service-exemplaar (bijvoorbeeld `fabric:/myapp/myservice`) als de specifieke partitie van de service worden opgegeven, behalve in het geval van een singleton-partitie.
 
 Azure API Management kan worden gebruikt met elke combi natie van stateless Services, stateful Services en elk partitie schema.
 
@@ -57,7 +48,7 @@ Azure API Management kan worden gebruikt met elke combi natie van stateless Serv
 In het eenvoudigste geval wordt verkeer doorgestuurd naar een stateless service-exemplaar. Hiervoor bevat een API Management-bewerking een beleid voor inkomende verwerking met een Service Fabric back-end dat is gekoppeld aan een specifiek stateless service exemplaar in Service Fabric back-end. Aanvragen die worden verzonden naar deze service, worden verzonden naar een wille keurig exemplaar van de service.
 
 #### <a name="example"></a>Voorbeeld
-In het volgende scenario bevat een service Fabric toepassing een stateless service met de `fabric:/app/fooservice`naam, waarmee een interne http-API wordt weer gegeven. De naam van het service-exemplaar is goed bekend en kan rechtstreeks in het API Management beleid voor inkomende verwerking worden vastgelegd. 
+In het volgende scenario bevat een Service Fabric toepassing een stateless service met de naam `fabric:/app/fooservice`, waarmee een interne HTTP-API wordt weer gegeven. De naam van het service-exemplaar is goed bekend en kan rechtstreeks in het API Management beleid voor inkomende verwerking worden vastgelegd. 
 
 ![Overzicht van Service Fabric met Azure API Management topologie][sf-apim-static-stateless]
 
@@ -67,9 +58,9 @@ Net als bij het stateless service scenario kan verkeer worden doorgestuurd naar 
 
 #### <a name="example"></a>Voorbeeld
 
-In het volgende scenario bevat een service Fabric toepassing een gepartitioneerd stateful service met `fabric:/app/userservice` een naam die een interne http-API beschrijft. De naam van het service-exemplaar is goed bekend en kan rechtstreeks in het API Management beleid voor inkomende verwerking worden vastgelegd.  
+In het volgende scenario bevat een Service Fabric toepassing een gepartitioneerd stateful service met de naam `fabric:/app/userservice` die een interne HTTP-API beschikbaar maakt. De naam van het service-exemplaar is goed bekend en kan rechtstreeks in het API Management beleid voor inkomende verwerking worden vastgelegd.  
 
-De service is gepartitioneerd met behulp van het Int64-partitie schema met twee partities en `Int64.MinValue` een `Int64.MaxValue`sleutel bereik dat tot. Het back-end-beleid berekent een partitie sleutel binnen dat bereik door de `id` waarde die is verstrekt in het URL-verzoek-pad, te converteren naar een 64-bits geheel getal, hoewel elk algoritme hier kan worden gebruikt om de partitie sleutel te berekenen. 
+De service is gepartitioneerd met behulp van het Int64-partitie schema met twee partities en een sleutel bereik dat `Int64.MinValue` tot `Int64.MaxValue`beslaat. Het back-end-beleid berekent een partitie sleutel binnen dat bereik door de `id` waarde die in het URL-verzoek is gegeven, te converteren naar een 64-bits geheel getal, hoewel elk algoritme hier kan worden gebruikt om de partitie sleutel te berekenen. 
 
 ![Overzicht van Service Fabric met Azure API Management topologie][sf-apim-static-stateful]
 
@@ -85,10 +76,10 @@ In dit voor beeld wordt een nieuw stateless service exemplaar gemaakt voor elke 
  
 - `fabric:/app/users/<username>`
 
-  Elke service heeft een unieke naam, maar de namen zijn niet vooraf bekend, omdat de services worden gemaakt in reactie op de invoer van gebruikers of beheerders en dus niet kunnen worden vastgelegd in APIM-beleid of routerings regels. In plaats daarvan wordt de naam van de service waarnaar een aanvraag wordt verzonden, gegenereerd in de definitie van het back-end `name` -beleid op basis van de waarde die is ingesteld in het URL-verzoek-pad. Bijvoorbeeld:
+  Elke service heeft een unieke naam, maar de namen zijn niet vooraf bekend, omdat de services worden gemaakt in reactie op de invoer van gebruikers of beheerders en dus niet kunnen worden vastgelegd in APIM-beleid of routerings regels. In plaats daarvan wordt de naam van de service waarnaar een aanvraag wordt verzonden, gegenereerd in de definitie van het back-end-beleid uit de `name` waarde die is ingesteld in het URL-verzoek-pad. Bijvoorbeeld:
 
-  - Een aanvraag om `/api/users/foo` naar het service-exemplaar te worden doorgestuurd`fabric:/app/users/foo`
-  - Een aanvraag om `/api/users/bar` naar het service-exemplaar te worden doorgestuurd`fabric:/app/users/bar`
+  - Een aanvraag naar `/api/users/foo` wordt doorgestuurd naar het service-exemplaar `fabric:/app/users/foo`
+  - Een aanvraag naar `/api/users/bar` wordt doorgestuurd naar het service-exemplaar `fabric:/app/users/bar`
 
 ![Overzicht van Service Fabric met Azure API Management topologie][sf-apim-dynamic-stateless]
 
@@ -104,12 +95,12 @@ In dit voor beeld wordt een nieuw stateful service exemplaar gemaakt voor elke g
  
 - `fabric:/app/users/<username>`
 
-  Elke service heeft een unieke naam, maar de namen zijn niet vooraf bekend, omdat de services worden gemaakt in reactie op de invoer van gebruikers of beheerders en dus niet kunnen worden vastgelegd in APIM-beleid of routerings regels. In plaats daarvan wordt de naam van de service waarnaar een aanvraag wordt verzonden, gegenereerd in de definitie van het back-end `name` -beleid op basis van de waarde van het URL-aanvraag pad. Bijvoorbeeld:
+  Elke service heeft een unieke naam, maar de namen zijn niet vooraf bekend, omdat de services worden gemaakt in reactie op de invoer van gebruikers of beheerders en dus niet kunnen worden vastgelegd in APIM-beleid of routerings regels. In plaats daarvan wordt de naam van de service waarnaar een aanvraag wordt verzonden, gegenereerd in de definitie van het back-end-beleid uit de `name` waarde het pad van de URL-aanvraag. Bijvoorbeeld:
 
-  - Een aanvraag om `/api/users/foo` naar het service-exemplaar te worden doorgestuurd`fabric:/app/users/foo`
-  - Een aanvraag om `/api/users/bar` naar het service-exemplaar te worden doorgestuurd`fabric:/app/users/bar`
+  - Een aanvraag naar `/api/users/foo` wordt doorgestuurd naar het service-exemplaar `fabric:/app/users/foo`
+  - Een aanvraag naar `/api/users/bar` wordt doorgestuurd naar het service-exemplaar `fabric:/app/users/bar`
 
-Elk service-exemplaar wordt ook gepartitioneerd met behulp van het Int64-partitie schema met twee partities `Int64.MinValue` en `Int64.MaxValue`een belang rijk bereik van. Het back-end-beleid berekent een partitie sleutel binnen dat bereik door de `id` waarde die is verstrekt in het URL-verzoek-pad, te converteren naar een 64-bits geheel getal, hoewel elk algoritme hier kan worden gebruikt om de partitie sleutel te berekenen. 
+Elk service-exemplaar wordt ook gepartitioneerd met behulp van het Int64-partitie schema met twee partities en een sleutel bereik dat `Int64.MinValue` tot `Int64.MaxValue`beslaat. Het back-end-beleid berekent een partitie sleutel binnen dat bereik door de `id` waarde die in het URL-verzoek is gegeven, te converteren naar een 64-bits geheel getal, hoewel elk algoritme hier kan worden gebruikt om de partitie sleutel te berekenen. 
 
 ![Overzicht van Service Fabric met Azure API Management topologie][sf-apim-dynamic-stateful]
 

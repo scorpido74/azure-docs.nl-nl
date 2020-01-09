@@ -1,5 +1,6 @@
 ---
-title: Zelfstudie voor het gebruik van dynamische configuratie van Azure-app-configuratie in een ASP.NET Core-app | Microsoft Docs
+title: 'Zelf studie: app-configuratie dynamische configuratie in ASP.NET Core gebruiken'
+titleSuffix: Azure App Configuration
 description: In deze zelfstudie leert u hoe u de configuratiegegevens voor ASP.NET Core-apps dynamisch bijwerkt
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: f49161531753c217e31d0681bcd19043cb47de75
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 608368daa17246f2512d243b2656dd7702d84f50
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185266"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433712"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Zelf studie: dynamische configuratie in een ASP.NET Core-app gebruiken
 
@@ -181,7 +182,7 @@ Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configur
     </html>
     ```
 
-## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
+## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
 
 1. Als u de app wilt bouwen met behulp van de .NET Core SLI, voert u de volgende opdracht uit in de opdracht shell:
 
@@ -195,13 +196,13 @@ Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configur
 
     ![Quickstart voor het lokaal starten van een app](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-4. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
+4. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
 
 5. Selecteer **Configuration Explorer**en werk de waarden van de volgende sleutels bij:
 
     | Sleutel | Waarde |
     |---|---|
-    | TestApp:Settings:BackgroundColor | groen |
+    | TestApp:Settings:BackgroundColor | green |
     | TestApp:Settings:FontColor | lightGray |
     | TestApp:Settings:Message | Gegevens uit Azure-app-configuratie - nu met live updates! |
 

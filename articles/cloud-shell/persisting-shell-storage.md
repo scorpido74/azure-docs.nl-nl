@@ -14,18 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2019
 ms.author: damaerte
-ms.openlocfilehash: 8e04e7c1919deaf60e083aba4588943147ebd6bf
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 0b3b0b2cc97c86fefe37055e0744b747d4f31687
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284817"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385553"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Bestanden in Azure Cloud Shell persistent maken
 Cloud Shell maakt gebruik van Azure File Storage om bestanden in verschillende sessies op te slaan. Bij de eerste keer starten Cloud Shell u gevraagd om een nieuwe of bestaande bestands share te koppelen om bestanden in verschillende sessies te behouden.
 
 > [!NOTE]
 > Bash en Power shell delen dezelfde bestands share. Er kan slechts één bestands share worden gekoppeld aan automatische montage in Cloud Shell.
+
+> [!NOTE]
+> Azure Storage-firewall wordt niet ondersteund voor Cloud shell-opslag accounts.
 
 ## <a name="create-new-storage"></a>Nieuwe opslag maken
 
@@ -67,7 +70,7 @@ Cloud Shell machines bestaan in de volgende regio's:
 |---|---|
 |Noord- en Zuid-Amerika|VS-Oost, Zuid-Centraal VS, VS-West|
 |Europa|Europa - noord, Europa - west|
-|Azië en Stille Oceaan|India, midden, Zuidoost-Azië|
+|Azië-Pacific|India, midden, Zuidoost-Azië|
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Het maken van resources beperken met een Azure-resource beleid
 Opslag accounts die u in Cloud Shell maakt, worden gelabeld met `ms-resource-usage:azure-cloud-shell`. Als u wilt voor komen dat gebruikers opslag accounts maken in Cloud Shell, maakt u een [Azure-resource beleid voor Tags](../azure-policy/json-samples.md) die worden geactiveerd door deze specifieke tag.
@@ -136,7 +139,7 @@ De bestands share blijft bestaan, tenzij u deze hand matig verwijdert. Cloud She
 ![De clouddrive-unmount'command uitvoeren](media/persisting-shell-storage/unmount-h.png)
 
 > [!WARNING]
-> Hoewel met deze opdracht geen resources worden verwijderd, hand matig verwijderen van een resource groep, opslag account of bestands share die is toegewezen aan Cloud Shell, worden uw `$Home` Directory-schijf kopie en alle bestanden in de bestands share gewist. Deze actie kan niet ongedaan worden gemaakt.
+> Hoewel met deze opdracht geen resources worden verwijderd, hand matig verwijderen van een resource groep, opslag account of bestands share die is toegewezen aan Cloud Shell, worden uw `$Home` Directory-schijf kopie en alle bestanden in de bestands share gewist. Deze actie kunt u niet ongedaan maken.
 ## <a name="powershell-specific-commands"></a>Power shell-specifieke opdrachten
 
 ### <a name="list-clouddrive-azure-file-shares"></a>`clouddrive` Azure-bestands shares weer geven

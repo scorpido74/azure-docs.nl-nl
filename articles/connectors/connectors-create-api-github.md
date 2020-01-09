@@ -1,20 +1,20 @@
 ---
-title: Verbinding maken met GitHub
-description: GitHub-gebeurtenissen bewaken met GitHub REST-Api's en Azure Logic Apps
+title: Uw GitHub-opslag plaats openen, bewaken en beheren
+description: GitHub-gebeurtenissen bewaken en uw GitHub-opslag plaats beheren door automatische werk stromen te maken met Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/02/2018
 tags: connectors
-ms.openlocfilehash: 7dc865f520b6f4667ace720e656a210e0252d1a1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b67d2e860e8c69f6f2f43441144ef2f60ed3a104
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789748"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378446"
 ---
-# <a name="connect-to-github-from-azure-logic-apps"></a>Verbinding maken met GitHub vanuit Azure Logic Apps
+# <a name="monitor-and-manage-your-github-repo-by-using-azure-logic-apps"></a>Bewaak en beheer uw GitHub-opslag plaats met behulp van Azure Logic Apps
 
 GitHub is een op het web gebaseerde Git-hosting service voor opslag plaatsen die alle gedistribueerde revisie beheer en SCM-functionaliteit (broncode beheer) biedt in Git en andere functies.
 

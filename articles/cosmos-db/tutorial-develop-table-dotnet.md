@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met Azure Cosmos DB Table-API met behulp van de .NET Standard SDK
+title: Azure Cosmos DB Table-API met behulp van .NET Standard SDK
 description: Meer informatie over het opslaan en opvragen van de gestructureerde gegevens in Azure Cosmos DB Table-API-account
 author: wmengmsft
 ms.author: wmeng
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 12/03/2019
-ms.openlocfilehash: 0a1ba00d2d24664590f76438a90f651e0826d419
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7341d86e68986a2e502f714a4dcf1f882200d384
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870544"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441065"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Aan de slag met Azure Cosmos DB Table-API en Azure-tabel opslag met behulp van de .NET SDK
 

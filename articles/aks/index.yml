@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Azure Kubernetes Service (AKS)
 metadata:
-  document_id: null
   title: 'Documentatie voor Azure Kubernetes Service (AKS) - zelfstudies, API-verwijzing | Microsoft Docs'
   meta.description: 'AKS allows you to quickly deploy a production ready Kubernetes cluster in Azure. Learn how to use AKS with these quickstarts, tutorials, and samples.'
   services: container-service
@@ -24,7 +23,7 @@ sections:
         items:
           - image:
               src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Azure-CLI
+            text: Azure CLI
             href: /azure/aks/kubernetes-walkthrough
           - image:
               src: 'https://docs.microsoft.com/media/common/i_portal.svg'

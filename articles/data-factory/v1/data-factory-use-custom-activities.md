@@ -12,16 +12,16 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 32ab81d618cb0a6ee40814b644ad934008ee7719
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927959"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438827"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Use custom activities in an Azure Data Factory pipeline (Aangepaste activiteiten gebruiken in een Azure Data Factory-pijplijn)
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-use-custom-activities.md)
+> * [Versie 1:](data-factory-use-custom-activities.md)
 > * [Versie 2 (huidige versie)](../transform-data-using-dotnet-custom-activity.md)
 
 > [!NOTE]
@@ -440,7 +440,7 @@ Met gekoppelde services worden gegevensarchieven of compute-services gekoppeld a
 2. Klik op **Nieuw gegevens archief** op de opdracht balk en kies **Azure Storage**. U ziet het JSON-script voor het maken van een gekoppelde Azure Storage-service in de editor.
 
     ![Nieuwe gegevens opslag-Azure Storage](media/data-factory-use-custom-activities/new-data-store-menu.png)
-3. Vervang `<accountname>` door de naam van uw Azure Storage-account en `<accountkey>` door de toegangs sleutel van het Azure-opslag account. Zie [Toegangssleutels voor opslag weergeven, kopiëren en opnieuw genereren](../../storage/common/storage-account-manage.md#access-keys) voor meer informatie over het verkrijgen van uw toegangssleutel voor opslag.
+3. Vervang `<accountname>` door de naam van uw Azure Storage-account en `<accountkey>` door de toegangs sleutel van het Azure-opslag account. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md)voor meer informatie over het verkrijgen van uw toegangs sleutel voor opslag.
 
     ![Azure Storage bevonden service](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
 4. Klik op de opdrachtbalk op **Implementeren** om de gekoppelde service te implementeren.

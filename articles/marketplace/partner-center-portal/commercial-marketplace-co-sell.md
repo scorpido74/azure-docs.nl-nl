@@ -1,50 +1,69 @@
 ---
 title: Optie voor co-sell in Partner Center | Azure Marketplace
 description: De gegevens die u opgeeft op het tabblad verkopen van uw aanbieding, worden door micro soft Sales-teams gebruikt om meer te weten te komen over uw oplossing bij de evaluatie van de geschiktheid voor klanten behoeften.
-author: qianw211
+author: ChJenk
 manager: evansma
-ms.author: v-qiwe
+ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: 027a35db9fcb6c0e95be5da276f673b9295ad436
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/06/2019
+ms.openlocfilehash: 5f5f98b908ce54624a5d73a2ed74b2e9ea8966ff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812704"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431959"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Optie voor co-sell in Partner Center
 
 Het is volledig optioneel om informatie op het tabblad samen verkopen op te geven. Het is vereist voor het vergemakkelijkt van de verkoop van Ready en de status van de voor bereidingen op de IP-mede verkoop. De gegevens die u verstrekt, worden door micro soft Sales teams gebruikt om meer te weten te komen over uw oplossing bij de evaluatie van de geschiktheid voor klanten behoeften. Het is niet rechtstreeks beschikbaar voor klanten. Zie voor meer informatie [verkopen via micro soft](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft).
 
-## <a name="applicable-products"></a>Toepasselijke producten
+De optie voor co-selling in Partner Center is momenteel beschikbaar voor sommige aanbiedings typen. Ondersteuning voor aanvullende aanbiedings typen wordt na verloop van tijd beschikbaar gesteld.
 
-Kies een van de micro soft-producten die uw aanbieding heeft gebouwd op of ontworpen om te werken met.
+| **Aanbiedings type** | **Pagina voor co-sell beschikbaar in partner centrum** |
+|    -----------------------    |    -----------------------------  |
+| Software as a Service (SaaS) |     Algemene Beschik baarheid rond feb. 2020      |
+| Dynamics 365 voor klant betrokkenheid & PowerApps      |     Nu verkrijgbaar      |
+| Dynamics 365 for Operations     |     Nu verkrijgbaar       |
+| Dynamics 365 Business Central      |  Algemene Beschik baarheid rond feb. 2020     |
+| Azure Application     |     Algemene Beschik baarheid rond feb. 2020     |
+| Azure Virtual Machine      |     Binnenkort aangekondigd       |
+| Azure-container     |     Binnenkort aangekondigd       |
+| Adviesservice      |     Binnenkort aangekondigd       |
+| Module IoT Edge      |     Binnenkort aangekondigd       |
+| Power BI service-app     |     Binnenkort aangekondigd       |
+|  |
 
-## <a name="customer-segments"></a>Klant segmenten
+## <a name="listing"></a>Lijsten
 
-Selecteer de grootte van het bedrijf waarvoor uw aanbieding bestemd is.
+Met de functie voor het samen verkopen van gegevens kunnen micro soft-verkoop teams uw oplossing in een breder publiek zetten.
 
-## <a name="offer-type"></a>Type aanbieding
+- Kies de micro soft-platforms waarop uw aanbieding is gebouwd, wordt uitgebreid of geïntegreerd met.
+- Selecteer de markt segmenten waarvoor uw aanbieding bestemd is.
+- Selecteer een [type oplossing](#solution-type) voor uw aanbieding.
+- U kunt Maxi maal drie [oplossings gebieden](#solution-areas) en subgebieden kiezen.
 
-Selecteer uw aanbiedings type:
+### <a name="solution-type"></a>Type oplossing
 
-| **Aanbiedings type**    | **Beschrijving**  |
+Met typen oplossingen kunt u de scenario's definiëren die voor uw aanbieding zijn ontworpen.
+
+| **Type oplossing**    | **Beschrijving**  |
 | :------------------- | :-------------------|
-| Apparaat | Een aanbieding waarbij u hardware van een apparaatfabrikant bouwt of verkoopt. |
-| IP | Apps of andere auteurs rechtelijk beschermde materialen waarvoor het gebruik van de klant in licentie is gegeven. Bijvoorbeeld: een CRM-programma dat on-premises kan worden gelicentieerd en geïnstalleerd. |
+| Apparaat (hardware) | Een aanbieding waarbij u hardware van een apparaatfabrikant bouwt of verkoopt. |
+| IP (toepassing) | Apps of andere auteurs rechtelijk beschermde materialen waarvoor het gebruik van de klant in licentie is gegeven. Bijvoorbeeld: een CRM-programma dat on-premises kan worden gelicentieerd en geïnstalleerd. |
 | Service | Praktische kennis voor een specifiek eenmalig project, vaak geleverd via consultants. Bijvoorbeeld: het instellen van een klanten database voor een-client (waarbij de client na levering verantwoordelijk is voor de uitvoering van de data base). |
 | Beheerde service | Praktijk gerichte expertise voor een Cloud project, meestal op doorlopende basis. Bijvoorbeeld: bieden een platform en hulpprogram ma's voor het uitvoeren van een online-data base, met doorlopend beheer van de beheerde service provider. |
 
-## <a name="solution-areas"></a>Oplossings gebieden
+### <a name="solution-areas"></a>Oplossings gebieden
 
-U kunt Maxi maal drie oplossings gebieden toevoegen voor uw aanbieding.  Voor elk oplossings gebied kunt u Maxi maal twee subgebieden voor de oplossing kiezen. Als u meerdere subcategorieën wilt selecteren, gebruikt u de `Ctrl` sleutel (op Windows) of de opdracht toets (op Mac OS).
+Oplossings gebieden helpen u bij het verder bepalen van uw oplossing.
 
-Oplossings gebieden helpen u bij het bepalen van de scenario's die uw aanbieding is ontworpen om te voldoen aan het doel.
+U kunt Maxi maal drie oplossings gebieden toevoegen voor uw aanbieding. Voor elk oplossings gebied kunt u Maxi maal twee subgebieden voor de oplossing kiezen. Als u meerdere subcategorieën wilt selecteren, gebruikt u de `Ctrl` sleutel (op Windows) of de opdracht toets (op Mac OS).
 
 ## <a name="documents"></a>Documenten
+
+U kunt onderpand bieden voor micro soft om te gebruiken voor het evalueren van de behoeften van uw klanten.
 
 | **Faxdocumenten**    | **Beschrijving**  |
 | :------------------- | :-------------------|
@@ -60,7 +79,7 @@ Oplossings gebieden helpen u bij het bepalen van de scenario's die uw aanbieding
 
 ## <a name="contacts"></a>Contactpersonen
 
-Met uw contact gegevens kunnen micro soft verkoop teams en Channel wederverkopers vragen om aanvullende informatie van de juiste resource in uw organisatie. Contact gegevens zijn beschikbaar voor alle verkoop teams van micro soft. Als u ervoor kiest om uw aanbieding beschikbaar te stellen in het CSP-programma, is deze contact informatie ook beschikbaar voor Channel-wederverkopers. 
+Met uw contact gegevens kunnen micro soft verkoop teams en Channel wederverkopers vragen om aanvullende informatie van de juiste resource in uw organisatie. Contact gegevens zijn beschikbaar voor alle verkoop teams van micro soft. Als u ervoor kiest om uw aanbieding beschikbaar te stellen in het CSP-programma, is deze contact informatie ook beschikbaar voor Channel-wederverkopers.
 
 Dit document bevat richt lijnen voor de verschillende rollen voor partners en hoe u er een kunt kiezen. U kunt uw contact personen opgeven door de CSV-sjabloon te downloaden van het partner centrum, elke rij in te vullen met informatie over de contact persoon en dit CSV-bestand te importeren. Als u een CSV-bestand importeert, worden de bestaande contact personen overschreven.
 

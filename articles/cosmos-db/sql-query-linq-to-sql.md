@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: d8dd6392cf22852a10c1dc2600edcbc647f3c510
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d43f95b91df7d0c9c442339de51936200f4688e2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871156"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441260"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL-omzetting
 
@@ -64,7 +64,7 @@ De LINQ-provider die is opgenomen in de SQL .NET SDK ondersteunt de volgende Ope
 - **OrderBy** en **OrderByDescending**: vertalen naar order by met ASC of DESC.
 - Operatoren **Count**, **Sum**, **Min**, **Max** en **Average** voor statistische functies en de bijbehorende asynchrone equivalenten **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync** en **AverageAsync**.
 - **CompareTo**: wordt omgezet naar bereikvergelijkingen. Wordt meestal gebruikt voor teken reeksen, omdat ze niet vergelijkbaar zijn in .NET.
-- **Nemen**: vertaalt de top van SQL voor het beperken van de resultaten van een query.
+- **Overs Laan** en **uitvoeren**: VERtaalt de SQL-offset en-limiet voor het beperken van de resultaten van een query en het uitvoeren van paginering.
 - **Wiskundige functies**: ondersteunt de vertaling van .net `Abs`, `Acos`, `Asin`, `Atan`, `Ceiling`, `Cos`, `Exp`, `Floor`, `Log`, `Log10`, `Pow`, `Round`, `Sign`, `Sin`, `Sqrt`, `Tan`en `Truncate` naar de equivalente ingebouwde functies van SQL.
 - **Teken reeks functies**: ondersteunt de vertaling van .net `Concat`, `Contains`, `Count`, `EndsWith`,`IndexOf`, `Replace`, `Reverse`, `StartsWith`, `SubString`, `ToLower`, `ToUpper`, `TrimEnd`en `TrimStart` naar de equivalente ingebouwde functies van SQL.
 - **Matrix functies**: ondersteunt de vertaling van .net `Concat`, `Contains`en `Count` naar de equivalente ingebouwde functies van SQL.
