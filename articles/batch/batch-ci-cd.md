@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.service: batch
-ms.openlocfilehash: 47665171ee5ae137e0503b3e5fa1d369aeabb356
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 7f471032d69213fc11ff748e3fa9093991ee23d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840056"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449802"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Gebruik Azure-pijp lijnen om HPC-oplossingen te bouwen en te implementeren
 
@@ -52,7 +52,7 @@ De code basis structuur die in dit voor beeld wordt gebruikt, lijkt op het volge
 In deze sectie wordt ervan uitgegaan dat u bekend bent met versie beheer en het ontwerpen van Resource Manager-sjablonen. Als u niet bekend bent met deze concepten, raadpleegt u de volgende pagina's voor meer informatie.
 
 * [Wat is broncode beheer?](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
-* [Informatie over de structuur en de syntaxis van Azure Resource Manager-sjablonen](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Informatie over de structuur en de syntaxis van Azure Resource Manager-sjablonen](../azure-resource-manager/templates/template-syntax.md)
 
 #### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
 
@@ -303,7 +303,7 @@ Er zijn vier hoofd secties voor deze opslag plaats:
 * De map **arm-sjablonen** die onze infra structuur opslaat als code
 * De map **HPC-toepassing** die de binaire bestanden voor ffmpeg bevat
 * De map **pijp lijnen** met de definitie voor onze build-pijp lijn.
-* **Optioneel**: De map van de **client-toepassing** die code opslaat voor .NET-toepassing. Dit wordt niet gebruikt in het voor beeld, maar in uw eigen project wilt u mogelijk uitvoeringen uitvoeren van de HPC batch-toepassing via een client toepassing.
+* **Optioneel**: de map van de **client-toepassing** die code opslaat voor .NET-toepassing. Dit wordt niet gebruikt in het voor beeld, maar in uw eigen project wilt u mogelijk uitvoeringen uitvoeren van de HPC batch-toepassing via een client toepassing.
 
 > [!NOTE]
 > Dit is slechts één voor beeld van een structuur voor een code base. Deze methode wordt gebruikt om aan te tonen dat de toepassing, de infra structuur en de pijplijn code worden opgeslagen in dezelfde opslag plaats.
@@ -390,15 +390,15 @@ Er zijn een aantal stappen voor het implementeren van de-infra structuur. Omdat 
 
 1. Navigeer naar de sectie **Varia bles** . Het is raadzaam om een aantal variabelen in uw pijp lijn te maken, zodat u niet dezelfde informatie in meerdere taken hoeft op te zetten. Dit zijn de variabelen die in dit voor beeld worden gebruikt en hoe deze van invloed zijn op de implementatie.
 
-    * **applicationStorageAccountName**: Naam van het opslag account voor het opslaan van binaire bestanden van HPC-toepassingen
-    * **batchAccountApplicationName**: De naam van de toepassing in het Azure Batch-account
-    * **batchAccountName**: De naam van het Azure Batch-account
-    * **batchAccountPoolName**: Naam van de groep Vm's die de verwerking uitvoert
-    * **batchApplicationId**: Unieke ID voor de Azure Batch toepassing
-    * **batchApplicationVersion**: Semantische versie van uw batch-toepassing (dat wil zeggen de binaire ffmpeg-bestanden)
-    * **locatie**: Locatie voor de implementatie van de Azure-resources
-    * **resourceGroupName**: De naam van de resource groep die moet worden gemaakt en waar uw resources worden geïmplementeerd
-    * **storageAccountName**: De naam van het opslag account dat gekoppelde Resource Manager-sjablonen moet bevatten
+    * **applicationStorageAccountName**: naam van het opslag account voor het opslaan van binaire bestanden van HPC-toepassingen
+    * **batchAccountApplicationName**: naam van de toepassing in het Azure batch-account
+    * **batchAccountName**: naam van het Azure batch-account
+    * **batchAccountPoolName**: naam van de pool van vm's die de verwerking uitvoeren
+    * **batchApplicationId**: unieke id voor de Azure batch toepassing
+    * **batchApplicationVersion**: semantische versie van uw batch-toepassing (dat wil zeggen de binaire bestanden van ffmpeg)
+    * **locatie**: locatie van de Azure-resources die moeten worden geïmplementeerd
+    * **resourceGroupName**: de naam van de resource groep die moet worden gemaakt en waar uw resources worden geïmplementeerd
+    * **storageAccountName**: naam van het opslag account dat gekoppelde Resource Manager-sjablonen moet bevatten
 
     ![Voor beeld van variabelen die zijn ingesteld voor de release van de Azure-pijp lijnen](media/batch-ci-cd/Release-4.jpg)
 
@@ -416,7 +416,7 @@ Er zijn een aantal stappen voor het implementeren van de-infra structuur. Omdat 
     Voeg de implementatie taak voor de **Azure-resource groep** toe en stel de volgende eigenschappen in:
     * **Weergave naam:** Opslag account voor Resource Manager-sjablonen implementeren
     * **Azure-abonnement:** Selecteer het juiste Azure-abonnement
-    * **Actie**: Resourcegroep maken of bijwerken
+    * **Actie**: resource groep maken of bijwerken
     * **Resource Group**: $(resourceGroupName)
     * **Locatie**: $ (locatie)
     * **Template**: $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/storageAccount.json
@@ -439,11 +439,11 @@ Er zijn een aantal stappen voor het implementeren van de-infra structuur. Omdat 
     Voeg de implementatie taak voor de **Azure-resource groep** toe en stel de volgende eigenschappen in:
     * **Weergave naam:** Azure Batch implementeren
     * **Azure-abonnement:** Selecteer het juiste Azure-abonnement
-    * **Actie**: Resourcegroep maken of bijwerken
+    * **Actie**: resource groep maken of bijwerken
     * **Resource Group**: $(resourceGroupName)
     * **Locatie**: $ (locatie)
     * **Template**: $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/deployment.json
-    * **Sjabloon parameters overschrijven**:```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
+    * **Sjabloon parameters overschrijven**: ```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
 
 Een veelvoorkomende procedure is het gebruik van Azure Key Vault taken. Als voor de Service-Principal (verbinding met uw Azure-abonnement) een geschikt toegangs beleid is ingesteld, kunnen er geheimen van een Azure Key Vault worden gedownload en als variabelen worden gebruikt in uw pijp lijn. De naam van het geheim wordt ingesteld met de bijbehorende waarde. In de release definitie kan bijvoorbeeld naar een geheim van sshPassword worden verwezen met $ (sshPassword).
 
@@ -452,16 +452,16 @@ Een veelvoorkomende procedure is het gebruik van Azure Key Vault taken. Als voor
     Voeg de **Azure cli** -taak toe en stel de volgende eigenschappen in:
     * **Weergave naam:** Toepassing maken in Azure Batch-account
     * **Azure-abonnement:** Selecteer het juiste Azure-abonnement
-    * **Locatie**van het script: Inline script
-    * **Inline-script**:```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
+    * **Script locatie**: inline-script
+    * **Inline script**: ```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
 
 1. De tweede stap wordt gebruikt voor het uploaden van gekoppelde pakketten naar de toepassing. In ons geval worden de ffmpeg-bestanden.
 
     Voeg de **Azure cli** -taak toe en stel de volgende eigenschappen in:
     * **Weergave naam:** Pakket uploaden naar Azure Batch-account
     * **Azure-abonnement:** Selecteer het juiste Azure-abonnement
-    * **Locatie**van het script: Inline script
-    * **Inline-script**:```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
+    * **Script locatie**: inline-script
+    * **Inline script**: ```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
 
     > [!NOTE]
     > Het versie nummer van het toepassings pakket is ingesteld op een variabele. Dit is handig als eerdere versies van het pakket worden overschreven, en als u het versie nummer van het pakket dat is gepusht naar Azure Batch, hand matig wilt beheren.
@@ -478,8 +478,8 @@ Nadat de omgeving is ingesteld, bevestigt u dat de volgende tests kunnen worden 
 
 Maak verbinding met het nieuwe Azure Batch-account met behulp van de Azure CLI vanuit een Power shell-opdracht prompt.
 
-* Meld u aan bij uw Azure- `az login` account en volg de instructies om te verifiëren.
-* Verifieer nu het batch-account:`az batch account login -g <resourceGroup> -n <batchAccount>`
+* Meld u aan bij uw Azure-account met `az login` en volg de instructies voor het verifiëren.
+* Verifieer nu het batch-account: `az batch account login -g <resourceGroup> -n <batchAccount>`
 
 #### <a name="list-the-available-applications"></a>De beschik bare toepassingen weer geven
 

@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: ef2db7f13ea5192634855b69a0d355e0f1e11ecb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6d1dd8f749f6c3e991413628bd1e08baf76a02f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035084"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458670"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Een virtuele Linux-machine uploaden en maken op basis van een aangepaste schijf met de Azure CLI
 
@@ -122,7 +122,7 @@ Zie ook de **[installatie notities van Linux](create-upload-generic.md#general-l
 > 
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
-Met resource groepen worden alle Azure-resources logisch samengebracht ter ondersteuning van uw virtuele machines, zoals de virtuele netwerken en opslag. Zie [overzicht van resource groepen](../../azure-resource-manager/resource-group-overview.md)voor meer informatie over resource groepen. Voordat u uw aangepaste schijf uploadt en Vm's maakt, moet u eerst een resource groep maken met [AZ Group Create](/cli/azure/group).
+Met resource groepen worden alle Azure-resources logisch samengebracht ter ondersteuning van uw virtuele machines, zoals de virtuele netwerken en opslag. Zie [overzicht van resource groepen](../../azure-resource-manager/management/overview.md)voor meer informatie over resource groepen. Voordat u uw aangepaste schijf uploadt en Vm's maakt, moet u eerst een resource groep maken met [AZ Group Create](/cli/azure/group).
 
 In het volgende voorbeeld wordt een resourcegroep met de naam `myResourceGroup` gemaakt op de locatie `westus`:
 
@@ -130,7 +130,7 @@ In het volgende voorbeeld wordt een resourcegroep met de naam `myResourceGroup` 
 az group create --name myResourceGroup --location westus
 ```
 
-## <a name="create-a-storage-account"></a>Een opslagaccount maken
+## <a name="create-a-storage-account"></a>Maak een opslagaccount
 
 Maak een opslag account voor uw aangepaste schijf en virtuele machines met [AZ Storage account create](/cli/azure/storage/account). Alle Vm's met niet-beheerde schijven die u maakt op basis van uw aangepaste schijf, moeten zich in hetzelfde opslag account bevindt als die schijf. 
 
@@ -142,7 +142,7 @@ az storage account create --resource-group myResourceGroup --location westus \
 ```
 
 ## <a name="list-storage-account-keys"></a>Sleutels van opslag account weer geven
-Azure genereert 2 512-bits toegangs sleutels voor elk opslag account. Deze toegangs sleutels worden gebruikt bij het verifiëren van het opslag account, zoals om schrijf bewerkingen uit te voeren. Lees hier meer over [het beheren van toegang tot opslag](../../storage/common/storage-account-manage.md#access-keys). U kunt de toegangs sleutels weer geven met [AZ Storage account Keys List](/cli/azure/storage/account/keys).
+Azure genereert 2 512-bits toegangs sleutels voor elk opslag account. Deze toegangs sleutels worden gebruikt bij het verifiëren van het opslag account, zoals om schrijf bewerkingen uit te voeren. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md)voor meer informatie over toegangs sleutels voor opslag accounts. U kunt de toegangs sleutels weer geven met [AZ Storage account Keys List](/cli/azure/storage/account/keys).
 
 Bekijk de toegangs sleutels voor het opslag account dat u hebt gemaakt:
 
@@ -204,7 +204,7 @@ U moet nog steeds vragen opgeven, of antwoord geven op alle aanvullende para met
 
 
 ## <a name="resource-manager-template"></a>Resource Manager-sjabloon
-Azure Resource Manager sjablonen zijn JavaScript Object Notation (JSON)-bestanden die de omgeving definiëren die u wilt bouwen. De sjablonen worden uitgesplitst naar verschillende resource providers, zoals Compute en netwerk. U kunt bestaande sjablonen gebruiken of uw eigen sjabloon schrijven. Lees meer over het [gebruik van Resource Manager en sjablonen](../../azure-resource-manager/resource-group-overview.md).
+Azure Resource Manager sjablonen zijn JavaScript Object Notation (JSON)-bestanden die de omgeving definiëren die u wilt bouwen. De sjablonen worden uitgesplitst naar verschillende resource providers, zoals Compute en netwerk. U kunt bestaande sjablonen gebruiken of uw eigen sjabloon schrijven. Lees meer over het [gebruik van Resource Manager en sjablonen](../../azure-resource-manager/management/overview.md).
 
 Binnen de `Microsoft.Compute/virtualMachines` provider van uw sjabloon hebt u een `storageProfile` knoop punt met de configuratie gegevens voor uw VM. De twee belangrijkste para meters die u kunt bewerken, zijn de `image` en `vhd` Uri's die naar uw aangepaste schijf verwijzen en de virtuele schijf van uw nieuwe VM. Hieronder ziet u een voor beeld van de JSON voor het gebruik van een aangepaste schijf:
 
@@ -224,7 +224,7 @@ Binnen de `Microsoft.Compute/virtualMachines` provider van uw sjabloon hebt u ee
           }
 ```
 
-U kunt [deze bestaande sjabloon gebruiken om een VM te maken op basis van een aangepaste installatie kopie of om](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) te lezen over [het maken van uw eigen Azure Resource Manager sjablonen](../../azure-resource-manager/resource-group-authoring-templates.md). 
+U kunt [deze bestaande sjabloon gebruiken om een VM te maken op basis van een aangepaste installatie kopie of om](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) te lezen over [het maken van uw eigen Azure Resource Manager sjablonen](../../azure-resource-manager/templates/template-syntax.md). 
 
 Wanneer u een sjabloon hebt geconfigureerd, gebruikt u [AZ Group Deployment Create](/cli/azure/group/deployment) om uw vm's te maken. Geef de URI van de JSON-sjabloon op met de para meter `--template-uri`:
 
@@ -242,5 +242,5 @@ az group deployment create --resource-group myNewResourceGroup \
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Nadat u uw aangepaste virtuele schijf hebt voor bereid en geüpload, kunt u meer lezen over het [gebruik van Resource Manager en sjablonen](../../azure-resource-manager/resource-group-overview.md). Het is ook mogelijk dat u [een gegevens schijf wilt toevoegen](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) aan de nieuwe virtuele machines. Als u toepassingen hebt die worden uitgevoerd op uw Vm's die u wilt openen, moet u [poorten en eind punten openen](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Nadat u uw aangepaste virtuele schijf hebt voor bereid en geüpload, kunt u meer lezen over het [gebruik van Resource Manager en sjablonen](../../azure-resource-manager/management/overview.md). Het is ook mogelijk dat u [een gegevens schijf wilt toevoegen](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) aan de nieuwe virtuele machines. Als u toepassingen hebt die worden uitgevoerd op uw Vm's die u wilt openen, moet u [poorten en eind punten openen](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

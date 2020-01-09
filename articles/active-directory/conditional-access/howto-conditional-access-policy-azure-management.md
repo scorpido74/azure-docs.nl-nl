@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d0a1f56624314ff0cebe93a46027d3ca5b6a838
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e6c4e5d90704e847b3bcd033a20311cc6c69cfe7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803713"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424900"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>Voorwaardelijke toegang: MFA vereisen voor Azure-beheer
 
@@ -24,7 +24,7 @@ Organisaties gebruiken verschillende Azure-Services en beheren ze via Azure Reso
 
 * Azure Portal
 * Azure PowerShell
-* Azure CLI
+* Azure-CLI
 
 Deze hulpprogram ma's kunnen uiterst privileged toegang bieden tot bronnen, waarmee u de volledige configuratie van abonnementen, Service-instellingen en abonnements facturering kunt wijzigen. Voor het beveiligen van deze geprivilegieerde resources raadt micro soft aan om multi-factor Authentication te vereisen voor elke gebruiker die toegang tot deze bronnen heeft.
 
@@ -57,5 +57,7 @@ De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke t
 ## <a name="next-steps"></a>Volgende stappen
 
 [Algemeen beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
+
+[Effect bepalen met de modus alleen rapport-alleen voor voorwaardelijke toegang](howto-conditional-access-report-only.md)
 
 [Aanmeld gedrag simuleren met het What If hulp programma voor voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)

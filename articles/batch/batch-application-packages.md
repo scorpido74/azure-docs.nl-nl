@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9c9d6d13efaa07bff2a1eaabe05725a3257cf895
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9e8fdafc3e8f83cb529718993ffe9d0f7383c10c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70095679"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449827"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Toepassingen implementeren op reken knooppunten met batch-toepassings pakketten
 
@@ -94,7 +94,7 @@ We raden u aan om een opslag account te maken dat *speciaal is bedoeld* voor geb
 > Op dit moment kunt u geen toepassings pakketten gebruiken met een Azure Storage-account dat is geconfigureerd met [firewall regels](../storage/common/storage-network-security.md).
 > 
 
-De batch-service gebruikt Azure Storage om uw toepassings pakketten op te slaan als blok-blobs. Er worden [kosten in rekening gebracht][storage_pricing] voor de blok-BLOB-gegevens en de grootte van elk pakket kan niet groter zijn dan de [maximale grootte](../storage/common/storage-scalability-targets.md#azure-blob-storage-scale-targets)van de blok-blob. Houd rekening met de grootte en het aantal van uw toepassings pakketten en verwijder regel matig afgeschafte pakketten om de kosten te minimaliseren.
+De batch-service gebruikt Azure Storage om uw toepassings pakketten op te slaan als blok-blobs. Er worden [kosten in rekening gebracht][storage_pricing] voor de blok-BLOB-gegevens en de grootte van elk pakket kan niet groter zijn dan de maximale grootte van de blok-blob. Zie [Azure Storage schaalbaarheids-en prestatie doelen voor opslag accounts](../storage/blobs/scalability-targets.md)voor meer informatie. Houd rekening met de grootte en het aantal van uw toepassings pakketten en verwijder regel matig afgeschafte pakketten om de kosten te minimaliseren.
 > 
 > 
 
@@ -141,7 +141,7 @@ Klik op **Toepassingen** > **Toevoegen**.
 
 Het venster **nieuwe toepassing** bevat de volgende velden om de instellingen van uw nieuwe toepassing en toepassings pakket op te geven.
 
-**Toepassings-ID**
+**Toepassings-id**
 
 In dit veld wordt de ID van de nieuwe toepassing opgegeven, die is onderhevig aan de standaard regels voor validatie van de Azure Batch-ID. De regels voor het opgeven van een toepassings-ID zijn als volgt:
 
@@ -171,7 +171,7 @@ Nadat u een bestand hebt geselecteerd, klikt u op **OK** om te beginnen met uplo
 > 
 
 ### <a name="add-a-new-application-package"></a>Een nieuw toepassings pakket toevoegen
-Als u een toepassings pakket versie voor een bestaande toepassing wilt toevoegen, selecteert u een toepassing in de Windows- **toepassingen** en klikt u op **pakketten**  > **toevoegen**.
+Als u een toepassings pakket versie voor een bestaande toepassing wilt toevoegen, selecteert u een toepassing in de Windows- **toepassingen** en klikt u op **pakketten** > **toevoegen**.
 
 ![De Blade toepassings pakket toevoegen in Azure Portal][8]
 

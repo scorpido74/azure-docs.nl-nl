@@ -1,6 +1,6 @@
 ---
-title: Gegevens in Azure Cosmos DB Cassandra-API van Spark maken/invoegen
-description: Dit artikel wordt uitgelegd hoe u voorbeeldgegevens ingevoegd in Cassandra-API van Azure Cosmos DB-tabellen
+title: Gegevens maken of invoegen in Azure Cosmos DB Cassandra-API vanuit Spark
+description: In dit artikel wordt beschreven hoe u voorbeeld gegevens kunt invoegen in Azure Cosmos DB Cassandra-API tabellen
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: aea646e7a390d5b53f0d4b388cfecd0c80fb19da
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3eb23a3d8b1098110bd8b75faa22cc483637d183
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60894042"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442125"
 ---
-# <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Gegevens in Azure Cosmos DB Cassandra-API van Spark maken/invoegen
+# <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Gegevens maken/invoegen in Azure Cosmos DB Cassandra-API vanuit Spark
  
-In dit artikel wordt beschreven hoe u voorbeeldgegevens ingevoegd in een tabel in Azure Cosmos DB Cassandra-API van Spark.
+In dit artikel wordt beschreven hoe u voorbeeld gegevens invoegt in een tabel in Azure Cosmos DB Cassandra-API vanuit Spark.
 
 ## <a name="cassandra-api-configuration"></a>Configuratie van de Cassandra-API
 
@@ -47,7 +47,7 @@ spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 ## <a name="dataframe-api"></a>Dataframe API
 
-### <a name="create-a-dataframe-with-sample-data"></a>Een Dataframe maken met voorbeeldgegevens
+### <a name="create-a-dataframe-with-sample-data"></a>Een data frame maken met voorbeeld gegevens
 
 ```scala
 // Generate a dataframe containing five records
@@ -67,11 +67,11 @@ booksDF.show
 ```
 
 > [!NOTE]
-> 'Maak if not exists'-functionaliteit, op het rijniveau van een, wordt nog niet ondersteund.
+> De functionaliteit ' maken indien niet bestaat ', op rijniveau, wordt nog niet ondersteund.
 
-### <a name="persist-to-azure-cosmos-db-cassandra-api"></a>Bewaard in een Azure Cosmos DB Cassandra-API
+### <a name="persist-to-azure-cosmos-db-cassandra-api"></a>Blijven Azure Cosmos DB Cassandra-API
 
-Bij het opslaan van gegevens, kunt u ook instellen time-to-live en consistentie beleidsinstellingen zoals wordt weergegeven in het volgende voorbeeld:
+Bij het opslaan van gegevens kunt u ook time-to-Live-en consistentie beleids instellingen instellen, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```scala
 //Persist
@@ -83,18 +83,18 @@ booksDF.write
 ```
 
 > [!NOTE]
-> De TTL op kolomniveau wordt nog niet ondersteund.
+> TTL op kolom niveau wordt nog niet ondersteund.
 
-#### <a name="validate-in-cqlsh"></a>In cqlsh valideren
+#### <a name="validate-in-cqlsh"></a>Valideren in cqlsh
 
 ```sql
 use books_ks;
 select * from books;
 ```
 
-## <a name="resilient-distributed-database-rdd-api"></a>Flexibele gedistribueerde Database (RDD)-API
+## <a name="resilient-distributed-database-rdd-api"></a>API voor robuuste gedistribueerde data base (RDD)
 
-### <a name="create-a-rdd-with-sample-data"></a>Een RDD maken met voorbeeldgegevens
+### <a name="create-a-rdd-with-sample-data"></a>Een RDD maken met voorbeeld gegevens
 ```scala
 //Delete records created in the previous section 
 val cdbConnector = CassandraConnector(sc)
@@ -114,11 +114,11 @@ booksRDD.take(2).foreach(println)
 ```
 
 > [!NOTE]
-> Maken als deze niet bestaat functionaliteit is nog niet ondersteund.
+> Maken als de functionaliteit niet bestaat, wordt nog niet ondersteund.
 
-### <a name="persist-to-azure-cosmos-db-cassandra-api"></a>Bewaard in een Azure Cosmos DB Cassandra-API
+### <a name="persist-to-azure-cosmos-db-cassandra-api"></a>Blijven Azure Cosmos DB Cassandra-API
 
-Bij het opslaan van gegevens met Cassandra-API, kunt u ook instellen time-to-live en consistentie beleidsinstellingen zoals wordt weergegeven in het volgende voorbeeld:
+Wanneer u gegevens opslaat voor Cassandra-API, kunt u ook time-to-Live en consistentie beleids instellingen instellen, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```scala
 import com.datastax.spark.connector.writer._
@@ -127,7 +127,7 @@ import com.datastax.spark.connector.writer._
 booksRDD.saveToCassandra("books_ks", "books", SomeColumns("book_id", "book_author", "book_name", "book_pub_year"),writeConf = WriteConf(ttl = TTLOption.constant(900000),consistencyLevel = ConsistencyLevel.ALL))
 ```
 
-#### <a name="validate-in-cqlsh"></a>In cqlsh valideren
+#### <a name="validate-in-cqlsh"></a>Valideren in cqlsh
 
 ```sql
 use books_ks;
@@ -136,9 +136,9 @@ select * from books;
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat de gegevens in de Cassandra-API van Azure Cosmos DB-tabel invoegen, gaat u verder met de volgende artikelen voor andere bewerkingen uitvoeren op de gegevens die zijn opgeslagen in Cosmos DB Cassandra-API:
+Nadat u gegevens hebt ingevoegd in de tabel Azure Cosmos DB Cassandra-API, gaat u door met de volgende artikelen om andere bewerkingen uit te voeren op de gegevens die zijn opgeslagen in Cosmos DB Cassandra-API:
  
-* [leesbewerkingen](cassandra-spark-read-ops.md)
+* [Lees bewerkingen](cassandra-spark-read-ops.md)
 * [Upsert-bewerkingen](cassandra-spark-upsert-ops.md)
 * [Verwijderbewerkingen](cassandra-spark-delete-ops.md)
 * [Aggregatiebewerkingen uit te voeren](cassandra-spark-aggregation-ops.md)

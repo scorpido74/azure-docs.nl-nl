@@ -1,21 +1,21 @@
 ---
-title: De integratie van AWS-en gebruiks rapporten instellen en configureren met Azure Cost Management
+title: AWS-integratie met Azure Cost Management instellen
 description: Dit artikel begeleidt u bij het instellen en configureren van AWS voor de integratie van kosten-en gebruiks rapporten met Azure Cost Management.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 08/15/2019
+ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 66dbe45ff1a8ee773fdf7fcb0aa7cfe8e6ad6437
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 77bc7772e1d9b8144199c865a8d82f818d5e1963
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74219693"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444595"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS voor kosten-en gebruiks rapporten instellen en configureren
 
@@ -35,7 +35,7 @@ Gebruik de pagina **kosten & gebruiks rapporten** van de console facturering en 
 4. Voer bij **rapport naam**een naam in voor uw rapport.
 5. Onder **aanvullende rapport Details**selecteert u **resource-id's toevoegen**.
 6. Voor **instellingen voor gegevens vernieuwing**selecteert u of u het AWS-kosten-en gebruiks rapport wilt vernieuwen als AWS restituties, tegoeden of ondersteunings kosten voor uw account toepast nadat uw factuur is voltooid. Wanneer een rapport wordt vernieuwd, wordt een nieuw rapport geüpload naar Amazon S3. U wordt aangeraden de instelling geselecteerd te laten.
-7. Selecteer **Volgende**.
+7. Selecteer **Next**.
 8. Kies **configureren**voor **S3 Bucket**.
 9. Voer in het dialoog venster S3-Bucket configureren een van de volgende taken uit:
     1. Selecteer een bestaande Bucket in de vervolg keuzelijst en kies **volgende**.
@@ -47,7 +47,7 @@ Als u geen voor voegsel opgeeft, is het standaard voorvoegsel de naam die u voor
 13. Voor **rapport versie beheer**kiest u of u wilt dat elke versie van het rapport de vorige versie overschrijft, of dat u aanvullende nieuwe rapporten wilt.
 14. Voor het **inschakelen van gegevens integratie voor**is het niet nodig om te selecteren.
 15. Selecteer voor **compressie**de optie **gzip**.
-16. Selecteer **Volgende**.
+16. Selecteer **Next**.
 17. Nadat u de instellingen voor uw rapport hebt gecontroleerd, selecteert u **controleren en volt ooien**.
 
     Noteer de naam van het rapport. U gebruikt deze in latere stappen.
@@ -68,12 +68,12 @@ Gebruik de wizard een nieuwe rol maken:
 4. Selecteer op de volgende pagina **een ander AWS-account**.
 5. Voer in **account-ID** **432263259397**in.
 6. Selecteer in **Opties** **de optie externe ID vereisen (aanbevolen procedure wanneer een derde partij deze rol zal aannemen)** .
-7. Voer in **externe ID**de externe ID in. De externe ID is een gedeelde wachtwoord code tussen de AWS-functie en de Azure Cost Management. Dezelfde externe ID wordt ook gebruikt op de **nieuwe connector** pagina in cost management. Een externe ID lijkt bijvoorbeeld op _Companyname1234567890123_.
+7. Voer in **externe ID**de externe ID in die een gedeelde wachtwoord code is tussen de AWS-functie en de Azure Cost Management. Dezelfde externe ID wordt ook gebruikt op de **nieuwe connector** pagina in cost management. Micro soft raadt u aan om een beleid voor sterke wachtwoord code te gebruiken bij het invoeren van de externe ID.
 
     > [!NOTE]
     > Wijzig de selectie niet voor het **vereisen van MFA**. Deze moet leeg blijven.
 8. Selecteer **volgende: machtigingen**.
-9. Selecteer **beleid maken**. Er wordt een nieuw browsertabblad geopend. Zo maakt u een beleid.
+9. Selecteer **Beleid maken**. Er wordt een nieuw browsertabblad geopend. Zo maakt u een beleid.
 10. Selecteer **een service kiezen**.
 
 Machtiging voor het kosten-en gebruiks rapport configureren:
@@ -150,7 +150,7 @@ De JSON van het beleid moet eruitzien als in het volgende voor beeld. Vervang _B
 
 Gebruik de volgende informatie om een AWS-connector te maken en te beginnen met het bewaken van uw AWS-kosten:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Ga naar **Cost Management en facturering** > **Cost Management**.
 3. Selecteer onder **instellingen**de optie **Cloud connectors (preview)** .  
     ![-voor beeld waarin de instelling voor Cloud connectors (preview) wordt weer gegeven](./media/aws-integration-setup-configure/cloud-connectors-preview01.png).

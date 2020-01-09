@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: de646c790fc21ef17bf78789e0531503f2f32052
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2d09484fcb5211003aeec0ec10bfc9892b4e6f31
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790782"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456539"
 ---
 # <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Logische app-resources verplaatsen naar andere Azure-abonnementen, resource groepen of regio's
 
 Als u uw logische app of gerelateerde resources wilt verplaatsen naar een ander Azure-abonnement, een resource groep of een andere regio, hebt u verschillende manieren om deze taken uit te voeren, zoals de Azure Portal, Azure PowerShell, Azure CLI en REST API. Lees de volgende overwegingen voordat u resources verplaatst: 
 
-* U kunt alleen [specifieke logische app-resource typen](../azure-resource-manager/move-support-resources.md#microsoftlogic) verplaatsen tussen Azure-resource groepen of-abonnementen.
+* U kunt alleen [specifieke logische app-resource typen](../azure-resource-manager/management/move-support-resources.md#microsoftlogic) verplaatsen tussen Azure-resource groepen of-abonnementen.
 
 * Controleer de [limieten](../logic-apps/logic-apps-limits-and-config.md) voor het aantal logische app-resources dat u kunt hebben in uw Azure-abonnement en in elke Azure-regio. Deze beperkingen bepalen of u specifieke resource typen kunt verplaatsen wanneer de regio hetzelfde blijft in abonnementen of resource groepen. U kunt bijvoorbeeld slechts één integratie account voor de gratis laag hebben voor elke Azure-regio in elk Azure-abonnement.
 
@@ -53,7 +53,7 @@ Als u een resource, zoals een logische app of een integratie account, wilt verpl
 
 Als u een resource, zoals een logische app of een integratie account, wilt verplaatsen naar een andere Azure-resource groep, kunt u de Azure Portal, Azure PowerShell, Azure CLI of REST API gebruiken. Deze stappen omvatten de Azure Portal, die u kunt gebruiken wanneer de resource regio hetzelfde blijft. Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/resource-group-move-resources.md)voor andere stappen en algemene voor bereiding.
 
-Voordat u resources tussen groepen verplaatst, kunt u testen of u uw resource kunt verplaatsen naar een andere groep. Zie [uw verhuizing valideren](../azure-resource-manager/resource-group-move-resources.md#validate-move)voor meer informatie.
+Voordat u resources tussen groepen verplaatst, kunt u testen of u uw resource kunt verplaatsen naar een andere groep. Zie [uw verhuizing valideren](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move)voor meer informatie.
 
 1. Zoek in het [Azure Portal](https://portal.azure.com)de logische app-resource die u wilt verplaatsen en selecteer deze.
 

@@ -5,14 +5,14 @@ services: container-service
 author: sauryadas
 ms.service: container-service
 ms.topic: troubleshooting
-ms.date: 08/13/2018
+ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: 5ae97f18bb15b5ab2fe092a1e3b857ea3ef0aed0
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5652c5035c2e4cd35ac6943ef90c8bcc02b95dba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012970"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442880"
 ---
 # <a name="aks-troubleshooting"></a>AKS problemen oplossen
 
@@ -23,7 +23,7 @@ Wanneer u Azure Kubernetes service (AKS)-clusters maakt of beheert, kunnen er af
 Probeer de [officiële hand leiding voor het oplossen van problemen met Kubernetes-clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/).
 Er is ook een [hand leiding](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md)voor het oplossen van problemen, gepubliceerd door een micro soft-Engineer voor het oplossen van problemen met peulen, knoop punten, clusters en andere functies.
 
-## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Ik krijg de fout ' quotum overschreden ' tijdens het maken of upgraden. Wat moet ik doen? 
+## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Ik krijg de fout ' quotum overschreden ' tijdens het maken of upgraden. Wat zal ik doen? 
 
 U moet [kernen aanvragen](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
@@ -32,7 +32,7 @@ U moet [kernen aanvragen](https://docs.microsoft.com/azure/azure-supportability/
 De maximale instelling per knoop punt is 30 standaard als u een AKS-cluster implementeert in de Azure Portal.
 De maximale instelling per knoop punt is standaard 110 als u een AKS-cluster implementeert in de Azure CLI. (Zorg ervoor dat u de nieuwste versie van de Azure CLI gebruikt). Deze standaard instelling kan worden gewijzigd met behulp van de vlag `–-max-pods` in de `az aks create` opdracht.
 
-## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Er wordt een insufficientSubnetSize-fout opgetreden tijdens het implementeren van een AKS-cluster met een geavanceerd netwerk. Wat moet ik doen?
+## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Er wordt een insufficientSubnetSize-fout opgetreden tijdens het implementeren van een AKS-cluster met een geavanceerd netwerk. Wat zal ik doen?
 
 Als Azure CNI (Advanced Networking) wordt gebruikt, wijst AKS IP-adressen toe op basis van het maximum aantal-peulen per knoop punt dat is geconfigureerd. Op basis van het geconfigureerde maximum van Peul per knoop punt moet de grootte van het subnet groter zijn dan het product van het aantal knoop punten en de maximum waarde voor pod per knoop punt. De volgende vergelijking bevat een overzicht:
 
@@ -40,7 +40,7 @@ De grootte van het subnet > aantal knoop punten in het cluster (waarbij rekening
 
 Zie [IP-adres sering voor uw cluster plannen](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)voor meer informatie.
 
-## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Mijn Pod is vastgelopen in de CrashLoopBackOff-modus. Wat moet ik doen?
+## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Mijn Pod is vastgelopen in de CrashLoopBackOff-modus. Wat zal ik doen?
 
 Er kunnen verschillende redenen zijn waarom de pod in die modus vastloopt. U kunt het volgende bekijken:
 
@@ -53,17 +53,17 @@ Zie [fouten opsporen in toepassingen](https://kubernetes.io/docs/tasks/debug-app
 
 Helaas wordt het inschakelen van op rollen gebaseerd toegangs beheer (RBAC) op bestaande clusters op dit moment niet ondersteund. U moet expliciet nieuwe clusters maken. Als u de CLI gebruikt, is RBAC standaard ingeschakeld. Als u de AKS-Portal gebruikt, is een wissel knop voor het inschakelen van RBAC beschikbaar in de werk stroom maken.
 
-## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Ik heb een cluster gemaakt waarop RBAC is ingeschakeld met behulp van de Azure CLI met de standaard instellingen of de Azure Portal, en nu worden er veel waarschuwingen weer gegeven op het Kubernetes-dash board. Het dash board dat wordt gebruikt om zonder waarschuwingen te werken. Wat moet ik doen?
+## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Ik heb een cluster gemaakt waarop RBAC is ingeschakeld met behulp van de Azure CLI met de standaard instellingen of de Azure Portal, en nu worden er veel waarschuwingen weer gegeven op het Kubernetes-dash board. Het dash board dat wordt gebruikt om zonder waarschuwingen te werken. Wat zal ik doen?
 
 De reden voor de waarschuwingen op het dash board is dat het cluster nu is ingeschakeld met RBAC en dat de toegang tot deze server standaard is uitgeschakeld. Over het algemeen is deze aanpak goed, omdat de standaard belichting van het dash board aan alle gebruikers van het cluster kan leiden tot beveiligings Risico's. Als u het dash board nog steeds wilt inschakelen, volgt u de stappen in [dit blog bericht](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
 
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Ik kan geen verbinding maken met het dash board. Wat moet ik doen?
+## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Ik kan geen verbinding maken met het dash board. Wat zal ik doen?
 
 De eenvoudigste manier om toegang te krijgen tot uw service buiten het cluster is om `kubectl proxy`uit te voeren, welke proxy's aanvragen verzonden naar de lokale poort 8001 van de Kubernetes-API-server. Vanaf daar kan de API-server worden geproxyeerd voor uw service: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
 Als u het Kubernetes-dash board niet ziet, controleert u of de `kube-proxy` pod wordt uitgevoerd in de naam ruimte `kube-system`. Als de status niet wordt uitgevoerd, verwijdert u de Pod en wordt de computer opnieuw opgestart.
 
-## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Ik kan geen logboeken ophalen met behulp van kubectl-Logboeken of ik kan geen verbinding maken met de API-server. Ik krijg de fout melding van server: fout bij het kiezen van de back-end: Dial TCP.... Wat moet ik doen?
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Ik kan geen logboeken ophalen met behulp van kubectl-Logboeken of ik kan geen verbinding maken met de API-server. Ik krijg de fout melding van server: fout bij het kiezen van de back-end: Dial TCP.... Wat zal ik doen?
 
 Zorg ervoor dat de standaard netwerk beveiligings groep niet is gewijzigd en dat poort 22 en 9000 zijn geopend voor verbinding met de API-server. Controleer of de `tunnelfront` pod wordt uitgevoerd in de *uitvoeren-systeem* naam ruimte met behulp van de `kubectl get pods --namespace kube-system` opdracht. Als dat niet het geval is, dwingt u het verwijderen van de pod af en wordt de computer opnieuw opgestart.
 
@@ -79,7 +79,7 @@ Deze fout treedt op wanneer clusters een mislukte status om meerdere redenen inv
 
 1. `upgrade` en `scale` bewerkingen mislukken totdat het cluster niet meer `failed` status heeft. Veelvoorkomende basis problemen en oplossingen zijn:
     * Schalen met **onvoldoende Compute-quota (CRP)** . U kunt dit oplossen door uw cluster eerst terug te schalen naar een stabiele doel status binnen het quotum. Voer vervolgens de volgende [stappen uit om een toename van het reken quotum aan te vragen](../azure-supportability/resource-manager-core-quotas-request.md) voordat u opnieuw opschaalt na de initiële quotum limieten.
-    * Het schalen van een cluster met geavanceerde netwerken en **onvoldoende subnet-bronnen (netwerken)** . U kunt dit oplossen door uw cluster eerst terug te schalen naar een stabiele doel status binnen het quotum. Voer vervolgens [de volgende stappen uit om een verhoging van het resource quotum aan te vragen](../azure-resource-manager/resource-manager-quota-errors.md#solution) voordat u opnieuw opschaalt na de initiële quotum limieten.
+    * Het schalen van een cluster met geavanceerde netwerken en **onvoldoende subnet-bronnen (netwerken)** . U kunt dit oplossen door uw cluster eerst terug te schalen naar een stabiele doel status binnen het quotum. Voer vervolgens [de volgende stappen uit om een verhoging van het resource quotum aan te vragen](../azure-resource-manager/templates/error-resource-quota.md#solution) voordat u opnieuw opschaalt na de initiële quotum limieten.
 2. Zodra de onderliggende oorzaak van de upgrade fout is opgelost, moet uw cluster de status voltooid hebben. Als de status is gecontroleerd, voert u de oorspronkelijke bewerking opnieuw uit.
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>Er wordt een fout opgetreden bij het upgraden of schalen van de status die mijn cluster momenteel wordt bijgewerkt of waarvoor een upgrade is mislukt
@@ -155,8 +155,8 @@ Controleer of de instellingen niet conflicteren met een van de vereiste of optio
 
 | Kubernetes-versie | Aanbevolen versie |
 | -- | :--: |
-| 1,12 | 1.12.9 of hoger |
-| 1,13 | 1.13.6 of hoger |
+| 1.12 | 1.12.9 of hoger |
+| 1.13 | 1.13.6 of hoger |
 | 1,14 | 1.14.2 of hoger |
 
 
@@ -164,8 +164,8 @@ Controleer of de instellingen niet conflicteren met een van de vereiste of optio
 
 | Kubernetes-versie | Aanbevolen versie |
 | -- | :--: |
-| 1,12 | 1.12.0 of hoger |
-| 1,13 | 1.13.0 of hoger |
+| 1.12 | 1.12.0 of hoger |
+| 1.13 | 1.13.0 of hoger |
 | 1,14 | 1.14.0 of hoger |
 
 
@@ -191,9 +191,9 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 
 | Kubernetes-versie | Vaste versie |
 | -- | :--: |
-| 1,10 | 1.10.2 of hoger |
+| 1.10 | 1.10.2 of hoger |
 | 1,11 | 1.11.0 of hoger |
-| 1,12 en hoger | N.v.t. |
+| 1,12 en hoger | N/A |
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Fout bij het instellen van UID en GID in mountOptions voor Azure-schijf
 
@@ -263,11 +263,11 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 
 | Kubernetes-versie | Vaste versie |
 | -- | :--: |
-| 1,10 | 1.10.10 of hoger |
+| 1.10 | 1.10.10 of hoger |
 | 1,11 | 1.11.5 of hoger |
-| 1,12 | 1.12.3 of hoger |
-| 1,13 | 1.13.0 of hoger |
-| 1,14 en hoger | N.v.t. |
+| 1.12 | 1.12.3 of hoger |
+| 1.13 | 1.13.0 of hoger |
+| 1,14 en hoger | N/A |
 
 Als u een versie van Kubernetes gebruikt die niet de oplossing voor dit probleem heeft, kunt u het probleem verminderen door enkele minuten te wachten en het opnieuw te proberen.
 
@@ -284,11 +284,11 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 
 | Kubernetes-versie | Vaste versie |
 | -- | :--: |
-| 1,10 | 1.10.12 of hoger |
+| 1.10 | 1.10.12 of hoger |
 | 1,11 | 1.11.6 of hoger |
-| 1,12 | 1.12.4 of hoger |
-| 1,13 | 1.13.0 of hoger |
-| 1,14 en hoger | N.v.t. |
+| 1.12 | 1.12.4 of hoger |
+| 1.13 | 1.13.0 of hoger |
+| 1,14 en hoger | N/A |
 
 Als u een versie van Kubernetes gebruikt die niet de oplossing voor dit probleem heeft, kunt u het probleem verhelpen door het onderstaande te proberen:
 
@@ -307,9 +307,9 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 | Kubernetes-versie | Vaste versie |
 | -- | :--: |
 | 1,11 | 1.11.9 of hoger |
-| 1,12 | 1.12.7 of hoger |
-| 1,13 | 1.13.4 of hoger |
-| 1,14 en hoger | N.v.t. |
+| 1.12 | 1.12.7 of hoger |
+| 1.13 | 1.13.4 of hoger |
+| 1,14 en hoger | N/A |
 
 Als u een versie van Kubernetes gebruikt die niet de oplossing voor dit probleem heeft, kunt u het probleem verminderen door de schijf hand matig te ontkoppelen.
 
@@ -321,10 +321,10 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 
 | Kubernetes-versie | Vaste versie |
 | -- | :--: |
-| 1,12 | 1.12.9 of hoger |
-| 1,13 | 1.13.6 of hoger |
+| 1.12 | 1.12.9 of hoger |
+| 1.13 | 1.13.6 of hoger |
 | 1,14 | 1.14.2 of hoger |
-| 1,15 en hoger | N.v.t. |
+| 1,15 en hoger | N/A |
 
 Als u een versie van Kubernetes gebruikt die niet de oplossing voor dit probleem heeft en uw VM van het knoop punt heeft een verouderde lijst met schijven, kunt u het probleem verminderen door alle niet-bestaande schijven te ontkoppelen van de virtuele machine als een enkele, bulk bewerking. **Het afzonderlijk ontkoppelen van niet-bestaande schijven kan mislukken.**
 
@@ -341,10 +341,10 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 
 | Kubernetes-versie | Vaste versie |
 | -- | :--: |
-| 1,12 | 1.12.10 of hoger |
-| 1,13 | 1.13.8 of hoger |
+| 1.12 | 1.12.10 of hoger |
+| 1.13 | 1.13.8 of hoger |
 | 1,14 | 1.14.4 of hoger |
-| 1,15 en hoger | N.v.t. |
+| 1,15 en hoger | N/A |
 
 Als u een versie van Kubernetes gebruikt die niet de oplossing voor dit probleem heeft en de VM van het knoop punt de status Mislukt heeft, kunt u het probleem verminderen door de VM-status hand matig bij te werken met een van de onderstaande opties:
 
@@ -364,16 +364,16 @@ Als u een versie van Kubernetes gebruikt die niet de oplossing voor dit probleem
  
 | Kubernetes-versie | Aanbevolen versie |
 | -- | :--: |
-| 1,12 | 1.12.6 of hoger |
-| 1,13 | 1.13.4 of hoger |
+| 1.12 | 1.12.6 of hoger |
+| 1.13 | 1.13.4 of hoger |
 | 1,14 | 1.14.0 of hoger |
 
 ### <a name="what-versions-of-kubernetes-have-azure-files-support-on-the-sovereign-cloud"></a>Welke versies van Kubernetes hebben Azure Files ondersteuning voor de soevereine Cloud?
 
 | Kubernetes-versie | Aanbevolen versie |
 | -- | :--: |
-| 1,12 | 1.12.0 of hoger |
-| 1,13 | 1.13.0 of hoger |
+| 1.12 | 1.12.0 of hoger |
+| 1.13 | 1.13.0 of hoger |
 | 1,14 | 1.14.0 of hoger |
 
 ### <a name="what-are-the-default-mountoptions-when-using-azure-files"></a>Wat zijn de standaard mountOptions bij het gebruik van Azure Files?
@@ -459,9 +459,9 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 
 | Kubernetes-versie | Vaste versie |
 | -- | :--: |
-| 1,12 | 1.12.6 of hoger |
-| 1,13 | 1.13.4 of hoger |
-| 1,14 en hoger | N.v.t. |
+| 1.12 | 1.12.6 of hoger |
+| 1.13 | 1.13.4 of hoger |
+| 1,14 en hoger | N/A |
 
 ### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>Azure Files koppelen mislukt omdat de sleutel van het opslag account is gewijzigd
 
@@ -482,3 +482,17 @@ kubectl edit secret azure-storage-account-{storage-account-name}-secret
 ```
 
 Na een paar minuten probeert het agent knooppunt de Azure-bestands koppeling opnieuw uit te voeren met de bijgewerkte opslag sleutel.
+
+### <a name="cluster-autoscaler-fails-to-scale-with-error-failed-to-fix-node-group-sizes"></a>Het schalen van het cluster kan niet worden geschaald met de fout bij het herstellen van de grootte van de knooppunt groep
+
+Als uw cluster automatisch schalen niet omhoog/omlaag wordt geschaald, ziet u een fout zoals hieronder in de [Logboeken van de cluster automatisch schalen][view-master-logs].
+
+```console
+E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes: failed to decrease aks-default-35246781-vmss: attempt to delete existing nodes
+```
+
+Deze fout wordt veroorzaakt door een upstream-voor waarde voor het automatisch schalen van clusters waarbij de cluster-automatische schaal functie eindigt op een andere waarde dan die werkelijk in het cluster. Als u deze status wilt weer geven, schakelt u de [automatisch schalen][cluster-autoscaler]van het cluster uit en weer in.
+
+<!-- LINKS - internal -->
+[view-master-logs]: view-master-logs.md
+[cluster-autoscaler]: cluster-autoscaler.md

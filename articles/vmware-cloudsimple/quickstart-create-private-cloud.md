@@ -1,5 +1,6 @@
 ---
-title: Azure VMware-oplossing door CloudSimple Quick Start-een Privécloud maken
+title: 'Snelstartgids: een Privécloud maken'
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Meer informatie over het maken en configureren van een Privécloud met Azure VMware-oplossing op CloudSimple
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c32045c6d68a813eaeb6e4e5de433160c2a30634
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e4890186022842179ef4b66c03db03dd9b58a3d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901461"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452395"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Snelstartgids-een Privécloud configureren
 
@@ -113,7 +114,7 @@ VPN-client is nodig om vanaf uw computer verbinding te maken met CloudSimple.  D
 1. Start de CloudSimple-Portal en selecteer **netwerk**.
 2. Selecteer **VPN gateway**.
 3. Klik in de lijst met VPN-gateways op de punt-naar-site-VPN-gateway.
-4. Selecteer **gebruikers**.
+4. Selecteer **Gebruikers**.
 5. Klik op **mijn VPN-configuratie downloaden**.
 
     ![VPN-configuratie downloaden](media/download-p2s-vpn-configuration.png)

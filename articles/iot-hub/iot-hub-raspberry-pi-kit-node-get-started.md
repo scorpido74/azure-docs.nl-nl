@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: wesmc
-ms.openlocfilehash: 28897ca6f80632210032b7f800404fc921143adf
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 5780477be71988653e89379ae17e9009337bbc0f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954548"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457099"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi verbinden met Azure IoT Hub (node. js)
 
@@ -148,7 +148,7 @@ Voor sensor pincodes gebruikt u de volgende bedrading:
 | LED VDD (PIN 18F)        | GPIO 24 (Pin 18)       | Witte kabel   |
 | LED GND (PIN 17F)        | GND (pincode 20)           | Zwarte kabel   |
 
-Klik hier om [Raspberry pi 2 weer te geven &-toewijzing van 3 pincodes](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) voor uw referentie.
+Klik hier om [Raspberry pi 2 weer te geven &-toewijzing van 3 pincodes](/windows/iot-core/learn-about-hardware/pinmappings/pinmappingsrpi) voor uw referentie.
 
 Nadat u BME280 hebt verbonden met uw Raspberry Pi, zou deze moeten lijken op de onderstaande afbeelding.
 
@@ -244,9 +244,9 @@ Voer de voorbeeld toepassing uit door de volgende opdracht uit te voeren:
    > [!NOTE]
    > Zorg ervoor dat u het apparaat connection string kopieert naar de enkele aanhalings tekens.
 
-De volgende uitvoer wordt weer gegeven met de sensor gegevens en de berichten die worden verzonden naar uw IoT-hub.
+Als het goed is, ziet u de volgende uitvoer met de sensorgegevens en de berichten die naar uw IoT-hub worden verzonden.
 
-![Uitvoer sensor gegevens die vanuit Raspberry Pi naar uw IoT hub worden verzonden](./media/iot-hub-raspberry-pi-kit-node-get-started/8-run-output.png)
+![Uitvoer: sensorgegevens die van Raspberry Pi naar uw IoT-hub worden verzonden](./media/iot-hub-raspberry-pi-kit-node-get-started/8-run-output.png)
 
 ## <a name="read-the-messages-received-by-your-hub"></a>Lees de berichten die door uw hub zijn ontvangen
 

@@ -1,6 +1,6 @@
 ---
 title: Implementatievoorbeeld van een Azure CLI-script
-description: Maak met behulp van Azure CLI een beveiligd Service Fabric Linux-cluster in Azure.
+description: Een beveiligd Service Fabric Linux-cluster maken in azure met behulp van de Azure-opdracht regel interface (CLI).
 services: service-fabric
 documentationcenter: ''
 author: athinanthny
@@ -13,12 +13,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 1386be8093cac4f5271886ff736b24acd483d64e
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 2b9b98b3ade46abd670283d0e68dc62fda9d8d0a
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032823"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526614"
 ---
 # <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>Een beveiligd Service Fabric Linux-cluster maken in Azure
 
@@ -41,7 +41,7 @@ az group delete --name $ResourceGroupName
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 0f35f22d6bd32d75d5c3b07d8a20b4bb7714e247
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: aacba12b32e9da75c2a4b9a20c0faa235cf6836a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71799564"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459301"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Oracle-toepassings oplossingen die Microsoft Azure en Oracle-Cloud infrastructuur integreren (preview-versie)
 
@@ -28,7 +28,7 @@ Micro soft en Oracle hebben een partnerschap voor de communicatie tussen verschi
 Met deze cross-Cloud-verbinding kunt u een toepassing met meerdere lagen partitioneren om uw databaserol uit te voeren op een Oracle Cloud Infrastructure (OCI) en de toepassing en andere lagen op Microsoft Azure. De ervaring is vergelijkbaar met het uitvoeren van de volledige oplossings stack in één Cloud. 
 
 > [!IMPORTANT]
-> Deze functionaliteit voor meerdere Clouds is momenteel beschikbaar als preview-versie en er [zijn beperkingen van toepassing](#preview-limitations). Als u verbinding met een lage latentie tot stand wilt brengen tussen Azure en OCI, moet uw Azure-abonnement eerst worden ingeschakeld voor deze mogelijkheid. U moet in de preview-periode inschrijven door dit korte [enquête formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)in te vullen. U ontvangt een e-mailbevestiging zodra uw abonnement is geregistreerd. U kunt de mogelijkheid niet gebruiken totdat u een bevestigings-e-mail ontvangt. U kunt ook contact opnemen met uw micro soft-vertegenwoordiger om in te scha kelen voor deze preview. De toegang tot de preview-functie is onderhevig aan Beschik baarheid en is door micro soft beperkt. Het volt ooien van de enquête biedt geen garantie voor toegang. Deze preview is beschikbaar zonder service level agreement en mag niet worden gebruikt voor werk belastingen voor de productie. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Zie de [aanvullende gebruiks voorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor Microsoft Azure-voor beelden voor meer informatie. Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
+> Deze functionaliteit voor meerdere Clouds is momenteel beschikbaar als preview-versie en er [zijn beperkingen van toepassing](#preview-limitations). Als u verbinding met een lage latentie tot stand wilt brengen tussen Azure en OCI, moet uw Azure-abonnement eerst worden ingeschakeld voor deze mogelijkheid. U moet in de preview-periode inschrijven door dit korte [enquête formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)in te vullen. U ontvangt een e-mailbevestiging zodra uw abonnement is geregistreerd. U kunt de mogelijkheid niet gebruiken totdat u een bevestigings-e-mail ontvangt. U kunt ook contact opnemen met uw micro soft-vertegenwoordiger om in te scha kelen voor deze preview. De toegang tot de preview-functie is onderhevig aan Beschik baarheid en is door micro soft beperkt. Het volt ooien van de enquête biedt geen garantie voor toegang. Deze preview is beschikbaar zonder service level agreement en mag niet worden gebruikt voor werk belastingen voor de productie. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Zie de [aanvullende gebruiks voorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor Microsoft Azure-voor beelden voor meer informatie. Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
 
 Als u geïnteresseerd bent in het volledig implementeren van Oracle-oplossingen in de Azure-infra structuur, raadpleegt u [Oracle VM-installatie kopieën en de implementatie ervan op Microsoft Azure](oracle-vm-solutions.md).
 
@@ -50,9 +50,9 @@ Het volgende diagram is een overzicht op hoog niveau van de verbonden oplossing.
 
 ## <a name="preview-limitations"></a>Preview-beperkingen
 
-* Connectiviteit tussen de cloud in de preview-periode is beperkt tot de regio's Azure-Oost (Oost) & UK-zuid (uksouth) en de OCI Ashburn (VS Oost) & Londen (UK-zuid). Voor UK-zuid, gebruikt u beschik baarheids domein 1 (AD 1) in OCI bij het implementeren van de Inter-Connect voor lagere latenties.
+* Connectiviteit tussen de cloud in de preview-periode is beperkt tot de regio's Azure-Oost (Oost), UK-zuid (uksouth) en Canada-centraal (canadacentral) en de OCI Ashburn (VS Oost), Londen (UK-zuid) en Toronto (Canada-Zuidoost). Voor UK-zuid, gebruikt u beschik baarheids domein 1 (AD 1) in OCI bij het implementeren van de Inter-Connect voor lagere latenties.
 
-## <a name="networking"></a>Netwerken
+## <a name="networking"></a>Networking
 
 Zakelijke klanten kiezen er vaak voor om werk belastingen te spreideneren en te implementeren voor verschillende Clouds en operationele redenen. Klanten verbinden Cloud netwerken via internet, IPSec VPN of via de directe connectiviteits oplossing van de Cloud provider via uw on-premises netwerk naar spreiden. Het interconnectie van Cloud netwerken kan aanzienlijke investeringen in tijd, geld, ontwerp, aankoop, installatie, testen en bewerkingen vergen. 
 
@@ -66,7 +66,7 @@ Netwerk beveiliging is een cruciaal onderdeel van een bedrijfs toepassing en is 
 
 Daarnaast kunt u [beveiligings lijsten](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) instellen voor uw OCI virtuele Cloud netwerk en beveiligings regels (gekoppeld aan Azure- [netwerk beveiligings groepen](../../../virtual-network/security-overview.md)). Gebruik deze regels voor het beheren van het verkeer tussen computers in de virtuele netwerken. Netwerk beveiligings regels kunnen worden toegevoegd op computer niveau, op subnetniveau, en op het niveau van het virtuele netwerk.
  
-## <a name="identity"></a>Identiteit
+## <a name="identity"></a>Identity
 
 De identiteit is een van de belangrijkste pijlers van de samen werking tussen micro soft en Oracle. Er is veel werk gedaan om [Oracle Identity Cloud service](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html) (IDCS) te integreren met [Azure Active Directory](../../../active-directory/index.yml) (Azure AD). Azure AD is de cloud-gebaseerde service voor identiteits-en toegangs beheer van micro soft. Het helpt uw gebruikers zich aan te melden en toegang te krijgen tot verschillende bronnen. Met Azure AD kunt u ook uw gebruikers en hun machtigingen beheren.
 

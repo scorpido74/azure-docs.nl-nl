@@ -1,18 +1,18 @@
 ---
 title: Controleren op groeps-en knooppunt fouten-Azure Batch
-description: Fouten om te controleren of ze worden voor komen bij het maken van Pools en knoop punten
+description: In dit artikel worden de achtergrond bewerkingen behandeld die zich kunnen voordoen, samen met fouten die moeten worden gecontroleerd en hoe u deze kunt voor komen bij het maken van Pools en knoop punten.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3c8e189e84e0a467125995b3e2d633c285eb7367
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dea45cec29101c3b085ab8098c3b05906e1049cd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350059"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449788"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Controleren op groeps-en knooppunt fouten
 
@@ -104,7 +104,7 @@ Aanvullende voor beelden van oorzaken voor niet- **bruikbare** knoop punten zijn
 
 - Een virtuele machine wordt verplaatst vanwege een infrastructuur fout of een upgrade op laag niveau. Batch herstelt het knoop punt.
 
-- Er is een VM-installatie kopie geïmplementeerd op hardware die deze niet ondersteunt. U kunt bijvoorbeeld proberen om een CentOS HPC-installatie kopie uit te voeren op een [Standard_D1_v2](../virtual-machines/linux/sizes-general.md#dv2-series) -VM.
+- Er is een VM-installatie kopie geïmplementeerd op hardware die deze niet ondersteunt. U kunt bijvoorbeeld proberen om een CentOS HPC-installatie kopie uit te voeren op een [Standard_D1_v2](../virtual-machines/linux/sizes-general.md#dv2-series) VM.
 
 - De virtuele machines bevinden zich in een [virtueel Azure-netwerk](batch-virtual-network.md)en het verkeer is geblokkeerd voor de sleutel poorten.
 
@@ -121,7 +121,7 @@ Het batch agent-proces dat wordt uitgevoerd op elk pool knooppunt, kan logboek b
 Het tijdelijke station voor een groeps knooppunt-VM wordt gebruikt door batch voor taak bestanden, taak bestanden en gedeelde bestanden.
 
 - Bestanden van toepassings pakketten
-- Resourcebestanden voor taak
+- Resource bestanden van taak
 - Toepassingsspecifieke bestanden die worden gedownload naar een van de batch-mappen
 - Stdout-en stderr-bestanden voor elke uitvoering van een taak toepassing
 - Toepassingsspecifieke uitvoer bestanden

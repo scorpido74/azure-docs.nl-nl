@@ -1,5 +1,5 @@
 ---
-title: De Cassandra-API en Java gebruiken om een app te bouwen-Azure Cosmos DB
+title: Een Java-app bouwen met Azure Cosmos DB Cassandra-API
 description: In deze quickstart ziet u hoe u de Cassandra-API in Azure Cosmos DB gebruikt om een profieltoepassing te maken met Azure Portal en Java
 ms.service: cosmos-db
 author: SnehaGunda
@@ -9,14 +9,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5b1eacb1d0121f2dd0d97807f07042e828fe7932
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 1f9151ab174a9a1f9e492bd068b5285772f6a546
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266019"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442048"
 ---
-# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>Quickstart: Een Java-app bouwen om Azure Cosmos DB Cassandra-API gegevens te beheren
+# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>Quick Start: een Java-app bouwen om Azure Cosmos DB Cassandra-API gegevens te beheren
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -31,7 +31,7 @@ Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van 
 
 ## <a name="prerequisites"></a>Vereisten
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] [Probeer Azure Cosmos DB gratis uit](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, zonder kosten en zonder verplichtingen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)][Probeer Azure Cosmos DB gratis uit](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, zonder kosten en zonder verplichtingen.
 
 U hebt verder nodig:
 
@@ -154,7 +154,7 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
     ![Een gebruikersnaam bekijken en kopiëren via de pagina Verbindingsreeks in Azure Portal](./media/create-cassandra-java/copy-username-connection-string-azure-portal.png)
 
-2. Gebruik ![knop Kopiëren](./media/create-cassandra-java/copy-button-azure-portal.png) aan de rechterkant van het scherm om de CONTACT POINT-waarde te kopiëren.
+2. Gebruik de ![knop Kopiëren](./media/create-cassandra-java/copy-button-azure-portal.png) aan de rechterkant van het scherm om de CONTACT POINT-waarde te kopiëren.
 
 3. Open het bestand `config.properties` uit de map `C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources`. 
 

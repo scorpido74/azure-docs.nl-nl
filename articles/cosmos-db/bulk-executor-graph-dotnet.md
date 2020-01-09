@@ -1,5 +1,5 @@
 ---
-title: De grafiek gebruiken om bulk bewerkingen uit te voeren in Azure Cosmos DB Gremlin API
+title: De grafiek gebruiken de .NET-bibliotheek voor bulksgewijs uitvoeren met Azure Cosmos DB Gremlin API
 description: Meer informatie over hoe u de bulk-uitvoerder bibliotheek kunt gebruiken om grafiek gegevens enorm te importeren in een Azure Cosmos DB Gremlin API-container.
 author: luisbosquez
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 35f42f3e222767d9d201d9948581151ae3cb5127
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: cf51d418a008d332bfcea01a7a9dc1a265116e29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327182"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442169"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>De grafiek gebruiken om bulk bewerkingen uit te voeren in Azure Cosmos DB Gremlin API
 

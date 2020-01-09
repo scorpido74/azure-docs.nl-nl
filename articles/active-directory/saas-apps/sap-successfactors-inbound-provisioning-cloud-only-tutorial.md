@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: d032bf1241f355af110ee8f4da38ff4685bd2e3f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2ae951896e9c97826264990dc33b9a1930b0eec2
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932292"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530048"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning-preview"></a>Zelf studie: SAP SuccessFactors configureren voor Azure AD-gebruikers inrichten (preview-versie)
 Het doel van deze zelf studie is het weer geven van de stappen die u moet uitvoeren om werk nemers in te richten op SuccessFactors-werk nemers centraal in Azure Active Directory, met een optionele write-back van e-mail adres naar SuccessFactors. Deze integratie is in open bare preview en ondersteunt het ophalen van meer dan [70 + gebruikers kenmerken](../manage-apps/sap-successfactors-attribute-reference.md) van SuccessFactors Employee Central. 
@@ -176,12 +176,12 @@ In deze sectie vindt u de stappen voor het inrichten van gebruikers accounts van
    * **Tenant-URL:** Voer de naam van het SuccessFactors OData API services-eind punt in. Voer alleen de hostnaam van de server in zonder http of https. Deze waarde moet er als volgt uitzien: **API-server-name.successfactors.com**.
 
    * **E-mail melding-** Voer uw e-mail adres in en schakel het selectie vakje e-mail verzenden als er een fout is opgetreden in.
-         > [!NOTE]
-         > The Azure AD Provisioning Service sends email notification if the provisioning job goes into a [quarantine](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) state.
+    > [!NOTE]
+    > De Azure AD-inrichtings service verzendt een e-mail melding als de inrichtings taak een [quarantaine](/azure/active-directory/manage-apps/application-provisioning-quarantine-status) status heeft.
 
    * Klik op de knop **verbinding testen** . Als de verbindings test is geslaagd, klikt u bovenaan op de knop **Opslaan** . Als dit mislukt, controleert u of de SuccessFactors-referenties en-URL geldig zijn.
     >[!div class="mx-imgBorder"]
-    >![Azure-portal](./media/sap-successfactors-inbound-provisioning/sf2aad-provisioning-creds.png)
+    >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sf2aad-provisioning-creds.png)
 
    * Zodra de referenties zijn opgeslagen, wordt in de sectie **toewijzingen** de standaard toewijzing weer gegeven **SuccessFactors-gebruikers synchroniseren met Azure Active Directory**
 

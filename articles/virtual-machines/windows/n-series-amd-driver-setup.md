@@ -1,0 +1,50 @@
+---
+title: Setup voor Azure N-serie AMD GPU-stuur programma voor Windows
+description: AMD GPU-Stuur Programma's instellen voor virtuele machines uit de N-serie met Windows Server of Windows in azure
+services: virtual-machines-windows
+author: vikancha
+manager: jkabat
+editor: ''
+tags: azure-resource-manager
+ms.service: virtual-machines-windows
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure-services
+ms.date: 12/4/2019
+ms.author: vikancha
+ms.openlocfilehash: 6f0aa8a08b8a502edbd15d3ede157b78a13b8588
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75479356"
+---
+# <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>AMD GPU-Stuur Programma's installeren op Vm's met N-serie waarop Windows wordt uitgevoerd
+
+Als u gebruik wilt maken van de GPU-mogelijkheden van de nieuwe virtuele machines uit de Azure NVv4-serie met Windows, moeten de AMD GPU-Stuur Programma's zijn geïnstalleerd. De uitbrei ding van het AMD-stuur programma is in de komende weken beschikbaar. Dit artikel bevat ondersteunde besturings systemen, stuur Programma's en hand matige installatie-en verificatie stappen.
+
+Zie [GPU Windows VM-grootten](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor basis specificaties, opslag capaciteit en schijf Details.
+
+
+
+## <a name="supported-operating-systems-and-drivers"></a>Ondersteunde besturingssystemen en stuurprogramma’s
+
+| Besturingssysteem | Stuurprogramma |
+| -------- |------------- |
+| Windows 10 EVD-build 1903 <br/><br/>Windows 10-build 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [19. q 4.1](https://download.microsoft.com/download/7/e/5/7e558ac0-3fff-413d-af62-800285a2fc53/Radeon-Pro-Software-for-Enterprise-19.Q4.1-Technical-Preview.exe) (. exe) |
+
+## <a name="driver-installation"></a>Installatie van Stuur Programma's
+
+1. Verbind door Extern bureaublad naar elke VM van de NVv4-serie.
+
+1. Down load, pak en installeer het ondersteunde stuur programma voor uw Windows-besturings systeem.
+
+## <a name="verify-driver-installation"></a>Installatie van stuur programma verifiëren
+
+U kunt de installatie van Stuur Programma's controleren in Apparaatbeheer. In het volgende voor beeld ziet u een geslaagde configuratie van de Radeon instinct MI25-kaart op een Azure NVv4-VM.
+<br />
+eigenschappen](./media/n-series-amd-driver-setup/device-manager.png) van ![GPU-stuur programma
+
+U kunt Dxdiag gebruiken om de eigenschappen van de GPU-weer gave te controleren, inclusief de video-RAM. In het volgende voor beeld ziet u een 1/achtste partitie van de Radeon instinct MI25-kaart op een Azure NVv4-VM.
+<br />
+eigenschappen](./media/n-series-amd-driver-setup/dxdiag.png) van ![GPU-stuur programma

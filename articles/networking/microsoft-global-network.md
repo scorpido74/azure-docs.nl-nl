@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: c064a5afee8db0c747273ab1c38c901a6f10ef98
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 10a061163447a60f1c25b386ef28028436284650
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876136"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453074"
 ---
 # <a name="microsoft-global-network"></a>Wereldwijd Microsoft-netwerk
 
@@ -40,23 +40,23 @@ Als een gebruiker in Londen bijvoorbeeld probeert toegang te krijgen tot een ser
   
 Dat betekent dat alle verkeer als u gebruikmaakt van micro soft-Services? Ja, elk verkeer tussen data centers, binnen Microsoft Azure of tussen micro soft-Services, zoals Virtual Machines, Office 365, XBox, SQL Db's, opslag en virtuele netwerken, worden gerouteerd binnen het wereld wijde netwerk en nooit via het open bare Internet, om ervoor te zorgen dat het optimaal is prestaties en integriteit.  
  
-Grote investeringen in de glasvezel capaciteit en diversiteit in de verschillende metro-, terrestrische en onderzeese-paden zijn van cruciaal belang om het consistente en hoge service niveau te hand haven, terwijl de extreme groei van onze Cloud en onlineservices wordt gebrand. Recente toevoegingen aan ons wereld wijde netwerk zijn onze [Marea](https://www.submarinecablemap.com/#/submarine-cable/marea) onderzeese-kabel, het eerste open line-systeem (OLS) van de industrie over Subsea, tussen Bilbao, Spanje en Virginia strand, Virginia, USA, en de [AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) tussen New York, USA en Dublin, Ierland en [nieuwe cross-Pacific (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) tussen Tokyo, Japan en Port land, Oregon, Verenigde Staten. 
+Grote investeringen in de glasvezel capaciteit en diversiteit in de verschillende metro-, terrestrische en onderzeese-paden zijn van cruciaal belang om het consistente en hoge service niveau te hand haven, terwijl de extreme groei van onze Cloud en onlineservices wordt gebrand. Recente toevoegingen aan ons wereld wijde netwerk zijn onze [Marea](https://www.submarinecablemap.com/#/submarine-cable/marea) onderzeese-kabel, het eerste open line-systeem (OLS) van de industrie over Subsea, tussen Bilbao, Spanje en Virginia-strand, Virginia, VS, evenals de [AEC-ECHO](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) tussen New York, VS en Dublin, Ierland en [New Cross Pacific (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) tussen Tokyo, Japan en Port land, Oregon, USA. 
  
 
 ## <a name="our-network-is-your-network"></a>Ons netwerk is uw netwerk
 
 We hebben twee tien tallen ervaringen en grote investeringen in het netwerk geplaatst om te allen tijde optimale prestaties te garanderen. Bedrijven kunnen optimaal profiteren van onze netwerk assets en geavanceerde overlay-architecturen bouwen. 
  
-Microsoft Azure biedt het uitgebreide aanbod van services en mogelijkheden, waardoor klanten snel en eenvoudig netwerk vereisten kunnen bouwen, uitbreiden en aan elkaar voldoen. Onze familie van connectiviteits services geldt voor de peering tussen regio's, hybride en in-the-Cloud Point-to-site-en site-naar-site-architecturen, evenals globale IP-Transit scenario's.  Voor ondernemingen die een eigen Data Center of netwerk willen verbinden met Azure, of klanten met massale gegevens opname of doorvoer behoeften, [ExpressRoute](../expressroute/expressroute-introduction.md)en [ExpressRoute direct](../expressroute/expressroute-erdirect-about.md) bieden opties van Maxi maal 100 Gbps band breedte, rechtstreeks naar Het wereld wijde netwerk van micro soft op peering-locaties over de hele wereld.  
+Microsoft Azure biedt het uitgebreide aanbod van services en mogelijkheden, waardoor klanten snel en eenvoudig netwerk vereisten kunnen bouwen, uitbreiden en aan elkaar voldoen. Onze familie van connectiviteits services geldt voor de peering tussen regio's, hybride en in-the-Cloud Point-to-site-en site-naar-site-architecturen, evenals globale IP-Transit scenario's.  Voor ondernemingen die hun eigen Data Center of netwerk willen verbinden met Azure, of klanten met massale gegevens opname of doorvoer behoeften, [ExpressRoute](../expressroute/expressroute-introduction.md)en [ExpressRoute direct](../expressroute/expressroute-erdirect-about.md) bieden opties van Maxi maal 100 Gbps band breedte, rechtstreeks in het wereld wijde netwerk van micro soft op peering locaties over de hele wereld.  
  
 [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) is ontworpen om de WAN-implementatie van uw service provider aan te vullen en uw on-premises sites over de hele wereld te verbinden. Als u een globale bewerking uitvoert, kunt u de ExpressRoute-Global Reach gebruiken in combi natie met uw favoriete en lokale service providers om met behulp van het wereld wijde micro soft-netwerk verbinding te maken met al uw globale sites. Het uitbreiden van uw nieuwe netwerk in de Cloud (WAN) tot een groot aantal Branch-sites kan worden uitgevoerd via Azure Virtual WAN, waarmee u uw filialen probleemloos kunt verbinden met het wereld wijde netwerk van micro soft met SDWAN & VPN-apparaten (dat wil zeggen, Klant premises apparatuur of CPE) met ingebouwde gebruiks gemak en geautomatiseerd connectiviteits-en configuratie beheer. 
  
-Met [wereld wijde VNet](../virtual-network/virtual-network-peering-overview.md) -peering kunnen klanten naadloos verbinding maken met twee of meer virtuele Azure-netwerken in verschillende regio's. Als de virtuele netwerken zijn gekoppeld, worden ze weer gegeven als één. Het verkeer tussen virtuele machines in de gekoppelde virtuele netwerken wordt doorgestuurd via de micro soft backbone-infra structuur, vergelijkbaar met het verkeer tussen virtuele machines in hetzelfde virtuele netwerk, alleen via privé-IP-adressen. 
+Met [wereld wijde VNet-peering](../virtual-network/virtual-network-peering-overview.md) kunnen klanten naadloos verbinding maken met twee of meer virtuele Azure-netwerken in verschillende regio's. Als de virtuele netwerken zijn gekoppeld, worden ze weer gegeven als één. Het verkeer tussen virtuele machines in de gekoppelde virtuele netwerken wordt doorgestuurd via de micro soft backbone-infra structuur, vergelijkbaar met het verkeer tussen virtuele machines in hetzelfde virtuele netwerk, alleen via privé-IP-adressen. 
  
 
 ## <a name="well-managed-using-software-defined-innovation"></a>Goed te beheren met software-gedefinieerde innovatie
 
-Met een van de toonaangevende Clouds in de hele wereld heeft micro soft veel inzicht in en ervaring opgedaan bij het [bouwen en beheren](https://myignite.techcommunity.microsoft.com/sessions/66668) van globale infra structuur met hoge prestaties.  
+Met een van de toonaangevende Clouds in de hele wereld heeft micro soft veel inzicht in en ervaring opgedaan bij het bouwen en beheren van globale infra structuur met hoge prestaties.  
  
 We houden aan een robuuste set operationele principes: 
  

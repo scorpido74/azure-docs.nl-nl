@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs Secure push
+title: Azure Notification Hubs Secure push voor Windows
 description: Meer informatie over het verzenden van beveiligde push meldingen in Azure. Codevoorbeelden geschreven in C# met .NET API.
 documentationcenter: windows
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5d1cf2a74d4fe85bb85eb244da3e3757f36fba0a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: db42cf7f886855af77073963e6f04ac088ca5612
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212051"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530728"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>Veilige push meldingen van Azure Notification Hubs
 
@@ -62,7 +62,7 @@ In deze veilige push zelf studie wordt uitgelegd hoe u een push melding veilig v
     ```csharp
     RegisterBackgroundTask();
     ```
-2. Voeg in app.xaml.cs nog steeds de volgende code toe direct na `OnLaunched()` de-methode:
+2. Voeg in App.xaml.cs nog steeds de volgende code toe direct na de `OnLaunched()` methode:
 
     ```csharp
     private async void RegisterBackgroundTask()
@@ -79,7 +79,7 @@ In deze veilige push zelf studie wordt uitgelegd hoe u een push melding veilig v
         }
     }
     ```
-3. Voeg de volgende `using` instructies toe boven aan het app.xaml.CS-bestand:
+3. Voeg boven aan het App.xaml.cs-bestand de volgende `using`-instructies toe:
 
     ```csharp
     using Windows.Networking.PushNotifications;
@@ -95,8 +95,8 @@ De volgende stap is het maken van het push-achtergrond onderdeel.
 2. Vouw **Store-apps**uit, klik op **Windows Phone apps**en klik vervolgens op **Windows runtime onderdeel (Windows Phone)** . Noem het project **PushBackgroundComponent**en klik vervolgens op **OK** om het project te maken.
 
     ![][12]
-3. Klik in Solution Explorer met de rechter muisknop op het project **PushBackgroundComponent (Windows Phone 8,1)** , klik op **toevoegen**en klik vervolgens op **klasse**. Geef de nieuwe klasse `PushBackgroundTask.cs`een naam. Klik op **toevoegen** om de klasse te genereren.
-4. Vervang de volledige inhoud van de `PushBackgroundComponent` naam ruimte definitie door de volgende code, waarbij u de `{back-end endpoint}` tijdelijke aanduiding vervangt door het back-end-eind punt dat is verkregen tijdens het implementeren van uw back-end:
+3. Klik in Solution Explorer met de rechter muisknop op het project **PushBackgroundComponent (Windows Phone 8,1)** , klik op **toevoegen**en klik vervolgens op **klasse**. Noem de nieuwe klasse `PushBackgroundTask.cs`. Klik op **toevoegen** om de klasse te genereren.
+4. Vervang de volledige inhoud van de definitie van de `PushBackgroundComponent` naam ruimte door de volgende code, waarbij u de tijdelijke aanduiding `{back-end endpoint}` vervangt door het back-end-eind punt dat is verkregen tijdens de implementatie van uw back-end:
 
     ```csharp
     public sealed class Notification
@@ -147,7 +147,7 @@ De volgende stap is het maken van het push-achtergrond onderdeel.
 7. Typ **Http Client** in **het zoekvak**.
 8. Klik in de lijst met resultaten op **HTTP-client bibliotheken van micro soft**en klik vervolgens op **installeren**. Voltooi de installatie.
 9. Typ nu **Json.net** in **het zoekvak** van NuGet. Installeer het **JSON.net** -pakket en sluit vervolgens het venster NuGet Package Manager.
-10. Voeg boven aan `using` het `PushBackgroundTask.cs` bestand de volgende-instructies toe:
+10. Voeg boven aan het `PushBackgroundTask.cs`-bestand de volgende `using`-instructies toe:
 
     ```csharp
     using Windows.ApplicationModel.Background;

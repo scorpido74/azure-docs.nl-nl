@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 0479918ad2afa99dcd9f18d3ba81f94a3e262e9e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7174003485d51cf582c798c4b18404b1b72de0fb
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479378"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530949"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Beveiligingsoplossingen integreren in Azure Security Center
 Dit document helpt u bij het beheren van beveiligingsoplossingen die al zijn gekoppeld aan Azure Security Center en bij het toevoegen van nieuwe oplossingen.
@@ -135,7 +135,7 @@ Raadpleeg het volgende artikel [Stream-activiteiten logboek om te Event hubs](..
 
 Door uw bewakings gegevens te routeren naar een event hub met Azure Monitor kunt u eenvoudig integreren met SIEM-en controle hulpprogramma's van de partner.
 
-Zie het volgende artikel voor de lijst met [ondersteunde siem's](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-resource-logs-sent-to-an-event-hub)
+Zie het volgende artikel voor de lijst met [ondersteunde siem's](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-platform-logs-sent-to-an-event-hub)
 
 ### <a name="example-for-querying-data"></a>Voor beeld voor het opvragen van gegevens 
 
@@ -145,7 +145,7 @@ Hier volgen enkele Splunk-query's die u kunt gebruiken om waarschuwings gegevens
 |----|----|
 | Alle waarschuwingen| index=main Microsoft.Security/locations/alerts|
 | Aantal bewerkingen samenvatten op naam| index = hoofd source type = "Amal: Security" \| tabel bewerkings naam \| aantal statistieken per operationname|
-| Waarschuwings gegevens ophalen: tijd, naam, status, ID en abonnement | index = hoofd versie van micro soft. Security/locations/Alerts \| tabel \_tijd, eigenschappen. eventname, status, Properties. operationId, am_subscriptionId |
+| Waarschuwings gegevens ophalen: tijd, naam, status, ID en abonnement | index=main Microsoft.Security/locations/alerts \| table \_time, properties.eventName, State, properties.operationId, am_subscriptionId |
 
 
 ## <a name="next-steps"></a>Volgende stappen

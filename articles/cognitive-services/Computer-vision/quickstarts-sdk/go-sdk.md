@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: Computer Vision-client bibliotheek voor Go | Microsoft Docs'
+title: 'Snelstartgids: Computer Vision-client bibliotheek voor Go'
 titleSuffix: Azure Cognitive Services
-description: Ga aan de slag met de Computer Vision-client bibliotheek voor go.
+description: Ga aan de slag met de Computer Vision-client bibliotheek voor deze Snelstartgids.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 10/22/2019
 ms.author: pafarley
-ms.openlocfilehash: f05ef80d34d1c0635bdcdca244aacba6185565fb
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d9d68f018b34c13f6570bf83c408bd436f0cc8c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958411"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382306"
 ---
 # <a name="quickstart-computer-vision-client-library-for-go"></a>Snelstartgids: Computer Vision-client bibliotheek voor Go
 
@@ -99,14 +99,14 @@ Vervolgens begint u met het toevoegen van code om verschillende Computer Vision 
 
 De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Computer Vision go-SDK.
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 | [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) | Deze klasse is nodig voor alle Computer Vision functionaliteit, zoals het analyseren van afbeeldingen en het lezen van tekst. U maakt de app met uw abonnements gegevens en gebruikt deze om de meeste installatie kopieën uit te voeren.|
 |[ImageAnalysis](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#ImageAnalysis)| Dit type bevat de resultaten van een **AnalyzeImage** -functie aanroep. Er zijn soort gelijke typen voor elk van de categorie-specifieke functies.|
 |[ReadOperationResult](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#ReadOperationResult)| Dit type bevat de resultaten van een batch-Lees bewerking. |
 |[VisualFeatureTypes](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#VisualFeatureTypes)| Dit type definieert de verschillende soorten afbeeldings analyse die kan worden uitgevoerd in een standaard analyse bewerking. U geeft een set VisualFeatureTypes-waarden op, afhankelijk van uw behoeften. |
 
-## <a name="code-examples"></a>Code voorbeelden
+## <a name="code-examples"></a>Codevoorbeelden
 
 Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Computer Vision-client bibliotheek voor Go:
 
@@ -256,7 +256,7 @@ go run sample-app.go
 Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+* [Azure-CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -264,4 +264,4 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 > [Computer Vision-API referentie (Go)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision)
 
 * [Wat is de Computer Vision-API?](../Home.md)
-* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go).
+* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go).

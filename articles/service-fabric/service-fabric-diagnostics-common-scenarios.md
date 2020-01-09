@@ -1,29 +1,20 @@
 ---
-title: Algemene Scenario's voor Azure Service Fabric diagnosticeren | Microsoft Docs
-description: Meer informatie over het oplossen van veelvoorkomende scenario's met Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
+title: Veelvoorkomende Scenario's voor Azure Service Fabric diagnosticeren
+description: Meer informatie over het oplossen van veelvoorkomende bewakings-en diagnose scenario's in azure Service Fabric-toepassingen.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 265aea1b8873d812859b39175c732c3e7118cbb5
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: b012e37bef7fe21e869fc3af415ca57b74c61dd8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60394120"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645783"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Veelvoorkomende scenario's met Service Fabric diagnosticeren
 
-In dit artikel ziet u veelvoorkomende scenario's die gebruikers hebben gevonden op het gebied van bewaking en diagnose met Service Fabric. De gepresenteerde scenario's gelden voor alle drie de lagen van service Fabric: Toepassing, cluster en infra structuur. Elke oplossing maakt gebruik van Application Insights-en Azure Monitor-logboeken, Azure-controle hulpprogramma's, om elk scenario te volt ooien. De stappen in elke oplossing geven gebruikers een inleiding over het gebruik van Application Insights en Azure Monitor-Logboeken in de context van Service Fabric.
+In dit artikel ziet u veelvoorkomende scenario's die gebruikers hebben gevonden op het gebied van bewaking en diagnose met Service Fabric. De gepresenteerde scenario's beslaan alle drie de lagen van service Fabric: toepassing, cluster en infra structuur. Elke oplossing maakt gebruik van Application Insights-en Azure Monitor-logboeken, Azure-controle hulpprogramma's, om elk scenario te volt ooien. De stappen in elke oplossing geven gebruikers een inleiding over het gebruik van Application Insights en Azure Monitor-Logboeken in de context van Service Fabric.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -56,7 +47,7 @@ De oplossingen in dit artikel gebruiken de volgende hulpprogram ma's. U wordt aa
 1. In dezelfde Application Insights resource kunt u filteren op aanvragen in plaats van uitzonde ringen en alle aanvragen weer geven die zijn gemaakt
 2. Als u de Service Fabric Application Insights SDK gebruikt, ziet u een visuele weer gave van de services die zijn verbonden met elkaar en het aantal geslaagde en mislukte aanvragen. Klik aan de linkerkant op ' toepassings overzicht '
 
-    ![App-toewijzing Blade](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![AI app-kaart](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
+    Blade](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![AI-app-toewijzing van ![AI-](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
     Ga voor meer informatie over het toepassings overzicht naar de [documentatie van het toepassings overzicht](../azure-monitor/app/app-map.md)
 
@@ -145,7 +136,7 @@ Controleer deze koppelingen voor de volledige lijst met prestatie meter items op
 
 * [Stel waarschuwingen in AI in](../azure-monitor/app/alerts.md) om een melding te ontvangen over wijzigingen in prestaties of gebruik
 * [Slimme detectie in Application Insights](../azure-monitor/app/proactive-diagnostics.md) voert een proactieve analyse uit van de telemetrie die naar AI wordt verzonden om u te waarschuwen over mogelijke prestatie problemen
-* Meer informatie over Azure Monitor- [](../log-analytics/log-analytics-alerts.md) logboeken waarin u wordt gewaarschuwd voor hulp bij detectie en diagnose.
+* Meer informatie over Azure Monitor-logboeken waarin u wordt [gewaarschuwd](../log-analytics/log-analytics-alerts.md) voor hulp bij detectie en diagnose.
 * Voor on-premises clusters biedt Azure Monitor-Logboeken een gateway (HTTP forward proxy) die kan worden gebruikt om gegevens te verzenden naar Azure Monitor-Logboeken. Meer informatie over dat bij [het verbinden van computers zonder Internet toegang tot Azure monitor-logboeken met behulp van de log Analytics gateway](../azure-monitor/platform/gateway.md)
 * Krijg vertrouwd met de functies voor [Zoeken in Logboeken en query's](../log-analytics/log-analytics-log-searches.md) die worden aangeboden als onderdeel van Azure monitor logboeken
 * Meer gedetailleerd overzicht van Azure Monitor-logboeken en wat het biedt, Lees [Wat is Azure monitor logboeken?](../operations-management-suite/operations-management-suite-overview.md)

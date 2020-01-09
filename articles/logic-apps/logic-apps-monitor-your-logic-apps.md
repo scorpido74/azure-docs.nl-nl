@@ -1,6 +1,6 @@
 ---
 title: Status controleren, logboek registratie instellen en waarschuwingen ontvangen
-description: Status controleren, diagnostische gegevens registreren en waarschuwingen instellen voor Azure Logic Apps
+description: Status controleren, logboek registratie instellen en waarschuwingen inschakelen voor het vaststellen van fouten en problemen in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/21/2017
-ms.openlocfilehash: ca1e2836ddfb38de640a5a90cf53e416b8923c04
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ce29d6eb7bfefea6d9030d4cbb162936ff60c83d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791912"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428802"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Status controleren, diagnostische logboek registratie instellen en waarschuwingen voor Azure Logic Apps inschakelen
 
@@ -84,7 +84,7 @@ Voordat u begint, moet u beschikken over een Log Analytics-werk ruimte. Meer inf
 
 3. Kies onder instellingen **voor** **Diagnostische gegevens**.
 
-   ![Diagnostische logboeken inschakelen](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
+   ![Logboeken met diagnostische gegevens inschakelen](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
 
 4. Selecteer nu de Log Analytics werk ruimte en gebeurtenis categorie voor logboek registratie zoals weer gegeven:
 
@@ -293,4 +293,4 @@ De `ActionCompleted` gebeurtenis heeft bijvoorbeeld de `clientTrackingId`-en `tr
 
 * [Implementatie van logische apps automatiseren](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [B2B-scenario's met Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)
-* [B2B-berichten bewaken](../logic-apps/logic-apps-monitor-b2b-message.md)
+* [B2B-berichten controleren](../logic-apps/logic-apps-monitor-b2b-message.md)

@@ -1,17 +1,17 @@
 ---
-title: Variabelen voor het opslaan van waarden maken en beheren
-description: Waarden opslaan en beheren met behulp van variabelen in Azure Logic Apps
+title: Variabelen voor het opslaan en door geven van waarden maken en beheren
+description: Meer informatie over het opslaan, beheren, gebruiken en door geven van waarden met behulp van variabelen in uw geautomatiseerde taken en werk stroom die u maakt met Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 9b3ba7ff20e581988c3e862cff3bbf6d5ee96bf4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 55984082a6b287e9f7cdca005a24ef3c18032491
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793168"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456695"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Waarden opslaan en beheren met behulp van variabelen in Azure Logic Apps
 
@@ -67,7 +67,7 @@ U kunt een variabele maken en het gegevens type en de oorspronkelijke waarde dec
 
    | Eigenschap | Verplicht | Waarde |  Beschrijving |
    |----------|----------|-------|--------------|
-   | **Naam** | Ja | <*variabele naam*> | De naam van de variabele die moet worden verhoogd |
+   | **Naam** | Ja | <*variable-name*> | De naam van de variabele die moet worden verhoogd |
    | **Type** | Ja | <*variabele-type*> | Het gegevens type voor de variabele |
    | **Waarde** | Nee | <*Start waarde*> | De beginwaarde van uw variabele <p><p>**Tip**: Hoewel dit optioneel is, stelt u deze waarde in op best practice zodat u altijd de begin waarde voor de variabele kent. |
    |||||
@@ -207,8 +207,8 @@ Als u een variabele wilt verg Roten *of verhogen met een constante* waarde, voeg
 
    | Eigenschap | Verplicht | Waarde |  Beschrijving |
    |----------|----------|-------|--------------|
-   | **Naam** | Ja | <*variabele naam*> | De naam van de variabele die moet worden verhoogd |
-   | **Waarde** | Nee | <*Increment-waarde*> | De waarde die wordt gebruikt voor het verhogen van de variabele. De standaard waarde is één. <p><p>**Tip**: Hoewel dit optioneel is, stelt u deze waarde in op best practice zodat u altijd weet wat de specifieke waarde is voor het verhogen van de variabele. |
+   | **Naam** | Ja | <*variable-name*> | De naam van de variabele die moet worden verhoogd |
+   | **Waarde** | Nee | <*increment-value*> | De waarde die wordt gebruikt voor het verhogen van de variabele. De standaard waarde is één. <p><p>**Tip**: Hoewel dit optioneel is, stelt u deze waarde in op best practice zodat u altijd weet wat de specifieke waarde is voor het verhogen van de variabele. |
    ||||
 
    Bijvoorbeeld:
@@ -328,8 +328,8 @@ Dit zijn de eigenschappen voor de actie **variabele verlagen** :
 
 | Eigenschap | Verplicht | Waarde |  Beschrijving |
 |----------|----------|-------|--------------|
-| **Naam** | Ja | <*variabele naam*> | De naam van de variabele die moet worden verminderd | 
-| **Waarde** | Nee | <*Increment-waarde*> | De waarde voor decrementing van de variabele. De standaard waarde is één. <p><p>**Tip**: Hoewel dit optioneel is, stelt u deze waarde in als een Best Practice, zodat u altijd weet wat de specifieke waarde voor decrementing uw variabele is. |
+| **Naam** | Ja | <*variable-name*> | De naam van de variabele die moet worden verminderd | 
+| **Waarde** | Nee | <*increment-value*> | De waarde voor decrementing van de variabele. De standaard waarde is één. <p><p>**Tip**: Hoewel dit optioneel is, stelt u deze waarde in als een Best Practice, zodat u altijd weet wat de specifieke waarde voor decrementing uw variabele is. |
 ||||| 
 
 Als u overschakelt van de ontwerp functie naar de code weergave-editor, is dit de manier waarop de actie **variabele verlagen** wordt weer gegeven in de definitie van de logische app, in JSON-indeling.
@@ -361,8 +361,8 @@ Dit zijn de eigenschappen voor de actie **variabele instellen** :
 
 | Eigenschap | Verplicht | Waarde |  Beschrijving |
 |----------|----------|-------|--------------|
-| **Naam** | Ja | <*variabele naam*> | De naam van de variabele die moet worden gewijzigd |
-| **Waarde** | Ja | <*nieuwe waarde*> | De waarde die u wilt toewijzen aan de variabele. Beide moeten hetzelfde gegevens type hebben. |
+| **Naam** | Ja | <*variable-name*> | De naam van de variabele die moet worden gewijzigd |
+| **Waarde** | Ja | <*new-value*> | De waarde die u wilt toewijzen aan de variabele. Beide moeten hetzelfde gegevens type hebben. |
 ||||| 
 
 > [!NOTE]
@@ -419,7 +419,7 @@ Dit zijn de eigenschappen voor de acties **toevoegen aan..** .:
 
 | Eigenschap | Verplicht | Waarde |  Beschrijving |
 |----------|----------|-------|--------------|
-| **Naam** | Ja | <*variabele naam*> | De naam van de variabele die moet worden gewijzigd |
+| **Naam** | Ja | <*variable-name*> | De naam van de variabele die moet worden gewijzigd |
 | **Waarde** | Ja | <*toevoeg-waarde*> | De waarde die u wilt toevoegen, die elk type kan hebben |
 |||||
 

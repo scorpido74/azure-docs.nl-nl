@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba8f4f715856538b9555b1bcb8c8a812503fabd2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 77e24fa41c5f716460d82e1079659e6aee5e9a9b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842404"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561147"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Aanmelden bij een virtuele Windows-machine in azure met Azure Active Directory authenticatie (preview-versie)
 
@@ -36,6 +36,9 @@ Er zijn veel voor delen van het gebruik van Azure AD-verificatie om u aan te mel
    - Multi-Factor Authentication
    - Aanmeldings risico controle
 - Automatiseer en schaal Azure AD-samen voeging van Azure Windows-Vm's die deel uitmaken van uw VDI-implementaties.
+
+> [!NOTE]
+> Zodra u deze mogelijkheid hebt ingeschakeld, worden uw Windows-Vm's in azure toegevoegd aan Azure AD. U kunt deze niet koppelen aan een ander domein, zoals on-premises AD of Azure AD DS. Als u dit wilt doen, moet u de virtuele machine loskoppelen van uw Azure AD-Tenant door de uitbrei ding te verwijderen.
 
 ## <a name="requirements"></a>Vereisten
 
@@ -200,7 +203,7 @@ U kunt beleid voor voorwaardelijke toegang afdwingen, zoals multi-factor Authent
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Meld u aan met Azure AD-referenties voor een Windows-VM
 
 > [!IMPORTANT]
-> Externe verbinding met Vm's die zijn gekoppeld aan Azure AD is alleen toegestaan vanaf Windows 10-Pc's die zijn toegevoegd aan Azure AD of hybride Azure AD zijn toegevoegd aan **dezelfde** map als de virtuele machine. Daarnaast moet de gebruiker bij RDP met behulp van Azure AD-referenties lid zijn van een van de twee RBAC-rollen, de aanmelding van de virtuele-machine beheerder of de gebruikers aanmelding van de virtuele machine.
+> Externe verbinding met Vm's die zijn gekoppeld aan Azure AD is alleen toegestaan vanaf Windows 10-Pc's die zijn toegevoegd aan Azure AD of hybride Azure AD zijn toegevoegd aan **dezelfde** map als de virtuele machine. Daarnaast moet de gebruiker bij RDP met behulp van Azure AD-referenties lid zijn van een van de twee RBAC-rollen, de aanmelding van de virtuele-machine beheerder of de gebruikers aanmelding van de virtuele machine. Op dit moment kan Azure Bastion niet worden gebruikt om u aan te melden met behulp van Azure Active Directory-verificatie met de uitbrei ding AADLoginForWindows. Alleen directe RDP wordt ondersteund.
 
 Aanmelden bij de virtuele machine met Windows Server 2019 met Azure AD: 
 

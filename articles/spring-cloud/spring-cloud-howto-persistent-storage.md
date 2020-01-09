@@ -6,48 +6,50 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: d70e7ff747b80b661e848f1c208f0d1c2c928248
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 68f893c694369d95dd82b9e5af3d08d67be78884
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607776"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461644"
 ---
-# <a name="how-to-use-persistent-storage-in-azure-spring-cloud"></a>Permanente opslag gebruiken in azure lente-Cloud
+# <a name="use-persistent-storage-in-azure-spring-cloud"></a>Permanente opslag gebruiken in Azure Spring Cloud
 
-Azure lente Cloud biedt twee soorten opslag voor uw toepassing: permanente en tijdelijke.  Azure lente-Cloud maakt standaard tijdelijke opslag mogelijk voor elk toepassings exemplaar. Tijdelijke opslag is beperkt tot 5 GB met een standaardpad voor koppelen: `/tmp`.
+Azure lente Cloud biedt twee soorten opslag voor uw toepassing: permanente en tijdelijke.
 
-> [!WARNING]
-> Als een toepassings exemplaar opnieuw wordt gestart, wordt de bijbehorende tijdelijke opslag permanent verwijderd.
-
-Permanente opslag is een bestands share container die wordt beheerd door Azure, toegewezen per toepassing. Gegevens die zijn opgeslagen in permanente opslag, worden gedeeld door alle exemplaren van de toepassing. Een Azure lente-Cloud service-exemplaar kan Maxi maal 10 toepassingen bevatten waarvoor permanente schijf is ingeschakeld. Elke toepassing ontvangt 50 GB aan permanente opslag. Het standaardpad voor permanente opslag is `/persistent`.
+Azure lente-Cloud biedt standaard tijdelijke opslag voor elk toepassings exemplaar. De tijdelijke opslag is beperkt tot 5 GB per exemplaar met het standaard koppel pad/tmp.
 
 > [!WARNING]
-> Als u permanente opslag *uitschakelt* , wordt de toewijzing van de opslag voor die toepassing ongedaan.  Alle gegevens in dat opslag account gaan verloren. 
+> Als u een instantie van een toepassing opnieuw opstart, wordt de gekoppelde tijdelijke opslag permanent verwijderd.
 
-## <a name="enable-persistent-storage-using-the-azure-portal"></a>Permanente opslag inschakelen met behulp van de Azure Portal
+Permanente opslag is een bestands share container die wordt beheerd door Azure en per toepassing wordt toegewezen. Gegevens die zijn opgeslagen in permanente opslag worden gedeeld door alle exemplaren van een toepassing. Een Azure lente-Cloud-exemplaar kan Maxi maal 10 toepassingen bevatten waarvoor permanente opslag is ingeschakeld. Aan elke toepassing wordt 50 GB aan permanente opslag toegewezen. Het pad voor de standaard koppeling voor permanente opslag is/persistent.
 
-1. Selecteer **alle resources**in het Start scherm van uw Azure Portal.
+> [!WARNING]
+> Als u de permanente opslag van een toepassing uitschakelt, wordt de toewijzing van alle opslag ongedaan gemaakt en gaan alle opgeslagen gegevens verloren.
 
-     >![Het pictogram alle resources zoeken](media/portal-all-resources.jpg)
+## <a name="use-the-azure-portal-to-enable-persistent-storage"></a>De Azure Portal gebruiken om permanente opslag in te scha kelen
 
-1. Zoek en selecteer de Azure lente-Cloud resource waarvoor permanente opslag nodig is.  In dit voor beeld wordt de toepassing *jpspring*genoemd.
+1. Selecteer **alle resources**op de **Start** pagina van uw Azure Portal.
 
-    > ![Uw applicationb zoeken](media/select-service.jpg)
+    >![Het pictogram alle resources zoeken](media/portal-all-resources.jpg)
+
+1. Selecteer de Azure lente-Cloud resource waarvoor permanente opslag nodig is. In dit voor beeld wordt de geselecteerde toepassing **upveer**genoemd.
+
+    > ![Selecteer uw toepassing](media/select-service.jpg)
 
 1. Selecteer in de kop **instellingen** de optie **apps**.
 
-1. Uw lente-Cloud Services worden weer gegeven in de tabel.  Selecteer de service waaraan u permanente opslag wilt toevoegen.  In dit voor beeld selecteren we onze **Gateway** service.
+1. Uw Azure lente-Cloud Services worden weer gegeven in een tabel.  Selecteer de service waaraan u permanente opslag wilt toevoegen. In dit voor beeld is de **Gateway** service geselecteerd.
 
     > ![Uw service selecteren](media/select-gateway.jpg)
 
-1. Selecteer in de Blade configuratie van de service de optie **configuratie**
+1. Selecteer op de pagina configuratie van de service **configuratie**
 
-1. Selecteer het tabblad **permanente opslag** en schakel permanente opslag in.
+1. Selecteer het tabblad **permanente opslag** en selecteer **inschakelen**.
 
     > ![Permanente opslag inschakelen](media/enable-persistent-storage.jpg)
 
-Wanneer permanente opslag is ingeschakeld, worden beide op deze pagina weer gegeven.
+Nadat de permanente opslag is ingeschakeld, worden de grootte en het pad op de pagina configuratie weer gegeven.
 
 ## <a name="use-the-azure-cli-to-modify-persistent-storage"></a>De Azure CLI gebruiken om permanente opslag te wijzigen
 
@@ -56,28 +58,30 @@ Installeer, indien nodig, de lente-Cloud extensie voor Azure CLI:
 ```azurecli
 az extension add --name spring-cloud
 ```
+Andere bewerkingen:
 
-Een app maken waarvoor permanente schijf is ingeschakeld:
- 
-```azurecli
-az spring-cloud app create -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage true
-```
+* Een app maken waarvoor permanente opslag is ingeschakeld:
 
-Permanente opslag in een bestaande app inschakelen:
+    ```azurecli
+    az spring-cloud app create -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage true
+    ```
 
-```azurecli
-az spring-cloud app update -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage true
-``` 
+* Permanente opslag voor een bestaande app inschakelen:
 
-Permanente opslag in een bestaande app uitschakelen:
+    ```azurecli
+    az spring-cloud app update -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage true
+    ```
 
-> [!WARNING]
-> Als u permanente opslag uitschakelt, wordt de toewijzing van de opslag voor die toepassing ongedaan maken, waarbij de gegevens die daar zijn opgeslagen, permanent verloren gaan. 
+* Permanente opslag in een bestaande app uitschakelen:
 
-```azurecli
-az spring-cloud app update -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage false
-```
+    ```azurecli
+    az spring-cloud app update -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage false
+    ```
+
+    > [!WARNING]
+    > Als u de permanente opslag van een toepassing uitschakelt, wordt de toewijzing van alle opslag ongedaan gemaakt en blijven alle opgeslagen gegevens definitief verloren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [toepassings-en service quota's](spring-cloud-quotas.md)of over het [hand matig schalen van uw toepassing](spring-cloud-tutorial-scale-manual.md).
+* Meer informatie over [toepassings-en service quota's](spring-cloud-quotas.md).
+* Meer informatie over het [hand matig schalen van uw toepassing](spring-cloud-tutorial-scale-manual.md).

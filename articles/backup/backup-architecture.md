@@ -1,14 +1,14 @@
 ---
-title: Architectuur overzicht
+title: Overzicht van de architectuur
 description: Hierin wordt een overzicht gegeven van de architectuur, onderdelen en processen die door de Azure Backup-service worden gebruikt.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: ae7b0c2b81bd3d393b7e749e077a6f5fa0379562
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: de532bb02b4ecf5e912a71df404418338325d582
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173508"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450202"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architectuur en onderdelen van Azure Backup
 
@@ -48,7 +48,7 @@ Recovery Services kluizen hebben de volgende kenmerken:
   - **Geografisch redundante opslag (GRS)** : als u wilt beveiligen tegen regionale storingen, kunt u GRS gebruiken. GRS repliceert uw gegevens naar een secundaire regio. [Meer informatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
   - Recovery Services kluizen gebruiken standaard GRS.
 
-## <a name="backup-agents"></a>Back-upagenten
+## <a name="backup-agents"></a>Back-upagents
 
 Azure Backup biedt verschillende back-upagenten, afhankelijk van het type computer waarvan een back-up wordt gemaakt:
 
@@ -174,7 +174,7 @@ Zie de volgende artikelen voor meer informatie over schijf ruimte en de beschik 
 U kunt back-ups van virtuele Azure-machines maken met behulp van Premium Storage met Azure Backup:
 
 - Tijdens het proces van het maken van back-ups van virtuele machines met Premium Storage maakt de back-upservice een tijdelijke faserings locatie met de naam *AzureBackup-* in het opslag account. De grootte van de faserings locatie is gelijk aan de grootte van de moment opname van het herstel punt.
-- Zorg ervoor dat het Premium-opslag account voldoende vrije ruimte heeft voor de tijdelijke faserings locatie. [Meer informatie](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits). Wijzig de faserings locatie niet.
+- Zorg ervoor dat het Premium-opslag account voldoende vrije ruimte heeft voor de tijdelijke faserings locatie. Zie [schaalbaarheids doelen voor Premium-pagina-Blob Storage-accounts](../storage/blobs/scalability-targets-premium-page-blobs.md)voor meer informatie. Wijzig de faserings locatie niet.
 - Nadat de back-uptaak is voltooid, wordt de faserings locatie verwijderd.
 - De prijs van de opslag die wordt gebruikt voor de faserings locatie is consistent met de [prijzen voor Premium Storage](../virtual-machines/windows/disks-types.md#billing).
 

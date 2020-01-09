@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: wellsi
-ms.openlocfilehash: 3a74f3eb9aece3535f5505d69833a074c2dd0ed2
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 4d5d3cc6159a4601f0a398e87b89eea9b8d3aba6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091200"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446948"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Release opmerkingen: SDK voor spraak apparaten
 
@@ -23,14 +23,14 @@ De volgende secties bevatten een lijst met wijzigingen in de meest recente relea
 
 ## <a name="speech-devices-sdk-170"></a>Speech-apparaten SDK 1.7.0:
 
-*   Linux ARM wordt nu ondersteund.
-*   Initiële binaire bestanden voor Roobov2 worden gegeven (Linux ARM64).
-*   Windows-gebruikers kunnen AudioConfig. fromDefaultMicrophoneInput () of AudioConfig. fromMicrophoneInput (DeviceName) gebruiken om de microfoon op te geven die moet worden gebruikt.
-*   De grootte van de tape wisselaar is geoptimaliseerd.
-*   Ondersteuning voor multi-turn-herkenning met hetzelfde spraak/intentie Recognizer-object.
-*   Herstel af en toe is vastgelopen tijdens het stoppen van de herkenning.
-*   Voor beeld-apps bevatten nu een voor beeld van een deel nemers. eigenschappen bestand om de indeling van het bestand te demonstreren.
-*   Het [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) -onderdeel is bijgewerkt naar versie 1.7.0. Zie de [release opmerkingen](https://aka.ms/csspeech/whatsnew)voor meer informatie.
+- Linux ARM wordt nu ondersteund.
+- Er worden initiële binaire bestanden voor roobo v2 (Linux ARM64) gegeven.
+- Windows-gebruikers kunnen `AudioConfig.fromDefaultMicrophoneInput()` of `AudioConfig.fromMicrophoneInput(deviceName)` gebruiken om de microfoon op te geven die moet worden gebruikt.
+- De grootte van de tape wisselaar is geoptimaliseerd.
+- Ondersteuning voor multi-turn-herkenning met hetzelfde spraak/intentie Recognizer-object.
+- Herstel af en toe is vastgelopen tijdens het stoppen van de herkenning.
+- Voor beeld-apps bevatten nu een voor beeld van een deel nemers. eigenschappen bestand om de indeling van het bestand te demonstreren.
+- Het [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) -onderdeel is bijgewerkt naar versie 1.7.0. Zie de [release opmerkingen](https://aka.ms/csspeech/whatsnew)voor meer informatie.
 
 ## <a name="speech-devices-sdk-160"></a>Speech-apparaten SDK 1.6.0:
 
@@ -68,8 +68,8 @@ De volgende secties bevatten een lijst met wijzigingen in de meest recente relea
 
 - Het [installeren van een tref woord](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) is vereenvoudigd, het maakt nu deel uit van de app en vereist geen afzonderlijke installatie op het apparaat.
 - De herkenning van het tref woord is gewijzigd en twee gebeurtenissen worden ondersteund.
-  - RecognizingKeyword: Hiermee wordt aangegeven dat het resultaat van de spraak (niet-geverifieerde) trefwoord tekst bevat.
-  - RecognizedKeyword geeft aan dat de trefwoord herkenning het opgegeven tref woord heeft herkend.
+  - `RecognizingKeyword,` geeft aan dat het resultaat van de spraak (niet-geverifieerde) trefwoord tekst bevat.
+  - `RecognizedKeyword`geeft aan dat trefwoord herkenning het opgegeven tref woord heeft herkend.
 
 ## <a name="speech-devices-sdk-110-2018-nov-release"></a>Speech-apparaten SDK 1.1.0:2018-nov release
 

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 7cef92964a4b62c9ed15ddd19778494d6c3be98a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 295cac883e7c84158fd9d2a2b7e9780dfe6c64d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839749"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427676"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Hand leiding voor de netwerk specificatie taal net # Neural voor Azure Machine Learning Studio (klassiek)
 
@@ -56,7 +56,7 @@ Daarnaast ondersteunt net # de volgende vier soorten geavanceerde verbindings bu
 
 ## <a name="supported-customizations"></a>Ondersteunde aanpassingen
 
-De architectuur van Neural-netwerk modellen die u in de klassieke versie van Azure Machine Learning Studio maakt, kan uitgebreid worden aangepast met behulp van net #. U kunt:
+De architectuur van Neural-netwerk modellen die u in Azure Machine Learning Studio (klassiek) maakt, kan uitgebreid worden aangepast met behulp van net #. U kunt het volgende doen:
 
 + Maak verborgen lagen en beheer het aantal knoop punten in elke laag.
 + Opgeven hoe lagen met elkaar moeten worden verbonden.
@@ -133,9 +133,9 @@ De volgende uitvoer functies worden ondersteund:
 + softmax
 + rlinear
 + wortel
-+ Wortel
++ wortel
 + srlinear
-+ Afwezigheid
++ afwezigheid
 + TANH
 + brlinear
 
@@ -169,7 +169,7 @@ hidden ByRow[10, 12] from Pixels where (s,d) => s[0] == d[0];
 hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 ```
 
-+ In het predikaat voor `ByRow`is `s` een para meter die een index vertegenwoordigt in de rechthoekige matrix van knoop punten van de invoer laag, `Pixels`en `d` is een para meter die een index vertegenwoordigt in de matrix van knoop punten van de verborgen laag , `ByRow`. Het type van zowel `s` als `d` is een tuple met gehele getallen van lengte twee. Conceptueel `s` het bereiken van alle paren met gehele getallen met `0 <= s[0] < 10` en `0 <= s[1] < 20`en `d` bereiken over alle paren van gehele getallen, met `0 <= d[0] < 10` en `0 <= d[1] < 12`.
++ In het predikaat voor `ByRow`is `s` een para meter die een index vertegenwoordigt in de rechthoekige matrix van knoop punten van de invoer laag, `Pixels`en `d` een para meter is die een index vertegenwoordigt in de matrix van knoop punten van de verborgen laag, `ByRow`. Het type van zowel `s` als `d` is een tuple met gehele getallen van lengte twee. Conceptueel `s` het bereiken van alle paren met gehele getallen met `0 <= s[0] < 10` en `0 <= s[1] < 20`en `d` bereiken over alle paren van gehele getallen, met `0 <= d[0] < 10` en `0 <= d[1] < 12`.
 
 + Aan de rechter kant van de predicaat expressie bevindt zich een voor waarde. In dit voor beeld, voor elke waarde van `s` en `d` zodanig dat de voor waarde waar is, is er een rand van het knoop punt van de bron laag naar het knoop punt van de doel laag. Daarom geeft deze filter expressie aan dat de bundel een verbinding bevat van het knoop punt dat is gedefinieerd door `s` naar het knoop punt dat is gedefinieerd door `d` in alle gevallen waarbij s [0] gelijk is aan d [0].
 
@@ -259,7 +259,7 @@ Zie de volgende artikelen voor meer informatie over het groeperen van lagen:
 
 **Antwoord normalisatie** is een lokaal normalisatie schema dat voor het eerst werd geïntroduceerd door Geoffrey Hinton,, et al, in het paper [ImageNet-classificatie met diepe Convolutional Neural Networks](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf).
 
-Antwoord normalisatie wordt gebruikt om de generalisatie in neural-netten te helpen. Wanneer één neuron wordt geactiveerd op een zeer hoog activerings niveau, onderdrukt een lokale reactie-beveiligingslaag het activerings niveau van de omringende neurons. Dit wordt gedaan met behulp van drie para meters (`α`, `β`en `k`) en een convolutional-structuur (of een vorm van een groep). Elke neuron in de doellaag **y** komt overeen met een neuron **x** in de bronlaag. Het activerings niveau van **y** wordt gegeven door de volgende formule, waarbij `f` het activerings niveau van een neuron is, en `Nx` de kernel is (of de set die de neurons bevat in de groep **x**), zoals gedefinieerd door de volgende convolutional structuur
+Antwoord normalisatie wordt gebruikt om de generalisatie in neural-netten te helpen. Wanneer één neuron wordt geactiveerd op een zeer hoog activerings niveau, onderdrukt een lokale reactie-beveiligingslaag het activerings niveau van de omringende neurons. Dit wordt gedaan met behulp van drie para meters (`α`, `β`en `k`) en een convolutional-structuur (of een vorm van een groep). Elke neuron in de doellaag **y** komt overeen met een neuron **x** in de bronlaag. Het activerings niveau van **y** wordt gegeven door de volgende formule, waarbij `f` het activerings niveau van een neuron is, en `Nx` de kernel is (of de set die de neurons bevat in de groep **x**), zoals gedefinieerd door de volgende convolutional-structuur:
 
 ![formule voor convolutional-structuur](./media/azure-ml-netsharp-reference-guide/formula_large.png)
 

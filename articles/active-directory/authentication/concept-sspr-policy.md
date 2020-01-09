@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b95ea51db4f0c6bcdbfa905ff8b57a5a330411e6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1e9a22e6ff76c0d26a346192c69bc067e7d42ccf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848541"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425327"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Wachtwoordbeleid en -beperkingen in Azure Active Directory
 
@@ -54,7 +54,7 @@ Voor het twee-poort beleid zijn twee soorten verificatie gegevens vereist, zoals
   * Beheerder voor geprivilegieerde authenticatie
 
 * Als er 30 dagen zijn verstreken in een proef abonnement; of
-* Er is een Vanity-domein aanwezig, zoals contoso.com; of
+* Er is een aangepast domein geconfigureerd voor uw Azure AD-Tenant, zoals *contoso.com*. of
 * De identiteiten van de on-premises Directory Azure AD Connect worden gesynchroniseerd
 
 ### <a name="exceptions"></a>Uitzonderingen
@@ -62,7 +62,7 @@ Voor het twee-poort beleid zijn twee soorten verificatie gegevens vereist, zoals
 Voor een one-Gate-beleid is één verificatie gegevens vereist, zoals een e-mail adres *of* telefoon nummer. Een beleid met één poort is van toepassing op de volgende omstandigheden:
 
 * Het is binnen de eerste 30 dagen van een proef abonnement. of
-* Er is geen Vanity-domein aanwezig (*. onmicrosoft.com); maar
+* Er is geen aangepast domein geconfigureerd voor uw Azure AD-Tenant. Daarom wordt de standaard waarde * *. onmicrosoft.com*gebruikt. Houd er rekening mee dat het standaard domein * *. ononmicrosoft.com* niet wordt aanbevolen voor productie gebruik. maar
 * De identiteiten van Azure AD Connect zijn niet gesynchroniseerd
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName-beleids regels die van toepassing zijn op alle gebruikers accounts
