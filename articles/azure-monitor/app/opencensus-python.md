@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: af16643ed877ca427a22428afec028264de7a5d8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 83b4e1e10af8e398f6671f6b2561485bfdb6b7f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928973"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432486"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Azure Monitor instellen voor uw python-toepassing (preview-versie)
 
@@ -26,7 +26,7 @@ Azure Monitor ondersteunt gedistribueerde tracering, metrische verzameling en lo
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Een Application Insights resource in Azure Monitor maken
 
@@ -353,7 +353,7 @@ Dit zijn de Exporters die opentellingen bieden die zijn gekoppeld aan de typen t
     logger.warning('action', {'key-1': 'value-1', 'key-2': 'value2'})
     ```
 
-7. Zie voor meer informatie over het verrijken van uw logboeken met tracerings context gegevens integratie met opentellingen python [Logboeken](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation).
+7. Zie voor meer informatie over het verrijken van uw logboeken met tracerings context gegevens integratie met opentellingen python [Logboeken](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation).
 
 ## <a name="view-your-data-with-queries"></a>Uw gegevens weer geven met query's
 

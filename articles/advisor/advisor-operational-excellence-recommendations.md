@@ -1,19 +1,14 @@
 ---
-title: Verbeter de operationele Excellency voor uw Azure-abonnementen met Azure Advisor | Microsoft Docs
-description: Gebruik Advisor om te optimaliseren en verouderd te zijn in de operationele kwaliteit van uw Azure-abonnementen.
-services: advisor
-documentationcenter: NA
-author: sagupt
-ms.service: advisor
+title: Verbeter de operationele Excellency voor uw Azure-abonnementen met Azure Advisor
+description: Gebruik Advisor om te optimaliseren en verouderd te zijn in operationele uitmuntendheid voor uw Azure-abonnementen
 ms.topic: article
 ms.date: 10/24/2019
-ms.author: sagupt
-ms.openlocfilehash: 7cf3d3b34d0921cd111f8111bc2008ef0eced962
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: f34284ba62bd5dea98345ebe73365b332d38ee78
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033288"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443074"
 ---
 # <a name="achieve-operational-excellence-with-azure-advisor"></a>Behaal de operationele uitmuntendheid met Azure Advisor
 
@@ -37,12 +32,12 @@ Met Azure Advisor worden waarschuwings regels gedetecteerd waarvoor ongeldige qu
 
 ## <a name="follow-best-practices-using-azure-policy"></a>Volg de aanbevolen procedures voor het gebruik van Azure Policy
 
-Azure Policy is een service in Azure die u gebruikt om beleidsregels te maken, toe te wijzen en te beheren. Met deze beleids regels worden verschillende regels en effecten voor uw resources afgedwongen. Hieronder vindt u de aanbevelingen voor Azure-beleid om u te helpen bij het bezorgen van operationele Excellency: 
-1. Tags beheren met Azure Policy: dit beleid voegt de opgegeven tag en waarde toe of vervangt deze wanneer een resource wordt gemaakt of bijgewerkt. Bestaande resources kunnen worden hersteld door een herstel taak te activeren. Dit heeft ook geen invloed op labels op resource groepen.
+Azure Policy is een service in Azure die u gebruikt om beleidsregels te maken, toe te wijzen en te beheren. Met deze beleidsregels worden verschillende regels en effecten voor uw resources afgedwongen. Hieronder vindt u de aanbevelingen voor Azure-beleid om u te helpen bij het bezorgen van operationele Excellency: 
+1. Tags beheren met Azure Policy: dit beleid voegt de opgegeven tag en waarde toe of vervangt deze wanneer een resource wordt gemaakt of bijgewerkt. Bestaande resources kunnen worden hersteld door een hersteltaak te activeren. Dit heeft ook geen invloed op labels op resource groepen.
 2. Vereisten voor geonaleving afdwingen met behulp van Azure Policy: met het beleid kunt u de locaties beperken die uw organisatie kan opgeven tijdens het implementeren van resources. 
 3. Toegestane Sku's voor virtuele machines opgeven voor implementaties: met dit beleid kunt u een set virtuele machine-Sku's opgeven die uw organisatie kan implementeren.
 4. Controleren op Vm's die geen beheerde schijven gebruiken met behulp van Azure Policy
-5. Gebruik ' een tag overnemen van resource groepen ' met behulp van Azure Policy: met het beleid worden de opgegeven tag en waarde van de bovenliggende resource groep toegevoegd of vervangen wanneer een resource wordt gemaakt of bijgewerkt. Bestaande resources kunnen worden hersteld door een herstel taak te activeren.
+5. Gebruik ' een tag overnemen van resource groepen ' met behulp van Azure Policy: met het beleid worden de opgegeven tag en waarde van de bovenliggende resource groep toegevoegd of vervangen wanneer een resource wordt gemaakt of bijgewerkt. Bestaande resources kunnen worden hersteld door een hersteltaak te activeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

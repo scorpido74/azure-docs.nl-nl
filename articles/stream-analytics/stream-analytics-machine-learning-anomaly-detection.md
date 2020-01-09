@@ -1,50 +1,49 @@
 ---
-title: Anomaliedetectie in Azure Stream Analytics
+title: Anomalie detectie in Azure Stream Analytics
 description: In dit artikel wordt beschreven hoe u Azure Stream Analytics en Azure Machine Learning samen gebruiken voor het detecteren van afwijkingen.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: e2fd226f1c605821f0fd595832b2cbe26d994fb4
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: e29ac6671d71ea02b432c9843541796984737c8b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612341"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459604"
 ---
-# <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomaliedetectie in Azure Stream Analytics
+# <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomalie detectie in Azure Stream Analytics
 
-Beschikbaar in de cloud en de Azure IoT Edge, Azure Stream Analytics biedt ingebouwde machine learning-detectiemogelijkheden op basis van afwijkingen die kunnen worden gebruikt voor het bewaken van de twee meest voorkomende anomalieën: tijdelijke en permanente. Met de **AnomalyDetection_SpikeAndDip** en **AnomalyDetection_ChangePoint** functies, rechtstreeks in uw Stream Analytics-taak kunt u anomaliedetectie uitvoeren.
+Azure Stream Analytics biedt in zowel de Cloud als de Azure IoT Edge een machine learning ingebouwde oplossing voor afwijkings detectie die kan worden gebruikt voor het bewaken van de twee meest voorkomende afwijkingen: tijdelijk en permanent. Met de functies **AnomalyDetection_SpikeAndDip** en **AnomalyDetection_ChangePoint** kunt u anomalie detectie rechtstreeks in uw stream Analytics-taak uitvoeren.
 
-De machine learning-modellen wordt ervan uitgegaan dat een uniforme wijze sample tijdreeks. Als de tijdreeks niet uniform is, kunt u een stap aggregatie met een tumblingvenster vóór het aanroepen van detectie van afwijkingen kunt invoegen.
+De machine learning modellen nemen een uniforme steek proef van de tijd reeks uit. Als de tijd reeks niet uniform is, kunt u een aggregatie stap invoegen met een tumblingvenstertriggers-venster voordat u anomalie detectie aanroept.
 
-De machine learning-bewerkingen ondersteunen geen periodieke variatie trends of meerdere variate correlaties op dit moment.
+De machine learning-bewerkingen bieden op dit moment geen ondersteuning voor seizoensgebonden trends of multi-variate-correlaties.
 
-## <a name="model-behavior"></a>Model-gedrag
+## <a name="model-behavior"></a>Model gedrag
 
-Over het algemeen verbetert de nauwkeurigheid van het model met meer gegevens in de sliding window van. De gegevens in de opgegeven sliding window van wordt behandeld als onderdeel van het normale bereik van waarden voor die periode wordt voltooid. Het model alleen rekening gehouden met geschiedenis van gebeurtenissen gedurende de sliding window van moet worden gecontroleerd als de huidige gebeurtenis afwijkend. Als u de sliding window van verplaatst, worden oude waarden uit de training van het model verwijderd.
+Over het algemeen verbetert de nauw keurigheid van het model met meer gegevens in de sliding window. De gegevens in de opgegeven sliding window worden beschouwd als onderdeel van het normale waarden bereik voor dat tijds bestek. Het model beschouwt alleen gebeurtenis geschiedenis over de sliding window om te controleren of de huidige gebeurtenis afwijkt. Naarmate de sliding window verplaatst, worden oude waarden uit de training van het model verwijderd.
 
-De functies worden uitgevoerd door het tot stand brengen van een bepaalde normale op basis van wat ze tot nu toe hebben gezien. Uitbijters worden geïdentificeerd door het vergelijken met het tot stand gebrachte normaal, binnen het niveau van betrouwbaarheid. De venstergrootte moet worden gebaseerd op de minimale gebeurtenissen die zijn vereist voor het trainen van het model voor het normale gedrag, zodat wanneer een anomalie wordt gedetecteerd, het kunnen herkennen deze zou zijn.
+De functies werken met een bepaald normaal, afhankelijk van wat ze tot nu toe hebben gezien. Uitbijters worden geïdentificeerd door te vergelijken met het tot stand gebrachte normaal, binnen het betrouwbaarheids niveau. De grootte van het venster moet worden gebaseerd op de minimale gebeurtenissen die nodig zijn om het model te trainen voor normaal gedrag, zodat het kan worden herkend wanneer een afwijkend probleem optreedt.
 
-Reactietijd van het model wordt verhoogd met een grootte van de geschiedenis omdat nodig is om te vergelijken met een groter aantal gebeurtenissen in het verleden. Het verdient aanbeveling om op te nemen alleen het benodigde aantal gebeurtenissen voor betere prestaties.
+De reactie tijd van het model neemt toe met de grootte van de geschiedenis omdat deze moet worden vergeleken met een hoger aantal gebeurtenissen in het verleden. Het is raadzaam om alleen het vereiste aantal gebeurtenissen voor betere prestaties op te nemen.
 
-Hiaten in de tijdreeks kunnen het gevolg zijn van het model niet ontvangen van gebeurtenissen op bepaalde tijdstippen in de tijd. Deze situatie wordt verzorgd door Stream Analytics met behulp van toerekening logica. De grootte van de geschiedenis, evenals een tijdsduur voor de sliding window van dezelfde wordt gebruikt voor het berekenen van de gemiddelde frequentie van waarmee gebeurtenissen worden verwacht aankomt.
+Hiaten in de tijd reeks kunnen een resultaat zijn van het model dat geen gebeurtenissen op bepaalde tijdstippen ontvangt. Deze situatie wordt afgehandeld door Stream Analytics de logica van de toerekening te gebruiken. De geschiedenis grootte, evenals een tijds duur, voor dezelfde sliding window wordt gebruikt om de gemiddelde snelheid te berekenen waarmee gebeurtenissen naar verwachting arriveren.
 
-Een generator anomaliedetectie beschikbaar [hier](https://aka.ms/asaanomalygenerator) kan worden gebruikt om de feed van een Iot-Hub met gegevens met verschillende anomaliedetectie patronen. Een ASA-taak kan worden ingesteld met deze functies van de detectie van afwijkingen om te lezen van deze Iot Hub en afwijkingen.
+Een afwijkings generator die [hier](https://aka.ms/asaanomalygenerator) beschikbaar is, kan worden gebruikt voor het invoeren van een IOT-hub met gegevens met verschillende afwijkende patronen. Een ASA-taak kan worden ingesteld met behulp van deze anomalie detectie functies om te lezen van deze IOT hub en afwijkingen te detecteren.
 
-## <a name="spike-and-dip"></a>Piek- en dip
+## <a name="spike-and-dip"></a>Piek en DIP
 
-Tijdelijke afwijkingen in de gebeurtenisstroom van een time-serie zijn voorzien van zoals pieken en dalen. Pieken en dips n de kunnen worden bewaakt met behulp van de operator op Machine Learning gebaseerde [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+Tijdelijke afwijkingen in een time series-gebeurtenis stroom worden aangeduid als pieken en spannings dips. Pieken en spannings dips kunnen worden bewaakt met behulp van de operator Machine Learning op basis [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
 ).
 
-![Voorbeeld van een piek- en dip-anomaliedetectie](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
+![Voor beeld van Prikker en DIP-afwijkingen](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
 
-In de sliding window van dezelfde, als een tweede piek kleiner dan de eerste versie is, is de berekende score voor de kleinere piek waarschijnlijk niet aanzienlijke voldoende ten opzichte van de score voor de eerste piek in het niveau van betrouwbaarheid opgegeven. U kunt proberen de betrouwbaarheid van het model voor het detecteren van dergelijke afwijkingen verlagen. Als u begint met te veel waarschuwingen ontvangen, kunt u echter een hogere betrouwbaarheidsinterval gebruiken.
+Als in hetzelfde sliding window een tweede Prikker kleiner is dan de eerste, is de berekende score voor de kleinere Prikker waarschijnlijk niet significant genoeg ten opzichte van de score voor de eerste Prikker binnen het opgegeven betrouwbaarheids niveau. U kunt proberen het betrouwbaarheids niveau van het model te verlagen om dergelijke afwijkingen te detecteren. Als u echter te veel waarschuwingen ontvangt, kunt u een hoger betrouwbaarheids interval gebruiken.
 
-De volgende voorbeeldquery wordt ervan uitgegaan dat een uniform invoer tarief van één gebeurtenis per seconde in een sliding window van 2 minuten met een geschiedenis van 120 gebeurtenissen. De laatste SELECT-instructie worden uitgepakt en levert de score en anomaliedetectie status met een vertrouwensniveau van 95%.
+In de volgende voorbeeld query wordt uitgegaan van een uniforme invoer snelheid van één gebeurtenis per seconde in een sliding window van twee minuten met een geschiedenis van 120 gebeurtenissen. De Final SELECT-instructie haalt de score en de afwijkings status op en voert deze uit met een betrouwbaarheids niveau van 95%.
 
 ```SQL
 WITH AnomalyDetectionStep AS
@@ -69,19 +68,19 @@ FROM AnomalyDetectionStep
 
 ## <a name="change-point"></a>Punt wijzigen
 
-Permanente afwijkingen in de gebeurtenisstroom van een time-series zijn wijzigingen in de distributie van de waarden in de gebeurtenisstroom, zoals wijzigingen op en trends. In Stream Analytics, dergelijke afwijkingen worden gedetecteerd met behulp van de Machine Learning op basis van [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) operator.
+Permanente afwijkingen in een time series-gebeurtenis stroom zijn wijzigingen in de distributie van waarden in de gebeurtenis stroom, zoals niveau wijzigingen en trends. In Stream Analytics worden dergelijke afwijkingen gedetecteerd met behulp van de operator Machine Learning op basis van [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) .
 
-Permanente wijzigingen veel langer dan pieken en dalen en kunnen duiden op catastrofale gebeurtenis(sen). Permanente wijzigingen zijn niet meestal zichtbaar is voor het blote oog, maar kan worden gedetecteerd met de **AnomalyDetection_ChangePoint** operator.
+Permanente wijzigingen die langer duren dan pieken en spannings dips en kunnen duiden op een onherstelbare gebeurtenis (sen). Permanente wijzigingen zijn doorgaans niet zichtbaar voor het blote oog, maar kunnen wel worden gedetecteerd met de operator **AnomalyDetection_ChangePoint** .
 
-De volgende afbeelding is een voorbeeld van een niveau wijzigen:
+De volgende afbeelding is een voor beeld van een niveau wijziging:
 
-![Voorbeeld van het niveau wijzigen van afwijkingen](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-level-change.png)
+![Voor beeld van anomalie wijziging van niveau](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-level-change.png)
 
-De volgende afbeelding is een voorbeeld van een wijziging trend:
+De volgende afbeelding is een voor beeld van een trend wijziging:
 
-![Voorbeeld van de trend wijzigen anomaliedetectie](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-trend-change.png)
+![Voor beeld van anomalie wijziging van trend](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-trend-change.png)
 
-De volgende voorbeeldquery wordt ervan uitgegaan dat een uniform invoer tarief van één gebeurtenis per seconde in een sliding window van 20 minuten met een grootte van de geschiedenis van 1200 gebeurtenissen. De laatste SELECT-instructie worden uitgepakt en levert de score en anomaliedetectie status met een vertrouwensniveau van 80%.
+In de volgende voorbeeld query wordt uitgegaan van een uniforme invoer snelheid van één gebeurtenis per seconde in een sliding window van 20 minuten met een geschiedenis grootte van 1200 gebeurtenissen. De Final SELECT-instructie haalt de score en de afwijkings status op en voert deze uit met een betrouwbaarheids niveau van 80%.
 
 ```SQL
 WITH AnomalyDetectionStep AS
@@ -105,53 +104,53 @@ FROM AnomalyDetectionStep
 
 ```
 
-## <a name="performance-characteristics"></a>Prestatiekenmerken
+## <a name="performance-characteristics"></a>Prestatie kenmerken
 
-De prestaties van deze modellen is afhankelijk van de grootte van de geschiedenis, de duur van het venster, de gebeurtenisbelasting, en of de functie level partitioneren is gebruikt. In deze sectie gaat over deze configuraties en bevat voorbeelden voor het handhaven van de tarieven voor gegevensopname van 1K, 5K en 10K gebeurtenissen per seconde.
+De prestaties van deze modellen zijn afhankelijk van de geschiedenis grootte, de duur van het venster, het laden van gebeurtenissen en of het gebruik van partitionering op functie niveau wordt gebruikt. In deze sectie worden deze configuraties beschreven en vindt u voor beelden voor het opvangen van de opname snelheid van 1K, 5K en 10K-gebeurtenissen per seconde.
 
-* **Grootte van de geschiedenis** -deze modellen uitvoeren Lineair met **geschiedenis grootte**. Hoe langer de grootte van de geschiedenis, hoe langer duren de modellen om een nieuwe gebeurtenis te beoordelen. Dit komt doordat de modellen Vergelijk de nieuwe gebeurtenis met elk van de gebeurtenissen in de buffer in het verleden.
-* **Duur van het venster** : de **duur van het venster** moet vergelijkbaar zijn met hoe lang het duurt om zo veel gebeurtenissen zoals opgegeven door de grootte van de geschiedenis ontvangen. Azure Stream Analytics zou ontbrekende waarden rekenen zonder dat veel gebeurtenissen in het venster. CPU-verbruik is daarom een functie van de grootte van de geschiedenis.
-* **Gebeurtenisbelasting** : des te groter de **gebeurtenisbelasting**, hoe meer werk dat wordt uitgevoerd door de modellen die van invloed is op CPU-verbruik. De taak kan worden uitgebreid door deze perfect parallelle, ervan uitgaande dat het zinvol voor zakelijke logica voor het gebruik van meer invoer partities te maken.
-* **Functie niveau partitioneren** - **functie niveau partitioneren** vindt plaats via ```PARTITION BY``` binnen de functieaanroep voor detectie van afwijkingen. Dit type partitioneren toegevoegd overhead, zoals status moet worden onderhouden voor meerdere modellen op hetzelfde moment. Functie niveau partitioneren wordt gebruikt in scenario's zoals apparaat niveau partitioneren.
+* **Geschiedenis formaat** : deze modellen voeren lineair uit met de **geschiedenis grootte**. Hoe langer het geschiedenis formaat, hoe langer het model is om een nieuwe gebeurtenis te beoordelen. Dit komt doordat de modellen de nieuwe gebeurtenis vergelijken met elk van de gebeurtenissen in de geschiedenis buffer.
+* **Duur** van het venster: de duur van het **venster** moet weer geven hoe lang het duurt om zoveel gebeurtenissen te ontvangen als aangegeven door de geschiedenis grootte. Zonder dat er veel gebeurtenissen in het venster zijn, worden in Azure Stream Analytics ontbrekende waarden toegerekend. Daarom is het CPU-verbruik een functie van de geschiedenis grootte.
+* **Gebeurtenis belasting** : hoe groter de **gebeurtenis belasting**, hoe meer werk wordt uitgevoerd door de modellen, waardoor het CPU-verbruik wordt beïnvloed. De taak kan worden uitgeschaald door deze ongeëvenaard parallel te maken, ervan uitgaande dat het zinvol is voor bedrijfs logica om meer invoer partities te gebruiken.
+* Het **partitioneren van functies op functie niveau** - **functie niveau partitioneren** wordt uitgevoerd met behulp van ```PARTITION BY``` binnen de functie aanroep van de anomalie detectie. Dit type partitionering voegt een overhead toe, aangezien de status moet worden bijgehouden voor meerdere modellen tegelijk. Partitioneren op functie niveau wordt gebruikt in scenario's zoals het partitioneren op apparaatniveau.
 
 ### <a name="relationship"></a>Relatie
-De geschiedenis van grootte, de duur van het venster en de totale gebeurtenisbelasting hebben betrekking op de volgende manier:
+De geschiedenis grootte, de duur van het venster en de totale gebeurtenis belasting zijn op de volgende manier gerelateerd:
 
-windowDuration (in ms) = 1000 * historySize / (totaal aantal invoer-gebeurtenissen Per seconde / aantal invoer-partities)
+windowDuration (in MS) = 1000 * historySize/(totale invoer gebeurtenissen per seconde/aantal invoer partities)
 
-Wanneer u de functie door de apparaat-id, voeg toe 'partitie met de apparaat-id"aan de functieaanroep voor detectie van afwijkingen.
+Wanneer u de functie partitioneert door deviceId, voegt u ' PARTITION BY deviceId ' toe aan de functie voor afwijkings detectie.
 
-### <a name="observations"></a>Opmerkingen
-De volgende tabel bevat de doorvoer-opmerkingen voor een enkel knooppunt (6 SU) voor het geval van niet-gepartitioneerde:
+### <a name="observations"></a>Opmerkingen over
+De volgende tabel bevat de door Voer waarnemingen voor één knoop punt (6 SU) voor de niet-gepartitioneerde Case:
 
-| Geschiedenis-grootte (gebeurtenissen) | Duur van het venster (ms) | Totaal aantal invoer gebeurtenissen per seconde |
+| Geschiedenis grootte (gebeurtenissen) | Duur van het venster (MS) | Totaal aantal invoer gebeurtenissen per seconde |
 | --------------------- | -------------------- | -------------------------- |
-| 60 | 55 | 2,200 |
-| 600 | 728 | 1,650 |
-| 6,000 | 10,910 | 1,100 |
+| 60 | 55 | 2200 |
+| 600 | 728 | 1\.650 |
+| 6,000 | 10.910 | 1100 |
 
-De volgende tabel bevat de doorvoer-opmerkingen voor een enkel knooppunt (6 SU) voor de gepartitioneerde aanvraag:
+De volgende tabel bevat de door Voer waarnemingen voor één knoop punt (6 SU) voor de gepartitioneerde Case:
 
-| Geschiedenis-grootte (gebeurtenissen) | Duur van het venster (ms) | Totaal aantal invoer gebeurtenissen per seconde | Aantal apparaten |
+| Geschiedenis grootte (gebeurtenissen) | Duur van het venster (MS) | Totaal aantal invoer gebeurtenissen per seconde | Aantal apparaten |
 | --------------------- | -------------------- | -------------------------- | ------------ |
-| 60 | 1,091 | 1,100 | 10 |
-| 600 | 10,910 | 1,100 | 10 |
-| 6,000 | 218,182 | <550 | 10 |
-| 60 | 21,819 | 550 | 100 |
-| 600 | 218,182 | 550 | 100 |
-| 6,000 | 2,181,819 | <550 | 100 |
+| 60 | 1\.091 | 1100 | 10 |
+| 600 | 10.910 | 1100 | 10 |
+| 6,000 | 218.182 | <550 | 10 |
+| 60 | 21.819 | 550 | 100 |
+| 600 | 218.182 | 550 | 100 |
+| 6,000 | 2\.181.819 | <550 | 100 |
 
-Van voorbeeldcode voor het uitvoeren van de bovenstaande niet-gepartitioneerde configuraties bevindt zich in de [Streaming op schaal opslagplaats](https://github.com/Azure-Samples/streaming-at-scale/blob/f3e66fa9d8c344df77a222812f89a99b7c27ef22/eventhubs-streamanalytics-eventhubs/anomalydetection/create-solution.sh) van Azure-voorbeelden. De code maakt u een stream analytics-taak met geen functie niveau partitionering, dat gebruikmaakt van Event Hub als invoer en uitvoer. De invoer belasting is gegenereerd met behulp van testclients. Elke invoer gebeurtenis is een json-document van 1KB. Gebeurtenissen simuleren een IoT-apparaat voor het verzenden van JSON-gegevens (voor maximaal 1 K-apparaten). De geschiedenis van grootte, de duur van het venster en de totale gebeurtenisbelasting zijn via 2 invoer partities verschillend.
+Voorbeeld code voor het uitvoeren van de niet-gepartitioneerde configuraties hierboven bevindt zich in de [streaming op schaal opslag plaats](https://github.com/Azure-Samples/streaming-at-scale/blob/f3e66fa9d8c344df77a222812f89a99b7c27ef22/eventhubs-streamanalytics-eventhubs/anomalydetection/create-solution.sh) van Azure-voor beelden. De code maakt een stream Analytics-taak zonder partitioneren op functie niveau, waarbij Event hub wordt gebruikt als invoer en uitvoer. De invoer belasting wordt gegenereerd met test-clients. Elke invoer gebeurtenis is een 1 KB JSON-document. Gebeurtenissen simuleren een IoT-apparaat dat JSON-gegevens verzendt (voor Maxi maal 1K apparaten). De geschiedenis grootte, de duur van het venster en de totale gebeurtenis belasting zijn variërend op twee invoer partities.
 
 > [!Note]
-> Voor een meer nauwkeurige schatting en pas de voorbeelden voor uw scenario.
+> Voor een nauw keuriger schatting past u de voor beelden aan uw scenario aan.
 
-### <a name="identifying-bottlenecks"></a>Identificeren van knelpunten
-Gebruik het deelvenster met metrische gegevens in uw Azure Stream Analytics-taak voor het identificeren van knelpunten in de pijplijn. Beoordeling **i/o-gebeurtenissen** voor doorvoer en ["Watermerk vertraging"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) of **van achterstallige gebeurtenissen** om te zien als de taak is dat de invoer snelheid. Zoek voor metrische gegevens van Event Hub, **aanvragen beperkt** en de drempelwaarde-eenheden overeenkomstig aanpassen. Raadpleeg voor metrische gegevens voor Cosmos DB, **maximaal aantal gebruikte RU/s per partitiesleutelbereik** onder doorvoer om te controleren of de partitie sleutelbereiken op uniforme wijze worden verbruikt. Controleer voor de Azure SQL DB **logboek-IO** en **CPU**.
+### <a name="identifying-bottlenecks"></a>Knel punten identificeren
+Gebruik het deel venster metrieken in uw Azure Stream Analytics-taak om knel punten in uw pijp lijn te identificeren. Bekijk **invoer-en uitvoer gebeurtenissen** voor door Voer en [' watermerk vertraging '](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) of achterstands **gebeurtenissen** om te zien of de taak de invoer snelheid bijhoudt. Voor metrische gegevens van Event hub zoekt u naar **vertraagde aanvragen** en past u de drempel waarden dienovereenkomstig aan. Bekijk voor Cosmos DB metrische gegevens het **maximum aantal gebruikte ru/s per partitie sleutel bereik** onder door Voer om ervoor te zorgen dat de partitie sleutel bereik op gelijke wijze worden verbruikt. Bewaak **logboek-io** en **CPU**voor Azure SQL DB.
 
-## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Afwijkingsdetectie met machine learning in Azure Stream Analytics
+## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Anomalie detectie met behulp van machine learning in Azure Stream Analytics
 
-De volgende video ziet u hoe u een anomalie detecteren in realtime met machine learning-functies in Azure Stream Analytics. 
+In de volgende video ziet u hoe u in realtime een anomalie kunt detecteren met behulp van machine learning functies in Azure Stream Analytics. 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Anomaly-detection-using-machine-learning-in-Azure-Stream-Analytics/player]
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 6fa8e560dc50859fc0501dde8109ddc7cbd596b8
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: f341f5bbf7221664301ca53eea1edd6af7544950
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688617"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422007"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Beheerde identiteiten gebruiken voor App Service en Azure Functions
 
@@ -40,7 +40,7 @@ Als u een beheerde identiteit in de portal instelt, moet u eerst een toepassing 
 
 4. Schakel op het tabblad **systeem toegewezen** de optie **status** in **op aan**. Klik op **Opslaan**.
 
-    ![Beheerde identiteit in App Service](media/app-service-managed-service-identity/msi-blade-system.png)
+    ![Beheerde identiteit in App Service](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 ### <a name="using-the-azure-cli"></a>Azure CLI gebruiken
 
@@ -169,7 +169,7 @@ Eerst moet u een door de gebruiker toegewezen id-resource maken.
 
 6. Zoek de identiteit die u eerder hebt gemaakt en selecteer deze. Klik op **Add**.
 
-    ![Beheerde identiteit in App Service](media/app-service-managed-service-identity/msi-blade-user.png)
+    ![Beheerde identiteit in App Service](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
 ### <a name="using-an-azure-resource-manager-template"></a>Een Azure Resource Manager-sjabloon gebruiken
 
@@ -251,10 +251,10 @@ Er zijn twee omgevings variabelen gedefinieerd voor een app met een beheerde ide
 
 De **MSI_ENDPOINT** is een lokale URL van waaruit uw app tokens kan aanvragen. Als u een token voor een resource wilt ophalen, maakt u een HTTP GET-aanvraag naar dit eind punt, met inbegrip van de volgende para meters:
 
-> |Parameternaam|Naast|Beschrijving|
+> |Parameternaam|In|Beschrijving|
 > |-----|-----|-----|
 > |resource|Query|De AAD-resource-URI van de resource waarvoor een token moet worden verkregen. Dit kan een van de [Azure-Services zijn die ondersteuning bieden voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) of een andere resource-URI.|
-> |API-versie|Query|De versie van de token-API die moet worden gebruikt. "2017-09-01" is momenteel de enige versie die wordt ondersteund.|
+> |api-version|Query|De versie van de token-API die moet worden gebruikt. "2017-09-01" is momenteel de enige versie die wordt ondersteund.|
 > |geheim|Header|De waarde van de omgevings variabele MSI_SECRET. Deze header wordt gebruikt om SSRF-aanvallen (server-side Request vervalsing) te voor komen.|
 > |clientid|Query|(Optioneel tenzij gebruikers toegewezen) De ID van de door de gebruiker toegewezen identiteit die moet worden gebruikt. Als u dit weglaat, wordt de door het systeem toegewezen identiteit gebruikt.|
 
@@ -299,7 +299,7 @@ Content-Type: application/json
 }
 ```
 
-### <a name="code-examples"></a>Code voorbeelden
+### <a name="code-examples"></a>Codevoorbeelden
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 

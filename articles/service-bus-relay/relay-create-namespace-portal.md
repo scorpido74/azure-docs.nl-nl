@@ -14,25 +14,25 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/20/2017
 ms.author: spelluru
-ms.openlocfilehash: a7bb26cdfec4042a1963f929f92e5505045124a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c2f15008149de00ba232824280c69bcf4da978f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60749237"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459276"
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>Een Relay-naamruimte maken met behulp van Azure Portal
 
 Een naamruimte is een scoping container voor al uw Azure Relay-onderdelen. Er kunnen zich meerdere relays in één naamruimte bevinden, en naamruimten fungeren vaak als toepassingscontainers. Er zijn momenteel twee verschillende manieren om een relay-naamruimte te maken:
 
 1. Azure Portal (dit artikel).
-2. [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-sjablonen.
+2. [Azure Resource Manager](../azure-resource-manager/management/overview.md)-sjablonen.
 
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Een naamruimte in Azure Portal maken
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
-Gefeliciteerd! U hebt nu een relay-naamruimte gemaakt.
+Gefeliciteerd. U hebt nu een relay-naamruimte gemaakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

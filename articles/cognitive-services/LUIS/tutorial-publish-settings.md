@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/03/2019
+ms.date: 12/13/2019
 ms.author: diberry
-ms.openlocfilehash: 0e105d70ff7f590a84e0a82c15bcdd83052b63a8
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 7683a73fd1f403847089dc722e5f6382acd948cb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807490"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447699"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>Zelf studie: sentiment-analyse toevoegen als publicatie-instelling
 
@@ -35,7 +35,7 @@ In deze zelf studie wijzigt u de publicatie-instellingen om sentiment analyse te
 
 De volgende utterances zijn voorbeelden van gevoelens:
 
-|Stemming|Score|Utterance|
+|Sentiment|Score|Utterance|
 |:--|:--|:--|
 |negatief|0,01 |De pizza is awful.|
 |positief|0,97 |De kaas pizza was geweldig.|
@@ -46,7 +46,7 @@ Omdat het een publicatie-instelling is, ziet u deze niet op de pagina's doel ite
 
 ## <a name="import-example-json-to-begin-app"></a>Voor beeld van import. json voor het starten van de app
 
-1.  Down load en sla het [JSON-bestand](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)van de app op.
+1.  Down load en sla het [JSON-bestand](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)van de app op.
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
@@ -71,7 +71,7 @@ Omdat het een publicatie-instelling is, ziet u deze niet op de pagina's doel ite
 
     `Deliver 2 of the best cheese pizzas ever!!!`
 
-    De laatste parameter van de queryreeks is `query`, de utterance **query**. Deze utterance is niet hetzelfde als een van de gelabelde utterances en dit is dus een goede test die de intent `OrderPizza` als resultaat moet geven met de sentimentanalyse geëxtraheerd.
+    De laatste parameter van de queryreeks is `query`, de utterance **query**. Deze utterance is niet hetzelfde als een van de gelabelde utterances en dit is dus een goede test die de intentie `OrderPizza` als resultaat moet geven met de sentimentanalyse geëxtraheerd.
 
     ```json
     {

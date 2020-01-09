@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c8554fc3f691af05a2c6a660d07ffb9a6ff29f31
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 03b0269b1a4500fd8ae26cd5e56f48427c5506aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084337"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429186"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Snelstartgids: SSH en RDP via een stroom van een IoT Hub apparaat inschakelen met behulp van een C-proxy toepassing (preview)
 
@@ -26,7 +26,7 @@ Azure IoT Hub ondersteunt momenteel het streamen van apparaten als een [Preview-
 
 In deze Quick Start wordt de configuratie beschreven voor het gebruik van trans porting Secure Shell (SSH)-verkeer (via poort 22) via apparaat stromen. Het Setup-verkeer voor Remote Desktop Protocol (RDP) is vergelijkbaar en vereist een eenvoudige configuratie wijziging. Omdat apparaatversleuteling het toepassings-en protocol-neutraal zijn, kunt u deze Snelstartgids aanpassen voor andere soorten toepassings verkeer.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Het werkt als volgt
 
 In de volgende afbeelding ziet u hoe de lokale proxy Programma's van het apparaat en de service end-to-end-connectiviteit mogelijk maken tussen de SSH-client en SSH-daemon-processen. Tijdens de open bare preview ondersteunt de C SDK alleen apparaatnamen op het apparaat. Als gevolg hiervan wordt in deze Snelstartgids beschreven hoe u alleen de apparaat-Local proxy toepassing uitvoert. Volg de instructies in een van de volgende Quick starts om de bijbehorende service-side toepassing te bouwen en uit te voeren:
 
@@ -54,7 +54,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 * De preview van Device streams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
 
-  * US - centraal
+  * VS - centraal
   * Centrale VS-EUAP
   * Europa - noord
   * Azië - zuidoost
@@ -76,18 +76,19 @@ Voor deze Quick Start gebruikt u de [Azure IOT Device SDK voor C](iot-hub-device
 
     Het is belang rijk dat de Visual Studio-vereisten (Visual Studio en de *ontwikkeling van het C++ bureau blad met* werk belasting) op uw computer zijn geïnstalleerd *voordat* u de cmake-installatie start. Nadat de vereiste onderdelen zijn geïnstalleerd en de down load is gecontroleerd, kunt u het CMake build-systeem installeren.
 
-1. Open een opdrachtprompt of Git Bash-shell. Voer de volgende opdracht uit voor het klonen van de [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-opslagplaats:
+1. Open een opdrachtprompt of Git Bash-shell. Voer de volgende opdrachten uit om de [Azure IOT C SDK](https://github.com/Azure/azure-iot-sdk-c) github-opslag plaats te klonen:
 
-    ```
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
-    ```
-
-    Het kan een paar minuten duren voordat deze bewerking wordt uitgevoerd.
-
-1. Maak een *cmake* -submap in de hoofdmap van de Git-opslag plaats, zoals wordt weer gegeven in de volgende opdracht en navigeer naar die map.
-
-    ```
+    ```cmd/sh
+    git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
     cd azure-iot-sdk-c
+    git submodule update --init
+    ```
+
+    Deze bewerking kan enkele minuten duren.
+
+1. Maak een *cmake* -submap in de hoofdmap van de Git-opslag plaats en navigeer naar die map. Voer de volgende opdrachten uit vanuit de map *Azure-IOT-SDK-c* :
+
+    ```cmd/sh
     mkdir cmake
     cd cmake
     ```
@@ -109,6 +110,9 @@ Voor deze Quick Start gebruikt u de [Azure IOT Device SDK voor C](iot-hub-device
 
       rem Or for VS2017
       cmake .. -G "Visual Studio 15 2017"
+
+      rem Or for VS2019
+      cmake .. -G "Visual Studio 16 2019"
 
       rem Then build the project
       cmake --build . -- /m /p:Configuration=Release

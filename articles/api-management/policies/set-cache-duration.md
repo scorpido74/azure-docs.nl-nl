@@ -1,5 +1,6 @@
 ---
-title: Voor beeld van Azure API management-beleid-respons cache duur instellen | Microsoft Docs
+title: Voor beeld-API management-beleid-de duur van de antwoord cache instellen
+titleSuffix: Azure API Management
 description: 'Voor beeld van Azure API management-beleid: laat zien hoe u de respons cache duur instelt met behulp van de maxAge-waarde in de cache-Control-header die door de back-end wordt verzonden.'
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 67d2f334e2088d96543fabd3b99cac71d95630eb
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 3101c5695272e8fa6b577ad313897cbc1fa29629
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071977"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442399"
 ---
 # <a name="set-response-cache-duration"></a>De respons cache duur instellen
 

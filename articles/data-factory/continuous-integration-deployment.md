@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 7c5c1e91e97087bf28b03629659e5194f67c22b3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 06c8784c235b157f5799bb727df9784dfaa2f376
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680035"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440505"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Continue integratie en levering (CI/CD) in Azure Data Factory
 
@@ -56,11 +56,11 @@ Selecteer in de vervolg keuzelijst **arm-sjabloon** de optie **arm-sjabloon expo
 
 Selecteer in uw test-en productie gegevens fabrieken de optie **arm-sjabloon importeren**. Met deze actie gaat u naar de Azure Portal, waar u de geëxporteerde sjabloon kunt importeren. Selecteer **uw eigen sjabloon bouwen in de editor** om de Resource Manager-sjabloon editor te openen.
 
-![](media/continuous-integration-deployment/continuous-integration-image3.png) 
+![Aangepaste implementatie uw eigen sjabloon bouwen](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
 Klik op **bestand laden** en selecteer de gegenereerde Resource Manager-sjabloon.
 
-![](media/continuous-integration-deployment/continuous-integration-image4.png)
+![Aangepaste implementatie sjabloon bewerken](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
 Voer in het deel venster instellingen de configuratie waarden in, zoals de referenties van de gekoppelde service. Zodra u klaar bent, klikt u op **aanschaffen** om de Resource Manager-sjabloon te implementeren.
 

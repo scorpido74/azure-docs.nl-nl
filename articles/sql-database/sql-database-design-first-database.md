@@ -9,21 +9,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: d3fecd54e36c8a3dd43c88f5aa4e4233057c3f91
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9764c4bc794eb8d133270b762fa2bca30a056fea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838582"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459625"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Zelf studie: een relationele data base ontwerpen in één data base in Azure SQL Database met behulp van SSMS
 
 Azure SQL-database is een relationele DBaaS (database-as-a-service) in Microsoft Cloud (Azure). In deze zelfstudie leert u hoe u met Azure Portal en [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) de volgende taken uitvoert:
 
 > [!div class="checklist"]
-> - Een individuele database maken met behulp van de Azure-portal*
-> - Een IP-firewallregel op serverniveau instellen met de Azure-portal
-> - Verbinding maken met de database via SQL Server Management Studio
+> - Een individuele database maken met Azure Portal*
+> - Een IP-firewallregel op serverniveau instellen met Azure Portal
+> - Verbinding maken met de database via SSMS
 > - Tabellen maken met SSMS
 > - Gegevens bulksgewijs laden met BCP
 > - Query uitvoeren op gegevens met SSMS
@@ -33,7 +33,7 @@ Azure SQL-database is een relationele DBaaS (database-as-a-service) in Microsoft
 > [!TIP]
 > De volgende Microsoft Learn module helpt u gratis te leren hoe u [een ASP.NET-toepassing kunt ontwikkelen en configureren die een query uitvoert op een Azure SQL database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/), inclusief het maken van een eenvoudige data base.
 > [!NOTE]
-> Voor deze zelfstudie wordt gebruikgemaakt van een individuele database. U kunt ook een gepoolde database in een elastische pool of een exemplaardatabase in een beheerd exemplaar gebruiken. Zie deze Quick starts voor het beheerde exemplaar: [Snelstartgids: Configure Azure VM to Connect to a Azure SQL database Managed instance](sql-database-managed-instance-configure-vm.md) and Quick Start ( [een punt-naar-site-verbinding naar een Azure SQL database configureren) voor verbinding met een beheerd exemplaar. Beheerd exemplaar van on-premises](sql-database-managed-instance-configure-p2s.md).
+> Voor deze zelfstudie wordt gebruikgemaakt van een individuele database. U kunt ook een gepoolde database in een elastische pool of een exemplaardatabase in een beheerd exemplaar gebruiken. Voor connectiviteit met een beheerd exemplaar raadpleegt u de volgende Managed instance Quick starts: Quick Start: [Configure Azure VM to Connect to a Azure SQL database Managed instance](sql-database-managed-instance-configure-vm.md) and [Quick Start: Configure an Point-to-site connection to a Azure SQL database Managed instance of on-premises](sql-database-managed-instance-configure-p2s.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -48,11 +48,11 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-single-database"></a>Een lege individuele database maken
 
-Een individuele Azure SQL-database wordt gemaakt met een gedefinieerde set reken- en opslagresources. De database wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en wordt beheerd met een [databaseserver](sql-database-servers.md).
+Een individuele Azure SQL-database wordt gemaakt met een gedefinieerde set reken- en opslagresources. De database wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/management/overview.md) en wordt beheerd met een [databaseserver](sql-database-servers.md).
 
 Volg deze stappen om een lege individuele database te maken.
 
-1. Selecteer in het menu Azure Portal of op de **Start** pagina de optie **een resource maken**.
+1. Selecteer in het menu van Azure Portal of op de **Startpagina** de optie **Een resource maken**.
 2. Selecteer op de pagina **Nieuw** **Databases** in de sectie Azure Marketplace en klik vervolgens op **SQL Database** in de sectie **Aanbevolen**.
 
    ![lege database maken](./media/sql-database-design-first-database/create-empty-database.png)
@@ -131,17 +131,17 @@ Gebruik [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ss
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Servertype** | Database-engine | Deze waarde is verplicht. |
    | **Servernaam** | De volledig gekwalificeerde servernaam | Bijvoorbeeld *yourserver.database.windows.net*. |
-   | **Authenticatie** | SQL Server-verificatie | SQL-verificatie is het enige verificatietype dat we in deze zelfstudie hebben geconfigureerd. |
+   | **Verificatie** | SQL Server-verificatie | SQL-verificatie is het enige verificatietype dat we in deze zelfstudie hebben geconfigureerd. |
    | **Aanmelding** | Het beheerdersaccount voor de server | Het account dat u hebt opgegeven tijdens het maken van de server. |
    | **Wachtwoord** | Het wachtwoord voor het beheerdersaccount voor de server | Het wachtwoord dat u hebt opgegeven tijdens het maken van de server. |
 
    ![verbinding maken met server](./media/sql-database-design-first-database/connect.png)
 
-3. Klik op **Opties** in het dialoogvenster **Verbinding maken met server**. Voer in de sectie **Verbinding maken met database** *yourDatabase* in om verbinding te maken met deze database.
+3. Klik op **Opties** in het dialoogvenster **Verbinding maken met server**. Voer in de sectie **Verbinding maken met database***yourDatabase* in om verbinding te maken met deze database.
 
     ![verbinding maken met database op server](./media/sql-database-design-first-database/options-connect-to-db.png)  
 
-4. Klik op **Verbinden**. Het venster **Objectverkenner** wordt geopend in SSMS.
+4. Klik op **Connect** (Verbinden). Het venster **Objectverkenner** wordt geopend in SSMS.
 
 5. In **Objectverkenner** vouwt u **Databases** en daarna *yourDatabase* uit om de objecten in de voorbeelddatabase weer te geven.
 
@@ -151,8 +151,8 @@ Gebruik [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ss
 
 Maak met [Transact-SQL](/sql/t-sql/language-reference) een databaseschema met vier tabellen die overeenkomen met belangrijke gegevens uit een studenteninformatiesysteem voor universiteiten:
 
-- Person
-- Course
+- Persoon
+- Cursus
 - Student
 - Tegoed
 

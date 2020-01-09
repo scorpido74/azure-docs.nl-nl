@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 06/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: def964dd932f8a41a877a3d9568a8ec4825874b8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b8c2ca3bf919d70123b7b5b6d13c0301e0c1fd13
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383919"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383575"
 ---
 # <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>Snelstartgids: zoeken naar nieuws met de Bing News Search SDK voor Java
 
@@ -57,7 +57,7 @@ import java.io.IOException;
 
 ## <a name="create-a-search-client-and-store-credentials"></a>Een zoekclient maken en referenties opslaan
 
-1. Maak een methode met de naam `getClient()` die een nieuwe `NewsSearchAPIImpl`-zoekclient retourneert. Voeg uw eindpunt toe als de eerste parameter voor het nieuwe `NewsSearchAPIImpl`-object, en een nieuw `ServiceClientCredentials`-object om uw referenties op te slaan.
+1. Maak een methode met de naam `getClient()` die een nieuwe `NewsSearchAPIImpl`-zoekclient retourneert. Voeg uw eindpunt toe als de eerste parameter voor het nieuwe `NewsSearchAPIImpl`-object, en een nieuw `ServiceClientCredentials`-object om uw referenties op te slaan. 
 
     ```java
     public static NewsSearchAPIImpl getClient(final String subscriptionKey) {
@@ -67,7 +67,7 @@ import java.io.IOException;
     }
     ```
 
-2. Overschrijf de `ServiceClientCredentials`-functie om het `applyCredentialsFilter()`-object te maken. Geef een `OkHttpClient.Builder` door aan de methode en gebruik de `addNetworkInterceptor()`-methode van de opbouwfunctie voor het maken van uw referenties voor de SDK-aanroep.
+2. Overschrijf de `applyCredentialsFilter()`-functie om het `ServiceClientCredentials`-object te maken. Geef een `OkHttpClient.Builder` door aan de methode en gebruik de `addNetworkInterceptor()`-methode van de opbouwfunctie voor het maken van uw referenties voor de SDK-aanroep.
 
     ```java
     new ServiceClientCredentials() {

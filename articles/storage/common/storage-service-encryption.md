@@ -4,17 +4,17 @@ description: Azure Storage beveiligt uw gegevens door deze automatisch te versle
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 12/05/2019
+ms.date: 01/03/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: a09d2c0c2a393acd4882842dc023b0f5f682e813
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 35a5bfd582c9717b062d42d86e7581029861fd0c
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895132"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665436"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage versleuteling voor Data-at-rest
 
@@ -62,7 +62,7 @@ Uw opslag account maakt standaard gebruik van door micro soft beheerde versleute
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Door de klant beheerde sleutels met Azure Key Vault
 
-U kunt Azure Storage versleuteling op het niveau van het opslag account beheren met uw eigen sleutels. Wanneer u een door de klant beheerde sleutel op het niveau van het opslag account opgeeft, wordt die sleutel gebruikt voor het versleutelen en ontsleutelen van alle BLOB-en bestands gegevens in het opslag account. Door de klant beheerde sleutels bieden meer flexibiliteit voor het maken, draaien, uitschakelen en intrekken van toegangs beheer. U kunt ook de versleutelings sleutels controleren die worden gebruikt voor het beveiligen van uw gegevens.
+U kunt Azure Storage versleuteling op het niveau van het opslag account beheren met uw eigen sleutels. Wanneer u een door de klant beheerde sleutel op het niveau van het opslag account opgeeft, wordt die sleutel gebruikt voor het beveiligen en beheren van de toegang tot de hoofd versleutelings sleutel voor het opslag account die op zijn beurt wordt gebruikt voor het versleutelen en ontsleutelen van alle BLOB-en bestands gegevens. Door de klant beheerde sleutels bieden meer flexibiliteit voor het maken, draaien, uitschakelen en intrekken van toegangs beheer. U kunt ook de versleutelings sleutels controleren die worden gebruikt voor het beveiligen van uw gegevens.
 
 U moet Azure Key Vault gebruiken om uw door de klant beheerde sleutels op te slaan. U kunt zelf sleutels maken en deze opslaan in een sleutel kluis, of u kunt de Azure Key Vault-Api's gebruiken om sleutels te genereren. Het opslag account en de sleutel kluis moeten zich in dezelfde regio bevinden, maar ze kunnen zich in verschillende abonnementen bevinden. Zie [Wat is Azure Key Vault?](../../key-vault/key-vault-overview.md)voor meer informatie over Azure Key Vault.
 
@@ -80,9 +80,11 @@ In de volgende lijst worden de genummerde stappen in het diagram uitgelegd:
 
 ### <a name="enable-customer-managed-keys-for-a-storage-account"></a>Door de klant beheerde sleutels voor een opslag account inschakelen
 
-Wanneer u versleuteling inschakelt met door de klant beheerde sleutels voor een opslag account, Azure Storage verpakt de account versleutelings sleutel met de klant sleutel in de bijbehorende sleutel kluis. Het inschakelen van door de klant beheerde sleutels heeft geen invloed op de prestaties en het account wordt direct met de nieuwe sleutel versleuteld, zonder enige tijd vertraging.
+Wanneer u versleuteling inschakelt met door de klant beheerde sleutels voor een opslag account, Azure Storage verpakt de account versleutelings sleutel met de door de klant beheerde sleutel in de bijbehorende sleutel kluis. Het inschakelen van door de klant beheerde sleutels heeft geen invloed op de prestaties en het account wordt direct met de nieuwe sleutel versleuteld, zonder enige tijd vertraging.
 
 Een nieuw opslag account wordt altijd versleuteld met door micro soft beheerde sleutels. Het is niet mogelijk om door de klant beheerde sleutels in te scha kelen op het moment dat het account wordt gemaakt. Door de klant beheerde sleutels worden opgeslagen in Azure Key Vault en de sleutel kluis moet worden ingericht met toegangs beleid waarmee sleutel machtigingen worden verleend aan de beheerde identiteit die aan het opslag account is gekoppeld. De beheerde identiteit is alleen beschikbaar nadat het opslag account is gemaakt.
+
+Wanneer u de sleutel die wordt gebruikt voor Azure Storage versleuteling wijzigt door door de klant beheerde sleutels in of uit te scha kelen, de sleutel versie bij te werken of een andere sleutel op te geven, wordt de versleuteling van de hoofd sleutel gewijzigd, maar de gegevens in uw Azure Storage-account niet moet opnieuw worden versleuteld.
 
 Zie een van de volgende artikelen voor meer informatie over het gebruik van door de klant beheerde sleutels met Azure Key Vault voor Azure Storage versleuteling:
 
@@ -96,6 +98,8 @@ Zie een van de volgende artikelen voor meer informatie over het gebruik van door
 ### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Door de klant beheerde sleutels opslaan in Azure Key Vault
 
 Als u door de klant beheerde sleutels wilt inschakelen voor een opslag account, moet u een Azure Key Vault gebruiken om uw sleutels op te slaan. U moet de instellingen **voorlopig verwijderen** en **niet wissen** in de sleutel kluis inschakelen.
+
+Alleen RSA-sleutels met een grootte van 2048 worden ondersteund met Azure Storage versleuteling. Zie **Key Vault sleutels** in [over Azure Key Vault sleutels, geheimen en certificaten](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)voor meer informatie over sleutels.
 
 De sleutel kluis moet zich in hetzelfde abonnement bevinden als het opslag account. Azure Storage gebruikt beheerde identiteiten voor Azure-resources om te verifiëren bij de sleutel kluis voor het versleutelen en ontsleutelen van bewerkingen. Beheerde identiteiten bieden momenteel geen ondersteuning voor scenario's met meerdere mappen.
 

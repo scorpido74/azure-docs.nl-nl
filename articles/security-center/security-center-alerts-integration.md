@@ -1,6 +1,6 @@
 ---
-title: Integratie van Azure-beveiligings producten met Azure Security Center
-description: Dit onderwerp bevat Azure-beveiligings producten die zijn geïntegreerd met Azure Security Center.
+title: Detectie van bedreigingen voor Azure-beveiligings producten in Azure Security Center
+description: Dit onderwerp bevat de Azure-beveiligings producten waarvoor Azure Security Center detectie van bedreigingen kan bieden
 services: security-center
 documentationcenter: na
 author: memildin
@@ -8,23 +8,23 @@ manager: rkarlin
 ms.assetid: ad4b0373-08ee-46ca-a573-638ed93a647c
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 693e7d35a0bb4c7dfbb3e033690a5e86e2c398a8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1ea207f0ba09e0637a08632d5c56591fd1335b22
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278336"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665723"
 ---
-# <a name="integration-of-azure-security-products-in-azure-security-center"></a>Integratie van Azure-beveiligings producten in Azure Security Center
+# <a name="threat-detection-for-azure-waf-and-azure-ddos-protection"></a>Detectie van bedreigingen voor Azure WAF en Azure DDoS Protection
 
-Azure Security Center biedt u aanvullende micro soft-licenties voor het werken met de volgende beveiligings producten:
+Azure Security Center kunt detectie van bedreigingen bieden voor de volgende Azure-beveiligings producten (een afzonderlijke licentie voor elk product is vereist):
 
-* [Azure-WAF](#azure-waf)
+* [Azure WAF](#azure-waf)
 * [Azure DDoS Protection](#azure-ddos)
 
-## Azure-WAF<a name="azure-waf"></a>
+## Azure WAF <a name="azure-waf"></a>
 
 Azure Application Gateway biedt de functie Web Application Firewall (WAF) voor de gecentraliseerde beveiliging van uw webtoepassingen tegen bekende aanvallen en beveiligingsproblemen.
 
@@ -38,12 +38,4 @@ Met een DDoS-aanval wordt geprobeerd de resources van een toepassing uit te putt
 
 Azure DDoS Protection, gecombineerd met aanbevolen procedures voor het ontwerpen van toepassingen, bieden een verdediging tegen DDoS-aanvallen. DDoS Protection biedt verschillende service lagen. Zie [Azure DDoS Protection Overview](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)voor meer informatie.
 
-DDoS Protection Standard kan de volgende typen aanvallen beperken:
-
-> [!div class="mx-tableFixed"]
-
-|Waarschuwing|Beschrijving|
-|---|---|
-|**Volumetrische aanval gedetecteerd**|Het doel van deze aanval is om de netwerklaag te laten overstappen op een aanzienlijke hoeveelheid getrouwd verkeer. Dit omvat UDP-flooden, versterking van stromen en andere vervalste pakket stromen. DDoS Protection Standard verkleint deze potentiële multi-Gigabyte-aanvallen door ze te absorberen en te reinigen, waarbij de wereld wijde schaal van het netwerk automatisch wordt aangepast.|
-|**Protocol aanval gedetecteerd**|Deze aanvallen genereren een doel dat niet toegankelijk is door een zwakte te misbruiken in de laag 3-en laag 4-Protocol stacks. Dit omvat SYN-flood-aanvallen, reflectie-aanvallen en andere protocol aanvallen. DDoS Protection Standard verkleint deze aanvallen, onderscheidt zich van schadelijk en betrouwbaar verkeer door interactie met de client en het blok keren van schadelijk verkeer.|
-|**Aanval van resource (toepassing)-laag gedetecteerd**|Deze aanvallen richten op webtoepassingen om de overdracht van gegevens tussen hosts te verstoren. De aanvallen omvatten schendingen van het HTTP-protocol, SQL-injectie, cross-site scripting en andere Layer 7-aanvallen. Gebruik de Azure-toepassing gateway WAF, met DDoS Protection Standard, om deze aanvallen te verdedigen. Er zijn ook WAF-aanbiedingen van derden beschikbaar in azure Marketplace.|
+Zie de [naslag tabel met waarschuwingen](alerts-reference.md#alerts-azureddos)voor een overzicht van de waarschuwingen voor Azure DDoS Protection.

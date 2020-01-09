@@ -1,6 +1,6 @@
 ---
-title: MongoDB-Leesvoorkeur gebruiken met de Azure Cosmos DB-API voor MongoDB
-description: Informatie over het gebruik van MongoDB Leesvoorkeur met de Azure Cosmos DB-API voor MongoDB
+title: Lees voorkeur gebruiken met de API van het Azure Cosmos DB voor MongoDB
+description: Meer informatie over het gebruik van MongoDB read voor keur met de API van Azure Cosmos DB voor MongoDB
 author: sivethe
 ms.author: sivethe
 ms.service: cosmos-db
@@ -8,34 +8,34 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 8fc66d70b840578bff086519a7b39e5f389a3de3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 10e6ed556abe8f8c438e5436fbb93c1b70b85d2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479615"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445163"
 ---
-# <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Wereldwijd distribueren wordt gelezen met behulp van Azure Cosmos DB-API voor MongoDB
+# <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Lees bewerkingen globaal distribueren met behulp van de API van Azure Cosmos DB voor MongoDB
 
-Dit artikel wordt beschreven hoe u wereldwijd distribueren leesbewerkingen met [MongoDB Leesvoorkeur](https://docs.mongodb.com/manual/core/read-preference/) instellingen met behulp van Azure Cosmos DB-API voor MongoDB.
+In dit artikel wordt beschreven hoe u met beAzure Cosmos DB hulp van de MongoDb-API voor MongoDB wereld wijd Lees bewerkingen kunt distribueren met de [voor keuren](https://docs.mongodb.com/manual/core/read-preference/) voor het lezen van instellingen
 
 ## <a name="prerequisites"></a>Vereisten 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
-Verwijzen naar dit [snelstartgids](tutorial-global-distribution-mongodb.md) voor instructies over het gebruik van Azure portal om in te stellen-up maken van een Cosmos-account met globale distributie en maak verbinding met het artikel.
+Raadpleeg dit [Quick](tutorial-global-distribution-mongodb.md) start-artikel voor instructies over het gebruik van de Azure Portal om een Cosmos-account in te stellen met globale distributie en er vervolgens verbinding mee te maken.
 
 ## <a name="clone-the-sample-application"></a>De voorbeeldtoepassing klonen
 
 Open een git-terminalvenster zoals git bash en `cd` naar een werkmap.  
 
-Voer de volgende opdrachten uit om de voorbeeldopslagplaats te klonen. Op basis van het platform van belang zijn, gebruik een van de opslagplaatsen van het volgende voorbeeld:
+Voer de volgende opdrachten uit om de voorbeeldopslagplaats te klonen. Gebruik een van de volgende voor beelden van opslag plaatsen op basis van uw platform van belang:
 
-1. [Voorbeeld van .NET-toepassing](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-geo-readpreference)
-2. [Voorbeeld van NodeJS-toepassing]( https://github.com/Azure-Samples/azure-cosmos-db-mongodb-node-geo-readpreference)
-3. [Voorbeeld van mongoose-toepassing](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-mongoose-geo-readpreference)
-4. [Voorbeeld van Java-toepassing](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-geo-readpreference)
-5. [SpringBoot-voorbeeldtoepassing](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-spring)
+1. [.NET-voorbeeld toepassing](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-geo-readpreference)
+2. [Voorbeeld toepassing NodeJS]( https://github.com/Azure-Samples/azure-cosmos-db-mongodb-node-geo-readpreference)
+3. [Voorbeeld toepassing Mongoose](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-mongoose-geo-readpreference)
+4. [Java-voorbeeld toepassing](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-geo-readpreference)
+5. [Voorbeeld toepassing SpringBoot](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-spring)
 
 
 ```bash
@@ -44,20 +44,20 @@ git clone <sample repo url>
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Installeer de vereiste pakketten, afhankelijk van het platform dat wordt gebruikt, en start de toepassing. Volg het Leesmij-bestand opgenomen in de opslagplaats van de voorbeeld-toepassing voor het installeren van afhankelijkheden. Gebruik bijvoorbeeld de volgende opdrachten in de voorbeeldtoepassing NodeJS aan de vereiste pakketten installeren en start de toepassing.
+Afhankelijk van het platform dat wordt gebruikt, installeert u de vereiste pakketten en start u de toepassing. Als u afhankelijkheden wilt installeren, volgt u het Leesmij-bestand dat is opgenomen in de voor beeld-toepassings opslagplaats. Gebruik bijvoorbeeld in de voorbeeld toepassing NodeJS de volgende opdrachten om de vereiste pakketten te installeren en de toepassing te starten.
 
 ```bash
 cd mean
 npm install
 node index.js
 ```
-De toepassing probeert verbinding te maken met een MongoDB-bron en is mislukt omdat de verbindingsreeks ongeldig is. Volg de stappen in het Leesmij-bestand om bij te werken van de verbindingsreeks `url`. Ook, werken de `readFromRegion` naar een leesregio in uw Cosmos-account. De volgende instructies zijn van de NodeJS-voorbeeld:
+De toepassing probeert verbinding te maken met een MongoDB-bron en mislukt omdat de connection string ongeldig is. Volg de stappen in het Leesmij-bestand om de connection string `url`bij te werken. Werk ook de `readFromRegion` bij naar een lees regio in uw Cosmos-account. De volgende instructies zijn afkomstig uit het NodeJS-voor beeld:
 
 ```
 * Next, substitute the `url`, `readFromRegion` in App.Config with your Cosmos account's values. 
 ```
 
-Na deze stappen uitvoert, wordt de voorbeeldtoepassing wordt uitgevoerd en wordt de volgende uitvoer gegenereerd:
+Na het volgen van deze stappen wordt de voorbeeld toepassing uitgevoerd en wordt de volgende uitvoer gegenereerd:
 
 ```
 connected!
@@ -71,24 +71,24 @@ readDefaultfunc query completed!
 readFromSecondaryfunc query completed!
 ```
 
-## <a name="read-using-read-preference-mode"></a>Leesvoorkeur modus gelezen
+## <a name="read-using-read-preference-mode"></a>Lezen met de voorkeurs modus lezen
 
-MongoDB-protocol biedt de volgende modi Leesvoorkeur voor clients om te gebruiken:
+Het MongoDB-protocol biedt de volgende Lees voorkeurs modi die clients kunnen gebruiken:
 
-1. PRIMAIRE
+1. BASIS
 2. PRIMARY_PREFERRED
-3. SECUNDAIRE
+3. PRIMAIRE
 4. SECONDARY_PREFERRED
-5. DICHTSTBIJZIJNDE
+5. AFGEROND
 
-Raadpleeg de gedetailleerde [MongoDB Leesvoorkeur gedrag](https://docs.mongodb.com/manual/core/read-preference-mechanics/#replica-set-read-preference-behavior) documentatie voor meer informatie over het gedrag van elk van deze voorkeursinstelling leveringsmethoden lezen. In Cosmos DB toegewezen primaire regio voor schrijven en secundaire is toegewezen aan de leesregio.
+Raadpleeg de documentatie over het gedrag van gedetailleerde [MongoDb Lees voorkeuren](https://docs.mongodb.com/manual/core/read-preference-mechanics/#replica-set-read-preference-behavior) voor meer informatie over het gedrag van elk van deze Lees voorkeuren. In Cosmos DB is primair toegewezen aan het schrijf gebied en de secundaire kaarten voor het lezen van regio's.
 
-Op basis van algemene scenario's, wordt u aangeraden de volgende instellingen:
+Op basis van algemene scenario's wordt u aangeraden de volgende instellingen te gebruiken:
 
-1. Als **lage latentie leest** zijn vereist, gebruikt u de **NEAREST** voor de voorkeursmodus lezen. Deze instelling zorgt ervoor dat de leesbewerkingen naar de dichtstbijzijnde beschikbare regio. Houd er rekening mee dat als de dichtstbijzijnde regio de schrijfregio is, klikt u vervolgens deze bewerkingen worden omgeleid naar deze regio.
-2. Als **hoge beschikbaarheid en geo-distributie van leesbewerkingen** zijn vereist (latentie is geen beperking), gebruik vervolgens de **secundaire VOORKEUR** voor de voorkeursmodus lezen. Deze instelling zorgt ervoor dat de leesbewerkingen naar een beschikbare lezen regio. Als er geen leesregio beschikbaar is, worden aanvragen omgeleid naar de schrijfregio.
+1. Als **Lees bewerkingen met een lage latentie** vereist zijn, gebruikt u de **dichtstbijzijnde** modus voor lees voorkeuren. Met deze instelling wordt de Lees bewerking naar de dichtstbijzijnde beschik bare regio doorgestuurd. Houd er rekening mee dat als de dichtstbijzijnde regio de schrijf regio is, deze bewerkingen worden omgeleid naar deze regio.
+2. Als **hoge Beschik baarheid en geo-distributie van Lees bewerkingen** vereist zijn (latentie is geen beperking), gebruikt u de **secundaire voorkeurs modus voor lezen van voor keur** . Met deze instelling worden Lees bewerkingen naar een beschik bare Lees regio doorgestuurd. Als er geen regio voor lezen beschikbaar is, worden aanvragen omgeleid naar de schrijf regio.
 
-Het volgende fragment van de voorbeeldtoepassing laat zien hoe het configureren van de DICHTSTBIJZIJNDE Leesvoorkeur in NodeJS:
+In het volgende code fragment van de voorbeeld toepassing ziet u hoe u de dichtstbijzijnde Lees voorkeur configureert in NodeJS:
 
 ```javascript
   var query = {};
@@ -99,7 +99,7 @@ Het volgende fragment van de voorbeeldtoepassing laat zien hoe het configureren 
   });
 ```
 
-Op deze manier is het onderstaande codefragment laat zien hoe de Leesvoorkeur SECONDARY_PREFERRED in NodeJS configureren:
+Op dezelfde manier ziet u in het volgende code fragment hoe u de SECONDARY_PREFERRED Lees voorkeur configureert in NodeJS:
 
 ```javascript
   var query = {};
@@ -110,7 +110,7 @@ Op deze manier is het onderstaande codefragment laat zien hoe de Leesvoorkeur SE
   });
 ```
 
-De Leesvoorkeur kan ook worden ingesteld door door te geven `readPreference` als een parameter in de connection string URI opties:
+De Lees voorkeur kan ook worden ingesteld door `readPreference` als een para meter door te geven in de connection string URI-opties:
 
 ```javascript
 const MongoClient = require('mongodb').MongoClient;
@@ -132,11 +132,11 @@ MongoClient.connect(url, function(err, client) {
 });
 ```
 
-Raadpleeg de bijbehorende voorbeeld toepassing opslagplaatsen voor andere platforms, zoals [.NET](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-geo-readpreference) en [Java](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-geo-readpreference).
+Raadpleeg de bijbehorende voorbeeld toepassing opslag plaatsen voor andere platformen, zoals [.net](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-geo-readpreference) en [Java](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-geo-readpreference).
 
-## <a name="read-using-tags"></a>Lezen met behulp van tags
+## <a name="read-using-tags"></a>Lezen met behulp van Tags
 
-MongoDB dit protocol kunnen naast de Leesvoorkeur-modus, het gebruik van tags om te leiden van leesbewerkingen. In Cosmos DB API voor MongoDB, de `region` tag is standaard opgenomen als onderdeel van de `isMaster` reactie:
+Naast de Lees modus voor keuren, kunt u met het MongoDB-protocol Tags gebruiken om Lees bewerkingen uit te kunnen sturen. In de API van Cosmos DB voor MongoDB wordt de `region`-tag standaard opgenomen als onderdeel van de `isMaster`-reactie:
 
 ```json
 "tags": {
@@ -144,9 +144,9 @@ MongoDB dit protocol kunnen naast de Leesvoorkeur-modus, het gebruik van tags om
       }
 ```
 
-Daarom kan de MongoClient kunt gebruiken de `region` code samen met de naam van het regio om te leiden van leesbewerkingen naar specifieke regio's. Voor Cosmos-accounts, regionamen vindt u in Azure portal aan de linkerkant onder **instellingen -> replicagegevens wereldwijd**. Deze instelling is nuttig voor het bereiken van **lezen isolatie** -aanvragen in welke clienttoepassing wilt Directe leesbewerkingen in slechts een specifieke regio. Deze instelling is ideaal voor niet-productie en analyse typt u scenario's, die op de achtergrond uitgevoerd en zijn niet productie kritieke services.
+Daarom kunnen MongoClient de `region`-tag samen met de naam van de regio gebruiken om Lees bewerkingen naar specifieke regio's te sturen. Voor Cosmos-accounts kunt u de namen van regio's vinden in Azure Portal aan de linkerkant onder **instellingen-> replica gegevens wereld wijd**. Deze instelling is handig voor het bereiken van **Lees isolatie** -gevallen waarin client toepassing alleen lees bewerkingen naar een specifieke regio wil door sturen. Deze instelling is ideaal voor scenario's van het type niet-productie/analyse, die op de achtergrond worden uitgevoerd en geen essentiële services produceren.
 
-Het volgende fragment van de voorbeeldtoepassing laat zien hoe het configureren van de Leesvoorkeur met tags in NodeJS:
+In het volgende code fragment van de voorbeeld toepassing ziet u hoe u de voor keur lezen configureert met tags in NodeJS:
 
 ```javascript
  var query = {};
@@ -157,13 +157,13 @@ Het volgende fragment van de voorbeeldtoepassing laat zien hoe het configureren 
   });
 ```
 
-Raadpleeg de bijbehorende voorbeeld toepassing opslagplaatsen voor andere platforms, zoals [.NET](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-geo-readpreference) en [Java](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-geo-readpreference).
+Raadpleeg de bijbehorende voorbeeld toepassing opslag plaatsen voor andere platformen, zoals [.net](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-geo-readpreference) en [Java](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-geo-readpreference).
 
-In dit artikel hebt u geleerd hoe u wereldwijd distribueren leesbewerkingen Leesvoorkeur gebruiken met Azure Cosmos DB-API voor MongoDB.
+In dit artikel hebt u geleerd hoe u wereld wijd Lees bewerkingen kunt distribueren met behulp van Lees voorkeur met de API voor MongoDB van Azure Cosmos DB.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u niet verder om door te gaan deze app wilt gebruiken, verwijdert u alle resources die zijn gemaakt door in dit artikel in de Azure-portal met de volgende stappen uit:
+Als u deze app niet verder wilt gebruiken, verwijdert u alle resources die in dit artikel zijn gemaakt in de Azure Portal door de volgende stappen uit te voeren:
 
 1. Klik in het menu aan de linkerkant in Azure Portal op **Resourcegroepen** en klik vervolgens op de resource die u hebt gemaakt. 
 2. Klik op de pagina van uw resourcegroep op **Verwijderen**, typ de naam van de resource die u wilt verwijderen in het tekstvak en klik vervolgens op **Verwijderen**.
@@ -171,5 +171,5 @@ Als u niet verder om door te gaan deze app wilt gebruiken, verwijdert u alle res
 ## <a name="next-steps"></a>Volgende stappen
 
 * [MongoDB-gegevens importeren in Azure Cosmos DB](mongodb-migrate.md)
-* [Instellen van een globaal gedistribueerde database met Azure Cosmos DB-API voor MongoDB](tutorial-global-distribution-mongodb.md)
+* [Een wereld wijd gedistribueerde data base instellen met de API van Azure Cosmos DB voor MongoDB](tutorial-global-distribution-mongodb.md)
 * [Lokaal ontwikkelen met de Azure Cosmos DB-emulator](local-emulator.md)

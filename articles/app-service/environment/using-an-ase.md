@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e5c127673e4b0cb6c68aaf0a9790abbf78758670
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 806d6ddb09cbaf14c9c488e3d3b39909c22ef284
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687098"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374927"
 ---
 # <a name="use-an-app-service-environment"></a>Een App Service omgeving gebruiken #
 
@@ -43,7 +43,7 @@ Een app maken in een ASE:
 
 1. Selecteer **een resource maken** > **Web en mobiel** > **Web-app**.
 
-2. Voer een naam in voor de app. Als u al een App Service plan in een ASE hebt geselecteerd, weerspiegelt de domein naam voor de app de domein naam van de ASE.
+2. voer een naam voor de app in. Als u al een App Service plan in een ASE hebt geselecteerd, weerspiegelt de domein naam voor de app de domein naam van de ASE.
 
     ![App-naam selecteren][1]
 
@@ -116,7 +116,7 @@ In een ILB-ASE bepaalt u het domein tijdens de implementatie. Zie [een ILB ASE m
 Net als bij de multi tenant App Service, in een ASE kunt u het volgende publiceren:
 
 - Webimplementatie.
-- Via.
+- FTP.
 - Continue integratie.
 - Sleep en zet neer in de kudu-console.
 - Een IDE, zoals Visual Studio, eclips of IntelliJ.
@@ -172,7 +172,7 @@ Een ASE verwijderen:
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md

@@ -8,19 +8,19 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 0f1f4c07f3dc694bcae9b540c71a11e53a00eb7f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: c79e64fddaf404b459dd2215e4a2e9236f1bc221
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773677"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460004"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Zelf studie: een Azure Database for PostgreSQL-één-server ontwerpen met behulp van Azure CLI 
 In deze zelfstudie gebruikt u Azure CLI (Command Line Interface of opdrachtregelinterface in goed Nederlands) en andere hulpprogramma's om deze bewerkingen uit te voeren:
 > [!div class="checklist"]
 > * Een Azure-database voor PostgreSQL-server maken
 > * De serverfirewall configureren
-> * Het hulpprogramma [ **psql** ](https://www.postgresql.org/docs/9.6/static/app-psql.html) gebruiken om een database te maken
+> * Het hulpprogramma [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html) gebruiken om een database te maken
 > * Voorbeeldgegevens laden
 > * Querygegevens
 > * Gegevens bijwerken
@@ -38,7 +38,7 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
-Maak een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) met de opdracht [az group create](/cli/azure/group). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd. In het volgende voorbeeld wordt een resourcegroep met de naam `myresourcegroup` gemaakt op de locatie `westus`.
+Maak een [Azure-resourcegroep](../azure-resource-manager/management/overview.md) met de opdracht [az group create](/cli/azure/group). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd. In het volgende voorbeeld wordt een resourcegroep met de naam `myresourcegroup` gemaakt op de locatie `westus`.
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
@@ -58,16 +58,16 @@ De parameterwaarde voor de sku-naam volgt de conventie {prijscategorie} \_{compu
 Raadpleeg de documentatie over [prijscategorieën](./concepts-pricing-tiers.md) om de geldige waarden per regio en categorie te begrijpen.
 
 > [!IMPORTANT]
-> De beheerdersaanmelding bij de server en het wachtwoord die u hier opgeeft, zijn vereist voor aanmelding bij de server en de bijbehorende databases verderop in deze snelstartgids. Onthoud of noteer deze informatie voor later gebruik.
+> De beheerdersaanmelding bij de server en het wachtwoord die u hier opgeeft, zijn vereist voor aanmelding bij de server en de bijbehorende databases verderop in deze quickstart. Onthoud of noteer deze informatie voor later gebruik.
 
-De database **postgres** wordt standaard gemaakt op uw server. De database [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) is een standaarddatabase die kan worden gebruikt door gebruikers, hulpprogramma's en toepassingen van derden. 
+De database **postgres** wordt gemaakt op uw server. De database [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) is een standaarddatabase die kan worden gebruikt door gebruikers, hulpprogramma's en toepassingen van derden. 
 
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Een serverfirewallregel configureren
 
 Maak een Azure PostgreSQL-firewallregel op serverniveau met de opdracht [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule). Met een firewallregel op serverniveau kan een externe toepassing, zoals [psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) of [PgAdmin](https://www.pgadmin.org/) verbinding maken met uw server via de firewall van de Azure PostgreSQL-service. 
 
-U kunt een firewallregel voor een IP-bereik instellen, zodat u vanaf uw netwerk verbinding kunt maken. In het volgende voorbeeld wordt [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) gebruikt om een firewallregel `AllowMyIP` te maken die verbinding vanaf één IP-adres toestaat.
+U kunt een firewallregel voor een IP-bereik zodat u vanaf uw netwerk verbinding kunt maken. In het volgende voorbeeld wordt [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) gebruikt om een firewallregel `AllowMyIP` te maken die verbinding vanaf één IP-adres toestaat.
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
@@ -216,7 +216,7 @@ In deze zelfstudie hebt u geleerd hoe u Azure CLI (Command Line Interface of opd
 > [!div class="checklist"]
 > * Een Azure-database voor PostgreSQL-server maken
 > * De serverfirewall configureren
-> * Het hulpprogramma [ **psql** ](https://www.postgresql.org/docs/9.6/static/app-psql.html) gebruiken om een database te maken
+> * Het hulpprogramma [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html) gebruiken om een database te maken
 > * Voorbeeldgegevens laden
 > * Querygegevens
 > * Gegevens bijwerken

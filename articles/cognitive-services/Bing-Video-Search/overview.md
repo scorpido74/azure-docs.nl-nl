@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: overview
-ms.date: 06/26/2019
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 4f3a52590a9a0c50bdc87f87792027333fc5269f
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 8377f0f5d586212c94bb763598b6e7a9e391073c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500153"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382715"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Wat is de Bing Video's zoeken-API?
 
@@ -23,7 +23,7 @@ Met de Bing Video's zoeken-API kunt u eenvoudig mogelijkheden voor het zoeken va
 
 ## <a name="bing-video-search-api-features"></a>Functies van Bing Video's zoeken-API
 
-| Functie                                                                                                                                                                                 | Description                                                                                                                                                            |
+| Functie                                                                                                                                                                                 | Beschrijving                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Zoektermen in realtime voorstellen](concepts/sending-requests.md#suggest-search-terms-with-the-bing-autosuggest-api) | Verbeter uw app-ervaring met de [Bing Automatische suggestie-API](../bing-autosuggest/get-suggested-search-terms.md) om voorgestelde zoektermen weer te geven wanneer deze worden getypt. |
 | [Videoresultaten filteren en beperken](concepts/get-videos.md#filtering-videos)                      | Filter de video's die worden geretourneerd door queryparameters te bewerken.                                                                                                       |
@@ -53,3 +53,5 @@ Gebruik de [quickstart](csharp.md) om snel uw eerste API-aanvraag te maken.
 * De naslaghandleiding over de [Bing Video's zoeken-API versie 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) bevat de lijst met eindpunten, headers en queryparameters die u nodig hebt om zoekresultaten op te vragen.
 
 * In de [Bing-vereisten voor gebruik en weergave](./useanddisplayrequirements.md) staan het acceptabele gebruik van de inhoud en informatie die is verkregen via de Bing Zoeken-API's.
+
+* Ga naar de [pagina met Bing Search API-hubs](../bing-web-search/search-the-web.md) om de andere beschik bare api's te verkennen.

@@ -1,25 +1,15 @@
 ---
 title: Uw Azure Service Fabric-Services container plaatsen in Windows
 description: Meer informatie over het container plaatsen van uw Service Fabric Reliable Services en Reliable Actors Services in Windows.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: anmolah
-editor: roroutra
-ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: 0cb48a2272ce854005f9f3db5b6a9abf62cc7015
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599204"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466181"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Container plaatsen uw Service Fabric Reliable Services en Reliable Actors in Windows
 
@@ -73,7 +63,7 @@ In dit document vindt u informatie over het uitvoeren van uw service in een Wind
         $dotnetCoreDllName = 'Name of the Code package dotnet Core Dll.'
         CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -DotnetCoreDllName $dotnetCoreDllName
       ```
-      Met het script maakt u een map met docker-artefacten op $dockerPackageOutputDirectoryPath. Wijzig de gegenereerde Dockerfile `expose` in poorten, Voer installatie scripts uit, enzovoort. op basis van uw behoeften.
+      Met het script maakt u een map met docker-artefacten op $dockerPackageOutputDirectoryPath. Wijzig de gegenereerde Dockerfile om poorten te `expose`, Voer installatie scripts uit, enzovoort. op basis van uw behoeften.
 
 6. Vervolgens moet u uw docker-container pakket [bouwen](service-fabric-get-started-containers.md#Build-Containers) en [pushen](service-fabric-get-started-containers.md#Push-Containers) naar uw opslag plaats.
 

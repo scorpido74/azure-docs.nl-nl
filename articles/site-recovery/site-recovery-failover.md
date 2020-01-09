@@ -1,130 +1,151 @@
 ---
-title: Failover tijdens nood herstel met Azure Site Recovery
-description: Meer informatie over het mislukken van Vm's en fysieke servers tijdens herstel na nood gevallen met de Azure Site Recovery-service.
-services: site-recovery
-author: rayne-wiselman
-manager: carmonm
+title: Een failover uitvoeren tijdens nood herstel met Azure Site Recovery
+description: Failover van Vm's/fysieke servers naar Azure met Azure Site Recovery.
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/29/2019
-ms.author: raynew
-ms.openlocfilehash: 1585c5dbdecf11bbc6ef3dad63bf4f982c70f73e
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 12/10/2019
+ms.openlocfilehash: 514f1d6631a70301589943ddb7920ca3c9c46062
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053773"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609218"
 ---
-# <a name="fail-over-vms-and-physical-servers"></a>Failover van Vm's en fysieke servers 
+# <a name="run-a-failover-from-on-premises-to-azure"></a>Een failover uitvoeren van on-premises naar Azure
 
-In dit artikel wordt beschreven hoe u virtuele machines en fysieke servers die worden beveiligd door Site Recovery failover.
+In dit artikel wordt beschreven hoe u een failover van on-premises machines naar Azure in [Azure site Recovery](site-recovery-overview.md)
 
-## <a name="prerequisites"></a>Vereisten
-1. Alvorens een failover uit te voeren, voert u [een testfailover uit om te](site-recovery-test-failover-to-azure.md) controleren of alles werkt zoals verwacht.
-1. [Bereid het netwerk](site-recovery-network-design.md) voor op de doel locatie voordat u een failover doet.  
+## <a name="before-you-start"></a>Voordat u begint
 
-Gebruik de volgende tabel om te weten te zijn over de failover-opties van Azure Site Recovery. Deze opties worden ook weer gegeven voor verschillende failover-scenario's.
+- [Meer informatie](failover-failback-overview.md) over het failoverproces in nood herstel.
+- Als u een failover wilt uitvoeren voor meerdere machines, [leert](recovery-plan-overview.md) u hoe u computers samen kunt verzamelen in een herstel plan.
+- Voordat u een volledige failover uitvoert, moet u een [nood herstel analyse](site-recovery-test-failover-to-azure.md) uitvoeren om te controleren of alles werkt zoals verwacht.
 
-| Scenario | Toepassings herstel vereiste | Werk stroom voor Hyper-V | Werk stroom voor VMware
-|---|--|--|--|
-|Geplande failover vanwege een aanstaande downtime van het Data Center| Geen gegevens verlies voor de toepassing wanneer een geplande activiteit wordt uitgevoerd| Voor Hyper-V repliceert ASR gegevens met een Kopieer frequentie die is opgegeven door de gebruiker. Geplande failover wordt gebruikt om de frequentie te overschrijven en de laatste wijzigingen te repliceren voordat een failover wordt gestart. <br/> <br/> 1. plan een onderhouds venster conform het wijzigings beheer proces van uw bedrijf. <br/><br/> 2. gebruikers op de hoogte stellen van aanstaande downtime. <br/><br/> 3. Neem de toepassing die op de gebruiker is gericht offline.<br/><br/>4. geplande failover initiëren met behulp van de ASR-Portal. De on-premises virtuele machine wordt automatisch afgesloten.<br/><br/>Effectief verlies van toepassings gegevens = 0 <br/><br/>Een logboek met herstel punten is ook opgenomen in een Bewaar periode voor een gebruiker die een ouder herstel punt wil gebruiken. (24 uur bewaren voor Hyper-V). Als replicatie voorbij het tijds bestek van het retentie venster is gestopt, kunnen klanten nog steeds failover gebruiken met de meest recente beschik bare herstel punten. | Voor VMware repliceert ASR gegevens voortdurend via CDP. Failover geeft de gebruiker de mogelijkheid om failover uit te scha kelen naar de meest recente gegevens (waaronder het afsluiten van post toepassingen)<br/><br/> 1. het onderhouds venster plannen volgens het wijzigings beheerproces <br/><br/>2. gebruikers op de hoogte stellen van aanstaande downtime <br/><br/>3. Neem de toepassing die op de gebruiker is gericht offline.<br/><br/>4. initieer een geplande failover met behulp van de ASR-Portal naar het laatste punt nadat de toepassing offline is. Gebruik de optie ' geplande failover ' op de portal en selecteer het laatste punt voor failover. De on-premises virtuele machine wordt automatisch afgesloten.<br/><br/>Effectief verlies van toepassings gegevens = 0 <br/><br/>Een logboek met herstel punten in een Bewaar venster is voorzien van een klant die een ouder herstel punt wil gebruiken. (72 uur van bewaren voor VMware). Als replicatie voorbij het tijds bestek van het retentie venster is gestopt, kunnen klanten nog steeds failover gebruiken met de meest recente beschik bare herstel punten.
-|Failover vanwege een ongeplande downtime van het Data Center (natuurlijke of nood ramp) | Mini maal verlies van gegevens voor de toepassing | 1. het BCP-abonnement van de organisatie initiëren <br/><br/>2. Start de niet-geplande failover via de ASR-Portal naar het laatste of een punt in het retentie venster (logboek).| 1. Start het BCP-abonnement van de organisatie. <br/><br/>2. Start de niet-geplande failover via de ASR-Portal naar het laatste of een punt in het retentie venster (logboek).
+## <a name="prepare-to-connect-after-failover"></a>Voorbereiden om verbinding te maken na een failover
+
+Om ervoor te zorgen dat u verbinding kunt maken met de virtuele Azure-machines die na een failover worden gemaakt, volgt u een aantal dingen die u on-premises moet doen voordat u een failover uitvoert.
+
+
+### <a name="prepare-on-premises-to-connect-after-failover"></a>On-premises voorbereiden om verbinding te maken na een failover
+
+Als u na een failover verbinding wilt maken met virtuele Azure-machines met behulp van RDP/SSH, moet u on-premises een aantal dingen doen voordat een failover wordt uitgevoerd.
+
+**Na een failover** | **Locatie** | **Acties**
+--- | --- | ---
+**Virtuele Azure-machine met Windows** | On-premises machine vóór een failover | Voor toegang tot de Azure-VM via internet schakelt u RDP in en zorgt u ervoor dat de TCP-en UDP-regels voor **openbaar**worden toegevoegd en dat RDP is toegestaan voor alle profielen in **Windows Firewall** > **toegestane apps**.<br/><br/> Als u toegang wilt krijgen tot de Azure-VM via een site-naar-site-verbinding, schakelt u RDP in op de machine en zorgt u ervoor dat RDP in de **Windows Firewall** -> **toegestane apps en functies**is toegestaan voor **domein-en particuliere** netwerken.<br/><br/> <br/><br/> Verwijder alle statische permanente routes en WinHTTP-proxy. Zorg ervoor dat het SAN-beleid van het besturings systeem is ingesteld op **OnlineAll**. [Meer informatie](https://support.microsoft.com/kb/3031135).<br/><br/> Zorg ervoor dat er geen Windows-updates in behandeling zijn op de virtuele machine wanneer u een failover triggert. Windows Update kan worden gestart wanneer u een failover uitvoert. u kunt zich pas aanmelden bij de VM als de update is voltooid.
+**Azure-VM met Linux** | On-premises machine vóór een failover | Zorg ervoor dat de Secure shell-service op de VM is ingesteld om automatisch te starten bij het opstarten van het systeem.<br/><br/> Controleer of er in de firewallregels is ingesteld dat SSH-verbindingen zijn toegestaan.
 
 
 ## <a name="run-a-failover"></a>Een failover uitvoeren
-In deze procedure wordt beschreven hoe u een failover uitvoert voor een [herstel plan](site-recovery-create-recovery-plans.md). U kunt ook de failover voor één virtuele machine of fysieke server uitvoeren op de pagina **gerepliceerde items** , zoals [hier](vmware-azure-tutorial-failover-failback.md#run-a-failover-to-azure)wordt beschreven.
+
+In deze procedure wordt beschreven hoe u een failover uitvoert voor een [herstel plan](site-recovery-create-recovery-plans.md). Als u een failover wilt uitvoeren voor één virtuele machine, volgt u de instructies voor een virtuele [VMWare-machine](vmware-azure-tutorial-failover-failback.md), een [fysieke server](physical-to-azure-failover-failback.md)of een [Hyper-V-VM](hyper-v-azure-failover-failback-tutorial.md).
 
 
-![Failover](./media/site-recovery-failover/Failover.png)
+Voer de failover van het herstel plan als volgt uit:
 
-1. Selecteer **herstel plannen** > *recoveryplan_name*. Klik op **failover**
-2. Selecteer op het scherm **failover** een **herstel punt** voor failover naar. U kunt een van de volgende opties gebruiken:
-   1. **Nieuwste**: met deze optie wordt de taak gestart door eerst alle gegevens te verwerken die zijn verzonden naar site Recovery service. Het verwerken van de gegevens maakt een herstel punt voor elke virtuele machine. Dit herstel punt wordt gebruikt door de virtuele machine tijdens een failover. Deze optie biedt de laagste RPO (beoogd herstel punt) als de virtuele machine die is gemaakt na een failover, alle gegevens die zijn gerepliceerd naar Site Recovery service wanneer de failover werd geactiveerd.
-   1. **Laatst verwerkte**: met deze optie wordt een failover uitgevoerd van alle virtuele machines van het herstel plan naar het laatste herstel punt dat al is verwerkt door site Recovery service. Wanneer u een testfailover uitvoert voor een virtuele machine, wordt er ook een tijds tempel van het meest recente verwerkte herstel punt weer gegeven. Als u een failover uitvoert van een herstel plan, gaat u naar de afzonderlijke virtuele machine en bekijkt u de **meest recente tegel herstel punten** om deze informatie op te halen. Als er geen tijd wordt besteed aan het verwerken van de niet-verwerkte gegevens, biedt deze optie een lage RTO (Recovery Time objectief)-failover.
-   1. **Nieuwste app-consistent**: deze optie is van toepassing op alle virtuele machines van het herstel plan naar het laatste toepassings consistente herstel punt dat al door site Recovery service is verwerkt. Wanneer u een testfailover uitvoert voor een virtuele machine, wordt er ook een tijds tempel van het meest recente toepassings consistente herstel punt weer gegeven. Als u een failover uitvoert van een herstel plan, gaat u naar de afzonderlijke virtuele machine en bekijkt u de **meest recente tegel herstel punten** om deze informatie op te halen.
-   1. **Laatste verwerkte multi-VM**: deze optie is alleen beschikbaar voor herstel plannen waarvoor ten minste één virtuele machine met een multi-VM-consistentie is ingeschakeld. Virtuele machines die deel uitmaken van een failover van een replicatie groep naar het meest recente, veelvoorkomende herstel punt met meerdere VM'S. Andere failover van virtuele machines naar het meest recente verwerkte herstel punt.  
-   1. **Nieuwste multi-VM-app-consistent**: deze optie is alleen beschikbaar voor herstel plannen waarvoor ten minste één virtuele machine met een multi-VM-consistentie is ingeschakeld. Virtuele machines die deel uitmaken van een failover van een replicatie groep naar het meest recente, algemene multi-VM-toepassings consistente herstel punt. Andere failover van virtuele machines naar het meest recente toepassings consistente herstel punt.
-   1. **Aangepast**: als u een testfailover uitvoert voor een virtuele machine, kunt u deze optie gebruiken om een failover uit te voeren naar een bepaald herstel punt.
+1. Selecteer in de Site Recovery kluis **herstel plannen** > *recoveryplan_name*.
+2. Klik op **failover**.
 
-      > [!NOTE]
-      > De optie voor het kiezen van een herstel punt is alleen beschikbaar wanneer u een failover naar Azure voordoet.
-      >
-      >
+    ![Failover](./media/site-recovery-failover/Failover.png)
 
+3. Laat in **failover** > **failover-richting**de standaard instelling weg als u naar Azure repliceert.
+4. Selecteer in **failover**een **herstel punt** waarvoor u een failover wilt uitvoeren.
 
-1. Als sommige virtuele machines in het herstel plan een failover hebben uitgevoerd in een vorige uitvoering en nu de virtuele machines actief zijn op de bron-en doel locatie, kunt u de optie voor het wijzigen van de **richting** gebruiken om te bepalen in welke richting de failover moet plaatsvinden.
-1. Als er een failover wordt uitgevoerd naar Azure en gegevens versleuteling is ingeschakeld voor de Cloud (alleen van toepassing als u virtuele Hyper-v-machines van een VMM-server hebt beveiligd), selecteert u in **versleutelings sleutel** het certificaat dat is uitgegeven tijdens het inschakelen van gegevens versleuteling tijdens Setup op de VMM-server.
-1. Selecteer **afsluit machine voordat u de failover start** als u wilt dat site Recovery probeert om de virtuele bron machines af te sluiten voordat de failover wordt geactiveerd. Failover wordt voortgezet, zelfs als het afsluiten mislukt.  
+    - **Meest recent**: gebruik het meest recente punt. Hiermee worden alle gegevens verwerkt die naar Site Recovery service zijn verzonden en wordt voor elke machine een herstel punt gemaakt. Deze optie biedt de laagste RPO (beoogd herstel punt), omdat de VM die is gemaakt na een failover, alle gegevens bevat die naar Site Recovery worden gerepliceerd wanneer de failover werd geactiveerd.
+   - **Laatst verwerkte**: gebruik deze optie om virtuele machines over te zetten naar het meest recente herstel punt dat al is verwerkt door site Recovery. U ziet het meest recente verwerkte herstel punt in de **laatste herstel punten**van de virtuele machine. Deze optie biedt een lage RTO omdat er geen tijd wordt besteed aan het verwerken van de niet-verwerkte gegevens
+   - **Nieuwste app-consistent**: gebruik deze optie om virtuele machines uit te zetten naar het nieuwste toepassings consistente herstel punt dat is verwerkt door site Recovery.
+   - **Laatste verwerkte multi-VM**: met deze optie-vm's die deel uitmaken van een failover van een replicatie groep naar het meest recente, veelvoorkomende herstel punt voor meerdere vm's. Voor andere virtuele machines wordt een failover uitgevoerd naar het meest recente verwerkte herstel punt. Deze optie is alleen voor herstel plannen waarvoor ten minste één virtuele machine met consistentie tussen meerdere VM'S is ingeschakeld.
+   - **Nieuwste multi-VM-app-consistent**: met deze optie-vm's die deel uitmaken van een replicatie groep, wordt een failover uitgevoerd naar het meest recente, veelvoorkomende multi-VM-toepassings consistente herstel punt. Andere failover van virtuele machines naar het meest recente toepassings consistente herstel punt. Alleen voor herstel plannen waarvoor ten minste één virtuele machine met consistentie tussen meerdere VM'S is ingeschakeld.
+   - **Aangepast**: niet beschikbaar voor herstel plannen. Deze optie is alleen voor failover van afzonderlijke Vm's.
+
+5. Selecteer **afsluit machine voordat u de failover start** als u wilt dat site Recovery bron-vm's afsluit voordat de failover wordt gestart. De failover wordt voortgezet zelfs als het afsluiten is mislukt.  
 
     > [!NOTE]
-    > Als virtuele Hyper-v-machines zijn beveiligd, wordt de optie voor afsluiten ook geprobeerd om de on-premises gegevens te synchroniseren die nog niet naar de service zijn verzonden voordat de failover wordt geactiveerd.
-    >
-    >
+    > Als u een failover uitvoert voor Hyper-V-Vm's, probeert afsluiten de on-premises gegevens te synchroniseren en te repliceren die nog niet naar de service zijn verzonden, voordat de failover wordt geactiveerd. 
 
-1. U kunt de voortgang van de failover volgen op de pagina **Taken**. Zelfs als er fouten optreden tijdens een niet-geplande failover, wordt het herstel plan uitgevoerd totdat het is voltooid.
-1. Controleer na de failover de virtuele machine door u aan te melden. Als u wilt overschakelen naar een ander herstel punt van de virtuele machine, kunt u de optie **herstel punt wijzigen** gebruiken.
-1. Wanneer u tevreden bent met de virtuele machine waarvoor u de failover hebt uitgevoerd, kunt u de failover **Doorvoeren**. **Door voeren verwijdert alle herstel punten die beschikbaar zijn bij de service en de** optie **herstel punt wijzigen** is niet meer beschikbaar.
+6. Volg de voortgang van de failover op de pagina **taken** . Zelfs als er fouten optreden, wordt het herstel plan uitgevoerd totdat het is voltooid.
+7. Meld u na de failover aan bij de virtuele machine om deze te valideren. 
+8. Als u wilt overschakelen naar een ander herstel punt dat voor de failover moet worden gebruikt, gebruikt u **herstel punt wijzigen**.
+9. Wanneer u klaar bent, kunt u de failover door voeren. Met de actie **door voeren** worden alle herstel punten verwijderd die beschikbaar zijn bij de service. De optie **herstel punt wijzigen** is niet meer beschikbaar.
 
-## <a name="planned-failover"></a>Geplande failover
-Virtuele machines/fysieke servers die zijn beveiligd met Site Recovery ondersteunen ook **geplande failover**. Geplande failover is een failover-optie van een gegevens verlies van nul. Wanneer een geplande failover wordt geactiveerd, worden de virtuele bron machines afgesloten. de meest recente gegevens worden gesynchroniseerd en vervolgens wordt een failover geactiveerd.
+## <a name="run-a-planned-failover-hyper-v"></a>Een geplande failover uitvoeren (Hyper-V)
 
-> [!NOTE]
-> Tijdens de failover van virtuele Hyper-v-machines van een on-premises site naar een andere on-premises site, moet u eerst de virtuele machine opnieuw **repliceren** naar een primaire site en vervolgens een failover activeren om terug te gaan naar de primaire on-premises site. Als de primaire virtuele machine niet beschikbaar is, moet u voordat u begint te **repliceren** , de virtuele machine terugzetten vanuit een back-up.   
+U kunt een geplande failover uitvoeren voor virtuele Hyper-V-machines.
+
+- Een geplande failover is een failover-optie van geen gegevens verlies.
+- Wanneer een geplande failover wordt geactiveerd, worden de virtuele bron machines afgesloten. de meest recente gegevens worden gesynchroniseerd en vervolgens wordt een failover geactiveerd.
+- U voert een geplande failover uit met de optie voor de **geplande failover** . De oplossing wordt op ongeveer dezelfde manier uitgevoerd als een regel matige failover.
  
- 
-## <a name="failover-job"></a>Failover-taak
+## <a name="track-failovers"></a>Failovers bijhouden
+
+Er zijn een aantal taken gekoppeld aan failover.
 
 ![Failover](./media/site-recovery-failover/FailoverJob.png)
 
-Wanneer een failover wordt geactiveerd, moet u de volgende stappen uitvoeren:
-
-1. Controle op vereisten: deze stap zorgt ervoor dat er wordt voldaan aan alle voor waarden die nodig zijn voor de failover
-1. Failover: met deze stap worden de gegevens verwerkt en zo gereed dat een virtuele machine van Azure kan worden gemaakt. Als u het **meest recente** herstel punt hebt gekozen, wordt met deze stap een herstel punt gemaakt op basis van de gegevens die naar de service zijn verzonden.
-1. Begin: met deze stap maakt u een virtuele Azure-machine met behulp van de gegevens die in de vorige stap zijn verwerkt.
+- **Controle van vereisten**: Hiermee wordt gecontroleerd of aan alle voor waarden die zijn vereist voor de failover is voldaan.
+- **Failover**: Hiermee worden de gegevens verwerkt zodat er een virtuele machine van Azure kan worden gemaakt. Als u het **meest recente** herstel punt hebt gekozen, wordt een herstel punt gemaakt op basis van de gegevens die naar de service zijn verzonden.
+- **Start**: maakt een Azure VM met behulp van de gegevens die in de vorige stap zijn verwerkt.
 
 > [!WARNING]
-> **Failover van een in voortgang niet annuleren**: voordat de failover wordt gestart, wordt de replicatie voor de virtuele machine gestopt. Als u een taak die wordt uitgevoerd **annuleert** , wordt de failover gestopt, maar de virtuele machine begint niet te repliceren. De replicatie kan niet opnieuw worden gestart.
->
->
+> **Een failover in voortgang niet annuleren**: voordat de failover wordt gestart, is replicatie s gestopt voor de virtuele machine. Als u een taak die momenteel wordt uitgevoerd annuleert, stopt de failover, maar wordt de VM niet gerepliceerd. De replicatie kan niet opnieuw worden gestart.
 
-## <a name="time-taken-for-failover-to-azure"></a>Benodigde tijd voor failover naar Azure
 
-In bepaalde gevallen vereist een failover van virtuele machines een extra tussenliggende stap die doorgaans ongeveer 8 tot 10 minuten duurt. In de volgende gevallen is de tijd die nodig is voor failover hoger dan gebruikelijk:
+### <a name="extra-failover-time"></a>Extra failover-tijd
 
-* Virtuele VMware-machines die gebruikmaken van Mobility service van versie ouder dan 9,8
-* Fysieke servers
-* Virtuele VMware Linux-machines
-* Virtuele Hyper-V-machines die worden beveiligd als fysieke servers
-* Virtuele VMware-machines waarbij de volgende Stuur Programma's niet aanwezig zijn als opstart Stuur Programma's
+In sommige gevallen vereist VM-failover een tussenliggende stap die doorgaans ongeveer acht tot 10 minuten duurt. Dit zijn de computers waarop deze extra stap/tijd van toepassing is:
+
+* Virtuele VMware-machines met een Mobility Service-versie die ouder is dan 9,8.
+* Fysieke servers en virtuele Hyper-V-machines die worden beveiligd als fysieke servers.
+* Virtuele VMware Linux-machines.
+* VMware-Vm's waarop deze Stuur Programma's niet aanwezig zijn als opstart Stuur Programma's:
     * storvsc
     * vmbus
     * storflt
     * Intelide
     * ATAPI
-* Virtuele VMware-machines waarvoor geen DHCP-service is ingeschakeld, ongeacht of ze DHCP of statische IP-adressen gebruiken
+* VMware-Vm's waarvoor geen DHCP is ingeschakeld, ongeacht of ze DHCP of statische IP-adressen gebruiken.
 
-In alle andere gevallen is deze tussenliggende stap niet vereist en is de tijd die nodig is voor de failover lager.
 
-## <a name="using-scripts-in-failover"></a>Scripts gebruiken in failover
-Mogelijk wilt u bepaalde acties automatiseren tijdens het uitvoeren van een failover. U kunt met behulp van scripts of [Azure Automation-runbooks](site-recovery-runbook-automation.md) in [herstel plannen](site-recovery-create-recovery-plans.md) .
+## <a name="automate-actions-during-failover"></a>Acties automatiseren tijdens failover
 
-## <a name="post-failover-considerations"></a>Overwegingen na failover
-Na een failover kunt u de volgende aanbevelingen overwegen:
-### <a name="retaining-drive-letter-after-failover"></a>Stationsletter behouden na failover
-Azure Site Recovery wordt het bewaren van stationsletters afhandelen. [Meer](vmware-azure-exclude-disk.md#example-1-exclude-the-sql-server-tempdb-disk) informatie over hoe dit gebeurt wanneer u ervoor kiest om bepaalde schijven uit te sluiten.
+Mogelijk wilt u acties automatiseren tijdens failover. Hiervoor kunt u scripts of Azure Automation-runbooks gebruiken in herstel plannen.
 
-## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Voorbereiden op het verbinden met virtuele Azure-machines na een failover
+- [Meer informatie](site-recovery-create-recovery-plans.md) over het maken en aanpassen van herstel plannen, inclusief het toevoegen van scripts.
+- [Meer informatie over](site-recovery-runbook-automation.md) over het toevoegen van Azure Automation runbooks aan herstel plannen.
 
-Als u verbinding wilt maken met virtuele Azure-machines met behulp van RDP/SSH na een failover, volgt u de procedure die [hier](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover) wordt beschreven.
+
+## <a name="configure-settings-after-failover"></a>Instellingen configureren na failover
+
+### <a name="retain-drive-letters-after-failover"></a>Stationsletters behouden na failover
+
+Site Recovery wordt het bewaren van stationsletters afhandelen. Als u schijven uitsluit tijdens de replicatie van de virtuele machine, kunt u [een voor beeld bekijken](exclude-disks-replication.md#example-1-exclude-the-sql-server-tempdb-disk) van hoe dit werkt.
+
+### <a name="prepare-in-azure-to-connect-after-failover"></a>Voorbereiden in azure om verbinding te maken na een failover
+
+Als u verbinding wilt maken met virtuele Azure-machines die na een failover worden gemaakt met behulp van RDP of SSH, volgt u de vereisten in de tabel.
+
+**Failover** | **Locatie** | **Acties**
+--- | --- | ---
+**Virtuele Azure-machine met Windows** | Virtuele Azure-machine na een failover |  [Voeg een openbaar IP-adres toe](https://aka.ms/addpublicip) voor de VM.<br/><br/> De regels voor de netwerk beveiligings groep op de virtuele machine waarvoor een failover is uitgevoerd (en het Azure-subnet waarmee deze is verbonden) moeten binnenkomende verbindingen met de RDP-poort toestaan.<br/><br/> Controleer de **Diagnostische gegevens over opstarten** om een scherm opname van de virtuele machine te controleren.<br/><br/> Als u geen verbinding kunt maken, controleert u of de virtuele machine wordt uitgevoerd en raadpleegt u deze [Tips voor probleem oplossing](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+**Azure-VM met Linux** | Virtuele Azure-machine na een failover | De regels voor de netwerk beveiligings groep op de virtuele machine waarvoor een failover is uitgevoerd (en het Azure-subnet waarmee deze is verbonden) moeten binnenkomende verbindingen met de SSH-poort toestaan.<br/><br/> [Voeg een openbaar IP-adres toe](https://aka.ms/addpublicip) voor de VM.<br/><br/> Controleer de **Diagnostische gegevens over opstarten** voor een scherm opname van de virtuele machine.<br/><br/>
 
 Volg de stappen die [hier](site-recovery-failover-to-azure-troubleshoot.md) worden beschreven om eventuele verbindingsproblemen na een failover op te lossen.
+
+## <a name="set-up-ip-addressing"></a>IP-adres Sering instellen
+
+- **Interne IP-adressen**: als u het interne IP-adres van een virtuele Azure-machine na een failover wilt instellen, hebt u een aantal opties:
+    - Hetzelfde IP-adres behouden: u kunt hetzelfde IP-adres gebruiken op de Azure-VM als de virtuele machine die is toegewezen aan de on-premises computer.
+    - Gebruik een ander IP-adres: u kunt een ander IP-adres gebruiken voor de Azure-VM.
+    - [Meer informatie](concepts-on-premises-to-azure-networking.md#assign-an-internal-address) over het instellen van interne IP-adressen.
+- **Externe IP-adressen**: u kunt open bare IP-adressen behouden bij een failover. Voor virtuele Azure-machines die zijn gemaakt als onderdeel van het failover-proces moet een openbaar IP-adres van Azure worden toegewezen dat beschikbaar is in de Azure-regio. U kunt een openbaar IP-adres hand matig toewijzen of door het proces te automatiseren met een herstel plan. [Meer informatie](concepts-public-ip-address-with-site-recovery.md).
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!WARNING]
-> Als er een failover van de virtuele machines is uitgevoerd en het on-premises Data Center beschikbaar is, moet u de virtuele VMware-machines opnieuw [**beveiligen**](vmware-azure-reprotect.md) in het on-premises Data Center.
+Nadat u een failover hebt uitgevoerd, moet u opnieuw beveiligen om de virtuele Azure-machines terug te repliceren naar de on-premises site. Nadat de replicatie is uitgevoerd, kunt u on-premises failback uitvoeren wanneer u klaar bent.
 
-Gebruik de optie [**geplande failover**](hyper-v-azure-failback.md) om virtuele Hyper-v-machines **terug te sturen** naar on-premises van Azure.
+- [Meer informatie](failover-failback-overview.md#reprotectionfailback) over het opnieuw beveiligen en failback.
+- [Bereid](vmware-azure-reprotect.md) u voor op de beveiliging van VMware en failback.
+- [Failback](hyper-v-azure-failback.md) Virtuele Hyper-V-machines.
+- [Meer informatie over](physical-to-azure-failover-failback.md) het proces voor failover en failback voor fysieke servers.
 
-Als u failover hebt uitgevoerd voor een virtuele Hyper-v-machine naar een ander on-premises Data Center dat wordt beheerd door een VMM-server en het primaire Data Center beschikbaar is, gebruikt u de optie **omgekeerde replicatie** om de replicatie terug te starten naar het primaire Data Center.

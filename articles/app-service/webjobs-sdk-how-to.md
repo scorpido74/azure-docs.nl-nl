@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 8e29c632ff3920c77a757fe45475a12c212cf579
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 2d9de5e7294fdca7514989ba009e9dee8985a084
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684004"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421969"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>De Azure WebJobs SDK gebruiken voor op gebeurtenissen gebaseerde achtergrond verwerking
 
@@ -84,7 +84,7 @@ Het proces voor het inschakelen van de ontwikkelings modus is afhankelijk van de
 Versie 3. *x* maakt gebruik van de standaard ASP.net core-api's. Roep de [`UseEnvironment`](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) -methode aan op het [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) exemplaar. Geef een teken reeks met de naam `development`, zoals in dit voor beeld:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.UseEnvironment("development");
@@ -95,7 +95,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -236,7 +236,7 @@ Het proces voor het installeren en beheren van bindings typen is afhankelijk van
 In versie 3. *x*, de opslag bindingen zijn opgenomen in het `Microsoft.Azure.WebJobs.Extensions.Storage`-pakket. Roep de `AddAzureStorage` extensie methode aan in de methode `ConfigureWebJobs`, zoals hier wordt weer gegeven:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -247,7 +247,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -255,7 +255,7 @@ static void Main()
 Als u andere typen triggers en bindingen wilt gebruiken, installeert u het NuGet-pakket dat deze bevat en roept u de `Add<binding>` extensie methode aan die in de uitbrei ding is geïmplementeerd. Als u bijvoorbeeld een Azure Cosmos DB binding wilt gebruiken, installeert u `Microsoft.Azure.WebJobs.Extensions.CosmosDB` en roept u `AddCosmosDB`aan, zoals:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -266,7 +266,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -318,7 +318,7 @@ Het proces voor het koppelen aan de [`ExecutionContext`] is afhankelijk van uw S
 Roep de `AddExecutionContextBinding` extensie methode aan in de methode `ConfigureWebJobs`, zoals hier wordt weer gegeven:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -329,7 +329,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -373,7 +373,7 @@ U kunt de volgende bindingen configureren:
 In dit voor beeld ziet u hoe u de Azure Cosmos DB trigger configureert:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -390,8 +390,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -403,7 +402,7 @@ Zie het artikel over [Azure CosmosDB-binding](../azure-functions/functions-bindi
 In dit voor beeld ziet u hoe u de Event Hubs trigger configureert:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -419,8 +418,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -434,7 +432,7 @@ In deze voor beelden ziet u hoe u de opslag trigger voor de wachtrij configureer
 #### <a name="version-3x"></a>Versie 3. *x*
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -450,8 +448,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -480,7 +477,7 @@ Zie de [referentie host. json v1. x](../azure-functions/functions-host-json-v1.m
 In dit voor beeld ziet u hoe u de SendGrid-uitvoer binding kunt configureren:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -495,8 +492,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -508,7 +504,7 @@ Zie het [SendGrid-bindings](../azure-functions/functions-bindings-sendgrid.md#ho
 In dit voor beeld ziet u hoe u de Service Bus trigger configureert:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -523,8 +519,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -538,7 +533,7 @@ Bij sommige typen triggers en bindingen worden hun eigen aangepaste configuratie
 #### <a name="version-3x"></a>Versie 3. *x*
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -549,8 +544,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -571,7 +565,7 @@ static void Main()
 }
 ```
 
-## <a name="binding-expressions"></a>Bindings expressies
+## <a name="binding-expressions"></a>Bindingexpressies
 
 In kenmerk-constructor-para meters kunt u expressies gebruiken die worden omgezet in waarden van verschillende bronnen. In de volgende code maakt het pad voor het kenmerk `BlobTrigger` bijvoorbeeld een expressie met de naam `filename`. Wanneer de uitvoer binding wordt gebruikt, wordt `filename` omgezet in de naam van de activerings-blob.
 
@@ -745,11 +739,11 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 }
 ```
 
-### <a name="singletonmodelistener"></a>SingletonMode. listener
+### <a name="singletonmodelistener"></a>SingletonMode.Listener
 
 Sommige triggers hebben ingebouwde ondersteuning voor gelijktijdigheids beheer:
 
-* **Queue trigger**. Stel `JobHostConfiguration.Queues.BatchSize` in op `1`.
+* **QueueTrigger**. Stel `JobHostConfiguration.Queues.BatchSize` in op `1`.
 * **ServiceBusTrigger**. Stel `ServiceBusConfiguration.MessageOptions.MaxConcurrentCalls` in op `1`.
 * **FileTrigger**. Stel `FileProcessor.MaxDegreeOfParallelism` in op `1`.
 
@@ -924,7 +918,7 @@ internal class CustomTelemetryInitializer : ITelemetryInitializer
 Bel [`ConfigureServices`] in de opbouw functie om uw aangepaste [`ITelemetryInitializer`] toe te voegen aan de pijp lijn.
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -951,8 +945,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -1004,9 +997,9 @@ config.LoggerFactory = new LoggerFactory()
 
 In dit artikel vindt u code fragmenten die laten zien hoe u veelvoorkomende scenario's kunt verwerken voor het werken met de webjobs SDK. Zie voor volledige voor beelden [Azure-webjobs-SDK-voor beelden](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost).
 
-['ExecutionContext']: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
-[TelemetryClient]: /dotnet/api/microsoft.applicationinsights.telemetryclient
-[ConfigureServices]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
-['ITelemetryInitializer']: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
-['TelemetryConfiguration']: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
-['JobHostConfiguration']: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs
+[`ExecutionContext`]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
+[`TelemetryClient`]: /dotnet/api/microsoft.applicationinsights.telemetryclient
+[`ConfigureServices`]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
+[`ITelemetryInitializer`]: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
+[`TelemetryConfiguration`]: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
+[`JobHostConfiguration`]: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs

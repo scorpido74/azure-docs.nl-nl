@@ -1,18 +1,18 @@
 ---
-title: "Azure Premium Storage: ontwerpen voor prestaties op Windows-Vm's "
-description: Ontwerp krachtige toepassingen met Azure Premium Storage. Premium Storage biedt schijf ondersteuning met hoge prestaties en lage latentie voor I/O-intensieve workloads die worden uitgevoerd op Azure Virtual Machines.
+title: 'Azure Premium Storage: ontwerpen voor prestaties op virtuele Linux-machines | Microsoft Docs'
+description: Ontwerp krachtige toepassingen met Azure Premium SSD Managed disks. Premium Storage biedt schijf ondersteuning met hoge prestaties en lage latentie voor I/O-intensieve workloads die worden uitgevoerd op Azure Virtual Machines.
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 56836b81ad63c3a2170606dc64988aab8dc7f47f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9940ee4cfce9721ac65f2b3cf1469e180adfa098
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035290"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458694"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium-opslag: ontwerpen voor hoge prestaties
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "74035290"
 >
 > Als uw virtuele machine versneld netwerken ondersteunt, moet u ervoor zorgen dat deze is ingeschakeld. Als deze optie niet is ingeschakeld, kunt u deze inschakelen op al geïmplementeerde Vm's in [Windows](../../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) en [Linux](../../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
 
-Voordat u begint Premium Storage, lees dan eerst de [Select a Azure-schijf type voor IaaS vm's](disks-types.md) en [Azure Storage schaal baarheid en prestatie doelen voor opslag accounts](../../storage/common/storage-scalability-targets.md).
+Voordat u begint, lees dan eerst de [Select a Azure-schijf type voor IaaS vm's](disks-types.md) en [schaalbaarheids doelen voor Premium Premium Storage-pagina-Blob-opslag accounts](../../storage/blobs/scalability-targets-premium-page-blobs.md).
 
 
 [!INCLUDE [virtual-machines-common-premium-storage-performance.md](../../../includes/virtual-machines-common-premium-storage-performance.md)]

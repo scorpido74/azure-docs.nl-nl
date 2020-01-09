@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: c6b52585200db07ebc2e15f509b1def55dff5caf
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: dd6eec34a1f1bd59aed397111e31048196e1e9c2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839950"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427722"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Quick Start: uw eerste proef versie van data Science maken in Azure Machine Learning Studio (klassiek)
 
@@ -45,7 +45,7 @@ In deze quickstart wordt de standaardwerkstroom voor een experiment gevolgd:
 ## <a name="get-the-data"></a>De gegevens ophalen
 
 Het eerste wat u voor machine learning nodig hebt, zijn gegevens.
-Er zijn verschillende voorbeeld gegevens sets die deel uitmaken van de klassieke versie van studio die u kunt gebruiken, of u kunt gegevens importeren uit een groot aantal bronnen. Voor dit voorbeeld gebruiken we de voorbeeldgegevensset **Automobile price data (Raw)** . Deze is opgenomen in de werkruimte.
+Er zijn verschillende voorbeeld gegevens sets opgenomen in Studio (klassiek) die u kunt gebruiken, maar u kunt ook gegevens importeren uit een groot aantal bronnen. Voor dit voorbeeld gebruiken we de voorbeeldgegevensset **Automobile price data (Raw)** . Deze is opgenomen in de werkruimte.
 Deze gegevensset bevat vermeldingen voor verschillende auto's, inclusief informatie over het merk, het model, de technische specificaties en de prijs.
 
 > [!TIP]
@@ -117,7 +117,7 @@ Eerst voegen we een module toe waarmee de kolom **normalized-losses** volledig w
 
 1. Voer het experiment uit door onder aan de pagina op **RUN** te klikken.
 
-    Wanneer het experiment is voltooid, wordt er bij alle modules een groen vinkje weergegeven om aan te geven dat deze zijn voltooid. In de rechterbovenhoek wordt de status **Finished running** weergegeven.
+    Wanneer het experiment is voltooid, wordt er bij alle modules een groen vinkje weergegeven om aan te geven dat deze zijn voltooid. In de rechterbovenhoek wordt de status **Finished running** (Uitvoeren voltooid) weergegeven.
 
     ![Zo ziet het experiment er ongeveer uit nadat het is uitgevoerd](./media/create-experiment/early-experiment-run.png)
 
@@ -144,9 +144,9 @@ Laten we een model bouwen dat gebruikmaakt van een subset kenmerken onze gegeven
 
 1. Dubbelklik op de module en typ 'Select features for prediction' (Kenmerken voor de voorspelling selecteren).
 
-1. Klik in het deelvenster **Properties** op **Launch column selector**.
+1. Klik in het deelvenster **Properties** (Eigenschappen) op **Launch column selector** (Kolomselector starten).
 
-1. Klik op **With rules**.
+1. Klik op **With rules** (Met regels).
 
 1. Klik onder **Begin With** op **No columns**. Selecteer in de filterrij **Include** en **column names** en selecteer onze lijst met kolomnamen in het tekstvak. Dit filter zorgt ervoor dat de module alleen de kolommen (kenmerken) doorgeeft die wij opgeven.
 

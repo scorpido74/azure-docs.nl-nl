@@ -1,6 +1,6 @@
 ---
 title: Inleiding tot de Azure Cosmos DB Cassandra-API
-description: Leer hoe u Azure Cosmos DB kunt gebruiken om bestaande toepassingen te gebruiken en te verplaatsen, en nieuwe toepassingen kunt bouwen met de Cassandra-API, met behulp van CQL en de apparaatstuurprogramma’s van Cassandra, waarmee u al vertrouwd bent.
+description: Meer informatie over hoe u Azure Cosmos DB kunt gebruiken om bestaande toepassingen te ' til en verschuiven ' en nieuwe toepassingen te bouwen met behulp van de Cassandra-Stuur Programma's en CQL
 author: kanshiG
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 82ca7814f756a12005ee5802c3e8a7fd28f6d398
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 63a85e86b1882bdaf4e5b85601a7deabe5b3bbef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968967"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442140"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Inleiding tot de Azure Cosmos DB Cassandra-API
 
@@ -23,11 +23,11 @@ De Cassandra-API stelt u in staat om gegevens te gebruiken die zijn opgeslagen i
 
 ## <a name="what-is-the-benefit-of-using-apache-cassandra-api-for-azure-cosmos-db"></a>Wat is het voordeel van het gebruik van de Apache Cassandra-API voor Azure Cosmos DB?
 
-**Geen operationeel beheer**: Azure Cosmos DB Cassandra-API is een volledig beheerde cloudservice, waardoor beheerders zich niet bezig hoeven te houden met het beheren en controleren van talloze instellingen in OS-, JVM- en yaml-bestanden en de bijbehorende wisselwerkingen. Azure Cosmos DB biedt controle van doorvoer, latentie, opslag, beschikbaarheid en waarschuwingen die kunnen worden geconfigureerd.
+**Geen operationeel management**: Azure Cosmos DB Cassandra-API is een volledig beheerde cloudservice, waardoor beheerders zich niet bezig hoeven te houden met het beheren en controleren van talloze instellingen in OS-, JVM- en yaml-bestanden en de bijbehorende wisselwerkingen. Azure Cosmos DB biedt controle van doorvoer, latentie, opslag, beschikbaarheid en waarschuwingen die kunnen worden geconfigureerd.
 
 **Prestatiebeheer**: Azure Cosmos DB biedt gegarandeerde lage latentie van lees- en schrijfbewerkingen voor een percentiel van 99%, ondersteund met een SLA. Gebruikers hoeven zich geen zorgen te maken over operationele overhead voor hoge prestaties en lage latentie van lees- en schrijfbewerkingen. Dit betekent dat gebruikers zich niet bezig hoeven te houden met geplande compressie, het beheren van testblokken, het handmatig instellen van bloomfilters en replica’s. Azure Cosmos DB verwijdert de overhead om deze zaken te beheren, waardoor u zich beter kunt focussen op de logica van de toepassing.
 
-**Mogelijkheid om bestaande code en hulpprogramma's te gebruiken**: Azure Cosmos DB biedt compatibiliteit van wire-protocolniveaus met bestaande Cassandra-SDK’s en hulpprogramma’s. Door deze compatibiliteit kunt u bestaande codebase gebruiken met de Azure Cosmos DB Cassandra-API, met slechts een klein aantal wijzigingen.
+**Mogelijkheid om bestaande code en hulpprogramma’s te gebruiken**: Azure Cosmos DB biedt compatibiliteit van wire-protocolniveau’s met bestaande Cassandra-SDK’s en hulpprogramma’s. Door deze compatibiliteit kunt u bestaande codebase gebruiken met de Azure Cosmos DB Cassandra-API, met slechts een klein aantal wijzigingen.
 
 **Elasticiteit van doorvoer en opslag**: Azure Cosmos DB biedt elasticiteit van gegarandeerde doorvoer naar alle regio’s en kan de geboden doorvoer opschalen met Azure Portal, PowerShell of de CLI. U kunt naar behoefte flexibel de schaal van de opslag en doorvoer aanpassen met voorspelbare prestaties.
 
@@ -35,7 +35,7 @@ De Cassandra-API stelt u in staat om gegevens te gebruiken die zijn opgeslagen i
 
 **Keuze in consistentie**: Azure Cosmos DB biedt de keuze uit vijf goed gedefinieerde consistentieniveaus voor een optimale balans tussen consistentie en prestaties. Deze consistentieniveaus zijn: sterk, gebonden-verouderd, sessie, consistent voorvoegsel en mogelijk. Op basis van deze goed gedefinieerde, praktische en intuïtieve consistentieniveaus kunnen ontwikkelaars een nauwkeurige balans vinden tussen de consistentie, beschikbaarheid en latentie. Lees het artikel [consistentieniveaus](consistency-levels.md) voor meer informatie. 
 
-**Op bedrijfsniveau**: Azure Cosmos DB biedt [nalevingscertificeringen](https://www.microsoft.com/trustcenter) om ervoor te zorgen dat het platform veilig kan worden gebruikt. Azure Cosmos DB biedt ook versleuteling van niet-actieve en actieve gegevens, een IP-firewall en auditlogboeken voor beheeractiviteiten.
+**Zakelijk niveau**: Azure Cosmos DB biedt [nalevingscertificeringen](https://www.microsoft.com/trustcenter) om ervoor te zorgen dat het platform veilig kan worden gebruikt. Azure Cosmos DB biedt ook versleuteling van niet-actieve en actieve gegevens, een IP-firewall en auditlogboeken voor beheeractiviteiten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

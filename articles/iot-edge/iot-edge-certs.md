@@ -4,18 +4,18 @@ description: Azure IoT Edge maakt gebruik van certificaten om te valideren van a
 author: stevebus
 manager: philmea
 ms.author: stevebus
-ms.date: 09/13/2018
+ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0aa70e591c7aac977fe13ed638f8ee56b88e4bd1
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 9e4fd0203d68ef1f39d6efbb9d17d3e517969bff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982914"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457277"
 ---
-# <a name="azure-iot-edge-certificate-usage-detail"></a>Azure IoT Edge-certificaat-gebruiksdetails
+# <a name="understand-how-azure-iot-edge-uses-certificates"></a>Meer informatie over het gebruik van Azure IoT Edge certificaten
 
 IoT Edge certificaten worden gebruikt voor de modules en downstream IoT-apparaten voor het verifiëren van de identiteit en de geldigheid van de [IOT Edge hub](iot-edge-runtime.md#iot-edge-hub) runtime-module waarmee ze verbinding maken. Deze verificatie inschakelen voor een beveiligde verbinding van TLS (transport layer security) tussen de runtime, de modules en de IoT-apparaten. Zoals IoT-Hub zelf, IoT Edge vereist een veilige en versleutelde verbinding van IoT downstream (bladeren) apparaten en IoT Edge-modules. Om een beveiligde TLS-verbinding tot stand te brengen, presenteert de IoT Edge hub-module een server certificaat keten om clients te verbinden, zodat ze hun identiteit kunnen verifiëren.
 
@@ -51,7 +51,7 @@ De fabrikant gebruikt in elk geval een tussenliggende CA-certificaat aan het ein
 
 ### <a name="device-ca-certificate"></a>Device CA-certificaat
 
-Het CA-certificaat van het apparaat is gegenereerd op basis van en ondertekend door het laatste tussenliggende CA-certificaat in het proces. Dit certificaat is geïnstalleerd op het IoT Edge apparaat zelf, bij voor keur in beveiligde opslag, zoals een Hardware Security module (HSM). Bovendien identificatie een certificaat van een apparaat unieke van een IoT Edge-apparaat. Voor IoT Edge kan het CA-certificaat van het apparaat andere certificaten uitgeven. Bijvoorbeeld: het CA-certificaat van het apparaat geeft certificaten van het Leaf-apparaat aan dat wordt gebruikt voor het verifiëren van apparaten bij de [Azure IOT Device](../iot-dps/about-iot-dps.md)Provisioning-Service.
+Het CA-certificaat van het apparaat is gegenereerd op basis van en ondertekend door het laatste tussenliggende CA-certificaat in het proces. Dit certificaat is geïnstalleerd op het IoT Edge apparaat zelf, bij voor keur in beveiligde opslag, zoals een Hardware Security module (HSM). Bovendien identificatie een certificaat van een apparaat unieke van een IoT Edge-apparaat. Het CA-certificaat van het apparaat kan andere certificaten ondertekenen. 
 
 ### <a name="iot-edge-workload-ca"></a>IoT Edge-werkbelasting CA
 
@@ -78,29 +78,7 @@ Omdat productie-en bewerkings processen worden gescheiden, moet u rekening houde
 
 ## <a name="devtest-implications"></a>Gevolgen voor ontwikkelen en testen
 
-Voor het vereenvoudigen van de ontwikkeling en testen van scenario's, biedt Microsoft een set [gemak scripts](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) voor het genereren van niet-productie-certificaten die geschikt zijn voor IoT Edge in het scenario voor transparante gateway. Zie voor meer voorbeelden van hoe de scripts werken [configureren van een IoT Edge-apparaat om te fungeren als een transparante gateway](how-to-create-transparent-gateway.md).
-
-Deze scripts genereren van certificaten die de structuur van het certificaat-keten beschreven in dit artikel volgen. De volgende opdrachten de "CA-basiscertificaat' en een enkele"tussenliggende CA-certificaat' genereren.
-
-```bash
-./certGen.sh create_root_and_intermediate 
-```
-
-```Powershell
-New-CACertsCertChain rsa 
-```
-
-Deze opdrachten genereren op dezelfde manier het "Device CA-certificaat".
-
-```bash
-./certGen.sh create_edge_device_ca_certificate "<gateway device name>"
-```
-
-```Powershell
-New-CACertsEdgeDeviceCA "<gateway device name>"
-```
-
-* De  **\<naam\> van de gateway apparaat** die wordt door gegeven aan deze scripts, mag niet hetzelfde zijn als de para meter ' hostname ' in config. yaml. De scripts helpen u bij het voor komen van problemen door een teken reeks voor de naam van een '. ca ' toe te voegen aan de  **\<\> apparaatnaam** van de gateway om te voor komen dat het probleem wordt opgelost wanneer een gebruiker IOT Edge met dezelfde naam op beide locaties instelt. Het is echter verstandig om dezelfde naam te gebruiken.
+Voor het vereenvoudigen van de ontwikkeling en testen van scenario's, biedt Microsoft een set [gemak scripts](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) voor het genereren van niet-productie-certificaten die geschikt zijn voor IoT Edge in het scenario voor transparante gateway. Zie [demo certificaten maken om IOT Edge apparaatfuncties te testen](how-to-create-test-certificates.md)voor voor beelden van de werking van de scripts.
 
 >[!Tip]
 > Als u wilt verbinding maken met uw apparaat IoT "leaf" apparaten en toepassingen die gebruikmaken van onze IoT-device-SDK via IoT Edge, moet u de optionele parameter GatewayHostName u aan bij het einde van de verbindingsreeks van het apparaat toevoegen. Wanneer het certificaat van de Edge Hub wordt gegenereerd, is gebaseerd op een indeling met een lagere versie van de hostnaam van config.yaml, daarom de namen van de overeenkomst en de verificatie van TLS-certificaat te voltooien, moet u de parameter GatewayHostName in kleine letters.
@@ -124,4 +102,4 @@ Hier ziet u de hiërarchie van certificaat diepte weergegeven in de schermafbeel
 
 [Informatie over Azure IoT Edge-modules](iot-edge-modules.md)
 
-[Een IoT Edge-apparaat om te fungeren als een transparante gateway configureren](how-to-create-transparent-gateway.md)
+[Een IoT Edge-apparaat configureren zodat deze werkt als een transparante gateway](how-to-create-transparent-gateway.md)

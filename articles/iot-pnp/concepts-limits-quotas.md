@@ -3,16 +3,16 @@ title: De preview-versie van een IoT-Plug en Play en quota beperken | Microsoft 
 description: Meer informatie over de limieten, quota's en beperking die van toepassing zijn wanneer u IoT Plug en Play preview gebruikt.
 author: miagdp
 ms.author: miag
-ms.date: 08/01/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 2df8a8820422a22b0512e24c4b052377cb0e61e0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 48ecaaba6d956efd9da75d0582fa06d231cb3f80
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879563"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531374"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>Preview-limieten, quota's en gashendel voor IoT Plug en Play
 
@@ -22,7 +22,7 @@ In dit artikel worden de IoT-Plug en Play limieten, quota en beperking beschreve
 
 Voor de open bare preview zijn de volgende limieten en quota van toepassing op een IoT-hub:
 
-| Limieten, beperkingen en beperkingen | Value | Opmerkingen |
+| Limieten, beperkingen en beperkingen | Waarde | Opmerkingen |
 |-----|-----|-----|
 | Aantal apparaatfuncties (DCMs) of interfaces dat per hub kan worden geregistreerd | 1500 ||
 | Maximum aantal interfaces dat per apparaat kan worden geregistreerd | 40 ||
@@ -39,7 +39,7 @@ Voor de open bare preview zijn de volgende limieten en quota van toepassing op e
 
 Voor de open bare preview zijn de volgende limieten en quota van toepassing op een model opslagplaats:
 
-| Limieten, beperkingen en beperkingen| Value |
+| Limieten, beperkingen en beperkingen| Waarde |
 |-----|-----|
 | Aantal opslag plaatsen van bedrijfs model per Azure Active Directory-Tenant | 1 |
 | Aantal autorisatie sleutels per model opslagplaats | 10  |

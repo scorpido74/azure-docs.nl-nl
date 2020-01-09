@@ -7,62 +7,62 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 07e8e0edc4638c6c0bf9acc205175aa731c0f8bc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9b0a9e10a88836ce83e636db20180c3692ab4429
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795547"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453195"
 ---
 # <a name="automate-the-lifecycle-of-your-apps-with-continuous-build-and-integration"></a>Automatiseer de levens cyclus van uw apps met doorlopende build en integratie
 
-Als ontwikkel aars schrijft u code en incheckt u deze in de code opslagplaats, maar de door voering die in de opslag plaats is ingecheckt, is mogelijk niet altijd consistent. Wanneer er meerdere ontwikkel aars aan hetzelfde project werken, worden er problemen met de integratie gemaakt en kan het team worden uitgevoerd in situaties waar geen dingen werken, de fouten blijven Piling en de ontwikkeling van het project wordt vertraagd. Ontwikkel aars moeten wachten tot de gehele software code is gebouwd en getest om te controleren op fouten en Hiermee wordt het proces trager en minder iteratief. 
+Als ontwikkel aars schrijft u code en controleert u deze in de code opslagplaats, maar de door voering die in de opslag plaats wordt ingecheckt, is mogelijk niet altijd consistent. Wanneer meerdere ontwikkel aars aan hetzelfde project werken, kunnen er problemen ontstaan met de integratie. Teams kunnen zich in situaties voordoen waarin geen dingen werken, het opdelen van fouten en de project ontwikkeling worden vertraagd. Ontwikkel aars moeten wachten tot de volledige software code is gebouwd en getest om te controleren op fouten, waardoor het proces langzaam en minder iteratief wordt. 
 
-Met **doorlopend bouwen en integreren**kunnen ontwikkel aars eenvoudiger hun code bouwen en testen door hun wijzigingen niet alleen door te voeren in de opslag plaats van de bron code, maar ook om testen en verificaties in de build-omgeving te plaatsen, zodat ze altijd worden uitgevoerd. tests worden uitgevoerd op basis van hun code. Alle wijzigingen aan de bron code worden doorlopend gemaakt wanneer er een door Voer aan de opslag plaats wordt gemaakt. Bij elke check-in valideert de CI-server de test die de ontwikkelaar heeft gemaakt en voert deze uit. Als de tests niet worden door gegeven, wordt de code teruggestuurd voor verdere wijzigingen. Zo kan de ontwikkelaar de gemaakte builds niet onderbreken en niet alle tests lokaal op hun computer uitvoeren, waardoor de productiviteit van ontwikkel aars wordt verhoogd. 
+Met doorlopend bouwen en integreren kunnen ontwikkel aars de builds vereenvoudigen en hun code testen door hun wijzigingen door te voeren in de opslag plaats van de bron code en tests en verificaties in de build-omgeving te zetten. Op deze manier worden de tests altijd uitgevoerd op basis van hun code. Alle wijzigingen die zijn aangebracht aan de bron code, worden doorlopend gebouwd wanneer er een door Voer aan de opslag plaats wordt gemaakt. Bij elke inchecking valideert de CI-server (Continuous Integration) de test die de ontwikkelaar heeft gemaakt en voert deze uit. Als de tests niet worden door gegeven, wordt de code teruggestuurd voor verdere wijzigingen. Op deze manier worden de gemaakte builds niet verbroken door de ontwikkel aars. Ze hoeven ook niet alle tests lokaal op hun computers uit te voeren, waardoor de productiviteit van de ontwikkel aars wordt verhoogd. 
 
 ## <a name="key-benefits"></a>Belangrijkste voordelen
-- **Automatisch** pijp lijn bouwen, testen en implementeren.
-- **Detecteer bugs en los problemen** op om de release tarieven te verhogen.
-- **Leg code** vaker toe en bouw snel toepassingen.
-- **Flexibiliteit** om snel zonder problemen code te wijzigen.
-- Een **snellere time-to-Market** zorgt ervoor dat de code van alleen goede kwaliteit deze helemaal kan passeren.
-- **Kleine code wijzigingen** omdat hiermee kleine stukjes code tegelijk kunnen worden geïntegreerd.
-- **Verg root de transparantie en verantwoording** van het team kunt u **voortdurend feedback** krijgen die niet alleen van uw klanten maar ook uw team is.
+- Automatiseer uw builds, tests en implementaties voor pijp lijnen.
+- Detecteer bugs en los problemen op om de release tarieven te verhogen.
+- Leg code vaker toe en bouw snel toepassingen.
+- De flexibiliteit om code snel te wijzigen zonder problemen te voor komen.
+- U kunt sneller op de markt brengen, zodat alleen de goede kwaliteit van de code optimaal is.
+- Maak kleine code wijzigingen efficiënter, omdat kleine stukjes code tegelijk worden geïntegreerd.
+- Verg root de transparantie en verantwoording van het team zodat u doorlopende feedback krijgt van uw klanten en uw team.
 
-Gebruik de volgende services om continue integratie pijplijn in te scha kelen in uw mobiele apps.
+Gebruik de volgende services om een continue integratie pijplijn in uw mobiele apps in te scha kelen.
 
 ## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[App Center build](/appcenter/build/) -service helpt u bij het bouwen van systeem eigen en platformoverschrijdende toepassingen waaraan uw team werkt, met behulp van een veilige Cloud infrastructuur. U kunt uw opslag plaats eenvoudig aansluiten in App Center en uw app in de Cloud bouwen op elke door voering zonder dat u zich zorgen hoeft te maken over het configureren van build-servers, gecompliceerde configuraties en code die voortbouwt op de computer van een collega, maar niet aan uw bedrijf.
+[App Center-build](/appcenter/build/) helpt u bij het bouwen van systeem eigen en platformoverschrijdende toepassingen waaraan uw team werkt met behulp van een veilige Cloud infrastructuur. U kunt uw opslag plaats eenvoudig verbinden in Visual Studio App Center en uw app in de Cloud bouwen tijdens elke door voer. U hoeft zich geen zorgen te maken over het configureren van on-site build-servers, gecompliceerde configuraties en code die is gebaseerd op de computer van een collega, maar niet op uw eigen locatie.
 
-Met de toegevoegde kracht van App Center Services kunt u uw werk stroom verder automatiseren. Release automatisch builds met testers en open bare App Stores met App Center distribueren, of voer automatische UI-tests uit op duizenden echte apparaten en besturingssysteem configuraties in de Cloud met App Center test.
+Met de toegevoegde kracht van Visual Studio App Center Services kunt u uw werk stroom verder automatiseren. U kunt builds voor testers en open bare App Stores automatisch vrijgeven met App Center distribueren. U kunt ook geautomatiseerde UI-tests uitvoeren op duizenden echte apparaten en besturingssysteem configuraties in de Cloud met App Center test.
 
-**Belangrijkste functies**
-- Stel binnen enkele minuten **een continue integratie** in en bouw toepassingen vaker en sneller.
-- Integreer met **github, BitBucket, Azure DevOps en GitLab**.
-- **Snelle en veilige builds** op beheerde, in de Cloud gehoste computers.
-- **Schakel uw builds in op ' Test starten '** en controleer of de app is gebouwd in echte IOS-en Android-apparaten.
-- **Systeem eigen en platformoverschrijdende ondersteuning** : IOS, Android, MacOS, Windows, Xamarin, reageert systeem eigen.
-- **Pas uw builds** aan door scripts voor post-Clone, pre-build en post-build toe te voegen.
+**Belangrijke functies**
+- Stel in een paar minuten doorlopende integratie in en bouw toepassingen vaker en sneller.
+- Integreer met GitHub, BitBucket, Azure DevOps en GitLab.
+- Maak snelle en veilige builds op beheerde, in de Cloud gehoste machines.
+- Schakel uw builds in om de test te starten en te controleren of de app is gebouwd in echte iOS-en Android-apparaten.
+- Profiteer van systeem eigen en platformoverschrijdende ondersteuning voor iOS, Android, macOS, Windows, Xamarin en reageren systeem eigen.
+- Pas uw builds aan door scripts voor post-Clone, pre-build en post-build toe te voegen.
 
 **Referentie**
-- [Meld u aan met App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
+- [Meld u aan met Visual Studio App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
 - [Aan de slag met App Center build](/appcenter/build/)
 
 ## <a name="azure-pipelines"></a>Azure Pipelines
- [Azure pipelines](https://azure.microsoft.com/services/devops/pipelines/), een service in azure DevOps, is een volledig functionele service voor continue integratie (CI) en continue levering (cd) die geschikt is voor uw favoriete Git-provider en kan worden geïmplementeerd voor de meeste belang rijke Cloud Services, waaronder Azure. U kunt beginnen met uw code op GitHub, GitHub Enter prise server, GitLab, bitbucket Cloud of Azure opslag plaatsen. Vervolgens kunt u het bouwen, testen en implementeren van uw code automatiseren naar Microsoft Azure, Google Cloud Platform of Amazon Web Services.
+ [Azure-pijp lijnen](https://azure.microsoft.com/services/devops/pipelines/), een service in azure DevOps, is een volledig uitgeruste service voor continue integratie en continue levering (cd) die geschikt is voor uw favoriete Git-provider. Het kan worden geïmplementeerd in de meeste belang rijke Cloud Services, waaronder Azure. U kunt beginnen met uw code op GitHub, GitHub Enter prise server, GitLab, bitbucket Cloud of Azure opslag plaatsen. Vervolgens kunt u het bouwen, testen en implementeren van uw code automatiseren naar Microsoft Azure, Google Cloud Platform of Amazon Web Services (AWS).
 
-**Belangrijkste functies**
-- Een vereenvoudigde op taken gebaseerde ervaring voor het instellen van een CI-server voor zowel systeem eigen (Android-, iOS-en Windows-) als platformoverschrijdende (Xamarin, Cordova en gereageerde) mobiele toepassingen, naast micro soft en niet-micro soft (node. js, Java) gebaseerde server gebruikte.
-- **Elke taal, platform en Cloud** : node. js-, Python-, Java-, PHP-, Ruby-, go-, C/C++, C#, Android-en IOS-toepassingen bouwen, testen en implementeren. Voer taken parallel uit op Linux, macOS en Windows. Implementeer op cloud providers zoals Azure, AWS en GCP. Distribueer mobiele toepassingen via bèta kanalen en app stores.
-- **Ondersteuning voor native container** : Maak nieuwe containers met gemak en push ze naar een REGI ster. Implementeer containers op onafhankelijke hosts of Kubernetes.
-- **Geavanceerde werk stromen** -eenvoudig bouwen koppelen en meerdere fasen. Ondersteuning voor YAML, testen van de integratie, release Gates, rapportage en meer.
-- **Uitbreidbaar** : gebruik een reeks bouw-, test-en implementatie taken die door de community zijn gebouwd: honderden uitbrei dingen van vertraging tot SonarCloud. U kunt zelfs implementeren vanuit andere CI-systemen, zoals Jenkins, en webhooks en REST-Api's gebruiken om u te helpen bij de integratie van
-- **Gratis in de Cloud gehoste builds** voor open bare en particuliere opslag plaatsen.
-- **Ondersteunt implementatie naar andere Cloud leveranciers** , zoals Amazon Web Services, Google Cloud platform enz.
+**Belangrijke functies**
+- **Vereenvoudigde op taken gebaseerde ervaring voor het instellen van een CI-server:** Stel een CI-server in voor zowel systeem eigen (Android-, iOS-en Windows-) als andere platform-apps (Xamarin, Cordova en reagerend systeem eigen), naast de server technologieën van micro soft en niet van micro soft (node. js, Java).
+- **Elke taal, elk platform en elke Cloud:** Node. js-, Python-, Java-, PHP-, Ruby-, go-, C/C++, C#, Android-en IOS-toepassingen bouwen, testen en implementeren. Voer taken parallel uit op Linux, macOS en Windows. Implementeer op cloud providers zoals Azure, AWS en Google Cloud Platform. Distribueer mobiele toepassingen via bèta kanalen en app stores.
+- **Ondersteuning voor native container:** Maak met gemak nieuwe containers en push ze naar een REGI ster. Implementeer containers op onafhankelijke hosts of Kubernetes.
+- **Geavanceerde werk stromen:** Maak eenvoudig bouw ketens en Multiphase builds. Krijg ondersteuning voor YAML, test integratie, release-Gates, rapportage en meer.
+- **Uitbreidbaar:** Gebruik een reeks bouw-, test-en implementatie taken die door de community zijn gebouwd, waaronder honderden uitbrei dingen van vertraging tot SonarCloud. U kunt zelfs implementeren vanuit andere CI-systemen, zoals Jenkins. Webhooks en REST-Api's kunnen u helpen bij de integratie.
+- **Gratis in de Cloud gehoste builds:** Deze builds zijn beschikbaar voor open bare en privé-opslag plaatsen.
+- **Ondersteuning voor implementatie naar andere Cloud leveranciers:** Leveranciers zijn AWS en Google Cloud Platform.
 
 **Referentie**
 - [Aan de slag met de gids voor Azure-pijp lijnen](/azure/devops/pipelines/get-started/pipelines-get-started?view=azure-devops)
 - [Aan de slag met Azure DevOps](https://app.vsaex.visualstudio.com/signup/) 
 - [Snelstartgidsen](/azure/devops/pipelines/create-first-pipeline?view=azure-devops&tabs=tfs-2018-2)
 
-Volg de keuze van de juiste service voor de builds van uw toepassing door het artikel te volgen dat [app Center build versus Azure-pijp lijnen](/appcenter/build/choose-between-services)vergelijkt.
+Zie het artikel dat [app Center build versus Azure-pijp lijnen](/appcenter/build/choose-between-services)vergelijkt om u te helpen bij het kiezen van de juiste service voor uw toepassings builds.

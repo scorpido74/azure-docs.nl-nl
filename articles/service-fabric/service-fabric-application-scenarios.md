@@ -1,25 +1,14 @@
 ---
-title: Toepassings scenario's en ontwerpen | Microsoft Docs
+title: Toepassings scenario's en-ontwerp
 description: Overzicht van categorieën Cloud toepassingen in Service Fabric. Beschrijft een toepassings ontwerp dat gebruikmaakt van stateful en stateless Services.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 3a8ca6ea-b8e9-4bc3-9e20-262437d2528e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 4/24/2019
-ms.author: atsenthi
-ms.openlocfilehash: d72e124248887690ca26c2676e8036cb1b5c4339
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: bdbbf81186463e1f645738b370662de9c13f5c17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303513"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464907"
 ---
 # <a name="service-fabric-application-scenarios"></a>Toepassings scenario's Service Fabric
 Azure Service Fabric biedt een betrouwbaar en flexibel platform waar u veel soorten bedrijfs toepassingen en-services kunt schrijven en uitvoeren. Deze toepassingen en micro Services kunnen stateless of stateful zijn, en de resources worden verdeeld over virtuele machines om de efficiëntie te maximaliseren. 
@@ -80,7 +69,7 @@ Hier volgt een voorbeeld toepassing die gebruikmaakt van stateful Services: ![to
 * Ga naar de Azure Architecture Center voor hulp bij het bouwen van micro [Services in azure](https://docs.microsoft.com/azure/architecture/microservices/).
 * Ga naar de [Aanbevolen procedures voor Azure service Fabric-toepassingen en-clusters](service-fabric-best-practices-overview.md) voor hulp bij het ontwerpen van toepassingen.
 
-* Zie ook de volgende onderwerpen:
+* Raadpleeg ook de volgende onderwerpen:
   * [Meer informatie over micro Services](service-fabric-overview-microservices.md)
   * [Service status definiëren en beheren](service-fabric-concepts-state.md)
   * [Beschik baarheid van Service Fabric Services](service-fabric-availability-services.md)

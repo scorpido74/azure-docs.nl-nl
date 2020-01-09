@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9ce6459dd65c75c6fcff5591d4e4667e4b0c75fa
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 56194bcfb9531def87a9918ad442a2927413c964
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928480"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432961"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Een adres zoeken met behulp van de Azure Maps Search-service
 
@@ -28,7 +28,7 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het aanroepen van de Maps service Api's, hebt u een Maps-account en-sleutel nodig. Volg de instructies in het [account beheren](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) voor meer informatie over het maken van een account en volg de stappen in [primaire sleutel ophalen](./tutorial-search-location.md#getkey) om een primaire abonnements sleutel voor uw account op te halen.
+Voor het aanroepen van de Maps service Api's, hebt u een Maps-account en-sleutel nodig. Volg de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) voor het maken van een abonnement op een Azure Maps-account en volg de stappen in de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
 
 In dit artikel wordt gebruikgemaakt van de [app postman](https://www.getpostman.com/apps) om rest-aanroepen te bouwen. U kunt elke gewenste API-ontwikkel omgeving gebruiken.
 
@@ -50,7 +50,7 @@ De meeste zoek query's zijn standaard `maxFuzzyLevel=1` om prestaties te verkrij
     |---------------|------------------------------------------------|
     | HTTP-methode | GET |
     | Aanvraag-URL | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
-    | Autorisatie | Geen verificatie |
+    | Autorisatie | Geen autorisatie |
 
     Het **JSON** -kenmerk in het URL-pad bepaalt de antwoord indeling. U gebruikt json in dit artikel om het gebruiks gemak en de Lees baarheid te vergemakkelijken. U vindt de beschik bare antwoord indelingen in de **fuzzy zoek term** van de [functie voor het toewijzen van functionele API-verwijzingen](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy).
 
@@ -60,9 +60,9 @@ De meeste zoek query's zijn standaard `maxFuzzyLevel=1` om prestaties te verkrij
 
     | Sleutel | Waarde |
     |------------------|-------------------------|
-    | API-versie | 1.0 |
+    | api-version | 1.0 |
     | abonnement-sleutel | \<uw Azure Maps-sleutel\> |
-    | query | Pizza |
+    | query | pizza |
 
 4. Klik op **verzenden** en controleer de tekst van het antwoord.
 
@@ -74,7 +74,7 @@ De meeste zoek query's zijn standaard `maxFuzzyLevel=1` om prestaties te verkrij
 
     | Sleutel | Waarde |
     |------------------|-------------------------|
-    | landset | VS |
+    | countrySet | VS |
   
     De resultaten worden nu begrensd door de land code en de query retourneert pizza restaurants in de Verenigde Staten.
   
@@ -102,7 +102,7 @@ U kunt een volledig of gedeeltelijk adres door geven aan de API voor Zoek adress
     |---------------|------------------------------------------------|
     | HTTP-methode | GET |
     | Aanvraag-URL | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) |
-    | Autorisatie | Geen verificatie |
+    | Autorisatie | Geen autorisatie |
 
 3. Klik op **params**en voer de volgende sleutel/waarde-paren in om te gebruiken als query-of Path-para meters in de aanvraag-URL:
   
@@ -110,7 +110,7 @@ U kunt een volledig of gedeeltelijk adres door geven aan de API voor Zoek adress
   
     | Sleutel | Waarde |
     |------------------|-------------------------|
-    | API-versie | 1.0 |
+    | api-version | 1.0 |
     | abonnement-sleutel | \<uw Azure Maps-sleutel\> |
     | query | 400 brede St, Seattle, WA 98109 |
   
@@ -127,7 +127,7 @@ U kunt een volledig of gedeeltelijk adres door geven aan de API voor Zoek adress
 
     | Sleutel | Waarde |
     |-----|------------|
-    | typeahead | true |
+    | typeahead | waar |
 
     De vlag **typeahead** geeft aan dat de zoek-API van het adres de query als gedeeltelijke invoer behandelt en een matrix van voorspellende waarden retourneert.
 
@@ -143,7 +143,7 @@ U kunt een volledig of gedeeltelijk adres door geven aan de API voor Zoek adress
     |---------------|------------------------------------------------|
     | HTTP-methode | GET |
     | Aanvraag-URL | [https://atlas.microsoft.com/search/address/reverse/json?](https://atlas.microsoft.com/search/address/reverse/json?) |
-    | Autorisatie | Geen verificatie |
+    | Autorisatie | Geen autorisatie |
   
 3. Klik op **params**en voer de volgende sleutel/waarde-paren in om te gebruiken als query-of Path-para meters in de aanvraag-URL:
   
@@ -151,7 +151,7 @@ U kunt een volledig of gedeeltelijk adres door geven aan de API voor Zoek adress
   
     | Sleutel | Waarde |
     |------------------|-------------------------|
-    | API-versie | 1.0 |
+    | api-version | 1.0 |
     | abonnement-sleutel | \<uw Azure Maps-sleutel\> |
     | query | 47.591180,-122,332700 |
   
@@ -163,7 +163,7 @@ U kunt een volledig of gedeeltelijk adres door geven aan de API voor Zoek adress
 
     | Sleutel | Waarde |
     |-----|------------|
-    | getal | true |
+    | getal | waar |
 
     Als de para meter voor de query [nummer](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) met de aanvraag wordt verzonden, kan het antwoord de zijde van de straat (links/rechts) bevatten en ook een verschuivings positie voor dat nummer.
   
@@ -171,7 +171,7 @@ U kunt een volledig of gedeeltelijk adres door geven aan de API voor Zoek adress
 
     | Sleutel | Waarde |
     |-----|------------|
-    | returnSpeedLimit | true |
+    | returnSpeedLimit | waar |
   
     Wanneer de [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -query parameter is ingesteld, wordt het antwoord geretourneerd van de geposte snelheids limiet.
 
@@ -179,7 +179,7 @@ U kunt een volledig of gedeeltelijk adres door geven aan de API voor Zoek adress
 
     | Sleutel | Waarde |
     |-----|------------|
-    | returnRoadUse | true |
+    | returnRoadUse | waar |
 
     Wanneer de [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -query parameter is ingesteld, retourneert het antwoord de gebruiks matrix voor de weg voor reverse geocodes op straat niveau.
 
@@ -187,7 +187,7 @@ U kunt een volledig of gedeeltelijk adres door geven aan de API voor Zoek adress
 
     | Sleutel | Waarde |
     |-----|------------|
-    | roadUse | true |
+    | roadUse | waar |
 
     U kunt de omgekeerde Geocode query beperken tot een specifiek type weg gebruik met behulp van de [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -query parameter.
   
@@ -203,13 +203,13 @@ U kunt een volledig of gedeeltelijk adres door geven aan de API voor Zoek adress
     |---------------|------------------------------------------------|
     | HTTP-methode | GET |
     | Aanvraag-URL | [https://atlas.microsoft.com/search/address/reverse/crossstreet/json?](https://atlas.microsoft.com/search/address/reverse/crossstreet/json?) |
-    | Autorisatie | Geen verificatie |
+    | Autorisatie | Geen autorisatie |
   
 3. Klik op **params**en voer de volgende sleutel/waarde-paren in om te gebruiken als query-of Path-para meters in de aanvraag-URL:
   
     | Sleutel | Waarde |
     |------------------|-------------------------|
-    | API-versie | 1.0 |
+    | api-version | 1.0 |
     | abonnement-sleutel | \<uw Azure Maps-sleutel\> |
     | query | 47.591180,-122,332700 |
   

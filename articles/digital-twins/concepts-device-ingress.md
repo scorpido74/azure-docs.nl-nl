@@ -1,19 +1,19 @@
 ---
 title: Connectiviteit van apparaten en inkomend telemetrie-Azure Digital Apparaatdubbels | Microsoft Docs
-description: Meer informatie over hoe u verbinding maakt met een apparaat in azure Digital Apparaatdubbels.
+description: Meer informatie over hoe u via een IoT-apparaat telemetrie verbindt, onboarding maakt en verzendt in azure Digital Apparaatdubbels.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 529baf6a3eedf1d7490e8138642e90928a209876
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 01/03/2020
+ms.openlocfilehash: f9f0a74a6ca57f90ed8bd217d0d2f57e4bc16749
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010130"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660338"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Apparaatconnectiviteit en inkomende telemetriegegevens
 
@@ -67,11 +67,11 @@ U kunt de bericht indeling en payload van uw apparaat aanpassen aan de behoeften
 
  De inhoud van de nettolading van een **bericht** kan wille keurige gegevens tot 256 KB groot zijn. Er worden enkele vereisten verwacht voor eigenschappen van het type [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) . De tabel bevat de vereiste en optionele eigenschappen die door het systeem worden ondersteund.
 
-| Naam van eigenschap | Waarde | Vereist | Beschrijving |
+| Naam van eigenschap | Waarde | Verplicht | Beschrijving |
 |---|---|---|---|
 | **DigitalTwins-Telemetry** | 1.0 | Ja | Een constante waarde die een bericht identificeert aan het systeem. |
 | **DigitalTwins-SensorHardwareId** | `string(72)` | Ja | Een unieke id van de sensor die het **bericht**verzendt. Deze waarde moet overeenkomen met de eigenschap **HardwareId** van een object voor het systeem om het te verwerken. Bijvoorbeeld `00FF0643BE88-CO2`. |
-| **CreationTimeUtc** | `string` | Nee | Een datum reeks in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -notatie waarmee de steekproef tijd van de nettolading wordt geïdentificeerd. Bijvoorbeeld `2018-09-20T07:35:00.8587882-07:00`. |
+| **CreationTimeUtc** | `string` | Nee | Een datum reeks in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) -notatie waarmee de steekproef tijd van de nettolading wordt geïdentificeerd. Bijvoorbeeld `2018-09-20T07:35:00.8587882-07:00`. |
 | **CorrelationId** | `string` | Nee | Een UUID die wordt gebruikt voor het traceren van gebeurtenissen in het systeem. Bijvoorbeeld `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
 
 ### <a name="send-your-message-to-digital-twins"></a>Uw bericht verzenden naar Digital Apparaatdubbels

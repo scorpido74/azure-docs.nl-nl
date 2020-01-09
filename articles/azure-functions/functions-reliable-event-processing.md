@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: 019c44cedba166dc1ac06a0244fa2b2e7930e673
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e4f35495d8a01146068cffb9159c29c46c3c0d29
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230375"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561864"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions betrouw bare gebeurtenis verwerking
 
@@ -59,7 +59,7 @@ Als algemene regel moet elke functie een [try/catch-blok](./functions-bindings-e
 
 ### <a name="retry-mechanisms-and-policies"></a>Mechanismen en beleids regels voor opnieuw proberen
 
-Sommige uitzonde ringen zijn tijdelijk van aard en worden niet opnieuw weer gegeven wanneer een bewerking later opnieuw wordt geprobeerd. Daarom is de eerste stap altijd om de bewerking opnieuw uit te voeren. U kunt de regels voor het opnieuw proberen van de verwerking zelf schrijven, maar ze zijn zo gebruikelijke dat er een aantal hulpprogram ma's beschikbaar is. Met deze bibliotheken kunt u een robuuste nieuwe beleids regels definiëren, waarmee u de verwerkings volgorde ook kunt behouden.
+Sommige uitzonde ringen zijn tijdelijk van aard en worden niet opnieuw weer gegeven wanneer een bewerking later opnieuw wordt geprobeerd. Daarom is de eerste stap altijd om de bewerking opnieuw uit te voeren. U kunt de regels voor het opnieuw proberen van de verwerking zelf schrijven, maar ze zijn zo gebruikelijke dat er een aantal hulpprogram ma's beschikbaar is. Met deze bibliotheken kunt u een krachtig beleid voor opnieuw proberen te definiëren. Dit kan ook helpen bij het behouden van de verwerkings volgorde.
 
 Door bibliotheken voor fout afhandeling te maken met uw functies kunt u het basis beleid voor opnieuw proberen te definiëren. U kunt bijvoorbeeld een beleid implementeren dat volgt op een werk stroom die wordt geïllustreerd door de volgende regels:
 
@@ -82,7 +82,7 @@ De zekerheid dat elk bericht ten minste één keer wordt verwerkt, houdt in dat 
 
 ## <a name="stop-and-restart-execution"></a>Uitvoering stoppen en opnieuw starten
 
-Maar een paar fouten kunnen acceptabel zijn, wat als uw app aanzienlijke problemen ondervindt? U kunt het activeren van gebeurtenissen stoppen totdat het systeem een goede status heeft bereikt. Als de verwerking van de kans wordt onderbroken, wordt vaak gebruikgemaakt van een circuit onderbreker patroon. Met het patroon circuit onderbreker kan uw app het circuit van het gebeurtenis proces ' verbreekt ' en op een later tijdstip hervatten.
+Maar een paar fouten kunnen acceptabel zijn, wat als uw app aanzienlijke problemen ondervindt? U kunt het activeren van gebeurtenissen stoppen totdat het systeem een goede status heeft bereikt. De kans om de verwerking te onderbreken, wordt vaak bereikt met een circuit onderbreker patroon. Met het patroon circuit onderbreker kan uw app het circuit van het gebeurtenis proces ' verbreekt ' en op een later tijdstip hervatten.
 
 Er zijn twee onderdelen vereist voor het implementeren van een circuit onderbreker in een gebeurtenis proces:
 
@@ -120,7 +120,7 @@ De ontvanger van het e-mail bericht kan de status van het circuit onderzoeken en
 
 Wanneer u deze methode gebruikt, gaan er geen berichten verloren, worden alle berichten in de juiste volg orde verwerkt en kunt u het circuit zo lang als nodig verstoren.
 
-## <a name="resources"></a>Bronnen
+## <a name="resources"></a>Resources
 
 - [Voor beelden van betrouw bare gebeurtenis verwerking](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
 - [Circuit onderbreker van Azure Durable Functions](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
@@ -129,6 +129,6 @@ Wanneer u deze methode gebruikt, gaan er geen berichten verloren, worden alle be
 
 Zie de volgende bronnen voor meer informatie:
 
-- [Fout afhandeling Azure Functions](./functions-bindings-error-pages.md)
+- [Azure Functions-foutafhandeling](./functions-bindings-error-pages.md)
 - [Het wijzigen van het formaat van geüploade afbeeldingen automatiseren met behulp van Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=dotnet)
 - [Een functie maken die kan worden geïntegreerd met Azure Logic Apps](./functions-twitter-email.md)

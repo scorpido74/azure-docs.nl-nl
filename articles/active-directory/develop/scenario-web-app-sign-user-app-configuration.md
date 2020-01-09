@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b077a71a541d29c9b93778babc096ea40c3b43cb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: fe845fca4a50828cabbf6c360cb9bc65dd20ae7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964868"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423530"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Web-app die gebruikers aanmeldt: code configuratie
 
@@ -34,8 +34,8 @@ De bibliotheken die worden gebruikt voor het beveiligen van een web-app (en een 
 | Platform | Bibliotheek | Beschrijving |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [Identiteits model-uitbrei dingen voor .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Micro soft Identity model-extensies voor .NET, die rechtstreeks worden gebruikt door ASP.NET en ASP.NET Core, stelt een reeks dll-bestanden voor die worden uitgevoerd op zowel .NET Framework als .NET core. Vanuit een ASP.NET-of ASP.NET Core-Web-App kunt u de token validatie controleren met behulp van de **TokenValidationParameters** -klasse (met name in sommige partner scenario's). |
-| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Micro soft Authentication Library (MSAL) voor Java. Momenteel beschikbaar als open bare preview. |
-| ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | MSAL voor python. Momenteel beschikbaar als open bare preview. |
+| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Ondersteuning voor Java-webtoepassingen |
+| ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Ondersteuning voor python-webtoepassingen |
 
 Selecteer het tabblad dat overeenkomt met het platform waarin u bent geïnteresseerd:
 
@@ -210,7 +210,7 @@ De initialisatie code verschilt, afhankelijk van het platform. Voor ASP.NET Core
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-In ASP.NET Core web-apps (en Web-Api's) is de toepassing beveiligd omdat u een `[Authorize]` kenmerk hebt voor de controllers of de controller acties. Met dit kenmerk wordt gecontroleerd of de gebruiker is geverifieerd. De code die de toepassing initialiseert, bevindt zich in het Startup.cs-bestand. 
+In ASP.NET Core web-apps (en Web-Api's) is de toepassing beveiligd omdat u een `[Authorize]` kenmerk hebt voor de controllers of de controller acties. Met dit kenmerk wordt gecontroleerd of de gebruiker is geverifieerd. De code die de toepassing initialiseert, bevindt zich in het Startup.cs-bestand.
 
 Als u verificatie wilt toevoegen met het micro soft-identiteits platform (voorheen Azure AD v 2.0), moet u de volgende code toevoegen. De opmerkingen in de code moeten zichzelf verklaren.
 
@@ -221,7 +221,7 @@ Als u verificatie wilt toevoegen met het micro soft-identiteits platform (voorhe
 
 De volgende code is beschikbaar via [opstarten. cs # L33-L34](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/1-WebApp-OIDC/1-1-MyOrg/Startup.cs#L33-L34).
 
-```CSharp
+```csharp
 public class Startup
 {
  ...
@@ -256,7 +256,7 @@ Naast de configuratie kunt u de naam van de configuratie sectie opgeven wanneer 
 
 Het traceren van middleware-gebeurtenissen van OpenID connect-verbinding kan u helpen bij het oplossen van problemen met uw webtoepassing als verificatie niet werkt. Als u `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` instelt op `true` ziet u hoe informatie wordt uitgesteld door de set ASP.NET Core middleware, terwijl deze wordt uitgevoerd op basis van de HTTP-reactie op de identiteit van de gebruiker in `HttpContext.User`.
 
-```CSharp
+```csharp
 /// <summary>
 /// Add authentication with the Microsoft identity platform.
 /// This method expects the configuration file to have a section named "AzureAd" with the necessary settings to initialize authentication options.
@@ -321,7 +321,7 @@ Met de klasse `AadIssuerValidator` kan de uitgever van het token in veel gevalle
 
 De code die betrekking heeft op verificatie in een ASP.NET-Web-app en Web-Api's bevindt zich in het bestand [App_Start/startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs#L17-L61) .
 
-```CSharp
+```csharp
  public void ConfigureAuth(IAppBuilder app)
  {
   app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
@@ -345,7 +345,7 @@ De code die betrekking heeft op verificatie in een ASP.NET-Web-app en Web-Api's 
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Het Java-voor beeld maakt gebruik van het lente-Framework. De toepassing is beveiligd omdat u een filter implementeert, waarmee elke HTTP-reactie wordt onderschept. In de Quick start voor Java-Web-apps wordt dit filter `AuthFilter` in `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java`. 
+Het Java-voor beeld maakt gebruik van het lente-Framework. De toepassing is beveiligd omdat u een filter implementeert, waarmee elke HTTP-reactie wordt onderschept. In de Quick start voor Java-Web-apps wordt dit filter `AuthFilter` in `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java`.
 
 Het filter verwerkt de OAuth 2,0-autorisatie code stroom en controleert of de gebruiker is geverifieerd (`isAuthenticated()` methode). Als de gebruiker niet is geverifieerd, wordt de URL van de Azure AD-autorisatie-eind punten berekend en wordt de browser omgeleid naar deze URI.
 

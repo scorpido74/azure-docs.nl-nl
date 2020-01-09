@@ -1,25 +1,14 @@
 ---
-title: Zelf studie voor de upgrade van de app Service Fabric | Microsoft Docs
+title: Zelf studie voor upgrade van app Service Fabric
 description: In dit artikel wordt uitgelegd hoe u een Service Fabric toepassing implementeert, hoe u de code wijzigt en een upgrade uitvoert met behulp van Visual Studio.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: a3181a7a-9ab1-4216-b07a-05b79bd826a4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 5e693a219c4a430f742ebd27878518ebb99ce5da
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: db814b972db1aee56be0858c9ff5d1c382640642
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167375"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464822"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Zelf studie voor de upgrade van toepassingen Service Fabric met Visual Studio
 > [!div class="op_single_selector"]
@@ -41,14 +30,14 @@ Als u **publiceren** selecteert, wordt een pop-upvenster geopend en kunt u het *
 
 ![Een Service Fabric-toepassing publiceren][image2]
 
-Nu kunt u op **publiceren** klikken in het dialoog venster. U kunt [service Fabric Explorer gebruiken om het cluster en de toepassing weer te geven](service-fabric-visualizing-your-cluster.md). De Visual Objects-toepassing heeft een webservice waarnaar u kunt gaan door [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) te typen in de adres balk van uw browser.  U ziet dat er 10 zwevende visuele objecten worden weer gegeven op het scherm.
+Nu kunt u op **publiceren** klikken in het dialoog venster. U kunt [service Fabric Explorer gebruiken om het cluster en de toepassing weer te geven](service-fabric-visualizing-your-cluster.md). De Visual Objects-toepassing bevat een webservice waarnaar u kunt gaan door [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) te typen in de adres balk van uw browser.  U ziet dat er 10 zwevende visuele objecten worden weer gegeven op het scherm.
 
-**Opmerking:** Als u implementeert op `Cloud.xml`-Profiel (Azure Service Fabric), moet de toepassing beschikbaar zijn op **http://{ServiceFabricName}. { Regio}. cloudapp. Azure. com: 8081/visualobjects/** . Zorg ervoor dat `8081/TCP` in de Load Balancer is geconfigureerd (Zoek de Load Balancer in dezelfde resource groep als de Service Fabric-instantie).
+**Opmerking:** Als de app wordt geïmplementeerd in `Cloud.xml` Profiel (Azure Service Fabric), moet de toepassing beschikbaar zijn op **http://{ServiceFabricName}. { Regio}. cloudapp. Azure. com: 8081/visualobjects/** . Zorg ervoor dat `8081/TCP` is geconfigureerd in de Load Balancer (Zoek de Load Balancer in dezelfde resource groep als de Service Fabric-instantie).
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>Stap 2: het voor beeld van Visual Objects bijwerken
 U zult kunnen merken dat met de versie die is geïmplementeerd in stap 1, de visuele objecten niet draaien. We gaan deze toepassing upgraden naar een waar ook de visuele objecten draaien.
 
-Selecteer het project VisualObjects. ActorService in de VisualObjects-oplossing en open het **VisualObjectActor.cs** -bestand. Ga in dat bestand naar de methode `MoveObject`, commentaar uit `visualObject.Move(false)` en verwijder de opmerking `visualObject.Move(true)`. Deze code wijziging roteert de objecten nadat de service is bijgewerkt.  **Nu kunt u de oplossing bouwen (niet opnieuw samen stellen)** , waardoor de gewijzigde projecten worden gebouwd. Als u *alles opnieuw samen stellen*selecteert, moet u de versies van alle projecten bijwerken.
+Selecteer het project VisualObjects. ActorService in de VisualObjects-oplossing en open het **VisualObjectActor.cs** -bestand. Ga in dat bestand naar de methode `MoveObject`, commentaar uit `visualObject.Move(false)`en verwijder de opmerking `visualObject.Move(true)`. Deze code wijziging roteert de objecten nadat de service is bijgewerkt.  **Nu kunt u de oplossing bouwen (niet opnieuw samen stellen)** , waardoor de gewijzigde projecten worden gebouwd. Als u *alles opnieuw samen stellen*selecteert, moet u de versies van alle projecten bijwerken.
 
 We moeten onze toepassing ook versie. Als u de versie wijzigingen wilt aanbrengen nadat u met de rechter muisknop op het **VisualObjects** -project hebt geklikt, kunt u de optie Visual Studio- **manifest versies bewerken** gebruiken. Als u deze optie selecteert, wordt het dialoog venster voor editie versies als volgt geopend:
 

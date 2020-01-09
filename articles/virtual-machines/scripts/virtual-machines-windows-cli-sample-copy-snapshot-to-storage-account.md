@@ -1,5 +1,5 @@
 ---
-title: 'Azure CLI-voor beeld: een moment opname kopiëren naar een opslag account in een andere regio'
+title: Een moment opname kopiëren naar een opslag account in een andere regio-CLI-voor beeld
 description: 'Azure CLI-voorbeeldscript: exporteer/kopieer een momentopname als VHD naar een opslagaccount in dezelfde of een andere regio.'
 services: virtual-machines-windows
 documentationcenter: storage
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 1e9ba52357703238c35d31823462d9ff3bd04c87
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 05868682708ee2f064addf698508b5e178424963
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040047"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75375857"
 ---
 # <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>Een momentopname exporteren/kopiëren naar een opslagaccount in een andere regio met CLI
 
@@ -37,7 +37,7 @@ Met dit script wordt een beheerde momentopname geëxporteerd naar een opslagacco
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script gebruikt de volgende opdrachten voor het genereren van de SAS-URI voor een beheerde momentopname en kopieert de momentopname naar een opslagaccount met behulp van de SAS-URI. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+Dit script gebruikt de volgende opdrachten voor het genereren van de SAS-URI voor een beheerde momentopname en kopieert de momentopname naar een opslagaccount met behulp van de SAS-URI. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

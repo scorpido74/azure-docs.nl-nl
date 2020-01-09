@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 20a17e52064c5beb09ce4db5815ddd6faf7cbcba
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 235efd746562ea4bd52b9cb57da0d8165d60de02
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035526"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561317"
 ---
 # <a name="configure-prerequisites"></a>Vereisten configureren
 
@@ -28,7 +28,7 @@ Voordat u de Marketplace-aanbieding gebruikt voor het implementeren van een zelf
  
 ## <a name="deploy-using-the-marketplace-offer"></a>Implementeren met behulp van de Marketplace-aanbieding
 
-De eenvoudigste manier om een self-managed open Shift container platform 3,11-cluster in azure te implementeren, is de [Azure Marketplace-aanbieding](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview)te gebruiken.
+De eenvoudigste manier om een self-managed open Shift container platform 3,11-cluster in azure te implementeren, is de [Azure Marketplace-aanbieding](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy)te gebruiken.
 
 Deze optie is de eenvoudigste, maar heeft ook beperkte aanpassings mogelijkheden. De Marketplace-aanbieding implementeert Open Shift container platform 3.11.82 en bevat de volgende configuratie opties:
 
@@ -189,7 +189,7 @@ Bevestig de contact gegevens op de pagina kopen en klik op **kopen** om akkoord 
 
 ## <a name="connect-to-the-openshift-cluster"></a>Verbinding maken met het open Shift-cluster
 
-Wanneer de implementatie is voltooid, haalt u de verbinding op in de sectie uitvoer van de implementatie. Maak verbinding met de open Shift-console met uw browser met behulp van de open **SHIFT console-URL**. u kunt ook SSH-naar de bastion-host. Hieronder volgt een voor beeld waarin de gebruikers naam van de beheerder clusteradmin is en de Bastion open bare IP DNS FQDN is bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
+Wanneer de implementatie is voltooid, haalt u de verbinding op in de sectie uitvoer van de implementatie. Maak verbinding met de open Shift-console met uw browser met behulp van de open **SHIFT console-URL**. U kunt ook SSH-naar de bastion-host. Hieronder volgt een voor beeld waarin de gebruikers naam van de beheerder clusteradmin is en de Bastion open bare IP DNS FQDN is bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com

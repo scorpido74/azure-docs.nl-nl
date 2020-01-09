@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b876b27d0eb24a9eabcffe0d131ea0ef5bb79bad
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 6c35b52149e3c0117c727771d38d0f010180fc63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107055"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432814"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Zelf studie: een IoT-ruimtelijke analyse implementeren met behulp van Azure Maps
 
@@ -104,7 +104,8 @@ Als u de stappen in deze zelf studie wilt uitvoeren, moet u eerst een resource g
 
 ### <a name="create-an-azure-maps-account"></a>Een Azure Maps-account maken 
 
-Voor het implementeren van bedrijfs logica op basis van Azure Maps ruimtelijke analyse moet er een Azure Maps-account worden gemaakt in de resource groep die we hebben gemaakt. Volg de instructies in [account beheren](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) om een abonnement voor een Azure Maps account te maken met de prijs categorie S1 en volg de stappen in [primaire sleutel ophalen](./tutorial-search-location.md#getkey) om de primaire abonnements sleutel voor uw account op te halen.
+Voor het implementeren van bedrijfs logica op basis van Azure Maps ruimtelijke analyse moet er een Azure Maps-account worden gemaakt in de resource groep die we hebben gemaakt. Volg de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) om een abonnement voor een Azure Maps account te maken met de prijs categorie S1 en volg de stappen in [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [verificatie beheren in azure Maps](how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
+
 
 
 ### <a name="create-a-storage-account"></a>Maak een opslagaccount
@@ -167,7 +168,7 @@ Open de Postman-app en voer de onderstaande stappen uit om de geofence te upload
     
     De ' geojson '-waarde voor de para meter `dataFormat` in het URL-pad vertegenwoordigt de indeling van de gegevens die worden geüpload.
 
-3. Klik op **Params** en voer de volgende sleutel/waarde-paren in die voor de POST-aanvraag-URL moeten worden gebruikt. Vervang de abonnements sleutel waarde door uw Azure Maps primaire abonnements sleutel.
+3. Klik op **Params** en voer de volgende sleutel/waarde-paren in die voor de POST-aanvraag-URL moeten worden gebruikt. Vervang de abonnee sleutel waarde door uw Azure Maps sleutel.
    
     ![Key-Value-parameters in Postman](./media/tutorial-iot-hub-maps/postman-key-vals.png)
 

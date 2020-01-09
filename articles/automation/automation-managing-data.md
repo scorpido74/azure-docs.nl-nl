@@ -2,19 +2,15 @@
 title: Azure Automation-gegevens beheren
 description: Dit artikel bevat meerdere onderwerpen over het beheren van een Azure Automation omgeving.  Op dit moment neemt het bewaren van gegevens op en maakt het back-ups van Azure Automation herstel na nood gevallen in Azure Automation.
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: da1b151a150dfbf602593451d3d68043352b73eb
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: daa5bab7c8d4cbe98ffe9a8a8a4b66da029fef5c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850768"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421889"
 ---
 # <a name="managing-azure-automation-data"></a>Azure Automation-gegevens beheren
 Dit artikel bevat meerdere onderwerpen over het beheren van een Azure Automation omgeving.

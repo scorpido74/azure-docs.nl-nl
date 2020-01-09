@@ -1,29 +1,29 @@
 ---
 title: 'Snelstartgids: QnA Maker-client bibliotheek voor node. js'
 titleSuffix: Azure Cognitive Services
-description: Ga aan de slag met de QnA Maker-client bibliotheek voor node. js. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.  Met QnA Maker kunt u een vraag- en antwoordservice maken op basis van uw semi-gestructureerde inhoud zoals FAQ-documenten, URL's en producthandleidingen.
+description: In deze Quick start ziet u hoe u aan de slag gaat met de QnA Maker-client bibliotheek voor node. js. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.  Met QnA Maker kunt u een vraag- en antwoordservice maken op basis van uw semi-gestructureerde inhoud zoals FAQ-documenten, URL's en producthandleidingen.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/26/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 7650dce9a3ef494815b8d7a326eb07e1e25f2da2
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: a605b5145e393352e8cd6fe18ac97ea749caf4ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123087"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447595"
 ---
 # <a name="quickstart-qna-maker-client-library-for-nodejs"></a>Snelstartgids: QnA Maker-client bibliotheek voor node. js
 
-Ga aan de slag met de QnA Maker-client bibliotheek voor node. js. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.  Met QnA Maker kunt u een vraag- en antwoordservice maken op basis van uw semi-gestructureerde inhoud zoals FAQ-documenten, URL's en producthandleidingen. 
+Ga aan de slag met de QnA Maker-client bibliotheek voor node. js. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.  Met QnA Maker kunt u een vraag- en antwoordservice maken op basis van uw semi-gestructureerde inhoud zoals FAQ-documenten, URL's en producthandleidingen.
 
 Gebruik de QnA Maker-client bibliotheek voor node. js voor het volgende:
 
-* Een kennisdatabase maken 
+* Een knowledge base maken
 * Een kennis database beheren
 * Een kennisdatabase publiceren
 
@@ -40,19 +40,19 @@ Gebruik de QnA Maker-client bibliotheek voor node. js voor het volgende:
 
 ### <a name="create-a-qna-maker-azure-resource"></a>Een QnA Maker Azure-resource maken
 
-Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor QnA Maker met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. 
+Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor QnA Maker met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine.
 
 Nadat u een sleutel van uw resource hebt opgehaald, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de resource, met de naam `QNAMAKER_SUBSCRIPTION_KEY` en `QNAMAKER_HOST`. Gebruik de sleutel-en eindpunt waarden die zijn gevonden op de **sleutels** en **overzichts** pagina's van de resource in de Azure Portal.
 
 ### <a name="create-a-new-nodejs-application"></a>Een nieuwe Node.js-toepassing maken
 
-Maak in een console venster (zoals cmd, Power shell of bash) een nieuwe map voor uw app en navigeer ernaar. 
+Maak in een console venster (zoals cmd, Power shell of bash) een nieuwe map voor uw app en navigeer ernaar.
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Voer de `npm init -y` opdracht uit om een knooppunt toepassing met een `package.json` bestand te maken. 
+Voer de `npm init -y` opdracht uit om een knooppunt toepassing met een `package.json` bestand te maken.
 
 ```console
 npm init -y
@@ -73,12 +73,12 @@ Het `package.json`-bestand van uw app wordt bijgewerkt met de afhankelijkheden.
 
 De QnA Maker-client is een [QnAMakerClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest) -object dat wordt geverifieerd bij Azure met behulp van ServiceClientCredentials, dat uw sleutel bevat.
 
-Nadat de client is gemaakt, gebruikt u de [Knowledge Base](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest#knowledgebase) -eigenschap uw kennis database maken, beheren en publiceren. 
+Nadat de client is gemaakt, gebruikt u de [Knowledge Base](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest#knowledgebase) -eigenschap uw kennis database maken, beheren en publiceren.
 
-Uw Knowledge Base beheren door een JSON-object te verzenden. Voor directe bewerkingen retourneert een methode meestal een JSON-object dat de status aangeeft. Voor langlopende bewerkingen is het antwoord de bewerkings-ID. Roep de [client aan. Methode Operations. getDetails](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operations?view=azure-node-latest#getdetails-string--servicecallback-operation--) met de bewerkings-id om de [status van de aanvraag](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operationstatetype?view=azure-node-latest)te bepalen. 
+Uw Knowledge Base beheren door een JSON-object te verzenden. Voor directe bewerkingen retourneert een methode meestal een JSON-object dat de status aangeeft. Voor langlopende bewerkingen is het antwoord de bewerkings-ID. Roep de [client aan. Methode Operations. getDetails](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operations?view=azure-node-latest#getdetails-string--servicecallback-operation--) met de bewerkings-id om de [status van de aanvraag](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operationstatetype?view=azure-node-latest)te bepalen.
 
- 
-## <a name="code-examples"></a>Code voorbeelden
+
+## <a name="code-examples"></a>Codevoorbeelden
 
 Deze code fragmenten laten zien hoe u het volgende kunt doen met de QnA Maker-client bibliotheek voor node. js:
 
@@ -98,8 +98,8 @@ Maak variabelen voor het Azure-eind punt en de sleutel van uw resource. Als u de
 
 |Omgevingsvariabele|Node. js-variabele|Voorbeeld|
 |--|--|--|
-|`QNAMAKER_SUBSCRIPTION_KEY`|`subscription_key`|32 teken-GUID|
-|`QNAMAKER_HOST`|`endpoint`|`https://your-resource-name.api.cognitive.microsoft.com`: Vervang de `your-resource-name` van het subdomein door de waarde van de naam van uw resource|
+|`QNAMAKER_SUBSCRIPTION_KEY`|`subscription_key`|De sleutel is een teken reeks van 32 en is beschikbaar in het Azure Portal op de QnA Maker-resource op de pagina snel starten. Dit is niet hetzelfde als de Voorspellings eindpunt sleutel.|
+|`QNAMAKER_HOST`|`endpoint`| Uw ontwerp eindpunt, in de indeling van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`, bevat de naam van uw **resource**. Dit is niet dezelfde URL die wordt gebruikt om een query uit te zoeken op het Voorspellings eindpunt.|
 ||||
 
 [!code-javascript[Azure resource variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=resourcekeys)]
@@ -111,19 +111,19 @@ Maak vervolgens een ServiceClientCredentials-object met uw sleutel en gebruik di
 
 [!code-javascript[Authorization to resource key](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=authorization)]
 
-## <a name="create-a-knowledge-base"></a>Een kennisdatabase maken
+## <a name="create-a-knowledge-base"></a>Een knowledge base maken
 
 In een Knowledge Base worden vraag-en antwoord paren voor het [CreateKbDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/createkbdto?view=azure-node-latest) -object uit drie bronnen opgeslagen:
 
 * Gebruik het [QnADTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnadto?view=azure-node-latest) -object voor **redactionele inhoud**.
-* Voor **bestanden**gebruikt u het [FileDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/filedto?view=azure-node-latest) -object. 
+* Voor **bestanden**gebruikt u het [FileDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/filedto?view=azure-node-latest) -object.
 * Gebruik voor **url's**een lijst met teken reeksen.
 
-Roep de [Create](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#create-createkbdto--servicecallback-operation--) -methode aan en geef de geretourneerde bewerkings-id door aan de methode [Operations. getDetails](#get-status-of-an-operation) om de status te controleren. 
+Roep de [Create](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#create-createkbdto--servicecallback-operation--) -methode aan en geef de geretourneerde bewerkings-id door aan de methode [Operations. getDetails](#get-status-of-an-operation) om de status te controleren.
 
 [!code-javascript[Create a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=createkb&highlight=15)]
 
-Zorg ervoor dat de functie include [`wait_for_operation`](#get-status-of-an-operation) , waarnaar wordt verwezen in de bovenstaande code, om een Knowledge Base te kunnen maken. 
+Zorg ervoor dat de functie include [`wait_for_operation`](#get-status-of-an-operation) , waarnaar wordt verwezen in de bovenstaande code, om een Knowledge Base te kunnen maken.
 
 ## <a name="update-a-knowledge-base"></a>Een kennisdatabase bijwerken
 
@@ -131,25 +131,25 @@ U kunt een Knowledge Base bijwerken door door te geven in de Knowledge Base-ID e
 
 [!code-javascript[Update a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=updatekb&highlight=19)]
 
-Zorg ervoor dat de functie [`wait_for_operation`](#get-status-of-an-operation) bevat, waarnaar wordt verwezen in de bovenstaande code, om een Knowledge Base te kunnen bijwerken. 
+Zorg ervoor dat de functie [`wait_for_operation`](#get-status-of-an-operation) bevat, waarnaar wordt verwezen in de bovenstaande code, om een Knowledge Base te kunnen bijwerken.
 
 ## <a name="publish-a-knowledge-base"></a>Een kennisdatabase publiceren
 
-Publiceer de Knowledge Base met behulp van de methode [Publish](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#publish-string--msrest-requestoptionsbase-) . Dit maakt het huidige opgeslagen en getrainde model, waarnaar wordt verwezen door de Knowledge Base-ID en publiceert die op een eind punt. 
+Publiceer de Knowledge Base met behulp van de methode [Publish](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#publish-string--msrest-requestoptionsbase-) . Dit maakt het huidige opgeslagen en getrainde model, waarnaar wordt verwezen door de Knowledge Base-ID en publiceert die op een eind punt.
 
 [!code-javascript[Publish a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=publishkb&highlight=2)]
 
 ## <a name="delete-a-knowledge-base"></a>Een knowledge base verwijderen
 
-Verwijder de Knowledge Base met behulp van de methode [Delete](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#deletemethod-string--msrest-requestoptionsbase-) met een para meter van de Knowledge Base-id. 
+Verwijder de Knowledge Base met behulp van de methode [Delete](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#deletemethod-string--msrest-requestoptionsbase-) met een para meter van de Knowledge Base-id.
 
 [!code-javascript[Delete a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=deletekbs&highlight=2)]
 
 ## <a name="get-status-of-an-operation"></a>Status van een bewerking ophalen
 
-Sommige methoden, zoals maken en bijwerken, kunnen voldoende tijd in beslag nemen, in plaats van te wachten tot het proces is voltooid, een [bewerking](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operations?view=azure-node-latest) wordt geretourneerd. Gebruik de [bewerkings-id](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operation?view=azure-node-latest#operationid) van de bewerking om te pollen (met pogings logica) om de status van de oorspronkelijke methode te bepalen. 
+Sommige methoden, zoals maken en bijwerken, kunnen voldoende tijd in beslag nemen, in plaats van te wachten tot het proces is voltooid, een [bewerking](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operations?view=azure-node-latest) wordt geretourneerd. Gebruik de [bewerkings-id](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operation?view=azure-node-latest#operationid) van de bewerking om te pollen (met pogings logica) om de status van de oorspronkelijke methode te bepalen.
 
-De _setTimeout_ -aanroep in het volgende code blok wordt gebruikt voor het simuleren van asynchrone code. Vervang dit door de logica voor opnieuw proberen. 
+De _setTimeout_ -aanroep in het volgende code blok wordt gebruikt voor het simuleren van asynchrone code. Vervang dit door de logica voor opnieuw proberen.
 
 [!code-javascript[Monitor an operation](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=monitorOperation&highlight=2,17)]
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: a019928f710d4b94cc3e5c4c14b559ef7d491ae2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4ab467c0dc5014ec6c8a543fe7e8ecc136dfa02d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926650"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439509"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Meerdere tabellen bulksgewijs kopiëren met behulp van Azure Data Factory
 
@@ -25,12 +25,12 @@ Deze zelfstudie demonstreert het **kopiëren van een aantal tabellen uit Azure S
 Op hoog niveau bevat deze zelfstudie de volgende stappen:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maakt.
+> * Een gegevensfactory maken.
 > * Gekoppelde Azure SQL Database-, Azure SQL Data Warehouse- en Azure Storage-services maken.
 > * Gegevenssets voor Azure SQL Database en Azure SQL Data Warehouse maken.
 > * Een pijplijn maken om de te kopiëren tabellen op te zoeken en een andere pijplijn om de kopieerbewerking daadwerkelijk uit te voeren. 
 > * Een pijplijnuitvoering starten.
-> * De uitvoering van de pijplijn en van de activiteit controleren.
+> * De uitvoering van de pijplijn en van de activiteit controleren
 
 In deze zelfstudie wordt Azure PowerShell gebruikt. Zie [Quickstarts](quickstart-create-data-factory-dot-net.md) (Snelstartgidsen) voor meer informatie over het gebruik van andere hulpprogramma's/SDK's voor het maken van een gegevensfactory. 
 
@@ -49,7 +49,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * **Azure PowerShell**. Volg de instructies in [How to install and configure Azure PowerShell](/powershell/azure/install-Az-ps) (Azure PowerShell installeren en configureren).
-* **Een Azure Storage-account**. Het Azure Storage-account wordt gebruikt als faseringsblobopslag in de bulksgewijze kopieerbewerking. 
+* **Azure Storage-account**. Het Azure Storage-account wordt gebruikt als faseringsblobopslag in de bulksgewijze kopieerbewerking. 
 * **Azure SQL-database**. Deze database bevat de brongegevens. 
 * **Azure SQL Data Warehouse**. Dit datawarehouse bevat de uit de SQL Database gekopieerde gegevens. 
 
@@ -73,7 +73,7 @@ Geef Azure-services toegang tot SQL-server voor zowel SQL Database als SQL Data 
 2. Selecteer uw server en klik op **Firewall** onder **INSTELLINGEN**.
 3. Klik op de pagina **Firewallinstellingen** op **AAN** bij **Toegang tot Azure-services toestaan**.
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 1. Start **PowerShell**. Houd Azure PowerShell open tot het einde van deze zelfstudie. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren.
 
@@ -128,10 +128,7 @@ In deze zelfstudie maakt u drie gekoppelde services maken voor respectievelijk d
         "properties": {
             "type": "AzureSqlDatabase",
             "typeProperties": {
-                "connectionString": {
-                    "type": "SecureString",
-                    "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-                }
+                "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
             }
         }
     }
@@ -167,10 +164,7 @@ In deze zelfstudie maakt u drie gekoppelde services maken voor respectievelijk d
         "properties": {
             "type": "AzureSqlDW",
             "typeProperties": {
-                "connectionString": {
-                    "type": "SecureString",
-                    "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-            }
+                "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
             }
         }
     }
@@ -206,10 +200,7 @@ In deze zelfstudie gebruikt u Azure Blob-opslag als een tussentijds faseringsgeb
         "properties": {
             "type": "AzureStorage",
             "typeProperties": {
-                "connectionString": {
-                    "type": "SecureString",
-                    "value": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>"
-                }
+                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>"
             }
         }
     }
@@ -586,12 +577,12 @@ Deze pijplijn voert twee stappen uit:
 In deze zelfstudie hebt u de volgende stappen uitgevoerd: 
 
 > [!div class="checklist"]
-> * Een gegevensfactory maakt.
+> * Een gegevensfactory maken.
 > * Gekoppelde Azure SQL Database-, Azure SQL Data Warehouse- en Azure Storage-services maken.
 > * Gegevenssets voor Azure SQL Database en Azure SQL Data Warehouse maken.
 > * Een pijplijn maken om de te kopiëren tabellen op te zoeken en een andere pijplijn om de kopieerbewerking daadwerkelijk uit te voeren. 
 > * Een pijplijnuitvoering starten.
-> * De uitvoering van de pijplijn en van de activiteit controleren.
+> * De uitvoering van de pijplijn en van de activiteit controleren
 
 Ga door naar de volgende zelfstudie voor informatie over het incrementeel kopiëren van gegevens uit een bron naar een bestemming:
 > [!div class="nextstepaction"]

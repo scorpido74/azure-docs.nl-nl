@@ -1,5 +1,5 @@
 ---
-title: Token ophalen voor desktop-apps die web-Api's aanroepen | Azure
+title: Token verkrijgen voor het aanroepen van Web-API (desktop-app) | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het bouwen van een bureau blad-app die web-Api's aanroept (een token voor de app aanschaffen |)
 services: active-directory
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e33eed25f79d90bd513e79b23619fd4c575bc874
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 89a9426b1ed0ccd3c5f9eec576e5d78bf3d3dfc2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920223"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423874"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Bureau blad-app die web-Api's aanroept-een Token ophalen
 
@@ -38,7 +38,7 @@ De Web-API is gedefinieerd door de `scopes`. Ongeacht de ervaring die u in uw to
 
 ### <a name="in-msalnet"></a>In MSAL.NET
 
-```CSharp
+```csharp
 AuthenticationResult result;
 var accounts = await app.GetAccountsAsync();
 IAccount account = ChooseAccount(accounts); // for instance accounts.FirstOrDefault
@@ -155,7 +155,7 @@ In het volgende voor beeld wordt de minimale code weer gegeven voor het interact
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 ### <a name="in-msalnet"></a>In MSAL.NET
 
-```CSharp
+```csharp
 string[] scopes = new string[] {"user.read"};
 var app = PublicClientApplicationBuilder.Create(clientId).Build();
 var accounts = await app.GetAccountsAsync();
@@ -184,7 +184,7 @@ Op Android moet u ook de bovenliggende activiteit (met behulp van `.WithParentAc
 
 Gebruikers interface is interactief, maar is belang rijk. `AcquireTokenInteractive` heeft één specifieke optionele para meter die het mogelijk maakt om op te geven voor platforms die het ondersteunen, de bovenliggende gebruikers interface. Bij gebruik in een bureaublad toepassing heeft `.WithParentActivityOrWindow` een ander type, afhankelijk van het platform:
 
-```CSharp
+```csharp
 // net45
 WithParentActivityOrWindow(IntPtr windowPtr)
 WithParentActivityOrWindow(IWin32Window window)
@@ -202,7 +202,7 @@ Opmerkingen
 - In Windows moet u `AcquireTokenInteractive` aanroepen vanuit de gebruikers interface-thread zodat de Inge sloten browser de juiste context voor de synchronisatie van gebruikers interface krijgt.  Het aanroepen van de UI-thread kan ertoe leiden dat berichten niet goed worden gepompt en/of deadlock met de gebruikers interface. Een manier om MSAL aan te roepen vanuit de UI-thread als u zich al in de UI-thread bevindt, is het `Dispatcher` op WPF te gebruiken.
 - Als u gebruikmaakt van WPF, kunt u met behulp van `WindowInteropHelper.Handle`-klasse een venster van een WPF-besturings element ophalen. De aanroep is vervolgens van een WPF-besturings element (`this`):
 
-  ```CSharp
+  ```csharp
   result = await app.AcquireTokenInteractive(scopes)
                     .WithParentActivityOrWindow(new WindowInteropHelper(this).Handle)
                     .ExecuteAsync();
@@ -226,7 +226,7 @@ De klasse definieert de volgende constanten:
 
 Deze optie wordt gebruikt in een geavanceerd scenario waarin u de gebruiker vooraf toestemming wilt geven voor verschillende bronnen (en niet de incrementele toestemming wilt gebruiken, die doorgaans wordt gebruikt met MSAL.NET/het micro soft Identity platform). Zie [How to: de gebruiker vooraf toestemming geven voor verschillende bronnen](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources)voor meer informatie.
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .WithExtraScopeToConsent(scopesForVendorApi)
                      .ExecuteAsync();
@@ -253,7 +253,7 @@ De host van de `end Url` is altijd de `redirectUri`. Als u de `end Url` wilt ond
 
 `WithCustomWebUi` is een uitbreidings punt waarmee u uw eigen gebruikers interface kunt opgeven in open bare client toepassingen en waarmee de gebruiker het/authorize-eind punt van de identiteits provider kan passeren en zich kan aanmelden en toestemming kan geven. MSAL.NET kan, vervolgens de verificatie code inwisselen en een Token ophalen. Het is bijvoorbeeld in Visual Studio om electrons-toepassingen (voor instance-to-feedback) de webinteractie te bieden, maar laat MSAL.NET het meeste werk doen. U kunt deze ook gebruiken als u UI-automatisering wilt bieden. In open bare client toepassingen gebruikt MSAL.NET de PKCE Standard ([RFC 7636-proef sleutel voor code uitwisseling door OAuth open bare clients](https://tools.ietf.org/html/rfc7636)) om ervoor te zorgen dat de beveiliging wordt geëerbiedigd: alleen MSAL.net kunnen de code inwisselen.
 
-  ```CSharp
+  ```csharp
   using Microsoft.Identity.Client.Extensions;
   ```
 
@@ -264,7 +264,7 @@ Als u `.WithCustomWebUI`wilt gebruiken, moet u het volgende doen:
   1. Implementeer de `ICustomWebUi`-interface (Zie [hier](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70)). In principe moet u één methode implementeren `AcquireAuthorizationCodeAsync` het accepteren van de URL van de autorisatie code (berekend door MSAL.NET), zodat de gebruiker de interactie met de ID-provider kan door lopen en vervolgens de URL terugstuurt op basis waarvan de ID-provider uw implementatie opnieuw zou aanroepen (inclusief de autorisatie code). Als u problemen ondervindt, moet uw implementatie een `MsalExtensionException` uitzonde ring genereren voor de samen werking met MSAL.
   2. In uw `AcquireTokenInteractive`-oproep kunt u `.WithCustomUI()` modificator gebruiken om het exemplaar van uw aangepaste web-UI door te geven
 
-     ```CSharp
+     ```csharp
      result = await app.AcquireTokenInteractive(scopes)
                        .WithCustomWebUi(yourCustomWebUI)
                        .ExecuteAsync();
@@ -284,7 +284,7 @@ Met MSAL.NET 4,1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/
 
 Als u deze structuur wilt gebruiken, kunt u een van de volgende zaken schrijven:
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 ...
 
@@ -443,7 +443,7 @@ Normaal gesp roken hebt u slechts één para meter (`scopes`) nodig. Afhankelijk
 
 In het volgende voor beeld ziet u het meest recente geval, met uitleg over het soort uitzonde ringen dat u kunt krijgen en de oplossingen
 
-```CSharp
+```csharp
 static async Task GetATokenForGraph()
 {
  string authority = "https://login.microsoftonline.com/contoso.com";
@@ -590,7 +590,7 @@ De volgende beperkingen zijn ook van toepassing:
 
 In het volgende voor beeld wordt een vereenvoudigd geval weer gegeven
 
-```CSharp
+```csharp
 static async Task GetATokenForGraph()
 {
  string authority = "https://login.microsoftonline.com/contoso.com";
@@ -631,7 +631,7 @@ static async Task GetATokenForGraph()
 
 In het volgende voor beeld ziet u het meest recente geval, met uitleg over het soort uitzonde ringen dat u kunt krijgen en de oplossingen
 
-```CSharp
+```csharp
 static async Task GetATokenForGraph()
 {
  string authority = "https://login.microsoftonline.com/contoso.com";
@@ -894,7 +894,7 @@ Interactieve verificatie met Azure AD vereist een webbrowser (Zie het [gebruik v
 
 `IPublicClientApplication`bevat een methode met de naam `AcquireTokenWithDeviceCode`
 
-```CSharp
+```csharp
  AcquireTokenWithDeviceCode(IEnumerable<string> scopes,
                             Func<DeviceCodeResult, Task> deviceCodeResultCallback)
 ```
@@ -904,11 +904,11 @@ Deze methode neemt de volgende para meters:
 - De `scopes` om een toegangs token aan te vragen voor
 - Een call back waarbij de `DeviceCodeResult` wordt ontvangen
 
-  ![image](https://user-images.githubusercontent.com/13203188/56024968-7af1b980-5d11-11e9-84c2-5be2ef306dc5.png)
+  ![installatiekopie](https://user-images.githubusercontent.com/13203188/56024968-7af1b980-5d11-11e9-84c2-5be2ef306dc5.png)
 
 Met de volgende voorbeeld code wordt het meest recente geval weer gegeven, met uitleg over het soort uitzonde ringen dat u kunt krijgen en de oplossing.
 
-```CSharp
+```csharp
 private const string ClientId = "<client_guid>";
 private const string Authority = "https://login.microsoftonline.com/contoso.com";
 private readonly string[] Scopes = new string[] { "user.read" };
@@ -1099,7 +1099,7 @@ Klassen en interfaces die betrokken zijn bij de serialisatie van token-cache zij
 - ``TokenCacheCallback`` is een call back die is door gegeven aan de gebeurtenissen, zodat u de serialisatie kunt afhandelen. ze worden aangeroepen met argumenten van het type ``TokenCacheNotificationArgs``.
 - ``TokenCacheNotificationArgs`` biedt alleen de ``ClientId`` van de toepassing en een verwijzing naar de gebruiker waarvoor het token beschikbaar is
 
-  ![image](https://user-images.githubusercontent.com/13203188/56027172-d58d1480-5d15-11e9-8ada-c0292f1800b3.png)
+  ![installatiekopie](https://user-images.githubusercontent.com/13203188/56027172-d58d1480-5d15-11e9-8ada-c0292f1800b3.png)
 
 > [!IMPORTANT]
 > MSAL.NET maakt token caches voor u en biedt u de `IToken`-cache wanneer u de `UserTokenCache` en `AppTokenCache` eigenschappen van een toepassing aanroept. U zou de interface niet zelf moeten implementeren. Uw verantwoordelijkheid, wanneer u een aangepaste token cache-serialisatie implementeert, is:
@@ -1119,7 +1119,7 @@ Hieronder ziet u een voor beeld van een Naïve-implementatie van aangepaste seri
 
 Nadat u de toepassing hebt gemaakt, schakelt u de serialisatie in door de toepassing aan te roepen ``TokenCacheHelper.EnableSerialization()`` door te geven `UserTokenCache`
 
-```CSharp
+```csharp
 app = PublicClientApplicationBuilder.Create(ClientId)
     .Build();
 TokenCacheHelper.EnableSerialization(app.UserTokenCache);
@@ -1127,7 +1127,7 @@ TokenCacheHelper.EnableSerialization(app.UserTokenCache);
 
 Deze helperklasse ziet eruit als het volgende code fragment:
 
-```CSharp
+```csharp
 static class TokenCacheHelper
  {
   public static void EnableSerialization(ITokenCache tokenCache)
@@ -1184,7 +1184,7 @@ Een preview van een productkwaliteits token op basis van een op bestanden gebase
 
 Als u de token cache-serialisatie wilt implementeren met behulp van de Unified cache-indeling (gemeen schappelijk in ADAL.NET 4. x en MSAL.NET 2. x, en met andere MSALs van dezelfde generatie of ouder, op hetzelfde platform), kunt u inspiratie krijgen met de volgende code :
 
-```CSharp
+```csharp
 string appLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location;
 string cacheFolder = Path.GetFullPath(appLocation) + @"..\..\..\..");
 string adalV3cacheFileName = Path.Combine(cacheFolder, "cacheAdalV3.bin");
@@ -1201,7 +1201,7 @@ FilesBasedTokenCacheHelper.EnableSerialization(app.UserTokenCache,
 
 Deze keer ziet de helper class er als volgt uit:
 
-```CSharp
+```csharp
 using System;
 using System.IO;
 using System.Security.Cryptography;

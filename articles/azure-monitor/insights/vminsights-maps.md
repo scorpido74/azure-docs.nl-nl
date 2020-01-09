@@ -4,15 +4,15 @@ description: De kaart is een functie van Azure Monitor voor VM's. Het detecteert
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 7ca79b0df55dbfea6a0e2c016773f9f32bf29667
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: d91c4f7c3abdb06bfe0116e0fadf67c5b7a7a394
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199072"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450709"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Gebruik de kaart functie van Azure Monitor voor VM's (preview) om inzicht te krijgen in toepassings onderdelen
 In Azure Monitor voor VM's kunt u gedetecteerde toepassings onderdelen weer geven op virtuele Windows-en Linux-machines (Vm's) die worden uitgevoerd in azure of in uw omgeving. U kunt de virtuele machines op twee manieren bekijken. Een kaart rechtstreeks vanuit een virtuele machine weer geven of een kaart van Azure Monitor weer geven om de onderdelen van verschillende Vm's te bekijken. In dit artikel vindt u meer informatie over deze twee weergave methoden en over het gebruik van de kaart functie. 
@@ -20,7 +20,7 @@ In Azure Monitor voor VM's kunt u gedetecteerde toepassings onderdelen weer geve
 Zie [Azure monitor voor VM's inschakelen](vminsights-enable-overview.md)voor meer informatie over het configureren van Azure monitor voor VM's.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 ## <a name="introduction-to-the-map-experience"></a>Inleiding tot de kaart ervaring
 Voordat u aan de kaart ervaring gaat, moet u weten hoe de informatie wordt gepresenteerd en gevisualiseerd. Of u de kaart functie rechtstreeks vanuit een virtuele machine of van Azure Monitor selecteert, de kaart functie biedt een consistente ervaring. Het enige verschil is dat van Azure Monitor, één kaart toont alle leden van een toepassing of cluster met meerdere lagen.
@@ -54,7 +54,7 @@ Zie [Unified Alerts in azure monitor](../../azure-monitor/platform/alerts-overvi
 
 In de rechter bovenhoek worden de symbolen en rollen op de kaart in de **legenda** -optie beschreven. Voor een beter overzicht van uw kaart en om deze te verplaatsen, gebruikt u de Zoom knoppen in de rechter benedenhoek. U kunt het zoom niveau instellen en de kaart passend maken voor de grootte van de pagina.  
 
-## <a name="connection-metrics"></a>Verbindings gegevens
+## <a name="connection-metrics"></a>Metrische verbindingsgegevens
 In het deel venster **verbindingen** worden standaard metrische gegevens weer gegeven voor de geselecteerde verbinding van de virtuele machine via de TCP-poort. De metrische gegevens bevatten de reactie tijd, aanvragen per minuut, verkeers doorvoer en koppelingen.  
 
 ![Netwerk verbindings grafieken in het deel venster verbindingen](./media/vminsights-maps/map-group-network-conn-pane-01.png)  
@@ -115,13 +115,13 @@ Standaard toont de kaart de laatste 30 minuten. Als u wilt zien hoe afhankelijkh
 ![Overzicht van directe VM-kaart](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
->U kunt ook toegang krijgen tot een kaart voor een specifiek exemplaar vanuit de weer gave **instanties** voor de schaalset van de virtuele machine. Ga in de sectie **instellingen** naar **instanties**  > **Insights (preview)** .
+>U kunt ook toegang krijgen tot een kaart voor een specifiek exemplaar vanuit de weer gave **instanties** voor de schaalset van de virtuele machine. Ga in de sectie **instellingen** naar **instanties** > **Insights (preview)** .
 
 ## <a name="view-a-map-from-azure-monitor"></a>Een kaart van Azure Monitor weer geven
 
 In Azure Monitor biedt de kaart functie een globaal overzicht van uw Vm's en de bijbehorende afhankelijkheden. Voor toegang tot de kaart functie in Azure Monitor:
 
-1. Selecteer in de Azure Portal **monitor**. 
+1. Selecteer in de Azure portal, **Monitor**. 
 2. Klik in de sectie **inzichten** op **virtual machines (preview)** .
 3. Selecteer het tabblad **map** .
 

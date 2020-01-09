@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 689a702863dda53870f775bd8520d5dd406d242f
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: da6d17e42407048b7ecbcacade67ef48046d7fe1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640598"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457120"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referentie-IoT Hub-eind punten
 
@@ -21,7 +21,7 @@ ms.locfileid: "68640598"
 
 ## <a name="iot-hub-names"></a>IoT Hub namen
 
-U kunt de hostnaam van de IoT-hub die als host fungeert voor uw eind punten vinden in de portal op de overzichts pagina van uw hub. De DNS-naam van een IoT-hub ziet er standaard uit `{your iot hub name}.azure-devices.net`als:.
+U kunt de hostnaam van de IoT-hub die als host fungeert voor uw eind punten vinden in de portal op de **overzichts** pagina van uw hub. De DNS-naam van een IoT-hub ziet er standaard als volgt uit: `{your iot hub name}.azure-devices.net`.
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>Lijst met ingebouwde IoT Hub-eind punten
 
@@ -31,7 +31,7 @@ Azure IoT Hub is een service met meerdere tenants die de functionaliteit van ver
 
 In de volgende lijst worden de eind punten beschreven:
 
-* **Resource provider**. De provider van de IoT Hub-resource maakt een [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) -interface beschikbaar. Met deze interface kunnen Azure-abonnements eigenaren IoT-hubs maken en verwijderen en IoT hub-eigenschappen bijwerken. IoT Hub eigenschappen regelen op het [niveau van beveiligings beleid](iot-hub-devguide-security.md#access-control-and-permissions)op hubniveau, in tegens telling tot toegangs beheer op apparaatniveau, en functionele opties voor Cloud-naar-apparaat-en apparaat-naar-Cloud-berichten. Met de resource provider van IoT Hub kunt u ook [apparaat-id's exporteren](iot-hub-devguide-identity-registry.md#import-and-export-device-identities).
+* **Resource provider**. De provider van de IoT Hub-resource maakt een [Azure Resource Manager](../azure-resource-manager/management/overview.md) -interface beschikbaar. Met deze interface kunnen Azure-abonnements eigenaren IoT-hubs maken en verwijderen en IoT hub-eigenschappen bijwerken. IoT Hub eigenschappen regelen op het [niveau van beveiligings beleid op hubniveau](iot-hub-devguide-security.md#access-control-and-permissions), in tegens telling tot toegangs beheer op apparaatniveau, en functionele opties voor Cloud-naar-apparaat-en apparaat-naar-Cloud-berichten. Met de resource provider van IoT Hub kunt u ook [apparaat-id's exporteren](iot-hub-devguide-identity-registry.md#import-and-export-device-identities).
 
 * **Apparaat-id beheren**. Elke IoT hub bevat een set HTTPS REST-eind punten voor het beheren van apparaat-id's (maken, ophalen, bijwerken en verwijderen). [Apparaat-id's](iot-hub-devguide-identity-registry.md) worden gebruikt voor verificatie van apparaten en toegangs beheer.
 
@@ -39,7 +39,7 @@ In de volgende lijst worden de eind punten beschreven:
 
 * **Taak beheer**. Elke IoT hub biedt een reeks service gerichte HTTPS REST-eind punten voor het opvragen en beheren van [taken](iot-hub-devguide-jobs.md).
 
-* **Apparaat-eind punten**. Voor elk apparaat in het identiteits register IoT Hub een set eind punten beschikbaar:
+* **Apparaat-eind punten**. Voor elk apparaat in het identiteitsregister wordt door IoT Hub een reeks eindpunten zichtbaar gemaakt:
 
   * *Apparaat-naar-Cloud-berichten verzenden*. Een apparaat gebruikt dit eind punt om [apparaat-naar-Cloud-berichten te verzenden](iot-hub-devguide-messages-d2c.md).
 
@@ -51,19 +51,19 @@ In de volgende lijst worden de eind punten beschreven:
 
   * *Ontvang direct-methode aanvragen*. Een apparaat gebruikt dit eind punt om te Luis teren naar aanvragen van [directe methoden](iot-hub-devguide-direct-methods.md).
 
-    Deze eind punten worden beschikbaar gemaakt met behulp van [MQTT v 3.1.1](https://mqtt.org/), https 1,1 en [AMQP 1,0](https://www.amqp.org/) -protocollen. AMQP is ook beschikbaar via [](https://tools.ietf.org/html/rfc6455) websockets op poort 443.
+    Deze eind punten worden beschikbaar gemaakt met behulp van [MQTT v 3.1.1](https://mqtt.org/), https 1,1 en [AMQP 1,0](https://www.amqp.org/) -protocollen. AMQP is ook beschikbaar via [Websockets](https://tools.ietf.org/html/rfc6455) op poort 443.
 
 * **Service-eind punten**. Elke IoT hub biedt een set eind punten voor de back-end van uw oplossing om met uw apparaten te communiceren. Met één uitzonde ring worden deze eind punten alleen weer gegeven met behulp van het [AMQP](https://www.amqp.org/) -protocol. Het eind punt van de methode aanroep wordt weer gegeven via het HTTPS-protocol.
   
   * *Apparaat-naar-Cloud-berichten ontvangen*. Dit eind punt is compatibel met [Azure Event hubs](https://azure.microsoft.com/documentation/services/event-hubs/). Een back-end-service kan deze gebruiken om de [apparaat-naar-Cloud-berichten](iot-hub-devguide-messages-d2c.md) te lezen die door uw apparaten worden verzonden. U kunt naast dit ingebouwde eind punt aangepaste eind punten maken op uw IoT-hub.
   
-  * *Cloud-naar-apparaat-berichten verzenden en*ontvangst bevestigingen ontvangen. Met deze eind punten kan de back-end van uw oplossing een betrouw bare [Cloud-naar-apparaat-berichten](iot-hub-devguide-messages-c2d.md)verzenden en de bijbehorende bezorgings-en vergelijkings bevestigingen ontvangen.
+  * *Cloud-naar-apparaat-berichten verzenden en ontvangst bevestigingen ontvangen*. Met deze eind punten kan de back-end van uw oplossing een betrouw bare [Cloud-naar-apparaat-berichten](iot-hub-devguide-messages-c2d.md)verzenden en de bijbehorende bezorgings-en vergelijkings bevestigingen ontvangen.
   
   * *Bestands meldingen ontvangen*. Met dit berichten eindpunt kunt u meldingen ontvangen wanneer een bestand is geüpload door uw apparaten. 
   
   * *Directe methode aanroep*. Met dit eind punt kan een back-end-service een [rechtstreekse methode](iot-hub-devguide-direct-methods.md) aanroepen op een apparaat.
   
-  * Gebeurtenissen voor het bewaken van *bewerkingen ontvangen*. Met dit eind punt kunt u bewakings gebeurtenissen van bewerkingen ontvangen als uw IoT-hub is geconfigureerd om deze te verzenden. Zie [IOT hub Operations monitoring](iot-hub-operations-monitoring.md)voor meer informatie.
+  * *Gebeurtenissen voor het bewaken van bewerkingen ontvangen*. Met dit eind punt kunt u bewakings gebeurtenissen van bewerkingen ontvangen als uw IoT-hub is geconfigureerd om deze te verzenden. Zie [IOT hub Operations monitoring](iot-hub-operations-monitoring.md)voor meer informatie.
 
 In het artikel [Azure IOT sdk's](iot-hub-devguide-sdks.md) worden de verschillende manieren beschreven om toegang te krijgen tot deze eind punten.
 
@@ -75,7 +75,7 @@ U kunt bestaande Azure-Services in uw abonnement koppelen aan uw IoT-hub om te f
 
 IoT Hub ondersteunt momenteel de volgende Azure-Services als extra eind punten:
 
-* Azure-opslagcontainers
+* Azure Storage containers
 * Event Hubs
 * Service Bus-wachtrijen
 * Service Bus-onderwerpen
@@ -84,10 +84,10 @@ Zie [quota's en beperken](iot-hub-devguide-quotas-throttling.md)voor de limieten
 
 U kunt de REST API status van [eind punt ophalen](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) gebruiken om de status van de eind punten op te halen. U kunt het beste de [IOT hub metrische gegevens](iot-hub-metrics.md) met betrekking tot de bericht latentie van de route ring gebruiken om fouten op te sporen en op te sporen wanneer de status van het eind punt inactief of beschadigd is, omdat er een latentie wordt verwacht wanneer het eind punt zich in een van deze statussen bevindt.
 
-|Status|Description|
+|Status|Beschrijving|
 |---|---|
 |healthy|Het eind punt accepteert berichten zoals verwacht.|
-|slechte|Het eind punt accepteert geen berichten zoals verwacht en IoT Hub probeert gegevens naar dit eind punt te verzenden. De status van een onjuist eind punt wordt bijgewerkt naar in orde wanneer IoT Hub een uiteindelijk consistente status van de status heeft bereikt.|
+|Slechte|Het eind punt accepteert geen berichten zoals verwacht en IoT Hub probeert gegevens naar dit eind punt te verzenden. De status van een onjuist eind punt wordt bijgewerkt naar in orde wanneer IoT Hub een uiteindelijk consistente status van de status heeft bereikt.|
 |onbekend|IoT Hub heeft geen verbinding gemaakt met het eind punt. Er zijn geen berichten van dit eind punt bezorgd aan of afgewezen.|
 |geval|Het eind punt accepteert geen berichten nadat IoT Hub opnieuw hebt geprobeerd berichten te verzenden voor de evaluatie periode.|
 

@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 0c5f64e08446698bbd8d1ee4af5454e3aa1dd5ff
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 264c434849d5d5afb5934873c75d172a3783ac86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693551"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459690"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren voor Power BI (preview)
 
@@ -170,6 +170,29 @@ Nu de Stream Analytics-taak is gemaakt, kan deze toegang krijgen tot een Power B
 
    ![Stream Analytics taak toevoegen aan Power BI werk ruimte](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-add-job-to-powerbi-workspace.png)
 
+### <a name="use-the-power-bi-powershell-cmdlets"></a>De Power BI Power shell-cmdlets gebruiken
+
+1. Installeer de Power BI `MicrosoftPowerBIMgmt` Power shell-cmdlets.
+
+   > [!Important]
+   > Controleer of u versie 1.0.821 of hoger van de cmdlets gebruikt.
+
+```powershell
+Install-Module -Name MicrosoftPowerBIMgmt
+```
+
+2. Meld u aan bij Power BI.
+
+```powershell
+Login-PowerBI
+```
+
+3. Uw Stream Analytics-taak als Inzender toevoegen aan de werk ruimte.
+
+```powershell
+Add-PowerBIWorkspaceUser -WorkspaceId <group-id> -PrincipalId <principal-id> -PrincipalType App -AccessRight Contributor
+```
+
 ### <a name="use-the-power-bi-rest-api"></a>De Power BI gebruiken REST API
 
 De Stream Analytics-taak kan ook worden toegevoegd als een bijdrager aan de werk ruimte met behulp van de REST API groeps gebruiker rechtstreeks toevoegen. Volledige documentatie voor deze API vindt u hier: [groepen: groeps gebruiker toevoegen](https://docs.microsoft.com/rest/api/power-bi/groups/addgroupuser).
@@ -201,4 +224,4 @@ Hieronder vindt u de beperkingen van deze functie:
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Integratie van dash board Power BI met Azure Stream Analytics](./stream-analytics-power-bi-dashboard.md)
-* [Meer informatie over de uitvoer van Azure Stream Analytics](./stream-analytics-define-outputs.md)
+* [Inzicht in de uitvoer van Azure Stream Analytics](./stream-analytics-define-outputs.md)

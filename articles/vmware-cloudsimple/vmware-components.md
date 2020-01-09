@@ -1,5 +1,6 @@
 ---
-title: Azure VMware-oplossing door CloudSimple-Private Cloud VMware-onderdelen
+title: VMware-onderdelen van de privécloud
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Hierin wordt beschreven hoe VMware-onderdelen worden geïnstalleerd in de privécloud
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: bd83cff243c94ed62014ff95f6ca7c4e878f6af7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814567"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452319"
 ---
 # <a name="private-cloud-vmware-components"></a>VMware-onderdelen van de privécloud
 
@@ -28,11 +29,11 @@ Een Privécloud is een geïsoleerde VMware-stack (ESXi hosts, vCenter, vSAN en N
 
 Een VMware-stack in de Privécloud wordt geïmplementeerd met de volgende software versie.
 
-| Onderdeel | Version | Versie met licentie |
+| Component | Versie | Versie met licentie |
 |-----------|---------|------------------|
 | ESXi | 6,7 U2 | Enter prise plus |
 | vCenter | 6,7 U2 | vCenter-standaard |
-| vSAN | 6.7 | Zakelijk |
+| vSAN | 6.7 | Enterprise |
 | NSX Data Center | 2.4.1 | Geavanceerd |
 
 ## <a name="esxi"></a>ESXi
@@ -47,7 +48,7 @@ vCenter Server-apparaat (VCSA) biedt de functies voor verificatie, beheer en Orc
 
 ### <a name="vcenter-single-sign-on"></a>eenmalige aanmelding via vCenter
 
-De controller van de embedded platform Services op VCSA is gekoppeld aan een **vCenter-domein met eenmalige aanmelding**.  De domein naam is **cloudsimple. local**.  Er wordt een **CloudOwner@cloudsimple.com** standaard gebruiker voor toegang tot vCenter gemaakt.  U kunt uw on-premises/Azure Active Directory- [identiteits bronnen voor vCenter](set-vcenter-identity.md)toevoegen.
+De controller van de embedded platform Services op VCSA is gekoppeld aan een **vCenter-domein met eenmalige aanmelding**.  De domein naam is **cloudsimple. local**.  Er wordt een standaard gebruikers **CloudOwner@cloudsimple.com** gemaakt voor toegang tot vCenter.  U kunt uw on-premises/Azure Active Directory- [identiteits bronnen voor vCenter](set-vcenter-identity.md)toevoegen.
 
 ## <a name="vsan-storage"></a>vSAN-opslag
 
@@ -81,11 +82,11 @@ NSX Data Center biedt Netwerkvirtualisatie, micro segmentatie en netwerk beveili
 
 ## <a name="vsphere-cluster"></a>vSphere-cluster
 
-ESXi-hosts worden geconfigureerd als een cluster om te zorgen voor een hoge Beschik baarheid van de privécloud.  Wanneer u een privécloud maakt, worden de beheer onderdelen van vSphere geïmplementeerd op het eerste cluster.  Er wordt een resource groep gemaakt voor beheer onderdelen en alle management-Vm's worden geïmplementeerd in deze resource groep. Het eerste cluster kan niet worden verwijderd om de privécloud te verkleinen.  vSphere-cluster biedt hoge Beschik baarheid voor Vm's met **VSPHERE ha**.  Te verdragen fouten zijn gebaseerd op het aantal beschik bare knoop punten in het cluster.  U kunt de formule ```Number of nodes = 2N+1``` ```N``` gebruiken om het aantal fouten te verdragen.
+ESXi-hosts worden geconfigureerd als een cluster om te zorgen voor een hoge Beschik baarheid van de privécloud.  Wanneer u een privécloud maakt, worden de beheer onderdelen van vSphere geïmplementeerd op het eerste cluster.  Er wordt een resource groep gemaakt voor beheer onderdelen en alle management-Vm's worden geïmplementeerd in deze resource groep. Het eerste cluster kan niet worden verwijderd om de privécloud te verkleinen.  vSphere-cluster biedt hoge Beschik baarheid voor Vm's met **VSPHERE ha**.  Te verdragen fouten zijn gebaseerd op het aantal beschik bare knoop punten in het cluster.  U kunt de formule gebruiken ```Number of nodes = 2N+1``` waarbij ```N``` het aantal fouten is dat moet worden toegelaten.
 
 ### <a name="vsphere-cluster-limits"></a>limieten voor vSphere-clusters
 
-| Resource | Limiet |
+| Bron | Limiet |
 |----------|-------|
 | Minimum aantal knoop punten voor het maken van een privécloud (eerste vSphere-cluster) | 3 |
 | Maximum aantal knoop punten in een vSphere-cluster in een privécloud | 16 |

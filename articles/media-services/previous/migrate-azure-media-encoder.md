@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: e9c83a25147696b5e492241a191b3104df001c7c
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 7bbebe71f6a3278d70767ac9f9dbb9d55e6d481a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424017"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453377"
 ---
 # <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Migreren van Azure Media Encoder naar Media Encoder Standard
 
-In dit artikel worden de stappen beschreven voor het migreren van de verouderde media processor van Azure Media Encoder (AAM), die wordt ingetrokken op 1 maart 2020, naar de Media Encoder Standard-media processor.  
+In dit artikel worden de stappen beschreven voor het migreren van de verouderde media processor van Azure Media Encoder (AAM), die wordt ingetrokken op 31 maart 2020, naar de Media Encoder Standard-media processor.  
 
 Bij het coderen van bestanden met AAM gebruiken klanten doorgaans een vooraf ingestelde teken reeks, zoals `H264 Adaptive Bitrate MP4 Set 1080p`. Als u wilt migreren, moet uw code worden bijgewerkt om gebruik te kunnen maken van de **Media Encoder Standard** media processor in plaats van AAM en een van de equivalente [systeem voorinstellingen](media-services-mes-presets-overview.md) zoals `H264 Multiple Bitrate 1080p`. 
 
@@ -67,7 +67,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
 Als u uw eigen coderings voorinstelling voor AAM hebt gemaakt met behulp van het bijbehorende schema, is er een [gelijkwaardig schema voor Media Encoder Standard](media-services-mes-schema.md). Als u vragen hebt over het toewijzen van de oudere instellingen aan de nieuwe encoder, kunt u contact met ons opnemen via mailto:amshelp@microsoft.com  
 ## <a name="known-differences"></a>Bekende verschillen 
 
-Media Encoder Standard is robuuster, betrouwbaarder, heeft betere prestaties en levert een betere kwaliteit van de uitvoer dan het oudere AAM-coderings programma. Daarnaast doet u het volgende: 
+Media Encoder Standard is robuuster, betrouwbaarder, heeft betere prestaties en levert een betere kwaliteit van de uitvoer dan het oudere AAM-coderings programma. Daarnaast: 
 
 * Media Encoder Standard produceert uitvoer bestanden met een andere naam Conventie dan AAM.
 * Media Encoder Standard produceert artefacten, zoals bestanden met de meta gegevens van het [invoer bestand](media-services-input-metadata-schema.md) en de [meta gegevens van het uitvoer bestand](media-services-output-metadata-schema.md).

@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: client bibliotheek voor persoonlijke instellingen voor node. js | Microsoft Docs'
+title: 'Quick Start: client bibliotheek voor persoonlijke instellingen voor node. js'
 titleSuffix: Azure Cognitive Services
-description: Ga aan de slag met de Personaler-client bibliotheek voor node. js met een Learning-lus.
+description: In deze Quick start ziet u hoe u aan de slag gaat met de Personaler-client bibliotheek voor node. js met behulp van een Learning-lus.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: f7667ce99ceaa713332ad9419ffab9d57aa0f075
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91aee7f4a110490495a3cf840e6b3ef3282c91c5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494461"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446376"
 ---
 # <a name="quickstart-personalizer-client-library-for-nodejs"></a>Quick Start: client bibliotheek voor persoonlijke instellingen voor node. js
 
@@ -106,7 +106,7 @@ Als u een beloning naar persoonlijker wilt verzenden, maakt u een RewardRequest 
 
 Het bepalen van de beloning, in deze Snelstartgids is trivial. In een productie systeem kan de bepaling van wat invloed heeft op de [belonings Score](concept-rewards.md) en wat een complex proces kan zijn, u mogelijk besluiten om de tijd te wijzigen. Dit moet een van de belangrijkste ontwerp beslissingen zijn in uw persoonlijke architectuur. 
 
-## <a name="code-examples"></a>Code voorbeelden
+## <a name="code-examples"></a>Codevoorbeelden
 
 Deze code fragmenten laten zien hoe u het volgende kunt doen met de Personaler-client bibliotheek voor node. js:
 
@@ -190,7 +190,7 @@ node sample.js
 Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+* [Azure-CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -199,5 +199,5 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 
 * [Wat is persoonlijkere?](what-is-personalizer.md)
 * [Waar kunt u Personaler gebruiken?](where-can-you-use-personalizer.md)
-* [Problemen oplossen](troubleshooting.md)
-* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js).
+* [Probleemoplossing](troubleshooting.md)
+* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js).

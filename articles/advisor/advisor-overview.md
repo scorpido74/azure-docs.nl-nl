@@ -1,21 +1,14 @@
 ---
-title: Inleiding tot Azure Advisor | Microsoft Docs
+title: Inleiding tot Azure Advisor
 description: Gebruik Azure Advisor om uw Azure-implementaties te optimaliseren.
-services: advisor
-documentationcenter: NA
-author: sagupt
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/01/2019
-ms.author: sagupt
-ms.openlocfilehash: 1a1ed13697d838041d1ac98b966695e24c06edbe
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 600bda282d46f86979d0366719826c3a6c1323e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74145372"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443082"
 ---
 # <a name="introduction-to-azure-advisor"></a>Inleiding tot Azure Advisor
 
@@ -25,9 +18,9 @@ Meer informatie over de belangrijkste mogelijkheden van Azure Advisor en antwoor
 Advisor is een persoonlijke Cloud consultant die u helpt bij het volgen van de aanbevolen procedures voor het optimaliseren van uw Azure-implementaties. Het analyseert uw resourceconfiguratie en gebruikstelemetrie, en raadt vervolgens oplossingen aan die u kunnen helpen de kosteneffectiviteit, prestaties, hoge beschikbaarheid en beveiliging van uw Azure-resources te verbeteren.
 
 Met Advisor kunt u het volgende doen:
-* Krijg aanbevelingen voor proactieve, actie bare en aangepaste best practices. 
+* Proactieve, bruikbare en aan uw voorkeuren aangepaste aanbevelingen voor best practice ontvangen. 
 * Verbeter de prestaties, beveiliging en hoge Beschik baarheid van uw resources, naarmate u uw verkoop kansen identificeert om uw totale Azure-uitgaven te verminderen.
-* Krijg aanbevelingen met voorgestelde acties inline.
+* Aanbevelingen ontvangen met voorgestelde acties inline.
 
 U hebt toegang tot Advisor via de [Azure Portal](https://aka.ms/azureadvisordashboard). Meld u aan bij de [Portal](https://portal.azure.com), zoek **Advisor** in het navigatie menu of zoek ernaar in het menu **alle services** .
 

@@ -2,19 +2,15 @@
 title: Hybrid Runbook Worker voor Azure Automation in Linux
 description: Dit artikel bevat informatie over het installeren van een Azure Automation Hybrid Runbook Worker, zodat u runbooks kunt uitvoeren op Linux-computers in uw lokale Data Center of in de cloud omgeving.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 06/28/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 01dcb30fca2819bc4cf85ea624de5735cc84801b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 838c7450de1364588fb287c9d9804666a325cdf3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850819"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421919"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Een Linux-Hybrid Runbook Worker implementeren
 
@@ -56,7 +52,7 @@ De minimale vereisten voor een Linux-Hybrid Runbook Worker zijn:
 | **Optioneel pakket** | **Beschrijving** | **Minimale versie**|
 | PowerShell Core | Als u Power shell-runbooks wilt uitvoeren, moet Power shell zijn geïnstalleerd. Zie [Power shell Core installeren in Linux](/powershell/scripting/install/installing-powershell-core-on-linux) voor meer informatie over het installeren ervan.  | 6.0.0 |
 
-### <a name="installation"></a>Installatie
+### <a name="installation"></a>Installeren
 
 Voordat u verder gaat, moet u de Log Analytics-werk ruimte zien waaraan uw Automation-account is gekoppeld. Let ook op de primaire sleutel voor uw Automation-account. U kunt beide van de Azure Portal vinden door uw Automation-account te selecteren, **werk ruimte** te selecteren voor de werk ruimte-id en **sleutels** te selecteren voor de primaire sleutel. Zie [uw netwerk configureren](automation-hybrid-runbook-worker.md#network-planning)voor meer informatie over de poorten en adressen die u nodig hebt voor de Hybrid Runbook Worker.
 

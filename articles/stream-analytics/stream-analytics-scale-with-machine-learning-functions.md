@@ -1,19 +1,18 @@
 ---
 title: Machine Learning functies in Azure Stream Analytics schalen
 description: In dit artikel wordt beschreven hoe u Stream Analytics taken kunt schalen die gebruikmaken van Machine Learning-functies door partitionering en stroom eenheden te configureren.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 28734e5eaa693ca4ee31603863b69605a1d92c88
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dedffab0b17515cedc54569d5debf6d29b273644
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467869"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458743"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Uw Stream Analytics-taak schalen met de functies Azure Machine Learning Studio (klassiek)
 
@@ -90,7 +89,7 @@ Met de tweede optie moet u meer SUs inrichten om meer gelijktijdige aanvragen vo
 
 Laten we de schaal bekijken met behulp van de volgende latentie metingen voor elke batch grootte:
 
-| Latentie | Batch grootte |
+| Latentie | Batchgrootte |
 | --- | --- |
 | 200 MS | 1000-gebeurtenissen batches of lager |
 | 250 MS | 5\.000-gebeurtenis batches |
@@ -102,16 +101,16 @@ Laten we de schaal bekijken met behulp van de volgende latentie metingen voor el
 
 Hieronder ziet u een tabel voor de door Voer van de Stream Analytics-taak voor verschillende SUs-en batch grootten (in aantal gebeurtenissen per seconde).
 
-| Batch grootte (ML-latentie) | 500 (200 MS) | 1\.000 (200 MS) | 5\.000 (250 MS) | 10.000 (300 MS) | 25.000 (500 MS) |
+| Batch grootte (ML-latentie) | 500 (200 ms) | 1\.000 (200 MS) | 5\.000 (250 MS) | 10.000 (300 MS) | 25.000 (500 MS) |
 | --- | --- | --- | --- | --- | --- |
-| **1 SU** |2\.500 |5\.000 |20.000 |30.000 |50,000 |
-| **3 SUs** |2\.500 |5\.000 |20.000 |30.000 |50,000 |
-| **6 SUs** |2\.500 |5\.000 |20.000 |30.000 |50,000 |
-| **12 SUs** |5\.000 |10.000 |40.000 |60.000 |100.000 |
-| **18 SUs** |7\.500 |15.000 |60.000 |90.000 |150.000 |
-| **24-SUs** |10.000 |20.000 |80.000 |120.000 |200.000 |
-| **...** |... |... |... |... |... |
-| **60-SUs** |25.000 |50,000 |200.000 |300.000 |500.000 |
+| **1 SU** |2,500 |5\.000 |20,000 |30,000 |50,000 |
+| **3 SUs** |2,500 |5\.000 |20,000 |30,000 |50,000 |
+| **6 SUs** |2,500 |5\.000 |20,000 |30,000 |50,000 |
+| **12 SUs** |5\.000 |10.000 |40,000 |60,000 |100.000 |
+| **18 SUs** |7\.500 |15.000 |60,000 |90,000 |150,000 |
+| **24-SUs** |10.000 |20,000 |80,000 |120,000 |200.000 |
+| **…** |… |… |… |… |… |
+| **60-SUs** |25,000 |50,000 |200.000 |300,000 |500,000 |
 
 Nu moet u al een goed idee hebben van de werking van Machine Learning functies in Stream Analytics. Waarschijnlijk begrijpt u ook dat Stream Analytics taken pull-gegevens uit gegevens bronnen en elke pull-taak een batch gebeurtenissen retourneert voor het verwerken van de Stream Analytics. Wat is de invloed van dit pull-model op de Machine Learning-aanvragen voor webservices?
 

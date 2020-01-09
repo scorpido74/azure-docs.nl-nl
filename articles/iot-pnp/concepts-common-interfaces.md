@@ -3,16 +3,16 @@ title: Algemene interfaces-IoT Plug en Play preview | Microsoft Docs
 description: Beschrijving van algemene interfaces voor IoT Plug en Play-ontwikkel aars
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 09/08/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 2eae778230fa5fce1be095106a02b2b643ff436e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: f697a0d6aba4f137b75faa2a200424c72aa78c3b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935328"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531408"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>Algemene interfaces Plug en Play de preview-versie van IoT
 
@@ -20,7 +20,7 @@ Alle IoT Plug en Play-apparaten worden verwacht een aantal algemene interfaces t
 
 ## <a name="summary-of-common-interfaces"></a>Samen vatting van algemene interfaces
 
-| Name | id | Description | Geïmplementeerd door de Azure IoT SDK | Moet worden gedeclareerd in het mogelijkheidsprofiel |
+| Name | Id | Beschrijving | Geïmplementeerd door de Azure IoT SDK | Moet worden gedeclareerd in het mogelijkheidsprofiel |
 | -------- | -------- | -------- | -------- | -------- | -------- |
 | Model gegevens | urn: azureiot: ModelDiscovery: ModelInformation: 1 | Voor apparaten om de ID en interfaces van het mogelijkheidsprofiel te declareren. Vereist voor alle IoT Plug en Play-apparaten. | Ja | Nee |
 | Digital-client-SDK-informatie | urn: azureiot: client: SDKInformation: 1 | Client-SDK voor het verbinden van het apparaat met Azure. Vereist voor [certificering](tutorial-build-device-certification.md) | Ja | Nee |
@@ -29,7 +29,7 @@ Alle IoT Plug en Play-apparaten worden verwacht een aantal algemene interfaces t
 | Digitale dubbele | urn: azureiot: ModelDiscovery: DigitalTwin: 1 | Ontwikkel aars van oplossingen moeten de ID en interface-Id's van het mogelijkheidsprofiel ophalen voor een digitale dubbele. Deze interface is niet gedeclareerd of geïmplementeerd door een IoT Plug en Play-apparaat. | Nee | Nee |
 
 - Geïmplementeerd door de Azure IoT SDK: of de Azure IoT SDK de mogelijkheden implementeert die in de interfaces zijn gedeclareerd. IoT Plug en Play-apparaten die gebruikmaken van de Azure IoT SDK, hoeven deze interface niet te implementeren.
-- Moet worden gedeclareerd in het mogelijkheidsprofiel: als Ja is opgegeven, moet deze interface worden gedeclareerd binnen de `"implements":` sectie van het mogelijkheidsprofiel voor deze IOT-Plug en Play apparaat.
+- Moet worden gedeclareerd in het mogelijkheidsprofiel: als de optie Ja is opgegeven, moet deze interface worden gedeclareerd in de sectie `"implements":` van het hulp model voor het maken van deze IoT-Plug en Play apparaat.
 
 ## <a name="retrieve-interface-definitions-from-the-public-repository"></a>Interface definities ophalen uit de open bare opslag plaats
 
@@ -49,7 +49,7 @@ az iot pnp capability-model show --model {ModelID}
 
 1. Gebruik **CTRL + SHIFT + P** om het opdracht palet te openen.
 
-1. Voer **Plug en Play** in en selecteer vervolgens **de IOT-Plug en Play: Open de opdracht** model opslagplaats. Kies een **open bare opslag plaats**. De open bare model opslagplaats wordt geopend in VS code.
+1. Voer **Plug en Play** in en selecteer de opdracht **IOT-Plug en Play: model opslagplaats openen** . Kies een **open bare opslag plaats**. De open bare model opslagplaats wordt geopend in VS code.
 
 1. Voer in de open bare model opslagplaats de naam van de interface in het zoek veld in.
 

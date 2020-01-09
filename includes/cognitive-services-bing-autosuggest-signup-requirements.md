@@ -3,12 +3,27 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/19/2019
-ms.openlocfilehash: 0da406ca1b37e05a44ba0d0f3ca56c266dda0dac
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 12/11/2019
+ms.openlocfilehash: a678603d19b8da9ace8b519e19fc8ef2673621fe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176368"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384712"
 ---
-Hebt u een [Cognitive Services-API-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met toegang tot de Bing Automatische suggestie-API. Als u geen Azure-abonnement hebt, kunt u gratis [een account maken](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). Voordat u verdergaat, hebt u de toegangssleutel nodig die wordt verstrekt bij het activeren van uw gratis proefversie of de sleutel van een betaald abonnement vanuit uw Azure-dashboard.
+## <a name="create-an-azure-resource"></a>Een Azure-resource maken
+
+Begin met het gebruik van de Automatische suggestie-API voor Bing door een van de onderstaande Azure-resources te maken.
+
+* [Een proef resource maken](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
+    * Er is geen Azure-abonnement nodig.
+    * Gratis geldig voor zeven dagen. Nadat u zich hebt aangemeld, is een proef sleutel en een eind punt beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).
+
+* [Een Bing automatische suggesties resource maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7):
+    * Beschikbaar via de Azure Portal totdat u de resource verwijdert.
+    * Gebruik de gratis prijs categorie om de service te proberen en pas later bij te werken naar een betaalde laag voor productie.
+    * Bing Automatische suggesties wordt ook aangeboden in betaalde lagen van de [Bing Search V7-resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7).
+
+* [Een resource met meerdere services maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
+    * Beschikbaar via de Azure Portal totdat u de resource verwijdert.  
+    * Gebruik dezelfde sleutel en hetzelfde eind punt voor uw toepassingen, op meerdere Cognitive Services.

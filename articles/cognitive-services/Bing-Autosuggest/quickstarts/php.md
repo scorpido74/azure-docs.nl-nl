@@ -1,5 +1,5 @@
 ---
-title: "Quickstart: Zoek query's Voorst Ellen met de Bing Automatische suggesties REST API en PHP"
+title: "Quick Start: Zoek query's Voorst Ellen met de Bing Automatische suggesties REST API en PHP"
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over hoe u snel aan de slag kunt met de Automatische suggestie-API voor Bing.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 7c9c12cd1097ab4a2b7138efd169e4e7a7f03720
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 64874791be62ec1ed5c1c5874fb055efa4b44dc3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565806"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384713"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Quickstart: Zoek query's Voorst Ellen met de Bing Automatische suggesties REST API en PHP
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Quick Start: Zoek query's Voorst Ellen met de Bing Automatische suggesties REST API en PHP
 
 Gebruik deze Quick Start om te beginnen met het aanroepen van de Automatische suggestie-API voor Bing en het verkrijgen van het JSON-antwoord. Met deze eenvoudige PHP-toepassing wordt een gedeeltelijke Zoek query naar de API verzonden en worden suggesties voor Zoek opdrachten geretourneerd. Hoewel deze toepassing in PHP is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
@@ -32,7 +32,8 @@ Gebruik deze Quick Start om te beginnen met het aanroepen van de Automatische su
 1. Maak een nieuw PHP-project in uw favoriete IDE.
 2. Voeg de onderstaande code toe.
 3. Vervang de waarde `subscriptionKey` door een geldige toegangssleutel voor uw abonnement.
-4. Voer het programma uit.
+4. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+5. Voer het programma uit.
 
 ```php
 <?php

@@ -1,16 +1,16 @@
 ---
-title: Een OpenAPI-definitie maken voor een serverloze API met behulp van Azure API Management
+title: Maak uw functies beschikbaar met OpenAPI met behulp van Azure API Management
 description: Maak een definitie van een OpenAPI waarmee andere apps en services uw functie in Azure aanroepen.
 ms.topic: tutorial
 ms.date: 05/08/2019
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 659c05b3d31f5673e95cb27f10eaa8bd872e4be6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 56e2182b408b4e8b1f89eee7458a27c5dd54bb55
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226823"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562010"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Een OpenAPI-definitie maken voor een serverloze API met behulp van Azure API Management
 
@@ -39,7 +39,7 @@ In deze zelf studie wordt een door HTTP geactiveerde functie gebruikt die twee p
 * De geschatte tijd voor het maken van een turbine reparatie, in uren.
 * De capaciteit van de turbine, in kilo watt. 
 
-De functie berekend vervolgens hoeveel een reparatie kost en hoeveel omzet de turbine in een periode van 24 uur zou kunnen maken. De door HTTP geactiveerde functie maken in de [Azure Portal](https://portal.azure.com).
+De functie berekend vervolgens hoeveel een reparatie kost en hoeveel omzet de turbine in een periode van 24 uur zou kunnen maken. De door HTTP geactiveerde functie maken in de [Azure Portal](https://portal.azure.com):
 
 1. Vouw de functie-app uit en klik op de knop **+** naast **Functies**. Selecteer **in-portal** > **door gaan**.
 
@@ -139,17 +139,17 @@ U nu kunt de OpenAPI-definitie genereren.
     | ------------ |  ------- | -------------------------------------------------- |
     | **Naam** | Wereldwijd unieke naam | Er wordt een naam gegenereerd op basis van de naam van uw functie-app. |
     | **Abonnement** | Uw abonnement | Het abonnement waarmee deze nieuwe resource wordt gemaakt. |  
-    | **[Resourcegroep](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Dezelfde resource als uw functie-app, die voor u moet worden ingesteld. |
+    | **[Resourcegroep](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Dezelfde resource als uw functie-app, die voor u moet worden ingesteld. |
     | **Locatie** | VS - west | Kies de locatie vs-West. |
     | **Naam van de organisatie** | Contoso | De naam van de organisatie die wordt gebruikt in de ontwikkelaars Portal en voor e-mail meldingen. |
     | **E-mailadres van de beheerder** | uw e-mail adres | E-mail die systeem meldingen van API Management heeft ontvangen. |
     | **Prijscategorie** | Verbruik (preview-versie) | Verbruiks laag is in Preview en is niet beschikbaar in alle regio's. Zie de [pagina met prijzen voor API Management](https://azure.microsoft.com/pricing/details/api-management/) voor de volledige prijs informatie |
 
-1. Kies **maken** om het API Management-exemplaar te maken. Dit kan enkele minuten duren.
+1. Kies **Maken** om het API Management-exemplaar te maken. Dit kan enkele minuten duren.
 
 1. Selecteer **Application Insights inschakelen** om logboeken naar dezelfde locatie te verzenden als de functie toepassing, accepteer de resterende standaard waarden en selecteer **koppelings-API**.
 
-1. De **Import Azure functions** wordt geopend met de functie **TurbineRepair** gemarkeerd. Kies **selecteren** om door te gaan.
+1. De **Import Azure functions** wordt geopend met de functie **TurbineRepair** gemarkeerd. Kies **Selecteren** om door te gaan.
 
     ![Azure Functions importeren in API Management](media/functions-openapi-definition/import-function-openapi.png)
 

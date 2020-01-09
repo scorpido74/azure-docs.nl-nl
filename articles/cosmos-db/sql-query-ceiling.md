@@ -1,18 +1,18 @@
 ---
 title: PLAFOND in Azure Cosmos DB query taal
-description: Meer informatie over hoe de functie van het plafond SQL System in Azure Cosmos DB de principal-waarde retourneert van de boog tangens van y/x, uitgedrukt in radialen
+description: Meer informatie over hoe de SQL-functie CEILING in Azure Cosmos DB de kleinste gehele waarde retourneert die groter is dan, of gelijk is aan, de opgegeven numerieke expressie.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 18462b152b698e7c6bc4c6c1e59511b4bacaa611
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 2da7820a6c9f1f90585b4deb605bb99c7580b0e5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873434"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444809"
 ---
 # <a name="ceiling-azure-cosmos-db"></a>PLAFOND (Azure Cosmos DB)
  Retourneert het kleinste gehele getal dat groter is dan of gelijk is aan de opgegeven numerieke expressie.  

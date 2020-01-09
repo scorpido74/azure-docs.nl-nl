@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e7706fba1efad1bd0ce7110e129dcf113689af9a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: bc8efe46453f76d353842b32bd52b41838979b49
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309755"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432828"
 ---
-# <a name="get-shape-data"></a>Shapegegevens ophalen
+# <a name="get-shape-data"></a>Vormgegevens ophalen
 
 In dit artikel wordt beschreven hoe u shape-gegevens kunt ophalen die op de kaart zijn getekend met de functie **drawingManager. getSource ()** van het [tekening beheer](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--) . Er kunnen verschillende scenario's zijn waarin u de geojson-gegevens van een getekende vorm wilt extra heren en deze elders kunt gebruiken.  
 
@@ -36,16 +36,24 @@ Hieronder ziet u het volledige programma voor het uitvoeren van code, waarin u e
 
 <br/>
 
-<iframe height="686" title="Shapegegevens ophalen" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>Get Shape Data</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height="686" title="Vormgegevens ophalen" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>Get Shape Data</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
+Meer informatie over het gebruik van aanvullende functies van de module teken hulpprogramma's:
+
+> [!div class="nextstepaction"]
+> [Reageren op teken gebeurtenissen](drawing-tools-events.md)
+
+> [!div class="nextstepaction"]
+> [Interactie typen en sneltoetsen](drawing-tools-interactions-keyboard-shortcuts.md)
+
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Diagram](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Kaart](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [Drawing Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)

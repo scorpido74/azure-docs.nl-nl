@@ -3,12 +3,12 @@ title: 'Zelf studie: een Azure VM-cluster maken met terraform en HCL'
 description: Gebruik terraform en HCL voor het maken van een virtuele Linux-machine cluster met een load balancer in azure
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: f28cbbf13015d07c9d789ed258a9e2b0582ba1da
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 1ff13f05a5be463ed7477b4bbbc3e1f977a04a75
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159266"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665357"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Zelf studie: een Azure VM-cluster maken met terraform en HCL
 
@@ -208,7 +208,7 @@ In deze sectie maakt u een bestand dat de resourcedefinities voor uw infrastruct
       disable_password_authentication = false
     }
 
-    tags {
+    tags = {
       environment = "staging"
     }
    }
@@ -260,10 +260,10 @@ Terraform heeft het bestand met variabelen standaard als volgt gevonden:
 - Bestand met de naam `terraform.tfvars`
 - Bestand met de naam met het volgende patroon: `*.auto.tfvars`
 
-Het variabelen bestand hoeft echter niet te voldoen aan een van de twee voor gaande conventies. In dat geval geeft u de bestands naam van de variabele op met de para meter `-var-file`. In het volgende voor beeld ziet u dit punt:
+Het variabelen bestand hoeft echter niet te voldoen aan een van de twee voor gaande conventies. In dat geval geeft u de bestands naam van uw variabelen op met de para meter `-var-file`, waarbij de naam van uw variabele bestand geen extensie heeft. In het volgende voor beeld ziet u dit punt:
 
 ```hcl
-terraform plan -var-file <my-variables-file.tf>
+terraform plan -var-file <my-variables-file>
 ```
 
 Terraform bepaalt de acties die nodig zijn om de status te krijgen die is opgegeven in het configuratie bestand.

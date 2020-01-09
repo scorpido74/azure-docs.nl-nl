@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
-ms.openlocfilehash: 927e5baa3abfef8aabce1a7c3031eb38f790d268
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9a5783bfd035c5db06c4e1b0e36a17ca14cc0632
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931312"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440583"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Gegevens kopiëren van en naar micro soft Access-gegevens archieven met behulp van Azure Data Factory
 
@@ -54,7 +54,7 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service van micr
 | Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **MicrosoftAccess** | Ja |
-| connectionString | De ODBC-connection string het referentie deel niet uitsluiten. U kunt de connection string opgeven of de systeem-DSN (gegevens bron naam) gebruiken die u op de Integration Runtime machine hebt ingesteld (u moet nog steeds het referentie deel opgeven in de gekoppelde service).<br>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md).| Ja |
+| connectionString | De ODBC-connection string het referentie deel niet uitsluiten. U kunt de connection string opgeven of de systeem-DSN (gegevens bron naam) gebruiken die u op de Integration Runtime machine hebt ingesteld (u moet nog steeds het referentie deel opgeven in de gekoppelde service).<br> U kunt ook een wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de connection string halen. Raadpleeg [referenties opslaan in Azure Key Vault](store-credentials-in-key-vault.md) met meer informatie.| Ja |
 | authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met het micro soft Access-gegevens archief.<br/>Toegestane waarden zijn: **Basic** en **Anonymous**. | Ja |
 | userName | Geef de gebruikers naam op als u basis verificatie gebruikt. | Nee |
 | wachtwoord | Geeft het wachtwoord op voor het gebruikersaccount dat u hebt opgegeven voor de userName. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Nee |
@@ -69,10 +69,7 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service van micr
     "properties": {
         "type": "Microsoft Access",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=<path to your DB file e.g. C:\\mydatabase.accdb>;"
-            },
+            "connectionString": "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=<path to your DB file e.g. C:\\mydatabase.accdb>;",
             "authenticationType": "Basic",
             "userName": "<username>",
             "password": {

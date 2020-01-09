@@ -1,6 +1,6 @@
 ---
-title: Meer informatie over sjablonen voor virtuele-machine schaal sets | Microsoft Docs
-description: Meer informatie over het maken van een basisschaalset-sjabloon voor schaal sets voor virtuele machines
+title: Meer informatie over sjablonen voor virtuele-machine schaal sets
+description: Meer informatie over hoe u een basisschaalset-sjabloon maakt voor schaal sets van virtuele Azure-machines via een aantal eenvoudige stappen.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: 267c715de67df57abd30ac18966b8b3b8440810c
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: e3d8ada67b0a592df9c2dba145626836f27da631
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376111"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459371"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Meer informatie over sjablonen voor virtuele-machine schaal sets
 [Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process) zijn bijzonder handig om groepen gerelateerde resources te implementeren. In deze reeks zelf studies ziet u hoe u een basis sjabloon voor een schaalset maakt en hoe u deze sjabloon wijzigt in verschillende scenario's. Alle voor beelden zijn afkomstig uit deze [github-opslag plaats](https://github.com/gatneil/mvss).
 
-Deze sjabloon is zo ontworpen dat deze eenvoudig is. Zie de [github-opslag plaats voor Azure Quick](https://github.com/Azure/azure-quickstart-templates) start-sjablonen en zoek naar mappen die de teken reeks `vmss`bevatten voor meer gedetailleerde voor beelden van schaal sets sjablonen.
+Deze sjabloon is zo ontworpen dat deze eenvoudig is. Zie de [github-opslag plaats voor Azure Quick](https://github.com/Azure/azure-quickstart-templates) start-sjablonen en zoek naar mappen die de teken reeks bevatten `vmss`voor meer volledige voor beelden van schaal sets sjablonen.
 
 Als u al bekend bent met het maken van sjablonen, kunt u door gaan naar de sectie volgende stappen om te zien hoe u deze sjabloon wijzigt.
 
 ## <a name="define-schema-and-contentversion"></a>$schema en contentVersion definiëren
-Eerst definieert `$schema` u en `contentVersion` in de sjabloon. Het `$schema` element definieert de versie van de sjabloon taal en wordt gebruikt voor het markeren van de syntaxis van Visual Studio en vergelijk bare validatie functies. Het `contentVersion` element wordt niet gebruikt door Azure. In plaats daarvan kunt u de sjabloon versie volgen.
+Definieer eerst `$schema` en `contentVersion` in de sjabloon. Het `$schema`-element definieert de versie van de sjabloon taal en wordt gebruikt voor het markeren van de syntaxis van Visual Studio en vergelijk bare validatie functies. Het `contentVersion`-element wordt niet gebruikt door Azure. In plaats daarvan kunt u de sjabloon versie volgen.
 
 ```json
 {
@@ -38,8 +38,8 @@ Eerst definieert `$schema` u en `contentVersion` in de sjabloon. Het `$schema` e
   "contentVersion": "1.0.0.0",
 ```
 
-## <a name="define-parameters"></a>Para meters definiëren
-Vervolgens definieert u twee para `adminUsername` meters `adminPassword`en. Para meters zijn waarden die u opgeeft op het moment van de implementatie. De `adminUsername` para meter is gewoon `string` een type, maar `adminPassword` omdat het een geheim is, geeft `securestring`u het type op. Later worden deze para meters door gegeven aan de configuratie van de schaalset.
+## <a name="define-parameters"></a>Parameters definiëren
+Vervolgens definieert u twee para meters, `adminUsername` en `adminPassword`. Para meters zijn waarden die u opgeeft op het moment van de implementatie. De para meter `adminUsername` is gewoon een `string` type, maar omdat `adminPassword` een geheim is, geeft u het `securestring`. Later worden deze para meters door gegeven aan de configuratie van de schaalset.
 
 ```json
   "parameters": {
@@ -59,13 +59,13 @@ Met Resource Manager-sjablonen kunt u ook variabelen definiëren die later in de
 ```
 
 ## <a name="define-resources"></a>Resources definiëren
-Vervolgens vindt u de sectie resources van de sjabloon. Hier kunt u opgeven wat u daad werkelijk wilt implementeren. In tegens `variables` telling tot `parameters` en (wat JSON- `resources` objecten zijn), is een JSON-lijst met JSON-objecten.
+Vervolgens vindt u de sectie resources van de sjabloon. Hier kunt u opgeven wat u daad werkelijk wilt implementeren. In tegens telling tot `parameters` en `variables` (die JSON-objecten zijn), is `resources` een JSON-lijst met JSON-objecten.
 
 ```json
    "resources": [
 ```
 
-Alle resources vereisen `type`, `name`, `apiVersion` eneigenschappen.`location` De eerste resource van dit voor beeld is van het type [micro soft. Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks), name `myVnet`en apiVersion `2018-11-01`. (Als u de nieuwste API-versie voor een resource type wilt vinden, raadpleegt u de [Azure Resource Manager-sjabloon verwijzing](/azure/templates/).)
+Voor alle resources zijn `type`-, `name`-, `apiVersion`-en `location`-eigenschappen vereist. In dit voor beeld is de eerste resource type [micro soft. Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks), name `myVnet`en apiVersion `2018-11-01`. (Als u de nieuwste API-versie voor een resource type wilt vinden, raadpleegt u de [Azure Resource Manager-sjabloon verwijzing](/azure/templates/).)
 
 ```json
      {
@@ -75,14 +75,14 @@ Alle resources vereisen `type`, `name`, `apiVersion` eneigenschappen.`location` 
 ```
 
 ## <a name="specify-location"></a>Locatie opgeven
-Als u de locatie voor het virtuele netwerk wilt opgeven, gebruikt u een [Resource Manager-sjabloon functie](../azure-resource-manager/resource-group-template-functions.md). Deze functie moet tussen aanhalings tekens en vier Kante haakjes worden geplaatst `"[<template-function>]"`, bijvoorbeeld:. In dit geval gebruikt u de `resourceGroup` functie. Er worden geen argumenten gebruikt en er wordt een JSON-object geretourneerd met meta gegevens over de resource groep waarop deze implementatie wordt geïmplementeerd. De resource groep wordt ingesteld door de gebruiker op het moment van de implementatie. Deze waarde wordt vervolgens in dit JSON-object geïndexeerd `.location` met om de locatie van het JSON-object op te halen.
+Als u de locatie voor het virtuele netwerk wilt opgeven, gebruikt u een [Resource Manager-sjabloon functie](../azure-resource-manager/resource-group-template-functions.md). Deze functie moet tussen aanhalings tekens en vier Kante haakjes worden geplaatst, bijvoorbeeld: `"[<template-function>]"`. In dit geval gebruikt u de functie `resourceGroup`. Er worden geen argumenten gebruikt en er wordt een JSON-object geretourneerd met meta gegevens over de resource groep waarop deze implementatie wordt geïmplementeerd. De resource groep wordt ingesteld door de gebruiker op het moment van de implementatie. Deze waarde wordt vervolgens in dit JSON-object geïndexeerd met `.location` om de locatie op te halen uit het JSON-object.
 
 ```json
        "location": "[resourceGroup().location]",
 ```
 
 ## <a name="specify-virtual-network-properties"></a>Eigenschappen van virtueel netwerk opgeven
-Elke resource manager-resource heeft een `properties` eigen sectie voor configuraties die specifiek zijn voor de resource. In dit geval geeft u op dat het virtuele netwerk één subnet moet hebben met het privé-IP `10.0.0.0/16`-adres bereik. Een schaalset bevindt zich altijd in één subnet. Er kunnen geen subnetten worden gespannen.
+Elke resource manager-resource heeft een eigen `properties` sectie voor configuraties die specifiek zijn voor de resource. In dit geval geeft u op dat het virtuele netwerk één subnet moet hebben met het privé IP-adres bereik `10.0.0.0/16`. Een schaalset bevindt zich altijd in één subnet. Er kunnen geen subnetten worden gespannen.
 
 ```json
        "properties": {
@@ -104,9 +104,9 @@ Elke resource manager-resource heeft een `properties` eigen sectie voor configur
 ```
 
 ## <a name="add-dependson-list"></a>Lijst met dependsOn toevoegen
-Naast `type`de vereiste `dependsOn` eigenschappen `name`,, en `location` , kan elke resource een optionele lijst met teken reeksen bevatten. `apiVersion` In deze lijst wordt aangegeven welke andere resources van deze implementatie moeten worden voltooid voordat deze resource wordt geïmplementeerd.
+Naast de vereiste `type`, `name`, `apiVersion`en `location` eigenschappen, kan elke resource een optionele `dependsOn` lijst met teken reeksen hebben. In deze lijst wordt aangegeven welke andere resources van deze implementatie moeten worden voltooid voordat deze resource wordt geïmplementeerd.
 
-In dit geval is er slechts één element in de lijst, het virtuele netwerk van het vorige voor beeld. U geeft deze afhankelijkheid op omdat voor de schaalset het netwerk moet bestaan voordat er virtuele machines worden gemaakt. Op deze manier kan de schaalset deze privé-IP-adressen van Vm's geven van het IP-adres bereik dat eerder is opgegeven in de netwerk eigenschappen. De indeling van elke teken reeks in de dependsOn- `<type>/<name>`lijst is. Gebruik hetzelfde `type` en `name` eerder in de resource definitie voor het virtuele netwerk.
+In dit geval is er slechts één element in de lijst, het virtuele netwerk van het vorige voor beeld. U geeft deze afhankelijkheid op omdat voor de schaalset het netwerk moet bestaan voordat er virtuele machines worden gemaakt. Op deze manier kan de schaalset deze privé-IP-adressen van Vm's geven van het IP-adres bereik dat eerder is opgegeven in de netwerk eigenschappen. De indeling van elke teken reeks in de dependsOn-lijst is `<type>/<name>`. Gebruik hetzelfde `type` en `name` eerder in de resource definitie voor het virtuele netwerk.
 
 ```json
      {
@@ -131,7 +131,7 @@ De schaalset moet weten welke grootte van de virtuele machine moet worden gemaak
 ```
 
 ### <a name="choose-type-of-updates"></a>Type updates kiezen
-De schaalset moet ook weten hoe updates moeten worden verwerkt in de schaalset. Er zijn momenteel drie opties, `Manual` `Rolling` en `Automatic`. Zie de documentatie over het [upgraden van een schaalset](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)voor meer informatie over de verschillen tussen de twee.
+De schaalset moet ook weten hoe updates moeten worden verwerkt in de schaalset. Er zijn momenteel drie opties `Manual`, `Rolling` en `Automatic`. Zie de documentatie over het [upgraden van een schaalset](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)voor meer informatie over de verschillen tussen de twee.
 
 ```json
        "properties": {
@@ -156,9 +156,9 @@ De schaalset moet weten welk besturings systeem op de Vm's moet worden geplaatst
 ```
 
 ### <a name="specify-computernameprefix"></a>ComputerNamePrefix opgeven
-De schaalset implementeert meerdere Vm's. Geef `computerNamePrefix`in plaats van elke VM-naam op te geven. De schaalset voegt een index toe aan het voor voegsel voor elke virtuele machine, zodat VM-namen `<computerNamePrefix>_<auto-generated-index>`het formulier hebben.
+De schaalset implementeert meerdere Vm's. Geef `computerNamePrefix`op in plaats van elke VM-naam op te geven. De schaalset voegt een index toe aan het voor voegsel voor elke virtuele machine, zodat de naam van de virtuele machine het formulier `<computerNamePrefix>_<auto-generated-index>`.
 
-In het volgende code fragment gebruikt u de para meters van voordat u de gebruikers naam en het wacht woord voor de beheerder instelt voor alle virtuele machines in de schaalset. Dit proces maakt gebruik `parameters` van de sjabloon functie. Deze functie gebruikt een teken reeks die opgeeft naar welke para meter moet worden verwezen en die de waarde voor die para meter uitvoert.
+In het volgende code fragment gebruikt u de para meters van voordat u de gebruikers naam en het wacht woord voor de beheerder instelt voor alle virtuele machines in de schaalset. Dit proces maakt gebruik van de functie `parameters`-sjabloon. Deze functie gebruikt een teken reeks die opgeeft naar welke para meter moet worden verwezen en die de waarde voor die para meter uitvoert.
 
 ```json
            "osProfile": {
@@ -171,9 +171,9 @@ In het volgende code fragment gebruikt u de para meters van voordat u de gebruik
 ### <a name="specify-vm-network-configuration"></a>VM-netwerk configuratie opgeven
 Specificeer ten slotte de netwerk configuratie voor de virtuele machines in de schaalset. In dit geval hoeft u alleen de ID op te geven van het subnet dat u eerder hebt gemaakt. Hiermee wordt de schaal ingesteld waarmee de netwerk interfaces in dit subnet worden geplaatst.
 
-U kunt de id van het virtuele netwerk met het subnet ophalen met behulp `resourceId` van de sjabloon functie. Deze functie neemt het type en de naam van een resource en retourneert de volledig gekwalificeerde id van die resource. Deze ID heeft de volgende notatie:`/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>`
+U kunt de ID van het virtuele netwerk met het subnet ophalen met behulp van de functie `resourceId`-sjabloon. Deze functie neemt het type en de naam van een resource en retourneert de volledig gekwalificeerde id van die resource. Deze ID heeft de volgende notatie: `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>`
 
-De id van het virtuele netwerk is echter niet voldoende. Geef het specifieke subnet op waar de virtuele machines voor de schaalset zich bevinden. U kunt dit doen door samen `/subnets/mySubnet` te voegen met de id van het virtuele netwerk. Het resultaat is de volledig gekwalificeerde ID van het subnet. Doe dit samen met de `concat` functie, die in een reeks teken reeksen neemt en die de samen voeging retourneert.
+De id van het virtuele netwerk is echter niet voldoende. Geef het specifieke subnet op waar de virtuele machines voor de schaalset zich bevinden. Als u dit wilt doen, moet u `/subnets/mySubnet` samen voegen met de ID van het virtuele netwerk. Het resultaat is de volledig gekwalificeerde ID van het subnet. Doe dit samen met de functie `concat`, die in een reeks teken reeksen neemt en die de samen voeging retourneert.
 
 ```json
            "networkProfile": {

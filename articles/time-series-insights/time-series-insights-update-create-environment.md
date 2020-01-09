@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: een Azure Time Series Insights-voorbeeld omgeving instellen'
-description: 'Zelf studie: meer informatie over het instellen van uw omgeving in Azure Time Series Insights preview.'
+title: 'Zelf studie: een voorbeeld omgeving instellen-Azure Time Series Insights | Microsoft Docs'
+description: 'Zelf studie: meer informatie over het instellen van een omgeving in Azure Time Series Insights preview.'
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,18 +8,18 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 11/11/2019
+ms.date: 12/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 49960ae91688b97a9d38a65e1b17fd277508b996
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 6adb48b9d6c490b60302f93101506ec53679ae4f
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114585"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530234"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Zelf studie: een Azure Time Series Insights-voorbeeld omgeving instellen
 
-In deze zelfstudie wordt u door het creatieproces van een Azure Time Series Insights Preview-omgeving op basis van betalen per gebruik geleid.
+Deze zelf studie leidt u door het proces van het maken van een Azure Time Series Insights preview-omgeving ( *betalen per gebruik* ) (PAYG).
 
 In deze zelfstudie leert u het volgende:
 
@@ -47,37 +47,41 @@ In deze sectie maakt u drie gesimuleerde apparaten die gegevens verzenden naar e
 
 1. Ga naar [de pagina Azure IoT-oplossingsverbeteringen](https://www.azureiotsolutions.com/Accelerators). Op de pagina worden enkele vooraf gedefinieerde voorbeelden weergegeven. Meld u aan met uw Azure-account. Selecteer vervolgens **Apparaatsimulatie**.
 
-   [pagina ![Azure IoT-oplossings versnellers](media/v2-update-provision/device-one-accelerator.png)](media/v2-update-provision/device-one-accelerator.png#lightbox)
+   [![pagina met accelerators voor Azure IoT-oplossing.](media/v2-update-provision/iot-solution-accelerators-landing-page.png)](media/v2-update-provision/iot-solution-accelerators-landing-page.png#lightbox)
 
-1. Selecteer **nu proberen**op de volgende pagina.
+1. Selecteer **nu proberen**op de volgende pagina. Voer vervolgens de vereiste para meters in op de pagina oplossing voor het maken van een **apparaat simulatie** .
 
-   [pagina simulatie van ![apparaat](media/v2-update-provision/device-two-try.png)](media/v2-update-provision/device-two-try.png#lightbox)
+   Parameter|Beschrijving
+   ---|---
+   **Implementatie naam** | Deze unieke waarde wordt gebruikt om een nieuwe resource groep te maken. De vermelde Azure-resources worden gemaakt en toegewezen aan de resourcegroep.
+   **Azure-abonnement** | Geef hetzelfde abonnement op dat is gebruikt voor het maken van uw Time Series Insights-omgeving in de vorige sectie.
+   **Implementatie opties** | Selecteer **nieuwe IOT hub inrichten** als u een nieuwe IOT-hub wilt maken die specifiek is voor deze zelf studie.
+   **Azure-locatie** | Geef dezelfde regio op die is gebruikt voor het maken van uw Time Series Insights-omgeving in de vorige sectie.
 
-1. Stel op de pagina oplossing voor het maken van een **apparaat simulatie** de volgende para meters in:
+   Wanneer u klaar bent, selecteert u **maken** om de Azure-resources van de oplossing in te richten. Het kan Maxi maal 20 minuten duren voordat dit proces is voltooid.
 
-    | Parameter | Actie |
-    | --- | --- |
-    | **Implementatie naam** | Voer een unieke waarde in voor een nieuwe resource groep. De vermelde Azure-resources worden gemaakt en toegewezen aan de resourcegroep. |
-    | **Azure-abonnement** | Selecteer het abonnement waar u uw Time Series Insights-omgeving gaat maken. |
-    | **Azure-locatie** | Selecteer de regio waar u uw Time Series Insights omgeving wilt opslaan. Houd er rekening mee dat de Device Simulator alleen wordt aangeboden in een beperkt aantal regio's. Als u de gewenste regio niet ziet, kunt u ervoor kiezen om alleen een locatie voor de zelf studie te selecteren en vervolgens een nieuwe omgeving voor de TSI te maken wanneer u klaar bent om over te stappen op uw volgende fase van op-b oarding.  |
-    | **Implementatie opties** | Selecteer **nieuwe IOT hub inrichten**. |
+   [![de simulatie oplossing voor apparaten in te richten.](media/v2-update-provision/iot-solution-accelerators-configuration.png)](media/v2-update-provision/iot-solution-accelerators-configuration.png#lightbox)
 
-    1. Selecteer **Maken**.
-    [pagina simulatie van ![apparaat](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
+1. Nadat het inrichten is voltooid, worden er twee updates weer gegeven die aangeven dat de implementatie status is verplaatst van **inrichting** naar **gereed**. 
 
-1. Na ongeveer 20 minuten is uw oplossings versneller klaar.
+   >[!IMPORTANT]
+   > Voer uw oplossings versneller nog niet in. Laat deze webpagina geopend omdat u deze later weer gaat gebruiken.
 
-    [pagina simulatie van ![apparaat](media/v2-update-provision/device-two-ready.png)](media/v2-update-provision/device-two-ready.png#lightbox)
+   [inrichting van de inrichtings oplossing voor ![Device simulatie is voltooid.](media/v2-update-provision/iot-solution-accelerator-ready.png)](media/v2-update-provision/iot-solution-accelerator-ready.png#lightbox)
+
+1. Inspecteer nu de zojuist gemaakte resources in het Azure Portal. Op de pagina **resource groepen** ziet u dat er een nieuwe resource groep is gemaakt met behulp van de **oplossings naam** die in de laatste stap is opgenomen. Noteer de resources die zijn gemaakt voor de simulatie van het apparaat.
+
+   [![simulatie bronnen voor apparaten.](media/v2-update-provision/tsi-device-sim-solution-resources.png)](media/v2-update-provision/tsi-device-sim-solution-resources.png#lightbox)
 
 ## <a name="create-a-preview-payg-environment"></a>Een voor beeld-PAYG-omgeving maken
 
 In deze sectie wordt beschreven hoe u een Azure Time Series Insights-voorbeeld omgeving maakt en deze verbindt met de IoT-hub die is gemaakt met de [Azure Portal](https://portal.azure.com/)van de IOT-oplossings versneller.
 
-1. Meld u aan bij de Azure-portal met uw Azure-abonnementsaccount.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met uw account voor uw Azure-abonnement. 
+1. Selecteer linksboven **+ Een resource maken**. 
+1. Selecteer de categorie **Internet of Things** en vervolgens **Time Series Insights**. 
 
-1. Selecteer **een resource maken** > **Internet of Things** > **Time Series Insights**.
-
-   [![Selecteer Internet of Things en selecteer vervolgens Time Series Insights](media/v2-update-provision/payg-one-azure.png)](media/v2-update-provision/payg-one-azure.png#lightbox)
+   [![de resource van de Time Series Insights omgeving te selecteren.](media/v2-update-provision/tsi-create-new-environment.png)](media/v2-update-provision/tsi-create-new-environment.png#lightbox)
 
 1. Stel in het deel venster **Time Series Insights omgeving maken** op het tabblad **basis beginselen** de volgende para meters in:
 
@@ -88,15 +92,16 @@ In deze sectie wordt beschreven hoe u een Azure Time Series Insights-voorbeeld o
     | **Resourcegroep** | Selecteer een bestaande resource groep of maak een nieuwe resource groep voor de resource van de Azure Time Series Insights preview-omgeving. Een resourcegroep is een container voor Azure-resources. Een best practice is het gebruik van dezelfde resource groep als de andere IoT-resources die door de Device Simulator zijn gemaakt. |
     | **Locatie** | Selecteer een regio voor het Data Center voor uw Azure Time Series Insights-voorbeeld omgeving. Om extra latentie te voor komen, kunt u het beste uw Azure Time Series Insights-voorbeeld omgeving maken in dezelfde regio als uw IoT-hub die is gemaakt door de Device Simulator. |
     | **Laag** |  Selecteer **payg** (*betalen naar*gebruik). Dit is de SKU voor het Azure Time Series Insights Preview-product. |
-    | **Eigenschaps-ID** | Voer een unieke waarde in voor uw time series-instantie. De waarde die u invoert in het vak **eigenschap-ID** kan later niet worden gewijzigd. Voer voor deze zelf studie **iothub-Connection-apparaat-id**in. Zie [Aanbevolen procedures voor het kiezen van een time series-id voor](./time-series-insights-update-how-to-id.md)meer informatie over de tijd reeks-id. |
+    | **Eigenschapsnaam** | Voer een unieke waarde in voor uw time series-instantie. De waarde die u invoert in het vak **eigenschap-ID** kan later niet worden gewijzigd. Voer voor deze zelf studie ***iothub-Connection-apparaat-id***in. Zie [Aanbevolen procedures voor het kiezen van een time series-id voor](./time-series-insights-update-how-to-id.md)meer informatie over de tijd reeks-id. |
     | **Naam van opslagaccount** | Voer een globaal unieke naam in voor een nieuw opslag account.|
-    |**Warme Store inschakelen**|Selecteer **Ja** om warme Store in te scha kelen.|
+    |**Warme Store inschakelen**|Selecteer **Ja** om warme Store in te scha kelen. U kunt later terugkeren en deze instelling inschakelen. |
     |**Bewaren van gegevens (in dagen)**|Kies de standaard optie van 7 dagen. |
 
     Selecteer **volgende: gebeurtenis bron**.
 
-   [![deel venster voor het maken van een time series Insights omgeving](media/v2-update-provision/payg-two-1-create.png)](media/v2-update-provision/payg-two-1-create.png#lightbox)
-   [![deel venster voor het maken van een time series Insights omgeving](media/v2-update-provision/payg-two-2-create.png)](media/v2-update-provision/payg-two-2-create.png#lightbox)
+   [![nieuwe Time Series Insights omgevings configuratie.](media/v2-update-provision/tsi-environment-configuration.png)](media/v2-update-provision/tsi-environment-configuration.png#lightbox)
+
+   [de tijd reeks-ID voor de omgeving ![configureren.](media/v2-update-provision/tsi-time-series-id-selection.png)](media/v2-update-provision/tsi-time-series-id-selection.png#lightbox)
 
 1. Stel op het tabblad **gebeurtenis bron** de volgende para meters in:
 
@@ -109,51 +114,48 @@ In deze sectie wordt beschreven hoe u een Azure Time Series Insights-voorbeeld o
    | **Abonnement** | Selecteer het abonnement dat u voor de Device Simulator hebt gebruikt. |
    | **Naam van de IoT Hub** | Selecteer de naam van de IoT-hub die u hebt gemaakt voor de Device Simulator. |
    | **IoT Hub-toegangsbeleid** | Selecteer **iothubowner**. |
-   | **IoT Hub consumenten groep** | Selecteer **Nieuw**, voer een unieke naam in en selecteer vervolgens **Toevoegen**. De Consumer groep moet een unieke waarde zijn in Azure Time Series Insights preview. |
+   | **IoT Hub consumenten groep** | Selecteer **Nieuw**, voer een unieke naam in en selecteer **+ toevoegen**. De Consumer groep moet een unieke waarde zijn in Azure Time Series Insights preview. |
    | **Timestamp-eigenschap** | Deze waarde wordt gebruikt om de eigenschap **Time Stamp** te identificeren in de inkomende telemetriegegevens. Voor deze zelf studie laat u dit vak leeg. In deze simulator wordt de binnenkomende timestamp van IoT Hub gebruikt waarop Time Series Insights standaard is ingesteld. |
 
    Selecteer **Controleren + maken**.
 
-   [![een gebeurtenis bron configureren](media/v2-update-provision/payg-five-event-source.png)](media/v2-update-provision/payg-five-event-source.png#lightbox)
+   [![de gemaakte IoT-hub als een gebeurtenis bron configureren.](media/v2-update-provision/tsi-configure-event-source.png)](media/v2-update-provision/tsi-configure-event-source.png#lightbox)
 
 1. Selecteer **Maken**.
 
-    [pagina ![bekijken en maken, met knop maken](media/v2-update-provision/payg-six-review.png)](media/v2-update-provision/payg-six-review.png#lightbox)
+    [![bekijken + pagina maken met de knop maken.](media/v2-update-provision/tsi-environment-confirmation.png)](media/v2-update-provision/tsi-environment-confirmation.png#lightbox)
 
     U kunt de status van uw implementatie bekijken:
 
-    [![melding dat de implementatie is voltooid](media/v2-update-provision/payg-seven-deploy.png)](media/v2-update-provision/payg-seven-deploy.png#lightbox)
+    [![melding dat de implementatie is voltooid.](media/v2-update-provision/tsi-deployment-notification.png)](media/v2-update-provision/tsi-deployment-notification.png#lightbox)
 
 1. U hebt standaard toegang tot uw Azure Time Series Insights-voorbeeld omgeving als u eigenaar bent van het Azure-abonnement. Controleer of u toegang hebt:
 
    1. Zoek naar de resource groep en selecteer vervolgens de zojuist gemaakte Azure Time Series Insights voorbeeld omgeving. 
-      [Geselecteerde omgeving ![](media/v2-update-provision/payg-eight-environment.png)](media/v2-update-provision/payg-eight-environment.png#lightbox)
 
-   1. Selecteer op de pagina Azure Time Series Insights preview **Data Access policies**: [![Data Access policies (beleid voor gegevens toegang](media/v2-update-provision/payg-nine-data-access.png)](media/v2-update-provision/payg-nine-data-access.png#lightbox) )
+      [![uw omgeving selecteren en weer geven.](media/v2-update-provision/verify-tsi-resource-in-group.png)](media/v2-update-provision/verify-tsi-resource-in-group.png#lightbox)
+
+   1. Selecteer op de pagina Azure Time Series Insights preview **Data Access policies**:
+
+      [![het verifiëren van het beleid voor gegevens toegang.](media/v2-update-provision/tsi-data-access-panel.png)](media/v2-update-provision/tsi-data-access-panel.png#lightbox)
 
    1. Controleer of uw referenties worden weer gegeven:
 
-      [referenties van ![lijst](media/v2-update-provision/payg-ten-verify.png)](media/v2-update-provision/payg-ten-verify.png#lightbox)
-
-   Als uw referenties niet worden weer gegeven, moet u uzelf toestemming geven voor toegang tot de omgeving door toe te voegen en te zoeken naar uw referenties. Raadpleeg [Gegevenstoegang verlenen](./time-series-insights-data-access.md) voor meer informatie over het instellen van machtigingen.
+      Als uw referenties niet worden weer gegeven, moet u uzelf toestemming geven voor toegang tot de omgeving door toe te voegen en te zoeken naar uw referenties. Raadpleeg [Gegevenstoegang verlenen](./time-series-insights-data-access.md) voor meer informatie over het instellen van machtigingen.
 
 ## <a name="stream-data"></a>Gegevens streamen
 
 Nu u uw Time Series Insights-omgeving hebt geïmplementeerd, begint u gegevens te streamen voor analyse.
 
-1. Ga terug naar de [pagina met accelerators voor Azure IOT-oplossingen](https://www.azureiotsolutions.com/Accelerators). Zoek uw oplossing in het dash board van de oplossings versneller en selecteer vervolgens **starten**:
+1. Ga terug naar het dashboard [Oplossingsverbeteringen](https://www.azureiotsolutions.com/Accelerators#dashboard). Meld u indien nodig opnieuw aan met behulp van hetzelfde Azure-account dat u in deze zelf studie hebt gebruikt. Selecteer uw ' oplossing voor apparaten ' en **Ga vervolgens naar uw oplossings versneller** om uw geïmplementeerde oplossing te starten.
 
-    [de oplossing voor het simuleren van apparaten ![starten](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
+   [dash board voor ![oplossings versnellers.](media/v2-update-provision/iot-solution-accelerator-ready.png)](media/v2-update-provision/iot-solution-accelerator-ready.png#lightbox)
 
-1. Selecteer **Ga naar uw oplossings versneller**.
+1. De web-app voor Device simulatie begint met de vraag of u de webtoepassing wilt verlenen voor het **Aanmelden en de machtiging voor uw profiel te lezen** . Met deze machtiging kan de toepassing de gebruikers profiel gegevens ophalen die nodig zijn om de werking van de toepassing te ondersteunen.
 
-    [de oplossing voor het simuleren van apparaten ![starten](media/v2-update-provision/device-accelerator.png)](media/v2-update-provision/device-accelerator.png#lightbox)
+   [toestemming voor webtoepassingen voor simulatie van ![apparaat.](media/v2-update-provision/sawa-signin-consent.png)](media/v2-update-provision/sawa-signin-consent.png#lightbox)
 
-1. U wordt omgeleid naar de pagina **Microsoft Azure IoT-apparaatsimulatie**. Selecteer in de rechter bovenhoek van de pagina **nieuwe simulatie**.
-
-    [![pagina Azure IoT-simulatie](media/v2-update-provision/device-four-iot-sim-page.png)](media/v2-update-provision/device-four-iot-sim-page.png#lightbox)
-
-1. Stel in het deel venster **simulatie instellingen** de volgende para meters in:
+1. Selecteer **+ nieuwe simulatie**. Nadat de pagina **simulatie installatie** is geladen, voert u de vereiste para meters in.
 
     | Parameter | Actie |
     | --- | --- |
@@ -163,48 +165,43 @@ Nu u uw Time Series Insights-omgeving hebt geïmplementeerd, begint u gegevens t
     | **Apparaatmodel** | Klik op + **een apparaattype toevoegen** <br />**Naam**: Geef **Lift**op. <br />**Bedrag**: Voer **3**in. <br /> De overige standaard waarden behouden |
     | **Doel-IoT-hub** | Stel **Vooraf ingerichte IoT-hub gebruiken** in. |
 
-    [![para meters die moeten worden ingesteld](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
+    [![para meters configureren en starten.](media/v2-update-provision/tsi-launch-solution-accelerator.png)](media/v2-update-provision/tsi-launch-solution-accelerator.png#lightbox)
 
     Selecteer **simulatie starten**.
 
     In het dash board voor Device simulatie ziet u **actieve apparaten** en **Totaal aantal berichten**.
 
-    [![Azure IoT-simulatie dashboard](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
+    [![Azure IoT-simulatie dashboard.](media/v2-update-provision/tsi-see-active-devices-and-messages.png)](media/v2-update-provision/tsi-see-active-devices-and-messages.png#lightbox)
 
-## <a name="analyze-data"></a>Gegevens analyseren
+## <a name="analyze-data"></a>Analyseer data
 
 In deze sectie voert u een eenvoudige analyse uit op uw tijdreeksgegevens met de [verkenner van Azure Time Series Insights Preview](./time-series-insights-update-explorer.md).
 
 1. Ga naar de verkenner van Azure Time Series Insights Preview door de URL te selecteren op de resourcepagina in [Azure Portal](https://portal.azure.com/).
 
-    [De URL van de Time Series Insights preview Explorer ![](media/v2-update-provision/analyze-one-portal.png)](media/v2-update-provision/analyze-one-portal.png#lightbox)
+    [![de Time Series Insights preview Explorer-URL.](media/v2-update-provision/tsi-select-explorer-url.png)](media/v2-update-provision/tsi-select-explorer-url.png#lightbox)
 
-1. In de Time Series Insights Explorer ziet u een balk die de bovenkant van het scherm beslaat. Dit is de beschikbaarheids kiezer. Zorg ervoor dat er ten minste twee 2 min. zijn geselecteerd en vouw, indien nodig, het tijds bestek uit door de selectie grepen naar links en rechts te slepen.
+1. In de Time Series Insights Explorer ziet u een balk die de bovenkant van het scherm beslaat. Dit is de beschikbaarheids kiezer. Zorg ervoor dat er ten minste twee m is geselecteerd en vouw, indien nodig, het tijds bestek uit door de selectie grepen naar links en rechts te slepen.
 
 1. U ziet **nu de time series-exemplaren** aan de linkerkant.
 
+    [Lijst met niet-bovenliggende instanties ![.](media/v2-update-provision/tsi-explorer-unparented-instances.png)](media/v2-update-provision/tsi-explorer-unparented-instances.png#lightbox)
 
-    [Lijst met niet-bovenliggende instanties ![](media/v2-update-provision/analyze-two-unparented.png)](media/v2-update-provision/analyze-two-unparented.png#lightbox)
+1. Selecteer de eerste-time series-instantie. Selecteer vervolgens **weer geven temperatuur**.
 
-1. Selecteer de eerste keer dat de reeks instantie is. Selecteer vervolgens **Druk tonen**.
-
-    [![geselecteerde time series-instantie met menu opdracht om de gemiddelde druk weer te geven](media/v2-update-provision/analyze-three-show-pressure.png)](media/v2-update-provision/analyze-three-show-pressure.png#lightbox)
+    [![geselecteerde time series-instantie met menu opdracht om de gemiddelde Tempe ratuur weer te geven.](media/v2-update-provision/select-instance-and-temperature.png)](media/v2-update-provision/select-instance-and-temperature.png#lightbox)
 
     Er wordt een tijd reeks diagram weer gegeven. Wijzig het **interval** in **30s**.
 
-    [diagram van ![tijd reeks](media/v2-update-provision/analyze-four-chart.png)](media/v2-update-provision/analyze-four-chart.png#lightbox)
+1. Herhaal de vorige stap met de andere twee exemplaren van de tijd reeks, zodat u alle drie hebt, zoals wordt weer gegeven in dit diagram:
 
-1. Herhaal stap 3 met de andere twee reeksen instanties zodat u alle drie hebt, zoals wordt weer gegeven in dit diagram:
+    [![grafiek voor alle tijd reeksen.](media/v2-update-provision/tsi-explorer-add-three-instances.png)](media/v2-update-provision/tsi-explorer-add-three-instances.png#lightbox)
 
-    [![grafiek voor alle tijd reeksen](media/v2-update-provision/analyze-five-chart.png)](media/v2-update-provision/analyze-five-chart.png#lightbox)
+1. Selecteer de tijdsinterval kiezer in de rechter bovenhoek. Hier kunt u specifieke begin-en eind tijden voor de milliseconde selecteren of kiezen uit vooraf geconfigureerde opties, zoals de **laatste 30 minuten**. U kunt ook de standaardtijd zone wijzigen.
 
-1. Selecteer de tijdsinterval kiezer in de rechter bovenhoek. Hier kunt u specifieke begin-en eind tijden voor de milliseconde selecteren of kiezen uit vooraf geconfigureerde opties zoals vorig uur. U kunt ook de standaardtijd zone wijzigen.
+    [![het tijds bereik in te stellen op de laatste 30 minuten.](media/v2-update-provision/tsi-explorer-thirty-minute-time-range.png)](media/v2-update-provision/tsi-explorer-thirty-minute-time-range.png#lightbox)
 
-    [![het tijds bereik instellen op een uur](media/v2-update-provision/analyze-six-time.png)](media/v2-update-provision/analyze-six-time.png#lightbox)
-
-    Hieronder ziet u een scherm opname van het deel venster grafiek nadat de simulatie voor een uur is uitgevoerd:
-
-    [deel venster voor grafiek ![](media/v2-update-provision/analyze-seven-time.png)](media/v2-update-provision/analyze-seven-time.png#lightbox)
+    De oplossings versneller in de **laatste 30 minuten** wordt nu weer gegeven in de time series Insights Explorer.
 
 ## <a name="define-and-apply-a-model"></a>Een model definiëren en toepassen
 
@@ -212,11 +209,9 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
 
 1. Selecteer het tabblad **Model** in de verkenner:
 
-   [![tabblad model in de Explorer](media/v2-update-provision/define-one-model.png)](media/v2-update-provision/define-one-model.png#lightbox)
+   [![het tabblad model in de Explorer te bekijken.](media/v2-update-provision/tsi-select-model-view.png)](media/v2-update-provision/tsi-select-model-view.png#lightbox)
 
-1. Selecteer **toevoegen**op het tabblad **typen** .
-
-   [De knop toevoegen ![voor typen](media/v2-update-provision/define-two-add.png)](media/v2-update-provision/define-two-add.png#lightbox)
+   Op het tabblad **typen** selecteert u **+ toevoegen**.
 
 1. Voer de volgende para meters in:
 
@@ -225,11 +220,9 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
     | **Naam** | **Lift** invoeren |
     | **Beschrijving** | Geef **een type definitie op voor lift** |
 
-    [De knop toevoegen ![voor typen](media/v2-update-provision/define-three-properties.png)](media/v2-update-provision/define-three-properties.png#lightbox)
+1. Selecteer vervolgens het tabblad **variabelen** . 
 
-1. Selecteer vervolgens het tabblad **variabelen** . [![tabblad variabelen selecteren](media/v2-update-provision/define-four-variables.png)](media/v2-update-provision/define-four-variables.png#lightbox)
-
-1. Selecteer **+ variabele toevoegen** en vul de volgende waarden in voor de eerste variabele van het type lift. U maakt drie variabelen in totaal.
+   Selecteer **+ variabele toevoegen** en vul de volgende waarden in voor de eerste variabele van het type lift. U maakt drie variabelen in totaal.
 
     | Parameter | Actie |
     | --- | --- |
@@ -238,11 +231,7 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
     | **Waarde** | Selecteren uit vooraf ingesteld: Selecteer **Tempe ratuur (dubbel)** . <br /> Opmerking: het kan enkele minuten duren voordat de **waarde** automatisch wordt ingevuld nadat Azure time series Insights preview gebeurtenissen ontvangt.|
     | **Aggregatiebewerking** | Vouw **Geavanceerde opties**uit. <br /> Selecteer **GEMIDDELDE**. |
 
-    [![selecties voor het definiëren van de Tempe ratuur](media/v2-update-provision/define-five-variable.png)](media/v2-update-provision/define-five-variable.png#lightbox)
-
-    Selecteer **Toepassen**.
-
-    Selecteer **+ variabele opnieuw toevoegen** en stel de volgende waarden in:
+    Selecteer **Toepassen**. Daarna moet u vervolgens de **variabele opnieuw toevoegen** en de volgende waarden instellen:
 
     | Parameter | Actie |
     | --- | --- |
@@ -251,11 +240,7 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
     | **Waarde** | Selecteer een van de voor instellingen: **trillen (dubbel)** selecteren. <br /> Opmerking: het kan enkele minuten duren voordat de **waarde** automatisch wordt ingevuld nadat Azure time series Insights preview gebeurtenissen ontvangt.|
     | **Aggregatiebewerking** | Vouw **Geavanceerde opties**uit. <br /> Selecteer **GEMIDDELDE**. |
 
-    [![selecties voor het definiëren van trillingen](media/v2-update-provision/define-five-vibration.png)](media/v2-update-provision/define-five-vibration.png#lightbox)
-
-    Selecteer **Toepassen**.
-
-    Selecteer **+ variabele opnieuw toevoegen** en stel de volgende waarden in voor de derde en laatste variabele:
+    Selecteer **Toepassen**. Daarna moet u vervolgens opnieuw een **variabele toevoegen** en de volgende waarden instellen voor de derde en laatste variabele:
 
     | Parameter | Actie |
     | --- | --- |
@@ -265,21 +250,17 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
     | **Verschillende** | <span style="text-decoration: underline">Label</span>  - <span style="text-decoration: underline">waarden</span> <br /> Lager: 1, 2, 3, 4 <br /> Midden: 5, 6, 7, 8, 9 <br /> Upper: 10, 11, 12, 13, 14, 15 |
     | **Standaard categorie** | **Onbekend** invoeren |
 
-    [![selecties voor het definiëren van trillingen](media/v2-update-provision/define-five-floor.png)](media/v2-update-provision/define-five-floor.png#lightbox)
+    [![type variabelen toevoegen.](media/v2-update-provision/tsi-add-type-variables.png)](media/v2-update-provision/tsi-add-type-variables.png#lightbox)
 
-    Selecteer **Toepassen**. U ziet nu drie variabelen die zijn gemaakt:
+    Selecteer **Toepassen**.
 
-    [![selecties voor het definiëren van trillingen](media/v2-update-provision/define-five-floor2.png)](media/v2-update-provision/define-five-floor2.png#lightbox)
+1. Selecteer **Opslaan**. U ziet nu drie variabelen die zijn gemaakt.
 
-   Selecteer **Opslaan**. U ziet het **type** dat is gemaakt:
+    [Zie ![na het toevoegen van het type in de model weergave.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 
-    [![selecties voor het definiëren van trillingen](media/v2-update-provision/define-five-floor3.png)](media/v2-update-provision/define-five-floor3.png#lightbox)
-
-1. Selecteer het tabblad **hiërarchieën** . Selecteer **+ toevoegen**.
-
-    [tabblad ![hiërarchieën met de knop toevoegen](media/v2-update-provision/define-seven-hierarchy.png)](media/v2-update-provision/define-seven-hierarchy.png#lightbox)
-
-1. Stel in het deel venster **hiërarchie bewerken** de volgende para meters in:
+1. Selecteer het tabblad **hiërarchieën** . Selecteer vervolgens **+ toevoegen**.
+   
+   Stel in het deel venster **hiërarchie bewerken** de volgende para meters in:
 
    | Parameter | Actie |
    | --- | ---|
@@ -288,11 +269,7 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
 
    Selecteer **Opslaan**.
 
-    [![hiërarchie velden met de knop maken](media/v2-update-provision/define-eight-add-hierarchy.png)](media/v2-update-provision/define-eight-add-hierarchy.png#lightbox)
-
-   U kunt de gemaakte hiërarchie bekijken:
-
-    [Informatie over de hiërarchie ![](media/v2-update-provision/define-nine-created.png)](media/v2-update-provision/define-nine-created.png#lightbox)
+   [![uw nieuwe hiërarchie weer geven in de model weergave.](media/v2-update-provision/tsi-add-hierarchy-and-view.png)](media/v2-update-provision/tsi-add-hierarchy-and-view.png#lightbox)
 
 1. Navigeer naar **instanties**. Klik onder **acties** uiterst rechts op het potlood pictogram om de eerste instantie te bewerken met de volgende waarden:
 
@@ -302,9 +279,7 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
     | **Naam** | Geef **lift 1** op|
     | **Beschrijving** | **Instantie voor lift 1** invoeren |
 
-    [![de knop bewerken voor een exemplaar selecteren](media/v2-update-provision/define-ten-edit.png)](media/v2-update-provision/define-ten-edit.png#lightbox)
-
-    Navigeer naar **exemplaar velden** en voer het volgende in:
+    Navigeer naar **exemplaar velden** en voer de volgende waarden in:
 
     | Parameter | Actie |
     | --- | --- |
@@ -313,13 +288,11 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
     | **Plaats** | **Seattle** invoeren |
     | **Bouwen** | **Spatie naald** invoeren |
 
-    [![de knop bewerken voor een exemplaar selecteren](media/v2-update-provision/define-ten2-edit.png)](media/v2-update-provision/define-ten2-edit.png#lightbox)
-
     Selecteer **Opslaan**.
 
-1. Herhaal stap 8 met de andere twee exemplaren met de volgende waarden:
+1. Herhaal de vorige stap met de andere twee exemplaren terwijl u de volgende waarden gebruikt:
 
-    <span style="text-decoration: underline;">Voor Lift 2</span>:
+    **Voor Lift 2:**
 
     | Parameter | Actie |
     | --- | --- |
@@ -331,7 +304,7 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
     | **Plaats** | **Seattle** invoeren |
     | **Bouwen** | Voer het **Pacific Science Center** in |
 
-    <span style="text-decoration: underline;">Voor lift 3</span>:
+    **Voor lift 3:**
 
     | Parameter | Actie |
     | --- | --- |
@@ -343,19 +316,19 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
     | **Plaats** | Voer **New York** in |
     | **Bouwen** | **Empire-status gebouw** invoeren |
 
+    [![de bijgewerkte exemplaren weer te geven.](media/v2-update-provision/iot-solution-accelerator-instances.png)](media/v2-update-provision/iot-solution-accelerator-instances.png#lightbox)
+
 1. Ga terug naar het tabblad **analyseren** om het deel venster voor grafieken weer te geven. Vouw onder **locatie hiërarchie**alle hiërarchie niveaus uit om de time series-exemplaren weer te geven:
 
-   [Het tabblad analyseren ![](media/v2-update-provision/define-twelve.png)](media/v2-update-provision/define-twelve.png#lightbox)
+    [![alle hiërarchieën weer geven in de grafiek weergave.](media/v2-update-provision/iot-solution-accelerator-view-hierarchies.png)](media/v2-update-provision/iot-solution-accelerator-view-hierarchies.png#lightbox)
 
 1. Selecteer onder **Pacific Science Center**de time series instance **Lift 2**en selecteer vervolgens **gemiddelde Tempe ratuur weer geven**.
 
-    [![time series-instantie gemiddelde Tempe ratuur weer geven](media/v2-update-provision/define-eleven-temperature.png)](media/v2-update-provision/define-eleven-temperature.png#lightbox)
-
 1. Voor hetzelfde exemplaar, **Lift 2**, selecteert u **basis weer geven**.
 
-    [![time series-instantie Floor weer geven](media/v2-update-provision/define-twelve-floor.png)](media/v2-update-provision/define-twelve-floor.png#lightbox)
-
     Met uw categorische-variabele kunt u bepalen hoeveel tijd de lift heeft besteed aan de bovenste, onderste en middelste vloer.
+
+    [![Lift 2 visualiseren met hiërarchie en gegevens.](media/v2-update-provision/iot-solution-accelerator-elevator-two.png)](media/v2-update-provision/iot-solution-accelerator-elevator-two.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -366,7 +339,7 @@ Nu u de zelf studie hebt voltooid, kunt u de resources die u hebt gemaakt opscho
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:  
+In deze zelfstudie hebt u het volgende geleerd:  
 
 * Een verbetering voor apparaatsimulatie maken en gebruiken.
 * Een Time Series Insights Preview-omgeving op basis van betalen per gebruik maken.

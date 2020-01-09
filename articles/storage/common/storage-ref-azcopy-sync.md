@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 9bfe88c34c78d18f2f5aefb8ae6946b9786030ad
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6ecba85a859e902922dfa2b7563a3ceb96a9ef4d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023499"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457454"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -106,8 +106,9 @@ Eén BLOB synchroniseren:
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
+```
 
-Sync a virtual directory:
+Een virtuele map synchroniseren:
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=true
@@ -137,6 +138,8 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 **--Delete-doel** teken reeks bepaalt of extra bestanden van de doel locatie die niet aanwezig zijn op de bron worden verwijderd. Kan worden ingesteld op True, False of prompt. Als deze instelling is ingesteld op vragen, wordt de gebruiker gevraagd een vraag te stellen voordat bestanden en blobs voor verwijdering worden gepland. (standaard ' false '). (standaard ingesteld op ' false ')
 
 **--exclude-kenmerken** teken reeks (alleen Windows) bestanden uitsluiten waarvan de kenmerken overeenkomen met de kenmerk lijst. Bijvoorbeeld: A; Z N
+
+**--exclude-** teken reeks van het pad deze paden uitsluiten bij het kopiëren. Deze optie biedt geen ondersteuning voor joker tekens (*). Hiermee wordt het relatieve pad voor voegsel gecontroleerd (bijvoorbeeld: myFolder; myFolder/subDirName/file. PDF). Bij gebruik in combi natie met account-traversal bevatten paden geen container naam.
 
 **--exclude-patroon** teken reeks bestanden uitsluiten waarbij de naam overeenkomt met de patroon lijst. Bijvoorbeeld: *. jpg;* . PDF; exactenaam
 

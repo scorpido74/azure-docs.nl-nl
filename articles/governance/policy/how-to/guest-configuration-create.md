@@ -1,14 +1,14 @@
 ---
 title: Gast configuratie beleidsregels maken
 description: Meer informatie over het maken van een Azure Policy gast configuratie beleid voor Windows-of Linux-Vm's met Azure PowerShell.
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: d31c03f05f3a27207eb4c184b78cb531f8bb43d6
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: f2e611998e42510eccde64ff6f945f58133fc4e9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873077"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608521"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Gast configuratie beleidsregels maken
 
@@ -24,6 +24,9 @@ Gebruik de volgende acties om uw eigen configuratie te maken voor het valideren 
 ## <a name="add-the-guestconfiguration-resource-module"></a>De GuestConfiguration-resource module toevoegen
 
 Als u een gast configuratie beleid wilt maken, moet u de resource module toevoegen. Deze resource module kan worden gebruikt met lokaal geïnstalleerde Power shell, met [Azure Cloud shell](https://shell.azure.com), of met de [Azure PowerShell core docker-installatie kopie](https://hub.docker.com/r/azuresdk/azure-powershell-core).
+
+> [!NOTE]
+> Hoewel de **GuestConfiguration** -module in de bovenstaande omgevingen werkt, moeten de stappen voor het compileren van een DSC-configuratie worden uitgevoerd in Windows power shell 5,1.
 
 ### <a name="base-requirements"></a>Basisvereisten
 
@@ -59,6 +62,12 @@ Als voor uw configuratie alleen resources zijn vereist die zijn ingebouwd met de
 ### <a name="requirements-for-guest-configuration-custom-resources"></a>Vereisten voor aangepaste gast configuratie-resources
 
 Wanneer een gast configuratie een machine controleert, wordt `Test-TargetResource` eerst uitgevoerd om te bepalen of deze in de juiste staat is. De Booleaanse waarde die door de functie wordt geretourneerd, bepaalt of de Azure Resource Manager status voor de gast toewijzing compatibel/niet-compatibel moet zijn. Als de Boole-waarde `$false` voor een resource in de configuratie, wordt `Get-TargetResource`uitgevoerd door de provider. Als de Booleaanse waarde `$true` dan wordt `Get-TargetResource` niet aangeroepen.
+
+#### <a name="configuration-requirements"></a>Configuratie vereisten
+
+De enige vereiste voor gast configuratie voor het gebruik van een aangepaste configuratie is de naam van de configuratie die consistent is.  Dit omvat de naam van het zip-bestand voor het inhouds pakket, de configuratie naam in het MOF-bestand dat is opgeslagen in het inhouds pakket en de configuratie naam die in ARM wordt gebruikt als de naam van de gast toewijzing.
+
+#### <a name="get-targetresource-requirements"></a>Vereisten voor Get-TargetResource
 
 De functie `Get-TargetResource` heeft speciale vereisten voor gast configuratie die niet nodig is voor de configuratie van de desired state van Windows.
 
@@ -96,7 +105,7 @@ De DSC-configuratie voor gast configuratie in Linux maakt gebruik van de `ChefIn
 
 In het volgende voor beeld wordt een configuratie met de naam **baseline**gemaakt, wordt de resource module **GuestConfiguration** geïmporteerd en wordt de `ChefInSpecResource` resource de naam van de Inspec-definitie ingesteld op **linux-patch-Baseline**:
 
-```azurepowershell-interactive
+```powershell
 # Define the DSC configuration and import GuestConfiguration
 Configuration baseline
 {
@@ -120,7 +129,7 @@ De DSC-configuratie voor Azure Policy gast configuratie wordt alleen gebruikt do
 
 In het volgende voor beeld wordt een configuratie met de naam **AuditBitLocker**gemaakt, wordt de **GuestConfiguration** -resource module geïmporteerd en wordt de `Service` resource gebruikt om te controleren op een actieve service:
 
-```azurepowershell-interactive
+```powershell
 # Define the DSC configuration and import GuestConfiguration
 Configuration AuditBitLocker
 {
@@ -298,7 +307,7 @@ New-GuestConfigurationPolicy
 
 Voor Linux-beleid voegt u de eigenschap **AttributesYmlContent** in uw configuratie toe en overschrijft u de waarden dienovereenkomstig. De gast configuratie agent maakt automatisch het YaML-bestand dat wordt gebruikt door de specificatie voor het opslaan van kenmerken. Zie onderstaand voorbeeld.
 
-```azurepowershell-interactive
+```powershell
 Configuration FirewalldEnabled {
 
     Import-DscResource -ModuleName 'GuestConfiguration'
@@ -403,7 +412,7 @@ Een goede referentie voor het maken van GPG-sleutels voor gebruik met Linux-mach
 
 Nadat de inhoud is gepubliceerd, voegt u een tag met de naam `GuestConfigPolicyCertificateValidation` en waarde `enabled` toe aan alle virtuele machines waarvoor ondertekening van programma code vereist is. Deze tag kan op schaal worden geleverd met behulp van Azure Policy. Zie de [Tags Toep assen en het voor beeld van de standaard waarde](../samples/apply-tag-default-value.md) . Zodra deze tag is geïmplementeerd, maakt de beleids definitie die is gegenereerd met de `New-GuestConfigurationPolicy` cmdlet de vereiste via de gast configuratie-extensie.
 
-## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>EVALUATIE Problemen met toewijzingen van gast configuratie beleid oplossen
+## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Problemen met toewijzing van gast configuratie beleid oplossen (preview-versie)
 
 Er is een hulp programma beschikbaar in de preview-versie om te helpen bij het oplossen van problemen Azure Policy toewijzing van gast configuraties. Het hulp programma is in Preview en gepubliceerd op de PowerShell Gallery als module naam [gast configuratie probleem Oplosser](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 738c0cf8c9fea61bedb53aa5f6c9bde089bac5f7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c51469997af23be7a5e1b88677ecadb37e10ac64
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930057"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440562"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Gegevens kopiëren van Netezza met behulp van Azure Data Factory
 
@@ -56,7 +56,7 @@ De volgende eigenschappen worden ondersteund voor de service Netezza gekoppeld:
 | Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De **type** eigenschap moet worden ingesteld op **Netezza**. | Ja |
-| connectionString | Een ODBC-verbindingsreeks verbinding maken met Netezza. <br/>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. U kunt ook wacht woord in Azure Key Vault plaatsen en de `pwd` configuratie uit de connection string halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja |
+| connectionString | Een ODBC-verbindingsreeks verbinding maken met Netezza. <br/>U kunt ook wacht woord in Azure Key Vault plaatsen en de `pwd` configuratie uit de connection string halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja |
 | connectVia | De [Integration Runtime](concepts-integration-runtime.md) gebruiken om te verbinden met het gegevensarchief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Indien niet opgegeven, wordt de standaard Azure Integration Runtime wordt gebruikt. |Nee |
 
 Een gebruikelijke verbindingsreeks is `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. De volgende tabel bevat meer eigenschappen die u kunt instellen:
@@ -74,10 +74,7 @@ Een gebruikelijke verbindingsreeks is `Server=<server>;Port=<port>;Database=<dat
     "properties": {
         "type": "Netezza",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
-            }
+            "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -95,10 +92,7 @@ Een gebruikelijke verbindingsreeks is `Server=<server>;Port=<port>;Database=<dat
     "properties": {
         "type": "Netezza",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;"
-            },
+            "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;",
             "pwd": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 

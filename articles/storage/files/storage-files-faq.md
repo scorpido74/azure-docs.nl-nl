@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 6526f27177b5fb8640deb5302d8cb3aa4acf1a97
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e5b1880a12cda440a5772de80b8ec67b8f7ed5c3
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824280"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665382"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Veelgestelde vragen over Azure Files
 [Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
@@ -127,20 +127,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 
 * <a id="afs-files-excluded"></a>
   **welke bestanden of mappen automatisch worden uitgesloten door Azure file sync?**  
-    Azure File Sync worden standaard de volgende bestanden uitgesloten:
-  * desktop.ini
-  * duims. db
-  * ehthumbs. db
-  * ~$\*.\*
-  * \*.laccdb
-  * \*. tmp
-  * 635D02A9D91C401B97884B82B3BCDAEA.\*
-
-    De volgende mappen worden ook standaard uitgesloten:
-
-  * \System-Volume gegevens
-  * \$RECYCLE.BIN
-  * \SyncShareState
+  Bestanden weer geven die zijn [overgeslagen](storage-sync-files-planning.md#files-skipped).
 
 * <a id="afs-os-support"></a>
   **kan ik Azure File Sync gebruiken met een Windows Server 2008 R2-, Linux-of mijn Network-Attached Storage (NAS)-apparaat?**  
@@ -235,7 +222,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 
    Azure Files wordt uitgevoerd boven op dezelfde opslag architectuur die wordt gebruikt in andere opslag Services in Azure Storage. Azure Files past hetzelfde beleid voor gegevens naleving toe dat in andere Azure Storage-services wordt gebruikt. Raadpleeg voor meer informatie over de naleving van Azure Storage gegevens [Azure Storage compliance-aanbiedingen](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)en ga naar het [vertrouwens centrum van micro soft](https://microsoft.com/trustcenter/default.aspx).
 
-## <a name="on-premises-access"></a>On-premises toegang
+## <a name="on-premises-access"></a>Lokale toegang
 
 * <a id="port-445-blocked"></a>
 **Mijn Internet provider of Hiermee wordt poort 445 geblokkeerd die niet kan worden Azure files gekoppeld. Wat moet ik doen?**
@@ -252,7 +239,7 @@ moet **Ik Azure ExpressRoute gebruiken om verbinding te maken met Azure files of
 
     U kunt de bestands share koppelen met behulp van het SMB-protocol als poort 445 (TCP uitgaand) is geopend en de client het SMB 3,0-protocol ondersteunt (bijvoorbeeld als u Windows 10 of Windows Server 2016 gebruikt). Als poort 445 wordt geblokkeerd door het beleid van uw organisatie of door uw Internet provider, kunt u Azure File Sync gebruiken om toegang te krijgen tot uw Azure-bestands share.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Back-up
 * <a id="backup-share"></a>
 **Hoe kan ik een back-up maken van mijn Azure-bestands share?**  
     U kunt [moment opnamen van periodieke shares](storage-snapshots-files.md) gebruiken voor beveiliging tegen onbedoeld verwijderen. U kunt ook AzCopy, Robocopy of een back-upprogramma van derden gebruiken dat een back-up kan maken van een gekoppelde bestands share. Azure Backup biedt back-up van Azure Files. Meer informatie over het [maken van back-ups van Azure-bestands shares per Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-files).
@@ -374,7 +361,7 @@ hoeveel **moment opnamen delen kosten?**
 
 * <a id="rest-rename"></a>
 **is er een bewerking voor naam wijzigen in de rest API?**  
-    Momenteel niet.
+    Op dit moment niet.
 
 * <a id="nested-shares"></a>
 **kan ik geneste shares instellen? Met andere woorden, een share onder een share?**  

@@ -56,6 +56,8 @@
           href: how-to-attach-detach-shared-image-gallery.md
         - name: Gebruiker als eigenaar toevoegen aan een leslokaallab
           href: how-to-add-user-lab-owner.md
+        - name: Firewall-instellingen voor Azure Lab Services
+          href: how-to-configure-firewall-settings.md
     - name: Leslokaallabs maken en configureren (docent)
       items:
         - name: Leslokaallabs maken en beheren

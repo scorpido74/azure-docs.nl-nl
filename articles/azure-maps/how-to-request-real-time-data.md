@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4c53d1c1ffbc80e694a9a7b423b2aaf9c6d38b48
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 5f69bcafbc3abb39b4185e0144ff6029808c0704
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914387"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432979"
 ---
 # <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Real-time gegevens aanvragen met behulp van de Azure Maps Mobility-service
 
@@ -29,7 +29,8 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het aanroepen van de Azure Maps open bare doorvoer-Api's hebt u een Maps-account en-sleutel nodig. Volg de instructies in het [account beheren](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) voor meer informatie over het maken van een account en volg de stappen in [primaire sleutel ophalen](./tutorial-search-location.md#getkey) om een primaire abonnements sleutel voor uw account op te halen.
+Voor het aanroepen van de Azure Maps open bare doorvoer-Api's hebt u een Maps-account en-sleutel nodig. Voor informatie over het maken van een account en het ophalen van een sleutel, volgt u de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) voor het maken van een abonnement op een Azure Maps-account en volgt u de stappen in [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
+
 
 In dit artikel wordt gebruikgemaakt van de [app postman](https://www.getpostman.com/apps) om rest-aanroepen te bouwen. U kunt elke gewenste API-ontwikkel omgeving gebruiken.
 
@@ -129,7 +130,7 @@ Als u een aanvraag wilt indienen voor de gegevens-API Get Transit Dock, hebt u d
 
 Als u **dockID**wilt ophalen, volgt u de onderstaande stappen om een aanvraag in te stellen voor de API voor het ophalen van de nabije Transit:
 
-1. Klik in postman op **nieuwe** | aanvraag**Get aanvraag** en geef deze de naam **Dock-id ophalen**.
+1. Klik in postman op **nieuwe aanvraag** | **Get-aanvraag** en geef deze de naam **Dock-id ophalen**.
 
 2.  Selecteer op het tabblad opbouw functie de methode http **ophalen** , voer de volgende aanvraag-URL in en klik op **verzenden**.
  
@@ -178,7 +179,7 @@ Als u **dockID**wilt ophalen, volgt u de onderstaande stappen om een aanvraag in
 
 Volg de onderstaande stappen om een aanvraag in te stellen voor de API Get Transit Dock info om realtime gegevens voor de geselecteerde Dock te verkrijgen.
 
-1. Klik in postman op **nieuwe** | aanvraag**Get aanvraag** en geef aan dat de **gegevens in realtime worden gedokt**.
+1. Klik in postman op **nieuwe aanvraag** | **Get-aanvraag** en geef **aan dat de gegevens in realtime worden gedokt**.
 
 2.  Selecteer op het tabblad opbouw functie de methode http **ophalen** , voer de volgende aanvraag-URL in en klik op **verzenden**.
  

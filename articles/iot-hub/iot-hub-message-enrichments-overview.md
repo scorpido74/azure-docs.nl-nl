@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: a623c8d3ff755338ac8b40faa970f2f007115a02
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: c3dbd01faf61c164c88f09b0da03c07be4abd187
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144871"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429126"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Verrijkingen van berichten voor IoT Hub berichten van apparaat-naar-Cloud
 
@@ -54,7 +54,7 @@ De berichten kunnen afkomstig zijn van elke gegevens bron die wordt ondersteund 
 
 U kunt verrijkingen toevoegen aan berichten die worden verzonden naar het ingebouwde eind punt van een IoT Hub, of berichten die worden doorgestuurd naar aangepaste eind punten, zoals Azure Blob Storage, een Service Bus wachtrij of een Service Bus onderwerp.
 
-U kunt verrijkingen toevoegen aan berichten die worden gepubliceerd naar Event Grid door het eind punt te selecteren als Event Grid. We maken een standaard route in IoT Hub naar telemetrie van apparaten, op basis van uw Event Grid-abonnement. Deze enkele route kan al uw Event Grid abonnementen afhandelen. U kunt verrijkingen configureren voor het gebeurtenis raster [punt nadat u het event grid-abonnement hebt gemaakt voor telemetrie van apparaten. Zie [IOT hub en Event grid](iot-hub-event-grid.md)voor meer informatie.
+U kunt verrijkingen toevoegen aan berichten die worden gepubliceerd naar Event Grid door het eind punt te selecteren als Event Grid. We maken een standaard route in IoT Hub naar telemetrie van apparaten, op basis van uw Event Grid-abonnement. Deze enkele route kan al uw Event Grid abonnementen afhandelen. U kunt verrijkingen voor het event grid-eind punt configureren nadat u het event grid-abonnement op apparaat-telemetrie hebt gemaakt. Zie [IOT hub en Event grid](iot-hub-event-grid.md)voor meer informatie.
 
 Verrijkingen worden toegepast per eind punt. Als u vijf verrijkingen voor een bepaald eind punt opgeeft, worden alle berichten die naar dat eind punt gaan, voorzien van dezelfde vijf verrijkingen.
 

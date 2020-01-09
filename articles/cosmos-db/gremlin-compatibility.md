@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
-ms.openlocfilehash: 0ed5824859b8463919a809861993f9f98a4f9251
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 581bc813ca27067b1f27ab9866a45df3084dbbcc
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327037"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644729"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Gremlin-compatibiliteit Azure Cosmos DB
 Azure Cosmos DB Graph engine voldoet aan de specificaties van [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) traversal, maar er zijn verschillen.
@@ -23,19 +23,21 @@ Azure Cosmos DB Graph engine voldoet aan de specificaties van [Apache TinkerPop]
 
 ## <a name="unsupported-features"></a>Niet-ondersteunde functies
 
-* ***[Gremlin Bytecode](http://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** is een programmeertaal-agnostische specificatie voor het doorkruisen van grafieken. Cosmos DB Graph ondersteunt dit nog niet. Gebruik ```GremlinClient.SubmitAsync()``` en geef passing door als een teken reeks.
+* ***[Gremlin Bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** is een programmeertaal-agnostische specificatie voor het doorkruisen van grafieken. Cosmos DB Graph ondersteunt dit nog niet. Gebruik `GremlinClient.SubmitAsync()` en geef passing door als een teken reeks.
 
-* ***```property(set, 'xyz', 1)```*** set kardinaliteit wordt vandaag niet ondersteund. Gebruik in plaats daarvan ```property(list, 'xyz', 1)```.
+* ***`property(set, 'xyz', 1)`*** set kardinaliteit wordt vandaag niet ondersteund. Gebruik in plaats daarvan `property(list, 'xyz', 1)`. Zie [vertex eigenschappen met TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties)voor meer informatie.
 
-* ***```match()```*** kunt query's uitvoeren op grafieken met declaratieve patroon vergelijking. Deze mogelijkheid is niet beschikbaar.
+* ***`atch()`*** kunt query's uitvoeren op grafieken met declaratieve patroon vergelijking. Deze mogelijkheid is niet beschikbaar.
 
 * ***Objecten als eigenschappen*** op hoek punten of randen worden niet ondersteund. Eigenschappen kunnen alleen primitieve typen of matrices zijn.
 
-* ***Sorteren op matrix eigenschappen*** ```.order().by(<array property>)``` wordt niet ondersteund. Alleen sorteren op primitieve typen wordt ondersteund.
+* ***Sorteren op matrix eigenschappen*** `order().by(<array property>)` wordt niet ondersteund. Alleen sorteren op primitieve typen wordt ondersteund.
 
-* ***Niet-PRIMITIEVE JSON-typen*** worden niet ondersteund. Gebruik ```string```, ```number```of ```true```/```false``` typen. ```null``` waarden worden niet ondersteund. 
+* ***Niet-PRIMITIEVE JSON-typen*** worden niet ondersteund. Gebruik `string`, `number`of `true`/`false` typen. `null` waarden worden niet ondersteund. 
 
-* ***GraphSONv3*** serializer is momenteel niet beschikbaar.
+* De ***GraphSONv3*** -serialisatiefunctie wordt momenteel niet ondersteund. Gebruik `GraphSONv2` serializer-, Reader-en Writer-klassen in de configuratie van de verbinding.
+
+* **Lambda-expressies en-functies** worden momenteel niet ondersteund. Dit omvat de `.map{<expression>}`, de `.by{<expression>}`en de `.filter{<expression>}` functies. Raadpleeg voor meer informatie en meer informatie over hoe u deze herschrijft met behulp van Gremlin stappen [een opmerking over lambdas](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas).
 
 * ***Trans acties*** worden niet ondersteund vanwege gedistribueerde aard van het systeem.  Configureer het juiste consistentie model op het Gremlin-account om uw eigen schrijf bewerkingen te lezen en gebruik optimistische gelijktijdigheid om conflicterende schrijf bewerkingen op te lossen.
 

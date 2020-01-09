@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d824606b1b602d006e53be619d6d955ac2cfb71f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 745ddcc95bb91e61478307265aec1ac8a7ebba54
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213034"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609193"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Probleemoplossings fouten tijdens de synchronisatie
 Er kunnen fouten optreden bij het synchroniseren van identiteits gegevens van Windows Server Active Directory (AD DS) naar Azure Active Directory (Azure AD). In dit artikel vindt u een overzicht van de verschillende typen synchronisatie fouten, een aantal van de mogelijke scenario's die deze fouten veroorzaken en mogelijke manieren om de fouten op te lossen. Dit artikel bevat de veelvoorkomende fout typen en is mogelijk niet van belang voor alle mogelijke fouten.
@@ -53,7 +53,7 @@ Met Azure Active Directory schema kunnen twee of meer objecten niet dezelfde waa
 * ProxyAddresses
 * UserPrincipalName
 * onPremisesSecurityIdentifier
-* Id
+* ObjectId
 
 > [!NOTE]
 > De functie voor het kenmerk van de tolerantie voor een [dubbel kenmerk van Azure AD](how-to-connect-syncservice-duplicate-attribute-resiliency.md) wordt ook uitgevoerd als het standaard gedrag van Azure Active Directory.  Dit verlaagt het aantal synchronisatie fouten dat wordt weer gegeven door Azure AD Connect (evenals andere synchronisatieclient) door Azure AD flexibeler te maken op de manier die dubbele ProxyAddresses-en UserPrincipalName-kenmerken verwerkt die aanwezig zijn in on-premises AD-omgevingen. Met deze functie worden de duplicatie fouten niet opgelost. Zodat de gegevens nog steeds moeten worden hersteld. Het is echter wel mogelijk om nieuwe objecten in te richten die anders zijn geblokkeerd vanwege dubbele waarden in azure AD. Hiermee vermindert u ook het aantal synchronisatie fouten dat wordt geretourneerd aan de synchronisatie-client.
@@ -75,15 +75,15 @@ Met Azure Active Directory schema kunnen twee of meer objecten niet dezelfde waa
 2. De **userPrincipalName** van Bob Smith is ingesteld als **Bobs\@contoso.com**.
 3. **"abcdefghijklmnopqrstuv = ="** is de **Source Anchor** die wordt berekend door Azure AD Connect met de **ObjectGUID** van Bob smith van on-premises Active Directory. Dit is de **immutableId** voor Bob Smith in azure Active Directory.
 4. Bob heeft ook de volgende waarden voor het kenmerk **proxyAddresses** :
-   * SMTP: bobs@contoso.com
-   * SMTP: bob.smith@contoso.com
+   * smtp: bobs@contoso.com
+   * smtp: bob.smith@contoso.com
    * **SMTP: Bob\@contoso.com**
 5. Een nieuwe gebruiker, **Bob Taylor**, wordt toegevoegd aan de on-premises Active Directory.
 6. De **userPrincipalName** van Dirk is ingesteld als **bobt\@contoso.com**.
 7. **"abcdefghijkl0123456789 = =" "** is de **Source Anchor** die wordt berekend door Azure AD Connect gebruik van de **ObjectGUID** van Dirk Taylor van on-premises Active Directory. Bob Taylor-object is nog niet gesynchroniseerd met Azure Active Directory.
 8. Bob Taylor heeft de volgende waarden voor het kenmerk proxyAddresses
-   * SMTP: bobt@contoso.com
-   * SMTP: bob.taylor@contoso.com
+   * smtp: bobt@contoso.com
+   * smtp: bob.taylor@contoso.com
    * **SMTP: Bob\@contoso.com**
 9. Tijdens het synchroniseren herkent Azure AD Connect de toevoeging van Bob Taylor in on-premises Active Directory en vraag Azure AD om dezelfde wijziging aan te brengen.
 10. In azure AD wordt eerst een harde overeenkomst uitgevoerd. Dat wil zeggen dat er wordt gezocht naar een object met de immutableId gelijk is aan "abcdefghijkl0123456789 = =". Harde overeenkomsten mislukken omdat er geen ander object in azure AD is dat immutableId.
@@ -145,12 +145,12 @@ Als Azure AD Connect probeert een nieuw object toe te voegen of een bestaand obj
 1. **Bob Smith** is een gesynchroniseerde gebruiker in azure Active Directory van on-premises Active Directory contoso.com
 2. De **userPrincipalName** van Dirk Smith on premises is ingesteld als **Bobs\@contoso.com**.
 3. Bob heeft ook de volgende waarden voor het kenmerk **proxyAddresses** :
-   * SMTP: bobs@contoso.com
-   * SMTP: bob.smith@contoso.com
+   * smtp: bobs@contoso.com
+   * smtp: bob.smith@contoso.com
    * **SMTP: Bob\@contoso.com**
 4. Een nieuwe gebruiker, **Bob Taylor**, wordt toegevoegd aan de on-premises Active Directory.
 5. De **userPrincipalName** van Dirk is ingesteld als **bobt\@contoso.com**.
-6. **Bob Taylor** heeft de volgende waarden voor het kenmerk **proxyAddresses** . SMTP: bobt@contoso.com II. SMTP: bob.taylor@contoso.com
+6. **Bob Taylor** heeft de volgende waarden voor het kenmerk **proxyAddresses** . smtp: bobt@contoso.com ii. smtp: bob.taylor@contoso.com
 7. Bob Taylor-object is gesynchroniseerd met Azure AD.
 8. De beheerder heeft besloten het kenmerk **proxyAddresses** van Bob Taylor bij te werken met de volgende waarde: i. **SMTP: Bob\@contoso.com**
 9. Azure AD probeert het object Bob Taylor bij te werken in azure AD met de bovenstaande waarde, maar deze bewerking mislukt omdat de ProxyAddresses-waarde al is toegewezen aan Bob smid, wat resulteert in ' AttributeValueMustBeUnique-fout.
@@ -171,7 +171,7 @@ De meest voorkomende reden voor de AttributeValueMustBeUnique-fout is twee objec
 #### <a name="description"></a>Beschrijving
 Azure Active Directory dwingt verschillende beperkingen voor de gegevens zelf af voordat deze gegevens naar de Directory kunnen worden geschreven. Deze beperkingen zijn om ervoor te zorgen dat eind gebruikers de best mogelijke ervaringen krijgen bij het gebruik van de toepassingen die afhankelijk zijn van deze gegevens.
 
-#### <a name="scenarios"></a>Scenario 's
+#### <a name="scenarios"></a>Scenario's
 a. De waarde van het kenmerk UserPrincipalName bevat ongeldige/niet-ondersteunde tekens.
 b. Het kenmerk UserPrincipalName volgt niet de vereiste indeling.
 
@@ -185,7 +185,7 @@ a. Zorg ervoor dat het kenmerk userPrincipalName ondersteunde tekens en de verei
 #### <a name="description"></a>Beschrijving
 Dit resulteert in een **' FederatedDomainChangeError** -synchronisatie fout wanneer het achtervoegsel van de userPrincipalName van een gebruiker wordt gewijzigd van een federatief domein naar een ander federatief domein.
 
-#### <a name="scenarios"></a>Scenario 's
+#### <a name="scenarios"></a>Scenario's
 Voor een gesynchroniseerde gebruiker is het UserPrincipalName-achtervoegsel gewijzigd van een federatief domein naar een ander federatief domein on-premises. Bijvoorbeeld: *userPrincipalName = bob\@contoso.com* is gewijzigd in *UserPrincipalName = Bob\@fabrikam.com*.
 
 #### <a name="example"></a>Voorbeeld
@@ -194,7 +194,7 @@ Voor een gesynchroniseerde gebruiker is het UserPrincipalName-achtervoegsel gewi
 3. Zowel contoso.com-als fabrikam.com-domeinen zijn federatieve domeinen met Azure Active Directory.
 4. De userPrincipalName van Bob wordt niet bijgewerkt en resulteert in een ' FederatedDomainChangeError-synchronisatie fout.
 
-#### <a name="how-to-fix"></a>Oplossen
+#### <a name="how-to-fix"></a>Hoe oplossen?
 Als het UserPrincipalName-achtervoegsel van een gebruiker is bijgewerkt van bob@**contoso.com** naar bob\@**fabrikam.com**, waarbij zowel **contoso.com** als **fabrikam.com** **federatieve domeinen**zijn, voert u de volgende stappen uit om de synchronisatie fout op te lossen
 
 1. Werk de UserPrincipalName van de gebruiker in azure AD bij van bob@contoso.com naar bob@contoso.onmicrosoft.com. U kunt de volgende Power shell-opdracht gebruiken met de Azure AD Power shell-module: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
@@ -218,7 +218,7 @@ Wanneer een kenmerk de toegestane maximale grootte, de lengte limiet of de limie
 3. Bob-thumbnailPhoto ingesteld in Active Directory is te groot om te worden gesynchroniseerd in azure AD.
 4. Tijdens automatische populatie van het kenmerk ProxyAddresses in Active Directory heeft een object te veel ProxyAddresses toegewezen.
 
-### <a name="how-to-fix"></a>Oplossen
+### <a name="how-to-fix"></a>Hoe oplossen?
 1. Zorg ervoor dat het kenmerk dat de fout veroorzaakt binnen de toegestane beperking valt.
 
 ## <a name="existing-admin-role-conflict"></a>Bestaande strijdige beheerdersrol
@@ -234,17 +234,17 @@ Azure AD Connect is niet toegestaan om te laten overeenkomen met een gebruikers 
 ![Bestaande beheerder](media/tshoot-connect-sync-errors/existingadmin.png)
 
 
-### <a name="how-to-fix"></a>Oplossen
-Ga op een van de volgende manieren te werk om dit probleem op te lossen:
+### <a name="how-to-fix"></a>Hoe oplossen?
+Ga als volgt te werk om dit probleem op te lossen:
 
- - Verwijder het Azure AD-account (eigenaar) van alle beheerders rollen. 
- - **Verwijder** het in quarantaine geplaatste object in de Cloud. 
- - De volgende synchronisatie cyclus zorgt ervoor dat er een tijdelijke koppeling van de lokale gebruiker naar het Cloud account wordt uitgevoerd (omdat de Cloud gebruiker nu geen wereld wijde GA meer is). 
- - Herstel de rollidmaatschap voor de eigenaar. 
+1. Verwijder het Azure AD-account (eigenaar) van alle beheerders rollen. 
+2. **Verwijder** het in quarantaine geplaatste object in de Cloud. 
+3. De volgende synchronisatie cyclus zorgt ervoor dat er een tijdelijke koppeling van de lokale gebruiker naar het Cloud account wordt uitgevoerd (omdat de Cloud gebruiker nu geen wereld wijde GA meer is). 
+4. Herstel de rollidmaatschap voor de eigenaar. 
 
 >[!NOTE]
 >U kunt de beheerdersrol opnieuw toewijzen aan het bestaande gebruikers object nadat de tijdelijke overeenkomst tussen het on-premises gebruikers object en het Azure AD-gebruikers object is voltooid.
 
-## <a name="related-links"></a>Verwante koppelingen
+## <a name="related-links"></a>Gerelateerde koppelingen
 * [Active Directory-objecten zoeken in Active Directory-beheercentrum](https://technet.microsoft.com/library/dd560661.aspx)
 * [Azure Active Directory voor een object opvragen met Azure Active Directory Power shell](https://msdn.microsoft.com/library/azure/jj151815.aspx)

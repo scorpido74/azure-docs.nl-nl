@@ -1,97 +1,88 @@
 ---
-title: Azure Service Fabric-Gebeurtenisanalyse met Azure Monitor-Logboeken | Microsoft Docs
-description: Meer informatie over het visualiseren en analyseren van gebeurtenissen met behulp van Azure Monitor-logboeken voor controle en diagnose van Azure Service Fabric-clusters.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric-gebeurtenis analyse met Azure Monitor-logboeken
+description: Meer informatie over het visualiseren en analyseren van gebeurtenissen met behulp van Azure Monitor logboeken voor het bewaken en diagnosticeren van Azure Service Fabric-clusters.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: ba4923edbc59f0e6650fda1a71e1c4f79b884cf2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 40dd930aa21e3056d5ecc908359215d6874ed8ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393405"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464734"
 ---
-# <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Gebeurtenis analyses en visualisatie met Azure Monitor-Logboeken
- Azure Monitor-logboeken verzamelt en analyseert telemetrie van toepassingen en services die worden gehost in de cloud biedt analyse hulpprogramma's waarmee u hun beschikbaarheid en prestaties te maximaliseren. In dit artikel bevat een overzicht van hoe u query's uitvoeren in Azure Monitor-logboeken inzicht en problemen met wat er gebeurt in uw cluster. De volgende veelgestelde vragen worden behandeld:
+# <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Gebeurtenis analyse en visualisatie met Azure Monitor-logboeken
+ Met Azure Monitor logboeken worden telemetrie verzameld en geanalyseerd op basis van toepassingen en services die worden gehost in de Cloud en worden er analyse hulpprogramma's geboden waarmee u hun Beschik baarheid en prestaties kunt maximaliseren. In dit artikel wordt beschreven hoe u query's uitvoert in Azure Monitor Logboeken om inzicht te krijgen in wat er in uw cluster gebeurt. De volgende veelgestelde vragen worden behandeld:
 
-* Hoe kan ik statusgebeurtenissen oplossen?
-* Hoe weet ik wanneer een knooppunt wordt uitgeschakeld?
-* Hoe weet ik als services van mijn toepassing hebben gestart of gestopt?
+* Hoe kan ik problemen met status gebeurtenissen oplossen?
+* Hoe kan ik weet u wanneer een knoop punt uitvalt?
+* Hoe kan ik weet of de services van mijn toepassing zijn gestart of gestopt?
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="overview-of-the-log-analytics-workspace"></a>Overzicht van de Log Analytics-werkruimte
+## <a name="overview-of-the-log-analytics-workspace"></a>Overzicht van de Log Analytics-werk ruimte
 
 >[!NOTE] 
->Opslagaccount voor diagnostische is standaard ingeschakeld tijdens de aanmaak van het cluster, moet u de Log Analytics-werkruimte nog steeds instellen om te lezen uit het opslagaccount voor diagnostische.
+>Hoewel diagnostische opslag standaard wordt ingeschakeld tijdens het maken van het cluster, moet u nog steeds de Log Analytics-werk ruimte instellen om te lezen uit de diagnostische opslag.
 
-Azure Monitor-logboeken verzamelt gegevens van beheerde resources, met inbegrip van een Azure storage-tabel of een agent, en deze in een centrale opslagplaats onderhoudt. De gegevens kunnen vervolgens worden gebruikt voor analyse, waarschuwingen en visualisatie, of het verder exporteren. Azure Monitor registreert ondersteunt gebeurtenissen, prestatiegegevens of een andere aangepaste gegevens. Bekijk [stappen voor het configureren van de extensie voor diagnostische gegevens voor](service-fabric-diagnostics-event-aggregation-wad.md) en [stappen voor het maken van een Log Analytics-werkruimte te lezen van de gebeurtenissen in de opslag](service-fabric-diagnostics-oms-setup.md) om ervoor te zorgen dat gegevens worden doorgestuurd naar Azure Monitor Hiermee wordt geregistreerd.
+Azure Monitor logboeken verzamelt gegevens van beheerde bronnen, waaronder een Azure Storage-tabel of een agent, en houdt deze bij in een centrale opslag plaats. De gegevens kunnen vervolgens worden gebruikt voor analyse, waarschuwingen en visualisatie, of verder exporteren. Azure Monitor logboeken ondersteunt gebeurtenissen, prestatie gegevens of andere aangepaste gegevens. Bekijk [de stappen voor het configureren van de diagnostische uitbrei ding voor het verzamelen van gebeurtenissen](service-fabric-diagnostics-event-aggregation-wad.md) en [stappen voor het maken van een log Analytics werkruimte voor het lezen van de gebeurtenissen in de opslag](service-fabric-diagnostics-oms-setup.md) om er zeker van te zijn dat gegevens in azure monitor logboeken worden geplaatst.
 
-Nadat de gegevens worden ontvangen door de logboeken van Azure Monitor, Azure heeft verscheidene *bewaking oplossingen* die zijn voorverpakte oplossingen of operationele dashboards voor het bewaken van binnenkomende gegevens, aangepast aan verschillende scenario's. Deze omvatten een *Service Fabric-analyse* oplossing en een *Containers* oplossing, zijn de twee meest relevante diagnostische gegevens en de bewaking van bij het gebruik van Service Fabric-clusters. In dit artikel wordt beschreven hoe u van de Service Fabric-analyse-oplossing die is gemaakt met de werkruimte.
+Nadat de gegevens zijn ontvangen door Azure Monitor-logboeken, heeft Azure verschillende *bewakings oplossingen* die voorverpakte oplossingen of operationele Dash boards zijn voor het bewaken van binnenkomende gegevens, aangepast aan verschillende scenario's. Dit zijn onder andere een *service Fabric-analyse* oplossing en een oplossing voor *containers* , die de twee meest relevant zijn voor diagnostische gegevens en bewaking bij het gebruik van service Fabric clusters. In dit artikel wordt beschreven hoe u de Service Fabric-analyse oplossing gebruikt, die wordt gemaakt met de werk ruimte.
 
-## <a name="access-the-service-fabric-analytics-solution"></a>Toegang tot de Service Fabric-analyse-oplossing
+## <a name="access-the-service-fabric-analytics-solution"></a>Toegang tot de Service Fabric-analyse oplossing
 
-In de [Azure Portal](https://portal.azure.com), gaat u naar de resourcegroep waarin u de Service Fabric-analyse-oplossing hebt gemaakt.
+Ga in [Azure Portal](https://portal.azure.com)naar de resource groep waarin u de service Fabric-analyse oplossing hebt gemaakt.
 
 Selecteer de resource **ServiceFabric\<nameOfOMSWorkspace\>** .
 
-In `Summary`, ziet u tegels in de vorm van een grafiek voor elk van de oplossingen ingeschakeld, met inbegrip van een Service Fabric. Klik op de **Service Fabric** graph om door te gaan naar de Service Fabric-analyse-oplossing.
+In `Summary`ziet u tegels in de vorm van een grafiek voor elk van de ingeschakelde oplossingen, inclusief één voor Service Fabric. Klik op de **service Fabric** grafiek om door te gaan naar de service Fabric-analyse oplossing.
 
-![Service Fabric-oplossing](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
+![Service Fabric oplossing](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
-De volgende afbeelding ziet de startpagina van de Service Fabric-analyse-oplossing. Deze pagina introductiepagina bevat een momentopname van wat in uw cluster gebeurt er.
+In de volgende afbeelding ziet u de start pagina van de Service Fabric-analyse oplossing. Deze start pagina bevat een moment opname van wat er in uw cluster gebeurt.
 
-![Service Fabric-oplossing](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
+![Service Fabric oplossing](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
- Als u diagnostische gegevens bij het maken van een cluster hebt ingeschakeld, kunt u gebeurtenissen voor bekijken 
+ Als u Diagnostische gegevens hebt ingeschakeld bij het maken van het cluster, kunt u gebeurtenissen weer geven voor 
 
-* [Service Fabric-cluster-gebeurtenissen](service-fabric-diagnostics-event-generation-operational.md)
-* [Reliable Actors programming modelgebeurtenissen](service-fabric-reliable-actors-diagnostics.md)
-* [Reliable Services programming modelgebeurtenissen](service-fabric-reliable-services-diagnostics.md)
+* [Service Fabric cluster gebeurtenissen](service-fabric-diagnostics-event-generation-operational.md)
+* [Reliable Actors van de programmeer model gebeurtenissen](service-fabric-reliable-actors-diagnostics.md)
+* [Reliable Services van de programmeer model gebeurtenissen](service-fabric-reliable-services-diagnostics.md)
 
 >[!NOTE]
->Naast de Service Fabric-gebeurtenissen uit het vak, meer gedetailleerde systeemgebeurtenissen kunnen worden verzameld door [bijwerken van de configuratie van de extensie voor diagnostische gegevens](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations).
+>Naast de Service Fabric Events uit het vak, kunnen meer gedetailleerde systeem gebeurtenissen worden verzameld door [de configuratie van de diagnostische extensie](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)bij te werken.
 
-## <a name="view-service-fabric-events-including-actions-on-nodes"></a>Service Fabric-gebeurtenissen weergeven, met inbegrip van acties op knooppunten
+## <a name="view-service-fabric-events-including-actions-on-nodes"></a>Service Fabric gebeurtenissen weer geven, met inbegrip van acties op knoop punten
 
-Klik op de pagina Service Fabric-analyse op de grafiek voor **Service Fabric-gebeurtenissen**.
+Klik op de pagina Service Fabric-analyse op de grafiek voor **service Fabric gebeurtenissen**.
 
-![Service Fabric-oplossing operationele kanaal](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
+![Operationele kanaal van Service Fabric oplossing](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
-Klik op **lijst** om de gebeurtenissen in een lijst weer te geven. Zodra u hier alle systeemgebeurtenissen die zijn verzameld ziet. Voor een verwijzing naar deze zijn van de **WADServiceFabricSystemEventsTable** in Azure Storage-account en op dezelfde manier de reliable services en actors-gebeurtenissen ziet u naast afkomstig zijn van de respectieve tabellen.
+Klik op **lijst** om de gebeurtenissen in een lijst weer te geven. Hier worden alle systeem gebeurtenissen weer gegeven die zijn verzameld. Ter referentie zijn deze van de **WADServiceFabricSystemEventsTable** in het Azure Storage-account en ook de betrouw bare Services en actors-gebeurtenissen die u hierna ziet, zijn afkomstig uit die respectieve tabellen.
     
-![Query operationele kanaal](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
+![Operationeel kanaal opvragen](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
-U kunt ook klikt u op het Vergrootglas aan de linkerkant en de Kusto-query-taal gebruiken om te vinden wat u zoekt. Bijvoorbeeld, als u wilt zoeken in alle acties die worden uitgevoerd op knooppunten in het cluster, kunt u de volgende query uit. De gebeurtenis-id's gebruikt hieronder vindt u in de [operationele kanaal gebeurtenissen verwijzing](service-fabric-diagnostics-event-generation-operational.md).
+U kunt ook op het vergroot glas aan de linkerkant klikken en de Kusto-query taal gebruiken om te vinden wat u zoekt. Als u bijvoorbeeld alle acties wilt vinden die worden uitgevoerd op knoop punten in het cluster, kunt u de volgende query gebruiken. De onderstaande gebeurtenis-Id's vindt u in de [Naslag informatie voor operationele kanaal gebeurtenissen](service-fabric-diagnostics-event-generation-operational.md).
 
 ```kusto
 ServiceFabricOperationalEvent
 | where EventId < 25627 and EventId > 25619 
 ```
 
-U kunt een query op veel meer velden, zoals de specifieke knooppunten (Computer) de service (TaskName).
+U kunt een query uitvoeren op veel meer velden, zoals de specifieke knoop punten (computer) van de systeem service (taak naam).
 
-## <a name="view-service-fabric-reliable-service-and-actor-events"></a>Weergave Service Fabric Reliable Service en de Actor-gebeurtenissen
+## <a name="view-service-fabric-reliable-service-and-actor-events"></a>Service Fabric betrouw bare service-en actor gebeurtenissen weer geven
 
-Klik op de pagina Service Fabric-analyse op de grafiek voor **Reliable Services**.
+Klik op de pagina Service Fabric-analyse op de grafiek voor **reliable Services**.
 
-![Service Fabric Reliable Services-oplossing](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
+![Service Fabric oplossing Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
-Klik op **lijst** om de gebeurtenissen in een lijst weer te geven. Hier ziet u gebeurtenissen van de betrouwbare services. U kunt verschillende gebeurtenissen voor zien wanneer de service runasync is gestart en dit gebeurt gewoonlijk op implementaties en upgrades voltooid. 
+Klik op **lijst** om de gebeurtenissen in een lijst weer te geven. Hier kunt u gebeurtenissen van de betrouw bare Services bekijken. U kunt verschillende gebeurtenissen zien wanneer de service runasync wordt gestart en voltooid, wat doorgaans gebeurt bij implementaties en upgrades. 
 
 ![Query Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
-Reliable actor-gebeurtenissen kunnen op dezelfde manier worden weergegeven. Als u wilt meer gedetailleerde gegevens van gebeurtenissen voor betrouwbare actoren configureert, moet u wijzigen de `scheduledTransferKeywordFilter` in de configuratie voor de diagnostische extensie (Zie hieronder). Details van de waarden voor deze zijn in de [reliable actors-gebeurtenissen verwijzing](service-fabric-reliable-actors-diagnostics.md#keywords).
+Betrouw bare actor gebeurtenissen kunnen op een vergelijk bare manier worden weer gegeven. Als u gedetailleerdere gebeurtenissen voor betrouw bare actoren wilt configureren, moet u de `scheduledTransferKeywordFilter` in de configuratie voor de diagnostische extensie wijzigen (zie hieronder). Details over de waarden hiervoor vindt u in de [Naslag informatie over betrouw bare evenementen van actors](service-fabric-reliable-actors-diagnostics.md#keywords).
 
 ```json
 "EtwEventSourceProviderConfiguration": [
@@ -105,14 +96,14 @@ Reliable actor-gebeurtenissen kunnen op dezelfde manier worden weergegeven. Als 
                 },
 ```
 
-De Kusto-query-taal is krachtig. Er is een andere waardevolle query die u kunt uitvoeren om erachter te komen welke knooppunten de meeste gebeurtenissen genereren. De query in de onderstaande schermafbeelding ziet u Service Fabric operationele gebeurtenissen die worden samengevoegd met de specifieke service en het knooppunt.
+De Kusto-query taal is krachtig. U kunt ook een andere waardevolle query uitvoeren om te bepalen welke knoop punten de meeste gebeurtenissen genereren. In de query in de onderstaande scherm afbeelding ziet u Service Fabric operationele gebeurtenissen geaggregeerd met de specifieke service en het opgegeven knoop punt.
 
-![Querygebeurtenissen per knooppunt](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
+![Query gebeurtenissen per knoop punt](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Om in te schakelen prestatiemeteritems dat wil zeggen de controle van infrastructuren, Ga naar [toe te voegen de Log Analytics-agent](service-fabric-diagnostics-oms-agent.md). De agent verzamelt prestatiemeters en voegt deze toe aan uw bestaande werkruimte.
-* Logboeken van Azure Monitor biedt een Gateway (http-doorsturen Proxy) die kan worden gebruikt om gegevens te verzenden naar Azure Monitor-logboeken voor clusters van on-premises. Meer informatie over die in [computers zonder toegang tot het Internet verbinding te maken met Azure Monitor-logboeken met behulp van de Log Analytics-gateway](../azure-monitor/platform/gateway.md).
-* Configureer [automatische waarschuwingen](../log-analytics/log-analytics-alerts.md) voor detectie en diagnostiek.
-* Familiarized ophalen met de [zoeken en uitvoeren van query's](../log-analytics/log-analytics-log-searches.md) functies die worden aangeboden als onderdeel van Azure Monitor-Logboeken.
-* Ophalen van een meer gedetailleerd overzicht van Azure Monitor-logboeken en mogelijkheden van het startpakket, lezen [wat is Azure Monitor logboeken?](../operations-management-suite/operations-management-suite-overview.md).
+* Als u de bewaking van infra structuur wilt inschakelen, zoals prestatie meter items, moet u [de log Analytics agent toevoegen](service-fabric-diagnostics-oms-agent.md). De agent verzamelt prestatie meter items en voegt deze toe aan uw bestaande werk ruimte.
+* Voor on-premises clusters biedt Azure Monitor-Logboeken een gateway (HTTP forward proxy) die kan worden gebruikt om gegevens te verzenden naar Azure Monitor-Logboeken. Meer informatie hierover vindt [u bij het verbinden van computers zonder Internet toegang tot Azure monitor-logboeken met behulp van de log Analytics gateway](../azure-monitor/platform/gateway.md).
+* [Automatische waarschuwingen](../log-analytics/log-analytics-alerts.md) configureren voor ondersteuning bij detectie en diagnose.
+* U kunt vertrouwd raken met de [Zoek-en query](../log-analytics/log-analytics-log-searches.md) functies die beschikbaar worden gesteld als onderdeel van Azure monitor Logboeken.
+* Meer gedetailleerd overzicht van Azure Monitor-logboeken en wat het biedt, Lees [Wat is Azure monitor logboeken?](../operations-management-suite/operations-management-suite-overview.md).

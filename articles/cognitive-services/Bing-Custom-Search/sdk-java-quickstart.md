@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: Bing Aangepaste zoekopdrachten-client bibliotheek voor Java | Microsoft Docs'
-description: Ga aan de slag met de Bing Aangepaste zoekopdrachten-client bibliotheek voor Java door Zoek resultaten te vragen uit uw Bing Aangepaste zoekopdrachten-exemplaar.
+title: 'Snelstartgids: Bing Aangepaste zoekopdrachten-client bibliotheek voor Java'
+description: Ga aan de slag met de Bing Aangepaste zoekopdrachten-client bibliotheek voor Java door Zoek resultaten te vragen van uw Bing Aangepaste zoekopdrachten-exemplaar in deze Quick Start.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: f0a3008dace4e9382bbb6b6d9465ce1c9b4ddc6c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1060cceb9241d9c1c490f7e7f12490c734b0a78d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976057"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384550"
 ---
 # <a name="quickstart-bing-custom-search-client-library-for-java"></a>Snelstartgids: Bing Aangepaste zoekopdrachten-client bibliotheek voor Java
 
@@ -152,7 +152,7 @@ gradle run
 Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+* [Azure-CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Volgende stappen
 

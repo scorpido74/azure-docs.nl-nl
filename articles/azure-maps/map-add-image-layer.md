@@ -9,36 +9,36 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: fadaaf7c64b11a6d6d94c68234f8288d1b3f8d07
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 631a9e2d44b798404ee7567d3ccfed90628d2f8b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480489"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432854"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Een afbeelding slaag toevoegen aan een kaart
 
-Dit artikel laat u zien hoe u een afbeelding kunt bedekken naar een vaste set coördinaten op de kaart. Er zijn veel scenario's waarin het bedekken van een afbeelding op de kaart is voltooid. Hier volgen enkele voor beelden van het type afbeeldingen dat vaak op kaarten wordt overlapt.
+Dit artikel laat u zien hoe u een afbeelding kunt bedekken naar een vaste set coördinaten op de kaart. Hier volgen enkele voor beelden van het type installatie kopieën die vaak op kaarten worden overlapt:
 
-* Installatie kopieën die zijn vastgelegd vanuit drones.
-* Floorplans bouwen.
-* Historische of andere gespecialiseerde kaart afbeeldingen.
-* Blauw drukken van taak sites.
-* Weers radar-afbeeldingen.
+* Afbeeldingen die zijn vastgelegd vanuit Drones
+* Floorplans bouwen
+* Historische of andere gespecialiseerde kaart afbeeldingen
+* Blauw drukken van taak sites
+* Weer radar afbeeldingen
 
 > [!TIP]
-> Een [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) is een snelle manier om een afbeelding op een kaart te bedekken. Als de afbeelding echter groot is, kan het moeilijk worden om deze te laden. In dit geval kunt u overwegen om uw afbeelding in tegels te verdelen en ze te laden in de kaart als een [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest).
+> Een [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) is een eenvoudige manier om een afbeelding op een kaart te bedekken. Houd er rekening mee dat browsers problemen kunnen hebben met het laden van een grote afbeelding. In dit geval kunt u overwegen om uw afbeelding in tegels te verdelen en ze te laden in de kaart als een [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest).
 
 De afbeelding slaag ondersteunt de volgende afbeeldings indelingen:
 
 - INDELING
 - PNG
-- BITMAP
+- BMP
 - GIF (geen animaties)
 
 ## <a name="add-an-image-layer"></a>Een afbeeldingslaag toevoegen
 
-In de volgende code wordt een afbeelding overlay van een [kaart van Newark New Jersey van 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) op de kaart. Er wordt een [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) gemaakt door een URL door te geven aan een afbeelding en coördinaten voor de vier hoeken in de notatie `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`.
+De volgende code bedekken een afbeelding van een [kaart van Newark, New Jersey, van 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) op de kaart. Er wordt een [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) gemaakt door een URL door te geven aan een afbeelding en coördinaten voor de vier hoeken in de notatie `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`.
 
 ```javascript
 //Create an image layer and add it to the map.
@@ -53,7 +53,7 @@ map.layers.add(new atlas.layer.ImageLayer({
 }));
 ```
 
-Hieronder ziet u het volledige programma voor het uitvoeren van code van de bovenstaande functionaliteit.
+Hier volgt het volledige code voorbeeld van de voor gaande code.
 
 <br/>
 
@@ -62,9 +62,9 @@ Hieronder ziet u het volledige programma voor het uitvoeren van code van de bove
 
 ## <a name="import-a-kml-ground-overlay"></a>Een KML-wegdek-overlay importeren
 
-In dit voor beeld ziet u hoe u de KML-bedekkings gegevens als een afbeelding slaag op de kaart kunt bedekken. KML-oppervlak bedekkingen bieden Noord-, Zuid-, Oost-en West-coördinaten en een rotatie linksom, terwijl de afbeelding slaag coördinaten voor elke hoek van de afbeelding verwacht. De KML-vlak bedekking in dit voor beeld is van de Chartres-Cathedral en gesourceeerd van [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml).
+In dit volgende voor beeld ziet u hoe u de KML-bedekkings gegevens als een afbeelding slaag op de kaart kunt bedekken. KML-bedekkingen bieden Noord-, Zuid-, Oost-en West-coördinaten en een rotatie linksom, terwijl de afbeelding slaag coördinaten voor elke hoek van de afbeelding verwacht. De KML-bedekking in dit voor beeld is van de Chartres-Cathedral en is bron van [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml).
 
-De volgende code maakt gebruik van de statische `getCoordinatesFromEdges` functie van de klasse [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) om de vier hoeken van de afbeelding te berekenen op basis van de gegevens over Noord, Zuid, Oost, West en Rotation van de KML-bedekking.
+De volgende code maakt gebruik van de statische `getCoordinatesFromEdges` functie van de klasse [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) . De vier hoeken van de afbeelding worden berekend op basis van de gegevens voor Noord, Zuid, Oost en West, en van de draaiing van de KML-vlak bedekking.
 
 <br/>
 

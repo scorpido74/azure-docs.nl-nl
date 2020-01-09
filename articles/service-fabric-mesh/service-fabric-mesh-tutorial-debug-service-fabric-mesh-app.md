@@ -1,26 +1,17 @@
 ---
-title: 'Zelfstudie: Fouten opsporen in een Azure Service Fabric Mesh-webtoepassing die in uw lokale ontwikkelcluster wordt uitgevoerd | Microsoft Docs'
+title: Fouten opsporen in een Azure Service Fabric mesh-web-app die lokaal wordt uitgevoerd
 description: In deze zelfstudie gaat u fouten opsporen in een Azure Service Fabric Mesh-webtoepassing die op uw lokale cluster wordt uitgevoerd.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/31/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: bef86b189064a82b6605e8b99a374b1ee92682e2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c36d45919ae8a17026fc91f8e9040f3bb11d3eb0
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810412"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494956"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Zelfstudie: Fouten opsporen in een Service Fabric Mesh-toepassing die in uw lokale ontwikkelcluster wordt uitgevoerd
 
@@ -52,7 +43,7 @@ Voor u met deze zelfstudie begint:
 
 ## <a name="download-the-to-do-sample-application"></a>De voorbeeldtoepassing voor taken downloaden
 
-Als u in [deel één van deze zelfstudiereeks](service-fabric-mesh-tutorial-create-dotnetcore.md) niet de voorbeeldtoepassing hebt gemaakt, kunt u deze downloaden. Voer in een opdrachtvenster de volgende opdracht uit om de voorbeeld-app-opslagplaats te klonen op de lokale computer.
+Als u in [deel één van deze zelfstudiereeks](service-fabric-mesh-tutorial-create-dotnetcore.md) niet de voorbeeldtoepassing hebt gemaakt, kunt u deze downloaden. Voer in een opdrachtvenster de volgende opdracht uit om de opslagplaats van de voorbeeld-app te klonen op uw lokale computer.
 
 ```
 git clone https://github.com/azure-samples/service-fabric-mesh

@@ -1,66 +1,66 @@
 ---
-title: Directe methoden van Azure IoT Hub | Microsoft Docs
-description: Handleiding voor ontwikkelaars - directe methoden gebruiken om aan te roepen code op uw apparaten vanuit een app service.
+title: Meer informatie over Azure IoT Hub directe methoden | Microsoft Docs
+description: 'Ontwikkelaars handleiding: gebruik directe methoden om code op uw apparaten aan te roepen vanuit een service-app.'
 author: nberdy
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.author: nberdy
-ms.openlocfilehash: d7c63ffe5a318507053f59bf3a18242ee8c327a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rezas
+ms.openlocfilehash: f4125aae954519beead99db45fc8a35264d5731e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61327751"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429272"
 ---
-# <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Begrijpen en directe methoden uit IoT Hub aanroepen
+# <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Direct methoden van IoT Hub begrijpen en aanroepen
 
-IoT Hub biedt de mogelijkheid om directe methoden aanroepen op apparaten vanuit de cloud. Directe methoden vertegenwoordigen een aanvraag / antwoord-interactie met een apparaat die vergelijkbaar is met een HTTP-aanroep in dat ze slagen of onmiddellijk (na een door de gebruiker opgegeven time mislukken). Deze methode is handig voor scenario's waarin de cursus van onmiddellijke actie verschillend, afhankelijk van of het apparaat kan reageren.
+IoT Hub biedt u de mogelijkheid om direct methoden te activeren op apparaten in de Cloud. Directe methoden vertegenwoordigen een aanvraag/antwoord-interactie met een apparaat dat vergelijkbaar is met een HTTP-aanroep wanneer deze slagen of direct mislukken (na een door de gebruiker opgegeven time-out). Deze aanpak is nuttig voor scenario's waarbij de uitvoering van directe actie afwijkt, afhankelijk van of het apparaat kan reageren.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Elke methode apparaten is gericht op één apparaat. [Taken op meerdere apparaten plannen](iot-hub-devguide-jobs.md) laat zien hoe u bieden een manier om directe methoden aanroepen op meerdere apparaten en plannen van aanroepen van de methode voor niet-verbonden apparaten.
+Elke device-methode is gericht op één apparaat. [Taken op meerdere apparaten plannen](iot-hub-devguide-jobs.md) laat zien hoe u direct methoden kunt aanroepen op meerdere apparaten, en hoe u de methode aanroep plant voor niet-verbonden apparaten.
 
-Iedereen met **service verbinding maken met** machtigingen op IoT-Hub kunnen een methode aanroepen op een apparaat.
+Iedereen met **service Connect** -machtigingen op IOT hub kan een-methode aanroepen op een apparaat.
 
-Directe methoden volgen een patroon request response en zijn bedoeld voor de communicatie waarvoor onmiddellijke bevestiging van hun resultaat. Bijvoorbeeld, interactieve beheer van het apparaat, zoals het inschakelen van een fan.
+Directe methoden volgen een aanvraag/antwoord patroon en zijn bedoeld voor communicatie waarvoor onmiddellijke bevestiging van het resultaat is vereist. Bijvoorbeeld interactief beheer van het apparaat, zoals het inschakelen van een ventilator.
 
-Raadpleeg [Cloud-naar-apparaat communicatie richtlijnen](iot-hub-devguide-c2d-guidance.md) bij twijfel tussen het gebruik van gewenste eigenschappen directe methoden of cloud-naar-apparaat-berichten.
+Raadpleeg de [communicatie richtlijnen van Cloud naar apparaat](iot-hub-devguide-c2d-guidance.md) als u twijfelt tussen het gebruik van de gewenste eigenschappen, directe methoden of Cloud-naar-apparaat-berichten.
 
 ## <a name="method-lifecycle"></a>Methode levenscyclus
 
-Directe methoden zijn geïmplementeerd op het apparaat en mogelijk nul of meer van de invoervermeldingen in de nettolading van de methode correct wordt gestart. Aanroepen van een rechtstreekse methode via een gerichte service-URI (`{iot hub}/twins/{device id}/methods/`). Een apparaat ontvangt directe methoden via een apparaat-specifieke MQTT-onderwerp (`$iothub/methods/POST/{method name}/`) of via AMQP-koppelingen (de `IoThub-methodname` en `IoThub-status` toepassingseigenschappen). 
+Directe methoden worden geïmplementeerd op het apparaat en kunnen nul of meer invoer vereisen in de methode-Payload om op de juiste wijze te instantiëren. U roept een directe methode aan via een service gerichte URI (`{iot hub}/twins/{device id}/methods/`). Een apparaat ontvangt directe methoden via een apparaatspecifieke MQTT onderwerp (`$iothub/methods/POST/{method name}/`) of via AMQP-koppelingen (de `IoThub-methodname` en `IoThub-status` eigenschappen van de toepassing). 
 
 > [!NOTE]
-> Wanneer u een rechtstreekse methode op een apparaat aanroepen, namen en waarden mag alleen US-ASCII-afdrukbare uit alfanumerieke tekens, behalve in het volgende instellen: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
+> Wanneer u een rechtstreekse methode aanroept op een apparaat, kunnen eigenschaps namen en-waarden alleen in de volgende set worden opgeslagen met de naam van de in de Verenigde ASCII afdruk bare alfanumerieke tekens: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
 > 
 
-Directe methoden zijn synchrone en een slagen of mislukken na de time-outperiode (standaard: 30 seconden, instelbare van aan 300 seconden). Directe methoden zijn handig in interactieve scenario's waar u een apparaat om te fungeren en alleen als het apparaat online en ontvangende opdrachten is. Bijvoorbeeld inschakelen een lichte op een telefoon. In deze scenario's die u wilt zien van een directe slagen of mislukken, zodat de service in de cloud kan worden uitgevoerd op het resultaat zo snel mogelijk. Het apparaat kan sommige berichttekst als gevolg van de methode retourneren, maar het is niet vereist voor de methode om dit te doen. Er is geen garantie op volgorde of een gelijktijdigheid-semantiek op methodeaanroepen.
+Directe methoden zijn synchroon en slagen of mislukken na de time-outperiode (standaard: 30 seconden, ingesteld tot 300 seconden). Directe methoden zijn handig in interactieve scenario's waarin u wilt dat een apparaat reageert als en alleen als het apparaat online is en opdrachten ontvangt. U kunt bijvoorbeeld een lampje van een telefoon inschakelen. In deze scenario's wilt u direct slagen of mislukken, zodat de Cloud service zo snel mogelijk kan reageren op het resultaat. Het apparaat kan een deel van de bericht tekst retour neren als resultaat van de methode, maar dit is niet vereist voor de methode. Er is geen garantie voor de volg orde of enige semantiek van gelijktijdigheids op methode aanroepen.
 
-Directe methoden zijn alleen HTTPS vanuit de cloud kant- en MQTT- of AMQP vanaf het apparaat.
+Directe methoden zijn alleen HTTPS vanuit de Cloud kant en MQTT of AMQP van de kant van het apparaat.
 
-De nettolading voor methodeaanvragen en antwoorden is een JSON-document maximaal 128 KB.
+De payload voor methode aanvragen en-antwoorden is een JSON-document van Maxi maal 128 KB.
 
-## <a name="invoke-a-direct-method-from-a-back-end-app"></a>Een rechtstreekse methode vanuit een back-end-app aanroepen
+## <a name="invoke-a-direct-method-from-a-back-end-app"></a>Een directe methode vanuit een back-end-app aanroepen
 
-Nu een rechtstreekse methode vanuit een back-end-app aanroepen.
+Roep nu een directe methode aan vanuit een back-end-app.
 
-### <a name="method-invocation"></a>Aanroepen van de methode
+### <a name="method-invocation"></a>Methode aanroep
 
-Rechtstreekse methodeaanroepen op een apparaat zijn HTTPS-aanroepen die bestaan uit de volgende items:
+Directe methode aanroepen op een apparaat zijn HTTPS-aanroepen die bestaan uit de volgende items:
 
-* De *aanvraag-URI* specifiek is voor het apparaat samen met de [API-versie](/rest/api/iothub/service/invokedevicemethod):
+* De *aanvraag-URI* die specifiek is voor het apparaat, samen met de [API-versie](/rest/api/iothub/service/invokedevicemethod):
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30
     ```
 
-* Het bericht *methode*
+* De POST- *methode*
 
-* *Headers* die bevatten de autorisatie, aanvraag-ID, het inhoudstype en inhoudscodering.
+* *Headers* die de autorisatie, aanvraag-id, inhouds type en inhouds codering bevatten.
 
-* Een transparante JSON *hoofdtekst* in de volgende indeling:
+* Een transparante JSON- *hoofd tekst* met de volgende indeling:
 
     ```json
     {
@@ -73,11 +73,11 @@ Rechtstreekse methodeaanroepen op een apparaat zijn HTTPS-aanroepen die bestaan 
     }
     ```
 
-Er is een time-out in seconden. Als de time-out is niet ingesteld, wordt standaard 30 seconden.
+Time-out in seconden. Als er geen time-out is ingesteld, wordt standaard 30 seconden gebruikt.
 
 #### <a name="example"></a>Voorbeeld
 
-Hieronder vindt u een barebone voorbeeld met `curl`. 
+Hieronder vindt u een voor beeld van een barebone met behulp van `curl`. 
 
 ```bash
 curl -X POST \
@@ -96,13 +96,13 @@ curl -X POST \
 
 ### <a name="response"></a>Antwoord
 
-De back-end-app ontvangt een reactie die uit de volgende items bestaat:
+De back-end-app ontvangt een antwoord dat bestaat uit de volgende items:
 
-* *HTTP-statuscode*, die wordt gebruikt voor fouten die afkomstig zijn van de IoT-Hub, met inbegrip van een 404-fout voor apparaten die momenteel niet verbonden.
+* *HTTP-status code*, die wordt gebruikt voor fouten die afkomstig zijn van de IOT hub, met inbegrip van een 404-fout voor apparaten die momenteel niet zijn verbonden.
 
-* *Headers* die de ETag bevatten, aanvraag-ID, het inhoudstype en inhoudscodering.
+* *Headers* die de ETAG, aanvraag-id, inhouds type en inhouds codering bevatten.
 
-* Een JSON *hoofdtekst* in de volgende indeling:
+* Een JSON- *hoofd tekst* met de volgende indeling:
 
     ```json
     {
@@ -111,27 +111,27 @@ De back-end-app ontvangt een reactie die uit de volgende items bestaat:
     }
     ```
 
-    Beide `status` en `body` worden geleverd door het apparaat en gebruikt om te reageren met de statuscode van het apparaat en/of beschrijving.
+    Zowel `status` als `body` worden verzorgd door het apparaat en gebruikt om te reageren met de eigen status code en/of beschrijving van het apparaat.
 
-### <a name="method-invocation-for-iot-edge-modules"></a>Aanroepen van de methode voor IoT Edge-modules
+### <a name="method-invocation-for-iot-edge-modules"></a>Methode aanroep voor IoT Edge modules
 
-Aanroepen van directe methoden met een module-ID wordt ondersteund in de [IoT-Service Client SDK voor C#](https://www.nuget.org/packages/Microsoft.Azure.Devices/).
+Het aanroepen van directe methoden met een module-ID wordt ondersteund in de [client C# -SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/)van de IOT-service.
 
-Voor dit doel, gebruikt u de `ServiceClient.InvokeDeviceMethodAsync()` methode en geeft u de `deviceId` en `moduleId` als parameters.
+Voor dit doel gebruikt u de `ServiceClient.InvokeDeviceMethodAsync()` methode en geeft u de `deviceId` en `moduleId` als para meters door.
 
-## <a name="handle-a-direct-method-on-a-device"></a>Verwerken van een rechtstreekse methode op een apparaat
+## <a name="handle-a-direct-method-on-a-device"></a>Een directe methode op een apparaat verwerken
 
-Laten we kijken hoe u voor het afhandelen van een rechtstreekse methode op een IoT-apparaat.
+Laten we eens kijken hoe u een directe methode op een IoT-apparaat kunt verwerken.
 
 ### <a name="mqtt"></a>MQTT
 
 De volgende sectie is voor het MQTT-protocol.
 
-#### <a name="method-invocation"></a>Aanroepen van de methode
+#### <a name="method-invocation"></a>Methode aanroep
 
-Apparaten ontvangen de directe methodeaanvragen via het MQTT-onderwerp: `$iothub/methods/POST/{method name}/?$rid={request id}`. Het aantal abonnementen per apparaat is beperkt tot 5. Het verdient daarom niet om u te abonneren op elke directe methode afzonderlijk. In plaats daarvan kunt u zich abonneert op `$iothub/methods/POST/#` en filter vervolgens de geleverde berichten op basis van de methodenamen van de gewenste.
+Apparaten ontvangen directe methode aanvragen in het onderwerp MQTT: `$iothub/methods/POST/{method name}/?$rid={request id}`. Het aantal abonnementen per apparaat is beperkt tot 5. Daarom is het raadzaam om niet afzonderlijk te abonneren op elke directe methode. Overweeg in plaats daarvan te abonneren op `$iothub/methods/POST/#` en vervolgens de geleverde berichten te filteren op basis van de namen van de gewenste methoden.
 
-De hoofdtekst die het apparaat ontvangt is in de volgende indeling:
+De hoofd tekst die het apparaat ontvangt, heeft de volgende indeling:
 
 ```json
 {
@@ -140,67 +140,67 @@ De hoofdtekst die het apparaat ontvangt is in de volgende indeling:
 }
 ```
 
-Methodeaanvragen zijn QoS 0.
+Methode aanvragen zijn QoS 0.
 
 #### <a name="response"></a>Antwoord
 
 Het apparaat verzendt reacties naar `$iothub/methods/res/{status}/?$rid={request id}`, waarbij:
 
-* De `status` eigenschap is de status apparaat opgegeven van de methode kan worden uitgevoerd.
+* De eigenschap `status` is de door het apparaat opgegeven status van de methode-uitvoering.
 
-* De `$rid` eigenschap is de aanvraag-ID van de methodeaanroep ontvangen van IoT Hub.
+* De eigenschap `$rid` is de aanvraag-ID van de aanroep methode die van IoT Hub wordt ontvangen.
 
-De instantie is ingesteld door het apparaat en elke status kan zijn.
+De hoofd tekst wordt ingesteld door het apparaat en kan elke status hebben.
 
 ### <a name="amqp"></a>AMQP
 
 De volgende sectie is voor het AMQP-protocol.
 
-#### <a name="method-invocation"></a>Aanroepen van de methode
+#### <a name="method-invocation"></a>Methode aanroep
 
-Het apparaat ontvangt verzoeken van de directe methode die door het maken van een koppeling ontvangen op adres `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`.
+Het apparaat ontvangt directe methode aanvragen door het maken van een ontvangst koppeling op het adres `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`.
 
-Het AMQP-bericht wordt ontvangen op de koppeling ontvangen dat de aanvraag methode vertegenwoordigt. Deze bevat de volgende secties:
+Het AMQP-bericht arriveert op de ontvangst koppeling die de methode aanvraag vertegenwoordigt. Het bevat de volgende secties:
 
-* De correlatie-ID eigenschap, die een aanvraag-ID die moet worden doorgegeven met de desbetreffende methode reactie bevat.
+* De eigenschap correlatie-ID, die een aanvraag-ID bevat die opnieuw moet worden door gegeven met de bijbehorende methode reactie.
 
-* Een eigenschap van de toepassing met de naam `IoThub-methodname`, waarin de naam van de methode wordt aangeroepen.
+* Een toepassings eigenschap met de naam `IoThub-methodname`, die de naam bevat van de methode die wordt aangeroepen.
 
-* De berichttekst voor AMQP met de nettolading van de methode als JSON.
+* De bericht tekst van het AMQP met de methode payload als JSON.
 
 #### <a name="response"></a>Antwoord
 
-Het apparaat maakt een koppeling verzenden om te retourneren van het antwoord van de methode op adres `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`.
+Het apparaat maakt een verzend koppeling om de methode reactie te retour neren op adres `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`.
 
-Reactie van de methode wordt geretourneerd op de koppeling verzenden en is als volgt opgebouwd:
+De reactie van de methode wordt geretourneerd op de verzendende koppeling en is als volgt gestructureerd:
 
-* De correlatie-ID-eigenschap, die de aanvraag-ID bevat van de methode aanvraagbericht doorgegeven.
+* De eigenschap correlatie-ID, die de aanvraag-ID bevat die is door gegeven in het aanvraag bericht van de methode.
 
-* Een eigenschap van de toepassing met de naam `IoThub-status`, waarin de gebruiker opgegeven methodestatus.
+* Een toepassings eigenschap met de naam `IoThub-status`, die de door de gebruiker opgegeven methode status bevat.
 
-* De berichttekst voor AMQP met het antwoord van de methode als JSON.
+* De AMQP-bericht tekst die de methode respons bevat als JSON.
 
-## <a name="additional-reference-material"></a>Meer referentiemateriaal dat beschikbaar is
+## <a name="additional-reference-material"></a>Extra referentie materiaal
 
-Er zijn andere onderwerpen met naslaginformatie in de IoT Hub developer guide:
+Andere naslag onderwerpen in de IoT Hub ontwikkelaars handleiding zijn:
 
-* [IoT Hub-eindpunten](iot-hub-devguide-endpoints.md) beschrijft de verschillende eindpunten die elke IoT-hub voor runtime- en beheerbewerkingen toont.
+* [IOT hub-eind punten](iot-hub-devguide-endpoints.md) beschrijven de verschillende eind punten die elke IOT-hub beschikbaar maakt voor runtime-en beheer bewerkingen.
 
-* [Bandbreedtebeperking en quota's](iot-hub-devguide-quotas-throttling.md) beschrijving van de quota die van toepassing zijn en het beperkingsgedrag u kunt verwachten wanneer u een IoT-Hub.
+* Met [beperking en quota](iot-hub-devguide-quotas-throttling.md) worden de quota's beschreven die van toepassing zijn en het beperkings gedrag dat moet worden verwacht wanneer u IOT hub gebruikt.
 
-* [Azure IoT-apparaat en service-SDK's](iot-hub-devguide-sdks.md) geeft een lijst van de verschillende SDK's kunt u bij het ontwikkelen van apparaat- en service-apps die communiceren met IoT Hub-taal.
+* Met de [sdk's van Azure IOT-apparaat en-service](iot-hub-devguide-sdks.md) worden de diverse sdk's voor de taal weer gegeven die u kunt gebruiken bij het ontwikkelen van zowel apparaat-als service-apps die communiceren met IOT hub.
 
-* [IoT Hub-querytaal voor apparaatdubbels, taken en berichtroutering](iot-hub-devguide-query-language.md) beschrijving van de IoT Hub-querytaal kunt u gegevens ophalen uit IoT Hub over uw apparaatdubbels en taken.
+* [IOT hub query taal voor apparaatdubbels, taken en bericht routering](iot-hub-devguide-query-language.md) beschrijft de IOT hub query taal die u kunt gebruiken om informatie op te halen van IOT hub over de apparaatdubbels en taken van uw apparaat.
 
-* [IoT Hub MQTT-ondersteuning](iot-hub-mqtt-support.md) vindt u meer informatie over IoT Hub-ondersteuning voor het MQTT-protocol.
+* [IOT hub MQTT-ondersteuning](iot-hub-mqtt-support.md) biedt meer informatie over IOT hub ondersteuning voor het MQTT-protocol.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu hebt u geleerd hoe u directe methoden gebruiken, kunt u mogelijk geïnteresseerd in het volgende artikel van IoT Hub developer guide:
+Nu u hebt geleerd hoe u direct-methoden gebruikt, bent u mogelijk geïnteresseerd in het volgende artikel IoT Hub ontwikkelaars handleiding:
 
 * [Taken op meerdere apparaten plannen](iot-hub-devguide-jobs.md)
 
-Als u wilt voor het uitproberen van enkele concepten die in dit artikel wordt beschreven, kunt u mogelijk geïnteresseerd in de volgende zelfstudie voor IoT-Hub:
+Als u een aantal van de concepten wilt uitproberen die in dit artikel worden beschreven, bent u mogelijk geïnteresseerd in de volgende IoT Hub zelf studie:
 
 * [Directe methoden gebruiken](quickstart-control-device-node.md)
-* [Apparaatbeheer met Azure IoT-hulpprogramma's voor VS Code](iot-hub-device-management-iot-toolkit.md)
+* [Apparaatbeheer met Azure IoT-Hulpprogram Ma's voor VS code](iot-hub-device-management-iot-toolkit.md)

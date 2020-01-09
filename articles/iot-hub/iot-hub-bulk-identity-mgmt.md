@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 3b498911999e224003710eced8e0c34989672800
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0d0643adc56a3dcdeef163708c26f2425ab8af43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809187"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429261"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub apparaat-id's in bulk importeren en exporteren
 
@@ -91,7 +91,7 @@ Voor alle IoT Hub lagen is slechts één actieve apparaat-import of-export taak 
 
 ## <a name="export-devices"></a>Apparaten exporteren
 
-Gebruik de methode **ExportDevicesAsync** om het hele REGI ster van IOT hub-identiteiten te exporteren naar een [Azure Storage](../storage/index.yml) BLOB-container met behulp van een [Shared Access Signature](../storage/common/storage-security-guide.md#authorization).
+Gebruik de methode **ExportDevicesAsync** om het volledig van een IOT hub-identiteits register te exporteren naar een Azure Storage BLOB-container met behulp van een Shared Access Signature (SAS). Zie voor meer informatie over gedeelde toegangs handtekeningen [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](../storage/common/storage-sas-overview.md).
 
 Met deze methode kunt u betrouw bare back-ups maken van de apparaatgegevens in een BLOB-container die u beheert.
 

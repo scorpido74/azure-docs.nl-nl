@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/23/2019
+ms.date: 12/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0085db3f38fb8af014434f36893182e1682b05a7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9f67a5b5513ad5d8a07551b2a9f5605fc32a9bf6
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972111"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561844"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met toegestane vertraging
 
@@ -45,7 +44,8 @@ U hebt de volgende items nodig om aan de slag te gaan:
 In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
 * Slack ondersteunt eenmalige aanmelding die wordt gestart vanuit **SP**
-* Toegestane vertraging ondersteunt [ **automatische** gebruikers inrichting en](slack-provisioning-tutorial.md) het ongedaan maken van de inrichting (aanbevolen)
+* Slack biedt ondersteuning voor het **Just In Time** inrichten van gebruikers
+* Slack biedt ondersteuning voor het [**geautomatiseerd**](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-provisioning-tutorial) inrichten van gebruikers
 
 > [!NOTE]
 > De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
@@ -68,10 +68,10 @@ Azure AD SSO met een toegestane vertraging configureren en testen met behulp van
 Als u Azure AD SSO wilt configureren en testen met toegestane vertraging, voltooit u de volgende bouw stenen:
 
 1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
 1. **[Configureer de configuratie van de toegestane vertraging](#configure-slack-sso)** -voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. **[Maak een gebruiker met een toegestane vertragings test](#create-slack-test-user)** voor een soort van B. Simon in een toegestane vertraging die is gekoppeld aan de Azure AD-representatie van de gebruiker.
+    * **[Maak een gebruiker met een toegestane vertragings test](#create-slack-test-user)** voor een soort van B. Simon in een toegestane vertraging die is gekoppeld aan de Azure AD-representatie van de gebruiker.
 1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
@@ -86,12 +86,23 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
 
-    a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<your Slack company>.slack.com`
+    a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<companyname>.slack.com`
 
     b. Typ een URL in het vak **Id (Entiteits-id)** : `https://slack.com`
 
     > [!NOTE]
     > De waarde van de aanmeldings-URL is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [Slack-clientondersteuningsteam](https://slack.com/help/contact) om de waarde te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+
+1. Voor de toegestane toepassings grootte worden de SAML-beweringen in een specifieke indeling verwacht. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+
+    ![installatiekopie](common/edit-attribute.png)
+
+1. De toegestane vertraging van de toepassing verwacht nog maar enkele kenmerken die opnieuw worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten. Als de gebruikers geen e-mail adres hebben, wijst u het **EmailAddress** toe aan **User. userPrincipalName**.
+
+    | Name | Bronkenmerk |
+    | -----|---------|
+    | emailaddress | user.userprincipalname |
+    | | |
 
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
@@ -108,7 +119,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Maken**.
@@ -135,7 +146,7 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 
 1. Meld u in een ander browser venster aan bij de bedrijfs site van de toegestane vertraging als beheerder.
 
-2. Navigeer aan de linkerkant naar de bedrijfs naam van de toegestane vertraging, die in ons geval is ingesteld als **Microsoft Azure AD** en ga vervolgens naar **team instellingen** , zoals weer gegeven in de volgende scherm afbeelding.
+2. Navigeer naar **Microsoft Azure AD** en ga naar **Teaminstellingen**.
 
      ![Eenmalige aanmelding configureren aan de kant van de app](./media/slack-tutorial/tutorial_slack_001.png)
 

@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6c243839e59038d439e177847df4427d253dbe98
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 41e9ff79ad3f7abeda1b946295e8e0eb519c2554
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672053"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561751"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Zelfstudie: Gebruikers eind-tot-eind verifiëren en autoriseren in Azure App Service
 
@@ -44,7 +44,7 @@ U kunt de stappen in deze zelfstudie volgen voor macOS, Linux en Windows.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor het voltooien van deze zelfstudie:
+Vereisten om deze zelfstudie te voltooien:
 
 * [Installeer Git](https://git-scm.com/).
 * [.NET Core installeren](https://www.microsoft.com/net/core/).
@@ -185,7 +185,7 @@ return new NoContentResult();
 
 In de eerste regel wordt een `DELETE /api/Todo/{id}`-aanroep naar de back-end-API-app uitgevoerd.
 
-Sla alle wijzigingen op. Implementeer via het lokale terminalvenster de wijzigingen aan de front-end-app met de volgende Git-opdrachten:
+Sla al uw wijzigingen op. Implementeer via het lokale terminalvenster de wijzigingen aan de front-end-app met de volgende Git-opdrachten:
 
 ```bash
 git add .
@@ -312,7 +312,7 @@ public override void OnActionExecuting(ActionExecutingContext context)
 
 Met deze code wordt de standaard-HTTP-header `Authorization: Bearer <access-token>` aan alle externe API-aanroepen toegevoegd. In de ASP.NET Core-pijplijn voor de uitvoering van de aanvraag wordt `OnActionExecuting` vlak voor de desbetreffende actiemethode (zoals `GetAll()`) uitgevoerd, zodat nu elke uitgaande API-aanroep over het toegangstoken beschikt.
 
-Sla alle wijzigingen op. Implementeer via het lokale terminalvenster de wijzigingen aan de front-end-app met de volgende Git-opdrachten:
+Sla al uw wijzigingen op. Implementeer via het lokale terminalvenster de wijzigingen aan de front-end-app met de volgende Git-opdrachten:
 
 ```bash
 git add .
@@ -324,7 +324,7 @@ Meld u opnieuw aan bij `https://<front-end-app-name>.azurewebsites.net`. Klik op
 
 U moet nu net als eerder gegevens uit de back-end-app kunnen maken, lezen, bijwerken en verwijderen. Het enige verschil is dat beide apps nu worden beveiligd door App Service-verificatie en -autorisatie, waaronder de aanroepen tussen services.
 
-Gefeliciteerd! De servercode heeft nu toegang tot de gegevens van de back-end namens de geverifieerde gebruiker.
+Gefeliciteerd. De servercode heeft nu toegang tot de gegevens van de back-end namens de geverifieerde gebruiker.
 
 ## <a name="call-api-securely-from-browser-code"></a>API veilig vanuit browsercode aanroepen
 
@@ -396,7 +396,7 @@ Door deze wijziging wordt de toewijzing `resolve` toegevoegd, waarmee `/.auth/me
 
 ### <a name="deploy-updates-and-test"></a>Updates implementeren en tests uitvoeren
 
-Sla alle wijzigingen op. Implementeer via het lokale terminalvenster de wijzigingen aan de front-end-app met de volgende Git-opdrachten:
+Sla al uw wijzigingen op. Implementeer via het lokale terminalvenster de wijzigingen aan de front-end-app met de volgende Git-opdrachten:
 
 ```bash
 git add .
@@ -406,7 +406,7 @@ git push frontend master
 
 Ga opnieuw naar `https://<front-end-app-name>.azurewebsites.net`. U moet nu rechtstreeks in de Angular.js-app gegevens in de back-end kunnen maken, lezen, bijwerken en verwijderen.
 
-Gefeliciteerd! De clientcode heeft nu toegang tot de gegevens van de back-end namens de geverifieerde gebruiker.
+Gefeliciteerd. De clientcode heeft nu toegang tot de gegevens van de back-end namens de geverifieerde gebruiker.
 
 ## <a name="when-access-tokens-expire"></a>Wanneer de toegangstokens verlopen
 

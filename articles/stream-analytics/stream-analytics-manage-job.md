@@ -1,20 +1,18 @@
 ---
 title: 'Zelf studie: een Stream Analytics taak maken en beheren met Azure Portal'
 description: Deze zelfstudie biedt een end-to-end-demonstratie van het gebruik van Azure Stream Analytics voor het analyseren van frauduleuze gesprekken in een reeks telefoongesprekken.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: cca9f25fae9646b4207db7aa98f4c334457fc426
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 488664b028568b3014b9b839122705d35104861e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707381"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459566"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Zelf studie: gegevens van telefoon gesprekken analyseren met Stream Analytics en resultaten visualiseren in Power BI dash board
 
@@ -35,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 Voer de volgende acties uit voordat u begint:
 
 * Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) aan.
-* Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+* Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 * Download de app voor het genereren van telefoongesprekken [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) in het Microsoft Downloadcentrum of haal de broncode op van [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator).
 * U hebt een Power BI-account nodig.
 
@@ -45,7 +43,7 @@ Voordat Stream Analytics de gegevensstroom van frauduleuze gesprekken kan analys
 
 Gebruik de volgende stappen voor het maken van een Event Hub en verzenden van gespreksgegevens naar die Event Hub:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Selecteer **Een resource maken** > **Internet of Things** > **Event Hubs**.
 
    ![Azure Event Hub in de portal maken](media/stream-analytics-manage-job/find-event-hub-resource.png)
@@ -53,7 +51,7 @@ Gebruik de volgende stappen voor het maken van een Event Hub en verzenden van ge
 
    |**Instelling**  |**Voorgestelde waarde** |**Beschrijving**  |
    |---------|---------|---------|
-   |Naam     | myEventHubsNS        |  Een unieke naam voor het identificeren van de event hub-naamruimte.       |
+   |Name     | myEventHubsNS        |  Een unieke naam voor het identificeren van de event hub-naamruimte.       |
    |Abonnement     |   \<Uw abonnement\>      |   Selecteer een Azure-abonnement waarvoor u de event hub wilt maken.      |
    |Resourcegroep     |   MyASADemoRG      |  Selecteer **Nieuwe maken** en voer een naam voor de nieuwe resourcegroep voor uw account in.       |
    |Locatie     |   US - west 2      |    De locatie waar de event hub-naamruimte kan worden geïmplementeerd.     |
@@ -63,7 +61,7 @@ Gebruik de volgende stappen voor het maken van een Event Hub en verzenden van ge
    ![Event hub-naamruimte in de Azure-portal maken](media/stream-analytics-manage-job/create-event-hub-namespace.png)
 
 5. Nadat de naamruimte is geïmplementeerd, gaat u naar **Alle resources** en zoekt u *myEventHubNS* in de lijst met Azure-resources. Selecteer *myEventHubsNS* om het te openen.
-6. Selecteer vervolgens **+Event Hub** en voer voor **Naam** *MyEventHub* in of een naam naar keuze. Gebruik standaardopties voor de resterende instellingen en selecteer **Maken**. Wacht tot de implementatie is voltooid.
+6. Selecteer vervolgens **+Event Hub** en voer voor **Naam***MyEventHub* in of een naam naar keuze. Gebruik standaardopties voor de resterende instellingen en selecteer **Maken**. Wacht tot de implementatie is voltooid.
 
    ![Event Hub-configuratie in de Azure-portal](media/stream-analytics-manage-job/create-event-hub-portal.png)
 

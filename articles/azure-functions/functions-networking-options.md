@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: a3df48115dde27478446614c0446d64709adbc6f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1a9c058e590e5df9ab9ec82d900e22f7154d00a0
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226802"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561929"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions-netwerk opties
 
@@ -32,8 +32,8 @@ U kunt functie-apps op verschillende manieren hosten:
 |----------------|-----------|----------------|---------|-----------------------|  
 |[Binnenkomende IP-beperkingen & toegang tot de persoonlijke site](#inbound-ip-restrictions)|✅Ja|✅Ja|✅Ja|✅Ja|
 |[Integratie van virtueel netwerk](#virtual-network-integration)|❌Nee|✅Ja (regionaal)|✅Ja (regionaal en gateway)|✅Ja|
-|[Virtuele netwerk triggers (niet-HTTP)](#virtual-network-triggers-non-http)|❌Nee| ❌Nee|✅Ja|✅Ja|
-|[Hybride verbindingen](#hybrid-connections)|❌Nee|✅Ja|✅Ja|✅Ja|
+|[Virtuele netwerk triggers (niet-HTTP)](#virtual-network-triggers-non-http)|❌Nee| ✅Ja |✅Ja|✅Ja|
+|[Hybride verbindingen](#hybrid-connections) (alleen Windows)|❌Nee|✅Ja|✅Ja|✅Ja|
 |[Uitgaande IP-beperkingen](#outbound-ip-restrictions)|❌Nee| ❌Nee|❌Nee|✅Ja|
 
 ## <a name="inbound-ip-restrictions"></a>Binnenkomende IP-beperkingen
@@ -79,7 +79,7 @@ Met geen van beide functies kunt u niet-RFC 1918-adressen bereiken in ExpressRou
 
 Het gebruik van regionale virtuele netwerk integratie verbindt uw virtuele netwerk niet met on-premises eind punten of configureert service-eind punten. Dat is een afzonderlijke netwerk configuratie. Dankzij de regionale integratie van virtuele netwerken kan uw app aanroepen over deze verbindings typen.
 
-Ongeacht de versie die wordt gebruikt, biedt integratie van virtuele netwerken uw functie-app toegang tot resources in uw virtuele netwerk, maar verleent de persoonlijke site geen toegang tot uw functie-app vanuit het virtuele netwerk. Toegang tot persoonlijke sites houdt in dat uw app alleen toegankelijk is vanuit een particulier netwerk als een virtueel Azure-netwerk. virtuele netwerk integratie is alleen voor het maken van uitgaande oproepen vanuit uw app in het virtuele netwerk.
+Ongeacht de versie die wordt gebruikt, biedt integratie van virtuele netwerken uw functie-app toegang tot resources in uw virtuele netwerk, maar verleent de persoonlijke site geen toegang tot uw functie-app vanuit het virtuele netwerk. Toegang tot persoonlijke sites houdt in dat uw app alleen toegankelijk is vanuit een particulier netwerk als een virtueel Azure-netwerk. Virtuele netwerk integratie is alleen voor het maken van uitgaande oproepen vanuit uw app in het virtuele netwerk.
 
 De functie voor integratie van virtuele netwerken:
 
@@ -91,7 +91,7 @@ Er zijn enkele dingen die de integratie van virtuele netwerken niet ondersteunt,
 
 * Koppelen van een schijf
 * Active Directory-integratie
-* Naamgeving
+* NetBIOS
 
 Virtuele netwerk integratie in Azure Functions gebruikt een gedeelde infra structuur met App Service web-apps. Zie voor meer informatie over de twee typen integratie van virtuele netwerken:
 
@@ -123,19 +123,51 @@ Als uw Key Vault is beveiligd met Service-eind punten, werkt [Key Vault verwijzi
 
 ## <a name="virtual-network-triggers-non-http"></a>Virtuele netwerk triggers (niet-HTTP)
 
-Als u op dit moment andere functie triggers dan HTTP wilt gebruiken vanuit een virtueel netwerk, moet u uw functie-app uitvoeren in een App Service plan of in een App Service Environment.
+Op dit moment kunt u niet-HTTP-trigger functies vanuit een virtueel netwerk op twee manieren gebruiken: 
++ Voer uw functie-app uit in een Premium-abonnement en schakel ondersteuning voor virtuele netwerk triggers in.
++ Voer uw functie-app uit in een App Service plan of App Service Environment.
 
-Stel dat u Azure Cosmos DB wilt configureren om alleen verkeer van een virtueel netwerk te accepteren. U moet uw functie-app implementeren in een app service-plan dat virtuele netwerk integratie met dat virtuele netwerk biedt om Azure Cosmos DB triggers van die bron te configureren. Tijdens de preview staat het configureren van de integratie van virtuele netwerken niet toe dat het Premium-abonnement wordt geactiveerd door die Azure Cosmos DB bron.
+### <a name="premium-plan-with-virtual-network-triggers"></a>Premium-abonnement met virtuele netwerk triggers
 
-Zie [deze lijst voor alle niet-http-triggers](./functions-triggers-bindings.md#supported-bindings) om te controleren wat er wordt ondersteund.
+Wanneer u in een Premium-abonnement wordt uitgevoerd, kunt u niet-HTTP-activerings functies verbinden met services die worden uitgevoerd in een virtueel netwerk. Hiervoor moet u ondersteuning voor virtuele netwerk triggers inschakelen voor uw functie-app. De **ondersteunings** instelling voor het activeren van virtuele netwerken vindt u in de [Azure Portal](https://portal.azure.com) onder **functie-app-instellingen**.
+
+![VNETToggle](media/functions-networking-options/virtual-network-trigger-toggle.png)
+
+U kunt ook virtuele netwerk triggers inschakelen met behulp van de volgende Azure CLI-opdracht:
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <premium_plan_name> --set properties.functionsRuntimeScaleMonitoringEnabled=1
+```
+
+Virtuele netwerk triggers worden ondersteund in versie 2. x en hoger van de functions-runtime. De volgende niet-HTTP-trigger typen worden ondersteund.
+
+| Extensie | Minimale versie |
+|-----------|---------| 
+|[Micro soft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 of hoger |
+|[Micro soft. Azure. webjobs. Extensions. Event hubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 of hoger|
+|[Micro soft. Azure. webjobs. Extensions. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus)| 3.2.0 of hoger|
+|[Micro soft. Azure. webjobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB)| 3.0.5 of hoger|
+|[Micro soft. Azure. webjobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)| 2.0.0 of hoger|
+
+> [!IMPORTANT]
+> Bij het inschakelen van ondersteuning voor virtuele netwerk triggers worden alleen de bovenstaande typen trigger dynamisch met uw toepassing geschaald. U kunt nog steeds triggers gebruiken die niet hierboven worden weer gegeven, maar ze worden niet groter dan het aantal vooraf gewarmde instanties. Zie [Triggers en bindingen](./functions-triggers-bindings.md#supported-bindings) voor de volledige lijst met triggers.
+
+### <a name="app-service-plan-and-app-service-environment-with-virtual-network-triggers"></a>App Service plan en App Service Environment met virtuele netwerk triggers
+
+Wanneer uw functie-app wordt uitgevoerd in een App Service plan of een App Service Environment, kunt u niet-HTTP-trigger functies gebruiken. Als u wilt dat uw functies correct worden geactiveerd, moet u verbinding hebben met een virtueel netwerk met toegang tot de bron die is gedefinieerd in de trigger verbinding. 
+
+Stel dat u Azure Cosmos DB wilt configureren om alleen verkeer van een virtueel netwerk te accepteren. In dit geval moet u uw functie-app implementeren in een App Service plan dat virtuele netwerk integratie met dat virtuele netwerk biedt. Hiermee kan een functie worden geactiveerd door die Azure Cosmos DB resource. 
 
 ## <a name="hybrid-connections"></a>Hybride verbindingen
 
-[Hybride verbindingen](../service-bus-relay/relay-hybrid-connections-protocol.md) is een functie van Azure relay die u kunt gebruiken om toegang te krijgen tot toepassings bronnen in andere netwerken. Het biedt toegang vanuit uw app tot een eind punt van de toepassing. U kunt deze niet gebruiken voor toegang tot uw toepassing. Hybride verbindingen is beschikbaar voor functies die alleen in het verbruiks abonnement worden uitgevoerd.
+[Hybride verbindingen](../service-bus-relay/relay-hybrid-connections-protocol.md) is een functie van Azure relay die u kunt gebruiken om toegang te krijgen tot toepassings bronnen in andere netwerken. Het biedt toegang vanuit uw app tot een eind punt van de toepassing. U kunt deze niet gebruiken voor toegang tot uw toepassing. Hybride verbindingen is alleen beschikbaar voor functies die worden uitgevoerd in Windows, behalve het verbruiks abonnement.
 
 De hybride verbinding wordt gebruikt in Azure Functions en is afgestemd op één combi natie van TCP-host en poort. Dit betekent dat het eind punt van de hybride verbinding zich op elk besturings systeem en elke toepassing kan bevindt, mits u een TCP-Luister poort opent. Met de functie Hybride verbindingen weet u niet wat het toepassings protocol is of wat u toegang hebt. Het biedt alleen toegang tot het netwerk.
 
 Zie de [app service-documentatie voor hybride verbindingen voor](../app-service/app-service-hybrid-connections.md)meer informatie. Deze zelfde configuratie stappen ondersteunen Azure Functions.
+
+>[!IMPORTANT]
+> Hybride verbindingen wordt alleen ondersteund op Windows-abonnementen. Linux wordt niet ondersteund
 
 ## <a name="outbound-ip-restrictions"></a>Uitgaande IP-beperkingen
 

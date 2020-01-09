@@ -1,25 +1,16 @@
 ---
-title: Veelvoorkomende code pakket fouten vaststellen met behulp van Service Fabric | Microsoft Docs
+title: Veelvoorkomende code pakket fouten vaststellen met behulp van Service Fabric
 description: Meer informatie over het oplossen van algemene code pakket fouten met Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
 author: grzuber
-manager: gkhanna
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/09/2019
 ms.author: grzuber
-ms.openlocfilehash: 320a55e8b14648b1d7e256855582ab31846a63cf
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 344fef70522240da2236a020c96308c472c9c545
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249223"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463113"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>Veelvoorkomende code pakket fouten vaststellen met behulp van Service Fabric
 
@@ -50,7 +41,7 @@ Service Fabric kan verantwoordelijk zijn voor het beëindigen van uw code pakket
 >[!NOTE]
 > Als uw proces of container wordt beëindigd met een andere afsluit code dan de codes in de volgende tabel, is Service Fabric niet verantwoordelijk voor het beëindigen ervan.
 
-Afsluit code | Description
+Afsluitcode | Beschrijving
 --------- | -----------
 7147 | Hiermee wordt aangegeven dat het proces of de container door Service Fabric op de juiste wijze is afgesloten door een CTRL + C-signaal te verzenden.
 7148 | Geeft aan dat het proces of de container is beëindigd Service Fabric. Deze fout code geeft soms aan dat het proces of de container niet tijdig heeft gereageerd na het verzenden van een CTRL + C-signaal en dat het is beëindigd.
@@ -58,14 +49,14 @@ Afsluit code | Description
 
 ## <a name="other-common-error-codes-and-their-potential-fixes"></a>Andere veelvoorkomende fout codes en mogelijke oplossingen
 
-Afsluit code | Hexadecimale waarde | Korte beschrijving | Hoofdoorzaak | Mogelijke oplossing
+Afsluitcode | Hexadecimale waarde | Korte beschrijving | Hoofdoorzaak | Mogelijke oplossing
 --------- | --------- | ----------------- | ---------- | -------------
 3221225794 | 0xc0000142 | STATUS_DLL_INIT_FAILED | Deze fout betekent soms dat de computer geen heap-ruimte op het bureau blad heeft. Dit is met name waarschijnlijk als u talrijke processen hebt die deel uitmaken van uw toepassing die op het knoop punt wordt uitgevoerd. | Als uw programma niet is gebouwd om te reageren op CTRL + C signalen, kunt u de instelling **EnableActivateNoWindow** inschakelen in het cluster manifest. Als u deze instelling inschakelt, wordt uw code pakket zonder GUI-venster uitgevoerd en worden er geen CTRL + C-signalen meer ontvangen. Met deze actie wordt ook de hoeveelheid beschik bare heap-ruimte op het bureau blad van elk proces verminderd. Als uw code pakket CTRL + C signalen moet ontvangen, kunt u de grootte van het bureau blad van het knoop punt verg Roten.
 3762504530 | 0xe0434352 | N/A | Deze waarde vertegenwoordigt de fout code voor een niet-verwerkte uitzonde ring van beheerde code (.NET). | Deze afsluit code geeft aan dat uw toepassing een uitzonde ring heeft gegenereerd die niet is verwerkt en waardoor het proces is beëindigd. Als eerste stap bij het bepalen van de activering van deze fout, fouten opsporen in de logboeken en dump bestanden van uw toepassing.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het diagnosticeren van [andere algemene scenario's](service-fabric-diagnostics-common-scenarios.md).
+* Meer informatie over het [diagnosticeren van andere algemene scenario's](service-fabric-diagnostics-common-scenarios.md).
 * Bekijk een gedetailleerd overzicht van Azure Monitor-logboeken en wat ze bieden door [Azure Monitor overzicht](../operations-management-suite/operations-management-suite-overview.md)te lezen.
-* Meer informatie over Azure Monitor- [Logboeken](../log-analytics/log-analytics-alerts.md) voor hulp bij detectie en diagnose.
+* Meer informatie over Azure Monitor- [Logboeken voor hulp bij detectie](../log-analytics/log-analytics-alerts.md) en diagnose.
 * Krijg kennis met de functies voor [Zoeken in Logboeken en query's](../log-analytics/log-analytics-log-searches.md) die worden aangeboden als onderdeel van Azure monitor Logboeken.

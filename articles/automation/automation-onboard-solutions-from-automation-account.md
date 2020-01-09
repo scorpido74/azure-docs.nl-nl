@@ -2,19 +2,15 @@
 title: Meer informatie over het onboarden van Updatebeheer-, Wijzigingen bijhouden-en inventaris oplossingen in Azure Automation
 description: Meer informatie over het voorbereiden van een virtuele machine van Azure met Updatebeheer, Wijzigingen bijhouden en inventaris oplossingen die deel uitmaken van Azure Automation
 services: automation
-ms.service: automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 4/11/2019
 ms.topic: conceptual
-manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: ab934db026b598e80541f98d74df70c893692120
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a63202fd5f29c3c2eee4ecaaae9a940078c15edc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849697"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421875"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Updatebeheer-, Wijzigingen bijhouden-en inventaris oplossingen voor onboarding
 
@@ -65,9 +61,9 @@ Wanneer een computer wordt toegevoegd aan de Updatebeheer of de oplossingen voor
 
 Navigeer naar uw Automation-account en selecteer **opgeslagen Zoek opdrachten** onder **Algemeen**. De twee opgeslagen Zoek opdrachten die door deze oplossingen worden gebruikt, kunnen worden weer gegeven in de volgende tabel:
 
-|Naam     |Category  |Alias  |
+|Name     |Categorie  |Alias  |
 |---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  Change tracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
+|MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Updates        | Updates__MicrosoftDefaultComputerGroup         |
 
 Selecteer een opgeslagen zoek opdracht om de query weer te geven die wordt gebruikt om de groep te vullen. In de volgende afbeelding ziet u de query en de resultaten:

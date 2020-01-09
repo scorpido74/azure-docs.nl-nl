@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 6079f904002f00a39d3ee9d70dedd9d261e2825f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c43f3021009c0c8a5a414b18bb9f0ff7d7a4a4bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837630"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427659"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Python machine learning scripts uitvoeren in Azure Machine Learning Studio (klassiek)
 
@@ -31,7 +31,7 @@ De primaire interface naar python in Studio (klassiek) is via de [script][execut
 
 ![Voor beeld van python-code in het vak module parameter](./media/execute-python-scripts/embedded-machine-learning-python-script.png)
 
-### <a name="input-parameters"></a>Invoer parameters
+### <a name="input-parameters"></a>Invoerparameters
 
 Invoer voor de python-module worden weer gegeven als Panda DataFrames. De functie `azureml_main` accepteert Maxi maal twee optionele Panda DataFrames als para meters.
 
@@ -53,7 +53,7 @@ De functie `azureml_main` moet een enkele Panda-data frame retour neren die is v
 
 ## <a name="translation-of-input-and-output-data-types"></a>Omzetting van gegevens typen voor invoer en uitvoer
 
-Studio-gegevens sets zijn niet hetzelfde als Panda DataFrames. Als gevolg hiervan worden invoer gegevens sets in de klassieke versie van Studio geconverteerd naar Panda data frame en worden uitvoer DataFrames weer geconverteerd naar Studio-gegevens sets (klassiek). Tijdens dit conversie proces worden ook de volgende vertalingen uitgevoerd:
+Studio-gegevens sets zijn niet hetzelfde als Panda DataFrames. Als gevolg hiervan worden invoer gegevens sets in Studio (klassiek) geconverteerd naar Panda data frame en worden uitvoer DataFrames weer geconverteerd naar Studio-gegevens sets (klassiek). Tijdens dit conversie proces worden ook de volgende vertalingen uitgevoerd:
 
  **Python-gegevens type** | **Studio-Vertaal procedure** |
 | --- | --- |
@@ -67,9 +67,9 @@ Studio-gegevens sets zijn niet hetzelfde als Panda DataFrames. Als gevolg hierva
 
 ## <a id="import-modules"></a>Bestaande python-script modules importeren
 
-De back-end die wordt gebruikt om python uit te voeren, is gebaseerd op [Anaconda](https://www.anaconda.com/distribution/), een veelgebruikte weten schappelijke python-distributie. Het wordt geleverd met dicht bij 200 van de meest voorkomende Python-pakketten die worden gebruikt in gegevens gerichte werk belastingen. De klassieke versie van Studio biedt momenteel geen ondersteuning voor het gebruik van pakket beheer systemen zoals PIP of Conda voor het installeren en beheren van externe bibliotheken.  Als u meer bibliotheken nodig hebt, moet u het volgende scenario gebruiken als richt lijn.
+De back-end die wordt gebruikt om python uit te voeren, is gebaseerd op [Anaconda](https://www.anaconda.com/distribution/), een veelgebruikte weten schappelijke python-distributie. Het wordt geleverd met dicht bij 200 van de meest voorkomende Python-pakketten die worden gebruikt in gegevens gerichte werk belastingen. Studio (klassiek) biedt momenteel geen ondersteuning voor het gebruik van pakket beheer systemen zoals PIP of Conda voor het installeren en beheren van externe bibliotheken.  Als u meer bibliotheken nodig hebt, moet u het volgende scenario gebruiken als richt lijn.
 
-Een veelvoorkomend gebruik van cases is het opnemen van bestaande python-scripts in de klassieke versie van Studio experimenten. De [script module python uitvoeren][execute-python-script] accepteert een zip-bestand met python-modules op de derde invoer poort. Het bestand wordt tijdens runtime uitgepakt door het uitvoerings raamwerk en de inhoud wordt toegevoegd aan het bibliotheekpad van de Python-interpreter. Met de functie voor het `azureml_main`-toegangs punt kunnen deze modules vervolgens rechtstreeks worden geïmporteerd. 
+Een veelvoorkomend gebruik van cases is het opnemen van bestaande python-scripts in Studio-experimenten (klassiek). De [script module python uitvoeren][execute-python-script] accepteert een zip-bestand met python-modules op de derde invoer poort. Het bestand wordt tijdens runtime uitgepakt door het uitvoerings raamwerk en de inhoud wordt toegevoegd aan het bibliotheekpad van de Python-interpreter. Met de functie voor het `azureml_main`-toegangs punt kunnen deze modules vervolgens rechtstreeks worden geïmporteerd. 
 
 Bekijk een voor beeld van het bestand Hello.py dat een eenvoudige ' Hello, World '-functie bevat.
 
@@ -79,7 +79,7 @@ Vervolgens maken we een bestand hello. zip dat Hello.py bevat:
 
 ![Zip-bestand met door de gebruiker gedefinieerde python-code](./media/execute-python-scripts/figure5.png)
 
-Upload het zip-bestand als een gegevensset in de klassieke versie van Studio. Maak en voer vervolgens een experiment uit dat gebruikmaakt van de python-code in het bestand hello. zip door deze te koppelen aan de derde invoer poort van de script module voor het **uitvoeren van python** , zoals weer gegeven in de volgende afbeelding.
+Upload het zip-bestand als een gegevensset in Studio (klassiek). Maak en voer vervolgens een experiment uit dat gebruikmaakt van de python-code in het bestand hello. zip door deze te koppelen aan de derde invoer poort van de script module voor het **uitvoeren van python** , zoals weer gegeven in de volgende afbeelding.
 
 ![Voorbeeld experiment met Hello. zip als invoer voor een python-script module uitvoeren](./media/execute-python-scripts/figure6a.png)
 
@@ -141,11 +141,11 @@ Dit proces wordt geïllustreerd in de volgende afbeeldingen die een spreidings p
 
 ![Grafieken visualiseren voor een voor beeld van een experiment met behulp van python-code](./media/execute-python-scripts/figure-v2-9b.png)
 
-Het is mogelijk om meerdere cijfers te retour neren door ze op te slaan in verschillende installatie kopieën. De klassieke versie van Studio Runtime kiest alle installatie kopieën en voegt deze samen voor visualisatie.
+Het is mogelijk om meerdere cijfers te retour neren door ze op te slaan in verschillende installatie kopieën. Studio (klassiek) runtime haalt alle installatie kopieën op en voegt deze samen voor visualisatie.
 
 ## <a name="advanced-examples"></a>Geavanceerde voor beelden
 
-De Anaconda-omgeving die in de klassieke versie van Studio is geïnstalleerd, bevat algemene pakketten zoals NumPy, SciPy en scikits-learn. Deze pakketten kunnen effectief worden gebruikt voor de verwerking van gegevens in een machine learning-pijp lijn.
+De Anaconda-omgeving die in Studio (klassiek) is geïnstalleerd, bevat algemene pakketten zoals NumPy, SciPy en scikits-leer. Deze pakketten kunnen effectief worden gebruikt voor de verwerking van gegevens in een machine learning-pijp lijn.
 
 Het volgende experiment en script illustreren bijvoorbeeld het gebruik van ensemble-kennissen in scikits-Leer hoe u de prioriteits scores van functies voor een gegevensset kunt berekenen. De scores kunnen worden gebruikt om de functie selectie onder Super visie uit te voeren voordat deze in een ander model wordt ingevoerd.
 
@@ -153,7 +153,7 @@ Hier volgt de python-functie die wordt gebruikt voor het berekenen van de priori
 
 ![Functie voor het rangschikken van functies op scores](./media/execute-python-scripts/figure8.png)
 
-Het volgende experiment berekent en retourneert de prioriteits scores van functies in de gegevensset ' Pima Indiase diabetes ' in de klassieke versie van Azure Machine Learning Studio:
+Het volgende experiment berekent en retourneert de prioriteits scores van functies in de gegevensset ' Pima Indiase diabetes ' in Azure Machine Learning Studio (klassiek):
 
 ![Experimenteer met het rangschikken van functies in de Pima Indiase diabetes-gegevensset met behulp van python](./media/execute-python-scripts/figure9a.png)
 

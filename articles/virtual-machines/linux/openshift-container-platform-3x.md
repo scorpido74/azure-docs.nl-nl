@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 56607de57939be769b1951f0eee9078c46d610c0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 615d9a3c5c359174ef15028e82044a85da0dd733
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035448"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561283"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Open Shift container platform 3,11 implementeren in azure
 
@@ -27,7 +27,7 @@ U kunt een van de volgende methoden gebruiken om open Shift container platform 3
 
 - U kunt de benodigde onderdelen van de Azure-infra structuur hand matig implementeren en vervolgens de documentatie van open [SHIFT container platform](https://docs.openshift.com/container-platform)volgen.
 - U kunt ook een bestaande [Resource Manager-sjabloon](https://github.com/Microsoft/openshift-container-platform/) gebruiken die de implementatie van het open Shift container platform-cluster vereenvoudigt.
-- Een andere mogelijkheid is om de [Azure Marketplace-aanbieding](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview)te gebruiken.
+- Een andere mogelijkheid is om de [Azure Marketplace-aanbieding](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy)te gebruiken.
 
 Voor alle opties is een Red Hat-abonnement vereist. Tijdens de implementatie wordt het Red Hat Enterprise Linux-exemplaar geregistreerd bij het Red Hat-abonnement en gekoppeld aan de groeps-ID die de rechten voor open Shift container platform bevat.
 Zorg ervoor dat u een geldige gebruikers naam, wacht woord en groeps-ID voor Red Hat Subscription Manager (RHSM) hebt. U kunt een activerings sleutel, organisatie-ID en groeps-ID gebruiken. U kunt deze informatie controleren door u aan te melden bij https://access.redhat.com.
@@ -258,7 +258,7 @@ Verschillende releases kunnen verschillende para meters hebben, dus controleer d
 | `cnsVmSize` | Grootte van de VM-knoop punt (native Storage) van de container. Selecteer een van de toegestane VM-grootten die worden vermeld in het bestand azuredeploy. json |  | Standard_E4s_v3 |
 | `osImageType` | De RHEL-installatie kopie die moet worden gebruikt. defaultgallery: op aanvraag; Marketplace: afbeelding van derden | defaultgallery <br> marketplace | defaultgallery |
 | `marketplaceOsImage` | Als `osImageType` Marketplace is, voert u de juiste waarden in voor ' Publisher ', ' offer ', ' SKU ', ' versie ' van de Marketplace-aanbieding. Deze para meter is een object type |  |  |
-| `storageKind` | Het type opslag dat moet worden gebruikt  | bijgehouden<br> beheerde | bijgehouden |
+| `storageKind` | Het type opslag dat moet worden gebruikt  | Bijgehouden<br> Beheerde | Bijgehouden |
 | `openshiftClusterPrefix` | Het cluster voorvoegsel dat wordt gebruikt voor het configureren van hostnamen voor alle knoop punten.  Tussen 1 en 20 tekens |  | mycluster |
 | `minoVersion` | De secundaire versie van open Shift container platform 3,11 om te implementeren |  | 69 |
 | `masterInstanceCount` | Aantal te implementeren modellen knoop punten | 1, 3, 5 | 3 |
@@ -269,9 +269,9 @@ Verschillende releases kunnen verschillende para meters hebben, dus controleer d
 | `dataDiskSize` | Grootte van de gegevens schijf die moet worden gekoppeld aan knoop punten voor docker-volume (in GB) | 32, 64, 128, 256, 512, 1024, 2048 | 64 |
 | `cnsGlusterDiskSize` | Grootte van de gegevens schijf die moet worden gekoppeld aan CNS-knoop punten voor gebruik door glusterfs (in GB | 32, 64, 128, 256, 512, 1024, 2048 | 128 |
 | `adminUsername` | Gebruikers naam van de beheerder voor de aanmelding van zowel het besturings systeem (VM) als de eerste openshift-gebruiker |  | ocpadmin |
-| `enableMetrics` | Metrieken inschakelen. Voor metrische gegevens zijn meer resources nodig, dus Selecteer de juiste grootte voor infra structuur-VM | true <br> false | false |
-| `enableLogging` | Schakel logboek registratie in. voor elasticsearch Pod is 8 GB RAM vereist. Selecteer de juiste grootte voor infra structuur-VM | true <br> false | false |
-| `enableCNS` | Native opslag in container inschakelen | true <br> false | false |
+| `enableMetrics` | Metrieken inschakelen. Voor metrische gegevens zijn meer resources nodig, dus Selecteer de juiste grootte voor infra structuur-VM | waar <br> false | false |
+| `enableLogging` | Schakel logboek registratie in. voor elasticsearch Pod is 8 GB RAM vereist. Selecteer de juiste grootte voor infra structuur-VM | waar <br> false | false |
+| `enableCNS` | Native opslag in container inschakelen | waar <br> false | false |
 | `rhsmUsernameOrOrgId` | Gebruikers naam of organisatie-ID van Red Hat Subscription Manager |  |  |
 | `rhsmPoolId` | De groeps-ID van Red Hat Subscription Manager met de rechten van open Shift voor reken knooppunten |  |  |
 | `rhsmBrokerPoolId` | De groeps-ID van Red Hat Subscription Manager met de rechten van open Shift voor modellen en infra structuur knooppunten. Als u geen andere groeps-Id's hebt, voert u dezelfde groeps-ID in als ' rhsmPoolId ' |  |
@@ -279,7 +279,7 @@ Verschillende releases kunnen verschillende para meters hebben, dus controleer d
 | `keyVaultSubscriptionId` | De abonnements-ID van het abonnement dat de Key Vault bevat |  |  |
 | `keyVaultResourceGroup` | De naam van de resource groep die de Key Vault bevat |  |  |
 | `keyVaultName` | De naam van de Key Vault die u hebt gemaakt |  |  |
-| `enableAzure` | Azure Cloud provider inschakelen | true <br> false | true |
+| `enableAzure` | Azure Cloud provider inschakelen | waar <br> false | waar |
 | `aadClientId` | Azure Active Directory client-ID ook bekend als toepassings-ID voor Service-Principal |  |  |
 | `domainName` | De naam van de aangepaste domein naam die moet worden gebruikt (indien van toepassing). Ingesteld op ' geen ' als er geen volledig particulier cluster wordt geïmplementeerd |  | geen |
 | `masterClusterDnsType` | Domein type voor open Shift-webconsole. ' default ' maakt gebruik van het DNS-label van het Master-infra structuur openbaar IP-adres. met aangepast kunt u uw eigen naam definiëren | standaardinstelling <br> instel | standaardinstelling |
@@ -300,9 +300,9 @@ Verschillende releases kunnen verschillende para meters hebben, dus controleer d
 | `existingInfraSubnetReference` | Volledige verwijzing naar het bestaande subnet voor infra structuur knooppunten. Niet nodig bij het maken van een nieuw vNet/subnet |  |  |
 | `existingCnsSubnetReference` | Volledige verwijzing naar het bestaande subnet voor de CNS-knoop punten. Niet nodig bij het maken van een nieuw vNet/subnet |  |  |
 | `existingNodeSubnetReference` | Volledige verwijzing naar het bestaande subnet voor reken knooppunten. Niet nodig bij het maken van een nieuw vNet/subnet |  |  |
-| `masterClusterType` | Geef op of het cluster particuliere of open bare hoofd knooppunten gebruikt. Als privé is gekozen, worden de hoofd knooppunten niet blootgesteld aan Internet via een openbaar IP-adres. In plaats daarvan wordt het privé-IP-adres gebruikt dat is opgegeven in de `masterPrivateClusterIp` | Open <br> persoonlijk | Open |
+| `masterClusterType` | Geef op of het cluster particuliere of open bare hoofd knooppunten gebruikt. Als privé is gekozen, worden de hoofd knooppunten niet blootgesteld aan Internet via een openbaar IP-adres. In plaats daarvan wordt het privé-IP-adres gebruikt dat is opgegeven in de `masterPrivateClusterIp` | public <br> persoonlijk | public |
 | `masterPrivateClusterIp` | Als er knoop punten van een persoonlijke Master zijn geselecteerd, moet u een privé-IP-adres opgeven voor gebruik door de interne load balancer voor hoofd knooppunten. Dit statische IP-adres moet zich in het CIDR-blok bevinden voor het hoofd-subnet en wordt niet al gebruikt. Als er open bare hoofd knooppunten zijn geselecteerd, wordt deze waarde niet gebruikt, maar moet deze wel worden opgegeven |  | 10.1.0.200 |
-| `routerClusterType` | Geef op of het cluster particuliere of open bare infra structuur knooppunten gebruikt. Als privé is gekozen, worden de infra structuur niet via een openbaar IP-adres blootgesteld aan Internet. In plaats daarvan wordt het privé-IP-adres gebruikt dat is opgegeven in de `routerPrivateClusterIp` | Open <br> persoonlijk | Open |
+| `routerClusterType` | Geef op of het cluster particuliere of open bare infra structuur knooppunten gebruikt. Als privé is gekozen, worden de infra structuur niet via een openbaar IP-adres blootgesteld aan Internet. In plaats daarvan wordt het privé-IP-adres gebruikt dat is opgegeven in de `routerPrivateClusterIp` | public <br> persoonlijk | public |
 | `routerPrivateClusterIp` | Als er particuliere infra structuur knooppunten zijn geselecteerd, moet er een privé-IP-adres worden opgegeven voor gebruik door de interne load balancer voor infra structuur knooppunten. Dit statische IP-adres moet zich in het CIDR-blok bevinden voor het hoofd-subnet en wordt niet al gebruikt. Als open bare-infra structuur knooppunten zijn geselecteerd, wordt deze waarde niet gebruikt, maar moet deze wel worden opgegeven |  | 10.2.0.200 |
 | `routingCertType` | Aangepast certificaat voor routerings domein of het standaard zelfondertekende certificaat gebruiken-volg de instructies in de sectie **aangepaste certificaten** | selfsigned <br> instel | selfsigned |
 | `masterCertType` | Aangepast certificaat voor hoofd domein of het standaard zelfondertekende certificaat gebruiken-volg de instructies in de sectie **aangepaste certificaten** | selfsigned <br> instel | selfsigned |
@@ -335,7 +335,7 @@ Als u de opdracht regel niet wilt laten wachten tot de implementatie is voltooid
 
 ## <a name="connect-to-the-openshift-cluster"></a>Verbinding maken met het open Shift-cluster
 
-Wanneer de implementatie is voltooid, haalt u de verbinding op in de sectie uitvoer van de implementatie. Maak verbinding met de open Shift-console met uw browser met behulp van de open **SHIFT console-URL**. u kunt ook SSH-naar de bastion-host. Hieronder volgt een voor beeld waarin de gebruikers naam van de beheerder clusteradmin is en de Bastion open bare IP DNS FQDN is bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
+Wanneer de implementatie is voltooid, haalt u de verbinding op in de sectie uitvoer van de implementatie. Maak verbinding met de open Shift-console met uw browser met behulp van de open **SHIFT console-URL**. U kunt ook SSH-naar de bastion-host. Hieronder volgt een voor beeld waarin de gebruikers naam van de beheerder clusteradmin is en de Bastion open bare IP DNS FQDN is bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com

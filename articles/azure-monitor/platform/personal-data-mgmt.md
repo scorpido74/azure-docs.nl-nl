@@ -4,15 +4,15 @@ description: In dit artikel wordt beschreven hoe u persoons gegevens beheert die
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 7733b27bb5af01e55cd732c16f6c9cb1e9301819
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7f8b40094b30a01e4189bcf04d4c194e5b0b4285
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932132"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75394757"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Richt lijnen voor persoons gegevens die zijn opgeslagen in Log Analytics en Application Insights
 
@@ -60,7 +60,7 @@ Log Analytics is een flexibele Store, waarmee u een schema voor uw gegevens voor
     | where timestamp > ago(1d)
     | summarize numNonObfuscatedIPs_24h = count() by $table
     ```
-* *Gebruikers-id's*: standaard worden door Application Insights wille keurig gegenereerde id's gebruikt voor het bijhouden van gebruikers en sessies. Het is echter gebruikelijk dat deze velden worden overschreven voor het opslaan van een ID die relevant is voor de toepassing. Bijvoorbeeld: gebruikers namen, AAD-GUID'S, enzovoort. Deze Id's worden vaak beschouwd als persoonlijke gegevens en moeten daarom op de juiste wijze worden afgehandeld. Onze aanbeveling is altijd om deze Id's te veranoniem makenen. Velden waarin deze waarden vaak worden gevonden, zijn session_Id, user_Id, user_AuthenticatedId, user_AccountId en customDimensions.
+* *Gebruikers-id's*: standaard worden door Application Insights wille keurig gegenereerde id's gebruikt voor het bijhouden van gebruikers en sessies. Het is echter gebruikelijk dat deze velden worden overschreven voor het opslaan van een ID die relevant is voor de toepassing. Bijvoorbeeld: gebruikers namen, AAD-GUID'S, enzovoort. Deze Id's worden vaak beschouwd als persoonlijke gegevens en moeten daarom op de juiste wijze worden afgehandeld. Onze aanbeveling is altijd om deze Id's te veranoniem makenen. Velden waarin deze waarden vaak worden gevonden, zijn onder andere session_Id, user_Id, user_AuthenticatedId, user_AccountId, en customDimensions.
 * *Aangepaste gegevens*: met Application Insights kunt u een set aangepaste dimensies toevoegen aan elk gegevens type. Deze dimensies kunnen *alle* gegevens zijn. Gebruik de volgende query om alle aangepaste dimensies te identificeren die in de afgelopen 24 uur zijn verzameld:
     ```
     search * 
@@ -73,7 +73,7 @@ Log Analytics is een flexibele Store, waarmee u een schema voor uw gegevens voor
 
 ## <a name="how-to-export-and-delete-private-data"></a>Privé gegevens exporteren en verwijderen
 
-Zoals vermeld in de sectie [strategie voor het afhandelen van persoonlijke gegevens](#strategy-for-personal-data-handling) , wordt het __ten zeerste__ aanbevolen om uw gegevensverzamelings beleid te herstructureren om het verzamelen van persoonlijke gegevens uit te scha kelen, af te zetten of te anoniem of anders wijzigt u deze om te voor komen dat dit wordt beschouwd als ' persoonlijk '. Het afhandelen van de gegevens leidt ertoe dat de kosten voor u en uw team een strategie definiëren en automatiseren, een interface bouwen voor uw klanten om te communiceren met hun gegevens via en continue onderhouds kosten. Verder is het kostenbesparend voor Log Analytics en Application Insights en is een groot volume van gelijktijdige query's of API-aanroepen voor het opschonen van api's de mogelijkheid om alle andere interactie met Log Analytics functionaliteit negatief te beïnvloeden. Dit heeft te maken met inderdaad enkele geldige scenario's waarin privé gegevens moeten worden verzameld. In dergelijke gevallen moeten gegevens worden verwerkt, zoals beschreven in deze sectie.
+Zoals vermeld in de sectie [strategie voor het afhandelen van persoonlijke gegevens](#strategy-for-personal-data-handling) , wordt het __ten zeerste__ aangeraden om het beleid voor gegevens verzameling te herstructureren om het verzamelen van persoonlijke gegevens uit te scha kelen, te maken of op te Anoniemen, of anderszins te wijzigen om het te verwijderen als ' privé '. Het afhandelen van de gegevens leidt ertoe dat de kosten voor u en uw team een strategie definiëren en automatiseren, een interface bouwen voor uw klanten om te communiceren met hun gegevens via en continue onderhouds kosten. Verder is het kostenbesparend voor Log Analytics en Application Insights en is een groot volume van gelijktijdige query's of API-aanroepen voor het opschonen van api's de mogelijkheid om alle andere interactie met Log Analytics functionaliteit negatief te beïnvloeden. Dit heeft te maken met inderdaad enkele geldige scenario's waarin privé gegevens moeten worden verzameld. In dergelijke gevallen moeten gegevens worden verwerkt, zoals beschreven in deze sectie.
 
 [!INCLUDE [gdpr-intro-sentence](../../../includes/gdpr-intro-sentence.md)]
 

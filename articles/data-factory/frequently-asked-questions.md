@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 2da12bbc760ff06ad0737ed9d48e12ea81260655
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8238f2ea8395fc53044703db619d768918cb1834
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674732"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644695"
 ---
 # <a name="azure-data-factory-faq"></a>Veelgestelde vragen over Azure Data Factory
 In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Data Factory.  
@@ -72,7 +72,7 @@ Als u uw SSIS-workloads wilt verplaatsen, kunt u een Data Factory maken en een A
 ### <a name="sdks"></a>SDK's
 Als u een ervaren gebruiker bent en op zoek bent naar een programmatische interface, biedt Data Factory een uitgebreide set Sdk's die u kunt gebruiken om pijp lijnen te ontwerpen, beheren of bewaken met behulp van uw favoriete IDE. Taal ondersteuning omvat .NET, Power shell, python en REST.
 
-### <a name="monitoring"></a>Bewaking
+### <a name="monitoring"></a>Controleren
 U kunt uw gegevens fabrieken bewaken via Power shell, SDK of de visuele controle Hulpprogramma's in de gebruikers interface van de browser. U kunt op aanvraag, op basis van triggers en op tijd gebaseerde aangepaste stromen op een efficiënte en efficiënte manier bewaken en beheren. Annuleer bestaande taken, Bekijk fouten in een oogopslag, zoom op om gedetailleerde fout berichten op te halen en los de problemen op, in één venster van glas zonder tussen komst te scha kelen of te navigeren tussen schermen. 
 
 ### <a name="new-features-for-ssis-in-data-factory"></a>Nieuwe functies voor SSIS in Data Factory
@@ -82,7 +82,7 @@ Sinds de eerste open bare preview-versie in 2017, heeft Data Factory de volgende
 -   SQL Database met Service-eind punten voor virtueel netwerk
 -   Beheerd exemplaar
 -   Elastische pool
--   Ondersteuning voor een Azure Resource Manager virtueel netwerk boven op een klassiek virtueel netwerk dat in de toekomst moet worden afgeschaft, waarmee u uw Azure SSIS Integration runtime kunt injecteren/samen voegen met een virtueel netwerk dat is geconfigureerd voor SQL Database met Virtual Network-Service eind punten/MI/on-premises gegevens toegang. Zie ook [een Azure SSIS Integration runtime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md)voor meer informatie.
+-   Ondersteuning voor een Azure Resource Manager virtueel netwerk boven op een klassiek virtueel netwerk dat u in de toekomst kunt verouderd, waarmee u uw Azure SSIS Integration runtime kunt injecteren/samen voegen met een virtueel netwerk dat is geconfigureerd voor SQL Database met virtuele netwerk service-eind punten/storing/on-premises gegevens toegang. Zie ook [een Azure SSIS Integration runtime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md)voor meer informatie.
 -   Ondersteuning voor Azure Active Directory (Azure AD)-verificatie en SQL-verificatie om verbinding te maken met de SSISDB, zodat Azure AD-verificatie mogelijk is met uw Data Factory beheerde identiteit voor Azure-resources
 -   Ondersteuning voor het inbrengen van uw eigen on-premises SQL Server licentie om aanzienlijke kosten besparingen te verdienen via de Azure Hybrid Benefit optie
 -   Ondersteuning voor Enter prise Edition van de Azure-SSIS Integration runtime waarmee u geavanceerde/Premium-functies, een aangepaste installatie-interface kunt gebruiken om extra onderdelen/uitbrei dingen en een partner ecosysteem te installeren. Zie ook [Enter prise Edition, Custom Setup en uitbreid baarheid van derden voor SSIS in ADF](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/)voor meer informatie. 
@@ -101,7 +101,7 @@ U kunt een of meer exemplaren van de Integration runtime zo nodig implementeren 
 Zie voor meer informatie [Integration Runtime in Azure Data Factory](concepts-integration-runtime.md).
 
 ## <a name="what-is-the-limit-on-the-number-of-integration-runtimes"></a>Wat is de limiet voor het aantal Integration Runtimes?
-Er is geen vaste limiet voor het aantal instanties van Integration runtime dat u kunt hebben in een data factory. Er is echter een limiet voor het aantal VM-kernen dat door de Integration runtime per abonnement kan worden gebruikt voor de uitvoering van SSIS-pakketten. Zie [Data Factory limieten](../azure-subscription-service-limits.md#data-factory-limits)voor meer informatie.
+Er is geen vaste limiet voor het aantal instanties van Integration runtime dat u kunt hebben in een data factory. Er is echter een limiet voor het aantal VM-kernen dat door de Integration runtime per abonnement kan worden gebruikt voor de uitvoering van SSIS-pakketten. Zie [Data Factory limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits)voor meer informatie.
 
 ## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Wat zijn de belangrijkste concepten van Azure Data Factory?
 Een Azure-abonnement kan een of meer Azure Data Factory-exemplaren (oftewel 'data factory's') hebben. Azure Data Factory bevat vier belang rijke onderdelen die samen werken als een platform waarop u gegevensgestuurde werk stromen kunt samen stellen met de stappen voor het verplaatsen en transformeren van gegevens.
@@ -109,7 +109,7 @@ Een Azure-abonnement kan een of meer Azure Data Factory-exemplaren (oftewel 'dat
 ### <a name="pipelines"></a>Pijplijnen
 Een gegevensfactory kan één of meer pijplijnen hebben. Een pijp lijn is een logische groepering van activiteiten om een werk eenheid uit te voeren. De activiteiten in een pijplijn voeren samen een taak uit. Een pijp lijn kan bijvoorbeeld een groep activiteiten bevatten die gegevens uit een Azure-Blob opnemen en vervolgens een Hive-query uitvoeren op een HDInsight-cluster om de gegevens te partitioneren. Het voor deel is dat u een pijp lijn kunt gebruiken om de activiteiten te beheren als een set, in plaats van elke activiteit afzonderlijk te beheren. U kunt de activiteiten in een pijp lijn koppelen om ze opeenvolgend te laten werken of u kunt ze onafhankelijk van elkaar uitvoeren.
 
-### <a name="data-flows"></a>Gegevens stromen
+### <a name="data-flows"></a>Gegevensstromen
 Gegevens stromen zijn objecten die u visueel bouwt in Data Factory die gegevens op de juiste schaal op backend Spark-Services transformeren. U hoeft geen inzicht te krijgen in Program meren of Spark-interne. U hoeft alleen maar uw gegevens transformatie intentie te ontwerpen met behulp van grafieken (toewijzing) of spread sheets (Wrangling).
 
 ### <a name="activities"></a>Activiteiten
@@ -201,21 +201,21 @@ Zelf-hostende IR is een ADF-pijp lijn constructie die u met de Kopieer activitei
 
 Wrangling-gegevens stroom wordt momenteel ondersteund in gegevens fabrieken die in de volgende regio's zijn gemaakt:
 
-* Australië - oost
-* Canada - midden
+* Australië Oost
+* Canada-Midden
 * India - centraal
-* US - centraal
-* US - oost
-* US - oost 2
-* Japan - oost
+* VS - centraal
+* VS - oost
+* VS - oost 2
+* Japan - Oost
 * Europa - noord
 * Azië - zuidoost
-* US - zuid-centraal
+* VS - zuid-centraal
 * VK - zuid
-* US - west-centraal
-* Europa -west
-* US - west
-* US - west 2
+* VS - west-centraal
+* Europa - west
+* VS - west
+* VS - west 2
 
 ### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>Wat zijn de beperkingen en beperkingen met wrangling-gegevens stroom?
 
@@ -246,7 +246,7 @@ Wrangling-gegevens stroom ondersteunt de volgende gegevens typen in SQL. U krijg
 
 * korte
 * double
-* realistische
+* real
 * float
 * char
 * nchar
@@ -254,19 +254,19 @@ Wrangling-gegevens stroom ondersteunt de volgende gegevens typen in SQL. U krijg
 * nvarchar
 * geheel getal
 * int
-* bitmask
+* bit
 * booleaans
 * smallint
 * tinyint
 * bigint
-* long
+* lang
 * tekst
 * date
 * datum/tijd
-* DATETIME2
+* datetime2
 * smalldatetime
 * tijdstempel
-* unieke
+* uniqueidentifier
 * xml
 
 Andere gegevens typen zullen in de toekomst worden ondersteund.

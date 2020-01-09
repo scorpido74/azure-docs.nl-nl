@@ -13,20 +13,28 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2019
+ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d130a962c14415c417eedecd6ae26af1131b2e86
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: d884987ed5fb00d4078a38aa37d463a81630ca7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997017"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423383"
 ---
-# <a name="build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Een multi tenant-daemon bouwen die gebruikmaakt van het micro soft Identity platform-eind punt
+# <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Zelf studie: een multi tenant-daemon bouwen die gebruikmaakt van het micro soft Identity platform-eind punt
 
 In deze zelf studie leert u hoe u het micro soft-identiteits platform kunt gebruiken voor toegang tot de gegevens van micro soft-zakelijke klanten in een langlopend, niet-interactief proces. De voor beeld-daemon gebruikt de referenties van de [OAuth2-client](v2-oauth2-client-creds-grant-flow.md) om een toegangs token te verkrijgen. De daemon gebruikt vervolgens het token om [Microsoft Graph](https://graph.microsoft.io) te roepen en toegang te krijgen tot de organisatie gegevens.
+
+> [!div class="checklist"]
+> * Een daemon-app integreren met het micro soft Identity-platform
+> * Toepassings machtigingen rechtstreeks aan de app toekennen door een beheerder
+> * Een toegangs Token ophalen om de Microsoft Graph-API aan te roepen
+> * Roep de Microsoft Graph-API aan.
+
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 De app is gebouwd als een ASP.NET MVC-toepassing. Het maakt gebruik van de OWIN OpenID Connect Connect middleware om gebruikers aan te melden.  
 
@@ -60,11 +68,11 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 Of [down load het voor beeld in een zip-bestand](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/archive/master.zip).
 
-## <a name="register-the-sample-application-with-your-azure-ad-tenant"></a>De voorbeeld toepassing registreren bij uw Azure AD-Tenant
+## <a name="register-your-application"></a>Uw toepassing registreren
 
-Dit voor beeld heeft één project. Als u deze wilt registreren, kunt u het volgende doen:
+Dit voor beeld heeft één project. Als u de toepassing wilt registreren bij uw Azure AD-Tenant, kunt u het volgende doen:
 
-- Volg de stappen in [het voor beeld registreren bij uw Azure Active Directory-Tenant](#register-the-sample-application-with-your-azure-ad-tenant) en [het voor beeld configureren voor het gebruik van uw Azure AD-Tenant](#choose-the-azure-ad-tenant).
+- Volg de stappen in [het voor beeld registreren bij uw Azure Active Directory-Tenant](#register-your-application) en [het voor beeld configureren voor het gebruik van uw Azure AD-Tenant](#choose-the-azure-ad-tenant).
 - Gebruik Power shell-scripts die:
   - Maak *automatisch* de Azure AD-toepassingen en gerelateerde objecten (wacht woorden, machtigingen, afhankelijkheden) voor u.
   - Wijzig de configuratie bestanden van het Visual Studio-project.
@@ -208,7 +216,7 @@ Dit project bevat Web-app-en Web-API-projecten. Als u deze wilt implementeren op
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>DotNet-Web-daemon-v2 maken en publiceren naar een Azure-website
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Selecteer **Een resource maken** in de linkerbovenhoek.
 1. Selecteer **web** > **Web-app**en geef uw website een naam. Noem het bijvoorbeeld **DotNet-Web-daemon-v2-contoso.azurewebsites.net**.
 1. Selecteer de gegevens voor het **abonnement**, de **resource groep**en het **app service-plan en de locatie**. Het **besturings systeem** is **Windows**en de **publicatie** is **code**.
@@ -237,7 +245,10 @@ Visual Studio publiceert het project en opent automatisch een browser naar de UR
 1. Sla de configuratie op.
 1. Voeg dezelfde URL toe in de lijst met waarden van het menu **verificatie** > **omleidings-uri's** . Als u meerdere omleidings-Url's hebt, moet u ervoor zorgen dat er een nieuwe vermelding is die de URI van de app service gebruikt voor elke omleidings-URL.
 
-## <a name="community-help-and-support"></a>Help en ondersteuning van de Community
+## <a name="clean-up-resources"></a>Resources opschonen
+Wanneer u deze niet meer nodig hebt, verwijdert u het app-object dat u hebt gemaakt in de stap [uw toepassing registreren](#register-your-application) .  Als u de toepassing wilt verwijderen, volgt u de instructies in [een toepassing verwijderen die door u of uw organisatie is gemaakt](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization).
+
+## <a name="get-help"></a>Hulp krijgen
 
 Gebruik [stack overflow](http://stackoverflow.com/questions/tagged/msal) om ondersteuning van de community te verkrijgen.
 Stel eerst uw vragen over Stack Overflow en blader door bestaande problemen om te zien of iemand uw vraag eerder heeft gesteld.

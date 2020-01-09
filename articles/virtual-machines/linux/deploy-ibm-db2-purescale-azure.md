@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 8eb8075454dc3a49e9525d566c34c64bab8be5a0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe6e581963753cac33092285fee0c8d16959bde8
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083445"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530099"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale implementeren op Azure
 
@@ -40,33 +40,35 @@ De opslag plaats bevat ook scripts voor het instellen van een Grafana-dash board
 
 Met het script deploy.sh maakt en configureert u de Azure-resources voor deze architectuur. Het script vraagt u om het Azure-abonnement en de virtuele machines die worden gebruikt in de doel omgeving en voert de volgende bewerkingen uit:
 
--   Hiermee stelt u de resource groep, het virtuele netwerk en de subnetten op Azure in voor de installatie
+-   Hiermee stelt u de resource groep, het virtuele netwerk en de subnetten op Azure in voor de installatie.
 
--   Hiermee stelt u de netwerk beveiligings groepen en SSH in voor de omgeving
+-   Hiermee stelt u de netwerk beveiligings groepen en SSH in voor de omgeving.
 
--   Hiermee worden Nic's ingesteld op de virtuele machines GlusterFS en DB2 pureScale
+-   Hiermee stelt u meerdere Nic's in op zowel de gedeelde opslag als de pureScale van de DB2-virtuele machine.
 
--   Hiermee maakt u de virtuele machines met GlusterFS-opslag
+-   Hiermee maakt u de virtuele machines van de gedeelde opslag. Als u Opslagruimten Direct of een andere opslag oplossing gebruikt, raadpleegt u [overzicht van opslagruimten direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview).
 
--   Hiermee maakt u de virtuele machine JumpBox
+-   Hiermee maakt u de virtuele machine JumpBox.
 
--   Hiermee maakt u de DB2 pureScale-virtuele machines
+-   Hiermee maakt u de DB2 pureScale-virtuele machines.
 
--   Hiermee wordt de virtuele Witness-machine gemaakt die de DB2-pureScale pings
+-   Hiermee maakt u de virtuele Witness-machine die door de DB2-pureScale wordt gepingd. Sla dit deel van de implementatie over als uw versie van de Db2-pureScale geen Witness vereist.
 
--   Hiermee maakt u een virtuele Windows-machine die moet worden gebruikt voor het testen, maar worden er geen items geïnstalleerd
+-   Hiermee maakt u een virtuele Windows-machine die moet worden gebruikt voor het testen, maar worden er geen items geïnstalleerd.
 
-Vervolgens stelt de implementatie scripts een virtuele iSCSI-Storage Area Network (vSAN) in voor gedeelde opslag in Azure. In dit voor beeld maakt iSCSI verbinding met GlusterFS. Deze oplossing biedt u ook de mogelijkheid om de iSCSI-doelen als één Windows-knoop punt te installeren. iSCSI biedt een gedeelde Block Storage-interface via TCP/IP waarmee de installatie procedure van de DB2-pureScale een apparaatinterface kan gebruiken om verbinding te maken met de gedeelde opslag. Zie de [architectuur voor glusterfs-basis beginselen: Het onderwerp typen](https://docs.gluster.org/en/latest/Quick-Start-Guide/Architecture/) volumes in Gluster docs.
+Vervolgens stelt de implementatie scripts een virtuele iSCSI-Storage Area Network (vSAN) in voor gedeelde opslag in Azure. In dit voor beeld maakt iSCSI verbinding met het gedeelde opslag cluster. In de oorspronkelijke klant oplossing is GlusterFS gebruikt. IBM biedt echter geen ondersteuning meer voor deze methode. Als u de ondersteuning van IBM wilt behouden, moet u een ondersteund bestands systeem dat compatibel is met iSCSI gebruiken. Micro soft biedt Opslagruimten Direct (S2D) als optie.
+
+Deze oplossing biedt u ook de mogelijkheid om de iSCSI-doelen als één Windows-knoop punt te installeren. iSCSI biedt een gedeelde Block Storage-interface via TCP/IP waarmee de installatie procedure van de DB2-pureScale een apparaatinterface kan gebruiken om verbinding te maken met de gedeelde opslag.
 
 De implementatie scripts voeren de volgende algemene stappen uit:
 
-1.  Gebruik GlusterFS voor het instellen van een gedeeld opslag cluster in Azure. Deze stap omvat ten minste twee Linux-knoop punten. Zie [Red Hat Gluster-opslag instellen in Microsoft Azure](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/deployment_guide_for_public_cloud/chap-documentation-deployment_guide_for_public_cloud-azure-setting_up_rhgs_azure) in de Red Hat Gluster-documentatie voor meer informatie over de installatie.
+1.  Stel een gedeeld opslag cluster in op Azure. Deze stap omvat ten minste twee Linux-knoop punten.
 
-2.  Stel een iSCSI direct-interface in op Linux-doel servers voor GlusterFS. Zie [glusterfs iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/) in de glusterfs-beheer handleiding voor meer informatie over de installatie.
+2.  Stel een iSCSI direct-interface in op Linux-doel servers voor het gedeelde opslag cluster.
 
-3.  De iSCSI-initiator instellen op de virtuele Linux-machines. De initiator heeft toegang tot het GlusterFS-cluster met behulp van een iSCSI-doel. Zie [een iSCSI-doel en initiator configureren in Linux](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) in de RootUsers-documentatie voor meer informatie over de installatie.
+3.  De iSCSI-initiator instellen op de virtuele Linux-machines. De initiator heeft toegang tot het gedeelde opslag cluster met behulp van een iSCSI-doel. Zie [een iSCSI-doel en initiator configureren in Linux](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) in de RootUsers-documentatie voor meer informatie over de installatie.
 
-4.  Installeer GlusterFS als de opslaglaag voor de iSCSI-interface.
+4.  Installeer de gedeelde opslaglaag voor de iSCSI-interface.
 
 Nadat de scripts het iSCSI-apparaat hebben gemaakt, is de laatste stap om DB2 pureScale te installeren. Als onderdeel van de installatie van de DB2 pureScale wordt [IBM spectrum Scale](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0057167.html) (voorheen bekend als GPFS) gecompileerd en geïnstalleerd op het glusterfs-cluster. Met dit geclusterde bestands systeem kan DB2 pureScale gegevens delen tussen de virtuele machines waarop de DB2 pureScale-engine wordt uitgevoerd. Zie de documentatie over [IBM spectrum Scale](https://www.ibm.com/support/knowledgecenter/en/STXKQY_4.2.0/ibmspectrumscale42_welcome.html) op de IBM-website voor meer informatie.
 
@@ -77,9 +79,9 @@ De GitHub-opslag plaats bevat DB2server. RSP, een antwoord bestand (. RSP) waarm
 > [!NOTE]
 > Een voor beeld van een antwoord bestand, DB2server. RSP, is opgenomen in de [DB2onAzure](https://aka.ms/db2onazure) -opslag plaats op github. Als u dit bestand gebruikt, moet u het bewerken voordat het in uw omgeving kan worden gebruikt.
 
-| Scherm naam               | Veld                                        | Value                                                                                                 |
+| Scherm naam               | Veld                                        | Waarde                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| Bijwerken                   |                                              | Nieuwe installatie                                                                                           |
+| Welkom                   |                                              | Nieuwe installatie                                                                                           |
 | Kies een product          |                                              | DB2-versie 11.1.3.3. Server edities met DB2 pureScale                                              |
 | Configuratie             | Directory                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | Het installatie type selecteren                 | Standaard                                                                                               |
@@ -117,7 +119,7 @@ De GitHub-opslag plaats bevat DB2server. RSP, een antwoord bestand (. RSP) waarm
 
 - De installatie scripts gebruiken aliassen voor de iSCSI-schijven zodat de werkelijke namen eenvoudig kunnen worden gevonden.
 
-- Wanneer het installatie script wordt uitgevoerd op D0, zijn **de\* /dev/DM-** -waarden mogelijk anders op D1, cf0 en CF1. Het verschil in waarden heeft geen invloed op de instellingen van de DB2-pureScale.
+- Wanneer het installatie script wordt uitgevoerd op D0, zijn de **/dev/DM--\*** waarden mogelijk anders op D1, cf0 en CF1. Het verschil in waarden heeft geen invloed op de instellingen van de DB2-pureScale.
 
 ## <a name="troubleshooting-and-known-issues"></a>Probleemoplossing en bekende problemen
 
@@ -140,8 +142,6 @@ De GitHub-opslag plaats bevat een Knowledge Base die de auteurs onderhouden. Hie
 Zie het kb.md-bestand in de [DB2onAzure](https://aka.ms/DB2onAzure) -opslag plaats voor meer informatie over deze en andere bekende problemen.
 
 ## <a name="next-steps"></a>Volgende stappen
-
--   [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
 
 -   [De vereiste gebruikers voor een installatie van een DB2 pureScale-functie maken](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 

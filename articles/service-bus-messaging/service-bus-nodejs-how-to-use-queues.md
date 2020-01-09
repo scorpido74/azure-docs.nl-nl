@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Azure Service Bus-wacht rijen gebruiken in node. js'
+title: Azure Service Bus-wacht rijen gebruiken in node. js met behulp van het pakket Azure-SB
 description: 'Quick Start: informatie over het gebruik van Service Bus wachtrijen in azure vanuit een node. js-app.'
 services: service-bus-messaging
 documentationcenter: nodejs
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 404163ed93549b55ceadad10825a9cf682de470b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5fa74bdc632154e361fc4d95ed602e4b4d39a198
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719222"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462183"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Snelstartgids: Service Bus-wacht rijen in azure gebruiken met node. js en het pakket Azure-SB
 
@@ -76,7 +76,7 @@ var azure = require('azure');
 ```
 
 ### <a name="set-up-an-azure-service-bus-connection"></a>Een Azure Service Bus verbinding instellen
-De Azure-module leest de omgevings variabele `AZURE_SERVICEBUS_CONNECTION_STRING` om informatie te verkrijgen die vereist is om verbinding te maken met Service Bus. Als deze omgevings variabele niet is ingesteld, moet u de account gegevens opgeven wanneer u `createServiceBusService` aanroept.
+De Azure-module leest de omgevings variabele `AZURE_SERVICEBUS_CONNECTION_STRING` voor het verkrijgen van informatie die nodig is om verbinding te maken met Service Bus. Als deze omgevings variabele niet is ingesteld, moet u de account gegevens opgeven wanneer u `createServiceBusService`aanroept.
 
 Zie de [node. js-webtoepassing met Storage][Node.js Web Application with Storage]voor een voor beeld van het instellen van omgevings variabelen in de [Azure Portal][Azure portal] voor een Azure-website.
 
@@ -119,15 +119,15 @@ Optionele filter bewerkingen kunnen worden toegepast op bewerkingen die worden u
 function handle (requestOptions, next)
 ```
 
-Nadat de voor bereiding op de aanvraag opties is uitgevoerd, moet de methode `next` aanroepen, waarbij een call back wordt door gegeven met de volgende hand tekening:
+Nadat de voor bereiding op de aanvraag opties is uitgevoerd, moet de methode `next`aanroepen, waarbij een call back wordt door gegeven met de volgende hand tekening:
 
 ```javascript
 function (returnObject, finalCallback, next)
 ```
 
-In deze call back en na de verwerking van de `returnObject` (het antwoord van de aanvraag op de server) moet de retour aanroep `next` aanroepen als deze bestaat om andere filters te verwerken, of `finalCallback` aanroepen, waardoor de service wordt beëindigd.
+In deze call back en na de verwerking van de `returnObject` (de reactie van de aanvraag naar de server), moet de retour aanroep `next` aanroepen als deze bestaat om andere filters te kunnen verwerken of `finalCallback`aan te roepen, waardoor de service aanroep wordt beëindigd.
 
-De Azure SDK voor node. js, `ExponentialRetryPolicyFilter` en `LinearRetryPolicyFilter`, bevat twee filters die logica voor nieuwe pogingen implementeren. Met de volgende code wordt een `ServiceBusService`-object gemaakt dat gebruikmaakt van de `ExponentialRetryPolicyFilter`:
+De Azure SDK voor node. js, `ExponentialRetryPolicyFilter` en `LinearRetryPolicyFilter`bevat twee filters die logica voor nieuwe pogingen implementeren. Met de volgende code maakt u een `ServiceBusService`-object dat gebruikmaakt van de `ExponentialRetryPolicyFilter`:
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -135,9 +135,9 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 ```
 
 ## <a name="send-messages-to-a-queue"></a>Berichten verzenden naar een wachtrij
-Als u een bericht wilt verzenden naar een Service Bus wachtrij, wordt de methode `sendQueueMessage` door de toepassing aangeroepen voor het **ServiceBusService** -object. Berichten die worden verzonden naar (en ontvangen van) Service Bus-wacht rijen zijn **BrokeredMessage** -objecten en hebben een aantal standaard eigenschappen (zoals **Label** en **TimeToLive**), een woorden lijst die wordt gebruikt voor het opslaan van aangepaste toepassingsspecifieke eigenschappen, en een hoofd tekst met wille keurige toepassings gegevens. Een toepassing kan de hoofd tekst van het bericht instellen door een teken reeks als het bericht door te geven. Alle vereiste standaard eigenschappen worden gevuld met standaard waarden.
+Als u een bericht wilt verzenden naar een Service Bus wachtrij, wordt de methode `sendQueueMessage` door de toepassing aangeroepen voor het **ServiceBusService** -object. Berichten die worden verzonden naar (en ontvangen van) Service Bus-wacht rijen zijn **BrokeredMessage** -objecten en hebben een aantal standaard eigenschappen (zoals **Label** en **TimeToLive**), een woorden lijst die wordt gebruikt voor het opslaan van aangepaste toepassingsspecifieke eigenschappen en een hoofd tekst van wille keurige toepassings gegevens. Een toepassing kan de hoofd tekst van het bericht instellen door een teken reeks als het bericht door te geven. Alle vereiste standaard eigenschappen worden gevuld met standaard waarden.
 
-In het volgende voor beeld ziet u hoe u een test bericht naar de wachtrij met de naam `myqueue` verzendt met behulp van `sendQueueMessage`:
+In het volgende voor beeld ziet u hoe u een test bericht verzendt naar de wachtrij met de naam `myqueue` met behulp van `sendQueueMessage`:
 
 ```javascript
 var message = {
@@ -159,7 +159,7 @@ Er worden berichten van een wachtrij ontvangen met behulp van de methode `receiv
 
 Het standaard gedrag van het lezen en verwijderen van het bericht als onderdeel van de receive-bewerking is het eenvoudigste model en werkt het beste voor scenario's waarin een toepassing niet de verwerking van een bericht kan verdragen wanneer zich een fout voordoet. Om dit gedrag te begrijpen, moet u rekening houden met een scenario waarin de consumer de ontvangst aanvraag uitgeeft en vervolgens vastloopt voordat het proces wordt verwerkt. Omdat Service Bus het bericht als verbruikt heeft gemarkeerd, wordt het bericht dat voor het vastlopen is verbruikt, overgeslagen wanneer de toepassing opnieuw wordt gestart en er opnieuw wordt verbruikt.
 
-Als de para meter `isPeekLock` is ingesteld op **True**, wordt de ontvangst een bewerking met twee fasen, waardoor het mogelijk is om toepassingen te ondersteunen die geen ontbrekende berichten kunnen verdragen. Als Service Bus een aanvraag ontvangt, wordt het volgende te verbruiken bericht gevonden, wordt het bericht vergrendeld om te voorkomen dat andere consumenten het ontvangen en wordt het bericht vervolgens naar de toepassing geretourneerd. Nadat de toepassing klaar is met de verwerking van het bericht (of op betrouw bare wijze is opgeslagen voor toekomstige verwerking), wordt de tweede fase van het ontvangst proces voltooid door het aanroepen van de methode `deleteMessage` en het bericht te verwijderen als een para meter. De `deleteMessage`-methode markeert het bericht als verbruikt en verwijdert het uit de wachtrij.
+Als de para meter `isPeekLock` is ingesteld op **True**, wordt de ontvangst een bewerking met twee fasen, waardoor het mogelijk is om toepassingen te ondersteunen die geen ontbrekende berichten kunnen verdragen. Als Service Bus een aanvraag ontvangt, wordt het volgende te verbruiken bericht gevonden, wordt het bericht vergrendeld om te voorkomen dat andere consumenten het ontvangen en wordt het bericht vervolgens naar de toepassing geretourneerd. Nadat de toepassing klaar is met de verwerking van het bericht (of op betrouw bare wijze is opgeslagen voor toekomstige verwerking), wordt de tweede fase van het ontvangst proces voltooid door `deleteMessage` methode aan te roepen en het bericht te verwijderen als een para meter. Met de methode `deleteMessage` wordt het bericht gemarkeerd als verbruikt en wordt het uit de wachtrij verwijderd.
 
 In het volgende voor beeld ziet u hoe u berichten ontvangt en verwerkt met behulp van `receiveQueueMessage`. In het voor beeld wordt eerst een bericht ontvangen en verwijderd. Vervolgens ontvangt u een bericht met `isPeekLock` ingesteld op **waar**en vervolgens wordt het bericht met `deleteMessage`verwijderd:
 
@@ -186,7 +186,7 @@ Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepa
 
 Er is ook een time-out gekoppeld aan een bericht dat in de wachtrij is vergrendeld. als de toepassing het bericht niet kan verwerken voordat de time-out van de vergren deling verloopt (bijvoorbeeld als de toepassing vastloopt), wordt het bericht automatisch door Service Bus ontgrendeld en wordt het beschikbaar om opnieuw te worden ontvangen.
 
-In het geval dat de toepassing vastloopt na het verwerken van het bericht, maar voordat de methode `deleteMessage` wordt aangeroepen, wordt het bericht opnieuw aan de toepassing geleverd wanneer het opnieuw wordt gestart. Deze aanpak wordt vaak ten *minste*eenmaal verwerkt, dat wil zeggen dat elk bericht ten minste één keer wordt verwerkt, maar in bepaalde situaties kan hetzelfde bericht opnieuw worden bezorgd. Als het scenario dubbele verwerking niet kan verdragen, moeten toepassings ontwikkelaars extra logica toevoegen aan de toepassing om dubbele bericht bezorging af te handelen. Dit wordt vaak bereikt met de **MessageId** -eigenschap van het bericht, die constant blijft tijdens bezorgings pogingen.
+In het geval dat de toepassing vastloopt na het verwerken van het bericht, maar voordat de `deleteMessage` methode wordt aangeroepen, wordt het bericht opnieuw aan de toepassing geleverd wanneer het opnieuw wordt gestart. Deze aanpak wordt vaak ten *minste*eenmaal verwerkt, dat wil zeggen dat elk bericht ten minste één keer wordt verwerkt, maar in bepaalde situaties kan hetzelfde bericht opnieuw worden bezorgd. Als het scenario dubbele verwerking niet kan verdragen, moeten toepassings ontwikkelaars extra logica toevoegen aan de toepassing om dubbele bericht bezorging af te handelen. Dit wordt vaak bereikt met de **MessageId** -eigenschap van het bericht, die constant blijft tijdens bezorgings pogingen.
 
 > [!NOTE]
 > U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 

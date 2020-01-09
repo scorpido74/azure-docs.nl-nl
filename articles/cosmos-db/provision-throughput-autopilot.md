@@ -6,21 +6,21 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2259343d2c7bca1f60a5256efcd572e6cc21b565
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a744ac2574f54b0c2934d440ddf5c48e54304595
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706036"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445115"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Azure Cosmos-containers en-data bases maken in de automatische test modus (preview)
 
-Met Azure Cosmos DB kunt u de door Voer voor uw containers inrichten in hand matig of in de modus Auto Pilot. In dit artikel worden de voor delen en het gebruik van de automatische test modus beschreven.
+Met Azure Cosmos DB kunt u de doorvoer voor uw containers inrichten, in de handmatige modus of in de Autopilot-modus. In dit artikel worden de voordelen en gebruikscases van de Autopilot-modus beschreven.
 
 > [!NOTE]
-> De automatische test modus is momenteel beschikbaar in de open bare preview. Als u auto pilot wilt inschakelen voor uw Azure Cosmos-account, raadpleegt u de sectie auto [pilot inschakelen](#enable-autopilot) van dit artikel. U kunt auto pilot alleen inschakelen voor nieuwe data bases en containers, maar dit is niet beschikbaar voor bestaande containers en data bases.
+> De automatische test modus is momenteel beschikbaar in de open bare preview. U kunt auto [pilot alleen inschakelen voor nieuwe data bases en containers](#create-a-database-or-a-container-with-autopilot-mode) . De functie is niet beschikbaar voor bestaande containers en data bases.
 
-Naast het hand matig inrichten van de door Voer kunt u nu Azure Cosmos-containers configureren in de automatische test modus. Azure Cosmos-containers en-data bases die zijn geconfigureerd in de automatische test modus, kunnen **de ingerichte door Voer automatisch laten schalen op basis van de behoeften van uw toepassing zonder in te boeten voor de sla's.**
+Naast het handmatig inrichten van doorvoer kunt u nu Azure Cosmos-containers configureren in de Autopilot-modus. Azure Cosmos-containers en-data bases die zijn geconfigureerd in de automatische test modus, kunnen **de ingerichte door Voer automatisch laten schalen op basis van de behoeften van uw toepassing zonder in te boeten voor de sla's.**
 
 U hoeft de ingerichte door Voer niet meer hand matig te beheren of om problemen met de snelheids beperking te verhelpen. Azure Cosmos-containers die zijn geconfigureerd in de modus voor automatische prototype, kunnen direct worden geschaald als reactie op de werk belasting zonder dat dit van invloed is op de beschik baarheid, latentie, door Voer of de prestaties van de werk belasting wereld wijd. Onder hoog gebruik kunnen Azure Cosmos-containers die zijn geconfigureerd in de modus voor automatische prototype omhoog of omlaag worden geschaald zonder dat dit van invloed is op de actieve bewerkingen.
 
@@ -68,31 +68,21 @@ Oplossingen voor de vorige problemen vereisen niet alleen een enorme hoeveelheid
 | **Prijzen** | Hand matig ingerichte RU/s per uur. | Voor afzonderlijke accounts voor schrijf regio's betaalt u de door Voer die op elk uur wordt gebruikt, door gebruik te maken van het tarief van de auto pilot RU per uur. <br/><br/>Voor accounts met meerdere schrijf regio's worden er geen extra kosten in rekening gebracht voor auto pilot. U betaalt voor de door Voer die op elk uur wordt gebruikt met hetzelfde tarief van één of meerdere masters per uur. |
 | **Geschikt voor typen werk belastingen** |  Voorspel bare en stabiele workloads|   Onvoorspelbare en variabele workloads  |
 
-## <a id="enable-autopilot"></a>Automatische pilot van Azure Portal inschakelen
-
-U kunt automatische pilot in uw Azure Cosmos-accounts uitproberen door in te scha kelen in van Azure Portal. Gebruik de volgende stappen om de auto pilot-optie in te scha kelen:
-
-1. Meld u aan bij de [Azure Portal.](https://portal.azure.com)
-
-2. Ga naar uw Azure Cosmos-account en open het tabblad **nieuwe functies** . Selecteer **automatische pilot** en **Schrijf** u in zoals weer gegeven in de volgende scherm afbeelding:
-
-![Een container maken in de automatische test modus](./media/provision-throughput-autopilot/enable-autopilot-azure-portal.png)
-
 ## <a name="create-a-database-or-a-container-with-autopilot-mode"></a>Een Data Base of container maken met de automatische test modus
 
-U kunt automatische pilot configureren voor data bases of containers tijdens het maken hiervan. Gebruik de volgende stappen om een nieuwe data base of container te maken, automatische pilot in te scha kelen en de maximale door Voer op te geven.
+U kunt automatische pilot configureren voor nieuwe data bases of containers bij het maken hiervan via de Azure Portal. Gebruik de volgende stappen om een nieuwe data base of container te maken, automatische pilot in te scha kelen en de maximale door Voer (RU/s) op te geven.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) of [Azure Cosmos Explorer.](https://cosmos.azure.com/)
 
 1. Ga naar uw Azure Cosmos-account en open het tabblad **Data Explorer** .
 
-1. Selecteer **nieuwe container**, voer een naam in voor de container, een partitie sleutel. Selecteer de optie auto **pilot** en kies de maximale door Voer die de container niet mag overschrijden bij het gebruik van de optie Auto Pilot.
+1. Selecteer **nieuwe container.** Voer een naam in voor uw data base, container en partitie sleutel. Selecteer de optie auto **pilot** en kies de maximale door Voer (ru/s) die de data base of container mag niet overschrijden bij het gebruik van de auto pilot-optie.
 
    ![Een container maken in de automatische test modus](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
 
-1. Selecteer **OK**
+1. Selecteer **OK**.
 
-Met vergelijk bare stappen kunt u ook een Data Base maken met een ingerichte door Voer in de automatische test modus.
+U kunt een gedeelde doorvoer database maken met de automatische test modus door de optie **doorvoer database inrichten** in te scha kelen.
 
 ## <a id="autopilot-limits"></a>Door Voer en opslag limieten voor auto pilot
 
@@ -107,6 +97,7 @@ In de volgende tabel ziet u het maximum aantal in-en opslag limieten voor versch
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* Lees de [Veelgestelde vragen over auto pilot](autopilot-faq.md).
 * Meer informatie over [logische partities](partition-data.md).
 * Meer informatie over het [inrichten van de door Voer voor een Azure Cosmos-container](how-to-provision-container-throughput.md).
 * Meer informatie over het [inrichten van de door Voer voor een Azure Cosmos-data base](how-to-provision-database-throughput.md).

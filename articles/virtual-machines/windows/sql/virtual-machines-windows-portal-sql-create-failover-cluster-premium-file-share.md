@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 7676077f0122cb731d2d5d2c7acf78acbd8aa1a7
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f92226a76462289b9f26ae9d3bab22d780fb35db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792207"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464989"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Een SQL Server-failovercluster configureren met Premium-bestands share op Azure virtual machines
 
@@ -84,7 +84,6 @@ Voordat u de stappen in dit artikel hebt voltooid, hebt u het volgende nodig:
    - Een IP-adres voor elke FCI.
 - DNS geconfigureerd op het Azure-netwerk, die verwijst naar de domein controllers.
 - Een [Premium-bestands share](../../../storage/files/storage-how-to-create-premium-fileshare.md) op basis van de opslag limiet van uw Data Base voor uw gegevens bestanden.
-- Een bestands share voor back-ups die verschilt van de Premium-bestands share die wordt gebruikt voor uw gegevens bestanden. Deze bestands share kan standaard of Premium zijn.
 
 Als aan deze vereisten is voldaan, kunt u beginnen met het bouwen van uw failovercluster. De eerste stap is het maken van de virtuele machines.
 
@@ -144,7 +143,7 @@ Als aan deze vereisten is voldaan, kunt u beginnen met het bouwen van uw failove
    1. Selecteer het standaard exemplaar.
    1. Verwijder alle functies onder **Data Base Engine-Services**. Verwijder **gedeelde onderdelen**niet. U ziet iets als de volgende scherm afbeelding:
 
-        ![Functies selecteren](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
+        ![Onderdelen selecteren](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
 
    1. Selecteer **volgende**en selecteer vervolgens **verwijderen**.
 
@@ -357,7 +356,7 @@ De load balancer maken:
 
 1. Selecteer **OK** om de back-end-pool te maken.
 
-### <a name="configure-a-load-balancer-health-probe"></a>Een load balancer Health probe configureren
+### <a name="configure-a-load-balancer-health-probe"></a>Een load balancer-statustest configureren
 
 1. Selecteer op de Blade load balancer **status controles**.
 

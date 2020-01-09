@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
-ms.openlocfilehash: 4c72bd37a636ec31c13737705c22aaa895b9ad72
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3c077e2c04cae94d2e1a2a84ccd7d09c7a0829b4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928212"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439738"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Delta kopie van een Data Base met een controle tabel
 
@@ -38,10 +38,13 @@ De sjabloon bevat vier activiteiten:
 - **Copy** kopieert alleen wijzigingen van de bron database naar het doel archief. De query waarmee de wijzigingen in de bron database worden geïdentificeerd, is vergelijkbaar met ' SELECT * FROM Data_Source_Table WHERE TIMESTAMP_Column > ' laatste bovengrens ' en TIMESTAMP_Column < = ' huidige bovengrens ' '.
 - **SqlServerStoredProcedure** schrijft de huidige waarde met hoge water merk naar een externe controle tabel voor de volgende keer dat de Delta kopie wordt gekopieerd.
 
-De sjabloon definieert vijf para meters:
+De sjabloon definieert de volgende para meters:
 - *Data_Source_Table_Name* is de tabel in de bron database waaruit u gegevens wilt laden.
 - *Data_Source_WaterMarkColumn* is de naam van de kolom in de bron tabel die wordt gebruikt om nieuwe of bijgewerkte rijen te identificeren. Het type van deze kolom is doorgaans *DateTime*, *int*of soortgelijk.
-- *Data_Destination_Folder_Path* of *Data_Destination_Table_Name* is de plaats waar de gegevens naar worden gekopieerd in uw doel archief.
+- *Data_Destination_Container* is het hoofdpad van de locatie waarnaar de gegevens worden gekopieerd in uw doel archief.
+- *Data_Destination_Directory* het mappad is in de hoofdmap van de locatie waarnaar de gegevens worden gekopieerd in uw doel archief.
+- *Data_Destination_Table_Name* is de plek waar de gegevens worden gekopieerd naar in uw doel archief (van toepassing wanneer ' Azure Synapse Analytics (voorheen SQL DW) ' is geselecteerd als de gegevens bestemming).
+- *Data_Destination_Folder_Path* is de plaats waar de gegevens naar worden gekopieerd in uw doel archief (van toepassing als ' bestands systeem ' of ' Azure data Lake Storage gen1 ' is geselecteerd als de bestemming van de gegevens).
 - *Control_Table_Table_Name* is de tabel voor externe controle waarin de waarde met een hoog watermerk niveau wordt opgeslagen.
 - *Control_Table_Column_Name* is de kolom in de tabel voor externe controle waarin de waarde met een hoog watermerk niveau wordt opgeslagen.
 
@@ -100,20 +103,18 @@ De sjabloon definieert vijf para meters:
     ![Een nieuwe verbinding maken met het gegevens archief van de controle tabel](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 
 7. Selecteer **Deze sjabloon gebruiken**.
-
-     ![Deze sjabloon gebruiken](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable7.png)
     
 8. U ziet de beschik bare pijp lijn, zoals wordt weer gegeven in het volgende voor beeld:
+  
+    ![De pijp lijn controleren](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-     ![De pijp lijn controleren](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
+9. Selecteer **opgeslagen procedure**. Kies [dbo] voor de naam van de **opgeslagen procedure** **. [ update_watermark]** . Selecteer **para meter importeren**en selecteer vervolgens **dynamische inhoud toevoegen**.  
 
-9. Selecteer **opgeslagen procedure**. Kies **[update_watermark]** voor de naam van de **opgeslagen procedure**. Selecteer **para meter importeren**en selecteer vervolgens **dynamische inhoud toevoegen**.  
-
-     ![De opgeslagen procedure-activiteit instellen](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
+    ![De opgeslagen procedure-activiteit instellen](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
 
 10. Schrijf de inhoud **\@{activity (' LookupCurrentWaterMark '). output. firstRow. NewWatermarkValue}** en selecteer vervolgens **volt ooien**.  
 
-     ![De inhoud voor de para meters van de opgeslagen procedure schrijven](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)      
+    ![De inhoud voor de para meters van de opgeslagen procedure schrijven](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
      
 11. Selecteer **debug**, voer de **para meters**in en selecteer **volt ooien**.
 
@@ -132,13 +133,12 @@ De sjabloon definieert vijf para meters:
             INSERT INTO data_source_table
             VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
     ```
-14. Als u de pijp lijn opnieuw wilt uitvoeren, selecteert u **fout opsporing**, voert u de **para meters**in en selecteert u vervolgens **volt ooien**.
 
-    ![Selecteer * * fout opsporing * *](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
+14. Als u de pijp lijn opnieuw wilt uitvoeren, selecteert u **fout opsporing**, voert u de **para meters**in en selecteert u vervolgens **volt ooien**.
 
     U ziet dat alleen nieuwe rijen zijn gekopieerd naar de bestemming.
 
-15. Beschrijving Als u SQL Data Warehouse als de gegevens bestemming hebt geselecteerd, moet u ook een verbinding met Azure Blob Storage voor fase ring opgeven, die wordt vereist door SQL Data Warehouse poly base. Zorg ervoor dat de container al is gemaakt in Blob Storage.
+15. Beschrijving Als u Azure Synapse Analytics (voorheen SQL DW) als de gegevens bestemming selecteert, moet u ook een verbinding met Azure Blob Storage voor fase ring opgeven, die wordt vereist door SQL Data Warehouse poly base. Met de sjabloon wordt een pad naar een container gegenereerd. Controleer na de uitvoering van de pijp lijn of de container is gemaakt in Blob Storage.
     
     ![Poly base configureren](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     

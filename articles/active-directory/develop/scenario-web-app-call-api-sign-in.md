@@ -1,5 +1,5 @@
 ---
-title: Accounts verwijderen uit de cache op Afmelden-micro soft Identity-platform | Azure
+title: Accounts uit de token cache verwijderen bij het afmelden-micro soft Identity-platform | Azure
 description: Meer informatie over het verwijderen van een account uit de token cache bij afmelden
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 375382b1245186197657c5067e3c5b4ec2b15655
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5472b424f7d2b44b62e6e4495afaf7bdfbbc8439
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961655"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423511"
 ---
 # <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>Accounts verwijderen uit de cache op globale afmelding
 
@@ -38,7 +38,7 @@ Dit mechanisme wordt geïllustreerd in de `AddMsal()` methode [WebAppServiceColl
 
 Met de **Afmeldings-URL** die u hebt geregistreerd voor uw toepassing, kunt u eenmalige afmelding implementeren. Het micro soft Identity platform `logout`-eind punt roept de **Afmeldings-URL** aan die is geregistreerd bij uw toepassing. Deze aanroep treedt op als de afmelding is geïnitieerd vanuit uw web-app of vanuit een andere web-app of via de browser. Zie [eenmalige afmelding](v2-protocols-oidc.md#single-sign-out)voor meer informatie.
 
-```CSharp
+```csharp
 public static class WebAppServiceCollectionExtensions
 {
  public static IServiceCollection AddMsal(this IServiceCollection services, IConfiguration configuration, IEnumerable<string> initialScopes, string configSectionName = "AzureAd")

@@ -1,19 +1,19 @@
 ---
 title: Overzicht van Azure Stream Analytics
-description: Lees over Stream Analytics, een beheerde service waarmee u streaminggegevens van het Internet of Things (IoT) in realtime kun analyseren.
+description: Lees over Stream Analytics, een beheerde service waarmee u streaminggegevens van het Internet der dingen (IoT) in realtime kun analyseren.
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 0982cc90d26c9f04e8d547c7d634e09280d7fca2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3399cc47af20df05d6315a4bd77965f799eaf5f9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467911"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426170"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Wat is Azure Stream Analytics?
 
@@ -61,7 +61,7 @@ Azure Stream Analytics maakt gebruik van een eenvoudige SQL-gebaseerde query taa
 
 De Stream Analytics query taal biedt een breed scala aan functies voor het analyseren en verwerken van streaming-gegevens. Deze query taal ondersteunt eenvoudige gegevens manipulatie, aggregatie functies en complexe georuimtelijke functies. U kunt query's in de portal bewerken en ze testen met voorbeeld gegevens die zijn geëxtraheerd uit een live stream.
 
-U kunt de mogelijkheden van de querytaal uitbreiden door extra functie te definiëren en aan te roepen. U kunt functie aanroepen definiëren in de Azure Machine Learning om te profiteren van Azure Machine Learning oplossingen en Java script of C# door de gebruiker gedefinieerde functies (udf's) of door de gebruiker gedefinieerde aggregaties integreren om complexe berekeningen uit te voeren als onderdeel van een stroom Analytics-query.
+U kunt de mogelijkheden van de querytaal uitbreiden door extra functie te definiëren en aan te roepen. U kunt functie aanroepen definiëren in de Azure Machine Learning om te profiteren van Azure Machine Learning oplossingen en Java script of C# door de gebruiker gedefinieerde functies (udf's) of door de gebruiker gedefinieerde samen tellingen integreren om complexe berekeningen uit te voeren als onderdeel van een stream Analytics query.
 
 ## <a name="fully-managed"></a>Volledig beheerd
 

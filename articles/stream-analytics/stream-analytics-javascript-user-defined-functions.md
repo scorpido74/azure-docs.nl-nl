@@ -1,7 +1,6 @@
 ---
 title: Door gebruiker gedefinieerde JavaScript-functies in Azure Stream Analytics
 description: In deze zelfstudie voert u geavanceerde querymechanismen uit met door de gebruiker gedefinieerde JavaScript-functies
-services: stream-analytics
 author: rodrigoamicrosoft
 ms.author: rodrigoa
 ms.service: stream-analytics
@@ -9,12 +8,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: 9ddf8a2a11cb863a0016726074c5279bfde96959
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f82add78eef418e3644a5961d984708d3721a8dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990227"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426063"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Zelfstudie: Door gebruiker gedefinieerde JavaScript-functies in Azure Stream Analytics
  
@@ -100,7 +99,7 @@ Door de gebruiker gedefinieerde JavaScript-functies in Azure Stream Analytics on
 
 Er zijn verschillen in de typen die de querytaal van Stream Analytics en JavaScript ondersteunen. Deze tabel bevat de conversietoewijzingen tussen de twee:
 
-Stream Analytics | Javascript
+Stream Analytics | JavaScript
 --- | ---
 bigint | Number (In JavaScript kunnen alleen gehele getallen tot exact 2^53 worden weergegeven)
 Datum/tijd | Date (JavaScript ondersteunt alleen milliseconden)
@@ -114,7 +113,7 @@ NULL | Null
 Hier volgen JavaScript-naar-Stream Analytics-conversies:
 
 
-Javascript | Stream Analytics
+JavaScript | Stream Analytics
 --- | ---
 Aantal | Bigint (als het een rond getal tussen long.MinValue en long.MaxValue is; anders is het double)
 Datum | Datum/tijd

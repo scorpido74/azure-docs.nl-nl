@@ -1,28 +1,18 @@
 ---
-title: Een Windows -containertoepassing voor Service Fabric maken in Azure | Microsoft Docs
+title: Een Windows-container-app maken op Service Fabric in azure
 description: In deze snelstart maakt uw eerste Windows-containertoepassing in Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: jpconnock
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 096a398b8fc4f7f42dcc42feb7fe00b182d7649b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 477d47fabc59c5718c449418f225d6a38838b270
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599370"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466261"
 ---
-# <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Quickstart: Windows-containers implementeren in Service Fabric
+# <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Snelstartgids: Windows-containers implementeren op Service Fabric
 
 Azure Service Fabric is een platform voor gedistribueerde systemen waarmee u schaalbare en betrouwbare microservices en containers implementeert en beheert.
 
@@ -100,7 +90,7 @@ Installeer zo nodig Azure PowerShell met behulp van de instructies in de [Azure 
 
 Voer voordat u het volgende script in PowerShell uitvoert `Connect-AzAccount` uit om een verbinding met Azure te maken.
 
-Kopieer het volgende script naar het Klembord en open **Windows PowerShell ISE**.  Plak de inhoud in het lege venster Untitled1.ps1. Geef vervolgens waarden op voor de variabelen in het script `subscriptionId`: `certpwd` `certfolder`,, `adminuser`, `adminpwd`,, enzovoort.  De map die u opgeeft voor `certfolder` moet bestaan voordat u het script uitvoert.
+Kopieer het volgende script naar het Klembord en open **Windows PowerShell ISE**.  Plak de inhoud in het lege venster Untitled1.ps1. Geef vervolgens waarden op voor de variabelen in het script: `subscriptionId`, `certpwd`, `certfolder`, `adminuser`, `adminpwd`, enzovoort.  De map die u opgeeft voor `certfolder` moet bestaan voordat u het script uitvoert.
 
 [!code-powershell[main](../../powershell_scripts/service-fabric/create-secure-cluster/create-secure-cluster.ps1 "Create a Service Fabric cluster")]
 
@@ -117,7 +107,7 @@ ClusterEndpoint : https://southcentralus.servicefabric.azure.com/runtime/cluster
 
 Nu installeren we de PFX in *CurrentUser\My* -certificaat archief. Het PFX-bestand bevindt zich in de map die u hebt opgegeven met behulp van de omgevingsvariabele `certfolder` in het bovenstaande PowerShell-script.
 
-Ga naar de map en voer de volgende Power shell-opdracht uit, waarbij u de naam van het pfx-bestand vervangt `certfolder` dat zich in de map bevindt en het `certpwd` wacht woord dat u hebt opgegeven in de variabele. In dit voorbeeld is de huidige map ingesteld op de map die is opgegeven door de variabele `certfolder` in het PowerShell-script. Van daaruit wordt de opdracht `Import-PfxCertificate` uitgevoerd:
+Ga naar de map en voer de volgende Power shell-opdracht uit, waarbij u de naam van het PFX-bestand vervangt dat zich in de `certfolder` map bevindt en het wacht woord dat u hebt opgegeven in de variabele `certpwd`. In dit voorbeeld is de huidige map ingesteld op de map die is opgegeven door de variabele `certfolder` in het PowerShell-script. Van daaruit wordt de opdracht `Import-PfxCertificate` uitgevoerd:
 
 ```powershell
 PS C:\mycertificates> Import-PfxCertificate -FilePath .\mysfclustergroup20190130193456.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString Password#1234 -AsPlainText -Force)
@@ -152,9 +142,9 @@ Klik op **Publish**.
 
 Elke toepassing in het cluster moet een unieke naam hebben. Als er sprake is van een naam conflict, wijzigt u de naam van het Visual Studio-project en implementeert u het opnieuw.
 
-Open een browser en navigeer naar het adres dat u in de vorige stap in het veld **Verbindingseindpunt** hebt ingevoerd. U kunt de URL eventueel vooraf laten gaan door de schema-id, `http://`, en de poort, `:80`, aan het einde toevoegen. Bijvoorbeeld http:\//mysfcluster.SouthCentralUS.cloudapp.Azure.com:80.
+Open een browser en navigeer naar het adres dat u in de vorige stap in het veld **Verbindingseindpunt** hebt ingevoerd. U kunt de URL eventueel vooraf laten gaan door de schema-id, `http://`, en de poort, `:80`, aan het einde toevoegen. Bijvoorbeeld http:\//mysfcluster.SouthCentralUS.cloudapp.azure.com:80.
 
- De IIS-standaardwebpagina moet worden weergegeven: ![IIS-standaardwebpagina][iis-default]
+ U ziet de IIS-standaardwebpagina: ![IIS-standaardwebpagina][iis-default]
 
 ## <a name="clean-up"></a>Opruimen
 

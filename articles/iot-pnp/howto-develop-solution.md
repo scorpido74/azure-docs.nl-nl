@@ -3,24 +3,24 @@ title: Interactie met een IoT Plug en Play preview-apparaat vanuit een Azure IoT
 description: Als oplossings ontwikkelaar leert u hoe u de Service SDK kunt gebruiken om te communiceren met IoT Plug en Play-apparaten.
 author: Philmea
 ms.author: philmea
-ms.date: 07/24/2019
+ms.date: 12/26/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 543f332087aef4147c9274ca980cb56543a68112
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 485b17ff236de32eab5388629c1bb6044ba19197
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977587"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531340"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>Verbinding maken met en interactie met een IoT Plug en Play preview-apparaat
 
 In deze hand leiding wordt uitgelegd hoe u de voor beelden in de node Service-SDK kunt gebruiken om te laten zien hoe uw IoT-oplossing kan communiceren met IoT Plug en Play preview-apparaten.
 
-Als u de Snelstartgids [voor het verbinden van een IoT Plug en Play-apparaat](quickstart-connect-pnp-device-solution.md) nog niet hebt voltooid, kunt u dit nu doen. In de Quick start ziet u hoe u de SDK downloadt en installeert en enkele voor beelden uitvoert.
+Als u de Snelstartgids [voor het verbinden van een IoT Plug en Play-apparaat](quickstart-connect-pnp-device-solution-node.md) nog niet hebt voltooid, kunt u dit nu doen. In de Quick start ziet u hoe u de SDK downloadt en installeert en enkele voor beelden uitvoert.
 
 Voordat u de service voorbeelden uitvoert, opent u een nieuwe terminal, gaat u naar de hoofdmap van de gekloonde opslag plaats, gaat u naar de map **digitaltwins/Quick starts/service** en voert u de volgende opdracht uit om de afhankelijkheden te installeren:
 

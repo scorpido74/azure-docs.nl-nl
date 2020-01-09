@@ -4,24 +4,23 @@ description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: d2d7d420-dc91-41b8-a6b3-59579e043b35
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 12/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d137a96a967e017c67da7dfabf25502de32ba7a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 71521348c5510696add4399d3046833d3b42193c
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970003"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561883"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Sales Force
 
@@ -70,17 +69,13 @@ Azure AD SSO met Sales Force configureren en testen met behulp van een test gebr
 Als u Azure AD SSO met Sales Force wilt configureren en testen, voert u de volgende bouw stenen uit:
 
 1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-2. **[CONFIGUREER SSO van Sales Force](#configure-salesforce-sso)** -om de instellingen voor eenmalige aanmelding aan de kant van de toepassing te configureren.
-    1. Een **[Sales Force-test gebruiker maken](#create-salesforce-test-user)** : u hebt een equivalent van B. Simon in Sales Force dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-3. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[CONFIGUREER SSO van Sales Force](#configure-salesforce-sso)** -om de instellingen voor eenmalige aanmelding aan de kant van de toepassing te configureren.
+    * Een **[Sales Force-test gebruiker maken](#create-salesforce-test-user)** : u hebt een equivalent van B. Simon in Sales Force dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
-
-In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
-
-Voor het configureren van Azure AD-eenmalige aanmelding met Salesforce voert u de volgende stappen uit:
 
 Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
@@ -90,7 +85,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
+1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
 
     a. Typ in het tekstvak **Aanmeldings-URL** een URL met de volgende indeling:
 
@@ -107,11 +102,11 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de daadwerkelijke aanmeldings-URL en -id. Neem contact op met het [Salesforce-klantondersteuningsteam](https://help.salesforce.com/support) om deze waarden te verkrijgen.
 
-1. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. In de sectie **Salesforce instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
+1. Op de sectie **Sales Force instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -122,13 +117,10 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Maken**.
-   
-    > [!NOTE]
-    > Gebruikers kenmerken van Sales Force zijn hoofdletter gevoelig voor SAML-validatie.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -150,48 +142,56 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ## <a name="configure-salesforce-sso"></a>Sales Force-SSO configureren
 
-1. Open een nieuw tabblad in uw browser en meld u aan bij uw Sales Force-beheerders account.
+1. Als u de configuratie binnen Sales Force wilt automatiseren, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
 
-2. Klik op **Instellen** onder het **instellingenpictogram** in de rechterbovenhoek van de pagina.
+    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
+
+1. Nadat u de extensie hebt toegevoegd aan de browser, klikt u op **Sales Force instellen** , wordt u naar de toepassing voor eenmalige aanmelding in Sales Force geleid. Geef de beheerders referenties op om u aan te melden bij eenmalige aanmelding voor Sales Force. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-13 geautomatiseerd.
+
+    ![Configuratie van Setup](common/setup-sso.png)
+
+1. Als u Sales Force hand matig wilt installeren, opent u een nieuw webbrowser venster en meldt u zich aan bij uw Sales Force-bedrijfs site als beheerder en voert u de volgende stappen uit:
+
+1. Klik op **Instellen** onder het **instellingenpictogram** in de rechterbovenhoek van de pagina.
 
     ![Eenmalige aanmelding configureren](./media/salesforce-tutorial/configure1.png)
 
-3. Schuif in het navigatiedeelvenster omlaag naar **INSTELLINGEN** en klik op **Identiteit** om het bijbehorende gedeelte uit te vouwen. Klik vervolgens op **Instellingen voor eenmalige aanmelding**.
+1. Schuif in het navigatiedeelvenster omlaag naar **INSTELLINGEN** en klik op **Identiteit** om het bijbehorende gedeelte uit te vouwen. Klik vervolgens op **Instellingen voor eenmalige aanmelding**.
 
     ![Eenmalige aanmelding configureren](./media/salesforce-tutorial/sf-admin-sso.png)
 
-4. Op de pagina **Instellingen voor eenmalige aanmelding** klikt u op de knop **Bewerken**.
+1. Op de pagina **Instellingen voor eenmalige aanmelding** klikt u op de knop **Bewerken**.
 
     ![Eenmalige aanmelding configureren](./media/salesforce-tutorial/sf-admin-sso-edit.png)
 
     > [!NOTE]
     > Als u eenmalige aanmelding niet kunt inschakelen voor uw Salesforce-account, moet u mogelijk contact opnemen met het [Salesforce-klantondersteuningsteam](https://help.salesforce.com/support).
 
-5. Selecteer **SAML ingeschakeld** en klik vervolgens op **Opslaan**.
+1. Selecteer **SAML ingeschakeld** en klik vervolgens op **Opslaan**.
 
-      ![Eenmalige aanmelding configureren](./media/salesforce-tutorial/sf-enable-saml.png)
+    ![Eenmalige aanmelding configureren](./media/salesforce-tutorial/sf-enable-saml.png)
 
-6. Als u uw SAML-instellingen voor eenmalige aanmelding wilt configureren, klikt u op **Nieuw op basis van het bestand met metagegevens**.
+1. Als u uw SAML-instellingen voor eenmalige aanmelding wilt configureren, klikt u op **Nieuw op basis van het bestand met metagegevens**.
 
     ![Eenmalige aanmelding configureren](./media/salesforce-tutorial/sf-admin-sso-new.png)
 
-7. Klik op **Bestand kiezen** om het XML-bestand met metagegevens te uploaden dat u hebt gedownload uit Azure Portal. Klik dan op **Maken**.
+1. Klik op **Bestand kiezen** om het XML-bestand met metagegevens te uploaden dat u hebt gedownload uit Azure Portal. Klik dan op **Maken**.
 
     ![Eenmalige aanmelding configureren](./media/salesforce-tutorial/xmlchoose.png)
 
-8. Op de pagina **SAML-instellingen voor eenmalige aanmelding** worden de velden automatisch ingevuld. Klik op Opslaan.
+1. Op de pagina **SAML-instellingen voor eenmalige aanmelding** worden de velden automatisch ingevuld. Klik op Opslaan.
 
     ![Eenmalige aanmelding configureren](./media/salesforce-tutorial/salesforcexml.png)
 
-9. Klik in het navigatiedeelvenster links in Salesforce op **Bedrijfsinstellingen** om het bijbehorende gedeelte uit te vouwen. Klik dan op **Mijn domein**.
+1. Klik in het navigatiedeelvenster links in Salesforce op **Bedrijfsinstellingen** om het bijbehorende gedeelte uit te vouwen. Klik dan op **Mijn domein**.
 
     ![Eenmalige aanmelding configureren](./media/salesforce-tutorial/sf-my-domain.png)
 
-10. Schuif omlaag naar het gedeelte **Verificatieconfiguratie** en klik op de knop **Bewerken**.
+1. Schuif omlaag naar het gedeelte **Verificatieconfiguratie** en klik op de knop **Bewerken**.
 
     ![Eenmalige aanmelding configureren](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
-11. In het gedeelte **Verificatieconfiguratie** schakelt u **AzureSSO** in als **verificatieservice** voor de SAML-configuratie voor eenmalige aanmelding. Klik dan op **Opslaan** .
+1. In het gedeelte **Verificatieconfiguratie** schakelt u **AzureSSO** in als **verificatieservice** voor de SAML-configuratie voor eenmalige aanmelding. Klik dan op **Opslaan** .
 
     ![Eenmalige aanmelding configureren](./media/salesforce-tutorial/sf-auth-config.png)
 

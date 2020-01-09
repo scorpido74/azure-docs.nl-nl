@@ -1,6 +1,6 @@
 ---
-title: Zelf studie-een schaalset voor virtuele machines maken voor Linux in azure
-description: In deze zelfstudie leert u hoe u Azure CLI gebruikt om een maximaal beschikbare toepassing te maken en implementeren op virtuele Linux-machines met behulp van een virtuele-machineschaalset
+title: 'Zelf studie: een schaalset voor virtuele Windows-machines maken'
+description: Meer informatie over het gebruik van de Azure CLI voor het maken en implementeren van een Maxi maal beschik bare toepassing op Linux Vm's met behulp van een schaalset voor virtuele machines
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b9368da24af3b0fe08045ed869c752eefe3912fd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 94e7bac3cbf3842375278a23bc39245425cda4b6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034518"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458667"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>Zelfstudie: Een virtuele-machineschaalset maken en een toepassing met hoge beschikbaarheid implementeren in Linux met Azure CLI
 

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c045a4b5ccda47b786d86f1c004e9da4c8d85f3
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 7d588e11525e5087f8667da4602797e5299c76f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112307"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374696"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Time Series-model in Azure Time Series Insights preview
 
@@ -24,6 +24,7 @@ In dit artikel wordt beschreven hoe u een tijdreeks model, de mogelijkheden en h
 > [!TIP]
 >  * Ga naar de [Contoso wikkeling-Farm demo](https://insights.timeseries.azure.com/preview/samples) omgeving voor een live time series model-voor beeld.
 > * Meer informatie over de [Azure time series Insights preview Explorer](time-series-insights-update-explorer.md) om te leren hoe u kunt navigeren in de gebruikers interface van uw tijd reeks model.
+> * Meer informatie [over het werken met een time series-model](time-series-insights-update-how-to-tsm.md) met behulp van de time series Insights Web Explorer.
 
 ## <a name="summary"></a>Samenvatting
 
@@ -48,11 +49,11 @@ Deze beperkingen onthulden het belang van slimme gegevens aggregatie en visualis
 
 **Time Series-model biedt een handige oplossing** voor veel van de scenario's die in dit fictieve voor beeld zijn aangetroffen:
 
-[grafieken van ![time series-model](media/v2-update-tsm/tsi-charting.png)](media/v2-update-tsm/tsi-charting.png#lightbox)
+[voor beeld van een intelligent oven diagram van ![time series model](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
 
-* Time Series-model speelt een cruciale rol in query's en navigatie, omdat deze gegevens contextualizes, doordat er vergelijkingen kunnen worden gemaakt over Peri Oden en tussen sensor-en apparaattypen.
-* De gegevens worden verder gecontextd omdat de gegevens die in het tijdreeks model worden bewaard, de tijdreeks query berekeningen als variabelen behouden en deze tijdens de query tijd gebruiken.
-* Met de time series-model worden gegevens ingedeeld en geaggregeerd voor verbeterde visualisatie-en beheer mogelijkheden.
+* Time Series-model speelt een cruciale rol in query's en navigatie, omdat deze gegevens contextualizes, doordat er vergelijkingen kunnen worden gemaakt over Peri Oden en tussen sensor-en apparaattypen. (**A**) 
+* Gegevens worden nader gecontextd, omdat de gegevens die in het tijdreeks model worden bewaard, de tijdreeks query berekeningen als variabelen behouden en ze opnieuw gebruiken op het moment van de query.
+* Met de time series-model worden gegevens ingedeeld en geaggregeerd voor verbeterde visualisatie-en beheer mogelijkheden. (**B**) 
 
 ### <a name="key-capabilities"></a>Belangrijkste mogelijkheden
 
@@ -72,7 +73,7 @@ Time Series model heeft drie kern onderdelen:
 
 Deze onderdelen worden gecombineerd om een time series-model op te geven en om uw Azure Time Series Insights gegevens te organiseren.
 
-[overzicht van ![time series-model](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
+[overzichts grafiek van ![time series-model](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
 Een time series-model kan worden gemaakt en beheerd via de [Time Series Insights preview](time-series-insights-update-how-to-tsm.md) -interface. Instellingen voor tijdreeks modellen kunnen worden beheerd via de [API voor model instellingen](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api).
 
@@ -90,7 +91,7 @@ Nadat een gebeurtenis bron is geconfigureerd voor de Time Series Insights omgevi
 
 De [demo](https://insights.timeseries.azure.com/preview/samples) van de contoso-Farm bevat enkele voor beelden van Live instances.
 
-[![time series-model instanties](media/v2-update-tsm/instance.png)](media/v2-update-tsm/instance.png#lightbox)
+[voor beeld van een exemplaar van ![time series-model](media/v2-update-tsm/time-series-model-instance.png)](media/v2-update-tsm/time-series-model-instance.png#lightbox)
 
 ### <a name="instance-properties"></a>Instantie-eigenschappen
 
@@ -100,7 +101,7 @@ Instanties worden gedefinieerd door **timeSeriesId**, **typeId**, **name**, **De
 | --- | ---|
 | timeSeriesId | De UUID van de tijd reeks waaraan het exemplaar is gekoppeld. |
 | typeId | De UUID van het model van de tijd reeks waaraan het exemplaar is gekoppeld. Alle gedetecteerde nieuwe instanties worden standaard gekoppeld aan een standaard type.
-| name | De eigenschap **name** is optioneel en is hoofdletter gevoelig. Als de **naam** niet beschikbaar is, wordt standaard **timeSeriesId**. Als er een naam wordt gegeven, is **timeSeriesId** nog steeds beschikbaar [.](time-series-insights-update-explorer.md#4-time-series-well) |
+| name | De eigenschap **name** is optioneel en hoofdletter gevoelig. Als de **naam** niet beschikbaar is, wordt standaard **timeSeriesId**. Als er een naam wordt gegeven, is **timeSeriesId** nog steeds beschikbaar [.](time-series-insights-update-explorer.md#4-time-series-well) |
 | description | Een tekst beschrijving van het exemplaar. |
 | hierarchyIds | Hiermee definieert u de hiërarchieën waarvan het exemplaar deel uitmaakt. |
 | instanceFields | De eigenschappen van een exemplaar en alle statische gegevens waarmee een exemplaar wordt gedefinieerd. Ze definiëren waarden van hiërarchie-of niet-hiërarchie-eigenschappen, terwijl indexeren ook ondersteuning biedt voor het uitvoeren van zoek bewerkingen. |
@@ -112,18 +113,18 @@ Exemplaren hebben de volgende JSON-weer gave:
 
 ```JSON
 {
-    "timeSeriesId": ["PU2"],
-    "typeId": "545314a5-7166-4b90-abb9-fd93966fa39b",
-    "hierarchyIds": ["95f0a8d1-a3ef-4549-b4b3-f138856b3a12"],
-    "description": "Pump #2",
-    "instanceFields": {
-        "Location": "Redmond",
-        "Fleet": "Fleet 5",
-        "Unit": "Pump Unit 3",
-        "Manufacturer": "Contoso",
-        "ScalePres": "0.54",
-        "scaleTemp": "0.54"
-    }
+  "timeSeriesId": ["PU2"],
+  "typeId": "545314a5-7166-4b90-abb9-fd93966fa39b",
+  "hierarchyIds": ["95f0a8d1-a3ef-4549-b4b3-f138856b3a12"],
+  "description": "Pump #2",
+  "instanceFields": {
+    "Location": "Redmond",
+    "Fleet": "Fleet 5",
+    "Unit": "Pump Unit 3",
+    "Manufacturer": "Contoso",
+    "ScalePres": "0.54",
+    "scaleTemp": "0.54"
+  }
 }
 ```
 
@@ -138,7 +139,7 @@ U kunt meerdere hiërarchieën configureren in een bepaalde Time Series Insights
 
 De [Contoso wikkeling-Farm demo](https://insights.timeseries.azure.com/preview/samples) client interface geeft een standaard exemplaar en een type hiërarchie weer.
 
-[![time series-model hiërarchieën](media/v2-update-tsm/hierarchy.png)](media/v2-update-tsm/hierarchy.png#lightbox)
+[voor beeld van een hiërarchie van ![time series-model](media/v2-update-tsm/time-series-model-hierarchies.png)](media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
 
 ### <a name="hierarchy-definition"></a>Hiërarchie definitie
 
@@ -215,7 +216,7 @@ Op basis van de instantie velden die worden gebruikt in de vorige definitie en e
 | ID4 | ' buil ding ' = ' 1000 ', ' Floor ' = ' 10 '  |
 | ID5 | Geen: ' buil ding ', ' Floor ' of ' room ' is ingesteld. |
 
-Time Series **id1** en **ID4** worden weer gegeven als onderdeel van de hiërarchie **H1** in de [Azure time series Insights Explorer](time-series-insights-update-explorer.md) , omdat ze volledig zijn gedefinieerd en goed *zijn geordend,* *vloer*en *kamer* instellen.
+Time Series **id1** en **ID4** worden weer gegeven als onderdeel van de hiërarchie **H1** in de [Azure time series Insights Explorer](time-series-insights-update-explorer.md) , omdat ze volledig gedefinieerde en correct bestelde *bouw*-, *vloer*-en *room* -para meters hebben gedefinieerd.
 
 De andere zijn ingedeeld onder niet- *bovenliggende instanties* , omdat ze niet voldoen aan de opgegeven gegevens hiërarchie.
 
@@ -227,7 +228,7 @@ Een type kan een of meer variabelen hebben. Een exemplaar van een time series-mo
 
 In de demo van de [Contoso wikkeling-Farm](https://insights.timeseries.azure.com/preview/samples) worden verschillende typen Time Series-modellen gevisualiseerd die aan hun respectieve instanties zijn gekoppeld.
 
-[![time series-model typen](media/v2-update-tsm/types.png)](media/v2-update-tsm/types.png#lightbox)
+[voor beeld van type ![time series-model](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
 > Zie het artikel [gegevens query's](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) en de rest-documentatie van het [Type API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)voor time series INSIGHTS-instance-API en ruwe ondersteuning.
@@ -295,7 +296,7 @@ Elke variabele kan een van de volgende drie *typen*zijn: *numeric*, *categorisch
 
 In de volgende tabel ziet u welke eigenschappen relevant zijn voor elk type variabele.
 
-[![time series-model typen](media/v2-update-tsm/variable-table.png)](media/v2-update-tsm/variable-table.png#lightbox)
+[variabele van ![time series-model](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
 
 #### <a name="numeric-variables"></a>Numerieke variabelen
 
@@ -342,7 +343,9 @@ Variabelen voldoen aan het volgende JSON-voor beeld:
 ```JSON
 "Status": {
   "kind": "categorical",
-  "value": "toLong($event.[Status].Double)",
+  "value": {
+     "tsx": "toLong($event.[Status].Double)" 
+},
   "interpolation": {
     "kind": "step",
     "boundary": {
@@ -389,5 +392,7 @@ Variabelen worden opgeslagen in de type definitie van een time series-model en k
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [Azure time series Insights preview-opslag en](./time-series-insights-update-storage-ingress.md)inkomend verkeer.
+
 - Meer informatie over algemene bewerkingen voor time series-modellen in [gegevens modellering in azure time series Insights preview](./time-series-insights-update-how-to-tsm.md)
+
 - Lees de naslag documentatie over het nieuwe [Time Series-model](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) .

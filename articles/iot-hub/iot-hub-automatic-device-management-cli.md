@@ -1,37 +1,37 @@
 ---
 title: Automatische Apparaatbeheer op schaal met Azure IoT Hub (CLI) | Microsoft Docs
-description: Automatische Azure IoT Hub-Apparaatbeheer gebruiken een configuratie toewijzen aan meerdere IoT-apparaten
+description: Automatische configuraties van Azure IoT Hub gebruiken om meerdere IoT-apparaten of-modules te beheren
 author: ChrisGMsft
 manager: bruz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 12/13/2019
 ms.author: chrisgre
-ms.openlocfilehash: d57dbbdd7614d09d52fef0f613c43d4ca1d08136
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 9a7e2d9874f049000dadcb3e46cccb2202b53698
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485867"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429293"
 ---
-# <a name="automatic-iot-device-management-at-scale-using-the-azure-cli"></a>Automatische IoT-Apparaatbeheer op schaal met behulp van de Azure CLI
+# <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Automatische IoT-apparaat-en module beheer met Azure CLI
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Automatische Apparaatbeheer in Azure IoT Hub kunt u veel van de terugkerende en complexe taken van het beheer van grote apparaat vloten automatiseren. Met automatische device management, kunt u een set met apparaten op basis van hun eigenschappen als doel, definieert een gewenste configuratie en vervolgens laat u de apparaten werken wanneer ze worden gemeld in het bereik van IoT-Hub. Deze update wordt uitgevoerd met behulp van een _automatische apparaatconfiguratie_, waar u kunt u samenvatten is voltooid en naleving, ingang samenvoegen en conflicten en configuraties in een gefaseerde benadering worden uitgerold.
+Automatische Apparaatbeheer in azure IoT Hub automatiseert veel van de herhaalde en complexe taken voor het beheren van grote apparaat vloots. Met automatisch Apparaatbeheer kunt u een set apparaten op basis van hun eigenschappen richten, een gewenste configuratie definiëren en de apparaten vervolgens IoT Hub bijwerken wanneer ze binnen het bereik komen. Deze update wordt uitgevoerd met behulp van een _automatische apparaatconfiguratie_ of _automatische configuratie_van een module, waarmee u de voltooiing en naleving kunt samen vatten, samen voegen en conflicten kunt afhandelen en configuraties in een gefaseerde benadering implementeert.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Automatische device management werkt door een set dubbele apparaten bijwerken met de gewenste eigenschappen en rapportage een overzicht dat gebaseerd op het dubbele apparaat gerapporteerde eigenschappen.  Dit introduceert een nieuwe klasse en JSON-document met de naam een *configuratie* die bestaat uit drie delen:
+Automatische Apparaatbeheer werkt door het bijwerken van een set apparaatdubbels of module apparaatdubbels met gewenste eigenschappen en het rapporteren van een samen vatting dat is gebaseerd op twee gerapporteerde eigenschappen.  Er wordt een nieuwe klasse en een JSON-document geïntroduceerd, een *configuratie* met drie onderdelen:
 
-* De **voorwaarde als doel** definieert het bereik van apparaatdubbels om te worden bijgewerkt. De doelvoorwaarde is opgegeven als een query op apparaat apparaatdubbel-tags en/of gerapporteerde eigenschappen.
+* De **doel voorwaarde** definieert het bereik van de apparaatdubbels of module apparaatdubbels die moet worden bijgewerkt. De doel voorwaarde wordt opgegeven als een query op dubbele Tags en/of gerapporteerde eigenschappen van het apparaat.
 
-* De **inhoud richten** bepaalt de gewenste eigenschappen om te worden toegevoegd of bijgewerkt in de betreffende apparaatdubbels. De inhoud bevat een pad naar de sectie van de gewenste eigenschappen die moeten worden gewijzigd.
+* De **doel inhoud** definieert de gewenste eigenschappen die moeten worden toegevoegd of bijgewerkt in de apparaatdubbels of module apparaatdubbels van het doel apparaat. De inhoud bevat een pad naar de sectie met gewenste eigenschappen die moeten worden gewijzigd.
 
-* De **metrische gegevens** definiëren de samenvatting tellingen van verschillende configuratiestatussen zoals **succes**, **In voortgang**, en **fout**. Aangepaste metrische gegevens zijn opgegeven als query's op apparaat gerapporteerde eigenschappen.  Metrische systeemmeetgegevens zijn de standaard metrische gegevens die het meten van de status van het dubbele bijwerken, zoals het aantal dubbele apparaten die zijn gericht en het aantal dubbele die zijn bijgewerkt.
+* De **metrische gegevens** bepalen het aantal samen vattingen van de verschillende configuratie statussen, zoals **geslaagd**, **in uitvoering**en **fout**. Aangepaste metrische gegevens worden opgegeven als query's op dubbele gerapporteerde eigenschappen.  Systeem metrieken zijn de standaard waarden die de dubbele update status meten, zoals het aantal apparaatdubbels dat is gericht en het aantal apparaatdubbels dat is bijgewerkt.
 
-Automatische inrichting configuraties uitvoeren voor de eerste keer kort nadat de configuratie wordt gemaakt en klik vervolgens met intervallen van vijf minuten. Metrische gegevens over query's uitgevoerd telkens wanneer de automatische configuratie wordt uitgevoerd.
+Automatische configuraties worden voor de eerste keer uitgevoerd, kort nadat de configuratie is gemaakt en vervolgens vijf minuten. Metrische query's worden uitgevoerd telkens wanneer de automatische configuratie wordt uitgevoerd.
 
 ## <a name="cli-prerequisites"></a>CLI-vereisten
 
@@ -39,13 +39,15 @@ Automatische inrichting configuraties uitvoeren voor de eerste keer kort nadat d
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) in uw omgeving. Uw Azure CLI-versie moet ten minste 2.0.24 of hoger. Gebruik `az –-version` om de versie te valideren. In deze versie worden az-extensie-opdrachten ondersteund en is voor het eerst het Knack-opdrachtframework opgenomen. 
 * De [IoT-extensie voor Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
 
-## <a name="implement-device-twins-to-configure-devices"></a>Apparaatdubbels implementeren om apparaten te configureren
+## <a name="implement-twins"></a>Apparaatdubbels implementeren
 
-Automatische inrichting configuraties vereisen het gebruik van apparaatdubbels om te synchroniseren tussen de cloud en apparaten.  Raadpleeg [apparaatdubbels begrijpen en gebruiken in IoT Hub](iot-hub-devguide-device-twins.md) voor informatie over het gebruik van apparaatdubbels.
+Voor automatische apparaatconfiguratie is het gebruik van apparaatdubbels vereist om de status van de Cloud en de apparaten te synchroniseren.  Zie [Apparaatdubbels begrijpen en gebruiken in IoT Hub](iot-hub-devguide-device-twins.md) voor meer informatie.
 
-## <a name="identify-devices-using-tags"></a>Identificatie van apparaten met behulp van tags
+Voor automatische module configuraties moet module apparaatdubbels worden gebruikt om de status van de Cloud en modules te synchroniseren. Zie voor meer informatie de [module Apparaatdubbels begrijpen en gebruiken in IOT hub](iot-hub-devguide-module-twins.md).
 
-Voordat u een configuratie maakt, moet u opgeven welke apparaten die u wilt toepassen. Azure IoT Hub identificeert-apparaten met behulp van tags in de apparaatdubbel. Elk apparaat kan meerdere labels, en u ze een manier die zinvol is voor uw oplossing kunt definiëren. Als u apparaten in verschillende locaties beheert, Voeg bijvoorbeeld de volgende codes toe aan een apparaatdubbel:
+## <a name="use-tags-to-target-twins"></a>Tags gebruiken om apparaatdubbels te richten
+
+Voordat u een configuratie maakt, moet u opgeven welke apparaten of modules u wilt beïnvloeden. Met Azure IoT Hub worden apparaten geïdentificeerd en tags op het apparaat dubbele en worden modules geïdentificeerd met behulp van labels in de module. Elk apparaat of elke module kan meerdere labels hebben, en u kunt ze op elke manier definiëren die zinvol is voor uw oplossing. Als u bijvoorbeeld apparaten op verschillende locaties beheert, voegt u de volgende tags toe aan een apparaat:
 
 ```json
 "tags": {
@@ -56,11 +58,11 @@ Voordat u een configuratie maakt, moet u opgeven welke apparaten die u wilt toep
 },
 ```
 
-## <a name="define-the-target-content-and-metrics"></a>De inhoud van de doel- en metrische gegevens definiëren
+## <a name="define-the-target-content-and-metrics"></a>De doel inhoud en-metrische gegevens definiëren
 
-De doel-inhoud en metrische query's zijn opgegeven als JSON-documenten die worden beschreven van het apparaat twin gewenste eigenschappen instellen en de gerapporteerde eigenschappen om te meten.  Sla de inhoud van de doel- en metrische gegevens lokaal als txt-bestanden voor het maken van een automatische apparaatconfiguratie met behulp van Azure CLI. U gebruikt de bestandspaden in een volgende sectie tijdens het uitvoeren van de opdracht uit om de configuratie toepassen op uw apparaat.
+De doel inhoud en metrische query's worden opgegeven als JSON-documenten waarin de eigenschappen van het apparaat dubbel of de gewenste module worden beschreven voor het instellen en gerapporteerde eigenschappen die moeten worden gemeten.  Als u een automatische configuratie wilt maken met behulp van Azure CLI, slaat u de doel inhoud en de metrische gegevens lokaal op als txt-bestanden. U gebruikt de bestands paden in een latere sectie wanneer u de opdracht uitvoert om de configuratie toe te passen op uw apparaat.
 
-Hier volgt een voorbeeld van basic target-inhoud:
+Hier volgt een voor beeld van een basis doel inhoud voor een automatische apparaatconfiguratie:
 
 ```json
 {
@@ -74,21 +76,45 @@ Hier volgt een voorbeeld van basic target-inhoud:
 }
 ```
 
-Hier volgen enkele voorbeelden van metrische query's:
+Automatische module configuraties gedragen zich op vergelijk bare wijze, maar u bereikt `moduleContent` in plaats van `deviceContent`.
+
+```json
+{
+  "content": {
+    "moduleContent": {
+      "properties.desired.chillerWaterSettings": {
+        "temperature": 38,
+        "pressure": 78
+      }
+    }
+}
+```
+
+Hier volgen enkele voor beelden van metrische query's:
 
 ```json
 {
   "queries": {
-    "Compliant": "select deviceId from devices where configurations.[[chillersettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='current'",
-    "Error": "select deviceId from devices where configurations.[[chillersettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='error'",
-    "Pending": "select deviceId from devices where configurations.[[chillersettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='pending'"
+    "Compliant": "select deviceId from devices where configurations.[[chillerdevicesettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='current'",
+    "Error": "select deviceId from devices where configurations.[[chillerdevicesettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='error'",
+    "Pending": "select deviceId from devices where configurations.[[chillerdevicesettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='pending'"
+  }
+}
+```
+
+Metrische query's voor modules zijn ook vergelijkbaar met query's voor apparaten, maar u selecteert voor `moduleId` van `devices.modules`. Bijvoorbeeld: 
+
+```json
+{
+  "queries": {
+    "Compliant": "select deviceId, moduleId from devices.module where configurations.[[chillermodulesettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='current'"
   }
 }
 ```
 
 ## <a name="create-a-configuration"></a>Een configuratie maken
 
-U configureren doelapparaten door het maken van een configuratie die uit de doel-inhoud en metrische gegevens bestaat. 
+U kunt doel apparaten configureren door een configuratie te maken die bestaat uit de doel inhoud en-metrische gegevens. 
 
 Gebruik de volgende opdracht om een configuratie te maken:
 
@@ -99,19 +125,19 @@ Gebruik de volgende opdracht om een configuratie te maken:
      --metrics [metric queries]
 ```
 
-* --**configuratie-id** -de naam van de configuratie die in de IoT hub wordt gemaakt. Geef uw configuratie van een unieke naam die maximaal 128 kleine letters. Vermijd spaties en de volgende ongeldige tekens: `& ^ [ ] { } \ | " < > /`.
+* --**config-id** : de naam van de configuratie die wordt gemaakt in de IOT-hub. Geef uw configuratie een unieke naam van Maxi maal 128 kleine letters. Vermijd spaties en de volgende ongeldige tekens: `& ^ [ ] { } \ | " < > /`.
 
-* --**labels** -labels voor het bijhouden van uw configuratie toevoegen. Labels zijn naam, waarde-paren die uw implementatie te beschrijven. Bijvoorbeeld, `HostPlatform, Linux` of `Version, 3.0.1`
+* --**labels** : Labels toevoegen om uw configuratie bij te houden. Labels zijn naam, waarde-paren die uw implementatie te beschrijven. Bijvoorbeeld, `HostPlatform, Linux` of `Version, 3.0.1`
 
-* --**inhoud** -Inline JSON of bestand pad naar de doel-inhoud moet worden ingesteld als dubbel gewenste eigenschappen. 
+* --**inhoud** inline JSON of bestandspad naar de doel inhoud moet worden ingesteld als twee gewenste eigenschappen. 
 
-* --**naam van de hub** -naam van de IoT-hub waarin de configuratie wordt gemaakt. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`
+* --**hub-naam** -naam van de IOT-hub waarin de configuratie wordt gemaakt. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`
 
-* --**doelvoorwaarde** -Geef een doelvoorwaarde om te bepalen welke apparaten wordt met deze configuratie worden toegepast. De voorwaarde is gebaseerd op het apparaat apparaatdubbel-tags of apparaatdubbel gewenste eigenschappen en moet overeenkomen met de indeling van de expressie. Bijvoorbeeld, `tags.environment='test'` of `properties.desired.devicemodel='4000x'`. 
+* --**doel-condition** : Voer een doel voorwaarde in om te bepalen welke apparaten of modules met deze configuratie worden benaderd. Voor automatische apparaatconfiguratie is de voor waarde gebaseerd op apparaatonafhankelijke Tags of de dubbele gewenste eigenschappen van het apparaat en moet overeenkomen met de indeling van de expressie. Bijvoorbeeld `tags.environment='test'` of `properties.desired.devicemodel='4000x'`. Voor de automatische module configuratie is de voor waarde gebaseerd op een module dubbele Tags of module dubbele gewenste eigenschappen.. Bijvoorbeeld `from devices.modules where tags.environment='test'` of `from devices.modules where properties.reported.chillerProperties.model='4000x'`.
 
-* --**prioriteit** -een positief geheel getal zijn. In het geval dat twee of meer configuraties zijn gericht op hetzelfde apparaat, geldt de configuratie met de hoogste numerieke waarde voor de prioriteit.
+* --**prioriteit** : een positief geheel getal. Als twee of meer configuraties zijn gericht op hetzelfde apparaat of dezelfde module, is de configuratie met de hoogste numerieke waarde voor prioriteit van toepassing.
 
-* --**metrische gegevens** -bestandspad naar de metrische query's. Metrische gegevens bieden samenvatting tellingen van de verschillende statussen aan die een apparaat rapporteren kan na het toepassen van configuratie-inhoud. U kunt bijvoorbeeld een metrische waarde voor in behandeling zijnde wijzigingen, een metrische waarde voor de fouten en metrische gegevens voor wijzigingen in de geslaagde maken. 
+* --**metrische gegevens** : filepath naar de metrische query's. Metrische gegevens bieden een overzicht van de verschillende statussen die een apparaat of module kan melden na het Toep assen van configuratie-inhoud. U kunt bijvoorbeeld een metriek maken voor wijzigingen in de instellingen in behandeling, een metrische waarde voor fouten en een metrische waarde voor geslaagde instellingen wijzigen. 
 
 ## <a name="monitor-a-configuration"></a>Een configuratie controleren
 
@@ -122,91 +148,91 @@ az iot hub configuration show --config-id [configuration id] \
   --hub-name [hub name]
 ```
 
-* --**configuratie-id** -de naam van de configuratie die deel uitmaakt van de IoT-hub.
+* --**config-id** : de naam van de configuratie die in de IOT-hub bestaat.
 
-* --**naam van de hub** -naam van de IoT-hub waarin de configuratie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`
+* --**hub-naam** -naam van de IOT-hub waarin de configuratie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`
 
-Inspecteer de configuratie in het opdrachtvenster. De **metrische gegevens** eigenschap bevat een aantal voor elke metrische gegevens die wordt geëvalueerd door elke hub:
+Controleer de configuratie in het opdracht venster. De eigenschap **Metrics** bevat een aantal voor elke metrische waarde die door elke hub wordt geëvalueerd:
 
-* **targetedCount** -een systeem-metric die Hiermee geeft u het aantal dubbele apparaten in IoT-Hub die overeenkomen met de doelitems voorwaarde.
+* **targetedCount** : een systeem metriek waarmee het aantal apparaatdubbels of module apparaatdubbels in IOT hub wordt opgegeven dat overeenkomt met de doel voorwaarde.
 
-* **appliedCount** -een systeem metrische waarde geeft het aantal apparaten waarvoor het doel inhoud toegepast.
+* **appliedCount** : met een systeem metriek geeft u het aantal apparaten of modules op waarop de doel inhoud is toegepast.
 
-* **Uw aangepaste metrische gegevens** -alle metrische gegevens die u hebt gedefinieerd zijn metrische gegevens over gebruikers.
+* **Uw aangepaste metrische gegevens** : alle metrische gegevens die u hebt gedefinieerd, zijn metrische gegevens van de gebruiker.
 
-U kunt een lijst van apparaat-id's of objecten voor elk van de metrische gegevens weergeven met behulp van de volgende opdracht uit:
+U kunt een lijst met apparaat-Id's, module-Id's of objecten voor elk van de metrische gegevens weer geven met behulp van de volgende opdracht:
 
 ```cli
 az iot hub configuration show-metric --config-id [configuration id] \
    --metric-id [metric id] --hub-name [hub name] --metric-type [type] 
 ```
 
-* --**configuratie-id** -de naam van de implementatie die deel uitmaakt van de IoT-hub.
+* --**config-id** : de naam van de implementatie die in de IOT-hub bestaat.
 
-* --**metrische gegevens-id** : de naam van de metrische gegevens waarvoor u wilt bijvoorbeeld de lijst met apparaat-id's, Zie `appliedCount`.
+* --**metrische id** : de naam van de metriek waarvoor u de lijst met apparaat-id's of module-id's wilt zien, bijvoorbeeld `appliedCount`.
 
-* --**naam van de hub** -naam van de IoT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`.
+* --**hub-naam** -naam van de IOT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`.
 
-* --**metrische gegevens van het type** -type van metrische gegevens kan worden `system` of `user`.  Metrische systeemmeetgegevens zijn `targetedCount` en `appliedCount`. Alle andere metrische gegevens zijn metrische gegevens over gebruikers.
+* --type metrische waarde **-type** metriek kan `system` of `user`zijn.  Systeem metrieken zijn `targetedCount` en `appliedCount`. Alle andere metrische gegevens zijn metrische gegevens van de gebruiker.
 
 ## <a name="modify-a-configuration"></a>Een configuratie wijzigen
 
-Wanneer u een configuratie wijzigt, worden de wijzigingen onmiddellijk gerepliceerd naar alle apparaten uit de doelgroep. 
+Wanneer u een configuratie wijzigt, worden de wijzigingen onmiddellijk gerepliceerd naar alle doel apparaten. 
 
 Als u de doelvoorwaarde bijwerkt, gebeuren de volgende updates:
 
-* Als een apparaatdubbel is niet voldoen aan de oude doelvoorwaarde, maar voldoet aan de nieuwe doelvoorwaarde en deze configuratie de hoogste prioriteit voor die apparaatdubbel is, wordt deze configuratie toegepast op het dubbele apparaat. 
+* Als een dubbele niet voldoet aan de oude doel voorwaarde, maar voldoet aan de nieuwe doel voorwaarde en deze configuratie de hoogste prioriteit voor die dubbele is, wordt deze configuratie toegepast. 
 
-* Als een apparaatdubbel is niet meer voldoet aan de doelvoorwaarde, de instellingen van de configuratie wordt verwijderd en het dubbele apparaat wordt gewijzigd door de configuratie van de volgende hoogste prioriteit. 
+* Als een dubbele uitvoering van deze configuratie niet meer voldoet aan de doel voorwaarde, worden de instellingen van de configuratie verwijderd en wordt de dubbele wijziging door de configuratie van de volgende hoogste prioriteit gewijzigd. 
 
-* Als een apparaatdubbel momenteel met deze configuratie niet meer voldoet aan de doelvoorwaarde en niet voldoet aan de doelvoorwaarde van alle andere configuraties, klikt u vervolgens de instellingen van de configuratie wordt verwijderd en geen andere wijzigingen worden aangebracht op het dubbele. 
+* Als een dubbele uitvoering van deze configuratie niet meer voldoet aan de doel voorwaarde en niet voldoet aan de doel voorwaarde van andere configuraties, worden de instellingen van de configuratie verwijderd en worden er geen andere wijzigingen doorgevoerd op de dubbele. 
 
-Gebruik de volgende opdracht in een configuratie bij te werken:
+Gebruik de volgende opdracht om een configuratie bij te werken:
 
 ```cli
 az iot hub configuration update --config-id [configuration id] \
    --hub-name [hub name] --set [property1.property2='value']
 ```
 
-* --**configuratie-id** -de naam van de configuratie die deel uitmaakt van de IoT-hub.
+* --**config-id** : de naam van de configuratie die in de IOT-hub bestaat.
 
-* --**naam van de hub** -naam van de IoT-hub waarin de configuratie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`.
+* --**hub-naam** -naam van de IOT-hub waarin de configuratie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`.
 
-* --**Stel** -een eigenschap in de configuratie bijwerken. U kunt de volgende eigenschappen bijwerken:
+* --**set** : een eigenschap in de configuratie bijwerken. U kunt de volgende eigenschappen bijwerken:
 
     * targetCondition - voorbeeld `targetCondition=tags.location.state='Oregon'`
 
     * labels 
 
-    * prioriteit
+    * priority
 
 ## <a name="delete-a-configuration"></a>Een configuratie verwijderen
 
-Wanneer u een configuratie verwijdert, worden alle dubbele apparaten op de volgende configuratie met hoogste prioriteit. Als u dubbele apparaten niet voldoen aan de doelvoorwaarde van een andere configuratie, wordt er geen andere instellingen toegepast. 
+Wanneer u een configuratie verwijdert, nemen alle apparaatdubbels of module apparaatdubbels de volgende configuratie voor de hoogste prioriteit. Als apparaatdubbels niet voldoet aan de doel voorwaarde van een andere configuratie, worden er geen andere instellingen toegepast. 
 
-Gebruik de volgende opdracht uit om te verwijderen van een configuratie:
+Gebruik de volgende opdracht om een configuratie te verwijderen:
 
 ```cli
 az iot hub configuration delete --config-id [configuration id] \
    --hub-name [hub name] 
 ```
-* --**configuratie-id** -de naam van de configuratie die deel uitmaakt van de IoT-hub.
+* --**config-id** : de naam van de configuratie die in de IOT-hub bestaat.
 
-* --**naam van de hub** -naam van de IoT-hub waarin de configuratie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`.
+* --**hub-naam** -naam van de IOT-hub waarin de configuratie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u kunt configureren en controleren van IoT-apparaten op schaal. Volg deze koppelingen voor meer informatie over het beheren van Azure IoT Hub:
+In dit artikel hebt u geleerd hoe u IoT-apparaten op schaal kunt configureren en controleren. Volg deze koppelingen voor meer informatie over het beheren van Azure IoT Hub:
 
 * [De identiteiten van uw IoT Hub-apparaten bulksgewijs beheren](iot-hub-bulk-identity-mgmt.md)
-* [Metrische gegevens van IoT Hub](iot-hub-metrics.md)
+* [IoT Hub metrische gegevens](iot-hub-metrics.md)
 * [Controle van bewerkingen](iot-hub-operations-monitoring.md)
 
-Als u wilt de mogelijkheden van IoT Hub verder verkennen, Zie:
+Zie voor meer informatie over de mogelijkheden van IoT Hub:
 
-* [Ontwikkelaarshandleiding voor IoT Hub](iot-hub-devguide.md)
+* [Ontwikkelaars handleiding IoT Hub](iot-hub-devguide.md)
 * [AI implementeren op edge-apparaten met Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
 
-Om te verkennen met behulp van de IoT Hub Device Provisioning Service inschakelen zero-touch, just-in-time inrichting, Zie: 
+Zie voor meer informatie over het gebruik van de IoT Hub Device Provisioning Service om Zero-Touch, just-in-time inrichten in te scha kelen: 
 
 * [Azure IoT Hub Device Provisioning Service](/azure/iot-dps)

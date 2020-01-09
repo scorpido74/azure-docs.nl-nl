@@ -1,68 +1,59 @@
 ---
-title: Starten en stoppen van clusterknooppunten voor het testen van apps in Azure Service Fabric | Microsoft Docs
-description: Informatie over het gebruik foutinjectie testen van een Service Fabric-toepassing door te starten en stoppen van de clusterknooppunten.
-services: service-fabric
-documentationcenter: .net
+title: Cluster knooppunten starten en stoppen
+description: Meer informatie over het gebruik van fout injectie om een Service Fabric-toepassing te testen door cluster knooppunten te starten en te stoppen.
 author: LMWF
-manager: rsinha
-editor: ''
-ms.assetid: f4e70f6f-cad9-4a3e-9655-009b4db09c6d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/12/2017
 ms.author: lemai
-ms.openlocfilehash: df0e53736c08fd2c26c467def7328e85f2989f26
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f2eefec94ad4763a054ee089b17232c41e642dd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60718135"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609788"
 ---
-# <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Het starten en stoppen knooppunten API's vervangen door de API van de overgang knooppunt
+# <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Het begin knooppunt vervangen en de knoop punt-Api's stoppen met de knooppunt overgangs-API
 
-## <a name="what-do-the-stop-node-and-start-node-apis-do"></a>Wat het knooppunt stoppen en starten knooppunt API's?
+## <a name="what-do-the-stop-node-and-start-node-apis-do"></a>Wat gebeurt er met het knoop punt stoppen en de Api's voor het starten van knoop punten?
 
-De API-knooppunt stoppen (beheerd: [StopNodeAsync()][stopnode], PowerShell: [Stop-ServiceFabricNode][stopnodeps]) stopt een Service Fabric-knooppunt.  Een Service Fabric-knooppunt is proces, niet een virtuele machine of computer – de virtuele machine of de machine wordt nog steeds worden uitgevoerd.  Voor de rest van het document betekent 'knooppunt' Service Fabric-knooppunt.  Stoppen van een knooppunt is ondergebracht in een *gestopt* staat waarin deze is geen lid van het cluster en services, dus simuleren kan geen host een *omlaag* knooppunt.  Dit is handig voor het injecteren van fouten in het systeem om uw toepassing te testen.  De API-knooppunt starten (beheerd: [StartNodeAsync()][startnode], PowerShell: [Start-ServiceFabricNode][startnodeps]]) keert de API-knooppunt stoppen, die het knooppunt wordt teruggebracht naar een normale status.
+Met de stop knooppunt-API (beheerd: [StopNodeAsync ()][stopnode], Power shell: [Stop-ServiceFabricNode][stopnodeps]) wordt een service Fabric knoop punt gestopt.  Een Service Fabric knoop punt is proces, geen VM of machine: de VM of machine wordt nog steeds uitgevoerd.  Voor de rest van het document ' knoop punt ' betekent Service Fabric knoop punt.  Als een knoop punt wordt gestopt, wordt het omgezet in *een status waarbij* deze geen lid is van het cluster en kunnen er geen services worden gehost, waardoor er een *omlaag* knoop punt wordt gesimuleerd.  Dit is handig voor het invoegen van fouten in het systeem om uw toepassing te testen.  De start node-API (Managed: [StartNodeAsync ()][startnode], Power shell: [Start-ServiceFabricNode][startnodeps]]) keert de stop knooppunt-API om, waardoor het knoop punt weer normaal wordt.
 
-## <a name="why-are-we-replacing-these"></a>Waarom zijn we deze vervangen?
+## <a name="why-are-we-replacing-these"></a>Waarom worden deze vervangen?
 
-Zoals eerder beschreven, een *gestopt* Service Fabric-knooppunt is een knooppunt opzettelijk gericht met behulp van het knooppunt stoppen API.  Een *omlaag* knooppunt is een knooppunt dat is niet beschikbaar vanwege een andere reden (bijvoorbeeld de virtuele machine of de machine is uitgeschakeld).  Met de API-knooppunt niet meer het systeem niet beschikbaar informatie onderscheid maken tussen de *gestopt* knooppunten en *omlaag* knooppunten.
+Zoals eerder beschreven, is een *gestopt* service Fabric knoop punt een knoop punt waarvoor het doel is de stop knooppunt-API te gebruiken.  Een *omlaag* knoop punt is een knoop punt dat om een andere reden niet beschikbaar is (bijvoorbeeld als de virtuele machine is uitgeschakeld).  Met de knoop punt-API stoppen maakt het systeem geen informatie beschikbaar om onderscheid te *maken tussen gestopte* knoop punten en *dalende* knoop punten.
 
-Bovendien zijn sommige fouten geretourneerd door deze API's niet als beschrijvende zoals ze zijn.  Bijvoorbeeld, aanroepen van de API-knooppunt stoppen op een al *gestopt* knooppunt geretourneerd met de fout *InvalidAddress*.  Deze ervaring kan worden verbeterd.
+Bovendien zijn sommige fouten die door deze Api's worden geretourneerd, niet zo beschrijven als ze zouden kunnen zijn.  Als u bijvoorbeeld de stop knooppunt-API aanroept op een al *gestopt* knoop punt, wordt het fout bericht *InvalidAddress*geretourneerd.  Deze ervaring kan worden verbeterd.
 
-De duur van die een knooppunt is gestopt voor is ook 'oneindige' totdat het knooppunt Start API wordt aangeroepen.  We hebben deze problemen kan veroorzaken en gevoelig voor fouten kan worden ontdekt.  We hebben bijvoorbeeld problemen waarbij een gebruiker de API-knooppunt stoppen op een knooppunt aangeroepen en vervolgens de software vergeten gezien.  Later, is het niet duidelijk als het knooppunt is *omlaag* of *gestopt*.
+De duur waarmee een knoop punt wordt gestopt voor is ' oneindig ' totdat de begin knooppunt-API wordt aangeroepen.  Dit kan problemen veroorzaken en is mogelijk gevoelig voor fouten.  We hebben bijvoorbeeld problemen gezien waarbij een gebruiker de knoop punt-API stoppen op een knoop punt heeft aangeroepen en deze vervolgens verg eten.  Later was het onduidelijk als het knoop punt is *ingedrukt* of *gestopt*.
 
 
-## <a name="introducing-the-node-transition-apis"></a>Maak kennis met het knooppunt overgang API 's
+## <a name="introducing-the-node-transition-apis"></a>Inleiding tot de knooppunt overgang Api's
 
-Wij hebben oog voor deze problemen boven in een nieuwe set API's.  Het nieuwe knooppunt overgang API (beheerd: [StartNodeTransitionAsync()][snt]) kan worden gebruikt voor de overgang van een Service Fabric-knooppunt naar een *gestopt* status, of voor de overgang van een *gestopt* status naar een normale werking.  Houd er rekening mee dat de 'Start' naam van de API niet verwijst naar vanaf een knooppunt.  Deze gegevensset verwijst naar het begin van een asynchrone bewerking die het systeem wordt uitgevoerd als u wilt overgaan van het knooppunt aan een *gestopt* of de status gestart.
+Deze problemen zijn hierboven in een nieuwe set Api's opgelost.  De nieuwe knooppunt overgangs-API (beheerd: [StartNodeTransitionAsync ()][snt]) kan worden gebruikt om een service Fabric knoop punt over te zetten naar de status *stopped* , of om het over te zetten van een status *gestopt* naar een normale status.  Houd er rekening mee dat de ' Start ' in de naam van de API niet verwijst naar het starten van een knoop punt.  Het verwijst naar een asynchrone bewerking die door het systeem wordt uitgevoerd om het knoop punt over te zetten naar de status *gestopt* of gestart.
 
 **Gebruik**
 
-Als de API van de overgang knooppunt een uitzondering wordt aangeroepen niet genereren heeft, klikt u vervolgens het systeem de asynchrone bewerking heeft geaccepteerd, en deze wordt uitgevoerd.  Een geslaagde aanroepen betekent niet dat de bewerking nog is voltooid.  Voor informatie over de huidige status van de bewerking, het knooppunt overgang voortgang-API aanroepen (beheerd: [GetNodeTransitionProgressAsync()][gntp]) met de guid die wordt gebruikt bij het aanroepen van knooppunt overgang API voor deze bewerking.  Het knooppunt overgang voortgang API retourneert een object NodeTransitionProgress.  Eigenschap van de status van dit object bevat de huidige status van de bewerking.  Als de status 'Running' is, wordt klikt u vervolgens de bewerking uitgevoerd.  Als deze is voltooid, wordt de bewerking is voltooid zonder fouten.  Als deze fout is opgetreden, moet u er een probleem opgetreden bij het uitvoeren van de bewerking is.  De eigenschap Result uitzondering eigenschap wordt aangegeven wat het probleem is.  Zie https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate voor meer informatie over de eigenschap State en het gedeelte 'Voorbeeld van gebruik' hieronder voor voorbeelden van code.
+Als de knooppunt overgangs-API geen uitzonde ring genereert wanneer deze wordt aangeroepen, is de asynchrone bewerking door het systeem geaccepteerd en wordt deze uitgevoerd.  Een geslaagde aanroep houdt niet in dat de bewerking nog is voltooid.  Als u informatie wilt ophalen over de huidige status van de bewerking, roept u de voortgang van de knooppunt overgangs-API (beheerd: [GetNodeTransitionProgressAsync ()][gntp]) aan met de GUID die wordt gebruikt bij het aanroepen van de knooppunt overgangs-API voor deze bewerking.  De API voor voortgangs overgang van knoop punten retourneert een NodeTransitionProgress-object.  De eigenschap State van dit object geeft de huidige status van de bewerking aan.  Als de status wordt uitgevoerd, wordt de bewerking uitgevoerd.  Als de bewerking is voltooid, is deze zonder fouten voltooid.  Als er een fout optreedt, is er een probleem opgetreden bij het uitvoeren van de bewerking.  De eigenschap Exception van het resultaat wordt aangegeven wat het probleem is.  Zie https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate voor meer informatie over de eigenschap State en de sectie ' voorbeeld gebruik ' hieronder voor code voorbeelden.
 
 
-**Verschillen tussen een gestopte knooppunt en een knooppunt omlaag** als een knooppunt is *gestopt* met behulp van het knooppunt overgang API, de uitvoer van een knooppunt-query (beheerd: [GetNodeListAsync()][nodequery], PowerShell: [Get-ServiceFabricNode][nodequeryps]) wordt aangegeven dat dit knooppunt heeft een *IsStopped* waarde van de eigenschap ' True ' geretourneerd.  Houd er rekening mee dit wijkt af van de waarde van de *NodeStatus* eigenschap, dit geeft aan *omlaag*.  Als de *NodeStatus* eigenschap heeft een waarde van *omlaag*, maar *IsStopped* is ingesteld op false, en vervolgens het knooppunt is niet gestopt met de API van de overgang knooppunt en *omlaag*  vanwege een andere reden.  Als de *IsStopped* eigenschap is ingesteld op true, en de *NodeStatus* eigenschap *omlaag*, en vervolgens deze wordt stilgelegd met behulp van de API van de overgang knooppunt.
+**Onderscheid tussen een gestopt knoop punt en een omlaag knoop punt** Als een knoop punt wordt *gestopt* met de API voor knooppunt overgang, wordt met de uitvoer van een knooppunt query (beheerd: [GetNodeListAsync ()][nodequery], Power shell: [Get-ServiceFabricNode][nodequeryps]) aangegeven dat dit knoop punt een *IsStopped* eigenschaps waarde True heeft.  Houd er rekening mee dat dit verschilt van de waarde van de eigenschap *NodeStatus* , die wordt *uitgesteld*.  Als de eigenschap *NodeStatus* de waarde *down*heeft, maar *IsStopped* is ingesteld op False, is het knoop punt niet gestopt met de API van het knoop punt. Dit is om een andere reden niet meer *beschikbaar* .  Als de eigenschap *IsStopped* is ingesteld op True en de eigenschap *NodeStatus* is *uitgeschakeld*, is deze gestopt met de API voor knooppunt overgang.
 
-Starten van een *gestopt* knooppunt met de overgang knooppunt API om te fungeren als een normale lid van het cluster opnieuw wordt geretourneerd.  Ziet u de uitvoer van de API-knooppunt query *IsStopped* als onwaar, en *NodeStatus* als iets dat niet niet actief is (bijvoorbeeld omhoog).
+Als u een *gestopt* knoop punt start met behulp van de knooppunt overgangs-API, wordt dit opnieuw gebruikt als een normaal lid van het cluster.  De uitvoer van de query-API van het knoop punt geeft *IsStopped* weer als onwaar en *NodeStatus* als iets dat niet uitvalt (bijvoorbeeld omhoog).
 
 
-**Beperkte duur** wanneer u de API van de overgang knooppunt om te stoppen van een knooppunt, een van de vereiste parameters *stopNodeDurationInSeconds*, vertegenwoordigt de hoeveelheid tijd in seconden dat het knooppunt *gestopt*.  Deze waarde moet liggen in het toegestane bereik, waarvoor minimaal 600, en een maximum van 14400.  Nadat deze tijd is verlopen, het knooppunt wordt automatisch opnieuw opgestart zelf in werking.  Raadpleeg Voorbeeld 1 hieronder voor een voorbeeld van gebruik.
-
-> [!WARNING]
-> Vermijd een combinatie van knooppunt overgang API's en het knooppunt stoppen en starten knooppunt API's.  De aanbeveling is het gebruik van de alleen-knooppunt overgang-API.  > Als een knooppunt is al gestopt met behulp van het knooppunt stoppen API, het moet worden gestart met behulp van het knooppunt Start API eerst voordat met behulp van de > knooppunt overgang API's.
+**Beperkte duur** Wanneer u de knooppunt overgangs-API gebruikt om een knoop punt te stoppen, geeft een van de vereiste para meters, *stopNodeDurationInSeconds*, de hoeveelheid tijd in seconden aan dat het knoop punt is *gestopt*.  Deze waarde moet binnen het toegestane bereik vallen, met een minimum van 600 en een maximum van 14400.  Nadat dit tijdstip is verlopen, wordt het knoop punt automatisch opnieuw opgestart.  Raadpleeg voorbeeld 1 hieronder voor een voor beeld van het gebruik.
 
 > [!WARNING]
-> Meerdere knooppunt overgang API's aanroepen kunnen niet worden gemaakt op hetzelfde knooppunt parallel.  In een dergelijke situatie, de API van de overgang knooppunt wordt > throw een FabricException met een eigenschapswaarde ErrorCode van NodeTransitionInProgress.  Zodra de knooppuntovergang van een op een specifiek knooppunt heeft > is gestart, moet u wachten totdat de bewerking wordt een definitieve status (voltooid, Faulted of ForceCancelled) voordat u begint met bereikt een > nieuwe overgang op hetzelfde knooppunt.  Parallelle knooppunt overgang aanroepen op verschillende knooppunten zijn toegestaan.
+> Vermijd het combi neren van knoop punt overgang Api's en het stop knooppunt en start knoop punt-Api's.  De aanbeveling is alleen de knooppunt overgangs-API te gebruiken.  > Als er al een knoop punt is gestopt met de knoop punt-API stoppen, moet dit eerst worden gestart met de knoop punt-API starten voordat u de > knooppunt overgang Api's gebruikt.
+
+> [!WARNING]
+> Meerdere knooppunt overgang-Api's kunnen niet parallel worden gemaakt op hetzelfde knoop punt.  In een dergelijke situatie wordt de knooppunt overgangs-API > een FabricException gegenereerd met de waarde van de eigenschap error code van NodeTransitionInProgress.  Zodra een knooppunt overgang op een specifiek knoop punt is > gestart, moet u wachten tot de bewerking een Terminal status heeft bereikt (voltooid, mislukt of ForceCancelled) voordat u een > nieuwe overgang op hetzelfde knoop punt start.  Overgangs aanroepen op parallelle knoop punten op verschillende knoop punt zijn toegestaan.
 
 
 #### <a name="sample-usage"></a>Voorbeeld van gebruik
 
 
-**Voorbeeld 1** -het volgende voorbeeld maakt gebruik van de API van de overgang knooppunt om te stoppen van een knooppunt.
+Voor **Beeld 1** : in het volgende voor beeld wordt de knooppunt overgangs-API gebruikt om een knoop punt te stoppen.
 
 ```csharp
         // Helper function to get information about a node
@@ -164,7 +155,7 @@ Starten van een *gestopt* knooppunt met de overgang knooppunt API om te fungeren
         }
 ```
 
-**Voorbeeld 2** -het volgende voorbeeld wordt gestart een *gestopt* knooppunt.  Sommige methoden van het eerste voorbeeld wordt gebruikt.
+Voor **Beeld 2** : met het volgende voor beeld wordt een *gestopt* knoop punt gestart.  Er worden enkele hulp methoden van het eerste voor beeld gebruikt.
 
 ```csharp
         static async Task StartNodeAsync(FabricClient fc, string nodeName)
@@ -207,7 +198,7 @@ Starten van een *gestopt* knooppunt met de overgang knooppunt API om te fungeren
         }
 ```
 
-**Voorbeeld 3** -het volgende voorbeeld toont onjuiste syntaxis.  Dit gebruik is onjuist omdat de *stopDurationInSeconds* biedt groter is dan het toegestane bereik.  De bewerking is niet geaccepteerd omdat StartNodeTransitionAsync() met een onherstelbare fout mislukken, en de API wordt uitgevoerd, mag niet worden aangeroepen.  In dit voorbeeld maakt gebruik van bepaalde Help-methoden van het eerste voorbeeld.
+Voor **Beeld 3** : in het volgende voor beeld wordt het onjuiste gebruik weer gegeven.  Dit gebruik is onjuist omdat de *stopDurationInSeconds* die het biedt, groter is dan het toegestane bereik.  Omdat StartNodeTransitionAsync () mislukt met een onherstelbare fout, wordt de bewerking niet geaccepteerd en moet de voortgangs-API niet worden aangeroepen.  In dit voor beeld worden enkele hulp methoden van het eerste voor beeld gebruikt.
 
 ```csharp
         static async Task StopNodeWithOutOfRangeDurationAsync(FabricClient fc, string nodeName)
@@ -238,7 +229,7 @@ Starten van een *gestopt* knooppunt met de overgang knooppunt API om te fungeren
         }
 ```
 
-**Voorbeeld 4** -het volgende voorbeeld toont de gegevens van de fout die wordt geretourneerd van de API-knooppunt overgang wordt uitgevoerd wanneer de bewerking gestart door de API van de overgang knooppunt wordt geaccepteerd, maar later is mislukt tijdens het uitvoeren van.  In het geval is, mislukt de bewerking omdat de API van de overgang knooppunt probeert te starten van een knooppunt dat niet bestaat.  In dit voorbeeld maakt gebruik van bepaalde Help-methoden van het eerste voorbeeld.
+Voor **beeld 4** : in het volgende voor beeld ziet u de fout gegevens die worden geretourneerd door de API voor voortgangs overgang van het knoop punt wanneer de bewerking die wordt geïnitieerd door de knooppunt overgangs-API, wordt geaccepteerd, maar later mislukt tijdens het uitvoeren van.  In het geval mislukt dit omdat de knooppunt overgangs-API probeert om een knoop punt te starten dat niet bestaat.  In dit voor beeld worden enkele hulp methoden van het eerste voor beeld gebruikt.
 
 ```csharp
         static async Task StartNodeWithNonexistentNodeAsync(FabricClient fc)

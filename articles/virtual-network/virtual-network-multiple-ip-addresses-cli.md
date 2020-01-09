@@ -1,7 +1,7 @@
 ---
-title: Virtuele machine met meerdere IP-adressen met de Azure CLI
+title: Virtuele machine met meerdere IP-adressen met behulp van Azure CLI
 titlesuffix: Azure Virtual Network
-description: Leer hoe u meerdere IP-adressen toewijzen aan een virtuele machine met behulp van de Azure-opdrachtregelinterface (CLI).
+description: Meer informatie over het toewijzen van meerdere IP-adressen aan een virtuele machine met behulp van de Azure-opdracht regel interface (CLI).
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: kumud
-ms.openlocfilehash: 3b00bbb5903156da625b7caaca9b1a2cff212421
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b99e5e6809a909184d775c70b56c249c11734cb9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699349"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646605"
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Meerdere IP-adressen toewijzen aan virtuele machines met de Azure CLI
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Meerdere IP-adressen toewijzen aan virtuele machines met behulp van de Azure CLI
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-In dit artikel wordt uitgelegd hoe u een virtuele machine (VM) maken via het Azure Resource Manager-implementatiemodel met behulp van de Azure CLI. Meerdere IP-adressen kunnen niet worden toegewezen aan resources die zijn gemaakt via het klassieke implementatiemodel. Lees voor meer informatie over Azure-implementatiemodellen, de [-implementatiemodellen begrijpen](../resource-manager-deployment-model.md) artikel.
+In dit artikel wordt uitgelegd hoe u een virtuele machine (VM) maakt via het Azure Resource Manager-implementatie model met behulp van de Azure CLI. Er kunnen geen meerdere IP-adressen worden toegewezen aan resources die zijn gemaakt via het klassieke implementatie model. Lees het artikel over [implementatie modellen begrijpen](../resource-manager-deployment-model.md) voor meer informatie over Azure-implementatie modellen.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
-## <a name = "create"></a>Een virtuele machine maken met meerdere IP-adressen
+## <a name = "create"></a>Een virtuele machine met meerdere IP-adressen maken
 
-De volgende stappen wordt uitgelegd hoe u een voorbeeld van de virtuele machine maken met meerdere IP-adressen, zoals beschreven in het scenario. Variabelewaarden wijzigen in ' ' en de typen van het IP-adres, zoals vereist voor uw implementatie. 
+In de volgende stappen wordt uitgelegd hoe u een voor beeld van een virtuele machine met meerdere IP-adressen maakt, zoals beschreven in het scenario. Wijzig de variabelen waarden in ' ' en de IP-adres typen, indien nodig, voor uw implementatie. 
 
-1. Installeer de [Azure CLI](/cli/azure/install-azure-cli) als u dit nog niet geïnstalleerd.
-2. De openbare en persoonlijke sleutelpaar voor een SSH voor virtuele Linux-machines maken via de stappen in de [maken van de openbare en persoonlijke sleutelpaar voor een SSH voor virtuele Linux-machines](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-3. Uit een opdrachtshell, meld u aan met de opdracht `az login` en selecteer het abonnement dat u gebruikt.
-4. De virtuele machine maken door het uitvoeren van het script dat op een Linux- of Mac-computer volgt. Het script maakt een resourcegroep, een virtueel netwerk (VNet), één NIC met drie IP-configuraties en een virtuele machine met de twee NIC's die zijn gekoppeld aan deze. De NIC, een openbaar IP-adres, een virtueel netwerk en een VM-resources moeten al bestaan in dezelfde locatie en abonnement. Hoewel de resources niet allemaal hebben bestaan in dezelfde resourcegroep bevinden, in het volgende script doen ze.
+1. Installeer de [Azure cli](/cli/azure/install-azure-cli) als u deze nog niet hebt geïnstalleerd.
+2. Maak een openbaar en persoonlijk SSH-sleutel paar voor virtuele Linux-machines door de stappen in het [maken van een open bare SSH-en privé sleutel paar voor virtuele Linux-machines](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json)uit te voeren.
+3. Meld u vanuit een opdracht shell aan met de opdracht `az login` en selecteer het abonnement dat u gebruikt.
+4. Maak de virtuele machine door het script uit te voeren dat volgt op een Linux-of Mac-computer. Met het script maakt u een resource groep, een virtueel netwerk (VNet), één NIC met drie IP-configuraties en een virtuele machine waaraan de twee Nic's zijn gekoppeld. De NIC, het open bare IP-adres, het virtuele netwerk en de VM-resources moeten allemaal aanwezig zijn op dezelfde locatie en hetzelfde abonnement. De resources hoeven echter niet in dezelfde resource groep te bestaan, in het volgende script.
 
 ```bash
     
@@ -153,28 +153,28 @@ az vm create \
 --ssh-key-value $SshKeyValue
 ```
 
-Naast het maken van een virtuele machine met een NIC met 3 IP-configuraties, maakt u het script:
+Naast het maken van een virtuele machine met een NIC met 3 IP-configuraties, maakt het script het volgende:
 
-- Een enkele premium beheerde schijf standaard, maar er zijn andere opties voor het schijftype dat u kunt maken. Lees de [maken van een Linux-VM met de Azure CLI](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artikel voor meer informatie.
-- Een virtueel netwerk met één subnet en twee openbare IP-adressen. U kunt ook gebruiken *bestaande* virtueel netwerk, subnet, NIC of openbare IP-adres-resources. Voor meer informatie over het gebruik van bestaande netwerkbronnen in plaats van het maken van aanvullende resources, voer `az vm create -h`.
+- Een enkele Premium beheerde schijf standaard, maar u hebt andere opties voor het schijf type dat u kunt maken. Lees de [een Linux-VM maken met behulp van het Azure cli](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -artikel voor meer informatie.
+- Een virtueel netwerk met één subnet en twee open bare IP-adressen. U kunt ook *bestaande* virtuele netwerken, subnetten, NIC of open bare IP-adres bronnen gebruiken. Als u wilt weten hoe u bestaande netwerk bronnen kunt gebruiken in plaats van extra resources te maken, voert u `az vm create -h`in.
 
-Openbare IP-adressen hebben nominale kosten in rekening. Lees voor meer informatie over prijzen voor IP-adres, de [prijzen van IP-adressen](https://azure.microsoft.com/pricing/details/ip-addresses) pagina. Er is een limiet aan het aantal openbare IP-adressen die kunnen worden gebruikt in een abonnement. Lees voor meer informatie over de limieten het artikel [Azure-limieten](../azure-subscription-service-limits.md#networking-limits).
+Open bare IP-adressen hebben een nominale vergoeding. Lees de pagina met [prijzen voor IP-adressen](https://azure.microsoft.com/pricing/details/ip-addresses) voor meer informatie over de prijzen van IP-adressen. Er is een limiet voor het aantal open bare IP-adressen dat kan worden gebruikt in een abonnement. Lees voor meer informatie over de limieten het artikel [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
-Nadat de virtuele machine is gemaakt, voert de `az network nic show --name MyNic1 --resource-group myResourceGroup` opdracht om de NIC-configuratie weer te geven. Voer de `az network nic ip-config list --nic-name MyNic1 --resource-group myResourceGroup --output table` om weer te geven van een lijst van de IP-configuraties die zijn gekoppeld aan de NIC.
+Nadat de VM is gemaakt, voert u de `az network nic show --name MyNic1 --resource-group myResourceGroup` opdracht in om de NIC-configuratie weer te geven. Voer de `az network nic ip-config list --nic-name MyNic1 --resource-group myResourceGroup --output table` in om een lijst weer te geven met de IP-configuraties die zijn gekoppeld aan de NIC.
 
-De privé IP-adressen toevoegen aan het besturingssysteem van de virtuele machine via de stappen voor het besturingssysteem in de [toevoegen IP-adressen aan een VM-besturingssysteem](#os-config) sectie van dit artikel.
+Voeg de privé-IP-adressen toe aan het VM-besturings systeem door de stappen voor uw besturings systeem in de sectie [IP-adressen toevoegen aan een VM-besturings systeem](#os-config) van dit artikel uit te voeren.
 
-## <a name="add"></a>IP-adressen toevoegen aan een virtuele machine
+## <a name="add"></a>IP-adressen toevoegen aan een VM
 
-U kunt extra persoonlijke en openbare IP-adressen toevoegen aan een bestaande Azure-netwerk-interface via de stappen die volgen. De voorbeelden zijn gebaseerd op de [scenario](#scenario) in dit artikel beschreven.
+U kunt extra persoonlijke en open bare IP-adressen toevoegen aan een bestaande Azure-netwerk interface door de volgende stappen uit te voeren. De voor beelden zijn gebaseerd op het [scenario](#scenario) dat in dit artikel wordt beschreven.
 
-1. Open een opdrachtshell en voltooi de resterende stappen in deze sectie in één sessie. Als u nog geen Azure-CLI is geïnstalleerd en geconfigureerd hebt, voer de stappen in de [Azure CLI-installatie](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) artikel en meld u aan bij uw Azure-account met de `az-login` opdracht.
+1. Open een opdracht shell en voltooi de resterende stappen in deze sectie binnen één sessie. Als u Azure CLI nog niet hebt geïnstalleerd en geconfigureerd, voltooit u de stappen in het [Azure cli-installatie](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) artikel en meldt u zich aan bij uw Azure-account met de opdracht `az-login`.
 
-2. Volg de stappen in een van de volgende secties, op basis van uw vereisten:
+2. Voer de stappen in een van de volgende secties uit, afhankelijk van uw vereisten:
 
-    **Een privé IP-adres toevoegen**
+    **Een privé-IP-adres toevoegen**
     
-    Als u wilt een privé IP-adres toevoegen aan een NIC, moet u een IP-configuratie met de opdracht die volgt op maken. Het statische IP-adres moet een niet-gebruikte adres voor het subnet.
+    Als u een privé-IP-adres aan een NIC wilt toevoegen, moet u een IP-configuratie maken met behulp van de volgende opdracht. Het statische IP-adres moet een ongebruikt adres voor het subnet zijn.
 
     ```bash
     az network nic ip-config create \
@@ -184,17 +184,17 @@ U kunt extra persoonlijke en openbare IP-adressen toevoegen aan een bestaande Az
     --name IPConfig-4
     ```
     
-    Maak zo veel configuraties die u nodig hebt, met behulp van unieke namen en privé-IP-adressen (voor configuraties met statische IP-adressen).
+    Maak zoveel configuraties als u nodig hebt, met behulp van unieke configuratie namen en privé-IP-adressen (voor configuraties met vaste IP-adressen).
 
     **Een openbaar IP-adres toevoegen**
     
-    Een openbaar IP-adres is toegevoegd door deze te koppelen aan een nieuwe IP-configuratie of een bestaande IP-configuratie. Voer de stappen in een van de secties die volgen, die u nodig hebt.
+    Een openbaar IP-adres wordt toegevoegd door het te koppelen aan een nieuwe IP-configuratie of een bestaande IP-configuratie. Voer de stappen in een van de volgende secties uit, zoals u dat nodig hebt.
 
-    Openbare IP-adressen hebben nominale kosten in rekening. Lees voor meer informatie over prijzen voor IP-adres, de [prijzen van IP-adressen](https://azure.microsoft.com/pricing/details/ip-addresses) pagina. Er is een limiet aan het aantal openbare IP-adressen die kunnen worden gebruikt in een abonnement. Lees voor meer informatie over de limieten het artikel [Azure-limieten](../azure-subscription-service-limits.md#networking-limits).
+    Open bare IP-adressen hebben een nominale vergoeding. Lees de pagina met [prijzen voor IP-adressen](https://azure.microsoft.com/pricing/details/ip-addresses) voor meer informatie over de prijzen van IP-adressen. Er is een limiet voor het aantal open bare IP-adressen dat kan worden gebruikt in een abonnement. Lees voor meer informatie over de limieten het artikel [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
-    - **Koppelen van de resource toe aan een nieuwe IP-configuratie**
+    - **De resource aan een nieuwe IP-configuratie koppelen**
     
-        Wanneer u een openbaar IP-adres aan een nieuwe IP-configuratie toevoegt, moet u ook een privé IP-adres, toevoegen, omdat alle IP-configuraties moeten een privé IP-adres hebben. U kunt een bestaande openbare IP-adresresource toevoegen of u een nieuwe maken. Voor het maken van een nieuwe, voer de volgende opdracht:
+        Wanneer u een openbaar IP-adres toevoegt aan een nieuwe IP-configuratie, moet u ook een persoonlijk IP-adres toevoegen, omdat alle IP-configuraties een privé-IP-adres moeten hebben. U kunt een bestaande resource met een openbaar IP-adres toevoegen of een nieuwe maken. Als u een nieuw account wilt maken, voert u de volgende opdracht in:
     
         ```bash
         az network public-ip create \
@@ -204,7 +204,7 @@ U kunt extra persoonlijke en openbare IP-adressen toevoegen aan een bestaande Az
         --dns-name mypublicdns3
         ```
 
-        Een nieuwe IP-configuratie maken met een statisch privé IP-adres en de bijbehorende *myPublicIP3* openbaar IP-adres bron-adres, voer de volgende opdracht:
+        Voer de volgende opdracht in om een nieuwe IP-configuratie met een statisch privé-IP-adres en de bijbehorende open bare IP-adres bron *myPublicIP3* te maken:
 
         ```bash
         az network nic ip-config create \
@@ -215,7 +215,7 @@ U kunt extra persoonlijke en openbare IP-adressen toevoegen aan een bestaande Az
         --public-ip-address myPublicIP3
         ```
 
-    - **Koppelen van de resource toe aan een bestaande IP-configuratie** een openbare IP-adresresource kan alleen worden gekoppeld aan een IP-configuratie die nog niet bevat die zijn gekoppeld. U kunt bepalen of een IP-configuratie een gekoppeld openbaar IP-adres heeft met de volgende opdracht:
+    - **De resource koppelen aan een bestaande IP-configuratie** Een resource met een openbaar IP-adres kan alleen worden gekoppeld aan een IP-configuratie waaraan nog geen is gekoppeld. U kunt bepalen of een IP-configuratie een bijbehorend openbaar IP-adres heeft door de volgende opdracht in te voeren:
 
         ```bash
         az network nic ip-config list \
@@ -224,7 +224,7 @@ U kunt extra persoonlijke en openbare IP-adressen toevoegen aan een bestaande Az
         --query "[?provisioningState=='Succeeded'].{ Name: name, PublicIpAddressId: publicIpAddress.id }" --output table
         ```
 
-        Geretourneerd uitvoer:
+        Geretourneerde uitvoer:
     
             Name        PublicIpAddressId
             
@@ -232,7 +232,7 @@ U kunt extra persoonlijke en openbare IP-adressen toevoegen aan een bestaande Az
             IPConfig-2  /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP2
             IPConfig-3
 
-        Omdat de **PublicIpAddressId** kolom voor *IpConfig 3* is leeg in de uitvoer, er zijn geen openbare IP-adresresource is momenteel gekoppeld. U kunt een bestaande openbare IP-adresresource toevoegen aan IP-configuratie 3 of Voer de volgende opdracht een te maken:
+        Omdat de kolom **PublicIpAddressId** voor *IpConfig-3* leeg is in de uitvoer, is er momenteel geen open bare IP-adres resource aan gekoppeld. U kunt een bestaand openbaar IP-adres toevoegen aan IpConfig-3 of de volgende opdracht invoeren om een resource te maken:
 
         ```bash
         az network public-ip create \
@@ -243,7 +243,7 @@ U kunt extra persoonlijke en openbare IP-adressen toevoegen aan een bestaande Az
         --allocation-method Static
         ```
     
-        Voer de volgende opdracht om te koppelen van de openbare IP-adresresource aan de bestaande IP-configuratie met de naam *IPConfig 3*:
+        Voer de volgende opdracht in om de open bare IP-adres resource aan de bestaande IP-configuratie met de naam *ipconfig-3*te koppelen:
     
         ```bash
         az network nic ip-config update \
@@ -253,7 +253,7 @@ U kunt extra persoonlijke en openbare IP-adressen toevoegen aan een bestaande Az
         --public-ip myPublicIP3
         ```
 
-3. De privé IP-adressen en de openbare IP-adresresource id's die zijn toegewezen aan de NIC met de volgende opdracht weergeven:
+3. Bekijk de privé-IP-adressen en de resource-Id's van het open bare IP-adres die zijn toegewezen aan de NIC door de volgende opdracht in te voeren:
 
     ```bash
     az network nic ip-config list \
@@ -262,7 +262,7 @@ U kunt extra persoonlijke en openbare IP-adressen toevoegen aan een bestaande Az
     --query "[?provisioningState=='Succeeded'].{ Name: name, PrivateIpAddress: privateIpAddress, PrivateIpAllocationMethod: privateIpAllocationMethod, PublicIpAddressId: publicIpAddress.id }" --output table
     ```
 
-    Geretourneerd uitvoer: <br>
+    Geretourneerde uitvoer: <br>
     
         Name        PrivateIpAddress    PrivateIpAllocationMethod   PublicIpAddressId
         
@@ -271,6 +271,6 @@ U kunt extra persoonlijke en openbare IP-adressen toevoegen aan een bestaande Az
         IPConfig-3  10.0.0.6            Static                      /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP3
     
 
-4. Toevoegen van de privé IP-adressen hebt toegevoegd aan de NIC voor het besturingssysteem van de virtuele machine door de instructies in de [toevoegen IP-adressen aan een VM-besturingssysteem](#os-config) sectie van dit artikel. Voeg de openbare IP-adressen niet toe aan het besturingssysteem.
+4. Voeg de privé-IP-adressen die u aan de NIC hebt toegevoegd toe aan het VM-besturings systeem door de instructies in de sectie [IP-adressen toevoegen aan een VM-besturings systeem](#os-config) van dit artikel te volgen. Voeg de open bare IP-adressen niet toe aan het besturings systeem.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

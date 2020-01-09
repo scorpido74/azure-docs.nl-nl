@@ -4,15 +4,15 @@ description: Los problemen op bij het gebruik van Azure Diagnostics in azure Vir
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 0a6322edccc2047ffd9d67e4e3ed113e668898da
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: facd52ea1fdaa2ad30d6b1544cb1f2d6d5833bfa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834695"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450562"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Diagnostics probleem oplossing
 In dit artikel vindt u informatie over het oplossen van problemen die relevant zijn voor het gebruik van Azure Diagnostics. Zie [Azure Diagnostics Overview](diagnostics-extension-overview.md)voor meer informatie over Azure Diagnostics.
@@ -30,25 +30,25 @@ Hieronder vindt u de paden naar enkele belang rijke logboeken en artefacten. We 
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
 | Artefact | Pad |
 | --- | --- |
-| **Azure Diagnostics-configuratie bestand** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<-versie > \Config.txt |
-| **Logboek bestanden** | \<versie > C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics |
-| **Lokaal archief voor diagnostische gegevens** | Map c:\resources\directory\<CloudServiceDeploymentID >.\<rolnaam >. DiagnosticStore\WAD0107\Tables |
-| **Configuratie bestand van bewakings agent** | Map c:\resources\directory\<CloudServiceDeploymentID >.\<rolnaam >. DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
-| **Azure Diagnostics extensie pakket** | \<versie van%SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics > |
+| **Azure Diagnostics-configuratie bestand** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\Config.txt |
+| **Logboekbestanden** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
+| **Lokaal archief voor diagnostische gegevens** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Tables |
+| **Configuratie bestand van bewakings agent** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
+| **Azure Diagnostics extensie pakket** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version> |
 | **Pad naar het hulp programma voor logboek verzameling** | %SystemDrive%\Packages\GuestAgent\ |
-| **MonAgentHost-logboek bestand** | Map c:\resources\directory\<CloudServiceDeploymentID >.\<rolnaam >. DiagnosticStore\WAD0107\Configuration\MonAgentHost. < seq_num >. log |
+| **MonAgentHost-logboek bestand** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ### <a name="virtual-machines"></a>Virtuele machines
 | Artefact | Pad |
 | --- | --- |
-| **Azure Diagnostics-configuratie bestand** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<-versie > \RuntimeSettings |
-| **Logboek bestanden** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \ |
-| **Lokaal archief voor diagnostische gegevens** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Tables |
-| **Configuratie bestand van bewakings agent** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MaConfig.xml |
-| **Status bestand** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<-versie > \Status |
-| **Azure Diagnostics extensie pakket** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion >|
+| **Azure Diagnostics-configuratie bestand** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\RuntimeSettings |
+| **Logboekbestanden** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
+| **Lokaal archief voor diagnostische gegevens** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Tables |
+| **Configuratie bestand van bewakings agent** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
+| **Status bestand** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\Status |
+| **Azure Diagnostics extensie pakket** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
 | **Pad naar het hulp programma voor logboek verzameling** | C:\WindowsAzure\Logs\WaAppAgent.log |
-| **MonAgentHost-logboek bestand** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MonAgentHost. < seq_num >. log |
+| **MonAgentHost-logboek bestand** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Metrische gegevens worden niet weer gegeven in de Azure Portal
 Azure Diagnostics geeft metrische gegevens die kunnen worden weer gegeven in de Azure Portal. Als u problemen ondervindt bij het bekijken van de gegevens in de portal, controleert u de WADMetrics-\* in de tabel in het Azure Diagnostics Storage-account om te zien of de bijbehorende metrische records daar aanwezig zijn.
@@ -65,17 +65,17 @@ Als er geen gegevens zijn voor de specifieke metriek, controleert u de **Diagnos
 - \ASP.NET\Requests in wachtrij
 - \ASP.NET\Requests afgewezen
 - \Processor (w3wp)\% processor tijd
-- \Process (w3wp) \private bytes
+- \Process(w3wp)\Private Bytes
 - \Process (WaIISHost)\% processor tijd
-- \Process (WaIISHost) \private bytes
+- \Process(WaIISHost)\Private Bytes
 - \Process (WaWorkerHost)\% processor tijd
-- \Process (WaWorkerHost) \private bytes
+- \Process(WaWorkerHost)\Private Bytes
 - \Memory\Page fouten per seconde
 - \.NET CLR-geheugen (_globaal_)\% tijd in GC
-- \LogicalDisk (C:) \Gelezen geschreven bytes per seconde
-- \LogicalDisk (C:) \Gelezen Lees bewerkingen in bytes per seconde
-- \LogicalDisk (D:) \Gelezen geschreven bytes per seconde
-- \LogicalDisk (D:) \Gelezen Lees bewerkingen in bytes per seconde
+- \LogicalDisk(C:)\Disk Write Bytes/sec
+- \LogicalDisk(C:)\Disk Read Bytes/sec
+- \LogicalDisk(D:)\Disk Write Bytes/sec
+- \LogicalDisk(D:)\Disk Read Bytes/sec
 
 Als de configuratie correct is ingesteld, maar u de metrische gegevens nog steeds niet kunt zien, kunt u de volgende richt lijnen gebruiken om u te helpen bij het oplossen van problemen.
 
@@ -109,8 +109,8 @@ Als de processen worden uitgevoerd, gaat u naar [gegevens lokaal vastgelegd vast
 
 Als het probleem hiermee niet is opgelost, kunt u het volgende proberen:
 
-1. De agent verwijderen
-2. Map C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics verwijderen
+1. Agent verwijderen
+2. Remove directory C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics
 3. Agent opnieuw installeren
 
 
@@ -213,7 +213,7 @@ Deze code genereert vier tabellen:
 | provider = "PROv1" &lt;DefaultEvents/&gt; |WADDefault + MD5 ("PROv1") |
 | provider = "prov2" &lt;DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Naslaginformatie
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>De configuratie van de extensie voor diagnostische gegevens controleren
 De eenvoudigste manier om de configuratie van de extensie te controleren, is door naar [Azure resource Explorer](https://resources.azure.com)te gaan en vervolgens naar de virtuele machine of Cloud service te gaan waar de Azure Diagnostics extensie (IaaSDiagnostics/PaaDiagnostics) is.
@@ -229,7 +229,7 @@ Als u voor de Cloud service functie de configuratie van de schijf selecteert, zi
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Afsluit codes van Azure Diagnostics-invoeg toepassing
 De invoeg toepassing retourneert de volgende afsluit codes:
 
-| Afsluit code | Beschrijving |
+| Afsluitcode | Beschrijving |
 | --- | --- |
 | 0 |Geslaagd. |
 | -1 |Algemene fout. |

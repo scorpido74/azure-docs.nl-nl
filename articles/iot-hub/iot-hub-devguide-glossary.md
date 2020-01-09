@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.openlocfilehash: 6c4215933b3816b445c55282bae9a36e88c0311f
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d73dcb89739395e4dd52b1ef4d39c41ad6125666
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890530"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457152"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Woorden lijst met IoT Hub voor waarden
 In dit artikel vindt u een aantal algemene termen die in de IoT Hub-artikelen worden gebruikt.
@@ -27,7 +27,7 @@ Automatische Apparaatbeheer in azure IoT Hub automatiseert veel van de herhaalde
 ## <a name="automatic-device-configuration"></a>Automatische apparaatconfiguratie
 De back-end van de oplossing kan [automatische hardwareconfiguraties](iot-hub-auto-device-config.md) gebruiken om de gewenste eigenschappen toe te wijzen aan een set [apparaatdubbels](#device-twin) en de status van het rapport met behulp van systeem metrieken en aangepaste metrische gegevens. 
 
-## <a name="azure-classic-cli"></a>Klassieke versie van de Azure CLI
+## <a name="azure-classic-cli"></a>Klassieke versie van Azure CLI
 De [klassieke Azure-cli](../cli-install-nodejs.md) is een platformoverschrijdende, open-source, op shell gebaseerd, opdracht hulpprogramma voor het maken en beheren van resources in Microsoft Azure. Deze versie van de CLI moet alleen voor klassieke implementaties worden gebruikt.
 
 ## <a name="azure-cli"></a>Azure-CLI
@@ -50,9 +50,9 @@ De [Microsoft Azure-Portal](https://portal.azure.com) is een centrale locatie wa
 [Azure PowerShell](/powershell/azure/overview) is een verzameling cmdlets die u kunt gebruiken om Azure te beheren met Windows Power shell. U kunt de-cmdlets gebruiken voor het maken, testen, implementeren en beheren van oplossingen en services die via het Azure-platform worden geleverd.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
-[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) kunt u met de resources in uw oplossing als groep gebruiken. U kunt de resources voor uw oplossing implementeren, bijwerken of verwijderen in een enkele, gecoördineerde bewerking.
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) kunt u met de resources in uw oplossing als groep gebruiken. U kunt de resources voor uw oplossing implementeren, bijwerken of verwijderen in een enkele, gecoördineerde bewerking.
 
-## <a name="azure-service-bus"></a>Azure Service Bus
+## <a name="azure-service-bus"></a>Service Bus van Azure
 [Service Bus](../service-bus/index.md) biedt communicatie via de Cloud met Enter prise Messa ging en door gegeven communicatie waarmee u on-premises oplossingen kunt verbinden met de Cloud. Sommige IoT Hub-zelf studies maken gebruik van Service Bus [wacht rijen](../service-bus-messaging/service-bus-messaging-overview.md).
 
 ## <a name="azure-storage"></a>Azure Storage
@@ -61,7 +61,7 @@ De [Microsoft Azure-Portal](https://portal.azure.com) is een centrale locatie wa
 ## <a name="back-end-app"></a>Back-end-app
 In de context van [IOT hub](#iot-hub)is een back-end-app een app die verbinding maakt met een van de service gerichte eind punten op een IOT-hub. Een back-end-app kan bijvoorbeeld [apparaat-naar-Cloud-](#device-to-cloud) berichten ophalen of het [identiteits register](#identity-registry)beheren. Normaal gesp roken wordt een back-end-app uitgevoerd in de Cloud, maar in veel van de zelf studies zijn de back-end-apps console-apps die worden uitgevoerd op uw lokale ontwikkel computer.
 
-## <a name="built-in-endpoints"></a>Ingebouwde eind punten
+## <a name="built-in-endpoints"></a>Ingebouwde eindpunten
 Elke IoT-hub bevat een ingebouwd [eind punt](iot-hub-devguide-endpoints.md) dat compatibel is met Event hub. U kunt elk mechanisme gebruiken dat werkt met Event Hubs om apparaat-naar-Cloud-berichten van dit eind punt te lezen.
 
 ## <a name="cloud-gateway"></a>Cloud gateway
@@ -78,7 +78,7 @@ U gebruikt verbindings reeksen in uw app-code om de vereiste gegevens voor het m
 - Met *verbindings reeksen* voor apparaten kunnen apparaten verbinding maken met de op het apparaat gerichte eind punten op een IOT-hub.
 - Met *IOT hub verbindings reeksen* kunnen back-end-apps verbinding maken met de service gerichte eind punten op een IOT-hub.
 
-## <a name="custom-endpoints"></a>Aangepaste eind punten
+## <a name="custom-endpoints"></a>Aangepaste eindpunten
 U kunt aangepaste [eind punten](iot-hub-devguide-endpoints.md) maken op een IOT-hub om berichten te leveren die worden verzonden door een [routerings regel](#routing-rules). Aangepaste eind punten verbinden rechtstreeks met een event hub, een Service Bus wachtrij of een Service Bus onderwerp.
 
 ## <a name="custom-gateway"></a>Aangepaste gateway
@@ -108,7 +108,7 @@ Verwijst naar informatie over de status van het apparaat, zoals de verbindings m
 ## <a name="device-data"></a>Apparaatgegevens
 Apparaatgegevens verwijzen naar de gegevens per apparaat die zijn opgeslagen in het IoT Hub [identiteits register](#identity-registry). Het is mogelijk om deze gegevens te importeren en exporteren.
 
-## <a name="device-explorer"></a>Apparatenverkenner
+## <a name="device-explorer"></a>Device Explorer
 [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) is een hulp programma dat wordt uitgevoerd op Windows en waarmee u uw apparaten kunt beheren in het [identiteits register](#identity-registry). Het hulp programma kan ook berichten naar uw apparaten verzenden en ontvangen.
 
 ## <a name="device-identity"></a>Apparaat-id
@@ -165,7 +165,7 @@ IoT Hub is een volledig beheerde Azure-service die betrouw bare en veilige bidir
 [IOT hub metrische](iot-hub-metrics.md) gegevens geven u informatie over de status van de IOT-hubs in uw [Azure-abonnement](#subscription). Met IoT Hub metrische gegevens kunt u de algemene status van de service en de aangesloten apparaten beoordelen. Met IoT Hub metrische gegevens kunt u zien wat er gebeurt met uw IoT hub en problemen met de hoofd oorzaak onderzoeken zonder dat u contact hoeft op te nemen met de ondersteuning van Azure.
 
 ## <a name="iot-hub-query-language"></a>Query taal IoT Hub
-De [IOT hub query taal](iot-hub-devguide-query-language.md) is een SQL-achtige taal waarmee u een query kunt uitvoeren [](#job) op uw apparaten en apparaatdubbels.
+De [IoT Hub-querytaal](iot-hub-devguide-query-language.md) is een SQL-achtige taal waarmee u kunt query uw [](#job) en dubbele apparaten.
 
 ## <a name="iot-hub-resource-rest-api"></a>IoT Hub resource REST API
 U kunt de [IOT hub Resource rest API](https://docs.microsoft.com/rest/api/iothub/iothubresource) gebruiken voor het beheren van de IOT-hubs in uw [Azure-abonnement](#subscription) voor het uitvoeren van bewerkingen, zoals het maken, bijwerken en verwijderen van hubs.
@@ -176,7 +176,7 @@ Met accelerators van Azure IoT-oplossing worden meerdere Azure-Services in oplos
 ## <a name="the-iot-extension-for-azure-cli"></a>De IoT-extensie voor Azure CLI 
 [De IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension) is een platform, opdracht regel programma voor meerdere platforms. Met het hulp programma kunt u uw apparaten beheren in het [identiteits register](#identity-registry), berichten en bestanden van uw apparaten verzenden en ontvangen en uw IOT hub-bewerkingen bewaken.
 
-## <a name="job"></a>Job
+## <a name="job"></a>Taak
 De back-end van uw oplossing kan [taken](iot-hub-devguide-jobs.md) gebruiken om activiteiten te plannen en bij te houden voor een set apparaten die zijn geregistreerd bij uw IOT-hub. Activiteiten omvatten het bijwerken van de dubbele [gewenste eigenschappen](#desired-properties)van het apparaat, het bijwerken van de dubbele [Tags](#tags)van een apparaat en het aanroepen van [directe methoden](#direct-method). [IOT hub](#iot-hub) wordt ook gebruikt voor het [importeren van en exporteren](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) uit het [identiteits register](#identity-registry).
 
 ## <a name="modules"></a>Modules
@@ -193,7 +193,7 @@ Net als bij een ander apparaat dan is een module gelijk aan het JSON-document wa
 ## <a name="mqtt"></a>MQTT
 [MQTT](https://mqtt.org/) is een van de berichten protocollen die [IOT hub](#iot-hub) ondersteunt voor het communiceren met apparaten. Zie [berichten verzenden en ontvangen met IOT hub](iot-hub-devguide-messaging.md)voor meer informatie over de berichten protocollen die door IOT hub worden ondersteund.
 
-## <a name="operations-monitoring"></a>Controle van bewerkingen
+## <a name="operations-monitoring"></a>Bewaking van bewerkingen
 Met IoT Hub [bewerkingen](iot-hub-operations-monitoring.md) bewaken kunt u de status van de bewerkingen op uw IOT-hub in realtime bewaken. [IOT hub](#iot-hub) houdt gebeurtenissen in verschillende categorieën bewerkingen bij. U kunt ervoor kiezen gebeurtenissen te verzenden van een of meer categorieën naar een IoT Hub eind punt voor verwerking. U kunt de gegevens controleren op fouten of complexere verwerking instellen op basis van gegevens patronen.
 
 ## <a name="physical-device"></a>Fysiek apparaat
@@ -257,7 +257,7 @@ Apparaten verzamelen telemetriegegevens, zoals wind snelheid of Tempe ratuur, en
 U kunt een token service gebruiken om een verificatie mechanisme voor uw apparaten te implementeren. Er wordt gebruikgemaakt van een IoT Hub [beleid voor gedeelde toegang](#shared-access-policy) met **DeviceConnect** -machtigingen voor het maken van tokens met een *bereik* . Met deze tokens kunnen apparaten verbinding maken met uw IoT-hub. Een apparaat gebruikt een aangepast verificatie mechanisme om te verifiëren met de token service. Als het apparaat is geverifieerd, geeft de token service een SAS-token uit voor het apparaat dat moet worden gebruikt voor toegang tot uw IoT-hub.
 
 ## <a name="twin-queries"></a>Dubbele query's
-Bij [dubbele query's voor apparaten en modules](iot-hub-devguide-query-language.md) wordt de SQL-achtige IOT hub query taal gebruikt om informatie op te halen van uw apparaat apparaatdubbels of module apparaatdubbels. U kunt dezelfde IoT Hub query taal gebruiken om informatie op te halen [](#job) over het uitvoeren van uw IOT-hub.
+Bij [dubbele query's voor apparaten en modules](iot-hub-devguide-query-language.md) wordt de SQL-achtige IOT hub query taal gebruikt om informatie op te halen van uw apparaat apparaatdubbels of module apparaatdubbels. U kunt de dezelfde IoT Hub-querytaal gebruiken om op te halen van informatie over [](#job) die worden uitgevoerd in uw IoT-hub.
 
 ## <a name="twin-synchronization"></a>Dubbele synchronisatie
 Dubbele synchronisatie maakt gebruik van de [gewenste eigenschappen](#desired-properties) in uw apparaat apparaatdubbels of module apparaatdubbels om uw apparaten of modules te configureren en [gerapporteerde eigenschappen](#reported-properties) van ze te verkrijgen voor opslag in de dubbele.

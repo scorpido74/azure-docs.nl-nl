@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 934fe2219ccca917999cf49cb9c9826276545e73
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: cb79b24a37758307657c1245622fa980123cc5c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915665"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432920"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Aan de slag met Azure Maps Android SDK
 
@@ -24,7 +24,9 @@ De Azure Maps Android SDK is een vector map-Bibliotheek voor Android. In dit art
 
 ### <a name="create-an-azure-maps-account"></a>Een Azure Maps-account maken
 
-Als u de procedures in dit artikel wilt uitvoeren, moet u eerst [een Azure Maps-account maken](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) in de prijs categorie S1.
+Als u de procedures in dit artikel wilt uitvoeren, moet u eerst [een Azure Maps-account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) in de prijs categorie S1 en de [primaire sleutel](quick-demo-map-app.md#get-the-primary-key-for-your-account) voor uw account ophalen.
+
+Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
 
 ### <a name="download-android-studio"></a>Android Studio downloaden
 
@@ -36,8 +38,8 @@ Maak eerst een nieuw project met een lege activiteit. Voer de volgende stappen u
 
 1. Onder **Kies uw project**selecteert u **telefoon en Tablet**. Uw toepassing wordt uitgevoerd op deze vorm factor.
 2. Op het tabblad **telefoon en Tablet** selecteert u **lege activiteit**en selecteert u **volgende**.
-3. Onder **uw project configureren**selecteert `API 21: Android 5.0.0 (Lollipop)` u als minimale SDK. Dit is de oudste versie die wordt ondersteund door de Azure Maps Android SDK.
-4. Accepteer de standaard `Activity Name` instelling `Layout Name` en selecteer **volt ooien**.
+3. Onder **uw project configureren**selecteert u `API 21: Android 5.0.0 (Lollipop)` als de minimale SDK. Dit is de oudste versie die wordt ondersteund door de Azure Maps Android SDK.
+4. Accepteer de standaard `Activity Name` en `Layout Name` en selecteer **volt ooien**.
 
 Raadpleeg de [Android Studio-documentatie](https://developer.android.com/studio/intro/) voor meer informatie over het installeren van Android Studio en het maken van een nieuw project.
 
@@ -80,11 +82,9 @@ De volgende stap bij het bouwen van uw toepassing is het installeren van de Azur
         ```
         implementation "com.microsoft.azure.maps:mapcontrol:0.2"
         ```
-
-    > [!Note]
-    > De Azure Maps Android SDK wordt regel matig bijgewerkt en uitgebreid. U kunt de documentatie aan de [slag met Android-beheer](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) weer geven voor het meest recente versie nummer van Azure Maps-implementatie. Daarnaast kunt u het versie nummer van ' 0,2 ' instellen op ' 0 + ' zodat het altijd naar de meest recente versie verwijst.
-
-3. Bewerk de **Res** > -**indeling** > **activity_main. XML** en vervang deze door de code:
+    
+    4. Ga naar het **bestand** in de werk balk en klik vervolgens op **project synchroniseren met Gradle-bestanden**.
+3. Voeg een kaart fragment toe aan de hoofd activiteit (res \>-indeling \> activiteit\_Main. XML):
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -109,7 +109,7 @@ De volgende stap bij het bouwen van uw toepassing is het installeren van de Azur
     * uw Azure Maps-verificatie-informatie instellen
     * het kaart besturings exemplaar ophalen in de methode **onCreate**
 
-    Als u de verificatie gegevens voor `AzureMaps` de klasse globaal instelt `setSubscriptionKey` met `setAadProperties` behulp van de-of-methoden, hoeft u uw verificatie gegevens niet op elke weer gave toe te voegen. 
+    Als u de verificatie gegevens voor de klasse `AzureMaps` globaal instelt met behulp van de `setSubscriptionKey`-of `setAadProperties`-methoden, is het niet nodig om uw verificatie gegevens toe te voegen aan elke weer gave. 
 
     Het kaart besturings element bevat eigen levenscyclus methoden voor het beheren van de OpenGL-levens duur van Android, die rechtstreeks vanuit de insluitende activiteit moet worden aangeroepen. Als uw app correct is, roept u de levenscyclus methoden van het kaart besturings element aan. u moet de volgende levenscyclus methoden in de activiteit die het kaart besturings element bevat, overschrijven en de desbetreffende kaart beheer methode aanroepen. 
 
@@ -201,18 +201,17 @@ De volgende stap bij het bouwen van uw toepassing is het installeren van de Azur
             mapControl.onSaveInstanceState(outState);
         }
     }
-
     ```
 
 ## <a name="import-classes"></a>Klassen importeren
 
-Nadat u de voor gaande stappen hebt voltooid, krijgt u waarschijnlijk waarschuwingen van Android Studio over een deel van de code. Als u deze waarschuwingen wilt oplossen, importeert u de klassen `MainActivity.java`waarnaar wordt verwezen in.
+Nadat u de voor gaande stappen hebt voltooid, krijgt u waarschijnlijk waarschuwingen van Android Studio over een deel van de code. Als u deze waarschuwingen wilt oplossen, importeert u de klassen waarnaar wordt verwezen in `MainActivity.java`.
 
 U kunt deze klassen automatisch importeren door op ALT + ENTER te drukken (optie + retour neren op een Mac).
 
 Selecteer de knop uitvoeren, zoals wordt weer gegeven in de volgende afbeelding (of druk op Control + R op een Mac) om uw toepassing te bouwen.
 
-![Klik op uitvoeren](./media/how-to-use-android-map-control-library/run-app.png)
+![Klik op Uitvoeren](./media/how-to-use-android-map-control-library/run-app.png)
 
 Het duurt een paar seconden Android Studio om de toepassing te bouwen. Nadat de build is voltooid, kunt u de toepassing testen in het geëmuleerde Android-apparaat. U ziet een kaart zoals deze als volgt:
 
@@ -224,7 +223,7 @@ Het duurt een paar seconden Android Studio om de toepassing te bouwen. Nadat de 
 
 De Azure Maps Android SDK biedt drie verschillende manieren om de taal en de regionale weer gave van de kaart in te stellen. De volgende code laat zien hoe u de taal instelt op Frans (fr-FR) en de regionale weer gave op ' auto '. 
 
-De eerste optie is de taal door geven en regionale informatie weer geven in `AzureMaps` de klasse met behulp `setView` van de statische `setLanguage` methode en de methoden wereld wijd. Hiermee stelt u de standaard taal en de regionale weer gave in voor alle Azure Maps besturings elementen die in uw app worden geladen.
+De eerste optie is de taal door geven en regionale informatie weer geven in de `AzureMaps` klasse met behulp van de statische `setLanguage` en `setView` methoden wereld wijd. Hiermee stelt u de standaard taal en de regionale weer gave in voor alle Azure Maps besturings elementen die in uw app worden geladen.
 
 ```Java
 static {
@@ -251,7 +250,7 @@ De tweede optie is de taal door geven en informatie weer geven in de XML van het
     />
 ```
 
-De derde optie is het programmatisch instellen van de taal en de regionale weer gave van de kaart met `setStyle` behulp van de Maps-methode. Dit kan op elk gewenst moment worden gedaan om de taal en de regionale weer gave van de kaart te wijzigen.
+U kunt de derde optie gebruiken om de taal en de regionale weer gave van de kaart programmatisch in te stellen met behulp van de Maps `setStyle` methode. Dit kan op elk gewenst moment worden gedaan om de taal en de regionale weer gave van de kaart te wijzigen.
 
 ```Java
 mapControl.onReady(map -> {
@@ -264,7 +263,7 @@ Hier volgt een voor beeld van Azure Maps waarbij de taal is ingesteld op ' fr-FR
 
 <center>
 
-![Kaart afbeelding met labels in het Frans](./media/how-to-use-android-map-control-library/android-localization.png)
+![kaart afbeelding met labels in de Franse](./media/how-to-use-android-map-control-library/android-localization.png)
 </center>
 
 Een volledige lijst met ondersteunde talen en regionale weer gaven wordt [hier](supported-languages.md)beschreven.

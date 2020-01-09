@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Een knowledge base maken - REST, Java - QnA Maker'
+title: 'Snelstart: Knowledge base maken - REST, Java - QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: In deze op Java REST gebaseerde snelstart wordt stapsgewijs uitgelegd hoe u, met behulp van een programma, een voorbeeldexemplaar van een knowledge base in QnA Maker kunt maken, dat wordt weergegeven op het Azure-dashboard van uw account voor de Cognitive Services-API.
 services: cognitive-services
@@ -8,22 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: c5a1af0b26f30cac39a76c4480848fbe1d75477b
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: bd2e12660894f51ae4606ce3b2766f6cff821f41
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803108"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447644"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Snelstartgids: Een knowledge base maken in QnA Maker met behulp van Java
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Snelstart: Een knowledge base maken in QnA Maker met behulp van Java
 
 In deze snelstart wordt beschreven hoe u programmatisch een voorbeeld van een QnA Maker-knowledge base kunt maken. Met QnA Maker worden automatisch vragen en antwoorden opgehaald uit semi-gestructureerde inhoud, zoals veelgestelde vragen, vanuit [gegevensbronnen](../Concepts/data-sources-supported.md). Het model voor de knowledge base wordt gedefinieerd in de JSON die in de hoofdtekst van de API-aanvraag wordt verzonden.
 
-[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+In deze snelstart worden QnA Maker-API's aangeroepen:
+* [KB maken](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+* [Bewerkingsdetails ophalen](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
+[Naslag documentatie](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Java](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java) -voor beeld
+
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -38,14 +42,19 @@ Maak een bestand met de naam `CreateKB.java`
 
 ## <a name="add-the-required-dependencies"></a>De vereiste afhankelijkheden toevoegen
 
-Voeg aan het begin van `CreateKB.java` de volgende regels toe om de nodige afhankelijkheden aan het project toe te voegen:
+Voeg bovenaan `CreateKB.java` de volgende regels toe om de nodige afhankelijkheden aan het project toe te voegen:
 
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=1-5 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>De vereiste constanten toevoegen
-Voeg na de bovenstaande vereiste afhankelijkheden de vereiste constanten toe aan de klasse `CreateKB` om toegang te krijgen tot QnA Maker. 
+Voeg na de bovenstaande vereiste afhankelijkheden de vereiste constanten toe aan de klasse `CreateKB` om toegang te krijgen tot QnA Maker.
 
-U moet een [QnA Maker-service ](../How-To/set-up-qnamaker-service-azure.md) hebben. Als u de sleutel en de resource naam wilt ophalen, selecteert u **Quick** start in het Azure portal voor uw QnA Maker resource. 
+U moet een [QnA Maker-service ](../How-To/set-up-qnamaker-service-azure.md) hebben. Als u de sleutel en de resource naam wilt ophalen, selecteert u **Quick** start in het Azure portal voor uw QnA Maker resource.
+
+Stel de volgende waarden in:
+
+* `<your-qna-maker-subscription-key>`: de **sleutel** is een teken reeks van 32 en is beschikbaar in de Azure Portal op de QnA Maker resource op de pagina snel starten. Dit is niet hetzelfde als de Voorspellings eindpunt sleutel.
+* `<your-resource-name>`: de **naam** van uw resource wordt gebruikt om de URL voor het ontwerpen van eind punten voor het ontwerpen te maken, in de indeling van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`. Dit is niet dezelfde URL die wordt gebruikt om een query uit te zoeken op het Voorspellings eindpunt.
 
 U hoeft de laatste accolade niet toe te voegen om de klasse te beëindigen; deze staat in het laatste codefragment aan het einde van deze snelstart.
 
@@ -113,7 +122,7 @@ Herhaal de aanroep totdat deze lukt of mislukt:
 ```
 
 ## <a name="add-a-main-method"></a>Een hoofdmethode toevoegen
-De hoofdmethode maakt de KB en vraagt vervolgens de status na. De bewerkings-ID wordt geretourneerd in de veld **locatie**van de post-antwoord header en vervolgens gebruikt als onderdeel van de route in de GET-aanvraag. De `while`-lus probeert de status opnieuw als deze niet is voltooid.
+De hoofdmethode maakt de KB en vraagt vervolgens de status na. De bewerkings-ID wordt geretourneerd in de veld **locatie**van de post-antwoord header en vervolgens gebruikt als onderdeel van de route in de GET-aanvraag. Met de `while` lus wordt de status opnieuw geprobeerd als deze niet is voltooid.
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
 

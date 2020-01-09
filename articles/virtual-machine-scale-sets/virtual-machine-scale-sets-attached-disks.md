@@ -1,6 +1,6 @@
 ---
-title: Gekoppelde gegevensschijven met virtuele-machineschaalsets in Azure | Microsoft Docs
-description: Leer gekoppelde gegevensschijven gebruiken met virtuele-machineschaalsets
+title: Gegevens schijven die zijn gekoppeld aan Azure Virtual Machine Scale Sets
+description: Meer informatie over het gebruik van gekoppelde gegevens schijven met schaal sets voor virtuele machines via overzichten van specifieke use cases.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 4/25/2017
 ms.author: manayar
-ms.openlocfilehash: 5482e082e3e37d279c4374a8642f2cb6db588dd5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6b6c752c1b86061f43af912405e610d466f17e37
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60328830"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465003"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Virtuele-machineschaalsets in Azure en gekoppelde gegevensschijven
 Voor het uitbreiden van uw beschikbare opslag bieden [virtuele-machineschaalsets](/azure/virtual-machine-scale-sets/) in Azure ondersteuning voor VM-instanties met gekoppelde gegevensschijven. U kunt gegevensschijven koppelen wanneer de schaalset wordt gemaakt of aan een bestaande schaalset.
 
 > [!NOTE]
-> Wanneer u een schaalset maakt met gekoppelde gegevensschijven, dient u de schijven nog steeds te koppelen en formatteren van binnen een VM om ze te gebruiken (net als bij zelfstandige virtuele Azure-machines). Een handige manier om dit proces te voltooien, is om een aangepaste scriptextensie te gebruiken die een script oproept om alle gegevensschijven op de VM te partitioneren en formatteren. Zie [Azure CLI](tutorial-use-disks-cli.md#prepare-the-data-disks) [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks) voor voorbeelden hiervan.
+> Wanneer u een schaalset maakt met gekoppelde gegevensschijven, dient u de schijven nog steeds te koppelen en formatteren van binnen een VM om ze te gebruiken (net als bij zelfstandige virtuele Azure-machines). Een handige manier om dit proces te voltooien, is om een aangepaste scriptextensie te gebruiken die een script oproept om alle gegevensschijven op de VM te partitioneren en formatteren. Zie [Azure CLI](tutorial-use-disks-cli.md#prepare-the-data-disks) [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks)voor voor beelden hiervan.
 
 
 ## <a name="create-and-manage-disks-in-a-scale-set"></a>Schijven in een schaalset maken en beheren

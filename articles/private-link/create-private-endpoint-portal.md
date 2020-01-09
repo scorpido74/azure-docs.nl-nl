@@ -2,17 +2,17 @@
 title: 'Quick Start: privé-eind punten beheren in azure'
 description: Meer informatie over het maken van een persoonlijk eind punt met behulp van de Azure Portal in deze Snelstartgids
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 22614b28023a0628fb12c170e934aaab4d1ddfe4
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: bc8141b951dbc27972dc2efb6819a7c0137ea7fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899868"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459930"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Snelstartgids: een persoonlijk eind punt maken met Azure Portal
 
@@ -20,9 +20,6 @@ Een persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-
-> [!NOTE]
-> Een of meer persoonlijke eind punten zijn niet toegestaan in combi natie met Service-eind punten in hetzelfde subnet.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -41,12 +38,12 @@ In deze sectie maakt u een Virtual Network en het subnet voor het hosten van de 
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Naam | Voer *MyVirtualNetwork*in. |
+    | Name | Voer *MyVirtualNetwork*in. |
     | Adresruimte | Voer *10.1.0.0/16* in. |
     | Abonnement | Selecteer uw abonnement.|
     | Resourcegroep | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
     | Locatie | Selecteer **WestCentralUS**.|
-    | Subnet - naam | Voer *mySubnet*in. |
+    | Subnet - Naam | Voer *mySubnet*in. |
     | Subnet - adresbereik | Voer *10.1.0.0/24* in. |
     |||
 1. Laat de rest als standaard en selecteer **maken**.
@@ -63,7 +60,7 @@ In deze sectie maakt u een Virtual Network en het subnet voor het hosten van de 
     | **PROJECTGEGEVENS** | |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.  |
-    | **INSTANTIEDETAILS** |  |
+    | **EXEMPLAARDETAILS** |  |
     | Naam van de virtuele machine | Voer *myVm*in. |
     | Regio | Selecteer **WestCentralUS**. |
     | Beschikbaarheidsopties | Laat de standaardwaarde **Geen infrastructuurredundantie vereist** staan. |
@@ -112,7 +109,7 @@ In deze sectie maakt u een SQL database-server in Azure.
     | **Database Details** | |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
-    | **INSTANTIEDETAILS** |  |
+    | **EXEMPLAARDETAILS** |  |
     | Databasenaam  | Voer *mydatabase*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
     |||
 5. Selecteer in **Server**de optie **nieuwe maken**. 
@@ -143,8 +140,8 @@ In deze sectie maakt u een SQL Server en voegt u hieraan een persoonlijk eind pu
     | **Project Details** | |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
-    | **INSTANTIEDETAILS** |  |
-    | Naam | Voer *myPrivateEndpoint*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
+    | **EXEMPLAARDETAILS** |  |
+    | Name | Voer *myPrivateEndpoint*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
     |Regio|Selecteer **WestCentralUS**.|
     |||
 5. Selecteer **volgende: resource**.
@@ -183,7 +180,7 @@ Nadat u **myVm**hebt gemaakt, kunt u als volgt verbinding maken met het Internet
 
 1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
-1. Selecteer **RDP-bestand downloaden**. Azure maakt een Remote Desktop Protocol-bestand ( *.rdp*) en downloadt het bestand naar uw computer.
+1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP*-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
 
 1. Open het *gedownloade RDP* -bestand.
 

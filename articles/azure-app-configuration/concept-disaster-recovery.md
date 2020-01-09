@@ -1,23 +1,17 @@
 ---
-title: Configuratie tolerantie en herstel na nood gevallen Azure-app | Microsoft Docs
-description: Een overzicht van de implementatie van tolerantie en herstel na nood gevallen met Azure-app configuratie.
-services: azure-app-configuration
-documentationcenter: ''
+title: Configuratie tolerantie en herstel na nood gevallen Azure-app
+description: Lean implementeren van tolerantie en herstel na nood gevallen met Azure-app configuratie.
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.service: azure-app-configuration
-ms.devlang: na
-ms.topic: overview
-ms.workload: tbd
-ms.date: 05/29/2019
 ms.author: yegu
-ms.openlocfilehash: 291f6fe48d81397d293ab54a73e777831e25f6ea
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.service: azure-app-configuration
+ms.topic: conceptual
+ms.date: 05/29/2019
+ms.openlocfilehash: f2f914ec993670b8ba7a596f873234afd9ffc8e8
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185279"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665056"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Tolerantie en herstel na noodgevallen
 

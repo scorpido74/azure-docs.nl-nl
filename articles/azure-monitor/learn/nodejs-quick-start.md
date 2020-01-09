@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: monitor met Azure-toepassing Insights'
-description: Biedt instructies om snel een Node.js-web-app in te stellen om te controleren met Application Insights
+title: 'Quick Start: node. js controleren met Azure Monitor Application Insights'
+description: Hierin vindt u instructies voor het snel instellen van een node. js-web-app voor bewaking met Azure Monitor Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 23fdf326bd1d3deac56f138130c3767427d062e5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 1f42dd50ee70d42b5209e186b8af63c820a9a85e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894947"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398780"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Quick Start: uw node. js-webtoepassing bewaken met Azure-toepassing Insights
 
@@ -23,7 +23,7 @@ Met Azure Application Insights kunt u eenvoudig de beschikbaarheid, de prestatie
 
 ## <a name="prerequisites"></a>Vereisten
 
-Dit zijn de vereisten voor het voltooien van deze snelstartgids:
+Dit zijn de vereisten voor het voltooien van deze snelstart:
 
 - U hebt een Azure-abonnement en een bestaande Node.js-webtoepassing nodig.
 
@@ -33,7 +33,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="enable-application-insights"></a>Application Insights inschakelen
 
@@ -51,7 +51,7 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
     | Instellingen        | Waarde           | Beschrijving  |
    | ------------- |:-------------|:-----|
    | **Naam**      | Globaal unieke waarde | Naam die de app beschrijft die u wilt controleren |
-   | **Toepassingstype** | Node.js-toepassing | Type app dat u wilt controleren |
+   | **Resourcegroep**     | myResourceGroup      | Naam voor de nieuwe resource groep om app Insights-gegevens te hosten. Maak een nieuwe resourcegroep of gebruik een bestaande. |
    | **Locatie** | VS - oost | Kies een locatie in uw buurt of in de buurt van waar de app wordt gehost |
 
 2. Selecteer **Maken**.
@@ -120,7 +120,7 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
    </script>
    ```
 
-5. Selecteer aan de linkerkant de optie **metrische gegevens**. Gebruik metrische gegevens Verkenner om de status en het gebruik van uw resource te onderzoeken. U kunt **nieuwe grafiek toevoegen** selecteren om extra aangepaste weer gaven te maken of **bewerken** selecteren om de bestaande grafiek typen, hoogte, kleuren palet, groeperingen en metrische gegevens te wijzigen. U kunt bijvoorbeeld een grafiek maken waarin de gemiddelde laad tijd van een browser pagina wordt weer gegeven door ' browser pagina laadtijd ' te selecteren in de vervolg keuzelijst metrische gegevens en ' Gem ' van aggregatie. Ga voor meer informatie over Azure Metrics Explorer [aan de slag met azure Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md).
+5. Aan de linkerkant selecteert u **Metrische gegevens**. Gebruik metrische gegevens Verkenner om de status en het gebruik van uw resource te onderzoeken. U kunt **nieuwe grafiek toevoegen** selecteren om extra aangepaste weer gaven te maken of **bewerken** selecteren om de bestaande grafiek typen, hoogte, kleuren palet, groeperingen en metrische gegevens te wijzigen. U kunt bijvoorbeeld een grafiek maken waarin de gemiddelde laad tijd van een browser pagina wordt weer gegeven door ' browser pagina laadtijd ' te selecteren in de vervolg keuzelijst metrische gegevens en ' Gem ' van aggregatie. Ga voor meer informatie over Azure Metrics Explorer [aan de slag met azure Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md).
 
    ![Grafiek met metrische gegevens van Application Insights server](./media/nodejs-quick-start/azure-app-insights-server-metrics.png)
 
@@ -129,6 +129,9 @@ Bekijk de [extra Node./js-documentatie voor App Insights](../../azure-monitor/ap
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Wanneer u klaar bent met testen, kunt u de resource groep en alle gerelateerde resources verwijderen. Volg hiervoor de onderstaande stappen.
+
+> [!NOTE]
+> Als u een bestaande resource groep hebt gebruikt, werken de onderstaande instructies niet en hoeft u alleen de afzonderlijke Application Insights resource te verwijderen. Houd er rekening mee dat u een resource groep verwijdert alle underyling-resources die lid zijn van die groep worden verwijderd.
 
 1. Selecteer in het menu links in de Azure-portal **Resourcegroepen** en selecteer vervolgens **myResourceGroup**.
 2. Selecteer op de pagina resource groep **verwijderen**, Voer **myResourceGroup** in het tekstvak in en selecteer vervolgens **verwijderen**.

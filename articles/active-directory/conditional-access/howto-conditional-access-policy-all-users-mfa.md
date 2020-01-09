@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc0d22e2e6478c265ba9219ae4df5d5ddb34d481
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 52faa2b6167606a46bf189d514a1eb314b443783
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803883"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424942"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Voorwaardelijke toegang: MFA vereisen voor alle gebruikers
 
@@ -57,8 +57,24 @@ De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke t
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid in te stellen.
 
+### <a name="named-locations"></a>Benoemde locaties
+
+Organisaties kunnen ervoor kiezen om bekende netwerk locaties die bekend zijn als **benoemde locaties** , op te nemen in hun beleid voor voorwaardelijke toegang. Deze benoemde locaties kunnen vertrouwde IPv4-netwerken bevatten, zoals die voor een hoofd kantoor. Zie voor meer informatie over het configureren van benoemde locaties het artikel [Wat is de voor waarde voor de locatie in azure Active Directory voorwaardelijke toegang?](location-condition.md)
+
+In het bovenstaande voor beeld-beleid kan een organisatie ervoor kiezen om geen multi-factor Authentication te vereisen als ze toegang hebben tot een Cloud-app vanuit hun bedrijfs netwerk. In dit geval kan de volgende configuratie aan het beleid worden toegevoegd:
+
+1. Onder **toewijzingen**selecteert u **voor waarden** > **locaties**.
+   1. Configureer **Ja**.
+   1. **Een wille keurige locatie**bevatten.
+   1. **Alle vertrouwde locaties**uitsluiten.
+   1. Selecteer **Done**.
+1. Selecteer **Done**.
+1. **Sla** de wijzigingen in het beleid op.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 [Algemeen beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
+
+[Effect bepalen met de modus alleen rapport-alleen voor voorwaardelijke toegang](howto-conditional-access-report-only.md)
 
 [Aanmeld gedrag simuleren met het What If hulp programma voor voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: mlearned
-ms.openlocfilehash: 6fc1af356d035c4db73f761ce679f7ad16126d4f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5f3e6cf8c5de8d5f3de17ad0b5d4bb4c004c06df
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013001"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442981"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Veilige toegang tot de API-server met behulp van geautoriseerde IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -21,7 +21,7 @@ In Kubernetes ontvangt de API-server aanvragen voor het uitvoeren van acties in 
 Dit artikel laat u zien hoe u met de API-server geautoriseerde IP-adresbereiken kunt beperken welke IP-adressen en CIDRs het beheer vlak kunnen hebben.
 
 > [!IMPORTANT]
-> Voor nieuwe clusters worden geautoriseerde IP-adresbereiken van de API-server alleen ondersteund op de *standaard* -SKU Load Balancer. Bestaande clusters met de *basis* -SKU Load Balancer en de geconfigureerde IP-adresbereiken van de API-server blijven werken zoals u dat wilt. Deze bestaande clusters kunnen ook worden bijgewerkt en blijven werken.
+> Voor nieuwe clusters worden geautoriseerde IP-adresbereiken van de API-server alleen ondersteund op de *standaard* -SKU Load Balancer. Bestaande clusters met de *basis* -SKU Load Balancer en de door de API server geautoriseerde IP-adresbereiken blijven werken, maar kunnen niet worden gemigreerd naar een *standaard* -SKU Load Balancer. Deze bestaande clusters blijven werken als hun Kubernetes-versie of besturings vlak wordt geüpgraded.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -102,7 +102,7 @@ az aks create \
 
 ## <a name="update-a-clusters-api-server-authorized-ip-ranges"></a>De door de API-server geautoriseerde IP-adresbereiken van een cluster bijwerken
 
-Als u de door de API-server geautoriseerde IP-adresbereiken op een bestaand cluster wilt bijwerken, gebruikt u [AZ AKS update][az-aks-update] Command en gebruikt u de *--API-server-Authorized-IP-Ranges*, *--Load-Balancer-uitgaand-IP-voor voegsels*, *--Load-Balancer*-outbound-ip's, of *--Load Balancer-uitgaand-IP-voor voegsels* para meters.
+Als u de door de API-server geautoriseerde IP-adresbereiken op een bestaand cluster wilt bijwerken, gebruikt u [AZ AKS update][az-aks-update] Command en gebruikt u de para meter *--API-server-Authorized-IP-Ranges*,-- *Load-Balancer-uitgaand-IP-voor voegsels*, *--Load-* Balancer-outbound-IP- *Preloads* .
 
 In het volgende voor beeld worden de geautoriseerde IP-adresbereiken van de API-server bijgewerkt in het cluster met de naam *myAKSCluster* in de resource groep genaamd *myResourceGroup*. Het IP-adres bereik dat moet worden geautoriseerd, is *73.140.245.0/24*:
 

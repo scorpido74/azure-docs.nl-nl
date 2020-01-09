@@ -1,5 +1,5 @@
 ---
-title: Een Token ophalen voor het aanroepen van web-Api's in mobiele apps | Azure
+title: Een token verkrijgen om een web-API (Mobile apps) aan te roepen | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het bouwen van een mobiele app die web-Api's aanroept (een token voor de app ophalen)
 services: active-directory
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1101a1923e094c22e9f6a82853f4dec4deb089a1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5d584dc2eef27747627133511af3defe085068ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919916"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423824"
 ---
 # <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Mobiele app die web-Api's aanroept-een Token ophalen
 
@@ -45,7 +45,7 @@ let scopes = ["https://graph.microsoft.com/.default"]
 ```
 
 #### <a name="xamarin"></a>Xamarin
-```CSharp 
+```csharp 
 var scopes = new [] {"https://graph.microsoft.com/.default"};
 ```
 
@@ -200,7 +200,7 @@ MSAL voor iOS en macOS ondersteunt diverse para meters bij het interactief of op
 
 In het volgende voor beeld wordt de minimale code weer gegeven voor het interactief ophalen van een token voor het lezen van het profiel van de gebruiker met Microsoft Graph.
 
-```CSharp
+```csharp
 string[] scopes = new string[] {"user.read"};
 var app = PublicClientApplicationBuilder.Create(clientId).Build();
 var accounts = await app.GetAccountsAsync();
@@ -243,7 +243,7 @@ De klasse definieert de volgende constanten:
 
 Deze wijzigings functie wordt gebruikt in een geavanceerd scenario waarbij de gebruiker vooraf toestemming moet geven aan verschillende bronnen (en niet de incrementele toestemming wilt gebruiken, die normaal gesp roken wordt gebruikt met MSAL.NET/de micro soft Identity platform v 2.0). Zie [How to: de gebruiker vooraf toestemming geven voor verschillende bronnen](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources)voor meer informatie.
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .WithExtraScopeToConsent(scopesForVendorApi)
                      .ExecuteAsync();

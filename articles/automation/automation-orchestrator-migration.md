@@ -2,19 +2,15 @@
 title: Migreren van Orchestrator naar Azure Automation
 description: Hierin wordt beschreven hoe u runbooks en integratie pakketten migreert van System Center Orchestrator naar Azure Automation.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: b34554798130d9741318e0f518c32a41f82a17e3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 528b961ca07ec86ad502ee1b589772e354564a3d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849663"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421684"
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>Migreren van Orchestrator naar Azure Automation (bèta)
 Runbooks in [System Center Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) zijn gebaseerd op activiteiten van integratie pakketten die specifiek voor Orchestrator zijn geschreven terwijl runbooks in azure Automation zijn gebaseerd op Windows Power shell.  [Grafische runbooks](automation-runbook-types.md#graphical-runbooks) in azure Automation hebben een vergelijk bare vormgeving van Orchestrator-runbooks met hun activiteiten die Power shell-cmdlets, onderliggende runbooks en assets vertegenwoordigen.

@@ -1,47 +1,38 @@
 ---
-title: Inleiding tot Azure Service Fabric-netwerk | Microsoft Docs
-description: Meer informatie over netwerken, gateways en intelligente verkeersroutering in Service Fabric NET.
-services: service-fabric-mesh
-documentationcenter: .net
+title: Inleiding tot Azure Service Fabric-netwerken
+description: Meer informatie over netwerken, gateways en intelligente verkeers routering in Service Fabric net.
 author: dkkapur
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/26/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b0e1047c5bbd7d8caaf2afd8b002be1c46837852
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc793e2991783cc9b7b46d92fcc8e0267feb529b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811013"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459130"
 ---
-# <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Inleiding tot netwerken in Service Fabric-NET-toepassingen
-In dit artikel beschrijft de verschillende soorten load balancers, hoe door gateways in het netwerk verbinding maken met uw toepassingen met andere netwerken en hoe verkeer wordt gerouteerd tussen de services in uw toepassingen.
+# <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Inleiding tot netwerken in Service Fabric-mesh toepassingen
+In dit artikel worden verschillende soorten load balancers beschreven, hoe gateways het netwerk met uw toepassingen verbinden met andere netwerken en hoe verkeer wordt gerouteerd tussen de services in uw toepassingen.
 
-## <a name="layer-4-vs-layer-7-load-balancers"></a>Laag 4 vs layer 7 load balancers
-Taakverdeling kan worden uitgevoerd op verschillende lagen in de [OSI-model](https://en.wikipedia.org/wiki/OSI_model) voor netwerken, vaak in laag 4 (N4) en layer 7 (L7).  Er zijn doorgaans twee typen van load balancers:
+## <a name="layer-4-vs-layer-7-load-balancers"></a>Laag 4-load balancers Layer 3 vs Layer 7
+Taak verdeling kan worden uitgevoerd op verschillende lagen in het [OSI-model](https://en.wikipedia.org/wiki/OSI_model) voor netwerken, vaak in laag 4 (N4) en Layer 7 (N7).  Normaal gesp roken zijn er twee typen load balancers:
 
-- Een N4 load balancer werkt op het netwerk transportlaag behandelt de levering van pakketten met geen aandacht voor de inhoud van de pakketten. Alleen pakketheaders worden gecontroleerd door de load balancer, zodat de taakverdeling criteria is beperkt tot IP-adressen en poorten. Een client maakt bijvoorbeeld een TCP-verbinding met de load balancer. De load balancer de verbinding verbreekt (door rechtstreeks naar de SYN te reageren), selecteert u een back-end en maakt een nieuwe TCP-verbinding met de back-end (er worden een nieuwe SYN verzonden). Een N4 load balancer wordt doorgaans werkt alleen op het niveau van het N4 TCP/UDP-verbinding of de sessie. Dus de taakverdeling wordt omgeleid bytes rond en zorgt ervoor dat de bytes van dezelfde sessie afsluiting van op de dezelfde back-end. De N4 load balancer is geen informatie over de details van elke toepassing van het aantal bytes dat wordt verplaatst. Het aantal bytes kunnen elk toepassingsprotocol voor de zijn.
+- Een N4-load balancer werkt op de netwerk transport laag, die betrekking heeft op de levering van pakketten zonder rekening te houden met de inhoud van de pakketten. Alleen pakket headers worden geïnspecteerd door de load balancer, zodat de criteria voor de balans beperkt zijn tot IP-adressen en poorten. Een client maakt bijvoorbeeld een TCP-verbinding met de load balancer. De load balancer beëindigt de verbinding (door rechtstreeks te reageren op de SYN), selecteert een back-end en maakt een nieuwe TCP-verbinding met de back-end (stuurt een nieuwe SYN). Een N4-load balancer werkt normaal gesp roken alleen op het niveau van de N4 TCP/UDP-verbinding of-sessie. Het taak verdeling omleidt dus bytes rond en zorgt ervoor dat het aantal bytes van dezelfde sessie op dezelfde back-end ontstaat. De N4-load balancer is niet op de hoogte van toepassings Details van de bytes die worden verplaatst. De bytes kunnen elk toepassings protocol zijn.
 
-- Een L7-taakverdeling werkt op het niveau van de toepassing, die met de inhoud van elk pakket omgaat. Pakketinhoud inspecteert deze omdat wordt begrepen protocollen zoals HTTP, HTTPS en WebSockets. Dit biedt de mogelijkheid om uit te voeren geavanceerde routering de load balancer. Een client maakt bijvoorbeeld een enkele HTTP/2-TCP-verbinding met de load balancer. De load balancer gaat deze vervolgens door twee back-end-verbindingen te maken. Wanneer de client twee HTTP/2-stromen aan de load balancer verzendt, stream een wordt verzonden naar back-end een en stream twee wordt verzonden naar back-end twee. Dus zal zelfs multiplexing clients die aanzienlijk verschillende aanvraag belastingen hebben worden verdeeld efficiënt over de back-ends. 
+- Een N7-load balancer werkt op de toepassingslaag, die de inhoud van elk pakket behandelt. De inhoud van het pakket wordt gecontroleerd omdat het protocollen zoals HTTP, HTTPS of websockets begrijpt. Dit geeft de load balancer de mogelijkheid om geavanceerde route ring uit te voeren. Een client maakt bijvoorbeeld één HTTP/2 TCP-verbinding met de load balancer. De load balancer vervolgens teruggaan om twee back-upverbindingen te maken. Wanneer de client twee HTTP/2-streams naar de load balancer verzendt, wordt de stream één naar de back-end verzonden en wordt de stroom twee naar de back-end verzonden. Zelfs multiplexing van clients met veel verschillende aanvragen worden geladen, worden op een efficiënte manier verdeeld over de back-end. 
 
 ## <a name="networks-and-gateways"></a>Netwerken en gateways
-In de [Service Fabric-Resourcemodel](service-fabric-mesh-service-fabric-resources.md), een netwerkbron is een afzonderlijk implementeerbare resource, onafhankelijk van een toepassing of Service-resource die als hun afhankelijkheid naar deze verwijzen kan. Het wordt gebruikt voor het maken van een netwerk voor uw toepassingen die is geopend op het internet. Meerdere services van verschillende toepassingen kunnen een deel uitmaken van hetzelfde netwerk. Deze particulier netwerk is gemaakt en beheerd door Service Fabric en is niet een Azure-netwerk (VNET). Toepassingen kunnen dynamisch worden toegevoegd en verwijderd uit de netwerkbron-en uitschakelen van VNET-connectiviteit. 
+In het [service Fabric resource model](service-fabric-mesh-service-fabric-resources.md)is een netwerk resource een afzonderlijk Implementeer bare resource, onafhankelijk van een toepassings-of service resource die als afhankelijkheid ervan kan verwijzen. Het wordt gebruikt om een netwerk te maken voor uw toepassingen die zijn geopend op internet. Meerdere services van verschillende toepassingen kunnen deel uitmaken van hetzelfde netwerk. Dit particuliere netwerk wordt gemaakt en beheerd door Service Fabric en is geen virtueel Azure-netwerk (VNET). Toepassingen kunnen dynamisch worden toegevoegd en verwijderd uit de netwerk resource om VNET-connectiviteit in te scha kelen en uit te scha kelen. 
 
-Een gateway wordt gebruikt om twee netwerken overbruggen. De resource van de Gateway implementeert een [Envoy proxy](https://www.envoyproxy.io/) waarmee de N4 voor elk protocol voor Routering en L7 routering voor geavanceerde HTTP (S)-toepassingsroutering. De gateway routeert verkeer in uw netwerk vanuit een extern netwerk en bepaalt welke service verkeer naar routeert.  Het externe netwerk mogelijk op een open netwerk (in feite het openbare internet) of een Azure-netwerk, zodat u kunt verbinding maken met uw andere Azure-toepassingen en resources. 
+Een gateway wordt gebruikt voor het overbruggen van twee netwerken. De gateway resource implementeert een [Envoy-proxy](https://www.envoyproxy.io/) die N4-route ring biedt voor elk protocol en N7-route ring voor geavanceerde http (S)-toepassings routering. De gateway routeert verkeer naar uw netwerk vanaf een extern netwerk en bepaalt welke service verkeer moet routeren.  Het externe netwerk kan een open netwerk (in wezen, het open bare Internet) of een virtueel Azure-netwerk zijn, zodat u verbinding kunt maken met uw andere Azure-toepassingen en-resources. 
 
-![Netwerk- en gateway][Image1]
+![Netwerk en gateway][Image1]
 
-Wanneer de netwerk-resource is gemaakt met `ingressConfig`, een openbaar IP-adres is toegewezen aan de netwerkbron. Het openbare IP-adres worden gekoppeld aan de levensduur van de netwerk-resource.
+Wanneer de netwerk bron wordt gemaakt met `ingressConfig`, wordt er een openbaar IP-adres toegewezen aan de netwerk bron. Het open bare IP-adres wordt gekoppeld aan de levens duur van de netwerk bron.
 
-Wanneer een Mesh-toepassing wordt gemaakt, moet deze verwijzen naar een bestaande netwerk-resource. Nieuwe openbare poorten kunnen worden toegevoegd of bestaande poorten kunnen worden verwijderd uit de configuratie van de inkomende gegevens. Een verwijderd voor een netwerkbron mislukt als de bron van een toepassing verwijst naar deze. Wanneer de toepassing wordt verwijderd, worden de netwerk-resource wordt verwijderd.
+Wanneer een mesh-toepassing wordt gemaakt, moet deze verwijzen naar een bestaande netwerk bron. Nieuwe open bare poorten kunnen worden toegevoegd of bestaande poorten kunnen worden verwijderd uit de ingangs configuratie. Een Verwijder bewerking voor een netwerk bron mislukt als er wordt verwezen naar een toepassings bron. Wanneer de toepassing wordt verwijderd, wordt de netwerk bron verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen 
 Lees het overzicht voor meer informatie over Service Fabric Mesh:

@@ -1,25 +1,16 @@
 ---
-title: Een service op basis van een actor maken op Azure Service Fabric | Microsoft Docs
+title: Een service op basis van een actor maken op Azure Service Fabric
 description: Meer informatie over het maken, opsporen en implementeren van uw eerste op actor gebaseerde C# service in het gebruik van service Fabric reliable actors.
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: d4aebe72-1551-4062-b1eb-54d83297f139
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
 ms.author: vturecek
-ms.openlocfilehash: d870690416f96a2e1c24e6de16bdc8faa060f6bd
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a6e4fb48653572139463738c82de632ff7d55074
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225185"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466246"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Aan de slag met Reliable Actors
 > [!div class="op_single_selector"]
@@ -54,13 +45,13 @@ De oplossing bevat drie projecten:
 
 * **Het interface project (HelloWorld. interfaces)** . Dit project bevat de interface definitie voor de actor. Actor-interfaces kunnen in elk project met een wille keurige naam worden gedefinieerd.  De interface definieert het actor-contract dat wordt gedeeld door de actor-implementatie en de clients die de actor aanroepen.  Omdat client projecten hiervan afhankelijk kunnen zijn, is het doorgaans zinvol om deze te definiëren in een assembly die is gescheiden van de actor-implementatie.
 
-* **Het actor service-project (HelloWorld)** . Dit project definieert de Service Fabric-service die de actor gaat hosten. Deze bevat de implementatie van de actor, *HelloWorld.cs*. Een actor-implementatie is een klasse die is afgeleid van het basis `Actor` type en de interfaces implementeert die in het project *MyActor. interfaces* zijn gedefinieerd. Een actor-klasse moet ook een constructor implementeren die een `ActorService` exemplaar accepteert en een `ActorId` en deze door geven aan de basis `Actor` klasse.
+* **Het actor service-project (HelloWorld)** . Dit project definieert de Service Fabric-service die de actor gaat hosten. Deze bevat de implementatie van de actor, *HelloWorld.cs*. Een actor-implementatie is een klasse die is afgeleid van het basis type `Actor` en implementeert de interfaces die in het project *MyActor. interfaces* zijn gedefinieerd. Een actor klasse moet ook een constructor implementeren die een `ActorService`-exemplaar accepteert en een `ActorId` en deze door geven aan de basis `Actor` klasse.
     
-    Dit project bevat ook *Program.cs*, waarmee actor klassen worden geregistreerd bij de service Fabric- `ActorRuntime.RegisterActorAsync<T>()`runtime met. De `HelloWorld` klasse is al geregistreerd. Eventuele extra actor-implementaties die aan het project worden toegevoegd, moeten ook `Main()` worden geregistreerd in de-methode.
+    Dit project bevat ook *Program.cs*, die actor klassen registreert met de service Fabric runtime met behulp van `ActorRuntime.RegisterActorAsync<T>()`. De `HelloWorld` klasse is al geregistreerd. Eventuele extra actor-implementaties die aan het project worden toegevoegd, moeten ook worden geregistreerd in de `Main()` methode.
 
 ## <a name="customize-the-helloworld-actor"></a>De acteur van HelloWorld aanpassen
 
-De project sjabloon definieert een aantal methoden in `IHelloWorld` de interface en implementeert deze in `HelloWorld` de actor-implementatie.  Vervang deze methoden zodat de actor-service een eenvoudige teken reeks ' Hallo wereld ' retourneert.
+De project sjabloon definieert een aantal methoden in de `IHelloWorld` interface en implementeert deze in de implementatie van de `HelloWorld` actor.  Vervang deze methoden zodat de actor-service een eenvoudige teken reeks ' Hallo wereld ' retourneert.
 
 Vervang in het project *HelloWorld. interfaces* in het bestand *IHelloWorld.cs* de interface definitie als volgt:
 
@@ -95,7 +86,7 @@ Druk op **CTRL-SHIFT-B** om het project te bouwen en te controleren of alles com
 
 Maak een eenvoudige console toepassing om de actor-service aan te roepen.
 
-1. Klik met de rechter muisknop op de oplossing in  > Solution Explorer >**Nieuw project toevoegen...** .
+1. Klik met de rechter muisknop op de oplossing in Solution Explorer > > nieuw project **toe te voegen** **...** .
 
 2. Kies onder de **.net core** -project typen de optie **console-app (.net core)** .  Geef het project de naam *ActorClient*.
     
@@ -116,7 +107,7 @@ Maak een eenvoudige console toepassing om de actor-service aan te roepen.
 
     Het NuGet-pakket en alle bijbehorende afhankelijkheden worden geïnstalleerd in het ActorClient-project.
 
-5. Het client project vereist ook een verwijzing naar het interfaces-project.  Klik in het project ActorClient met de rechter  muisknop op afhankelijkheden en klik vervolgens op **verwijzing toevoegen...** .  Selecteer **projecten > oplossing** (als deze nog niet is geselecteerd) en tik vervolgens op het selectie vakje naast **HelloWorld. interfaces**.  Klik op **OK**.
+5. Het client project vereist ook een verwijzing naar het interfaces-project.  Klik in het project ActorClient met de rechter muisknop op **afhankelijkheden** en klik vervolgens op **verwijzing toevoegen...** .  Selecteer **projecten > oplossing** (als deze nog niet is geselecteerd) en tik vervolgens op het selectie vakje naast **HelloWorld. interfaces**.  Klik op **OK**.
     
     ![Dialoog venster referentie toevoegen][7]
 
@@ -150,7 +141,7 @@ Druk op **F5** om de toepassing lokaal te bouwen, te implementeren en uit te voe
 
 ![Uitvoer venster van Service Fabric fout opsporing][3]
 
-Wanneer de uitvoer de tekst bevat, *de toepassing gereed is, is*het mogelijk om de service te testen met behulp van de ActorClient-toepassing.  Klik in Solution Explorer met de rechter muisknop op het project **ActorClient** en vervolgens op **debug** > **Start new instance**.  De opdracht regel toepassing moet de uitvoer van de actor-service weer geven.
+Wanneer de uitvoer de tekst bevat, *de toepassing gereed is, is*het mogelijk om de service te testen met behulp van de ActorClient-toepassing.  Klik in Solution Explorer met de rechter muisknop op het project **ActorClient** en vervolgens op **fout opsporing** > **nieuwe instantie starten**.  De opdracht regel toepassing moet de uitvoer van de actor-service weer geven.
 
 ![Toepassingsuitvoer][9]
 

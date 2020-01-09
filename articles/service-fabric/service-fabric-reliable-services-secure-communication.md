@@ -1,25 +1,16 @@
 ---
-title: Externe communicatie met C# in azure service Fabric beveiligde service Microsoft Docs
+title: Communicatie tussen beveiligde services metC#
 description: Meer informatie over het beveiligen van communicatie op basis van C# service op afstand voor betrouw bare services die worden uitgevoerd in een Azure service Fabric-cluster.
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: vturecek
-ms.assetid: fc129c1a-fbe4-4339-83ae-0e69a41654e0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 04/20/2017
 ms.author: pepogors
-ms.openlocfilehash: c252ec31a64fa3a11973db7a8de0a440d8eed6f5
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ee2f1d70f4094ccc7d80edbfaf16509b5124f607
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166562"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609618"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>Externe communicatie in een C# service met beveiligde service
 > [!div class="op_single_selector"]
@@ -32,7 +23,7 @@ Beveiliging is een van de belangrijkste aspecten van de communicatie. Het Reliab
 
 Voer de volgende stappen uit om een service te helpen beveiligen wanneer u C# service voor externe toegang met Services gebruikt:
 
-1. Maak een interface, `IHelloWorldStateful`, waarmee de methoden worden gedefinieerd die beschikbaar zijn voor een externe procedure aanroep van uw service. Uw service maakt gebruik van `FabricTransportServiceRemotingListener`, dat is gedeclareerd in de `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime`-naam ruimte. Dit is een `ICommunicationListener`-implementatie die mogelijkheden biedt voor externe communicatie.
+1. Maak een interface, `IHelloWorldStateful`, waarmee de methoden worden gedefinieerd die beschikbaar zijn voor een externe procedure aanroep voor uw service. Uw service maakt gebruik van `FabricTransportServiceRemotingListener`, dat is gedeclareerd in de `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` naam ruimte. Dit is een `ICommunicationListener` implementatie die mogelijkheden biedt voor externe communicatie.
 
     ```csharp
     public interface IHelloWorldStateful : IService
@@ -115,7 +106,7 @@ Voer de volgende stappen uit om een service te helpen beveiligen wanneer u C# se
        </Section>
        ```
 
-       In dit geval ziet de `CreateServiceReplicaListeners`-methode er als volgt uit:
+       In dit geval ziet de `CreateServiceReplicaListeners` methode er als volgt uit:
 
        ```csharp
        protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -129,7 +120,7 @@ Voer de volgende stappen uit om een service te helpen beveiligen wanneer u C# se
        }
        ```
 
-        Als u een `TransportSettings`-sectie in het bestand settings. XML toevoegt, worden in `FabricTransportRemotingListenerSettings` standaard alle instellingen van deze sectie geladen.
+        Als u een `TransportSettings` sectie toevoegt in het bestand settings. XML, worden in `FabricTransportRemotingListenerSettings` standaard alle instellingen van deze sectie geladen.
 
         ```xml
         <!--"TransportSettings" section .-->
@@ -137,7 +128,7 @@ Voer de volgende stappen uit om een service te helpen beveiligen wanneer u C# se
             ...
         </Section>
         ```
-        In dit geval ziet de `CreateServiceReplicaListeners`-methode er als volgt uit:
+        In dit geval ziet de `CreateServiceReplicaListeners` methode er als volgt uit:
 
         ```csharp
         protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -150,7 +141,7 @@ Voer de volgende stappen uit om een service te helpen beveiligen wanneer u C# se
             };
         }
         ```
-3. Wanneer u methoden aanroept voor een beveiligde service met behulp van de externe stack, in plaats van de klasse `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` te gebruiken om een Service proxy te maken, gebruikt u `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`. Geef het `FabricTransportRemotingSettings` door. Dit bevat `SecurityCredentials`.
+3. Wanneer u methoden aanroept voor een beveiligde service met behulp van de externe stack, gebruikt u in plaats van de `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy`-klasse om een Service proxy te maken, `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`. Pass `FabricTransportRemotingSettings`, dat `SecurityCredentials`bevat.
 
     ```csharp
 
@@ -193,9 +184,9 @@ Voer de volgende stappen uit om een service te helpen beveiligen wanneer u C# se
 
     ```
 
-    Als de client niet wordt uitgevoerd als onderdeel van een service, kunt u een client_name. settings. XML-bestand maken op dezelfde locatie als de client_name. exe. Maak vervolgens een TransportSettings-sectie in dat bestand.
+    Als de client niet wordt uitgevoerd als onderdeel van een service, kunt u een bestand client_name. settings. XML maken op dezelfde locatie als de client_name. exe. Maak vervolgens een TransportSettings-sectie in dat bestand.
 
-    Net als bij de service kunt u, als u een `TransportSettings`-sectie toevoegt in client instellingen. XML/client_name. settings. XML, `FabricTransportRemotingSettings` standaard alle instellingen van deze sectie laden.
+    Net als bij de service kunt u, als u een `TransportSettings` sectie toevoegt in client instellingen. XML/client_name. settings. XML, `FabricTransportRemotingSettings` alle instellingen van deze sectie standaard laden.
 
     In dat geval is de eerdere code nog verder vereenvoudigd:  
 

@@ -1,44 +1,35 @@
 ---
-title: De configuratie van een Azure Service Fabric-cluster upgraden | Microsoft Docs
-description: Informatie over het bijwerken van de configuratie die een Service Fabric-cluster in Azure wordt uitgevoerd met behulp van Resource Manager-sjabloon.
-services: service-fabric
-documentationcenter: .net
+title: De configuratie van een Azure Service Fabric-cluster upgraden
+description: Meer informatie over het bijwerken van de configuratie waarmee een Service Fabric cluster in azure wordt uitgevoerd met behulp van een resource manager-sjabloon.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 77b9b20f99f00ef87c4907c2890cb3a21d20ec75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 476a2d910b916ea29132b108478d06f756454813
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62096263"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463288"
 ---
-# <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Upgrade van de configuratie van een cluster in Azure 
+# <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>De configuratie van een cluster in azure upgraden 
 
-In dit artikel wordt beschreven hoe u de verschillende fabric-instellingen aanpassen voor uw Service Fabric-cluster. Voor clusters die worden gehost in Azure, kunt u instellingen via de [Azure-portal](https://portal.azure.com) of met behulp van een Azure Resource Manager-sjabloon.
+In dit artikel wordt beschreven hoe u de verschillende infrastructuur instellingen voor uw Service Fabric cluster kunt aanpassen. Voor clusters die worden gehost in azure, kunt u instellingen aanpassen via de [Azure Portal](https://portal.azure.com) of met behulp van een Azure Resource Manager sjabloon.
 
 > [!NOTE]
-> Niet alle instellingen zijn beschikbaar in de portal en is een [best practice om aan te passen met behulp van een Azure Resource Manager-sjabloon](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code); Er is een portal voor Service Fabric Dev\Test alleen voor het scenario van.
+> Niet alle instellingen zijn beschikbaar in de portal en het is een [Best practice om deze aan te passen met behulp van een Azure Resource Manager sjabloon](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code). Portal is alleen voor Service Fabric-scenario van Dev\Test.
 > 
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Instellingen van het cluster met behulp van Resource Manager-sjablonen aanpassen
-Azure-clusters kunnen worden geconfigureerd via de JSON-Resource Manager-sjabloon. Zie voor meer informatie over de verschillende instellingen, [configuratie-instellingen voor clusters](service-fabric-cluster-fabric-settings.md). Bijvoorbeeld de volgende stappen laten zien hoe u een nieuwe instelling toevoegen *MaxDiskQuotaInMB* naar de *Diagnostics* sectie met behulp van Azure Resource Explorer.
+## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Cluster instellingen aanpassen met behulp van Resource Manager-sjablonen
+Azure-clusters kunnen worden geconfigureerd via de JSON Resource Manager-sjabloon. Zie [configuratie-instellingen voor clusters](service-fabric-cluster-fabric-settings.md)voor meer informatie over de verschillende instellingen. De volgende stappen laten zien hoe u een nieuwe instelling *MaxDiskQuotaInMB* kunt toevoegen aan de sectie *Diagnostische gegevens* met behulp van Azure resource Explorer.
 
 1. Ga naar https://resources.azure.com
-2. Navigeer naar uw abonnement door uit te vouwen **abonnementen** ->  **\<uw abonnement >**  -> **resourceGroups**  ->   **\<Uw resourcegroep >**  -> **providers** -> **Microsoft.ServiceFabric**  ->  **clusters** ->  **\<de naam van uw Cluster >**
-3. Selecteer in de rechterbovenhoek, **lezen/schrijven.**
-4. Selecteer **bewerken** en werk de `fabricSettings` JSON-element en nieuw-element toe te voegen:
+2. Navigeer naar uw abonnement door **abonnementen** uit te vouwen ->  **\<uw abonnement >**  -> **ResourceGroups** -> \<**uw resource groep** > -> **providers** -> **micro soft. ServiceFabric** -> **clusters** ->  **\<de cluster naam** >
+3. Selecteer in de rechter bovenhoek de optie **lezen/schrijven.**
+4. Selecteer **bewerken** en werk het `fabricSettings` JSON-element bij en voeg een nieuw element toe:
 
 ```json
       {
@@ -52,14 +43,14 @@ Azure-clusters kunnen worden geconfigureerd via de JSON-Resource Manager-sjabloo
       }
 ```
 
-U kunt ook de instellingen aanpassen in een van de volgende manieren met Azure Resource Manager:
+U kunt cluster instellingen ook aanpassen op een van de volgende manieren met Azure Resource Manager:
 
-- Gebruik de [Azure-portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template) om te exporteren en het bijwerken van de Resource Manager-sjabloon.
-- Gebruik [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell) om te exporteren en het bijwerken van de Resource Manager-sjabloon.
-- Gebruik de [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) om te exporteren en het bijwerken van de Resource Manager-sjabloon.
-- Gebruik van Azure PowerShell [Set AzServiceFabricSetting](https://docs.microsoft.com/powershell/module/az.servicefabric/Set-azServiceFabricSetting) en [Remove-AzServiceFabricSetting](https://docs.microsoft.com/powershell/module/az.servicefabric/Remove-azServiceFabricSetting) opdrachten om de instelling te wijzigen rechtstreeks.
-- De Azure CLI gebruiken [az sf cluster instelling](https://docs.microsoft.com/cli/azure/sf/cluster/setting) opdrachten om de instelling te wijzigen rechtstreeks.
+- Gebruik de [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template) om de Resource Manager-sjabloon te exporteren en bij te werken.
+- Gebruik [Power shell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell) om de Resource Manager-sjabloon te exporteren en bij te werken.
+- Gebruik de [Azure cli](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) om de Resource Manager-sjabloon te exporteren en bij te werken.
+- Gebruik de opdrachten Azure PowerShell [set-AzServiceFabricSetting](https://docs.microsoft.com/powershell/module/az.servicefabric/Set-azServiceFabricSetting) en [Remove-AzServiceFabricSetting](https://docs.microsoft.com/powershell/module/az.servicefabric/Remove-azServiceFabricSetting) om de instelling rechtstreeks te wijzigen.
+- Gebruik de opdracht Azure CLI [AZ EB cluster setting](https://docs.microsoft.com/cli/azure/sf/cluster/setting) om de instelling rechtstreeks te wijzigen.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over de [instellingen voor Service Fabric-cluster](service-fabric-cluster-fabric-settings.md).
-* Meer informatie over het [in en uit het cluster wordt geschaald](service-fabric-cluster-scale-up-down.md).
+* Meer informatie over de [service Fabric cluster instellingen](service-fabric-cluster-fabric-settings.md).
+* Meer informatie over hoe u [uw cluster in-en uitschaalt](service-fabric-cluster-scale-up-down.md).

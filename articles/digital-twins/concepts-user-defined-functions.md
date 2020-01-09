@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 76ff8a63c2fbda3ddbaed794d24f7adb66a4dd95
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.date: 01/03/2020
+ms.openlocfilehash: 5b1c3e6dcd106e16ab07f707729f31ee1e269461
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930363"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660304"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Gegevensverwerking en door gebruikers gedefinieerde functies
 
@@ -114,7 +114,7 @@ De [github-opslag plaats voor het digitale C# apparaatdubbels-voor beeld](https:
 
 ### <a name="role-assignment"></a>Nieuwe roltoewijzing
 
-De acties van een door de gebruiker gedefinieerde functie zijn onderhevig aan op [rollen gebaseerd toegangs beheer van](./security-role-based-access-control.md) Azure Digital apparaatdubbels voor het beveiligen van gegevens in de service. Met roltoewijzingen definieert u welke door de gebruiker gedefinieerde functies de juiste machtigingen hebben om te communiceren met de ruimtelijke grafiek en de bijbehorende entiteiten. Een door de gebruiker gedefinieerde functie kan bijvoorbeeld de mogelijkheid hebben om grafiek gegevens te *maken*, *lezen*, *bijwerken*of *verwijderen* onder een bepaalde ruimte. Het toegangs niveau van een door de gebruiker gedefinieerde functie wordt gecontroleerd wanneer de door de gebruiker gedefinieerde functie de grafiek voor gegevens aanvraagt of een actie probeert uit te proberen. Zie [op rollen gebaseerd toegangs beheer](./security-create-manage-role-assignments.md)voor meer informatie.
+De acties van een door de gebruiker gedefinieerde functie zijn onderhevig aan op [rollen gebaseerd toegangs beheer van](./security-role-based-access-control.md) Azure Digital apparaatdubbels voor het beveiligen van gegevens in de service. Met roltoewijzingen definieert u welke door de gebruiker gedefinieerde functies de juiste machtigingen hebben om te communiceren met de ruimtelijke grafiek en de bijbehorende entiteiten. Een door de gebruiker gedefinieerde functie kan bijvoorbeeld de mogelijkheid hebben om grafiek gegevens te *maken*, *lezen*, *bijwerken*of *verwijderen* onder een bepaalde ruimte. Het toegangs niveau van een door de gebruiker gedefinieerde functie wordt gecontroleerd wanneer de door de gebruiker gedefinieerde functie de grafiek voor gegevens aanvraagt of een actie probeert uit te proberen. Zie [Op rollen gebaseerd toegangsbeheer](./security-create-manage-role-assignments.md) voor meer informatie.
 
 Het is mogelijk dat een Matcher een door de gebruiker gedefinieerde functie moet activeren die geen roltoewijzingen heeft. In dit geval kan de door de gebruiker gedefinieerde functie geen gegevens uit de grafiek lezen.
 

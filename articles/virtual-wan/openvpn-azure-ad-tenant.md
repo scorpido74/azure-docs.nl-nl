@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 12/27/2019
 ms.author: alzam
-ms.openlocfilehash: 6df8a9448873b418dc312ba572ba15d2da69bf32
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 56226bf0310e51e62fa814b838f157a4e16a9d10
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74822719"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530711"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Een Azure Active Directory-Tenant maken voor P2S OpenVPN-protocol verbindingen
 
@@ -90,31 +90,8 @@ Volg de stappen in [dit artikel](../active-directory/fundamentals/add-users-azur
 
     ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
 
-8. Schakel Azure AD-verificatie in op de VPN-gateway door de volgende opdrachten uit te voeren. Zorg er daarom voor dat u de opdracht wijzigt in overeenstemming met uw eigen omgeving:
-
-    ```azurepowershell-interactive
-    $gw = Get-AzVirtualNetworkGateway -Name <name of VPN gateway> -ResourceGroupName <Resource group>
-    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientRootCertificates @()
-    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "41b23e61-6c1e-4545-b367-cd054e0ed4b4" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/"
-    ```
-
-9. Maak en down load het profiel door de volgende opdrachten uit te voeren. Wijzig de waarden voor-ResourcGroupName en-name zodat deze overeenkomen met uw eigen waarde.
-
-    ```azurepowershell-interactive
-    $profile = New-AzVpnClientConfiguration -Name <name of VPN gateway> -ResourceGroupName <Resource group> -AuthenticationMethod "EapTls"
-    $PROFILE.VpnProfileSASUrl
-    ```
-
-10. Na het uitvoeren van de opdrachten ziet u een resultaat zoals hieronder. Kopieer de URL van het resultaat naar uw browser om het profiel-zip-bestand te downloaden.
-
-    ![Azure VPN](./media/openvpn-create-azure-ad-tenant/profile.png)
-
-11. Pak het gedownloade zip-bestand uit.
-
-12. Blader naar de map ungezipte ' AzureVPN '.
-
-13. Noteer de locatie van het bestand azurevpnconfig. XML. Azurevpnconfig. XML bevat de instelling voor de VPN-verbinding en kan rechtstreeks in de Azure VPN-client toepassing worden geïmporteerd. U kunt dit bestand ook distribueren naar alle gebruikers die verbinding moeten maken via e-mail of een andere manier. De gebruiker heeft geldige Azure AD-referenties nodig om verbinding te kunnen maken.
+8. Configureer Azure AD-verificatie voor gebruikers-VPN en wijs dit toe aan een virtuele hub door de stappen in [Azure AD-verificatie configureren voor punt-naar-site-verbinding met Azure te](virtual-wan-point-to-site-azure-ad.md) volgen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u verbinding wilt maken met uw virtuele netwerk, moet u een VPN-client profiel maken en configureren. Zie [Azure AD-verificatie configureren voor punt-naar-site-verbinding met Azure](virtual-wan-point-to-site-azure-ad.md).
+Als u verbinding wilt maken met uw virtuele netwerk, moet u een VPN-client profiel maken en configureren en dit koppelen aan een virtuele hub. Zie [Azure AD-verificatie configureren voor punt-naar-site-verbinding met Azure](virtual-wan-point-to-site-azure-ad.md).

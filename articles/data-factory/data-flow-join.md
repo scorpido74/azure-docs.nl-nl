@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/17/2019
-ms.openlocfilehash: 09d2c1d063c542583dc11fab0805a9392661426f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/02/2020
+ms.openlocfilehash: 10149c6eb06e6d2994233aa365f237e6d9330c48
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930347"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644750"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Trans formatie koppelen in gegevens stroom toewijzen
 
@@ -25,11 +25,14 @@ Toewijzing van gegevens stromen ondersteunt momenteel vijf verschillende jointyp
 
 ### <a name="inner-join"></a>Inner join
 
-Inner join uitvoer alleen rijen met overeenkomende waarden in beide tabellen.
+Inner join uitvoer rijen met overeenkomende waarden in beide tabellen.
 
 ### <a name="left-outer"></a>Linker outer join
 
 Links outer join retourneert alle rijen uit de linker stroom en overeenkomende records uit de juiste stroom. Als een rij uit de linker stroom niet overeenkomt, worden de uitvoer kolommen van de juiste stroom ingesteld op NULL. De uitvoer is de rijen die worden geretourneerd door een inner join plus de niet-overeenkomende rijen uit de linker stroom.
+
+> [!NOTE]
+> De Spark-engine die door gegevens stromen wordt gebruikt, kan van tijd tot Cartesisch product in uw samenvoegings voorwaarden. Als dat het geval is, kunt u overschakelen naar een aangepaste cross-koppeling en de voor waarde voor samen voegen hand matig invoeren. Dit kan leiden tot tragere prestaties in uw gegevens stromen, omdat de engine voor het uitvoeren van de uitvoering mogelijk alle rijen van beide kanten van de relatie moet berekenen en vervolgens rijen filtert.
 
 ### <a name="right-outer"></a>Rechter outer join
 
@@ -39,9 +42,16 @@ De rechter outer join retourneert alle rijen uit de juiste stroom en overeenkome
 
 Volledige outer join alle kolommen en rijen van beide zijden met NULL-waarden voor kolommen die niet overeenkomen, worden uitgevoerd.
 
-### <a name="cross-join"></a>Cross join
+### <a name="custom-cross-join"></a>Aangepaste cross-koppeling
 
-Met cross-koppeling wordt het cross-product van de twee stromen op basis van een voor waarde uitgevoerd. Als u een voor waarde gebruikt die niet gelijk is aan elkaar, geeft u een aangepaste expressie op als cross-samenvoegings voorwaarde. De uitvoer stroom is alle rijen die voldoen aan de voor waarde voor samen voegen. Als u een Cartesisch product wilt maken dat elke rij-combi natie uitvoert, geeft u `true()` op als uw samenvoegings voorwaarde.
+Met cross-koppeling wordt het cross-product van de twee stromen op basis van een voor waarde uitgevoerd. Als u een voor waarde gebruikt die niet gelijk is aan elkaar, geeft u een aangepaste expressie op als cross-samenvoegings voorwaarde. De uitvoer stroom is alle rijen die voldoen aan de voor waarde voor samen voegen.
+
+U kunt dit type samen voegen gebruiken voor niet-equi-samen voegingen en ```OR``` voor waarden.
+
+Als u een volledig Cartesisch product expliciet wilt maken, gebruikt u de afgeleide kolom transformatie in elk van de twee onafhankelijke streams voordat de koppeling wordt gemaakt om een synthetische sleutel te maken die overeenkomt met. Maak bijvoorbeeld een nieuwe kolom in de afgeleide kolom in elke stroom met de naam ```SyntheticKey``` en stel deze in op ```1```. Gebruik vervolgens ```a.SyntheticKey == b.SyntheticKey``` als uw aangepaste joinexpressie voor samen voegen.
+
+> [!NOTE]
+> Zorg ervoor dat u ten minste één kolom toevoegt aan elke zijde van uw linker-en rechter relatie in een aangepaste cross-koppeling. Het uitvoeren van cross-samen voegingen met statische waarden in plaats van kolommen van elke kant resulteert in volledige scans van de hele gegevensset, waardoor uw gegevens stroom slecht kan worden uitgevoerd.
 
 ## <a name="configuration"></a>Configuratie
 
@@ -104,9 +114,9 @@ TripData, TripFare
     )~> JoinMatchedData
 ```
 
-### <a name="cross-join-example"></a>Voor beeld van cross-koppeling
+### <a name="custom-cross-join-example"></a>Voor beeld van aangepaste cross-koppeling
 
-Het onderstaande voor beeld is een koppelings transformatie met de naam `CartesianProduct` die links stream `TripData` en Right stream-`TripFare`gebruikt. Deze trans formatie heeft twee stromen en retourneert een Cartesisch product van de rijen. De voor waarde voor samen voegen is `true()`, omdat er een volledig Cartesisch product wordt uitgevoerd. De `joinType` is `cross`. Het inschakelen van de uitzending in alleen de linker stroom is `broadcast` waarde `'left'`.
+Het onderstaande voor beeld is een koppelings transformatie met de naam `JoiningColumns` die links stream `LeftStream` en Right stream-`RightStream`gebruikt. Deze trans formatie neemt twee stromen in beslag en voegt alle rijen samen waarbij kolom `leftstreamcolumn` groter is dan kolom `rightstreamcolumn`. De `joinType` is `cross`. Broadcasting is niet ingeschakeld `broadcast` heeft waarde `'none'`.
 
 In de Data Factory UX ziet deze trans formatie er als volgt uit:
 
@@ -115,12 +125,12 @@ In de Data Factory UX ziet deze trans formatie er als volgt uit:
 Het gegevens stroom script voor deze trans formatie bevindt zich in het volgende fragment:
 
 ```
-TripData, TripFare
+LeftStream, RightStream
     join(
-        true(),
+        leftstreamcolumn > rightstreamcolumn,
         joinType:'cross',
-        broadcast: 'left'
-    )~> CartesianProduct
+        broadcast: 'none'
+    )~> JoiningColumns
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b1006fead92763c5c2e670527b5e232618b633e5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f592872e67ff8559060706ddb3b1e45839b6acaf
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895308"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665468"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Door de klant beheerde sleutels met Azure Key Vault configureren met behulp van de Azure Portal
 
@@ -23,9 +23,16 @@ ms.locfileid: "74895308"
 
 In dit artikel wordt beschreven hoe u een Azure Key Vault met door de klant beheerde sleutels configureert met behulp van de [Azure Portal](https://portal.azure.com/). Voor informatie over het maken van een sleutel kluis met behulp van de Azure Portal, raadpleegt u [Quick Start: een geheim instellen en ophalen van Azure Key Vault met behulp van de Azure Portal](../../key-vault/quick-create-portal.md).
 
-> [!IMPORTANT]
-> Het gebruik van door de klant beheerde sleutels met Azure Storage versleuteling vereist dat er twee eigenschappen worden ingesteld op de sleutel kluis, de functie **voorlopig verwijderen** en **niet leeg**te maken. Deze eigenschappen zijn niet standaard ingeschakeld. Als u deze eigenschappen wilt inschakelen, gebruikt u Power shell of Azure CLI.
-> Alleen RSA-sleutels en sleutel grootte 2048 worden ondersteund.
+## <a name="configure-azure-key-vault"></a>Azure Key Vault configureren
+
+Het gebruik van door de klant beheerde sleutels met Azure Storage versleuteling vereist dat er twee eigenschappen worden ingesteld op de sleutel kluis, de functie **voorlopig verwijderen** en **niet leeg**te maken. Deze eigenschappen zijn niet standaard ingeschakeld, maar kunnen worden ingeschakeld met Power shell of Azure CLI in een nieuwe of bestaande sleutel kluis.
+
+Voor meer informatie over het inschakelen van deze eigenschappen voor een bestaande sleutel kluis raadpleegt u de secties met het **inschakelen van zacht verwijderen** en het **inschakelen van beveiliging opschonen** in een van de volgende artikelen:
+
+- [Voorlopig verwijderen gebruiken met Power shell](../../key-vault/key-vault-soft-delete-powershell.md).
+- [Voorlopig verwijderen gebruiken met CLI](../../key-vault/key-vault-soft-delete-cli.md).
+
+Alleen RSA-sleutels met een grootte van 2048 worden ondersteund met Azure Storage versleuteling. Zie **Key Vault sleutels** in [over Azure Key Vault sleutels, geheimen en certificaten](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)voor meer informatie over sleutels.
 
 ## <a name="enable-customer-managed-keys"></a>Door de klant beheerde sleutels inschakelen
 
@@ -44,31 +51,53 @@ Nadat u door de klant beheerde sleutels hebt ingeschakeld, hebt u de mogelijkhei
 
 Voer de volgende stappen uit om een sleutel als URI op te geven:
 
-1. Als u de sleutel-URI in de Azure Portal wilt zoeken, navigeert u naar uw sleutel kluis en selecteert u de instelling **sleutels** . Selecteer de gewenste sleutel en klik vervolgens op de sleutel om de instellingen ervan weer te geven. Kopieer de waarde van het veld **sleutel-id** , dat de URI levert.
+1. Als u de sleutel-URI in de Azure Portal wilt zoeken, navigeert u naar uw sleutel kluis en selecteert u de instelling **sleutels** . Selecteer de gewenste sleutel en klik vervolgens op de sleutel om de versies ervan weer te geven. Selecteer een sleutel versie om de instellingen voor die versie weer te geven.
+1. Kopieer de waarde van het veld **sleutel-id** , dat de URI levert.
 
     ![Scherm opname van sleutel kluis sleutel-URI](media/storage-encryption-keys-portal/key-uri-portal.png)
 
 1. Kies in de **versleutelings** instellingen voor uw opslag account de optie **sleutel-URI opgeven** .
-1. Geef in het veld **sleutel-URI** de URI op.
+1. Plak de URI die u hebt gekopieerd in het veld **sleutel-URI** .
 
    ![Scherm afbeelding die laat zien hoe de sleutel-URI moet worden ingevoerd](./media/storage-encryption-keys-portal/ssecmk2.png)
+
+1. Geef het abonnement op dat de sleutel kluis bevat.
+1. Sla uw wijzigingen op.
 
 ### <a name="specify-a-key-from-a-key-vault"></a>Een sleutel uit een sleutel kluis opgeven
 
 Als u een sleutel van een sleutel kluis wilt opgeven, moet u eerst controleren of u een sleutel kluis hebt die een sleutel bevat. Voer de volgende stappen uit om een sleutel van een sleutel kluis op te geven:
 
 1. Kies de optie **selecteren uit Key Vault** .
-2. Kies de sleutel kluis met de sleutel die u wilt gebruiken.
-3. Kies de sleutel in de sleutel kluis.
+2. Selecteer de sleutel kluis met de sleutel die u wilt gebruiken.
+3. Selecteer de sleutel in de sleutel kluis.
 
    ![Scherm afbeelding met door de klant beheerde sleutel optie](./media/storage-encryption-keys-portal/ssecmk3.png)
 
+1. Sla uw wijzigingen op.
+
 ## <a name="update-the-key-version"></a>De sleutel versie bijwerken
 
-Wanneer u een nieuwe versie van een sleutel maakt, moet u het opslag account bijwerken voor gebruik van de nieuwe versie. Volg deze stappen:
+Wanneer u een nieuwe versie van een sleutel maakt, werkt u het opslag account bij voor het gebruik van de nieuwe versie. Volg deze stappen:
 
 1. Navigeer naar uw opslag account en geef de **versleutelings** instellingen weer.
-1. Geef de URI op voor de nieuwe sleutel versie. U kunt ook de sleutel kluis en de sleutel opnieuw selecteren om de versie bij te werken.
+1. Voer de URI in voor de nieuwe sleutel versie. U kunt ook de sleutel kluis en de sleutel opnieuw selecteren om de versie bij te werken.
+1. Sla uw wijzigingen op.
+
+## <a name="use-a-different-key"></a>Een andere sleutel gebruiken
+
+Voer de volgende stappen uit om de sleutel te wijzigen die wordt gebruikt voor Azure Storage versleuteling:
+
+1. Navigeer naar uw opslag account en geef de **versleutelings** instellingen weer.
+1. Voer de URI in voor de nieuwe sleutel. U kunt ook de sleutel kluis selecteren en een nieuwe sleutel kiezen.
+1. Sla uw wijzigingen op.
+
+## <a name="disable-customer-managed-keys"></a>Door de klant beheerde sleutels uitschakelen
+
+Wanneer u door de klant beheerde sleutels uitschakelt, wordt uw opslag account vervolgens versleuteld met door micro soft beheerde sleutels. Voer de volgende stappen uit om door de klant beheerde sleutels uit te scha kelen:
+
+1. Navigeer naar uw opslag account en geef de **versleutelings** instellingen weer.
+1. Schakel het selectie vakje naast de instelling **uw eigen sleutel gebruiken** uit.
 
 ## <a name="next-steps"></a>Volgende stappen
 

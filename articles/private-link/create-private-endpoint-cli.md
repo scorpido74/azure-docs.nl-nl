@@ -2,17 +2,17 @@
 title: 'Snelstartgids: een persoonlijk Azure-eind punt maken met behulp van Azure CLI'
 description: Meer informatie over persoonlijk Azure-eind punt in deze Snelstartgids
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 67513c2155e956e005b143c3049abe70a2f126f2
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: dbcb833e6f8b90cebd3d013e58168558bcd96827
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419822"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459968"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Snelstartgids: een persoonlijk eind punt maken met Azure CLI
 Persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hierdoor kunnen Azure-resources, zoals virtuele machines (Vm's), privé communiceren met persoonlijke koppelings bronnen. In deze Quick Start leert u hoe u een virtuele machine maakt in een virtueel netwerk, een SQL Database-Server met een persoonlijk eind punt met behulp van Azure CLI. Vervolgens hebt u toegang tot de virtuele machine en kunt u veilig toegang krijgen tot de persoonlijke koppelings bron (een persoonlijke Azure SQL Database Server in dit voor beeld). 
@@ -29,7 +29,7 @@ Voordat u een resource kunt maken, moet u een resource groep maken om de Virtual
 az group create --name myResourceGroup --location westcentralus
 ```
 
-## <a name="create-a-virtual-network"></a>Een Virtual Network maken
+## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 Maak een Virtual Network met [AZ Network vnet Create](/cli/azure/network/vnet). In dit voor beeld wordt een standaard Virtual Network gemaakt met de naam *myVirtualNetwork* met één subnet met de naam *mySubnet*:
 
 ```azurecli-interactive
@@ -127,7 +127,7 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
 
 1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
-1. Selecteer **RDP-bestand downloaden**. Azure maakt een Remote Desktop Protocol-bestand ( *.rdp*) en downloadt het bestand naar uw computer.
+1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP*-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
 
 1. Open het bestand gedownloade. rdp *.
 

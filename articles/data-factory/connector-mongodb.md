@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: e0c5ef9cd13b7ee3ada81e28f8512f621bf96190
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a61069b7477de4c5aea4d9b06365b38775310987
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926344"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440581"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Gegevens kopiëren van MongoDB met behulp van Azure Data Factory
 
@@ -49,7 +49,7 @@ De volgende eigenschappen worden ondersteund voor MongoDB gekoppelde service:
 | Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type |De eigenschap type moet worden ingesteld op: **MongoDbV2** |Ja |
-| connectionString |Geef de MongoDB-connection string bijvoorbeeld `mongodb://[username:password@]host[:port][/[database][?options]]`op. Raadpleeg de [hand leiding voor MongoDb op Connection String](https://docs.mongodb.com/manual/reference/connection-string/) voor meer informatie. <br/><br />Dit veld als markeert een **SecureString** type voor het veilig opslaan in Data Factory. U kunt ook [verwijzen naar een geheim opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
+| connectionString |Geef de MongoDB-connection string bijvoorbeeld `mongodb://[username:password@]host[:port][/[database][?options]]`op. Raadpleeg de [hand leiding voor MongoDb op Connection String](https://docs.mongodb.com/manual/reference/connection-string/) voor meer informatie. <br/><br /> U kunt ook een wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de connection string halen. Raadpleeg [referenties opslaan in azure Key Vault](store-credentials-in-key-vault.md) met meer informatie. |Ja |
 | database | De naam van de data base die u wilt openen. | Ja |
 | connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
 
@@ -61,10 +61,7 @@ De volgende eigenschappen worden ondersteund voor MongoDB gekoppelde service:
     "properties": {
         "type": "MongoDbV2",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "mongodb://[username:password@]host[:port][/[database][?options]]"
-            },
+            "connectionString": "mongodb://[username:password@]host[:port][/[database][?options]]",
             "database": "myDatabase"
         },
         "connectVia": {

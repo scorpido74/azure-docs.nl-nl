@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e7d181416123c96e2462180a82c6d0b9670ef5fc
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3b16d7cbba63be9f50b0d186b2162a5755b76802
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687128"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75375012"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Netwerk overwegingen voor een App Service Environment #
 
@@ -108,9 +108,9 @@ Als u de DNS-instelling van het VNet wijzigt waarin uw ASE zich bevindt, moet u 
 
 Naast de functionele afhankelijkheden van ASE zijn er enkele extra items die betrekking hebben op de portal-ervaring. Enkele van de mogelijkheden van de Azure Portal zijn afhankelijk van directe toegang tot de _SCM-site_. Voor elke app in Azure App Service zijn er twee Url's. De eerste URL is om toegang te krijgen tot uw app. De tweede URL is om toegang te krijgen tot de SCM-site, die ook wel de _kudu-console_wordt genoemd. Functies die gebruikmaken van de SCM-site zijn onder andere:
 
--   Webjobs
--   Functies
--   Logboek streaming
+-   WebJobs
+-   Functions
+-   Logboekstreaming
 -   Kudu
 -   Extensies
 -   Procesverkenner
@@ -152,7 +152,7 @@ Nsg's kan worden geconfigureerd via de Azure Portal of via Power shell. In deze 
 
 De vereiste vermeldingen in een NSG om een ASE te kunnen gebruiken, zijn verkeer toestaan:
 
-**Ink**
+**Inkomend verkeer**
 * van het IP-service label AppServiceManagement op poort 454.455
 * van de load balancer op poort 16001
 * vanuit het ASE-subnet naar het ASE-subnet op alle poorten
@@ -183,7 +183,7 @@ Als u een IP-adres aan uw app hebt toegewezen, moet u ervoor zorgen dat de poort
 
 Alle items die worden weer gegeven in de volgende regels voor uitgaande verbindingen, zijn vereist, met uitzonde ring van het laatste item. Ze bieden netwerk toegang tot de ASE-afhankelijkheden die eerder in dit artikel werden vermeld. Als u ze blokkeert, werkt uw ASE niet meer. Met het laatste item in de lijst kan uw ASE communiceren met andere resources in uw VNet.
 
-![Uitgaande beveiligings regels][5]
+![Uitgaande beveiligingsregels][5]
 
 Nadat uw Nsg's zijn gedefinieerd, wijst u deze toe aan het subnet waar uw ASE zich bevindt. Als u het ASE VNet of subnet niet meer weet, kunt u het zien op de pagina ASE Portal. Als u de NSG aan uw subnet wilt toewijzen, gaat u naar de gebruikers interface van het subnet en selecteert u de NSG.
 
@@ -244,7 +244,7 @@ Als Service-eindpunten in een subnet met een Azure SQL-exemplaar is ingeschakeld
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ss-cert.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md

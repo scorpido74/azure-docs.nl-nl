@@ -1,29 +1,20 @@
 ---
-title: Automatisch schalen een app die wordt uitgevoerd in Azure Service Fabric NET | Microsoft Docs
+title: Een app die wordt uitgevoerd in azure Service Fabric net automatisch schalen
 description: Informatie over het configureren van beleid voor automatisch schalen voor de services van een Service Fabric-NET-toepassing.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/07/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2233dffabd7c76ca55cf215f8bc04e66134f5799
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fb72806dd7ba838ba7170bda409715bc074e1d99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583601"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461971"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Beleid voor automatisch schalen voor een Service Fabric-NET-toepassing maken
-Een van de belangrijkste voordelen van het implementeren van toepassingen naar Service Fabric Mesh is de mogelijkheid voor u om services eenvoudig in of uit te schalen. Dit is handig voor het afhandelen van wisselende belastingen van uw services of het verbeteren van de beschikbaarheid. U kunt handmatig schalen van uw services in- of uitschalen of instellen van beleid voor automatisch schalen.
+Een van de belangrijkste voor delen van het implementeren van toepassingen naar Service Fabric net is de mogelijkheid om uw services eenvoudig in of uit te schalen. Dit moet worden gebruikt voor het verwerken van verschillende belasting hoeveelheden van uw services of het verbeteren van de beschik baarheid. U kunt handmatig schalen van uw services in- of uitschalen of instellen van beleid voor automatisch schalen.
 
 [Automatisch schalen](service-fabric-mesh-scalability.md#autoscaling-service-instances) kunt u het nummer van uw service-instanties (horizontaal schalen) dynamisch te schalen. Automatisch schalen biedt grote flexibiliteit en kunt inrichten of verwijdering van service-exemplaren op basis van gebruik van CPU of geheugen.
 

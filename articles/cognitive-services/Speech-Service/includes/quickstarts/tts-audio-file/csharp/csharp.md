@@ -1,21 +1,21 @@
 ---
 title: 'Quick Start: spraak samen te brengen in audio C# bestand,-Speech-Service'
 titleSuffix: Azure Cognitive Services
-description: Nader te bepalen
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 66ed4f8601ddeab2111b67eb0bfb63ccda5ae9e1
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 2f863613fd3d93e7a1854b55effca78073b8112c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74817985"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468399"
 ---
 [!INCLUDE [dotnet](./dotnet.md)]
 

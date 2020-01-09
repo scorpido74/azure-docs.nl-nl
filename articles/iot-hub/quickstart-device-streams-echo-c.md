@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: d53b36beeca2c5e0456965cf5af19e5324b31ad9
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 1d475c8e1f8dd332b60aef04242d2829feba93c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084215"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429210"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Snelstartgids: communiceren met een apparaat-app in C via IoT Hub Device streams (preview)
 
@@ -56,7 +56,7 @@ U hebt de volgende vereisten nodig:
 
 De preview van Device streams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
 
-  * US - centraal
+  * VS - centraal
   * Centrale VS-EUAP
   * Europa - noord
   * Azië - zuidoost
@@ -70,18 +70,19 @@ Voor deze Quick Start gebruikt u de [Azure IOT Device SDK voor C](iot-hub-device
 
 1. Installeer het [cmake build-systeem](https://cmake.org/download/) zoals beschreven op de download pagina.
 
-1. Open een opdrachtprompt of Git Bash-shell. Voer de volgende opdracht uit om de [Azure IOT C SDK](https://github.com/Azure/azure-iot-sdk-c) github-opslag plaats te klonen:
+1. Open een opdrachtprompt of Git Bash-shell. Voer de volgende opdrachten uit om de [Azure IOT C SDK](https://github.com/Azure/azure-iot-sdk-c) github-opslag plaats te klonen:
 
-    ```cmd
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
+    ```cmd/sh
+    git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     Deze bewerking kan enkele minuten duren.
 
-1. Maak een *cmake* -map in de hoofdmap van de Git-opslag plaats, zoals wordt weer gegeven in de volgende opdracht, en ga vervolgens naar die map.
+1. Maak een *cmake* -submap in de hoofdmap van de Git-opslag plaats en navigeer naar die map. Voer de volgende opdrachten uit vanuit de map *Azure-IOT-SDK-c* :
 
-    ```cmd
-    cd azure-iot-sdk-c
+    ```cmd/sh
     mkdir cmake
     cd cmake
     ```

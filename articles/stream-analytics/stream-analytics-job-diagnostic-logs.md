@@ -1,95 +1,90 @@
 ---
 title: Problemen oplossen met behulp van logboeken met diagnostische gegevens van Azure Stream Analytics
 description: In dit artikel wordt beschreven hoe u diagnostische logboeken in Azure Stream Analytics analyseren.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/21/2019
-ms.openlocfilehash: 68c40cf893bf150756f0a03056473e82cff5754f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 12/19/2019
+ms.openlocfilehash: f318b373f6a6f46ee3a85703c6099c76568580ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620962"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426151"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Azure Stream Analytics oplossen met behulp van logboeken met diagnostische gegevens
 
-Een Azure Stream Analytics-taak stopt soms onverwacht verwerking. Het is belangrijk om te kunnen oplossen van dit type gebeurtenis. Mislukte taken kunnen worden veroorzaakt door een onverwacht queryresultaat, door storing in de verbinding met apparaten of door een onverwachte serviceonderbreking. De diagnostische logboeken in Stream Analytics kunt u de oorzaak van problemen identificeren wanneer ze zich voordoen en hersteltijd te verminderen.
+Soms wordt een Azure Stream Analytics-taak onverwacht beëindigd. Het is belangrijk om dit type gebeurtenissen te kunnen oplossen. Mislukte taken kunnen worden veroorzaakt door een onverwacht queryresultaat, door storing in de verbinding met apparaten of door een onverwachte serviceonderbreking. Met de diagnostische Logboeken in Stream Analytics kunt u de oorzaak van problemen vaststellen wanneer deze optreden en de herstel tijd te verminderen.
 
-Het is raadzaam om in te schakelen van logboeken met diagnostische gegevens voor alle productietaken.
+Het is raadzaam om Diagnostische logboeken in te scha kelen voor alle taken, omdat dit een grote uitkomst biedt bij fout opsporing en bewaking.
 
 ## <a name="log-types"></a>Typen logboeken
 
 Stream Analytics biedt twee typen logboeken:
 
-* [Activiteitenlogboeken](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) (altijd ingeschakeld), die inzicht in bewerkingen die worden uitgevoerd op taken geven.
+* [Activiteiten logboeken](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) (altijd aan), die inzicht geven in bewerkingen die worden uitgevoerd op taken.
 
-* [Logboeken met diagnostische gegevens](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) (configureerbaar), die uitgebreider inzicht geven in alles dat gebeurt met een taak. Diagnostische logboeken start wanneer de taak is gemaakt en einde van wanneer de taak wordt verwijderd. Deze gebeurtenissen van toepassing wanneer de taak wordt bijgewerkt en terwijl deze wordt uitgevoerd.
+* [Diagnostische logboeken](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) (configureerbaar) waarmee u uitgebreid inzicht kunt krijgen in alles wat er gebeurt met een taak. Diagnostische logboeken worden gestart wanneer de taak wordt gemaakt en eindigen wanneer de taak wordt verwijderd. Deze gebeurtenissen van toepassing wanneer de taak wordt bijgewerkt en terwijl deze wordt uitgevoerd.
 
 > [!NOTE]
-> Kunt u services zoals Azure Storage, Azure Event Hubs en Azure Monitor meldt zich als niet-overeenkomende gegevens wilt analyseren. U betaalt op basis van het prijsmodel voor deze services.
+> U kunt services zoals Azure Storage, Azure Event Hubs en Azure Monitor Logboeken gebruiken om niet-conforme gegevens te analyseren. U betaalt op basis van het prijsmodel voor deze services.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="debugging-using-activity-logs"></a>Foutopsporing met behulp van activiteit-Logboeken
+## <a name="debugging-using-activity-logs"></a>Fout opsporing met activiteiten logboeken
 
-Activiteitenlogboeken zijn standaard ingeschakeld en geef op hoog niveau inzicht in bewerkingen die worden uitgevoerd door de Stream Analytics-taak. Gegevens die aanwezig zijn in de activiteitenlogboeken kan helpen de hoofdoorzaak van de problemen die invloed hebben op uw taak. Voer de volgende stappen uit voor het gebruik van activiteitenlogboeken in Stream Analytics:
+Activiteiten logboeken zijn standaard ingeschakeld en geven inzichten op hoog niveau in bewerkingen die worden uitgevoerd door uw Stream Analytics-taak. Informatie die aanwezig is in activiteiten logboeken kan de hoofd oorzaak van de problemen die invloed hebben op uw taak vinden. Voer de volgende stappen uit om activiteiten Logboeken in Stream Analytics te gebruiken:
 
-1. Aanmelden bij de Azure portal en selecteer **activiteitenlogboek** onder **overzicht**.
+1. Meld u aan bij de Azure Portal en selecteer het **activiteiten logboek** in het **overzicht**.
 
-   ![Stream Analytics-activiteitenlogboek](./media/stream-analytics-job-diagnostic-logs/stream-analytics-menu.png)
+   ![Stream Analytics activiteiten logboek](./media/stream-analytics-job-diagnostic-logs/stream-analytics-menu.png)
 
-2. U ziet een lijst met bewerkingen die zijn uitgevoerd. Elke bewerking waardoor de mislukt taak heeft een bel rode info.
+2. U kunt een lijst weer geven met bewerkingen die zijn uitgevoerd. Elke bewerking waardoor uw taak is mislukt, heeft een rode info-bel.
 
-3. Klik op een bewerking om de samenvattingsweergave te openen. Hier is vaak beperkt. Meer informatie over de werking, klikt u op **JSON**.
+3. Klik op een bewerking om de samenvattings weergave ervan weer te geven. Informatie is vaak beperkt. Klik op **JSON**voor meer informatie over de bewerking.
 
-   ![Stream Analytics activiteit bewerking samenvatting log](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
+   ![Samen vatting van Stream Analytics activiteiten logboek bewerking](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
 
-4. Schuif omlaag naar de **eigenschappen** sectie van de JSON, waarmee u details van de fout waardoor de mislukte bewerking. In dit voorbeeld wordt de uitvoering is mislukt met een runtime-fout zelfs waarden voor breedtegraad gebonden. Verschil in de gegevens die wordt verwerkt door een Stream Analytics-taak veroorzaakt een gegevensfout die. U kunt meer informatie over verschillende [en uitvoergegevens fouten en waarom ze zich voordoen](https://docs.microsoft.com/azure/stream-analytics/data-errors).
+4. Schuif omlaag naar de sectie **Eigenschappen** van de JSON. Deze bevat details over de fout die de mislukte bewerking heeft veroorzaakt. In dit voor beeld is de fout veroorzaakt door een runtime-fout van de waarden van de afhankelijke Latitude. Het verschil in de gegevens die door een Stream Analytics taak worden verwerkt, veroorzaakt een gegevens fout. U vindt meer informatie over de verschillende [invoer-en uitvoer gegevens fouten en waarom deze optreden](https://docs.microsoft.com/azure/stream-analytics/data-errors).
 
-   ![Details van de JSON-fout](./media/stream-analytics-job-diagnostic-logs/error-details.png)
+   ![Details van JSON-fout](./media/stream-analytics-job-diagnostic-logs/error-details.png)
 
-5. U kunt nemen corrigerende acties op basis van het foutbericht in JSON. In dit voorbeeld wordt gecontroleerd om ervoor te zorgen Breedtegraadwaarde ligt tussen-90 graden en 90 graden moeten worden toegevoegd aan de query.
+5. U kunt corrigerende acties uitvoeren op basis van het fout bericht in JSON. In dit voor beeld wordt gecontroleerd om ervoor te zorgen dat de breedte van de Latitude tussen-90 graden ligt en 90 graden aan de query moet worden toegevoegd.
 
-6. Als het foutbericht in de activiteitenlogboeken niet handig zijn bij het identificeren van de hoofdoorzaak te achterhalen, diagnostische logboeken inschakelen en logboeken van Azure Monitor gebruiken.
+6. Als het fout bericht in de activiteiten logboeken niet nuttig is om de hoofd oorzaak te identificeren, kunt u Diagnostische logboeken inschakelen en Azure Monitor-Logboeken gebruiken.
 
-## <a name="send-diagnostics-to-azure-monitor-logs"></a>Diagnostische gegevens verzenden naar Azure Monitor-Logboeken
+## <a name="send-diagnostics-to-azure-monitor-logs"></a>Diagnostische gegevens verzenden naar Azure Monitor-logboeken
 
-Inschakelen van logboeken met diagnostische gegevens en deze te verzenden naar Azure Monitor-Logboeken wordt sterk aanbevolen. Logboeken met diagnostische gegevens zijn **uit** standaard. Als u wilt inschakelen op Logboeken met diagnostische gegevens, de volgende stappen uit:
+Het wordt aanbevolen om Diagnostische logboeken in te scha kelen en deze naar Azure Monitor logboeken te verzenden. Logboeken met diagnostische gegevens zijn **uit** standaard. Als u wilt inschakelen op Logboeken met diagnostische gegevens, de volgende stappen uit:
 
-1.  Meld u aan bij Azure portal en navigeer naar uw Stream Analytics-taak. Onder **bewaking**, selecteer **diagnoselogboeken**. Selecteer vervolgens **diagnostische gegevens inschakelen**.
+1.  Meld u aan bij de Azure Portal en navigeer naar uw Stream Analytics-taak. Onder **bewaking**, selecteer **diagnoselogboeken**. Selecteer vervolgens **Diagnostische gegevens inschakelen**.
 
     ![Navigatie in de blade naar Logboeken met diagnostische gegevens](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  Maak een **naam** in **diagnostische instellingen** en schakel het selectievakje in naast **verzenden naar Log Analytics**. Een bestaande toevoegen of maak een nieuwe **Log analytics-werkruimte**. Schakel de selectievakjes voor **uitvoering** en **ontwerpen** onder **LOG**, en **AllMetrics** onder **METRIC** . Klik op **Opslaan**. Het verdient aanbeveling een Log Analytics-werkruimte in dezelfde Azure-regio als uw Stream Analytics-taak gebruiken om te voorkomen dat extra kosten.
+2.  Maak een **naam** in de **Diagnostische instellingen** en schakel het selectie vakje naast **verzenden naar log Analytics**in. Voeg vervolgens een bestaande **werk ruimte voor logboek analyse**toe of maak een nieuwe. Schakel de selectie vakjes in voor **uitvoering** en **ontwerpen** onder **logboek**en **AllMetrics** onder **metrische gegevens**. Klik op **Opslaan**. Het is raadzaam om een Log Analytics-werk ruimte te gebruiken in dezelfde Azure-regio als uw Stream Analytics-taak om extra kosten te voor komen.
 
-    ![Instellingen voor diagnostische logboeken](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
+    ![Instellingen voor Diagnostische logboeken](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
 
-3. Wanneer uw Stream Analytics-taak wordt gestart, worden de logboeken met diagnostische gegevens doorgestuurd naar uw Log Analytics-werkruimte. Navigeer naar de Log Analytics-werkruimte en kies **logboeken** onder de **algemene** sectie.
+3. Wanneer uw Stream Analytics-taak wordt gestart, worden Diagnostische logboeken gerouteerd naar uw Log Analytics-werk ruimte. Als u Diagnostische logboeken voor uw taak wilt weer geven, selecteert u **Logboeken** onder de sectie **bewaking** .
 
-   ![Azure Monitor-Logboeken onder de sectie Algemeen](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
+   ![Diagnostische logboeken onder bewaking](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
 
-4. U kunt [Schrijf uw eigen query](../azure-monitor/log-query/get-started-portal.md) om te zoeken naar termen, trends te identificeren, patronen analyseren en inzichten op basis van uw gegevens te kunnen bieden. Bijvoorbeeld, kunt u een query schrijven om te filteren alleen diagnostische logboeken waarvoor het bericht 'de streaming-taak is mislukt.' Diagnostische logboeken van Azure Stream Analytics worden opgeslagen in de **AzureDiagnostics** tabel.
+4. Stream Analytics biedt vooraf gedefinieerde query's waarmee u eenvoudig naar de logboeken kunt zoeken waarin u geïnteresseerd bent. De drie categorieën zijn **Algemeen**, **fouten in de invoer gegevens** en **uitvoer gegevens**. Als u bijvoorbeeld een samen vatting van alle fouten van uw taak in de afgelopen 7 dagen wilt zien, kunt u **uitvoeren** van de juiste vooraf gedefinieerde query selecteren. 
 
-   ![Diagnostische gegevens over query's en resultaten](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-query.png)
+   ![Diagnostische logboeken onder bewaking](./media/stream-analytics-job-diagnostic-logs/logs-categories.png)
 
-5. Wanneer u een query waarin wordt gezocht naar de juiste logboeken hebt, sla deze door te selecteren **opslaan** en geef een naam en categorie. Vervolgens kunt u een waarschuwing maken door te selecteren **nieuwe waarschuwingsregel**. Daarna geeft u een voorwaarde voor de waarschuwing. Selecteer **voorwaarde** en voer de waarde voor drempel en de frequentie waarmee deze aangepaste zoekopdrachten in Logboeken wordt geëvalueerd.  
-
-   ![Diagnostische logboeken zoekquery](./media/stream-analytics-job-diagnostic-logs/search-query.png)
-
-6. Kies de actiegroep en geef Waarschuwingsdetails, zoals naam en beschrijving, voordat u de waarschuwingsregel kunt maken. U kunt de diagnostische logboeken van verschillende taken versturen naar de dezelfde werkruimte van Log Analytics. Hiermee kunt u waarschuwingen instellen wanneer dat in alle projecten werkt.  
+   ![Resultaten van Logboeken](./media/stream-analytics-job-diagnostic-logs/logs-result.png)
 
 ## <a name="diagnostics-log-categories"></a>Categorieën-diagnoselogboek
 
-Azure Stream Analytics worden twee categorieën van logboeken met diagnostische gegevens vastgelegd:
+Azure Stream Analytics worden twee categorieën Diagnostische logboeken vastgelegd:
 
-* **Ontwerpen**: Gebeurtenissen die betrekking hebben op de taak schrijven bewerkingen, zoals het maken van de taak, toevoegen en verwijderen van invoer en uitvoer, toe te voegen en het bijwerken van de query en het starten of stoppen van de taak bevat.
+* **Ontwerpen**: legt logboek gebeurtenissen vast die verband houden met het ontwerpen van taken, zoals het maken van een taak, het toevoegen en verwijderen van invoer en uitvoer, het toevoegen en bijwerken van de query, en het starten of stoppen van de taak.
 
-* **Uitvoering**: Bevat gebeurtenissen die tijdens het uitvoeren van taak optreden.
-    * Fouten in de basisnetwerkverbinding
+* **Uitvoering**: legt gebeurtenissen vast die tijdens de uitvoering van de taak optreden.
+    * Connectiviteitsfouten
     * Fouten van gegevensverwerking, met inbegrip van:
         * Gebeurtenissen die niet aan de definitie van de query (niet-overeenkomende veldtypen en waarden, ontbrekende velden, enzovoort voldoen)
         * Expressie evaluatie fouten
@@ -99,25 +94,25 @@ Azure Stream Analytics worden twee categorieën van logboeken met diagnostische 
 
 Alle logboeken worden opgeslagen in de JSON-indeling. Elk item heeft de volgende algemene tekenreeksvelden:
 
-Name | Description
+Name | Beschrijving
 ------- | -------
-time | De tijdstempel (in UTC) van het logboek.
+tijd | De tijdstempel (in UTC) van het logboek.
 resourceId | ID van de resource die de bewerking plaatsgevonden, in hoofdletters heeft. Hiertoe behoren de abonnements-ID, de resourcegroep en de taaknaam. Bijvoorbeeld,   **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
 category | Meld u categorie, ofwel **uitvoering** of **ontwerpen**.
 operationName | Naam van de bewerking die wordt vastgelegd. Bijvoorbeeld, **gebeurtenissen verzenden: SQL-uitvoer schrijven fout naar mysqloutput**.
 status | Status van de bewerking. Bijvoorbeeld, **mislukt** of **geslaagd**.
-niveau | Logboek-niveau. Bijvoorbeeld, **fout**, **waarschuwing**, of **ter informatie**.
+level | Logboek-niveau. Bijvoorbeeld, **fout**, **waarschuwing**, of **ter informatie**.
 properties | Meld u post-specifieke details, geserialiseerd als een JSON-tekenreeks. Zie de volgende secties in dit artikel voor meer informatie.
 
 ### <a name="execution-log-properties-schema"></a>Schema voor uitvoering van logboek-eigenschappen
 
-Logboeken van taakuitvoeringen bevat gegevens over gebeurtenissen die hebben plaatsgevonden tijdens het uitvoeren van Stream Analytics-taak. Het schema van eigenschappen is afhankelijk van of de gebeurtenis een fout of een algemene gebeurtenissen is.
+Logboeken van taakuitvoeringen bevat gegevens over gebeurtenissen die hebben plaatsgevonden tijdens het uitvoeren van Stream Analytics-taak. Het schema van eigenschappen varieert, afhankelijk van het feit of de gebeurtenis een gegevens fout of een algemene gebeurtenis is.
 
-### <a name="data-errors"></a>Fouten met gegevens
+### <a name="data-errors"></a>Gegevensfouten
 
-Elke fout die optreedt terwijl de taak is verwerken van gegevens is in deze categorie van Logboeken. Deze logboeken worden gemaakt tijdens het lezen, gegevens serialisatie, meestal als schrijfbewerkingen. Deze logboeken bevatten geen fouten in de basisnetwerkverbinding. Fouten in de basisnetwerkverbinding worden behandeld als algemene gebeurtenissen. U kunt meer informatie over de oorzaak van verschillende andere [en uitvoergegevens fouten](https://docs.microsoft.com/azure/stream-analytics/data-errors).
+Elke fout die optreedt terwijl de taak is verwerken van gegevens is in deze categorie van Logboeken. Deze logboeken worden gemaakt tijdens het lezen, gegevens serialisatie, meestal als schrijfbewerkingen. Deze logboeken bevatten geen fouten in de basisnetwerkverbinding. Fouten in de basisnetwerkverbinding worden behandeld als algemene gebeurtenissen. Meer informatie over de oorzaak van verschillende [invoer-en uitvoer gegevens fouten](https://docs.microsoft.com/azure/stream-analytics/data-errors).
 
-Name | Description
+Name | Beschrijving
 ------- | -------
 Bron | Naam van de taak invoer of uitvoer waar de fout is opgetreden.
 Bericht | Bericht met betrekking tot de fout.
@@ -126,22 +121,22 @@ Gegevens | Bevat gegevens die is handig om nauwkeurig de bron van de fout te vin
 
 Afhankelijk van de **operationName** waarde, fouten met gegevens hebben de volgende schema:
 
-* **Gebeurtenissen serialiseren** optreden tijdens leesbewerkingen-gebeurtenis. Ze zich voordoen wanneer de gegevens op de invoer niet voldoet aan de Queryschema voor een van de volgende redenen:
+* Er treden **gebeurtenissen** op tijdens het lezen van gebeurtenissen. Ze zich voordoen wanneer de gegevens op de invoer niet voldoet aan de Queryschema voor een van de volgende redenen:
 
-   * *Niet-overeenkomend gegevenstype tijdens gebeurtenis (de) serialiseren*: Hiermee geeft u het veld dat de fout wordt veroorzaakt.
+   * *Niet-overeenkomend gegevenstype tijdens gebeurtenis (de) serialiseren*: geeft het veld dat de fout wordt veroorzaakt.
 
-   * *Een gebeurtenis, een ongeldige serialisatie kan niet worden gelezen*: Bevat informatie over de locatie in de ingevoerde gegevens waar de fout is opgetreden. Blobnaam van de voor blob-invoer, offset en een voorbeeld van de gegevens bevat.
+   * *Een gebeurtenis, een ongeldige serialisatie kan niet worden gelezen*: bevat informatie over de locatie in de ingevoerde gegevens waar de fout is opgetreden. Blobnaam van de voor blob-invoer, offset en een voorbeeld van de gegevens bevat.
 
-* **Gebeurtenissen verzenden** zich voordoen tijdens schrijfbewerkingen. De streaming-gebeurtenis die de fout heeft veroorzaakt, worden geïdentificeerd.
+* **Verzenden van gebeurtenissen** vindt plaats tijdens schrijf bewerkingen. De streaming-gebeurtenis die de fout heeft veroorzaakt, worden geïdentificeerd.
 
 ### <a name="generic-events"></a>Algemene gebeurtenissen
 
 Algemene gebeurtenissen dekken alles anders.
 
-Name | Description
+Name | Beschrijving
 -------- | --------
-Fout | (optioneel) Foutgegevens. Dit is doorgaans informatie over de uitzondering als deze beschikbaar is.
-Message| Logboekbericht.
+Fout | (optioneel) Foutgegevens. Normaal gesp roken is dit uitzonderings gegevens als deze beschikbaar zijn.
+Bericht| Logboekbericht.
 Type | Het type van het bericht. Toegewezen aan interne classificatie van fouten. Bijvoorbeeld, **JobValidationError** of **BlobOutputAdapterInitializationFailure**.
 Correlatie-id | [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) die uniek voor het uitvoeren van taak. Alle vermeldingen in het uitvoeringslogboek vanaf het moment dat de taak wordt gestart totdat de taak stopt dezelfde hebben **correlatie-ID** waarde.
 
@@ -151,4 +146,4 @@ Correlatie-id | [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifi
 * [Aan de slag met Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics-taken schalen](stream-analytics-scale-jobs.md)
 * [Stream Analytics query language-referentie](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Fouten voor Stream Analytics-gegevens](https://docs.microsoft.com/azure/stream-analytics/data-errors)
+* [Stream Analytics gegevens fouten](https://docs.microsoft.com/azure/stream-analytics/data-errors)

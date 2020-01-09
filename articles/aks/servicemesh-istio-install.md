@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 2768c2d4cef68dcf25e25c047aaa69653af5e0b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 85ef34f8644d95f6cfd2c7262bfe4bbc0683547f
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170806"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561735"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Istio installeren en gebruiken in azure Kubernetes service (AKS)
 
@@ -136,7 +136,7 @@ spec:
 Installeer istio met behulp van de `istioctl apply` opdracht en de bovenstaande `istio.aks.yaml` Istio Control vlak-specificatie bestand als volgt:
 
 ```console
-istioctl manifest apply -f istio.aks.yaml
+istioctl manifest apply -f istio.aks.yaml --logtostderr --set installPackagePath=./install/kubernetes/operator/charts
 ```
 
 Het installatie programma implementeert een aantal [CRDs][kubernetes-crd] en beheert vervolgens afhankelijkheden om alle relevante objecten te installeren die zijn gedefinieerd voor deze configuratie van Istio. Als het goed is, ziet u iets zoals in het volgende uitvoer fragment.
@@ -361,7 +361,9 @@ istioctl dashboard envoy <pod-name>.<namespace>
 Als u Istio wilt verwijderen uit uw AKS-cluster, gebruikt u de `istioctl manifest generate` opdracht met het bestand met de `istio.aks.yaml` Istio Control vlak. Hiermee wordt het geïmplementeerde manifest gegenereerd, waarna we naar `kubectl delete` gaan om alle geïnstalleerde onderdelen en de `istio-system` naam ruimte te verwijderen.
 
 ```console
-istioctl manifest generate -f istio.aks.yaml | kubectl delete -f -
+istioctl manifest generate -f istio.aks.yaml -o istio-components-aks --logtostderr --set installPackagePath=./install/kubernetes/operator/charts 
+
+kubectl delete -f istio-components-aks -R
 ```
 
 ### <a name="remove-istio-crds-and-secrets"></a>Istio CRDs en geheimen verwijderen

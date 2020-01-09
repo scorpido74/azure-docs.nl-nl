@@ -1,6 +1,6 @@
 ---
-title: Afhandeling van fouten en uitzonde ringen
-description: Meer informatie over patronen voor het afhandelen van fouten en uitzonde ringen in Azure Logic Apps
+title: Fouten en uitzonde ringen verwerken
+description: Meer informatie over het afhandelen van fouten en uitzonde ringen die optreden in geautomatiseerde taken en werk stromen die zijn gemaakt met behulp van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: dereklee
@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/31/2018
 ms.topic: article
-ms.openlocfilehash: 781abb1ce92a9d96a93ac0c6b04d55075d752db8
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fa197a04b91f398bda2e402b18a638b9bf0ab9a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792080"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453397"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Fouten en uitzonde ringen in Azure Logic Apps afhandelen
 
@@ -72,16 +72,16 @@ Of u kunt het beleid voor opnieuw proberen hand matig opgeven in het gedeelte `i
 | Waarde | Type | Beschrijving |
 |-------|------|-------------|
 | <*opnieuw proberen-beleid type*> | Tekenreeks | Het type beleid voor opnieuw proberen dat u wilt gebruiken: `default`, `none`, `fixed`of `exponential` | 
-| <*interval voor opnieuw proberen*> | Tekenreeks | Het interval voor nieuwe pogingen waarbij de waarde de [ISO 8601-notatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)moet gebruiken. Het minimale standaard interval is `PT5S` en het maximum interval wordt `PT1D`. Wanneer u het beleid voor exponentiële intervallen gebruikt, kunt u verschillende minimum-en maximum waarden opgeven. | 
-| <*nieuwe pogingen:* > | Geheel getal | Het aantal nieuwe pogingen, dat tussen 1 en 90 ligt | 
+| <*retry-interval*> | Tekenreeks | Het interval voor nieuwe pogingen waarbij de waarde de [ISO 8601-notatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)moet gebruiken. Het minimale standaard interval is `PT5S` en het maximum interval wordt `PT1D`. Wanneer u het beleid voor exponentiële intervallen gebruikt, kunt u verschillende minimum-en maximum waarden opgeven. | 
+| <*retry-attempts*> | Geheel getal | Het aantal nieuwe pogingen, dat tussen 1 en 90 ligt | 
 ||||
 
-*Beschrijving*
+*Optioneel*
 
 | Waarde | Type | Beschrijving |
 |-------|------|-------------|
-| <*Mini maal interval*> | Tekenreeks | Voor het beleid voor exponentiële intervallen wordt het kleinste interval voor het wille keurig geselecteerde interval in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
-| <*maximum interval*> | Tekenreeks | Voor het beleid voor exponentiële intervallen is het grootste interval voor het wille keurig geselecteerde interval in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
+| <*minimum-interval*> | Tekenreeks | Voor het beleid voor exponentiële intervallen wordt het kleinste interval voor het wille keurig geselecteerde interval in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
+| <*maximum-interval*> | Tekenreeks | Voor het beleid voor exponentiële intervallen is het grootste interval voor het wille keurig geselecteerde interval in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
 |||| 
 
 Hier vindt u meer informatie over de verschillende beleids typen.
@@ -152,7 +152,7 @@ In deze tabel ziet u hoe Logic Apps een uniforme wille keurige variabele in het 
 | Aantal nieuwe pogingen | Minimum interval | Maximum interval |
 |--------------|------------------|------------------|
 | 1 | Max (0, <*Mini maal interval*>) | min (interval, <*maximum-interval*>) |
-| 2 | Max (interval, <*Mini maal interval*>) | min (2 * interval, <*maximum-interval*>) |
+| 2 | max(interval, <*minimum-interval*>) | min (2 * interval, <*maximum-interval*>) |
 | 3 | Max (2 * interval, <*Mini maal interval*>) | min (4 * interval, <*maximum-interval*>) |
 | 4 | Max (4 * interval, <*Mini maal interval*>) | min (8 * interval, <*maximum-interval*>) |
 | .... | .... | .... | 

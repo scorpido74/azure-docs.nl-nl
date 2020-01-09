@@ -1,21 +1,23 @@
 ---
-title: Toegang instellen voor meerdere ISEs
-description: Voor meerdere integratie service omgevingen (ISEs) kunt u één openbaar uitgaand IP-adres instellen voor toegang tot externe systemen vanaf Azure Logic Apps
+title: Een openbaar uitgaand IP-adres instellen voor ISEs
+description: Meer informatie over het instellen van één openbaar uitgaand IP-adres voor integratie service omgevingen (ISEs) in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 11/27/2019
-ms.openlocfilehash: f3b422a55b7e2abbc8b1538183fd57fb234900d4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/16/2019
+ms.openlocfilehash: b2b07882afb6c89c6920726db3c313dbb6a6dfc4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792698"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453484"
 ---
-# <a name="set-up-access-for-multiple-integration-service-environments-in-azure-logic-apps"></a>Toegang instellen voor meerdere integratie service omgevingen in Azure Logic Apps
+# <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Stel één IP-adres in voor een of meer integratie service omgevingen in Azure Logic Apps
 
-Wanneer u met Azure Logic Apps werkt, kunt u een [ISE ( *Integration service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) instellen voor het hosten van logische apps die toegang nodig hebben tot bronnen in een [virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md). Als u meerdere ISE-exemplaren hebt die toegang nodig hebben tot andere eind punten met IP-beperkingen, implementeert u een [Azure firewall](../firewall/overview.md) of een [virtueel netwerk apparaat](../virtual-network/virtual-networks-overview.md#filter-network-traffic) in uw virtuele netwerk en stuurt u uitgaand verkeer via die firewall of het virtuele netwerk apparaat. U kunt vervolgens alle ISE-exemplaren in uw virtuele netwerk gebruiken om één, voorspelbaar en openbaar IP-adres te communiceren met behulp van doel systemen. Op die manier hoeft u geen aanvullende firewall-openingen op de doel systemen in te stellen voor elke ISE. In dit onderwerp wordt beschreven hoe u uitgaand verkeer via een Azure Firewall omleiden, maar u kunt soort gelijke concepten Toep assen op een virtueel netwerk apparaat, zoals een firewall van derden, vanuit de Azure Marketplace.
+Wanneer u met Azure Logic Apps werkt, kunt u een [ISE ( *Integration service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) instellen voor het hosten van logische apps die toegang nodig hebben tot bronnen in een [virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md). Wanneer u meerdere ISE-exemplaren hebt die toegang nodig hebben tot andere eind punten met IP-beperkingen, implementeert u een [Azure firewall](../firewall/overview.md) of een [virtueel netwerk apparaat](../virtual-network/virtual-networks-overview.md#filter-network-traffic) in uw virtuele netwerk en stuurt u uitgaand verkeer via die firewall of het virtuele netwerk apparaat. U kunt vervolgens alle ISE-exemplaren in uw virtuele netwerk gebruiken om een enkel, openbaar, statisch en voorspelbaar IP-adres te communiceren met behulp van doel systemen. Op die manier hoeft u geen aanvullende firewall-openingen op deze doel systemen in te stellen voor elke ISE.
+
+In dit onderwerp wordt beschreven hoe u uitgaand verkeer via een Azure Firewall stuurt, maar u kunt vergelijk bare concepten Toep assen op een virtueel netwerk apparaat, zoals een firewall van derden vanuit Azure Marketplace. Dit onderwerp richt zich op het instellen van meerdere ISE-instanties, maar u kunt deze methode ook gebruiken voor één ISE wanneer uw scenario het aantal IP-adressen dat toegang nodig heeft beperken. Bepaal of de extra kosten voor de firewall of het virtuele netwerk apparaat logisch kunnen zijn voor uw scenario. Meer informatie over [Azure firewall prijzen](https://azure.microsoft.com/pricing/details/azure-firewall/).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -73,7 +75,7 @@ Wanneer u met Azure Logic Apps werkt, kunt u een [ISE ( *Integration service Env
    |----------|-------|-------------|
    | **Naam** | <*netwerk-regel-verzameling-naam*> | De naam voor uw netwerk regel verzameling |
    | **Prioriteit** | <*prioriteits niveau*> | De volg orde van prioriteit die moet worden gebruikt voor het uitvoeren van de regel verzameling. Zie [Wat zijn enkele Azure firewall concepten](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)? voor meer informatie. |
-   | **Actie** | **Dat** | Het actie type dat moet worden uitgevoerd voor deze regel |
+   | **Actie** | **Toestaan** | Het actie type dat moet worden uitgevoerd voor deze regel |
    |||
 
    **Eigenschappen van netwerk regel**

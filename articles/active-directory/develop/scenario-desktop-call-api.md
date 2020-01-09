@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce8cf2d75257bb3d751de1c3b251a9a3326bce0a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 75bb919b73791b78084e82351d7d6b7d93edc322
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920154"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423871"
 ---
 # <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>Bureau blad-app die web-Api's aanroept-een web-API aanroepen
 
@@ -100,7 +100,7 @@ task.resume()
 
 Als u meerdere Api's voor dezelfde gebruiker moet aanroepen nadat u een token voor de eerste API hebt ontvangen, kunt u `AcquireTokenSilent`aanroepen en ontvangt u een token voor de andere Api's de meeste tijd op de achtergrond.
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 
@@ -113,7 +113,7 @@ De gevallen waarin de interactie is vereist, is als volgt:
 - De gebruiker heeft toestemming gegeven voor de eerste API, maar nu moet worden geinstemming voor meer bereiken (incrementele toestemming)
 - De eerste API heeft geen meervoudige verificatie nodig, maar de volgende.
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 

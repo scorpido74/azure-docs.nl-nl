@@ -5,16 +5,16 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 9c1a9a9e3b9e1c12c3960a8586c25436c8d937e0
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 5f6825243b7e410b49b54d04a028b5d71610ea68
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532901"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561951"
 ---
 # <a name="azure-functions-premium-plan"></a>Premium-abonnement voor Azure Functions
 
-Het Premium-abonnement van Azure Functions is een hosting optie voor functie-apps. Het Premium-abonnement biedt functies als VNet-connectiviteit, geen koud start en Premium-hardware.  Meerdere functie-apps kunnen worden geïmplementeerd in hetzelfde Premium-abonnement en met het plan kunt u de grootte van het reken exemplaar, de grootte van het basis plan en de maximale plan grootte configureren.  Zie [functie schaal en hosting opties](functions-scale.md)voor een vergelijking van het Premium-abonnement en andere typen plannen en hosting.
+Het Premium-abonnement van Azure Functions (ook wel elastisch Premium-abonnement genoemd) is een hosting optie voor functie-apps. Het Premium-abonnement biedt functies als VNet-connectiviteit, geen koud start en Premium-hardware.  Meerdere functie-apps kunnen worden geïmplementeerd in hetzelfde Premium-abonnement en met het plan kunt u de grootte van het reken exemplaar, de grootte van het basis plan en de maximale plan grootte configureren.  Zie [functie schaal en hosting opties](functions-scale.md)voor een vergelijking van het Premium-abonnement en andere typen plannen en hosting.
 
 ## <a name="create-a-premium-plan"></a>Een Premium-abonnement maken
 
@@ -45,7 +45,7 @@ U kunt het aantal vooraf gewarmde instanties in de Azure Portal configureren doo
 
 ![Instellingen voor Elastic Scale](./media/functions-premium-plan/scale-out.png)
 
-U kunt ook vooraf gehete instanties configureren voor een app met de Azure CLI
+U kunt ook vooraf gewarmde instanties configureren voor een app met de Azure CLI.
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
@@ -76,7 +76,7 @@ Wanneer u het plan maakt, configureert u twee instellingen: het minimum aantal e
 
 Als uw app exemplaren vereist die groter zijn dan de grootte van uw abonnement, kan deze worden uitgeschaald totdat het aantal exemplaren de maximale burst-limiet bereikt.  Er worden alleen exemplaren van uw abonnement in rekening gebracht wanneer ze worden uitgevoerd en aan u worden gehuurd.  We maken het beste om uw app te schalen naar de gedefinieerde maximum limiet, terwijl de minimale plan exemplaren gegarandeerd zijn voor uw app.
 
-U kunt de plan grootte en maximum waarden in de Azure Portal configureren door de opties voor **uitschalen** te selecteren in het plan of een functie-app die is geïmplementeerd in dat plan (onder **platform functies**).
+U kunt de plan grootte en maximum waarden in de Azure Portal configureren door de opties voor **Uitschalen** te selecteren in het plan of een functie-app die is geïmplementeerd in dat plan (onder **platform functies**).
 
 U kunt ook de maximale burst-limiet van de Azure CLI verhogen:
 
@@ -103,27 +103,28 @@ Hieronder ziet u de regio's die momenteel worden ondersteund voor elk besturings
 |Australië - centraal| ✔<sup>1</sup> | |
 |Australië - centraal 2| ✔<sup>1</sup> | |
 |Australië Oost| ✔ | |
-|Australië Zuidoost | ✔ | ✔ |
+|Australië Zuidoost | ✔ | ✔<sup>1</sup> |
 |Brazilië - Zuid| ✔<sup>2</sup> |  |
 |Canada-Midden| ✔ |  |
 |VS - centraal| ✔ |  |
 |Azië - oost| ✔ |  |
-|VS - oost | ✔ | ✔ |
+|VS - oost | ✔ | ✔<sup>1</sup> |
 |VS - oost 2| ✔ |  |
 |Frankrijk - centraal| ✔ |  |
-|Japan - Oost| ✔ | ✔ |
+|Duitsland - west-centraal| ✔ | |
+|Japan - Oost| ✔ | ✔<sup>1</sup> |
 |Japan - West| ✔ | |
 |Korea - centraal| ✔ |  |
 |VS - noord-centraal| ✔ |  |
-|Europa - noord| ✔ | ✔ |
-|VS - zuid-centraal| ✔ |  |
+|Europa - noord| ✔ | ✔<sup>1</sup> |
+|VS - zuid-centraal| ✔ | ✔<sup>1</sup> |
 |India - zuid | ✔ | |
-|Azië - zuidoost| ✔ | ✔ |
+|Azië - zuidoost| ✔ | ✔<sup>1</sup> |
 |VK - zuid| ✔ | |
 |VK - west| ✔ |  |
-|Europa - west| ✔ | ✔ |
+|Europa - west| ✔ | ✔<sup>1</sup> |
 |India - west| ✔ |  |
-|VS - west| ✔ | ✔ |
+|VS - west| ✔ | ✔<sup>1</sup> |
 |VS - west 2| ✔ |  |
 
 <sup>1</sup> Maxi maal aantal uitschalen is beperkt tot 20 exemplaren.  

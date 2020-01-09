@@ -1,6 +1,6 @@
 ---
 title: Gegevens query's in Preview-Azure Time Series Insights | Microsoft Docs
-description: Meer informatie over Azure Time Series Insights preview gegevens query's.
+description: Het overzicht van gegevens query's en HTTP-REST API in Azure Time Series Insights preview-versie.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/21/2019
+ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: f44aa5c0a412dc53f4b1a5f127887257a1b0b550
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 53693c64ff03146619e17b276a1f817e69f5ed6e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006317"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374575"
 ---
 # <a name="data-querying-in-azure-time-series-insights-preview"></a>Gegevens query's in Azure Time Series Insights preview
 
@@ -40,7 +40,7 @@ De volgende kern-Api's worden ondersteund.
 De volgende omgevings-Api's zijn beschikbaar:
 
 * [Omgevings-API ophalen](/rest/api/time-series-insights/management/environments/get): retourneert de lijst met omgevingen waarvoor de aanroeper gemachtigd is om toegang te krijgen.
-* [API voor omgevings beschikbaarheid ophalen](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability): retourneert de verdeling van het aantal gebeurtenissen over de tijds tempel van de gebeurtenis `$ts`. Met deze API kunt u bepalen of er gebeurtenissen in de tijds tempel zijn door het aantal gebeurtenissen te retour neren, indien aanwezig.
+* [Beschikbaarheids-API voor omgevingen ophalen](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability): retourneert de verdeling van het aantal gebeurtenissen over de tijds tempel van de gebeurtenis `$ts`. Met deze API kunt u bepalen of er gebeurtenissen in de tijds tempel zijn door het aantal gebeurtenissen te retour neren, indien aanwezig.
 * [Event schema-API ophalen](/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema): retourneert de meta gegevens van het gebeurtenis schema voor een opgegeven zoek reeks. Deze API helpt bij het ophalen van alle meta gegevens en eigenschappen die beschikbaar zijn in het schema voor de opgegeven zoek reeks.
 
 ## <a name="time-series-model-query-tsm-q-apis"></a>Time Series model-query (TSM-Q)-Api's

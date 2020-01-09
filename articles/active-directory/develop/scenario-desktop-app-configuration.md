@@ -1,5 +1,5 @@
 ---
-title: De bureau blad-app configureren die web-Api's aanroept-micro soft Identity-platform | Azure
+title: Bureau blad-apps configureren die web-Api's aanroepen-micro soft Identity-platform | Azure
 description: Meer informatie over het configureren van de code van een bureau blad-app die web-Api's aanroept
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d31a70ebc63a5e9a16e0da00623bd5855f0a7d1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 33b1724c25ef2d85aa8f838811864104b49576a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920256"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423897"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Bureau blad-app die web-Api's aanroept-code configuratie
 
@@ -33,8 +33,8 @@ De volgende micro soft-bibliotheken ondersteunen bureaublad toepassingen:
   MSAL-bibliotheek | Beschrijving
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Biedt ondersteuning voor het bouwen van een bureaublad toepassing in meerdere platforms-Linux, Windows en MacOS
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL python | Biedt ondersteuning voor het bouwen van een bureaublad toepassing op meerdere platforms. Ontwikkeling in uitvoering-in open bare preview
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Biedt ondersteuning voor het bouwen van een bureaublad toepassing op meerdere platforms. Ontwikkeling in uitvoering-in open bare preview
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL python | Biedt ondersteuning voor het bouwen van een bureaublad toepassing op meerdere platforms.
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Biedt ondersteuning voor het bouwen van een bureaublad toepassing op meerdere platforms.
   ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | Ondersteunt alleen bureaublad toepassingen die worden uitgevoerd op macOS
 
 ## <a name="public-client-application"></a>Open bare client toepassing
@@ -51,14 +51,14 @@ U moet MSAL.NET-`IPublicClientApplication`bouwen en bewerken.
 
 Met de volgende code wordt een open bare client toepassing geïnstantieerd, waarbij gebruikers zich aanmelden in de open bare Cloud Microsoft Azure, met een werk-en school account of een persoonlijke Microsoft-account.
 
-```CSharp
+```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
 Als u van plan bent interactieve verificatie of de code stroom van het apparaat te gebruiken, zoals hierboven wordt weer gegeven, wilt u de `.WithRedirectUri` modificator gebruiken:
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithDefaultRedirectUri()
@@ -69,7 +69,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 Met de volgende code wordt een open bare client toepassing geïnstantieerd vanuit een configuratie object, die via een programma kan worden ingevuld of gelezen vanuit een configuratie bestand
 
-```CSharp
+```csharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
 IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicationOptions(options)
         .WithDefaultRedirectUri()
@@ -80,7 +80,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
 
 U kunt het bouwen van toepassingen uitwerken door een aantal para meters toe te voegen. Als u bijvoorbeeld wilt dat uw toepassing een multi tenant toepassing in een nationale Cloud (hier de Amerikaanse overheid) is, kunt u het volgende schrijven:
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithDefaultRedirectUri()
@@ -91,7 +91,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 MSAL.NET bevat ook een modificator voor ADFS 2019:
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithAdfsAuthority("https://consoso.com/adfs")
@@ -100,7 +100,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 Ten slotte kunt u, als u tokens voor een Azure AD B2C Tenant wilt verkrijgen, uw Tenant opgeven, zoals wordt weer gegeven in het volgende code fragment:
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithB2CAuthority("https://fabrikamb2c.b2clogin.com/tfp/{tenant}/{PolicySignInSignUp}")
@@ -134,7 +134,7 @@ Stel dat u een .NET core-console toepassing hebt die het volgende `appsettings.j
 
 U hebt weinig code om dit bestand te lezen met behulp van het .NET-configuratie raamwerk dat u hebt geconfigureerd.
 
-```CSharp
+```csharp
 public class SampleConfiguration
 {
  /// <summary>
@@ -177,7 +177,7 @@ public class SampleConfiguration
 
 Als u de toepassing nu wilt maken, hoeft u alleen de volgende code te schrijven:
 
-```CSharp
+```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");
 var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.PublicClientApplicationOptions)
            .WithDefaultRedirectUri()

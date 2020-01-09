@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e5e04716ae67df94428a678f6572738d4ad46232
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 4edf5189b54a5b1fb1b953064c5db1cd50930b84
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901465"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452846"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Time Series Insights-resources maken met behulp van Azure Resource Manager sjablonen
 
@@ -119,7 +119,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
      }
      ```
   
-    * Zie het artikel [para meters](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) voor meer informatie.
+    * Zie het artikel [para meters](../azure-resource-manager/templates/parameter-files.md) voor meer informatie.
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>De Quick Start-sjabloon lokaal implementeren met Power shell
 

@@ -12,12 +12,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 8860c943dafdb9d166510519d0fb058f523537b3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e8ad1a9468c52fd120360827ed3a08f8f53ec3d1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078903"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426008"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>Azure Backup op bestands niveau SAP HANA
 
@@ -31,11 +31,11 @@ Er is op dit moment geen SAP HANA back-upintegratie beschikbaar met Azure Backup
 
 ![In deze afbeelding ziet u het dialoog venster van het menu-item back-up in SAP HANA Studio](media/sap-hana-backup-file-level/image022.png)
 
-In deze afbeelding ziet u het dialoog venster van het menu-item back-up in SAP HANA Studio. Bij het kiezen &quot;van het&quot; type bestand moet een pad worden opgegeven in het bestands systeem waar SAP Hana de back-upbestanden schrijft. Herstellen werkt op dezelfde manier.
+In deze afbeelding ziet u het dialoog venster van het menu-item back-up in SAP HANA Studio. Bij het kiezen van het type &quot;bestand moet&quot; een pad opgeven in het bestands systeem waar SAP HANA de back-upbestanden schrijft. Herstellen werkt op dezelfde manier.
 
 Hoewel deze keuze eenvoudig en direct klinkt, zijn er enkele overwegingen. Zoals eerder vermeld, heeft een Azure VM een beperking van het aantal gegevens schijven dat kan worden bijgevoegd. Het is mogelijk dat er geen capaciteit is om SAP HANA back-upbestanden op te slaan op de bestands systemen van de virtuele machine, afhankelijk van de grootte van de data base en de vereisten voor het door Voer van de schijf, wat software striping kan inhouden op meerdere gegevens schijven. Verderop in dit artikel vindt u diverse opties voor het verplaatsen van deze back-upbestanden en het beheren van beperkingen en prestaties voor bestands grootte bij het afhandelen van terabytes aan gegevens.
 
-Een andere optie, die meer vrijheid biedt met betrekking tot de totale capaciteit, is Azure Blob-opslag. Hoewel één BLOB ook is beperkt tot 1 TB, is de totale capaciteit van één BLOB-container momenteel 500 TB. Daarnaast biedt klanten de keuze om deze optie te selecteren, ook &quot;wel&quot; ' cool Blob Storage ', die een kosten voordelen heeft. Zie [Azure Blob Storage: Hot en cool Storage-lagen](../../../storage/blobs/storage-blob-storage-tiers.md) voor meer informatie over cool Blob Storage.
+Een andere optie, die meer vrijheid biedt met betrekking tot de totale capaciteit, is Azure Blob-opslag. Hoewel één BLOB ook is beperkt tot 1 TB, is de totale capaciteit van één BLOB-container momenteel 500 TB. Daarnaast biedt klanten de keuze om dit te selecteren &quot;cool&quot; Blob-opslag, die een kosten voordelen heeft. Zie [Azure Blob Storage: warme en cool Storage-lagen](../../../storage/blobs/storage-blob-storage-tiers.md) voor meer informatie over cool Blob Storage.
 
 Gebruik voor extra veiligheid een geografisch gerepliceerd opslag account om de SAP HANA back-ups op te slaan. Zie [Azure storage replicatie](../../../storage/common/storage-redundancy.md) voor meer informatie over replicatie van het opslag account.
 
@@ -53,7 +53,7 @@ Om directory's en bestanden op te slaan in azure Storage, kan de ene CLI of Powe
 
 Daarom is blobxfer gebruikt voor het kopiëren van SAP HANA back-upbestanden. Het is open source en wordt gebruikt door veel klanten in productie omgevingen en is beschikbaar op [github](https://github.com/Azure/blobxfer). Met dit hulp programma kunt u gegevens rechtstreeks naar Azure Blob-opslag of een Azure-bestands share kopiëren. Het biedt ook een aantal nuttige functies, zoals MD5-hash of automatische parallellisme bij het kopiëren van een map met meerdere bestanden.
 
-## <a name="sap-hana-backup-performance"></a>Back-upprestaties SAP HANA
+## <a name="sap-hana-backup-performance"></a>Back-upprestaties van SAP HANA
 
 ![Deze scherm afbeelding is van de SAP HANA back-upconsole in SAP HANA Studio](media/sap-hana-backup-file-level/image023.png)
 
@@ -69,7 +69,7 @@ Herhaal dezelfde back-up op software-RAID met Striping over vijf gekoppelde Azur
 
 ## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>SAP HANA back-upbestanden kopiëren naar Azure Blob-opslag
 
-Een andere mogelijkheid om snel SAP HANA back-upbestanden op te slaan is Azure Blob-opslag. Eén enkele BLOB-container heeft een limiet van 500 TB, voldoende voor sommige kleinere SAP HANA systemen, met behulp van M32ts, M32ls, M64ls en GS5 VM-typen van Azure, om voldoende SAP HANA back-ups te blijven. Klanten hebben de keuze tussen &quot;Hot&quot; - &quot;en&quot; koude Blob Storage ( [Zie Azure Blob Storage: Hot en cool Storage](../../../storage/blobs/storage-blob-storage-tiers.md)-lagen).
+Een andere mogelijkheid om snel SAP HANA back-upbestanden op te slaan is Azure Blob-opslag. Eén enkele BLOB-container heeft een limiet van 500 TB, voldoende voor sommige kleinere SAP HANA systemen, met behulp van M32ts, M32ls, M64ls en GS5 VM-typen van Azure, om voldoende SAP HANA back-ups te blijven. Klanten hebben de keuze tussen &quot;warme&quot; en &quot;koud&quot; Blob Storage (Zie [Azure Blob Storage: warme en cool Storage-lagen](../../../storage/blobs/storage-blob-storage-tiers.md)).
 
 Met het blobxfer-hulp programma kunt u eenvoudig de SAP HANA back-upbestanden rechtstreeks naar Azure Blob-opslag kopiëren.
 
@@ -83,7 +83,7 @@ De MD5-hash niet gebruiken in de eerste test, het duurde ongeveer 3000 seconden 
 
 ![In deze scherm afbeelding ziet u een op de Azure Portal](media/sap-hana-backup-file-level/image028.png)
 
-In deze scherm afbeelding ziet u een op de Azure Portal. Er&quot; is een BLOB &quot;-container met de naam SAP-Hana-back-ups gemaakt en bevat de vier blobs, die de SAP Hana back-upbestanden vertegenwoordigen. Een van deze heeft een grootte van ongeveer 230 GB.
+In deze scherm afbeelding ziet u een op de Azure Portal. Er is een BLOB-container met de naam &quot;SAP-Hana-back-ups&quot; gemaakt en bevat de vier blobs, die de SAP HANA back-upbestanden vertegenwoordigen. Een van deze heeft een grootte van ongeveer 230 GB.
 
 Met de HANA Studio-back-upconsole kan één de maximale bestands grootte van HANA-back-upbestanden beperken. In de voorbeeld omgeving zijn de prestaties verbeterd doordat er meerdere kleinere back-upbestanden kunnen worden gemaakt, in plaats van één groot 230 GB.
 
@@ -99,15 +99,15 @@ Dit resultaat wordt veroorzaakt door de limiet van 60 MB per seconde voor het sc
 
 ## <a name="blob-copy-of-dedicated-azure-data-disks-in-backup-software-raid"></a>BLOB-kopie van toegewezen Azure-gegevens schijven in backup software RAID
 
-In tegens telling tot de hand matige back-up van de VM-gegevens schijf, in deze methode heeft één geen back-up van alle gegevens schijven op een virtuele machine om de volledige SAP-installatie op te slaan, met inbegrip van HANA-gegevens, HANA-logboek bestanden en configuratie bestanden. In plaats daarvan is het verstandig specifieke software-RAID te hebben met Striping over meerdere Azure-gegevens-Vhd's voor het opslaan van een volledige back-up van SAP HANA-bestand. Eén kopieert alleen deze schijven, die de SAP HANA back-up hebben. Ze kunnen eenvoudig worden bewaard in een toegewezen Hana-back-upopslag account of zijn gekoppeld &quot;aan een specifieke&quot; virtuele machine voor back-upbeheer voor verdere verwerking.
+In tegens telling tot de hand matige back-up van de VM-gegevens schijf, in deze methode heeft één geen back-up van alle gegevens schijven op een virtuele machine om de volledige SAP-installatie op te slaan, met inbegrip van HANA-gegevens, HANA-logboek bestanden en configuratie bestanden. In plaats daarvan is het verstandig specifieke software-RAID te hebben met Striping over meerdere Azure-gegevens-Vhd's voor het opslaan van een volledige back-up van SAP HANA-bestand. Eén kopieert alleen deze schijven, die de SAP HANA back-up hebben. Ze kunnen eenvoudig worden bewaard in een toegewezen HANA-back-upopslag account of zijn gekoppeld aan een toegewezen &quot;back-upbeheer van de virtuele machine&quot; voor verdere verwerking.
 
 ![Alle betrokken Vhd's zijn gekopieerd met de Power shell-opdracht * * start-azurestorageblobcopy * *](media/sap-hana-backup-file-level/image031.png)
 
-Nadat de back-up naar de lokale software-RAID is voltooid, zijn alle virtuele harde schijven gekopieerd met behulp van de **Start-azurestorageblobcopy** Power shell-opdracht (Zie [Start-azurestorageblobcopy](/powershell/module/azure.storage/start-azurestorageblobcopy)). Aangezien dit alleen van invloed is op het speciale bestands systeem voor het bewaren van de back-upbestanden, zijn er geen problemen met de consistentie van SAP HANA gegevens of logboek bestanden op de schijf. Een voor deel van deze opdracht is dat deze werkt terwijl de virtuele machine online blijft. Als u er zeker van wilt zijn dat er geen proces wordt geschreven naar de back-Stripe-set, moet u deze ontkoppelen vóór de BLOB-kopie en daarna opnieuw koppelen. Het is ook mogelijk dat een geschikte manier &quot;wordt&quot; gebruikt om het bestands systeem te blok keren. Bijvoorbeeld via xfs\_-blok kering voor het xfs-bestands systeem.
+Nadat de back-up naar de lokale software-RAID is voltooid, zijn alle virtuele harde schijven gekopieerd met behulp van de **Start-azurestorageblobcopy** Power shell-opdracht (Zie [Start-azurestorageblobcopy](/powershell/module/azure.storage/start-azurestorageblobcopy)). Aangezien dit alleen van invloed is op het speciale bestands systeem voor het bewaren van de back-upbestanden, zijn er geen problemen met de consistentie van SAP HANA gegevens of logboek bestanden op de schijf. Een voor deel van deze opdracht is dat deze werkt terwijl de virtuele machine online blijft. Als u er zeker van wilt zijn dat er geen proces wordt geschreven naar de back-Stripe-set, moet u deze ontkoppelen vóór de BLOB-kopie en daarna opnieuw koppelen. Het is ook mogelijk dat een geschikte manier wordt gebruikt om&quot; het bestands systeem te &quot;blok keren. Bijvoorbeeld via xfs\_bevriezen voor het bestands systeem XFS.
 
 ![Deze scherm afbeelding toont de lijst met blobs in de vhd's container op de Azure Portal](media/sap-hana-backup-file-level/image032.png)
 
-Deze scherm afbeelding toont de lijst met blobs in &quot;de&quot; vhd's container op de Azure Portal. In de scherm afbeelding ziet u de vijf Vhd's die zijn gekoppeld aan de SAP HANA Server-VM die als de software-RAID moeten worden gebruikt om SAP HANA back-upbestanden te bewaren. Ook worden de vijf exemplaren weer gegeven die zijn gemaakt via de opdracht voor het kopiëren van de blob.
+Deze scherm afbeelding toont de lijst met blobs in de &quot;vhd's&quot; container op de Azure Portal. In de scherm afbeelding ziet u de vijf Vhd's die zijn gekoppeld aan de SAP HANA Server-VM die als de software-RAID moeten worden gebruikt om SAP HANA back-upbestanden te bewaren. Ook worden de vijf exemplaren weer gegeven die zijn gemaakt via de opdracht voor het kopiëren van de blob.
 
 ![Voor test doeleinden zijn de kopieën van de SAP HANA backup software RAID-schijven gekoppeld aan de app Server-VM](media/sap-hana-backup-file-level/image033.png)
 
@@ -119,7 +119,7 @@ De app Server-VM is afgesloten om de schijf kopieën te koppelen. Nadat de VM is
 
 ## <a name="copy-sap-hana-backup-files-to-nfs-share"></a>SAP HANA back-upbestanden kopiëren naar NFS-share
 
-Om de potentiële impact op het SAP HANA systeem van een oogpunt van prestaties of schijf ruimte te beperken, kunt u overwegen de SAP HANA back-upbestanden op te slaan op een NFS-share. Technisch het werkt, maar betekent dat een tweede virtuele machine van Azure wordt gebruikt als host van de NFS-share. Het mag geen kleine VM-grootte zijn, vanwege de band breedte van het VM-netwerk. Deze &quot;back-up-VM&quot; wordt vervolgens afgesloten en alleen beschikbaar gemaakt voor het uitvoeren van de SAP Hana back-up. Wanneer u op een NFS-share schrijft, wordt de belasting op het netwerk beïnvloed en heeft dit invloed op het SAP Hana systeem, &quot;maar het&quot; beheer van de back-upbestanden op de back-upvm heeft geen invloed op het SAP Hana systeem.
+Om de potentiële impact op het SAP HANA systeem van een oogpunt van prestaties of schijf ruimte te beperken, kunt u overwegen de SAP HANA back-upbestanden op te slaan op een NFS-share. Technisch het werkt, maar betekent dat een tweede virtuele machine van Azure wordt gebruikt als host van de NFS-share. Het mag geen kleine VM-grootte zijn, vanwege de band breedte van het VM-netwerk. Het is dan ook belang rijk om deze &quot;back-up van de VM af te sluiten&quot; en alleen de back-up van de SAP HANA uit te voeren. Wanneer u een NFS-share schrijft, wordt de belasting op het netwerk beïnvloed en heeft dit invloed op het SAP HANA systeem, maar het beheer van de back-upbestanden achteraf op de &quot;back-up-VM&quot; geen invloed op het SAP HANA systeem.
 
 ![Een NFS-share van een andere Azure-VM is gekoppeld aan de SAP HANA Server-VM](media/sap-hana-backup-file-level/image035.png)
 
@@ -137,7 +137,7 @@ Het werkt daarom, maar de prestaties zijn niet geschikt voor de back-uptest van 
 
 ## <a name="copy-sap-hana-backup-files-to-azure-files"></a>SAP HANA back-upbestanden kopiëren naar Azure Files
 
-Het is mogelijk een Azure Files share te koppelen aan een virtuele machine in azure Linux. In het artikel [Azure File Storage gebruiken met Linux](../../../storage/files/storage-how-to-use-files-linux.md) vindt u meer informatie over hoe u dit doet. Houd er wel voor dat er momenteel een quotum limiet van 5 TB van één Azure-bestands share is en een bestands grootte limiet van 1 TB per bestand. Zie [Azure Storage schaalbaarheids-en prestatie doelen](../../../storage/common/storage-scalability-targets.md) voor informatie over opslag limieten.
+Het is mogelijk een Azure Files share te koppelen aan een virtuele machine in azure Linux. In het artikel [Azure File Storage gebruiken met Linux](../../../storage/files/storage-how-to-use-files-linux.md) vindt u meer informatie over hoe u dit doet. Houd er wel voor dat er momenteel een quotum limiet van 5 TB van één Azure-bestands share is en een bestands grootte limiet van 1 TB per bestand. Zie [Azure files schaal baarheid en prestatie doelen](../../../storage/files/storage-files-scale-targets.md)voor meer informatie.
 
 Er zijn echter tests weer gegeven die SAP HANA back-up&#39;dit nu rechtstreeks met dit soort CIFS-koppeling werkt. Het wordt ook vermeld in [SAP Note 1820529](https://launchpad.support.sap.com/#/notes/1820529) dat CIFS niet wordt aanbevolen.
 
@@ -151,7 +151,7 @@ In deze afbeelding ziet u dat het ongeveer 929 seconden duurde om 19 SAP HANA ba
 
 ![De bron directory structuur op de SAP HANA virtuele machine is gekopieerd naar de Azure-bestands share](media/sap-hana-backup-file-level/image040.png)
 
-In deze scherm afbeelding ziet u dat de bron directory structuur op de SAP Hana virtuele machine is gekopieerd naar de Azure-bestands share: One Directory (\_Hana\_backup\_fsl 15gb) en 19 afzonderlijke back-upbestanden.
+In deze scherm afbeelding ziet u dat de bron directory structuur op de SAP HANA virtuele machine is gekopieerd naar de Azure-bestands share: One Directory (Hana\_backup\_fsl\_15gb) en 19 afzonderlijke back-upbestanden.
 
 Het opslaan van SAP HANA back-upbestanden in azure files kan in de toekomst een interessante optie zijn wanneer de back-ups van SAP HANA bestand direct worden ondersteund. Of wanneer het mogelijk is om Azure files te koppelen via NFS en de maximum quotum limiet aanzienlijk hoger is dan 5 TB.
 

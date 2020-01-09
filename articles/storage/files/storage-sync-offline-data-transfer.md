@@ -1,5 +1,5 @@
 ---
-title: Gegevens migreren naar Azure File Sync met behulp van Azure Data Box en andere methoden
+title: Gegevens migreren naar Azure File Sync met Azure Data Box
 description: Migreer bulk gegevens op een manier die compatibel is met Azure File Sync.
 author: roygara
 ms.service: storage
@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9264aa6d24256b991abefe35b41045caa2e76d67
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: b00948f8d0e1eb8538354a6c16febf81bd4d1f16
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997789"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457381"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Bulk gegevens migreren naar Azure File Sync
 U kunt op twee manieren bulk gegevens migreren naar Azure File Sync:
 
-* **Upload uw bestanden met behulp van Azure File Sync.** Dit is de eenvoudigste methode. Verplaats uw bestanden lokaal naar Windows Server 2012 R2 of later en installeer de Azure File Sync-agent. Nadat u de synchronisatie hebt ingesteld, worden uw bestanden van de server geüpload. (Onze klanten hebben momenteel een gemiddelde upload snelheid van 1 TiB ongeveer elke twee dagen.) Als u er zeker van wilt zijn dat uw server niet te veel band breedte voor uw Data Center gebruikt, kunt u een [planning voor bandbreedte beperking](storage-sync-files-server-registration.md#ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter)instellen.
+* **Upload uw bestanden met behulp van Azure file sync.** Dit is de eenvoudigste methode. Verplaats uw bestanden lokaal naar Windows Server 2012 R2 of later en installeer de Azure File Sync-agent. Nadat u de synchronisatie hebt ingesteld, worden uw bestanden van de server geüpload. (Onze klanten hebben momenteel een gemiddelde upload snelheid van 1 TiB ongeveer elke twee dagen.) Als u er zeker van wilt zijn dat uw server niet te veel band breedte voor uw Data Center gebruikt, kunt u een [planning voor bandbreedte beperking](storage-sync-files-server-registration.md#ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter)instellen.
 * **De bestanden offline zetten.** Als u onvoldoende band breedte hebt, is het mogelijk dat u in een redelijke tijd geen bestanden naar Azure kunt uploaden. De uitdaging is de initiële synchronisatie van de hele set bestanden. Gebruik voor het oplossen van deze uitdaging offline hulpprogram ma's voor bulk migratie, zoals de [Azure data Box serie](https://azure.microsoft.com/services/storage/databox). 
 
 In dit artikel wordt uitgelegd hoe u bestanden offline kunt migreren op een manier die compatibel is met Azure File Sync. Volg deze instructies om bestands conflicten te voor komen en de toegangs beheer lijsten (Acl's) en tijds tempels van het bestand en de map te bewaren nadat de synchronisatie is ingeschakeld.
@@ -25,7 +25,7 @@ In dit artikel wordt uitgelegd hoe u bestanden offline kunt migreren op een mani
 ## <a name="migration-tools"></a>Hulpprogramma's voor migratie
 Het proces dat in dit artikel wordt beschreven, werkt niet alleen voor Data Box, maar ook voor andere hulpprogram ma's voor offline migratie. Het werkt ook voor hulpprogram ma's zoals AzCopy, Robocopy of partner tools en-services die rechtstreeks op Internet werken. U kunt de eerste upload vraag echter oplossen door de stappen in dit artikel te volgen om deze hulpprogram ma's te gebruiken op een manier die compatibel is met Azure File Sync.
 
-In sommige gevallen moet u overstappen van de ene Windows-Server naar een andere Windows-Server voordat u Azure File Sync doorneemt. [Opslag migratie service](https://aka.ms/storagemigrationservice) (SMS) kan u hierbij helpen. Of u moet migreren naar een versie van het besturings systeem van de server die wordt ondersteund door Azure File Sync (Windows Server 2012R2 en up) of u hoeft alleen maar te migreren omdat u een nieuw systeem voor Azure File Sync koopt, heeft SMS talrijke functies en voor delen waarmee u uw MIGR kunt helpen de atie is soepel uitgevoerd.
+In sommige gevallen moet u overstappen van de ene Windows-Server naar een andere Windows-Server voordat u Azure File Sync doorneemt. U kunt met behulp van de [opslag migratie service](https://aka.ms/storagemigrationservice) (SMS). Of u moet migreren naar een versie van het besturings systeem van de server die wordt ondersteund door Azure File Sync (Windows Server 2012R2 en up) of u hoeft alleen maar te migreren omdat u een nieuw systeem voor Azure File Sync koopt, heeft SMS talrijke functies en voor delen waarmee u uw MIGR kunt helpen de atie is soepel uitgevoerd.
 
 ## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>Voor delen van het gebruik van een hulp programma om gegevens offline over te dragen
 Dit zijn de belangrijkste voor delen van het gebruik van een hulp programma voor het overzetten van een overdracht, zoals Data Box voor offline migratie:
@@ -38,8 +38,8 @@ Dit zijn de belangrijkste voor delen van het gebruik van een hulp programma voor
 ## <a name="prerequisites-for-the-offline-data-transfer"></a>Vereisten voor de offline-gegevens overdracht
 Schakel synchronisatie niet in op de server die u wilt migreren voordat u uw offline gegevens overdracht voltooit. Andere zaken die u moet overwegen voordat u begint, zijn als volgt:
 
-- Als u Data Box wilt gebruiken voor uw bulk migratie: Controleer de [vereisten voor de implementatie van data Box](../../databox/data-box-deploy-ordered.md#prerequisites).
-- Plan uw uiteindelijke Azure File Sync topologie: [Een Azure File Sync-implementatie plannen](storage-sync-files-planning.md)
+- Als u van plan bent Data Box te gebruiken voor uw bulk migratie: Raadpleeg de [implementatie vereisten voor data Box](../../databox/data-box-deploy-ordered.md#prerequisites).
+- Uw uiteindelijke Azure File Sync topologie plannen: [plan voor een Azure file sync implementatie](storage-sync-files-planning.md)
 - Selecteer Azure Storage-account (s) die de bestands shares bevatten die u wilt synchroniseren met. Zorg ervoor dat uw bulk migratie plaatsvindt naar tijdelijke staging-shares in dezelfde opslag account (s). Bulk migratie kan alleen worden ingeschakeld voor het gebruik van een definitief-en een staging-share die zich in hetzelfde opslag account bevindt.
 - Een bulk migratie kan alleen worden gebruikt wanneer u een nieuwe synchronisatie relatie maakt met een server locatie. Het is niet mogelijk om een bulk migratie met een bestaande synchronisatie relatie in te scha kelen.
 
@@ -51,7 +51,7 @@ Hier volgt een beschrijving van het instellen van Azure File Sync op een manier 
 
 | Stap | Details |
 |---|---------------------------------------------------------------------------------------|
-| ![Stap 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Bestel uw data Box](../../databox/data-box-deploy-ordered.md). De Data Box-serie biedt [verschillende producten](https://azure.microsoft.com/services/storage/databox/data) die aan uw behoeften voldoen. Wanneer u uw data Box ontvangt, volgt u de bijbehorende [documentatie om uw gegevens te kopiëren](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) naar dit UNC-pad op de data Box:  *\\< DeviceIPAddres StorageAccountName_AzFile\> \>\<\< Share\>naam*. Hier is *sharename* de naam van de staging-share. Verzend de Data Box terug naar Azure. |
+| ![Stap 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Bestel uw data Box](../../databox/data-box-deploy-ordered.md). De Data Box-serie biedt [verschillende producten](https://azure.microsoft.com/services/storage/databox/data) die aan uw behoeften voldoen. Wanneer u uw Data Box ontvangt, volgt u de bijbehorende [documentatie om uw gegevens te kopiëren](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) naar dit UNC-pad op de Data Box: *\\< DeviceIPAddres\>\<StorageAccountName_AzFile\>\<share naam\>* . Hier is *sharename* de naam van de staging-share. Verzend de Data Box terug naar Azure. |
 | ![Stap 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | Wacht tot uw bestanden worden weer gegeven in de Azure-bestands shares die u hebt gekozen als tijdelijke share voor tijdelijke bestanden. *Schakel synchronisatie van deze shares niet in.* |
 | ![Stap 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | Maak een nieuwe lege share voor elke bestands share die Data Box voor u hebt gemaakt. Deze nieuwe share moet zich in hetzelfde opslag account bezien als de Data Box share. [Een nieuwe Azure-bestands share maken](storage-how-to-create-file-share.md). |
 | ![Stap 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Maak een synchronisatie groep](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) in een opslag synchronisatie service. Verwijs naar een lege share als een eind punt in de Cloud. Herhaal deze stap voor elke Data Box bestands share. [Azure file sync instellen](storage-sync-files-deployment-guide.md). |

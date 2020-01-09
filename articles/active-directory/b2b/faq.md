@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fd72aea9087b03dcd5c6072676e8f98e7cfc1ee
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8be047caf8631cda4e48b7bf10987db616a9b86f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816452"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608605"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Veelgestelde vragen over Azure Active Directory B2B-samen werking
 
@@ -48,7 +48,7 @@ Deze functie wordt momenteel niet ondersteund. Als voor toegang tot de resources
 Een organisatie kan B2B-samenwerkings gebruikers toevoegen, ze indien nodig inrichten voor toepassingen en vervolgens uitnodigingen verzenden. U kunt de API voor B2B-samen werking gebruiken om de onboarding-werk stroom aan te passen.
 
 ### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Kan ik gast gebruikers zichtbaar maken in de algemene adres lijst van Exchange?
-Ja. Gast objecten zijn standaard niet zichtbaar in de algemene adres lijst van uw organisatie, maar u kunt Azure Active Directory Power shell gebruiken om ze zichtbaar te maken. Zie [kan ik gast objecten zichtbaar maken in de algemene adres lijst?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#can-i-make-guest-objects-visible-in-the-global-address-list)
+Ja. Gast objecten zijn standaard niet zichtbaar in de algemene adres lijst van uw organisatie, maar u kunt Azure Active Directory Power shell gebruiken om ze zichtbaar te maken. Zie [kan ik gast objecten zichtbaar maken in de algemene adres lijst?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Kan ik een beperkte beheerder van een gast gebruiker maken?
 Absoluut. Zie voor meer informatie [gast gebruikers toevoegen aan een rol](add-guest-to-role.md).
@@ -65,7 +65,7 @@ Ja. U kunt een beleid voor voorwaardelijke toegang maken waarmee wordt voor kome
 3. Selecteer onder **beheren**de optie **beveiliging**.
 4. Onder **beveiligen**selecteert u **voorwaardelijke toegang**. Selecteer **Nieuw beleid**.
 5. Voer op de pagina **Nieuw** in het tekstvak **naam** een naam in voor het beleid (bijvoorbeeld ' gasten blok keren voor toegang tot de portal ').
-6. Onder **toewijzingen**selecteert u **gebruikers en groepen**.
+6. Onder **Toewijzingen** selecteert u **Gebruikers en groepen**.
 7. Klik op het tabblad **include** op **gebruikers en groepen selecteren**en selecteer vervolgens **alle gast en externe gebruikers (preview-versie)** .
 9. Selecteer **Done**.
 10. Selecteer op de pagina **Nieuw** in de sectie **toewijzingen** de optie **Cloud-apps of-acties**.

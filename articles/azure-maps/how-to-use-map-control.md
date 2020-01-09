@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: ff183261f67ff76f56fc034d8102e3aa3a4838a8
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: d70d0e1107a6ee1b53b178d8912c1b808472b142
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480523"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432915"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Het Azure Maps kaart besturings element gebruiken
 
@@ -36,7 +36,7 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
 
     b. U kunt ook de Azure Maps Web SDK-bron code lokaal laden met behulp van het [Azure-Maps-Control NPM-](https://www.npmjs.com/package/azure-maps-control) pakket en deze hosten met uw app. Dit pakket bevat ook type script definities.
 
-    > NPM Azure-Maps-beheer installeren
+    > **NPM Azure-Maps-beheer installeren**
 
     Voeg vervolgens verwijzingen naar het Azure Maps opmaak model en script bron verwijzingen toe naar het `<head>` element van het bestand:
 
@@ -74,7 +74,7 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
     </body>
     ```
 
-5. Als u het kaart besturings element wilt initialiseren, definieert u een nieuwe sectie in de HTML-hoofd tekst en maakt u een script. Geef de `id` van de kaart `<div>` of een `HTMLElement` (bijvoorbeeld `document.getElementById('myMap')`) als de eerste para meter bij het maken van een instantie van de `Map`-klasse. Gebruik uw eigen Azure Maps account sleutel of certificerings Azure Active Directory (AAD) om de kaart te verifiëren met behulp van [verificatie opties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). Zie [uw Azure Maps account en sleutels beheren](how-to-manage-account-keys.md)als u een account wilt maken of uw sleutel wilt zoeken. De **taal** optie geeft u de taal op die moet worden gebruikt voor labels en besturings elementen toewijzen. Zie [ondersteunde talen](supported-languages.md)voor meer informatie over ondersteunde talen. Als u een abonnements sleutel gebruikt voor verificatie.
+5. Als u het kaart besturings element wilt initialiseren, definieert u een nieuwe sectie in de HTML-hoofd tekst en maakt u een script. Geef de `id` van de kaart `<div>` of een `HTMLElement` (bijvoorbeeld `document.getElementById('myMap')`) als de eerste para meter bij het maken van een instantie van de `Map`-klasse. Gebruik uw eigen Azure Maps account sleutel of certificerings Azure Active Directory (AAD) om de kaart te verifiëren met behulp van [verificatie opties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). Als u een account wilt maken of uw sleutel wilt vinden, volgt u de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) voor het maken van een abonnement op een Azure Maps-account en volgt u de stappen in [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. De **taal** optie geeft u de taal op die moet worden gebruikt voor labels en besturings elementen toewijzen. Zie [ondersteunde talen](supported-languages.md)voor meer informatie over ondersteunde talen. Als u een abonnements sleutel gebruikt voor verificatie.
 
     ```HTML
     <script type="text/javascript">
@@ -210,6 +210,26 @@ Hier volgt een voor beeld van Azure Maps waarbij de taal is ingesteld op "fr-FR"
 ![Kaart afbeelding met labels in het Frans](./media/how-to-use-map-control/websdk-localization.png)
 
 Een volledige lijst met ondersteunde talen en regionale weer gaven wordt [hier](supported-languages.md)beschreven.
+
+## <a name="azure-government-cloud-support"></a>Cloud ondersteuning Azure Government
+
+De Azure Maps Web-SDK ondersteunt de Azure Government Cloud. Alle Java script-en CSS-Url's die worden gebruikt voor toegang tot de Azure Maps Web-SDK blijven hetzelfde, maar de volgende taken moeten worden uitgevoerd om verbinding te maken met de Azure Government Cloud versie van het Azure Maps platform.
+
+Wanneer u het besturings element interactieve map gebruikt, voegt u de volgende regel code toe voordat u een instantie van de klasse `Map` maakt. 
+
+```javascript
+atlas.setDomain('atlas.azure.us');
+```
+
+Zorg ervoor dat u een Azure Maps verificatie gegevens van het Azure Government Cloud platform gebruikt wanneer u de kaart en services verifieert.
+
+Wanneer u de Services-module gebruikt, moet het domein voor de services worden ingesteld bij het maken van een exemplaar van een API-URL-eind punt. Met de volgende code wordt bijvoorbeeld een instantie van de klasse `SearchURL` gemaakt en wordt het domein naar de Azure Government Cloud gewijst.
+
+```javascript
+var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
+```
+
+Als u rechtstreeks toegang hebt tot de Azure Maps REST-services, wijzigt u het URL-domein in `atlas.azure.us`. Als u bijvoorbeeld de Search API-service gebruikt, wijzigt u het URL-domein van `https://atlas.microsoft.com/search/` naar `https://atlas.azure.us/search/`.
 
 ## <a name="next-steps"></a>Volgende stappen
 

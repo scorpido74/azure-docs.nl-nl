@@ -2,19 +2,15 @@
 title: Azure Automation-taakgegevens doorsturen naar Azure Monitor-logboeken
 description: In dit artikel wordt beschreven hoe u taak status-en runbook-taak stromen kunt verzenden naar Azure Monitor Logboeken om meer inzicht en beheer te bieden.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 02/05/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: d2433e8193026b8aaa3cbf29eb1411c7449a4953
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: beb69edc57b5a13db0f6d2e5e1536804f3472aff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849731"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421904"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Taak status en taak stromen door sturen van automatisering naar Azure Monitor logboeken
 
@@ -97,7 +93,7 @@ Diagnostische gegevens van Azure Automation twee typen records in Azure Monitor 
 | Tenant_g | GUID waarmee de Tenant voor de oproepende functie wordt geïdentificeerd. |
 | JobId_g |De GUID die de id van de runbooktaak is. |
 | ResultType |De status van de runbooktaak. Mogelijke waarden zijn:<br>-Nieuw<br>-Gemaakt<br>- Gestart<br>- Gestopt<br>- Onderbroken<br>- Mislukt<br>-Voltooid |
-| Category | Classificatie van het type gegevens. Voor Automation is de waarde JobLogs. |
+| Categorie | Classificatie van het type gegevens. Voor Automation is de waarde JobLogs. |
 | OperationName | Hiermee wordt het type bewerking opgegeven dat in Azure wordt uitgevoerd. Voor Automation is de waarde taak. |
 | Bron | De naam van het Automation-account |
 | SourceSystem | Hoe Azure Monitor Logboeken de gegevens verzamelen. Altijd *Azure* voor Azure Diagnostics. |
@@ -120,7 +116,7 @@ Diagnostische gegevens van Azure Automation twee typen records in Azure Monitor 
 | Tenant_g | GUID waarmee de Tenant voor de oproepende functie wordt geïdentificeerd. |
 | JobId_g |De GUID die de id van de runbooktaak is. |
 | ResultType |De status van de runbooktaak. Mogelijke waarden zijn:<br>-Wordt uitgevoerd |
-| Category | Classificatie van het type gegevens. Voor Automation is de waarde JobStreams. |
+| Categorie | Classificatie van het type gegevens. Voor Automation is de waarde JobStreams. |
 | OperationName | Hiermee wordt het type bewerking opgegeven dat in Azure wordt uitgevoerd. Voor Automation is de waarde taak. |
 | Bron | De naam van het Automation-account |
 | SourceSystem | Hoe Azure Monitor Logboeken de gegevens verzamelen. Altijd *Azure* voor Azure Diagnostics. |

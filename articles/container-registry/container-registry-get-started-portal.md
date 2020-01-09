@@ -4,12 +4,12 @@ description: Leer snel hoe u een persoonlijk docker-REGI ster maakt in Azure Con
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c5e6de0fdb7d0e46fa9be28483fd894289baf1a3
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 319fd670c8e82120ef63e94395f4d6809eeb2601
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455218"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611233"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Snelstartgids: een persoonlijk container register maken met behulp van de Azure Portal
 
@@ -29,7 +29,7 @@ Selecteer **Een resource maken** > **Containers** > **Container Registry**.
 
 ![Een containerregister maken met Azure Portal][qs-portal-01]
 
-Voer waarden in voor **Registernaam** en **Resourcegroep**. De registernaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke tekens bevatten. Maak voor deze snelstart een nieuwe resourcegroep met de naam `West US` in locatie `myResourceGroup`. Kies voor **SKU** de optie Basic. Selecteer **Maken** om de ACR-instantie te implementeren.
+Voer waarden in voor **Registernaam** en **Resourcegroep**. De registernaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke tekens bevatten. Maak voor deze snelstart een nieuwe resourcegroep met de naam `myResourceGroup` in locatie `West US`. Kies voor **SKU** de optie Basic. Selecteer **Maken** om de ACR-instantie te implementeren.
 
 ![Een containerregister maken in de Azure-portal][qs-portal-03]
 
@@ -43,7 +43,7 @@ Noteer de waarde van de **aanmeldingsserver**. U gebruikt deze waarden in de vol
 
 ## <a name="log-in-to-registry"></a>Aanmelden bij register
 
-Voordat u installatiekopieën van containers gaat pushen en pullen, moet u zich aanmelden bij het ACR-exemplaar. Open een opdracht shell in het besturings systeem en gebruik de opdracht [AZ ACR login][az-acr-login] in de Azure cli.
+Voordat u installatiekopieën van containers gaat pushen en pullen, moet u zich aanmelden bij het ACR-exemplaar. Open een opdracht shell in het besturings systeem en gebruik de opdracht [AZ ACR login][az-acr-login] in de Azure cli. (Geef alleen container naam op. Azurecr.io niet toevoegen)
 
 ```azurecli
 az acr login --name <acrName>

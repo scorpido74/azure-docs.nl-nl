@@ -2,18 +2,18 @@
 title: Grondige kennis-geavanceerde analyses-Azure HDInsight
 description: Meer informatie over hoe geavanceerde analyse algoritmen gebruikt voor het verwerken van big data in azure HDInsight.
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2017
-ms.author: ashishth
-ms.openlocfilehash: 436825c6e5df2be524dc06ccdaf82f0156714679
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 6fc6ea9ca0ce3bf82f027b964db94df50f07f2bd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241653"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646520"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Diep gaande kennis-geavanceerde analyse
 
@@ -38,17 +38,16 @@ Geavanceerde analyse oplossingen bieden een reeks machine learning-algoritmen. H
 Samen met het selecteren van de beste algoritme (s), moet u overwegen of u gegevens moet opgeven voor de training. Machine learning-algoritmen worden als volgt gecategoriseerd:
 
 * Super visie: algoritme moet worden getraind voor een set met gelabelde gegevens voordat er resultaten kunnen worden opgegeven
-* Een semi-Super visie: algoritme kan worden uitgebreid door extra doelen via interactieve query's door een trainer, die tijdens de eerste trainings fase niet beschikbaar was.
-* Niet onder Super visie: algoritme vereist geen trainings gegevens 
+* Een semi-Super visie: algoritme kan worden uitgebreid door extra doelen via interactieve query's door een trainer, die tijdens de eerste fase van de training niet beschikbaar is.
+* Niet onder Super visie: algoritme vereist geen trainings gegevens
 * Versterking-algoritme maakt gebruik van software-agents om het ideale gedrag binnen een specifieke context te bepalen (vaak gebruikt in Robotics)
-
 
 | Categorie Algorithm| Gebruiken | Type training | Algoritmen |
 | --- | --- | --- | -- |
-| Classificatie | Mensen of dingen classificeren in groepen | Onder Super visie | Beslissings structuren, logistiek regressie, Neural netwerken |
+| Classificatie | Mensen of dingen classificeren in groepen | Onder supervisie | Beslissings structuren, logistiek regressie, Neural netwerken |
 | Clustering | Een reeks voor beelden delen in homogene groepen | Zonder super visie | k-means clustering |
 | Patroon detectie | Veelgebruikte koppelingen in de gegevens identificeren | Zonder super visie | Koppelings regels |
-| Regressie | Numerieke resultaten voors pellen | Onder Super visie | Lineaire regressie, Neural netwerken |
+| Regressie | Numerieke resultaten voors pellen | Onder supervisie | Lineaire regressie, Neural netwerken |
 | Bekrachtigingen | Optimale werking van robots bepalen | Bekrachtigingen | Monte Carlo-simulaties, DeepMind |
 
 ## <a name="machine-learning-on-hdinsight"></a>Machine learning op HDInsight
@@ -62,15 +61,13 @@ HDInsight heeft verschillende machine learning opties voor een geavanceerde anal
 
 ### <a name="machine-learning-and-apache-spark"></a>Machine Learning en Apache Spark
 
-
-[HDInsight Spark](../spark/apache-spark-overview.md) is een door Azure gehoste aanbieding van [Apache Spark](https://spark.apache.org/), een gecombineerd, open source, parallel data processing framework dat gebruikmaakt van in-Memory verwerking om de analyse van Big data te stimuleren. De Spark-verwerkings engine is gebouwd voor snelheid, gebruiks gemak en geavanceerde analyses. Met de mogelijkheden van de gedistribueerde reken kracht van Spark in het geheugen is het een goede keuze voor de iteratieve algoritmen die worden gebruikt in machine learning-en grafiek berekeningen. 
-
+[HDInsight Spark](../spark/apache-spark-overview.md) is een door Azure gehoste aanbieding van [Apache Spark](https://spark.apache.org/), een gecombineerd, open source, parallel data processing framework dat gebruikmaakt van in-Memory verwerking om de analyse van Big data te stimuleren. De Spark-verwerkingsengine is gebouwd voor snelheid, gebruiksgemak, en geavanceerde analyses. Gedistribueerde berekening in-memory-mogelijkheden van Spark kunnen u een goede keuze voor de zich herhalende algoritmen in machine learning- en grafiekberekeningen gebruikt.
 
 Er zijn drie schaal bare machine learning bibliotheken die algoritmen model leren met deze gedistribueerde omgeving:
 
 * [**MLlib**](https://spark.apache.org/docs/latest/ml-guide.html) -MLlib bevat de oorspronkelijke API die boven op Spark-rdd's is gebouwd.
 * [**SparkML**](https://spark.apache.org/docs/1.2.2/ml-guide.html) -SparkML is een nieuwer pakket met een op Spark-DataFrames gebouwde API met een hoger niveau voor het bouwen van ml-pijp lijnen.
-* [**MMLSpark**](https://github.com/Azure/mmlspark) : de micro soft machine learning-bibliotheek voor Apache Spark (MMLSpark) is ontworpen om gegevens wetenschappers productiever te maken op Spark, om het aantal experimenten te verhogen en te profiteren van geavanceerde machine learning technieken, waaronder diep gaande informatie over zeer grote gegevens sets. De MMLSpark-bibliotheek vereenvoudigt veelvoorkomende model taken voor het bouwen van modellen in PySpark. 
+* [**MMLSpark**](https://github.com/Azure/mmlspark) : de micro soft machine learning-bibliotheek voor Apache Spark (MMLSpark) is ontworpen om gegevens wetenschappers productiever te maken op Spark, om het aantal experimenten te verhogen en te profiteren van geavanceerde machine learning technieken, waaronder diep gaande informatie over zeer grote gegevens sets. De MMLSpark-bibliotheek vereenvoudigt veelvoorkomende model taken voor het bouwen van modellen in PySpark.
 
 ### <a name="r-and-ml-services"></a>R-en ML-Services
 
@@ -78,11 +75,11 @@ Als onderdeel van HDInsight kunt u een HDInsight-cluster maken met [ml Services]
 
 ### <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning en Apache Hive
 
-[Azure machine learning Studio (klassiek)](https://studio.azureml.net/) bevat hulpprogram ma's voor het model leren van Predictive Analytics en een volledig beheerde service die u kunt gebruiken om uw voorspellende modellen te implementeren als kant-en-klare webservices. Azure Machine Learning voorziet in hulpprogram ma's voor het maken van volledige predictive analytics-oplossingen in de cloud om snel voorspellende modellen te maken, te testen, te operationeel maken en te beheren. Maak een keuze uit een grote algoritme bibliotheek, gebruik een webgebaseerde Studio voor het ontwikkelen van modellen en implementeer uw model eenvoudig als een webservice.
+[Azure machine learning Studio (klassiek)](https://studio.azureml.net/) voorziet in hulpprogram ma's voor het model leren van Predictive Analytics en een volledig beheerde service die u kunt gebruiken om uw voorspellende modellen te implementeren als kant-en-klare webservices. Azure Machine Learning voorziet in hulpprogram ma's voor het maken van volledige predictive analytics-oplossingen in de cloud om snel voorspellende modellen te maken, te testen, te operationeel maken en te beheren. Maak een keuze uit een grote algoritme bibliotheek, gebruik een webgebaseerde Studio voor het ontwikkelen van modellen en implementeer uw model eenvoudig als een webservice.
 
 ### <a name="apache-spark-and-deep-learning"></a>Apache Spark en diep gaande lessen
 
-[Grondige kennis](https://www.microsoft.com/research/group/dltc/) is een vertakking van machine learning die gebruikmaakt van *diepe Neural Networks* (DNNs), die zijn geïnspireerd op de biologische processen van het menselijk gebruik. Veel onderzoekers zien een diep gaande leer proces als een toezeggings benadering voor kunst matige intelligentie. Enkele voor beelden van diep gaande lessen zijn gesp roken taal vertalers, systemen voor afbeeldings herkenning en de reden van de computer. Micro soft heeft de gratis, gebruiks vriendelijke, open-source [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/)ontwikkeld om haar eigen werk in het uitgebreid leren te helpen. De Toolkit wordt uitgebreid gebruikt door een groot aantal verschillende micro soft-producten, door bedrijven wereld wijd, met een nood zaak om diep gaande lessen op schaal te implementeren en door studenten die geïnteresseerd zijn in de nieuwste algoritmen en technieken. 
+[Grondige kennis](https://www.microsoft.com/research/group/dltc/) is een vertakking van machine learning die gebruikmaakt van *diepe Neural Networks* (DNNs), die zijn geïnspireerd op de biologische processen van het menselijk gebruik. Veel onderzoekers zien een diep gaande leer proces als een toezeggings benadering voor kunst matige intelligentie. Enkele voor beelden van diep gaande lessen zijn gesp roken taal vertalers, systemen voor afbeeldings herkenning en de reden van de computer. Micro soft heeft de gratis, gebruiks vriendelijke, open-source [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/)ontwikkeld om haar eigen werk in het uitgebreid leren te helpen. De Toolkit wordt uitgebreid gebruikt door een groot aantal verschillende micro soft-producten, door bedrijven wereld wijd, met een nood zaak om diep gaande lessen op schaal te implementeren en door studenten die geïnteresseerd zijn in de nieuwste algoritmen en technieken.
 
 ## <a name="scenario---score-images-to-identify-patterns-in-urban-development"></a>Scenario-Score afbeeldingen om patronen in stedelijke ontwikkeling te identificeren
 
@@ -92,9 +89,9 @@ In dit scenario ziet u hoe DNNs geproduceerd in een diep Learning Framework, mic
 
 Er zijn drie belang rijke taken in dit geavanceerde analyse scenario:
 
-1. Maak een Azure HDInsight Hadoop cluster met een Apache Spark 2.1.0-distributie. 
-2. Voer een aangepast script uit om Microsoft Cognitive Toolkit te installeren op alle knoop punten van een Azure HDInsight Spark cluster. 
-3. Upload een vooraf ontwikkelde Jupyter-notebook naar uw HDInsight Spark-cluster om een getraind Microsoft Cognitive Toolkit diep Learning model toe te passen op bestanden in een Azure Blob Storage-account met behulp van de Spark python API (PySpark). 
+1. Maak een Azure HDInsight Hadoop cluster met een Apache Spark 2.1.0-distributie.
+2. Voer een aangepast script uit om Microsoft Cognitive Toolkit te installeren op alle knoop punten van een Azure HDInsight Spark cluster.
+3. Upload een vooraf ontwikkelde Jupyter-notebook naar uw HDInsight Spark-cluster om een getraind Microsoft Cognitive Toolkit diep Learning model toe te passen op bestanden in een Azure Blob Storage-account met behulp van de Spark python API (PySpark).
 
 In dit voor beeld wordt de CIFAR-10-installatie kopieset gebruikt die is gecompileerd en gedistribueerd door Alex Krizhevsky, wijnbouw Nair en Geoffrey Hinton,. De CIFAR-10-gegevensset bevat 60.000 32 × 32 kleuren afbeeldingen die deel uitmaken van tien wederzijds exclusieve klassen:
 
@@ -115,7 +112,7 @@ De volledige voor verwerking/Score van de 10.000-installatie kopieën duurt mind
 
 ### <a name="try-it-out"></a>Probeer het eens!
 
-Volg [deze zelf studie](../spark/apache-spark-microsoft-cognitive-toolkit.md) voor het implementeren van deze oplossing end-to-end: een HDInsight Spark-cluster instellen, cognitive Toolkit installeren en de Jupyter notebook uitvoeren die 10.000 CIFAR-installatie kopieën afbeelden.
+Volg [deze zelf studie](../spark/apache-spark-microsoft-cognitive-toolkit.md) om de volledige end-to-end-oplossing te implementeren: Stel een HDInsight Spark-cluster in, installeer Cognitive Toolkit en voer het Jupyter notebook uit dat 10.000 CIFAR-installatie kopieën afrondt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

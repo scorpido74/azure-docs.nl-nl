@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: afwijkingen in uw time series-gegevens detecteren met behulp van de anomalie detectie REST API enC#'
 titleSuffix: Azure Cognitive Services
-description: Gebruik de anomalie detectie-API om afwijkingen in uw gegevens reeksen op te sporen als een batch of gegevens stromen.
+description: Gebruik de anomalie detectie-API om afwijkingen in uw gegevens reeksen op te sporen als een batch of op streaming met deze Snelstartgids.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 76308e2167cbedae9572f1fb5037dfb394ce4b17
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b5fb8bb424af47eb7793d38f24b6334677c6a5ea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483411"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385306"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Snelstartgids: afwijkingen in uw time series-gegevens detecteren met behulp van de anomalie detectie REST API enC# 
 
@@ -55,7 +55,7 @@ Gebruik deze Quick Start om de twee detectie modi van de anomalie detectie-API t
 
 2. Maak variabelen voor uw abonnements sleutel en uw eind punt. Hieronder vindt u de Uri's die u voor anomalie detectie kunt gebruiken. Deze worden later toegevoegd aan uw service-eind punt om de API-aanvraag-Url's te maken.
 
-    | Detectie methode                   | URI                                              |
+    | Detectiemethode                   | URI                                              |
     |------------------------------------|--------------------------------------------------|
     | Batch detectie                    | `/anomalydetector/v1.0/timeseries/entire/detect` |
     | Detectie op het laatste gegevens punt | `/anomalydetector/v1.0/timeseries/last/detect`   |

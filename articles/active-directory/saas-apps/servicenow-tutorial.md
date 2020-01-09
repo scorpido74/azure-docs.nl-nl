@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 12/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52b3b7ea34d48c37a4e07ab073e611d5a60399a9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c8a8f3895f41ac987b934b86f8d646b281c37c93
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706921"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561971"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met ServiceNow
 
@@ -136,7 +135,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
     ![Scherm opname van gebruikers en groepen, met gemarkeerde gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en kies vervolgens **selecteren**.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst. Kies vervolgens **selecteren**.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst. Kies dan de optie **Selecteren**.
 1. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
 
 ### <a name="configure-azure-ad-sso-for-servicenow-express"></a>Azure AD SSO voor ServiceNow Express configureren
@@ -295,7 +294,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
         1. Voer de **URL voor de federatieve meta gegevens** van de app in die u hebt gekopieerd uit de Azure Portal.
 
-        1. Selecteer **importeren**.
+        1. Selecteer **Importeren**.
 
     1. Hiermee wordt de URL van de IdP-meta gegevens gelezen en worden alle veld gegevens ingevuld.
 

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 650355bc79e786839377a9b3e574dfbfa08868d6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2738e7be6ae40afd5f0d94f1ad32b7b4cda0417f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793061"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453420"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Integratie accounts voor B2B-ondernemings integraties maken en beheren in Azure Logic Apps
 
@@ -59,8 +59,8 @@ Voor deze taak kunt u de Azure Portal gebruiken door de stappen in deze sectie, 
    |----------|----------|-------|-------------|
    | **Naam** | Ja | <*Integration-account-name*> | De naam van uw integratie account, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) kan bevatten. In dit voor beeld wordt ' fabrikam-Integration ' gebruikt. |
    | **Abonnement** | Ja | <*Azure-subscription-name*> | De naam van uw Azure-abonnement |
-   | **Resourcegroep** | Ja | <*Azure-resource-group-name*> | De naam voor de [Azure-resource groep](../azure-resource-manager/resource-group-overview.md) die moet worden gebruikt voor het ordenen van verwante resources. Voor dit voor beeld maakt u een nieuwe resource groep met de naam ' FabrikamIntegration-RG '. |
-   | **Prijscategorie** | Ja | > <*prijzen niveau* | De prijs categorie voor het integratie account, dat u later kunt wijzigen. Voor dit voor beeld selecteert u **gratis**. Zie de volgende onderwerpen voor meer informatie: <p>[prijs model](../logic-apps/logic-apps-pricing.md#integration-accounts) voor - Logic apps <p>[limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) van - Logic apps <p>prijzen voor - [Logic apps](https://azure.microsoft.com/pricing/details/logic-apps/) |
+   | **Resourcegroep** | Ja | <*Azure-resource-group-name*> | De naam voor de [Azure-resource groep](../azure-resource-manager/management/overview.md) die moet worden gebruikt voor het ordenen van verwante resources. Voor dit voor beeld maakt u een nieuwe resource groep met de naam ' FabrikamIntegration-RG '. |
+   | **Prijscategorie** | Ja | > <*prijzen niveau* | De prijs categorie voor het integratie account, dat u later kunt wijzigen. Voor dit voor beeld selecteert u **gratis**. Zie deze onderwerpen voor meer informatie: <p>[prijs model](../logic-apps/logic-apps-pricing.md#integration-accounts) voor - Logic apps <p>[limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) van - Logic apps <p>prijzen voor - [Logic apps](https://azure.microsoft.com/pricing/details/logic-apps/) |
    | **Locatie** | Ja | <*Azure-regio*> | De regio waar de meta gegevens van uw integratie account moeten worden opgeslagen. Selecteer dezelfde locatie als uw logische app of maak uw Logic apps op dezelfde locatie als uw integratie account. Gebruik voor dit voor beeld ' vs-West '. <p>**Opmerking**: als u een integratie account in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)wilt maken, selecteert u die ISE als de locatie. Zie [integratie accounts maken in een ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)voor meer informatie. |
    | **Log Analytics** | Nee | Uit, op | Laat de instelling **uitgeschakeld** voor dit voor beeld. |
    |||||
@@ -130,7 +130,7 @@ Als u deze wijziging wilt aanbrengen, kunt u de Azure Portal gebruiken door de s
 
 <a name="upgrade-tier-azure-cli"></a>
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure-CLI
 
 1. Als u dit nog niet hebt gedaan, [installeert u de vereisten voor Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 

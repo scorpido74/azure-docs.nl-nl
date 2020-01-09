@@ -3,23 +3,23 @@ title: Grootte van virtuele machines voor Azure-Cloud Services | Microsoft Docs
 description: Geeft een lijst van de verschillende grootten van virtuele machines (en Id's) voor web-en werk rollen van Azure Cloud service.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 0df9ee859ae8e341537f5e832d9ff90e9736cb0c
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.author: tagore
+ms.openlocfilehash: 34cb4282f64544e67b3724699380d1d54fd9b806
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443018"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660423"
 ---
 # <a name="sizes-for-cloud-services"></a>Grootte voor Cloud Services
 In dit onderwerp worden de beschik bare grootten en opties voor Cloud service-rolinstanties (webrollen en werk rollen) beschreven. Het biedt ook overwegingen bij de implementatie bij het plannen van het gebruik van deze resources. Elke grootte heeft een ID die u in het [service definitie bestand](cloud-services-model-and-package.md#csdef)plaatst. De prijzen voor elke grootte zijn beschikbaar op de pagina met [Cloud Services prijzen](https://azure.microsoft.com/pricing/details/cloud-services/) .
 
 > [!NOTE]
-> Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-subscription-service-limits.md) voor meer informatie over verwante Azure-limieten.
+> Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md) voor meer informatie over verwante Azure-limieten.
 >
 >
 
@@ -38,7 +38,7 @@ De volgende overwegingen kunnen u helpen bij het kiezen van een grootte:
 
 * Grootten uit de A8-A11- en H-serie worden ook wel *rekenintensieve exemplaren* genoemd. De hardware waarop deze grootten worden uitgevoerd, is ontworpen en geoptimaliseerd voor rekenintensieve en netwerkintensieve toepassingen, waaronder HPC-clustertoepassingen (high-performance computing), modellerings- en simulatietoepassingen. De A8-A11-serie gebruikt Intel Xeon E5-2670 @ 2,6 GHZ en de H-serie gebruikt Intel Xeon E5-2667 v3 @ 3,2 GHz. Zie [High Performance Compute VM sizes](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)(Engelstalig) voor gedetailleerde informatie en overwegingen over het gebruik van deze grootten.
 * De Dv3-serie, dv2-serie, D-serie, G-serie zijn ideaal voor toepassingen die snellere Cpu's, betere prestaties van de lokale schijf of een hogere hoeveelheid geheugen vereisen. Ze bieden een krachtige combinatie voor vele toepassingen op bedrijfsniveau.
-* Sommige fysieke hosts in Azure-datacenters bieden mogelijk geen ondersteuning voor grotere VM-formaten, zoals A5 – A11. Als gevolg hiervan kan het fout bericht de **virtuele machine {machine name} niet configureren** , of kan de **virtuele machine {machine naam} niet worden gemaakt** wanneer de grootte van een bestaande virtuele machine wordt gewijzigd in een nieuwe omvang. maken van een nieuwe virtuele machine in een virtueel netwerk dat is gemaakt vóór 16 april 2013; of toevoegen van een nieuwe virtuele machine aan een bestaande Cloud service. Fout [weer geven: Kan de virtuele machine](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) niet configureren in het ondersteunings forum voor tijdelijke oplossingen voor elk implementatie scenario.
+* Sommige fysieke hosts in Azure-datacenters bieden mogelijk geen ondersteuning voor grotere VM-formaten, zoals A5 – A11. Als gevolg hiervan kan het fout bericht de **virtuele machine {machine name} niet configureren** , of kan de **virtuele machine {machine naam} niet worden gemaakt** wanneer de grootte van een bestaande virtuele machine wordt gewijzigd in een nieuwe omvang. maken van een nieuwe virtuele machine in een virtueel netwerk dat is gemaakt vóór 16 april 2013; of toevoegen van een nieuwe virtuele machine aan een bestaande Cloud service. Zie [fout: ' het configureren van de virtuele machine is mislukt '](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) in het ondersteunings forum voor tijdelijke oplossingen voor elk implementatie scenario.
 * Het is ook mogelijk dat uw abonnement het aantal kernen beperkt dat u in een bepaalde groottefamilie mag implementeren. Neem contact op met ondersteuning van Azure als u een quotum wilt verhogen.
 
 ## <a name="performance-considerations"></a>Prestatieoverwegingen
@@ -76,11 +76,11 @@ In de volgende tabellen ziet u de grootten en de capaciteiten die ze bieden.
 * De maximale netwerkbandbreedte is de maximale geaggregeerde bandbreedte die is toegekend en toegewezen per VM-type. De maximale bandbreedte geeft richtlijnen voor het selecteren van het juiste type virtuele machine om ervoor te zorgen dat er voldoende netwerkcapaciteit beschikbaar is. Wanneer u overstapt tussen laag, gemiddeld, hoog en zeer hoog, neemt de door Voer dienovereenkomstig toe. De werkelijke netwerkprestaties zijn afhankelijk van talloze factoren, waaronder de netwerk- en toepassingsbelastingen en de instellingen van het toepassingsnetwerk.
 
 ## <a name="a-series"></a>A-serie
-| Size            | CPU-kernen | Geheugen: GiB  | Tijdelijke opslag: GiB       | Max. aantal NIC's/netwerkbandbreedte |
+| Grootte            | Cpu-cores | Geheugen: GiB  | Tijdelijke opslag: GiB       | Max. aantal NIC's/netwerkbandbreedte |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | ExtraSmall      | 1         | 0,768        | 20                   | 1/laag |
 | Klein           | 1         | 1,75         | 225                  | 1/gemiddeld |
-| Gemiddeld          | 2         | 3,5          | 490                  | 1/gemiddeld |
+| Middelgroot          | 2         | 3,5          | 490                  | 1/gemiddeld |
 | Groot           | 4         | 7            | 1000                 | 2/hoog |
 | ExtraLarge      | 8         | 14           | 2040                 | 4/hoog |
 | A5              | 2         | 14           | 490                  | 1/gemiddeld |
@@ -90,7 +90,7 @@ In de volgende tabellen ziet u de grootten en de capaciteiten die ze bieden.
 ## <a name="a-series---compute-intensive-instances"></a>A-serie: rekenintensieve exemplaren
 Zie [High Performance Compute VM sizes](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)(Engelstalig) voor informatie en overwegingen over het gebruik van deze grootten.
 
-| Size            | CPU-kernen | Geheugen: GiB  | Tijdelijke opslag: GiB       | Max. aantal NIC's/netwerkbandbreedte |
+| Grootte            | Cpu-cores | Geheugen: GiB  | Tijdelijke opslag: GiB       | Max. aantal NIC's/netwerkbandbreedte |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | A8*             |8          | 56           | 1817                 | 2/hoog |
 | A9*             |16         | 112          | 1817                 | 4/zeer hoog |
@@ -101,7 +101,7 @@ Zie [High Performance Compute VM sizes](../virtual-machines/windows/sizes-hpc.md
 
 ## <a name="av2-series"></a>Av2-serie
 
-| Size            | CPU-kernen | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
+| Grootte            | Cpu-cores | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_A1_v2  | 1         | 2            | 10                   | 1/gemiddeld                 |
 | Standard_A2_v2  | 2         | 4            | 20                   | 2/gemiddeld                 |
@@ -112,8 +112,8 @@ Zie [High Performance Compute VM sizes](../virtual-machines/windows/sizes-hpc.md
 | Standard_A8m_v2 | 8         | 64           | 80                   | 8/hoog                     |
 
 
-## <a name="d-series"></a>D-serie
-| Size            | CPU-kernen | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
+## <a name="d-series"></a>D-reeks
+| Grootte            | Cpu-cores | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1     | 1         | 3,5          | 50                   | 1/gemiddeld |
 | Standard_D2     | 2         | 7            | 100                  | 2/hoog |
@@ -124,8 +124,8 @@ Zie [High Performance Compute VM sizes](../virtual-machines/windows/sizes-hpc.md
 | Standard_D13    | 8         | 56           | 400                  | 8/hoog |
 | Standard_D14    | 16        | 112          | 800                  | 8/zeer hoog |
 
-## <a name="dv2-series"></a>Dv2-serie
-| Size            | CPU-kernen | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
+## <a name="dv2-series"></a>Dv2-reeksen
+| Grootte            | Cpu-cores | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1_v2  | 1         | 3,5          | 50                   | 1/gemiddeld |
 | Standard_D2_v2  | 2         | 7            | 100                  | 2/hoog |
@@ -140,7 +140,7 @@ Zie [High Performance Compute VM sizes](../virtual-machines/windows/sizes-hpc.md
 
 ## <a name="dv3-series"></a>Dv3-serie
 
-| Size            | CPU-kernen | Geheugen: GiB   | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
+| Grootte            | Cpu-cores | Geheugen: GiB   | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
 | Standard_D2_v3  | 2         | 8             | 50                   | 2/gemiddeld |
 | Standard_D4_v3  | 4         | 16            | 100                  | 2/hoog |
@@ -151,7 +151,7 @@ Zie [High Performance Compute VM sizes](../virtual-machines/windows/sizes-hpc.md
 
 ## <a name="ev3-series"></a>Ev3-serie
 
-| Size            | CPU-kernen | Geheugen: GiB   | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
+| Grootte            | Cpu-cores | Geheugen: GiB   | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
 | Standard_E2_v3  | 2         | 16            | 50                   | 2/gemiddeld |
 | Standard_E4_v3  | 4         | 32            | 100                  | 2/hoog |
@@ -161,8 +161,8 @@ Zie [High Performance Compute VM sizes](../virtual-machines/windows/sizes-hpc.md
 | Standard_E64_v3 | 64        | 432           | 1600                 | 8/zeer hoog |
 
 
-## <a name="g-series"></a>G-serie
-| Size            | CPU-kernen | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
+## <a name="g-series"></a>G-reeks
+| Grootte            | Cpu-cores | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_G1     | 2         | 28           | 384                  |1/hoog |
 | Standard_G2     | 4         | 56           | 768                  |2/hoog |
@@ -175,7 +175,7 @@ Virtuele Azure-machines uit de H-serie zijn de volgende generatie HPC-VM's, geri
 
 Naast een zeer hoge CPU-kracht biedt de H-serie ook verschillende opties voor RDMA-netwerken met lage latentie met gebruik van FDR InfiniBand, evenals verschillende geheugenconfiguraties om geheugenintensieve rekenvereisten te ondersteunen.
 
-| Size            | CPU-kernen | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
+| Grootte            | Cpu-cores | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_H8     | 8         | 56           | 1000                 | 8/hoog |
 | Standard_H16    | 16        | 112          | 2000                 | 8/zeer hoog |
@@ -189,7 +189,7 @@ Naast een zeer hoge CPU-kracht biedt de H-serie ook verschillende opties voor RD
 ## <a name="configure-sizes-for-cloud-services"></a>Groottes voor Cloud Services configureren
 U kunt de grootte van de virtuele machine van een rolinstantie opgeven als onderdeel van het service model dat wordt beschreven in het [service definitie bestand](cloud-services-model-and-package.md#csdef). De grootte van de rol bepaalt het aantal CPU-kernen, de geheugen capaciteit en de grootte van het lokale bestands systeem dat wordt toegewezen aan een actief exemplaar. Kies de grootte van de rol op basis van de resource vereiste van uw toepassing.
 
-Hier volgt een voor beeld van het instellen van de rolgrootte die moet worden Standard_D2 voor een instantie van een webrole:
+Hier volgt een voor beeld van het instellen van de rolgrootte die moet worden Standard_D2 voor een webrole-instantie:
 
 ```xml
 <WorkerRole name="Worker1" vmsize="Standard_D2">
@@ -214,5 +214,8 @@ Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceS
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie voor meer informatie: [Azure subscription and service limits, quotas, and constraints](../azure-subscription-service-limits.md) (Limieten van Azure-abonnementen en -services, quota en beperkingen).
-* Meer informatie [over de maximale grootte](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) van Compute-VM'S voor HPC-workloads.
+* Zie voor meer informatie: [Azure subscription and service limits, quotas, and constraints](../azure-resource-manager/management/azure-subscription-service-limits.md) (Limieten van Azure-abonnementen en -services, quota en beperkingen).
+* Meer informatie [over de maximale grootte van Compute-vm's](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) voor HPC-workloads.
+
+
+

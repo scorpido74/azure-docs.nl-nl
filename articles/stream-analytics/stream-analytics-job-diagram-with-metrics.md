@@ -1,87 +1,85 @@
 ---
-title: Gegevensgestuurde foutopsporing in Azure Stream Analytics
-description: In dit artikel wordt beschreven hoe u uw Azure Stream Analytics-taak oplossen met behulp van het taakdiagram en metrische gegevens in Azure portal.
-services: stream-analytics
+title: Fout opsporing op basis van gegevens in Azure Stream Analytics
+description: In dit artikel wordt beschreven hoe u de Azure Stream Analytics-taak kunt oplossen met behulp van het taak diagram en de metrische gegevens in de Azure Portal.
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 472d7fcbca1a221b69d681ce33d39978b53a3204
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3c0c29e1793e56efae8d13cb01d57faf257d8805
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620950"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426076"
 ---
-# <a name="data-driven-debugging-by-using-the-job-diagram"></a>Gegevensgestuurde foutopsporing met behulp van het taakdiagram
+# <a name="data-driven-debugging-by-using-the-job-diagram"></a>Fout opsporing op basis van gegevens met behulp van het taak diagram
 
-Het taakdiagram op de **bewaking** blade in Azure portal kunt u uw pijplijn taak visualiseren. Hierin worden invoer, uitvoer en querystappen weergegeven. U kunt het taakdiagram gebruiken om de metrische gegevens voor elke stap te onderzoeken, om de bron van het probleem sneller te isoleren bij het oplossen van problemen.
+Het taak diagram op de Blade **bewaking** in het Azure Portal kan u helpen uw taak pijplijn te visualiseren. Hierin worden invoer, uitvoer en querystappen weergegeven. U kunt het taakdiagram gebruiken om de metrische gegevens voor elke stap te onderzoeken, om de bron van het probleem sneller te isoleren bij het oplossen van problemen.
 
-## <a name="using-the-job-diagram"></a>Met behulp van het taakdiagram
+## <a name="using-the-job-diagram"></a>Het taak diagram gebruiken
 
-In de Azure-portal, terwijl in een Stream Analytics-taak, onder **ondersteuning + probleemoplossing**, selecteer **taakdiagram**:
+Selecteer in de Azure Portal, terwijl u in een Stream Analytics-taak, onder **ondersteuning en probleem oplossing**, **taak diagram**:
 
-![Taakdiagram met metrische gegevens - locatie](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-1.png)
+![Taak diagram met metrische gegevens-locatie](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-1.png)
 
-Selecteer elke querystap om te zien van de bijbehorende sectie in een deelvenster voor de querybewerking. Een grafiek met metrische gegevens voor de stap wordt in een onderste deelvenster op de pagina weergegeven.
+Selecteer elke query stap om de bijbehorende sectie in een deel venster voor het bewerken van query's weer te geven. Een grafiek met metrische gegevens voor de stap wordt weer gegeven in een onderste deel venster op de pagina.
 
-![Taakdiagram met metrische gegevens over - basic-taak](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-2.png)
+![Taak diagram met metrische gegevens-basis taak](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-2.png)
 
-Als u wilt zien van de partities van de Azure Event Hubs-invoer, selecteer **...** Er wordt een snelmenu weergegeven. U kunt ook de input fusie zien.
+Als u de partities van de Azure Event Hubs invoer wilt zien, selecteert u **...** Er wordt een context menu weer gegeven. U kunt ook de invoer fusie bekijken.
 
-![Taakdiagram met metrische gegevens over - partitie uitbreiden](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-3.png)
+![Taak diagram met metrische gegevens-partitie uitbreiden](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-3.png)
 
-Selecteer het partitieknooppunt de grafiek met metrische gegevens voor slechts één partitie. De metrische gegevens worden weergegeven aan de onderkant van de pagina.
+Als u de metrische grafiek slechts voor één partitie wilt weer geven, selecteert u het partitie knooppunt. De metrische gegevens worden aan de onderkant van de pagina weer gegeven.
 
-![Diagram met metrische gegevens over - metrische gegevens in de taak](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-4.png)
+![Taak diagram met metrische gegevens-meer metrische gegevens](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-4.png)
 
-Als u wilt zien van de grafiek met metrische gegevens voor een fusie, selecteer het knooppunt fusie. Het volgende diagram laat zien dat er zijn geen gebeurtenissen zijn verwijderd of aangepast.
+Als u het grafiek met metrische gegevens voor een fusie wilt weer geven, selecteert u het knoop punt fusie. In het volgende diagram ziet u dat er geen gebeurtenissen zijn verwijderd of aangepast.
 
-![Taakdiagram met metrische gegevens over - raster](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-5.png)
+![Taak diagram met metrische gegevens-raster](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-5.png)
 
-Als u wilt zien van de details van de metrische waarde en de tijd, wijst u de grafiek.
+Als u de details van de metrische waarde en tijd wilt weer geven, wijst u de grafiek aan.
 
-![Diagram met metrische gegevens over de taak - Beweeg de muisaanwijzer](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-6.png)
+![Taak diagram met metrische gegevens-aanwijzen](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-6.png)
 
-## <a name="troubleshoot-by-using-metrics"></a>Problemen oplossen met behulp van metrische gegevens
+## <a name="troubleshoot-by-using-metrics"></a>Problemen oplossen met metrische gegevens
 
-De **QueryLastProcessedTime** metrische waarde geeft aan wanneer de gegevens voor het ontvangen van een specifieke stap. Door te kijken naar de topologie, kunt u achteruit werken vanaf de om te zien welke stap geen gegevens ontvangt. Als een stap geen gegevens ontvangt, gaat u naar de querystap vlak voor. Controleer of de vorige querystap heeft een bepaalde periode, en als er voldoende tijd is verstreken voor het uitvoeren van gegevens. (Let op dat moment windows zijn uitgelijnd op het uur.)
+De metrische waarde **QueryLastProcessedTime** geeft aan wanneer een specifieke stap gegevens heeft ontvangen. Door de topologie te bekijken, kunt u naar achteren werken vanuit de uitvoer processor om te zien welke stap geen gegevens ontvangt. Als er geen gegevens worden opgehaald uit een stap, gaat u naar de query stap alleen voor deze. Controleer of de voor gaande query stap een tijd venster heeft en of er voldoende tijd is verstreken voor het uitvoeren van gegevens. (Houd er rekening mee dat Windows op het hele uur is uitgelijnd.)
  
-Als de vorige querystap een invoerprocessor is, gebruikt u de metrische invoerwaarden antwoord geven op uw de volgende gerichte vragen. Ze kunnen u helpen bepalen of een taak is ophalen van gegevens van invoerbronnen. Controleer elke partitie als de query gepartitioneerd is.
+Als de voor gaande query stap een invoer processor is, gebruikt u de metrische gegevens invoer om de volgende gerichte vragen te beantwoorden. Ze kunnen u helpen bepalen of er gegevens worden opgehaald uit de invoer bronnen van een taak. Controleer elke partitie als de query gepartitioneerd is.
  
-### <a name="how-much-data-is-being-read"></a>Hoeveel gegevens worden gelezen?
+### <a name="how-much-data-is-being-read"></a>Hoeveel gegevens worden er gelezen?
 
-*   **InputEventsSourcesTotal** is het aantal gelezen gegevenseenheden. Bijvoorbeeld, het aantal blobs.
+*   **InputEventsSourcesTotal** is het aantal gelezen gegevens eenheden. Bijvoorbeeld het aantal blobs.
 *   **InputEventsTotal** is het aantal gelezen gebeurtenissen. Deze metrische waarde is beschikbaar per partitie.
 *   **InputEventsInBytesTotal** is het aantal gelezen bytes.
-*   **InputEventsLastArrivalTime** wordt bijgewerkt met de wachtrijduur van elke ontvangen gebeurtenis.
+*   **InputEventsLastArrivalTime** wordt bijgewerkt met elke ontvangen gebeurtenis in wachtrij.
  
-### <a name="is-time-moving-forward-if-actual-events-are-read-punctuation-might-not-be-issued"></a>Is de tijd vooruit? Als er feitelijke gebeurtenissen worden gelezen, mogelijk geen interpunctie worden uitgegeven.
+### <a name="is-time-moving-forward-if-actual-events-are-read-punctuation-might-not-be-issued"></a>Wordt de tijd vooruit verplaatst? Als er werkelijke gebeurtenissen worden gelezen, worden er mogelijk geen lees tekens uitgegeven.
 
-*   **InputEventsLastPunctuationTime** geeft aan wanneer er interpunctie is gegenereerd om ervoor te zorgen dat de tijd vooruit blijft lopen. Als er geen interpunctie wordt gegenereerd, kan gegevensstroom blokkeren.
+*   **InputEventsLastPunctuationTime** geeft aan wanneer er interpunctie is gegenereerd om ervoor te zorgen dat de tijd vooruit blijft lopen. Als er geen interpunctie wordt gegeven, kan de gegevens stroom worden geblokkeerd.
  
 ### <a name="are-there-any-errors-in-the-input"></a>Zijn er fouten in de invoer?
 
-*   **InputEventsEventDataNullTotal** is een telling van gebeurtenissen die null gegevens hebben.
-*   **InputEventsSerializerErrorsTotal** is een telling van gebeurtenissen die niet goed kunnen worden gedeserialiseerd.
-*   **InputEventsDegradedTotal** is een telling van gebeurtenissen die een ander probleem dan bij deserialisatie.
+*   **Inputeventseventdatanulltotal telt** is een telling van gebeurtenissen die null-gegevens bevatten.
+*   **Inputeventsserializererrorstotal telt alle** is een telling van gebeurtenissen die niet correct kunnen worden gedeserialiseerd.
+*   **Inputeventsdegradedtotal telt alle** is een telling van gebeurtenissen waarvan het probleem zich voordoet, anders dan bij deserialisatie.
  
-### <a name="are-events-being-dropped-or-adjusted"></a>Gebeurtenissen worden verwijderd of aangepast zijn?
+### <a name="are-events-being-dropped-or-adjusted"></a>Worden gebeurtenissen verwijderd of aangepast?
 
-*   **InputEventsEarlyTotal** is het aantal gebeurtenissen die een tijdstempel voordat de bovengrens hebben.
-*   **Inputeventsearlytotal** is het aantal gebeurtenissen die een tijdstempel na de bovengrens hebben.
-*   **InputEventsDroppedBeforeApplicationStartTimeTotal** is het aantal gebeurtenissen verwijderd voordat de begintijd van de taak.
+*   **InputEventsEarlyTotal** is het aantal gebeurtenissen met een tijds tempel van de toepassing voor de bovengrens.
+*   **Inputeventsearlytotal** is het aantal gebeurtenissen met een tijds tempel van de toepassing na de bovengrens.
+*   **InputEventsDroppedBeforeApplicationStartTimeTotal** is het aantal gebeurtenissen dat voor de begin tijd van de taak is verwijderd.
  
-### <a name="are-we-falling-behind-in-reading-data"></a>We dalen achter bij het lezen van gegevens?
+### <a name="are-we-falling-behind-in-reading-data"></a>Vallen we achter in het lezen van gegevens?
 
-*   **Invoer (totaal) aan gebeurtenissen met achterstand** vertelt u hoeveel berichten moeten worden gelezen voor Event Hubs en Azure IoT Hub-invoer. Als dit aantal groter dan 0 is, betekent dat de taak als waarmee ze zich aandienen de gegevens niet verwerken. U moet in dit geval Verhoog het aantal Streaming-eenheden en/of zorg ervoor dat uw taak kan worden geparallelliseerd. U kunt meer informatie over deze zien op de [query-parallellisatie pagina](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization). 
+*   In de achterstand van de **invoer (totaal)** wordt uitgelegd hoe veel meer berichten moeten worden gelezen voor Event hubs en Azure IOT hub-invoer. Wanneer dit aantal groter is dan 0, betekent dit dat uw taak de gegevens niet kan verwerken wanneer deze zich in bevindt. In dat geval moet u mogelijk het aantal streaming-eenheden verhogen en/of ervoor zorgen dat uw taak kan worden geparallelleerd. Op de [pagina query parallel Lise ring](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)vindt u meer informatie. 
 
 
-## <a name="get-help"></a>Help opvragen
-Voor verdere ondersteuning, kunt u proberen onze [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
+## <a name="get-help"></a>Hulp krijgen
+Probeer het [Azure stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp. 
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Inleiding tot Stream Analytics](stream-analytics-introduction.md)

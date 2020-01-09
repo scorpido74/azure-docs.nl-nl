@@ -2,24 +2,21 @@
 title: Overzicht van Azure Automation
 description: Informatie over het gebruik van Azure Automation voor het automatiseren van de levenscyclus van infrastructuur en toepassingen.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: eamonoreilly
-ms.author: eamono
 keywords: azure automation, DSC, powershell, configuratie van gewenste status, updatebeheer, bijhouden van wijzigingen, inventaris, runbooks, python, grafisch
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: b14550d0e03382a6709924ca5671cb26d09fcc35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3037f96464b0902ca3923bdaea2bddff39c47733
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60738795"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421951"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Een inleiding tot Azure Automation
 
-Azure Automation biedt een cloud-gebaseerde automatiserings- en configuratieservice die voor consistent beheer in uw Azure- en niet-Azure-omgevingen zorgt. De service omvat procesautomatisering, updatebeheer en configuratie van onderdelen. Azure Automation biedt volledige controle tijdens de implementatie, bewerkingen en het buiten gebruik stellen van werkbelastingen en bronnen.
+Azure Automation voorziet in een cloudautomatiserings- en -configuratieservice voor consistent beheer in uw Azure- en niet-Azure-omgevingen. De service omvat procesautomatisering, updatebeheer en configuratie van onderdelen. Azure Automation biedt volledige controle tijdens de implementatie, bewerkingen en het buiten gebruik stellen van werkbelastingen en bronnen.
 In dit artikel wordt een kort overzicht gegeven van Azure Automation en worden enkele veelgestelde vragen beantwoord. Gebruik de koppelingen in dit overzicht voor meer informatie over de verschillende mogelijkheden.
 
 ## <a name="azure-automation-capabilities"></a>Mogelijkheden van Azure Automation
@@ -46,14 +43,14 @@ Azure Automation bestaat uit een set gedeelde bronnen waarmee u uw omgevingen ee
 
 * **[Schema's](automation-schedules.md)** : worden gebruikt in de service om automatisering op vooraf gedefinieerde tijden te activeren.
 * **[Modules](automation-integration-modules.md)** : modules worden gebruikt voor het beheren van Azure en andere systemen. Importeer gegevens in het Automation-account voor cmdlets en DSC-resources van Microsoft, van derden of uit de community, of voor aangepaste gedefinieerde cmdlets en DSC-resources.
-* **[Modulegalerie](automation-runbook-gallery.md)**: systeemeigen integratie met de PowerShell Gallery om runbooks weer te geven en deze te importeren in het Automation-account.
-* **[Python 2-pakketten](python-packages.md)**: voeg Python 2-pakketten toe aan uw automation-account om deze te gebruiken in uw Python-runbooks.
+* **[Modulegalerie](automation-runbook-gallery.md)** : systeemeigen integratie met de PowerShell Gallery om runbooks weer te geven en deze te importeren in het Automation-account.
+* **[Python 2-pakketten](python-packages.md)** : voeg Python 2-pakketten toe aan uw automation-account om deze te gebruiken in uw Python-runbooks.
 * **[Referenties](automation-credentials.md)** : hiermee kunt u vertrouwelijke informatie veilig opslaan die vervolgens kan worden gebruikt door runbooks en configuraties tijdens runtime.
 * **[Verbindingen](automation-connections.md)** : sla een naam of waardepaar met informatie op waarin algemene informatie is opgenomen wanneer u verbinding maakt met systemen in verbindingsresources. Verbindingen worden gedefinieerd door de module-auteur voor gebruik tijdens runtime in runbooks en configuraties.
 * **[Certificaten](automation-certificates.md)** : deze kunt u opslaan en beschikbaar stellen tijdens runtime, zodat ze kunnen worden gebruikt voor verificatie en beveiliging van geïmplementeerde resources.
 * **[Variabelen](automation-variables.md)** : deze bieden een manier om inhoud te gebruiken die kan worden gebruikt in runbooks en configuraties. U kunt waarden wijzigen zonder een van de runbooks en configuraties die ernaar verwijzen te moeten veranderen.
 
-### <a name="source-control-integration"></a>Integratie van bronbeheer
+### <a name="source-control-integration"></a>Bronbeheerintegratie
 
 Azure Automation kan worden [geïntegreerd met broncodebeheer](source-control-integration.md), zodat de configuratie als code kan worden toegepast wanneer runbooks of configuraties in een broncodebeheersysteem kunnen worden ingecheckt.
 

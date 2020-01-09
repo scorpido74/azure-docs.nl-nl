@@ -12,15 +12,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/19/2019
 ms.author: genli
-ms.openlocfilehash: 87b4d761eb7bd1c4a16998e44e8160cda24a05b4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: e45de5c12f0d93645a0b1253acf8300527cafdbc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088245"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374638"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Problemen met een virtuele Linux-machine oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van de Azure Portal
-Als op de virtuele Linux-machine (VM) een opstart-of schijf fout optreedt, moet u mogelijk de stappen voor probleem oplossing uitvoeren op de virtuele harde schijf zelf. Een voor beeld hiervan is een ongeldige vermelding in `/etc/fstab` die verhindert dat de virtuele machine kan worden opgestart. In dit artikel wordt beschreven hoe u de Azure Portal kunt gebruiken om de virtuele harde schijf te verbinden met een andere Linux-VM om eventuele fouten op te lossen en vervolgens de oorspronkelijke VM opnieuw te maken.
+Als op de virtuele Linux-machine (VM) een opstart-of schijf fout optreedt, moet u mogelijk de stappen voor probleem oplossing uitvoeren op de virtuele harde schijf zelf. Een voor beeld hiervan is een ongeldige vermelding in `/etc/fstab` waarmee wordt voor komen dat de virtuele machine kan worden opgestart. In dit artikel wordt beschreven hoe u de Azure Portal kunt gebruiken om de virtuele harde schijf te verbinden met een andere Linux-VM om eventuele fouten op te lossen en vervolgens de oorspronkelijke VM opnieuw te maken.
 
 ## <a name="recovery-process-overview"></a>Overzicht van het herstelproces
 Het probleemoplossingsproces is als volgt:
@@ -50,7 +50,7 @@ Een moment opname is een volledige, alleen-lezen kopie van een virtuele harde sc
 
 1. Ga naar [Azure Portal](https://portal.azure.com). Selecteer **virtuele machines** in de zijbalk en selecteer vervolgens de VM met een probleem.
 1. Selecteer **schijven**in het linkerdeel venster en selecteer vervolgens de naam van de besturingssysteem schijf.
-    ![Afbeelding over de naam van de besturingssysteem schijf](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
+    ![installatie kopie over de naam van de besturingssysteem schijf](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
 1. Op de pagina **overzicht** van de besturingssysteem schijf en selecteert u **moment opname maken**.
 1. Maak een moment opname op dezelfde locatie als de besturingssysteem schijf.
 
@@ -105,9 +105,9 @@ Voor de volgende stappen gebruikt u een andere virtuele machine voor het oplosse
 ## <a name="mount-the-attached-data-disk"></a>De gekoppelde gegevens schijf koppelen
 
 > [!NOTE]
-> In de volgende voor beelden worden de stappen beschreven die nodig zijn voor een Ubuntu-VM. Als u een andere Linux-distributie gebruikt, zoals Red Hat Enterprise Linux of Suse, zijn de locaties en `mount` opdrachten van het logboek bestand mogelijk iets anders. Raadpleeg de documentatie voor uw specifieke distributie voor de desbetreffende wijzigingen in de opdrachten.
+> In de volgende voor beelden worden de stappen beschreven die nodig zijn voor een Ubuntu-VM. Als u een andere Linux-distributie gebruikt, zoals Red Hat Enterprise Linux of SUSE, zijn de locaties van het logboek bestand en `mount` opdrachten mogelijk iets anders. Raadpleeg de documentatie voor uw specifieke distributie voor de desbetreffende wijzigingen in de opdrachten.
 
-1. SSH naar uw virtuele machine voor probleem oplossing met de juiste referenties. Als deze schijf de eerste gegevens schijf is die aan uw virtuele machine voor probleem oplossing is gekoppeld, `/dev/sdc`is deze waarschijnlijk verbonden met. Gebruiken `dmseg` om gekoppelde schijven weer te geven:
+1. SSH naar uw virtuele machine voor probleem oplossing met de juiste referenties. Als deze schijf de eerste gegevens schijf is die aan uw virtuele machine voor probleem oplossing is gekoppeld, is deze waarschijnlijk verbonden met `/dev/sdc`. Gebruik `dmseg` om gekoppelde schijven weer te geven:
 
     ```bash
     dmesg | grep SCSI
@@ -122,22 +122,22 @@ Voor de volgende stappen gebruikt u een andere virtuele machine voor het oplosse
     [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
     ```
 
-    In het vorige voor beeld bevindt de besturingssysteem `/dev/sda` schijf zich op en de tijdelijke schijf die voor elke `/dev/sdb`VM is ingesteld, bevindt zich op. Als u meerdere gegevens schijven had, moeten ze zich op `/dev/sdd`, `/dev/sde`,,,, enzovoort.
+    In het voor gaande voor beeld bevindt de besturingssysteem schijf zich op `/dev/sda` en is de tijdelijke schijf die voor elke VM is ingesteld, op `/dev/sdb`. Als u meerdere gegevens schijven had, moeten deze worden `/dev/sdd`, `/dev/sde`, enzovoort.
 
-2. Maak een directory voor het koppelen van uw bestaande virtuele harde schijf. In het volgende voor beeld wordt een `troubleshootingdisk`map gemaakt met de naam:
+2. Maak een directory voor het koppelen van uw bestaande virtuele harde schijf. In het volgende voor beeld wordt een map gemaakt met de naam `troubleshootingdisk`:
 
     ```bash
     sudo mkdir /mnt/troubleshootingdisk
     ```
 
-3. Als u meerdere partities op de bestaande virtuele harde schijf hebt, koppelt u de vereiste partitie. In het volgende voor beeld wordt de eerste primaire partitie `/dev/sdc1`gekoppeld aan:
+3. Als u meerdere partities op de bestaande virtuele harde schijf hebt, koppelt u de vereiste partitie. In het volgende voor beeld wordt de eerste primaire partitie gekoppeld aan `/dev/sdc1`:
 
     ```bash
     sudo mount /dev/sdc1 /mnt/troubleshootingdisk
     ```
 
     > [!NOTE]
-    > Best Practice is het koppelen van gegevens schijven op virtuele machines in azure met behulp van de Universally Unique Identifier (UUID) van de virtuele harde schijf. Voor dit korte probleemoplossings scenario is het niet nodig om de virtuele harde schijf te koppelen met behulp van de UUID. Het bewerken `/etc/fstab` van virtuele harde schijven met de apparaatnaam in plaats van de UUID kan er echter toe leiden dat de VM niet kan worden opgestart onder normaal gebruik.
+    > Best Practice is het koppelen van gegevens schijven op virtuele machines in azure met behulp van de Universally Unique Identifier (UUID) van de virtuele harde schijf. Voor dit korte probleemoplossings scenario is het niet nodig om de virtuele harde schijf te koppelen met behulp van de UUID. Het bewerken van `/etc/fstab` om virtuele harde schijven te koppelen met behulp van de apparaatnaam in plaats van UUID kan er echter toe leiden dat de virtuele machine niet kan worden opgestart.
 
 
 ## <a name="fix-issues-on-original-virtual-hard-disk"></a>Problemen op de oorspronkelijke virtuele harde schijf oplossen
@@ -152,7 +152,7 @@ Wanneer de fouten zijn opgelost, koppelt u de bestaande virtuele harde schijf lo
     cd /
     ```
 
-    Ontkoppel nu de bestaande virtuele harde schijf. In het volgende voor beeld wordt het apparaat ontkoppeld op `/dev/sdc1`:
+    Ontkoppel nu de bestaande virtuele harde schijf. In het volgende voor beeld wordt het apparaat op `/dev/sdc1`ontkoppeld:
 
     ```bash
     sudo umount /dev/sdc1
@@ -170,7 +170,7 @@ Azure Portal ondersteunt nu het wijzigen van de besturingssysteem schijf van de 
 
 1. Ga naar [Azure Portal](https://portal.azure.com). Selecteer **virtuele machines** in de zijbalk en selecteer vervolgens de VM met een probleem.
 1. Selecteer **schijven**in het linkerdeel venster en selecteer vervolgens **besturingssysteem schijf wisselen**.
-        ![De afbeelding over het wisselen van de besturingssysteem schijf in Azure Portal](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
+        ![de installatie kopie over het wisselen van de besturingssysteem schijf in Azure Portal](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
 
 1. Kies de nieuwe schijf die u hebt gerepareerd en typ de naam van de virtuele machine om de wijziging te bevestigen. Als de schijf niet in de lijst wordt weer geven, wacht u 10 ~ 15 minuten nadat u de schijf hebt losgekoppeld van de virtuele machine voor probleem oplossing. Zorg er ook voor dat de schijf zich op dezelfde locatie bevindt als de virtuele machine.
 1. Selecteer OK.
@@ -178,4 +178,4 @@ Azure Portal ondersteunt nu het wijzigen van de besturingssysteem schijf van de 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [problemen met ssh-verbindingen met een Azure VM oplossen](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)als u problemen ondervindt bij het maken van verbinding met uw virtuele machine. Zie problemen met [toepassings connectiviteit oplossen op een Linux-VM](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor problemen met het openen van toepassingen die op uw virtuele machine worden uitgevoerd.
 
-Zie [Azure Resource Manager Overview](../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie over het gebruik van Resource Manager.
+Zie [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie over het gebruik van Resource Manager.

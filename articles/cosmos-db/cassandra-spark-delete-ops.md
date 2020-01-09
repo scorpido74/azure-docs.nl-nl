@@ -1,6 +1,6 @@
 ---
-title: Verwijderbewerkingen met betrekking tot Azure Cosmos DB Cassandra-API van Spark
-description: Dit artikel wordt uitgelegd hoe u gegevens in tabellen in Cassandra-API van Azure Cosmos DB te verwijderen uit Spark
+title: Bewerkingen op Azure Cosmos DB Cassandra-API uit Spark verwijderen
+description: In dit artikel wordt beschreven hoe u gegevens in tabellen in Azure Cosmos DB Cassandra-API kunt verwijderen uit Spark
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: fc9e0dabd226952bea3bd14da0747c5b6292c2e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0317fab158b2ea73b365bedc272721816da22c4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60893961"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442092"
 ---
-# <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Gegevens in Cassandra-API van Azure Cosmos DB-tabellen uit Spark verwijderen
+# <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Gegevens in Azure Cosmos DB Cassandra-API tabellen verwijderen uit Spark
 
-Dit artikel wordt beschreven hoe u gegevens in Cassandra-API van Azure Cosmos DB-tabellen te verwijderen uit Spark.
+In dit artikel wordt beschreven hoe u gegevens uit Spark kunt verwijderen uit Azure Cosmos DB Cassandra-API tabellen.
 
 ## <a name="cassandra-api-configuration"></a>Configuratie van de Cassandra-API
 
@@ -46,8 +46,8 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="sample-data-generator"></a>Voorbeeld gegevensgenerator
-We zullen dit codefragment gebruiken voor het genereren van voorbeeldgegevens:
+## <a name="sample-data-generator"></a>Voor beeld van gegevens generator
+Dit code fragment wordt gebruikt om voorbeeld gegevens te genereren:
 
 ```scala
 //Create dataframe
@@ -69,7 +69,7 @@ booksDF.write
 
 ## <a name="dataframe-api"></a>Dataframe API
 
-### <a name="delete-rows-that-match-a-condition"></a>Verwijderen van rijen die overeenkomen met een voorwaarde
+### <a name="delete-rows-that-match-a-condition"></a>Rijen verwijderen die overeenkomen met een voor waarde
 
 ```scala
 //1) Create dataframe
@@ -358,7 +358,7 @@ deleteBooksRDD: com.datastax.spark.connector.rdd.CassandraTableScanRDD[com.datas
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende opdracht om uit te voeren aggregatie en bewerkingen voor het kopiëren van gegevens-
+Voor het uitvoeren van aggregatie en het kopiëren van gegevens, raadpleegt u
  
 * [Aggregatiebewerkingen uit te voeren](cassandra-spark-aggregation-ops.md)
 * [Kopieerbewerkingen tabel](cassandra-spark-table-copy-ops.md)

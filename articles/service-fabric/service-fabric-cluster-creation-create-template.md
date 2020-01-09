@@ -1,25 +1,14 @@
 ---
-title: Een Azure Service Fabric-cluster sjabloon maken | Microsoft Docs
+title: Een Azure Service Fabric-cluster sjabloon maken
 description: Meer informatie over het maken van een resource manager-sjabloon voor een Service Fabric cluster. Configureer beveiliging, Azure Key Vault en Azure Active Directory (Azure AD) voor client verificatie.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: chackdan
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/16/2018
-ms.author: atsenthi
-ms.openlocfilehash: 4a2fe8238a1ac6f668450aca4e2fd6d2b4ba04a5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a00f2bc505acd89d9fb9488565b6235bf7d146ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901536"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463248"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Een Service Fabric cluster resource manager-sjabloon maken
 
@@ -265,9 +254,9 @@ Zie voor meer informatie over de JSON-syntaxis en de eigenschappen voor de resou
 
 * [Micro soft. ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
 * [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
-* [Micro soft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-* [Micro soft. Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
-* [Micro soft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
+* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
 * [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
 
 <!-- Links -->

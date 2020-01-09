@@ -9,19 +9,19 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 7c942661beea34e7a49223f4a8e4a4d6c0eb66e1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7532db883b6267c402e380d865c917d16a7052da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929321"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440621"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Gegevens kopiëren van een HTTP-eind punt met behulp van Azure Data Factory
 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](v1/data-factory-http-connector.md)
+> * [Versie 1:](v1/data-factory-http-connector.md)
 > * [Huidige versie](connector-http.md)
 
 In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens van een HTTP-eind punt te kopiëren. Het artikel is gebaseerd op [Kopieeractiviteit in Azure Data Factory](copy-activity-overview.md), die een algemeen overzicht van Kopieeractiviteit geeft.
@@ -112,7 +112,7 @@ Als u ClientCertificate-verificatie wilt gebruiken, stelt u de eigenschap **auth
 | Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | embeddedCertData | Met base64 gecodeerde certificaat gegevens. | Geef **embeddedCertData** of **certThumbprint**op. |
-| CertThumbprint | De vinger afdruk van het certificaat dat is geïnstalleerd op uw zelf-hostende certificaat archief van Integration Runtime computer. Is alleen van toepassing wanneer het zelf-hostende type Integration Runtime is opgegeven in de eigenschap **connectVia** . | Geef **embeddedCertData** of **certThumbprint**op. |
+| certThumbprint | De vinger afdruk van het certificaat dat is geïnstalleerd op uw zelf-hostende certificaat archief van Integration Runtime computer. Is alleen van toepassing wanneer het zelf-hostende type Integration Runtime is opgegeven in de eigenschap **connectVia** . | Geef **embeddedCertData** of **certThumbprint**op. |
 | wachtwoord | Het wacht woord dat is gekoppeld aan het certificaat. Dit veld als markeert een **SecureString** type voor het veilig opslaan in Data Factory. U kunt ook [verwijzen naar een geheim opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Nee |
 
 Als u **certThumbprint** gebruikt voor verificatie en het certificaat is geïnstalleerd in het persoonlijke archief van de lokale computer, verleent u lees machtigingen voor de zelf-hostende Integration runtime:
@@ -208,63 +208,6 @@ De volgende eigenschappen worden ondersteund voor HTTP onder `location` instelli
 }
 ```
 
-### <a name="legacy-dataset-model"></a>Verouderd gegevensset-model
-
->[!NOTE]
->Het volgende gegevensset model wordt nog steeds ondersteund voor compatibiliteit met eerdere versies. U wordt aangeraden het nieuwe model te gebruiken dat hierboven wordt genoemd en de gebruikers interface van de ADF-ontwerp functie is overgeschakeld op het genereren van het nieuwe model.
-
-| Eigenschap | Beschrijving | Verplicht |
-|:--- |:--- |:--- |
-| type | De eigenschap **type** van de DataSet moet worden ingesteld op **HttpFile**. | Ja |
-| relativeUrl | Een relatieve URL naar de resource die de gegevens bevat. Als deze eigenschap niet is opgegeven, wordt alleen de URL gebruikt die in de definitie van de gekoppelde service is opgegeven. | Nee |
-| requestMethod | De HTTP-methode. Toegestane waarden zijn **Get** (standaard) en **post**. | Nee |
-| additionalHeaders | Aanvullende HTTP-aanvraag headers. | Nee |
-| requestBody | De hoofd tekst van de HTTP-aanvraag. | Nee |
-| format | Als u gegevens wilt ophalen uit het HTTP-eind punt zonder te parseren, en vervolgens de gegevens naar een op bestanden gebaseerde opslag kopie wilt kopiëren, slaat u de sectie **opmaak** in zowel de definitie van de invoer-als uitvoer gegevensset over.<br/><br/>Als u de inhoud van het HTTP-antwoord tijdens het kopiëren wilt parseren, worden de volgende typen bestands indelingen ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**en **ParquetFormat**. Stel onder **indeling**de eigenschap **type** in op een van deze waarden. Zie [JSON-indeling](supported-file-formats-and-compression-codecs.md#json-format), [tekst indeling](supported-file-formats-and-compression-codecs.md#text-format), [Avro](supported-file-formats-and-compression-codecs.md#avro-format)-indeling, Orc- [indeling](supported-file-formats-and-compression-codecs.md#orc-format)en Parquet- [indeling](supported-file-formats-and-compression-codecs.md#parquet-format)voor meer informatie. |Nee |
-| compression | Geef het type en het niveau van compressie voor de gegevens. Zie voor meer informatie, [ondersteunde indelingen en codecs voor compressie](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Ondersteunde typen: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**.<br/>Ondersteunde niveaus: **optimaal** en **snelst**. |Nee |
-
-> [!NOTE]
-> De ondersteunde Payload-grootte van de HTTP-aanvraag is ongeveer 500 KB. Als de payload-grootte die u wilt door geven aan uw web-eind punt groter is dan 500 KB, kunt u de payload in kleinere segmenten batcheren.
-
-**Voor beeld 1: de Get-methode gebruiken (standaard)**
-
-```json
-{
-    "name": "HttpSourceDataInput",
-    "properties": {
-        "type": "HttpFile",
-        "linkedServiceName": {
-            "referenceName": "<HTTP linked service name>",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
-        }
-    }
-}
-```
-
-**Voor beeld 2: de post-methode gebruiken**
-
-```json
-{
-    "name": "HttpSourceDataInput",
-    "properties": {
-        "type": "HttpFile",
-        "linkedServiceName": {
-            "referenceName": "<HTTP linked service name>",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "requestMethod": "Post",
-            "requestBody": "<body for POST HTTP request>"
-        }
-    }
-}
-```
-
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
 In deze sectie vindt u een lijst met eigenschappen die door de HTTP-bron worden ondersteund.
@@ -327,10 +270,70 @@ De volgende eigenschappen worden ondersteund voor HTTP onder `storeSettings` ins
 ]
 ```
 
-#### <a name="legacy-source-model"></a>Verouderd bron model
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
+
+Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
+
+## <a name="legacy-models"></a>Verouderde modellen
 
 >[!NOTE]
->Het volgende Kopieer bron model wordt nog steeds ondersteund voor compatibiliteit met eerdere versies. U wordt aangeraden het nieuwe model te gebruiken dat hierboven wordt beschreven en de gebruikers interface van de ADF-ontwerp functie is overgeschakeld op het genereren van het nieuwe model.
+>De volgende modellen worden nog steeds ondersteund voor compatibiliteit met eerdere versies. U wordt aangeraden het nieuwe model te gebruiken dat hierboven wordt beschreven en de gebruikers interface van de ADF-ontwerp functie is overgeschakeld op het genereren van het nieuwe model.
+
+### <a name="legacy-dataset-model"></a>Verouderd gegevensset-model
+
+| Eigenschap | Beschrijving | Verplicht |
+|:--- |:--- |:--- |
+| type | De eigenschap **type** van de DataSet moet worden ingesteld op **HttpFile**. | Ja |
+| relativeUrl | Een relatieve URL naar de resource die de gegevens bevat. Als deze eigenschap niet is opgegeven, wordt alleen de URL gebruikt die in de definitie van de gekoppelde service is opgegeven. | Nee |
+| requestMethod | De HTTP-methode. Toegestane waarden zijn **Get** (standaard) en **post**. | Nee |
+| additionalHeaders | Aanvullende HTTP-aanvraag headers. | Nee |
+| requestBody | De hoofd tekst van de HTTP-aanvraag. | Nee |
+| format | Als u gegevens wilt ophalen uit het HTTP-eind punt zonder te parseren, en vervolgens de gegevens naar een op bestanden gebaseerde opslag kopie wilt kopiëren, slaat u de sectie **opmaak** in zowel de definitie van de invoer-als uitvoer gegevensset over.<br/><br/>Als u de inhoud van het HTTP-antwoord tijdens het kopiëren wilt parseren, worden de volgende typen bestands indelingen ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**en **ParquetFormat**. Stel onder **indeling**de eigenschap **type** in op een van deze waarden. Zie [JSON-indeling](supported-file-formats-and-compression-codecs-legacy.md#json-format), [tekst indeling](supported-file-formats-and-compression-codecs-legacy.md#text-format), [Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format)-indeling, Orc- [indeling](supported-file-formats-and-compression-codecs-legacy.md#orc-format)en Parquet- [indeling](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)voor meer informatie. |Nee |
+| compression | Geef het type en het niveau van compressie voor de gegevens. Zie voor meer informatie, [ondersteunde indelingen en codecs voor compressie](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/><br/>Ondersteunde typen: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**.<br/>Ondersteunde niveaus: **optimaal** en **snelst**. |Nee |
+
+> [!NOTE]
+> De ondersteunde Payload-grootte van de HTTP-aanvraag is ongeveer 500 KB. Als de payload-grootte die u wilt door geven aan uw web-eind punt groter is dan 500 KB, kunt u de payload in kleinere segmenten batcheren.
+
+**Voor beeld 1: de Get-methode gebruiken (standaard)**
+
+```json
+{
+    "name": "HttpSourceDataInput",
+    "properties": {
+        "type": "HttpFile",
+        "linkedServiceName": {
+            "referenceName": "<HTTP linked service name>",
+            "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+            "relativeUrl": "<relative url>",
+            "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
+        }
+    }
+}
+```
+
+**Voor beeld 2: de post-methode gebruiken**
+
+```json
+{
+    "name": "HttpSourceDataInput",
+    "properties": {
+        "type": "HttpFile",
+        "linkedServiceName": {
+            "referenceName": "<HTTP linked service name>",
+            "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+            "relativeUrl": "<relative url>",
+            "requestMethod": "Post",
+            "requestBody": "<body for POST HTTP request>"
+        }
+    }
+}
+```
+
+### <a name="legacy-copy-activity-source-model"></a>Bron model van verouderde Kopieer activiteit
 
 | Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
@@ -368,11 +371,6 @@ De volgende eigenschappen worden ondersteund voor HTTP onder `storeSettings` ins
     }
 ]
 ```
-
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
-
-Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a0dbd28dc798342a24180af430187ac69f61b8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d6001dc47d19665184bf44114ab36744f0287264
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848133"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608751"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Aan de slag met de Azure Multi-Factor Authentication-server
 
@@ -30,9 +30,6 @@ Op deze pagina vindt u informatie over een nieuwe installatie van de server en l
 > Met ingang van 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication van hun gebruikers willen vereisen, moeten gebruikmaken van Azure Multi-Factor Authentication op basis van de Cloud. Bestaande klanten die MFA-server voorafgaand aan 1 juli hebben geactiveerd, kunnen de nieuwste versie downloaden, toekomstige updates en activerings referenties genereren.
 
 ## <a name="plan-your-deployment"></a>Uw implementatie plannen
-
-> [!WARNING]
-> Vanaf maart van 2019 MFA-server downloads is alleen beschikbaar voor betaalde tenants. Tenants met gratis en proef versies kunnen geen activerings referenties meer downloaden of genereren en gebruiken.
 
 Voordat u de Multi-Factor Authentication-server downloadt, moet u bedenken wat uw laadvereisten en de vereisten voor hoge beschikbaarheid zijn. Gebruik deze informatie om te bepalen hoe en waar u wilt implementeren.
 
@@ -96,9 +93,6 @@ Als u de functie Gebeurtenisbevestiging niet gebruikt en gebruikers geen mobiele
 
 ## <a name="download-the-mfa-server"></a>De MFA-server downloaden
 
-> [!WARNING]
-> Vanaf maart van 2019 MFA-server downloads is alleen beschikbaar voor betaalde tenants. Tenants met gratis en proef versies kunnen geen activerings referenties meer downloaden of genereren en gebruiken.
-
 Volg deze stappen om de Azure Multi-Factor Authentication-server te downloaden via Azure Portal:
 
 1. Meld u als beheerder aan bij [Azure Portal](https://portal.azure.com).
@@ -122,6 +116,9 @@ Nu u de server hebt gedownload, kunt u deze installeren en configureren. Zorg er
    ![Overs laan met de verificatie configuratie wizard](./media/howto-mfaserver-deploy/skip2.png)
 
 5. Klik op de pagina waarvan u de server hebt gedownload, op de knop **Activeringsreferenties genereren**. Kopieer deze informatie naar de Azure MFA-server in de desbetreffende vakken en klik op **Activeren**.
+
+> [!NOTE]
+> Alleen globale beheerders kunnen activerings referenties genereren in de Azure Portal.
 
 ## <a name="send-users-an-email"></a>E-mail verzenden naar gebruikers
 

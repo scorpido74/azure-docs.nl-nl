@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 12/13/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27753d965949d3e677606111139a5d86ccf26dbf
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: c5191f05752c177aa29d121abe9d1aa29fde265a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382121"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430973"
 ---
 # <a name="how-to-investigate-risk"></a>Procedure: risico onderzoeken
 
@@ -30,7 +30,7 @@ De drie rapporten vindt u in de **Azure Portal** > **Azure Active Directory** > 
 
 ## <a name="navigating-the-reports"></a>Navigeren door de rapporten
 
-Elk rapport wordt gestart met een lijst met alle detecties voor de periode die boven aan het rapport wordt weer gegeven. Elk rapport maakt het mogelijk om kolommen toe te voegen of te verwijderen op basis van de voor keur van de beheerder. Beheerders kunnen ervoor kiezen om de gegevens in te downloaden. CSV-indeling. Rapporten kunnen worden gefilterd met behulp van de filters aan de bovenkant van het rapport.
+Elk rapport wordt gestart met een lijst met alle detecties voor de periode die boven aan het rapport wordt weer gegeven. Elk rapport maakt het mogelijk om kolommen toe te voegen of te verwijderen op basis van de voor keur van de beheerder. Beheerders kunnen ervoor kiezen om de gegevens in te downloaden. CSV of. JSON-indeling. Rapporten kunnen worden gefilterd met behulp van de filters aan de bovenkant van het rapport.
 
 Als u afzonderlijke items selecteert, kunnen boven aan het rapport aanvullende vermeldingen worden ingeschakeld, zoals de mogelijkheid om een aanmelding te bevestigen als aangetast of veilig, een gebruiker te bevestigen als aangetast of een gebruikers risico te sluiten.
 
@@ -44,7 +44,7 @@ Met de informatie die door het rapport Risk ante gebruikers wordt verstrekt, kun
 
 - Welke gebruikers lopen risico, hebben het risico gelost of hebben ze een risico gemist?
 - Details over detecties
-- Geschiedenis van Risk ante aanmeldingen
+- Geschiedenis van alle Risk ante aanmeldingen
 - Risico geschiedenis
  
 Beheerders kunnen er vervolgens voor kiezen om actie te ondernemen op deze gebeurtenissen. Beheerders kunnen kiezen uit:

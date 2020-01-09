@@ -1,20 +1,18 @@
 ---
 title: Door de gebruiker gedefinieerde JavaScript-verzamelingen in Azure Stream Analytics
 description: In dit artikel wordt beschreven hoe u geavanceerde query mechanismen kunt uitvoeren met door de gebruiker gedefinieerde Java script-aggregaties in Azure Stream Analytics.
-services: stream-analytics
 author: rodrigoamicrosoft
 ms.author: rodrigoa
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: 6c590ae62e080a6681e49c87264089f9a5f4ce2f
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: d9b37810146f66806be9b8ce7a38f8dac31facb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489535"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426096"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Door de gebruiker gedefinieerde Java script-functies Azure Stream Analytics
  
@@ -80,9 +78,9 @@ Elke Java script-UDA wordt gedefinieerd door een functie object declaratie. Hier
 
 ### <a name="function-alias"></a>Functiealias
 
-De functie alias is de UDA-id. Gebruik in Stream Analytics query altijd UDA-alias in combi natie met een ' UDA '. beleids.
+De functie alias is de UDA-id. Gebruik in Stream Analytics query altijd UDA-alias in combi natie met een ' UDA '. 'com.microsoft.intune.mam'.
 
-### <a name="function-type"></a>Functietype
+### <a name="function-type"></a>Functie type
 
 Voor UDA moet het functie type **Java script-UDA**zijn.
 
@@ -225,7 +223,7 @@ Maak een lokaal JSON-bestand met onderstaande inhoud, upload het bestand naar St
 ]
 ```
 
-## <a name="get-help"></a>Help opvragen
+## <a name="get-help"></a>Hulp krijgen
 
 Meer hulp vindt u mogelijk op het [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 

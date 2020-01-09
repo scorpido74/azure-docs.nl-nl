@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44392882a7d3e1816b952969dbadb518e2762142
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3d7148b104c723d124a954cf858ca77ff6552f94
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919950"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423795"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Mobiele app die web-Api's aanroept-code configuratie
 
@@ -77,7 +77,7 @@ In de volgende alinea wordt uitgelegd hoe u de toepassing kunt instantiëren voo
 
 In Xamarin, of UWP, is de eenvoudigste manier om de toepassing te instantiëren, waarbij de `ClientId` de GUID van de geregistreerde app is.
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder.Create(clientId)
                                         .Build();
 ```
@@ -88,7 +88,7 @@ Er zijn aanvullende*para meters* voor het instellen van de gebruikers interface,
 
 Op Android moet u de bovenliggende activiteit door geven voordat u interactieve verificatie doet. Wanneer u in iOS een Broker gebruikt, moet u de View Controller door geven. Op dezelfde manier kunt u in het bovenliggende venster het beste door geven aan UWP. Dit is mogelijk wanneer u het token aanschaft, maar het is ook mogelijk om een call back op te geven tijdens het maken van de app. een gemachtigde retourneert de UIParent.
 
-```CSharp
+```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)
   .ParentActivityOrWindowFunc(() => parentUi)
   .Build();
@@ -96,7 +96,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
 
 In Android raden we u aan de `CurrentActivityPlugin` [hier](https://github.com/jamesmontemagno/CurrentActivityPlugin)te gebruiken.  Vervolgens ziet uw `PublicClientApplication` Builder-code er als volgt uit:
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -135,7 +135,7 @@ Hier zijn Xamarin Android-specifiek:
 - [Controleren of het besturings element terugkeert naar MSAL zodra het interactieve deel van de verificatie stroom is beëindigd](msal-net-xamarin-android-considerations.md#ensuring-control-goes-back-to-msal-once-the-interactive-portion-of-the-authentication-flow-ends)
 - [Het Android-manifest bijwerken](msal-net-xamarin-android-considerations.md#update-the-android-manifest)
 - [De Inge sloten webweergave gebruiken (optioneel)](msal-net-xamarin-android-considerations.md#use-the-embedded-web-view-optional)
-- [Problemen oplossen](msal-net-xamarin-android-considerations.md#troubleshooting)
+- [Probleemoplossing](msal-net-xamarin-android-considerations.md#troubleshooting)
 
 Details vindt u in [Xamarin Android-overwegingen](msal-net-xamarin-android-considerations.md)
 
@@ -175,7 +175,7 @@ Volg de onderstaande stappen om uw Xamarin. iOS-app in te scha kelen voor commun
 
 Broker-ondersteuning is ingeschakeld per`PublicClientApplication`. Het is standaard uitgeschakeld. U moet de para meter `WithBroker()` (standaard ingesteld op True) gebruiken bij het maken van de `PublicClientApplication` via de `PublicClientApplicationBuilder`.
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder
                 .Create(ClientId)
                 .WithBroker()
@@ -187,7 +187,7 @@ var app = PublicClientApplicationBuilder
 
 Wanneer MSAL.NET de Broker aanroept, roept de Broker op zijn beurt terug naar uw toepassing via de `AppDelegate.OpenUrl` methode. Omdat MSAL wacht op het antwoord van de Broker, moet uw toepassing samen werken om MSAL.NET terug aan te roepen. U doet dit door het `AppDelegate.cs`-bestand bij te werken om de onderstaande methode te overschrijven.
 
-```CSharp
+```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url,
                              string sourceApplication,
                              NSObject annotation)
@@ -219,16 +219,16 @@ Ga als volgt te werk om het object venster in te stellen:
 **Bijvoorbeeld:**
 
 In `App.cs`:
-```CSharp
+```csharp
    public static object RootViewController { get; set; }
 ```
 In `AppDelegate.cs`:
-```CSharp
+```csharp
    LoadApplication(new App());
    App.RootViewController = new UIViewController();
 ```
 In de aanroep voor het verkrijgen van een token:
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();

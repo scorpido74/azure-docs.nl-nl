@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 7c7b0a0bb79f3f00d7a8dff64ec1b7143241a1f8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e7228556659a7a4a9f01ea31f61e75b5e870d50c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892223"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457430"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik
 
@@ -26,7 +26,7 @@ Een upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik vanuit uw
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Ga naar uw opslagaccount.
 3. Klik in de sectie **instellingen** op **configuratie**.
 4. Klik onder **Soort account** op **Upgrade**.
@@ -46,7 +46,7 @@ Roep vervolgens de volgende opdracht aan om het account bij te werken, de naam v
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u een algemeen v1-account wilt bijwerken naar een v2-account voor algemeen gebruik met behulp van Azure CLI, moet u eerst de nieuwste versie van Azure CLI installeren. Zie [Azure CLI 2.0 installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) voor meer informatie over het installeren van de CLI.
 
@@ -168,4 +168,3 @@ De overdrachtskosten van geo-replicatiegegevens voor Blob Storage-accounts kan o
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een opslagaccount maken](storage-quickstart-create-account.md)
-* [Azure Storage-accounts beheren](storage-account-manage.md)

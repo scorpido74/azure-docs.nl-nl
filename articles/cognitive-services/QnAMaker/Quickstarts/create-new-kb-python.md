@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Een knowledge base maken - REST, Python - QnA Maker'
+title: 'Snelstart: een knowledge base maken - REST, Python - QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: In deze op Python REST gebaseerde snelstart wordt stapsgewijs uitgelegd hoe u, met behulp van een programma, een voorbeeldexemplaar van een knowledge base in QnA Maker kunt maken, dat wordt weergegeven op het Azure-dashboard van uw account voor de Cognitive Services-API.
 services: cognitive-services
@@ -8,31 +8,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 9114d491be1ae11623264c3beaf7c26f1fa143de
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 4aeee7ebf2c96166392d49d218f8ac5de6fe2709
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803147"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447571"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Snelstartgids: Een knowledge base maken in QnA Maker met behulp van Python
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Snelstart: een knowledge base maken in QnA Maker met behulp van Python
 
-In deze snelstart wordt beschreven hoe u programmatisch een voorbeeld van een QnA Maker-knowledge base kunt maken en publiceren. Met QnA Maker worden automatisch vragen en antwoorden opgehaald uit semi-gestructureerde inhoud, zoals veelgestelde vragen, vanuit [gegevensbronnen](../Concepts/data-sources-supported.md). Het model voor de knowledge base wordt gedefinieerd in de JSON die in de hoofdtekst van de API-aanvraag wordt verzonden. 
+In deze snelstart wordt beschreven hoe u programmatisch een voorbeeld van een QnA Maker-knowledge base kunt maken en publiceren. Met QnA Maker worden automatisch vragen en antwoorden opgehaald uit semi-gestructureerde inhoud, zoals veelgestelde vragen, vanuit [gegevensbronnen](../Concepts/data-sources-supported.md). Het model voor de knowledge base wordt gedefinieerd in de JSON die in de hoofdtekst van de API-aanvraag wordt verzonden.
 
 In deze snelstart worden QnA Maker-API's aangeroepen:
-* [KB maken](https://go.microsoft.com/fwlink/?linkid=2092179)
+* [KB maken](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [Bewerkingsdetails ophalen](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
+
+[Referentie documentatie](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [python](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py) -voor beeld
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
 * [Python 3.7](https://www.python.org/downloads/)
-* U moet een [QnA Maker-service ](../How-To/set-up-qnamaker-service-azure.md) hebben. Als u de sleutel en het eind punt (inclusief de resource naam) wilt ophalen, selecteert u **Quick** start voor uw resource in het Azure Portal. 
-
-[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
+* U moet een [QnA Maker-service ](../How-To/set-up-qnamaker-service-azure.md) hebben. Als u de sleutel en het eind punt (inclusief de resource naam) wilt ophalen, selecteert u **Quick** start voor uw resource in het Azure Portal.
 
 ## <a name="create-a-knowledge-base-python-file"></a>Een Python-bestand met knowledge base maken
 
@@ -40,12 +40,19 @@ Maak een bestand met de naam `create-new-knowledge-base-3x.py`.
 
 ## <a name="add-the-required-dependencies"></a>De vereiste afhankelijkheden toevoegen
 
-Voeg aan het begin van `create-new-knowledge-base-3x.py` de volgende regels toe om de nodige afhankelijkheden aan het project toe te voegen:
+Voeg bovenaan `create-new-knowledge-base-3x.py` de volgende regels toe om de nodige afhankelijkheden aan het project toe te voegen:
 
 [!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=1-1 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>De vereiste constanten toevoegen
 Voeg na de bovenstaande vereiste afhankelijkheden de vereiste constanten toe voor toegang tot QnA Maker. Vervang de waarde van de `<your-qna-maker-subscription-key>` en `<your-resource-name>` door uw eigen QnA Maker sleutel en resource naam.
+
+Voeg boven aan de programma klasse de vereiste constanten toe om toegang te krijgen tot QnA Maker.
+
+Stel de volgende waarden in:
+
+* `<your-qna-maker-subscription-key>`: de **sleutel** is een teken reeks van 32 en is beschikbaar in de Azure Portal op de QnA Maker resource op de pagina snel starten. Dit is niet hetzelfde als de Voorspellings eindpunt sleutel.
+* `<your-resource-name>`: de **naam** van uw resource wordt gebruikt om de URL voor het ontwerpen van eind punten voor het ontwerpen te maken, in de indeling van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`. Dit is niet dezelfde URL die wordt gebruikt om een query uit te zoeken op het Voorspellings eindpunt.
 
 [!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=5-13 "Add the required constants")]
 
@@ -63,11 +70,12 @@ Voeg de volgende functie toe om JSON in een leesbare indeling weer te geven:
 
 ## <a name="add-function-to-create-kb"></a>Functie toevoegen om KB te maken
 
-Voeg de volgende functie toe voor het maken van een HTTP POST-aanvraag om de knowledge base te maken. Deze API-aanroep retourneert een JSON-antwoord dat de bewerkings-id in het headerveld **Locatie** bevat. Gebruik de bewerkings-id om te bepalen of de KB is gemaakt. De `Ocp-Apim-Subscription-Key` is de sleutel van de QnA Maker-service die wordt gebruikt voor verificatie. 
+Voeg de volgende functie toe voor het maken van een HTTP POST-aanvraag om de knowledge base te maken.
+Deze API-aanroep retourneert een JSON-antwoord dat de bewerkings-id in het headerveld **Locatie** bevat. Gebruik de bewerkings-id om te bepalen of de KB is gemaakt. De `Ocp-Apim-Subscription-Key` is de sleutel van de QnA Maker-service die wordt gebruikt voor verificatie.
 
 [!code-python[Add function to create KB](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=48-59 "Add function to create KB")]
 
-Deze API-aanroep retourneert een JSON-antwoord dat de bewerkings-id bevat. Gebruik de bewerkings-id om te bepalen of de KB is gemaakt. 
+Deze API-aanroep retourneert een JSON-antwoord dat de bewerkings-id bevat. Gebruik de bewerkings-id om te bepalen of de KB is gemaakt.
 
 ```JSON
 {
@@ -85,7 +93,7 @@ De volgende functie controleert de status van het maken en verzendt de bewerking
 
 [!code-python[Add function to check creation status](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=61-67 "Add function to check creation status")]
 
-Deze API-aanroep retourneert een JSON-antwoord dat de bewerkingsstatus bevat: 
+Deze API-aanroep retourneert een JSON-antwoord dat de bewerkingsstatus bevat:
 
 ```JSON
 {
@@ -97,7 +105,7 @@ Deze API-aanroep retourneert een JSON-antwoord dat de bewerkingsstatus bevat:
 }
 ```
 
-Herhaal de aanroep totdat deze lukt of mislukt: 
+Herhaal de aanroep totdat deze lukt of mislukt:
 
 ```JSON
 {
@@ -111,7 +119,7 @@ Herhaal de aanroep totdat deze lukt of mislukt:
 ```
 
 ## <a name="add-main-code-block"></a>Belangrijkste codeblok toevoegen
-De volgende lus doet periodiek navraag naar de bewerkingsstatus van het maken totdat de bewerking is voltooid. 
+De volgende lus doet periodiek navraag naar de bewerkingsstatus van het maken totdat de bewerking is voltooid.
 
 [!code-python[Add main code block](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=70-96 "Add main code block")]
 
@@ -125,7 +133,7 @@ python create-new-knowledge-base-3x.py
 
 Zodra de knowledge base is gemaakt, kunt u deze weergeven in de QnA Maker-portal op de pagina [Mijn knowledge bases](https://www.qnamaker.ai/Home/MyServices). Selecteer de naam van de knowledge base, bijvoorbeeld Veelgestelde vragen over QnA Maker, om deze weer te geven.
 
-[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

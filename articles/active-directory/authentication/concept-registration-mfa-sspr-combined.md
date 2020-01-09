@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b484acc0dc1a92a857f254ed37392ffb29eddb8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5c882d286a73900f58ef06e7c51b05c7237e39a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848626"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425345"
 ---
 # <a name="combined-security-information-registration-preview"></a>Registratie van gecombineerde beveiligings gegevens (preview-versie)
 
@@ -108,7 +108,7 @@ Dit stroom diagram beschrijft welke methoden worden weer gegeven wanneer een geb
 
 Als u zowel Multi-Factor Authentication als SSPR hebt ingeschakeld, wordt u aangeraden Multi-Factor Authentication registratie af te dwingen.
 
-Als het SSPR-beleid vereist dat gebruikers hun beveiligings gegevens met regel matige tussen pozen controleren, worden gebruikers onderbroken tijdens het aanmelden en worden alle geregistreerde methoden weer gegeven. Ze kunnen de huidige informatie bevestigen als deze up-to-date is, of ze kunnen wijzigingen aanbrengen als dat nodig is.
+Als het SSPR-beleid vereist dat gebruikers hun beveiligings gegevens met regel matige tussen pozen controleren, worden gebruikers onderbroken tijdens het aanmelden en worden alle geregistreerde methoden weer gegeven. Ze kunnen de huidige informatie bevestigen als deze up-to-date is, of ze kunnen wijzigingen aanbrengen als dat nodig is. Gebruikers moeten multi-factor Authentication uitvoeren wanneer ze toegang krijgen tot deze pagina.
 
 ### <a name="manage-mode"></a>Beheer modus
 

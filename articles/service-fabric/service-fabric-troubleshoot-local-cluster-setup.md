@@ -1,33 +1,24 @@
 ---
-title: Oplossen van uw lokale Azure Service Fabric-cluster instellen | Microsoft Docs
-description: In dit artikel bevat een reeks suggesties voor het oplossen van het lokale ontwikkelingscluster wijzigen
-services: service-fabric
-documentationcenter: .net
+title: Problemen met de installatie van uw lokale Azure Service Fabric-cluster oplossen
+description: In dit artikel vindt u een aantal suggesties voor het oplossen van problemen met uw lokale ontwikkel cluster
 author: mikkelhegn
-manager: chackdan
-editor: ''
-ms.assetid: 97f4feaa-bba0-47af-8fdd-07f811fe2202
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 8bb32b2bded061bd19bcd7cfda4ef259a75b0626
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ea313adb43f8d91ec9e57dd1d0b8d3447a8075f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60864436"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465504"
 ---
-# <a name="troubleshoot-your-local-development-cluster-setup"></a>Oplossen van uw installatie van lokale ontwikkeling
-Als u een probleem ondervindt tijdens interactie met uw lokale ontwikkelcluster van Azure Service Fabric, raadpleegt u de volgende suggesties voor mogelijke oplossingen.
+# <a name="troubleshoot-your-local-development-cluster-setup"></a>Problemen met de installatie van het lokale ontwikkel cluster oplossen
+Als u een probleem ondervindt tijdens de interactie met uw lokale Azure Service Fabric Development-cluster, raadpleegt u de volgende suggesties voor mogelijke oplossingen.
 
-## <a name="cluster-setup-failures"></a>Clusterinstallatie
-### <a name="cannot-clean-up-service-fabric-logs"></a>Kan geen opschonen van Logboeken van de Service Fabric
+## <a name="cluster-setup-failures"></a>Fouten bij het instellen van het cluster
+### <a name="cannot-clean-up-service-fabric-logs"></a>Kan Service Fabric-logboeken niet opruimen
 #### <a name="problem"></a>Probleem
-Tijdens het uitvoeren van het script DevClusterSetup, ziet u de volgende fout:
+Tijdens het uitvoeren van het DevClusterSetup-script ziet u de volgende fout:
 
     Cannot clean up C:\SfDevCluster\Log fully as references are likely being held to items in it. Please remove those and run this script again.
     At line:1 char:1 + .\DevClusterSetup.ps1
@@ -37,20 +28,20 @@ Tijdens het uitvoeren van het script DevClusterSetup, ziet u de volgende fout:
 
 
 #### <a name="solution"></a>Oplossing
-De huidige PowerShell-venster sluiten en open een nieuwe PowerShell-venster als beheerder. U kunt nu het script met succes uitvoeren.
+Sluit het huidige Power shell-venster en open een nieuw Power shell-venster als beheerder. U kunt het script nu uitvoeren.
 
-## <a name="cluster-connection-failures"></a>Fouten bij het verbinden van cluster
+## <a name="cluster-connection-failures"></a>Verbindings fouten van cluster
 
-### <a name="type-initialization-exception"></a>Type initialisatie uitzondering
+### <a name="type-initialization-exception"></a>Uitzonde ring voor type initialisatie
 #### <a name="problem"></a>Probleem
-Wanneer u verbinding met het cluster in PowerShell maakt, ziet u de fout TypeInitializationException voor System.Fabric.Common.AppTrace.
+Wanneer u verbinding maakt met het cluster in Power shell, ziet u de fout TypeInitializationException voor System. Fabric. common. AppTrace.
 
 #### <a name="solution"></a>Oplossing
-De variabele path is niet correct ingesteld tijdens de installatie. Afmelden bij Windows en meld u opnieuw aan. Het pad wordt vernieuwd.
+De padvariabele is niet juist ingesteld tijdens de installatie. Meld u af bij Windows en meld u weer aan. Hiermee vernieuwt u het pad.
 
-### <a name="cluster-connection-fails-with-object-is-closed"></a>Clusterverbinding is mislukt met "-Object is gesloten"
+### <a name="cluster-connection-fails-with-object-is-closed"></a>De cluster verbinding is mislukt, omdat het object is gesloten
 #### <a name="problem"></a>Probleem
-Een aanroep naar Connect-ServiceFabricCluster mislukt met een fout als volgt:
+Een aanroep van Connect-ServiceFabricCluster mislukt met een fout als de volgende:
 
     Connect-ServiceFabricCluster : The object is closed.
     At line:1 char:1
@@ -60,23 +51,23 @@ Een aanroep naar Connect-ServiceFabricCluster mislukt met een fout als volgt:
     + FullyQualifiedErrorId : CreateClusterConnectionErrorId,Microsoft.ServiceFabric.Powershell.ConnectCluster
 
 #### <a name="solution"></a>Oplossing
-De huidige PowerShell-venster sluiten en open een nieuwe PowerShell-venster als beheerder.
+Sluit het huidige Power shell-venster en open een nieuw Power shell-venster als beheerder.
 
-### <a name="fabric-connection-denied-exception"></a>Uitzondering voor fabric verbinding geweigerd
+### <a name="fabric-connection-denied-exception"></a>Uitzonde ring bij geweigerde infrastructuur verbinding
 #### <a name="problem"></a>Probleem
-Als u foutopsporing via Visual Studio, krijgt u een FabricConnectionDeniedException-fout.
+Wanneer u fouten opspoort vanuit Visual Studio, wordt er een FabricConnectionDeniedException-fout weer gegeven.
 
 #### <a name="solution"></a>Oplossing
-Deze fout treedt meestal op wanneer u probeert een hostproces van de service om handmatig te starten.
+Deze fout treedt meestal op wanneer u een service-hostproces hand matig probeert te starten.
 
-Zorg ervoor dat u geen serviceprojecten die zijn ingesteld als opstartprojecten in uw oplossing. Alleen de projecten van Service Fabric-toepassing moeten worden ingesteld als opstartprojecten.
+Zorg ervoor dat er geen service projecten zijn ingesteld als opstart projecten in uw oplossing. Alleen Service Fabric toepassings projecten moeten worden ingesteld als opstart projecten.
 
 > [!TIP]
-> Als u, na de installatie, uw lokale cluster begint zich abnormaal gedraagt, kunt u herstellen met behulp van het systeemvak van de lokale cluster manager. Hiermee verwijdert u het bestaande cluster en een nieuw wachtwoord instellen. Houd er rekening mee dat alle toepassingen geïmplementeerde en bijbehorende gegevens worden verwijderd.
+> Als na de installatie het lokale cluster op een abnormale manier werkt, kunt u het opnieuw instellen met behulp van de systeem systeemvak-toepassing lokaal Cluster beheer. Hiermee wordt het bestaande cluster verwijderd en een nieuwe ingesteld. Houd er rekening mee dat alle geïmplementeerde toepassingen en bijbehorende gegevens worden verwijderd.
 > 
 > 
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Begrijpen en oplossen van uw cluster met systeemstatusrapporten](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+* [Meer informatie over het cluster en het oplossen van problemen met systeem status rapporten](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 * [Een cluster visualiseren met Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
 

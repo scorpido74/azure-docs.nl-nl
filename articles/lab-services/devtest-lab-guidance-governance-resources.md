@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 9ba9be7b4761e6633ffe3063b6bdba53c56b93bd
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 0be2efd3783d9a0a7992819c984c993c64000ecd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561653"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644865"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Governance van Azure DevTest Labs-infra structuur-bronnen
 Dit artikel heeft betrekking op de uitlijning en het beheer van resources voor DevTest Labs binnen uw organisatie. 
@@ -44,7 +44,7 @@ De **tweede aanbevolen procedure** is het inschakelen van het DevTest-abonnement
 
 Dit model biedt een organisatie de flexibiliteit om Azure DevTest Labs op schaal te implementeren. Een organisatie kan honderden Labs ondersteunen voor verschillende bedrijfs eenheden met 100 tot 1000 virtuele machines die parallel worden uitgevoerd. Hiermee wordt het principe van een gecentraliseerde onderneming Lab-oplossing gepromoot die dezelfde principes van configuratie beheer en beveiligings controles kan delen.
 
-Dit model zorgt er ook voor dat de organisatie de resource limieten die zijn gekoppeld aan hun Azure-abonnement niet uitgeput. Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-subscription-service-limits.md)voor meer informatie over de limieten voor abonnementen en services. Het DevTest Labs-inrichtings proces kan een groot aantal resource groepen gebruiken. U kunt aanvragen voor limieten die worden verhoogd via een ondersteunings aanvraag in het Azure DevTest-abonnement. De resources in het productie abonnement worden niet beïnvloed omdat het ontwikkel abonnement groeit. Zie [quota en limieten in DevTest Labs schalen](devtest-lab-scale-lab.md)voor meer informatie over het schalen van DevTest Labs.
+Dit model zorgt er ook voor dat de organisatie de resource limieten die zijn gekoppeld aan hun Azure-abonnement niet uitgeput. Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md)voor meer informatie over de limieten voor abonnementen en services. Het DevTest Labs-inrichtings proces kan een groot aantal resource groepen gebruiken. U kunt aanvragen voor limieten die worden verhoogd via een ondersteunings aanvraag in het Azure DevTest-abonnement. De resources in het productie abonnement worden niet beïnvloed omdat het ontwikkel abonnement groeit. Zie [quota en limieten in DevTest Labs schalen](devtest-lab-scale-lab.md)voor meer informatie over het schalen van DevTest Labs.
 
 Een algemene limiet voor abonnements niveau die moet worden verwerkt, is hoe de toewijzingen van het netwerk-IP-bereik worden toegewezen voor de ondersteuning van productie-en ontwikkelings abonnementen. Deze toewijzingen moeten rekening houdt met de groei in de loop van de tijd (uitgaande van on-premises connectiviteit of een andere netwerk topologie waarvoor de onderneming de netwerk stack moet beheren in plaats van standaard de implementatie van Azure). De aanbevolen procedure is om een aantal virtuele netwerken met een groot IP-adres voorvoegsel toe te wijzen en te delen met veel grote subnetten, in plaats van meerdere virtuele netwerken met kleine subnetten te hebben. Met 10 abonnementen kunt u bijvoorbeeld 10 virtuele netwerken definiëren (één voor elk abonnement). Alle Labs die geen isolatie vereisen, kunnen hetzelfde subnet delen in het vnet van het abonnement.
 

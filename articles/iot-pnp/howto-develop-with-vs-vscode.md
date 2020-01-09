@@ -3,23 +3,23 @@ title: Visual Studio en Visual Studio code gebruiken om IoT Plug en Play preview
 description: Gebruik Visual Studio en Visual Studio code om het ontwerpen van IoT Plug en Play apparaten te versnellen en de code van het apparaat te implementeren.
 author: liydu
 ms.author: liydu
-ms.date: 10/29/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 6ce5a93cdd44af7f199d59d459daa46b4adb0719
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b4325aa6f379dc0b281d06cb593c28448698c71b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748031"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531323"
 ---
 # <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>Visual Studio en Visual Studio code gebruiken om IoT Plug en Play-apparaten te bouwen
 
 De Azure IoT-Hulpprogram Ma's voor Visual Studio code biedt een geïntegreerde omgeving voor het ontwerpen van mogelijkheden voor apparaten en interfaces, het publiceren naar model opslagplaatsen en het genereren van skelet C-code om de apparaat-app te implementeren.
 
-In dit artikel wordt beschreven hoe u:
+In dit artikel leest u informatie over:
 
 - Genereer de code van het apparaat en het toepassings project.
 - Gebruik de gegenereerde code in het project van uw apparaat.
@@ -57,7 +57,7 @@ In VS code gebruikt u **CTRL + SHIFT + P** om het opdracht palet te openen, **IO
     - **Cmake-project in Linux**: voor een apparaat-project dat gebruikmaakt van [cmake](https://cmake.org/) als build system op Linux. Met deze optie worden `CMakeLists.txt` met de SDK-configuraties van het apparaat gegenereerd in dezelfde map als de C-code.
     - **MXChip IOT DevKit-project**: voor een Device-project dat wordt uitgevoerd op een [MXChip IOT DevKit](https://aka.ms/iot-devkit) -apparaat. Met deze optie wordt een Arduino-project gegenereerd dat u kunt [gebruiken in VS code](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) of in de Arduino IDE om te bouwen en uit te voeren op een IOT DevKit-apparaat.
 
-- **Type apparaat-SDK**. Als u CMake als project type selecteert, is dit de stap om te configureren hoe gegenereerde code de Azure IoT C-SDK bevat in de `CMakeLists.txt`:
+- **Type apparaat-SDK**. Als u CMake als project type selecteert, is dit de stap om te configureren hoe gegenereerde code Azure IoT C Device SDK bevat in de `CMakeLists.txt`:
 
     - **Via bron code**: de gegenereerde code is afhankelijk van de [apparaat-SDK-bron code](https://github.com/Azure/azure-iot-sdk-c) die u wilt insluiten en samen te bouwen. Dit wordt aanbevolen wanneer u de SDK-bron code van het apparaat hebt aangepast.
     - **Via Vcpkg**: de gegenereerde code is afhankelijk van de [SDK Vcpkg](https://github.com/microsoft/vcpkg/tree/master/ports/azure-iot-sdk-c) van het apparaat om samen te voegen en te bouwen. Dit is de aanbevolen manier voor apparaten met Windows, Linux of macOS.
@@ -150,13 +150,13 @@ Als u de apparaatcode samen met het apparaat C SDK Vcpkg wilt maken met behulp v
 
 ### <a name="windows"></a>Windows
 
-Als u de apparaatcode samen met de apparaat C SDK op Windows wilt bouwen met CMake en de Visual StudioC++ C/compilers op de opdracht regel, raadpleegt u de [IOT Plug en Play Quick](./quickstart-create-pnp-device.md)start. De volgende stappen laten zien hoe u de apparaatcode samen met het apparaat C SDK Vcpkg als CMake-project in Visual Studio kunt bouwen.
+Als u de apparaatcode samen met de apparaat C SDK op Windows wilt bouwen met CMake en de Visual StudioC++ C/compilers op de opdracht regel, raadpleegt u de [IOT Plug en Play Quick](./quickstart-create-pnp-device-windows.md)start. De volgende stappen laten zien hoe u de apparaatcode samen met het apparaat C SDK Vcpkg als CMake-project in Visual Studio kunt bouwen.
 
-1. Volg de stappen in de [Quick](https://docs.microsoft.com/azure/iot-pnp/quickstart-create-pnp-device#prepare-the-development-environment) start om de Azure IOT Device SDK voor C te installeren via Vcpkg.
+1. Volg de stappen in de [Quick](https://docs.microsoft.com/azure/iot-pnp/quickstart-create-pnp-device-windows#prepare-the-development-environment) start om de Azure IOT Device SDK voor C te installeren via Vcpkg.
 
 1. Installeer [Visual Studio 2019 (Community, Professional of ENTER prise)](https://visualstudio.microsoft.com/downloads/) . Zorg ervoor dat u het onderdeel **NuGet package manager** en de **Desktop ontwikkeling met C++**  Workload opneemt.
 
-1. Open Visual Studio, kies **bestand > > cmake te openen..** Ga als volgt te om de `CMakeLists.txt` in de map bevat gegenereerde code.
+1. Open Visual Studio, kies **File > Open > cmake...** om de `CMakeLists.txt` in de map bevat gegenereerde code te openen.
 
 1. Zoek de vervolg keuzelijst **configuraties** op de werk balk **Algemeen** . Selecteer **configuratie beheren** om de cmake-instelling voor uw project toe te voegen.
 

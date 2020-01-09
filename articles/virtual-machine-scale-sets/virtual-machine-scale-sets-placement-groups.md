@@ -1,6 +1,6 @@
 ---
-title: Werken met grote Azure Virtual Machine Scale Sets | Microsoft Docs
-description: Wat u moet weten wanneer u grote Azure-virtuele-machineschaalsets wilt gaan gebruiken
+title: Werken met grote Azure-Virtual Machine Scale Sets
+description: Wat u moet weten over grote virtuele-machine schaal sets van Azure, zodat u ze in uw toepassing kunt gebruiken.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: rajsqr
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/9/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 46ca46c99187b14974b78ccc4acc134a5f716b05
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 839d889783a7ef3bcd602c37a4975ddeea4e2a16
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326692"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459336"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Werken met grote virtuele-machineschaalsets
 U kunt nu Azure-[virtuele-machineschaalsets](/azure/virtual-machine-scale-sets/) maken met een capaciteit van maximaal 1000 virtuele machines. In dit document wordt een _grote virtuele-machineschaalset_ gedefinieerd als een schaalset waarmee u kunt schalen tot meer dan 100 virtuele machines. Deze mogelijkheid wordt ingesteld met een schaalseteigenschap (_singlePlacementGroup=False_). 
@@ -42,7 +42,7 @@ Overweeg de volgende vereisten voordat u beslist of uw toepassing doeltreffend g
 - Laag-4 taakverdeling met schaalsets die uit meerdere plaatsingsgroepen bestaan vereist [Azure Load Balancer standaard-SKU](../load-balancer/load-balancer-standard-overview.md). De Load Balancer standaard-SKU biedt extra voordelen, zoals de mogelijkheid om taken te verdelen tussen meerdere schaalsets. Standaard-SKU vereist ook dat er een netwerkbeveiligingsgroep is gekoppeld aan de schaalset, anders werken de NAT-pools niet correct. Als u de Azure Load Balancer basis-SKU moet gebruiken, zorgt u dat de schaalset is geconfigureerd voor het gebruik van één plaatsingsgroep. Dit is de standaardinstelling.
 - Laag-7 taakverdeling met de Azure Application Gateway wordt voor alle schaalsets ondersteund.
 - Een schaalset wordt gedefinieerd met één subnet. Zorg dat het subnet een adresruimte heeft die groot genoeg is voor alle virtuele machines die u nodig hebt. Standaard wordt een schaalset te groot ingericht (dat wil zeggen dat er tijdens de implementatie of bij het uitschalen extra virtuele machines worden gemaakt, waarvoor u niet hoeft te betalen), om de betrouwbaarheid en prestaties van de implementatie te verbeteren. Zorg daarom voor een adresruimte die 20% groter is dan het aantal virtuele machines waarnaar u wilt gaan schalen.
-- Fout- en upgradedomeinen zijn alleen consistent binnen een plaatsingsgroep. Deze architectuur verandert niet de algemene beschikbaarheid van een schaalset, omdat virtuele machines evenredig worden verdeeld over verschillende fysieke hardware. Als u moet garanderen dat twee virtuele machines zich op verschillende hardware bevinden, betekent dit echter wel dat u ervoor moet zorgen dat ze zich in verschillende foutdomeinen in dezelfde plaatsingsgroep bevinden. Raadpleeg deze beschik bare [Opties](/azure/virtual-machines/windows/availability)voor de koppeling. 
+- Fout- en upgradedomeinen zijn alleen consistent binnen een plaatsingsgroep. Deze architectuur verandert niet de algemene beschikbaarheid van een schaalset, omdat virtuele machines evenredig worden verdeeld over verschillende fysieke hardware. Als u moet garanderen dat twee virtuele machines zich op verschillende hardware bevinden, betekent dit echter wel dat u ervoor moet zorgen dat ze zich in verschillende foutdomeinen in dezelfde plaatsingsgroep bevinden. Raadpleeg deze [beschik bare opties](/azure/virtual-machines/windows/availability)voor de koppeling. 
 - Het foutdomein en de id van de plaatsingsgroep worden weergegeven in de _exemplaarweergave_  van een schaalset-VM. U kunt de exemplaarweergave van een schaalset-VM bekijken in de [Azure Resource Explorer](https://resources.azure.com/).
 
 ## <a name="creating-a-large-scale-set"></a>Een grote schaalset maken
@@ -50,7 +50,7 @@ Als u een schaalset maakt in de Azure-portal, hoeft u alleen maar de waarde bij 
 
 ![](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
 
-U kunt u een grote virtuele-machineschaalset maken met de [Azure CLI](https://github.com/Azure/azure-cli)-opdracht _az vmss create_. Met deze opdracht stelt u intelligente standaardinstellingen in, zoals een subnetgrootte op basis van het argument _instance-count_:
+U kunt een grote schaalset voor virtuele machines maken met behulp van de [Azure cli](https://github.com/Azure/azure-cli) -opdracht _AZ vmss Create_ . Met deze opdracht stelt u intelligente standaardinstellingen in, zoals een subnetgrootte op basis van het argument _instance-count_:
 
 ```bash
 az group create -l southcentralus -n biginfra
