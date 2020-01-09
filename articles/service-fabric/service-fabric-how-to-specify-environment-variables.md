@@ -1,23 +1,16 @@
 ---
-title: Instructies voor het opgeven van omgevings variabelen voor services in azure Service Fabric | Microsoft Docs
+title: Omgevings variabelen voor services opgeven
 description: Laat zien hoe u omgevings variabelen gebruikt voor toepassingen in Service Fabric
-documentationcenter: .net
 author: mikkelhegn
-manager: markfuss
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: df9b199c24301016b9f9da8a8dec52129bbf94bd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: f4c4f2a1c140e3d0f181c4fd55482056f9f91b62
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703542"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614312"
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Omgevings variabelen opgeven voor services in Service Fabric
 
@@ -28,7 +21,7 @@ In dit artikel leest u hoe u omgevings variabelen kunt opgeven voor een service 
 In dit voor beeld stelt u een omgevings variabele in voor een container. In dit artikel wordt ervan uitgegaan dat u al een toepassings-en service manifest hebt.
 
 1. Open het bestand ServiceManifest. XML.
-2. Voeg in het element `CodePackage` een nieuw `EnvironmentVariables`-element en een `EnvironmentVariable`-element toe voor elke omgevings variabele.
+2. Voeg in het element `CodePackage` een nieuw `EnvironmentVariables` element en een `EnvironmentVariable`-element toe voor elke omgevings variabele.
 
     ```xml
     <CodePackage Name="MyCode" Version="CodeVersion1">

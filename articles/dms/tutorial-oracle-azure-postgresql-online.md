@@ -1,5 +1,6 @@
 ---
-title: 'Zelf studie: Azure Database Migration Service gebruiken voor het uitvoeren van een online migratie van Oracle naar Azure Database for PostgreSQL | Microsoft Docs'
+title: 'Zelf studie: Oracle online migreren naar Azure Database for PostgreSQL'
+titleSuffix: Azure Database Migration Service
 description: Meer informatie over het uitvoeren van een online migratie van Oracle on-premises of op virtuele machines naar Azure Database for PostgreSQL met behulp van Azure Database Migration Service.
 services: dms
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 09/10/2019
-ms.openlocfilehash: 1ac5e4dd28f7565f546c700a4bbb0076fd793bb7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
-ms.translationtype: MT
+ms.openlocfilehash: ed95d95db3849026763e4537a832c9feda98aa40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163424"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437591"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Zelf studie: Oracle migreren naar Azure Database for PostgreSQL online met behulp van DMS (preview)
 
@@ -27,7 +28,7 @@ In deze zelfstudie leert u het volgende:
 >
 > * Evalueer de migratie inspanningen met het hulp programma ora2pg.
 > * Migreer het voorbeeld schema met het ora2pg-hulp programma.
-> * Maak een instantie van Azure Database Migration Service.
+> * Maak een exemplaar van de Azure Database Migration Service.
 > * Een migratie project maken met behulp van Azure Database Migration Service.
 > * De migratie uitvoeren.
 > * De migratie controleren.
@@ -51,7 +52,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 * Down load en installeer ora2pg op [Windows](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf) of [Linux](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Linux.pdf).
 * [Een exemplaar maken in Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).
 * Maak verbinding met het exemplaar en maak een Data Base met behulp van de instructie in dit [document](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal).
-* Een Azure Virtual Network (VNet) maken voor Azure Database Migration Service met behulp van het Azure Resource Manager implementatie model, dat site-naar-site-connectiviteit met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Voor meer informatie over het maken van een VNet raadpleegt u de [documentatie van Virtual Network](https://docs.microsoft.com/azure/virtual-network/)en met name de Quick Start-artikelen met stapsgewijze Details.
+* Maak een Azure Virtual Network (VNet) voor Azure Database Migration Service met behulp van het Azure Resource Manager implementatie model, dat site-naar-site-verbinding met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Voor meer informatie over het maken van een VNet raadpleegt u de [documentatie van Virtual Network](https://docs.microsoft.com/azure/virtual-network/)en met name de Quick Start-artikelen met stapsgewijze Details.
 
   > [!NOTE]
   > Als u tijdens de VNet-installatie gebruikmaakt van ExpressRoute met Network-peering voor micro soft, voegt u de volgende service- [eind punten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) toe aan het subnet waarin de service wordt ingericht:
@@ -243,8 +244,8 @@ Aan de slag gaan:
     | ------------- | ------------- | ------------- |
     | HR | targetHR. public | openbaar. landen. country_id |
     | HR | targetHR.trgthr | trgthr. landen. country_id |
-    | HR | targetHR.TARGETHR | "TARGETHR"." LANDEN "." COUNTRY_ID" |
-    | HR | targetHR.HR | ' HR '. LANDEN "." COUNTRY_ID" |
+    | HR | targetHR.TARGETHR | "TARGETHR"." LANDEN "." COUNTRY_ID " |
+    | HR | targetHR.HR | ' HR '. LANDEN "." COUNTRY_ID " |
     | HR | targetHR.Hr | \* Kan geen gemengde cases toewijzen |
 
     \* Als u een schema voor gemengde cases en tabel namen wilt maken in doel PostgreSQL, neemt u contact op met [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com). We kunnen een script opgeven voor het instellen van een schema voor het maken van een gemengde Case-tabel in de doel-PostgreSQL-data base.
@@ -320,7 +321,7 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
 ## <a name="upload-oracle-oci-driver"></a>Oracle OCI-stuur programma uploaden
 
-1. Selecteer **Opslaan**en meld u vervolgens aan bij uw Oracle-account in het scherm voor het installeren van een **OCI-stuur programma** en down load het stuur programma **instantclient-basiclite-Windows. x64-12.2.0.1.0. zip** (37.128.586 byte (s)) (sha1-controlesom: 865082268) [ ](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst).
+1. Selecteer **Opslaan**en meld u vervolgens [aan bij uw](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)Oracle-account in het scherm voor het installeren van een OCI- **stuur programma** en down load het stuur programma **instantclient-basiclite-windows. x64-12.2.0.1.0. zip** (37.128.586 byte (s)) (sha1-controlesom: 865082268).
 2. Down load het stuur programma naar een gedeelde map.
 
    Zorg ervoor dat de map wordt gedeeld met de gebruikers naam die u hebt opgegeven met minimale alleen-lezen toegang. Azure Database Migration Service toegang tot en lees bewerkingen van de share om het OCI-stuur programma naar Azure te uploaden door de gebruikers naam die u opgeeft, te imiteren.

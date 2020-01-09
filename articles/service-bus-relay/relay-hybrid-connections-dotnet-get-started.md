@@ -1,6 +1,6 @@
 ---
-title: Aan de slag met Azure Relay Hybrid Connections WebSockets in .NET | Microsoft Docs
-description: Schrijf een C# consoletoepassing voor Azure Relay Hybrid Connections WebSockets.
+title: Azure Relay Hybride verbindingen-websockets in .NET
+description: Een C# console toepassing schrijven voor Azure relay hybride verbindingen websockets.
 services: service-bus-relay
 documentationcenter: .net
 author: spelluru
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 6ad1d5415feefcf30ebae860bc8f4d8a3e2261d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13612f8ffa343e483165a8dbdd54d1b2b1f5e2cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428355"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355200"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>Aan de slag met websockets voor hybride verbindingen in Azure Relay in .NET
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -64,7 +64,7 @@ Maak in Visual Studio een C#-consoletoepassing om berichten naar de Relay te stu
 
     ![actieve-toepassingen](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 
-Gefeliciteerd, u hebt een complete toepassing met hybride verbindingen gemaakt.
+Gefeliciteerd, u hebt een complete Hybride verbindingen-toepassing gemaakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 In deze snelstart hebt u .NET toepassingen gemaakt voor afzenders en ontvangers waarmee berichten worden verzonden en ontvangen met behulp van websockets. De hybride verbindingsfunctie van Azure Relay ondersteunt tevens HTTP voor het verzenden en ontvangen van berichten. Zie de [snelstart over HTTP](relay-hybrid-connections-http-requests-dotnet-get-started.md) voor informatie over het gebruik van HTTP met hybride verbindingen van Azure Relay.

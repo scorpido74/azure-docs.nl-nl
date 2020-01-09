@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: 76d1947ae6fbdf7577cc9b8db9d902dc55350b7f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105322"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435400"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Schaalbaar streamen in HDInsight
 
@@ -37,7 +37,7 @@ Zie [Wat is er Apache Storm in azure HDInsight?](storm/apache-storm-overview.md)
 
 ## <a name="spark-streaming"></a>Spark-streaming
 
-Spark streaming is een uitbrei ding van Spark, waarmee u dezelfde code kunt gebruiken die u voor batch verwerking gebruikt. U kunt zowel batch-als interactieve query's combi neren in dezelfde toepassing. In tegens telling tot Storm biedt Spark streaming een stateful, eenmalige verwerkings semantiek. Bij gebruik in combi natie met de [Kafka direct-API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html), die ervoor zorgt dat alle Kafka-gegevens slechts één keer worden ontvangen door Spark-streaming, is het mogelijk om end-to-end-eenmalige garanties te verzorgen. Een van de sterke punten van Spark streaming is de fout tolerante mogelijkheden. het herstellen van defecte knoop punten is snel mogelijk wanneer er meerdere knoop punten in het cluster worden gebruikt.
+Spark streaming is een uitbrei ding van Spark, waarmee u dezelfde code kunt gebruiken die u voor batch verwerking gebruikt. U kunt zowel batch-als interactieve query's combi neren in dezelfde toepassing. In tegens telling tot Storm biedt Spark streaming een status precies eenmaal de verwerkings semantiek. Bij gebruik in combi natie met de [Kafka direct-API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html), die ervoor zorgt dat alle Kafka-gegevens exact één keer worden ontvangen door Spark-streaming, is het mogelijk om end-to-end precies één keer per garantie te zorgen. Een van de sterke punten van Spark streaming is de fout tolerante mogelijkheden. het herstellen van defecte knoop punten is snel mogelijk wanneer er meerdere knoop punten in het cluster worden gebruikt.
 
 Zie [Wat is Apache Spark streaming?](hdinsight-spark-streaming-overview.md)voor meer informatie.
 
@@ -45,11 +45,11 @@ Zie [Wat is Apache Spark streaming?](hdinsight-spark-streaming-overview.md)voor 
 
 Hoewel u het aantal knoop punten in het cluster tijdens het maken kunt opgeven, wilt u het cluster wellicht verg Roten of verkleinen zodat het overeenkomt met de werk belasting. Alle HDInsight-clusters bieden u [de mogelijkheid om het aantal knoop punten in het cluster te wijzigen](hdinsight-administer-use-portal-linux.md#scale-clusters). Spark-clusters kunnen zonder gegevens verlies worden verwijderd, omdat alle gegevens worden opgeslagen in Azure Storage of Data Lake Storage.
 
-Er zijn voor delen voor het loskoppelen van technologieën. Kafka is bijvoorbeeld een technologie voor het bufferen van gebeurtenissen, waardoor het erg IO-intensief is en er niet veel verwerkings kracht nodig is. In vergelijking zijn stream-processors, zoals Spark-streaming, reken intensief, waardoor krachtigere Vm's zijn vereist. Als deze technologieën zijn losgekoppeld van verschillende clusters, kunt u deze onafhankelijk van elkaar schalen terwijl u het beste gebruikmaakt van de Vm's.
+Er zijn voor delen voor het loskoppelen van technologieën. Kafka is bijvoorbeeld een technologie voor gebeurtenis buffers, dus het is zeer IO-intensief en heeft geen veel verwerkings kracht nodig. In vergelijking zijn stream-processors, zoals Spark-streaming, reken intensief, waardoor krachtigere Vm's zijn vereist. Als deze technologieën zijn losgekoppeld van verschillende clusters, kunt u deze onafhankelijk van elkaar schalen terwijl u het beste gebruikmaakt van de Vm's.
 
 ### <a name="scale-the-stream-buffering-layer"></a>De laag van de stroom buffer schalen
 
-De technologieën voor het bufferen van streams Event Hubs en Kafka beide partities gebruiken en consumenten lezen van deze partities. Het schalen van de invoer doorvoer vereist het schalen van het aantal partities en het toevoegen van partities zorgt voor een groeiende parallelle uitvoering. In Event Hubs kan het aantal partities niet worden gewijzigd na de implementatie, zodat het belang rijk is om te beginnen met de doel schaal. Met Kafka is het mogelijk om [partities toe te voegen](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion), zelfs wanneer Kafka gegevens verwerkt. Kafka biedt een hulp programma waarmee u partities `kafka-reassign-partitions.sh`opnieuw kunt toewijzen. HDInsight biedt een [hulp programma voor het herverdelen van partitie replica's](https://github.com/hdinsight/hdinsight-kafka-tools), `rebalance_rackaware.py`. Dit hulp programma roept het `kafka-reassign-partitions.sh` hulp programma op een zodanige manier aan dat elke replica zich in een afzonderlijk fout domein en een update domein bevindt, waardoor Kafka rack bewust wordt en fout tolerantie wordt verhoogd.
+De technologieën voor het bufferen van streams Event Hubs en Kafka beide partities gebruiken en consumenten lezen van deze partities. Het schalen van de invoer doorvoer vereist het schalen van het aantal partities en het toevoegen van partities zorgt voor een groeiende parallelle uitvoering. In Event Hubs kan het aantal partities niet worden gewijzigd na de implementatie, zodat het belang rijk is om te beginnen met de doel schaal. Met Kafka is het mogelijk om [partities toe te voegen](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion), zelfs wanneer Kafka gegevens verwerkt. Kafka biedt een hulp programma voor het opnieuw toewijzen van partities `kafka-reassign-partitions.sh`. HDInsight biedt een [hulp programma voor het herverdelen van partitie replica's](https://github.com/hdinsight/hdinsight-kafka-tools), `rebalance_rackaware.py`. Dit hulp programma roept het `kafka-reassign-partitions.sh`-hulp programma op een zodanige manier aan dat elke replica zich in een afzonderlijk fout domein en een update domein bevindt, waardoor Kafka rack bewust wordt en de fout tolerantie toeneemt.
 
 ### <a name="scale-the-stream-processing-layer"></a>De laag voor stream processing schalen
 
@@ -57,7 +57,7 @@ Zowel Apache Storm als Spark-streaming ondersteunen worker-knoop punten toe te v
 
 Als u wilt profiteren van nieuwe knoop punten die zijn toegevoegd door het schalen van stormen, moet u eventuele Storm-topologieën die zijn gestart voordat de cluster grootte werd verhoogd, opnieuw verdelen. Deze herverdeling kan worden uitgevoerd met behulp van de Storm-webgebruikersinterface of de CLI. Zie de [Apache Storm-documentatie](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)voor meer informatie.
 
-Apache Spark gebruikt drie belang rijke para meters voor het configureren van de omgeving, afhankelijk `spark.executor.instances`van `spark.executor.cores`de toepassings `spark.executor.memory`vereisten:, en. Een uitvoerder *is een proces dat wordt gestart* voor een Spark-toepassing. Een uitvoerder wordt uitgevoerd op het worker-knoop punt en is verantwoordelijk voor het uitvoeren van de taken van de toepassing. Het standaard aantal uitvoerende agents en de uitvoerings grootte voor elk cluster worden berekend op basis van het aantal worker-knoop punten en de grootte van het worker-knoop punt. Deze getallen worden opgeslagen in het `spark-defaults.conf`bestand op elk cluster hoofd knooppunt.
+Apache Spark gebruikt drie belang rijke para meters voor het configureren van de omgeving, afhankelijk van de toepassings vereisten: `spark.executor.instances`, `spark.executor.cores`en `spark.executor.memory`. Een uitvoerder *is een proces dat wordt gestart* voor een Spark-toepassing. Een uitvoerder wordt uitgevoerd op het worker-knoop punt en is verantwoordelijk voor het uitvoeren van de taken van de toepassing. Het standaard aantal uitvoerende agents en de uitvoerings grootte voor elk cluster worden berekend op basis van het aantal worker-knoop punten en de grootte van het worker-knoop punt. Deze getallen worden opgeslagen in het `spark-defaults.conf`-bestand op elk cluster hoofd knooppunt.
 
 Deze drie para meters kunnen worden geconfigureerd op cluster niveau voor alle toepassingen die op het cluster worden uitgevoerd en kunnen ook voor elke afzonderlijke toepassing worden opgegeven. Zie [resources beheren voor Apache Spark-clusters](spark/apache-spark-resource-manager.md)voor meer informatie.
 

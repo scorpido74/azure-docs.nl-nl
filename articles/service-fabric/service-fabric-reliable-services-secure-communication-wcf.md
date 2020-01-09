@@ -1,32 +1,23 @@
 ---
-title: Beveiligde service communicatie op basis van WCF in azure Service Fabric | Microsoft Docs
+title: Beveiligde service communicatie op basis van WCF
 description: Meer informatie over het beveiligen van op WCF gebaseerde communicatie voor betrouw bare services die worden uitgevoerd in een Azure Service Fabric-cluster.
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: vturecek
-ms.assetid: fc129c1a-fbe4-4339-83ae-0e69a41654e0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 04/20/2017
 ms.author: pepogors
-ms.openlocfilehash: 31a7a3a42436f3a818fcf48f2af5ca395fa02386
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ca5eafa4612503a13f80b7f238e4827979c0358b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170420"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614159"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>Beveiligde communicatie op basis van WCF voor een service
 Beveiliging is een van de belangrijkste aspecten van de communicatie. Het Reliable Services-toepassings raamwerk bevat enkele vooraf ontwikkelde communicatie stacks en hulpprogram ma's die u kunt gebruiken om de beveiliging te verbeteren. In dit artikel wordt uitgelegd hoe u de beveiliging kunt verbeteren wanneer u service remoting gebruikt.
 
 We gebruiken een bestaand [voor beeld](service-fabric-reliable-services-communication-wcf.md) waarin wordt uitgelegd hoe u een op WCF gebaseerde communicatie stack instelt voor betrouw bare Services. Voer de volgende stappen uit om een service te helpen beveiligen wanneer u een op WCF gebaseerde communicatie stack gebruikt:
 
-1. Voor de service moet u helpen de WCF Communication listener (`WcfCommunicationListener`) te beveiligen die u maakt. U doet dit door de `CreateServiceReplicaListeners`-methode te wijzigen.
+1. Voor de service moet u helpen om de WCF Communication listener (`WcfCommunicationListener`) te beveiligen die u maakt. Als u dit wilt doen, wijzigt u de `CreateServiceReplicaListeners` methode.
 
     ```csharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -63,7 +54,7 @@ We gebruiken een bestaand [voor beeld](service-fabric-reliable-services-communic
         return b;
     }
     ```
-2. In de-client blijft de `WcfCommunicationClient`-klasse die in het vorige [voor beeld](service-fabric-reliable-services-communication-wcf.md) is gemaakt, ongewijzigd. Maar u moet de methode `CreateClientAsync` van `WcfCommunicationClientFactory` overschrijven:
+2. In de-client blijft de `WcfCommunicationClient` klasse die in het vorige [voor beeld](service-fabric-reliable-services-communication-wcf.md) is gemaakt, ongewijzigd. Maar u moet de `CreateClientAsync` methode van `WcfCommunicationClientFactory`overschrijven:
 
     ```csharp
     public class SecureWcfCommunicationClientFactory<TServiceContract> : WcfCommunicationClientFactory<TServiceContract> where TServiceContract : class

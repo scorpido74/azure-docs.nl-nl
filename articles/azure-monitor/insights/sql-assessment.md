@@ -4,15 +4,15 @@ description: Met Azure Monitor kunt u de SQL Health Check-oplossing gebruiken om
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/28/2019
-ms.openlocfilehash: 7808ead7ec4191bdf17e3ab225aeaa909abd7d08
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e3e399e99dca453a84c4daef782027b2b1ad6da1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900670"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401038"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optimaliseer uw SQL-omgeving met de SQL Server Health Check-oplossing in Azure Monitor
 
@@ -34,7 +34,7 @@ Nadat u de oplossing hebt toegevoegd en een evaluatie is voltooid, wordt de same
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Voor de oplossing SQL Health check is een ondersteunde versie van .NET Framework 4 geïnstalleerd op elke computer waarop micro soft Monitoring Agent (MMA) is geïnstalleerd.  De MMA-agent wordt gebruikt door System Center 2016-Operations Manager en Operations Manager 2012 R2 en Azure Monitor.  
+* Voor de oplossing SQL Health check is een ondersteunde versie van .NET Framework 4.6.2 geïnstalleerd op elke computer waarop micro soft Monitoring Agent (MMA) is geïnstalleerd.  De MMA-agent wordt gebruikt door System Center 2016-Operations Manager en Operations Manager 2012 R2 en Azure Monitor.  
 * De oplossing ondersteunt SQL Server versie 2012, 2014 en 2016.
 * Een Log Analytics-werk ruimte om de SQL Health Check-oplossing toe te voegen vanuit Azure Marketplace in de Azure Portal.  Als u de oplossing wilt installeren, moet u een beheerder of Inzender zijn in het Azure-abonnement.
 
@@ -47,7 +47,7 @@ Voor het uitvoeren van de status controle op uw SQL Server-servers, hebben ze ee
 
 1. Installeer de [micro soft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) als de server nog niet wordt bewaakt door System Center 2016-Operations Manager of Operations Manager 2012 R2.
 2. Als het wordt bewaakt met System Center 2016-Operations Manager of Operations Manager 2012 R2 en de beheer groep is niet geïntegreerd met Azure Monitor, kan de server meerdere locaties hebben met Log Analytics om gegevens te verzamelen en door te sturen naar de service en nog steeds bewaakt door Operations Manager.  
-3. Als uw Operations Manager-beheer groep is geïntegreerd met de service, moet u de domein controllers voor het verzamelen van gegevens door de service toevoegen volgens de stappen onder door [agents beheerde computers toevoegen](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) nadat u de oplossing hebt ingeschakeld in uw werk ruimte.  
+3. Als uw Operations Manager-beheer groep is geïntegreerd met de service, moet u de domein controllers voor het verzamelen van gegevens door de service toevoegen volgens de stappen onder door [agents beheerde computers toevoegen](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) nadat u de oplossing in uw werk ruimte hebt ingeschakeld.  
 
 De agent op uw SQL Server die aan een Operations Manager beheer groep rapporteert, verzamelt gegevens, stuurt deze door naar de toegewezen beheer server en wordt vervolgens rechtstreeks van een beheer server naar Azure Monitor verzonden.  De gegevens worden niet naar de Operations Manager-data bases geschreven.  
 
@@ -79,7 +79,7 @@ Gebruik de volgende informatie om de Operations Manager uitvoeren als-account in
 
 1. Open de operations-console in Operations Manager en klik vervolgens op **beheer**.
 2. Klik onder **Run as-configuratie**op **profielen**en open **SQL-evaluatie uitvoeren als-profiel**.
-3. Klik op de pagina **uitvoeren als-accounts** op **toevoegen**.
+3. Klik op de pagina **Run As-accounts** op **Toevoegen**.
 4. Selecteer een Windows run as-account dat de referenties bevat die nodig zijn voor SQL Server, of klik op **Nieuw** om er een te maken.
 
    > [!NOTE]
@@ -143,7 +143,7 @@ De weging voor elke aanbeveling wordt uitgedrukt als een percentage van de total
 
 **Bewerkingen en controle** : dit focus gebied bevat aanbevelingen om uw IT-activiteiten te stroom lijnen, preventief onderhoud te implementeren en de prestaties te maximaliseren.
 
-**Wijzigings-en configuratie beheer** : dit focus gebied bevat aanbevelingen voor het beveiligen van dagelijkse bewerkingen, zodat de wijzigingen geen negatieve invloed hebben op uw infra structuur, het bepalen van wijzigings beheer procedures en het bijhouden en controleren van het systeem configuraties.
+**Wijzigings-en configuratie beheer** : dit focus gebied bevat aanbevelingen voor het beveiligen van dagelijkse bewerkingen, zodat de wijzigingen geen negatieve invloed hebben op uw infra structuur, het bepalen van wijzigings beheer procedures en het bijhouden en controleren van systeem configuraties.
 
 ### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Moet u de Score 100% in elk focus gebied richten?
 Dat hoeft niet. De aanbevelingen zijn gebaseerd op de kennis en ervaringen van micro soft-technici over duizenden klant bezoeken. Er zijn echter geen twee server infrastructuren hetzelfde, en specifieke aanbevelingen kunnen meer of minder relevant zijn voor u. Sommige beveiligings aanbevelingen kunnen bijvoorbeeld minder relevant zijn als uw virtuele machines niet worden blootgesteld aan Internet. Enkele Beschik baarheid van aanbevelingen kan minder relevant zijn voor services die ad-hoc gegevens verzameling en-rapportage met lage prioriteit bieden. Problemen die belang rijk zijn voor een volwassen bedrijf zijn mogelijk minder belang rijk voor het opstarten. U kunt ook bepalen welke focus gebieden uw prioriteiten hebben en vervolgens kijken hoe uw scores in de loop van de tijd veranderen.
@@ -214,7 +214,7 @@ Als u aanbevelingen hebt die u wilt negeren, kunt u een tekst bestand maken dat 
 
 *Wat is de naam van het proces dat het verzamelen van gegevens doet?*
 
-* AdvisorAssessment. exe
+* AdvisorAssessment.exe
 
 *Hoe lang duurt het voordat gegevens worden verzameld?*
 

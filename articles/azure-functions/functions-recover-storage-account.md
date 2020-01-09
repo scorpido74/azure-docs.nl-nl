@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 212f10bd33479e5a9f7244d5b2090c0324f937c2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 358f26af8d990d29f226978387fdf8093d2b8644
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226765"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612969"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Problemen oplossen met functions runtime is onbereikbaar
 
@@ -31,6 +31,8 @@ We behandelen de vier meest voorkomende fout gevallen, het identificeren en het 
 1. De referenties van het opslag account zijn ongeldig
 1. Het opslag account is niet toegankelijk
 1. Het dagelijkse uitvoerings quotum is vol
+1. App bevindt zich achter een firewall
+
 
 ## <a name="storage-account-deleted"></a>Opslag account verwijderd
 
@@ -48,7 +50,7 @@ Als u in de vorige stap geen opslag account hebt connection string, zijn deze wa
 
 ### <a name="required-application-settings"></a>Vereiste toepassings instellingen
 
-* Vereist
+* Verplicht
     * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
 * Vereist voor de functies van het verbruiks abonnement
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
@@ -56,7 +58,7 @@ Als u in de vorige stap geen opslag account hebt connection string, zijn deze wa
 
 [Lees hier meer over deze toepassings instellingen](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-### <a name="guidance"></a>Richtlijnen
+### <a name="guidance"></a>Hulp
 
 * Schakel ' sleuf instelling ' niet in voor een van deze instellingen. Wanneer u implementatie sleuven verwisselt, wordt de functie onderbroken.
 * Wijzig deze instellingen niet als onderdeel van automatische implementaties.
@@ -80,6 +82,12 @@ Als u een dagelijks uitvoerings quotum hebt geconfigureerd, wordt uw functie-app
 * Als u dit wilt controleren, controleert u de open platform functies > functie-app instellingen in de portal. Het volgende bericht wordt weer gegeven als u het quotum overschrijdt
     * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
 * Verwijder het quotum en start de app opnieuw om het probleem op te lossen.
+
+## <a name="app-is-behind-a-firewall"></a>App bevindt zich achter een firewall
+
+De runtime van de functie is onbereikbaar als uw functie-app wordt gehost in een [app service Environment met interne taak verdeling](../app-service/environment/create-ilb-ase.md) en is geconfigureerd om inkomend Internet verkeer te blok keren of waarvoor [binnenkomende IP-beperkingen](functions-networking-options.md#inbound-ip-restrictions) zijn geconfigureerd om Internet toegang te blok keren. De Azure Portal maakt rechtstreeks aan de actieve app aanroepen om de lijst met functies op te halen en maakt ook http-aanroepen naar KUDU-eind punt. Instellingen op platform niveau onder het tabblad `Platform Features` zijn nog steeds beschikbaar.
+
+* Als u de ASE-configuratie wilt controleren, gaat u naar NSG van het subnet waar ASE zich bevindt en valideert u de regels voor binnenkomende verbindingen zodat verkeer afkomstig is van het open bare IP-adres van de computer waarop u de toepassing opent. U kunt de portal ook gebruiken vanaf een computer die is verbonden met het virtuele netwerk waarop uw app wordt uitgevoerd of een virtuele machine die wordt uitgevoerd in uw virtuele netwerk. [Lees hier meer over de configuratie van de inkomende regel](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)
 
 ## <a name="next-steps"></a>Volgende stappen
 

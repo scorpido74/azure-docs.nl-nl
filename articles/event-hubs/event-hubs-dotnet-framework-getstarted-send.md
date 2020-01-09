@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: gebeurtenissen verzenden en ontvangen met behulp van de .NET Framework-Azure-Event Hubs'
+title: Azure Event Hubs-gebeurtenissen voor verzenden/ontvangen met de .NET Framework
 description: 'Snelstartgids: in dit artikel vindt u een overzicht van het maken van een .NET Framework-toepassing die gebeurtenissen naar Azure Event Hubs verzendt.'
 services: event-hubs
 documentationcenter: ''
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 12/20/2019
 ms.author: shvija
-ms.openlocfilehash: 89419e9a3ef364d4095800a617a84ff2f63c09a0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 385430d993afe8b7a0ad57991d3c93eebd46ddcb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720646"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437268"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>Quick Start: gebeurtenissen verzenden naar of ontvangen van Azure Event Hubs met behulp van .NET Framework
-Azure Event Hubs is een big data-platform voor het streamen van gegevens en een gebeurtenisopneemservice die miljoenen gebeurtenissen per seconde kan opnemen en verwerken. Event Hubs kan gebeurtenissen, gegevens of telemetrie die wordt geproduceerd door gedistribueerde software en apparaten verwerken en opslaan. Gegevens die naar een Event Hub worden verzonden, kunnen worden omgezet en opgeslagen via een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. Zie [Overzicht van Event Hubs](event-hubs-about.md) en [Functies van Event Hubs](event-hubs-features.md) voor een gedetailleerd overzicht van Event Hubs.
+Azure Event Hubs is een big data-platform voor het streamen van gegevens en een gebeurtenisopneemservice die miljoenen gebeurtenissen per seconde kan opnemen en verwerken. Event Hubs kan gebeurtenissen, gegevens of telemetrie die wordt geproduceerd door gedistribueerde software en apparaten, verwerken en opslaan. Gegevens die naar een Event Hub worden verzonden, kunnen worden getransformeerd en opgeslagen via een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. Zie [Overzicht van Event Hubs](event-hubs-about.md) en [Functies van Event Hubs](event-hubs-features.md) voor een gedetailleerd overzicht van Event Hubs.
 
 In deze zelf studie ziet u hoe u .NET Framework- C# console toepassingen maakt in om gebeurtenissen te verzenden naar of gebeurtenissen te ontvangen van een eventhub. 
 
@@ -53,13 +53,13 @@ Maak in Visual Studio een nieuw Visual C# bureaublad-app-project met behulp van 
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Code schrijven om berichten te verzenden naar de event hub
 
-1. Voeg aan het begin van het bestand `using`Program.cs**de volgende** instructies toe:
+1. Voeg aan het begin van het bestand **Program.cs** de volgende `using`-instructies toe:
    
     ```csharp
     using System.Threading;
     using Microsoft.ServiceBus.Messaging;
     ```
-2. Voeg de volgende velden toe aan de klasse **Program**, waarbij u de waarden van de tijdelijke aanduiding vervangt door de naam van de Event Hub die u in de vorige sectie hebt gemaakt, en de verbindingsreeks op naamruimteniveau die u eerder hebt opgeslagen. U kunt connection string voor uw Event Hub kopiëren vanuit **verbindings reeks-primaire** sleutel onder **RootManageSharedAccessKey** op de pagina event hub in de Azure Portal. Zie [Get Connection String](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)voor gedetailleerde stappen.
+2. Voeg de volgende velden toe aan de klasse **Program**, waarbij u de waarden van de tijdelijke aanduiding vervangt door de naam van de Event Hub die u in de vorige sectie hebt gemaakt, en de verbindingsreeks op naamruimteniveau die u eerder hebt opgeslagen. U kunt de verbindingsreeks kopiëren voor uw event hub uit **verbinding verbindingsreeks-primaire** key onder **RootManageSharedAccessKey** op de Event Hub-pagina in de Azure-portal. Zie voor gedetailleerde stappen [-verbindingsreeks ophalen](event-hubs-get-connection-string.md#get-connection-string-from-the-portal).
    
     ```csharp
     static string eventHubName = "Your Event Hub name";
@@ -118,7 +118,7 @@ Maak in Visual Studio een nieuw Visual C# bureaublad-app-project met behulp van 
 1. Klik in Solution Explorer met de rechtermuisknop op het project **Ontvanger** en klik op **NuGet-pakketten beheren voor oplossing**.
 2. Klik op het tabblad **Bladeren** en zoek vervolgens naar `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Klik op **Installeren** en accepteer de gebruiksvoorwaarden.
    
-    ![Zoeken naar Event processor host NuGet-pakket](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
+    ![Zoeken naar Event Processor Host NuGet-pakket](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
    
     Door Visual Studio wordt een verwijzing naar het [ NuGet-pakket Azure Service Bus Event Hub - EventProcessorHost](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost), inclusief alle bijbehorende afhankelijkheden, gedownload, geïnstalleerd en toegevoegd.
 
@@ -126,7 +126,7 @@ Maak in Visual Studio een nieuw Visual C# bureaublad-app-project met behulp van 
 
 1. Klik met de rechtermuisknop op het project **Ontvanger**, klik op **Toevoegen** en op **Klasse**. Noem de nieuwe klasse **SimpleEventProcessor** en klik op **Toevoegen** om de klasse te maken.
    
-    ![Klasse Simplee vent processor toevoegen](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
+    ![De klasse SimpleEventProcessor toevoegen](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
 2. Voeg de volgende instructies toe aan het begin van het bestand SimpleEventProcessor.cs:
     
       ```csharp
@@ -134,7 +134,7 @@ Maak in Visual Studio een nieuw Visual C# bureaublad-app-project met behulp van 
       using System.Diagnostics;
       ```
     
-3. Vervang de volgende code door de hoofd tekst van de klasse:
+3. Vervang de volgende code voor de hoofdtekst van de klasse:
     
       ```csharp
       class SimpleEventProcessor : IEventProcessor
@@ -188,7 +188,7 @@ Maak in Visual Studio een nieuw Visual C# bureaublad-app-project met behulp van 
       using Microsoft.ServiceBus.Messaging;
       ```
     
-2. Vervang de `Main` methode in de klasse `Program` door de volgende code, waarbij u de Event Hub naam en de connection string op naam ruimte niveau die u eerder hebt opgeslagen, en het opslag account en de sleutel die u in de vorige secties hebt gekopieerd, vervangt. 
+2. Vervang de `Main` methode in de `Program` klasse met de volgende code wordt vervangen door de naam van de event hub en de verbindingsreeks op naamruimteniveau die u eerder hebt opgeslagen, en de storage-account en de sleutel die u in de vorige secties hebt gekopieerd. 
     
       ```csharp
       static void Main(string[] args)

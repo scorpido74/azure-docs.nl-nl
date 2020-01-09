@@ -10,20 +10,20 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 ms.date: 07/29/2019
-ms.openlocfilehash: 6c4a99367c7fc6a864f6a16bc614e4c10663d0ff
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0f1140bbefc7508666e763fcd4f1a04ba48cdfdd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354946"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>Zelf studie: een relationele data base ontwerpen in één Data Base&#x23; in Azure SQL database C en ADO.net
 
 Azure SQL Database is een relationele DBaaS (database-as-a-service) in Microsoft Cloud (Azure). In deze zelfstudie leert u hoe u Azure Portal en ADO.NET met Visual Studio gebruikt voor de volgende taken:
 
 > [!div class="checklist"]
-> * Een individuele database maken met behulp van de Azure-portal*
-> * Een IP-firewallregel op serverniveau instellen met de Azure-portal
+> * Een individuele database maken met Azure Portal*
+> * Een IP-firewallregel op serverniveau instellen met Azure Portal
 > * Verbinding maken met de database met ADO.NET en Visual Studio
 > * Tabellen maken met ADO.NET
 > * Gegevens invoegen, bijwerken en verwijderen met ADO.NET
@@ -40,7 +40,7 @@ Een installatie van [Visual Studio 2019](https://www.visualstudio.com/downloads/
 
 ## <a name="create-a-blank-single-database"></a>Een lege individuele database maken
 
-Een individuele Azure SQL-database wordt gemaakt met een gedefinieerde set reken- en opslagresources. De database wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en wordt beheerd met een [databaseserver](sql-database-servers.md).
+Een individuele Azure SQL-database wordt gemaakt met een gedefinieerde set reken- en opslagresources. De database wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/management/overview.md) en wordt beheerd met een [databaseserver](sql-database-servers.md).
 
 Volg deze stappen om een lege individuele database te maken.
 
@@ -74,7 +74,7 @@ Volg deze stappen om een lege individuele database te maken.
 
     Als u de servicelaag, het aantal DTU's of vCores en de hoeveelheid opslagruimte hebt geselecteerd, klikt u op **Toepassen**.
 
-7. Voer een **sortering** in voor de lege database (gebruik de standaardwaarde in deze zelfstudie). Zie [Collations](/sql/t-sql/statements/collations) (Sorteringen) voor meer informatie over sorteringen
+7. Voer een **sortering** in voor de lege database (gebruik de standaardwaarde in deze zelfstudie). Zie [Sorteringen](/sql/t-sql/statements/collations) voor meer informatie over sorteringen.
 
 8. Nu u het **SQL Database**-formulier hebt ingevuld, klikt u op **Maken** om de individuele database in te richten. Deze stap kan enkele minuten duren.
 
@@ -89,7 +89,7 @@ De service SQL Database maakt een IP-firewall op serverniveau. De firewall voork
 > [!IMPORTANT]
 > De service SQL Database communiceert via poort 1433. Als u verbinding met deze service probeert te maken vanuit een bedrijfsnetwerk, wordt uitgaand verkeer via poort 1433 mogelijk niet toegestaan door de firewall van uw netwerk. In dat geval kunt u geen verbinding maken met uw individuele database, tenzij de beheerder poort 1433 openstelt.
 
-1. Wanneer de implementatie is voltooid, klikt u op **SQL Databases** in het menu aan de linkerkant. Klik vervolgens op de pagina *SQL Databases* op **yourDatabase**. De overzichtspagina voor de database wordt geopend, met de volledig gekwalificeerde **servernaam** (bijvoorbeeld *yourserver.database.windows.net*) en opties voor verdere configuratie.
+1. Wanneer de implementatie is voltooid, klikt u op **SQL Databases** in het menu aan de linkerkant. Klik vervolgens op de pagina **SQL Databases** op *yourDatabase*. De overzichtspagina voor de database wordt geopend, met de volledig gekwalificeerde **servernaam** (bijvoorbeeld *yourserver.database.windows.net*) en opties voor verdere configuratie.
 
 2. Kopieer vanuit SQL Server Management Studio deze volledig gekwalificeerde servernaam om verbinding te maken met de server en de databases.
 
@@ -117,7 +117,7 @@ Uw IP-adres wordt niet meer geblokkeerd via de IP-firewall. U kunt nu verbinding
 In deze zelfstudie hebt u kennisgemaakt met eenvoudige databasetaken, zoals het maken van een database en tabellen, het verbinden van de database, het laden van gegevens en het uitvoeren van query's. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Een database maken
+> * Database maken
 > * Een firewallregel instellen
 > * Verbinding maken met de database met behulp van [Visual Studio en C#](sql-database-connect-query-dotnet-visual-studio.md)
 > * Tabellen maken

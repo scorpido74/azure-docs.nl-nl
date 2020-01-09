@@ -1,19 +1,19 @@
 ---
-title: Voor beeld van Azure CLI-script-een Premium Azure-cache maken voor redis met clustering
-description: Azure CLI-voorbeeldscript - het maken van een Premium-laag van Azure Cache voor Redis met clustering
+title: Een Premium Azure-cache maken voor redis met clustering-Azure CLI
+description: Dit Azure CLI-code voorbeeld laat zien hoe u een Azure-cache van 6 GB maakt voor redis met clustering ingeschakeld en twee Shards.
 author: yegu-ms
+ms.author: yegu
 tags: azure-service-management
 ms.service: cache
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
-ms.author: yegu
-ms.openlocfilehash: 1813bf7112969436012627147b94f656537029d5
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 68203fe2e054f32ce5764fe4f1b07013b0806104
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122507"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411152"
 ---
 # <a name="create-a-premium-azure-cache-for-redis-with-clustering"></a>Maken van een Premium Azure Cache voor Redis met clustering
 
@@ -29,7 +29,7 @@ In dit scenario leert u hoe u een Premium-laag van 6 GB Azure-Cache maken voor R
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script worden de volgende opdrachten gebruikt om een resourcegroep te maken en een Premium-laag Azure Redis Cache met clustering inschakelen. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+Dit script worden de volgende opdrachten gebruikt om een resourcegroep te maken en een Premium-laag Azure Redis Cache met clustering inschakelen. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -39,6 +39,6 @@ Dit script worden de volgende opdrachten gebruikt om een resourcegroep te maken 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
 Aanvullende Azure-Cache voor Redis CLI-voorbeeldscripts vindt u de [Azure Cache voor Redis-documentatie](../cli-samples.md).

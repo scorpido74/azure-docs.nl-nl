@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: f7859dbef486d4afa825b289f3991464dacf702c
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 396652e3f8a0a8d9e18effb94a48a362054dde96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665641"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403151"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netwerkprestatiemeter oplossing in azure
 
@@ -37,17 +37,25 @@ Meer informatie over de verschillende mogelijkheden die door [Netwerkprestatieme
  
 ## <a name="supported-regions"></a>Ondersteunde regio's
 NPM kan de connectiviteit tussen netwerken en toepassingen in elk deel van de wereld bewaken, van een werk ruimte die wordt gehost in een van de volgende regio's:
+* Europa - noord
 * Europa - west
+* Frankrijk - centraal
+
 * VS - west-centraal
 * VS - noord-centraal
+* VS - zuid-centraal
+* VS - centraal
 * VS - oost
 * VS - oost 2
+* VS - west 2
 * Japan-Oost
 * Azië - zuidoost
 * Zuid-Oost-Australië
 * Australië - centraal
 * Australië Oost
 * Zuid-Brittannië
+* Azië - oost
+* Korea - centraal
 * India - centraal
 * Virginia van de Amerikaanse overheid
 * China - oost 2
@@ -158,7 +166,7 @@ Configureer de gewenste mogelijkheden:
 
  
 
-## <a name="data-collection-details"></a>Details van gegevens verzameling
+## <a name="data-collection-details"></a>Details van de verzameling gegevens
 Voor het verzamelen van gegevens over verlies en latentie, Netwerkprestatiemeter gebruikt TCP SYN-SYNACK-ACK-Handshake-pakketten wanneer u TCP kiest als protocol. Netwerkprestatiemeter gebruikt ICMP ECHO ICMP-ECHO antwoord wanneer u ICMP als protocol kiest. Trace route wordt ook gebruikt om topologie gegevens op te halen.
 
 De volgende tabel toont methoden voor gegevens verzameling en andere informatie over hoe gegevens worden verzameld voor Netwerkprestatiemeter.
@@ -216,7 +224,7 @@ In elke weer gave wordt een moment opname van uw netwerk status op een bepaald m
 
  
 
-### <a name="trend-charts"></a>Trend grafieken 
+### <a name="trend-charts"></a>Trendgrafieken 
 
 Op elk niveau dat u inzoomt, ziet u de trend van de toepasselijke metrische gegevens. Dit kan verlies, latentie, reactie tijd of bandbreedte gebruik zijn. Als u het tijds interval voor de trend wilt wijzigen, gebruikt u het besturings element tijd boven aan de grafiek. 
 
@@ -225,7 +233,7 @@ Trend grafieken tonen een historisch perspectief van de prestaties van prestatie
 U kunt dit soort problemen gemakkelijk detecteren door te kijken naar een trend diagram. Het probleem wordt weer gegeven als een plotselinge piek in netwerk latentie of pakket verlies. Als u het probleem wilt onderzoeken, gebruikt u het besturings element netwerk status recorder om de moment opname en de topologie van het netwerk te bekijken voor dat punt op het moment dat het probleem optrad.
 
  
-![Trend grafieken](media/network-performance-monitor/trend-charts.png)
+![Trendgrafieken](media/network-performance-monitor/trend-charts.png)
  
 
 ### <a name="topology-map"></a>Topologie toewijzing 

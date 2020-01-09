@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 9004e74d1b42a2b50ef57da58d9a79497e17f1ed
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1e921059caa0d34c9ba1e303ff7f4a8de027a021
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895771"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434990"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Azure IoT Central-architectuur (preview-functies)
 
@@ -119,7 +119,7 @@ In azure IoT Central worden toepassings gegevens opgeslagen in de Cloud. De opge
 
 Azure IoT Central gebruikt een time series Store voor de meet gegevens die vanaf uw apparaten worden verzonden. Time Series-gegevens van apparaten die worden gebruikt door de analyse service.
 
-## <a name="analytics"></a>Analyse
+## <a name="analytics"></a>Analytische gegevens
 
 De analyse service is verantwoordelijk voor het genereren van de aangepaste rapportage gegevens die door de toepassing worden weer gegeven. Een operator kan [de analyse aanpassen](howto-create-analytics.md) die in de toepassing wordt weer gegeven. De Analytics-service is boven op [Azure time series Insights](https://azure.microsoft.com/services/time-series-insights/) gebouwd en verwerkt de meet gegevens die vanaf uw apparaten worden verzonden.
 
@@ -152,7 +152,7 @@ In een Azure IoT Central-toepassing kunt u [taken maken en uitvoeren](../core/ho
 
 ## <a name="role-based-access-control-rbac"></a>Toegangsbeheer op basis van rollen (RBAC)
 
-Een [beheerder kan toegangs regels definiëren](howto-administer.md) voor een Azure IOT Central-toepassing met behulp van de vooraf gedefinieerde rollen. Een beheerder kan gebruikers toewijzen aan rollen die bepalen op welke gebieden van de toepassing de gebruiker toegang heeft.
+Een [beheerder kan toegangs regels definiëren](howto-manage-users-roles.md) voor een Azure IOT Central-toepassing met behulp van een van de vooraf gedefinieerde rollen of door een aangepaste rol te maken. Rollen bepalen op welke gebieden van de toepassing een gebruiker toegang heeft en welke acties ze kunnen uitvoeren.
 
 ## <a name="security"></a>Beveiliging
 

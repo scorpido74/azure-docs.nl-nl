@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: radwiv
-ms.openlocfilehash: 41c36d302605bb619899131a8ace649b0f1439b2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 2429a8d08baa34aed120cffa069abae1fb9a3df9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151854"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353506"
 ---
 # <a name="configure-packet-captures-for-vpn-gateways"></a>Pakket opnames voor VPN-gateways configureren
 
@@ -24,11 +24,13 @@ Er zijn een aantal algemeen beschik bare hulpprogram ma's voor het vastleggen va
 
 VPN-gateway pakket opnames kunnen worden uitgevoerd op de gateway of op een specifieke verbinding, afhankelijk van de behoeften van de klant. U kunt ook pakket opnames op meerdere tunnels tegelijk uitvoeren. U kunt één of twee richtings verkeer, IKE-en ESP-verkeer en interne pakketten samen met filteren op een VPN-gateway vastleggen.
 
-Het gebruik van 5 Tuples filters (bron-subnet, doel-subnet, bron poort, doel poort, Protocol) en TCP-vlaggen (SYN, ACK, FIN, URG, PSH, RST) is handig bij het isoleren van problemen op een groot volume verkeer.
+Het gebruik van 5 Tuples filter (bron-subnet, doel-subnet, bron poort, doel poort, Protocol) en TCP-vlaggen (SYN, ACK, FIN, URG, PSH, RST) is handig bij het isoleren van problemen op een groot volume verkeer.
+
+U kunt slechts één optie per eigenschap gebruiken tijdens het uitvoeren van de pakket opname.
 
 ## <a name="setup-packet-capture-using-powershell"></a>Pakket opname instellen met Power shell
 
-Zie de onderstaande voor beelden voor Power shell-opdrachten om pakket opnames te starten en te stoppen. Zie dit Power shell- [document](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)voor meer informatie over opties voor de para meters (zoals het maken van filters).
+Zie de onderstaande voor beelden voor Power shell-opdrachten om pakket opnames te starten en te stoppen. Zie dit Power shell- [document](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)voor meer informatie over opties voor de para meters (zoals het maken van een filter).
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>Pakket opname starten voor een VPN-gateway
 
@@ -36,7 +38,7 @@ Zie de onderstaande voor beelden voor Power shell-opdrachten om pakket opnames t
 Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName"
 ```
 
-Optionele para meter **-tekstmap** kunnen worden gebruikt om filters toe te passen.
+Optionele para meter **-tekstmap** kunnen worden gebruikt om filter toe te passen.
 
 ### <a name="stop-packet-capture-for-a-vpn-gateway"></a>Pakket opname stoppen voor een VPN-gateway
 
@@ -50,7 +52,7 @@ Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupN
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName"
 ```
 
-Optionele para meter **-tekstmap** kunnen worden gebruikt om filters toe te passen.
+Optionele para meter **-tekstmap** kunnen worden gebruikt om filter toe te passen.
 
 ### <a name="stop-packet-capture-on-a-vpn-gateway-connection"></a>Pakket opname stoppen op een VPN-gateway verbinding
 
@@ -62,7 +64,7 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 
 - Het uitvoeren van pakket opnames kan invloed hebben op de prestaties. Vergeet niet om het opnemen van het pakket te stoppen wanneer dit niet nodig is.
 - De voorgestelde minimale pakket opname duur is 600 seconden. Een kortere duur van de pakket opname biedt mogelijk geen volledige gegevens als gevolg van het synchroniseren van problemen tussen meerdere onderdelen op het pad.
-- Gegevens bestanden voor pakket opname worden gegenereerd in PCAP-of ETL-indelingen. Mogelijk hebt u netmon parser nodig om de gegevens te begrijpen.
+- Gegevens bestanden voor pakket opname worden gegenereerd in de PCAP-indeling. Gebruik wireshark of andere algemeen beschik bare toepassingen om PCAP-bestanden te openen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

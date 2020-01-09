@@ -4,15 +4,15 @@ description: In dit artikel wordt beschreven hoe u de Azure Monitor voor VM's de
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: f062dead8d479fe4da5de46b76b82cee9207bd83
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 548a578365b03162396fb8618718ab1e7ce5b081
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933718"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400805"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>De Azure Monitor voor VM's-afhankelijkheids agent bijwerken
 
@@ -62,7 +62,7 @@ U kunt [hier](https://aka.ms/dependencyagentwindows)de meest recente versie van 
 
     Met de para meter `/RebootMode=manual` wordt voor komen dat de computer automatisch opnieuw wordt opgestart als sommige processen gebruikmaken van bestanden uit de vorige versie en een vergren deling hebben. 
 
-3. Om te bevestigen dat de upgrade is geslaagd, raadpleegt u de `install.log` voor gedetailleerde informatie over de installatie. De logboekmap is *%ProgramFiles%\Microsoft dependency Agent\logs*.
+3. Om te bevestigen dat de upgrade is geslaagd, raadpleegt u de `install.log` voor gedetailleerde informatie over de installatie. De logboekmap is *%Programfiles%\Microsoft afhankelijkheid Agent\logs*.
 
 ## <a name="upgrade-linux-agent"></a>Linux-agent bijwerken 
 
@@ -74,7 +74,7 @@ U kunt [hier](https://aka.ms/dependencyagentlinux)de meest recente versie van de
 
 2. Voer de volgende opdracht uit als root`sh InstallDependencyAgent-Linux64.bin -s`. 
 
-Als de afhankelijkheids agent niet kan worden gestart, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. Op Linux-agents is de logboekmap */var/opt/Microsoft/dependency-agent/log*. 
+Als de agent voor afhankelijkheden niet kan worden gestart, controleert u de logboeken voor uitgebreide foutgegevens. Op Linux-agents, de logboekmap is */var/opt/microsoft/dependency-agent/log*. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 95083809f8fcfe42ae76faa0af507c7ce4acd709
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 268a7e7c94285d3c4fdcb0c5fb91b685c09b58c8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083435"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436916"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Bewaking, metrische gegevens en waarschuwingen voor ExpressRoute
 
@@ -24,7 +24,7 @@ Dit artikel helpt u inzicht in de ExpressRoute-bewaking, metrische gegevens en w
 
 ## <a name="expressroute-metrics"></a>Metrische gegevens van ExpressRoute
 
-Als u **gegevens**wilt weer geven, gaat u naar de pagina *Azure monitor* en klikt u op *metrische gegevens*. Voor het weer geven van **ExpressRoute** -metrische gegevens, de bestands extensie per bron type *ExpressRoute-circuits*. Als u **Global Reach** metrische gegevens wilt weer geven, filtert u op resource type *ExpressRoute-circuits* en selecteert u een ExpressRoute-circuit resource waarvoor Global REACH is ingeschakeld. Als u **ExpressRoute direct** -metrische gegevens wilt weer geven, filtert u resource type op *ExpressRoute-poorten*. 
+Als u **gegevens**wilt weer geven, gaat u naar de pagina *Azure monitor* en klikt u op *metrische gegevens*. Als u metrische gegevens voor **ExpressRoute** wilt weer geven, filtert u op *ExpressRoute-circuits*van het resource type. Als u **Global Reach** metrische gegevens wilt weer geven, filtert u op resource type *ExpressRoute-circuits* en selecteert u een ExpressRoute-circuit resource waarvoor Global REACH is ingeschakeld. Als u **ExpressRoute direct** -metrische gegevens wilt weer geven, filtert u resource type op *ExpressRoute-poorten*. 
 
 Zodra een metriek is geselecteerd, wordt de standaard aggregatie toegepast. U kunt eventueel splitsen Toep assen, waardoor de metriek wordt weer gegeven met verschillende dimensies.
 
@@ -115,7 +115,7 @@ U kunt het TX licht niveau (het licht niveau dat de ExpressRoute directe poort *
 
 2. Klik op **+ doel selecteren** en selecteer de verbindingsresource van de ExpressRoute-gateway.
 
-   ![doel]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+   ![target]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. Definieer de details van de waarschuwing.
 
    ![Actiegroep](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)

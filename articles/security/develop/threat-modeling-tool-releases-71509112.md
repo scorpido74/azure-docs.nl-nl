@@ -1,30 +1,22 @@
 ---
-title: Threat Modeling Tool releases-Microsoft Threat Modeling Tool-Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool release 9/12/2018-Azure
 description: De release opmerkingen voor het hulp programma voor het maken van bedreigingen vastleggen
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
-ms.author: jegeib
-ms.openlocfilehash: ce5f2b5541da3b3a3db046ba0dc768e3fbe2431e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ad489d6de222380e85a962c7b50c63a5c2122c72
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928121"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548799"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool GA release 7.1.50911.2-9/12/2018
 
-Met trots kondigen we de Microsoft Threat Modeling Tool nu beschikbaar om te downloaden als een ondersteunde, algemeen beschik bare versie (GA). Deze release bevat belang rijke privacy-en beveiligings updates, evenals oplossingen voor problemen, functie-updates en stabiliteits verbeteringen. Bestaande gebruikers van de preview-versie van 2017 wordt gevraagd om bij te werken naar de nieuwste versie via de ClickOnce-technologie bij het openen van de client. Klik hier voor nieuwe gebruikers van het hulp programma [om de-client te downloaden](https://aka.ms/threatmodelingtool).
+Met trots kondigen we de Microsoft Threat Modeling Tool nu beschikbaar om te downloaden als een ondersteunde, algemeen beschik bare versie (GA). Deze release bevat belang rijke privacy-en beveiligings updates, evenals oplossingen voor problemen, functie-updates en stabiliteits verbeteringen. Bestaande gebruikers van de preview-versie van 2017 wordt gevraagd om bij te werken naar de nieuwste versie via de ClickOnce-technologie bij het openen van de client. Voor nieuwe gebruikers van het hulp programma kunt u [de client downloaden](https://aka.ms/threatmodelingtool).
 
 In deze release bieden we ondersteuning voor de preview-versie van 2017 en raden we aan alle gebruikers van de preview-update uit te voeren voor de GA-release. Op of na 15 2018 oktober zullen we de mini maal vereiste ClickOnce-versie voor de Threat Modeling Tool instellen en moeten alle preview-clients worden bijgewerkt.
 

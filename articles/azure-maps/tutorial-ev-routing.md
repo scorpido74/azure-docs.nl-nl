@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 0f5964472b738bd3868bbf361b85fa4ad1f13b5c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 7039cd73263388f206075a53d7898e0d15da6b03
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109600"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613683"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Zelf studie: elektrische Voer tuigen routeren met behulp van Azure Notebooks (python)
 
@@ -39,9 +39,11 @@ In deze zelfstudie leert u het volgende:
 
 Als u deze zelf studie wilt volt ooien, moet u eerst een Azure Maps-account maken en uw primaire sleutel (abonnements sleutel) ophalen. 
 
-Als u een abonnement voor een Azure Maps account wilt maken in de prijs categorie S1, volgt u de instructies in [uw Azure Maps-account beheren](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account). 
+Als u een abonnement voor een Azure Maps account wilt maken in de prijs categorie S1, volgt u de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) om een abonnement op een Azure Maps account te maken met de prijs categorie S1. 
 
-Als u de primaire abonnements sleutel voor uw account wilt ophalen, volgt u de instructies in [een account maken en uw sleutel ophalen](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-and-get-your-key).
+Volg de instructies in de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account)om de primaire abonnements sleutel voor uw account op te halen.
+
+Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
 
 ## <a name="create-an-azure-notebook"></a>Een Azure-notebook maken
 
@@ -111,7 +113,7 @@ Omdat het bedrijf de voor keur geeft aan het gebruik van routes waarvoor een eve
 Als u de grenzen voor het bereik van het elektrische Voer tuig wilt bepalen, voert u het script uit in de volgende cel:
 
 ```python
-subscriptionKey = "Your Azure Maps primary subscription key"
+subscriptionKey = "Your Azure Maps key"
 currentLocation = [34.028115,-118.5184279]
 session = aiohttp.ClientSession()
 
@@ -398,6 +400,6 @@ Zie voor het verkennen van de Azure Maps Api's die in deze zelf studie worden ge
 * [Route matrix plaatsen](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [Route beschrijving ophalen](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
 
-Zie [Azure Maps rest api's](https://docs.microsoft.com/azure/azure-maps/#reference)voor een volledige lijst met Azure Maps rest api's.
+Zie [Azure Maps rest api's](https://docs.microsoft.com/azure/azure-maps/consumption-model)voor een volledige lijst met Azure Maps rest api's.
 
 Zie [Azure notebooks](https://docs.microsoft.com/azure/notebooks)voor meer informatie over Azure notebooks.

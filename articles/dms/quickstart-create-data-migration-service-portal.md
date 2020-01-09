@@ -1,6 +1,7 @@
 ---
-title: 'Snelstartgids: een Azure Database Migration Service-exemplaar maken met behulp van de Azure Portal | Microsoft Docs'
-description: Gebruik de Azure Portal om een exemplaar van Azure Database Migration Service te maken
+title: 'Snelstartgids: een exemplaar maken met behulp van de Azure Portal'
+titleSuffix: Azure Database Migration Service
+description: Gebruik de Azure Portal om een exemplaar van Azure Database Migration Service te maken.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 11/05/2019
-ms.openlocfilehash: 6427de61ebf30a5e4a62070becd1cc1f750f6c1b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: 71308b7f17d6009e8650cafbb02afd577fd73cf4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571613"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437736"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Snelstart: Een Azure Database Migration Service-exemplaar maken met behulp van de Azure-portal
 
@@ -72,7 +73,7 @@ Registreer de Microsoft.DataMigration-resourceprovider voordat u uw eerste Datab
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Alle resources die u in deze QuickStart hebt gemaakt, kunt u verwijderen door de [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) te verwijderen. U verwijdert de resourcegroep door te navigeren naar het Azure Database Migration Service-exemplaar dat u hebt gemaakt. Selecteer bij **Resourcegroep** de naam van de resourcegroep en selecteer vervolgens **Resourcegroep verwijderen**. Door deze actie worden alle items in de resourcegroep verwijderd, evenals de groep zelf.
+Alle resources die u in deze QuickStart hebt gemaakt, kunt u verwijderen door de [Azure-resourcegroep](../azure-resource-manager/management/overview.md) te verwijderen. U verwijdert de resourcegroep door te navigeren naar het Azure Database Migration Service-exemplaar dat u hebt gemaakt. Selecteer bij **Resourcegroep** de naam van de resourcegroep en selecteer vervolgens **Resourcegroep verwijderen**. Door deze actie worden alle items in de resourcegroep verwijderd, evenals de groep zelf.
 
 ## <a name="next-steps"></a>Volgende stappen
 

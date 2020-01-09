@@ -1,6 +1,6 @@
 ---
-title: Overzicht van vereisten voor het gebruik van de Azure Database Migration Service | Microsoft Docs
-description: Meer informatie over een overzicht van de vereisten voor het gebruik van de Azure Database Migration Service om uit te voeren van de databasemigraties.
+title: Vereisten voor Azure Database Migration Service
+description: Meer informatie over een overzicht van de vereisten voor het gebruik van de Azure Database Migration Service voor het uitvoeren van database migraties.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,34 +8,34 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 05/29/2019
-ms.openlocfilehash: 4e21014f7b4ed86846a100ed9a2b1cd4b0400974
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 6a262b75e4ab0f178e5d4bea34f5046f2292ab40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304262"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437767"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Overzicht van vereisten voor het gebruik van de Azure Database Migration Service
 
-Er zijn verschillende vereisten die nodig zijn om te controleren of de dat Azure Database Migration Service wordt probleemloos uitgevoerd bij het uitvoeren van de databasemigraties. Sommige van de vereisten van toepassing in alle scenario's (bron-doelparen) die wordt ondersteund door de service, terwijl andere vereiste onderdelen uniek voor een specifiek scenario zijn.
+Er zijn verschillende vereisten vereist om ervoor te zorgen dat Azure Database Migration Service probleemloos wordt uitgevoerd bij het uitvoeren van database migraties. Sommige van de vereisten gelden voor alle scenario's (bron-doel paren) die door de service worden ondersteund, terwijl andere vereisten uniek zijn voor een specifiek scenario.
 
-Vereisten die zijn gekoppeld aan met behulp van de Azure Database Migration Service worden vermeld in de volgende secties.
+De vereisten voor het gebruik van de Azure Database Migration Service worden weer gegeven in de volgende secties.
 
-## <a name="prerequisites-common-across-migration-scenarios"></a>Vereisten gebruikt voor migratiescenario 's
+## <a name="prerequisites-common-across-migration-scenarios"></a>Vereisten die gebruikelijk zijn in migratie scenario's
 
-Vereisten voor Azure Database Migration Service die betrekking hebben op alle ondersteunde migratiescenario's zijn onder andere het:
+Azure Database Migration Service vereisten die gemeen schappelijk zijn voor alle ondersteunde migratie scenario's zijn onder andere het volgende:
 
-* Een Azure Virtual Network (VNet) maken voor Azure Database Migration Service met behulp van het Azure Resource Manager-implementatiemodel, waarmee u site-naar-site-verbinding met uw on-premises bronservers met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-* Zorg ervoor dat uw regels VNet Netwerkbeveiligingsgroep (NSG) blokkeren niet de volgende communicatiepoorten 443, 53, 9354, 445, 12000. Zie het artikel voor meer informatie over Azure VNet NSG wordt verkeer gefilterd, [netwerkverkeer filteren met netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
-* Wanneer u een apparaat voor een firewall voor de brondatabase (s), moet u mogelijk toevoegen van firewallregels om toe te staan van Azure Database Migration Service voor toegang tot de brondatabase (s) voor de migratie.
+* Maak een Azure Virtual Network (VNet) voor Azure Database Migration Service met behulp van het Azure Resource Manager implementatie model, dat site-naar-site-verbinding met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+* Zorg ervoor dat de regels van uw VNet-netwerk beveiligings groep (NSG) niet de volgende communicatie poorten 443, 53, 9354, 445, 12000 blok keren. Zie het artikel [netwerk verkeer filteren met netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)voor meer informatie over het filteren van NSG-verkeer van Azure VNet.
+* Wanneer u een firewall apparaat voor uw bron database (s) gebruikt, moet u mogelijk firewall regels toevoegen om Azure Database Migration Service toegang te geven tot de bron database (s) voor de migratie.
 * Configureer uw [Windows Firewall voor toegang tot de database-engine](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Schakel het TCP/IP-protocol in, dat standaard is uitgeschakeld tijdens de installatie van SQL Server Express, door de instructies in het artikel [In- of uitschakelen van een Server Network Protocol](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure) te volgen.
 
     > [!IMPORTANT]
-    > Het maken van een exemplaar van Azure Database Migration Service vereist toegang tot VNet-instellingen die normaal gesproken niet in dezelfde resourcegroep bevinden. Als gevolg hiervan moet de gebruiker die het maken van een exemplaar van DMS machtiging op abonnementsniveau. Voor het maken van de vereiste functies, die u kunt naar behoefte toewijzen kunt, voer het volgende script:
+    > Voor het maken van een instantie van Azure Database Migration Service is toegang tot VNet-instellingen vereist die normaal gesp roken niet in dezelfde resource groep zijn. Als gevolg hiervan moet de gebruiker die een exemplaar van DMS maakt, toestemming hebben op abonnements niveau. Voer het volgende script uit om de vereiste rollen te maken, die u indien nodig kunt toewijzen:
     >
     > ```
     >
@@ -100,13 +100,13 @@ Vereisten voor Azure Database Migration Service die betrekking hebben op alle on
     > Update-DmsConributorRole
     > ```
 
-## <a name="prerequisites-for-migrating-sql-server-to-azure-sql-database"></a>Vereisten voor SQL-Server migreren naar Azure SQL Database
+## <a name="prerequisites-for-migrating-sql-server-to-azure-sql-database"></a>Vereisten voor het migreren van SQL Server naar Azure SQL Database
 
-Naast Azure Database Migration Service-vereisten die gemeenschappelijk voor alle scenario's voor migratie zijn, zijn er ook vereisten die specifiek op een scenario of een andere toepassing.
+Naast Azure Database Migration Service vereisten die gemeen schappelijk zijn voor alle migratie scenario's, zijn er ook vereisten die specifiek van toepassing zijn op één scenario of een andere.
 
-Bij het gebruik van de Azure Database Migration Service om uit te voeren moet SQL Server naar Azure SQL Database-migraties, naast de vereisten die gemeenschappelijk voor alle scenario's voor migratie zijn naar het adres van de volgende aanvullende vereisten:
+Wanneer u de Azure Database Migration Service gebruikt voor het uitvoeren van SQL Server naar Azure SQL Database migraties, naast de vereisten die gemeen schappelijk zijn voor alle migratie scenario's, moet u rekening houden met de volgende aanvullende vereisten:
 
-* Maak een instantie van Azure SQL Database-instantie die u doen door het volgende op de details in het artikel C[maken van een Azure SQL database in Azure portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
+* Maak een instantie van Azure SQL Database exemplaar, dat u doet door de details in artikel C[een Azure SQL database in de Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)te volgen.
 * Download en installeer de [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 of hoger.
 * Stel uw Windows-firewall open voor toegang van de Azure Database Migration Service tot de brondatabase van SQL Server. Standaard verloopt dit via TCP-poort 1433.
 * Als u meerdere benoemde SQL Server-exemplaren met behulp van dynamische poorten uitvoert, kunt u desgewenst de SQL Browser Service inschakelen en toegang tot de UDP-poort 1434 via uw firewalls toestaan, zodat de Azure Database Migration Service verbinding kan maken met een benoemd exemplaar op uw bronserver.
@@ -115,24 +115,24 @@ Bij het gebruik van de Azure Database Migration Service om uit te voeren moet SQ
 * Zorg ervoor dat de referenties waarmee verbinding wordt gemaakt met het Azure SQL Database-doelexemplaar CONTROL DATABASE-machtiging hebben op de Azure SQL-doeldatabases.
 
    > [!NOTE]
-   > Voor een volledige lijst met de vereiste onderdelen voor het gebruik van de Azure Database Migration Service om uit te voeren van migraties van SQL Server naar Azure SQL Database, Zie de zelfstudie [SQL-Server migreren naar Azure SQL Database](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql).
+   > Voor een volledig overzicht van de vereisten die nodig zijn om de Azure Database Migration Service te gebruiken om migraties uit te voeren van SQL Server naar Azure SQL Database, raadpleegt u de zelf studie [SQL Server migreren naar Azure SQL database](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql).
    > 
 
-## <a name="prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance"></a>Vereisten voor SQL-Server migreren naar een beheerd exemplaar voor Azure SQL Database
+## <a name="prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance"></a>Vereisten voor het migreren van SQL Server naar een Azure SQL Database beheerd exemplaar
 
-* Een beheerd exemplaar voor Azure SQL Database maken door het volgen van de details in het artikel [maken van een Azure SQL Database Managed Instance in de Azure portal](https://aka.ms/sqldbmi).
-* Open uw firewalls om toe te staan van SMB-verkeer op poort 445 voor de Azure Database Migration Service IP-adres of subnet bereik.
+* Maak een beheerde Azure SQL Database-exemplaar door de details in het artikel [een Azure SQL database beheerde instantie in de Azure portal te maken](https://aka.ms/sqldbmi).
+* Open uw firewalls om SMB-verkeer op poort 445 toe te staan voor het Azure Database Migration Service IP-adres of het subnet-bereik.
 * Stel uw Windows-firewall open voor toegang van de Azure Database Migration Service tot de brondatabase van SQL Server. Standaard verloopt dit via TCP-poort 1433.
 * Als u meerdere benoemde SQL Server-exemplaren met behulp van dynamische poorten uitvoert, kunt u desgewenst de SQL Browser Service inschakelen en toegang tot de UDP-poort 1434 via uw firewalls toestaan, zodat de Azure Database Migration Service verbinding kan maken met een benoemd exemplaar op uw bronserver.
 * Zorg ervoor dat de aanmeldingsreferenties die worden gebruikt voor verbinding met het bronexemplaar van SQL Server en het doelexemplaar van Managed Instance lid zijn van de serverrol sysadmin.
 * Maak een netwerkshare die de Azure Database Migration Service kan gebruiken om een back-up te maken van de brondatabase.
 * Zorg ervoor dat het serviceaccount van het bronexemplaar van SQL Server schrijfbevoegdheid heeft voor de netwerkshare die u hebt gemaakt en dat het computeraccount voor de bronserver lees-/schrijftoegang heeft tot de share.
 * Maak een notitie van een Windows-gebruiker (en wachtwoord) die volledig beheer heeft over de netwerkshare die u eerder hebt gemaakt. De Azure Database Migration Service imiteert de gebruikersreferenties voor het uploaden van de back-upbestanden naar een Azure-opslagcontainer voor herstelbewerkingen.
-* Een blob-container maken en de SAS-URI ophalen met behulp van de stappen in het artikel [beheren Azure Blob Storage-resources met Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container). Zorg ervoor dat alle machtigingen (lezen, schrijven, verwijderen, lijst) in het venster voor beleid selecteren tijdens het maken van de SAS-URI.
+* Maak een BLOB-container en haal de SAS-URI op met behulp van de stappen in het artikel [Azure Blob Storage-resources beheren met Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container). Zorg ervoor dat u alle machtigingen (lezen, schrijven, verwijderen, lijst) in het venster beleid selecteert tijdens het maken van de SAS-URI.
 
    > [!NOTE]
-   > Zie voor een volledige lijst met de vereiste onderdelen voor het gebruik van de Azure Database Migration Service uitvoert migraties van SQL Server naar Azure SQL Database Managed Instance, de zelfstudie [SQL-Server migreren naar Azure SQL Database Managed Instance ](https://aka.ms/migratetomiusingdms).
+   > Voor een volledige lijst van de vereisten die nodig zijn om de Azure Database Migration Service te gebruiken om migraties uit te voeren van SQL Server naar Azure SQL Database beheerde instantie, raadpleegt u de zelf studie [SQL Server migreren naar Azure SQL database beheerde instantie](https://aka.ms/migratetomiusingdms).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het artikel voor een overzicht van de Azure Database Migration Service en de regionale beschikbaarheid [wat is de Azure Database Migration Service](dms-overview.md).
+Zie het artikel [Wat is de Azure database Migration service](dms-overview.md)voor een overzicht van de Azure database Migration service en regionale Beschik baarheid.

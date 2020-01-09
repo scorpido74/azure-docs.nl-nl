@@ -1,18 +1,14 @@
 ---
 title: Azure Monitor configureren voor het verzamelen van gegevens van containers en agents | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de Azure Monitor voor containers-agent kunt configureren voor het beheren van de logboek verzameling van stdout/stderr en omgevings variabelen.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 0d654dc05668a71b0fe69de32e5c09f8936951f8
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 0bde696f39af22f864500e0c79b5e03ca66cc7f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951578"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405678"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Gegevens verzameling van agents voor Azure Monitor voor containers configureren
 
@@ -40,6 +36,7 @@ Hieronder vindt u de instellingen die kunnen worden geconfigureerd om het verzam
 |`[log_collection_settings.stderr] enabled =` |Booleaans | true of false |Hiermee wordt bepaald of de logboek verzameling voor de stderr-container is ingeschakeld. Als deze optie is ingesteld op `true` en er geen naam ruimten worden uitgesloten voor de stdout-logboek verzameling (`log_collection_settings.stderr.exclude_namespaces` instelling), worden stderr-logboeken verzameld van alle containers op alle knoop punten in het cluster. Als dat niet is opgegeven in ConfigMaps, is de standaard waarde `enabled = true`. |
 |`[log_collection_settings.stderr] exclude_namespaces =` |Tekenreeks |Door komma's gescheiden matrix |Matrix van Kubernetes-naam ruimten waarvoor stderr-logboeken niet zullen worden verzameld. Deze instelling is alleen effectief als `log_collection_settings.stdout.enabled` is ingesteld op `true`. Als dat niet is opgegeven in ConfigMap, is de standaard waarde `exclude_namespaces = ["kube-system"]`. |
 | `[log_collection_settings.env_var] enabled =` |Booleaans | true of false | Met deze instelling bepaalt u de verzameling van omgevings variabelen op alle Helen/knoop punten in het cluster en wordt de standaard waarde `enabled = true` wanneer deze niet is opgegeven in ConfigMaps. Als verzameling van omgevings variabelen globaal is ingeschakeld, kunt u deze uitschakelen voor een specifieke container door de omgevings variabele in te stellen `AZMON_COLLECT_ENV` op **Onwaar** , met een Dockerfile-instelling of in het [configuratie bestand voor de pod](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) onder de sectie **env:** . Als verzameling van omgevings variabelen globaal is uitgeschakeld, kunt u het verzamelen van een bepaalde container niet inschakelen (dat wil zeggen, de enige onderdrukking die kan worden toegepast op het niveau van de container om de verzameling uit te scha kelen wanneer deze al is ingeschakeld.) |
+| `[log_collection_settings.enrich_container_logs] enabled =` |Booleaans | true of false | Met deze instelling wordt de uitname van het container logboek gecontroleerd om de naam en eigenschaps waarden van de afbeelding in te vullen voor elke logboek record die wordt geschreven naar de ContainerLog-tabel voor alle container Logboeken in het cluster. De standaard instelling is `enabled = false` wanneer deze niet is opgegeven in ConfigMap. |
 
 ConfigMaps is een globale lijst en er kan slechts één ConfigMap op de agent worden toegepast. U kunt de verzamelingen niet overConfigMapsen.
 

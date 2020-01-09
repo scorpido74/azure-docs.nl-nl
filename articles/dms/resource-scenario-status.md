@@ -1,5 +1,6 @@
 ---
-title: Status van database migratie scenario | Microsoft Docs
+title: Status van het databasemigratiescenario
+titleSuffix: Azure Database Migration Service
 description: Meer informatie over de status van de migratie scenario's die door Azure Database Migration Service worden ondersteund.
 services: database-migration
 author: HJToland3
@@ -11,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: 9ea070ea86a4d0d5e7101e82450235a59c936d2d
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 03fb6a1aff62df878417da55a7da7b42186b3462
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376393"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437677"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Status van migratie scenario's die door Azure Database Migration Service worden ondersteund
 
@@ -44,7 +45,7 @@ In de volgende tabellen ziet u welke migratie scenario's worden ondersteund bij 
 
 De volgende tabel toont Azure Database Migration Service ondersteuning voor offline migraties.
 
-| Doel  | Source | Ondersteuning | Status |
+| Kiezen  | Bron | Ondersteuning | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | Algemene beschikbaarheid |
 |   | RDS SQL |  |  |
@@ -64,7 +65,7 @@ De volgende tabel toont Azure Database Migration Service ondersteuning voor offl
 
 De volgende tabel toont Azure Database Migration Service ondersteuning voor online migraties.
 
-| Doel  | Source | Ondersteuning | Status |
+| Kiezen  | Bron | Ondersteuning | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | Algemene beschikbaarheid |
 |   | RDS SQL | ✔ | Algemene beschikbaarheid |

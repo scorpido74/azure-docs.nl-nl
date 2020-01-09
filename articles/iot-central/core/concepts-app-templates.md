@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: af1870ecc9714eceaf69f2892537e59f068c6a70
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 85d882cff968c9b68ece104e850a7f16c33947b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480318"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435111"
 ---
 # <a name="what-are-application-templates"></a>Wat zijn toepassingssjablonen?
 
@@ -30,11 +30,10 @@ Toepassings sjablonen bestaan uit:
 
 Uw keuze van de toepassings sjabloon bepaalt of uw toepassing gebruikmaakt van IoT Central preview-functies, zoals Plug en Play voor apparaten.
 
-Momenteel zijn de toepassings sjablonen die _Algemeen beschik bare_ functies gebruiken:
+Op dit moment is de toepassings sjabloon met _Algemeen beschik bare_ functies:
 
-- Aangepaste toepassing aangepaste app >
-- Voor beeld van aangepaste app > contoso
-- Voor beeld-Devkits aangepaste app >
+- Aangepaste app > oudere toepassing
+
 
 Momenteel zijn de toepassings sjablonen die gebruikmaken van _open bare preview_ -functies:
 
@@ -52,7 +51,7 @@ Momenteel zijn de toepassings sjablonen die gebruikmaken van _open bare preview_
 - Gezondheids zorg > voortdurende patiënt bewaking
 
 > [!NOTE]
-> De **aangepaste toepassing, voor beeld contoso, voorbeeld** sjablonen voor Devkits zijn momenteel beschikbaar in de **Verenigde Staten**, **Australië**, **Azië en Stille Oceaan**of op de **Europe** -locaties, terwijl andere sjablonen momenteel alleen beschikbaar zijn in de locaties van **Europa** en de **VS** .
+> De **verouderde toepassings** sjablonen zijn momenteel beschikbaar in de **Verenigde Staten**, **Australië**, **Azië en Stille Oceaan**of in de **Europe** -locaties, terwijl andere sjablonen momenteel alleen beschikbaar zijn op de locaties van **Europa** en de **VS** .
 
 ## <a name="industry-focused-templates"></a>Sjablonen voor branche gerichte
 
@@ -64,7 +63,7 @@ Azure IoT Central is een branche neutraal-toepassings platform. Toepassings sjab
   - Bewaking in de Store-voor waarden
   - In-Store-analyses-uitchecken
   - Intelligent inventaris beheer
-- [Sector](../energy/overview-iot-central-energy.md)
+- [Energie](../energy/overview-iot-central-energy.md)
   - Bewaking met slimme meters
   - Bewaking van zonnepanelen
 - [Government](../government/overview-iot-central-government.md)

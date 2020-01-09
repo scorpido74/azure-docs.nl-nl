@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ece310a248140b7913ffcc9f7146d382ee44fb5d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 455652795a13fe9755c1ed57681bedaf7a70a5d5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851295"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435179"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Sensor gegevens ophalen van sensor partners
 
@@ -18,16 +18,16 @@ Met Azure FarmBeats kunt u streaming-gegevens van uw IoT-apparaten en Sens oren 
 
   ![FarmBeats-partners](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
 
-Het integreren van apparaatgegevens met Azure FarmBeats helpt u bij het ophalen van de basis gegevens van de IoT-Sens oren die in uw farm zijn geïmplementeerd, naar de data hub. De gegevens, zodra beschikbaar, kunnen worden gevisualiseerd via de FarmBeats-Accelerator. De gegevens kunnen worden gebruikt voor gegevens fusie en het samen stellen van machine learning/kunst matige intelligentie (ML/AI) met behulp van FarmBeats.
+Het integreren van apparaatgegevens met Azure FarmBeats helpt u bij het ophalen van de basis gegevens van de IoT-Sens oren die in uw farm zijn geïmplementeerd in de datahub. De gegevens, zodra beschikbaar, kunnen worden gevisualiseerd via de FarmBeats-Accelerator. De gegevens kunnen worden gebruikt voor gegevens fusie en het samen stellen van machine learning/kunst matige intelligentie (ML/AI) met behulp van FarmBeats.
 
 Controleer het volgende om te beginnen met het streamen van sensor gegevens:
 
 -  U hebt FarmBeats geïnstalleerd in azure Marketplace.
 -  U hebt besloten over de Sens oren en apparaten die u wilt installeren op uw farm.
--  Als u van plan bent om gebruik te maken van bodem vocht Sens oren, gebruikt u de plaatsings kaart FarmBeats bodem vocht sensor om een aanbeveling te krijgen over het aantal Sens oren en waar u deze precies moet plaatsen. Zie [genereren Maps](generate-maps.md)voor meer informatie.
+-  Als u van plan bent om gebruik te maken van bodem vocht Sens oren, gebruikt u de plaatsings kaart FarmBeats bodem vocht sensor om een aanbeveling te krijgen over het aantal Sens oren en waar u deze precies moet plaatsen. Zie [genereren Maps](generate-maps-in-azure-farmbeats.md)voor meer informatie.
 - U koopt en implementeert apparaten of Sens oren van uw apparaat-partner op uw farm. Zorg ervoor dat u toegang hebt tot de sensor gegevens via de oplossing van uw apparaat partners.
 
-## <a name="enable-device-integration-with-farmbeats"></a>Integratie van apparaten met FarmBeats inschakelen 
+## <a name="enable-device-integration-with-farmbeats"></a>Integratie van apparaten met FarmBeats inschakelen
 
 Nadat u het streamen van sensor gegevens hebt gestart, kunt u beginnen met het proces van het ophalen van de gegevens in uw FarmBeats-systeem. Geef de volgende informatie op voor de provider van uw apparaat om de integratie met FarmBeats in te scha kelen:
 
@@ -155,4 +155,4 @@ Volg deze stappen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu sensor gegevens die in uw Azure FarmBeats-exemplaar worden geplaatst. Nu leert u hoe u [kaarten](generate-maps.md#generate-maps) voor uw Farms kunt genereren.
+U hebt nu sensor gegevens die in uw Azure FarmBeats-exemplaar worden geplaatst. Nu leert u hoe u [kaarten](generate-maps-in-azure-farmbeats.md#generate-maps) voor uw Farms kunt genereren.

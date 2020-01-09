@@ -3,18 +3,18 @@ title: Wat is Azure IoT Central? | Microsoft Docs
 description: Azure IoT Central is een IoT-toepassings platform dat het maken van IoT-oplossingen vereenvoudigt en helpt de overhead en kosten van IoT-beheer bewerkingen en-ontwikkeling te verminderen. In dit artikel vindt u een overzicht van de functies van Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/12/2019
+ms.date: 12/10/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 8cfcbddfc8d50855860af655847f997fb2a01711
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 52504fb8333b286407b3f2df8f962da59b80ac53
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479713"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434854"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Wat is Azure IoT Central (preview-functies)?
 
@@ -41,15 +41,11 @@ In dit artikel vindt u een overzicht van IoT Central:
 > [!Note]
 > Deze bekende problemen zijn alleen van toepassing op de IoT Central preview-toepassingen.
 
-- Regels bieden geen ondersteuning voor alle acties (alleen e-mail).
-- Voor complexe typen: regels, analyses en apparaatgroepen worden niet ondersteund.
 - Continue gegevens export biedt geen ondersteuning voor de Avro-indeling (incompatibiliteit).
-- Gesimuleerde apparaten bieden geen ondersteuning voor alle complexe typen.
 - Geojson wordt momenteel niet ondersteund.
 - De kaart tegel wordt momenteel niet ondersteund.
 - Taken bieden geen ondersteuning voor complexe typen.
 - Matrix schema typen worden niet ondersteund.
-- Het exporteren van de toepassings sjabloon en het kopiëren van de toepassing worden niet ondersteund.
 - Alleen de C apparaat-SDK en het node. js-apparaat en de service-Sdk's worden ondersteund.
 - Het is alleen beschikbaar op de locaties Verenigde Staten en Europa.
 - Voor hulp modellen voor apparaten moeten alle interfaces in hetzelfde bestand zijn gedefinieerd.
@@ -149,7 +145,7 @@ Elk Azure-abonnement heeft standaard quota's die van invloed kunnen zijn op het 
 
 Nu u een overzicht van IoT Central hebt, worden de volgende stappen hierna voorgesteld:
 
-- Inzicht in de verschillen tussen [IOT Central en Azure IOT-oplossings versnellers](../core/overview-iot-options.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json).
+- Meer informatie over de beschik bare [Azure-technologieën en-services voor het maken van IOT-oplossingen](../../iot-fundamentals/iot-services-and-technologies.md).
 - Raak vertrouwd met de [gebruikersinterface van Azure IoT Central](overview-iot-central-tour.md).
 - Ga aan de slag door [een Azure IoT Central-toepassing te maken](quick-deploy-iot-central.md).
 - Meer informatie over [IoT Plug en Play](../../iot-pnp/overview-iot-plug-and-play.md)

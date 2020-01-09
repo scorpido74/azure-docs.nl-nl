@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
-ms.openlocfilehash: 5b7e53291e10db17f848553b17dae2f84bdb08b7
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: ca2afaa9f4e01ac56657681ce71e32e3c5375fdf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558966"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355630"
 ---
-# <a name="alert-confidence-score"></a>Betrouwbaarheidsscore waarschuwing 
+# <a name="alert-confidence-score-preview"></a>Betrouwbaarheids score voor waarschuwingen (preview-versie)
 
 Azure Security Center biedt u inzicht in de resources die u in azure uitvoert en waarschuwt u wanneer er potentiële problemen worden gedetecteerd. Het volume van waarschuwingen kan lastig zijn voor een afzonderlijk adres van een beveiligings team, en het is nodig om te bepalen welke waarschuwingen moeten worden onderzocht. Het onderzoeken van waarschuwingen kan ingewikkeld zijn en tijdrovende, waardoor sommige waarschuwingen worden genegeerd.
 
-De betrouwbaarheids Score in Security Center kan bijdragen aan uw team sorteren en prioriteiten voor waarschuwingen geven. Security Center past automatisch de best practices van de branche, intelligente algoritmen en processen toe die door analisten worden gebruikt om te bepalen of een bedreiging authentiek is en geeft u duidelijke inzichten in de vorm van een betrouw bare Score.
+De betrouwbaarheids Score (momenteel in Preview) in Security Center kan u helpen bij het sorteren van uw team en het bepalen van de prioriteit van waarschuwingen. Security Center past automatisch de best practices van de branche, intelligente algoritmen en processen toe die door analisten worden gebruikt om te bepalen of een bedreiging authentiek is en geeft u duidelijke inzichten in de vorm van een betrouw bare Score.
 
 ## <a name="how-the-confidence-score-is-triggered"></a>Hoe de betrouwbaarheids score wordt geactiveerd
 
@@ -50,10 +50,10 @@ Gebruik de betrouwbaarheids Score van Security Center om de sorteren van waarsch
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel wordt uitgelegd hoe u de betrouwbaarheids Score kunt gebruiken om te bepalen of u waarschuwingen wilt onderzoeken. Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
+In dit artikel wordt uitgelegd hoe u de betrouwbaarheids Score kunt gebruiken om te bepalen of u waarschuwingen wilt onderzoeken. Zie de volgende onderwerpen voor meer informatie over Security Center:
 
 * [Azure Security Center FAQ](security-center-faq.md): raadpleeg veelgestelde vragen over het gebruik van de service.
-* [Security health monitoring in Azure Security Center](security-center-monitoring.md): ontdek hoe u de status van uw Azure-resources kunt monitoren.
+* [Beveiligingsstatus bewaken in Azure Security Center](security-center-monitoring.md): meer informatie over het bewaken van de status van uw Azure-resources.
 
 
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: 4fac557a5c1b6d10c28e1041dd937e61e7af521f
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: d574c5eef15c21d3d490bcfe682b87bae2856f1d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74067336"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353726"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Meer informatie over het gebruik van virtuele machines in azure
 Door uw Azure-gebruiks gegevens te analyseren, kunnen er krachtige verbruiks inzichten worden verworven: inzichten waarmee betere kosten beheer en toewijzing in uw organisatie mogelijk zijn. In dit document vindt u meer informatie over uw Azure Compute-verbruik. Ga voor meer informatie over het algemene Azure-gebruik naar [inzicht in uw factuur](../../billing/billing-understand-your-bill.md).
@@ -40,7 +40,7 @@ Door uw Azure-gebruiks gegevens te analyseren, kunnen er krachtige verbruiks inz
 | Verbruikt           | De hoeveelheid van de resource die voor die dag is verbruikt. Voor Compute worden voor elke minuut voor de VM een bepaald uur gefactureerd (Maxi maal 6 decimalen nauw keurigheid).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |    “1”, “0.5”                                                                                                                                                                                                                                                                                                                                                    |
 | Resourcelocatie  | Hiermee wordt het datacenter geïdentificeerd waarop de resource wordt uitgevoerd.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | "JA-oost"                                                                                                                                                                                                                                                                                                                                                        |
 | Verbruikte service   | De Azure-platform service die u hebt gebruikt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | "Microsoft.Compute"                                                                                                                                                                                                                                                                                                                                              |
-| Resourcegroep     | De resourcegroep waarin de geïmplementeerde resource wordt uitgevoerd. Zie [Azure Resource Manager Overview](../../azure-resource-manager/resource-group-overview.md) voor meer informatie.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |    MyRG                                                                                                                                                                                                                                                                                                                                                        |
+| Resourcegroep     | De resourcegroep waarin de geïmplementeerde resource wordt uitgevoerd. Zie [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md) voor meer informatie.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |    MyRG                                                                                                                                                                                                                                                                                                                                                        |
 | Exemplaar-id        | De id voor de resource. De id bevat de naam die u voor de resource opgeeft wanneer deze wordt gemaakt. Voor Vm's bevat de exemplaar-ID de SubscriptionId, ResourceGroupName en VMName (of de naam van de schaalset voor het gebruik van schaal sets).                                                                                                                                                                                                                                                                                                                                                                                                                    | "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1”<br><br>of<br><br>"/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1”                                                                                           |
 | Tags               | Label dat u toewijst aan de resource. Tags gebruiken om facturerings records te groeperen. Meer informatie over [het coderen van uw virtual machines.](tag.md) Dit is alleen beschikbaar voor virtuele machines van Resource Manager.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | "{" myDepartment ":" RD "," myUser ":" myName "}"                                                                                                                                                                                                                                                                                                                        |
 | Aanvullende informatie    | Servicespecifieke metagegevens. Voor Vm's vullen we het volgende in het veld aanvullende gegevens in: <ul><li>Afbeeldings type-specifieke installatie kopie die u hebt uitgevoerd. Zoek de volledige lijst met ondersteunde teken reeksen onder afbeeldings typen.</li><li>Service type: de grootte die u hebt geïmplementeerd.</li><li>VMName: naam van de virtuele machine. Dit wordt alleen ingevuld voor Vm's met schaal sets. Als u de VM-naam voor virtuele machines van de schaalset nodig hebt, kunt u deze vinden in de bovenstaande teken reeks voor exemplaar-ID.</li><li>UsageType: Hiermee geeft u het type gebruik op dat dit vertegenwoordigt.<ul><li>ComputeHR is het reken uren-gebruik voor de onderliggende VM, zoals Standard_D1_v2.</li><li>ComputeHR_SW is de Premium-software kosten als de virtuele machine Premium-software gebruikt, zoals Microsoft R Server.</li></ul></li></ul>    | Virtual Machines {"ImageType": "canoniek", "service type": "Standard_DS1_v2", "VMName": "", "UsageType": "ComputeHR"}<br><br>Virtual Machine Scale Sets {"ImageType": "canoniek", "service type": "Standard_DS1_v2", "VMName": "myVM1", "UsageType": "ComputeHR"}<br><br>Premium Software {"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"} |
@@ -78,37 +78,37 @@ De regio naam die is ingevuld in het veld Resource locatie in de gebruiks gegeve
 |    CanadaCentral         |    CA - centraal                            |
 |    CanadaEast            |    CA - oost                               |
 |    CentralIndia          |    IN - centraal                            |
-|    centralus             |    US - centraal                            |
-|    chinaeast             |    China East                            |
+|    centralus             |    VS - centraal                            |
+|    chinaeast             |    China - oost                            |
 |    chinanorth            |    China - noord                           |
 |    eastasia              |    Azië - oost                             |
-|    eastus                |    US - oost                               |
-|    eastus2               |    US - oost 2                             |
+|    eastus                |    VS - oost                               |
+|    eastus2               |    VS - oost 2                             |
 |    GermanyCentral        |    DE, midden                            |
 |    GermanyNortheast      |    DE, noordoosten                          |
 |    japaneast             |    JA - oost                               |
 |    japanwest             |    JA - west                               |
 |    KoreaCentral          |    KR - centraal                            |
 |    KoreaSouth            |    KR - zuid                              |
-|    northcentralus        |    US - noord-centraal                      |
+|    northcentralus        |    VS - noord-centraal                      |
 |    northeurope           |    Europa - noord                          |
-|    southcentralus        |    US - zuid-centraal                      |
+|    southcentralus        |    VS - zuid-centraal                      |
 |    southeastasia         |    Azië - zuidoost                        |
 |    SouthIndia            |    IN - zuid                              |
 |    UKNorth               |    VS Noord                              |
-|    uksouth               |    Verenigd Koninkrijk Zuid                              |
-|    UKSouth2              |    UK - zuid 2                            |
-|    ukwest                |    Verenigd Koninkrijk West                               |
+|    uksouth               |    VK - zuid                              |
+|    UKSouth2              |    VK, zuid 2                            |
+|    ukwest                |    VK - west                               |
 |    USDoDCentral          |    US DoD - centraal                        |
 |    USDoDEast             |    US DoD - oost                           |
 |    USGovArizona          |    USGov Arizona                         |
 |    usgoviowa             |    USGov Iowa                            |
-|    USGovTexas            |    USGov Texas                           |
-|    usgovvirginia         |    USGove Virginia                        |
-|    westcentralus         |    US - west-centraal                       |
-|    Europa West            |    Europa -west                           |
-|    WestIndia             |    IN - west                               |
-|    westus                |    US - west                               |
+|    USGovTexas            |    USGov - Texas                           |
+|    usgovvirginia         |    USGov - Virginia                        |
+|    US - west-centraal         |    US - west-centraal                       |
+|    westeurope            |    Europa - west                           |
+|    WestIndia             |    West-India                               |
+|    westus                |    VS - west                               |
 |    westus2               |    US - west 2                             |
 
 

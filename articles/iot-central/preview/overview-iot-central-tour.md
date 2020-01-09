@@ -3,18 +3,18 @@ title: Kennismaking met de gebruikersinterface van Azure IoT Central | Microsoft
 description: Maak kennis met de belangrijkste gebieden van de Azure IoT Central gebruikers interface die u gebruikt voor het maken, beheren en gebruiken van uw IoT-oplossing.
 author: lmasieri
 ms.author: lmasieri
-ms.date: 10/21/2019
+ms.date: 12/09/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: f8aa467f95bb97c42e726d1392deca53e15df624
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 23deb77b6fda0b3801057d2ae97a740301449e28
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893954"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434903"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-preview-features"></a>Volg een rond leiding door de Azure IoT Central-gebruikers interface (preview-functies)
 
@@ -160,7 +160,7 @@ Met de analyse kunt u aangepaste weer gaven maken boven op de apparaatgegevens o
 
 Op de pagina taken kunt u bulk bewerkingen voor Apparaatbeheer uitvoeren op uw apparaten. U kunt eigenschappen, instellingen en opdrachten voor het uitvoeren van apparaten bijwerken op basis van apparaatgroepen. Zie voor meer informatie, het artikel [Een taak uitvoeren](../core/howto-run-a-job.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json).
 
-### <a name="device-templates"></a>Apparaatinstellingen
+### <a name="device-templates"></a>Apparaatsjablonen
 
 > [!div class="mx-imgBorder"]
 > ![pagina met Apparaatinstellingen](media/overview-iot-central-tour/templates-pnp.png)
@@ -176,7 +176,7 @@ De *oplossings functie voor oplossingen* kan ook formulieren en dash boards make
 
 Raadpleeg voor meer informatie de zelfstudie [Define a new device type in your Azure IoT Central application](howto-set-up-template.md) (Een nieuw apparaattype definiëren in uw Azure IoT Central-toepassing). 
 
-### <a name="data-export"></a>Gegevens export
+### <a name="data-export"></a>Gegevensexport
 > [!div class="mx-imgBorder"]
 > ![pagina voor het exporteren van gegevens](media/overview-iot-central-tour/export-pnp.png)
 

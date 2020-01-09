@@ -4,15 +4,15 @@ description: Het Active Directory-replicatiestatus Solution Pack bewaakt uw Acti
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 04112042c871f5268c64bda374f040f1bba92969
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 31e6d0c8b374bd494ae8fda36f4f38aabb1ac96b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931355"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406084"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Active Directory replicatie status controleren met Azure Monitor
 
@@ -20,12 +20,19 @@ ms.locfileid: "72931355"
 
 Active Directory is een belang rijk onderdeel van een IT-omgeving van een onderneming. Om hoge Beschik baarheid en hoge prestaties te garanderen, heeft elke domein controller een eigen kopie van de Active Directory-Data Base. Domein controllers repliceren met elkaar om wijzigingen door te geven aan de hele onderneming. Fouten in dit replicatie proces kunnen diverse problemen in de hele onderneming veroorzaken.
 
-Het AD-replicatiestatus Solution Pack bewaakt uw Active Directory omgeving regel matig voor replicatie fouten.
+De AD-replicatiestatus-oplossing bewaakt de Active Directory omgeving regel matig voor replicatie fouten.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand-solution.md)]
 
-## <a name="installing-and-configuring-the-solution"></a>De oplossing installeren en configureren
+## <a name="installing-and-configuring-the-solution"></a>Installeren en configureren van de oplossing
 Gebruik de volgende informatie om de oplossing te installeren en configureren.
+
+### <a name="prerequisites"></a>Vereisten
+
+* Voor de AD-replicatiestatus oplossing is een ondersteunde versie van .NET Framework 4.6.2 of hoger vereist die is geïnstalleerd op elke computer met de Log Analytics-agent voor Windows (ook wel micro soft Monitoring Agent (MMA)) geïnstalleerd.  De agent wordt gebruikt door System Center 2016-Operations Manager, Operations Manager 2012 R2 en Azure Monitor.
+* De oplossing biedt ondersteuning voor domein controllers met Windows Server 2008 en 2008 R2, Windows Server 2012 en 2012 R2 en Windows Server 2016.
+* Een Log Analytics-werk ruimte om de Active Directory Health Check-oplossing toe te voegen vanuit de Azure Marketplace in de Azure Portal. Er is geen aanvullende configuratie vereist.
+
 
 ### <a name="install-agents-on-domain-controllers"></a>Agents installeren op domein controllers
 U moet agents installeren op domein controllers die lid zijn van het domein om te kunnen worden geëvalueerd. Of u moet agents op lidservers installeren en de agents configureren voor het verzenden van AD-replicatie gegevens naar Azure Monitor. Zie [Windows-computers verbinden met Azure monitor](../../azure-monitor/platform/agent-windows.md)als u wilt weten hoe u Windows-computers verbindt met Azure monitor. Zie [Operations Manager verbinden om te Azure monitor](../../azure-monitor/platform/om-agents.md)als uw domein controller al deel uitmaakt van een bestaande System Center Operations Manager omgeving die u wilt verbinden met Azure monitor.
@@ -35,7 +42,7 @@ Als u niet rechtstreeks verbinding wilt maken met een van uw domein controllers 
 
 1. Controleer of de computer lid is van het domein dat u wilt bewaken met behulp van de AD-replicatiestatus-oplossing.
 2. [Verbind de Windows-computer met Azure monitor](../../azure-monitor/platform/om-agents.md) of [Maak verbinding met uw bestaande Operations Manager omgeving om Azure monitor](../../azure-monitor/platform/om-agents.md)als deze nog niet is verbonden.
-3. Stel op die computer de volgende register sleutel in:<br>Sleutel: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management groups\<ManagementGroupName > \Solutions\ADReplication**<br>Waarde: **IsTarget**<br>Waardegegevens: **True**
+3. Stel op die computer de volgende register sleutel in:<br>Key: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**<br>Waarde: **IsTarget**<br>Waardegegevens: **True**
 
    > [!NOTE]
    > Deze wijzigingen worden pas van kracht nadat u de micro soft Monitoring Agent-service (HealthService. exe) opnieuw hebt gestart.
@@ -46,7 +53,7 @@ Als u niet rechtstreeks verbinding wilt maken met een van uw domein controllers 
 ## <a name="ad-replication-status-data-collection-details"></a>Details van het verzamelen van AD-replicatiestatus gegevens
 De volgende tabel toont methoden voor gegevens verzameling en andere informatie over hoe gegevens worden verzameld voor AD-replicatiestatus.
 
-| Onafhankelijk | Directe agent | SCOM-agent | Azure Storage | SCOM vereist? | SCOM-agent gegevens die via een beheer groep zijn verzonden | verzamelings frequentie |
+| Platform | Directe agent | SCOM-agents | Azure Storage | SCOM vereist? | SCOM-agent gegevens verzonden via de beheergroep | Verzamelingsfrequentie |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |elke vijf dagen |
 

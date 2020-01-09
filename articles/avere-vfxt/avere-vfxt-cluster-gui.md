@@ -4,36 +4,38 @@ description: Verbinding maken met het vFXT-cluster en het avere-configuratie sch
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: 098ed98c1680fa2ea38c377e9e34719ba778b175
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: fe2fc062f690498f3d1f588887279aa33d2434b8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255027"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75416151"
 ---
 # <a name="access-the-vfxt-cluster"></a>Toegang tot het vFXT-cluster
 
-Als u de instellingen wilt wijzigen en het avere vFXT-cluster wilt controleren, gebruikt u het onderdeel avere van het configuratie scherm. Het configuratie scherm van AVERE is een op een browser gebaseerde grafische interface voor het cluster.
+Als u de cluster instellingen wilt aanpassen en het cluster wilt controleren, gebruikt u het avere-configuratie scherm. Het configuratie scherm van AVERE is een op een browser gebaseerde grafische interface voor het cluster.
 
-Omdat het vFXT-cluster zich in een particulier virtueel netwerk bevindt, moet u een SSH-tunnel maken of een andere methode gebruiken om het IP-adres van het cluster beheer te bereiken. Er zijn twee basis stappen: 
+Omdat het vFXT-cluster zich in een particulier virtueel netwerk bevindt, moet u een SSH-tunnel maken of een andere methode gebruiken om het IP-adres van het cluster beheer te bereiken.
 
-1. Een verbinding maken tussen uw werk station en het persoonlijke vnet 
-1. Het configuratie scherm van het cluster laden in een webbrowser 
+Er zijn twee basis stappen:
 
-> [!NOTE] 
-> In dit artikel wordt ervan uitgegaan dat u een openbaar IP-adres op de cluster controller of op een andere VM in het virtuele netwerk van uw cluster hebt ingesteld. In dit artikel wordt beschreven hoe u deze virtuele machine gebruikt als een host voor toegang tot het cluster. Als u een VPN-of ExpressRoute gebruikt voor vnet-toegang, gaat u naar [verbinding maken met het avere configuratie scherm](#connect-to-the-avere-control-panel-in-a-browser).
+1. Een verbinding maken tussen uw werk station en het particuliere virtuele netwerk
+1. Het configuratie scherm van het cluster laden in een webbrowser
 
-Voordat u verbinding maakt, moet u ervoor zorgen dat het open bare/persoonlijke SSH-sleutel paar dat u hebt gebruikt bij het maken van de cluster controller, op uw lokale computer is geïnstalleerd. Lees de documentatie van SSH-sleutels voor [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) of voor [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) als u hulp nodig hebt. (Als u een wacht woord hebt gebruikt in plaats van een open bare sleutel, wordt u gevraagd dit in te voeren wanneer u verbinding maakt.) 
+> [!NOTE]
+> In dit artikel wordt ervan uitgegaan dat u een openbaar IP-adres op de cluster controller of op een andere VM in het virtuele netwerk van uw cluster hebt ingesteld. In dit artikel wordt beschreven hoe u deze virtuele machine gebruikt als een host voor toegang tot het cluster. Als u een VPN-of ExpressRoute gebruikt voor toegang tot het virtuele netwerk, kunt u [verbinding maken met het onderdeel avere van het configuratie scherm](#connect-to-the-avere-control-panel-in-a-browser).
 
-## <a name="create-an-ssh-tunnel"></a>Een SSH-tunnel maken 
+Voordat u verbinding maakt, moet u ervoor zorgen dat het open bare/persoonlijke SSH-sleutel paar dat u hebt gebruikt bij het maken van de cluster controller, op uw lokale computer is geïnstalleerd. Lees de documentatie van SSH-sleutels voor [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) of voor [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) als u hulp nodig hebt. Als u een wacht woord hebt gebruikt in plaats van een open bare sleutel, wordt u gevraagd dit in te voeren wanneer u verbinding maakt.
 
-U kunt een SSH-tunnel maken via de opdracht regel van een Linux-of Windows 10-client systeem. 
+## <a name="create-an-ssh-tunnel"></a>Een SSH-tunnel maken
 
-Gebruik een SSH-tunnel opdracht met dit formulier: 
+U kunt een SSH-tunnel maken via de opdracht regel van een Linux-of Windows 10-client systeem.
 
-ssh-L *local_port*:*cluster_mgmt_ip*: 443 *controller_username*\@*controller_public_IP*
+Gebruik een SSH-tunnel opdracht met dit formulier:
+
+ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*\@*controller_public_IP*
 
 Met deze opdracht wordt verbinding gemaakt met het IP-adres van het cluster beheer via het IP-adres van de cluster controller.
 
@@ -47,9 +49,9 @@ Verificatie wordt automatisch uitgevoerd als u uw open bare SSH-sleutel hebt geb
 
 ## <a name="connect-to-the-avere-control-panel-in-a-browser"></a>Verbinding maken met het avere-configuratie scherm in een browser
 
-In deze stap maakt gebruik van een webbrowser om verbinding te maken met het configuratie hulpprogramma dat wordt uitgevoerd op het vFXT-cluster.
+In deze stap maakt gebruik van een webbrowser om verbinding te maken met het configuratie hulpprogramma in het vFXT-cluster.
 
-* Open uw webbrowser voor een SSH-tunnel verbinding en navigeer naar `https://127.0.0.1:8443`. 
+* Voor een SSH-tunnel verbinding opent u uw webbrowser en navigeert u naar `https://127.0.0.1:8443`.
 
   U hebt verbinding gemaakt met het IP-adres van het cluster tijdens het maken van de tunnel. u hoeft alleen het localhost IP-adres te gebruiken in de browser. Als u een andere lokale poort dan 8443 gebruikt, gebruikt u in plaats daarvan het poort nummer.
 
@@ -65,4 +67,4 @@ Klik op **Aanmelden** of druk op ENTER op het toetsen bord.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u toegang hebt tot het cluster, schakelt u [ondersteuning](avere-vfxt-enable-support.md)in.
+Nadat u bent aangemeld bij het configuratie scherm van het cluster, schakelt u [ondersteuning](avere-vfxt-enable-support.md)in.

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 8f641640ff6cf4174e2e1374404d47fc0760f79f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 809c188dc37aba64de27e89e38acd8692c7de032
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979901"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613564"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Zelf studie: sensor gegevens samen voegen met weer prognose gegevens met behulp van Azure Notebooks (python)
 
@@ -35,8 +35,11 @@ In deze zelfstudie leert u het volgende:
 
 Als u deze zelf studie wilt volt ooien, moet u eerst het volgende doen:
 
-1. Maak een abonnement Azure Maps account in de prijs categorie S0 door de instructies in [uw Azure Maps-account beheren](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)te volgen.
-2. Down load de primaire abonnements sleutel voor uw account en volg de instructies in [de primaire sleutel voor uw account ophalen](./tutorial-search-location.md#getkey).
+1. Maak een abonnement Azure Maps account in de prijs categorie S0 door de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps)te volgen.
+2. Down load de primaire abonnements sleutel voor uw account en volg de instructies in de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account).
+
+
+Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
 
 Volg de instructies voor het [maken van een Azure-notebook](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook)om vertrouwd te raken met Azure-notebooks en te weten hoe u aan de slag kunt gaan.
 
@@ -68,7 +71,7 @@ In ons voorbeeld scenario willen we dagelijks een prognose aanvragen voor elke s
 
 
 ```python
-subscription_key = "Your Azure Maps primary subscription key"
+subscription_key = "Your Azure Maps key"
 
 # Get a lists of unique station IDs and their coordinates 
 station_ids = pd.unique(df[['StationID']].values.ravel())
@@ -172,7 +175,7 @@ windsPlot.set_xlabel("Date")
 windsPlot.set_ylabel("Wind direction")
 ```
 
-De onderstaande grafieken visualiseren de prognose gegevens voor de wijziging van de wind snelheid (linker grafiek) en richting (rechter grafiek) in de komende 15 dagen vanaf de huidige dag.
+In de onderstaande grafieken worden de prognose gegevens voor de wijziging van de wind snelheid (linker grafiek) en richting (rechter grafiek) in de volgende 15 dagen van de dag waarop de gegevens worden aangevraagd, gevisualiseerd.
 
 <center>
 
@@ -190,6 +193,6 @@ Zie voor het verkennen van de Azure Maps Api's die in deze zelf studie worden ge
 * [Dagelijkse prognose](https://aka.ms/AzureMapsWeatherDailyForecast)
 * [Afbeelding van de kaart ophalen](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 
-Zie [Azure Maps rest api's](https://docs.microsoft.com/azure/azure-maps/#reference)voor een volledige lijst met Azure Maps rest api's.
+Zie [Azure Maps rest api's](https://docs.microsoft.com/azure/azure-maps/consumption-model)voor een volledige lijst met Azure Maps rest api's.
 
 Zie [Azure notebooks](https://docs.microsoft.com/azure/notebooks)voor meer informatie over Azure notebooks.

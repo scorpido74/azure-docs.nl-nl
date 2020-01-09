@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: 40b277f0b1bfb3501bb246e555d46db5e1ee9f95
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: da8c194b7911d2eeda8e0c903cb7412186aacfcb
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279309"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638252"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL Database resource limieten en resource governance
 
@@ -27,7 +27,7 @@ Dit artikel bevat een overzicht van de SQL Database resource limieten voor een S
 
 ## <a name="maximum-resource-limits"></a>Maximum aantal resource limieten
 
-| Resource | Limiet |
+| Bron | Limiet |
 | :--- | :--- |
 | Data bases per server | 5000 |
 | Standaard aantal servers per abonnement in een wille keurige regio | 20 |
@@ -99,7 +99,9 @@ De min/max-waarden voor IOPS en door Voer die worden geretourneerd door de [sys.
 
 Voor Basic-, Standard-en Algemeen-data bases, die gebruikmaken van gegevens bestanden in Azure Storage, kan de `primary_group_max_io` waarde mogelijk niet worden behaald als een Data Base niet over voldoende gegevens bestanden beschikt om cumulatief te zijn van dit aantal IOPS, of als de gegevens niet gelijkmatig over de bestanden worden gedistribueerd, of als de laag van de onderliggende blobs de limiet voor IOPS/door Voer overschrijd Op dezelfde manier wordt de `primary_max_log_rate`-waarde mogelijk niet door een werk belasting gegenereerd als gevolg van een klein aantal logboek-IOs dat door veelvuldige trans acties kan worden door lopen, vanwege de limiet voor IOPS voor de onderliggende Azure Storage-blob.
 
-De waarden van resource gebruik, zoals `avg_data_io_percent` en `avg_log_write_percent`, die zijn gerapporteerd in de weer gaven [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)en [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) , worden berekend als percentage van de maximale resource beheer limieten. Daarom is het mogelijk om te voor komen dat andere factoren dan het aantal IOPS/door Voer van de resource governance de IOPS/door Voer afvlakken en de latentie verhogen naarmate de werk belasting toeneemt, ook al is het gerapporteerde resource gebruik minder dan 100%. Als u de IOPS, door Voer en latentie per database bestand voor lezen en schrijven wilt zien, gebruikt u de functie [sys. dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) . Deze functie behaalt alle i/o-bewerkingen op de data base, inclusief de i/o van de achtergrond die niet is verwerkt bij `avg_data_io_percent`, maar gebruikt IOPS en door Voer van de onderliggende opslag, en kan van invloed zijn op de waargenomen opslag latentie.
+De waarden van resource gebruik, zoals `avg_data_io_percent` en `avg_log_write_percent`, die zijn gerapporteerd in de weer gaven [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)en [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) , worden berekend als percentage van de maximale resource beheer limieten. Daarom is het mogelijk om te voor komen dat andere factoren dan het aantal IOPS/door Voer van de resource governance de IOPS/door Voer afvlakken en de latentie verhogen naarmate de werk belasting toeneemt, ook al is het gerapporteerde resource gebruik minder dan 100%. 
+
+Als u de IOPS, door Voer en latentie per database bestand voor lezen en schrijven wilt zien, gebruikt u de functie [sys. dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) . Deze functie behaalt alle i/o-bewerkingen op de data base, inclusief de i/o van de achtergrond die niet is verwerkt bij `avg_data_io_percent`, maar gebruikt IOPS en door Voer van de onderliggende opslag, en kan van invloed zijn op de waargenomen opslag latentie. De functie heeft ook betrekking op extra latentie die kan worden geïntroduceerd door IO-resource governance voor lees-en schrijf bewerkingen, in de kolommen `io_stall_queued_read_ms` en `io_stall_queued_write_ms`.
 
 ### <a name="transaction-log-rate-governance"></a>Beleid voor transactie logboek belasting
 
@@ -132,6 +134,6 @@ Houd rekening met de volgende opties als er een frequentie limiet optreedt die d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-subscription-service-limits.md)voor meer informatie over algemene Azure-limieten.
+- Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md)voor meer informatie over algemene Azure-limieten.
 - Zie [dtu's en edtu's](sql-database-purchase-models.md#dtu-based-purchasing-model)voor informatie over Dtu's en edtu's.
 - Zie [tempdb in Azure SQL database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)voor meer informatie over de limieten voor TempDB-grootte.

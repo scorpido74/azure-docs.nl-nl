@@ -1,19 +1,14 @@
 ---
 title: Azure Monitor voor implementaties van containers weer geven (preview) | Microsoft Docs
 description: In dit artikel wordt een overzicht gegeven van de real-time weergave van Kubernetes-implementaties zonder kubectl te gebruiken in Azure Monitor voor containers.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.author: magoedte
-ms.openlocfilehash: c7135aec98936b5247b39ae659e21735168bd289
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7d0344851e1db8c014a1bb16b228a0c2f76444d5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514379"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404779"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>Implementaties (preview) in realtime weer geven
 
@@ -69,6 +64,6 @@ U kunt ook filteren op naam ruimte of gebeurtenissen op cluster niveau. Zie voor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Azure Kubernetes service Health weer geven](container-insights-analyze.md)voor meer informatie over het gebruik van Azure monitor en het controleren van andere aspecten van uw AKS-cluster.
+- Om door te gaan met het leren over het gebruik van Azure Monitor en controleren van andere aspecten van uw AKS-cluster [weergave Azure Kubernetes Service health](container-insights-analyze.md).
 
 - Bekijk de [voor beelden van logboek query's](container-insights-log-search.md#search-logs-to-analyze-data) om vooraf gedefinieerde query's en voor beelden te bekijken om waarschuwingen, visualisaties of verdere analyse van uw clusters te maken.

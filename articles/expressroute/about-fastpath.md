@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 12/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6ff1dac312bcb4df1e1afc9679df09fc8a2b28ff
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c03be46207e7698d0557729c546488412c0cc5dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74897362"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437104"
 ---
 # <a name="about-expressroute-fastpath"></a>Over ExpressRoute FastPath
 
@@ -26,12 +26,22 @@ FastPath is beschikbaar op alle ExpressRoute-circuits.
 
 ### <a name="gateways"></a>Gateways
 
-FastPath moet nog een virtuele netwerk gateway maken voor het uitwisselen van routes tussen het virtuele netwerk en het on-premises netwerk. Zie [virtuele netwerk gateways van ExpressRoute](expressroute-about-virtual-network-gateways.md)voor meer informatie over virtuele netwerk gateways en ExpressRoute.
+FastPath moet nog een virtuele netwerk gateway maken voor het uitwisselen van routes tussen het virtuele netwerk en het on-premises netwerk. Zie [virtuele netwerk gateways van ExpressRoute](expressroute-about-virtual-network-gateways.md)voor meer informatie over virtuele netwerk gateways en ExpressRoute, met inbegrip van prestatie gegevens en gateway-sku's.
 
-De gateway van het virtuele netwerk moet een van de volgende zijn:
+Voor het configureren van FastPath moet de gateway van het virtuele netwerk een van de volgende zijn:
 
 * Ultra Performance
 * ErGw3AZ
+
+#### <a name="aggthroughput"></a>Geschatte prestaties per gateway-SKU
+De volgende tabel ziet u de gatewaytypen en de geschatte prestaties. Deze tabel is van toepassing op de Resource Manager en de klassieke implementatiemodellen.
+
+[!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
+
+> [!IMPORTANT]
+> De prestaties van toepassingen, is afhankelijk van meerdere factoren, zoals de end-to-end-latentie en het aantal verkeer stroomt van die de toepassing wordt geopend. De getallen in de tabel staan de bovengrens die de toepassing in theorie in een ideale omgeving bereiken kan.
+>
+>
 
 ## <a name="supported-features"></a>Ondersteunde functies
 

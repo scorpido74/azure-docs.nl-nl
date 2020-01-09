@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met en beheren van Microsoft Azure Data Box Edge-apparaat via de Windows PowerShell-interface | Microsoft Docs
-description: Beschrijft hoe u verbinding maken met en gegevens in Edge vervolgens beheren via de Windows PowerShell-interface.
+title: Verbinding maken met Microsoft Azure Data Box Edge apparaat en beheren via de Windows Power shell-interface | Microsoft Docs
+description: Hierin wordt beschreven hoe u verbinding maakt met Data Box Edge en vervolgens beheert via de Windows Power shell-interface.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,34 +8,34 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 6af95b7f8bde6e77ba356fec9dde123e26a9a4a8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f49396331a31f7ca9eaf453dc8bf6880da2e0da8
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448621"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613853"
 ---
-# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Een Azure Data Box-Edge-apparaat via Windows PowerShell beheren
+# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Een Azure Data Box Edge-apparaat beheren via Windows Power shell
 
-Azure Data Box-Edge-oplossing kunt u gegevens verwerken en te verzenden via het netwerk naar Azure. Dit artikel worden enkele van de configuratie en beheer taken voor uw gegevens in het Edge-apparaat. U kunt de Azure portal, de lokale web-UI of de Windows PowerShell-interface gebruiken om uw apparaat te beheren.
+Met Azure Data Box Edge oplossing kunt u gegevens verwerken en naar Azure verzenden via het netwerk. In dit artikel worden enkele van de configuratie-en beheer taken voor uw Data Box Edge-apparaat beschreven. U kunt de Azure Portal, de lokale webgebruikersinterface of de Windows Power shell-interface gebruiken om uw apparaat te beheren.
 
-In dit artikel richt zich op de taken die u met behulp van de PowerShell-interface.
+Dit artikel is gericht op de taken die u gebruikt om de Power shell-interface te gebruiken.
 
-In dit artikel bevat de volgende procedures:
+Dit artikel bevat de volgende procedures:
 
-- Verbinding maken met de PowerShell-interface
-- Een ondersteuningspakket maken
+- Verbinding maken met de Power shell-interface
+- Een ondersteunings pakket maken
 - Certificaat uploaden
 - Het apparaat opnieuw instellen
-- Gegevens van een apparaat weergeven
-- Compute-logboeken ophalen
-- Bewaken en problemen oplossen compute-modules
+- Apparaatgegevens weer geven
+- Reken logboeken ophalen
+- Reken modules controleren en problemen oplossen
 
-## <a name="connect-to-the-powershell-interface"></a>Verbinding maken met de PowerShell-interface
+## <a name="connect-to-the-powershell-interface"></a>Verbinding maken met de Power shell-interface
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
 
-## <a name="create-a-support-package"></a>Een ondersteuningspakket maken
+## <a name="create-a-support-package"></a>Een ondersteunings pakket maken
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
@@ -43,54 +43,54 @@ In dit artikel bevat de volgende procedures:
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-U kunt ook IoT Edge-certificaten om in te schakelen van een beveiligde verbinding tussen uw IoT Edge-apparaat en de downstream-apparaten die verbinding met het maken kunnen uploaden. Er zijn drie certificaten voor IoT Edge ( *.pem* indeling) die u nodig hebt om te installeren:
+U kunt ook IoT Edge certificaten uploaden om een beveiligde verbinding in te scha kelen tussen uw IoT Edge apparaat en de downstream-apparaten waarmee verbinding kan worden gemaakt. Er zijn drie IoT Edge certificaten (*PEM* -indeling) die u moet installeren:
 
-- Basis-CA-certificaat of de eigenaar van de CA
+- Basis-CA-certificaat of de eigenaar-CA
 - Device CA-certificaat
-- Apparaat-sleutelcertificaat
+- Certificaat van de apparaats sleutel
 
-Het volgende voorbeeld ziet u het gebruik van deze cmdlet om IoT Edge-certificaten te installeren:
+In het volgende voor beeld ziet u het gebruik van deze cmdlet om IoT Edge certificaten te installeren:
 
 ```
 Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
 ```
-Wanneer u deze cmdlet uitvoert, wordt u gevraagd het wachtwoord opgeven voor de netwerkshare.
+Wanneer u deze cmdlet uitvoert, wordt u gevraagd het wacht woord voor de netwerk share op te geven.
 
-Voor meer informatie over certificaten, gaat u naar [Azure IoT Edge certificaten](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) of [-certificaten installeren op een gateway](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway).
+Ga voor meer informatie over certificaten naar [Azure IOT Edge certificaten](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) of [Installeer certificaten op een gateway](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway).
 
-## <a name="view-device-information"></a>Gegevens van een apparaat weergeven
+## <a name="view-device-information"></a>Apparaatgegevens weer geven
  
 [!INCLUDE [View device information](../../includes/data-box-edge-gateway-view-device-info.md)]
 
-## <a name="reset-your-device"></a>Uw apparaat opnieuw instelt
+## <a name="reset-your-device"></a>Het apparaat opnieuw instellen
 
 [!INCLUDE [Reset your device](../../includes/data-box-edge-gateway-deactivate-device.md)]
 
-## <a name="get-compute-logs"></a>Compute-logboeken ophalen
+## <a name="get-compute-logs"></a>Reken logboeken ophalen
 
-Als de compute-rol is geconfigureerd op uw apparaat, kunt u ook de compute-logboeken ophalen via de PowerShell-interface.
+Als de compute-functie op uw apparaat is geconfigureerd, kunt u de reken logboeken ook ophalen via de Power shell-interface.
 
-1. [Verbinding maken met de PowerShell-interface](#connect-to-the-powershell-interface).
-2. Gebruik de `Get-AzureDataBoxEdgeComputeRoleLogs` om op te halen van de compute-logboeken voor uw apparaat.
+1. [Verbinding maken met de Power shell-interface](#connect-to-the-powershell-interface).
+2. Gebruik de `Get-AzureDataBoxEdgeComputeRoleLogs` om de reken logboeken voor uw apparaat op te halen.
 
-    Het volgende voorbeeld ziet u het gebruik van deze cmdlet:
+    In het volgende voor beeld ziet u het gebruik van deze cmdlet:
 
     ```powershell
     Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username" -FullLogCollection
     ```
 
-    Hier volgt een beschrijving van de parameters voor de cmdlet:
-    - `Path`: Geef een netwerkpad naar de bestandsshare waar u de compute-log-pakket maken.
-    - `Credential`: Geef de gebruikersnaam voor de netwerkshare. Wanneer u deze cmdlet uitvoert, moet u de share-wachtwoord op te geven.
-    - `FullLogCollection`: Deze parameter zorgt ervoor dat het logboek-pakket alle compute-Logboeken bevat. Het logboek-pakket bevat standaard alleen een subset van Logboeken.
+    Hier volgt een beschrijving van de para meters die worden gebruikt voor de cmdlet:
+    - `Path`: Geef een netwerkpad op naar de share waar u het Compute-pakket wilt maken.
+    - `Credential`: Geef de gebruikers naam op voor de netwerk share. Wanneer u deze cmdlet uitvoert, moet u het wacht woord voor delen opgeven.
+    - `FullLogCollection`: deze para meter zorgt ervoor dat in het logboek pakket alle reken logboeken worden opgenomen. Het logboek pakket bevat standaard slechts een subset van de logboeken.
 
-## <a name="monitor-and-troubleshoot-compute-modules"></a>Bewaken en problemen oplossen compute-modules
+## <a name="monitor-and-troubleshoot-compute-modules"></a>Reken modules controleren en problemen oplossen
 
 [!INCLUDE [Monitor and troubleshoot compute modules](../../includes/data-box-edge-monitor-troubleshoot-compute.md)]
 
 ## <a name="exit-the-remote-session"></a>De externe sessie afsluiten
 
-Sluit het PowerShell-venster om af te sluiten van de externe PowerShell-sessie.
+Als u de externe Power shell-sessie wilt afsluiten, sluit u het Power shell-venster.
 
 ## <a name="next-steps"></a>Volgende stappen
 

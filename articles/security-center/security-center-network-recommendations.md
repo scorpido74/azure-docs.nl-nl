@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 5d13e944cbc083b314c71936d181101ec13037b4
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 98001ba01c5dd29375a9af3af43a06f760e4f55f
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997136"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552913"
 ---
 # <a name="protect-your-network-resources"></a>Uw netwerk bronnen beveiligen
 Azure Security Center de beveiligings status van uw Azure-resources voortdurend geanalyseerd op de aanbevolen procedures voor netwerk beveiliging. Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er aanbevelingen gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden om uw resources te beschermen en te beveiligen.
 
-In dit artikel wordt de pagina **netwerken** van de sectie resource beveiliging van Azure Security Center beschreven en enkele aanbevelingen die u hier ziet.
+In dit artikel wordt de pagina **netwerken** van de sectie resource beveiliging van Security Center beschreven.
 
-Zie [aanbevelingen voor netwerken](recommendations-network.md)voor een volledige lijst met aanbevelingen voor netwerken.
+Zie [aanbevelingen voor netwerken](recommendations-reference.md#recs-network)voor een volledige lijst met aanbevelingen voor netwerken.
 
 In dit artikel worden aanbevelingen gedaan die van toepassing zijn op uw Azure-resources op basis van een netwerk beveiligings perspectief. Aanbevelingen voor netwerken rond de volgende generatie firewalls, netwerk beveiligings groepen, JIT-VM-toegang, meer regels voor binnenkomend verkeer, en meer. Zie [beveiligings aanbevelingen beheren in azure Security Center](security-center-recommendations.md)voor een lijst met aanbevelingen en herstel acties voor netwerken.
 
@@ -40,7 +40,7 @@ Op de pagina **netwerken** vindt u een overzicht van de secties die u uitgebreid
 - Aanbevelingen voor netwerk beveiliging.
 - Blade verouderde **netwerken** (de Blade vorige netwerken) 
  
-![Netwerk venster](./media/security-center-network-recommendations/networking-pane.png)
+[deel venster ![-netwerk](./media/security-center-network-recommendations/networking-pane.png)](./media/security-center-network-recommendations/networking-pane.png#lightbox)
 
 ## <a name="network-map"></a>Netwerk toewijzing
 De interactieve netwerk kaart biedt een grafische weer gave met beveiligings-overlays waarmee u aanbevelingen en inzichten krijgt voor het versterken van uw netwerk bronnen. Met de kaart ziet u de netwerk topologie van uw Azure-workloads, verbindingen tussen uw virtuele machines en subnetten, en de mogelijkheid om in te zoomen op de kaart in specifieke bronnen en de aanbevelingen voor deze resources.
@@ -59,11 +59,11 @@ De standaard weergave van de topologie kaart geeft het volgende weer:
 - Internet gerichte bronnen
 - De kaart is geoptimaliseerd voor de abonnementen die u hebt geselecteerd in Azure. Als u uw selectie wijzigt, wordt de kaart opnieuw berekend en opnieuw geoptimaliseerd op basis van de nieuwe instellingen.  
 
-![Netwerk topologie kaart](./media/security-center-network-recommendations/network-map-info.png)
+[toewijzing van ![netwerk topologie](./media/security-center-network-recommendations/network-map-info.png)](./media/security-center-network-recommendations/network-map-info.png#lightbox)
 
 ## <a name="understanding-the-network-map"></a>Informatie over de netwerk kaart
 
-De netwerk kaart kan uw Azure-resources weer geven in een **topologie** weergave en een **verkeers** weergave.
+De netwerk kaart kan uw Azure-resources weer geven in een **topologie** weergave en een **verkeers** weergave. 
 
 ### <a name="the-topology-view"></a>De topologie weergave
 
@@ -111,7 +111,8 @@ Inzoomen op een resource:
 
 **Deze gegevens zijn gebaseerd op de analyse van de netwerk beveiligings groepen en geavanceerde machine learning algoritmen waarmee meerdere regels worden geanalyseerd om inzicht te krijgen in hun crossovers en interacties.** 
 
-![Netwerk verkeer toewijzing](./media/security-center-network-recommendations/network-map-traffic.png)
+[toewijzing van netwerk verkeer ![](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
+
 
 ## Verouderde netwerken<a name ="legacy-networking"></a>
 
@@ -119,7 +120,7 @@ Als u geen Security Center Standard-laag hebt, wordt in deze sectie uitgelegd ho
 
 Als u deze informatie wilt openen, klikt u op de Blade netwerken op **verouderde netwerken weer geven**. 
 
-![Verouderde netwerken](./media/security-center-network-recommendations/legacy-networking.png)
+[![verouderde netwerken](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
 
 ### <a name="internet-facing-endpoints-section"></a>Sectie Internetgerichte eindpunten
 In de sectie **Internet gerichte eind punten** kunt u de virtuele machines zien die momenteel zijn geconfigureerd met een Internet gericht eind punt en de status ervan.
@@ -135,7 +136,8 @@ In deze topologie weergave wordt op het eerste niveau Vnets weer gegeven. De twe
 
 Op het derde niveau worden virtuele machines weer gegeven. Dit is vergelijkbaar met wat eerder is beschreven. U kunt klikken op een resource voor meer informatie of de vereiste beveiligings controle of-configuratie Toep assen.
 
-## <a name="see-also"></a>Zie ook
+## <a name="next-steps"></a>Volgende stappen
+
 Zie de volgende onderwerpen voor meer informatie over aanbevelingen die betrekking hebben op andere typen Azure-resources:
 
 * [Uw machines en toepassingen beveiligen in Azure Security Center](security-center-virtual-machine-protection.md)

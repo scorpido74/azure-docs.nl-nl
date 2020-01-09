@@ -3,18 +3,18 @@ title: De kosten van het verbruiks abonnement in Azure Functions schatten
 description: Meer informatie over hoe u de kosten die u kunt doen bij het uitvoeren van uw functie-app in een verbruiks abonnement in azure, beter kunt schatten.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9d81c99f3602e3d7ed5508884b0b313ef2f2fcaf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 38a3435ddbc6e7cce5d18c99e227d405fdc2e7dd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230865"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613055"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Kosten voor verbruiks plan schatten
 
 Er zijn momenteel drie typen hosting plannen voor een app die wordt uitgevoerd in Azure Functions, waarbij elk abonnement een eigen prijs model heeft: 
 
-| Plannen | Beschrijving |
+| Plan | Beschrijving |
 | ---- | ----------- |
 | [**Meerverbruik**](functions-scale.md#consumption-plan) | Er worden alleen kosten in rekening gebracht voor de tijd dat uw functie-app wordt uitgevoerd. Dit abonnement bevat een [gratis][pagina met prijzen] voor granting per abonnement.|
 | [**Ultieme**](functions-scale.md#premium-plan) | Biedt u dezelfde functies en schaal methode als het verbruiks abonnement, maar met verbeterde prestaties en VNET-toegang. De kosten zijn gebaseerd op de gekozen prijs categorie. Zie [Azure functions Premium-abonnement](functions-premium-plan.md)voor meer informatie. |
@@ -81,7 +81,7 @@ Gebruik [Azure monitor Metrics Explorer](../azure-monitor/platform/metrics-getti
     | Abonnement    |  Uw abonnement  | Het abonnement met uw functie-app.  |
     | Resourcegroep     | De resource groep  | De resource groep die de functie-app bevat.   |
     | Resourcetype     |  App-services | Functie-apps worden weer gegeven als App Services instanties in monitor. |
-    | Resource     |  Uw functie-app  | De functie-app die moet worden bewaakt.        |
+    | Bron     |  Uw functie-app  | De functie-app die moet worden bewaakt.        |
 
 1. Selecteer **Toep assen** om uw functie-app te kiezen als de te controleren bron.
 
@@ -188,7 +188,7 @@ Met deze opdracht wordt een JSON-nettolading geretourneerd die eruitziet als in 
   ]
 }
 ```
-Dit specifieke antwoord laat zien dat van `2019-09-11T21:46` naar `2019-09-11T23:18`, gedurende welke de app 1110000000 MB-milliseconden (1083,98 GB/seconden) verbruikt.
+Dit specifieke antwoord laat zien dat van `2019-09-11T21:46` tot `2019-09-11T23:18`de app 1110000000 MB-milliseconden (1083,98 GB-seconden) verbruikt.
 
 ## <a name="determine-memory-usage"></a>Geheugen gebruik bepalen
 
@@ -208,12 +208,12 @@ De resultaten zien eruit als in het volgende voor beeld:
 
 | tijds tempel \[UTC-\]          | name          | waarde       |
 |----------------------------|---------------|-------------|
-| 9/12/2019, 1:05:14\.947 uur | Privé-bytes | 209.932.288 |
-| 9/12/2019, 1:06:14\.994 uur | Privé-bytes | 212.189.184 |
-| 9/12/2019, 1:06:30\.010 | Privé-bytes | 231.714.816 |
-| 9/12/2019, 1:07:15\.040 uur | Privé-bytes | 210.591.744 |
-| 9/12/2019, 1:12:16\.285 uur | Privé-bytes | 216.285.184 |
-| 9/12/2019, 1:12:31\.376 uur | Privé-bytes | 235.806.720 |
+| 9/12/2019, 1:05:14\.947 uur | Eigen Bytes | 209.932.288 |
+| 9/12/2019, 1:06:14\.994 uur | Eigen Bytes | 212.189.184 |
+| 9/12/2019, 1:06:30\.010 | Eigen Bytes | 231.714.816 |
+| 9/12/2019, 1:07:15\.040 uur | Eigen Bytes | 210.591.744 |
+| 9/12/2019, 1:12:16\.285 uur | Eigen Bytes | 216.285.184 |
+| 9/12/2019, 1:12:31\.376 uur | Eigen Bytes | 235.806.720 |
 
 ## <a name="function-level-metrics"></a>Metrische functie niveaus
 

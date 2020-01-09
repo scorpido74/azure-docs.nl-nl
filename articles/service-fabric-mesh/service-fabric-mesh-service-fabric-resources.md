@@ -1,30 +1,21 @@
 ---
-title: Inleiding tot Azure Service Fabric-Resourcemodel | Microsoft Docs
-description: Meer informatie over het Model in de Resource van Service Fabric, een eenvoudige benadering voor het definiëren van Service Fabric-NET-toepassingen.
-services: service-fabric-mesh
-documentationcenter: .net
+title: Inleiding tot Azure Service Fabric resource model
+description: Meer informatie over het Service Fabric resource model, een vereenvoudigde benadering voor het definiëren van Service Fabric mesh-toepassingen.
 author: vturecek
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3cee0ada75c4ea265c7e9c598408eb6b01477d6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ae2ed163560aee4c0c3525ab31910e37afaa5b9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60810713"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75352463"
 ---
-# <a name="introduction-to-service-fabric-resource-model"></a>Inleiding tot Service Fabric-Resourcemodel
+# <a name="introduction-to-service-fabric-resource-model"></a>Inleiding tot Service Fabric resource model
 
-Het Service Fabric-Resourcemodel beschrijft een eenvoudige benadering voor het definiëren van de resources die deel uitmaken van een Service Fabric-NET-toepassing. Afzonderlijke resources kunnen worden geïmplementeerd op elke willekeurige Service Fabric-omgeving.  Het Service Fabric-Resourcemodel is ook compatibel met het Azure Resource Manager-Model. De volgende typen resources worden momenteel ondersteund in dit model:
+Het Service Fabric resource model beschrijft een eenvoudige benadering voor het definiëren van resources waaruit een Service Fabric mesh-toepassing bestaat. Afzonderlijke bronnen kunnen worden geïmplementeerd in elke Service Fabric omgeving.  Het Service Fabric resource model is ook compatibel met het Azure Resource Manager model. De volgende typen resources worden momenteel ondersteund in dit model:
 
 - Toepassingen en services
 - Netwerken
@@ -32,59 +23,59 @@ Het Service Fabric-Resourcemodel beschrijft een eenvoudige benadering voor het d
 - Geheimen en geheimen/waarden
 - Volumes
 
-Elke resource wordt declaratief beschreven in een resource-bestand, dat een eenvoudige YAML is- of JSON-document dat de toepassing NET beschrijft en die door de Service Fabric-platform is ingericht.
+Elke resource wordt declaratief beschreven in een resource bestand. Dit is een eenvoudig YAML of JSON-document waarin de mesh-toepassing wordt beschreven en wordt ingericht door het Service Fabric-platform.
 
-## <a name="applications-and-services"></a>Toepassingen en Services
+## <a name="applications-and-services"></a>Toepassingen en services
 
-De bron van een toepassing is de eenheid van de implementatie, versiebeheer en levensduur van een Mesh-toepassing. Deze bestaat uit een of meer, Service-resources die een microservice vertegenwoordigen. Elke resource Service wordt op zijn beurt bestaat uit een of meer codepakketten die alles wat nodig is om uit te voeren van de containerinstallatiekopie die is gekoppeld aan het codepakket wordt beschreven.
+Een toepassings bron is de implementatie-eenheid, versie beheer en levens duur van een mesh-toepassing. Het bestaat uit een of meer service resources die een micro service vertegenwoordigen. Elke service bron is op zijn beurt samengesteld uit een of meer code pakketten die alles beschrijven wat nodig is voor het uitvoeren van de container installatie kopie die is gekoppeld aan het code pakket.
 
 ![Apps en services][Image1]
 
-Een Serviceresource declareert de volgende:
+Een service resource declareert het volgende:
 
-- De containernaam van de, versie en -register
-- CPU en geheugen-resources die vereist voor elke container
-- Network-eindpunten
+- Container naam, versie en REGI ster
+- Benodigde CPU-en geheugen resources voor elke container
+- Netwerk eindpunten
 - Verwijzingen naar andere resources, zoals netwerken, volumes en geheimen 
 
-Alle codepakketten die worden gedefinieerd als onderdeel van de bron van een Service worden geïmplementeerd en geactiveerd als een groep. Resource voor de Service beschrijft ook hoeveel exemplaren van de service om uit te voeren en andere bronnen (bijvoorbeeld netwerkbron) Dit is afhankelijk van een verwijzing naar.
+Alle code pakketten die als onderdeel van een service resource zijn gedefinieerd, worden als een groep geïmplementeerd en geactiveerd. De service resource beschrijft ook het aantal exemplaren van de service dat moet worden uitgevoerd en ook verwijst naar andere bronnen (bijvoorbeeld netwerk bronnen) waarvan het afhankelijk is.
 
-Als een toepassing NET uit meer dan één Service bestaat, zijn ze niet gegarandeerd om uit te voeren bij elkaar op hetzelfde knooppunt. Tijdens een upgrade van de toepassing ook resulteert fout van het upgraden van een enkele Service in alle Services die worden teruggedraaid naar de vorige versie.
+Als een mesh-toepassing bestaat uit meer dan één service, worden ze niet gegarandeerd samen op hetzelfde knoop punt uitgevoerd. Als er tijdens een upgrade van de toepassing een fout optreedt bij het upgraden van een service, zullen alle services worden teruggezet naar de vorige versie.
 
-Zoals eerder alluded, kan de levenscyclus van elke toepassingsinstantie onafhankelijk worden beheerd. Bijvoorbeeld, kan één exemplaar van de toepassing onafhankelijk van de andere exemplaren van de toepassing worden bijgewerkt. Normaal gesproken u het aantal services in een toepassing vrij klein, zoals de meer services die u in een toepassing, het moeilijker wordt plaatst voor het beheren van elke service onafhankelijk van elkaar.
+Net als alluded eerder kan de levens cyclus van elk toepassings exemplaar onafhankelijk worden beheerd. Zo kan één toepassings exemplaar onafhankelijk van de andere exemplaren van de toepassing worden bijgewerkt. Normaal gesp roken houdt u het aantal services in een toepassing vrij klein, naarmate meer services die u in een toepassing plaatst, het moeilijker wordt om elke service afzonderlijk te beheren.
 
 ## <a name="networks"></a>Netwerken
 
-Netwerkbron wordt afzonderlijk implementeerbare resource, onafhankelijk van een toepassing of Service-resource die als hun afhankelijkheid naar deze verwijzen kan. Het wordt gebruikt voor het maken van een netwerk voor uw toepassingen. Meerdere Services van verschillende toepassingen kunnen deel uitmaken van hetzelfde netwerk.  Lees voor meer informatie over [networking in Service Fabric-NET-toepassingen](service-fabric-mesh-networks-and-gateways.md).
+De netwerk resource is een afzonderlijk Implementeer bare resource, onafhankelijk van een toepassings-of service resource die als afhankelijkheid ervan kan verwijzen. Het wordt gebruikt voor het maken van een netwerk voor uw toepassingen. Meerdere services van verschillende toepassingen kunnen deel uitmaken van hetzelfde netwerk.  Meer informatie over netwerken vindt u [in service Fabric-mesh toepassingen](service-fabric-mesh-networks-and-gateways.md).
 
 > [!NOTE]
-> De huidige Preview-versie ondersteunt alleen een één-op-een-toewijzing tussen toepassingen en -netwerken
+> De huidige preview ondersteunt alleen een toewijzing tussen toepassingen en netwerken
 
-![Netwerk- en gateway][Image2]
+![Netwerk en gateway][Image2]
 
 ## <a name="gateways"></a>Gateways
-Een resource van een twee netwerken verbindt en routeert verkeer.  Een gateway kunt uw services om te communiceren met externe clients en biedt een inkomend verkeer naar uw service (s).  Een gateway kan ook worden gebruikt om uw toepassing net met uw eigen, bestaande virtuele netwerk verbinding te maken. Lees voor meer informatie over [networking in Service Fabric-NET-toepassingen](service-fabric-mesh-networks-and-gateways.md).
+Een gateway bron verbindt twee netwerken en routeert verkeer.  Met een gateway kunnen uw services communiceren met externe clients en wordt er een ingang naar uw service (s) geboden.  Een gateway kan ook worden gebruikt voor het verbinden van uw nettoepassing met uw eigen bestaande virtuele netwerk. Meer informatie over netwerken vindt u [in service Fabric-mesh toepassingen](service-fabric-mesh-networks-and-gateways.md).
 
-![Netwerk- en gateway][Image2]
+![Netwerk en gateway][Image2]
 
 ## <a name="secrets"></a>Geheimen
 
-Geheimen resources zijn geïmplementeerd, onafhankelijk van een toepassing of Serviceresource die als hun afhankelijkheid naar deze verwijzen kan. Deze wordt gebruikt om geheimen veilig leveren aan uw toepassingen. Meerdere services van andere toepassingen kunnen verwijzen naar waarden van hetzelfde geheim.
+Geheimen bronnen kunnen worden geïmplementeerd onafhankelijk van een toepassings-of service resource die als afhankelijkheid ervan worden gebruikt. Dit wordt gebruikt om geheimen veilig te bezorgen voor uw toepassingen. Meerdere services van verschillende toepassingen kunnen verwijzen naar waarden van hetzelfde geheim.
 
 ## <a name="volumes"></a>Volumes
 
-Containers maken vaak tijdelijke schijven beschikbaar. Tijdelijke schijven zijn echter kortstondige, zodat u een nieuwe tijdelijke schijf ophalen en de gegevens gaan verloren wanneer een container vastloopt. Het is ook moeilijk om gegevens op schijven met tijdelijke delen met andere containers. Volumes zijn mappen die in uw containerinstanties die u gebruiken kunt om vast te leggen de status worden gekoppeld. Volumes bieden u de opslag voor algemeen gebruik en kunnen u bestanden met behulp van API's van een normale schijf i/o-bestand voor lezen/schrijven. De bron Volume is een declaratieve manier om te beschrijven hoe u een map is gekoppeld en de opslag van de back-ups maken voor deze (Azure-bestanden Volume of Service Fabric betrouwbare Volume).  Lees voor meer informatie, [status opslaan](service-fabric-mesh-storing-state.md#volumes).
+Containers maken vaak tijdelijke schijven beschikbaar. Tijdelijke schijven zijn echter tijdelijk een nieuwe tijdelijke schijf en verliezen de informatie wanneer een container vastloopt. Het is ook lastig om informatie over tijdelijke schijven met andere containers te delen. Volumes zijn mappen die in de container instanties worden gekoppeld die u kunt gebruiken om de status te behouden. Volumes bieden u bestands opslag voor algemeen gebruik en bieden de mogelijkheid om bestanden te lezen/schrijven met behulp van normale I/O-bestand-Api's van de schijf. De volume resource is een declaratieve manier om te beschrijven hoe een map is gekoppeld en de back-up van de opslag ruimte (Azure Files volume of Service Fabric betrouw bare volume).  Lees de [opslag status](service-fabric-mesh-storing-state.md#volumes)voor meer informatie.
 
 ![Volumes][Image3]
 
-## <a name="programming-models"></a>Programmeringsmodellen
-Serviceresource vereist alleen een containerinstallatiekopie uit te voeren, waarnaar wordt verwezen in de code-pakketten die zijn gekoppeld aan de resource. U kunt de code die is geschreven in elke taal, uitvoeren van elk gewenst framework in de container zonder te weten of net van Service Fabric-specifieke API's gebruiken. 
+## <a name="programming-models"></a>Programmeer modellen
+Voor service resource moet alleen een container installatie kopie worden uitgevoerd, waarnaar wordt verwezen in de code pakketten die zijn gekoppeld aan de resource. U kunt elke wille keurige code uitvoeren, geschreven in elke taal, met behulp van een wille keurig Framework in de container zonder dat hiervoor Service Fabric mesh-specifieke Api's moeten worden gebruikt. 
 
-Code van uw toepassing blijft zelfs buiten een Service Fabric NET draagbare en uw implementaties van toepassingen blijven consistent, ongeacht de taal of framework gebruikt voor het implementeren van uw services. Of uw toepassing ASP.NET Core, Go, of alleen een set van processen en scripts is, blijft het implementatiemodel van Service Fabric NET Resource hetzelfde. 
+Uw toepassings code blijft draagbaar, zelfs buiten Service Fabric net, en uw toepassings implementaties blijven consistent, ongeacht de taal of het Framework dat wordt gebruikt voor het implementeren van uw services. Of uw toepassing ASP.NET Core, een go of een set processen en scripts is, het implementatie model voor Service Fabric mesh-resources blijft hetzelfde. 
 
 ## <a name="packaging-and-deployment"></a>Verpakking en implementatie
 
-Service Fabric-NET-toepassingen op basis van de resourcemodel zijn verpakt als Docker-containers.  Service Fabric-NET is een gedeelde omgeving met meerdere tenants en containers bieden u een hoge mate van isolatie.  Deze toepassingen worden beschreven met behulp van een JSON-indeling of een YAML-indeling (die vervolgens wordt omgezet naar JSON). Bij het implementeren van een Mesh-toepassing in Azure Service Fabric NET, is de JSON die wordt gebruikt om te beschrijven van de toepassing een Azure Resource Manager-sjabloon. Resources worden toegewezen aan Azure-resources.  Bij het implementeren van een Mesh-toepassing naar een Service Fabric-cluster (zelfstandige of wordt gehost op Azure), de JSON die wordt gebruikt om te beschrijven van de toepassing is een indeling die vergelijkbaar is met een Azure Resource Manager-sjabloon.  Zodra geïmplementeerd, kunnen NET-toepassingen worden beheerd via HTTP-interfaces of Azure CLI. 
+Service Fabric nettoepassingen op basis van het resource model worden verpakt als docker-containers.  Service Fabric Mesh is een gedeelde omgeving met meerdere tenants en containers biedt u een hoog isolatie niveau.  Deze toepassingen worden beschreven met behulp van een JSON-indeling of een YAML-indeling (die vervolgens wordt geconverteerd naar JSON). Wanneer u een mesh-toepassing implementeert in azure Service Fabric mesh, is de JSON die wordt gebruikt om de toepassing te beschrijven een Azure Resource Manager sjabloon. Resources worden toegewezen aan Azure-resources.  Wanneer u een mesh-toepassing implementeert in een Service Fabric-cluster (Zelfstandige of Azure-host), is de JSON die wordt gebruikt om de toepassing te beschrijven een indeling die vergelijkbaar is met een Azure Resource Manager sjabloon.  Zodra de implementatie is geïmplementeerd, kunnen nettoepassingen worden beheerd via HTTP-interfaces of de Azure CLI. 
 
 
 ## <a name="next-steps"></a>Volgende stappen 

@@ -1,6 +1,7 @@
 ---
-title: 'Zelfstudie: Azure Database Migration Service gebruiken om MongoDB te migreren naar de API van Azure Cosmos DB voor MongoDB offline | Microsoft Docs'
-description: Meer informatie over het migreren van MongoDB on-premises naar de API van Azure Cosmos DB voor MongoDB offline met behulp van Azure Database Migration Service.
+title: 'Zelf studie: MongoDB-offline migreren naar Azure Cosmos DB-API voor MongoDB'
+titleSuffix: Azure Database Migration Service
+description: Meer informatie over het migreren van MongoDB on-premises naar Azure Cosmos DB API voor MongoDB offline met behulp van Azure Database Migration Service.
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -8,24 +9,24 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: 96540a8ea40efcc3a2d115980999c8d470b85180
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
-ms.translationtype: MT
+ms.openlocfilehash: c4c34a3706e576f97c6822ffe9f8c8a30500095c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265952"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437618"
 ---
-# <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Zelfstudie: MongoDB migreren naar Azure Cosmos DB's API voor offline MongoDB met behulp van DMS
+# <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Zelf studie: MongoDB migreren naar de API van Azure Cosmos DB voor MongoDB offline met DMS
 
 U kunt Azure Database Migration Service gebruiken om een offline migratie uit te voeren van data bases van een on-premises of Cloud exemplaar van MongoDB naar Azure Cosmos DB API voor MongoDB.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
 >
-> * Maak een instantie van Azure Database Migration Service.
+> * Maak een exemplaar van de Azure Database Migration Service.
 > * Een migratie project maken met behulp van Azure Database Migration Service.
 > * De migratie uitvoeren.
 > * De migratie controleren.
@@ -49,7 +50,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
     >
     > Deze configuratie is nood zakelijk omdat Azure Database Migration Service geen verbinding met internet heeft.
 
-* Zorg ervoor dat de regels van uw VNet-netwerk beveiligings groep (NSG) de volgende communicatie poorten niet blok keren: 53, 443, 445, 9354 en 10000-20000. Zie het artikel [netwerk verkeer filteren met netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)voor meer informatie over het filteren van NSG-verkeer van Azure VNet.
+* Zorg ervoor dat de regels van uw VNet-netwerk beveiligings groep (NSG) niet de volgende communicatie poorten blok keren: 53, 443, 445, 9354 en 10000-20000. Zie het artikel [netwerk verkeer filteren met netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)voor meer informatie over het filteren van NSG-verkeer van Azure VNet.
 * Open uw Windows Firewall om Azure Database Migration Service toegang te geven tot de bron MongoDB-server, die standaard TCP-poort 27017 is.
 * Wanneer u een firewall apparaat voor uw bron database (s) gebruikt, moet u mogelijk firewall regels toevoegen om Azure Database Migration Service toegang te geven tot de bron database (s) voor de migratie.
 
@@ -219,7 +220,7 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
 Nadat u de gegevens die zijn opgeslagen in MongoDB Data Base hebt gemigreerd naar de API van Azure Cosmos DB voor MongoDB, kunt u verbinding maken met Azure Cosmos DB en de gegevens beheren. U kunt ook andere optimalisatie stappen voor na de migratie uitvoeren, zoals het optimaliseren van het indexerings beleid, het standaard consistentie niveau bijwerken of de globale distributie configureren voor uw Azure Cosmos DB-account. Zie voor meer informatie het artikel [optimalisatie na de migratie](../cosmos-db/mongodb-post-migration.md) .
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Informatie over Cosmos DB-service](https://azure.microsoft.com/services/cosmos-db/)
 

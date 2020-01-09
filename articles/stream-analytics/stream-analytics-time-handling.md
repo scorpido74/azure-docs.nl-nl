@@ -1,18 +1,18 @@
 ---
 title: Time handling in Azure Stream Analytics begrijpen
 description: Meer informatie over hoe tijds afhandeling werkt in Azure Stream Analytics, zoals het kiezen van de beste start tijd, het afhandelen van late en vroege gebeurtenissen en de metrische gegevens voor de afhandeling van tijd.
-author: jasonwhowell
-ms.author: zhongc
+author: mamccrea
+ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: ae53663f78b684d41c36607760e30db9e48a6434
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 367b7c2e1ce1c8b3c0dbc02003218b76096b409d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901426"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354648"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Time handling in Azure Stream Analytics begrijpen
 
@@ -171,7 +171,7 @@ De volgende afbeeldingen laten zien hoe water merken in verschillende omstandigh
 
 In deze tabel worden de voorbeeld gegevens weer gegeven die hieronder zijn gediagrameerd. U ziet dat de tijd van de gebeurtenis en de aankomst tijd variëren, soms overeenkomend en soms niet.
 
-| Tijd van gebeurtenis | Aankomst tijd | DeviceId |
+| Tijdstip van gebeurtenis | Aankomst tijd | DeviceId |
 | --- | --- | --- |
 | 12:07 | 12:07 | device1
 | 12:08 | 12:08 | device2

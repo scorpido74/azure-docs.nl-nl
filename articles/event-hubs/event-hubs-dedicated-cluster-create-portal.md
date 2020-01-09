@@ -1,5 +1,5 @@
 ---
-title: 'Azure-Snelstartgids: een toegewezen Event Hubs-cluster maken met behulp van de Azure Portal'
+title: Een Event Hubs toegewezen cluster maken met behulp van de Azure Portal
 description: In deze Quick Start leert u hoe u een Azure Event Hubs-cluster maakt met behulp van Azure Portal.
 services: event-hubs
 documentationcenter: ''
@@ -8,14 +8,14 @@ manager: ''
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 12/20/2019
 ms.author: xurui
-ms.openlocfilehash: bde6844962561232e4af51f2b4e803d49bf5398e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: dbe34b95652d972a9e75f4ab8f2c208061359ae9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720639"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437213"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Snelstartgids: een toegewezen Event Hubs-cluster maken met behulp van Azure Portal 
 Event Hubs-clusters bieden implementaties met één Tenant voor klanten met de meest veeleisende streaming behoeften. Deze aanbieding heeft een gegarandeerde 99,99%-SLA en is alleen beschikbaar in onze speciale prijs categorie. Een [Event hubs cluster](event-hubs-dedicated-overview.md) kan miljoenen gebeurtenissen per seconde met gegarandeerde capaciteit en een subseconde van de seconden binnenkomen. Naam ruimten en Event hubs die zijn gemaakt in een cluster, bevatten alle functies van de Standard-aanbieding en meer, maar zonder ingangs limieten. De speciale aanbieding bevat ook de populaire [Event hubs Capture](event-hubs-capture-overview.md) -functie zonder extra kosten, zodat u automatisch gegevens stromen naar [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) of [Azure data Lake Storage gen 1](../data-lake-store/data-lake-store-overview.md)kunt vastleggen in batches.
@@ -41,7 +41,7 @@ Voer de volgende stappen uit om een cluster in uw resource groep te maken met be
 
 1. Volg [deze koppeling](https://aka.ms/eventhubsclusterquickstart) om een cluster op Azure portal te maken. Selecteer daarentegen **alle services** in het navigatie deel venster links en typ vervolgens ' event hubs clusters ' in de zoek balk en selecteer Event hubs clusters in de lijst met resultaten.
 2. Configureer op de pagina **cluster maken** het volgende:
-    1. Voer een **naam in voor het cluster**. In het systeem wordt onmiddellijk gecontroleerd of de naam beschikbaar is.
+    1. Voer een **naam in voor het cluster**. Er wordt onmiddellijk gecontroleerd of de naam beschikbaar is.
     2. Selecteer het **abonnement** waarin u het cluster wilt maken.
     3. Selecteer de **resource groep** waarin u het cluster wilt maken.
     4. Selecteer een **locatie** voor het cluster. Als uw voorkeurs regio grijs wordt weer gegeven, is er tijdelijk onvoldoende capaciteit en kunt u een [ondersteunings aanvraag](#submit-a-support-request) indienen bij het event hubs-team.

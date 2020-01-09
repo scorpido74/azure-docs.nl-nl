@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: 5fede76fbc97b31cbbcdaec1b17f838100d35511
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: MT
+ms.openlocfilehash: b2764e54d0938cbbdc00b19cf3ea1139d3d29828
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195839"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435274"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Azure-toolkit voor IntelliJ gebruiken om fout opsporing uit te Apache Spark toepassingen op afstand in HDInsight via VPN
 
@@ -59,7 +59,7 @@ Het is raadzaam om ook een Apache Spark cluster in azure HDInsight te maken dat 
 
     ![Hosts in Apache Ambari selecteren](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
 
-1. U ziet een lijst met hoofd knooppunten, Worker-knoop punten en Zookeeper-knoop punten. De hoofd knooppunten hebben een voor voegsel van **HN***. Selecteer het eerste hoofd knooppunt.
+1. U ziet een lijst met hoofd knooppunten, Worker-knoop punten en Zookeeper-knoop punten. De hoofd knooppunten hebben een voor voegsel van **HN**\*. Selecteer het eerste hoofd knooppunt.
 
     ![Het hoofd knooppunt zoeken in Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
 
@@ -100,7 +100,7 @@ Het is raadzaam om ook een Apache Spark cluster in azure HDInsight te maken dat 
 
     a. Selecteer **HDInsight** > **Spark in HDInsight (Scala)** .
 
-    b. Selecteer **Volgende**.
+    b. Selecteer **Next**.
 1. Voer in het dialoog venster volgende **Nieuw project** de volgende handelingen uit en selecteer vervolgens **volt ooien**:
 
     - Geef een projectnaam en locatie op.
@@ -149,7 +149,7 @@ Het is raadzaam om ook een Apache Spark cluster in azure HDInsight te maken dat 
 
 1. Werk het `core-site.xml` bestand bij om de volgende wijzigingen door te voeren:
 
-   a. Vervang de versleutelde sleutel. Het `core-site.xml`-bestand bevat de versleutelde sleutel voor het opslag account dat aan het cluster is gekoppeld. Vervang in het `core-site.xml` bestand dat u aan het project hebt toegevoegd de versleutelde sleutel door de werkelijke opslag sleutel die aan het standaard opslag account is gekoppeld. Zie [uw opslag toegangs sleutels beheren](../../storage/common/storage-account-manage.md#access-keys)voor meer informatie.
+   a. Vervang de versleutelde sleutel. Het `core-site.xml`-bestand bevat de versleutelde sleutel voor het opslag account dat aan het cluster is gekoppeld. Vervang in het `core-site.xml` bestand dat u aan het project hebt toegevoegd de versleutelde sleutel door de werkelijke opslag sleutel die aan het standaard opslag account is gekoppeld. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md)voor meer informatie.
 
     ```xml
     <property>

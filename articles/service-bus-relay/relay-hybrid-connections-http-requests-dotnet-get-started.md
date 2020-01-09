@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met HTTP-aanvragen voor hybride verbindingen van Azure Relay in .NET | Microsoft Docs
+title: Azure Relay Hybride verbindingen-HTTP-aanvragen in .NET
 description: Hier leert u hoe u een C#-consoletoepassing schrijft voor HTTP-aanvragen voor hybride verbindingen van Azure Relay in .NET.
 services: service-bus-relay
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 37227b7d0ea1b3630a3c2ce991a61543e6a1503d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c984876c4338b4f6802ba55752c8f612c390e94
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428242"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355170"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>Aan de slag met HTTP-aanvragen voor hybride verbindingen van Relay in .NET
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -67,7 +67,7 @@ Maak in Visual Studio een C#-consoletoepassing om berichten naar de Relay te stu
 1. Voer de clienttoepassing uit. U ziet `hello!` in het clientvenster. De client heeft een HTTP-aanvraag verzonden naar de server en de server heeft gereageerd met een `hello!`. 
 3. Nu kunt u de consolevensters sluiten door in beide consolevenster op **Enter** te drukken. 
 
-Gefeliciteerd, u hebt een complete toepassing met hybride verbindingen gemaakt.
+Gefeliciteerd, u hebt een complete Hybride verbindingen-toepassing gemaakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: allensu
-ms.openlocfilehash: 5d4cc57c4cb5db7f04d604c8ccbc408df1a3e707
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4e6b5dc200f49b34d8f808e5587b173197b9da8f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211901"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437312"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>DNS-zones beheren in de Azure Portal
 
@@ -25,7 +25,7 @@ ms.locfileid: "74211901"
 > * [Portal](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
 > * [Klassieke versie van Azure CLI](dns-operations-dnszones-cli-nodejs.md)
-> * [Azure CLI](dns-operations-dnszones-cli.md)
+> * [Azure-CLI](dns-operations-dnszones-cli.md)
 
 In dit artikel leest u hoe u uw DNS-zones beheert met behulp van de Azure Portal. U kunt ook uw DNS-zones beheren met behulp van de platformoverschrijdende [Azure cli](dns-operations-dnszones-cli.md) of de Azure [Power shell](dns-operations-dnszones.md).
 
@@ -43,7 +43,7 @@ In dit artikel leest u hoe u uw DNS-zones beheert met behulp van de Azure Portal
    |---|---|---|
    |**Naam**|contoso.com|De naam van de DNS-zone|
    |**Abonnement**|[Uw abonnement]|Selecteer een abonnement waarin de DNS-zone moet worden gemaakt.|
-   |**Resourcegroep**|**Nieuwe maken:** contosoDNSRG|Maak een resourcegroep. De naam van de resourcegroep moet uniek zijn binnen het abonnement dat u hebt geselecteerd. Lees het overzichtsartikel over [Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) voor meer informatie over resourcegroepen.|
+   |**Resourcegroep**|**Nieuwe maken:** contosoDNSRG|Maak een resourcegroep. De naam van de resourcegroep moet uniek zijn binnen het abonnement dat u hebt geselecteerd. Lees het overzichtsartikel over [Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) voor meer informatie over resourcegroepen.|
    |**Locatie**|VS - west||
 
 > [!NOTE]

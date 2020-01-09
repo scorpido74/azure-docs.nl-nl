@@ -4,16 +4,16 @@ description: Gebruik omgevings variabelen en maak opties voor het inschakelen va
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/15/2019
+ms.date: 11/18/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 72fb7cfad5683edeb3b3335c28c53a7e693d00d5
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 079d5845917e63fadcf0466e5a744ed637d704ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330808"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434523"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Modules toegang geven tot de lokale opslag van een apparaat
 
@@ -21,9 +21,9 @@ Naast het opslaan van gegevens met behulp van Azure Storage-services of in de co
 
 ## <a name="link-module-storage-to-device-storage"></a>Module opslag koppelen aan opslag van apparaten
 
-Als u een koppeling van module opslag naar de opslag op het hostsysteem wilt inschakelen, maakt u een omgevings variabele voor uw module die verwijst naar een opslagmap in de container. Gebruik vervolgens de opties voor het maken van die opslagmap om deze map te binden aan een map op de hostmachine.
+Als u een koppeling van module opslag naar de opslag op het hostsysteem wilt inschakelen, maakt u een omgevings variabele voor uw module die verwijst naar een opslagmap in de container. Vervolgens gebruikt u de opties voor het maken die opslagmap binden aan een map op de hostcomputer.
 
-Als u bijvoorbeeld de IoT Edge hub wilt inschakelen om berichten op te slaan op de lokale opslag van uw apparaat en deze later op te halen, kunt u de omgevings variabelen en de opties voor het maken in de Azure Portal configureren in de **runtime-instellingen geavanceerde rand configureren** sectie.
+Als u bijvoorbeeld de IoT Edge hub wilt inschakelen om berichten op te slaan op de lokale opslag van uw apparaat en deze later op te halen, kunt u de omgevings variabelen en de opties voor het maken in de Azure Portal in de sectie **runtime-instellingen** configureren.
 
 1. Voor zowel IoT Edge hub als IoT Edge agent voegt u een omgevings variabele toe met de naam **storageFolder** die verwijst naar een map in de module.
 1. Voeg voor zowel IoT Edge hub als IoT Edge agent bindingen toe om een lokale map op de hostcomputer te verbinden met een map in de module. Bijvoorbeeld:
@@ -72,9 +72,9 @@ U kunt de lokale opslag ook rechtstreeks in het implementatie manifest configure
 
 Vervang `<HostStoragePath>` en `<ModuleStoragePath>` door het opslagpad van uw host en module; beide waarden moeten een absoluut pad zijn.
 
-Bijvoorbeeld: op een Linux-systeem wordt `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` aangegeven dat de Directory- **/etc/iotedge/Storage** op uw hostsysteem wordt toegewezen aan de Directory **/iotedge/Storage/** in de container. In het geval van een Windows-systeem is `"Binds":["C:\\temp:C:\\contemp"]` de Directory **c: \\temp** op uw hostsysteem toegewezen aan de Directory **c: \\contemp** in de container.
+Bijvoorbeeld: in een Linux-systeem wordt `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` de Directory **/etc/iotedge/Storage** op uw hostsysteem toegewezen aan de Directory **/iotedge/Storage/** in de container. Op een Windows-systeem, op een ander voor beeld, betekent `"Binds":["C:\\temp:C:\\contemp"]` dat de map **c:\\Temp** op uw hostsysteem is toegewezen aan de Directory **c:\\** in de container.
 
-Daarnaast moet u op Linux-apparaten ervoor zorgen dat het gebruikers profiel voor uw module de vereiste machtigingen lezen, schrijven en uitvoeren heeft voor de map van het hostsysteem. Als u terugkeert naar het vorige voor beeld van het inschakelen van IoT Edge hub om berichten op te slaan in de lokale opslag van uw apparaat, moet u machtigingen verlenen aan het gebruikers profiel, UID 1000. (De IoT Edge-agent fungeert als root, zodat er geen aanvullende machtigingen nodig zijn.) Er zijn verschillende manieren om mapmachtigingen te beheren op Linux-systemen, met inbegrip van het gebruik van `chown` om de directory-eigenaar te wijzigen en vervolgens `chmod` om de machtigingen te wijzigen, zoals:
+Daarnaast moet u op Linux-apparaten ervoor zorgen dat het gebruikers profiel voor uw module de vereiste machtigingen lezen, schrijven en uitvoeren heeft voor de map van het hostsysteem. Als u terugkeert naar het vorige voor beeld van het inschakelen van IoT Edge hub om berichten op te slaan in de lokale opslag van uw apparaat, moet u machtigingen verlenen aan het gebruikers profiel, UID 1000. (De IoT Edge-agent fungeert als root, zodat er geen aanvullende machtigingen nodig zijn.) Er zijn verschillende manieren om mapmachtigingen te beheren op Linux-systemen, met inbegrip van `chown` om de directory-eigenaar te wijzigen en vervolgens `chmod` om de machtigingen te wijzigen, zoals:
 
 ```bash
 sudo chown 1000 <HostStoragePath>

@@ -2,18 +2,18 @@
 title: Phoenix-prestaties in azure HDInsight
 description: Aanbevolen procedures voor het optimaliseren van Apache Phoenix prestaties voor Azure HDInsight-clusters
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: ashishth
-ms.openlocfilehash: b2a40802070510939332c3f5e876293445cf2df1
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.custom: hdinsightactive
+ms.date: 12/27/2019
+ms.openlocfilehash: 7f8f20be81e815414c283f7ec48aa6503e3b60ed
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810442"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552641"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Best practices voor Apache Phoenix-prestaties
 
@@ -27,38 +27,38 @@ Het schema ontwerp van een Bredase tabel omvat het ontwerp van de primaire sleut
 
 ### <a name="primary-key-design"></a>Primair sleutel ontwerp
 
-De primaire sleutel die is gedefinieerd voor een tabel in Phoenix bepaalt hoe gegevens worden opgeslagen in de rowkey van de onderliggende HBase-tabel. In HBase is de enige manier om toegang te krijgen tot een bepaalde rij met de rowkey. Daarnaast worden gegevens die zijn opgeslagen in een HBase-tabel gesorteerd op de rowkey. Phoenix bouwt de rowkey-waarde door de waarden van elk van de kolommen in de rij samen te voegen in de volg orde waarin ze worden gedefinieerd in de primaire sleutel.
+De primaire sleutel die is gedefinieerd voor een tabel in Phoenix bepaalt hoe gegevens worden opgeslagen in de rowkey van de onderliggende HBase-tabel. In HBase is de enige manier om toegang te krijgen tot een bepaalde rij met de rowkey. Daarnaast worden gegevens die zijn opgeslagen in een HBase-tabel gesorteerd op de rowkey. Phoenix bouwt de rowkey-waarde door de waarden van elk van de kolommen in de rij samen te voegen in de volg orde waarin ze in de primaire sleutel zijn gedefinieerd.
 
 Een tabel voor contact personen heeft bijvoorbeeld de voor naam, achternaam, telefoon nummer en het adres, allemaal in dezelfde kolom familie. U kunt een primaire sleutel definiëren op basis van een oplopend Volg nummer:
 
-|rowkey|       address|   telefoon| firstName| lastName|
+|rowkey|       address|   telefoon| voornaam| achternaam|
 |------|--------------------|--------------|-------------|--------------|
-|  1000|1111 San Gabriel Dr.|1-425-000-0002|    Letterlijk|Davids|
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Davids|
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji|
 
 Als u echter vaak een query uitvoert op lastName, wordt deze primaire sleutel mogelijk niet goed uitgevoerd, omdat voor elke query een volledige tabel scan is vereist om de waarde van elke lastName te lezen. In plaats daarvan kunt u een primaire sleutel definiëren voor de kolommen lastName, firstName en Social Security Number. Deze laatste kolom is om twee inwoners op hetzelfde adres te dubbel zinnigheid met dezelfde naam, zoals een vader en zoon.
 
-|rowkey|       address|   telefoon| firstName| lastName| socialSecurityNum |
+|rowkey|       address|   telefoon| voornaam| achternaam| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  1000|1111 San Gabriel Dr.|1-425-000-0002|    Letterlijk|Davids| 111 |
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Davids| 111 |
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 Met deze nieuwe primaire sleutel worden de door Breda gegenereerde rij sleutels:
 
-|rowkey|       address|   telefoon| firstName| lastName| socialSecurityNum |
+|rowkey|       address|   telefoon| voornaam| achternaam| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Davids-Jan-111|1111 San Gabriel Dr.|1-425-000-0002|    Letterlijk|Davids| 111 |
+|  Davids-Jan-111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Davids| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 In de eerste rij hierboven worden de gegevens voor de rowkey weer gegeven:
 
-|rowkey|       key|   value| 
+|rowkey|       sleutel|   waarde|
 |------|--------------------|---|
 |  Davids-Jan-111|address |1111 San Gabriel Dr.|  
 |  Davids-Jan-111|telefoon |1-425-000-0002|  
-|  Davids-Jan-111|firstName |Letterlijk|  
-|  Davids-Jan-111|lastName |Davids|  
-|  Davids-Jan-111|socialSecurityNum |111| 
+|  Davids-Jan-111|voornaam |Jan|  
+|  Davids-Jan-111|achternaam |Davids|  
+|  Davids-Jan-111|socialSecurityNum |111|
 
 In deze rowkey wordt nu een dubbele kopie van de gegevens opgeslagen. Houd rekening met de grootte en het aantal kolommen dat u in uw primaire sleutel hebt opgenomen, omdat deze waarde is opgenomen in elke cel in de onderliggende HBase-tabel.
 
@@ -72,7 +72,7 @@ Als bepaalde kolommen meestal samen worden geopend, plaatst u deze kolommen in d
 
 ### <a name="column-design"></a>Kolom ontwerp
 
-* Blijf VARCHAR kolommen onder ongeveer 1 MB als gevolg van de I/O-kosten van grote kolommen. Wanneer query's worden verwerkt, worden de resultatenset-cellen volledig geHBased voordat ze worden verzonden naar de client. de client ontvangt deze volledig voordat deze aan de toepassings code wordt door gegeven.
+* Blijf VARCHAR kolommen onder ongeveer 1 MB vanwege de I/O-kosten van grote kolommen. Wanneer query's worden verwerkt, worden de resultatenset-cellen volledig geHBased voordat ze worden verzonden naar de client. de client ontvangt deze volledig voordat deze aan de toepassings code wordt door gegeven.
 * Sla kolom waarden op met een compacte indeling, zoals protobuf, AVRO, msgpack of BSON. JSON wordt niet aanbevolen, omdat het groter is.
 * Overweeg het comprimeren van gegevens voordat de opslag ruimte en I/O-kosten kan worden geknipt.
 
@@ -109,13 +109,13 @@ Secundaire indexen kunnen de Lees prestaties verbeteren door te scha kelen wat e
 
 ### <a name="use-covered-indexes"></a>Gedekte indexen gebruiken
 
-Gedekte indexen zijn indexen die gegevens uit de rij bevatten naast de waarden die worden geïndexeerd. Na het vinden van de gewenste index vermelding is er geen toegang nodig tot de primaire tabel.
+Gedekte indexen zijn indexen die gegevens uit de rij bevatten naast de waarden die worden geïndexeerd. Nadat u de gewenste index vermelding hebt gevonden, hebt u geen toegang nodig tot de primaire tabel.
 
 In de tabel met contact personen kunt u bijvoorbeeld een secundaire index maken op alleen de kolom socialSecurityNum. Met deze secundaire index worden query's sneller uitgevoerd die filteren op socialSecurityNum waarden, maar het ophalen van andere veld waarden vereist een andere Lees bewerking voor de hoofd tabel.
 
-|rowkey|       address|   telefoon| firstName| lastName| socialSecurityNum |
+|rowkey|       address|   telefoon| voornaam| achternaam| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Davids-Jan-111|1111 San Gabriel Dr.|1-425-000-0002|    Letterlijk|Davids| 111 |
+|  Davids-Jan-111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Davids| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 Als u echter doorgaans de voor naam en achternaam wilt opzoeken op basis van de socialSecurityNum, kunt u een gedekte index maken die de voor naam en achternaam als werkelijke gegevens in de index tabel bevat:
@@ -168,7 +168,7 @@ Het query plan ziet er als volgt uit:
 
 In dit plan noteert u de woord groep FULL SCAN OVER vluchten. Deze zin duidt op de uitvoering van een tabel SCAN over alle rijen in de tabel, in plaats van het gebruik van de optie SCAN of OVERs laan voor het scannen van een efficiënt bereik.
 
-Stel nu dat u wilt zoeken naar vluchten op 2 januari 2014 voor de drager `AA` waarvan de flightnum groter is dan 1. We gaan ervan uit dat de kolommen Year, month, DayOfMonth, carrier en flightnum bestaan in de voorbeeld tabel en alle deel uitmaken van de samengestelde primaire sleutel. De query ziet er als volgt uit:
+Stel nu dat u wilt zoeken naar vluchten op 2 januari 2014 voor de transporteur `AA` waarbij de flightnum groter is dan 1. We gaan ervan uit dat de kolommen Year, month, DayOfMonth, carrier en flightnum bestaan in de voorbeeld tabel en alle deel uitmaken van de samengestelde primaire sleutel. De query ziet er als volgt uit:
 
     select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
 
@@ -180,9 +180,9 @@ Het resulterende plan is:
 
     CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER FLIGHTS [2014,1,2,'AA',2] - [2014,1,2,'AA',*]
 
-De waarden tussen vier Kante haken zijn het waarden bereik voor de primaire sleutels. In dit geval worden de waarden van het bereik verholpen met jaar 2014, maand 1 en dayofmonth 2, maar waarden toestaan voor flightnum vanaf 2 en omhoog (`*`). Met dit query plan wordt bevestigd dat de primaire sleutel wordt gebruikt zoals verwacht.
+De waarden tussen vier Kante haken zijn het waarden bereik voor de primaire sleutels. In dit geval worden de waarden van het bereik verholpen met jaar 2014, maand 1 en dayofmonth 2, maar waarden toestaan voor flightnum vanaf 2 en up (`*`). Met dit query plan wordt bevestigd dat de primaire sleutel wordt gebruikt zoals verwacht.
 
-Maak vervolgens een index op de tabel vluchten met de `carrier2_idx` naam alleen op het veld transporteur. Deze index omvat ook flightdate, tailnum, Origin en flightnum als gedekte kolommen waarvan de gegevens ook worden opgeslagen in de index.
+Maak vervolgens een index op de vluchten-tabel met de naam `carrier2_idx` die zich alleen op het veld transporteur bevindt. Deze index omvat ook flightdate, tailnum, Origin en flightnum als gedekte kolommen waarvan de gegevens ook worden opgeslagen in de index.
 
     CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
 
@@ -200,7 +200,7 @@ Voor een volledige lijst van de items die kunnen worden weer gegeven in de resul
 
 Over het algemeen wilt u voor komen dat u deelneemt, tenzij een zijde klein is, met name bij query's die vaak worden uitgevoerd.
 
-Als dat nodig is, kunt u grote samen voegingen `/*+ USE_SORT_MERGE_JOIN */` doen met de hint, maar een grote samen voeging is een dure bewerking in grote aantallen rijen. Als de totale grootte van alle tabellen aan de rechter kant het beschik bare geheugen zou overschrijden, `/*+ NO_STAR_JOIN */` gebruikt u de hint.
+Indien nodig kunt u grote samen voegingen doen met de `/*+ USE_SORT_MERGE_JOIN */` Hint, maar een grote samen voeging is een dure bewerking in grote aantallen rijen. Als de totale grootte van alle tabellen aan de rechter kant het beschik bare geheugen zou overschrijden, gebruikt u de `/*+ NO_STAR_JOIN */` hint.
 
 ## <a name="scenarios"></a>Scenario's
 
@@ -208,11 +208,11 @@ In de volgende richt lijnen worden enkele algemene patronen beschreven.
 
 ### <a name="read-heavy-workloads"></a>Lees zware werk belastingen
 
-Zorg ervoor dat u indexen gebruikt voor lees-zware use-cases. U kunt ook gedekte indexen maken om Lees tijd te besparen.
+Voor lees-zware use-cases, moet u ervoor zorgen dat u indexen gebruikt. U kunt ook gedekte indexen maken om Lees tijd te besparen.
 
 ### <a name="write-heavy-workloads"></a>Schrijf zware workloads
 
-Voor schrijf zware werk belastingen waarbij de primaire sleutel gestaag neemt, maakt u zout buckets om te voor komen dat HOTS pots worden geschreven, tegen de kosten van de algemene Lees doorvoer vanwege de extra scans die nodig zijn. Wanneer u UPSERT gebruikt om een groot aantal records te schrijven, moet u de records automatisch door voeren en vervolgens batch-up uitvoeren.
+Voor schrijf zware werk belastingen waarbij de primaire sleutel gestaag neemt, maakt u zout buckets om te voor komen dat HOTS pots worden geschreven, tegen de kosten van een algemene Lees doorvoer vanwege de extra scans die nodig zijn. Wanneer u UPSERT gebruikt om een groot aantal records te schrijven, moet u de records automatisch door voeren en vervolgens batch-up uitvoeren.
 
 ### <a name="bulk-deletes"></a>Bulksgewijs verwijderen
 

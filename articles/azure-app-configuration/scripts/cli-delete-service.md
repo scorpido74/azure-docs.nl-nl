@@ -1,5 +1,6 @@
 ---
-title: Azure CLI-voorbeeldscript - een Azure App Configuration-archief verwijderen | Microsoft Docs
+title: Voor beeld van Azure CLI-script-een Azure-app configuratie archief verwijderen
+titleSuffix: Azure App Configuration
 description: Azure CLI-voorbeeldscript - een Azure App Configuration-archief verwijderen
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 0983e7d68e7ad01683d588ef89827eaf79754d07
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: d5a80288fcd5b0216a9bf3ca322203f672f381d0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184912"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75413379"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>Een Azure App Configuration-archief verwijderen
 
@@ -48,7 +49,7 @@ az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt om een app-configuratie archief te verwijderen. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt om een app-configuratie archief te verwijderen. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -56,6 +57,6 @@ In dit script worden de volgende opdrachten gebruikt om een app-configuratie arc
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
+Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
 Extra CLI-script voorbeelden voor configuratie van apps vindt u in de voor beelden van de [Azure-app configuratie-cli](../cli-samples.md).

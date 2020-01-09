@@ -1,25 +1,24 @@
 ---
-title: .Net-deserialisatie gebruiken voor Azure stream Analytics-taken
+title: Invoer in elke indeling lezen met behulp van aangepaste .net-deserialisatie in azure stream Analytics
 description: In dit artikel worden de serialisatie-indeling en de interfaces beschreven die aangepaste .NET-deserialers definiëren voor Azure Stream Analytics Cloud-en Edge-taken.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: f1452e56054948edffc6e9b3c98fa48d2589cb2a
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.date: 12/30/2019
+ms.openlocfilehash: a64912921e5ce8c0dc76fbf2ae0be8fb34bacf1a
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024941"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75553015"
 ---
-# <a name="use-net-deserializers-for-azure-stream-analytics-jobs"></a>.Net-deserialisatie gebruiken voor Azure stream Analytics-taken
+# <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Invoer in elke indeling lezen met aangepaste .net-deserialisatie
 
-Met aangepaste .net-deserialisatie kan uw Azure stream Analytics-taak gegevens lezen uit indelingen buiten de drie [ingebouwde gegevens indelingen](stream-analytics-parsing-json.md). In dit artikel worden de serialisatie-indeling en de interfaces beschreven die aangepaste .NET-deserialers definiëren voor Azure Stream Analytics Cloud-en Edge-taken. Er zijn ook voor beelden van deserializers voor protocol buffer en CSV-indeling.
+Aangepaste deserializers van .NET bieden uw Azure Stream Analytics-taak de mogelijkheid om gegevens te lezen uit indelingen buiten de drie [ingebouwde gegevens indelingen](stream-analytics-parsing-json.md). In dit artikel worden de serialisatie-indeling en de interfaces beschreven die aangepaste .net-deserialisatie definiëren voor Azure stream Analytics Cloud-en Edge-taken. Er zijn ook voor beelden van deserializers voor protocol buffer en CSV-indeling.
 
-## <a name="custom-net-deserializer"></a>Aangepaste .NET-deserialer
+## <a name="net-custom-deserializer"></a>Aangepaste .NET-deserialisatie
 
 De volgende code voorbeelden zijn de interfaces die de aangepaste deserializer definiëren en `StreamDeserializer<T>`implementeren.
 
@@ -134,7 +133,7 @@ Het volgende code fragment is de implementatie van de deserializer, ervan uitgaa
     }
 ```
 
-### <a name="csv"></a>BESTAND
+### <a name="csv"></a>CSV
 
 Het volgende code fragment is een eenvoudige CSV-deserializer die ook het door geven van fouten illustreert.
 
@@ -226,12 +225,12 @@ De volgende Java script-code is een voor beeld van de serialisatie-indeling voor
 
 Deze functie is beschikbaar in de volgende regio's:
 
-* VS-West-Centraal (beschikbaar)
-* Europa-noord (beschikbaar)
-* VS-Oost (beschikbaar)
-* VS-West (binnenkort implementeren)
-* VS-Oost 2 (binnenkort implementeren)
-* Europa-west (binnenkort uit te vouwen)
+* VS - west-centraal
+* Europa - noord
+* VS - oost
+* VS - west
+* VS - oost 2
+* Europa - west
 
 U kunt [ondersteuning aanvragen](https://aka.ms/ccodereqregion) voor extra regio's.
 
@@ -239,7 +238,7 @@ U kunt [ondersteuning aanvragen](https://aka.ms/ccodereqregion) voor extra regio
 
 ### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>Wanneer is deze functie beschikbaar in alle Azure-regio's?
 
-Deze functie is beschikbaar in 6 regio's (#region-ondersteuning). Als u deze functionaliteit in een andere regio wilt gebruiken, kunt u [een aanvraag indienen](https://aka.ms/ccodereqregion). Ondersteuning voor alle Azure-regio's bevindt zich op het schema.
+Deze functie is beschikbaar in [6 regio's](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support). Als u deze functionaliteit in een andere regio wilt gebruiken, kunt u [een aanvraag indienen](https://aka.ms/ccodereqregion). Ondersteuning voor alle Azure-regio's bevindt zich op het schema.
 
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>Kan ik toegang krijgen tot MetadataPropertyValue van mijn invoer vergelijkbaar met de functie GetMetadataPropertyValue?
 
@@ -251,4 +250,4 @@ Wanneer u uw deserializer hebt geïmplementeerd, kunt u anderen helpen door deze
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Aangepaste .NET-deserialers voor Azure Stream Analytics Cloud taken](custom-deserializer.md)
+* [Aangepaste .NET-deserialisatie voor Azure Stream Analytics Cloud taken](custom-deserializer.md)

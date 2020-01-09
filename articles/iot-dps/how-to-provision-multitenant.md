@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 5703db90307f679ff4728386dc24647437f9f9ba
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974952"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434743"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Inrichten voor multitenancy 
 
@@ -191,7 +191,6 @@ Als u het opschonen eenvoudiger wilt maken, worden deze Vm's toegevoegd aan deze
 
 In deze sectie kloont u de Azure IoT C SDK op elke VM. De SDK bevat een voor beeld waarmee de inrichting van een Tenant apparaat van elke regio wordt gesimuleerd.
 
-
 1. Installeer **cmake**, **g + +** , **gcc**en [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) voor elke VM met behulp van de volgende opdrachten:
 
     ```bash
@@ -199,12 +198,14 @@ In deze sectie kloont u de Azure IoT C SDK op elke VM. De SDK bevat een voor bee
     sudo apt-get install cmake build-essential libssl-dev libcurl4-openssl-dev uuid-dev git-all
     ```
 
+1. Zoek de code naam voor de [nieuwste versie](https://github.com/Azure/azure-iot-sdk-c/releases/latest) van de SDK.
 
-1. Kloon de [Azure IOT C-SDK](https://github.com/Azure/azure-iot-sdk-c) op beide vm's.
+1. Kloon de [Azure IOT C-SDK](https://github.com/Azure/azure-iot-sdk-c) op beide vm's.  Gebruik het label dat u in de vorige stap hebt gevonden als waarde voor de para meter `-b`:
 
     ```bash
-    cd ~/
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     Deze bewerking kan enkele minuten in beslag nemen.
@@ -409,7 +410,7 @@ In de volgende stappen wordt ervan uitgegaan dat u alle resources in dit artikel
 
 De resource groep op naam verwijderen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en klik op **Resourcegroepen**.
 
 2. Typ in het tekstvak **filteren op naam...** de naam van de resource groep met uw resources, **Contoso-US-Resource-Group**. 
 

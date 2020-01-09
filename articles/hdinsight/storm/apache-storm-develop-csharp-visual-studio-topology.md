@@ -1,19 +1,19 @@
 ---
 title: Apache Storm topologieën met Visual Studio C# en-Azure HDInsight
 description: Meer informatie over het maken van Storm C#-topologieën in. Maak een topologie voor het tellen van woorden in Visual Studio met behulp van de Hadoop-hulpprogram ma's voor Visual Studio.
-ms.service: hdinsight
+ROBOTS: NOINDEX
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/06/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: f59328c5894a53b6337ecc04e3daebb2ef180c59
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.date: 12/31/2019
+ms.openlocfilehash: 1903c2faab865152d1f3666f3c9dadd745058b56
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927883"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612288"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Topologieën ontwikkelen C# voor Apache Storm met behulp van de data Lake-hulpprogram Ma's voor Visual Studio
 
@@ -21,20 +21,17 @@ Meer informatie over het maken C# van een Apache Storm topologie met behulp van 
 
 U leert ook hoe u hybride topologieën maakt die C# gebruikmaken van en Java-onderdelen.
 
-> [!NOTE]  
-> Hoewel de stappen in dit document afhankelijk zijn van een Windows-ontwikkel omgeving met Visual Studio, kan het gecompileerde project worden verzonden naar een op Linux of Windows gebaseerd HDInsight-cluster. Alleen op Linux gebaseerde clusters die zijn gemaakt na 28 oktober 2016 ondersteunen SCP.NET-topologieën.
-
-Als u een C# topologie met een op Linux gebaseerd cluster wilt gebruiken, moet u het `Microsoft.SCP.Net.SDK` NuGet-pakket dat door uw project wordt gebruikt, bijwerken naar versie 0.10.0.6 of hoger. De versie van het pakket moet ook overeenkomen met de primaire versie van Storm die op HDInsight is geïnstalleerd.
+C#topologieën gebruiken .NET 4,5 en gebruiken mono om uit te voeren op het HDInsight-cluster. Zie [mono-compatibiliteit](https://www.mono-project.com/docs/about-mono/compatibility/)voor meer informatie over mogelijke compatibiliteits problemen. Als u een C# topologie wilt gebruiken, moet u het `Microsoft.SCP.Net.SDK` NuGet-pakket dat door uw project wordt gebruikt, bijwerken naar versie 0.10.0.6 of hoger. De versie van het pakket moet ook overeenkomen met de primaire versie van Storm die op HDInsight is geïnstalleerd.
 
 | HDInsight-versie | Apache Storm versie | SCP.NET-versie | Standaard-mono-versie |
 |:-----------------:|:-------------:|:---------------:|:--------------------:|
-| 3,3 |0,10. x |0,10. x. x</br>(alleen op HDInsight op basis van Windows) | N.v.t. |
 | 3.4 | 0.10.0. x | 0.10.0. x | 3.2.8 |
 | 3,5 | 1.0.2. x | 1.0.0. x | 4.2.1 |
-| 3,6 | 1.1.0. x | 1.0.0. x | 4.2.8 |
+| 3.6 | 1.1.0. x | 1.0.0. x | 4.2.8 |
 
-> [!IMPORTANT]  
-> C#-topologieën met op Linux gebaseerde clusters moeten .NET 4.5 en Mono gebruiken om op het HDInsight-cluster te worden uitgevoerd. Zie [mono-compatibiliteit](https://www.mono-project.com/docs/about-mono/compatibility/)voor meer informatie over mogelijke compatibiliteits problemen.
+## <a name="prerequisite"></a>Vereisten
+
+Een Apache Storm cluster in HDInsight. Zie [Apache Hadoop clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **Storm** voor het **cluster type**.
 
 ## <a name="install-visual-studio"></a>Visual Studio installeren
 
@@ -52,7 +49,7 @@ Wanneer u een storm-topologie vanuit Visual Studio verzendt, genereert SCP.NET e
 
 2. Stel de omgevings variabele `JAVA_HOME` in op de map die Java bevat.
 
-3. Stel de `PATH` omgevings variabele in op het toevoegen van de map *% JAVA_HOME% \ bin* .
+3. Stel de omgevings variabele `PATH` in om de `%JAVA_HOME%\bin` Directory op te sluiten.
 
 U kunt de volgende C# console toepassing bouwen en uitvoeren om te controleren of Java en de JDK correct zijn geïnstalleerd:
 
@@ -92,7 +89,7 @@ namespace ConsoleApplication2
 
 De Data Lake-hulpprogram ma's voor Visual Studio bieden de volgende sjablonen:
 
-| Projecttype | Laat zien |
+| Projecttype | Hier ziet u |
 | --- | --- |
 | Storm-toepassing |Een leeg Storm-topologie project. |
 | Voor beeld van Storm voor Azure SQL Writer |Schrijven naar Azure SQL Database. |
@@ -144,8 +141,6 @@ Nadat u het project hebt gemaakt, hebt u de volgende bestanden nodig:
 * *Bolt.cs*: een voor beeld van een flits waarmee het aantal getallen wordt bijgehouden dat door de Spout wordt gegenereerd.
 
 Wanneer u het project maakt, downloadt NuGet het meest recente [SCP.net-pakket](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/).
-
-[!INCLUDE [scp.net version important](../../../includes/hdinsight-storm-scpdotnet-version.md)]
 
 ### <a name="implement-the-spout"></a>De Spout implementeren
 
@@ -410,12 +405,13 @@ return topologyBuilder;
 
 U bent nu klaar om de topologie naar uw HDInsight-cluster te verzenden.
 
+1. Navigeer om > **Server Explorer** **weer te geven** .
+
+1. Klik met de rechter muisknop op **Azure**, selecteer **verbinding maken met Microsoft Azure abonnement...** en voltooi het aanmeldings proces.
+
 1. Klik in **Solution Explorer**met de rechter muisknop op het project en kies **verzenden naar Storm op HDInsight**.
 
-    > [!NOTE]  
-    > Voer de referenties voor uw Azure-abonnement in als u hierom wordt gevraagd. Als u meer dan één abonnement hebt, meldt u zich aan bij de versie met uw Storm op HDInsight-cluster.
-
-2. Kies in het dialoog venster **topologie indienen** in de vervolg keuzelijst **Storm-cluster** het Storm-cluster op HDInsight en selecteer vervolgens **verzenden**. U kunt controleren of de verzen ding is geslaagd door het deel venster **uitvoer** weer te geven.
+1. Kies in het dialoog venster **topologie indienen** in de vervolg keuzelijst **Storm-cluster** het Storm-cluster op HDInsight en selecteer vervolgens **verzenden**. U kunt controleren of de verzen ding is geslaagd door het deel venster **uitvoer** weer te geven.
 
     Wanneer de topologie is verzonden, moet het **weergave venster Storm-topologieën** voor het cluster worden weer gegeven. Kies de **WordCount** -topologie in de lijst om informatie over de actieve topologie weer te geven.
 
@@ -426,7 +422,7 @@ U bent nu klaar om de topologie naar uw HDInsight-cluster te verzenden.
 
     Als u informatie wilt weer geven over de onderdelen in de topologie, selecteert u een onderdeel in het diagram.
 
-3. Selecteer in het gedeelte **topologie samenvatting** de optie **Kill** om de topologie te stoppen.
+1. Selecteer in het gedeelte **topologie samenvatting** de optie **Kill** om de topologie te stoppen.
 
     > [!NOTE]  
     > Storm-topologieën blijven actief totdat ze worden gedeactiveerd of het cluster wordt verwijderd.
@@ -492,7 +488,7 @@ SCP.NET versie 0.9.4.203 introduceert een nieuwe klasse en methode voor het werk
 > [!NOTE]  
 > U moet nog steeds de `CustomizedInteropJSONSerializer` gebruiken om gegevens te serialiseren die door de Spout worden geproduceerd.
 
-## <a id="configurationmanager"></a>ConfigurationManager gebruiken
+## <a name="use-configurationmanager"></a>ConfigurationManager gebruiken
 
 Gebruik **ConfigurationManager** niet om configuratie waarden van de onderdelen bout en Spout op te halen. Dit kan een null-wijzer uitzondering veroorzaken. In plaats daarvan geeft u de configuratie voor uw project door in de Storm-topologie als een sleutel-en een waardepaar in de topologie context. Elk onderdeel dat afhankelijk is van configuratie waarden, moet deze ophalen uit de context tijdens de initialisatie.
 
@@ -552,7 +548,7 @@ Wanneer u een C# topologie gebruikt met een HDInsight-cluster op basis van Linux
 
 De configuratie voor uw project wordt door gegeven aan de Storm-topologie als een sleutel-en waarde-paar in de topologie context. Het kan worden opgehaald uit het Dictionary-object dat wordt door gegeven aan uw onderdelen wanneer deze zijn geïnitialiseerd.
 
-Zie de sectie [ConfigurationManager gebruiken](#configurationmanager) van dit document voor meer informatie.
+Zie de sectie [ConfigurationManager gebruiken](#use-configurationmanager) van dit document voor meer informatie.
 
 ### <a name="systemtypeloadexception"></a>System. TypeLoadException
 
@@ -725,7 +721,7 @@ Voer de volgende stappen uit om fouten te bekijken die zich hebben voorgedaan in
 
 Als er fouten optreden bij het verzenden van een topologie naar HDInsight, kunt u Logboeken vinden voor de Server onderdelen die de verzen ding van de topologie op uw HDInsight-cluster verwerken. Als u deze logboeken wilt downloaden, gebruikt u de volgende opdracht vanaf een opdracht regel:
 
-```shell
+```cmd
 scp sshuser@clustername-ssh.azurehdinsight.net:/var/log/hdinsight-scpwebapi/hdinsight-scpwebapi.out .
 ```
 
@@ -753,7 +749,7 @@ Zie github voor meer informatie over C# het maken van [](https://github.com/hdin
 
 Raadpleeg de volgende documenten voor meer manieren om te werken met HDInsight en meer Storm over HDInsight-voor beelden:
 
-**Micro soft SCP.NET**
+**Microsoft SCP.NET**
 
 * [SCP-programmeer gids voor Apache Storm in azure HDInsight](apache-storm-scp-programming-guide.md)
 

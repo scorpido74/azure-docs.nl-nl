@@ -1,110 +1,101 @@
 ---
-title: Overzicht van het programmeermodel van betrouwbare Service Fabric-Service | Microsoft Docs
-description: Meer informatie over Reliable Service van Service Fabric-programmeermodel en aan de slag schrijven van uw eigen services.
-services: Service-Fabric
-documentationcenter: .net
+title: Overzicht van het betrouw bare service programmeer model
+description: Meer informatie over het betrouw bare service programmeer model van Service Fabric en aan de slag gaan met het schrijven van uw eigen services.
 author: masnider
-manager: chackdan
-editor: vturecek; mani-ramaswamy
-ms.assetid: 0c88a533-73f8-4ae1-a939-67d17456ac06
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 3/9/2018
 ms.author: masnider
-ms.openlocfilehash: 1789c7489e58df09dccfde3e7ab106ef54b5c1ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88c8e4411c0bec23790b4f4c52fc4a3d1570edc6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60727009"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614244"
 ---
 # <a name="reliable-services-overview"></a>Overzicht van Reliable Services
-Azure Service Fabric wordt het schrijven en beheren van staatloze en stateful Reliable Services. In dit onderwerp bevat informatie over:
+Azure Service Fabric vereenvoudigt het schrijven en beheren van stateless en stateful Reliable Services. In dit onderwerp komt het volgende aan de orde:
 
-* Het programmeermodel van Reliable Services voor staatloze en stateful services.
-* De keuzes die u hebt om bij het schrijven van een betrouwbare Service.
-* Sommige scenario's en voorbeelden van het gebruik van Reliable Services en hoe ze zijn geschreven.
+* Het programmeer model Reliable Services voor stateless en stateful Services.
+* De keuzes die u moet maken bij het schrijven van een betrouw bare service.
+* Sommige scenario's en voor beelden van het gebruik van Reliable Services en hoe ze worden geschreven.
 
-Reliable Services is een van de programmeermodellen die beschikbaar zijn in Service Fabric. De andere is het programmeermodel Reliable Actor, waarmee u een virtuele Actor-programmeermodel boven op het Reliable Services-model. Zie voor meer informatie over het programmeermodel van Reliable Actors [Inleiding tot Service Fabric Reliable Actors](service-fabric-reliable-actors-introduction.md).
+Reliable Services is een van de beschik bare programmeer modellen op Service Fabric. De andere is het reliable actor-programmeer model, dat een virtueel actor-programmeer model bevat boven op het Reliable Services model. Zie [Introduction to Service Fabric reliable actors](service-fabric-reliable-actors-introduction.md)voor meer informatie over het programmeer model reliable actors.
 
-Service Fabric beheert de levensduur van services, van inrichting en implementatie via bijwerken en verwijderen, via [Service Fabric-Toepassingsbeheer](service-fabric-deploy-remove-applications.md).
+Service Fabric beheert de levens duur van services, van inrichting en implementatie via een upgrade en verwijdering via [service Fabric toepassings beheer](service-fabric-deploy-remove-applications.md).
 
 ## <a name="what-are-reliable-services"></a>Wat zijn Reliable Services?
-Betrouwbare Services biedt u een eenvoudige, krachtige, op het hoogste niveau programmeermodel om u te helpen u express wat belangrijk is voor uw toepassing is. Met het programmeermodel voor Reliable Services, profiteert u van:
+Reliable Services biedt u een eenvoudig, krachtig, op het hoogste niveau programmeer model waarmee u snel kunt zien wat belang rijk is voor uw toepassing. Met het Reliable Services-programmeer model krijgt u het volgende:
 
-* Toegang tot de rest van de Service Fabric-programmeermodellen API's. In tegenstelling tot Service Fabric-Services is gemodelleerd als [Gastbestanden](service-fabric-guest-executables-introduction.md), Reliable Services ophalen voor rechtstreeks gebruik van de rest van de Service Fabric-API's. Dit kan services:
-  * query op het systeem
-  * de health rapport over entiteiten in het cluster
-  * meldingen ontvangen over wijzigingen van configuratie en de code
-  * zoeken en communiceren met andere services
-  * (optioneel) gebruik van de [betrouwbare verzamelingen](service-fabric-reliable-services-reliable-collections.md)
-  * .. .en zodat ze toegang hebben tot veel andere mogelijkheden, geheel vanuit een eersteklas programmeermodel in diverse programmeertalen.
-* Een eenvoudig model voor het uitvoeren van uw eigen code die lijkt op programmeermodellen u die gewend bent. Uw code is een goed gedefinieerde toegangspunt en de levenscyclus van eenvoudig te beheren.
-* Een communicatiemodel pluggable. Gebruik het transport van uw keuze, zoals HTTP met [Web-API](service-fabric-reliable-services-communication-webapi.md), WebSockets, aangepaste TCP-protocollen of iets anders. Reliable Services bieden een uitstekende out-of-the-box-opties die u kunt gebruiken, of u kunt uw eigen.
-* Voor stateful services, het programmeermodel van Reliable Services kunt u voor het opslaan van uw staat rechtstreeks in uw service met behulp van consistent en betrouwbaar [betrouwbare verzamelingen](service-fabric-reliable-services-reliable-collections.md). Betrouwbare verzamelingen zijn een eenvoudige set van maximaal beschikbare en betrouwbare verzamelingsklassen die bekend bij iedereen die is gebruikt C# verzamelingen. Services nodig traditioneel externe systemen voor het statusbeheer van betrouwbare. Met betrouwbare verzamelingen, kunt u uw staat naast uw compute opslaan met de dezelfde hoge beschikbaarheid en betrouwbaarheid die u hebt gaan verwachten van maximaal beschikbare externe winkels. Dit model worden de latentie ook verbeterd omdat u dezelfde zoeken naar de reken- en staat nodig is om te werken.
+* Toegang tot de rest van de Service Fabric-programmeer-Api's. In tegens telling tot Service Fabric services die zijn gemodelleerd als [uitvoer bare gast bestanden](service-fabric-guest-executables-introduction.md), reliable Services de rest van de service Fabric api's rechtstreeks gebruiken. Hiermee kunnen services:
+  * query uitvoeren op het systeem
+  * status rapporteren over entiteiten in het cluster
+  * meldingen over configuratie-en code wijzigingen ontvangen
+  * Zoek en communiceer met andere services,
+  * (optioneel) gebruik de [betrouw bare verzamelingen](service-fabric-reliable-services-reliable-collections.md)
+  * ... en geven ze toegang tot veel andere mogelijkheden, allemaal van een eerste programmeer model van de klasse in verschillende programmeer talen.
+* Een eenvoudig model voor het uitvoeren van uw eigen code die eruitziet als de programmeer modellen die u gebruikt. Uw code heeft een goed gedefinieerd ingangs punt en een eenvoudig beheerde levens cyclus.
+* Een pluggable communicatie model. Gebruik het Trans Port van uw keuze, zoals HTTP met [Web-API](service-fabric-reliable-services-communication-webapi.md), websockets, aangepaste TCP-protocollen of iets anders. Reliable Services bieden enkele fantastische opties die u kunt gebruiken, of u kunt uw eigen keuze maken.
+* Voor stateful Services kunt u met behulp van [betrouw bare verzamelingen](service-fabric-reliable-services-reliable-collections.md)uw status consistent en betrouwbaar in uw service opslaan met het programmeer model reliable Services. Betrouw bare verzamelingen zijn een eenvoudige set van zeer beschik bare en betrouw bare verzamelings klassen die bekend C# zijn bij iedereen die gebruik maakt van verzamelingen. Traditioneel, services die externe systemen nodig hebben voor betrouw bare status beheer. Met betrouw bare verzamelingen kunt u uw status naast uw computer opslaan met dezelfde hoge Beschik baarheid en betrouw baarheid die u kunt verwachten van Maxi maal beschik bare externe winkels. Dit model verbetert ook de latentie omdat u de reken kracht en de status moet gebruiken.
 
-## <a name="what-makes-reliable-services-different"></a>Wat is het verschil Reliable Services?
-Betrouwbare Services in Service Fabric verschillen van de services die u hebt gemaakt voordat u. Service Fabric biedt betrouwbaarheid, beschikbaarheid, consistentie en schaalbaarheid.
+## <a name="what-makes-reliable-services-different"></a>Wat maakt Reliable Services anders?
+Reliable Services in Service Fabric verschillen van de services die u eerder hebt geschreven. Service Fabric biedt betrouw baarheid, Beschik baarheid, consistentie en schaal baarheid.
 
-* **Betrouwbaarheid** - de service blijft u zelfs in omgevingen met onbetrouwbare waar uw machines mislukken of druk op netwerkproblemen of in gevallen waarin de services zelf fouten en crashes voorkomen of mislukt. Voor stateful services de status blijft behouden, zelfs bij netwerk- of andere fouten.
-* **Beschikbaarheid** -uw-service is bereikbaar is en reageert. Service Fabric houdt het gewenste aantal actieve exemplaren.
-* **Schaalbaarheid** - Services zijn ontkoppeld van specifieke hardware, en ze kunnen groeien of krimpen zo nodig tot en met het toevoegen of verwijderen van de hardware of andere bronnen. Services eenvoudig (met name in de stateful geval) worden gepartitioneerd om ervoor te zorgen dat de service kan worden geschaald en gedeeltelijke fouten afhandelen. Services kunnen worden gemaakt en verwijderd dynamisch via code, waardoor meer exemplaren van ingezette indien nodig, bijvoorbeeld in reactie op aanvragen van klanten. Ten slotte moedigt Service Fabric services moet lichtgewicht. Service Fabric kunt duizenden services in te richten in een enkel proces, in plaats van dat of uitsluitend volledige OS-exemplaren of processen naar één exemplaar van een service.
-* **Consistentie** -alle informatie die zijn opgeslagen in deze service kan worden gegarandeerd consistent. Dit geldt zelfs in meerdere betrouwbare verzamelingen in een service. Wijzigingen in verzamelingen in een service kunnen worden gemaakt in een transactioneel atomic manier.
+* **Betrouw baarheid** : uw service blijft zelfs in onbetrouwbare omgevingen waar uw machines mislukken of problemen met het netwerk raken, of in gevallen waarin de services zelf fouten ondervinden en crashen of mislukken. Voor stateful Services blijft uw status behouden, zelfs in de aanwezigheid van netwerk of andere storingen.
+* **Beschik baarheid** : uw service is bereikbaar en reageert. Service Fabric onderhoudt het gewenste aantal actieve exemplaren.
+* **Schaal baarheid** : services zijn losgekoppeld van specifieke hardware en kunnen zo nodig worden verg root of verkleind door hardware of andere bronnen toe te voegen of te verwijderen. Services kunnen eenvoudig worden gepartitioneerd (met name in de staat van de status) om ervoor te zorgen dat de service gedeeltelijke fouten kan schalen en verwerken. Services kunnen dynamisch worden gemaakt en verwijderd via code, zodat er meer exemplaren kunnen worden uitgevoerd als dat nodig is, in reactie op aanvragen van klanten. Ten slotte Service Fabric moedigen Services lichter te zijn. Met Service Fabric kunnen duizenden services worden ingericht binnen één proces, in plaats van dat er volledige instanties of processen van het besturings systeem worden vereist voor één exemplaar van een service.
+* **Consistentie** : alle informatie die in deze service is opgeslagen, kan gegarandeerd consistent zijn. Dit geldt ook voor meerdere betrouw bare verzamelingen binnen een service. Wijzigingen tussen verzamelingen in een service kunnen op een transactioneel atomische wijze worden uitgevoerd.
 
-## <a name="service-lifecycle"></a>Levenscyclus van de service
-Of uw service stateful of stateless is, bieden Reliable Services de levensduur van een eenvoudige, waarmee u snel plug-in uw code en aan de slag.  Er zijn maar een of twee methoden die u nodig hebt om uw service operationeel te implementeren.
+## <a name="service-lifecycle"></a>Service levenscyclus
+Of uw service stateful of stateless is, Reliable Services een eenvoudige levens cyclus bieden waarmee u snel en aan de slag kunt met uw code.  Er zijn slechts één of twee methoden die u moet implementeren om uw service actief te laten zijn.
 
-* **CreateServiceReplicaListeners/CreateServiceInstanceListeners** -deze methode is waar de service definieert voor de communicatie stack(s) die het bedrijf wil gebruiken. De communicatie-stack, zoals [Web-API](service-fabric-reliable-services-communication-webapi.md), wordt bepaald de luisterende eindpunt of de eindpunten voor de service (hoe clients bereiken voor de service). Het definieert ook de interactie van de berichten die worden weergegeven met de rest van de servicecode.
-* **RunAsync** -deze methode is waarop de bedrijfslogica in uw service wordt uitgevoerd en waarbij deze zou een vliegende start alle achtergrondtaken die moeten worden uitgevoerd voor de levensduur van de service. De annulering-token dat is opgegeven, is een signaal voor wanneer dat werk moet worden stopgezet. Bijvoorbeeld, als de service nodig heeft voor het ophalen van berichten uit een wachtrij voor betrouwbare en ze te verwerken, is dit waar dat werk plaatsvindt.
+* **CreateServiceReplicaListeners/CreateServiceInstanceListeners** : deze methode is de plaats waar de service de communicatie stack (s) definieert die hij wil gebruiken. De communicatie stack, zoals [Web API](service-fabric-reliable-services-communication-webapi.md), definieert het luisterende eind punt of eind punten voor de service (hoe clients de service bereiken). Ook wordt gedefinieerd hoe de berichten die worden weer gegeven, communiceren met de rest van de service code.
+* **RunAsync** : deze methode is waar uw service zijn bedrijfs logica uitvoert en waar alle achtergrond taken worden uitgevoerd die voor de levens duur van de service moeten worden gestart. Het Afbrekings token dat wordt gegeven, is een signaal voor wanneer het werk moet worden gestopt. Als de service bijvoorbeeld berichten uit een betrouw bare wachtrij moet ophalen en ze kan verwerken, is dit het geval.
 
-Als u over betrouwbare services voor de eerste keer leren wilt, lees dan verder! Als u een gedetailleerd overzicht van de levenscyclus van reliable services zoekt, gaat u naar [in dit artikel](service-fabric-reliable-services-lifecycle.md).
+Lees over als u voor het eerst een betrouw bare service bekijkt. Als u op zoek bent naar een gedetailleerd overzicht van de levens cyclus van betrouw bare Services, kunt u [het hoofd artikel](service-fabric-reliable-services-lifecycle.md)raadplegen.
 
-## <a name="example-services"></a>Voorbeeld van de services
-Wetenschap dat deze programmeermodel, eens een beknopt overzicht van twee verschillende services om te zien hoe deze onderdelen in elkaar passen.
+## <a name="example-services"></a>Voorbeeld Services
+Als u dit programmeer model wilt weten, kunt u een kort overzicht maken van twee verschillende services om te zien hoe deze onderdelen samen passen.
 
 ### <a name="stateless-reliable-services"></a>Stateless Reliable Services
-Een stateless service is waar er is geen status die wordt onderhouden in de service tussen aanroepen. Elke status die aanwezig is volledig beschikbaar is en vereist geen synchronisatie, replicatie, persistentie of hoge beschikbaarheid.
+Een stateless service is een locatie waar er geen status in de service wordt onderhouden tussen aanroepen. Een aanwezige staat is volledig beschikbaar en vereist geen synchronisatie, replicatie, persistentie of hoge Beschik baarheid.
 
-Neem bijvoorbeeld een rekenmachine die geen geheugen heeft en alle voorwaarden en bewerkingen moeten worden uitgevoerd in één keer ontvangt.
+Denk bijvoorbeeld aan een reken machine die geen geheugen heeft en ontvangt alle voor waarden en bewerkingen die tegelijk worden uitgevoerd.
 
-In dit geval de `RunAsync()` (C#) of `runAsync()` (Java) van de service kan niet leeg zijn, omdat er geen taak-verwerking op de achtergrond die de service moet doen. Wanneer de Rekenmachine-service is gemaakt, wordt een `ICommunicationListener` (C#) of `CommunicationListener` (Java) (bijvoorbeeld [Web-API](service-fabric-reliable-services-communication-webapi.md)) die wordt het eindpunt van een luistert op sommige poort geopend. Dit eindpunt luisteren hooks omhoog in de van de verschillende berekeningsmethoden (voorbeeld: 'Toevoegen (n1, n2)') die van de Rekenmachine openbare API definiëren.
+In dit geval kan de `RunAsync()` (C#) of de `runAsync()` (Java) van de service leeg zijn, omdat er geen achtergrond taak verwerking is die door de service moet worden uitgevoerd. Wanneer de rekenmachine service wordt gemaakt, retourneert deze een `ICommunicationListener` (C#) of `CommunicationListener` (Java) (bijvoorbeeld [Web-API](service-fabric-reliable-services-communication-webapi.md)) waarmee een luister eindpunt wordt geopend op een bepaalde poort. Deze luisterende eindpunt hooks tot de verschillende berekenings methoden (bijvoorbeeld: ' toevoegen (N1, N2) ') waarmee de open bare API van de reken machine wordt gedefinieerd.
 
-Wanneer er wordt een aanroep uitgevoerd vanaf een client, de juiste methode wordt aangeroepen en de Rekenmachine-service voert de bewerkingen op de gegevens die zijn opgegeven en retourneert het resultaat. Elke status worden niet opgeslagen.
+Wanneer een aanroep van een client wordt uitgevoerd, wordt de juiste methode aangeroepen en worden de bewerkingen uitgevoerd op de opgegeven gegevens en wordt het resultaat geretourneerd. Er wordt geen status opgeslagen.
 
-Een interne status niet opslaan is in dit voorbeeld van de Rekenmachine eenvoudig. Maar de meeste services zijn niet echt stateless. In plaats daarvan extern ze hun status naar een andere store. (Bijvoorbeeld een web-app die is gebaseerd op de status van de sessie bijhouden in een back-ups archief of cache is niet stateless.)
+Als u een interne status niet opslaat, is dit voorbeeld Calculator eenvoudig. Maar de meeste services zijn niet echt stateless. In plaats daarvan Externalize ze hun status aan een ander archief. (Een voor beeld van een web-app die afhankelijk is van het bewaren van de sessie status in een back-uparchief of cache is niet stateless.)
 
-Een algemeen voorbeeld van hoe de stateless services worden gebruikt Service Fabric is als een front-end dat de openbare API voor een web-App beschikbaar stelt. De front-end-service wordt vervolgens praat met stateful services om de gebruikersaanvraag van een te voltooien. In dit geval worden aanroepen van clients omgeleid naar een bekende poort, zoals 80, waar de stateless service luistert. Deze stateless service ontvangt de oproep en bepaalt u of de oproep afkomstig is van een vertrouwde partij en welke service het bestemd is voor.  De stateless service wordt vervolgens de aanroep doorstuurt naar de juiste partitie van de stateful service en wachten op antwoord. Wanneer de stateless service een antwoord ontvangt, wordt geantwoord naar de oorspronkelijke client. Een voorbeeld van een dergelijke service is in onze voorbeelden [ C# ](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)  /  [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started). Dit is slechts één voorbeeld van dit patroon in de voorbeelden, anderen er zijn in andere voorbeelden ook.
+Een algemeen voor beeld van hoe stateless services worden gebruikt in Service Fabric is een front-end waarmee de open bare API voor een webtoepassing wordt weer gegeven. De front-end-service spreekt vervolgens naar stateful Services om een gebruikers aanvraag te volt ooien. In dit geval worden aanroepen van clients omgeleid naar een bekende poort, zoals 80, waar de stateless service luistert. Deze stateless service ontvangt de oproep en bepaalt of de oproep van een vertrouwde partij is en voor welke service deze is bestemd.  De stateless service stuurt de aanroep vervolgens door naar de juiste partitie van de stateful service en wacht op een antwoord. Wanneer het stateless service een antwoord ontvangt, wordt de oorspronkelijke client beantwoord. Een voor beeld van een dergelijke service vindt u in [C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) onze voor beelden / [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started). Dit is slechts één voor beeld van dit patroon in de voor beelden, maar er zijn ook andere voor beelden.
 
 ### <a name="stateful-reliable-services"></a>Stateful Reliable Services
-Een stateful service is een die over een gedeelte van de status consistent en aanwezig zijn in volgorde van de service blijven functioneren beschikken. Houd rekening met een service die voortdurend berekent een oplopende gemiddelde van een waarde op basis van updates die wordt ontvangen. U doet dit door moet de huidige set van inkomende aanvragen verwerken en de huidige gemiddelde moet hebben. Elke service die wordt opgehaald, verwerkt en worden gegevens opgeslagen in een externe opslag (zoals een Azure blob of table store vandaag) is stateful. Alleen houdt u de status in het externe gegevensarchief.
+Een stateful service is een onderdeel dat een deel van de status moet hebben die consistent is en aanwezig is om de service te laten functioneren. Overweeg een service die voortdurend een voortschrijdend gemiddelde van een bepaalde waarde berekent op basis van updates die worden ontvangen. Hiervoor moet de huidige set van binnenkomende aanvragen die moeten worden verwerkt en het huidige gemiddelde hebben. Een service die gegevens ophaalt, verwerkt en opslaat in een extern archief (zoals een Azure Blob of tabel archief) is stateful. De status wordt alleen in het externe status archief bewaard.
 
-De meeste services opslaan vandaag nog de status extern, omdat de externe opslag is wat de betrouwbaarheid, beschikbaarheid, schaalbaarheid en consistentie voor die staat biedt. Services worden niet in Service Fabric vereist voor het opslaan van hun status extern. Service Fabric zorgt dat deze vereisten voor zowel de code van de status van de service.
+Voor de meeste services wordt de status van het externe archief extern opgeslagen, omdat het externe archief een betrouw baarheid, Beschik baarheid, schaal baarheid en consistentie biedt voor die status. In Service Fabric zijn services niet vereist om hun status extern op te slaan. Service Fabric zorgt voor de service code en de service status van deze vereisten.
 
-Stel dat we willen schrijven van een service waarmee afbeeldingen worden verwerkt. U doet dit door maakt de service in een afbeelding en de reeks conversies om uit te voeren op die installatiekopie. Deze service retourneert een communicatielistener (we Stel dit is een WebAPI) dat toont een API, zoals `ConvertImage(Image i, IList<Conversion> conversions)`. Wanneer een aanvraag wordt ontvangen, de service slaat deze op in een `IReliableQueue`, en sommige id geretourneerd naar de client zodat deze de aanvraag kunt bijhouden.
+Stel dat we een service willen schrijven die afbeeldingen verwerkt. Hiervoor neemt de service in een installatie kopie en de reeks conversies die op die installatie kopie worden uitgevoerd. Deze service retourneert een communicatie-listener (Stel dat het een WebAPI is) waarmee een API wordt weer gegeven, zoals `ConvertImage(Image i, IList<Conversion> conversions)`. Wanneer een aanvraag wordt ontvangen, slaat de service deze op in een `IReliableQueue`en retourneert deze een id naar de client zodat de aanvraag kan worden gevolgd.
 
-In deze service `RunAsync()` kan complexer worden. De service heeft een lus binnen de `RunAsync()` die aanvragen van haalt `IReliableQueue` en voert de gevraagde omzettingen. De resultaten ophalen die zijn opgeslagen in een `IReliableDictionary` zodat wanneer de client terugkomen ze geconverteerde afbeeldingen kunnen krijgen. Om ervoor te zorgen dat zelfs als er een storing in de afbeelding optreedt niet verloren gaan, deze betrouwbare Service zou ophalen uit de wachtrij, de-conversies uitvoeren en sla het resultaat allemaal op één transactie. In dit geval wordt het bericht is verwijderd uit de wachtrij en de resultaten worden opgeslagen in de woordenlijst resultaat alleen wanneer de conversies voltooid zijn. De service kan ook, haal de installatiekopie uit de wachtrij en onmiddellijk opslaan in een externe opslag. Dit vermindert het bedrag van de status van die de service heeft voor het beheren van, maar de complexiteit toeneemt nadat de service heeft dat de vereiste metagegevens voor het beheren van de externe opslag. Met beide benaderingen als iets verkeerd gegaan in het midden is blijft de aanvraag in de wachtrij om te worden verwerkt.
+In deze service is `RunAsync()` wellicht ingewik kelder. De service heeft een lus in de `RunAsync()` waarmee aanvragen van `IReliableQueue` worden opgehaald en de gevraagde conversies worden uitgevoerd. De resultaten worden opgeslagen in een `IReliableDictionary`, zodat de client de geconverteerde installatie kopieën kan ophalen. Om ervoor te zorgen dat, zelfs als er iets mislukt, de installatie kopie niet verloren gaat, zou deze betrouw bare service uit de wachtrij halen, de conversies uitvoeren en het resultaat opslaan in één trans actie. In dit geval wordt het bericht uit de wachtrij verwijderd en worden de resultaten alleen in de resultaat woordenlijst opgeslagen wanneer de conversies zijn voltooid. Het is ook mogelijk dat de service de installatie kopie uit de wachtrij haalt en deze onmiddellijk opslaat in een externe opslag. Dit vermindert de hoeveelheid status die de service moet beheren, maar neemt de complexiteit toe omdat de service de vereiste meta gegevens moet bewaren om de externe opslag te beheren. Als er een van beide benaderingen is mislukt, blijft de aanvraag in de wachtrij staan om te worden verwerkt.
 
-Eén ding te weten over deze service is dat je zou, een normale .NET-service denken. Het enige verschil is dat de gegevensstructuren die wordt gebruikt (`IReliableQueue` en `IReliableDictionary`) worden geleverd door de Service Fabric en uiterst betrouwbare, beschikbaar en consistent.
+Een opmerking over deze service is dat deze net als een normale .NET-service klinkt. Het enige verschil is dat de gebruikte gegevens structuren (`IReliableQueue` en `IReliableDictionary`) worden aangeboden door Service Fabric, en zijn zeer betrouwbaar, beschikbaar en consistent.
 
-## <a name="when-to-use-reliable-services-apis"></a>Wanneer u betrouwbare Services-API 's
-Als een van de volgende de behoeften van uw toepassing service kenmerkt, moet u Reliable Services-API's overwegen:
+## <a name="when-to-use-reliable-services-apis"></a>Wanneer moet u Reliable Services-Api's gebruiken?
+Als een van de volgende kenmerken van uw toepassings service nodig is, kunt u Reliable Services-Api's overwegen:
 
-* U wilt dat de code van uw service (en eventueel status) zijn zeer beschikbare en betrouwbare
-* Moet u transactionele garanties voor meerdere eenheden van status (bijvoorbeeld orders en regelitems volgorde).
-* De status van uw toepassing kan op een natuurlijke manier worden gemodelleerd als betrouwbare woordenboeken en wachtrijen.
-* Uw toepassingen, code of de status moet maximaal beschikbaar met lage latentie lees- en schrijfbewerkingen.
-* De toepassing nodig heeft voor het beheren van de gelijktijdigheid of de granulatie van transactionele bewerkingen in een of meer betrouwbare verzamelingen.
-* Wilt u beheren welke berichten of het partitioneringsschema voor uw service beheren.
-* Uw code moet een gratis-threaded runtime-omgeving.
-* Uw toepassing nodig heeft voor het dynamisch maken of vernietigen betrouwbare woordenlijsten of wachtrijen of hele Services tijdens runtime.
-* U moet programmatisch beheren van de opgegeven Service Fabric-back-up en herstellen van de functies voor de status van uw service.
-* Uw toepassing moet wijzigingsoverzicht voor de eenheden van de status behouden.
-* U wilt ontwikkelen of derde partij ontwikkeld, aangepaste statusproviders in beslag nemen.
+* U wilt dat de code van uw service (en optioneel staat) Maxi maal beschikbaar en betrouwbaar is
+* U hebt transactionele garanties nodig in meerdere status eenheden (bijvoorbeeld orders en order regel items).
+* De status van uw toepassing kan natuurlijk worden gemodelleerd als betrouw bare woorden lijsten en wacht rijen.
+* Uw toepassings code of-status moet Maxi maal beschikbaar zijn met lees-en schrijf bewerkingen met een lage latentie.
+* Uw toepassing moet de gelijktijdigheid of granulatie van transactionele bewerkingen in een of meer betrouw bare verzamelingen beheren.
+* U wilt de communicatie beheren of het partitie schema voor uw service regelen.
+* Voor uw code is een gratis threaded runtime-omgeving vereist.
+* Uw toepassing moet op dynamische wijze betrouw bare woorden lijsten of wacht rijen of volledige services maken of vernietigen tijdens runtime.
+* U moet op een programmatische manier de Service Fabric back-up-en herstel functies voor de status van uw service beheren.
+* Uw toepassing moet de wijzigings geschiedenis voor de status eenheden behouden.
+* U wilt aangepaste status providers van derden ontwikkelen of gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Snel starten met betrouwbare Services](service-fabric-reliable-services-quick-start.md)
-* [Betrouwbare verzamelingen](service-fabric-reliable-services-reliable-collections.md)
-* [Het model voor Reliable Actors](service-fabric-reliable-actors-introduction.md)
+* [Reliable Services snel starten](service-fabric-reliable-services-quick-start.md)
+* [Betrouw bare verzamelingen](service-fabric-reliable-services-reliable-collections.md)
+* [Het Reliable Actors-programmeer model](service-fabric-reliable-actors-introduction.md)

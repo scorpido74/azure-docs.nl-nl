@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f4352fbf71b23aedc1dddd3e454b58196d4f5a6e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1a52977a46c1222a1626fa5a4dcb4de7dd84f8dd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078477"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638201"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architectuur en scenario's met hoge Beschik baarheid voor SAP net-Weaver
 
@@ -37,8 +37,8 @@ ms.locfileid: "70078477"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -224,16 +224,16 @@ ms.locfileid: "70078477"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
 
 ## <a name="terminology-definitions"></a>Terminologie definities
 
-**Hoge beschikbaarheid**: Verwijst naar een reeks technologieën die de IT-onderbrekingen tot een minimum beperken door bedrijfs continuïteit van IT-Services te bieden via redundante, fout tolerante of met failover beveiligde onderdelen binnen *hetzelfde* Data Center. In ons geval bevindt het data centrum zich in één Azure-regio.
+**Hoge Beschik baarheid**: verwijst naar een reeks technologieën die de IT-verstoringen minimaliseren door middel van een bedrijfs CONTINUÏTEIT van IT-Services via redundante, fout tolerante of met failover beveiligde onderdelen binnen *hetzelfde* Data Center. In ons geval bevindt het data centrum zich in één Azure-regio.
 
-**Herstel na nood**geval: Verwijst ook naar het minimaliseren van de onderbreking van IT-Services en hun herstel, maar over *diverse* data centers die honderden kilo meters van elkaar kunnen zijn. In ons geval kunnen de data centers zich in verschillende Azure-regio's binnen dezelfde geopolitieke regio bevinden of op locaties die door u als klant zijn ingesteld.
+**Herstel na nood**geval heeft ook betrekking op het minimaliseren van de onderbreking van IT-Services en hun herstel, maar in *verschillende* data centers die mogelijk honderden kilo meters van elkaar zijn. In ons geval kunnen de data centers zich in verschillende Azure-regio's binnen dezelfde geopolitieke regio bevinden of op locaties die door u als klant zijn ingesteld.
 
 
 ## <a name="overview-of-high-availability"></a>Overzicht van hoge Beschik baarheid
@@ -304,9 +304,9 @@ Er zijn enkele dingen die u kunt overwegen om Beschikbaarheidszones te gebruiken
 
 Twee typen Azure-platform gebeurtenissen kunnen van invloed zijn op de beschik baarheid van uw virtuele machines:
 
-* **Geplande** onderhouds gebeurtenissen zijn periodieke updates die door micro soft zijn aangebracht in het onderliggende Azure-platform. De updates verbeteren de algehele betrouw baarheid, prestaties en beveiliging van de platform infrastructuur waarop uw virtuele machines worden uitgevoerd.
+* **Geplande onderhouds** gebeurtenissen zijn periodieke updates die door micro soft zijn aangebracht in het onderliggende Azure-platform. De updates verbeteren de algehele betrouw baarheid, prestaties en beveiliging van de platform infrastructuur waarop uw virtuele machines worden uitgevoerd.
 
-* Niet- **geplande** onderhouds gebeurtenissen treden op wanneer de onderliggende hardware of fysieke infra structuur op uw virtuele machine op een of andere manier is mislukt. Het kan bestaan uit lokale netwerk fouten, storingen in de lokale schijf of andere storingen op rack niveau. Wanneer een dergelijke fout wordt gedetecteerd, wordt uw virtuele machine door het Azure-platform automatisch gemigreerd van de beschadigde fysieke server die als host fungeert voor uw virtuele machine naar een gezonde fysieke server. Dergelijke gebeurtenissen zijn zeldzaam, maar kunnen er ook voor zorgen dat uw virtuele machine opnieuw wordt opgestart.
+* Niet- **geplande onderhouds** gebeurtenissen treden op wanneer de onderliggende hardware of fysieke infra structuur op uw virtuele machine op een of andere manier is mislukt. Het kan bestaan uit lokale netwerk fouten, storingen in de lokale schijf of andere storingen op rack niveau. Wanneer een dergelijke fout wordt gedetecteerd, wordt uw virtuele machine door het Azure-platform automatisch gemigreerd van de beschadigde fysieke server die als host fungeert voor uw virtuele machine naar een gezonde fysieke server. Dergelijke gebeurtenissen zijn zeldzaam, maar kunnen er ook voor zorgen dat uw virtuele machine opnieuw wordt opgestart.
 
 Zie [de beschik baarheid van virtuele Windows-machines beheren in azure][azure-virtual-machines-manage-availability]voor meer informatie.
 
@@ -349,7 +349,7 @@ In de volgende secties wordt uitgelegd hoe u hoge Beschik baarheid kunt beheerse
 
 Normaal gesp roken hebt u geen specifieke oplossing voor hoge Beschik baarheid nodig voor de SAP-toepassings server en dialoogvenster exemplaren. U behaalt hoge Beschik baarheid door redundantie en configureert meerdere dialoogvenster exemplaren in verschillende exemplaren van Azure virtual machines. Er moeten ten minste twee SAP-toepassings exemplaren zijn geïnstalleerd in twee exemplaren van Azure virtual machines.
 
-![Afbeelding 1: SAP-toepassings server met hoge Beschik baarheid][sap-ha-guide-figure-2000]
+![Afbeelding 1: een SAP-toepassings server met hoge Beschik baarheid][sap-ha-guide-figure-2000]
 
 _**Afbeelding 1:** SAP-toepassings server met hoge Beschik baarheid_
 
@@ -367,8 +367,8 @@ Het aantal update-en fout domeinen dat kan worden gebruikt door een Azure-beschi
 
 Als u een paar SAP-toepassings server exemplaren in hun specifieke Vm's implementeert, ervan uitgaande dat er vijf update domeinen zijn, komt de volgende afbeelding aan de orde. Het werkelijke maximum aantal update-en fout domeinen in een beschikbaarheidsset kan in de toekomst worden gewijzigd:
 
-![Afbeelding 2: Hoge Beschik baarheid van SAP-toepassings servers in een][planning-guide-figure-3000]
-Azure Availability set _-**afbeelding 2:** Hoge Beschik baarheid van SAP-toepassings servers in een Azure-beschikbaarheidsset_
+![afbeelding 2: hoge Beschik baarheid van SAP-toepassings servers in een Azure-beschikbaarheidsset][planning-guide-figure-3000]
+_ **afbeelding 2:** hoge Beschik baarheid van SAP-toepassings servers in een Azure-beschikbaarheidsset_
 
 Zie [de beschik baarheid van virtuele Windows-machines beheren in azure][azure-virtual-machines-manage-availability]voor meer informatie.
 
@@ -387,9 +387,9 @@ Zie de sectie [Azure Availability sets][planning-guide-3.2.3] van de Azure virtu
 
 U kunt een WSFC-oplossing gebruiken om het SAP ASCS/SCS-exemplaar te beveiligen. De oplossing heeft twee varianten:
 
-* **Het SAP ASCS/SCS-exemplaar met geclusterde gedeelde schijven clusteren**: Zie voor meer informatie over deze architectuur [een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van een gedeelde cluster schijf][sap-high-availability-guide-wsfc-shared-disk].   
+* **Het SAP ASCS/SCS-exemplaar met geclusterde gedeelde schijven clusteren**: Zie [een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van een gedeelde cluster schijf][sap-high-availability-guide-wsfc-shared-disk]voor meer informatie over deze architectuur.   
 
-* **Het SAP ASCS/SCS-exemplaar clusteren met behulp van de bestands share**: Zie voor meer informatie over deze architectuur [een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van de bestands share][sap-high-availability-guide-wsfc-file-share].
+* **Het SAP ASCS/SCS-exemplaar met behulp van de bestands share clusteren**: Zie [een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van de bestands share][sap-high-availability-guide-wsfc-file-share]voor meer informatie over deze architectuur.
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Architectuur met hoge Beschik baarheid voor een SAP ASCS/SCS-instantie in Linux
 
@@ -416,7 +416,7 @@ Voor meer informatie over het clusteren van het SAP ASCS/SCS-exemplaar met behul
 
 Het DBMS is ook een enkel contact punt in een SAP-systeem. U moet deze beveiligen met behulp van een oplossing met hoge Beschik baarheid. In de volgende afbeelding ziet u een SQL Server AlwaysOn-oplossing met hoge Beschik baarheid in azure, met Windows Server Failover Clustering en de interne load balancer van Azure. SQL Server AlwaysOn repliceert DBMS-gegevens en logboek bestanden met behulp van de eigen DBMS-replicatie. In dit geval hebt u geen gedeelde cluster schijf nodig, waardoor de volledige installatie wordt vereenvoudigd.
 
-![Afbeelding 3: Voor beeld van een SAP-DBMS met hoge Beschik baarheid, met SQL Server AlwaysOn][sap-ha-guide-figure-2003]
+![Afbeelding 3: voor beeld van een hoge Beschik baarheid SAP DBMS met SQL Server AlwaysOn][sap-ha-guide-figure-2003]
 
 _**Afbeelding 3:** Voor beeld van een SAP-DBMS met hoge Beschik baarheid, met SQL Server AlwaysOn_
 

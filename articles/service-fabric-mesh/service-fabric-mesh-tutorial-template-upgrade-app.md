@@ -1,26 +1,17 @@
 ---
-title: 'Zelfstudie: Een app upgraden die wordt uitgevoerd in Azure Service Fabric Mesh | Microsoft Docs'
+title: Zelf studie-een upgrade uitvoeren van een app die wordt uitgevoerd in azure Service Fabric mesh
 description: In deze zelfstudie leert u hoe u een Service Fabric kunt upgraden in een toepassing die wordt uitgevoerd in Service Fabric Mesh.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3567ede82f2eebf602e95dcd012f5c88a40af796
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42db17fa6474d3230bc523d0cf65b375cf01276e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810375"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351736"
 ---
 # <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Zelfstudie: Een Service Fabric-toepassing upgraden die wordt uitgevoerd in Service Fabric Mesh
 
@@ -34,7 +25,7 @@ In deel drie van de serie leert u het volgende:
 
 In deze zelfstudiereeks leert u het volgende:
 > [!div class="checklist"]
-> * [Een toepassing implementeren in Service Fabric Mesh met behulp van een sjabloon](service-fabric-mesh-tutorial-template-deploy-app.md)
+> * [Een toepassing met behulp van een sjabloon implementeren in Service Fabric Mesh](service-fabric-mesh-tutorial-template-deploy-app.md)
 > * [Een toepassing schalen die wordt uitgevoerd in Service Fabric Mesh](service-fabric-mesh-tutorial-template-scale-services.md)
 > * Een toepassing upgraden die wordt uitgevoerd in Service Fabric Mesh
 > * [Een app verwijderen](service-fabric-mesh-tutorial-template-remove-app.md)
@@ -53,7 +44,7 @@ Voor u met deze zelfstudie begint:
 
 Een van de belangrijkste voordelen van het implementeren van toepassingen in Service Fabric Mesh is de mogelijkheid uw toepassingsconfiguratie makkelijk bij te werken.  Bijvoorbeeld de CPU of geheugenbronnen voor uw services.
 
-In deze zelfstudie wordt het voorbeeld To Do List gebruikt. Dit voorbeeld is [eerder geïmplementeerd](service-fabric-mesh-tutorial-template-deploy-app.md) en moet nu worden uitgevoerd. De toepassing biedt twee services: WebFrontEnd en ToDoService. Elke service is in eerste instantie geïmplementeerd met de waarde 0,5 voor de CPU-bronnen.  Als u de CPU-bronnen voor de service WebFrontEnd wilt zien, voert u deze opdracht uit:
+In deze zelfstudie wordt het voorbeeld To Do List gebruikt. Dit voorbeeld is [eerder geïmplementeerd](service-fabric-mesh-tutorial-template-deploy-app.md) en moet nu worden uitgevoerd. De toepassing heeft twee services: WebFrontEnd en ToDoService. Elke service is in eerste instantie geïmplementeerd met de waarde 0,5 voor de CPU-bronnen.  Als u de CPU-bronnen voor de service WebFrontEnd wilt zien, voert u deze opdracht uit:
 
 ```azurecli
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp
@@ -63,7 +54,7 @@ In de implementatiesjabloon voor de toepassingsresource heeft elke service een e
 
 ### <a name="modify-the-deployment-template-parameters"></a>Parameters van implementatiesjabloon wijzigen
 
-Wanneer de sjabloon waarden bevat die naar verwachting zullen wijzigen nadat de toepassing is geïmplementeerd, of als u de mogelijkheid wilt hebben om de waarden per implementatie aan te passen (als u van plan bent om deze sjabloon opnieuw te gebruiken voor andere implementaties), is de aanbevolen procedure om de waarden door te geven via parameters.
+Wanneer de sjabloon waarden bevat die naar verwachting zullen wijzigen nadat de toepassing is geïmplementeerd, of als u de mogelijkheid wilt hebben om de waarden per implementatie aan te passen (als u van plan bent om deze sjabloon te hergebruiken voor andere implementaties), is de aanbevolen procedure om de waarden door te geven via parameters.
 
 Eerder werd de toepassing geïmplementeerd via de bestanden [mesh_rp.windows.json deployment template](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) en [mesh_rp.windows.parameter.json parameters](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json).
 

@@ -9,16 +9,16 @@ ms.service: event-hubs
 ms.devlang: na
 ms.custom: seodec18
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 2350586501fae84726aa2aa2438ea676b90c1dbb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a988fbb089bd94456e0b91b377574ab27a67617f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279675"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437193"
 ---
-# <a name="use-firewall-rules"></a>Firewall regels gebruiken
+# <a name="azure-event-hubs---use-firewall-rules"></a>Azure Event Hubs-firewall regels gebruiken
 
 Voor scenario's waarin Azure Event Hubs alleen toegankelijk moet zijn vanaf bepaalde bekende sites, kunt u met firewall regels regels configureren voor het accepteren van verkeer dat afkomstig is van specifieke IPv4-adressen. Bijvoorbeeld, kunnen deze adressen die van een zakelijke NAT-gateway zijn.
 
@@ -34,7 +34,7 @@ Een verbindings poging van een IP-adres dat niet overeenkomt met een toegestane 
 
 ## <a name="default-setting"></a>Standaardinstelling
 
-Het **IP-filter** raster in de portal voor Event hubs is standaard leeg. Deze instelling betekent dat uw event hub verbindingen van elk IP-adres aanvaardt. Deze instelling is gelijk aan een regel waarmee het 0.0.0.0/0 IP-adresbereik accepteert.
+Standaard de **IP-Filter** raster in de portal voor Event Hubs is leeg. Deze instelling betekent dat uw event hub verbindingen van elk IP-adres aanvaardt. Deze instelling is gelijk aan een regel waarmee het 0.0.0.0/0 IP-adresbereik accepteert.
 
 ## <a name="ip-filter-rule-evaluation"></a>Evaluatie van IP-filter
 
@@ -64,13 +64,13 @@ De volgende Resource Manager-sjabloon kunt een regel voor IP-filter toe te voege
 
 Sjabloonparameters:
 
-- **ipMask** is een enkel IPv4-adres of een blok met IP-adressen in CIDR-notatie. Bijvoorbeeld, in CIDR vertegenwoordigt notatie 70.37.104.0/24 de 256 IPv4-adressen van 70.37.104.0 tot 70.37.104.255, met 24 uur per dag die wijzen op het aantal bits aanzienlijke voorvoegsel voor het bereik.
+- **ipMask** is één IPv4-adres of een blok IP-adressen in CIDR-notatie. Bijvoorbeeld, in CIDR vertegenwoordigt notatie 70.37.104.0/24 de 256 IPv4-adressen van 70.37.104.0 tot 70.37.104.255, met 24 uur per dag die wijzen op het aantal bits aanzienlijke voorvoegsel voor het bereik.
 
 > [!NOTE]
 > Hoewel er geen regels kunnen worden geweigerd, is voor de Azure Resource Manager sjabloon de standaard actie ingesteld op **' toestaan '** , waardoor verbindingen niet worden beperkt.
 > Wanneer u Virtual Network of firewall regels maakt, moeten we de ***' defaultAction '*** wijzigen
 > 
-> from
+> uit
 > ```json
 > "defaultAction": "Allow"
 > ```

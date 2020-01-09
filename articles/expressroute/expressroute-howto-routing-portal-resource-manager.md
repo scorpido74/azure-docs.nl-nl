@@ -5,14 +5,14 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 02/13/2019
 ms.author: mialdrid
-ms.openlocfilehash: 5fb728cccd77d0cefd10c124cb7215dc3b880fe3
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 18d2db18e9880028c60b4b545c3628f4a9cb4703
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083525"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436959"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Peering voor een ExpressRoute-circuit maken en wijzigen
 
@@ -21,14 +21,14 @@ Dit artikel helpt u bij het maken en beheren van routerings configuratie voor ee
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
-> * [Azure CLI](howto-routing-cli.md)
+> * [Azure-CLI](howto-routing-cli.md)
+> * [Open bare peering](about-public-peering.md)
 > * [Video - Privépeering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
-> * [Video - openbare peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
 > * [Video - Microsoft-peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (klassiek)](expressroute-howto-routing-classic.md)
 > 
 
-U kunt Azure private en micro soft-peering configureren voor een ExpressRoute-circuit (open bare Azure-peering is afgeschaft voor nieuwe circuits). U kunt peerings configureren in elke gewenste volgorde. U moet er echter wel voor zorgen dat u de configuratie van elke peering een voor een voltooit. Zie [over circuits en peerings](expressroute-circuit-peerings.md)voor meer informatie over routerings domeinen en peerings.
+U kunt privé-peering en micro soft-peering configureren voor een ExpressRoute-circuit (open bare Azure-peering is afgeschaft voor nieuwe circuits). Peerings kunnen in elke gewenste volg orde worden geconfigureerd. U moet er echter wel voor zorgen dat u de configuratie van elke peering een voor een voltooit. Zie voor meer informatie over routering domeinen en peerings [ExpressRoute-Routeringsdomeinen](expressroute-circuit-peerings.md). Zie [ExpressRoute Public peering](about-public-peering.md)(Engelstalig) voor meer informatie over open bare peering.
 
 ## <a name="configuration-prerequisites"></a>Configuratievereisten
 
@@ -172,25 +172,6 @@ U kunt de peeringconfiguratie verwijderen door het verwijderingspictogram te sel
 
 ![privé-peering verwijderen](./media/expressroute-howto-routing-portal-resource-manager/delete-p.png)
 
-## <a name="public"></a>Openbare Azure-peering
-
-In deze sectie helpt u bij het maken, ophalen, bijwerken en verwijderen van de Azure openbare peering configuratie voor een ExpressRoute-circuit.
-
-> [!Note]
-> Open bare Azure-peering is afgeschaft voor nieuwe circuits. Zie [ExpressRoute peering](expressroute-circuit-peerings.md)(Engelstalig) voor meer informatie.
->
-
-### <a name="getpublic"></a>Details van een Azure openbare peering weergeven
-
-De eigenschappen van open bare Azure-peering weer geven door de peering te selecteren.
-
-### <a name="updatepublic"></a>Azure-configuratie in openbare peering bijwerken
-
-Selecteer de rij voor peering en wijzig vervolgens de eigenschappen van de peering.
-
-### <a name="deletepublic"></a>Openbare Azure-peering verwijderen
-
-Verwijder de peering-configuratie door het pictogram verwijderen te selecteren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

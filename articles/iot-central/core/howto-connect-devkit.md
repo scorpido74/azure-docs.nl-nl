@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4e04ae7d9594ac064c9f3707c797fb2709a79cb6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 270f92365823fb0f9378a9daae77dbbe08b53b14
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582992"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435087"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Een MXChip IoT DevKit-apparaat verbinden met uw Azure IoT Central-toepassing
 
@@ -25,12 +25,12 @@ In dit artikel wordt beschreven hoe als een ontwikkelaar van een apparaat een MX
 
 U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
 
-1. Een Azure IoT Central-toepassing gemaakt op basis van de voor beeld-toepassings sjabloon **Devkits** . Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
+1. Een Azure IoT Central-toepassing die is gemaakt op basis van de **oude** toepassings sjabloon. Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
 1. Een DevKit-apparaat. Ga naar [MXChip IOT DevKit](https://microsoft.github.io/azure-iot-developer-kit/)om een DevKit-apparaat aan te schaffen.
 
-## <a name="sample-devkits-application"></a>Voor beeld van Devkits-toepassing
+## <a name="add-a-device-template"></a>Een apparaatsjabloon toevoegen
 
-Een toepassing die is gemaakt op basis van de voor **beeld-Devkits** -toepassings sjabloon bevat een **MXChip** -apparaatprofiel waarmee de volgende apparaateigenschappen worden gedefinieerd:
+Voeg in uw Azure IoT Central-toepassing een nieuwe **MXChip** -apparaatprofiel toe die de volgende kenmerken van het apparaat definieert:
 
 - Telemetrie-metingen voor **vochtigheid**, **Tempe ratuur**, **Druk**, **magnetometer** (gemeten langs x, y, z-as), **acceleratie meter** (gemeten in x, y, z-as) en **Gyroscope** (gemeten langs x, y, z-as).
 - Status meting voor **Apparaatstatus**.
@@ -40,6 +40,11 @@ Een toepassing die is gemaakt op basis van de voor **beeld-Devkits** -toepassing
 - De eigenschap Cloud die is **geproduceerd in**.
 - **Echo** en **aftellen**van opdrachten. Wanneer een echt apparaat een **echo** opdracht ontvangt, wordt de verzonden waarde weer gegeven op het apparaat. Wanneer een echt apparaat een opdracht voor **aftellen** ontvangt, wordt de LED door een patroon geleid en verzendt het apparaat aftellings waarden terug naar IOT Central.
 
+1. Selecteer **+ Nieuw** uit Apparaatinstellingen ![-apparaatprofiel](media/howto-connect-devkit/adddevicetemplate.png)
+   
+
+2. Selecteer **MXChip** en maak de MXChip-apparaatprofiel ![sjabloon voor het toevoegen van een apparaat](media/howto-connect-devkit/newtemplate.png)
+
 Zie Details van de [MXChip-Apparaatbeheer](#mxchip-device-template-details) voor volledige informatie over de configuratie.
 
 ## <a name="add-a-real-device"></a>Echt apparaat toevoegen
@@ -48,7 +53,7 @@ Zie Details van de [MXChip-Apparaatbeheer](#mxchip-device-template-details) voor
 
 Voeg in uw Azure IoT Central-toepassing een echt apparaat toe uit de sjabloon **MXChip** en noteer de details van de apparaat: **Scope-ID, apparaat-id en primaire sleutel**:
 
-1. Een **echt apparaat** toevoegen uit Device Explorer, selecteer **+ Nieuw > Real** om een echt apparaat toe te voegen.
+1. Een **echt apparaat** van apparaten toevoegen, selecteer **+ Nieuw > Real** om een echt apparaat toe te voegen.
 
     * Voer een **apparaat-id**in kleine letters in of gebruik de voorgestelde **apparaat-id**.
     * Voer een **naam**voor het apparaat in of gebruik de voorgestelde naam
@@ -197,12 +202,12 @@ Een toepassing die is gemaakt op basis van de voor beeld-Devkits-toepassings sja
 | Veldnaam     | Eenheden  | Minimum | Maximum | Aantal decimalen |
 | -------------- | ------ | ------- | ------- | -------------- |
 | vochtigheid       | %      | 0       | 100     | 0              |
-| ratuur           | D20     | -40     | 120     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
 | pressure       | hPa    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1000    | 0              |
-| versnellings meterx | mg     | -2000   | 2000    | 0              |
+| accelerometerX | mg     | -2000   | 2000    | 0              |
 | versnellings meter | mg     | -2000   | 2000    | 0              |
 | accelerometerZ | mg     | -2000   | 2000    | 0              |
 | gyroscopeX     | mdps   | -2000   | 2000    | 0              |
@@ -210,12 +215,12 @@ Een toepassing die is gemaakt op basis van de voor beeld-Devkits-toepassings sja
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>Staten 
-| Naam          | Weergavenaam   | OPMAAKPROFIEL | VOORZICHTIG | GEVAAR | 
+| Name          | Weergavenaam   | NORMAL | VOORZICHTIG | GEVAAR | 
 | ------------- | -------------- | ------ | ------- | ------ | 
 | DeviceState   | Apparaatstatus   | Groen  | Orange  | Rood    | 
 
-#### <a name="events"></a>Gebeurtenissen 
-| Naam             | Weergavenaam      | 
+#### <a name="events"></a>Evenements 
+| Name             | Weergavenaam      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | Knop B ingedrukt  | 
 
@@ -223,15 +228,15 @@ Een toepassing die is gemaakt op basis van de voor beeld-Devkits-toepassings sja
 
 Numerieke instellingen
 
-| Weergavenaam | Veldnaam | Eenheden | Aantal decimalen | Minimum | Maximum | Itiaal |
+| Weergavenaam | Veldnaam | Eenheden | Aantal decimalen | Minimum | Maximum | Oorspronkelijk |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Verbruik      | setVoltage | Volt | 0              | 0       | 240     | 0       |
-| VLOTT      | setCurrent | Amp  | 0              | 0       | 100     | 0       |
+| Huidig      | setCurrent | Amp  | 0              | 0       | 100     | 0       |
 | Snelheid van ventilator    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 Instellingen in-/uitschakelen
 
-| Weergavenaam | Veldnaam | In tekst | Uit tekst | Itiaal |
+| Weergavenaam | Veldnaam | In tekst | Uit tekst | Oorspronkelijk |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | AAN      | UIT      | Uit     |
 
@@ -240,15 +245,15 @@ Instellingen in-/uitschakelen
 | Type            | Weergavenaam | Veldnaam | Gegevenstype |
 | --------------- | ------------ | ---------- | --------- |
 | Eigenschap apparaat | Aantal dobbelten   | dieNumber  | getal    |
-| Eigenschap apparaat | Locatie van apparaat   | location  | location    |
-| Tekst            | Gefabriceerd in     | manufacturedIn   | N.v.t.       |
+| Eigenschap apparaat | Locatie apparaat   | location  | location    |
+| Tekst            | Gefabriceerd in     | manufacturedIn   | N/A       |
 
 ### <a name="commands"></a>Opdrachten
 
 | Weergavenaam | Veldnaam | Retour type | Weergave naam van invoer veld | Naam van invoer veld | Type invoer veld |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
-| Echo's         | echo       | tekst        | weer te geven waarde         | displayedValue   | tekst             |
-| Geteld    | Geteld  | getal      | Aantal van               | countFrom        | getal           |
+| Echo         | echo       | tekst        | weer te geven waarde         | displayedValue   | tekst             |
+| Geteld    | geteld  | getal      | Aantal van               | countFrom        | getal           |
 
 ## <a name="next-steps"></a>Volgende stappen
 

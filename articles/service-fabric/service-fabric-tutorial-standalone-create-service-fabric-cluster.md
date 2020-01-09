@@ -1,28 +1,19 @@
 ---
-title: 'Zelfstudie: Zelfstandige Service Fabric-client installeren - Azure Service Fabric | Microsoft Docs'
+title: Service Fabric zelfstandige client installeren
 description: In deze zelfstudie leert u hoe u de zelfstandige Service Fabric-client installeert in het cluster dat u in het vorige zelfstudieartikel hebt gemaakt.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 82358f4d5548464f1304d77a846d71863ed9efa1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bbaf7dfc546c739dfb858be7ef8372eccf60111b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385014"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613938"
 ---
-# <a name="tutorial-install-and-create-service-fabric-cluster"></a>Zelfstudie: Service Fabric cluster installeren en maken
+# <a name="tutorial-install-and-create-service-fabric-cluster"></a>Zelfstudie: Service Fabric-cluster installeren en maken
 
 Zelfstandige Service Fabric-clusters bieden u de mogelijkheid om uw eigen omgeving te kiezen en een cluster te maken als onderdeel van de benadering "Elk besturingssysteem, elke cloud" die we in Service Fabric hanteren. In deze zelfstudie reeks maakt u een zelfstandig cluster dat wordt gehost op AWS of Azure en hoe u een toepassing kunt installeren.
 
@@ -86,7 +77,7 @@ cd .\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\
 .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
 ```
 
-De uitvoer ziet er uit zoals hieronder. Als voor het veld Passed de waarde `True` wordt geretourneerd, zijn de controles uitgevoerd en kan het cluster worden geïmplementeerd op basis van de ingevoerde configuratie.
+De uitvoer ziet er uit zoals hieronder. Als voor het veld 'Passed' de waarde `True` wordt geretourneerd, zijn de controles uitgevoerd en kan het cluster worden geïmplementeerd op basis van de ingevoerde configuratie.
 
 ```powershell
 Trace folder already exists. Traces will be written to existing trace folder: C:\Users\Administrator\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\DeploymentTraces
@@ -129,7 +120,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 
 ### <a name="bring-up-service-fabric-explorer"></a>Service Fabric Explorer uitvoeren
 
-Nu kunt u verbinding maken met het cluster met Service Fabric Explorer rechtstreeks op een van de computers met http:\//localhost:19080/Explorer/index.html of extern met http:\//<*IPAddressofaMachine*> : 19080/Explorer/index.html.
+Nu kunt u verbinding maken met het cluster met Service Fabric Explorer rechtstreeks op een van de computers met http:\//localhost:19080/Explorer/index.html of extern met http:\//<*IPAddressofaMachine*>: 19080/Explorer/index. html.
 
 ## <a name="add-and-remove-nodes"></a>Knooppunten toevoegen en verwijderen
 

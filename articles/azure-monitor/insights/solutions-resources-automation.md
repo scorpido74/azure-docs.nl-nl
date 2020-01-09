@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 63e09bacd1ce70f05f04798f092d3eb4b3e36ab5
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: d55af7354ea7d78263e55872e257a2814ebe4130
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555237"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401822"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Azure Automation-resources toevoegen aan een beheer oplossing (preview)
 > [!NOTE]
@@ -31,7 +31,7 @@ In dit artikel wordt ervan uitgegaan dat u al bekend bent met de volgende inform
 
 - [Een beheer oplossing maken]( solutions-creating.md).
 - De structuur van een [oplossings bestand]( solutions-solution-file.md).
-- [Resource Manager-sjablonen ontwerpen](../../azure-resource-manager/resource-group-authoring-templates.md)
+- [Resource Manager-sjablonen ontwerpen](../../azure-resource-manager/templates/template-syntax.md)
 
 ## <a name="automation-account"></a>Automation-account
 Alle resources in Azure Automation zijn opgenomen in een [Automation-account](../../automation/automation-security-overview.md#automation-account-overview).  Zoals beschreven in [log Analytics werk ruimte en het Automation-account]( solutions.md#log-analytics-workspace-and-automation-account) is het Automation-account niet opgenomen in de beheer oplossing, maar moet het bestaan voordat de oplossing wordt geïnstalleerd.  Als deze niet beschikbaar is, mislukt de installatie van de oplossing.
@@ -139,7 +139,7 @@ De eigenschappen voor certificaten bronnen worden beschreven in de volgende tabe
 | Eigenschap | Beschrijving |
 |:--- |:--- |
 | base64Value |Basis 64 waarde voor het certificaat. |
-| vingerafdruk |Vinger afdruk voor het certificaat. |
+| thumbprint |Vinger afdruk voor het certificaat. |
 
 
 
@@ -165,7 +165,7 @@ De eigenschappen voor referentie bronnen worden in de volgende tabel beschreven.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| Gebruikers |De gebruikers naam voor de referentie. |
+| userName |De gebruikers naam voor de referentie. |
 | wachtwoord |Wacht woord voor de referentie. |
 
 
@@ -196,7 +196,7 @@ De eigenschappen voor plannings resources worden beschreven in de volgende tabel
 | description |Optionele beschrijving voor het schema. |
 | startTime |Hiermee geeft u de begin tijd van een schema op als een DateTime-object. Er kan een teken reeks worden gegeven als deze kan worden geconverteerd naar een geldige datum/tijd. |
 | isEnabled |Hiermee geeft u op of de planning is ingeschakeld. |
-| interval |Het type interval voor het schema.<br><br>profieldag<br>uur |
+| interval |Het type interval voor het schema.<br><br>dag<br>uur |
 | frequency |De frequentie waarmee het schema binnen dagen of uren moet worden geactiveerd. |
 
 Schema's moeten een begin tijd hebben met een waarde die hoger is dan de huidige tijd.  U kunt deze waarde niet opgeven met een variabele omdat u er geen manier van hoeft te weten wanneer deze wordt geïnstalleerd.
@@ -236,8 +236,8 @@ De eigenschappen voor taak schema's worden in de volgende tabel beschreven.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| Schema naam |Entiteit met één **naam** en de naam van het schema. |
-| runbooknaam  |Entiteit met één **naam** en de naam van het runbook.  |
+| schedule name |Één **name** entiteit met de naam van de planning. |
+| runbook name  |Één **name** entiteit met de naam van het runbook.  |
 
 
 
@@ -275,10 +275,10 @@ Als u de aanvankelijke waarde voor de variabele instelt, moet deze worden geconf
 
 | Gegevenstype | Beschrijving | Voorbeeld | Wordt omgezet in |
 |:--|:--|:--|:--|
-| string   | Plaats de waarde tussen dubbele aanhalings tekens.  | "\"Hello wereld \"" | "Hallo wereld" |
-| 443  | Numerieke waarde met enkele aanhalings tekens.| "64" | 64 |
-| booleaans  | **waar** of **Onwaar** in aanhalings tekens.  Houd er rekening mee dat deze waarde moet worden omgezet in kleine letters. | echte | waar |
-| datum/tijd | Geserialiseerde datum waarde.<br>U kunt de ConvertTo-JSON-cmdlet in Power shell gebruiken om deze waarde te genereren voor een bepaalde datum.<br>Voor beeld: Get-date "5/24/2017 13:14:57" \| ConvertTo-JSON | \\/date (1495656897378) \\/' | 2017-05-24 13:14:57 |
+| string   | Plaats de waarde tussen dubbele aanhalings tekens.  | "\"Hello World-\"" | "Hallo wereld" |
+| numeric  | Numerieke waarde met enkele aanhalings tekens.| "64" | 64 |
+| booleaans  | **true** of **false** tussen aanhalingstekens.  Houd er rekening mee dat deze waarde moet worden omgezet in kleine letters. | "true" | waar |
+| datum/tijd | Geserialiseerde datum waarde.<br>U kunt de ConvertTo-JSON-cmdlet in Power shell gebruiken om deze waarde te genereren voor een bepaalde datum.<br>Voor beeld: Get-date "5/24/2017 13:14:57" \| ConvertTo-JSON | \\/date (1495656897378)\\/' | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Modules
 Uw beheer oplossing hoeft geen [algemene modules](../../automation/automation-integration-modules.md) te definiëren die worden gebruikt door uw runbooks, omdat deze altijd beschikbaar zijn in uw Automation-account.  U moet een resource toevoegen voor een andere module die wordt gebruikt door uw runbooks.
@@ -303,7 +303,7 @@ De eigenschappen voor module resources worden beschreven in de volgende tabel.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| Content link |Hiermee geeft u de inhoud van de module. <br><br>URI-URI naar de inhoud van de module.  Dit is een. ps1-bestand voor Power shell-en script-runbooks en een geëxporteerd grafisch runbook-bestand voor een grafiek runbook.  <br> versie-versie van de module voor uw eigen tracking. |
+| contentLink |Hiermee geeft u de inhoud van de module. <br><br>URI-URI naar de inhoud van de module.  Dit is een. ps1-bestand voor Power shell-en script-runbooks en een geëxporteerd grafisch runbook-bestand voor een grafiek runbook.  <br> versie-versie van de module voor uw eigen tracking. |
 
 Het runbook moet afhankelijk zijn van de resource module om ervoor te zorgen dat het wordt gemaakt vóór het runbook.
 

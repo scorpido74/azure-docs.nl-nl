@@ -4,21 +4,21 @@ description: In deze snelstartgids leert u hoe u een IoT Edge-apparaat maakt en 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/16/2019
+ms.date: 11/06/2019
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6d84c2eed6e68987af3ce932785068191405b942
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ab3805e39112d4d37635571d8aa43030a1896951
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452564"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552437"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Quick Start: uw eerste IoT Edge-module implementeren op een virtueel Windows-apparaat
 
-Test Azure IoT Edge in deze Snelstartgids door container code te implementeren op een virtueel IoT Edge-apparaat. Met IoT Edge kunt u code op uw apparaten op afstand beheren zodat u meer van uw workloads naar de rand kunt verzenden. Voor deze Quick Start raden we u aan om een virtuele machine van Azure te gebruiken voor uw IoT Edge-apparaat, zodat u snel een test machine kunt maken, de vereisten installeert en deze vervolgens verwijderen wanneer u klaar bent. 
+Test Azure IoT Edge in deze Snelstartgids door container code te implementeren op een virtueel IoT Edge-apparaat. Met IoT Edge kunt u code op uw apparaten op afstand beheren zodat u meer van uw workloads naar de rand kunt verzenden. Voor deze Quick Start raden we u aan om een virtuele machine van Azure te gebruiken voor uw IoT Edge-apparaat, zodat u snel een test machine kunt maken, de vereisten installeert en deze vervolgens verwijderen wanneer u klaar bent.
 
 In deze snelstart leert u de volgende zaken:
 
@@ -29,13 +29,13 @@ In deze snelstart leert u de volgende zaken:
 
 ![Diagram - Snelstartarchitectuur voor apparaat en cloud](./media/quickstart/install-edge-full.png)
 
-In deze Snelstartgids leert u hoe u een virtuele Windows-machine maakt en deze configureert om te worden IoT Edge apparaat. Vervolgens implementeert u een module vanuit Azure Portal op uw apparaat. De module die u in deze snelstart implementeert, is een gesimuleerde sensor waarmee temperatuur-, luchtvochtigheids- en drukgegevens worden gegenereerd. De andere Azure IoT Edge-zelfstudies bouwen voort op het werk dat u hier doet door modules te implementeren waarmee de gesimuleerde gegevens worden geanalyseerd voor zakelijke inzichten.
+In deze Snelstartgids leert u hoe u een virtuele Windows-machine maakt en deze configureert als een IoT Edge apparaat. Vervolgens implementeert u een module vanuit Azure Portal op uw apparaat. De module die u in deze snelstart implementeert, is een gesimuleerde sensor waarmee temperatuur-, luchtvochtigheids- en drukgegevens worden gegenereerd. De andere Azure IoT Edge-zelfstudies zijn een uitbreiding op het werk dat u hier doet. Hierin worden modules geïmplementeerd waarmee de gesimuleerde gegevens worden geanalyseerd voor zakelijke inzichten.
 
 Als u nog geen actief abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-U gebruikt de Azure CLI om veel van de stappen in deze snelstart uit te voeren, en Azure IoT heeft een extensie om extra functionaliteit in te schakelen.
+U kunt de Azure CLI gebruiken om veel van de stappen in deze Quick Start uit te voeren. Azure IoT heeft een uitbrei ding om extra functionaliteit in te scha kelen.
 
 Voeg de Azure IoT-extensie toe aan het exemplaar van Cloud Shell.
 
@@ -50,12 +50,12 @@ Cloudresources:
 * Een resourcegroep voor het beheren van alle resources die u in deze snelstart maakt.
 
    ```azurecli-interactive
-   az group create --name IoTEdgeResources --location westus2
+   az group create --name IoTEdgeResources --location westus2 
    ```
 
 IoT Edge-apparaat:
 
-* Een virtuele Windows-machine die als uw IoT Edge apparaat moet fungeren. U kunt deze virtuele machine maken met behulp van de volgende opdracht, waarbij *{Password}* wordt vervangen door een beveiligd wacht woord:
+* Een virtuele Windows-machine die als uw IoT Edge apparaat moet fungeren. U kunt deze virtuele machine maken met behulp van de volgende opdracht, waarbij `{password}` wordt vervangen door een beveiligd wacht woord:
 
   ```azurecli-interactive
   az vm create --resource-group IoTEdgeResources --name EdgeVM --image MicrosoftWindowsDesktop:Windows-10:rs5-pro:latest --admin-username azureuser --admin-password {password} --size Standard_DS1_v2
@@ -68,7 +68,6 @@ IoT Edge-apparaat:
   1. Op het tabblad **RDP** selecteert u **RDP-bestand downloaden**.
 
   Open dit bestand met Verbinding met extern bureaublad om verbinding te maken met uw virtuele Windows-machine met behulp van de naam en het wacht woord van de beheerder die u hebt opgegeven met de `az vm create` opdracht.
-
 
 > [!NOTE]
 > Deze Snelstartgids maakt gebruik van een virtuele Windows desktop-machine voor eenvoud. Zie [Azure IOT Edge ondersteunde systemen](support.md)voor meer informatie over welke Windows-besturings systemen algemeen beschikbaar zijn voor productie scenario's.
@@ -83,15 +82,15 @@ Begin met de snelstart door een IoT Hub met Azure CLI te maken.
 
 Het gratis niveau van IoT Hub werkt voor deze snelstart. Als u in het verleden IoT Hub hebt gebruikt en al een gratis hub hebt gemaakt, kunt u die IoT-hub gebruiken. Elk abonnement biedt toegang tot slechts één gratis IoT-hub.
 
-Met de volgende code wordt een gratis **F1**-hub gemaakt in de resourcegroep **IoTEdgeResources**. Vervang *{hub_name}* door een unieke naam voor uw IoT-hub.
+Met de volgende code wordt een gratis **F1** -hub in de resource groep `IoTEdgeResources`. Vervang `{hub_name}` door een unieke naam voor uw IoT-hub.
 
    ```azurecli-interactive
-   az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1
+   az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
    ```
 
    Als er een fout optreedt omdat er al één gratis hub in uw abonnement is, wijzigt u de SKU in **S1**. Als u het foutbericht ontvangt dat de naam van de IoT Hub niet beschikbaar is, betekent dit dat iemand anders al een hub met die naam heeft. Probeer een andere naam.
 
-## <a name="register-an-iot-edge-device"></a>Een IoT Edge-apparaat registreren.
+## <a name="register-an-iot-edge-device"></a>Een IoT Edge-apparaat registreren
 
 Registreer een IoT Edge-apparaat bij uw net gemaakte IoT Hub.
 ![Diagram - Een apparaat registreren met een IoT Hub-entiteit](./media/quickstart/register-device.png)
@@ -155,7 +154,7 @@ Gebruik PowerShell om de IoT Edge-runtime te downloaden en te installeren. Gebru
    Deploy-IoTEdge -ContainerOs Windows
    ```
 
-4. De computer wordt mogelijk automatisch opnieuw opgestart. Als u wordt gevraagd de opdracht Deploy-IoTEdge opnieuw op te starten, doet u dat nu. 
+4. De computer wordt mogelijk automatisch opnieuw opgestart. Als u wordt gevraagd de opdracht Deploy-IoTEdge opnieuw op te starten, doet u dat nu.
 
 5. Voer Power shell opnieuw uit als Administrator.
 
@@ -184,11 +183,11 @@ Controleer of de runtime goed is geïnstalleerd en geconfigureerd.
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
    ```
 
-3. Bekijk alle modules die op uw IoT Edge-apparaat worden uitgevoerd. Aangezien de service net voor het eerst is gestart, zou u moeten zien dat alleen de **edgeAgent**-module actief is. De edgeAgent-module wordt standaard uitgevoerd en helpt bij het installeren en starten van aanvullende modules die u op uw apparaat implementeert.
+3. Bekijk alle modules die op uw IoT Edge-apparaat worden uitgevoerd. Aangezien de service net voor het eerst is gestart, zou u moeten zien dat alleen de **edgeAgent**-module actief is. De module edgeAgent wordt standaard uitgevoerd en helpt u bij het installeren en starten van extra modules die u op uw apparaat implementeert.
 
-   ```powershell
-   iotedge list
-   ```
+    ```powershell
+    iotedge list
+    ```
 
    ![Eén module op uw apparaat bekijken](./media/quickstart/iotedge-list-1.png)
 

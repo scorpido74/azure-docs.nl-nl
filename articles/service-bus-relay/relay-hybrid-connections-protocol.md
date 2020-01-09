@@ -1,6 +1,6 @@
 ---
-title: Handleiding voor Azure Relay Hybrid Connections-protocol | Microsoft Docs
-description: Voor Azure Relay Hybrid Connections-protocol.
+title: Hand leiding voor Azure Relay Hybride verbindingen Protocol | Microsoft Docs
+description: Hand leiding voor Azure Relay Hybride verbindingen protocol.
 services: service-bus-relay
 documentationcenter: na
 author: clemensv
@@ -14,169 +14,169 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: clemensv
-ms.openlocfilehash: e96d0103a03e841f39e8adb88215f6d6e24a305a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45ba78645f754072c7f75b5b4f457c76bb9895b6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706091"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355024"
 ---
-# <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay Hybrid Connections-protocol
+# <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay Hybride verbindingen-Protocol
 
-Azure Relay is een van de belangrijkste mogelijkheden pijlers van de Azure Service Bus-platform. De nieuwe _hybride verbindingen_ mogelijkheden van Relay is een veilige, open-protocolversie ontwikkeling op basis van HTTP en WebSockets. Vervangt de vorige, genaamd _BizTalk Services_ functie die is gebouwd op een eigen protocol foundation. De integratie van hybride verbindingen in Azure App Services, blijven functioneren als-is.
+Azure Relay is een van de belangrijkste mogelijkheden van pijlers van het Azure Service Bus platform. De nieuwe _hybride verbindingen_ mogelijkheid van relay is een veilige, open-protocol ontwikkeling op basis van http en websockets. Het vervangt de voormalige, even _BizTalk Services_ -functie die is gebouwd op basis van een eigen protocol Foundation. De integratie van Hybride verbindingen in Azure-app Services blijft functioneren als-is.
 
-Hybrid Connections kunt bidirectionele, binaire gegevensstroom communicatie en eenvoudige datagram stroom tussen twee netwerktoepassingen. Een van beide of beide partijen zich achter NAT's of firewalls kunnen bevinden.
+Hybride verbindingen maakt bidirectionele, binaire stroom communicatie en eenvoudige data gram stroom tussen twee toepassingen in een netwerk mogelijk. Een of beide partijen kunnen zich achter Nat's of firewalls bevinden.
 
-Dit artikel beschrijft de client-side-interacties met de relay Hybrid Connections voor het verbinden van clients in listener- en verzender-rollen. Ook wordt beschreven hoe listeners aanvragen en nieuwe verbindingen accepteren.
+In dit artikel wordt de interactie aan de client zijde beschreven met de Hybride verbindingen relay voor het verbinden van clients in de rollen listener en Sender. Ook wordt beschreven hoe listeners nieuwe verbindingen en aanvragen accepteren.
 
-## <a name="interaction-model"></a>Interactie van model
+## <a name="interaction-model"></a>Interactie model
 
-De relay Hybrid Connections verbindt twee partijen door een punt rendezvous in de Azure-cloud die partijen kunnen detecteren en verbinding maken met vanuit het perspectief van hun eigen netwerk te bieden. Het rendezvous-punt wordt 'Hybride verbinding' in deze en andere documentatie genoemd in de API's, en ook in de Azure-portal. Het service-eindpunt voor hybride verbindingen wordt aangeduid als de 'service' voor de rest van dit artikel.
+De Hybride verbindingen relay verbindt twee partijen door een rendez-punt op te geven in de Azure-Cloud die partijen kunnen ontdekken en er verbinding mee maken vanuit hun eigen perspectief van het netwerk. Het rendez-punt wordt ' hybride verbinding ' genoemd in deze en andere documentatie in de Api's, en ook in de Azure Portal. Voor de rest van dit artikel wordt het eind punt van de Hybride verbindingen service als ' service ' genoemd.
 
-De service kunnen voor het doorgeven van Web Socket-verbindingen en HTTP (S) aanvragen en antwoorden.
+Met deze service kunnen WebSocket verbindingen en HTTP (S)-aanvragen en-antwoorden worden doorgestuurd.
 
-Het model interactie leans op de naamgeving tot stand gebracht door veel andere netwerken API's. Er is een listener die eerst geeft aan dat de gereedheid voor het afhandelen van binnenkomende verbindingen, en vervolgens accepteert wanneer ze binnenkomen. Aan de andere kant is een client verbinding maakt voor de listener, die verbinding kunnen worden geaccepteerd voor het tot stand brengen van een pad bidirectionele communicatie wordt verwacht. 'Connect', "Listen" en 'Accepteren' zijn dezelfde voorwaarden die u in de meeste socket API's vinden.
+Het interactie model is gebaseerd op de nomenclatuur die is vastgesteld door veel andere netwerk-Api's. Er is een listener die de gereedheid voor het afhandelen van binnenkomende verbindingen aangeeft en deze vervolgens accepteert wanneer ze binnenkomen. Aan de andere kant maakt een client verbinding met de listener, waarbij wordt verwacht dat deze verbinding moet worden geaccepteerd om een bidirectionele communicatie traject tot stand te brengen. ' Connect, ' Listen ' en ' Accept ' zijn dezelfde voor waarden die u vindt in de meeste socket-Api's.
 
-Een relayed communicatiemodel heeft beide partijen uitgaande verbindingen naar een service-eindpunt maken. Dit zorgt ervoor dat de 'listener' ook een 'client' in gewone gebruik en kan ook leiden tot andere overloads terminologie. De precieze terminologie daarom gebruikt voor hybride verbindingen is als volgt:
+Elk doorgestuurd communicatie model heeft een van beide partijen uitgaande verbindingen met een service-eind punt maken. Dit maakt de ' listener ' ook een ' client ' in colloquial-gebruik en kan ook andere terminologie overladen veroorzaken. De exacte terminologie die daarom wordt gebruikt voor Hybride verbindingen is als volgt:
 
-De programma's aan beide zijden van een verbinding zijn "-clients," genoemd, omdat ze clients naar de service. De client die wordt gewacht en verbindingen accepteert de 'listener' is of wordt gezegd in de 'listener rol'. De client die een nieuwe verbinding naar een listener via de service initieert de 'zender' wordt genoemd, of bevindt zich in de 'afzender rol'.
+De Program ma's aan beide zijden van een verbinding worden ' clients ' genoemd, omdat ze clients zijn voor de service. De client die wacht op en accepteert verbindingen is de ' listener ' of wordt aangeduid als de ' listener-rol '. De client die een nieuwe verbinding via de service initieert naar een listener, wordt de ' afzender ' genoemd, of is de rol ' afzender '.
 
 ### <a name="listener-interactions"></a>Listener-interacties
 
-De listener beschikt over vijf interacties met de service. alle gegevens van wire worden verderop in dit artikel in de sectie documentatie beschreven.
+De listener heeft vijf interactie met de service. alle bedradings gegevens worden verderop in dit artikel beschreven in het gedeelte referentie.
 
-De berichten luisteren naar en accepteren aanvragen worden ontvangen van de service. Het vernieuwen en Ping bewerkingen zijn verzonden door de listener.
+De berichten Luis teren, accepteren en aanvragen worden ontvangen van de service. De vernieuwings-en ping-bewerkingen worden verzonden door de listener.
 
-#### <a name="listen-message"></a>Bericht luisteren
+#### <a name="listen-message"></a>Luister bericht
 
-Om aan te geven van de gereedheid van de service die een listener is gereed om te accepteren, verbindingen, maakt het een uitgaande WebSocket-verbinding. De handshake van verbinding is, wordt de naam van een hybride verbinding geconfigureerd op de Relay-naamruimte en een beveiligingstoken dat rechtstreeks op de 'Listen"biedt deze naam.
+Er wordt een uitgaande WebSocket-verbinding gemaakt om de gereedheid aan te geven voor de service die een listener gereed is om verbindingen te accepteren. De verbindings-Handshake bevat de naam van een hybride verbinding die is geconfigureerd voor de relay-naam ruimte en een beveiligings token dat de ' Luis teren ' recht op die naam heeft.
 
-Wanneer de WebSocket wordt geaccepteerd door de service, de registratie is voltooid en het tot stand gebrachte WebSocket blijft actief als het 'besturingselement kanaal' voor het inschakelen van alle volgende interacties. De service kunnen maximaal 25 gelijktijdige listeners een hybride verbinding. Het quotum voor AppHooks wordt vastgesteld.
+Wanneer de WebSocket door de service wordt geaccepteerd, wordt de registratie voltooid en wordt de ingestelde WebSocket actief gehouden als ' besturings kanaal ' voor het inschakelen van alle volgende interacties. Met de service kunnen Maxi maal 25 gelijktijdige listeners voor één hybride verbinding worden gemaakt. Het quotum voor AppHooks moet worden bepaald.
 
-Voor hybride verbindingen, als er twee of meer actieve listeners worden binnenkomende verbindingen verdeeld over deze in willekeurige volgorde. geoorloofd distributie wordt geprobeerd met best-effort.
+Voor Hybride verbindingen, als er twee of meer actieve listeners zijn, worden binnenkomende verbindingen in wille keurige volg orde verdeeld. Er is een poging tot eerlijke distributie met de beste poging.
 
 #### <a name="accept-message"></a>Bericht accepteren
 
-Wanneer een afzender opent een nieuwe verbinding van de service, wordt de service kiest en waarschuwt een van de actieve listeners op de hybride verbinding. Deze melding wordt verzonden naar de listener via het open besturingskanaal als een JSON-bericht. Het bericht bevat de URL van de WebSocket-eindpunt waarmee de listener verbinding maken moet voor het accepteren van de verbinding.
+Wanneer een afzender een nieuwe verbinding met de service opent, kiest en ontvangt de service een van de actieve listeners op de hybride verbinding. Deze melding wordt verzonden naar de listener via het open besturings kanaal als een JSON-bericht. Het bericht bevat de URL van het WebSocket-eind punt waarmee de listener verbinding moet maken om de verbinding te accepteren.
 
-De URL kan en rechtstreeks door de listener zonder extra werk moet worden gebruikt.
-De gecodeerde gegevens is alleen geldig voor een korte tijd, in feite voor zolang als de afzender is bereid na afloop van de verbinding tot stand gebrachte end-to-end. Het maximum wordt ervan uitgegaan dat is 30 seconden. De URL kan alleen worden gebruikt voor een geslaagde verbindingspoging. Zodra de WebSocket-verbinding met de URL rendezvous tot stand is gebracht, wordt alle verdere activiteiten op deze WebSocket doorgegeven van en naar de afzender. Dit gebeurt zonder tussenkomst van de of interpretatie door de service.
+De URL kan en moet rechtstreeks worden gebruikt door de listener zonder extra werk.
+De versleutelde informatie is alleen geldig voor een korte periode, al naar gelang de verzender bereid is te wachten tot de verbinding is ingesteld op end-to-end. Het maximum aantal moet worden verondersteld, is 30 seconden. De URL kan alleen worden gebruikt voor een geslaagde verbindings poging. Zodra de WebSocket-verbinding met de URL van rendez-vous tot stand is gebracht, wordt alle verdere activiteiten op deze WebSocket door gegeven van en naar de afzender. Dit gebeurt zonder tussen komst of interpretatie van de service.
 
-### <a name="request-message"></a>Aanvraagbericht
+### <a name="request-message"></a>Aanvraag bericht
 
-Naast de WebSocket-verbindingen, kunt de listener ontvangen ook HTTP-aanvraag frames van een afzender, als deze mogelijkheid expliciet is ingeschakeld op de hybride verbinding.
+Naast WebSocket-verbindingen kan de listener ook HTTP-aanvraag frames van een afzender ontvangen, als deze mogelijkheid expliciet is ingeschakeld voor de hybride verbinding.
 
-Listeners waarmee hybride verbindingen worden gekoppeld met HTTP-ondersteuning moeten omgaan met de `request` gebaar. Een listener die niet verwerken `request` en daarom zorgt ervoor dat herhaalde time-outfouten optreden tijdens het verbinding kan worden op de blokkeringslijst door de service in de toekomst.
+Listeners die aan Hybride verbindingen zijn gekoppeld met HTTP-ondersteuning, moeten de `request`-beweging afhandelen. Een listener die `request` niet afhandelt en daarom herhaalde time-outfouten veroorzaakt tijdens de verbinding, kan in de toekomst door de service worden geblackeerd.
 
-HTTP-frame-header metagegevens is vertaald naar JSON voor het verwerken van eenvoudiger door het framework listener ook omdat HTTP-header parseren bibliotheken sommige dan parsers voor JSON zijn. HTTP-metagegevens die alleen relevant is voor de relatie tussen de afzender en de Relay-HTTP-gateway, inclusief de autorisatie-informatie wordt niet doorgestuurd. HTTP-aanvraagtekst worden transparant overgebracht als binaire WebSocket frames.
+Meta gegevens van HTTP-frame header worden omgezet in JSON voor eenvoudiger verwerking door het listener-Framework, omdat het parseren van de HTTP-header bibliotheken rarer dan JSON-parsers is. HTTP-meta gegevens die alleen relevant zijn voor de relatie tussen de afzender en de relay HTTP-gateway, inclusief verificatie gegevens, worden niet doorgestuurd. HTTP-aanvraag teksten worden transparant overgebracht als binaire WebSocket-frames.
 
-De listener kan reageren op HTTP-aanvragen met een gebaar van de equivalente antwoord.
+De listener kan reageren op HTTP-aanvragen met een equivalente respons-beweging.
 
-De aanvraag/antwoord-stroom maakt standaard gebruik van het besturingskanaal, maar kan worden 'bijgewerkt' naar een afzonderlijke rendezvous WebSocket wanneer vereist. Afzonderlijke WebSocket verbindingen doorvoer voor elke client-conversatie verbeteren, maar ze belasten de listener met meer verbindingen die worden verwerkt moeten, die mogelijk niet willen kunnen voor lichtgewicht clients.
+De aanvraag/antwoord stroom maakt standaard gebruik van het besturings kanaal, maar kan indien nodig worden bijgewerkt naar een andere rendez-WebSocket. DISTINCT-WebSocket-verbindingen verbeteren de door Voer voor elke client conversatie, maar ze belasten de listener met meer verbindingen die moeten worden verwerkt, hetgeen mogelijk niet geschikt is voor licht gewicht clients.
 
-Aanvraag en respons instanties zijn in het besturingskanaal beperkt tot maximaal 64 kB groot. De metagegevens van de HTTP-header is beperkt tot een totaal van 32 kB. Als de aanvraag of het antwoord is groter dan deze drempelwaarde, de listener moet upgraden naar een rendezvous WebSocket met behulp van een beweging die gelijk is aan de verwerking van de [accepteren](#accept-message).
+In het besturings kanaal zijn de aanvraag-en antwoord teksten beperkt tot Maxi maal 64 kB. Meta gegevens van HTTP-header zijn beperkt tot een totaal van 32 kB. Als de aanvraag of het antwoord de drempel waarde overschrijdt, moet de listener een upgrade uitvoeren naar een WebSocket van rendez-out met behulp van een penbewegings equivalent voor het afhandelen van de [acceptatie](#accept-message).
 
-Voor aanvragen besluit de service of voor het routeren van aanvragen via het besturingskanaal. Dit omvat, maar kan niet worden beperkt tot gevallen wanneer een aanvraag groter is dan 64 kB (headers en hoofdtekst) aanschaffen, of als de aanvraag wordt verzonden met ["chunked' transfer-encoding](https://tools.ietf.org/html/rfc7230#section-4.1) en de service heeft een reden die u kunt verwachten bij de aanvraag voor groter zijn dan 64 kB of lezen van de aanvraag is niet onmiddellijk. Als de service kiest voor het leveren van de aanvraag via rendezvous, geeft deze alleen het rendezvous-adres aan de listener.
-De listener vervolgens de WebSocket-ontmoeting moet maken en de service direct biedt de volledige aanvraag instanties inclusief via de ontmoeting WebSocket. Het antwoord moet ook gebruiken voor de ontmoeting WebSocket.
+Voor aanvragen bepaalt de service of aanvragen worden gerouteerd via het besturings kanaal. Dit omvat, maar is mogelijk niet beperkt tot gevallen waarin een aanvraag groter is dan 64 kB (kopteksten en hoofd tekst), of als de aanvraag wordt verzonden met [' gesegmenteerde ' overdracht-encoding](https://tools.ietf.org/html/rfc7230#section-4.1) en de service heeft een reden om te voor komen dat de aanvraag groter is dan 64 kB of het lezen van de aanvraag is niet onmiddellijk. Als de service kiest voor het leveren van de aanvraag via rendez-vous, wordt alleen het adres van de rendez door gegeven aan de listener.
+De listener moet vervolgens de WebSocket van rendez-to-the-service tot stand brengen en de volledige aanvraag wordt via de WebSocket van het rendez-upvenster geleverd. Het antwoord moet ook de WebSocket rendez gebruiken.
 
-Voor aanvragen die via het besturingskanaal binnenkomen, besluit de listener of om te reageren via het besturingskanaal of via rendezvous. De service omvat een rendezvous-adres met elke aanvraag gerouteerd via het besturingskanaal. Dit adres is alleen geldig voor het upgraden van de huidige aanvraag.
+Voor aanvragen die via het besturings kanaal binnenkomen, bepaalt de listener of er moet worden gereageerd via het besturings kanaal of via rendez. De service moet een adres voor rendez-out bevatten waarbij elke aanvraag wordt gerouteerd via het besturings kanaal. Dit adres is alleen geldig voor het uitvoeren van een upgrade van de huidige aanvraag.
 
-Als de listener ervoor kiest om bij te werken, verbinding maakt en direct biedt het antwoord via de tot stand gebrachte rendezvous-socket.
+Als de listener kiest voor een upgrade, wordt er verbinding gemaakt met en wordt het antwoord via de ingestelde rendez van het programma voor het afleveren van de server.
 
-Zodra de ontmoeting die websocket tot stand is gebracht, de listener moet onderhouden voor verdere verwerking van aanvragen en antwoorden van dezelfde client. De service onderhoudt de WebSocket voor, zolang de HTTPS-socketverbinding met de afzender zich blijft voordoen en alle volgende aanvragen van de afzender wordt gerouteerd via het WebSocket wordt beheerd. Als de listener voor de ontmoeting WebSocket niet verwijderen uit de zijde, wordt de verbinding met de afzender, ongeacht of een volgende aanvraag al uitgevoerd wordt mogelijk ook verwijderen door de service.
+Zodra de rendez-WebSocket is ingesteld, moet de listener deze behouden voor verdere verwerking van aanvragen en antwoorden van dezelfde client. De-service houdt de WebSocket voor zolang de HTTPS-socket verbinding met de verzender persistent is en routert alle volgende aanvragen van die afzender via de onderhouden WebSocket. Als de listener ervoor kiest om de rendez-WebSocket van de zijkant te verwijderen, wordt de verbinding met de verzender ook ongedaan gemaakt, ongeacht of een volgende aanvraag mogelijk al wordt uitgevoerd.
 
-#### <a name="renew-operation"></a>Bewerking
+#### <a name="renew-operation"></a>Bewerking vernieuwen
 
-Terwijl de listener actief is het mogelijk dat het beveiligingstoken dat moet worden gebruikt voor het registreren van de listener en onderhouden van het besturingskanaal verloopt. De vervaldatum van token heeft geen invloed op actieve verbindingen, maar dit leidt tot het besturingskanaal worden verwijderd door de service op of kort na het moment van de vervaldatum. De bewerking 'vernieuwen' is een JSON-bericht dat de listener verzenden kunt naar het token dat is gekoppeld aan het besturingskanaal vervangen, zodat het besturingskanaal gedurende langere perioden kan worden beheerd.
+Het beveiligings token dat moet worden gebruikt voor het registreren van de listener en het onderhouden van het besturings kanaal kan verlopen wanneer de listener actief is. Het token verloop heeft geen invloed op actieve verbindingen, maar dit heeft tot gevolg dat het besturings kanaal wordt verwijderd door de service op of kort na het tijdstip van de verloop datum. De bewerking ' renew ' is een JSON-bericht dat de listener kan verzenden om het token te vervangen dat is gekoppeld aan het besturings kanaal, zodat het besturings kanaal kan worden onderhouden voor langere Peri Oden.
 
 #### <a name="ping-operation"></a>Ping-bewerking
 
-Als het besturingskanaal niet-actieve gedurende een lange periode schakels op de manier blijft zoals load kunnen balancers of NAT-apparaten verwijderen de TCP-verbinding. De bewerking 'pingen' voorkomt dat door het verzenden van een kleine hoeveelheid gegevens op het kanaal dat u eraan herinnert dat iedereen op de netwerkroute die de verbinding is bedoeld om te worden actief en omgeving doet ook dienst als een 'live' test voor de listener. Als het pingen mislukt, wordt het besturingskanaal moet worden overwogen onbruikbaar en de listener opnieuw verbinding te maken.
+Als het besturings kanaal gedurende een lange periode niet actief blijft, worden tussenliggende verbindingen, zoals load balancers of Nat's, de TCP-verbinding. Met de bewerking ' ping ' wordt voor komen dat er een kleine hoeveelheid gegevens op het kanaal wordt verzonden waarmee iedereen op de netwerk route wordt geherinnert dat de verbinding actief moet zijn en ook als een ' live ' test voor de listener. Als de ping mislukt, moet het besturings kanaal als onbruikbaar worden beschouwd en moet de listener opnieuw verbinding maken.
 
-### <a name="sender-interaction"></a>Tussenkomst van de afzender
+### <a name="sender-interaction"></a>Interactie van de afzender
 
-De afzender heeft twee interacties met de service: een Web Socket verbinding wordt gemaakt of deze verzendt aanvragen via HTTPS. Aanvragen kunnen niet worden verzonden via een Web Socket van de rol van de afzender.
+De afzender heeft twee interactie met de service: er wordt verbinding gemaakt met een web-socket of aanvragen worden verzonden via HTTPS. Aanvragen kunnen niet via een web-socket worden verzonden vanuit de rol afzender.
 
-#### <a name="connect-operation"></a>Verbindingsbewerking
+#### <a name="connect-operation"></a>Verbindings bewerking
 
-De bewerking 'connect' opent een WebSocket op de service, die de naam van de hybride verbinding en (optioneel, maar vereist standaard) een security token verleent machtigingen voor "Verzenden" in de querytekenreeks. De service communiceert vervolgens met de listener op de manier die eerder zijn beschreven, en de listener maakt een rendezvous-verbinding die wordt samengevoegd met dit WebSocket. Nadat de WebSocket heeft geaccepteerd, wordt alle verdere interactie op die WebSocket met de listener van een verbonden zijn.
+Met de bewerking ' verbinden ' wordt een WebSocket voor de service geopend, waarbij de naam van de hybride verbinding wordt opgegeven en (optioneel, maar standaard vereist) een beveiligings token dat de machtiging ' verzenden ' in de query teken reeks moet worden verleend. De service communiceert vervolgens met de listener volgens de eerder beschreven manier en de listener maakt een rendez-verbinding die is gekoppeld aan deze WebSocket. Nadat de WebSocket is geaccepteerd, zijn alle verdere interacties voor die WebSocket met een verbonden listener.
 
-#### <a name="request-operation"></a>Aanvraagbewerking
+#### <a name="request-operation"></a>Aanvraag bewerking
 
-Voor hybride verbindingen waarvoor de functie is ingeschakeld, kan de afzender grotendeels onbeperkte HTTP-aanvragen verzenden naar de listeners.
+Voor Hybride verbindingen waarvoor de functie is ingeschakeld, kan de afzender voornamelijk onbeperkte HTTP-aanvragen verzenden naar listeners.
 
-Met uitzondering van een Relay-toegangstoken dat is dat een ingesloten in de querytekenreeks of in een HTTP-header van de aanvraag, is de Relay volledig transparant voor alle HTTP-bewerkingen op de Relay-adres en alle achtervoegsels van het pad van het adres Relay, waardoor de listener volledig beheer van en d-to-end-autorisatie en zelfs HTTP-extensie-functies, zoals [CORS](https://www.w3.org/TR/cors/).
+Met uitzonde ring van het toegangs token voor relay dat is inge sloten in de query teken reeks of in een HTTP-header van de aanvraag, is de relay volledig transparant voor alle HTTP-bewerkingen op het omleidings adres en alle achtervoegsels van het pad naar de relay, waardoor de listener volledig beheer van end-to-end-autorisatie en zelfs HTTP-extensie functies als [CORS](https://www.w3.org/TR/cors/)heeft.
 
-Afzender autorisatie met de Relay-eindpunt is standaard ingeschakeld, maar is optioneel. Anonieme afzenders kan de eigenaar van de hybride verbinding kiezen. De service wordt onderschept, controleren en autorisatie-informatie als volgt van strook /:
+Sender Authorization with het relay-eind punt is standaard ingeschakeld, maar is optioneel. De eigenaar van de hybride verbinding kan ervoor kiezen anonieme afzenders toe te staan. Met de service worden verificatie gegevens als volgt onderschept, geïnspecteerd en gesegmenteerd:
 
-1. Als de query-tekenreeks bevat een `sb-hc-token` -expressie, maar de expressie wordt altijd worden verwijderd uit de query-tekenreeks. Wordt het apparaat geëvalueerd als Relay autorisatie is ingeschakeld.
-2. Als de aanvraagheaders bevatten een `ServiceBusAuthorization` koptekst, de header expressie altijd worden verwijderd uit de kop-verzameling.
-   Wordt het apparaat geëvalueerd als Relay autorisatie is ingeschakeld.
-3. Alleen als de Relay-autorisatie is ingeschakeld, en als de aanvraagheaders bevatten een `Authorization` koptekst en geen van de voorafgaande expressies aanwezig is, wordt de koptekst van worden geëvalueerd en verwijderd. Anders wordt de `Authorization`altijd wordt doorgegeven als-is.
+1. Als de query reeks een `sb-hc-token` expressie bevat, wordt de expressie altijd verwijderd uit de query reeks. Deze wordt geëvalueerd als relay-autorisatie is ingeschakeld.
+2. Als de aanvraag headers een `ServiceBusAuthorization` header bevatten, wordt de header-expressie altijd verwijderd uit de verzameling koptekst.
+   Deze wordt geëvalueerd als relay-autorisatie is ingeschakeld.
+3. Alleen als relay-autorisatie is ingeschakeld en de aanvraag headers een `Authorization` header bevatten en geen van de voor gaande expressies aanwezig is, wordt de header geëvalueerd en gestript. Anders wordt de `Authorization`altijd door gegeven als-is.
 
-Als er geen actieve listener, wordt de service een 502 'Ongeldige Gateway'-foutcode geretourneerd. Als de service niet wordt weergegeven voor het afhandelen van de aanvraag, wordt de service een 504 "time-out van Gateway' geretourneerd na 60 seconden.
+Als er geen actieve listener is, retourneert de service de fout code ' ongeldige gateway van 502 '. Als de service niet wordt weer gegeven om de aanvraag af te handelen, retourneert de service na 60 seconden een time-out voor de ' gateway van een 504 '.
 
-### <a name="interaction-summary"></a>Tussenkomst van de samenvatting
+### <a name="interaction-summary"></a>Samen vatting van interactie
 
-Het resultaat van dit model interactie is dat de afzender-client wordt geleverd buiten de handshake met een 'schone' WebSocket, die is verbonden met een listener en die geen verdere preambles of voorbereiding nodig. Dit model kunt vrijwel alle bestaande WebSocket-clientimplementatie om gemakkelijk te profiteren van de Hybrid Connections-service door het opgeven van een correct opgemaakte URL in de laag van de WebSocket-client.
+Het resultaat van dit interactie model is dat de Sender-client uit de handshake komt met een ' schone ' WebSocket, die is verbonden met een listener en die geen verdere voor raden of voor bereiding nodig heeft. Dit model maakt nagenoeg alle bestaande WebSocket-client implementaties eenvoudig voor deel van de Hybride verbindingen-service door een correct geconstrueerde URL op te geven in de WebSocket-client laag.
 
-De verbinding rendezvous WebSocket die de listener wordt opgehaald via de interactie accepteren ook schoon is en kan worden overgedragen aan de implementatie van een bestaande WebSocket-server met een minimale extra abstractie die wordt onderscheid tussen bewerkingen op 'accept gemaakt' van hun framework lokale netwerk listeners en hybride verbindingen van externe accepteren' ' bewerkingen.
+De WebSocket van de rendez-verbinding die de listener via de acceptatie interactie verkrijgt, kan ook worden gereinigd en kan worden overgedragen aan een bestaande WebSocket-Server implementatie met een minimale extra abstractie die onderscheidt tussen ' Accept ' bewerkingen op de lokale netwerklisteners van hun Framework en Hybride verbindingen externe "Accept"-bewerkingen.
 
-Het HTTP-aanvraag/antwoord-model biedt de afzender een grotendeels onbeperkte HTTP-protocol-gebied met een optionele autorisatie-laag. De listener van een vooraf geparseerde HTTP-aanvraag sectie header die kan worden uitgeschakeld in een downstream HTTP-aanvraag of verwerkt als de uitvoering is, met binaire frames HTTP-instanties opgehaald. Antwoorden op de dezelfde indeling gebruiken. Interactie met minder dan 64 KB aan de hoofdtekst van de aanvraag en antwoord kunnen worden verwerkt via een enkele Web Socket die is gedeeld voor alle afzenders te maken. Grotere aanvragen en antwoorden kunnen worden verwerkt met behulp van het rendezvous-model.
+Het HTTP-aanvraag/antwoord model geeft de afzender een grotendeels onbeperkt HTTP-protocol surface area met een optionele autorisatie laag. De listener haalt een vooraf geparseerde header van een HTTP-aanvraag op die kan worden omgezet in een downstream HTTP-aanvraag of kan worden verwerkt als is, met binaire frames die HTTP-instanties uitvoeren. Antwoorden gebruiken dezelfde indeling. Interacties met minder dan 64 KB aan aanvraag-en antwoord tekst kunnen worden verwerkt via één web-socket die wordt gedeeld voor alle afzenders. Grotere aanvragen en antwoorden kunnen worden verwerkt met behulp van het model rendez.
 
-## <a name="protocol-reference"></a>Naslaginformatie over het protocol
+## <a name="protocol-reference"></a>Naslag informatie over protocollen
 
-Deze sectie beschrijft de details van het protocol interacties die eerder zijn beschreven.
+In deze sectie worden de details beschreven van de protocol interacties die eerder zijn beschreven.
 
-Alle WebSocket-verbindingen worden gemaakt op poort 443 als een upgrade van HTTPS 1.1, waarvan wordt vaak door sommige WebSocket-framework of API geabstraheerd. Hier de beschrijving wordt opgeslagen implementatie neutraal, zonder dat een specifiek framework voorstellen.
+Alle WebSocket-verbindingen worden gemaakt op poort 443 als een upgrade van HTTPS 1,1, die meestal wordt afgeleid door een WebSocket-Framework of API. De beschrijving is hier niet van toepassing onafhankelijk, zonder dat een specifiek Framework wordt voorgesteld.
 
-### <a name="listener-protocol"></a>Listener-protocol
+### <a name="listener-protocol"></a>Listener-Protocol
 
-Het protocol listener bestaat uit twee verbindingen gebaren en drie berichtbewerkingen.
+Het listener-protocol bestaat uit twee verbindings bewegingen en drie bericht bewerkingen.
 
-#### <a name="listener-control-channel-connection"></a>Listener-kanaalverbinding
+#### <a name="listener-control-channel-connection"></a>Listener-kanaal verbinding
 
-Het besturingskanaal is geopend met het maken van een WebSocket-verbinding met:
+Het besturings kanaal wordt geopend met het maken van een WebSocket-verbinding naar:
 
 `wss://{namespace-address}/$hc/{path}?sb-hc-action=...[&sb-hc-id=...]&sb-hc-token=...`
 
-De `namespace-address` is de volledig gekwalificeerde domeinnaam van de Azure Relay-naamruimte die als host fungeert voor de hybride verbinding, meestal van het formulier `{myname}.servicebus.windows.net`.
+De `namespace-address` is de Fully Qualified Domain Name van de Azure Relay-naam ruimte die als host fungeert voor de hybride verbinding, doorgaans in het formulier `{myname}.servicebus.windows.net`.
 
-De opties voor queryreeksen parameter zijn als volgt.
+U hebt de volgende opties voor de query reeks parameter.
 
-| Parameter        | Vereist | Description
+| Parameter        | Verplicht | Beschrijving
 | ---------------- | -------- | -------------------------------------------
-| `sb-hc-action`   | Ja      | Voor de listener-rol, de parameter moet **sb-hc-action = luisteren**
-| `{path}`         | Ja      | Het naamruimtepad van de URL-gecodeerde van de vooraf geconfigureerde hybride verbinding met het registreren van deze listener op. Deze expressie wordt toegevoegd aan de vaste `$hc/` padgedeelte.
-| `sb-hc-token`    | Ja\*    | De listener van een geldige, door de URL-gecodeerde Service Bus gedeeld toegangstoken moet opgeven voor de naamruimte of een hybride verbinding biedt de **luisteren** rechts.
-| `sb-hc-id`       | Nee       | Deze client wordt geleverd optionele ID kunt diagnostische tracering van end-to-end.
+| `sb-hc-action`   | Ja      | Voor de listener-functie moet de para meter **SB-HC-Action = listen**
+| `{path}`         | Ja      | Het pad naar de URL-code ring van de vooraf geconfigureerde hybride verbinding om deze listener te registreren. Deze expressie wordt toegevoegd aan het gedeelte vaste `$hc/` pad.
+| `sb-hc-token`    | Ja\*    | De listener moet een geldig, URL-gecodeerd Service Bus token voor gedeelde toegang opgeven voor de naam ruimte of hybride verbinding die het **Geluisterde** recht verleent.
+| `sb-hc-id`       | Nee       | Met deze door de client verstrekte optionele ID kan end-to-end diagnostische tracering worden ingeschakeld.
 
-Als de WebSocket-verbinding is mislukt vanwege de hybride verbinding pad niet wordt geregistreerd, of een ongeldige of ontbrekende token of een andere fout, wordt de fout feedback volgen met behulp van de reguliere gesegmenteerde HTTP 1.1-status feedback model. De statusbeschrijving van de bevat een fout tracerings-id die kan worden doorgegeven aan Azure-ondersteuningspersoneel:
+Als de WebSocket-verbinding mislukt omdat het Hybrid Connection-pad niet is geregistreerd, of een ongeldig of ontbrekend token of een andere fout, wordt de fout feedback weer gegeven met het reguliere HTTP 1,1-status feedback model. De status beschrijving bevat een fout tracering-id die kan worden gecommuniceerd naar ondersteunings personeel van Azure:
 
-| Code | Fout          | Description
+| Coderen | Fout          | Beschrijving
 | ---- | -------------- | -------------------------------------------------------------------
-| 404  | Niet gevonden      | Het pad van de hybride verbinding is ongeldig of de basis-URL heeft onjuiste indeling.
-| 401  | Niet geautoriseerd   | Het beveiligingstoken is een ontbrekend of onjuist gevormd of ongeldig.
-| 403  | Verboden      | Het beveiligingstoken is niet geldig voor dit pad voor deze actie.
-| 500  | Interne fout | Er is iets misgegaan in de service.
+| 404  | Niet gevonden      | Het Hybrid Connection-pad is ongeldig of de basis-URL is onjuist gevormd.
+| 401  | Niet geautoriseerd   | Het beveiligings token ontbreekt of is onjuist of ongeldig.
+| 403  | Verboden      | Het beveiligings token is niet geldig voor dit pad voor deze actie.
+| 500  | Interne fout | Er is iets verkeerd gegaan in de service.
 
-Als de WebSocket-verbinding opzettelijk door de service afgesloten wordt nadat deze is in eerste instantie hebt ingesteld, de reden voor doet, wordt doorgegeven met behulp van een juiste WebSocket-protocol foutcode samen met een beschrijvend foutbericht dat ook een tracerings-ID bevat. De service wordt niet afgesloten het besturingskanaal zonder dat er een fout optreedt. Een schone afsluiten is beheerd-client.
+Als de WebSocket-verbinding opzettelijk wordt afgesloten door de service nadat deze voor het eerst is ingesteld, wordt de reden hiervoor gecommuniceerd met behulp van de juiste WebSocket protocol-fout code en een beschrijving van het fout bericht dat ook een tracerings-ID bevat. De service sluit het besturings kanaal niet af zonder dat er een fout optreedt. Een schone afsluiting wordt door de client beheerd.
 
-| WS-Status | Description
+| WS-status | Beschrijving
 | --------- | -------------------------------------------------------------------------------
-| 1001      | Het pad van de hybride verbinding is verwijderd of uitgeschakeld.
-| 1008      | Het beveiligingstoken is verlopen, dus het autorisatiebeleid wordt geschonden.
-| 1011      | Er is iets misgegaan in de service.
+| 1001      | Het hybride verbindings traject is verwijderd of uitgeschakeld.
+| 1008      | Het beveiligings token is verlopen, daarom wordt het autorisatie beleid geschonden.
+| 1011      | Er is iets verkeerd gegaan in de service.
 
 #### <a name="accept-handshake"></a>Handshake accepteren
 
-De melding 'accepteren' worden verzonden door de service voor de listener via het eerder tot stand gebrachte besturingskanaal als een JSON-bericht in een frame WebSocket. Er is geen antwoord op dit bericht.
+Het bericht ' Accept ' wordt door de service verzonden naar de listener voor het eerder vastgelegde besturings kanaal als JSON-bericht in een WebSocket-tekst kader. Er is geen antwoord op dit bericht.
 
-Het bericht bevat een JSON-object die met de naam 'accepteren', waarin de volgende eigenschappen op dit moment zijn gedefinieerd:
+Het bericht bevat een JSON-object met de naam ' Accept ', waarmee de volgende eigenschappen op dit moment worden gedefinieerd:
 
-* **adres** : de URL-tekenreeks moet worden gebruikt voor het tot stand brengen van de WebSocket naar de service een binnenkomende verbinding accepteren.
-* **id** : de unieke id voor deze verbinding. Als de ID is opgegeven door de client van de afzender, is dit de afzender opgegeven waarde, anders is de waarde van een systeem gegenereerd.
-* **connectHeaders** – alle HTTP-headers die naar de Relay-eindpunt zijn opgegeven door de afzender, waaronder ook de seconde-WebSocket-Protocol en de seconde-WebSocket-extensies-headers.
+* **adres** : de URL-teken reeks die moet worden gebruikt voor het tot stand brengen van de WebSocket in de service om een binnenkomende verbinding te accepteren.
+* **id** : de unieke id voor deze verbinding. Als de ID is opgegeven door de verzender-client, is het de opgegeven waarde voor de afzender, anders is het een door het systeem gegenereerde waarde.
+* **connectHeaders** : alle HTTP-headers die zijn verstrekt aan het relay-eind punt door de afzender. Dit omvat ook de headers SEC-WebSocket-protocol en SEC-WebSocket-extensies.
 
 ```json
 {
@@ -192,77 +192,77 @@ Het bericht bevat een JSON-object die met de naam 'accepteren', waarin de volgen
 }
 ```
 
-De adres-URL die is opgegeven in het JSON-bericht wordt gebruikt door de listener tot stand brengen van de WebSocket voor het accepteren of weigeren van de afzender-socket.
+De adres-URL die in het JSON-bericht wordt gegeven, wordt door de listener gebruikt voor het instellen van de WebSocket voor het accepteren of afwijzen van de afzender-socket.
 
-##### <a name="accepting-the-socket"></a>Acceptatie van de socket
+##### <a name="accepting-the-socket"></a>De socket wordt geaccepteerd
 
-Als u wilt accepteren, de listener van een verbinding tot stand WebSocket naar het opgegeven adres.
+Om te accepteren, brengt de listener een WebSocket-verbinding tot stand met het gegeven adres.
 
-Als het bericht 'accepteren' voert een `Sec-WebSocket-Protocol` header, is het waarschijnlijk dat de listener alleen de WebSocket accepteert als het protocol ondersteunt. Bovendien wordt de header ingesteld als de WebSocket tot stand is gebracht.
+Als het bericht ' Accept ' een `Sec-WebSocket-Protocol` header bevat, wordt verwacht dat de listener alleen de WebSocket accepteert als dat protocol wordt ondersteund. Daarnaast wordt de koptekst ingesteld als de WebSocket is ingesteld.
 
-Dit geldt ook voor de `Sec-WebSocket-Extensions` header. Als het framework een extensie ondersteunt, moet deze de header ingesteld op de server-side-antwoord van de vereiste `Sec-WebSocket-Extensions` handshake voor de extensie.
+Hetzelfde geldt voor de `Sec-WebSocket-Extensions`-header. Als het Framework een uitbrei ding ondersteunt, moet de header worden ingesteld op het antwoord aan de server zijde van de vereiste `Sec-WebSocket-Extensions`-Handshake voor de uitbrei ding.
 
-De URL moet worden gebruikt als-is voor het tot stand brengen van de socket accepteren, maar bevat de volgende parameters:
+De URL moet worden gebruikt als-is voor het instellen van de Accept-socket, maar bevat de volgende para meters:
 
-| Parameter      | Vereist | Description
+| Parameter      | Verplicht | Beschrijving
 | -------------- | -------- | -------------------------------------------------------------------
-| `sb-hc-action` | Ja      | Voor het accepteren van een socket, moet de parameter worden `sb-hc-action=accept`
-| `{path}`       | Ja      | (Zie het volgende lid)
-| `sb-hc-id`     | Nee       | Zie de vorige beschrijving van **id**.
+| `sb-hc-action` | Ja      | Voor het accepteren van een socket moet de para meter worden `sb-hc-action=accept`
+| `{path}`       | Ja      | (Zie de volgende alinea)
+| `sb-hc-id`     | Nee       | Zie de vorige beschrijving van de **id**.
 
-`{path}` is het naamruimtepad van het URL-gecodeerde van de vooraf geconfigureerde hybride verbinding waarop deze listener registreren. Deze expressie wordt toegevoegd aan de vaste `$hc/` padgedeelte.
+`{path}` is het pad naar de URL-code naam ruimte van de vooraf geconfigureerde hybride verbinding waarop deze listener moet worden geregistreerd. Deze expressie wordt toegevoegd aan het gedeelte vaste `$hc/` pad.
 
-De `path` expressie kan worden uitgebreid met een achtervoegsel en een query-tekenreeksexpressie die volgt op de naam van de geregistreerde na een bijbehorende slash.
-Hierdoor kan de client afzender verzending van de argumenten doorgeven aan de listener van accepteren wanneer het is niet mogelijk om op te nemen van HTTP-headers. De verwachting is dat de listener-framework het vaste padgedeelte en de geregistreerde naam van het pad parseert en de resterende mogelijk zonder een query tekenreeksargumenten voorafgegaan maakt door `sb-`, beschikbaar voor de toepassing om te beslissen of u de verbinding accepteren.
+De `path`-expressie kan worden uitgebreid met een achtervoegsel en een query reeks expressie die na de geregistreerde naam ligt na een gescheiden slash.
+Hierdoor kan de Sender-client verzend argumenten door geven aan de geaccepteerde listener wanneer het niet mogelijk is HTTP-headers op te nemen. De verwachting is dat het listener-Framework het vaste pad en de geregistreerde naam van het pad parseert en dat de rest, mogelijk zonder query teken reeks argumenten die vooraf zijn vastgelegd door `sb-`, beschikbaar zijn voor de toepassing om te bepalen of de verbinding moet worden geaccepteerd.
 
-Zie de volgende sectie van de 'Afzender Protocol' voor meer informatie.
+Zie de sectie ' Sender Protocol ' voor meer informatie.
 
-Als er een fout is, kunt de service als volgt beantwoorden:
+Als er een fout optreedt, kan de service als volgt reageren:
 
-| Code | Fout          | Description
+| Coderen | Fout          | Beschrijving
 | ---- | -------------- | -----------------------------------
-| 403  | Verboden      | De URL is niet geldig.
-| 500  | Interne fout | Er is iets misgegaan in de service
+| 403  | Verboden      | De URL is ongeldig.
+| 500  | Interne fout | Er is iets verkeerd gegaan in de service
 
- Nadat de verbinding is tot stand is gebracht, de server wordt afgesloten WebSocket wanneer de afzender WebSocket wordt afgesloten omlaag of met de volgende status:
+ Nadat de verbinding tot stand is gebracht, wordt de WebSocket door de server uitgeschakeld wanneer de WebSocket van de afzender wordt uitgeschakeld of met de volgende status:
 
-| WS-Status | Description                                                                     |
+| WS-status | Beschrijving                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
-| 1001      | De afzender-client de verbinding wordt afgesloten.                                    |
-| 1001      | Het pad van de hybride verbinding is verwijderd of uitgeschakeld.                        |
-| 1008      | Het beveiligingstoken is verlopen, dus het autorisatiebeleid wordt geschonden. |
-| 1011      | Er is iets misgegaan in de service.                                            |
+| 1001      | De Sender client sluit de verbinding.                                    |
+| 1001      | Het hybride verbindings traject is verwijderd of uitgeschakeld.                        |
+| 1008      | Het beveiligings token is verlopen, daarom wordt het autorisatie beleid geschonden. |
+| 1011      | Er is iets verkeerd gegaan in de service.                                            |
 
 ##### <a name="rejecting-the-socket"></a>De socket weigeren
 
- Verwijderen van de socket na het inspecteren van de `accept` bericht vereist een vergelijkbare handshake, zodat de statuscode en de statusbeschrijving communicatie van de reden voor de afwijzing kan stromen terug naar de afzender.
+ Voor het afwijzen van de socket na het controleren van het `accept` bericht is een vergelijk bare Handshake vereist zodat de status code en beschrijving die de reden voor de weigering door gegeven, naar de afzender kunnen stromen.
 
- Dit protocol ontwerp is gekozen hier is het gebruik van een WebSocket-handshake (die is ontworpen om te eindigen met een gedefinieerde foutstatus) zodat listener-clientimplementaties kunt blijven afhankelijk zijn van een client WebSocket en niet hoeft te gebruiken van een extra, bare HTTP-client.
+ De keuze van het gekozen protocol is door gebruik te maken van een WebSocket-Handshake (die is ontworpen om te eindigen met een gedefinieerde fout status), zodat listener-client implementaties kunnen blijven vertrouwen op een WebSocket-client en geen extra, bare HTTP-client hoeven te gebruiken.
 
- Voor het weigeren van de socket, de client wordt verricht de URI-adres van de `accept` bericht- en twee queryreeksparameters als volgt, toegevoegd:
+ Als u de socket wilt afwijzen, gebruikt de client de adres-URI uit het `accept` bericht en worden er twee query teken reeks parameters aan toegevoegd:
 
-| Param                   | Vereist | Description                              |
+| Param                   | Verplicht | Beschrijving                              |
 | ----------------------- | -------- | ---------------------------------------- |
-| SB-hc-statusCode        | Ja      | Numerieke HTTP-statuscode.                |
-| SB-hc-statusbeschrijving | Ja      | Mens leesbaar reden voor de afwijzing. |
+| SB-HC-status code        | Ja      | Numerieke HTTP-status code.                |
+| SB-HC-statusDescription | Ja      | Door de mens lees bare reden voor de afwijzing. |
 
-De resulterende URI wordt vervolgens gebruikt om een WebSocket-verbinding te maken.
+De resulterende URI wordt vervolgens gebruikt om een WebSocket-verbinding tot stand te brengen.
 
-Als het goed is voltooid, wordt deze handshake opzettelijk mislukt met een HTTP-foutcode 410, omdat er geen WebSocket tot stand is gebracht. Als er iets misgaat, wordt de fout in de volgende codes beschreven:
+Bij een juiste voltooiing wordt deze Handshake met opzet mislukt met een HTTP-fout code 410, omdat er geen WebSocket is ingesteld. Als er iets fout gaat, beschrijven de volgende codes de fout:
 
-| Code | Fout          | Description                          |
+| Coderen | Fout          | Beschrijving                          |
 | ---- | -------------- | ------------------------------------ |
-| 403  | Verboden      | De URL is niet geldig.                |
-| 500  | Interne fout | Er is iets misgegaan in de service. |
+| 403  | Verboden      | De URL is ongeldig.                |
+| 500  | Interne fout | Er is iets verkeerd gegaan in de service. |
 
-#### <a name="request-message"></a>Aanvraagbericht
+#### <a name="request-message"></a>Aanvraag bericht
 
-De `request` bericht wordt verzonden door de service voor de listener via het besturingskanaal. Hetzelfde bericht worden ook verzonden via de ontmoeting WebSocket eenmaal tot stand gebracht.
+Het `request` bericht wordt door de service naar de listener verzonden via het besturings kanaal. Hetzelfde bericht wordt ook na het tot stand brengen van de WebSocket van rendez verzonden.
 
-De `request` bestaat uit twee delen: een koptekst en binaire hoofdtekst frame (s).
-Als er geen instantie is, wordt de hoofdtekst van de frames worden weggelaten. De indicator voor het of er een instantie aanwezig is, is de Booleaanse waarde `body` eigenschap in de aanvraag.
+De `request` bestaat uit twee delen: een kop en binaire hoofd frame/frames.
+Als er geen hoofd tekst is, worden de hoofd frames wegge laten. De indicator voor of een hoofd tekst aanwezig is, is de Booleaanse `body` eigenschap in het aanvraag bericht.
 
-Voor een aanvraag met een aanvraagtekst, de structuur ziet er als volgt:
+Voor een aanvraag met een aanvraag tekst kan de structuur er als volgt uitzien:
 
 ``` text
 ----- Web Socket text frame ----
@@ -282,10 +282,10 @@ FEFEFEFEFEFEFEFEFEFEF...
 ----------------------------------
 ```
 
-De listener moet omgaan met het ontvangen van de hoofdtekst van de aanvraag verdeeld over meerdere frames van de binaire (Zie [WebSocket-fragmenten](https://tools.ietf.org/html/rfc6455#section-5.4)).
-De aanvraag wordt beëindigd wanneer een binaire kader met de vlag is ingesteld FIN is ontvangen.
+De listener moet de ontvangst van de aanvraag tekst splitsen over meerdere binaire frames (Zie [WebSocket-fragmenten](https://tools.ietf.org/html/rfc6455#section-5.4)) afhandelen.
+De aanvraag wordt beëindigd wanneer een binair frame met de set FIN Flags is ontvangen.
 
-Er is slechts één tekstframe voor een aanvraag zonder een tekst.
+Er is slechts één tekst kader voor een aanvraag zonder tekst.
 
 ``` text
 ----- Web Socket text frame ----
@@ -301,22 +301,22 @@ Er is slechts één tekstframe voor een aanvraag zonder een tekst.
 
 De JSON-inhoud voor `request` is als volgt:
 
-* **adres** -URI-tekenreeks. Dit is het rendezvous-adres moet worden gebruikt voor deze aanvraag. Als de inkomende aanvraag groter dan 64 kB is, wordt de rest van dit bericht is leeg en de client moet een gelijk aan het rendezvous-handshake opnieuw de `accept` bewerking die hieronder worden beschreven. De service wordt vervolgens de volledige samengesteld `request` op de tot stand gebrachte Web socket. Als het antwoord kan worden verwacht groter zijn dan 64 kB, moet de listener ook tot stand brengen van een handshake rendezvous en zet vervolgens het antwoord via de tot stand gebrachte Web socket.
-* **id** -tekenreeks. De unieke id voor deze aanvraag.
-* **requestHeaders** – dit object bevat alle HTTP-headers die naar het eindpunt is opgegeven door de afzender, met uitzondering van de autorisatie-informatie, zoals wordt beschreven [hierboven](#request-operation), en -koppen die uitsluitend betrekking hebben op de verbinding met de gateway. Specifiek, alle headers gedefinieerd of gereserveerd in [RFC7230](https://tools.ietf.org/html/rfc7230), met uitzondering van `Via`, worden verwijderd en niet doorgestuurd:
+* **adres** -URI-teken reeks. Dit is het adres van de rendez dat voor deze aanvraag moet worden gebruikt. Als de binnenkomende aanvraag groter is dan 64 kB, wordt de rest van dit bericht leeg gelaten en moet de client een hand Shake van het rendez-vous initiëren dat overeenkomt met de `accept` bewerking die hieronder wordt beschreven. De service plaatst vervolgens de volledige `request` op de tot stand gebrachte Web-socket. Als de reactie naar verwachting groter is dan 64 kB, moet de listener ook een Shake van het rendez-vous initiëren en vervolgens het antwoord over de ingestelde Web-socket overdragen.
+* **id** : teken reeks. De unieke id voor deze aanvraag.
+* **RequestHeaders** : dit object bevat alle HTTP-headers die door de afzender aan het eind punt zijn door gegeven, met uitzonde ring van autorisatie-informatie zoals [hierboven](#request-operation)beschreven en headers die strikt verband houden met de verbinding met de gateway. In het bijzonder worden alle headers die zijn gedefinieerd of gereserveerd in [RFC7230](https://tools.ietf.org/html/rfc7230), met uitzonde ring van `Via`, verwijderd en niet doorgestuurd:
 
-  * `Connection` (RFC7230, sectie 6.1)
-  * `Content-Length`  (RFC7230, punt 3.3.2)
-  * `Host`  (RFC7230, sectie 5.4)
-  * `TE`  (RFC7230, sectie 4.3)
-  * `Trailer`  (RFC7230, sectie 4.4)
-  * `Transfer-Encoding`  (RFC7230, sectie 3.3.1)
-  * `Upgrade` (RFC7230, sectie 6.7)
-  * `Close`  (RFC7230, sectie 8.1)
+  * `Connection` (RFC7230, sectie 6,1)
+  * `Content-Length` (RFC7230, punt 3.3.2)
+  * `Host` (RFC7230, sectie 5,4)
+  * `TE` (RFC7230, sectie 4,3)
+  * `Trailer` (RFC7230, sectie 4,4)
+  * `Transfer-Encoding` (RFC7230, sectie 3.3.1)
+  * `Upgrade` (RFC7230, sectie 6,7)
+  * `Close` (RFC7230, sectie 8,1)
 
-* **requestTarget** -tekenreeks. Deze eigenschap bevat de ['Doel van de aanvraag' (RFC7230, sectie 5.3)](https://tools.ietf.org/html/rfc7230#section-5.3) van de aanvraag. Dit omvat het gedeelte van de tekenreeks query, die wordt verwijderd van alle `sb-hc-` voorafgegaan parameters.
-* **methode** -tekenreeks. Dit is de methode van de aanvraag [RFC7231, sectie 4](https://tools.ietf.org/html/rfc7231#section-4). De `CONNECT` methode mogen niet worden gebruikt.
-* **hoofdtekst** – Boolean-waarde. Geeft aan of volgt op een of meer binaire hoofdtekst frame.
+* **requestTarget** : String. Deze eigenschap bevat de aanvraag [doel (RFC7230, sectie 5,3)](https://tools.ietf.org/html/rfc7230#section-5.3) van de aanvraag. Dit omvat het gedeelte met de query teken reeks, dat alle `sb-hc-` voorvaste para meters bevat.
+* **methode** -teken reeks. Dit is de methode van de aanvraag, per [RFC7231, sectie 4](https://tools.ietf.org/html/rfc7231#section-4). De `CONNECT` methode mag niet worden gebruikt.
+* **hoofd tekst** : Booleaans. Hiermee wordt aangegeven of een of meer binaire hoofdtekst frames volgt.
 
 ``` JSON
 {
@@ -337,20 +337,20 @@ De JSON-inhoud voor `request` is als volgt:
 
 ##### <a name="responding-to-requests"></a>Reageren op aanvragen
 
-De ontvanger moet reageren. Herhaalde fouten te reageren op aanvragen behoud van de verbinding kan leiden tot de listener ophalen op de blokkeringslijst.
+De ontvanger moet reageren. Herhaalde mislukte pogingen om te reageren op aanvragen bij het onderhouden van de verbinding kan ertoe leiden dat de listener op zwarte lijst wordt geplaatst.
 
-Antwoorden kunnen in willekeurige volgorde worden verzonden, maar elke aanvraag moet worden gereageerd op binnen 60 seconden of de levering worden gerapporteerd als dat is mislukt. De deadline 60 seconden wordt geteld totdat de `response` frame is ontvangen door de service. Een continue-antwoord met meerdere frames van de binaire gedurende meer dan 60 seconden kan niet worden niet-actieve of deze wordt beëindigd.
+Antwoorden kunnen in een wille keurige volg orde worden verzonden, maar elke aanvraag moet binnen 60 seconden worden gereageerd of de levering wordt gerapporteerd als mislukt. De deadline van 60 seconden wordt geteld totdat het `response` frame door de service is ontvangen. Een doorlopende reactie met meerdere binaire frames kan langer dan 60 seconden niet actief worden of wordt beëindigd.
 
-Als de aanvraag wordt ontvangen via het besturingskanaal, het antwoord ofwel in het besturingskanaal moet worden verzonden vanuit waar de aanvraag is ontvangen, of deze moet worden verzonden via een rendezvous-kanaal.
+Als de aanvraag via het besturings kanaal wordt ontvangen, moet het antwoord worden verzonden op het besturings kanaal van waaruit de aanvraag is ontvangen of moet het worden verzonden via een rendez-kanaal.
 
-Het antwoord is een JSON-object met de naam 'response'. De regels voor het verwerken van de inhoud van de hoofdtekst zijn precies hetzelfde als met de `request` bericht- en op basis van de `body` eigenschap.
+Het antwoord is een JSON-object met de naam ' Response '. De regels voor het afhandelen van de inhoud van de hoofd tekst zijn precies hetzelfde als het `request`-bericht en op basis van de `body` eigenschap.
 
-* **requestId** – string. VEREIST. De `id` eigenschapswaarde van de `request` bericht wordt beantwoord.
-* **statusCode** : nummer. VEREIST. een numerieke HTTP-statuscode die het resultaat van het bericht aangeeft. Alle statuscodes van [RFC7231, sectie 6](https://tools.ietf.org/html/rfc7231#section-6) zijn toegestaan, met uitzondering van [502 'Ongeldige Gateway'](https://tools.ietf.org/html/rfc7231#section-6.6.3) en [504 "time-out van Gateway'](https://tools.ietf.org/html/rfc7231#section-6.6.5).
-* **Statusbeschrijving** -tekenreeks. OPTIONAL. HTTP-statuscode reden per [RFC7230, sectie 3.1.2](https://tools.ietf.org/html/rfc7230#section-3.1.2)
-* **responseHeaders** – HTTP-headers zijn ingesteld in een externe HTTP-antwoord.
-  Net als bij de `request`, RFC7230 gedefinieerde headers mogen niet worden gebruikt.
-* **hoofdtekst** – Boolean-waarde. Geeft aan of de hoofdtekst van de binaire frames follow(s).
+* **aanvraag** -waarde – string. Vereist. De `id` eigenschaps waarde van het `request` bericht waarop wordt gereageerd.
+* **status** code – number. Vereist. een numerieke HTTP-status code die het resultaat van de melding aangeeft. Alle status codes van [RFC7231, sectie 6](https://tools.ietf.org/html/rfc7231#section-6) , zijn toegestaan, met uitzonde ring van de [502 "Ongeldige gateway"](https://tools.ietf.org/html/rfc7231#section-6.6.3) en [504 "Gateway-time-out"](https://tools.ietf.org/html/rfc7231#section-6.6.5).
+* **statusDescription** -teken reeks. Beschrijving. HTTP-status-woordgroepen code per [RFC7230, para graaf 3.1.2](https://tools.ietf.org/html/rfc7230#section-3.1.2)
+* **gegevensservicehost** : http-headers die moeten worden ingesteld in een extern http-antwoord.
+  Net als bij de `request`, mogen RFC7230 gedefinieerde headers niet worden gebruikt.
+* **hoofd tekst** : Booleaans. Geeft aan of er (en) binaire tekst frames moeten worden gevolgd.
 
 ``` text
 ----- Web Socket text frame ----
@@ -370,39 +370,39 @@ Het antwoord is een JSON-object met de naam 'response'. De regels voor het verwe
 ----------------------------------
 ```
 
-##### <a name="responding-via-rendezvous"></a>Reageren via rendezvous
+##### <a name="responding-via-rendezvous"></a>Reageert via rendez-vous
 
-Voor antwoorden die groter zijn dan 64 kB, moet het antwoord via een socket rendezvous worden geleverd. Ook als de aanvraag is groter dan 64 kB, en de `request` bevat alleen het adresveld, een socket rendezvous moet worden gemaakt met het verkrijgen van de `request`. Zodra een socket rendezvous eenmaal is ingesteld, moeten antwoorden op de desbetreffende client en de volgende aanvragen van die respectieve client worden geleverd via de socket rendezvous terwijl het probleem blijft bestaan.
+Voor antwoorden die 64 kB overschrijdt, moet het antwoord worden verzonden via een rendez van het andere. Als de aanvraag groter is dan 64 kB en de `request` alleen het adres veld bevat, moet een rendez van het hostadres worden ingesteld om de `request`te verkrijgen. Zodra een rendez van de client is ingesteld, moeten reacties op de respectievelijke clients en volgende aanvragen van die respectieve clients worden geleverd via de socket van de rendez-out.
 
-De `address` in de URL van de `request` moeten worden gebruikt als-is voor het tot stand brengen van de rendezvous-socket, maar bevat de volgende parameters:
+De `address`-URL in de `request` moet worden gebruikt als-is voor het tot stand brengen van de ' rendez-socket ', maar bevat de volgende para meters:
 
-| Parameter      | Vereist | Description
+| Parameter      | Verplicht | Beschrijving
 | -------------- | -------- | -------------------------------------------------------------------
-| `sb-hc-action` | Ja      | Voor het accepteren van een socket, moet de parameter worden `sb-hc-action=request`
+| `sb-hc-action` | Ja      | Voor het accepteren van een socket moet de para meter worden `sb-hc-action=request`
 
-Als er een fout is, kunt de service als volgt beantwoorden:
+Als er een fout optreedt, kan de service als volgt reageren:
 
-| Code | Fout           | Description
+| Coderen | Fout           | Beschrijving
 | ---- | --------------- | -----------------------------------
-| 400  | Ongeldige aanvraag | Niet-herkende actie of de URL is ongeldig.
+| 400  | Ongeldige aanvraag | Niet-herkende actie of URL niet geldig.
 | 403  | Verboden       | De URL is verlopen.
-| 500  | Interne fout  | Er is iets misgegaan in de service
+| 500  | Interne fout  | Er is iets verkeerd gegaan in de service
 
- Nadat de verbinding is tot stand is gebracht, de server wordt afgesloten WebSocket wanneer HTTP-socket van de client wordt afgesloten, of met de volgende status:
+ Nadat de verbinding tot stand is gebracht, wordt de WebSocket door de server uitgeschakeld wanneer de HTTP-socket van de client wordt uitgeschakeld of met de volgende status:
 
-| WS-Status | Description                                                                     |
+| WS-status | Beschrijving                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
-| 1001      | De afzender-client de verbinding wordt afgesloten.                                    |
-| 1001      | Het pad van de hybride verbinding is verwijderd of uitgeschakeld.                        |
-| 1008      | Het beveiligingstoken is verlopen, dus het autorisatiebeleid wordt geschonden. |
-| 1011      | Er is iets misgegaan in de service.                                            |
+| 1001      | De Sender client sluit de verbinding.                                    |
+| 1001      | Het hybride verbindings traject is verwijderd of uitgeschakeld.                        |
+| 1008      | Het beveiligings token is verlopen, daarom wordt het autorisatie beleid geschonden. |
+| 1011      | Er is iets verkeerd gegaan in de service.                                            |
 
 
-#### <a name="listener-token-renewal"></a>Listener token vernieuwen
+#### <a name="listener-token-renewal"></a>Listener-token vernieuwing
 
-Wanneer de listener-token bijna verlopen is, kan het deze vervangen door een frame tekstbericht verzenden naar de service via het tot stand gebrachte besturingskanaal. Het bericht bevat een JSON-object met de naam `renewToken`, die op dit moment wordt de volgende eigenschap gedefinieerd:
+Wanneer het listener-token bijna is verlopen, kan het worden vervangen door een tekst frame bericht naar de service te verzenden via het ingestelde besturings kanaal. Het bericht bevat een JSON-object met de naam `renewToken`, waarmee de volgende eigenschap op dit moment wordt gedefinieerd:
 
-* **token** – een geldige, door de URL-gecodeerde gedeelde toegang van Service Bus-token voor de naamruimte of een hybride verbinding biedt de **luisteren** rechts.
+* **token** : een geldig, URL-gecodeerd service bus token voor gedeelde toegang voor de naam ruimte of hybride verbinding die het **geluisterde** recht verleent.
 
 ```json
 {
@@ -413,99 +413,99 @@ Wanneer de listener-token bijna verlopen is, kan het deze vervangen door een fra
 }
 ```
 
-Als de validatie van het token is mislukt, de toegang is geweigerd en de cloudservice wordt gesloten voor het besturingskanaal WebSocket met een fout. Anders wordt is er geen antwoord ontvangen.
+Als de token validatie mislukt, wordt de toegang geweigerd en sluit de Cloud service de WebSocket van het besturings kanaal met een fout. Anders is er geen antwoord.
 
-| WS-Status | Description                                                                     |
+| WS-status | Beschrijving                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
-| 1008      | Het beveiligingstoken is verlopen, dus het autorisatiebeleid wordt geschonden. |
+| 1008      | Het beveiligings token is verlopen, daarom wordt het autorisatie beleid geschonden. |
 
-### <a name="web-socket-connect-protocol"></a>Web Socket protocol verbinding maken
+### <a name="web-socket-connect-protocol"></a>Web socket Connect-protocol
 
-De afzender-protocol is in feite gelijk is aan de manier waarop die een listener tot stand is gebracht.
-Het doel is de maximale transparantie voor de end-to-end-WebSocket. Het adres verbinding maken met is dezelfde als die voor de listener, maar verschilt van de "action" en het token moet een andere machtiging:
+Het Protocol van de afzender is in feite hetzelfde als de manier waarop een listener tot stand is gebracht.
+Het doel is de maximale doorzichtigheid voor de end-to-end WebSocket. Het adres waarmee verbinding moet worden gemaakt, is hetzelfde als voor de listener, maar de actie verschilt en het token heeft een andere machtiging nodig:
 
 ```
 wss://{namespace-address}/$hc/{path}?sb-hc-action=...&sb-hc-id=...&sbc-hc-token=...
 ```
 
-De _naamruimte-address_ is de volledig gekwalificeerde domeinnaam van de Azure Relay-naamruimte die als host fungeert voor de hybride verbinding, meestal van het formulier `{myname}.servicebus.windows.net`.
+De _naam ruimte-adres_ is de Fully Qualified Domain name van de Azure relay naam ruimte die als host fungeert voor de hybride verbinding, doorgaans in de vorm van `{myname}.servicebus.windows.net`.
 
-De aanvraag kan willekeurige extra HTTP-headers, met inbegrip van de toepassing gedefinieerde waarden bevatten. Alle opgegeven headers overgebracht naar de listener en kunt u vinden op de `connectHeader` object van de **accepteren** controlebericht.
+De aanvraag kan wille keurige extra HTTP-headers bevatten, inclusief door de toepassing gedefinieerde items. Alle opgegeven kopteksten stroom naar de listener en bevindt zich op het `connectHeader` object van het bericht **Accept** Control.
 
-De opties voor queryreeksen parameter zijn als volgt:
+U hebt de volgende opties voor de query teken reeks parameter:
 
-| Param          | Vereist? | Description
+| Param          | Vereist? | Beschrijving
 | -------------- | --------- | -------------------------- |
-| `sb-hc-action` | Ja       | Voor de rol van de afzender, de parameter moet `sb-hc-action=connect`.
-| `{path}`       | Ja       | (Zie het volgende lid)
-| `sb-hc-token`  | Ja\*     | De listener van een geldige, door de URL-gecodeerde Service Bus gedeeld toegangstoken moet opgeven voor de naamruimte of een hybride verbinding biedt de **verzenden** rechts.
-| `sb-hc-id`     | Nee        | Een optionele ID waarmee de end-to-end diagnostische tracering geactiveerd en wordt beschikbaar gesteld aan de listener tijdens de handshake accepteren.
+| `sb-hc-action` | Ja       | Voor de rol afzender moet de para meter `sb-hc-action=connect`zijn.
+| `{path}`       | Ja       | (Zie de volgende alinea)
+| `sb-hc-token`  | Ja\*     | De listener moet een geldig, URL-gecodeerd Service Bus token voor gedeelde toegang opgeven voor de naam ruimte of hybride verbinding die het **Verzend** recht verleent.
+| `sb-hc-id`     | Nee        | Een optionele ID waarmee end-to-end diagnostische tracering is ingeschakeld en beschikbaar wordt gesteld aan de listener tijdens het accepteren van de handshake.
 
- De `{path}` is het naamruimtepad van de URL-gecodeerde van de vooraf geconfigureerde hybride verbinding waarop deze listener registreren. De `path` expressie met een achtervoegsel en een query-tekenreeks-expressie om te communiceren verder kan worden uitgebreid. Als de hybride verbinding is geregistreerd onder het pad `hyco`, wordt de `path` expressie mag `hyco/suffix?param=value&...` gevolgd door de queryreeksparameters die hier zijn gedefinieerd. Een volledige expressie kan vervolgens als volgt zijn:
+ De `{path}` is het pad naar de URL-code naam ruimte van de vooraf geconfigureerde hybride verbinding waarop deze listener moet worden geregistreerd. De `path` expressie kan worden uitgebreid met een achtervoegsel en een query reeks expressie om verder te communiceren. Als de hybride verbinding wordt geregistreerd onder het pad `hyco`, kan de `path`-expressie `hyco/suffix?param=value&...` worden gevolgd door de query teken reeks parameters die hier zijn gedefinieerd. Een volledige expressie kan er dan als volgt uitzien:
 
 ```
 wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id=...&]sbc-hc-token=...
 ```
 
-De `path` expressie wordt doorgegeven aan de listener in de adres-URI die is opgenomen in het controlebericht 'accepteren'.
+De `path`-expressie wordt door gegeven aan de listener in de adres-URI die is opgenomen in het besturings bericht ' Accept '.
 
-Als de WebSocket-verbinding is mislukt vanwege de hybride verbinding pad niet wordt geregistreerd, een ongeldige of ontbrekende token of een andere fout, wordt de fout feedback volgen met behulp van de reguliere gesegmenteerde HTTP 1.1-status feedback model. De statusbeschrijving van de bevat een fout tracerings-ID die kan worden doorgegeven aan Azure-ondersteuningspersoneel:
+Als de WebSocket-verbinding mislukt omdat het Hybrid Connection-pad niet is geregistreerd, een ongeldig of ontbrekend token of een andere fout, wordt de fout feedback weer gegeven met behulp van het normale HTTP 1,1-status feedback model. De status beschrijving bevat een ID voor het bijhouden van fouten die kan worden gecommuniceerd naar ondersteunings personeel van Azure:
 
-| Code | Fout          | Description
+| Coderen | Fout          | Beschrijving
 | ---- | -------------- | -------------------------------------------------------------------
-| 404  | Niet gevonden      | Het pad van de hybride verbinding is ongeldig of de basis-URL heeft onjuiste indeling.
-| 401  | Niet geautoriseerd   | Het beveiligingstoken is een ontbrekend of onjuist gevormd of ongeldig.
-| 403  | Verboden      | Het beveiligingstoken is niet geldig voor dit pad en voor deze actie.
-| 500  | Interne fout | Er is iets misgegaan in de service.
+| 404  | Niet gevonden      | Het Hybrid Connection-pad is ongeldig of de basis-URL is onjuist gevormd.
+| 401  | Niet geautoriseerd   | Het beveiligings token ontbreekt of is onjuist of ongeldig.
+| 403  | Verboden      | Het beveiligings token is niet geldig voor dit pad en voor deze actie.
+| 500  | Interne fout | Er is iets verkeerd gegaan in de service.
 
-Als de WebSocket-verbinding opzettelijk door de service afgesloten wordt nadat deze is in eerste instantie ingesteld, de reden voor doet, wordt doorgegeven met behulp van een juiste WebSocket-protocol foutcode samen met een beschrijvend foutbericht dat ook een tracerings-ID bevat .
+Als de WebSocket-verbinding opzettelijk wordt afgesloten door de service nadat deze voor het eerst is ingesteld, wordt de reden hiervoor gecommuniceerd met behulp van de juiste WebSocket protocol-fout code en een beschrijving van het fout bericht dat ook een tracking-ID bevat .
 
-| WS-Status | Description
+| WS-status | Beschrijving
 | --------- | ------------------------------------------------------------------------------- 
-| 1000      | De listener is afgesloten van de socket.
-| 1001      | Het pad van de hybride verbinding is verwijderd of uitgeschakeld.
-| 1008      | Het beveiligingstoken is verlopen, dus het autorisatiebeleid wordt geschonden.
-| 1011      | Er is iets misgegaan in de service.
+| 1000      | De listener heeft de socket afgesloten.
+| 1001      | Het hybride verbindings traject is verwijderd of uitgeschakeld.
+| 1008      | Het beveiligings token is verlopen, daarom wordt het autorisatie beleid geschonden.
+| 1011      | Er is iets verkeerd gegaan in de service.
 
-### <a name="http-request-protocol"></a>HTTP-aanvraagprotocol
+### <a name="http-request-protocol"></a>HTTP-aanvraag Protocol
 
-HTTP-aanvraag voor dit protocol kunnen willekeurige HTTP-aanvragen, met uitzondering van protocol upgrades.
-HTTP-aanvragen zijn waarnaar wordt verwezen op van de entiteit reguliere runtime-adres, zonder de $hc infix die wordt gebruikt voor hybride verbindingen van clients voor WebSocket.
+Met het HTTP-aanvraag protocol kunt u wille keurige HTTP-aanvragen, behalve protocol upgrades.
+HTTP-aanvragen worden naar het normale runtime adres van de entiteit gewijsd zonder de $hc infix die wordt gebruikt voor de WebSocket-clients van hybride verbindingen.
 
 ```
 https://{namespace-address}/{path}?sbc-hc-token=...
 ```
 
-De _naamruimte-address_ is de volledig gekwalificeerde domeinnaam van de Azure Relay-naamruimte die als host fungeert voor de hybride verbinding, meestal van het formulier `{myname}.servicebus.windows.net`.
+De _naam ruimte-adres_ is de Fully Qualified Domain name van de Azure relay naam ruimte die als host fungeert voor de hybride verbinding, doorgaans in de vorm van `{myname}.servicebus.windows.net`.
 
-De aanvraag kan willekeurige extra HTTP-headers, met inbegrip van de toepassing gedefinieerde waarden bevatten. Alle headers, met uitzondering van die rechtstreeks zijn gedefinieerd in RFC7230 geleverd (Zie [aanvraagbericht](#Request message)) overgebracht naar de listener en kunt u vinden op de `requestHeader` object van de **aanvraag** bericht.
+De aanvraag kan wille keurige extra HTTP-headers bevatten, inclusief door de toepassing gedefinieerde items. Alle opgegeven headers, met uitzonde ring van degene die rechtstreeks zijn gedefinieerd in RFC7230 (Zie [aanvraag bericht](#Request message)) stroom naar de listener en kunnen worden gevonden op het `requestHeader`-object van het **aanvraag** bericht.
 
-De opties voor queryreeksen parameter zijn als volgt:
+U hebt de volgende opties voor de query teken reeks parameter:
 
-| Param          | Vereist? | Description
+| Param          | Vereist? | Beschrijving
 | -------------- | --------- | ---------------- |
-| `sb-hc-token`  | Ja\*     | De listener van een geldige, door de URL-gecodeerde Service Bus gedeeld toegangstoken moet opgeven voor de naamruimte of een hybride verbinding biedt de **verzenden** rechts.
+| `sb-hc-token`  | Ja\*     | De listener moet een geldig, URL-gecodeerd Service Bus token voor gedeelde toegang opgeven voor de naam ruimte of hybride verbinding die het **Verzend** recht verleent.
 
-Het token kan ook worden uitgevoerd in ofwel de `ServiceBusAuthorization` of `Authorization` HTTP-header. Het token kan worden weggelaten als de hybride verbinding is geconfigureerd voor het toestaan van anonieme aanvragen.
+Het token kan ook worden uitgevoerd in de `ServiceBusAuthorization` of `Authorization` HTTP-header. Het token kan worden wegge laten als de hybride verbinding zo is geconfigureerd dat anonieme aanvragen worden toegestaan.
 
-Omdat de service daadwerkelijk als een proxy, fungeert zelfs als niet als een ' True ' HTTP-proxy, ofwel wordt toegevoegd een `Via` header of de bestaande annotates `Via` header die compatibel zijn met [RFC7230, sectie 5.7.1](https://tools.ietf.org/html/rfc7230#section-5.7.1).
-De service wordt de hostnaam van de Relay-naamruimte aan `Via`.
+Omdat de service effectief fungeert als een proxy, zelfs als dit niet zo is als een echte HTTP-proxy, wordt er een `Via`-header toegevoegd of wordt de bestaande `Via` header gekoppeld aan [RFC7230, sectie 5.7.1](https://tools.ietf.org/html/rfc7230#section-5.7.1).
+De service voegt de hostnaam van de relay-naam ruimte toe aan `Via`.
 
-| Code | Message  | Description                    |
+| Coderen | Bericht  | Beschrijving                    |
 | ---- | -------- | ------------------------------ |
 | 200  | OK       | De aanvraag is verwerkt door ten minste één listener.  |
-| 202  | Geaccepteerd | De aanvraag is goedgekeurd door ten minste één listener. |
+| 202  | Geaccepteerd | De aanvraag is door ten minste één listener geaccepteerd. |
 
-Als er een fout is, kunt de service als volgt beantwoorden. Of het antwoord afkomstig is van de service of van de listener kan worden geïdentificeerd door de aanwezigheid van de `Via` header. Als de header aanwezig is, is het antwoord van de listener.
+Als er een fout optreedt, kan de service als volgt reageren. Of het antwoord afkomstig is van de service of van de listener, kan worden geïdentificeerd door de aanwezigheid van de `Via`-header. Als de header aanwezig is, is de reactie van de listener.
 
-| Code | Fout           | Description
+| Coderen | Fout           | Beschrijving
 | ---- | --------------- |--------- |
-| 404  | Niet gevonden       | Het pad van de hybride verbinding is ongeldig of de basis-URL heeft onjuiste indeling.
-| 401  | Niet geautoriseerd    | Het beveiligingstoken is een ontbrekend of onjuist gevormd of ongeldig.
-| 403  | Verboden       | Het beveiligingstoken is niet geldig voor dit pad en voor deze actie.
-| 500  | Interne fout  | Er is iets misgegaan in de service.
+| 404  | Niet gevonden       | Het Hybrid Connection-pad is ongeldig of de basis-URL is onjuist gevormd.
+| 401  | Niet geautoriseerd    | Het beveiligings token ontbreekt of is onjuist of ongeldig.
+| 403  | Verboden       | Het beveiligings token is niet geldig voor dit pad en voor deze actie.
+| 500  | Interne fout  | Er is iets verkeerd gegaan in de service.
 | 503  | Ongeldige gateway     | De aanvraag kan niet worden doorgestuurd naar een listener.
-| 504  | Time-out van gateway | De aanvraag is doorgestuurd naar een listener, maar de listener erkent ontvangst in de tijd die nodig is.
+| 504  | Time-out van Gateway | De aanvraag is doorgestuurd naar een listener, maar de listener heeft geen ontvangst in de vereiste tijd bevestigd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

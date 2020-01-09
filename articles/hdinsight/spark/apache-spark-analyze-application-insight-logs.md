@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/09/2018
-ms.openlocfilehash: 737b049aa94ede2ffb0c1035b4cadfbed32d7dc4
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: 6fd7682f56fbe446904a4acdb39e78525f2523a8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145598"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435246"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Application Insights-telemetrie-logboeken analyseren met Apache Spark in HDInsight
 
@@ -45,12 +45,12 @@ In het volgende diagram ziet u de service architectuur van dit voor beeld:
 
 Application Insights kan worden geconfigureerd om voortdurend telemetriegegevens naar blobs te exporteren. HDInsight kan vervolgens gegevens lezen die zijn opgeslagen in de blobs. Er zijn echter enkele vereisten die u moet volgen:
 
-* **Locatie**: Als het opslag account en HDInsight zich op verschillende locaties bevinden, kan de latentie langer duren. De kosten worden ook verhoogd, omdat er uitvoer kosten worden toegepast op gegevens die tussen regio's worden verplaatst.
+* **Locatie**: als het opslag account en HDInsight zich op verschillende locaties bevinden, kan de latentie langer duren. De kosten worden ook verhoogd, omdat er uitvoer kosten worden toegepast op gegevens die tussen regio's worden verplaatst.
 
     > [!WARNING]  
     > Het gebruik van een opslag account in een andere locatie dan HDInsight wordt niet ondersteund.
 
-* **BLOB-type**: HDInsight biedt alleen ondersteuning voor blok-blobs. Application Insights wordt standaard ingesteld op het gebruik van blok-blobs, dus moet u standaard werken met HDInsight.
+* **BLOB-type**: HDInsight ondersteunt alleen blok-blobs. Application Insights wordt standaard ingesteld op het gebruik van blok-blobs, dus moet u standaard werken met HDInsight.
 
 Zie het document [extra opslag accounts toevoegen](../hdinsight-hadoop-add-storage.md) voor meer informatie over het toevoegen van opslag aan een bestaand cluster.
 
@@ -60,7 +60,7 @@ Application Insights biedt informatie over het [exporteren van gegevens model](.
 
 ## <a name="export-telemetry-data"></a>Telemetriegegevens exporteren
 
-Volg de stappen in [continue export configureren](../../azure-monitor/app/export-telemetry.md) om uw Application Insights te configureren voor het exporteren van telemetriegegevens naar een Azure Storage-blob.
+Volg de stappen in [continue export configureren](../../azure-monitor/app/export-telemetry.md) om uw Application Insights te configureren voor het exporteren van telemetriegegevens naar een Azure Storage blob.
 
 ## <a name="configure-hdinsight-to-access-the-data"></a>HDInsight configureren voor toegang tot de gegevens
 
@@ -70,9 +70,7 @@ Als u het Azure Storage-account wilt toevoegen aan een bestaand cluster, gebruik
 
 ## <a name="analyze-the-data-pyspark"></a>De gegevens analyseren: PySpark
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com)uw Spark in HDInsight-cluster. Selecteer **cluster dashboards**in het gedeelte **snelle koppelingen** en selecteer **Jupyter notebook** in de sectie cluster Dashboard__.
-
-    ![Azure Portal cluster dashboard pyspark](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net/jupyter` waarbij CLUSTERNAME de naam van uw cluster is.
 
 2. Selecteer in de rechter bovenhoek van de pagina Jupyter **Nieuw**en klik vervolgens op **PySpark**. Er wordt een nieuw browser tabblad met een op python gebaseerd Jupyter Notebook geopend.
 
@@ -82,9 +80,9 @@ Als u het Azure Storage-account wilt toevoegen aan een bestaand cluster, gebruik
    sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
    ```
 
-    Met deze code wordt Spark zodanig geconfigureerd dat de mapstructuur voor de invoer gegevens recursief wordt geopend. Application Insights telemetrie wordt geregistreerd in een directory structuur die vergelijkbaar `/{telemetry type}/YYYY-MM-DD/{##}/`is met die van.
+    Met deze code wordt Spark zodanig geconfigureerd dat de mapstructuur voor de invoer gegevens recursief wordt geopend. Application Insights telemetrie wordt geregistreerd in een directory structuur die vergelijkbaar is met de `/{telemetry type}/YYYY-MM-DD/{##}/`.
 
-4. Gebruik **SHIFT + ENTER** om de code uit te voeren. Aan de linkerkant van de cel wordt een '\*' weer gegeven tussen de vier Kante haken om aan te geven dat de code in deze cel wordt uitgevoerd. Zodra de bewerking is voltooid, wordt\*de ' ' gewijzigd in een getal en wordt de uitvoer vergelijkbaar met de volgende tekst weer gegeven onder de cel:
+4. Gebruik **SHIFT + ENTER** om de code uit te voeren. Aan de linkerkant van de cel verschijnt een '\*' tussen de haakjes om aan te geven dat de code in deze cel wordt uitgevoerd. Zodra het proces is voltooid, wordt de\*gewijzigd in een getal en wordt de uitvoer vergelijkbaar met de volgende tekst weer gegeven onder de cel:
 
         Creating SparkContext as 'sc'
 
@@ -93,22 +91,23 @@ Als u het Azure Storage-account wilt toevoegen aan een bestaand cluster, gebruik
 
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. Er wordt een nieuwe cel gemaakt onder het eerste item. Voer de volgende tekst in de nieuwe cel in. Vervang `CONTAINER` en`STORAGEACCOUNT` door de naam van het Azure Storage-account en de BLOB-container die Application Insights gegevens bevat.
+
+5. Er wordt een nieuwe cel gemaakt onder het eerste item. Voer de volgende tekst in de nieuwe cel in. Vervang `CONTAINER` en `STORAGEACCOUNT` door de Azure Storage-account naam en de naam van de BLOB-container die Application Insights gegevens bevat.
 
    ```python
    %%bash
-   hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
+   hdfs dfs -ls wasbs://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
     Gebruik **SHIFT + ENTER** om deze cel uit te voeren. Er wordt een resultaat weer gegeven dat vergelijkbaar is met de volgende tekst:
 
         Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    Het geretourneerde wasb is de locatie van de Application Insights telemetrie-gegevens. Wijzig de regel in de cel om het geretourneerde wasb te gebruiken, en gebruik **SHIFT + ENTER** om de cel opnieuw uit te voeren. `hdfs dfs -ls` Deze keer worden de resultaten weer gegeven met de mappen die telemetriegegevens bevatten.
+    Het geretourneerde wasbs is de locatie van de Application Insights telemetrie-gegevens. Wijzig de `hdfs dfs -ls` regel in de cel om het geretourneerde wasbs te gebruiken, en gebruik **SHIFT + ENTER** om de cel opnieuw uit te voeren. Deze keer worden de resultaten weer gegeven met de mappen die telemetriegegevens bevatten.
 
    > [!NOTE]  
-   > Voor de rest van de stappen in deze sectie is de `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` map gebruikt. De mapstructuur kan afwijken.
+   > Voor de rest van de stappen in deze sectie is de map `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` gebruikt. De mapstructuur kan afwijken.
 
 6. Voer in de volgende cel de volgende code in: Vervang `WASB_PATH` door het pad uit de vorige stap.
 
@@ -124,7 +123,7 @@ Als u het Azure Storage-account wilt toevoegen aan een bestaand cluster, gebruik
    jsonData.printSchema()
    ```
 
-    Het schema voor elk type telemetrie wijkt af. Het volgende voor beeld is het schema dat wordt gegenereerd voor webaanvragen (gegevens die zijn `Requests` opgeslagen in de submap):
+    Het schema voor elk type telemetrie wijkt af. Het volgende voor beeld is het schema dat wordt gegenereerd voor webaanvragen (gegevens die zijn opgeslagen in de `Requests`-submap):
 
         root
         |-- context: struct (nullable = true)
@@ -186,6 +185,7 @@ Als u het Azure Storage-account wilt toevoegen aan een bestaand cluster, gebruik
         |    |    |    |-- hashTag: string (nullable = true)
         |    |    |    |-- host: string (nullable = true)
         |    |    |    |-- protocol: string (nullable = true)
+
 8. Gebruik de volgende opdracht om de data frame te registreren als een tijdelijke tabel en een query uit te voeren op de gegevens:
 
    ```python
@@ -211,22 +211,21 @@ Als u het Azure Storage-account wilt toevoegen aan een bestaand cluster, gebruik
         ...
         +---------+
 
-## <a name="analyze-the-data-scala"></a>De gegevens analyseren: Scala
+## <a name="analyze-the-data-scala"></a>De gegevens analyseren: scala
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com)uw Spark in HDInsight-cluster. Selecteer **cluster dashboards**in het gedeelte **snelle koppelingen** en selecteer **Jupyter notebook** in de sectie cluster Dashboard__.
-
-    ![Azure Portal cluster dashboard scala](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net/jupyter` waarbij CLUSTERNAME de naam van uw cluster is.
 
 2. Selecteer in de rechter bovenhoek van de pagina Jupyter **Nieuw**en klik vervolgens op **scala**. Er wordt een nieuw browser tabblad met een op scala gebaseerde Jupyter Notebook weer gegeven.
+
 3. Voer in het eerste veld (een **cel**) op de pagina de volgende tekst in:
 
    ```scala
    sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
    ```
 
-    Met deze code wordt Spark zodanig geconfigureerd dat de mapstructuur voor de invoer gegevens recursief wordt geopend. Application Insights telemetrie wordt geregistreerd in een directory structuur die `/{telemetry type}/YYYY-MM-DD/{##}/`vergelijkbaar is met.
+    Met deze code wordt Spark zodanig geconfigureerd dat de mapstructuur voor de invoer gegevens recursief wordt geopend. Application Insights telemetrie wordt geregistreerd in een directory structuur die vergelijkbaar is met `/{telemetry type}/YYYY-MM-DD/{##}/`.
 
-4. Gebruik **SHIFT + ENTER** om de code uit te voeren. Aan de linkerkant van de cel wordt een '\*' weer gegeven tussen de vier Kante haken om aan te geven dat de code in deze cel wordt uitgevoerd. Zodra de bewerking is voltooid, wordt\*de ' ' gewijzigd in een getal en wordt de uitvoer vergelijkbaar met de volgende tekst weer gegeven onder de cel:
+4. Gebruik **SHIFT + ENTER** om de code uit te voeren. Aan de linkerkant van de cel verschijnt een '\*' tussen de haakjes om aan te geven dat de code in deze cel wordt uitgevoerd. Zodra het proces is voltooid, wordt de\*gewijzigd in een getal en wordt de uitvoer vergelijkbaar met de volgende tekst weer gegeven onder de cel:
 
         Creating SparkContext as 'sc'
 
@@ -235,22 +234,23 @@ Als u het Azure Storage-account wilt toevoegen aan een bestaand cluster, gebruik
 
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. Er wordt een nieuwe cel gemaakt onder het eerste item. Voer de volgende tekst in de nieuwe cel in. Vervang `CONTAINER` en`STORAGEACCOUNT` door de naam van het Azure Storage-account en de BLOB-container die Application Insights Logboeken bevat.
+
+5. Er wordt een nieuwe cel gemaakt onder het eerste item. Voer de volgende tekst in de nieuwe cel in. Vervang `CONTAINER` en `STORAGEACCOUNT` door de Azure Storage accountnaam en de naam van de BLOB-container die Application Insights Logboeken bevat.
 
    ```scala
    %%bash
-   hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
+   hdfs dfs -ls wasbs://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
     Gebruik **SHIFT + ENTER** om deze cel uit te voeren. Er wordt een resultaat weer gegeven dat vergelijkbaar is met de volgende tekst:
 
         Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    Het geretourneerde wasb is de locatie van de Application Insights telemetrie-gegevens. Wijzig de regel in de cel om het geretourneerde wasb te gebruiken, en gebruik **SHIFT + ENTER** om de cel opnieuw uit te voeren. `hdfs dfs -ls` Deze keer worden de resultaten weer gegeven met de mappen die telemetriegegevens bevatten.
+    Het geretourneerde wasbs is de locatie van de Application Insights telemetrie-gegevens. Wijzig de `hdfs dfs -ls` regel in de cel om het geretourneerde wasbs te gebruiken, en gebruik **SHIFT + ENTER** om de cel opnieuw uit te voeren. Deze keer worden de resultaten weer gegeven met de mappen die telemetriegegevens bevatten.
 
    > [!NOTE]  
-   > Voor de rest van de stappen in deze sectie is de `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` map gebruikt. Deze map bestaat mogelijk niet, tenzij uw telemetrie-gegevens voor een web-app zijn.
+   > Voor de rest van de stappen in deze sectie is de map `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` gebruikt. Deze map bestaat mogelijk niet, tenzij uw telemetrie-gegevens voor een web-app zijn.
 
 6. Voer in de volgende cel de volgende code in: Vervang `WASB\_PATH` door het pad uit de vorige stap.
 
@@ -268,7 +268,7 @@ Als u het Azure Storage-account wilt toevoegen aan een bestaand cluster, gebruik
    jsonData.printSchema
    ```
 
-    Het schema voor elk type telemetrie wijkt af. Het volgende voor beeld is het schema dat wordt gegenereerd voor webaanvragen (gegevens die zijn `Requests` opgeslagen in de submap):
+    Het schema voor elk type telemetrie wijkt af. Het volgende voor beeld is het schema dat wordt gegenereerd voor webaanvragen (gegevens die zijn opgeslagen in de `Requests`-submap):
 
         root
         |-- context: struct (nullable = true)
@@ -335,15 +335,13 @@ Als u het Azure Storage-account wilt toevoegen aan een bestaand cluster, gebruik
 
    ```scala
    jsonData.registerTempTable("requests")
-   var city = sqlContext.sql("select context.location.city from requests where context.location.city is not null limit 10").show()
+   var city = sqlContext.sql("select context.location.city from requests where context.location.city isn't null limit 10").show()
    ```
 
     Met deze query wordt de plaats informatie geretourneerd voor de top 20 records waar context. location. City niet null is.
 
    > [!NOTE]  
    > De context structuur is aanwezig in alle door Application Insights vastgelegde telemetrie. Het element City kan niet worden ingevuld in uw logboeken. Gebruik het schema om andere elementen te identificeren waarvoor u een query kunt uitvoeren die gegevens voor uw logboeken kan bevatten.
-   >
-   >
 
     Deze query retourneert informatie die lijkt op de volgende tekst:
 
@@ -361,7 +359,7 @@ Als u het Azure Storage-account wilt toevoegen aan een bestaand cluster, gebruik
 
 Raadpleeg de volgende documenten voor meer voor beelden van het gebruik van Apache Spark voor het werken met gegevens en services in Azure:
 
-* [Apache Spark met BI: Interactieve gegevens analyse uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
+* [Apache Spark met BI: interactieve gegevens analyses uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](apache-spark-machine-learning-mllib-ipython.md)
 * [Analyse van website logboeken met Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)

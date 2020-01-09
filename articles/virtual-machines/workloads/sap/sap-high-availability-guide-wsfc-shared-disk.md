@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 848b15cef43efa62fdff6715bfcfef9819f4e100
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7fae3c08dd4b51b8c8dc9437fce5b5b5de063726
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078277"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75637913"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -31,8 +31,8 @@ ms.locfileid: "70078277"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -178,7 +178,7 @@ ms.locfileid: "70078277"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -209,7 +209,7 @@ De Azure Load Balancer-service biedt een *interne Load Balancer* voor Azure. Met
 
 Implementeer de interne load balancer in de resource groep die de cluster knooppunten bevat. Configureer vervolgens alle benodigde regels voor het door sturen van poorten met behulp van de test poorten van de interne load balancer. Clients kunnen verbinding maken via de naam van de virtuele host. De DNS-server zet het IP-adres van het cluster op en de interne load balancer verwerkt poort door sturen naar het actieve knoop punt van het cluster.
 
-![Afbeelding 1: Windows Failover Clustering-configuratie in azure zonder een gedeelde schijf][sap-ha-guide-figure-1001]
+![Afbeelding 1: configuratie van Windows Failover Clustering in azure zonder een gedeelde schijf][sap-ha-guide-figure-1001]
 
 _**Afbeelding 1:** Configuratie van Windows Server Failover Clustering in azure zonder een gedeelde schijf_
 
@@ -219,35 +219,35 @@ In Windows bevat een SAP ASCS/SCS-instantie SAP Central Services, de SAP-bericht
 Een SAP ASCS/SCS-exemplaar heeft de volgende onderdelen:
 
 * SAP-Centrale Services:
-    * Twee processen, een bericht en een bewerkings server \<, en een ASCS/SCS-naam >, die wordt gebruikt voor toegang tot deze twee processen.
-    * Bestands structuur: S:\usr\sap\\sid\&gt;ASCS/SCS\<-instantie nummer&lt;\>
+    * Twee processen, een bericht-en bewerkings server en een \<ASCS/SCS-naam >, die wordt gebruikt voor toegang tot deze twee processen.
+    * Bestands structuur: S:\usr\sap\\&lt;SID&gt;\ ASCS/SCS\<exemplaar nummer\>
 
 
 * SAP Global host files:
-  * Bestands structuur: S:\usr\sap\\sid&lt;\SYS.\..&gt;
-  * De sapmnt-bestands share, waarmee u toegang tot deze globale\\S:\usr\sap&gt;&lt;sid\.\SYS.. files mogelijk maakt met behulp van het volgende UNC-pad:
+  * Bestands structuur: S:\usr\sap\\&lt;SID&gt;\SYS\...
+  * De sapmnt-bestands share, waarmee toegang tot deze globale S:\usr\sap\\&lt;SID&gt;\SYS\.wordt ingeschakeld. bestanden met behulp van het volgende UNC-pad:
 
-    \\\\< ASCS/\>SCS-naam van virtuele host \sapmnt\.\\&lt;sid&gt;\SYS..
+    \\\\< ASCS/SCS virtual host name\>\sapmnt\\&lt;SID&gt;\SYS\...
 
 
-![Afbeelding 2: Processen, bestands structuur en globale host sapmnt bestands share van een SAP ASCS/SCS-exemplaar][sap-ha-guide-figure-8001]
+![Afbeelding 2: processen, bestands structuur en globale host sapmnt-bestands share van een SAP ASCS/SCS-exemplaar][sap-ha-guide-figure-8001]
 
 _**Afbeelding 2:** Processen, bestands structuur en globale host sapmnt bestands share van een SAP ASCS/SCS-exemplaar_
 
 In een instelling met hoge Beschik baarheid, cluster SAP ASCS/SCS instances. We gebruiken *geclusterde gedeelde schijven* (stations S, in ons voor beeld) om de ASCS/SCS en SAP Global host-bestanden te plaatsen.
 
-![Afbeelding 3: SAP ASCS/SCS HA-architectuur met gedeelde schijf][sap-ha-guide-figure-8002]
+![Afbeelding 3: SAP ASCS/SCS HA Architecture met gedeelde schijf][sap-ha-guide-figure-8002]
 
 _**Afbeelding 3:** SAP ASCS/SCS HA-architectuur met gedeelde schijf_
 
 > [!IMPORTANT]
 > Deze twee onderdelen worden uitgevoerd onder hetzelfde SAP ASCS/SCS-exemplaar:
->* Dezelfde \<ASCS/SCS virtuele hostnaam > wordt gebruikt voor toegang tot het SAP-bericht en server processen in de wachtrij en de SAP Global host-bestanden via de bestands share sapmnt.
+>* Hetzelfde \<ASCS/SCS voor de virtuele hostnaam > wordt gebruikt voor toegang tot het SAP-bericht en server processen in de wachtrij en de SAP Global host-bestanden via de sapmnt-bestands share.
 >* Dezelfde gedeelde cluster schijf stations worden onderling gedeeld.
 >
 
 
-![Afbeelding 4: SAP ASCS/SCS HA-architectuur met gedeelde schijf][sap-ha-guide-figure-8003]
+![Afbeelding 4: de architectuur van SAP ASCS/SCS HA met een gedeelde schijf][sap-ha-guide-figure-8003]
 
 _**Afbeelding 4:** SAP ASCS/SCS HA-architectuur met gedeelde schijf_
 
@@ -265,7 +265,7 @@ Een gedeelde schijf bron voor een cluster maken:
 
 Meer informatie over [SIOS data keeper](https://us.sios.com/products/datakeeper-cluster/).
 
-![Afbeelding 5: Configuratie van Windows Server Failover Clustering in azure met SIOS data keeper][sap-ha-guide-figure-1002]
+![Afbeelding 5: configuratie van Windows Server Failover Clustering in azure met SIOS data keeper][sap-ha-guide-figure-1002]
 
 _**Afbeelding 5:** Configuratie van Windows Failover Clustering in azure met SIOS data keeper_
 

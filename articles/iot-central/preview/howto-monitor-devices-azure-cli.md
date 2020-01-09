@@ -3,17 +3,17 @@ title: Connectiviteit van apparaten bewaken met behulp van Azure IoT Central Exp
 description: Controleer de apparaatgegevens en Bekijk de dubbele wijzigingen van het apparaat via de IoT Central Explorer-CLI.
 author: viv-liu
 ms.author: viviali
-ms.date: 09/27/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 2b1c4c64fc02df67f38e36194072efd5db3b8e38
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 90cf83f86acb647b8194619bc1b572e5147cc0cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895694"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434950"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli-preview-features"></a>Connectiviteit van apparaten bewaken met behulp van Azure CLI (preview-functies)
 

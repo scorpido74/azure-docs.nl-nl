@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 2bd25ad823217c5e9260142912a3d2d748b9c15a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 0f444838c87e14fa88f2785030c29915df637cf8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767701"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552199"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker gebruiken om Apache Kafka-onderwerpen te repliceren met Kafka in HDInsight
 
@@ -65,18 +65,18 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
 
     |Resourcegroep | Locatie |
     |---|---|
-    | Kafka-primair-RG | VS - centraal |
-    | Kafka-secundair-RG | VS - noord-centraal |
+    | kafka-primary-rg | VS - centraal |
+    | kafka-secondary-rg | VS - noord-centraal |
 
 1. Maak een nieuw virtueel netwerk **Kafka-primair-vnet** in **Kafka-Primary-RG**. Behoud de standaard instellingen.
 1. Maak een nieuw virtueel netwerk **Kafka-secundair-vnet** in **Kafka-Secondary-RG**, ook met de standaard instellingen.
 
 1. Twee nieuwe Kafka-clusters maken:
 
-    | Clusternaam | Resourcegroep | Virtueel netwerk | Opslagaccount |
+    | Clusternaam | Resourcegroep | Virtual Network | Opslagaccount |
     |---|---|---|---|
-    | Kafka-primair-cluster | Kafka-primair-RG | Kafka-primair-vnet | kafkaprimarystorage |
-    | Kafka-secundair-cluster | Kafka-secundair-RG | Kafka-secundair-vnet | kafkasecondarystorage |
+    | kafka-primary-cluster | kafka-primary-rg | kafka-primary-vnet | kafkaprimarystorage |
+    | kafka-secondary-cluster | kafka-secondary-rg | kafka-secondary-vnet | kafkasecondarystorage |
 
 1. Maak peerings voor virtuele netwerken. Met deze stap maakt u twee peerings: één van **Kafka-Primary-vnet** naar **Kafka-Secondary-vnet** en één keer van **Kafka-Secondary-vnet** naar **Kafka-Primary-vnet**.
     1. Selecteer het virtuele netwerk **Kafka-Primary-vnet** .
@@ -86,36 +86,41 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
 
         ![HDInsight Kafka vnet-peering toevoegen](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
-1. IP-reclame configureren:
-    1. Ga naar het Ambari-dash board voor het primaire cluster: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
-    1. Selecteer **Services** > **Kafka**. CliSelectck het tabblad **configuraties** .
-    1. Voeg de volgende configuratie regels toe aan de onderste **sjabloon sectie Kafka-env** . Selecteer **Opslaan**.
+### <a name="configure-ip-advertising"></a>IP-reclame configureren
 
-        ```
-        # Configure Kafka to advertise IP addresses instead of FQDN
-        IP_ADDRESS=$(hostname -i)
-        echo advertised.listeners=$IP_ADDRESS
-        sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
-        echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
-        ```
+Configureer IP-reclame om een client in staat te stellen verbinding te maken met behulp van IP-adressen van Broker in plaats van domein namen.
 
-    1. Voer een opmerking in het scherm **configuratie opslaan** in en klik op **Opslaan**.
-    1. Als u wordt gevraagd om een configuratie waarschuwing, klikt u op **door gaan**.
-    1. Selecteer **OK** op de **wijzigingen in de configuratie opslaan**.
-    1. Selecteer **opnieuw opstarten** > **alle betrokken problemen** in de melding **opnieuw opstarten vereist** opnieuw opstarten. Selecteer **Bevestig opnieuw opstarten**.
+1. Ga naar het Ambari-dash board voor het primaire cluster: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
+1. Selecteer **Services** > **Kafka**. CliSelectck het tabblad **configuraties** .
+1. Voeg de volgende configuratie regels toe aan de onderste **sjabloon sectie Kafka-env** . Selecteer **Opslaan**.
 
-        ![Apache Ambari alle betrokken software opnieuw opstarten](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+    ```
+    # Configure Kafka to advertise IP addresses instead of FQDN
+    IP_ADDRESS=$(hostname -i)
+    echo advertised.listeners=$IP_ADDRESS
+    sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    ```
 
-1. Configureer Kafka om te Luis teren op alle netwerk interfaces.
-    1. Blijf op het tabblad **configuratie** onder **Services** > **Kafka**. Stel in het gedeelte **Kafka-Broker** de eigenschap **listeners** in op `PLAINTEXT://0.0.0.0:9092`.
-    1. Selecteer **Opslaan**.
-    1. Selecteer **opnieuw opstarten**en **Bevestig opnieuw opstarten**.
+1. Voer een opmerking in het scherm **configuratie opslaan** in en klik op **Opslaan**.
+1. Als u wordt gevraagd om een configuratie waarschuwing, klikt u op **door gaan**.
+1. Selecteer **OK** op de **wijzigingen in de configuratie opslaan**.
+1. Selecteer **opnieuw opstarten** > **alle betrokken problemen** in de melding **opnieuw opstarten vereist** opnieuw opstarten. Selecteer **Bevestig opnieuw opstarten**.
 
-1. Registreer Broker IP-adressen en Zookeeper-adressen voor primair cluster.
-    1. Selecteer **hosts** op het Ambari-dash board.
-    1. Noteer de IP-adressen voor de brokers en Zookeepers. De Broker knooppunten hebben **wn** als de eerste twee letters van de hostnaam en de Zookeeper-knoop punten hebben **ZK** als de eerste twee letters van de hostnaam.
+    ![Apache Ambari alle betrokken software opnieuw opstarten](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
-        ![IP-adressen van Apache Ambari-weergave knooppunt](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>Configureer Kafka om te Luis teren op alle netwerk interfaces.
+    
+1. Blijf op het tabblad **configuratie** onder **Services** > **Kafka**. Stel in het gedeelte **Kafka-Broker** de eigenschap **listeners** in op `PLAINTEXT://0.0.0.0:9092`.
+1. Selecteer **Opslaan**.
+1. Selecteer **opnieuw opstarten**en **Bevestig opnieuw opstarten**.
+
+### <a name="record-broker-ip-addresses-and-zookeeper-addresses-for-primary-cluster"></a>Registreer Broker IP-adressen en Zookeeper-adressen voor primair cluster.
+
+1. Selecteer **hosts** op het Ambari-dash board.
+1. Noteer de IP-adressen voor de brokers en Zookeepers. De Broker knooppunten hebben **wn** als de eerste twee letters van de hostnaam en de Zookeeper-knoop punten hebben **ZK** als de eerste twee letters van de hostnaam.
+
+    ![IP-adressen van Apache Ambari-weergave knooppunt](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
 
 1. Herhaal de vorige drie stappen voor het tweede cluster **Kafka-secundair-cluster**: IP-reclame configureren, listeners instellen en noteer de Broker-en Zookeeper-IP-adressen.
 

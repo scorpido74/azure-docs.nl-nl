@@ -1,26 +1,18 @@
 ---
-title: Microsoft Threat Modeling Tool-Azure | Microsoft Docs
+title: Overzicht van Microsoft Threat Modeling Tool-functies-Azure
 description: Meer informatie over alle functies die beschikbaar zijn in de Threat Modeling Tool
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: e3c6769cc832a897cfbab5548de5328d743884b2
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728616"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552114"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Overzicht van Threat Modeling Tool-functies
 
@@ -50,19 +42,19 @@ De ervaring is vergelijkbaar met andere micro soft-producten. Laten we de menu o
 | Label                               | Details      |
 | --------------------------------------- | ------------ |
 | **File** | <ul><li>Bestanden openen, opslaan en sluiten</li><li>Meld u aan en meld u af bij de OneDrive-accounts.</li><li>Koppelingen delen (weer geven en bewerken).</li><li>Bestands gegevens weer geven.</li><li>Pas een nieuwe sjabloon toe op bestaande modellen.</li></ul> |
-| **Wijzigt** | Acties ongedaan maken en opnieuw uitvoeren, evenals kopiëren, plakken en verwijderen. |
-| **Mapweergave** | <ul><li>Scha kelen tussen **analyse** -en **ontwerp** weergaven.</li><li>Open gesloten vensters (bijvoorbeeld stencils, element eigenschappen en berichten).</li><li>De indeling opnieuw instellen op de standaard instellingen.</li></ul> |
+| **Bewerken** | Acties ongedaan maken en opnieuw uitvoeren, evenals kopiëren, plakken en verwijderen. |
+| **Weergave** | <ul><li>Scha kelen tussen **analyse** -en **ontwerp** weergaven.</li><li>Open gesloten vensters (bijvoorbeeld stencils, element eigenschappen en berichten).</li><li>De indeling opnieuw instellen op de standaard instellingen.</li></ul> |
 | **Diagram** | Diagrammen toevoegen en verwijderen en door tabs met diagrammen bladeren. |
 | **Rapporten** | Maak HTML-rapporten om met anderen te delen. |
 | **Help** | Zoek gidsen voor hulp bij het gebruik van het hulp programma. |
 
 De symbolen zijn snelkoppelingen voor de menu's op het hoogste niveau:
 
-| Valuta                               | Details      |
+| Symbool                               | Details      |
 | --------------------------------------- | ------------ |
-| **Staan** | Hiermee opent u een nieuw bestand. |
+| **Lopend** | Hiermee opent u een nieuw bestand. |
 | **Opslaan** | Hiermee slaat u het huidige bestand. |
-| **Aangepast** | Hiermee opent u de **ontwerp** weergave, waar u modellen kunt maken. |
+| **Ontwerpen** | Hiermee opent u de **ontwerp** weergave, waar u modellen kunt maken. |
 | **Analyseren** | Toont gegenereerde bedreigingen en hun eigenschappen. |
 | **Diagram toevoegen** | Hiermee voegt u een nieuw diagram toe (vergelijkbaar met nieuwe tabbladen in Excel). |
 | **Diagram verwijderen** | Hiermee verwijdert u het huidige diagram. |
@@ -71,7 +63,7 @@ De symbolen zijn snelkoppelingen voor de menu's op het hoogste niveau:
 | **In-en uitzoomen** | In-en uitzoomen op het diagram voor een betere weer gave. |
 | **Feedback** | Hiermee opent u het MSDN-forum. |
 
-### <a name="canvas"></a>Geval
+### <a name="canvas"></a>Canvas
 
 Het canvas is de ruimte waar u elementen kunt slepen en neerzetten. Slepen en neerzetten is de snelste en meest efficiënte manier om modellen te bouwen. U kunt ook met de rechter muisknop op klikken en items selecteren in het menu om algemene versies van elementen toe te voegen, zoals wordt weer gegeven:
 
@@ -97,9 +89,9 @@ Op basis van de sjabloon die u selecteert, vindt u alle beschik bare stencils di
 
 ### <a name="notesmessages"></a>Opmerkingen/berichten
 
-| Onderdeel                               | Details      |
+| Component                               | Details      |
 | --------------------------------------- | ------------ |
-| **Meldingen** | De logica van interne hulp middelen waarmee gebruikers worden gewaarschuwd wanneer er een fout optreedt, zoals geen gegevens stromen tussen elementen. |
+| **Berichten** | De logica van interne hulp middelen waarmee gebruikers worden gewaarschuwd wanneer er een fout optreedt, zoals geen gegevens stromen tussen elementen. |
 | **Opmerkingen** | Hand matige notities worden tijdens het ontwerp-en controle proces toegevoegd aan het bestand door engineering teams. |
 
 ### <a name="element-properties"></a>Element eigenschappen
@@ -108,7 +100,7 @@ Element eigenschappen variëren afhankelijk van de elementen die u selecteert. N
 
 | Eigenschap element                               | Details      |
 | --------------------------------------- | ------------ |
-| **Name** | Dit is handig voor het benoemen van uw processen, winkels, interactoren en stromen, zodat ze eenvoudig kunnen worden herkend. |
+| **Naam** | Dit is handig voor het benoemen van uw processen, winkels, interactoren en stromen, zodat ze eenvoudig kunnen worden herkend. |
 | **Buiten bereik** | Als deze is geselecteerd, wordt het element uit de matrix voor het genereren van bedreigingen gehaald (niet aanbevolen). |
 | **Reden voor buiten bereik** | Veld motivering om gebruikers te laten weten waarom buiten het bereik is geselecteerd. |
 
@@ -120,7 +112,7 @@ Wanneer u de app opent, ziet u het **welkomst** scherm.
 
 ### <a name="open-a-model"></a>Een model openen
 
-Beweeg de muis aanwijzer over **een model openen** om twee opties weer te geven: **Open vanaf deze computer** en **Open in OneDrive**. Met de eerste optie opent u het scherm **bestand openen** . Met de tweede optie gaat u door het aanmeldings proces voor OneDrive. Nadat de verificatie is geslaagd, kunt u mappen en bestanden selecteren.
+Beweeg de muis aanwijzer over **Open een model** om twee opties weer te geven: **Open vanaf deze computer** en **Open in OneDrive**. Met de eerste optie opent u het scherm **bestand openen** . Met de tweede optie gaat u door het aanmeldings proces voor OneDrive. Nadat de verificatie is geslaagd, kunt u mappen en bestanden selecteren.
 
 ![Model openen](./media/threat-modeling-tool-feature-overview/openmodel.png)
 
@@ -150,7 +142,7 @@ U kunt elementen op twee manieren verbinden:
 - **Slepen en neerzetten**: Sleep de gewenste gegevensstroom naar het raster en Verbind beide uiteinden met de juiste elementen.
 - **Klik op + SHIFT**: Klik op het eerste element (gegevens verzenden), houd de Shift-toets ingedrukt en selecteer vervolgens het tweede element (gegevens ontvangen). Klik met de rechter muisknop en selecteer **verbinding maken**. Als u een bidirectionele gegevens stroom gebruikt, is de volg orde niet zo belang rijk.
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Eigenschappen
 
  Als u de eigenschappen wilt zien die kunnen worden gewijzigd op de stencils, selecteert u het stencil en worden de gegevens dienovereenkomstig ingevuld. In het volgende voor beeld ziet u vóór en nadat een **database** stencil naar het diagram is gesleept:
 
@@ -182,11 +174,11 @@ Nadat u het diagram hebt gemaakt, selecteert u het **analyse** symbool (het verg
 
 Wanneer u een bedreiging selecteert, kunt u drie afzonderlijke functies gebruiken:
 
-| Functie                               | Information      |
+| Functie                               | Informatie      |
 | --------------------------------------- | ------------ |
 | **Indicator lezen** | <p>De dreiging is gemarkeerd als gelezen. Hiermee kunt u bijhouden welke items u hebt bekeken.</p><p>![Indicator voor lezen/lezen](./media/threat-modeling-tool-feature-overview/readmode.png)</p> |
 | **Interactie focus** | <p>De interactie in het diagram dat bij een bedreiging hoort, is gemarkeerd.</p><p>![Interactie focus](./media/threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
-| **Bedreigings eigenschappen** | <p>Meer informatie over de bedreiging wordt weer gegeven in het venster **bedreigings eigenschappen** .</p><p>![Bedreigings eigenschappen](./media/threat-modeling-tool-feature-overview/threatproperties.png)</p> |
+| **Bedreigings eigenschappen** | <p>Meer informatie over de bedreiging wordt weer gegeven in het venster **bedreigings eigenschappen** .</p><p>eigenschappen van ![Threat](./media/threat-modeling-tool-feature-overview/threatproperties.png)</p> |
 
 ### <a name="priority-change"></a>Prioriteit wijzigen
 
@@ -208,5 +200,5 @@ Nadat u de prioriteiten hebt gewijzigd en de status van elke gegenereerde bedrei
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Stuur uw vragen, opmerkingen en problemen naar tmtextsupport@microsoft.com. **[Down load](https://aka.ms/threatmodelingtool)** de Threat Modeling tool om aan de slag te gaan.
+- Stuur uw vragen, opmerkingen en aandachtspunten voor tmtextsupport@microsoft.com. **[Down load](https://aka.ms/threatmodelingtool)** de Threat Modeling tool om aan de slag te gaan.
 - Ga naar onze [github](https://github.com/Microsoft/threat-modeling-templates) -pagina om een sjabloon voor de community bij te dragen.

@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: c86df7c50e59309f921c60738870407e74a23219
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 60c1109d0f540c8301cc536c2079537dca5115f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555220"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435010"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>IoT Central beheren via de Azure Portal
 
@@ -41,7 +41,7 @@ Selecteer nu **Maken**.
 
 Vul alle velden in het formulier in. Dit formulier is vergelijkbaar met het formulier dat u invult om toepassingen te maken op de [Azure IOT Central Application Manager](https://aka.ms/iotcentral) -website. Zie de Snelstartgids [een IOT Central-toepassing maken](quick-deploy-iot-central.md) voor meer informatie.
 
-U kunt IoT Central-toepassing maken met algemeen beschik bare functies door voor **beeld contoso**, **aangepaste toepassing** en voor **beeld Devkits** als toepassings sjablonen te selecteren. alle andere toepassings sjablonen maken gebruik van open bare preview-functies.
+U kunt IoT Central toepassing maken met algemeen beschik bare functies door een **verouderde toepassing** te selecteren als toepassings sjabloon, alle andere toepassings sjablonen gebruiken open bare preview-functies.
 
 ![IoT Central formulier maken](media/howto-manage-iot-central-from-portal/image6a.png)
 

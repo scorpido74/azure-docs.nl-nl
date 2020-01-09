@@ -1,20 +1,20 @@
 ---
 title: Overzicht van Azure Portal | Microsoft Docs
-description: Meer informatie over het navigeren in de Azure Portal en het gebruik ervan om services te beheren
+description: De Azure Portal is een Graphical User Interface die u kunt gebruiken om uw Azure-Services te beheren. Meer informatie over het navigeren en zoeken naar resources in de Azure Portal.
 services: azure-portal
 keywords: portal
-author: kfollis
-ms.author: kfollis
-ms.date: 11/01/2019
+author: mblythe
+ms.author: mblythe
+ms.date: 12/20/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 90bbea1068bb237501daf5e0dfac865ca6b9a12a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 478b090cfe0bfd63bde37dc944cd9fad6e88f179
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579472"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75637606"
 ---
 # <a name="azure-portal-overview"></a>Overzicht van de Azure Portal
 
@@ -48,7 +48,7 @@ Zowel het Azure Portal menu als de standaard weergave van Azure kunnen worden ge
 
 ![Scherm opname met standaard weergave selectie](./media/azure-portal-overview/azure-portal-overview-portal-settings-menu-home.png)
 
-## <a name="azure-dashboard"></a>Azure-dash board
+## <a name="azure-dashboard"></a>Azure Dashboard
 
 Dash boards bieden een gerichte weer gave van de resources in uw abonnement die het belangrijkst zijn voor u. We hebben u een standaard dashboard gegeven om aan de slag te gaan. U kunt dit dash board aanpassen om de resources die u regel matig gebruikt, in één weer gave te zetten. Wijzigingen die u aanbrengt in de standaard weergave, zijn alleen van invloed op uw ervaring. U kunt echter aanvullende Dash boards maken voor uw eigen gebruik of uw aangepaste Dash boards publiceren en delen met andere gebruikers in uw organisatie. Zie [Dash boards maken en delen in de Azure Portal](../azure-portal/azure-portal-dashboards.md)voor meer informatie.
 

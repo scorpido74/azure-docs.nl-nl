@@ -1,7 +1,6 @@
 ---
 title: Invoer voor probleemoplossing voor Azure Stream Analytics
 description: Dit artikel wordt beschreven technieken voor het oplossen van uw invoer verbindingen in Azure Stream Analytics-taken.
-services: stream-analytics
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -9,14 +8,14 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8357a53ee065812922b5df53fbdef7c14e5f0ff7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 20a161ffc82cb8f74cfcac838856434f83c4e258
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621032"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354286"
 ---
-# <a name="troubleshoot-input-connections"></a>Invoer-verbindingsproblemen oplossen
+# <a name="troubleshoot-input-connections"></a>Problemen met invoerverbindingen oplossen
 
 Deze pagina worden veelvoorkomende problemen beschreven met invoer verbindingen en het oplossen van deze.
 
@@ -31,7 +30,7 @@ Deze pagina worden veelvoorkomende problemen beschreven met invoer verbindingen 
         
     Bekijk de voorbeeldgegevens voor inzicht in de vorm van de gegevens: het schema en de [gegevenstypen](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
 
-## <a name="malformed-input-events-causes-deserialization-errors"></a>Ongeldige invoer gebeurtenissen oorzaken deserialisatie fouten 
+## <a name="malformed-input-events-causes-deserialization-errors"></a>Ongeldige invoergebeurtenissen veroorzaken deserialisatiefouten 
 Deserialisatie problemen worden veroorzaakt wanneer de invoerstroom van uw Stream Analytics-taak onjuiste berichten bevat. Bijvoorbeeld, een onjuist ingedeeld bericht wordt mogelijk veroorzaakt door een ontbrekend haakje of een accolade in een JSON-object, of heeft een onjuiste tijdstempel-indeling in het tijdveld. 
  
 Wanneer een Stream Analytics-taak ontvangt een onjuist ingedeeld bericht uit de invoer, wordt het bericht verwijderd en ontvangt u een melding met een waarschuwing. Er wordt een waarschuwingssymbool weergegeven op de **invoer** tegel van uw Stream Analytics-taak. Deze waarschuwing aanmelding bestaat, zolang de taak wordt uitgevoerd:
@@ -50,7 +49,7 @@ U kunt de volgende stappen voor het analyseren van de invoer gebeurtenissen in d
 
 2. De tegel invoer details geeft een lijst van waarschuwingen met informatie over elk probleem. De waarschuwing voorbeeld bevat de partitie, offset en volgnummers waarbij er ongeldige JSON-gegevens. 
 
-   ![Stream Analytics-waarschuwing met offset](media/stream-analytics-malformed-events/warning-message-with-offset.png)
+   ![Stream Analytics waarschuwings bericht met offset](media/stream-analytics-malformed-events/warning-message-with-offset.png)
    
 3. Als u wilt zoeken in de JSON-gegevens met de juiste indeling, voert u de CheckMalformedEvents.cs code die beschikbaar zijn in de [opslagplaats met GitHub-voorbeelden](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Deze code leest de partitie-ID, verschuiving en de gegevens die zich in deze offset af te drukken. 
 
@@ -61,7 +60,7 @@ U kunt de volgende stappen voor het analyseren van de invoer gebeurtenissen in d
 ## <a name="job-exceeds-maximum-event-hub-receivers"></a>Taak overschrijdt de maximale Event Hub-ontvangers
 Een aanbevolen procedure voor het gebruik van Event Hubs is het gebruik van meerdere consumentengroepen om te controleren of de schaalbaarheid van de taak. Het aantal lezers in de Stream Analytics-taak voor een specifieke invoer is van invloed op het aantal lezers in een enkele consumergroep. Het exacte aantal ontvangers is gebaseerd op interne implementatiegegevens voor de scale-out-topologie-logica en niet extern wordt weergegeven. Het aantal lezers kunt wijzigen wanneer een taak wordt gestart of tijdens upgrades van de taak.
 
-De fout wordt weergegeven wanneer het aantal ontvangers overschrijdt het maximum is: `The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.`
+De fout wordt weergegeven wanneer het aantal ontvangers dat het maximum overschrijdt de volgende waarde heeft: `The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.`
 
 > [!NOTE]
 > Als het aantal lezers worden gewijzigd tijdens de upgrade van een taak, worden tijdelijke waarschuwingen om te controleren, Logboeken geschreven. Stream Analytics-taken worden automatisch hersteld vanuit deze tijdelijke problemen.
@@ -92,9 +91,9 @@ Als uw streaming-querysyntaxis verwijst meerdere keren naar dezelfde invoer Even
 
 Scenario's waarin het aantal lezers per partitie is groter dan de Event Hubs-limiet van vijf omvatten het volgende:
 
-* Meerdere SELECT-instructies: Als u meerdere SELECT-instructies die naar verwijzen **dezelfde** event hub-invoer, elke SELECT-instructie zorgt ervoor dat een nieuwe ontvanger moet worden gemaakt.
-* UNION: Wanneer u een SAMENVOEGING gebruikt, is het mogelijk om meerdere invoergegevens die naar verwijzen de **dezelfde** event hub- en consumer-groep.
-* SELF JOIN: Wanneer u een SELF JOIN-bewerking gebruikt, is het mogelijk om te verwijzen naar de **dezelfde** gebeurtenishub meerdere keren.
+* Meerdere SELECT-instructies: als u meerdere SELECT-instructies die naar verwijzen **dezelfde** event hub-invoer, elke SELECT-instructie zorgt ervoor dat een nieuwe ontvanger moet worden gemaakt.
+* UNION: Wanneer u een SAMENVOEGING gebruikt, is het mogelijk dat meerdere invoergegevens die naar verwijzen de **dezelfde** event hub- en consumer-groep.
+* SELF-join: Wanneer u een SELF JOIN-bewerking gebruikt, is het mogelijk om te verwijzen naar de **dezelfde** gebeurtenishub meerdere keren.
 
 De volgende procedures kunnen u scenario's waarin het aantal lezers per partitie is groter dan de Event Hubs-limiet van vijf.
 
@@ -136,7 +135,7 @@ FROM data
 
 Voor query's waarin drie of meer invoerwaarden zijn verbonden met de dezelfde consumergroep van Event Hubs, kunt u afzonderlijke consumergroepen maken. Dit is vereist voor het maken van aanvullende invoer van de Stream Analytics.
 
-## <a name="get-help"></a>Help opvragen
+## <a name="get-help"></a>Hulp krijgen
 
 Voor verdere ondersteuning kunt u proberen onze [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 

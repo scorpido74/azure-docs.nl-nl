@@ -1,28 +1,19 @@
 ---
-title: 'Zelfstudie: een Service Fabric Mesh-toepassing implementeren | Microsoft Docs'
+title: Zelf studie-een Service Fabric mesh-toepassing implementeren
 description: Leer hoe u Visual Studio gebruikt om een Azure Service Fabric Mesh-toepassing te publiceren die bestaat uit een ASP.NET Core-website die met een back-end-webservice communiceert.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: eef4cfaff38a96597794354cc991f5d3eeae9404
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2bb37252bc93c982dbc090a0c3f20aef842325f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810588"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351851"
 ---
-# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Zelfstudie: Een Service Fabric Mesh-toepassing implementeren
+# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Zelfstudie: een Service Fabric Mesh-toepassing implementeren
 
 Deze zelfstudie is deel drie van een reeks en laat u zien hoe u een Azure Service Fabric Mesh-webtoepassing rechtstreeks vanuit Visual Studio implementeert.
 
@@ -62,7 +53,7 @@ U vindt de toepassing in de map `src\todolistapp`.
 
 ## <a name="publish-to-azure"></a>Publiceren naar Azure
 
-Als u uw Service Fabric Mesh-project in Azure wilt publiceren, klikt u met de rechtermuisknop op **todolistapp** in Visual Studio en selecteert u **Publiceren...**.
+Als u uw Service Fabric Mesh-project in Azure wilt publiceren, klikt u met de rechtermuisknop op **todolistapp** in Visual Studio en selecteert u **Publiceren...** .
 
 Vervolgens ziet u het dialoogvenster **Service Fabric-toepassing publiceren**.
 
@@ -70,11 +61,11 @@ Vervolgens ziet u het dialoogvenster **Service Fabric-toepassing publiceren**.
 
 Selecteer uw Azure-account en -abonnement. Kies een **Locatie**. In dit artikel wordt gebruikgemaakt van **US - oost**.
 
-Selecteer onder **Resourcegroep** **\<Nieuwe resourcegroep maken...>**. Er verschijnt een dialoogvenster waarin u uw nieuwe resourcegroep maakt. In dit artikel wordt de locatie **US - oost** gebruikt en krijgt de groep de naam **sfmeshTutorial1RG** (kies een unieke groepsnaam als meerdere mensen in uw organisatie gebruikmaken van hetzelfde abonnement).  Druk op **Maken** om de resourcegroep te maken en ga terug naar het publicatiedialoogvenster.
+Selecteer onder **Resourcegroep** **\<Nieuwe resourcegroep maken...>** . Er verschijnt een dialoogvenster waarin u uw nieuwe resourcegroep maakt. In dit artikel wordt de locatie **US - oost** gebruikt en krijgt de groep de naam **sfmeshTutorial1RG** (kies een unieke groepsnaam als meerdere mensen in uw organisatie gebruikmaken van hetzelfde abonnement).  Druk op **Maken** om de resourcegroep te maken en ga terug naar het publicatiedialoogvenster.
 
 ![Dialoogvenster in Visual Studio over nieuwe resourcegroep in Service Fabric Mesh](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-In het dialoogvenster **Service Fabric-toepassing publiceren** selecteert u onder **Azure Container Registry** **\<Nieuw containerregister maken...>**. In het dialoogvenster **Containerregister maken** gebruikt u een unieke naam voor de **Containerregisternaam**. Geef een **Locatie** op (in deze tutorial wordt gebruikgemaakt van **US - oost**). Selecteer in de vervolgkeuzelijst de **Resourcegroep** die u eerder hebt gemaakt, bijvoorbeeld **sfmeshTutorial1RG**. Stel de **SKU** in op **Basic** en druk op **Maken** om het persoonlijke Azure-containerregister te maken en terug te gaan naar het dialoogvenster Publiceren.
+In het dialoogvenster **Service Fabric-toepassing publiceren** selecteert u onder **Azure Container Registry** **\<Nieuw containerregister maken...>** . In het dialoogvenster **Containerregister maken** gebruikt u een unieke naam voor de **Containerregisternaam**. Geef een **Locatie** op (in deze tutorial wordt gebruikgemaakt van **US - oost**). Selecteer in de vervolgkeuzelijst de **Resourcegroep** die u eerder hebt gemaakt, bijvoorbeeld **sfmeshTutorial1RG**. Stel de **SKU** in op **Basic** en druk op **Maken** om het persoonlijke Azure-containerregister te maken en terug te gaan naar het dialoogvenster Publiceren.
 
 ![Dialoogvenster in Visual Studio over nieuw containerregister in Service Fabric Mesh](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 

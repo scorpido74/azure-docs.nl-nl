@@ -1,6 +1,7 @@
 ---
-title: Aangepaste rollen voor SQL Server voor het SQL Database van online migraties van beheerde exemplaren | Microsoft Docs
-description: Meer informatie over het gebruik van de aangepaste rollen voor SQL Server voor het SQL Database van online migraties van beheerde exemplaren.
+title: 'Aangepaste rollen: online SQL Server naar migraties van SQL-beheerde exemplaren'
+titleSuffix: Azure Database Migration Service
+description: Meer informatie over het gebruik van de aangepaste rollen voor SQL Server voor het Azure SQL Database van online migraties van beheerde exemplaren.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 10/25/2019
-ms.openlocfilehash: 8148e029bf343613a230b20d0397fa7851c96712
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 85c70968eb0f8a5752bbfa338918a8bba2fe7794
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952353"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437701"
 ---
 # <a name="custom-roles-for-sql-server-to-sql-database-managed-instance-online-migrations"></a>Aangepaste rollen voor SQL Server voor het SQL Database van online migraties van beheerde exemplaren
 
@@ -31,7 +32,7 @@ Het is momenteel raadzaam om mini maal twee aangepaste rollen te maken voor de A
 > [!NOTE]
 > De laatste vereiste voor een aangepaste rol kan uiteindelijk worden verwijderd omdat er een nieuwe SQL Database beheerde exemplaar code wordt geïmplementeerd in Azure.
 
-**Aangepaste rol voor de App-ID**. Deze rol is vereist voor de Azure Database Migration Service migratie op het niveau van de *resource* of de *resource groep* (Zie het artikel [de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken voor meer informatie over de App-ID) die kan toegang krijgen tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)).
+**Aangepaste rol voor de App-ID**. Deze rol is vereist voor Azure Database Migration Service migratie op het niveau van de *resource* of de *resource groep* (Zie het artikel [de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken die toegang heeft tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)voor meer informatie over de App-ID).
 
 ```json
 {
@@ -137,7 +138,7 @@ Als het aantal aangepaste rollen in uw Azure Active Directory geen bezorgdheid i
 }
 ```
 
-## <a name="role-assignment"></a>Roltoewijzing
+## <a name="role-assignment"></a>Nieuwe roltoewijzing
 
 Als u een rol wilt toewijzen aan gebruikers/APP-ID, opent u de Azure Portal en voert u de volgende stappen uit:
 

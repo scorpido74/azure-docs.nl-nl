@@ -4,15 +4,15 @@ description: U kunt de Active Directory Health Check-oplossing gebruiken om het 
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: bdc84a9213bd98981040775d3fec90f45edac54f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f0de484d58085f598988589d18495c9a6fe1b374
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899192"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406139"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimaliseer uw Active Directory-omgeving met de Active Directory Health Check-oplossing in Azure Monitor
 
@@ -36,7 +36,7 @@ Nadat u de oplossing hebt toegevoegd en een controle is voltooid, wordt de samen
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De Active Directory Health Check-oplossing vereist een ondersteunde versie van .NET Framework 4.5.2 of hoger die is geïnstalleerd op elke computer met de Log Analytics-agent voor Windows (ook wel de micro soft Monitoring Agent (MMA)) geïnstalleerd.  De agent wordt gebruikt door System Center 2016-Operations Manager, Operations Manager 2012 R2 en Azure Monitor.
+* De Active Directory Health Check-oplossing vereist een ondersteunde versie van .NET Framework 4.6.2 of hoger die is geïnstalleerd op elke computer met de Log Analytics-agent voor Windows (ook wel micro soft Monitoring Agent (MMA) genoemd).  De agent wordt gebruikt door System Center 2016-Operations Manager, Operations Manager 2012 R2 en Azure Monitor.
 * De oplossing biedt ondersteuning voor domein controllers met Windows Server 2008 en 2008 R2, Windows Server 2012 en 2012 R2 en Windows Server 2016.
 * Een Log Analytics-werk ruimte om de Active Directory Health Check-oplossing toe te voegen vanuit de Azure Marketplace in de Azure Portal. Er is geen aanvullende configuratie vereist.
 
@@ -49,7 +49,7 @@ Voor het uitvoeren van de status controle op uw domein controllers die lid zijn 
 
 1. Installeer de [log Analytics-agent voor Windows](../../azure-monitor/platform/agent-windows.md) als de domein controller niet al wordt bewaakt door System Center 2016-Operations Manager of Operations Manager 2012 R2.
 2. Als het wordt bewaakt met System Center 2016-Operations Manager of Operations Manager 2012 R2 en de beheer groep is niet geïntegreerd met Azure Monitor, kan de domein controller meerdere locaties hebben met Azure Monitor om gegevens te verzamelen en door te sturen naar de service en nog steeds worden bewaakt door Operations Manager.  
-3. Als uw Operations Manager-beheer groep is geïntegreerd met de service, moet u de domein controllers voor het verzamelen van gegevens door de service toevoegen volgens de stappen onder door [agents beheerde computers toevoegen](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) nadat u de oplossing hebt ingeschakeld in uw werk ruimte.  
+3. Als uw Operations Manager-beheer groep is geïntegreerd met de service, moet u de domein controllers voor het verzamelen van gegevens door de service toevoegen volgens de stappen onder door [agents beheerde computers toevoegen](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) nadat u de oplossing in uw werk ruimte hebt ingeschakeld.  
 
 De agent op uw domein controller die aan een Operations Manager-beheer groep rapporteert, verzamelt gegevens, stuurt deze door naar de toegewezen beheer server en wordt vervolgens rechtstreeks van een beheer server naar Azure Monitor verzonden.  De gegevens worden niet naar de Operations Manager-data bases geschreven.  
 
@@ -60,10 +60,10 @@ Active Directory status controle verzamelt gegevens uit de volgende bronnen met 
 - Register
 - LDAP
 - .NET Framework
-- Gebeurtenis logboek
+- Gebeurtenislogboek
 - Active Directory Service interfaces (ADSI)
 - Windows PowerShell
-- Bestands gegevens
+- Bestandsgegevens
 - Windows Management Instrumentation (WMI)
 - De API voor het hulp programma DCDIAG
 - API voor de File Replication-service (NTFRS)
@@ -185,7 +185,7 @@ Nadat de volgende geplande status controle standaard elke zeven dagen wordt uitg
 
 *Wat is de naam van het proces dat het verzamelen van gegevens doet?*
 
-* AdvisorAssessment. exe
+* AdvisorAssessment.exe
 
 *Hoe lang duurt het voordat gegevens worden verzameld?*
 

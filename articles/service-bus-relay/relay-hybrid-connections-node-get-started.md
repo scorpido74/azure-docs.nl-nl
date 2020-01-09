@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met websockets voor hybride verbindingen in Azure Relay in Node | Microsoft Docs
+title: Hybride verbindingen-websockets in een knoop punt Azure Relay
 description: Een Node.js consoletoepassing schrijven voor websockets voor hybride verbindingen in Azure Relay
 services: service-bus-relay
 documentationcenter: node
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: node
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: b4864673e25ba4f5a1f2e8629e0889863051bc07
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 818db4db082a441877b573fd52361e63becce374
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60553818"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75352674"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Aan de slag met WebSockets voor hybride verbindingen in Azure Relay in Node.js
 

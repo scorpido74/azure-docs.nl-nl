@@ -1,6 +1,7 @@
 ---
-title: Artikel over bekende problemen/migratie beperkingen met online migraties naar Azure Database for MySQL | Microsoft Docs
-description: Meer informatie over bekende problemen/migratie beperkingen met online migraties voor Azure Database for MySQL.
+title: 'Bekende problemen: online migraties naar Azure Database for MySQL'
+titleSuffix: Azure Database Migration Service
+description: Meer informatie over bekende problemen en migratie beperkingen met online migraties naar Azure Database for MySQL bij het gebruik van de Azure Database Migration Service.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,21 +9,24 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom:
+- seo-lt-2019
+- seo-dt-2019
 ms.topic: article
 ms.date: 11/08/2019
-ms.openlocfilehash: 39c1928f1d38276418b2e1a3e766c4b9d8a0d8d2
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 905a14bd78d120e27ebc4d44ede86e9f0e3783cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73902788"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437848"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Bekende problemen/migratie beperkingen met online migraties naar Azure DB voor MySQL
+# <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Online migratie problemen & beperkingen voor Azure DB voor MySQL met Azure Database Migration Service
 
 Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van MySQL naar Azure Database for MySQL worden beschreven in de volgende secties.
 
 ## <a name="online-migration-configuration"></a>Configuratie van online migratie
+
 
 - De versie van de MySQL-bron server moet versie 5.6.35, 5.7.18 of hoger zijn
 - Azure Database for MySQL ondersteunt:

@@ -1,24 +1,14 @@
 ---
 title: Een Azure Load Balancer-regel voor een cluster maken
 description: Configureer een Azure Load Balancer voor het openen van poorten voor uw Azure Service Fabric-cluster.
-services: service-fabric
-documentationcenter: na
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 2e730ae8ecf6f1fab12aff23cab0ac3aa246233a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5cc392a74b8cf5ef92be8b5783b5b70289e602af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173366"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351487"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Poorten openen voor een Service Fabric cluster
 
@@ -60,7 +50,7 @@ az network lb rule create --backend-port 40000 --frontend-port 39999 --protocol 
 
 De Azure CLI-opdracht heeft een aantal para meters die in de volgende tabel worden beschreven:
 
-| Parameter | Description |
+| Parameter | Beschrijving |
 | --------- | ----------- |
 | `--backend-port`  | De poort waarnaar de Service Fabric toepassing luistert. |
 | `--frontend-port` | De poort die door de load balancer wordt weer gegeven voor externe verbindingen. |
@@ -103,7 +93,7 @@ $lb.LoadBalancingRules.Add($lbrule)
 $lb | Set-AzLoadBalancer
 ```
 
-Met betrekking `New-AzLoadBalancerRuleConfig` tot de opdracht `-FrontendPort` vertegenwoordigt de poort de Load Balancer beschikbaar voor externe verbindingen en geeft het `-BackendPort` de poort aan waarnaar de service Fabric-app luistert.
+Met betrekking tot de `New-AzLoadBalancerRuleConfig` opdracht, de `-FrontendPort` vertegenwoordigt de poort die door de load balancer wordt weer gegeven voor externe verbindingen, en de `-BackendPort` vertegenwoordigt de poort waarnaar de service Fabric-app luistert.
 
 >[!NOTE]
 >Zie [een Load Balancer maken met Power shell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)voor meer informatie over het maken van een Load Balancer met Power shell.

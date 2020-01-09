@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLI-voorbeeldscript: een Azure-Cache maken voor Redis'
-description: 'Azure CLI-voorbeeldscript: een Azure-Cache maken voor Redis'
+title: Een Azure-cache maken voor redis-Azure CLI
+description: Dit Azure CLI-code voorbeeld laat zien hoe u een Azure-cache maakt voor een redis-exemplaar met behulp van de opdracht AZ redis Create.
 author: yegu-ms
 tags: azure-service-management
 ms.service: cache
@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.author: yegu
-ms.openlocfilehash: e0ca7131a4ea9a512ac31231754f86d218c35025
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 79b749c0d02a21c1225ee0d046d73ed3fdd98904
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121317"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411318"
 ---
 # <a name="create-an-azure-cache-for-redis"></a>Een Azure Cache voor Redis-instantie maken
 
@@ -29,7 +29,7 @@ In dit scenario leert u hoe u een Azure-Cache maken voor Redis.
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Met dit script maakt gebruik van de volgende opdrachten om te maken van een resourcegroep en een Azure-Cache voor Redis. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+Met dit script maakt gebruik van de volgende opdrachten om te maken van een resourcegroep en een Azure-Cache voor Redis. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -39,6 +39,6 @@ Met dit script maakt gebruik van de volgende opdrachten om te maken van een reso
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
 Aanvullende Azure-Cache voor Redis CLI-voorbeeldscripts vindt u de [Azure Cache voor Redis-documentatie](../cli-samples.md).

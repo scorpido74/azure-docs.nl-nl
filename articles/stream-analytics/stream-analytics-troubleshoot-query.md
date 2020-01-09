@@ -1,7 +1,6 @@
 ---
-title: Azure Stream Analytics-query's oplossen
-description: Dit artikel wordt beschreven technieken voor het oplossen van uw query's in Azure Stream Analytics-taken.
-services: stream-analytics
+title: Problemen met Azure Stream Analytics query's oplossen
+description: In dit artikel worden technieken beschreven voor het oplossen van problemen met query's in Azure Stream Analytics-taken.
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -9,88 +8,88 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 586ddb237144daddf0cbfd19785fcba7658469a0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 22e542715afa8c87ffb742bec6c22f758cd16587
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621481"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354268"
 ---
-# <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics-query's oplossen
+# <a name="troubleshoot-azure-stream-analytics-queries"></a>Problemen met Azure Stream Analytics query's oplossen
 
-Dit artikel worden veelvoorkomende problemen met het ontwikkelen van Stream Analytics-query's en het oplossen van deze.
+In dit artikel worden veelvoorkomende problemen beschreven met het ontwikkelen van Stream Analytics query's en het oplossen van problemen.
 
-## <a name="query-is-not-producing-expected-output"></a>Query is geen verwachte uitvoer produceren. 
-1.  Fouten onderzoeken door lokaal te testen:
-    - Op de **Query** tabblad **Test**. Gebruik de gedownloade voorbeeldgegevens naar [testen van de query](stream-analytics-test-query.md). Analyseer eventuele fouten en proberen om ze te corrigeren.   
-    - U kunt ook [testen van uw query rechtstreeks op live invoer](stream-analytics-live-data-local-testing.md) met Stream Analytics-hulpprogramma's voor Visual Studio.
+## <a name="query-is-not-producing-expected-output"></a>De verwachte uitvoer wordt niet geproduceerd met de query 
+1.  Controleer fouten door lokaal te testen:
+    - Selecteer op het tabblad **query** de optie **testen**. Gebruik de gedownloade voorbeeld gegevens om [de query te testen](stream-analytics-test-query.md). Controleer eventuele fouten en probeer deze te corrigeren.   
+    - U kunt [uw query ook rechtstreeks op Live-invoer testen](stream-analytics-live-data-local-testing.md) met behulp van stream Analytics-hulpprogram Ma's voor Visual Studio.
 
-2.  Als u [ **Timestamp By**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics), Controleer of de gebeurtenissen tijdstempels die groter is dan de [begintijd taak](stream-analytics-out-of-order-and-late-events.md).
+2.  Als u [**time stamp by**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)gebruikt, controleert u of de gebeurtenissen tijds tempels hebben die groter zijn dan de [begin tijd](stream-analytics-out-of-order-and-late-events.md)van de taak.
 
-3.  Veelvoorkomende valkuilen, zoals voorkomen:
-    - Een [ **waar** ](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) component in de query is gefilterd van alle gebeurtenissen, zo wordt voorkomen dat geen uitvoer wordt gegenereerd.
-    - Een [ **CAST** ](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) functie mislukt, waardoor de taak is mislukt. Gebruiken om te voorkomen dat type cast fouten, [ **TRY_CAST** ](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) in plaats daarvan.
-    - Wanneer u vensterfuncties, wacht u totdat de duur van het gehele venster een uitvoer van de query.
-    - De tijdstempel van gebeurtenissen vóór de begintijd van taak en daarom gebeurtenissen worden verwijderd.
+3.  Vermijd veelvoorkomende Valk uilen, zoals:
+    - Een [**where**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) -component in de query heeft alle gebeurtenissen gefilterd, waardoor er geen uitvoer kan worden gegenereerd.
+    - Een [**cast**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) -functie mislukt, waardoor de taak mislukt. Als u geen cast-fouten wilt voor komen, gebruikt u [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) in plaats daarvan.
+    - Wanneer u venster functies gebruikt, wacht u tot de volledige venster duur een uitvoer van de query ziet.
+    - De tijds tempel voor gebeurtenissen gaat vooraf aan de begin tijd van de taak en daarom worden gebeurtenissen verwijderd.
 
-4.  Zorg ervoor dat gebeurtenis bestellen beleidsregels zijn geconfigureerd zoals verwacht. Ga naar de **instellingen** en selecteer [ **Gebeurtenisvolgorde**](stream-analytics-out-of-order-and-late-events.md). Het beleid is *niet* toegepast wanneer u de **testen** knop voor het testen van de query. Dit is een verschil tussen het testen in browser ten opzichte van de taak uitgevoerd in de productieomgeving. 
+4.  Zorg ervoor dat het beleid voor het best Ellen van gebeurtenissen is geconfigureerd zoals verwacht. Ga naar **instellingen** en selecteer [**gebeurtenissen ordenen**](stream-analytics-out-of-order-and-late-events.md). Het beleid wordt *niet* toegepast wanneer u de knop **testen** gebruikt om de query te testen. Dit resultaat is een verschil tussen het testen van in-browser en het uitvoeren van de taak in de productie omgeving. 
 
-5. Fouten opsporen met behulp van controle en diagnostische logboeken:
-    - Gebruik [auditlogboeken](../azure-resource-manager/resource-group-audit.md), en filteren om te bepalen en fouten opsporen.
-    - Gebruik [taak diagnostische logboeken](stream-analytics-job-diagnostic-logs.md) om te bepalen en fouten opsporen.
+5. Fouten opsporen met behulp van controle-en Diagnostische logboeken:
+    - Gebruik [controle logboeken](../azure-resource-manager/resource-group-audit.md)en filter om fouten op te sporen en op te sporen.
+    - Gebruik [Diagnostische logboeken voor taken](stream-analytics-job-diagnostic-logs.md) om fouten te identificeren en op te sporen.
 
-## <a name="job-is-consuming-too-many-streaming-units"></a>Taak is te veel Streaming-eenheden verbruikt
-Zorg ervoor dat u profiteren van parallelle uitvoering in Azure Stream Analytics. U leert [schaal met query-parallellisatie](stream-analytics-parallelization.md) van Stream Analytics-taken door invoer partities configureren en afstemmen van de analytics-query definitie.
+## <a name="job-is-consuming-too-many-streaming-units"></a>Taak verbruikt te veel streaming-eenheden
+Zorg ervoor dat u in Azure Stream Analytics kunt profiteren van parallel Lise ring. U kunt de [schaal aanpassen met query parallel Lise ring](stream-analytics-parallelization.md) van stream Analytics-taken door het configureren van invoer partities en het afstemmen van de definitie van de analyse query.
 
-## <a name="debug-queries-progressively"></a>Fouten opsporen geleidelijk in query 's
+## <a name="debug-queries-progressively"></a>Query's geleidelijk opsporen
 
-In realtime gegevensverwerking, kan te weten hoe de gegevens eruit ziet in het midden van de query nuttig zijn. Omdat invoer- of stappen van een Azure Stream Analytics-taak kunnen meerdere keren worden gelezen, kunt u extra SELECT INTO-instructies schrijven. In dat geval voert tussenliggende gegevens op te slaan en kunt u de juistheid van de gegevens, net zoals inspecteren *Bekijk variabelen* doen wanneer u een programma foutopsporing.
+In realtime gegevens verwerking kan het handig zijn om te weten hoe de gegevens in het midden van de query eruitzien. Omdat invoer of stappen van een Azure Stream Analytics taak meerdere keren kunnen worden gelezen, kunt u extra SELECT INTO-instructies schrijven. Hierbij voert u tussenliggende gegevens uit naar opslag en kunt u de juistheid van de gegevens controleren, *net als bij* het opsporen van fouten in een programma.
 
-De volgende voorbeeldquery in een Azure Stream Analytics-taak heeft een Stroominvoer, twee verwijzen naar gegevensinvoer en uitvoer naar Azure Table Storage. De query lid wordt van gegevens uit de event hub en twee verwijzing blobs om op te halen van de naam en categorie-informatie:
+De volgende voorbeeld query in een Azure Stream Analytics-taak heeft één stroom invoer, twee referentie gegevens invoer en een uitvoer naar Azure Table Storage. De query voegt gegevens van de Event Hub en twee referentie-blobs toe om de naam en categorie gegevens op te halen:
 
-![Voorbeeld van Analytics Stream die SELECT INTO-query](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
+![Voor beeld Stream Analytics selectie in query](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
-Houd er rekening mee dat de taak wordt uitgevoerd, maar er zijn geen gebeurtenissen zijn in de uitvoer wordt geproduceerd. Op de **bewaking** tegel, die hier worden weergegeven, kunt u zien dat de invoer is gegevens produceren, maar u niet welke stap van weet de **JOIN** veroorzaakt de gebeurtenissen worden verwijderd.
+Houd er rekening mee dat de taak wordt uitgevoerd, maar er worden geen gebeurtenissen geproduceerd in de uitvoer. Op de **bewakings** tegel, die hier wordt weer gegeven, kunt u zien dat de invoer gegevens produceert, maar u weet niet welke stap van de **samen voeging** heeft geleid tot alle gebeurtenissen die moeten worden verwijderd.
 
-![De tegel Stream Analytics-bewaking](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
+![De tegel Stream Analytics bewaking](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
  
-In dit geval kunt u een paar extra een instructie SELECT INTO ' aan ' de tussenliggende JOIN-resultaten en de gegevens die worden gelezen uit de invoer toevoegen.
+In dit geval kunt u een aantal extra instructies voor SELECT INTO toevoegen aan de tussenliggende samenvoegings resultaten en de gegevens die van de invoer worden gelezen.
 
-In dit voorbeeld hebben we twee nieuwe 'tijdelijke uitvoer.' toegevoegd Ze kunnen een sink die u wilt worden. Hier gebruiken we Azure Storage als een voorbeeld:
+In dit voor beeld hebben we twee nieuwe tijdelijke uitvoer bewerkingen toegevoegd. Ze kunnen een wille keurige Sink zijn. Hier gebruiken we Azure Storage als voor beeld:
 
-![Extra een instructie SELECT INTO toevoegen aan Stream Analytics-query](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
+![Toevoegen van extra SELECT INTO-instructies aan Stream Analytics query](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
 
-U kunt vervolgens Herschrijf de query als volgt:
+U kunt de query dan als volgt herschrijven:
 
-![Selecteer in Stream Analytics-query herschreven](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
+![SELECTIE in Stream Analytics query opnieuw schrijven](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
 
-Nu de taak opnieuw starten en laten uitvoeren voor een paar minuten. Vervolgens query temp1 en Tijdelijk2 met Visual Studio Cloud Explorer voor het produceren van de volgende tabellen:
+Start de taak nu opnieuw en laat deze enkele minuten uitvoeren. Zoek vervolgens temp1 en temp2 met Visual Studio Cloud Explorer om de volgende tabellen te maken:
 
-**tabel temp1**
-![SELECT INTO temp1 tabel Stream Analytics-query](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
+**temp1-tabel**
+![stream Analytics query selecteren in temp1-tabel](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
 
-**tabel Tijdelijk2**
-![SELECT INTO Tijdelijk2 tabel Stream Analytics-query](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
+**temp2-tabel**
+![stream Analytics query selecteren in temp2-tabel](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
 
-Zoals u ziet, temp1 en Tijdelijk2 gegevens hebt en de naamkolom juist is ingevuld in Tijdelijk2. Echter, omdat er nog steeds geen gegevens in de uitvoer, er is iets mis:
+Zoals u ziet, zijn temp1 en temp2 beide gegevens en de kolom naam correct ingevuld in temp2. Maar omdat er nog steeds geen gegevens in de uitvoer zijn, is er een fout opgetreden:
 
-![SELECT INTO output1-tabel met geen gegevens Stream Analytics-query](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
+![SELECTEREN in output1-tabel zonder gegevens Stream Analytics query](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
 
-Door middel van de gegevens steekproeven, kunt u zijn bijna zeker weet dat het probleem met de tweede JOIN is. U kunt de referentiegegevens downloaden vanuit de blob en een kijkje nemen:
+Door de gegevens te bemonsteren, kunt u bijna zeker zijn dat het probleem met de tweede samen voeging is. U kunt de referentie gegevens van de BLOB downloaden en een kijkje nemen:
 
-![SELECT INTO ref tabel Stream Analytics-query](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
+![IN ref-tabel selecteren Stream Analytics query](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
 
-Zoals u zien kunt, de indeling van de GUID in deze verwijzingsgegevens verschilt van de indeling van de [kolom in Tijdelijk2 uit]. Daarom de gegevens niet hebt ontvangen in output1 zoals verwacht.
+Zoals u kunt zien, is de indeling van de GUID in deze referentie gegevens afwijkend van de indeling van de kolom [van] in temp2. Daarom zijn de gegevens niet zoals verwacht in output1.
 
-U kunt de gegevensindeling oplossen, uploaden om te verwijzen naar de blob en probeer het opnieuw:
+U kunt de gegevens indeling herstellen, uploaden naar referentie-Blob en het opnieuw proberen:
 
-![SELECT INTO tijdelijke tabel Stream Analytics-query](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
+![SELECTEREN in tijdelijke tabel Stream Analytics query](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
 
-Deze tijd wordt de gegevens in de uitvoer ingedeeld en ingevuld zoals verwacht.
+Deze keer worden de gegevens in de uitvoer opgemaakt en ingevuld zoals verwacht.
 
-![SELECT INTO definitieve tabel Stream Analytics-query](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
+![SELECTEREN in uiteindelijke tabel Stream Analytics query](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
 
-## <a name="get-help"></a>Help opvragen
+## <a name="get-help"></a>Hulp krijgen
 
 Voor verdere ondersteuning kunt u proberen onze [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 

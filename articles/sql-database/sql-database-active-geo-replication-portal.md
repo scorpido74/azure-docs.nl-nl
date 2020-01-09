@@ -1,6 +1,6 @@
 ---
-title: 'Azure Portal: Geo-replicatie'
-description: Geo-replicatie configureren voor één of gegroepeerde Data base in Azure SQL Database met behulp van de Azure Portal en failover initiëren
+title: 'Zelf studie: failover van geo-replicatie & in de portal'
+description: Geo-replicatie configureren voor één of gegroepeerde Data base in Azure SQL Database met behulp van de Azure Portal en failover starten.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 7ddaefb0f65db1cfc828e4baa844f6d8e01f9d2e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 601c537a51e29ae1f107127e1b83c07448eee9ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808130"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348885"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Actieve geo-replicatie configureren voor Azure SQL Database in de Azure Portal en failover initiëren
 

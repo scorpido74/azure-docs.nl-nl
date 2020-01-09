@@ -1,18 +1,18 @@
 ---
-title: Zelf studie voor het maken van een web-app met Azure cache voor redis die gebruikmaakt van het cache-leggings patroon
-description: Informatie over het maken van een web-app met Azure Cache voor Redis die gebruikmaakt van het cache-aside-patroon
+title: 'Zelf studie: een web-app maken (caching-legging)-Azure cache voor redis'
+description: Meer informatie over het maken van een web-app met Azure cache voor redis die gebruikmaakt van het cache-leggings patroon.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.author: yegu
-ms.openlocfilehash: dbd8250da46e640aaa9403430ae0fbfaa9b181c8
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121508"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411940"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Zelfstudie: Een cache-aside-leaderboard maken in ASP.NET
 
@@ -200,11 +200,11 @@ Meer informatie over dit pakket vindt u op de NuGet-pagina [EntityFramework](htt
     Database.SetInitializer<TeamContext>(new TeamInitializer());
     ```
 
-1. Vouw in **Solution Explorer** `App_Start` uit en dubbelklik op `RouteConfig.cs`.
+1. Vouw in **Solution Explorer**`App_Start` uit en dubbelklik op `RouteConfig.cs`.
 
     ![RouteConfig.cs](./media/cache-web-app-cache-aside-leaderboard/cache-RouteConfig-cs.png)
 
-1. Vervang `RegisterRoutes` in de route `controller = "Home"` in de `Default`-methode door `controller = "Teams"`, zoals wordt weergegeven in het volgende voorbeeld:
+1. Vervang `controller = "Home"` in de route `Default` in de `RegisterRoutes`-methode door `controller = "Teams"`, zoals wordt weergegeven in het volgende voorbeeld:
 
     ```csharp
     routes.MapRoute(
@@ -282,7 +282,7 @@ In dit voorbeeld worden teamstatistieken opgehaald uit de database of uit de cac
 
 Het is niet vereist om de teamstatistieken in verschillende indelingen in de cache op te slaan om Azure Cache voor Redis te kunnen gebruiken. In deze zelfstudie wordt gebruikgemaakt van meerdere indelingen ter illustratie van de verschillende manieren en gegevenstypen die u kunt gebruiken om gegevens in de cache op te slaan.
 
-1. Voeg bovenaan, bij de andere `using`-instructies, de volgende `TeamsController.cs`-instructies toe aan het `using`-bestand:
+1. Voeg bovenaan, bij de andere `using`-instructies, de volgende `using`-instructies toe aan het `TeamsController.cs`-bestand:
 
     ```csharp
     using System.Diagnostics;
@@ -723,13 +723,13 @@ Wanneer u klaar bent met de voorbeeldtoepassing uit de zelfstudie, kunt u de Azu
 > Houd er rekening mee dat het verwijderen van een resourcegroep niet ongedaan kan worden gemaakt, en dat de resourcegroep en alle bijbehorende resources permanent worden verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via de respectievelijke blades.
 >
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en klik op **Resourcegroepen**.
 2. Typ de naam van de resourcegroep in het tekstvak **Items filteren...** .
 3. Klik op **...** rechts van de resourcegroep en klik op **Resourcegroep verwijderen**.
 
     ![Verwijderen](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
 
-4. U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van de resourcegroep en klik op **Verwijderen**.
+4. U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van de resourcegroep om te bevestigen en klik op **Verwijderen**.
 
     Na enkele ogenblikken worden de resourcegroep en alle resources in de groep verwijderd.
 

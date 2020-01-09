@@ -1,5 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Database Migration Service gebruiken voor een online migratie van RDS PostgreSQL naar Azure Database for PostgreSQL | Microsoft Docs'
+title: 'Zelf studie: RDS PostgreSQL online migreren naar Azure Database for PostgreSQL'
+titleSuffix: Azure Database Migration Service
 description: Meer informatie over het uitvoeren van een online migratie van RDS PostgreSQL naar Azure Database for PostgreSQL met behulp van de Azure Database Migration Service.
 services: dms
 author: HJToland3
@@ -8,25 +9,25 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: 6cb10f09772bf6666e197a4b622792c5b62d3ace
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
-ms.translationtype: MT
+ms.openlocfilehash: 49f4f5472d3e97d9003e099ced5e43386ad31070
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734792"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437516"
 ---
-# <a name="tutorial-migrate-rds-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Zelfstudie: RDS PostgreSQL migreren naar Azure Database for PostgreSQL online met behulp van DMS
+# <a name="tutorial-migrate-rds-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Zelf studie: RDS PostgreSQL migreren naar Azure Database for PostgreSQL online met behulp van DMS
 
 U kunt Azure Database Migration Service gebruiken om data bases van een RDS PostgreSQL-exemplaar te migreren naar [Azure database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) terwijl de bron database online blijft tijdens de migratie. Met andere woorden, migratie kan worden gerealiseerd met minimale downtime voor de toepassing. In deze zelf studie migreert u de **gehuurde** voorbeeld database van de DVD vanuit een exemplaar van RDS postgresql 9,6 naar Azure database for PostgreSQL met behulp van de online migratie activiteit in azure database Migration service.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
 >
-> * Migreer het voorbeeld schema met behulp van het pg_dump-hulp programma.
-> * Maak een instantie van Azure Database Migration Service.
+> * Migreer het voorbeeld schema met behulp van het hulp programma pg_dump.
+> * Maak een exemplaar van de Azure Database Migration Service.
 > * Een migratie project maken met behulp van Azure Database Migration Service.
 > * De migratie uitvoeren.
 > * De migratie controleren.
@@ -50,8 +51,8 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
     Daarnaast moet de versie van de RDS PostgreSQL overeenkomen met de Azure Database for PostgreSQL versie. RDS PostgreSQL 9.5.11.5 kan bijvoorbeeld alleen worden gemigreerd naar Azure Database for PostgreSQL 9.5.11 en niet naar versie 9.6.7.
 
 * Maak een instantie van [Azure database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal). Raadpleeg deze [sectie](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal#connect-to-the-postgresql-server-using-pgadmin) van het document voor meer informatie over het maken van verbinding met de postgresql-server met behulp van pgAdmin.
-* Een Azure Virtual Network (VNet) maken voor Azure Database Migration Service met behulp van het Azure Resource Manager implementatie model, dat site-naar-site-connectiviteit met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Voor meer informatie over het maken van een VNet raadpleegt u de [documentatie van Virtual Network](https://docs.microsoft.com/azure/virtual-network/)en met name de Quick Start-artikelen met stapsgewijze Details.
-* Zorg ervoor dat de regels van uw VNet-netwerkbeveiligingsgroep niet de volgende poorten voor inkomende communicatie naar Azure Database Migration Service blokkeren: 443, 53, 9354, 445 en 12000. Zie het artikel [netwerk verkeer filteren met netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)voor meer informatie over het filteren van NSG-verkeer van Azure VNet.
+* Maak een Azure Virtual Network (VNet) voor Azure Database Migration Service met behulp van het Azure Resource Manager implementatie model, dat site-naar-site-verbinding met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Voor meer informatie over het maken van een VNet raadpleegt u de [documentatie van Virtual Network](https://docs.microsoft.com/azure/virtual-network/)en met name de Quick Start-artikelen met stapsgewijze Details.
+* Zorg ervoor dat de regels van uw VNet-netwerk beveiligings groep niet de volgende binnenkomende communicatie poorten blok keren naar Azure Database Migration Service: 443, 53, 9354, 445 en 12000. Zie het artikel [netwerk verkeer filteren met netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)voor meer informatie over het filteren van NSG-verkeer van Azure VNet.
 * Configureer uw [Windows Firewall voor toegang tot de database-engine](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Open uw Windows Firewall om Azure Database Migration Service toegang te geven tot de bron PostgreSQL-server, die standaard TCP-poort 5432 is.
 * Wanneer u een firewallapparaat gebruikt voor de brondatabase(s), moet u mogelijk firewallregels toevoegen om voor de Azure Database Migration Service toegang tot de brondatabase(s) voor de migratie toe te staan.
@@ -60,9 +61,9 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 ### <a name="set-up-aws-rds-postgresql-for-replication"></a>AWS RDS PostgreSQL instellen voor replicatie
 
 1. Als u een nieuwe parameter groep wilt maken, volgt u de instructies van AWS in het artikel [werken met DB-parameter groepen](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html).
-2. Gebruik de naam van de hoofd gebruiker om verbinding te maken met de bron vanuit Azure Database Migration Service. Als u een ander account dan het hoofd gebruikers account gebruikt, moet het account de rol rds_superuser en de rol rds_replication hebben. De rol rds_replication verleent machtigingen voor het beheren van logische sleuven en het streamen van gegevens met logische sleuven.
+2. Gebruik de naam van de hoofd gebruiker om verbinding te maken met de bron vanuit Azure Database Migration Service. Als u een ander account dan het hoofd gebruikers account gebruikt, moet het account beschikken over de rds_superuser rol en de rds_replication rol. De functie rds_replication verleent machtigingen voor het beheren van logische sleuven en het streamen van gegevens met behulp van logische sleuven.
 3. Maak een nieuwe parameter groep met de volgende configuratie: a. Stel de para meter RDS. logical_replication in de groep DB-para meter in op 1.
-    b. max_wal_senders = [aantal gelijktijdige taken]: met de para meter max_wal_senders wordt het aantal gelijktijdige taken ingesteld dat kan worden uitgevoerd, 10 taken aanbevelen.
+    b. max_wal_senders = [aantal gelijktijdige taken]: met de max_wal_senders-para meter wordt het aantal gelijktijdige taken ingesteld dat kan worden uitgevoerd, worden 10 taken aanbevolen.
     c. max_replication_slots – = [aantal sleuven], raadt aan om vijf sleuven in te stellen.
 4. Koppel de parameter groep die u hebt gemaakt met het RDS PostgreSQL-exemplaar.
 
@@ -70,7 +71,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 1. Pak het schema uit van de bron database en pas deze toe op de doel database om de migratie van alle database objecten, zoals tabel schema's, indexen en opgeslagen procedures, te volt ooien.
 
-    De eenvoudigste manier om alleen het schema te migreren, is door pg_dump te gebruiken met de optie-s. Zie de [voor beelden](https://www.postgresql.org/docs/9.6/app-pgdump.html#PG-DUMP-EXAMPLES) in de zelf studie voor post gres pg_dump voor meer informatie.
+    De eenvoudigste manier om alleen het schema te migreren, is door pg_dump te gebruiken met de optie-s. Zie de [voor beelden](https://www.postgresql.org/docs/9.6/app-pgdump.html#PG-DUMP-EXAMPLES) in de post gres pg_dump-zelf studie voor meer informatie.
 
     ```
     pg_dump -o -h hostname -U db_username -d db_name -s > your_schema.sql
@@ -171,7 +172,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
     Zie het artikel [een virtueel netwerk maken met behulp van de Azure Portal](https://aka.ms/DMSVnet)voor meer informatie over het maken van een VNet in de Azure Portal.
 
-6. Selecteer een prijs categorie. Zorg ervoor dat u voor deze online migratie de optie Premium selecteert: prijs categorie 4vCores.
+6. Selecteer een prijs categorie. Zorg ervoor dat u voor deze online migratie de prijs categorie Premium: 4vCores selecteert.
 
     ![Instellingen configureren van een Azure Database Migration Service-exemplaar](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-settings4.png)
 
@@ -190,7 +191,7 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
      ![Zoek uw exemplaar van de Azure Database Migration Service](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-instance-search.png)
 
 3. Selecteer + **Nieuw migratieproject**.
-4. Geef in het scherm **Nieuw migratie project** een naam op voor het project, Selecteer in het tekstvak **type bron server** de optie **AWS RDS voor postgresql**, en selecteer in het tekstvak **doel server type** de optie **Azure database for PostgreSQL** .
+4. Geef in het scherm **Nieuw migratie project** een naam op voor het project, Selecteer in het tekstvak **type bron server** de optie **AWS RDS voor postgresql**, en selecteer in het tekstvak **doel server type** de optie **Azure database for PostgreSQL**.
 5. Selecteer in de sectie **Het type activiteit kiezen** de optie **Onlinegegevensmigratie**.
 
     > [!IMPORTANT]
@@ -216,7 +217,7 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
 ## <a name="specify-target-details"></a>Doeldetails opgeven
 
-1. Selecteer **Opslaan**en geef vervolgens in het scherm **doel Details** de verbindings gegevens op voor de doel Azure database for postgresql server, die vooraf is ingericht en waarop het schema voor de **DVD-huur** is geïmplementeerd met pg_dump.
+1. Selecteer **Opslaan**en geef vervolgens in het scherm **doel Details** de verbindings gegevens op voor de doel Azure database for postgresql server, die vooraf is ingericht en waarop het schema voor de **DVD-huur** is geïmplementeerd met behulp van pg_dump.
 
     ![Doel selecteren](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-select-target4.png)
 
@@ -226,7 +227,7 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
     ![Toewijzen aan doeldatabases](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-map-targets-activity5.png)
 
-3. Selecteer **Opslaan**, geef in het scherm **Migratieoverzicht** in het tekstvak **Naam activiteit** een naam op voor de migratieactiviteit en controleer het overzicht om ervoor te zorgen dat de bron- en doeldetails overeenkomen met wat u eerder hebt opgegeven.
+3. Selecteer **Opslaan**, geef op het scherm **Migratieoverzicht** in het tekstvak **Naam activiteit** een naam op voor de migratieactiviteit, en controleer vervolgens het overzicht om te verzekeren dat de bron- en doeldetails overeenkomen met wat u eerder hebt opgegeven.
 
     ![Migratieoverzicht](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-migration-summary1.png)
 

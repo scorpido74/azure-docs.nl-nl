@@ -1,25 +1,17 @@
 ---
-title: Zelf studie-een Azure Service Fabric-mesh toepassing upgraden | Microsoft Docs
+title: Zelf studie-een Azure Service Fabric mesh-toepassing upgraden
 description: Deze zelf studie is deel vier van een reeks en laat zien hoe u een Azure Service Fabric-mesh-toepassing rechtstreeks vanuit Visual Studio bijwerkt.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/29/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 81f155d5708a2fca2fc1145feb20af12d2fd151e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7cdb8868f760ef0f35ab90c06b411110f871738c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686197"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351720"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Zelf studie: meer informatie over het bijwerken van een Service Fabric-toepassing met Visual Studio
 

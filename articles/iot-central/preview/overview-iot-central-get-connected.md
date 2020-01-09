@@ -3,17 +3,17 @@ title: Connectiviteit van apparaten in azure IoT Central | Microsoft Docs
 description: In dit artikel vindt u belang rijke concepten met betrekking tot de connectiviteit van apparaten in azure IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/09/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: ef0e4c9070733266349a37e863c48901eae90c16
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 412a678465589da87c713a55a7b67193b254bf96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894589"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434931"
 ---
 # <a name="get-connected-to-azure-iot-central-preview-features"></a>Maak verbinding met Azure IoT Central (preview-functies)
 
@@ -217,7 +217,7 @@ De volgende tabel bevat een overzicht van de manier waarop functies van Azure Io
 
 | Azure IoT Central | Azure IoT Hub |
 | ----------- | ------- |
-| Meting: telemetrie | Apparaat-naar-Cloud-berichten |
+| Meting: telemetrie | Apparaat-naar-cloud-berichten |
 | Apparaateigenschappen | Dubbele gerapporteerde eigenschappen van het apparaat |
 | Instellingen | Dubbele gewenste en gerapporteerde eigenschappen van het apparaat |
 

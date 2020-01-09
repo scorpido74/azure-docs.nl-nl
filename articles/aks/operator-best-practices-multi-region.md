@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5fdb189fcab3da4dad52642571ac42e669828fe3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ff55257891ff379bea9ff44aa5136195ced44354
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971652"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613105"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor bedrijfs continuïteit en herstel na nood gevallen in azure Kubernetes service (AKS)
 
 Wanneer u clusters beheert in azure Kubernetes service (AKS), wordt de uptime van toepassingen belang rijker. AKS biedt hoge Beschik baarheid door gebruik te maken van meerdere knoop punten in een beschikbaarheidsset. Maar deze meerdere knoop punten beveiligen uw systeem niet vanuit een regionale storing. Plan vooruit om bedrijfs continuïteit te behouden en voor bereidingen voor nood herstel om uw uptime te maximaliseren.
 
-Dit artikel is gericht op het plannen van bedrijfs continuïteit en herstel na nood gevallen in AKS. In deze zelfstudie leert u procedures om het volgende te doen:
+Dit artikel is gericht op het plannen van bedrijfs continuïteit en herstel na nood gevallen in AKS. Procedures voor:
 
 > [!div class="checklist"]
 > * Plan voor AKS-clusters in meerdere regio's.
@@ -114,7 +114,7 @@ Uw toepassingen kunnen Azure Storage gebruiken voor hun gegevens. Omdat uw toepa
 
 Voor uw toepassingen is mogelijk permanente opslag vereist, zelfs nadat een Pod is verwijderd. In Kubernetes kunt u permanente volumes gebruiken om gegevens opslag te behouden. Permanente volumes worden gekoppeld aan een VM-knoop punt en vervolgens weer blootgesteld aan het gehele. Permanente volumes volgen een Peul, zelfs als het Peul wordt verplaatst naar een ander knoop punt binnen hetzelfde cluster.
 
-De replicatie strategie die u gebruikt, is afhankelijk van uw opslag oplossing. Veelvoorkomende opslag oplossingen zoals [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/), [CEPH](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/), [toren](https://rook.io/docs/rook/master/disaster-recovery.html)en [Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) bieden hun eigen richt lijnen voor herstel na nood gevallen en replicatie.
+De replicatie strategie die u gebruikt, is afhankelijk van uw opslag oplossing. Veelvoorkomende opslag oplossingen zoals [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/), [CEPH](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/), [toren](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html)en [Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) bieden hun eigen richt lijnen voor herstel na nood gevallen en replicatie.
 
 De typische strategie bestaat uit het bieden van een gemeen schappelijk opslag punt waar toepassingen hun gegevens kunnen schrijven. Deze gegevens worden vervolgens gerepliceerd tussen regio's en vervolgens lokaal geopend.
 

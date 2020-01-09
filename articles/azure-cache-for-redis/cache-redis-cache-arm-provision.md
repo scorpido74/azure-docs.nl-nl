@@ -1,18 +1,17 @@
 ---
-title: Een Azure-cache inrichten voor redis met behulp van Azure Resource Manager
-description: Gebruik Azure Resource Manager sjabloon om een Azure-cache voor redis te implementeren.
-services: app-service
+title: Azure-cache implementeren voor redis met Azure Resource Manager
+description: Meer informatie over het gebruik van een Azure Resource Manager sjabloon voor het implementeren van een Azure-cache voor redis-resource. Er worden sjablonen gegeven voor veelvoorkomende scenario's.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.author: yegu
-ms.openlocfilehash: f215cb79adc02da857f7aa93d8933bd12c06818a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 787edf662aa3a34e167db61b0a89dfc5c2944219
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121777"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412412"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Een Azure-cache voor redis maken met behulp van een sjabloon
 
@@ -22,7 +21,7 @@ In dit onderwerp leert u hoe u een Azure Resource Manager sjabloon maakt waarmee
 
 Op dit moment worden de diagnostische instellingen gedeeld voor alle caches in dezelfde regio voor een abonnement. Het bijwerken van een cache in de regio is van invloed op alle andere caches in de regio.
 
-Zie [Azure Resource Manager sjablonen ontwerpen](../azure-resource-manager/resource-group-authoring-templates.md)voor meer informatie over het maken van sjablonen. Zie [resource typen van micro soft. cache](/azure/templates/microsoft.cache/allversions)voor meer informatie over de JSON-syntaxis en eigenschappen voor cache resource typen.
+Zie [Azure Resource Manager sjablonen ontwerpen](../azure-resource-manager/templates/template-syntax.md)voor meer informatie over het maken van sjablonen. Zie [resource typen van micro soft. cache](/azure/templates/microsoft.cache/allversions)voor meer informatie over de JSON-syntaxis en eigenschappen voor cache resource typen.
 
 Zie [Azure cache for redis-sjabloon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json)voor de volledige sjabloon.
 
@@ -117,8 +116,6 @@ Hiermee maakt u het Azure-cache geheugen voor redis.
       ]
     }
 
-
-
 ## <a name="commands-to-run-deployment"></a>Opdrachten om implementatie uit te voeren
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
@@ -128,5 +125,3 @@ Hiermee maakt u het Azure-cache geheugen voor redis.
 
 ### <a name="azure-cli"></a>Azure-CLI
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
-
-

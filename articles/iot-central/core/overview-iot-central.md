@@ -1,6 +1,6 @@
 ---
 title: Wat is Azure IoT Central? | Microsoft Docs
-description: Azure IoT Central is een IoT-toepassings platform dat het maken van IoT-oplossingen vereenvoudigt. In dit artikel vindt u een overzicht van de functies van Azure IoT Central.
+description: Azure IoT Central is een IoT-toepassingsplatform waarmee het eenvoudiger is om IoT-oplossingen te maken. In dit artikel vindt u een overzicht van de functies van Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
 ms.date: 08/26/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 30e7b4c39c24f4271c53f7a9f8940e4fb3c2e298
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: a1aa2f12f62a95ac14750c821079df2bac46e8ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048658"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434973"
 ---
 <!---
 Purpose of an Overview article: 
@@ -99,7 +99,7 @@ Beheerders beheren de toegang tot uw toepassing met [gebruikers rollen en machti
 
 Nu u een overzicht van Azure IoT Central hebt, zijn dit mogelijke volgende stappen:
 
-- Leer wat de verschillen zijn tussen de oplossingsversnellers [Azure IoT Central en Azure IoT](overview-iot-options.md).
+- Meer informatie over de beschik bare [Azure-technologieën en-services voor het maken van IOT-oplossingen](../../iot-fundamentals/iot-services-and-technologies.md).
 - Raak vertrouwd met de [gebruikersinterface van Azure IoT Central](overview-iot-central-tour.md).
 - Ga aan de slag door [een Azure IoT Central-toepassing te maken](quick-deploy-iot-central.md).
 - Volg een reeks zelfstudies die u leren hoe u:

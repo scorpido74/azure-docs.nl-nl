@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 6b78b97004498fdacccdf9408d59158424ff6c07
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: c0681024b60827cf589906041c264d912ab209bb
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534138"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612357"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Een route tabel voor virtuele WAN-hub maken voor Nva's: Azure Portal
 
@@ -67,7 +67,7 @@ Maak de hub. Voor de doel einden van deze oefening kunt u de volgende waarden ge
 
 De hub bijwerken met een route tabel van de hub. Voor de doel einden van deze oefening kunt u de volgende waarden gebruiken:
 
-* **VNet-adres ruimten voor indirecte spaken:** (VNet1 en VNet2) 10.0.2.0/24 en 10.0.3.0/24
+* **Spoke VNet-adres ruimten:** (VNet1 en VNet2) 10.0.2.0/24 en 10.0.3.0/24
 * **Privé IP-adres van DMZ NVA Network Interface:** 10.0.4.5
 
 1. Navigeer naar uw virtuele WAN.

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 11/19/2019
+ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: 5ae6c30c595c2e3c4c7ce90d6ab208e50722bfc2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: dd5167af5f45ebae0529e16f224065627085e9b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227703"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348812"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
 
@@ -64,7 +64,7 @@ Er zijn enkele dingen die u nodig hebt om virtuele Windows-Bureau bladen in te s
 
 We willen ondersteuning voor de volgende besturings systemen toevoegen, dus zorg ervoor dat u over de [juiste licenties](https://azure.microsoft.com/pricing/details/virtual-desktop/) voor uw gebruikers beschikt op basis van het bureau blad en de apps die u wilt implementeren:
 
-|OS|Vereiste licentie|
+|Besturingssysteem|Vereiste licentie|
 |---|---|
 |Windows 10 Enter prise-meerdere sessies of Windows 10 Enter prise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
 |Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
@@ -72,7 +72,7 @@ We willen ondersteuning voor de volgende besturings systemen toevoegen, dus zorg
 
 Uw infra structuur heeft de volgende zaken nodig om virtueel bureau blad van Windows te ondersteunen:
 
-* Een [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
+* An [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
 * Een Windows Server-Active Directory gesynchroniseerd met Azure Active Directory. U kunt dit configureren met een van de volgende opties:
   * Azure AD Connect (voor hybride organisaties)
   * Azure AD Domain Services (voor hybride of Cloud organisaties)
@@ -110,8 +110,11 @@ Zorg ervoor dat uw netwerk voldoet aan de volgende vereisten voor optimale prest
 
 De volgende Extern bureaublad-clients ondersteunen Windows virtueel bureau blad:
 
-* [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
-* [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
+* [Windows](connect-windows-7-and-10.md)
+* [Web](connect-web.md)
+* [Mac](connect-macos.md)
+* [iOS](connect-ios.md)
+* [Android (preview-versie)](connect-android.md)
 
 ## <a name="supported-virtual-machine-os-images"></a>Ondersteunde installatie kopieën van besturings systemen voor virtuele machines
 

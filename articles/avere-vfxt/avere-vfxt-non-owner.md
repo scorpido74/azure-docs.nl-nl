@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: 77fc5a53c8bdc389c24cd1e6406415eefc3f167b
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: d50c07d78c15d26a191b982d24da8a4808a31ecd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415058"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Toestaan dat niet-eigenaren Avere vFXT implementeren
 
@@ -19,14 +19,14 @@ Deze instructies zijn een tijdelijke oplossing waarmee een gebruiker zonder abon
 
 (De aanbevolen manier om het avere vFXT-systeem te implementeren, is door een gebruiker met eigenaars bevoegdheden de aanmaak stappen uit te voeren, zoals wordt uitgelegd in [voorbereiden om de avere-vFXT te maken](avere-vfxt-prereqs.md).)  
 
-De tijdelijke oplossing omvat het maken van een extra Access-rol die de gebruikers voldoende machtigingen geeft om het cluster te installeren. De rol moet worden gemaakt door een eigenaar van het abonnement en een eigenaar moet deze toewijzen aan de juiste gebruikers. 
+De tijdelijke oplossing omvat het maken van een extra Access-rol die de gebruikers voldoende machtigingen geeft om het cluster te installeren. De rol moet worden gemaakt door een eigenaar van het abonnement en een eigenaar moet deze toewijzen aan de juiste gebruikers.
 
-De eigenaar van een abonnement moet ook [de gebruiks voorwaarden accepteren](avere-vfxt-prereqs.md) voor de avere vFXT Marketplace-installatie kopie. 
+De eigenaar van een abonnement moet ook [de gebruiks voorwaarden accepteren](avere-vfxt-prereqs.md) voor de avere vFXT Marketplace-installatie kopie.
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Al deze stappen moeten worden uitgevoerd door een gebruiker met eigenaars bevoegdheden voor het abonnement dat wordt gebruikt voor het cluster.
 
-1. Kopieer deze regels en sla ze op in een bestand (bijvoorbeeld `averecreatecluster.json`). Gebruik uw abonnements-ID in de instructie `AssignableScopes`.
+1. Kopieer deze regels en sla ze op in een bestand (bijvoorbeeld `averecreatecluster.json`). Gebruik uw abonnements-ID in de `AssignableScopes`-instructie.
 
    ```json
    {
@@ -49,7 +49,7 @@ De eigenaar van een abonnement moet ook [de gebruiks voorwaarden accepteren](ave
            "Microsoft.Network/routeTables/routes/delete",
            "Microsoft.Network/virtualNetworks/subnets/join/action",
            "Microsoft.Network/virtualNetworks/subnets/read",
-   
+
            "Microsoft.Resources/subscriptions/resourceGroups/read",
            "Microsoft.Resources/subscriptions/resourceGroups/resources/read",
            "Microsoft.Storage/*/read",
@@ -63,6 +63,7 @@ De eigenaar van een abonnement moet ook [de gebruiks voorwaarden accepteren](ave
    `az role definition create --role-definition <PATH_TO_FILE>`
 
     Voorbeeld:
+
     ```azurecli
     az role definition create --role-definition ./averecreatecluster.json
     ```
@@ -71,7 +72,7 @@ De eigenaar van een abonnement moet ook [de gebruiks voorwaarden accepteren](ave
 
    `az role assignment create --assignee <USERNAME> --scope /subscriptions/<SUBSCRIPTION_ID> --role 'avere-create-cluster'`
 
-Na deze procedure heeft elke gebruiker die deze rol toegewezen, de volgende machtigingen voor het abonnement: 
+Na deze procedure heeft elke gebruiker die deze rol toegewezen, de volgende machtigingen voor het abonnement:
 
 * De netwerk infrastructuur maken en configureren
 * De cluster controller maken

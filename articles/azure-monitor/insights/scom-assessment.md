@@ -4,15 +4,15 @@ description: U kunt de System Center Operations Manager-statuscontrole-oplossing
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 33aa246e21b54aebaa902304ff92d4b74bfaac4b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5ec0f181d9d22e9e1183a59a4fbd7d77e658862e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898771"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402868"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimaliseer uw omgeving met de System Center Operations Manager-statuscontrole-oplossing (preview-versie)
 
@@ -32,9 +32,9 @@ Nadat u de oplossing hebt toegevoegd en er een evaluatie wordt uitgevoerd, wordt
 
 ![System Center Operations Manager-statuscontrole dash board](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-01.png)
 
-## <a name="installing-and-configuring-the-solution"></a>De oplossing installeren en configureren
+## <a name="installing-and-configuring-the-solution"></a>Installeren en configureren van de oplossing
 
-De oplossing werkt met micro soft System Center 2012 Operations Manager Service Pack 1, micro soft System Center 2012 R2 Operations Manager, micro soft System Center 2016 Operations Manager, micro soft System Center 2016 Operations Manager en micro soft systeem Center Operations Manager 1807
+De oplossing werkt met micro soft System Center 2012 Operations Manager Service Pack 1, micro soft System Center 2012 R2 Operations Manager, micro soft System Center 2016 Operations Manager, micro soft System Center 2016 Operations Manager en micro soft systeem Center Operations Manager 1807. Een ondersteunde versie van .NET Framework 4.6.2 moet op elke beheer server worden geïnstalleerd.
 
 Gebruik de volgende informatie om de oplossing te installeren en configureren.
 
@@ -57,8 +57,8 @@ De System Center Operations Manager-statuscontrole oplossing verzamelt gegevens 
 
 * Register
 * Windows Management Instrumentation (WMI)
-* Gebeurtenis logboek
-* Bestands gegevens
+* Gebeurtenislogboek
+* Bestandsgegevens
 * Rechtstreeks vanuit Operations Manager Power shell-en SQL-query's uit te werken vanaf een beheer server die u hebt opgegeven.  
 
 Gegevens worden verzameld op de beheer server en elke zeven dagen doorgestuurd naar Log Analytics.  
@@ -148,7 +148,7 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 De management pack van de System Center Operations Manager-statuscontrole oplossing bevat een regel met de naam *micro soft System Center Operations Manager run Health Check Rule*. Deze regel is verantwoordelijk voor het uitvoeren van de status controle. Als u de regel wilt inschakelen en de frequentie wilt configureren, gebruikt u de onderstaande procedures.
 
-De regel voor het uitvoeren van de status controle van micro soft System Center Operations Manager is standaard uitgeschakeld. Als u de status controle wilt uitvoeren, moet u de regel inschakelen op een beheer server. Gebruik de volgende stappen.
+De regel voor het uitvoeren van de status controle van micro soft System Center Operations Manager is standaard uitgeschakeld. Als u de status controle wilt uitvoeren, moet u de regel inschakelen op een beheer server. Volg de volgende stappen.
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>De regel voor een specifieke beheer server inschakelen
 
@@ -273,7 +273,7 @@ Als u aanbevelingen hebt die u wilt negeren, kunt u een tekst bestand maken dat 
 
 *Als er een andere server wordt gedetecteerd nadat ik de System Center Operations Manager-statuscontrole oplossing heb toegevoegd, wordt deze gecontroleerd?* Ja, nadat de detectie is ingeschakeld, wordt deze standaard elke zeven dagen gecontroleerd.
 
-*Wat is de naam van het proces dat het verzamelen van gegevens doet?* AdvisorAssessment. exe
+*Wat is de naam van het proces dat het verzamelen van gegevens doet?* AdvisorAssessment.exe
 
 *Waar wordt het proces AdvisorAssessment. exe uitgevoerd?* AdvisorAssessment. exe wordt uitgevoerd onder het HealthService-proces van de beheer server waarop de status controle regel is ingeschakeld. Met dit proces wordt de detectie van uw hele omgeving gerealiseerd via het verzamelen van externe gegevens.
 

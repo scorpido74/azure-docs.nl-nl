@@ -4,15 +4,15 @@ description: Gebruik de Surface Hub oplossing om de status van uw Surface hubs b
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 7ced5f678b9f8b2d4aa073a984276f41b8b7c4b9
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 32ac14a06230341d21ff1b14a33cbcdd0992e4fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900625"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400900"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Surface hubs bewaken met Azure Monitor om hun status bij te houden
 
@@ -22,7 +22,7 @@ In dit artikel wordt beschreven hoe u de Surface Hub oplossing in Azure Monitor 
 
 Voor elke Surface Hub is micro soft monitoring agent geïnstalleerd. Via de agent kunt u gegevens van uw Surface Hub naar een Log Analytics werkruimte in Azure Monitor verzenden. Er worden logboek bestanden van uw Surface hubs gelezen en vervolgens naar Azure Monitor verzonden. Problemen als servers die offline zijn, de agenda die niet wordt gesynchroniseerd of als het apparaataccount niet kan worden aangemeld bij Skype, worden weer gegeven in het Surface Hub dash board in Azure Monitor. Met behulp van de gegevens in het dash board kunt u apparaten identificeren die niet worden uitgevoerd, of die andere problemen ondervinden, en mogelijk oplossingen voor de gedetecteerde problemen Toep assen.
 
-## <a name="install-and-configure-the-solution"></a>De oplossing installeren en configureren
+## <a name="install-and-configure-the-solution"></a>Installeren en configureren van de oplossing
 Gebruik de volgende informatie om de oplossing te installeren en configureren. Als u uw Surface hubs in Azure Monitor wilt beheren, hebt u het volgende nodig:
 
 * Een [log Analytics abonnements](https://azure.microsoft.com/pricing/details/log-analytics/) niveau waarmee het aantal apparaten dat u wilt bewaken, wordt ondersteund. Log Analytics prijzen variëren afhankelijk van het aantal apparaten dat is inge schreven en hoeveel gegevens er worden verwerkt. Als u uw Surface Hub-implementatie wilt plannen, moet u rekening houden.
@@ -32,7 +32,7 @@ Vervolgens voegt u een bestaande Log Analytics-werk ruimte toe, of maakt u een n
 * Automatisch via intune
 * Hand matig door **instellingen** op uw Surface hub apparaat.
 
-## <a name="set-up-monitoring"></a>Bewaking instellen
+## <a name="set-up-monitoring"></a>Controle instellen
 U kunt de status en activiteit van uw Surface Hub bewaken met behulp van Azure Monitor. U kunt de Surface Hub inschrijven met behulp van intune of lokaal met behulp van **instellingen** op de Surface hub.
 
 ## <a name="connect-surface-hubs-to-azure-monitor-through-intune"></a>Surface hubs aansluiten op Azure Monitor via intune
@@ -44,10 +44,10 @@ InTune is een micro soft-product waarmee u de configuratie-instellingen voor Log
 2. Navigeer naar **instellingen** > **verbonden bronnen**.
 3. Een beleid maken of bewerken op basis van de Surface Hub sjabloon.
 4. Ga naar de sectie Azure Operational Insights van het beleid en voeg de Log Analytics *werk ruimte-id* en de *werkruimte sleutel* toe aan het beleid.
-5. Sla het beleid op.
+5. Sla het beleid.
 6. Koppel het beleid aan de juiste groep apparaten.
 
-   ![InTune-beleid](./media/surface-hubs/intune.png)
+   ![Intune-beleid](./media/surface-hubs/intune.png)
 
 InTune synchroniseert vervolgens de Log Analytics-instellingen met de apparaten in de doel groep en registreert deze in uw Log Analytics-werk ruimte.
 
@@ -61,7 +61,7 @@ Als u intune niet gebruikt om uw omgeving te beheren, kunt u apparaten hand mati
 3. Klik op **Dit apparaat**en klik onder **bewaking**op **log Analytics instellingen configureren**.
 4. Selecteer **bewaking inschakelen**.
 5. Typ in het dialoog venster Log Analytics instellingen de Log Analytics **werk ruimte-id** en typ de **werkruimte sleutel**.  
-   instellingen voor ![](./media/surface-hubs/settings.png)
+   ![settings](./media/surface-hubs/settings.png)
 6. Klik op **OK** om de configuratie te volt ooien.
 
 Er wordt een bevestiging weer gegeven met de melding of de configuratie is toegepast op het apparaat. Als dat het geval is, wordt er een bericht weer gegeven met de mede deling dat de agent is verbonden met Azure Monitor. Het apparaat begint vervolgens met het verzenden van gegevens naar Azure Monitor waar u deze kunt bekijken en er actie op moet ondernemen.

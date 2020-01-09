@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 47e66bfc4550372b571b7263ef5b7f2f149712dc
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 42bd6037bcc94a83e649433e9ea0425fbdf11cd2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307304"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353327"
 ---
 # <a name="supported-platforms"></a>Ondersteunde platforms 
 
@@ -52,17 +52,17 @@ Zie [ondersteunde functies van virtual machine/server](security-center-services.
 
 ### Linux-besturings systemen<a name="os-linux"></a>
 
-64-bits
+64-bit
 
 * CentOS 6 en 7
 * Amazon Linux 2017,09
-* Oracle Linux 6 en 7
+* Oracle Linux 6 en Oracle Linux 7
 * Red Hat Enterprise Linux Server 6 en 7
 * Debian GNU/Linux 8 en 9
 * Ubuntu Linux 14,04 LTS, 16,04 LTS en 18,04 LTS
 * SUSE Linux Enterprise Server 12
 
-32-bits
+32-bit
 * CentOS 6
 * Oracle Linux 6
 * Red Hat Enterprise Linux Server 6
@@ -92,7 +92,7 @@ De volgende Azure PaaS-resources worden ondersteund door Azure Security Center:
 * CosmosDB
 * Opslagaccount
 * App Service
-* Function
+* Functie
 * Cloudservice
 * VNet
 * Subnet

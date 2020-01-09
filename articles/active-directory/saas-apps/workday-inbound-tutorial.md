@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd8e46ecf7e65d768d16c8680fb7ab6796c74ea6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 94fc50bf238a74b7d8b45625d88b2d23d7dd1a13
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849328"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613756"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Zelf studie: workday configureren voor het automatisch inrichten van gebruikers
 
@@ -120,7 +120,7 @@ Om het inrichten van werk stromen tussen workday en Active Directory mogelijk te
 > De normale werkdag-app wordt gebruikt voor het instellen van eenmalige aanmelding tussen werk dagen en Azure Active Directory.
 
 In het onderstaande diagram van de beslissings stroom kunt u zien welke apps voor workday-inrichting relevant zijn voor uw scenario.
-    ![Beslissings stroomdiagram](./media/workday-inbound-tutorial/wday_app_flowchart.png "Decision-stroom diagram ")
+    ![Beslissings stroomdiagram](./media/workday-inbound-tutorial/wday_app_flowchart.png "Beslissings stroomdiagram")
 
 Gebruik de inhouds opgave om naar het betreffende gedeelte van deze zelf studie te gaan.
 
@@ -366,9 +366,9 @@ In deze sectie vindt u de stappen voor het inrichten van gebruikers accounts van
 
 **Werk dagen configureren voor Active Directory inrichting:**
 
-1. Ga naar <https://portal.azure.com>
+1. Ga naar <https://portal.azure.com>.
 
-2. Selecteer in de linker navigatie balk de optie **Azure Active Directory**
+2. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
 
 3. Selecteer **bedrijfs toepassingen**en vervolgens **alle toepassingen**.
 
@@ -376,9 +376,9 @@ In deze sectie vindt u de stappen voor het inrichten van gebruikers accounts van
 
 5. Zoek **naar Active Directory werk dagen**en voeg die app toe vanuit de galerie.
 
-6. Nadat de app is toegevoegd en het scherm met details van de app wordt weer gegeven, selecteert u **inrichting** maken
+6. Nadat de app is toegevoegd en het scherm met details van de app wordt weer gegeven, selecteert u **inrichting**.
 
-7. De **inrichtings** **modus** wijzigen in **automatisch**
+7. Wijzig de **inrichtings** **modus** in **automatisch**.
 
 8. Klik op het informatie banner dat wordt weer gegeven om de inrichtings agent te downloaden. 
 
@@ -468,7 +468,7 @@ In deze stap maken we verbinding met werkdag en Active Directory in de Azure Por
    * **E-mail melding-** Voer uw e-mail adres in en schakel het selectie vakje e-mail verzenden als er een fout is opgetreden in.
 
      > [!NOTE]
-     > De Azure AD-inrichtings service verzendt een e-mail melding als de inrichtings taak een [quarantaine](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) status heeft.
+     > De Azure AD-inrichtings service verzendt een e-mail melding als de inrichtings taak een [quarantaine](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) status heeft.
 
    * Klik op de knop **verbinding testen** . Als de verbindings test is geslaagd, klikt u bovenaan op de knop **Opslaan** . Als dit mislukt, controleert u of de workday-referenties en de AD-referenties die zijn geconfigureerd voor de installatie van de agent geldig zijn.
 
@@ -593,7 +593,7 @@ In de volgende secties worden de stappen beschreven voor het configureren van ge
 
 1. Ga naar <https://portal.azure.com>.
 
-2. Selecteer in de linker navigatie balk de optie **Azure Active Directory**
+2. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
 
 3. Selecteer **bedrijfs toepassingen**en vervolgens **alle toepassingen**.
 
@@ -601,9 +601,9 @@ In de volgende secties worden de stappen beschreven voor het configureren van ge
 
 5. Zoek naar een **werkdag naar Azure AD inrichten**en voeg die app toe vanuit de galerie.
 
-6. Nadat de app is toegevoegd en het scherm met details van de app wordt weer gegeven, selecteert u **inrichting** maken
+6. Nadat de app is toegevoegd en het scherm met details van de app wordt weer gegeven, selecteert u **inrichting**.
 
-7. De **inrichtings** **modus** wijzigen in **automatisch**
+7. Wijzig de **inrichtings** **modus** in **automatisch**.
 
 8. Voer de sectie **beheerders referenties** als volgt uit:
 
@@ -688,9 +688,9 @@ Volg deze instructies voor het configureren van write-back van gebruikers-e-mail
 
 **De back-upconnector voor workday configureren:**
 
-1. Ga naar <https://portal.azure.com>
+1. Ga naar <https://portal.azure.com>.
 
-2. Selecteer in de linker navigatie balk de optie **Azure Active Directory**
+2. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
 
 3. Selecteer **bedrijfs toepassingen**en vervolgens **alle toepassingen**.
 
@@ -698,9 +698,9 @@ Volg deze instructies voor het configureren van write-back van gebruikers-e-mail
 
 5. Zoek naar **werkdag terugschrijven**en voeg die app toe vanuit de galerie.
 
-6. Nadat de app is toegevoegd en het scherm met details van de app wordt weer gegeven, selecteert u **inrichting** maken
+6. Nadat de app is toegevoegd en het scherm met details van de app wordt weer gegeven, selecteert u **inrichting**.
 
-7. De **inrichtings** **modus** wijzigen in **automatisch**
+7. Wijzig de **inrichtings** **modus** in **automatisch**.
 
 8. Voer de sectie **beheerders referenties** als volgt uit:
 
@@ -905,7 +905,7 @@ Ja, een inrichtings agent kan worden geconfigureerd voor het verwerken van meerd
   Get-PublishedResources -TenantId "[tenant ID]"
   ```
 
-* In de lijst met agents die worden weer gegeven, kopieert u de waarde van het veld ' id ' van de resource waarvan *ResourceName* gelijk is aan uw AD-domein naam.
+* In de lijst met agents die worden weer gegeven, kopieert u de waarde van het `id` veld van die resource waarvan *ResourceName* gelijk is aan uw AD-domein naam.
 * Plak de ID-waarde in deze opdracht en voer de opdracht uit in Power shell.
 
   ```powershell
@@ -1191,7 +1191,7 @@ In deze sectie worden veelvoorkomende fouten behandeld met het inrichten van wer
 |#|Fout scenario |Mogelijke oorzaken|Aanbevolen oplossing|
 |--|---|---|---|
 |1.| Fout bij het installeren van de inrichtings agent met het volgende fout bericht: *service ' Microsoft Azure AD Connect inrichtings agent ' (AADConnectProvisioningAgent) is niet gestart. Controleer of u voldoende rechten hebt om het systeem te starten.* | Deze fout wordt meestal weer gegeven als u probeert de inrichtings agent te installeren op een domein controller en groeps beleid voor komt dat de service wordt gestart.  Het wordt ook weer gegeven als er een eerdere versie van de agent wordt uitgevoerd en u deze nog niet hebt verwijderd voordat u een nieuwe installatie start.| Installeer de inrichtings agent op een niet-domein controller. Zorg ervoor dat vorige versies van de agent zijn verwijderd voordat u de nieuwe agent installeert.|
-|2.| De Windows-service ' Microsoft Azure AD Connect inrichtings agent ' bevindt zich in de *Start* status en schakelt niet over naar de *actieve* status. | Als onderdeel van de installatie maakt de wizard agent een lokaal account (**NT Service\\AADConnectProvisioningAgent**) op de server. Dit is het **aanmeldings** account dat wordt gebruikt voor het starten van de service. Als een beveiligings beleid op uw Windows-Server verhindert dat lokale accounts de services uitvoeren, wordt deze fout weer gestuit. | Open de *console Services*. Klik met de rechter muisknop op de Windows-service ' Microsoft Azure AD Connect inrichtings agent ' en geef in het tabblad Aanmelden het account van een domein beheerder op om de service uit te voeren. Start de service opnieuw. |
+|2.| De Windows-service ' Microsoft Azure AD Connect inrichtings agent ' bevindt zich in de *Start* status en schakelt niet over naar de *actieve* status. | Als onderdeel van de installatie maakt de wizard agent een lokaal account (**NT Service\\AADConnectProvisioningAgent**) op de server. Dit is het aanmeldings account dat wordt gebruikt voor het starten van de service. Als een beveiligings beleid op uw Windows-Server verhindert dat lokale accounts de services uitvoeren, wordt deze fout weer gestuit. | Open de *console Services*. Klik met de rechter muisknop op de Windows-service ' Microsoft Azure AD Connect inrichtings agent ' en geef op het tabblad Logon het account van een domein beheerder op om de service uit te voeren. Start de service opnieuw. |
 |3.| Bij het configureren van de inrichtings agent met uw AD-domein in de stap *Connect Active Directory*, neemt de wizard lange tijd in beslag bij het laden van het AD-schema en uiteindelijk een time-out. | Deze fout komt meestal voor als de wizard geen contact kan maken met de controllerserver van het AD-domein door firewallproblemen. | Wanneer u de referenties voor uw AD-domein opgeeft in het scherm *verbinding maken met* de wizard Active Directory, is de optie *domein controller selecteren prioriteit*. Gebruik deze optie om een domein controller te selecteren die zich op dezelfde site bevindt als de agent server en ervoor te zorgen dat er geen firewall regels zijn die de communicatie blok keren. |
 
 #### <a name="connectivity-errors"></a>Connectiviteitsfouten

@@ -3,18 +3,18 @@ title: 'Quick Start: regels en acties in azure IoT Central configureren'
 description: In deze Quick start ziet u als een opbouw functie voor het configureren van regels en acties op basis van telemetrie in uw Azure IoT Central-toepassing.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/24/2019
+ms.date: 12/09/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: f81171d0f545bbf7f903d54bee761817e9451d9d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 489a512ea5658aaeaccdba4b91eae7def14a589c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706727"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434807"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central-preview-features"></a>Snelstartgids: regels en acties voor uw apparaat configureren in azure IoT Central (preview-functies)
 
@@ -76,7 +76,7 @@ Kort nadat u de regel hebt opgeslagen, wordt deze actief. Wanneer aan de voorwaa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u de volgende zaken geleerd:
+In deze snelstartgids hebt u de volgende zaken geleerd:
 
 * Een regel op basis van telemetrie maken
 * Een actie toevoegen

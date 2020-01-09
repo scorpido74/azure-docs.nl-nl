@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5be7b66a51113121ed755d8ad9cea3518577f2e7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 16920a46e64306daa331957df24babba8ac4b731
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706955"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612867"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Zelf studie: een IoT Edge apparaat configureren
 
@@ -26,9 +26,9 @@ De stappen in dit artikel worden doorgaans uitgevoerd door een Cloud ontwikkelaa
 
 ## <a name="generate-certificates"></a>Certificaten genereren
 
-Een apparaat kan alleen als gateway functioneren als er een veilige verbinding kan worden gemaakt met downstream-apparaten. Met Azure IoT Edge kunt u een open bare-sleutel infrastructuur (PKI) gebruiken om beveiligde verbindingen tussen apparaten in te stellen. In dit geval kunnen we een downstream-apparaat verbinding laten maken met een IoT Edge apparaat dat als transparante gateway fungeert. Om redelijke beveiliging te behouden, moet het downstream-apparaat de identiteit van het IoT Edge apparaat bevestigen. Zie voor meer informatie over hoe IoT Edge-apparaten certificaten gebruiken [Azure IOT Edge details van certificaat gebruik](iot-edge-certs.md).
+Een apparaat kan alleen als gateway functioneren als er een veilige verbinding kan worden gemaakt met downstream-apparaten. Azure IoT Edge kunt u een openbare-sleutelinfrastructuur (PKI) gebruiken voor het instellen van beveiligde verbindingen tussen apparaten. In dit geval toestemming we een downstream apparaat verbinding maakt met een IoT Edge-apparaat als een transparante gateway fungeert. Om redelijke beveiliging te behouden, moet het downstream-apparaat de identiteit van het IoT Edge apparaat bevestigen. Zie voor meer informatie over hoe IoT Edge-apparaten certificaten gebruiken [Azure IOT Edge details van certificaat gebruik](iot-edge-certs.md).
 
-In deze sectie maken we de zelfondertekende certificaten met behulp van een docker-installatie kopie die we vervolgens bouwen en uitvoeren. We hebben ervoor gekozen om een docker-installatie kopie te gebruiken om deze stap te volt ooien omdat het aantal stappen dat nodig is voor het maken van de certificaten op de Windows-ontwikkel computer aanzienlijk wordt gereduceerd. Zie [certificaten genereren met Windows](how-to-create-transparent-gateway.md#generate-certificates-with-windows) voor meer informatie over het maken van de certificaten zonder een container te gebruiken. Het [genereren van certificaten met Linux](how-to-create-transparent-gateway.md#generate-certificates-with-linux) bevat de set instructies die we hebben geautomatiseerd met de docker-installatie kopie.
+In deze sectie maken we de zelfondertekende certificaten met behulp van een docker-installatie kopie die we vervolgens bouwen en uitvoeren. We hebben ervoor gekozen om een docker-installatie kopie te gebruiken om deze stap te volt ooien omdat het aantal stappen dat nodig is voor het maken van de certificaten op de Windows-ontwikkel computer aanzienlijk wordt gereduceerd. Zie [demo certificaten maken om IOT Edge-apparaatfuncties te testen](how-to-create-test-certificates.md) om te begrijpen wat er wordt geautomatiseerd met de docker-installatie kopie.
 
 1. Meld u aan bij de virtuele machine voor ontwikkeling.
 
@@ -65,7 +65,7 @@ In deze sectie maken we de zelfondertekende certificaten met behulp van een dock
 
 12. Nadat de container is uitgevoerd, controleert u de volgende bestanden in **c:\\edgeCertificates**:
 
-    * c:\\edgeCertificates\\-certificaten\\Azure-IOT-test-only. root. ca. cert. pem
+    * c:\\edgeCertificates\\certs\\azure-iot-test-only.root.ca.cert.pem
     * c:\\edgeCertificates\\-certificaten\\New-Edge-Device-Full-chain. cert. pem
     * c:\\edgeCertificates\\-certificaten\\New-Edge-device. cert. pem
     * c:\\edgeCertificates\\-certificaten\\New-Edge-device. cert. pfx
@@ -204,7 +204,7 @@ Eerder in dit artikel hebben we certificaten geüpload naar Key Vault om ze besc
 
 1. Wanneer u bent geverifieerd, wordt de virtuele Linux-machine aangemeld en worden uw Azure-abonnementen weer geven.
 
-1. ASet het Azure-abonnement dat u wilt gebruiken voor Azure CLI-opdrachten.
+1. Stel het Azure-abonnement in dat u wilt gebruiken voor Azure CLI-opdrachten.
 
     ```bash
     az account set --subscription <subscriptionId>

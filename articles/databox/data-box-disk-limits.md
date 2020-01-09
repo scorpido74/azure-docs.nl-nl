@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: cd40c5d11414c91ff2f2febc0621e1e06f79e9cf
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1bb8300f1e54cf03563704cf00549ce9e09a3916
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646969"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613785"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk limieten
 
@@ -59,7 +59,7 @@ Voor de meest recente informatie over Azure Storage-service limieten en aanbevol
 
 ## <a name="azure-storage-account-size-limits"></a>Maximale grootte van Azure Storage-account
 
-Dit zijn de limieten voor de grootte van de gegevens die worden gekopieerd naar het opslag account. Zorg ervoor dat de gegevens die u uploadt, voldoen aan deze limieten. Voor de meest actuele informatie over deze limieten gaat u naar [Azure Blob-opslag schaal doelen](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets) en [Azure files schaal doelen](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-files-scale-targets).
+Dit zijn de limieten voor de grootte van de gegevens die worden gekopieerd naar het opslag account. Zorg ervoor dat de gegevens die u uploadt, voldoen aan deze limieten. Voor de meest actuele informatie over deze limieten gaat u naar [Azure Blob-opslag schaal doelen](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage) en [Azure files schaal doelen](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts).
 
 | Grootte van gegevens die zijn gekopieerd naar een Azure-opslag account                      | Standaardlimiet          |
 |---------------------------------------------------------------------|------------------------|
@@ -72,7 +72,7 @@ Dit zijn de groottes van de Azure-objecten die kunnen worden geschreven. Zorg er
 
 | Azure-object type | Standaardlimiet                                             |
 |-------------------|-----------------------------------------------------------|
-| Blok-BLOB        | ~ 4,75 TiB                                                 |
+| Blok-blob        | ~ 4.75 TiB                                                 |
 | Pagina-BLOB         | 8 TiB <br> (Elk bestand dat is geüpload in de pagina-BLOB-indeling moet 512 bytes zijn uitgelijnd, anders mislukt het uploaden. <br> Zowel de VHD als de VHDX zijn 512 bytes uitgelijnd.) |
 |Azure Files        | 1 TiB <br> Met maximaal grootte van share is 5 TiB     |
 | Managed Disks     |4 TiB <br> Zie voor meer informatie over grootte en limieten: <li>[Schaalbaarheids doelen voor beheerde schijven](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|

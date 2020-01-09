@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: gegevens afwijkingen in realtime gebeurtenissen visualiseren-Azure Event Hubs'
+title: Gegevens afwijkingen in realtime-gebeurtenissen in azure Event Hubs-visualiseren
 description: 'Zelf studie: gegevens afwijkingen visualiseren in realtime gebeurtenissen die naar Microsoft Azure worden verzonden Event Hubs'
 services: event-hubs
 author: ShubhaVijayasarathy
@@ -8,13 +8,13 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 11/05/2019
-ms.openlocfilehash: 3e228fb9d4223ad1d6d906b44ab63c35600faa56
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.date: 12/20/2019
+ms.openlocfilehash: 1fc791519fd32b35bdbe3a69caec3c64e3ce3178
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307340"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437152"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Zelfstudie: Gegevensanomalieën binnen in realtime naar Azure Event Hubs verzonden gebeurtenissen visualiseren
 
@@ -47,7 +47,7 @@ Voor deze zelfstudie hebt u een Event Hubs-naamruimte en een Event Hub nodig. U 
 
 In de volgende secties wordt beschreven hoe u deze vereiste stappen kunt uitvoeren. Volg de CLI- *of* PowerShell-instructies om de volgende stappen uit te voeren:
 
-1. Maak een [resourcegroep](../azure-resource-manager/resource-group-overview.md). 
+1. Maak een [resourcegroep](../azure-resource-manager/management/overview.md). 
 
 2. Maak een Event Hubs-naamruimte. 
 
@@ -164,7 +164,7 @@ De Event Hubs-[voorbeelden op GitHub](https://github.com/Azure/azure-event-hubs/
 
 3. Open Program.cs en vervang **Event Hubs connection string** door de verbindingsreeks die u bij het uitvoeren van het script hebt opgeslagen. 
 
-4. Vervang **Event Hub naam** door de naam van uw Event Hub. Klik op F5 om de toepassing uit te voeren. Deze begint met het verzenden van gebeurtenissen naar uw Event Hub en gaat door totdat er 1000 gebeurtenissen zijn verzonden. Er zijn een paar gevallen waarin u alleen gegevens kunt ophalen als de app actief is. Deze gevallen worden waar nodig aangegeven in de volgende instructies.
+4. Vervang **Event Hub name** door de naam van uw Event Hub. Klik op F5 om de toepassing uit te voeren. Deze begint met het verzenden van gebeurtenissen naar uw Event Hub en gaat door totdat er 1000 gebeurtenissen zijn verzonden. Er zijn een paar gevallen waarin u alleen gegevens kunt ophalen als de app actief is. Deze gevallen worden waar nodig aangegeven in de volgende instructies.
 
 ## <a name="set-up-azure-stream-analytics"></a>Azure Stream Analytics installeren
 
@@ -186,7 +186,7 @@ U kunt nu gegevens streamen naar uw Event Hub. Als u die gegevens in een Power B
 
    ![Schermopname waarin wordt weergegeven hoe u een nieuwe Azure Stream Analytics-taak maakt.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    Accepteer de standaardwaarden voor de rest van de velden. Klik op **Create**. 
+    Accepteer de standaardwaarden voor de rest van de velden. Klik op **Maken**. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Een invoer aan de Stream Analytics-taak toevoegen
 
@@ -373,7 +373,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 > [!div class="checklist"]
 > * Een Event Hubs-naamruimte maken
 > * Een Event Hub maken

@@ -8,21 +8,24 @@ ms.subservice: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
-ms.date: 02/22/2019
-ms.openlocfilehash: 8359a8407e93a2b31466342b82539cef04b0fe01
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.date: 12/31/2019
+ms.openlocfilehash: a63087620d50336c67472348da3b7f37fb380635
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802196"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611965"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Wat is de Azure-Data Science Virtual Machine voor Linux en Windows?
 
 De Data Science Virtual Machine (DSVM) is een aangepaste VM-installatie kopie op het Azure-Cloud platform dat speciaal is gebouwd voor het uitvoeren van data Science. Er zijn veel populaire hulpprogram ma's voor gegevens wetenschap vooraf geïnstalleerd en vooraf geconfigureerd om intelligente toepassingen voor geavanceerde analyse te bouwen. 
 
 De DSVM is beschikbaar op:
++ **Windows Server 2019 (preview-versie)**
++ **Ubuntu 18,04 LTS (preview-versie)**
 + Windows Server 2016
 + Ubuntu 16,04 LTS en CentOS 7,4
+
 
 > [!NOTE]
 > Alle VM-hulpprogram ma's voor uitgebreid leren zijn gevouwen in de Data Science Virtual Machine. 
@@ -63,7 +66,7 @@ De Windows Server 2016-versie van de DSVM wordt vooraf geïnstalleerd met GPU-St
 
 U kunt ook de Ubuntu-, CentOS-of Windows 2016-versie van de DSVM implementeren op een virtuele machine van Azure die niet is gebaseerd op Gpu's. In dit geval worden alle diepe leer raamwerken terugvallen op de CPU-modus.
  
-Meer [informatie over beschik bare diep gaande lessen en AI-Frameworks](dsvm-deep-learning-ai-frameworks.md).
+Meer [informatie over beschik bare diep gaande lessen en AI-Frameworks](dsvm-tools-deep-learning-frameworks.md).
 
 <a name="included"></a>
 

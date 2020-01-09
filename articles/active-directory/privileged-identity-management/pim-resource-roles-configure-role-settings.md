@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 01/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c9acc1487fcbf8398b7a556c63f97963b264451
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4db330a875b8241b642bcbc71fb0866c9833ee7e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74182716"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638677"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Instellingen voor Azure-resource-rollen configureren in Privileged Identity Management
 
@@ -58,10 +58,17 @@ Volg deze stappen om de instellingen voor een Azure-resource functie te openen.
 
 1. Gebruik het tabblad **melding** of de knop **volgende: activering** aan de onderkant van de pagina om naar het tabblad meldings instelling voor deze rol te gaan. Deze instellingen bepalen alle e-mail meldingen die betrekking hebben op deze rol.
 
-    > [!NOTE]
-    > Deze meldingen GEBRUIKERSINTERFACE wordt momenteel doorgevoerd in azure-regio's en-abonnementen. Als u deze gedetailleerde meldingen niet kunt configureren, kunt u een van de twee dagen controleren.
-
     ![Tabblad meldingen in de pagina rolinstellingen](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
+
+    Op het tabblad **meldingen** op de pagina rolinstellingen kunt privileged Identity Management gedetailleerde controle over wie meldingen ontvangen en welke meldingen ze ontvangen.
+
+    - **Een e-mail uitzetten**<br>U kunt specifieke e-mail adressen uitschakelen door het selectie vakje standaard ontvanger uit te scha kelen en eventuele extra ontvangers te verwijderen.  
+
+    - **E-mails beperken tot opgegeven e-mail adressen**<br>U kunt e-mail berichten die worden verzonden naar standaard ontvangers uitschakelen door het selectie vakje standaard ontvanger uit te scha kelen. U kunt vervolgens extra e-mail adressen toevoegen als extra geadresseerden. Als u meer dan één e-mail adres wilt toevoegen, scheidt u deze met een punt komma (;).
+
+    - **E-mail berichten verzenden naar standaard ontvangers en extra ontvangers**<br>U kunt e-mail berichten verzenden naar de standaard ontvanger en de extra ontvanger door het selectie vakje standaard ontvanger te selecteren en e-mail adressen toe te voegen voor extra ontvangers.
+
+    - **Alleen essentiële e-mail berichten**<br>Voor elk type e-mail bericht kunt u het selectie vakje selecteren om alleen essentiële e-mail berichten te ontvangen. Dit betekent dat Privileged Identity Management alleen e-mail berichten naar de geconfigureerde ontvangers stuurt wanneer het e-mail bericht een onmiddellijke actie vereist. E-mail berichten waarin gebruikers worden gevraagd om hun roltoewijzing uit te breiden, worden bijvoorbeeld niet geactiveerd wanneer een e-mail berichten die beheerders vereisen om een uitbreidings aanvraag goed te keuren, worden geactiveerd.
 
 1. Selecteer de knop **bijwerken** op elk gewenst moment om de rolinstellingen bij te werken.
 

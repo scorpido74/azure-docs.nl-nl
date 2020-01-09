@@ -1,24 +1,14 @@
 ---
 title: Live data (preview) weer geven met Azure Monitor voor containers | Microsoft Docs
 description: In dit artikel wordt een overzicht gegeven van de real-time weer gave van Kubernetes-logboeken, gebeurtenissen en pod-metrische gegevens zonder gebruik te maken van kubectl in Azure Monitor voor containers.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/15/2019
-ms.author: magoedte
-ms.openlocfilehash: 9c497c73d42e1fb8851c5293010098d843297250
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 18ae091a32d0256288d27ad1439ffc7be26db5f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514418"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404756"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Kubernetes-logboeken, gebeurtenissen en metrische gegevens over pod in realtime weer geven
 
@@ -64,10 +54,10 @@ U kunt real-time logboek gegevens weer geven wanneer deze worden gegenereerd doo
 
 3. Selecteer het tabblad **knoop punten**, **controllers**of **containers** .
 
-4. Selecteer een object in het prestatie raster en selecteer in het deel venster Eigenschappen aan de rechter kant de optie **Live gegevens weer geven (preview)** . Als het AKS-cluster met behulp van Azure AD is geconfigureerd voor eenmalige aanmelding, wordt u gevraagd om te verifiëren bij het eerste gebruik tijdens die browser sessie. Selecteer uw account en voltooi de verificatie met Azure.  
+4. Selecteer een object in het prestatie raster en selecteer in het deel venster Eigenschappen aan de rechter kant de optie **Live gegevens weer geven (preview)** . Als het AKS-cluster met behulp van Azure AD is geconfigureerd voor eenmalige aanmelding, wordt u gevraagd om te verifiëren bij het eerste gebruik tijdens die browser sessie. Selecteer uw account en de volledige verificatie met Azure.  
 
     >[!NOTE]
-    >Wanneer u de gegevens uit uw Log Analytics-werk ruimte bekijkt door de optie **weer geven in analyse** te selecteren in het deel venster Eigenschappen, worden in de zoek resultaten in het logboek mogelijk **knoop punten**, **daemon-sets**, **replica sets**, **taken**, **weer gegeven Cron-taken**,- **peulen**en- **containers** die mogelijk niet meer bestaan. Het zoeken naar Logboeken voor een container die niet beschikbaar is in `kubectl`, zal hier ook mislukken. Bekijk de [weer gave in de analyse](container-insights-log-search.md#search-logs-to-analyze-data) functie voor meer informatie over het weer geven van historische logboeken, gebeurtenissen en metrische gegevens.  
+    >Wanneer u de gegevens in uw Log Analytics-werk ruimte bekijkt door de optie **weer geven in analyse** te selecteren in het deel venster Eigenschappen, worden in de zoek resultaten van het logboek mogelijk **knoop punten**, **daemon-sets**, **replica sets**, **taken**, **cron**, **peul**en **containers** weer gegeven die mogelijk niet meer bestaan. Het zoeken naar Logboeken voor een container die niet beschikbaar is in `kubectl`, zal hier ook mislukken. Bekijk de [weer gave in de analyse](container-insights-log-search.md#search-logs-to-analyze-data) functie voor meer informatie over het weer geven van historische logboeken, gebeurtenissen en metrische gegevens.  
 
 Nadat de verificatie is voltooid, wordt het console venster voor Live gegevens (preview-versie) weer gegeven onder het raster voor prestatie gegevens waarin u logboek gegevens in een doorlopende stroom kunt weer geven. Als de status indicator ophalen een groen vinkje bevat dat helemaal rechts in het deel venster staat, betekent dit dat de gegevens kunnen worden opgehaald en streamen naar uw-console.  
 
@@ -75,9 +65,9 @@ Nadat de verificatie is voltooid, wordt het console venster voor Live gegevens (
 
 De titel van het deel venster toont de naam van de pod waarin de container is gegroepeerd.
 
-## <a name="view-events"></a>Gebeurtenissen weergeven
+## <a name="view-events"></a>Evenementen bekijken
 
-U kunt real-time gebeurtenis gegevens weer geven wanneer deze worden gegenereerd door de container Engine vanuit de weer gave **knoop punten**, **controllers**, **containers**en **implementaties (preview)** wanneer een container, Pod, knoop punt, replicaset, daemonset, taak, CronJob of Implementatie is geselecteerd. Voer de volgende stappen uit om gebeurtenissen weer te geven.
+U kunt real-time gebeurtenis gegevens weer geven wanneer deze worden gegenereerd door de container Engine vanuit de weer gave **knoop punten**, **controllers**, **containers**en **implementaties (preview)** wanneer een container, Pod, knoop punt, replicaset, daemonset, taak, CronJob of implementatie is geselecteerd. Voer de volgende stappen uit om gebeurtenissen weer te geven.
 
 1. Blader in het Azure Portal naar de cluster resource groep AKS en selecteer uw AKS-resource.
 
@@ -85,10 +75,10 @@ U kunt real-time gebeurtenis gegevens weer geven wanneer deze worden gegenereerd
 
 3. Selecteer het tabblad **knoop punten**, **controllers**, **containers**of **implementaties (voor beeld)** .
 
-4. Selecteer een object in het prestatie raster en selecteer in het deel venster Eigenschappen aan de rechter kant de optie **Live gegevens weer geven (preview)** . Als het AKS-cluster met behulp van Azure AD is geconfigureerd voor eenmalige aanmelding, wordt u gevraagd om te verifiëren bij het eerste gebruik tijdens die browser sessie. Selecteer uw account en voltooi de verificatie met Azure.  
+4. Selecteer een object in het prestatie raster en selecteer in het deel venster Eigenschappen aan de rechter kant de optie **Live gegevens weer geven (preview)** . Als het AKS-cluster met behulp van Azure AD is geconfigureerd voor eenmalige aanmelding, wordt u gevraagd om te verifiëren bij het eerste gebruik tijdens die browser sessie. Selecteer uw account en de volledige verificatie met Azure.  
 
     >[!NOTE]
-    >Wanneer u de gegevens uit uw Log Analytics-werk ruimte bekijkt door de optie **weer geven in analyse** te selecteren in het deel venster Eigenschappen, worden in de zoek resultaten in het logboek mogelijk **knoop punten**, **daemon-sets**, **replica sets**, **taken**, **weer gegeven Cron-taken**,- **peulen**en- **containers** die mogelijk niet meer bestaan. Het zoeken naar Logboeken voor een container die niet beschikbaar is in `kubectl`, zal hier ook mislukken. Bekijk de [weer gave in de analyse](container-insights-log-search.md#search-logs-to-analyze-data) functie voor meer informatie over het weer geven van historische logboeken, gebeurtenissen en metrische gegevens.  
+    >Wanneer u de gegevens in uw Log Analytics-werk ruimte bekijkt door de optie **weer geven in analyse** te selecteren in het deel venster Eigenschappen, worden in de zoek resultaten van het logboek mogelijk **knoop punten**, **daemon-sets**, **replica sets**, **taken**, **cron**, **peul**en **containers** weer gegeven die mogelijk niet meer bestaan. Het zoeken naar Logboeken voor een container die niet beschikbaar is in `kubectl`, zal hier ook mislukken. Bekijk de [weer gave in de analyse](container-insights-log-search.md#search-logs-to-analyze-data) functie voor meer informatie over het weer geven van historische logboeken, gebeurtenissen en metrische gegevens.  
 
 Nadat de verificatie is voltooid, wordt het console venster voor Live gegevens (preview-versie) onder het raster prestatie gegevens weer gegeven. Als de status indicator ophalen een groen vinkje bevat dat helemaal rechts in het deel venster staat, betekent dit dat de gegevens kunnen worden opgehaald en streamen naar uw-console. 
     
@@ -112,10 +102,10 @@ U kunt metrische gegevens in realtime weer geven wanneer deze worden gegenereerd
 
 3. Selecteer de **knoop punten** of het tabblad **controllers** .
 
-4. Selecteer een **pod** -object in het prestatie raster en selecteer in het deel venster Eigenschappen aan de rechter kant de optie **Live data weer geven (preview)** . Als het AKS-cluster met behulp van Azure AD is geconfigureerd voor eenmalige aanmelding, wordt u gevraagd om te verifiëren bij het eerste gebruik tijdens die browser sessie. Selecteer uw account en voltooi de verificatie met Azure.  
+4. Selecteer een **pod** -object in het prestatie raster en selecteer in het deel venster Eigenschappen aan de rechter kant de optie **Live data weer geven (preview)** . Als het AKS-cluster met behulp van Azure AD is geconfigureerd voor eenmalige aanmelding, wordt u gevraagd om te verifiëren bij het eerste gebruik tijdens die browser sessie. Selecteer uw account en de volledige verificatie met Azure.  
 
     >[!NOTE]
-    >Wanneer u de gegevens uit uw Log Analytics-werk ruimte bekijkt door de optie **weer geven in analyse** te selecteren in het deel venster Eigenschappen, worden in de zoek resultaten in het logboek mogelijk **knoop punten**, **daemon-sets**, **replica sets**, **taken**, **weer gegeven Cron-taken**,- **peulen**en- **containers** die mogelijk niet meer bestaan. Het zoeken naar Logboeken voor een container die niet beschikbaar is in `kubectl`, zal hier ook mislukken. Bekijk de [weer gave in de analyse](container-insights-log-search.md#search-logs-to-analyze-data) functie voor meer informatie over het weer geven van historische logboeken, gebeurtenissen en metrische gegevens.  
+    >Wanneer u de gegevens in uw Log Analytics-werk ruimte bekijkt door de optie **weer geven in analyse** te selecteren in het deel venster Eigenschappen, worden in de zoek resultaten van het logboek mogelijk **knoop punten**, **daemon-sets**, **replica sets**, **taken**, **cron**, **peul**en **containers** weer gegeven die mogelijk niet meer bestaan. Het zoeken naar Logboeken voor een container die niet beschikbaar is in `kubectl`, zal hier ook mislukken. Bekijk de [weer gave in de analyse](container-insights-log-search.md#search-logs-to-analyze-data) functie voor meer informatie over het weer geven van historische logboeken, gebeurtenissen en metrische gegevens.  
 
 Nadat de verificatie is voltooid, wordt het console venster voor Live gegevens (preview-versie) onder het raster prestatie gegevens weer gegeven. Metrische gegevens worden opgehaald en streamen naar uw-console, zodat deze in de twee grafieken worden gepresenteerd. De titel van het deel venster toont de naam van de pod waarin de container is gegroepeerd.
 
@@ -123,6 +113,6 @@ Nadat de verificatie is voltooid, wordt het console venster voor Live gegevens (
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Azure Kubernetes service Health weer geven](container-insights-analyze.md)voor meer informatie over het gebruik van Azure monitor en het controleren van andere aspecten van uw AKS-cluster.
+- Om door te gaan met het leren over het gebruik van Azure Monitor en controleren van andere aspecten van uw AKS-cluster [weergave Azure Kubernetes Service health](container-insights-analyze.md).
 
 - Bekijk de [voor beelden van logboek query's](container-insights-log-search.md#search-logs-to-analyze-data) om vooraf gedefinieerde query's en voor beelden te bekijken om waarschuwingen, visualisaties of verdere analyse van uw clusters te maken.

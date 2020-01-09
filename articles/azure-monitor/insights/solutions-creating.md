@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 97472a65af6eb2c5c2da93d93f38450cc021f680
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 8c08dc5091e7ab0eec5d4e6dd455e6adb3caa35f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555303"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402051"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Een beheer oplossing ontwerpen en bouwen in azure (preview)
 > [!NOTE]
@@ -60,7 +60,7 @@ U [maakt aangepaste weer gaven met behulp van de weer gave Designer](../../azure
 
 
 ## <a name="create-solution-file"></a>Oplossings bestand maken
-Zodra u de onderdelen die deel uitmaken van uw oplossing hebt geconfigureerd en getest, kunt u [het oplossings bestand]( solutions-solution-file.md).  U implementeert de oplossings onderdelen in een [Resource Manager-sjabloon](../../azure-resource-manager/resource-group-authoring-templates.md) die een [oplossings resource]( solutions-solution-file.md#solution-resource) bevat met relaties met de andere resources in het bestand.  
+Zodra u de onderdelen die deel uitmaken van uw oplossing hebt geconfigureerd en getest, kunt u [het oplossings bestand]( solutions-solution-file.md).  U implementeert de oplossings onderdelen in een [Resource Manager-sjabloon](../../azure-resource-manager/templates/template-syntax.md) die een [oplossings resource]( solutions-solution-file.md#solution-resource) bevat met relaties met de andere resources in het bestand.  
 
 
 ## <a name="test-your-solution"></a>Uw oplossing testen
@@ -76,5 +76,5 @@ Zodra u uw oplossing hebt voltooid en getest, kunt u deze beschikbaar maken voor
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het [maken van een oplossings bestand]( solutions-solution-file.md) voor uw beheer oplossing.
-* Meer informatie over het [ontwerpen van Azure Resource Manager sjablonen](../../azure-resource-manager/resource-group-authoring-templates.md).
+* Meer informatie over het [ontwerpen van Azure Resource Manager sjablonen](../../azure-resource-manager/templates/template-syntax.md).
 * Zoek in [Azure Quick](https://azure.microsoft.com/documentation/templates) start-sjablonen naar voor beelden van verschillende Resource Manager-sjablonen.

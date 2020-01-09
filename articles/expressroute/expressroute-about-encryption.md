@@ -5,18 +5,18 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 12/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: b8e9748360b22cd1c693b2c601024c0824ffb483
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 7dd9106539b6756d74629ac663241a5b5562cefb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083610"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437048"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute-versleuteling
  
-ExpressRoute biedt ondersteuning voor een aantal versleutelings technologieën om de vertrouwelijkheid en integriteit te waarborgen van de gegevens die tussen uw netwerk en het netwerk van micro soft worden gepasseerd.
+ExpressRoute ondersteunt een aantal versleutelings technologieën om de vertrouwelijkheid en integriteit te waarborgen van de gegevens die tussen uw netwerk en het netwerk van micro soft worden gepasseerd.
 
 ## <a name="point-to-point-encryption-by-macsec-faq"></a>Point-to-Point Encryption by MACsec FAQ
 MACsec is een [IEEE-standaard](https://1.ieee802.org/security/802-1ae/). De gegevens worden versleuteld op het MAC-niveau (Media Access Control) of netwerklaag 2. U kunt MACsec gebruiken om de fysieke koppelingen tussen uw netwerk apparaten en de netwerk apparaten van micro soft te versleutelen wanneer u via [ExpressRoute direct](expressroute-erdirect-about.md)verbinding maakt met micro soft. MACsec is standaard uitgeschakeld op ExpressRoute direct-poorten. U brengt uw eigen MACsec-sleutel voor versleuteling en slaat deze op in [Azure Key Vault](../key-vault/key-vault-overview.md). U bepaalt wanneer u de sleutel wilt draaien. Zie andere veelgestelde vragen hieronder.
@@ -40,7 +40,7 @@ Ja. MACsec beveiligt de fysieke verbindingen tussen u en micro soft. IPsec bevei
 ### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-between-my-on-premises-network-and-my-azure-virtual-network"></a>Kan ik Azure VPN-gateway gebruiken om de IPsec-tunnel in te stellen tussen mijn on-premises netwerk en mijn virtuele Azure-netwerk?
 Ja. U kunt deze IPsec-tunnel instellen via micro soft-peering van uw ExpressRoute-circuit. Volg onze [configuratie handleiding](site-to-site-vpn-over-microsoft-peering.md).
 ### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-over-azure-private-peering"></a>Kan ik Azure VPN-gateway gebruiken om de IPsec-tunnel in te stellen via persoonlijke Azure-peering?
-Nee. U moet een VPN-gateway van derden implementeren in uw virtuele Azure-netwerk en een IPsec-tunnel maken tussen deze en uw on-premises VPN-gateway.
+Als u Azure Virtual WAN aanneemt, kunt u [deze stappen](../virtual-wan/vpn-over-expressroute.md) volgen om de end-to-end-verbinding te versleutelen. Als u een reguliere Azure-VNET hebt, kunt u een VPN-gateway van een derde partij in uw VNET implementeren en een IPsec-tunnel maken tussen deze en uw on-premises VPN-gateway.
 ### <a name="what-is-the-throughput-i-will-get-after-enabling-ipsec-on-my-expressroute-connection"></a>Wat is de door Voer die ik ontvang nadat IPsec op mijn ExpressRoute-verbinding is ingeschakeld?
 Als Azure VPN-gateway wordt gebruikt, controleert u [hier de prestatie aantallen](../vpn-gateway/vpn-gateway-about-vpngateways.md). Als er een VPN-gateway van derden wordt gebruikt, controleert u bij de leverancier voor de prestatie aantallen.
 

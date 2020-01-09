@@ -1,26 +1,18 @@
 ---
-title: Aanbevolen procedures voor Azure Service Fabric-beveiliging | Microsoft Docs
+title: Aanbevolen procedures voor Azure Service Fabric Security
 description: Dit artikel bevat een aantal aanbevolen procedures voor Azure Service Fabric-beveiliging.
-services: security
-documentationcenter: na
 author: unifycloud
-manager: barbkess
-editor: tomsh
-ms.assetid: ''
+ms.author: tomsh
 ms.service: security
 ms.subservice: security-fundamentals
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/16/2019
-ms.author: tomsh
-ms.openlocfilehash: dc063621e6b3e1d0d3e1a51d744ca9d9a6ef8c8d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 458a1d474e9a722a98ca068e1827cf0e1abf4b47
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934632"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548816"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Best practices voor Azure Service Fabric-beveiliging
 Het implementeren van een toepassing op Azure is snel, eenvoudig en voordelig. Raadpleeg de lijst met essentiële en aanbevolen procedures voor het implementeren van beveiligde clusters in uw toepassing voordat u uw Cloud toepassing in productie implementeert.
@@ -65,10 +57,10 @@ Uw clusters moeten worden beveiligd om te voor komen dat onbevoegde gebruikers v
 
 Er zijn drie [scenario's](../../service-fabric/service-fabric-cluster-security.md) voor het implementeren van cluster beveiliging met behulp van verschillende technologieën:
 
--   Beveiliging van knoop punt naar knoop punt: Dit scenario beveiligt de communicatie tussen de virtuele machines en de computers in het cluster. Deze vorm van beveiliging zorgt ervoor dat alleen de computers die gemachtigd zijn om lid te worden van het cluster, toepassingen en services in het cluster kunnen hosten.
+-   Beveiliging van knoop punt naar knoop punt: dit scenario beveiligt de communicatie tussen de virtuele machines en de computers in het cluster. Deze vorm van beveiliging zorgt ervoor dat alleen de computers die gemachtigd zijn om lid te worden van het cluster, toepassingen en services in het cluster kunnen hosten.
 In dit scenario kunnen de clusters die worden uitgevoerd op Azure of zelfstandige clusters die worden uitgevoerd in Windows, gebruikmaken van [certificaat beveiliging](../../service-fabric/service-fabric-windows-cluster-x509-security.md) of [Windows-beveiliging](../../service-fabric/service-fabric-windows-cluster-windows-security.md) voor Windows Server-machines.
--   Beveiliging van client naar knoop punt: Dit scenario beveiligt de communicatie tussen een Service Fabric-client en de afzonderlijke knoop punten in het cluster.
--   Access Control op basis van rollen (RBAC): In dit scenario worden afzonderlijke identiteiten (certificaten, Azure AD, enzovoort) gebruikt voor elke beheerder en gebruikersrol die toegang heeft tot het cluster. U geeft de rol-id's op wanneer u het cluster maakt.
+-   Beveiliging van client naar knoop punt: dit scenario beveiligt de communicatie tussen een Service Fabric-client en de afzonderlijke knoop punten in het cluster.
+-   Access Control op basis van rollen (RBAC): in dit scenario worden afzonderlijke identiteiten (certificaten, Azure AD, enzovoort) gebruikt voor elke beheerder en gebruikersrol die toegang heeft tot het cluster. U geeft de rol-id's op wanneer u het cluster maakt.
 
 >[!NOTE]
 >**Beveiligings aanbeveling voor Azure-clusters:** Gebruik Azure AD-beveiliging voor het verifiëren van clients en certificaten voor beveiliging tussen knoop punten.
@@ -102,10 +94,10 @@ Als het cluster niet is beveiligd, kan iedereen anoniem verbinding maken met het
 
 Zie [certificaten voor een service Fabric cluster toevoegen of verwijderen voor](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md)meer informatie over het gebruik van X. 509-certificaten.
 
-## <a name="configure-security-policies"></a>Beveiligingsbeleid configureren
+## <a name="configure-security-policies"></a>Beveiligings beleid configureren
 Service Fabric beveiligt ook de resources die worden gebruikt door toepassingen. Resources zoals bestanden, mappen en certificaten worden opgeslagen onder de gebruikers accounts wanneer de toepassing wordt geïmplementeerd. Met deze functie kunt u toepassingen beter beveiligen tegen elkaar, zelfs in een gedeelde gehoste omgeving.
 
--   Een Active Directory domein groep of-gebruiker gebruiken: Voer de service uit onder de referenties voor een Active Directory gebruikers-of groeps account. Zorg ervoor dat u Active Directory on-premises binnen uw domein gebruikt en niet Azure Active Directory. Toegang krijgen tot andere bronnen in het domein waaraan machtigingen zijn verleend met behulp van een domein gebruiker of-groep. Bijvoorbeeld bronnen zoals bestands shares.
+-   Een Active Directory domein groep of-gebruiker gebruiken: Voer de service uit onder de referenties voor een Active Directory gebruiker of groeps account. Zorg ervoor dat u Active Directory on-premises binnen uw domein gebruikt en niet Azure Active Directory. Toegang krijgen tot andere bronnen in het domein waaraan machtigingen zijn verleend met behulp van een domein gebruiker of-groep. Bijvoorbeeld bronnen zoals bestands shares.
 
 -   Een beleid voor beveiligings toegang toewijzen voor HTTP-en HTTPS-eind punten: Geef de eigenschap **SecurityAccessPolicy** op om een **runas** -beleid toe te passen op een service wanneer het service manifest eindpunt resources declareert met http. Poorten die zijn toegewezen aan de HTTP-eind punten, hebben de juiste toegangs beheer lijsten voor het runas-gebruikers account dat de service uitvoert. Wanneer het beleid niet is ingesteld, heeft http. sys geen toegang meer tot de service en kunnen er fouten optreden met aanroepen van de client.
 
@@ -152,7 +144,7 @@ Het HTTP-protocol is niet beveiligd en is onderhevig aan het inbreuken op aanval
 Zie voor meer informatie over het gebruik van SSL-certificaten [SSL configureren voor Azure-toepassingen](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md).
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>Netwerk isolatie en-beveiliging gebruiken met Azure Service Fabric
-Stel een beveiligd 3 NodeType-cluster in met behulp van de [Azure Resource Manager sjabloon](../../azure-resource-manager/resource-group-authoring-templates.md) als voor beeld. Beheer het inkomende en uitgaande netwerk verkeer met behulp van de sjabloon en netwerk beveiligings groepen.
+Stel een beveiligd 3 NodeType-cluster in met behulp van de [Azure Resource Manager sjabloon](../../azure-resource-manager/templates/template-syntax.md) als voor beeld. Beheer het inkomende en uitgaande netwerk verkeer met behulp van de sjabloon en netwerk beveiligings groepen.
 
 De sjabloon heeft een NSG voor elk van de virtuele-machine schaal sets en wordt gebruikt om het verkeer in en uit de set te beheren. De regels worden standaard geconfigureerd om alle verkeer toe te staan dat nodig is voor de systeem services en de toepassings poorten die zijn opgegeven in de sjabloon. Bekijk deze regels en breng de gewenste wijzigingen aan in uw behoeften, inclusief het toevoegen van nieuwe regels voor uw toepassingen.
 

@@ -3,17 +3,17 @@ title: 'Quick Start: een gesimuleerd apparaat toevoegen aan Azure IoT Central'
 description: In deze Quick start ziet u hoe u een apparaatprofiel maakt en een gesimuleerd apparaat toevoegt aan uw IoT Central-toepassing.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/24/2019
+ms.date: 12/10/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 46d325fd609363a5425fc16845552e75b575c231
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 669bdcddc7e4bb0c63250d9b571ff7ef4343ef5c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706701"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434831"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application-preview-features"></a>Snelstartgids: een gesimuleerd apparaat toevoegen aan uw IoT Central-toepassing (preview-functies)
 
@@ -79,7 +79,7 @@ Een sjabloon voor een apparaat kan Cloud eigenschappen bevatten. Cloud eigenscha
 
     ![Eigenschappen van Cloud](media/quick-create-pnp-device/cloudproperties.png)
 
-## <a name="create-views"></a>Weer gaven maken
+## <a name="create-views"></a>Weergaven aanmaken
 
 Als opbouw functie kunt u de toepassing aanpassen om relevante informatie over het omgevings sensor apparaat weer te geven voor een operator. Met uw aanpassingen kan de operator de omgevings sensor apparaten beheren die zijn verbonden met de toepassing. U kunt twee soorten weer gaven maken voor een operator die u kunt gebruiken om te communiceren met apparaten:
 
@@ -162,7 +162,7 @@ Nadat u een nieuw gesimuleerd apparaat hebt gemaakt, kan de Builder dit apparaat
 
 1. Selecteer een van de weer gaven die u wilt bewerken of maak een nieuwe weer gave. Klik op **Preview-apparaat configureren**en **Selecteer vervolgens een apparaat dat wordt uitgevoerd**. Hier kunt u kiezen tussen het gebruik van geen preview-apparaat en een echt apparaat dat u kunt configureren voor het testen of van een bestaand apparaat dat u hebt toegevoegd aan IoT Central.
 
-1. Kies uw gesimuleerde apparaat in de lijst. Selecteer vervolgens **Toep assen**. U ziet nu hetzelfde gesimuleerde apparaat in de sjabloon weergaven voor het maken van een apparaat. Deze weer gave is handig voor grafieken en andere visualisaties.
+1. Kies uw gesimuleerde apparaat in de lijst. Selecteer vervolgens **Toepassen**. U ziet nu hetzelfde gesimuleerde apparaat in de sjabloon weergaven voor het maken van een apparaat. Deze weer gave is handig voor grafieken en andere visualisaties.
 
     ![Preview-apparaat configureren](./media/quick-create-pnp-device/configure-preview.png)
 

@@ -1,26 +1,18 @@
 ---
-title: Microsoft Threat Modeling Tool-Azure | Microsoft Docs
-description: hoofd pagina voor de Microsoft Threat Modeling Tool, die informatie bevat over aan de slag met het hulp programma, met inbegrip van het proces voor het maken van bedreigings modellen
-services: security
-documentationcenter: na
+title: Overzicht van Microsoft Threat Modeling Tool-Azure
+description: Overzicht van de Microsoft Threat Modeling Tool, die informatie bevat over aan de slag met het hulp programma, met inbegrip van het proces voor het maken van bedreigings modellen.
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
-ms.author: jegeib
-ms.openlocfilehash: 47ae7661874bec211935315679e6e2c79e6d59ef
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0d800102b6f6ff77944a2b625d3bcecef69c1ee9
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727823"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548753"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
 
@@ -36,7 +28,7 @@ Hier vindt u enkele hulp middelen en vernieuwingen, alleen om een paar te noemen
 
 * **Automatisering:** Richt lijnen en feedback bij het tekenen van een model
 * **STRIDE per element:** Begeleide analyse van bedreigingen en oplossingen
-* **Rapporteren** Beveiligings activiteiten en tests in de verificatie fase
+* **Rapportage:** Beveiligings activiteiten en tests in de verificatie fase
 * **Unieke methodologie:** Stelt gebruikers in staat om bedreigingen beter te visualiseren en begrijpen
 * **Ontworpen voor ontwikkel aars en gecentreerde software:** veel benaderingen worden gecentreerd op activa of aanvallers. We zijn gecentreerd op software. We bouwen op activiteiten die alle software ontwikkelaars en architecten hebben vertrouwd, zoals het tekenen van afbeeldingen voor hun software architectuur
 * **Gericht op ontwerp analyse:** De term ' Threat model leren ' kan verwijzen naar een van de vereisten of een ontwerp analyse techniek. Soms verwijst deze naar een complexe combi natie van de twee. De micro soft SDL-aanpak voor bedreigings modellen is een gerichte ontwerp analyse techniek
@@ -45,7 +37,7 @@ Hier vindt u enkele hulp middelen en vernieuwingen, alleen om een paar te noemen
 
 De volgende tabel bevat belang rijke koppelingen om aan de slag te gaan met de Threat Modeling Tool:
 
-| Stap  | Description                                                                                   |
+| Stap  | Beschrijving                                                                                   |
 | ----- | --------------------------------------------------------------------------------------------- |
 | **1** | [De Threat Modeling Tool downloaden](https://aka.ms/threatmodelingtool)                                |
 | **2** | [Lees onze aan de slag-hand leiding](threat-modeling-tool-getting-started.md)    |
@@ -57,7 +49,7 @@ De volgende tabel bevat belang rijke koppelingen om aan de slag te gaan met de T
 
 Hier volgen enkele oudere artikelen die momenteel nog steeds relevant zijn voor bedreigings modellen:
 
-* [Artikel over het belang van bedreigings modellen](https://msdn.microsoft.com/magazine/dd347831.aspx)
+* [Artikel over het belang van bedreigings modellen](https://docs.microsoft.com/archive/msdn-magazine/2009/january/security-briefs-getting-started-with-the-sdl-threat-modeling-tool)
 * [Training gepubliceerd door Trustworthy Computing](https://www.microsoft.com/download/details.aspx?id=16420)
 
 Bekijk wat Threat Modeling Tool experts hebben gedaan:

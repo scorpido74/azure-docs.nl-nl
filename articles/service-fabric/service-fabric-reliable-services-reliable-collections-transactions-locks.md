@@ -1,42 +1,31 @@
 ---
-title: Trans acties en vergrendelings modi in azure Service Fabric reliable-verzamelingen | Microsoft Docs
+title: Trans acties en vergrendelings modi in betrouw bare verzamelingen
 description: Azure Service Fabric betrouw bare status Manager en betrouw bare incasso transacties en vergren deling.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider,rajak
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 5/1/2017
-ms.author: atsenthi
-ms.openlocfilehash: 8e77e488a3c0a40a714a0e8efffba0a2947454bf
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: f27381aa0979b37c759f66d0e873126edc006d6d
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599327"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614176"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Trans acties en vergrendelings modi in azure Service Fabric reliable-verzamelingen
 
 ## <a name="transaction"></a>Transactie
 Een trans actie is een opeenvolging van bewerkingen die worden uitgevoerd als één logische werk eenheid.
-Een trans actie moet de volgende ACID-eigenschappen hebben. kijken https://technet.microsoft.com/library/ms190612)
-* **Atomiciteit**: Een trans actie moet een atoom werk eenheid zijn. Met andere woorden, alle wijzigingen in de gegevens worden uitgevoerd, of ze worden niet uitgevoerd.
-* **Consistentie**: Wanneer u klaar bent, moet een trans actie alle gegevens in een consistente status laten staan. Alle interne gegevens structuren moeten aan het einde van de trans actie juist zijn.
-* **Isolatie**: Wijzigingen die zijn aangebracht door gelijktijdige trans acties, moeten worden geïsoleerd van de wijzigingen die worden aangebracht door andere gelijktijdige trans acties. Het isolatie niveau dat voor een bewerking binnen een ITransaction wordt gebruikt, wordt bepaald door de IReliableState die de bewerking uitvoert.
-* **Duurzaamheid**: Nadat een trans actie is voltooid, zijn de gevolgen ervan permanent aanwezig in het systeem. De wijzigingen blijven behouden, zelfs in het geval van een systeem fout.
+Een trans actie moet de volgende ACID-eigenschappen hebben. (zie: https://technet.microsoft.com/library/ms190612)
+* **Atomiciteit**: een trans actie moet een atoom werk eenheid zijn. Met andere woorden, alle wijzigingen in de gegevens worden uitgevoerd, of ze worden niet uitgevoerd.
+* **Consistentie**: wanneer u klaar bent, moet een trans actie alle gegevens in een consistente status laten staan. Alle interne gegevens structuren moeten aan het einde van de trans actie juist zijn.
+* **Isolatie**: wijzigingen aangebracht door gelijktijdige trans acties moeten worden geïsoleerd van de wijzigingen die zijn aangebracht door andere gelijktijdige trans acties. Het isolatie niveau dat voor een bewerking binnen een ITransaction wordt gebruikt, wordt bepaald door de IReliableState die de bewerking uitvoert.
+* **Duurzaamheid**: nadat een trans actie is voltooid, zijn de gevolgen ervan permanent aanwezig in het systeem. De wijzigingen blijven behouden, zelfs in het geval van een systeem fout.
 
-### <a name="isolation-levels"></a>Isolatie niveaus
+### <a name="isolation-levels"></a>Isolatieniveaus
 Het isolatie niveau bepaalt de mate waarin de trans actie moet worden geïsoleerd van wijzigingen die zijn aangebracht door andere trans acties.
 Er zijn twee isolatie niveaus die in betrouw bare verzamelingen worden ondersteund:
 
-* **Herhaal bare Lees bewerking**: Hiermee geeft u op dat instructies geen gegevens kunnen lezen die zijn gewijzigd maar nog niet zijn doorgevoerd door andere trans acties en dat geen andere trans acties gegevens kunnen wijzigen die door de huidige trans actie zijn gelezen totdat de huidige trans actie is voltooid. Zie [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx)voor meer informatie.
-* **Moment opname**: Hiermee geeft u op dat de gegevens die worden gelezen door een wille keurige instructie in een trans actie, de transactionele, consistente versie van de gegevens die bestonden aan het begin van de trans actie.
+* **Herhaal bare Lees bewerking**: Hiermee geeft u op dat instructies geen gegevens kunnen lezen die zijn gewijzigd, maar nog niet zijn doorgevoerd door andere trans acties en dat geen andere trans acties gegevens kunnen wijzigen die door de huidige trans actie zijn gelezen totdat de huidige trans actie is voltooid. Zie [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx)voor meer informatie.
+* **Moment opname**: de gegevens die worden gelezen door een instructie in een trans actie, zijn de transactionele, consistente versie van de gegevens die bestonden aan het begin van de trans actie.
   De trans actie kan alleen gegevens wijzigingen herkennen die zijn vastgelegd vóór het begin van de trans actie.
   Gegevens wijzigingen die zijn aangebracht door andere trans acties na het begin van de huidige trans actie, zijn niet zichtbaar voor instructies die in de huidige trans actie worden uitgevoerd.
   Het effect is alsof de instructies in een trans actie een moment opname van de doorgevoerde gegevens ophalen die aan het begin van de trans actie bestonden.
@@ -52,7 +41,7 @@ Hieronder ziet u de tabel waarin de standaard waarden voor het isolatie niveau w
 | Opsomming, aantal |Momentopname |Momentopname |
 
 > [!NOTE]
-> Algemene voor beelden voor bewerkingen met één `IReliableDictionary.TryGetValueAsync`entiteit `IReliableQueue.TryPeekAsync`zijn,.
+> Algemene voor beelden voor bewerkingen met één entiteit zijn `IReliableDictionary.TryGetValueAsync`, `IReliableQueue.TryPeekAsync`.
 > 
 
 Zowel de betrouw bare woorden lijst als de betrouw bare wachtrij ondersteunen uw schrijf bewerkingen.
@@ -63,8 +52,8 @@ In betrouw bare verzamelingen implementeren alle trans acties strikte twee fase 
 
 Een betrouw bare woorden lijst maakt gebruik van vergren deling op rijniveau voor alle bewerkingen van één entiteit.
 Betrouw bare wachtrij verhoudingen voor een strikte transactionele FIFO-eigenschap.
-Bij een betrouw bare wachtrij wordt het bewerkings niveau vergren delen, waarbij `EnqueueAsync` een trans actie met `TryPeekAsync` en/of `TryDequeueAsync` en één trans actie per keer wordt uitgevoerd.
-Houd er rekening mee dat u FIFO kunt `TryPeekAsync` behouden `TryDequeueAsync` als er een of meer is dat de betrouw bare wachtrij leeg is `EnqueueAsync`, wordt deze ook vergrendeld.
+Bij een betrouw bare wachtrij wordt het bewerkings niveau vergrendeld, waardoor één trans actie met `TryPeekAsync` en/of `TryDequeueAsync` en één trans actie met `EnqueueAsync` tegelijk kan worden uitgevoerd.
+Houd er rekening mee dat u de FIFO wilt behouden als er in een `TryPeekAsync` of `TryDequeueAsync` ooit wordt geobserveerd dat de betrouw bare wachtrij leeg is, wordt `EnqueueAsync`ook vergrendeld.
 
 Schrijf bewerkingen maken altijd exclusieve vergren delingen.
 Voor lees bewerkingen is de vergren deling afhankelijk van een aantal factoren.

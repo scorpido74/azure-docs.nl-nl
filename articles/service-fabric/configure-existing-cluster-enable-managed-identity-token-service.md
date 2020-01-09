@@ -1,18 +1,14 @@
 ---
-title: 'Azure Service Fabric: een bestaand Azure Service Fabric-cluster configureren om ondersteuning van beheerde identiteiten in te scha kelen | Microsoft Docs'
+title: 'Azure Service Fabric: een bestaand Azure Service Fabric-cluster configureren om ondersteuning van beheerde identiteiten in te scha kelen'
 description: In dit artikel wordt beschreven hoe u een bestaand Azure Service Fabric-cluster configureert om ondersteuning voor beheerde identiteiten in te scha kelen
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
-ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: adc21358011454c8687998dc5d257052959b933b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 12/09/2019
+ms.openlocfilehash: 13b8b38a206b0dae0877263a5cda56a134d4788d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640736"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351609"
 ---
 # <a name="configure-an-existing-azure-service-fabric-cluster-to-enable-managed-identity-support-preview"></a>Een bestaand Azure Service Fabric-cluster configureren om ondersteuning van beheerde identiteiten in te scha kelen (preview-versie)
 Als u toegang wilt krijgen tot de functie Managed Identity voor Azure Service Fabric-toepassingen, moet u eerst de **service beheerde identiteits token** inschakelen op het cluster. Deze service is verantwoordelijk voor de verificatie van Service Fabric toepassingen met behulp van hun beheerde identiteiten en voor het verkrijgen van toegangs tokens in hun naam. Zodra de service is ingeschakeld, kunt u deze weer geven in Service Fabric Explorer onder het gedeelte **systeem** in het linkerdeel venster, dat wordt uitgevoerd onder de naam **Fabric:/System/ManagedIdentityTokenService**.
@@ -20,7 +16,7 @@ Als u toegang wilt krijgen tot de functie Managed Identity voor Azure Service Fa
 > [!NOTE]
 > Service Fabric runtime versie 6.5.658.9590 of hoger is vereist om de **beheerde identiteits token service**in te scha kelen.  
 > 
-> U kunt de Service Fabric versie van een cluster uit de Azure Portal vinden door de cluster bron te openen en de eigenschap **service Fabric versie** te controleren in de sectie Essentials.
+> U kunt de Service Fabric versie van een cluster uit de Azure Portal vinden door de cluster bron te openen en de eigenschap **service Fabric versie** te controleren in de sectie **Essentials** .
 > 
 > Als het cluster zich in de **hand matige** upgrade modus bevindt, moet u het eerst upgraden naar 6.5.658.9590 of hoger.
 
@@ -42,7 +38,7 @@ Als u de service beheerde identiteits token in een bestaand cluster wilt inschak
 ]
 ```
 
-Om de wijzigingen van kracht te laten worden, moet u ook het upgrade beleid wijzigen om een geforceerde opnieuw op te geven van de Service Fabric runtime op elk knoop punt wanneer de upgrade wordt uitgevoerd via het cluster. Opnieuw opstarten zorgt ervoor dat de nieuw ingeschakelde systeem service wordt gestart en wordt uitgevoerd op elk knoop punt. In het onderstaande `forceRestart` fragment is de essentiële instelling. gebruik uw bestaande waarden voor de overige instellingen.  
+Om de wijzigingen van kracht te laten worden, moet u ook het upgrade beleid wijzigen om een geforceerde opnieuw op te geven van de Service Fabric runtime op elk knoop punt wanneer de upgrade wordt uitgevoerd via het cluster. Opnieuw opstarten zorgt ervoor dat de nieuw ingeschakelde systeem service wordt gestart en wordt uitgevoerd op elk knoop punt. In het onderstaande code fragment is `forceRestart` de essentiële instelling. Gebruik uw bestaande waarden voor de overige instellingen.  
 
 ```json
 "upgradeDescription": {
@@ -57,9 +53,9 @@ Om de wijzigingen van kracht te laten worden, moet u ook het upgrade beleid wijz
 ```
 
 > [!NOTE]
-> Wanneer de upgrade is voltooid, vergeet dan niet om de `forceRestart` instelling terug te draaien om de impact van de volgende upgrades te minimaliseren. 
+> Wanneer de upgrade is voltooid, moet u niet verg eten de `forceRestart`-instelling terug te zetten om de impact van de volgende upgrades te minimaliseren. 
 
-## <a name="errors-and-troubleshooting"></a>Fouten en probleem oplossing
+## <a name="errors-and-troubleshooting"></a>Fouten en probleemoplossing
 
 Als de implementatie mislukt met het volgende bericht, betekent dit dat het cluster niet wordt uitgevoerd op een hoge voldoende Service Fabric-versie:
 

@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: 0ca7bfb276f49da720264305a92d31e81857cfd5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4cc88e7c04d10907a9a6386b1266eb8031d60926
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229323"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552675"
 ---
 # <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry integratie met Security Center (preview-versie)
 
 Azure Container Registry (ACR) is een beheerde, persoonlijke docker-register service waarmee uw container installatie kopieën voor Azure-implementaties in een centraal REGI ster worden opgeslagen en beheerd. Het is gebaseerd op de open-source docker Registry 2,0.
 
-Gebruikers Azure Security Center van de Standard-laag van het REGI ster en de installatie kopieën kunnen de optionele versie van de container registers inschakelen voor een diepere zicht baarheid in uw register-en afbeeldings problemen. Ga voor meer informatie naar het overzicht van [prijzen](security-center-pricing.md). Als de bundel is ingeschakeld, worden in Security Center automatisch afbeeldingen in uw REGI ster gescand wanneer een installatie kopie naar het REGI ster wordt gepusht.
+Gebruikers Azure Security Center van de Standard-laag van het REGI ster en de installatie kopieën kunnen de optionele versie van de container registers inschakelen voor een diepere zicht baarheid in uw register-en afbeeldings problemen. De kosten voor het gebruik van deze functie worden per afbeelding in rekening gebracht, niet per scan. Ga voor meer informatie naar het overzicht van [prijzen](security-center-pricing.md). Als de bundel is ingeschakeld, worden in Security Center automatisch afbeeldingen in uw REGI ster gescand wanneer een installatie kopie naar het REGI ster wordt gepusht.
 
 > [!NOTE]
 > De eerste scan van een REGI ster wordt alleen uitgevoerd nadat de bundel van de container registers is ingeschakeld en een installatie kopie naar het REGI ster wordt gepusht. Security Center

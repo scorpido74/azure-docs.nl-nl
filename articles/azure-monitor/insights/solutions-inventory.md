@@ -4,18 +4,18 @@ description: Bewakings oplossingen in Azure Monitor zijn een verzameling regels 
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
+author: bwren
 ms.author: bwren
 ms.date: 06/26/2018
-ms.openlocfilehash: 6012a74c00b64c818434ea1744d86c6cf67dd463
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9b0140b843d7da1b892463bff7d6014a3f9584ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931336"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402009"
 ---
 # <a name="inventory-and-data-collection-details-for-monitoring-solutions-in-azure"></a>Details van inventarisatie en gegevens verzameling voor het controleren van oplossingen in azure
-[Bewakings oplossingen](solutions.md) maken gebruik van services in azure om meer inzicht te krijgen in de werking van een bepaalde toepassing of service. Bewakings oplossingen verzamelen doorgaans logboek gegevens en bieden query's en weer gaven om verzamelde gegevens te analyseren. U kunt bewakings oplossingen toevoegen aan Azure Monitor voor alle toepassingen en services die u gebruikt. Ze zijn doorgaans gratis beschikbaar, maar verzamelen gegevens die gebruiks kosten kunnen aanroepen.
+[Bewakings oplossingen](solutions.md) maken gebruik van services in azure om meer inzicht te krijgen in de werking van een bepaalde toepassing of service. Bewakings oplossingen verzamelen doorgaans logboek gegevens en bieden query's en weer gaven om verzamelde gegevens te analyseren. U kunt bewakings oplossingen toevoegen aan Azure Monitor voor alle toepassingen en services die u gebruikt. Ze zijn doorgaans beschikbaar er worden geen kosten, maar verzamelen gegevens kosten voor het gebruik kan worden aangeroepen.
 
 Dit artikel bevat een lijst met [montioring-oplossingen](solutions.md) die beschikbaar zijn gesteld door micro soft met koppelingen naar hun gedetailleerde documentatie.  Het bevat ook informatie over de methode en frequentie van het verzamelen van gegevens in Azure Monitor.  U kunt de informatie in dit artikel gebruiken om de verschillende beschik bare oplossingen te identificeren en inzicht te krijgen in de gegevens stroom en verbindings vereisten voor verschillende bewakings oplossingen.
 
@@ -36,7 +36,7 @@ Uitleg van de kolommen is als volgt:
 
 
 
-| **Bewakings oplossing** | **Onafhankelijk** | **Micro soft Monitoring Agent** | **Operations Manager-agent** | **Azure Storage** | **Operations Manager vereist?** | **Operations Manager agent gegevens die via een beheer groep zijn verzonden** | **Verzamelings frequentie** |
+| **Bewakings oplossing** | **Platform** | **Micro soft Monitoring Agent** | **Operations Manager-agent** | **Azure Storage** | **Operations Manager vereist?** | **Operations Manager agent gegevens die via een beheer groep zijn verzonden** | **Verzamelings frequentie** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Activiteiten logboek analyse](../platform/activity-log-collect.md) | Azure | | | | | | bij melding |
 | [AD-evaluatie](ad-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 dagen |
@@ -48,10 +48,10 @@ Uitleg van de kolommen is als volgt:
 | [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) | Azure | | | | | | n.v.t. |
 | [Application Insights-connector (afgeschaft)](../platform/app-insights-connector.md) | Azure | | | |  |  | bij melding |
 | [Automatisering - Hybrid Worker](../../automation/automation-hybrid-runbook-worker.md) | Windows | &#8226; | &#8226; |  |  |  | n.v.t. |
-| [Azure Application Gateway-analyse](azure-networking-analytics.md) | Azure |  |  |  |  |  | bij melding |
-| **Bewakings oplossing** | **Onafhankelijk** | **Micro soft Monitoring Agent** | **Operations Manager-agent** | **Azure Storage** | **Operations Manager vereist?** | **Operations Manager agent gegevens die via een beheer groep zijn verzonden** | **Verzamelings frequentie** |
+| [Azure Application Gateway Analytics](azure-networking-analytics.md) | Azure |  |  |  |  |  | bij melding |
+| **Bewakings oplossing** | **Platform** | **Micro soft Monitoring Agent** | **Operations Manager-agent** | **Azure Storage** | **Operations Manager vereist?** | **Operations Manager agent gegevens die via een beheer groep zijn verzonden** | **Verzamelings frequentie** |
 | [Azure Analyse van netwerkbeveiligingsgroep (afgeschaft)](azure-networking-analytics.md) | Azure |  |  |  |  |  | bij melding |
-| [Azure SQL-analyse (preview-versie)](azure-sql.md) | Windows | | | | | | 1 minuut |
+| [Azure SQL Analytics (Preview)](azure-sql.md) | Windows | | | | | | 1 minuut |
 | [Een back-up maken](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | bij melding |
 | [Capaciteit en prestaties (preview-versie)](capacity-performance.md) |Windows |&#8226; |&#8226; | | |&#8226; |bij aankomst |
 | [Tracering wijzigen](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[hangt](../../automation/change-tracking.md#change-tracking-data-collection-details) |
@@ -61,7 +61,7 @@ Uitleg van de kolommen is als volgt:
 | [Malware-evaluatie](../../security-center/security-center-install-endpoint-protection.md) |Windows |&#8226; |&#8226; | | |&#8226; |per uur |
 | [Netwerkprestatiemeter](network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | TCP-handshake elke vijf seconden, gegevens verzonden om de drie minuten |
 | [Office 365-analyse (preview-versie)](solution-office-365.md) |Windows | | | | | |bij melding |
-| **Bewakings oplossing** | **Onafhankelijk** | **Micro soft Monitoring Agent** | **Operations Manager-agent** | **Azure Storage** | **Operations Manager vereist?** | **Operations Manager agent gegevens die via een beheer groep zijn verzonden** | **Verzamelings frequentie** |
+| **Bewakings oplossing** | **Platform** | **Micro soft Monitoring Agent** | **Operations Manager-agent** | **Azure Storage** | **Operations Manager vereist?** | **Operations Manager agent gegevens die via een beheer groep zijn verzonden** | **Verzamelings frequentie** |
 | [Service Fabric-analyse](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |Windows | | |&#8226; | | |5 minuten |
 | [Serviceoverzicht](service-map.md) | Windows en Linux | &#8226; | &#8226; |  |  |  | 15 seconden |
 | [SQL-evaluatie](sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 dagen |

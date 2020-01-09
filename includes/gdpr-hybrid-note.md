@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/01/2018
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: 236ba117fd324a75ecc20ea7f94e110d75e3ee63
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 968ebe89de65de5fa49e56a90a1bc92109a16861
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175851"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613755"
 ---
 >[!Note]
->Als u geïnteresseerd bent in weergeven of verwijderen van persoonlijke gegevens, raadpleegt u de richtlijnen van Microsoft in de [Windows Data Subject Requests de AVG](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-windows) site. Als u algemene informatie over GDPR zoekt, raadpleegt u de [GDPR-sectie van de Service Trust-portal](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+>Als u geïnteresseerd bent in het bekijken of verwijderen van persoonsgegevens, raadpleegt u de richtlijnen op de site [Windows Data Subject Requests for the GDPR](https://docs.microsoft.com/microsoft-365/compliance/gdpr-data-subject-requests) (Aanvragen in het kader van de AVG voor gegevensonderwerpen van Windows). Zie de [AVG-sectie van Service Trust Portal](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted) voor algemene informatie over AVG.

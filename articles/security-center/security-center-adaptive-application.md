@@ -1,6 +1,6 @@
 ---
-title: Adaptieve toepassingsbesturingselementen in Azure Security Center | Microsoft Docs
-description: In dit document leert u hoe u adaptieve toepassingsbesturingselementen in Azure Security Center gebruikt om toepassingen die op virtuele Azure-machines worden uitgevoerd, in de whitelist op te nemen.
+title: Adaptieve toepassingsbesturingselementen in Azure Security Center
+description: Dit document helpt u bij het gebruik van adaptief toepassings beheer in Azure Security Center voor het white list van toepassingen die worden uitgevoerd op Azure-machines.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2019
+ms.date: 12/23/2019
 ms.author: memildin
-ms.openlocfilehash: 46ab2fc5c796d960de8b1c5e3391a6356563b50a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 862fb4f8a9dcd357148f73a729ffc7e92ba0083a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202813"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353441"
 ---
-# <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptieve toepassingsbesturingselementen in Azure Security Center
+# <a name="adaptive-application-controls"></a>Adaptieve toepassingsbesturingselementen
 Lees hoe u toepassingsbeheer configureert in Azure Security Center met behulp van dit stapsgewijze overzicht.
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>Wat zijn adaptieve toepassingsbesturingselementen in Security Center?
-Adaptief toepassings beheer is een intelligente, geautomatiseerde en end-to-end oplossing van Azure Security Center waarmee u kunt bepalen welke toepassingen kunnen worden uitgevoerd op uw Azure-en niet-Azure-Vm's (Windows en Linux). Met andere voor delen kunt u uw Vm's beschermen tegen malware. Security Center gebruikt machine learning om de toepassingen te analyseren die worden uitgevoerd op uw Vm's en een acceptatie lijst te maken van deze intelligentie. Deze mogelijkheid vereenvoudigt het proces van het configureren en onderhouden van beleids regels voor het toestaan van toepassingen, zodat u het volgende kunt doen:
+Adaptief toepassings beheer is een intelligente, geautomatiseerde en end-to-end oplossing van Azure Security Center waarmee u kunt bepalen welke toepassingen kunnen worden uitgevoerd op uw Azure-en niet-Azure-machines (Windows en Linux). Met andere voor delen kunt u uw computers onder andere beschermen tegen malware. Security Center gebruikt machine learning voor het analyseren van de toepassingen die op uw computers worden uitgevoerd en maakt een lijst met toegestane gegevens van deze intelligentie. Deze mogelijkheid vereenvoudigt het proces van het configureren en onderhouden van beleids regels voor het toestaan van toepassingen, zodat u het volgende kunt doen:
 
 - Blok keer of Meld u aan bij pogingen om schadelijke toepassingen uit te voeren, met inbegrip van degenen die anders kunnen worden gemist door antimalware-oplossingen.
 - Voldoen aan het beveiligingsbeleid van uw organisatie waarin alleen het gebruik van gelicentieerde software is toegestaan.
@@ -34,19 +34,21 @@ Adaptief toepassings beheer is een intelligente, geautomatiseerde en end-to-end 
 - De IT-afdeling in staat stellen de toegang tot gevoelige gegevens te beheren via het gebruik van apps.
 
 > [!NOTE]
-> Voor niet-Azure-en Linux-Vm's worden adaptieve toepassings besturings elementen alleen in de controle modus ondersteund.
+> Voor niet-Azure-en Linux-computers worden adaptieve toepassings besturings elementen alleen in de controle modus ondersteund.
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>Hoe worden adaptieve toepassingsbesturingselementen ingeschakeld?
-Met besturings elementen voor adaptieve toepassingen kunt u een set toepassingen definiëren die mogen worden uitgevoerd op geconfigureerde groepen Vm's. Deze functie is beschikbaar voor zowel Azure-als niet-Azure-Windows (alle versies, klassieke of Azure Resource Manager) en Linux-Vm's en-servers. Voer de volgende stappen uit om de lijsten met toegestane apps van uw toepassing te configureren:
+
+Met besturings elementen voor adaptieve toepassingen kunt u een set toepassingen definiëren die op geconfigureerde machine groepen mogen worden uitgevoerd. Deze functie is beschikbaar voor zowel Azure-als niet-Azure-Windows (alle versies, klassieke of Azure Resource Manager) en Linux-machines. Voer de volgende stappen uit om de lijsten met toegestane apps van uw toepassing te configureren:
 
 1. Open het dashboard van **Security Center**.
-2. Ga naar het deelvenster aan de linkerkant en selecteer **Adaptieve toepassingsbesturingselementen** onder **Geavanceerde cloudbeveiliging**.
 
-    ![Defensie](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)
+1. Ga naar het deelvenster aan de linkerkant en selecteer **Adaptieve toepassingsbesturingselementen** onder **Geavanceerde cloudbeveiliging**.
+
+    [![verdediging](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png#lightbox)
 
 De pagina **Besturingselementen voor adaptieve toepassingen** wordt geopend.
 
-![controls](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
+![besturingselementen](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
 
 De sectie **Groepen virtuele machines** bevat drie tabbladen:
 
@@ -60,20 +62,21 @@ De sectie **Groepen virtuele machines** bevat drie tabbladen:
 >
 
 ### <a name="configure-a-new-application-control-policy"></a>Een nieuw toepassingsbeheerbeleid configureren
-1. Klik op het tabblad **Aanbevolen** voor een lijst met groepen waarvoor toepassingsbeheer wordt aanbevolen:
+
+1. Selecteer het tabblad **Aanbevolen** voor een lijst met groepen met aanbevelingen voor toepassings beheer:
 
    ![Aanbevolen](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
 
    De lijst bevat:
 
-   - **Groeps naam**: De naam van het abonnement en de groep
-   - **Vm's en computers**: Het aantal virtuele machines in de groep
+   - **Groeps naam**: de naam van het abonnement en de groep
+   - **Vm's en computers**: het aantal virtuele machines in de groep
    - **Status**: de status van de aanbevelingen
    - **Ernst**: het Ernst niveau van de aanbevelingen
 
 2. Klik op een groep om de optie **regels voor toepassings beheer maken** te openen.
 
-   ![Regels voor toepassingsbeheer](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)
+   [regels voor toepassings beheer ![](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png#lightbox)
 
 3. Bekijk in de **Select vm's**de lijst met aanbevolen vm's en schakel alle selectie vakjes uit waarop u geen white list-beleid wilt Toep assen. Vervolgens ziet u twee lijsten:
 
@@ -106,7 +109,7 @@ De sectie **Groepen virtuele machines** bevat drie tabbladen:
 
    - **Groeps naam**: de naam van het abonnement en de groep
    - **Vm's en computers**: het aantal virtuele machines in de groep
-   - **Modus**: In de controle modus wordt geprobeerd om toepassingen uit te voeren die niet in de lijst met toegestane apps staan. Met afdwingen kunnen toepassingen alleen worden uitgevoerd als ze zich in de acceptatie lijst bevinden
+   - **Modus**: de controle modus meldt pogingen om toepassingen uit te voeren die niet voor komen in de lijst met toegestane apps. Met afdwingen kunnen toepassingen alleen worden uitgevoerd als ze zich in de acceptatie lijst bevinden
    - **Waarschuwingen**: eventuele huidige schendingen
 
 2. Klik op een groep om wijzigingen aan te brengen op de pagina **toepassings beheer beleid bewerken** .
@@ -131,9 +134,9 @@ De sectie **Groepen virtuele machines** bevat drie tabbladen:
 
 6. Onder **Publisher white list regels**, **Path white list Rules**en **hash white list-regels** kunt u zien welke toepassings white list-regels momenteel zijn geconfigureerd op de virtuele machines binnen een groep, volgens het type regel verzameling. Voor elke regel kunt u het volgende zien:
 
-   - **Regel**: De specifieke para meters op basis waarvan een toepassing door AppLocker wordt gecontroleerd om te bepalen of een toepassing mag worden uitgevoerd.
-   - **Bestands type**: De bestands typen die worden gedekt door een specifieke regel. Dit kan een van de volgende zijn: EXE, script, MSI of een permutatie van deze bestands typen.
-   - **Gebruikers**: Naam of aantal gebruikers dat een toepassing mag uitvoeren die wordt gedekt door een toepassings white list regel.
+   - **Regel**: de specifieke para meters op basis waarvan een toepassing door AppLocker wordt gecontroleerd om te bepalen of een toepassing mag worden uitgevoerd.
+   - **Bestands type**: de bestands typen die worden gedekt door een specifieke regel. Dit kan een van de volgende zijn: EXE, script, MSI of een permutatie van die bestands typen.
+   - **Gebruikers**: naam of aantal gebruikers die een toepassing mogen uitvoeren die wordt gedekt door een toepassing white list regel.
 
    ![Regels voor opname in de whitelist](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)
 
@@ -171,7 +174,7 @@ Met Azure Security Center kunt u ook een white list-beleid voor toepassingen def
 > Zorg ervoor dat u op **Opslaan** klikt nadat u op **computer verplaatsen**hebt geklikt. Als u niet op **Opslaan**klikt, wordt de computer niet verplaatst.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u gebruik kunt maken van adaptieve toepassings beheer in Azure Security Center voor het white list van toepassingen die worden uitgevoerd in Azure-en niet-Azure-Vm's. Zie de volgende onderwerpen voor meer informatie over het Azure Beveiligingscentrum:
+In dit document hebt u geleerd hoe u gebruik kunt maken van adaptieve toepassings beheer in Azure Security Center voor het white list van toepassingen die worden uitgevoerd in Azure-en niet-Azure-Vm's. Zie de volgende onderwerpen voor meer informatie over Azure Security Center:
 
 * [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Informatie over het beheren van waarschuwingen en het reageren op beveiligingsincidenten in Security Center.
 * [Beveiligingsstatus bewaken in Azure Security Center](security-center-monitoring.md). Meer informatie over het controleren van de status van uw Azure-resources.

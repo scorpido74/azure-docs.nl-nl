@@ -1,5 +1,5 @@
 ---
-title: Diagnostische logboeken Azure Service Bus | Microsoft Docs
+title: Diagnostische logboeken van Azure Service Bus | Microsoft Docs
 description: Meer informatie over het instellen van Diagnostische logboeken voor Service Bus in Azure.
 keywords: ''
 documentationcenter: .net
@@ -15,38 +15,38 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 41e0bdc1f04c9491ebe939f46b59ae4eb2bc7ab6
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 5bdda54ef46085cb1f3e33fe1d9f60937da9706f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592412"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355214"
 ---
-# <a name="enable-diagnostic-logs-for-service-bus"></a>Diagnostische logboeken inschakelen voor Service Bus
+# <a name="enable-diagnostics-logs-for-service-bus"></a>Diagnostische logboeken voor Service Bus inschakelen
 
-Wanneer u begint met het gebruik van uw Azure Service Bus naam ruimte, wilt u wellicht controleren hoe en wanneer uw naam ruimte wordt gemaakt, verwijderd of geopend. Dit artikel bevat een overzicht van alle operationele/Diagnostische logboeken die beschikbaar zijn.
+Wanneer u begint met het gebruik van uw Azure Service Bus-naam ruimte, wilt u wellicht controleren hoe en wanneer uw naam ruimte wordt gemaakt, verwijderd of geopend. Dit artikel bevat een overzicht van alle operationele en Diagnostische logboeken die beschikbaar zijn.
 
-Azure Service Bus ondersteunt momenteel activiteiten/operationele logboeken voor het vastleggen van **beheer bewerkingen** die worden uitgevoerd op de Azure service bus naam ruimte. In deze logboeken wordt het bewerkings type vastgelegd, inclusief het maken van de wachtrij, de gebruikte resources en de status van de bewerking.
+Azure Service Bus ondersteunt momenteel activiteiten en operationele logboeken, die *beheer bewerkingen* vastleggen die worden uitgevoerd op de Azure service bus naam ruimte. In deze logboeken wordt het bewerkings type vastgelegd, inclusief het maken van de wachtrij, de gebruikte resources en de status van de bewerking.
 
-## <a name="operational-logs-schema"></a>Schema van operationele logboeken
+## <a name="operational-logs-schema"></a>Operationele logboeken schema
 
-Alle logboeken worden opgeslagen in de indeling JavaScript Object Notation (JSON) op de volgende twee locaties.
+Alle logboeken worden opgeslagen in de indeling van de JavaScript Object Notation (JSON) op de volgende twee locaties:
 
-- **AzureActivity** : geeft logboeken weer van bewerkingen/acties die zijn uitgevoerd op uw naam ruimte op de portal of via Azure Resource Manager sjabloon implementaties.
-- **AzureDiagnostics** : geeft logboeken weer van bewerkingen/acties die worden uitgevoerd op uw naam ruimte met behulp van de API of via beheer-clients in de taal-SDK.
+- **AzureActivity**: geeft logboeken weer van bewerkingen en acties die worden uitgevoerd op uw naam ruimte in de Azure portal of via Azure Resource Manager sjabloon implementaties.
+- **AzureDiagnostics**: geeft logboeken weer van bewerkingen en acties die worden uitgevoerd op uw naam ruimte met behulp van de API of via beheer-clients in de taal-SDK.
 
-De JSON-teken reeksen van het operationele logboek bevatten elementen die in de volgende tabel worden weer gegeven:
+De JSON-teken reeksen van het operationele logboek bevatten de elementen die in de volgende tabel worden weer gegeven:
 
-| Naam | Beschrijving |
+| Name | Beschrijving |
 | ------- | ------- |
 | ActivityId | Interne ID, gebruikt om de opgegeven activiteit te identificeren |
-| eventName | Naam van bewerking |
+| EventName | Naam van bewerking |
 | ResourceId | Resource-ID Azure Resource Manager |
 | SubscriptionId | Abonnements-id |
 | EventTimeString | Bewerkings tijd |
 | EventProperties | Bewerkings eigenschappen |
 | Status | Bewerkingsstatus |
-| Caller | Aanroeper van de bewerking (Azure Portal of Management-client) |
+| Caller | Aanroepen van de bewerking (de Azure Portal-of beheer-client) |
 | Category | OperationalLogs |
 
 Hier volgt een voor beeld van een JSON-teken reeks voor een operationeel logboek:
@@ -65,57 +65,59 @@ Hier volgt een voor beeld van een JSON-teken reeks voor een operationeel logboek
 }
 ```
 
-## <a name="what-eventsoperations-are-captured-in-operational-logs"></a>Welke gebeurtenissen/bewerkingen worden vastgelegd in operationele logboeken?
+## <a name="events-and-operations-captured-in-operational-logs"></a>Gebeurtenissen en bewerkingen vastgelegd in operationele logboeken
 
-In de bewerkings logboeken worden alle beheer bewerkingen vastgelegd die worden uitgevoerd op de naam ruimte Azure Service Bus. Gegevens bewerkingen worden niet vastgelegd vanwege de grote hoeveelheid gegevens bewerkingen die worden uitgevoerd op Azure Service Bus.
+In operationele logboeken worden alle beheer bewerkingen vastgelegd die worden uitgevoerd op de naam ruimte van de Azure Service Bus. Gegevens bewerkingen worden niet vastgelegd vanwege de grote hoeveelheid gegevens bewerkingen die worden uitgevoerd op Azure Service Bus.
 
 > [!NOTE]
-> Als u gegevens bewerkingen beter wilt bijhouden, raden we u aan client zijde tracering te gebruiken.
+> We raden u aan client-side tracering te gebruiken om gegevens bewerkingen beter te kunnen volgen.
 
-De onderstaande beheer bewerkingen worden vastgelegd in operationele Logboeken. 
+De volgende beheer bewerkingen worden vastgelegd in operationele logboeken: 
 
 | Scope | Bewerking|
 |-------| -------- |
-| Naamruimte | <ul> <li> Naam ruimte maken</li> <li> Naam ruimte bijwerken </li> <li> Naam ruimte verwijderen </li>  </ul> | 
+| Naamruimte | <ul> <li> Naamruimte maken</li> <li> Naam ruimte bijwerken </li> <li> Naam ruimte verwijderen </li>  </ul> | 
 | Wachtrij | <ul> <li> Wachtrij maken</li> <li> Wachtrij bijwerken</li> <li> Wachtrij verwijderen </li> </ul> | 
 | Onderwerp | <ul> <li> Onderwerp maken </li> <li> Onderwerp bijwerken </li> <li> Onderwerp verwijderen </li> </ul> |
 | Abonnement | <ul> <li> Abonnement maken </li> <li> Abonnement bijwerken </li> <li> Abonnement verwijderen </li> </ul> |
 
 > [!NOTE]
-> Op dit moment worden **Lees** bewerkingen niet bijgehouden in de operationele Logboeken.
+> Op dit moment worden *Lees* bewerkingen niet bijgehouden in de operationele Logboeken.
 
-## <a name="how-to-enable-operational-logs"></a>Hoe kan ik operationele logboeken inschakelen?
+## <a name="enable-operational-logs"></a>Operationele logboeken inschakelen
 
-Operationele logboeken zijn standaard uitgeschakeld. Als u Diagnostische logboeken wilt inschakelen, voert u de volgende stappen uit:
+Operationele logboeken zijn standaard uitgeschakeld. Ga als volgt te werk om Diagnostische logboeken in te scha kelen:
 
-1. Navigeer in het [Azure Portal](https://portal.azure.com)naar uw Azure service bus naam ruimte en klik onder **bewaking**op **Diagnostische instellingen**.
+1. Ga in het [Azure Portal](https://portal.azure.com)naar uw Azure service bus-naam ruimte en selecteer vervolgens **Diagnostische instellingen**onder **bewaking**.
 
-   ![Blade navigatie naar Diagnostische logboeken](./media/service-bus-diagnostic-logs/image1.png)
+   ![De koppeling Diagnostische instellingen](./media/service-bus-diagnostic-logs/image1.png)
 
-2. Klik op **Diagnostische instelling toevoegen** om de diagnostische instellingen te configureren.  
+1. Selecteer in het deel venster **Diagnostische instellingen** de optie **Diagnostische instelling toevoegen**.  
 
-   ![Diagnostische logboeken inschakelen](./media/service-bus-diagnostic-logs/image2.png)
+   ![De koppeling diagnostische instelling toevoegen](./media/service-bus-diagnostic-logs/image2.png)
 
-3. De diagnostische instellingen configureren
-   1. Typ een **naam** om de diagnostische instellingen te identificeren.
-   2. Kies een doel voor de diagnostische gegevens.
-      - Als u een **opslag account**kiest, moet u het opslag account configureren waarin de diagnostische gegevens worden opgeslagen.
-      - Als u **Event hubs**selecteert, moet u de juiste Event hub configureren waar de diagnostische instellingen worden gestreamd.
-      - Als u **log Analytics**kiest, moet u opgeven welk exemplaar van log Analytics de diagnostische gegevens worden verzonden.
-    3. Controleer **OperationalLogs**.
+1. Configureer de diagnostische instellingen door het volgende te doen:
 
-       ![Diagnostische logboeken voor status wijzigen](./media/service-bus-diagnostic-logs/image3.png)
+   a. Voer in het vak **naam** een naam in voor de diagnostische instellingen.  
 
-4. Klik op **Opslaan**.
+   b. Selecteer een van de volgende drie bestemmingen voor uw Diagnostische logboeken:  
+   - Als u **archiveren naar een opslag account**selecteert, moet u het opslag account configureren waarin de diagnostische logboeken worden opgeslagen.  
+   - Als u **Stream naar een event hub**selecteert, moet u de Event hub configureren waarnaar u de diagnostische logboeken wilt streamen.
+   - Als u **verzenden naar log Analytics**selecteert, moet u opgeven naar welk exemplaar van log Analytics de diagnostische gegevens worden verzonden.  
 
+   c. Schakel het selectie vakje **OperationalLogs** in.
 
-Nieuwe instellingen worden in ongeveer 10 minuten van kracht. Daarna worden logboeken weer gegeven in het geconfigureerde archiverings doel op de Blade **Diagnostische logboeken** .
+    ![Het deel venster Diagnostische instellingen](./media/service-bus-diagnostic-logs/image3.png)
 
-Zie voor meer informatie over het configureren van diagnostische gegevens het [overzicht van Azure Diagnostische logboeken](../azure-monitor/platform/diagnostic-logs-overview.md).
+1. Selecteer **Opslaan**.
+
+De nieuwe instellingen worden in ongeveer 10 minuten van kracht. De logboeken worden weer gegeven in het geconfigureerde archiverings doel in het deel venster **Diagnostische logboeken** .
+
+Zie het [overzicht van Azure Diagnostics-logboeken](../azure-monitor/platform/diagnostic-logs-overview.md)voor meer informatie over het configureren van diagnostische instellingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende koppelingen voor meer informatie over Service Bus:
+Voor meer informatie over Service Bus raadpleegt u:
 
 * [Inleiding tot Service Bus](service-bus-messaging-overview.md)
 * [Aan de slag met Service Bus](service-bus-dotnet-get-started-with-queues.md)

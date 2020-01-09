@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: 9ea9bea83de0a177fa37d9a186f8962bac1394a4
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: d62704feaaa46f6780c302f5564b112dd1badbc1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101411"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353238"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Vijf stappen voor het beveiligen van uw identiteits infrastructuur
 
@@ -112,9 +112,14 @@ Apps die gebruikmaken van hun eigen verouderde methoden om te verifiëren met Az
 
 Als u de mentale schending wilt gebruiken, moet u de invloed van de gebruikers referenties verminderen wanneer deze zich voordoen. Voor elke app in uw omgeving moet u rekening houden met de geldige use-cases: welke groepen, welke netwerken, welke apparaten en andere elementen worden geautoriseerd, en vervolgens de rest blok keren. Met [voorwaardelijke toegang van Azure AD](../../active-directory/conditional-access/overview.md)kunt u bepalen hoe geautoriseerde gebruikers toegang hebben tot hun apps en resources op basis van specifieke voor waarden die u definieert.
 
-### <a name="block-end-user-consent"></a>Toestemming van de eind gebruiker blok keren
+### <a name="restrict-user-consent-operations"></a>Bewerkingen voor gebruikers toestemming beperken
 
-Standaard kunnen alle gebruikers in azure AD toepassingen verlenen die gebruikmaken van OAuth 2,0 en de micro soft Identity [instemming Framework](../../active-directory/develop/consent-framework.md) -machtigingen voor toegang tot Bedrijfs gegevens. Met de functie voor het door sturen kunnen gebruikers eenvoudig nuttige toepassingen verwerven die met Microsoft 365 en Azure worden geïntegreerd. Dit kan een risico vormen wanneer het niet wordt gebruikt en zorgvuldig wordt gecontroleerd. Het [uitschakelen van alle toekomstige acties van gebruikers toestemming](../../active-directory/manage-apps/methods-for-removing-user-access.md) kan helpen om uw Surface Area te verminderen en dit risico te beperken. Als toestemming van de eind gebruiker is uitgeschakeld, worden de voorafgaande toestemming toekenningen nog steeds uitgevoerd, maar alle toekomstige toestemming bewerkingen moeten door een beheerder worden door gegeven. Voordat u deze functie uitschakelt, is het raadzaam om ervoor te zorgen dat gebruikers weten hoe ze goed keuring van de beheerder aanvragen voor nieuwe toepassingen. Dit moet u helpen de wrijving van de gebruiker te verminderen, het ondersteunings volume te minimaliseren en ervoor te zorgen dat gebruikers zich niet hoeven aan te melden voor toepassingen met niet-Azure AD-referenties.
+Het is belang rijk om inzicht te krijgen in de verschillende ervaringen van de [Azure AD-toepassings instemming](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience), de [typen machtigingen en toestemming](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)en de implicaties van de beveiligings postuur van uw organisatie. Standaard kunnen alle gebruikers in azure AD toepassingen verlenen die gebruikmaken van het micro soft-identiteits platform voor toegang tot de gegevens van uw organisatie. Hoewel gebruikers in staat stellen om op zichzelf toestemming te geven, kunnen ze eenvoudig nuttige toepassingen verwerven die worden geïntegreerd met Microsoft 365, Azure en andere services. het kan een risico vormen wanneer het niet wordt gebruikt en zorgvuldig wordt gecontroleerd.
+
+Micro soft adviseert [toekomstige acties voor de gebruikers toestemming uit te scha kelen](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application) om uw Surface Area te verminderen en dit risico te beperken. Als toestemming van de eind gebruiker is uitgeschakeld, worden er nog steeds toestemming gegeven voor eerdere toestemmingen, maar moeten alle toekomstige toestemmings bewerkingen worden uitgevoerd door een beheerder. Toestemming van de beheerder kan worden aangevraagd door gebruikers via een geïntegreerde [aanvraag werk stroom](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) voor het beheer van toestemming of via uw eigen ondersteunings processen. Voordat u deze functie uitschakelt, is het raadzaam om uw controle logboek te bekijken om te begrijpen welke toepassingen gebruikers ermee inzenden en de wijziging dienovereenkomstig te plannen. Als u wilt dat alle gebruikers toegang hebben, kunt u overwegen om toestemming te geven namens [alle gebruikers](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent), en ervoor te zorgen dat gebruikers die nog niet afzonderlijk zijn gemachtigd, toegang hebben tot de app. Als u niet wilt dat deze toepassingen beschikbaar zijn voor alle gebruikers in alle scenario's, gebruikt u [toepassings toewijzing](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) en [voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) om de gebruikers toegang tot apps te beperken.
+
+Zorg ervoor dat gebruikers goed keuring van de beheerder kunnen aanvragen voor nieuwe toepassingen om de wrijving van de gebruiker te verminderen, het ondersteunings volume te minimaliseren en te voor komen dat gebruikers zich aanmelden voor toepassingen met niet-Azure AD-referenties. Wanneer u uw toestemming bewerkingen hebt geregeld, moeten beheerders de app en de machtigingen regel matig controleren.
+
 
 ### <a name="implement-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management implementeren
 
@@ -159,7 +164,7 @@ Microsoft Azure Services en-functies bieden u Configureer bare opties voor bevei
 
 [Bewaking AD FS met Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md) biedt u meer inzicht in potentiële problemen en zicht baarheid van aanvallen op uw AD FS-infra structuur. Azure AD Connect Health biedt waarschuwingen met details, oplossings stappen en koppelingen naar gerelateerde documentatie. gebruiks analyse voor diverse metrische gegevens die betrekking hebben op verificatie verkeer; prestaties bewaken en rapporteren.
 
-![Azure AD Connect Health (Engelstalig)](./media/steps-secure-identity/azure-ad-sec-steps4.png)
+![Azure AD Connect Health](./media/steps-secure-identity/azure-ad-sec-steps4.png)
 
 ### <a name="monitor-azure-ad-identity-protection-events"></a>Azure AD Identity Protection gebeurtenissen bewaken
 
@@ -173,7 +178,9 @@ Azure AD Identity Protection biedt twee belang rijke rapporten die u dagelijks m
 
 ### <a name="audit-apps-and-consented-permissions"></a>Apps en toegestuurde machtigingen controleren
 
-Gebruikers kunnen zich leiden tot het navigeren naar een gemanipuleerde website of apps die toegang krijgen tot hun profiel gegevens en gebruikers gegevens, zoals hun e-mail adres. Een kwaadwillende actor kan gebruikmaken van de toegestuurde machtigingen die zijn ontvangen om de inhoud van hun postvak te versleutelen en een Ransom te vragen om uw postvak gegevens opnieuw te verkrijgen. [Beheerders moeten de machtigingen controleren en controleren](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) die door gebruikers worden verstrekt.
+Gebruikers kunnen zich leiden tot het navigeren naar een gemanipuleerde website of apps die toegang krijgen tot hun profiel gegevens en gebruikers gegevens, zoals hun e-mail adres. Een kwaadwillende actor kan gebruikmaken van de toegestuurde machtigingen die zijn ontvangen om de inhoud van hun postvak te versleutelen en een Ransom te vragen om uw postvak gegevens opnieuw te verkrijgen. Beheerders moeten de machtigingen van gebruikers [controleren en controleren](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) of de mogelijkheid van gebruikers om toestemming te geven, uitschakelen. 
+
+Naast het controleren van de machtigingen die door gebruikers worden gegeven, kan het u helpen om met name [Risk ante of ongewenste OAuth-toepassingen te zoeken](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth). Dit is een functie die beschikbaar is voor Premium-omgevingen.
 
 ## <a name="step-5---enable-end-user-self-service"></a>Stap 5-selfservice voor eind gebruikers inschakelen
 

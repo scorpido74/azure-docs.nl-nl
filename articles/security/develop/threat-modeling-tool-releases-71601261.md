@@ -1,26 +1,18 @@
 ---
-title: Threat Modeling Tool releases-Microsoft Threat Modeling Tool-Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool release 1/29/2019-Azure
 description: De release opmerkingen voor het hulp programma voor het maken van bedreigingen vastleggen
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
-ms.author: jegeib
-ms.openlocfilehash: d9c91752a599debcd8fda6c8396141e6a92e0f06
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: cec5abe358189184648c5a40a809b570f243fbf4
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928103"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548784"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>Threat Modeling Tool-updaterelease 7.1.60126.1 - 1/29/2019
 
@@ -37,7 +29,7 @@ Versie 7.1.60126.1 van de Microsoft Threat Modeling Tool is uitgebracht op 29 20
 
 ### <a name="model-validation-option"></a>Model validatie optie
 
-Op basis van feedback van klanten is een optie toegevoegd aan het hulp programma om de model validatie in of uit te scha kelen. Als voor uw sjabloon een enkelvoudige data transport met één richting tussen twee objecten werd gebruikt, hebt u mogelijk een fout bericht in het bericht frame ontvangen met de melding: Voor object naam is ten minste één wille keurig. Door model validatie uit te scha kelen, voor komt u dat deze waarschuwingen in de weer gave worden weer gegeven.
+Op basis van feedback van klanten is een optie toegevoegd aan het hulp programma om de model validatie in of uit te scha kelen. Als uw sjabloon een enkele eenrichtings gegevens stroom tussen twee objecten heeft gebruikt, hebt u mogelijk een fout bericht ontvangen in het bericht frame: voor object naam is ten minste één wille keurig. Door model validatie uit te scha kelen, voor komt u dat deze waarschuwingen in de weer gave worden weer gegeven.
 
 De optie voor het in-en uitschakelen van model validatie vindt u in het menu instellingen voor bestands >-> Opties. De standaard waarde voor deze instelling is uitgeschakeld.
 

@@ -1,6 +1,6 @@
 ---
 title: Uw computers en toepassingen beveiligen
-description: Dit document bevat aanbevelingen in Security Center waarmee u uw virtuele machines en computers en uw web-apps en App Service omgevingen kunt beveiligen.
+description: Dit document bevat aanbevelingen in Security Center die u helpen beveiligen van uw virtuele machines en computers en uw web-apps en App Service-omgevingen.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,23 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 4a6d733b490edd892136f6febcc90c29a5a865e1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b7e5b0286cdd15834b84e4fd3e619c6555054823
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766800"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552998"
 ---
 # <a name="protect-your-machines-and-applications"></a>Uw computers en toepassingen beveiligen
-Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er aanbevelingen gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden. 
+Wanneer Azure Security Center mogelijke beveiligings problemen identificeert, worden er aanbevelingen gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden om uw resources te beschermen en te beveiligen.
 
-In dit artikel wordt de pagina **Compute and apps** van de sectie resource Security van Azure Security Center beschreven. Ook worden enkele aanbevelingen beschreven die u hier ziet.
+In dit artikel wordt de pagina **Compute and apps** van Security Center resource Security beschreven.
 
-Zie voor een volledige lijst met aanbevelingen voor reken-en app-Services [Compute en app-aanbevelingen](recommendations-compute-and-apps.md).
+Zie [aanbevelingen voor gegevens en opslag](recommendations-reference.md#recs-computeapp)voor een volledige lijst met aanbevelingen die u op deze pagina kunt zien.
+
 
 ## <a name="view-the-security-of-your-compute-and-apps-resources"></a>De beveiliging van uw Compute-en app-resources weer geven
 
-![Dashboard van Security Center](./media/security-center-virtual-machine-recommendations/overview.png)
+[Security Center dash board ![](./media/security-center-virtual-machine-recommendations/overview.png)](./media/security-center-virtual-machine-recommendations/overview.png#lightbox)
 
 Als u de status van uw Compute-en app-resources wilt weer geven, selecteert u **compute & apps** onder **resources** op de zijbalk Security Center. De volgende tabbladen zijn beschikbaar:
 
@@ -64,17 +65,18 @@ In de sectie Vm's en computers vindt u een overzicht van alle beveiligings aanbe
 
 ![Niet-Azure-computer](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon1.png) Computer zonder Azure.
 
-![Azure Resource Manager VM](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon2.png) Azure Resource Manager VM.
+![Virtuele machines van Azure Resource Manager](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon2.png) Virtuele machines van Azure Resource Manager.
 
 ![Klassieke Azure-VM](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon3.png) Klassieke Azure-VM.
 
-![Vm's die zijn geïdentificeerd in de werk ruimte](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) Virtuele machines die alleen zijn geïdentificeerd vanuit de werkruimte die deel uitmaakt van het weergegeven abonnement. Dit omvat Vm's van andere abonnementen die rapporteren aan de werk ruimte in dit abonnement en Vm's die met Operations Manager direct agent zijn geïnstalleerd en geen Resource-ID hebben.
+![Virtuele machines geïdentificeerd vanuit de werkruimte](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) Virtuele machines die alleen zijn geïdentificeerd vanuit de werkruimte die deel uitmaakt van het weergegeven abonnement. Dit omvat Vm's van andere abonnementen die rapporteren aan de werk ruimte in dit abonnement en Vm's die met Operations Manager direct agent zijn geïnstalleerd en geen Resource-ID hebben.
 
-Het pictogram dat onder elke aanbeveling wordt weer gegeven, helpt u snel de virtuele machine en computer te identificeren die aandacht nodig hebben, en het type aanbeveling. U kunt ook de filters gebruiken om de lijst te doorzoeken op **resource type** en op **Ernst**.
+U kunt met het pictogram dat wordt weergegeven onder elke aanbeveling snel identificeren van de virtuele machine en de computer die aandacht vereisen en wat het type aanbeveling. U kunt ook de filters gebruiken om de lijst te doorzoeken op **resource type** en op **Ernst**.
 
 Als u wilt inzoomen op de beveiligings aanbevelingen voor elke virtuele machine, klikt u op de virtuele machine.
-Hier ziet u de beveiligings Details voor de virtuele machine of computer. Onderaan ziet u de aanbevolen actie en de ernst van elk probleem.
-![Cloudservices](./media/security-center-virtual-machine-recommendations/recommendation-list.png)
+Hier ziet u de beveiligingsdetails voor de virtuele machine of computer. Onderaan ziet u de aanbevolen actie en de ernst van elk probleem.
+
+[![Cloud Services](./media/security-center-virtual-machine-recommendations/recommendation-list.png)](./media/security-center-virtual-machine-recommendations/recommendation-list.png#lightbox)
 
 ### <a name="cloud-services"></a>Cloud Services
 Voor Cloud Services wordt een aanbeveling gemaakt wanneer de versie van het besturings systeem verouderd is.
@@ -87,33 +89,33 @@ In een scenario waarin u een aanbeveling hebt, volgt u de stappen in de aanbevel
 Als u de App Service informatie wilt weer geven, moet u de prijs categorie Standard van Security Center hebben en App Service in uw abonnement inschakelen. Zie [app service beveiligen met Azure Security Center](security-center-app-services.md)voor instructies over het inschakelen van deze functie.
 
 
-Onder **app Services**vindt u een lijst met uw app service-omgevingen en het status overzicht op basis van de evaluatie Security Center uitgevoerd.
+Onder **App services**, vindt u een lijst van uw App service-omgevingen en samenvatting van de status op basis van de evaluatie van Security Center wordt uitgevoerd.
 
 ![App-services](./media/security-center-virtual-machine-recommendations/app-services.png)
 
 Er worden drie typen toepassings services weer gegeven:
 
-![App Services-omgeving](./media/security-center-virtual-machine-recommendations/ase.png) App Services-omgeving
+![Omgeving voor App-services](./media/security-center-virtual-machine-recommendations/ase.png) Omgeving voor App-services
 
 ![Webtoepassing](./media/security-center-virtual-machine-recommendations/web-app.png) Webtoepassing
 
-![Functie toepassing](./media/security-center-virtual-machine-recommendations/function-app.png) Functie toepassing
+![Functions-toepassing](./media/security-center-virtual-machine-recommendations/function-app.png) Functions-toepassing
 
 Als u een webtoepassing selecteert, wordt er een samen vatting weer gegeven met drie tabbladen:
 
    - **Aanbevelingen**: gebaseerd op evaluaties die zijn uitgevoerd door Security Center die zijn mislukt.
-   - **Geslaagde evaluaties**: een lijst met evaluaties die zijn uitgevoerd door Security Center die zijn door gegeven.
-   - **Niet-beschik bare evaluaties**: lijst met evaluaties die niet kunnen worden uitgevoerd vanwege een fout of omdat de aanbeveling niet relevant is voor de specifieke app service
+   - **Evaluaties doorgegeven**: lijst met beoordelingen uitgevoerd door Security Center die doorgegeven.
+   - **Niet-beschikbare evaluaties**: lijst met beoordelingen die kan niet worden uitgevoerd vanwege een fout of de aanbeveling is niet relevant zijn voor de specifieke appservice
 
-   Onder **aanbevelingen** vindt u een lijst met aanbevelingen voor de geselecteerde webtoepassing en ernst van elke aanbeveling.
+   Onder **aanbevelingen** is een lijst met aanbevelingen voor de geselecteerde web-App en de ernst van elke aanbeveling.
 
    ![Aanbevelingen voor App Services](./media/security-center-virtual-machine-recommendations/app-services-rec.png)
 
 Selecteer een aanbeveling voor een beschrijving van de aanbeveling en een lijst met slechte resources, in orde zijnde resources en niet-gescande resources.
 
-   - De kolom **door gegeven beoordelingen** bevat een lijst met geslaagde evaluaties. De ernst van deze evaluaties is altijd groen.
+   - De kolom **door gegeven beoordelingen** bevat een lijst met geslaagde evaluaties. Ernst van deze beoordeling is altijd groen.
 
-   - Selecteer een door gegeven evaluatie in de lijst voor een beschrijving van de evaluatie, een lijst met slechte en gezonde resources en een lijst met niet-gescande resources. Er is een tabblad voor beschadigde resources, maar deze lijst is altijd leeg sinds de evaluatie is geslaagd.
+   - Selecteer een evaluatie van de doorgegeven in de lijst voor een beschrijving van de evaluatie, een lijst met resources niet in orde en in orde is en een lijst met niet-gescande resources. Er is een tabblad voor de resources niet in orde, maar deze lijst is altijd leeg omdat de evaluatie van de doorgegeven.
 
 ### <a name="vmscale-sets"></a>Schaal sets voor virtuele machines
 Security Center detecteert automatisch of u schaal sets hebt en raadt u aan micro soft Monitoring Agent te installeren.
@@ -141,6 +143,7 @@ Als u alle bestaande schaal sets wilt instellen om micro soft Monitoring Agent t
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende artikelen voor meer informatie over de aanbevelingen die van toepassing zijn op andere Azure-resource typen:
 
+* [Volledige referentie lijst met aanbevelingen voor de beveiliging van Azure Security Center](recommendations-reference.md)
 * [Identiteit en toegang bewaken in Azure Security Center](security-center-identity-access.md)
 * [Protecting your network in Azure Security Center](security-center-network-recommendations.md) (Uw netwerk beveiligen in Azure Security Center)
-* [Uw Azure SQL-service beveiligen in Azure Security Center](security-center-sql-service-recommendations.md)
+* [Beveiligen van uw Azure SQL-service in Azure Security Center](security-center-sql-service-recommendations.md)

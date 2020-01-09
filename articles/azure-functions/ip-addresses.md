@@ -3,12 +3,12 @@ title: IP-adressen in Azure Functions
 description: Meer informatie over het vinden van binnenkomende en uitgaande IP-adressen voor functie-apps en wat ertoe leidt dat deze worden gewijzigd.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 327d616c36bcbbb1562349afffd529efb2b5d27f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a1c4174b8f1f2349cbd35c32cbee468ee5b4cd4a
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230330"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612884"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-adressen in Azure Functions
 
@@ -25,9 +25,9 @@ IP-adressen zijn gekoppeld aan functie-apps, niet met afzonderlijke functies. In
 
 Elke functie-app heeft één inkomend IP-adres. Het IP-adres zoeken:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Navigeer naar de functie-app.
-3. Selecteer **platform functies**.
+3. Selecteer **Platformfuncties**.
 4. Selecteer **Eigenschappen**en het inkomende IP-adres wordt weer gegeven onder **virtueel IP-adres**.
 
 ## <a name="find-outbound-ip-addresses"></a>Uitgaande IP-adressen van functie-app
@@ -88,7 +88,7 @@ Het inkomende IP-adres **kan** veranderen wanneer u:
 - Verwijder de laatste functie-app in een combi natie van resource groep en regio en maak deze opnieuw.
 - Een SSL-binding verwijderen, bijvoorbeeld tijdens het vernieuwen van het [certificaat](../app-service/configure-ssl-certificate.md#renew-certificate).
 
-Wanneer uw functie-app wordt uitgevoerd in een [verbruiks abonnement](functions-scale.md#consumption-plan), kan het binnenkomende IP-adres ook worden gewijzigd wanneer u geen acties hebt uitgevoerd, zoals de items in de lijst.
+Wanneer uw functie-app wordt uitgevoerd in een [verbruiks abonnement](functions-scale.md#consumption-plan), kan het binnenkomende IP-adres ook worden gewijzigd, zelfs als u geen acties hebt uitgevoerd zoals [hierboven vermeld](#inbound-ip-address-changes).
 
 ## <a name="outbound-ip-address-changes"></a>Wijzigingen in het uitgaande IP-adres
 
@@ -97,7 +97,7 @@ De set beschik bare uitgaande IP-adressen voor een functie-app kan veranderen wa
 * Onderneem elke actie die het inkomende IP-adres kan wijzigen.
 * Wijzig de prijs categorie van uw App Service abonnement. De lijst met alle mogelijke uitgaande IP-adressen die uw app kan gebruiken voor alle prijs categorieën, bevindt zich in de eigenschap `possibleOutboundIPAddresses`. Zie [uitgaande Ip's zoeken](#find-outbound-ip-addresses).
 
-Wanneer uw functie-app wordt uitgevoerd in een [verbruiks abonnement](functions-scale.md#consumption-plan), kan het uitgaande IP-adres ook worden gewijzigd wanneer u geen acties hebt uitgevoerd, zoals de items in de lijst.
+Wanneer uw functie-app wordt uitgevoerd in een [verbruiks abonnement](functions-scale.md#consumption-plan), kan het uitgaande IP-adres ook worden gewijzigd, zelfs als u geen acties hebt uitgevoerd zoals [hierboven vermeld](#inbound-ip-address-changes).
 
 Als u de wijziging van een uitgaand IP-adres wilt forceren:
 
@@ -105,7 +105,7 @@ Als u de wijziging van een uitgaand IP-adres wilt forceren:
 2. Wacht tien minuten.
 3. Schaal terug naar de locatie waar u bent begonnen.
 
-## <a name="ip-address-restrictions"></a>IP-adres beperkingen
+## <a name="ip-address-restrictions"></a>IP-adresbeperkingen
 
 U kunt een lijst met IP-adressen die u wilt toestaan of weigeren van toegang tot een functie-app configureren. Zie [Azure app service static IP-beperkingen](../app-service/app-service-ip-restrictions.md)voor meer informatie.
 
@@ -115,9 +115,9 @@ Als u statische, specifieke IP-adressen nodig hebt, raden wij u aan [app service
 
 Als u wilt weten of uw functie-app wordt uitgevoerd in een App Service Environment:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Navigeer naar de functie-app.
-3. Selecteer het tabblad **overzicht** .
+3. Selecteer het tabblad **Overzicht**.
 4. De laag App Service plan wordt weer gegeven onder **app service plan/prijs categorie**. De prijs Categorie App Service Environment is **geïsoleerd**.
  
 Als alternatief kunt u het [Cloud shell](../cloud-shell/quickstart.md)gebruiken:

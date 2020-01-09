@@ -11,18 +11,18 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: fb9ee2378679c420a7675856ec95e60f6ae1d14f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 05b099eebcbb7b8f77357c9dcf3a4d567d3886d6
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827140"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75553066"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Een failovergroep voor Azure SQL Database configureren
 
 In dit onderwerp leert u hoe u een [groep voor automatische failover](sql-database-auto-failover-group.md) configureert voor een Azure SQL database afzonderlijke Data Base, een elastische pool en een beheerd exemplaar met behulp van de Azure portal of Power shell. 
 
-## <a name="single-database"></a>Individuele database
+## <a name="single-database"></a>Afzonderlijke database
 Maak de failovergroep en voeg er een toe aan een enkele data base met behulp van de Azure Portal of Power shell.
 
 ### <a name="prerequisites"></a>Vereisten
@@ -35,6 +35,7 @@ Houd rekening met de volgende vereisten:
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Maak uw failovergroep en voeg uw afzonderlijke data base toe met behulp van de Azure Portal.
+
 
 1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
 1. Selecteer de afzonderlijke Data Base die u wilt toevoegen aan de failovergroep. 
@@ -183,6 +184,9 @@ Herstel de failovergroep terug naar de primaire server:
 
 ---
 
+> [!IMPORTANT]
+> Als u de secundaire data base moet verwijderen, verwijdert u deze uit de failover-groep voordat u deze verwijdert. Het verwijderen van een secundaire Data Base voordat deze wordt verwijderd uit de failovergroep kan onvoorspelbaar gedrag veroorzaken. 
+
 ## <a name="elastic-pool"></a>Elastische pool
 Maak de failovergroep en voeg er een elastische pool aan toe met behulp van de Azure Portal of Power shell.  
 
@@ -328,11 +332,14 @@ Failover naar de secundaire server:
 
 ---
 
+> [!IMPORTANT]
+> Als u de secundaire data base moet verwijderen, verwijdert u deze uit de failover-groep voordat u deze verwijdert. Het verwijderen van een secundaire Data Base voordat deze wordt verwijderd uit de failovergroep kan onvoorspelbaar gedrag veroorzaken. 
+
 ## <a name="managed-instance"></a>Beheerd exemplaar
 
 Maak een failovergroep tussen twee beheerde instanties met behulp van de Azure Portal of Power shell. 
 
-U moet een gateway voor het virtuele netwerk van elk beheerd exemplaar maken, de twee gateways verbinden en vervolgens de failover-groep maken.
+U moet [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) configureren of een gateway maken voor het virtuele netwerk van elk beheerd exemplaar, verbinding maken tussen de twee gateways en vervolgens de failovergroep maken. 
 
 ### <a name="prerequisites"></a>Vereisten
 Houd rekening met de volgende vereisten:
@@ -344,7 +351,7 @@ Houd rekening met de volgende vereisten:
 
 ### <a name="create-primary-virtual-network-gateway"></a>Primaire virtuele netwerk gateway maken 
 
-Maak de primaire virtuele netwerk gateway met de Azure Portal, of Power shell. 
+Als u [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)niet hebt geconfigureerd, kunt u de primaire virtuele netwerk gateway maken met de Azure Portal, of Power shell. 
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
@@ -374,7 +381,7 @@ Maak de primaire virtuele netwerk gateway met behulp van de Azure Portal.
     | **Locatie**| De locatie waar uw secundaire beheerde instantie en secundaire virtuele netwerk zich bevindt.   |
     | **Virtueel netwerk**| Selecteer het virtuele netwerk voor uw secundaire beheerde exemplaar. |
     | **Openbaar IP-adres**| Selecteer **Nieuw maken**. |
-    | **Naam van openbaar IP-adres**| Voer een naam in voor uw IP-adres. |
+    | **Naam openbaar IP-adres**| Voer een naam in voor uw IP-adres. |
     | &nbsp; | &nbsp; |
 
 1. Wijzig de andere waarden als standaard en selecteer vervolgens **controleren + maken** om de instellingen voor de gateway van uw virtuele netwerk te controleren.
@@ -435,7 +442,7 @@ Herhaal de stappen in de vorige sectie om het subnet van het virtuele netwerk en
    | **Locatie**| De locatie waar uw secundaire beheerde instantie en secundaire virtuele netwerk zich bevindt.   |
    | **Virtueel netwerk**| Selecteer het virtuele netwerk dat is gemaakt in sectie 2, zoals `vnet-sql-mi-secondary`. |
    | **Openbaar IP-adres**| Selecteer **Nieuw maken**. |
-   | **Naam van openbaar IP-adres**| Voer een naam in voor uw IP-adres, zoals `secondary-gateway-IP`. |
+   | **Naam openbaar IP-adres**| Voer een naam in voor uw IP-adres, zoals `secondary-gateway-IP`. |
    | &nbsp; | &nbsp; |
 
    ![Instellingen van secundaire gateway](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: 068747fd51779bd8a20636355a9ce2b032f6151d
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8a371f902703287ed3105ed53a57d6341b9528d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255378"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415114"
 ---
 # <a name="get-help-with-your-system"></a>Hulp vragen bij uw systeem
 
@@ -19,15 +19,15 @@ Als u hulp nodig hebt bij uw avere vFXT voor Azure, kunt u de verschillende mani
 
 * **Avere vFXT-probleem** : gebruik de Azure Portal om een ondersteunings ticket voor uw avere-vFXT te openen, zoals [hieronder](#open-a-support-ticket-for-your-avere-vfxt)wordt beschreven.
 * **Quotum** : als u een quotum wilt hebben, moet u [een quotum toename aanvragen](#request-a-quota-increase)
-* **Documentatie en voor beelden** : als u problemen ondervindt met deze documentatie of voor beelden, schuift u naar de onderkant van de pagina met het probleem en gebruikt u de sectie **feedback** om naar bestaande problemen te zoeken en een nieuwe te bestand, indien nodig.  
+* **Documentatie en voor beelden** : als u problemen ondervindt met deze documentatie of voor beelden, schuift u naar de onderkant van de pagina met het probleem en gebruikt u de sectie **feedback** om naar bestaande problemen te zoeken en een nieuwe te bestand, indien nodig.
 
 ## <a name="open-a-support-ticket-for-your-avere-vfxt"></a>Open een ondersteunings ticket voor uw avere-vFXT
 
-Als u problemen ondervindt tijdens het implementeren of gebruiken van AVERE vFXT, vraagt u hulp via de Azure Portal.  
+Als u problemen ondervindt tijdens het implementeren of gebruiken van AVERE vFXT, vraagt u hulp via de Azure Portal.
 
-Volg deze stappen om ervoor te zorgen dat uw ondersteunings ticket is gelabeld met een resource uit uw cluster. Als u het ticket labelt, kunnen we dit routeren naar de juiste ondersteunings resource. 
+Volg deze stappen om ervoor te zorgen dat uw ondersteunings ticket is gelabeld met een resource uit uw cluster. Als u het ticket labelt, kunnen we dit routeren naar de juiste ondersteunings resource.
 
-1. Selecteer **resource groepen**uit [https://portal.azure.com](https://portal.azure.com).
+1. Selecteer in [https://portal.azure.com](https://portal.azure.com) **resource groepen**.
 
    ![scherm afbeelding van Azure Portal linkermenu met ' resource groepen ' omcirkeld](media/avere-vfxt-ticket-rg.png)
 
@@ -43,7 +43,7 @@ Volg deze stappen om ervoor te zorgen dat uw ondersteunings ticket is gelabeld m
 
     ![scherm opname van het nieuwe venster voor de ondersteunings aanvraag in de Azure Portal met de koptekst ' basis principes ' en een cirkel rond het item ' service '. De knop alle services is geselecteerd en de vervolg keuzelijst veld heeft de waarde ' avere vFXT '](media/avere-vfxt-ticket-service.png)
 
-1. Kies op pagina twee het probleem type en de categorie die het meest overeenkomt met uw probleem. Voeg een korte titel en beschrijving toe die de tijd bevat waarop het probleem zich voordeed. 
+1. Kies op pagina twee het probleem type en de categorie die het meest overeenkomt met uw probleem. Voeg een korte titel en beschrijving toe die de tijd bevat waarop het probleem zich voordeed.
 
    ![scherm opname van het nieuwe scherm met de ondersteunings aanvraag met de koptekst ' probleem ', dat veel velden bevat die moeten worden voltooid](media/avere-vfxt-ticket-problem.png)
 

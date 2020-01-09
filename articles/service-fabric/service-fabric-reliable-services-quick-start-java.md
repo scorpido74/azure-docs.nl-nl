@@ -1,55 +1,46 @@
 ---
-title: Maken van uw eerste betrouwbare Azure Service Fabric-service in Java | Microsoft Docs
-description: Inleiding tot het maken van een Microsoft Azure Service Fabric-toepassing met staatloze en stateful services.
-services: service-fabric
-documentationcenter: java
+title: Uw eerste betrouw bare service maken in Java
+description: Inleiding tot het maken van een Microsoft Azure Service Fabric-toepassing met stateless en stateful Services.
 author: suhuruli
-manager: chackdan
-editor: ''
-ms.assetid: 7831886f-7ec4-4aef-95c5-b2469a5b7b5d
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 6bf8c632a7513d018745bc74aa0a1db95a39af8b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3b301a7a9039f1fe8095950f0a5a4e23eb52a9b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130123"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614210"
 ---
-# <a name="get-started-with-reliable-services"></a>Aan de slag met Reliable Services
+# <a name="get-started-with-reliable-services-in-java"></a>Aan de slag met Reliable Services in Java
 > [!div class="op_single_selector"]
 > * [C# op Windows](service-fabric-reliable-services-quick-start.md)
 > * [Java op Linux](service-fabric-reliable-services-quick-start-java.md)
 >
 >
 
-In dit artikel vindt u de basisbeginselen van Azure Service Fabric Reliable Services en leidt u door het maken en implementeren van een eenvoudige betrouwbare servicetoepassing die zijn geschreven in Java. 
+In dit artikel worden de basis beginselen van Azure Service Fabric Reliable Services beschreven en wordt uitgelegd hoe u een eenvoudige, betrouw bare service toepassing maakt en implementeert die in Java is geschreven. 
 
-## <a name="installation-and-setup"></a>Installeren en instellen
-Voordat u begint, zorg ervoor dat u de Service Fabric-ontwikkelomgeving instellen op uw computer hebt.
-Als u instellen wilt, gaat u naar [aan de slag op Mac](service-fabric-get-started-mac.md) of [aan de slag met Linux](service-fabric-get-started-linux.md).
+## <a name="installation-and-setup"></a>Installatie en configuratie
+Voordat u begint, moet u controleren of de Service Fabric-ontwikkel omgeving is ingesteld op uw machine.
+Als u deze wilt instellen, gaat u naar aan de [slag met Mac](service-fabric-get-started-mac.md) of aan de slag met [Linux](service-fabric-get-started-linux.md).
 
 ## <a name="basic-concepts"></a>Basisbegrippen
-Als u wilt aan de slag met Reliable Services, moet u slechts enkele fundamentele concepten begrijpen:
+Om aan de slag te gaan met Reliable Services hoeft u slechts enkele basis concepten te begrijpen:
 
-* **Servicetype**: Dit is uw service-implementatie. Deze is gedefinieerd door de klasse u schrijven die een uitbreiding `StatelessService` en een andere code of afhankelijkheden gebruikt, samen met een naam en een uniek versienummer.
-* **Service-exemplaar met de naam**: Voor het uitvoeren van uw service, u benoemde exemplaren van het servicetype, veel, zoals het maken van instanties van objecten van een klassentype. Service-exemplaren zijn in feite objectinstanties van uw serviceklasse die u schrijft.
-* **ServiceHost**: De benoemde service-instanties dat u maakt moeten uitvoeren in een host. De ServiceHost is alleen een proces waarbij instanties van uw service kunnen worden uitgevoerd.
-* **Service-registratie**: Inschrijving brengt alles bij elkaar. Type van de service moet worden geregistreerd bij de Service Fabric-runtime in een ServiceHost om toe te staan van Service Fabric om instanties van deze te maken om uit te voeren.  
+* **Service type**: dit is de service-implementatie. Het wordt gedefinieerd door de klasse die u schrijft, waarmee `StatelessService` worden uitgebreid en alle andere code of afhankelijkheden die erin worden gebruikt, samen met een naam en versie nummer.
+* **Benoemd service-exemplaar**: als u uw service wilt uitvoeren, maakt u benoemde instanties van uw service type, net zoals u object instanties van een klassetype maakt. Service-exemplaren bevinden zich in feite object instanties van uw service klasse die u schrijft.
+* **Servicehost: de**benoemde service-exemplaren die u maakt, moeten binnen een host worden uitgevoerd. De servicehost is slechts een proces waarbij exemplaren van uw service kunnen worden uitgevoerd.
+* **Service registratie**: registratie brengt alles samen. Het Service type moet worden geregistreerd bij de Service Fabric runtime in een servicehost om Service Fabric toe te staan dat er exemplaren van worden gemaakt om te worden uitgevoerd.  
 
 ## <a name="create-a-stateless-service"></a>Een stateless service maken
-Beginnen met het maken van een Service Fabric-toepassing. De Service Fabric-SDK voor Linux bevat een Yeoman generator voor de opbouw van een Service Fabric-toepassing met een stateless service. Start door het uitvoeren van de volgende Yeoman opdracht:
+Maak eerst een Service Fabric-toepassing. De Service Fabric SDK voor Linux bevat een Yeoman-generator voor het maken van de steiger voor een Service Fabric toepassing met een stateless service. Begin met het uitvoeren van de volgende Yeoman-opdracht:
 
 ```bash
 $ yo azuresfjava
 ```
 
-Volg de instructies voor het maken van een **betrouwbare Stateless Service**. Voor deze zelfstudie, noem de toepassing "HelloWorldApplication" en "Hallowereld" van de service. Het resultaat bevat mappen voor de `HelloWorldApplication` en `HelloWorld`.
+Volg de instructies voor het maken van een **betrouw bare stateless service**. Voor deze zelf studie moet u de toepassing "HelloWorldApplication" en de service "HelloWorld" noemen. Het resultaat bevat mappen voor de `HelloWorldApplication` en `HelloWorld`.
 
 ```bash
 HelloWorldApplication/
@@ -75,8 +66,8 @@ HelloWorldApplication/
 ├── settings.gradle
 └── uninstall.sh
 ```
-### <a name="service-registration"></a>De service is geregistreerd
-Servicetypen moeten worden geregistreerd bij de Service Fabric-runtime. Type van de service is gedefinieerd in de `ServiceManifest.xml` en uw serviceklasse die `StatelessService`. Registratie van de service wordt uitgevoerd in het proces belangrijkste toegangspunt. In dit voorbeeld wordt het proces belangrijkste toegangspunt is `HelloWorldServiceHost.java`:
+### <a name="service-registration"></a>Service registratie
+Service typen moeten zijn geregistreerd bij de Service Fabric-runtime. Het Service type wordt gedefinieerd in de `ServiceManifest.xml` en uw service klasse die `StatelessService`implementeert. Service registratie wordt uitgevoerd in het hoofd toegangs punt van het proces. In dit voor beeld is het hoofd toegangs punt van het proces `HelloWorldServiceHost.java`:
 
 ```java
 public static void main(String[] args) throws Exception {
@@ -94,9 +85,9 @@ public static void main(String[] args) throws Exception {
 
 ## <a name="implement-the-service"></a>De service implementeren
 
-Open **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java**. Deze klasse definieert het servicetype en code kunt uitvoeren. De service-API biedt twee toegangspunten voor uw code:
+Open **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java**. Deze klasse definieert het Service type en kan elke wille keurige code uitvoeren. De service-API biedt twee toegangs punten voor uw code:
 
-* Een methode met een vermelding punt, met de naam `runAsync()`, waar u kunt beginnen alle workloads, met inbegrip van langlopende compute-workloads uitvoeren.
+* Een open-end-invoer punt methode met de naam `runAsync()`, waar u werk belastingen kunt uitvoeren, inclusief langlopende Compute-workloads.
 
 ```java
 @Override
@@ -105,7 +96,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 }
 ```
 
-* Een communicatie-toegangspunt waar u in uw communicatiestack naar keuze kunt aansluiten. Dit is waar u ontvangen van aanvragen van gebruikers en andere services kan starten.
+* Een communicatie-ingangs punt waar u uw communicatie stack kunt aansluiten. Hier kunt u beginnen met het ontvangen van aanvragen van gebruikers en andere services.
 
 ```java
 @Override
@@ -114,22 +105,22 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 }
 ```
 
-Deze zelfstudie richt zich op de `runAsync()` vermelding punt methode. Dit is waar u kunt direct beginnen waarop uw code wordt uitgevoerd.
+Deze zelf studie is gericht op de `runAsync()` entry point-methode. Hier kunt u direct beginnen met het uitvoeren van uw code.
 
 ### <a name="runasync"></a>RunAsync
-Het platform wordt deze methode wanneer een exemplaar van een service is geplaatst en gereed is om uit te voeren. Voor een stateless service betekent dat wanneer de service-exemplaar wordt geopend. Een token annulering is opgegeven voor de coördinatie van wanneer uw service-exemplaar moet worden gesloten. Deze cyclus openen en sluiten van een service-exemplaar kan vaak gedurende de levensduur van de service in Service Fabric optreden als geheel. Dit kan gebeuren om verschillende redenen, waaronder:
+Het platform roept deze methode aan wanneer een exemplaar van een service wordt geplaatst en gereed is om te worden uitgevoerd. Voor een stateless service betekent dat wanneer het service-exemplaar wordt geopend. Er wordt een annulerings token gegeven om te coördineren wanneer uw service-exemplaar moet worden gesloten. In Service Fabric kan deze open/close-cyclus van een service-exemplaar veel keren voor komen gedurende de levens duur van de service als geheel. Dit kan verschillende oorzaken hebben, waaronder:
 
-* Het systeem wordt uw service-instanties voor bron-balancing verplaatst.
-* Fouten optreden in uw code.
-* De toepassing of het systeem is bijgewerkt.
-* De onderliggende hardware er een storing optreedt.
+* Het systeem verplaatst uw service-exemplaren voor resource verdeling.
+* Er treden fouten op in uw code.
+* Er wordt een upgrade uitgevoerd voor de toepassing of het systeem.
+* De onderliggende hardware ondervindt een storing.
 
-Deze indeling wordt beheerd door Service Fabric houdt u uw service maximaal beschikbare en goed met gelijke taakverdeling.
+Deze indeling wordt beheerd door Service Fabric om ervoor te zorgen dat uw service Maxi maal beschikbaar is en op de juiste wijze is gebalanceerd.
 
-`runAsync()` moet niet synchroon blokkeren. De implementatie van runAsync moet retourneren een CompletableFuture zodat de runtime om door te gaan. Als uw werkbelasting moet een langlopende taak die moet worden uitgevoerd binnen de CompletableFuture wilt implementeren.
+`runAsync()` mag niet synchroon worden geblokkeerd. Uw implementatie van runAsync moet een CompletableFuture retour neren zodat de runtime kan door gaan. Als uw werk belasting een langlopende taak moet implementeren die in de CompletableFuture moet worden uitgevoerd.
 
-#### <a name="cancellation"></a>Annulering
-De annulering van uw werkbelasting is een gezamenlijke inspanning ingedeeld door de opgegeven annulering-token. Het systeem wacht tot de taak te beëindigen (met succes is voltooid, annulering of fout) voordat deze op. Het is belangrijk om te voldoen aan het token annulering, werk voltooien en sluit `runAsync()` zo snel mogelijk wanneer het systeem annulering aanvraagt. Het volgende voorbeeld ziet u hoe u een annulering-gebeurtenis verwerken:
+#### <a name="cancellation"></a>Opzegging
+Het annuleren van uw werk belasting is een gezamenlijke inspanning die wordt georganiseerd door het door gegeven annulerings token. Het systeem wacht tot de taak is voltooid (door voltooiing, annulering of fout) voordat deze wordt verplaatst. Het is belang rijk om het annulerings token te voldoen, werk te volt ooien en `runAsync()` zo snel mogelijk af te sluiten wanneer de systeem aanvragen worden geannuleerd. In het volgende voor beeld ziet u hoe u een annulerings gebeurtenis kunt afhandelen:
 
 ```java
 @Override
@@ -153,20 +144,20 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 }
 ```
 
-In dit voorbeeld stateless service, wordt het aantal opgeslagen in een lokale variabele. Maar omdat dit een staatloze service is, de waarde die opgeslagen bestaat alleen voor de huidige levenscyclus van de service-exemplaar. Wanneer de service worden verplaatst of opnieuw wordt opgestart, wordt de waarde is verloren gegaan.
+In dit stateless service voor beeld wordt het aantal opgeslagen in een lokale variabele. Maar omdat dit een stateless service is, bestaat de opgeslagen waarde alleen voor de huidige levens duur van het service-exemplaar. Wanneer de service wordt verplaatst of opnieuw wordt gestart, gaat de waarde verloren.
 
 ## <a name="create-a-stateful-service"></a>Een stateful service maken
-Service Fabric introduceert een nieuw soort stateful service. Een stateful service kunt onderhouden van de status op betrouwbare wijze binnen de service zelf, CO-locatie met de code die wordt gebruikt. De status is maximaal beschikbaar gemaakt door de Service Fabric zonder de noodzaak om vast te leggen de status van een externe opslag.
+Service Fabric introduceert een nieuwe soort service die stateful is. Een stateful service kan de status op betrouw bare wijze in de service zelf onderhouden, naast de code die deze gebruikt. De status wordt Maxi maal beschikbaar gemaakt door Service Fabric zonder dat de status in een externe opslag moet worden bewaard.
 
-Als u wilt omzetten in een waarde van het prestatiemeteritem van staatloze hoge beschikbaarheid en permanente, zelfs wanneer de service worden verplaatst of opnieuw wordt opgestart, moet u een stateful service.
+Als u een item waarde wilt converteren van stateless naar Maxi maal beschikbaar en permanent, zelfs wanneer de service wordt verplaatst of opnieuw wordt opgestart, hebt u een stateful service nodig.
 
-In dezelfde map als de HelloWorld-toepassing, kunt u een nieuwe service toevoegen door het uitvoeren van de `yo azuresfjava:AddService` opdracht. Kies de 'betrouwbare Stateful Service' voor uw framework en noem de service 'HelloWorldStateful'. 
+In dezelfde map als de HelloWorld-toepassing kunt u een nieuwe service toevoegen door de `yo azuresfjava:AddService` opdracht uit te voeren. Kies de ' betrouw bare stateful service ' voor uw Framework en noem de service ' HelloWorldStateful '. 
 
-Uw toepassing heeft nu twee services: de stateless service HelloWorld en de stateful service HelloWorldStateful.
+Uw toepassing moet nu twee services hebben: de stateless service HelloWorld en de stateful service-HelloWorldStateful.
 
-Een stateful service heeft de dezelfde toegangspunten als een stateless service. Het belangrijkste verschil is de beschikbaarheid van een state-provider die de status op betrouwbare wijze kunt opslaan. Service Fabric wordt geleverd door een implementatie voor een status-provider met de naam betrouwbare verzamelingen, waarmee u structuren van gerepliceerde gegevens via de betrouwbare status Manager maken. Een stateful betrouwbare Service maakt gebruik van deze provider staat standaard.
+Een stateful service heeft dezelfde toegangs punten als een stateless service. Het belangrijkste verschil is de beschik baarheid van een State-provider die de status betrouwbaar kan opslaan. Service Fabric wordt geleverd met de implementatie van een status provider, die reliable verzamelingen wordt genoemd, waarmee u gerepliceerde gegevens structuren kunt maken met behulp van betrouw bare status Manager. Een stateful betrouw bare service maakt standaard gebruik van deze State-provider.
 
-Open HelloWorldStateful.java in **HelloWorldStateful src ->** , die de volgende RunAsync-methode bevat:
+Open HelloWorldStateful. java in **HelloWorldStateful-> src**, dat de volgende RunAsync-methode bevat:
 
 ```java
 @Override
@@ -192,23 +183,23 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()` werkt op dezelfde manier in stateful en stateless services. Echter, in een stateful service het platform extra werk uitvoert namens voordat deze wordt uitgevoerd `RunAsync()`. Deze taak kunt opnemen ervoor zorgen dat de Manager van betrouwbare status en de betrouwbare verzamelingen klaar zijn voor gebruik.
+`RunAsync()` werkt op dezelfde manier als stateful en stateless Services. In een stateful service voert het platform echter namens u extra werkzaamheden uit voordat het wordt uitgevoerd `RunAsync()`. Dit werk kan erop kunnen toezien dat de betrouw bare status Manager en de betrouw bare verzamelingen klaar zijn voor gebruik.
 
-### <a name="reliable-collections-and-the-reliable-state-manager"></a>Betrouwbare verzamelingen en de betrouwbare status Manager
+### <a name="reliable-collections-and-the-reliable-state-manager"></a>Betrouw bare verzamelingen en de betrouw bare status Manager
 ```java
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections.reliablehashmap) is een dictionary-implementatie die u gebruiken kunt om op te slaan op een betrouwbare manier staat in de service. Met Service Fabric en betrouwbare HashMaps, kunt u gegevens rechtstreeks in uw service zonder de noodzaak van een externe permanente archief opslaan. Betrouwbare HashMaps uw gegevens maximaal beschikbaar maken. Service Fabric doet dit door het maken en beheren van meerdere *replica's* van uw service voor u. Het biedt ook een API die de complexiteit van het beheer van deze replica's en hun statusovergangen volledig weggewerkt.
+[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections.reliablehashmap) is een woorden lijst-implementatie die u kunt gebruiken om de status van de service op een betrouw bare manier op te slaan. Met Service Fabric en betrouw bare HashMaps kunt u gegevens rechtstreeks in uw service opslaan zonder dat hiervoor een externe permanente opslag nodig is. Betrouw bare HashMaps maken uw gegevens Maxi maal beschikbaar. Service Fabric dit te bereiken door meerdere *replica's* van uw service voor u te maken en te beheren. Het biedt ook een API die de complexiteit van het beheer van deze replica's en hun status overgangen opstelt.
 
-Betrouwbare verzamelingen kunnen elk type zijn Java, met inbegrip van uw aangepaste typen, met enkele aanvullende opmerkingen opslaan:
+In betrouw bare verzamelingen kan elk Java-type worden opgeslagen, inclusief uw aangepaste typen, met een aantal voor behoud:
 
-* Service Fabric zorgt de status voor hoge beschikbaarheid *repliceren* status over knooppunten en betrouwbare HashMap slaat uw gegevens naar de lokale schijf op elke replica. Dit betekent dat alles die zijn opgeslagen in betrouwbare HashMaps moet worden *serialiseerbare*. 
-* Wanneer u transacties op betrouwbare HashMaps objecten gerepliceerd voor hoge beschikbaarheid. Objecten die zijn opgeslagen in betrouwbare HashMaps worden opgeslagen in lokaal geheugen in uw service. Dit betekent dat u een lokale verwijzing naar het object hebt.
+* Service Fabric maakt uw status Maxi maal beschikbaar door de status van de knoop punten te *repliceren* en betrouw bare HashMap worden uw gegevens opgeslagen op de lokale schijf van elke replica. Dit betekent dat alles dat is opgeslagen in betrouw bare HashMaps *serialiseerbaar*moet zijn. 
+* Objecten worden gerepliceerd voor hoge Beschik baarheid wanneer u trans acties doorvoert op betrouw bare HashMaps. Objecten die zijn opgeslagen in betrouw bare HashMaps, worden in het lokale geheugen in uw service bewaard. Dit betekent dat u een lokale verwijzing naar het object hebt.
   
-   Het is belangrijk dat u geen lokale exemplaren van deze objecten muteren zonder dat er een updatebewerking op de betrouwbare verzameling in een transactie. Dit is omdat wijzigingen aan lokale exemplaren van objecten wordt niet automatisch worden gerepliceerd. U moet het object opnieuw terug in de woordenlijst of gebruik een van de *bijwerken* methoden in de woordenlijst.
+   Het is belang rijk dat u geen lokale exemplaren van deze objecten mutate zonder een update-bewerking uit te voeren op de betrouw bare verzameling in een trans actie. Dit komt doordat wijzigingen in lokale exemplaren van objecten niet automatisch worden gerepliceerd. U moet het object opnieuw invoegen in de woorden lijst of een van de *Update* methoden gebruiken in de woorden lijst.
 
-De betrouwbare status Manager beheert betrouwbare HashMaps voor u. U kunt vragen de betrouwbare status Manager voor een betrouwbare verzameling met de naam op elk gewenst moment en op een willekeurige plaats in uw service. De betrouwbare status Manager zorgt ervoor dat u een verwijzing terug worden opgehaald. Wordt niet aanbevolen dat u verwijzingen naar instanties van betrouwbare verzameling in Klassenlidvariabelen of eigenschappen opslaat. Speciale aandacht moet worden uitgevoerd om ervoor te zorgen dat de verwijzing is ingesteld op een exemplaar te allen tijde in de levenscyclus van de service. De betrouwbare status Manager verwerkt dit werk voor u en geoptimaliseerd voor herhalingen bezoeken.
+De betrouw bare status beheerder beheert betrouw bare HashMaps voor u. U kunt de betrouw bare status Manager voor een betrouw bare verzameling vragen op naam op elk gewenst moment en op elke plaats in uw service. De betrouw bare status beheerder zorgt ervoor dat u een referentie back-up krijgt. Het is niet raadzaam om verwijzingen naar betrouw bare verzamelings instanties in variabelen of eigenschappen van klassen leden op te slaan. Er moet speciale aandacht worden besteed om ervoor te zorgen dat de verwijzing op elk moment in de levens cyclus van de service wordt ingesteld op een exemplaar. De betrouw bare status manager behandelt dit werk voor u en is geoptimaliseerd voor herhaalde bezoeken.
 
 
 ### <a name="transactional-and-asynchronous-operations"></a>Transactionele en asynchrone bewerkingen
@@ -229,20 +220,20 @@ return map.computeAsync(tx, "counter", (k, v) -> {
 });
 ```
 
-Bewerkingen op betrouwbare HashMaps zijn asynchroon. Dit is omdat schrijfbewerkingen met betrouwbare verzamelingen i/o-bewerkingen om te repliceren en behoud van gegevens naar schijf uitvoeren.
+Bewerkingen op betrouw bare HashMaps zijn asynchroon. Dit is omdat schrijf bewerkingen met betrouw bare verzamelingen I/O-bewerkingen uitvoeren om gegevens te repliceren en te persistent maken op schijf.
 
-Betrouwbare HashMap bewerkingen zijn *transactionele*, zodat u status consistent voor meerdere betrouwbare HashMaps en bewerkingen houden kunt. Bijvoorbeeld, kan u een werkitem ophalen uit een betrouwbare Dictionary, het uitvoeren van een bewerking op en het resultaat opslaan in een andere betrouwbare HashMap, allemaal binnen één transactie. Dit wordt behandeld als een atomische bewerking, en dit zorgt ervoor dat de gehele bewerking slaagt of de gehele bewerking wordt teruggedraaid. Als een fout optreedt nadat u het item in wachtrij, maar voordat u het resultaat opslaat, wordt de hele transactie wordt teruggedraaid en blijft het item in de wachtrij voor verwerking.
+Betrouw bare HashMap-bewerkingen zijn *Transactioneel*, zodat u de status consistent kunt blijven over meerdere betrouw bare HashMaps en bewerkingen. U kunt bijvoorbeeld een werk item van één betrouw bare woorden lijst ophalen, een bewerking uitvoeren en het resultaat opslaan in een andere betrouw bare HashMap, allemaal binnen één trans actie. Dit wordt behandeld als een Atomic-bewerking en garandeert dat de gehele bewerking slaagt of dat de hele bewerking wordt teruggedraaid. Als er een fout optreedt nadat u het item in de wachtrij hebt geplaatst, maar voordat u het resultaat opslaat, wordt de hele trans actie teruggedraaid en blijft het item in de wachtrij voor verwerking.
 
 
 ## <a name="build-the-application"></a>De toepassing bouwen
 
-De Yeoman opbouw bevat een gradle-script voor het maken van de toepassing en bash-scripts om te implementeren en verwijderen van de toepassing. Als u wilt de toepassing uitvoert, moet u eerst de toepassing met gradle bouwen:
+De Yeoman-steiger bevat een gradle-script om de toepassing en bash-scripts te bouwen om de toepassing te implementeren en te verwijderen. Als u de toepassing wilt uitvoeren, moet u eerst de toepassing bouwen met gradle:
 
 ```bash
 $ gradle
 ```
 
-Dit resulteert in een Service Fabric-toepassingspakket dat kan worden geïmplementeerd met behulp van Service Fabric-CLI.
+Dit produceert een Service Fabric toepassings pakket dat kan worden geïmplementeerd met behulp van Service Fabric CLI.
 
 ## <a name="deploy-the-application"></a>De toepassing implementeren
 
@@ -267,7 +258,7 @@ Parameters voor deze opdrachten vindt u in de gegenereerde manifesten binnen het
 Nadat de toepassing is geïmplementeerd, opent u een browser en gaat u naar [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) op [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Vouw vervolgens het knooppunt **Toepassingen** uit. U ziet dat er nu een vermelding is voor uw toepassingstype en nog een voor het eerste exemplaar van dat type.
 
 > [!IMPORTANT]
-> Voor het implementeren van de toepassing met een beveiligd Linux-cluster in Azure, moet u een certificaat voor het valideren van uw toepassing met de Service Fabric-runtime configureren. In dat geval kunt uw Reliable Services-services om te communiceren met de onderliggende Service Fabric-runtime-API's. Zie voor meer informatie, [een Reliable Services-app uit te voeren op Linux-clusters configureren](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Als u de toepassing wilt implementeren in een beveiligd Linux-cluster in azure, moet u een certificaat configureren om uw toepassing te valideren met de Service Fabric runtime. Hierdoor kunnen uw Reliable Services-services communiceren met de onderliggende Service Fabric runtime-Api's. Zie [een reliable Services-app configureren voor het uitvoeren van Linux-clusters](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)voor meer informatie.  
 >
 
 ## <a name="next-steps"></a>Volgende stappen

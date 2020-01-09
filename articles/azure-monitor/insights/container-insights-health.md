@@ -1,23 +1,14 @@
 ---
 title: Kubernetes-cluster status controleren met Azure Monitor voor containers | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de status van uw AKS-en niet-AKS-clusters kunt weer geven en analyseren met Azure Monitor voor containers.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 11/18/2019
-ms.author: magoedte
-ms.openlocfilehash: 08f7cf5a26108608aa3719085d69ec9543f4aa51
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.date: 12/01/2019
+ms.openlocfilehash: 9ee710eb916923756633e65f3287751ba9a9dde3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279640"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405085"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Informatie over de status van een AKS-cluster met Azure Monitor voor containers
 
@@ -57,12 +48,12 @@ Alle monitors worden weer gegeven in een hiërarchische indeling in het deel ven
 * Het geheugen gebruik van het knoop punt en de container evalueren.
 * De status van de peulen en knoop punten op basis van de berekening van de status gereed gerapporteerd door Kubernetes.
 
-De pictogrammen die worden gebruikt om de status aan te geven, zijn als volgt:
+Met de volgende pictogrammen wordt de status aangegeven:
 
 |Pictogram|Betekenis|  
 |--------|-----------|  
-|![Pictogram groen vinkje geeft in orde aan](./media/container-insights-health/healthyicon.png)|Geslaagd, status is OK (groen)|  
-|![Gele drie hoek en uitroep teken is waarschuwing](./media/container-insights-health/warningicon.png)|Waarschuwing (geel)|  
+|![Pictogram groen vinkje geeft In orde aan](./media/container-insights-health/healthyicon.png)|Succes, status is in orde (groen)|  
+|![Gele driehoek en uitroepteken is waarschuwing](./media/container-insights-health/warningicon.png)|Waarschuwing (geel)|  
 |![Rode knop met witte X geeft kritieke status aan](./media/container-insights-health/criticalicon.png)|Kritiek (rood)|  
 |![Pictogram lichter gekleurd](./media/container-insights-health/grayicon.png)|Onbekend (grijs)|  
 
@@ -72,13 +63,13 @@ Zie [configuratie handleiding Health Monitor](container-insights-health-monitors
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com). 
+Meld u aan bij de [Azure Portal](https://portal.azure.com). 
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>Status van een AKS-of niet-AKS-cluster weer geven
 
-Toegang tot de Azure Monitor voor de functie status van containers (preview) is rechtstreeks beschikbaar vanuit een AKS-cluster door **inzichten** te selecteren in het linkerdeel venster van de Azure Portal. Selecteer in de sectie **insightss** de optie **containers**. 
+Toegang tot de Azure Monitor voor de functie status van containers (preview) is rechtstreeks beschikbaar vanuit een AKS-cluster door **inzichten** te selecteren in het linkerdeel venster van de Azure Portal. Onder de **Insights** sectie, selecteer **Containers**. 
 
-Als u de status wilt weer geven van een niet-AKS-cluster, dat wil zeggen een AKS engine-cluster dat lokaal wordt gehost of op Azure Stack, selecteert u **Azure monitor** in het linkerdeel venster van de Azure Portal. Selecteer in de sectie **insightss** de optie **containers**.  Selecteer op de pagina met meerdere clusters het niet-AKS-cluster in de lijst.
+Als u de status wilt weer geven van een niet-AKS-cluster, dat wil zeggen een AKS engine-cluster dat lokaal wordt gehost of op Azure Stack, selecteert u **Azure monitor** in het linkerdeel venster van de Azure Portal. Onder de **Insights** sectie, selecteer **Containers**.  Selecteer op de pagina met meerdere clusters het niet-AKS-cluster in de lijst.
 
 Selecteer in Azure Monitor voor containers, op de pagina **cluster** , **status**.
 

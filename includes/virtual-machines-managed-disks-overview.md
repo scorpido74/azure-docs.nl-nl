@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 05e4dc5bc96ef654006a98f27ff4a12e924250b4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 50dd97107296c70ba9dde162b723f49a658a3994
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829025"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355890"
 ---
 ## <a name="benefits-of-managed-disks"></a>Voor delen van beheerde schijven
 
@@ -37,7 +37,7 @@ Beheerde schijven ondersteunen [Beschikbaarheidszones](../articles/availability-
 
 ### <a name="azure-backup-support"></a>Ondersteuning voor Azure Backup
 
-[Azure backup](../articles/backup/backup-overview.md) kunnen worden gebruikt om een back-uptaak te maken met back-ups op basis van tijd en het Bewaar beleid voor back-ups. Op die manier kunt u eenvoudig herstel bewerkingen voor de virtuele machine uitvoeren. Azure Backup ondersteunt het maken van back-ups en het herstellen van Managed disks. Meer [informatie](../articles/backup/backup-support-matrix-iaas.md) over ondersteuning voor Azure VM-back-ups.
+[Azure backup](../articles/backup/backup-overview.md) kunnen worden gebruikt om een back-uptaak te maken met back-ups op basis van tijd en het Bewaar beleid voor back-ups. Op die manier kunt u eenvoudig herstel bewerkingen voor de virtuele machine uitvoeren. Momenteel Azure Backup ondersteunt schijf grootten tot wel vier TiB-schijven (tebibyte).  Azure Backup ondersteunt het maken van back-ups en het herstellen van Managed disks. Meer [informatie](../articles/backup/backup-support-matrix-iaas.md) over ondersteuning voor Azure VM-back-ups.
 
 ### <a name="granular-access-control"></a>Gedetailleerd toegangs beheer
 
@@ -126,5 +126,7 @@ Azure gebruikt netwerk kanaal met prioriteit voor schijf verkeer, dat de priorit
 Raadpleeg ons [ontwerp voor high performance](../articles/virtual-machines/windows/premium-storage-performance.md) -artikel voor meer informatie over de aanbevolen procedures voor het optimaliseren van VM + schijf configuraties zodat u de gewenste prestaties kunt verzorgen
 
 ## <a name="next-steps"></a>Volgende stappen
+
+Als u wilt dat een video meer gedetailleerde informatie over Managed disks krijgt, raadpleegt u: [betere tolerantie van Azure-vm's met Managed disks](https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency).
 
 Meer informatie over de afzonderlijke schijf typen van Azure biedt, welk type geschikt is voor uw behoeften, en meer informatie over hun prestatie doelen in ons artikel op schijf typen.

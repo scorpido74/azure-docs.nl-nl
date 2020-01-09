@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 69fa9d24d24c26a7d945c27e86739475f9883b27
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 5b496523f6205532ea7a4278671e3be6986935a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200695"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355283"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center aanbevelingen gebruiken om de beveiliging te verbeteren
 U kunt de kans op een belang rijke beveiligings gebeurtenis verminderen door een beveiligings beleid te configureren en vervolgens de aanbevelingen te implementeren die door Azure Security Center worden gegeven. In dit artikel leest u hoe u beveiligings beleid en aanbevelingen in Security Center kunt gebruiken om een beveiligings aanval te verhelpen. 
@@ -63,7 +63,7 @@ Als onderdeel van hun dagelijkse bewakings activiteiten houdt Jeff zich aan bij 
 
 5. Wanneer Jeff op **Compute en apps**klikt, wordt een lijst met aanbevelingen weer geven en worden deze verwerkt op basis van de impact op de beveiligde Score.
 
-6. Jeroen heeft talloze Internet gerichte Vm's en omdat hun poorten worden weer gegeven, is het een goed moment dat een aanvaller controle kan krijgen over de servers. Jeff kiest voor gebruik (**just-in-time-VM-toegang**) [Security-Center-just-in-time.MD].
+6. Jeroen heeft talloze Internet gerichte Vm's en omdat hun poorten worden weer gegeven, is het een goed moment dat een aanvaller controle kan krijgen over de servers. Jeff kiest voor het gebruik [**van just-in-time-VM-toegang**](security-center-just-in-time.md).
 
 Jeff gaat door met de aanbevelingen met hoge prioriteit en normale prioriteit en maakt beslissingen bij de implementatie. Voor elke aanbeveling bekijkt Jeff de gedetailleerde informatie die wordt verstrekt door Security Center om te begrijpen welke resources worden beïnvloed, wat de invloed heeft op de gevolgen van de veilige Score, wat elke aanbeveling betekent en stappen voor herstel voor het oplossen van elk probleem.
 

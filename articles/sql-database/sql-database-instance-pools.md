@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 8738d1ad54d3ab63d8d2efc939aa9daacbe91c13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 98757677eae6d21b02d6b0b2a3abade453b5dfed
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810393"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552777"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Wat zijn SQL Database exemplaar groepen (preview)?
 
@@ -61,7 +61,7 @@ De volgende lijst bevat de belangrijkste gebruiks situaties waarbij exemplaar gr
 
 Exemplaar groepen hebben een vergelijk bare architectuur voor reguliere beheerde instanties (*afzonderlijke instanties*). Voor de ondersteuning van [implementaties in azure Virtual Networks (VNets)](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) en voor het afschermen en beveiligen van klanten, zijn exemplaar groepen ook gebaseerd op [virtuele clusters](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture). Virtuele clusters vertegenwoordigen een specifieke set geïsoleerde virtuele machines die zijn geïmplementeerd in het subnet van het virtuele netwerk van de klant.
 
-Het belangrijkste verschil tussen de twee implementatie modellen is dat instantie groepen meerdere implementaties van SQL Server processen toestaan op hetzelfde knoop punt van de virtuele machine, die resources best rijken met behulp van [Windows-taak objecten](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects), terwijl afzonderlijke instanties altijd op een knoop punt van een virtuele machine.
+Het belangrijkste verschil tussen de twee implementatie modellen is dat instantie groepen meerdere implementaties van SQL Server processen toestaan op hetzelfde knoop punt van de virtuele machine, die resources best rijken met behulp van [Windows-taak objecten](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects), terwijl afzonderlijke instanties altijd op een knoop punt van een virtuele machine worden uitgevoerd.
 
 In het volgende diagram ziet u een exemplaar groep en twee afzonderlijke instanties die in hetzelfde subnet zijn geïmplementeerd en worden de belangrijkste details van de architectuur voor beide implementatie modellen geïllustreerd:
 
@@ -126,7 +126,7 @@ Als u problemen ondervindt met betrekking tot de implementatie van een exemplaar
 
 Als u problemen ondervindt met betrekking tot single instances of data bases in een groep, moet u een regel matig ondersteunings ticket maken voor Azure SQL Database Managed instances.
 
-Als u grotere implementaties van beheerde exemplaren wilt maken (met of zonder exemplaar groepen), moet u mogelijk een groter regionaal quotum verkrijgen. Gebruik de [standaard Managed instance-procedure voor het aanvragen van een groter quotum](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance), maar houd er rekening mee dat als u exemplaar groepen gebruikt, het totale vCore-verbruik *op groeps niveau* wordt vergeleken met uw quotum om te bepalen of u het is toegestaan om nieuwe resources te maken zonder het quotum verder te verhogen.
+Als u grotere implementaties van beheerde exemplaren wilt maken (met of zonder exemplaar groepen), moet u mogelijk een groter regionaal quotum verkrijgen. Gebruik de [Standard Managed instance procedure voor het aanvragen van een groter quotum](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance), maar houd er rekening mee dat als u exemplaar groepen gebruikt, het totale vCore-verbruik *op groeps niveau* wordt vergeleken met uw quotum om te bepalen of u nieuwe resources mag maken zonder verder uw quotum te verg Roten.
 
 ## <a name="instance-pool-billing"></a>Facturering van exemplaar groep
 
@@ -136,7 +136,7 @@ de vCore prijs voor een pool wordt in rekening gebracht, ongeacht het aantal exe
 
 Voor de berekenings prijs (gemeten in vCores) zijn twee prijs opties beschikbaar:
 
-  1. *Inbegrepen licentie*: pas bestaande SQL Server licenties met Software Assurance toe.
+  1. *Inbegrepen licentie*: prijs van SQL-licenties is inbegrepen. Dit geldt voor de klanten die ervoor kiezen geen bestaande SQL Server licenties met Software Assurance toe te passen.
   2. *Azure Hybrid Benefit*: een gereduceerde prijs met inbegrip van Azure Hybrid Benefit voor SQL Server. Klanten kunnen zich op deze prijs aanmelden door gebruik te maken van hun bestaande SQL Server licenties met Software Assurance. Zie [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)voor Beschik baarheid en andere informatie.
 
 Het is niet mogelijk om verschillende prijs opties in te stellen voor afzonderlijke exemplaren in een pool. Alle exemplaren in de bovenliggende groep moeten de prijs van de licentie of de Azure Hybrid Benefit prijs zijn. Het licentie model voor de groep kan worden gewijzigd nadat de groep is gemaakt.

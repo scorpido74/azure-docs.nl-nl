@@ -4,36 +4,36 @@ description: Gebruik de Capaciteit en prestaties oplossing in monitor om inzicht
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 8b130b800b53afadc40e0c9b9a2b730f24da396e
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c444991166d9c7d3f1d8ed39e19e333d3c27f982
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899064"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405748"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Virtuele Hyper-V-machine capaciteit plannen met de Capaciteit en prestaties oplossing (afgeschaft)
 
-![Capaciteit en prestaties-symbool](./media/capacity-performance/capacity-solution.png)
+![Symbool van capaciteit en prestaties](./media/capacity-performance/capacity-solution.png)
 
 > [!NOTE]
-> De Capaciteit en prestaties oplossing is afgeschaft.  Klanten die de oplossing al hebben geïnstalleerd, kunnen deze blijven gebruiken, maar Capaciteit en prestaties kunnen niet worden toegevoegd aan nieuwe werk ruimten.
+> De oplossing capaciteit en prestaties is afgeschaft.  Klanten die de oplossing al hebt geïnstalleerd kunnen blijven gebruiken, maar de capaciteit en prestaties kan niet worden toegevoegd voor nieuwe werkruimten.
 
-U kunt de Capaciteit en prestaties-oplossing in monitor gebruiken om inzicht te krijgen in de capaciteit van uw Hyper-V-servers. De oplossing biedt inzicht in uw Hyper-V-omgeving door het totale gebruik (CPU, geheugen en schijf) van de hosts en de virtuele machines die worden uitgevoerd op die Hyper-V-hosts weer te geven. Metrische gegevens worden verzameld voor de CPU, het geheugen en de schijven op alle hosts en de Vm's die erop worden uitgevoerd.
+U kunt de Capaciteit en prestaties-oplossing in monitor gebruiken om inzicht te krijgen in de capaciteit van uw Hyper-V-servers. De oplossing biedt inzicht in uw Hyper-V-omgeving door u het totale gebruik (CPU, geheugen en schijfruimte) van de hosts en de virtuele machines die worden uitgevoerd op de Hyper-V-hosts weer te geven. Metrische gegevens worden verzameld voor CPU, geheugen en schijven voor alle hosts en de virtuele machines die daarop worden uitgevoerd.
 
 De oplossing:
 
--   Geeft hosts weer met het hoogste en laagste CPU-en geheugen gebruik
--   Toont Vm's met het hoogste en laagste CPU-en geheugen gebruik
--   Toont Vm's met het hoogste en laagste aantal IOPS en het gebruik van de door Voer
--   Hier ziet u welke Vm's worden uitgevoerd op welke hosts
--   Hiermee worden de belangrijkste schijven met hoge door Voer, IOPS en latentie in gedeelde cluster volumes weer gegeven
-- Hiermee kunt u aanpassen en filteren op basis van groepen
+-   Ziet u hosts met de hoogste en laagste gebruik van CPU en geheugen
+-   Virtuele machines bevat met de hoogste en laagste gebruik van CPU en geheugen
+-   Virtuele machines bevat met de hoogste en laagste gebruik van IOPS en doorvoer
+-   Geeft aan welke VM's worden uitgevoerd op welke hosts
+-   Bevat de bovenste schijven met hoge doorvoer, IOP's en latentie in gedeelde clustervolumes
+- U kunt aanpassen en filteren op basis van groepen
 
 > [!NOTE]
-> De vorige versie van de Capaciteit en prestaties oplossing met de naam capaciteits beheer vereist zowel System Center Operations Manager als System Center Virtual Machine Manager. Deze afhankelijkheden zijn niet van toepassing op deze bijgewerkte oplossing.
+> De vorige versie van de oplossing capaciteit en prestaties voor capaciteitsbeheer aangeroepen vereist zowel System Center Operations Manager en System Center Virtual Machine Manager. Deze bijgewerkte oplossing beschikt niet over de afhankelijkheden.
 
 
 ## <a name="connected-sources"></a>Verbonden bronnen
@@ -42,27 +42,27 @@ De volgende tabel beschrijft de verbonden bronnen die worden ondersteund door de
 
 | Verbonden bron | Ondersteuning | Beschrijving |
 |---|---|---|
-| [Windows-agents](../../azure-monitor/platform/agent-windows.md) | Ja | De oplossing verzamelt informatie over capaciteits-en prestatie gegevens van Windows-agents. |
-| [Linux-agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nee    | De oplossing verzamelt geen gegevens over de capaciteits-en prestatie gegevens van direct Linux-agents.|
-| [SCOM-beheer groep](../../azure-monitor/platform/om-agents.md) | Ja |De oplossing verzamelt capaciteits-en prestatie gegevens van agents in een verbonden SCOM-beheer groep. Er is geen rechtstreekse verbinding van de SCOM-agent naar Log Analytics vereist.|
-| [Azure Storage-account](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Nee | Azure Storage omvat geen capaciteits-en prestatie gegevens.|
+| [Windows-agents](../../azure-monitor/platform/agent-windows.md) | Ja | De oplossing verzamelt gegevens van de capaciteit en prestaties van Windows-agents. |
+| [Linux-agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nee    | De oplossing verzamelt geen gegevens van de capaciteit en prestaties van rechtstreekse Linux-agents.|
+| [SCOM-beheergroep](../../azure-monitor/platform/om-agents.md) | Ja |De oplossing verzamelt gegevens van capaciteit en prestaties van agents in een verbonden SCOM-beheergroep. Een directe verbinding van de SCOM-agent naar Log Analytics is niet vereist.|
+| [Azure Storage-account](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Nee | Azure storage bevat geen gegevens voor capaciteit en prestaties.|
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Windows-of Operations Manager-agents moeten worden geïnstalleerd op Windows Server 2012-of hoger Hyper-V-hosts, niet op virtuele machines.
+- Windows- of Operations Manager-agents moeten worden geïnstalleerd op Windows Server 2012 Hyper-V-hosts of hoger, geen virtuele machines.
 
 
 ## <a name="configuration"></a>Configuratie
 
-Voer de volgende stap uit om de Capaciteit en prestaties oplossing toe te voegen aan uw werk ruimte.
+Voer de volgende stap om de oplossing capaciteit en prestaties toevoegen aan uw werkruimte.
 
-- Voeg de Capaciteit en prestaties oplossing toe aan uw Log Analytics-werk ruimte met behulp van het proces beschreven in [log Analytics-oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md).
+- De oplossing capaciteit en prestaties toevoegen aan uw Log Analytics-werkruimte met behulp van de procedure beschreven in [toevoegen Log Analytics-oplossingen uit de galerie van oplossingen](../../azure-monitor/insights/solutions.md).
 
 ## <a name="management-packs"></a>Management packs
 
-Als uw SCOM-beheer groep is verbonden met uw Log Analytics-werk ruimte, worden de volgende Management Packs geïnstalleerd in SCOM wanneer u deze oplossing toevoegt. Er is geen configuratie of onderhoud van deze management packs vereist.
+Als uw SCOM-beheergroep is verbonden met uw Log Analytics-werkruimte, klikt u vervolgens de volgende management packs geïnstalleerd in SCOM wanneer u deze oplossing toevoegt. Er is geen configuratie of onderhoud van deze management packs vereist.
 
-- Micro soft. intelligence packs. CapacityPerformance
+- Microsoft.IntelligencePacks.CapacityPerformance
 
 De gebeurtenis 1201 lijkt op:
 
@@ -71,63 +71,63 @@ De gebeurtenis 1201 lijkt op:
 New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", version:"1.10.3190.0" received.
 ```
 
-Wanneer de Capaciteit en prestaties oplossing wordt bijgewerkt, wordt het versie nummer gewijzigd.
+Als u de oplossing capaciteit en prestaties is bijgewerkt, wordt het versienummer wijzigen.
 
 Zie [Operations Manager koppelen aan Log Analytics](../../azure-monitor/platform/om-agents.md) voor meer informatie over de manier waarop uw management packs voor oplossingen worden bijgewerkt.
 
 ## <a name="using-the-solution"></a>De oplossing gebruiken
 
-Wanneer u de Capaciteit en prestaties oplossing aan uw werk ruimte toevoegt, wordt de Capaciteit en prestaties toegevoegd aan het overzichts dashboard. In deze tegel wordt het aantal actieve Hyper-V-hosts en het aantal actieve virtuele machines weer gegeven dat voor de geselecteerde tijds periode is gecontroleerd.
+Wanneer u de oplossing capaciteit en prestaties voor uw werkruimte toevoegt, wordt de capaciteit en prestaties toegevoegd aan het dashboard overzicht. Deze tegel toont een telling van het aantal actieve Hyper-V-hosts en het aantal actieve virtuele machines die zijn gecontroleerd voor de periode rond geselecteerd.
 
-![Capaciteit en prestaties tegel](./media/capacity-performance/capacity-tile.png)
+![Capaciteit en prestaties van tegel](./media/capacity-performance/capacity-tile.png)
 
 
 ### <a name="review-utilization"></a>Gebruik controleren
 
-Klik op de tegel Capaciteit en prestaties om het Capaciteit en prestaties dash board te openen. Het dashboard bevat de kolommen in de volgende tabel. Elke kolom bevat maximaal tien items die overeenkomen de criteria voor het opgegeven bereik en het tijdsbereik van die kolom. U kunt een zoekactie die alle records retourneert, uitvoeren op het logboek door onderaan in de kolom te klikken op **Alles bekijken** of door te klikken op de kolomkoptekst.
+Klik op de tegel capaciteit en prestaties om de capaciteit en prestaties dashboard te openen. Het dashboard bevat de kolommen in de volgende tabel. Elke kolom bevat maximaal tien items die overeenkomen de criteria voor het opgegeven bereik en het tijdsbereik van die kolom. U kunt een zoekactie die alle records retourneert, uitvoeren op het logboek door onderaan in de kolom te klikken op **Alles bekijken** of door te klikken op de kolomkoptekst.
 
-- **Bruikgemaakt**
-    - **CPU-gebruik** van de host Toont een grafische trend van het CPU-gebruik van hostcomputers en een lijst van hosts, op basis van de geselecteerde tijds periode. Beweeg de muis aanwijzer over het lijn diagram om details weer te geven voor een specifiek punt in de tijd. Klik op de grafiek om meer details te bekijken in zoeken in Logboeken. Klik op een hostnaam om zoeken in Logboeken te openen en Details van CPU-teller weer te geven voor gehoste Vm's.
-    - **Geheugen gebruik** van de host Toont een grafische trend van het geheugen gebruik van hostcomputers en een lijst van hosts, op basis van de geselecteerde tijds periode. Beweeg de muis aanwijzer over het lijn diagram om details weer te geven voor een specifiek punt in de tijd. Klik op de grafiek om meer details te bekijken in zoeken in Logboeken. Klik op een hostnaam om zoeken in Logboeken te openen en Details van geheugen teller weer te geven voor gehoste Vm's.
+- **Hosts**
+    - **CPU-gebruik hosten** ziet u een grafische trend weergegeven van het CPU-gebruik van de hostcomputers en een lijst met hosts, op basis van de geselecteerde periode. Beweeg de muisaanwijzer over het lijndiagram om details voor een bepaald punt in tijd weer te geven. Klik op de grafiek om meer details in zoeken in logboeken weer te geven. Klik op een willekeurige hostnaam om te zoeken in Logboeken openen en weergeven van details van de teller CPU voor gehoste virtuele machines.
+    - **Geheugengebruik hosten** ziet u een grafische trend weergegeven van het geheugengebruik van hostcomputers en een lijst met hosts, op basis van de geselecteerde periode. Beweeg de muisaanwijzer over het lijndiagram om details voor een bepaald punt in tijd weer te geven. Klik op de grafiek om meer details in zoeken in logboeken weer te geven. Klik op een willekeurige hostnaam om te zoeken in Logboeken openen en weergeven van details van de teller geheugen voor de gehoste virtuele machines.
 - **Virtuele machines**
-    - **CPU-gebruik van VM** Toont een grafische trend van het CPU-gebruik van virtuele machines en een lijst met virtuele machines, op basis van de geselecteerde tijds periode. Beweeg de muis aanwijzer over het lijn diagram om details weer te geven voor een specifiek punt in de tijd voor de top 3 van virtuele machines. Klik op de grafiek om meer details te bekijken in zoeken in Logboeken. Klik op een VM-naam om zoeken in Logboeken te openen en Bekijk geaggregeerde CPU-teller Details voor de virtuele machine.
-    - **Geheugen gebruik** van de VM Toont een grafische trend van het geheugen gebruik van virtuele machines en een lijst met virtuele machines, op basis van de geselecteerde tijds periode. Beweeg de muis aanwijzer over het lijn diagram om details weer te geven voor een specifiek punt in de tijd voor de top 3 van virtuele machines. Klik op de grafiek om meer details te bekijken in zoeken in Logboeken. Klik op een VM-naam om zoeken in Logboeken te openen en de details van het geaggregeerde geheugen item voor de virtuele machine weer te geven.
-    - **Totale aantal IOPS-schijven van virtuele machine** Toont een grafische trend van de totale schijf-IOPS voor virtuele machines en een lijst met virtuele machines met de IOPS voor elke, op basis van de geselecteerde tijds periode. Beweeg de muis aanwijzer over het lijn diagram om details weer te geven voor een specifiek punt in de tijd voor de top 3 van virtuele machines. Klik op de grafiek om meer details te bekijken in zoeken in Logboeken. Klik op een VM-naam om zoeken in Logboeken te openen en Bekijk de details van de verzamelde schijf-IOPS-teller voor de virtuele machine.
-    - **Totale schijf doorvoer VM** Toont een grafische trend van de totale schijf doorvoer voor virtuele machines en een lijst met virtuele machines met de totale schijf doorvoer voor elk, op basis van de geselecteerde tijds periode. Beweeg de muis aanwijzer over het lijn diagram om details weer te geven voor een specifiek punt in de tijd voor de top 3 van virtuele machines. Klik op de grafiek om meer details te bekijken in zoeken in Logboeken. Klik op de naam van een virtuele machine om zoeken in Logboeken te openen en Bekijk de details van de totale schijf doorvoer capaciteit voor de virtuele machine.
-- **Geclusterde gedeelde volumes**
-    - **Totale door Voer** Toont de som van zowel lees-als schrijf bewerkingen op geclusterde gedeelde volumes.
-    - **Totaal aantal IOPS** Toont de som van invoer/uitvoer-bewerkingen per seconde op geclusterde gedeelde volumes.
-    - **Totale latentie** Toont de totale latentie op geclusterde gedeelde volumes.
-- **Host-dichtheid** De bovenste tegel toont het totale aantal hosts en de virtuele machines die beschikbaar zijn voor de oplossing. Klik op de bovenste tegel om meer details weer te geven in zoeken in Logboeken. Bevat ook een lijst met alle hosts en het aantal virtuele machines die worden gehost. Klik op een host om in te zoomen op de VM. Dit resulteert in een zoek opdracht in een logboek.
+    - **VM-CPU-gebruik** ziet u een grafische trend weergegeven van het CPU-gebruik van virtuele machines en een lijst van virtuele machines, op basis van de geselecteerde periode. Beweeg de muisaanwijzer over het lijndiagram om details te bekijken voor een bepaald punt in tijd voor de top 3 virtuele machines. Klik op de grafiek om meer details in zoeken in logboeken weer te geven. Klik op de naam van een virtuele machine om te zoeken in Logboeken openen en weergeven van details van de teller samengevoegde CPU voor de virtuele machine.
+    - **Geheugengebruik van de virtuele machine** ziet u een grafische trend weergegeven van het geheugengebruik van virtuele machines en een lijst van virtuele machines, op basis van de geselecteerde periode. Beweeg de muisaanwijzer over het lijndiagram om details te bekijken voor een bepaald punt in tijd voor de top 3 virtuele machines. Klik op de grafiek om meer details in zoeken in logboeken weer te geven. Klik op de naam van een virtuele machine om te zoeken in Logboeken openen en weergeven van details van de teller samengevoegde geheugen voor de virtuele machine.
+    - **Totaal aantal VM-schijf-IOPS** ziet u een grafische trend weergegeven van de totale schijf-IOPS voor virtuele machines en een lijst met virtuele machines met de IOPS voor elke, op basis van de geselecteerde periode. Beweeg de muisaanwijzer over het lijndiagram om details te bekijken voor een bepaald punt in tijd voor de top 3 virtuele machines. Klik op de grafiek om meer details in zoeken in logboeken weer te geven. Klik op de naam van een virtuele machine om te zoeken in Logboeken en weergave samengevoegde schijf-IOPS teller details voor de virtuele machine openen.
+    - **Totaal aantal schijfdoorvoer VM** ziet u een grafische trend weergegeven van de totale doorvoer per schijf voor virtuele machines en een lijst met virtuele machines met de totale doorvoer per schijf voor elk, op basis van de geselecteerde periode. Beweeg de muisaanwijzer over het lijndiagram om details te bekijken voor een bepaald punt in tijd voor de top 3 virtuele machines. Klik op de grafiek om meer details in zoeken in logboeken weer te geven. Klik op de naam van een virtuele machine om te zoeken in Logboeken openen en weergeven van details van teller doorvoer cumulatieve totale schijfruimte voor de virtuele machine.
+- **Geclusterde gedeelde Volumes**
+    - **Totale doorvoer** bevat het totaal van beide leest en schrijft op geclusterde gedeelde volumes.
+    - **Totaal aantal IOPS** bevat het totaal van invoer/uitvoer-bewerkingen per seconde op geclusterde gedeelde volumes.
+    - **Totale latentie** toont de totale latentie op geclusterde gedeelde volumes.
+- **Host dichtheid** de bovenste tegel ziet u het totale aantal hosts en virtuele machines beschikbaar zijn voor de oplossing. Klik op de bovenste tegel om extra details in zoeken in logboeken weer te geven. Bevat ook alle hosts en het aantal virtuele machines die worden gehost. Klik op een host om te zoomen op de resultaten van de virtuele machine in een zoeken in Logboeken.
 
 
-![dash board hosts-Blade](./media/capacity-performance/dashboard-hosts.png)
+![dashboard Hosts blade](./media/capacity-performance/dashboard-hosts.png)
 
-![Blade virtuele dash board-machines](./media/capacity-performance/dashboard-vms.png)
+![de blade virtuele machines in Dashboard](./media/capacity-performance/dashboard-vms.png)
 
 
 ### <a name="evaluate-performance"></a>Prestaties evalueren
 
-Productie computing omgevingen verschillen aanzienlijk van de ene organisatie naar de andere. Daarnaast kunnen de workloads voor capaciteit en prestaties afhankelijk zijn van de manier waarop uw virtuele machines worden uitgevoerd en wat u het normaal beschouwt. Specifieke procedures voor het meten van de prestaties zijn waarschijnlijk niet van toepassing op uw omgeving. Daarom is meer algemene, prescriptieve richt lijnen beter geschikt voor hulp. Micro soft publiceert een aantal voor Schriften die u kunt gebruiken om prestaties te meten.
+Productie computeromgevingen verschillen aanzienlijk van een organisatie naar een andere. Ook, capaciteit en prestaties werkbelastingen kunnen afhangen van hoe uw virtuele machines worden uitgevoerd, en wat u rekening houden met normale. Specifieke procedures om u te helpen de prestaties van de meting waarschijnlijk niet van toepassing op uw omgeving. Dus meer gegeneraliseerd prescriptieve richtlijnen is beter geschikt voor help. Microsoft publiceert een verscheidenheid aan artikelen prescriptieve richtlijnen om te meten van prestaties.
 
-Als samen vatting van de oplossing worden gegevens over capaciteit en prestaties verzameld uit verschillende bronnen, waaronder prestatie meter items. Gebruik deze capaciteits-en prestatie gegevens die in verschillende Opper vlakken in de oplossing worden gepresenteerd en Vergelijk uw resultaten met de [meet prestaties op het Hyper-V-](https://msdn.microsoft.com/library/cc768535.aspx) artikel. Hoewel het artikel enige tijd geleden is gepubliceerd, zijn de metrische gegevens, overwegingen en richt lijnen nog steeds geldig. Het artikel bevat koppelingen naar andere nuttige bronnen.
+Om samen te vatten, verzamelt de oplossing capaciteit en prestaties van gegevens uit diverse bronnen, met inbegrip van prestatiemeteritems. Gebruik van capaciteit en prestaties van gegevens die die zijn gepresenteerd in verschillende oppervlakken in de oplossing en vergelijk de resultaten die op de [meten van prestaties op Hyper-V](https://msdn.microsoft.com/library/cc768535.aspx) artikel. Hoewel het artikel kan enige tijd geleden is gepubliceerd, worden de metrische gegevens, overwegingen en richtlijnen nog geldig. Dit artikel bevat koppelingen naar andere nuttige informatiebronnen.
 
 
 ## <a name="sample-log-searches"></a>Voorbeeldzoekopdrachten in logboeken
 
-De volgende tabel bevat voor beelden van zoek opdrachten in het logboek voor de capaciteits-en prestatie gegevens die door deze oplossing worden verzameld en berekend.
+De volgende tabel bevat voorbeelden van zoekopdrachten voor capaciteit en prestaties van gegevens die worden verzameld en wordt berekend door deze oplossing.
 
 
 | Query | Beschrijving |
 |:--- |:--- |
-| Alle geheugen configuraties van host | Perf &#124; waarbij ObjectName = = "capaciteit en prestaties" and CounterName = = "host assigned Memory MB" &#124; vat = AVG (CounterValue) per INSTANCENAME |
-| Alle VM-geheugen configuraties | Perf &#124; waarbij ObjectName = = "capaciteit en prestaties" en CounterName = = "door de VM toegewezen geheugen:" &#124; totaal MB = Gem (CounterValue) per INSTANCENAME |
-| Uitsplitsing van de totale schijf-IOPS op alle Vm's | Perf &#124; waarbij ObjectName = = "capaciteit en prestaties" en (CounterName = = "VHD leesopdrachten/s" of CounterName = = "VHD writes/s") &#124; samenvat AggregatedValue = AVG (CounterValue) by bin (TimeGenerated, 1U), CounterName, INSTANCENAME |
-| Uitsplitsing van de totale door Voer van de schijf over alle Vm's | Perf &#124; waarbij ObjectName = = "capaciteit en prestaties" and (CounterName = = "VHD Read MB/s" of CounterName = = "VHD write MB/s") &#124; samenvat AggregatedValue = AVG (CounterValue) by bin (TimeGenerated, 1U), CounterName, INSTANCENAME |
-| Uitsplitsing van de totale IOPS over alle Csv's | Perf &#124; waarbij ObjectName = = "capaciteit en prestaties" en (CounterName = = "CSV lees/s" of CounterName = = "CSV writes/s") &#124; samenvat AggregatedValue = AVG (CounterValue) by bin (TimeGenerated, 1U), CounterName, INSTANCENAME |
-| Uitsplitsing van de totale door voer over alle Csv's | Perf &#124; waarbij ObjectName = = "capaciteit en prestaties" en (CounterName = = "CSV lees/s" of CounterName = = "CSV writes/s") &#124; samenvat AggregatedValue = AVG (CounterValue) by bin (TimeGenerated, 1U), CounterName, INSTANCENAME |
-| Uitsplitsing van de totale latentie over alle Csv's | Perf &#124; waarbij ObjectName = = "capaciteit en prestaties" and (CounterName = = "Lees LATENTIE van CSV" of CounterName = = "CSV-schrijf latentie") &#124; samenvat AggregatedValue = AVG (CounterValue) by bin (TimeGenerated, 1U), CounterName, INSTANCENAME |
+| Alle hostgeheugenconfiguraties | Perf &#124; waarbij ObjectName == 'Capaciteit en prestaties' en CounterName == "Host toegewezen geheugen (MB)" &#124; samenvatten MB avg(CounterValue) door InstanceName = |
+| Alle VM-geheugenconfiguraties | Perf &#124; waarbij ObjectName == 'Capaciteit en prestaties' en CounterName == "Virtuele machine toegewezen geheugen (MB)" &#124; samenvatten MB avg(CounterValue) door InstanceName = |
+| Uitsplitsing van de totale schijf-IOPS voor alle virtuele machines | Perf &#124; waarbij ObjectName == 'Capaciteit en prestaties' en (CounterName == "VHD leesbewerkingen/s" of CounterName == "VHD-schrijfbewerkingen/s") &#124; summarize AggregatedValue = avg(CounterValue) door bin (TimeGenerated, 1 uur), CounterName, InstanceName |
+| Uitsplitsing van de totale doorvoer voor schijf over alle VM 's | Perf &#124; waarbij ObjectName == 'Capaciteit en prestaties' en (CounterName == "VHD lezen MB/s" of CounterName == "VHD schrijven MB/s") &#124; summarize AggregatedValue = avg(CounterValue) door bin (TimeGenerated, 1 uur), CounterName, InstanceName |
+| Uitsplitsing van de totale IOPS over alle CSV 's | Perf &#124; waarbij ObjectName == 'Capaciteit en prestaties' en (CounterName == "CSV leesbewerkingen/s" of CounterName == "CSV-schrijfbewerkingen/s") &#124; summarize AggregatedValue = avg(CounterValue) door bin (TimeGenerated, 1 uur), CounterName, InstanceName |
+| Uitsplitsing van de totale doorvoer over alle CSV 's | Perf &#124; waarbij ObjectName == 'Capaciteit en prestaties' en (CounterName == "CSV leesbewerkingen/s" of CounterName == "CSV-schrijfbewerkingen/s") &#124; summarize AggregatedValue = avg(CounterValue) door bin (TimeGenerated, 1 uur), CounterName, InstanceName |
+| Uitsplitsing van de totale latentie over alle CSV 's | Perf &#124; waarbij ObjectName == 'Capaciteit en prestaties' en (CounterName == 'CSV lezen latentie' of CounterName == 'CSV schrijven latentie') &#124; summarize AggregatedValue = avg(CounterValue) door bin (TimeGenerated, 1 uur), CounterName, InstanceName |
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Gebruik [Zoek opdrachten in Logboeken in log Analytics](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde capaciteit en prestaties gegevens weer te geven.
+* Gebruik [zoekopdrachten in Logboeken in Log Analytics](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde gegevens voor capaciteit en prestaties te bekijken.

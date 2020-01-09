@@ -11,27 +11,32 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/19/2019
+ms.date: 12/19/2019
 ms.author: memildin
-ms.openlocfilehash: 21da7c49b158345894ee7fdc164d205bcefe1640
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 74ed55e1d460495bfa8d3d4c00bd37bb7f05260e
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663894"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552862"
 ---
-# <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Azure-gegevens-en-opslag Services beveiligen in Azure Security Center
-In dit onderwerp wordt beschreven hoe u beveiligings aanbevelingen voor gegevens en opslag resources weergeeft en implementeert. Deze aanbevelingen Azure Security Center gevonden bij het analyseren van de beveiligings status van uw Azure-resources.
+# <a name="protect-azure-data-and-storage-services"></a>Azure-gegevens-en opslag Services beveiligen
+Wanneer Azure Security Center mogelijke beveiligings problemen identificeert, worden er aanbevelingen gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden om uw resources te beschermen en te beveiligen.
+
+In dit artikel wordt de **pagina gegevens beveiliging** van de sectie resource beveiliging van Security Center beschreven.
+
+Zie [aanbevelingen voor gegevens en opslag](recommendations-reference.md#recs-datastorage)voor een volledige lijst met aanbevelingen die u op deze pagina kunt zien.
+
 
 ## <a name="view-your-data-security-information"></a>Uw gegevens beveiligings gegevens weer geven
 
 1. Klik in de sectie **beveiligings hygiëne voor bronnen** op **gegevens-en opslag resources**.
 
-    ![Gegevens & storage-resources](./media/security-center-monitoring/click-data.png)
+    ![Resources voor Gegevens en opslag](./media/security-center-monitoring/click-data.png)
 
     De pagina **gegevens beveiliging** wordt geopend met aanbevelingen voor gegevens bronnen.
 
-    ![Gegevensbronnen](./media/security-center-monitoring/sql-overview.png)
+    [![gegevens bronnen](./media/security-center-monitoring/sql-overview.png)](./media/security-center-monitoring/sql-overview.png#lightbox)
 
     Op deze pagina kunt u het volgende doen:
 
@@ -50,7 +55,7 @@ In dit onderwerp wordt beschreven hoe u beveiligings aanbevelingen voor gegevens
 
 2. Klik op een aanbeveling. De pagina aanbeveling wordt geopend en toont de herstels **tappen** voor het implementeren van de aanbeveling.
 
-   ![Herstels tappen](./media/security-center-monitoring/remediate1.png)
+   ![Herstelstappen](./media/security-center-monitoring/remediate1.png)
 
 3. Klik op **actie ondernemen**. De pagina Resource-instellingen wordt weer gegeven.
 
@@ -58,29 +63,11 @@ In dit onderwerp wordt beschreven hoe u beveiligings aanbevelingen voor gegevens
 
 4. Volg de herstels **tappen** en klik op **Opslaan**.
 
-## <a name="data-and-storage-recommendations"></a>Aanbevelingen voor gegevens en opslag
 
-|Resourcetype|Beveiligingsscore|Aanbeveling|Beschrijving|
-|----|----|----|----|
-|Storage-account|20|Beveiligde overdracht naar opslag accounts moet zijn ingeschakeld|Beveiligde overdracht is een optie die ervoor zorgt dat uw opslag account alleen aanvragen van beveiligde verbindingen (HTTPS) accepteert. HTTPS zorgt voor verificatie tussen de-server en de service en beveiligt de door Voer van gegevens via netwerklaag aanvallen, zoals man-in-the-Middle, inkomend en inkomend en sessie overname.|
-|Redis|20|Alleen beveiligde verbindingen met uw Redis Cache moeten worden ingeschakeld|Schakel alleen verbindingen via SSL naar Azure cache in voor redis. Gebruik van beveiligde verbindingen zorgt voor verificatie tussen de server en de service en beveiligt de door Voer van gegevens via netwerklaag aanvallen, zoals man-in-the-Middle, inkomend en inkomend en sessie overname.|
-|SQL|15|Transparent Data Encryption voor SQL-data bases moet zijn ingeschakeld|Schakel transparante gegevens versleuteling in om gegevens op rest te beveiligen en te voldoen aan nalevings vereisten.|
-|SQL|15|SQL Server-controle moet zijn ingeschakeld|Schakel controle in voor Azure SQL-servers. (Alleen Azure SQL-service. Bevat geen SQL die wordt uitgevoerd op uw virtuele machines.)|
-|Data Lake Analytics|5|Diagnostische logboeken in Data Lake Analytics moeten worden ingeschakeld|Logboeken inschakelen en ze tot een jaar bewaren. Zo kunt u een activiteiten spoor voor onderzoek doeleinden opnieuw maken wanneer er een beveiligings incident optreedt of uw netwerk is aangetast. |
-|Data Lake Store|5|Diagnostische logboeken in Azure Data Lake Store moeten worden ingeschakeld|Logboeken inschakelen en ze tot een jaar bewaren. Zo kunt u een activiteiten spoor voor onderzoek doeleinden opnieuw maken wanneer er een beveiligings incident optreedt of uw netwerk is aangetast. |
-|SQL|30|Beveiligings problemen voor uw SQL-data bases moeten worden hersteld|Met evaluatie van SQL-beveiligings problemen wordt uw data base gescand op beveiligings lekken en worden eventuele afwijkingen van aanbevolen procedures, zoals onjuiste configuratie, buitensporige machtigingen en onbeveiligde gevoelige gegevens, weer gegeven. Door de gevonden beveiligings problemen op te lossen, kunt u uw data base Security stature aanzienlijk verbeteren.|
-|SQL|20|Een Azure AD-beheerder voor SQL server inrichten|Richt een Azure AD-beheerder in voor uw SQL-Server om Azure AD-verificatie in te scha kelen. Met Azure AD-verificatie kunt u eenvoudig beheer van machtigingen en gecentraliseerd identiteits beheer van database gebruikers en andere micro soft-Services.|
-|Storage-account|15|Toegang tot opslag accounts met firewall-en virtuele-netwerk configuraties moet worden beperkt|Controleer onbeperkte netwerk toegang in de firewall-instellingen van uw opslag account. In plaats daarvan configureert u netwerk regels zodat alleen toepassingen van toegestane netwerken toegang hebben tot het opslag account. Als u verbindingen van specifieke internet-of on-premises clients wilt toestaan, kunt u toegang verlenen tot verkeer van specifieke Azure Virtual Networks of voor open bare IP-adresbereiken voor Internet.|
-|Storage-account|1|Opslag accounts moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources|Gebruik nieuwe Azure Resource Manager V2 voor uw opslag accounts om beveiligings uitbreidingen te bieden zoals: sterker toegangs beheer (RBAC), betere controle, implementatie en beheer op basis van Resource Manager, toegang tot beheerde identiteiten, toegang tot de sleutel kluis voor geheimen en Azure AD-gebaseerde verificatie en ondersteuning voor Tags en resource groepen voor eenvoudiger beveiligings beheer.|
+## <a name="next-steps"></a>Volgende stappen
 
-## <a name="see-also"></a>Zie ook
 Zie de volgende onderwerpen voor meer informatie over de aanbevelingen die van toepassing zijn op andere Azure-resource typen:
 
+* [Volledige referentie lijst met aanbevelingen voor de beveiliging van Azure Security Center](recommendations-reference.md)
 * [Uw machines en toepassingen beveiligen in Azure Security Center](security-center-virtual-machine-protection.md)
 * [Protecting your network in Azure Security Center](security-center-network-recommendations.md) (Uw netwerk beveiligen in Azure Security Center)
-
-Zie de volgende onderwerpen voor meer informatie over Security Center:
-
-* [Setting security policies in Azure Security Center](tutorial-security-policy.md) (Beveiligingsbeleid instellen in Azure Security Center): leer hoe u beveiligingsbeleid voor uw Azure-abonnementen en -resourcegroepen configureert.
-* [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) (Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center): ontdek hoe u beveiligingswaarschuwingen kunt beheren en erop kunt reageren.
-* [Azure Security Center FAQ](security-center-faq.md) (Veelgestelde vragen over Azure Security Center): raadpleeg veelgestelde vragen over het gebruik van de service.

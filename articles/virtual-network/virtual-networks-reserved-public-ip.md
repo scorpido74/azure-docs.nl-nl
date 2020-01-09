@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: 675e7a7b557a3f19ea4d8d4960316c3859cbb9c1
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: c1de86c1d12109853bb5d6d1aac4143caab9199f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058481"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638218"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>Gereserveerd IP adressen (klassieke implementatie)
 
@@ -28,7 +28,7 @@ ms.locfileid: "71058481"
 Als u wilt voor komen dat IP-adressen worden gewijzigd, kunt u een IP-adres reserveren. Gereserveerde Ip's kunnen alleen worden gebruikt als een VIP, zodat het IP-adres voor de Cloud service hetzelfde blijft, zelfs wanneer resources worden afgesloten of gestopt (toewijzing ongedaan gemaakt). Daarnaast kunt u bestaande dynamische IP-adressen die worden gebruikt als een VIP omzetten in een gereserveerd IP-adres.
 
 > [!IMPORTANT]
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources:  [Resource Manager en het klassieke model](../azure-resource-manager/resource-manager-deployment-model.md). Dit artikel gaat over het gebruik van het klassieke implementatiemodel. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Meer informatie over het reserveren van een statisch openbaar IP-adres met behulp van het [Resource Manager-implementatie model](virtual-network-ip-addresses-overview-arm.md).
+> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../azure-resource-manager/resource-manager-deployment-model.md). Dit artikel gaat over het gebruik van het klassieke implementatiemodel. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Meer informatie over het reserveren van een statisch openbaar IP-adres met behulp van het [Resource Manager-implementatie model](virtual-network-ip-addresses-overview-arm.md).
 
 Lees het artikel [IP-adressen](virtual-network-ip-addresses-overview-classic.md) voor meer informatie over IP-adressen in Azure.
 
@@ -41,7 +41,7 @@ Lees het artikel [IP-adressen](virtual-network-ip-addresses-overview-classic.md)
 - Kan ik een gereserveerd IP-adres voor alle Azure-Services gebruiken?
     Nee. Gereserveerde Ip's kunnen alleen worden gebruikt voor Vm's en Cloud service-exemplaar rollen die worden weer gegeven via een VIP.
 - Hoeveel gereserveerde Ip's kan ik hebben?
-    Zie het artikel Azure- [limieten](../azure-subscription-service-limits.md#networking-limits) voor meer informatie.
+    Zie het artikel Azure- [limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) voor meer informatie.
 - Worden er kosten in rekening gebracht voor gereserveerde Ip's?
     Situaties. Zie de pagina met [prijs informatie voor gereserveerd IP](https://go.microsoft.com/fwlink/?LinkID=398482) voor prijs informatie.
 - Hoe kan ik reserveert u een IP-adres?
@@ -83,7 +83,7 @@ Verwachte uitvoer:
     OperationStatus      : Succeeded
 
 >[!NOTE]
->Wanneer u een gereserveerd IP-adres met Power Shell maakt, kunt u geen resource groep opgeven om het gereserveerde IP in te maken. Azure plaatst deze in een resource groep met de naam *standaard-netwerken* automatisch. Als u het gereserveerde IP-adres maakt met behulp van de [Azure Portal](https://portal.azure.com), kunt u een resource groep opgeven die u kiest. Als u het gereserveerde IP-adres in een andere resource groep dan de *standaard netwerken* maakt, echter, wanneer u verwijst naar het gereserveerde `Remove-AzureReservedIP`IP-adres `Get-AzureReservedIP` *-groep-naam, moet u verwijzen naar de naam van de resource groep. gereserveerde IP-naam*.  Als u bijvoorbeeld een gereserveerd IP-adres met de naam *myReservedIP* in een resource groep met de naam *myResourceGroup*maakt, moet u verwijzen naar de naam van het gereserveerde IP-adres als *groep myResourceGroup myReservedIP*.   
+>Wanneer u een gereserveerd IP-adres met Power Shell maakt, kunt u geen resource groep opgeven om het gereserveerde IP in te maken. Azure plaatst deze in een resource groep met de naam *standaard-netwerken* automatisch. Als u het gereserveerde IP-adres maakt met behulp van de [Azure Portal](https://portal.azure.com), kunt u een resource groep opgeven die u kiest. Als u echter het gereserveerde IP-adres in een andere resource groep dan *standaard netwerken* maakt, moet u, wanneer u verwijst naar het gereserveerde ip-`Remove-AzureReservedIP``Get-AzureReservedIP` adres, *groeps naam gereserveerde IP-naam*, verwijzen naar de naam van de resource groep.  Als u bijvoorbeeld een gereserveerd IP-adres met de naam *myReservedIP* in een resource groep met de naam *myResourceGroup*maakt, moet u verwijzen naar de naam van het gereserveerde IP-adres als *groep myResourceGroup myReservedIP*.   
 
 
 Zodra een IP-adres is gereserveerd, blijft dit gekoppeld aan uw abonnement totdat u het verwijdert. Verwijder een gereserveerd IP-adres als volgt:
@@ -98,7 +98,7 @@ Maak een gereserveerd IP-adres uit de groep open bare IP-adressen die beschikbaa
 > [!NOTE]
 > Voor een klassieke implementatie moet u Azure Classic CLI gebruiken. Zie [de klassieke Azure-cli installeren](https://docs.microsoft.com/cli/azure/install-classic-cli?view=azure-cli-latest) voor meer informatie over het installeren van de klassieke versie van Azure.
   
- Cmd
+ Opdracht:
  
 ```azurecli
 azure network reserved-ip create <name> <location>
@@ -110,13 +110,13 @@ Voorbeeld:
 
 U kunt als volgt zien welke IP-adressen zijn gereserveerd in uw abonnement met behulp van Azure CLI: 
 
-Cmd
+Opdracht:
 ```azurecli
 azure network reserved-ip list
 ```
 Zodra een IP-adres is gereserveerd, blijft dit gekoppeld aan uw abonnement totdat u het verwijdert. Verwijder een gereserveerd IP-adres als volgt:
 
-Cmd
+Opdracht:
 
  ```azurecli
  azure network reserved-ip delete <name>
@@ -126,7 +126,7 @@ Cmd
  azure network reserved-ip delete MyReservedIP
  ```
 ## <a name="reserve-the-ip-address-of-an-existing-cloud-service"></a>Het IP-adres van een bestaande Cloud service reserveren
-U kunt het IP-adres van een bestaande Cloud service reserveren door de `-ServiceName` para meter toe te voegen. Reserveer het IP-adres van een Cloud service- *TestService* in de locatie van de *centrale VS* als volgt:
+U kunt het IP-adres van een bestaande Cloud service reserveren door de para meter `-ServiceName` toe te voegen. Reserveer het IP-adres van een Cloud service- *TestService* in de locatie van de *centrale VS* als volgt:
 
 - Azure PowerShell (klassiek) gebruiken:
 
@@ -136,7 +136,7 @@ U kunt het IP-adres van een bestaande Cloud service reserveren door de `-Service
 
 - Azure CLI gebruiken (klassiek):
   
-    Cmd
+    Opdracht:
 
     ```azurecli
      azure network reserved-ip create <name> <location> -r <service-name> -d <deployment-name>
@@ -161,7 +161,7 @@ New-AzureVMConfig -Name TestVM -InstanceSize Small -ImageName $image.ImageName `
 | New-AzureVM -ServiceName TestService -ReservedIPName MyReservedIP -Location "Central US"
 ```
 > [!NOTE]
-> Wanneer u een gereserveerd IP-adres maakt voor gebruik met een Cloud service, raadpleegt u nog steeds de virtuele machine met behulp van *VIP:&lt;poort nummer >* voor binnenkomende communicatie. Het reserveren van een IP betekent niet dat u rechtstreeks verbinding kunt maken met de virtuele machine. Het gereserveerde IP-adres wordt toegewezen aan de Cloud service waarop de virtuele machine is geïmplementeerd. Als u rechtstreeks verbinding wilt maken met een virtuele machine met een IP-adres, moet u een openbaar IP-adres op exemplaar niveau configureren. Een openbaar IP-adres op exemplaar niveau is een type openbaar IP-adres (een ILPIP) dat rechtstreeks aan uw virtuele machine wordt toegewezen. Deze kan niet worden gereserveerd. Lees het artikel [openbaar IP op exemplaarniveau (ILPIP)](virtual-networks-instance-level-public-ip.md) voor meer informatie.
+> Wanneer u een gereserveerd IP-adres maakt voor gebruik met een Cloud service, raadpleegt u nog steeds de virtuele machine met behulp van *VIP:&lt;poort nummer >* voor inkomende communicatie. Het reserveren van een IP betekent niet dat u rechtstreeks verbinding kunt maken met de virtuele machine. Het gereserveerde IP-adres wordt toegewezen aan de Cloud service waarop de virtuele machine is geïmplementeerd. Als u rechtstreeks verbinding wilt maken met een virtuele machine met een IP-adres, moet u een openbaar IP-adres op exemplaar niveau configureren. Een openbaar IP-adres op exemplaar niveau is een type openbaar IP-adres (een ILPIP) dat rechtstreeks aan uw virtuele machine wordt toegewezen. Deze kan niet worden gereserveerd. Lees het artikel [openbaar IP op exemplaarniveau (ILPIP)](virtual-networks-instance-level-public-ip.md) voor meer informatie.
 > 
 
 ## <a name="remove-a-reserved-ip-from-a-running-deployment"></a>Een gereserveerd IP-adres verwijderen uit een actieve implementatie
@@ -174,7 +174,7 @@ Remove-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName Test
 ```
 
 ### <a name="using-azure-cli-classic"></a>Azure CLI gebruiken (klassiek)
-Cmd
+Opdracht:
 
 ```azurecli
 azure network reserved-ip disassociate <name> <service-name> <deployment-name>
@@ -192,7 +192,7 @@ azure network reserved-ip disassociate MyReservedIP TestService asmtest8942
 
 Als u een gereserveerd IP-adres volledig uit een abonnement wilt verwijderen, voert u de volgende opdracht uit:
 
-Cmd
+Opdracht:
 
 ```azurecli
 azure network reserved-ip delete <name>
@@ -222,7 +222,7 @@ Set-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName TestSer
 ### <a name="using-azure-cli-classic"></a>Azure CLI gebruiken (klassiek)
 U kunt als volgt een nieuw gereserveerd IP-adres koppelen aan uw actieve Cloud service-implementatie met behulp van Azure CLI:
 
-Cmd
+Opdracht:
 ```azurecli
 azure network reserved-ip associate <name> <service-name> <deployment-name>
 ```

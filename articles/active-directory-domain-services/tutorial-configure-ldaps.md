@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 37ff89f6b837aaf0de5c195a89bb827464534d11
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a8028cf4ece79fc31969532a358cca993c7ab948
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703718"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549445"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Zelf studie: secure LDAP configureren voor een Azure Active Directory Domain Services beheerd domein
 
@@ -63,7 +63,7 @@ Het certificaat dat u wilt aanvragen of maken, moet voldoen aan de volgende vere
 
 * **Vertrouwde uitgever** : het certificaat moet worden uitgegeven door een certificerings instantie die wordt vertrouwd door computers die verbinding maken met het beheerde domein met behulp van secure LDAP. Deze instantie kan een open bare CERTIFICERINGs instantie of een bedrijfs certificerings instantie zijn die door deze computers wordt vertrouwd.
 * **Levens duur** : het certificaat moet ten minste de volgende 3-6 maanden geldig zijn. Secure LDAP toegang tot uw beheerde domein wordt verstoord wanneer het certificaat is verlopen.
-* **Onderwerpnaam** : de onderwerpnaam van het certificaat moet uw beheerde domein zijn. Als uw domein bijvoorbeeld de naam *aadds.contoso.com*heeft, moet de onderwerpnaam van het certificaat **aadds.contoso.com*zijn.
+* **Onderwerpnaam** : de onderwerpnaam van het certificaat moet uw beheerde domein zijn. Als uw domein bijvoorbeeld de naam *aadds.contoso.com*heeft, moet de onderwerpnaam van het certificaat * *. aadds.contoso.com*zijn.
     * De alternatieve naam van de DNS-naam of het onderwerp van het certificaat moet een Joker certificaat zijn om ervoor te zorgen dat de beveiligde LDAP goed werkt met de Azure AD Domain Services. Domein controllers gebruiken wille keurige namen en kunnen worden verwijderd of toegevoegd om ervoor te zorgen dat de service beschikbaar blijft.
 * **Sleutel gebruik** : het certificaat moet worden geconfigureerd voor *digitale hand tekeningen* en *sleutel codering*.
 * **Certificaat doeleinde** -het certificaat moet geldig zijn voor SSL-server authenticatie.
@@ -219,9 +219,9 @@ We gaan een regel maken om binnenkomende beveiligde LDAP-toegang via TCP-poort 6
     | Bestemming                       | Alle          |
     | Poortbereiken van doel           | 636          |
     | Protocol                          | TCP          |
-    | Bewerking                            | Toestaan        |
+    | Actie                            | Toestaan        |
     | Prioriteit                          | 401          |
-    | Naam                              | AllowLDAPS   |
+    | Name                              | AllowLDAPS   |
 
 1. Wanneer u klaar bent, selecteert u **toevoegen** om de regel op te slaan en toe te passen.
 

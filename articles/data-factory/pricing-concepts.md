@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/25/2018
-ms.openlocfilehash: c42946733ee49ed6acf2c8deadf850208e003339
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 12/27/2019
+ms.openlocfilehash: 247e41faa39520089dc5c95a34b4fb4b6b618761
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684536"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552131"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory prijzen door middel van voor beelden
 
@@ -126,13 +126,13 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
   - Pijplijn activiteit = $0,00003 (voor 1 minuut van uitvoer tijd). $0.002/uur op Azure Integration Runtime)
   - Externe pijplijn activiteit = $0,000041 (in verhouding tot 10 minuten van uitvoerings tijd. $0.00025/uur op Azure Integration Runtime)
 
-## <a name="using-mapping-data-flow-debug-for-a-normal-workday-preview-pricing"></a>Fout opsporing voor het toewijzen van gegevens stromen gebruiken voor een normale werkdag (preview-prijs)
+## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>Fout opsporing voor het toewijzen van gegevens stromen gebruiken voor een normale werkdag
 
-Als data Engineer bent u verantwoordelijk voor het ontwerpen, bouwen en testen van gegevens stromen die dagelijks worden uitgevoerd. U meldt zich in de ochtend aan bij de ADF-gebruikers interface en schakelt de foutopsporingsmodus in voor gegevens stromen. De standaard-TTL voor debug-sessies is 60 minuten. U werkt gedurende tien uur gedurende de hele dag, waardoor de foutopsporingssessie nooit verloopt. Daarom zijn uw kosten voor de dag:
+Als data Engineer bent u verantwoordelijk voor het ontwerpen, bouwen en testen van gegevens stromen die dagelijks worden uitgevoerd. U meldt zich in de ochtend aan bij de ADF-gebruikers interface en schakelt de foutopsporingsmodus in voor gegevens stromen. De standaard-TTL voor debug-sessies is 60 minuten. U werkt gedurende 8 uur op de hele dag, waardoor de foutopsporingssessie nooit verloopt. Daarom zijn uw kosten voor de dag:
 
-**10 (uur) x 8 (kern geheugens) x $0,112 = $8,96**
+**8 (uur) x 8 (door Compute geoptimaliseerde kernen) x $0,193 = $12,35**
 
-## <a name="transform-data-in-blob-store-with-mapping-data-flows-preview-pricing"></a>Gegevens in BLOB Store transformeren met toewijzings gegevens stromen (preview-prijzen)
+## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>Gegevens in BLOB Store transformeren met toewijzings gegevens stromen
 
 In dit scenario wilt u gegevens in BLOB Store visueel transformeren in ADF-toewijzings gegevens stromen op schema.
 
@@ -153,7 +153,7 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 | Pijp lijn maken | 3 entiteiten voor lezen/schrijven (1 voor het maken van pijp lijnen, 2 voor verwijzingen naar gegevensset) |
 | Pijp lijn ophalen | 1 entiteit lezen/schrijven |
 | Pijp lijn uitvoeren | 2 uitvoeringen van activiteit (1 voor uitvoering van trigger, 1 voor uitvoeringen van activiteit) |
-| Veronderstellingen voor gegevens stroom: uitvoerings tijd = 10 min + 10 min TTL | 10 \* 8 kernen van algemene Compute met TTL van 10 |
+| Veronderstellingen voor gegevens stroom: uitvoerings tijd = 10 min + 10 min TTL | 10 \* 16 kernen van de algemene Compute met TTL van 10 |
 | Bewaak pijp lijn controleren: er is slechts 1 uitvoering uitgevoerd | 2 uitgevoerde pogingen voor het controleren van records (1 voor de pijplijn uitvoering, 1 voor de uitvoering van de activiteit) |
 
 **Totaal prijs scenario: $0,3011**
@@ -161,9 +161,9 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 - Data Factory bewerkingen = **$0,0001**
   - Lezen/schrijven = 10\*00001 = $0,0001 [1 R/W = $0,50/50.000 = 0,00001]
   - Bewaking = 2\*000005 = $0,00001 [1 bewaking = $0,25/50.000 = 0,000005]
-- Pipeline-indeling &amp; Execution = **$0,301**
+- Pipeline-indeling &amp; Execution = **$1,463**
   - Uitvoeringen van activiteit = 001\*2 = 0,002 [1 run = $1/1000 = 0,001]
-  - Data flow-activiteiten = $0,299 naar verhouding van 20 minuten (10 minuten uitvoerings tijd + 10 minuten TTL). $0.112/uur op Azure Integration Runtime met een algemene reken kracht van 8 kernen
+  - Data flow-activiteiten = $1,461 naar verhouding van 20 minuten (10 minuten uitvoerings tijd + 10 minuten TTL). $0.274/uur op Azure Integration Runtime met een algemene reken kracht van 16 kernen
 
 ## <a name="next-steps"></a>Volgende stappen
 

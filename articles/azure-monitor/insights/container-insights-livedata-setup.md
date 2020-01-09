@@ -1,24 +1,14 @@
 ---
 title: Setup Azure Monitor voor containers live data (preview) | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de real-time weer gave van container Logboeken (stdout/stderr) en gebeurtenissen kunt instellen zonder kubectl te gebruiken met Azure Monitor voor containers.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/16/2019
-ms.author: magoedte
-ms.openlocfilehash: 596c5ad378d471c6c98616a48f44e96c365ee0bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5a3d020132e3c93eab7fec46d1ffe45d00b5ed43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514366"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404701"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>De functie voor live data (preview) instellen
 
@@ -26,7 +16,7 @@ Als u live data (preview) wilt weer geven met Azure Monitor voor containers uit 
 
 Deze functie ondersteunt drie verschillende methoden voor het beheren van de toegang tot de logboeken, gebeurtenissen en metrische gegevens:
 
-- AKS zonder Kubernetes RBAC-autorisatie is ingeschakeld
+- AKS zonder Kubernetes RBAC-autorisatie ingeschakeld
 - AKS ingeschakeld met Kubernetes RBAC-autorisatie
 - AKS ingeschakeld met Azure Active Directory (AD) op SAML gebaseerde eenmalige aanmelding
 
@@ -43,7 +33,7 @@ In dit artikel wordt uitgelegd hoe u verificatie configureert om de toegang tot 
 >[!NOTE]
 >Deze functie is beschikbaar in alle Azure-regio's, inclusief Azure China. Het is momenteel niet beschikbaar in de Amerikaanse overheid van Azure.
 
-## <a name="authentication-model"></a>Verificatie model
+## <a name="authentication-model"></a>Verificatiemodel
 
 De functies van live data (preview) maken gebruik van de Kubernetes-API, identiek aan het opdracht regel programma `kubectl`. In de Kubernetes API-eind punten wordt gebruikgemaakt van een zelfondertekend certificaat, dat niet kan worden gevalideerd door de browser. Deze functie maakt gebruik van een interne proxy om het certificaat te valideren met de AKS-service, zodat het verkeer wordt vertrouwd.
 
@@ -57,15 +47,15 @@ De Azure Portal vraagt u uw aanmeldings referenties voor een Azure Active Direct
 
 ## <a name="kubernetes-cluster-without-rbac-enabled"></a>Kubernetes-cluster zonder RBAC ingeschakeld
 
-Als u een Kubernetes-cluster hebt dat niet is geconfigureerd met Kubernetes RBAC-autorisatie of geïntegreerd met Azure AD, hoeft u deze stappen niet uit te voeren. Dit komt omdat u standaard beheerders machtigingen hebt in een niet-RBAC-configuratie.
+Als u een Kubernetes-cluster dat niet is geconfigureerd met Kubernetes RBAC-autorisatie of geïntegreerd met Azure AD eenmalige aanmelding hebt, hoeft u niet aan de volgende stappen. Dit komt omdat u standaard beheerders machtigingen hebt in een niet-RBAC-configuratie.
 
 ## <a name="configure-kubernetes-rbac-authentication"></a>RBAC-verificatie Kubernetes configureren
 
 Wanneer u de RBAC-autorisatie Kubernetes inschakelt, worden er twee gebruikers gebruikt: **clusterUser** en **clusterAdmin** om toegang te krijgen tot de Kubernetes-API. Dit is vergelijkbaar met het uitvoeren van `az aks get-credentials -n {cluster_name} -g {rg_name}` zonder de optie beheer. Dit betekent dat de **clusterUser** toegang moet krijgen tot de eind punten in de KUBERNETES-API.
 
-De volgende voorbeeld stappen laten zien hoe u de binding van een cluster functie configureert vanuit deze yaml-configuratie sjabloon.
+Het volgende voorbeeld wordt laten zien hoe het configureren van cluster rol binding met deze sjabloon yaml-configuratie.
 
-1. Kopieer en plak het yaml-bestand en sla het op als LogReaderRBAC. yaml.  
+1. Kopieer en plak het yaml-bestand en sla deze op als LogReaderRBAC.yaml.  
 
     ```
     apiVersion: rbac.authorization.k8s.io/v1 
@@ -127,7 +117,7 @@ Raadpleeg de [Kubernetes-documentatie](https://kubernetes.io/docs/reference/acce
 4. Nadat u de omleidings-Url's hebt geregistreerd, selecteert u onder **Geavanceerde instellingen**de opties **toegangs tokens** en **-id-tokens** en slaat u de wijzigingen op.
 
 >[!NOTE]
->Het configureren van verificatie met Azure Active Directory voor eenmalige aanmelding kan alleen worden uitgevoerd tijdens de eerste implementatie van een nieuw AKS-cluster. U kunt eenmalige aanmelding niet configureren voor een AKS-cluster dat al is geïmplementeerd.
+>Het configureren van verificatie met Azure Active Directory voor eenmalige aanmelding kan alleen worden uitgevoerd tijdens de eerste implementatie van een nieuw AKS-cluster. U kunt eenmalige aanmelding niet configureren op voor een AKS-cluster die al zijn geïmplementeerd.
   
 >[!IMPORTANT]
 >Als u Azure AD voor gebruikers verificatie opnieuw hebt geconfigureerd met behulp van de bijgewerkte URI, wist u de cache van uw browser om te controleren of het bijgewerkte verificatie token is gedownload en toegepast.

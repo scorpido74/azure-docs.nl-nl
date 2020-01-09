@@ -2,24 +2,17 @@
 title: Quickstart voor Azure-app-configuratie met Azure Functions | Microsoft Docs
 description: Een quickstart voor het gebruik van Azure-app-configuratie met Azure Functions.
 services: azure-app-configuration
-documentationcenter: ''
 author: yegu-ms
-manager: balans
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: Azure Functions
-ms.workload: tbd
-ms.date: 02/24/2019
+ms.date: 12/17/2019
 ms.author: yegu
-ms.openlocfilehash: 6329cf0e74bbcf57164afeab5b04e2af4ee43943
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 3c8dc27b9d7781a8420fa76e5aeac9637b87c569
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186193"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75413764"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Snelstartgids: een Azure Functions-app maken met Azure-app configuratie
 
@@ -49,7 +42,7 @@ In deze Snelstartgids neemt u de Azure-app Configuration-service op in een Azure
 
 ## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
 
-1. Klik met de rechter muisknop op het project en selecteer **NuGet-pakketten beheren**. Zoek op het tabblad **Bladeren** de volgende NuGet-pakketten aan uw project en voeg deze toe. Als u deze niet kunt vinden, schakelt u het selectie vakje **include Prerelease** in.
+1. Klik met de rechter muisknop op het project en selecteer **NuGet-pakketten beheren**. Zoek op het tabblad **Bladeren** naar de volgende NuGet-pakketten en voeg deze toe aan uw project. Als u deze niet kunt vinden, schakelt u het selectie vakje **include Prerelease** in.
 
     ```
     Microsoft.Extensions.Configuration.AzureAppConfiguration 2.1.0-preview-010380001-1099 or later
@@ -61,7 +54,7 @@ In deze Snelstartgids neemt u de Azure-app Configuration-service op in een Azure
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
-3. Voeg een `static` eigenschap `Configuration` toe om een singleton-exemplaar van `IConfiguration`te maken. Voeg vervolgens een `static`-constructor toe om verbinding te maken met de app-configuratie door `AddAzureAppConfiguration()`aan te roepen. Hiermee wordt de configuratie eenmaal geladen bij het opstarten van de toepassing. Hetzelfde configuratie-exemplaar wordt later gebruikt voor alle functions-aanroepen.
+3. Voeg een `static` eigenschap met de naam `Configuration` toe om een singleton-exemplaar van `IConfiguration`te maken. Voeg vervolgens een `static`-constructor toe om verbinding te maken met de app-configuratie door `AddAzureAppConfiguration()`aan te roepen. Hiermee wordt de configuratie eenmaal geladen bij het opstarten van de toepassing. Hetzelfde configuratie-exemplaar wordt later gebruikt voor alle functions-aanroepen.
 
     ```csharp
     private static IConfiguration Configuration { set; get; }
@@ -94,17 +87,19 @@ In deze Snelstartgids neemt u de Azure-app Configuration-service op in een Azure
 
 1. Stel een omgevings variabele met de naam **Connections Tring**in en stel deze in op de toegangs sleutel voor uw app-configuratie archief. Als u de Windows-opdracht prompt gebruikt, voert u de volgende opdracht uit en start u de opdracht prompt zodat de wijziging kan worden doorgevoerd:
 
+    ```CLI
         setx ConnectionString "connection-string-of-your-app-configuration-store"
-
+    ```
     Als u Windows Power shell gebruikt, voert u de volgende opdracht uit:
 
+    ```azurepowershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
-
+    ```
     Als u macOS of Linux gebruikt, voert u de volgende opdracht uit:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. Druk op F5 om de functie testen. Accepteer desgevraagd de aanvraag van Visual Studio om **Azure Functions Core-hulpprogramma's (CLI)** te downloaden en installeren. Mogelijk moet u ook een firewall-uitzonde ring inschakelen, zodat de hulpprogram ma's HTTP-aanvragen kunnen afhandelen.
+2. Druk op F5 om de functie te testen. Accepteer desgevraagd de aanvraag van Visual Studio om **Azure Functions Core-hulpprogramma's (CLI)** te downloaden en installeren. Mogelijk moet u ook een firewall-uitzonde ring inschakelen, zodat de hulpprogram ma's HTTP-aanvragen kunnen afhandelen.
 
 3. Kopieer de URL van uw functie vanuit de uitvoer van de Azure Functions-runtime.
 

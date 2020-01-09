@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 24d601dc2116b7daf315bb3c6f20c4dc0b6f6ce5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
-ms.translationtype: MT
+ms.openlocfilehash: d75f12953c0ec767dba8a49b3ed76c176223b30c
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72382047"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613887"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Controle lijst voor prestaties en schaal baarheid voor Blob Storage
 
@@ -25,7 +25,7 @@ Azure Storage heeft schaal baarheid en prestatie doelen voor capaciteit, transac
 
 In dit artikel worden bewezen procedures voor het uitvoeren van prestaties in een controle lijst georganiseerd die u kunt volgen tijdens het ontwikkelen van uw Blob Storage-toepassing.
 
-| Klaar | Category | Ontwerp overweging |
+| Klaar | Category | Ontwerpoverwegingen |
 | --- | --- | --- |
 | &nbsp; |Schaalbaarheids doelen |[Kunt u uw toepassing zo ontwerpen dat deze niet meer dan het maximale aantal opslag accounts gebruikt?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Schaalbaarheids doelen |[Vermijdt u benadering van capaciteits-en transactie limieten?](#capacity-and-transaction-targets) |
@@ -52,13 +52,13 @@ In dit artikel worden bewezen procedures voor het uitvoeren van prestaties in ee
 | &nbsp; |Meta gegevens gebruiken |[Slaat u veelgebruikte meta gegevens over blobs op in hun meta gegevens?](#use-metadata) |
 | &nbsp; |Snel uploaden |[Als u probeert een BLOB snel te uploaden, kunt u blokken parallel uploaden?](#upload-one-large-blob-quickly) |
 | &nbsp; |Snel uploaden |[Kunt u blobs parallel uploaden wanneer u een groot aantal blobs wilt uploaden?](#upload-many-blobs-quickly) |
-| &nbsp; |BLOB-type |[Gebruikt u pagina-blobs of blok-blobs wanneer dit van toepassing is?](#choose-the-correct-type-of-blob) |
+| &nbsp; |Blob-type |[Gebruikt u pagina-blobs of blok-blobs wanneer dit van toepassing is?](#choose-the-correct-type-of-blob) |
 
 ## <a name="scalability-targets"></a>Schaalbaarheids doelen
 
 Als uw toepassing een van de schaalbaarheids doelen benadert of overschrijdt, kunnen er meer trans acties of beperkingen optreden. Wanneer Azure Storage uw toepassing beperkt, begint de service met het retour neren van 503 (server bezet) of 500 (time-out voor bewerking). Als u deze fouten vermijdt door binnen de grenzen van de schaalbaarheids doelen te blijven, is een belang rijk onderdeel van het verbeteren van de prestaties van uw toepassing.
 
-Zie [Azure Storage schaal baarheid en prestatie doelen](/azure/storage/common/storage-scalability-targets?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets)voor meer informatie over de schaalbaarheids doelen voor de Queue-service.
+Zie [Azure Storage schaal baarheid en prestatie doelen](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage)voor meer informatie over de schaalbaarheids doelen voor de Queue-service.
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maximum aantal opslag accounts
 
@@ -99,7 +99,7 @@ Meer informatie over hoe Azure Storage uw BLOB-gegevens partitioneert, is handig
 
 Blob-opslag maakt gebruik van een partitie schema op basis van bereik voor schalen en taak verdeling. Elke BLOB heeft een partitie sleutel die bestaat uit de volledige naam van de BLOB (account + container + blob). De partitie sleutel wordt gebruikt voor het partitioneren van BLOB-gegevens in bereiken. De bereiken worden vervolgens gelijkmatig verdeeld over de Blob-opslag.
 
-Partitioneren op basis van een bereik houdt in dat naamgevings regels die gebruikmaken van lexicale ordening (bijvoorbeeld *mypayroll*, *myperformance*, *myemployees*enzovoort) of tijds tempels (*log20160101*, *log20160102*, *log20160102* , etc.) zullen waarschijnlijker zijn dat de partities die zich op dezelfde partitie server bevinden, worden uitgevoerd. , totdat meer belasting nodig is, moeten ze worden opgesplitst in kleinere bereiken. Door co-locaties op dezelfde partitie server te plaatsen, verbetert u de prestaties, zodat een belang rijk onderdeel van de prestatie verbetering de naam blobs biedt op een manier die ze het meest effectief organiseert.
+Partitioneren op basis van een bereik houdt in dat naam conventies die gebruikmaken van lexicale ordening (bijvoorbeeld *mypayroll*, *myperformance*, *myemployees*, enzovoort) of tijds tempels (*log20160101*, *log20160102*, *log20160102*enzovoort), meer zullen leiden tot de partities die zich op dezelfde partitie server bevinden. , totdat meer belasting nodig is, moeten ze worden opgesplitst in kleinere bereiken. Door co-locaties op dezelfde partitie server te plaatsen, verbetert u de prestaties, zodat een belang rijk onderdeel van de prestatie verbetering de naam blobs biedt op een manier die ze het meest effectief organiseert.
 
 Alle blobs in een container kunnen bijvoorbeeld worden bediend door één server totdat de belasting voor deze blobs verdere herverdeling van de partitielay-bereiken vereist. Op dezelfde manier kan een groep met zeer bewaarde accounts met hun namen die zijn gerangschikt in lexicale volg orde worden bediend door één server totdat de belasting van een of meer van deze accounts moet worden verdeeld over meerdere partitie servers.
 
@@ -236,13 +236,13 @@ Azure Storage biedt een aantal oplossingen voor het kopiëren en verplaatsen van
 
 ### <a name="blob-copy-apis"></a>BLOB Copy-Api's
 
-Als u blobs wilt kopiëren tussen opslag accounts, gebruikt u de bewerking [blok keren vanaf URL](/rest/api/storageservices/put-block-from-url) . Met deze bewerking worden gegevens synchroon gekopieerd van een URL-bron naar een blok-blob. Het gebruik van de bewerking `Put Block from URL` kan de vereiste band breedte aanzienlijk verminderen wanneer u gegevens migreert tussen opslag accounts. Omdat de Kopieer bewerking plaatsvindt aan de kant van de service, hoeft u de gegevens niet te downloaden en opnieuw te uploaden.
+Als u blobs wilt kopiëren tussen opslag accounts, gebruikt u de bewerking [blok keren vanaf URL](/rest/api/storageservices/put-block-from-url) . Met deze bewerking worden gegevens synchroon gekopieerd van een URL-bron naar een blok-blob. Het gebruik van de `Put Block from URL` bewerking kan de vereiste band breedte aanzienlijk verminderen wanneer u gegevens migreert tussen opslag accounts. Omdat de Kopieer bewerking plaatsvindt aan de kant van de service, hoeft u de gegevens niet te downloaden en opnieuw te uploaden.
 
 Als u gegevens wilt kopiëren binnen hetzelfde opslag account, gebruikt u de bewerking [BLOB kopiëren](/rest/api/storageservices/Copy-Blob) . Het kopiëren van gegevens binnen hetzelfde opslag account wordt meestal snel voltooid.  
 
 ### <a name="use-azcopy"></a>AzCopy gebruiken
 
-Het AzCopy-opdracht regel programma is een eenvoudige en efficiënte optie voor bulk overdracht van blobs naar, van en tussen opslag accounts. AzCopy is geoptimaliseerd voor dit scenario en kan hoge overdrachts snelheden bezorgen. AzCopy versie 10 maakt gebruik van de `Put Block From URL`-bewerking om BLOB-gegevens over opslag accounts te kopiëren. Zie voor meer informatie [kopiëren of verplaatsen van gegevens naar Azure Storage met behulp van AzCopy V10 toevoegen](/azure/storage/common/storage-use-azcopy-v10).  
+Het AzCopy-opdracht regel programma is een eenvoudige en efficiënte optie voor bulk overdracht van blobs naar, van en tussen opslag accounts. AzCopy is geoptimaliseerd voor dit scenario en kan hoge overdrachts snelheden bezorgen. AzCopy versie 10 maakt gebruik van de `Put Block From URL` bewerking om BLOB-gegevens over opslag accounts te kopiëren. Zie voor meer informatie [kopiëren of verplaatsen van gegevens naar Azure Storage met behulp van AzCopy V10 toevoegen](/azure/storage/common/storage-use-azcopy-v10).  
 
 ### <a name="use-azure-data-box"></a>Azure Data Box gebruiken
 
@@ -285,5 +285,5 @@ Pagina-blobs zijn geschikt als de toepassing wille keurige schrijf bewerkingen o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Storage schaalbaarheids-en prestatie doelen voor opslag accounts](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Schaalbaarheid en de prestatiedoelen van Azure Storage voor opslagaccounts](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [Status en fout codes](/rest/api/storageservices/Status-and-Error-Codes2)

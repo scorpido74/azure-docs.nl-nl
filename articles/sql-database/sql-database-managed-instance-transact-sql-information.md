@@ -8,15 +8,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab, bonova
-ms.date: 11/04/2019
+ms.reviewer: sstein, carlrab, bonova, danil
+ms.date: 12/30/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: e517b6030aa1c9549e33c00425851afae90aac42
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 7319bb680e449a27fbe6f48c831d87d9c7b5ba4f
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707645"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552743"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>T-SQL-verschillen, beperkingen en bekende problemen met beheerde exemplaren
 
@@ -48,7 +48,7 @@ Op deze pagina worden ook [tijdelijke bekende problemen](#Issues) beschreven die
 - [BESCHIKBAARHEIDS GROEP NEERZETTEN](/sql/t-sql/statements/drop-availability-group-transact-sql)
 - De [set HADR](/sql/t-sql/statements/alter-database-transact-sql-set-hadr) -component van de instructie [ALTER data base](/sql/t-sql/statements/alter-database-transact-sql)
 
-### <a name="backup"></a>Backup
+### <a name="backup"></a>Back-up
 
 Beheerde exemplaren hebben automatische back-ups, zodat gebruikers volledige data bases kunnen maken `COPY_ONLY` back-ups. Differentiële back-ups, logboek bestanden en moment opnamen van bestands momentopnamen worden niet ondersteund.
 
@@ -191,7 +191,7 @@ Een beheerd exemplaar heeft geen toegang tot bestanden, zodat er geen cryptograf
 - De [buffergroepuitbreiding](/sql/database-engine/configure-windows/buffer-pool-extension) wordt niet ondersteund.
 - `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` wordt niet ondersteund. Zie [ALTER Server Configuration](/sql/t-sql/statements/alter-server-configuration-transact-sql).
 
-### <a name="collation"></a>Sortering
+### <a name="collation"></a>Serverconfiguratie
 
 De standaard sortering van exemplaren is `SQL_Latin1_General_CP1_CI_AS` en kan worden opgegeven als een aanmaak parameter. Zie [sorteringen](/sql/t-sql/statements/collations).
 
@@ -299,7 +299,7 @@ Zie [ALTER data base](/sql/t-sql/statements/alter-database-transact-sql-file-and
 
 De volgende functies van de SQL-Agent worden momenteel niet ondersteund:
 
-- Proxy's
+- Proxy’s
 - Taken plannen voor een niet-actieve CPU
 - Een agent in-of uitschakelen
 - Waarschuwingen
@@ -406,41 +406,12 @@ Externe tabellen die verwijzen naar de bestanden in HDFS of Azure Blob Storage, 
 - De typen moment opname en bidirectionele replicatie worden ondersteund. Samenvoeg replicatie, peer-to-peer-replicatie en bij te werken abonnementen worden niet ondersteund.
 - [Transactionele replicatie](sql-database-managed-instance-transactional-replication.md) is beschikbaar voor open bare preview op een beheerd exemplaar met enkele beperkingen:
     - Alle typen replicatie deelnemers (uitgever, distributeur, pull-abonnee en push-abonnee) kunnen worden geplaatst op beheerde exemplaren, maar de uitgever en de Distributor moeten zowel in de Cloud als in beide on-premises zijn.
-    - Beheerde instanties kunnen communiceren met de recente versies van SQL Server. Zie de ondersteunde versies [hier](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems).
+    - Beheerde instanties kunnen communiceren met de recente versies van SQL Server. Zie de [matrix ondersteunde versies](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems) voor meer informatie.
     - Transactionele replicatie heeft enkele [extra netwerk vereisten](sql-database-managed-instance-transactional-replication.md#requirements).
 
-Zie de [zelf studie over replicatie](replication-with-sql-database-managed-instance.md)voor meer informatie over het configureren van replicatie.
-
-
-Als replicatie is ingeschakeld voor een data base in een [failovergroep](sql-database-auto-failover-group.md), moet de beheerder van het beheerde exemplaar alle publicaties opschonen op de oude primaire en opnieuw configureren op de nieuwe primaire versie nadat een failover is uitgevoerd. In dit scenario zijn de volgende activiteiten nodig:
-
-1. Stop alle replicatie taken die worden uitgevoerd op de data base, indien aanwezig.
-2. Voer het volgende script uit op de Publisher-data base om de meta gegevens van uw abonnement uit Publisher te verwijderen:
-
-   ```sql
-   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
-   ```             
- 
-1. De meta gegevens van het abonnement op de abonnee weghalen. Voer het volgende script uit in de abonnementen database op het exemplaar van de abonnee:
-
-   ```sql
-   EXEC sp_subscription_cleanup
-      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.windows.net>', 
-      @publisher_db = N'<publisher database>', 
-      @publication = N'<name of publication>'; 
-   ```                
-
-1. Haal alle replicatie objecten geforceerd van Publisher door het volgende script uit te voeren in de gepubliceerde Data Base:
-
-   ```sql
-   EXEC sp_removedbreplication
-   ```
-
-1. De oude Distributor geforceerd verwijderen van de oorspronkelijke primaire instantie (als er een failover wordt uitgevoerd naar een oud primair exemplaar dat is gebruikt voor een distributeur). Voer het volgende script uit op de hoofd database in het oude beheerde exemplaar van de distributie server:
-
-   ```sql
-   EXEC sp_dropdistributor 1,1
-   ```
+Zie de volgende zelf studies voor meer informatie over het configureren van transactionele replicatie:
+- [Replicatie tussen een MI-Publisher en een abonnee](replication-with-sql-database-managed-instance.md)
+- [Replicatie tussen een MI-Uitgever, een MI-distributeur en een SQL Server abonnee](sql-database-managed-instance-configure-replication-tutorial.md)
 
 ### <a name="restore-statement"></a>Instructie Restore 
 
@@ -500,7 +471,7 @@ Service Broker met meerdere exemplaren wordt niet ondersteund:
   - `filestream_access_level`
   - `remote data archive`
   - `remote proc trans`
-- `sp_execute_external_scripts` wordt niet ondersteund. Zie [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
+- `sp_execute_external_scripts` wordt niet ondersteund. See [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
 - `xp_cmdshell` wordt niet ondersteund. Zie [xp_cmdshell](/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
 - `Extended stored procedures` worden niet ondersteund, waaronder `sp_addextendedproc` en `sp_dropextendedproc`. Zie [uitgebreide opgeslagen procedures](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
 - `sp_attach_db`, `sp_attach_single_file_db`en `sp_detach_db` worden niet ondersteund. Zie [sp_attach_db](/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)en [sp_detach_db](/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
@@ -535,11 +506,55 @@ De volgende variabelen, functies en weer gaven retour neren verschillende result
 
 De maximale bestands grootte van `tempdb` kan niet groter zijn dan 24 GB per kern op een Algemeen laag. De maximale `tempdb` grootte op een Bedrijfskritiek laag wordt beperkt door de opslag grootte van het exemplaar. `Tempdb` de grootte van het logboek bestand is beperkt tot 120 GB op Algemeen laag. Sommige query's retour neren mogelijk een fout als deze meer dan 24 GB per kern in `tempdb` nodig heeft of als er meer dan 120 GB aan logboek gegevens worden geproduceerd.
 
+### <a name="msdb"></a>MSDB
+
+De volgende MSDB-schema's in het beheerde exemplaar moeten het eigendom zijn van hun respectieve vooraf gedefinieerde rollen:
+
+- Algemene rollen
+  - TargetServersRole
+- [Vaste database rollen](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+  - SQLAgentUserRole
+  - SQLAgentReaderRole
+  - SQLAgentOperatorRole
+- [DatabaseMail rollen](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
+  - DatabaseMailUserRole
+- [Integratie Services-rollen](https://docs.microsoft.com/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
+  - db_ssisadmin
+  - db_ssisltduser
+  - db_ssisoperator
+  
+> [!IMPORTANT]
+> Het wijzigen van de namen van de vooraf gedefinieerde rollen, schema namen en schema-eigen aren door klanten is van invloed op de normale werking van de service. Eventuele wijzigingen die u aanbrengt, worden teruggedraaid naar de vooraf gedefinieerde waarden zodra deze zijn gedetecteerd, of bij de volgende service-update, om een normale service bewerking te garanderen.
+
 ### <a name="error-logs"></a>Foutenlogboeken
 
 Een beheerd exemplaar plaatst uitgebreide informatie in fouten Logboeken. Er zijn veel interne systeem gebeurtenissen vastgelegd in het fouten logboek. Gebruik een aangepaste procedure om fout logboeken te lezen die een aantal irrelevante vermeldingen filteren. Zie voor meer informatie [Managed instance-sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) of [Managed instance extension (preview)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) voor Azure Data Studio.
 
-## <a name="Issues"></a>Bekende problemen
+## <a name="Issues"></a> Bekende problemen
+
+### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL-Agent rollen hebben expliciete uitvoerings machtigingen nodig voor niet-sysadmin-aanmeldingen
+
+**Datum:** Dec 2019
+
+Als niet-sysadmin-aanmeldingen worden toegevoegd aan een van de [vaste database rollen van SQL-Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles), bestaat er een probleem met de expliciete uitvoer machtigingen die moeten worden verleend aan de opgeslagen hoofd procedures voor deze aanmeldingen. Als dit probleem wordt aangetroffen, wordt het fout bericht ' de machtiging voor uitvoeren is geweigerd op het object < object_name > (Microsoft SQL Server, fout: 229) ' weer gegeven.
+
+**Tijdelijke oplossing**: wanneer u aanmeldingen toevoegt aan een van de vaste database rollen van SQL-Agent: SQLAgentUserRole, SQLAgentReaderRole of SQLAgentOperatorRole, voert u het onderstaande T-SQL-script uit om uitvoerings machtigingen expliciet toe te kennen aan de vermelde opgeslagen procedures voor elk van de aanmeldingen die zijn toegevoegd aan deze rollen.
+
+```tsql
+USE [master]
+GO
+CREATE USER [login_name] FOR LOGIN [login_name]
+GO
+GRANT EXECUTE ON master.dbo.xp_sqlagent_enum_jobs TO [login_name]
+GRANT EXECUTE ON master.dbo.xp_sqlagent_is_starting TO [login_name]
+GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
+```
+
+### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>SQL-Agent taken kunnen worden onderbroken door agent proces opnieuw te starten
+
+**Datum:** Dec 2019
+
+Elke keer dat de taak wordt gestart, maakt SQL Agent een nieuwe sessie, waardoor het geheugen verbruik geleidelijk toeneemt. Om te voor komen dat de interne geheugen limiet voor het uitvoeren van geplande taken wordt geblokkeerd, wordt het agent proces opnieuw opgestart zodra het geheugen verbruik de drempel waarde bereikt. Dit kan leiden tot een onderbreking van de uitvoering van taken die worden uitgevoerd op het moment dat de computer opnieuw wordt opgestart.
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>In-Memory OLTP-geheugen limieten worden niet toegepast
 
@@ -623,7 +638,7 @@ De `tempdb` data base is altijd gesplitst in 12 gegevens bestanden en de bestand
 
 Elk Algemeen Managed instance heeft tot 35 TB aan opslag ruimte gereserveerd voor Azure Premium. Elk database bestand wordt geplaatst op een afzonderlijke fysieke schijf. Schijf grootten kunnen 128 GB, 256 GB, 512 GB, 1 TB of 4 TB zijn. Voor ongebruikte ruimte op de schijf worden geen kosten in rekening gebracht, maar de totale som van Azure Premium-schijf grootten mag niet groter zijn dan 35 TB. In sommige gevallen kan een beheerd exemplaar dat niet 8 TB in totaal nodig heeft, de Azure-limiet van 35 TB overschrijden bij de opslag grootte vanwege interne fragmentatie.
 
-Een Algemeen Managed instance kan bijvoorbeeld één groot bestand hebben dat 1,2 TB groot is voor een schijf van 4 TB. Er kunnen ook 248-bestanden zijn met een grootte van 1 GB die wordt geplaatst op afzonderlijke 128 GB-schijven. In dit voor beeld:
+Een Algemeen Managed instance kan bijvoorbeeld één groot bestand hebben dat 1,2 TB groot is voor een schijf van 4 TB. Er kunnen ook 248-bestanden zijn met een grootte van 1 GB die wordt geplaatst op afzonderlijke 128 GB-schijven. In dit voorbeeld:
 
 - De totale toegewezen schijf ruimte is 1 x 4 TB + 248 x 128 GB = 35 TB.
 - De totale gereserveerde ruimte voor data bases op het exemplaar is 1 x 1,2 TB + 248 x 1 GB = 1,4 TB.

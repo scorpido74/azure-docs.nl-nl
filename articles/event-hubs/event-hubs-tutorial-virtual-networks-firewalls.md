@@ -1,22 +1,22 @@
 ---
-title: 'Zelfstudie: Integratie van virtuele netwerken en firewalls inschakelen in Event Hubs | Microsoft Docs'
+title: Azure Event Hubs-integratie van virtuele netwerken en firewalls inschakelen
 description: In deze zelfstudie leert u hoe u Event Hubs integreert met virtuele netwerken en Firewalls om toegang te beveiligen.
 services: event-hubs
 author: axisc
 manager: darosa
 ms.author: aschhab
-ms.date: 11/28/2018
+ms.date: 12/20/2019
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: mvc
-ms.openlocfilehash: 0f7c7e348c154aab1deb10273346a5395599b745
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: f911a1513c6f89180ea51cc0de96dc8a475c7fc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605864"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437110"
 ---
-# <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>Zelfstudie: Integratie van virtuele netwerken en firewalls inschakelen in Event Hubs-naamruimte
+# <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>Zelf studie: integratie van virtuele netwerken en firewalls op Event Hubs naam ruimte inschakelen
 
 Met [service-eindpunten van Virtual Network (VNet)](../virtual-network/virtual-network-service-endpoints-overview.md) kunt u de privé-adresruimte van uw virtuele netwerk en de identiteit van uw VNet uitbreiden naar Azure-services, via een directe verbinding. Met eindpunten kunt u uw kritieke Azure-serviceresources alleen beveiligen naar uw virtuele netwerken. Verkeer van uw VNet naar de Azure-service blijft altijd in het Microsoft Azure-backbonenetwerk.
 
@@ -53,7 +53,7 @@ We maken gebruik van een bestaande Event Hubs-naamruimte, dus zorg ervoor dat u 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Ga eerst naar de [Azure-portal][Azure portal] en meld u aan met uw Azure-abonnement.
+Ga eerst naar de [Azure Portal][Azure portal] en meld u aan met uw Azure-abonnement.
 
 ## <a name="select-event-hubs-namespace"></a>Event Hubs-naamruimte selecteren
 

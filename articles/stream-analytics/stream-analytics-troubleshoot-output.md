@@ -1,7 +1,6 @@
 ---
-title: Azure Stream Analytics-uitvoer oplossen
-description: Dit artikel wordt beschreven technieken voor het oplossen van de uitvoer-verbindingen in Azure Stream Analytics-taken.
-services: stream-analytics
+title: Problemen met Azure Stream Analytics uitvoer oplossen
+description: In dit artikel worden technieken beschreven voor het oplossen van problemen met uw uitvoer verbindingen in Azure Stream Analytics taken.
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -9,45 +8,45 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: a07ac40ad3adda486b5216e83d683e00ec93265d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 65d01c5c4dd852cb424c75f170ce52156f1633cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620797"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354108"
 ---
-# <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics-uitvoer oplossen
+# <a name="troubleshoot-azure-stream-analytics-outputs"></a>Problemen met Azure Stream Analytics uitvoer oplossen
 
-Deze pagina worden veelvoorkomende problemen met verbindingen van de uitvoer en het oplossen van problemen en los deze beschreven.
+Op deze pagina worden veelvoorkomende problemen met uitvoer verbindingen beschreven en wordt uitgelegd hoe u deze problemen oplost en verhelpt.
 
-## <a name="output-not-produced-by-job"></a>Uitvoer niet geproduceerd door de taak 
-1.  Controleer de verbinding met de uitvoer met behulp van de **testverbinding** knop voor elke uitvoer.
+## <a name="output-not-produced-by-job"></a>Uitvoer niet geproduceerd door taak 
+1.  Controleer de verbinding met uitvoer met behulp van de knop **verbinding testen** voor elke uitvoer.
 
-2.  Bekijk [ **metrische bewakingsgegevens** ](stream-analytics-monitoring.md) op de **Monitor** tabblad. Omdat de waarden worden samengevoegd, worden de metrische gegevens die door een paar minuten vertraagd.
-    - Als Invoergebeurtenissen > 0, de taak is niet lezen van invoergegevens. Als Invoergebeurtenissen niet > 0 is, klikt u vervolgens:
-      - Als u wilt zien of de gegevensbron geldige gegevens bevat, controleren met behulp van [Service Bus Explorer](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a). Deze controle is van toepassing als de taak van Event Hub als invoer gebruikmaakt.
-      - Controleer of de gegevens serialisatie-indeling en gegevenscodering zijn zoals verwacht.
-      - Als de taak een Event Hub gebruikt wordt, controleert u of de hoofdtekst van het bericht is *Null*.
+2.  Bekijk de [**metrische gegevens voor bewaking**](stream-analytics-monitoring.md) op het tabblad **monitor** . Omdat de waarden worden geaggregeerd, worden de metrische gegevens een paar minuten uitgesteld.
+    - Als invoer gebeurtenissen > 0, kan de taak invoer gegevens lezen. Als de invoer gebeurtenissen niet > 0, geldt het volgende:
+      - Als u wilt zien of de gegevens bron geldige gegevens bevat, controleert u deze met behulp van [Service Bus Explorer](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a). Deze controle is van toepassing als Event hub als invoer wordt gebruikt voor de taak.
+      - Controleer of de indeling van de gegevensserialisatie en de gegevens codering zoals verwacht worden weer gegeven.
+      - Als voor de taak een event hub wordt gebruikt, controleert u of de hoofd tekst van het bericht *Null*is.
       
-    - Als Gegevensconversiefouten > 0 en stijgt, kan het volgende waar zijn:
-      - De uitvoergebeurtenis komt niet overeen met het schema van de doel-sink. 
-      - Het gebeurtenissenschema mogelijk niet overeen met het opgegeven of verwachte schema van de gebeurtenissen in de query.
-      - De gegevenstypen van sommige velden in de gebeurtenis mogelijk niet overeen met de verwachtingen.
+    - Als gegevens conversie fouten > 0 en klimmen, kan het volgende waar zijn:
+      - De uitvoer gebeurtenis komt niet overeen met het schema van de doel-sink. 
+      - Het gebeurtenis schema komt mogelijk niet overeen met het gedefinieerde of verwachte schema van de gebeurtenissen in de query.
+      - De gegevens typen van sommige velden in de gebeurtenis komen mogelijk niet overeen met verwachtingen.
       
-    - Als runtimefouten > 0, betekent dit dat de taak de gegevens kan worden ontvangen maar fouten tijdens het verwerken van de query wordt gegenereerd.
-      - Als u de fouten zoekt, gaat u naar de [auditlogboeken](../azure-resource-manager/resource-group-audit.md) en filtert u op *mislukt* status.
+    - Als runtime-fouten > 0, betekent dit dat de taak de gegevens kan ontvangen, maar fouten genereert tijdens het verwerken van de query.
+      - Als u de fouten wilt vinden, gaat u naar de [controle logboeken](../azure-resource-manager/resource-group-audit.md) en filtert u op *mislukte* status.
       
-    - Als invoergebeurtenissen groter is dan > 0 en Uitvoergebeurtenissen = 0, betekent dit dat een van de volgende geldt:
+    - Als InputEvents > 0 en OutputEvents = 0, betekent dit dat een van de volgende voor waarden waar is:
       - Het verwerken van de query heeft geen uitvoergebeurtenissen opgeleverd.
-      - Gebeurtenissen of de bijbehorende velden is mogelijk onjuist, wat resulteert in een lege uitvoer na verwerking van query's.
-      - De taak is kan geen gegevens naar het uitvoereindpunt worden verplaatst om connectiviteit of verificatie redenen pushen.
+      - Gebeurtenissen of velden kunnen een onjuiste indeling hebben, wat resulteert in nul uitvoer na het verwerken van query's.
+      - De taak kan geen gegevens naar de uitvoer Sink pushen om connectiviteits-of verificatie redenen.
       
-    - In alle hierboven genoemde foutgevallen bewerkingenlogbestandberichten extra details gegeven (waaronder wat er gebeurt), behalve in gevallen waarbij de querylogica alle gebeurtenissen gefilterd. Als de verwerking van meerdere gebeurtenissen fouten genereert, registreert Stream Analytics de eerste drie foutberichten van hetzelfde type binnen 10 minuten Operations-Logboeken. Vervolgens onderdrukt andere identieke fouten met een bericht dat wordt gelezen "Fouten plaatsvinden te snel, dat deze worden onderdrukt."
+    - In alle eerder genoemde fout gevallen verklaren de berichten in het operations-logboek aanvullende informatie (inclusief wat er gebeurt), behalve in gevallen waarin de query logica alle gebeurtenissen heeft gefilterd. Als er fouten worden gegenereerd door het verwerken van meerdere gebeurtenissen, worden de eerste drie fout berichten van hetzelfde type in Stream Analytics geregistreerd binnen tien minuten aan de bewerkings Logboeken. Vervolgens worden er meer identieke fouten onderdrukt met een bericht met de melding dat fouten te snel optreden, deze worden onderdrukt.
     
-## <a name="job-output-is-delayed"></a>Taakuitvoer is vertraagd
+## <a name="job-output-is-delayed"></a>Taak uitvoer is vertraagd
 
 ### <a name="first-output-is-delayed"></a>Eerste uitvoer is vertraagd
-Wanneer een Stream Analytics-taak wordt gestart, wordt de invoer gebeurtenissen worden gelezen, maar kan er een vertraging in de uitvoer wordt geproduceerd in bepaalde omstandigheden.
+Wanneer een Stream Analytics-taak wordt gestart, worden de invoergebeurtenissen gelezen, maar kan er in bepaalde omstandigheden een vertraging zijn in de uitvoer die wordt geproduceerd.
 
 Grote tijdwaarden in tijdelijke query-elementen kunnen bijdragen aan de uitvoer vertraging. Juiste uitvoer produceren via de grote tijdvensters, de streaming-taak wordt gestart met het lezen van gegevens van de meest recente tijdstip mogelijke (maximaal zeven dagen geleden) om op te vullen van het tijdvenster. Gedurende die tijd, wordt geen uitvoer geproduceerd totdat de achterstallige lezen van de openstaande invoer gebeurtenissen voltooid is. Dit probleem kan het oppervlak wanneer het systeem de streaming taken, dus de taak opnieuw starten wordt bijgewerkt. Dergelijke upgrades optreden in het algemeen eenmaal elke aantal maanden. 
 
@@ -77,7 +76,7 @@ Tijdens normale werking van de taak als u van de taak uitvoer valt achter (lange
 
 Als u wilt zien van de gegevens, in de Azure-portal, selecteert u de streaming-taak en selecteer de **taakdiagram**. Voor elke invoer, is er een per partitie achterstand gebeurtenis metrisch gegeven. Als de achterstand gebeurtenis metrische gegevens stijgen blijft, is dit een indicatie dat de systeemresources die zijn beperkt. Mogelijk die het gevolg is van uitvoer-sink beperking of intensief CPU. Zie voor meer informatie over het gebruik van het taakdiagram [gegevensgestuurde foutopsporing met behulp van het taakdiagram](stream-analytics-job-diagram-with-metrics.md).
 
-## <a name="key-violation-warning-with-azure-sql-database-output"></a>Waarschuwing voor schending van de sleutel met Azure SQL Database-uitvoer
+## <a name="key-violation-warning-with-azure-sql-database-output"></a>Waarschuwing voor sleutel schending bij Azure SQL Database uitvoer
 
 Als u Azure SQL-database als uitvoer naar een Stream Analytics-taak configureert, voegt het bulksgewijs records in de doeltabel. In het algemeen, Azure stream analytics garandeert [ten minste één keer levering](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) naar het uitvoereindpunt worden verplaatst, een kunt nog steeds [precies bereiken-bezorging]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) om SQL uitvoer wanneer SQL-tabel heeft een unique-beperking gedefinieerd. 
 
@@ -91,11 +90,11 @@ Houd rekening met de volgende opmerkingen bij het configureren van IGNORE_DUP_KE
 * U kunt de optie IGNORE_DUP_KEY voor een unieke index, die verschilt van de primaire sleutel/UNIQUE-beperking en gemaakt met behulp van de definitie van CREATE INDEX of INDEX met behulp van ALTER INDEX instellen.  
 * Ignore_dup_key niet van toepassing op de columnstore-indexen omdat uniekheid op dergelijke indexen kunnen niet worden afgedwongen.  
 
-## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>De namen van kolommen zijn lager indeling door Azure Stream Analytics
-Wanneer u het oorspronkelijke compatibiliteitsniveau (1.0), wordt Azure Stream Analytics gebruikt om te wijzigen van kolomnamen in kleine letters. Dit probleem is opgelost in latere compatibiliteitsniveaus. Als u wilt behouden in het geval is, maar we adviseren klanten om te verplaatsen naar het compatibiliteitsniveau 1.1 en hoger. U kunt meer informatie vinden op [compatibiliteitsniveau voor Azure Stream Analytics-taken](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level).
+## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>Kolom namen worden in kleine letters door Azure Stream Analytics
+Wanneer u het oorspronkelijke compatibiliteits niveau (1,0) gebruikt, wordt Azure Stream Analytics gebruikt om kolom namen te wijzigen in kleine letters. Dit gedrag is in latere compatibiliteits niveaus verholpen. Om het probleem op te slaan, raden we klanten aan om over te stappen op compatibiliteits niveau 1,1 en hoger. U kunt meer informatie vinden over het [compatibiliteits niveau voor Azure stream Analytics taken](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level).
 
 
-## <a name="get-help"></a>Help opvragen
+## <a name="get-help"></a>Hulp krijgen
 
 Voor verdere ondersteuning kunt u proberen onze [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 

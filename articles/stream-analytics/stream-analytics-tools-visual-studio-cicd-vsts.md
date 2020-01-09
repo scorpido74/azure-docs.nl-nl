@@ -1,7 +1,6 @@
 ---
 title: Azure Stream Analytics-taken implementeren met CI/CD en Azure DevOps
 description: In dit artikel wordt beschreven hoe u een Stream Analytics-taak met CI/CD implementeert met behulp van Azure DevOps Services.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7810cf9950d919469c4b47053a878518726f4393
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d9360ff64206cdce208f9643cf8ca86515aaeb7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925068"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354438"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Zelfstudie: Een Azure Stream Analytics-taak met CI/CD implementeren met behulp van Azure Pipelines
 This tutorial descriIn deze zelfstudie wordt beschreven hoe u continue integratie en implementatie instelt voor een Azure Stream Analytics-taak met behulp van Azure Pipelines. 
@@ -118,7 +117,7 @@ Open een webbrowser en navigeer naar het project dat u zojuist hebt gemaakt in [
     |**Instelling**  |**Voorgestelde waarde**  |
     |---------|---------|
     |Abonnement  |  Kies uw abonnement.   |
-    |Bewerking  |  Resourcegroep maken of bijwerken   |
+    |Actie  |  Resourcegroep maken of bijwerken   |
     |Resourcegroep  |  Voer een resourcegroepnaam in.   |
     |Sjabloon  | [Uw oplossingspad] \bin\Debug\Deploy\\[Naam van uw project]. JobTemplate.json   |
     |Sjabloonparameters  | [Uw oplossingspad] \bin\Debug\Deploy\\[Naam van uw project].JobTemplate.parameters.json   |

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8a4e4cb8330f6b02d721f2228fee17a91cd44499
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 8db9eb81efdc367e312649948c9eb1a9eee0532f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70078360"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638031"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver
 
@@ -33,8 +33,8 @@ ms.locfileid: "70078360"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [sap-high-availability-architecture-scenarios]:sap-high-availability-architecture-scenarios.md
 [sap-high-availability-guide-wsfc-shared-disk]:sap-high-availability-guide-wsfc-shared-disk.md
@@ -170,7 +170,7 @@ ms.locfileid: "70078360"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -196,8 +196,8 @@ In deze reeks artikelen komen de volgende onderwerpen aan bod:
     > We raden u ten zeerste aan het Azure Resource Manager-implementatie model voor uw SAP-installaties te gebruiken. Het biedt veel voor delen die niet beschikbaar zijn in het klassieke implementatie model. Lees hier meer over [implementatiemodellen][virtual-machines-azure-resource-manager-architecture-benefits-arm] van Azure.   
     >
 * Hoge Beschik baarheid van SAP op:
-  * ![Windows ][Logo_Windows]  **Windows**, met behulp van **WSFC (Windows Server failover cluster)**
-  * ![Linux ][Logo_Linux] **Linux**met behulp van **Linux-cluster raamwerk**
+  * Windows-][Logo_Windows]**windows**![met behulp van **WSFC (Windows Server failover cluster)**
+  * ![Linux][Logo_Linux] **Linux**met behulp van **Linux Cluster Framework**
 
 In deze artikelen leert u hoe u Single Point of Failure-onderdelen (SPOF), zoals SAP Central Services (ASCS/SCS) en database beheersystemen (DBMS) kunt beveiligen. Ook leest u meer over redundante onderdelen in azure, zoals SAP Application Server.
 
@@ -209,7 +209,7 @@ In deze artikelen leert u hoe u Single Point of Failure-onderdelen (SPOF), zoals
 
 * [Azure Virtual Machines-architectuur met hoge Beschik baarheid en scenario's voor SAP NetWeaver][sap-high-availability-architecture-scenarios]
 
-Het artikel behandelt zowel ![Windows ][Logo_Windows] **Windows** als ![Linux ][Logo_Linux] **Linux**.
+In dit artikel worden zowel ![Windows][Logo_Windows] **Windows** als ![Linux][Logo_Linux] **Linux**beschreven.
 
 
 ## <a name="azure-infrastructure-preparation-for-sap-netweaver-high-availability-deployment"></a>Azure-infrastructuur voorbereiding voor een implementatie met hoge Beschik baarheid voor SAP NetWeaver
@@ -218,17 +218,17 @@ Het artikel behandelt zowel ![Windows ][Logo_Windows] **Windows** als ![Linux ][
 
 **Bijgewerkt:** 2019 maart
 
-* ![Windows ][Logo_Windows] [Azure-infra structuur voorbereiden voor SAP-hoge Beschik baarheid met behulp van een Windows-failovercluster en een **gedeelde schijf** voor SAP ASCS/SCS-instanties][sap-high-availability-infrastructure-wsfc-shared-disk]
+* ![Windows][Logo_Windows] [Azure-infra structuur voorbereiden voor SAP hoge Beschik baarheid met behulp van een Windows-failovercluster en een **gedeelde schijf** voor SAP ASCS/SCS-instanties][sap-high-availability-infrastructure-wsfc-shared-disk]
 
-* ![Windows ][Logo_Windows] [Azure-infra structuur voorbereiden voor SAP-hoge Beschik baarheid met behulp van een Windows-failovercluster en een **Bestands share** voor SAP ASCS/SCS-instanties][sap-high-availability-infrastructure-wsfc-file-share]
+* ![Windows][Logo_Windows] [Azure-infra structuur voorbereiden voor SAP hoge Beschik baarheid met behulp van een Windows-failovercluster en een **Bestands share** voor SAP ASCS/SCS-instanties][sap-high-availability-infrastructure-wsfc-file-share]
 
-* ![Linux ][Logo_Linux] [Azure-infra structuur voorbereiden voor SAP-hoge Beschik baarheid met behulp van een SuSE Linux Enterprise Server Cluster Framework voor SAP ASCS/SCS-instanties][sap-suse-ascs-ha-setting-ha-nfs]
+* ![Linux][Logo_Linux] [Azure-infra structuur voorbereiden voor SAP hoge Beschik baarheid met behulp van een SuSE Linux Enterprise Server Cluster Framework voor SAP ASCS/SCS-instanties][sap-suse-ascs-ha-setting-ha-nfs]
 
-* ![Linux ][Logo_Linux] [Azure-infra structuur voorbereiden voor SAP-hoge Beschik baarheid met behulp van een SuSE Linux Enterprise Server Cluster Framework voor SAP ASCS/SCS-instanties met Azure NetApp-bestanden][sap-suse-ascs-ha-setting-ha-anf]
+* ![Linux][Logo_Linux] [Azure-infra structuur voor SAP-hoge Beschik baarheid voorbereiden met behulp van een SuSE Linux Enterprise Server Cluster Framework voor SAP ASCS/SCS-instanties met Azure NetApp-bestanden][sap-suse-ascs-ha-setting-ha-anf]
 
-* ![RHEL ][Logo_Linux] [Azure-infra structuur voorbereiden voor SAP ASCS/SCS-hoge Beschik baarheid-glusterfs instellen op RHEL][high-availability-guide-rhel-glusterfs]
+* ![RHEL][Logo_Linux] [Azure-infra structuur voorbereiden voor SAP ASCS/SCS hoge Beschik baarheid-glusterfs instellen op RHEL][high-availability-guide-rhel-glusterfs]
 
-* ![RHEL ][Logo_Linux] [Azure-infra structuur voorbereiden voor SAP ASCS/SCS-hoge Beschik baarheid-pacemaker instellen op RHEL][high-availability-guide-rhel-pacemaker]
+* ![RHEL][Logo_Linux] [Azure-infra structuur voorbereiden voor SAP ASCS/SCS hoge Beschik baarheid-pacemaker instellen op RHEL][high-availability-guide-rhel-pacemaker]
 
 ## <a name="installation-of-an-sap-netweaver-high-availability-system-in-azure"></a>Installatie van een SAP NetWeaver-systeem met hoge Beschik baarheid in azure
 
@@ -236,15 +236,15 @@ Het artikel behandelt zowel ![Windows ][Logo_Windows] **Windows** als ![Linux ][
 
 **Bijgewerkt:** 2019 maart
 
-* ![Windows ][Logo_Windows] [de SAP NetWeaver hoge Beschik baarheid installeren met behulp van een Windows-failovercluster en een **gedeelde schijf** voor SAP ASCS/SCS-instanties][sap-high-availability-installation-wsfc-shared-disk]
+* ![Windows][Logo_Windows] [de SAP NetWeaver hoge Beschik baarheid installeren met behulp van een Windows-failovercluster en een **gedeelde schijf** voor SAP ASCS/SCS-instanties][sap-high-availability-installation-wsfc-shared-disk]
 
-* ![Windows ][Logo_Windows] [de SAP NetWeaver hoge Beschik baarheid installeren met behulp van een Windows-failovercluster en een **Bestands share** voor SAP ASCS/SCS-instanties][sap-high-availability-installation-wsfc-file-share]
+* ![Windows][Logo_Windows] [de SAP NetWeaver hoge Beschik baarheid installeren met behulp van een Windows-failovercluster en een **Bestands share** voor SAP ASCS/SCS-instanties][sap-high-availability-installation-wsfc-file-share]
 
-* ![Linux ][Logo_Linux] [de SAP NetWeaver hoge Beschik baarheid installeren met behulp van een SuSE Linux Enterprise Server Cluster Framework voor SAP ASCS/SCS-instanties][sap-suse-ascs-ha-sap-installation]
+* ![Linux][Logo_Linux] [de SAP NetWeaver hoge Beschik baarheid installeren met behulp van een SuSE Linux Enterprise Server Cluster Framework voor SAP ASCS/SCS-instanties][sap-suse-ascs-ha-sap-installation]
 
-* ![Linux ][Logo_Linux] [de SAP NetWeaver hoge Beschik baarheid installeren door gebruik te maken van een SuSE Linux Enterprise Server Cluster Framework voor SAP ASCS/SCS-instanties met Azure NetApp files][sap-suse-ascs-ha-sap-installation-anf]
+* ![Linux][Logo_Linux] [de SAP NetWeaver hoge Beschik baarheid installeren met behulp van een SuSE Linux Enterprise Server Cluster Framework voor SAP ASCS/SCS-instanties met Azure NetApp files][sap-suse-ascs-ha-sap-installation-anf]
 
-* ![RHEL ][Logo_Linux] de [installatie van SAP NetWeaver ASCS/SCS in een configuratie met hoge Beschik baarheid op RHEL][sap-rhel-ascs-ha]
+* ![RHEL][Logo_Linux] de [installatie van SAP NetWeaver ASCS/SCS in een configuratie met hoge Beschik baarheid op RHEL][sap-rhel-ascs-ha]
 
-* ![RHEL ][Logo_Linux] de [installatie van SAP NetWeaver ASCS/SCS in een configuratie met hoge Beschik baarheid op RHEL met Azure NetApp files][sap-rhel-ascs-ha-sap-installation-anf]
+* ![RHEL][Logo_Linux] de [installatie van SAP NetWeaver ASCS/SCS in een configuratie met hoge Beschik baarheid op RHEL met Azure NetApp files][sap-rhel-ascs-ha-sap-installation-anf]
 

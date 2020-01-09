@@ -6,17 +6,16 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: 274a20f84b978b38a284d1feb315d6621b7d3ccd
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8e25b3408482d9be9cb870df338ba0e53af52507
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256151"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75414321"
 ---
 # <a name="cluster-tuning"></a>Cluster afstemmen
 
-
-De meeste vFXT-clusters kunnen profiteren van aangepaste instellingen voor prestaties. Deze instellingen helpen het cluster optimaal te laten werken met uw specifieke werk stroom, gegevensset en hulpprogram ma's. 
+De meeste vFXT-clusters kunnen profiteren van aangepaste instellingen voor prestaties. Deze instellingen helpen het cluster optimaal te laten werken met uw specifieke werk stroom, gegevensset en hulpprogram ma's.
 
 Deze aanpassing moet worden uitgevoerd naast een ondersteunings medewerker, omdat hiervoor doorgaans functies moeten worden geconfigureerd die niet beschikbaar zijn via het configuratie scherm van AVERE.
 
@@ -34,9 +33,9 @@ In deze sectie wordt een deel van de aangepaste tuning beschreven die kan worden
 
 Deze wijzigingen kunnen worden aanbevolen op basis van de kenmerken van de gegevensset of de stijl van de werk stroom.
 
-* Als de werk belasting write-Heavy is, verg root u de grootte van de schrijf cache van de standaard waarde van 20%. 
-* Als de gegevensset veel kleine bestanden omvat, verhoogt u de limiet voor het aantal bestanden van de cluster cache. 
-* Als voor het werk het kopiëren of verplaatsen van gegevens tussen twee opslag plaatsen is vereist, past u het aantal threads aan dat wordt gebruikt voor het verplaatsen van gegevens: 
+* Als de werk belasting write-Heavy is, verg root u de grootte van de schrijf cache van de standaard waarde van 20%.
+* Als de gegevensset veel kleine bestanden omvat, verhoogt u de limiet voor het aantal bestanden van de cluster cache.
+* Als voor het werk het kopiëren of verplaatsen van gegevens tussen twee opslag plaatsen is vereist, past u het aantal threads aan dat wordt gebruikt voor het verplaatsen van gegevens:
   * Als u de snelheid wilt verhogen, kunt u het aantal gebruikte parallelle threads verhogen.
   * Als het opslag volume van de back-end overbelast wordt, moet u mogelijk het aantal gebruikte parallelle threads verlagen.
 * Als het cluster gegevens in de cache opslaat voor een kern bestand die gebruikmaakt van NFSv4 Acl's, schakelt u in cache opslaan in de toegangs modus in om bestands autorisatie voor bepaalde clients te stroom lijnen.
@@ -58,4 +57,4 @@ In een scenario met een hoofdletter gevoelig scenario of een WAN-optimalisatie v
 
 ## <a name="help-optimizing-your-avere-vfxt-for-azure"></a>Help uw avere vFXT voor Azure te optimaliseren
 
-Gebruik de procedure die wordt beschreven in [hulp vragen aan uw systeem](avere-vfxt-open-ticket.md) om contact op te nemen met de ondersteunings medewerkers over deze optimalisaties. 
+Gebruik de procedure die wordt beschreven in [hulp vragen aan uw systeem](avere-vfxt-open-ticket.md) om contact op te nemen met de ondersteunings medewerkers over deze optimalisaties.

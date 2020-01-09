@@ -1,6 +1,6 @@
 ---
 title: Nieuwe agent configuratie voor het inrichten van de Cloud Azure AD Connect
-description: In dit onderwerp wordt beschreven hoe u Cloud inrichting installeert.
+description: In dit artikel wordt beschreven hoe u Cloud inrichting installeert.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,74 +11,83 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f08a1359cfd8a2793d92315a6b03567b0b3f847d
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 853950cf441007eac0170f32f28f2d9c16a71292
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997119"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549428"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-new-configuration"></a>Nieuwe configuratie voor het inrichten van Cloud Azure AD Connect
+# <a name="azure-ad-connect-cloud-provisioning-new-agent-configuration"></a>Nieuwe agent configuratie voor het inrichten van de Cloud Azure AD Connect
 
-Nadat u de agent hebt geïnstalleerd, moet u zich aanmelden bij de Azure Portal en inrichten configureren.  Gebruik de volgende stappen om de agent in te scha kelen.
+Nadat u de agent hebt geïnstalleerd, moet u zich aanmelden bij de Azure Portal en Azure Active Directory (Azure AD) Connect Cloud Provisioning configureren. Volg deze stappen om de agent in te scha kelen.
 
 ## <a name="configure-provisioning"></a>Inrichting configureren
-Als u inrichting wilt configureren, gebruikt u de volgende stappen:
+Volg deze stappen voor het configureren van de inrichting.
 
-1.  Klik in de Azure AD-Portal op **Azure Active Directory**
-2.  Klik op **Azure AD Connect**
-3.  Selecteer **inrichtings beheer (preview)** 
-![](media/how-to-configure/manage1.png)
+1.  Selecteer in de Azure-portal **Azure Active Directory**.
+1.  Selecteer **Azure AD Connect**.
+1.  Selecteer **inrichting beheren (preview)** .
 
-4.  Klik op **nieuwe configuratie**.
-5.  Op het scherm configuratie is het on-premises domein vooraf ingevuld
-6. Voer een **e-mail melding**in. Deze e-mail wordt gewaarschuwd wanneer het inrichten niet in orde is.  
-8. Verplaats de selector om deze in te **scha kelen** en klik op **Opslaan**.
-![](media/tutorial-single-forest/configure2.png)
+    ![Inrichting beheren (preview-versie)](media/how-to-configure/manage1.png)
 
-## <a name="scoping-provisioning-to-specific-users-and-groups"></a>Scopeing inrichten voor specifieke gebruikers en groepen
-Als u de agent wilt bereiken om alleen specifieke gebruikers en groepen te synchroniseren, kunt u dit doen. U kunt bereiken met behulp van on-premises AD-groepen of organisatie-eenheden. U kunt geen groepen en organisatie-eenheden configureren binnen een configuratie. 
+1.  Selecteer **nieuwe configuratie**.
+1.  Op het scherm configuratie is het on-premises domein vooraf ingevuld.
+1.  Voer een **e-mail melding**in. Deze e-mail wordt gewaarschuwd wanneer het inrichten niet in orde is.
+1.  Verplaats de selector om deze in te **scha kelen**en selecteer **Opslaan**.
 
-1.  Klik in de Azure AD-Portal op **Azure Active Directory**
-2.  Klik op **Azure AD Connect**
-3.  Selecteer **inrichting beheren (preview-versie)**
-4.  Klik onder **configuratie** op uw configuratie.  
-![](media/how-to-configure/scope1.png)
+    ![Azure AD-inrichting (preview-versie)](media/tutorial-single-forest/configure2.png)
 
-5.  Selecteer onder **configureren** **alle gebruikers** om het bereik van de configuratie regel te wijzigen.
-![](media/how-to-configure/scope2.png)
+## <a name="scope-provisioning-to-specific-users-and-groups"></a>Scopeing inrichten voor specifieke gebruikers en groepen
+U kunt het bereik van de agent voor het synchroniseren van specifieke gebruikers en groepen met behulp van on-premises Active Directory groepen of organisatie-eenheden. U kunt geen groepen en organisatie-eenheden configureren binnen een configuratie. 
 
-6. Aan de rechter kant kunt u het bereik wijzigen zodat alleen beveiligings groepen worden opgenomen door de DN-naam van de groep in te voeren en op **toevoegen**te klikken.
-![](media/how-to-configure/scope3.png)
+1.  Selecteer in de Azure-portal **Azure Active Directory**.
+1.  Selecteer **Azure AD Connect**.
+1.  Selecteer **inrichting beheren (preview)** .
+1.  Selecteer uw configuratie onder **configuratie**.
 
-7. Of wijzig deze zodat alleen specifieke organisatie-eenheden worden meegenomen. Klik op **gereed** en **Sla**het bestand op.
-![](media/how-to-configure/scope4.png)
+    ![Configuratie sectie](media/how-to-configure/scope1.png)
+
+1.  Selecteer onder **configureren** **alle gebruikers** om het bereik van de configuratie regel te wijzigen.
+
+    ![Optie alle gebruikers](media/how-to-configure/scope2.png)
+
+1. Aan de rechter kant kunt u het bereik wijzigen zodat alleen beveiligings groepen worden opgenomen. Voer de DN-naam van de groep in en selecteer **toevoegen**.
+
+    ![Optie geselecteerde beveiligings groepen](media/how-to-configure/scope3.png)
+
+1.  Of u kunt het bereik wijzigen zodat alleen specifieke organisatie-eenheden worden opgenomen. Selecteer **gereed** en **Sla**het bestand op.
+
+    ![Optie geselecteerde organisatie-eenheden](media/how-to-configure/scope4.png)
 
 
 ## <a name="restart-provisioning"></a>Inrichting opnieuw starten 
-Als u niet wilt wachten op de volgende geplande uitvoering, kunt u de inrichtings uitvoering activeren met behulp van de knop inrichting opnieuw opstarten. 
-1.  Klik in de Azure AD-Portal op **Azure Active Directory**
-2.  Klik op **Azure AD Connect**
-3.  Selecteer **inrichting beheren (preview-versie)**
-4.  Klik onder **configuratie** op uw configuratie.  
-![](media/how-to-configure/scope1.png)
+Als u niet wilt wachten op de volgende geplande uitvoering, moet u de inrichtings uitvoering activeren met behulp van de knop **inrichting opnieuw opstarten** . 
+1.  Selecteer in de Azure-portal **Azure Active Directory**.
+1.  Selecteer **Azure AD Connect**.
+1.  Selecteer **inrichting beheren (preview)** .
+1.  Selecteer uw configuratie onder **configuratie**.
 
-5.  Klik bovenaan op **inrichting opnieuw opstarten**.
+    ![Configuratie selectie voor het opnieuw opstarten van de inrichting](media/how-to-configure/scope1.png)
 
-## <a name="removing-a-configuration"></a>Een configuratie verwijderen
-Als u een configuratie wilt verwijderen, kunt u dit doen met behulp van de volgende stappen.
+1.  Selecteer aan de bovenkant de optie **inrichting opnieuw opstarten**.
 
-1.  Klik in de Azure AD-Portal op **Azure Active Directory**
-2.  Klik op **Azure AD Connect**
-3.  Selecteer **inrichting beheren (preview-versie)**
-4.  Klik onder **configuratie** op uw configuratie.  
-![](media/how-to-configure/scope1.png)
+## <a name="remove-a-configuration"></a>Een configuratie verwijderen
+Voer de volgende stappen uit om een configuratie te verwijderen.
 
-5.  Klik bovenaan op **verwijderen**.
-![](media/how-to-configure/remove1.png)
+1.  Selecteer in de Azure-portal **Azure Active Directory**.
+1.  Selecteer **Azure AD Connect**.
+1.  Selecteer **inrichting beheren (preview)** .
+1.  Selecteer uw configuratie onder **configuratie**.
+
+    ![Configuratie selectie voor het verwijderen van de configuratie](media/how-to-configure/scope1.png)
+
+1.  Selecteer boven aan het configuratie scherm de optie **verwijderen**.
+
+    ![De knop Verwijderen](media/how-to-configure/remove1.png)
 
 >[!IMPORTANT]
->Er is geen bevestiging voordat een configuratie wordt verwijderd. Zorg er dus voor dat dit de actie is die u wilt uitvoeren voordat u op **verwijderen**klikt.
+>Er is geen bevestiging voordat een configuratie wordt verwijderd. Zorg ervoor dat dit de actie is die u wilt uitvoeren voordat u **verwijderen**selecteert.
 
 
 ## <a name="next-steps"></a>Volgende stappen 

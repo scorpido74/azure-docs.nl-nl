@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics Edge-taken in Visual Studio
 description: In dit artikel wordt beschreven hoe u uw Stream Analytics op IoT Edge taken kunt schrijven, opsporen en maken met behulp van de Stream Analytics-hulpprogram ma's voor Visual Studio.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: ec4a4041378ce94ae70ba7a88b3fef80f7dcd193
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 07f109b3d5539f7cd87a12fb42a36803573c2bdf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925031"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354554"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Stream Analytics Edge-taken ontwikkelen met behulp van Visual Studio Tools
 
@@ -68,7 +67,7 @@ Stream Analytics taken die in de Stream Analytics IoT Edge omgevingen zijn geïm
 
 |**Categorie**  | **Opdracht**  |
 |---------|---------|
-|Andere opera tors | <ul><li>PARTITIONEREN OP</li><li>TIME STAMP MET MEER DAN</li><li>Java script UDF</li><li>Door de gebruiker gedefinieerde aggregaties (UDA)</li><li>GetMetadataPropertyValue</li><li>Meer dan 14 statistische functies gebruiken in één stap</li></ul>   |
+|Andere opera tors | <ul><li>PARTITION BY</li><li>TIME STAMP MET MEER DAN</li><li>Java script UDF</li><li>Door de gebruiker gedefinieerde aggregaties (UDA)</li><li>GetMetadataPropertyValue</li><li>Meer dan 14 statistische functies gebruiken in één stap</li></ul>   |
 
 Wanneer u een Stream Analytics Edge-taak maakt in de portal, wordt u door de compiler automatisch gewaarschuwd als u geen ondersteunde operator gebruikt.
 
@@ -123,5 +122,5 @@ Het venster taak weergave bevat bewerkingen zoals het vernieuwen van de taak, he
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Meer informatie over Azure IoT Edge](../iot-edge/about-iot-edge.md)
-* [Zelf studie voor IoT Edge van ASA](../iot-edge/tutorial-deploy-stream-analytics.md)
+* [ASA on IoT Edge-zelfstudie](../iot-edge/tutorial-deploy-stream-analytics.md)
 * [Feedback verzenden naar het team met behulp van deze enquête](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 

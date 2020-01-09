@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 424dfc1dac21f227869f23e7401a083b06cef1d9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cfcea8c775b2d6a9bee3c078cf67f0a942af5984
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035556"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354051"
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Poorten en eind punten openen voor een Linux-VM met de Azure CLI
 
@@ -92,5 +92,5 @@ Voor Maxi maal beschik bare webtoepassingen moet u uw virtuele machines achter e
 ## <a name="next-steps"></a>Volgende stappen
 In dit voor beeld hebt u een eenvoudige regel gemaakt om HTTP-verkeer toe te staan. In de volgende artikelen vindt u informatie over het maken van meer gedetailleerde omgevingen:
 
-* [Overzicht van Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)
+* [Overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md)
 * [Wat is een netwerkbeveiligingsgroep (NSG)?](../../virtual-network/security-overview.md)

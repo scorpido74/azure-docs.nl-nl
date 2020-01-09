@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 4a8dbe9d1c66955e585f7b2cbf842193c965252e
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 19f31a2fafc112f499ff87eed23843915cab32a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74998769"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75414227"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Richt lijnen voor herstel na nood gevallen voor avere vFXT voor Azure
 
@@ -104,7 +104,7 @@ Ga als volgt te werk om toegang te krijgen tot de back-upcontainer van een avere
 1. Maak, indien nodig, een nieuwe avere-vFXT voor Azure-cluster in een regio waarin het probleem niet optreedt.
 
    > [!TIP]
-   > Wanneer u een avere vFXT voor Azure-cluster maakt, kunt u een kopie van de aanmaak-sjabloon en-para meters opslaan. Als u deze informatie opslaat tijdens het maken van uw primaire cluster, kunt u deze gebruiken om een vervangend cluster met dezelfde eigenschappen te maken. Klik op de pagina [validatie en samen vatting](avere-vfxt-deploy.md#validation-and-purchase) op de koppeling **sjabloon en para meters downloaden** . Sla de informatie op in een bestand voordat u op de knop **OK** klikt om het cluster te maken.
+   > Wanneer u een avere vFXT voor Azure-cluster maakt, kunt u een kopie van de aanmaak-sjabloon en-para meters opslaan. Als u deze informatie opslaat tijdens het maken van uw primaire cluster, kunt u deze gebruiken om een vervangend cluster met dezelfde eigenschappen te maken. Klik op de pagina [samen vatting](avere-vfxt-deploy.md#validation-and-purchase) op de koppeling **sjabloon en para meters downloaden** . Sla de informatie op in een bestand voordat u het cluster maakt.
 
 1. Voeg een nieuwe Cloud core-bestands extensie toe die naar de dubbele BLOB-container verwijst.
 

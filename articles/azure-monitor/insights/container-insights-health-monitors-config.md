@@ -1,23 +1,14 @@
 ---
 title: Azure Monitor voor containers status monitors configuratie | Microsoft Docs
 description: In dit artikel vindt u informatie over de gedetailleerde configuratie van de status monitors in Azure Monitor voor containers.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 11/12/2019
-ms.author: magoedte
-ms.openlocfilehash: 7d4400b563a1d0b8bf094f946a37d7ff4a17e7cf
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.date: 12/01/2019
+ms.openlocfilehash: d2d602d767fa6a39b7f72650c426c90be210a6ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664944"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405044"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Configuratie handleiding voor containers Health Monitor Azure Monitor
 
@@ -29,9 +20,9 @@ Monitors zijn het primaire element voor het meten van de status en het detectere
 
 ## <a name="monitors"></a>Monitors
 
-Een monitor meet de status van een bepaald aspect van een beheerd object. Monitors hebben beide twee of drie statussen. Een monitor bevindt zich in slechts één van de mogelijke statussen op een bepaald moment. Wanneer een monitor wordt geladen door de container agent, wordt deze geïnitialiseerd met de status in orde. De status wordt alleen gewijzigd als de opgegeven voor waarden voor een andere status worden gedetecteerd.
+Een monitor meet de status van een bepaald aspect van een beheerd object. Elke monitor kan twee of drie statussen hebben. Een monitor kan op een bepaald moment slechts één potentiële status hebben. Wanneer een monitor wordt geladen door de container agent, wordt deze geïnitialiseerd met de status in orde. De status wordt alleen gewijzigd als de opgegeven voor waarden voor een andere status worden gedetecteerd.
 
-De algemene status van een bepaald object wordt bepaald aan de hand van de status van elk van de monitors. Deze hiërarchie wordt geïllustreerd in het deel venster status hiërarchie in Azure Monitor voor containers. Het beleid voor de manier waarop de status wordt getotaliseerd, maakt deel uit van de configuratie van de geaggregeerde monitors.
+De algehele status van een bepaald object wordt bepaald op basis van de status van elke monitor van het object. Deze hiërarchie wordt geïllustreerd in het deel venster status hiërarchie in Azure Monitor voor containers. Het beleid voor de manier waarop de status wordt getotaliseerd, maakt deel uit van de configuratie van de geaggregeerde monitors.
 
 ## <a name="types-of-monitors"></a>Typen monitors
 
@@ -63,7 +54,7 @@ Azure Monitor voor containers bevat een aantal scenario's voor sleutel bewaking 
 
 ### <a name="unit-monitors"></a>Unit-monitors
 
-|**Monitor naam** | Monitor type | **Beschrijving** | **Bepaalde** | **Waarde** |
+|**Monitor naam** | Monitortype | **Beschrijving** | **Parameter** | **Waarde** |
 |-----------------|--------------|-----------------|---------------|-----------|
 |Geheugen gebruik van knoop punt |Unit-monitor |Deze monitor evalueert elke minuut het geheugen gebruik van een knoop punt, met behulp van de gerapporteerde gegevens in cadvisor. |ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
 |CPU-gebruik van knoop punt |Unit-monitor |Met deze monitor wordt het CPU-gebruik van het knoop punt elke minuut gecontroleerd met behulp van de gerapporteerde gegevens in cadvisor. | ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||

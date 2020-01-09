@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f4f0ac5d592a01b284a12e899b0aa5a9a62d122
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 488130fbd2939fa4d98e379126ba3353a417fd72
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304923"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401765"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics opgeslagen Zoek opdrachten en waarschuwingen toevoegen aan beheer oplossing (preview)
 
@@ -29,7 +29,7 @@ ms.locfileid: "74304923"
 > In de voor beelden in dit artikel worden para meters en variabelen gebruikt die vereist zijn of gemeen schappelijk zijn voor beheer oplossingen en die worden beschreven in [ontwerp en bouw een beheer oplossing in azure](solutions-creating.md)
 
 ## <a name="prerequisites"></a>Vereisten
-In dit artikel wordt ervan uitgegaan dat u al bekend bent met het [maken van een beheer oplossing](solutions-creating.md) en de structuur van een [Resource Manager-sjabloon](../../azure-resource-manager/resource-group-authoring-templates.md) en een oplossings bestand.
+In dit artikel wordt ervan uitgegaan dat u al bekend bent met het [maken van een beheer oplossing](solutions-creating.md) en de structuur van een [Resource Manager-sjabloon](../../azure-resource-manager/templates/template-syntax.md) en een oplossings bestand.
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics-werkruimte
@@ -44,7 +44,7 @@ Alle Log Analytics resources die in een resource manager-sjabloon zijn gedefinie
 
 De volgende tabel geeft een overzicht van de API-versie voor de resource die in dit voor beeld wordt gebruikt.
 
-| Resourcetype | API-versie | Query's uitvoeren |
+| Resourcetype | API-versie | Query |
 |:---|:---|:---|
 | savedSearches | 2017-03-15-preview | Gebeurtenis &#124; waarbij EventLevelName = = "Error"  |
 
@@ -112,7 +112,7 @@ Een opgeslagen zoek opdracht kan een of meer schema's bevatten met elk schema da
     }
 De eigenschappen voor plannings resources worden beschreven in de volgende tabel.
 
-| Elementnaam | Vereist | Beschrijving |
+| Elementnaam | Verplicht | Beschrijving |
 |:--|:--|:--|
 | enabled       | Ja | Hiermee wordt aangegeven of de waarschuwing wordt ingeschakeld wanneer deze wordt gemaakt. |
 | interval      | Ja | Hoe vaak de query wordt uitgevoerd in minuten. |
@@ -164,17 +164,17 @@ Waarschuwings acties hebben de volgende structuur. Dit omvat algemene variabelen
 
 De eigenschappen van resources voor waarschuwings acties worden beschreven in de volgende tabellen.
 
-| Elementnaam | Vereist | Beschrijving |
+| Elementnaam | Verplicht | Beschrijving |
 |:--|:--|:--|
 | `type` | Ja | Het type van de actie.  Dit is een **waarschuwing** voor waarschuwings acties. |
 | `name` | Ja | Weergavenaam voor de waarschuwing.  Dit is de naam die wordt weer gegeven in de console voor de waarschuwings regel. |
 | `description` | Nee | Optionele beschrijving van de waarschuwing. |
-| `severity` | Ja | Ernst van de waarschuwings record van de volgende waarden:<br><br> **kritieke**<br>**waarschuwing**<br>**informatief**
+| `severity` | Ja | Ernst van de waarschuwings record van de volgende waarden:<br><br> **critical**<br>**waarschuwing**<br>**informatief**
 
 #### <a name="threshold"></a>Drempelwaarde
 Deze sectie is vereist. Hiermee worden de eigenschappen van de waarschuwings drempel gedefinieerd.
 
-| Elementnaam | Vereist | Beschrijving |
+| Elementnaam | Verplicht | Beschrijving |
 |:--|:--|:--|
 | `Operator` | Ja | Operator voor de vergelijking van de volgende waarden:<br><br>**gt =<br>lt = kleiner dan** |
 | `Value` | Ja | De waarde waarmee de resultaten worden vergeleken. |
@@ -182,7 +182,7 @@ Deze sectie is vereist. Hiermee worden de eigenschappen van de waarschuwings dre
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Deze sectie is optioneel. Neem deze op voor een waarschuwing voor metrische metingen.
 
-| Elementnaam | Vereist | Beschrijving |
+| Elementnaam | Verplicht | Beschrijving |
 |:--|:--|:--|
 | `TriggerCondition` | Ja | Hiermee geeft u op of de drempel waarde is voor het totale aantal schendingen of opeenvolgende schendingen van de volgende waarden:<br><br>**Totaal<br>opeenvolgend** |
 | `Operator` | Ja | Operator voor de vergelijking van de volgende waarden:<br><br>**gt =<br>lt = kleiner dan** |
@@ -192,7 +192,7 @@ Deze sectie is optioneel. Neem deze op voor een waarschuwing voor metrische meti
 #### <a name="throttling"></a>Beperking
 Deze sectie is optioneel. Neem deze sectie op als u waarschuwingen van dezelfde regel wilt onderdrukken gedurende een bepaalde hoeveelheid tijd nadat een waarschuwing is gemaakt.
 
-| Elementnaam | Vereist | Beschrijving |
+| Elementnaam | Verplicht | Beschrijving |
 |:--|:--|:--|
 | DurationInMinutes | Ja als het bandbreedte-element is opgenomen | Aantal minuten dat waarschuwingen worden onderdrukt nadat een van dezelfde waarschuwings regel is gemaakt. |
 
@@ -201,7 +201,7 @@ Alle waarschuwingen in Azure, gebruik actiegroep als het standaardmechanisme voo
 
 Voor gebruikers die hun waarschuwingen hebt uitgebreid naar Azure, hebt een planning nu actiegroep informatie doorgegeven, samen met de drempelwaarde, kunnen een waarschuwing wilt maken. E-mail gegevens, webhook-Url's, Details van Runbook-automatisering en andere acties moeten eerst worden gedefinieerd in een actie groep naast het maken van een waarschuwing. een kan [actie groep maken van Azure monitor](../../azure-monitor/platform/action-groups.md) in portal of [actie groep gebruiken-resource sjabloon](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
-| Elementnaam | Vereist | Beschrijving |
+| Elementnaam | Verplicht | Beschrijving |
 |:--|:--|:--|
 | AzNsNotification | Ja | De resource-ID van de actie groep van Azure die moet worden gekoppeld aan een waarschuwing voor het nemen van de benodigde acties wanneer aan waarschuwings criteria wordt voldaan. |
 | CustomEmailSubject | Nee | Aangepaste onderwerpregel van het e-mail bericht dat wordt verzonden naar alle adressen die zijn opgegeven in de gekoppelde actie groep. |

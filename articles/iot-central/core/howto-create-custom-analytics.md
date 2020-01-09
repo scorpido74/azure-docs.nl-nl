@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 618216208b61051d5446f96fb5b28a451b188c35
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5c22e29e51d9f2fc58720c555b8ad3b03d791db6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954108"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435034"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure IoT Central uitbreiden met aangepaste analyses met behulp van Azure Databricks
 
@@ -40,14 +40,14 @@ Maak een IoT Central-toepassing op de website van [Azure IOT Central Application
 | Instelling | Waarde |
 | ------- | ----- |
 | Betalings plan | Betalen per gebruik |
-| Toepassingsjabloon | Contoso-voorbeeld |
+| Toepassingsjabloon | Oudere toepassing |
 | De naam van de toepassing | Accepteer de standaard waarde of kies uw eigen naam |
 | URL | Accepteer de standaard waarde of kies uw eigen unieke URL-voor voegsel |
 | Directory | Uw Azure Active Directory-Tenant |
 | Azure-abonnement | Uw Azure-abonnement |
-| Regio | VS - oost |
+| Regio | Verenigde Staten |
 
-De voor beelden en scherm afbeeldingen in dit artikel gebruiken de regio **VS-Oost** . Kies een locatie dicht bij u en zorg ervoor dat u alle resources in dezelfde regio maakt.
+In de voor beelden en scherm afbeeldingen in dit artikel wordt gebruikgemaakt van de **Verenigde Staten** regio. Kies een locatie dicht bij u en zorg ervoor dat u alle resources in dezelfde regio maakt.
 
 ### <a name="resource-group"></a>Resourcegroep
 
@@ -59,7 +59,7 @@ Gebruik de [Azure Portal om een event hubs naam ruimte te maken](https://portal.
 
 | Instelling | Waarde |
 | ------- | ----- |
-| Naam    | De naam van de naam ruimte kiezen |
+| Name    | De naam van de naam ruimte kiezen |
 | Prijscategorie | Basic |
 | Abonnement | Uw abonnement |
 | Resourcegroep | IoTCentralAnalysis |
@@ -72,7 +72,7 @@ Gebruik de [Azure Portal om een Azure Databricks service te maken](https://porta
 
 | Instelling | Waarde |
 | ------- | ----- |
-| Werkruimte naam    | De naam van uw werk ruimte kiezen |
+| Naam van de werkruimte    | De naam van uw werk ruimte kiezen |
 | Abonnement | Uw abonnement |
 | Resourcegroep | IoTCentralAnalysis |
 | Locatie | VS - oost |
@@ -131,14 +131,14 @@ Gebruik de informatie in de volgende tabel om uw cluster te maken:
 | Instelling | Waarde |
 | ------- | ----- |
 | Clusternaam | centralanalysis |
-| Cluster modus | Standard |
-| Databricks Runtime versie | 5,3 (scala 2,11, Spark 2.4.0) |
+| Clustermodus | Standard |
+| Databricks Runtime-versie | 5,3 (scala 2,11, Spark 2.4.0) |
 | Python-versie | 3 |
 | Automatisch schalen inschakelen | Nee |
 | Beëindigen na minuten van inactiviteit | 30 |
-| Type werk nemer | Standard_DS3_v2 |
+| Werkroltype | Standard_DS3_v2 |
 | IT | 1 |
-| Type stuur programma | Gelijk aan werk nemer |
+| Stuurprogrammatype | Zelfde als werkrol |
 
 Het maken van een cluster kan enkele minuten duren. wacht totdat het maken van het cluster is voltooid voordat u doorgaat.
 

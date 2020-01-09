@@ -1,6 +1,7 @@
 ---
-title: Artikel over bekende problemen/migratie beperkingen met online migraties van PostgreSQL naar Azure Database for PostgreSQL-één server | Microsoft Docs
-description: Meer informatie over bekende problemen/migratie beperkingen met online migraties van PostgreSQL naar Azure Database for PostgreSQL.
+title: 'Bekende problemen: online migraties van PostgreSQL naar Azure Database for PostgreSQL'
+titleSuffix: Azure Database Migration Service
+description: Meer informatie over bekende problemen en migratie beperkingen met online migraties van PostgreSQL naar Azure Database for PostgreSQL-single server met behulp van de Azure Database Migration Service.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,17 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom:
+- seo-lt-2019
+- seo-dt-2019
 ms.topic: article
 ms.date: 10/27/2019
-ms.openlocfilehash: e25e31a9ed656d625d2025d8d0086d23ecf10682
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: c5c0015c5034dd3b30b716264fd97e9881b3fe67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043208"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437857"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql-single-server"></a>Bekende problemen/migratie beperkingen met online migraties van PostgreSQL naar Azure DB voor PostgreSQL-één server
 
@@ -113,7 +116,7 @@ Large Object LOB-kolommen zijn kolommen die groot kunnen groeien. Voor PostgreSQ
 
 ## <a name="postgresql10-workaround"></a>Tijdelijke oplossing PostgreSQL10
 
-PostgreSQL 10. x brengt verschillende wijzigingen aan in pg_xlog, waardoor de migratie niet zoals verwacht wordt uitgevoerd. Als u migreert van PostgreSQL 10. x naar Azure Database for PostgreSQL 10,3, voert u het volgende script uit op de bron-PostgreSQL-data base om de wrapper-functie te maken rond pg_xlog-functies.
+PostgreSQL 10. x brengt verschillende wijzigingen aan pg_xlog mapnamen, waardoor migratie niet zoals verwacht wordt uitgevoerd. Als u migreert van PostgreSQL 10. x naar Azure Database for PostgreSQL 10,3, voert u het volgende script uit op de bron-PostgreSQL-data base om de wrapper-functie rond pg_xlog-functies te maken.
 
 ```
 BEGIN;

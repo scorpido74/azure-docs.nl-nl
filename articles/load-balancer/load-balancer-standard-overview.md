@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: 3b6a16436b2719d1571f5d5a3c16711a9100b75d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
-ms.translationtype: MT
+ms.openlocfilehash: ce60062a49f08bb3409c8445e0aaf79c0d361865
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894414"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552811"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Overzicht van Azure Standard Load Balancer
 
@@ -182,14 +182,6 @@ Sku's zijn niet onveranderbaar. Volg de stappen in deze sectie om van de ene res
 3. Verwijder de Basic SKU-resources (Load Balancer en open bare Ip's, indien van toepassing) van alle VM-exemplaren. Zorg er ook voor dat alle VM-exemplaren van een beschikbaarheidsset worden verwijderd.
 
 4. Koppel alle VM-exemplaren aan de nieuwe standaard SKU-resources.
-
-### <a name="migrate-from-standard-to-basic-sku"></a>Migreren van Standard naar Basic SKU
-
-1. Maak indien nodig een nieuwe basis resource (Load Balancer en open bare Ip's). Maak uw regels en test definities opnieuw.  Wijzig een HTTPS-test naar een TCP-test naar 443/TCP. 
-
-2. Verwijder de standaard-SKU-resources (Load Balancer en open bare Ip's, indien van toepassing) van alle VM-exemplaren. Zorg er ook voor dat alle VM-exemplaren van een beschikbaarheidsset worden verwijderd.
-
-3. Koppel alle VM-exemplaren aan de nieuwe Basic SKU-resources.
 
 >[!IMPORTANT]
 >
