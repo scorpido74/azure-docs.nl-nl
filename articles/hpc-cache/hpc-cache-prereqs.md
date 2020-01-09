@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 406b77a428ec725a3d8d070bd60fcd4440a5cb92
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 90b84d936bda4e3a974e60934e82ac6c3389d85a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166466"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645766"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Vereisten voor de Azure HPC-cache
 
@@ -24,7 +24,7 @@ Een betaald abonnement wordt aanbevolen.
 > [!NOTE]
 > Tijdens de eerste maanden van de GA-release moet het team van de Azure HPC-cache uw abonnement toevoegen aan de lijst met toegang voordat het kan worden gebruikt om een cache-exemplaar te maken. Met deze procedure kunt u ervoor zorgen dat elke klant de reactie snelheid van hoge kwaliteit vanuit hun caches ontvangt. Vul [dit formulier](https://aka.ms/onboard-hpc-cache) in om toegang aan te vragen.
 
-## <a name="network-infrastructure"></a>Netwerk infrastructuur
+## <a name="network-infrastructure"></a>Netwerkinfrastructuur
 
 Er moeten twee aan het netwerk gerelateerde vereisten worden ingesteld voordat u uw cache kunt gebruiken:
 
@@ -80,7 +80,7 @@ Opslag van NFS-back-end moet een compatibel hardware/software-platform zijn. Nee
 
 Als u Azure Blob Storage wilt gebruiken met uw cache, hebt u een compatibel opslag account nodig en een lege BLOB-container of een container die is gevuld met gegevens in de Azure HPC-cache, zoals wordt beschreven in [gegevens verplaatsen naar Azure Blob-opslag](hpc-cache-ingest.md).
 
-Maak het account en de container voordat u deze probeert toe te voegen als een opslag doel.
+Maak het account voordat u probeert een opslag doel toe te voegen. U kunt een nieuwe container maken wanneer u het doel toevoegt.
 
 Als u een compatibel opslag account wilt maken, gebruikt u deze instellingen:
 

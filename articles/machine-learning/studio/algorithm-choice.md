@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 03/04/2019
-ms.openlocfilehash: c69b4c15397dc13f36a707f932c2464a4ff94ca7
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2073123a61e919c10caaaea141f776e842f4d717
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838469"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427740"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio-classic"></a>Algoritmen kiezen voor Azure Machine Learning Studio (klassiek)
 
@@ -23,7 +23,7 @@ ms.locfileid: "73838469"
 
 Het antwoord op de vraag ' wat machine learning-algoritme moet ik gebruiken? ' is altijd afhankelijk van. Het hangt af van de grootte, de kwaliteit en de aard van de gegevens. Dit is afhankelijk van wat u met het antwoord wilt doen. Het hangt af van de manier waarop de wiskunde van het algoritme is vertaald in instructies voor de computer die u gebruikt. En dit is afhankelijk van de hoeveelheid tijd die u hebt. Zelfs de meest ervaren gegevens wetenschappers kunnen niet bepalen welk algoritme het beste presteert voordat ze worden uitgevoerd.
 
-Machine Learning Studio (klassiek) biedt geavanceerde algoritmen, zoals schaal bare, gestimuleerde beslissings structuren, Bayesiaanse Aanbevelings systemen, diep gaande Neural netwerken en beslissings jungle die zijn ontwikkeld bij micro soft Research. Ook bevat het schaalbare open-source machine learning-pakketten, zoals Vowpal Wabbit. De klassieke versie van Machine Learning Studio ondersteunt machine learning-algoritmen voor multi klasse en binaire classificatie, regressie en clustering. Bekijk de volledige lijst met [machine learning modules](/azure/machine-learning/studio-module-reference/index).
+Machine Learning Studio (klassiek) biedt geavanceerde algoritmen, zoals schaal bare, gestimuleerde beslissings structuren, Bayesiaanse Aanbevelings systemen, diep gaande Neural netwerken en beslissings jungle die zijn ontwikkeld bij micro soft Research. Ook bevat het schaalbare open-source machine learning-pakketten, zoals Vowpal Wabbit. Machine Learning Studio (klassiek) ondersteunt machine learning-algoritmen voor multi klasse-en binaire classificatie, regressie en clustering. Bekijk de volledige lijst met [machine learning modules](/azure/machine-learning/studio-module-reference/index).
 De documentatie bevat informatie over elk algoritme en het afstemmen van de para meters voor het optimaliseren van het algoritme voor uw gebruik.  
 
 
@@ -45,11 +45,11 @@ Deze aanbevelingen zijn gecompileerde feedback en tips van veel gegevens wetensc
 
 ## <a name="flavors-of-machine-learning"></a>De smaak van machine learning
 
-### <a name="supervised"></a>Onder Super visie
+### <a name="supervised"></a>Onder supervisie
 
 Bewaakte leer algoritmen maken voor spellingen op basis van een aantal voor beelden. Historische aandelen prijzen kunnen bijvoorbeeld worden gebruikt om schattingen te maken over toekomstige prijzen. Elk voor beeld dat wordt gebruikt voor trainingen, is voorzien van de waarde van interest, in dit geval de aandelen prijs. Een leer algoritme met Super visie zoekt naar patronen in deze waardelabels. Het kan alle informatie gebruiken die relevant kan zijn: de dag van de week, het seizoen, de financiële gegevens van het bedrijf, het type branche, de aanwezigheid van storende geopolitieke gebeurtenissen, en elk algoritme zoekt naar verschillende soorten patronen. Nadat het algoritme het beste patroon heeft gevonden dat kan worden gebruikt, wordt dit patroon in gebruik voor het maken van voor spellingen voor niet-gelabelde test gegevens, de prijzen van morgen.
 
-Learning is een populair en nuttig type machine learning. Met één uitzonde ring worden alle modules in de klassieke versie van Azure Machine Learning Studio bewaakte leer algoritmen. Er zijn verschillende specifieke soorten gecontroleerde lessen die worden weer gegeven in Azure Machine Learning Studio (klassiek): classificatie, regressie en anomalie detectie.
+Learning is een populair en nuttig type machine learning. Met één uitzonde ring worden alle modules in Azure Machine Learning Studio (klassiek) bewaakte leer algoritmen. Er zijn verschillende specifieke soorten gecontroleerde lessen die worden weer gegeven in Azure Machine Learning Studio (klassiek): classificatie, regressie en anomalie detectie.
 
 * **Classificatie**. Wanneer de gegevens worden gebruikt om een categorie voor tes pellen, wordt gebruikgemaakt van toezicht, ook wel classificatie genoemd. Dit is het geval wanneer u een afbeelding als een afbeelding van een ' kat ' of ' hond ' toewijst. Als er slechts twee opties zijn, wordt deze **twee klassen** of **binomiale classificatie**genoemd. Wanneer er meer categorieën zijn, zoals bij het voors pellen van de winnaar van de NCAA maart Madness-toernooi, wordt dit probleem ook wel een **classificatie met meerdere klassen**genoemd.
 * **Regressie**. Wanneer een waarde wordt voor speld, net als bij aandelen prijzen, heette learning ' regressie '.
@@ -71,7 +71,7 @@ Op basis hiervan wordt de strategie van het algoritme aangepast om de hoogste be
 Het is niet altijd nodig om het meest nauw keurige antwoord optimaal te benutten.
 Soms is een benadering voldoende, afhankelijk van wat u wilt gebruiken voor. Als dat het geval is, kunt u uw verwerkings tijd aanzienlijk verkorten door de methoden te benaderen. Een ander voor deel van een nader te benaderen methode is dat ze niet groter worden voor komen.
 
-### <a name="training-time"></a>Trainings tijd
+### <a name="training-time"></a>Trainingstijd
 
 Het aantal minuten of uren dat nodig is voor het trainen van een model, is afhankelijk van de verschillende algoritmen. De trainings tijd is vaak nauw verbonden met nauw keurigheid, een voor de andere. Bovendien zijn sommige algoritmen gevoeliger voor het aantal gegevens punten dan andere.
 Wanneer tijd is beperkt, kan de keuze van het algoritme worden opgegeven, met name wanneer de gegevensset groot is.
@@ -95,7 +95,7 @@ Ondanks hun gevaren zijn lineaire algoritmen zeer populair als een eerste aanval
 
 Para meters zijn de knopen die een gegevens wetenschapper krijgt om in te scha kelen bij het instellen van een algoritme. Ze zijn getallen die van invloed zijn op het gedrag van de algoritme, zoals fout tolerantie of het aantal iteraties of opties tussen varianten van de werking van het algoritme. De trainings tijd en nauw keurigheid van het algoritme kunnen soms behoorlijk gevoelig zijn om alleen de juiste instellingen te verkrijgen. Normaal gesp roken vereisen algoritmen met een groot aantal para meters de meeste proef versie en fout om een goede combi natie te vinden.
 
-U kunt ook een parameter blok voor het weglaten van de [para meter](algorithm-parameters-optimize.md) in de klassieke versie van Azure machine learning Studio waarbij automatisch alle parameter combinaties worden geprobeerd op de gewenste granulatie. Dit is een goede manier om ervoor te zorgen dat u de parameter ruimte hebt gemaakt. de tijd die nodig is om een model te trainen, neemt exponentieel toe met het aantal para meters.
+Het is ook mogelijk dat er in Azure Machine Learning Studio (klassiek) een parameter blok voor het weglaten van [para meters](algorithm-parameters-optimize.md) wordt uitgevoerd die automatisch alle parameter combinaties van de gewenste granulariteit probeert. Dit is een goede manier om ervoor te zorgen dat u de parameter ruimte hebt gemaakt. de tijd die nodig is om een model te trainen, neemt exponentieel toe met het aantal para meters.
 
 Aan de kant van een groot aantal para meters wordt doorgaans aangegeven dat een algoritme meer flexibiliteit heeft. Het kan vaak zeer goed nauw keurig zijn, op voor waarde dat u de juiste combi natie van parameter instellingen kunt vinden.
 
@@ -124,7 +124,7 @@ Sommige leer algoritmen maken specifieke veronderstellingen over de structuur va
 | [beslissings forest](/azure/machine-learning/studio-module-reference/multiclass-decision-forest) |● |○ | |6 | |
 | [beslissing jungle](/azure/machine-learning/studio-module-reference/multiclass-decision-jungle) |● |○ | |6 |Weinig geheugen capaciteit |
 | [Neural-netwerk](/azure/machine-learning/studio-module-reference/multiclass-neural-network) |● | | |9 |[Aanvullende aanpassing is mogelijk](azure-ml-netsharp-reference-guide.md) |
-| [Eén-v-alle](/azure/machine-learning/studio-module-reference/one-vs-all-multiclass) |- |- |- |- |Zie Eigenschappen van de methode met twee klassen geselecteerd |
+| [one-v-all](/azure/machine-learning/studio-module-reference/one-vs-all-multiclass) |- |- |- |- |Zie Eigenschappen van de methode met twee klassen geselecteerd |
 | **Regressie** | | | | | |
 | [lineaire](/azure/machine-learning/studio-module-reference/linear-regression) | |● |● |4 | |
 | [Bayesiaanse lineair](/azure/machine-learning/studio-module-reference/bayesian-linear-regression) | |○ |● |2 | |
@@ -155,7 +155,7 @@ Zoals eerder vermeld, past [lineaire regressie](/azure/machine-learning/studio-m
 
 ***Gegevens met een lineaire trend***
 
-### <a name="logistic-regression"></a>Logistiek regressie
+### <a name="logistic-regression"></a>Logistieke regressie
 
 Hoewel de naam ' regressie ' bevat, is een logistiek regressie een krachtig hulp middel voor de classificatie van [twee klassen](/azure/machine-learning/studio-module-reference/two-class-logistic-regression) en meerdere [klassen](/azure/machine-learning/studio-module-reference/multiclass-logistic-regression) . Het is snel en eenvoudig. Het feit dat het gebruik maakt van een '-vormige curve in plaats van een rechte lijn, maakt het natuurlijk geschikt voor het delen van gegevens in groepen. Logistiek regressie biedt lineaire grenzen voor klassen, dus wanneer u deze gebruikt, moet u ervoor zorgen dat een lineaire benadering iets is wat u kunt gebruiken.
 
@@ -165,7 +165,7 @@ Hoewel de naam ' regressie ' bevat, is een logistiek regressie een krachtig hulp
 
 ### <a name="trees-forests-and-jungles"></a>Structuren, forests en jungle
 
-Beslissings bossen ([regressie](/azure/machine-learning/studio-module-reference/decision-forest-regression), [twee klassen en meerdere](/azure/machine-learning/studio-module-reference/two-class-decision-forest) [klassen](/azure/machine-learning/studio-module-reference/multiclass-decision-forest)), beslissings Jungle ([twee klassen](/azure/machine-learning/studio-module-reference/two-class-decision-jungle) en meerdere [klassen](/azure/machine-learning/studio-module-reference/multiclass-decision-jungle)) en versterkte beslissings structuren ([regressie](/azure/machine-learning/studio-module-reference/boosted-decision-tree-regression) en [twee klassen](/azure/machine-learning/studio-module-reference/two-class-boosted-decision-tree)) zijn allemaal gebaseerd op beslissing bomen, een Foundational machine learning concept. Er zijn veel varianten van beslissings structuren, maar ze hebben allemaal hetzelfde effect. Verdeel de functie ruimte in regio's met voornamelijk hetzelfde label. Dit kunnen regio's zijn van een consistente categorie of van een constante waarde, afhankelijk van of u classificatie of regressie uitvoert.
+Beslissings bossen ([regressie](/azure/machine-learning/studio-module-reference/decision-forest-regression), [twee klassen en meerdere](/azure/machine-learning/studio-module-reference/two-class-decision-forest) [klassen](/azure/machine-learning/studio-module-reference/multiclass-decision-forest)), beslissings Jungle ([twee klassen](/azure/machine-learning/studio-module-reference/two-class-decision-jungle) en meerdere [klassen](/azure/machine-learning/studio-module-reference/multiclass-decision-jungle)) en versterkte beslissings structuren ([regressie](/azure/machine-learning/studio-module-reference/boosted-decision-tree-regression) en [twee klassen](/azure/machine-learning/studio-module-reference/two-class-boosted-decision-tree)) zijn allemaal gebaseerd op beslissings structuren, een basis machine learning concept. Er zijn veel varianten van beslissings structuren, maar ze hebben allemaal hetzelfde effect. Verdeel de functie ruimte in regio's met voornamelijk hetzelfde label. Dit kunnen regio's zijn van een consistente categorie of van een constante waarde, afhankelijk van of u classificatie of regressie uitvoert.
 
 ![Beslissings structuur verdeelt een functie ruimte](./media/algorithm-choice/image5.png)
 
@@ -179,7 +179,7 @@ Versterkte beslissings structuren zorgen ervoor dat de overneming wordt voor kom
 
 ### <a name="neural-networks-and-perceptrons"></a>Neural netwerken en Perceptrons
 
-Neural-netwerken zijn toonaangevende leer algoritmen voor problemen met meerdere [klassen](/azure/machine-learning/studio-module-reference/multiclass-neural-network), [twee klassen](/azure/machine-learning/studio-module-reference/two-class-neural-network)en [regressies](/azure/machine-learning/studio-module-reference/neural-network-regression) . Ze bevinden zich in een oneindig aantal, maar de Neural-netwerken in de klassieke versie van Azure Machine Learning Studio zijn de vorm van gestuurde acyclische grafiek. Dit betekent dat de invoer functies door een reeks lagen worden door gegeven (nooit achterwaarts) voordat ze worden omgezet in uitvoer. In elke laag worden invoer gewogen in verschillende combi Naties, opgeteld en door gegeven aan de volgende laag. Deze combi natie van eenvoudige berekeningen resulteert in de mogelijkheid om geavanceerde klassen grenzen en gegevens trends te ontdekken. In veel gelaagde netwerken van deze sortering wordt gedieper gewaakt dat brand stoffen zoveel technische rapportage en scienceis kunnen uitvoeren.
+Neural-netwerken zijn toonaangevende leer algoritmen voor problemen met meerdere [klassen](/azure/machine-learning/studio-module-reference/multiclass-neural-network), [twee klassen](/azure/machine-learning/studio-module-reference/two-class-neural-network)en [regressies](/azure/machine-learning/studio-module-reference/neural-network-regression) . Ze bevinden zich in een oneindig aantal, maar de Neural netwerken in Azure Machine Learning Studio (klassiek) zijn de vorm van gerichte acyclische grafieken. Dit betekent dat de invoer functies door een reeks lagen worden door gegeven (nooit achterwaarts) voordat ze worden omgezet in uitvoer. In elke laag worden invoer gewogen in verschillende combi Naties, opgeteld en door gegeven aan de volgende laag. Deze combi natie van eenvoudige berekeningen resulteert in de mogelijkheid om geavanceerde klassen grenzen en gegevens trends te ontdekken. In veel gelaagde netwerken van deze sortering wordt gedieper gewaakt dat brand stoffen zoveel technische rapportage en scienceis kunnen uitvoeren.
 
 Deze hoge prestaties zijn echter niet gratis. Neural-netwerken kunnen veel tijd in beslag nemen, met name voor grote gegevens sets met veel functies. Ze hebben ook meer para meters dan de meeste algoritmen, wat betekent dat het opruimen van de para meters de trainings tijd van een geweldige deal uitbreidt.
 En voor gebruikers die [hun eigen netwerk structuur willen opgeven](azure-ml-netsharp-reference-guide.md), zijn de mogelijkheden van inexhaustible.
@@ -205,7 +205,7 @@ Met behulp van een slimme uitbrei ding van niet-lineaire SVMs tekent de [SVM van
 
 ### <a name="bayesian-methods"></a>Bayesiaanse-methoden
 
-Bayesiaanse-methoden hebben een zeer goede kwaliteit: ze vermijden het niet meer. Dit doet u door een aantal veronderstellingen vooraf te nemen over de waarschijnlijke verdeling van het antwoord. Een andere byproduct van deze benadering is dat ze zeer weinig para meters hebben. De klassieke versie van Azure Machine Learning Studio heeft Bayesiaanse-algoritmen voor zowel classificatie ([tweeklasselijke Bayes ' punt machine](/azure/machine-learning/studio-module-reference/two-class-bayes-point-machine)) als regressie ([Bayesiaanse lineaire regressie](/azure/machine-learning/studio-module-reference/bayesian-linear-regression)).
+Bayesiaanse-methoden hebben een zeer goede kwaliteit: ze vermijden het niet meer. Dit doet u door een aantal veronderstellingen vooraf te nemen over de waarschijnlijke verdeling van het antwoord. Een andere byproduct van deze benadering is dat ze zeer weinig para meters hebben. Azure Machine Learning Studio (klassiek) heeft Bayesiaanse-algoritmen voor zowel classificatie ([tweeklasselijke Bayes ' punt machine](/azure/machine-learning/studio-module-reference/two-class-bayes-point-machine)) als regressie ([Bayesiaanse lineaire regressie](/azure/machine-learning/studio-module-reference/bayesian-linear-regression)).
 Houd er rekening mee dat deze gegevens kunnen worden gesplitst of aangepast met een rechte lijn.
 
 Op een historisch notitie zijn Bayes-punt machines ontwikkeld bij micro soft Research. Ze hebben een uitzonderlijk mooi theoretisch werk. De belanghebbende student wordt omgeleid naar het [oorspronkelijke artikel in JMLR](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) en een ongevraagde [blog door Chris loper](https://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx).
@@ -232,7 +232,7 @@ Er is ook een ensemble met [één-v-alle multi klasse-classificatie](/azure/mach
 
 ***Een paar classificaties van twee klassen combi neren om een classificatie met drie klassen te vormen***
 
-De klassieke versie van Azure Machine Learning Studio biedt ook toegang tot een krachtig machine learning Framework onder de titel van [Vowpal Wabbit](/azure/machine-learning/studio-module-reference/train-vowpal-wabbit-version-7-4-model).
+Azure Machine Learning Studio (klassiek) biedt ook toegang tot een krachtig machine learning Framework onder de titel van [Vowpal Wabbit](/azure/machine-learning/studio-module-reference/train-vowpal-wabbit-version-7-4-model).
 VW is hier een categorisatie, omdat deze zowel classificatie-als regressie problemen kan ontdekken en zelfs van gedeeltelijk niet-gelabelde gegevens kan leren. U kunt deze configureren voor het gebruik van een van de verschillende leer algoritmen, verlies functies en optimalisatie algoritmen. Het is aan het begin ontworpen om efficiënt, parallel en zeer snel te zijn. Het verwerkt heel grote functie sets met weinig duidelijke inspanningen.
 VW is gestart en geleid door de eigen John Langford van micro soft Research, is een formule één vermelding in een veld met aandelen Car-algoritmen. Niet elk probleem past bij VW, maar als dat wel het geval is, is het mogelijk uw tijd waard om de leer curve op de interface te zetten. Het is ook beschikbaar als [zelfstandige open-source code](https://github.com/JohnLangford/vowpal_wabbit) in verschillende talen.
 
@@ -242,4 +242,4 @@ VW is gestart en geleid door de eigen John Langford van micro soft Research, is 
 
 * Zie voor een lijst op categorie van alle machine learning-algoritmen die beschikbaar zijn in Machine Learning Studio (klassiek) [model initialiseren](/azure/machine-learning/studio-module-reference/machine-learning-initialize-model) in het algoritme machine learning Studio (klassiek) en module Help.
 
-* Zie voor een volledig alfabetische lijst met algoritmen en modules in de klassieke versie van Machine Learning Studio [a-Z-lijst van machine learning Studio (klassieke) modules](/azure/machine-learning/studio-module-reference/a-z-module-list) in machine learning Studio (klassiek)-algoritme en module Help.
+* Zie voor een volledig alfabetische lijst met algoritmen en modules in Machine Learning Studio (klassiek) [de modules a-Z-lijst van machine learning Studio (klassiek)](/azure/machine-learning/studio-module-reference/a-z-module-list) in machine learning Studio (klassiek)-algoritme en module Help.

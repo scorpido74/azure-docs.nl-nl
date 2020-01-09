@@ -1,27 +1,26 @@
 ---
-title: Preview-functies Azure Stream Analytics
-description: In dit artikel vindt u een overzicht van de Azure Stream Analytics-functies die momenteel als preview-versie beschikbaar zijn.
-services: stream-analytics
+title: Azure Stream Analytics preview-functies
+description: In dit artikel geeft een lijst van de Azure Stream Analytics-functies die momenteel in preview.
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: df3e8c1cd91c676c64d15c46c5acdc3d5bcfaa8e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 59bb866d7a339608555f0bb802e1716eba5d3255
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161375"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431573"
 ---
-# <a name="azure-stream-analytics-preview-features"></a>Preview-functies Azure Stream Analytics
+# <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics preview-functies
 
-Dit artikel bevat een overzicht van alle functies die momenteel als preview-versie beschikbaar zijn voor Azure Stream Analytics. Het gebruik van preview-functies in een productie omgeving wordt niet aanbevolen.
+In dit artikel bevat een overzicht van alle functies die momenteel in Preview-versie van Azure Stream Analytics. Preview-functies gebruiken in een productieomgeving wordt niet aanbevolen.
 
-## <a name="public-previews"></a>Open bare voor beelden
+## <a name="public-previews"></a>Openbare preview-versies
 
-De volgende functies zijn beschikbaar in de open bare preview-versie. U kunt deze functies vandaag nog gebruiken, maar niet in uw productie omgeving.
+De volgende functies zijn in openbare preview. U kunt profiteren van deze functies vandaag, maar niet gebruiken in uw productieomgeving.
 
 ### <a name="online-scaling"></a>Online schalen
 
@@ -57,22 +56,22 @@ Azure Stream Analytics-taken kunnen worden gemaakt in Visual Studio code. Bekijk
 
 ### <a name="anomaly-detection"></a>Anomaliedetectie
 
-Azure Stream Analytics introduceert nieuwe machine learning modellen met ondersteuning voor de detectie van *Prikker* en *spannings dips* naast bidirectionele, trage positieve en trage negatieve trends. Ga voor meer informatie naar [anomalie detectie in azure stream Analytics](stream-analytics-machine-learning-anomaly-detection.md).
+Azure Stream Analytics introduceert nieuwe machine learning-modellen met ondersteuning voor *piek* en *dalen* detectie naast bidirectionele, trage positief en traag negatieve trends detecteren. Ga voor meer informatie naar [anomalie detectie in azure stream Analytics](stream-analytics-machine-learning-anomaly-detection.md).
 
 
 ### <a name="integration-with-azure-machine-learning"></a>Integratie met Azure Machine Learning
 
-U kunt Stream Analytics taken schalen met behulp van Machine Learning (ML)-functies. Ga voor meer informatie over hoe u de functies van ML in uw Stream Analytics-taak kunt gebruiken [uw stream Analytics-taak schalen met Azure machine learning-functies](stream-analytics-scale-with-machine-learning-functions.md). Bekijk een praktijk scenario met het uitvoeren van [sentiment-analyse met behulp van Azure stream Analytics en Azure machine learning](stream-analytics-machine-learning-integration-tutorial.md).
+Stream Analytics-taken met Machine Learning (ML)-functies, kunt u schalen. Voor meer informatie over hoe u ML-functies in uw Stream Analytics-taak gebruiken kunt, gaat u naar [schalen van uw Stream Analytics-taak met Azure Machine Learning-functies](stream-analytics-scale-with-machine-learning-functions.md). Bekijk een Praktijkscenario met [uitvoeren van sentimentanalyses met behulp van Azure Stream Analytics en Azure Machine Learning](stream-analytics-machine-learning-integration-tutorial.md).
 
 
-### <a name="live-data-testing-in-visual-studio"></a>Live data tests in Visual Studio
+### <a name="live-data-testing-in-visual-studio"></a>Live gegevens testen in Visual Studio
 
-Visual Studio Tools for Azure Stream Analytics verbeteren de lokale test functie waarmee u query's kunt testen op live gebeurtenis stromen vanuit Cloud bronnen zoals Event hub of IoT hub. Meer informatie over hoe u [Live-gegevens lokaal kunt testen met behulp van Azure stream Analytics-hulpprogram ma's voor Visual Studio](stream-analytics-live-data-local-testing.md).
+Visual Studio-hulpprogramma's voor Azure Stream Analytics, verbeter de lokale testen functie waarmee u voor het testen van query's voor live-gebeurtenis-stromen van cloudbronnen, zoals Event Hub of IoT-hub. Meer informatie over het [live gegevens lokaal met behulp van Azure Stream Analytics-hulpprogramma's voor Visual Studio Test](stream-analytics-live-data-local-testing.md).
 
 
-### <a name="net-user-defined-functions-on-iot-edge"></a>Door de gebruiker gedefinieerde .NET-functies op IoT Edge
+### <a name="net-user-defined-functions-on-iot-edge"></a>.NET-gebruiker gedefinieerde functies op IoT Edge
 
-Met .NET Standard-door de gebruiker gedefinieerde functies kunt u .NET Standard-code uitvoeren als onderdeel van uw streaming-pijp lijn. U kunt eenvoudige C# klassen maken of het volledige project en de bibliotheken importeren. De volledige functionaliteit voor het ontwerpen en opsporen van fouten wordt ondersteund in Visual Studio. Ga voor meer informatie naar [.NET Standard-door de gebruiker gedefinieerde functies ontwikkelen voor Azure stream Analytics Edge-taken](stream-analytics-edge-csharp-udf-methods.md).
+Met .NET standard-door gebruiker gedefinieerde functies, kunt u de standaard .NET-code uitvoeren als onderdeel van uw streamingpijplijn automatiseert. U kunt eenvoudig C#-klassen maken of importeren van volledige-project en -bibliotheken. Volledige Maak- en debugfase van ervaring wordt ondersteund in Visual Studio. Ga voor meer informatie naar [.NET Standard ontwikkelen door de gebruiker gedefinieerde functies voor Azure Stream Analytics Edge-taken](stream-analytics-edge-csharp-udf-methods.md).
 
 ## <a name="other-previews"></a>Andere voor beelden
 

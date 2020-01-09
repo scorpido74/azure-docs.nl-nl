@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 02/14/2019
-ms.openlocfilehash: cdc534325fd693dd34f2dc25c9953cd40ca96163
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 28eb7e490890b46a4025a6cf62e13b364bd7b6dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162310"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432350"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Resources, rollen en toegangs beheer in Application Insights
 
@@ -98,17 +98,17 @@ Waar van toepassing, gaan we een koppeling naar de bijbehorende officiële refer
 
 ' Bewerken ' omvat het maken, verwijderen en bijwerken:
 
-* Bronnen
+* Resources
 * Webtests
 * Waarschuwingen
 * Continue export
 
-#### <a name="select-the-user"></a>De gebruiker selecteren
+#### <a name="select-the-user"></a>Gebruiker selecteren
 
 Als de gebruiker die u wilt, niet in de adres lijst staat, kunt u iedereen uitnodigen met een Microsoft-account.
 (Als ze gebruikmaken van services zoals Outlook.com, OneDrive, Windows Phone of XBox Live, hebben ze een Microsoft-account.)
 
-## <a name="related-content"></a>Gerelateerde inhoud
+## <a name="related-content"></a>Verwante inhoud
 
 * [Op rollen gebaseerd toegangs beheer in azure](../../role-based-access-control/role-assignments-portal.md)
 
@@ -141,6 +141,6 @@ $resourceGroup = "RGNAME"
 <!--Link references-->
 
 [account]: https://account.microsoft.com
-[group]: ../../azure-resource-manager/resource-group-overview.md
+[group]: ../../azure-resource-manager/management/overview.md
 [portal]: https://portal.azure.com/
 [start]: ../../azure-monitor/app/app-insights-overview.md

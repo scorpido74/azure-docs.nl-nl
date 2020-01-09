@@ -1,7 +1,7 @@
 ---
-title: Met behulp van de positie om weer te geven van zoekresultaten
+title: Positie gebruiken om Zoek resultaten weer te geven
 titleSuffix: Azure Cognitive Services
-description: Ziet u hoe u het antwoord Bing RankingResponse zoekresultaten in positie volgorde weergeven.
+description: Laat zien hoe u het Bing RankingResponse-antwoord kunt gebruiken om Zoek resultaten weer te geven op volg orde van prioriteit.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,68 +9,68 @@ ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 06/18/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: cfe198352cae95227a76535544d55a6be0c66abc
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 1c8e0bb136fddeb84dc991e63a761378b38cc470
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203242"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382324"
 ---
-# <a name="build-a-console-app-search-client-in-c"></a>Bouw een console-client-app zoeken in C#
+# <a name="build-a-console-app-search-client-in-c"></a>Een console-app zoeken-client maken inC#
 
-In deze zelfstudie laat zien hoe een eenvoudige .NET Core-consoletoepassing waarmee gebruikers de Bing webzoekopdrachten-API opvragen en weergeven van gerangschikte resultaten kan bouwen.
+Deze zelf studie laat zien hoe u een eenvoudige .NET Core-Console-app bouwt waarmee gebruikers de Bing Webzoekopdrachten-API kunnen doorzoeken en gerangschikte resultaten weer geven.
 
-Deze zelfstudie laat zien hoe u:
+Deze zelf studie laat zien hoe u:
 
-- Een eenvoudige query maken die naar de Bing webzoekopdrachten-API
-- Queryresultaten in gerangschikte volgorde weergeven
+- Een eenvoudige query naar de Bing Webzoekopdrachten-API maken
+- Query resultaten weer geven in gerangschikte volg orde
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u wilt volgen, samen met de zelfstudie, hebt u het volgende nodig:
+Als u de zelf studie wilt volgen, hebt u het volgende nodig:
 
-- Visual Studio. Als u geen, [download en installeer de gratis Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/).
-- De abonnementssleutel van een voor de Bing webzoekopdrachten-API. Als u geen sleutel hebt, kunt u zich [registreren voor een gratis proefversie](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+- Visual Studio. Als u dit niet hebt, [downloadt en installeert u de gratis Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/).
+- Een abonnements sleutel voor de Bing Webzoekopdrachten-API. Als u geen sleutel hebt, kunt u zich [registreren voor een gratis proefversie](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
 
-## <a name="create-a-new-console-app-project"></a>Een nieuw Console-App-project maken
+## <a name="create-a-new-console-app-project"></a>Een nieuw console-app-project maken
 
 Maak in Visual Studio een project met `Ctrl`+`Shift`+`N`.
 
-In de **nieuw Project** dialoogvenster, klikt u op **Visual C# > Windows Classic Desktop > consoletoepassing (.NET Framework)** .
+Klik in het dialoog venster **Nieuw project** op **Visual C# > Windows Classic bureau blad > console-app (.NET Framework)** .
 
-Noem de toepassing **MyConsoleSearchApp**, en klik vervolgens op **OK**.
+Noem de toepassing **MyConsoleSearchApp**en klik vervolgens op **OK**.
 
-## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>JSON.net Nuget-pakket toevoegen aan het project
+## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>Het JSON.net Nuget-pakket toevoegen aan het project
 
-JSON.net kunt u werken met de JSON-antwoord geretourneerd door de API. Voeg de NuGet-pakket toe aan uw project:
+Met JSON.net kunt u werken met de JSON-antwoorden die zijn geretourneerd door de API. Voeg het NuGet-pakket toe aan uw project:
 
-- In **Solution Explorer** met de rechtermuisknop op het project en selecteer **NuGet-pakketten beheren...** .
-- Op de **Bladeren** tabblad, zoek `Newtonsoft.Json`. Selecteer de meest recente versie en klik vervolgens op **installeren**.
-- Klik op de **OK** knop op de **wijzigingen controleren** venster.
-- Sluit de Visual Studio-tabblad met de titel **NuGet: MyConsoleSearchApp**.
+- Klik in **Solution Explorer** met de rechter muisknop op het project en selecteer **NuGet-pakketten beheren...** .
+- Zoek op het tabblad **Bladeren** naar `Newtonsoft.Json`. Selecteer de nieuwste versie en klik vervolgens op **installeren**.
+- Klik op de knop **OK** in het venster **wijzigingen bekijken** .
+- Sluit het tabblad Visual Studio met de titel **NuGet: MyConsoleSearchApp**.
 
-## <a name="add-a-reference-to-systemweb"></a>Voeg een verwijzing naar System.Web
+## <a name="add-a-reference-to-systemweb"></a>Een verwijzing naar System. web toevoegen
 
-In deze zelfstudie is afhankelijk van de `System.Web` assembly. Voeg een verwijzing naar deze assembly toe aan uw project:
+In deze zelf studie wordt gebruikgemaakt van de `System.Web`-assembly. Voeg een verwijzing naar deze assembly toe aan uw project:
 
-- In **Solution Explorer**, met de rechtermuisknop op **verwijzingen** en selecteer **verwijzing toevoegen...**
-- Selecteer **assembly's > Framework**, schuif omlaag en controleren **System.Web**
+- Klik in **Solution Explorer**met de rechter muisknop op **verwijzingen** en selecteer **referentie toevoegen...**
+- Selecteer **assembly's > Framework**, Schuif omlaag en controleer **System. Web**
 - Selecteer **OK**
 
-## <a name="add-some-necessary-using-statements"></a>Sommige vereiste using-instructies toevoegen
+## <a name="add-some-necessary-using-statements"></a>Enkele vereiste instructies gebruiken
 
-De code in deze zelfstudie vereist drie extra met behulp van instructies. Toevoegen van deze instructies onder de bestaande `using` instructies aan het begin van **Program.cs**:
+Voor de code in deze zelf studie zijn drie extra instructies vereist. Voeg deze instructies toe onder de bestaande `using`-instructies boven aan **Program.cs**:
 
 ```csharp
 using System.Web;
 using System.Net.Http;
 ```
 
-## <a name="ask-the-user-for-a-query"></a>De gebruiker vragen voor een query
+## <a name="ask-the-user-for-a-query"></a>De gebruiker vragen om een query
 
-In **Solution Explorer**Open **Program.cs**. Update de `Main()` methode:
+Open **Program.cs**in **Solution Explorer**. Werk de `Main()` methode bij:
 
 ```csharp
 static void Main()
@@ -91,13 +91,13 @@ static void Main()
 
 Deze methode:
 
-- De gebruiker vraagt om een query
-- Aanroepen `RunQueryAndDisplayResults(userQuery)` uit te voeren van de query en de resultaten weergeven
-- Wacht op invoer van de gebruiker om te voorkomen dat het consolevenster onmiddellijk wordt gesloten.
+- De gebruiker wordt gevraagd om een query
+- Roept `RunQueryAndDisplayResults(userQuery)` aan om de query uit te voeren en de resultaten weer te geven
+- Wacht op invoer van de gebruiker om te voor komen dat het console venster onmiddellijk wordt gesloten.
 
-## <a name="search-for-query-results-using-the-bing-web-search-api"></a>Zoeken naar de resultaten van de query met behulp van de Bing webzoekopdrachten-API
+## <a name="search-for-query-results-using-the-bing-web-search-api"></a>Zoeken naar query resultaten met behulp van de Bing Webzoekopdrachten-API
 
-Voeg vervolgens de methode waarmee query's van de API en de resultaten worden weergegeven:
+Voeg vervolgens een methode toe waarmee de API wordt opgevraagd en de resultaten worden weer gegeven:
 
 ```csharp
 static void RunQueryAndDisplayResults(string userQuery)
@@ -137,16 +137,16 @@ static void RunQueryAndDisplayResults(string userQuery)
 
 Deze methode:
 
-- Hiermee maakt u een `HttpClient` query uitvoeren op de webzoekopdrachten-API
-- Stelt de `Ocp-Apim-Subscription-Key` HTTP-header die Bing gebruikt voor het verifiëren van de aanvraag
-- De aanvraag wordt uitgevoerd en maakt gebruik van JSON.net deserialiseren van de resultaten
-- Aanroepen `DisplayAllRankedResults(responseObjects)` om alle resultaten in gerangschikte volgorde weer te geven
+- Hiermee maakt u een `HttpClient` voor het opvragen van de Webzoekopdrachten-API
+- Hiermee stelt u de `Ocp-Apim-Subscription-Key` HTTP-header, die door Bing wordt gebruikt om de aanvraag te verifiëren
+- Voert de aanvraag uit en gebruikt JSON.net om de resultaten te deserialiseren
+- Roept `DisplayAllRankedResults(responseObjects)` op om alle resultaten in de rang orde weer te geven
 
-Zorg ervoor dat u de waarde van `Ocp-Apim-Subscription-Key` naar de abonnementssleutel van uw.
+Zorg ervoor dat u de waarde van `Ocp-Apim-Subscription-Key` instelt op de sleutel van uw abonnement.
 
-## <a name="display-ranked-results"></a>Gerangschikte resultaten weergeven
+## <a name="display-ranked-results"></a>Gerangschikte resultaten weer geven
 
-Voordat u die laat zien hoe u de resultaten weergeven in gerangschikte volgorde, kijk eens een voorbeeldantwoord voor web zoeken:
+Bekijk een voor beeld van een zoek opdracht op het web voordat u kunt zien hoe de resultaten in de rang orde worden weer gegeven:
 
 ```json
 {
@@ -221,15 +221,15 @@ Voordat u die laat zien hoe u de resultaten weergeven in gerangschikte volgorde,
 }
 ```
 
-De `rankingResponse` JSON-object ([documentatie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) beschrijft de juiste volgorde voor zoekresultaten. Het bevat een of meer van de volgende, geprioriteerde groepen:
+In het JSON-object `rankingResponse` ([documentatie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) wordt de juiste weergave volgorde voor zoek resultaten beschreven. Het bevat een of meer van de volgende groepen met prioriteit:
 
-- `pole`: De lijst met zoekresultaten om op te halen van de meest zichtbaar behandeling (bijvoorbeeld weergegeven boven de hoofdlijnen en zijbalk).
-- `mainline`: De lijst met zoekresultaten om weer te geven in de hoofdlijnen.
-- `sidebar`: De lijst met zoekresultaten om weer te geven in de zijbalk. Als er geen zijbalk, moet u de resultaten hieronder de hoofdlijnen weergeven.
+- `pole`: de zoek resultaten voor het verkrijgen van de meest zicht bare behandeling (bijvoorbeeld weer gegeven boven de mainline en Sidebar).
+- `mainline`: de zoek resultaten worden weer gegeven in de Mainline.
+- `sidebar`: de zoek resultaten worden weer gegeven in de zijbalk. Als er geen Sidebar is, geeft u de resultaten onder het Mainline weer.
 
-Het antwoord rangorde JSON, omvat mogelijk een of meer van de groepen.
+De JSON van het classificatie antwoord kan een of meer van de groepen bevatten.
 
-In **Program.cs**, voegt u de volgende methode om resultaten in goed gerangschikte volgorde weer te geven:
+Voeg in **Program.cs**de volgende methode toe om de resultaten in de juiste rang orde weer te geven:
 
 ```csharp
 static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects)
@@ -273,10 +273,10 @@ static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects
 
 Deze methode:
 
-- Wordt uitgevoerd via de `rankingResponse` groepen die het antwoord bevat
-- De items in elke groep worden weergegeven door aan te roepen `DisplaySpecificResults(...)`
+- Lussen over de `rankingResponse` groepen die het antwoord bevat
+- Hiermee worden de items in elke groep weer gegeven door het aanroepen van `DisplaySpecificResults(...)`
 
-In **Program.cs**, voeg de volgende twee methoden toe:
+Voeg in **Program.cs**de volgende twee methoden toe:
 
 ```csharp
 static void DisplaySpecificResults(Newtonsoft.Json.Linq.JToken resultIndex, Newtonsoft.Json.Linq.JToken items, string title, params string[] fields)
@@ -305,7 +305,7 @@ static void DisplayItem(Newtonsoft.Json.Linq.JToken item, string title, string[]
 }
 ```
 
-Deze methoden werken samen om de zoekresultaten in de console-uitvoer.
+Deze methoden werken samen om de zoek resultaten naar de-console uit te voeren.
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
@@ -331,4 +331,4 @@ WebPage:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [met behulp van trefwoordenrangschikking om weer te geven resultaten](rank-results.md).
+Meer informatie over [het gebruik van classificatie om resultaten weer te geven](rank-results.md).

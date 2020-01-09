@@ -3,12 +3,12 @@ title: Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 description: Hierin wordt beschreven hoe u back-ups maakt van virtuele Azure-machines in een Recovery Services kluis met behulp van de Azure Backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: dc47aa2b4da08a0fc2c9a91b4d547a0d19e1869a
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f2954ad2693d7b4f56e3f1b33e804a6936cf8a65
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173343"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450148"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 
@@ -63,9 +63,8 @@ Nadat de kluis is gemaakt, wordt deze weer gegeven in de lijst Recovery Services
 
 ![Lijst met back-upkluizen](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
-> [!NOTE]
-> Azure Backup service maakt een afzonderlijke resource groep (met uitzonde ring van de resource groep van de VM) voor het opslaan van de moment opname, met de naamgevings indeling **AzureBackupRG_geography_number** (voor beeld: AzureBackupRG_northeurope_1). De gegevens in deze resource groep worden bewaard gedurende de duur in dagen zoals opgegeven in de sectie *onmiddellijke herstel momentopname bewaren* van het back-upbeleid van Azure virtual machine.  Het Toep assen van een vergren deling op deze resource groep kan leiden tot back-upfouten.<br>
-Deze resource groep moet ook worden uitgesloten van de beperkingen van namen/Tags als een beperkings beleid het maken van resource punt verzamelingen in dat geval voor back-upfouten blokkeert.
+>[!NOTE]
+> Azure Backup kunt nu de naam van de resource groep aanpassen die is gemaakt door de Azure Backup-service. Zie voor meer informatie [Azure backup resource groep voor virtual machines](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines).
 
 ### <a name="modify-storage-replication"></a>Opslag replicatie wijzigen
 
@@ -134,7 +133,7 @@ Als u hebt geselecteerd voor het maken van een nieuw back-upbeleid, vult u de be
     * U kunt moment opnamen voor direct terugzetten tussen een en vijf dagen bewaren. Twee dagen is de standaard instelling.
 4. Geef in **Bewaar termijn**op hoe lang u uw dagelijkse of wekelijkse back-uppunten wilt houden.
 5. Geef bij het **bewaren van maandelijks back-uppunt**op of u een maandelijkse back-up van uw dagelijkse of wekelijkse back-ups wilt behouden.
-6. Klik op **OK** om het beleid op te slaan.
+6. Klik op **OK** het beleid op te slaan.
 
     ![Nieuw back-upbeleid](./media/backup-azure-arm-vms-prepare/new-policy.png)
 
@@ -170,7 +169,7 @@ De taak status kan variëren, afhankelijk van de volgende scenario's:
 **Snapshot** | **Gegevens overdragen aan de kluis** | **Taak status**
 --- | --- | ---
 Voltooid | Wordt uitgevoerd | Wordt uitgevoerd
-Voltooid | Genegeerd | Voltooid
+Voltooid | Overgeslagen | Voltooid
 Voltooid | Voltooid | Voltooid
 Voltooid | Mislukt | Voltooid met waarschuwing
 Mislukt | Mislukt | Mislukt

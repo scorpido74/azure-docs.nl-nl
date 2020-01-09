@@ -1,26 +1,30 @@
 ---
 title: Replicatie in een beheerde exemplaar database configureren
-description: Meer informatie over het configureren van transactionele replicatie in een Azure SQL Database Managed instance data base
+description: Meer informatie over het configureren van transactionele replicatie tussen een Azure SQL Database beheerde instantie van de uitgever/Distributor en de abonnee van een beheerd exemplaar.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: MashaMSFT
+ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: f303a363fd4d42889e7817273be5d5e5440a2293
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: fd881142e0260d313e197d5e40ae25a2621646df
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822597"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372466"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Replicatie configureren in een Azure SQL Database beheerde exemplaar database
 
 Met transactionele replicatie kunt u gegevens repliceren naar een Azure SQL Database beheerde exemplaar database vanuit een SQL Server-Data Base of een andere exemplaar database. 
+
+In dit artikel wordt uitgelegd hoe u replicatie kunt configureren tussen een beheerde exemplaar van een uitgever/een distributeur en een beheerde exemplaar-abonnee. 
+
+![Repliceren tussen twee beheerde exemplaren](media/replication-with-sql-database-managed-instance/sqlmi-sqlmi-repl.png)
 
 U kunt ook transactionele replicatie gebruiken voor het pushen van wijzigingen die zijn aangebracht in een exemplaar database in Azure SQL Database beheerde instantie naar:
 
@@ -31,7 +35,8 @@ U kunt ook transactionele replicatie gebruiken voor het pushen van wijzigingen d
 Transactionele replicatie bevindt zich in de open bare preview van [Azure SQL database Managed instance](sql-database-managed-instance.md). Een beheerd exemplaar kan Publisher-, Distributor-en Subscriber-data bases hosten. Zie [transactionele replicatie configuraties](sql-database-managed-instance-transactional-replication.md#common-configurations) voor beschik bare configuraties.
 
   > [!NOTE]
-  > Dit artikel is bedoeld om een gebruiker te begeleiden bij het configureren van replicatie met een door Azure data base beheerd exemplaar van end-to-end, te beginnen met het maken van de resource groep. Als er al beheerde instanties zijn geïmplementeerd, gaat u verder met [stap 4](#4---create-a-publisher-database) om uw Publisher-data base te maken, of [stap 6](#6---configure-distribution) als u al een Publisher-en abonnee database hebt en u klaar bent om de configuratie van de replicatie te starten.  
+  > - Dit artikel is bedoeld om een gebruiker te begeleiden bij het configureren van replicatie met een door Azure data base beheerd exemplaar van end-to-end, te beginnen met het maken van de resource groep. Als er al beheerde instanties zijn geïmplementeerd, gaat u verder met [stap 4](#4---create-a-publisher-database) om uw Publisher-data base te maken, of [stap 6](#6---configure-distribution) als u al een Publisher-en abonnee database hebt en u klaar bent om de configuratie van de replicatie te starten.  
+  > - In dit artikel worden uw uitgever en distributie server geconfigureerd op hetzelfde beheerde exemplaar. Als u de Distributor wilt plaatsen op een afzonderlijke beheerd-instantie, raadpleegt u de zelf studie [replicatie configureren tussen een mi-Uitgever en een mi-distributeur](sql-database-managed-instance-configure-replication-tutorial.md). 
 
 ## <a name="requirements"></a>Vereisten
 
@@ -67,10 +72,10 @@ Gebruik de [Azure Portal](https://portal.azure.com) om een resource groep te mak
 
 ## <a name="2---create-managed-instances"></a>2-beheerde instanties maken
 
-Gebruik de [Azure Portal](https://portal.azure.com) om twee [beheerde exemplaren](sql-database-managed-instance-create-tutorial-portal.md) op hetzelfde virtuele netwerk en subnet te maken. De twee beheerde exemplaren moeten de volgende naam hebben:
+Gebruik de [Azure Portal](https://portal.azure.com) om twee [beheerde exemplaren](sql-database-managed-instance-create-tutorial-portal.md) op hetzelfde virtuele netwerk en subnet te maken. Geef bijvoorbeeld de twee beheerde exemplaren een naam:
 
-- `sql-mi-pub`
-- `sql-mi-sub`
+- `sql-mi-pub` (samen met enkele tekens voor wille keurigheid)
+- `sql-mi-sub` (samen met enkele tekens voor wille keurigheid)
 
 U moet ook [een Azure VM configureren om verbinding te maken](sql-database-managed-instance-configure-vm.md) met uw door Azure SQL database beheerde exemplaren. 
 
@@ -80,9 +85,13 @@ U moet ook [een Azure VM configureren om verbinding te maken](sql-database-manag
 
 Kopieer het pad naar de bestands share met de volgende indeling: `\\storage-account-name.file.core.windows.net\file-share-name`
 
+Voorbeeld: `\\replstorage.file.core.windows.net\replshare`
+
 Kopieer de toegangs sleutels voor opslag in de indeling van: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
- Zie [Opslagtoegangssleutels bekijken en kopiëren](../storage/common/storage-account-manage.md#access-keys) voor meer informatie. 
+Voorbeeld: `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net`
+
+Zie [toegangs sleutels voor opslag accounts beheren](../storage/common/storage-account-keys-manage.md)voor meer informatie. 
 
 ## <a name="4---create-a-publisher-database"></a>4-een Publisher-data base maken
 
@@ -160,8 +169,9 @@ Wijzig de uitvoering van de query in de [Sqlcmd](/sql/ssms/scripting/edit-sqlcmd
 :setvar username loginUsedToAccessSourceManagedInstance
 :setvar password passwordUsedToAccessSourceManagedInstance
 :setvar file_storage "\\storage-account-name.file.core.windows.net\file-share-name"
+-- example: file_storage "\\replstorage.file.core.windows.net\replshare"
 :setvar file_storage_key "DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net"
-
+-- example: file_storage_key "DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net"
 
 USE [master]
 EXEC sp_adddistpublisher
@@ -173,6 +183,9 @@ EXEC sp_adddistpublisher
   @working_directory = N'$(file_storage)',
   @storage_connection_string = N'$(file_storage_key)'; -- Remove this parameter for on-premises publishers
 ```
+
+   > [!NOTE]
+   > Zorg ervoor dat u alleen backslashes (`\`) gebruikt voor de para meter file_storage. Het gebruik van een slash (`/`) kan een fout veroorzaken wanneer er verbinding wordt gemaakt met de bestands share. 
 
 Met dit script wordt een lokale uitgever op het beheerde exemplaar geconfigureerd, wordt een gekoppelde server toegevoegd en wordt een set taken gemaakt voor de SQL Server Agent. 
 
@@ -322,10 +335,11 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-U kunt uw Azure-resources opschonen door [de beheerde exemplaar resources van de resource groep te verwijderen](../azure-resource-manager/manage-resources-portal.md#delete-resources) en vervolgens de resource groep te verwijderen `SQLMI-Repl`. 
+U kunt uw Azure-resources opschonen door [de beheerde exemplaar resources van de resource groep te verwijderen](../azure-resource-manager/management/manage-resources-portal.md#delete-resources) en vervolgens de resource groep te verwijderen `SQLMI-Repl`. 
 
    
 ## <a name="see-also"></a>Zie ook
 
 - [Transactionele replicatie](sql-database-managed-instance-transactional-replication.md)
+- [Zelf studie: transactionele replicatie tussen een MI-Publisher en een SQL Server-abonnee configureren](sql-database-managed-instance-configure-replication-tutorial.md)
 - [Wat is een beheerd exemplaar?](sql-database-managed-instance.md)

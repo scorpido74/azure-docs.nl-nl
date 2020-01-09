@@ -1,7 +1,7 @@
 ---
 title: One-vs-All Multiclass
-titleSuffix: Azure Machine Learning service
-description: Informatie over het gebruik van de module One-vs-All Multiclass in de Azure Machine Learning-service om een classificatie model met een klasse te maken op basis van een ensemble van binaire classificatie modellen.
+titleSuffix: Azure Machine Learning
+description: Informatie over het gebruik van de module One-vs-All Multiclass in Azure Machine Learning om een classificatie model met een klasse te maken op basis van een ensemble van binaire classificatie modellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 5c59f2865e7ebf768cdd8b80e59d69359f8607c6
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: bf4f176eef502cdd1c68f19904a24bd2500e1302
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717192"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428498"
 ---
 # <a name="one-vs-all-multiclass"></a>One-vs-All Multiclass
 
@@ -61,4 +61,4 @@ U kunt ook de niet-getrainde classificatie door geven aan [kruislings valideren 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor de Azure machine learning-service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

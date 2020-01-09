@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 996db9690d19cc40c3963922d4edb3b59469752b
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 5586704e098fc568c714e779c2eed44aa3d1df9c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514799"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382996"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>Wat is de Bing Spellingcontrole-API?
 
@@ -44,3 +44,5 @@ De Bing Spellingcontrole-API kan eenvoudig worden aangeroepen vanuit elke progra
 Probeer eerst de [interactieve demo](https://azure.microsoft.com/services/cognitive-services/spell-check/) van de Bing Spellingcontrole-API om te zien hoe u snel een grote verscheidenheid aan teksten kunt controleren.
 
 Wanneer u klaar bent om de API aan te roepen, maakt u een [account voor Cognitive Services-API](../../cognitive-services/cognitive-services-apis-create-account.md). Als u geen Azure-abonnement hebt, kunt u gratis [een account maken](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+
+U kunt ook de pagina van de [Bing Search API-hub](../bing-web-search/search-the-web.md) bezoeken om de andere beschik bare api's te verkennen.

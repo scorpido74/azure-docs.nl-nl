@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/10/2019
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: 70b886286980c065379678ba21ab21e02d0e2bbb
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f2e76229673033ab001c5499739090a7c435ef8a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178086"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468190"
 ---
 | |
 |--|
-|Als datgene wat u op uw scherm ziet, niet overeenkomt met wat er in dit artikel wordt behandeld, betekent dit dat uw beheerder de nieuwe **app mijn apps** (preview) niet heeft ingeschakeld. Als u de oude ervaring wilt gebruiken, moet u de instructies en informatie volgen in de [Portal van mijn apps](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-overview) .|
-| |
+|Als uw beheerder de nieuwe preview-versie van **mijn apps** voor uw organisatie heeft ingeschakeld, ziet u nu een banner aan de bovenkant van de pagina **mijn apps** met de melding dat **er een bijgewerkte ervaring voor mijn toepassingen beschikbaar is**. Als u **try**-out selecteert, gaat u meteen naar de nieuwe URL (myapplications.Microsoft.com) en de bijgewerkte ervaring. Daarna gaat u, telkens wanneer u terugkeert naar de pagina **mijn apps** , automatisch naar de nieuwe ervaring.<br><br>Als u de nieuwe ervaring niet meer wilt gebruiken, kunt u **Ja** selecteren in het vaandel **nieuwe ervaring laten staan** boven aan de pagina nieuwe **mijn apps** . U gaat direct terug naar de oude URL (myapps.microsoft.com) en de ervaring. Daarna gaat u, telkens wanneer u terugkeert naar de pagina **mijn apps** , automatisch naar de oude ervaring.|
+|

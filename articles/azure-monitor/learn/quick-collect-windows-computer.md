@@ -3,7 +3,7 @@ title: Gegevens verzamelen van een hybride Windows-computer met Azure Monitor
 description: In deze Quick Start leert u hoe u de Log Analytics-agent kunt implementeren voor Windows-computers die buiten Azure worden uitgevoerd en het verzamelen van gegevens met Azure Monitor-logboeken inschakelen.
 services: azure-monitor
 documentationcenter: azure-monitor
-author: mgoedtel
+author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
-ms.author: magoedte
+ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 26919a64313df823dddad5dcfca6de5d08dcd993
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 11c51ab702399c73dc93f850d4abde49b45b3775
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199025"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398951"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Gegevens verzamelen van een Windows-computer in een hybride omgeving met Azure Monitor
 
@@ -29,7 +29,7 @@ Zie [ondersteunde Windows-besturings systemen](../../azure-monitor/platform/log-
  
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-## <a name="sign-in-to-azure-portal"></a>Meld u aan bij Azure Portal
+## <a name="sign-in-to-azure-portal"></a>Aanmelden bij Azure Portal
 
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com). 
 
@@ -149,7 +149,7 @@ U kunt de agent van de computer verwijderen en de Log Analytics-werk ruimte verw
 
 Voer de volgende stappen uit om de agent te verwijderen:
 
-1. Open het configuratie scherm.
+1. Open het Configuratiescherm.
 
 2. Open **Programma's en onderdelen**.
 

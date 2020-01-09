@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f78fa35096b7e17d3736190bfa49619c2c81520
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 76d5aabc30d0375185130b9781caeaf4d5457455
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965395"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423726"
 ---
 # <a name="protected-web-api-code-configuration"></a>Beveiligde web-API: code configuratie
 
@@ -43,7 +43,7 @@ De informatie over de identiteit van de app en over de gebruiker (tenzij de web-
 
 Hier volgt een C# code voorbeeld waarin een client wordt weer gegeven die de API aanroept nadat deze een token heeft verkregen met micro soft Authentication Library voor .net (MSAL.net):
 
-```CSharp
+```csharp
 var scopes = new[] {$"api://.../access_as_user}";
 var result = await app.AcquireToken(scopes)
                       .ExecuteAsync();
@@ -96,19 +96,19 @@ Wanneer een app wordt aangeroepen voor een controller actie die een `[Authorize]
 
 In ASP.NET Core wordt deze middleware geïnitialiseerd in het Startup.cs-bestand:
 
-```CSharp
+```csharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 ```
 
 De middleware wordt toegevoegd aan de Web-API met behulp van deze instructie:
 
-```CSharp
+```csharp
  services.AddAzureAdBearer(options => Configuration.Bind("AzureAd", options));
 ```
 
  Op dit moment maken de ASP.NET Core sjablonen Azure Active Directory (Azure AD) Web-Api's die zich aanmelden bij gebruikers in uw organisatie of een organisatie, niet met persoonlijke accounts. Maar u kunt ze eenvoudig wijzigen voor het gebruik van het micro soft Identity platform-eind punt door deze code toe te voegen aan het Startup.cs-bestand:
 
-```CSharp
+```csharp
 services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
 {
     // This is a Microsoft identity platform web API.

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 08f9310c2ffdb2e7b8d4249495c2ee90b522d694
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 609b1c4500e1602c38f3383df6cbe176a3333bff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926783"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439555"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Activiteiten vertakken en koppelen in een Data Factory-pijplijn
 
@@ -27,7 +27,7 @@ Een overzicht van het scenario: ![overzicht](media/tutorial-control-flow-portal/
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maakt.
+> * Een gegevensfactory maken.
 > * Een gekoppelde Azure Storage-service maken
 > * Een Azure Blob-gegevensset maken
 > * Een pijplijn maken met een kopieeractiviteit en een webactiviteit
@@ -41,8 +41,8 @@ In deze zelfstudie wordt Azure Portal gebruikt. U kunt andere methoden gebruiken
 ## <a name="prerequisites"></a>Vereisten
 
 * **Azure-abonnement**. Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
-* **Een Azure Storage-account**. U gebruikt de blob-opslag als **bron**-gegevensopslag. Als u geen Azure-opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md) om een account te maken.
-* **Azure SQL-database**. U gebruikt de database als **sink**-gegevensopslag. Als u geen Azure SQL-database hebt, raadpleegt u het artikel [Een Azure SQL-database maken](../sql-database/sql-database-get-started-portal.md) voor de stappen voor het maken van een account.
+* **Azure Storage-account**. U gebruikt de blob-opslag als **bron**-gegevensopslag. Als u geen Azure-opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md) om een account te maken.
+* **Azure SQL-database**. U gebruikt de database als **sink**-gegevensopslag. Als u geen Azure SQL-database hebt, raadpleegt u het artikel [Een Azure SQL-database maken](../sql-database/sql-database-get-started-portal.md) om een database te maken.
 
 ### <a name="create-blob-table"></a>Blobtabel maken
 
@@ -124,14 +124,14 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=000000
 ```
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
 1. Selecteer in het menu links de optie **een resource maken** > **gegevens en analyses** > **Data Factory**:
    
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
-2. Voer op de pagina **Nieuwe gegevensfactory** **ADFTutorialDataFactory** in als de **naam**. 
+2. Voer op de blade **New data factory** **ADFTutorialDataFactory** in bij **Name**. 
       
      ![De pagina Nieuwe data factory](./media/tutorial-control-flow-portal/new-azure-data-factory.png)
  
@@ -144,7 +144,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
       - Selecteer **Bestaande gebruiken** en selecteer een bestaande resourcegroep in de vervolgkeuzelijst. 
       - Selecteer **Nieuwe maken** en voer de naam van een resourcegroep in.   
          
-        Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/resource-group-overview.md) voor meer informatie.  
+        Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.  
 4. Selecteer **V2** als de **versie**.
 5. Selecteer de **locatie** voor de gegevensfactory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
 6. Selecteer **Vastmaken aan dashboard**.     
@@ -155,7 +155,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 9. Na het aanmaken ziet u de pagina **Data Factory** zoals weergegeven in de afbeelding.
    
    ![Startpagina van de gegevensfactory](./media/tutorial-control-flow-portal/data-factory-home-page.png)
-10. Klik op **Author & Monitor** om de gebruikersinterface (UI) van Data Factory op een afzonderlijk tabblad te openen.
+10. Klik op de tegel **Author & Monitor** om de gebruikersinterface (UI) van Azure Data Factory te openen in een afzonderlijk tabblad.
 
 
 ## <a name="create-a-pipeline"></a>Een pijplijn maken
@@ -193,7 +193,7 @@ In deze stap maakt u een pijplijn met één kopieeractiviteit en twee webactivit
    ![Gegevenssetverbinding - nieuwe gekoppelde service](./media/tutorial-control-flow-portal/dataset-connection-new-button.png)
 9. Voer in het venster **Nieuwe gekoppelde service** de volgende stappen uit: 
 
-    1. Voer **AzureStorageLinkedService** in als **Naam**.
+    1. Voer **AzureStorageLinkedService** in bij **Name**.
     2. Selecteer uw Azure-opslagaccount als **Naam van opslagaccount**.
     3. Klik op **Opslaan**.
 
@@ -275,7 +275,7 @@ In deze stap maakt u een pijplijn met één kopieeractiviteit en twee webactivit
 24. Klik in de werkbalk op de knop **Valideren** om de pijplijn te valideren. Sluit het venster met de **uitvoergegevens van de pijplijnvalidatie** door op de knop **>>** te klikken.
 
     ![Pijplijn valideren](./media/tutorial-control-flow-portal/validate-pipeline.png)
-24. Als u entiteiten (gegevenssets, pijplijnen enzovoort) wilt publiceren in de Data Factory-service, selecteert u **Alles publiceren**. Wacht tot u het bericht **Gepubliceerd** ziet.
+24. Als u entiteiten (gegevenssets, pijplijnen enzovoort) wilt publiceren in de Data Factory-service, selecteert u **Alles publiceren**. Wacht tot u het bericht **Publiceren gelukt** ziet.
 
     ![Publiceren](./media/tutorial-control-flow-portal/publish-button.png)
  
@@ -330,7 +330,7 @@ In deze stap maakt u een pijplijn met één kopieeractiviteit en twee webactivit
 In deze zelfstudie hebt u de volgende stappen uitgevoerd: 
 
 > [!div class="checklist"]
-> * Een gegevensfactory maakt.
+> * Een gegevensfactory maken.
 > * Een gekoppelde Azure Storage-service maken
 > * Een Azure Blob-gegevensset maken
 > * Een pijplijn met een kopieeractiviteit en een webactiviteit maken

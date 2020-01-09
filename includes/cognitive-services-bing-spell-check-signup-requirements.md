@@ -3,12 +3,27 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/12/2019
-ms.openlocfilehash: 4c69ebd7e1d4d649bfd2896ae87f0047c5988325
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 12/16/2019
+ms.openlocfilehash: 7c7e6fb7cc99a155c4e89ae930943f79a725beb3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176364"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382847"
 ---
-U hebt een [account voor Cognitive Services-API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met toegang tot de Bing Spellingcontrole-API nodig. Als u geen Azure-abonnement hebt, kunt u gratis [een account maken](https://azure.microsoft.com/try/cognitive-services/?api=text-analytics). Voordat u verdergaat, hebt u de toegangssleutel nodig [die wordt verstrekt bij het activeren van uw gratis proefversie](https://azure.microsoft.com/try/cognitive-services/my-apis/) of de sleutel van een betaald abonnement vanuit uw Azure-dashboard.
+## <a name="create-an-azure-resource"></a>Een Azure-resource maken
+
+Begin met het gebruik van de Bing Spellingcontrole-API door een van de onderstaande Azure-resources te maken.
+
+* [Een proef resource maken](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api-v7):
+    * Er is geen Azure-abonnement nodig.
+    * Gratis geldig voor zeven dagen. Nadat u zich hebt aangemeld, is een proef sleutel en een eind punt beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).
+
+* [Een Bing spellingcontrole resource maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7):
+    * Beschikbaar via de Azure Portal totdat u de resource verwijdert.
+    * Gebruik de gratis prijs categorie om de service te proberen en pas later bij te werken naar een betaalde laag voor productie.
+    * Bing Spellingcontrole-API wordt ook aangeboden in sommige lagen van de [Bing Search V7-resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7).
+    
+* [Een resource met meerdere services maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
+    * Beschikbaar via de Azure Portal totdat u de resource verwijdert.  
+    * Gebruik dezelfde sleutel en hetzelfde eind punt voor uw toepassingen, op meerdere Cognitive Services.

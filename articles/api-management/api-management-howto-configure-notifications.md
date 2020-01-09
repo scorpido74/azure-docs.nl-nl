@@ -1,5 +1,6 @@
 ---
-title: Meldingen en e-mail sjablonen configureren in azure API Management | Microsoft Docs
+title: Meldingen en e-mailsjablonen configureren
+titleSuffix: Azure API Management
 description: Meer informatie over het configureren van meldingen en e-mail sjablonen in azure API Management.
 services: api-management
 documentationcenter: ''
@@ -12,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: d49e861a529f3b2265f65c53cc0ee2f6feb151da
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e0477b1ba044004eaf95cc138bc2e19f40379566
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072486"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442681"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Meldingen en e-mailsjablonen configureren in Azure API Management
 API Management biedt de mogelijkheid om meldingen te configureren voor specifieke gebeurtenissen en om de e-mail sjablonen te configureren die worden gebruikt om te communiceren met de beheerders en ontwikkel aars van een API Management-exemplaar. In dit artikel wordt beschreven hoe u meldingen kunt configureren voor de beschik bare gebeurtenissen en vindt u een overzicht van het configureren van de e-mail sjablonen die worden gebruikt voor deze gebeurtenissen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u geen API Management service-exemplaar hebt, voert u de volgende Snelstartgids uit: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
+Als u geen API Management service-exemplaar hebt, voltooit u de volgende Snelstartgids: [een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 

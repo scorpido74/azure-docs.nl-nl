@@ -1,6 +1,7 @@
 ---
-title: Beveiligde TLS voor Azure Storage client in te schakelen | Microsoft Docs
-description: Informatie over het inschakelen van TLS 1.2 op de client van Azure Storage.
+title: Secure TLS inschakelen met .NET
+titleSuffix: Azure Storage
+description: Meer informatie over het inschakelen van TLS 1,2 met behulp van de .NET-client bibliotheek voor Azure Storage.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,26 +10,26 @@ ms.date: 06/25/2018
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 218708ffc9a680150d7b6bf559a00ca87054bbe8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81c9a8fe9513f1f8fc65ad64b34f0fb04383569b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65152973"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371799"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>Beveiligde TLS voor Azure Storage-client inschakelen
 
-Transport Layer Security (TLS) en Secure Sockets Layer (SSL) zijn cryptografische protocollen die beveiliging van communicatie via een netwerk. 1\.0 SSL 2.0 en 3.0 zijn kwetsbaar gevonden. Ze hebben door RFC is verboden. TLS 1.0 is onveilig voor het gebruik van onbeveiligde blok-codering (DES CBC en RC2 CBC) en Stream-codering (RC4). PCI-Raad wordt ook aangeraden de migratie naar een hoger TLS-versie. Voor meer informatie kunt u zien [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0).
+Transport Layer Security (TLS) en Secure Sockets Layer (SSL) zijn cryptografische protocollen die communicatie beveiliging bieden via een computer netwerk. SSL 1,0, 2,0 en 3,0 moeten kwetsbaar zijn. Ze zijn verboden door RFC. TLS 1,0 wordt onveilig voor het gebruik van Inveilige blok codering (DES CBC en RC2 CBC) en stream cipher (RC4). De PCI-Raad heeft ook de migratie naar hogere TLS-versies voorgesteld. Zie [Transport Layer Security (TLS) (Engelstalig)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)voor meer informatie.
 
-Azure Storage is gestopt met SSL 3.0 sinds 2015 en maakt gebruik van TLS 1.2 op openbare HTTPs-eindpunten, maar de TLS 1.0 en 1.1 TLS zijn nog steeds worden ondersteund voor achterwaartse compatibiliteit.
+Azure Storage is SSL 3,0 gestopt sinds 2015 en TLS 1,2 gebruikt voor open bare HTTPs-eind punten, maar TLS 1,0 en TLS 1,1 worden nog steeds ondersteund voor compatibiliteit met eerdere versies.
 
-Om ervoor te zorgen beveiligd en compatibel verbinding met Azure Storage, moet u TLS 1.2 of een nieuwere versie in client-side inschakelen voordat u verzendt aanvragen naar Azure Storage-service werkt.
+Om te zorgen voor een veilige en compatibele verbinding met Azure Storage, moet u TLS 1,2 of een nieuwere versie inschakelen aan de client zijde voordat u aanvragen verzendt om Azure Storage service te kunnen gebruiken.
 
-## <a name="enable-tls-12-in-net-client"></a>TLS 1.2 in .NET-client inschakelen
+## <a name="enable-tls-12-in-net-client"></a>TLS 1,2 inschakelen in de .NET-client
 
-Voor de client om te onderhandelen over TLS 1.2, het besturingssysteem en de .NET Framework-versie moeten beide ondersteunen TLS 1.2. Zie voor meer informatie [ondersteuning voor TLS 1.2](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).
+Voor de client om te onderhandelen over TLS 1,2, moeten het besturings systeem en de versie van de .NET Framework TLS 1,2 ondersteunen. Meer informatie vindt u in [ondersteuning voor TLS 1,2](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).
 
-Het volgende voorbeeld laat zien hoe voor het inschakelen van TLS 1.2 in uw .NET-client.
+In het volgende voor beeld ziet u hoe u TLS 1,2 in uw .NET-client inschakelt.
 
 ```csharp
 
@@ -47,11 +48,11 @@ Het volgende voorbeeld laat zien hoe voor het inschakelen van TLS 1.2 in uw .NET
 
 ```
 
-## <a name="enable-tls-12-in-powershell-client"></a>TLS 1.2 in PowerShell-client inschakelen
+## <a name="enable-tls-12-in-powershell-client"></a>TLS 1,2 inschakelen in Power shell-client
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)] 
 
-Het volgende voorbeeld laat zien hoe voor het inschakelen van TLS 1.2 in uw PowerShell-client.
+In het volgende voor beeld ziet u hoe u TLS 1,2 in uw Power shell-client inschakelt.
 
 ```powershell
 # Enable TLS 1.2 before connecting to Azure Storage
@@ -68,16 +69,16 @@ $listOfContainers = Get-AzStorageContainer -Context $ctx -Prefix $prefix
 $listOfContainers
 ```
 
-## <a name="verify-tls-12-connection"></a>TLS 1.2-verbinding controleren
+## <a name="verify-tls-12-connection"></a>TLS 1,2-verbinding controleren
 
-U kunt Fiddler gebruiken om te controleren als TLS 1.2 daadwerkelijk wordt gebruikt. Open Fiddler om te beginnen met het vastleggen van netwerkverkeer van de client vervolgens bovenstaande voorbeeld worden uitgevoerd. U kunt vervolgens de TLS-versie vinden in de verbinding die het voorbeeld maakt.
+U kunt Fiddler gebruiken om te controleren of TLS 1,2 werkelijk wordt gebruikt. Open Fiddler om het vastleggen van client netwerk verkeer te starten en voer hierboven het voor beeld uit. Vervolgens kunt u de TLS-versie vinden in de verbinding die door het voor beeld wordt gemaakt.
 
-De volgende schermafbeelding is een voorbeeld van de verificatie.
+De volgende scherm afbeelding is een voor beeld van de verificatie.
 
-![Schermafbeelding van de verificatie van TLS-versie in Fiddler](./media/storage-security-tls/storage-security-tls-verify-in-fiddler.png)
+![scherm opname van het controleren van de TLS-versie in Fiddler](./media/storage-security-tls/storage-security-tls-verify-in-fiddler.png)
 
 ## <a name="see-also"></a>Zie ook
 
 * [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)
 * [PCI-naleving van TLS](https://blog.pcisecuritystandards.org/migrating-from-ssl-and-early-tls)
-* [Schakel TLS in Java-client](https://www.java.com/en/configure_crypto.html)
+* [TLS inschakelen in Java-client](https://www.java.com/en/configure_crypto.html)

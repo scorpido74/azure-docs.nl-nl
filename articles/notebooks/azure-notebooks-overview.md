@@ -1,22 +1,24 @@
 ---
-title: Overzicht van Azure Notebooks
-description: Jupyter Notebooks in de cloud uitvoeren met behulp van de gratis Azure Notebooks-service, waarvoor geen installatie of configuratie is vereist.
+title: Overzicht van Azure Notebooks preview
+description: Voer Jupyter-notebooks uit in de Cloud met behulp van de preview-service gratis Azure Notebooks, waarbij geen installatie of configuratie vereist is.
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: b3dfa6cec962809fad1a03f5100c55315ff6a9ad
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bd2355bdefcedca5026a25915dc1da55fdc33a36
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277668"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646327"
 ---
-# <a name="overview-of-azure-notebooks"></a>Overzicht van Azure Notebooks
+# <a name="overview-of-azure-notebooks-preview"></a>Overzicht van Azure Notebooks preview
 
 Azure Notebooks is een gratis gehoste service om Jupyter-notebooks te ontwikkelen en uitvoeren in de cloud, zonder installatie. [Jupyter](https://jupyter.org/) (voorheen IPython) is een opensourceproject waarmee u eenvoudig Markdown-tekst, uitvoerbare code en permanente gegevens, afbeeldingen en visualisaties kunt combineren op één deelbaar canvas, het *notebook* (de afbeelding is ter beschikking gesteld door jupyter.org):
 
 [![Voorbeelden van Jupyter Notebooks](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 Vanwege deze krachtige combinatie van code, afbeeldingen en verklarende tekst is Jupyter populair geworden voor vele toepassingen, waaronder onderwijs in datawetenschap, het opschonen en transformeren van gegevens, numerieke simulatie, statistisch modelleren en de ontwikkeling van modellen voor machine learning.
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="hassle-free-experience"></a>Probleemloze ervaring
 

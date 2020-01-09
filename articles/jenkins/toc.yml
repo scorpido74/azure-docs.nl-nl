@@ -24,6 +24,10 @@
           href: jenkins-azure-vm-agents.md
     - name: 3. CI/CD implementeren
       items:
+        - name: Azure Spring Cloud
+          items:
+            - name: Uw Azure Spring Cloud implementeren met de Azure-CLI
+              href: tutorial-jenkins-deploy-cli-spring-cloud-service.md
         - name: AKS
           items:
             - name: CI/CD naar Kubernetes

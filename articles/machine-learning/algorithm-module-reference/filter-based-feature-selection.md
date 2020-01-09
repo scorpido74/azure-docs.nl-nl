@@ -1,7 +1,7 @@
 ---
 title: 'Functie selectie op basis van filters: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module voor het selecteren van onderdelen in de Azure Machine Learning-service voor het identificeren van de functies in een gegevensset met de grootste voorspellende energie.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module voor het selecteren van functies op basis van filters in Azure Machine Learning voor het identificeren van de functies in een gegevensset met de grootste voorspellende energie.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: f8ae4982f7602cd7403a78517fec79fa95d33aa2
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 43565a72ce795c4ee0142ec48c13842a8c43e604
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717202"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428527"
 ---
-# <a name="filter-based-feature-selection"></a>Functies selecteren op basis van filter
+# <a name="filter-based-feature-selection"></a>Functieselectie op basis van filters
 
 In dit artikel wordt beschreven hoe u de module voor het selecteren van functies op basis van filters in Azure Machine Learning Designer (preview) gebruikt. Deze module helpt u bij het identificeren van de kolommen in uw invoer gegevensset die de grootste voorspellende kracht hebben. 
 
@@ -106,7 +106,7 @@ Als de gegevensset minder kolommen bevat dan u verwacht, controleert u de instel
 
 ##  <a name="technical-notes"></a>Technische opmerkingen  
 
-### <a name="implementation-details"></a>Implementatie Details
+### <a name="implementation-details"></a>Implementatiegegevens
 
 Als u Pearson-correlatie gebruikt voor een numerieke functie en een categorische-label, wordt de functie score als volgt berekend:  
 
@@ -135,5 +135,5 @@ Als u Pearson-correlatie gebruikt voor een numerieke functie en een categorische
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor de Azure machine learning-service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: overview
-ms.date: 08/30/2019
+ms.date: 12/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 22a8bb2609439a82a825bf7f542709d46771ad92
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 52e3e65fb4f42530373decca547674a28a60f759
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195217"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446659"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Wat is Bing Visual Search-API?
 
@@ -30,12 +30,12 @@ Als u de [Bing afbeeldingen zoeken-API](../bing-image-search/overview.md)gebruik
 
 U kunt de volgende inzichten vinden met behulp van Bing Visual Search:
 
-| Inzicht                              | Description |
+| Inzicht                              | Beschrijving |
 |--------------------------------------|-------------|
 | Visueel vergelijkbare afbeeldingen              | Een lijst met afbeeldingen die visueel vergelijkbaar zijn met de ingevoerde afbeelding. |
 | Visueel vergelijkbare producten            | Producten die visueel vergelijkbaar zijn met het weergegeven product.            |
 | Winkelbronnen                     | Een lijst met plaatsen waar u het artikel kunt kopen dat wordt weergegeven op de ingevoerde afbeelding.            |
-| Verwante zoekopdrachten                     | Een lijst met verwante zoekopdrachten die door anderen zijn uitgevoerd, of die zijn gebaseerd op de inhoud van de afbeelding.            |
+| Gerelateerde zoekopdrachten                     | Een lijst met verwante zoekopdrachten die door anderen zijn uitgevoerd, of die zijn gebaseerd op de inhoud van de afbeelding.            |
 | Webpagina's die de afbeelding bevatten     | Webpagina's die de ingevoerde afbeelding bevatten.            |
 | Recepten                              | Webpagina's die recepten bevatten voor het maken van de schaal die wordt weer gegeven in de invoer afbeelding.            |
 | Entiteiten                             | Bekende personen, plaatsen en dingen. |
@@ -57,10 +57,12 @@ Bing Visual Search-API is een RESTful-webservice die eenvoudig kan worden aanger
 Probeer eerst de [interactieve demo](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/)van Bing Visual Search-API.
 De demo laat zien hoe u snel een zoek opdracht kunt aanpassen en op op het web voor installatie kopieën.
 
-Zie deze quickstarts om snel aan de slag te gaan met uw eerste aanvraag: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
+Zie de snelstarts om snel aan de slag te gaan met uw eerste aanvraag: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
 
 ## <a name="see-also"></a>Zie ook
 
 * De naslag informatie voor [installatie kopieën-Visual Search](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) beschrijft definities en gegevens over de eind punten, aanvraag headers, reacties en query parameters die u kunt gebruiken om op afbeeldingen gebaseerde Zoek resultaten aan te vragen.
 
 * De vereisten voor het gebruik van de [Bing Search-API en de weer gave bevatten](../bing-web-search/use-display-requirements.md) acceptabel gebruik van de inhoud en gegevens die zijn verkregen via de Bing zoeken-api's.
+
+* Ga naar de [pagina met Bing Search API-hubs](../bing-web-search/search-the-web.md) om de andere beschik bare api's te verkennen.

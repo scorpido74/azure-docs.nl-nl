@@ -1,7 +1,7 @@
 ---
 title: Wiskundige bewerking toepassen
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module math bewerking Toep assen in Azure Machine Learning-service om een wiskundige bewerking toe te passen op kolom waarden in een pijp lijn.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module math bewerking Toep assen in Azure Machine Learning om een wiskundige bewerking toe te passen op kolom waarden in een pijp lijn.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: a2f3665355cc2023aaf4b66c9207aaff4a3bc6db
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: af7431dd808a7d5eb106eff96a790eb876a20026
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493942"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428612"
 ---
 # <a name="apply-math-operation"></a>Wiskundige bewerking toepassen
 
@@ -103,11 +103,11 @@ De functies in de categorie **Basic** nemen meestal één waarde uit een kolom, 
   
  Azure Machine Learning ondersteunt de volgende functies in de categorie **basis** :  
 
-### <a name="abs"></a>Afwezigheid
+### <a name="abs"></a>Abs
 
 Retourneert de absolute waarde van de geselecteerde kolommen.  
   
-### <a name="atan2"></a>ATAN2
+### <a name="atan2"></a>Atan2
 
 Retourneert een inverse tangens met vier kwadranten.  
 
@@ -154,7 +154,7 @@ Retourneert de Faculteit voor waarden in de geselecteerde kolom.
 ### <a name="hypotenuse"></a>Hypotenuse
 Berekent de hypotenuse voor een drie hoek waarin de lengte van één zijde wordt opgegeven als een kolom met waarden en de lengte van de tweede zijde wordt opgegeven als een constante of als twee kolommen.  
 
-### <a name="ln"></a>LN
+### <a name="ln"></a>Ln
 
 Retourneert de natuurlijke logaritme voor de waarden in de geselecteerde kolom.  
 
@@ -245,7 +245,7 @@ Retourneert de waarde die groter is: de waarde in de **kolomset** of de waarde i
 
 Retourneert de waarde die lager is: de waarde in de **kolomset** of de waarde in de kolom constante of vergelijking  
   
-##  <a name="arithmetic-operations"></a>Reken kundige bewerkingen   
+##  <a name="arithmetic-operations"></a>Rekenkundige bewerkingen   
 
 Bevat de eenvoudige reken kundige bewerkingen: optellen en aftrekken, delen en vermenigvuldigen.  Omdat de meeste bewerkingen binair zijn, moet u eerst de bewerking kiezen en vervolgens de kolom of getallen kiezen die u in de eerste en tweede argumenten wilt gebruiken.
 
@@ -253,12 +253,12 @@ De volg orde waarin u de kolommen voor het delen en aftrekken hebt gekozen, lijk
 
 Bewerking|Num1|Num2|Resultaten kolom|Resultaat waarde|
 ----|----|----|----|----
-|Toevoegingen|1|5|Toevoegen (Num2_Num1)| 4|
+|Optelling|1|5|Toevoegen (Num2_Num1)| 4|
 |Vermenigvuldigen|1|5|Meerdere (Num2_Num1)|5|
-|Aftrekken|1|5|Aftrekken (Num2_Num1)|4|
-|Aftrekken|0|1|Aftrekken (Num2_Num1)|0|
-|Daarvan|1|5|Delen (Num2_Num1)|5|
-|Daarvan|0|1|Delen (Num2_Num1)|Infinity|
+|Aftrekking|1|5|Aftrekken (Num2_Num1)|4|
+|Aftrekking|0|1|Aftrekken (Num2_Num1)|0|
+|Deling|1|5|Delen (Num2_Num1)|5|
+|Deling|0|1|Delen (Num2_Num1)|Infinity|
 
 ### <a name="add"></a>Toevoegen
 
@@ -266,7 +266,7 @@ Geef de bron kolommen op met behulp van de **kolomset**en voeg vervolgens aan de
 
 Als u de waarden in twee kolommen wilt toevoegen, kiest u een kolom of kolommen met **kolom sets**en kiest u vervolgens een tweede kolom met een **tweede argument**.  
 
-### <a name="divide"></a>Lijn
+### <a name="divide"></a>Delen
 
 Hiermee worden de waarden in de **kolom ingesteld** op basis van een constante of de kolom waarden die zijn gedefinieerd in het **tweede argument**.  Met andere woorden, u kiest eerst de deler en vervolgens het deeltal. De uitvoer waarde is het quotiënt.
 
@@ -274,7 +274,7 @@ Hiermee worden de waarden in de **kolom ingesteld** op basis van een constante o
 
 Vermenigvuldigt de waarden in de kolom die zijn **ingesteld** op basis van de opgegeven constante of kolom waarden.  
 
-### <a name="subtract"></a>Aftrekken
+### <a name="subtract"></a>Subtract
 
 Geef de kolom met waarden op die u wilt gebruiken (de *aftrek getal*) door een andere kolom te kiezen met behulp van de **kolom set** optie. Geef vervolgens het aantal op dat moet worden afgetrokken ( *aftrekker*) met behulp van de tweede vervolg keuzelijst voor **argumenten** . U kunt een constante of een kolom met waarden kiezen.
 
@@ -298,7 +298,7 @@ Retourneert het kwadratische plafond voor de waarden in de **kolomset**.
 
 Retourneert de vloer voor de waarden in de **kolomset**naar de opgegeven precisie.  
 
-### <a name="mod"></a>mod
+### <a name="mod"></a>Mod
 
 Retourneert het gedeelte van de waarden in de **kolomset**, naar de opgegeven precisie.  
 
@@ -418,7 +418,7 @@ Deze functie gebruikt een tweede argument, dat kan worden voorzien van een const
 
 Deze categorie iIncludes het meren deel van de belangrijkste trigonometrische en inverse trigonometrische functies. Alle trigonometrische functies zijn Unair en vereisen geen aanvullende argumenten.  
 
-### <a name="acos"></a>Resulteert
+### <a name="acos"></a>Acos
 
 Berekent de arccosinus voor de kolom waarden.  
 
@@ -461,7 +461,7 @@ Berekent de arcsecant van de kolom waarden, in graden.
 
 Berekent de hyperbolische arcsecant van de kolom waarden.  
 
-### <a name="asin"></a>BOOGSIN
+### <a name="asin"></a>Asin
 
 Berekent de boog sinus van de kolom waarden.  
 
@@ -473,7 +473,7 @@ Berekent de boog sinus van de kolom waarden, in graden.
 
 Hiermee wordt de hyperbolische boog voor de kolom waarden berekend.  
 
-### <a name="atan"></a>BOOGTAN
+### <a name="atan"></a>Atan
 
 Berekent de arctangens van de kolom waarden.  
 
@@ -524,7 +524,7 @@ Hiermee wordt de hyperbolische cosecans voor de kolom waarden berekend.
 
 Converteert graden naar radialen.  
 
-### <a name="sec"></a>Seconde
+### <a name="sec"></a>Sec
 
 Berekent de secans van de kolom waarden.  
 
@@ -590,4 +590,4 @@ U kunt ook een van de volgende modules gebruiken om alle berekeningen tegelijk u
   
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

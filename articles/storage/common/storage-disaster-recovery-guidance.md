@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7bbad4adce88b8b669c5c5739bfa45b079f321d0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2e0ae05ff8c32a70991769171cb29b229c2b0be1
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895353"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526359"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Herstel na nood gevallen en failover van account (preview-versie)
 
@@ -174,10 +174,11 @@ Houd er wel bij dat alle gegevens die zijn opgeslagen op een tijdelijke schijf v
 ### <a name="unsupported-features-or-services"></a>Niet-ondersteunde functies of services
 De volgende functies of services worden niet ondersteund voor account-failover voor de preview-versie:
 
-- Azure File Sync biedt geen ondersteuning voor de failover van het opslag account. Er mag geen failover worden uitgevoerd voor opslag accounts met Azure-bestands shares die worden gebruikt als Cloud-eind punten in Azure File Sync. Als u dat wel doet, werkt de synchronisatie niet meer en kan dit leiden tot onverwachte gegevens verlies in het geval van nieuwe gelaagde bestanden.  
+- Azure File Sync biedt geen ondersteuning voor de failover van het opslag account. Er mag geen failover-overschakeling worden uitgevoerd voor opslagaccounts met Azure-bestandsshares die worden gebruikt als cloudeindpunten in Azure File Sync. Als u dat wel doet, werkt de synchronisatie niet meer en kan dit leiden tot onverwacht gegevensverlies van bestanden in cloudlagen.  
 - Er kan geen failover worden uitgevoerd voor een opslag account met gearchiveerde blobs. Bewaar gearchiveerde blobs in een afzonderlijk opslag account waarvan u niet van plan bent een failover uit te voeren.
 - Er kan geen failover worden uitgevoerd voor een opslag account met Premium-blok-blobs. Opslag accounts die ondersteuning bieden voor Premium-blok-blobs ondersteunen momenteel geen geo-redundantie.
-- Nadat de failover is voltooid, zullen de volgende functies niet meer werken als deze is ingeschakeld: [gebeurtenis abonnementen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [levenscyclus beleid](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) [Opslaganalyse logboek registratie](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
+- Er kan geen failover worden uitgevoerd voor een opslag account met een of meer [Onveranderbaarheid-beleids](../blobs/storage-blob-immutable-storage.md) containers waarvoor een virus is ingeschakeld. Een niet-vergrendelde/vergrendelde, op tijd gebaseerde Bewaar-en wettelijk Bewaar beleidsregels voor komen failover om naleving te behouden.
+- Nadat de failover is voltooid, kunnen de volgende functies niet meer werken als deze oorspronkelijk is ingeschakeld: [gebeurtenis abonnementen](../blobs/storage-blob-event-overview.md), [feed voor wijzigingen](../blobs/storage-blob-change-feed.md), [levenscyclus beleid](../blobs/storage-lifecycle-management-concepts.md)en [Opslaganalyse logboek registratie](storage-analytics-logging.md).
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Gegevens kopiëren als alternatief voor failover
 

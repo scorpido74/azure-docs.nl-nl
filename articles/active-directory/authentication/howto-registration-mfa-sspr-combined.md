@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2bd3f61ffc07881ed8e502788b11fc0f435735b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 25c64d9e959b1d68de23e83e26d3495bd3939986
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847351"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425152"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Registratie van gecombineerde beveiligings gegevens inschakelen (preview-versie)
 
@@ -39,10 +39,10 @@ Voordat u de nieuwe ervaring inschakelt, raadpleegt u het artikel [registratie v
 Voer de volgende stappen uit om gecombineerde registratie in te scha kelen:
 
 1. Meld u aan bij de Azure Portal als gebruikers beheerder of globale beheerder.
-2. Ga naar **Azure Active Directory** > **gebruikers instellingen** > **instellingen voor de preview-functies van het toegangs venster beheren**.
-3. Onder **gebruikers kunnen preview-functies gebruiken voor het registreren en beheren van beveiligings gegevens-vernieuwen**. Kies deze optie om in te scha kelen voor een **geselecteerde** groep gebruikers of voor **alle** gebruikers.
+2. Ga naar **Azure Active Directory** > **gebruikers instellingen** > **instellingen voor de preview-functie voor gebruikers onderdelen beheren**.
+3. Onder **gebruikers kunnen preview-functies gebruiken voor het registreren en beheren van beveiligings gegevens**, kiezen om in te scha kelen voor een **geselecteerde** groep gebruikers of voor **alle** gebruikers.
 
-   ![De preview-ervaring voor gecombineerde beveiligings info voor alle gebruikers inschakelen](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
+   ![De preview-ervaring voor gecombineerde beveiligings info voor alle gebruikers inschakelen](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info-preview.png)
 
 > [!IMPORTANT]
 > Vanaf maart 2019 zijn de opties voor telefoon gesprekken niet beschikbaar voor Multi-Factor Authentication-en SSPR-gebruikers in gratis/proef versie van Azure AD-tenants. SMS-berichten worden niet beïnvloed door deze wijziging. De opties voor telefoon oproepen blijven beschikbaar voor gebruikers in betaalde Azure AD-tenants.
@@ -64,9 +64,9 @@ Beveiligen wanneer en hoe gebruikers zich registreren voor Azure Multi-Factor Au
 
 Het volgende beleid is van toepassing op alle geselecteerde gebruikers die zich willen registreren met de gecombineerde registratie-ervaring en blokkeert de toegang tenzij ze verbinding maken vanaf een locatie die is gemarkeerd als vertrouwd netwerk.
 
-![Een CA-beleid maken voor het beheren van de registratie van beveiligings gegevens](media/howto-registration-mfa-sspr-combined/conditional-access-register-security-info.png)
+![Een CA-beleid maken voor het beheren van de registratie van beveiligings gegevens](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
 
-1. Blader in het **Azure Portal**naar **Azure Active Directory** **voorwaardelijke toegang** > 
+1. Ga in het **Azure Portal**naar **Azure Active Directory** > **beveiliging** > **voorwaardelijke toegang**
 1. Selecteer **Nieuw beleid**.
 1. Voer bij naam een naam in voor dit beleid. Bijvoorbeeld **registratie van gecombineerde beveiligings gegevens op vertrouwde netwerken**
 1. Klik onder **toewijzingen**op **gebruikers en groepen**en selecteer de gebruikers en groepen waarop u dit beleid wilt Toep assen

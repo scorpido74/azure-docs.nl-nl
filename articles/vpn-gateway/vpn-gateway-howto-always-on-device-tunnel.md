@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: f22b29cfcaf1d4c4ce28b2b0557d70b281b6891f
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 6f0c33ee7fd5790a060574230f1156c569a63936
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74146392"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425669"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Een AlwaysOn-VPN-apparaattunnel configureren
 
@@ -37,7 +37,7 @@ Configureer de VPN-gateway voor gebruik van IKEv2 en verificatie op basis van ce
 
 Aan de volgende vereisten moet worden voldaan om een apparaat tunnel te kunnen instellen:
 
-* Het apparaat moet een computer zijn die lid is van een domein en waarop Windows 10 Enter prise of onderwijs versie 1709 of hoger wordt uitgevoerd.
+* Het apparaat moet een computer zijn die lid is van een domein en waarop Windows 10 Enter prise of onderwijs versie 1809 of hoger wordt uitgevoerd.
 * De tunnel kan alleen worden geconfigureerd voor de Windows ingebouwde VPN-oplossing en wordt tot stand gebracht met behulp van IKEv2 met authenticatie van computer certificaten. 
 * Er kan slechts één tunnel van een apparaat per apparaat worden geconfigureerd.
 
@@ -139,15 +139,15 @@ Nadat u de virtuele netwerk gateway hebt geconfigureerd en het client certificaa
 1. Start Power shell op basis van een opdracht prompt van de beheerder door de volgende opdracht uit te voeren:
 
    ```
-   C:\PsTools\PsExec.exe Powershell for 32-bit Windows
-   C:\PsTools\PsExec64.exe Powershell for 64-bit Windows
+   PsExec.exe Powershell for 32-bit Windows
+   PsExec64.exe Powershell for 64-bit Windows
    ```
 
-   ![zo](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
+   ![powershell](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
 1. Ga in Power shell naar de map waarin **devicecert. ps1** en **VPNProfile. XML** zich bevinden en voer de volgende opdracht uit:
 
    ```powershell
-   C:\> .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
+   .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
    ![MachineCertTest](./media/vpn-gateway-howto-always-on-device-tunnel/machinecerttest.png)
@@ -156,7 +156,7 @@ Nadat u de virtuele netwerk gateway hebt geconfigureerd en het client certificaa
    ![Rasphone](./media/vpn-gateway-howto-always-on-device-tunnel/rasphone.png)
 1. Zoek de vermelding **MachineCertTest** en klik op **verbinden**.
 
-   ![Verbinding maken](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
+   ![Connect](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
 1. Als de verbinding is geslaagd, start u de computer opnieuw op. De tunnel wordt automatisch verbonden.
 
 ## <a name="cleanup"></a>Opschonen

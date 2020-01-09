@@ -10,19 +10,19 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
-ms.openlocfilehash: d52aed98549478898cb3bd263d52eeae2a69ccfd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: dd0de5415dc001f107221add7ea223450290b3f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925555"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439267"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Gegevens in een virtueel Azure-netwerk transformeren met behulp van Hive-activiteit in Azure Data Factory
 
 In deze zelfstudie gebruikt u Azure Portal om een Data Factory-pijplijn te maken waarmee gegevens worden getransformeerd met behulp van Hive-activiteit in een HDInsight-cluster in een virtueel Azure-netwerk (VNet). In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maakt. 
+> * Een gegevensfactory maken. 
 > * Een zelf-hostende Integration Runtime maken
 > * Gekoppelde Azure Storage- en Azure HDInsight-services maken
 > * Een pijplijn maken met Hive-activiteit.
@@ -36,8 +36,8 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Een Azure Storage-account**. U maakt een Hive-script en uploadt dit script naar de Azure-opslag. De uitvoer van het Hive-script wordt opgeslagen in dit opslagaccount. In dit voorbeeld gebruikt het HDInsight-cluster dit Azure Storage-account als primaire opslag. 
-- **Azure Virtual Network.** Als u geen virtueel Azure-netwerk hebt, maakt u er een door [deze instructies](../virtual-network/quick-create-portal.md) te volgen. In dit voorbeeld bevindt HDInsight zich in een virtueel Azure-netwerk. Hier volgt een voorbeeldconfiguratie van een virtueel Azure-netwerk. 
+- **Azure Storage-account**. U maakt een Hive-script en uploadt dit script naar de Azure-opslag. De uitvoer van het Hive-script wordt opgeslagen in dit opslagaccount. In dit voorbeeld gebruikt het HDInsight-cluster dit Azure Storage-account als primaire opslag. 
+- **Een virtueel Azure-netwerk.** Als u geen virtueel Azure-netwerk hebt, maakt u er een door [deze instructies](../virtual-network/quick-create-portal.md) te volgen. In dit voorbeeld bevindt HDInsight zich in een virtueel Azure-netwerk. Hier volgt een voorbeeldconfiguratie van Azure Virtual Network. 
 
     ![Virtueel netwerk maken](media/tutorial-transform-data-using-hive-in-vnet-portal/create-virtual-network.png)
 - **HDInsight-cluster.** Maak een HDInsight-cluster en koppel dit aan het virtuele netwerk dat u in de vorige stap hebt gemaakt, door de instructies in dit artikel te volgen: [Azure HDInsight uitbreiden met behulp van een virtueel Azure-netwerk](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Hier volgt een voorbeeldconfiguratie van HDInsight in een virtueel netwerk. 
@@ -68,7 +68,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 3. Maak een map met de naam **hivescripts**.
 4. Upload het bestand **hivescript.hql** naar de submap **hivescripts**.
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).    
@@ -88,7 +88,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
    - Selecteer **Bestaande gebruiken** en selecteer een bestaande resourcegroep in de vervolgkeuzelijst. 
    - Selecteer **Nieuwe maken** en voer de naam van een resourcegroep in.   
          
-     Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/resource-group-overview.md) voor meer informatie.  
+     Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.  
 4. Selecteer **V2** als de **versie**.
 5. Selecteer de **locatie** voor de gegevensfactory. In de lijst zie u alleen locaties die worden ondersteund voor het maken van gegevensfactory’s.
 6. Selecteer **Vastmaken aan dashboard**.     
@@ -99,8 +99,8 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 9. Na het aanmaken ziet u de pagina **Data Factory** zoals weergegeven in de afbeelding.
    
     ![Startpagina van de gegevensfactory](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
-10. Klik op **Maken en controleren** om de gebruikersinterface (UI) van Azure Data Factory te openen op een afzonderlijk tabblad.
-11. Ga op de pagina **aan de slag** naar het tabblad **Bewerken** in het linkervenster, zoals wordt weergegeven in de volgende afbeelding: 
+10. Klik op **Author & Monitor** om de gebruikersinterface (UI) van Data Factory op een afzonderlijk tabblad te openen.
+11. Ga op de pagina **get started** naar het tabblad **Edit** in het linkervenster, zoals wordt weergegeven in de volgende afbeelding: 
 
     ![Tabblad Bewerken](./media/tutorial-transform-data-using-hive-in-vnet-portal/get-started-page.png)
 
@@ -115,7 +115,7 @@ Als de Hadoop-cluster zich in een virtueel netwerk bevindt, moet u een zelf-host
    ![Selecteer optie Perform data movement and dispatch activities to external computes](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-perform-data-movement-compute-option.png)
 3. Selecteer **Privénetwerk** en klik op **Volgende**.
     
-   ![Privénetwerk selecteren](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-private-network.png)
+   ![Selecteer privénetwerk](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-private-network.png)
 4. Voer **MySelfHostedIR** in bij **Name** en klik op **Next**. 
 
    ![Naam van de integratieruntime opgeven](./media/tutorial-transform-data-using-hive-in-vnet-portal/integration-runtime-name.png) 
@@ -162,7 +162,7 @@ In deze sectie maakt en implementeert u twee gekoppelde services:
    ![Azure Blob Storage selecteren](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-azure-storage.png)
 3. Voer in het venster **Nieuwe gekoppelde service** de volgende stappen uit:
 
-    1. Voer **AzureStorageLinkedService** in als **Naam**.
+    1. Voer **AzureStorageLinkedService** in bij **Name**.
     2. Selecteer **MySelfHostedIR** bij **Connect via integration runtime**.
     3. Selecteer uw Azure Storage-account als **naam van het opslagaccount**. 
     4. Als u de verbinding met de storage-account wilt testen, klikt u op **Test connection**.
@@ -262,7 +262,7 @@ Houd rekening met de volgende punten:
 In deze zelfstudie hebt u de volgende stappen uitgevoerd: 
 
 > [!div class="checklist"]
-> * Een gegevensfactory maakt. 
+> * Een gegevensfactory maken. 
 > * Een zelf-hostende Integration Runtime maken
 > * Gekoppelde Azure Storage- en Azure HDInsight-services maken
 > * Een pijplijn maken met Hive-activiteit.

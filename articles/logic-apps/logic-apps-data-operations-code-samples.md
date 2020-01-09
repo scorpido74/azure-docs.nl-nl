@@ -1,17 +1,17 @@
 ---
-title: Voor beelden van gegevens bewerkingen
-description: Code voorbeelden voor bewerkingen voor gegevens bewerkingen in Azure Logic Apps
+title: Code voorbeelden voor het gebruik van gegevens bewerkingen
+description: Probeer deze code voorbeelden die laten zien hoe u gegevens bewerkingen kunt gebruiken in automatische werk stromen die zijn gemaakt met Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/01/2019
-ms.openlocfilehash: d59e461fab52bddf9cb1f881d52a751931c7312b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793081"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428697"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Voor beelden van gegevens bewerkings code voor Azure Logic Apps
 

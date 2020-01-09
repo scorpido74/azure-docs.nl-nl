@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: a06ea59af0776fe3decb0b56a3ef886f08b2dfda
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d7c88e500886453fbfb53655748ccf7025ab7d3d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100714"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374249"
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>AlwaysOn AlwaysOn-beschikbaarheids groepen in azure Virtual Machines automatisch configureren: Resource Manager
 
@@ -64,24 +64,24 @@ Azure biedt een galerie-afbeelding voor de volledige oplossing. De sjabloon zoek
 
 1. Meld u aan bij de Azure Portal met uw account.
 2. Klik in de Azure Portal op **een resource maken** om het **nieuwe** deel venster te openen.
-3. Zoek in het **nieuwe** deel venster naarAlwaysOn.
-   ![AlwaysOn-sjabloon zoeken](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
-4. Zoek in de zoek resultaten SQL Server AlwaysOn- **cluster**.
+3. Zoek in het **nieuwe** deel venster naar **AlwaysOn**.
+   AlwaysOn-sjabloon](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png) ![vinden
+4. Zoek in de zoek resultaten **SQL Server AlwaysOn-cluster**.
    ![AlwaysOn-sjabloon](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
 5. Kies in **een implementatie model selecteren de**optie **Resource Manager**.
 
-### <a name="basics"></a>Basics
+### <a name="basics"></a>Basisbeginselen
 Klik op **basis principes** en configureer de volgende instellingen:
 
 * De **gebruikers naam** van de beheerder is een gebruikers account met beheerders machtigingen voor het domein en is lid van de vaste serverrol SQL Server sysadmin op beide exemplaren van SQL Server. Voor deze zelf studie gebruikt u **domein Administrator**.
-* Het wacht woord is het wacht woord voor het domein beheerders account. Gebruik een complex wacht woord. Bevestig het wachtwoord.
+* Het **wacht woord is het** wacht woord voor het domein beheerders account. Gebruik een complex wacht woord. Bevestig het wachtwoord.
 * **Abonnement** is het abonnement dat door Azure wordt gebruikt om alle geïmplementeerde resources voor de beschikbaarheids groep uit te voeren. Als uw account meerdere abonnementen heeft, kunt u een ander abonnement opgeven.
-* De **resource groep** is de naam voor de groep waartoe alle Azure-resources behoren die door deze sjabloon worden gemaakt. Voor deze zelf studie gebruikt u **SQL-ha-RG**. Zie voor meer informatie [Overzicht van Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md#resource-groups).
+* De **resource groep** is de naam voor de groep waartoe alle Azure-resources behoren die door deze sjabloon worden gemaakt. Voor deze zelf studie gebruikt u **SQL-ha-RG**. Zie voor meer informatie [Overzicht van Azure Resource Manager](../../../azure-resource-manager/management/overview.md#resource-groups).
 * De **locatie** is de Azure-regio waar de zelf studie de resources maakt. Kies een Azure-regio.
 
 De volgende scherm afbeelding is een voltooide Blade **basis beginselen** :
 
-![Basics](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/1-basics.png)
+![Basisbeginselen](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/1-basics.png)
 
 Klik op **OK**.
 
@@ -171,8 +171,8 @@ Bekijk en wijzig de SQL Server naam van de virtuele machine, SQL Server versie, 
 * **SQL Server naam voorvoegsel** wordt gebruikt voor het maken van een naam voor elke virtuele machine van SQL Server. Voor deze zelf studie gebruikt u **sqlserver**. De sjabloon namen de SQL Server virtuele machines *sqlserver-0* en *sqlserver-1*.
 * **SQL Server versie** is de versie van SQL Server. Voor deze zelf studie gebruikt u **SQL Server 2014**. U kunt ook kiezen **SQL Server 2012** of **SQL Server 2016**.
 * De **gebruikers naam van SQL Server-service account** is de naam van het domein account voor de SQL Server-service. Voor deze zelf studie gebruikt u **sqlservice**.
-* Het wacht woord is het wacht woord voor de SQL Server-service account.  Gebruik een complex wacht woord. Bevestig het wachtwoord.
-* De onderhouds **planning voor SQL auto patching** geeft aan op welke dag van de week de SQL-servers automatisch worden bijgewerkt door Azure. Voor deze zelf studie typt u **zondag**.
+* Het **wacht woord is het** wacht woord voor de SQL Server-service account.  Gebruik een complex wacht woord. Bevestig het wachtwoord.
+* De **onderhouds planning voor SQL auto patching** geeft aan op welke dag van de week de SQL-servers automatisch worden bijgewerkt door Azure. Voor deze zelf studie typt u **zondag**.
 * **Onderhoud start uur van SQL auto patching** is de tijd van de dag voor de Azure-regio wanneer automatische patching wordt gestart.
 
 > [!NOTE]
@@ -192,7 +192,7 @@ Deze laatste Blade bevat **gebruiks voorwaarden**en het **Privacybeleid**. Lees 
 
 De Azure Portal maakt de resource groep en alle resources.
 
-## <a name="monitor-deployment"></a>Implementatie bewaken
+## <a name="monitor-deployment"></a>Implementatie controleren
 De voortgang van de implementatie van de Azure Portal bewaken. Een pictogram dat de implementatie vertegenwoordigt, wordt automatisch vastgemaakt aan het dash board van Azure Portal.
 
 ![Azure Dashboard](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/11-deploydashboard.png)
@@ -205,8 +205,8 @@ Ga als volgt te werk om een SQL Server uit te voeren:
 1. Controleer in het dash board van Azure Portal of de implementatie is geslaagd.
 2. Klik op **resources**.
 3. Klik op de Blade **resources** op **sqlserver-0**. Dit is de computer naam van een van de virtuele machines met SQL Server.
-4. Klik op de Blade voor **sqlserver-0**op **verbinden**. U wordt gevraagd of u het object voor externe verbinding wilt openen of opslaan. Klik op **Open**.
-5. Via **verbinding met extern bureau blad** krijgt u mogelijk een waarschuwing dat de uitgever van deze externe verbinding niet kan worden geïdentificeerd. Klik op**Verbinden**.
+4. Klik op de Blade voor **sqlserver-0**op **verbinden**. U wordt gevraagd of u het object voor externe verbinding wilt openen of opslaan. Klik op **Openen**.
+5. Via **verbinding met extern bureau blad** krijgt u mogelijk een waarschuwing dat de uitgever van deze externe verbinding niet kan worden geïdentificeerd. Klik op **Connect** (Verbinden).
 6. Windows-beveiliging vraagt u uw referenties in te voeren om verbinding te maken met het IP-adres van de primaire domein controller. Klik op **een ander account gebruiken**. Typ **contoso\DomainAdmin**voor **gebruikers naam**. U hebt dit account geconfigureerd bij het instellen van de gebruikers naam van de beheerder in de sjabloon. Gebruik het complexe wacht woord dat u hebt gekozen tijdens het configureren van de sjabloon.
 7. **Extern bureau blad** waarschuwt u mogelijk dat de externe computer niet kan worden geverifieerd vanwege problemen met het beveiligings certificaat. Hier wordt de naam van het beveiligings certificaat weer gegeven. Als u de zelf studie hebt gevolgd, is de naam **sqlserver-0.contoso.com**. Klik op **Ja**.
 

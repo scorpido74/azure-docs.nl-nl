@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric-gebeurtenis analyse met Application Insights | Microsoft Docs
+title: Azure Service Fabric-gebeurtenis analyse met Application Insights
 description: Meer informatie over het visualiseren en analyseren van gebeurtenissen met Application Insights voor het bewaken en diagnosticeren van Azure Service Fabric-clusters.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 8e682a5c768ed4b3f35382c87528c1b0d11a3c3d
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 5c80dc9f350fec30469a9bce2ed836c276ef3a7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019715"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464749"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Gebeurtenis analyse en visualisatie met Application Insights
 
@@ -51,7 +42,7 @@ Als u meer wilt weten over de mogelijkheden van de Application Insights Portal, 
 
 ### <a name="configuring-application-insights-with-eventflow"></a>Application Insights configureren met Event flow
 
-Als u Event Flow gebruikt om gebeurtenissen te verzamelen, moet u ervoor zorgen dat `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`u het NuGet-pakket importeert. De volgende code is vereist in het gedeelte outputs van de *eventFlowConfig. json*:
+Als u Event Flow gebruikt om gebeurtenissen te verzamelen, moet u ervoor zorgen dat u het `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`NuGet-pakket importeert. De volgende code is vereist in het gedeelte *outputs* van de *eventFlowConfig. json*:
 
 ```json
 "outputs": [
@@ -70,7 +61,7 @@ Het is raadzaam om event flow en WAD te gebruiken als aggregatie oplossingen, om
 
 [Application Insights ondersteuning voor micro Services en containers](https://azure.microsoft.com/blog/app-insights-microservices/) toont u een aantal van de nieuwe functies waaraan wordt gewerkt (momenteel nog steeds in de bèta versie), zodat u geavanceerde opties voor het controleren van de mogelijkheden met Application Insights kunt hebben. Dit omvat het bijhouden van afhankelijkheden (gebruikt voor het bouwen van een AppMap van al uw services en toepassingen in een cluster en de communicatie ertussen), en een betere correlatie van traceringen die afkomstig zijn van uw services (helpt bij het beter herkennen van een probleem in de werk stroom van een toepassing of service).
 
-Als u in .NET ontwikkelt en waarschijnlijk enkele van de programmeer modellen van Service Fabric gebruikt, en u bereid bent Application Insights te gebruiken als uw platform voor het visualiseren en analyseren van gebeurtenis-en logboek gegevens, wordt u aangeraden om via de Application Insights te gaan SDK-route als uw bewakings-en diagnostische werk stroom. Lees [Dit](../azure-monitor/app/asp-net-more.md) en [](../azure-monitor/app/asp-net-trace-logs.md) om aan de slag te gaan met het gebruik van Application Insights om uw logboeken te verzamelen en weer te geven.
+Als u in .NET ontwikkelt en waarschijnlijk enkele van de programmeer modellen van Service Fabric gebruikt, en u bereid bent Application Insights te gebruiken als uw platform voor het visualiseren en analyseren van gebeurtenis-en logboek gegevens, wordt u aangeraden om via de Application Insights te gaan SDK-route als uw bewakings-en diagnostische werk stroom. Lees [Dit](../azure-monitor/app/asp-net-more.md) en [om aan de](../azure-monitor/app/asp-net-trace-logs.md) slag te gaan met het gebruik van Application Insights om uw logboeken te verzamelen en weer te geven.
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Navigeren door de Application Insights resource in Azure Portal
 

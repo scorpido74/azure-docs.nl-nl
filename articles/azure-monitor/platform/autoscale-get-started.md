@@ -1,19 +1,15 @@
 ---
 title: Aan de slag met automatisch schalen in azure
 description: Meer informatie over het schalen van uw resource web-app, Cloud service, virtuele machine of virtuele-machine schaal sets in Azure.
-author: rajram
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/07/2017
-ms.author: rajram
 ms.subservice: autoscale
-ms.openlocfilehash: 0535c84a8ee0776c2c35a46d3c7510a2cd615cf6
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 0a40496e4d496d0062c6ee7a6ab935c1ad9b35a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60788495"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396352"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Aan de slag met automatisch schalen in azure
 In dit artikel wordt beschreven hoe u uw instellingen voor automatisch schalen instelt voor uw resource in de Microsoft Azure-portal.
@@ -25,17 +21,17 @@ U kunt alle resources ontdekken waarvoor automatisch schalen van toepassing is i
 
 1. Open de [Azure Portal.][1]
 1. Klik op het pictogram Azure Monitor in het linkerdeel venster.
-  ![Azure Monitor openen][2]
+  ![Azure Monitor][2] openen
 1. Klik op **automatisch schalen** om alle resources weer te geven waarvoor automatisch schalen van toepassing is, samen met de huidige status van automatisch schalen.
-  ![Automatisch schalen ontdekken in Azure Monitor][3]
+  ![automatisch schalen ontdekken in Azure Monitor][3]
 
 U kunt het filter deel venster bovenaan het bereik van de lijst gebruiken om resources in een specifieke resource groep, specifieke resource typen of een specifieke resource te selecteren.
 
 Voor elke resource vindt u het aantal huidige instanties en de status automatisch schalen. De status voor automatisch schalen kan zijn:
 
-- **Niet geconfigureerd**: U hebt automatisch schalen nog niet ingeschakeld voor deze resource.
-- **Ingeschakeld**: U hebt automatisch schalen ingeschakeld voor deze resource.
-- **Uitgeschakeld**: U hebt automatisch schalen uitgeschakeld voor deze resource.
+- **Niet geconfigureerd**: u hebt automatisch schalen nog niet ingeschakeld voor deze resource.
+- **Ingeschakeld**: u hebt automatisch schalen ingeschakeld voor deze resource.
+- **Uitgeschakeld**: u hebt automatisch schalen uitgeschakeld voor deze resource.
 
 ## <a name="create-your-first-autoscale-setting"></a>Uw eerste instelling voor automatisch schalen maken
 
@@ -43,24 +39,24 @@ We gaan nu een eenvoudige stapsgewijze procedure volgen om uw eerste instelling 
 
 1. Open de Blade **automatisch schalen** in azure monitor en selecteer een resource die u wilt schalen. (In de volgende stappen wordt gebruikgemaakt van een App Service-abonnement dat is gekoppeld aan een web-app. U kunt [binnen vijf minuten uw eerste ASP.net-Web-app maken in Azure.][4])
 1. Houd er rekening mee dat het huidige aantal instanties 1 is. Klik op **automatisch schalen inschakelen**.
-  ![Schaal instelling voor nieuwe web-app][5]
+  ![schaal instelling voor nieuwe web-app][5]
 1. Geef een naam op voor de schaal instelling en klik vervolgens op **een regel toevoegen**. U ziet de opties voor de schaal regel die worden geopend als een context venster aan de rechter kant. Dit stelt standaard de optie in voor het schalen van het aantal instanties met 1 als het CPU-percentage van de resource groter is dan 70 procent. Behoud de standaard waarden en klik op **toevoegen**.
-  ![Schaal instelling voor een web-app maken][6]
+  ![schaal instelling voor een web-app maken][6]
 1. U hebt nu uw eerste schaal regel gemaakt. Houd er rekening mee dat de UX aanbevolen procedures en ' wordt aanbevolen om ten minste één schaal in regel te hebben '. Dit doet u als volgt:
 
-    a. Klik op **een regel toevoegen**.
+    a. Klik op **Een regel toevoegen**.
 
     b. Stel **operator** in op **kleiner dan**.
 
     c. Stel **drempel waarde** in op **20**.
 
-    d. Stel de **bewerking** in op het verkorten **van het aantal**.
+    d. Stel de **bewerking** in op het **verkorten van het aantal**.
 
    U hebt nu een schaal instelling die wordt geschaald of geschaald op basis van het CPU-gebruik.
-   ![Schalen op basis van CPU][8]
+   Schaal ![op basis van CPU-][8]
 1. Klik op **Opslaan**.
 
-Gefeliciteerd! U hebt nu uw eerste schaal instelling gemaakt om uw web-app automatisch te schalen op basis van het CPU-gebruik.
+Gefeliciteerd. U hebt nu uw eerste schaal instelling gemaakt om uw web-app automatisch te schalen op basis van het CPU-gebruik.
 
 > [!NOTE]
 > Dezelfde stappen zijn van toepassing om aan de slag te gaan met een virtuele-machine schaalset of een Cloud service-rol.
@@ -103,7 +99,7 @@ U kunt, indien nodig, direct wijzigingen aanbrengen in JSON. Deze wijzigingen wo
 Het kan voor komen dat u de huidige schaal instelling wilt uitschakelen en de resource hand matig wilt schalen.
 
 Klik bovenaan op de knop **automatisch schalen uitschakelen** .
-![Automatisch schalen uitschakelen][13]
+automatisch schalen ![uitschakelen][13]
 
 > [!NOTE]
 > Met deze optie wordt de configuratie uitgeschakeld. U kunt deze echter weer terughalen nadat u automatisch schalen opnieuw hebt ingeschakeld.

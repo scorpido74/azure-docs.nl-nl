@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 0f5216181efcd6593fc9f85de0792b98a5d7fd0a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 000271095530e269472fba4bc5f1c5563aa16ff9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792561"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428809"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Overzicht: de implementatie voor Azure Logic Apps automatiseren met behulp van Azure Resource Manager sjablonen
 
-Wanneer u klaar bent om het maken en implementeren van uw logische app te automatiseren, kunt u de onderliggende werk stroom definitie van uw logische app uitbreiden naar een [Azure Resource Manager sjabloon](../azure-resource-manager/resource-group-overview.md). Met deze sjabloon worden de infra structuur, bronnen, para meters en andere gegevens gedefinieerd voor het inrichten en implementeren van uw logische app. Door para meters te definiëren voor waarden die variëren tijdens de implementatie, ook wel bekend als *parameterizing*, kunt u regel matig Logic Apps implementeren op basis van verschillende implementatie behoeften.
+Wanneer u klaar bent om het maken en implementeren van uw logische app te automatiseren, kunt u de onderliggende werk stroom definitie van uw logische app uitbreiden naar een [Azure Resource Manager sjabloon](../azure-resource-manager/management/overview.md). Met deze sjabloon worden de infra structuur, bronnen, para meters en andere gegevens gedefinieerd voor het inrichten en implementeren van uw logische app. Door para meters te definiëren voor waarden die variëren tijdens de implementatie, ook wel bekend als *parameterizing*, kunt u regel matig Logic Apps implementeren op basis van verschillende implementatie behoeften.
 
-Als u bijvoorbeeld in omgevingen implementeert voor ontwikkeling, testen en productie, gebruikt u waarschijnlijk verschillende verbindings reeksen voor elke omgeving. U kunt sjabloon parameters declareren die verschillende verbindings reeksen accepteren en deze teken reeksen vervolgens opslaan in een afzonderlijk [parameter bestand](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). Op die manier kunt u deze waarden wijzigen zonder dat u de sjabloon hoeft bij te werken en opnieuw te implementeren. Voor scenario's waarbij u parameter waarden hebt die gevoelig zijn of moeten worden beveiligd, zoals wacht woorden en geheimen, kunt u deze waarden opslaan in [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) en uw para meters bestand laten ophalen die waarden bevatten. In deze scenario's zou u echter opnieuw implementeren om de huidige waarden op te halen.
+Als u bijvoorbeeld in omgevingen implementeert voor ontwikkeling, testen en productie, gebruikt u waarschijnlijk verschillende verbindings reeksen voor elke omgeving. U kunt sjabloon parameters declareren die verschillende verbindings reeksen accepteren en deze teken reeksen vervolgens opslaan in een afzonderlijk [parameter bestand](../azure-resource-manager/templates/parameter-files.md). Op die manier kunt u deze waarden wijzigen zonder dat u de sjabloon hoeft bij te werken en opnieuw te implementeren. Voor scenario's waarbij u parameter waarden hebt die gevoelig zijn of moeten worden beveiligd, zoals wacht woorden en geheimen, kunt u deze waarden opslaan in [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) en uw para meters bestand laten ophalen die waarden bevatten. In deze scenario's zou u echter opnieuw implementeren om de huidige waarden op te halen.
 
 In dit overzicht worden de kenmerken van een resource manager-sjabloon beschreven die een werk stroom definitie van een logische app bevat. Zowel de sjabloon als uw werk stroom definitie gebruiken JSON-syntaxis, maar er zijn enkele verschillen, omdat de definitie van de werk stroom ook het [taal schema voor de werk stroom definitie](../logic-apps/logic-apps-workflow-definition-language.md)volgt. Sjabloon expressies en werk stroom definitie-expressies verschillen bijvoorbeeld in de manier waarop ze [verwijzen naar para meters](#parameter-references) en de waarden die ze kunnen accepteren.
 
@@ -30,7 +30,7 @@ In de logische app voor voor beelden in dit onderwerp wordt gebruikgemaakt van e
 
 Zie de volgende onderwerpen voor meer informatie over Resource Manager-sjablonen:
 
-* [Structuur en syntaxis van Azure Resource Manager sjabloon](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Structuur en syntaxis van Azure Resource Manager sjabloon](../azure-resource-manager/templates/template-syntax.md)
 * [Best practices voor Azure Resource Manager-sjablonen](../azure-resource-manager/template-best-practices.md)
 * [Azure Resource Manager-sjablonen voor consistentie van de cloud ontwikkelen](../azure-resource-manager/templates-cloud-consistency.md)
 
@@ -45,7 +45,7 @@ Zie [resource typen van micro soft. Logic](https://docs.microsoft.com/azure/temp
 
 ## <a name="template-structure"></a>Sjabloonstructuur
 
-Op het hoogste niveau volgt een resource manager-sjabloon deze structuur, die volledig wordt beschreven in het onderwerp [Azure Resource Manager sjabloon structuur en syntaxis](../azure-resource-manager/resource-group-authoring-templates.md) :
+Op het hoogste niveau volgt een resource manager-sjabloon deze structuur, die volledig wordt beschreven in het onderwerp [Azure Resource Manager sjabloon structuur en syntaxis](../azure-resource-manager/templates/template-syntax.md) :
 
 ```json
 {
@@ -63,8 +63,8 @@ Voor een sjabloon voor een logische app werkt u voornamelijk met deze sjabloon o
 
 | Kenmerk | Beschrijving |
 |-----------|-------------|
-| `parameters` | Declareert de [sjabloon parameters](../azure-resource-manager/resource-group-authoring-templates.md#parameters) voor het accepteren van de waarden die moeten worden gebruikt bij het maken en aanpassen van resources voor implementatie in Azure. Deze para meters accepteren bijvoorbeeld de waarden voor de naam en locatie, verbindingen en andere resources die nodig zijn voor de implementatie van uw logische app. U kunt deze parameter waarden opslaan in een [parameter bestand](#template-parameter-files), dat later in dit onderwerp wordt beschreven. Zie [para meters-Resource Manager-sjabloon structuur en syntaxis](../azure-resource-manager/resource-group-authoring-templates.md#parameters)voor algemene informatie. |
-| `resources` | Definieert de [resources](../azure-resource-manager/resource-group-authoring-templates.md#resources) voor het maken of bijwerken en implementeren van een Azure-resource groep, zoals uw logische app, verbindingen, Azure Storage-accounts, enzovoort. Zie voor algemene informatie [bronnen-Resource Manager-sjabloon structuur en-syntaxis](../azure-resource-manager/resource-group-authoring-templates.md#resources). |
+| `parameters` | Declareert de [sjabloon parameters](../azure-resource-manager/templates/template-syntax.md#parameters) voor het accepteren van de waarden die moeten worden gebruikt bij het maken en aanpassen van resources voor implementatie in Azure. Deze para meters accepteren bijvoorbeeld de waarden voor de naam en locatie, verbindingen en andere resources die nodig zijn voor de implementatie van uw logische app. U kunt deze parameter waarden opslaan in een [parameter bestand](#template-parameter-files), dat later in dit onderwerp wordt beschreven. Zie [para meters-Resource Manager-sjabloon structuur en syntaxis](../azure-resource-manager/templates/template-syntax.md#parameters)voor algemene informatie. |
+| `resources` | Definieert de [resources](../azure-resource-manager/templates/template-syntax.md#resources) voor het maken of bijwerken en implementeren van een Azure-resource groep, zoals uw logische app, verbindingen, Azure Storage-accounts, enzovoort. Zie voor algemene informatie [bronnen-Resource Manager-sjabloon structuur en-syntaxis](../azure-resource-manager/templates/template-syntax.md#resources). |
 ||||
 
 De logische app-sjabloon maakt gebruik van de volgende bestands indeling:
@@ -78,7 +78,7 @@ De logische app-sjabloon maakt gebruik van de volgende bestands indeling:
 
 ## <a name="template-parameters"></a>Sjabloonparameters
 
-Een sjabloon voor een logische app heeft meerdere `parameters` objecten die op verschillende niveaus bestaan en verschillende functies uitvoeren. U kunt bijvoorbeeld op het hoogste niveau [sjabloon parameters](../azure-resource-manager/resource-group-authoring-templates.md#parameters) declareren voor de waarden die u tijdens de implementatie wilt accepteren en gebruiken bij het maken en implementeren van resources in azure, bijvoorbeeld:
+Een sjabloon voor een logische app heeft meerdere `parameters` objecten die op verschillende niveaus bestaan en verschillende functies uitvoeren. U kunt bijvoorbeeld op het hoogste niveau [sjabloon parameters](../azure-resource-manager/templates/template-syntax.md#parameters) declareren voor de waarden die u tijdens de implementatie wilt accepteren en gebruiken bij het maken en implementeren van resources in azure, bijvoorbeeld:
 
 * Uw logische app
 * Verbindingen die uw logische toepassingen gebruiken om toegang te krijgen tot andere services en systemen via [beheerde connectors](../connectors/apis-list.md)
@@ -86,7 +86,7 @@ Een sjabloon voor een logische app heeft meerdere `parameters` objecten die op v
 
   Als uw logische app bijvoorbeeld gebruikmaakt van een [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) voor Business-to-Business (B2B)-scenario's, declareert het op het hoogste niveau `parameters` object van de sjabloon de para meter die de resource-id voor dat integratie account accepteert.
 
-Hier volgt de algemene structuur en syntaxis voor een parameter definitie, die volledig wordt beschreven door [para meters-Resource Manager-sjabloon structuur en syntaxis](../azure-resource-manager/resource-group-authoring-templates.md#parameters):
+Hier volgt de algemene structuur en syntaxis voor een parameter definitie, die volledig wordt beschreven door [para meters-Resource Manager-sjabloon structuur en syntaxis](../azure-resource-manager/templates/template-syntax.md#parameters):
 
 ```json
 "<parameter-name>": {
@@ -147,7 +147,7 @@ Met uitzonde ring van para meters die gevoelige waarden verwerken of moeten word
 
 Zie de volgende onderwerpen voor het beveiligen van sjabloon parameters:
 
-* [Beveiligings aanbevelingen voor sjabloon parameters](../azure-resource-manager/template-best-practices.md#parameters)
+* [Beveiligings aanbevelingen voor sjabloon parameters](../azure-resource-manager/templates/template-best-practices.md#parameters)
 * [Sjabloon parameters beveiligen](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 * [Beveilig parameter waarden door geven Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
 
@@ -169,7 +169,7 @@ Hier volgen enkele aanbevolen procedures voor het definiëren van para meters:
 
 * Neem het `defaultValue` kenmerk op, waarmee lege waarden kunnen worden opgegeven voor alle para meters, met uitzonde ring van waarden die gevoelig zijn of moeten worden beveiligd. Gebruik altijd beveiligde para meters voor gebruikers namen, wacht woorden en geheimen. Volg de richt lijnen in de volgende onderwerpen om gevoelige parameter waarden te verbergen of te beveiligen:
 
-  * [Beveiligings aanbevelingen voor sjabloon parameters](../azure-resource-manager/template-best-practices.md#parameters)
+  * [Beveiligings aanbevelingen voor sjabloon parameters](../azure-resource-manager/templates/template-best-practices.md#parameters)
 
   * [Sjabloon parameters beveiligen](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
@@ -177,13 +177,13 @@ Hier volgen enkele aanbevolen procedures voor het definiëren van para meters:
 
 * Als u de namen van sjabloon parameters wilt onderscheiden van para meters van werk stroom definities, kunt u beschrijvende sjabloon parameter namen gebruiken, bijvoorbeeld: `TemplateFabrikamPassword`
 
-Zie [Aanbevolen procedures voor sjabloon parameters](../azure-resource-manager/template-best-practices.md#parameters)voor meer aanbevolen procedures voor sjablonen.
+Zie [Aanbevolen procedures voor sjabloon parameters](../azure-resource-manager/templates/template-best-practices.md#parameters)voor meer aanbevolen procedures voor sjablonen.
 
 <a name="template-parameter-files"></a>
 
 ## <a name="template-parameters-file"></a>Sjabloon parameter bestand
 
-Als u de waarden voor sjabloon parameters wilt opgeven, slaat u deze waarden op in een [parameter bestand](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). Op die manier kunt u verschillende parameter bestanden gebruiken op basis van uw implementatie behoeften. Dit is de indeling van de bestands naam die moet worden gebruikt:
+Als u de waarden voor sjabloon parameters wilt opgeven, slaat u deze waarden op in een [parameter bestand](../azure-resource-manager/templates/parameter-files.md). Op die manier kunt u verschillende parameter bestanden gebruiken op basis van uw implementatie behoeften. Dit is de indeling van de bestands naam die moet worden gebruikt:
 
 * Bestands naam van sjabloon van logische app: **<*Logic-app-name*>. json**
 * Bestands naam van de para meters: **<*Logic-app-name*>. para meters. json**
@@ -267,8 +267,8 @@ Uw sjabloon heeft een `resources`-object. Dit is een matrix die definities bevat
 
 Zie de volgende onderwerpen voor algemene informatie over sjabloon bronnen en hun kenmerken:
 
-* [Resources-structuur en syntaxis van Resource Manager-sjabloon](../azure-resource-manager/resource-group-authoring-templates.md#resources)
-* [Aanbevolen procedures voor sjabloon resources](../azure-resource-manager/template-best-practices.md#resources)
+* [Resources-structuur en syntaxis van Resource Manager-sjabloon](../azure-resource-manager/templates/template-syntax.md#resources)
+* [Aanbevolen procedures voor sjabloon resources](../azure-resource-manager/templates/template-best-practices.md#resources)
 
 <a name="logic-app-resource-definition"></a>
 

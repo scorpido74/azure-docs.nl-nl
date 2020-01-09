@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs Secure push
+title: Azure Notification Hubs Secure push voor iOS
 description: Meer informatie over het verzenden van beveiligde push meldingen naar een iOS-app vanuit Azure. Code voorbeelden geschreven in doel-C en C#.
 documentationcenter: ios
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 4a175b14d44ef7ba019c28fbd03bac98ada7a2a3
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 96d1dd514f6fb9c11d7194714337583d6b4387cf
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212145"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530745"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs Secure push
 
@@ -60,19 +60,19 @@ Nu u de back-end van uw app hebt gewijzigd om alleen de id van een melding te ve
 
 Om dit doel te verkrijgen, moeten we de logica schrijven om de beveiligde inhoud op te halen uit de back-end van de app.
 
-1. `AppDelegate.m`Zorg ervoor dat de app registreert voor meldingen op de achtergrond zodat deze de meldings-id verwerkt die van de back-end wordt verzonden. Voeg de `UIRemoteNotificationTypeNewsstandContentAvailability` optie toe aan didFinishLaunchingWithOptions:
+1. In `AppDelegate.m`moet u ervoor zorgen dat de app registreert voor stille meldingen, zodat de meldings-ID wordt verwerkt die van de back-end wordt verzonden. Voeg de optie `UIRemoteNotificationTypeNewsstandContentAvailability` toe aan didFinishLaunchingWithOptions:
 
     ```objc
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
     ```
-2. In de sectie een implementatie toevoegenbovenaanmetdevolgendeverklaring:`AppDelegate.m`
+2. Voeg bovenaan in uw `AppDelegate.m` een implementatie sectie toe met de volgende verklaring:
 
     ```objc
     @interface AppDelegate ()
     - (void) retrieveSecurePayloadWithId:(int)payloadId completion: (void(^)(NSString*, NSError*)) completion;
     @end
     ```
-3. Voeg vervolgens in de sectie implementatie de volgende code toe en vervang de tijdelijke `{back-end endpoint}` aanduiding door het eind punt voor uw back-end die u eerder hebt verkregen:
+3. Voeg vervolgens in de sectie implementatie de volgende code toe en vervang de tijdelijke aanduiding `{back-end endpoint}` door het eind punt voor uw back-end die u eerder hebt verkregen:
 
     ```objc
     NSString *const GetNotificationEndpoint = @"{back-end endpoint}/api/notifications";
@@ -126,7 +126,7 @@ Om dit doel te verkrijgen, moeten we de logica schrijven om de beveiligde inhoud
 
     ![][IOS1]
 
-6. In `AppDelegate.m` Voeg de volgende methode toe voor het verwerken van push meldingen:
+6. Voeg in `AppDelegate.m` de volgende methode toe voor het verwerken van push meldingen:
 
     ```objc
     -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler

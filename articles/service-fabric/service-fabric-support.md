@@ -1,25 +1,16 @@
 ---
-title: Meer informatie over de ondersteunings opties voor Azure Service Fabric | Microsoft Docs
+title: Meer informatie over de ondersteunings opties voor Azure Service Fabric
 description: Ondersteunde cluster versies van Azure Service Fabric en koppelingen naar bestands ondersteunings tickets
-services: service-fabric
-documentationcenter: .net
 author: pkcsf
-manager: jpconnock
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: troubleshooting
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: ac36b1a538d5899613e19f157695d0bc333d9ece
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7494f0072f27f2c9b00db7070f19dfc05627eacf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679062"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465629"
 ---
 # <a name="azure-service-fabric-support-options"></a>Ondersteunings opties voor Azure Service Fabric
 
@@ -27,7 +18,7 @@ Voor het leveren van de juiste ondersteuning voor uw Service Fabric clusters waa
 
 ## <a name="report-production-issues-or-request-paid-support-for-azure"></a>Productie problemen melden of betaalde ondersteuning aanvragen voor Azure
 
-Voor het melden van problemen op uw Service Fabric cluster dat in Azure is geïmplementeerd, opent u een ticket voor ondersteuning [op Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) of [micro soft](https://support.microsoft.com/oas/default.aspx?prid=16146)-ondersteunings portal.
+Voor het melden van problemen op uw Service Fabric cluster dat in Azure is geïmplementeerd, opent u een ticket voor ondersteuning [op Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) of [micro soft-ondersteunings portal](https://support.microsoft.com/oas/default.aspx?prid=16146).
 
 Meer informatie over:
  
@@ -43,7 +34,7 @@ Meer informatie over:
 
 ## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>Productie problemen melden of betaalde ondersteuning aanvragen voor zelfstandige Service Fabric clusters
 
-Voor het melden van problemen op uw Service Fabric-cluster die on-premises of in andere Clouds zijn geïmplementeerd, opent u een ticket voor professionele ondersteuning op de [micro soft](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)-ondersteunings portal.
+Voor het melden van problemen op uw Service Fabric-cluster die on-premises of in andere Clouds zijn geïmplementeerd, opent u een ticket voor professionele ondersteuning op de [micro soft-ondersteunings portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 Meer informatie over:
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2ccfc2219c063a9cef25f82cef33f446993a02
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f446f1549b3efcd5f27752fac972dfd80c8650d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848371"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425414"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Uw VPN-infra structuur integreren met Azure MFA met behulp van de Network Policy Server-extensie voor Azure
 
@@ -326,13 +326,13 @@ Als onderdeel van de configuratie van de NPS-extensie moet u beheerders referent
 
 1. Aanmelden bij de [Azure-portal](https://portal.azure.com) als globale beheerder van de Azure-tenant.
 
-2. Selecteer de knop **Azure Active Directory** in het linkerdeel venster.
+2. Selecteer in het menu Azure Portal **Azure Active Directory**of zoek en selecteer **Azure Active Directory** op een wille keurige pagina.
 
 3. Selecteer **Eigenschappen**.
 
 4. Selecteer de knop **kopiëren** om uw Azure ad-id te kopiëren.
 
-    ![Azure AD-Directory-ID in de Azure Portal](./media/howto-mfa-nps-extension-vpn/image35.png)
+    ![Azure AD-Directory-ID in de Azure Portal](./media/howto-mfa-nps-extension-vpn/azure-active-directory-id-in-azure-portal.png)
 
 ### <a name="install-the-nps-extension"></a>De NPS-extensie installeren
 

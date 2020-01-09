@@ -1,25 +1,14 @@
 ---
-title: Werken met betrouw bare verzamelingen | Microsoft Docs
-description: Meer informatie over de aanbevolen procedures voor het werken met betrouw bare verzamelingen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 39e0cd6b-32c4-4b97-bbcf-33dad93dcad1
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Werken met betrouwbare verzamelingen
+description: Meer informatie over de aanbevolen procedures voor het werken met betrouw bare verzamelingen binnen een Azure Service Fabric-toepassing.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/22/2019
-ms.author: atsenthi
-ms.openlocfilehash: 2d1284115a35881087e0ced0ee735ea38ce3f5ce
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 4a1f48d9523e5d753c222f0526e210a30e1927e2
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598706"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645970"
 ---
 # <a name="working-with-reliable-collections"></a>Werken met betrouwbare verzamelingen
 Service Fabric biedt een stateful programmeer model dat via betrouw bare verzamelingen beschikbaar is voor .NET-ontwikkel aars. Service Fabric biedt met name betrouw bare woorden lijst en betrouw bare wachtrij klassen. Wanneer u deze klassen gebruikt, wordt de status gepartitioneerd (voor schaal baarheid), gerepliceerd (voor Beschik baarheid) en trans actie binnen een partitie (voor ACID-semantiek). Laten we een typisch voor beeld van een betrouwbaar woordenlijst object bekijken en zien wat het daad werkelijk doet.
@@ -57,7 +46,7 @@ Normaal gesp roken schrijft u uw code om te reageren op een TimeoutException doo
 
 Zodra de vergren deling is verkregen, voegt AddAsync de sleutel-en waarde-object verwijzingen toe aan een interne tijdelijke woorden lijst die is gekoppeld aan het ITransaction-object. Dit wordt gedaan om u te voorzien van lees-uw eigen schrijf semantiek. Dat wil zeggen, nadat u AddAsync aanroept, een latere aanroepen van TryGetValueAsync (met hetzelfde ITransaction-object) de waarde retourneert, zelfs als u de trans actie nog niet hebt doorgevoerd. Vervolgens worden uw sleutel-en waarde-objecten naar byte-matrices geserialiseerd en worden deze byte-matrices toegevoegd aan een logboek bestand op het lokale knoop punt. Ten slotte verzendt AddAsync de byte matrices naar alle secundaire replica's zodat ze dezelfde sleutel/waarde-informatie hebben. Hoewel de sleutel/waarde-informatie naar een logboek bestand is geschreven, wordt de informatie niet beschouwd als onderdeel van de woorden lijst tot de trans actie waaraan ze zijn gekoppeld, is doorgevoerd.
 
-In de bovenstaande code voert de aanroep van CommitAsync alle bewerkingen van de trans actie door. In het bijzonder worden door voeren gegevens toegevoegd aan het logboek bestand op het lokale knoop punt en wordt ook de doorvoer record naar alle secundaire replica's verzonden. Zodra een quorum (meerderheid) van de replica's heeft gereageerd, worden alle gegevens wijzigingen als permanent beschouwd en worden alle vergren delingen die zijn gekoppeld aan sleutels die via het ITransaction-object zijn gemanipuleerd, zodanig vrijgegeven dat andere threads/trans acties dezelfde sleutels kunnen manipuleren en hun gegevens.
+In de bovenstaande code voert de aanroep van CommitAsync alle bewerkingen van de trans actie door. In het bijzonder worden door voeren gegevens toegevoegd aan het logboek bestand op het lokale knoop punt en wordt ook de doorvoer record naar alle secundaire replica's verzonden. Zodra een quorum (meerderheid) van de replica's heeft gereageerd, worden alle gegevens wijzigingen als permanent beschouwd en worden alle vergren delingen die zijn gekoppeld aan sleutels die via het ITransaction-object zijn gemanipuleerd, zodanig vrijgegeven dat andere threads/trans acties dezelfde sleutels en hun waarden kunnen manipuleren.
 
 Als CommitAsync niet wordt aangeroepen (meestal vanwege een uitzonde ring die wordt gegenereerd), wordt het ITransaction-object verwijderd. Wanneer een niet-doorgevoerde ITransaction-object wordt verwijderd, voegt Service Fabric gegevens toe aan het logboek bestand van het lokale knoop punt en hoeft niets te worden verzonden naar een van de secundaire replica's. En vervolgens worden alle vergren delingen die zijn gekoppeld aan sleutels die via de trans actie zijn gemanipuleerd, vrijgegeven.
 
@@ -143,7 +132,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
 ```
 
 ## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>Onveranderbare gegevens typen definiëren om een programmeer fout te voor komen
-In het ideale geval laten we de compiler fouten melden wanneer u per ongeluk code produceert die mutates status van een object die u zou moeten overwegen onveranderbaar te zijn. Maar de C# compiler kan dit niet doen. Om mogelijke programmeer fouten te voor komen, raden we u ten zeerste aan de typen die u gebruikt met betrouw bare verzamelingen te definiëren als onveranderlijke typen. Dit betekent met name dat u de kern waardetypen (zoals getallen [Int32, UInt64, etc.], DateTime, GUID, time span en like) aanhoudt. U kunt ook een teken reeks gebruiken. Het is raadzaam om verzamelings eigenschappen te voor komen als serialisatie en deserialisatie van deze gegevens. Als u echter verzamelings eigenschappen wilt gebruiken, wordt het gebruik van aanbevolen. NET onveranderlijke verzamelingen bibliotheek ([System. Collections.](https://www.nuget.org/packages/System.Collections.Immutable/)onveranderbaar). Deze tape wisselaar kan worden gedownload van https://nuget.org. We raden u ook aan om uw klassen te verzegelen en de velden alleen-lezen waar mogelijk te maken.
+In het ideale geval laten we de compiler fouten melden wanneer u per ongeluk code produceert die mutates status van een object die u zou moeten overwegen onveranderbaar te zijn. Maar de C# compiler kan dit niet doen. Om mogelijke programmeer fouten te voor komen, raden we u ten zeerste aan de typen die u gebruikt met betrouw bare verzamelingen te definiëren als onveranderlijke typen. Dit betekent met name dat u de kern waardetypen (zoals getallen [Int32, UInt64, etc.], DateTime, GUID, time span en like) aanhoudt. U kunt ook een teken reeks gebruiken. Het is raadzaam om verzamelings eigenschappen te voor komen als serialisatie en deserialisatie van deze gegevens. Als u echter verzamelings eigenschappen wilt gebruiken, wordt het gebruik van aanbevolen. NET onveranderlijke verzamelingen bibliotheek ([System. Collections. onveranderbaar](https://www.nuget.org/packages/System.Collections.Immutable/)). Deze bibliotheek kan vanaf https://nuget.org worden gedownload. We raden u ook aan om uw klassen te verzegelen en de velden alleen-lezen waar mogelijk te maken.
 
 In het onderstaande type user info wordt gedemonstreerd hoe u een onveranderbaar type kunt definiëren met voor noemde aanbevelingen.
 
@@ -201,7 +190,7 @@ public struct ItemId
 ```
 
 ## <a name="schema-versioning-upgrades"></a>Schema versie beheer (upgrades)
-Interne, betrouw bare verzamelingen serialiseren uw objecten met. De DataContractSerializer van het NET. De geserialiseerde objecten worden bewaard op de lokale schijf van de primaire replica en worden ook verzonden naar de secundaire replica's. Als uw service is verouderd, wilt u waarschijnlijk het soort gegevens (schema) wijzigen dat vereist is voor uw service. Benadert de versie van uw gegevens met geweldige zorg. Eerst moet u de oude gegevens altijd kunnen deserialiseren. Dit betekent met name dat uw deserialisatie code oneindig achterwaarts compatibel moet zijn: Versie 333 van uw service code moet kunnen worden gebruikt voor gegevens die in een betrouw bare verzameling worden geplaatst met versie 1 van uw service code van 5 jaar geleden.
+Interne, betrouw bare verzamelingen serialiseren uw objecten met. De DataContractSerializer van het NET. De geserialiseerde objecten worden bewaard op de lokale schijf van de primaire replica en worden ook verzonden naar de secundaire replica's. Als uw service is verouderd, wilt u waarschijnlijk het soort gegevens (schema) wijzigen dat vereist is voor uw service. Benadert de versie van uw gegevens met geweldige zorg. Eerst moet u de oude gegevens altijd kunnen deserialiseren. Dit betekent met name dat uw deserialisatie code oneindig achterwaarts compatibel moet zijn: versie 333 van uw service code moet kunnen worden gebruikt voor gegevens die in een betrouw bare verzameling worden geplaatst met versie 1 van uw service code van 5 jaar geleden.
 
 Daarnaast wordt de service code één upgrade domein tegelijk geüpgraded. Tijdens een upgrade hebt u dus twee verschillende versies van de service code die gelijktijdig worden uitgevoerd. U moet voor komen dat de nieuwe versie van uw service code het nieuwe schema gebruiken als oude versies van uw service code het nieuwe schema mogelijk niet kan verwerken. Als dat mogelijk is, moet u elke versie van uw service zo ontwerpen dat deze compatibel is met één versie. Dit betekent met name dat v1 van uw service code alle schema-elementen moet kunnen negeren die niet expliciet wordt verwerkt. Het moet echter alle gegevens kunnen opslaan die niet expliciet bekend zijn en waar ze een back-up van maken wanneer ze een woorden lijst sleutel of-waarde bijwerken.
 
@@ -209,7 +198,7 @@ Daarnaast wordt de service code één upgrade domein tegelijk geüpgraded. Tijde
 > Hoewel u het schema van een sleutel kunt wijzigen, moet u ervoor zorgen dat de hash-code van uw sleutel en de algoritmen stabiel zijn. Als u de werking van een van deze algoritmen wijzigt, kunt u de sleutel niet meer in de betrouw bare woorden lijst opzoeken.
 > .NET-teken reeksen kunnen worden gebruikt als sleutel, maar u kunt de teken reeks zelf gebruiken als de sleutel. gebruik niet het resultaat van string. GetHashCode als de sleutel.
 
-U kunt ook uitvoeren wat meestal een twee upgrades wordt genoemd. Bij een upgrade met twee fasen kunt u uw service upgraden van v1 naar v2: V2 bevat de code die weet hoe u kunt omgaan met de nieuwe schema wijziging, maar deze code wordt niet uitgevoerd. Wanneer de v2-code v1-gegevens leest, wordt deze op IT toegepast en worden er v1-gegevens wegge schreven. Nadat de upgrade voor alle upgrade domeinen is voltooid, kunt u een signaal verzenden naar de actieve v2-instanties die de upgrade is voltooid. (Een manier om dit aan te geven, is om een configuratie-upgrade uit te vouwen. Dit is een upgrade van twee fasen.) De v2-exemplaren kunnen nu v1-gegevens lezen, deze converteren naar v2-gegevens, hierop op de app worden uitgevoerd en deze als v2-gegevens schrijven. Wanneer andere instanties v2-gegevens lezen, hoeven ze niet te worden geconverteerd, ze worden gewoon op de app uitgevoerd en kunnen v2-gegevens worden geschreven.
+U kunt ook uitvoeren wat meestal een twee upgrades wordt genoemd. Bij een upgrade met twee fasen voert u een upgrade uit van v1 naar v2: v2 bevat de code die weet hoe u kunt omgaan met de nieuwe schema wijziging, maar deze code wordt niet uitgevoerd. Wanneer de v2-code v1-gegevens leest, wordt deze op IT toegepast en worden er v1-gegevens wegge schreven. Nadat de upgrade voor alle upgrade domeinen is voltooid, kunt u een signaal verzenden naar de actieve v2-instanties die de upgrade is voltooid. (Een manier om dit aan te geven, is om een configuratie-upgrade uit te vouwen. Dit is een upgrade van twee fasen.) De v2-exemplaren kunnen nu v1-gegevens lezen, deze converteren naar v2-gegevens, hierop op de app worden uitgevoerd en deze als v2-gegevens schrijven. Wanneer andere instanties v2-gegevens lezen, hoeven ze niet te worden geconverteerd, ze worden gewoon op de app uitgevoerd en kunnen v2-gegevens worden geschreven.
 
 ## <a name="next-steps"></a>Volgende stappen
 Voor meer informatie over het maken van forward compatibele gegevens contracten raadpleegt u [Forward-compatibele gegevens contracten](https://msdn.microsoft.com/library/ms731083.aspx)

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 37b8ad0fc09644d746c3528c174d1bf95d546d0f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: f688f0ddfb62e988ddebada1f612aa842afa5181
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706266"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644593"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: veelgestelde vragen
 
@@ -114,7 +114,7 @@ Nee, het is niet mogelijk om Apache Kafka en Apache Spark uit te voeren op hetze
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Hoe kan ik tijd zone wijzigen in Ambari?
 
-1. Open de Ambari-webgebruikersinterface op https://CLUSTERNAME.azurehdinsight.net, waarbij CLUSTERNAME de naam van uw cluster is.
+1. Open de Ambari-webgebruikersinterface op `https://CLUSTERNAME.azurehdinsight.net`, waarbij CLUSTERNAME de naam van uw cluster is.
 2. Selecteer in de rechter bovenhoek de optie beheer | Instellingen. 
 
    ![Ambari-instellingen](media/hdinsight-faq/ambari-settings.png)
@@ -316,7 +316,7 @@ Nadat u een Edge-knoop punt hebt gemaakt, kunt u er verbinding mee maken via SSH
 
 U gebruikt persistente scripts om nieuwe worker-knoop punten die aan het cluster worden toegevoegd, aan te passen via schaal bewerkingen. Persistente scripts zijn niet van toepassing op Edge-knoop punten.
 
-## <a name="rest-api"></a>REST-API
+## <a name="rest-api"></a>REST API
 
 ### <a name="what-are-the-rest-api-calls-to-pull-a-tez-query-view-from-the-cluster"></a>Wat zijn de REST API-aanroepen om een TEZ-query weergave uit het cluster te halen?
 

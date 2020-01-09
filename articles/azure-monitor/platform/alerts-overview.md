@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: b655181f41aeda71364edd061b7c81db23e59990
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 26516b99f3ffd9a16a24a4d5d1906ed781a8034a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951136"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396528"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Overzicht van waarschuwingen in Microsoft Azure 
 
@@ -184,23 +184,23 @@ Voor het gebruik en het beheer van waarschuwings instanties moet de gebruiker be
 
 Mogelijk wilt u programmatisch een query uitvoeren op waarschuwingen die zijn gegenereerd op basis van uw abonnement. Het kan zijn dat u aangepaste weer gaven wilt maken buiten de Azure Portal, of dat u uw waarschuwingen wilt analyseren om patronen en trends te identificeren.
 
-U kunt een query uitvoeren voor waarschuwingen die worden gegenereerd op basis van uw abonnementen door gebruik te maken van de [Waarschuwingenbeheer rest API](https://aka.ms/alert-management-api) of door gebruik te maken van de [Azure Resource Graph-rest API voor waarschuwingen](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)).
+U kunt een query uitvoeren voor waarschuwingen die zijn gegenereerd op basis van uw abonnementen door gebruik te maken van de [Waarschuwingenbeheer rest API](https://aka.ms/alert-management-api) of door gebruik te maken van de [Azure resource Graph](../../governance/resource-graph/overview.md) en de [rest API voor resources](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources).
 
-Met de [Azure resource Graph-rest API voor waarschuwingen](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)) kunt u op schaal zoeken naar waarschuwings exemplaren. Dit wordt aanbevolen wanneer u waarschuwingen moet beheren die zijn gegenereerd voor veel abonnementen. 
+Met de resource grafiek REST API voor resources kunt u op schaal een query uitvoeren op waarschuwings exemplaren. Dit wordt aanbevolen wanneer u waarschuwingen moet beheren die zijn gegenereerd voor veel abonnementen. 
 
-De volgende voorbeeld aanvraag voor de API retourneert het aantal waarschuwingen binnen één abonnement:
+De volgende voorbeeld aanvraag voor de resource grafiek REST API retourneert het aantal waarschuwingen binnen één abonnement:
 
 ```json
 {
   "subscriptions": [
     <subscriptionId>
   ],
-  "query": "where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()",
-  "options": {
-            "dataset":"alerts"
-  }
+  "query": "AlertsManagementResources | where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()"
 }
 ```
+
+U kunt ook het resultaat van deze resource grafiek query weer geven in de portal met Azure resource Graph Explorer: [Portal.Azure.com](https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/AlertsManagementResources%20%7C%20where%20type%20%3D~%20%27Microsoft.AlertsManagement%2Falerts%27%20%7C%20summarize%20count())
+
 U kunt een query uitvoeren op de waarschuwingen voor hun [essentiële](alerts-common-schema-definitions.md#essentials) velden.
 
 Gebruik de [Waarschuwingenbeheer rest API](https://aka.ms/alert-management-api) om meer informatie te krijgen over specifieke waarschuwingen, met inbegrip van de context velden van de [waarschuwing](alerts-common-schema-definitions.md#alert-context) .

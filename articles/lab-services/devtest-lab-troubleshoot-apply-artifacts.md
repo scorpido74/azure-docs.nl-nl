@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2019
 ms.author: spelluru
-ms.openlocfilehash: a0505b987deb67f93de6f6166154211359515ad7
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: fc5051667100a2ebaa01b7815f825fadd766b08f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807886"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456989"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Problemen oplossen bij het Toep assen van artefacten in een Azure DevTest Labs virtuele machine
 Het Toep assen van artefacten op een virtuele machine kan om verschillende redenen mislukken. In dit artikel wordt stapsgewijs beschreven hoe u mogelijke oorzaken kunt identificeren.
@@ -69,7 +69,7 @@ Wanneer een artefact vastloopt, moet u eerst bepalen waar deze zich bevinden. Ee
 - **Bij het uitvoeren van het artefact**. Dit kan worden veroorzaakt door netwerk-of opslag problemen. Zie de betreffende sectie verderop in dit artikel voor meer informatie. Dit kan ook gebeuren door de manier waarop het script is gemaakt. Bijvoorbeeld:
     - Een Power shell-script heeft **verplichte para meters**, maar er kan wel een waarde worden door gegeven, omdat u de gebruiker de optie leeg laat of omdat u geen standaard waarde voor de eigenschap hebt in het definitie bestand artifactfile. json. Het script is vastgelopen omdat het wacht op invoer van de gebruiker.
     - Een Power shell-script **vereist invoer** van de gebruiker als onderdeel van de uitvoering. Scripts moeten zonder tussen komst van de gebruiker worden geschreven om op de achtergrond te worden uitgevoerd.
-- **Het duurt lang voordat de VM-agent gereed is**. Wanneer de virtuele machine voor het eerst wordt gestart, of wanneer de aangepaste script extensie voor het eerst wordt geïnstalleerd om artefacten toe te passen, moet de VM mogelijk een upgrade van de VM-agent uitvoeren of wachten tot de VM-agent is geïnitialiseerd. Het kan voor komen dat de VM-agent veel tijd in beslag neemt. In dergelijke gevallen raadpleegt u [overzicht van Azure virtual machine agent](/virtual-machines/extensions/agent-windows.md) voor verdere probleem oplossing.
+- **Het duurt lang voordat de VM-agent gereed is**. Wanneer de virtuele machine voor het eerst wordt gestart, of wanneer de aangepaste script extensie voor het eerst wordt geïnstalleerd om artefacten toe te passen, moet de VM mogelijk een upgrade van de VM-agent uitvoeren of wachten tot de VM-agent is geïnitialiseerd. Het kan voor komen dat de VM-agent veel tijd in beslag neemt. In dergelijke gevallen raadpleegt u [overzicht van Azure virtual machine agent](../virtual-machines/extensions/agent-windows.md) voor verdere probleem oplossing.
 
 ### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-script"></a>Controleren of het artefact lijkt vast te lopen vanwege het script
 
@@ -101,7 +101,7 @@ Wanneer een artefact vastloopt, moet u eerst bepalen waar deze zich bevinden. Ee
     In dit voor beeld ziet u dat de start tijd van de VM-agent 10 minuten en 20 seconden heeft geduurd omdat er een heartbeat is verzonden. De oorzaak in dit geval was dat de OOBE-service veel tijd in beslag neemt.
 
 > [!TIP]
-> Zie [extensies en functies van virtuele Azure-machines](/virtual-machines/extensions/overview.md)voor algemene informatie over Azure-extensies.
+> Zie [extensies en functies van virtuele Azure-machines](../virtual-machines/extensions/overview.md)voor algemene informatie over Azure-extensies.
 
 ## <a name="storage-errors"></a>Opslag fouten
 DevTest Labs vereist toegang tot het opslag account van de Lab dat is gemaakt om artefacten in de cache op te slaan. Wanneer in DevTest Labs een artefact wordt toegepast, worden de artefact configuratie en de bijbehorende bestanden van de geconfigureerde opslag plaatsen gelezen. DevTest Labs configureert standaard de toegang tot de **open bare artefact opslag plaats**.

@@ -1,70 +1,70 @@
 ---
-title: Functies - rendering Azure Batch
-description: Het gebruik van mogelijkheden voor rendering in Azure Batch
+title: Weergave mogelijkheden gebruiken-Azure Batch
+description: Azure Batch weergave mogelijkheden gebruiken. Gebruik de Batch Explorer toepassing, hetzij rechtstreeks of aangeroepen vanuit een invoeg toepassing voor een client-app.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2dff44f0b5b4b02c39c4c63f23ff64d55ca9d833
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d181b9b2495ebd106bb068b78131fa90c2f6d62c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337597"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449671"
 ---
-# <a name="using-azure-batch-rendering"></a>Met behulp van Azure Batch rendering
+# <a name="using-azure-batch-rendering"></a>Azure Batch Rendering gebruiken
 
-Er zijn verschillende manieren waarop u met Azure Batch rendering:
+Er zijn verschillende manieren om Azure Batch rendering te gebruiken:
 
-* APIs:
-  * Schrijf code met behulp van een van de Batch-API's.  Ontwikkelaars kunnen Azure Batch-mogelijkheden integreren in hun bestaande toepassingen of de werkstroom, of cloud of op basis van on-premises.
-* Vanaf de opdrachtregel-hulpprogramma's:
-  * De [Azure vanaf de opdrachtregel](https://docs.microsoft.com/cli/azure/) of [PowerShell](https://docs.microsoft.com/powershell/azure/overview) kan worden gebruikt voor het gebruik van de Batch script.
-  * In het bijzonder de [Batch CLI-ondersteuning voor sjabloon](https://docs.microsoft.com/azure/batch/batch-cli-templates) maakt het veel gemakkelijker te maken van pools en taken verzendt.
-* Batch Explorer-gebruikersinterface:
-  * [Batch Explorer](https://github.com/Azure/BatchLabs) is een platformoverschrijdende clienthulpprogramma waarmee ook Batch-accounts worden beheerd en bewaakt.
-  * Voor elk van de rendering-toepassingen zijn een aantal sjablonen voor groep van toepassingen en -taak opgegeven die kunnen worden gebruikt om eenvoudig te maken van toepassingen en voor het verzenden van taken.  Een set van sjablonen wordt vermeld in de gebruikersinterface van de toepassing met de sjabloonbestanden die toegankelijk zijn vanuit GitHub.
-  * Aangepaste sjablonen helemaal worden geschreven of de opgegeven sjablonen van GitHub kunnen worden gekopieerd en gewijzigd.
-* Client-toepassing-plug-ins:
-  * Invoegtoepassingen zijn beschikbaar die Batch rendering worden gebruikt als rechtstreeks in het ontwerp van de client en ontwerptoepassingen toestaan.  De plug-ins voornamelijk aanroepen van de Batch Explorer-toepassing met contextuele informatie over de huidige 3D-model en bevat functies voor het beheren van activa.
+* API's:
+  * Code schrijven met behulp van een van de batch-Api's.  Ontwikkel aars kunnen Azure Batch-mogelijkheden integreren in hun bestaande toepassingen of werk stroom, of deze in de Cloud of op basis van on-premises.
+* Opdracht regel Programma's:
+  * De [Azure-opdracht regel](https://docs.microsoft.com/cli/azure/) of [Power shell](https://docs.microsoft.com/powershell/azure/overview) kan worden gebruikt om batch gebruik te maken van scripts.
+  * Met name de [batch-cli-sjabloon ondersteuning](https://docs.microsoft.com/azure/batch/batch-cli-templates) maakt het veel eenvoudiger om Pools te maken en taken te verzenden.
+* Batch Explorer-gebruikers interface:
+  * [Batch Explorer](https://github.com/Azure/BatchLabs) is een platformoverschrijdende client hulpprogramma waarmee batch-accounts ook kunnen worden beheerd en bewaakt.
+  * Voor elk van de rendering-toepassingen worden een aantal groeps-en taak sjablonen gegeven die kunnen worden gebruikt om eenvoudig Pools te maken en taken te verzenden.  Een set sjablonen wordt weer gegeven in de gebruikers interface van de toepassing, waarbij de sjabloon bestanden worden geopend vanuit GitHub.
+  * Aangepaste sjablonen kunnen helemaal zelf worden gemaakt of de opgegeven sjablonen van GitHub kunnen worden gekopieerd en gewijzigd.
+* Invoeg toepassingen voor client toepassingen:
+  * Invoeg toepassingen zijn beschikbaar waarmee batch rendering rechtstreeks kan worden gebruikt in de client ontwerp-en modelleer toepassingen.  De invoeg toepassingen roepen voornamelijk de Batch Explorer-toepassing met contextuele informatie over het huidige 3D-model en bevatten functies waarmee u assets kunt beheren.
 
-De beste manier om te proberen van Azure Batch rendering en eenvoudigste manier voor eindgebruikers die geen ontwikkelaars en niet Azure-experts, is met de Batch Explorer-toepassing, hetzij rechtstreeks of aangeroepen vanuit een clienttoepassing invoegtoepassing.
+De beste manier om Azure Batch rendering en de eenvoudigste manier te proberen voor eind gebruikers, die geen ontwikkel aars zijn en geen Azure-experts zijn, is het gebruik van de Batch Explorer toepassing, hetzij rechtstreeks, hetzij opgeroepen vanuit een invoeg toepassing voor client toepassingen.
 
 ## <a name="using-batch-explorer"></a>Batch Explorer gebruiken
 
-Voor een stapsgewijze zelfstudie voor het gebruik van Batch Explorer om uit te voeren rendering, Zie de [Blender zelfstudie](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender).
+Zie voor een stapsgewijze zelf studie voor het gebruik van Batch Explorer om weer gave uit te voeren de [zelf studie over mengsels](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender).
 
 ### <a name="download-and-install"></a>Downloaden en installeren
 
-Batch Explorer [downloads zijn beschikbaar](https://azure.github.io/BatchExplorer/) voor Windows, OSX en Linux.
+Batch Explorer- [down loads zijn beschikbaar](https://azure.github.io/BatchExplorer/) voor Windows, OSX en Linux.
 
-### <a name="using-templates-to-create-pools-and-run-jobs"></a>Met behulp van sjablonen voor maken van pools en taken uitvoeren
+### <a name="using-templates-to-create-pools-and-run-jobs"></a>Sjablonen gebruiken om Pools te maken en taken uit te voeren
 
-Er is een uitgebreide set met sjablonen beschikbaar voor gebruik met Batch Explorer waarmee u eenvoudig toepassingen maken en verzenden van taken voor de verschillende rendering-toepassingen zonder te geven van alle eigenschappen die zijn vereist voor het maken van pools, jobs en taken rechtstreeks met Batch.  De sjablonen die beschikbaar zijn in de Batch Explorer worden opgeslagen en zichtbaar zijn in [een GitHub-opslagplaats](https://github.com/Azure/BatchExplorer-data/tree/master/ncj).
+Er is een uitgebreide set sjablonen beschikbaar voor gebruik met Batch Explorer waarmee u gemakkelijk Pools kunt maken en taken voor de verschillende rendering-toepassingen kunt verzenden, zonder dat u alle eigenschappen hoeft op te geven die nodig zijn om groepen, taken en taken rechtstreeks te maken met Meerdere.  De sjablonen die beschikbaar zijn in Batch Explorer, worden opgeslagen en weer gegeven in [een github-opslag plaats](https://github.com/Azure/BatchExplorer-data/tree/master/ncj).
 
-![Batch Explorer-galerie](./media/batch-rendering-using/batch-explorer-gallery.png)
+![Galerie Batch Explorer](./media/batch-rendering-using/batch-explorer-gallery.png)
 
-Sjablonen zijn opgegeven die geschikt zijn voor alle toepassingen aanwezig op de VM-installatiekopieën van Marketplace-rendering.  Voor elke toepassing bestaan meerdere sjablonen, waaronder sjablonen van de pool dat ze voor CPU en GPU pools, Windows en Linux-pools; Taaksjablonen zijn volledig frame of naast elkaar Blender rendering en V-Ray gedistribueerde weergaven. Het aantal opgegeven zal worden uitgebreid na verloop van tijd die geschikt zijn voor andere functies van Batch, zoals automatisch schalen van toepassingen.
+Er zijn sjablonen beschikbaar voor alle toepassingen die aanwezig zijn op de Marketplace VM-installatie kopieën weer geven.  Voor elke toepassing bestaan er meerdere sjablonen, met inbegrip van groeps sjablonen die moeten worden gebruikt voor CPU-en GPU-groepen, Windows-en Linux-Pools; taak sjablonen omvatten volledige kaders of tegel beeldrendering en V-Ray-gedistribueerde rendering. De set geleverde sjablonen wordt na verloop van tijd uitgebreid naar andere batch-mogelijkheden, zoals het automatisch schalen van groepen.
 
-Het is ook mogelijk voor aangepaste sjablonen moeten worden geproduceerd, helemaal of door het wijzigen van de opgegeven sjablonen. Aangepaste sjablonen kunnen worden gebruikt door het selecteren van het item 'Lokale sjablonen' in de sectie 'Galerie' van de Batch Explorer.
+Het is ook mogelijk om aangepaste sjablonen te produceren, helemaal volledig te maken of door de opgegeven sjablonen te wijzigen. Aangepaste sjablonen kunnen worden gebruikt door het item ' lokale sjablonen ' te selecteren in de sectie ' galerie ' van Batch Explorer.
 
-### <a name="file-system-and-data-movement"></a>Systeem- en -verplaatsing van bestand
+### <a name="file-system-and-data-movement"></a>Bestands systeem en gegevens verplaatsing
 
-De sectie 'Gegevens' in de Batch Explorer kunt bestanden die moeten worden gekopieerd tussen een lokale bestandssysteem en Azure Storage-accounts.
+Met de sectie ' gegevens ' in Batch Explorer kunnen bestanden worden gekopieerd tussen een lokaal bestands systeem en Azure Storage-accounts.
 
-## <a name="client-application-plug-ins"></a>Client-invoegtoepassingen voor toepassing
+## <a name="client-application-plug-ins"></a>Invoeg toepassingen voor client toepassingen
 
-Invoegtoepassingen zijn beschikbaar voor enkele van de clienttoepassingen.  Invoegtoepassingen toestaan pools en taken rechtstreeks vanuit de toepassing worden gemaakt of aanroepen van Batch Explorer.
+Invoeg toepassingen zijn beschikbaar voor sommige client toepassingen.  Met de invoeg toepassingen kunnen Pools en taken rechtstreeks vanuit de toepassing worden gemaakt of Batch Explorer worden aangeroepen.
 
 * [Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
-* [Autodesk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
+* [Auto Desk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
 * [Autodesk Maya](https://github.com/Azure/azure-batch-maya)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor voorbeelden van Batch rendering proberen de twee zelfstudies:
+Voor voor beelden van batch rendering kunt u de twee zelf studies uitproberen:
 
-* [Rendering met de Azure CLI](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
-* [Rendering met behulp van Batch Explorer](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [Rendering met behulp van Azure CLI](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
+* [Rendering met Batch Explorer](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)

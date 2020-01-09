@@ -11,23 +11,23 @@ metadata:
   author: tfitzmac
   ms.author: tomfitz
   ms.date: 12/19/2019
-  ms.openlocfilehash: 2910576517be35652d8e1ed1e82687a56a10467e
-  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+  ms.openlocfilehash: d094dce17f9f79b37bc5a226d756713f6e57be6a
+  ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 01/03/2020
-  ms.locfileid: "75642469"
+  ms.lasthandoff: 01/06/2020
+  ms.locfileid: "75680644"
 highlightedContent:
   items:
+  - title: Wat is Resource Manager?
+    itemType: overview
+    url: management/overview.md
   - title: Wat zijn sjablonen?
     itemType: overview
     url: templates/overview.md
   - title: Uw eerste sjabloon maken
     itemType: tutorial
     url: templates/template-tutorial-create-first-template.md
-  - title: Wat is Resource Manager?
-    itemType: overview
-    url: management/overview.md
 conceptualContent:
   items:
   - title: Resource Manager-sjablonen implementeren
@@ -40,10 +40,13 @@ conceptualContent:
       text: Reeks zelfstudies voor beginners
     - url: templates/template-syntax.md
       itemType: reference
-      text: Sjabloonbestandstructuur
+      text: Sjabloonsyntaxis
     - url: templates/template-functions.md
       itemType: reference
       text: Sjabloonfuncties
+    - url: /azure/templates/
+      itemType: reference
+      text: Sjabloonverwijzing
     - url: templates/deploy-powershell.md
       itemType: how-to-guide
       text: Implementeren
@@ -70,6 +73,9 @@ conceptualContent:
     - url: management/resource-providers-and-types.md
       itemType: concept
       text: Resourceproviders en -typen
+    - url: management/azure-subscription-service-limits.md
+      itemType: concept
+      text: Abonnements- en servicebeperkingen
     footerLink:
       url: management/index.yml
       text: Meer informatie
@@ -80,13 +86,13 @@ conceptualContent:
       text: Overzicht
     - url: managed-applications/publish-service-catalog-app.md
       itemType: tutorial
-      text: Servicecatalogus-app publiceren
+      text: App publiceren in servicecatalogus
     - url: managed-applications/create-uidefinition-overview.md
       itemType: how-to-guide
-      text: UI-definitie maken
+      text: Portalvenster definiëren om app te maken
     - url: managed-applications/publish-marketplace-app.md
       itemType: tutorial
-      text: Toevoegen aan Marketplace
+      text: App toevoegen aan Marketplace
     footerLink:
       url: managed-applications/index.yml
       text: Meer informatie

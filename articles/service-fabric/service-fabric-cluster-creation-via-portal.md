@@ -1,30 +1,19 @@
 ---
-title: Een Service Fabric cluster maken in de Azure Portal | Microsoft Docs
+title: Een Service Fabric-cluster maken in Azure Portal
 description: Meer informatie over het instellen van een beveiligd Service Fabric-cluster in azure met behulp van de Azure Portal en Azure Key Vault.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: 426c3d13-127a-49eb-a54c-6bde7c87a83b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/06/2018
-ms.author: atsenthi
-ms.openlocfilehash: ca050e19ed37e2895507507338ebf4b4217851b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934048"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452304"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Een Service Fabric-cluster maken in azure met behulp van de Azure Portal
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure-portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -41,7 +30,7 @@ Dit is een stapsgewijze hand leiding waarmee u de stappen voor het instellen van
 ## <a name="cluster-security"></a>Clusterbeveiliging 
 Er worden in Service Fabric certificaten gebruikt voor verificatie en versleuteling om verschillende aspecten van een cluster en de bijbehorende toepassingen te beveiligen. Zie [Service Fabric-clusterbeveiligingsscenario's][service-fabric-cluster-security] voor meer informatie over hoe certificaten worden gebruikt in Service Fabric.
 
-Als dit de eerste keer is dat u een service Fabric-cluster maakt of een cluster voor test werkbelastingen implementeert, kunt u door gaan naar de volgende sectie (**cluster maken in azure Portal**) en het systeem certificaten laten genereren die nodig zijn voor de uitvoering van de clusters werk belastingen testen. Als u een cluster instelt voor werk belastingen van de productie omgeving, kunt u door gaan met lezen.
+Als dit de eerste keer is dat u een service Fabric-cluster maakt of een cluster voor test werkbelastingen implementeert, kunt u door gaan naar de volgende sectie (**cluster maken in azure Portal**) en het systeem certificaten laten genereren die nodig zijn voor uw clusters waarop test werkbelastingen worden uitgevoerd. Als u een cluster instelt voor werk belastingen van de productie omgeving, kunt u door gaan met lezen.
 
 #### <a name="cluster-and-server-certificate-required"></a>Cluster-en server certificaat (vereist)
 Dit certificaat is vereist om een cluster te beveiligen en onbevoegde toegang te voor komen. Het biedt cluster beveiliging op een aantal manieren:
@@ -79,7 +68,7 @@ Het maken van een productie cluster om te voldoen aan de behoeften van uw toepas
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Zoeken naar de Service Fabric cluster resource
 
-Meld u aan bij de [Azure-portal][azure-portal].
+Meld u aan bij de [Azure Portal][azure-portal].
 Klik op **een resource maken** om een nieuwe resource sjabloon toe te voegen. Zoek de Service Fabric cluster sjabloon op de **Marketplace** onder **Alles**.
 Selecteer **service Fabric cluster** in de lijst.
 
@@ -111,7 +100,7 @@ Op de Blade basis beginselen moet u de basis gegevens voor uw cluster opgeven.
 Configureer uw cluster knooppunten. Knooppunt typen definiëren de VM-grootten, het aantal Vm's en de bijbehorende eigenschappen. Uw cluster kan meer dan één knooppunt type hebben, maar het primaire knooppunt type (de eerste die u in de portal definieert) moet ten minste vijf Vm's hebben, aangezien dit het knooppunt type is waar Service Fabric systeem services worden geplaatst. Configureer geen **plaatsings eigenschappen** omdat er automatisch een standaard plaatsings eigenschap van ' NodeTypeName ' wordt toegevoegd.
 
 > [!NOTE]
-> Een veelvoorkomend scenario voor meerdere knooppunt typen is een toepassing die een front-end-service en een back-end-service bevat. U wilt de front-end-service op kleinere Vm's (VM-grootten zoals D2_V2) op het Internet plaatsen en de back-end-service op grotere Vm's plaatsen (met VM-grootten zoals D3_V2, D6_V2, D15_V2 enzovoort) zonder Internet poorten open.
+> Een veelvoorkomend scenario voor meerdere knooppunt typen is een toepassing die een front-end-service en een back-end-service bevat. U wilt de front-end-service op kleinere Vm's (VM-grootten zoals D2_V2) met poorten openen op internet en de back-end-service op grotere Vm's zetten (met VM-grootten zoals D3_V2, D6_V2, D15_V2 enzovoort) zonder open bare poorten op internet.
 > 
 
 1. Kies een naam voor het knooppunt type (1-12 tekens die alleen letters en cijfers bevatten).

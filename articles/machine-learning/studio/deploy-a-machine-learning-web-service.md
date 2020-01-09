@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: a2c1ba1d4cd2dfdbf2a94005c539e70705486ba4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1b9a836491e989b676663d13b8eebb994c5145d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851091"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454794"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Een Azure Machine Learning Studio-webservice (klassiek) implementeren
 
@@ -23,7 +23,7 @@ Met Azure Machine Learning Studio (klassiek) kunt u een voorspellende analyse op
 
 Machine Learning Studio (Classic) webservices bieden een interface tussen een toepassing en een score model voor het maken van een Machine Learning Studio (klassiek) werk stroom. Een externe toepassing kan in realtime communiceren met een werk stroom score model voor Machine Learning Studio (klassiek). Een aanroep van een Machine Learning Studio (klassieke) webservice retourneert Voorspellings resultaten naar een externe toepassing. Tijdens een aanroep aan een webservice wordt een API-sleutel doorgegeven die is gemaakt tijdens de implementatie van de webservice. Een webservice Machine Learning Studio (klassiek) is gebaseerd op REST, een populaire architectuur voor webprogrammeer projecten.
 
-De klassieke versie van Azure Machine Learning Studio heeft twee soorten webservices:
+Azure Machine Learning Studio (klassiek) heeft twee soorten webservices:
 
 * Aanvraag-antwoord service (RR'S): een zeer schaal bare service met een lage latentie die één gegevens record verstuurt.
 * Batch Execution Service (BES): een asynchrone service die een batch met gegevens records verlaagt.
@@ -32,13 +32,13 @@ De invoer voor BES is net als de gegevensinvoer die door RRS wordt gebruikt. Het
 
 Vanuit een hoogwaardige punt weergave implementeert u uw model in drie stappen:
 
-* **[Een trainings experiment maken]** : in de klassieke versie van Studio kunt u een Predictive Analytics model trainen en testen met behulp van de trainings gegevens die u opgeeft, met behulp van een groot aantal ingebouwde machine learning algoritmen.
+* **[Een trainings experiment maken]** : in Studio (klassiek) kunt u een Predictive Analytics model trainen en testen met behulp van de trainings gegevens die u opgeeft, met behulp van een groot aantal ingebouwde machine learning algoritmen.
 * **[Converteren naar een voorspellend experiment]** : Zodra uw model is getraind met bestaande gegevens en u klaar bent om het te gebruiken voor het beoordelen van nieuwe gegevens, kunt u uw experiment voorbereiden en stroom lijnen voor voor spellingen.
 * **Implementeren** als een **[nieuwe webservice]** of een **[klassieke webservice]** : wanneer u uw voorspellende experiment implementeert als een Azure-webservice, kunnen gebruikers gegevens naar uw model verzenden en de voor spellingen van uw model ontvangen.
 
 ## <a name="create-a-training-experiment"></a>Een opleidingsexperiment maken
 
-Voor het trainen van een predictive analytics model gebruikt u de klassieke versie van Azure Machine Learning Studio om een trainings experiment te maken waarin u verschillende modules opneemt voor het laden van trainings gegevens, het voorbereiden van de gegevens indien nodig, het Toep assen van machine learning-algoritmen en de resultaten evalueren. U kunt een experiment herhalen en verschillende machine learning algoritmen proberen om de resultaten te vergelijken en te evalueren.
+Als u een predictive analytics model wilt trainen, gebruikt u Azure Machine Learning Studio (klassiek) om een trainings experiment te maken waarin u diverse modules opneemt voor het laden van trainings gegevens, het voorbereiden van de gegevens indien nodig, het Toep assen van machine learning algoritmen en het evalueren van de levert. U kunt een experiment herhalen en verschillende machine learning algoritmen proberen om de resultaten te vergelijken en te evalueren.
 
 Het proces voor het maken en beheren van trainings experimenten wordt uitgebreid besproken. Raadpleeg voor meer informatie de volgende artikelen:
 
@@ -95,9 +95,9 @@ Als u wilt testen met behulp van bron records, voert u in de lijst weergave modu
 
 ![Voer de juiste waarden in om de webservice te testen](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
 
-Als u uw BES wilt testen, klikt u op **batch**. Klik op de pagina batch test op Bladeren onder uw invoer en selecteer een CSV-bestand met de juiste voorbeeld waarden. Als u geen CSV-bestand hebt en u uw voorspellende experiment hebt gemaakt met behulp van de klassieke versie van Machine Learning Studio, kunt u de gegevensset voor uw voorspellende experiment downloaden en gebruiken.
+Als u uw BES wilt testen, klikt u op **batch**. Klik op de pagina batch test op Bladeren onder uw invoer en selecteer een CSV-bestand met de juiste voorbeeld waarden. Als u geen CSV-bestand hebt en u uw voorspellende experiment hebt gemaakt met behulp van Machine Learning Studio (klassiek), kunt u de gegevensset voor uw voorspellende experiment downloaden en gebruiken.
 
-Als u de gegevensset wilt downloaden, opent u de klassieke versie van Machine Learning Studio. Open uw voorspellende experiment en klik met de rechter muisknop op de invoer voor uw experiment. Selecteer in het context menu de optie **gegevensset** en selecteer vervolgens **downloaden**.
+Als u de gegevensset wilt downloaden, opent u Machine Learning Studio (klassiek). Open uw voorspellende experiment en klik met de rechter muisknop op de invoer voor uw experiment. Selecteer in het context menu de optie **gegevensset** en selecteer vervolgens **downloaden**.
 
 ![Uw gegevensset downloaden van het Studio-canvas (klassiek)](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
 
@@ -113,7 +113,7 @@ Op de pagina **configuratie** kunt u de beschrijving, de titel, de sleutel van h
 
 ### <a name="access-your-new-web-service"></a>Toegang tot uw nieuwe webservice
 
-Wanneer u de webservice hebt geïmplementeerd vanuit de klassieke versie van Machine Learning Studio, kunt u gegevens verzenden naar de service en antwoorden ontvangen via een programma.
+Wanneer u de webservice hebt geïmplementeerd vanuit Machine Learning Studio (klassiek), kunt u gegevens verzenden naar de service en antwoorden ontvangen via een programma.
 
 De pagina **verbruik** bevat alle informatie die u nodig hebt om toegang te krijgen tot uw webservice. De API-sleutel wordt bijvoorbeeld verschaft om geautoriseerde toegang tot de service toe te staan.
 
@@ -136,7 +136,7 @@ Prijzen zijn specifiek voor regio's. u moet dus een facturerings plan definiëre
 3. Klik op de abonnementen via de weergavepagina **nieuw**.
 4. Uit de **abonnement** vervolgkeuzelijst, selecteer het abonnement waarin het nieuwe abonnement worden geplaatst.
 5. Uit de **regio** vervolgkeuzelijst, selecteer een regio voor het nieuwe abonnement. De opties plannen voor de geselecteerde regio wordt weergegeven in de **opties plannen** sectie van de pagina.
-6. Uit de **resourcegroep** vervolgkeuzelijst, selecteer een resourcegroep voor het abonnement. Zie voor meer informatie over resourcegroepen [overzicht van Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+6. Uit de **resourcegroep** vervolgkeuzelijst, selecteer een resourcegroep voor het abonnement. Zie voor meer informatie over resourcegroepen [overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md).
 7. In **Plannaam** typt u de naam van het plan.
 8. Onder **abonnementsopties**, klikt u op het niveau van de facturering voor het nieuwe abonnement.
 9. Klik op **Maken**.
@@ -149,7 +149,7 @@ Prijzen zijn specifiek voor regio's. u moet dus een facturerings plan definiëre
 4. In **naam van de webservice**, typt u een nieuwe naam voor de webservice.
 5. In **Web servicebeschrijving**, typ een beschrijving voor de webservice.
 6. Uit de **abonnement** vervolgkeuzelijst, selecteer het abonnement waarin de nieuwe webservice zich bevindt.
-7. Uit de **resourcegroep** vervolgkeuzelijst, selecteer een resourcegroep voor de webservice. Zie voor meer informatie over resourcegroepen [overzicht van Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+7. Uit de **resourcegroep** vervolgkeuzelijst, selecteer een resourcegroep voor de webservice. Zie voor meer informatie over resourcegroepen [overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md).
 8. Uit de **regio** vervolgkeuzelijst, selecteer de regio waarin u kunt de webservice implementeren.
 9. Uit de **opslagaccount** vervolgkeuzelijst, selecteer een storage-account waarin u voor het opslaan van de webservice.
 10. Uit de **Prijsplan** vervolgkeuzelijst, selecteer een abonnement in de regio die u hebt geselecteerd in stap 8.
@@ -169,9 +169,9 @@ U kunt de webservice testen in de Machine Learning Studio (klassieke) Web Servic
 
 Als u de webservice aanvraag antwoord wilt testen, klikt u op de knop **testen** in het dash board van de webservice. Er verschijnt een dialoog venster waarin u wordt gevraagd om de invoer gegevens voor de service. Dit zijn de kolommen die worden verwacht door het Score-experiment. Voer een set gegevens in en klik vervolgens op **OK**. De resultaten die door de webservice worden gegenereerd, worden onder aan het dash board weer gegeven.
 
-U kunt klikken op de koppeling **test** voorbeeld om uw service te testen in de klassieke versie van Azure machine learning Studio Web Services-portal zoals eerder in de sectie nieuwe webservice wordt weer gegeven.
+U kunt klikken op de koppeling **test** voorbeeld om uw service te testen in de Web Services-portal van Azure machine learning Studio (klassiek) zoals eerder in de sectie nieuwe webservice wordt weer gegeven.
 
-Als u de service voor batch uitvoering wilt testen, klikt u op de koppeling **test** voorbeeld. Klik op de pagina batch test op Bladeren onder uw invoer en selecteer een CSV-bestand met de juiste voorbeeld waarden. Als u geen CSV-bestand hebt en u uw voorspellende experiment hebt gemaakt met behulp van de klassieke versie van Machine Learning Studio, kunt u de gegevensset voor uw voorspellende experiment downloaden en gebruiken.
+Als u de service voor batch uitvoering wilt testen, klikt u op de koppeling **test** voorbeeld. Klik op de pagina batch test op Bladeren onder uw invoer en selecteer een CSV-bestand met de juiste voorbeeld waarden. Als u geen CSV-bestand hebt en u uw voorspellende experiment hebt gemaakt met behulp van Machine Learning Studio (klassiek), kunt u de gegevensset voor uw voorspellende experiment downloaden en gebruiken.
 
 ![De webservice testen](./media/publish-a-machine-learning-web-service/figure-3.png)
 
@@ -187,7 +187,7 @@ U kunt de eind punten voor de webservice ook configureren in de Azure Machine Le
 
 ### <a name="access-your-classic-web-service"></a>Toegang tot uw klassieke webservice
 
-Wanneer u de webservice hebt geïmplementeerd vanuit de klassieke versie van Machine Learning Studio, kunt u gegevens verzenden naar de service en antwoorden ontvangen via een programma.
+Wanneer u de webservice hebt geïmplementeerd vanuit Azure Machine Learning Studio (klassiek), kunt u gegevens verzenden naar de service en antwoorden ontvangen via een programma.
 
 Het dash board bevat alle informatie die u nodig hebt om toegang te krijgen tot uw webservice. De API-sleutel wordt bijvoorbeeld verschaft om geautoriseerde toegang te verlenen tot de service, en API Help-pagina's worden weer gegeven om u te helpen uw code te schrijven.
 

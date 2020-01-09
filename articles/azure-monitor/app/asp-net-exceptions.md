@@ -1,5 +1,5 @@
 ---
-title: Fouten en uitzonde ringen in web-apps diagnosticeren met Azure-toepassing Insights | Microsoft Docs
+title: Fouten en uitzonde ringen diagnosticeren met Azure-toepassing Insights
 description: Uitzonde ringen vastleggen vanuit ASP.NET-Apps, samen met aanvraag-telemetrie.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/11/2019
-ms.openlocfilehash: 90f03baa35d0bf2b63ec480a23db30409df3845f
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: f89149de9b1173a659176f686053e8dc564ab85c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677757"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432651"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Uitzonde ringen in uw web-apps diagnosticeren met Application Insights
 Uitzonde ringen in uw Live Web-app worden gerapporteerd door [Application Insights](../../azure-monitor/app/app-insights-overview.md). U kunt mislukte aanvragen correleren met uitzonde ringen en andere gebeurtenissen op de client en de server, zodat u snel de oorzaken kunt vaststellen.
@@ -79,7 +79,7 @@ U hebt verschillende mogelijkheden:
 
 Als u deze gebeurtenissen wilt zien, opent u in het menu links [zoeken](../../azure-monitor/app/diagnostic-search.md) , selecteert u de vervolg keuzelijst **gebeurtenis typen**en kiest u vervolgens aangepaste gebeurtenis, tracering of uitzonde ring.
 
-![Inzoomen](./media/asp-net-exceptions/customevents.png)
+![In detail analyseren](./media/asp-net-exceptions/customevents.png)
 
 > [!NOTE]
 > Als uw app veel telemetriegegevens genereert, beperkt de adaptieve steekproefmodule automatisch het volume dat naar de portal wordt verzonden door alleen een representatieve fractie van de gebeurtenissen te sturen. Gebeurtenissen die deel uitmaken van dezelfde bewerking worden als groep geselecteerd of opgeheven, zodat u kunt navigeren tussen gerelateerde gebeurtenissen. [Meer informatie over steek proeven.](../../azure-monitor/app/sampling.md)
@@ -159,7 +159,7 @@ De para meters voor eigenschappen en metingen zijn optioneel, maar zijn handig v
 ## <a name="browser-exceptions"></a>Browseruitzonderingen
 De meeste browser uitzonderingen worden gerapporteerd.
 
-Als uw webpagina script bestanden van Content Delivery Networks of andere domeinen bevat, zorgt u ervoor dat uw script code het kenmerk ```crossorigin="anonymous"``` heeft en dat de server [CORS-headers](https://enable-cors.org/)verzendt. Hiermee kunt u een stack tracering en Details ophalen voor niet-verwerkte java script-uitzonde ringen van deze resources.
+Als uw webpagina script bestanden van Content Delivery Networks of andere domeinen bevat, zorgt u ervoor dat uw script code het kenmerk ```crossorigin="anonymous"```heeft en dat de server [CORS-headers](https://enable-cors.org/)verzendt. Hiermee kunt u een stack tracering en Details ophalen voor niet-verwerkte java script-uitzonde ringen van deze resources.
 
 ## <a name="reuse-your-telemetry-client"></a>Uw telemetrie-client opnieuw gebruiken
 
@@ -260,7 +260,7 @@ Vervang het kenmerk HandleError door het nieuwe kenmerk in uw controllers.
 [Voorbeeld](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
 
 #### <a name="mvc-3"></a>MVC 3
-@No__t_0 als globale filter registreren in Global.asax.cs:
+`AiHandleErrorAttribute` als globale filter registreren in Global.asax.cs:
 
 ```csharp
     public class MyMvcApplication : System.Web.HttpApplication
@@ -308,8 +308,8 @@ Niet-verwerkte uitzonde ringen die afkomstig zijn van controllers, hebben doorga
 ### <a name="prior-versions-support"></a>Ondersteuning voor eerdere versies
 Raadpleeg de volgende voor beelden om uitzonde ringen bij te houden als u WebAPI 1 (en eerder) van Application Insights Web SDK 2,5 (en eerder) gebruikt.
 
-#### <a name="web-api-1x"></a>Web-API 1. x
-System. Web. http. filters. ExceptionFilterAttribute negeren:
+#### <a name="web-api-1x"></a>Web API 1.x
+Override System.Web.Http.Filters.ExceptionFilterAttribute:
 
 ```csharp
     using System.Web.Http.Filters;
@@ -358,7 +358,7 @@ U kunt dit overschreven kenmerk toevoegen aan specifieke controllers, of het toe
 
 [Voorbeeld](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
-#### <a name="web-api-2x"></a>Web-API 2. x
+#### <a name="web-api-2x"></a>Web API 2.x
 Een implementatie van Iexceptionlogger toe toevoegen:
 
 ```csharp

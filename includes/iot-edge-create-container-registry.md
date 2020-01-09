@@ -2,18 +2,18 @@
 author: kgremban
 ms.service: iot-edge
 ms.topic: include
-ms.date: 04/25/2019
+ms.date: 12/30/2019
 ms.author: kgremban
-ms.openlocfilehash: 485a76cb91e5146f59e6be592ffd9cbba68e585a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f63510771e4bd71a3ab6cf048bc5fb5296042a4d
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176152"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75564782"
 ---
 ## <a name="create-a-container-registry"></a>Een containerregister maken
 
-In deze zelfstudie gebruikt u de hulpprogramma's voor Azure IoT-extensie voor bouwen van een module en maak een **containerinstallatiekopie** uit de bestanden. Vervolgens pusht u deze installatiekopie naar een **register** waarin uw installatiekopieën worden opgeslagen en beheerd. Tot slot implementeert u de installatiekopie uit het register voor uitvoering op uw IoT Edge-apparaat.
+In deze zelf studie gebruikt u de extensie Azure IoT-Hulpprogram Ma's voor het bouwen van een module en het maken van een **container installatie kopie** van de bestanden. Vervolgens pusht u deze installatiekopie naar een **register** waarin uw installatiekopieën worden opgeslagen en beheerd. Tot slot implementeert u de installatiekopie uit het register voor uitvoering op uw IoT Edge-apparaat.
 
 U kunt een Docker-register gebruiken om de containerinstallatiekopieën op te slaan. Twee populaire Docker-registerservices zijn [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) en [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). In deze zelfstudie wordt Azure Container Registry gebruikt.
 
@@ -23,7 +23,7 @@ Als u nog geen containerregister hebt, volgt u deze stappen om een nieuw contain
 
 2. Geef de volgende waarden op om uw containerregister te maken:
 
-   | Veld | Value |
+   | Veld | Waarde |
    | ----- | ----- |
    | Registernaam | Geef hier een unieke naam op. |
    | Abonnement | Selecteer een abonnement in de vervolgkeuzelijst. |
@@ -32,10 +32,10 @@ Als u nog geen containerregister hebt, volgt u deze stappen om een nieuw contain
    | Beheerder | Stel deze optie in op **Inschakelen**. |
    | SKU | Selecteer **Basic**. |
 
-5. Selecteer **Maken**.
+3. Selecteer **Maken**.
 
-6. Nadat het containerregister is gemaakt, bladert u ernaartoe en selecteert u vervolgens **Toegangssleutels**.
+4. Nadat u het container register hebt gemaakt, bladert u naar het en selecteert u in het linkerdeel venster de optie **toegangs sleutels** in het menu dat zich onder **instellingen**bevindt.
 
-7. Kopieer de waarden voor **aanmeldingsserver**, **gebruikersnaam**, en **wachtwoord** en ze een handige locatie opslaan. U kunt deze waarden in deze zelfstudie gebruiken voor toegang tot de container registry.
+5. Kopieer de waarden voor de **aanmeldings server**, de **gebruikers naam**en het **wacht woord** en sla ze op een gemakkelijke plek op. U gebruikt deze waarden in deze zelf studie om toegang te bieden tot het container register.
 
-   ![Kopieer de aanmeldingsserver, gebruikersnaam en wachtwoord voor container registry](./media/iot-edge-create-container-registry/registry-access-key.png)
+   ![Aanmeldings server, gebruikers naam en wacht woord voor container register kopiëren](./media/iot-edge-create-container-registry/registry-access-key.png)

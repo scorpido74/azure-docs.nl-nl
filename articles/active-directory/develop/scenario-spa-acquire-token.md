@@ -1,5 +1,5 @@
 ---
-title: Een Token ophalen in apps met één pagina-micro soft Identity-platform | Azure
+title: Een token verkrijgen voor het aanroepen van een web-API (apps met één pagina)-micro soft Identity-platform | Azure
 description: Meer informatie over het bouwen van een toepassing met één pagina (een Token ophalen om een API aan te roepen)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9723e9a58704a583c7332db11bae7da6b045a5f7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 17c11b8cb4c1d7f4eef22903b81f38d93b54b41b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919831"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423684"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Toepassing met één pagina: een Token ophalen om een API aan te roepen
 
@@ -43,7 +43,7 @@ U kunt de API-bereiken instellen waarvan u wilt dat het toegangs token moet word
 
 ## <a name="acquire-a-token-with-a-pop-up-window"></a>Een token verkrijgen met een pop-upvenster
 
-### <a name="javascript"></a>Javascript
+### <a name="javascript"></a>JavaScript
 
 In de volgende code wordt het eerder beschreven patroon gecombineerd met de methoden voor een pop-upervaring:
 
@@ -114,7 +114,7 @@ U kunt ook expliciet tokens verkrijgen met behulp van de methoden Acquire-token,
 
 ## <a name="acquire-a-token-with-a-redirect"></a>Een token verkrijgen met een omleiding
 
-### <a name="javascript"></a>Javascript
+### <a name="javascript"></a>JavaScript
 
 Het volgende patroon is eerder beschreven, maar wordt weer gegeven met een omleidings methode om tokens interactief te verkrijgen. U moet de retour aanroep van de omleiding registreren zoals eerder is beschreven.
 
@@ -151,7 +151,7 @@ U kunt optionele claims gebruiken voor de volgende doel einden:
 
 Als u optionele claims wilt aanvragen in `IdToken`, kunt u een stringified claims-object verzenden naar het veld `claimsRequest` van de `AuthenticationParameters.ts`-klasse.
 
-### <a name="javascript"></a>Javascript
+### <a name="javascript"></a>JavaScript
 ```javascript
 "optionalClaims":  
    {

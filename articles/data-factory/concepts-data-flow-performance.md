@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 10/07/2019
-ms.openlocfilehash: fb2a11850370766ab174c67dd122f33879fb432a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 3036fb44cdd636c4a7b9e690ee19aa3d5ab2f5ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928534"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444512"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
 
@@ -81,7 +81,7 @@ Zelfs als uw gegevens niet in uw doel tabellen zijn gepartitioneerd, wordt het a
 
 ### <a name="disable-indexes-on-write"></a>Indexen bij schrijven uitschakelen
 
-Voeg in uw pijp lijn een [opgeslagen procedure activiteit](transform-data-using-stored-procedure.md) toe vóór de activiteit gegevens stroom, waardoor de indexen van uw doel tabellen die vanuit uw Sink zijn geschreven, worden uitgeschakeld. Voeg na de activiteit van de gegevens stroom een andere opgeslagen procedure activiteit toe waarmee deze indexen worden ingeschakeld.
+Voeg in uw pijp lijn een [opgeslagen procedure activiteit](transform-data-using-stored-procedure.md) toe vóór de activiteit gegevens stroom, waardoor de indexen van uw doel tabellen die vanuit uw Sink zijn geschreven, worden uitgeschakeld. Voeg na de activiteit van de gegevens stroom een andere opgeslagen procedure activiteit toe waarmee deze indexen worden ingeschakeld. Of gebruik de pre-processing en verwerkings scripts in een Data Base-sink.
 
 ### <a name="increase-the-size-of-your-azure-sql-db-and-dw"></a>Verg root de grootte van uw Azure SQL-data base en DW
 
@@ -114,7 +114,7 @@ Als u wilt voor komen dat bronnen met reken knooppunten uitgeput blijven, behoud
 
 ### <a name="looping-through-file-lists"></a>Lijst met bestanden door lopen
 
-Een toewijzings gegevens stroom wordt verbeterd wanneer de bron transformatie meer dan één bestand doorloopt in plaats van met behulp van de voor elke activiteit. Het is raadzaam om joker tekens of lijst met bestanden in de bron transformatie te gebruiken. Het proces voor gegevens stroom wordt sneller uitgevoerd, omdat de herhaling in het Spark-cluster kan worden uitgevoerd. Zie [joker tekens gebruiken in bron transformatie](data-flow-source.md#file-based-source-options)voor meer informatie.
+Een toewijzings gegevens stroom wordt verbeterd wanneer de bron transformatie meer dan één bestand doorloopt in plaats van met behulp van de voor elke activiteit. Het is raadzaam om joker tekens of lijst met bestanden in de bron transformatie te gebruiken. Het proces voor gegevens stroom wordt sneller uitgevoerd, omdat de herhaling in het Spark-cluster kan worden uitgevoerd. Zie [joker tekens gebruiken in bron transformatie](connector-azure-data-lake-storage.md#mapping-data-flow-properties)voor meer informatie.
 
 Als u bijvoorbeeld een lijst met gegevens bestanden van juli 2019 hebt die u wilt verwerken in een map in Blob Storage, volgt een Joker teken dat u in de bron transformatie kunt gebruiken.
 
@@ -127,8 +127,8 @@ Als u Joker tekens gebruikt, bevat uw pijp lijn slechts één gegevens stroom ac
 Het instellen van de door Voer en batch-eigenschappen op CosmosDB-sinks worden alleen van kracht tijdens de uitvoering van de gegevens stroom van een pijplijn activiteit. De oorspronkelijke verzamelings instellingen worden tijdens de uitvoering van de gegevens stroom gehonoreerd door CosmosDB.
 
 * Batch grootte: Bereken de omvang van de ruwe rijen van uw gegevens en zorg ervoor dat rowSize * Batch grootte kleiner is dan 2.000.000. Als dat het geval is, verg root u de Batch grootte om een betere door voer te krijgen
-* Througput: Stel hier een hogere doorvoer instelling in zodat documenten sneller naar CosmosDB kunnen schrijven. Houd de hogere RU-kosten in acht op basis van een instelling voor hoge door voer.
-*   Budget voor schrijf doorvoer: gebruik een waarde die kleiner is dan het totaal van RUs per minuut. Als u een gegevens stroom hebt met een groot aantal Spark-partitiongs, is het instellen van een budget doorvoer meer evenwicht over die partities.
+* Door Voer: Stel hier een hogere doorvoer instelling in zodat documenten sneller naar CosmosDB kunnen schrijven. Houd de hogere RU-kosten in acht op basis van een instelling voor hoge door voer.
+*   Budget voor schrijf doorvoer: gebruik een waarde die kleiner is dan het totaal van RUs per minuut. Als u een gegevens stroom hebt met een groot aantal Spark-partities, is het instellen van een budget doorvoer meer evenwicht over die partities.
 
 ## <a name="next-steps"></a>Volgende stappen
 

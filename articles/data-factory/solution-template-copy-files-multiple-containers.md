@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: 35eff70c12e6f98fa74a4180bf82a369c1ecfaa4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0c4c26ba163f83483b3eb48e51d91f9a919a887c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927701"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439777"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Bestanden van meerdere containers met Azure Data Factory kopiëren
 
@@ -34,9 +34,11 @@ De sjabloon bevat drie activiteiten:
 - **Foreach** haalt de container lijst op uit de **GetMetadata** -activiteit en herhaalt vervolgens de lijst en geeft elke container door aan de Kopieer activiteit.
 - **Copy** kopieert elke container uit het opslag archief van de bron naar het doel archief.
 
-De sjabloon definieert twee para meters:
-- *SourceFilePath* is het pad naar de gegevens bron opslag, waar u een lijst van de containers kunt ophalen. In de meeste gevallen is het pad de hoofdmap, die meerdere container mappen bevat. De standaard waarde van deze para meter is `/`.
-- *DestinationFilePath* is het pad waarnaar de bestanden worden gekopieerd in uw doel archief. De standaard waarde van deze para meter is `/`.
+De sjabloon definieert de volgende para meters:
+- *SourceFileFolder* is het mappad van de gegevens bron opslag, waar u een lijst van de containers kunt ophalen. Het pad is de hoofdmap die meerdere container mappen bevat. De standaard waarde van deze para meter is `sourcefolder`.
+- *SourceFileDirectory* is het pad naar de submap onder de hoofdmap van uw gegevens bron archief. De standaard waarde van deze para meter is `subfolder`.
+- *DestinationFileFolder* is het mappad waarnaar de bestanden worden gekopieerd in uw doel archief. De standaard waarde van deze para meter is `destinationfolder`.
+- *DestinationFileDirectory* is het pad naar de submap waarnaar de bestanden worden gekopieerd in uw doel archief. De standaard waarde van deze para meter is `subfolder`.
 
 ## <a name="how-to-use-this-solution-template"></a>Deze oplossings sjabloon gebruiken
 

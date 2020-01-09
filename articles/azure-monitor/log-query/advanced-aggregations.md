@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: f34e71c4e15e3bb09676e366313e90a7261439e5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 882582191b5794e3978d955dfa9bded294064037
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900431"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398297"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Geavanceerde aggregaties in Azure Monitor-logboek query's
 
@@ -35,8 +35,8 @@ Event
 
 |Computer|list_EventID|
 |---|---|
-| Computer1 | [704, 701, 1501, 1500, 1085, 704, 704, 701] |
-| Computer2 | [326.105.302.301.300.102] |
+| computer1 | [704, 701, 1501, 1500, 1085, 704, 704, 701] |
+| computer2 | [326.105.302.301.300.102] |
 | ... | ... |
 
 `makelist` genereert een lijst in de volg orde waarin gegevens zijn door gegeven. Als u gebeurtenissen van oudste naar nieuwste wilt sorteren, gebruikt u `asc` in de instructie order in plaats van `desc`. 
@@ -52,8 +52,8 @@ Event
 
 |Computer|list_EventID|
 |---|---|
-| Computer1 | [704, 701, 1501, 1500, 1085] |
-| Computer2 | [326.105.302.301.300.102] |
+| computer1 | [704, 701, 1501, 1500, 1085] |
+| computer2 | [326.105.302.301.300.102] |
 | ... | ... |
 
 Net als bij `makelist`werkt `makeset` ook met beschik bare gegevens en worden de matrices gegenereerd op basis van de volg orde van de rijen die worden door gegeven.
@@ -69,8 +69,8 @@ Heartbeat
 
 | Computer | Oplossingen | 
 |--------------|----------------------|
-| Computer1 | ' Beveiliging ', ' updates ', ' change tracking ' |
-| Computer2 | ' Beveiliging ', ' updates ' |
+| computer1 | ' Beveiliging ', ' updates ', ' change tracking ' |
+| computer2 | ' Beveiliging ', ' updates ' |
 | computer3 | "antimalware", "change tracking" |
 | ... | ... |
 
@@ -85,12 +85,12 @@ Heartbeat
 
 | Computer | Oplossingen | 
 |--------------|----------------------|
-| Computer1 | beveiligingsprincipal |
-| Computer1 | updates |
-| Computer1 | Change tracking |
-| Computer2 | beveiligingsprincipal |
-| Computer2 | updates |
-| computer3 | Assen |
+| computer1 | beveiligingsprincipal |
+| computer1 | updates |
+| computer1 | Change tracking |
+| computer2 | beveiligingsprincipal |
+| computer2 | updates |
+| computer3 | "antiMalware" |
 | computer3 | Change tracking |
 | ... | ... |
 
@@ -107,10 +107,10 @@ Heartbeat
 
 |Oplossingen | list_Computer |
 |--------------|----------------------|
-| beveiligingsprincipal | ["Computer1", "computer2"] |
-| updates | ["Computer1", "computer2"] |
-| Change tracking | ["Computer1", "computer3"] |
-| Assen | ["computer3"] |
+| beveiligingsprincipal | ["computer1", "computer2"] |
+| updates | ["computer1", "computer2"] |
+| Change tracking | ["computer1", "computer3"] |
+| "antiMalware" | ["computer3"] |
 | ... | ... |
 
 ## <a name="handling-missing-bins"></a>Ontbrekende opslag locaties verwerken
@@ -122,7 +122,7 @@ Heartbeat
 | summarize count() by Category, bin(TimeGenerated, 1h)
 ```
 
-| Category | TimeGenerated | aantal |
+| Categorie | TimeGenerated | aantal_ |
 |--------------|----------------------|--------|
 | Directe agent | 2017-06-06T17:00:00Z | 15 |
 | Directe agent | 2017-06-06T18:00:00Z | 60 |
@@ -138,12 +138,12 @@ Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
 
-| Category | aantal | TimeGenerated |
+| Categorie | aantal_ | TimeGenerated |
 |---|---|---|
 | Directe agent | [15, 60, 0, 55, 60, 57, 60,...] | ["2017-06-06T17:00:00.0000000 Z", "2017-06-06T18:00:00.0000000 Z", "2017-06-06T19:00:00.0000000 Z", "2017-06-06T20:00:00.0000000 Z", "2017-06-06T21:00:00.0000000 Z",...] |
 | ... | ... | ... |
 
-Het derde element van de *count_* -matrix is 0 zoals verwacht en er is een overeenkomende tijds tempel van "2017-06-06T19:00:00.0000000 z" in de _TimeGenerated_ -matrix. Het is moeilijk om deze matrix indeling te lezen. Gebruik `mvexpand` om de matrices uit te breiden en dezelfde indelings uitvoer te produceren als gegenereerd door `summarize`:
+Het derde element van de *count_* matrix is 0 zoals verwacht, en er is een overeenkomende tijds tempel van "2017-06-06T19:00:00.0000000 z" in de _TimeGenerated_ -matrix. Het is moeilijk om deze matrix indeling te lezen. Gebruik `mvexpand` om de matrices uit te breiden en dezelfde indelings uitvoer te produceren als gegenereerd door `summarize`:
 
 ```Kusto
 Heartbeat
@@ -152,7 +152,7 @@ Heartbeat
 | project Category, TimeGenerated, count_
 ```
 
-| Category | TimeGenerated | aantal |
+| Categorie | TimeGenerated | aantal_ |
 |--------------|----------------------|--------|
 | Directe agent | 2017-06-06T17:00:00Z | 15 |
 | Directe agent | 2017-06-06T18:00:00Z | 60 |
@@ -188,4 +188,4 @@ Zie andere lessen voor het gebruik van de [Kusto-query taal](/azure/kusto/query/
 - [Geavanceerde aggregaties](advanced-aggregations.md)
 - [JSON en gegevens structuren](json-data-structures.md)
 - [Joins](joins.md)
-- [Diagrammen](charts.md)
+- [Grafieken](charts.md)

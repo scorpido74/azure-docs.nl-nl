@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het configureren, initiëren
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 4f73958a46e408f85d1f23371552aad0d5540184
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554910"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450162"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Maak een back-up van een Azure-VM met behulp van Azure Backup via REST API
 
@@ -41,10 +41,10 @@ De bewerking vernieuwen is een [asynchrone bewerking](https://docs.microsoft.com
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer deze bewerking is voltooid.
 
-|Naam  |Type  |Beschrijving  |
+|Name  |Type  |Beschrijving  |
 |---------|---------|---------|
 |204 geen inhoud     |         |  OK zonder geretourneerde inhoud      |
-|202 geaccepteerd     |         |     Afgewezen    |
+|202 geaccepteerd     |         |     Geaccepteerd    |
 
 ##### <a name="example-responses"></a>Voorbeeld reacties
 
@@ -104,7 +104,7 @@ De *Get* -URI heeft alle vereiste para meters. Er is geen aanvullende aanvraag t
 
 #### <a name="responses-1"></a>Rapporten
 
-|Naam  |Type  |Beschrijving  |
+|Name  |Type  |Beschrijving  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
@@ -180,7 +180,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Als u een beveiligd item wilt maken, volgt u de onderdelen van de hoofd tekst van de aanvraag.
 
-|Naam  |Type  |Beschrijving  |
+|Name  |Type  |Beschrijving  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem-resource-eigenschappen         |
 
@@ -208,10 +208,10 @@ Het maken van een beveiligd item is een [asynchrone bewerking](https://docs.micr
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer deze bewerking is voltooid.
 
-|Naam  |Type  |Beschrijving  |
+|Name  |Type  |Beschrijving  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
-|202 geaccepteerd     |         |     Afgewezen    |
+|202 geaccepteerd     |         |     Geaccepteerd    |
 
 ##### <a name="example-responses"></a>Voorbeeld reacties
 
@@ -294,7 +294,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Als u een back-up op aanvraag wilt activeren, volgt u de onderdelen van de hoofd tekst van de aanvraag.
 
-|Naam  |Type  |Beschrijving  |
+|Name  |Type  |Beschrijving  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource-eigenschappen         |
 
@@ -319,9 +319,9 @@ Het activeren van een back-up op aanvraag is een [asynchrone bewerking](https://
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer deze bewerking is voltooid.
 
-|Naam  |Type  |Beschrijving  |
+|Name  |Type  |Beschrijving  |
 |---------|---------|---------|
-|202 geaccepteerd     |         |     Afgewezen    |
+|202 geaccepteerd     |         |     Geaccepteerd    |
 
 #### <a name="example-responses-3"></a>Voorbeeld reacties
 
@@ -433,16 +433,38 @@ De `{containerName}` en `{protectedItemName}` zijn net zo gemaakt als [hierboven
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
-### <a name="responses-2"></a>Rapporten
+#### <a name="responses-2"></a>Rapporten
 
 Beveiliging *verwijderen* is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 204 (geen inhoud) wanneer deze bewerking is voltooid.
 
-|Naam  |Type  |Beschrijving  |
+|Name  |Type  |Beschrijving  |
 |---------|---------|---------|
-|204-tekst     |         |  Geen inhoud       |
-|202 geaccepteerd     |         |     Afgewezen    |
+|204-tekst     |         |  NoContent       |
+|202 geaccepteerd     |         |     Geaccepteerd    |
+
+> [!IMPORTANT]
+> Ter bescherming tegen onbedoelde verwijderings scenario's is er een functie voor het verwijderen van de Recovery Services [-kluis beschikbaar](use-restapi-update-vault-properties.md#soft-delete-state) . Als de voorlopig verwijderings status van de kluis is ingesteld op ingeschakeld, worden de gegevens niet direct verwijderd met de verwijderings bewerking. Het wordt 14 dagen bewaard en vervolgens permanent verwijderd. Er worden geen kosten in rekening gebracht voor de klant voor deze periode van 14 dagen. Als u de verwijderings bewerking ongedaan wilt maken, raadpleegt u de [sectie ongedaan maken-verwijderen](#undo-the-stop-protection-and-delete-data).
+
+### <a name="undo-the-stop-protection-and-delete-data"></a>De beveiliging stoppen en gegevens verwijderen ongedaan maken
+
+Onbedoeld verwijderen is vergelijkbaar met het maken van het back-upitem. Nadat de verwijdering ongedaan is gemaakt, wordt het item behouden, maar worden er geen toekomstige back-ups geactiveerd.
+
+Verwijderen ongedaan maken is een *put* -bewerking die veel lijkt op [het wijzigen van het beleid](#changing-the-policy-of-protection) en/of [het inschakelen van de beveiliging](#enabling-protection-for-the-azure-vm). Geef de bedoeling op om de verwijdering ongedaan te maken met de variabele *isRehydrate* in [de hoofd tekst van de aanvraag](#example-request-body) en dien de aanvraag in. Bijvoorbeeld: om het verwijderen van testVM ongedaan te maken, moet de volgende aanvraag tekst worden gebruikt.
+
+```http
+{
+  "properties": {
+    "protectedItemType": "Microsoft.Compute/virtualMachines",
+    "protectionState": "ProtectionStopped",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "isRehydrate": true
+  }
+}
+```
+
+Het antwoord heeft dezelfde indeling als vermeld voor het [activeren van een back-up op aanvraag](#example-responses-3). De resulterende taak moet worden bijgehouden, zoals wordt uitgelegd in de [taken bewaken met behulp van rest API document](backup-azure-arm-userestapi-managejobs.md#tracking-the-job).
 
 ## <a name="next-steps"></a>Volgende stappen
 

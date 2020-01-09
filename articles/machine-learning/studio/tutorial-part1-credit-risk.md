@@ -1,7 +1,7 @@
 ---
 title: 'Zelf studie 1: krediet risico voors pellen'
 titleSuffix: ML Studio (classic) - Azure
-description: Een gedetailleerde zelf studie waarin wordt getoond hoe u een predictive analytics oplossing kunt maken voor een beoordeling van een credit risico in de klassieke versie van Azure Machine Learning Studio. Deze zelfstudie is deel één van een driedelige serie.  U leert een werkruimte maken, gegevens uploaden en een experiment maken.
+description: Een gedetailleerde zelf studie waarin wordt getoond hoe u een predictive analytics oplossing kunt maken voor een beoordeling van een credit risico in Azure Machine Learning Studio (klassiek). Deze zelfstudie is deel één van een driedelige serie.  U leert een werkruimte maken, gegevens uploaden en een experiment maken.
 keywords: kredietrisico, predictive analytics-oplossing, risico-evaluatie
 author: sdgilley
 ms.author: sgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: e8c1eea097fc3ea2704acfae198eb493943b6ccf
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 07621bd2d0593ea3896aba0deb65e0b856e5987b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838856"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432248"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Zelf studie 1: krediet risico voors pellen-Azure Machine Learning Studio (klassiek)
 
@@ -25,7 +25,7 @@ In deze zelfstudie wordt uitgebreid ingegaan op het ontwikkelingsproces van een 
 
 Stel dat u iemands kredietrisico moet voorspellen op basis van de gegevens die deze persoon in een kredietaanvraag heeft ingevuld.  
 
-Kredietrisicobeoordeling is een complex probleem, maar in deze zelfstudie wordt het enigszins vereenvoudigd. U gebruikt deze als voor beeld van hoe u een predictive analytics oplossing kunt maken met behulp van Microsoft Azure Machine Learning Studio (klassiek). U gebruikt de klassieke versie van Azure Machine Learning Studio en een Machine Learning-webservice voor deze oplossing.  
+Kredietrisicobeoordeling is een complex probleem, maar in deze zelfstudie wordt het enigszins vereenvoudigd. U gebruikt deze als voor beeld van hoe u een predictive analytics oplossing kunt maken met behulp van Microsoft Azure Machine Learning Studio (klassiek). U gebruikt Azure Machine Learning Studio (klassiek) en een Machine Learning-webservice voor deze oplossing.  
 
 In deze driedelige zelfstudie begint u met openbaar beschikbare kredietrisicogegevens.  Vervolgens ontwikkelt en traint u een voorspellend model.  En ten slotte implementeert u het model als een webservice.
 
@@ -95,7 +95,7 @@ Als het model iemand vervolgens ten onrechte classificeert als een laag kredietr
 
 ### <a name="convert-the-dataset-format"></a>De gegevenssetindeling converteren
 
-In de oorspronkelijke gegevensset worden de gegevens gescheiden door witruimte. De klassieke versie van Machine Learning Studio werkt beter met een CSV-bestand (Comma-Separated Value), dus u converteert de gegevensset door spaties te vervangen door komma's.  
+In de oorspronkelijke gegevensset worden de gegevens gescheiden door witruimte. Machine Learning Studio (klassiek) werkt beter met een CSV-bestand (Comma-Separated Value), dus u converteert de gegevensset door spaties te vervangen door komma's.  
 
 Er zijn veel manieren om deze gegevens te converteren. Eén manier is de volgende Windows PowerShell-opdracht te gebruiken:   
 
@@ -109,7 +109,7 @@ In beide gevallen hebt u een door komma's gescheiden versie van de gegevens gema
 
 ### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>De gegevensset uploaden naar Machine Learning Studio (klassiek)
 
-Zodra de gegevens zijn geconverteerd naar de CSV-indeling, moet u deze uploaden naar de klassieke versie van Machine Learning Studio. 
+Zodra de gegevens zijn geconverteerd naar de CSV-indeling, moet u deze uploaden naar Machine Learning Studio (klassiek). 
 
 1. Open de start pagina van Machine Learning Studio (klassiek) ([https://studio.azureml.net](https://studio.azureml.net)). 
 
@@ -131,7 +131,7 @@ Zodra de gegevens zijn geconverteerd naar de CSV-indeling, moet u deze uploaden 
 
 9. Voeg desgewenst een beschrijving toe.
 
-10. Klik op het **OK**-selectievakje.  
+10. Klik op het vinkje **OK**.  
 
     ![De gegevensset uploaden](./media/tutorial-part1-credit-risk/upload-dataset.png)
 
@@ -145,7 +145,7 @@ Zie [uw trainings gegevens importeren in azure machine learning Studio (klassiek
 
 ## <a name="create-an-experiment"></a>Een experiment maken
 
-De volgende stap in deze zelf studie is het maken van een experiment in de klassieke versie van Machine Learning Studio die gebruikmaakt van de gegevensset die u hebt geüpload.  
+De volgende stap in deze zelf studie is het maken van een experiment in Machine Learning Studio (klassiek) dat gebruikmaakt van de gegevensset die u hebt geüpload.  
 
 1. In Studio (klassiek), klikt u op **+ Nieuw** onder aan het venster.
 1. Selecteer **EXPERIMENT** en selecteer 'Blank Experiment' (leeg experiment). 
@@ -173,7 +173,7 @@ De volgende stap in deze zelf studie is het maken van een experiment in de klass
 
 U kunt de eerste 100 rijen van de gegevens en enkele statistische gegevens voor de hele gegevensset weer geven: Klik op de uitvoer poort van de gegevensset (de kleine cirkel aan de onderkant) en selecteer **visualiseren**.  
 
-Omdat het gegevens bestand niet is opgenomen in kolom koppen, heeft de klassieke versie van Studio generieke koppen (Kol1, col2, *enzovoort*). Goede koppen zijn niet essentieel voor het maken van een model, maar ze maken het gemakkelijker om met de gegevens in het experiment te werken. Wanneer u dit model uiteindelijk publiceert in een webservice, helpen de koppen u ook bij het identificeren van de kolommen voor de gebruiker van de service.  
+Omdat het gegevens bestand geen kolom koppen bevat, heeft Studio (klassiek) algemene koppen (Kol1, col2, *enzovoort*) verstrekt. Goede koppen zijn niet essentieel voor het maken van een model, maar ze maken het gemakkelijker om met de gegevens in het experiment te werken. Wanneer u dit model uiteindelijk publiceert in een webservice, helpen de koppen u ook bij het identificeren van de kolommen voor de gebruiker van de service.  
 
 U kunt kolom koppen toevoegen met behulp van de module [meta gegevens bewerken][edit-metadata] .
 
@@ -207,7 +207,7 @@ Als u [meta gegevens bewerken][edit-metadata]wilt gebruiken, geeft u eerst op we
    ![Kolomkiezer met alle kolommen geselecteerd](./media/tutorial-part1-credit-risk/select-columns.png)
 
 
-1. Klik op het **OK**-selectievakje.
+1. Klik op het vinkje **OK**.
 
 1. Zoek in het deelvenster **Properties** de parameter **New column names** (nieuwe kolomnamen). Voer in dit veld een lijst met namen in voor de 21 kolommen in de gegevensset, gescheiden door komma's, in de volgorde van de kolommen. U kunt de kolomnamen verkrijgen uit de datasetdocumentatie op de UCI-website, of voor het gemak kunt u de volgende lijst kopiëren en plakken:  
 

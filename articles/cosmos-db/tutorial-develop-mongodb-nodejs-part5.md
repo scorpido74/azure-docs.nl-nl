@@ -1,6 +1,5 @@
 ---
-title: Een Angular-app maken met de API voor MongoDB van Azure Cosmos DB - Mongoose gebruiken om verbinding te maken met Cosmos DB
-titleSuffix: Azure Cosmos DB
+title: De hoek-app verbinden met de API van Azure Cosmos DB voor MongoDB met behulp van Mongoose
 description: In deze zelfstudie wordt beschreven hoe u een Node.js-toepassing maakt door met Angular en Express de gegevens te beheren die zijn opgeslagen in Cosmos DB. In dit gedeelte gebruikt u Mongoose om verbinding te maken met Azure Cosmos DB.
 author: johnpapa
 ms.service: cosmos-db
@@ -12,12 +11,12 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
-ms.openlocfilehash: 626015e2aac5eb09dfd271a139dbc5eb49a088fc
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: ba893eeb8c2560397f3524d1042566dbafee7d1b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69616427"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444699"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Een Angular-app maken met de API voor MongoDB van Azure Cosmos DB - Mongoose gebruiken om verbinding te maken met Cosmos DB
 
@@ -228,13 +227,13 @@ Vervolgens moet u routes instellen voor het afhandelen van de URL's voor get-, c
 
 Laten we de bovenstaande code nog eens even bekijken. We hebben eerst het bestand index.js, waarmee de node-server wordt ingesteld. In het bestand worden uw routes ingesteld en gedefinieerd. Vervolgens communiceert het bestand routes.js met de hero-service. De service krijgt de opdracht functies op te halen, zoals **getHeroes**, en de aanvraag en respons door te geven. Het bestand hero.service.js haalt het model op en maakt verbinding met Mongo. Vervolgens wordt **getHeroes** uitgevoerd wanneer we deze functie aanroepen en wordt de respons 200 geretourneerd. 
 
-## <a name="run-the-app"></a>De app kunt uitvoeren
+## <a name="run-the-app"></a>De app uitvoeren
 
 Voer nu de app uit door de volgende stappen te volgen:
 
-1. Sla alle wijzigingen op in Visual Studio Code. Selecteer aan de linkerkant de knop **Debug** ![pictogram Debug in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) en selecteer vervolgens de knop **Start Debugging** ![pictogram Start Debugging in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png).
+1. Sla alle wijzigingen op in Visual Studio Code. Selecteer aan de linkerkant de knop **Debug**![pictogram Debug in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) en selecteer vervolgens de knop **Start Debugging**![pictogram Start Debugging in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png).
 
-1. Schakel nu over naar de browser. Open de **hulpprogram ma's voor ontwikkel aars** en het **tabblad netwerk**. Ga naar `http://localhost:3000` en u ziet onze toepassing.
+1. Schakel nu over naar de browser. Open de **hulpprogram ma's voor ontwikkel aars** en het **tabblad netwerk**. Ga naar `http://localhost:3000`en u ziet onze toepassing.
 
     ![Nieuw Azure Cosmos DB-account in de Azure Portal](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
 

@@ -1,5 +1,6 @@
 ---
-title: Azure VMware-oplossing door CloudSimple-activiteit van de Privécloud
+title: Activiteiten van de Privécloud controleren
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Beschrijft de beschik bare informatie over activiteiten in de Azure VMware-oplossing op CloudSimple omgeving, met inbegrip van waarschuwingen, gebeurtenissen, taken en controle.
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ddb3741c987e839fafb8bc222231547988d72f01
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543758"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459199"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>VMware-oplossing op CloudSimple-activiteit bewaken
 
@@ -45,31 +46,31 @@ Als u waarschuwingen wilt bevestigen en wilt verwijderen uit de lijst, selecteer
 
 De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **kolommen bewerken** en selecteer de kolommen die u wilt weer geven.
 
-| Kolom | Description |
+| Kolom | Beschrijving |
 ------------ | ------------- |
-| Waarschuwings type | Categorie van de waarschuwing.|
-| Time | Tijdstip waarop de waarschuwing is opgetreden. |
-| Severity | Significantie van de waarschuwing.|
-| Resourcenaam | De naam die is toegewezen aan de resource, zoals de naam van de Privécloud. |
-| Resourcetype | Resource categorie: Privécloud, Cloud rack. |
-| Resource-ID | De id van de resource. |
-| Description | Beschrijving van de trigger van de waarschuwing. |
+| Waarschuwingstype | Categorie van de waarschuwing.|
+| Tijd | Tijdstip waarop de waarschuwing is opgetreden. |
+| Ernst | Significantie van de waarschuwing.|
+| Naam resource | De naam die is toegewezen aan de resource, zoals de naam van de Privécloud. |
+| Resourcetype | Categorie van resource: Privécloud, Cloud rack. |
+| Resource-id | De id van de resource. |
+| Beschrijving | Beschrijving van de trigger van de waarschuwing. |
 | Bevestigd | Indicatie of de waarschuwing wordt bevestigd. |
 
-## <a name="events"></a>Events
+## <a name="events"></a>Evenements
 
 Gebeurtenissen tonen gebruikers-en systeem activiteiten in de CloudSimple-Portal. Op de pagina gebeurtenissen wordt een lijst weer gegeven met de activiteit die is gekoppeld aan een specifieke resource en de ernst van de impact.
 
 De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **kolommen bewerken** en selecteer de kolommen die u wilt weer geven.
 
-| Kolom | Description |
+| Kolom | Beschrijving |
 ------------ | ------------- |
-| Time | De datum en tijd waarop de gebeurtenis heeft plaatsgevonden. |
+| Tijd | De datum en tijd waarop de gebeurtenis heeft plaatsgevonden. |
 | Gebeurtenistype | Numerieke code waarmee de gebeurtenis wordt aangeduid. |
-| Severity | Ernst van gebeurtenis.|
-| Resourcenaam | De naam die is toegewezen aan de resource, zoals de naam van de Privécloud. |
-| Resourcetype | Resource categorie: Privécloud, Cloud rack. |
-| Description | Beschrijving van de trigger van de waarschuwing. |
+| Ernst | Ernst van gebeurtenis.|
+| Naam resource | De naam die is toegewezen aan de resource, zoals de naam van de Privécloud. |
+| Resourcetype | Categorie van resource: Privécloud, Cloud rack. |
+| Beschrijving | Beschrijving van de trigger van de waarschuwing. |
 
 ## <a name="tasks"></a>Taken
 
@@ -77,19 +78,19 @@ Taken zijn activiteiten in particuliere Clouds waarvan wordt verwacht dat deze 3
 
 De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **kolommen bewerken** en selecteer de kolommen die u wilt weer geven.
 
-| Kolom | Description |
+| Kolom | Beschrijving |
 ------------ | ------------- |
-| Taak-id | De unieke id voor de taak. |
+| Taak-ID | De unieke id voor de taak. |
 | Bewerking | De actie die door de taak wordt uitgevoerd. |
 | Gebruiker | De gebruiker is toegewezen om de taak te volt ooien. |
-| Resourcenaam | De naam die is toegewezen aan de resource. |
-| Resourcetype | Resource categorie: Privécloud, Cloud rack. |
-| Resource-ID | De id van de resource. |
-| Start | Begin tijd voor de taak. |
-| einde | De eind tijd voor de taak. |
+| Naam resource | De naam die is toegewezen aan de resource. |
+| Resourcetype | Categorie van resource: Privécloud, Cloud rack. |
+| Resource-id | De id van de resource. |
+| Beginnen | Begin tijd voor de taak. |
+| Beëindigen | De eind tijd voor de taak. |
 | Status | Huidige taak status. |
 | Verstreken tijd | De tijd die nodig is om de taak te volt ooien (indien voltooid) of op dit moment (als deze wordt uitgevoerd). |
-| Description | Taak beschrijving. |
+| Beschrijving | Taak beschrijving. |
 
 ## <a name="audit"></a>Controleren
 
@@ -97,17 +98,17 @@ Controle logboeken houden de activiteiten van gebruikers bij. U kunt controle Lo
 
 De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **kolommen bewerken** en selecteer de kolommen die u wilt weer geven.
 
-| Kolom | Description |
+| Kolom | Beschrijving |
 ------------ | ------------- |
-| Time | Tijd van de controle vermelding. |
+| Tijd | Tijd van de controle vermelding. |
 | Bewerking | De actie die door de taak wordt uitgevoerd. |
 | Gebruiker | De gebruiker is toegewezen aan de taak. |
-| Resourcenaam | De naam die is toegewezen aan de resource. |
-| Resourcetype | Resource categorie: Privécloud, Cloud rack. |
-| Resource-ID | De id van de resource. |
+| Naam resource | De naam die is toegewezen aan de resource. |
+| Resourcetype | Categorie van resource: Privécloud, Cloud rack. |
+| Resource-id | De id van de resource. |
 | Resultaat | Resultaat van de activiteit, zoals **geslaagd**. |
 | Gebruikte tijd | Tijd om de taak te volt ooien. |
-| Description | Beschrijving van de actie. |
+| Beschrijving | Beschrijving van de actie. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

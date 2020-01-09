@@ -1,28 +1,17 @@
 ---
-title: Een .NET-Linux-toepassing maken voor Service Fabric in Azure | Microsoft Docs
+title: Een .NET-app maken op Service Fabric in azure
 description: In deze zelfstudie vindt u informatie over het maken van een toepassing met een ASP.NET Core front-end en een betrouwbare stateful back-endservice en het implementeren van de toepassing in een cluster.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: b5acee47a13e0faa538c5d8464835297088d03e8
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cbfae89ffa446ca3915129fd9add2701ac21d837
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598912"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465469"
 ---
-# <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Zelfstudie: Een toepassing met een ASP.NET Core web-API front-end service en een stateful back-endservice maken en implementeren
+# <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Zelfstudie: Een toepassing met een ASP.NET Core web-API front-endservice en een stateful back-endservice maken en implementeren
 
 Deze zelfstudie is deel één van een serie.  U leert hoe u een Azure Service Fabric-toepassing met een front-end van ASP.NET Core web-API en een stateful back-endservice maakt voor het opslaan van uw gegevens. Wanneer u klaar bent, hebt u een stemtoepassing met een ASP.NET Core-web-front-end die stemresultaten opslaat in een stateful back-endservice in het cluster. Als u de stemtoepassing niet handmatig wilt maken, kunt u [de broncode downloaden](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) voor de voltooide toepassing en verdergaan met [Het voorbeeld van een stemtoepassing doorlopen](#walkthrough_anchor).  Als u dat liever doet, kunt u ook een [video](https://channel9.msdn.com/Events/Connect/2017/E100) van deze zelfstudie bekijken.
 
@@ -46,7 +35,7 @@ In deze zelfstudiereeks leert u het volgende:
 ## <a name="prerequisites"></a>Vereisten
 
 Voor u met deze zelfstudie begint:
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Installeer Visual Studio 2019](https://www.visualstudio.com/) versie 15,5 of hoger met de werk belasting **Azure Development** en **ASP.net en Web Development** .
 * [Installeer de Service Fabric-SDK](service-fabric-get-started.md).
 
@@ -180,7 +169,7 @@ Open **Views/Home/Index.cshtml**, de weergave die specifiek is voor de begincont
 </div>
 ```
 
-### <a name="update-the-layoutcshtml-file"></a>Het bestand _Layout.cshtml bijwerken
+### <a name="update-the-_layoutcshtml-file"></a>Het bestand _Layout.cshtml bijwerken
 
 Open **Views/Shared/_Layout.cshtml**, de standaardindeling voor de ASP.NET-app.  Vervang de inhoud door het volgende en sla uw wijzigingen op.
 
@@ -466,7 +455,7 @@ In deze zelfstudie worden [ASP.NET Core Web API](service-fabric-reliable-service
         ],
 ```
 Als u de omgekeerde proxy-poort wilt zoeken die wordt gebruikt in uw lokale ontwikkelcluster, raadpleegt u het element **HttpApplicationGatewayEndpoint** in het manifest van het lokale Service Fabric-cluster:
-1. Open een browser venster en navigeer naar http:\//localhost: 19080 om het service Fabric Explorer-hulp programma te openen.
+1. Open een browser venster en navigeer naar http:\//localhost: 19080 om het hulp programma Service Fabric Explorer te openen.
 2. Selecteer **Cluster -> Manifest**.
 3. Noteer de poort van het element HttpApplicationGatewayEndpoint. Deze is standaard 19081. Als de poort niet 19081 is, moet u de poort in de methode GetProxyAddress van de volgende VotesController.cs-code wijzigen.
 

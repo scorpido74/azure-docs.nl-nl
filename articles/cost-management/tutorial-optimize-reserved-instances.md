@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: kosten van gereserveerde instanties optimaliseren met Cloudyn in Azure| Microsoft Docs'
+title: Zelf studie-de kosten van het gereserveerde exemplaar optimaliseren met Cloudyn-Azure
 description: In deze zelfstudie leert u hoe u de kosten van gereserveerde instanties voor Azure en Amazon Web Services (AWS) kunt optimaliseren.
 services: cost-management
 keywords: ''
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: ade3b63116337ae7b4678b459b1a0c388092f409
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c1afad7cb36916777b2f6cefa40b9bd1ddc465a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229864"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444574"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1ec0dd844dea8cf98621130d6a19b415bda1cf0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a1f06b0b5aa59328d2fe39d501cfdf3ad7524427
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786483"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431457"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met F5
 
@@ -152,11 +152,11 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<YourCustomFQDN>.f5.com/`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<YourCustomFQDN>.f5.com/`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<YourCustomFQDN>.f5.com/`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<YourCustomFQDN>.f5.com/`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<YourCustomFQDN>.f5.com/`
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [ondersteunings team](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) van de client om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
@@ -176,7 +176,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Maken**.
@@ -216,11 +216,11 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 1. U moet het meta gegevens certificaat importeren in F5, dat later wordt gebruikt in het installatie proces.
 
-1. Navigeer naar **System > Certificate management > Traffic Certificate management > SSL Certificate List**. Selecteer **importeren** in de rechter bovenhoek. Geef een **certificaat naam** op (later in de configuratie waarnaar wordt verwezen). Selecteer in de bron van het **certificaat**uploaden bestand Geef het certificaat op dat u van Azure hebt gedownload bij het configureren van eenmalige aanmelding voor SAML. Klik op **Importeren**.
+1. Navigeer naar **System > Certificate management > Traffic Certificate management > SSL Certificate List**. Selecteer **importeren** in de rechter bovenhoek. Geef een **certificaat naam** op (later in de configuratie waarnaar wordt verwezen). Selecteer in de bron van het **certificaat**uploaden bestand Geef het certificaat op dat u van Azure hebt gedownload bij het configureren van eenmalige aanmelding voor SAML. Klik op **Import**.
 
     ![F5-configuratie (Kerberos)](./media/kerbf5-tutorial/configure01.png) 
 
-1. Daarnaast hebt u **een SSL-certificaat voor de hostnaam van de toepassing nodig. Navigeer naar System > Certificate Management > Traffic Certificate Management > SSL Certificate List**. Selecteer **importeren** in de rechter bovenhoek. Het **import type** is **PKCS 12 (IIS)** . Geef een **sleutel naam** op (hiernaar wordt verwezen verderop in de configuratie) en geef het pfx-bestand op. Geef het **wacht woord** voor de pfx op. Klik op **Importeren**.
+1. Daarnaast hebt u **een SSL-certificaat voor de hostnaam van de toepassing nodig. Navigeer naar System > Certificate Management > Traffic Certificate Management > SSL Certificate List**. Selecteer **importeren** in de rechter bovenhoek. Het **import type** is **PKCS 12 (IIS)** . Geef een **sleutel naam** op (hiernaar wordt verwezen verderop in de configuratie) en geef het pfx-bestand op. Geef het **wacht woord** voor de pfx op. Klik op **Import**.
 
     >[!NOTE]
     >In het voor beeld van de app-naam is `Kerbapp.superdemo.live`een Joker certificaat gebruikt, de naam van de computer is `WildCard-SuperDemo.live`
@@ -370,7 +370,7 @@ U configureert een Active Directory AAA-server in Access Policy Manager (APM) om
     >[!Note]
     > U moet het account voor Kerberos-delegering maken en opgeven. Zie de sectie KCD (Zie de bijlage voor variabelen verwijzingen)
 
-    * **Gebruikersnaam bron**: Session.SAML.Last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
+    * **Gebruikersnaam bron**: Session. SAML. Last. attr. name. http:\/-schemas.xmlsoap.org/WS/2005/05/Identity/claims/givenName
 
     * **Gebruikers realm-bron**: sessie. Logon. Last. Domain
 

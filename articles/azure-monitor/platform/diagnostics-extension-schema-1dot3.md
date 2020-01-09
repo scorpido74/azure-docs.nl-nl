@@ -4,15 +4,15 @@ description: De schema versie 1,3 en later worden Azure Diagnostics geleverd als
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: reference
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 09/20/2018
-ms.openlocfilehash: 3d79fe6a415b7d1f862797bf41caed89bfe50a41
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2a3ee9731ebeb3b002f4dd9f5b856e720bf719d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834752"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395096"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Configuratie schema voor Azure Diagnostics 1,3 en hoger
 > [!NOTE]
@@ -20,7 +20,7 @@ ms.locfileid: "73834752"
 > - Azure Virtual Machines
 > - Schaalsets voor virtuele machines
 > - Service Fabric
-> - Cloudservices
+> - Cloud Services
 > - Netwerkbeveiligingsgroepen
 >
 > Deze pagina is alleen relevant als u een van deze services gebruikt.
@@ -428,8 +428,8 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 |Onderliggende elementen|Beschrijving|  
 |--------------------|-----------------|  
 |**WadCfg**|Vereist. Zie de beschrijving elders op deze pagina.|  
-|**Storage account**|De naam van het Azure Storage-account waarin de gegevens moeten worden opgeslagen. Kan ook worden opgegeven als een para meter bij het uitvoeren van de cmdlet Set-AzureServiceDiagnosticsExtension.|  
-|**Para**|Kan *Table*, *BLOB*of *TableAndBlob*zijn. De tabel is standaard. Wanneer TableAndBlob is gekozen, worden diagnostische gegevens twee keer naar elk type geschreven.|  
+|**StorageAccount**|De naam van het Azure Storage-account waarin de gegevens moeten worden opgeslagen. Kan ook worden opgegeven als een para meter bij het uitvoeren van de cmdlet Set-AzureServiceDiagnosticsExtension.|  
+|**StorageType**|Kan *Table*, *BLOB*of *TableAndBlob*zijn. De tabel is standaard. Wanneer TableAndBlob is gekozen, worden diagnostische gegevens twee keer naar elk type geschreven.|  
 |**LocalResourceDirectory**|De map op de virtuele machine waar gebeurtenis gegevens worden opgeslagen met de bewakings agent. Als dat niet zo is, wordt ingesteld, wordt de standaard Directory gebruikt:<br /><br /> Voor een werk nemer/Web-rol: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Voor een virtuele machine: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> De vereiste kenmerken zijn:<br /><br /> - **pad** : de map op het systeem die door Azure Diagnostics moet worden gebruikt.<br /><br /> - **expandEnvironment** : Hiermee bepaalt u of omgevings variabelen in de padnaam worden uitgevouwen.|  
 
 ## <a name="wadcfg-element"></a>WadCFG-element  
@@ -441,7 +441,7 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 ## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration-element
  *Structuur: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration*
 
- Vereist
+ Verplicht
 
 |Kenmerken|Beschrijving|  
 |----------------|-----------------|  
@@ -516,7 +516,7 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 
 |Onderliggende elementen|Beschrijving|  
 |--------------------|-----------------|  
-|**Zeker**|Het absolute pad naar de map die u wilt bewaken. De volgende kenmerken zijn vereist:<br /><br /> - **pad** : het absolute pad naar de map die u wilt bewaken.<br /><br /> - **expandEnvironment** : Hiermee configureert u of omgevings variabelen in het pad worden uitgevouwen.|  
+|**Absolute**|Het absolute pad naar de map die u wilt bewaken. De volgende kenmerken zijn vereist:<br /><br /> - **pad** : het absolute pad naar de map die u wilt bewaken.<br /><br /> - **expandEnvironment** : Hiermee configureert u of omgevings variabelen in het pad worden uitgevouwen.|  
 |**LocalResource**|Het pad ten opzichte van een lokale bron die moet worden bewaakt. De vereiste kenmerken zijn:<br /><br /> - **naam** : de lokale resource die de directory bevat die moet worden bewaakt<br /><br /> - **relativePath** : het pad ten opzichte van de naam die de te bewaken Directory bevat|  
 
 
@@ -533,7 +533,7 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 
 
 
-## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration-element  
+## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration Element  
  *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-EtwProviders-EtwEventSourceProviderConfiguration*
 
  Hiermee configureert u de verzameling van gebeurtenissen die zijn gegenereerd met de [klasse Event source](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx).  
@@ -545,8 +545,8 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 
 
 
-## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration-element  
- *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-EtwProviders-EtwManifestProviderConfiguration*
+## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration Element  
+ *Tree: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders - EtwManifestProviderConfiguration*
 
 |Onderliggende elementen|Beschrijving|  
 |--------------------|-----------------|  
@@ -586,7 +586,7 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog-element
- *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-WindowsEventLog*
+ *Tree: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - WindowsEventLog*
 
  Hiermee schakelt u de verzameling van Windows-gebeurtenis Logboeken.  
 
@@ -608,9 +608,9 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 
 |Kenmerk|Type|Beschrijving|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|**unsignedInt**|Optioneel. Hiermee geeft u de maximale hoeveelheid bestandssysteem opslag op die beschikbaar is voor de opgegeven gegevens.<br /><br /> De standaard waarde is 0.|  
+|**bufferQuotaInMB**|**unsignedInt**|Optioneel. Hiermee geeft u de maximale hoeveelheid bestandssysteem opslag op die beschikbaar is voor de opgegeven gegevens.<br /><br /> De standaardwaarde is 0.|  
 |**scheduledTransferLogLevelFilter**|**string**|Optioneel. Hiermee geeft u het minimale Ernst niveau voor logboek vermeldingen die worden overgebracht. De standaard waarde is niet **gedefinieerd**, waardoor alle logboeken worden overgedragen. Andere mogelijke waarden (ten opzichte van de meest waarschijnlijke informatie) zijn **uitgebreide**, **informatie**, **waarschuwing**, **fout**en **kritiek**.|  
-|**scheduledTransferPeriod**|**hebben**|Optioneel. Hiermee geeft u het interval op tussen de geplande overdracht van gegevens, naar boven afgerond op de dichtstbijzijnde minuut.<br /><br /> De standaard waarde is PT0S.|  
+|**scheduledTransferPeriod**|**Duur**|Optioneel. Hiermee geeft u het interval op tussen de geplande overdracht van gegevens, naar boven afgerond op de dichtstbijzijnde minuut.<br /><br /> De standaard waarde is PT0S.|  
 |**wastafel** |**string**| Toegevoegd in 1,5. Optioneel. Verwijst naar een Sink-locatie om ook diagnostische gegevens te verzenden. Bijvoorbeeld Application Insights of Event Hubs.|  
 
 ## <a name="dockersources"></a>DockerSources
@@ -618,7 +618,7 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 
  Toegevoegd in 1,9.
 
-|Element naam|Beschrijving|  
+|Naam van element|Beschrijving|  
 |------------------|-----------------|  
 |**Statistieken**|Laat het systeem statistieken verzamelen voor docker-containers|  
 
@@ -627,9 +627,9 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 
  Een lijst met locaties voor het verzenden van diagnostische gegevens naar en de configuratie die is gekoppeld aan die locaties.  
 
-|Element naam|Beschrijving|  
+|Naam van element|Beschrijving|  
 |------------------|-----------------|  
-|**Tenen**|Zie de beschrijving elders op deze pagina.|  
+|**Sink**|Zie de beschrijving elders op deze pagina.|  
 
 ## <a name="sink-element"></a>Sink-element
  *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-Sink*
@@ -640,12 +640,12 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 
 |Kenmerk|Type|Beschrijving|  
 |---------------|----------|-----------------|  
-|**naam**|tekenreeks|Een teken reeks die de Sink-id aangeeft.|  
+|**De naam**|string|Een teken reeks die de Sink-id aangeeft.|  
 
 |Element|Type|Beschrijving|  
 |-------------|----------|-----------------|  
-|**Application Insights**|tekenreeks|Wordt alleen gebruikt bij het verzenden van gegevens naar Application Insights. De instrumentatie sleutel voor een actief Application Insights account bevatten waartoe u toegang hebt.|  
-|**Detailhandelkanalen**|tekenreeks|Een voor elke extra filtering die stream die u|  
+|**Application Insights**|string|Wordt alleen gebruikt bij het verzenden van gegevens naar Application Insights. De instrumentatie sleutel voor een actief Application Insights account bevatten waartoe u toegang hebt.|  
+|**Kanalen**|string|Een voor elke extra filtering die stream die u|  
 
 ## <a name="channels-element"></a>Channels-element  
  *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-Sink-channels*
@@ -656,7 +656,7 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 
 |Element|Type|Beschrijving|  
 |-------------|----------|-----------------|  
-|**Kanalen**|tekenreeks|Zie de beschrijving elders op deze pagina.|  
+|**Kanalen**|string|Zie de beschrijving elders op deze pagina.|  
 
 ## <a name="channel-element"></a>Kanaal element
  *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-Sink-kanalen-Channel*
@@ -668,7 +668,7 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 |Kenmerken|Type|Beschrijving|  
 |----------------|----------|-----------------|  
 |**logLevel**|**string**|Hiermee geeft u het minimale Ernst niveau voor logboek vermeldingen die worden overgebracht. De standaard waarde is niet **gedefinieerd**, waardoor alle logboeken worden overgedragen. Andere mogelijke waarden (ten opzichte van de meest waarschijnlijke informatie) zijn **uitgebreide**, **informatie**, **waarschuwing**, **fout**en **kritiek**.|  
-|**naam**|**string**|Een unieke naam van het kanaal waarnaar moet worden verwezen|  
+|**De naam**|**string**|Een unieke naam van het kanaal waarnaar moet worden verwezen|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig-element
@@ -682,7 +682,7 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 
 |Onderliggende elementen|Beschrijving|  
 |--------------------|-----------------|  
-|**Storage account**|Het opslag account dat moet worden gebruikt. De volgende kenmerken zijn vereist<br /><br /> - **naam** : de naam van het opslag account.<br /><br /> - **sleutel** : de sleutel voor het opslag account.<br /><br /> - - **eind punt** : het eind punt voor toegang tot het opslag account. <br /><br /> -**sasToken** (toegevoegde 1.8.1): u kunt in de persoonlijke configuratie een SAS-token opgeven in plaats van een opslag account sleutel. Als u deze opgeeft, wordt de sleutel van het opslag account genegeerd. <br />Vereisten voor het SAS-token: <br />-Ondersteunt alleen het account-SAS-token <br />- *b*, *t* service types zijn vereist. <br /> - *a*, *c*, *u*, *w* -machtigingen zijn vereist. <br /> - *c*, *o* -resource typen zijn vereist. <br /> -Ondersteunt alleen het HTTPS-protocol <br /> -Start en verloop tijd moeten geldig zijn.|  
+|**StorageAccount**|Het opslag account dat moet worden gebruikt. De volgende kenmerken zijn vereist<br /><br /> - **naam** : de naam van het opslag account.<br /><br /> - **sleutel** : de sleutel voor het opslag account.<br /><br /> - - **eind punt** : het eind punt voor toegang tot het opslag account. <br /><br /> -**sasToken** (toegevoegde 1.8.1): u kunt in de persoonlijke configuratie een SAS-token opgeven in plaats van een opslag account sleutel. Als u deze opgeeft, wordt de sleutel van het opslag account genegeerd. <br />Vereisten voor het SAS-token: <br />-Ondersteunt alleen het account-SAS-token <br />- *b*, *t* service types zijn vereist. <br /> - *a*, *c*, *u*, *w* -machtigingen zijn vereist. <br /> - *c*, *o* -resource typen zijn vereist. <br /> -Ondersteunt alleen het HTTPS-protocol <br /> -Start en verloop tijd moeten geldig zijn.|  
 
 
 ## <a name="isenabled-element"></a>IsEnabled-element  

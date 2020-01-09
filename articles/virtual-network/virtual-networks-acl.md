@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 38655a9da103d1d669f87c6195be7f17702f9348
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 0002e61827817af958007e1f789219e9291990d8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056679"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647761"
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>Wat is een toegangs beheer lijst voor het eind punt?
 
@@ -39,7 +39,7 @@ Met behulp van netwerk-Acl's kunt u het volgende doen:
 * Regel volgorde gebruiken om ervoor te zorgen dat de juiste set regels wordt toegepast op een bepaald eind punt van de virtuele machine (laagste naar hoogste)
 * Geef een ACL op voor een specifiek IPv4-adres van het externe subnet.
 
-Zie het artikel over [Azure-limieten](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) voor ACL-limieten.
+Zie het artikel over [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) voor ACL-limieten.
 
 ## <a name="how-acls-work"></a>Hoe Acl's werken
 Een ACL is een object dat een lijst met regels bevat. Wanneer u een ACL maakt en toepast op een eind punt van een virtuele machine, worden pakket filtering uitgevoerd op het knoop punt host van uw VM. Dit betekent dat het verkeer van externe IP-adressen wordt gefilterd door het host-knoop punt voor overeenkomende ACL-regels in plaats van op uw virtuele machine. Zo voor komt u dat uw virtuele machine de kost bare CPU-cycli op pakket filtering kan uitgeven.
@@ -50,7 +50,7 @@ Wanneer een virtuele machine wordt gemaakt, wordt er een standaard-ACL geplaatst
 
 | **Budgetoverboekingsregel #** | **Extern subnet** | **Endpoint** | **Toestaan/weigeren** |
 | --- | --- | --- | --- |
-| 100 |0.0.0.0/0 |3389 |Laten |
+| 100 |0.0.0.0/0 |3389 |Toestaan |
 
 ## <a name="permit-and-deny"></a>Toestaan en weigeren
 U kunt het netwerk verkeer voor een invoer eindpunt van een virtuele machine selectief toestaan of weigeren door regels te maken waarmee "toestaan" of "weigeren" worden opgegeven. Het is belang rijk te weten dat wanneer er een eind punt wordt gemaakt, al het verkeer is toegestaan voor het eind punt. Daarom is het belang rijk om te begrijpen hoe regels voor toestaan/weigeren te maken en deze in de juiste volg orde te plaatsen als u gedetailleerde controle over het netwerk verkeer wilt toestaan dat u toestaat om het eind punt van de virtuele machine te bereiken.
@@ -72,18 +72,18 @@ Als u in het onderstaande voor beeld alleen toegang tot het RDP-eind punt wilt t
 
 | **Budgetoverboekingsregel #** | **Extern subnet** | **Endpoint** | **Toestaan/weigeren** |
 | --- | --- | --- | --- |
-| 100 |65.0.0.0/8 |3389 |Laten |
-| 200 |159.0.0.0/8 |3389 |Laten |
+| 100 |65.0.0.0/8 |3389 |Toestaan |
+| 200 |159.0.0.0/8 |3389 |Toestaan |
 
 ### <a name="rule-order"></a>Regel volgorde
-Omdat er meerdere regels kunnen worden opgegeven voor een eind punt, moet er een manier zijn om regels te ordenen om te bepalen welke regel voor rang heeft. De regel volgorde bepaalt de prioriteit. Netwerk-Acl's volgen de *laagste prioriteits* regel volgorde. In het onderstaande voor beeld wordt het eind punt op poort 80 selectief alleen toegang verleend tot bepaalde IP-adresbereiken. Om dit te configureren, hebben we een regel voor weigeren \# (regel 100) voor adressen in de 175.1.0.1/24-ruimte. Er wordt vervolgens een tweede regel opgegeven met prioriteit 200 die toegang tot alle andere adressen onder 175.0.0.0/8 toestaat.
+Omdat er meerdere regels kunnen worden opgegeven voor een eind punt, moet er een manier zijn om regels te ordenen om te bepalen welke regel voor rang heeft. De regel volgorde bepaalt de prioriteit. Netwerk-Acl's volgen de *laagste prioriteits* regel volgorde. In het onderstaande voor beeld wordt het eind punt op poort 80 selectief alleen toegang verleend tot bepaalde IP-adresbereiken. Om dit te configureren, hebben we een regel voor weigeren (regel \# 100) voor adressen in de 175.1.0.1/24-ruimte. Er wordt vervolgens een tweede regel opgegeven met prioriteit 200 die toegang tot alle andere adressen onder 175.0.0.0/8 toestaat.
 
 **Voor beeld: regel prioriteit**
 
 | **Budgetoverboekingsregel #** | **Extern subnet** | **Endpoint** | **Toestaan/weigeren** |
 | --- | --- | --- | --- |
 | 100 |175.1.0.1/24 |80 |Weigeren |
-| 200 |175.0.0.0/8 |80 |Laten |
+| 200 |175.0.0.0/8 |80 |Toestaan |
 
 ## <a name="network-acls-and-load-balanced-sets"></a>Netwerk-Acl's en sets met gelijke taak verdeling
 Netwerk-Acl's kunnen worden opgegeven op een set-eind punt met gelijke taak verdeling. Als er een ACL is opgegeven voor een set met gelijke taak verdeling, wordt de netwerk-ACL toegepast op alle virtuele machines in de set met gelijke taak verdeling. Als een set met gelijke taak verdeling bijvoorbeeld is gemaakt met ' poort 80 ' en de set met gelijke taak verdeling drie Vm's heeft, wordt de netwerk-ACL die is gemaakt op het eind punt ' poort 80 ' van de ene VM automatisch toegepast op de andere Vm's.

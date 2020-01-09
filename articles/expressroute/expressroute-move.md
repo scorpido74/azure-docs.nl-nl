@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: ganesr
-ms.openlocfilehash: f232e1e8a1f7121b047a846fc2c614b48e757f76
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c4fed30f7f4b723f04cd59b2a987b498e3d614a5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076643"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645902"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>ExpressRoute-circuits verplaatsen van het klassieke naar het Resource Manager-implementatiemodel
 Dit artikel bevat een overzicht van wat het betekent om een Azure ExpressRoute-circuit te verplaatsen van het klassieke naar het Azure Resource Manager-implementatiemodel.
@@ -39,7 +39,7 @@ U kunt ExpressRoute-circuits die zijn gemaakt in het Resource Manager-implementa
 * De toegang tot het klassieke implementatiemodel wordt gecontroleerd met de parameter **allowClassicOperations** in het ExpressRoute-circuit.
 
 > [!IMPORTANT]
-> Alle quota die zijn beschreven op de pagina [service limits](../azure-subscription-service-limits.md) (Servicelimieten) zijn van toepassing. Zo kan een standaardcircuit maximaal 10 virtuele netwerkkoppelingen/-verbindingen tussen zowel het klassieke als het Resource Manager-implementatiemodel hebben.
+> Alle quota die zijn beschreven op de pagina [service limits](../azure-resource-manager/management/azure-subscription-service-limits.md) (Servicelimieten) zijn van toepassing. Zo kan een standaardcircuit maximaal 10 virtuele netwerkkoppelingen/-verbindingen tussen zowel het klassieke als het Resource Manager-implementatiemodel hebben.
 > 
 > 
 

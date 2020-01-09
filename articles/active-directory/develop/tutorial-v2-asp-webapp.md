@@ -1,5 +1,5 @@
 ---
-title: Aanmelden toevoegen aan Azure AD ASP.NET-Web-app
+title: Aanmelden bij micro soft Identity platform ASP.NET Web-app toevoegen
 titleSuffix: Microsoft identity platform
 description: Implementatie van micro soft-aanmelding bij een ASP.NET-oplossing met behulp van een traditionele toepassing op basis van de webbrowser en OpenID Connect Connect Standard
 services: active-directory
@@ -17,18 +17,18 @@ ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff89d3c11ca88db14d2efd772be44aef7165a8a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: cf1abc42fd3639bf76f752e5fe6a8f62c7d9e66d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964732"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423475"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Aanmelden bij micro soft toevoegen aan een ASP.NET-Web-app
 
 In deze hand leiding wordt beschreven hoe u aanmelden bij micro soft implementeert via een ASP.NET MVC-oplossing met behulp van een traditionele toepassing op basis van een webbrowser en OpenID connect verbinding maken.
 
-Wanneer u deze hand leiding hebt voltooid, kan uw toepassing aanmeldingen van persoonlijke accounts accepteren vanaf het moment dat outlook.com en live.com. Daarnaast kunnen werk-en school accounts van elk bedrijf of organisatie die is geïntegreerd met Azure Active Directory (Azure AD) worden aangemeld bij uw app.
+Wanneer u deze hand leiding hebt voltooid, kan uw toepassing aanmeldingen van persoonlijke accounts accepteren vanaf het moment dat outlook.com en live.com. Daarnaast kunnen werk-en school accounts van elk bedrijf of organisatie die is geïntegreerd met het micro soft Identity-platform, zich aanmelden bij uw app.
 
 > Voor deze hand leiding is micro soft Visual Studio 2019 vereist.  Is dit niet het geval?  [Down load Visual Studio 2019 gratis](https://www.visualstudio.com/downloads/).
 
@@ -106,7 +106,7 @@ De volgende stappen worden gebruikt voor het maken van een OWIN-middleware voor 
     ```csharp
     public class Startup
     {
-        // The Client ID is used by the application to uniquely identify itself to Azure AD.
+        // The Client ID is used by the application to uniquely identify itself to Microsoft identity platform.
         string clientId = System.Configuration.ConfigurationManager.AppSettings["ClientId"];
 
         // RedirectUri is the URL where the user will be redirected to after they sign in.
@@ -115,7 +115,7 @@ De volgende stappen worden gebruikt voor het maken van een OWIN-middleware voor 
         // Tenant is the tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
 
-        // Authority is the URL for authority, composed by Azure Active Directory v2.0 endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
+        // Authority is the URL for authority, composed by Microsoft identity platform endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
@@ -175,7 +175,7 @@ De volgende stappen worden gebruikt voor het maken van een OWIN-middleware voor 
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Meer informatie
-> De parameters die u opgeeft in *OpenIDConnectAuthenticationOptions*, dienen als coördinaten waarmee de toepassing kan communiceren met Azure AD. Omdat de OpenID Connect Connect middleware cookies op de achtergrond gebruikt, moet u ook cookie-verificatie instellen als de voor gaande code. De *ValidateIssuer* -waarde vertelt OpenIdConnect niet om de toegang tot één specifieke organisatie te beperken.
+> De para meters die u in *OpenIDConnectAuthenticationOptions* opgeeft, fungeren als coördinaten voor de toepassing om te communiceren met het micro soft Identity-platform. Omdat de OpenID Connect Connect middleware cookies op de achtergrond gebruikt, moet u ook cookie-verificatie instellen als de voor gaande code. De *ValidateIssuer* -waarde vertelt OpenIdConnect niet om de toegang tot één specifieke organisatie te beperken.
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Een controller toevoegen om aanmeldings- en afmeldingsaanvragen te verwerken
@@ -270,7 +270,7 @@ Maak in Visual Studio een nieuwe weer gave om de aanmeldings knop toe te voegen 
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Meer informatie
-> Op deze pagina wordt een knop Aanmelden toegevoegd in SVG-indeling met een zwarte achtergrond:<br/>![Aanmelden met Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Voor meer aanmeldings knoppen gaat u naar de [richt lijnen voor huis stijl](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Baselecte richt lijnen).
+> Op deze pagina wordt een knop Aanmelden toegevoegd in SVG-indeling met een zwarte achtergrond:<br/>![Aanmelden met Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Voor meer aanmeldings knoppen gaat u naar de [richt lijnen voor huis stijl](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Huisstijlrichtlijnen").
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-display-users-claims"></a>Een controller toevoegen om claims van de gebruiker weer te geven
@@ -407,7 +407,7 @@ Wanneer u klaar bent om uw test uit te voeren, gebruikt u een Azure AD-account (
 
 <!--start-collapse-->
 > ###  <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Machtigingen en toestemming in het micro soft Identity platform-eind punt
->  Toepassingen die zijn geïntegreerd met het micro soft Identity-platform, volgen een autorisatie model waarmee gebruikers en beheerders controle kunnen krijgen over de manier waarop gegevens worden geopend. Nadat een gebruiker is geverifieerd met Azure AD voor toegang tot deze toepassing, wordt u gevraagd om toestemming te geven voor de machtigingen die door de toepassing zijn aangevraagd (uw basis profiel bekijken en de toegang tot gegevens waartoe u toegang hebt verleend). Nadat deze machtigingen zijn geaccepteerd, blijft de gebruiker de resultaten van de toepassing. Het is echter mogelijk dat de gebruiker wordt gevraagd om een **beheerders toestemming** pagina als een van de volgende situaties zich voordoet:
+>  Toepassingen die zijn geïntegreerd met het micro soft Identity-platform, volgen een autorisatie model waarmee gebruikers en beheerders controle kunnen krijgen over de manier waarop gegevens worden geopend. Nadat een gebruiker is geverifieerd met het micro soft-identiteits platform voor toegang tot deze toepassing, wordt u gevraagd om toestemming te geven aan de machtigingen die door de toepassing zijn aangevraagd (uw basis profiel bekijken en de toegang tot gegevens waartoe u toegang hebt verleend). Nadat deze machtigingen zijn geaccepteerd, blijft de gebruiker de resultaten van de toepassing. Het is echter mogelijk dat de gebruiker wordt gevraagd om een **beheerders toestemming** pagina als een van de volgende situaties zich voordoet:
 >  > - De ontwikkelaar van de toepassing voegt extra machtigingen toe waarvoor **beheerders toestemming**nodig heeft.
 >  > - Of de Tenant is geconfigureerd (in **Enter prise-toepassingen-> gebruikers instellingen**), waarbij gebruikers niet kunnen instemmen op apps die namens hen toegang hebben tot Bedrijfs gegevens.
 >
@@ -433,7 +433,7 @@ Nadat u naar de weer gave controller hebt gebladerd, ziet u een tabel die de bas
 |**Onderwerp** |Onderwerp |Een teken reeks waarmee de gebruiker op het web op unieke wijze wordt geïdentificeerd|
 |**Tenant ID** |GUID | Een unieke **GUID** die de Azure AD-organisatie van de gebruiker vertegenwoordigt|
 
-Daarnaast ziet u een tabel met alle claims in de verificatie aanvraag. Zie de [lijst met claims die zich in een Azure AD-ID-token bevinden](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)voor meer informatie.
+Daarnaast ziet u een tabel met alle claims in de verificatie aanvraag. Zie de [lijst met claims die zich in een ID-token bevinden](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)voor meer informatie.
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Toegang tot een methode met een kenmerk voor autoriseren testen (optioneel)
 
@@ -459,7 +459,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>Beperken wie zich kan aanmelden bij uw toepassing
 
-Wanneer u de toepassing bouwt die door deze hand leiding is gemaakt, accepteert uw toepassing standaard aanmeldingen van persoonlijke accounts (waaronder outlook.com, live.com en anderen), evenals werk-en school accounts van elk bedrijf of organisatie dat is geïntegreerd met Azure AD. Dit is een aanbevolen optie voor SaaS-toepassingen.
+Wanneer u de toepassing bouwt die door deze hand leiding is gemaakt, accepteert uw toepassing standaard aanmeldingen van persoonlijke accounts (waaronder outlook.com, live.com en anderen), evenals werk-en school accounts van elk bedrijf of organisatie dat is geïntegreerd met Micro soft Identity-platform. Dit is een aanbevolen optie voor SaaS-toepassingen.
 
 Als u toegang door gebruikers wilt beperken voor uw toepassing, zijn er meerdere opties beschikbaar.
 

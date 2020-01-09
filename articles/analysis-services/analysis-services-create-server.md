@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cfd624ce49add0f8fd04bfccca9d6b7c3f1f71bd
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4c1b22d4871d3e490f59be71b63569fdf563ce45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573070"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442839"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Snelstart: Een server maken - Portal
 
@@ -38,7 +38,7 @@ In deze snelstart wordt beschreven hoe u een Azure Analysis Services-serverresou
    
    * **Servernaam**: typ een unieke naam om te verwijzen naar de server. De server naam moet beginnen met een kleine letter en tussen 3 en 128 kleine letters en cijfers bevatten. Spaties en speciale tekens zijn niet toegestaan.
    * **Abonnement**: selecteer het abonnement waaraan deze server wordt gekoppeld.
-   * **Resourcegroep**: maak een nieuwe resourcegroep of selecteer een bestaande resourcegroep. Resourcegroepen zijn ontworpen om u te helpen bij het beheren van een verzameling Azure-resources. Zie [Resourcegroepen](../azure-resource-manager/resource-group-overview.md) voor meer informatie.
+   * **Resourcegroep**: maak een nieuwe resourcegroep of selecteer een bestaande resourcegroep. Resourcegroepen zijn ontworpen om u te helpen bij het beheren van een verzameling Azure-resources. Zie [Resourcegroepen](../azure-resource-manager/management/overview.md) voor meer informatie.
    * **Locatie**: op deze Azure-datacenterlocatie wordt de server gehost. Kies een locatie die zich zo dicht mogelijk bij uw grootste gebruikersgroep bevindt.
    * **Prijscategorie**: selecteer een prijscategorie. Als u de voorbeeldmodeldatabase wilt testen en waarschijnlijk wilt installeren, selecteert u de gratis **D1**-laag. Zie [Prijzen van Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/) voor meer informatie. 
    * **Beheerder**: dit is standaard het account waarmee u bent aangemeld. U kunt een ander account kiezen in uw Azure Active Directory.

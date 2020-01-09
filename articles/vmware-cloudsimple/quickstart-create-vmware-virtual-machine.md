@@ -1,5 +1,6 @@
 ---
-title: Azure VMware-oplossing van CloudSimple Quick Start-virtuele VMware-machines in azure gebruiken
+title: "Snelstartgids: VMware-Vm's in azure gebruiken"
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Meer informatie over het configureren en gebruiken van VMware-Vm's van Azure Portal met behulp van de Azure VMware-oplossing op CloudSimple
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 504550358bb56602093e58c90506c9140afccadb
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 4ab613c251bc43a025e0381046805ec998a04227
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574488"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452363"
 ---
 # <a name="quickstart---consume-vmware-vms-on-azure"></a>Quick Start: VMware-Vm's in azure gebruiken
 
@@ -21,15 +22,15 @@ Als u een virtuele machine in de Azure Portal wilt maken, gebruikt u virtuele-ma
 
 ## <a name="cloudsimple-vm-creation-on-azure-requires-a-vm-template"></a>Voor het maken van een CloudSimple-VM in Azure is een VM-sjabloon vereist
 
-Maak een virtuele machine in uw Privécloud vanuit de vCenter-gebruikers interface. Als u een sjabloon wilt maken, volgt u de instructies in [een virtuele machine klonen naar een sjabloon in de vSphere](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-FE6DE4DF-FAD0-4BB0-A1FD-AFE9A40F4BFE.html)-webclient. Sla de VM-sjabloon op in uw Privécloud.
+Maak een virtuele machine in uw Privécloud vanuit de vCenter-gebruikers interface. Als u een sjabloon wilt maken, volgt u de instructies in [een virtuele machine klonen naar een sjabloon in de vSphere-webclient](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-FE6DE4DF-FAD0-4BB0-A1FD-AFE9A40F4BFE.html). Sla de VM-sjabloon op in uw Privécloud.
 
-## <a name="create-a-virtual-machine-in-the-azure-portal"></a>Een virtuele machine maken in de Azure Portal
+## <a name="create-a-virtual-machine-in-the-azure-portal"></a>Een virtuele machine maken in Azure Portal
 
 1. Selecteer **Alle services**.
 
 2. Zoek naar **CloudSimple-virtual machines**.
 
-3. Klik op **Toevoegen**.
+3. Klik op **Add**.
 
     ![Een virtuele CloudSimple-machine maken](media/create-cloudsimple-virtual-machine.png)
 
@@ -37,12 +38,12 @@ Maak een virtuele machine in uw Privécloud vanuit de vCenter-gebruikers interfa
 
     ![CloudSimple virtual machine maken-basis beginselen](media/create-cloudsimple-virtual-machine-basic-info.png)
 
-    | Veld | Description |
+    | Veld | Beschrijving |
     | ------------ | ------------- |
-    | Subscription | Het Azure-abonnement dat is gekoppeld aan uw Privécloud.  |
+    | Abonnement | Het Azure-abonnement dat is gekoppeld aan uw Privécloud.  |
     | Resourcegroep | De resource groep waaraan de virtuele machine wordt toegewezen. U kunt een bestaande groep selecteren of een nieuwe maken. |
     | Name | Naam voor het identificeren van de virtuele machine.  |
-    | Location | De Azure-regio waarin deze VM wordt gehost.  |
+    | Locatie | De Azure-regio waarin deze VM wordt gehost.  |
     | Privécloud | CloudSimple de Privécloud waar u de virtuele machine wilt maken. |
     | Resourcegroep | Toegewezen resource groep voor de virtuele machine. Selecteer een van de beschik bare resource groepen. |
     | vSphere-sjabloon | vSphere-sjabloon voor de virtuele machine.  |
@@ -60,21 +61,21 @@ Maak een virtuele machine in uw Privécloud vanuit de vCenter-gebruikers interfa
 
     Voor netwerk interfaces klikt u op **netwerk interface toevoegen** en configureert u de volgende instellingen.
 
-    | Beheer | Description |
+    | Beheer | Beschrijving |
     | ------------ | ------------- |
     | Name | Voer een naam in om de interface te identificeren.  |
     | Netwerk | Selecteer in de lijst met geconfigureerde gedistribueerde poort groep in uw Privécloud vSphere.  |
-    | Hostadapter | Selecteer een vSphere-adapter in de lijst met beschik bare typen die voor de virtuele machine zijn geconfigureerd. Zie het artikel over VMware Knowledge Base voor meer informatie. <a href="https://kb.vmware.com/s/article/1001805" target="_blank">Kies een netwerk adapter voor de virtuele machine</a>. |
+    | Adapter | Selecteer een vSphere-adapter in de lijst met beschik bare typen die voor de virtuele machine zijn geconfigureerd. Zie het artikel over VMware Knowledge Base voor meer informatie. <a href="https://kb.vmware.com/s/article/1001805" target="_blank">Kies een netwerk adapter voor de virtuele machine</a>. |
     | Inschakelen bij opstarten | Kies of u de NIC-hardware wilt inschakelen wanneer de virtuele machine wordt opgestart. De standaard instelling is **ingeschakeld**. |
 
     Voor schijven, klikt u op **schijf toevoegen** en configureert u de volgende instellingen.
 
-    | Item | Description |
+    | Item | Beschrijving |
     | ------------ | ------------- |
     | Name | Voer een naam in om de schijf aan te duiden.  |
-    | Size | Selecteer een van de beschik bare grootten.  |
+    | Grootte | Selecteer een van de beschik bare grootten.  |
     | SCSI-controller | Selecteer een SCSI-controller voor de schijf.  |
-    | Modus | Hiermee wordt bepaald hoe de schijf deel uitmaakt van moment opnamen. Kies een van de volgende opties: <br> -Onafhankelijk permanent: Alle gegevens die naar de schijf worden geschreven, worden permanent geschreven.<br> -Onafhankelijk niet-persistent: Wijzigingen die naar de schijf worden geschreven, worden genegeerd wanneer u de virtuele machine uitschakelt of opnieuw instelt.  Met een onafhankelijke, niet-permanente modus kunt u de virtuele machine in dezelfde staat altijd opnieuw opstarten. Raadpleeg de <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html" target="_blank">VMware-documentatie</a>voor meer informatie.
+    | Modus | Hiermee wordt bepaald hoe de schijf deel uitmaakt van moment opnamen. Kies een van de volgende opties: <br> -Onafhankelijk permanent: alle gegevens die naar de schijf worden geschreven, worden permanent geschreven.<br> -Onafhankelijk niet-persistent: wijzigingen die naar de schijf worden geschreven, worden genegeerd wanneer u de virtuele machine uitschakelt of opnieuw instelt.  Met een onafhankelijke, niet-permanente modus kunt u de virtuele machine in dezelfde staat altijd opnieuw opstarten. Raadpleeg de <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html" target="_blank">VMware-documentatie</a>voor meer informatie.
 
 7. Wanneer de validatie is voltooid, controleert u de instellingen en klikt u op **maken**. Als u wijzigingen wilt aanbrengen, klikt u op de tabbladen bovenaan of klikt u op.
 

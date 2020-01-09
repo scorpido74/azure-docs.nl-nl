@@ -1,7 +1,7 @@
 ---
 title: Gegevens samenvatten
-titleSuffix: Azure Machine Learning service
-description: Informatie over het gebruik van de module gegevens samenvatten in Azure Machine Learning service voor het genereren van een basis beschrijvende statistieken rapport voor de kolommen in een gegevensset.
+titleSuffix: Azure Machine Learning
+description: Informatie over het gebruik van de module gegevens samenvatten in Azure Machine Learning voor het genereren van een basis beschrijvende statistieken rapport voor de kolommen in een gegevensset.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 503eb533b83cbeedcc16b73a9c1dbe821a4d4d94
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 80e2acf08960796ccb2f3ad87c16674e477c9c00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492579"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428456"
 ---
 # <a name="summarize-data"></a>Gegevens samenvatten
 
@@ -46,7 +46,7 @@ De module berekent de belang rijke scores voor elke kolom en retourneert een rij
 
 Het rapport van de module kan de volgende statistieken bevatten. 
 
-|Kolom naam|Beschrijving|
+|Kolomnaam|Beschrijving|
 |------|------|  
 |**Functie**|Naam van de kolom|
 |**Aantal**|Aantal rijen|
@@ -59,7 +59,7 @@ Het rapport van de module kan de volgende statistieken bevatten.
 |**1e kwartiel**|Waarde bij eerste kwartiel|
 |**Mediaan**|Kolom waarde mediaan|
 |**3e kwartiel**|Waarde bij derde kwartiel|
-|**Penmodus**|Modus van kolom waarden|
+|**Mode**|Modus van kolom waarden|
 |**Range**|Geheel getal dat het aantal waarden tussen de maximum-en minimum waarden vertegenwoordigt|
 |**Voorbeeld afwijking**|Variantie voor kolom; Zie opmerking|
 |**Standaard deviatie voor beeld**|Standaard afwijking voor kolom; Zie opmerking|
@@ -73,4 +73,4 @@ Het rapport van de module kan de volgende statistieken bevatten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service.  
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning.  

@@ -1,23 +1,23 @@
 ---
-title: Afwijkingen visualiseren met batchgewijs detecteren en Power BI
+title: 'Zelf studie: afwijkingen visualiseren met batch detectie en Power BI'
 titleSuffix: Azure Cognitive Services
-description: Gebruik de anomalie detectie-API en Power BI voor het visualiseren van afwijkingen in uw tijdreeks gegevens.
+description: Meer informatie over het gebruik van de Anomaliey detector API en Power BI voor het visualiseren van afwijkingen in uw tijdreeks gegevens.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: fa78e737cd863d19e294c5001dfd27b07760521f
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 1d1f71ed56138f2c799c7410508c0bc4899e7887
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840870"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448857"
 ---
-# <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Zelfstudie: Afwijkingen visualiseren met batchgewijs detecteren en Power BI
+# <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Zelf studie: afwijkingen visualiseren met batch detectie en Power BI
 
 Gebruik deze zelf studie om afwijkingen in een tijdreeks gegevensverzameling te vinden als een batch. Met Power BI bureau blad gaat u een Excel-bestand maken, de gegevens voorbereiden voor de anomalie detectie-API en statistische afwijkingen visualiseren.
 
@@ -52,7 +52,7 @@ Nadat het dialoog venster wordt weer gegeven, gaat u naar de map waar u het best
 
 ![Een afbeelding van het scherm voor de gegevens bron navigator in Power BI](../media/tutorials/navigator-dialog-box.png)
 
-Power BI worden de tijds tempels in de eerste kolom geconverteerd naar een `Date/Time`-gegevens type. Deze tijds tempels moeten worden geconverteerd naar tekst om te worden verzonden naar de anomalie detector-API. Als de Power Query Editor niet automatisch wordt geopend, klikt u op **Query's bewerken** op het tabblad Start. 
+Power BI worden de tijds tempels in de eerste kolom geconverteerd naar een `Date/Time` gegevens type. Deze tijds tempels moeten worden geconverteerd naar tekst om te worden verzonden naar de anomalie detector-API. Als de Power Query Editor niet automatisch wordt geopend, klikt u op **Query's bewerken** op het tabblad Start. 
 
 Klik op het lint **Transformeren** in de Editor van Power query. Open in de **kolom** groep de optie **gegevens type:** vervolg keuzelijst en selecteer **tekst**.
 
@@ -68,7 +68,7 @@ Zorg ervoor dat de nieuwe query is geselecteerd en klik vervolgens op **Geavance
 
 ![Een afbeelding van de knop ' Geavanceerde editor ' in Power BI](../media/tutorials/advanced-editor-screen.png)
 
-Gebruik in de Geavanceerde editor het volgende Power Query M-fragment om de kolommen uit de tabel op te halen en te verzenden naar de API. Daarna maakt de query een tabel op basis van het JSON-antwoord en retourneert deze. Vervang de variabele `apiKey` door de geldige Anomaliey-API-sleutel en `endpoint` met uw eind punt. Nadat u de query hebt ingevoerd in de Geavanceerde editor, klikt u op **gereed**.
+Gebruik in de Geavanceerde editor het volgende Power Query M-fragment om de kolommen uit de tabel op te halen en te verzenden naar de API. Daarna maakt de query een tabel op basis van het JSON-antwoord en retourneert deze. Vervang de `apiKey` variabele door de geldige Anomaliey-API-sleutel en `endpoint` met uw eind punt. Nadat u de query hebt ingevoerd in de Geavanceerde editor, klikt u op **gereed**.
 
 ```M
 (table as table) => let
@@ -112,7 +112,7 @@ Gebruik in de Geavanceerde editor het volgende Power Query M-fragment om de kolo
  in results
 ```
 
-Roep de query aan op uw gegevens blad door `Sheet1` onder **Enter para meter**in te scha kelen en op **aanroepen**te klikken. 
+Roep de query aan op uw gegevens blad door `Sheet1` onderstaande **para meter**op te geven en op **aanroepen**te klikken. 
 
 ![Een afbeelding van de knop Geavanceerde editor](../media/tutorials/invoke-function-screenshot.png)
 
@@ -143,7 +143,7 @@ Begin in het hoofd venster van Power BI de eerder gemaakte query's te gebruiken 
 
 Voeg de volgende velden van de **aangeroepen functie** toe aan het veld **waarden** van de grafiek. Gebruik de onderstaande scherm afbeelding om uw grafiek te bouwen.
 
-    * Value
+    * Waarde
     * UpperMargins
     * LowerMargins
     * ExpectedValues
@@ -160,11 +160,11 @@ Klik aan de rechter kant van het Power BI venster onder het deel venster **velde
 
 ![Een afbeelding van het scherm nieuwe snelle meting](../media/tutorials/new-quick-measure.png)
 
-Selecteer op het scherm dat wordt weer gegeven **gefilterde waarde** als berekening. Stel de **basis waarde** in op `Sum of Value`. Sleep vervolgens `IsAnomaly` van de **aangeroepen functie** velden om te **filteren**. Selecteer `True` in de vervolg keuzelijst **filter** .
+Selecteer op het scherm dat wordt weer gegeven **gefilterde waarde** als berekening. Stel de **basis waarde** in op `Sum of Value`. Sleep `IsAnomaly` van de **aangeroepen functie** velden om te **filteren**. Selecteer `True` in de vervolg keuzelijst **filter** .
 
 ![Een afbeelding van het scherm nieuwe snelle meting](../media/tutorials/new-quick-measure-2.png)
 
-Nadat u op **OK**hebt geklikt, bevat het veld `Value for True` onder aan de lijst met velden. Klik er met de rechter muisknop op en wijzig de naam ervan in **afwijkingen**. Voeg deze toe aan de **waarden**van de grafiek. Selecteer vervolgens het hulp programma **opmaken** en stel het type X-as in op **categorische**.
+Nadat u op **OK**hebt geklikt, wordt er een `Value for True` veld weer geven onder aan de lijst met velden. Klik er met de rechter muisknop op en wijzig de naam ervan in **afwijkingen**. Voeg deze toe aan de **waarden**van de grafiek. Selecteer vervolgens het hulp programma **opmaken** en stel het type X-as in op **categorische**.
 
 ![Een afbeelding van het scherm nieuwe snelle meting](../media/tutorials/format-x-axis.png)
 

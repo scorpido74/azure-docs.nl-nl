@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bfa8982fb49b31540d1926bdeb75a96dc1d79cf0
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: b82001b8bceac620dec9f1fe6ef47f4aa81b1011
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950898"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425611"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een zelf-bevestigd technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -38,7 +38,7 @@ In het volgende voor beeld ziet u een zelf-bevestigd technisch profiel voor het 
 
 ## <a name="input-claims"></a>Invoer claims
 
-In een niet-bevestigd technisch profiel kunt u de **InputClaims** -en **InputClaimsTransformations** -elementen gebruiken om de waarde van de claims die worden weer gegeven op de door uzelf bevestigde pagina (uitvoer claims), vooraf in te vullen. In het beleid voor het bewerken van profielen leest de gebruikers traject eerst het gebruikers profiel uit de Azure AD B2C Directory-service. vervolgens stelt het zelfondertekende technische profiel de invoer claims in met de gebruikers gegevens die zijn opgeslagen in het gebruikers profiel. Deze claims worden verzameld uit het gebruikers profiel en vervolgens weer gegeven aan de gebruiker die de bestaande gegevens kan bewerken.
+In een zelf-bevestigd technisch profiel kunt u de **InputClaims** -en **InputClaimsTransformations** -elementen gebruiken om de waarde van de claims die worden weer gegeven op de niet-bevestigde pagina (claims weer geven), vooraf in te vullen. In het beleid voor het bewerken van profielen leest de gebruikers traject eerst het gebruikers profiel uit de Azure AD B2C Directory-service. vervolgens stelt het zelfondertekende technische profiel de invoer claims in met de gebruikers gegevens die zijn opgeslagen in het gebruikers profiel. Deze claims worden verzameld uit het gebruikers profiel en vervolgens weer gegeven aan de gebruiker die de bestaande gegevens kan bewerken.
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
@@ -51,31 +51,92 @@ In een niet-bevestigd technisch profiel kunt u de **InputClaims** -en **InputCla
   </InputClaims>
 ```
 
+## <a name="display-claims"></a>Claims weer geven
+
+De functie voor het weer geven van claims is momenteel beschikbaar als **Preview-versie**.
+
+Het **DisplayClaims** -element bevat een lijst met claims die op het scherm moeten worden weer gegeven voor het verzamelen van gegevens van de gebruiker. Gebruik de invoer claims die eerder zijn beschreven om de waarden van uitvoer claims vooraf in te vullen. Het element kan ook een standaard waarde bevatten.
+
+De volg orde van de claims in **DisplayClaims** geeft aan in welke volg orde Azure AD B2C de claims op het scherm worden weer gegeven. Als u wilt afdwingen dat de gebruiker een waarde voor een specifieke claim opgeeft, stelt u het **vereiste** kenmerk van het **DisplayClaim** -element in op `true`.
+
+Het element **claim** type in de **DisplayClaims** -verzameling moet het **UserInputType** -element instellen op elk type gebruikers invoer dat door Azure AD B2C wordt ondersteund. Bijvoorbeeld `TextBox` of `DropdownSingleSelect`.
+
+### <a name="add-a-reference-to-a-displaycontrol"></a>Een verwijzing naar een DisplayControl toevoegen
+
+In de claim verzameling weer geven kunt [u een verwijzing naar een weer gave](display-controls.md) die u hebt gemaakt, toevoegen. Een weergave besturings element is een gebruikers interface-element dat speciale functionaliteit heeft en samenwerkt met de Azure AD B2C back-end-service. Hiermee kan de gebruiker acties uitvoeren op de pagina die een validatie technische profiel aan de back-end aanroept. U kunt bijvoorbeeld een e-mail adres, telefoon nummer of loyaliteits nummer van de klant controleren.
+
+Het volgende voor beeld `TechnicalProfile` illustreert het gebruik van weer gave claims met besturings elementen voor weer gave.
+
+* De eerste weergave claim verwijst naar het `emailVerificationControl`-weergave besturings element waarmee het e-mail adres wordt verzameld en geverifieerd.
+* De vijfde weergave claim verwijst naar het `phoneVerificationControl`-weergave besturings element waarmee een telefoon nummer wordt verzameld en geverifieerd.
+* De andere weer gave claims worden ClaimTypes van de gebruiker verzameld.
+
+```XML
+<TechnicalProfile Id="Id">
+  <DisplayClaims>
+    <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
+    <DisplayClaim ClaimTypeReferenceId="displayName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="givenName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="surName" Required="true" />
+    <DisplayClaim DisplayControlReferenceId="phoneVerificationControl" />
+    <DisplayClaim ClaimTypeReferenceId="newPassword" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
+  </DisplayClaims>
+</TechnicalProfile>
+```
+
+Zoals vermeld, kan een weergave claim met een verwijzing naar een weergave besturings element een eigen validatie uitvoeren, bijvoorbeeld het e-mail adres controleren. Daarnaast ondersteunt de zelfbevestigende pagina het gebruik van een validatie technische profiel voor het valideren van de volledige pagina, inclusief eventuele gebruikers invoer (claim typen of besturings elementen weer geven), voordat u verdergaat met de volgende Orchestration-stap.
+
+### <a name="combine-usage-of-display-claims-and-output-claims-carefully"></a>Gebruik zorgvuldig combi neren van claims en uitvoer claims
+
+Als u een of meer **DisplayClaim** -elementen opgeeft in een zelf-bevestigd technisch profiel, moet u een DisplayClaim gebruiken voor *elke* claim die u op het scherm wilt weer geven en van de gebruiker wilt verzamelen. Er worden geen uitvoer claims weer gegeven met een niet-bevestigd technisch profiel dat ten minste één weergave claim bevat.
+
+Bekijk het volgende voor beeld waarin een `age` claim wordt gedefinieerd als een **uitvoer** claim in een basis beleid. Voordat u de weer gave claims aan het zelfondertekende technische profiel toevoegt, wordt de `age` claim op het scherm weer gegeven voor het verzamelen van gegevens van de gebruiker:
+
+```XML
+<TechnicalProfile Id="id">
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="age" />
+  </OutputClaims>
+</TechnicalProfile>
+```
+
+Als een blad beleid dat deze basis overneemt, geeft u `officeNumber` als een **weergave** claim op:
+
+```XML
+<TechnicalProfile Id="id">
+  <DisplayClaims>
+    <DisplayClaim ClaimTypeReferenceId="officeNumber" />
+  </DisplayClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="officeNumber" />
+  </OutputClaims>
+</TechnicalProfile>
+```
+
+De `age` claim in het basis beleid wordt niet meer op het scherm weer gegeven voor de gebruiker. Dit is het effectief ' verborgen '. Als u de `age` claim wilt weer geven en de leeftijds waarde van de gebruiker wilt verzamelen, moet u een `age` **DisplayClaim**toevoegen.
 
 ## <a name="output-claims"></a>Uitvoer claims
 
-Het **OutputClaims** -element bevat een lijst met claims die moeten worden gepresenteerd voor het verzamelen van gegevens van de gebruiker. Als u de uitvoer claims vooraf wilt invullen met een aantal waarden, gebruikt u de ingevoerde claims die eerder zijn beschreven. Het element kan ook een standaard waarde bevatten. De volg orde van de claims in **OutputClaims** bepaalt de volg orde waarin de claims op het scherm Azure AD B2C worden weer gegeven. Het kenmerk **DefaultValue** wordt alleen gebruikt als de claim nog nooit is ingesteld. Maar als de gebruiker de waarde leeg heeft, wordt de standaard waarde niet van kracht als deze eerder is ingesteld in een vorige Orchestration-stap. Als u het gebruik van een standaard waarde wilt forceren, stelt u het kenmerk **AlwaysUseDefaultValue** in op `true`. Als u wilt afdwingen dat de gebruiker een waarde voor een specifieke uitvoer claim opgeeft, stelt u het **vereiste** kenmerk van het **OutputClaims** -element in op `true`.
+Het **OutputClaims** -element bevat een lijst met claims die moeten worden geretourneerd naar de volgende Orchestration-stap. Het kenmerk **DefaultValue** wordt alleen gebruikt als de claim nooit is ingesteld. Als deze in een vorige Orchestration-stap is ingesteld, wordt de standaard waarde niet van kracht, zelfs niet als de gebruiker de waarde leeg laat. Als u het gebruik van een standaard waarde wilt forceren, stelt u het kenmerk **AlwaysUseDefaultValue** in op `true`.
 
-Het element **claim** type in de **OutputClaims** -verzameling moet het **UserInputType** -element instellen op een invoer van de gebruiker die wordt ondersteund door Azure AD B2C, zoals `TextBox` of `DropdownSingleSelect`. Of het element **output claim** moet een **DefaultValue**instellen.
+> [!NOTE]
+> In eerdere versies van het Framework voor identiteits ervaring (IEF) werden uitvoer claims gebruikt voor het verzamelen van gegevens van de gebruiker. Als u gegevens wilt verzamelen van de gebruiker, gebruikt u in plaats daarvan een **DisplayClaims** -verzameling.
 
 Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsTransformation** -elementen bevatten die worden gebruikt voor het wijzigen van de uitvoer claims of voor het genereren van nieuwe.
 
-De volgende uitvoer claim is altijd ingesteld op `live.com`:
+### <a name="when-you-should-use-output-claims"></a>Wanneer u uitvoer claims moet gebruiken
 
-```XML
-<OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="live.com" AlwaysUseDefaultValue="true" />
-```
+In een niet-bevestigd technisch profiel retourneert de claim verzameling output de claims naar de volgende Orchestration-stap.
 
-### <a name="use-case"></a>Toepassing
+U moet uitvoer claims gebruiken wanneer:
 
-Er zijn vier scenario's voor uitvoer claims:
-
-- **Het verzamelen van de uitvoer claims van de gebruiker** : wanneer u gegevens moet verzamelen van de gebruiker, zoals geboorte datum, moet u de claim toevoegen aan de **OutputClaims** -verzameling. De claims die aan de gebruiker worden gepresenteerd, moeten de **UserInputType**opgeven, zoals `TextBox` of `DropdownSingleSelect`. Als het zelfvoorziene technische profiel een validatie technisch profiel bevat dat dezelfde claim uitvoert, Azure AD B2C de claim niet aan de gebruiker weer gegeven. Als er voor de gebruiker geen uitvoer claim aanwezig is, Azure AD B2C over overs laan van het technische profiel.
-- Het **instellen van een standaard waarde in een uitvoer claim** -zonder gegevens te verzamelen van de gebruiker of het retour neren van de gegevens uit het technische profiel voor validatie. Met het door de `LocalAccountSignUpWithLogonEmail` zelf bevestigde technische profiel wordt de **uitgevoerde-SelfAsserted-invoer** claim ingesteld op `true`.
+- **Claims worden uitgevoerd door trans formatie van uitvoer claims**.
+- Het **instellen van een standaard waarde in een uitvoer claim** zonder het verzamelen van gegevens van de gebruiker of het retour neren van de gegevens uit het technische profiel voor validatie. Met het door de `LocalAccountSignUpWithLogonEmail` zelf bevestigde technische profiel wordt de **uitgevoerde-SelfAsserted-invoer** claim ingesteld op `true`.
 - **Een technisch profiel voor validatie retourneert de uitvoer claims** -uw technische profiel kan een validatie technische profiel aanroepen dat enkele claims retourneert. U kunt de claims inbellen en terugsturen naar de volgende indelings stappen in de gebruikers reis. Als u zich bijvoorbeeld aanmeldt met een lokaal account, wordt het door de zelf bevestigde technische profiel met de naam `SelfAsserted-LocalAccountSignin-Email` het technische profiel voor validatie aanroepen met de naam `login-NonInteractive`. Dit technische profiel valideert de gebruikers referenties en retourneert ook het gebruikers profiel. Zoals ' userPrincipalName ', ' displayName ', ' naam ' en ' Achternaam '.
-- **De claims uitvoeren via trans formatie van uitvoer claims**
+- **Een besturings element voor weer gave retourneert de uitvoer claims** -uw technische profiel bevat mogelijk een verwijzing naar een [besturings element voor weer gave](display-controls.md). Het besturings element weer gave retourneert enkele claims, zoals het geverifieerde e-mail adres. U kunt de claims inbellen en terugsturen naar de volgende indelings stappen in de gebruikers reis. De functie voor het weer geven van besturings elementen is momenteel beschikbaar als **Preview-versie**.
 
-In het volgende voor beeld demonstreert het `LocalAccountSignUpWithLogonEmail` zelfondertekende technische profiel het gebruik van uitvoer claims en sets **uitgevoerde SelfAsserted-invoer** naar `true`. De `objectId`, `authenticationSource``newUser` claims worden uitgevoerd op het `AAD-UserWriteUsingLogonEmail` validatie technische profiel en worden niet weer gegeven aan de gebruiker.
+In het volgende voor beeld wordt het gebruik van een zelf-bevestigd technisch profiel gedemonstreerd dat zowel claims als uitvoer claims gebruikt.
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -86,32 +147,30 @@ In het volgende voor beeld demonstreert het `LocalAccountSignUpWithLogonEmail` z
     <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
     <Item Key="language.button_continue">Create</Item>
   </Metadata>
-  <CryptographicKeys>
-    <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
-  </CryptographicKeys>
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" />
   </InputClaims>
+  <DisplayClaims>
+    <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
+    <DisplayClaim DisplayControlReferenceId="SecondaryEmailVerificationControl" />
+    <DisplayClaim ClaimTypeReferenceId="displayName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="givenName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="surName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="newPassword" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
+  </DisplayClaims>
   <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="email" Required="true" />
     <OutputClaim ClaimTypeReferenceId="objectId" />
-    <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
-    <OutputClaim ClaimTypeReferenceId="newPassword" Required="true" />
-    <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
     <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
     <OutputClaim ClaimTypeReferenceId="authenticationSource" />
     <OutputClaim ClaimTypeReferenceId="newUser" />
-
-    <!-- Optional claims, to be collected from the user -->
-    <OutputClaim ClaimTypeReferenceId="displayName" />
-    <OutputClaim ClaimTypeReferenceId="givenName" />
-    <OutputClaim ClaimTypeReferenceId="surName" />
   </OutputClaims>
   <ValidationTechnicalProfiles>
     <ValidationTechnicalProfile ReferenceId="AAD-UserWriteUsingLogonEmail" />
   </ValidationTechnicalProfiles>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
 </TechnicalProfile>
-
 ```
 
 ## <a name="persist-claims"></a>Claims persistent maken
@@ -142,16 +201,3 @@ U kunt ook een REST API technisch profiel aanroepen met uw bedrijfs logica, invo
 ## <a name="cryptographic-keys"></a>Cryptografische sleutels
 
 Het element **CryptographicKeys** wordt niet gebruikt.
-
-
-
-
-
-
-
-
-
-
-
-
-

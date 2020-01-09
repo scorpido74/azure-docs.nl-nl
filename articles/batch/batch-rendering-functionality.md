@@ -1,18 +1,18 @@
 ---
 title: Weergave mogelijkheden-Azure Batch
-description: Specifieke weergave mogelijkheden in Azure Batch
+description: Standaard Azure Batch mogelijkheden worden gebruikt voor het uitvoeren van werk belastingen en apps voor rendering. Batch bevat specifieke functies voor het ondersteunen van rendering-workloads.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: b5eaaa6d41b9dae97a2d6219ffa44fb75ed67e61
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 697e2640b7215e0bbb9202c672f936535831eb99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350040"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449714"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Mogelijkheden voor Azure Batch Rendering
 
@@ -30,10 +30,10 @@ Er is een installatie kopie van Windows 2016 en een CentOS-installatie kopie.  I
 
 Zie de [zelf studie over Azure cli-rendering](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)voor een voor beeld van een pool configuratie.  De Azure Portal en Batch Explorer bieden GUI-hulpprogram ma's voor het selecteren van een VM-installatie kopie die wordt weer gegeven wanneer u een groep maakt.  Als u een batch-API gebruikt, geeft u voor [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) de volgende eigenschaps waarden op bij het maken van een groep:
 
-| Uitgever | Aanbieding | Sku | Version |
+| Uitgever | Aanbieding | Sku | Versie |
 |---------|---------|---------|--------|
-| batch | rendering-centos73 | aanwijzer | latest |
-| batch | Rendering-windows2016 | aanwijzer | latest |
+| batch | rendering-centos73 | aanwijzer | nieuwste |
+| batch | Rendering-windows2016 | aanwijzer | nieuwste |
 
 Er zijn andere opties beschikbaar als er extra toepassingen vereist zijn voor de virtuele machines van de groep:
 
@@ -48,21 +48,21 @@ Er zijn andere opties beschikbaar als er extra toepassingen vereist zijn voor de
 
 De toepassingen die worden gebruikt en waarvoor licentie kosten gelden, moeten worden opgegeven in de groeps configuratie.
 
-* Geef de eigenschap `applicationLicenses` op bij [het maken van een groep](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body).  De volgende waarden kunnen worden opgegeven in de matrix met teken reeksen: "Vray", "Arnold", "3dsmax", "Maya".
+* Geef de `applicationLicenses` eigenschap op bij [het maken van een groep](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body).  De volgende waarden kunnen worden opgegeven in de matrix met teken reeksen: "Vray", "Arnold", "3dsmax", "Maya".
 * Wanneer u een of meer toepassingen opgeeft, worden de kosten van deze toepassingen toegevoegd aan de kosten van de Vm's.  Toepassings prijzen worden vermeld op de [pagina met Azure batch prijzen](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering).
 
 > [!NOTE]
-> Als u in plaats daarvan verbinding maakt met een licentie server voor het gebruik van de rendering-toepassingen, geeft u niet de eigenschap `applicationLicenses` op.
+> Als u in plaats daarvan verbinding maakt met een licentie server om de rendering-toepassingen te gebruiken, moet u niet de `applicationLicenses` eigenschap opgeven.
 
 U kunt de Azure Portal of Batch Explorer gebruiken om toepassingen te selecteren en de prijzen van de toepassing weer te geven.
 
-Als er een poging wordt gedaan om een toepassing te gebruiken, maar de toepassing niet is opgegeven in de eigenschap `applicationLicenses` van de pool configuratie of als er geen licentie server is bereikt, mislukt de uitvoering van de toepassing met een licentie fout en afsluit code die niet gelijk is aan nul.
+Als er een poging wordt gedaan om een toepassing te gebruiken, maar de toepassing niet is opgegeven in de eigenschap `applicationLicenses` van de groeps configuratie of als er geen licentie server is bereikt, mislukt de uitvoering van de toepassing met een licentie fout en afsluit code die niet gelijk is aan nul.
 
 ### <a name="environment-variables-for-pre-installed-applications"></a>Omgevings variabelen voor vooraf geïnstalleerde toepassingen
 
 Als u de opdracht regel voor het weer geven van taken wilt maken, moet u de installatie locatie van de uitvoer bare bestanden van de rendering-toepassing opgeven.  Er zijn systeem omgevingsvariabelen gemaakt op de VM-installatie kopieën van Azure Marketplace. deze kunnen worden gebruikt in plaats van dat ze daad werkelijke paden moeten opgeven.  Deze omgevings variabelen zijn een aanvulling op de [standaard batch omgevings variabelen](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables) die voor elke taak zijn gemaakt.
 
-|Toepassing|Uitvoer bare toepassing|Omgevingsvariabele|
+|Toepassing|Uitvoer bare toepassing|Omgevings variabele|
 |---------|---------|---------|
 |Auto Desk 3ds Max 2018|3dsmaxcmdio.exe|3DSMAX_2018_EXEC|
 |Auto Desk 3ds Max 2019|3dsmaxcmdio.exe|3DSMAX_2019_EXEC|

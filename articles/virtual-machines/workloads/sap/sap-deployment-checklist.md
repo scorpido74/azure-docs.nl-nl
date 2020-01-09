@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 097429e9c761d447a7164c813a6c84d3f07f0ab6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: ddba2b70bc9d9e01518cdc0f373fc31224e9c932
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891407"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425937"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-workloads op Azure: controle lijst voor planning en implementatie
 
@@ -77,7 +77,7 @@ Tijdens deze fase plant u de migratie van uw SAP-werk belasting naar het Azure-p
     - Naamgevings regels voor Vm's en andere infrastructuur onderdelen en/of logische namen.
 5.  Micro soft Premier Support-contract. Identificeer uw Technical Account Manager (TAM) van micro soft. Zie SAP-ondersteunings [opmerking #2015553](https://launchpad.support.sap.com/#/notes/2015553)voor SAP-ondersteunings vereisten.
 6.  Het aantal Azure-abonnementen en het kern quotum voor de abonnementen. [Open ondersteunings aanvragen om de quota van Azure-abonnementen naar behoefte te verhogen](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) .
-7.  Gegevens reductie en gegevens migratie plan voor het migreren van SAP-gegevens naar Azure. SAP NetWeaver Systems bevat richt lijnen voor het beperken van het volume van grote hoeveel heden gegevens. Zie [deze SAP-hand leiding](https://help.sap.com/http.svc/rc/2eb2fba8f8b1421c9a37a8d7233da545/7.0/en-US/Data_Management_Guide_Version_70E.PDF) over gegevens beheer in SAP ERP-systemen. Een deel van de inhoud is ook van toepassing op netweave en S/4HANA-systemen in het algemeen.
+7.  Gegevens reductie en gegevens migratie plan voor het migreren van SAP-gegevens naar Azure. SAP NetWeaver Systems bevat richt lijnen voor het beperken van het volume van grote hoeveel heden gegevens. Zie [deze SAP-hand leiding](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2) over gegevens beheer in SAP ERP-systemen. Een deel van de inhoud is ook van toepassing op netweave en S/4HANA-systemen in het algemeen.
 8.  Een geautomatiseerde implementatie methode. Het doel van de automatisering van infrastructuur implementaties in Azure is om op een deterministische manier te implementeren en de deterministische resultaten te verkrijgen. Veel klanten gebruiken scripts op basis van Power shell of CLI. Er zijn echter verschillende open-source technologieën die u kunt gebruiken om Azure-infra structuur voor SAP te implementeren en zelfs SAP-software te installeren. U kunt voor beelden vinden op GitHub:
     - [Geautomatiseerde SAP-implementaties in azure Cloud](https://github.com/Azure/sap-hana)
     - [Installatie van SAP HANA](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
@@ -122,7 +122,7 @@ U wordt aangeraden een volledige HADR-oplossing en beveiligings ontwerp in te st
             -  Plaatsing van de SAP-toepassingslaag en SAP DBMS in verschillende virtuele netwerken van Azure die niet worden gekoppeld, wordt niet ondersteund.
             -  U kunt [toepassings beveiligings groep en regels voor netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview) gebruiken om routes te definiëren tussen de SAP-toepassingslaag en de SAP-DBMS-laag.
         - Zorg ervoor dat [Azure versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) is ingeschakeld op de virtuele machines die worden gebruikt in de SAP-toepassingslaag en de SAP-DBMS-laag. Houd er bij dat er verschillende besturingssysteem niveaus nodig zijn voor de ondersteuning van versneld netwerken in Azure:
-            - Windows Server 2012 R2 of hoger.
+            - Windows Server 2012 R2 of nieuwer.
             - SUSE Linux 12 SP3 of hoger.
             - RHEL 7,4 of hoger.
             - Oracle Linux 7,5. Als u de RHCKL-kernel gebruikt, is release 3.10.0-862.13.1. EL7 vereist. Als u de Oracle UEK-kernel gebruikt, is release 5 vereist.
@@ -244,8 +244,8 @@ Zorg ervoor dat u tijdens de Go-Live-fase de playbooks volgt die u hebt ontwikke
         - Gemiddelde CPU-tijd, elke afzonderlijke processor (128 processors op M128 Vm's)
         - CPU-kerneltijd, elke afzonderlijke processor
         - CPU-gebruikers tijd, elke afzonderlijke processor
-    - Geheugenmetabase.
-        - Beschikbaar geheugen
+    - Geheugen.
+        - Vrij geheugen
         - Geheugen pagina in per seconde
         - Geheugen pagina uit per seconde
     - Schijf.

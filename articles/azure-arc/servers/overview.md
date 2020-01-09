@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, Power shell, desired state Configuration, updat
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: d091b89342570b73ccde5fe496a3432102617918
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 06e3b490f4f9cef64ae8bca5aed4d0518f10ba0e
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951425"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659618"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>Wat is Azure Arc voor servers?
 
@@ -41,7 +41,7 @@ De open bare preview-versie is ontworpen voor evaluatie doeleinden en mag niet w
 
 ## <a name="azure-subscription-and-service-limits"></a>Azure-abonnement en service limieten
 
-Lees de Azure Resource Manager limieten en plan het aantal computers dat moet worden verbonden volgens de richt lijn die wordt vermeld voor het [abonnement](../../azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)en voor de [resource groepen](../../azure-subscription-service-limits.md#resource-group-limits). In het bijzonder is er standaard een limiet van 800 servers per resource groep.
+Lees de Azure Resource Manager limieten en plan het aantal computers dat moet worden verbonden volgens de richt lijn die wordt vermeld voor het [abonnement](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)en voor de [resource groepen](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits). In het bijzonder is er standaard een limiet van 800 servers per resource groep.
 
 ## <a name="networking-configuration"></a>Netwerk configuratie
 
@@ -107,7 +107,7 @@ az provider register --namespace 'Microsoft.HybridCompute'
 az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
-U kunt de resource providers ook registreren met behulp van de portal door de stappen onder [Azure Portal](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal)te volgen.
+U kunt de resource providers ook registreren met behulp van de portal door de stappen onder [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)te volgen.
 
 ## <a name="machine-changes-after-installing-the-agent"></a>Computer wijzigingen na de installatie van de agent
 

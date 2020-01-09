@@ -1,26 +1,15 @@
 ---
-title: Een Linux Service Fabric-cluster maken in Azure | Microsoft Docs
+title: Een Linux Service Fabric-cluster maken in azure
 description: Informatie over hoe u een Linux Service Fabric-cluster implementeert in een bestaand virtueel Azure-netwerk met behulp van Azure CLI.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/14/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 2ba157d7bf2e6effbaf7ab129dbbbfd1ca8b9667
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 059f0f4b1eac9546f1adc05bf1f2799affc0dd8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598852"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465406"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Een Linux Service Fabric-cluster implementeren in een virtueel Azure-netwerk
 
@@ -30,7 +19,7 @@ In dit artikel leert u hoe u een Linux-Service Fabric cluster kunt implementeren
 
 Voordat u begint:
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Installeer de [Service Fabric CLI](service-fabric-cli.md)
 * Installeer de [Azure CLI](/cli/azure/install-azure-cli)
 * Lees [overzicht van Azure-clusters](service-fabric-azure-clusters-overview.md) voor meer informatie over de belangrijkste concepten van clusters
@@ -53,13 +42,13 @@ In de resource **Microsoft.ServiceFabric/clusters** wordt een Linux-cluster geï
 
 * drie knooppunttypen
 * vijf knoop punten in het primaire knooppunt type (configureerbaar in de sjabloon parameters), één knoop punt in elk van de andere knooppunt typen
-* Besturingssysteem: Ubuntu 16.04 LTS (configureerbaar in de sjabloonparameters)
+* een besturingssysteem: Ubuntu 16.04 LTS (configureerbaar in de sjabloonparameters)
 * beveiligd met een certificaat (configureerbaar in de sjabloonparameters)
-* een ingeschakelde [DNS-service](service-fabric-dnsservice.md)
+* [DNS-service](service-fabric-dnsservice.md) is ingeschakeld
 * een bronzen [duurzaamheidsniveau](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (configureerbaar in de sjabloonparameters)
 * een zilveren [betrouwbaarheidsniveau](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (configureerbaar in de sjabloonparameters)
-* het eindpunt van de clientverbinding: 19000 (configureerbaar in de sjabloonparameters)
-* het eindpunt van de HTTP-gateway: 19080 (configureerbaar in de sjabloonparameters)
+* eindpunt van de clientverbinding: 19000 (configureerbaar in de sjabloonparameters)
+* eindpunt van de HTTP-gateway: 19080 (configureerbaar in de sjabloonparameters)
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
@@ -74,7 +63,7 @@ In de resource **Microsoft.Network/loadBalancers** wordt een load balancer gecon
 
 De namen van het virtuele netwerk en het subnet worden gedeclareerd in de sjabloonparameters.  Adresruimten van het virtuele netwerk en subnet worden ook gedeclareerd in de sjabloonparameters en geconfigureerd in de resource **Microsoft.Network/virtualNetworks**:
 
-* adresruimte van virtueel netwerk: 10.0.0.0/16
+* virtuele netwerkadresruimte: 10.0.0.0/16
 * Service Fabric-subnetadresruimte: 10.0.2.0/24
 
 Als er andere toepassingspoorten nodig zijn, moet u de resource Microsoft.Network/loadBalancers zo wijzigen dat verkeer kan binnenkomen.
@@ -90,7 +79,7 @@ Het [AzureDeploy. para][parameters] meters-parameter bestand declareert veel waa
 |clusterName|mysfcluster123| De naam van het cluster. |
 |location|southcentralus| De locatie van het cluster. |
 |certificateThumbprint|| <p>De waarde moet leeg zijn als u een zelfondertekend certificaat maakt of als u een certificaatbestand opgeeft.</p><p>Als u een bestaand certificaat wilt gebruiken dat u eerder hebt geüpload naar een sleutelkluis, vult u de SHA1-waarde van de certificaatvingerafdruk in. Bijvoorbeeld 6190390162C988701DB5676EB81083EA608DCCF3. </p>|
-|certificateUrlValue|| <p>De waarde moet leeg zijn als u een zelfondertekend certificaat maakt of als u een certificaatbestand opgeeft.</p><p>Als u een bestaand certificaat wilt gebruiken dat u eerder hebt geüpload naar een sleutelkluis, vult u de URL van het certificaat in. Bijvoorbeeld ' https:\//mykeyvault.Vault.Azure.net:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346 '.</p>|
+|certificateUrlValue|| <p>De waarde moet leeg zijn als u een zelfondertekend certificaat maakt of als u een certificaatbestand opgeeft.</p><p>Als u een bestaand certificaat wilt gebruiken dat u eerder hebt geüpload naar een sleutelkluis, vult u de URL van het certificaat in. Bijvoorbeeld ' https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346 '.</p>|
 |sourceVaultValue||<p>De waarde moet leeg zijn als u een zelfondertekend certificaat maakt of als u een certificaatbestand opgeeft.</p><p>Als u een bestaand certificaat wilt gebruiken dat u eerder hebt geüpload naar een sleutelkluis, vult u de waarde van de bronkluis in. Bijvoorbeeld /subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT.</p>|
 
 <a id="createvaultandcert" name="createvaultandcert_anchor"></a>

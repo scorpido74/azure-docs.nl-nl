@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 09/05/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 706bd9c141b191632acee1c04745d64baaf50ee5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 05ed7903cafbb265f23ba74a24ee0498be0effe9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012062"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448975"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Wat is de Anomaly Detector-API?
 
@@ -72,8 +72,12 @@ Nadat u zich hebt aangemeld:
 
 ## <a name="algorithms"></a>Algoritmen
 
-* Raadpleeg de technische blogs [Inleiding tot Azure anomalie detectie-API](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) en [overzicht van het SR-CNN-algoritme in azure anomalie detector](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798) over de algoritmen onder de schermen.
-* Raadpleeg deze service voor anomalie detectie van de werk [tijd van micro soft](https://arxiv.org/abs/1906.03821) (goedgekeurd door KDD 2019) voor de geavanceerde SR-CNN-algoritmen die zijn ontwikkeld door micro soft.
+* Raadpleeg de volgende technische blogs voor informatie over de gebruikte algoritmen:
+    * [Introductie van de Azure anomalie detector-API](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162)
+    * [Overzicht van de SR-CNN-algoritme in azure anomalie detectie](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798)
+
+U kunt de [afwijkings detectie service voor de papieren time-series lezen bij micro soft](https://arxiv.org/abs/1906.03821) (geaccepteerd door KDD 2019) voor meer informatie over de CNN-algoritmen die zijn ontwikkeld door micro soft.
+
 
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
 

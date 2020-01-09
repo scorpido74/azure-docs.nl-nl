@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: ad4a30b9bcd537a59f3d2ef17d3d2f215c1f4b98
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5c51eff77c0375491f4376f12c9ff959f033e2ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848885"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425374"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Beveiligings controles inschakelen voor Azure Active Directory Domain Services
 
@@ -70,7 +70,7 @@ De volgende tabel geeft een overzicht van scenario's voor elk doel bron type.
 
 | Doel resource | Scenario |
 |:---|:---|
-|Azure Storage| Dit doel moet worden gebruikt wanneer uw primaire behoefte is om beveiligings controle gebeurtenissen voor archiverings doeleinden op te slaan. Andere doelen kunnen worden gebruikt voor archiverings doeleinden, maar deze doelen bieden mogelijkheden die verder gaan dan de primaire nood zaak van archiveren. [Maak een Azure-opslag account](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal#create-a-storage-account-1)voordat u de beveiligings controle gebeurtenissen van Azure AD DS inschakelt.|
+|Azure Storage| Dit doel moet worden gebruikt wanneer uw primaire behoefte is om beveiligings controle gebeurtenissen voor archiverings doeleinden op te slaan. Andere doelen kunnen worden gebruikt voor archiverings doeleinden, maar deze doelen bieden mogelijkheden die verder gaan dan de primaire nood zaak van archiveren. Voordat u de beveiligings controle gebeurtenissen van Azure AD DS inschakelt, moet u eerst [een Azure Storage account maken](../storage/common/storage-account-create.md).|
 |Azure Event Hubs| Dit doel moet worden gebruikt wanneer uw primaire behoefte is om beveiligings controle gebeurtenissen te delen met aanvullende software, zoals gegevens analyse software of beveiligings gegevens & Event Management-software (SIEM). Voordat u Azure AD DS beveiligings controle gebeurtenissen inschakelt, [maakt u een event hub met behulp van Azure Portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
 |Azure Log Analytics Workspace| Dit doel moet worden gebruikt wanneer uw primaire behoefte is om veilige controles van de Azure Portal rechtstreeks te analyseren en te controleren. Voordat u Azure AD DS beveiligings controle gebeurtenissen inschakelt, [maakt u een log Analytics-werk ruimte in de Azure Portal.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
 

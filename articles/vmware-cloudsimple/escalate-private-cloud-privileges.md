@@ -1,5 +1,6 @@
 ---
-title: Persoonlijke Cloud bevoegdheden escaleren-Azure VMware-oplossing op CloudSimple
+title: Persoonlijke Cloud bevoegdheden escaleren
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Beschrijft hoe u bevoegdheden in uw privécloud kunt escaleren voor beheer functies in vCenter
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b54f1d8c0705488c53925d097433e77aed3eac72
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 3ee722f88f766178dd658600893b4497bf611be9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617619"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372768"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Persoonlijke Cloud vCenter-bevoegdheden escaleren vanuit de CloudSimple-Portal
 
@@ -38,7 +39,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
     ![VSphere-bevoegdheid wijzigen](media/escalate-private-cloud-privilege.png)
 
-4. Selecteer het gebruikers type vSphere.  Alleen `CloudOwner@cloudsimple.local` lokale gebruikers kunnen worden geëscaleerd.
+4. Selecteer het gebruikers type vSphere.  Alleen `CloudOwner@cloudsimple.local` lokale gebruiker kan worden geëscaleerd.
 
 5. Selecteer de tijds interval voor escaleren in de vervolg keuzelijst. Kies de kortste periode waarmee u de taak kunt volt ooien.
 
@@ -59,7 +60,7 @@ De escalatie van bevoegdheden begint en eindigt tot het einde van het geselectee
 
 Als u meer tijd nodig hebt om uw taken te volt ooien, kunt u de escalatie periode van de bevoegdheid uitbreiden.  Kies het extra tijds interval voor het escaleren waarmee u de beheer taken kunt volt ooien.
 
-1. Selecteer op de **resources** > **persoonlijke** Clouds in de CloudSimple-Portal de privécloud waarvoor u de escalatie van bevoegdheden wilt uitbreiden.
+1. Selecteer op de **Resources** > **persoonlijke Clouds** in de CloudSimple-Portal de privécloud waarvoor u de escalatie van bevoegdheden wilt uitbreiden.
 
 2. Klik onder aan het tabblad samen vatting op **uitbrei ding van bevoegdheden uitbreiden**.
 
@@ -73,9 +74,9 @@ Als u meer tijd nodig hebt om uw taken te volt ooien, kunt u de escalatie period
 
 Als uw beheer taken zijn voltooid, moet u uw bevoegdheden deactiveren.  
 
-1. Selecteer op de **resources** > **persoonlijke** Clouds in de CloudSimple-Portal de privécloud waarvoor u de bevoegdheden wilt deescaleren.
+1. Selecteer op de **Resources** > **persoonlijke Clouds** in de CloudSimple-Portal de privécloud waarvoor u de bevoegdheden wilt deescaleren.
 
-2. Klikop deactiveren.
+2. Klik op **deactiveren**.
 
 3. Klik op **OK**.
 

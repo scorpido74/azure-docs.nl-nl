@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 067ac0f7f000f749f61d302db4c5c6b856e698a2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 5618757f4bf5eaf1afc5ef0ce1735eb4ae94e1d2
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74875563"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75663155"
 ---
 Galerie met gedeelde afbeeldingen is een service die u helpt bij het bouwen van structuur en organisatie rond uw beheerde installatie kopieën. Galerieën met gedeelde afbeeldingen bieden:
 
@@ -144,7 +144,7 @@ De regio's waarvan een versie van de gedeelde installatie kopie wordt gereplicee
 
 ![Afbeelding die laat zien hoe u installatie kopieën kunt repliceren](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Access
+## <a name="access"></a>Toegang
 
 Aangezien de galerie met gedeelde afbeeldingen, de afbeeldings definitie en de versie van de installatie kopie alle resources zijn, kunnen ze worden gedeeld met behulp van de ingebouwde systeem eigen Azure RBAC-besturings elementen. Met RBAC kunt u deze resources delen met andere gebruikers, service-principals en groepen. U kunt zelfs toegang delen voor personen buiten de Tenant waarin deze zijn gemaakt. Zodra een gebruiker toegang heeft tot de versie van de gedeelde installatie kopie, kunnen ze een virtuele machine of een VM-Schaalset implementeren.  Dit is de matrix voor delen waarmee u begrijpt waarover de gebruiker toegang krijgt:
 
@@ -222,7 +222,7 @@ U kunt een resource voor de galerie met gedeelde afbeeldingen maken met behulp v
 
 Volg de onderstaande stappen om alle resources van de gedeelde installatie kopie galerie weer te geven in abonnementen waartoe u toegang hebt op de Azure Portal:
 
-1. Open de [Azure-portal](https://portal.azure.com).
+1. Open de [Azure Portal](https://portal.azure.com).
 1. Ga naar **alle resources**.
 1. Selecteer alle abonnementen waaronder u alle resources wilt weer geven.
 1. Zoek naar bronnen van het type **persoonlijke galerie**.
@@ -239,9 +239,9 @@ Volg de onderstaande stappen om alle resources van de gedeelde installatie kopie
  
 Ja. Er zijn drie scenario's die zijn gebaseerd op de typen installatie kopieën die u mogelijk hebt.
 
- Scenario 1: als u een beheerde installatie kopie hebt, kunt u een afbeeldings definitie en installatie kopie versie van de afbeelding maken.
+ Scenario 1: als u een beheerde installatie kopie hebt in hetzelfde abonnement als uw SIG, kunt u een afbeeldings definitie en een installatie kopie versie van de afbeelding maken.
 
- Scenario 2: als u een niet-beheerde afbeelding hebt, kunt u er een beheerde installatie kopie van maken en vervolgens een installatie kopie en afbeeldings versie van de afbeelding maken. 
+ Scenario 2: als u een niet-beheerde installatie kopie hebt in hetzelfde abonnement als uw SIG, kunt u er een beheerde installatie kopie van maken en vervolgens een installatie kopie-en afbeeldings versie maken. 
 
  Scenario 3: als u een VHD in het lokale bestands systeem hebt, moet u de VHD uploaden naar een beheerde installatie kopie, waarna u een installatie kopie en afbeeldings versie van de virtuele harde schijf kunt maken.
 

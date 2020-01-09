@@ -1,7 +1,7 @@
 ---
 title: SQL-transformatie toepassen
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module voor het Toep assen van SQL-trans formatie in Azure Machine Learning-service om een SQLite-query uit te voeren op invoer gegevens sets om de gegevens te transformeren.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module SQL-trans formatie Toep assen in Azure Machine Learning om een SQLite-query uit te voeren op invoer gegevens sets om de gegevens te transformeren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 62c61d589324fe8364fe4630b3cf2cc64e1860b1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493920"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456530"
 ---
 # <a name="apply-sql-transformation"></a>SQL-transformatie toepassen
 
@@ -64,4 +64,4 @@ Naast de lijst met niet-ondersteunde functies die beschikbaar zijn op de offici√
     
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

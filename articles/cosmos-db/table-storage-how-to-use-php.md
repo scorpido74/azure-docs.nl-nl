@@ -1,5 +1,5 @@
 ---
-title: De Azure Storage-tabelservice of de Azure Cosmos DB Table-API gebruiken in PHP
+title: Azure Storage Table service of Azure Cosmos DB Table-API van PHP gebruiken
 description: Sla gestructureerde gegevens op in de cloud met Azure Table Storage of de Azure Cosmos DB Table-API.
 author: wmengmsft
 ms.author: wmeng
@@ -8,19 +8,19 @@ ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
-ms.openlocfilehash: aac6755ed90c795b8fff09d9ffde33878ad21a32
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 1dbf5b02c99c8baca7c0b4f918cb392ddaf37c96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130497"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444769"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>De Azure Storage-tabelservice of de Azure Cosmos DB Table-API gebruiken in PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
 ## <a name="overview"></a>Overzicht
-In deze handleiding wordt beschreven hoe u veelvoorkomende scenario's uitvoert met de Azure Storage-tabelservice en de Azure Cosmos DB Table-API. De voorbeelden zijn geschreven in PHP en maken gebruik van de [clientbibliotheek voor PHP voor Azure Storage-tabellen][download]. De volgende scenario's worden behandeld: **een tabel maken en verwijderen** en **entiteiten in een tabel invoegen, verwijderen en hierop query's uitvoeren**. Zie het gedeelte [Volgende stappen](#next-steps) voor meer informatie over de Azure-tabelservice.
+In deze handleiding wordt beschreven hoe u veelvoorkomende scenario's uitvoert met de Azure Storage-tabelservice en de Azure Cosmos DB Table-API. De voor beelden zijn geschreven in PHP en gebruiken de [Azure Storage Table php-client bibliotheek][download]. De volgende scenario's worden behandeld: **een tabel maken en verwijderen** en **entiteiten in een tabel invoegen, verwijderen en hierop query's uitvoeren**. Zie het gedeelte [Volgende stappen](#next-steps) voor meer informatie over de Azure-tabelservice.
 
 
 ## <a name="create-an-azure-service-account"></a>Een Azure-serviceaccount maken
@@ -62,7 +62,7 @@ In deze handleiding gebruikt u de Azure Storage-tabelservice of Azure Cosmos DB-
 ## <a name="add-required-references"></a>Vereiste verwijzingen toevoegen
 Als u de Azure Storage-tabelservice of Azure Cosmos DB-API's wilt gebruiken, moet u het volgende doen:
 
-* Maak een verwijzing naar het autoloaderbestand met de instructie [require_once][require_once] en
+* Verwijs naar het autoloader-bestand met behulp van de [require_once][require_once] -instructie en
 * een verwijzing naar alle klassen die u gebruikt.
 
 In het volgende voorbeeld wordt getoond hoe u het autoloaderbestand opneemt en een verwijzing maakt naar de klasse **TableRestProxy**.
@@ -95,7 +95,7 @@ U kunt als volgt toegang krijgen tot de opslagemulator:
 UseDevelopmentStorage = true
 ```
 
-Als u een client voor de Azure Storage-tabelservice of een Azure Cosmos DB-client wilt maken, moet u de klasse **TableRestProxy** gebruiken. U kunt:
+Als u een client voor de Azure Storage-tabelservice of een Azure Cosmos DB-client wilt maken, moet u de klasse **TableRestProxy** gebruiken. U kunt het volgende doen:
 
 * De verbindingsreeks rechtstreeks aan deze klasse doorgeven of
 * De **CloudConfigurationManager (CCM)** gebruiken om meerdere externe bronnen te controleren op de verbindingsreeks:
@@ -113,7 +113,7 @@ $tableClient = TableRestProxy::createTableService($connectionString);
 ```
 
 ## <a name="create-a-table"></a>Een tabel maken
-Met het object **TableRestProxy** kunt u een tabel maken via de methode **createTable**. Bij het maken van een tabel kunt u de time-out voor de tabelservice instellen. (Zie [Time-outs instellen voor tabelservicebewerkingen][table-service-timeouts] voor meer informatie over de time-out voor de tabelservice.)
+Met het object **TableRestProxy** kunt u een tabel maken via de methode **createTable**. Bij het maken van een tabel kunt u de time-out voor de tabelservice instellen. (Zie [time-outs instellen voor tabel service bewerkingen][table-service-timeouts]voor meer informatie over de Table service time-out.)
 
 ```php
 require_once 'vendor\autoload.php';
@@ -137,10 +137,10 @@ catch(ServiceException $e){
 }
 ```
 
-Zie [Het gegevensmodel van de tabelservice][table-data-model] voor meer informatie over beperkingen voor tabelnamen.
+Zie [inzicht in het tabel service gegevens model][table-data-model]voor meer informatie over de beperkingen voor tabel namen.
 
 ## <a name="add-an-entity-to-a-table"></a>Een entiteit toevoegen aan een tabel
-Als u een entiteit wilt toevoegen aan een tabel, maakt u een nieuw object **Entity** en geeft u dit door aan **TableRestProxy->insertEntity**. Wanneer u een entiteit maakt, moet u een `PartitionKey` en `RowKey` opgeven. Dit zijn de unieke id's voor een entiteit en zijn waarden waarop sneller query's kunnen worden uitgevoerd dan op andere entiteitseigenschappen. Het systeem maakt gebruik van `PartitionKey` om de entiteiten van de tabel automatisch over veel Storage-knooppunten te verdelen. Entiteiten met dezelfde `PartitionKey` worden op hetzelfde knooppunt opgeslagen. (Bewerkingen in meerdere entiteiten die zijn opgeslagen op hetzelfde knooppunt kunnen beter worden uitgevoerd dan bewerkingen in entiteiten die zijn opgeslagen op verschillende knooppunten.) De `RowKey` is de unieke id van een entiteit binnen een partitie.
+Als u een entiteit wilt toevoegen aan een tabel, maakt u een nieuw object **Entity** en geeft u dit door aan **TableRestProxy->insertEntity**. Wanneer u een entiteit maakt, moet u een `PartitionKey` en `RowKey` opgeven. Dit zijn de unieke id's voor een entiteit en zijn waarden waarop sneller query's kunnen worden uitgevoerd dan op andere entiteitseigenschappen. Het systeem maakt gebruik van `PartitionKey` om de entiteiten van de tabel automatisch over veel Storage-knooppunten te verdelen. Entiteiten met dezelfde `PartitionKey` worden op hetzelfde knooppunt opgeslagen. (Bewerkingen op meerdere entiteiten die op hetzelfde knoop punt zijn opgeslagen, kunnen beter worden uitgevoerd dan op entiteiten die op verschillende knoop punten zijn opgeslagen.) De `RowKey` is de unieke ID van een entiteit binnen een partitie.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -174,7 +174,7 @@ catch(ServiceException $e){
 }
 ```
 
-Zie [Het gegevensmodel van de tabelservice][table-data-model] voor meer informatie over tabeleigenschappen en -typen.
+Zie [inzicht in het tabel service gegevens model][table-data-model]voor meer informatie over tabel eigenschappen en-typen.
 
 U kunt met de klasse **TableRestProxy** op twee manieren entiteiten invoegen: **insertOrMergeEntity** en **insertOrReplaceEntity**. Als u deze methoden wilt gebruiken, maakt u een nieuwe **entiteit** en geeft u deze als parameter door aan een van de methoden. Met beide methoden wordt de entiteit ingevoegd, als deze nog niet bestaat. Als de entiteit al bestaat, worden met **insertOrMergeEntity** de eigenschapswaarden bijgewerkt als de eigenschappen al bestaan en worden nieuwe eigenschappen toegevoegd als deze nog niet bestaan. Met **insertOrReplaceEntity** wordt de bestaande entiteit volledig vervangen. In het volgende voorbeeld wordt getoond hoe u **insertOrMergeEntity** gebruikt. Als de entiteit met `PartitionKey` 'tasksSeattle' en `RowKey` '1' nog niet bestaat, wordt deze ingevoegd. Als deze echter eerder is ingevoegd (zoals weergegeven in het bovenstaande voorbeeld), wordt de eigenschap `DueDate` bijgewerkt en wordt de eigenschap `Status` toegevoegd. De eigenschappen `Description` en `Location` worden ook bijgewerkt, maar met waarden waardoor ze feitelijk ongewijzigd blijven. Als deze laatste twee eigenschappen niet zouden zijn toegevoegd, zoals in het voorbeeld, maar zouden voorkomen in de doelentiteit, zouden de bestaande waarden voor de eigenschappen ongewijzigd blijven.
 
@@ -248,7 +248,7 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 ```
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Alle entiteiten in een partitie ophalen
-Entiteitsquery's worden samengesteld met filters (zie [Query's uitvoeren op tabellen en entiteiten][filters] voor meer informatie). Als u alle entiteiten in de partitie wilt ophalen, gebruikt u het filter 'PartitionKey eq *partition_name*'. In het volgende voorbeeld wordt getoond hoe u alle entiteiten in de partitie `tasksSeattle` ophaalt door een filter door te geven aan de methode **queryEntities**.
+Entiteits query's worden gemaakt met behulp van filters (Zie [Query's uitvoeren in tabellen en entiteiten][filters]) voor meer informatie. Als u alle entiteiten in de partitie wilt ophalen, gebruikt u het filter 'PartitionKey eq *partition_name*'. In het volgende voorbeeld wordt getoond hoe u alle entiteiten in de partitie `tasksSeattle` ophaalt door een filter door te geven aan de methode **queryEntities**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -281,7 +281,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entities-in-a-partition"></a>Een subset van entiteiten in een partitie ophalen
-Het patroon uit het vorige voorbeeld kan ook worden gebruikt voor het ophalen van een subset van entiteiten in een partitie. De subset van entiteiten die u ophaalt, wordt bepaald door het filter dat u gebruikt (zie [Query's uitvoeren op tabellen en entiteiten][filters] voor meer informatie). In het volgende voorbeeld wordt getoond hoe u een filter gebruikt voor het ophalen van alle entiteiten met een specifieke `Location` en een `DueDate` die vroeger is dan een opgegeven datum.
+Het patroon uit het vorige voorbeeld kan ook worden gebruikt voor het ophalen van een subset van entiteiten in een partitie. De subset van entiteiten die u ophaalt, wordt bepaald door het filter dat u gebruikt (Zie [Query's uitvoeren in tabellen en entiteiten][filters]) voor meer informatie. In het volgende voor beeld ziet u hoe u een filter kunt gebruiken om alle entiteiten op te halen met een specifieke `Location` en een `DueDate` kleiner dan een opgegeven datum.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -472,7 +472,7 @@ catch(ServiceException $e){
 }
 ```
 
-Zie [Entiteitsgroepstransacties uitvoeren][entity-group-transactions] voor meer informatie over batchbewerkingen voor tabellen.
+Zie [trans acties voor entiteits groepen][entity-group-transactions]voor meer informatie over het uitvoeren van batch tabel bewerkingen.
 
 ## <a name="delete-a-table"></a>Een tabel verwijderen
 En als u ten slotte een tabel wilt verwijderen, geeft u de tabelnaam door aan de methode **TableRestProxy->deleteTable**.

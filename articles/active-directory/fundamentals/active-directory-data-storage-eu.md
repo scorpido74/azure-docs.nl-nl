@@ -1,5 +1,5 @@
 ---
-title: Identiteit gegevensopslag voor Europese klanten - Azure Active Directory | Microsoft Docs
+title: Identiteits gegevens opslag voor Europese klanten-Azure AD
 description: Meer informatie over waar identiteit gerelateerde gegevens in Azure Active Directory worden opgeslagen voor de Europese klanten.
 services: active-directory
 author: msaburnley
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 178f81cf42e5c57be4a0b69ada6560d46951a3a3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 7360b11f41cc08c2beb3ffa227e1658881798502
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942851"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423004"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Identiteit gegevensopslag voor Europese klanten in Azure Active Directory
 Identiteits gegevens worden opgeslagen door Azure AD op een geografische locatie op basis van het adres van uw organisatie bij het abonneren op een micro soft online service, zoals Office 365 en Azure. Voor informatie over waar uw identiteits gegevens worden opgeslagen, kunt u de sectie [waar bevinden zich uw gegevens?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) in het micro soft vertrouwens centrum gebruiken.
@@ -30,11 +30,11 @@ Voor klanten die een adres in Europa hebben geleverd, houdt Azure AD de meeste i
 - Push meldingen met behulp van de Microsoft Authenticator-app, afkomstig van Amerikaanse data centers. Daarnaast kunnen specifieke services van apparaten ook worden afgespeeld en deze services zijn mogelijk buiten Europa.
 - OATH-codes worden altijd gevalideerd in de Verenigde Staten. 
 
-Voor meer informatie over welke gebruikers gegevens worden verzameld door Azure multi-factor Authentication-Server (MFA server) en Azure MFA in de Cloud, raadpleegt u [Azure multi-factor Authentication-gebruikers gegevens verzameling](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection).
+Voor meer informatie over welke gebruikers gegevens worden verzameld door Azure Multi-Factor Authentication-server (MFA-server) en Azure MFA in de Cloud, Zie [azure multi-factor Authentication gebruikers gegevens verzamelen](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection).
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 
-Azure AD B2C-beleids configuratie gegevens en sleutel containers worden opgeslagen in de data centers van de VS. Deze bevatten geen persoonlijke gegevens van de gebruiker. Voor meer informatie over beleids configuraties raadpleegt u [de Azure Active Directory B2C: Het artikel ingebouwde beleids](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) regels.
+Azure AD B2C-beleids configuratie gegevens en sleutel containers worden opgeslagen in de data centers van de VS. Deze bevatten geen persoonlijke gegevens van de gebruiker. Zie voor meer informatie over configuraties voor beleid het artikel [Azure Active Directory B2C: ingebouwde beleidsregels](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies).
 
 ## <a name="microsoft-azure-active-directory-b2b-azure-ad-b2b"></a>Microsoft Azure Active Directory B2B (Azure AD B2B) 
     
@@ -50,7 +50,7 @@ Azure Active Directory Domain Services slaat gebruikersgegevens op dezelfde loca
 - Lijst met goedgekeurde federatieve domeinen voor toepassing
 - Open bare sleutel voor token ondertekening van toepassing 
 
-Zie voor meer informatie over Federatie in micro soft Exchange Server de [Federatie: Exchange 2013 Help](https://docs.microsoft.com/exchange/federation-exchange-2013-help) -artikel.
+Zie het artikel [Federation: Exchange 2013 Help](https://docs.microsoft.com/exchange/federation-exchange-2013-help) voor meer informatie over Federatie in micro soft Exchange Server.
 
 
 ## <a name="other-considerations"></a>Andere overwegingen

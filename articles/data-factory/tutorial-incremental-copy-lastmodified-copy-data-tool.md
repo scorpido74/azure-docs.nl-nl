@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 1/24/2019
-ms.openlocfilehash: 5ff3ade800b2a3474a68a34dc77d0c9b009e8822
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 05696ae2fed31c267aa37013fac32db0916e24bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923144"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439323"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Incrementeel nieuwe en gewijzigde bestanden op basis van LastModifiedDate kopiëren met behulp van het hulp programma Gegevens kopiëren
 
@@ -31,9 +31,9 @@ Als u dit doet, worden alle bestanden in het bron archief gescand, wordt het bes
 In deze zelf studie voert u de volgende taken uit:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maakt.
+> * Een gegevensfactory maken.
 > * Het hulpprogramma Copy Data gebruiken om een pijplijn te maken.
-> * De uitvoering van de pijplijn en van de activiteit controleren.
+> * De uitvoering van de pijplijn en van de activiteit controleren
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -48,7 +48,7 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
 2. Maak een container met de naam **Destination**. 
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 1. Selecteer in het menu links de optie **een resource maken** > **gegevens en analyses** > **Data Factory**: 
    
@@ -68,7 +68,7 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
     * Selecteer **Nieuwe maken** en voer de naam van een resourcegroep in. 
          
-    Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/resource-group-overview.md) voor meer informatie.
+    Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.
 
 5. Selecteer **v2**onder **versie**.
 6. Selecteer bij **Locatie** de locatie voor de data factory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevens archieven (bijvoorbeeld Azure Storage en SQL Database) en berekeningen (bijvoorbeeld Azure HDInsight) die door uw data factory worden gebruikt, kunnen zich op andere locaties en regio's bevinden.

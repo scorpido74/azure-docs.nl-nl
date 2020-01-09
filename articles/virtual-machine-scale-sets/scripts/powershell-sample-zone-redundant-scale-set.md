@@ -1,6 +1,6 @@
 ---
-title: Voorbeelden van Azure PowerShell - Zone-redundante schaalset | Microsoft Docs
-description: Voorbeelden van Azure PowerShell
+title: Voor beelden van Azure PowerShell-zone-redundante schaalset
+description: Met dit script maakt u een virtuele-machineschaalset met Windows Server 2016 in meerdere beschikbaarheidszones.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,19 +16,19 @@ ms.workload: na
 ms.date: 04/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 00dd839c3ef8369490ffdd8840d6d4d8c69c76b5
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 424b2d84239c6efb4e2ab5a9e20e4ba9595051c4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983879"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452451"
 ---
 # <a name="create-a-zone-redundant-virtual-machine-scale-set-with-powershell"></a>Een zone-redundante virtuele-machineschaalset maken met PowerShell
 Met dit script maakt u een virtuele-machineschaalset met Windows Server 2016 in meerdere beschikbaarheidszones. Nadat het script is uitgevoerd, hebt u via RDP toegang tot de virtuele machine.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="sample-script"></a>Voorbeeldscript
 

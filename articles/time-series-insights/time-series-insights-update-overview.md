@@ -1,6 +1,6 @@
 ---
 title: 'Overzicht: wat is Azure Time Series Insights preview? -Azure Time Series Insights | Microsoft Docs'
-description: Meer informatie over belang rijke verbeteringen in Azure Time Series Insights preview.
+description: Meer informatie over wijzigingen, verbeteringen en functies in Azure Time Series Insights preview.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 10/29/2019
+ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: cde846152ff183db857b8a0549fafd24700ffff9
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f6f6039be1d8837b4b1fe4eb225289f4cd1642cb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014747"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452476"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Wat is Azure Time Series Insights preview?
 
@@ -82,7 +82,7 @@ Met de introductie van deze essentiële industriële IoT-mogelijkheden biedt Tim
 | Time Series-model voor het waarmee van ruwe telemetrie en het afleiden van inzichten op basis van assets | U kunt het time series-model gebruiken om instanties, hiërarchieën, typen en variabelen te maken voor uw time series-gegevens. Zie [Time Series model](./time-series-insights-update-tsm.md)voor meer informatie over time series-modellen.  |
 | Soepele en doorlopende integratie met andere gegevens oplossingen | Gegevens in Time Series Insights koel opslagplaats worden [opgeslagen](./time-series-insights-update-storage-ingress.md) in open-source Apache Parquet-bestanden. Dit maakt gegevens integratie mogelijk met andere gegevens oplossingen, 1e of derde partij, voor scenario's waarin business intelligence, geavanceerde machine learning en predictive analytics zijn. |
 | Gegevens worden bijna in realtime verkend | De [verkenner van Azure Time Series Insights (preview)](./time-series-insights-update-explorer.md) biedt gebruikers visualisatie voor alle gegevens die door de opnamepijplijn worden geleid. Nadat u verbinding hebt gemaakt met een gebeurtenis bron, kunt u gebeurtenis gegevens weer geven, verkennen en er query's op uitvoeren. Op deze manier kunt u nagaan of een apparaat gegevens naar verwachting verzendt. U kunt IoT-apparaten ook controleren op status, productiviteit en algehele effectiviteit. | 
-| Uitbreid baarheid en integratie | De integratie van de Azure Time Series Insights Power BI-connector is rechtstreeks beschikbaar in de time series Explorer-gebruikers ervaring via de optie **exporteren** , zodat klanten de tijdreeks query's die ze in onze gebruikers ervaring maken, rechtstreeks kunnen exporteren in het Power BI bureau blad en de tijd reeks grafieken naast andere BI-analyses weer te geven. Hiermee opent u de deur van een nieuwe klasse van scenario's voor industriële IoT-ondernemingen die in Power BI hebben geïnvesteerd door één deel venster van glas te bieden over analyses van verschillende gegevens bronnen, waaronder IoT-tijd reeksen. | 
+| Uitbreid baarheid en integratie | De integratie van de Azure Time Series Insights Power BI-connector is rechtstreeks beschikbaar in de tijd reeks Verkenner-gebruikers ervaring via de optie **exporteren** , zodat klanten de tijdreeks query's die ze in onze gebruikers ervaring maken rechtstreeks naar Power bi het bureau blad kunnen exporteren en hun tijd reeks grafieken naast andere BI Analytics bekijken. Hiermee opent u de deur van een nieuwe klasse van scenario's voor industriële IoT-ondernemingen die in Power BI hebben geïnvesteerd door één deel venster van glas te bieden over analyses van verschillende gegevens bronnen, waaronder IoT-tijd reeksen. | 
 | Aangepaste toepassingen die zijn gebouwd op het Time Series Insights platform | Time Series Insights biedt ondersteuning voor de [JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). De SDK biedt uitgebreide besturingselementen en vereenvoudigde toegang tot query's. Gebruik de SDK om aangepaste IoT-toepassingen op Time Series Insights te bouwen die aansluiten op uw bedrijfs behoeften. U kunt de [query-API's](./time-series-insights-update-tsq.md) van Time Series Insights ook rechtstreeks gebruiken om gegevens naar aangepaste IoT-toepassingen te sturen. |
 
 ## <a name="next-steps"></a>Volgende stappen

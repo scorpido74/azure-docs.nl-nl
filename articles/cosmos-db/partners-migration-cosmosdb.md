@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB NoSQL migratie en application development-partners
+title: Migratie-en toepassings ontwikkelings partners voor Azure Cosmos DB
 description: Geeft een lijst van Microsoft-partners met oplossingen voor cloudmigratie die ondersteuning bieden voor Azure Cosmos DB.
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 2ba6b04efbce5b7911037fbc5f14373cc962035d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30083b4f2f5f9b69368a47ecaf5505c04ccd6df9
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257348"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530694"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL migratie en application development-partners
 
@@ -19,14 +19,14 @@ Van de migratie van de NoSQL ontwikkeling van toepassingen, kunt u kiezen uit ta
 
 ## <a name="migration-tools"></a>Hulpprogramma's voor migratie
 
-|**Partner**  |**Mogelijkheden en ervaring**  |**Ondersteunde landen/regio 's**  |**Neem contact op met**  |
+|**Partner**  |**Mogelijkheden en ervaring**  |**Ondersteunde landen/regio's**  |**Neem contact op met**  |
 |---------|---------|---------|---------|
-|![ImanisData][1]   | [Gegevensmigratie](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) van MongoDB met Azure Cosmos DB. <br/> Imanis gegevens kunt wereldwijd opererende ondernemingen snel en eenvoudig migreren van hun on-premises of in de cloud met Azure Cosmos DB MongoDB-databases. Imanis gegevens biedt een benadering van de migratie zonder agent, incrementele permanent cloud voor MongoDB-gegevensarchieven die vereenvoudigt de migratie en hebt u aanzienlijk minder uitvaltijd.|  USA  |   [Website](http://www.imanisdata.com/)      |
-|![Realtimeplatform][2]    |  [Realtime gegevens verplaatsen met Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/) uit een groot aantal gegevensbronnen. <br/> Realtimeplatform vereenvoudigt het realtime verzamelen en het verplaatsen van gegevens uit een groot aantal on-premises bronnen, met inbegrip van enterprise-document en relationele databases, sensoren en logboekbestanden in Azure Cosmos DB. |   USA   |  [Website](https://www.striim.com/)       |
+|![ImanisData][1]   | Gegevens migratie van MongoDB naar Azure Cosmos DB. <br/> Imanis gegevens kunt wereldwijd opererende ondernemingen snel en eenvoudig migreren van hun on-premises of in de cloud met Azure Cosmos DB MongoDB-databases. Imanis gegevens biedt een benadering van de migratie zonder agent, incrementele permanent cloud voor MongoDB-gegevensarchieven die vereenvoudigt de migratie en hebt u aanzienlijk minder uitvaltijd.|  USA  |   [Website](https://www.cohesity.com/products/imanis-data/)      |
+|![Realtimeplatform][2]    |  [Realtime gegevens verplaatsen met Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/) uit een groot aantal gegevensbronnen. <br/> Realtimeplatform vereenvoudigt het real-time verzamelen en verplaatsen van gegevens uit een groot aantal on-premises bronnen, waaronder ondernemings documenten en relationele data bases, Sens oren en logboek bestanden in Azure Cosmos DB. |   USA   |  [Website](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>Systeemintegratorpartners
 
-|**Partner**  |**Mogelijkheden en ervaring**  |**Ondersteunde landen/regio 's**  |**Neem contact op met**  |
+|**Partner**  |**Mogelijkheden en ervaring**  |**Ondersteunde landen/regio's**  |**Neem contact op met**  |
 |---------|---------|---------|---------|
 | ![10thMagnitude][13] | NoSQL-migratie; Nieuwe app-ontwikkeling | USA | [Website](https://www.10thmagnitude.com/)|
 |![Altoros ontwikkeling, LLC][3]    |  NoSQL-migratie <br/> Innovatie van apps (bestaande apps) <br/> Nieuwe app-ontwikkeling |   Verenigde Staten, Noorwegen, Finland, Belarus, Argentinië |  [Website](https://www.altoros.com/)     |

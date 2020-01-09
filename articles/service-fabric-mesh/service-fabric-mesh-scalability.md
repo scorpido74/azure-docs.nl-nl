@@ -1,20 +1,16 @@
 ---
-title: Schaal baarheid van Azure Service Fabric mesh-apps | Microsoft Docs
+title: Schaal baarheid van Azure Service Fabric mesh-apps
 description: Een van de voor delen van het implementeren van toepassingen naar Service Fabric net is de mogelijkheid om uw services eenvoudig te schalen, hetzij hand matig of met beleid voor automatisch schalen.
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 10/26/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 59fdf68ed1ead4665ec8944d67f2d5112d370716
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 474eda904df653d514fd2ee59fa046f1f87a66aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73662999"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458993"
 ---
 # <a name="scaling-service-fabric-mesh-applications"></a>Service Fabric-mesh-toepassingen schalen
 
@@ -27,7 +23,7 @@ In de implementatiesjabloon voor de toepassingsresource heeft elke service een e
 Zie [uw services hand matig schalen in of uit](service-fabric-mesh-tutorial-template-scale-services.md)voor voor beelden van het hand matig schalen van services-exemplaren.
 
 ## <a name="autoscaling-service-instances"></a>Service-exemplaren automatisch schalen
-Automatisch schalen is een extra mogelijkheid van Service Fabric om het aantal service-exemplaren dynamisch te schalen (horizon taal schalen). Automatisch schalen biedt een fantastische elasticiteit en maakt het inrichten of verwijderen van service-exemplaren mogelijk op basis van CPU-of geheugen gebruik.  Automatisch schalen biedt u de mogelijkheid om het juiste aantal service-exemplaren uit te voeren voor uw werk belasting en de kosten te optimaliseren.
+Automatisch schalen is een extra mogelijkheid van Service Fabric om het aantal service-exemplaren dynamisch te schalen (horizon taal schalen). Automatisch schalen biedt grote flexibiliteit en kunt inrichten of verwijdering van service-exemplaren op basis van gebruik van CPU of geheugen.  Automatisch schalen biedt u de mogelijkheid om het juiste aantal service-exemplaren uit te voeren voor uw werk belasting en de kosten te optimaliseren.
 
 Er wordt een beleid voor automatisch schalen gedefinieerd per service in het bron bestand van de service. Elk schaal beleid bestaat uit twee delen:
 

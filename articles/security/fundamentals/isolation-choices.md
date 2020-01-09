@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 5e6910db7765c4cb8f151401a6803e6d4d3f998e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c666d718586d3e5351974da287a91f6a3a8c04ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159753"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459163"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolatie in de open bare Azure-Cloud
 Met Azure kunt u toepassingen en virtuele machines (Vm's) uitvoeren op gedeelde fysieke infra structuur. Een van de Prime economische motivaties voor het uitvoeren van toepassingen in een cloud omgeving is de mogelijkheid om de kosten van gedeelde resources over meerdere klanten te verdelen. In deze praktijk van multitenancy wordt de efficiëntie verbeterd door resources te multiplexen tussen verschillende klanten tegen lage kosten. Helaas introduceert het ook het risico van het delen van fysieke servers en andere infrastructuur resources om uw gevoelige toepassingen en Vm's uit te voeren die kunnen behoren tot een wille keurige en mogelijk schadelijke gebruiker.
@@ -73,7 +73,7 @@ Azure RBAC heeft drie basis rollen die van toepassing zijn op alle resource type
 
 - **Lezer** kan bestaande Azure-resources weer geven.
 
-![Access Control op basis van rollen in azure](./media/isolation-choices/azure-isolation-fig3.png)
+![Op rollen gebaseerd toegangsbeheer van Azure](./media/isolation-choices/azure-isolation-fig3.png)
 
 Met de rest van de RBAC-rollen in azure kunt u specifieke Azure-resources beheren. Zo kan de gebruiker met de rol Inzender voor virtuele machines virtuele machines maken en beheren. Deze geeft geen toegang tot de Azure-Virtual Network of het subnet waarmee de virtuele machine verbinding maakt.
 
@@ -149,7 +149,7 @@ Communicatie van een infrastructuur controller naar een agent is een unidirectio
 Isolatie gaat uit van de hoofd-VM vanaf de gast-Vm's en de gast-Vm's van elkaar. Reken knooppunten zijn ook geïsoleerd van opslag knooppunten voor een betere beveiliging.
 
 
-De Hyper Visor en het hostbesturingssysteem bieden filters voor het netwerk pakket om ervoor te zorgen dat niet-vertrouwde virtuele machines vervalste verkeer niet kunnen genereren of verkeer ontvangen dat niet aan hen is geadresseerd, direct verkeer naar beveiligde infra structuur-eind punten of verzenden/ontvangen ongepast broadcast verkeer.
+De Hyper Visor en het hostbesturingssysteem bieden filters voor het netwerk pakket om ervoor te zorgen dat niet-vertrouwde virtuele machines vervalste verkeer niet kunnen genereren of verkeer ontvangen dat niet is geadresseerd, direct verkeer naar beveiligde infra structuur-eind punten of verzenden/ontvangen ongepast broadcast verkeer.
 
 
 ### <a name="additional-rules-configured-by-fabric-controller-agent-to-isolate-vm"></a>Aanvullende regels die door de Fabric controller-agent zijn geconfigureerd voor het isoleren van de virtuele machine
@@ -196,7 +196,7 @@ IP-opslag gegevens kunnen worden beschermd tegen onbevoegde gebruikers via een n
 
 ### <a name="encryption"></a>Versleuteling
 Azure biedt de volgende typen versleuteling om gegevens te beveiligen:
--   Versleuteling in transit
+-   Versleuteling 'in transit'
 
 -   Versleuteling 'at rest'
 
@@ -205,7 +205,7 @@ Versleuteling in transit is een mechanisme voor het beveiligen van gegevens wann
 
 -   [Versleuteling op transport niveau](../../storage/common/storage-security-guide.md), zoals https wanneer u gegevens overbrengt naar of van Azure Storage.
 
--   [Wire-versleuteling](../../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares), zoals SMB 3,0-versleuteling voor Azure-bestands shares.
+-   [Wire-versleuteling](../../storage/common/storage-security-guide.md), zoals SMB 3,0-versleuteling voor Azure-bestands shares.
 
 -   [Versleuteling aan de client zijde](../../storage/common/storage-security-guide.md), voor het versleutelen van de gegevens voordat deze naar de opslag wordt overgebracht en voor het ontsleutelen van de gegevens nadat deze buiten de opslag zijn overgedragen.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 9faf7de25b8bf227dd4c7f3588972f98f7493439
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1a1b1e662a2e9adedfc68f1818f868c0a5318652
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583954"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428962"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Lab-accounts configureren in Azure Lab Services 
 In Azure Lab Services is een Lab-account een container voor beheerde Lab-typen zoals klassikale Labs. Een beheerder stelt een Lab-account in met Azure Lab Services en biedt toegang tot Lab-eigen aars die in het account Labs kunnen maken. In dit artikel wordt beschreven hoe u een Lab-account maakt, alle Lab-accounts weergeeft of een Lab-account verwijdert.
@@ -30,7 +30,7 @@ Als u een virtueel netwerk als peer netwerk wilt verbinden met het virtuele netw
 
     ![Configuratie pagina voor Labs](../media/how-to-manage-lab-accounts/labs-configuration-page.png) 
 1. Selecteer **ingeschakeld** of **uitgeschakeld**voor het **virtuele peer netwerk**. De standaard waarde is **uitgeschakeld**. Voer de volgende stappen uit om het virtuele peer netwerk in te scha kelen: 
-    1. Selecteer **ingeschakeld**.
+    1. Selecteer **Ingeschakeld**.
     2. Selecteer het **VNet** in de vervolg keuzelijst. 
 3. Selecteer **Opslaan** op de werkbalk. 
 
@@ -133,6 +133,14 @@ Selecteer **Aanmelden met github**op de pagina **aanmeldings opties** .
 
 Ten slotte wordt er gevraagd om een Microsoft-account te maken dat is gekoppeld aan het GitHub-account. Dit gebeurt automatisch wanneer de docent **volgende**selecteert.  De docent wordt dan onmiddellijk aangemeld en is verbonden met het leslokaal Lab.
 
+## <a name="automatic-shutdown-of-vms-on-disconnect"></a>Automatisch afsluiten van Vm's bij het verbreken van de verbinding
+U kunt automatisch afsluiten van Windows Lab-Vm's (sjabloon of student) in-of uitschakelen nadat de verbinding met een extern bureau blad is verbroken. U kunt ook opgeven hoe lang de Vm's moeten wachten totdat de gebruiker opnieuw verbinding maakt voordat deze automatisch wordt afgesloten.
+
+![Instelling voor automatisch afsluiten bij Lab-account](../media/how-to-configure-lab-accounts/automatic-shutdown-vm-disconnect.png)
+
+Deze instelling is van toepassing op alle Labs die in het lab-account is gemaakt. Een Lab-eigenaar kan deze instelling overschrijven op het niveau van de test omgeving. De wijziging van deze instelling op het lab-account is alleen van invloed op de Labs die zijn gemaakt nadat de wijziging is aangebracht.
+
+Zie [dit artikel](how-to-enable-shutdown-disconnect.md) voor meer informatie over hoe een Lab-eigenaar deze instelling kan configureren op het niveau van de test omgeving
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:

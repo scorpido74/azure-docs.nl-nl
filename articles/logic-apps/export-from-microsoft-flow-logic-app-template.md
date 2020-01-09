@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 4512fd8a236c888937eb60a75d01cfb0ef2c1913
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 616f10b32d0a9c1a05d759a0e27550cd2808808b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792642"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428887"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Stromen exporteren vanuit Power Automate en implementeren in Azure Logic Apps
 
@@ -81,7 +81,7 @@ Zie [groeien tot Azure Logic apps](https://flow.microsoft.com/blog/grow-up-to-lo
 
       Voor elke verbinding waarvoor autorisatie is vereist, wordt een waarschuwings pictogram weer gegeven:
 
-      ![Waarschuwings pictogram](./media/export-from-microsoft-flow-logic-app-template/authorize-connections.png)
+      ![Waarschuwingspictogram](./media/export-from-microsoft-flow-logic-app-template/authorize-connections.png)
 
    1. Voor elke stap waarvoor een geautoriseerde verbinding is vereist, vouwt u die stap uit en selecteert u **nieuwe toevoegen**.
 
@@ -133,7 +133,7 @@ Als u Visual Studio hebt ingesteld met de [vereisten](../logic-apps/quickstart-c
 
 1. Open in Solution Explorer het snelmenu project en selecteer > **nieuwe** **implementeren** . Meld u aan met uw Azure-account als u daarom wordt gevraagd.
 
-1. Wanneer u hierom wordt gevraagd, bevestigt u het Azure-abonnement, de Azure-resource groep en alle andere instellingen die u wilt gebruiken voor implementatie, zoals een [parameter bestand](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) dat moet worden gebruikt voor het door geven van sjabloon parameter waarden, en selecteer vervolgens **implementeren**.
+1. Wanneer u hierom wordt gevraagd, bevestigt u het Azure-abonnement, de Azure-resource groep en alle andere instellingen die u wilt gebruiken voor implementatie, zoals een [parameter bestand](../azure-resource-manager/templates/parameter-files.md) dat moet worden gebruikt voor het door geven van sjabloon parameter waarden, en selecteer vervolgens **implementeren**.
 
    ![Implementatie-instellingen bevestigen](./media/export-from-microsoft-flow-logic-app-template/confirm-azure-subscription-resource-group-deployment.png)
 

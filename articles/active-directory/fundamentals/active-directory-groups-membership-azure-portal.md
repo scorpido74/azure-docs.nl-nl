@@ -1,5 +1,5 @@
 ---
-title: Toevoegen of verwijderen van een groep uit een andere groep - Azure Active Directory | Microsoft Docs
+title: Een groep toevoegen aan of verwijderen uit een andere groep-Azure AD
 description: Instructies over het toevoegen of verwijderen van een groep uit een andere groep met behulp van Azure Active Directory.
 services: active-directory
 author: msaburnley
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896a8b2c96dc10afbc3f179aed5a8497a8948ca9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 830bf7134b3a8b0425c53673a1347dd77897a5bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561925"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423049"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Toevoegen of verwijderen van een groep uit een andere groep met behulp van Azure Active Directory
 In dit artikel helpt u bij het toevoegen en verwijderen van een groep van een andere groep met behulp van Azure Active Directory.
@@ -30,7 +30,7 @@ In dit artikel helpt u bij het toevoegen en verwijderen van een groep van een an
 U kunt een bestaande beveiligingsgroep op een andere bestaande beveiligingsgroep (ook wel bekend als geneste groepen), het maken van een lid van groep (subgroep) en een bovenliggende groep toevoegen. De lid-groep neemt de kenmerken en eigenschappen van de bovenliggende groep, zodat u de configuratie.
 
 >[!Important]
->Wordt momenteel niet ondersteund:<ul><li>Groepen toevoegen aan een groep die is gesynchroniseerd met on-premises Active Directory.</li><li>Beveiligings groepen toevoegen aan Office 365-groepen.</li><li>Office 365-groepen toevoegen aan beveiligings groepen of andere Office 365-groepen.</li><li>Apps toewijzen aan geneste groepen.</li><li>Licenties Toep assen op geneste groepen.</li></ul>
+>Wordt momenteel niet ondersteund:<ul><li>Groepen toevoegen aan een groep die is gesynchroniseerd met on-premises Active Directory.</li><li>Beveiligings groepen toevoegen aan Office 365-groepen.</li><li>Office 365-groepen toevoegen aan beveiligings groepen of andere Office 365-groepen.</li><li>Apps toewijzen aan geneste groepen.</li><li>Licenties Toep assen op geneste groepen.</li><li>Distributie groepen toevoegen in geneste scenario's.</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>Een groep toevoegen als een lid van een andere groep
 
@@ -49,15 +49,11 @@ U kunt een bestaande beveiligingsgroep op een andere bestaande beveiligingsgroep
 
     De **MDM-beleid - West** groep is nu lid van de **MDM-beleid - alle org** groep, nemen alle eigenschappen en de configuratie van het beleid van de MDM - groep met alle org.
 
-    ![Lidmaatschap van een door de groep toe te voegen aan een andere groep maken](media/active-directory-groups-membership-azure-portal/add-group-membership.png)
+    ![Lidmaatschap van een door de groep toe te voegen aan een andere groep maken](media/active-directory-groups-membership-azure-portal/group-add-group-membership.png)
 
 5. Controleer de **groepslidmaatschappen van MDM - West - beleid** pagina om te bekijken van de groep en lid relatie.
 
-    ![MDM - West - groepslidmaatschappen beleidspagina met de bovenliggende groep](media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
-
 6. Voor een gedetailleerdere weergave van de groep en lid relatie, selecteer de naam van de (**MDM-beleid - alle org**) en bekijk de **MDM-beleid - West** pagina details.
-
-    ![Pagina van het lidmaatschap van zowel het lid en de Groepsdetails](media/active-directory-groups-membership-azure-portal/group-membership-review.png)
 
 ## <a name="remove-a-group-from-another-group"></a>Een groep verwijderen uit een andere groep
 U kunt een bestaande beveiligingsgroep verwijderen uit een andere beveiligingsgroep. Echter, de groep ook verwijdert, alle overgenomen kenmerken en de eigenschappen voor de leden.
@@ -67,12 +63,9 @@ U kunt een bestaande beveiligingsgroep verwijderen uit een andere beveiligingsgr
 
 2. Op de **MDM-beleid - West-overzicht** weergeeft, schakelt **groepslidmaatschappen**.
 
-    ![Beleid voor MDM - West-overzichtspagina](media/active-directory-groups-membership-azure-portal/group-membership-overview.png)
-
 3. Selecteer de **MDM-beleid - alle org** groep uit de **groepslidmaatschappen van MDM - West - beleid** pagina en selecteer vervolgens **verwijderen** van de **MDM-beleid - West** pagina details.
 
     ![Pagina van het lidmaatschap van zowel het lid en de Groepsdetails](media/active-directory-groups-membership-azure-portal/group-membership-remove.png)
-
 
 ## <a name="additional-information"></a>Aanvullende informatie
 Deze artikelen bevatten aanvullende informatie over Azure Active Directory.

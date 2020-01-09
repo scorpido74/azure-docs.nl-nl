@@ -7,15 +7,15 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 9635798720667e38a767f26fc2e5f5374e420059
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 838145f8573e11deff8566c932a9c73c6f59f03b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795538"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561657"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Wat is Application Gateway ingangs controller?
-De Application Gateway ingangs controller (AGIC) is een Kubernetes-toepassing, waardoor [Azure Kubernetes service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) -klanten de systeem eigen [Application Gateway](https://azure.microsoft.com/services/application-gateway/) N7-Load Balancer van Azure kunnen gebruiken om cloud software beschikbaar te stellen aan Internet. AGIC bewaakt het Kubernetes-cluster dat wordt gehost op een Application Gateway, zodat de geselecteerde services worden blootgesteld aan Internet.
+De Application Gateway ingangs controller (AGIC) is een Kubernetes-toepassing, waardoor [Azure Kubernetes service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) -klanten de systeem eigen [Application Gateway](https://azure.microsoft.com/services/application-gateway/) N7-Load Balancer van Azure kunnen gebruiken om cloud software op internet beschikbaar te stellen. AGIC bewaakt het Kubernetes-cluster dat wordt gehost op een Application Gateway, zodat de geselecteerde services worden blootgesteld aan Internet.
 
 De ingangs controller wordt uitgevoerd in een eigen pod op de AKS van de klant. AGIC bewaakt een subset van Kubernetes-resources op wijzigingen. De status van het AKS-cluster wordt omgezet naar Application Gateway specifieke configuratie en toegepast op de [Azure Resource Manager (arm)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
@@ -28,11 +28,11 @@ Het gebruik van Application Gateway naast AGIC biedt ook bescherming voor uw AKS
 
 ![Azure-toepassing gateway + AKS](./media/application-gateway-ingress-controller-overview/architecture.png)
 
-AGIC wordt geconfigureerd via de [ingangs bron](http://kubernetes.io/docs/user-guide/ingress/)van Kubernetes, samen met Service en implementaties/peul. Het biedt een aantal functies, met Azure native Application Gateway N7 load balancer. Een paar van de volgende namen:
+AGIC wordt geconfigureerd via de [ingangs bron](https://kubernetes.io/docs/user-guide/ingress/)van Kubernetes, samen met Service en implementaties/peul. Het biedt een aantal functies, met Azure native Application Gateway N7 load balancer. Een paar van de volgende namen:
   - URL-routering
   - Affiniteit op basis van cookies
   - SSL-beëindiging
-  - End-to-end-SSL
+  - End-to-end SSL
   - Ondersteuning voor open bare, persoonlijke en hybride websites
   - Geïntegreerde Web Application Firewall
 

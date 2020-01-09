@@ -1,18 +1,18 @@
 ---
 title: Ondersteuning voor rendering Manager-Azure Batch
-description: Azure gebruiken voor rendering met behulp van de integratie van Azure Batch render Manager
+description: De integratie van Azure Batch render Manager gebruiken. Meer informatie over ingebouwde ondersteuning of invoeg toepassingen voor populaire render-managers.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: eb3ce47e5ffed697392065a1faacbbfaec19f4d1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 246907b16534d1a91833cab633a1973c97429f47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983675"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449685"
 ---
 # <a name="using-azure-batch-with-render-farm-managers"></a>Azure Batch gebruiken met Farm beheerders weer geven
 
@@ -26,7 +26,7 @@ De volgende render-managers worden ondersteund:
 * [Koninklijk Rendering](https://www.royalrender.de/)
 * [Deadline Thinkbox](https://deadline.thinkboxsoftware.com/)
 
-## <a name="azure-render-hub"></a>Azure render-hub
+## <a name="azure-render-hub"></a>Azure Render Hub
 
 Azure render hub vereenvoudigt het maken en beheren van Azure-render-farms.  Render hub heeft systeem eigen ondersteuning voor PipelineFx Qube en deadline 10.  Zie [de GitHub-opslag plaats](https://github.com/Azure/azure-render-hub)voor meer informatie en gedetailleerde instructies.
 

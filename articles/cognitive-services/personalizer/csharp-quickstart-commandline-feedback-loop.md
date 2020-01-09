@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: client bibliotheek voor persoonlijke instellingen voor .NET | Microsoft Docs'
+title: 'Quick Start: client bibliotheek voor persoonlijke instellingen voor .NET'
 titleSuffix: Azure Cognitive Services
-description: Ga aan de slag met de Personaler-client bibliotheek voor .NET met een Learning-lus.
+description: In deze Quick start ziet u hoe u aan de slag gaat met de Personaler-client bibliotheek voor .NET met behulp van een Learning-lus.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: 411bd82ade2ca7b904b36a3a4408c1a00852fc2c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c17bf54d89e3a98ca667eeba40f2d2b166550833
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927829"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446393"
 ---
 # <a name="quickstart-personalizer-client-library-for-net"></a>Quick Start: client bibliotheek voor persoonlijke instellingen voor .NET
 
@@ -203,7 +203,7 @@ De [bron code voor deze Quick](https://github.com/Azure-Samples/cognitive-servic
 Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+* [Azure-CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -212,5 +212,4 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 
 * [Wat is persoonlijkere?](what-is-personalizer.md)
 * [Waar kunt u Personaler gebruiken?](where-can-you-use-personalizer.md)
-* [Problemen oplossen](troubleshooting.md)
-
+* [Probleemoplossing](troubleshooting.md)

@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 1be4882af781f884313fbc7b8e2f04f843b60068
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 0cbd8f61cb1b4cb8eae6b30625fb3039ff75adde
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71038951"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75641465"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>Een Azure-netwerk beveiligings groep (NSG) verplaatsen naar een andere regio met behulp van Azure PowerShell
 
@@ -32,7 +32,7 @@ Azure-beveiligings groepen kunnen niet worden verplaatst van de ene regio naar e
 
 - Controleer of u met uw Azure-abonnement Nsg's kunt maken in de doel regio die wordt gebruikt. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum.
 
-- Zorg ervoor dat uw abonnement voldoende bronnen heeft ter ondersteuning van het toevoegen van Nsg's voor dit proces.  Raadpleeg [Azure-abonnement en -servicelimieten, quotums en beperkingen](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Zorg ervoor dat uw abonnement voldoende bronnen heeft ter ondersteuning van het toevoegen van Nsg's voor dit proces.  Raadpleeg [Azure-abonnement en -servicelimieten, quotums en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-and-move"></a>Voorbereiden en verplaatsen
@@ -61,7 +61,7 @@ De volgende stappen laten zien hoe u de netwerk beveiligings groep voorbereidt v
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceNSGID -IncludeParameterDefaultValue
    ```
 
-4. Het bestand dat u hebt gedownload krijgt de naam van de resource groep waaruit de resource is geëxporteerd.  Zoek het bestand dat is geëxporteerd uit de opdracht  **\<met de naam resource-group-name >. json** en open het in een editor naar keuze:
+4. Het bestand dat u hebt gedownload krijgt de naam van de resource groep waaruit de resource is geëxporteerd.  Zoek het bestand dat is geëxporteerd uit de opdracht met de naam **\<resource-group-name >. json** en open het in een editor naar keuze:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -106,9 +106,9 @@ De volgende stappen laten zien hoe u de netwerk beveiligings groep voorbereidt v
     Get-AzLocation | format-table
     
     ```
-8. U kunt ook andere para meters wijzigen in de  **\<resource-group-name >. json** als u kiest, en zijn optioneel, afhankelijk van uw vereisten:
+8. U kunt ook andere para meters wijzigen in de **\<resource-group-name >. json** als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
 
-    * **Beveiligings regels** : u kunt bewerken welke regels in de doel-NSG worden geïmplementeerd door regels toe te voegen aan de sectie **securityRules** in het  **\<bestand resource-group-name >. json** :
+    * **Beveiligings regels** : u kunt bewerken welke regels in de doel-NSG worden geïmplementeerd door regels toe te voegen aan of te verwijderen uit de sectie **securityRules** in het **\<resource-group-name >. json-** bestand:
 
         ```json
            "resources": [
@@ -144,7 +144,7 @@ De volgende stappen laten zien hoe u de netwerk beveiligings groep voorbereidt v
             
         ```
 
-        Als u het toevoegen of verwijderen van de regels in de doel-NSG wilt volt ooien, moet u ook de aangepaste regel typen aan het einde van de  **\<resource-group-name >. json** -bestand bewerken in de indeling van het volgende voor beeld:
+        Als u het toevoegen of verwijderen van de regels in de doel-NSG wilt volt ooien, moet u ook de aangepaste regel typen aan het einde van de **\<resource-group-name >. json** -bestand bewerken in de indeling van het volgende voor beeld:
 
         ```json
            {
@@ -171,7 +171,7 @@ De volgende stappen laten zien hoe u de netwerk beveiligings groep voorbereidt v
             }
         ```
 
-9. Sla het bestand  **\<met de resource-group-name >. json** op.
+9. Sla de **\<resource-group-name >. json** -bestand op.
 
 10. Maak een resource groep in de doel regio voor de doel-NSG die moet worden geïmplementeerd met [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0):
     
@@ -179,7 +179,7 @@ De volgende stappen laten zien hoe u de netwerk beveiligings groep voorbereidt v
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Implementeer het bewerkte  **\<resource-group-name >. json-** bestand in de resource groep die u in de vorige stap hebt gemaakt met behulp van [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Implementeer het bewerkte **\<resource-group-name >. json** -bestand in de resource groep die u in de vorige stap hebt gemaakt met behulp van [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
 
     ```azurepowershell-interactive
 
@@ -201,7 +201,7 @@ De volgende stappen laten zien hoe u de netwerk beveiligings groep voorbereidt v
 
     ```
 
-## <a name="discard"></a>Verwijderen 
+## <a name="discard"></a>Negeren 
 
 Als u na de implementatie wilt beginnen of de NSG in het doel wilt negeren, verwijdert u de resource groep die is gemaakt in het doel en de verplaatste NSG worden verwijderd.  Gebruik [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)om de resource groep te verwijderen:
 

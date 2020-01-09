@@ -1,7 +1,7 @@
 ---
 title: 'Train SVD-aanbeveling: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de Train SVD Aanbevelener-module in de Azure Machine Learning-service om een Bayesiaanse-aanbeveling te trainen met behulp van het algoritme SVD.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module Train SVD aanbevelen in Azure Machine Learning om een Bayesiaanse-aanbeveling te trainen met behulp van de SVD-algoritme.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 2019b752ab224abc244e471de3d427a77f7ed93a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: dc78322b09548e4e9c2f666e0c8315ce688d6541
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716901"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428427"
 ---
-# <a name="train-svd-recommender"></a>Train SVD-aanbeveling
+# <a name="train-svd-recommender"></a>Aanbevelingsfunctie van SVD-training
 
 In dit artikel wordt beschreven hoe u de module Train SVD Adviseering gebruikt in Azure Machine Learning Designer (preview). Met deze module kunt u een aanbevelings model trainen op basis van het algoritme voor de ontleding van één waarde (SVD).  
 
@@ -50,7 +50,7 @@ Voordat u de module gebruikt, moeten de invoer gegevens de indeling hebben die h
 
 De gegevensset voor **restaurant classificaties** in azure machine learning Designer (Selecteer **opgeslagen gegevens sets** en vervolgens voor **beelden**) toont de verwachte indeling:
 
-|Naam|placeID|rating|
+|userID|placeID|rating|
 |------------|-------------|------------|
 |U1077|135085|2|
 |U1077|135038|2|
@@ -65,7 +65,7 @@ In dit voor beeld kunt u zien dat één gebruiker twee afzonderlijke restaurants
     
     Elke factor meet de hoeveelheid van de gebruiker met betrekking tot het item. Het aantal factoren is ook de dimensionaliteit van de latente factor ruimte. Wanneer het aantal gebruikers en items toeneemt, is het beter om een groter aantal factoren in te stellen. Maar als het aantal te groot is, kunnen de prestaties verloren.
     
-3.  Het **aantal iteraties van aanbevelings algoritmen** geeft aan hoe vaak de invoer gegevens moeten worden verwerkt door de algoritme. Hoe hoger dit aantal, hoe nauw keuriger de voor spellingen zijn. Een hoger nummer betekent echter een tragere training. De standaard waarde is 30.
+3.  Het **aantal iteraties van aanbevelings algoritmen** geeft aan hoe vaak de invoer gegevens moeten worden verwerkt door de algoritme. Hoe hoger dit aantal, hoe nauw keuriger de voor spellingen zijn. Een hoger nummer betekent echter een tragere training. De standaardwaarde is 30.
 
 4.  Voer voor het **leer tempo**een getal in tussen 0,0 en 2,0 dat de stap grootte voor Learning definieert.
 
@@ -76,4 +76,4 @@ In dit voor beeld kunt u zien dat één gebruiker twee afzonderlijke restaurants
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor de Azure machine learning-service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

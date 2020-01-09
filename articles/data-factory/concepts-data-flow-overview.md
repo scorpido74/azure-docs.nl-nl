@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/7/2019
-ms.openlocfilehash: 397ecdb805f0be9f374c53ae7128f806bfb789d3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928294"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444506"
 ---
 # <a name="what-are-mapping-data-flows"></a>Wat zijn toewijzingsgegevensstromen?
 
@@ -60,6 +60,8 @@ U kunt de ADF de opdracht geven om een groep cluster resources (Vm's) te onderho
 Als u gegevens stromen in een pijp lijn parallel uitvoert, worden in ADF afzonderlijke Azure Databricks clusters voor elke uitvoering van de activiteit gedraaid op basis van de instellingen in uw Azure Integration Runtime die aan elke activiteit zijn gekoppeld. Als u parallelle uitvoeringen wilt ontwerpen in ADF-pijp lijnen, voegt u uw gegevens stroom activiteiten toe zonder prioriteits beperkingen in de gebruikers interface.
 
 Van deze drie opties wordt deze optie waarschijnlijk in de kortste tijd uitgevoerd. Elke parallelle gegevens stroom wordt echter op hetzelfde moment uitgevoerd op afzonderlijke clusters, zodat de volg orde van gebeurtenissen niet-deterministisch is.
+
+Als u uw gegevens stroom activiteiten parallel in uw pijp lijnen uitvoert, is het raadzaam om geen TTL te gebruiken. Dit komt doordat parallelle uitvoeringen van gegevens stromen gelijktijdig met dezelfde Azure Integration Runtime worden uitgevoerd, waardoor er meerdere warme groeps instanties zijn voor uw data factory.
 
 ##### <a name="overload-single-data-flow"></a>Overbelasting van één gegevens stroom
 

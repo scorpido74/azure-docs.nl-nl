@@ -1,6 +1,6 @@
 ---
-title: Een web-app schrijven die zich aanmeldt bij de gebruikers-micro soft Identity platform | Azure
-description: Meer informatie over het bouwen van een web-app die gebruikers aanmeldt (aanmelden)
+title: Een web-app schrijven die in/uit-gebruikers aanmeldt-micro soft Identity-platform | Azure
+description: Meer informatie over het bouwen van een web-app die in/uit-gebruikers aanmeldt
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d7d5737a8332416a225154709ab7d66e447764
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 6bb32ae29c533b8ea27bf68e012040a17bb36355
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961978"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423489"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Web-app die gebruikers aanmeldt: aanmelden en afmelden
 
@@ -118,7 +118,7 @@ De code voor `AccountController` is beschikbaar vanuit de ASP.NET Core opslagpla
 
 In ASP.NET wordt afmelden geactiveerd vanuit de methode `SignOut()` op een controller (bijvoorbeeld [AccountController. cs # L16-L23](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L16-L23)). Deze methode maakt geen deel uit van het ASP.NET-Framework (in tegens telling tot wat er gebeurt in ASP.NET Core). Er wordt een OpenID Connect-aanmeldings vraag verzonden nadat een omleidings-URI is voorgesteld.
 
-```CSharp
+```csharp
 public void SignIn()
 {
     // Send an OpenID Connect sign-in request.
@@ -342,7 +342,7 @@ In ASP.NET wordt afmelden geactiveerd vanuit de methode `SignOut()` op een contr
 - Hiermee wordt de cache gewist.
 - Hiermee wordt omgeleid naar de pagina die het wil.
 
-```CSharp
+```csharp
 /// <summary>
 /// Send an OpenID Connect sign-out request.
 /// </summary>
@@ -396,7 +396,7 @@ Met de URI na afmelding kunnen toepassingen deel nemen aan de globale afmelding.
 
 Met de ASP.NET Core OpenID Connect Connect middleware kan uw app de aanroep naar het micro soft Identity platform `logout`-eind punt onderscheppen door een OpenID Connect Connect-gebeurtenis op te geven met de naam `OnRedirectToIdentityProviderForSignOut`. Zie [micro soft. Identity. Web/WebAppServiceCollectionExtensions. cs # L151-L156](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156)voor een voor beeld van hoe u zich abonneert op deze gebeurtenis (om de token cache te wissen).
 
-```CSharp
+```csharp
     // Handling the global sign-out
     options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
     {
@@ -408,7 +408,7 @@ Met de ASP.NET Core OpenID Connect Connect middleware kan uw app de aanroep naar
 
 In ASP.NET delegeren aan de middleware voor het uitvoeren van de afmelding, het verwijderen van de sessie cookie:
 
-```CSharp
+```csharp
 public class AccountController : Controller
 {
  ...

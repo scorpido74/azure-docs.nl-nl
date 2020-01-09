@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 12/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: cf826c47c61e3714a05dd81fe3eea4e6ee0b03f4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 6fd8d6187c86306840c33b3aaf334e71086b20a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012498"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452746"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Aanbevolen procedures voor het kiezen van een Time Series-ID
 
@@ -23,23 +23,28 @@ Dit artikel bevat een overzicht van het belang van de tijd reeks-ID voor uw Azur
 
 ## <a name="choose-a-time-series-id"></a>Een Time Series-id kiezen
 
-Het kiezen van een Time Series-ID is, zoals een partitiesleutel voor een database kiezen. U moet deze selecteren tijdens het maken van een Time Series Insights preview-omgeving. Het is een *onveranderbare* eigenschap. Dat wil zeggen, nadat u een Time Series Insights preview-omgeving met een tijd reeks-ID hebt gemaakt, kunt u deze niet wijzigen voor die omgeving. 
+Het selecteren van de juiste tijd reeks-ID is van cruciaal belang. Het kiezen van een Time Series-ID is, zoals een partitiesleutel voor een database kiezen. Dit is vereist wanneer u een Time Series Insights voorbeeld omgeving maakt. 
 
 > [!IMPORTANT]
-> De time series-ID is hoofdletter gevoelig.
+> De time series-Id's zijn:
+> * Een *hoofdletter gevoelige* eigenschap: letter-en teken-darmen worden gebruikt in Zoek opdrachten, vergelijkingen, updates en het partitioneren van partities.
+> * Een *onveranderbare* eigenschap: zodra deze is gemaakt, kan deze niet meer worden gewijzigd.
 
-Het selecteren van de juiste tijd reeks-ID is van cruciaal belang. Hier volgen enkele van de aanbevolen procedures die u kunt volgen:
+> [!TIP]
+> Als uw gebeurtenis bron een IoT-hub is, is uw tijd reeks-ID waarschijnlijk ***iothub-Connection-apparaat-id***.
+
+De belangrijkste aanbevolen procedures zijn:
 
 * Kies een partitie sleutel met veel afzonderlijke waarden (bijvoorbeeld honderden of duizenden). In veel gevallen kan dit de apparaat-ID, sensor-ID of label-ID in uw JSON zijn.
 * De Time Series-ID moet uniek zijn op het niveau van de leaf-knooppunt van uw [Tijdreeksmodel](./time-series-insights-update-tsm.md).
-* Als uw gebeurtenis bron een IoT-hub is, zal uw tijd reeks-ID waarschijnlijk *iothub-Connection-apparaat-id*zijn.
 * De teken limiet voor de eigenschaps naam van de tijd reeks-ID is 128. De teken limiet voor de eigenschaps waarde van de tijd reeks-ID is 1.024.
 * Als een unieke eigenschaps waarde voor de time series-ID ontbreekt, wordt deze behandeld als een null-waarde en volgt dezelfde regel van de uniekheids beperking.
 * U kunt ook Maxi maal *drie* sleutel eigenschappen selecteren als uw tijd reeks-id. De combi natie hiervan is een samengestelde sleutel die de tijd reeks-ID vertegenwoordigt.  
-
   > [!NOTE]
   > Uw drie sleutel eigenschappen moeten teken reeksen zijn.
   > U moet een query uitvoeren op deze samengestelde sleutel in plaats van één eigenschap tegelijk.
+
+## <a name="select-more-than-one-key-property"></a>Meer dan één sleutel eigenschap selecteren
 
 In de volgende scenario's wordt het selecteren van meer dan één sleutel eigenschap als uw tijd reeks-ID beschreven.  
 
@@ -67,9 +72,11 @@ Voor beeld van onbewerkte gebeurtenis:
 }
 ```
 
-In de Azure Portal kunt u deze samengestelde sleutel als volgt invoeren: 
+In de Azure Portal, kunt u de samengestelde sleutel als volgt invoeren: 
 
-`[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]`
+```JSON
+[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

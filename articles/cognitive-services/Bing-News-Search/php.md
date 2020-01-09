@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Voer een zoek opdracht voor nieuws uit met PHP en het Bing News Search REST API'
+title: 'Snelstartgids: een zoek opdracht voor nieuws met PHP en de Bing News Search uitvoeren REST API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om een aanvraag naar de REST API van Bing News Search te verzenden via PHP en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: b905993c88bd4425215dd83962980d8e46a7b943
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 79f00e4138d0fecdc7320235dd9c496033693d2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423704"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383083"
 ---
-# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Snelstartgids: Nieuws zoeken met PHP en de REST API van Bing News Search
+# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Snelstartgids: een zoek opdracht voor nieuws uitvoeren met behulp van PHP en het Bing News Search REST API
 
 Gebruik deze snelstart om voor het eerst de Bing Afbeeldingen zoeken-API aan te roepen en een JSON-antwoord te ontvangen. Deze eenvoudige JavaScript-toepassing stuurt een zoekquery naar de API en toont de onbewerkte resultaten.
 
@@ -40,6 +40,7 @@ Met de [Bing Nieuws zoeken-API](https://docs.microsoft.com/rest/api/cognitiveser
 2. Maak een nieuw PHP-project in uw favoriete IDE of editor.
 3. Voeg de onderstaande code toe.
 4. Vervang de waarde `accessKey` door een geldige toegangssleutel voor uw abonnement.
+5. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 5. Voer het programma uit.
 
 ```php

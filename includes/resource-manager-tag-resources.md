@@ -5,15 +5,15 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 01/03/2020
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: b1252c455c2dfad2963f914ee746bcb932e59aa9
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 6d8f29e9272f3e05bb585c032240cce67c37d2bf
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74451599"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665147"
 ---
 1. Als u de tags voor een resource of resource groep wilt weer geven, zoekt u naar bestaande tags in het overzicht. Als u nog niet eerder tags hebt toegepast, is de lijst leeg.
    
@@ -44,7 +44,7 @@ Voor het bulksgewijs toewijzen van labels aan meerdere resources:
 
 1. **Labels toewijzen** selecteren
 
-     ![Labels toewijzen](./media/resource-manager-tag-resources/assign-tags.png)
+     ![Tags toewijzen](./media/resource-manager-tag-resources/assign-tags.png)
 
 1. Selecteer na elke naam en waarde **+** . Wanneer u klaar bent, selecteert u **toewijzen**.
 
@@ -63,11 +63,3 @@ Om alle resources met een tag weer te geven:
 1. Alle resources met die tag worden weer gegeven.
 
      ![Resources weer geven op label](./media/resource-manager-tag-resources/view-resources-by-tag.png)
-
-1. Voor snelle toegang kunt u de weer gave vastmaken aan het dash board.
-
-     ![Vastmaken aan dashboard](./media/resource-manager-tag-resources/pin-to-dashboard.png)
-
-1. De weer gave is beschikbaar via het dash board.
-
-     ![Dashboard](./media/resource-manager-tag-resources/dashboard-with-view.png)

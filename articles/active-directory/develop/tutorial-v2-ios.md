@@ -1,6 +1,6 @@
 ---
-title: Aan de slag met iOS-& macOS-micro soft Identity platform | Azure
-description: Hoe iOS-en macOS-toepassingen (SWIFT) een API kunnen aanroepen waarvoor toegangs tokens zijn vereist met behulp van micro soft Identity platform
+title: MSAL voor iOS & macOS-zelf studie-micro soft Identity platform | Azure
+description: Meer informatie over hoe iOS-en macOS-apps (SWIFT) een API kunnen aanroepen waarvoor toegangs tokens zijn vereist met het micro soft Identity-platform
 services: active-directory
 documentationcenter: dev-center-name
 author: tylermsft
@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f161d94d622ae76932e88be52df6f068bfc945
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a0aa97f2cb54295d9403ec332eb9c0ada684df12
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964665"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423403"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Gebruikers aanmelden en de Microsoft Graph aanroepen vanuit een iOS-of macOS-app
 
@@ -65,7 +65,7 @@ In deze zelf studie wordt een nieuw project gemaakt. Als u in plaats daarvan de 
 
 ## <a name="register-your-application"></a>Uw toepassing registreren
 
-1. Ga naar de [Azure-portal](https://aka.ms/MobileAppReg)
+1. Ga naar [Azure Portal](https://aka.ms/MobileAppReg)
 2. Open de [blade app-registraties](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) en klik op **+ nieuwe registratie**.
 3. Voer een **naam** in voor uw app en klik vervolgens zonder een omleidings-URI in te stellen op **registreren**.
 4. Selecteer in de sectie **beheren** van het deel venster dat wordt weer gegeven de optie **verificatie**.

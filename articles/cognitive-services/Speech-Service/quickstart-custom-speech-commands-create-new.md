@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 056dd4331d30335078ea68350f711e37a7b42070
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d8e28b88757fa7557b04ee471ede17012094bb9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976618"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446895"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Snelstartgids: een aangepaste opdracht maken (preview)
 
@@ -24,10 +24,15 @@ De toepassing herkent een utterance zoals ' de TV inschakelen ' en reageert met 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een spraak abonnement. [Probeer de speech-service gratis](~/articles/cognitive-services/speech-service/get-started.md)uit.
+- Een spraak abonnement. 
+
+Als u geen spraak abonnement hebt, kunt u er een maken door te navigeren naar de [Speech Studio](https://speech.microsoft.com/) en **een spraak resource maken**te selecteren.
+
+  > [!div class="mx-imgBorder"]
+  > [![een project maken](media/custom-speech-commands/create-new-subscription.png)](media/custom-speech-commands/create-new-subscription.png#lightbox)
 
   > [!NOTE]
-  > Tijdens de preview-periode wordt alleen de regio westus2 ondersteund voor abonnements sleutels.
+  > Tijdens de preview-periode wordt alleen de westus2-regio ondersteund.
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>Ga naar de speech Studio voor aangepaste opdrachten
 
@@ -65,6 +70,20 @@ De standaard weergave is een lijst met de aangepaste opdrachten voor toepassinge
 1. Selecteer uw project zodra het is gemaakt.
 
 Uw weer gave moet nu een overzicht zijn van de toepassing aangepaste opdrachten.
+
+## <a name="update-luis-resources-optional"></a>LUIS-resources bijwerken (optioneel)
+
+U kunt de set ontwerpen in het venster Nieuw project bijwerken en een Voorspellings resource instellen die wordt gebruikt om invoer tijdens runtime te herkennen. 
+
+> [!NOTE]
+> U moet een Voorspellings bron instellen voordat u de voor spellingen van de aanvraag van de 1.000-aanvragen voor de toepassing aanvraagt.
+
+> [!div class="mx-imgBorder"]
+> ![LUIS-resources instellen](media/custom-speech-commands/set-luis-resources.png)
+
+1. Ga naar het deel venster LUIS resources door **instellingen** te selecteren in het linkerdeel venster en vervolgens **Luis resources** in het middelste deel venster.
+1. Selecteer een Voorspellings bron of maak een resource door **nieuwe resource maken** te selecteren
+1. Selecteer **Opslaan**
 
 ## <a name="create-a-new-command"></a>Een nieuwe opdracht maken
 
@@ -116,11 +135,10 @@ Voeg nu een voltooiings regel toe om te reageren op de gebruiker om aan te geven
 > [!div class="mx-imgBorder"]
 > ![een voltooiings regel maken](media/custom-speech-commands/create-basic-completion-response-rule.png)
 
-
-| Instelling    | Voorgestelde waarde                        | Beschrijving                                        |
-| ---------- | -------------------------------------- | -------------------------------------------------- |
-| Regelnaam  | "ConfirmationResponse"                 | Een naam die het doel van de regel beschrijft          |
-| Voorwaarden | Geen                                   | Voor waarden die bepalen wanneer de regel kan worden uitgevoerd    |
+| Instelling    | Voorgestelde waarde                          | Beschrijving                                        |
+| ---------- | ---------------------------------------- | -------------------------------------------------- |
+| Regelnaam  | "ConfirmationResponse"                   | Een naam die het doel van de regel beschrijft          |
+| Voorwaarden | Geen                                     | Voor waarden die bepalen wanneer de regel kan worden uitgevoerd    |
 | Acties    | SpeechResponse "-OK, inschakelen van de TV" | De actie die moet worden uitgevoerd wanneer de regel voorwaarde waar is |
 
 ## <a name="try-it-out"></a>Probeer het

@@ -1,16 +1,16 @@
 ---
-title: Automatisch back-ups inschakelen bij het maken van VM'S met Azure Policy
+title: Back-up automatisch inschakelen bij het maken van VM's met Azure Policy
 description: Een artikel met informatie over het gebruik van Azure Policy om back-up automatisch in te scha kelen voor alle Vm's die in een bepaald bereik zijn gemaakt
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: ea3c0d217c8495078e91e171caef695bb32d129b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7a3b526d654936d4e7ec89127a9074146c1b0179
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980125"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450120"
 ---
-# <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Automatisch back-ups inschakelen bij het maken van VM'S met Azure Policy
+# <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Back-up automatisch inschakelen bij het maken van VM's met Azure Policy
 
 Een van de belangrijkste verantwoordelijkheden van een back-up-of nalevings beheerder in een organisatie is ervoor te zorgen dat alle bedrijfs kritieke computers een back-up maken met de juiste Bewaar periode.
 
@@ -25,6 +25,8 @@ Momenteel biedt Azure Backup een ingebouwd beleid (met behulp van Azure Policy) 
 * De opgegeven kluis en de virtuele machines die voor back-up zijn geconfigureerd, kunnen zich onder verschillende resource groepen bevindt.
 
 * Het bereik van de beheer groep wordt momenteel niet ondersteund.
+
+* Het ingebouwde beleid is momenteel niet beschikbaar in nationale Clouds.
 
 ## <a name="using-the-built-in-policy"></a>Het ingebouwde beleid gebruiken
 

@@ -1,19 +1,18 @@
 ---
 title: 'Quick Start: een Stream Analytics-taak maken met behulp van de Azure Portal'
 description: In deze snelstart wordt getoond hoe u aan de slag kunt door een Stream Analytics-taak te maken, invoer en uitvoer te configureren en een query te definiëren.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.date: 06/21/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 65114f2ddb7567b47ac3951fbaf6664654e379f0
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4abf5078a005f9d928397d9666e7f2bc55d65f19
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707374"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431555"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Snelstart: Een Stream Analytics-taak maken via Azure Portal
 
@@ -23,13 +22,13 @@ In deze snelstart wordt getoond hoe u aan de slag kunt door een Stream Analytics
 
 * Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) aan.
 
-* Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+* Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="prepare-the-input-data"></a>De invoergegevens voorbereiden
 
 Voordat u de Stream Analytics-taak definieert, moet u de invoer gegevens voorbereiden. De real-time sensor gegevens worden opgenomen in IoT Hub, die later zijn geconfigureerd als de taak invoer. Voltooi de volgende stappen om de invoergegevens voor te bereiden die zijn vereist voor de taak:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 2. Selecteer **Een resource maken** > **Internet of Things** > **IoT Hub**.
 
@@ -167,7 +166,7 @@ In deze sectie configureert u IoT Hub-apparaatinvoer in de Stream Analytics-taak
 
    ![Raspberry Pi Azure IoT Online Simulator](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
 
-## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Stream Analytics-taak starten en uitvoer controleren
+## <a name="start-the-stream-analytics-job-and-check-the-output"></a>De Stream Analytics-taak starten en uitvoer controleren
 
 1. Ga terug naar de pagina met het taakoverzicht en selecteer **Starten**.
 

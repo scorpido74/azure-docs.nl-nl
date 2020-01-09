@@ -1,27 +1,27 @@
 ---
 title: 'Zelfstudie: resultaten voor spellingcontrole ophalen met behulp van de Spellingcontrole-API voor Bing'
 titleSuffix: Azure Cognitive Services
-description: In deze zelf studie maakt u een webpagina waarmee gebruikers de Bing Spellingcontrole-API kunnen doorzoeken en resultaten weer geven.
+description: Gebruik deze zelf studie om een webpagina te maken waarmee query's naar de Bing Spellingcontrole-API worden verzonden en de resultaten worden weer gegeven.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 12/20/2019
 ms.author: aahi
-ms.openlocfilehash: 4ef45d0d67d44ee1bcf0f06f41425ca5366ce46d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 038716f43c18432b1b8e7c86c3ffbcab46f1db8f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111448"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382793"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Zelfstudie: een webpagina met Spellingcontrole bouwen
 
 In deze zelfstudie bouwen we een webpagina waarmee gebruikers query's kunnen uitvoeren op de Spellingcontrole-API voor Bing. De broncode voor deze toepassing is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html).
 
-In deze handleiding ontdekt u hoe u:
+In deze zelfstudie ontdekt u hoe u:
 
 > [!div class="checklist"]
 > - Een eenvoudige query verstuurt naar de Spellingcontrole-API voor Bing

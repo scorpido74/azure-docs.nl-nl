@@ -7,15 +7,15 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 90aec113661405f9a68d70a43d90523c1fb2376b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ad4babc68f39851beeb3a5c46d295a3342c63026
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795612"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453207"
 ---
-# <a name="azure-cognitive-services-to-solve-business-problems-using-artificial-intelligence"></a>Azure Cognitive Services om zakelijke problemen op te lossen met behulp van kunst matige intelligentie
-[Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) biedt krachtige services om uw apps te laten werken met intelligente algoritmen om te zien, horen, spreken, begrijpen en uw gebruikers te interpreteren om uw bedrijf te TRANSFORMEREN met AI. U kunt uw mobiele toepassingen slimme, aantrekkelijke en contextuele voor uw gebruikers maken. Met de Api's, Sdk's en services kunnen ontwikkel aars AI toevoegen aan hun aanbieding en hulp bieden bij het bouwen van intelligente toepassingen zonder directe AI-of Data Science-vaardig heden.
+# <a name="cognitive-services-helps-to-solve-business-problems-by-using-ai"></a>Cognitive Services helpt zakelijke problemen op te lossen met behulp van AI
+[Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) biedt krachtige services om uw apps te laten werken met intelligente algoritmen voor het weer geven, horen, spreken, begrijpen en interpreteren van uw gebruikers die uw bedrijf moeten transformeren met behulp van kunst matige intelligentie (AI). U kunt uw mobiele toepassingen slimme, aantrekkelijke en contextuele voor uw gebruikers maken. Ontwikkel aars kunnen de Api's, Sdk's en services gebruiken om AI toe te voegen aan hun aanbiedingen en te helpen bij het bouwen van intelligente toepassingen zonder directe AI-of Data Science-vaardig heden.
 
 ## <a name="cognitive-services-capabilities"></a>Cognitive Services mogelijkheden
 - **Handicap**
@@ -35,7 +35,7 @@ ms.locfileid: "72795612"
     - Realtime spraakomzetting
 
 - **Taal**
-    - Contextuele taal-uitleg-aangepaste intentie analyse
+    - Uitleg over contextuele talen, aangepaste intentie analyse
     - Sentiment analyse, detectie van sleutel zinnen
     - Tekst vertalingen tot 60 talen
     - Teksttoezicht
@@ -52,11 +52,11 @@ ms.locfileid: "72795612"
     - Uitgebreide zoek opdracht voor nieuws, afbeelding, video, Web en lokale bedrijfs entiteiten
     - Maatwerk en aangepaste zoek functies
 
-- Ondersteuning voor **containers** voor Cognitive Services
+- Ondersteuning voor containers voor Cognitive Services
 
  ## <a name="references"></a>Naslaginformatie
-   - [Azure-portal](https://portal.azure.com) 
-   - [Documentatie](/azure/cognitive-services/welcome)
+   - [Azure Portal](https://portal.azure.com) 
+   - [Documentatie over Cognitive Services](/azure/cognitive-services/welcome)
    - [Snelstartgidsen](/azure/cognitive-services/cognitive-services-apis-create-account)
    - [Container ondersteuning](/azure/cognitive-services/cognitive-services-container-support)
    - [Snelstartgidsen](/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows)

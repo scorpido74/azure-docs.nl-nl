@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 23a3a2629c6f2f89c4b8f6d5af57bcf3b6bb67dd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 63f386212b0277c3b5ee383e707d4c32fa4e63fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214914"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428850"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Azure Monitor logboeken voor open bare basis Load Balancer
 
@@ -51,7 +51,7 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com). Als u nog geen load 
    * **Streamen naar een Event Hub**
    * **Verzenden naar Log Analytics**
 
-    ### <a name="archive-to-a-storage-account"></a>Archiveren naar een opslag account
+    ### <a name="archive-to-a-storage-account"></a>Archiveren naar een opslagaccount
     U hebt een opslag account nodig dat al is gemaakt voor dit proces.  Zie [een opslag account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) voor meer informatie over het maken van een opslag account.
 
     1. Schakel het selectie vakje in naast **archiveren naar een opslag account**.
@@ -171,7 +171,7 @@ Maak verbinding met uw opslag account en haal de JSON-logboek vermeldingen op vo
 > Als u bekend bent met Visual Studio en de basisconcepten van het wijzigen van waarden voor constanten en variabelen in C#, kunt u de [logboekconversieprogramma’s](https://github.com/Azure-Samples/networking-dotnet-log-converter) gebruiken die beschikbaar zijn in GitHub.
 
 ## <a name="stream-to-an-event-hub"></a>Streamen naar een Event Hub
-Wanneer diagnostische gegevens worden gestreamd naar een Event Hub, kan deze worden gebruikt voor gecentraliseerde logboek analyse in een SIEM-hulp programma van derden met Azure Monitor-integratie. Zie [Azure-bewakings gegevens streamen naar een event hub](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#tools-with-azure-monitor-integration) voor meer informatie
+Wanneer diagnostische gegevens worden gestreamd naar een Event Hub, kan deze worden gebruikt voor gecentraliseerde logboek analyse in een SIEM-hulp programma van derden met Azure Monitor-integratie. Zie [Azure-bewakings gegevens streamen naar een event hub](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration) voor meer informatie
 
 ## <a name="send-to-log-analytics"></a>Verzenden naar Log Analytics
 De diagnostische gegevens van resources in azure kunnen rechtstreeks naar een Log Analytics-werk ruimte worden verzonden, waar complexe query's kunnen worden uitgevoerd op basis van de informatie voor probleem oplossing en analyse.  Zie [Azure-resource logboeken verzamelen in log Analytics werk ruimte in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace) voor meer informatie.

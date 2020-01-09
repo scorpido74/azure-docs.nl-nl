@@ -84,6 +84,8 @@
       items:
         - name: Gegevens transformeren met een toewijzingsgegevensstroom
           href: tutorial-data-flow.md
+        - name: Videozelfstudies om gegevens toe te wijzen
+          href: data-flow-tutorials.md
         - name: Gegevens voorbereiden met een wrangling-gegevensstroom
           href: wrangling-data-flow-tutorial.md
     - name: Externe transformaties

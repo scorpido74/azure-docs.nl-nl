@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een on-premises WCF REST-service beschikbaar maken voor externe clients met behulp van Azure WCF Relay'
+title: Een on-premises WCF REST-service beschikbaar stellen aan clients met Azure Relay
 description: 'Zelf studie: een client-en service toepassing bouwen met behulp van WCF Relay.'
 services: service-bus-relay
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: e2dd0448dfed55450a6319936f49831e5d6d77f3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ee090ca0d7bbdad70147b85644952143c086d336
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718858"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452296"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Zelf studie: een on-premises WCF REST-service beschikbaar maken voor externe clients met behulp van Azure WCF Relay
 
@@ -104,7 +104,7 @@ In het service contract wordt aangegeven welke bewerkingen door de service worde
    > De naamruimte van het servicecontract bevat meestal een schematische naam die ook versie-informatie bevat. Als u versie-informatie in de naamruimte van het servicecontract gebruikt, kunnen services grote wijzigingen isoleren door een nieuw servicecontract te definiëren met een nieuwe naamruimte en het beschikbaar te maken op een nieuw eindpunt. Op deze manier kunnen clients het oude service contract blijven gebruiken zonder dat ze moeten worden bijgewerkt. De versie-informatie kan bestaan uit een datum of een buildnummer. Zie [Serviceversiebeheer](/dotnet/framework/wcf/service-versioning) voor meer informatie. Voor deze zelf studie bevat het naamgevings schema van de naam ruimte van het service contract geen versie-informatie.
    >
 
-1. In de `IEchoContract`-interface declareert u een methode voor de enkelvoudige bewerking waarvan het `IEchoContract` contract in de interface wordt weer gegeven en past u het `OperationContractAttribute` kenmerk toe op de methode die u wilt weer geven als onderdeel van het open bare WCF Relay contract, als volgt. :
+1. In de `IEchoContract`-interface declareert u een methode voor de enkelvoudige bewerking waarvan het `IEchoContract` contract in de interface wordt weer gegeven en past u het `OperationContractAttribute` kenmerk toe op de methode die u als onderdeel van het open bare WCF Relay contract wilt weer geven. dit doet u als volgt:
 
     ```csharp
     [OperationContract]

@@ -1,25 +1,16 @@
 ---
-title: Netwerk modi configureren voor Azure Service Fabric container Services | Microsoft Docs
+title: Netwerk modi configureren voor container Services
 description: Meer informatie over het instellen van de verschillende netwerk modi die worden ondersteund door Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
 author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: aa7b63453a5147742e27b9bb32ad05221e745f8c
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ba1fa92559d39a481008d1dd18036e4232be1bfa
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168794"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639799"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric container netwerk modi
 
@@ -30,7 +21,7 @@ Als u één container service met een statisch eind punt in uw service manifest 
 Wanneer een container service opnieuw wordt gestart of naar een ander knoop punt in het cluster wordt verplaatst, wordt het IP-adres gewijzigd. Daarom wordt het gebruik van het dynamisch toegewezen IP-adres niet aanbevolen voor het detecteren van container Services. Alleen de Service Fabric Naming Service of de DNS-service moet worden gebruikt voor service detectie. 
 
 >[!WARNING]
->In Azure is een totaal van 65.356 IP-adressen per virtueel netwerk toegestaan. De som van het aantal knoop punten en het aantal container service-instanties (die gebruikmaken van de open modus) mag niet groter zijn dan 65.356 IP-adressen in een virtueel netwerk. Voor scenario's met hoge dichtheid wordt u aangeraden NAT-netwerk modus te activeren. Daarnaast hebben andere afhankelijkheden, zoals de load balancer, andere [beperkingen](https://docs.microsoft.com/azure/azure-subscription-service-limits) om rekening mee te houden. Momenteel zijn Maxi maal 50 Ip's per knoop punt getest en stabiel bewezen. 
+>In Azure is een totaal van 65.356 IP-adressen per virtueel netwerk toegestaan. De som van het aantal knoop punten en het aantal container service-instanties (die gebruikmaken van de open modus) mag niet groter zijn dan 65.356 IP-adressen in een virtueel netwerk. Voor scenario's met hoge dichtheid wordt u aangeraden NAT-netwerk modus te activeren. Daarnaast hebben andere afhankelijkheden, zoals de load balancer, andere [beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) om rekening mee te houden. Momenteel zijn Maxi maal 50 Ip's per knoop punt getest en stabiel bewezen. 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Open-netwerk modus instellen
@@ -203,14 +194,14 @@ Wanneer een container service opnieuw wordt gestart of naar een ander knoop punt
    |Instelling |Waarde | |
    | --- | --- | --- |
    |Prioriteit |2000 | |
-   |Naam |Custom_Dns  | |
+   |Name |Custom_Dns  | |
    |Bron |VirtualNetwork | |
    |Bestemming | VirtualNetwork | |
    |Service | DNS (UDP/53) | |
-   |Bewerking | Toestaan  | |
+   |Actie | Toestaan  | |
    | | |
 
-4. Geef de netwerk modus op in het manifest van de toepassing voor elke service: `<NetworkConfig NetworkType="Open">`. De **Open** -netwerk modus resulteert in de service die een toegewezen IP-adres krijgt. Als er geen modus is opgegeven, wordt de standaard waarde **NAT** modus voor de service gebruikt. In het volgende voor beeld van een manifest kunnen de `NodeContainerServicePackage1`-en `NodeContainerServicePackage2`-services elk Luis teren op dezelfde poort (beide services Luis teren op `Endpoint1`). Wanneer de open-netwerk modus is opgegeven, kunnen `PortBinding` configuraties niet worden opgegeven.
+4. Geef de netwerk modus op in het manifest van de toepassing voor elke service: `<NetworkConfig NetworkType="Open">`. De **Open** -netwerk modus resulteert in de service die een toegewezen IP-adres krijgt. Als er geen modus is opgegeven, wordt de standaard waarde **NAT** modus voor de service gebruikt. In het volgende voor beeld van een manifest kunnen de services `NodeContainerServicePackage1` en `NodeContainerServicePackage2` elk op dezelfde poort Luis teren (beide services Luis teren op `Endpoint1`). Wanneer de open-netwerk modus is opgegeven, kunnen `PortBinding` configuraties niet worden opgegeven.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>

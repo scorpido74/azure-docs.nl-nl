@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 941dcc268c2af9e011af01d3da224b90e9ee5018
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: aea0adc9217a7729c9bf14211cf5da422ac9e198
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820798"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432538"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Probleemoplossing voor en antwoorden op vragen over Application Insights voor Java
 Vragen of problemen met [Azure-toepassing inzichten in Java][java]? Hier volgen enkele tips.
@@ -52,7 +52,6 @@ Vragen of problemen met [Azure-toepassing inzichten in Java][java]? Hier volgen 
 * Hebt u Java-agent geconfigureerd door de volgende [Java-Agent te configureren](java-agent.md) ?
 * Zorg ervoor dat zowel de Java-Agent jar als het AI-Agent. XML-bestand in dezelfde map worden geplaatst.
 * Zorg ervoor dat de afhankelijkheid die u probeert automatisch te verzamelen, wordt ondersteund voor automatische verzameling. Momenteel ondersteunen we alleen MySQL, MsSQL, Oracle DB en Azure cache voor redis-afhankelijkheids verzameling.
-* Gebruikt u JDK 1,7 of 1,8? Momenteel bieden we geen ondersteuning voor afhankelijkheids verzamelingen in JDK 9.
 
 ## <a name="no-usage-data"></a>Geen gebruiks gegevens
 **Ik zie gegevens over aanvragen en reactie tijden, maar geen pagina weergave, browser of gebruikers gegevens.**
@@ -75,7 +74,7 @@ In code:
     config.setTrackingIsDisabled(true);
 ```
 
-**Of**
+**of**
 
 Werk ApplicationInsights. XML bij (in de map resources in uw project). Voeg het volgende toe onder het hoofd knooppunt:
 
@@ -100,7 +99,7 @@ Met behulp van de XML-methode moet u de toepassing opnieuw opstarten wanneer u d
 
 Als u meer informatie wilt over wat er gebeurt in de API, voegt u `<SDKLogger/>` toe onder het hoofd knooppunt van het configuratie bestand ApplicationInsights. XML.
 
-### <a name="applicationinsightsxml"></a>ApplicationInsights. XML
+### <a name="applicationinsightsxml"></a>ApplicationInsights.xml
 
 U kunt de logboeken ook een instructie geven om uit te voeren naar een bestand:
 

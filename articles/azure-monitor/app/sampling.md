@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
-ms.openlocfilehash: 4b0dca1215cfecea5c9943bd27ee8a5c1de45311
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d88df0c7e17d297162a1921021b89f02077c2ac7
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893362"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560382"
 ---
 # <a name="sampling-in-application-insights"></a>Steekproeven in Application Insights
 
@@ -361,7 +361,7 @@ Gebruik dit type steek proef als uw app vaak het maandelijkse quotum overschrijd
 
 Stel de sampling frequentie in op de pagina gebruik en geschatte kosten:
 
-![Klik op de Blade toepassings overzicht op instellingen, quotum, voor beelden, selecteer een sampling frequentie en klik op bijwerken.](./media/sampling/04.png)
+![Klik op de Blade toepassings overzicht op instellingen, quotum, voor beelden, selecteer een sampling frequentie en klik op bijwerken.](./media/sampling/data-sampling.png)
 
 Net als bij andere soorten steek proeven blijven de verwante telemetrie-items behouden. Wanneer u bijvoorbeeld de telemetrie in de zoek actie inspecteert, kunt u de aanvraag voor een bepaalde uitzonde ring vinden. Metrische aantallen, zoals de frequentie van aanvragen en uitzonderings snelheden, worden correct bewaard.
 
@@ -543,7 +543,7 @@ Volg de instructies in [Dit](https://docs.microsoft.com/azure/azure-functions/fu
         {
             if(somecondition)
             {
-                ((ISupportSampling)item).SamplingPercentage = 100;
+                ((ISupportSampling)telemetry).SamplingPercentage = 100;
             }
         }
       }

@@ -47,6 +47,8 @@
       href: manage-feature-flags.md
     - name: Key Vault-referenties gebruiken in ASP.NET Core
       href: use-key-vault-references-dotnet-core.md
+    - name: Key Vault-referenties gebruiken in Spring Boot
+      href: use-key-vault-references-spring-boot.md
     - name: Integreren met een CI/CD-pijplijn
       href: integrate-ci-cd-pipeline.md
 - name: Voorbeelden

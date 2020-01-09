@@ -1,6 +1,6 @@
 ---
-title: VPN-Gateway migratie van klassiek naar Resource Manager | Microsoft Docs
-description: Deze pagina bevat een overzicht van de VPN-Gateway-klassieke naar Resource Manager-migratie.
+title: Migratie van klassieke en Resource Manager VPN Gateway | Microsoft Docs
+description: Op deze pagina vindt u een overzicht van de VPN Gateway klassieke naar Resource Manager-migratie.
 documentationcenter: na
 services: vpn-gateway
 author: amsriva
@@ -14,57 +14,57 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: amsriva
-ms.openlocfilehash: b65b47389611bcc0e5acb3c7ebff672f72a87581
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 966df2a01d0178c19c2ae6e698a6610bf0e321c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761565"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425827"
 ---
-# <a name="vpn-gateway-classic-to-resource-manager-migration"></a>VPN-Gateway migratie van klassiek naar Resource Manager
-VPN-Gateways kunnen nu worden gemigreerd van klassiek naar Resource Manager-implementatiemodel. Meer informatie over Azure Resource Manager [functies en voordelen](../azure-resource-manager/resource-group-overview.md). In dit artikel wordt gedetailleerd we beschreven hoe u het migreren van klassieke implementaties naar nieuwere op basis van Resource Manager-model. 
+# <a name="vpn-gateway-classic-to-resource-manager-migration"></a>Migratie van klassieke en Resource Manager VPN Gateway
+VPN-gateways kunnen nu worden gemigreerd van het klassieke naar het Resource Manager-implementatie model. U kunt meer lezen over Azure Resource Manager [functies en voor delen](../azure-resource-manager/management/overview.md). In dit artikel wordt beschreven hoe u migreert van klassieke implementaties naar het nieuwere model op basis van Resource Manager. 
 
-VPN-Gateways worden gemigreerd als onderdeel van de VNet-migratie van klassiek naar Resource Manager. Deze migratie wordt een VNet uitgevoerd op een tijdstip. Er is geen aanvullende vereiste hulpprogramma's of vereisten voor migratie. Migratiestappen zijn identiek aan de migratie van bestaande VNet en worden beschreven op [pagina voor migratie van IaaS-resources](../virtual-machines/windows/migration-classic-resource-manager-ps.md). Er is geen gegevens pad-downtime tijdens de migratie en bestaande workloads wilt blijven werken zonder verlies van gegevens van on-premises connectiviteit tijdens de migratie. Het openbare IP-adres dat is gekoppeld aan de VPN-gateway wordt niet gewijzigd tijdens het migratieproces. Dit betekent dat niet u uw on-premises router opnieuw configureren moet nadat de migratie is voltooid.  
+VPN-gateways worden gemigreerd als onderdeel van de VNet-migratie van klassiek naar Resource Manager. Deze migratie vindt één VNet per keer plaats. Er is geen extra vereiste voor de migratie van hulpprogram ma's of vereisten. Migratie stappen zijn identiek aan bestaande VNet-migratie en worden beschreven op de [pagina IaaS resources-migratie](../virtual-machines/windows/migration-classic-resource-manager-ps.md). Er is geen uitval tijd tijdens de migratie en daarom blijven bestaande workloads functioneren zonder verlies van on-premises connectiviteit tijdens de migratie. Het open bare IP-adres dat is gekoppeld aan de VPN-gateway, verandert tijdens het migratie proces niet. Dit betekent dat u de on-premises router niet opnieuw hoeft te configureren nadat de migratie is voltooid.  
 
-Het model in Resource Manager wijkt af van het klassieke model en bestaat uit virtuele netwerkgateways, lokale netwerkgateways en verbindingsresources. Deze staan voor de VPN-gateway zelf, de lokale-site respectievelijk on premises adresruimte en connectiviteit tussen de twee. Nadat de migratie is voltooid uw gateways niet beschikbaar zijn in het klassieke model en alle bewerkingen op virtuele netwerkgateways, lokale netwerkgateways en connection-objecten moeten worden uitgevoerd met behulp van Resource Manager-model.
+Het model in Resource Manager wijkt af van het klassieke model en bestaat uit virtuele netwerk gateways, lokale netwerk gateways en verbindings bronnen. Deze vertegenwoordigen de VPN-gateway zelf, de lokale site die de on-premises adres ruimte en connectiviteit tussen de twee heeft. Zodra de migratie is voltooid, zijn de gateways niet meer beschikbaar in het klassieke model en kunnen alle beheer bewerkingen op virtuele netwerk gateways, lokale netwerk gateways en verbindings objecten worden uitgevoerd met het Resource Manager-model.
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
-Meest voorkomende scenario's voor VPN-verbindingen zijn inbegrepen bij het klassieke model naar Resource Manager-migratie. De ondersteunde scenario's zijn:
+De meest voorkomende scenario's voor VPN-connectiviteit worden besproken door de migratie van het klassieke model naar Resource Manager. De ondersteunde scenario's zijn:
 
-* Verwijzen naar de site-connectiviteit
-* Connectiviteit tussen sites met VPN-Gateway verbonden met on premises locatie
+* Site connectiviteit aanwijzen
+* Site-naar-site-verbinding met VPN Gateway verbonden met on-premises locatie
 * VNet-naar-VNet-connectiviteit tussen twee VNets met VPN-gateways
-* Meerdere VNets die is verbonden met hetzelfde on premises locatie
-* Meerdere site-connectiviteit
-* VNets geforceerde tunnels zijn ingeschakeld
+* Meerdere VNets zijn verbonden met hetzelfde on-premises locatie
+* Connectiviteit op meerdere locaties
+* Geforceerde tunneling is ingeschakeld VNets
 
-Scenario's die niet worden ondersteund zijn:  
+Scenario's die niet worden ondersteund, zijn onder andere-  
 
-* VNet met zowel ExpressRoute-Gateway en VPN-Gateway wordt momenteel niet ondersteund.
-* Doorvoer scenario's waarin de VM-extensies zijn verbonden met on-premises servers. Doorvoer VPN-connectiviteit beperkingen worden hieronder beschreven.
+* VNet met zowel de ExpressRoute-gateway als de VPN Gateway wordt momenteel niet ondersteund.
+* Transit scenario's waarbij VM-extensies zijn verbonden met on-premises servers. De beperkingen voor transit VPN-verbindingen worden hieronder beschreven.
 
 > [!NOTE]
-> CIDR-validatie in Resource Manager-model is meer strikt dan in het klassieke model. Zorg ervoor dat klassieke adresbereiken opgegeven aan de geldige CIDR-indeling hebben voldoen voordat u begint met de migratie voordat u migreert. CIDR kan worden gevalideerd met behulp van een algemene CIDR-systeemstatuscontrolepunten. VNet- of lokale sites met een ongeldige CIDR-bereiken wanneer gemigreerd zou leiden tot mislukte status.
+> CIDR-validatie in het Resource Manager-model is strikter dan het in het klassieke model. Voordat u migreert, moet u ervoor zorgen dat de klassieke adresbereiken voldoen aan de geldige CIDR-indeling voordat u begint met de migratie. CIDR kan worden gevalideerd met behulp van algemene CIDR-validatie functies. VNet-of lokale sites met ongeldige CIDR-bereiken die worden gemigreerd, resulteren in een fout status.
 > 
 > 
 
-## <a name="vnet-to-vnet-connectivity-migration"></a>VNet-naar-VNet-connectiviteit migratie
-VNet-naar-VNet-connectiviteit in de klassieke versie werd bereikt door het maken van een lokale site-weergave van het gekoppelde VNet. Klanten zijn vereist voor het maken van twee lokale sites die de twee vnet's die nodig is om te worden met elkaar verbonden weergegeven. Deze zijn verbonden met het bijbehorende vnet's met behulp van IPsec-tunnel om verbinding tussen de twee vnet's te maken. Dit model heeft beheerbaarheid uitdagingen omdat wijzigingen adresbereik in het ene VNet moeten ook worden beheerd in de weergave van het bijbehorende lokale site. Deze tijdelijke oplossing is niet meer nodig in Resource Manager-model. De verbinding tussen de twee VNets kan rechtstreeks worden bereikt met behulp van 'Vnet2Vnet-verbindingstype in resource verbinding. 
+## <a name="vnet-to-vnet-connectivity-migration"></a>Migratie van VNet-naar-VNet-connectiviteit
+VNet-naar-VNet-connectiviteit in het klassiek is bereikt door een lokale site weergave van het verbonden VNet te maken. Klanten moesten twee lokale sites maken die de twee VNets vertegenwoordigen die samen moeten worden verbonden. Deze zijn vervolgens verbonden met de bijbehorende VNets met behulp van IPsec-tunnel om verbinding te maken tussen de twee VNets. Dit model heeft beheer baarheids problemen omdat wijzigingen in het adres bereik in één VNet ook moeten worden behouden in de bijbehorende lokale site weergave. In het Resource Manager-model is deze tijdelijke oplossing niet meer nodig. De verbinding tussen de twee VNets kan rechtstreeks worden bereikt met het verbindings type ' Vnet2Vnet ' in de verbindings bron. 
 
-![Schermafbeelding van de VNet-van VNet migreren.](./media/vpn-gateway-migration/migration1.png)
+![Scherm opname van VNet-naar-VNet-migratie.](./media/vpn-gateway-migration/migration1.png)
 
-Tijdens de migratie van de VNet detecteren we dat de gekoppelde entiteit met huidige VNet-VPN-gateway is een ander VNet en ervoor te zorgen dat zodra de migratie van beide Vnetten is voltooid, niet meer ziet u twee lokale sites voor het andere VNet. Het klassieke model van twee VPN-gateways, twee lokale sites en twee verbindingen tussen deze wordt omgezet naar Resource Manager-model met twee VPN-gateways en twee verbindingen van het type Vnet2Vnet.
+Tijdens de VNet-migratie zien we dat de verbonden entiteit met de huidige VNet VPN-gateway een ander VNet is en ervoor zorgt dat de migratie van beide VNets is voltooid, maar u hebt niet langer twee lokale sites die het andere VNet vertegenwoordigen. Het klassieke model van twee VPN-gateways, twee lokale sites en twee verbindingen ertussen worden omgezet naar het Resource Manager-model met twee VPN-gateways en twee verbindingen van het type Vnet2Vnet.
 
-## <a name="transit-vpn-connectivity"></a>Doorvoer VPN-verbinding
-U kunt VPN-gateways configureren in een topologie dat on-premises connectiviteit voor een VNet wordt bereikt door verbinding te maken met een ander VNet die rechtstreeks is verbonden met on-premises. Dit is doorvoer VPN-connectiviteit waar-exemplaren in de eerste VNet zijn verbonden met on-premises bronnen via tijdens verzending naar de VPN-gateway in het gekoppelde VNet dat rechtstreeks is verbonden met on-premises. Voor het bereiken van deze configuratie in het klassieke implementatiemodel, moet u een lokale site dat is samengevoegd voorvoegsels voor het gekoppelde VNet te maken en on-premises-adresruimte. Deze representational lokale site wordt vervolgens verbonden met de VNet-naar-connectiviteit van de doorvoer te bereiken. Dit klassieke model heeft ook dezelfde beheerbaarheid uitdagingen omdat eventuele wijzigingen in de on-premises adresbereik moet ook worden ingesteld op de lokale site die de combinatie van VNet- en on-premises. Introductie van BGP-ondersteuning in Resource Manager ondersteund gateways vereenvoudigt beheerbaarheid, omdat de verbonden gateways kunnen informatie over routes van on-premises zonder handmatige aanpassingen op voorvoegsels.
+## <a name="transit-vpn-connectivity"></a>VPN-verbinding tussen Transit
+U kunt VPN-gateways configureren in een topologie, zodat de on-premises connectiviteit voor een VNet wordt bereikt door verbinding te maken met een ander VNet dat rechtstreeks is verbonden met on-premises. Dit is een transit VPN-verbinding waarbij exemplaren in het eerste VNet via door voer naar de VPN-gateway worden verbonden met on-premises bronnen, die rechtstreeks zijn verbonden met on-premises. Voor het uitvoeren van deze configuratie in het klassieke implementatie model moet u een lokale site maken met geaggregeerde voor voegsels die zowel de verbonden VNet-als on-premises adres ruimte vertegenwoordigen. Deze representatieve lokale site is vervolgens verbonden met het VNet om een doorvoer verbinding te bewerkstelligen. Dit klassieke model heeft ook vergelijk bare uitdagingen voor beheer, omdat elke wijziging in het on-premises adres bereik ook moet worden onderhouden op de lokale site die de aggregatie van VNet en on-premises vertegenwoordigt. De introductie van BGP-ondersteuning in Resource Manager ondersteunt gateways vereenvoudigt de beheer baarheid omdat de verbonden gateways routes van on-premises kunnen ontdekken zonder hand matige aanpassing van voor voegsels.
 
-![Schermopname van het scenario met routering doorvoer.](./media/vpn-gateway-migration/migration2.png)
+![Scherm opname van het scenario voor transit routering.](./media/vpn-gateway-migration/migration2.png)
 
-Omdat we VNet naar VNet-connectiviteit transformeren zonder lokale sites, verliest het scenario doorvoer on-premises connectiviteit voor VNet die indirect is verbonden met on-premises. Het verlies van connectiviteit kan grotendeels worden opgevangen in de volgende twee manieren, nadat de migratie is voltooid: 
+Omdat we VNet transformeren naar VNet-connectiviteit zonder dat hiervoor lokale sites zijn vereist, verliest het Transit scenario on-premises connectiviteit voor VNet dat indirect is verbonden met on-premises. Het verlies van de connectiviteit kan op de volgende twee manieren worden verholpen, nadat de migratie is voltooid- 
 
-* BGP inschakelen op VPN-gateways die bij elkaar en met on-premises zijn verbonden. BGP inschakelen, wordt connectiviteit zonder andere configuratiewijziging hersteld omdat routes hebt geleerd en aangekondigd tussen VNet-gateways. Houd er rekening mee dat BGP-optie alleen beschikbaar op Standard en hoger SKU's is.
-* Verbinding met een expliciete van betrokken VNet naar de lokale netwerkgateway die on-premises locatie vertegenwoordigt. Hiervoor moeten ook wijzigen van de configuratie op de on-premises router maken en configureren van de IPsec-tunnel.
+* Schakel BGP in op VPN-gateways die met elkaar zijn verbonden en on-premises. Als BGP wordt ingeschakeld, wordt de connectiviteit hersteld zonder enige andere configuratie wijziging omdat routes worden geleerd en geadverteerd tussen VNet-gateways. Houd er rekening mee dat BGP Option alleen beschikbaar is voor Standard-en hogere Sku's.
+* Stel een expliciete verbinding in van het betreffende VNet naar de lokale netwerk gateway die de on-premises locatie vertegenwoordigt. Hiervoor moet ook de configuratie van de on-premises router worden gewijzigd om de IPsec-tunnel te maken en te configureren.
 
 ## <a name="next-steps"></a>Volgende stappen
-Nadat u meer over de ondersteuning van VPN-gateway-migratie, gaat u naar [platform ondersteunde migratie van IaaS-resources van klassiek naar Resource Manager](../virtual-machines/windows/migration-classic-resource-manager-ps.md) aan de slag.
+Nadat u hebt geprofiteerd van de ondersteuning van VPN-gateway migratie, gaat u naar door het [platform ondersteunde migratie van IaaS-resources van klassiek naar Resource Manager](../virtual-machines/windows/migration-classic-resource-manager-ps.md) om aan de slag te gaan.
 

@@ -4,15 +4,15 @@ description: Diagnostische gegevens van Azure gebruiken voor het opsporen van fo
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: d1721411b57fc3542af48fc5f48eca7e4a2d06c8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1bdefc6b61e4e5cc5b8648880c5fdd8662af1bc1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552142"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395357"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Wat is Azure Diagnostics extensie?
 De uitbrei ding Azure Diagnostics is een agent in azure die het verzamelen van diagnostische gegevens op een geïmplementeerde toepassing mogelijk maakt. U kunt de diagnostische uitbrei ding van een aantal verschillende bronnen gebruiken. Dit wordt momenteel ondersteund: de web-en werk rollen van Azure Cloud service (klassiek), Virtual Machines, schaal sets voor virtuele machines en Service Fabric. Andere Azure-Services hebben verschillende diagnostische methoden. Zie [overzicht van bewaking in azure](../../azure-monitor/overview.md).
@@ -23,11 +23,11 @@ Er is een [Linux-versie van de uitbrei ding](../../virtual-machines/extensions/d
 ## <a name="data-you-can-collect"></a>Gegevens die u kunt verzamelen
 De uitbrei ding Azure Diagnostics kan de volgende typen gegevens verzamelen:
 
-| Gegevens bron | Beschrijving |
+| Gegevensbron | Beschrijving |
 | --- | --- |
 | Metrische gegevens van prestatie meter item |Besturings systeem en aangepaste prestatie meter items |
 | Toepassings logboeken |Berichten traceren die zijn geschreven door uw toepassing |
-| Windows-gebeurtenis logboeken |Gegevens die worden verzonden naar het Windows-systeem voor gebeurtenis logboek registratie |
+| Windows-gebeurtenislogboeken |Gegevens die worden verzonden naar het Windows-systeem voor gebeurtenis logboek registratie |
 | .NET Event source-logboeken |Code schrijven van gebeurtenissen met de .NET [Event source](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) -klasse |
 | IIS-logboeken |Informatie over IIS-websites |
 | [Op Manifest gebaseerde ETW-logboeken](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |Event Tracing for Windows gebeurtenissen die door een proces worden gegenereerd. i |

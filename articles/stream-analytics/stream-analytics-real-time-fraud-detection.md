@@ -1,24 +1,23 @@
 ---
 title: Fraude detectie in realtime met behulp van Azure Stream Analytics
 description: Meer informatie over het maken van een real-time fraude detectie oplossing met Stream Analytics. Gebruik een Event Hub voor de verwerking van real-time gebeurtenis.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 19c9448b6a743302eb81bb208444336d6435f114
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 168f11e82305a0e08923289e71ae6ea0d36c1734
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947048"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458788"
 ---
-# <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Aan de slag met Azure Stream Analytics: Fraudebewaking in realtime
+# <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Aan de slag met Azure Stream Analytics: fraude detectie in realtime
 
-Deze zelf studie biedt een end-to-end illustratie van het gebruik van Azure Stream Analytics. In deze zelfstudie leert u procedures om het volgende te doen: 
+Deze zelf studie biedt een end-to-end illustratie van het gebruik van Azure Stream Analytics. Procedures voor: 
 
 * Streaming-gebeurtenissen naar een exemplaar van Azure Event Hubs brengen. In deze zelf studie gebruikt u een app die een stroom van de meta gegevens van mobiele telefoon records simuleert.
 
@@ -28,7 +27,7 @@ Deze zelf studie biedt een end-to-end illustratie van het gebruik van Azure Stre
 
 In deze zelf studie wordt het voor beeld van fraude detectie in realtime gebruikt op basis van gegevens van telefoon gesprekken. De techniek die wordt geïllustreerd is ook geschikt voor andere typen fraude detectie, zoals fraude via credit card of identiteits diefstal. 
 
-## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>Scenario: Fraude detectie voor telecom municatie en SIM in realtime
+## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>Scenario: fraude detectie voor telecom municatie en SIM in realtime
 
 Een telecommunicatie bedrijf heeft een grote hoeveelheid gegevens voor inkomende oproepen. Het bedrijf wil frauduleuze aanroepen in real-time detecteren zodat ze klanten kunnen informeren of service afsluiten voor een specifiek nummer. Eén type SIM-fraude omvat meerdere aanroepen van dezelfde identiteit op hetzelfde moment, maar op geografisch verschillende locaties. Om dit soort fraude te detecteren, moet het bedrijf binnenkomende telefoon records onderzoeken en zoeken naar specifieke patronen, in dit geval, voor aanroepen op hetzelfde tijdstip in verschillende landen/regio's. Alle telefoon records die in deze categorie vallen, worden naar de opslag locatie geschreven voor verdere analyse.
 
@@ -42,13 +41,13 @@ Zorg ervoor dat u het volgende hebt voordat u begint:
 * De Call-event generator-app, [TelcoGenerator. zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip), die kan worden gedownload van het micro soft Download centrum. Pak dit pakket uit in een map op uw computer. Als u de bron code wilt zien en de app in een fout opsporingsprogramma wilt uitvoeren, kunt u de app-bron code ophalen van [github](https://aka.ms/azure-stream-analytics-telcogenerator). 
 
     >[!NOTE]
-    >Het gedownloade zip-bestand kan door Windows worden geblokkeerd. Als u deze niet kunt uitpakken, klikt u met de rechter muisknop op het bestand en selecteert u **Eigenschappen**. Als het bericht ' dit bestand is afkomstig van een andere computer en kan worden geblokkeerd om deze computer te beveiligen ' wordt weer gegeven , selecteert u de optie deblokkeren en klikt u vervolgens op **Toep assen**.
+    >Het gedownloade zip-bestand kan door Windows worden geblokkeerd. Als u deze niet kunt uitpakken, klikt u met de rechter muisknop op het bestand en selecteert u **Eigenschappen**. Als het bericht ' dit bestand is afkomstig van een andere computer en kan worden geblokkeerd om deze computer te beveiligen ' wordt weer gegeven, selecteert u de optie **deblokkeren** en klikt u vervolgens op **Toep assen**.
 
 Als u de resultaten van de streaming Analytics-taak wilt bekijken, hebt u ook een hulp programma nodig om de inhoud van een Azure Blob Storage-container weer te geven. Als u Visual Studio gebruikt, kunt u [Azure-Hulpprogram ma's voor Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) of [Visual Studio Cloud Explorer](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer)gebruiken. U kunt ook zelfstandige hulpprogram ma's installeren, zoals [Azure Storage Explorer](https://storageexplorer.com/) of [Cerulean](https://www.cerebrata.com/products/cerulean/features/azure-storage). 
 
 ## <a name="create-an-azure-event-hubs-to-ingest-events"></a>Een Azure-Event Hubs maken voor het opnemen van gebeurtenissen
 
-Als u een gegevens stroom wilt analyseren , neemt u deze op in Azure. Een typische manier om gegevens op te nemen, is door [Azure Event hubs](../event-hubs/event-hubs-what-is-event-hubs.md)te gebruiken. Hiermee kunt u miljoenen gebeurtenissen per seconde opnemen en vervolgens de gebeurtenis gegevens verwerken en opslaan. Voor deze zelf studie maakt u een Event Hub en hebt u vervolgens de oproep-event generator-app oproep gegevens verzenden naar die Event Hub. Zie de [Azure service bus-documentatie](https://docs.microsoft.com/azure/service-bus/)voor meer informatie over Event hubs.
+Als u een gegevens stroom wilt analyseren, neemt *u deze op* in Azure. Een typische manier om gegevens op te nemen, is door [Azure Event hubs](../event-hubs/event-hubs-what-is-event-hubs.md)te gebruiken. Hiermee kunt u miljoenen gebeurtenissen per seconde opnemen en vervolgens de gebeurtenis gegevens verwerken en opslaan. Voor deze zelf studie maakt u een Event Hub en hebt u vervolgens de oproep-event generator-app oproep gegevens verzenden naar die Event Hub. Zie de [Azure service bus-documentatie](https://docs.microsoft.com/azure/service-bus/)voor meer informatie over Event hubs.
 
 >[!NOTE]
 >Zie [een event hubs naam ruimte maken en een event hub met behulp van de Azure Portal](../event-hubs/event-hubs-create.md)voor een gedetailleerde versie van deze procedure. 
@@ -56,9 +55,9 @@ Als u een gegevens stroom wilt analyseren , neemt u deze op in Azure. Een typisc
 ### <a name="create-a-namespace-and-event-hub"></a>Een naamruimte en event hub maken
 In deze procedure maakt u eerst een Event Hub naam ruimte en voegt u vervolgens een Event Hub aan die naam ruimte toe. Event hub-naam ruimten worden gebruikt om gerelateerde exemplaren van de gebeurtenis-bus logisch te groeperen. 
 
-1. Meld u aan bij de Azure Portal en klik op **een resource** > maken**Internet of Things** > **Event hub**. 
+1. Meld u aan bij de Azure Portal en klik op **een resource maken** > **Internet of Things** > **Event hub**. 
 
-2. Voer in het deel venster **naam ruimte maken** een naam in `<yourname>-eh-ns-demo`voor de naam ruimte, zoals. U kunt een wille keurige naam voor de naam ruimte gebruiken, maar de naam moet geldig zijn voor een URL en moet uniek zijn binnen Azure. 
+2. Voer in het deel venster **naam ruimte maken** de naam van een naam ruimte in, zoals `<yourname>-eh-ns-demo`. U kunt een wille keurige naam voor de naam ruimte gebruiken, maar de naam moet geldig zijn voor een URL en moet uniek zijn binnen Azure. 
     
 3. Selecteer een abonnement en maak of kies een resource groep en klik vervolgens op **maken**.
 
@@ -70,12 +69,12 @@ In deze procedure maakt u eerst een Event Hub naam ruimte en voegt u vervolgens 
 
    ![De knop Event hub toevoegen voor het maken van een nieuwe Event Hub](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
-6. Geef de nieuwe Event Hub `asa-eh-frauddetection-demo`een naam. U kunt ook een andere naam gebruiken. Als u dat wel doet, noteert u deze, omdat u de naam later nodig hebt. U hoeft op dit moment geen andere opties voor de Event Hub in te stellen.
+6. Geef een naam op voor het nieuwe Event Hub `asa-eh-frauddetection-demo`. U kunt ook een andere naam gebruiken. Als u dat wel doet, noteert u deze, omdat u de naam later nodig hebt. U hoeft op dit moment geen andere opties voor de Event Hub in te stellen.
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
  
-7. Klik op **Create**.
+7. Klik op **Maken**.
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Toegang verlenen tot de event hub en een verbindingsreeks ophalen
 
@@ -83,16 +82,16 @@ Voordat een proces gegevens naar een Event Hub kan verzenden, moet de Event Hub 
 
 1.  Klik in het deel venster gebeurtenis naam ruimte op **Event hubs** en klik vervolgens op de naam van uw nieuwe event hub.
 
-2.  Klik in het deel venster Event hub op **beleid voor gedeelde toegang** en klik vervolgens op  **+ &nbsp;toevoegen**.
+2.  Klik in het deel venster Event Hub op **beleid voor gedeelde toegang** en klik vervolgens op **+&nbsp;toevoegen**.
 
     >[!NOTE]
     >Zorg ervoor dat u werkt met de Event Hub, niet de Event Hub naam ruimte.
 
-3.  Voeg een beleid toe `sa-policy-manage-demo` met de naam en voor **claim**, selecteer **beheren**.
+3.  Voeg een beleid toe met de naam `sa-policy-manage-demo` en voor **claim**, selecteer **beheren**.
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4.  Klik op **Create**.
+4.  Klik op **Maken**.
 
 5.  Nadat het beleid is geïmplementeerd, klikt u erop in de lijst met beleid voor gedeelde toegang.
 
@@ -106,7 +105,7 @@ Voordat een proces gegevens naar een Event Hub kan verzenden, moet de Event Hub 
 
         Endpoint=sb://YOURNAME-eh-ns-demo.servicebus.windows.net/;SharedAccessKeyName=asa-policy-manage-demo;SharedAccessKey=Gw2NFZwU1Di+rxA2T+6hJYAtFExKRXaC2oSQa0ZsPkI=;EntityPath=asa-eh-frauddetection-demo
 
-    U ziet dat de Connection String meerdere sleutel-waardeparen bevat, gescheiden door punt komma's: `Endpoint` `SharedAccessKey`, `SharedAccessKeyName` `EntityPath`, en.  
+    U ziet dat de connection string meerdere sleutel-waardeparen bevat, gescheiden door punt komma's: `Endpoint`, `SharedAccessKeyName`, `SharedAccessKey`en `EntityPath`.  
 
 ## <a name="configure-and-start-the-event-generator-application"></a>De toepassing voor gebeurtenis Generator configureren en starten
 
@@ -114,16 +113,16 @@ Voordat u de TelcoGenerator-app start, moet u deze zo configureren dat de oproep
 
 ### <a name="configure-the-telcogenerator-app"></a>De TelcoGenerator-app configureren
 
-1. In de editor waar u de Connection String hebt gekopieerd, noteert u de `EntityPath` waarde en verwijdert u vervolgens het `EntityPath` paar (Vergeet niet om de punt komma die eraan voorafgaat te verwijderen). 
+1. In de editor waar u de connection string hebt gekopieerd, noteert u de `EntityPath` waarde en verwijdert u vervolgens het `EntityPath` paar (Vergeet niet om de punt komma die eraan voorafgaat te verwijderen). 
 
 2. Open in de map waar u het TelcoGenerator. zip-bestand hebt uitgepakt het bestand telcodatagen. exe. config in een editor. (Er is meer dan één. config-bestand, dus zorg ervoor dat u de juiste versie opent.)
 
-3. In het `<appSettings>` element:
+3. In het element `<appSettings>`:
 
-   * Stel de waarde van de `EventHubName` sleutel in op de naam van de Event hub (dat wil zeggen, de waarde van het pad van de entiteit).
-   * Stel de waarde van de `Microsoft.ServiceBus.ConnectionString` sleutel in op de Connection String. 
+   * Stel de waarde van de `EventHubName` sleutel in op de naam van de Event Hub (dat wil zeggen, de waarde van het pad van de entiteit).
+   * Stel de waarde van de `Microsoft.ServiceBus.ConnectionString` sleutel in op de connection string. 
 
-   De `<appSettings>` sectie ziet eruit als in het volgende voor beeld. (Voor de duidelijkheid worden de lijnen verpakt en sommige tekens zijn verwijderd uit het autorisatie token.)
+   De sectie `<appSettings>` ziet eruit als in het volgende voor beeld. (Voor de duidelijkheid worden de lijnen verpakt en sommige tekens zijn verwijderd uit het autorisatie token.)
 
    ![Het TelcoGenerator-configuratie bestand toont Event Hub naam en connection string](./media/stream-analytics-real-time-fraud-detection/stream-analytics-telcogenerator-config-file-app-settings.png)
  
@@ -141,7 +140,7 @@ Voordat u de TelcoGenerator-app start, moet u deze zo configureren dat de oproep
    De para meters zijn: 
 
    * Aantal CDRs per uur. 
-   * Fraude kans op SIM-kaart: Hoe vaak als percentage van alle aanroepen een frauduleuze oproep moet worden gesimuleerd door de app. Een waarde van 0.2 betekent dat ongeveer 20% van de gespreksrecords er frauduleus uitziet.
+   * Fraude kans op SIM-kaart: hoe vaak, als percentage van alle aanroepen, de app een frauduleuze oproep moet simuleren. Een waarde van 0.2 betekent dat ongeveer 20% van de gespreksrecords er frauduleus uitziet.
    * Duur in uren. Het aantal uren dat de app moet worden uitgevoerd. U kunt de app ook op elk gewenst moment stoppen door op CTRL + C te drukken op de opdracht regel.
 
    Na enkele seconden begint de app met het weergeven van telefoongesprekrecords op het scherm wanneer deze naar de event hub worden gestuurd.
@@ -164,22 +163,22 @@ Nu u een stroom van oproep gebeurtenissen hebt, kunt u een Stream Analytics taak
 
 ### <a name="create-the-job"></a>De taak maken 
 
-1. Klik in de Azure Portal op **een resource** > maken**Internet of Things** > **Stream Analytics taak**.
+1. Klik in de Azure Portal op **een resource maken** > **Internet of Things** > **Stream Analytics taak**.
 
-2. Noem de taak `asa_frauddetection_job_demo`, geef een abonnement, resource groep en locatie op.
+2. Geef een naam op voor de taak `asa_frauddetection_job_demo`, een abonnement, een resource groep en een locatie opgeven.
 
     Het is een goed idee om de taak en de Event Hub in dezelfde regio te plaatsen voor de beste prestaties en om ervoor te zorgen dat u niet betaalt voor het overdragen van gegevens tussen regio's.
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3. Klik op **Create**.
+3. Klik op **Maken**.
 
     De taak wordt gemaakt en er worden taak details weer gegeven in de portal. Er wordt nog niets uitgevoerd, maar u moet de taak configureren voordat deze kan worden gestart.
 
 ### <a name="configure-job-input"></a>Taakinvoer configureren
 
-1. Zoek in het deel venster dash board of **alle resources** naar de stream Analytics `asa_frauddetection_job_demo` taak en selecteer deze. 
-2. Klik in de sectie **overzicht** van het deel venster stream Analytics taak op het invoervak.
+1. Zoek in het deel venster dash board of **alle resources** naar de `asa_frauddetection_job_demo` stream Analytics taak en selecteer deze. 
+2. Klik in de sectie **overzicht** van het deel venster stream Analytics taak op **het invoervak** .
 
    ![Invoervak onder topologie in het deel venster streaming Analytics-taak](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-input-box-new-portal.png)
  
@@ -188,7 +187,7 @@ Nu u een stroom van oproep gebeurtenissen hebt, kunt u een Stream Analytics taak
    |**Instelling**  |**Voorgestelde waarde**  |**Beschrijving**  |
    |---------|---------|---------|
    |Invoeralias  |  CallStream   |  Voer een unieke naam in voor de invoer van de taak.   |
-   |Subscription   |  \<Uw abonnement\> |  Selecteer het Azure-abonnement met de Event hub die u hebt gemaakt.   |
+   |Abonnement   |  \<Uw abonnement\> |  Selecteer het Azure-abonnement met de Event hub die u hebt gemaakt.   |
    |Event hub-naamruimte  |  asa-eh-ns-demo |  Voer de naam van de Event hub-naam ruimte in.   |
    |Event Hub-naam  | asa-eh-frauddetection-demo | Selecteer de naam van uw event hub.   |
    |Naam van het Event Hub-beleid  | ASA-beleid-beheren-demo | Selecteer het toegangs beleid dat u eerder hebt gemaakt.   |
@@ -197,7 +196,7 @@ Nu u een stroom van oproep gebeurtenissen hebt, kunt u een Stream Analytics taak
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4. Klik op **Create**.
+4. Klik op **Maken**.
 
 ## <a name="create-queries-to-transform-real-time-data"></a>Query's maken om real-time gegevens te transformeren
 
@@ -214,9 +213,9 @@ Meer informatie over de taal vindt u in de [Azure stream Analytics query languag
 De TelcoGenerator-app stuurt gespreks records naar het Event Hub en uw Stream Analytics taak is geconfigureerd om te lezen van de Event Hub. U kunt een query gebruiken om de taak te testen om er zeker van te zijn dat deze correct wordt gelezen. Als u een query wilt testen in de Azure-console, hebt u voorbeeld gegevens nodig. Voor dit scenario haalt u voorbeeld gegevens op uit de stroom die wordt weer gegeven in de Event Hub.
 
 1. Zorg ervoor dat de TelcoGenerator-app wordt uitgevoerd en dat er oproep records worden geproduceerd.
-2. Ga in de portal terug naar het deel venster streaming Analytics-taak. (Als u het deel venster hebt gesloten, `asa_frauddetection_job_demo` zoekt u in het deel venster **alle resources** .)
+2. Ga in de portal terug naar het deel venster streaming Analytics-taak. (Als u het deel venster hebt gesloten, zoekt u in het deel venster **alle resources** naar `asa_frauddetection_job_demo`.)
 3. Klik op het **query** -vak. In Azure worden de invoer en uitvoer weer gegeven die zijn geconfigureerd voor de taak en kunt u een query maken waarmee u de invoer stroom kunt transformeren wanneer deze naar de uitvoer wordt verzonden.
-4. Klik in het **query** deel venster op de punten naast de `CallStream` invoer en selecteer vervolgens **voorbeeld gegevens uit invoer**.
+4. Klik in het **query** deel venster op de punten naast het `CallStream` invoer en selecteer vervolgens **voorbeeld gegevens uit invoer**.
 
    ![Menu opties voor het gebruik van voorbeeld gegevens voor de stream Analytics-taak vermelding, waarbij ' voorbeeld gegevens van invoer ' is geselecteerd](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sample-data-from-input.png)
 
@@ -247,7 +246,7 @@ Als u elke gebeurtenis wilt archiveren, kunt u een Pass-Through-query gebruiken 
     >[!NOTE]
     >Net als bij SQL zijn tref woorden niet hoofdletter gevoelig en is spaties niet significant.
 
-    In deze query `CallStream` is de alias die u hebt opgegeven tijdens het maken van de invoer. Als u een andere alias hebt gebruikt, gebruikt u die naam in plaats daarvan.
+    In deze query `CallStream` de alias is die u hebt opgegeven tijdens het maken van de invoer. Als u een andere alias hebt gebruikt, gebruikt u die naam in plaats daarvan.
 
 2. Klik op **testen**.
 
@@ -277,7 +276,7 @@ In veel gevallen heeft uw analyse niet alle kolommen nodig van de invoer stroom.
 
 Stel dat u het aantal inkomende oproepen per regio wilt tellen. Bij het streamen van gegevens moet u, wanneer u statistische functies wilt uitvoeren, zoals tellen, de stroom in tijdelijke eenheden verdelen (omdat de gegevens stroom zelf oneindig) is. U kunt dit doen met behulp van een streaming Analytics- [venster functie](stream-analytics-window-functions.md). U kunt vervolgens met de gegevens in dat venster werken als een eenheid.
 
-Voor deze trans formatie wilt u een reeks tijdelijke Vensters die geen overlap hebben: elk venster heeft een afzonderlijke set gegevens die u kunt groeperen en samen voegen. Dit type venster wordt een *tumblingvenstertriggers-venster*genoemd. In het venster tumblingvenstertriggers kunt u het aantal inkomende oproepen groeperen op `SwitchNum`, dat staat voor het land of de regio waar de oproep afkomstig is. 
+Voor deze trans formatie wilt u een reeks tijdelijke Vensters die geen overlap hebben: elk venster heeft een afzonderlijke set gegevens die u kunt groeperen en samen voegen. Dit type venster wordt een *tumblingvenstertriggers-venster*genoemd. In het venster Tumblingvenstertriggers kunt u een telling ophalen van de binnenkomende oproepen gegroepeerd op `SwitchNum`, die het land of de regio vertegenwoordigt waar de oproep vandaan komt. 
 
 1. Wijzig de query in de code-editor naar het volgende:
 
@@ -289,11 +288,11 @@ Voor deze trans formatie wilt u een reeks tijdelijke Vensters die geen overlap h
         GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
         ```
 
-    Deze query gebruikt het `Timestamp By` sleutel woord in `FROM` de-component om op te geven welk tijds tempel veld in de invoer stroom moet worden gebruikt voor het definiëren van het tumblingvenstertriggers-venster. In dit geval deelt het venster de gegevens in segmenten op basis van het `CallRecTime` veld in elke record. (Als er geen veld is opgegeven, gebruikt de venster bewerking de tijd dat elke gebeurtenis bij de Event Hub arriveert. Zie ' aankomst tijd versus toepassings tijd ' in de [Naslag informatie over de query taal van stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). 
+    Deze query gebruikt het sleutel woord `Timestamp By` in de `FROM`-component om op te geven welk tijds tempel veld in de invoer stroom moet worden gebruikt voor het definiëren van het Tumblingvenstertriggers-venster. In dit geval deelt het venster de gegevens in segmenten op basis van het veld `CallRecTime` in elke record. (Als er geen veld is opgegeven, gebruikt de venster bewerking de tijd dat elke gebeurtenis bij de Event Hub arriveert. Zie ' aankomst tijd versus toepassings tijd ' in de [Naslag informatie over de query taal van stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). 
 
     De projectie bevat `System.Timestamp`, die een tijds tempel retourneert voor het einde van elk venster. 
 
-    Als u wilt opgeven dat u een tumblingvenstertriggers-venster wilt gebruiken, gebruikt [](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) u de functie TUMBLINGWINDOW `GROUP BY` in de component. In de functie geeft u een tijds eenheid op (ergens van een micro seconde naar een dag) en een venster grootte (hoeveel eenheden). In dit voor beeld bestaat het Tumblingvenstertriggers-venster uit vijf seconden, zodat u per vijf seconden het aantal aanroepen kunt berekenen op basis van het land/de regio.
+    Als u wilt opgeven dat u een Tumblingvenstertriggers-venster wilt gebruiken, gebruikt u de functie [TUMBLINGWINDOW](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) in de component `GROUP BY`. In de functie geeft u een tijds eenheid op (ergens van een micro seconde naar een dag) en een venster grootte (hoeveel eenheden). In dit voor beeld bestaat het Tumblingvenstertriggers-venster uit vijf seconden, zodat u per vijf seconden het aantal aanroepen kunt berekenen op basis van het land/de regio.
 
 2. Klik nogmaals op **testen** . In de resultaten ziet u dat de tijds tempels onder **WindowEnd** zich in stappen van vijf seconden bevinden.
 
@@ -303,9 +302,9 @@ Voor deze trans formatie wilt u een reeks tijdelijke Vensters die geen overlap h
 
 Voor dit voor beeld moet u frauduleus gebruik gebruiken om aanroepen te doen die afkomstig zijn van dezelfde gebruiker, maar op verschillende locaties binnen vijf seconden van elkaar. Zo kan dezelfde gebruiker niet op rechtmatige wijze op hetzelfde moment een telefoongesprek vanuit de Verenigde Staten en Australië initiëren. 
 
-Als u wilt controleren of dit het geval is, kunt u een self-koppeling van de streaminggegevens gebruiken om de stroom toe te `CallRecTime` voegen aan zichzelf op basis van de waarde. U kunt vervolgens zoeken naar oproep records waarbij de `CallingIMSI` waarde (het oorspronkelijke nummer) hetzelfde is, maar de `SwitchNum` waarde (land/regio van oorsprong) is niet hetzelfde.
+Als u deze gevallen wilt controleren, kunt u een self-koppeling van de streaminggegevens gebruiken om de stroom te koppelen aan zichzelf op basis van de `CallRecTime` waarde. U kunt vervolgens zoeken naar oproep records waarbij de `CallingIMSI` waarde (het oorspronkelijke nummer) hetzelfde is, maar de `SwitchNum` waarde (land/regio van oorsprong) is niet hetzelfde.
 
-Wanneer u een koppeling met streaminggegevens gebruikt, moet de samen voegen enkele limieten bieden voor de mate waarin de overeenkomende rijen in de tijd kunnen worden gescheiden. (Zoals eerder vermeld, zijn de streaminggegevens in feite oneindig.) De tijds limieten voor de relatie worden opgegeven in de `ON` component van de samen voeging met `DATEDIFF` behulp van de functie. In dit geval is de samen voeging gebaseerd op een interval van 5 seconden voor het aanroepen van gegevens.
+Wanneer u een koppeling met streaminggegevens gebruikt, moet de samen voegen enkele limieten bieden voor de mate waarin de overeenkomende rijen in de tijd kunnen worden gescheiden. (Zoals eerder vermeld, zijn de streaminggegevens in feite oneindig.) De tijds limieten voor de relatie worden opgegeven in de `ON`-component van de samen voeging met behulp van de functie `DATEDIFF`. In dit geval is de samen voeging gebaseerd op een interval van 5 seconden voor het aanroepen van gegevens.
 
 1. Wijzig de query in de code-editor naar het volgende: 
 
@@ -323,9 +322,9 @@ Wanneer u een koppeling met streaminggegevens gebruikt, moet de samen voegen enk
         WHERE CS1.SwitchNum != CS2.SwitchNum
         ```
 
-    Deze query is net als elke SQL-samen voeging, behalve voor de `DATEDIFF` functie in de samen voeging. Deze versie van `DATEDIFF` is specifiek voor streaming Analytics en moet worden weer gegeven in de `ON...BETWEEN` component. De para meters zijn een tijds eenheid (seconden in dit voor beeld) en de aliassen van de twee bronnen voor de koppeling. Dit wijkt af van de standaard functie `DATEDIFF` van SQL.
+    Deze query is net als elke SQL-invoeg toepassing, met uitzonde ring van de functie `DATEDIFF` in de samen voeging. Deze versie van `DATEDIFF` is specifiek voor streaming Analytics en moet worden weer gegeven in de component `ON...BETWEEN`. De para meters zijn een tijds eenheid (seconden in dit voor beeld) en de aliassen van de twee bronnen voor de koppeling. Dit wijkt af van de standaard functie van SQL `DATEDIFF`.
 
-    De `WHERE` -component bevat de voor waarde die de frauduleuze oproep markeert: de oorspronkelijke switches zijn niet hetzelfde. 
+    De `WHERE`-component bevat de voor waarde die de frauduleuze oproep markeert: de oorspronkelijke switches zijn niet hetzelfde. 
 
 2. Klik nogmaals op **testen** . 
 
@@ -345,11 +344,11 @@ Als u een bestaand Blob Storage-account hebt, kunt u dat gebruiken. Voor deze ze
 
 ### <a name="create-an-azure-blob-storage-account"></a>Een Azure Blob Storage-account maken
 
-1. Selecteer in de linkerbovenhoek in Azure Portal **Een resource maken** > **Storage** > **Storage-account**. Vul de taak pagina voor het opslag account in met de **naam** die is ingesteld op ' asaehstorage ', de **locatie** die is ingesteld op ' vs-Oost ', de **resource groep** die is ingesteld op ' ASA-eh-NS-RG ' (host het opslag account in dezelfde resource groep als de streaming-taak voor betere prestaties) . De overige instellingen kunnen op de standaardwaarden blijven staan.  
+1. Selecteer in de linkerbovenhoek in Azure Portal **Een resource maken** > **Storage** > **Storage-account**. Vul de taak pagina voor het opslag account in met de **naam** die is ingesteld op ' asaehstorage ', de **locatie** die is ingesteld op ' vs-Oost ', de **resource groep** die is ingesteld op ' ASA-eh-NS-RG ' (host het opslag account in dezelfde resource groep als de streaming-taak voor betere prestaties). De overige instellingen kunnen op de standaardwaarden blijven staan.  
 
    ![Opslag account maken in Azure Portal](./media/stream-analytics-real-time-fraud-detection/stream-analytics-storage-account-create.png)
 
-2. Ga in het Azure Portal naar het deel venster streaming Analytics-taak. (Als u het deel venster hebt gesloten, `asa_frauddetection_job_demo` zoekt u in het deel venster **alle resources** .)
+2. Ga in het Azure Portal naar het deel venster streaming Analytics-taak. (Als u het deel venster hebt gesloten, zoekt u in het deel venster **alle resources** naar `asa_frauddetection_job_demo`.)
 
 3. Klik in de sectie **taak topologie** op het vak **uitvoer** .
 
@@ -358,8 +357,8 @@ Als u een bestaand Blob Storage-account hebt, kunt u dat gebruiken. Voor deze ze
    |**Instelling**  |**Voorgestelde waarde**  |**Beschrijving**  |
    |---------|---------|---------|
    |Uitvoeralias  |  CallStream-FraudulentCalls   |  Voer een unieke naam in voor de uitvoer van de taak.   |
-   |Subscription   |  \<Uw abonnement\> |  Selecteer het Azure-abonnement met het opslagaccount dat u hebt gemaakt. Het opslagaccount kan voor hetzelfde of een ander abonnement gelden. Voor dit voorbeeld wordt aangenomen dat u een opslagaccount voor hetzelfde abonnement hebt gemaakt. |
-   |Storage-account  |  asaehstorage |  Voer de naam in van het opslag account dat u hebt gemaakt. |
+   |Abonnement   |  \<Uw abonnement\> |  Selecteer het Azure-abonnement met het opslagaccount dat u hebt gemaakt. Het opslagaccount kan voor hetzelfde of een ander abonnement gelden. Voor dit voorbeeld wordt aangenomen dat u een opslagaccount voor hetzelfde abonnement hebt gemaakt. |
+   |Opslagaccount  |  asaehstorage |  Voer de naam in van het opslag account dat u hebt gemaakt. |
    |Container  | ASA-fraudulentcalls-demo | Kies Nieuw maken en voer een container naam in. |
 
     <br/>
@@ -404,7 +403,7 @@ Als u echter klaar bent en u de resources die u hebt gemaakt, niet nodig hebt, k
 5. Verwijder de Event Hub.
 6. Verwijder de Event Hub naam ruimte.
 
-## <a name="get-support"></a>Ondersteuning krijgen
+## <a name="get-support"></a>Krijg ondersteuning
 
 Voor verdere ondersteuning kunt u proberen de [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
@@ -412,7 +411,7 @@ Voor verdere ondersteuning kunt u proberen de [Azure Stream Analytics-forum](htt
 
 U kunt door gaan met deze zelf studie met het volgende artikel:
 
-* [Stream Analytics en Power BI: Een real-time analyse dashboard voor het streamen van gegevens](stream-analytics-power-bi-dashboard.md). In dit artikel leest u hoe u de telecommunicatie-uitvoer van de Stream Analytics-taak kunt verzenden naar Power BI voor visualisaties en analyses in realtime.
+* [Stream Analytics en Power BI: een real-time analyse dashboard voor het streamen van gegevens](stream-analytics-power-bi-dashboard.md). In dit artikel leest u hoe u de telecommunicatie-uitvoer van de Stream Analytics-taak kunt verzenden naar Power BI voor visualisaties en analyses in realtime.
 
 Zie de volgende artikelen voor meer informatie over Stream Analytics in het algemeen:
 

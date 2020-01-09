@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: abcd6dc8c50b819dd02347b938602af7f2152d04
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 358895f84b43437a174214eaf75e77574b3f02e8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996614"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462457"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Plannings- en bedieningsgids voor Azure Security Center
 Deze hand leiding is voor IT-professionals (IT), IT-architecten, gegevens beveiligings analisten en Cloud beheerders plannen om Azure Security Center te gebruiken.
@@ -83,6 +83,10 @@ Wanneer gebruik wordt gemaakt van de personen in het vorige diagram, zou de volg
 
 * Eigenaar/bijdrager van resource groep
 
+**Ellen (CISO/CIO)**
+
+* Abonnements eigenaar/mede werker of beveiligings beheerder
+
 **David (IT-beveiliging)**
 
 * Abonnements eigenaar/mede werker of beveiligings beheerder
@@ -150,8 +154,8 @@ Gegevens die (namens Azure Security Center) via de Microsoft Monitoring Agent wo
 
 In Azure Portal kunt u bladeren om een overzicht te zien van uw Log Analytics-werkruimten, inclusief alle werkruimten die door Azure Security Center zijn gemaakt. Er wordt een gerelateerde resourcegroep gemaakt voor nieuwe werkruimten. Beide volgen deze naamconventie:
 
-* Werk ruimte *DefaultWorkspace-[abonnement-ID]-[geo]*
-* Resourcegroep: *DefaultResourceGroup-[geo]*
+* Werkruimte: *DefaultWorkspace-[abonnements-id]-[geolocatie]*
+* Resource groep: *DefaultResourceGroup-[geo]*
 
 Voor werkruimten die zijn gemaakt door Azure Security Center worden gegevens 30 dagen bewaard. Voor bestaande werkruimten is de bewaarperiode gebaseerd op de prijscategorie van de werkruimte. Als u wilt, kunt u ook een bestaande werkruimte gebruiken.
 
@@ -195,7 +199,7 @@ Wanneer u nieuwe resources (virtuele machines, SQL Databases) toevoegt aan uw Az
 
 U moet ook regel matig bestaande resources controleren op wijzigingen in de configuratie waarvoor beveiligings Risico's zijn ontstaan, van aanbevolen basis lijnen en beveiligings waarschuwingen. Begin bij het dashboard van Security Center. Daar hebt u drie belang rijke gebieden die consistent kunnen worden beoordeeld.
 
-![Bewerkingen](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
+![Operations](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
 
 1. Het venster **Preventie** biedt snel toegang tot uw belangrijkste resources. Gebruik deze optie voor het bewaken van Compute, Netwerken, Opslag en gegevens en Toepassingen.
 2. In het venster **Aanbevelingen** kunt u de aanbevelingen van Security Center controleren. Tijdens de continue bewaking is het mogelijk dat u niet dagelijks aanbevelingen hebt. Dit is normaal omdat u alle aanbevelingen voor de eerste Security Center-installatie hebt behandeld. Daarom bevat deze sectie niet elke dag nieuwe informatie en hoeft u deze alleen te raadplegen wanneer dat nodig is.
@@ -213,7 +217,7 @@ Security Center detecteert en waarschuwt voor bedreigingen wanneer deze optreden
 
 Hoewel dit artikel niet de bedoeling heeft om u te helpen uw eigen plan voor het reageren op incidenten te maken, maken we gebruik van Microsoft Azure Security Response in de cloud-levenscyclus als de basis voor fasen voor het reageren op incidenten. In het volgende diagram ziet u de fasen:
 
-![Verdachte activiteiten](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
+![Verdachte activiteit](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
 
 > [!NOTE]
 > U kunt de [Computer Security Incident Handling Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf) van het National Institute of Standards and Technology (NIST) gebruiken als richtlijn om uw eigen plan te ontwikkelen.
@@ -229,7 +233,7 @@ Elke beveiligingswaarschuwing bevat informatie die kan worden gebruikt om beter 
 
 Het volgende voorbeeld betreft een verdachte RDP-activiteit die op dat moment plaatsvindt:
 
-![Verdachte activiteiten](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-ga.png)
+![Verdachte activiteit](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-ga.png)
 
 Deze pagina bevat informatie over het tijdstip waarop de aanval plaatsvond, de hostnaam van de bron, de VM die het doelwit was en aanbevolen maatregelen. In sommige gevallen kan de bron informatie van de aanval leeg zijn. Lees [Missing Source Information in Azure Security Center Alerts](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/) voor meer informatie over dit type gedrag.
 
@@ -245,7 +249,7 @@ In de video [over het gebruik van de Azure Security Center & Microsoft Operation
 >
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u kunnen lezen hoe u een planning kunt maken voor het overstappen op Security Center. Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
+In dit document hebt u kunnen lezen hoe u een planning kunt maken voor het overstappen op Security Center. Zie de volgende onderwerpen voor meer informatie over Security Center:
 
 * [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Beveiligingsstatus bewaken in Azure Security Center](security-center-monitoring.md): meer informatie over het bewaken van de status van uw Azure-resources.

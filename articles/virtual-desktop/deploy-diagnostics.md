@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: 27231dc25604e9031f0456d787530bf2a29616f7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b6b310bf1958671583aab873ab42a70845f93f9a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167431"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452428"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Het diagnosehulpprogramma implementeren
 
@@ -50,7 +50,7 @@ In deze sectie wordt uitgelegd hoe u Power shell kunt gebruiken om de Azure Acti
 >[!NOTE]
 >De API-machtigingen zijn Windows virtueel bureau blad, Log Analytics-en Microsoft Graph API-machtigingen worden toegevoegd aan de Azure Active Directory-toepassing.
 
-1. Open Power shell als Administrator.
+1. Open PowerShell als administrator.
 2. Meld u aan bij Azure met een account met eigenaar-of Inzender machtigingen voor het Azure-abonnement dat u wilt gebruiken voor het diagnostische hulp programma:
    ```powershell
    Login-AzAccount
@@ -256,3 +256,8 @@ U kunt ook communiceren met gebruikers op de sessiehost:
 - [Gebruikers invoer vertraging per sessie (\*)\\maximale invoer vertraging](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
     - Drempel waarde: hoger dan 2000 MS is gemarkeerd als beschadigd.
+
+## <a name="next-steps"></a>Volgende stappen
+
+- Meer informatie over het bewaken van activiteiten Logboeken bij het [gebruik van diagnostische gegevens met log Analytics](diagnostics-log-analytics.md).
+- Meer informatie over veelvoorkomende fout scenario's en hoe u deze kunt oplossen bij het [identificeren en diagnosticeren van problemen](diagnostics-role-service.md).

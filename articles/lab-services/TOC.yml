@@ -22,7 +22,7 @@
       href: samples-powershell.md
     - name: Azure PowerShell - Az.DevTestLabs2-module
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
-    - name: Azure-CLI
+    - name: Azure CLI
       href: samples-cli.md
 - name: Concepten
   items:
@@ -44,7 +44,7 @@
           href: devtest-lab-training-lab.md
         - name: Scenario's voor het gebruik van claimbare VM's
           href: devtest-lab-use-claim-capabilities.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Een lab configureren
       items:
@@ -72,6 +72,8 @@
           href: devtest-lab-auto-startup-vm.md
         - name: Uw lab schalen
           href: devtest-lab-scale-lab.md
+        - name: Beheerde identiteiten inschakelen voor lab-VM's
+          href: enable-managed-identities-lab-vms.md
         - name: Bases van virtuele machines beheren
           items:
             - name: Azure Marketplace-installatiekopieën configureren

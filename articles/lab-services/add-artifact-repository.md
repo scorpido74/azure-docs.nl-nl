@@ -1,6 +1,6 @@
 ---
-title: Een artefactopslagplaats toevoegen aan uw lab in Azure DevTest Labs | Microsoft Docs
-description: Leer hoe u een artefactopslagplaats toevoegen aan uw lab in Azure DevTest labs.
+title: Een opslag plaats voor artefacten toevoegen aan uw Lab in Azure DevTest Labs | Microsoft Docs
+description: Meer informatie over het toevoegen van een artefact opslagplaats aan uw Lab in azure DevTest Labs.
 services: devtest-lab
 documentationcenter: na
 author: spelluru
@@ -13,91 +13,91 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: c391aa157e35bdc389bd30efe48fa380d06c193e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: ff410d3767e90f92a946b72354b39f87e4f37b9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508370"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429018"
 ---
-# <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Een artefactopslagplaats toevoegen aan uw lab in DevTest Labs
-DevTest Labs kunt u opgeven van een artefact dat moet worden toegevoegd aan een virtuele machine op het moment van de VM is gemaakt of nadat de virtuele machine is gemaakt. Dit artefact is mogelijk een hulpprogramma of een toepassing die u wilt installeren op de virtuele machine. Artefacten worden gedefinieerd in een JSON-bestand geladen vanuit een GitHub- of Azure DevOps Git-opslagplaats. 
+# <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Een opslag plaats voor artefacten toevoegen aan uw Lab in DevTest Labs
+Met DevTest Labs kunt u een artefact opgeven die moet worden toegevoegd aan een virtuele machine op het moment dat de virtuele machine wordt gemaakt of nadat de virtuele machine is aangemaakt. Dit artefact kan een hulp programma of een toepassing zijn die u wilt installeren op de VM. Artefacten worden gedefinieerd in een JSON-bestand dat is geladen vanuit een GitHub-of Azure DevOps Git-opslag plaats. 
 
-De [openbare artefactenopslag](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts), onderhouden door DevTest Labs, biedt veel algemene hulpprogramma's voor zowel Windows als Linux. Een koppeling naar deze opslagplaats wordt automatisch toegevoegd aan uw testomgeving. U kunt uw eigen artefactopslagplaats maken met specifieke hulpprogramma's die niet beschikbaar zijn in de openbare artefactenopslag. Zie voor meer informatie over het maken van aangepaste artefacten, [maken van aangepaste artefacten](devtest-lab-artifact-author.md).
+De [open bare artefact opslagplaats](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts), die wordt onderhouden door DevTest Labs, biedt veel algemene hulpprogram Ma's voor Windows en Linux. Er wordt automatisch een koppeling naar deze opslag plaats toegevoegd aan uw Lab. U kunt uw eigen artefact opslagplaats maken met specifieke hulpprogram ma's die niet beschikbaar zijn in de open bare artefact opslagplaats. Zie [aangepaste artefacten maken](devtest-lab-artifact-author.md)voor meer informatie over het maken van aangepaste artefacten.
 
-In dit artikel bevat informatie over het toevoegen van uw aangepaste artefactopslagplaats met behulp van Azure portal, Azure Resource Management-sjablonen en Azure PowerShell. U kunt u automatisch een artefactopslagplaats toe te voegen aan een lab door PowerShell of CLI-scripts te schrijven. 
+Dit artikel bevat informatie over het toevoegen van uw aangepaste artefact opslagplaats met behulp van Azure Portal, Azure resource management-sjablonen en Azure PowerShell. U kunt automatiseren van het toevoegen van een artefact opslagplaats aan een lab door Power shell-of CLI-scripts te schrijven. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Vereisten
-Een opslagplaats toevoegen aan uw testomgeving, moet u eerst, belangrijke informatie ophalen uit uw opslagplaats. De volgende secties wordt beschreven hoe u aan de vereiste gegevens voor opslagplaatsen die worden gehost op **GitHub** of **Azure DevOps**.
+Als u een opslag plaats aan uw Lab wilt toevoegen, moet u eerst belang rijke informatie uit uw opslag plaats ophalen. In de volgende secties wordt beschreven hoe u de vereiste gegevens ophaalt voor opslag plaatsen die worden gehost op **github** of **Azure DevOps**.
 
-### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>De GitHub-opslagplaats kloon-URL en Pat-token ophalen
+### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>De kloon-URL van de GitHub-opslag plaats en het persoonlijke toegangs Token ophalen
 
-1. Ga naar de startpagina van de GitHub-opslagplaats die het artefact of Sjabloondefinities van de Resource Manager-bevat.
+1. Ga naar de start pagina van de GitHub-opslag plaats die de definities van de artefact-of Resource Manager-sjabloon bevat.
 2. Selecteer **Klonen of downloaden**.
-3. Als de URL naar het Klembord kopiëren, selecteert de **HTTPS kloon-url** knop. De URL voor later gebruik opslaan.
-4. Selecteer de installatiekopie van het profiel in de rechterbovenhoek van GitHub, en selecteer vervolgens **instellingen**.
-5. In de **persoonlijke instellingen** menu aan de linkerkant, selecteer **-instellingen voor ontwikkelaars**.
-6. Selecteer **persoonlijke toegangstokens** in het menu links.
+3. Als u de URL naar het klem bord wilt kopiëren, selecteert u de knop **https-kloon-URL** . Sla de URL op voor later gebruik.
+4. Selecteer de profiel afbeelding in de rechter bovenhoek van GitHub en selecteer vervolgens **instellingen**.
+5. Selecteer in het menu **persoonlijke instellingen** aan de linkerkant **instellingen voor ontwikkel aars**.
+6. Selecteer **persoonlijke toegangs tokens** in het menu links.
 7. Selecteer **nieuw token genereren**.
-8. Op de **nieuwe persoonlijke toegangstoken** pagina onder **beschrijving Token**, voer een beschrijving in. Accepteer de standaarditems onder **bereiken selecteren**, en selecteer vervolgens **Token genereren**.
-9. Sla het gegenereerde token. U gebruikt het token later.
+8. Voer op de pagina **nieuw persoonlijk toegangs token** onder **Beschrijving van token**een beschrijving in. Accepteer de standaard items onder **scopes selecteren**en selecteer vervolgens **token genereren**.
+9. Sla het gegenereerde token op. U kunt het token later gebruiken.
 10. Sluit GitHub.   
 
-### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>De Azure-opslagplaatsen-kloon-URL en persoonlijk toegangstoken ophalen
-1. Ga naar de startpagina van uw team-verzameling (bijvoorbeeld https://contoso-web-team.visualstudio.com), en selecteer vervolgens uw project.
-2. Selecteer op de startpagina van project **Code**.
-3. Om weer te geven van de kloon-URL op het project **Code** weergeeft, schakelt **kloon**.
-4. Sla de URL op. Gebruikt u later de URL.
-5. Voor het maken van een persoonlijk toegangstoken in de vervolgkeuzelijst in het gebruikersaccountmenu selecteert **Mijn profiel**.
-6. Selecteer op de pagina van de informatie profiel **Security**.
-7. Op de **Security** tabblad **toevoegen**.
-8. Op de **maken van een persoonlijk toegangstoken** pagina:
-   1. Voer een **beschrijving** voor het token.
-   2. In de **verloopt In** in de lijst met **180 dagen**.
-   3. In de **Accounts** in de lijst met **alle toegankelijke accounts**.
-   4. Selecteer de **alle scopes** optie.
-   5. Selecteer **maakt u Token**.
-9. Het nieuwe token wordt weergegeven in de **persoonlijke toegangstokens** lijst. Selecteer **kopie Token**, en sla vervolgens de waarde voor de token voor later gebruik.
-10. Doorgaan met het verbinding maken met uw lab, waar de opslagplaats-sectie.
+### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>De Azure opslag plaatsen kloon-URL en het persoonlijke toegangs Token ophalen
+1. Ga naar de start pagina van uw team verzameling (bijvoorbeeld https://contoso-web-team.visualstudio.com), en selecteer vervolgens uw project.
+2. Selecteer op de start pagina van het project **code**.
+3. Als u de kloon-URL wilt weer geven, selecteert u in de project **code** pagina **klonen**.
+4. Sla de URL op. U kunt de URL later gebruiken.
+5. Als u een persoonlijk toegangs token wilt maken, selecteert u in de vervolg keuzelijst gebruikers account **Mijn profiel**.
+6. Selecteer op de pagina profiel informatie **beveiliging**.
+7. Selecteer **toevoegen**op het tabblad **beveiliging** .
+8. Op de pagina **een persoonlijk toegangs token maken** :
+   1. Voer een **Beschrijving** in voor het token.
+   2. Selecteer **180 dagen**in de lijst **verloopt in** .
+   3. Selecteer in de lijst **accounts** **alle toegankelijke accounts**.
+   4. Selecteer de optie **alle bereiken** .
+   5. Selecteer **token maken**.
+9. Het nieuwe token wordt weer gegeven in de lijst met **persoonlijke toegangs tokens** . Selecteer **token kopiëren**en sla de token waarde op voor later gebruik.
+10. Ga door naar de sectie uw Lab verbinden met de opslag plaats.
 
 ## <a name="use-azure-portal"></a>Azure Portal gebruiken
-In deze sectie bevat stappen voor het toevoegen van een artefactopslagplaats aan een lab in Azure portal. 
+In deze sectie worden de stappen beschreven voor het toevoegen van een artefact opslagplaats aan een lab in de Azure Portal. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Selecteer **meer Services**, en selecteer vervolgens **DevTest Labs** uit de lijst met services.
-3. Selecteer in de lijst met labs, uw lab. 
-4. Selecteer **configuratie en het beleid** in het menu links.
-5. Selecteer **opslagplaatsen** onder **externe bronnen** sectie in het menu links.
-6. Selecteer **+ toevoegen** op de werkbalk.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+2. Selecteer **meer services**en selecteer vervolgens **DevTest Labs** in de lijst met Services.
+3. Selecteer in de lijst met Labs uw Lab. 
+4. Selecteer **configuratie en beleid** in het menu links.
+5. Selecteer **opslag** plaatsen onder **externe resources** in het menu aan de linkerkant.
+6. Selecteer **+ toevoegen** op de werk balk.
 
-    ![De knop van de opslagplaats toevoegen](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
-5. Op de **opslagplaatsen** pagina, geeft u de volgende informatie:
-   1. **Naam**. Voer een naam voor de opslagplaats.
-   2. **GIT kloon-Url**. Voer de Git-HTTPS-kloon-URL die u eerder hebt gekopieerd vanuit GitHub of Azure DevOps-Services.
-   3. **Vertakking**. Als u uw definities, voer de vertakking.
-   4. **Persoonlijk toegangstoken**. Voer in het persoonlijke toegangstoken dat u eerder hebt ontvangen van GitHub of Azure DevOps-Services.
-   5. **Mappaden**. Geef ten minste één pad ten opzichte van de kloon-URL die uw artefacten of Sjabloondefinities van de Resource Manager-bevat. Wanneer u een submap opgeeft, zorg ervoor dat u de schuine streep in het mappad.
+    ![De knop opslag plaats toevoegen](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
+5. Geef op de pagina **opslag** plaatsen de volgende informatie op:
+   1. **Naam**. Voer een naam in voor de opslag plaats.
+   2. **Git clone URL**. Voer de Git HTTPS kloon-URL in die u eerder hebt gekopieerd uit GitHub of Azure DevOps Services.
+   3. **Vertakking**. Voer de vertakking in om uw definities op te halen.
+   4. **Persoonlijk toegangs token**. Voer het persoonlijke toegangs token in dat u eerder hebt ontvangen van een GitHub-of Azure DevOps-service.
+   5. **Mappaden**. Voer ten minste één mappad in ten opzichte van de kloon-URL die uw sjabloon definities voor artefacten of Resource Manager bevat. Wanneer u een submap opgeeft, moet u ervoor zorgen dat u de slash in het mappad opneemt.
 
-        ![Opslagplaatsen gebied](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
+        ![Opslag gebied](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
 6. Selecteer **Opslaan**.
 
 ## <a name="use-azure-resource-manager-template"></a>Azure Resource Manager-sjabloon gebruiken
-Azure Resource Management (Azure Resource Manager)-sjablonen zijn JSON-bestanden die worden beschreven van resources in Azure die u wilt maken. Zie voor meer informatie over deze sjablonen [Authoring Azure Resource Manager-sjablonen](../azure-resource-manager/resource-group-authoring-templates.md).
+Azure Resource Management (Azure Resource Manager)-Sjablonen zijn JSON-bestanden die de resources in azure beschrijven die u wilt maken. Zie [Azure Resource Manager sjablonen ontwerpen](../azure-resource-manager/templates/template-syntax.md)voor meer informatie over deze sjablonen.
 
-In deze sectie bevat stappen voor het toevoegen van een artefactopslagplaats aan een lab met behulp van een Azure Resource Manager-sjabloon.  Als deze nog niet bestaat, maakt de sjabloon in het lab. 
+Deze sectie bevat stappen voor het toevoegen van een artefact opslagplaats aan een Lab met behulp van een Azure Resource Manager sjabloon.  De sjabloon maakt de Lab als deze nog niet bestaat. 
 
-### <a name="template"></a>Template
-De voorbeeldsjabloon die wordt gebruikt in dit artikel worden de volgende informatie verzameld via parameters. De meeste van de parameters hebt slimme standaardinstellingen, maar er zijn enkele waarden die moeten worden opgegeven. U moet de naam van de testomgeving, URI voor de artefactopslagplaats en het beveiligingstoken voor de opslagplaats. 
+### <a name="template"></a>Sjabloon
+De voorbeeld sjabloon die in dit artikel wordt gebruikt, verzamelt de volgende informatie via para meters. De meeste para meters hebben slimme standaard waarden, maar er zijn een paar waarden die moeten worden opgegeven. U moet de naam van het lab, de URI voor de artefact opslagplaats en het beveiligings token voor de opslag plaats opgeven. 
 
-- Labnaam van het.
-- Weergavenaam voor de artefactopslagplaats in de DevTest Labs-gebruikersinterface (UI). De standaardwaarde is: `Team Repository`.
-- URI naar de opslagplaats (voorbeeld: `https://github.com/<myteam>/<nameofrepo>.git` of `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`.
-- Vertakking in de opslagplaats met artefacten. De standaardwaarde is: `master`.
-- De naam van de map met artefacten. De standaardwaarde is: `/Artifacts`.
-- Het type van de opslagplaats. Toegestane waarden zijn `VsoGit` of `GitHub`.
-- Toegangstoken voor de opslagplaats. 
+- Naam van Lab.
+- Weergave naam voor de opslag plaats voor artefacten in de gebruikers interface van DevTest Labs (UI). De standaard waarde is: `Team Repository`.
+- De URI naar de opslag plaats (bijvoorbeeld: `https://github.com/<myteam>/<nameofrepo>.git` of `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`.
+- Vertakking in de opslag plaats die artefacten bevat. De standaard waarde is: `master`.
+- De naam van de map die artefacten bevat. De standaard waarde is: `/Artifacts`.
+- Type opslag plaats. Toegestane waarden zijn `VsoGit` of `GitHub`.
+- Toegangs token voor de opslag plaats. 
 
     ```json
     {
@@ -165,22 +165,22 @@ De voorbeeldsjabloon die wordt gebruikt in dit artikel worden de volgende inform
 
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
-Er zijn een paar manieren om de sjabloon implementeren in Azure en de resource gemaakt, als deze niet bestaat, of bijgewerkt, hebben als deze bestaat. Zie de volgende artikelen voor meer informatie:
+Er zijn een aantal manieren om de sjabloon te implementeren in Azure en de resource te maken, als deze nog niet bestaat, of bijgewerkt als deze wel bestaat. Raadpleeg de volgende artikelen voor meer informatie:
 
 - [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 - [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
 - [Resources implementeren met Resource Manager-sjablonen en Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
 - [Resources implementeren met Resource Manager-sjablonen en Resource Manager REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
-Laten we doorgaan en informatie over het implementeren van de sjabloon in PowerShell. Cmdlets die worden gebruikt om de sjabloon te implementeren zijn contextspecifiek, zodat de huidige tenant en het huidige abonnement worden gebruikt. Gebruik [Set AzContext](/powershell/module/az.accounts/set-azcontext) voordat u de sjabloon implementeert, indien nodig, context wijzigen.
+Laten we eens kijken hoe u de sjabloon in Power shell implementeert. Cmdlets die worden gebruikt om de sjabloon te implementeren, zijn context afhankelijke, zodat de huidige Tenant en het huidige abonnement worden gebruikt. Gebruik [set-AzContext](/powershell/module/az.accounts/set-azcontext) voordat u de sjabloon implementeert, indien nodig, om de context te wijzigen.
 
-Maak eerst een resource-groep met [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Als de resourcegroep die u wilt gebruiken al bestaat, moet u deze stap overslaan.
+Maak eerst een resource groep met behulp van [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Als de resource groep die u wilt gebruiken al bestaat, slaat u deze stap over.
 
 ```powershell
 New-AzResourceGroup -Name MyLabResourceGroup1 -Location westus
 ```
 
-Maak vervolgens een implementatie met de resource-group via [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment). Deze cmdlet geldt de wijzigingen van resources voor Azure. Aantal resource-implementaties kunnen worden gemaakt naar een bepaalde resourcegroep. Als u meerdere keren naar dezelfde resourcegroep implementeert, zorg er dan voor dat de naam van elke implementatie is uniek.
+Maak vervolgens een implementatie naar de resource groep met behulp van [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment). Met deze cmdlet worden de resource wijzigingen toegepast op Azure. Er kunnen verschillende resource-implementaties worden gemaakt voor een bepaalde resource groep. Als u meerdere keren naar dezelfde resource groep implementeert, moet u ervoor zorgen dat de naam van elke implementatie uniek is.
 
 ```powershell
 New-AzResourceGroupDeployment `
@@ -190,15 +190,15 @@ New-AzResourceGroupDeployment `
     -TemplateParameterFile azuredeploy.parameters.json
 ```
 
-Nadat u New-AzResourceGroupDeployment is uitgevoerd, voert de opdracht belangrijke informatie zoals de Inrichtingsstatus (moet is geslaagd) en uitvoer voor de sjabloon.
+Nadat New-AzResourceGroupDeployment is uitgevoerd, voert de opdracht belang rijke informatie uit, zoals de inrichtings status (moet zijn geslaagd) en eventuele uitvoer van de sjabloon.
  
 ## <a name="use-azure-powershell"></a>Azure PowerShell gebruiken 
-Deze sectie bevat een voorbeeld van PowerShell-script dat kan worden gebruikt om een artefactopslagplaats toevoegen aan een lab. Als u geen Azure PowerShell, raadpleegt u [hoe u Azure PowerShell installeren en configureren](/powershell/azure/overview?view=azps-1.2.0) voor gedetailleerde instructies om deze te installeren.
+Deze sectie biedt een voor beeld van een Power shell-script dat kan worden gebruikt om een artefact opslagplaats toe te voegen aan een lab. Als u geen Azure PowerShell hebt, raadpleegt u [Azure PowerShell installeren en configureren](/powershell/azure/overview?view=azps-1.2.0) voor gedetailleerde instructies om het te installeren.
 
 ### <a name="full-script"></a>Volledige script
-Dit is het volledige script, met inbegrip van sommige uitgebreide berichten en opmerkingen:
+Dit is het volledige script, inclusief enkele uitgebreide berichten en opmerkingen:
 
-**New-DevTestLabArtifactRepository.ps1**:
+**New-DevTestLabArtifactRepository. ps1**:
 
 ```powershell
 
@@ -336,7 +336,7 @@ return $result
 ```
 
 ### <a name="run-the-powershell-script"></a>Het PowerShell-script uitvoeren
-Het volgende voorbeeld ziet u hoe u het script uit te voeren: 
+In het volgende voor beeld ziet u hoe u het script uitvoert: 
 
 ```powershell
 Set-AzContext -SubscriptionId <Your Azure subscription ID>
@@ -346,20 +346,20 @@ Set-AzContext -SubscriptionId <Your Azure subscription ID>
 
 
 ### <a name="parameters"></a>Parameters
-De PowerShell-voorbeeldscript in dit artikel worden de volgende parameters:
+In het Power shell-voorbeeld script in dit artikel worden de volgende para meters gebruikt:
 
-| Parameter | Description | 
+| Parameter | Beschrijving | 
 | --------- | ----------- | 
-| LabName | De naam van het testlab. |
-| ArtifactRepositoryName | Naam voor de nieuwe artefactopslagplaats. Het script wordt een willekeurige naam voor de opslagplaats gemaakt als deze niet is opgegeven. |
-| ArtifactRepositoryDisplayName | Weergavenaam voor de artefactopslagplaats. Dit is de naam die weergegeven in de Azure-portal wordt (https://portal.azure.com) bij het weergeven van alle artefact-opslagplaatsen voor een testomgeving. |
-| RepositoryUri | De URI naar de opslagplaats. Voorbeelden: `https://github.com/<myteam>/<nameofrepo>.git` of `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`.| 
-| RepositoryBranch | De vertakking in welke artefact bestanden worden gevonden. Standaard ingesteld op 'master'. | 
-| FolderPath | De map waarin artefacten kunnen worden gevonden. Standaard ingesteld op ' / artefacten |
-| PersonalAccessToken | Het beveiligingstoken voor toegang tot de opslagplaats met GitHub of VSOGit. Zie de sectie vereisten voor instructies voor het persoonlijke toegangstoken ophalen |
-| sourceType | Of is artefact VSOGit of GitHub-opslagplaats. |
+| LabName | De naam van het lab. |
+| ArtifactRepositoryName | Naam voor de nieuwe artefact opslagplaats. Het script maakt een wille keurige naam voor de opslag plaats als deze niet is opgegeven. |
+| ArtifactRepositoryDisplayName | Weergave naam voor de artefact opslagplaats. Dit is de naam die wordt weer gegeven in de Azure Portal (https://portal.azure.com) bij het weer geven van alle artefact opslagplaatsen voor een lab. |
+| RepositoryUri | De URI naar de opslag plaats. Voor beelden: `https://github.com/<myteam>/<nameofrepo>.git` of `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`.| 
+| RepositoryBranch | Vertakking waarin artefact bestanden kunnen worden gevonden. De standaard waarde is ' Master '. | 
+| FolderPath | De map waaronder artefacten kunnen worden gevonden. Standaard ingesteld op '/Artifacts ' |
+| PersonalAccessToken | Beveiligings token voor toegang tot de opslag plaats GitHub of VSOGit. Zie de sectie vereisten voor instructies voor het verkrijgen van een persoonlijk toegangs token |
+| sourceType | Of artefacten VSOGit of GitHub opslag plaats zijn. |
 
-De opslagplaats zelf moet een interne naam voor het identificeren, die afwijkt van die de weergavenaam die wordt weergegeven in de Azure-portal. Ziet u niet de interne naam met behulp van de Azure portal, maar u deze zien bij het gebruik van Azure REST API's of Azure PowerShell. Het script geeft een naam, als deze niet is opgegeven door de gebruiker van het script.
+De opslag plaats zelf moet een interne naam hebben voor identificatie, wat afwijkt van de weergave naam die wordt weer gegeven in de Azure Portal. U ziet de interne naam niet met behulp van de Azure Portal, maar u ziet deze wanneer u Azure REST Api's of Azure PowerShell gebruikt. Het script geeft een naam, indien deze niet is opgegeven door de gebruiker van het script.
 
 ```powershell
 #Set artifact repository name, if not set by user
@@ -368,22 +368,22 @@ if ($ArtifactRepositoryName -eq $null){
 }
 ```
 
-### <a name="powershell-commands-used-in-the-script"></a>PowerShell-opdrachten in het script gebruikt
+### <a name="powershell-commands-used-in-the-script"></a>Power shell-opdrachten die in het script worden gebruikt
 
-| PowerShell-opdracht | Opmerkingen |
+| Power shell-opdracht | Opmerkingen |
 | ------------------ | ----- |
-| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Met deze opdracht wordt gebruikt voor meer informatie over het lab, zoals de locatie. |
-| [New-AzResource](/powershell/module/az.resources/new-azresource) | Er is geen specifieke opdracht voor het toevoegen van artefact opslagplaatsen. De algemene [New-AzResource](/powershell/module/az.resources/new-azresource) cmdlet wordt de taak. Deze cmdlet moet ofwel de **ResourceId** of de **ResourceName** en **ResourceType** paar om te weten welk type resource die u wilt maken. Met dit voorbeeldscript maakt gebruik van de resourcenaam en de resource-type-paar. <br/><br/>U ziet dat het maken van de bron van de opslagplaats artefact op dezelfde locatie en in dezelfde resourcegroep bevinden als het lab.|
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Deze opdracht wordt gebruikt om details over het lab, zoals de locatie ervan, op te halen. |
+| [New-AzResource](/powershell/module/az.resources/new-azresource) | Er is geen specifieke opdracht voor het toevoegen van artefact opslagplaatsen. De algemene cmdlet [New-AzResource](/powershell/module/az.resources/new-azresource) voert de taak uit. Voor deze cmdlet **moet de waarde** **ResourceID** of de combi natie resourcenaam en **resource** type zijn ingesteld om te weten welk soort bron moet worden gemaakt. Dit voorbeeld script maakt gebruik van de resource naam en het resource type paar. <br/><br/>U ziet dat u de opslag plaats voor artefacten op dezelfde locatie en onder dezelfde resource groep maakt als het lab.|
 
-Het script voegt een nieuwe resource toe aan het huidige abonnement. Gebruik [Get-AzContext](/powershell/module/az.accounts/get-azcontext) om deze informatie te bekijken. Gebruik [Set AzContext](/powershell/module/az.accounts/set-azcontext) om in te stellen de huidige tenant en hetzelfde abonnement.
+Het script voegt een nieuwe resource toe aan het huidige abonnement. Gebruik [Get-AzContext](/powershell/module/az.accounts/get-azcontext) om deze informatie te bekijken. Gebruik [set-AzContext](/powershell/module/az.accounts/set-azcontext) om de huidige Tenant en het opgegeven abonnement in te stellen.
 
-De beste manier voor het detecteren van de resourcenaam van de en resource-informatie is met de [Test Drive Azure REST-API's](https://azure.github.io/projects/apis/) website. Bekijk de [DevTest Labs-15-05-2016](https://aka.ms/dtlrestapis) provider om te controleren van de beschikbare REST-API's voor de DevTest Labs-provider. De scriptgebruikers de volgende resource-ID. 
+De beste manier om de informatie over de resource naam en het bron type te detecteren is met behulp van de [Azure rest api's](https://azure.github.io/projects/apis/) -website van het test station. Bekijk de [DevTest Labs-2016-05-15-](https://aka.ms/dtlrestapis) provider voor een overzicht van de beschik bare rest-api's voor de DevTest Labs-provider. Het script gebruikers de volgende resource-ID. 
 
 ```powershell
 "/subscriptions/$SubscriptionId/resourceGroups/$($LabResource.ResourceGroupName)/providers/Microsoft.DevTestLab/labs/$LabName/artifactSources/$ArtifactRepositoryName"
 ```
  
-Het resourcetype is dat alles na 'providers' in de URI, met uitzondering van artikelen die worden vermeld in de accolades vermeld. De resourcenaam is alles zichtbaar in de accolades. Als meer dan één item wordt verwacht voor de resourcenaam, scheidt u elk item met een slash zoals we hebben gedaan. 
+Het resource type is alles vermeld na ' providers ' in de URI, met uitzonde ring van items die worden weer gegeven in de accolades. De resource naam is alles wat in de accolades wordt weer gegeven. Als er meer dan één item wordt verwacht voor de resource naam, moet u elk item scheiden met een slash zoals we hebben gedaan. 
 
 ```powershell
 $resourcetype = 'Microsoft.DevTestLab/labs/artifactSources'
@@ -392,7 +392,7 @@ $resourceName = $LabName + '/' + $ArtifactRepositoryName
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Geef op verplichte artefacten voor uw lab in Azure DevTest Labs](devtest-lab-mandatory-artifacts.md)
-- [Maken van aangepaste artefacten voor uw virtuele machine van DevTest Labs](devtest-lab-artifact-author.md)
-- [Met artefacten vaststellen in de testomgeving](devtest-lab-troubleshoot-artifact-failure.md)
+- [Verplichte artefacten opgeven voor uw Lab in Azure DevTest Labs](devtest-lab-mandatory-artifacts.md)
+- [Aangepaste artefacten maken voor uw virtuele machine van DevTest Labs](devtest-lab-artifact-author.md)
+- [Storingen in artefacten in het lab diagnosticeren](devtest-lab-troubleshoot-artifact-failure.md)
 

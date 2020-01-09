@@ -1,5 +1,6 @@
 ---
-title: Voor beeld van Azure API management-beleid-aanvraag toestaan met externe goed keurder | Microsoft Docs
+title: Voor beeld van API management-beleid-aanvraag toestaan met externe goed keurder
+titleSuffix: Azure API Management
 description: 'Voor beeld van Azure API management-beleid: demonstreert hoe aanvragen worden geautoriseerd met een externe autorisatie die een aangepaste of verouderde logica voor verificatie/autorisatie inkapselt.'
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: apimpm
-ms.openlocfilehash: 92836e0bfe43a41ad6547c68bc0b9a326528862c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 99bf1068042eb7ab0c43e2a683ca7116d2e426f3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074157"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442502"
 ---
 # <a name="authorize-requests-using-external-authorizer"></a>Aanvragen met externe autorisatie toestaan
 

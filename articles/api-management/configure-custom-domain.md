@@ -1,5 +1,6 @@
 ---
-title: Een aangepaste domein naam configureren voor uw Azure API Management-exemplaar | Microsoft Docs
+title: Aangepaste domein naam voor Azure API Management-exemplaar configureren
+titleSuffix: Azure API Management
 description: In dit onderwerp wordt beschreven hoe u een aangepaste domein naam configureert voor uw Azure API Management-exemplaar.
 services: api-management
 documentationcenter: ''
@@ -11,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: ba2288fa4add6df6b7861b5f8a99bcd3ee8b4c12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8fe07318d33980ad3ec9fc3d6e8749c6c9aed42e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472202"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442552"
 ---
 # <a name="configure-a-custom-domain-name"></a>Een aangepaste domeinnaam configureren
 
@@ -73,7 +74,7 @@ Voor het uitvoeren van de stappen die in dit artikel worden beschreven, hebt u h
     >
     > Als het certificaat is ingesteld op autorotate, neemt API Management de nieuwste versie automatisch op zonder uitval tijd voor de service (als uw API Management laag SLA-i. e heeft in alle lagen, behalve de laag voor ontwikkel aars).
 
-1. Klik op Toep assen.
+1. Klik op Toepassen.
 
     > [!NOTE]
     > Het proces voor het toewijzen van het certificaat kan 15 minuten of langer duren, afhankelijk van de grootte van de implementatie. Ontwikkel aars-SKU heeft downtime, Basic-en hogere Sku's hebben geen downtime.

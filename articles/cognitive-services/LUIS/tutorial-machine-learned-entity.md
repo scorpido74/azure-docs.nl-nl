@@ -9,22 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 2d3bffd025d484ac928e21003b7cba9c63d2c514
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e1709a5e86c8fed8d7f724ad1b105bd02df9fa56
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885832"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381763"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>Zelf studie: gestructureerde gegevens ophalen van gebruikers utterance met entiteiten die door machines zijn geleerd in Language Understanding (LUIS)
 
 In deze zelf studie extraheert u gestructureerde gegevens uit een utterance met behulp van de door de machine geleerde entiteit.
 
 De door de machine geleerde entiteit ondersteunt het model voor het [decompositieen van modellen](luis-concept-model.md#v3-authoring-model-decomposition) door subcomponent entiteiten te voorzien van hun descriptor en beperkingen.
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 **In deze zelfstudie leert u het volgende:**
 
@@ -66,7 +64,7 @@ U kunt verdere afbraak toevoegen, zoals het maken van subonderdelen voor topping
 
 ## <a name="import-example-json-to-begin-app"></a>Voor beeld van import. json voor het starten van de app
 
-1.  Down load en sla het [JSON-bestand](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/machine-learned-entity/pizza-intents-only.json)van de app op.
+1.  Down load en sla het [JSON-bestand](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-intents-only.json)van de app op.
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: Push meldingen verzenden naar specifieke Android-apps met behulp van Azure Notification Hubs | Microsoft Docs
+title: Push meldingen verzenden naar specifieke Android-apps met behulp van Azure Notification Hubs
 description: Leer hoe u pushmeldingen kunt verzenden naar specifieke gebruikers met behulp van Azure Notification Hubs.
 documentationcenter: android
 services: notification-hubs
@@ -17,12 +17,12 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 5bd709236667dd43e623047ad995b0a7b981e9cb
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: c2d3789082130cbbc42021a0706249dd3966b9ef
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387428"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531119"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>Zelf studie: Push meldingen verzenden naar specifieke Android-apps met behulp van Azure Notification Hubs
 
@@ -260,8 +260,8 @@ De volgende stap is het bijwerken van de Android-toepassing die in de [zelf stud
     }
     ```
 
-    Dit onderdeel implementeert de REST-aanroepen die nodig zijn om contact op te nemen met de back-end van de app om te registreren voor push meldingen Daarnaast wordt de *registrationIds* die is gemaakt door de Notification Hub, lokaal opgeslagen. Zie [Registering from your App Backend](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) (Registreren vanuit uw app-back-end) voor meer informatie. Er wordt een autorisatie token gebruikt dat is opgeslagen in de lokale opslag wanneer u op de knop **Aanmelden** klikt.
-4. Voeg in de klasse `MainActivity` een veld toe voor de klasse `RegisterClient` en een teken reeks voor het eind punt van uw ASP.NET-back-end. Zorg ervoor dat u `<Enter Your Backend Endpoint>` vervangt door het eindpunt van de back-end dat u eerder hebt vastgesteld. Bijvoorbeeld `http://mybackend.azurewebsites.net`.
+    Dit onderdeel implementeert de REST-aanroepen die nodig zijn om contact op te nemen met de back-end van de app om te registreren voor push meldingen Daarnaast wordt de *registrationIds* die is gemaakt door de meldingshub, lokaal opgeslagen. Zie [Registering from your App Backend](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) (Registreren vanuit uw app-back-end) voor meer informatie. Er wordt een autorisatie token gebruikt dat is opgeslagen in de lokale opslag wanneer u op de knop **Aanmelden** klikt.
+4. Voeg in uw `MainActivity`-klasse een veld toe voor de `RegisterClient` klasse en een teken reeks voor het eind punt van uw ASP.NET-back-end. Zorg ervoor dat u `<Enter Your Backend Endpoint>` vervangt door het eindpunt van de back-end dat u eerder hebt vastgesteld. Bijvoorbeeld `http://mybackend.azurewebsites.net`.
 
     ```java
     private RegisterClient registerClient;
@@ -412,7 +412,7 @@ De volgende stap is het bijwerken van de Android-toepassing die in de [zelf stud
     }
     ```
 
-    De `login`-handler voor de **aanmeldings** knop genereert een basis verificatie token met behulp van de gebruikers naam en het wacht woord van de invoer (dit is een token dat uw verificatie schema gebruikt). vervolgens wordt `RegisterClient` gebruikt om de back-end voor registratie aan te roepen.
+    De `login`-handler voor de knop **Aanmelden** genereert een basis verificatie token met behulp van de gebruikers naam en het wacht woord (dit is een token dat uw verificatie schema gebruikt). vervolgens wordt `RegisterClient` gebruikt om de back-end voor registratie aan te roepen.
 
     De methode `sendPush` roept de back-end aan om een beveiligde melding te activeren naar de gebruiker, op basis van de gebruikerstag. De Platform Notification Service die door `sendPush` wordt benaderd, is afhankelijk van de `pns`-tekenreeks die wordt doorgegeven.
 
@@ -472,7 +472,7 @@ De volgende stap is het bijwerken van de Android-toepassing die in de [zelf stud
     ```java
     useLibrary 'org.apache.http.legacy'
     ```
-13. Als uw app is gericht op API-niveau 28 (Android 9,0) of hoger, neemt u de volgende declaratie op in het `<application>`-element van `AndroidManifest.xml`.
+13. Als uw app is gericht op API-niveau 28 (Android 9,0) of hoger, neemt u de volgende verklaring op in het `<application>`-element van `AndroidManifest.xml`.
 
     ```xml
     <uses-library

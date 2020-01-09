@@ -1,14 +1,14 @@
 ---
 title: Back-upfouten van SAP HANA databases oplossen
 description: Hierin wordt beschreven hoe u veelvoorkomende fouten oplost die zich kunnen voordoen wanneer u Azure Backup gebruikt om back-ups te maken van SAP HANA-data bases.
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 9958b241c44d619efea2f9ad516a2bd6d4f33d6e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 04f9bafba0ca490b33a0daf3c3725e57d81bcc7e
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892597"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664595"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Problemen met back-ups van SAP HANA-data bases in azure oplossen
 
@@ -84,27 +84,27 @@ Voer de invoer uit tijdens het herstellen van één container database (dit SDC)
 
 Stel dat er een back-up wordt gemaakt van een dit SDC HANA-exemplaar ' h21 '. Op de pagina Back-upitems wordt de naam van het back-upartikel weer gegeven als **' h21 (dit SDC) '** . Als u probeert om deze data base te herstellen naar een andere doel-dit SDC, zegt u H11. vervolgens moet u de volgende invoer invoeren.
 
-![Dit SDC herstellen](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
+![Naam van herstelde dit SDC-data base](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
 
 Houd rekening met de volgende punten:
 
-- De naam van de herstelde DB wordt standaard gevuld met de naam van het back-upitem, bijvoorbeeld h21 (dit SDC)
+- De naam van de herstelde data base wordt standaard gevuld met de naam van het back-upitem. In dit geval h21 (dit SDC).
 - Als u het doel als H11 selecteert, wordt de herstelde database naam niet automatisch gewijzigd. **Deze moet worden bewerkt in H11 (dit SDC)** . Met betrekking tot dit SDC wordt de herstelde database naam de doel exemplaar-ID met kleine letters en ' dit SDC ' toegevoegd tussen haakjes.
 - Aangezien dit SDC slechts één data base kan hebben, moet u ook op het selectie vakje klikken om de bestaande database gegevens met de herstel punt gegevens te overschrijven.
-- Linux is hoofdletter gevoelig. Zorg er daarom voor dat u de case behoudt.
+- Linux is hoofdletter gevoelig. Zorg er daarom voor dat u de zaak behoudt.
 
 ### <a name="multiple-container-database-mdc-restore"></a>Multiple container data base (MDC) Restore
 
-In meerdere container databases voor HANA is de standaard configuratie SYSTEMDB + 1 of meer Tenant Db's. Als u een volledig SAP HANA exemplaar herstelt, moet u zowel de SYSTEMDB als de Tenant Db's herstellen. Eén herstelt SYSTEMDB eerst en gaat vervolgens verder met de Tenant-data base. Systeem-DB betekent in wezen dat de systeem gegevens op het geselecteerde doel worden overschreven. Deze herstel bewerking overschrijft ook de BackInt-gerelateerde informatie in het doel exemplaar. Nadat de systeem database is hersteld naar een doel exemplaar, moet er daarom opnieuw een pre-registratie script worden uitgevoerd. Alleen dan zullen de volgende Tenant-DB-herstel bewerkingen slagen.
+In meerdere container databases voor HANA is de standaard configuratie SYSTEMDB + 1 of meer Tenant Db's. Als u een volledig SAP HANA exemplaar herstelt, moet u zowel de SYSTEMDB als de Tenant Db's herstellen. Eén herstelt SYSTEMDB eerst en gaat vervolgens verder met de Tenant-data base. Systeem-DB betekent in wezen dat de systeem gegevens op het geselecteerde doel worden overschreven. Deze herstel bewerking overschrijft ook de BackInt-gerelateerde informatie in het doel exemplaar. Nadat de systeem database is hersteld naar een doel exemplaar, voert u het pre-registratie script opnieuw uit. Alleen dan zullen de volgende Tenant-DB-herstel bewerkingen slagen.
 
 ## <a name="upgrading-from-sap-hana-10-to-20"></a>Upgraden van SAP HANA 1,0 naar 2,0
 
-Als u SAP HANA 1,0-data bases beveiligt en een upgrade naar 2,0 wilt uitvoeren, voert u de onderstaande stappen uit:
+Als u SAP HANA 1,0-data bases beveiligt en een upgrade naar 2,0 wilt uitvoeren, voert u de volgende stappen uit:
 
 - [Stop de beveiliging](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) met behoud van gegevens voor de oude dit SDC-data base.
 - Voer de upgrade uit. Na voltooiing wordt de HANA nu MDC met een systeem database en een Tenant database (s)
 - Voer het script voor de [voorafgaande registratie](https://aka.ms/scriptforpermsonhana) opnieuw uit met de juiste details van (sid en MDC).
-- De extensie voor dezelfde computer opnieuw registreren in azure Portal (Details van de weer gave voor back->-> de relevante Azure-VM selecteren-> opnieuw registreren).
+- De extensie voor dezelfde computer opnieuw registreren in Azure Portal (Details van de weer gave back->: > Selecteer de relevante Azure-VM-> opnieuw registreren.
 - Klik op Db's opnieuw detecteren voor dezelfde VM. Bij deze actie moet de nieuwe Db's in stap 2 worden weer gegeven met de juiste Details (SYSTEMDB en Tenant database, niet dit SDC).
 - Configureer de back-up voor deze nieuwe data bases.
 

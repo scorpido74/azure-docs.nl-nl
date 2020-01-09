@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 678096037da69bbddf95933e3fdf988f540ca4a6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d367d9eedc06dbfe0e5096372a4f09c66ea35013
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819841"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462609"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Database resources dynamisch schalen met minimale downtime
 
@@ -62,9 +62,9 @@ Het starten van een actie omhoog of omlaag schalen in een van de versies zou het
 
 ## <a name="alternative-scale-methods"></a>Alternatieve schaal methoden
 
-Het schalen van resources is de eenvoudigste en meest efficiënte manier om de prestaties van uw data base te verbeteren zonder de data base-of toepassings code te wijzigen. In sommige gevallen is het mogelijk dat zelfs de hoogste service lagen, reken grootten en prestatie optimalisaties uw werk belasting op een geslaagde en rendabele manier niet kan verwerken. In dat geval hebt u de volgende extra opties om uw data base te schalen:
+Het schalen van resources is de eenvoudigste en meest efficiënte manier om de prestaties van uw data base te verbeteren zonder de data base of toepassings code te wijzigen. In sommige gevallen is het mogelijk dat zelfs de hoogste service lagen, reken grootten en prestatie optimalisaties uw werk belasting op een succes volle en rendabele manier niet kan verwerken. In dat geval hebt u de volgende extra opties om uw data base te schalen:
 
-- [Uitschalen](sql-database-read-scale-out.md) is een functie die beschikbaar is in de locatie waar u een alleen-lezen replica van uw gegevens krijgt, waar u veeleisende alleen-lezen query's kunt uitvoeren, zoals rapporten. Met alleen-lezen replica wordt uw alleen-lezen werk belasting afgehandeld zonder het resource gebruik op uw primaire data base te beïnvloeden.
+- [Uitschalen voor lezen](sql-database-read-scale-out.md) is een beschik bare functie waarbij u een alleen-lezen replica van uw gegevens krijgt, waar u veeleisende alleen-lezen query's kunt uitvoeren, zoals rapporten. Met alleen-lezen replica wordt uw alleen-lezen werk belasting afgehandeld zonder het resource gebruik op uw primaire data base te beïnvloeden.
 - [Data Base-sharding](sql-database-elastic-scale-introduction.md) is een reeks technieken waarmee u uw gegevens kunt splitsen in verschillende data bases en deze onafhankelijk kunnen schalen.
 
 ## <a name="next-steps"></a>Volgende stappen

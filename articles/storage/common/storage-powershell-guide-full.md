@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7064496b89143f467ea63fe38233724a7b0af96d
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: d2404ee58f5f44fbe5625f267e6d1c504d0bd237
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131013"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465089"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Azure PowerShell gebruiken met Azure Storage
 
@@ -161,7 +161,7 @@ Als u de andere sleutel opnieuw wilt genereren, gebruikt u `key2` als de sleutel
 Genereer een van de sleutels opnieuw en haal deze opnieuw op om de nieuwe waarde weer te geven.
 
 > [!NOTE]
-> U moet een zorgvuldige planning uitvoeren voordat u de sleutel voor een productie-opslag account opnieuw genereert. Wanneer een of beide sleutels opnieuw worden gegenereerd, wordt de toegang voor elke toepassing ongeldig met behulp van de sleutel die opnieuw is gegenereerd. Ga voor meer informatie naar [Toegangssleutels](storage-account-manage.md#access-keys).
+> U moet een zorgvuldige planning uitvoeren voordat u de sleutel voor een productie-opslag account opnieuw genereert. Wanneer een of beide sleutels opnieuw worden gegenereerd, wordt de toegang voor elke toepassing ongeldig met behulp van de sleutel die opnieuw is gegenereerd. Zie [toegangs sleutels voor opslag accounts beheren](storage-account-keys-manage.md)voor meer informatie.
 
 
 ### <a name="delete-a-storage-account"></a>Een opslagaccount verwijderen

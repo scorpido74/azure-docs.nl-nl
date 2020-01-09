@@ -1,22 +1,22 @@
 ---
-title: Azure Monitor-Azure-toepassing Insights standaard SDK-eind punten overschrijven | Microsoft Docs
-description: Wijzig de standaard Azure-toepassing Insights-eind punten voor de SDK voor regio's als Azure Government.
+title: Azure-toepassing Insights standaard SDK-eind punten overschrijven
+description: Wijzig de standaard Azure Monitor Application Insights SDK-eind punten voor regio's als Azure Government.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/26/2019
-ms.openlocfilehash: e1db9782fe923f7a5759f4e001cd0db970606fed
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: c04b793512eccf6aaff7d3ed3cc65efdd3dfc303
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677481"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432591"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights standaard eindpunten overschrijven
 
-Als u gegevens van Application Insights naar bepaalde regio's wilt verzenden, moet u de standaard eindpunt adressen onderdrukken. Elke SDK vereist iets verschillende wijzigingen, die allemaal in dit artikel worden beschreven. Deze wijzigingen moeten de voorbeeld code aanpassen en de tijdelijke aanduidingen voor `QuickPulse_Endpoint_Address`, `TelemetryChannel_Endpoint_Address` en `Profile_Query_Endpoint_address` vervangen door de werkelijke eindpunt adressen voor uw specifieke regio. Het einde van dit artikel bevat koppelingen naar de eindpunt adressen voor regio's waarvoor deze configuratie is vereist.
+Als u gegevens van Application Insights naar bepaalde regio's wilt verzenden, moet u de standaard eindpunt adressen onderdrukken. Elke SDK vereist iets verschillende wijzigingen, die allemaal in dit artikel worden beschreven. Deze wijzigingen moeten de voorbeeld code aanpassen en de tijdelijke aanduidingen voor `QuickPulse_Endpoint_Address`, `TelemetryChannel_Endpoint_Address`en `Profile_Query_Endpoint_address` vervangen door de werkelijke eindpunt adressen voor uw specifieke regio. Het einde van dit artikel bevat koppelingen naar de eindpunt adressen voor regio's waarvoor deze configuratie is vereist.
 
 ## <a name="sdk-code-changes"></a>SDK-code wijzigingen
 
@@ -178,7 +178,7 @@ Profile Endpoint: "Profile_Query_Endpoint_address"
 Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 ```
 
-### <a name="javascript"></a>Javascript
+### <a name="javascript"></a>JavaScript
 
 ```javascript
 <script type="text/javascript">
@@ -195,7 +195,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 Momenteel zijn de enige regio's waarvoor wijziging van het eind punt is vereist, [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) en [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide).
 
-|Regio |  Naam van eind punt | Waarde |
+|Regio |  De naam van eindpunt | Waarde |
 |-----------------|:------------|:-------------|
 | Azure China | Telemetrie-kanaal | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure China | QuickPulse (Live Metrics) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
@@ -207,10 +207,10 @@ Momenteel zijn de enige regio's waarvoor wijziging van het eind punt is vereist,
 Als u momenteel de [Application Insights rest API](https://dev.applicationinsights.io/
 ) gebruikt die normaal gesp roken wordt geopend via API.applicationinsights.io, moet u een eind punt gebruiken dat lokaal is voor uw regio:
 
-|Regio |  Naam van eind punt | Waarde |
+|Regio |  De naam van eindpunt | Waarde |
 |-----------------|:------------|:-------------|
-| Azure China | REST-API | `api.applicationinsights.azure.cn` |
-| Azure Government | REST-API | `api.applicationinsights.us`|
+| Azure China | REST API | `api.applicationinsights.azure.cn` |
+| Azure Government | REST API | `api.applicationinsights.us`|
 
 > [!NOTE]
 > Bewaking op basis van agent/uitbrei ding voor Azure-app Services wordt **momenteel niet ondersteund** in deze regio's. Zodra deze functionaliteit beschikbaar wordt, wordt dit artikel bijgewerkt.

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 12/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: df8300e84309a874faa4b1c06891a4c5b549fce6
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 0e4ec63ffe715b17f55fde2a53c15d96d391cdba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014784"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452537"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Een voorbeeld omgeving diagnosticeren en problemen oplossen
 
@@ -25,7 +25,7 @@ In dit artikel vindt u een overzicht van enkele veelvoorkomende problemen die u 
 
 Dit probleem kan zich voordoen als u geen machtigingen hebt voor toegang tot de Time Series Insights omgeving. Gebruikers hebben een toegangs functie op lezerniveau nodig om hun Time Series Insights omgeving weer te geven. Als u de huidige toegangs niveaus wilt controleren en aanvullende toegang wilt verlenen, gaat u naar de sectie **Data Access policies** op de time series Insights-bron in de [Azure Portal](https://portal.azure.com/).
 
-  [![omgeving](media/v2-update-diagnose-and-troubleshoot/environment.png)](media/v2-update-diagnose-and-troubleshoot/environment.png#lightbox)
+  [![het verifiëren van het beleid voor gegevens toegang.](media/preview-troubleshoot/verify-data-access-policies.png)](media/preview-troubleshoot/verify-data-access-policies.png#lightbox)
 
 ## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>Probleem: er worden geen gegevens weer gegeven in de preview Explorer
 
@@ -35,7 +35,7 @@ Er zijn verschillende veelvoorkomende redenen waarom u uw gegevens mogelijk niet
 
     Controleer of uw gebeurtenis bron, een Event Hub of een IoT-hub, gegevens ontvangt van uw tags of exemplaren. Als u wilt controleren, gaat u naar de overzichts pagina van uw resource in de Azure Portal.
 
-    [![Dashboard-insights](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png)](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png#lightbox)
+    [![Bekijk het overzicht van statistieken voor dash boards.](media/preview-troubleshoot/verify-dashboard-metrics.png)](media/preview-troubleshoot/verify-dashboard-metrics.png#lightbox)
 
 - De bron gegevens van uw gebeurtenis bevindt zich niet in JSON-indeling.
 
@@ -45,14 +45,15 @@ Er zijn verschillende veelvoorkomende redenen waarom u uw gegevens mogelijk niet
 
   * Voor een IoT-hub moet u de sleutel opgeven die **service Connect** -machtiging heeft.
 
-    [![Configuratie](media/v2-update-diagnose-and-troubleshoot/configuration.png)](media/v2-update-diagnose-and-troubleshoot/configuration.png#lightbox)
+    [de IoT hub-machtigingen ![verifiëren.](media/preview-troubleshoot/verify-correct-permissions.png)](media/preview-troubleshoot/verify-correct-permissions.png#lightbox)
 
-  * Zoals in de voor gaande afbeelding wordt weer gegeven, werken zowel het beleid **iothubowner** als het **service** werk omdat ze de machtiging **service CONNECT** hebben.
+    * Zowel het beleid **iothubowner** als het **service** werk, omdat ze **service CONNECT** -machtiging hebben.
+
   * Voor een Event Hub moet u de sleutel met de machtiging **Luis teren** opgeven.
   
-    [![machtigingen](media/v2-update-diagnose-and-troubleshoot/permissions.png)](media/v2-update-diagnose-and-troubleshoot/permissions.png#lightbox)
+    [Event Hub machtigingen ![controleren.](media/preview-troubleshoot/verify-eh-permissions.png)](media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
 
-  * Zoals in de voor gaande afbeelding wordt weer gegeven, werken beide beleids regels voor **lezen** en **beheren** omdat ze de machtiging **Luis teren** hebben.
+    * Het **Lees** -en **beheer** beleid werkt omdat de machtiging **Luis teren is geluisterd** .
 
 - Uw verleende consumenten groep is niet exclusief voor de Time Series Insights.
 
@@ -98,7 +99,7 @@ Als de tijds tempel eigenschap niet expliciet is opgegeven, wordt de IoT-hub van
 
    Time Series-modellen worden alleen ondersteund in omgevingen met betalen per gebruik. Zie [gegevens visualiseren in de Explorer](./time-series-insights-update-explorer.md)voor meer informatie over het openen van de S1-of S2-omgeving vanuit de time series Insights preview Explorer.
 
-   [![Access](media/v2-update-diagnose-and-troubleshoot/access.png)](media/v2-update-diagnose-and-troubleshoot/access.png#lightbox)
+   [Er zijn geen gebeurtenissen in de omgeving ![.](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 
 - Mogelijk bent u niet gemachtigd om het model weer te geven en te bewerken.
 
@@ -108,10 +109,12 @@ Als de tijds tempel eigenschap niet expliciet is opgegeven, wordt de IoT-hub van
 
 Dit probleem kan zich voordoen als in uw omgeving geen hiërarchie voor tijdreeks modellen is gedefinieerd. Zie [werken met Time Series-modellen](./time-series-insights-update-how-to-tsm.md)voor meer informatie.
 
-  [![Time Series-modellen](media/v2-update-diagnose-and-troubleshoot/tsm.png)](media/v2-update-diagnose-and-troubleshoot/tsm.png#lightbox)
+  [bij ![niet-bovenliggende instanties wordt een waarschuwing weer gegeven.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Lees de informatie [over het werken met Time Series-modellen](./time-series-insights-update-how-to-tsm.md).
+
 - Meer informatie over [ondersteunde JSON-vormen](./how-to-shape-query-json.md).
+
 - Bekijk [planning en limieten](./time-series-insights-update-plan.md) in azure time series Insights preview.

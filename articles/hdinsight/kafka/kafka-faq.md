@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 057c77d4ddb4a760e196c0dc8d508efe15e6699d
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: c8d2ef0330a32d5cab88355cc749322ec3a5ea30
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69520125"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530932"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Veelgestelde vragen over Apache Kafka in azure HDInsight
 
@@ -38,7 +38,7 @@ Zie [Azure HDInsight Virtual Network-architectuur](../hdinsight-virtual-network-
 
 ## <a name="do-apache-kafka-apis-work-with-hdinsight"></a>Werken Apache Kafka-Api's met HDInsight?
 
-Ja, HDInsight maakt gebruik van systeem eigen Kafka-Api's. De code van uw client toepassing hoeft niet te worden gewijzigd. Zie [zelf studie: Gebruik de Apache Kafka producer-en Consumer-api's](./apache-kafka-producer-consumer-api.md) om te zien hoe u op Java gebaseerde producer/Consumer-api's kunt gebruiken met uw cluster.
+Ja, HDInsight maakt gebruik van systeem eigen Kafka-Api's. De code van uw client toepassing hoeft niet te worden gewijzigd. Zie [zelf studie: de Apache Kafka producer-en Consumer-Api's gebruiken](./apache-kafka-producer-consumer-api.md) om te zien hoe u op Java gebaseerde producer/Consumer-api's kunt gebruiken met uw cluster.
 
 ## <a name="can-i-change-cluster-configurations"></a>Kan ik cluster configuraties wijzigen?
 
@@ -46,7 +46,7 @@ Ja, via de Ambari-Portal. Elk onderdeel in de portal heeft een sectie **configur
 
 ## <a name="what-type-of-authentication-does-hdinsight-support-for-apache-kafka"></a>Welk type verificatie ondersteunt HDInsight voor Apache Kafka?
 
-Met [Enterprise Security Package (ESP)](../domain-joined/apache-domain-joined-architecture.md)kunt u beveiliging op onderwerpniveau verkrijgen voor hun Kafka-clusters. Zie [zelf studie: Configureer Apache Kafka beleid in HDInsight met Enterprise Security Package (preview)](../domain-joined/apache-domain-joined-run-kafka.md)voor meer informatie.
+Met [Enterprise Security Package (ESP)](../domain-joined/apache-domain-joined-architecture.md)kunt u beveiliging op onderwerpniveau verkrijgen voor hun Kafka-clusters. Zie [zelf studie: Apache Kafka beleid in HDInsight configureren met Enterprise Security Package (preview)](../domain-joined/apache-domain-joined-run-kafka.md)voor meer informatie.
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>Zijn mijn gegevens versleuteld? Kan ik mijn eigen sleutels gebruiken?
 
@@ -66,6 +66,10 @@ Om Kafka-clients te laten communiceren met Kafka-Brokers, moeten ze de Brokers v
 
 Als u de hoeveelheid beschik bare ruimte voor Kafka-berichten wilt verg Roten, kunt u het aantal knoop punten verg Roten. Het is momenteel niet mogelijk om meer schijven toe te voegen aan een bestaand cluster.
 
+## <a name="can-a-kafka-cluster-work-with-databricks"></a>Kan een Kafka-cluster werken met Databricks? 
+
+Ja, Kafka-clusters kunnen samen werken met Databricks, zolang ze zich in hetzelfde VNet bevinden. Als u een Kafka-cluster met Databricks wilt gebruiken, maakt u een VNet met een HDInsight Kafka-cluster. vervolgens geeft u het VNet op wanneer u de werk ruimte Databricks maakt en VNet-injectie gebruikt. Zie [Deploy Azure Databricks in uw Azure Virtual Network (VNet-injectie)](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)voor meer informatie. U moet de namen van de Boots trap-Broker van het Kafka-cluster opgeven bij het maken van de Databricks-werk ruimte. Zie [Get the Apache Zookeeper and Broker host information](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started#getkafkainfo)(Engelstalig) voor meer informatie over het ophalen van de namen van de Kafka-Broker.
+
 ## <a name="how-can-i-have-maximum-data-durability"></a>Hoe kan ik maximale duurzaamheid van gegevens hebben?
 
 Met de duurzaamheid van gegevens kunt u het laagste risico op bericht verlies behaalt. Voor maximale duurzaamheid van gegevens kunt u het beste de volgende instellingen instellen:
@@ -74,7 +78,7 @@ Met de duurzaamheid van gegevens kunt u het laagste risico op bericht verlies be
 * een minimale replicatie factor van 4 gebruiken in regio's met slechts twee fout domeinen
 * verkiezingen voor onduidelijke leider uitschakelen
 * Stel **min. Insync. replica's** in op 2 of meer: Hiermee wijzigt u het aantal replica's dat volledig moet worden gesynchroniseerd met de leider voordat een schrijf bewerking kan worden voortgezet.
-* de eigenschap bevestigingen instellen op **all** -voor deze eigenschap moeten alle replica's alle berichten bevestigen
+* de eigenschap **bevestigingen** instellen op **all** -voor deze eigenschap moeten alle replica's alle berichten bevestigen
 
 Het configureren van Kafka voor een hogere consistentie van gegevens is van invloed op de beschik baarheid van makelaars om aanvragen te produceren.
 
@@ -88,7 +92,7 @@ Momenteel wordt er geen ondersteuning geboden voor in-place cluster versie-upgra
 
 ## <a name="how-do-i-monitor-my-kafka-cluster"></a>Wilt u mijn Kafka-cluster Hoe kan ik controleren?
 
-Gebruik Azure monitor om uw [Kafka](./apache-kafka-log-analytics-operations-management.md)-logboeken te analyseren.
+Gebruik Azure monitor om uw [Kafka-logboeken](./apache-kafka-log-analytics-operations-management.md)te analyseren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

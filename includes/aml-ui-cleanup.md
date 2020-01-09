@@ -8,12 +8,12 @@ ms.topic: include
 author: sgilley
 ms.author: sgilley
 ms.date: 11/06/2019
-ms.openlocfilehash: 96ede63b097999247675364217cf458a268e54d9
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 754c9799ed4c2fd90cbcf1e9717b0be21edd54cb
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929627"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659866"
 ---
 >[!IMPORTANT]
 >U kunt de resources die u hebt gemaakt als vereisten voor andere Azure Machine Learning zelf studies en artikelen met instructies gebruiken.
@@ -42,7 +42,7 @@ Het reken doel dat u hier hebt gemaakt, wordt *automatisch geschaald* naar nul k
 
 U kunt de registratie van gegevens sets opheffen vanuit uw werk ruimte door elke gegevensset te selecteren en **registratie verwijderen**te selecteren.
 
-![Registratie van gegevensset opheffen](./media/aml-ui-cleanup/unregister-dataset.png)
+![Registratie van gegevensset opheffen](./media/aml-ui-cleanup/unregister-dataset1225.png)
 
 Als u een gegevensset wilt verwijderen, gaat u naar het opslag account met behulp van de Azure Portal of Azure Storage Explorer en verwijdert u deze activa hand matig.
 

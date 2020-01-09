@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e4a5f83e3f4d26c2321ed1b4c48a385d07e6489d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ceee257cd09589fc953c2b32e978a35433b0a49b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895159"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371816"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Beperkte toegang verlenen tot Azure Storage-resources met behulp van Shared Access signatures (SAS)
 
@@ -25,7 +25,7 @@ Een Shared Access Signature (SAS) biedt beveiligde gedelegeerde toegang tot reso
 
 Azure Storage ondersteunt drie typen hand tekeningen voor gedeelde toegang:
 
-- **SA'S voor gebruikers overdracht (preview).** Een SAS voor gebruikers overdracht wordt beveiligd met Azure Active Directory (Azure AD)-referenties en ook door de machtigingen die zijn opgegeven voor de SAS. Een SAS voor gebruikers overdracht is alleen van toepassing op Blob-opslag.
+- **SA'S voor gebruikers delegering.** Een SAS voor gebruikers overdracht wordt beveiligd met Azure Active Directory (Azure AD)-referenties en ook door de machtigingen die zijn opgegeven voor de SAS. Een SAS voor gebruikers overdracht is alleen van toepassing op Blob-opslag.
 
     Zie [een gebruiker delegering sa's (rest API) maken](/rest/api/storageservices/create-user-delegation-sas)voor meer informatie over de sa's van de gebruikers overdracht.
 
@@ -122,9 +122,9 @@ Raadpleeg de volgende artikelen voor elk SAS-type om aan de slag te gaan met han
 
 ### <a name="user-delegation-sas"></a>SAS voor gebruikers overdracht
 
-- [Een gebruikers delegering SA'S maken voor een container of BLOB met Power shell (preview)](../blobs/storage-blob-user-delegation-sas-create-powershell.md)
-- [Een SAS voor gebruikers overdracht maken voor een container of BLOB met Azure CLI (preview)](../blobs/storage-blob-user-delegation-sas-create-cli.md)
-- [Een gebruikers delegering SA'S maken voor een container of BLOB met .NET (preview)](../blobs/storage-blob-user-delegation-sas-create-dotnet.md)
+- [Een SAS voor gebruikers overdracht maken voor een container of BLOB met Power shell](../blobs/storage-blob-user-delegation-sas-create-powershell.md)
+- [Een SAS voor gebruikers overdracht maken voor een container of BLOB met de Azure CLI](../blobs/storage-blob-user-delegation-sas-create-cli.md)
+- [Een SAS voor gebruikers overdracht maken voor een container of BLOB met .NET](../blobs/storage-blob-user-delegation-sas-create-dotnet.md)
 
 ### <a name="service-sas"></a>Service-SA'S
 

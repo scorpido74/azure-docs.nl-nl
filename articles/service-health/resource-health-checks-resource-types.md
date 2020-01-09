@@ -1,17 +1,14 @@
 ---
 title: Ondersteunde resource typen via Azure Resource Health | Microsoft Docs
 description: Ondersteunde resource typen via Azure resource Health
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 01/29/2019
-ms.openlocfilehash: 1692e8acda88a51173eb0eabcd90c377b431a3c3
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f25dc32774cb040a2b9873c6811ff184373c5104
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955039"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465268"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Resource typen en status controles in azure resource Health
 Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd door middel van resource typen.
@@ -225,4 +222,4 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 ## <a name="next-steps"></a>Volgende stappen
 -  Zie [Inleiding tot Azure service Health dash board](service-health-overview.md) en [Inleiding tot Azure resource Health](resource-health-overview.md) om meer te weten te komen over hen. 
 -  [Veelgestelde vragen over Azure Resource Health](resource-health-faq.md)
-- Stel waarschuwingen in zodat u op de hoogte wordt gesteld van status problemen. Zie Configure Alerts [for service Health Events](../azure-monitor/platform/alerts-activity-log-service-notifications.md)(Engelstalig) voor meer informatie. 
+- Stel waarschuwingen in zodat u op de hoogte wordt gesteld van status problemen. Zie [Configure alerts for service Health Events](../azure-monitor/platform/alerts-activity-log-service-notifications.md)(Engelstalig) voor meer informatie. 

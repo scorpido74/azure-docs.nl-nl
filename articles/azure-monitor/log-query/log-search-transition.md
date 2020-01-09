@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: b738d532cb458506ca50a07dea11687040f99e02
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a8d0469d57901f53d8e615f800b5d804944163fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900330"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398161"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Overgang van Log Analytics logboek zoeken naar Azure Monitor-logboeken
 De zoek opdracht in het logboek in Log Analytics is onlangs vervangen door een nieuwe ervaring voor het analyseren van Azure Monitor Logboeken. De pagina zoeken in Logboeken is momenteel nog steeds toegankelijk via de menu opdracht **Logboeken (klassiek)** op de pagina **log Analytics werk ruimten** in de Azure Portal, maar wordt wel 15 februari 2019. In dit artikel worden de verschillen beschreven tussen de twee ervaringen waarmee u kunt overstappen van zoeken in Logboeken. 
@@ -47,7 +47,7 @@ Selecteer **Opslaan**om de huidige query in azure monitor-logboeken op te slaan.
 ## <a name="saved-queries"></a>Opgeslagen query's
 In zoeken in Logboeken zijn uw opgeslagen query's beschikbaar via de actie balk item **opgeslagen Zoek opdrachten**. In Azure Monitor-Logboeken opent u opgeslagen query's vanuit [query Explorer](../log-query/get-started-portal.md#save-queries).
 
-![Query Verkenner](media/log-search-transition/query-explorer.png)
+![Queryverkenner](media/log-search-transition/query-explorer.png)
 
 ## <a name="drill-down-on-summarized-rows"></a>Inzoomen op samenvattings rijen
 In zoeken in Logboeken kunt u klikken op een rij in een samenvatte query om een andere query te starten waarin gedetailleerde records in die rij worden weer gegeven.

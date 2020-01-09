@@ -1,5 +1,6 @@
 ---
-title: Een API beveiligen met behulp van OAuth 2,0 met Azure Active Directory en API Management | Microsoft Docs
+title: Een API beveiligen met behulp van OAuth 2,0 met AAD en API Management
+titleSuffix: Azure API Management
 description: Meer informatie over het beveiligen van een web-API-back-end met Azure Active Directory en API Management.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 653089042c87b3223b3de048b6f12056d04b0f3c
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 82341f29ffda03c5f047d7566ff64884c6698b07
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806325"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442517"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Een API beveiligen met behulp van OAuth 2,0 met Azure Active Directory en API Management
 
@@ -51,7 +52,7 @@ De eerste stap is het registreren van een toepassing in azure AD die de API vert
 1. Selecteer **nieuwe registratie**. 
 
 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in: 
-    - Voer in de sectie **Naam** een beschrijvende toepassingsnaam. Deze wordt zichtbaar voor gebruikers van de app. Bijvoorbeeld: `backend-app`. 
+    - Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die zichtbaar is voor gebruikers van de app. Bijvoorbeeld: `backend-app`. 
     - Selecteer in de sectie **ondersteunde account typen** een optie die aansluit bij uw scenario. 
 
 1. Laat de sectie **URI omleiden** leeg.
@@ -60,9 +61,7 @@ De eerste stap is het registreren van een toepassing in azure AD die de API vert
 
 1. Zoek op de pagina app- **overzicht** de waarde van de **toepassing (client)** en noteer deze voor later.
 
-Wanneer de toepassing is gemaakt, noteert u de **toepassings-id**voor gebruik in een volgende stap. 
-
-1. Selecteer **een API** weer geven en klik op **opslaan en ga door met** het maken van een toepassings-id-URI.
+1. Selecteer **een API beschikbaar** maken en stel de **URI voor de toepassings-id** in met de standaard waarde. Noteer deze waarde voor later.
 
 1. Maak op de pagina **een bereik toevoegen** een nieuwe scope die wordt ondersteund door de API. (bijvoorbeeld lezen) en klik vervolgens op *bereik toevoegen* om het bereik te maken. Herhaal deze stap om alle scopes toe te voegen die worden ondersteund door uw API.
 
@@ -77,10 +76,10 @@ Elke client toepassing die de API aanroept, moet ook worden geregistreerd als ee
 1. Selecteer **nieuwe registratie**.
 
 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in: 
-    - Voer in de sectie **Naam** een beschrijvende toepassingsnaam. Deze wordt zichtbaar voor gebruikers van de app. Bijvoorbeeld: `client-app`. 
+    - Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die zichtbaar is voor gebruikers van de app. Bijvoorbeeld: `client-app`. 
     - Selecteer in de sectie **ondersteunde account typen** de optie **accounts in elke organisatie Directory**. 
 
-1. Selecteer`Web` en voer de URL in het gedeelte **omleidings-URI** in.`https://contoso5.portal.azure-api.net/signin`
+1. Selecteer in de sectie **URI omleiden** `Web` en voer de URL in `https://contoso5.portal.azure-api.net/signin`
 
 1. Selecteer **Registreren** om de toepassing te maken. 
 
@@ -100,13 +99,13 @@ Nu u twee toepassingen hebt geregistreerd die de API en de ontwikkelaars console
 
 1. Navigeer naar **app-registraties**. 
 
-1. Selecteer `client-app`en in de lijst met pagina's voor de app gaat u naar **API-machtigingen**.
+1. Selecteer `client-app`en ga in de lijst met pagina's voor de app naar **API-machtigingen**.
 
 1. Selecteer **een machtiging toevoegen**.
 
-1. Onder **een API selecteren**, zoeken en selecteren `backend-app`.
+1. Onder **een API selecteren**, zoek en selecteert u `backend-app`.
 
-1. Selecteer onder **gedelegeerde machtigingen**de juiste machtigingen om op `backend-app` **machtigingen toevoegen**te klikken.
+1. Selecteer onder **gedelegeerde machtigingen**de juiste machtigingen om `backend-app` klik vervolgens op **machtigingen toevoegen**.
 
 1. Klik desgewenst op de pagina **API-machtigingen** op **toestemming geven voor de beheerder voor < uw-Tenant naam >** onder aan de pagina om toestemming te verlenen namens alle gebruikers in deze map. 
 
@@ -122,7 +121,7 @@ In dit voor beeld is de ontwikkelaars console de client-app. In de volgende stap
 
 1. Geef een **weergave naam** en een **Beschrijving**op.
 
-1. Voer voor de URL voor de **registratie pagina**van de client een tijdelijke aanduiding `http://localhost`in, bijvoorbeeld. De **URL voor de registratie pagina** van de client verwijst naar een pagina die gebruikers kunnen gebruiken om hun eigen accounts te maken en te configureren voor OAuth 2,0-providers die dit ondersteunen. In dit voor beeld maken gebruikers geen eigen accounts en configureren ze daarom een tijdelijke aanduiding.
+1. Voor de **URL van de pagina voor client registratie**voert u een waarde in voor de tijdelijke aanduiding, zoals `http://localhost`. De **URL voor de registratie pagina** van de client verwijst naar een pagina die gebruikers kunnen gebruiken om hun eigen accounts te maken en te configureren voor OAuth 2,0-providers die dit ondersteunen. In dit voor beeld maken gebruikers geen eigen accounts en configureren ze daarom een tijdelijke aanduiding.
 
 1. Selecteer **autorisatie code**voor het **type autorisatie verlening**.
 
@@ -146,13 +145,13 @@ In dit voor beeld is de ontwikkelaars console de client-app. In de volgende stap
 
 1. Gebruik voor **client geheim**de sleutel die u eerder hebt gemaakt voor de client-app. 
 
-1. Direct na het client geheim bevindt zich het **redirect_url** voor het toekennings type voor de autorisatie code. Noteer deze URL.
+1. Direct na het client geheim bevindt zich het **redirect_url** voor het toekennings type voor autorisatie code. Noteer deze URL.
 
 1. Selecteer **Maken**.
 
-1. Ga terug naar de pagina **instellingen** van uw client-app.
+1. Ga terug naar de client-app en selecteer **verificatie**.
 
-1. Selecteer **antwoord-url's**en plak de **redirect_url** in de eerste rij. In dit voor beeld vervangt `https://localhost` u door de URL in de eerste rij.  
+1. Selecteer onder **omleidings-uri's**het type als **Web**, plak de **redirect_url** onder **omleidings-URI**en sla het bestand op.
 
 Nu u een OAuth 2,0-autorisatie server hebt geconfigureerd, kan de ontwikkelaars console toegangs tokens van Azure AD verkrijgen. 
 
@@ -162,7 +161,7 @@ De volgende stap is om OAuth 2,0-gebruikers autorisatie in te scha kelen voor uw
 
 2. Selecteer de API die u wilt beveiligen. U kunt bijvoorbeeld de `Echo API`gebruiken.
 
-3. Ga naar **instellingen**.
+3. Ga naar **Settings**.
 
 4. Kies onder **beveiliging** **OAuth 2,0**en selecteer de OAuth 2,0-server die u eerder hebt geconfigureerd. 
 
@@ -181,7 +180,7 @@ Nu de OAuth 2,0-gebruikers autorisatie is ingeschakeld op uw API, zal de ontwikk
 
 3. Selecteer **autorisatie code** in de vervolg keuzelijst autorisatie en u wordt gevraagd u aan te melden bij de Azure AD-Tenant. Als u al bent aangemeld met het account, wordt u mogelijk niet gevraagd.
 
-4. Na een geslaagde aanmelding wordt een `Authorization` header toegevoegd aan de aanvraag, met een toegangs token van Azure AD. Hier volgt een voor beeld van een token (base64-gecodeerd):
+4. Nadat het aanmelden is geslaagd, wordt er een `Authorization` header aan de aanvraag toegevoegd, met een toegangs token van Azure AD. Hier volgt een voor beeld van een token (base64-gecodeerd):
 
    ```
    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlNTUWRoSTFjS3ZoUUVEU0p4RTJnR1lzNDBRMCIsImtpZCI6IlNTUWRoSTFjS3ZoUUVEU0p4RTJnR1lzNDBRMCJ9.eyJhdWQiOiIxYzg2ZWVmNC1jMjZkLTRiNGUtODEzNy0wYjBiZTEyM2NhMGMiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC80NDc4ODkyMC05Yjk3LTRmOGItODIwYS0yMTFiMTMzZDk1MzgvIiwiaWF0IjoxNTIxMTUyNjMzLCJuYmYiOjE1MjExNTI2MzMsImV4cCI6MTUyMTE1NjUzMywiYWNyIjoiMSIsImFpbyI6IkFWUUFxLzhHQUFBQUptVzkzTFd6dVArcGF4ZzJPeGE1cGp2V1NXV1ZSVnd1ZXZ5QU5yMlNkc0tkQmFWNnNjcHZsbUpmT1dDOThscUJJMDhXdlB6cDdlenpJdzJLai9MdWdXWWdydHhkM1lmaDlYSGpXeFVaWk9JPSIsImFtciI6WyJyc2EiXSwiYXBwaWQiOiJhYTY5ODM1OC0yMWEzLTRhYTQtYjI3OC1mMzI2NTMzMDUzZTkiLCJhcHBpZGFjciI6IjEiLCJlbWFpbCI6Im1pamlhbmdAbWljcm9zb2Z0LmNvbSIsImZhbWlseV9uYW1lIjoiSmlhbmciLCJnaXZlbl9uYW1lIjoiTWlhbyIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny8iLCJpcGFkZHIiOiIxMzEuMTA3LjE3NC4xNDAiLCJuYW1lIjoiTWlhbyBKaWFuZyIsIm9pZCI6IjhiMTU4ZDEwLWVmZGItNDUxMS1iOTQzLTczOWZkYjMxNzAyZSIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInN1YiI6IkFGaWtvWFk1TEV1LTNkbk1pa3Z3MUJzQUx4SGIybV9IaVJjaHVfSEM1aGciLCJ0aWQiOiI0NDc4ODkyMC05Yjk3LTRmOGItODIwYS0yMTFiMTMzZDk1MzgiLCJ1bmlxdWVfbmFtZSI6Im1pamlhbmdAbWljcm9zb2Z0LmNvbSIsInV0aSI6ImFQaTJxOVZ6ODBXdHNsYjRBMzBCQUEiLCJ2ZXIiOiIxLjAifQ.agGfaegYRnGj6DM_-N_eYulnQdXHhrsus45QDuApirETDR2P2aMRxRioOCR2YVwn8pmpQ1LoAhddcYMWisrw_qhaQr0AYsDPWRtJ6x0hDk5teUgbix3gazb7F-TVcC1gXpc9y7j77Ujxcq9z0r5lF65Y9bpNSefn9Te6GZYG7BgKEixqC4W6LqjtcjuOuW-ouy6LSSox71Fj4Ni3zkGfxX1T_jiOvQTd6BBltSrShDm0bTMefoyX8oqfMEA2ziKjwvBFrOjO0uK4rJLgLYH4qvkR0bdF9etdstqKMo5gecarWHNzWi_tghQu9aE3Z3EZdYNI_ZGM-Bbe3pkCfvEOyA
@@ -194,16 +193,16 @@ Nu de OAuth 2,0-gebruikers autorisatie is ingeschakeld op uw API, zal de ontwikk
 
 Wanneer een gebruiker op dit moment probeert een aanroep te doen vanuit de ontwikkelaars console, wordt de gebruiker gevraagd zich aan te melden. De ontwikkelaars console verkrijgt een toegangs token namens de gebruiker en bevat het token in de aanvraag voor de API.
 
-Wat gebeurt er echter als iemand uw API aanroept zonder een token of met een ongeldig token? U kunt bijvoorbeeld proberen om de API aan te roepen `Authorization` zonder de header, maar de aanroep gaat door. De reden hiervoor is dat API Management het toegangs token op dit moment niet valideert. De `Authorization` header wordt gewoon door gegeven aan de back-end-API.
+Wat gebeurt er echter als iemand uw API aanroept zonder een token of met een ongeldig token? U kunt bijvoorbeeld proberen om de API aan te roepen zonder de `Authorization` header, de aanroep gaat door. De reden hiervoor is dat API Management het toegangs token op dit moment niet valideert. De `Authorization`-header wordt gewoon door gegeven aan de back-end-API.
 
-U kunt de [validatie JWT](api-management-access-restriction-policies.md#ValidateJWT) -beleid valideren om aanvragen vooraf te autoriseren in API Management door de toegangs tokens van elke binnenkomende aanvraag te valideren. Als een aanvraag geen geldig token heeft, wordt deze door API Management geblokkeerd. Voeg bijvoorbeeld het volgende beleid toe aan de `<inbound>` sectie beleid van de. `Echo API` Hiermee wordt de claim van een doel groep in een toegangs token gecontroleerd en wordt een fout bericht geretourneerd als het token ongeldig is. Zie [beleid instellen of bewerken](set-edit-policies.md)voor meer informatie over het configureren van beleid.
+U kunt de [validatie JWT](api-management-access-restriction-policies.md#ValidateJWT) -beleid valideren om aanvragen vooraf te autoriseren in API Management door de toegangs tokens van elke binnenkomende aanvraag te valideren. Als een aanvraag geen geldig token heeft, wordt deze door API Management geblokkeerd. Voeg bijvoorbeeld het volgende beleid toe aan de sectie `<inbound>` beleid van de `Echo API`. Hiermee wordt de claim van een doel groep in een toegangs token gecontroleerd en wordt een fout bericht geretourneerd als het token ongeldig is. Zie [beleid instellen of bewerken](set-edit-policies.md)voor meer informatie over het configureren van beleid.
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
     <openid-config url="https://login.microsoftonline.com/{aad-tenant}/.well-known/openid-configuration" />
     <required-claims>
         <claim name="aud">
-            <value>{Application ID of backend-app}</value>
+            <value>{Application ID URI of backend-app}</value>
         </claim>
     </required-claims>
 </validate-jwt>
@@ -211,7 +210,7 @@ U kunt de [validatie JWT](api-management-access-restriction-policies.md#Validate
 
 ## <a name="build-an-application-to-call-the-api"></a>Een toepassing bouwen om de API aan te roepen
 
-In deze hand leiding hebt u de ontwikkelaars console in API management gebruikt als de voor beeld-client toepassing `Echo API` om het beveiligde door OAuth 2,0 aan te roepen. Zie [Azure Active Directory code voorbeelden](../active-directory/develop/sample-v1-code.md)voor meer informatie over het bouwen van een toepassing en het implementeren van OAuth 2,0.
+In deze hand leiding hebt u de ontwikkelaars console in API Management gebruikt als de voor beeld-client toepassing om de `Echo API` te roepen die wordt beveiligd door OAuth 2,0. Zie [Azure Active Directory code voorbeelden](../active-directory/develop/sample-v1-code.md)voor meer informatie over het bouwen van een toepassing en het implementeren van OAuth 2,0.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over [Azure Active Directory en OAuth 2.0](../active-directory/develop/authentication-scenarios.md).

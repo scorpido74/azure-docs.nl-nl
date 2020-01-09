@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 12/18/2019
 ms.author: alzam
-ms.openlocfilehash: 2836a89f491d731a11e6bc6fc56e0d049f01ac9a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 59af4189b52c2ad7a1109ffb03accedbc69dc6c6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151402"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647914"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication-preview"></a>Een VPN-client configureren voor P2S OpenVPN-protocol verbindingen: Azure AD-verificatie (preview)
 
@@ -39,6 +39,10 @@ Wanneer u werkt met een op een certificaat gebaseerd profiel, moet u ervoor zorg
 ### <a name="radius"></a>Een RADIUS-client profiel maken
 
   ![RADIUS](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
+  
+> [!NOTE]
+> Het server geheim kan worden geëxporteerd in het P2S VPN-client profiel.  Instructies voor het exporteren van een client profiel vindt u [hier](about-vpn-profile-download.md).
+>
 
 ### <a name="export"></a>Een client profiel exporteren en distribueren
 
@@ -46,33 +50,33 @@ Wanneer u een werk profiel hebt en dit moet worden gedistribueerd naar andere ge
 
 1. Markeer het VPN-client profiel dat u wilt exporteren, selecteer de **...** en selecteer vervolgens **exporteren**.
 
-    ![gegevensexporttabel](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![Gegevensexporttabel](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. Selecteer de locatie waar u dit profiel wilt opslaan, behoud de bestands naam en selecteer vervolgens **Opslaan** om het XML-bestand op te slaan.
 
-    ![gegevensexporttabel](./media/openvpn-azure-ad-client/export/export2.jpg)
+    ![Gegevensexporttabel](./media/openvpn-azure-ad-client/export/export2.jpg)
 
 ### <a name="import"></a>Een client profiel importeren
 
 1. Selecteer op de pagina **importeren**.
 
-    ![wederinvoer](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![importeren](./media/openvpn-azure-ad-client/import/import1.jpg)
 
 2. Blader naar het profiel XML-bestand en selecteer het. Selecteer **openen**terwijl het bestand is geselecteerd.
 
-    ![wederinvoer](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![importeren](./media/openvpn-azure-ad-client/import/import2.jpg)
 
 3. Geef de naam van het profiel op en selecteer **Opslaan**.
 
-    ![wederinvoer](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![importeren](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. Selecteer **verbinding maken** om verbinding te maken met het VPN.
 
-    ![wederinvoer](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![importeren](./media/openvpn-azure-ad-client/import/import4.jpg)
 
 5. Zodra de verbinding is gemaakt, wordt het pictogram groen en vervolgens **verbonden**.
 
-    ![wederinvoer](./media/openvpn-azure-ad-client/import/import5.jpg)
+    ![importeren](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="delete"></a>Een client profiel verwijderen
 
@@ -143,6 +147,26 @@ Met deze stappen kunt u de verbinding configureren om automatisch verbinding te 
 4. Bekijk de resultaten van de diagnose.
 
     ![vaststellen](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
+
+## <a name="faq"></a>Veelgestelde vragen
+
+### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>Hoe kan ik DNS-achtervoegsels toevoegen aan de VPN-client?
+
+U kunt het gedownloade XML-profiel bestand wijzigen en de **\<dnssuffixes >\<dnssufix > \</dnssufix >\</dnssuffixes >** Tags toevoegen
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <dnssuffixes>
+          <dnssuffix>.mycorp.com</dnssuffix>
+          <dnssuffix>.xyz.com</dnssuffix>
+          <dnssuffix>.etc.net</dnssuffix>
+    </dnssuffixes>
+    
+</clientconfig>
+</azvpnprofile>
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

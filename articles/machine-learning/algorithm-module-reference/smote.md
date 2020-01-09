@@ -1,7 +1,7 @@
 ---
 title: SMOTE
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over hoe u de SMOTE-module in de Azure Machine Learning-service kunt gebruiken om het aantal voor beelden met een laag voor beeld in een gegevensset te verhogen door gebruik te maken van oversteek proeven.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de SMOTE-module in Azure Machine Learning om het aantal voor beelden met een laag voor beeld in een gegevensset te verg Roten door gebruik te maken van oversteek proeven.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: d78e3d0d30cc44f2f30b1a856297f2c31d8f8469
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 16ae6775494f9076d442e181f70a2ecde5863dab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717016"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428435"
 ---
 # <a name="smote"></a>SMOTE
 
@@ -40,7 +40,7 @@ Als u de gegevensset toevoegt aan een pijp lijn en **visualiseren** selecteert o
  
 Als u het aantal cases wilt verhogen, kunt u als volgt de waarde van het **SMOTE percentage**instellen met behulp van veelvouden van 100:
 
-||Klasse 0|Klasse 1|eind|  
+||Klasse 0|Klasse 1|totaal|  
 |-|-------------|-------------|-----------|  
 |Oorspronkelijke gegevensset<br /><br /> (gelijk aan **SMOTE percentage** = **0**)|570<br /><br /> 76%|178<br /><br /> uur|748|  
 |**SMOTE percentage** = **100**|570<br /><br /> 62%|356<br /><br /> 38%|926|  
@@ -99,5 +99,5 @@ Als u het aantal cases wilt verhogen, kunt u als volgt de waarde van het **SMOTE
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor de Azure machine learning-service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
 

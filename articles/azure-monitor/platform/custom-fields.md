@@ -1,5 +1,5 @@
 ---
-title: Aangepaste velden in Azure Monitor | Microsoft Docs
+title: Aangepaste velden in Azure Monitor (preview) | Microsoft Docs
 description: Met de functie voor aangepaste velden van Azure Monitor kunt u uw eigen Doorzoek bare velden maken op basis van records in een Log Analytics-werk ruimte die aan de eigenschappen van een verzameld record worden toegevoegd.  In dit artikel wordt het proces voor het maken van een aangepast veld beschreven en vindt u een gedetailleerd overzicht van een voorbeeld gebeurtenis.
 ms.service: azure-monitor
 ms.subservice: logs
@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: 1fa8fb8ee944103626966839def358e68a55d8ac
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 880d3ffa9914a8fc6f27edce06c5d353d7903db4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932612"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396883"
 ---
-# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Aangepaste velden in een Log Analytics-werk ruimte maken in Azure Monitor
+# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Aangepaste velden in een Log Analytics-werk ruimte maken in Azure Monitor (preview)
 
 > [!NOTE]
 > In dit artikel wordt beschreven hoe u tekst gegevens kunt parseren in een Log Analytics werkruimte die wordt verzameld. Het is raadzaam om tekst gegevens in een query filter te parseren nadat deze zijn verzameld volgens de richt lijnen die worden beschreven in [tekst gegevens parseren in azure monitor](../log-query/parse-text.md). Het biedt verschillende voor delen ten opzichte van het gebruik van aangepaste velden.
@@ -121,7 +121,7 @@ Nadat de nieuwe gebeurtenissen zijn verzameld, kunnen we zien dat het veld **Ser
 
 ![Eind resultaten](media/custom-fields/final-results.png)
 
-We kunnen nu het aangepaste veld gebruiken, net als elke andere record eigenschap.  Ter illustratie maken we een query die wordt gegroepeerd op het nieuwe veld **Service_CF** om te controleren welke services het meest actief zijn.
+We kunnen nu het aangepaste veld gebruiken, net als elke andere record eigenschap.  Ter illustratie maken we een query die wordt gegroepeerd op het nieuwe **Service_CF** veld om te controleren welke services het meest actief zijn.
 
 ![Groeperen op query](media/custom-fields/query-group.png)
 

@@ -1,7 +1,7 @@
 ---
 title: 'Model voor kruis validatie: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de model module kruislings valideren in de Azure Machine Learning-service om de schatting van de para meters voor de classificatie of regressie modellen te valideren door de gegevens te partitioneren.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de model module kruislings valideren in Azure Machine Learning om de schatting van de para meters voor classificaties of regressie modellen te valideren door de gegevens te partitioneren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: d83a9b5df7acc9d626613e53369f483367e55a54
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: b7c898c232dc39398b13f16beea814aa4e554845
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717234"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428549"
 ---
-# <a name="cross-validate-model"></a>Model voor kruis valideren
+# <a name="cross-validate-model"></a>Kruisvalidatie van model valideren
 
 In dit artikel wordt beschreven hoe u de module voor kruis validatie gebruikt in Azure Machine Learning Designer (preview). *Kruis validatie* is een techniek die vaak wordt gebruikt in machine learning om zowel de variabiliteit van een gegevensset als de betrouw baarheid te beoordelen van een model dat via deze gegevens is getraind.  
 
@@ -88,9 +88,9 @@ De eerste uitvoer van de module levert de bron gegevens voor elke rij, samen met
 
 Als u deze resultaten wilt weer geven, klikt u in de pijp lijn met de rechter muisknop op de model module Kruis valideren. Selecteer **resultaten**van de score en selecteer vervolgens **visualiseren**.
 
-| Nieuwe kolom naam      | Beschrijving                              |
+| Naam nieuwe kolom      | Beschrijving                              |
 | -------------------- | ---------------------------------------- |
-| Gescoorde labels        | Deze kolom wordt toegevoegd aan het einde van de gegevensset. Het bevat de voorspelde waarde voor elke rij. |
+| Labels met een score        | Deze kolom wordt toegevoegd aan het einde van de gegevensset. Het bevat de voorspelde waarde voor elke rij. |
 | Gescoorde kansen | Deze kolom wordt toegevoegd aan het einde van de gegevensset. Deze geeft de geschatte waarschijnlijkheid van de waarde in de **gescoorde labels**aan. |
 | Vouw nummer          | Hiermee wordt de op nul gebaseerde index van de vouw aangegeven waarmee elke rij met gegevens tijdens Kruis validatie werd toegewezen. |
 
@@ -103,7 +103,7 @@ In dit rapport worden de vouwen weer gegeven op index waarde, in oplopende volg 
 Als u deze resultaten wilt weer geven, klikt u in de pijp lijn met de rechter muisknop op de model module Kruis valideren. Selecteer **evaluatie resultaten door vouwen**en selecteer vervolgens **visualiseren**.
 
 
-|Kolom naam| Beschrijving|
+|Kolomnaam| Beschrijving|
 |----|----|
 |Vouw nummer| Een id voor elke vouw. Als u vijf vouwen hebt gemaakt, zijn er vijf subsets met gegevens, genummerd van 0 tot 4.
 |Aantal voor beelden in vouwen|Het aantal rijen dat aan elke vouw is toegewezen. Ze moeten ongeveer gelijk zijn. |
@@ -127,5 +127,5 @@ De module bevat ook de volgende metrische gegevens voor elke vouw, afhankelijk v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor de Azure machine learning-service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
 

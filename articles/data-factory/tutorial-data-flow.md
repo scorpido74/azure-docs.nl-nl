@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: 1211a7f2aa82f7084dc87e2c9a8bdaab9997be45
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e686648680261e2d13707f1704c56f306c510397
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927212"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439472"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Gegevens transformeren met toewijzing van gegevens stromen
 
@@ -24,7 +24,7 @@ In deze zelf studie gebruikt u de Azure Data Factory gebruikers interface (UX) o
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maakt.
+> * Een gegevensfactory maken.
 > * Maak een pijp lijn met een gegevens stroom activiteit.
 > * Bouw een toewijzings gegevens stroom met vier trans formaties. 
 > * De uitvoering van de pijplijn testen.
@@ -36,7 +36,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 Het bestand dat u in deze zelf studie transformeert, is MoviesDB. CSV, dat [hier](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)kan worden gevonden. Als u het bestand wilt ophalen uit GitHub, kopieert u de inhoud naar een tekst editor van uw keuze om lokaal op te slaan als een CSV-bestand. Als u het bestand naar uw opslag account wilt uploaden, raadpleegt u [blobs uploaden met Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md). De voor beelden verwijzen naar een container met de naam ' Sample-Data '.
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 In deze stap maakt u een data factory en opent u de Data Factory UX om een pijp lijn te maken in de data factory. 
 
@@ -57,7 +57,7 @@ In deze stap maakt u een data factory en opent u de Data Factory UX om een pijp 
 
     b. Selecteer **Nieuwe maken** en voer de naam van een resourcegroep in. 
          
-    Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/resource-group-overview.md) voor meer informatie. 
+    Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie. 
 6. Selecteer **V2** onder **Versie**.
 7. Selecteer onder **Locatie** een locatie voor de data factory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. Gegevens archieven (bijvoorbeeld Azure Storage en SQL Database) en berekeningen (zoals Azure HDInsight) die door de data factory worden gebruikt, kunnen zich in andere regio's bevindt.
 8. Selecteer **Maken**. 
@@ -197,7 +197,7 @@ Als u deze zelf studie correct hebt gevolgd, moet u 83 rijen en 2 kolommen in uw
 De pijp lijn in deze zelf studie voert een gegevens stroom uit die de gemiddelde waardering van comedies van 1910 tot 2000 samenvoegt en schrijft de gegevens naar ADLS. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maakt.
+> * Een gegevensfactory maken.
 > * Maak een pijp lijn met een gegevens stroom activiteit.
 > * Bouw een toewijzings gegevens stroom met vier trans formaties. 
 > * De uitvoering van de pijplijn testen.

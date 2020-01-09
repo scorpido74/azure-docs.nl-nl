@@ -1,6 +1,6 @@
 ---
-title: Voorbeelden van Azure CLI | Microsoft Docs
-description: Azure CLI-voorbeelden
+title: Azure CLI-voorbeelden
+description: Een tabel met koppelingen naar voor beelden van bash-scripts die zijn gebouwd met behulp van de Azure CLI, zoals het maken en beheren van een schaalset.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1ea397616c7909283128118f66fc36218ff36d53
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 540941bd2d54c5d3c8d26186e700727e8d75f501
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60872523"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459351"
 ---
 # <a name="azure-cli-samples-for-virtual-machine-scale-sets"></a>Voorbeelden van Azure CLI voor virtuele-machineschaalsets
 

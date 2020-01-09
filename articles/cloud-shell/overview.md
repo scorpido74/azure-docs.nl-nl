@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: acdf52022d8498a186ed4cff90284cd6e299d6c0
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2edb50910614b47aca5a4d8f7f02c2e3bc69b643
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240848"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449010"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Overzicht van Azure Cloud Shell
 Azure Cloud Shell is een interactieve, geverifieerde shell die toegankelijk is voor browsers voor het beheer van Azure-resources.
-Het biedt de flexibiliteit om de shell-ervaring te kiezen die het beste past bij de manier waarop u werkt, hetzij bash of Power shell.
+Deze biedt de mogelijkheid om zelf de shell-ervaring te kiezen die het beste past bij uw manier van werken: Bash of PowerShell.
 
 Probeer vanuit shell.azure.com door hieronder te klikken.
 
-[![Starten insluiten](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud shell starten")](https://shell.azure.com)
+[![Starten insluiten](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell starten")](https://shell.azure.com)
 
 Probeer uit Azure Portal met behulp van het Cloud Shell pictogram.
 
@@ -52,7 +52,7 @@ Cloud Shell wordt beheerd door micro soft, zodat het beschikt over populaire opd
 Bekijk de volledige [lijst met hulpprogram ma's die zijn geïnstalleerd in Cloud shell.](features.md#tools)
 
 ### <a name="integrated-cloud-shell-editor"></a>Geïntegreerde Cloud Shell editor
-Cloud Shell biedt een geïntegreerde grafische tekst editor op basis van de open-source-Monaco-editor. U kunt eenvoudig configuratie bestanden maken en bewerken `code .` door uit te voeren voor naadloze implementatie via Azure CLI of Azure PowerShell.
+Cloud Shell biedt een geïntegreerde grafische tekst editor op basis van de open-source-Monaco-editor. U kunt eenvoudig configuratie bestanden maken en bewerken door `code .` uit te voeren voor een naadloze implementatie via Azure CLI of Azure PowerShell.
 
 Meer [informatie over de Cloud shell editor](using-cloud-shell-editor.md).
 
@@ -70,9 +70,12 @@ Cloud Shell is een flexibel hulp programma dat kan worden gebruikt vanuit:
 * [Visual Studio code Azure-account extensie](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>De opslag van uw Microsoft Azure-bestanden verbinden
-Cloud Shell machines zijn tijdelijk, maar uw bestanden worden op twee manieren bewaard: via een schijf installatie kopie en via een gekoppelde bestands share met de `clouddrive`naam.  Bij de eerste keer starten Cloud Shell u gevraagd om een resource groep, een opslag account en Azure Files share namens u te maken. Dit is een eenmalige stap die automatisch wordt gekoppeld voor alle sessies. Eén bestands share kan worden toegewezen en wordt gebruikt door zowel bash als Power shell in Cloud Shell.
+Cloud Shell machines zijn tijdelijk, maar uw bestanden worden op twee manieren bewaard: via een schijf installatie kopie en via een gekoppelde bestands share met de naam `clouddrive`.  De eerste keer dat u Cloud Shell opstart, verschijnt de vraag of er namens u een resourcegroep, opslagaccount en Azure Files-share kan worden gemaakt. Dit is een eenmalige stap die automatisch wordt gekoppeld voor alle sessies. Eén bestands share kan worden toegewezen en wordt gebruikt door zowel bash als Power shell in Cloud Shell.
 
 Lees meer voor meer informatie over het koppelen van een [Nieuw of bestaand opslag account](persisting-shell-storage.md) of voor meer informatie over de [persistentie mechanismen die worden gebruikt in Cloud shell](persisting-shell-storage.md#how-cloud-shell-storage-works).
+
+> [!NOTE]
+> Azure Storage-firewall wordt niet ondersteund voor Cloud shell-opslag accounts.
 
 ## <a name="concepts"></a>Concepten
 * Cloud Shell wordt uitgevoerd op een tijdelijke host die wordt verstrekt per sessie per gebruiker

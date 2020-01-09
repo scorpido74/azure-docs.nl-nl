@@ -3,18 +3,18 @@ title: Safelist de Azure Portal Url's | Microsoft Docs
 description: Deze Url's toevoegen aan de proxy server bypass om te communiceren met de Azure Portal en de bijbehorende services
 services: azure-portal
 keywords: ''
-author: kfollis
-ms.author: kfollis
+author: mblythe
+ms.author: mblythe
 ms.date: 09/13/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 9618d99495e65231de22eb719355e2ca75a17600
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 4f4badbd923b10cf2cd66f7df9742a6bc657a01c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218035"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75637539"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Safelist de Azure Portal Url's op uw firewall of proxy server
 
@@ -47,7 +47,7 @@ De URL-eind punten naar Safelist voor de Azure Portal zijn specifiek voor de Azu
 *.windows-int.net
 ```
 
-#### <a name="us-government-cloudtabus-government-cloud"></a>[NL Government Cloud](#tab/us-government-cloud)
+#### <a name="us-government-cloudtabus-government-cloud"></a>[Cloud van de Amerikaanse overheid](#tab/us-government-cloud)
 ```
 *.azure.us
 *.loganalytics.us
@@ -80,7 +80,7 @@ De URL-eind punten naar Safelist voor de Azure Portal zijn specifiek voor de Azu
 Moet u IP-adressen safelisten? Down load de lijst met IP-adresbereiken voor Microsoft Azure Data Center voor uw Cloud:
 
 * [Wijd](https://www.microsoft.com/download/details.aspx?id=56519)
-* [NL Government](https://www.microsoft.com/download/details.aspx?id=57063)
+* [Amerikaanse overheid](https://www.microsoft.com/download/details.aspx?id=57063)
 * [Duitsland](https://www.microsoft.com/download/details.aspx?id=57064)
 * [China](https://www.microsoft.com/download/details.aspx?id=57062)
 

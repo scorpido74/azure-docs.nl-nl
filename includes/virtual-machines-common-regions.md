@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/28/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4b2dcf8f156f231041d7636d103eea59816ec65f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 09179ff0cf8275e96cb87e0c183eb4a384dcb37b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008450"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75564744"
 ---
 Het is belangrijk om inzicht te hebben in hoe en waar uw virtuele machines (VM's) in Azure werken, evenals in wat uw mogelijkheden zijn om de prestaties, beschikbaarheid en redundantie te maximaliseren. Dit artikel biedt een overzicht van de mogelijkheden van Azure op het gebied van beschikbaarheid en redundantie.
 
@@ -29,7 +29,7 @@ Azure heeft een aantal speciale regio's die u mogelijk wilt gebruiken bij het on
 * **US Gov - Virginia** en **US Gov - Iowa**
   * Een fysiek en logisch van netwerken afgeschermd exemplaar van Azure voor de Amerikaanse overheid en zijn partners, bediend door gecontroleerde Amerikaanse staatsburgers. Dit exemplaar beschikt over aanvullende nalevingscertificeringen, zoals [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) en [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA). Meer informatie over [Azure Government](https://azure.microsoft.com/features/gov/).
 * **China - noord** en **China - oost**
-  * Deze regio's zijn beschikbaar via een unieke samenwerking tussen Microsoft en 21Vianet, waarbij Microsoft niet rechtstreeks de datacentra onderhoudt. Meer informatie over [Azure China 21vianet](http://www.windowsazure.cn/).
+  * Deze regio's zijn beschikbaar via een unieke samenwerking tussen Microsoft en 21Vianet, waarbij Microsoft niet rechtstreeks de datacentra onderhoudt. Meer informatie over [Azure China 21vianet](https://www.windowsazure.cn/).
 * **Duitsland - centraal** en **Duitsland - noordoost**
   * Deze regio's zijn beschikbaar via een model voor gegevens vertrouwensrelatie waarbij klant gegevens in Duitsland blijven, onder controle van T-Systems, een Deutsche Telekom-bedrijf dat als de Duitse gegevens beheerder optreedt.
 
@@ -44,13 +44,13 @@ Voorbeelden van regioparen zijn:
 
 | Primair | Secundair |
 |:--- |:--- |
-| US - west |US - oost |
-| Europa - noord |Europa -west |
+| VS - west |VS - oost |
+| Europa - noord |Europa - west |
 | Azië - zuidoost |Azië - oost |
 
 U vindt de volledige [lijst met regioparen hier](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions).
 
-## <a name="feature-availability"></a>Beschikbaarheid van functies
+## <a name="feature-availability"></a>Beschikbaarheid van de functies
 Sommige services of VM-functies zijn alleen beschikbaar in bepaalde regio's, zoals specifieke VM-grootten of opslagtypen. Er zijn ook een aantal algemene Azure-services waarvoor u geen specifieke regio hoeft te kiezen, zoals [Azure Active Directory](../articles/active-directory/fundamentals/active-directory-whatis.md), [Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md) en [Azure DNS](../articles/dns/dns-overview.md). Als hulp bij het ontwerpen van de omgeving van uw toepassing, kunt u de [beschikbaarheid van Azure-services per regio](https://azure.microsoft.com/regions/#services) raadplegen. U kunt ook [programmatisch query's uitvoeren op de ondersteunde VM-grootten en-beperkingen in elke regio](../articles/azure-resource-manager/resource-manager-sku-not-available-errors.md).
 
 ## <a name="storage-availability"></a>Opslagbeschikbaarheid

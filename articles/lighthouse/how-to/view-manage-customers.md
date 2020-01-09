@@ -1,14 +1,14 @@
 ---
 title: Klanten en gedelegeerde resources weer geven en beheren
 description: Als service provider met behulp van Azure delegated Resource Management kunt u al uw gedelegeerte klant bronnen en abonnementen weer geven door naar mijn klanten te gaan in de Azure Portal.
-ms.date: 10/23/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: f115ecad09b01869a465f50485e191671970d521
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: ac268d2899dcc3d940072bfbfd17770044dc3c66
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463824"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456829"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Klanten en gedelegeerde resources weer geven en beheren
 
@@ -16,7 +16,9 @@ Service providers die gebruikmaken van [Azure delegated resource management](../
 
 Als u toegang wilt krijgen tot de pagina **mijn klanten** in de Azure Portal, selecteert u **alle services**, zoekt u naar **mijn klanten** en selecteert u deze. U kunt deze ook vinden door ' mijn klanten ' in te voeren in het zoekvak boven aan de Azure Portal.
 
-Houd er rekening mee dat in het bovenste gedeelte van de pagina **mijn klanten** alleen gegevens worden weer gegeven over klanten die een gedelegeerde abonnementen of resource groepen hebben. Als u met andere klanten werkt (zoals via het [Cloud Solution Provider-programma](https://docs.microsoft.com/partner-center/csp-overview)), ziet u hier geen informatie over deze klanten, tenzij u de resources uitnodigt voor gedelegeerd resource beheer. Lager op de pagina bevat de sectie **Cloud Solution Provider (preview)** facturerings gegevens en resources voor uw CSP-klanten die [de micro soft-klant overeenkomst (MCA) hebben ondertekend](https://docs.microsoft.com/partner-center/confirm-customer-agreement) en onder het Azure-abonnement vallen, ongeacht of ze niet zijn geïnstalleerd voor Azure gedelegeerd resource beheer. Zie [aan de slag met uw micro soft-partner overeenkomst](https://docs.microsoft.com/azure/billing/mpa-overview)voor meer informatie.
+Houd er rekening mee dat de meeste **klanten** sectie van de pagina **mijn klanten** alleen informatie weer geven over klanten die gedelegeerde abonnementen of resource groepen hebben. Als u met andere klanten werkt (zoals via het [Cloud Solution Provider-programma](https://docs.microsoft.com/partner-center/csp-overview)), ziet u geen informatie over deze klanten in het gedeelte **klanten** , tenzij u de resources voor Azure delegated resource management hebt voor bereid.
+
+Lager op de pagina, een afzonderlijke sectie met de naam **Cloud Solution Provider (preview)** toont facturerings gegevens en resources voor uw CSP [-klanten die de micro soft-klant overeenkomst (MCA) hebben ondertekend](https://docs.microsoft.com/partner-center/confirm-customer-agreement) en [onder het Azure-abonnement](https://docs.microsoft.com/partner-center/azure-plan-get-started)vallen. Zie [aan de slag met uw micro soft-partner overeenkomst](../../billing/mpa-overview.md)voor meer informatie. Dergelijke CSP-klanten worden in deze sectie weer gegeven, ongeacht of u deze ook hebt opvolgd voor Azure delegated resource management. Op dezelfde manier hoeft een CSP-klant niet te worden weer gegeven in de sectie **Cloud Solution Provider (preview)** van **mijn klanten** , zodat u deze kunt uitbrengen voor het beheer van de gedelegeerde resources van Azure.
 
 > [!NOTE]
 > Uw klanten kunnen informatie over service providers weer geven door te navigeren naar **service providers** in de Azure Portal. Zie [service providers weer geven en beheren](view-manage-service-providers.md)voor meer informatie.
@@ -28,7 +30,7 @@ Selecteer **klanten** aan de linkerkant van de pagina **mijn klanten** om klant 
 Voor elke klant ziet u de naam van de klant, de klant-ID (Tenant-ID) en de aanbieding die aan de afspraak is gekoppeld. In de kolom **delegaties** ziet u het aantal gedelegeerde abonnementen en/of het aantal gedelegeerde resource groepen.
 
 > [!IMPORTANT]
-> Als u een overdracht wilt zien, moeten gebruikers beschikken over de rol van [lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) (of een andere ingebouwde rol die lezers toegang bevat) in het voorbereidings proces.
+> Als u een overdracht wilt zien, moeten gebruikers beschikken over de rol van [lezer](../../role-based-access-control/built-in-roles.md#reader) (of een andere ingebouwde rol die lezers toegang bevat) in het voorbereidings proces.
 
 Met filters boven aan de pagina kunt u uw klant gegevens sorteren en groeperen of filteren op specifieke klanten, aanbiedingen of tref woorden.
 

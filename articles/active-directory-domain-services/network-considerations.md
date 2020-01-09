@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: iainfou
-ms.openlocfilehash: 325b9e8edc997e41e48e11b3ee752bc38d7dc4a1
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 1a6fb12311fe4474f03c22c91d9b478220adf5d1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024014"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425538"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Ontwerp overwegingen voor het virtuele netwerk en configuratie opties voor Azure AD Domain Services
 
-Als Azure Active Directory Domain Services (AD DS) biedt verificatie-en beheer services aan andere toepassingen en werk belastingen, is de netwerk verbinding een belang rijk onderdeel. Zonder de juiste geconfigureerde virtuele netwerk bronnen kunnen toepassingen en werk belastingen niet communiceren met en de functies van Azure AD DS gebruiken. Als u het virtuele netwerk op de juiste wijze plant, moet u ervoor zorgen dat Azure AD DS uw toepassingen en werk belastingen naar behoefte kan leveren.
+Als Azure Active Directory Domain Services (AD DS) biedt verificatie-en beheer services aan andere toepassingen en werk belastingen, is de netwerk verbinding een belang rijk onderdeel. Zonder de juiste geconfigureerde virtuele netwerk bronnen kunnen toepassingen en werk belastingen niet communiceren met en gebruikmaken van de functies van Azure AD DS. Als u het virtuele netwerk op de juiste wijze plant, moet u ervoor zorgen dat Azure AD DS uw toepassingen en werk belastingen naar behoefte kan leveren.
 
 In dit artikel vindt u een overzicht van overwegingen en vereisten voor het ontwerp van een virtueel Azure-netwerk dat Azure AD DS ondersteunt.
 
@@ -60,7 +60,7 @@ Zoals u in de vorige sectie hebt genoteerd, kunt u alleen een door Azure AD Doma
 U kunt met behulp van een van de volgende methoden toepassings werkbelastingen die worden gehost in andere virtuele netwerken van Azure verbinden:
 
 * Virtual Network-peering
-* Virtueel particulier netwerk (VPN)
+* VPN-verbinding (Virtual Private Network)
 
 ### <a name="virtual-network-peering"></a>Virtual Network peering
 
@@ -94,7 +94,7 @@ Een door Azure AD DS beheerd domein maakt sommige netwerk bronnen tijdens de imp
 | Dynamisch standaard openbaar IP-adres         | Azure AD DS communiceert met de synchronisatie-en beheer service met een standaard-SKU openbaar IP-adres. Zie [IP-adres typen en toewijzings methoden in azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md)voor meer informatie over open bare IP-adressen. |
 | Azure Standard load balancer               | Azure AD DS maakt gebruik van een standaard-SKU load balancer voor Network Address Translation (NAT) en taak verdeling (bij gebruik met beveiligde LDAP). Zie [Wat is Azure Load Balancer?](../load-balancer/load-balancer-overview.md) voor meer informatie over Azure load balancers. |
 | NAT-regels (Network Address Translation) | Azure AD DS maakt en gebruikt drie NAT-regels voor de load balancer-één regel voor beveiligd HTTP-verkeer en twee regels voor beveiligde communicatie met Power shell. |
-| Load Balancer-regels                     | Wanneer een beheerd domein van Azure AD DS is geconfigureerd voor beveiligde LDAP op TCP-poort 636, worden er drie regels gemaakt en gebruikt in een load balancer om het verkeer te distribueren. |
+| Regels voor load balancers                     | Wanneer een beheerd domein van Azure AD DS is geconfigureerd voor beveiligde LDAP op TCP-poort 636, worden er drie regels gemaakt en gebruikt in een load balancer om het verkeer te distribueren. |
 
 > [!WARNING]
 > Verwijder geen van de netwerk resources die zijn gemaakt door Azure AD DS. Als u een van de netwerk bronnen verwijdert, vindt er een storing in de Azure AD DS-service plaats.
@@ -105,7 +105,7 @@ Een [netwerk beveiligings groep (NSG)](https://docs.microsoft.com/azure/virtual-
 
 De volgende regels voor de netwerk beveiligings groep zijn vereist voor Azure AD DS om verificatie-en beheer services te bieden. Wijzig of verwijder deze regels voor netwerk beveiligings groepen niet voor het subnet van het virtuele netwerk waarop uw Azure AD DS beheerde domein is geïmplementeerd.
 
-| Poortnummer | Protocol | Bron                             | Bestemming | Bewerking | Verplicht | Doel |
+| Poortnummer | Protocol | Bron                             | Bestemming | Actie | Verplicht | Doel |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
 | 443         | TCP      | AzureActiveDirectoryDomainServices | Alle         | Toestaan  | Ja      | Synchronisatie met uw Azure AD-Tenant. |
 | 3389        | TCP      | CorpNetSaw                         | Alle         | Toestaan  | Ja      | Beheer van uw domein. |
@@ -142,7 +142,7 @@ De volgende regels voor de netwerk beveiligings groep zijn vereist voor Azure AD
 * Wordt gebruikt voor het uitvoeren van beheer taken met externe communicatie van Power shell in uw Azure AD DS beheerde domein.
 * Als u geen toegang hebt tot deze poort, kan uw door Azure AD DS beheerde domein niet worden bijgewerkt, geconfigureerd, ondersteund of gecontroleerd.
 * Voor Azure AD DS beheerde domeinen die gebruikmaken van een virtueel netwerk op basis van Resource Manager, kunt u de inkomende toegang tot deze poort beperken tot het *AzureActiveDirectoryDomainServices* -service label.
-    * Voor verouderde Azure AD DS beheerde domeinen die gebruikmaken van een klassiek virtueel netwerk, kunt u de inkomende toegang tot deze poort beperken tot de volgende IP-bron adressen: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223* , *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*en *104.40.87.209*.
+    * Voor verouderde Azure AD DS beheerde domeinen die gebruikmaken van een klassiek virtueel netwerk, kunt u de inkomende toegang tot deze poort beperken tot de volgende bron-IP-adressen: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*en *104.40.87.209*.
 
 ## <a name="user-defined-routes"></a>Door de gebruiker gedefinieerde routes
 

@@ -1,5 +1,5 @@
 ---
-title: Cloud Services def van Azure. LoadBalancerProbe Schema | Microsoft Docs
+title: Azure Cloud Services def. LoadBalancerProbe-schema | Microsoft Docs
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -7,16 +7,16 @@ ms.service: cloud-services
 ms.topic: reference
 caps.latest.revision: 14
 author: georgewallace
-ms.author: gwallace
-ms.openlocfilehash: 6f82406772f650b4565f2c9240efe580545dcad9
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: bc2c0f5137ce78392a8df7c6c2fdd402ded5355a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360602"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449061"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>LoadBalancerProbe-schema voor Azure Cloud Services definition
-De load balancer test is een door de klant gedefinieerde status test van UDP-eind punten en-eind punten in rolinstanties. Het `LoadBalancerProbe` is geen zelfstandig element. het wordt gecombineerd met de webrole-of worker-rol in een service definitie bestand. Een `LoadBalancerProbe` kan worden gebruikt door meer dan één rol.
+De load balancer test is een door de klant gedefinieerde status test van UDP-eind punten en-eind punten in rolinstanties. De `LoadBalancerProbe` is geen zelfstandig element. het wordt gecombineerd met de webrole of werk rollen in een service definitie bestand. Een `LoadBalancerProbe` kan worden gebruikt door meer dan één rol.
 
 De standaard extensie voor het service definitie bestand is. csdef.
 
@@ -41,24 +41,24 @@ Als u een aangepaste load balancer test gebruikt, moet u ervoor zorgen dat uw lo
 ```
 
 ## <a name="schema-elements"></a>Schema-elementen
-Het `LoadBalancerProbes` element van het service definitie bestand bevat de volgende elementen:
+Het `LoadBalancerProbes`-element van het service definitie bestand bevat de volgende elementen:
 
 - [LoadBalancerProbes Element](#LoadBalancerProbes)
 - [LoadBalancerProbe Element](#LoadBalancerProbe)
 
 ##  <a name="LoadBalancerProbes"></a> LoadBalancerProbes Element
-Met `LoadBalancerProbes` het element wordt de verzameling Load Balancer tests beschreven. Dit element is het bovenliggende element van het [element LoadBalancerProbe](#LoadBalancerProbe). 
+Het `LoadBalancerProbes`-element beschrijft de verzameling load balancer tests. Dit element is het bovenliggende element van het [element LoadBalancerProbe](#LoadBalancerProbe). 
 
 ##  <a name="LoadBalancerProbe"></a> LoadBalancerProbe Element
-Het `LoadBalancerProbe` element definieert de status test voor een model. U kunt meerdere load balancer tests definiëren. 
+Het element `LoadBalancerProbe` definieert de status test voor een model. U kunt meerdere load balancer tests definiëren. 
 
-In de volgende tabel worden de kenmerken van `LoadBalancerProbe` het element beschreven:
+In de volgende tabel worden de kenmerken van het element `LoadBalancerProbe` beschreven:
 
-|Kenmerk|type|Description|
+|Kenmerk|Type|Beschrijving|
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | Vereist. De naam van de load balancer-test. De naam moet uniek zijn.|
-| `protocol`          | `string` | Vereist. Hiermee geeft u het Protocol van het eind punt. Mogelijke waarden zijn `http` en `tcp`. Als `tcp` is opgegeven, is een ontvangen ack vereist om de test te laten slagen. Als `http` is opgegeven, is er een antwoord van 200 OK van de opgegeven URI vereist om de test te laten slagen.|
-| `path`              | `string` | De URI die wordt gebruikt voor het aanvragen van de integriteits status van de virtuele machine. `path`is vereist als `protocol` is ingesteld op `http`. Als dat niet het geval is, is dit niet toegestaan.<br /><br /> Er is geen standaard waarde.|
+| `protocol`          | `string` | Vereist. Hiermee geeft u het Protocol van het eind punt. Mogelijke waarden zijn `http` en `tcp`. Als `tcp` is opgegeven, is een ontvangen ACK vereist om de test te laten slagen. Als `http` is opgegeven, is een antwoord van 200 OK van de opgegeven URI vereist om de test te laten slagen.|
+| `path`              | `string` | De URI die wordt gebruikt voor het aanvragen van de integriteits status van de virtuele machine. `path` is vereist als `protocol` is ingesteld op `http`. Als dat niet het geval is, is dit niet toegestaan.<br /><br /> Er is geen standaard waarde.|
 | `port`              | `integer` | Optioneel. De poort voor het communiceren van de test. Dit is optioneel voor elk eind punt, omdat dezelfde poort wordt gebruikt voor de test. U kunt ook een andere poort voor hun zoek opdracht configureren. Mogelijke waarden variëren van 1 tot 65535, inclusief.<br /><br /> De standaard waarde wordt ingesteld door het eind punt.|
 | `intervalInSeconds` | `integer` | Optioneel. Het interval in seconden voor hoe vaak het eind punt moet worden getest op de status. Normaal gesp roken is het interval iets minder dan de helft van de toegewezen time-outperiode (in seconden) waarmee twee volledige tests kunnen worden uitgevoerd voordat het exemplaar uit de rotatie kan worden gehaald.<br /><br /> De standaard waarde is 15, de minimum waarde is 5.|
 | `timeoutInSeconds`  | `integer` | Optioneel. De time-outperiode, in seconden, die wordt toegepast op de test, waarbij geen enkele reactie leidt tot het stoppen van verdere verkeer van de bezorging bij het eind punt. Met deze waarde kunnen eind punten sneller of langzamer worden gemaakt dan de typische tijden die worden gebruikt in azure (dit zijn de standaard waarden).<br /><br /> De standaard waarde is 31, de minimum waarde is 11.|

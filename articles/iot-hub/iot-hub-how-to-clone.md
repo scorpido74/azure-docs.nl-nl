@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: 6e4d110221c7f360e8177505de2a7789f9616d51
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976142"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429157"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Een Azure IoT hub klonen naar een andere regio
 
@@ -29,7 +29,7 @@ In dit artikel worden manieren besproken om een IoT Hub te klonen en vindt u enk
 Als u een hub wilt klonen, moet u een abonnement hebben met beheerders toegang tot de oorspronkelijke hub. U kunt de nieuwe hub in een nieuwe resource groep en regio plaatsen, in hetzelfde abonnement als de oorspronkelijke hub, of zelfs in een nieuw abonnement. U hoeft niet dezelfde naam te gebruiken omdat de naam van de hub globaal uniek moet zijn.
 
 > [!NOTE]
-> Op dit moment is er geen functie voor de eerste klasse voor het klonen van een IoT-hub. Het is hoofd zakelijk een hand matig proces en is dus tamelijk fout gevoelig. De complexiteit van het klonen van een hub ligt direct in verhouding tot de complexiteit van de hub. Het klonen van een IoT-hub zonder bericht routering is bijvoorbeeld redelijk eenvoudig. Als u bericht routering als één complexiteit toevoegt, wordt het klonen van de hub ten minste een orde van grootte ingewik kelder. Als u ook de resources verplaatst die worden gebruikt voor de route ring van eind punten, is het een andere volg orde van magniture ingewik kelder. 
+> Op dit moment is er geen functie beschikbaar om automatisch een IoT-hub te klonen. Het is hoofd zakelijk een hand matig proces en is dus tamelijk fout gevoelig. De complexiteit van het klonen van een hub ligt direct in verhouding tot de complexiteit van de hub. Het klonen van een IoT-hub zonder bericht routering is bijvoorbeeld redelijk eenvoudig. Als u bericht routering als één complexiteit toevoegt, wordt het klonen van de hub ten minste een orde van grootte ingewik kelder. Als u ook de resources verplaatst die worden gebruikt voor de route ring van eind punten, is het een andere volg orde van magniture ingewik kelder. 
 
 ## <a name="things-to-consider"></a>Aandachtspunten
 

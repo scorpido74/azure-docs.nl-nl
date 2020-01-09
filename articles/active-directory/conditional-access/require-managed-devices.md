@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0caf8e8d5e18efc0a7332f97acccc394051ed360
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 6cd3a0341d9cf041155b09d41d8ff84d0b0cc3dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452397"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424819"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Procedure: beheerde apparaten vereisen voor toegang tot Cloud-apps met voorwaardelijke toegang
 
@@ -91,8 +91,9 @@ Voor een apparaat dat is gemarkeerd als compatibel, kunt u aannemen dat:
 - Uw bedrijfs gegevens worden beveiligd door u te helpen de manier te bepalen waarop uw werk nemers toegang krijgen en delen
 - Het apparaat en de bijbehorende apps voldoen aan de beveiligings vereisten van het bedrijf
 
-> [!NOTE]
-> Als u een beleid configureert om compatibele apparaten te vereisen, kunnen gebruikers worden gevraagd om een certificaat voor een apparaat tijdens de beleids evaluatie te selecteren bij Mac, iOS en Android. Dit is een bekend gedrag.
+### <a name="known-behavior"></a>Bekend gedrag
+
+In Windows 7, iOS, Android, macOS en sommige webbrowsers van derden identificeert het apparaat met behulp van een client certificaat dat is ingericht op het moment dat het apparaat wordt geregistreerd bij Azure AD. Wanneer een gebruiker zich voor het eerst aanmeldt via de browser, wordt de gebruiker gevraagd het certificaat te selecteren. De eind gebruiker moet dit certificaat selecteren om de browser te kunnen blijven gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

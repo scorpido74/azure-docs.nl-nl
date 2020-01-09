@@ -8,16 +8,16 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 70ecc5dc95aced3eb901f24910339eb059ba0c17
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d56b81dbe8c78b9b48f122d79f4567d0b0f42e27
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900472"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398541"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Runtime-uitzonderingen vinden en diagnosticeren met behulp van Azure Application Insights
 
-Azure Application Insights verzamelt telemetrie van uw toepassing om runtime-uitzonderingen te identificeren en diagnosticeren.  In deze zelfstudie leert u dit proces met uw toepassing.  In deze zelfstudie leert u procedures om het volgende te doen:
+Azure Application Insights verzamelt telemetrie van uw toepassing om runtime-uitzonderingen te identificeren en diagnosticeren.  In deze zelfstudie leert u dit proces met uw toepassing.  Procedures voor:
 
 > [!div class="checklist"]
 > * Het wijzigen van uw project om het bijhouden van uitzonderingen in te schakelen
@@ -30,7 +30,7 @@ Azure Application Insights verzamelt telemetrie van uw toepassing om runtime-uit
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor het voltooien van deze zelfstudie:
+Vereisten om deze zelfstudie te voltooien:
 
 - Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende werk belastingen:
     - ASP.NET-ontwikkeling en webontwikkeling

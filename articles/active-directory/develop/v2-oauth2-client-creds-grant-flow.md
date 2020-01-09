@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 12/17/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae50c7cfcb5087903edd8dadca08c38ab1775e20
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 17538d383d7f796803c88d9490aa68ed75351445
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919287"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423286"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Micro soft Identity platform en de OAuth 2,0-client referenties stroom
 
@@ -65,7 +65,7 @@ Dit type autorisatie is gebruikelijk voor daemons en service accounts die toegan
 
 ### <a name="application-permissions"></a>Toepassings machtigingen
 
-In plaats van Acl's te gebruiken, kunt u Api's gebruiken om een set toepassings machtigingen beschikbaar te maken. Een toepassings machtiging wordt verleend aan een toepassing door de beheerder van een organisatie en kan alleen worden gebruikt om toegang te krijgen tot gegevens die eigendom zijn van die organisatie en haar mede werkers. Microsoft Graph biedt bijvoorbeeld verschillende toepassings machtigingen om het volgende te doen:
+In plaats van Acl's te gebruiken, kunt u Api's gebruiken om een set **toepassings machtigingen**beschikbaar te maken. Een toepassings machtiging wordt verleend aan een toepassing door de beheerder van een organisatie en kan alleen worden gebruikt om toegang te krijgen tot gegevens die eigendom zijn van die organisatie en haar mede werkers. Microsoft Graph biedt bijvoorbeeld verschillende toepassings machtigingen om het volgende te doen:
 
 * E-mail in alle post vakken lezen
 * E-mail in alle post vakken lezen en schrijven
@@ -75,6 +75,11 @@ In plaats van Acl's te gebruiken, kunt u Api's gebruiken om een set toepassings 
 Ga naar [Microsoft Graph](https://developer.microsoft.com/graph)voor meer informatie over toepassings machtigingen.
 
 Als u toepassings machtigingen wilt gebruiken in uw app, volgt u de stappen die in de volgende secties worden besproken.
+
+
+> [!NOTE]
+> Bij verificatie als een toepassing, in tegens telling tot een gebruiker, kunt u geen ' gedelegeerde machtigingen ' gebruiken (bereiken die worden verleend door een gebruiker).  U moet toepassings machtigingen gebruiken, ook wel ' rollen ' genoemd, die worden verleend door een beheerder voor de toepassing (of via vooraf-autorisatie door de Web-API).    
+
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>De machtigingen aanvragen in de portal voor app-registratie
 

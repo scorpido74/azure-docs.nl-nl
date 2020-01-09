@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie: Een webpagina voor aangepaste zoekopdrachten maken - Bing Aangepaste zoekopdrachten'
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het configureren van een aangepast Bing Search-exemplaar en het integreren op een webpagina.
+description: Meer informatie over het configureren van een aangepast Bing Search-exemplaar en het integreren hiervan in een webpagina met deze zelf studie.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 5a4d797fecca8e040a6e22bf59a5776b1ffff80f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c3d571f494d5f08c7c9e3c551eba88fb86e1ec23
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977196"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448789"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Zelfstudie: Een webpagina voor aangepaste zoekopdrachten maken
 

@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 52a43dff5d2e740633675b71d5177d0df876d3cd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: f8e431124155fe23853fe61e985fe4db522c3f77
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092207"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644270"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-powershell"></a>Interne Azure-Load Balancer naar een andere regio verplaatsen met behulp van Power shell
 
@@ -32,7 +32,7 @@ Interne load balancers van Azure kunnen niet van de ene regio naar de andere wor
 
 - Controleer of u met uw Azure-abonnement interne load balancers kunt maken in de doel regio die wordt gebruikt. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum.
 
-- Zorg ervoor dat uw abonnement voldoende bronnen heeft ter ondersteuning van het toevoegen van load balancers voor dit proces.  Zie [Azure-abonnement en service limieten, quota's en beperkingen](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)
+- Zorg ervoor dat uw abonnement voldoende bronnen heeft ter ondersteuning van het toevoegen van load balancers voor dit proces.  Zie [Azure-abonnement en service limieten, quota's en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)
 
 
 ## <a name="prepare-and-move"></a>Voorbereiden en verplaatsen
@@ -60,7 +60,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-4. Het bestand dat u hebt gedownload krijgt de naam van de resource groep waaruit de resource is geëxporteerd.  Zoek het bestand dat is geëxporteerd uit de opdracht  **\<met de naam resource-group-name >. json** en open het in een editor naar keuze:
+4. Het bestand dat u hebt gedownload krijgt de naam van de resource groep waaruit de resource is geëxporteerd.  Zoek het bestand dat is geëxporteerd uit de opdracht met de naam **\<resource-group-name >. json** en open het in een editor naar keuze:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -105,9 +105,9 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
     Get-AzLocation | format-table
     
     ```
-8.  U kunt ook andere para meters wijzigen in de  **\<resource-group-name >. json-** bestand als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
+8.  U kunt ook andere para meters wijzigen in het **\<resource-group-name >. json-** bestand als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
 
-    * **Adres ruimte** : de adres ruimte van het VNET kan worden gewijzigd voordat u opslaat door de sectie **resources** > **addressSpace** te wijzigen en de eigenschap **addressPrefixes** te wijzigen in de  **\< resource-group-name >. json-** bestand:
+    * **Adres ruimte** : de adres ruimte van het VNET kan worden gewijzigd voordat u het bestand opslaat door de **resources** > sectie **addressSpace** te wijzigen en de eigenschap **addressPrefixes** te wijzigen in het **\<resource-group-name >. json** File:
 
         ```json
                 "resources": [
@@ -127,7 +127,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
 
         ```
 
-    * **Subnet** : de naam van het subnet en de adres ruimte van het subnet kunnen worden gewijzigd of toegevoegd aan door de sectie **subnetten** van de  **\<resource-group-name >. json-** bestand te wijzigen. De naam van het subnet kan worden gewijzigd door de eigenschap **name** te wijzigen. De adres ruimte van het subnet kan worden gewijzigd door de eigenschap **addressPrefix** in de  **\<resource-group-name >. json-** bestand te wijzigen:
+    * **Subnet** : de naam van het subnet en de adres ruimte van het subnet kunnen worden gewijzigd of toegevoegd aan door de sectie **subnetten** van het **\<resource-group-name >. json-** bestand te wijzigen. De naam van het subnet kan worden gewijzigd door de eigenschap **name** te wijzigen. De adres ruimte van het subnet kan worden gewijzigd door de eigenschap **addressPrefix** in het **\<resource-group-name >. json-** bestand te wijzigen:
 
         ```json
                 "subnets": [
@@ -158,7 +158,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
                 ]
         ```
 
-         In de  **\<resource-group-name >. json-** bestand, om het adres voorvoegsel te wijzigen, moet het worden bewerkt op twee plaatsen, de hierboven vermelde sectie en de sectie **type** die hieronder wordt weer gegeven.  Wijzig de eigenschap **addressPrefix** zodat deze overeenkomt met het bovenstaande:
+         In het **\<resource-group-name >. json** -bestand, om het adres voorvoegsel te wijzigen, moet het worden bewerkt op twee plaatsen, de hierboven vermelde sectie en de sectie **type** die hieronder wordt weer gegeven.  Wijzig de eigenschap **addressPrefix** zodat deze overeenkomt met het bovenstaande:
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -194,7 +194,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
          ]
         ```
 
-9.  Sla het bestand  **\<met de resource-group-name >. json** op.
+9.  Sla de **\<resource-group-name >. json** -bestand op.
 
 10. Maak een resource groep in de doel regio voor het doel-VNET dat moet worden geïmplementeerd met [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)
     
@@ -202,7 +202,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Implementeer het bewerkte  **\<resource-group-name >. json-** bestand in de resource groep die u in de vorige stap hebt gemaakt met behulp van [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Implementeer het bewerkte **\<resource-group-name >. json** -bestand in de resource groep die u in de vorige stap hebt gemaakt met behulp van [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
 
     ```azurepowershell-interactive
 
@@ -241,7 +241,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceIntLBID -IncludeParameterDefaultValue
    ```
-4. Het bestand dat u hebt gedownload krijgt de naam van de resource groep waaruit de resource is geëxporteerd.  Zoek het bestand dat is geëxporteerd uit de opdracht  **\<met de naam resource-group-name >. json** en open het in een editor naar keuze:
+4. Het bestand dat u hebt gedownload krijgt de naam van de resource groep waaruit de resource is geëxporteerd.  Zoek het bestand dat is geëxporteerd uit de opdracht met de naam **\<resource-group-name >. json** en open het in een editor naar keuze:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -263,7 +263,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
              }
     ```
  
-6. Als u de waarde van het virtuele doel netwerk dat hierboven is verplaatst, wilt bewerken, moet u eerst de resource-id ophalen en deze vervolgens kopiëren en plakken in het bestand met de naam van de  **\<resource groep >. json** .  Gebruik [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)om de id te verkrijgen:
+6. Als u de waarde van het virtuele doel netwerk dat hierboven is verplaatst, wilt bewerken, moet u eerst de resource-ID ophalen en deze vervolgens kopiëren en plakken in het **\<resource-group-name >. json-** bestand.  Gebruik [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)om de id te verkrijgen:
    
    ```azurepowershell-interactive
     $targetVNETID = (Get-AzVirtualNetwork -Name <target-vnet-name> -ResourceGroupName <target-resource-group-name>).Id
@@ -275,7 +275,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
     /subscriptions/7668d659-17fc-4ffd-85ba-9de61fe977e8/resourceGroups/myResourceGroupVNET-Move/providers/Microsoft.Network/virtualNetworks/myVNET2-Move
     ```
 
-7.  Plak in het  **\<bestand resource-group-name >. json** de **resource-id** uit de variabele in plaats van de **DefaultValue** in de tweede para meter voor de virtuele netwerk-id van het doel, zorg ervoor dat u het pad tussen aanhalings tekens plaatst:
+7.  Plak in het **\<resource-group-name >. json** -bestand de **resource-id** uit de variabele in plaats van de **DefaultValue** in de tweede para meter voor de virtuele netwerk-id van het doel, zorg ervoor dat u het pad tussen aanhalings tekens plaatst:
    
     ```json
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -291,7 +291,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
              }
     ```
 
-8. Als u de doel regio wilt bewerken waar de interne Load Balancer configuratie wordt verplaatst, wijzigt u de eigenschap **Location** onder **resources** in het  **\<bestand resource-group-name >. json** :
+8. Als u de doel regio wilt bewerken waar de interne load balancer configuratie wordt verplaatst, wijzigt u de eigenschap **Location** onder **resources** in het **\<resource-group-name >. json-** bestand:
 
     ```json
         "resources": [
@@ -315,7 +315,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
     ```
 12. U kunt ook andere para meters in de sjabloon wijzigen als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
     
-    * **SKU** : u kunt de SKU van de interne Load Balancer in de configuratie wijzigen van standaard in Basic of Basic naar Standard door de eigenschap **SKU** > -**naam** te wijzigen in de **\<resource-group-name >. json**bestand:
+    * **SKU** : u kunt de SKU van de interne Load Balancer in de configuratie wijzigen van standaard in Basic of Basic naar Standard door de eigenschap **SKU** > **name** in het bestand **\<resource-group-name >. json** te wijzigen:
 
         ```json
         "resources": [
@@ -331,7 +331,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
         ```
       Zie [overzicht van Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) voor meer informatie over de verschillen tussen de Basic-en Standard SKU load balancers
 
-    * Taakverdelings **regels** : u kunt taakverdelings regels toevoegen aan of verwijderen uit de configuratie door vermeldingen toe te voegen aan of te verwijderen uit de sectie **loadBalancingRules** van de  **\<resource-group-name >. json-** bestand:
+    * Taakverdelings **regels** : u kunt taakverdelings regels toevoegen aan of verwijderen uit de configuratie door vermeldingen toe te voegen aan of te verwijderen uit de sectie **loadBalancingRules** van het **\<resource-group-name >. json-** bestand:
 
         ```json
         "loadBalancingRules": [
@@ -363,7 +363,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
         ```
        Zie [Wat is Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) voor meer informatie over taakverdelings regels.
 
-    * **Tests** : u kunt een test toevoegen aan of verwijderen uit de Load Balancer in de configuratie door vermeldingen toe te voegen aan of te verwijderen uit het gedeelte **tests** van het  **\<bestand resource-group-name >. json** :
+    * **Tests** : u kunt een test toevoegen aan of verwijderen uit de Load Balancer in de configuratie door vermeldingen toe te voegen aan of te verwijderen uit het gedeelte **tests** van het **\<resource-group-name >. json-** bestand:
 
         ```json
         "probes": [
@@ -383,7 +383,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
         ```
        Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview) (Engelstalig) voor meer informatie over Azure Load Balancer status tests
 
-    * **Binnenkomende NAT-regels** : u kunt binnenkomende NAT-regels voor de Load Balancer toevoegen of verwijderen door vermeldingen toe te voegen aan de sectie **inboundNatRules** van de  **\<resource-group-name >. json-** bestand:
+    * **Binnenkomende NAT-regels** : u kunt binnenkomende NAT-regels voor de Load Balancer toevoegen of verwijderen door vermeldingen toe te voegen aan de sectie **inboundNatRules** van het **\<resource-group-name >. json-** bestand:
 
         ```json
         "inboundNatRules": [
@@ -405,7 +405,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
                     }
                 ]
         ```
-        Als u het toevoegen of verwijderen van een binnenkomende NAT-regel wilt volt ooien, moet de regel aanwezig zijn of worden verwijderd als een **type** -eigenschap aan het einde van de  **\<resource-group-name >. json-** bestand:
+        Als u het toevoegen of verwijderen van een binnenkomende NAT-regel wilt volt ooien, moet de regel aanwezig zijn of worden verwijderd als een **type** -eigenschap aan het einde van de **\<resource-group-name >. json-** bestand:
 
         ```json
         {
@@ -431,14 +431,14 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
         ```
         Zie [Wat is Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) voor meer informatie over binnenkomende NAT-regels.
     
-13. Sla het bestand  **\<met de resource-group-name >. json** op.
+13. Sla de **\<resource-group-name >. json** -bestand op.
     
 10. Maak een resource groep in de doel regio voor de interne load balancer van het doel dat moet worden geïmplementeerd met [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0). De bestaande resource groep van boven kan ook opnieuw worden gebruikt als onderdeel van dit proces:
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Implementeer het bewerkte  **\<resource-group-name >. json-** bestand in de resource groep die u in de vorige stap hebt gemaakt met behulp van [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Implementeer het bewerkte **\<resource-group-name >. json** -bestand in de resource groep die u in de vorige stap hebt gemaakt met behulp van [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
 
     ```azurepowershell-interactive
 
@@ -460,7 +460,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
 
     ```
 
-## <a name="discard"></a>Verwijderen 
+## <a name="discard"></a>Negeren 
 
 Als u na de implementatie wilt beginnen of het virtuele netwerk wilt negeren en load balancer in het doel wilt verwijderen, verwijdert u de resource groep die is gemaakt in het doel en het verplaatste virtuele netwerk en de load balancer worden verwijderd.  Gebruik [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)om de resource groep te verwijderen:
 

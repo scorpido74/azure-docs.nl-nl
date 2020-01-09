@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: b4eb083b0f98112274a5d00631af8662ff5c063a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c8ef1d4dacf500c459ae1ab9a534ed118ca9e05a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835891"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446697"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Translator Text-API 3,0: BreakSentence
 
@@ -37,7 +37,7 @@ Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
   <th width="20%">Query parameter</th>
   <th>Beschrijving</th>
   <tr>
-    <td>API-versie</td>
+    <td>api-version</td>
     <td>*Vereiste query parameter*.<br/>De versie van de API die door de client is aangevraagd. De waarde moet `3.0`zijn.</td>
   </tr>
   <tr>
@@ -83,7 +83,7 @@ De hoofd tekst van de aanvraag is een JSON-matrix. Elk matrix element is een JSO
 ]
 ```
 
-De volgende beperkingen zijn van toepassing:
+Hierbij gelden de volgende beperkingen:
 
 * De matrix kan Maxi maal 100 elementen bevatten.
 * De tekst waarde van een matrix element mag niet langer zijn dan 10.000 tekens, inclusief spaties.
@@ -109,7 +109,7 @@ Een voor beeld van een JSON-antwoord is:
 ```json
 [
   {
-    "sentenceLengths": [ 13, 11, 22 ]
+    "sentLen": [ 13, 11, 22 ]
     "detectedLanguage": {
       "language": "en",
       "score": 401
@@ -118,13 +118,13 @@ Een voor beeld van een JSON-antwoord is:
 ]
 ```
 
-## <a name="response-headers"></a>Antwoord headers
+## <a name="response-headers"></a>Antwoordheaders
 
 <table width="100%">
   <th width="20%">Headers</th>
   <th>Beschrijving</th>
   <tr>
-    <td>X-aanvraag-}</td>
+    <td>X-RequestId</td>
     <td>De waarde die door de service is gegenereerd om de aanvraag te identificeren. Dit wordt gebruikt voor het oplossen van problemen.</td>
   </tr>
 </table> 
@@ -134,7 +134,7 @@ Een voor beeld van een JSON-antwoord is:
 Hier volgen de mogelijke HTTP-status codes die een aanvraag retourneert. 
 
 <table width="100%">
-  <th width="20%">Status code</th>
+  <th width="20%">Statuscode</th>
   <th>Beschrijving</th>
   <tr>
     <td>200</td>
@@ -150,7 +150,7 @@ Hier volgen de mogelijke HTTP-status codes die een aanvraag retourneert.
   </tr>
   <tr>
     <td>403</td>
-    <td>De aanvraag is niet geautoriseerd. Controleer het fout bericht Details. Dit betekent vaak dat alle gratis vertalingen van een proef abonnement zijn gebruikt.</td>
+    <td>De aanvraag is niet gemachtigd. Controleer het fout bericht Details. Dit betekent vaak dat alle gratis vertalingen van een proef abonnement zijn gebruikt.</td>
   </tr>
   <tr>
     <td>429</td>

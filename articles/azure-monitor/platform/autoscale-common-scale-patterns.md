@@ -1,64 +1,60 @@
 ---
-title: Overzicht van algemene patronen voor automatisch schalen
-description: Leer enkele van de algemene patronen voor automatisch schalen uw resource in Azure.
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
+title: Overzicht algemene patronen voor automatische schaalaanpassing
+description: Meer informatie over de algemene patronen voor het automatisch schalen van uw resource in Azure.
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 8356a8c8c31a043197485b4913b4a67d7d719778
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a77cf1704c20abb77d432eab16569071208f6da8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60534219"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396098"
 ---
-# <a name="overview-of-common-autoscale-patterns"></a>Overzicht van algemene patronen voor automatisch schalen
-In dit artikel worden enkele van de algemene patronen voor het schalen van uw resource in Azure beschreven.
+# <a name="overview-of-common-autoscale-patterns"></a>Overzicht algemene patronen voor automatische schaalaanpassing
+In dit artikel worden enkele van de algemene patronen beschreven om uw resource in azure te schalen.
 
-Automatisch schalen van Azure Monitor is alleen bedoeld voor [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloudservices](https://azure.microsoft.com/services/cloud-services/), [App Service - Web-Apps](https://azure.microsoft.com/services/app-service/web/), en [API Management-services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
+Azure Monitor automatisch schalen is alleen van toepassing op [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app service-Web apps](https://azure.microsoft.com/services/app-service/web/)en [API Management Services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
-## <a name="lets-get-started"></a>Hiermee kunnen aan de slag
+## <a name="lets-get-started"></a>Hiermee kunt u aan de slag
 
-In dit artikel wordt ervan uitgegaan dat u bekend met automatisch schalen bent. U kunt [hier uw resource schalen aan de slag][1]. Hier volgen enkele van de algemene patronen van de schaal.
+In dit artikel wordt ervan uitgegaan dat u bekend bent met automatisch schalen. U kunt [hier aan de slag om uw resource te schalen][1]. Hier volgen enkele van de algemene schaal patronen.
 
-## <a name="scale-based-on-cpu"></a>Schaal op basis van CPU
+## <a name="scale-based-on-cpu"></a>Schalen op basis van CPU
 
-U hebt een web-app (/ VMSS/cloud service rol) en
+U hebt een web-app (/VMSS/cloud) en
 
-- U wilt scale-out/schaal in op basis van de CPU.
-- Bovendien wilt u om ervoor te zorgen dat er een minimum aantal exemplaren.
-- U wilt ook, om ervoor te zorgen dat u een limiet ingesteld op het aantal exemplaren die kan worden geschaald tot.
+- U wilt uitschalen/schalen op basis van de CPU.
+- Daarnaast wilt u er zeker van zijn dat er een minimum aantal exemplaren is.
+- U wilt er ook voor zorgen dat u een maximum limiet instelt voor het aantal exemplaren dat u kunt schalen naar.
 
-![Schaal op basis van CPU][2]
+![Schalen op basis van CPU][2]
 
-## <a name="scale-differently-on-weekdays-vs-weekends"></a>Anders weekdagen vs tijdens het weekend schalen
+## <a name="scale-differently-on-weekdays-vs-weekends"></a>Anders schalen op week dagen versus weekends
 
-U hebt een web-app (/ VMSS/cloud service rol) en
+U hebt een web-app (/VMSS/cloud) en
 
-- Op het gewenste 3 exemplaren standaard (op weekdagen)
-- U niet verwacht dat verkeer in het weekend en daarom moet worden geschaald naar 1 exemplaar in het weekend.
+- U wilt standaard 3 exemplaren (op werk dagen)
+- U verwacht geen verkeer in het weekend en daarom wilt u omlaag schalen naar 1 exemplaar in het weekend.
 
-![Anders weekdagen vs tijdens het weekend schalen][3]
+![Anders schalen op week dagen versus weekends][3]
 
-## <a name="scale-differently-during-holidays"></a>Anders tijdens de feestdagen schalen
+## <a name="scale-differently-during-holidays"></a>Verschillend schalen tijdens feest dagen
 
-U hebt een web-app (/ VMSS/cloud service rol) en
+U hebt een web-app (/VMSS/cloud) en
 
-- U wilt omhoog/omlaag schalen op basis van CPU-gebruik standaard
-- Tijdens de feestdagen (of specifieke dagen die belangrijk voor uw bedrijf zijn) wilt u echter overschrijven de standaardinstellingen en hebt meer capaciteit beschikken.
+- U wilt omhoog/omlaag schalen op basis van het CPU-gebruik standaard
+- Tijdens het kerst seizoen (of specifieke dagen die belang rijk zijn voor uw bedrijf), wilt u echter de standaard instellingen overschrijven en hebt u meer capaciteit ter beschikking.
 
-![Schaal anders op feestdagen][4]
+![Anders schalen op feest dagen][4]
 
-## <a name="scale-based-on-custom-metric"></a>Schaal op basis van aangepaste meetwaarde
+## <a name="scale-based-on-custom-metric"></a>Schalen op basis van aangepaste metrische gegevens
 
-U hebt een webfront-end en een API-laag die met de back-end communiceert.
+U hebt een web-front-end en een API-laag die communiceert met de back-end.
 
-- U wilt schalen van de API-laag op basis van aangepaste gebeurtenissen in de front-end (voorbeeld: U wilt uw afrekenen op basis van het aantal items in de winkelwagen schalen)
+- U wilt de API-laag schalen op basis van aangepaste gebeurtenissen in de front-end (voor beeld: u wilt het afhandelings proces schalen op basis van het aantal items in de winkel wagen)
 
-![Schaal op basis van aangepaste meetwaarde][5]
+![Schalen op basis van aangepaste metrische gegevens][5]
 
 <!--Reference-->
 [1]: ./autoscale-get-started.md

@@ -2,21 +2,19 @@
 author: dlepow
 ms.service: container-instances
 ms.topic: include
-ms.date: 08/19/2019
+ms.date: 10/17/2019
 ms.author: danlep
-ms.openlocfilehash: 26fe98f5c34e7a3cf7c6336792d7d3341529a5f2
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: aebfedd23ba206ea2ce24f952809121b9d08fd1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69626319"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442259"
 ---
 ### <a name="regions-and-resource-availability"></a>Beschik baarheid van regio's en resources
 
-| Location | OS | CPU | Geheugen (GB) |
+| Regio's | Besturingssysteem | Maximaal CPU | Maxi maal geheugen (GB) |
 | -------- | :---: | :---: | :-----------: |
-| Europa-noord, Zuidoost-Azië, VS-midden, VS-Oost, VS-Oost 2, Zuid-Centraal VS, VS-West 2 | Linux | 4 | 16 |
-| Europa -west | Linux | 4 | 14 |
-| Japan - oost | Linux | 2 | 8 |
-| US - west | Linux | 2 | 3,5 |
-| Australië-oost, VS-West-Centraal | Linux | 1 | 1.5 |
+| Australië-oost, Canada-centraal, VS-midden, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, Europa-west, VS-West 2 | Linux | 4 | 16 |
+| Japan - Oost | Linux | 2 | 8 |
+| VS Noord-Centraal, India-zuid, VS-West | Linux | 2 | 3,5 |

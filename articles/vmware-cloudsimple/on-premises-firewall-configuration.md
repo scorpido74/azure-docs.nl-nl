@@ -1,5 +1,6 @@
 ---
 title: Toegang tot de Azure VMware-oplossing via CloudSimple van on-premises
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Toegang tot uw Azure VMware-oplossing via CloudSimple van uw on-premises netwerk via een firewall
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c0f575417819f0e2d46565ad15aaa23a04fd7cf1
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: df4c51953c6f50e30ba61b993cdb35856fcb8e25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972642"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452413"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>Toegang tot uw persoonlijke cloud omgeving en-toepassingen van CloudSimple vanuit on-premises
 
@@ -23,7 +24,7 @@ Een verbinding kan worden ingesteld vanuit een on-premises netwerk naar CloudSim
 
 Om toegang te krijgen tot uw Privécloud en NSX-T-beheer, moeten de poorten die in de onderstaande tabel zijn gedefinieerd, worden geopend op de on-premises firewall.  
 
-| Port       | Source                           | Bestemming                      | Doel                                                                                                                |
+| Port       | Bron                           | Bestemming                      | Doel                                                                                                                |
 |------------|----------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | 53 (UDP)   | On-premises DNS-servers          | DNS-servers in privécloud        | Vereist voor het door sturen van de DNS-zoek opdracht van *AZ.cloudsimple.io* naar DNS-servers in de privécloud vanuit het on-premises netwerk.       |
 | 53 (UDP)   | DNS-servers in privécloud        | On-premises DNS-servers          | Vereist voor het door sturen van DNS-zoek acties van on-premises domein namen van de Privécloud naar on-premises DNS-servers. |
@@ -36,7 +37,7 @@ Om toegang te krijgen tot uw Privécloud en NSX-T-beheer, moeten de poorten die 
 
 Als u een on-premises Active Directory als een identiteits bron wilt configureren op een Privécloud-vCenter, moeten de poorten die in de tabel zijn gedefinieerd, worden geopend.  Zie [Azure AD gebruiken als een id-provider voor vCenter op CloudSimple Private Cloud](https://docs.azure.cloudsimple.com/azure-ad/) voor configuratie stappen.
 
-| Port         | Source                           | Bestemming                                         | Doel                                                                                                                                          |
+| Port         | Bron                           | Bestemming                                         | Doel                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | 53 (UDP)      | DNS-servers in privécloud        | On-premises DNS-servers                             | Vereist voor het door sturen van DNS-zoek acties van on-premises Active Directory-domein namen van Privécloud naar on-premises DNS-servers.          |
 | 389 (TCP/UDP) | Particulier Cloud beheer netwerk | On-premises Active Directory-domein controllers     | Vereist voor LDAP-communicatie van particuliere cloud vCenter-Server naar Active Directory-domein controllers voor gebruikers verificatie.                |
@@ -48,7 +49,7 @@ Als u een on-premises Active Directory als een identiteits bron wilt configurere
 
 Voor toegang tot virtuele machines van de werk belasting die worden uitgevoerd op een Privécloud, moeten poorten worden geopend op uw on-premises firewall.  In de onderstaande tabel ziet u een aantal algemene poorten die vereist zijn en hun doel.  Raadpleeg de documentatie van de toepassing voor alle toepassingsspecifieke poort vereisten.
 
-| Port         | Source                         | Bestemming                          | Doel                                                                              |
+| Port         | Bron                         | Bestemming                          | Doel                                                                              |
 |--------------|--------------------------------|--------------------------------------|--------------------------------------------------------------------------------------|
 | 22 (TCP)      | On-premises netwerk            | Werkbelasting netwerk voor de privécloud       | Beveiligde shell toegang tot virtuele Linux-machines die worden uitgevoerd op een Privécloud.              |
 | 3389 (TCP)    | On-premises netwerk            | Werkbelasting netwerk voor de privécloud       | Extern bureau blad naar virtuele Windows-machines die worden uitgevoerd op een Privécloud.                 |

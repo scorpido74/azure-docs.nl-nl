@@ -1,17 +1,17 @@
 ---
 title: Problemen met gegevens verlies in azure cache oplossen voor redis
-description: Meer informatie over het oplossen van problemen met gegevens verlies met Azure cache voor redis
+description: Meer informatie over het oplossen van problemen met gegevens verlies met Azure cache voor redis, zoals gedeeltelijk verlies van sleutels, verval datum van sleutel of volledig verlies van sleutels.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.author: yegu
-ms.openlocfilehash: 77493675de0a654d3bb510f7cda22a2abbca0aa2
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d54506b94f076f0a3d967f88bd4e2960a1ca6396
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121490"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530898"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Problemen met gegevens verlies in azure cache oplossen voor redis
 
@@ -36,9 +36,9 @@ Als u ontdekt dat sleutels zijn verdwenen uit uw cache, controleert u de volgend
 
 ### <a name="key-expiration"></a>Verval datum van de sleutel
 
-Azure cache voor redis verwijdert automatisch een sleutel als aan de sleutel een time-out wordt toegewezen en die periode is verstreken. Zie de documentatie van de [verlopende](http://redis.io/commands/expire) opdracht voor meer informatie over de verval datum van de redis-sleutel. Time-outwaarden kunnen ook worden ingesteld met behulp van de opdrachten [set](http://redis.io/commands/set), [SETEX](https://redis.io/commands/setex), [GETSET](https://redis.io/commands/getset)en other **\*Store** .
+Azure cache voor redis verwijdert automatisch een sleutel als aan de sleutel een time-out wordt toegewezen en die periode is verstreken. Zie de documentatie van de [verlopende](https://redis.io/commands/expire) opdracht voor meer informatie over de verval datum van de redis-sleutel. Time-outwaarden kunnen ook worden ingesteld met behulp van de opdrachten [set](https://redis.io/commands/set), [SETEX](https://redis.io/commands/setex), [GETSET](https://redis.io/commands/getset)en other **\*Store** .
 
-Gebruik de opdracht [info](http://redis.io/commands/info) om statistieken weer te geven over hoeveel sleutels zijn verlopen. In het gedeelte `Stats` wordt het totale aantal verlopen sleutels weer gegeven. De sectie `Keyspace` biedt meer informatie over het aantal sleutels met time-outs en de gemiddelde time-outwaarde.
+Gebruik de opdracht [info](https://redis.io/commands/info) om statistieken weer te geven over hoeveel sleutels zijn verlopen. In het gedeelte `Stats` wordt het totale aantal verlopen sleutels weer gegeven. De sectie `Keyspace` biedt meer informatie over het aantal sleutels met time-outs en de gemiddelde time-outwaarde.
 
 ```
 # Stats
@@ -54,9 +54,9 @@ U kunt ook diagnostische gegevens voor uw cache bekijken om te zien of er een co
 
 ### <a name="key-eviction"></a>Sleutel verwijdering
 
-Azure cache voor redis vereist geheugen ruimte voor het opslaan van gegevens. De sleutels worden verwijderd om zo nodig het geheugen beschikbaar te maken. Wanneer de **used_memory** -of **used_memory_rss** -waarden in de [info](http://redis.io/commands/info) opdracht de geconfigureerde **Maxmemory** -instelling benaderen, begint Azure cache voor redis het verwijderen van sleutels uit het geheugen op basis van het [cache beleid](http://redis.io/topics/lru-cache).
+Azure cache voor redis vereist geheugen ruimte voor het opslaan van gegevens. De sleutels worden verwijderd om zo nodig het geheugen beschikbaar te maken. Wanneer de **used_memory** -of **used_memory_rss** -waarden in de [info](https://redis.io/commands/info) opdracht de geconfigureerde **Maxmemory** -instelling benaderen, begint Azure cache voor redis het verwijderen van sleutels uit het geheugen op basis van het [cache beleid](https://redis.io/topics/lru-cache).
 
-U kunt het aantal verwijderde sleutels bewaken met behulp van de opdracht [info](http://redis.io/commands/info) :
+U kunt het aantal verwijderde sleutels bewaken met behulp van de opdracht [info](https://redis.io/commands/info) :
 
 ```
 # Stats
@@ -68,7 +68,7 @@ U kunt ook diagnostische gegevens voor uw cache bekijken om te zien of er een co
 
 ### <a name="key-deletion"></a>Sleutel verwijderen
 
-Redis-clients kunnen de opdracht [del](http://redis.io/commands/del) of [HDEL](http://redis.io/commands/hdel) uitgeven om sleutels expliciet te verwijderen uit Azure cache voor redis. U kunt het aantal verwijderings bewerkingen bijhouden met behulp van de opdracht [info](http://redis.io/commands/info) . Als **del** -of **HDEL** -opdrachten zijn aangeroepen, worden deze weer gegeven in de sectie `Commandstats`.
+Redis-clients kunnen de opdracht [del](https://redis.io/commands/del) of [HDEL](https://redis.io/commands/hdel) uitgeven om sleutels expliciet te verwijderen uit Azure cache voor redis. U kunt het aantal verwijderings bewerkingen bijhouden met behulp van de opdracht [info](https://redis.io/commands/info) . Als **del** -of **HDEL** -opdrachten zijn aangeroepen, worden deze weer gegeven in de sectie `Commandstats`.
 
 ```
 # Commandstats
@@ -80,7 +80,7 @@ cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 
 ### <a name="async-replication"></a>Asynchrone replicatie
 
-Alle Azure-caches voor redis-instanties in de laag Standard of Premium worden geconfigureerd met een hoofd knooppunt en ten minste één replica. Gegevens worden asynchroon van het model naar een replica gekopieerd met behulp van een achtergrond proces. De [redis.io](http://redis.io/topics/replication) -website beschrijft hoe redis-gegevens replicatie in het algemeen werkt. Voor scenario's waarbij clients regel matig schrijven naar redis, kan gedeeltelijk gegevens verlies optreden omdat deze replicatie gegarandeerd onmiddellijk is. Als de hoofd server bijvoorbeeld wordt uitgeschakeld *nadat* een client een sleutel naar de replica schrijft, maar *voordat* het achtergrond proces die sleutel naar de replica's kan verzenden, gaat de sleutel verloren wanneer de replica de nieuwe hoofd server overneemt.
+Alle Azure-caches voor redis-instanties in de laag Standard of Premium worden geconfigureerd met een hoofd knooppunt en ten minste één replica. Gegevens worden asynchroon van het model naar een replica gekopieerd met behulp van een achtergrond proces. De [redis.io](https://redis.io/topics/replication) -website beschrijft hoe redis-gegevens replicatie in het algemeen werkt. Voor scenario's waarbij clients regel matig schrijven naar redis, kan gedeeltelijk gegevens verlies optreden omdat deze replicatie gegarandeerd onmiddellijk is. Als de hoofd server bijvoorbeeld wordt uitgeschakeld *nadat* een client een sleutel naar de replica schrijft, maar *voordat* het achtergrond proces die sleutel naar de replica's kan verzenden, gaat de sleutel verloren wanneer de replica de nieuwe hoofd server overneemt.
 
 ## <a name="major-or-complete-loss-of-keys"></a>Groot of volledig verlies van sleutels
 
@@ -94,7 +94,7 @@ Als de meeste of alle sleutels uit uw cache zijn verdwenen, controleert u de vol
 
 ### <a name="key-flushing"></a>Leegmaken van sleutel
 
-Clients kunnen de opdracht [FLUSHDB](http://redis.io/commands/flushdb) aanroepen om alle sleutels in *één* data base of [FLUSHALL](http://redis.io/commands/flushall) te verwijderen om alle sleutels te verwijderen uit *alle* data bases in een redis-cache. Als u wilt weten of sleutels zijn leeg gemaakt, gebruikt u de opdracht [info](http://redis.io/commands/info) . De sectie `Commandstats` geeft aan of de opdracht **Flush** is aangeroepen:
+Clients kunnen de opdracht [FLUSHDB](https://redis.io/commands/flushdb) aanroepen om alle sleutels in *één* data base of [FLUSHALL](https://redis.io/commands/flushall) te verwijderen om alle sleutels te verwijderen uit *alle* data bases in een redis-cache. Als u wilt weten of sleutels zijn leeg gemaakt, gebruikt u de opdracht [info](https://redis.io/commands/info) . De sectie `Commandstats` geeft aan of de opdracht **Flush** is aangeroepen:
 
 ```
 # Commandstats
@@ -106,7 +106,7 @@ cmdstat_flushdb:calls=1,usec=110,usec_per_call=52.00
 
 ### <a name="incorrect-database-selection"></a>Onjuiste database selectie
 
-Azure cache voor redis maakt standaard gebruik van de **db0** -data base. Als u overschakelt naar een andere data base (bijvoorbeeld **db1**) en probeert sleutels te lezen, worden deze daar niet gevonden door Azure cache voor redis. Elke Data Base is een logische afzonderlijke eenheid en bevat een andere gegevensset. Gebruik de [Select](http://redis.io/commands/select) -opdracht om andere beschik bare data bases te gebruiken en zoek naar sleutels in elk van deze.
+Azure cache voor redis maakt standaard gebruik van de **db0** -data base. Als u overschakelt naar een andere data base (bijvoorbeeld **db1**) en probeert sleutels te lezen, worden deze daar niet gevonden door Azure cache voor redis. Elke Data Base is een logische afzonderlijke eenheid en bevat een andere gegevensset. Gebruik de [Select](https://redis.io/commands/select) -opdracht om andere beschik bare data bases te gebruiken en zoek naar sleutels in elk van deze.
 
 ### <a name="redis-instance-failure"></a>Redis-instantie fout
 
@@ -114,11 +114,11 @@ Redis is een gegevens archief in het geheugen. Gegevens worden bewaard op de fys
 
 Caches in de Standard-en Premium-lagen bieden veel meer tolerantie tegen gegevens verlies met behulp van twee virtuele machines in een gerepliceerde configuratie. Wanneer het hoofd knooppunt in een dergelijke cache mislukt, neemt het replica knooppunt de gegevens automatisch over. Deze Vm's bevinden zich in verschillende domeinen voor fouten en updates, om de kans te verkleinen dat ze niet tegelijkertijd niet meer beschikbaar zijn. Als er sprake is van een ernstige storing in het Data Center, kunnen de Vm's echter nog steeds samen gaan. De gegevens gaan in deze zeldzame gevallen verloren.
 
-Overweeg het gebruik van [redis-gegevens persistentie](http://redis.io/topics/persistence) en [geo-replicatie](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication) om de beveiliging van uw gegevens tegen deze infrastructuur fouten te verbeteren.
+Overweeg het gebruik van [redis-gegevens persistentie](https://redis.io/topics/persistence) en [geo-replicatie](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication) om de beveiliging van uw gegevens tegen deze infrastructuur fouten te verbeteren.
 
 ## <a name="additional-information"></a>Aanvullende informatie
 
-- [Problemen met Azure-cache oplossen voor redis aan de server zijde](cache-troubleshoot-server.md)
+- [Problemen met Azure Cache voor Redis aan serverzijde oplossen](cache-troubleshoot-server.md)
 - [Wat is Azure cache voor redis aanbieding en grootte moet ik gebruiken?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 - [Azure-cache bewaken voor redis](cache-how-to-monitor.md)
 - [Hoe kan ik redis-opdrachten uitvoeren?](cache-faq.md#how-can-i-run-redis-commands)

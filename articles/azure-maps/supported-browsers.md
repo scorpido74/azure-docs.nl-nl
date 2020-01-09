@@ -7,13 +7,13 @@ ms.date: 03/25/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
-ms.openlocfilehash: d867e9a1afcb495aee7e8b0e0b3b001104f48a4c
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+manager: cpendle
+ms.openlocfilehash: 6aa256f026033a8b204b3c2ab1080f9f63ef63d7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844819"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432787"
 ---
 # <a name="web-sdk-supported-browsers"></a>Browsers die Web-SDK ondersteunen
 
@@ -40,7 +40,7 @@ De Azure Maps Web-SDK ondersteunt de volgende desktop browsers:
 
 Zie ook [verouderde browsers bedoelen](#Target-Legacy-Browsers) verderop in dit artikel.
 
-## <a name="mobile"></a>mobiele
+## <a name="mobile"></a>Mobiel
 
 De Azure Maps Web-SDK ondersteunt de volgende mobiele browsers:
 
@@ -59,7 +59,7 @@ De Azure Maps Web-SDK ondersteunt de volgende mobiele browsers:
 
 De volgende Web SDK-modules worden ook ondersteund in node. js:
 
-- Services-module ([documentatie](how-to-use-services-module.md) | [NPM module](https://www.npmjs.com/package/azure-maps-rest))
+- Services-module ([documentatie](how-to-use-services-module.md) | [module NPM](https://www.npmjs.com/package/azure-maps-rest))
 
 ## <a name="Target-Legacy-Browsers"></a>Doel verouderde browsers
 

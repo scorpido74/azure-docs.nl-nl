@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: c3b4fabb319a3ea76ee62c8c699d4613184a4e76
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 4919c8f303488b583ea4d10dca87dd29bfb52e99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791042"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374077"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Veelgestelde vragen over SQL Server die worden uitgevoerd op virtuele Windows-machines in azure
 
@@ -66,7 +66,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
    Nee. Voor installatie kopieën in de galerie met virtuele machines die SQL Server bevatten, moet u een van de installatie kopieën selecteren via de Azure Portal of via [Power shell](virtual-machines-windows-ps-sql-create.md). U hebt echter de mogelijkheid om een Windows-VM te implementeren en zelf SQL Server te installeren. U moet [uw SQL Server-VM vervolgens registreren bij de resource provider van SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md) om uw SQL Server-VM in de portal te beheren, evenals functies zoals automatische patches en automatische back-ups. 
 
 
-## <a name="creation"></a>Zelf
+## <a name="creation"></a>Maken
 
 1. **Hoe kan ik een virtuele machine van Azure met SQL Server maken?**
 
@@ -84,12 +84,12 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 1. **Moet ik betalen om een SQL-server een licentie te verlenen op een Azure-VM, als deze SQL-server alleen wordt gebruikt als stand-by of om een failover uit te voeren?**
 
-   Als u een gratis passieve licentie wilt voor een secundaire beschikbaarheids groep met een stand-by-of een failover-cluster, moet u voldoen aan de volgende criteria, zoals beschreven in de [licentie handleiding PDF](https://download.microsoft.com/download/7/8/C/78CDF005-97C1-4129-926B-CE4A6FE92CF5/SQL_Server_2017_Licensing_guide.pdf):
+   Als u een gratis passieve licentie wilt voor een secundaire beschikbaarheids groep met een stand-by-of een failover-cluster, moet u voldoen aan de volgende criteria, zoals beschreven in de [product licentie voorwaarden](https://www.microsoft.com/licensing/product-licensing/products):
 
    1. U hebt [licentie mobiliteit](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2) via [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3). 
-   1. Het passieve SQL Server-exemplaar is niet bedoeld voor het SQL Server van gegevens aan clients of het uitvoeren van actieve SQL Server-workloads. Het wordt alleen gebruikt om te synchroniseren met de primaire server en houdt anders de passieve data base in een warme stand-by-staat. Als het gaat om gegevens, zoals rapporten voor clients waarop actieve SQL Server werk belastingen worden uitgevoerd, of het uitvoeren van een werk, zoals aanvullende back-ups van de secundaire server, moet het een betaalde licentie SQL Server exemplaar zijn. 
+   1. Het passieve SQL Server-exemplaar is niet bedoeld voor het SQL Server van gegevens aan clients of het uitvoeren van actieve SQL Server-workloads. Het wordt alleen gebruikt om te synchroniseren met de primaire server en houdt anders de passieve data base in een warme stand-by-staat. Als het gaat om gegevens, zoals rapporten naar clients waarop actieve SQL Server werk belastingen worden uitgevoerd, of het uitvoeren van andere werk items dan is opgegeven in de product voorwaarden, moet het een betaalde gelicentieerde SQL Server instantie zijn. De volgende activiteit is toegestaan op het secundaire exemplaar: consistentie controles van data bases of CheckDB, volledige back-ups, back-ups van transactie logboeken en het bewaken van gegevens over het resource gebruik. U kunt ook het primaire en het bijbehorende herstel exemplaar voor nood gevallen tegelijk uitvoeren voor korte Peri Oden van herstel na nood gevallen om de 90 dagen. 
    1. De actieve SQL Server-licentie wordt gedekt door Software Assurance en biedt **één** passieve secundaire SQL Server instantie, met Maxi maal dezelfde hoeveelheid reken kracht als de gelicentieerde actieve server. 
-   1. De secundaire SQL Server-VM maakt gebruik van het BYOL- [licentie model](virtual-machines-windows-sql-ahb.md)(meebrengen van uw eigen licentie) of Azure Hybrid Benefit (AHB). 
+   1. De secundaire SQL Server VM maakt gebruik van de licentie voor [herstel na nood gevallen](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure) in de Azure Portal.
 
 1. **Kan ik een VM wijzigen zodat mijn eigen SQL Server-licentie wordt gebruikt, wanneer de VM is gemaakt vanuit een van de Betalen per gebruik-installatiekopieën uit de galerie?**
 
@@ -163,8 +163,8 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 1. **Waar kan ik de installatie media ophalen om de editie of versie van SQL Server te wijzigen?**
 
-  Klanten met [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) kunnen hun installatie media verkrijgen via het [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klanten die geen Software Assurance hebben, kunnen het installatie medium van een Marketplace SQL Server VM-installatie kopie met de gewenste versie gebruiken.
-
+   Klanten met [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) kunnen hun installatie media verkrijgen via het [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klanten die geen Software Assurance hebben, kunnen het installatie medium van een Marketplace SQL Server VM-installatie kopie met de gewenste versie gebruiken.
+   
 1. **Hoe worden updates en service packs toegepast op een SQL Server virtuele machine?**
 
    virtuele machines geven u controle over de hostmachine, inclusief wanneer en hoe u updates wilt toepassen. Voor het besturings systeem kunt u hand matig Windows-updates Toep assen of kunt u een plannings service met de naam [geautomatiseerde patching](virtual-machines-windows-sql-automated-patching.md)inschakelen. Automated Patching installeert alle updates die als belangrijk zijn aangeduid, met inbegrip van SQL Server-updates in deze categorie. Overige optionele updates voor SQL Server moeten handmatig worden geïnstalleerd.
@@ -172,6 +172,12 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 1. **Kan ik een upgrade uitvoeren van mijn SQL Server 2008/2008 R2-exemplaar nadat ik deze heb geregistreerd bij de resource provider van SQL Server VM?**
 
    Ja. U kunt elk installatie medium gebruiken om de versie en editie van SQL Server te upgraden, en vervolgens kunt u uw [SQL IaaS-uitbreidings modus](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)upgraden van _geen enkele agent_ naar een _volle_. Op die manier krijgt u toegang tot alle voor delen van de SQL IaaS-extensie, zoals beheer baarheid van de portal, automatische back-ups en automatische patching. 
+
+1. **Hoe krijg ik gratis uitgebreide beveiligings updates voor mijn end of support SQL Server 2008 en SQL Server 2008 R2-instanties?**
+
+   U kunt [gratis uitgebreide beveiligings updates](virtual-machines-windows-sql-server-2008-eos-extend-support.md) verkrijgen door uw SQL Server te verplaatsen naar een virtuele machine van Azure SQL. Zie [einde van ondersteunings opties](/sql/sql-server/end-of-support/sql-server-end-of-life-overview)voor meer informatie. 
+  
+   
 
 ## <a name="general"></a>Algemeen
 
@@ -194,7 +200,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
    
     Ja. Lokale DTC wordt ondersteund voor SQL Server 2016 SP2 en hoger. Toepassingen moeten echter worden getest wanneer er gebruik wordt gemaakt van AlwaysOn-beschikbaarheids groepen, omdat trans acties in de vlucht tijdens een failover mislukken en opnieuw moeten worden geprobeerd. Geclusterde DTC is beschikbaar vanaf Windows Server 2019. 
 
-## <a name="resources"></a>Bronnen
+## <a name="resources"></a>Resources
 
 **Virtuele Windows-machines**:
 

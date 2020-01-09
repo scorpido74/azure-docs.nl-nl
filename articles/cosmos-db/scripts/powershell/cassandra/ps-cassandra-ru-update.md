@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell script-Azure Cosmos DB RU/s voor Cassandra-API bijwerken
+title: Power shell-script voor het bijwerken van RU/s in Azure Cosmos DB Cassandra-API resources
 description: Meer informatie over het gebruik van een Power shell-script voor het bijwerken van de door Voer voor een spatie of een tabel in Azure Cosmos DB Cassandra-API
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 12/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 417ee8d839e65a7625b8ba8daa84cc0dcc41abf5
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 4f81f278c87b096b2dae844252229fb1dee45599
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871955"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445065"
 ---
 # <a name="update-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Update RU/s voor een spatie of tabel voor Azure Cosmos DB-Cassandra-API
 
@@ -41,7 +41,7 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 |**Azure-resources**| |
 | [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
 |**Azure-resource groepen**| |
-| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
+| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen

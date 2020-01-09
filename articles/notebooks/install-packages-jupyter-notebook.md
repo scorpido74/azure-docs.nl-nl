@@ -1,20 +1,22 @@
 ---
-title: Pakketten in een Jupyter-notebook op Azure installeren
-description: Het installeren van Python, R, en F# pakketten uit binnen een Jupyter-notebook op Azure.
-ms.topic: article
+title: Pakketten in Jupyter-notebooks installeren-Azure Notebooks preview
+description: Meer informatie over het installeren van python, R F# en pakketten vanuit een Jupyter-notebook dat wordt uitgevoerd op Azure.
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 5d85c8e936ce7c8bf38ec7bc9c27d9066cc8b155
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f6359b4c010834ffaee00b6208d309997339f36e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277536"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646225"
 ---
-# <a name="install-packages-from-within-a-notebook"></a>Installeren van pakketten van binnen een laptop
+# <a name="install-packages-from-within-azure-notebooks-preview"></a>Pakketten installeren vanuit Azure Notebooks preview
 
-Hoewel u de [omgeving voor uw notitie blok kunt configureren op project niveau](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), wilt u mogelijk pakketten rechtstreeks in een afzonderlijk notitie blok installeren.
+Hoewel u kunt configureren de [omgeving voor uw laptop op het niveau van het project](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), kunt u rechtstreeks vanuit de laptop van een afzonderlijke-pakketten installeren.
 
 Pakketten geïnstalleerd vanuit het notitieblok gelden alleen voor de huidige sessie. Installatie van het pakket zijn niet persistent gemaakt nadat de server wordt afgesloten.
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="python"></a>Python
 
@@ -26,7 +28,7 @@ Pakketten in Python kunnen worden geïnstalleerd met behulp van pip of met behul
 !conda install <package_name> -y
 ```
 
-Als uitvoer van de opdracht geeft aan dat al door de voorwaarde is voldaan, wordt Azure notitieblokken kan het pakket bevatten standaard. Het pakket kan ook worden geïnstalleerd via een [installatie stap van een project omgeving](configure-manage-azure-notebooks-projects.md#configure-the-project-environment).
+Als uitvoer van de opdracht geeft aan dat al door de voorwaarde is voldaan, wordt Azure notitieblokken kan het pakket bevatten standaard. Het pakket kan ook worden geïnstalleerd via een [project omgeving instellingsstap](configure-manage-azure-notebooks-projects.md#configure-the-project-environment).
 
 ## <a name="r"></a>R
 
@@ -46,7 +48,7 @@ install_github('<user>/<repo>')
 
 ## <a name="f"></a>F#
 
-Pakketten in F# kunnen worden geïnstalleerd vanuit [nuget.org](https://www.nuget.org) door het aanroepen van de Paket dependency manager in code cellen. Laad eerst de Paket manager:
+Pakketten in F# kan worden geïnstalleerd vanaf [nuget.org](https://www.nuget.org) door het aanroepen van de afhankelijkheid Paket manager uit binnen de cellen van code. Laad eerst de Paket manager:
 
 ```fsharp
 #load "Paket.fsx"
@@ -73,5 +75,5 @@ open MathNet.Numerics
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Procedure: projecten configureren en beheren](configure-manage-azure-notebooks-projects.md)
-- [Procedure: een diavoorstelling presen teren](present-jupyter-notebooks-slideshow.md)
+- [Hoe: configureren en beheren van projecten](configure-manage-azure-notebooks-projects.md)
+- [Hoe: een diavoorstelling](present-jupyter-notebooks-slideshow.md)

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fada16b3ca5307a28eebca4dfe97dc96ba389212
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1f7e9551e6a48350b8f23e9d6ce1d47a1a903c63
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098697"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75643250"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -34,9 +34,9 @@ ms.locfileid: "70098697"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
-[networking-limits-azure-resource-manager]:../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[networking-limits-azure-resource-manager]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
 [load-balancer-multivip-overview]:../../../load-balancer/load-balancer-multivip-overview.md
 
 
@@ -199,7 +199,7 @@ ms.locfileid: "70098697"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -222,7 +222,7 @@ In dit artikel wordt uitgelegd hoe u vanuit één ASCS/SCS-installatie overstapt
 >Het maximum aantal SAP-ASCS/SCS-exemplaren in één WSFC-cluster is gelijk aan het maximum aantal privé-front-end Ip's voor elke interne Azure-load balancer.
 >
 
-Voor meer informatie over limieten voor load balancers raadpleegt u de sectie ' persoonlijke front-end IP per Load Balancer [' in netwerk limieten: Azure Resource Manager][networking-limits-azure-resource-manager].
+Zie de sectie ' persoonlijke front-end IP per load balancer ' in [netwerk limieten: Azure Resource Manager][networking-limits-azure-resource-manager]voor meer informatie over limieten voor load balancers.
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -244,7 +244,7 @@ Het doel is om meerdere SAP ABAP ASCS of SAP Java SCS geclusterde instanties in 
 
 ![Meerdere op SAP ASCS/SCS geclusterde instanties in azure][sap-ha-guide-figure-6002]
 
-Voor meer informatie over limieten voor load balancers raadpleegt u de sectie ' persoonlijke front-end IP per Load Balancer [' in netwerk limieten: Azure Resource Manager][networking-limits-azure-resource-manager].
+Zie de sectie ' persoonlijke front-end IP per load balancer ' in [netwerk limieten: Azure Resource Manager][networking-limits-azure-resource-manager]voor meer informatie over limieten voor load balancers.
 
 De volledige liggende periode met twee SAP-systemen met hoge Beschik baarheid ziet er als volgt uit:
 
@@ -254,7 +254,7 @@ De volledige liggende periode met twee SAP-systemen met hoge Beschik baarheid zi
 
 Als u uw infra structuur wilt voorbereiden, kunt u een extra SAP ASCS/SCS-exemplaar installeren met de volgende para meters:
 
-| Parameternaam | Value |
+| Parameternaam | Waarde |
 | --- | --- |
 | SAP ASCS/SCS SID |pr1-lb-ascs |
 | SAP DBMS interne load balancer | PR5 |
@@ -270,7 +270,7 @@ Als u uw infra structuur wilt voorbereiden, kunt u een extra SAP ASCS/SCS-exempl
 
 U kunt extra SAP ASCS/SCS-exemplaren in het bestaande WSFC-cluster met twee knoop punten installeren:
 
-| Virtuele-machine functie | Hostnaam van virtuele machine | Vast IP-adres |
+| Virtuele-machine functie | Hostnaam van virtuele machine | Statisch IP-adres |
 | --- | --- | --- |
 | Eerste cluster knooppunt voor ASCS/SCS-instantie |pr1-ascs-0 |10.0.0.10 |
 | Tweede cluster knooppunt voor ASCS/SCS-instantie |pr1-ascs-1 |10.0.0.9 |

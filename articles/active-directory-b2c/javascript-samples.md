@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 92ac1e6a85023d49ceb8242b93651a60da3d2166
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 996893f95b11d716feb4253688d3ab1d62d140ee
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064188"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659522"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>JavaScript-voorbeelden voor gebruik in Azure Active Directory B2C
 
@@ -28,7 +28,11 @@ U kunt uw eigen Java script-client-side code toevoegen aan uw Azure Active Direc
 
 ## <a name="prerequisites"></a>Vereisten
 
-Selecteer een pagina-indeling voor de elementen van de gebruikers interface van uw toepassing. Als u van plan bent java script te gebruiken, moet u een versie van de pagina-indeling definiëren voor al uw inhouds definities in uw aangepaste beleid.
+### <a name="select-a-page-layout"></a>Selecteer een pagina-indeling
+
+* [Selecteer een pagina-indeling](page-layout.md) voor de elementen van de gebruikers interface van uw toepassing.
+
+    Als u van plan bent java script te gebruiken, moet u [een versie van de pagina-indeling definiëren](page-layout.md#replace-datauri-values) voor *alle* inhouds definities in uw aangepaste beleid.
 
 ## <a name="add-the-scriptexecution-element"></a>Het element ScriptExecution toevoegen
 

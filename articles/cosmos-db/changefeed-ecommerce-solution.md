@@ -1,22 +1,22 @@
 ---
 title: Gebruik Azure Cosmos DB-wijzigingenfeed voor het visualiseren van realtime gegevensanalyse
-description: Dit artikel wordt beschreven hoe wijzigingenfeed kan worden gebruikt door een handelsversie-bedrijf Gebruikerspatronen begrijpen, voert u gegevens in realtime analyses en visualisatie.
+description: In dit artikel wordt beschreven hoe wijzigings invoer door een retail bedrijf kan worden gebruikt om gebruikers patronen te begrijpen, analyse en visualisatie in realtime-gegevens uit te voeren
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 86d4dd706b097891db155214e4edb7e85e054858
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 50517db6a5bb1fc458ab2f563e905fca34f70cf4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616953"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442074"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Gebruik Azure Cosmos DB-wijzigingenfeed voor het visualiseren van realtime gegevensanalyse
 
-De Azure Cosmos DB wijzigings feed is een mechanisme voor het verkrijgen van een doorlopende en incrementele feed van records uit een Azure Cosmos-container wanneer die records worden gemaakt of gewijzigd. Wijzigingenfeed ondersteuning werkt door te luisteren naar de container voor eventuele wijzigingen. Het voert vervolgens de gesorteerde lijst met documenten die zijn gewijzigd in de volgorde waarin ze zijn gewijzigd. Zie voor meer informatie over de wijzigingenfeed [werken met change feed](change-feed.md) artikel. 
+De Azure Cosmos DB wijzigings feed is een mechanisme voor het verkrijgen van een doorlopende en incrementele feed van records uit een Azure Cosmos-container wanneer die records worden gemaakt of gewijzigd. Wijzigingenfeed ondersteuning werkt door te luisteren naar de container voor eventuele wijzigingen. Als output verschijnt er vervolgens een gesorteerde lijst met gewijzigde documenten op volgorde van wijziging. Zie voor meer informatie over de wijzigingenfeed [werken met change feed](change-feed.md) artikel. 
 
 Dit artikel wordt beschreven hoe wijzigingenfeed kan worden gebruikt door een e-commerce-bedrijf Gebruikerspatronen begrijpen, voert u gegevens in realtime analyses en visualisatie. U kunt gebeurtenissen, zoals een gebruiker een item weergeven, een item toe te voegen aan hun winkelwagen of aanschaffen van een item wordt analyseren. Wanneer een van deze gebeurtenissen zich voordoet, een nieuwe record wordt gemaakt en de wijzigingenfeed logboeken die record. Wijzigingenfeed vervolgens triggers een reeks stappen, wat resulteert in een visualisatie van metrische gegevens die de bedrijfsprestaties van het en de activiteit analyseert. Voorbeeld van metrische gegevens die u kunt visualiseren omzet, unieke bezoekers, meest populaire artikelen bevatten en gemiddelde prijs van de items die worden weergegeven ten opzichte van toegevoegd aan een winkelwagen ten opzichte van die zijn aangeschaft. Deze metrische voorbeeldgegevens kunt een e-commerce-bedrijf evalueren de populariteit van de site, de reclame- en winsten te ontwikkelen en beslissingen met betrekking tot welke voorraad te investeren in.
 
@@ -30,7 +30,7 @@ Het volgende diagram staat voor de gegevensstroom en de onderdelen die betrokken
 
 ![Project visual](./media/changefeed-ecommerce-solution/project-visual.png)
  
-1. **Gegevens genereren:** Data Simulator wordt gebruikt voor het genereren van Retail gegevens die gebeurtenissen vertegenwoordigen, zoals een gebruiker die een item bekijkt, een item toevoegt aan hun mandje en een item koopt. U kunt grote verzameling voorbeeldgegevens genereren met behulp van de gegevensgenerator. De gegenereerde voorbeeldgegevens bevat documenten in de volgende indeling:
+1. **Gegevens genereren:** gegevenssimulator wordt gebruikt voor het genereren van retailgegevens die gebeurtenissen, zoals een gebruiker een item bekijken, een item toe te voegen aan hun winkelwagen en het aanschaffen van een item vertegenwoordigt. U kunt grote verzameling voorbeeldgegevens genereren met behulp van de gegevensgenerator. De gegenereerde voorbeeldgegevens bevat documenten in de volgende indeling:
    
    ```json
    {      
@@ -45,13 +45,13 @@ Het volgende diagram staat voor de gegevensstroom en de onderdelen die betrokken
 
 3. **Wijzigings feed:** De wijzigings feed wordt geluisterd naar wijzigingen in de Azure Cosmos-container. Telkens wanneer een nieuw document wordt toegevoegd aan de verzameling (dat is wanneer een gebeurtenis optreedt die een gebruiker een item bekijkt een item toe te voegen aan hun winkelwagen of aanschaffen van een item), de wijzigingenfeed wordt activeren een [Azure-functie](../azure-functions/functions-overview.md).  
 
-4. **Azure-functie:** Met de functie Azure worden de nieuwe gegevens verwerkt en verzonden naar een [Azure Event hub](../event-hubs/event-hubs-about.md).  
+4. **Azure-functie:** de Azure-functie verwerkt de nieuwe gegevens en verzendt ze naar een [Azure Event Hub](../event-hubs/event-hubs-about.md).  
 
-5. **Event hub:** Deze gebeurtenissen worden opgeslagen in de Azure Event hub en verzonden naar [Azure stream Analytics](../stream-analytics/stream-analytics-introduction.md) om verdere analyses uit te voeren.  
+5. **Event Hub:** deze gebeurtenissen worden opgeslagen in de Azure Event Hub en stuurt naar [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) voor verdere analyse.  
 
-6. **Azure Stream Analytics:** Azure Stream Analytics definieert query's om de gebeurtenissen te verwerken en realtime gegevens analyse uit te voeren. Deze gegevens wordt dan gezonden naar [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
+6. **Azure Stream Analytics:** Azure Stream Analytics query's uit om de gebeurtenissen verwerken en realtime gegevensanalyses uitvoeren definieert. Deze gegevens wordt dan gezonden naar [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
 
-7. **Power BI:** Power BI wordt gebruikt voor het visualiseren van de gegevens die worden verzonden door Azure Stream Analytics. U kunt een dashboard om te zien hoe de metrische gegevens wijzigen in realtime kunt bouwen.  
+7. **Power BI:** Power BI wordt gebruikt voor het visualiseren van de gegevens die door Azure Stream Analytics worden verzonden. U kunt een dashboard om te zien hoe de metrische gegevens wijzigen in realtime kunt bouwen.  
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -165,7 +165,7 @@ Om te zien hoe wijzigingenfeed verwerkt nieuwe acties op een e-commerce-site, he
 
 1. Ga terug naar de opslagplaats in Windows Verkenner en met de rechtermuisknop op **ChangeFeedFunction.sln** opnieuw openen in een nieuw Visual Studio-venster.  
 
-2. Navigeer naar het bestand **app. config** . Voeg binnen `<appSettings>` het blok het eind punt en de unieke **primaire sleutel** toe van uw Azure Cosmos DB account dat u eerder hebt opgehaald.  
+2. Navigeer naar het bestand **app. config** . Voeg binnen het `<appSettings>` blok het eind punt en de unieke **primaire sleutel** toe van uw Azure Cosmos DB account dat u eerder hebt opgehaald.  
 
 3. Voeg de **verzameling** en **database** namen. (Deze namen moeten **changefeedlabcollection** en **changefeedlabdatabase** , tenzij u ervoor kiest om de naam van uw anders.)
 
@@ -250,7 +250,7 @@ Power BI is een suite met hulpprogramma's voor business analytics voor het analy
  
 5. Selecteer **averagePrice** van **uw GEGEVENSSETS**en selecteer vervolgens **volgende**.  
 
-6. In de **Visualisatietype** Kies **gegroepeerde staafdiagram** uit de vervolgkeuzelijst. Onder **as**, actie toevoegen. Overslaan **legenda** zonder toe te voegen. Klik in de volgende sectie met de naam **waarde**, toevoegen **avg**. Selecteer **volgende**, klikt u vervolgens titel van de grafiek en selecteer **toepassen**. U ziet een nieuwe grafiek op uw dashboard.  
+6. In de **Visualisatietype** Kies **gegroepeerde staafdiagram** uit de vervolgkeuzelijst. Onder **as**, actie toevoegen. Overslaan **legenda** zonder toe te voegen. Voeg vervolgens in de volgende sectie de naam **Value**toe: **Gem**. Selecteer **volgende**, geef een titel op voor de grafiek en selecteer **Toep assen**. U ziet een nieuwe grafiek op uw dashboard.  
 
 7. Nu, als u meer metrische gegevens visualiseren wilt, u kunt teruggaan naar **streamjob1** en drie meer uitvoer te maken met de volgende velden.
 

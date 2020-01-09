@@ -1,5 +1,5 @@
 ---
-title: Aangepaste of bijgewerkte rollen maken voor Azure-resources met behulp van de REST API-Azure | Microsoft Docs
+title: Aangepaste rollen maken of bijwerken voor Azure-resources met behulp van de REST API-Azure | Microsoft Docs
 description: Meer informatie over het weer geven, maken, bijwerken of verwijderen van aangepaste rollen met op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources met behulp van de REST API.
 services: active-directory
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2e5dcd7593ba0992337396bc7c05cc30351644dc
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 474de8934ec7e27df601fe80809566a801e6af61
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702986"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452926"
 ---
 # <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>Aangepaste rollen maken of bijwerken voor Azure-resources met behulp van de REST API
 

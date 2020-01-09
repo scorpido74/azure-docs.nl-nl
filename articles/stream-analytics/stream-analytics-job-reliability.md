@@ -1,34 +1,33 @@
 ---
 title: Vermijd serviceonderbrekingen in Azure Stream Analytics-taken
 description: In dit artikel bevat instructies over het maken van uw Stream Analytics-taken bijwerken robuuste.
-services: stream-analytics
 author: jseb225
 ms.author: sidram
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: e38f8a923daa210d8aa5b56631e5f8157d4b3f70
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d2d21e081b274bd985c48dac91fff5203a6b5b8a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620869"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425994"
 ---
 # <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>Betrouwbaarheid van de Stream Analytics-taken te garanderen tijdens de service-updates
 
-Onderdeel van een volledig beheerde service die wordt is de mogelijkheid om nieuwe servicefunctionaliteit en verbeteringen in een hoog tempo te introduceren. Stream Analytics kan als gevolg hiervan, een service-update implementeren op basis van wekelijkse (of vaker) hebben. Ongeacht hoeveel tests worden uitgevoerd is er nog steeds een risico dat een bestaande, actieve taak is het vanwege de introductie van een bug verbroken mogelijk. Als u essentiële taken kritiek moeten taken, deze risico's worden vermeden. U verkleint dit risico door volgende Azure **[gekoppelde regio](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** model. 
+Onderdeel van een volledig beheerde service die wordt is de mogelijkheid om nieuwe servicefunctionaliteit en verbeteringen in een hoog tempo te introduceren. Stream Analytics kan als gevolg hiervan, een service-update implementeren op basis van wekelijkse (of vaker) hebben. Ongeacht hoeveel tests worden uitgevoerd is er nog steeds een risico dat een bestaande, actieve taak is het vanwege de introductie van een bug verbroken mogelijk. Als u kritieke taken uitvoert, moeten deze Risico's worden vermeden. U kunt dit risico verminderen door het **[gekoppelde regionale](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** model van Azure te volgen. 
 
 ## <a name="how-do-azure-paired-regions-address-this-concern"></a>Hoe dit probleem oplossen met Azure gekoppelde regio's?
 
-Stream Analytics-taken in gekoppelde regio's worden bijgewerkt in afzonderlijke batches wordt gegarandeerd. Er is als gevolg hiervan een voldoende tijdsverschil tussen de updates voor potentiële problemen identificeren en ze herstellen.
+Stream Analytics-taken in gekoppelde regio's worden bijgewerkt in afzonderlijke batches wordt gegarandeerd. Als gevolg hiervan is er voldoende tijds hiaat tussen de updates om mogelijke problemen te identificeren en op te lossen.
 
 _Met uitzondering van Centraal-India_ (waarvan de gekoppelde regio Zuid-India, heeft geen Stream Analytics aanwezigheid), de implementatie van een update voor Stream Analytics wordt niet uitgevoerd op hetzelfde moment in een set van gekoppelde regio's. Implementaties in meerdere regio's **in dezelfde groep** optreden **op hetzelfde moment**.
 
 In het artikel over **[beschikbaarheid en gekoppelde regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** is de meest actuele informatie over welke regio's zijn gekoppeld.
 
-Het verdient aanbeveling om te implementeren identieke taken voor beide gekoppelde regio's. Vervolgens moet u [bewaken van deze taken](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor) om te worden geïnformeerd wanneer er iets onverwachts gebeurt. Als een van deze ends van taken een [status mislukt](https://docs.microsoft.com/azure/stream-analytics/job-states) nadat de update van een Stream Analytics-service, u kunt contact opnemen met klantondersteuning om u te helpen bij het identificeren van de hoofdoorzaak te achterhalen. U moet ook een failover downstream consumenten aan de orde taakuitvoer.
+Het wordt aanbevolen om identieke taken te implementeren in twee gekoppelde regio's. U moet [deze taken vervolgens controleren](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor) om een melding te ontvangen wanneer er iets onverwachts plaatsvindt. Als een van deze taken wordt beëindigd na een [mislukte status](https://docs.microsoft.com/azure/stream-analytics/job-states) na een update van een stream Analytics-service, kunt u contact opnemen met de klant ondersteuning om de hoofd oorzaak te achterhalen. U moet ook een failover uitvoeren voor alle downstream-gebruikers naar de goede taak uitvoer.
 
 ## <a name="next-steps"></a>Volgende stappen
 

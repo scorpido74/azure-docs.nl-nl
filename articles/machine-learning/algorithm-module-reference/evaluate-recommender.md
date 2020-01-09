@@ -1,7 +1,7 @@
 ---
 title: 'Aanbeveling evalueren: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module voor het evalueren van aanbevolen procedures in de Azure Machine Learning-service om de nauw keurigheid van de voor spellingen van het aanbevolen model te evalueren.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module aanbevolen procedures evalueren in Azure Machine Learning om de nauw keurigheid van de voor spellingen van het aanbevolen model te evalueren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 9a80fce04aa939895d1dc9572714046d9203bad7
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717170"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428538"
 ---
-# <a name="evaluate-recommender"></a>Aanbeveling evalueren
+# <a name="evaluate-recommender"></a>Aanbevelingsfunctie voor evaluatie
 
 In dit artikel wordt beschreven hoe u de module aanbevolen versie evalueren in Azure Machine Learning Designer (preview) gebruikt. Het doel is om de nauw keurigheid te meten van voor spellingen die een aanbevelings model heeft gedaan. Met deze module kunt u verschillende soorten aanbevelingen evalueren:  
   
@@ -25,8 +25,8 @@ In dit artikel wordt beschreven hoe u de module aanbevolen versie evalueren in A
   
 Wanneer u voor spellingen maakt met behulp van een aanbevelings model, worden er enigszins verschillende resultaten geretourneerd voor elk van deze ondersteunde Voorspellings typen. In de module beoordeling aanbevelen wordt het type voor spelling afgeleid van de kolom indeling van de Score gegevensset. De gescoorde gegevensset kan bijvoorbeeld het volgende bevatten:
 
-- gebruikers-item-beoordeling drieën
-- gebruikers en de aanbevolen items
+- Gebruikers-item-beoordeling drieën
+- Gebruikers en de aanbevolen items
 
 De module past ook de juiste prestatie gegevens toe, op basis van het type voor spellingen dat wordt gemaakt. 
 
@@ -90,4 +90,4 @@ Omdat het niet mogelijk is om de werkelijke "vloer waarheid" te weten voor de aa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor de Azure machine learning-service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

@@ -7,16 +7,16 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/18/2019
 ms.author: lbosq
-ms.openlocfilehash: 1f46eb1995e2e7cb098098ebd22eedbd194dc6a6
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 9151b54d7fa0b64a465aa8384cb4bfdb8e72c482
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310241"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500002"
 ---
-# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Inleiding tot Azure Cosmos DB: Gremlin-API
+# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Inleiding tot Azure Cosmos DB: Gremlin API
 
-[Azure Cosmos DB is de](introduction.md)wereld wijd gedistribueerde, multi-model database service van micro soft voor essentiële toepassingen.  Het is een Data Base met meerdere modellen die ondersteuning biedt voor document-, sleutel waarde-, grafiek-en kolom gegevens modellen. De Azure Cosmos DB Gremlin-API wordt gebruikt om grafiek gegevens op te slaan en te gebruiken in een volledig beheerde database service die is ontworpen voor elke schaal.  
+[Azure Cosmos DB](introduction.md) is de wereld wijd gedistribueerde, multi-model database service van micro soft voor essentiële toepassingen. Het is een Data Base met meerdere modellen die ondersteuning biedt voor document-, sleutel waarde-, grafiek-en kolom gegevens modellen. De Azure Cosmos DB Gremlin-API wordt gebruikt om grafiek gegevens op te slaan en te gebruiken in een volledig beheerde database service die is ontworpen voor elke schaal.  
 
 ![Azure Cosmos DB-grafiekarchitectuur](./media/graph-introduction/cosmosdb-graph-architecture.png)
 
@@ -32,7 +32,7 @@ Hieronder vindt u de onderscheidende functies die Azure Cosmos DB Gremlin API-aa
 
 * **Elastisch schaal bare door Voer en opslag**
 
-  Grafieken moeten in de praktijk hoger worden geschaald dan de capaciteit van een enkele server. Azure Cosmos DB ondersteunt horizon taal schaal bare grafische data bases die een vrijwel onbeperkte grootte kunnen hebben met betrekking tot opslag en ingerichte door voer. Naarmate de schaal van de grafiek database groeit, worden de gegevens automatisch gedistribueerd met behulp van [Graph](https://docs.microsoft.com/azure/cosmos-db/graph-partitioning)-partitionering.
+  Grafieken moeten in de praktijk hoger worden geschaald dan de capaciteit van een enkele server. Azure Cosmos DB ondersteunt horizon taal schaal bare grafische data bases die een vrijwel onbeperkte grootte kunnen hebben met betrekking tot opslag en ingerichte door voer. Naarmate de schaal van de grafiek database groeit, worden de gegevens automatisch gedistribueerd met behulp van [Graph-partitionering](https://docs.microsoft.com/azure/cosmos-db/graph-partitioning).
 
 * **Replicatie met meerdere regio's**
 
@@ -56,7 +56,7 @@ Hieronder vindt u de onderscheidende functies die Azure Cosmos DB Gremlin API-aa
 
 * **Compatibiliteit met Apache TinkerPop**
 
-  Azure Cosmos DB ondersteunt de [Open Source Apache TinkerPop-standaard](http://tinkerpop.apache.org/). De Tinkerpop-standaard heeft een ruim ecosysteem van toepassingen en bibliotheken die eenvoudig kunnen worden geïntegreerd met de Gremlin-API van Azure Cosmos DB. 
+  Azure Cosmos DB ondersteunt de [Open Source Apache TinkerPop-standaard](https://tinkerpop.apache.org/). De Tinkerpop-standaard heeft een ruim ecosysteem van toepassingen en bibliotheken die eenvoudig kunnen worden geïntegreerd met de Gremlin-API van Azure Cosmos DB. 
 
 * **Instel bare-consistentie niveaus**
 
@@ -105,17 +105,17 @@ Laten we een voorbeeldgrafiek gebruiken om te zien hoe query’s kunnen worden u
 
 Deze grafiek heeft de volgende *vertex* typen (' label ') in Gremlin):
 
-- **Personen**: In de grafiek komen drie personen voor: Robin, Thomas en Ben
-- **Interesses**: In dit voorbeeld is hun interesse voetbal
-- **Apparaten**: De apparaten die de personen gebruiken
-- **Besturings systemen**: De besturingssystemen op de apparaten
+- **Personen**: de grafiek heeft drie personen, Robin, Thomas en ben
+- **Interesses**: in dit voor beeld is het spelletje van voetbal
+- **Apparaten**: de apparaten die mensen gebruiken
+- **Besturings systemen**: de besturings systemen waarop de apparaten worden uitgevoerd
 
 We vertegenwoordigen de relaties tussen deze entiteiten met behulp van de volgende *rand* typen/Labels:
 
-- **Weet**: Bijvoorbeeld 'Thomas kent Robin'
-- **Geïnteresseerd**: Geeft de interesses weer van de personen in de grafiek, bijvoorbeeld 'Ben is geïnteresseerd in voetbal'
-- **RunsOS**: Op de laptop wordt het Windows-besturingssysteem uitgevoerd
-- **Gebruikt**: Geeft aan welk apparaat een persoon gebruikt. Robin gebruikt bijvoorbeeld een Motorola-telefoon met serienummer 77
+- **Weet**: bijvoorbeeld ' Thomas weet '
+- **Geïnteresseerd**: voor de weer gave van de interesses van de mensen in onze grafiek, bijvoorbeeld ' ben is geïnteresseerd in voetbal '
+- **RunsOS**: laptop voert het Windows-besturings systeem uit
+- **Gebruikt**: om aan te geven welk apparaat een persoon gebruikt. Robin gebruikt bijvoorbeeld een Motorola-telefoon met serienummer 77
 
 We gaan enkele bewerkingen uitvoeren in deze grafiek met behulp van de [Gremlin-console](https://tinkerpop.apache.org/docs/3.3.2/reference/#gremlin-console). U kunt deze bewerkingen ook uitvoeren met behulp van Gremlin-stuurprogramma’s op een platform naar keuze (Java, Node.js, Python of NET).  Voordat we kijken wat wordt ondersteund in Azure Cosmos DB, bekijken we een aantal voorbeelden om vertrouwd te raken met de syntaxis.
 

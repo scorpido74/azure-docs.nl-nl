@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 12/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cac92da744b3d5b7aeaa325c7cc564a3d7e2abdd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 342ec46aabafec975d780aa03fe75d7e3cf50497
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74380811"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424974"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Wat zijn toegangs beheer in Azure Active Directory voorwaardelijke toegang?
 
@@ -55,7 +55,7 @@ Met besturings elementen voor Grant kunt u de toegang geheel blok keren of toega
 
 U kunt dit besturings element gebruiken om multi-factor Authentication te vereisen voor toegang tot de opgegeven Cloud-app. Dit besturings element ondersteunt de volgende multi-factor-providers:
 
-- Azure Multi-Factor Authentication
+- Verificatie op basis van meerdere factoren van Azure
 - Een on-premises multi-factor Authentication-provider, gecombineerd met Active Directory Federation Services (AD FS).
 
 Het gebruik van multi-factor Authentication helpt resources te beschermen tegen toegang door een niet-geautoriseerde gebruiker die mogelijk toegang heeft verkregen tot de primaire referenties van een geldige gebruiker.
@@ -76,7 +76,7 @@ Zie voor meer informatie [beheerde apparaten vereisen voor toegang tot Cloud-app
 
 ### <a name="hybrid-azure-ad-joined-device"></a>Hybride Azure AD-apparaat toegevoegd
 
-Het vereisen van een hybride Azure AD-apparaat dat is gekoppeld, is een andere optie die u nodig hebt voor het configureren van op apparaten gebaseerd beleid voor voorwaardelijke toegang. Deze vereiste verwijst naar Windows-Desk tops, laptops en zakelijke tablets die deel uitmaken van een on-premises Active Directory. Als deze optie is geselecteerd, verleent het beleid voor voorwaardelijke toegang toegang tot toegangs pogingen die zijn gemaakt met apparaten die zijn gekoppeld aan uw on-premises Active Directory en uw Azure Active Directory.  
+Het vereisen van een hybride Azure AD-apparaat dat is gekoppeld, is een andere optie die u nodig hebt voor het configureren van op apparaten gebaseerd beleid voor voorwaardelijke toegang. Deze vereiste verwijst naar Windows-Desk tops, laptops en zakelijke tablets die deel uitmaken van een on-premises Active Directory. Als deze optie is geselecteerd, verleent het beleid voor voorwaardelijke toegang toegang tot toegangs pogingen die zijn gemaakt met apparaten die zijn gekoppeld aan uw on-premises Active Directory en uw Azure Active Directory. Mac-apparaten bieden geen ondersteuning voor hybride Azure AD-deelname.
 
 Zie [Azure Active Directory op apparaat gebaseerd beleid voor voorwaardelijke toegang instellen](require-managed-devices.md)voor meer informatie.
 
@@ -114,7 +114,7 @@ Providers die momenteel een compatibele service aanbieden, zijn onder andere:
 - [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
 - [GSMA](https://mobileconnect.io/azure/)
 - [Ping-identiteit](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
-- RSA
+- [RSA](https://community.rsa.com/docs/DOC-81278)
 - [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
 - [Silverfort](https://www.silverfort.io/company/using-silverfort-mfa-with-azure-active-directory/)
 - [Symantec VIP](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
@@ -161,7 +161,7 @@ Sessie besturings elementen maken beperkte ervaring in een Cloud-app mogelijk. D
 
 U kunt dit besturings element gebruiken om te vereisen dat Azure AD apparaatgegevens doorgeeft aan de geselecteerde Cloud-apps. De apparaatgegevens maken het mogelijk om te bepalen of een verbinding tot stand wordt gebracht vanaf een apparaat dat compatibel is met of een domein. Dit besturings element ondersteunt alleen share point online en Exchange Online als geselecteerde Cloud-apps. Als deze functie is ingeschakeld, gebruikt de Cloud-app de apparaatgegevens om gebruikers, afhankelijk van de status van het apparaat, te voorzien van een beperkte of volledige ervaring.
 
-Raadpleeg voor meer informatie:
+Voor meer informatie zie:
 
 - [Beperkte toegang inschakelen met share point online](https://aka.ms/spolimitedaccessdocs)
 - [Beperkte toegang inschakelen met Exchange Online](https://aka.ms/owalimitedaccess)

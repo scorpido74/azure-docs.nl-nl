@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: 3063767c73f4639e667d5f64b0563f1da396cfbf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3a42d7da21cfb2e3066fbdd81b27c82155d8456f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927309"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439913"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Bulksgewijs kopiëren van een Data Base met een controle tabel
 
@@ -33,12 +33,16 @@ De sjabloon bevat drie activiteiten:
 - **Foreach** haalt de partitie lijst op uit de opzoek activiteit en herhaalt elke partitie met de Kopieer activiteit.
 - **Copy** kopieert elke partitie uit het archief van de bron database naar het doel archief.
 
-De sjabloon definieert vijf para meters:
+De sjabloon definieert de volgende para meters:
 - *Control_Table_Name* is uw externe controle tabel, waarin de partitie lijst voor de bron database wordt opgeslagen.
 - *Control_Table_Schema_PartitionID* is de naam van de kolom naam in de tabel met externe controle waarin elke partitie-id wordt opgeslagen. Zorg ervoor dat de partitie-ID uniek is voor elke partitie in de bron database.
 - *Control_Table_Schema_SourceTableName* is uw externe beheer tabel waarin elke tabel naam wordt opgeslagen vanuit de bron database.
 - *Control_Table_Schema_FilterQuery* is de naam van de kolom in de tabel met externe controle waarin de filter query wordt opgeslagen om de gegevens op te halen uit elke partitie in de bron database. Als u bijvoorbeeld de gegevens per jaar hebt gepartitioneerd, kan de query die in elke rij is opgeslagen, vergelijkbaar zijn met ' Select * from data source where LastModifytime > = ' ' 2015-01-01 00:00:00 ' ' en LastModifytime < = ' ' 2015-12-31 23:59:59.999 ' '.
-- *Data_Destination_Folder_Path* is het pad naar de locatie waar de gegevens naar uw doel archief worden gekopieerd. Deze para meter wordt alleen weer gegeven als de bestemming die u kiest, is opgeslagen op basis van bestanden. Als u SQL Data Warehouse als doel archief kiest, is deze para meter niet vereist. Maar de tabel namen en het schema in SQL Data Warehouse moeten gelijk zijn aan die in de bron database.
+- *Data_Destination_Folder_Path* is het pad naar de locatie waar de gegevens naar uw doel archief worden gekopieerd (van toepassing als de bestemming die u kiest, is "File System" of "Azure data Lake Storage gen1"). 
+- *Data_Destination_Container* is het pad naar de hoofdmap waarnaar de gegevens worden gekopieerd in uw doel archief. 
+- *Data_Destination_Directory* het mappad is in de hoofdmap waar de gegevens naar het doel archief worden gekopieerd. 
+
+De laatste drie para meters, waarmee het pad in uw doel archief wordt gedefinieerd, zijn alleen zichtbaar als de bestemming die u kiest, opslag ruimte op basis van bestanden is. Als u ' Azure Synapse Analytics (voorheen SQL DW) ' als doel archief kiest, zijn deze para meters niet vereist. Maar de tabel namen en het schema in SQL Data Warehouse moeten gelijk zijn aan die in de bron database.
 
 ## <a name="how-to-use-this-solution-template"></a>Deze oplossings sjabloon gebruiken
 
@@ -68,7 +72,7 @@ De sjabloon definieert vijf para meters:
 
 3. Maak een **nieuwe** verbinding met de bron database waaruit u gegevens wilt kopiëren.
 
-     ![Een nieuwe verbinding maken met de bron database](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
+    ![Een nieuwe verbinding maken met de bron database](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
     
 4. Maak een **nieuwe** verbinding met de doel gegevens opslag waarnaar u de gegevens wilt kopiëren.
 
@@ -76,8 +80,6 @@ De sjabloon definieert vijf para meters:
 
 5. Selecteer **Deze sjabloon gebruiken**.
 
-    ![Deze sjabloon gebruiken](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable5.png)
-    
 6. U ziet de pijp lijn, zoals wordt weer gegeven in het volgende voor beeld:
 
     ![De pijp lijn controleren](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
@@ -90,7 +92,7 @@ De sjabloon definieert vijf para meters:
 
     ![Bekijk het resultaat](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. Beschrijving Als u SQL Data Warehouse als de gegevens bestemming hebt gekozen, moet u een verbinding met Azure Blob Storage voor fase ring opgeven, zoals wordt vereist door SQL Data Warehouse poly base. Zorg ervoor dat de container in Blob Storage al is gemaakt.
+9. Beschrijving Als u de gegevens bestemming ' Azure Synapse Analytics (voorheen SQL DW) ' hebt gekozen, moet u een verbinding met Azure Blob Storage voor fase ring invoeren, zoals vereist door SQL Data Warehouse poly base. Met de sjabloon wordt automatisch een pad naar een container gegenereerd voor de Blob-opslag. Controleer of de container is gemaakt na de uitvoering van de pijp lijn.
     
     ![Poly base-instelling](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

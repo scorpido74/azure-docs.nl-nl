@@ -1,7 +1,7 @@
 ---
 title: 'Procedure: validaties toevoegen aan aangepaste opdracht parameters (preview-versie)'
 titleSuffix: Azure Cognitive Services
-description: In dit artikel kunt u validaties toevoegen aan aangepaste opdracht parameters
+description: In dit artikel wordt uitgelegd hoe u validaties kunt toevoegen aan een para meter in aangepaste opdrachten.
 services: cognitive-services
 author: donkim
 manager: yetian
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 64e092405686caca7baeaf58f19d577a3f80e169
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c89c388f919ca95a331d1d406f5b1776c127ebad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506932"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446919"
 ---
 # <a name="how-to-add-validations-to-custom-command-parameters-preview"></a>Procedure: validaties toevoegen aan aangepaste opdracht parameters (preview-versie)
 
@@ -41,12 +41,12 @@ Voor het demonstreren van validaties kunt u een nieuwe opdracht maken waarmee de
 
    | Instelling           | Voorgestelde waarde                                          | Beschrijving                                                                                      |
    | ----------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-   | Naam              | Temperatuur                                              | Een beschrijvende naam voor de opdracht parameter                                                    |
-   | Vereist          | true                                                     | Selectie vakje dat aangeeft of een waarde voor deze para meter vereist is voordat de opdracht wordt voltooid |
-   | Antwoord sjabloon | "Welke Tempe ratuur wilt u graag?"                       | Een prompt om te vragen naar de waarde van deze para meter als deze niet bekend is                              |
+   | Name              | Temperatuur                                              | Een beschrijvende naam voor de opdracht parameter                                                    |
+   | Verplicht          | waar                                                     | Selectie vakje dat aangeeft of een waarde voor deze para meter vereist is voordat de opdracht wordt voltooid |
+   | Antwoord sjabloon | "-Welke Tempe ratuur wilt u graag?"                     | Een prompt om te vragen naar de waarde van deze para meter als deze niet bekend is                              |
    | Type              | Aantal                                                   | Het type para meter, zoals getal, teken reeks of datum/tijd                                      |
-   | Validatie        | Minimum waarde: 60, maximum waarde: 80                             | Voor nummer parameters, het toegestane bereik van waarden voor de para meter                              |
-   | Antwoord sjabloon | ' Sorry, ik kan alleen tussen 60 en 80 graden instellen '        | Vragen om een bijgewerkte waarde te vragen als de validatie is mislukt                                       |
+   | Validatie        | Minimum waarde: 60, maximum waarde: 80                             | Voor nummer parameters, het toegestane bereik van waarden voor de para meter                             |
+   | Antwoord sjabloon | "-Sorry, ik kan alleen tussen 60 en 80 graden instellen"      | Vragen om een bijgewerkte waarde te vragen als de validatie is mislukt                                       |
 
 1. Enkele voorbeeld zinnen toevoegen
 
@@ -59,16 +59,16 @@ Voor het demonstreren van validaties kunt u een nieuwe opdracht maken waarmee de
 
 1. Een voltooiings regel toevoegen om het resultaat te bevestigen
 
-   | Instelling    | Voorgestelde waarde                                         | Beschrijving                                        |
-   | ---------- | ------------------------------------------------------- | -------------------------------------------------- |
-   | Regelnaam  | Bevestigings bericht                                    | Een naam die het doel van de regel beschrijft          |
-   | Voorwaarden | Vereiste para meter-Tempe ratuur                        | Voor waarden die bepalen wanneer de regel kan worden uitgevoerd    |
-   | Acties    | SpeechResponse-"OK, instellen op {Tempe ratuur} graden" | De actie die moet worden uitgevoerd wanneer de regel voorwaarde waar is |
+   | Instelling    | Voorgestelde waarde                                           | Beschrijving                                        |
+   | ---------- | --------------------------------------------------------- | -------------------------------------------------- |
+   | Regelnaam  | Bevestigings bericht                                      | Een naam die het doel van de regel beschrijft          |
+   | Voorwaarden | Vereiste para meter-Tempe ratuur                          | Voor waarden die bepalen wanneer de regel kan worden uitgevoerd    |
+   | Acties    | SpeechResponse-"-OK, instellen op {Tempe ratuur} graden" | De actie die moet worden uitgevoerd wanneer de regel voorwaarde waar is |
 
 > [!TIP]
 > In dit voor beeld wordt een spraak antwoord gebruikt om het resultaat te bevestigen. Voor voor beelden van het volt ooien van de opdracht met een client actie raadpleegt [u: opdrachten uitvoeren op de client met de Speech-SDK (preview)](./how-to-custom-speech-commands-fulfill-sdk.md)
 
-## <a name="try-it-out"></a>Uitproberen
+## <a name="try-it-out"></a>Probeer het
 
 Selecteer het deel venster testen en probeer enkele interacties.
 
@@ -79,3 +79,8 @@ Selecteer het deel venster testen en probeer enkele interacties.
 - Uitvoer: ' Sorry, ik kan alleen tussen 60 en 80 graden instellen '
 - Invoer: Maak in plaats daarvan 72 graden
 - Uitvoer: "OK, instellen op 72 graden"
+
+## <a name="next-steps"></a>Volgende stappen
+
+> [!div class="nextstepaction"]
+> [Procedure: een bevestiging toevoegen aan een aangepaste opdracht (preview-versie)](./how-to-custom-speech-commands-confirmations.md)

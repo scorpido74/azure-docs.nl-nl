@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 1b619ca7bb3b095a5707077beb3e0750dee1c2b7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4f7ad05402745f17ff60dbaab8d736acc8f92196
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923485"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439393"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Incrementeel gegevens kopiëren van Azure SQL Database naar Azure Blob Storage met behulp van technologie voor bijhouden van wijzigingen 
 
@@ -26,7 +26,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
 > * Voorbereiden van de bron-gegevensopslag
-> * Een gegevensfactory maakt.
+> * Een gegevensfactory maken.
 > * Maak gekoppelde services. 
 > * Maken van bron-, sink- en wijzigingsgegevenssets.
 > * Maken, uitvoeren en bewaken van de pijplijn met de volledige kopie
@@ -68,8 +68,8 @@ In deze zelfstudie maakt u twee pijplijnen die de volgende twee bewerkingen uitv
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
-* **Azure SQL-database**. U gebruikt de database als de **brongegevensopslag**. Als u geen Azure SQL-database hebt, raadpleegt u het artikel [Een Azure SQL-database maken](../sql-database/sql-database-get-started-portal.md) voor de stappen voor het maken van een account.
-* **Een Azure Storage-account**. U gebruikt de Blob-opslag als de **sinkgegevensopslag**. Als u geen Azure-opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md) om een account te maken. Maak een container met de naam **adftutorial**. 
+* **Azure SQL-database**. U gebruikt de database als de **brongegevensopslag**. Als u geen Azure SQL-database hebt, raadpleegt u het artikel [Een Azure SQL-database maken](../sql-database/sql-database-get-started-portal.md) om een database te maken.
+* **Azure Storage-account**. U gebruikt de Blob-opslag als de **sinkgegevensopslag**. Als u geen Azure-opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md) om een account te maken. Maak een container met de naam **adftutorial**. 
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Een gegevensbrontabel maken in de Azure SQL-database
 1. Start **SQL Server Management Studio**, en maak verbinding met uw Azure SQL-server. 
@@ -149,14 +149,14 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 Installeer de nieuwste Azure PowerShell-modules met de instructies in [Azure PowerShell installeren en configureren](/powershell/azure/install-Az-ps).
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
 1. Selecteer in het menu links de optie **een resource maken** > **gegevens en analyses** > **Data Factory**: 
    
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
-2. Voer op de pagina **Nieuwe gegevensfactory** **ADFTutorialDataFactory** in als de **naam**. 
+2. Voer op de blade **New data factory** **ADFTutorialDataFactory** in bij **Name**. 
       
      ![De pagina Nieuwe data factory](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-azure-data-factory.png)
  
@@ -169,7 +169,7 @@ Installeer de nieuwste Azure PowerShell-modules met de instructies in [Azure Pow
       - Selecteer **Bestaande gebruiken** en selecteer een bestaande resourcegroep in de vervolgkeuzelijst. 
       - Selecteer **Nieuwe maken** en voer de naam van een resourcegroep in.   
          
-        Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/resource-group-overview.md) voor meer informatie.  
+        Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.  
 4. Selecteer **V2 (Preview)** als de **versie**.
 5. Selecteer de **locatie** voor de gegevensfactory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
 6. Selecteer **Vastmaken aan dashboard**.     
@@ -180,15 +180,15 @@ Installeer de nieuwste Azure PowerShell-modules met de instructies in [Azure Pow
 9. Na het aanmaken ziet u de pagina **Data Factory** zoals weergegeven in de afbeelding.
    
    ![Startpagina van de gegevensfactory](./media/tutorial-incremental-copy-change-tracking-feature-portal/data-factory-home-page.png)
-10. Klik op **Author & Monitor** om de gebruikersinterface (UI) van Data Factory op een afzonderlijk tabblad te openen.
-11. Ga op de pagina **aan de slag** naar het tabblad **Bewerken** in het linkervenster, zoals wordt weergegeven in de volgende afbeelding: 
+10. Klik op de tegel **Author & Monitor** om de gebruikersinterface (UI) van Azure Data Factory te openen in een afzonderlijk tabblad.
+11. Ga op de pagina **get started** naar het tabblad **Edit** in het linkervenster, zoals wordt weergegeven in de volgende afbeelding: 
 
     ![Knop Pijplijn maken](./media/tutorial-incremental-copy-change-tracking-feature-portal/get-started-page.png)
 
 ## <a name="create-linked-services"></a>Gekoppelde services maken
 U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze sectie maakt u gekoppelde services in het Azure Storage-account en de Azure SQL-database. 
 
-### <a name="create-azure-storage-linked-service"></a>Maak een gekoppelde Azure Storage-service.
+### <a name="create-azure-storage-linked-service"></a>Een gekoppelde Azure Storage-service maakt.
 Tijdens deze stap koppelt u uw Azure Storage-account aan de data factory.
 
 1. Klik op **Connections** en klik op **+ New**.
@@ -199,8 +199,8 @@ Tijdens deze stap koppelt u uw Azure Storage-account aan de data factory.
    ![Azure Blob Storage selecteren](./media/tutorial-incremental-copy-change-tracking-feature-portal/select-azure-storage.png)
 3. Voer in het venster **Nieuwe gekoppelde service** de volgende stappen uit: 
 
-    1. Voer **AzureStorageLinkedService** in als **Naam**. 
-    2. Selecteer uw Azure Storage-account bij **Storage account name**. 
+    1. Voer **AzureStorageLinkedService** in bij **Name**. 
+    2. Selecteer uw Azure Storage-account als **naam van het opslagaccount**. 
     3. Klik op **Opslaan**. 
     
    ![Instellingen Azure Storage-account](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-storage-linked-service-settings.png)
@@ -240,7 +240,7 @@ In deze stap maakt u een gegevensset die de brongegevens vertegenwoordigt.
    ![Naam van de brongegevensset](./media/tutorial-incremental-copy-change-tracking-feature-portal/source-dataset-name.png)    
 4. Ga naar het tabblad **Verbinding** en voer de volgende stappen uit: 
     
-    1. Selecteer **AzureSqlDatabaseLinkedService** als **Gekoppelde service**. 
+    1. Selecteer **AzureSqlDatabaseLinkedService** bij **Linked service**. 
     2. Selecteer **[dbo].[data_source_table]** bij **Table**. 
 
    ![Bronverbinding](./media/tutorial-incremental-copy-change-tracking-feature-portal/source-dataset-connection.png)
@@ -273,7 +273,7 @@ In deze stap maakt u een gegevensset voor het opslaan van een bovengrenswaarde. 
 3. Er wordt een nieuw tabblad weergegeven voor het configureren van de gegevensset. U ziet ook de gegevensset in de structuurweergave. In het venster **Properties** wijzigt u de naam van de gegevensset in **ChangeTrackingDataset**.
 4. Ga naar het tabblad **Verbinding** en voer de volgende stappen uit: 
     
-    1. Selecteer **AzureSqlDatabaseLinkedService** als **Gekoppelde service**. 
+    1. Selecteer **AzureSqlDatabaseLinkedService** bij **Linked service**. 
     2. Selecteer **[dbo].[table_store_ChangeTracking_version]** bij **Table**. 
 
 ## <a name="create-a-pipeline-for-the-full-copy"></a>Een pijplijn maken voor de volledige kopie
@@ -300,7 +300,7 @@ In deze stap maakt u een pijplijn met een kopieeractiviteit waarmee de volledige
 7. Als u entiteiten (gekoppelde services, gegevenssets en pijplijnen) wilt publiceren, klikt u op **Publish**. Wacht totdat de publicatie is uitgevoerd. 
 
     ![De knop Publiceren](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button.png)
-8. Wacht tot u het bericht **Gepubliceerd** ziet. 
+8. Wacht tot u het bericht **Publiceren gelukt** ziet. 
 
     ![Het publiceren is voltooid](./media/tutorial-incremental-copy-change-tracking-feature-portal/publishing-succeeded.png)
 9. U kunt ook meldingen bekijken door te klikken op de knop **Show Notifications** aan de linkerkant. Sluit het meldingenvenster door op **X** te klikken.
@@ -414,7 +414,7 @@ In deze stap maakt u een pijplijn met de volgende activiteiten en laat deze peri
     2. Selecteer **Importparameter**. 
     3. In de sectie **Opgeslagen-procedureparameters** geeft u de volgende waarden voor de parameters op: 
 
-        | Naam | Type | Waarde | 
+        | Name | Type | Waarde | 
         | ---- | ---- | ----- | 
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
         | TableName | Tekenreeks | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 

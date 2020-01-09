@@ -1,25 +1,16 @@
 ---
-title: Fouten simuleren in azure Service Fabric-apps | Microsoft Docs
-description: Hoe u uw services kunt beveiligen tegen probleemloze en niet-uitgestelde fouten.
-services: service-fabric
-documentationcenter: .net
+title: Fouten simuleren in azure Service Fabric-apps
+description: Meer informatie over hoe u uw Azure Service Fabric-Services kunt beveiligen tegen probleemloze en niet-uitgestelde fouten.
 author: anmolah
-manager: chackdan
-editor: ''
-ms.assetid: 44af01f0-ed73-4c31-8ac0-d9d65b4ad2d6
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: bbb89b66231c949627c7ffbf99ebe9b5dd379ca2
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: d3d9f6478336c59adb875bf21438d5ffa457b1d4
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348719"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645987"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Storingen simuleren tijdens servicewerkbelastingen
 De test scenario's in azure Service Fabric ontwikkel aars in staat stellen geen zorgen te maken over afzonderlijke storingen. Er zijn echter scenario's, waarbij een expliciete interleaving van de werk belasting en storingen van de client mogelijk nodig is. De interleaving van de werk belasting en fouten van de client zorgt ervoor dat de service daad werkelijk een actie uitvoert wanneer er een fout optreedt. Op basis van het niveau van de controle die de test baarheid biedt, kunnen deze nauw keurige punten van de werk belasting worden uitgevoerd. Deze inductie van fouten in verschillende statussen in de toepassing kan fouten opsporen en de kwaliteit verbeteren.
@@ -27,12 +18,12 @@ De test scenario's in azure Service Fabric ontwikkel aars in staat stellen geen 
 ## <a name="sample-custom-scenario"></a>Voor beeld van aangepast scenario
 In deze test wordt een scenario weer gegeven dat de zakelijke workload interleaveert met gepaste en niet- [respijt fouten](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). De fouten moeten in het midden van de service bewerkingen worden veroorzaakt of worden berekend voor de beste resultaten.
 
-Laten we een voor beeld bekijken van een service die vier workloads beschikbaar maakt: A, B, C en D. Elk komt overeen met een set werk stromen en kan reken-, opslag-of mix-bewerkingen zijn. In het geval van eenvoud zullen we de workloads in ons voor beeld samen stellen. De verschillende fouten die in dit voor beeld worden uitgevoerd, zijn:
+We gaan een voor beeld bekijken van een service die vier werk belastingen beschikbaar maakt: A, B, C en D. elk komt overeen met een set werk stromen en kan worden berekend, opgeslagen of gecombineerd. In het geval van eenvoud zullen we de workloads in ons voor beeld samen stellen. De verschillende fouten die in dit voor beeld worden uitgevoerd, zijn:
 
-* RestartNode: Er is een fout opgetreden bij het opnieuw opstarten van een computer.
-* RestartDeployedCodePackage: Er is een niet-verwerkte fout opgetreden tijdens het simuleren van het service-hostproces
-* RemoveReplica: Fout tijdens het simuleren van het verwijderen van de replica.
-* MovePrimary Verkeerde fout bij het simuleren van replica verplaatsingen die zijn geactiveerd door de Service Fabric load balancer.
+* RestartNode: er is een niet-verwerkings fout opgetreden tijdens het simuleren van een computer opnieuw opstarten.
+* RestartDeployedCodePackage: er is een niet-verwerkings fout opgetreden tijdens het simuleren van het service-hostproces.
+* RemoveReplica: er is een fout opgetreden tijdens het simuleren van het verwijderen van de replica.
+* MovePrimary: er is een probleemloze fout opgetreden bij het simuleren van replica verplaatsingen die zijn geactiveerd door de Service Fabric load balancer.
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.

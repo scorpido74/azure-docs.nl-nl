@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: gegevens afwijkingen detecteren met behulp van de Anomaliey detector-client bibliotheek voor python'
 titleSuffix: Azure Cognitive Services
-description: Gebruik de anomalie detectie-API om afwijkingen in uw gegevens reeksen op te sporen als een batch of gegevens stromen.
+description: In deze Quick start ziet u hoe u de anomalie detectie-API kunt gebruiken om afwijkingen in uw gegevens reeksen op te sporen als een batch of gegevens stromen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: f58f4f9c89e2c0bfb7d9eca6d39dab3f25b21990
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 0493f9e4b45d8d4804d1933bb923d3483b87005e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483341"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448981"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-python"></a>Snelstartgids: anomalie detectie client bibliotheek voor python
 
@@ -67,7 +67,7 @@ Tijdreeks gegevens worden verzonden als een reeks [punten](https://docs.microsof
 
 De afwijkende detector respons is een [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) -of [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) -object, afhankelijk van de gebruikte methode. 
 
-## <a name="code-examples"></a>Code voorbeelden 
+## <a name="code-examples"></a>Codevoorbeelden 
 
 Deze code fragmenten laten zien hoe u het volgende kunt doen met de anomalie detectie-client bibliotheek voor python:
 

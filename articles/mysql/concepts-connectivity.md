@@ -7,12 +7,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: b598fafbbfce9a2c0a824dd6530d07a5933a2873
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 92e213a87796247128e7e3810db99fde8525e12a
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765203"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659216"
 ---
 # <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>Tijdelijke fouten afhandelen en efficiënt verbinding maken met Azure Database for MySQL
 
@@ -52,7 +52,7 @@ Database verbindingen zijn een beperkte bron, waardoor het effectief gebruik van
 
 Het beheren van database verbindingen kan een grote invloed hebben op de prestaties van de toepassing als geheel. Het doel is om de prestaties van uw toepassing te optimaliseren door het aantal keren dat verbindingen tot stand worden gebracht en de tijd voor het tot stand brengen van verbindingen in sleutel code paden te verminderen. We raden u ten zeerste aan om verbinding te maken met de pooling van database verbindingen of permanente verbindingen met Azure Database for MySQL. Met database verbindings groepen wordt het maken, beheren en toewijzen van database verbindingen afgehandeld. Wanneer een programma een database verbinding aanvraagt, wordt er prioriteit gegeven aan de toewijzing van bestaande niet-actieve database verbindingen, in plaats van het maken van een nieuwe verbinding. Nadat het programma is voltooid met behulp van de database verbinding, wordt de verbinding hersteld ter voor bereiding op verdere gebruik, in plaats van gewoon te worden afgesloten.
 
-Voor een betere afbeelding biedt dit artikel [een stukje voorbeeld code](./sample-scripts-java-connection-pooling.md) die Java als voor beeld gebruikt. Zie [apache common dbcp](http://commons.apache.org/proper/commons-dbcp/)(Engelstalig) voor meer informatie.
+Voor een betere afbeelding biedt dit artikel [een stukje voorbeeld code](./sample-scripts-java-connection-pooling.md) die Java als voor beeld gebruikt. Zie [apache common dbcp](https://commons.apache.org/proper/commons-dbcp/)(Engelstalig) voor meer informatie.
 
 > [!NOTE]
 > De server configureert een time-outmechanisme om een verbinding te sluiten waarvan de status niet-actief is geweest gedurende enige tijd om bronnen vrij te maken. Zorg ervoor dat u het verificatie systeem instelt om te zorgen voor de effectiviteit van permanente verbindingen wanneer u deze gebruikt. Zie [verificatie systemen configureren aan de client zijde voor meer informatie over de effectiviteit van permanente verbindingen](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections).

@@ -2,18 +2,16 @@
 title: Actie groepen maken en beheren in de Azure Portal
 description: Meer informatie over het maken en beheren van actie groepen in de Azure Portal.
 author: dkamstra
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 6b3d1ff76d4f7611da8e08dd4ce42293c805978e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a954898a334ead15d8ffdf6dab6e6a309bd57089
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423846"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659828"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actie groepen maken en beheren in de Azure Portal
 Een actie groep is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement. Azure Monitor-en Service Health-waarschuwingen gebruiken actie groepen om gebruikers te laten weten dat een waarschuwing is geactiveerd. Verschillende waarschuwingen kunnen dezelfde actie groep of verschillende actie groepen gebruiken, afhankelijk van de vereisten van de gebruiker. U kunt Maxi maal 2.000 actie groepen in een abonnement configureren.
@@ -72,17 +70,17 @@ Nadat u een actie groep hebt gemaakt, wordt deze weer gegeven in de sectie **act
 ## <a name="action-specific-information"></a>Actie-specifieke informatie
 
 > [!NOTE]
-> Zie [limieten voor abonnements Services voor controle](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits) op numerieke limieten voor elk van de onderstaande items.  
+> Zie [limieten voor abonnements Services voor controle](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits) op numerieke limieten voor elk van de onderstaande items.  
 
-### <a name="automation-runbook"></a>Automation-Runbook
-Raadpleeg de [service limieten](../../azure-subscription-service-limits.md) van het Azure-abonnement voor limieten voor nettoladingen van het Runbook.
+### <a name="automation-runbook"></a>Automation-runbook
+Raadpleeg de [service limieten](../../azure-resource-manager/management/azure-subscription-service-limits.md) van het Azure-abonnement voor limieten voor nettoladingen van het Runbook.
 
 Mogelijk hebt u een beperkt aantal Runbook-acties in een actie groep. 
 
-### <a name="azure-app-push-notifications"></a>Push meldingen van Azure-app
+### <a name="azure-app-push-notifications"></a>Pushmeldingen van Azure-app
 Mogelijk hebt u een beperkt aantal Azure-app-acties in een actie groep.
 
-### <a name="email"></a>Email
+### <a name="email"></a>E-mail
 E-mails worden verzonden vanaf de volgende e-mail adressen. Controleren of uw e-mail filtering op de juiste wijze is geconfigureerd
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -90,7 +88,7 @@ E-mails worden verzonden vanaf de volgende e-mail adressen. Controleren of uw e-
 
 Mogelijk hebt u een beperkt aantal e-mail acties in een actie groep. Zie het artikel [informatie over de frequentie beperking](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
-### <a name="email-azure-resource-manager-role"></a>E-mail Azure Resource Manager rol
+### <a name="email-azure-resource-manager-role"></a>E-mailadres voor Azure Resource Manager-rol
 E-mail verzenden naar de leden van de rol van het abonnement.
 
 Mogelijk hebt u een beperkt aantal e-mail acties in een actie groep. Zie het artikel [informatie over de frequentie beperking](./../../azure-monitor/platform/alerts-rate-limiting.md) .
@@ -105,7 +103,7 @@ Voor de actie ITSM is een ITSM-verbinding vereist. Meer informatie over het make
 
 Mogelijk hebt u een beperkt aantal ITSM-acties in een actie groep. 
 
-### <a name="logic-app"></a>Logische apps
+### <a name="logic-app"></a>Logische app
 Mogelijk hebt u een beperkt aantal logische app-acties in een actie groep.
 
 ### <a name="secure-webhook"></a>Beveiligde webhook

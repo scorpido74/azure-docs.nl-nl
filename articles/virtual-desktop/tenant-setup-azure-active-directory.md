@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: a7511b8026cb3f53a23eed0f0c057632314320c4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 70cabc75ebdeb7ed6d7ffd000419295fce6303de
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466558"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459505"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Zelf studie: een Tenant maken in Windows Virtual Desktop
 
@@ -25,7 +25,9 @@ In deze zelfstudie leert u het volgende:
 > * Wijs de toepassingsrol TenantCreator toe aan een gebruiker in uw Azure Active Directory-Tenant.
 > * Maak een virtuele bureau blad-Tenant voor Windows.
 
-Dit is wat u nodig hebt om een virtuele Windows-bureau blad-Tenant in te stellen:
+## <a name="what-you-need-to-set-up-a-tenant"></a>Wat u nodig hebt om een Tenant in te stellen
+
+Voordat u begint met het instellen van uw Windows Virtual Desktop-Tenant, moet u het volgende doen:
 
 * De [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) Tenant-id voor Windows-gebruikers met virtueel bureau blad.
 * Een globaal beheerders account binnen de Azure Active Directory Tenant.
@@ -33,6 +35,8 @@ Dit is wat u nodig hebt om een virtuele Windows-bureau blad-Tenant in te stellen
    * Het beheerders account moet worden bron van de Azure Active Directory Tenant waarin u de virtuele bureau blad-Tenant van Windows probeert te maken. Dit proces biedt geen ondersteuning voor Azure Active Directory B2B-accounts.
    * Het account van de beheerder moet een werk-of school account zijn.
 * Een Azure-abonnement.
+
+U moet beschikken over de Tenant-ID, het globale Administrator-account en het Azure-abonnement, zodat het proces dat in deze zelf studie wordt beschreven, goed kan werken.
 
 ## <a name="grant-permissions-to-windows-virtual-desktop"></a>Machtigingen verlenen voor virtuele Windows-bureau blad
 
@@ -135,6 +139,12 @@ Vervang de waarden met tussen haakjes door de waarden die relevant zijn voor uw 
 
 ```powershell
 New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -AzureSubscriptionId 55555555-6666-7777-8888-999999999999
+```
+
+Het is een goed idee om beheerders toegang toe te wijzen aan een tweede gebruiker voor het geval u u ooit hebt geblokkeerd, of u nu op vakantie bent, en iemand moet als Tenant beheerder in uw afwezigheid optreden. Als u beheerders toegang wilt toewijzen aan een tweede gebruiker, voert u de volgende cmdlet uit met `<TenantName>` en `<Upn>` vervangen door de naam van uw Tenant en de UPN van de tweede gebruiker.
+
+```powershell
+New-RdsRoleAssignment -TenantName <TenantName> -SignInName <Upn> -RoleDefinitionName "RDS Owner"
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

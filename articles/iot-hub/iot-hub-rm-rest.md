@@ -8,12 +8,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 7d5e38e2ecfa2406ff0f58f73d828aa45d84c512
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c4cb230c9f0b56e3ff9d81e0d85134a7f192e6e9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890485"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429164"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Een IoT-hub maken met behulp van de REST API van de resource provider (.NET)
 
@@ -176,13 +176,13 @@ Nu u een IoT-hub hebt geïmplementeerd met behulp van de resource provider REST 
 
 * Meer informatie over de mogelijkheden van de [IOT hub resource provider rest API](https://docs.microsoft.com/rest/api/iothub/iothubresource).
 
-* Lees [Azure Resource Manager overzicht](../azure-resource-manager/resource-group-overview.md) voor meer informatie over de mogelijkheden van Azure Resource Manager.
+* Lees [Azure Resource Manager overzicht](../azure-resource-manager/management/overview.md) voor meer informatie over de mogelijkheden van Azure Resource Manager.
 
 Raadpleeg de volgende artikelen voor meer informatie over het ontwikkelen van IoT Hub:
 
 * [Inleiding tot C SDK](iot-hub-device-sdk-c-intro.md)
 
-* [SDK's voor Azure IoT](iot-hub-devguide-sdks.md)
+* [SDK’s voor Azure IoT](iot-hub-devguide-sdks.md)
 
 Zie voor meer informatie over de mogelijkheden van IoT Hub:
 

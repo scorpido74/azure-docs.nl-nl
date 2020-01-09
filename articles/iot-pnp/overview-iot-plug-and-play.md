@@ -3,18 +3,18 @@ title: Inleiding tot IoT Plug en Play preview | Microsoft Docs
 description: Meer informatie over de preview-versie van IoT Plug en Play. IoT Plug en Play is gebaseerd op een open model taal waarmee IoT-apparaten hun mogelijkheden kunnen declareren. IoT-apparaten presen teren een functionaliteits model voor apparaten, wanneer ze verbinding maken met cloud oplossingen zoals Azure IoT Central of partner toepassingen. De Cloud oplossing kan vervolgens automatisch inzicht krijgen in het apparaat en ermee werken, zonder dat u code hoeft te schrijven.
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 06/21/2019
+ms.date: 12/23/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: fd1479a224255f74f4d47cfd90576a5afd25010f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 54a18bb20ab9af3ad794ed678ea3234a712bf5cb
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935397"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531159"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>Wat is IoT Plug en Play preview?
 
@@ -37,7 +37,7 @@ Dit artikel geeft een overzicht van:
 - Het ontwikkelen van een IoT-Device-toepassing die ondersteuning biedt voor IoT Plug en Play.
 - Een IoT Plug en Play-apparaat certificeren en publiceren naar de [certificerings instantie voor IOT-apparaten](https://catalog.azureiotsolutions.com/).
 
-## <a name="user-roles"></a>Gebruikers rollen
+## <a name="user-roles"></a>Gebruikersrollen
 
 IoT Plug en Play is handig voor twee typen ontwikkel aars:
 
@@ -86,6 +86,6 @@ Tijdens de open bare preview verzenden IoT Plug en Play-apparaten afzonderlijke 
 
 Nu u een overzicht van IoT Plug en Play hebt, is de voorgestelde volgende stap het uitproberen van een van de Quick starts:
 
-- [Een mogelijkheidsprofiel gebruiken om een IoT Plug en Play-apparaat te maken](./quickstart-create-pnp-device.md)
-- [Een apparaat verbinden met IoT Hub](./quickstart-connect-pnp-device.md)
-- [Verbinding maken met een apparaat in uw oplossing](./quickstart-connect-pnp-device-solution.md)
+- [Een mogelijkheidsprofiel gebruiken om een IoT Plug en Play-apparaat te maken](./quickstart-create-pnp-device-windows.md)
+- [Een apparaat verbinden met IoT Hub](./quickstart-connect-pnp-device-c-windows.md)
+- [Verbinding maken met een apparaat in uw oplossing](./quickstart-connect-pnp-device-solution-node.md)

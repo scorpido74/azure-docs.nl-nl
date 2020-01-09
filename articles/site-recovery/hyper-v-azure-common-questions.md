@@ -1,18 +1,14 @@
 ---
 title: Veelgestelde vragen over herstel na nood gevallen voor Hyper-V met Azure Site Recovery
 description: In dit artikel vindt u een overzicht van algemene vragen over het instellen van herstel na nood gevallen voor on-premises virtuele Hyper-V-machines naar Azure met behulp van de Azure Site Recovery-site.
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: 8f3a04c70b88987fc91dbed3c186d04826b75726
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 7c5f55fbea67567ddf7a2afa6a61f6c76568d829
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954047"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498207"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Veelgestelde vragen-Hyper-V naar Azure nood herstel
 
@@ -202,14 +198,17 @@ Site Recovery installeert geen expliciete installatie op virtuele Hyper-V-machin
 ### <a name="how-do-i-fail-over-to-azure"></a>Hoe kan ik failover naar Azure?
 
 U kunt een geplande of niet-geplande failover uitvoeren van on-premises virtuele Hyper-V-machines naar Azure.
-    - Als u een geplande failover uitvoert, worden de virtuele bronmachines afgesloten om gegevensverlies te voorkomen.
-    - U kunt een niet-geplande failover uitvoeren als uw primaire site niet toegankelijk is.
-    - U kunt een failover van één machine uitvoeren of herstel plannen maken om de failover van meerdere machines te organiseren.
-    - U voert een failover uit. Nadat de eerste fase van de failover is voltooid, kunt u de gemaakte replica-Vm's in azure zien. U kunt een openbaar IP-adres toewijzen aan de VM, indien nodig. Vervolgens voert u de failover uit om toegang te krijgen tot de workload vanuit de replica-VM van Azure.
+
+- Als u een geplande failover uitvoert, worden de virtuele bronmachines afgesloten om gegevensverlies te voorkomen.
+- U kunt een niet-geplande failover uitvoeren als uw primaire site niet toegankelijk is.
+- U kunt een failover van één machine uitvoeren of herstel plannen maken om de failover van meerdere machines te organiseren.
+- Failover bestaat uit twee delen:
+    - Nadat de eerste fase van de failover is voltooid, kunt u de gemaakte replica-Vm's in azure zien. U kunt een openbaar IP-adres toewijzen aan de VM, indien nodig.
+    - Vervolgens voert u de failover uit om toegang te krijgen tot de workload vanuit de replica-VM van Azure.
    
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>Hoe kan ik toegang tot Azure-Vm's na een failover?
-Na een failover kunt u toegang krijgen tot Azure-Vm's via een beveiligde Internet verbinding, via een site-naar-site-VPN of via Azure ExpressRoute. U moet een aantal dingen voorbereiden om verbinding te kunnen maken. [Meer informatie](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
+Na een failover kunt u toegang krijgen tot Azure-Vm's via een beveiligde Internet verbinding, via een site-naar-site-VPN of via Azure ExpressRoute. U moet een aantal dingen voorbereiden om verbinding te kunnen maken. [Meer informatie](failover-failback-overview.md#connect-to-azure-after-failover).
 
 ### <a name="is-failed-over-data-resilient"></a>Is failover van gegevens met een failover uitgevoerd?
 Azure is ontworpen voor herstelbaarheid. Site Recovery is ontworpen voor failover naar een secundair Azure-Data Center, conform de SLA van Azure. Als er een failover optreedt, zorgen we ervoor dat uw meta gegevens en kluizen binnen dezelfde geografische regio blijven die u voor uw kluis hebt gekozen.
@@ -232,4 +231,4 @@ Als uw on-premises infra structuur weer actief is, kunt u een failback uitvoeren
 5. Nadat de workloads weer zijn hersteld, schakelt u omgekeerde replicatie in, zodat de on-premises Vm's opnieuw naar Azure worden gerepliceerd.
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Kan ik een failback uitvoeren naar een andere locatie?
-Ja, als u een failover naar Azure hebt uitgevoerd, kunt u een failback uitvoeren naar een andere locatie als het oorspronkelijke exemplaar niet beschikbaar is. [Meer informatie](hyper-v-azure-failback.md#failback-to-an-alternate-location-in-hyper-v-environment).
+Ja, als u een failover naar Azure hebt uitgevoerd, kunt u een failback uitvoeren naar een andere locatie als het oorspronkelijke exemplaar niet beschikbaar is. [Meer informatie](hyper-v-azure-failback.md#fail-back-to-an-alternate-location).

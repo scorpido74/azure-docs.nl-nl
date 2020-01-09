@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: d37333c0ca3f8acab7a35c23bbab67beef056b72
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9c776a32b4a35c72fc40a16afb87db9896a763cf
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664392"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611063"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Het SQL Information Protection-beleid in Azure Security Center aanpassen (preview-versie)
  
 In Azure Security Center kunt u een SQL Information Protection-beleid definiëren en aanpassen voor uw hele Azure-Tenant.
 
-Information Protection is een geavanceerde beveiligings mogelijkheid voor het detecteren, classificeren, labelen en beveiligen van gevoelige gegevens in uw Azure-gegevens bronnen. Het detecteren en classificeren van uw meest gevoelige gegevens (bedrijfs-, financiële, gezondheids zorg, persoonlijke gegevens, enz.) kan een draai functie in uw organisatie voor gegevens beveiliging van stature afspelen. Dit kan dienen als infra structuur voor:
+Information Protection is een geavanceerde beveiligings mogelijkheid voor het detecteren, classificeren, labelen en rapporteren van gevoelige gegevens in uw Azure-gegevens bronnen. Het detecteren en classificeren van uw meest gevoelige gegevens (bedrijfs-, financiële, gezondheids zorg, persoonlijke gegevens, enz.) kan een draai functie in uw organisatie voor gegevens beveiliging van stature afspelen. Dit kan dienen als infrastructuur om:
 - Helpt voldoen aan de normen voor gegevens beveiliging en naleving van regelgeving
 - Beveiligings scenario's zoals controle (controle) en waarschuwingen over afwijkende toegang tot gevoelige gegevens
 - Het beheren van de toegang tot en het beveiligen van de beveiliging van gegevens archieven met uiterst gevoelige gegevens

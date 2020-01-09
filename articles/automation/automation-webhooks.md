@@ -2,19 +2,15 @@
 title: Een Azure Automation runbook starten met een webhook
 description: Een webhook waarmee een client een runbook in Azure Automation kan starten vanuit een HTTP-aanroep.  In dit artikel wordt beschreven hoe u een webhook maakt en hoe u er een aanroept om een runbook te starten.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/19/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: bc03425a64486e449b4df93ea187435a1e893dda
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fbf3a48d1e7cb3dd80b6c418d7c916184756b6fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849595"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418973"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Een Azure Automation runbook starten met een webhook
 
@@ -32,7 +28,7 @@ In de volgende tabel worden de eigenschappen beschreven die u moet configureren 
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| Naam |U kunt elke gewenste naam voor een webhook opgeven, omdat deze niet beschikbaar is voor de client. Het wordt alleen gebruikt om het runbook in Azure Automation te identificeren. <br> Als best practice moet u de webhook een naam geven die betrekking heeft op de client die deze gebruikt. |
+| Name |U kunt elke gewenste naam voor een webhook opgeven, omdat deze niet beschikbaar is voor de client. Het wordt alleen gebruikt om het runbook in Azure Automation te identificeren. <br> Als best practice moet u de webhook een naam geven die betrekking heeft op de client die deze gebruikt. |
 | URL |De URL van de webhook is het unieke adres dat een client aanroept met een HTTP-POST om het runbook te starten dat is gekoppeld aan de webhook. Het wordt automatisch gegenereerd wanneer u de webhook maakt. U kunt geen aangepaste URL opgeven. <br> <br> De URL bevat een beveiligings token waarmee het runbook kan worden aangeroepen door een systeem van derden zonder verdere authenticatie. Daarom moet het worden behandeld als een wacht woord. Uit veiligheids overwegingen kunt u de URL alleen weer geven in de Azure Portal op het moment dat de webhook wordt gemaakt. Noteer de URL op een veilige locatie voor toekomstig gebruik. |
 | Vervaldatum |Net als bij een certificaat heeft elke webhook een verloop datum op het moment dat deze niet meer kan worden gebruikt. Deze verval datum kan worden gewijzigd nadat de webhook is gemaakt, zolang de webhook niet is verlopen. |
 | Ingeschakeld |Een webhook wordt standaard ingeschakeld wanneer deze wordt gemaakt. Als u deze instelt op uitgeschakeld, kan geen enkele client deze gebruiken. U kunt de eigenschap **enabled** instellen wanneer u de webhook maakt of op elk moment wanneer deze wordt gemaakt. |
@@ -51,7 +47,7 @@ Het **$WebhookData** -object heeft de volgende eigenschappen:
 |:--- |:--- |
 | WebhookName |De naam van de webhook. |
 | RequestHeader |Hash-tabel met de kopteksten van de binnenkomende POST-aanvraag. |
-| requestBody |De hoofd tekst van de binnenkomende POST-aanvraag. Hiermee behoudt u alle opmaak, zoals teken reeks-, JSON-, XML-of formulier versleutelde gegevens. Het runbook moet worden geschreven om te kunnen werken met de verwachte gegevens indeling. |
+| RequestBody |De hoofd tekst van de binnenkomende POST-aanvraag. Hiermee behoudt u alle opmaak, zoals teken reeks-, JSON-, XML-of formulier versleutelde gegevens. Het runbook moet worden geschreven om te kunnen werken met de verwachte gegevens indeling. |
 
 Er is geen configuratie van de webhook vereist voor de ondersteuning van de para meter **$WebhookData** en het runbook is niet vereist om het te accepteren. Als het runbook de para meter niet definieert, worden de details van de aanvraag die vanaf de client is verzonden, genegeerd.
 

@@ -10,14 +10,14 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3633ffb09d71bd166cb7366f860662d9b91c7f07
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: cc492b29fd6bc4a820543740e9d1962fc74f2cfc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063401"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425509"
 ---
-# <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Zelfstudie: Gebruikers stromen maken in Azure Active Directory B2C
+# <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Zelf studie: gebruikers stromen maken in Azure Active Directory B2C
 
 In uw toepassingen kunt u [gebruikers stromen](active-directory-b2c-reference-policies.md) gebruiken waarmee gebruikers zich kunnen registreren, aanmelden of hun profiel beheren. U kunt meerdere gebruikers stromen van verschillende typen in uw Azure Active Directory B2C-Tenant (Azure AD B2C) maken en deze naar behoefte gebruiken in uw toepassingen. Gebruikers stromen kunnen opnieuw worden gebruikt in verschillende toepassingen.
 
@@ -40,13 +40,13 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Met de registratie-en aanmeldings gebruikers stroom worden zowel registratie-als aanmeldings ervaringen met één configuratie afgehandeld. Gebruikers van uw toepassing ondervinden het juiste pad, afhankelijk van de context.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 
-    ![Map-en abonnements filter waarvoor B2C-Tenant is geselecteerd](./media/tutorial-create-user-flows/switch-directories.PNG)
+    ![B2C-Tenant, het deel venster mappen en abonnementen, Azure Portal](./media/tutorial-create-user-flows/directory-subscription-pane.png)
 
-1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-1. Selecteer in het menu links onder **beleids regels** **gebruikers stromen (beleid)** en selecteer vervolgens **nieuwe gebruikers stroom**.
+1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
+1. Onder **beleids regels**selecteert u **gebruikers stromen (beleid)** en selecteert u vervolgens **nieuwe gebruikers stroom**.
 
     ![De pagina Gebruikers stromen in de portal met de knop nieuwe gebruikers stroom gemarkeerd](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
@@ -68,7 +68,7 @@ Met de registratie-en aanmeldings gebruikers stroom worden zowel registratie-als
 ### <a name="test-the-user-flow"></a>De gebruikers stroom testen
 
 1. Selecteer de gebruikers stroom die u hebt gemaakt om de pagina overzicht te openen en selecteer vervolgens **gebruikers stroom uitvoeren**.
-1. Selecteer voor **toepassing**de webtoepassing met de naam *webapp1* die u eerder hebt geregistreerd. De **antwoord-URL** moet `https://jwt.ms`worden weer gegeven.
+1. Selecteer voor **toepassing**de webtoepassing met de naam *webapp1* die u eerder hebt geregistreerd. In de **antwoord-URL** moeten `https://jwt.ms`worden weer gegeven.
 1. Klik op **gebruikers stroom uitvoeren**en selecteer **nu aanmelden**.
 
     ![De pagina gebruikers stroom uitvoeren in de portal met de knop gebruikers stroom uitvoeren gemarkeerd](./media/tutorial-create-user-flows/signup-signin-run-now.PNG)
@@ -82,8 +82,8 @@ Met de registratie-en aanmeldings gebruikers stroom worden zowel registratie-als
 
 Als u gebruikers in staat wilt stellen hun profiel te bewerken in uw toepassing, gebruikt u een gebruikers stroom voor het bewerken van profielen.
 
-1. Selecteer in het linkermenu van de pagina overzicht van Azure AD B2C tenants de optie **gebruikers stromen (beleid)** en selecteer vervolgens **nieuwe gebruikers stroom**.
-1. Selecteer de gebruikers stroom voor het **bewerken van profielen** op het tabblad Aanbevolen.
+1. Selecteer in het menu van de pagina overzicht van Azure AD B2C tenants de optie **gebruikers stromen (beleid)** en selecteer vervolgens **nieuwe gebruikers stroom**.
+1. Selecteer de gebruikers stroom voor het **bewerken van profielen** op het tabblad **Aanbevolen** .
 1. Voer een **Naam** in voor de gebruikersstroom. Bijvoorbeeld *profileediting1*.
 1. Voor **id-providers**selecteert u **lokaal account aanmelden**.
 1. Kies voor **gebruikers kenmerken**de kenmerken die door de klant in hun profiel kunnen worden bewerkt. Selecteer bijvoorbeeld **meer weer geven**en kies vervolgens zowel kenmerken als claims voor **weergave naam** en **functie titel**. Klik op **OK**.
@@ -92,7 +92,7 @@ Als u gebruikers in staat wilt stellen hun profiel te bewerken in uw toepassing,
 ### <a name="test-the-user-flow"></a>De gebruikers stroom testen
 
 1. Selecteer de gebruikers stroom die u hebt gemaakt om de pagina overzicht te openen en selecteer vervolgens **gebruikers stroom uitvoeren**.
-1. Selecteer voor **toepassing**de webtoepassing met de naam *webapp1* die u eerder hebt geregistreerd. De **antwoord-URL** moet `https://jwt.ms`worden weer gegeven.
+1. Selecteer voor **toepassing**de webtoepassing met de naam *webapp1* die u eerder hebt geregistreerd. In de **antwoord-URL** moeten `https://jwt.ms`worden weer gegeven.
 1. Klik op **gebruikers stroom uitvoeren**en meld u aan met het account dat u eerder hebt gemaakt.
 1. U hebt nu de mogelijkheid om de weergave naam en de taak titel voor de gebruiker te wijzigen. Klik op **Doorgaan**. Het token wordt geretourneerd naar `https://jwt.ms` en moet worden weer gegeven.
 
@@ -100,8 +100,8 @@ Als u gebruikers in staat wilt stellen hun profiel te bewerken in uw toepassing,
 
 Als u gebruikers van uw toepassing de mogelijkheid wilt bieden hun wacht woord opnieuw in te stellen, gebruikt u een gebruikers stroom voor het opnieuw instellen van wacht woorden.
 
-1. Selecteer in het linkermenu **gebruikers stromen (beleid)** en selecteer vervolgens **nieuwe gebruikers stroom**.
-1. Selecteer de gebruikers stroom voor **wacht woord opnieuw instellen** op het tabblad Aanbevolen.
+1. Selecteer in het menu Azure AD B2C overzicht tenants de optie **gebruikers stromen (beleid)** en selecteer vervolgens **nieuwe gebruikers stroom**.
+1. Selecteer de gebruikers stroom voor **wacht woord opnieuw instellen** op het tabblad **Aanbevolen** .
 1. Voer een **Naam** in voor de gebruikersstroom. Bijvoorbeeld *passwordreset1*.
 1. Schakel **wacht woord opnieuw instellen met e-mail adres**in bij **id-providers**.
 1. Onder toepassings claims klikt u op **meer weer geven** en kiest u de claims die u wilt laten retour neren in de autorisatie tokens die worden teruggestuurd naar uw toepassing. Selecteer bijvoorbeeld **Object-ID van gebruiker**.
@@ -111,7 +111,7 @@ Als u gebruikers van uw toepassing de mogelijkheid wilt bieden hun wacht woord o
 ### <a name="test-the-user-flow"></a>De gebruikers stroom testen
 
 1. Selecteer de gebruikers stroom die u hebt gemaakt om de pagina overzicht te openen en selecteer vervolgens **gebruikers stroom uitvoeren**.
-1. Selecteer voor **toepassing**de webtoepassing met de naam *webapp1* die u eerder hebt geregistreerd. De **antwoord-URL** moet `https://jwt.ms`worden weer gegeven.
+1. Selecteer voor **toepassing**de webtoepassing met de naam *webapp1* die u eerder hebt geregistreerd. In de **antwoord-URL** moeten `https://jwt.ms`worden weer gegeven.
 1. Klik op **gebruikers stroom uitvoeren**, Controleer het e-mail adres van het account dat u eerder hebt gemaakt en selecteer **door gaan**.
 1. U hebt nu de mogelijkheid om het wacht woord voor de gebruiker te wijzigen. Wijzig het wacht woord en selecteer **door gaan**. Het token wordt geretourneerd naar `https://jwt.ms` en moet worden weer gegeven.
 

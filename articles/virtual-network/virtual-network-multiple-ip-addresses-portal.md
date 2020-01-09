@@ -1,6 +1,6 @@
 ---
-title: Meerdere IP-adressen voor virtuele machines van Azure - Portal | Microsoft Docs
-description: Leer hoe u meerdere IP-adressen toewijzen aan een virtuele machine met behulp van de Azure portal | Resource Manager.
+title: Meerdere IP-adressen voor Azure virtual machines-Portal | Microsoft Docs
+description: Meer informatie over het toewijzen van meerdere IP-adressen aan een virtuele machine met behulp van de Azure Portal | Resource Manager.
 services: virtual-network
 documentationcenter: na
 author: anavinahar
@@ -15,95 +15,95 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: anavin
-ms.openlocfilehash: fcb9cc817128bce9498312d3fb016761b6382634
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 66cbb843369dee103f102c9c743da544a833ccf1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612741"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646383"
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Meerdere IP-adressen toewijzen aan virtuele machines met behulp van de Azure-portal
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Meerdere IP-adressen toewijzen aan virtuele machines met behulp van de Azure Portal
 
 > [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 > 
-> In dit artikel wordt uitgelegd hoe u een virtuele machine (VM) maken via het Azure Resource Manager-implementatiemodel met behulp van de Azure portal. Meerdere IP-adressen kunnen niet worden toegewezen aan resources die zijn gemaakt via het klassieke implementatiemodel. Lees voor meer informatie over Azure-implementatiemodellen, de [-implementatiemodellen begrijpen](../resource-manager-deployment-model.md) artikel.
+> In dit artikel wordt uitgelegd hoe u een virtuele machine (VM) maakt via het Azure Resource Manager-implementatie model met behulp van de Azure Portal. Er kunnen geen meerdere IP-adressen worden toegewezen aan resources die zijn gemaakt via het klassieke implementatie model. Lees het artikel over [implementatie modellen begrijpen](../resource-manager-deployment-model.md) voor meer informatie over Azure-implementatie modellen.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
-## <a name = "create"></a>Een virtuele machine maken met meerdere IP-adressen
+## <a name = "create"></a>Een virtuele machine met meerdere IP-adressen maken
 
-Als u maken van een virtuele machine met meerdere IP-adressen of een statisch privé IP-adres wilt, moet u maken met behulp van PowerShell of Azure CLI. Voor meer informatie over hoe, klikt u op de PowerShell of CLI opties aan de bovenkant van dit artikel. U kunt een virtuele machine maken met een enkele dynamisch privé IP-adres en (optioneel) een enkel openbaar IP-adres. De portal te gebruiken met de volgende stappen in de [maken van een Windows-VM](../virtual-machines/virtual-machines-windows-hero-tutorial.md) of [een Linux-VM maken](../virtual-machines/linux/quick-create-portal.md) artikelen. Nadat u de virtuele machine hebt gemaakt, kunt u het type IP-adres van dynamisch wijzigt in statisch en toevoegen van extra IP-adressen met behulp van de portal door de volgende stappen in de [toevoegen IP-adressen aan een virtuele machine](#add) sectie van dit artikel.
+Als u een virtuele machine met meerdere IP-adressen of een statisch privé-IP-adres wilt maken, moet u deze maken met behulp van Power shell of de Azure CLI. Als u wilt weten hoe, klikt u op de Power shell-of CLI-opties boven aan dit artikel. U kunt een virtuele machine maken met één dynamisch privé-IP-adres en (optioneel) één openbaar IP-adres. Gebruik de portal door de stappen in de [een Windows-VM maken](../virtual-machines/virtual-machines-windows-hero-tutorial.md) of [een Linux VM](../virtual-machines/linux/quick-create-portal.md) -artikel maken te volgen. Nadat u de virtuele machine hebt gemaakt, kunt u het IP-adres type van dynamisch naar statisch wijzigen en extra IP-adressen toevoegen met behulp van de portal door de stappen in de sectie [IP-adressen toevoegen aan een VM](#add) in dit artikel te volgen.
 
-## <a name="add"></a>IP-adressen toevoegen aan een virtuele machine
+## <a name="add"></a>IP-adressen toevoegen aan een VM
 
-U kunt persoonlijke en openbare IP-adressen toevoegen aan een Azure-netwerk-interface via de stappen die volgen. De voorbeelden in de volgende secties wordt ervan uitgegaan dat u al een virtuele machine met de drie IP-configuraties die worden beschreven hebt in de [scenario](#scenario), maar het is niet vereist.
+U kunt persoonlijke en open bare IP-adressen toevoegen aan een Azure-netwerk interface door de volgende stappen uit te voeren. In de voor beelden in de volgende secties wordt ervan uitgegaan dat u al een virtuele machine hebt met de drie IP-configuraties die in het [scenario](#scenario)zijn beschreven, maar dit is niet vereist.
 
-### <a name="coreadd"></a>Core stappen
+### <a name="coreadd"></a>Kern stappen
 
-1. Blader naar de Azure portal op https://portal.azure.com en meld u aan deze, indien nodig.
-2. Klik in de portal op **meer services** > type *virtuele machines* in het filtervak in en klik vervolgens op **virtuele machines**.
-3. In de **virtuele machines** deelvenster, klikt u op de virtuele machine die u wilt toevoegen van IP-adressen aan. Klik op **netwerkinterfaces** in de virtuele machine deelvenster die wordt weergegeven, en selecteer vervolgens de netwerkinterface die u wilt toevoegen van de IP-adressen aan. In het voorbeeld in de volgende afbeelding, de NIC met de naam *myNIC* van de virtuele machine met de naam *myVM* is geselecteerd:
+1. Ga naar de Azure Portal op https://portal.azure.com en meld u indien nodig aan.
+2. Klik in de portal op **meer services** > type *virtuele machines* in het vak Filter en klik vervolgens op **virtuele machines**.
+3. Klik in het deel venster **virtuele machines** op de virtuele machine waaraan u IP-adressen wilt toevoegen. Klik op **netwerk interfaces** in het deel venster virtuele machine dat wordt weer gegeven en selecteer vervolgens de netwerk interface waaraan u de IP-adressen wilt toevoegen. In het voor beeld dat in de volgende afbeelding wordt weer gegeven, is de NIC geselecteerd met de naam *myNIC* uit de virtuele machine met de naam *myVM* :
 
     ![Netwerkinterface](./media/virtual-network-multiple-ip-addresses-portal/figure1.png)
 
-4. In het deelvenster dat wordt weergegeven voor de NIC die u hebt geselecteerd, klikt u op **IP-configuraties**.
+4. In het deel venster dat wordt weer gegeven voor de NIC die u hebt geselecteerd, klikt u op **IP-configuraties**.
 
-Voer de stappen in een van de secties die volgen, op basis van het type IP-adres die toe te voegen.
+Voer de stappen in een van de volgende secties uit, op basis van het type IP-adres dat u wilt toevoegen.
 
-### <a name="add-a-private-ip-address"></a>**Een privé IP-adres toevoegen**
+### <a name="add-a-private-ip-address"></a>**Een privé-IP-adres toevoegen**
 
-Voer de volgende stappen uit om een nieuwe privé IP-adres:
+Voer de volgende stappen uit om een nieuw privé-IP-adres toe te voegen:
 
-1. Voer de stappen in de [Core stappen](#coreadd) sectie van dit artikel.
-2. Klik op **Toevoegen**. In de **toevoegen IP-configuratie** deelvenster dat verschijnt, maak een IP-configuratie met de naam *IPConfig-4* met *10.0.0.7* als een *statische* privé-IP-adres en klik vervolgens op **OK**.
+1. Volg de stappen in de sectie [kern stappen](#coreadd) van dit artikel.
+2. Klik op **Add**. Maak in het deel venster **IP-configuratie toevoegen** dat wordt weer gegeven een IP-configuratie met de naam *ipconfig-4* met *10.0.0.7* als een *statisch* privé-IP-adres en klik vervolgens op **OK**.
 
     > [!NOTE]
-    > Bij het toevoegen van een statisch IP-adres, moet u een niet-gebruikte, geldig adres op de NIC is verbonden met subnet. Als het adres dat u selecteert niet beschikbaar is, de portal wordt weergegeven een X voor het IP-adres en moet u een ander account.
+    > Bij het toevoegen van een statisch IP-adres moet u een niet-gebruikt, geldig adres opgeven in het subnet waarmee de NIC is verbonden. Als het door u geselecteerde adres niet beschikbaar is, wordt in de portal een X weer gegeven voor het IP-adres en moet u een andere naam selecteren.
 
-3. Zodra u op OK klikt, wordt het deelvenster wordt gesloten en ziet u de nieuwe IP-configuratie die worden vermeld. Klik op **OK** sluiten de **toevoegen IP-configuratie** deelvenster.
-4. U kunt klikken op **toevoegen** voor het toevoegen van extra IP-configuraties of sluit alle geopende blades voor het voltooien van de IP-adressen toe te voegen.
-5. De privé IP-adressen toevoegen aan het besturingssysteem van de virtuele machine via de stappen in de [toevoegen IP-adressen aan een VM-besturingssysteem](#os-config) sectie van dit artikel.
+3. Nadat u op OK hebt geklikt, wordt het deel venster gesloten en ziet u de nieuwe IP-configuratie die wordt weer gegeven. Klik op **OK** om het deel venster **IP-configuratie toevoegen** te sluiten.
+4. U kunt klikken op **toevoegen** om extra IP-configuraties toe te voegen, of alle geopende Blades sluiten om het toevoegen van IP-adressen te volt ooien.
+5. Voeg de privé-IP-adressen toe aan het VM-besturings systeem door de stappen in de sectie [IP-adressen toevoegen aan een VM-besturings systeem](#os-config) van dit artikel uit te voeren.
 
 ### <a name="add-a-public-ip-address"></a>Een openbaar IP-adres toevoegen
 
-Een openbaar IP-adres is toegevoegd door het koppelen van een openbare IP-adresresource aan een nieuwe IP-configuratie of een bestaande IP-configuratie.
+Een openbaar IP-adres wordt toegevoegd door een open bare IP-adres resource te koppelen aan een nieuwe IP-configuratie of een bestaande IP-configuratie.
 
 > [!NOTE]
-> Openbare IP-adressen hebben nominale kosten in rekening. Lees voor meer informatie over prijzen voor IP-adres, de [prijzen van IP-adressen](https://azure.microsoft.com/pricing/details/ip-addresses) pagina. Er is een limiet aan het aantal openbare IP-adressen die kunnen worden gebruikt in een abonnement. Lees voor meer informatie over de limieten het artikel [Azure-limieten](../azure-subscription-service-limits.md#networking-limits).
+> Open bare IP-adressen hebben een nominale vergoeding. Lees de pagina met [prijzen voor IP-adressen](https://azure.microsoft.com/pricing/details/ip-addresses) voor meer informatie over de prijzen van IP-adressen. Er is een limiet voor het aantal open bare IP-adressen dat kan worden gebruikt in een abonnement. Lees voor meer informatie over de limieten het artikel [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 > 
 
-### <a name="create-public-ip"></a>Een openbare IP-adresresource maken
+### <a name="create-public-ip"></a>Een resource met een openbaar IP-adres maken
 
-Een openbaar IP-adres is een instelling voor een openbare IP-adresresource. Als u een openbare IP-adresresource die niet op dit moment is gekoppeld aan een IP-configuratie die u wilt koppelen aan een IP-configuratie hebt, kunt u de volgende stappen overslaan en de stappen in een van de secties die volgen, die u nodig hebt. Als u een beschikbare openbare IP-adresresource geen hebt, voert u de volgende stappen uit voor het maken van een:
+Een openbaar IP-adres is één instelling voor een open bare IP-adres resource. Als u een open bare IP-adres resource hebt die momenteel niet is gekoppeld aan een IP-configuratie die u wilt koppelen aan een IP-configuratie, slaat u de volgende stappen over en voert u de stappen in een van de onderstaande secties uit, zoals u dat nodig hebt. Als u geen beschik bare open bare IP-adres hebt, voert u de volgende stappen uit om een resource te maken:
 
-1. Blader naar de Azure portal op https://portal.azure.com en meld u aan deze, indien nodig.
-3. Klik in de portal op **een resource maken** > **netwerken** > **openbaar IP-adres**.
-4. In de **openbare IP-adres maken** deelvenster dat verschijnt, voer een **naam**, selecteer een **IP-adrestoewijzing** type, een **abonnement**, een **Resourcegroep**, en een **locatie**, klikt u vervolgens op **maken**, zoals wordt weergegeven in de volgende afbeelding:
+1. Ga naar de Azure Portal op https://portal.azure.com en meld u indien nodig aan.
+3. Klik in de portal op **een resource maken** > **netwerk** > **openbaar IP-adres**.
+4. In het deel venster **openbaar IP-adres maken** dat wordt weer gegeven, voert u een **naam**in, selecteert u een **IP-adres toewijzings** type, een **abonnement**, een **resource groep**en een **locatie**. vervolgens klikt u op **maken**, zoals wordt weer gegeven in de volgende afbeelding:
 
-    ![Een openbare IP-adresresource maken](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)
+    ![Een resource met een openbaar IP-adres maken](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)
 
-5. Voltooi de stappen in een van de volgende secties om te koppelen van de openbare IP-adresresource aan een IP-configuratie.
+5. Voer de stappen in een van de volgende secties uit om de open bare IP-adres bron te koppelen aan een IP-configuratie.
 
-#### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>Koppel het openbare IP-adresresource aan een nieuwe IP-configuratie
+#### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>De resource van het open bare IP-adres koppelen aan een nieuwe IP-configuratie
 
-1. Voer de stappen in de [Core stappen](#coreadd) sectie van dit artikel.
-2. Klik op **Toevoegen**. In de **toevoegen IP-configuratie** deelvenster dat verschijnt, maak een IP-configuratie met de naam *IPConfig-4*. Inschakelen de **openbaar IP-adres** en selecteer een bestaande, beschikbare openbare IP-adresresource uit de **openbare IP-adres kiezen** deelvenster dat wordt weergegeven.
+1. Volg de stappen in de sectie [kern stappen](#coreadd) van dit artikel.
+2. Klik op **Add**. In het deel venster **IP-configuratie toevoegen** dat wordt weer gegeven, maakt u een IP-configuratie met de naam *ipconfig-4*. Schakel het **open bare IP-adres** in en selecteer een bestaande, beschik bare open bare IP-adres resource in het deel venster **openbaar IP-adres kiezen** dat wordt weer gegeven.
 
-    Nadat u het openbare IP-adresresource hebt geselecteerd, klikt u op **OK** en het venster wordt gesloten. Als u een bestaande openbare IP-adres niet hebt, kunt u maken door de stappen in de [maken van een openbare IP-adresresource](#create-public-ip) sectie van dit artikel. 
+    Wanneer u de resource voor het open bare IP-adres hebt geselecteerd, klikt u op **OK** om het deel venster te sluiten. Als u geen bestaand openbaar IP-adres hebt, kunt u er een maken door de stappen in de sectie [een open bare IP-adres bron maken](#create-public-ip) in dit artikel te volt ooien. 
 
-3. Bekijk de nieuwe IP-configuratie. Hoewel een privé IP-adres is niet expliciet zijn toegewezen, is een automatisch toegewezen aan de IP-configuratie, omdat alle IP-configuraties moeten een privé IP-adres hebben.
-4. U kunt klikken op **toevoegen** voor het toevoegen van extra IP-configuraties of sluit alle geopende blades voor het voltooien van de IP-adressen toe te voegen.
-5. Het privé IP-adres toevoegen aan het besturingssysteem van de virtuele machine via de stappen voor het besturingssysteem in de [toevoegen IP-adressen aan een VM-besturingssysteem](#os-config) sectie van dit artikel. Voeg geen openbaar IP-adres toe aan het besturingssysteem.
+3. Controleer de nieuwe IP-configuratie. Hoewel een privé-IP-adres niet expliciet is toegewezen, is er automatisch een toegewezen aan de IP-configuratie, omdat alle IP-configuraties een privé-IP-adres moeten hebben.
+4. U kunt klikken op **toevoegen** om extra IP-configuraties toe te voegen, of alle geopende Blades sluiten om het toevoegen van IP-adressen te volt ooien.
+5. Voeg het privé-IP-adres toe aan het VM-besturings systeem door de stappen voor uw besturings systeem in de sectie [IP-adressen toevoegen aan een VM-besturings systeem](#os-config) van dit artikel uit te voeren. Voeg het open bare IP-adres niet toe aan het besturings systeem.
 
-#### <a name="associate-the-public-ip-address-resource-to-an-existing-ip-configuration"></a>Koppel het openbare IP-adresresource aan een bestaande IP-configuratie
+#### <a name="associate-the-public-ip-address-resource-to-an-existing-ip-configuration"></a>De resource van het open bare IP-adres koppelen aan een bestaande IP-configuratie
 
-1. Voer de stappen in de [Core stappen](#coreadd) sectie van dit artikel.
-2. Klik op de IP-configuratie die u wilt de openbare IP-adresresource aan toevoegen.
-3. In het deelvenster van het IP-configuratie die wordt weergegeven, klikt u op **IP-adres**.
-4. In de **openbare IP-adres kiezen** deelvenster dat verschijnt, selecteert u een openbaar IP-adres.
-5. Klik op **opslaan** en de deelvensters te sluiten. Als u een bestaande openbare IP-adres niet hebt, kunt u maken door de stappen in de [maken van een openbare IP-adresresource](#create-public-ip) sectie van dit artikel.
-3. Bekijk de nieuwe IP-configuratie.
-4. U kunt klikken op **toevoegen** voor het toevoegen van extra IP-configuraties of sluit alle geopende blades voor het voltooien van de IP-adressen toe te voegen. Voeg geen openbaar IP-adres toe aan het besturingssysteem.
+1. Volg de stappen in de sectie [kern stappen](#coreadd) van dit artikel.
+2. Klik op de IP-configuratie waaraan u de open bare IP-adres resource wilt toevoegen.
+3. Klik in het deel venster IPConfig dat wordt weer gegeven op **IP-adres**.
+4. Selecteer een openbaar IP-adres in het deel venster **openbaar IP-adres kiezen** dat wordt weer gegeven.
+5. Klik op **Opslaan** om het deel venster te sluiten. Als u geen bestaand openbaar IP-adres hebt, kunt u er een maken door de stappen in de sectie [een open bare IP-adres bron maken](#create-public-ip) in dit artikel te volt ooien.
+3. Controleer de nieuwe IP-configuratie.
+4. U kunt klikken op **toevoegen** om extra IP-configuraties toe te voegen, of alle geopende Blades sluiten om het toevoegen van IP-adressen te volt ooien. Voeg het open bare IP-adres niet toe aan het besturings systeem.
 
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

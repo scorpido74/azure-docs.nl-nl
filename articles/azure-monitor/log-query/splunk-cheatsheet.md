@@ -1,18 +1,17 @@
 ---
 title: Splunk om de logboek query te Azure Monitor | Microsoft Docs
 description: Help voor gebruikers die bekend zijn met Splunk in learning Azure Monitor-logboek query's.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
-ms.openlocfilehash: e16bf152e739a6145bfabaf8546fa71199f8d732
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6346055f1169bfa533d5dbfe441ecf27fb0d78a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932954"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397746"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Splunk naar Azure Monitor-logboek query
 
@@ -26,37 +25,37 @@ In de volgende tabel worden de concepten en gegevens structuren tussen Splunk en
  | --- | --- | --- | ---
  | Implementatie-eenheid  | cluster |  cluster |  Azure Monitor kunnen wille keurige query's op meerdere clusters worden uitgevoerd. Splunk niet. |
  | Gegevens caches |  buckets  |  Cache-en bewaar beleid |  Hiermee bepaalt u de periode en het cache niveau voor de gegevens. Deze instelling heeft rechtstreeks gevolgen voor de prestaties van query's en kosten voor de implementatie. |
- | Logische partitie van gegevens  |  TabIndex  |  database  |  Logische schei ding van de gegevens toestaan. Met beide implementaties kunnen vakbonden samen voegen en deel nemen aan deze partities. |
- | Meta gegevens van gestructureerde gebeurtenissen | N/A | Tabel |  Splunk heeft niet het concept dat wordt weer gegeven in de Zoek taal van de meta gegevens van gebeurtenissen. Azure Monitor Logboeken bevat het concept van een tabel, die kolommen bevat. Elk gebeurtenis exemplaar is toegewezen aan een rij. |
- | Gegevens record | gebeurtenislog | rijkoppen |  Alleen terminologie wijzigen. |
- | Gegevens record kenmerk | Aan |  Kolominvoercel |  In Azure Monitor is dit vooraf gedefinieerd als onderdeel van de tabel structuur. In Splunk heeft elke gebeurtenis een eigen set velden. |
- | Dergelijke | param1 |  param1 |  Azure Monitor gegevens typen zijn explicieter, omdat ze zijn ingesteld voor de kolommen. Beide hebben de mogelijkheid om dynamisch te werken met gegevens typen en een ongeveer gelijkwaardige verzameling gegevens sets, waaronder JSON-ondersteuning. |
- | Query's en zoek opdrachten  | Opdracht | query |  Concepten zijn in wezen hetzelfde als die van zowel Azure Monitor als Splunk. |
+ | Logische partitie van gegevens  |  index  |  database  |  Logische schei ding van de gegevens toestaan. Met beide implementaties kunnen vakbonden samen voegen en deel nemen aan deze partities. |
+ | Meta gegevens van gestructureerde gebeurtenissen | N/A | table |  Splunk heeft niet het concept dat wordt weer gegeven in de Zoek taal van de meta gegevens van gebeurtenissen. Azure Monitor Logboeken bevat het concept van een tabel, die kolommen bevat. Elk gebeurtenis exemplaar is toegewezen aan een rij. |
+ | Gegevens record | gebeurtenis | rijkoppen |  Alleen terminologie wijzigen. |
+ | Gegevens record kenmerk | veld |  Kolom |  In Azure Monitor is dit vooraf gedefinieerd als onderdeel van de tabel structuur. In Splunk heeft elke gebeurtenis een eigen set velden. |
+ | Typen | param1 |  param1 |  Azure Monitor gegevens typen zijn explicieter, omdat ze zijn ingesteld voor de kolommen. Beide hebben de mogelijkheid om dynamisch te werken met gegevens typen en een ongeveer gelijkwaardige verzameling gegevens sets, waaronder JSON-ondersteuning. |
+ | Query's en zoek opdrachten  | zoeken | query |  Concepten zijn in wezen hetzelfde als die van zowel Azure Monitor als Splunk. |
  | Opname tijd van gebeurtenis | Systeem tijd | ingestion_time() |  In Splunk haalt elke gebeurtenis een systeem tijds tempel van het tijdstip waarop de gebeurtenis is geïndexeerd. In Azure Monitor kunt u een beleid definiëren met de naam ingestion_time dat een systeem kolom beschrijft waarnaar kan worden verwezen via de functie ingestion_time (). |
 
-## <a name="functions"></a>Functies
+## <a name="functions"></a>Functions
 
 De volgende tabel bevat functies in Azure Monitor die gelijk zijn aan Splunk-functies.
 
 |Splunk | Azure Monitor |Opmerking
 |---|---|---
-|strcat | strcat()| i |
-|split  | splitsen () | i |
-|if     | IFF ()   | i |
-|tonumber | todouble()<br>tolong()<br>toint() | i |
-|hoofd<br>Onderliggende |toupper()<br>tolower()|i |
-| vervangen | replace () | i<br> Houd er ook rekening mee dat de para meters verschillen als `replace()` drie para meters in beide producten heeft. |
-| substr | subtekenreeks () | i<br>Houd er ook rekening mee dat Splunk gebruikmaakt van op één gebaseerde indices. Azure Monitor op nul gebaseerde indexen. |
-| tolower |  tolower() | i |
-| toupper | toupper() | i |
-| overeen met | komt overeen met regex |  twee  |
-| reguliere | komt overeen met regex | In Splunk is `regex` een operator. In Azure Monitor is dit een relationele operator. |
-| searchmatch | == | In Splunk, `searchmatch` kan zoeken naar de exacte teken reeks.
-| wille keurige | ASELECT ()<br>ASELECT (n) | De functie Splunk retourneert een getal tussen nul en 2<sup>31</sup>-1. Azure Monitor ' retourneert een getal tussen 0,0 en 1,0, of als een para meter is gegeven, tussen 0 en n-1.
-| nu | now() | i
-| relative_time | totimespan() | i<br>In Azure Monitor is Splunk equivalent van relative_time (datetimeVal, offsetVal) datetimeVal + totimespan (offsetVal).<br><code>search &#124; eval n=relative_time(now(), "-1d@d")</code> wordt bijvoorbeeld <code>...  &#124; extend myTime = now() - totimespan("1d")</code>.
+|strcat | strcat()| (1) |
+|split  | split() | (1) |
+|if     | iff()   | (1) |
+|tonumber | todouble()<br>tolong()<br>toint() | (1) |
+|hoofd<br>onderliggende |toupper()<br>tolower()|(1) |
+| replace | replace() | (1)<br> Houd er ook rekening mee dat de para meters verschillen als `replace()` drie para meters in beide producten in beslag neemt. |
+| substr | subtekenreeks () | (1)<br>Houd er ook rekening mee dat Splunk gebruikmaakt van op één gebaseerde indices. Azure Monitor op nul gebaseerde indexen. |
+| tolower |  tolower() | (1) |
+| toupper | toupper() | (1) |
+| overeen met | komt overeen met regex |  (2)  |
+| regex | komt overeen met regex | In Splunk is `regex` een operator. In Azure Monitor is dit een relationele operator. |
+| searchmatch | == | In Splunk kunt u met `searchmatch` zoeken naar de exacte teken reeks.
+| willekeurig | ASELECT ()<br>ASELECT (n) | De functie Splunk retourneert een getal tussen nul en 2<sup>31</sup>-1. Azure Monitor ' retourneert een getal tussen 0,0 en 1,0, of als een para meter is gegeven, tussen 0 en n-1.
+| nu | now() | (1)
+| relative_time | totimespan() | (1)<br>In Azure Monitor is het equivalent van relative_time (datetimeVal, offsetVal) datetimeVal + totimespan (offsetVal).<br><code>search &#124; eval n=relative_time(now(), "-1d@d")</code> wordt bijvoorbeeld <code>...  &#124; extend myTime = now() - totimespan("1d")</code>.
 
-(1) in Splunk wordt de functie aangeroepen met de operator `eval`. In Azure Monitor wordt het gebruikt als onderdeel van `extend` of `project`.<br>(2) in Splunk wordt de functie aangeroepen met de operator `eval`. In Azure Monitor kan het worden gebruikt met de operator `where`.
+(1) in Splunk wordt de functie aangeroepen met de operator `eval`. In Azure Monitor wordt deze als onderdeel van `extend` of `project`gebruikt.<br>(2) in Splunk wordt de functie aangeroepen met de operator `eval`. In Azure Monitor kan het worden gebruikt met de operator `where`.
 
 
 ## <a name="operators"></a>Operators
@@ -64,10 +63,10 @@ De volgende tabel bevat functies in Azure Monitor die gelijk zijn aan Splunk-fun
 De volgende secties bevatten voor beelden van het gebruik van verschillende Opera tors tussen Splunk en Azure Monitor.
 
 > [!NOTE]
-> Voor het doel van het volgende voor beeld wordt de veld _regel_ Splunk toegewezen aan een tabel in azure monitor en de standaard tijds tempel van Splunk wordt toegewezen aan de kolom logs Analytics _ingestion_time ()_ .
+> Voor het doel van het volgende voor beeld wordt de veld _regel_ Splunk toegewezen aan een tabel in azure monitor en de standaard tijds tempel van Splunk wordt toegewezen aan de kolom Logs Analytics _ingestion_time ()_ .
 
 ### <a name="search"></a>Search
-In Splunk kunt u het sleutel woord `search` weglaten en een niet-geciteerde teken reeks opgeven. In Azure Monitor moet u elke query beginnen met `find`, een niet-geciteerde teken reeks is een kolom naam en de zoek waarde moet een teken reeks tussen aanhalings tekens zijn. 
+In Splunk kunt u het sleutel woord `search` weglaten en een niet-geciteerde teken reeks opgeven. In Azure Monitor moet u elke query met `find`starten, een niet-geciteerde teken reeks is een kolom naam en de zoek waarde moet een teken reeks tussen aanhalings tekens zijn. 
 
 | |  | |
 |:---|:---|:---|
@@ -76,7 +75,7 @@ In Splunk kunt u het sleutel woord `search` weglaten en een niet-geciteerde teke
 | | |
 
 ### <a name="filter"></a>Filter
-Azure Monitor logboek query's starten vanuit een tabellaire resultaatset waarin het filter is ingesteld. In Splunk is filteren de standaard bewerking op de huidige index. U kunt ook de operator `where` gebruiken in Splunk, maar dit wordt niet aanbevolen.
+Azure Monitor logboek query's starten vanuit een tabellaire resultaatset waarin het filter is ingesteld. In Splunk is filteren de standaard bewerking op de huidige index. U kunt ook `where` operator in Splunk gebruiken, maar dit wordt niet aanbevolen.
 
 | |  | |
 |:---|:---|:---|
@@ -86,7 +85,7 @@ Azure Monitor logboek query's starten vanuit een tabellaire resultaatset waarin 
 
 
 ### <a name="getting-n-eventsrows-for-inspection"></a>N gebeurtenissen/rijen voor inspectie ophalen 
-Azure Monitor-logboek query's ondersteunen ook `take` als alias voor `limit`. Als de resultaten worden besteld in Splunk, worden de eerste n resultaten door `head` geretourneerd. In Azure Monitor is de limiet niet besteld, maar worden de eerste n rijen geretourneerd die worden gevonden.
+Azure Monitor-logboek query's ondersteunen `take` ook als een alias voor `limit`. Als in Splunk de resultaten worden besteld, worden de eerste n resultaten door `head` geretourneerd. In Azure Monitor is de limiet niet besteld, maar worden de eerste n rijen geretourneerd die worden gevonden.
 
 | |  | |
 |:---|:---|:---|
@@ -97,7 +96,7 @@ Azure Monitor-logboek query's ondersteunen ook `take` als alias voor `limit`. Al
 
 
 ### <a name="getting-the-first-n-eventsrows-ordered-by-a-fieldcolumn"></a>Ophalen van de eerste n gebeurtenissen/rijen die zijn besteld door een veld/kolom
-Voor de onderste resultaten gebruikt u in Splunk de `tail`. In Azure Monitor kunt u de bestel richting opgeven met `asc`.
+Voor de onderste resultaten gebruikt u `tail`in Splunk. In Azure Monitor kunt u de bestel richting opgeven met `asc`.
 
 | |  | |
 |:---|:---|:---|
@@ -109,7 +108,7 @@ Voor de onderste resultaten gebruikt u in Splunk de `tail`. In Azure Monitor kun
 
 
 ### <a name="extending-the-result-set-with-new-fieldscolumns"></a>De resultatenset uitbreiden met nieuwe velden/kolommen
-Splunk heeft ook een functie `eval`, die niet vergelijkbaar is met de operator `eval`. Zowel de operator `eval` in Splunk als de operator `extend` in Azure Monitor ondersteunen alleen scalaire functies en reken kundige Opera tors.
+Splunk heeft ook een `eval` functie die niet vergelijkbaar is met de operator `eval`. Zowel de operator `eval` in Splunk als de operator `extend` in Azure Monitor ondersteunen alleen scalaire functies en reken kundige Opera tors.
 
 | |  | |
 |:---|:---|:---|
@@ -119,7 +118,7 @@ Splunk heeft ook een functie `eval`, die niet vergelijkbaar is met de operator `
 
 
 ### <a name="rename"></a>Naam wijzigen 
-Azure Monitor gebruikt de operator `project-rename` om de naam van een veld te wijzigen. met `project-rename` kan de query profiteren van alle indexen die vooraf zijn gebouwd voor een veld. Splunk heeft een operator `rename` om hetzelfde te doen.
+Azure Monitor gebruikt de operator `project-rename` om de naam van een veld te wijzigen. met `project-rename` kan de query profiteren van alle indexen die vooraf zijn gebouwd voor een veld. Splunk heeft een `rename` operator om hetzelfde te doen.
 
 | |  | |
 |:---|:---|:---|
@@ -136,7 +135,7 @@ Splunk lijkt geen operator te hebben die vergelijkbaar is met `project-away`. U 
 | |  | |
 |:---|:---|:---|
 | Splunk | **table** |  <code>Event.Rule=330009.2<br>&#124; table rule, state</code> |
-| Azure Monitor | **project**<br>**project-weg** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
+| Azure Monitor | **project**<br>**project-away** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
 | | |
 
 
@@ -192,7 +191,7 @@ In Log Analytics in de Azure Portal wordt alleen de eerste kolom weer gegeven. A
 | |  | |
 |:---|:---|:---|
 | Splunk | **bedragvelden** |  <code>Event.Rule=330009.2<br>&#124; fields App.Version, App.Platform</code> |
-| Azure Monitor | **facetten** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; facet by App_Branch, App_Version</code> |
+| Azure Monitor | **facets** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; facet by App_Branch, App_Version</code> |
 | | |
 
 
@@ -204,7 +203,7 @@ U kunt in plaats daarvan `summarize arg_min()` gebruiken om de volg orde van de 
 | |  | |
 |:---|:---|:---|
 | Splunk | **ontdubbeling** |  <code>Event.Rule=330009.2<br>&#124; dedup device_id sortby -batterylife</code> |
-| Azure Monitor | **samenvatten arg_max ()** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; summarize arg_max(batterylife, *) by device_id</code> |
+| Azure Monitor | **arg_max samenvatten ()** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; summarize arg_max(batterylife, *) by device_id</code> |
 | | |
 
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4130b05be1a4abb2166514b730c3d21bd5ece97
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: dcdd89ba7741257443cf5e7567c59a6986e43c20
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803577"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424833"
 ---
 # <a name="conditional-access-risk-based-conditional-access"></a>Voorwaardelijke toegang: voorwaardelijke toegang op basis van een risico
 
@@ -30,7 +30,7 @@ Organisaties met Azure AD Premium P2-licenties kunnen beleids regels voor voorwa
 
 Als u dit beleid inschakelt, moeten alle gebruikers binnen 14 dagen worden geregistreerd voor Azure Multi-Factor Authentication. 
 
-1. Meld u aan bij de **Azure-portal**.
+1. Meld u aan bij de **Azure Portal**.
 1. Klik op **Alle services** en blader vervolgens naar **Azure AD Identity Protection**.
 1. Klik op **Registratie bij MFA**.
 1. Onder **toewijzingen**selecteert u **gebruikers**.
@@ -44,7 +44,7 @@ Als u dit beleid inschakelt, moeten alle gebruikers binnen 14 dagen worden gereg
 
 Microsoft werkt samen met onderzoekers, justitie en politie, diverse beveiligingsteams bij Microsoft en andere betrouwbare bronnen om naar paren van gebruikersnamen en wachtwoorden te zoeken. Wanneer een van deze paren overeenkomt met een account in uw omgeving, kan een op risicogebeurtenissen gebaseerde wachtwoordwijziging worden geactiveerd met behulp van het volgende beleid.
 
-1. Meld u aan bij de **Azure-portal**.
+1. Meld u aan bij de **Azure Portal**.
 1. Klik op **Alle services** en blader vervolgens naar **Azure AD Identity Protection**.
 1. Klik op **beleid voor gebruikers Risico's**.
 1. Onder **toewijzingen**selecteert u **gebruikers**
@@ -62,7 +62,7 @@ Microsoft werkt samen met onderzoekers, justitie en politie, diverse beveiliging
 
 De meeste gebruikers vertonen normaal gedrag dat kan worden getraceerd. Wanneer ze buiten de norm hiervoor vallen, zou het riskant kunnen zijn om hen toe te staan zich zomaar aan te melden. Mogelijk wilt u die gebruiker blok keren of kan hij of zij vragen om multi-factor Authentication uit te voeren om te bewijzen dat ze in werkelijkheid zijn. Als u een beleid wilt inschakelen waarbij MFA is vereist als er een risicovolle aanmelding wordt gedetecteerd, schakelt u het volgende beleid in.
 
-1. Meld u aan bij de **Azure-portal**.
+1. Meld u aan bij de **Azure Portal**.
 1. Klik op **Alle services** en blader vervolgens naar **Azure AD Identity Protection**.
 1. Klik op **beleid voor aanmeldings Risico's**
 1. Onder **toewijzingen**selecteert u **gebruikers**
@@ -79,6 +79,8 @@ De meeste gebruikers vertonen normaal gedrag dat kan worden getraceerd. Wanneer 
 ## <a name="next-steps"></a>Volgende stappen
 
 [Algemeen beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
+
+[Effect bepalen met de modus alleen rapport-alleen voor voorwaardelijke toegang](howto-conditional-access-report-only.md)
 
 [Aanmeld gedrag simuleren met het What If hulp programma voor voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)
 

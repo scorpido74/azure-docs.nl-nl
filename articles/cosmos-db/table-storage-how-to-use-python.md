@@ -1,6 +1,6 @@
 ---
-title: Aan de slag met Azure Table Storage en de Azure Cosmos DB Table-API met behulp van Python
-description: Sla gestructureerde gegevens op in de cloud met Azure-tabelopslag of de Azure Cosmos DB Table-API.
+title: Azure Cosmos DB Table-API en Azure-tabel opslag gebruiken met python
+description: Sla gestructureerde gegevens op in de cloud met Azure Table Storage of de Azure Cosmos DB Table-API.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: python
@@ -9,12 +9,12 @@ ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: 883965d1d59e5523527a6aab1e83521d7491bf82
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 6c01b9581795f4ac74bd74757b9116c0d5df586d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675702"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444759"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Aan de slag met Azure Table Storage en de Azure Cosmos DB Table-API met behulp van Python
 
@@ -89,7 +89,7 @@ table_service.create_table('tasktable')
 
 ## <a name="add-an-entity-to-a-table"></a>Een entiteit toevoegen aan een tabel
 
-Als u een entiteit wilt toevoegen, maakt u eerst een-object dat uw entiteit vertegenwoordigt. vervolgens geeft u het object door aan de [methode TableService. insert_entity][py_TableService]. Het entiteits object kan een woorden lijst of een object van het type [entity][py_Entity]zijn en definieert de eigenschaps namen en waarden van uw entiteit. Elke entiteit moet de vereiste [PartitionKey- en RowKey](#partitionkey-and-rowkey)-eigenschappen bevatten, naast de andere eigenschappen die u voor de entiteit definieert.
+Als u een entiteit wilt toevoegen, maakt u eerst een-object dat uw entiteit vertegenwoordigt en geeft u het object door aan de [methode TableService. insert_entity][py_TableService]. Het entiteits object kan een woorden lijst of een object van het type [entity][py_Entity]zijn en definieert de eigenschaps namen en waarden van uw entiteit. Elke entiteit moet de vereiste [PartitionKey- en RowKey](#partitionkey-and-rowkey)-eigenschappen bevatten, naast de andere eigenschappen die u voor de entiteit definieert.
 
 In dit voor beeld wordt een Dictionary-object gemaakt dat een entiteit vertegenwoordigt, waarna het wordt door gegeven aan de methode [insert_entity][py_insert_entity] om deze aan de tabel toe te voegen:
 
@@ -118,7 +118,7 @@ De Table-service gebruikt **PartitionKey** voor intelligente distributie van tab
 
 ## <a name="update-an-entity"></a>Een entiteit bijwerken
 
-Als u alle eigenschaps waarden van een entiteit wilt bijwerken, roept u de methode [update_entity][py_update_entity] aan. In dit voorbeeld ziet u hoe u een bestaande entiteit vervangt door een bijgewerkte versie:
+Als u alle eigenschaps waarden van een entiteit wilt bijwerken, roept u de [update_entity][py_update_entity] methode aan. In dit voorbeeld ziet u hoe u een bestaande entiteit vervangt door een bijgewerkte versie:
 
 ```python
 task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
@@ -141,7 +141,7 @@ table_service.insert_or_replace_entity('tasktable', task)
 ```
 
 > [!TIP]
-> De methode [update_entity][py_update_entity] vervangt alle eigenschappen en waarden van een bestaande entiteit, die u ook kunt gebruiken om eigenschappen van een bestaande entiteit te verwijderen. U kunt de [merge_entity][py_merge_entity] -methode gebruiken om een bestaande entiteit bij te werken met nieuwe of gewijzigde eigenschaps waarden zonder de entiteit volledig te vervangen.
+> De [update_entity][py_update_entity] -methode vervangt alle eigenschappen en waarden van een bestaande entiteit, die u ook kunt gebruiken om eigenschappen van een bestaande entiteit te verwijderen. U kunt de methode [merge_entity][py_merge_entity] gebruiken om een bestaande entiteit bij te werken met nieuwe of gewijzigde eigenschaps waarden zonder de entiteit volledig te vervangen.
 
 ## <a name="modify-multiple-entities"></a>Meerdere entiteiten wijzigen
 
@@ -176,7 +176,7 @@ with table_service.batch('tasktable') as batch:
 
 ## <a name="query-for-an-entity"></a>Een query uitvoeren voor een entiteit
 
-Als u een query wilt uitvoeren voor een entiteit in een tabel, geeft u de PartitionKey en RowKey door aan de [TableService][py_TableService]. methode [get_entity][py_get_entity] .
+Als u een query wilt uitvoeren voor een entiteit in een tabel, geeft u de PartitionKey en RowKey door aan de [TableService][py_TableService]. [get_entity][py_get_entity] methode.
 
 ```python
 task = table_service.get_entity('tasktable', 'tasksSeattle', '001')
@@ -214,7 +214,7 @@ for task in tasks:
 
 ## <a name="delete-an-entity"></a>Een entiteit verwijderen
 
-Verwijder een entiteit door de **PartitionKey** en **RowKey** door te geven aan de methode [delete_entity][py_delete_entity] .
+Verwijder een entiteit door de **PartitionKey** en **RowKey** door te geven aan de [delete_entity][py_delete_entity] methode.
 
 ```python
 table_service.delete_entity('tasktable', 'tasksSeattle', '001')
@@ -222,7 +222,7 @@ table_service.delete_entity('tasktable', 'tasksSeattle', '001')
 
 ## <a name="delete-a-table"></a>Een tabel verwijderen
 
-Als u een tabel of een van de entiteiten niet meer nodig hebt, roept u de [delete_table][py_delete_table] -methode op om de tabel permanent uit Azure Storage te verwijderen.
+Als u een tabel of een van de entiteiten niet meer nodig hebt, roept u de [delete_table][py_delete_table] methode op om de tabel permanent te verwijderen uit Azure Storage.
 
 ```python
 table_service.delete_table('tasktable')

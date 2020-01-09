@@ -4,14 +4,14 @@ description: Meer informatie over het schalen van een exemplaar van een Azure si
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/11/2019
 ms.author: zhshang
-ms.openlocfilehash: 0c4f91ee9cea5e8b13ecfedafffdc1715fc242c2
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: c8d74342e624b837c7ee803a2bcdcc12a3fb814b
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464176"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659284"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>Hoe kan ik een service-exemplaar van Azure signalering schalen?
 Dit artikel laat u zien hoe u uw exemplaar van de Azure signalerings service kunt schalen. Er zijn twee scenario's voor schalen, omhoog schalen en uitschalen.
@@ -19,12 +19,12 @@ Dit artikel laat u zien hoe u uw exemplaar van de Azure signalerings service kun
 * [Omhoog schalen](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): krijg meer eenheden, verbindingen, berichten en meer. U kunt omhoog schalen door de prijs categorie te wijzigen van vrij naar standaard.
 * [Uitschalen](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Verhoog het aantal signalerings eenheden. U kunt uitschalen tot Maxi maal 100 eenheden.
 
-De schaal instellingen nemen enkele minuten in beslag. U hoeft uw code niet te wijzigen of uw server toepassing opnieuw te implementeren.
+De schaal instellingen nemen enkele minuten in beslag. In zeldzame gevallen kan het ongeveer 30 minuten duren om toe te passen. U hoeft uw code niet te wijzigen of uw server toepassing opnieuw te implementeren.
 
 Zie [prijs informatie voor de Azure signalerings service](https://azure.microsoft.com/pricing/details/signalr-service/)voor meer informatie over de prijzen en capaciteit van de afzonderlijke signalerings service.  
 
 > [!NOTE]
-> De signaal service wijzigen van de laag **gratis** in de laag **standaard** of omgekeerd, het IP-adres van de open bare service wordt gewijzigd en het duurt doorgaans 3-60 minuten om de wijziging door te geven aan DNS-servers op het hele internet. Uw service is mogelijk onbereikbaar voordat DNS wordt bijgewerkt. Over het algemeen is het niet raadzaam om uw prijs categorie te vaak wijzigen.
+> De signaal service wijzigen van de laag **gratis** in de laag **standaard** of omgekeerd, het IP-adres van de open bare service wordt gewijzigd en het duurt doorgaans 30-60 minuten om de wijziging door te geven aan DNS-servers op het hele internet. Uw service is mogelijk onbereikbaar voordat DNS wordt bijgewerkt. Over het algemeen is het niet raadzaam om uw prijs categorie te vaak wijzigen.
 
 
 ## <a name="scale-on-azure-portal"></a>Schalen op Azure Portal
@@ -33,7 +33,7 @@ Zie [prijs informatie voor de Azure signalerings service](https://azure.microsof
 
 2. Selecteer op de pagina signalerings service in het menu links **schalen**.
    
-3. Kies uw prijs categorie en klik vervolgens op **selecteren**. U moet het aantal eenheden instellen voor de **Standard** -laag.
+3. Kies uw prijs categorie en klik vervolgens op **selecteren**. Stel het aantal eenheden in voor de **Standard** -laag.
    
     ![Schalen op Portal](./media/signalr-howto-scale/signalr-howto-scale.png)
 
@@ -41,7 +41,7 @@ Zie [prijs informatie voor de Azure signalerings service](https://azure.microsof
 
 ## <a name="scale-using-azure-cli"></a>Schalen met behulp van Azure CLI
 
-Met dit script maakt u een nieuwe signalerings service resource van de **gratis** laag en een nieuwe resource groep en schaalt u deze naar de **Standard** -laag. 
+Met dit script maakt u een nieuwe signalerings service resource van de **gratis** laag en een nieuwe resource groep en schaalt u deze in de laag **standaard** . 
 
 ```azurecli-interactive
 #!/bin/bash
@@ -81,7 +81,7 @@ Noteer de naam die wordt gegenereerd voor de nieuwe resourcegroep. U hebt deze n
 
 Zie [prijs informatie voor de seingevings service](https://azure.microsoft.com/pricing/details/signalr-service/)voor gedetailleerde informatie, zoals opgenomen berichten en verbindingen voor elke prijs categorie.
 
-Zie voor een tabel met Service limieten, quota en beperkingen in elke laag [signaal service limieten](../azure-subscription-service-limits.md#azure-signalr-service-limits).
+Zie voor een tabel met Service limieten, quota en beperkingen in elke laag [signaal service limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits).
 
 ## <a name="next-steps"></a>Volgende stappen
 

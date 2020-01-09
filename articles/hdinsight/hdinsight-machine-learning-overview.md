@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 4a1e621570f3bf5fdb78a2fd7b29ce0d1b51187f
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 679b59ac786f863c8a5f34aec71f51c5dc75a167
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951782"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608700"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Machine learning op HDInsight
 
@@ -64,4 +64,4 @@ Micro soft heeft de gratis, gebruiks vriendelijke, open-source [Microsoft Cognit
 
 * [Microsoft Cognitive Toolkit diepe leer model gebruiken met Azure HDInsight Spark cluster](spark/apache-spark-microsoft-cognitive-toolkit.md)
 * [Caffe gebruiken in Azure HDInsight Spark voor gedistribueerde diep gaande lessen](spark/apache-spark-deep-learning-caffe.md)
-* [Diep gaande lessen en AI-Frameworks op de Data Science Virtual Machine (DSVM)](../machine-learning/data-science-virtual-machine/dsvm-deep-learning-ai-frameworks.md)
+* [Diep gaande lessen en AI-Frameworks op de Data Science Virtual Machine (DSVM)](../machine-learning/data-science-virtual-machine/dsvm-tools-deep-learning-frameworks.md)

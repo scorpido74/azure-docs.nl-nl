@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: f9203f77d5b398f53fcb7c9fceb70604b364a4e0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 17802228c8f08e3c8f1533296e2d39080f6f8b7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790300"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456617"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Zelf studie: een geautomatiseerde, op planning gebaseerde, terugkerende werk stromen maken met behulp van Azure Logic Apps
 
@@ -58,7 +58,7 @@ Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Porta
    |----------|-------|-------------|
    | **Naam** | LA-TravelTime | De naam van uw logische app, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) kan bevatten. In dit voor beeld wordt gebruikgemaakt van ' LA-TravelTime '. |
    | **Abonnement** | <*your-Azure-subscription-name*> | De naam van uw Azure-abonnement |
-   | **Resourcegroep** | LA-TravelTime-RG | De naam voor de [Azure-resource groep](../azure-resource-manager/resource-group-overview.md), die wordt gebruikt om verwante resources te organiseren. In dit voor beeld wordt ' LA-TravelTime-RG ' gebruikt. |
+   | **Resourcegroep** | LA-TravelTime-RG | De naam voor de [Azure-resource groep](../azure-resource-manager/management/overview.md), die wordt gebruikt om verwante resources te organiseren. In dit voor beeld wordt ' LA-TravelTime-RG ' gebruikt. |
    | **Locatie** | VS - west | De tKan-regio waar de logische app-gegevens moeten worden opgeslagen. In dit voor beeld wordt ' West US ' gebruikt. |
    | **Log Analytics** | Uit | Behoud de instelling **Uit** voor het vastleggen van diagnostische gegevens. |
    ||||

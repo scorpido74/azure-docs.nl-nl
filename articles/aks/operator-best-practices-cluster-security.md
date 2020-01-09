@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
-ms.openlocfilehash: 46e44804ddbabd8bf5620ad9516f1ca2d5017bfa
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 4629e4e9cfd5c8f9861b692b2aec89057f83587c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019315"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442922"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor beveiliging van clusters en upgrades in Azure Kubernetes Service (AKS)
 
 Wanneer u clusters in Azure Kubernetes Service (AKS) beheert, is de beveiliging van uw workloads en gegevens een van de belangrijkste factoren. Met name wanneer u meerdere tenants clusters met behulp van de logische isolatie uitvoert, moet u voor het beveiligen van toegang tot resources en workloads. Om te beperken het risico van aanvallen, moet u ook om te controleren of dat u de meest recente Kubernetes en knooppunt OS beveiligingsupdates toepassen.
 
-In dit artikel richt zich op het beveiligen van uw AKS-cluster. In deze zelfstudie leert u procedures om het volgende te doen:
+In dit artikel richt zich op het beveiligen van uw AKS-cluster. Procedures voor:
 
 > [!div class="checklist"]
 > * Azure Active Directory en op rollen gebaseerd toegangsbeheer gebruiken voor het beveiligen van toegang tot de API-server
@@ -27,6 +27,8 @@ In dit artikel richt zich op het beveiligen van uw AKS-cluster. In deze zelfstud
 > * Knooppunten bijwerken tot datum blijven en beveiligingspatches automatisch worden toegepast
 
 U kunt ook de aanbevolen procedures voor [container Image Management][best-practices-container-image-management] en voor [pod-beveiliging][best-practices-pod-security]lezen.
+
+U kunt ook [integratie van Azure Kubernetes Services met Security Center][security-center-aks] gebruiken om bedreigingen te detecteren en aanbevelingen voor het beveiligen van uw AKS-clusters te bekijken.
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>Beveiligde toegang tot de API-server en cluster-knooppunten
 
@@ -235,3 +237,4 @@ In dit artikel is gericht op over het beveiligen van uw AKS-cluster. Voor het im
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources
 [aks-ssh]: ssh.md
+[security-center-aks]: /azure/security-center/azure-kubernetes-service-integration

@@ -8,16 +8,16 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/13/2019
 ms.custom: mvc
-ms.openlocfilehash: cd1a483cd50051ade5d7d4f45c8eb7e5d8351787
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f9074a004683393df18d621a679fbb7378dc6704
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900446"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398621"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Prestatieproblemen vinden en diagnosticeren met behulp van Azure Application Insights
 
-Azure Application Insights verzamelt telemetrie van uw toepassing om de werking en prestaties te analyseren.  U kunt deze informatie gebruiken om problemen te identificeren die zich kunnen voordoen of om te identificeren welke verbeteringen in de toepassing het meeste effect zouden hebben voor gebruikers.  Deze zelfstudie leidt u door het proces van het analyseren van de prestaties van zowel de servercomponenten van uw applicatie als het perspectief van de client.  In deze zelfstudie leert u procedures om het volgende te doen:
+Azure Application Insights verzamelt telemetrie van uw toepassing om de werking en prestaties te analyseren.  U kunt deze informatie gebruiken om problemen te identificeren die zich kunnen voordoen of om te identificeren welke verbeteringen in de toepassing het meeste effect zouden hebben voor gebruikers.  Deze zelfstudie leidt u door het proces van het analyseren van de prestaties van zowel de servercomponenten van uw applicatie als het perspectief van de client.  Procedures voor:
 
 > [!div class="checklist"]
 > * Het identificeren van de prestaties van bewerkingen aan de serverzijde
@@ -28,7 +28,7 @@ Azure Application Insights verzamelt telemetrie van uw toepassing om de werking 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor het voltooien van deze zelfstudie:
+Vereisten om deze zelfstudie te voltooien:
 
 - Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende werk belastingen:
     - ASP.NET-ontwikkeling en webontwikkeling
@@ -72,7 +72,7 @@ Application Insights verzamelt prestatiedetails over de verschillende bewerkinge
 
     ![Prestatietip](media/tutorial-performance/6-perf-tip.png)
 
-8.  Voor verdere analyse kunt u klikken op **tracering downloaden** om de tracering te downloaden naar Visual Studio.
+8.   Voor verdere analyse kunt u klikken op **tracering downloaden** om de tracering te downloaden. U kunt deze gegevens weer geven met behulp van [PerfView](https://github.com/Microsoft/perfview#perfview-overview).
 
 ## <a name="use-logs-data-for-server"></a>Logboek gegevens gebruiken voor Server
  Logboeken bieden een uitgebreide query taal waarmee u alle gegevens kunt analyseren die zijn verzameld door Application Insights. U kunt deze gebruiken om diepgaande analysen uit te voeren op aanvraag- en prestatiegegevens.
@@ -87,7 +87,7 @@ Application Insights verzamelt prestatiedetails over de verschillende bewerkinge
 ## <a name="identify-slow-client-operations"></a>Trage clientbewerkingen identificeren
 Naast het identificeren van serverprocessen om te optimaliseren, kan Application Insights ook het perspectief van clientbrowsers analyseren.  Dit kan u helpen potentiële verbeteringen aan clientcomponenten te identificeren en zelfs problemen met verschillende browsers of verschillende locaties te identificeren.
 
-1. Selecteer **browser** onder **onderzoeken** en klik vervolgens op **browser prestaties** of selecteer **prestaties** onder **onderzoeken** en schakel over naar het tabblad **browser** door te klikken op de wissel knop Server/browser in de rechter bovenhoek van Open de samen vatting van de browser prestaties. Dit geeft een visueel overzicht van verschillende telemetrieën van uw toepassing vanuit het perspectief van de browser.
+1. Selecteer **browser** onder **onderzoeken** en klik vervolgens op **browser prestaties** of selecteer **prestaties** onder **onderzoeken** en schakel over naar het tabblad **browser** door te klikken op de wissel knop Server/browser in de rechter bovenhoek om de samen vatting van de browser prestaties te openen. Dit geeft een visueel overzicht van verschillende telemetrieën van uw toepassing vanuit het perspectief van de browser.
 
     ![Browseroverzicht](media/tutorial-performance/8-browser.png)
 

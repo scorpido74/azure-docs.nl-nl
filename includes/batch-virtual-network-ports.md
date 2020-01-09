@@ -15,12 +15,12 @@ ms.workload: ''
 ms.date: 07/16/2019
 ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: c8b25858556538835d6a84bf0d6699f9906f1438
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 98f5269c27643e7ce6c0aaf9b359503a124d9232
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68322659"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75663112"
 ---
 ### <a name="general-requirements"></a>Algemene vereisten
 
@@ -38,7 +38,7 @@ Aanvullende vereisten voor VNet verschillen, afhankelijk van of de Batch-pool zi
 
 **Ondersteunde VNets**: alleen op Azure Resource Manager gebaseerde VNets
 
-**Subnet-ID**: bij het opgeven van het subnet met behulp van de Batch-API's moet u de *resource-id* van het subnet gebruiken. De subnet-id het formulier heeft de vorm van:
+**Subnet-ID**: bij het opgeven van het subnet met behulp van de Batch-API's moet u de *resource-id* van het subnet gebruiken. De subnet-id heeft de vorm van:
 
   ```
   /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/virtualNetworks/{network}/subnets/{subnet}
@@ -46,7 +46,7 @@ Aanvullende vereisten voor VNet verschillen, afhankelijk van of de Batch-pool zi
 
 **Machtigingen**: controleer of uw beveiligingsbeleid of de vergrendelingen die voor het VNet-abonnement of de resourcegroep gelden, een gebruikersmachtiging beperkt om het VNet te beheren.
 
-**Aanvullende netwerkresources**: Batch kent automatisch extra netwerkresources toe aan de resourcegroep met het VNet. Voor elke 50 toegewezen knoop punten (of elke 20 knoop punten met een lage prioriteit) wijst de batch de volgende handelingen toe: 1 netwerk beveiligings groep (NSG), 1 openbaar IP-adres en 1 load balancer. De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](../articles/azure-subscription-service-limits.md) van het abonnement. Voor grote pools moet u mogelijk een verhoging van het quotum aanvragen voor een of meer van deze resources.
+**Aanvullende netwerkresources**: Batch kent automatisch extra netwerkresources toe aan de resourcegroep met het VNet. Voor elke 50 toegewezen knooppunten (of elke 20 knooppunten met een lage prioriteit) kent Batch het volgende toe: 1 netwerkbeveiligingsgroep, 1 openbaar IP-adres en 1 load balancer. De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) van het abonnement. Voor grote pools moet u mogelijk een verhoging van het quotum aanvragen voor een of meer van deze resources.
 
 #### <a name="network-security-groups"></a>Netwerkbeveiligingsgroepen
 
@@ -64,16 +64,16 @@ U hoeft netwerkbeveiligingsgroepen niet op te geven op subnetniveau omdat Batch 
 
 **Inkomende beveiligingsregels**
 
-| IP-adressen van bron | Bronservicetag | Bronpoorten | Bestemming | Doelpoorten | Protocol | Action |
+| IP-adressen van bron | Servicetag van bron | Bronpoorten | Bestemming | Doelpoorten | Protocol | Actie |
 | --- | --- | --- | --- | --- | --- | --- |
-| N/A | `BatchNodeManagement`[](../articles/virtual-network/security-overview.md#service-tags) Servicetag | * | Any | 29876-29877 | TCP | Allow |
-| IP-adressen van gebruikers bronnen voor het op afstand verkrijgen van toegang tot de reken knooppunten en/of het subnet van het reken knooppunt voor Linux-taken voor meerdere exemplaren, indien nodig. | N/A | * | Any | 3389 (Windows), 22 (Linux) | TCP | Allow |
+| N/A | `BatchNodeManagement` [servicetag](../articles/virtual-network/security-overview.md#service-tags) | * | Alle | 29876-29877 | TCP | Toestaan |
+| IP-adressen van gebruikers bronnen voor het op afstand verkrijgen van toegang tot de reken knooppunten en/of het subnet van het reken knooppunt voor Linux-taken voor meerdere exemplaren, indien nodig. | N/A | * | Alle | 3389 (Windows), 22 (Linux) | TCP | Toestaan |
 
 **Uitgaande beveiligingsregels**
 
-| Source | Bronpoorten | Bestemming | Doelservicetag | Doelpoorten | Protocol | Action |
+| Bron | Bronpoorten | Bestemming | Doelservicetag | Doelpoorten | Protocol | Actie |
 | --- | --- | --- | --- | --- | --- | --- |
-| Any | * | [Servicetag](../articles/virtual-network/security-overview.md#service-tags) | `Storage`(in dezelfde regio als uw batch-account en VNet) | 443 | TCP | Allow |
+| Alle | * | [Servicetag](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (in dezelfde regio als uw batch-account en VNet) | 443 | TCP | Toestaan |
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Pools die zijn gemaakt in de Cloud Services-configuratie
 
@@ -97,13 +97,13 @@ Configureer inkomend verkeer op poort 3389 voor Windows als u RDP-toegang tot de
 
 **Inkomende beveiligingsregels**
 
-| IP-adressen van bron | Bronpoorten | Bestemming | Doelpoorten | Protocol | Action |
+| IP-adressen van bron | Bronpoorten | Bestemming | Doelpoorten | Protocol | Actie |
 | --- | --- | --- | --- | --- | --- |
-Any <br /><br />Hoewel dit in feite 'alles toestaan' vereist, past de Batch-service een regel voor toegangsbeheerlijsten toe op het niveau van elk knooppunt, die ervoor zorgt dat alle IP-adressen van niet-Batch-services worden uitgefilterd. | * | Any | 10100, 20100, 30100 | TCP | Allow |
-| Optioneel, voor het toestaan van RDP-toegang tot reken knooppunten. | * | Any | 3389 | TCP | Allow |
+Alle <br /><br />Hoewel dit in feite 'alles toestaan' vereist, past de Batch-service een regel voor toegangsbeheerlijsten toe op het niveau van elk knooppunt, die ervoor zorgt dat alle IP-adressen van niet-Batch-services worden uitgefilterd. | * | Alle | 10100, 20100, 30100 | TCP | Toestaan |
+| Optioneel, voor het toestaan van RDP-toegang tot reken knooppunten. | * | Alle | 3389 | TCP | Toestaan |
 
 **Uitgaande beveiligingsregels**
 
-| Source | Bronpoorten | Bestemming | Doelpoorten | Protocol | Action |
+| Bron | Bronpoorten | Bestemming | Doelpoorten | Protocol | Actie |
 | --- | --- | --- | --- | --- | --- |
-| Any | * | Any | 443  | Any | Allow |
+| Alle | * | Alle | 443  | Alle | Toestaan |

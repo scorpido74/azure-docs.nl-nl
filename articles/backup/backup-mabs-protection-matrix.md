@@ -3,12 +3,12 @@ title: Waarvan kan Azure Backup Server back-ups maken?
 description: In dit artikel wordt een ondersteunings matrix weer gegeven met alle werk belastingen, gegevens typen en installaties die Azure Backup Server beveiligt.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7e34ba81ad20b2d6a4e89995ab8b834f5f7dc725
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 8f1ae1432f619dafc5084d250e3f89707405e08b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996150"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449890"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Beveiligingsmatrix voor Azure Backup Server
 
@@ -16,7 +16,7 @@ In dit artikel vindt u een overzicht van de verschillende servers en workloads d
 
 ## <a name="protection-support-matrix"></a>Ondersteuningsmatrix voor beveiliging
 
-|Werkbelasting|Version|Azure Backup Server</br> installation|Ondersteund Azure Backup Server|Beveiliging en herstel|
+|Werkbelasting|Versie|Azure Backup Server</br> installation|Ondersteund Azure Backup Server|Beveiliging en herstel|
 |------------|-----------|---------------|--------------|--------------|
 |Client-computers (64-bit en 32-bit)|Windows 10|Fysieke server<br /><br />Virtuele Hyper-V-machine<br /><br />Virtuele VMware-machine|V3, V2|Volume, share, map, bestanden, ontdubbelde volumes<br /><br />Beveiligde volumes moeten NTFS zijn. FAT en FAT32 worden niet ondersteund.<br /><br />Volumes moeten minimaal 1 GB zijn. Azure Backup Server gebruikt Volume Shadow Copy Service (VSS) om de moment opname van de gegevens te maken en de moment opname werkt alleen als het volume ten minste 1 GB is.|
 |Client-computers (64-bit en 32-bit)|Windows 8.1|Fysieke server<br /><br />Virtuele Hyper-V-machine|V3, V2|Bestanden<br /><br />Beveiligde volumes moeten NTFS zijn. FAT en FAT32 worden niet ondersteund.<br /><br />Volumes moeten minimaal 1 GB zijn. Azure Backup Server gebruikt Volume Shadow Copy Service (VSS) om de moment opname van de gegevens te maken en de moment opname werkt alleen als het volume ten minste 1 GB is.|
@@ -82,9 +82,23 @@ In dit artikel vindt u een overzicht van de verschillende servers en workloads d
 
 ## <a name="azure-expressroute-support"></a>Ondersteuning voor Azure ExpressRoute
 
-Als Azure ExpressRoute is geconfigureerd met persoonlijke of micro soft-peering, kan het niet worden gebruikt voor het maken van een back-up van de gegevens in Azure.
+U kunt een back-up maken van uw gegevens via Azure ExpressRoute met open bare peering (beschikbaar voor oude circuits) en micro soft-peering. Back-up via privé-peering wordt niet ondersteund.
 
-Als Azure ExpressRoute is geconfigureerd met open bare peering, kan dit worden gebruikt om een back-up te maken van de gegevens in Azure.
+Met open bare peering: Zorg ervoor dat u toegang hebt tot de volgende domeinen/adressen:
+
+* `http://www.msftncsi.com/ncsi.txt`
+* `microsoft.com`
+* `.WindowsAzure.com`
+* `.microsoftonline.com`
+* `.windows.net`
+
+Bij micro soft-peering moet u de volgende services/regio's en relevante Community-waarden selecteren:
+
+* Azure Active Directory (12076:5060)
+* Microsoft Azure regio (op basis van de locatie van uw Recovery Services kluis)
+* Azure Storage (op basis van de locatie van uw Recovery Services kluis)
+
+Zie de [ExpressRoute-routerings vereisten](https://docs.microsoft.com/azure/expressroute/expressroute-routing)voor meer informatie.
 
 >[!NOTE]
 >Open bare peering is afgeschaft voor nieuwe circuits.
@@ -93,17 +107,17 @@ Als Azure ExpressRoute is geconfigureerd met open bare peering, kan dit worden g
 
 Azure Backup Server kunnen gegevens in de volgende geclusterde toepassingen beveiligen:
 
-- Bestandsservers
+* Bestandsservers
 
-- SQL Server
+* SQL Server
 
-- Hyper-V: als u een Hyper-V-cluster beveiligt met een uitgebreide MABS-beveiligings agent, kunt u geen secundaire beveiliging toevoegen voor de beveiligde Hyper-V-werk belastingen.
+* Hyper-V: als u een Hyper-V-cluster beveiligt met een uitgebreide MABS-beveiligings agent, kunt u geen secundaire beveiliging toevoegen voor de beveiligde Hyper-V-werk belastingen.
 
     Als u Hyper-V uitvoert op Windows Server 2008 R2, moet u ervoor zorgen dat u de update installeert die wordt beschreven in KB [975354](https://support.microsoft.com/kb/975354).
     Als u Hyper-V uitvoert op Windows Server 2008 R2 in een cluster configuratie, moet u SP2 en KB [971394](https://support.microsoft.com/kb/971394)installeren.
 
-- Exchange Server-Azure Backup Server kan niet-gedeelde schijf clusters beveiligen voor ondersteunde Exchange Server-versies (cluster-continue replicatie), en kan ook Exchange Server beveiligen die is geconfigureerd voor lokale continue replicatie.
+* Exchange Server-Azure Backup Server kan niet-gedeelde schijf clusters beveiligen voor ondersteunde Exchange Server-versies (cluster-continue replicatie), en kan ook Exchange Server beveiligen die is geconfigureerd voor lokale continue replicatie.
 
-- SQL Server-Azure Backup Server biedt geen ondersteuning voor het maken van back-ups van SQL Server-data bases die worden gehost op Csv's (cluster Shared volumes).
+* SQL Server-Azure Backup Server biedt geen ondersteuning voor het maken van back-ups van SQL Server-data bases die worden gehost op Csv's (cluster Shared volumes).
 
 Azure Backup Server kunt de cluster werkbelastingen beveiligen die zich in hetzelfde domein bevinden als de MABS-server, en in een onderliggend of vertrouwd domein. Als u gegevens bronnen in niet-vertrouwde domeinen of werk groepen wilt beveiligen, gebruikt u NTLM of certificaat verificatie voor één server of alleen certificaat authenticatie voor een cluster.

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e93666c9a6388fb008bbe85c836d732685ed63a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a8d67d1d318bf823145a57d2e55774695d151996
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848320"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425303"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Fout berichten oplossen vanuit de NPS-extensie voor Azure Multi-Factor Authentication
 
@@ -96,7 +96,11 @@ Als u een van deze fouten tegen komt, raden wij u aan [contact op](#contact-micr
 
 Als uw gebruikers problemen ondervinden [met verificatie in twee stappen](../user-help/multi-factor-authentication-end-user-troubleshoot.md), helpen ze zelf problemen op te lossen.
 
-### <a name="contact-microsoft-support"></a>Neem contact op met micro soft ondersteuning
+### <a name="health-check-script"></a>Status controle script
+
+Het [Azure MFA-status controle script](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb) voor de NPS-extensie is beschikbaar in de TechNet-galerie voor het uitvoeren van een eenvoudige status controle bij het oplossen van problemen met de NPS-extensie. Voer het script uit en kies optie 3.
+
+### <a name="contact-microsoft-support"></a>Contact opnemen met Microsoft Ondersteuning
 
 Als u meer hulp nodig hebt, neemt u contact op met een ondersteunings medewerker via [ondersteuning voor Azure multi-factor Authentication-Server](https://support.microsoft.com/oas/default.aspx?prid=14947). Wanneer u contact met ons opneemt, is het handig als u zoveel mogelijk informatie over uw probleem kunt opnemen. Informatie die u kunt opgeven bevat de pagina waar u de fout hebt gezien, de specifieke fout code, de specifieke sessie-ID, de ID van de gebruiker die de fout heeft gezien en logboeken voor fout opsporing.
 

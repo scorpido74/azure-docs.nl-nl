@@ -1,5 +1,5 @@
 ---
-title: Problemen met Azure-toepassing Insights Profiler oplossen | Microsoft Docs
+title: Problemen met Azure-toepassing Insights Profiler oplossen
 description: Dit artikel bevat probleemoplossings stappen en informatie om ontwikkel aars te helpen bij het inschakelen of gebruiken van Application Insights Profiler.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7430f04846a1e66680f85f939854fd50a5df41e4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6022bf975352f9f70c4ba8aa716a695ead590a32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899976"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432389"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Problemen met het inschakelen of weer geven van Application Insights Profiler oplossen
 
@@ -69,7 +69,7 @@ Profiler werkt alleen goed als:
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | iKey voor uw Application Insights-resource    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
-    |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
+    |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 
 * De **ApplicationInsightsProfiler3** -Webtaak moet worden uitgevoerd. De Webtaak controleren:
@@ -77,7 +77,7 @@ Profiler werkt alleen goed als:
    1. Selecteer in het menu **extra** het **dash board webjobs**.  
       Het deel venster **webjobs** wordt geopend. 
    
-      ![Profiler-Webtaak]   
+      ![profiler-webjob]   
    
    1. Als u de details van de Webtaak, inclusief het logboek, wilt weer geven, selecteert u de **ApplicationInsightsProfiler3** -koppeling.  
      Het **detail venster doorlopende Webtaak** wordt geopend.
@@ -101,17 +101,17 @@ Wanneer u Profiler configureert, worden er updates uitgevoerd voor de instelling
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | iKey voor uw Application Insights-resource    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
-    |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
+    |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 ### <a name="too-many-active-profiling-sessions"></a>Te veel actieve profilerings sessies
 
 Op dit moment kunt u Profiler inschakelen voor Maxi maal vier Azure-web-apps en implementatie-sleuven die in hetzelfde service plan worden uitgevoerd. Als u meer dan vier web-apps hebt die in één app service-abonnement worden uitgevoerd, kan Profiler een *micro soft. ServiceProfiler. exceptions. TooManyETWSessionException*genereren. Profiler wordt afzonderlijk uitgevoerd voor elke web-app en probeert een Event Tracing for Windowser-sessie (ETW) voor elke app te starten. Maar een beperkt aantal ETW-sessies kan tegelijkertijd actief zijn. Als de Profiler-Webtaak te veel actieve profilerings sessies rapporteert, verplaatst u enkele web-apps naar een ander service plan.
 
-### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Implementatie fout: de map is niet leeg 'D:\\\\site\\wwwroot\\App_Data\\taken
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Implementatie fout: de map is niet leeg d:\\\\site\\wwwroot\\App_Data\\Jobs
 
 Als u uw web-app opnieuw implementeert naar een Web Apps resource waarvoor Profiler is ingeschakeld, ziet u mogelijk het volgende bericht:
 
-*Map is niet leeg 'D:\\\\site\\wwwroot\\App_Data\\taken*
+*Map is niet leeg 'D:\\\\site\\wwwroot\\App_Data taken*
 
 Deze fout treedt op als u Web Deploy uitvoert vanuit scripts of vanuit de Azure DevOps-implementatie pijplijn. De oplossing is om de volgende aanvullende implementatie parameters toe te voegen aan de Web Deploy-taak:
 
@@ -165,9 +165,14 @@ De instellingen controleren die zijn gebruikt voor het configureren van Azure Di
     Wanneer de tracering wordt geüpload, wordt het volgende bericht weer gegeven: *begin met het uploaden van tracering*. 
 
 
+## <a name="edit-network-proxy-or-firewall-rules"></a>De netwerk-proxy of firewall-regels bewerken
+
+Als uw toepassing verbinding maakt met Internet via een proxy of een firewall, moet u mogelijk de regels bewerken zodat uw toepassing kan communiceren met de Application Insights Profiler-service. De IP-adressen die door Application Insights Profiler worden gebruikt, zijn opgenomen in de code van de Azure Monitor-service.
+
+
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png
-[Profiler-Webtaak]:./media/profiler-troubleshooting/Profiler-webjob.png
-[Profiler-Webtaak-logboek]:./media/profiler-troubleshooting/Profiler-webjob-log.png
+[profiler-webjob]:./media/profiler-troubleshooting/Profiler-webjob.png
+[profiler-webjob-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png
 
 
 

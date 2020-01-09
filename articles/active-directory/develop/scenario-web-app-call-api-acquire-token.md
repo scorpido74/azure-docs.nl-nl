@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 398b68221681f0d14dbcc20ac7c0cb603313eaee
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f6a7f3e4e1470bc3788ceae68f035f68f05ae449
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919460"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423537"
 ---
 # <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web-app die web-Api's aanroept-een Token ophalen voor de app
 
@@ -33,7 +33,7 @@ Nu u het client toepassings object hebt gemaakt, gebruikt u dit om een token te 
 
 De controller methoden worden beveiligd door een `[Authorize]`-kenmerk dat ervoor zorgt dat gebruikers worden geauthenticeerd om de web-app te gebruiken. Dit is de code die Microsoft Graph aanroept.
 
-```CSharp
+```csharp
 [Authorize]
 public class HomeController : Controller
 {
@@ -54,7 +54,7 @@ De `ITokenAcquisition`-service wordt door ASP.NET geïnjecteerd door middel van 
 
 Hier volgt een vereenvoudigde code van de actie van de HomeController, waarmee een token wordt opgehaald om de Microsoft Graph aan te roepen.
 
-```CSharp
+```csharp
 public async Task<IActionResult> Profile()
 {
  // Acquire the access token
@@ -153,7 +153,7 @@ public ModelAndView getUserFromGraph(HttpServletRequest httpRequest, HttpServlet
 
 In het python-voor beeld bevindt de code voor het aanroepen van micro soft Graph zich in [app. py # L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62).
 
-Er wordt geprobeerd een token op te halen uit de token cache en vervolgens wordt de EB API aangeroepen nadat de autorisatie-header is ingesteld. Als dat niet het geval is, wordt de gebruiker opnieuw aangemeld.
+Er wordt geprobeerd een token op te halen uit de token cache en vervolgens de Web-API aan te roepen nadat de autorisatie-header is ingesteld. Als dat niet het geval is, wordt de gebruiker opnieuw aangemeld.
 
 ```python
 @app.route("/graphcall")

@@ -1,6 +1,6 @@
 ---
 title: Aangepaste weer gaven met geparametriseerde Url's delen-Azure Time Series Insights | Microsoft Docs
-description: Meer informatie over het ontwikkelen van geparametriseerde Url's in Azure Time Series Insights om eenvoudig aangepaste weer gaven te delen.
+description: Meer informatie over het maken van geparametriseerde Url's voor het eenvoudig delen van aangepaste Explorer-weer gaven in Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 10/18/2019
+ms.date: 12/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 145af35f8c36d7f4659c3937209cb0d4d5b221a3
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: fd6de7dfe9509e7f99adeed0e5de3e157335e6bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006377"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452755"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Een aangepaste weergave delen via een geparameteriseerde URL
 
@@ -33,7 +33,7 @@ De parameter `environmentId=<guid>` geeft de id van de doelomgeving op. Het is e
 
 Een voorbeeld van de parameter voor omgevings-id is `?environmentId=10000000-0000-0000-0000-100000000108`.
 
-## <a name="time"></a>Time
+## <a name="time"></a>Tijd
 
 U kunt absolute of relatieve tijdwaarden opgeven met een geparameteriseerde URL.
 
@@ -44,11 +44,12 @@ Voor absolute tijdwaarden gebruikt u de parameters `from=<integer>` en `to=<inte
 * `from=<integer>` is een waarde in JavaScript-milliseconden voor de begintijd van de tijdspanne voor zoeken.
 * `to=<integer>` is een waarde in JavaScript-milliseconden voor de eindtijd van de tijdspanne voor zoeken.
 
-Zie [Epoch & Unix Timestamp Converter](https://www.freeformatter.com/epoch-timestamp-to-date-converter.html) om te kijken hoe u de JavaScript-milliseconden voor een datum bepaalt.
+> [!TIP]
+> Als u eenvoudig datums wilt omzetten in Java script-milliseconden, probeert u de [epoche & Unix Time Stamp Converter](https://www.freeformatter.com/epoch-timestamp-to-date-converter.html).
 
 ### <a name="relative-time-values"></a>Relatieve tijdwaarden
 
-Voor een relatieve tijdwaarde gebruikt u `relativeMillis=<value>`, waarbij *value* een waarde in JavaScript-milliseconden is voor de meest recente gegevens op de back-end.
+Gebruik `relativeMillis=<value>`voor een relatieve tijd waarde, waarbij *waarde* zich in Java script-milliseconden bevindt van de meest recente tijds tempel die is ontvangen van de API.
 
 `&relativeMillis=3600000` geeft bijvoorbeeld de afgelopen 60 minuten aan gegevens weer.
 
@@ -65,7 +66,7 @@ Geaccepteerde waarden komen overeen met het menu **snelle tijd** van Time Series
 
 ### <a name="optional-parameters"></a>Optionele parameters
 
-Met de para meter `timeSeriesDefinitions=<collection of term objects>` worden de voor waarden van een Time Series Insights weer gave opgegeven:
+Met de para meter `timeSeriesDefinitions=<collection of term objects>` worden de predicaat termen opgegeven die worden weer gegeven in een Time Series Insights weer gave:
 
 | Parameter | URL-item | Beschrijving |
 | --- | --- | --- |
@@ -73,7 +74,11 @@ Met de para meter `timeSeriesDefinitions=<collection of term objects>` worden de
 | **splitBy** | `\<string>` | De naam van de kolom waarop moet worden *gesplitst*. |
 | **measureName** | `\<string>` | De kolomnaam van de *meting*. |
 | **predicaat** | `\<string>` | De *where*-component voor filteren aan de serverzijde. |
-| **useSum** | `true` | Een optionele para meter waarmee het gebruik van een som voor uw meting wordt opgegeven. </br>  Opmerking: als `Events` de geselecteerde meting is, is aantal standaard geselecteerd.  </br>  Als `Events` niet is geselecteerd, wordt standaard het gemiddelde geselecteerd. |
+| **useSum** | `true` | Een optionele para meter waarmee het gebruik van een som voor uw meting wordt opgegeven. |
+
+> [!NOTE]
+> Als `Events` de geselecteerde **useSum** -meting is, is aantal standaard geselecteerd.  
+> Als `Events` niet is geselecteerd, wordt standaard het gemiddelde geselecteerd. |
 
 * Het `multiChartStack=<true/false>` sleutel-waardepaar maakt stapeling in de grafiek mogelijk.
 * Met de `multiChartSameScale=<true/false>` sleutel-waardepaar kunt u dezelfde schaal van de Y-as voor alle termen binnen een optionele para meter.  
@@ -83,15 +88,19 @@ Met de para meter `timeSeriesDefinitions=<collection of term objects>` worden de
 | Paar (s) | Beschrijving |
 | --- | --- |
 | `multiChartStack=false` | `true` is standaard ingeschakeld, dus geef `false` door. |
-| `multiChartStack=false&multiChartSameScale=true` | Stapelen moet zijn ingeschakeld om dezelfde schaling van de Y-as te gebruiken voor verschillende onderdelen.  Het is standaard `false`, dus als u ' waar ' inschakelt, wordt deze functionaliteit ingeschakeld. |
-| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Eenheden = dagen, uren, minuten, seconden en milliseconden.  Gebruik altijd een hoofdletter voor de eenheid. </br> Definieer het aantal eenheden door het gewenste gehele getal voor timeBucketSize op te geven.  Rond af naar 7 dagen.  |
-| `timezoneOffset=-<integer>` | Het gehele getal is altijd in milliseconden. </br> Houd er rekening mee dat deze functionaliteit enigszins afwijkt van wat er in de Time Series Insights Explorer wordt ingeschakeld, waar u lokaal kunt kiezen (browser tijd) of UTC. |
+| `multiChartStack=false&multiChartSameScale=true` | Stapelen moet zijn ingeschakeld om dezelfde schaling van de Y-as te gebruiken voor verschillende onderdelen.  Het is standaard `false`, dus door door te geven `true` deze functionaliteit mogelijk maakt. |
+| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Units = `days`, `hours`, `minutes`, `seconds``milliseconds`.  Gebruik altijd een hoofdletter voor de eenheid. </br> Definieer het aantal eenheden door het gewenste gehele getal voor **timeBucketSize**door te geven.  |
+| `timezoneOffset=-<integer>` | Het gehele getal is altijd in milliseconden. |
+
+> [!NOTE]
+> **time Bucket unit** waarden kunnen Maxi maal zeven dagen worden gesoepeld.
+> **time zone offset** waarden zijn geen UTC of lokale tijd.
 
 ### <a name="examples"></a>Voorbeelden
 
 Als u de definities van de tijd reeks wilt toevoegen aan een Time Series Insights omgeving als een URL-para meter, voegt u het volgende toe:
 
-```plaintext
+```URL parameter
 &timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},
 {"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
@@ -100,24 +109,28 @@ Gebruik de voor beelden van Time Series-definities voor:
 
 * De omgevings-ID
 * De laatste 60 minuten aan gegevens
-* De voor waarden (F1PressureID, F2TempStation en F3VibrationPL) waaruit de optionele para meters bestaan
+* De voor waarden (**F1PressureID**, **F2TempStation**en **F3VibrationPL**) waaruit de optionele para meters bestaan
 
 U kunt de volgende geparametriseerde URL voor een weer gave maken:
 
-```plaintext
+```URL
 https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
 
+[![Time Series Insights Explorer-URL met para meters](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
+
 > [!TIP]
-> Bekijk de Explorer Live [met behulp van de URL](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]).
+> Bekijk de Explorer Live [met behulp van het bovenstaande URL](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]) -voor beeld.
 
-De onderstaande URL beschrijft en bouwt de weer gave Time Series Insights Explorer:
+De URL hierboven wordt beschreven en geeft de weer gave Time Series Insights Explorer met para meters. 
 
-[![Time Series Insights Explorer-voor waarden](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
+* De para meters-predikaten.
 
-De volledige weer gave (met inbegrip van de grafiek):
+  [![Time Series Insights Explorer-predikaten met para meters.](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
 
-[Grafiek weergave ![](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
+* De gedeelde volledige grafiek weergave.
+
+  [![de gedeelde volledige grafiek weergave.](media/parameterized-url/share-parameterized-url-full-chart.png)](media/parameterized-url/share-parameterized-url-full-chart.png#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 

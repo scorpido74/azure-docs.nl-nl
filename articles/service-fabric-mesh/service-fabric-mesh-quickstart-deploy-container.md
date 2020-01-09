@@ -1,22 +1,18 @@
 ---
-title: Snelstart - Hallo wereld implementeren in Azure Service Fabric Mesh | Microsoft Docs
+title: Quick Start-Hallo wereld implementeren op Azure Service Fabric net
 description: In deze snelstart ziet u hoe u een Service Fabric Mesh-toepassing in Azure Service Fabric Mesh implementeert.
-services: service-fabric-mesh
-keywords: Voeg geen sleutelwoorden toe en bewerk ze niet zonder overleg met uw SEO-expert.
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 5ca622602c71976917a07005bf349dd98086327c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ce897b6e0e9d6a0b9b672907a64f4683f907b677
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810938"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458970"
 ---
-# <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Snelstartgids: Hallo wereld implementeren in Service Fabric Mesh
+# <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Snelstart: Hallo wereld implementeren in Service Fabric Mesh
 
 Met [Service Fabric Mesh](service-fabric-mesh-overview.md) kunt u eenvoudig microservicetoepassingen in Azure maken en beheren, zonder dat u daarvoor virtuele machines hoeft in te richten. In deze snelstart gaat u een Hallo wereld-toepassing maken in Azure en deze op internet beschikbaar maken. Deze bewerking wordt uitgevoerd in één opdracht. In slechts een paar minuten ziet u deze weergave in uw browser:
 
@@ -97,7 +93,7 @@ az mesh code-package-log get --resource-group myResourceGroup --application-name
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u zover bent dat u de toepassing wilt verwijderen, voert u de opdracht [az group delete][az-group-delete] uit om de resourcegroep evenals de toepassings- en netwerkresources te verwijderen die er deel van uitmaken.
+Wanneer u klaar bent om de toepassing te verwijderen, voert u de opdracht [AZ Group delete][az-group-delete] uit om de resource groep en de toepassings-en netwerk resources daarin te verwijderen.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

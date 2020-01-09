@@ -1,33 +1,33 @@
 ---
 title: Power shell gebruiken om een gebruikers delegering SA'S te maken voor een container of BLOB
 titleSuffix: Azure Storage
-description: Meer informatie over het maken van een SAS (preview) voor gebruikers overdracht met Azure Active Directory referenties met behulp van Power shell.
+description: Meer informatie over het maken van een gebruiker met Azure Active Directory referenties met behulp van Power shell.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 5f4947921a77f2bc94d1810c9b1d1951431d3d71
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 63075152ea4b3bf1a3aa208cf2a9642ef46642db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892512"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371769"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>Een gebruikers delegering SA'S maken voor een container of BLOB met Power shell (preview)
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>Een SAS voor gebruikers overdracht maken voor een container of BLOB met Power shell
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-In dit artikel wordt beschreven hoe u Azure Active Directory (Azure AD)-referenties gebruikt voor het maken van een gebruikers delegering SA'S voor een container of BLOB met Azure PowerShell (preview).
+In dit artikel wordt beschreven hoe u Azure Active Directory (Azure AD)-referenties gebruikt om een gebruikers delegering SA'S te maken voor een container of BLOB met Azure PowerShell.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="install-the-preview-module"></a>De preview-module installeren
+## <a name="install-the-powershell-module"></a>De Power shell-module installeren
 
-Als u Power shell wilt gebruiken voor het maken van een SA'S voor het delegeren van gebruikers, moet u eerst de module AZ. Storage 1.3.1-Preview installeren. Volg deze stappen om de module te installeren:
+Als u een gebruikers delegering SA'S met Power shell wilt maken, installeert u versie 1.10.0 of hoger van de module AZ. storage. Volg deze stappen om de meest recente versie van de module te installeren:
 
 1. Eerdere installaties van Azure PowerShell verwijderen:
 
@@ -48,23 +48,18 @@ Als u Power shell wilt gebruiken voor het maken van een SA'S voor het delegeren 
     Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. Installeer een Azure Storage preview-module die ondersteuning biedt voor SAS voor gebruikers overdracht:
+1. Zorg ervoor dat u Azure PowerShell versie 3.2.0 of hoger hebt geïnstalleerd. Voer de volgende opdracht uit om de nieuwste versie van de Azure Storage Power shell-module te installeren:
 
     ```powershell
-    Install-Module Az.Storage `
-        –Repository PSGallery `
-        -RequiredVersion 1.3.1-preview `
-        –AllowPrerelease `
-        –AllowClobber `
-        –Force
+    Install-Module -Name Az.Storage -Repository PSGallery -Force
     ```
 
 1. Sluit het Power shell-venster en open het opnieuw.
 
-Omdat Power shell de nieuwste AZ. Storage-module laadt, moet u mogelijk expliciet de module 1.3.1-preview laden wanneer u de console start. Als u de preview-module expliciet wilt laden, voert u de opdracht [import-module](/powershell/module/microsoft.powershell.core/import-module) uit:
+Als u wilt controleren welke versie van de module AZ. Storage is geïnstalleerd, voert u de volgende opdracht uit:
 
 ```powershell
-Import-Module Az.Storage -RequiredVersion 1.3.1
+Get-Module -ListAvailable -Name Az.Storage -Refresh
 ```
 
 Zie [Install Azure PowerShell with PowerShellGet](/powershell/azure/install-az-ps)(Engelstalig) voor meer informatie over het installeren van Azure PowerShell.

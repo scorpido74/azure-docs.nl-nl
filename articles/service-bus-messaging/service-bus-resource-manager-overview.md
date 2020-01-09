@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus-resources met behulp van Resource Manager-sjablonen maken | Microsoft Docs
-description: Azure Resource Manager-sjablonen gebruiken om automatisch te maken van Service Bus-bronnen
+title: Azure Service Bus resources maken met behulp van Resource Manager-sjablonen | Microsoft Docs
+description: Azure Resource Manager sjablonen gebruiken voor het automatiseren van het maken van Service Bus resources
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -14,55 +14,55 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 196b00f1268eada20d0e35473dc6eb43c9e48df6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 68b91566a3737cf44abe0c446b71d6845ecc299d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66111139"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452340"
 ---
-# <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Service Bus-bronnen met behulp van Azure Resource Manager-sjablonen maken
+# <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Service Bus-resources maken met behulp van Azure Resource Manager sjablonen
 
-In dit artikel wordt beschreven hoe u maken en implementeren van Service Bus-resources met behulp van Azure Resource Manager-sjablonen, PowerShell en de Service Bus-resourceprovider.
+In dit artikel wordt beschreven hoe u Service Bus-resources maakt en implementeert met behulp van Azure Resource Manager sjablonen, Power shell en de resource provider van Service Bus.
 
-Azure Resource Manager-sjablonen helpen u bij het definiëren van de resources te implementeren voor een oplossing en om op te geven van de parameters en variabelen vaststellen waarmee u de waarden voor verschillende omgevingen. De sjabloon is geschreven in JSON en bestaat uit de expressies die u gebruiken kunt om waarden voor uw implementatie samen te stellen. Zie voor gedetailleerde informatie over het schrijven van Azure Resource Manager-sjablonen, en een beschrijving van de sjabloonindeling, [structuur en de syntaxis van Azure Resource Manager-sjablonen](../azure-resource-manager/resource-group-authoring-templates.md).
+Azure Resource Manager Sjablonen helpen u de resources te definiëren die voor een oplossing moeten worden geïmplementeerd en om para meters en variabelen op te geven waarmee u waarden voor verschillende omgevingen kunt invoeren. De sjabloon wordt geschreven in JSON en bestaat uit expressies die u kunt gebruiken om waarden voor uw implementatie samen te stellen. Zie [structuur en syntaxis van Azure Resource Manager sjablonen](../azure-resource-manager/templates/template-syntax.md)voor gedetailleerde informatie over het schrijven van Azure Resource Manager sjablonen en een bespreking van de sjabloon indeling.
 
 > [!NOTE]
-> De voorbeelden in dit artikel ziet u hoe u Azure Resource Manager gebruiken voor het maken van een Service Bus-naamruimte en een Berichtentiteit (wachtrij). Voor andere sjabloonvoorbeelden, gaat u naar de [galerie met Azure-Snelstartsjablonen] [ Azure Quickstart Templates gallery] en zoek naar de **Service Bus**.
+> In de voor beelden in dit artikel ziet u hoe u Azure Resource Manager kunt gebruiken om een Service Bus naam ruimte en bericht entiteit (wachtrij) te maken. Voor andere sjabloon voorbeelden gaat u naar de [Galerie met Azure Quick Start sjablonen][Azure Quickstart Templates gallery] en zoekt u naar **Service Bus**.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="service-bus-resource-manager-templates"></a>Service Bus-Resource Manager-sjablonen
+## <a name="service-bus-resource-manager-templates"></a>Service Bus Resource Manager-sjablonen
 
-Deze Service Bus Azure Resource Manager-sjablonen zijn beschikbaar voor downloaden en implementeren. Klik op de volgende koppelingen voor meer informatie over elk ervan, met koppelingen naar de sjablonen van GitHub:
+Deze Service Bus Azure Resource Manager sjablonen kunnen worden gedownload en geïmplementeerd. Klik op de volgende koppelingen voor meer informatie over elk item, met koppelingen naar de sjablonen op GitHub:
 
-* [Een Service Bus-naamruimte maken](service-bus-resource-manager-namespace.md)
-* [Een Service Bus-naamruimte met een wachtrij maken](service-bus-resource-manager-namespace-queue.md)
-* [Een Service Bus-naamruimte maken met een onderwerp en abonnement](service-bus-resource-manager-namespace-topic.md)
-* [Een Service Bus-naamruimte maken met de wachtrij en de autorisatie-regel](service-bus-resource-manager-namespace-auth-rule.md)
-* [Een Service Bus-naamruimte maken met een onderwerp, abonnement en regel](service-bus-resource-manager-namespace-topic-with-rule.md)
+* [Een Service Bus naam ruimte maken](service-bus-resource-manager-namespace.md)
+* [Een Service Bus naam ruimte maken met wachtrij](service-bus-resource-manager-namespace-queue.md)
+* [Een Service Bus naam ruimte met een onderwerp en een abonnement maken](service-bus-resource-manager-namespace-topic.md)
+* [Een Service Bus naam ruimte maken met een wachtrij-en autorisatie regel](service-bus-resource-manager-namespace-auth-rule.md)
+* [Een Service Bus naam ruimte maken met een onderwerp, een abonnement en een regel](service-bus-resource-manager-namespace-topic-with-rule.md)
 
 ## <a name="deploy-with-powershell"></a>Implementeren met PowerShell
 
-De volgende procedure wordt beschreven hoe u PowerShell gebruiken voor het implementeren van een Azure Resource Manager-sjabloon waarmee u een Standard-laag Service Bus-naamruimte en een wachtrij binnen deze naamruimte maakt. In dit voorbeeld is gebaseerd op de [een Service Bus-naamruimte maken met de wachtrij](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue) sjabloon. De geschatte werkstroom is als volgt:
+In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azure Resource Manager sjabloon te implementeren waarmee een standaardlaag Service Bus naam ruimte wordt gemaakt en een wachtrij binnen die naam ruimte. Dit voor beeld is gebaseerd op het [maken van een service bus naam ruimte met een wachtrij](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue) sjabloon. De geschatte werk stroom is als volgt:
 
-1. PowerShell installeren.
-2. De sjabloon en (optioneel) een parameterbestand maken.
-3. In PowerShell, moet u zich aanmelden bij uw Azure-account.
-4. Maak een nieuwe resourcegroep als dit nog niet bestaat.
+1. Power Shell installeren.
+2. Maak de sjabloon en (optioneel) een parameter bestand.
+3. Meld u in Power shell aan bij uw Azure-account.
+4. Maak een nieuwe resource groep als deze niet bestaat.
 5. De implementatie testen.
-6. Indien gewenst, de implementatiemodus instellen.
+6. Stel, indien gewenst, de implementatie modus in.
 7. Implementeer de sjabloon.
 
-Zie voor meer informatie over het implementeren van Azure Resource Manager-sjablonen [resources implementeren met Azure Resource Manager-sjablonen][Deploy resources with Azure Resource Manager templates].
+Zie [resources implementeren met Azure Resource Manager sjablonen][Deploy resources with Azure Resource Manager templates]voor volledige informatie over het implementeren van Azure Resource Manager sjablonen.
 
 ### <a name="install-powershell"></a>PowerShell installeren
 
-Azure PowerShell installeren door de instructies in [aan de slag met Azure PowerShell](/powershell/azure/get-started-azureps).
+Installeer Azure PowerShell door de instructies in aan de slag te volgen [met Azure PowerShell](/powershell/azure/get-started-azureps).
 
 ### <a name="create-a-template"></a>Een sjabloon maken
 
-Kloon de opslagplaats of kopieer de [201-service bus-maken-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) -sjabloon:
+Kloon de opslag plaats of kopieer de sjabloon [201-servicebus-Create-Queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) van github:
 
 ```json
 {
@@ -135,9 +135,9 @@ Kloon de opslagplaats of kopieer de [201-service bus-maken-queue](https://github
 }
 ```
 
-### <a name="create-a-parameters-file-optional"></a>Maak een parameterbestand (optioneel)
+### <a name="create-a-parameters-file-optional"></a>Een parameter bestand maken (optioneel)
 
-Een optionele parameters-bestand wilt gebruiken, kopieert u de [201-service bus-maken-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) bestand. Vervang de waarde van `serviceBusNamespaceName` met de naam van de Service Bus-naamruimte die u wilt maken in deze implementatie en vervang de waarde van `serviceBusQueueName` met de naam van de wachtrij die u wilt maken.
+Als u een optioneel parameter bestand wilt gebruiken, kopieert u het bestand [201-servicebus-Create-Queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) . Vervang de waarde van `serviceBusNamespaceName` door de naam van de Service Bus naam ruimte die u in deze implementatie wilt maken en vervang de waarde van `serviceBusQueueName` door de naam van de wachtrij die u wilt maken.
 
 ```json
 {
@@ -157,37 +157,37 @@ Een optionele parameters-bestand wilt gebruiken, kopieert u de [201-service bus-
 }
 ```
 
-Zie voor meer informatie de [Parameters](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) artikel.
+Zie het artikel [para meters](../azure-resource-manager/templates/parameter-files.md) voor meer informatie.
 
-### <a name="log-in-to-azure-and-set-the-azure-subscription"></a>Meld u aan bij Azure en stel het Azure-abonnement
+### <a name="log-in-to-azure-and-set-the-azure-subscription"></a>Meld u aan bij Azure en stel het Azure-abonnement in
 
-Voer de volgende opdracht uit vanuit een PowerShell-prompt:
+Voer de volgende opdracht uit vanuit een Power shell-prompt:
 
 ```powershell
 Connect-AzAccount
 ```
 
-U wordt gevraagd om aan te melden bij uw Azure-account. Voer na het aanmelden, de volgende opdracht uit om de beschikbare abonnementen weer te geven:
+U wordt gevraagd om u aan te melden bij uw Azure-account. Nadat u zich hebt aangemeld, voert u de volgende opdracht uit om uw beschik bare abonnementen weer te geven:
 
 ```powershell
 Get-AzSubscription
 ```
 
-Met deze opdracht retourneert een lijst met beschikbare Azure-abonnementen. Kies een abonnement voor de huidige sessie met de volgende opdracht. Vervang `<YourSubscriptionId>` met de GUID voor de Azure-abonnement u wilt gebruiken:
+Met deze opdracht wordt een lijst met beschik bare Azure-abonnementen geretourneerd. Kies een abonnement voor de huidige sessie door de volgende opdracht uit te voeren. Vervang `<YourSubscriptionId>` door de GUID van het Azure-abonnement dat u wilt gebruiken:
 
 ```powershell
 Set-AzContext -SubscriptionID <YourSubscriptionId>
 ```
 
-### <a name="set-the-resource-group"></a>Instellen van de resourcegroep
+### <a name="set-the-resource-group"></a>De resource groep instellen
 
-Als u nog geen een bestaande resource groep, maakt u een nieuwe resourcegroep met de **New-AzResourceGroup** opdracht. Geef de naam van de resourcegroep en de locatie die u wilt gebruiken. Bijvoorbeeld:
+Als u geen bestaande resource groep hebt, maakt u een nieuwe resource groep met de opdracht **New-AzResourceGroup** . Geef de naam op van de resource groep en de locatie die u wilt gebruiken. Bijvoorbeeld:
 
 ```powershell
 New-AzResourceGroup -Name MyDemoRG -Location "West US"
 ```
 
-Als dit lukt, wordt een overzicht van de nieuwe resourcegroep weergegeven.
+Als dit lukt, wordt een samen vatting van de nieuwe resource groep weer gegeven.
 
 ```powershell
 ResourceGroupName : MyDemoRG
@@ -199,7 +199,7 @@ ResourceId        : /subscriptions/<GUID>/resourceGroups/MyDemoRG
 
 ### <a name="test-the-deployment"></a>De implementatie testen
 
-Uw implementatie valideren door het uitvoeren van de `Test-AzResourceGroupDeployment` cmdlet. Bij het testen van de implementatie, parameters opgeven precies zoals u zou doen bij het uitvoeren van de implementatie.
+Valideer uw implementatie door de cmdlet `Test-AzResourceGroupDeployment` uit te voeren. Wanneer u de implementatie test, geeft u de para meters op exact dezelfde manier op als bij het uitvoeren van de implementatie.
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
@@ -207,34 +207,34 @@ Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path t
 
 ### <a name="create-the-deployment"></a>De implementatie maken
 
-Voer voor het maken van de nieuwe implementatie de `New-AzResourceGroupDeployment` -cmdlet en geef de vereiste parameters als u wordt gevraagd. De parameters bevatten een naam voor uw implementatie, de naam van de resourcegroep, en het pad of de URL naar het sjabloonbestand. Als de **modus** parameter niet wordt opgegeven, de standaardwaarde van **incrementele** wordt gebruikt. Zie voor meer informatie, [incrementele en volledige implementaties](../azure-resource-manager/deployment-modes.md).
+Als u de nieuwe implementatie wilt maken, voert u de cmdlet `New-AzResourceGroupDeployment` uit en geeft u de benodigde para meters op wanneer u hierom wordt gevraagd. De para meters bevatten een naam voor uw implementatie, de naam van uw resource groep en het pad of de URL naar het sjabloon bestand. Als de **modus** parameter niet is opgegeven, wordt de standaard waarde **Incrementeel** gebruikt. Zie [incrementele en volledige implementaties](../azure-resource-manager/deployment-modes.md)voor meer informatie.
 
-De volgende opdracht vraagt u om de drie parameters in de PowerShell-venster:
+Met de volgende opdracht wordt u gevraagd om de drie para meters in het Power shell-venster:
 
 ```powershell
 New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
-Als u wilt opgeven in plaats daarvan een parameterbestand, gebruik de volgende opdracht:
+Als u in plaats daarvan een parameter bestand wilt opgeven, gebruikt u de volgende opdracht:
 
 ```powershell
 New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
 ```
 
-U kunt ook een inline-parameters gebruiken wanneer u de implementatie-cmdlet uitvoert. De opdracht is als volgt:
+U kunt ook inline-para meters gebruiken wanneer u de cmdlet implementatie uitvoert. De opdracht is als volgt:
 
 ```powershell
 New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
-Om uit te voeren een [voltooid](../azure-resource-manager/deployment-modes.md) implementatie, de **modus** parameter **voltooid**:
+Als u een [volledige](../azure-resource-manager/deployment-modes.md) implementatie wilt uitvoeren, stelt u de para meter voor de **modus** in op **voltooid**:
 
 ```powershell
 New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
 ### <a name="verify-the-deployment"></a>De implementatie controleren
-Als de resources worden geïmplementeerd, wordt een samenvatting van de implementatie weergegeven in het PowerShell-venster:
+Als de resources met succes zijn geïmplementeerd, wordt een samen vatting van de implementatie weer gegeven in het Power shell-venster:
 
 ```powershell
 DeploymentName    : MyDemoDeployment
@@ -253,13 +253,13 @@ Parameters        :
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-U hebt nu gezien de basiswerkstroom en opdrachten voor het implementeren van een Azure Resource Manager-sjabloon. Ga naar de volgende koppelingen voor meer gedetailleerde informatie:
+U hebt nu de basis werk stroom en opdrachten voor het implementeren van een Azure Resource Manager sjabloon gezien. Bezoek de volgende koppelingen voor meer gedetailleerde informatie:
 
 * [Overzicht van Azure Resource Manager][Azure Resource Manager overview]
 * [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell][Deploy resources with Azure Resource Manager templates]
-* [Azure Resource Manager-sjablonen maken](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Microsoft.ServiceBus resourcetypen](/azure/templates/microsoft.servicebus/allversions)
+* [Azure Resource Manager-sjablonen maken](../azure-resource-manager/templates/template-syntax.md)
+* [Resource typen van micro soft. ServiceBus](/azure/templates/microsoft.servicebus/allversions)
 
-[Azure Resource Manager overview]: ../azure-resource-manager/resource-group-overview.md
+[Azure Resource Manager overview]: ../azure-resource-manager/management/overview.md
 [Deploy resources with Azure Resource Manager templates]: ../azure-resource-manager/resource-group-template-deploy.md
 [Azure Quickstart Templates gallery]: https://azure.microsoft.com/documentation/templates/?term=service+bus

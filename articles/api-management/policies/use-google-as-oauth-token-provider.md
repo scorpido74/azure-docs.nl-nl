@@ -1,5 +1,6 @@
 ---
-title: Voor beeld van Azure API management-beleid-toegang toestaan met Google OAuth token | Microsoft Docs
+title: Voor beeld van API management-beleid-toegang toestaan met Google OAuth token
+titleSuffix: Azure API Management
 description: 'Voor beeld van Azure API management-beleid: laat zien hoe u toegang tot uw eind punten als een OAuth-token provider kunt autoriseren.'
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 7acc9071008937cd85c628878b385f1f53707e53
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d606d29d84cd5917c74efe188ae02627ad55d4ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071912"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442377"
 ---
 # <a name="authorize-access-using-google-oauth-token"></a>Toegang toestaan met Google OAuth token
 

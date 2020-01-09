@@ -1,7 +1,7 @@
 ---
 title: 'Permutatie functie urgentie: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de permutatie functie urgentie module in de Azure Machine Learning-service voor het berekenen van de urgentie van de permutatie functie van functie variabelen, op basis van een getraind model en een test gegevensset.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de permutatie functie urgentie module in Azure Machine Learning voor het berekenen van de urgentie van de permutatie functie van functie variabelen, op basis van een getraind model en een test gegevensset.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: ddd631b809d4a0635107069f48281db4c0a2e7e0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: b939e88606fba5d7759e55239838d5308bf0563c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837558"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428491"
 ---
-# <a name="permutation-feature-importance"></a>Permutatie functie urgentie
+# <a name="permutation-feature-importance"></a>Belang van permutatiefunctie
 
 In dit artikel wordt beschreven hoe u de permutatie functie urgentie module in Azure Machine Learning Designer (preview) gebruikt om een aantal score punten van de functie voor uw gegevensset te berekenen. U kunt deze scores gebruiken om u te helpen bij het bepalen van de beste functies die in een model moeten worden gebruikt.
 
@@ -69,4 +69,4 @@ De reden voor het verschil is dat het belang van permutatie functies de koppelin
   
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor de Azure machine learning-service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

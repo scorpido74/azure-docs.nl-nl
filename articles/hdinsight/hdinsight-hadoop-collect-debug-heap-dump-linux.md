@@ -2,18 +2,18 @@
 title: Heap-dumps inschakelen voor Apache Hadoop Services op HDInsight-Azure
 description: Schakel heap-dumps in voor Apache Hadoop services van HDInsight-clusters op basis van Linux voor fout opsporing en analyse.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/27/2018
-ms.author: hrasheed
-ms.openlocfilehash: 90de0b4bfad4c5096ebc38eb3d31fc41bca6649b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 01/02/2020
+ms.openlocfilehash: 9134eb6922b0ed37bbe6051b138da2c7c082b175
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494855"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658794"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Heap-dumps inschakelen voor Apache Hadoop Services op HDInsight op basis van Linux
 
@@ -21,7 +21,7 @@ ms.locfileid: "73494855"
 
 Heap-dumps bevatten een moment opname van het geheugen van de toepassing, met inbegrip van de waarden van variabelen op het moment dat de dump werd gemaakt. Ze zijn dus handig voor het vaststellen van problemen die zich tijdens runtime voordoen.
 
-## <a name="whichServices"></a>Onderzoeksservices
+## <a name="services"></a>Services
 
 U kunt heap-dumps inschakelen voor de volgende services:
 
@@ -33,7 +33,7 @@ U kunt heap-dumps inschakelen voor de volgende services:
 
 U kunt ook heap-dumps inschakelen voor de kaart en processen verminderen die door HDInsight worden uitgevoerd.
 
-## <a name="configuration"></a>Informatie over heap-dump configuratie
+## <a name="understanding-heap-dump-configuration"></a>Informatie over heap-dump configuratie
 
 Heap-dumps worden ingeschakeld door de opties voor het door geven (ook wel "kiest of para meters" genoemd) aan de JVM toe te staan wanneer een service wordt gestart. Voor de meeste [Apache Hadoop](https://hadoop.apache.org/) Services kunt u het shell script dat wordt gebruikt om de service te starten, zodanig wijzigen dat deze opties worden door gegeven.
 
@@ -41,8 +41,8 @@ In elk script is er een export voor **\*\_kiest**, die de opties bevat die zijn 
 
 Het toewijzen en verminderen van processen is iets anders, omdat deze bewerkingen een onderliggend proces van de MapReduce-service zijn. Elke kaart of vermindert proces wordt uitgevoerd in een onderliggende container en er zijn twee vermeldingen die de JVM-opties bevatten. Beide zijn opgenomen in **mapred-site. XML**:
 
-* **MapReduce. admin. map. Child. java. kiest**
-* **MapReduce. admin. reduce. Child. java. kiest**
+* **mapreduce.admin.map.child.java.opts**
+* **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]  
 > We raden u aan [Apache Ambari](https://ambari.apache.org/) te gebruiken om de instellingen voor scripts en mapred-site. XML te wijzigen, omdat Ambari de replicatie van wijzigingen tussen knoop punten in het cluster moet afhandelen. Zie de sectie [Apache Ambari gebruiken](#using-apache-ambari) voor specifieke stappen.
@@ -81,12 +81,7 @@ U kunt ook een script activeren als er een **OutOfMemoryError** optreedt. U kunt
 
 Als u de configuratie voor een service wilt wijzigen, gebruikt u de volgende stappen:
 
-1. Open de Ambari-webgebruikersinterface voor uw cluster. De URL is https://YOURCLUSTERNAME.azurehdinsight.net.
-
-    Wanneer u hierom wordt gevraagd, moet u zich bij de site aanmelden met de HTTP-account naam (standaard: beheerder) en het wacht woord voor uw cluster.
-
-   > [!NOTE]  
-   > U wordt mogelijk een tweede keer gevraagd door Ambari voor de gebruikers naam en het wacht woord. Als dit het geval is, voert u dezelfde account naam en hetzelfde wacht woord in.
+1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`, waarbij `CLUSTERNAME` de naam van uw cluster is.
 
 2. Selecteer in de lijst met aan de linkerkant het service gebied dat u wilt wijzigen. Bijvoorbeeld **HDFS**. Selecteer in het middelste gebied het tabblad **configuratie** .
 
@@ -121,4 +116,3 @@ Als u de configuratie voor een service wilt wijzigen, gebruikt u de volgende sta
    > De vermeldingen voor de knop **opnieuw opstarten** kunnen verschillen voor andere services.
 
 8. Zodra de services opnieuw zijn opgestart, gebruikt u de knop **service acties** om de **onderhouds modus uit te scha kelen**. Deze Ambari om de bewaking van waarschuwingen voor de service te hervatten.
-

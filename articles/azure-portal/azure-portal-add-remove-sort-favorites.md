@@ -1,23 +1,23 @@
 ---
-title: Favorieten toevoegen, verwijderen en sorteren in Azure Portal | Microsoft Docs
-description: Meer informatie over het toevoegen of verwijderen van items in de lijst met favorieten en het sorteren van de volg orde van items
+title: Favorieten toevoegen, verwijderen en rangschikken in Azure Portal | Microsoft Docs
+description: Meer informatie over het toevoegen of verwijderen van items in de lijst met favorieten en het rangschikken van de volg orde van items
 services: azure-portal
-keywords: Favorieten
-author: kfollis
-ms.author: kfollis
-ms.date: 11/01/2019
+keywords: Favorieten, portal
+author: mblythe
+ms.author: mblythe
+ms.date: 12/20/2019
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.openlocfilehash: 51228f4a28b5c6e19bf341b5576540d36bcaae64
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 57ce053f268558886dad33d450d48f9a0889a10a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579562"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640564"
 ---
-# <a name="add-remove-and-sort-favorites"></a>Favorieten toevoegen, verwijderen en sorteren
+# <a name="add-remove-and-rearrange-favorites"></a>Favorieten toevoegen, verwijderen en opnieuw ordenen
 
 Items toevoegen aan of verwijderen uit uw lijst met **Favorieten** , zodat u snel naar de Services kunt gaan die u het meest gebruikt. Er zijn al enkele algemene services aan uw lijst met **Favorieten** toegevoegd, maar u wilt deze waarschijnlijk aanpassen. U bent de enige die de wijzigingen die u aanbrengt in **Favorieten**ziet.
 
@@ -51,7 +51,7 @@ U kunt nu een item rechtstreeks uit de lijst met **Favorieten** verwijderen.
 
 2. Selecteer op de informatie kaart de ster zodat deze wordt gewijzigd van gevuld naar niet-gevuld. De service wordt verwijderd uit de lijst met **Favorieten** .
 
-## <a name="sort-favorites"></a>Favorieten sorteren
+## <a name="rearrange-favorites"></a>Favorieten opnieuw ordenen
 
 U kunt de volg orde wijzigen waarin uw favoriete services worden weer gegeven. U kunt het menu-item alleen naar een andere locatie onder **Favorieten**slepen en neerzetten.
 

@@ -1,7 +1,7 @@
 ---
 title: 'Zelf studie: anomalie detectie van streaminggegevens met behulp van Azure Databricks'
 titleSuffix: Azure Cognitive Services
-description: Gebruik de anomalie detectie-API en Azure Databricks om afwijkingen in uw gegevens te bewaken.
+description: Meer informatie over het gebruik van de Anomaliey detector API en Azure Databricks voor het bewaken van afwijkingen in uw gegevens.
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 75c2c8bf8b3baee1f9f89282840622e1e29d2a18
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 93ee5df4327aa396573665cd0c2cbd8222015cce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71837753"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448903"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Zelf studie: anomalie detectie van streaminggegevens met behulp van Azure Databricks
 
@@ -65,7 +65,7 @@ In deze sectie maakt u een Azure Databricks-werk ruimte met behulp van de [Azure
 
 1. Selecteer in Azure Portal **Een resource maken** > **Analyse** > **Azure Databricks**.
 
-    ![Databricks in Azure Portal](../media/tutorials/azure-databricks-on-portal.png "Databricks in Azure Portal")
+    ![Databricks op Azure Portal](../media/tutorials/azure-databricks-on-portal.png "Databricks op Azure Portal")
 
 3. Geef bij **Azure Databricks Service** de volgende waarden op voor het maken van een Databricks-werkruimte:
 
@@ -74,7 +74,7 @@ In deze sectie maakt u een Azure Databricks-werk ruimte met behulp van de [Azure
     |---------|---------|
     |**Werkruimtenaam**     | Geef een naam op voor uw Databricks-werkruimte.        |
     |**Abonnement**     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
-    |**Resourcegroep**     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. Zie [Overzicht van Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) voor meer informatie. |
+    |**Resourcegroep**     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. Zie [Overzicht van Azure Resource Manager](../../../azure-resource-manager/management/overview.md) voor meer informatie. |
     |**Locatie**     | Selecteer **VS Oost 2** of een van de andere beschik bare regio's. Zie [Azure-Services beschikbaar per regio](https://azure.microsoft.com/regions/services/) voor Beschik baarheid van regio's.        |
     |**Prijscategorie**     |  U kunt kiezen tussen **Standard** en **Premium**. Kies geen **proef versie**. Bekijk de pagina [Prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/) voor meer informatie over deze categorieën.       |
 
@@ -88,11 +88,11 @@ In deze sectie maakt u een Azure Databricks-werk ruimte met behulp van de [Azure
 
 2. U wordt omgeleid naar de Azure Databricks-portal. Selecteer in de portal **Nieuw cluster**.
 
-    ![Databricks in Azure](../media/tutorials/databricks-on-azure.png "Databricks in Azure")
+    ![Databricks op Azure](../media/tutorials/databricks-on-azure.png "Databricks op Azure")
 
 3. Geef op de pagina **Nieuw cluster** de waarden op voor het maken van een cluster.
 
-    ![Een Databricks Spark-cluster maken in Azure](../media/tutorials/create-databricks-spark-cluster.png "Een Databricks Spark-cluster maken in Azure")
+    ![Een Databricks Spark-cluster maken in azure](../media/tutorials/create-databricks-spark-cluster.png "Een Databricks Spark-cluster maken in azure")
 
     Accepteer alle andere standaardwaarden, anders dan de volgende:
 
@@ -103,21 +103,21 @@ In deze sectie maakt u een Azure Databricks-werk ruimte met behulp van de [Azure
      Selecteer **Cluster maken**. 
 4. Het maken van het cluster duurt enkele minuten. Zodra het cluster wordt uitgevoerd, kunt u notitieblokken koppelen aan het cluster en Spark-taken uitvoeren.
 
-## <a name="create-a-twitter-application"></a>Maak een Twitter-toepassing
+## <a name="create-a-twitter-application"></a>Een Twitter-toepassing maken
 
 Als u een stream van tweets wilt ontvangen, moet u een toepassing in Twitter maken. Volg de stappen om een Twitter-toepassing te maken en de waarden vast te leggen die u nodig hebt om deze zelfstudie te voltooien.
 
-1. Ga vanuit een webbrowser naar [Twitter Application Management](https://apps.twitter.com/) en selecteer **Create New App**.
+1. Ga in een webbrowser naar [Twitter Application Management](https://apps.twitter.com/) en selecteer **Create New App**.
 
     ![Twitter-toepassing maken](../media/tutorials/databricks-create-twitter-app.png "Twitter-toepassing maken")
 
 2. Voer op de pagina **Create an application** de gegevens voor de nieuwe app in en selecteer **Create your Twitter application**.
 
-    ![Gegevens voor Twitter-toepassing](../media/tutorials/databricks-provide-twitter-app-details.png "Gegevens voor Twitter-toepassing")
+    ![Details van Twitter-toepassing](../media/tutorials/databricks-provide-twitter-app-details.png "Details van Twitter-toepassing")
 
 3. Selecteer op de toepassingspagina het tabblad **Keys and Access Tokens** en kopieer de waarden voor **Consumer Key** en **Consumer Secret**. Selecteer ook **Create my access token** om de toegangstokens te genereren. Kopieer de waarden voor **Access Token** en **Access Token Secret**.
 
-    ![Gegevens voor Twitter-toepassing](../media/tutorials/twitter-app-key-secret.png "Gegevens voor Twitter-toepassing")
+    ![Details van Twitter-toepassing](../media/tutorials/twitter-app-key-secret.png "Details van Twitter-toepassing")
 
 Sla de waarden op die u hebt opgehaald voor de Twitter-toepassing. U hebt deze waarden later in de zelfstudie nodig.
 
@@ -127,7 +127,7 @@ In deze zelfstudie gebruikt u de Twitter-API's om tweets te verzenden naar Event
 
 1. Selecteer **Werkruimte** in de Azure Databricks-werkruimte en klik vervolgens met de rechtermuisknop op **Gedeeld**. Selecteer **Bibliotheek** > **maken** in het contextmenu.
 
-   ![Dialoogvenster Bibliotheek toevoegen](../media/tutorials/databricks-add-library-option.png "Dialoogvenster Bibliotheek toevoegen")
+   ![Het dialoog venster bibliotheek toevoegen](../media/tutorials/databricks-add-library-option.png "Het dialoog venster bibliotheek toevoegen")
 
 2. Selecteer op de pagina nieuwe bibliotheek voor **bron** **maven**. Voer voor **coördinaten**de coördinaat in voor het pakket dat u wilt toevoegen. Dit zijn de Maven-coördinaten voor de bibliotheken die in deze zelfstudie worden gebruikt:
 
@@ -145,7 +145,7 @@ In deze zelfstudie gebruikt u de Twitter-API's om tweets te verzenden naar Event
 5. Als er zich geen cluster op de pagina bibliotheek bevindt, selecteert u **clusters** en voert u het cluster uit dat u hebt gemaakt. Wacht tot de status wordt uitgevoerd en ga vervolgens terug naar de pagina bibliotheek.
 Selecteer op de pagina bibliotheek het cluster waar u de bibliotheek wilt gebruiken en selecteer vervolgens **installeren**. Zodra de tape wisselaar is gekoppeld aan het cluster, wordt de status direct gewijzigd in **geïnstalleerd**.
 
-    ![Bibliotheek installeren in cluster](../media/tutorials/databricks-library-attached.png "installatie bibliotheek naar cluster")
+    ![Bibliotheek installeren in cluster](../media/tutorials/databricks-library-attached.png "Bibliotheek installeren in cluster")
 
 6. Herhaal deze stappen voor het Twitter-pakket, `twitter4j-core:4.0.7`.
 
@@ -159,13 +159,13 @@ In deze zelf studie maakt u gebruik van de [Azure Cognitive Services anomalie](.
 
 3. Selecteer onder Azure Marketplace **AI + Machine Learning** > alle > **Cognitive Services-meer** > **anomalie detectie** **weer te geven** . Of u kunt [deze koppeling](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) gebruiken om rechtstreeks naar het dialoog venster **maken** te gaan.
 
-    Een afwijkende(../media/tutorials/databricks-cognitive-services-anomaly-detector.png "bron voor") de ![detector]maken
+    ![Afwijkende detector-resource maken](../media/tutorials/databricks-cognitive-services-anomaly-detector.png "Afwijkende detector-resource maken")
 
 4. Geef in het dialoogvenster **Maken** de volgende waarden op:
 
     |Waarde |Beschrijving  |
     |---------|---------|
-    |Naam     | Een naam voor de afwijkende detector-resource.        |
+    |Name     | Een naam voor de afwijkende detector-resource.        |
     |Abonnement     | Het Azure-abonnement waaraan de resource wordt gekoppeld.        |
     |Locatie     | Een Azure-locatie.        |
     |Prijscategorie     | Een prijs categorie voor de service. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/)voor meer informatie over de prijzen voor anomalie detectie.        |
@@ -176,26 +176,26 @@ In deze zelf studie maakt u gebruik van de [Azure Cognitive Services anomalie](.
 
 5. Nadat de resource is gemaakt, kopieert u op het tabblad **overzicht** de **eind punt** -URL en slaat u deze op, zoals wordt weer gegeven in de scherm opname. Selecteer vervolgens **toegangs sleutels weer geven**.
 
-    ![Toegangssleutels weergeven](../media/tutorials/cognitive-services-get-access-keys.png "Toegangssleutels weergeven")
+    ![Toegangs sleutels weer geven](../media/tutorials/cognitive-services-get-access-keys.png "Toegangs sleutels weer geven")
 
 6. Onder **sleutels**selecteert u het Kopieer pictogram voor de sleutel die u wilt gebruiken. Sla de toegangs sleutel op.
 
-    ![Toegangssleutels kopiëren](../media/tutorials/cognitive-services-copy-access-keys.png "Toegangssleutels kopiëren")
+    ![Toegangs sleutels kopiëren](../media/tutorials/cognitive-services-copy-access-keys.png "Toegangs sleutels kopiëren")
 
-## <a name="create-notebooks-in-databricks"></a>Notitieblokken maken in Databricks
+## <a name="create-notebooks-in-databricks"></a>Notitieblokken maken in Azure Databricks
 
 In deze sectie gaat u in de Databricks-werkruimte twee notitieblokken met de volgende namen maken
 
-- **SendTweetsToEventHub**: een notitieblok voor producenten waarmee u tweets kunt ophalen uit Twitter die u kunt streamen naar Event Hubs.
+- **SendTweetsToEventHub** - een notitieblok voor producenten waarmee u tweets kunt ophalen uit Twitter en ze kunt streamen naar Event Hubs.
 - **Notitie analyzetweetsfromeventhub** : een notebook van de consument die u gebruikt om de tweets van Event hubs te lezen en anomalie detectie uit te voeren.
 
 1. Selecteer in de werk ruimte Azure Databricks **werk ruimte** in het linkerdeel venster. Selecteer **Maken** in de vervolgkeuzelijst **Werkruimte** en selecteer **Notitieblok**.
 
-    ![Een notitieblok maken in Databricks](../media/tutorials/databricks-create-notebook.png "Een notitieblok maken in Databricks")
+    ![Een notitie blok maken in Databricks](../media/tutorials/databricks-create-notebook.png "Een notitie blok maken in Databricks")
 
 2. Voer in het dialoog venster **notitie blok maken** **SendTweetsToEventHub** als naam in, selecteer **scala** als taal en selecteer het Spark-cluster dat u eerder hebt gemaakt.
 
-    ![Een notitieblok maken in Databricks](../media/tutorials/databricks-notebook-details.png "Een notitieblok maken in Databricks")
+    ![Een notitie blok maken in Databricks](../media/tutorials/databricks-notebook-details.png "Een notitie blok maken in Databricks")
 
     Selecteer **Maken**.
 
@@ -300,7 +300,7 @@ eventHubClient.get().close()
 pool.shutdown()
 ```
 
-Voor het uitvoeren van het notitieblok drukt u op **SHIFT + ENTER**. De volgende uitvoer wordt weergegeven. Elke gebeurtenis in de uitvoer is een combi natie van tijds tempel en het aantal ' like ' s dat is opgenomen in de Event Hubs.
+Voor het uitvoeren van het notitieblok, drukt u op **SHIFT + ENTER**. De volgende uitvoer wordt weergegeven. Elke gebeurtenis in de uitvoer is een combi natie van tijds tempel en het aantal ' like ' s dat is opgenomen in de Event Hubs.
 
     Sent event: {"timestamp":"2019-04-24T09:39:40.000Z","favorite":0}
 
@@ -323,7 +323,7 @@ Voor het uitvoeren van het notitieblok drukt u op **SHIFT + ENTER**. De volgende
 
 ## <a name="read-tweets-from-event-hubs"></a>Tweets lezen van Event Hubs
 
-Plak de volgende code in de **notitie analyzetweetsfromeventhub** -notebook en vervang de tijdelijke aanduiding door waarden voor de bron van de anomalie detector die u eerder hebt gemaakt. Dit notitieblok leest de tweets die u eerder naar Event Hubs hebt gestreamd met behulp van het notitieblok **SendTweetsToEventHub**.
+Plak de volgende code in de **notitie analyzetweetsfromeventhub** -notebook en vervang de tijdelijke aanduiding door waarden voor de bron van de anomalie detector die u eerder hebt gemaakt. Dit notitieblok leest de tweets die u eerder hebt gestreamd naar Event Hubs met behulp van het **SendTweetsToEventHub**-notitieblok.
 
 Schrijf eerst een client om anomalie detectie aan te roepen. 
 ```scala
@@ -423,7 +423,7 @@ object AnomalyDetector extends Serializable {
 }
 ```
 
-Voor het uitvoeren van het notitieblok drukt u op **SHIFT + ENTER**. De volgende uitvoer wordt weergegeven.
+Voor het uitvoeren van het notitieblok, drukt u op **SHIFT + ENTER**. De volgende uitvoer wordt weergegeven.
 
     import java.io.{BufferedReader, DataOutputStream, InputStreamReader}
     import java.net.URL
@@ -495,7 +495,7 @@ class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
 
 ```
 
-Voor het uitvoeren van het notitieblok drukt u op **SHIFT + ENTER**. De volgende uitvoer wordt weergegeven.
+Voor het uitvoeren van het notitieblok, drukt u op **SHIFT + ENTER**. De volgende uitvoer wordt weergegeven.
 
     import org.apache.spark.sql.Row
     import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}
@@ -542,7 +542,7 @@ display(msgStream)
 ```
 
 De uitvoer lijkt nu op de volgende afbeelding. Houd er rekening mee dat de datum in de tabel mogelijk anders is dan de datum in deze zelf studie, omdat de gegevens realtime zijn.
-![Gegevens laden uit Event hub](../media/tutorials/load-data-from-eventhub.png "laad gegevens van Event hub")
+![Gegevens laden vanuit Event hub](../media/tutorials/load-data-from-eventhub.png "Gegevens laden vanuit Event hub")
 
 U hebt nu in bijna realtime gegevens van Azure Event Hubs naar Azure Databricks gestreamd met behulp van de Event Hubs-connector voor Apache Spark. Raadpleeg voor meer informatie over het gebruik van de Event Hubs-connector voor Spark de [connector-documentatie](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs).
 
@@ -680,7 +680,7 @@ In deze zelf studie is de granulariteit elk uur, maar u kunt de granulariteit al
 
 Nadat u de zelfstudie hebt voltooid, kunt u het cluster beëindigen. Hiertoe selecteert u in de werk ruimte Azure Databricks **clusters** in het linkerdeel venster. Voor het cluster dat u wilt beëindigen, plaatst u de cursor op het weglatings teken onder **acties** kolom, selecteert u het pictogram **beëindigen** en selecteert u vervolgens **bevestigen**.
 
-![Een Databricks-cluster stopzetten](../media/tutorials/terminate-databricks-cluster.png "Een Databricks-cluster stopzetten")
+![Een Databricks-cluster stoppen](../media/tutorials/terminate-databricks-cluster.png "Een Databricks-cluster stoppen")
 
 Als u het cluster niet hand matig beëindigt, wordt het automatisch gestopt, op voor waarde dat u het selectie vakje **beëindigen na \_\_ minuten van inactiviteit** tijdens het maken van het cluster hebt geselecteerd. In dat geval stopt het cluster automatisch als het gedurende de opgegeven tijd inactief is geweest.
 

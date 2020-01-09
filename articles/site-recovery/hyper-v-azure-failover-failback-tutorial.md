@@ -1,29 +1,28 @@
 ---
-title: Failover en failback instellen voor virtuele Hyper-V-machines in Azure Site Recovery
-description: Leer hoe u failover- en failback-overschakeling kunt uitvoeren van Hyper-V-VM's naar Azure als onderdeel van herstel na een noodgeval met de Azure Site Recovery-service.
+title: Failover van virtuele Hyper-V-machines instellen in Azure in Azure Site Recovery
+description: Meer informatie over het uitvoeren van een failover van virtuele Hyper-V-machines naar Azure met Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/14/2019
+ms.date: 12/16/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: a8c197c2f0875bb31d091fb5839730ee1568b471
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 03826abf6da94859c510f4c127dfce035aa79370
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082655"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498171"
 ---
-# <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Failover en failback voor virtuele Hyper-V-machines die zijn gerepliceerd naar Azure
+# <a name="fail-over-hyper-v-vms-to-azure"></a>Failover van virtuele Hyper-V-machines naar Azure
 
-Deze zelfstudie beschrijft het uitvoeren van een failover van een virtuele Hyper-V-machine naar Azure. Nadat u een failover hebt uitgevoerd, valt u terug op uw on-premises site wanneer deze beschikbaar is. In deze zelfstudie leert u het volgende:
+In deze zelf studie wordt beschreven hoe u een failover voor virtuele Hyper-V-machines naar Azure met [Azure site Recovery](site-recovery-overview.md). Nadat u een failover hebt uitgevoerd, valt u terug op uw on-premises site wanneer deze beschikbaar is. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Controleren of de eigenschappen van de virtuele Hyper-V-machine in overeenstemming zijn met de Azure-vereisten
-> * Een failover naar Azure uitvoeren
-> * Failback van Azure naar on-premises
-> * Replicatie van on-premises virtuele machines omkeren om weer te repliceren naar Azure
+> * Controleer de eigenschappen van de Hyper-V-virtuele machine om te controleren of aan de vereisten van Azure wordt voldaan.
+> * Failover van specifieke Vm's naar Azure.
+
 
 Dit is de vijfde zelfstudie in een reeks. In deze zelfstudie wordt ervan uitgegaan dat u de taken in de vorige zelfstudies al hebt voltooid.    
 
@@ -32,8 +31,9 @@ Dit is de vijfde zelfstudie in een reeks. In deze zelfstudie wordt ervan uitgega
 3. Noodherstel configureren voor [virtuele Hyper-V-machines](tutorial-hyper-v-to-azure.md) of voor [virtuele Hyper-V-machines die worden beheerd in System Center VMM-clouds](tutorial-hyper-v-vmm-to-azure.md)
 4. [Noodherstelanalyse uitvoeren](tutorial-dr-drill-azure.md)
 
-## <a name="prepare-for-failover-and-failback"></a>Voorbereiden voor failover en failback
+[Meer informatie over](failover-failback-overview.md#types-of-failover) verschillende typen failover. Als u een failover wilt uitvoeren voor meerdere Vm's in een herstel plan, raadpleegt u [dit artikel](site-recovery-failover.md).
 
+## <a name="prepare-for-failover"></a>Voorbereiden op een failover 
 Zorg ervoor dat er zich geen momentopnamen bevinden op de virtuele machine en dat de on-premises virtuele machine is uitgeschakeld tijdens failback. Dit helpt ervoor te zorgen dat gegevens tijdens de replicatie consistent blijven. Schakel de on-premises virtuele machine niet in tijdens failback. 
 
 Failover en failback bestaat uit drie fasen:
@@ -56,7 +56,7 @@ Klik in **Beveiligde items** op **Gerepliceerde items** > VM.
 
 1. In **Schijven** ziet u informatie over het besturingssysteem en de gegevensschijven van de VM.
 
-## <a name="failover-to-azure"></a>Failover naar Azure
+## <a name="fail-over-to-azure"></a>Failover naar Azure
 
 1. Klik in **Instellingen** > **Gerepliceerde items** op de VM > **Failover**.
 2. Selecteer bij **Failover** **Meest recent** als het herstelpunt. 
@@ -66,15 +66,18 @@ Klik in **Beveiligde items** op **Gerepliceerde items** > VM.
 > [!WARNING]
 > **Een failover die in uitvoering is, mag niet worden geannuleerd**: als u dat doet, wordt de failover wel beëindigd, maar de virtuele machine wordt niet meer gerepliceerd.
 
-## <a name="failback-azure-vm-to-on-premises-and-reverse-replicate-the-on-premises-vm"></a>Failback van virtuele Azure-machine van Azure naar on-premises en replicatie van on-premises virtuele machine omkeren
+## <a name="connect-to-failed-over-vm"></a>Verbinding maken met mislukte VM
 
-Failback is in feite een failover van Azure naar de on-premises site waarna virtuele machines weer worden gerepliceerd van de on-premises site naar Azure.
+1. Als u na een failover verbinding wilt maken met virtuele Azure-machines met behulp van Remote Desktop Protocol (RDP) en Secure Shell (SSH), [controleert u of aan de vereisten is voldaan](failover-failback-overview.md#connect-to-azure-after-failover).
+2. Ga na een failover naar de virtuele machine en valideer deze door [verbinding te maken](../virtual-machines/windows/connect-logon.md) .
+3. **Herstel punt voor wijzigingen** gebruiken als u na een failover een ander herstel punt wilt gebruiken. Nadat u de failover in de volgende stap hebt doorgevoerd, is deze optie niet meer beschikbaar.
+4. Na validatie selecteert u **door voeren** om het herstel punt van de virtuele machine na een failover te volt ooien.
+5. Nadat u de wijzigingen hebt doorgevoerd, worden alle andere beschik bare herstel punten verwijderd. Met deze stap wordt de failover voltooid.
 
-1. Klik in **Instellingen** > **Gerepliceerde items** op de virtuele machine > **Geplande failover**.
-2. Controleer bij **Geplande failover bevestigen** de failover-richting (van Azure) en selecteer de bron- en doellocaties.
-3. Selecteer **Gegevens synchroniseren voor failover (alleen deltawijzigingen synchroniseren)** . Met deze optie beperkt u de downtime van de virtuele machine tot een minimum omdat er wordt gesynchroniseerd zonder de virtuele machine af te sluiten.
-4. Start de failover. U kunt de voortgang van de failover volgen op het tabblad **Taken**.
-5. Als de initiële synchronisatie is voltooid en u de virtuele Azure-machines wilt afsluiten, klikt u op **Taken** > naam-van-geplande-failover-taak> **Failover voltooien**. Hierdoor wordt de virtuele Azure-machine afgesloten, worden de meest recente wijzigingen overgebracht naar on-premises en wordt de on-premises virtuele machine gestart.
-6. Meld u aan bij de on-premises virtuele machine om te controleren of deze inderdaad beschikbaar is.
-7. De on-premises virtuele machine heeft nu de status **Wachten op doorvoering**. Klik op **Doorvoeren**. Hiermee verwijdert u de virtuele Azure-machines en de bijbehorende schijven, en bereidt u de on-premises virtuele machine voor op omgekeerde replicatie.
-Om de on-premises virtuele machine te repliceren naar Azure, schakelt u **Omgekeerde replicatie** in. Hierdoor wordt de replicatie van deltawijzigingen geactiveerd die hebben plaatsgevonden sinds het uitschakelen van de virtuele Azure-machine.  
+>[!TIP]
+> Als u na de failover problemen ondervindt met de verbinding, volgt u de [hand leiding](site-recovery-failover-to-azure-troubleshoot.md)voor het oplossen van problemen.
+
+
+## <a name="next-steps"></a>Volgende stappen
+
+Na een failover kunt u de Azure-Vm's opnieuw beveiligen zodat ze van Azure naar on-premises worden gerepliceerd. Nadat de Vm's opnieuw zijn beveiligd en repliceren naar de on-premises site, kunt u een failback uitvoeren van Azure wanneer u klaar bent.

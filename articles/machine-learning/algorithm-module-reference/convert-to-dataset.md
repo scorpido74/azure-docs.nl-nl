@@ -1,7 +1,7 @@
 ---
 title: 'Converteren naar DataSet: module-verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module converteren naar gegevensset in de Azure Machine Learning-service om gegevens invoer te converteren naar de indeling van de interne gegevensset die wordt gebruikt door Microsoft Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module converteren naar gegevensset in Azure Machine Learning om gegevens invoer om te zetten in de indeling van de interne gegevensset die door Microsoft Azure Machine Learning wordt gebruikt.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 81eb71da43623f6478e267f55d6576789d494f9b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a004fdf0ed01c97fe5c21cc9011c46f5e4c51648
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717254"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428578"
 ---
 # <a name="convert-to-dataset"></a>Converteren naar gegevensset
 
@@ -70,4 +70,4 @@ U wordt aangeraden de module [meta gegevens bewerken](edit-metadata.md) te gebru
   
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor de Azure machine learning-service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

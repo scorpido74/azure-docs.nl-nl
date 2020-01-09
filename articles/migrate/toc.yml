@@ -62,12 +62,12 @@
           href: migrate-support-matrix-hyper-v.md
         - name: Ondersteuningsmatrix voor evaluatie en migratie van fysieke servers
           href: migrate-support-matrix-physical.md
+        - name: Ondersteuningsmatrix voor de Azure Migrate-toepassing
+          href: migrate-appliance.md
     - name: Hyper-V-migratiearchitectuur
       href: hyper-v-migration-architecture.md
     - name: Migratiearchitectuur op basis van een agent
       href: agent-based-migration-architecture.md
-    - name: Azure Migrate-apparaat
-      href: migrate-appliance.md
     - name: Azure Migrate-replicatieapparaat
       href: migrate-replication-appliance.md
     - name: Best practices voor evaluaties
@@ -80,6 +80,8 @@
   items:
     - name: Met een eerdere versie werken
       href: migrate-v1.md
+    - name: Azure Migrate-projecten maken en beheren
+      href: create-manage-projects.md
     - name: Een VMware-apparaat implementeren
       href: how-to-set-up-appliance-vmware.md
     - name: Een Hyper-V-apparaat implementeren
@@ -123,7 +125,13 @@
 - name: Problemen oplossen
   items:
     - name: Problemen met Azure Migrate oplossen
-      href: troubleshooting-general.md
+      href: troubleshoot-general.md
+    - name: Problemen met Azure Migrate-projecten oplossen
+      href: troubleshoot-project.md
+    - name: Problemen met Azure Migrate-apparaat/-detectie oplossen
+      href: troubleshoot-appliance-discovery.md
+    - name: Problemen met de evaluatie/afhankelijkheid oplossen
+      href: troubleshoot-assessment.md
 - name: Resources
   items:
     - name: Migratie in het Cloud Adoption Framework

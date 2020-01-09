@@ -1,28 +1,27 @@
 ---
-title: Het parseren van JSON en AVRO in Azure Stream Analytics
-description: In dit artikel wordt beschreven hoe u werken met complexe gegevenstypen zoals matrices, JSON, opgemaakt CSV-gegevens.
-services: stream-analytics
+title: JSON-en AVRO parseren in Azure Stream Analytics
+description: In dit artikel wordt beschreven hoe u complexe gegevens typen gebruikt zoals matrices, JSON-gegevens in CSV-indeling.
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: daf5b97e4ac586f89e5964ee16ee73c86f59b01d
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 1741510c7398ce74da81f006cb4109d9a33f8f9f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329364"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431596"
 ---
-# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Parseren van JSON en Avro-gegevens in Azure Stream Analytics
+# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>JSON-en Avro-gegevens parseren in Azure Stream Analytics
 
-Azure Stream Analytics ondersteuning voor verwerking van gebeurtenissen in de opmaak van CSV, JSON en Avro-gegevens. JSON- en Avro-gegevens kunnen worden onderverdeeld en bevatten enkele complexe typen zoals geneste objecten (records) en -matrices. 
-
-
+Azure Stream Analytics ondersteuning voor het verwerken van gebeurtenissen in CSV-, JSON-en Avro-gegevens indelingen. JSON-en Avro-gegevens kunnen worden gestructureerd en bevatten complexe typen, zoals geneste objecten (records) en matrices. 
 
 
-## <a name="record-data-types"></a>Record-gegevenstypen
-Record-gegevenstypen worden gebruikt om weer te geven van JSON en Avro matrices wanneer bijbehorende indelingen worden gebruikt in de invoer-gegevensstromen. Deze voorbeelden ziet u een voorbeeld van de sensor die invoer gebeurtenissen in JSON-indeling wordt gelezen. Hier volgt een voorbeeld van een enkelvoudige gebeurtenis:
+
+
+## <a name="record-data-types"></a>Record gegevens typen
+Record gegevens typen worden gebruikt voor het weer geven van JSON-en Avro-matrices wanneer overeenkomende indelingen worden gebruikt in de gegevens stromen voor invoer. In deze voor beelden ziet u een voor beeld van een sensor, waarmee invoer gebeurtenissen in JSON-indeling worden gelezen. Hier volgt een voor beeld van één gebeurtenis:
 
 ```json
 {
@@ -48,8 +47,8 @@ Record-gegevenstypen worden gebruikt om weer te geven van JSON en Avro matrices 
 ```
 
 
-### <a name="access-nested-fields-in-known-schema"></a>Toegang tot het geneste velden in bekende schema
-Gebruik een puntnotering (.) eenvoudig toegang tot geneste velden rechtstreeks vanuit uw query. Deze query wordt bijvoorbeeld de breedtegraad en lengtegraad coördinaten onder de locatie-eigenschap in de voorgaande JSON-gegevens geselecteerd. De puntnotatie kan worden gebruikt om te navigeren van meerdere niveaus, zoals hieronder wordt weergegeven.
+### <a name="access-nested-fields-in-known-schema"></a>Toegang krijgen tot geneste velden in een bekend schema
+Gebruik punt notatie (.) om eenvoudig toegang te krijgen tot geneste velden rechtstreeks vanuit uw query. Met deze query worden bijvoorbeeld de breedte-en lengte coördinaten geselecteerd onder de locatie-eigenschap in de voor gaande JSON-gegevens. De punt notatie kan worden gebruikt om te navigeren op meerdere niveaus, zoals hieronder wordt weer gegeven.
 
 ```SQL
 SELECT
@@ -61,7 +60,7 @@ FROM input
 ```
 
 ### <a name="select-all-properties"></a>Alle eigenschappen selecteren
-U kunt de eigenschappen van het gebruik van een geneste record selecteren ' *' Jokertekens. Kijk een naar het volgende voorbeeld:
+U kunt alle eigenschappen van een geneste record selecteren met behulp van het Joker teken ' * '. Kijk een naar het volgende voorbeeld:
 
 ```SQL
 SELECT input.Location.*
@@ -78,10 +77,10 @@ Het resultaat is:
 ```
 
 
-### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Toegang tot het geneste velden als naam van de eigenschap een variabele is
-Gebruik de [GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) als naam van de eigenschap is een variabele. 
+### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Toegang krijgen tot geneste velden als eigenschaps naam een variabele is
+Gebruik de functie [GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) als de naam van de eigenschap een variabele is. 
 
-Denk bijvoorbeeld aan dat een voorbeeld van de gegevensstroom moet worden samengevoegd met verwijzing met gegevensdrempels voor elk apparaat sensor. Hieronder ziet u een fragment van dergelijke referentiegegevens.
+Stel dat een voor beeld van een gegevens stroom moet worden gekoppeld met referentie gegevens die drempels bevatten voor elke sensor van het apparaat. Hieronder ziet u een fragment van dergelijke referentie gegevens.
 
 ```json
 {
@@ -104,8 +103,8 @@ WHERE
     -- the where statement selects the property value coming from the reference data
 ```
 
-### <a name="convert-record-fields-into-separate-events"></a>Recordvelden converteren naar afzonderlijke gebeurtenissen
-Als u wilt converteren recordvelden in afzonderlijke gebeurtenissen, gebruikt u de [toepassen](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) operator samen met de [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) functie. Bijvoorbeeld, als het vorige voorbeeld had meerdere records voor SensorReading, kan de volgende query kan worden gebruikt om op te halen ze in verschillende gebeurtenissen:
+### <a name="convert-record-fields-into-separate-events"></a>Record velden omzetten in afzonderlijke gebeurtenissen
+Als u record velden wilt omzetten in afzonderlijke gebeurtenissen, gebruikt u de operator [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) samen met de functie [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) . Als het vorige voor beeld bijvoorbeeld meerdere records bevat voor SensorReading, kan de volgende query worden gebruikt om deze op te halen in verschillende gebeurtenissen:
 
 ```SQL
 SELECT
@@ -118,14 +117,14 @@ CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 
 
 
-## <a name="array-data-types"></a>Matrix-gegevenstypen
+## <a name="array-data-types"></a>Matrix gegevens typen
 
-Matrix-gegevenstypen zijn een geordende reeks waarden. Sommige normale bewerkingen op basis van matrixwaarden worden hieronder beschreven. Deze voorbeelden wordt ervan uitgegaan dat de invoer gebeurtenissen hebben een eigenschap met de naam 'arrayField' dat wil zeggen een matrix-gegevenstype.
+Matrix gegevens typen zijn een geordende verzameling waarden. Enkele typische bewerkingen op matrix waarden worden hieronder beschreven. In deze voor beelden wordt ervan uitgegaan dat de invoer gebeurtenissen een eigenschap hebben met de naam ' arrayField ' die een matrix gegevens type is.
 
-Deze voorbeelden gebruiken de functies [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics), en de [toepassen](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) operator.
+In deze voor beelden worden de functies [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)en de operator [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) gebruikt.
 
-### <a name="working-with-a-specific-array-element"></a>Werken met een specifieke matrixelement
-Selecteer matrixelement op een opgegeven index (waarbij u het eerste matrixelement):
+### <a name="working-with-a-specific-array-element"></a>Werken met een specifiek matrix element
+Selecteer een matrix element bij een opgegeven index (selecteren van het eerste matrix element):
 
 ```SQL
 SELECT
@@ -133,7 +132,7 @@ SELECT
 FROM input
 ```
 
-### <a name="select-array-length"></a>Matrixlengte van de selecteren
+### <a name="select-array-length"></a>Matrix lengte selecteren
 
 ```SQL
 SELECT
@@ -141,8 +140,8 @@ SELECT
 FROM input
 ```
 
-### <a name="convert-array-elements-into-separate-events"></a>Matrixelementen converteren naar afzonderlijke gebeurtenissen
-Selecteer alle matrixelement als afzonderlijke gebeurtenissen. De [toepassen](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) operator samen met de [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) ingebouwde functie haalt alle matrixelementen als afzonderlijke gebeurtenissen:
+### <a name="convert-array-elements-into-separate-events"></a>Matrix elementen omzetten in afzonderlijke gebeurtenissen
+Selecteer alle matrix elementen als afzonderlijke gebeurtenissen. De operator apply in combi natie met de ingebouwde functie [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) haalt alle matrix elementen [op](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) als afzonderlijke gebeurtenissen:
 
 ```SQL
 SELECT
@@ -154,4 +153,4 @@ CROSS APPLY GetArrayElements(event.arrayField) AS arrayElement
 
 
 ## <a name="see-also"></a>Zie ook
-[Gegevenstypen in Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)
+[Gegevens typen in Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 06d1895a807b4e618be3dc1f816da2c1b3faaf3b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 6eeabb279f5bd5165ebb249651b8bc926deb92a6
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122135"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530915"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Azure-cache beheren voor redis met Azure PowerShell
 > [!div class="op_single_selector"]
@@ -76,7 +76,7 @@ of
 
 Als u een cache in de Azure Government Cloud wilt maken, gebruikt u een van de volgende locaties.
 
-* USGove Virginia
+* USGov - Virginia
 * USGov Iowa
 
 Zie [Microsoft Azure Government](https://azure.microsoft.com/features/gov/) en [Microsoft Azure Government ontwikkelaars handleiding](../azure-government-developer-guide.md)voor meer informatie over de Azure Government Cloud.
@@ -92,10 +92,10 @@ of
 
 Als u een cache wilt maken in de Azure China-Cloud, gebruikt u een van de volgende locaties.
 
-* China East
+* China - oost
 * China - noord
 
-Zie [AzureChinaCloud voor Azure beheerd door 21vianet in China](http://www.windowsazure.cn/)voor meer informatie over de cloud van Azure China.
+Zie [AzureChinaCloud voor Azure beheerd door 21vianet in China](https://www.windowsazure.cn/)voor meer informatie over de cloud van Azure China.
 
 ### <a name="to-connect-to-microsoft-azure-germany"></a>Verbinding maken met Microsoft Azure Duitsland
 Als u verbinding wilt maken met Microsoft Azure Duitsland, gebruikt u een van de volgende opdrachten.
@@ -119,14 +119,14 @@ De volgende tabel bevat eigenschappen en beschrijvingen voor veelgebruikte para 
 
 | Parameter | Beschrijving | Standaard |
 | --- | --- | --- |
-| Naam |Naam van de cache | |
+| Name |Naam van de cache | |
 | Locatie |Locatie van de cache | |
 | ResourceGroupName |Naam van de resource groep waarin de cache moet worden gemaakt | |
-| Grootte |De grootte van de cache. Geldige waarden zijn: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2,5 GB, 6GB, 13GB, 26GB, 53GB |1GB |
+| Grootte |De grootte van de cache. Geldige waarden zijn: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2,5 GB, 6GB, 13GB, 26GB, 53GB |1 GB |
 | ShardCount |Het aantal Shards dat moet worden gemaakt bij het maken van een Premium-cache met clustering ingeschakeld. Geldige waarden zijn: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
 | SKU |Hiermee geeft u de SKU van de cache op. Geldige waarden zijn: Basic, Standard, Premium |Standard |
 | RedisConfiguration |Hiermee geeft u de redis-configuratie-instellingen. Zie de volgende tabel met [RedisConfiguration-eigenschappen](#redisconfiguration-properties) voor meer informatie over elke instelling. | |
-| EnableNonSslPort |Hiermee wordt aangegeven of de niet-SSL-poort is ingeschakeld. |False |
+| EnableNonSslPort |Hiermee wordt aangegeven of de niet-SSL-poort is ingeschakeld. |Onwaar |
 | MaxMemoryPolicy |Deze para meter is afgeschaft: gebruik in plaats daarvan RedisConfiguration. | |
 | StaticIP |Bij het hosten van uw cache in een VNET, geeft u een uniek IP-adres op in het subnet voor de cache. Indien niet opgegeven, wordt er een gekozen uit het subnet. | |
 | Subnet |Wanneer u uw cache host in een VNET, geeft u de naam op van het subnet waarin de cache moet worden geïmplementeerd. | |

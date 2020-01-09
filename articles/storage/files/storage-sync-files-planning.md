@@ -4,15 +4,15 @@ description: Meer informatie over hoe u rekening moet houden bij het plannen van
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 12/18/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bb75fd8aafdc886a8753fa2e6be30d9d7f83bb6f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c81f06d924a0ba871115e0ae0164d61449855263
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927862"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665264"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planning voor de implementatie van Azure Files Sync
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -35,7 +35,7 @@ Het geregistreerde Server object vertegenwoordigt een vertrouwens relatie tussen
 
 ### <a name="azure-file-sync-agent"></a>Azure File Sync-agent
 De Azure File Sync-agent is een downloadbaar pakket waardoor Windows Server met een Azure-bestandsshare kan worden gesynchroniseerd. De Azure File Sync-agent heeft drie hoofd onderdelen: 
-- **FileSyncSvc. exe**: de achtergrond Windows-service die verantwoordelijk is voor het bewaken van wijzigingen op server eindpunten en voor het initiëren van synchronisatie sessies naar Azure.
+- **FileSyncSvc. exe**: de achtergrond service die verantwoordelijk is voor het bewaken van wijzigingen op server eindpunten en voor het initiëren van synchronisatie sessies naar Azure.
 - **StorageSync. sys**: het Azure file sync-bestandssysteem filter, dat verantwoordelijk is voor het belagen van bestanden aan Azure files (wanneer Cloud lagen zijn ingeschakeld).
 - **Power shell Management cmdlets**: Power shell-cmdlets die u gebruikt om te communiceren met de Azure-resource provider micro soft. StorageSync. U kunt dit vinden op de volgende locaties (standaard):
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll
@@ -69,7 +69,7 @@ Cloud lagen is een optionele functie van Azure File Sync waarbij veelgebruikte b
 In deze sectie worden de systeem vereisten en interoperabiliteit van Azure File Sync agent met Windows Server-functies en-rollen en oplossingen van derden beschreven.
 
 ### <a name="evaluation-cmdlet"></a>Evaluatie-cmdlet
-Voordat u Azure File Sync implementeert, moet u evalueren of het compatibel is met uw systeem met behulp van de Azure File Sync Evaluation-cmdlet. Met deze cmdlet wordt gecontroleerd op mogelijke problemen met uw bestands systeem en gegevensset, zoals niet-ondersteunde tekens of een niet-ondersteunde versie van het besturings systeem. Houd er rekening mee dat de controles de meeste van de hieronder vermelde functies dekken, maar niet alle. We raden u aan de rest van deze sectie zorgvuldig te lezen om ervoor te zorgen dat uw implementatie probleemloos verloopt. 
+Voordat u Azure File Sync implementeert, moet u evalueren of het compatibel is met uw systeem met behulp van de Azure File Sync Evaluation-cmdlet. Met deze cmdlet wordt gecontroleerd op mogelijke problemen met uw bestands systeem en gegevensset, zoals niet-ondersteunde tekens of een niet-ondersteunde versie van het besturings systeem. De controles dekken de meeste van de hieronder genoemde functies We raden u aan de rest van deze sectie zorgvuldig te lezen om ervoor te zorgen dat uw implementatie probleemloos verloopt. 
 
 De evaluatie-cmdlet kan worden geïnstalleerd door de installatie van de AZ Power shell-module, die kan worden geïnstalleerd door de volgende instructies te volgen: [Installeer en configureer Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
@@ -99,7 +99,7 @@ De resultaten weer geven in CSV:
 ### <a name="system-requirements"></a>Systeemvereisten
 - Een server met een van de volgende versies van het besturings systeem:
 
-    | Version | Ondersteunde Sku's | Ondersteunde implementatie opties |
+    | Versie | Ondersteunde Sku's | Ondersteunde implementatie opties |
     |---------|----------------|------------------------------|
     | Windows Server 2019 | Data Center en Standard | Volledig en kern geheugen |
     | Windows Server 2016 | Data Center en Standard | Volledig en kern geheugen |
@@ -141,8 +141,10 @@ De resultaten weer geven in CSV:
 
 | Bestand/map | Opmerking |
 |-|-|
+| pagefile.sys | Bestand dat specifiek is voor systeem |
 | Desktop.ini | Bestand dat specifiek is voor systeem |
-| ethumbs. db $ | Tijdelijk bestand voor miniatuur weergaven |
+| duims. db | Tijdelijk bestand voor miniatuur weergaven |
+| ehthumbs. db | Tijdelijk bestand voor miniatuur weergaven van media |
 | ~$\*.\* | Tijdelijk Office-bestand |
 | \*. tmp | Tijdelijk bestand |
 | \*.laccdb | Access DB-bestand vergren delen|
@@ -177,7 +179,7 @@ Azure File Sync biedt geen ondersteuning voor Gegevensontdubbeling en Cloud lage
     - Het beleid voor beschik bare ruimte gaat door met het heatmap met behulp van de beschik bare ruimte op het volume.
     - Met datum beleid wordt het trapsgewijs scha kelen van bestanden die mogelijk anderszins in aanmerking komen voor het maken van lagen, overgeslagen door de optimalisatie taak voor ontdubbeling om toegang te krijgen tot de bestanden.
 - Voor voortdurende optimalisatie taken met ontdubbeling wordt de Cloud Tiering met het datum beleid vertraagd door de [MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps) -instelling voor gegevensontdubbeling als het bestand nog niet is gelaagd. 
-    - Voor beeld: als het MinimumFileAgeDays is ingesteld op 7 dagen en het beleid voor Cloud lagen 30 dagen is, worden de bestanden na 37 dagen in het datum beleid gelaagd.
+    - Voor beeld: als de instelling MinimumFileAgeDays zeven dagen is en het beleid voor Cloud lagen 30 dagen is, worden de bestanden na 37 dagen in het datum beleid gelaagd.
     - Opmerking: wanneer een bestand wordt gelaagd door Azure File Sync, wordt het bestand door de optimalisatie taak voor ontdubbeling overgeslagen.
 - Als een server met Windows Server 2012 R2 waarop de Azure File Sync-agent is geïnstalleerd, is bijgewerkt naar Windows Server 2016 of Windows Server 2019, moeten de volgende stappen worden uitgevoerd voor de ondersteuning van Gegevensontdubbeling en Cloud lagen op hetzelfde volume:  
     - Verwijder de Azure File Sync-agent voor Windows Server 2012 R2 en start de server opnieuw op.
@@ -227,7 +229,7 @@ Als u een on-premises back-upoplossing gebruikt, moeten back-ups worden uitgevoe
 > Herstellen met Bare-Metal (BMR) kan leiden tot onverwachte resultaten en wordt op dit moment niet ondersteund.
 
 > [!Note]  
-> Met versie 9 van de Azure file SYnc-agent worden VSS-moment opnamen (met inbegrip van eerdere versies tabblad) nu ondersteund op volumes waarvoor Cloud lagen zijn ingeschakeld. U moet echter compatibiliteit met eerdere versies inschakelen via Power shell. [Meer informatie](storage-files-deployment-guide.md).
+> Met versie 9 van de Azure File Sync agent worden VSS-moment opnamen (inclusief het tabblad vorige versies) nu ondersteund op volumes waarvoor Cloud lagen zijn ingeschakeld. U moet echter compatibiliteit met eerdere versies inschakelen via Power shell. [Meer informatie](storage-files-deployment-guide.md).
 
 ### <a name="encryption-solutions"></a>Oplossingen voor versleuteling
 Ondersteuning voor versleutelings oplossingen is afhankelijk van hoe ze worden geïmplementeerd. Het is bekend dat Azure File Sync werkt met:
@@ -258,7 +260,7 @@ Azure File Sync is alleen beschikbaar in de volgende regio's:
 | VS - centraal | Iowa |
 | Azië - oost | Hongkong SAR |
 | VS - oost | Virginia |
-| US - oost 2 | Virginia |
+| VS - oost2 | Virginia |
 | Frankrijk - centraal | Parijs |
 | Frankrijk-zuid * | Marseille |
 | Korea - centraal | Seoul |
@@ -289,10 +291,10 @@ Azure File Sync ondersteunt alleen synchronisatie met een Azure-bestands share d
 Voor de regio's die zijn gemarkeerd met sterretjes, moet u contact opnemen met de ondersteuning van Azure om toegang aan te vragen tot Azure Storage in die regio's. Het proces wordt beschreven in [dit document](https://azure.microsoft.com/global-infrastructure/geographies/).
 
 ### <a name="azure-disaster-recovery"></a>Herstel na nood gevallen voor Azure
-Om te beschermen tegen verlies van een Azure-regio, wordt Azure File Sync geïntegreerd met de optie [geo-redundante opslag redundantie](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS). GRS-opslag werkt met behulp van asynchrone blok replicatie tussen opslag in de primaire regio, waarmee u normaal gesp roken communiceert en opslag in de gekoppelde secundaire regio. In het geval van een ramp die ervoor zorgt dat een Azure-regio tijdelijk of permanent offline gaat, wordt de opslag van micro soft overgezet naar de gekoppelde regio. 
+Om te beschermen tegen verlies van een Azure-regio, wordt Azure File Sync geïntegreerd met de optie [geo-redundante opslag redundantie](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS). GRS-opslag werkt met behulp van asynchrone blok replicatie tussen opslag in de primaire regio, waarmee u normaal gesp roken communiceert en opslag in de gekoppelde secundaire regio. In het geval van een nood situatie waardoor een Azure-regio tijdelijk of permanent offline gaat, wordt de opslag van micro soft overgezet naar de gekoppelde regio. 
 
 > [!Warning]  
-> Als u uw Azure-bestands share als een Cloud-eind punt in een GRS-opslag account gebruikt, mag u de failover van het opslag account niet starten. Als u dat wel doet, werkt de synchronisatie niet meer en kan dit leiden tot onverwachte gegevens verlies in het geval van nieuwe gelaagde bestanden. In het geval van een verlies van een Azure-regio, zal micro soft de failover van het opslag account activeren op een manier die compatibel is met Azure File Sync.
+> Als u uw Azure-bestands share als een Cloud-eind punt in een GRS-opslag account gebruikt, mag u de failover van het opslag account niet starten. Als u dat wel doet, werkt de synchronisatie niet meer en kan dit leiden tot onverwacht gegevensverlies van bestanden in cloudlagen. In het geval van een verlies van een Azure-regio, zal micro soft de failover van het opslag account activeren op een manier die compatibel is met Azure File Sync.
 
 Ter ondersteuning van de failover-integratie tussen geo-redundante opslag en Azure File Sync, worden alle Azure File Sync regio's gekoppeld aan een secundaire regio die overeenkomt met de secundaire regio die wordt gebruikt door de opslag. Deze paren zijn als volgt:
 
@@ -333,6 +335,30 @@ Ter ondersteuning van de failover-integratie tussen geo-redundante opslag en Azu
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Updatebeleid Azure File Sync-agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="recommended-azure-file-sync-machine-configuration"></a>Aanbevolen Azure File Sync machine configuratie
+
+Azure File Sync computer vereisten worden bepaald door het aantal objecten in de naam ruimte en het verloop op de gegevensset. Eén server kan worden gekoppeld aan meerdere synchronisatie groepen en het aantal objecten dat wordt vermeld in de volgende tabel accounts voor de volledige naam ruimte waaraan een server is gekoppeld. Bijvoorbeeld server eindpunt A met 10.000.000 objecten + server eindpunt B met 10.000.000 objecten = 20.000.000 objecten. Voor de implementatie van een voor beeld raden we 8CPU, 16GiB aan geheugen toe voor stabiele status en (indien mogelijk) 48GiB van geheugen voor de eerste migratie.
+ 
+Naam ruimte gegevens worden in het geheugen opgeslagen om prestatie redenen. Als gevolg hiervan hebben grotere naam ruimten meer geheugen nodig om goede prestaties te behouden, en is er meer CPU vereist voor het uitvoeren van het verloop. 
+ 
+In de volgende tabel hebben we zowel de grootte van de naam ruimte als de conversie van de capaciteit voor veelvoorkomende bestands shares voor algemene doel einden, waarbij de gemiddelde grootte van het bestand 512KiB is. Als de bestands grootten kleiner zijn, kunt u overwegen extra geheugen toe te voegen voor dezelfde hoeveelheid capaciteit. Baseer uw geheugen configuratie op de grootte van de naam ruimte.
+
+| Grootte van de naam ruimte-bestanden & directory's (miljoenen)  | Typische capaciteit (TiB)  | CPU-kernen  | Aanbevolen geheugen (GiB) |
+|---------|---------|---------|---------|
+| 3        | 1.4     | 2        | 8 (initiële synchronisatie)/2 (standaard verloop)      |
+| 5        | 2.3     | 2        | 16 (initiële synchronisatie)/4 (standaard verloop)    |
+| 10       | 4.7     | 4        | 32 (initiële synchronisatie)/8 (standaard verloop)   |
+| 30       | 14,0    | 8        | 48 (initiële synchronisatie)/16 (typische verloop)   |
+| 50       | 23,3    | 16       | 64 (initiële synchronisatie)/32 (standaard verloop)  |
+| 100 *     | 46,6    | 32       | 128 (initiële synchronisatie)/32 (standaard verloop)  |
+
+\*meer dan 100.000.000 bestanden & mappen wordt op dit moment niet ondersteund. Dit is een zachte limiet.
+
+> [!TIP]
+> De initiële synchronisatie van een naam ruimte is een intensieve bewerking. het is raadzaam meer geheugen toe te wijzen totdat de initiële synchronisatie is voltooid. Dit is niet vereist, maar kan de initiële synchronisatie versnellen. 
+> 
+> Normaal verloop is 0,5% van de naam ruimte gewijzigd per dag. Overweeg meer CPU toe te voegen voor een hogere mate van verloop. 
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Firewall-en proxy-instellingen overwegen](storage-sync-files-firewall-and-proxy.md)

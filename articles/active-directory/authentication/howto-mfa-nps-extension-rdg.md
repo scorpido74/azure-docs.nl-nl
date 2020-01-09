@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c22efe84826684e37abee65d64df13d63081aa79
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 71d9b2332d6d78e7bde63d0fa3f5b64b588e576b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848337"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425450"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>De infrastructuur van uw extern bureaublad-Gateway met behulp van de extensie voor Network Policy Server (NPS) en Azure AD integreren
 
@@ -120,11 +120,11 @@ Deze sectie vindt u instructies voor het configureren van extern bureaublad-serv
 Als onderdeel van de configuratie van de NPS-extensie moet u beheerdersreferenties en de Azure AD-ID opgeven voor uw Azure AD-tenant. De volgende stappen ziet u hoe u aan de tenant-ID.
 
 1. Aanmelden bij de [Azure-portal](https://portal.azure.com) als globale beheerder van de Azure-tenant.
-1. Selecteer in het linkernavigatievenster de **Azure Active Directory** pictogram.
+1. Selecteer in het menu Azure Portal **Azure Active Directory**of zoek en selecteer **Azure Active Directory** op een wille keurige pagina.
 1. Selecteer **Eigenschappen**.
 1. Klik op de blade eigenschappen naast de map-ID, de **kopie** pictogram, zoals hieronder aangegeven, de ID naar Klembord kopiëren.
 
-   ![De Directory-ID ophalen uit de Azure Portal](./media/howto-mfa-nps-extension-rdg/image1.png)
+   ![De Directory-ID ophalen uit de Azure Portal](./media/howto-mfa-nps-extension-rdg/azure-active-directory-id-in-azure-portal.png)
 
 ### <a name="install-the-nps-extension"></a>De NPS-extensie installeren
 

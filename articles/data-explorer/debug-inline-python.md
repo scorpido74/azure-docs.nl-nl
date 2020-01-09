@@ -7,16 +7,16 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: f0bf81ce6392e1650d9986d81a55eac9c416c24d
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 96bd66f96b04bd7032d976ba9ebbbeb60c8415e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74822901"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444472"
 ---
 # <a name="debug-kusto-query-language-inline-python-using-vs-code"></a>Fout opsporing voor Kusto-query taal in line python met VS code
 
-Azure Data Explorer ondersteunt het uitvoeren van python-code die is inge sloten in Kusto-query taal met behulp van de [python ()-invoeg toepassing](/azure/kusto/query/pythonplugin) De runtime van de invoeg toepassing wordt gehost in een sandbox, een geïsoleerde en veilige python-omgeving. De invoeg toepassing python () breidt de systeem eigen functionele Kusto-query taal uit met het enorme archief van OSS Python-pakketten. Met deze extensie kunt u geavanceerde algoritmen, zoals machine learning, kunst matige intelligentie, statistische gegevens en time series, uitvoeren als onderdeel van de query.
+Azure Data Explorer ondersteunt het uitvoeren van python-code die is inge sloten in Kusto-query taal met behulp van de [python ()-invoeg toepassing](/azure/kusto/query/pythonplugin) De runtime van de invoeg toepassing wordt gehost in een sandbox, een geïsoleerde en veilige python-omgeving. De invoeg toepassing python () breidt de systeem eigen functionele Kusto-query taal uit met het enorme archief van OSS Python-pakketten. Met deze extensie kunt u geavanceerde algoritmen, zoals machine learning, kunst matige intelligentie, statistische en tijd reeksen, als onderdeel van de query uitvoeren.
 
 Kusto query language-hulpprogram ma's zijn niet geschikt voor het ontwikkelen en opsporen van problemen met python-algoritmen. Ontwikkel daarom het algoritme voor uw favoriete python-Integrated Development Environment, zoals Jupyter, PyCharm, VS of VS code. Wanneer het algoritme is voltooid, kopieert en plakt u deze in KQL. Om deze werk stroom te verbeteren en te stroom lijnen, ondersteunt Azure Data Explorer de integratie tussen de Kusto Explorer-of Web UI-clients en de VS code voor het ontwerpen en debuggen van KQL inline python-code. 
 

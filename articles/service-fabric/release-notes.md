@@ -1,20 +1,16 @@
 ---
 title: Releases van Azure Service Fabric
-description: Release opmerkingen voor de nieuwste functies en verbeteringen in Service Fabric.
-author: athinanthny
-manager: gamonroy
-ms.author: atsenthi
+description: Release opmerkingen bij Azure Service Fabric. Bevat informatie over de nieuwste functies en verbeteringen in Service Fabric.
 ms.date: 06/10/2019
 ms.topic: conceptual
-ms.service: service-fabric
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 496a5babe58be4354ffb10a331d35abc8a51b04d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 36586f93425c6583dd3be497da9f7a018ebd4c9d
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186523"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526733"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric releases
 
@@ -55,7 +51,7 @@ Dit is de meest recente versie van Service Fabric en wordt geladen met belang ri
 
 Daarnaast bevat deze release andere nieuwe functies, oplossingen voor problemen en ondersteunings-, betrouw baarheid en prestatie verbeteringen. Raadpleeg de opmerkingen bij de [release](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)voor een volledige lijst met wijzigingen.
 
-| Releasedatum | Release | Meer informatie |
+| Releasedatum | Publiceren | Meer informatie |
 |---|---|---|
 | 18 november 2019 | [Azure Service Fabric 7,0](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Service-Fabric-7-0-Release/ba-p/1015482)  | [Releaseopmerkingen](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)|
 
@@ -91,7 +87,7 @@ Zie de [release opmerkingen voor Service Fabric 6,5](https://github.com/Azure/se
 
 ### <a name="service-fabric-65-releases"></a>Service Fabric 6,5 Releases
 
-| Releasedatum | Release | Meer informatie |
+| Releasedatum | Publiceren | Meer informatie |
 |---|---|---|
 | 11 juni 2019 | [Azure Service Fabric 6,5](https://blogs.msdn.microsoft.com/azureservicefabric/2019/06/11/azure-service-fabric-6-5-release/)  | [Releaseopmerkingen](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65.pdf)|
 | 2 juli 2019 | [Release van Azure Service Fabric 6,5 vernieuwen](https://blogs.msdn.microsoft.com/azureservicefabric/2019/07/04/azure-service-fabric-6-5-refresh-release/)  | [Releaseopmerkingen](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU1.pdf)  |
@@ -104,7 +100,7 @@ Zie de [release opmerkingen voor Service Fabric 6,5](https://github.com/Azure/se
 
 ### <a name="service-fabric-64-releases"></a>Service Fabric 6,4 Releases
 
-| Releasedatum | Release | Meer informatie |
+| Releasedatum | Publiceren | Meer informatie |
 |---|---|---|
 | 30 november 2018 | [Azure Service Fabric 6,4](https://blogs.msdn.microsoft.com/azureservicefabric/2018/11/30/azure-service-fabric-6-4-release/)  | [Releaseopmerkingen](https://msdnshared.blob.core.windows.net/media/2018/12/Service-Fabric-6.4-Release.pdf)|
 | 12 december 2018 | [Azure Service Fabric 6,4-release voor Windows-clusters vernieuwen](https://blogs.msdn.microsoft.com/azureservicefabric/2018/12/12/azure-service-fabric-6-4-refresh-for-windows-clusters/)  | [Releaseopmerkingen](https://msdnshared.blob.core.windows.net/media/2018/12/Links.pdf)  |

@@ -32,11 +32,13 @@
       href: ingest-data-overview.md
     - name: Overzicht van gegevensvisualisatie
       href: viz-overview.md
-- name: Handleidingen
+    - name: Beveiligingsoverzicht
+      href: security.md
+- name: Instructiegidsen
   items:
     - name: Cluster en database maken
       items:
-        - name: Azure-CLI
+        - name: Azure CLI
           href: create-cluster-database-cli.md
         - name: PowerShell
           href: create-cluster-database-powershell.md
@@ -52,30 +54,30 @@
           items:
             - name: Azure Portal
               href: ingest-data-event-hub.md
-            - name: Python
-              href: data-connection-event-hub-python.md
             - name: 'C#'
               href: data-connection-event-hub-csharp.md
+            - name: Python
+              href: data-connection-event-hub-python.md
             - name: Azure Resource Manager-sjabloon
               href: data-connection-event-hub-resource-manager.md
         - name: Event Grid
           items:
             - name: Azure Portal
               href: ingest-data-event-grid.md
-            - name: Python
-              href: data-connection-event-grid-python.md
             - name: 'C#'
               href: data-connection-event-grid-csharp.md
+            - name: Python
+              href: data-connection-event-grid-python.md
             - name: Azure Resource Manager-sjabloon
               href: data-connection-event-grid-resource-manager.md
         - name: IoT Hub
           items:
             - name: Azure Portal
               href: ingest-data-iot-hub.md
-            - name: Python
-              href: data-connection-iot-hub-python.md
             - name: 'C#'
               href: data-connection-iot-hub-csharp.md
+            - name: Python
+              href: data-connection-iot-hub-python.md
             - name: Azure Resource Manager-sjabloon
               href: data-connection-iot-hub-resource-manager.md
         - name: Opname met één klik
@@ -144,6 +146,18 @@
           href: sisense.md
         - name: Redash
           href: redash.md
+    - name: Beveiligen
+      items:
+        - name: Clusterbeveiliging beheren
+          href: manage-cluster-security.md
+        - name: Beheerde identiteiten configureren
+          href: managed-identities.md
+        - name: Door de klant beheerde sleutels configureren
+          items:
+            - name: 'C#'
+              href: customer-managed-keys-csharp.md
+            - name: Azure Resource Manager-sjabloon
+              href: customer-managed-keys-resource-manager.md
     - name: Beheren
       items:
         - name: Cluster
@@ -154,8 +168,6 @@
               href: manage-cluster-horizontal-scaling.md
             - name: Verticaal schalen van cluster beheren
               href: manage-cluster-vertical-scaling.md
-            - name: Clusterbeveiliging beheren
-              href: manage-cluster-security.md
             - name: Clusterstatus controleren
               href: check-cluster-health.md
         - name: Database

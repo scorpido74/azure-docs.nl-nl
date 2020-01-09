@@ -1,20 +1,19 @@
 ---
 title: Draaien aanmeldingsreferenties in Azure Stream Analytics-taken
 description: In dit artikel wordt beschreven hoe u om bij te werken van de referenties van de invoer en uitvoer sinks in Azure Stream Analytics-taken.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: aad6f237a37ce4782e2c103a7a14e0a3951093de
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3ae639dd7c5a42fc6880240988f0fb2817b09f43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612352"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425974"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Draaien aanmeldingsreferenties voor invoer en uitvoer van een Stream Analytics-taak
 
@@ -32,7 +31,7 @@ In deze sectie begeleidt we u stapsgewijs door opnieuw gegenereerd referenties v
 4. Vanuit de Azure-portal, blader uw Stream Analytics-taak > Selecteer **stoppen** en wacht totdat de taak te stoppen.    
 5. Ga naar de Blob/tabel opslag i/o-waarvoor u wilt bijwerken van referenties.    
 6. Zoek de **Opslagaccountsleutel** veld en plak uw zojuist gegenereerde sleutel > klikt u op **opslaan**.    
-7. Een test van databaseverbinding wordt automatisch gestart wanneer u uw wijzigingen opslaat, kunt u deze op het tabblad meldingen bekijken. Er zijn twee meldingen-een komt overeen met het opslaan van de update en andere komt overeen met het testen van de verbinding:  
+7. Een verbindings test wordt automatisch gestart wanneer u de wijzigingen opslaat, maar u kunt deze bekijken op het tabblad meldingen. Er zijn twee meldingen: een komt overeen met het opslaan van de update en een andere overeenkomst voor het testen van de verbinding:  
    ![Meldingen na het bewerken van de sleutel](media/stream-analytics-login-credentials-inputs-outputs/edited-key-notifications.png)
 8. Gaat u verder met [uw taak starten vanaf de laatste keer dat gestopt](#start-your-job-from-the-last-stopped-time) sectie.
 

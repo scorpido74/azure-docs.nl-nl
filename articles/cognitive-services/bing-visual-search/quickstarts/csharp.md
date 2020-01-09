@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 04/26/2019
+ms.date: 12/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: 82c1159aca51bc30839f5380a414bd2b3b488bb8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 07ecac46ab13058d308c17c5747701ee5ed577fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383642"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446669"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>Snelstartgids: Image Insights ophalen met behulp van de Bing Visual Search REST API enC#
 
@@ -41,7 +41,7 @@ In deze Quick start ziet u hoe u een installatie kopie uploadt naar de Bing Visu
     using System.Collections.Generic;
     ```
 
-2. Voeg variabelen toe voor de sleutel van het abonnement, het eind punt en het pad naar de installatie kopie die u wilt uploaden:
+2. Voeg variabelen toe voor de sleutel van het abonnement, het eind punt en het pad naar de installatie kopie die u wilt uploaden. `uriBase` kunnen het globale eind punt hieronder zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource:
 
     ```csharp
         const string accessKey = "<my_subscription_key>";

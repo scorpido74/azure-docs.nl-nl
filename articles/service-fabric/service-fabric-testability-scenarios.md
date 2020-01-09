@@ -1,25 +1,16 @@
 ---
-title: Chaos en failover-tests maken voor Azure Service Fabric | Microsoft Docs
+title: Chaos en failover-tests maken voor Azure Service Fabric
 description: Met behulp van de test scenario's voor de Service Fabric chaos test en failover kunt u fouten opdoen en de betrouw baarheid van uw services controleren.
-services: service-fabric
-documentationcenter: .net
 author: motanv
-manager: rsinha
-editor: toddabel
-ms.assetid: 8eee7e89-404a-4605-8f00-7e4d4fb17553
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/1/2019
 ms.author: motanv
-ms.openlocfilehash: 2ea30b59e3195a0229c2584212e2897aaff4ee31
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 206b02024ad052a12e87cfdf1773815027e8aec4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718235"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465534"
 ---
 # <a name="testability-scenarios"></a>Test scenario's
 Grote gedistribueerde systemen zoals Cloud infrastructuren zijn inherent onbetrouwbaar. Azure Service Fabric biedt ontwikkel aars de mogelijkheid om services te schrijven voor het uitvoeren van een onbetrouwbare infra structuur. Ontwikkel aars die een hoogwaardige service willen schrijven, moeten een dergelijke onbetrouwbare infra structuur kunnen maken om de stabiliteit van hun services te testen.
@@ -49,11 +40,11 @@ Stel bijvoorbeeld dat een testset gedurende één uur wordt uitgevoerd met een m
 In het huidige formulier worden door de engine voor het genereren van fouten in de chaos-test alleen veilige fouten geinduceerd. Dit betekent dat als er geen externe fouten zijn, er geen quorum-of gegevens verlies optreedt.
 
 ### <a name="important-configuration-options"></a>Belang rijke configuratie opties
-* **TimeToRun**: De totale tijd dat de test wordt uitgevoerd voordat de uitvoering is voltooid. De test kan eerder worden voltooid in plaats van een validatie fout.
-* **MaxClusterStabilizationTimeout**: De maximale hoeveelheid tijd die moet worden gewacht totdat het cluster in orde is voordat de test is mislukt. De controles worden uitgevoerd, ongeacht of de status van het cluster OK is, de service status is OK, de grootte van de doel replicaset wordt behaald voor de service partitie en er zijn geen inbuild-replica's.
-* **MaxConcurrentFaults**: Het maximum aantal gelijktijdige fouten die zijn opgetreden tijdens elke iteratie. Hoe hoger de waarde, hoe sterker de test, dus wat resulteert in complexere failovers en overgangs combinaties. De test garandeert dat bij afwezigheid van externe fouten geen quorum of gegevens verlies optreedt, ongeacht hoe hoog deze configuratie is.
+* **TimeToRun**: de totale tijd dat de test wordt uitgevoerd voordat het succes wordt voltooid. De test kan eerder worden voltooid in plaats van een validatie fout.
+* **MaxClusterStabilizationTimeout**: de maximale hoeveelheid tijd die moet worden gewacht totdat het cluster in orde is voordat de test is mislukt. De controles worden uitgevoerd, ongeacht of de status van het cluster OK is, de service status is OK, de grootte van de doel replicaset wordt behaald voor de service partitie en er zijn geen inbuild-replica's.
+* **MaxConcurrentFaults**: het maximum aantal gelijktijdige fouten dat is opgetreden in elke iteratie. Hoe hoger de waarde, hoe sterker de test, dus wat resulteert in complexere failovers en overgangs combinaties. De test garandeert dat bij afwezigheid van externe fouten geen quorum of gegevens verlies optreedt, ongeacht hoe hoog deze configuratie is.
 * **EnableMoveReplicaFaults**: Hiermee worden de fouten die het verplaatsen van de primaire of secundaire replica's veroorzaken, in-of uitgeschakeld. Deze fouten zijn standaard uitgeschakeld.
-* **WaitTimeBetweenIterations**: Hoeveelheid tijd die moet worden gewacht tussen iteraties, d.w.z. na een afronding van fouten en de bijbehorende validatie.
+* **WaitTimeBetweenIterations**: de hoeveelheid tijd die moet worden gewacht tussen iteraties, d.w.z. na een afronding van fouten en de bijbehorende validatie.
 
 ### <a name="how-to-run-the-chaos-test"></a>De chaos-test uitvoeren
 C#-voorbeeld
@@ -133,7 +124,7 @@ class Test
 
 PowerShell
 
-De Service Fabric Power shell-module bevat twee manieren om een chaos-scenario te starten. `Invoke-ServiceFabricChaosTestScenario` is client-gebaseerd en als de client computer halverwege de test wordt afgesloten, worden er geen verdere fouten geïntroduceerd. U kunt ook een reeks opdrachten gebruiken om te zorgen dat de test wordt uitgevoerd bij het afsluiten van de computer. `Start-ServiceFabricChaos` maakt gebruik van een stateful en betrouw bare systeem service met de naam FaultAnalysisService, zodat er fouten blijven worden geïntroduceerd totdat de TimeToRun actief is. `Stop-ServiceFabricChaos` kan worden gebruikt om het scenario hand matig te stoppen en `Get-ServiceFabricChaosReport` krijgt een rapport. Zie voor meer informatie de [Azure service Fabric Power shell-referentie](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps) en het ontregelde [chaos in service Fabric-clusters](service-fabric-controlled-chaos.md).
+De Service Fabric Power shell-module bevat twee manieren om een chaos-scenario te starten. `Invoke-ServiceFabricChaosTestScenario` is gebaseerd op de client en als de client computer halverwege door de test wordt afgesloten, worden er geen verdere fouten geïntroduceerd. U kunt ook een reeks opdrachten gebruiken om te zorgen dat de test wordt uitgevoerd bij het afsluiten van de computer. `Start-ServiceFabricChaos` maakt gebruik van een stateful en betrouw bare systeem service met de naam FaultAnalysisService, zodat er fouten blijven worden geïntroduceerd totdat de TimeToRun is. `Stop-ServiceFabricChaos` kan worden gebruikt om het scenario hand matig te stoppen en `Get-ServiceFabricChaosReport` krijgt een rapport te krijgen. Zie voor meer informatie de [Azure service Fabric Power shell-referentie](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps) en het ontregelde [chaos in service Fabric-clusters](service-fabric-controlled-chaos.md).
 
 ```powershell
 $connection = "localhost:19000"
@@ -162,10 +153,10 @@ Het test scenario voor de failover is een versie van het chaos-test scenario dat
 De failover-test veroorzaakt een gekozen fout en voert vervolgens validatie uit op de service om de stabiliteit te garanderen. De failover-test induceert slechts één fout per keer, in tegens telling tot meerdere fouten in de chaos-test. Als de service partitie niet stabiel is binnen de geconfigureerde time-out na elke fout, mislukt de test. De test induceert alleen veilige storingen. Dit betekent dat als er geen externe fouten optreden, er geen quorum-of gegevens verlies optreedt.
 
 ### <a name="important-configuration-options"></a>Belang rijke configuratie opties
-* **PartitionSelector**: Selector-object waarmee de partitie wordt opgegeven waarvoor een doel moet worden ingesteld.
-* **TimeToRun**: De totale tijd dat de test wordt uitgevoerd voordat deze wordt voltooid.
-* **MaxServiceStabilizationTimeout**: De maximale hoeveelheid tijd die moet worden gewacht totdat het cluster in orde is voordat de test is mislukt. De uitgevoerde controles zijn of de status van de service OK is, de grootte van de doel replicaset wordt bereikt voor alle partities en er bestaan geen inbouw replica's.
-* **WaitTimeBetweenFaults**: De hoeveelheid tijd die moet worden gewacht tussen elke fout en validatie cyclus.
+* **PartitionSelector**: selector-object waarmee de partitie wordt opgegeven waarvoor een doel moet worden ingesteld.
+* **TimeToRun**: de totale tijd dat de test wordt uitgevoerd voordat deze wordt voltooid.
+* **MaxServiceStabilizationTimeout**: de maximale hoeveelheid tijd die moet worden gewacht totdat het cluster in orde is voordat de test is mislukt. De uitgevoerde controles zijn of de status van de service OK is, de grootte van de doel replicaset wordt bereikt voor alle partities en er bestaan geen inbouw replica's.
+* **WaitTimeBetweenFaults**: de hoeveelheid tijd die moet worden gewacht tussen elke fout en validatie cyclus.
 
 ### <a name="how-to-run-the-failover-test"></a>De failover-test uitvoeren
 **C#**

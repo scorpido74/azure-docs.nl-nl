@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: c780ee973c1dabb15c37b2519eb8253d2371080a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 84ab5da993541012fd2199a30d03f5c69e88bf2c
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932305"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530031"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-sap-successfactors-preview"></a>Zelf studie: kenmerk terugschrijven van Azure AD naar SAP SuccessFactors configureren (preview)
 Het doel van deze zelf studie is het weer geven van de stappen die u moet uitvoeren voor het terugschrijven van kenmerken van Azure AD naar SuccessFactors Employee Central. Het enige kenmerk dat momenteel wordt ondersteund voor write-back is het e-mail kenmerk. 
@@ -129,12 +129,12 @@ Deze sectie bevat stappen voor
    * **Tenant-URL:** Voer de naam van het SuccessFactors OData API services-eind punt in. Voer alleen de hostnaam van de server in zonder http of https. Deze waarde moet er als volgt uitzien: **API-server-name.successfactors.com**.
 
    * **E-mail melding-** Voer uw e-mail adres in en schakel het selectie vakje e-mail verzenden als er een fout is opgetreden in.
-         > [!NOTE]
-         > The Azure AD Provisioning Service sends email notification if the provisioning job goes into a [quarantine](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) state.
+    > [!NOTE]
+    > De Azure AD-inrichtings service verzendt een e-mail melding als de inrichtings taak een [quarantaine](/azure/active-directory/manage-apps/application-provisioning-quarantine-status) status heeft.
 
    * Klik op de knop **verbinding testen** . Als de verbindings test is geslaagd, klikt u bovenaan op de knop **Opslaan** . Als dit mislukt, controleert u of de SuccessFactors-referenties en-URL geldig zijn.
     >[!div class="mx-imgBorder"]
-    >![Azure-portal](./media/sap-successfactors-inbound-provisioning/sfwb-provisioning-creds.png)
+    >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sfwb-provisioning-creds.png)
 
    * Zodra de referenties zijn opgeslagen, wordt in de sectie **toewijzingen** de standaard toewijzing voor het **synchroniseren van Azure Active Directory gebruikers met SuccessFactors** weer gegeven.
 
@@ -152,7 +152,7 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van SuccessFactors
 
 1. In de sectie **kenmerk toewijzingen** kunt u alleen de overeenkomende id wijzigen die wordt gebruikt voor het koppelen van een SuccessFactors-gebruikers profiel aan een Azure AD-gebruiker en welk kenmerk in azure AD fungeert als de bron van e-mail. 
     >[!div class="mx-imgBorder"]
-    >![Azure-portal](./media/sap-successfactors-inbound-provisioning/sfwb-attribute-mapping.png)
+    >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sfwb-attribute-mapping.png)
 
    >[!NOTE]
    >De SuccessFactors write back ondersteunt alleen het e-mail kenmerk. Maak geen gebruik van **nieuwe toewijzing toevoegen** om nieuwe kenmerken toe te voegen. 

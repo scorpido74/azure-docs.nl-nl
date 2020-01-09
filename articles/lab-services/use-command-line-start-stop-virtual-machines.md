@@ -1,6 +1,6 @@
 ---
-title: Opdrachtregelprogramma's gebruiken om te starten en stoppen van virtuele machines Azure DevTest Labs | Microsoft Docs
-description: Informatie over het gebruik van opdrachtregelprogramma's starten en stoppen van virtuele machines in Azure DevTest Labs.
+title: Gebruik opdracht regel Programma's om Vm's te starten en te stoppen Azure DevTest Labs | Microsoft Docs
+description: Meer informatie over het gebruik van opdracht regel Programma's voor het starten en stoppen van virtuele machines in Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,29 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: a8132735d1af08055e9341608dcac0564ed4b927
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e00de295a7f41bf0ff768c4f948a667bc188616
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60236684"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456942"
 ---
-# <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Opdrachtregelprogramma's gebruiken om te starten en stoppen van virtuele machines van Azure DevTest Labs
-In dit artikel wordt beschreven hoe u Azure PowerShell of Azure CLI gebruiken om te starten of stoppen van virtuele machines in een lab in Azure DevTest Labs. U kunt PowerShell/CLI-scripts voor het automatiseren van deze bewerkingen kunt maken. 
+# <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Opdracht regel Programma's gebruiken om Azure DevTest Labs virtuele machines te starten en te stoppen
+In dit artikel wordt beschreven hoe u Azure PowerShell of Azure CLI gebruikt om virtuele machines in een lab in Azure DevTest Labs te starten of te stoppen. U kunt Power shell/CLI-scripts maken om deze bewerkingen te automatiseren. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Overzicht
-Azure DevTest Labs is een manier om snelle, eenvoudige en slanke ontwikkel-en testomgevingen maken. Hiermee kunt u kosten beheren, snel inrichten van virtuele machines, en minimaliseren afval.  Er zijn ingebouwde functies in Azure portal waarmee u kunt virtuele machines te configureren in een testomgeving automatisch starten en stoppen op specifieke tijdstippen. 
+Azure DevTest Labs is een manier om snelle, eenvoudige en flexibele ontwikkel-en test omgevingen te maken. Zo kunt u kosten beheren, virtuele machines snel inrichten en afval minimaliseren.  Er zijn ingebouwde functies in de Azure Portal waarmee u Vm's in een lab kunt configureren om automatisch te starten en te stoppen op specifieke tijdstippen. 
 
-In sommige scenario's kunt u echter voor het automatiseren van starten en stoppen van VM's van PowerShell/CLI-scripts. Dit biedt u enige flexibiliteit bij het starten en stoppen van afzonderlijke computers op elk gewenst moment in plaats van op specifieke tijdstippen. Hier volgen enkele van de gevallen in welke uitgevoerd deze taken met behulp van scripts handig zou zijn.
+In sommige gevallen wilt u echter mogelijk het starten en stoppen van Vm's vanuit Power shell/CLI-scripts automatiseren. Het biedt u de mogelijkheid om op elk gewenst moment afzonderlijke machines te starten en te stoppen, in plaats van op specifieke tijdstippen. Hier volgen enkele van de situaties waarin het uitvoeren van deze taken met behulp van scripts handig is.
 
-- Wanneer u een 3-laagse toepassing gebruikt als onderdeel van een testomgeving, moeten de lagen in een volgorde worden gestart. 
-- Een virtuele machine uitschakelen als een aangepaste criteria wordt voldaan om geld te besparen. 
-- Gebruik dit als een taak in een CI/CD-werkstroom voor aan het begin van de stroom gestart, gebruikt u de virtuele machines als machines opzetten, testen machines, of een infrastructuur en vervolgens de virtuele machines stoppen wanneer het proces voltooid is. Een voorbeeld hiervan is de aangepaste installatiekopie factory met Azure DevTest Labs.  
+- Wanneer u een 3-tier-toepassing gebruikt als onderdeel van een test omgeving, moeten de lagen in een reeks worden gestart. 
+- Een virtuele machine uitschakelen wanneer aan een aangepast criterium wordt voldaan om geld te besparen. 
+- Gebruik het als een taak binnen een CI/CD-werk stroom om te beginnen bij het begin van de stroom, gebruik de Vm's als Build-machines, test machines of infra structuur en Stop vervolgens de virtuele machines wanneer het proces is voltooid. Een voor beeld hiervan is de aangepaste installatie kopie fabriek met Azure DevTest Labs.  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-De volgende PowerShell-script wordt een virtuele machine gestart in een testomgeving. [Aanroepen AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) is de primaire focus voor dit script. De **ResourceId** parameter is de volledig gekwalificeerde resource-ID voor de virtuele machine in het lab. De **actie** parameter is de locatie waar de **Start** of **stoppen** opties zijn afhankelijk van wat u nodig hebt ingesteld.
+
+> [!NOTE]
+> Het volgende script maakt gebruik van de Azure PowerShell AZ-module. 
+
+Met het volgende Power shell-script wordt een virtuele machine in een Lab gestart. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) is de primaire focus voor dit script. De **ResourceID** para meter is de volledig gekwalificeerde resource-id voor de virtuele machine in het lab. Met de **actie** parameter worden de opties voor **starten** of **stoppen** ingesteld, afhankelijk van wat er nodig is.
 
 ```powershell
 # The id of the subscription
@@ -53,11 +57,7 @@ $vmAction = "Start"
 Select-AzSubscription -SubscriptionId $subscriptionId
 
 # Get the lab information
-if ($(Get-Module -Name AzureRM).Version.Major -eq 6) {
-    $devTestLab = Get-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -Name $devTestLabName
-} else {
-    $devTestLab = Find-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceNameEquals $devTestLabName
-}
+$devTestLab = Get-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceName $devTestLabName
 
 # Start the VM and return a succeeded or failed status
 $returnStatus = Invoke-AzResourceAction `
@@ -75,7 +75,7 @@ else {
 
 
 ## <a name="azure-cli"></a>Azure-CLI
-De [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) is een andere manier voor het automatiseren van het starten en stoppen van DevTest Labs-VM's. Azure CLI kan worden [geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest) op verschillende besturingssystemen. Het volgende script geeft u opdrachten voor het starten en stoppen van een virtuele machine in een testomgeving. 
+De [Azure cli](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) is een andere manier om het starten en stoppen van DevTest Labs-vm's te automatiseren. Azure CLI kan worden [geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest) op verschillende besturings systemen. Met het volgende script krijgt u opdrachten voor het starten en stoppen van een virtuele machine in een lab. 
 
 ```azurecli
 # Sign in to Azure
@@ -93,4 +93,4 @@ az lab vm stop --lab-name yourlabname --name vmname --resource-group labResource
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het volgende artikel voor het gebruik van de Azure-portal voor deze bewerkingen: [Een VM opnieuw opstarten](devtest-lab-restart-vm.md).
+Raadpleeg het volgende artikel voor het gebruik van de Azure Portal om deze bewerkingen uit te voeren: [Start een virtuele machine opnieuw](devtest-lab-restart-vm.md)op.

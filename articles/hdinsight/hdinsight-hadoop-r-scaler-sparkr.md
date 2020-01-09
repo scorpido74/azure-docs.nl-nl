@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/19/2017
-ms.openlocfilehash: 9fa18550a3c27ce38599b9a0d47abdc38524d9c2
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: hdinsightactive
+ms.date: 12/26/2019
+ms.openlocfilehash: 5989692aeb59c7394299b4cb2474b244818895b2
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077095"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500072"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Schaalr en Spark in HDInsight combi neren
 
@@ -21,17 +21,17 @@ In dit document wordt beschreven hoe u vertragingen in de vlucht kunt voors pell
 
 Hoewel beide pakketten worden uitgevoerd op de Spark-uitvoerings engine van Apache Hadoop, worden ze geblokkeerd voor het delen van gegevens in het geheugen omdat ze elk hun eigen respectievelijk Spark-sessies vereisen. Totdat dit probleem is opgelost in een toekomstige versie van ML Server, is de tijdelijke oplossing het onderhouden van niet-overlappende Spark-sessies en het uitwisselen van gegevens via tussenliggende bestanden. In deze instructies ziet u dat deze vereisten eenvoudig zijn te verzorgen.
 
-Dit voor beeld is in eerste instantie gedeeld in een gesprek op Strata 2016 door Mario Inchiosa en Roni Burd. U vindt dit praten op het [bouwen van een schaalbaar data Science-platform met R](https://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
+Dit voor beeld is in eerste instantie gedeeld in een gesprek op Strata 2016 door Mario Inchiosa en Roni Burd. U vindt dit praten op het [bouwen van een schaalbaar data Science-platform met R](https://channel9.msdn.com/blogs/Cloud-and-Enterprise-Premium/Building-A-Scalable-Data-Science-Platform-with-R-and-Hadoop).
 
 De code is oorspronkelijk geschreven voor ML Server die worden uitgevoerd op Spark in een HDInsight-cluster in Azure. Maar het combi neren van het gebruik van Spark en schalen in één script is ook geldig in de context van on-premises omgevingen.
 
-Bij de stappen in dit document wordt ervan uitgegaan dat u een tussenliggend niveau van de kennis van R hebt en de [scaleer](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) -bibliotheek van ml server. Tijdens het door lopen van dit scenario gaat u naar [sparker](https://spark.apache.org/docs/2.1.0/sparkr.html) .
+Bij de stappen in dit document wordt ervan uitgegaan dat u een tussenliggend niveau van de kennis van R hebt en de [scaleer](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) -bibliotheek van ml server. U gaat naar [Spark](https://spark.apache.org/docs/2.1.0/sparkr.html) , terwijl u dit scenario doorloopt.
 
 ## <a name="the-airline-and-weather-datasets"></a>De luchtvaart maatschappij en weer gegevens sets
 
 De vlucht gegevens zijn beschikbaar via de [archieven van de Amerikaanse overheid](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Het is ook beschikbaar als een zip-bestand van [AirOnTimeCSV. zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
 
-De weer gegevens kunnen worden gedownload als zip-bestanden in onbewerkte vorm, per maand, vanuit de [nationale Oceanic-en atmosferische beheer opslagplaats](https://www.ncdc.noaa.gov/orders/qclcd/). Voor dit voor beeld downloadt u de gegevens voor mei 2007 – december 2012. Gebruik de gegevens bestanden en `YYYYMMMstation.txt` het bestand in elk uur in elk van de zips. 
+De weer gegevens kunnen worden gedownload als zip-bestanden in onbewerkte vorm, per maand, vanuit de [nationale Oceanic-en atmosferische beheer opslagplaats](https://www.ncdc.noaa.gov/orders/qclcd/). Voor dit voor beeld downloadt u de gegevens voor mei 2007 – december 2012. Gebruik de gegevens bestanden en het `YYYYMMMstation.txt` bestand per uur in elk van de zips.
 
 ## <a name="setting-up-the-spark-environment"></a>De Spark-omgeving instellen
 
@@ -80,7 +80,7 @@ logmsg('Start')
 logmsg(paste('Number of task nodes=',length(trackers)))
 ```
 
-Voeg `Spark_Home` vervolgens toe aan het zoekpad voor R-pakketten. Als u het toevoegt aan het zoekpad, kunt u Spark gebruiken en een Spark-sessie initialiseren:
+Voeg vervolgens `Spark_Home` toe aan het zoekpad voor R-pakketten. Als u het toevoegt aan het zoekpad, kunt u Spark gebruiken en een Spark-sessie initialiseren:
 
 ```
 #..setup for use of SparkR  
@@ -114,7 +114,7 @@ Om de weer gegevens voor te bereiden, moet u deze deel uitmaken van de kolommen 
 
 Voeg vervolgens een luchthaven code toe die is gekoppeld aan het weer station en converteer de metingen van lokale tijd naar UTC.
 
-Maak eerst een bestand om de informatie over het weer station (WBAN) toe te wijzen aan een luchthaven code. De volgende code leest elk van de per uur onbewerkte gegevens bestanden, subsets naar de gewenste kolommen, voegt het bestand met het weer gegeven station toewijzing samen, past de datum tijden van metingen aan UTC aan en schrijft vervolgens een nieuwe versie van het bestand:
+Maak eerst een bestand om de informatie over het weer station (WBAN) toe te wijzen aan een luchthaven code. De volgende code leest elk van de per uur onbewerkte gegevens bestanden, subsets naar de kolommen die we nodig hebben, voegt het weer gegeven station toewijzings bestand, past de datum tijden van metingen aan UTC aan en schrijft vervolgens een nieuwe versie van het bestand:
 
 ```
 # Look up AirportID and Timezone for WBAN (weather station ID) and adjust time
@@ -194,7 +194,7 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
 
 ## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>De luchtvaart maatschappij en weers gegevens importeren in Spark DataFrames
 
-Nu gebruiken we de functie [Read. df ()](https://spark.apache.org/docs/latest/api/R/read.df.html) van de sparker om de weers-en vliegtuig gegevens te importeren naar Spark DataFrames. Deze functie, zoals veel andere Spark-methoden, wordt uitgevoerd vertraagd, wat inhoudt dat ze in de wachtrij worden geplaatst voor uitvoering, maar pas worden uitgevoerd als dat nodig is.
+Nu gebruiken we de functie [Read. df ()](https://spark.apache.org/docs/latest/api/R/read.df.html) van de sparker om de weers-en vliegtuig gegevens te importeren naar Spark DataFrames. Deze functie, zoals veel andere Spark-methoden, wordt uitgevoerd vertraagd, wat inhoudt dat ze in de wachtrij worden geplaatst voor uitvoering, maar pas worden uitgevoerd als dat is vereist.
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -349,7 +349,7 @@ rxHadoopRemove(file.path(dataDir, "joined5Csv/_SUCCESS"))
 
 ## <a name="import-to-xdf-for-use-by-scaler"></a>Importeren naar XDF voor gebruik door schaal
 
-We kunnen het CSV-bestand van samengevoegde luchtvaart maatschappij en weer gegevens gebruiken als-is voor modellering via een gegevens bron voor een Schaalder tekst. Maar we importeren het eerst in XDF, omdat het efficiënter is wanneer u meerdere bewerkingen uitvoert op de gegevensset:
+We kunnen het CSV-bestand van samengevoegde luchtvaart maatschappij en weer gegevens gebruiken als-is voor modellering via een gegevens bron voor een Schaalder tekst. Maar we importeren het eerst in XDF, omdat het efficiënter is wanneer meerdere bewerkingen worden uitgevoerd op de gegevensset:
 
 ```
 logmsg('Import the CSV to compressed, binary XDF format') 
@@ -506,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>Score elders
 
-We kunnen het model ook gebruiken voor het scoren van gegevens op een ander platform. Door de app op te slaan in een RDS-bestand en deze vervolgens te verplaatsen en te importeren in een doel Score omgeving zoals micro soft SQL Server R Services. Het is belang rijk om ervoor te zorgen dat de factor niveaus van de gegevens die moeten worden beoordeeld overeenkomen met die op basis waarvan het model is gebouwd. Dit kan worden bereikt door de kolom informatie die is gekoppeld aan de model gegevens te extra heren en op te slaan `rxCreateColInfo()` met behulp van de functie van de gegevens bron voor voor spellingen. In de volgende stappen slaan we een paar rijen van de test gegevensset op en halen en gebruiken we de kolom informatie uit dit voor beeld in het Voorspellings script:
+We kunnen het model ook gebruiken voor het scoren van gegevens op een ander platform. Door de app op te slaan in een RDS-bestand en deze vervolgens te verplaatsen en te importeren in een doel Score omgeving zoals micro soft SQL Server R Services. Het is belang rijk om ervoor te zorgen dat de factor niveaus van de gegevens die moeten worden beoordeeld overeenkomen met die op basis waarvan het model is gebouwd. Dit kan worden bereikt door de kolom informatie die is gekoppeld aan de model gegevens via de functie `rxCreateColInfo()` te extra heren en op te slaan, en vervolgens die kolom informatie toe te passen op de invoer gegevens bron voor voor spellingen. In de volgende stappen slaan we een paar rijen van de test gegevensset op en halen en gebruiken we de kolom informatie uit dit voor beeld in het Voorspellings script:
 
 ```
 # save the model and a sample of the test dataset 

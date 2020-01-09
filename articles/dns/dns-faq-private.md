@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: de63799400a10afc1930cd373df0c8dd86320f78
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9bc0b32d3c94cabc1a772f02bf21f31e73f1306f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212017"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75642145"
 ---
 # <a name="azure-private-dns-faq"></a>Veelgestelde vragen over privé-DNS in Azure
 
@@ -34,7 +34,7 @@ Nee. Persoonlijke zones werken samen met virtuele netwerken. U kunt ze gebruiken
 
 ## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>Kan dezelfde privé zone worden gebruikt voor verschillende virtuele netwerken voor oplossing?
 
-Ja. U kunt een privé-DNS-zone koppelen aan duizenden virtuele netwerken. Zie [Azure DNS limieten](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits) voor meer informatie
+Ja. U kunt een privé-DNS-zone koppelen aan duizenden virtuele netwerken. Zie [Azure DNS limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits) voor meer informatie
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>Kan een virtueel netwerk dat tot een ander abonnement behoort, worden gekoppeld aan een privé zone?
 
@@ -71,7 +71,7 @@ Zie voor meer informatie over het wijzigen van dit achtervoegsel [dynamische DNS
 
 ## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>Wat zijn de gebruiks limieten voor Azure DNS privé zones?
 
-Raadpleeg [Azure DNS limieten](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits) voor meer informatie over de gebruiks limieten voor Azure DNS persoonlijke zones.
+Raadpleeg [Azure DNS limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits) voor meer informatie over de gebruiks limieten voor Azure DNS persoonlijke zones.
 
 ## <a name="why-dont-my-existing-private-dns-zones-show-up-in-new-portal-experience"></a>Waarom worden mijn bestaande privé-DNS-zones niet weer gegeven in de nieuwe portal?
 

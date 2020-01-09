@@ -9,41 +9,36 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 11/20/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 4d096ee829a425af3763c212daf5049acccf9f19
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 508fa192a014501bad6488e5be8278731230913b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325939"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381559"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Zelf studie: een LUIS-app bouwen om de bedoelingen van de gebruiker te bepalen
 
-In deze zelf studie maakt u een aangepaste app waarmee de bedoeling van een gebruiker wordt voor speld op basis van de utterance (text). 
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
+In deze zelf studie maakt u een aangepaste app waarmee de bedoeling van een gebruiker wordt voor speld op basis van de utterance (text).
 
 **In deze zelfstudie leert u het volgende:**
 
 > [!div class="checklist"]
-> * Een nieuwe app maken 
+> * Een nieuwe app maken
 > * Intents maken
 > * Voorbeelden van utterances toevoegen
 > * App trainen
 > * App publiceren
 > * Intentie van het eind punt ophalen
 
-
-[!INCLUDE [LUIS Free account](includes/quickstart-tutorial-use-free-starter-key.md)]
-
 ## <a name="user-intentions-as-intents"></a>Gebruikersintenties als intents
 
-Het doel van de app is om de intentie van natuurlijke omgangstaal in een tekst te bepalen: 
+Het doel van de app is om de intentie van natuurlijke omgangstaal in een tekst te bepalen:
 
 `I'd like to order a veggie pizza with a salad on the side.`
 
-Deze intenties worden onderverdeeld in **Intents**. 
+Deze intenties worden onderverdeeld in **Intents**.
 
 |Intentie|Doel|
 |--|--|
@@ -56,11 +51,11 @@ Deze intenties worden onderverdeeld in **Intents**.
 
 [!INCLUDE [Follow these steps to create a new LUIS app](includes/create-pizza-app.md)]
 
-## <a name="create-a-new-intent"></a>Een nieuwe intent maken 
+## <a name="create-a-new-intent"></a>Een nieuwe intent maken
 
 1. In de portal, in de sectie **Build** van de app, selecteert u **+ maken**. Voer de naam van de nieuwe intentie in, `OrderPizza`en selecteer vervolgens **gereed**.
 
-    De `OrderPizza` intentie wordt voor speld wanneer een gebruiker een pizza wil best Ellen. 
+    De `OrderPizza` intentie wordt voor speld wanneer een gebruiker een pizza wil best Ellen.
 
 1. Voeg verschillende voorbeelden van utterances toe aan deze intent waarnaar een gebruiker waarschijnlijk zal vragen:
 
@@ -74,9 +69,9 @@ Deze intenties worden onderverdeeld in **Intents**.
 
     ![Voorbeelden van utterances toevoegen](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    Door _voorbeelden van utterances_ op te geven traint u LUIS in het soort utterances dat voor deze intent kan worden voorspeld. 
+    Door _voorbeelden van utterances_ op te geven traint u LUIS in het soort utterances dat voor deze intent kan worden voorspeld.
 
-    [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]    
+    [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]
 
 ## <a name="create-remaining-intents"></a>Resterende intenties maken
 
@@ -90,7 +85,7 @@ Deze intenties worden onderverdeeld in **Intents**.
     |`Start`|
     |`Begin`|
 
-1. Maak de `Confirm` intentie en voeg het volgende voor beeld uitingen toe. Dit is de bedoeling om te bepalen of een gebruiker klaar is met het best Ellen en de order gegevens accepteert. 
+1. Maak de `Confirm` intentie en voeg het volgende voor beeld uitingen toe. Dit is de bedoeling om te bepalen of een gebruiker klaar is met het best Ellen en de order gegevens accepteert.
 
     |`Confirm` voorbeeld uitingen|
     |--|
@@ -104,13 +99,13 @@ Deze intenties worden onderverdeeld in **Intents**.
 
 [!INCLUDE [Follow these steps to add the None intent to the app](includes/add-example-utterances-none-intent.md)]
 
-## <a name="train-the-app"></a>De app trainen 
+## <a name="train-the-app"></a>De app trainen
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="publish-the-app"></a>Publiceer de app 
+## <a name="publish-the-app"></a>Publiceer de app
 
-[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)] 
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
 ## <a name="get-intent-prediction"></a>Voor spelling van intentie ophalen
 
@@ -118,11 +113,11 @@ Deze intenties worden onderverdeeld in **Intents**.
 
 1. Ga naar het einde van de URL in de adres balk en voer het volgende in:
 
-    `get a medium vegetarian pizza for delivery` 
+    `get a medium vegetarian pizza for delivery`
 
     Dit is niet precies hetzelfde als een voor beeld van een utterance, dus het is een goede test om te controleren of LUIS kan ontdekken wat er moet worden voor speld met dit doel.
 
-    De laatste parameter van de queryreeks is `query`, de utterance**query**. Deze utterance is niet hetzelfde als een van de voorbeeldutterances. Dit is een goede test die de `OrderPizza`-intent als de best scorende intent moet retourneren. 
+    De laatste parameter van de queryreeks is `query`, de utterance**query**. Deze utterance is niet hetzelfde als een van de voorbeeldutterances. Dit is een goede test die de `OrderPizza`-intent als de best scorende intent moet retourneren.
 
     ```JSON
     {
@@ -148,15 +143,15 @@ Deze intenties worden onderverdeeld in **Intents**.
     }
     ```
 
-    De matrix entities is leeg, omdat deze app momenteel geen entiteiten heeft (de gegevens eenheid in het utterance dat moet worden opgehaald). 
+    De matrix entities is leeg, omdat deze app momenteel geen entiteiten heeft (de gegevens eenheid in het utterance dat moet worden opgehaald).
 
-    Het JSON-resultaat identificeert de hoogst scorende intent als **`prediction.topIntent`** -eigenschap. Alle scores liggen tussen 1 en 0, waarbij de betere score dichter bij 1 liggen. 
+    Het JSON-resultaat identificeert de hoogst scorende intent als **`prediction.topIntent`** -eigenschap. Alle scores liggen tussen 1 en 0, waarbij de betere score dichter bij 1 liggen.
 
 1. Wijzig de URL- **query** parameter in de **begroetings** intentie:
 
     `Howdy`
 
-    Dit is niet precies hetzelfde als een voor beeld van een utterance, dus het is een goede test om te controleren of LUIS kan ontdekken wat er moet worden voor speld met dit doel. 
+    Dit is niet precies hetzelfde als een voor beeld van een utterance, dus het is een goede test om te controleren of LUIS kan ontdekken wat er moet worden voor speld met dit doel.
 
     ```json
     {
@@ -179,14 +174,14 @@ Deze intenties worden onderverdeeld in **Intents**.
             },
             "entities": {}
         }
-    }    
+    }
     ```
- 
-    Deze voor spelling heeft een betrouwbaarheids Score van 44%. Als u de betrouwbaarheids score wilt verg Roten, voegt u tussen 15 en 30 voorbeeld uitingen toe.  
+
+    Deze voor spelling heeft een betrouwbaarheids Score van 44%. Als u de betrouwbaarheids score wilt verg Roten, voegt u tussen 15 en 30 voorbeeld uitingen toe.
 
 ## <a name="client-application-next-steps"></a>Volgende stappen voor clienttoepassing
 
-Nadat LUIS de JSON-reactie heeft geretourneerd, is LUIS klaar met deze aanvraag. LUIS geeft geen antwoord op deze utterances van gebruikers, maar stelt alleen vast om wat voor soort informatie er wordt gevraagd in natuurlijke taal. De gespreksopvolging wordt uitgevoerd met de clienttoepassing, bijvoorbeeld een Azure-bot. 
+Nadat LUIS de JSON-reactie heeft geretourneerd, is LUIS klaar met deze aanvraag. LUIS geeft geen antwoord op deze utterances van gebruikers, maar stelt alleen vast om wat voor soort informatie er wordt gevraagd in natuurlijke taal. De gespreksopvolging wordt uitgevoerd met de clienttoepassing, bijvoorbeeld een Azure-bot.
 
 
 [!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
@@ -202,7 +197,7 @@ Nadat LUIS de JSON-reactie heeft geretourneerd, is LUIS klaar met deze aanvraag.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u een LUIS-app gemaakt, worden er gemaakte intenties, een voor beeld van een uitingen toegevoegd aan elke intentie, het toegevoegde voor beeld uitingen aan de geen intentie, getraind, gepubliceerd en getest op het eind punt. Dit zijn de basisstappen voor het compileren van een LUIS-model. 
+In deze zelf studie hebt u een LUIS-app gemaakt, worden er gemaakte intenties, een voor beeld van een uitingen toegevoegd aan elke intentie, het toegevoegde voor beeld uitingen aan de geen intentie, getraind, gepubliceerd en getest op het eind punt. Dit zijn de basisstappen voor het compileren van een LUIS-model.
 
 > [!div class="nextstepaction"]
 > [Een opstel bare entiteit toevoegen aan deze app](tutorial-machine-learned-entity.md)

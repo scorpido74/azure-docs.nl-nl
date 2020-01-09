@@ -1,7 +1,7 @@
 ---
 title: 'Aanbeveling van Score SVD: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module Score SVD recommending in de Azure Machine Learning-service om aanbevelings voorspellingen voor een gegevensset te scoren.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module Score SVD recommending in Azure Machine Learning voor voor spellingen van aanbevolen scores voor een gegevensset.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: be590ba04de5c8ee671e7e865d04b4ea6c638c00
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 554101ac70f01f1dd92337a8cf424f8b26ca0fc9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717218"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456341"
 ---
-# <a name="score-svd-recommender"></a>Aanbeveling van Score SVD
+# <a name="score-svd-recommender"></a>Aanbevelingsfunctie voor SVD-score
 
 In dit artikel wordt beschreven hoe u de module Score SVD aanbevelen in Azure Machine Learning Designer (preview) gebruikt. Gebruik deze module om voor spellingen te maken met behulp van een getraind aanbevelings model op basis van het algoritme voor de ontleding van één waarde (SVD).
 
@@ -123,4 +123,4 @@ Wanneer u het model operationeel maken, wijzigt u doorgaans de Voorspellings mod
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor de Azure machine learning-service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

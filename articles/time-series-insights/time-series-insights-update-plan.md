@@ -1,6 +1,6 @@
 ---
 title: Uw preview-omgeving plannen-Azure Time Series Insights | Microsoft Docs
-description: Meer informatie over het plannen van uw Azure Time Series Insights preview-omgeving.
+description: Aanbevolen procedures voor het configureren, beheren, plannen en implementeren van uw Azure Time Series Insights-voorbeeld omgeving.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9fb2dcf2c05b709340f8e9ae549bab5756e6abf2
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: c305da097a4474e6a4aa91ec0e784e627533ee43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420305"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452440"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Uw Azure Time Series Insights-voorbeeld omgeving plannen
 
@@ -48,7 +48,7 @@ Als onderdeel van het inrichtings proces geeft u op of u een warme Store wilt in
 Query's in de warme Store zijn gratis, terwijl query's voor de koude opslag kosten in rekening worden gebracht. Het is belang rijk om inzicht te krijgen in uw query patronen en uw warme archief configuratie dienovereenkomstig te plannen. We raden u aan om interactieve analyses uit te voeren op de meest recente gegevens in uw warme archief-en patroon analyse en op lange termijn trends.
 
 > [!NOTE]
-> We ondersteunen momenteel Maxi maal 1.000 eigenschappen met een warme Store.
+> [Zie hier](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters)voor meer informatie over het uitvoeren van een query op uw warme gegevens.
 
 Als u wilt beginnen, hebt u drie extra items nodig:
 

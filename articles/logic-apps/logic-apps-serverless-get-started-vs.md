@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 4ed2ad2d2ff92e9320a7b9c773c4d6e5857fb905
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a3fcff9f895fba3574bbce976087295018ab51c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792967"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428746"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Uw eerste serverloze app bouwen met behulp van Azure Logic Apps en Azure Functions in Visual Studio
 
@@ -56,7 +56,7 @@ Als u een serverloze app wilt bouwen in Visual Studio, hebt u het volgende nodig
 
 ## <a name="create-a-resource-group-project"></a>Een resource groeps project maken
 
-Om aan de slag te gaan, moet u een [Azure-resource groep-project](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) voor uw serverloze app maken. In azure maakt u resources in een *resource groep*, een logische verzameling die u gebruikt voor het organiseren, beheren en implementeren van resources voor een hele app als één activum. Voor een serverloze app in azure bevat uw resource groep resources voor zowel Azure Logic Apps als Azure Functions. Meer informatie over [Azure-resourcegroepen en resources](../azure-resource-manager/resource-group-overview.md).
+Om aan de slag te gaan, moet u een [Azure-resource groep-project](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) voor uw serverloze app maken. In azure maakt u resources in een *resource groep*, een logische verzameling die u gebruikt voor het organiseren, beheren en implementeren van resources voor een hele app als één activum. Voor een serverloze app in azure bevat uw resource groep resources voor zowel Azure Logic Apps als Azure Functions. Meer informatie over [Azure-resourcegroepen en resources](../azure-resource-manager/management/overview.md).
 
 1. Start Visual Studio en meld u aan met uw Azure-account.
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 835a359d3b5781ad814e423e4a69e8d60379c97b
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4cd4cffdb0357b1cd73b1613e52c2a6c1a60f71e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953157"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457052"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-apparaat-naar-Cloud-berichten traceren met gedistribueerde tracering (voor beeld)
 
@@ -88,22 +88,23 @@ Deze instructies zijn voor het bouwen van het voor beeld in Windows. Zie voor an
 
 ### <a name="clone-the-source-code-and-initialize"></a>De bron code klonen en initialiseren
 
-1. Installeer [' Desktop Development ' C++met ' workload '](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2017) voor Visual Studio 2015 of 2017.
+1. Installeer [' Desktop Development ' C++met ' workload '](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019) voor Visual Studio 2019. Visual Studio 2017 en 2015 worden ook ondersteund.
 
 1. Installeer [cmake](https://cmake.org/). Zorg ervoor dat deze zich in uw `PATH` bevindt door `cmake -version` te typen vanaf een opdracht prompt.
 
-1. Open een opdrachtprompt of Git Bash-shell. Voer de volgende opdracht uit voor het klonen van de [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-opslagplaats:
+1. Open een opdrachtprompt of Git Bash-shell. Voer de volgende opdrachten uit om de nieuwste versie van de [Azure IOT C SDK](https://github.com/Azure/azure-iot-sdk-c) github-opslag plaats te klonen:
 
     ```cmd
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
+    git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     Deze bewerking kan enkele minuten in beslag nemen.
 
-1. Maak de submap `cmake` in de hoofdmap van de Git-opslagplaats en navigeer naar die map.
+1. Maak de submap `cmake` in de hoofdmap van de Git-opslagplaats en navigeer naar die map. Voer de volgende opdrachten uit in de map `azure-iot-sdk-c`:
 
     ```cmd
-    cd azure-iot-sdk-c    
     mkdir cmake
     cd cmake
     cmake ..
@@ -240,7 +241,7 @@ Voor het bijwerken van de configuratie van de gedistribueerde tracerings samplin
 }
 ```
 
-| Elementnaam | Vereist | Type | Beschrijving |
+| Elementnaam | Verplicht | Type | Beschrijving |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | Ja | Geheel getal | Op dit moment worden twee modus waarden ondersteund om steek proeven in en uit te scha kelen. `1` is ingeschakeld en `2` is uitgeschakeld. |
 | `sampling_rate` | Ja | Geheel getal | Deze waarde is een percentage. Alleen waarden van `0` naar `100` (inclusief) zijn toegestaan.  |

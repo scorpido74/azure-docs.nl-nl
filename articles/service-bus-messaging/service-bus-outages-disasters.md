@@ -1,6 +1,6 @@
 ---
-title: Isolatie van Azure Service Bus-toepassingen tegen uitval en noodgevallen | Microsoft Docs
-description: Technieken voor het beveiligen van toepassingen op basis van een potentieel Service Bus-uitval.
+title: Azure Service Bus toepassingen isoleren tegen storingen en rampen
+description: Technieken voor het beveiligen van toepassingen tegen een mogelijke Service Bus storing.
 services: service-bus-messaging
 author: axisc
 manager: timlt
@@ -9,84 +9,84 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: 24fba1961c8fd95f1b9489716d690dd6eaa97b62
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 9375ea4637db7727a40477177f180ab70bd4f417
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274841"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462152"
 ---
-# <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Aanbevolen procedures voor de isolatie van toepassingen op basis van Service Bus-uitval en noodgevallen afhandelen
+# <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Aanbevolen procedures voor het isoleren van toepassingen tegen Service Bus storingen en rampen
 
-Bedrijfskritische toepassingen moeten continu, zelfs met niet-geplande uitval of rampen functioneren. Dit artikel wordt beschreven technieken die kunt u Service Bus-toepassingen op basis van een potentieel service stroomstoring of ramp te beschermen.
+Essentiële toepassingen moeten voortdurend worden gebruikt, zelfs in aanwezigheid van ongeplande storingen of rampen. In dit artikel worden technieken beschreven die u kunt gebruiken om Service Bus-toepassingen te beschermen tegen een mogelijke service storing of nood geval.
 
-Een storing wordt gedefinieerd als tijdelijk ontbreken van Azure Service Bus. De onderbreking kan invloed hebben op sommige onderdelen van Service Bus, zoals een berichten-store, of zelfs het gehele datacenter. Nadat het probleem is opgelost, weer Service Bus beschikbaar is. Een storing wordt normaal gesproken niet leiden tot verlies van berichten of andere gegevens. Een voorbeeld van een onderdeelfout is het ontbreken van een bepaalde berichten-store. Een voorbeeld van een heel datacenter-uitval is een stroomstoring van het datacenter of een foutieve datacenter-netwerkswitch. Een storing kan de laatste van een paar minuten tot enkele dagen.
+Een storing wordt gedefinieerd als de tijdelijke niet-beschik baarheid van Azure Service Bus. De storing kan invloed hebben op sommige onderdelen van Service Bus, zoals een berichten archief of zelfs het hele Data Center. Nadat het probleem is opgelost, wordt Service Bus weer beschikbaar. Normaal gesp roken veroorzaakt een storing geen verlies van berichten of andere gegevens. Een voor beeld van een onderdeel fout is de niet-beschik baarheid van een bepaalde berichten opslag. Een voor beeld van een storing in het Data Center is een stroom storing in het Data Center of een defecte datacenter netwerk switch. Een onderbreking kan een paar minuten tot enkele dagen duren.
 
-Na een noodgeval is gedefinieerd als het permanente verlies van gegevens van een Service Bus-schaaleenheid of datacenter. Het datacenter kan of kan niet weer beschikbaar. Normaal gesproken na een noodgeval zorgt ervoor dat verlies van sommige of alle berichten of andere gegevens. Voorbeelden van rampen zijn brand, dat wordt overspoeld of aardbeving.
+Een nood geval wordt gedefinieerd als permanent verlies van een Service Bus Scale-eenheid of Data Center. Het Data Center kan al dan niet meer beschikbaar zijn. Normaal gesp roken leidt een nood geval ertoe dat sommige of alle berichten of andere gegevens verloren gaan. Voor beelden van calamiteiten zijn brand, overstroming of aard beving.
 
-## <a name="protecting-against-outages-and-disasters---service-bus-premium"></a>Bescherming tegen uitval en noodgevallen - Service Bus Premium
-Hoge beschikbaarheid en herstel na noodgevallen concepten zijn standaard ingebouwd in de Azure Service Bus Premium-laag, zowel binnen dezelfde regio (via Beschikbaarheidszones) en in verschillende regio's (via Geo-noodherstel).
+## <a name="protecting-against-outages-and-disasters---service-bus-premium"></a>Bescherming tegen storingen en rampen-Service Bus Premium
+Concepten voor hoge Beschik baarheid en herstel na nood gevallen zijn ingebouwd in de Azure Service Bus Premium-laag, zowel binnen dezelfde regio (via Beschikbaarheidszones) als in verschillende regio's (via Geo-nood herstel).
 
-### <a name="geo-disaster-recovery"></a>Geo-noodherstel
+### <a name="geo-disaster-recovery"></a>Geo-nood herstel
 
-Service Bus Premium biedt ondersteuning voor Geo-noodherstel, op het niveau van de naamruimte. Zie voor meer informatie, [Geo-noodherstel van Azure Service Bus](service-bus-geo-dr.md). De functie disaster recovery, beschikbaar voor de [Premium-SKU](service-bus-premium-messaging.md) alleen metagegevens noodherstel implementeert, en is afhankelijk van primaire en secundaire disaster recovery-naamruimten.
+Service Bus Premium ondersteunt geo-nood herstel op het niveau van de naam ruimte. Zie [Azure service bus geo-nood herstel](service-bus-geo-dr.md)voor meer informatie. De functie voor nood herstel, alleen beschikbaar voor de [Premium-SKU](service-bus-premium-messaging.md) , implementeert herstel na nood gevallen van meta gegevens en maakt gebruik van primaire en secundaire naam ruimten voor nood herstel.
 
 ### <a name="availability-zones"></a>Beschikbaarheidszones
 
-Biedt ondersteuning voor de Service Bus Premium-SKU [Beschikbaarheidszones](../availability-zones/az-overview.md), bieden foutgeïsoleerde locaties binnen dezelfde Azure-regio.
+De Service Bus Premium SKU ondersteunt [Beschikbaarheidszones](../availability-zones/az-overview.md), waardoor er in dezelfde Azure-regio fout geïsoleerde locaties worden geboden.
 
 > [!NOTE]
-> De ondersteuning voor Beschikbaarheidszones voor Azure Service Bus Premium is alleen beschikbaar in [Azure-regio's](../availability-zones/az-overview.md#services-support-by-region) waar beschikbaarheidszones aanwezig zijn.
+> De Beschikbaarheidszones ondersteuning voor Azure Service Bus Premium is alleen beschikbaar in [Azure-regio's](../availability-zones/az-overview.md#services-support-by-region) waar beschikbaarheids zones aanwezig zijn.
 
-U kunt Beschikbaarheidszones inschakelen op nieuwe naamruimten, met behulp van de Azure portal. Service Bus biedt geen ondersteuning voor migratie van bestaande naamruimten. U kunt zoneredundantie niet uitschakelen nadat deze is ingeschakeld op uw naamruimte.
+U kunt Beschikbaarheidszones inschakelen op nieuwe naamruimten, met behulp van de Azure portal. Service Bus biedt geen ondersteuning voor de migratie van bestaande naam ruimten. U kunt zoneredundantie niet uitschakelen nadat deze is ingeschakeld op uw naamruimte.
 
 ![1][]
 
 
-## <a name="protecting-against-outages-and-disasters---service-bus-standard"></a>Bescherming tegen uitval en noodgevallen - standaard voor Service Bus
-Voor het bereiken van tolerantie tegen storingen van de datacenter bij het gebruik van de berichten van de prijscategorie standard, Service Bus ondersteunt twee methoden: *active* en *passieve* replicatie. Voor elke methode als een bepaalde wachtrij of onderwerp toegankelijk met een uitval van het datacenter blijven moet, kunt u deze in beide naamruimten. Beide entiteiten kunnen dezelfde naam hebben. Bijvoorbeeld, een primaire wachtrij kan worden bereikt onder **contosoPrimary.servicebus.windows.net/myQueue**, terwijl het bijbehorende secundaire server kan worden bereikt onder **contosoSecondary.servicebus.windows.net/myQueue**.
+## <a name="protecting-against-outages-and-disasters---service-bus-standard"></a>Bescherming tegen storingen en rampen-Service Bus Standard
+Service Bus ondersteunt twee benaderingen: *actieve* en *passieve* replicatie om de flexibiliteit te verzorgen tegen Data Center-uitval bij het gebruik van de Standard-prijs categorie voor berichten. Als een bepaalde wachtrij of onderwerp voor elke benadering toegankelijk moet blijven bij aanwezigheid van een storing in het Data Center, kunt u deze in beide naam ruimten maken. Beide entiteiten kunnen dezelfde naam hebben. Een primaire wachtrij kan bijvoorbeeld worden bereikt onder **contosoPrimary.servicebus.Windows.net/myQueue**, terwijl de secundaire tegen hanger kan worden bereikt onder **contosoSecondary.servicebus.Windows.net/myQueue**.
 
 >[!NOTE]
-> De **actieve replicatie** en **passieve replicatie** setup zijn algemene oplossingen en geen specifieke functies van Service Bus. De replicatie-logica (verzenden naar 2 verschillende naamruimten) wordt toegevoegd aan de toepassingen van de afzender en de ontvanger heeft om aangepaste logica voor detectie van duplicaten.
+> De **actieve replicatie** -en **passieve replicatie** -instellingen zijn oplossingen voor algemeen gebruik en geen specifieke functies van service bus. De replicatie logica (verzenden naar twee verschillende naam ruimten) bevindt zich in de toepassingen van de afzender en de ontvanger moet aangepaste logica hebben voor duplicaten detectie.
 
-Als de toepassing geen communicatie van permanente afzender-aan-ontvanger is vereist, kan de toepassing een duurzame client-side '-wachtrij om te voorkomen dat bericht verloren gaan en af te schermen van de afzender van tijdelijke fouten Service Bus implementeren.
+Als voor de toepassing geen permanente communicatie van sender-to-receiver is vereist, kan de toepassing een duurzame wachtrij voor client zijde implementeren om verlies van berichten te voor komen en de afzender af te schermn van tijdelijke Service Bus fouten.
 
 ### <a name="active-replication"></a>Actieve replicatie
-Actieve replicatie maakt gebruik van entiteiten in beide naamruimten voor elke bewerking. Een willekeurige client die een bericht verzendt verzendt twee kopieën van hetzelfde bericht. De eerste kopie wordt verzonden naar de primaire entiteit (bijvoorbeeld **contosoPrimary.servicebus.windows.net/sales**), en de tweede kopie van het bericht wordt verzonden naar de secundaire entiteit (bijvoorbeeld  **contosoSecondary.servicebus.windows.net/sales**).
+Actieve replicatie maakt gebruik van entiteiten in beide naam ruimten voor elke bewerking. Elke client die een bericht verzendt, verzendt twee kopieën van hetzelfde bericht. De eerste kopie wordt verzonden naar de primaire entiteit (bijvoorbeeld **contosoPrimary.servicebus.Windows.net/Sales**) en de tweede kopie van het bericht wordt verzonden naar de secundaire entiteit (bijvoorbeeld **contosoSecondary.servicebus.Windows.net/Sales**).
 
-Een client ontvangt berichten van beide wachtrijen. De ontvanger het eerste exemplaar van een bericht verwerkt en de tweede kopie wordt onderdrukt. Als u wilt onderdrukken dubbele berichten, moet de afzender elk bericht een unieke id taggen. Beide exemplaren van het bericht moeten worden gelabeld met dezelfde id. U kunt de [BrokeredMessage.MessageId][BrokeredMessage.MessageId] of [BrokeredMessage.Label][BrokeredMessage.Label] eigenschappen of een aangepaste eigenschap voor het taggen van het bericht. De ontvanger moet een lijst met berichten die al is ontvangen behouden.
+Een client ontvangt berichten van beide wacht rijen. De ontvanger verwerkt de eerste kopie van een bericht en de tweede kopie wordt onderdrukt. Om dubbele berichten te onderdrukken, moet de afzender elk bericht labelen met een unieke id. Beide exemplaren van het bericht moeten zijn gelabeld met dezelfde id. U kunt de eigenschappen [BrokeredMessage. MessageId][BrokeredMessage.MessageId] of [BrokeredMessage. label][BrokeredMessage.Label] of een aangepaste eigenschap gebruiken om het bericht te labelen. De ontvanger moet een lijst met berichten onderhouden die deze al heeft ontvangen.
 
-De [Geo-replicatie met Service Bus Standard-laag][Geo-replication with Service Bus Standard Tier] voorbeeld ziet u actieve replicatie van berichtentiteiten.
+De [geo-replicatie met Service Bus Standard-laag][Geo-replication with Service Bus Standard Tier] voor beeld toont actieve replicatie van Messa ging-entiteiten.
 
 > [!NOTE]
-> De aanpak van actieve replicatie verdubbelt het aantal bewerkingen, dus deze benadering kan leiden tot hogere kosten.
+> De actieve replicatie aanpak verdubbelt het aantal bewerkingen, waardoor deze benadering kan leiden tot hogere kosten.
 > 
 > 
 
 ### <a name="passive-replication"></a>Passieve replicatie
-In het geval fouttolerantie gratis passieve replicatie maakt gebruik van slechts één van de twee berichtentiteiten. Een client wordt het bericht verzonden naar de actieve entiteit. Als de bewerking op de actieve entiteit is mislukt met een foutcode die aangeeft van het datacenter dat als host fungeert voor de actieve entiteit is mogelijk niet beschikbaar is, verzendt de client een kopie van het bericht naar de back-entiteit. De actieve en de back-upentiteiten overschakelen op dat moment rollen: de verzendende client rekening gehouden met de oude active entiteit moet de nieuwe back-entiteit en de oude back-entiteit is de nieuwe actieve entiteit. Als beide mislukken verzenden, de rollen van de twee entiteiten blijven ongewijzigd en een fout geretourneerd.
+In het geval van een niet-beschik bare fout gebruikt passieve replicatie slechts één van de twee Messa ging-entiteiten. Een client verzendt het bericht naar de actieve entiteit. Als de bewerking op de actieve entiteit mislukt met een fout code die aangeeft dat het Data Center dat als host fungeert voor de actieve entiteit mogelijk niet beschikbaar is, stuurt de client een kopie van het bericht naar de back-upentiteit. Op dat moment worden de rollen actief en back-upentiteiten omgewisseld: de verzendende client beschouwt de oude actieve entiteit als nieuwe back-upentiteit en de oude back-upentiteit is de nieuwe actieve entiteit. Als beide verzend bewerkingen mislukken, blijven de rollen van de twee entiteiten ongewijzigd en wordt er een fout geretourneerd.
 
-Een client ontvangt berichten van beide wachtrijen. Omdat er een kans dat de ontvanger twee kopieën van hetzelfde bericht ontvangt, moet de ontvanger dubbele berichten onderdrukken. U kunt duplicaten onderdrukken op dezelfde manier zoals beschreven voor actieve replicatie.
+Een client ontvangt berichten van beide wacht rijen. Omdat er een kans is dat de ontvanger twee exemplaren van hetzelfde bericht ontvangt, moet de ontvanger dubbele berichten onderdrukken. U kunt dubbele waarden op dezelfde manier onderdrukken als voor actieve replicatie.
 
-Passieve replicatie is in het algemeen voordeliger dan de actieve replicatie omdat in de meeste gevallen kan slechts één bewerking wordt uitgevoerd. Latentie, doorvoer en monetaire kosten zijn identiek aan de niet-gerepliceerde scenario.
+Over het algemeen is passieve replicatie rendabeler dan actieve replicatie, omdat in de meeste gevallen slechts één bewerking wordt uitgevoerd. De latentie, door Voer en de monetaire kosten zijn identiek aan het niet-gerepliceerde scenario.
 
-Als u passieve replicatie gebruikt, in de volgende scenario's kunnen berichten zoekraken of worden twee keer ontvangen:
+Bij het gebruik van passieve replicatie kunnen berichten in de volgende scenario's worden verloren of twee keer worden ontvangen:
 
-* **Bericht vertraging of verlies**: Wordt ervan uitgegaan dat de afzender een m1 bericht naar de primaire wachtrij verzonden en vervolgens de wachtrij niet beschikbaar is voordat de ontvanger m1 ontvangt. De afzender verzendt een m2 daaropvolgende bericht naar de secundaire wachtrij. Als de primaire wachtrij tijdelijk niet beschikbaar is, ontvangt de ontvanger m1 nadat de wachtrij weer beschikbaar wordt. In geval van een ramp ontvangt de ontvanger mogelijk nooit m1.
-* **Dubbele ontvangst**: Wordt ervan uitgegaan dat de afzender een bericht m naar de primaire wachtrij verzendt. Service Bus m verwerkt is, maar om een antwoord te verzenden is mislukt. Nadat er is een time-out opgetreden voor de bewerking voor het verzenden, verzendt de afzender een identieke kopie van m naar de secundaire wachtrij. Als de ontvanger kan de eerste kopie van m ontvangen voordat de primaire wachtrij niet beschikbaar is, ontvangt de ontvanger beide exemplaren van m op ongeveer hetzelfde moment. Als de ontvanger niet kan ontvangen van de eerste kopie van m voordat de primaire wachtrij niet beschikbaar is, wordt de ontvanger in eerste instantie ontvangt alleen het tweede exemplaar van m, maar u ontvangt vervolgens een tweede exemplaar van m wanneer de primaire wachtrij beschikbaar komt.
+* **Bericht vertraging of-verlies**: aangenomen dat de afzender een bericht B1 heeft verzonden naar de primaire wachtrij. vervolgens wordt de wachtrij pas weer beschikbaar als de ontvanger M1 ontvangt. De afzender verzendt een volgend bericht m2 naar de secundaire wachtrij. Als de primaire wachtrij tijdelijk niet beschikbaar is, wordt de ontvanger M1 ontvangen nadat de wachtrij weer beschikbaar is. In het geval van een ramp mag de ontvanger nooit M1 ontvangen.
+* **Dubbele ontvangst**: Stel dat de afzender een bericht m naar de primaire wachtrij verzendt. Service Bus verwerkt m, maar er is geen antwoord verzonden. Als er een time-out optreedt voor de verzend bewerking, verzendt de afzender een identieke kopie van m naar de secundaire wachtrij. Als de ontvanger de eerste kopie van m kan ontvangen voordat de primaire wachtrij niet beschikbaar is, ontvangt de ontvanger beide exemplaren van de m ongeveer hetzelfde tijdstip. Als de ontvanger niet in staat is om de eerste kopie van m te ontvangen voordat de primaire wachtrij niet meer beschikbaar is, ontvangt de ontvanger aanvankelijk alleen de tweede kopie van m, maar ontvangt hij een tweede exemplaar van m wanneer de primaire wachtrij beschikbaar wordt.
 
-De [Geo-replicatie met Service Bus Standard-laag][Geo-replication with Service Bus Standard Tier] voorbeeld laat zien passieve replicatie van berichtentiteiten.
+De [geo-replicatie met Service Bus Standard-laag][Geo-replication with Service Bus Standard Tier] voor beeld toont de passieve replicatie van Messa ging-entiteiten.
 
-## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>Relay-eindpunten op basis van datacenter storingen of rampen beschermen
-Geo-replicatie van [Azure Relay](../service-bus-relay/relay-what-is-it.md) eindpunten kan een service die wordt aangegeven dat een relay-eindpunt om te worden bereikt met Service Bus-uitval. Als u wilt bereiken geo-replicatie, moet de service twee relay-eindpunten in verschillende naamruimten maken. De naamruimten moet zich bevinden in verschillende datacenters en de twee eindpunten moeten verschillende namen hebben. Bijvoorbeeld, een primaire eindpunt kan worden bereikt onder **contosoPrimary.servicebus.windows.net/myPrimaryService**, terwijl het bijbehorende secundaire server kan worden bereikt onder **contosoSecondary.servicebus.windows.net /mySecondaryService**.
+## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>Relay-eind punten beveiligen tegen data centers storingen of nood gevallen
+Met geo-replicatie van [Azure relay](../service-bus-relay/relay-what-is-it.md) -eind punten kan een service die een relay-eind punt beschikbaar maakt, bereikbaar zijn in de aanwezigheid van service bus storingen. Om geo-replicatie te kunnen garanderen, moet de service twee relay-eind punten in verschillende naam ruimten maken. De naam ruimten moeten zich in verschillende data centers bevinden en de twee eind punten moeten verschillende namen hebben. U kunt bijvoorbeeld een primair eind punt bereiken onder **contosoPrimary.servicebus.Windows.net/myPrimaryService**, terwijl de secundaire tegen hanger kan worden bereikt onder **contosoSecondary.servicebus.Windows.net/mySecondaryService**.
 
-De service vervolgens luistert op beide eindpunten en een client de service via een eindpunt kunt aanroepen. Een clienttoepassing willekeurig kiest een van de relays als het primaire eindpunt en de aanvraag verzendt naar de actieve eindpunt. Als de bewerking is mislukt met een foutcode, wordt deze fout geeft aan dat de relay-eindpunt niet beschikbaar is. De toepassing wordt een kanaal naar het eindpunt van de back-up geopend en databasebron moet worden gestuurd de aanvraag. Op dat moment de back-eindpunten en de actieve rollen overschakelen: de clienttoepassing rekening gehouden met de oude actief eindpunt moet het nieuwe eindpunt voor back-up en het oude back-eindpunt te zijn van het nieuwe eindpunt voor actieve. Als beide mislukken verzenden, de rollen van de twee entiteiten blijven ongewijzigd en een fout geretourneerd.
+De service luistert vervolgens op beide eind punten en een client kan de service via een van beide eind punten aanroepen. Een client toepassing kiest wille keurig een van de relays als het primaire eind punt en verzendt de aanvraag naar het actieve eind punt. Als de bewerking mislukt met een fout code, geeft deze fout aan dat het relay-eind punt niet beschikbaar is. De toepassing opent een kanaal naar het back-upeindpunt en geeft de aanvraag opnieuw uit. Op dat moment worden de switch rollen actief en back-upeindpunt: de client toepassing beschouwt het oude actieve eind punt als het nieuwe back-upeindpunt en het oude back-upeindpunt als nieuw actief eind punt. Als beide verzend bewerkingen mislukken, blijven de rollen van de twee entiteiten ongewijzigd en wordt er een fout geretourneerd.
 
 ## <a name="next-steps"></a>Volgende stappen
-Voor meer informatie over herstel na noodgevallen, Zie de volgende artikelen:
+Raadpleeg de volgende artikelen voor meer informatie over herstel na nood gevallen:
 
-* [Azure Service Bus Geo-noodherstel](service-bus-geo-dr.md)
-* [Bedrijfscontinuïteit voor Azure SQL Database][Azure SQL Database Business Continuity]
+* [Azure Service Bus geo-nood herstel](service-bus-geo-dr.md)
+* [Bedrijfs continuïteit Azure SQL Database][Azure SQL Database Business Continuity]
 * [Robuuste toepassingen ontwerpen voor Azure][Azure resiliency technical guidance]
 
 [Service Bus Authentication]: service-bus-authentication-and-authorization.md

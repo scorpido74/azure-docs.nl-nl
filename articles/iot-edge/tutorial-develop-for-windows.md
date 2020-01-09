@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4a56a79798acf4948739b26062ab770fcbb47f7b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 55ae542ed0490248d501cd7c4f50c0a7ba32091a
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707074"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665198"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Zelf studie: IoT Edge-modules ontwikkelen voor Windows-apparaten
 
@@ -91,7 +91,7 @@ In deze zelf studie leert u de ontwikkelings stappen voor Visual Studio 2019. Al
    * Als u Visual Studio nog niet op uw ontwikkel machine hebt, [installeert u Visual studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) met de volgende werk belastingen: 
 
       * Azure-ontwikkeling
-      * Desktop ontwikkeling metC++
+      * Desktopontwikkeling met C++
       * Platformoverschrijdende ontwikkelmogelijkheden van .NET Core
 
    * Als u Visual Studio 2019 al hebt geïnstalleerd op uw ontwikkel computer, volgt u de stappen in [Visual Studio aanpassen](https://docs.microsoft.com/visualstudio/install/modify-visual-studio) om de vereiste werk belastingen toe te voegen.
@@ -133,7 +133,7 @@ De uitbrei ding van de Azure IoT Edge-Hulpprogram Ma's biedt project sjablonen v
    | Veld | Waarde |
    | ----- | ----- |
    | Visual Studio-sjabloon | Selecteer  **C# de module**. | 
-   | Module naam | Accepteer de standaard **IotEdgeModule1**. | 
+   | Modulenaam | Accepteer de standaard **IotEdgeModule1**. | 
    | URL van opslag plaats | Een opslagplaats voor afbeeldingen bevat de naam van het containerregister en de naam van uw containerafbeelding. De container installatie kopie wordt vooraf ingevuld op basis van de waarde van de module Project naam. Vervang **localhost:5000** door de waarde van de aanmeldingsserver uit uw Azure-containerregister. U kunt de waarde van de **aanmeldings server** ophalen van de pagina **overzicht** van het container register in de Azure Portal. <br><br> De uiteindelijke opslag plaats voor de installatie kopie ziet eruit als \<register naam\>. azurecr.io/iotedgemodule1. |
 
       ![Uw project configureren voor doel apparaat, module type en container register](./media/tutorial-develop-for-windows/add-module-to-solution.png)
@@ -158,7 +158,7 @@ De IoT Edge runtime heeft uw register referenties nodig om de container installa
 
 1. Open het bestand **Deployment. Temp late. json** in uw module oplossing.
 
-1. Zoek de eigenschap **registryCredentials** in de gewenste eigenschappen $edgeAgent en controleer of deze de juiste informatie bevat.
+1. Zoek de eigenschap **registryCredentials** in de gewenste eigenschappen van de $edgeAgent. De naam van het REGI ster moet worden aangevuld met de informatie die u hebt opgegeven bij het maken van het project. de velden username en password moeten namen van variabelen bevatten. Bijvoorbeeld: 
 
    ```json
    "registryCredentials": {
@@ -176,7 +176,7 @@ De IoT Edge runtime heeft uw register referenties nodig om de container installa
 
 1. Sla de wijzigingen in het. env-bestand op.
 
-### <a name="review-the-sample-code"></a>De voorbeeld code bekijken
+### <a name="review-the-sample-code"></a>De voorbeeldcode controleren
 
 De oplossings sjabloon die u hebt gemaakt, bevat voorbeeld code voor een IoT Edge module. In deze voorbeeld module worden berichten gewoon ontvangen en vervolgens door gegeven aan. Met de pijplijn functionaliteit wordt een belang rijk concept in IoT Edge gedemonstreerd, waarmee modules met elkaar communiceren.
 

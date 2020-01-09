@@ -1,21 +1,21 @@
 ---
 title: bestand opnemen
-description: ondersteunde connectors voor opzoek activiteit
+description: ondersteunde connectors voor Lookup-activiteit
 services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 10/25/2019
+ms.date: 12/13/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 527114adbe2422148605fd878723ae74fa7c3304
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fb44f217b7a940bc07a164e482b67ddb53835715
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958544"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440483"
 ---
-| Category | Gegevensarchief |
+| Categorie | Gegevensarchief |
 |:--- |:--- |
 | **Azure** |[Azure Blob Storage](../articles/data-factory/connector-azure-blob-storage.md) |
 | &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |
@@ -28,7 +28,7 @@ ms.locfileid: "72958544"
 | &nbsp; |[Azure Files](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |
 | &nbsp; |[Beheerd exemplaar van Azure SQL Database](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
-| &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
+| &nbsp; |[Azure Synapse Analytics (voorheen SQL Data Warehouse)](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Azure Table storage](../articles/data-factory/connector-azure-table-storage.md) |
 | **Database** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |
@@ -80,7 +80,7 @@ ms.locfileid: "72958544"
 | &nbsp; |[Marketo (preview)](../articles/data-factory/connector-marketo.md) |
 | &nbsp; |[Oracle Eloqua (preview)](../articles/data-factory/connector-oracle-eloqua.md) |
 | &nbsp; |[Oracle Responsys (preview)](../articles/data-factory/connector-oracle-responsys.md) |
-| &nbsp; |[Oracle Service-Cloud (preview-versie)](../articles/data-factory/connector-oracle-service-cloud.md) |
+| &nbsp; |[Oracle-Servicecloud (Preview)](../articles/data-factory/connector-oracle-service-cloud.md) |
 | &nbsp; |[PayPal (preview-versie)](../articles/data-factory/connector-paypal.md) |
 | &nbsp; |[QuickBooks (preview)](../articles/data-factory/connector-quickbooks.md) |
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |

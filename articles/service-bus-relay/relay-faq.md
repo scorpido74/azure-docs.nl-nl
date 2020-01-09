@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: 207f73bbf9a92d26be1791fc11ce81fe68252705
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 066ac1080f7ea378efe1665e7ebc70e57118191c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422959"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459102"
 ---
 # <a name="azure-relay-faqs"></a>Veelgestelde vragen over Azure Relay
 
@@ -80,10 +80,10 @@ Een bericht verzenden naar een Service Bus relay wordt behandeld als een ' Full 
 Relays die worden geopend met behulp van de WCF-binding van **netTCPRelay** behandelen berichten niet als afzonderlijke berichten, maar als een stroom gegevens stroom via het systeem. Wanneer u deze binding gebruikt, hebben alleen de afzender en de listener inzicht in het framing van de afzonderlijke berichten die zijn verzonden en ontvangen. Voor Relais die de **netTCPRelay** -binding gebruiken, worden alle gegevens behandeld als een stroom voor het berekenen van factureer bare berichten. In dit geval berekent Service Bus de totale hoeveelheid gegevens die via elke afzonderlijke relay wordt verzonden of ontvangen, op een basis van vijf minuten. Vervolgens wordt de totale hoeveelheid gegevens met 64 KB gedeeld om het aantal factureer bare berichten voor die relay tijdens die periode te bepalen.
 
 ## <a name="quotas"></a>Quota
-| Quotumnaam | Scope |  Opmerkingen | Waarde |
+| Quotum naam | Scope |  Opmerkingen | Waarde |
 | --- | --- | --- | --- |
 | Gelijktijdige listeners op een relay |Entiteit |Volgende aanvragen voor extra verbindingen worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |25 |
-| Gelijktijdige relay-verbindingen per alle relay-eind punten in een service naam ruimte |Naamruimte |- |5,000 |
+| Gelijktijdige relay-verbindingen per alle relay-eind punten in een service naam ruimte |Naamruimte |- |5\.000 |
 | Relay-eind punten per service naam ruimte |Naamruimte |- |10.000 |
 | Bericht grootte voor [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) -en [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) -relays |Naamruimte |Inkomende berichten die groter zijn dan deze quota worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |64 kB |
 | Bericht grootte voor [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) -en [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) -relays |Naamruimte |Geen limiet voor de bericht grootte. |Onbeperkt |
@@ -106,7 +106,7 @@ Als u een naam ruimte van een Azure-abonnement naar een ander abonnement wilt ve
 
 #### <a name="azure-portal"></a>Azure Portal
 
-Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/resource-group-move-resources.md#use-the-portal)om de Azure portal te gebruiken om Azure relay naam ruimten van een abonnement te migreren naar een ander abonnement. 
+Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal)om de Azure portal te gebruiken om Azure relay naam ruimten van een abonnement te migreren naar een ander abonnement. 
 
 #### <a name="powershell"></a>PowerShell
 
@@ -131,7 +131,7 @@ Zie [Relay-uitzonde ringen][Relay exceptions]voor een beschrijving van veelvoork
 Shared Access signatures (SAS) zijn een verificatie methode op basis van SHA-256 Secure hashes of Uri's. Zie [Service Bus verificatie met hand tekeningen voor gedeelde toegang][Shared Access Signatures]voor meer informatie over het genereren van uw eigen hand tekeningen in node. C#js, PHP, Python, Java, C en.
 
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Is het mogelijk om relay-eind punten te White listen?
-Ja. De relay-client maakt verbinding met de Azure Relay-service door gebruik te maken van volledig gekwalificeerde domein namen. Klanten kunnen een vermelding voor toevoegen `*.servicebus.windows.net` aan firewalls die ondersteuning bieden voor DNS-White list.
+Ja. De relay-client maakt verbinding met de Azure Relay-service door gebruik te maken van volledig gekwalificeerde domein namen. Klanten kunnen een vermelding voor `*.servicebus.windows.net` toevoegen aan firewalls die ondersteuning bieden voor DNS-White list.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Een naamruimte maken](relay-create-namespace-portal.md)

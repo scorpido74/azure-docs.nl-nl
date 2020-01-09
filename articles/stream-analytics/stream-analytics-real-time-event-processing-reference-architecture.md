@@ -1,19 +1,18 @@
 ---
 title: Verwerking van real-time gebeurtenis met Azure Stream Analytics
 description: In dit artikel wordt de referentie architectuur beschreven voor het uitvoeren van real-time gebeurtenis verwerking en-analyse met behulp van Azure Stream Analytics.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
-ms.openlocfilehash: 21a0e4e468b606ec7bb7e33bf1a616e68cd6cf50
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d219b3fcb27b23527c0a651bc8e842a9e036bfc2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925102"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431485"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Referentie architectuur: verwerking van realtime-gebeurtenissen met Microsoft Azure Stream Analytics
 De referentie architectuur voor de verwerking van realtime-gebeurtenissen met Azure Stream Analytics is bedoeld om een algemene blauw druk te bieden voor het implementeren van een realtime platform as a Service (PaaS)-stroom verwerkings oplossing met Microsoft Azure.
@@ -24,7 +23,7 @@ De meeste analyse oplossingen zijn gebaseerd op mogelijkheden zoals ETL (extract
 Microsoft Azure biedt een uitgebreide catalogus met analyse technologieën die ondersteuning bieden voor een reeks verschillende scenario's en vereisten voor oplossingen. Het selecteren van de Azure-Services die voor een end-to-end-oplossing moeten worden geïmplementeerd, kan een uitdaging zijn voor de reik wijdte van de aanbiedingen. Dit document is ontworpen om de mogelijkheden en interbewerking te beschrijven van de verschillende Azure-Services die ondersteuning bieden voor een oplossing voor gebeurtenis streaming. Daarnaast worden enkele scenario's beschreven waarin klanten kunnen profiteren van dit type benadering.
 
 ## <a name="contents"></a>Inhoud
-* Samen vatting Executive
+* Managementsamenvatting
 * Inleiding tot real-time analyse
 * Toegevoegde waarde van realtime gegevens in azure
 * Algemene Scenario's voor real-time analyse

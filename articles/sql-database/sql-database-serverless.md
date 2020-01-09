@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: e90bff7548be5f469ebbcdc21dd9b93dc887a30e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2b11bbc22714ab1905421812e3cb24ee660ee667
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931958"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372327"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database - Serverloos
 
@@ -177,30 +177,27 @@ Het maken van een nieuwe data base of het verplaatsen van een bestaande Data Bas
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Nieuwe data base maken in serverloze Compute-laag 
 
+In de volgende voor beelden wordt een nieuwe data base gemaakt in de serverloze Compute-laag. In de voor beelden wordt expliciet het minimale vCores, het maximum aantal vCores en de vertraging voor autopause opgegeven.
+
 #### <a name="use-azure-portal"></a>Azure Portal gebruiken
 
 Zie [Quick Start: een enkele data base maken in Azure SQL database met behulp van de Azure Portal](sql-database-single-database-get-started.md).
 
+
 #### <a name="use-powershell"></a>PowerShell gebruiken
-
-In het volgende voor beeld wordt een nieuwe data base gemaakt in de compute-laag zonder server.  In dit voor beeld wordt expliciet het minimale vCores, het maximum aantal vCores en de vertraging voor autopause opgegeven.
-
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
   -ComputeModel Serverless -Edition GeneralPurpose -ComputeGeneration Gen5 `
   -MinVcore 0.5 -MaxVcore 2 -AutoPauseDelayInMinutes 720
 ```
+#### <a name="use-azure-cli"></a>Azure CLI gebruiken
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```powershell
+```azurecli
 az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
   -e GeneralPurpose -f Gen5 -min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
 ```
 
-* * *
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) gebruiken
 
@@ -215,11 +212,10 @@ Zie [Create Data Base](/sql/t-sql/statements/create-database-transact-sql?view=a
 
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Data base verplaatsen van ingerichte Compute-laag naar serverloze Compute-laag
 
+In de volgende voor beelden wordt een Data Base van de ingerichte Compute-laag verplaatst naar de serverloze Compute-laag. In de voor beelden wordt expliciet het minimale vCores, het maximum aantal vCores en de vertraging voor autopause opgegeven.
+
 #### <a name="use-powershell"></a>PowerShell gebruiken
 
-In het volgende voor beeld wordt een Data Base van de ingerichte Compute-laag verplaatst naar de serverloze Compute-laag. In dit voor beeld wordt expliciet het minimale vCores, het maximum aantal vCores en de vertraging voor autopause opgegeven.
-
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
@@ -227,14 +223,13 @@ Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
   -MinVcore 1 -MaxVcore 4 -AutoPauseDelayInMinutes 1440
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+#### <a name="use-azure-cli"></a>Azure CLI gebruiken
 
-```powershell
+```azurecli
 az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
   --edition GeneralPurpose --min-capacity 1 --capacity 4 --family Gen5 --compute-model Serverless --auto-pause-delay 1440
 ```
 
-* * *
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) gebruiken
 
@@ -253,15 +248,14 @@ Een serverloze data base kan op dezelfde manier worden verplaatst naar een inger
 
 ## <a name="modifying-serverless-configuration"></a>Configuratie zonder server wijzigen
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="use-powershell"></a>PowerShell gebruiken
 
 Het wijzigen van de maximale of minimale vCores en de vertraging voor autopause wordt uitgevoerd met behulp van de [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) opdracht in Power shell met behulp van de argumenten `MaxVcore`, `MinVcore`en `AutoPauseDelayInMinutes`.
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="use-azure-cli"></a>Azure CLI gebruiken
 
 Het wijzigen van de maximale of minimale vCores en de vertraging voor autopause wordt uitgevoerd met behulp van de opdracht [AZ SQL DB Update](/cli/azure/sql/db#az-sql-db-update) in azure CLI met behulp van de argumenten `capacity`, `min-capacity`en `auto-pause-delay`.
 
-* * *
 
 ## <a name="monitoring"></a>Controleren
 
@@ -296,22 +290,21 @@ De metrische gegevens voor het bewaken van het resource gebruik van het app-pakk
 
 In de Azure Portal wordt de status van de Data Base weer gegeven in het deel venster Overzicht van de server met de data bases die deze bevat. De database status wordt ook weer gegeven in het deel venster Overzicht voor de data base.
 
-Gebruik de volgende Power shell-opdracht om de status van een Data Base te onderbreken en te hervatten:
+Gebruik de volgende opdrachten om de status van een Data Base te onderbreken en te hervatten:
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+#### <a name="use-powershell"></a>PowerShell gebruiken
 
 ```powershell
 Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername -DatabaseName $databasename `
   | Select -ExpandProperty "Status"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+#### <a name="use-azure-cli"></a>Azure CLI gebruiken
 
-```powershell
+```azurecli
 az sql db show --name $databasename --resource-group $resourcegroupname --server $servername --query 'status' -o json
 ```
 
-* * *
 
 ## <a name="resource-limits"></a>Bronbeperkingen
 

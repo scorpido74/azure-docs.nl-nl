@@ -1,5 +1,5 @@
 ---
-title: Problemen met query's diagnosticeren en oplossen bij het gebruik van Azure Cosmos DB
+title: Problemen met query's oplossen bij het gebruik van Azure Cosmos DB
 description: Meer informatie over het identificeren, vaststellen en oplossen van problemen met Azure Cosmos DB SQL-query's.
 author: ginamr
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: fd8e80c7cd7cb71e4e0418d970cf2f328f1a3d79
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1859fa8f71b5c4c44d6e5da1b6a36ca9d9399516
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184715"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444727"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Problemen met de query prestaties voor Azure Cosmos DB oplossen
 In dit artikel wordt beschreven hoe u Azure Cosmos DB SQL-query problemen kunt identificeren, vaststellen en oplossen. Volg de onderstaande stappen voor probleem oplossing om de prestaties van Azure Cosmos DB query's optimaal te benutten. 
@@ -26,7 +26,7 @@ Het [consistentie niveau](consistency-levels.md) kan invloed hebben op de presta
 
 ## <a name="log-the-executed-sql-query"></a>De uitgevoerde SQL-query registreren 
 
-U kunt de uitgevoerde SQL-query in een opslag account of in de diagnostische logboek tabel registreren. [Met de SQL-query logboeken via Diagnostische logboeken](monitor-cosmos-db.md#diagnostic-settings) kunt u de verborgen query in een opslag account van uw keuze registreren. Zo kunt u de logboeken bekijken en de query zoeken die gebruikmaakt van hoger RUs. Later kunt u de activiteits-ID gebruiken om te voldoen aan de werkelijke query in de QueryRuntimeStatistics. De query is verborgen voor het beveiligings doel en de namen van de query parameters, en de waarden in de WHERE-componenten verschillen van werkelijke namen en waarden. U kunt logboek registratie gebruiken om het account te bewaren voor de lange termijn retentie van de uitgevoerde query's.  
+U kunt de uitgevoerde SQL-query in een opslag account of in de diagnostische logboek tabel registreren. [Met de SQL-query logboeken via Diagnostische logboeken](cosmosdb-monitor-resource-logs.md) kunt u de verborgen query in een opslag account van uw keuze registreren. Zo kunt u de logboeken bekijken en de query zoeken die gebruikmaakt van hoger RUs. Later kunt u de activiteits-ID gebruiken om te voldoen aan de werkelijke query in de QueryRuntimeStatistics. De query is verborgen voor het beveiligings doel en de namen van de query parameters, en de waarden in de WHERE-componenten verschillen van werkelijke namen en waarden. U kunt logboek registratie gebruiken om het account te bewaren voor de lange termijn retentie van de uitgevoerde query's.  
 
 ## <a name="log-query-metrics"></a>Metrische gegevens van logboek query
 

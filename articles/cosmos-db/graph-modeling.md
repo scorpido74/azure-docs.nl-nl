@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: 7bc5544249b7e476afde08281aa005569ef6f8ce
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d1e21827dda26f1c577f6cc70a5e34bb09a34d9c
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873723"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500053"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Graph data modellering voor Azure Cosmos DB Gremlin-API
 
@@ -23,7 +23,7 @@ Het volgende document is ontworpen om aanbevelingen voor grafiek gegevens modell
 Het proces dat in deze hand leiding wordt beschreven, is gebaseerd op de volgende veronderstellingen:
  * De **entiteiten** in de probleem ruimte worden geïdentificeerd. Deze entiteiten zijn bedoeld om voor elke aanvraag _atomisch_ te worden verbruikt. Met andere woorden, het database systeem is niet ontworpen voor het ophalen van gegevens van één entiteit in meerdere query aanvragen.
  * Er is een uitleg over de **Lees-en schrijf vereisten** voor het database systeem. Deze vereisten leiden tot de optimalisaties die nodig zijn voor het gegevens model van de grafiek.
- * De principes van de [Apache Tinkerpop eigenschap Graph Standard](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) zijn duidelijk.
+ * De principes van de [Apache Tinkerpop eigenschap Graph Standard](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) zijn duidelijk.
 
 ## <a name="when-do-i-need-a-graph-database"></a>Wanneer heb ik een grafiek database nodig?
 
@@ -41,7 +41,7 @@ De volgende stap is om te bepalen of de grafiek wordt gebruikt voor analyse-of t
 
 ## <a name="how-to-use-graph-objects"></a>Grafiek objecten gebruiken
 
-De [Apache Tinkerpop-eigenschap Graph Standard](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) definieert twee typen objecten van **hoek punten** en **randen**. 
+De [Apache Tinkerpop-eigenschap Graph Standard](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) definieert twee typen objecten van **hoek punten** en **randen**. 
 
 Hieronder volgen de aanbevolen procedures voor de eigenschappen in de grafiek objecten:
 

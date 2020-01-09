@@ -1,5 +1,5 @@
 ---
-title: Grote hoeveelheden willekeurige gegevens downloaden uit Azure Storage | Microsoft Docs
+title: Grote hoeveel heden wille keurige gegevens downloaden uit Azure Storage | Microsoft Docs
 description: Informatie over het gebruik van de Azure SDK om grote hoeveelheden willekeurige gegevens uit een Azure Storage-account te downloaden
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: 8d270485cef9fb6859de056bc364a36c054c0121
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b3fe9c7481e79b8eeda9f18e9a036fa8c72e658d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699019"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372088"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Grote hoeveelheden willekeurige gegevens downloaden uit Azure Storage
 
@@ -27,7 +27,7 @@ In deel drie van de serie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet de vorige zelfstudie over opslag hebben voltooid: [Upload grote hoeveel heden wille keurige gegevens parallel naar Azure Storage][previous-tutorial].
+Voor het volt ooien van deze zelf studie moet u de vorige hand leiding voor opslag hebben voltooid: [grote hoeveel heden wille keurige gegevens parallel naar Azure Storage uploaden][previous-tutorial].
 
 ## <a name="remote-into-your-virtual-machine"></a>Extern verbinding maken met uw virtuele machine
 
@@ -98,9 +98,9 @@ dotnet run
 De toepassing leest de containers die zich in het opslagaccount bevinden en die zijn opgegeven in de **storageconnectionstring**. Deze doorloopt de blobs in de containers met tien tegelijk met behulp van de methode [ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) en downloadt deze naar de lokale machine met behulp van de methode [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync).
 De volgende tabel toont de [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) die voor elke blob worden gedefinieerd bij het downloaden ervan.
 
-|Eigenschap|Waarde|Description|
+|Eigenschap|Waarde|Beschrijving|
 |---|---|---|
-|[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Met deze eigenschap wordt de controle uitgeschakeld van de MD5-hash van de inhoud die wordt geüpload. MD5-validatie zorgt voor een snellere overdracht. Maar hiermee wordt de geldigheid of de integriteit van de bestanden die worden overgebracht, niet bevestigd. |
+|[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| waar| Met deze eigenschap wordt de controle uitgeschakeld van de MD5-hash van de inhoud die wordt geüpload. MD5-validatie zorgt voor een snellere overdracht. Maar hiermee wordt de geldigheid of de integriteit van de bestanden die worden overgebracht, niet bevestigd. |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Deze eigenschap bepaalt of een MD5-hash wordt berekend en opgeslagen.   |
 
 De taak `DownloadFilesAsync` wordt in het volgende voorbeeld weergegeven:

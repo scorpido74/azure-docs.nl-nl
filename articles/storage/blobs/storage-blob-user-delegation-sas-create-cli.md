@@ -1,33 +1,35 @@
 ---
 title: Azure CLI gebruiken om een gebruikers delegering SA'S te maken voor een container of BLOB
 titleSuffix: Azure Storage
-description: Meer informatie over het maken van een SAS (preview) voor gebruikers overdracht met Azure Active Directory referenties met behulp van Azure CLI.
+description: Meer informatie over het maken van een gebruiker met Azure Active Directory referenties met behulp van Azure CLI.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 85f49799472c92770cc8a503a5a1be0b496387f7
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e1a81b25042501a166cee122279d21e3702cd419
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892546"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371986"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>Een SAS voor gebruikers overdracht maken voor een container of BLOB met Azure CLI (preview)
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>Een SAS voor gebruikers overdracht maken voor een container of BLOB met de Azure CLI
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-In dit artikel wordt beschreven hoe u Azure Active Directory (Azure AD)-referenties gebruikt voor het maken van een gebruikers delegering SA'S voor een container of BLOB met de Azure CLI (preview).
+In dit artikel wordt beschreven hoe u Azure Active Directory (Azure AD)-referenties gebruikt om een gebruikers delegering SA'S te maken voor een container of BLOB met de Azure CLI.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
 ## <a name="install-the-latest-version-of-the-azure-cli"></a>De nieuwste versie van de Azure CLI installeren
 
 Als u de Azure CLI wilt gebruiken om een SAS met Azure AD-referenties te beveiligen, moet u eerst controleren of u de meest recente versie van Azure CLI hebt geïnstalleerd. Zie [de Azure cli installeren](/cli/azure/install-azure-cli)voor meer informatie over het installeren van de Azure cli.
+
+Als u een gebruikers delegering SA'S wilt maken met behulp van de Azure CLI, moet u versie 2.0.78 of hoger hebben geïnstalleerd. Gebruik de opdracht `az --version` om de geïnstalleerde versie te controleren.
 
 ## <a name="sign-in-with-azure-ad-credentials"></a>Aanmelden met Azure AD-referenties
 

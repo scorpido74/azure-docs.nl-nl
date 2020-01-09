@@ -1,20 +1,15 @@
 ---
-title: Veelgestelde vragen over Azure Service Fabric mesh | Microsoft Docs
+title: Veelgestelde vragen over Azure Service Fabric mesh
 description: Meer informatie over veelgestelde vragen en antwoorden voor Azure Service Fabric net.
-services: service-fabric-mesh
-keywords: ''
-author: chackdan
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.service: service-fabric-mesh
-manager: jeanpaul.connock
-ms.openlocfilehash: edd30dc8799ae9e5410ebc862574d632d09b9483
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 3fe6289ad7616dec97706c2f1779a74c508a0f76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168682"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461992"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Veelgestelde vragen over Service Fabric mesh
 
@@ -47,7 +42,7 @@ Ja. De quota's voor elk abonnement zijn:
 
 De levens duur van een toepassing is momenteel beperkt tot twee dagen. Dit is om het gebruik te maximaliseren van de gratis kernen die aan de preview-versie zijn toegewezen. Als gevolg hiervan is het alleen toegestaan om een bepaalde implementatie gedurende 48 uur continu uit te voeren, waarna de tijd wordt afgesloten.
 
-Als dit het geval is, kunt u valideren dat het systeem is afgesloten door de `az mesh app show`-opdracht uit te voeren in de Azure CLI. Controleer of het retourneert `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
+Als dit het geval is, kunt u valideren dat het systeem is afgesloten door de `az mesh app show` opdracht uit te voeren in de Azure CLI. Controleren of deze retourneert `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
 Bijvoorbeeld: 
 
@@ -75,7 +70,7 @@ Bijvoorbeeld:
 }
 ```
 
-Als u de resource groep wilt verwijderen, gebruikt u de `az group delete <nameOfResourceGroup>` opdracht.
+Als u de resource groep wilt verwijderen, gebruikt u de opdracht `az group delete <nameOfResourceGroup>`.
 
 ## <a name="deployments"></a>Implementaties
 
@@ -86,10 +81,9 @@ Als u ontwikkelt op een update van Windows najaar Crea tors (versie 1709), kunt 
 Als u op een computer met Windows 10 april 2018 (versie 1803) ontwikkelt, kunt u Windows-versie 1709 of Windows-versie 1803 docker-installatie kopieën gebruiken.
 
 De volgende container besturingssysteem installatie kopieën kunnen worden gebruikt voor het implementeren van services:
-
 - Windows-windowsservercore en nano server
     - Windows Server 1709
-    - Windows Server 1803
+    - WindowsServer 1803
     - Windows Server 1809
     - Windows Server 2019 LTSC
 - Linux
@@ -110,7 +104,7 @@ Uitgaande DNS-query's van een container naar de Service Fabric DNS-service kunne
 
 - Gebruik Windows najaar Creators update (versie 1709) of hoger als uw basis container installatie kopie.
 - Als de service naam alleen werkt, probeert u de volledig gekwalificeerde naam: ServiceName. ApplicationName.
-- Voeg in het docker-bestand voor uw service `EXPOSE <port>` toe, waarbij poort de poort is waarop u uw service beschikbaar stelt. Bijvoorbeeld:
+- Voeg in het docker-bestand voor uw service `EXPOSE <port>` toe waarbij de poort de poort is waarop u uw service weergeeft. Bijvoorbeeld:
 
 ```Dockerfile
 EXPOSE 80
@@ -120,7 +114,7 @@ EXPOSE 80
 
 Mogelijk moet u in uw lokale ontwikkel cluster op een andere manier verwijzen naar services dan in azure mesh.
 
-Gebruik `{serviceName}.{applicationName}` in uw lokale ontwikkel cluster. Gebruik `{servicename}` in azure Service Fabric mesh. 
+Gebruik `{serviceName}.{applicationName}`in uw lokale ontwikkel cluster. Gebruik `{servicename}`in azure Service Fabric net. 
 
 Azure mesh biedt momenteel geen ondersteuning voor DNS-omzetting in toepassingen.
 
@@ -130,7 +124,7 @@ Zie voor andere bekende DNS-problemen met het uitvoeren van een Service Fabric-o
 
 De NAT van het ServiceFabric-netwerk verdwijnt wanneer u uw app uitvoert op uw lokale machine. Als u wilt vaststellen of dit is gebeurd, voert u het volgende uit vanaf een opdracht prompt:
 
-`docker network ls` en u ziet of `servicefabric_nat` wordt vermeld.  Als dat niet het geval is, voert u de volgende opdracht uit: `docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
+`docker network ls` en noteer of `servicefabric_nat` wordt vermeld.  Als dat niet het geval is, voert u de volgende opdracht uit: `docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
 
 Hiermee wordt het probleem opgelost, zelfs wanneer de app al lokaal en in een slechte staat wordt geïmplementeerd.
 
@@ -138,7 +132,7 @@ Hiermee wordt het probleem opgelost, zelfs wanneer de app al lokaal en in een sl
 
 U kunt de CPU-Beschik baarheid en de limieten voor alle toepassingen vast. Beperken:
 - Maak een cluster met vijf knoop punten.
-- Verminder het CPU-gebruik in Services in de app die is geïmplementeerd. Wijzig bijvoorbeeld `cpu: 1.0` in het bestand service. yaml van uw service in `cpu: 0.5`
+- Verminder het CPU-gebruik in Services in de app die is geïmplementeerd. Wijzig bijvoorbeeld in het bestand service. yaml van uw service `cpu: 1.0` in `cpu: 0.5`
 
 Meerdere toepassingen kunnen niet worden geïmplementeerd op een cluster met één knoop punt. Beperken:
 - Gebruik een cluster met vijf knoop punten wanneer u meerdere apps implementeert op een lokaal cluster.

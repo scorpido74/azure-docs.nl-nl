@@ -1,93 +1,84 @@
 ---
-title: Problemen met systeemstatusrapporten oplossen | Microsoft Docs
-description: Beschrijving van de statusrapporten dat is verzonden door Azure Service Fabric-onderdelen en hun gebruik voor het oplossen van problemen cluster of problemen
-services: service-fabric
-documentationcenter: .net
+title: Problemen met systeemstatusrapporten oplossen
+description: Hierin worden de status rapporten beschreven die worden verzonden door Azure Service Fabric onderdelen en hun gebruik voor het oplossen van problemen met clusters of toepassingen
 author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: 52574ea7-eb37-47e0-a20a-101539177625
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: b190db401b8ae31582ea31cf59d30f20baccf8c7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060362"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75370372"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Systeemstatusrapporten gebruiken om fouten op te lossen
-Azure Service Fabric-onderdelen bieden systeemstatusrapporten op alle entiteiten in het cluster kant. De [health store](service-fabric-health-introduction.md#health-store) maken en verwijderen van de entiteiten die zijn gebaseerd op systeemrapporten van het. Ook worden ze in een hiërarchie die entiteit interacties worden vastgelegd.
+Azure Service Fabric-onderdelen bieden systeem status rapporten voor alle entiteiten in het cluster direct uit het vak. Met de [Health Store](service-fabric-health-introduction.md#health-store) worden entiteiten gemaakt en verwijderd op basis van de systeem rapporten. Ook worden deze ingedeeld in een-hiërarchie waarin entiteits interacties worden vastgelegd.
 
 > [!NOTE]
-> Meer informatie voor meer informatie over concepten met betrekking tot de gezondheid van, [Service Fabric-statusmodel](service-fabric-health-introduction.md).
+> Meer informatie over gezondheids concepten vindt u in [service Fabric status model](service-fabric-health-introduction.md).
 > 
 > 
 
-Systeemstatusrapporten bieden inzicht in het cluster en de functionaliteit van de toepassing en de vlag problemen. Voor toepassingen en services controleren systeemstatusrapporten of entiteiten worden geïmplementeerd en correct vanuit het perspectief van de Service Fabric zich gedragen. De rapporten bieden niet een statuscontrole van de bedrijfslogica van de service of detectie van processen die niet reageren. Services van de gebruiker kunnen de health-gegevens met informatie die specifiek zijn voor de logica verrijken.
+Systeem status rapporten bieden inzicht in de functionaliteit van het cluster en de toepassing, en markeren problemen. Voor toepassingen en services controleert de systeem status rapporten of de entiteiten zijn geïmplementeerd en goed werken vanuit het Service Fabric perspectief. De rapporten bieden geen status controle van de bedrijfs logica van de service of detectie van processen die niet reageren. Gebruikers services kunnen de status gegevens verrijken met informatie die specifiek is voor hun logica.
 
 > [!NOTE]
-> Statusrapporten die zijn verzonden door de gebruiker watchdogs zijn alleen zichtbaar *nadat* de onderdelen van het systeem een entiteit maken. Wanneer een entiteit wordt verwijderd, worden alle statusrapporten die zijn gekoppeld aan deze automatisch verwijderd door de health-store. Hetzelfde geldt wanneer een nieuw exemplaar van de entiteit is gemaakt. Een voorbeeld is wanneer een nieuw exemplaar van de stateful persistent gemaakte service-replica wordt gemaakt. Alle rapporten die zijn gekoppeld aan het oude exemplaar worden verwijderd en wordt deze verwijderd uit de store.
+> Status rapporten die worden verzonden door gebruikers-watchdog zijn alleen zichtbaar *nadat* de systeem onderdelen een entiteit hebben gemaakt. Wanneer een entiteit wordt verwijderd, worden alle bijbehorende status rapporten automatisch door de Health Store verwijderd. Hetzelfde geldt wanneer er een nieuw exemplaar van de entiteit wordt gemaakt. Een voor beeld hiervan is wanneer een nieuwe stateful persistente service replica-instantie wordt gemaakt. Alle rapporten die zijn gekoppeld aan het oude exemplaar, worden verwijderd en opgeschoond vanuit de Store.
 > 
 > 
 
-Onderdeel van de rapporten worden geïdentificeerd door de bron, die met begint het "**System.** " het voorvoegsel. Watchdogs niet hetzelfde voorvoegsel gebruiken voor hun bronnen, zoals rapporten met ongeldige parameters worden afgewezen.
+De rapporten van systeem onderdelen worden geïdentificeerd door de bron, die begint met het '**systeem '.** 'com.microsoft.intune.mam'. Met watchdog kunnen niet hetzelfde voor voegsel voor hun bronnen worden gebruikt, omdat rapporten met ongeldige para meters worden afgewezen.
 
-Laten we kijken sommige systeemrapporten om te begrijpen wat ze activeert en voor informatie over het corrigeren van de potentiële problemen staan.
+Laten we eens kijken naar enkele systeem rapporten om te begrijpen wat ze activeert en om te leren hoe de potentiële problemen die ze vertegenwoordigen, kunnen worden opgelost.
 
 > [!NOTE]
-> Service Fabric blijft rapporten toevoegen van de voorwaarden die van belang dat u inzicht in wat in het cluster en de toepassingen gebeurt er te verbeteren. Bestaande rapporten kunnen worden uitgebreid met meer informatie om u te helpen het probleem sneller op te lossen.
+> Service Fabric gaat door met het toevoegen van rapporten over belang rijke voor waarden die inzicht in wat er gebeurt in het cluster en de toepassingen. Bestaande rapporten kunnen worden uitgebreid met meer informatie om het probleem sneller op te lossen.
 > 
 > 
 
-## <a name="cluster-system-health-reports"></a>Cluster-systeemstatusrapporten
-De cluster health entiteit wordt automatisch gemaakt in de health-store. Als alles goed werkt, is het geen een rapport.
+## <a name="cluster-system-health-reports"></a>Status rapporten van het cluster systeem
+De cluster status entiteit wordt automatisch gemaakt in de Health Store. Als alles goed werkt, heeft het geen systeem rapport.
 
-### <a name="neighborhood-loss"></a>Het verlies van de
-**System.Federation** meldt een fout wanneer er een het verlies van de wordt gedetecteerd. Het rapport is van afzonderlijke knooppunten en het knooppunt-ID is opgenomen in de eigenschapsnaam. Als één groep in de hele Service Fabric-ring verbroken is, kunt u doorgaans twee gebeurtenissen die staan voor beide zijden van het rapport tussenruimte verwachten. Als er meer groepen verloren gaan, moet u er meer gebeurtenissen zijn.
+### <a name="neighborhood-loss"></a>Verlies van groepen
+**System. Federation** meldt een fout wanneer een groeps verlies wordt gedetecteerd. Het rapport is afkomstig uit afzonderlijke knoop punten en de knoop punt-ID is opgenomen in de naam van de eigenschap. Als er in de hele Service Fabric ring één groep verloren gaat, kunt u doorgaans twee gebeurtenissen verwachten die beide zijden van het hiaat rapport vertegenwoordigen. Als er meer groepen verloren zijn, zijn er meer gebeurtenissen.
 
-Het rapport geeft de time-out voor de globale lease als de time-to-live (TTL). Het rapport is elke helft van de duur van de TTL-waarde voor verzonden als de voorwaarde actief blijft. De gebeurtenis wordt automatisch verwijderd wanneer het verloopt. Verwijderen als verlopen gedrag zorgt ervoor dat het rapport wordt opgeschoond uit het statusarchief goed, zelfs als het reporting-knooppunt niet actief is.
+In het rapport wordt de time-out voor globale leases opgegeven als time-to-Live (TTL). Het rapport wordt elke helft van de TTL-duur opnieuw verzonden, zolang de voor waarde actief blijft. De gebeurtenis wordt automatisch verwijderd wanneer deze verloopt. Als u het gedrag verwijderen-verlopen hebt, zorgt u ervoor dat het rapport op Health Store de juiste wijze wordt opgeruimd, zelfs als het rapportage knooppunt niet beschikbaar is.
 
-* **SourceId**: System.Federation
-* **De eigenschap**: Begint met **netwerkomgeving** en informatie gegeven knooppunt.
-* **Volgende stappen**: Onderzoek waarom de omgeving gaat verloren. Bijvoorbeeld: Controleer de communicatie tussen knooppunten van het cluster.
+* **SourceId**: System. Federation
+* **Eigenschap**: begint met **groep** en bevat knooppunt gegevens.
+* **Volgende stappen**: onderzoek waarom de groep is verbroken. Controleer bijvoorbeeld de communicatie tussen cluster knooppunten.
 
 ### <a name="rebuild"></a>Opnieuw samenstellen
 
-Informatie over de clusterknooppunten worden beheerd door de service Failover Manager (FM). Wanneer FM verliest de gegevens en probeert het verlies van gegevens, is er geen garantie dat deze de meest actuele informatie over de clusterknooppunten heeft. In dit geval wordt het systeem wordt opnieuw opbouwen en System.FM verzamelt gegevens uit alle knooppunten in het cluster om de status opnieuw. Soms vanwege netwerk- of knooppunt problemen kunt opnieuw vastgelopen of vastgelopen. Hetzelfde kan zich voordoen met de service Failover Manager Master (FMM). De FMM is een staatloze systeemservice die wordt bijgehouden van waar alle FMs zich bevinden in het cluster. Primaire van de FMM is altijd het knooppunt met de ID die het dichtst bij 0. Als dit knooppunt wordt verwijderd, wordt opnieuw opbouwen geactiveerd.
-Als een van de vorige voorwaarden gebeurt, **System.FM** of **System.FMM** via een foutenrapport worden gemarkeerd. Het herbouwen van zitten vast in een van twee fasen:
+De Failover Manager (FM)-service beheert informatie over de cluster knooppunten. Wanneer FM gegevens verliest en gegevens verlies oploopt, kan niet worden gegarandeerd dat het de meest bijgewerkte informatie over de cluster knooppunten bevat. In dit geval wordt het systeem opnieuw opgebouwd en worden de gegevens van alle knoop punten in het cluster door System.FM verzameld, zodat de status opnieuw kan worden samengesteld. Als gevolg van netwerk-of knooppunt problemen kan het opnieuw samen stellen vastlopen of vastgelopen raken. Dit kan gebeuren met de Failover Manager Master-service (FMM). De FMM is een stateless systeem service waarmee wordt bijgehouden waar alle FMs in het cluster zich bevinden. De primaire FMM is altijd het knoop punt met de ID die het dichtst in de buurt is van 0. Als dat knoop punt wordt verwijderd, wordt een opnieuw opbouwen geactiveerd.
+Wanneer een van de voor gaande voor waarden plaatsvindt, wordt **System.fm** of **System. FMM** door een fouten rapport gemarkeerd. Opnieuw opbouwen kan in een van de twee fasen vastzitten:
 
-* **Een ogenblik geduld**: FM/FMM wacht tot het broadcast-bericht-antwoord van de andere knooppunten.
+* **Wachten op verzen**ding: er wordt gewacht op een antwoord op het broadcast bericht van de andere knoop punten.
 
-  * **Volgende stappen**: Onderzoek of er een netwerkprobleem verbinding tussen de knooppunten is.
-* **Wachten op knooppunten**: FM/FMM is al een reactie op de uitzending van de andere knooppunten te ontvangen en wordt gewacht tot een reactie van specifieke knooppunten. Het statusrapport geeft een lijst van de knooppunten waarvoor de FM/FMM is wachten op reactie.
-   * **Volgende stappen**: Onderzoek de netwerkverbinding tussen de FM/FMM en de vermelde knooppunten. Elke vermelde knooppunt voor andere mogelijke problemen onderzoeken.
+  * **Volgende stappen**: onderzoeken of er een probleem is met de netwerk verbinding tussen knoop punten.
+* **Wachten op knoop punten**: FM/FMM heeft al een broadcast-antwoord ontvangen van de andere knoop punten en wacht op een antwoord van specifieke knoop punten. Het status rapport geeft een lijst van de knoop punten waarvoor de FM/FMM wacht op een antwoord.
+   * **Volgende stappen**: de netwerk verbinding tussen de FM-FMM en de weer gegeven knoop punten onderzoeken. Onderzoek elk weer gegeven knoop punt op andere mogelijke problemen.
 
-* **SourceID**: System.FM of System.FMM
-* **De eigenschap**: Opnieuw opbouwen.
-* **Volgende stappen**: Onderzoek de netwerkverbinding tussen de knooppunten, evenals de status van een specifieke knooppunten die worden vermeld in de beschrijving van het statusrapport.
+* **Sourceid**: System.fm of System. FMM
+* **Eigenschap**: opnieuw opbouwen.
+* **Volgende stappen**: onderzoek de netwerk verbinding tussen de knoop punten en de status van alle specifieke knoop punten die worden vermeld in de beschrijving van het status rapport.
 
-### <a name="seed-node-status"></a>Status van de seed-knooppunt
-**System.FM** rapporteert het niveau Waarschuwing van een cluster als een seed-knooppunten niet in orde zijn. Seed-knooppunten zijn de knooppunten die de beschikbaarheid van het onderliggende cluster. Deze knooppunten ervoor zorgen dat het cluster blijft van tot stand brengen van leases met andere knooppunten en fungeren als tiebreakers tijdens bepaalde soorten netwerkfouten. Als een meerderheid van de seed-knooppunten zijn niet beschikbaar in het cluster en ze niet weer worden gebracht, wordt het cluster automatisch uitgeschakeld. 
+### <a name="seed-node-status"></a>Status van Seed-knoop punt
+**System.fm** rapporteert een waarschuwing op cluster niveau als sommige Seed-knoop punten een slechte status hebben. Seed-knoop punten zijn de knoop punten die de beschik baarheid van het onderliggende cluster behouden. Deze knoop punten helpen ervoor te zorgen dat het cluster actief blijft door leases te maken met andere knoop punten en te fungeren als tiebreakers tijdens bepaalde soorten netwerk storingen. Als een meerderheid van de Seed-knoop punten in het cluster niet actief is en deze niet meer wordt teruggebracht, wordt het cluster automatisch afgesloten. 
 
-Een seed-knooppunt is niet in orde als de knooppuntstatus niet actief, verwijderd of onbekend is.
-Het rapport waarschuwing voor de status van de seed-knooppunt worden alle slechte seed-knooppunten met gedetailleerde informatie.
+Een Seed-knoop punt heeft een slechte status als de knooppunt status niet actief, verwijderd of onbekend is.
+In het waarschuwings rapport voor de status van het Seed-knoop punt worden alle slechte Seed-knoop punten weer gegeven met gedetailleerde informatie.
 
-* **SourceID**: System.FM
-* **De eigenschap**: SeedNodeStatus
-* **Volgende stappen**: Als deze waarschuwing wordt weergegeven in het cluster, volg de onderstaande instructies om op te lossen: Voor een cluster met Service Fabric versie 6.5 of hoger: Voor Service Fabric-cluster op Azure, nadat de seed-knooppunt uitvalt, probeert Service Fabric automatisch naar een niet-seed-knooppunt te wijzigen. Dit gebeurt, moet u ervoor dat is het aantal niet-seed-knooppunten in het primaire knooppunttype groter of gelijk aan het aantal omlaag seed-knooppunten. Indien nodig, kunt u meer knooppunten toevoegen aan het primaire knooppunttype om dit te bereiken.
-Het kan enige tijd om het probleem te verhelpen duren, afhankelijk van de status van het cluster. Zodra deze actie is uitgevoerd, wordt het rapport waarschuwing automatisch gewist.
+* **Sourceid**: System.fm
+* **Eigenschap**: SeedNodeStatus
+* **Volgende stappen**: als deze waarschuwing in het cluster wordt weer gegeven, volgt u de onderstaande instructies om het probleem op te lossen: voor een cluster met Service Fabric versie 6,5 of hoger service Fabric: als het Seed-knoop punt uitvalt, probeert service Fabric het cluster automatisch te wijzigen in een niet-Seed-knoop punt. Als u dit wilt doen, moet u ervoor zorgen dat het aantal niet-Seed-knoop punten in het primaire knooppunt type groter is dan of gelijk is aan het aantal knoop punten van de lagere seeding. Indien nodig voegt u meer knoop punten toe aan het primaire knooppunt type om dit te doen.
+Afhankelijk van de status van het cluster kan het enige tijd duren om het probleem op te lossen. Zodra dit is gebeurd, wordt het waarschuwings rapport automatisch gewist.
 
-Voor Service Fabric-cluster voor zelfstandige, schakelt u het rapport waarschuwing moeten alle seed-knooppunten worden in orde. Afhankelijk van waarom seed-knooppunten niet in orde zijn, verschillende acties die moeten worden uitgevoerd: als de seed-knooppunt is naar beneden, en gebruikers nodig hebben om te openen dat seed-knooppunt; Als de seed-knooppunt verwijderd of onbekend, deze seed-knooppunt is [moet worden verwijderd uit het cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes).
-Het rapport waarschuwing wordt automatisch gewist wanneer alle seed-knooppunten in orde geworden.
+Om het waarschuwings rapport te wissen voor Service Fabric zelfstandige cluster, moeten alle Seed-knoop punten in orde zijn. Afhankelijk van waarom Seed-knoop punten niet in orde zijn, moeten er verschillende acties worden uitgevoerd: als het Seed-knoop punt niet beschikbaar is, moeten gebruikers dat Seed-knoop punt omhoog kunnen zetten. Als het Seed-knoop punt wordt verwijderd of onbekend, moet dit Seed-knoop punt [uit het cluster worden verwijderd](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes).
+Het waarschuwings rapport wordt automatisch gewist wanneer alle Seed-knoop punten in orde zijn.
 
-Voor een cluster met Service Fabric-versie die ouder zijn dan 6.5: In dit geval moet het rapport waarschuwing handmatig worden gewist. **Gebruikers moeten controleren of alle seed-knooppunten in orde worden voordat het rapport uit te schakelen**: als de seed-knooppunt niet actief is, moeten gebruikers om te openen dat seed-knooppunt; als de seed-knooppunt verwijderd of onbekend is, dat seed-knooppunt moet worden verwijderd uit het cluster.
-Nadat alle seed-knooppunten in orde is worden, gebruikt u de volgende opdracht vanuit Powershell aan [schakelt u het rapport waarschuwing](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport):
+Voor een cluster met Service Fabric oudere versie dan 6,5: in dit geval moet het waarschuwings rapport hand matig worden gewist. **Gebruikers moeten ervoor zorgen dat alle Seed-knoop punten in orde zijn voordat het rapport wordt gewist**: als het Seed-knoop punt niet beschikbaar is, moeten gebruikers dat Seed-knoop punt omhoog kunnen zetten. als het Seed-knoop punt wordt verwijderd of onbekend, moet het Seed-knoop punt uit het cluster worden verwijderd.
+Nadat alle Seed-knoop punten in orde zijn geworden, gebruikt u de volgende opdracht uit Power shell om [het waarschuwings rapport te wissen](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport):
 
 ```powershell
 PS C:\> Send-ServiceFabricClusterHealthReport -SourceId "System.FM" -HealthProperty "SeedNodeStatus" -HealthState OK
@@ -125,37 +116,37 @@ HealthEvents          :
 
 
 ### <a name="certificate-expiration"></a>Certificaat verloopt
-**System.FabricNode** rapporten van een waarschuwing wanneer certificaten die worden gebruikt door het knooppunt bijna is verlopen zijn. Er zijn drie certificaten per knooppunt: **Certificate_cluster**, **Certificate_server**, en **Certificate_default_client**. Wanneer de vervaldatum ten minste twee weken is, is de status van de rapport OK. Wanneer de vervaldatum binnen twee weken is, is het rapporttype dat een waarschuwing. TTL-waarde van deze gebeurtenissen is oneindig, en worden ze verwijderd als een knooppunt de cluster verlaat.
+**System. FabricNode** meldt een waarschuwing wanneer de certificaten die worden gebruikt door het knoop punt bijna verlopen. Er zijn drie certificaten per knoop punt: **Certificate_cluster**, **Certificate_server**en **Certificate_default_client**. Wanneer de verval datum ten minste twee weken duurt, is de status van het rapport OK. Wanneer de verloop tijd binnen twee weken ligt, is het rapport type een waarschuwing. De TTL van deze gebeurtenissen is oneindig en wordt verwijderd wanneer een knoop punt het cluster verlaat.
 
-* **SourceId**: System.FabricNode
-* **De eigenschap**: Begint met **certificaat** en bevat meer informatie over het certificaattype.
-* **Volgende stappen**: De certificaten bijwerken als ze bijna is verlopen zijn.
+* **SourceId**: System. FabricNode
+* **Eigenschap**: begint met **certificaat** en bevat meer informatie over het certificaat type.
+* **Volgende stappen**: werk de certificaten bij als deze bijna verlopen.
 
-### <a name="load-capacity-violation"></a>Schending van de Load-capaciteit
-De Service Fabric Load Balancer rapporteert een waarschuwing wanneer er een schending van de capaciteit knooppunt wordt gedetecteerd.
+### <a name="load-capacity-violation"></a>Schending van laad capaciteit
+De Service Fabric Load Balancer een waarschuwing meldt wanneer een overschrijding van de capaciteit van een knoop punt wordt gedetecteerd.
 
-* **SourceId**: System.PLB
-* **De eigenschap**: Begint met **capaciteit**.
-* **Volgende stappen**: Controleer de opgegeven metrische gegevens en de huidige capaciteit weergeven op het knooppunt.
+* **SourceId**: System. PLB
+* **Eigenschap**: begint met **capaciteit**.
+* **Volgende stappen**: Controleer de gegeven metrische gegevens en Bekijk de huidige capaciteit van het knoop punt.
 
-### <a name="node-capacity-mismatch-for-resource-governance-metrics"></a>Knooppunt capaciteit komt niet overeen voor metrische gegevens voor het beheer van resources
-System.Hosting rapporteert een waarschuwing als knooppuntcapaciteit gedefinieerd in het clustermanifest groter is dan de werkelijke knooppuntcapaciteiten voor resource governance metrische gegevens (geheugen en CPU-kernen) zijn. Een statusrapport wordt weergegeven wanneer het eerste pakket van de service die gebruikmaakt van [resourcebeheer](service-fabric-resource-governance.md) registreert op een opgegeven knooppunt.
+### <a name="node-capacity-mismatch-for-resource-governance-metrics"></a>De capaciteit van het knoop punt komt niet overeen voor de metrische gegevens voor resource beheer
+System. hosting rapporteert een waarschuwing als gedefinieerde knooppunt capaciteit in het cluster manifest groter is dan de capaciteit van het werkelijke knoop punt voor de metrische gegevens van de resource governance (geheugen en CPU-kernen). Er wordt een status rapport weer gegeven wanneer het eerste service pakket dat gebruikmaakt van [resource governance](service-fabric-resource-governance.md) -registers op een opgegeven knoop punt.
 
-* **SourceId**: System.Hosting
-* **De eigenschap**: **ResourceGovernance**.
-* **Volgende stappen**: Dit probleem kan een probleem zijn, omdat voor service-pakketten worden niet afgedwongen zoals verwacht en [resourcebeheer](service-fabric-resource-governance.md) werkt niet goed. Het clustermanifest bijwerken met de juiste knooppuntcapaciteiten voor deze metrische gegevens, of geen geeft u deze en laat Service Fabric automatisch detecteren van beschikbare resources.
+* **SourceId**: System. hosting
+* **Eigenschap**: **ResourceGovernance**.
+* **Volgende stappen**: dit probleem kan een probleem zijn omdat service pakketten niet worden afgedwongen zoals verwacht en [resource governance](service-fabric-resource-governance.md) niet goed werkt. Werk het cluster manifest bij met de juiste knooppunt capaciteit voor deze metrische gegevens of geef ze niet op en laat Service Fabric automatisch beschik bare bronnen detecteren.
 
-## <a name="application-system-health-reports"></a>Toepassing systeemstatusrapporten
-System.CM, dat de Cluster Manager-service vertegenwoordigt, is de instantie van die informatie over een toepassing beheert.
+## <a name="application-system-health-reports"></a>Status rapporten van het toepassings systeem
+System.CM, dat de Cluster Manager-service vertegenwoordigt, is de instantie die informatie over een toepassing beheert.
 
-### <a name="state"></a>Status
-System.CM rapporteert als OK wanneer de toepassing heeft gemaakt of bijgewerkt. De store health informeert wanneer de toepassing wordt verwijderd, zodat het kan worden verwijderd uit de store.
+### <a name="state"></a>Staat
+System.CM rapporten als OK wanneer de toepassing is gemaakt of bijgewerkt. Er wordt een melding van de Health Store wanneer de toepassing wordt verwijderd, zodat deze uit de Store kan worden verwijderd.
 
-* **SourceId**: System.CM
-* **De eigenschap**: Status.
-* **Volgende stappen**: Als de toepassing is gemaakt of bijgewerkt, moet deze het statusrapport Clusterbeheer bevatten. Controleer de status van de toepassing door een query uitvoert. Gebruik bijvoorbeeld de PowerShell-cmdlet **Get-ServiceFabricApplication - ApplicationName** *applicationName*.
+* **SourceId**: System.cm
+* **Eigenschap**: status.
+* **Volgende stappen**: als de toepassing is gemaakt of bijgewerkt, moet deze het status rapport van het cluster beheer bevatten. Als dat niet het geval is, controleert u de status van de toepassing door een query uit te geven. Gebruik bijvoorbeeld de Power shell-cmdlet **Get-ServiceFabricApplication-ApplicationName** *applicationnaam*.
 
-Het volgende voorbeeld ziet u de gebeurtenis status van de **fabric: / WordCount** toepassing:
+In het volgende voor beeld ziet u de status gebeurtenis in de toepassing **Fabric:/WordCount** :
 
 ```powershell
 PS C:\> Get-ServiceFabricApplicationHealth fabric:/WordCount -ServicesFilter None -DeployedApplicationsFilter None -ExcludeHealthStatistics
@@ -178,16 +169,16 @@ HealthEvents                    :
                                   Transitions           : Error->Ok = 7/13/2017 5:57:05 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-## <a name="service-system-health-reports"></a>Service-systeemstatusrapporten
-System.FM, die staat voor de Failover Manager-service, wordt de instantie van die informatie over services beheert.
+## <a name="service-system-health-reports"></a>Service systeem status rapporten
+System.FM, dat de Failover Manager-service vertegenwoordigt, is de instantie die informatie over services beheert.
 
-### <a name="state"></a>Status
-System.FM rapporteert als OK wanneer de service is gemaakt. Wordt de entiteit in health store verwijderd wanneer de service is verwijderd.
+### <a name="state"></a>Staat
+System.FM rapporteert als OK wanneer de service is gemaakt. De entiteit wordt uit het Health Store verwijderd wanneer de service wordt verwijderd.
 
-* **SourceId**: System.FM
-* **De eigenschap**: Status.
+* **SourceId**: System.fm
+* **Eigenschap**: status.
 
-Het volgende voorbeeld ziet u de gebeurtenis status van de service **fabric: / WordCount/WordCountWebService**:
+In het volgende voor beeld ziet u de status gebeurtenis op de service **Fabric:/WordCount/WordCountWebService**:
 
 ```powershell
 PS C:\> Get-ServiceFabricServiceHealth fabric:/WordCount/WordCountWebService -ExcludeHealthStatistics
@@ -213,36 +204,36 @@ HealthEvents          :
                         Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="service-correlation-error"></a>Correlatie-servicefout
-**System.PLB** meldt een fout wanneer wordt gedetecteerd dat het bijwerken van een service met een andere service die wordt gemaakt van een affiniteitsketen worden gecorreleerd. Het rapport is uitgeschakeld als een geslaagde update gebeurt.
+### <a name="service-correlation-error"></a>Fout met Service correlatie
+**System. PLB** meldt een fout wanneer wordt gedetecteerd dat het bijwerken van een service is gecorreleerd met een andere service die een affiniteits keten maakt. Het rapport wordt gewist wanneer een geslaagde update plaatsvindt.
 
-* **SourceId**: System.PLB
-* **De eigenschap**: **ServiceDescription**.
-* **Volgende stappen**: Controleer de servicebeschrijvingen van gecorreleerde.
+* **SourceId**: System. PLB
+* **Eigenschap**: **ServiceDescription**.
+* **Volgende stappen**: Controleer de gecorreleerde Service beschrijvingen.
 
-## <a name="partition-system-health-reports"></a>Partitie systeemstatusrapporten
-System.FM, die staat voor de Failover Manager-service, wordt de instantie van die informatie over servicepartities beheert.
+## <a name="partition-system-health-reports"></a>Systeem status rapporten partitioneren
+System.FM, dat de Failover Manager-service vertegenwoordigt, is de instantie die informatie over service partities beheert.
 
-### <a name="state"></a>Status
-System.FM rapporten als OK wanneer de partitie is gemaakt en in orde is. Wordt de entiteit in health store verwijderd wanneer de partitie wordt verwijderd.
+### <a name="state"></a>Staat
+System.FM rapporten als OK wanneer de partitie is gemaakt en in orde is. De entiteit wordt uit het Health Store verwijderd wanneer de partitie wordt verwijderd.
 
-Als de partitie lager dan het aantal minimale replica's is, wordt een fout. Als de partitie niet lager dan het aantal minimale replica's is, maar deze lager dan het aantal replica's van doel is, wordt een waarschuwing. Als de partitie sprake van quorumverlies is, rapporteert System.FM een fout.
+Als de partitie minder dan het minimale aantal replica's bevat, wordt er een fout melding weer gegeven. Als de partitie niet kleiner is dan het minimum aantal replica's, maar deze lager is dan het aantal doel replica's, wordt een waarschuwing weer gegeven. Als de partitie zich in quorum verlies bevindt, wordt er een fout melding weer gegeven in System.FM.
 
-Andere gebeurtenissen die aandacht vereisen, wordt er een waarschuwing bevatten wanneer de nieuwe configuratie langer duurt dan verwacht en wanneer de build langer duurt dan verwacht. De verwachte tijden voor de build en herconfiguratie kunnen geconfigureerd worden op basis van de service-scenario's. Bijvoorbeeld, als een service een terabyte aan status, zoals Azure SQL Database heeft, langer de build duurt dan voor een service met een kleine hoeveelheid staat.
+Andere belang rijke gebeurtenissen bevatten een waarschuwing wanneer de herconfiguratie langer duurt dan verwacht en wanneer de build langer duurt dan verwacht. De verwachte tijden voor de build en herconfiguratie kunnen worden geconfigureerd op basis van de service scenario's. Als een service bijvoorbeeld een status van terabyte heeft, zoals Azure SQL Database, duurt het maken langer dan voor een service met een kleine hoeveelheid status.
 
-* **SourceId**: System.FM
-* **De eigenschap**: Status.
-* **Volgende stappen**: Als de status niet OK is, is het mogelijk dat sommige replica's niet zijn gemaakt, geopend, of gepromoveerd tot primaire of secundaire correct. 
+* **SourceId**: System.fm
+* **Eigenschap**: status.
+* **Volgende stappen**: als de status niet OK is, is het mogelijk dat er geen replica's zijn gemaakt, geopend of gepromoveerd naar primair of secundair. 
 
-Als de beschrijving van de beschrijving van quorumverlies, klikt u vervolgens weer het gedetailleerde statusrapport voor replica's die niet beschikbaar zijn bestudeerd en maak een back-up van helpt om de partitie worden gezet online.
+Als in de beschrijving quorum verlies wordt beschreven, kunt u het gedetailleerde status rapport controleren voor replica's die niet beschikbaar zijn en ze back-ups maken om de partitie weer online te zetten.
 
-Als de beschrijving van de beschrijving van een partitie vastgelopen [herconfiguratie](service-fabric-concepts-reconfiguration.md), en vervolgens het statusrapport op de primaire replica aanvullende informatie bevat.
+Als in de beschrijving een partitie wordt beschreven die is vastgelopen in de [herconfiguratie](service-fabric-concepts-reconfiguration.md), bevat het status rapport van de primaire replica aanvullende informatie.
 
-Voor andere statusrapporten System.FM zou er rapporten op de replica's of de partitie of -service van andere onderdelen van het systeem. 
+Voor andere System.FM-status rapporten zou er een rapport zijn over de replica's of de partitie of service van andere systeem onderdelen. 
 
-De volgende voorbeelden worden enkele van deze rapporten beschreven. 
+In de volgende voor beelden worden enkele van deze rapporten beschreven. 
 
-Het volgende voorbeeld ziet u een partitie in orde:
+In het volgende voor beeld ziet u een gezonde partitie:
 
 ```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountWebService | Get-ServiceFabricPartitionHealth -ExcludeHealthStatistics -ReplicasFilter None
@@ -264,7 +255,7 @@ HealthEvents          :
                         Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-Het volgende voorbeeld ziet de status van een partitie die lager is dan het aantal doel-replica's. De volgende stap is om op te halen van de Partitiebeschrijving, die laat zien hoe deze geconfigureerd: **MinReplicaSetSize** is drie en **TargetReplicaSetSize** zeven. Afgeleverde het aantal knooppunten in het cluster, die in dit geval vijf is. Worden dus in dit geval twee replica's kunnen niet geplaatst, omdat het beoogd aantal replica's hoger is dan het aantal knooppunten dat beschikbaar is.
+In het volgende voor beeld ziet u de status van een partitie die lager is dan het aantal doel replica's. De volgende stap bestaat uit het ophalen van de beschrijving van de partitie, die laat zien hoe deze is geconfigureerd: **MinReplicaSetSize** is drie en **TargetReplicaSetSize** is zeven. Vervolgens wordt het aantal knoop punten in het cluster opgehaald, wat in dit geval vijf is. In dit geval kunnen er geen twee replica's worden geplaatst, omdat het doel aantal replica's hoger is dan het aantal beschik bare knoop punten.
 
 ```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasFilter None -ExcludeHealthStatistics
@@ -342,7 +333,7 @@ PS C:\> @(Get-ServiceFabricNode).Count
 5
 ```
 
-Het volgende voorbeeld ziet de status van een partitie die vastgelopen in herconfiguratie vanwege de gebruiker niet naleven van de annulering token in de **RunAsync** methode. Het statusrapport van alle replica's gemarkeerd als primair (P) onderzoeken kan helpen om in te zoomen op het probleem verder.
+In het volgende voor beeld ziet u de status van een partitie die is vastgelopen in de herconfiguratie omdat de gebruiker niet het annulerings token in de **RunAsync** -methode heeft nageleefd. Het onderzoeken van het status rapport van een replica die is gemarkeerd als primair (P) kan helpen inzoomen op het probleem.
 
 ```powershell
 PS C:\utilities\ServiceFabricExplorer\ClientPackage\lib> Get-ServiceFabricPartitionHealth 0e40fd81-284d-4be4-a665-13bc5a6607ec -ExcludeHealthStatistics 
@@ -374,7 +365,7 @@ HealthEvents          :
                         IsExpired             : False
                         Transitions           : Ok->Warning = 8/27/2017 3:43:32 AM, LastError = 1/1/0001 12:00:00 AM
 ```
-Dit rapport health toont de status van de replica's van de partitie die momenteel herconfiguratie uitgevoerd: 
+In dit status rapport wordt de status weer gegeven van de replica's van de partitie die opnieuw wordt geconfigureerd: 
 
 ```
   P/S Ready Node1 131482789658160654
@@ -382,31 +373,31 @@ Dit rapport health toont de status van de replica's van de partitie die momentee
   S/S Ready Node3 131482789688598468
 ```
 
-Het statusrapport bevat voor elke replica:
-- Rol van de vorige configuratie
-- Configuratie van de huidige rol
-- [Replicastatus](service-fabric-concepts-replica-lifecycle.md)
-- Knooppunt waarop de replica wordt uitgevoerd
+Voor elke replica bevat het status rapport:
+- Vorige configuratie functie
+- Huidige configuratie functie
+- [Replica status](service-fabric-concepts-replica-lifecycle.md)
+- Knoop punt waarop de replica wordt uitgevoerd
 - Replica-ID
 
-In geval als in het voorbeeld verder onderzoek nodig. De status van elke afzonderlijke replica die beginnen met de replica's gemarkeerd als onderzoeken `Primary` en `Secondary` (131482789658160654 en 131482789688598467) in het vorige voorbeeld.
+In het geval van het voor beeld is verder onderzoek nodig. Onderzoek de status van elke afzonderlijke replica, te beginnen met de replica's die zijn gemarkeerd als `Primary` en `Secondary` (131482789658160654 en 131482789688598467) in het vorige voor beeld.
 
-### <a name="replica-constraint-violation"></a>Schending van de replica-beperking
-**System.PLB** rapporteert een waarschuwing als er een replica-Beperkingsfout detecteert en alle partitiereplica's kan niet worden geplaatst. Details van het rapport weergeven welke beperkingen en eigenschappen te voorkomen dat de plaatsing van de replica.
+### <a name="replica-constraint-violation"></a>Schending van replica beperkingen
+**System. PLB** meldt een waarschuwing als er een schending van de replica beperking wordt gedetecteerd en niet alle partitie replica's kunnen worden geplaatst. De rapport Details laten zien welke beperkingen en eigenschappen de replica plaatsing verhinderen.
 
-* **SourceId**: System.PLB
-* **De eigenschap**: Begint met **ReplicaConstraintViolation**.
+* **SourceId**: System. PLB
+* **Eigenschap**: begint met **ReplicaConstraintViolation**.
 
-## <a name="replica-system-health-reports"></a>Replica systeemstatusrapporten
-**System.RA**, die het onderdeel reconfiguration agent vertegenwoordigt de instantie voor de replicastatus van de is.
+## <a name="replica-system-health-reports"></a>Status rapporten van het replica systeem
+**System. ra**, dat het onderdeel reconfiguratie agent vertegenwoordigt, is de instantie voor de replica status.
 
-### <a name="state"></a>Status
-System.RA rapporten OK wanneer de replica is gemaakt.
+### <a name="state"></a>Staat
+System. RA-rapporten OK wanneer de replica is gemaakt.
 
-* **SourceId**: System.RA
-* **De eigenschap**: Status.
+* **SourceId**: System. ra
+* **Eigenschap**: status.
 
-Het volgende voorbeeld ziet u een goede replica:
+In het volgende voor beeld ziet u een gezonde replica:
 
 ```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricReplica | where {$_.ReplicaRole -eq "Primary"} | Get-ServiceFabricReplicaHealth
@@ -429,15 +420,15 @@ HealthEvents          :
 ```
 
 ### <a name="replicaopenstatus-replicaclosestatus-replicachangerolestatus"></a>ReplicaOpenStatus, ReplicaCloseStatus, ReplicaChangeRoleStatus
-Deze eigenschap wordt gebruikt om aan te geven waarschuwingen of fouten bij het openen van een replica, sluiten van een replica of een replica van de ene rol naar de andere worden overgezet. Zie voor meer informatie, [levenscyclus van Replica](service-fabric-concepts-replica-lifecycle.md). De fouten mogelijk uitzonderingen uit de API-aanroepen of crashes van het hostproces van de service gedurende deze tijd. Voor storingen als gevolg van API-aanroepen van C# Service Fabric-code wordt de uitzondering en de stack-trace toegevoegd aan het statusrapport.
+Deze eigenschap wordt gebruikt om waarschuwingen of fouten aan te geven bij het openen van een replica, het sluiten van een replica of het overstappen van een replica van de ene rol naar een andere. Zie voor meer informatie de [levens cyclus van replica's](service-fabric-concepts-replica-lifecycle.md). De fouten kunnen uitzonde ringen zijn die worden veroorzaakt door de API-aanroepen of tijdens de uitvoering van het proces van de servicehost. Als gevolg van de API-aanroepen van C# code, voegt service Fabric de uitzonde ring en Stack tracering toe aan het status rapport.
 
-Deze waarschuwingen worden gegenereerd na het opnieuw proberen van de actie lokaal een aantal keren (afhankelijk van het beleid). Service Fabric pogingen de actie tot een drempel voor maximum aantal. Nadat de drempelwaarde is bereikt, kan het proberen om te fungeren als u wilt de situatie oplossen. Dit kan leiden tot deze waarschuwingen wordt gewist als er wordt opgegeven op de actie op dit knooppunt. Bijvoorbeeld, als een replica is mislukt om te openen op een knooppunt, Service Fabric leidt tot een status-waarschuwing. Als de replica mislukken blijft te openen, fungeert de Service Fabric om te herstellen. Deze actie kan betrekking hebben op dezelfde bewerking op een ander knooppunt probeert. Dit zorgt ervoor dat de waarschuwing is gegenereerd voor deze replica worden gewist. 
+Deze waarschuwingen worden gegenereerd nadat de actie lokaal is een aantal keer opnieuw geprobeerd (afhankelijk van het beleid). Service Fabric de actie opnieuw wordt uitgevoerd tot een maximum drempel. Nadat de maximum drempel waarde is bereikt, kan deze proberen om de situatie te corrigeren. Deze poging kan ervoor zorgen dat deze waarschuwingen worden gewist, omdat de actie op dit knoop punt wordt weer gegeven. Als een replica bijvoorbeeld niet kan worden geopend op een knoop punt, wordt door Service Fabric een status waarschuwing gegenereerd. Als de replica nog steeds niet kan worden geopend, Service Fabric op zelf herstellen. Bij deze actie is het mogelijk dat u dezelfde bewerking probeert uit te voeren op een ander knoop punt. Deze poging zorgt ervoor dat de waarschuwing voor deze replica wordt gewist. 
 
-* **SourceId**: System.RA
-* **De eigenschap**: **ReplicaOpenStatus**, **ReplicaCloseStatus**, en **ReplicaChangeRoleStatus**.
-* **Volgende stappen**: De code van de onderzoeken of crashdumps om te bepalen waarom de bewerking is mislukt.
+* **SourceId**: System. ra
+* **Eigenschap**: **ReplicaOpenStatus**, **ReplicaCloseStatus**en **ReplicaChangeRoleStatus**.
+* **Volgende stappen**: onderzoek de service code of de crash dumps om te bepalen waarom de bewerking mislukt.
 
-Het volgende voorbeeld ziet de status van een replica die wordt ArgumentOutOfRangeException `TargetInvocationException` uit de open-methode. De beschrijving bevat de storingspunt **IStatefulServiceReplica.Open**, het uitzonderingstype **TargetInvocationException**, en de stack-trace.
+In het volgende voor beeld ziet u de status van een replica die `TargetInvocationException` van de open methode wordt gegenereerd. De beschrijving bevat het punt van de fout, het **IStatefulServiceReplica. Open**, het uitzonderings type **TargetInvocationException**en de stack-tracering.
 
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 337cf1df-6cab-4825-99a9-7595090c0b1b -ReplicaOrInstanceId 131483509874784794
@@ -488,7 +479,7 @@ Exception has been thrown by the target of an invocation.
                         Transitions           : Error->Warning = 8/27/2017 11:43:21 PM, LastOk = 1/1/0001 12:00:00 AM                        
 ```
 
-Het volgende voorbeeld ziet u een replica die voortdurend gecrasht tijdens sluiten:
+In het volgende voor beeld ziet u een replica die voortdurend vastloopt tijdens het sluiten:
 
 ```powershell
 C:>Get-ServiceFabricReplicaHealth -PartitionId dcafb6b7-9446-425c-8b90-b3fdf3859e64 -ReplicaOrInstanceId 131483565548493142
@@ -519,21 +510,21 @@ HealthEvents          :
 ```
 
 ### <a name="reconfiguration"></a>Herconfiguratie
-Deze eigenschap wordt gebruikt om aan te geven bij het uitvoeren van een replica een [herconfiguratie](service-fabric-concepts-reconfiguration.md) detecteert dat de herconfiguratie is vastgelopen of vastgelopen. Dit statusrapport kan zijn op de waarvan de huidige rol is primair, behalve in het geval van een primaire herconfiguratie wisselen waar het kan zijn op de replica die wordt gedegradeerd van primaire naar de actieve secundaire replica.
+Deze eigenschap wordt gebruikt om aan te geven wanneer een replica die een [herconfiguratie](service-fabric-concepts-reconfiguration.md) uitvoert, detecteert dat de herconfiguratie is vastgelopen of vastgelopen. Dit status rapport kan zich op de replica bevindt waarvan de huidige rol primair is, behalve in het geval van een primaire herconfiguratie van wisselen, waarbij het mogelijk is op de replica die wordt gedegradeerd van primair naar actief secundair.
 
-De nieuwe configuratie kan blijven steken voor een van de volgende redenen:
+De herconfiguratie kan een van de volgende oorzaken hebben:
 
-- Een actie voor de lokale replica, dezelfde replica als het uitvoeren van de nieuwe configuratie, wordt niet voltooid. In dit geval u wilt onderzoeken in de statusrapporten op deze replica uit de andere onderdelen, System.RAP of System.RE, mogelijk bevatten aanvullende informatie.
+- Een actie op de lokale replica, dezelfde replica als de naam die de herconfiguratie uitvoert, wordt niet voltooid. In dit geval kunt u de status rapporten voor deze replica van andere onderdelen, System. RAP of System.RE, extra informatie geven.
 
-- Een actie wordt niet voltooid op een externe replica. Replica's waarvoor acties in behandeling zijn, worden weergegeven in het statusrapport. Verder onderzoek moet worden uitgevoerd op statusrapporten voor deze externe replica's. Er kan ook worden communicatieproblemen tussen dit knooppunt en het externe knooppunt.
+- Een actie kan niet worden voltooid op een externe replica. Replica's waarvoor acties in behandeling zijn, worden weer gegeven in het status rapport. Verder onderzoek moet worden uitgevoerd op status rapporten voor deze externe replica's. Er kunnen ook communicatie problemen tussen dit knoop punt en het externe knoop punt optreden.
 
-In zeldzame gevallen kan de nieuwe configuratie zijn vastgelopen vanwege communicatie of andere problemen tussen dit knooppunt en de Failover Manager-service.
+In zeldzame gevallen kan de herconfiguratie vastlopen vanwege communicatie of andere problemen tussen dit knoop punt en de Failover Manager service.
 
-* **SourceId**: System.RA
-* **De eigenschap**: Herconfiguratie.
-* **Volgende stappen**: Lokale of externe replica's, afhankelijk van de beschrijving van het statusrapport onderzoeken.
+* **SourceId**: System. ra
+* **Eigenschap**: opnieuw configureren.
+* **Volgende stappen**: lokale of externe replica's onderzoeken, afhankelijk van de beschrijving van het status rapport.
 
-Het volgende voorbeeld ziet een statusrapport waar een herconfiguratie is vastgelopen op de lokale replica's. In dit voorbeeld wordt wordt het vanwege een service niet naleven van de token van de annulering.
+In het volgende voor beeld ziet u een status rapport waarin een herconfiguratie is vastgelopen op de lokale replica. In dit voor beeld wordt het veroorzaakt door een service die het annulerings token niet benadert.
 
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 9a0cedee-464c-4603-abbc-1cf57c4454f3 -ReplicaOrInstanceId 131483600074836703
@@ -562,7 +553,7 @@ HealthEvents          :
                         Transitions           : Error->Warning = 8/28/2017 2:13:57 AM, LastOk = 1/1/0001 12:00:00 AM
 ```
 
-Het volgende voorbeeld wordt een status rapporteren wanneer een herconfiguratie is vastgelopen wachten op een reactie van de twee externe replica's. In dit voorbeeld worden drie replica's in de partitie, met inbegrip van de huidige primaire. 
+In het volgende voor beeld ziet u een status rapport waarbij een herconfiguratie is vastgelopen op een reactie van twee externe replica's. In dit voor beeld zijn er drie replica's in de partitie, met inbegrip van de huidige primaire. 
 
 ```Powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId  579d50c6-d670-4d25-af70-d706e4bc19a2 -ReplicaOrInstanceId 131483956274977415
@@ -594,32 +585,32 @@ HealthEvents          :
                         Transitions           : Error->Warning = 8/28/2017 12:07:37 PM, LastOk = 1/1/0001 12:00:00 AM
 ```
 
-Dit rapport health ziet u dat de herconfiguratie is vastgelopen wachten op een reactie van twee replica's: 
+In dit status rapport ziet u dat de herconfiguratie is vastgelopen tijdens het wachten op een reactie van twee replica's: 
 
 ```
     P/I Down 40 131483956244554282
     S/S Down 20 131483956274972403
 ```
 
-Voor elke replica wordt verkregen met de volgende informatie:
-- Rol van de vorige configuratie
-- Configuratie van de huidige rol
-- [Replicastatus](service-fabric-concepts-replica-lifecycle.md)
-- Knooppunt-ID
+Voor elke replica wordt de volgende informatie gegeven:
+- Vorige configuratie functie
+- Huidige configuratie functie
+- [Replica status](service-fabric-concepts-replica-lifecycle.md)
+- Knoop punt-ID
 - Replica-ID
 
-De nieuwe configuratie deblokkeren:
-- De **omlaag** replica's moeten worden opgeroepen. 
-- De **inbuild** replica's moeten voltooien van de build en overstappen op gereed.
+De blok kering van de herconfiguratie opheffen:
+- De **lagere** replica's moeten actief zijn. 
+- De **inbuild** -replica's moeten de build en de overgang naar gereed volt ooien.
 
-### <a name="slow-service-api-call"></a>Trage service API-aanroep
-**System.RAP** en **System.Replicator** rapporteren van een waarschuwing als een aanroep van de code van de gebruiker langer duurt dan de geconfigureerde tijd. De waarschuwing is uitgeschakeld wanneer de aanroep is voltooid.
+### <a name="slow-service-api-call"></a>API-aanroep voor langzame service
+**System. rap** en **System. Replicator** rapporteren een waarschuwing als een aanroep van de gebruikers Service code langer duurt dan de geconfigureerde tijd. De waarschuwing wordt gewist wanneer de aanroep is voltooid.
 
-* **SourceId**: System.RAP of System.Replicator
-* **De eigenschap**: De naam van de langzame-API. De beschrijving bevat meer informatie over de tijd die de API in behandeling is.
-* **Volgende stappen**: Onderzoek waarom de aanroep duurt langer dan verwacht.
+* **SourceId**: System. rap of System. Replicator
+* **Eigenschap**: de naam van de trage API. De beschrijving bevat meer informatie over het tijdstip waarop de API in behandeling is.
+* **Volgende stappen**: onderzoek waarom de oproep langer duurt dan verwacht.
 
-Het volgende voorbeeld ziet de statusgebeurtenis van System.RAP voor een betrouwbare service die niet van de annulering naleven wordt token in **RunAsync**:
+In het volgende voor beeld ziet u de status gebeurtenis van System. RAP voor een betrouw bare service die niet voldoet aan het annulerings token in **RunAsync**:
 
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 5f6060fb-096f-45e4-8c3d-c26444d8dd10 -ReplicaOrInstanceId 131483966141404693
@@ -646,58 +637,58 @@ HealthEvents          :
                         
 ```
 
-De eigenschap en de tekst moet u aangeven welke API is vastgelopen. De volgende stappen om te maken met verschillende vastgelopen API's zijn verschillend. API's op de *IStatefulServiceReplica* of *IStatelessServiceInstance* is meestal een bug in de servicecode. De volgende sectie wordt beschreven hoe deze wordt omgezet naar de [Reliable Services-model](service-fabric-reliable-services-lifecycle.md):
+De eigenschap en de tekst geven aan welke API is vastgelopen. De volgende stappen voor het uitvoeren van verschillende vastgelopen Api's verschillen. Elke API op de *IStatefulServiceReplica* of *IStatelessServiceInstance* is doorgaans een fout in de service code. In de volgende sectie wordt beschreven hoe deze vertalen naar het [reliable Services model](service-fabric-reliable-services-lifecycle.md):
 
-- **IStatefulServiceReplica.Open**: Deze waarschuwing geeft aan dat een aanroep van `CreateServiceInstanceListeners`, `ICommunicationListener.OpenAsync`, of als onderdrukt, `OnOpenAsync` is vastgelopen.
+- **IStatefulServiceReplica. Open**: deze waarschuwing geeft aan dat een aanroep van `CreateServiceInstanceListeners`, `ICommunicationListener.OpenAsync`of als deze wordt overschreven, `OnOpenAsync` vastzit.
 
-- **IStatefulServiceReplica.Close** en **IStatefulServiceReplica.Abort**: De meeste gevallen is een service niet naleven van de annulering-token dat is doorgegeven aan `RunAsync`. Het kan ook zijn dat `ICommunicationListener.CloseAsync`, of als onderdrukt, `OnCloseAsync` is vastgelopen.
+- **IStatefulServiceReplica. Close** en **IStatefulServiceReplica. abort**: het meest voorkomende geval is een service die het door gegeven annulerings token niet nakomt aan `RunAsync`. Het kan ook zijn dat `ICommunicationListener.CloseAsync`, of dat `OnCloseAsync` is vastgelopen.
 
-- **IStatefulServiceReplica.ChangeRole (S)** en **IStatefulServiceReplica.ChangeRole(N)** : De meeste gevallen is een service niet naleven van de annulering-token dat is doorgegeven aan `RunAsync`. In dit scenario is de beste oplossing op te starten van de replica.
+- **IStatefulServiceReplica. ChangeRole (S)** en **IStatefulServiceReplica. ChangeRole (N)** : het meest voorkomende geval is een service die niet voldoet aan het annulerings token dat is door gegeven aan `RunAsync`. In dit scenario is de beste oplossing om de replica opnieuw op te starten.
 
-- **IStatefulServiceReplica.ChangeRole(P)** : De meeste gevallen is de service heeft geen geretourneerd voor een taak in de `RunAsync`.
+- **IStatefulServiceReplica. ChangeRole (P)** : het meest voorkomende geval is dat de service geen taak heeft geretourneerd van `RunAsync`.
 
-Andere API-aanroepen die kunnen zitten zijn op de **IReplicator** interface. Bijvoorbeeld:
+Andere API-aanroepen die achterblijvend kunnen zijn op de **IReplicator** -interface. Bijvoorbeeld:
 
-- **IReplicator.CatchupReplicaSet**: Deze waarschuwing geeft aan dat er twee dingen. Er zijn onvoldoende van replica's. Als u wilt zien als dit het geval is, bekijkt u de status van de replica van de replica's in de partitie of het statusrapport System.FM voor een vastgelopen herconfiguratie. Of de replica's zijn bewerkingen niet bevestigd. De PowerShell-cmdlet `Get-ServiceFabricDeployedReplicaDetail` kan worden gebruikt om de voortgang van alle replica's te bepalen. Het probleem wordt veroorzaakt door replica's waarvan `LastAppliedReplicationSequenceNumber` waarde bevindt zich achter een van de primaire `CommittedSequenceNumber` waarde.
+- **IReplicator. CatchupReplicaSet**: deze waarschuwing geeft een van de twee dingen aan. Er zijn onvoldoende replica's. Als u wilt zien of dit het geval is, bekijkt u de replica status van de replica's in de partitie of het System.FM status rapport voor een vastgelopen herconfiguratie. Of de replica's zijn geen bevestigings bewerkingen. De Power shell-cmdlet `Get-ServiceFabricDeployedReplicaDetail` kan worden gebruikt om de voortgang van alle replica's te bepalen. Het probleem is afhankelijk van replica's waarvan de `LastAppliedReplicationSequenceNumber` waarde achter de primaire `CommittedSequenceNumber` waarde ligt.
 
-- **IReplicator.BuildReplica (\<externe ReplicaId >)** : Deze waarschuwing wijst op een probleem in het bouwproces. Zie voor meer informatie, [levenscyclus van Replica](service-fabric-concepts-replica-lifecycle.md). Het kan zijn vanwege een onjuiste configuratie van de replicatie-adres. Zie voor meer informatie, [stateful Reliable Services configureren](service-fabric-reliable-services-configuration.md) en [bronnen opgeven in een servicemanifest](service-fabric-service-manifest-resources.md). Het kan ook een probleem op het externe knooppunt zijn.
+- **IReplicator. BuildReplica (\<externe ReplicaId >)** : deze waarschuwing geeft aan dat er een probleem is met het bouw proces. Zie voor meer informatie de [levens cyclus van replica's](service-fabric-concepts-replica-lifecycle.md). Dit wordt mogelijk veroorzaakt door een onjuiste configuratie van het Replicator-adres. Zie [stateful reliable Services configureren](service-fabric-reliable-services-configuration.md) en [resources opgeven in een service manifest](service-fabric-service-manifest-resources.md)voor meer informatie. Het is ook mogelijk dat er een probleem is op het externe knoop punt.
 
-### <a name="replicator-system-health-reports"></a>Replicatie systeemstatusrapporten
-**De replicatiewachtrij is vol:** 
-**System.Replicator** rapporten van een waarschuwing wanneer de replicatiewachtrij vol. is. Op de primaire raakt de replicatiewachtrij doorgaans vol omdat een of meer secundaire replica's worden traag uitgevoerd om te bevestigen van bewerkingen. Op de secundaire, dit gebeurt meestal wanneer de service is traag om toe te passen van de bewerkingen. De waarschuwing wordt gewist wanneer de wachtrij vol is.
+### <a name="replicator-system-health-reports"></a>Replicatie systeem status rapporten
+De **replicatie wachtrij is vol:** 
+**System. Replicator** een waarschuwing meldt wanneer de replicatie wachtrij vol is. Op de primaire wordt de replicatie wachtrij doorgaans vol omdat een of meer secundaire replica's langzaam zijn om bewerkingen te bevestigen. Dit gebeurt meestal wanneer de service traag is om de bewerkingen toe te passen. De waarschuwing wordt gewist wanneer de wachtrij niet langer vol is.
 
-* **SourceId**: System.Replicator
-* **De eigenschap**: **PrimaryReplicationQueueStatus** of **SecondaryReplicationQueueStatus**, afhankelijk van de replicarol.
-* **Volgende stappen**: Als het rapport op de primaire, controleert u de verbinding tussen de knooppunten in het cluster. Als alle verbindingen in orde zijn, is het mogelijk dat er ten minste één trage secundaire met een hoge latentie om toe te passen van bewerkingen. Als het rapport op de secundaire, eerst in het gebruik van de schijf en de prestaties op het knooppunt. Controleer vervolgens de uitgaande verbinding van de trage knooppunt naar de primaire.
+* **SourceId**: System. Replicator
+* **Eigenschap**: **PrimaryReplicationQueueStatus** of **SecondaryReplicationQueueStatus**, afhankelijk van de replica-rol.
+* **Volgende stappen**: als het rapport zich op de primaire lijst bevindt, controleert u de verbinding tussen de knoop punten in het cluster. Als alle verbindingen in orde zijn, kan er ten minste één traag secundair zijn met een hoge latentie van de schijf om bewerkingen toe te passen. Als het rapport op de secundaire staat, controleert u eerst het schijf gebruik en de prestaties van het knoop punt. Controleer vervolgens de uitgaande verbinding van het langzame knoop punt naar de primaire.
 
-**RemoteReplicatorConnectionStatus:** 
-**System.Replicator** rapporten op de primaire replica een waarschuwing wanneer de verbinding met een secundaire (extern) replicatie niet in orde is. De externe replicatieverbinding adres wordt weergegeven in het bericht van het rapport, waardoor het gemakkelijker om te detecteren als de verkeerde configuratie is doorgegeven of als er netwerkproblemen tussen de distributeurs zijn.
+**RemoteReplicatorConnectionStatus:** als
+**System. Replicator** op de primaire replica een waarschuwing Meld wanneer de verbinding met een secundaire (externe) Replicator niet in orde is. Het adres van de externe replicator wordt weer gegeven in het bericht van het rapport, waardoor het handiger is om te detecteren of de verkeerde configuratie is door gegeven of dat er netwerk problemen zijn tussen de replicaties.
 
-* **SourceId**: System.Replicator
-* **De eigenschap**: **RemoteReplicatorConnectionStatus**.
-* **Volgende stappen**: Controleer het foutbericht en zorg ervoor dat het adres van externe replicatieverbinding correct is geconfigureerd. Bijvoorbeeld, als de externe replicatieverbinding wordt geopend met de 'localhost' listen-adres, het is niet bereikbaar is vanaf de buitenkant. Als het adres is gelukt, controleert u de verbinding tussen het primaire knooppunt en het externe adres te vinden van eventuele mogelijke netwerkproblemen.
+* **SourceId**: System. Replicator
+* **Eigenschap**: **RemoteReplicatorConnectionStatus**.
+* **Volgende stappen**: Controleer het fout bericht en controleer of het adres van de externe Replicator juist is geconfigureerd. Als bijvoorbeeld de externe replicator wordt geopend met het Luister adres ' localhost ', is deze niet bereikbaar vanaf de buiten kant. Als het adres correct lijkt, controleert u de verbinding tussen het primaire knoop punt en het externe adres om mogelijke netwerk problemen op te sporen.
 
-### <a name="replication-queue-full"></a>De replicatiewachtrij is vol
-**System.Replicator** rapporten van een waarschuwing wanneer de replicatiewachtrij vol. is. Op de primaire raakt de replicatiewachtrij doorgaans vol omdat een of meer secundaire replica's worden traag uitgevoerd om te bevestigen van bewerkingen. Op de secundaire, dit gebeurt meestal wanneer de service is traag om toe te passen van de bewerkingen. De waarschuwing wordt gewist wanneer de wachtrij vol is.
+### <a name="replication-queue-full"></a>De replicatie wachtrij is vol
+**System. Replicator** meldt een waarschuwing wanneer de replicatie wachtrij vol is. Op de primaire wordt de replicatie wachtrij doorgaans vol omdat een of meer secundaire replica's langzaam zijn om bewerkingen te bevestigen. Dit gebeurt meestal wanneer de service traag is om de bewerkingen toe te passen. De waarschuwing wordt gewist wanneer de wachtrij niet langer vol is.
 
-* **SourceId**: System.Replicator
-* **De eigenschap**: **PrimaryReplicationQueueStatus** of **SecondaryReplicationQueueStatus**, afhankelijk van de replicarol.
+* **SourceId**: System. Replicator
+* **Eigenschap**: **PrimaryReplicationQueueStatus** of **SecondaryReplicationQueueStatus**, afhankelijk van de replica-rol.
 
-### <a name="slow-naming-operations"></a>Trage Naming-bewerkingen
-**System.NamingService** de status op de primaire replica wordt gerapporteerd als een Naming-bewerking langer duurt dan acceptabel. Voorbeelden van Naming bewerkingen zijn [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) of [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync). Meer methoden kunnen u vinden onder FabricClient. Bijvoorbeeld, ze kunnen u vinden onder [service beheermethoden](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient) of [eigenschap beheermethoden](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient).
+### <a name="slow-naming-operations"></a>Trage naamgevings bewerkingen
+**System. NamingService** rapporteert de status van de primaire replica wanneer een naamgevings bewerking langer duurt dan acceptabel is. Voor beelden van naamgevings bewerkingen zijn [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) of [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync). Meer methoden vindt u onder FabricClient. Ze kunnen bijvoorbeeld worden gevonden onder [Service Management-methoden](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient) of [methoden voor eigenschaps beheer](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient).
 
 > [!NOTE]
-> De Naming-service wordt servicenamen omgezet naar een locatie in het cluster. Gebruikers kunnen deze gebruiken voor het beheren van servicenamen en eigenschappen. Het is een Service Fabric gepartitioneerd-persistente-service. Een van de partities vertegenwoordigt de *Authority Owner*, waarin metagegevens over alle Service Fabric-namen en services. De namen van de Service Fabric worden toegewezen aan verschillende partities, genaamd *Name Owner* partities, zodat de service uitgebreid worden. Meer informatie over de [Naming service](service-fabric-architecture.md).
+> Met de naamgevings service worden service namen omgezet naar een locatie in het cluster. Gebruikers kunnen deze gebruiken om service namen en-eigenschappen te beheren. Het is een Service Fabric gepartitioneerde service. Een van de partities vertegenwoordigt de *eigenaar*van de instantie, die meta gegevens bevat over alle service Fabric namen en services. De namen van de Service Fabric worden toegewezen aan verschillende partities, ook wel partities met de *naam eigenaar* genoemd, waardoor de service uitbreidbaar is. Meer informatie over de [naamgevings service](service-fabric-architecture.md).
 > 
 > 
 
-Wanneer een Naming-bewerking langer duurt dan verwacht, wordt de bewerking is gemarkeerd met een rapport van de waarschuwing op de primaire replica van de partitie die Naming-service die de bewerking fungeert. Als de bewerking voltooid is, wordt de waarschuwing is uitgeschakeld. Als de bewerking is voltooid met een fout, bevat het statusrapport details over de fout.
+Wanneer een naamgevings bewerking langer duurt dan verwacht, wordt de bewerking gemarkeerd met een waarschuwings rapport op de primaire replica van de naamgevings service partitie die de bewerking verzendt. Als de bewerking is voltooid, wordt de waarschuwing gewist. Als de bewerking is voltooid met een fout, bevat het status rapport Details over de fout.
 
 * **SourceId**: System.NamingService
-* **De eigenschap**: Begint met het voorvoegsel "**Duration_** ' en identificeert de trage bewerking en de Service Fabric-naam op die de bewerking wordt toegepast. Bijvoorbeeld, als service maken op de naam **fabric: / Mijntoep/MijnService** duurt te lang, de eigenschap is **Duration_AOCreateService.fabric:/MyApp/MyService**. "Door de AO" verwijst naar de rol van de partitie Naming voor deze naam en de bewerking.
-* **Volgende stappen**: Selectievakje om te zien waarom de Naming-bewerking is mislukt. Elke bewerking kan verschillende oorzaken hebben. Bijvoorbeeld, de delete-service kan blijven steken. De service kan blijven steken omdat de toepassingshost op een knooppunt vanwege een fout van gebruiker in de servicecode vastlopen houdt.
+* **Eigenschap**: begint met het voor voegsel '**Duration_** ' en identificeert de trage bewerking en de service Fabric naam waarop de bewerking wordt toegepast. Als er bijvoorbeeld een service op naam **Fabric maken:/MyApp/MyService** duurt te lang. de eigenschap is **Duration_AOCreateService. Fabric:/MyApp/MyService**. ' AO ' verwijst naar de rol van de naamgevings partitie voor deze naam en bewerking.
+* **Volgende stappen**: Controleer om te zien waarom de naamgevings bewerking mislukt. Elke bewerking kan verschillende hoofd oorzaken hebben. Zo kan de service delete vastzitten. De service is mogelijk vastgelopen omdat de toepassingshost vastloopt op een knoop punt vanwege een gebruikers fout in de service code.
 
-Het volgende voorbeeld ziet u een bewerking van de service maken. De bewerking duurde langer dan de geconfigureerde duur. 'Door de AO' nieuwe pogingen en werk verzendt naar "Nee" 'Nee' voltooid de laatste bewerking met time-out. In dit geval is dezelfde replica primaire voor zowel de 'door de AO' en 'Nee' rollen.
+In het volgende voor beeld wordt een service bewerking maken weer gegeven. De bewerking duurde langer dan de geconfigureerde duur. "AO" nieuwe pogingen en verzenden van werk naar "nee" De laatste bewerking met een time-out is voltooid. In dit geval is dezelfde replica primair voor de rollen "AO" en "NO".
 
 ```powershell
 PartitionId           : 00000000-0000-0000-0000-000000001000
@@ -744,17 +735,17 @@ HealthEvents          :
                         Transitions           : Error->Warning = 4/29/2016 8:39:38 PM, LastOk = 1/1/0001 12:00:00 AM
 ```
 
-## <a name="deployedapplication-system-health-reports"></a>DeployedApplication systeemstatusrapporten
-**System.Hosting** is de instantie voor geïmplementeerde entiteiten.
+## <a name="deployedapplication-system-health-reports"></a>DeployedApplication systeem status rapporten
+**System. hosting** is de instantie van geïmplementeerde entiteiten.
 
 ### <a name="activation"></a>Activering
-System.Hosting rapporten als OK wanneer een toepassing is geactiveerd op het knooppunt. Anders wordt een fout.
+System. hosting rapporten als OK wanneer een toepassing is geactiveerd op het knoop punt. Anders wordt er een fout melding weer gegeven.
 
-* **SourceId**: System.Hosting
-* **De eigenschap**: **Activering**, met inbegrip van de versie van de implementatie.
-* **Volgende stappen**: Als de toepassing niet in orde is, moet u onderzoeken waarom de activering is mislukt.
+* **SourceId**: System. hosting
+* **Eigenschap**: **Activering**, inclusief de implementatie versie.
+* **Volgende stappen**: als de toepassing een slechte status heeft, onderzoekt u waarom de activering is mislukt.
 
-Het volgende voorbeeld ziet u een geslaagde activering:
+In het volgende voor beeld ziet u een geslaagde activering:
 
 ```powershell
 PS C:\> Get-ServiceFabricDeployedApplicationHealth -NodeName _Node_1 -ApplicationName fabric:/WordCount -ExcludeHealthStatistics
@@ -782,36 +773,36 @@ HealthEvents                       :
                                      Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>Downloaden
-System.Hosting meldt een fout als het pakket downloaden van de toepassing is mislukt.
+### <a name="download"></a>Download
+System. hosting meldt een fout als het downloaden van het toepassings pakket mislukt.
 
-* **SourceId**: System.Hosting
-* **De eigenschap**: **Download**, met inbegrip van de versie van de implementatie.
-* **Volgende stappen**: Onderzoek waarom de download is mislukt op het knooppunt.
+* **SourceId**: System. hosting
+* **Eigenschap**: **down load**, inclusief de implementatie versie.
+* **Volgende stappen**: onderzoek waarom de down load is mislukt op het knoop punt.
 
-## <a name="deployedservicepackage-system-health-reports"></a>DeployedServicePackage systeemstatusrapporten
-**System.Hosting** is de instantie voor geïmplementeerde entiteiten.
+## <a name="deployedservicepackage-system-health-reports"></a>DeployedServicePackage systeem status rapporten
+**System. hosting** is de instantie van geïmplementeerde entiteiten.
 
-### <a name="service-package-activation"></a>Activeren van pakket
-System.Hosting rapporteert als OK als de activering van de service-pakket op het knooppunt geslaagd is. Anders wordt een fout.
+### <a name="service-package-activation"></a>Activering van service pakket
+System. hosting rapporten als OK als de activering van het service pakket op het knoop punt is geslaagd. Anders wordt er een fout melding weer gegeven.
 
-* **SourceId**: System.Hosting
-* **De eigenschap**: De activering.
-* **Volgende stappen**: Onderzoek waarom de activering is mislukt.
+* **SourceId**: System. hosting
+* **Eigenschap**: activering.
+* **Volgende stappen**: onderzoeken waarom de activering is mislukt.
 
-### <a name="code-package-activation"></a>Pakket-codeactivering
-System.Hosting rapporteert als OK voor ieder codepakket als de activering geslaagd is. Als de activering is mislukt, wordt een waarschuwing weergegeven zoals geconfigureerd. Als **CodePackage** niet kan activeren of eindigt met een fout die groter is dan de geconfigureerde **CodePackageHealthErrorThreshold**, die als host fungeert meldt een fout. Als een servicepakket meerdere pakketten bevat, wordt een activering-rapport wordt gegenereerd voor elk criterium.
+### <a name="code-package-activation"></a>Activering van code pakket
+System. hosting rapporten als OK voor elk code pakket als de activering is geslaagd. Als de activering mislukt, wordt een waarschuwing gerapporteerd zoals geconfigureerd. Als **code package** niet kan worden geactiveerd of beëindigd met een fout die groter is dan de geconfigureerde **CodePackageHealthErrorThreshold**, meldt hosting een fout. Als een service pack meerdere code pakketten bevat, wordt er een activerings rapport voor elk pakket gegenereerd.
 
-* **SourceId**: System.Hosting
-* **De eigenschap**: Maakt gebruik van het voorvoegsel **CodePackageActivation** en bevat de naam van het codepakket en het toegangspunt dat als *CodePackageActivation:CodePackageName:SetupEntryPoint / EntryPoint*. Bijvoorbeeld, **CodePackageActivation:Code:SetupEntryPoint**.
+* **SourceId**: System. hosting
+* **Eigenschap**: gebruikt het voor voegsel **CodePackageActivation** en bevat de naam van het code pakket en het ingangs punt als *CodePackageActivation: CodePackageName: SetupEntryPoint/entry*Point. Bijvoorbeeld **CodePackageActivation: code: SetupEntryPoint**.
 
-### <a name="service-type-registration"></a>De service type is geregistreerd
-System.Hosting rapporteert als OK als het servicetype is geregistreerd. Een fout gerapporteerd als de registratie niet is gedaan in de tijd, zoals deze is geconfigureerd met behulp van **ServiceTypeRegistrationTimeout**. Als de runtime is gesloten, wordt het servicetype is niet geregistreerd in het knooppunt en wordt een waarschuwing die als host fungeert rapporten.
+### <a name="service-type-registration"></a>Registratie van Service type
+System. hosting rapporten als OK als het Service type is geregistreerd. Er wordt een fout melding weer gegeven als de registratie niet op tijd is uitgevoerd, zoals is geconfigureerd met behulp van **ServiceTypeRegistrationTimeout**. Als de runtime is gesloten, is het Service type niet meer geregistreerd bij het knoop punt en wordt er een waarschuwing voor het hosten van het hosting rapport gerapporteerd.
 
-* **SourceId**: System.Hosting
-* **De eigenschap**: Maakt gebruik van het voorvoegsel **ServiceTypeRegistration** en bevat de naam van de service-type. Bijvoorbeeld, **ServiceTypeRegistration:FileStoreServiceType**.
+* **SourceId**: System. hosting
+* **Eigenschap**: gebruikt het voor voegsel **ServiceTypeRegistration** en bevat de naam van het Service type. Bijvoorbeeld **ServiceTypeRegistration: FileStoreServiceType**.
 
-Het volgende voorbeeld ziet u een pakket in orde geïmplementeerde service:
+In het volgende voor beeld ziet u een goed geïmplementeerd service pakket:
 
 ```powershell
 PS C:\> Get-ServiceFabricDeployedServicePackageHealth -NodeName _Node_1 -ApplicationName fabric:/WordCount -ServiceManifestName WordCountServicePkg
@@ -860,33 +851,33 @@ HealthEvents               :
                              Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>Downloaden
-System.Hosting meldt een fout als het downloaden van het service-pakket is mislukt.
+### <a name="download"></a>Download
+System. hosting meldt een fout als het downloaden van het service pakket mislukt.
 
-* **SourceId**: System.Hosting
-* **De eigenschap**: **Download**, met inbegrip van de versie van de implementatie.
-* **Volgende stappen**: Onderzoek waarom de download is mislukt op het knooppunt.
+* **SourceId**: System. hosting
+* **Eigenschap**: **down load**, inclusief de implementatie versie.
+* **Volgende stappen**: onderzoek waarom de down load is mislukt op het knoop punt.
 
-### <a name="upgrade-validation"></a>Validatie van de upgrade
-System.Hosting, wordt er een fout gemeld als validatie tijdens de upgrade mislukt of als de upgrade op het knooppunt mislukt.
+### <a name="upgrade-validation"></a>Upgrade validatie
+System. hosting rapporteert een fout als tijdens de upgrade een validatie mislukt of als de upgrade mislukt op het knoop punt.
 
-* **SourceId**: System.Hosting
-* **De eigenschap**: Maakt gebruik van het voorvoegsel **FabricUpgradeValidation** en de upgrade-versie bevat.
-* **Beschrijving**: Verwijst naar de fout is opgetreden.
+* **SourceId**: System. hosting
+* **Eigenschap**: gebruikt het voor voegsel **FabricUpgradeValidation** en bevat de upgrade versie.
+* **Beschrijving**: verwijst naar de fout die wordt aangetroffen.
 
-### <a name="undefined-node-capacity-for-resource-governance-metrics"></a>Niet-gedefinieerde knooppuntcapaciteit voor metrische gegevens voor het beheer van resources
-System.Hosting rapporteert een waarschuwing als knooppuntcapaciteit niet zijn gedefinieerd in het clustermanifest en de configuratie voor automatische detectie is uitgeschakeld. Service Fabric genereert een status-waarschuwing wanneer het servicepakket die gebruikmaakt van [resourcebeheer](service-fabric-resource-governance.md) registreert op een opgegeven knooppunt.
+### <a name="undefined-node-capacity-for-resource-governance-metrics"></a>Niet-gedefinieerde knooppunt capaciteit voor metrische gegevens van resource governance
+System. hosting rapporteert een waarschuwing als knooppunt capaciteit niet is gedefinieerd in het cluster manifest en de configuratie voor automatische detectie is uitgeschakeld. Service Fabric genereert een status waarschuwing wanneer het service pakket die gebruikmaakt van [resource governance](service-fabric-resource-governance.md) -registers op een opgegeven knoop punt.
 
-* **SourceId**: System.Hosting
-* **De eigenschap**: **ResourceGovernance**.
-* **Volgende stappen**: De voorkeursmethode voor het oplossen van dit probleem is om te wijzigen van het clustermanifest om in te schakelen van automatische detectie van beschikbare resources. Een andere manier is het bijwerken van het clustermanifest met correct opgegeven knooppuntcapaciteiten voor deze metrische gegevens.
+* **SourceId**: System. hosting
+* **Eigenschap**: **ResourceGovernance**.
+* **Volgende stappen**: de voorkeurs manier om dit probleem op te lossen is door het cluster manifest te wijzigen om automatische detectie van beschik bare resources in te scha kelen. Een andere manier is om het cluster manifest bij te werken met correct opgegeven knooppunt capaciteit voor deze metrische gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Service Fabric-statusrapporten weergeven](service-fabric-view-entities-aggregated-health.md)
+* [Service Fabric status rapporten weer geven](service-fabric-view-entities-aggregated-health.md)
 
-* [Het servicestatus rapporteren en controleren](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+* [Service status rapporteren en controleren](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 
-* [Controle en diagnose van services lokaal](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+* [Services lokaal controleren en diagnosticeren](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
-* [Service Fabric-toepassingsupgrade](service-fabric-application-upgrade.md)
+* [Upgrade van toepassing Service Fabric](service-fabric-application-upgrade.md)
 

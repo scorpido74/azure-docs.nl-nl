@@ -3,12 +3,12 @@ title: Problemen met SQL Server database back-up oplossen
 description: Informatie over het oplossen van back-ups van SQL Server-data bases die worden uitgevoerd op virtuele machines van Azure met Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 95f7966fa59f0a1f6f6a3c9c6832cc573f89e05c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: d49843e8fd96df29a7359ec639e42d312ad584e2
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172129"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659250"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problemen met SQL Server database back-up oplossen met behulp van Azure Backup
 
@@ -20,11 +20,30 @@ Zie [over SQL Server back-up in azure vm's](backup-azure-sql-database.md#feature
 
 Als u de beveiliging voor een SQL Server Data Base op een virtuele machine wilt configureren, moet u de **AzureBackupWindowsWorkload** -extensie op die virtuele machine installeren. Als u de fout **UserErrorSQLNoSysadminMembership**krijgt, betekent dit dat uw SQL Server-exemplaar niet over de vereiste back-upmachtigingen beschikt. Volg de stappen in [set VM permissions](backup-azure-sql-database.md#set-vm-permissions)om deze fout op te lossen.
 
+## <a name="troubleshoot-discover-and-configure-issues"></a>Problemen met detectie en configuratie oplossen
+Na het maken en configureren van een Recovery Services kluis, het detecteren van data bases en het configureren van back-ups is een proces dat uit twee stappen bestaat.<br>
+
+![sql](./media/backup-azure-sql-database/sql.png)
+
+Als de SQL-VM en de exemplaren ervan tijdens de back-upconfiguratie niet zichtbaar zijn in de **detectie db's in vm's** en de **back-up configureren** (Zie de bovenstaande afbeelding), moet u het volgende doen:
+
+### <a name="step-1-discovery-dbs-in-vms"></a>Stap 1: detectie Db's in Vm's
+
+- Als de virtuele machine niet wordt weer gegeven in de lijst met gedetecteerde VM'S en ook niet is geregistreerd voor SQL-back-ups in een andere kluis, voert u de stappen voor [detectie SQL Server back-up](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#discover-sql-server-databases) uit.
+
+### <a name="step-2-configure-backup"></a>Stap 2: back-up configureren
+
+- Als de kluis waarin de SQL-VM is geregistreerd in dezelfde kluis die wordt gebruikt voor het beveiligen van de data bases, volgt u de stappen voor het [configureren van back-ups](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#configure-backup) .
+
+Als de SQL-VM in de nieuwe kluis moet worden geregistreerd, moet de registratie bij de oude kluis ongedaan worden gemaakt.  Voor het ongedaan maken van de registratie van een SQL-VM van de kluis moeten alle beveiligde gegevens bronnen worden beveiligd en vervolgens kunt u de back-upgegevens verwijderen. Het verwijderen van een back-up van gegevens is een destructieve bewerking.  Nadat u alle voorzorgsmaatregelen hebt bekeken en hebt genomen om de registratie van de SQL-VM ongedaan te maken, registreert u dezelfde VM met een nieuwe kluis en voert u de back-upbewerking opnieuw uit.
+
+
+
 ## <a name="error-messages"></a>Foutberichten
 
 ### <a name="backup-type-unsupported"></a>Het back-uptype wordt niet ondersteund
 
-| Severity | Beschrijving | Mogelijke oorzaken | Aanbevolen actie |
+| Ernst | Beschrijving | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|---|
 | Waarschuwing | De huidige instellingen voor deze data base bieden geen ondersteuning voor bepaalde back-uptypen die aanwezig zijn in het bijbehorende beleid. | <li>Alleen een volledige database back-upbewerking kan worden uitgevoerd op de hoofd database. U kunt geen differentiële back-up of transactie logboek back-up maken. </li> <li>Voor alle data bases in het eenvoudige herstel model is het maken van back-ups van transactie logboeken niet toegestaan.</li> | Wijzig de data base-instellingen zodanig dat alle back-uptypen in het beleid worden ondersteund. Of wijzig het huidige beleid zodat alleen de ondersteunde back-uptypen worden vermeld. Anders worden de niet-ondersteunde back-uptypen overgeslagen tijdens de geplande back-up of mislukt de back-uptaak voor back-ups op aanvraag.
 
@@ -125,18 +144,27 @@ De bewerking is geblokkeerd omdat u de limiet hebt bereikt van het aantal bewerk
 |---|---|---|
 De bewerking is geblokkeerd omdat de kluis de maximum limiet heeft bereikt voor dergelijke bewerkingen die zijn toegestaan in een periode van 24 uur. | Wanneer u de Maxi maal toegestane limiet hebt bereikt voor een bewerking binnen een periode van 24 uur, wordt deze fout weer geleverd. Deze fout treedt meestal op wanneer er op schaal bewerkingen worden uitgevoerd, zoals het wijzigen van beleid of automatische beveiliging. In tegens telling tot in het geval van CloudDosAbsoluteLimitReached is het niet veel wat u kunt doen om deze status op te lossen, Azure Backup service de bewerkingen intern opnieuw probeert uit te voeren voor alle betreffende items.<br> Als er bijvoorbeeld sprake is van een groot aantal gegevens bronnen dat wordt beveiligd met een beleid en u het beleid probeert te wijzigen, worden de beveiligings taken voor elk van de beveiligde items geactiveerd en kan de maximum limiet voor dergelijke bewerkingen per dag worden bereikt.| Azure Backup service wordt deze bewerking na 24 uur automatisch opnieuw uitgevoerd.
 
+### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
+
+| Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
+|---|---|---|
+De virtuele machine kan geen verbinding maken met Azure Backup service vanwege problemen met de Internet verbinding. | De virtuele machine heeft uitgaande verbindingen met Azure Backup Service, Azure Storage of Azure Active Directory Services nodig.| -Als u NSG gebruikt om de connectiviteit te beperken, moet u de AzureBackup-servicetag gebruiken om uitgaande toegang toe te staan Azure Backup Azure Backup-Service, Azure Storage of Azure Active Directory Services. Volg deze [stappen](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags) om toegang te verlenen.<br>-Zorg ervoor dat DNS Azure-eind punten omzet.<br>-Controleer of de virtuele machine zich achter een load balancer Internet toegang blokkeert. Wanneer u een openbaar IP-adres toewijst aan de Vm's, werkt de detectie.<br>-Controleer of er geen firewall/anti virus/proxy is die aanroepen naar de bovenstaande drie doel Services blokkeert.
+
+
 ## <a name="re-registration-failures"></a>Fouten bij opnieuw registreren
 
 Controleer op een of meer van de volgende symptomen voordat u de bewerking opnieuw registreren start:
 
-* Alle bewerkingen (zoals back-up, herstel en configuratie back-up) mislukken op de virtuele machine met een van de volgende fout codes: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent** , **WorkloadExtensionDidntDequeueMsg**.
-* Het gebied voor de **back-upstatus** van het back-upitem kan **niet worden bereikt**. Regel alle andere oorzaken die kunnen resulteren in dezelfde status:
+* Alle bewerkingen (zoals back-up, herstel en configuratie back-up) mislukken op de virtuele machine met een van de volgende fout codes: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
+* Als het gebied voor de **back-upstatus** voor het back-upitem **niet bereikbaar**is, geeft u alle andere oorzaken uit die kunnen resulteren in dezelfde status:
 
-  * Onvoldoende machtigingen voor het uitvoeren van back-upbewerkingen op de VM  
-  * De virtuele machine wordt afgesloten, waardoor er geen back-ups kunnen worden gemaakt
-  * Netwerkproblemen  
+  * Onvoldoende machtigingen voor het uitvoeren van back-upbewerkingen op de VM.
+  * De virtuele machine wordt afgesloten, dus er kunnen geen back-ups worden gemaakt.
+  * Netwerk problemen.
 
-  ![De status is niet bereikbaar bij het opnieuw registreren van een virtuele machine](./media/backup-azure-sql-database/re-register-vm.png)
+   ![de virtuele machine opnieuw registreren](./media/backup-azure-sql-database/re-register-vm.png)
+
+
 
 * In het geval van een AlwaysOn-beschikbaarheids groep zijn de back-ups gestart na het wijzigen van de voor keur van de back-up of na een failover.
 

@@ -1,7 +1,7 @@
 ---
 title: 'Zelf studie: afbeeldings gegevens extra heren met C# de rest API en-Bing Image Search'
 titleSuffix: Azure Cognitive Services
-description: Gebruik dit artikel om een C#-toepassing te maken die afbeeldingsdetails extraheert met behulp van de Bing Afbeeldingen zoeken-API.
+description: Gebruik deze zelf studie om een C# toepassing te maken die afbeeldings Details extraheert met behulp van de Bing afbeeldingen zoeken-API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 12/06/2019
 ms.author: aahi
-ms.openlocfilehash: 9f707dd6b93080e550b4f75e7c9c23139b8adf1d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 69c5fc9805bed8fdfde3dd208e7fb66254e82c3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930675"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383872"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Zelfstudie: Afbeeldingsdetails extraheren met de Bing Afbeeldingen zoeken-API en C#
 

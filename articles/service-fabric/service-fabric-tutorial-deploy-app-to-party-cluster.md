@@ -1,26 +1,17 @@
 ---
-title: Een Service Fabric-toepassing implementeren in een cluster in Azure | Microsoft Docs
-description: Lees hoe u vanuit Visual Studio een toepassing implementeert naar een cluster.
-services: service-fabric
-documentationcenter: .net
+title: Een Service Fabric-app implementeren in een cluster in azure
+description: Meer informatie over hoe u een bestaande toepassing implementeert in een nieuw Azure Service Fabric-cluster vanuit Visual Studio.
 author: athinanthny
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 37c27ae71eddcb5a35b9baeae250bee232c7acb7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9951610732cbb1c5884a7b7e830033f427db0ab1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213203"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646004"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Zelfstudie: Een Service Fabric-toepassing implementeren naar een cluster in Azure
 

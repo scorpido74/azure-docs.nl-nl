@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: d93c6333b811885eec37e8401bee27afeedf1475
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 82f2acb811bcb239f6329ab8d8b4008e13ac6490
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975751"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446750"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Snelstart: Een aangepast model voor vertalen bouwen, implementeren en gebruiken
 
@@ -37,7 +37,7 @@ Klik op de landingspagina van de Custom Translator-portal op Nieuw project. In h
 
 ## <a name="upload-documents"></a>Documenten uploaden
 
-Upload vervolgens documentensets voor [trainen](training-and-model.md#training-dataset-for-custom-translator), [afstemmen](training-and-model.md#tuning-dataset-for-custom-translator) en [testen](training-and-model.md#testing-dataset-for-custom-translator). U kunt zowel [parallelle](what-are-parallel-documents.md) documenten als combinatiedocumenten uploaden. U kunt ook een [woordenlijst](what-is-dictionary.md) uploaden.
+Upload vervolgens documentensets voor [trainen](training-and-model.md#training-document-type-for-custom-translator), [afstemmen](training-and-model.md#tuning-document-type-for-custom-translator) en [testen](training-and-model.md#testing-dataset-for-custom-translator). U kunt zowel [parallelle](what-are-parallel-documents.md) documenten als combinatiedocumenten uploaden. U kunt ook een [woordenlijst](what-is-dictionary.md) uploaden.
 
 U kunt documenten uploaden via het tabblad documenten of vanaf de pagina voor een bepaald project.
 
@@ -49,7 +49,7 @@ Kies bij het uploaden van documenten het documenttype (trainen, afstemmen of tes
 
 Als alle vereiste documenten zijn geüpload, is de volgende stap het bouwen van het model.
 
-Selecteer het project dat u hebt gemaakt. U ziet alle geüploade documenten die een taalcombinatie delen met dit project. Selecteer de documenten die u wilt opnemen in uw model. U kunt kiezen voor het [trainen](training-and-model.md#training-dataset-for-custom-translator), [afstemmen](training-and-model.md#tuning-dataset-for-custom-translator) en [testen](training-and-model.md#testing-dataset-for-custom-translator) van gegevens of alleen trainingsgegevens selecteren en in Custom Translator automatisch sets voor afstemmen en testen bouwen voor het model.
+Selecteer het project dat u hebt gemaakt. U ziet alle geüploade documenten die een taalcombinatie delen met dit project. Selecteer de documenten die u wilt opnemen in uw model. U kunt kiezen voor het [trainen](training-and-model.md#training-document-type-for-custom-translator), [afstemmen](training-and-model.md#tuning-document-type-for-custom-translator) en [testen](training-and-model.md#testing-dataset-for-custom-translator) van gegevens of alleen trainingsgegevens selecteren en in Custom Translator automatisch sets voor afstemmen en testen bouwen voor het model.
 
 ![Een model maken](media/quickstart/ct-how-to-train.png)
 

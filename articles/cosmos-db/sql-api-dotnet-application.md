@@ -1,5 +1,5 @@
 ---
-title: 'ASP.NET Core MVC-zelf studie voor Azure Cosmos DB: Web Application Development'
+title: Zelf studie over het ASP.NET Core MVC-Web-app met Azure Cosmos DB
 description: ASP.NET Core MVC-zelf studie voor het maken van een MVC-webtoepassing met behulp van Azure Cosmos DB. U slaat JSON-en Access-gegevens op uit een TODO-app die wordt gehost op Azure App Service-ASP NET core MVC-zelf studie stap voor stap.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 1cfb7718c55920d817e1f87407fa1af590e9f006
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: b0da9f2f2d14c0487e61c1927b5456d09052cff3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720908"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444930"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Zelf studie: een ASP.NET Core MVC-webtoepassing ontwikkelen met Azure Cosmos DB met behulp van .NET SDK
 
@@ -133,7 +133,7 @@ Vervolgens gaan we de volgende drie weer gaven maken.
    * Voer *index*in **weergave naam**in.
    * Selecteer in **sjabloon** **lijst**.
    * Selecteer in **model klasse** **item (TODO. Modellen)** .
-   * Selecteer **een pagina indeling gebruiken** en voer *~/views/Shared/_Layout.cshtml*in.
+   * Selecteer **een indelings pagina gebruiken** en voer *~/views/Shared/_Layout. cshtml*in.
 
    ![Scherm afbeelding van het dialoog venster MVC-weer gave toevoegen](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png)
 
@@ -152,7 +152,7 @@ Maak een nieuwe weergave om items te maken, vergelijkbaar met hoe u een weergave
    * Voer in **weergave naam** *maken*in.
    * Selecteer in **sjabloon** **maken**.
    * Selecteer in **model klasse** **item (TODO. Modellen)** .
-   * Selecteer **een pagina indeling gebruiken** en voer *~/views/Shared/_Layout.cshtml*in.
+   * Selecteer **een indelings pagina gebruiken** en voer *~/views/Shared/_Layout. cshtml*in.
    * Selecteer **Toevoegen**.
 
 #### <a name="AddEditIndexView"></a>Een weergave voor het bewerken van items toevoegen
@@ -163,10 +163,10 @@ En tot slot voegt u een weergave voor het bewerken van items toe met de volgende
 
 1. Breng de volgende wijzigingen aan in de **weer gave MVC toevoegen**:
 
-   * Typ in het vak **Weergavenaam** *Bewerken*.
+   * Typ in het vak **Weergavenaam***Bewerken*.
    * Selecteer in het vak **Sjabloon** de optie **Bewerken**.
    * Selecteer in het vak **Modelklasse** de optie **Item (todo.Models)** .
-   * Selecteer **een pagina indeling gebruiken** en voer *~/views/Shared/_Layout.cshtml*in.
+   * Selecteer **een indelings pagina gebruiken** en voer *~/views/Shared/_Layout. cshtml*in.
    * Selecteer **Toevoegen**.
 
 Nadat u deze stappen hebt uitgevoerd, sluit u alle *cshtml* -documenten in Visual Studio terwijl u deze weer gaven later weer weergeeft.

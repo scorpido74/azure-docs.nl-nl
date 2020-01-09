@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 2251725597e44a15e421f33cc315be3fb1c7846f
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 78b73688306fb51278afba7283a1ea82af603349
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485454"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459170"
 ---
 Azure Compute biedt formaten virtuele machines die zijn geïsoleerd voor een specifiek hardwaretype en bedoeld voor een enkele klant.  Deze formaten virtuele machines zijn ideaal voor workloads waarvoor een hoge mate van isolatie van andere klanten vereist is en voor workloads waarbij elementen als naleving en wettelijke vereisten een rol spelen.  Klanten kunnen er ook voor kiezen om de resources van deze geïsoleerde virtuele machines verder te onderverdelen met behulp [van Azure-ondersteuning voor geneste virtuele machines](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).
 
@@ -30,7 +30,7 @@ Het gebruik van een geïsoleerde grootte garandeert dat uw virtuele machine de e
 [Hier](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)vindt u meer informatie over elke beschik bare, geïsoleerde grootte.
 
 ## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>D15_v2/DS15_v2-isolatie buiten gebruik stellen op 15 februari 2020
-We hebben onlangs de preview-versie van de exclusieve Azure-host aangekondigd, waarmee u de virtuele Linux-en Windows-machines van uw organisatie kunt uitvoeren op fysieke servers met één Tenant. We zijn van plan om geïsoleerde Azure-Vm's volledig te vervangen door de toegewezen Azure-host. Na **15 februari 2020** zijn de Azure-vm's van D15_v2/DS15_v2 mogelijk niet langer hardware geïsoleerd.
+De speciale Azure-host is nu GA, waarmee u de virtuele Linux-en Windows-machines van uw organisatie kunt uitvoeren op fysieke servers met één Tenant. We zijn van plan om geïsoleerde Azure-Vm's volledig te vervangen door de toegewezen Azure-host. Na **15 februari 2020** zijn de Azure-vm's van D15_v2/DS15_v2 mogelijk niet langer hardware geïsoleerd.
 
 ## <a name="how-does-this-affect-me"></a>Wat betekent dit voor mij?
 Na 15 februari 2020 worden er geen isolatie garanties meer geboden voor uw D15_v2/DS15_v2 Azure virtual machines. 
@@ -40,7 +40,7 @@ Als er geen hardwarematige isolatie vereist is, hoeft u geen actie te ondernemen
 
 Als er voor u voor 15 februari 2020 een isolatie is vereist, moet u het volgende doen:
 
-• Uw workload [migreren](https://azure.microsoft.com/blog/introducing-azure-dedicated-host) naar de preview-versie van de exclusieve host van Azure
+• Uw workload [migreren](https://azure.microsoft.com/blog/introducing-azure-dedicated-host) naar een toegewezen Azure-host.
 
 • [Vraag toegang](https://aka.ms/D15iRequestAccess) tot een D15i_v2 en DS15I_V2 Azure VM om dezelfde prijs prestaties te verkrijgen. Deze optie is alleen beschikbaar voor de scenario's voor betalen per gebruik en een gereserveerde instantie van één jaar.    
 
@@ -49,7 +49,7 @@ Als er voor u voor 15 februari 2020 een isolatie is vereist, moet u het volgende
 Zie hieronder voor meer informatie:
 
 ## <a name="timeline"></a>Tijdlijn
-| Date | Actie | 
+| Datum | Actie | 
 | --- | --- |
 | 18 november 2019  | Beschik baarheid van D/DS15i_v2 (PAYG, 1-jarige RI) |
 | 14 februari 2020  | Laatste dag tot aankoop D/DS15i_v2 1 jaar RI | 
@@ -76,7 +76,7 @@ Zie hieronder voor meer informatie:
 ### <a name="q-i-already-purchased-1--or-3-year-reserved-instance-for-d15_v2-or-ds15_v2-how-will-the-discount-be-applied-to-my-vm-usage"></a>V: Ik heb 1 of 3 jaar al een gereserveerd exemplaar van D15_v2 of Ds15_v2 aangeschaft. Hoe wordt de korting toegepast op mijn VM-gebruik?
 **A**: RIs aangeschaft vóór 18 november 2019 zal automatisch de dekking uitbreiden naar de nieuwe geïsoleerde VM-serie. 
 
-| & |  Flexibiliteit van de instantie grootte | Geschiktheid voor deel |   
+| RI |  Flexibiliteit van de instantie grootte | Geschiktheid voor deel |   
 | --- | --- | --- |
 |   D15_v2  |   Uit     |   D15_v2 en D15i_v2 |    
 |   D15_v2  |   Aan  |   D15_v2 reeksen en D15i_v2 ontvangen alle voor delen van de RI. |    
@@ -87,7 +87,7 @@ Dit geldt ook voor de Dsv2-serie.
 ### <a name="q-i-want-to-purchase-additional-reserved-instances-for-dv2-which-one-should-i-choose"></a>V: Ik wil extra gereserveerde instanties kopen voor dv2. Welke moet ik kiezen?
 **A**: alle RIs die na 18 november 2019 zijn aangeschaft, hebben het volgende gedrag. 
 
-| & |  Flexibiliteit van de instantie grootte | Geschiktheid voor deel |   
+| RI |  Flexibiliteit van de instantie grootte | Geschiktheid voor deel |   
 | --- | --- | --- |
 | D15_v2 |  Uit |   Alleen D15_v2  
 | D15_v2 |  Aan |    D15_v2 serie ontvangt het voor deel van de RI. Het nieuwe D15i_v2 komt niet in aanmerking voor RI-voor deel van dit type RI. | 

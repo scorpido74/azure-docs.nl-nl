@@ -1,7 +1,7 @@
 ---
 title: 'Kolom transformatie selecteren: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over hoe u de transformatie module select columns in de Azure Machine Learning-service kunt gebruiken om een trans formatie te maken waarmee dezelfde subset van kolommen wordt geselecteerd als in de opgegeven gegevensset.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module Select column Transform in Azure Machine Learning om een trans formatie te maken waarmee dezelfde subset van kolommen wordt geselecteerd als in de opgegeven gegevensset.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 383adeb2bd081893d4202239cb97c12bf9a5a170
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d0dfbec3abd379c7bf8add6445296dff74d92a76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717028"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428475"
 ---
-# <a name="select-columns-transform"></a>Kolom transformatie selecteren
+# <a name="select-columns-transform"></a>Kolomtransformatie selecteren
 
 In dit artikel wordt beschreven hoe u de module column Transform SELECT in Azure Machine Learning Designer (preview) gebruikt. Het doel van de transformatie module select columns is ervoor te zorgen dat een voorspel bare, consistente set kolommen wordt gebruikt in downstream-machine learning bewerkingen.
 
@@ -55,4 +55,4 @@ Dit proces voor het opslaan en vervolgens Toep assen van een kolom selectie zorg
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor de Azure machine learning-service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

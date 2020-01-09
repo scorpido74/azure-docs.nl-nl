@@ -3,18 +3,18 @@ title: Azure-toolkit voor IntelliJ gebruiken met Hortonworks sandbox
 description: Meer informatie over het gebruik van HDInsight-Hulpprogram Ma's in Azure-toolkit voor IntelliJ met de sandbox Hortonworks.
 keywords: Hadoop-hulpprogram ma's, Hive-query, IntelliJ, hortonworks sandbox, Azure Toolkit voor IntelliJ
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
+ms.custom: hdinsightactive
 ms.date: 05/16/2018
-ms.author: hrasheed
-ms.openlocfilehash: 783d7fc8bc26ce2c715c774e63ecf60c5b75a439
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 65a15a8506b88e95e14af8c87bcbe33087301519
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076262"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647829"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>HDInsight-Hulpprogram Ma's gebruiken voor IntelliJ met Hortonworks sandbox
 
@@ -52,17 +52,17 @@ In deze sectie maakt u een voor beeld van een scala-project met behulp van Intel
    1. Selecteer **HDInsight** > **Spark in HDInsight (Scala)** .
    2. Selecteer in de lijst **Build Tool** een van de volgende opties, op basis van uw scenario:
 
-      * **Maven**: Voor ondersteuning van de wizard scala-project maken.
-      * **SBT**: Voor het beheren van afhankelijkheden en het maken van het scala-project.
+      * **Maven**: voor de ondersteuning van de wizard scala-project maken.
+      * **SBT**: voor het beheren van afhankelijkheden en het maken van het scala-project.
 
    ![IntelliJ nieuw scala-project maken](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
-2. Selecteer **Volgende**.
+2. Selecteer **Next**.
 3. Voer de volgende stappen uit in het dialoog venster volgende **Nieuw project** :
 
    1. Voer in het vak **project naam** een project naam in.
    2. Voer in het vak **Project locatie** een project locatie in.
-   3. Selecteer in de vervolg keuzelijst **Project SDK** de optie **Nieuw**, selecteer **jdk**en geef de map op voor Java JDK versie 1,7 of hoger. Selecteer **Java 1,8** voor het Spark 2. x-cluster. Selecteer **Java 1,7** voor het cluster Spark 1. x. De standaard locatie is C:\Program Files\Java\jdk1.8.x_xxx.
+   3. Selecteer in de vervolg keuzelijst **Project SDK** de optie **Nieuw**, selecteer **jdk**en geef de map op voor Java JDK versie 1,7 of hoger. Selecteer **Java 1,8** voor het Spark 2. x-cluster. Selecteer **Java 1,7** voor het cluster Spark 1. x. De standaard locatie is C:\Program Files\Java\jdk1.8. x_xxx.
    4. In de vervolg keuzelijst **Spark-versie** integreert de wizard scala-project maken de juiste versie voor de Spark SDK en scala SDK. Selecteer **Spark 1.x** als de Spark-clusterversie ouder is dan 2.0. Selecteer anders **Spark 2.x**. In dit voor beeld wordt Spark 1.6.2 (scala 2.10.5) gebruikt. Zorg ervoor dat u de opslag plaats gebruikt die is gemarkeerd als **scala 2.10. x**. Gebruik de opslag plaats die is gemarkeerd als scala 2.11. x.
     
       ![IntelliJ scala project-eigenschappen maken](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
@@ -72,7 +72,7 @@ In deze sectie maakt u een voor beeld van een scala-project met behulp van Intel
 5. Als de **project** weergave nog niet is geopend, drukt u op **ALT + 1** om deze te openen.
 6. Vouw in **project Verkenner**het project uit en selecteer vervolgens **src**.
 7. Klik met de rechter muisknop op **src**, wijs **Nieuw**aan en selecteer **scala klasse**.
-8. Voer in het vak **naam** een naam in. Selecteer in het vak **kind** de optie **object**. Selecteer vervolgens **OK**.
+8. Voer in het vak **Naam** een naam in. Selecteer in het vak **kind** de optie **object**. Selecteer vervolgens **OK**.
 
     ![Het dialoog venster nieuwe scala-klasse maken](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-new-scala-class.png)
 
@@ -144,7 +144,7 @@ Een project verzenden naar een emulator:
     1. Selecteer in de vervolg keuzelijst **Spark-cluster (alleen Linux)** de lokale sandbox met Hortonworks.
     2. Selecteer of typ de naam van de hoofd klasse in het vak **naam van hoofd klasse** . Voor dit artikel is de naam **GroupByTest**.
 
-3. Selecteer **indienen**. De logboeken voor het indienen van taken worden weer gegeven in het hulp programma voor verzen ding van Spark.
+3. Selecteer **Indienen**. De logboeken voor het indienen van taken worden weer gegeven in het hulp programma voor verzen ding van Spark.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -158,4 +158,3 @@ Een project verzenden naar een emulator:
 
 - Meer informatie over het [gebruik van HDInsight-Hulpprogram ma's in azure-Toolkit voor eclipse om Apache Spark-toepassingen te maken](../spark/apache-spark-eclipse-tool-plugin.md).
 
-- Zie [hdinsight-Hulpprogram ma's voor eclips gebruiken om Spark-toepassingen te maken](https://mix.office.com/watch/1rau2mopb6fha)voor een video over HDInsight-hulpprogram Ma's voor eclips.

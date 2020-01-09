@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 041efc62b32e8d8c0c477d9d5715882fd7899cd9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8ed622ff928fa612e6d33ba0647ce258bf4c1c21
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701944"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665207"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Zelf studie: een C# IOT Edge-module ontwikkelen voor Windows-apparaten
 
@@ -92,29 +92,30 @@ Het implementatie manifest deelt de referenties voor uw container register met d
 
 1. Open in Visual Studio Solution Explorer het bestand **Deployment. sjabloon. json** . 
 
-2. Zoek de eigenschap **registryCredentials** in de gewenste eigenschappen van de $edgeAgent. 
-
-3. Werk de eigenschap bij met uw referenties, met de volgende indeling: 
+2. Zoek de eigenschap **registryCredentials** in de gewenste eigenschappen van de $edgeAgent. De naam van het REGI ster moet worden aangevuld met de informatie die u hebt opgegeven bij het maken van het project. de velden username en password moeten namen van variabelen bevatten. Bijvoorbeeld: 
 
    ```json
    "registryCredentials": {
      "<registry name>": {
-       "username": "<username>",
-       "password": "<password>",
+       "username": "$CONTAINER_REGISTRY_USERNAME_<registry name>",
+       "password": "$CONTAINER_REGISTRY_PASSWORD_<registry name>",
        "address": "<registry name>.azurecr.io"
      }
    }
-   ```
 
-4. Sla het bestand deployment.template.json op. 
+3. Open the **.env** file in your module solution. (It's hidden by default in the Solution Explorer, so you might need to select the **Show All Files** button to display it.) The .env file should contain the same username and password variables that you saw in the deployment.template.json file. 
 
-### <a name="update-the-module-with-custom-code"></a>De module bijwerken met aangepaste code
+4. Add the **Username** and **Password** values from your Azure container registry. 
 
-Met de standaard module code worden berichten ontvangen in een invoer wachtrij en door gegeven via een uitvoer wachtrij. We gaan enkele extra code toevoegen, zodat de module de berichten aan de rand verwerkt voordat deze naar IoT Hub worden doorgestuurd. Werk de module bij zodat deze de temperatuur gegevens in elk bericht analyseert en alleen het bericht verzendt naar IoT Hub als de Tempe ratuur een bepaalde drempel waarde overschrijdt. 
+5. Save your changes to the .env file.
 
-1. Open **CSharpModule** > **Program.cs**in Visual Studio.
+### Update the module with custom code
 
-2. Voeg bovenaan de naamruimte **CSharpModule** drie **using**-instructies toe voor typen die later worden gebruikt:
+The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
+
+1. In Visual Studio, open **CSharpModule** > **Program.cs**.
+
+2. At the top of the **CSharpModule** namespace, add three **using** statements for types that are used later:
 
     ```csharp
     using System.Collections.Generic;     // For KeyValuePair<>
@@ -367,5 +368,5 @@ U kunt door gaan met de volgende zelf studies om te leren hoe Azure IoT Edge u k
 > [!div class="nextstepaction"]
 > [Functions](tutorial-deploy-function.md)
 > [Stream Analytics](tutorial-deploy-stream-analytics.md)
-> [machine learning](tutorial-deploy-machine-learning.md) [
-> Custom Vision service](tutorial-deploy-custom-vision.md)
+> [Machine Learning](tutorial-deploy-machine-learning.md)
+> [Custom Vision Service](tutorial-deploy-custom-vision.md)

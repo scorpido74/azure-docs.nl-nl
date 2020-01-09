@@ -1,5 +1,5 @@
 ---
-title: Aanmelden voor een app met één pagina-micro soft Identity-platform | Azure
+title: Aanmelden voor een app met één pagina & afmelden-micro soft Identity-platform | Azure
 description: Meer informatie over het maken van een toepassing met één pagina (aanmelden)
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +17,14 @@ ms.date: 05/06/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d2494a7ad89c9e9b3a525ddd04290a08eb3af58
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b3d7afdc634649ca3baf5f43d5e2376fb5d8b05d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962420"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423652"
 ---
-# <a name="single-page-application-sign-in"></a>Toepassing met één pagina: aanmelden
+# <a name="single-page-application-sign-in-and-sign-out"></a>Toepassing met één pagina: aanmelden en afmelden
 
 Meer informatie over het toevoegen van een aanmelding aan de code voor uw toepassing met één pagina.
 
@@ -48,7 +48,7 @@ U kunt niet zowel de pop-up-als omleidings methoden in uw toepassing gebruiken. 
 
 ## <a name="sign-in-with-a-pop-up-window"></a>Aanmelden met een pop-upvenster
 
-### <a name="javascript"></a>Javascript
+### <a name="javascript"></a>JavaScript
 
 ```javascript
 const loginRequest = {
@@ -93,7 +93,7 @@ Schakel de optie `popUp`-configuratie in voor een pop-upvenster. U kunt ook de v
 
 ## <a name="sign-in-with-redirect"></a>Aanmelden met omleiding
 
-### <a name="javascript"></a>Javascript
+### <a name="javascript"></a>JavaScript
 
 De omleidings methoden retour neren geen belofte als gevolg van de verplaatsing van de hoofd toepassing. Als u de geretourneerde tokens wilt verwerken en openen, moet u geslaagde en fout-Call backs registreren voordat u de omleidings methoden aanroept.
 
@@ -124,7 +124,7 @@ De MSAL-bibliotheek biedt een `logout` methode waarmee de cache in browser opsla
 
 U kunt de URI zo configureren dat deze na het afmelden moet worden omgeleid door `postLogoutRedirectUri`in te stellen. Deze URI moet ook worden geregistreerd als de afmeldings-URI in de registratie van uw toepassing.
 
-### <a name="javascript"></a>Javascript
+### <a name="javascript"></a>JavaScript
 
 ```javascript
 const config = {

@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83523fd12700789fb5c34230d529e06c0b284147
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e551159ad2d41af37b1f400e91680c49117498d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964982"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423633"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Web-app die web-Api's aanroept-code configuratie
 
@@ -38,8 +38,8 @@ De bibliotheken die de autorisatie code stroom ondersteunen voor web-apps zijn:
 | MSAL-bibliotheek | Beschrijving |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Ondersteunde platforms zijn .NET Framework en .NET Core-platformen (niet UWP, Xamarin. iOS en Xamarin. Android als deze platformen worden gebruikt voor het bouwen van open bare client toepassingen) |
-| ![MSAL python](media/sample-v2-code/logo_python.png) <br/> MSAL python | Ontwikkeling in uitvoering-in open bare preview |
-| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Ontwikkeling in uitvoering-in open bare preview |
+| ![MSAL python](media/sample-v2-code/logo_python.png) <br/> MSAL python | Ondersteuning voor python-webtoepassingen |
+| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Ondersteuning voor Java-webtoepassingen |
 
 Selecteer het tabblad dat overeenkomt met het platform waarin u bent geïnteresseerd:
 
@@ -92,7 +92,7 @@ In de praktijk wordt de [ASP.net core-zelf studie voor web](https://github.com/A
 
 Dit is de code [Startup. cs # L40-L42](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Startup.cs#L40-L42) , met de aanroep naar de `AddMicrosoftIdentityPlatformAuthentication` methode waarmee verificatie wordt toegevoegd aan de web-app en `AddMsal` die de mogelijkheid biedt om Web-api's aan te roepen. De aanroep van `AddInMemoryTokenCaches` is het kiezen van de implementatie van een token cache tussen de volgende items:
 
-```CSharp
+```csharp
 public class Startup
 {
   // Code not show here
@@ -112,7 +112,7 @@ public class Startup
 
 `Constants.ScopeUserRead` is gedefinieerd in [constanten. cs # N5](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Infrastructure/Constants.cs#L5)
 
-```CSharp
+```csharp
 public static class Constants
 {
     public const string ScopeUserRead = "User.Read";
@@ -125,7 +125,7 @@ U hebt de inhoud van `AddMicrosoftIdentityPlatformAuthentication` in de [Web-app
 
 De code voor `AddMsal` bevindt zich in [micro soft. Identity. Web/WebAppServiceCollectionExtensions. cs # L108-L159](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L108-L159).
 
-```CSharp
+```csharp
 
 /// <summary>
 /// Extensions for IServiceCollection for startup initialization.
@@ -253,7 +253,7 @@ In ASP.NET Core maakt het samen stellen van de vertrouwelijke client toepassing 
 
 De code voor de `GetOrBuildConfidentialClientApplication()` methode bevindt zich in [micro soft. Identity. Web/TokenAcquisition. cs # L290-L333](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L290-L333). De functie maakt gebruik van leden die zijn geïnjecteerd door het injecteren van afhankelijkheden (door gegeven in de constructor van TokenAcquisition in [micro soft. Identity. Web/TokenAcquisition. cs # L47-L59](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L47-L59))
 
-```CSharp
+```csharp
 public class TokenAcquisition : ITokenAcquisition
 {
   // Code omitted here for clarity
@@ -322,7 +322,7 @@ Als u de som wilt berekenen, worden `AcquireTokenByAuthorizationCode` de autoris
 
 De manier waarop ASP.NET items afhandelt, is vergelijkbaar met ASP.NET Core, behalve dat de configuratie van OpenIdConnect en het abonnement op de `OnAuthorizationCodeReceived` gebeurtenis plaatsvindt in het [App_Start \Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) -bestand. U vindt soort gelijke concepten als in ASP.NET Core, maar in ASP.NET moet u de RedirectUri in het [Web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15)opgeven. Deze configuratie is een beetje minder krachtig dan wat er in ASP.NET Core gebeurt, omdat u deze moet wijzigen wanneer u de toepassing implementeert.
 
-```CSharp
+```csharp
 public partial class Startup
 {
   public void ConfigureAuth(IAppBuilder app)

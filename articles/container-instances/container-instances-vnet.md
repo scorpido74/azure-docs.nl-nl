@@ -2,13 +2,14 @@
 title: Container groep implementeren in een virtueel Azure-netwerk
 description: Meer informatie over het implementeren van container groepen in een nieuw of bestaand virtueel Azure-netwerk.
 ms.topic: article
-ms.date: 07/11/2019
-ms.openlocfilehash: f211924eb74035f4bb30db2d2b848e0a2591de09
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/17/2019
+ms.author: danlep
+ms.openlocfilehash: 9c9f1d114ea3883a947fb454d5958c1479bd4a4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533270"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442261"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Container instanties implementeren in een virtueel Azure-netwerk
 
@@ -23,7 +24,7 @@ Met container groepen die zijn geïmplementeerd in een virtueel Azure-netwerk, k
 * Container communicatie met on-premises bronnen via een [VPN-gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [ExpressRoute](../expressroute/expressroute-introduction.md)
 
 > [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als preview-versie en er [zijn enkele beperkingen van toepassing](#preview-limitations). Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
+> Deze functie is momenteel beschikbaar als preview-versie en er [zijn enkele beperkingen van toepassing](#preview-limitations). Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
 
 
 ## <a name="virtual-network-deployment-limitations"></a>Beperkingen voor de implementatie van virtuele netwerken
@@ -45,8 +46,8 @@ Container resource limieten kunnen verschillen van de limieten voor niet-gewerkt
 ### <a name="unsupported-networking-scenarios"></a>Niet-ondersteunde netwerk scenario's 
 
 * **Azure Load Balancer** het plaatsen van een Azure Load Balancer vóór container instanties in een groep met netwerk containers wordt niet ondersteund
-* **Peering op virtueel netwerk** : u kunt geen peering van een virtueel netwerk met een subnet dat is overgedragen aan Azure container instances naar een ander virtueel netwerk
-* **Route tabellen** -door de gebruiker gedefinieerde routes kunnen niet worden ingesteld in een subnet dat is overgedragen aan Azure container instances
+* **Peering van virtuele netwerken** -VNet-peering werkt niet voor ACI als het netwerk waarop de ACI-vnet wordt gekoppeld, gebruikmaakt van een open bare IP-ruimte. Het peered netwerk heeft een persoonlijke IP-adres ruimte van RFC1918 nodig om peering te kunnen gebruiken. Daarnaast kunt u momenteel alleen uw VNet koppelen aan een ander VNet
+* **Route ring van virtueel netwerk verkeer** : klant routes kunnen niet worden ingesteld rond open bare ip's. Routes kunnen worden ingesteld binnen de privé-IP-ruimte van het overgedragen subnet waarin de ACI-bronnen worden geïmplementeerd 
 * **Netwerk beveiligings groepen** : uitgaande beveiligings regels in nsg's die zijn toegepast op een subnet dat is overgedragen aan Azure container instances, worden momenteel niet afgedwongen 
 * **Openbaar IP-of DNS-label** -container groepen die zijn geïmplementeerd in een virtueel netwerk ondersteunen momenteel geen ondersteuning voor het rechtstreeks weer geven van containers op internet met een openbaar IP-adres of een Fully Qualified Domain name
 * **Interne naam omzetting** : naam omzetting voor Azure-resources in het virtuele netwerk via de interne Azure DNS wordt niet ondersteund
@@ -63,7 +64,7 @@ Een virtueel netwerk definieert de adres ruimte waarin u een of meer subnetten m
 
 ### <a name="subnet-delegated"></a>Subnet (gedelegeerd)
 
-Met subnetten wordt het virtuele netwerk gesegmenteerd tot afzonderlijke adres ruimten die kunnen worden gebruikt door de Azure-resources die u in deze ruimte plaatst. U maakt een of meer subnetten binnen een virtueel netwerk.
+Subnetten voor het segmenteren van het virtuele netwerk in afzonderlijke adresruimten die worden gebruikt door de Azure-resources die u erin plaatst. U maakt een of meer subnetten binnen een virtueel netwerk.
 
 Het subnet dat u voor container groepen gebruikt, mag alleen container groepen bevatten. Wanneer u een container groep voor het eerst naar een subnet implementeert, wordt dat subnet door Azure gedelegeerd aan Azure Container Instances. Wanneer het subnet is gedelegeerd, kan het alleen worden gebruikt voor container groepen. Als u probeert andere resources dan container groepen te implementeren op een overgedragen subnet, mislukt de bewerking.
 

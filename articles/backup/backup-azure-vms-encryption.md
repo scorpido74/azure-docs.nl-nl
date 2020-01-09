@@ -3,12 +3,12 @@ title: Back-up en herstel van versleutelde virtuele Azure-machines
 description: Hierin wordt beschreven hoe u back-ups van versleutelde virtuele Azure-machines maakt en herstelt met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: c4bc413e70d8e19f8006580c0631641651dcaf92
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 2ce0453c0b57ab682fa102f76c31afa567d80778
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172525"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449966"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Back-up en herstel van versleutelde Azure VM
 
@@ -28,7 +28,7 @@ Azure Backup kunt back-ups maken van virtuele Azure-machines met en zonder de Az
 **Type VM-schijf** | **ADE (BEK/DM-cryptografie)** | **ADE en KEK**
 --- | --- | ---
 **Unmanaged** | Ja | Ja
-**Bijgehouden**  | Ja | Ja
+**Beheerd**  | Ja | Ja
 
 - Meer informatie over [ADE](../security/azure-security-disk-encryption-overview.md), [Key Vault](../key-vault/key-vault-overview.md)en [KEKs](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/).
 - Lees de [Veelgestelde vragen](../security/azure-security-disk-encryption-faq.md) over de schijf versleuteling van Azure VM.
@@ -136,10 +136,10 @@ Machtigingen instellen:
 U herstelt versleutelde Vm's als volgt:
 
 1. [Herstel de VM-schijf](backup-azure-arm-restore-vms.md#restore-disks).
-2. Voer vervolgens een van de volgende handelingen uit:
-    - Gebruik de sjabloon die tijdens de herstel bewerking wordt gegenereerd om de VM-instellingen aan te passen en VM-implementatie te activeren. [Meer informatie](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
-    - Maak een nieuwe virtuele machine op basis van de herstelde schijven met behulp van Power shell. [Meer informatie](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
-    - Stel voor Linux-Vm's de ADE-extensie opnieuw in, zodat de gegevens schijven zijn geopend en gekoppeld.
+2. Maak het exemplaar van de virtuele machine opnieuw door een van de volgende handelingen uit te voeren:
+    1. Gebruik de sjabloon die tijdens de herstel bewerking wordt gegenereerd om de VM-instellingen aan te passen en VM-implementatie te activeren. [Meer informatie](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
+    2. Maak een nieuwe virtuele machine op basis van de herstelde schijven met behulp van Power shell. [Meer informatie](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
+3. Voor Linux Vm's installeert u de ADE-extensie opnieuw zodat de gegevens schijven zijn geopend en gekoppeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 

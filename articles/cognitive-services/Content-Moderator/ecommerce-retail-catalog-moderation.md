@@ -1,7 +1,7 @@
 ---
 title: 'Zelf studie: software matige installatie kopieën van e-commerce-Content Moderator'
 titleSuffix: Azure Cognitive Services
-description: Stel een toepassing in om product afbeeldingen met opgegeven labels te analyseren en te classificeren (met behulp van Azure Computer Vision en Custom Vision). Label ongewenste afbeeldingen die verder moeten worden gecontroleerd (met behulp van Azure Content Moderator).
+description: Deze zelf studie laat zien hoe u een toepassing kunt instellen voor het analyseren en classificeren van product afbeeldingen met opgegeven labels (met behulp van Azure Computer Vision en Custom Vision). Label ongewenste afbeeldingen die verder moeten worden gecontroleerd (met behulp van Azure Content Moderator).
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: e3c4f1c641865fa8aa1d01d370063c03bbc0680c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5ee96cd0cf8ca33cae785bc15eb824332dcb3c9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72936035"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382154"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Zelf studie: software matige installatie kopieën van e-commerce met Azure Content Moderator
 

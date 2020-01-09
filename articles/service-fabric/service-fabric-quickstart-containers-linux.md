@@ -1,28 +1,18 @@
 ---
-title: Een Linux-containertoepassing voor Azure Service Fabric maken in Azure | Microsoft Docs
+title: Een Linux-container-app maken op Service Fabric in azure
 description: In deze snelstartgids maakt u een Docker-installatiekopie met uw toepassing, pusht u de installatiekopie naar een containerregister en implementeert u de container vervolgens naar een Service Fabric-cluster.
-services: service-fabric
-documentationcenter: linux
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: python
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0f6e24d2790f78ab0ec7292640fda3ab30e03a03
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: eb0a83d0110002cc32998af4083d06cf6e86e16a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599413"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372683"
 ---
-# <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Quickstart: Linux-containers implementeren op Service Fabric
+# <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Snelstartgids: Linux-containers implementeren op Service Fabric
 
 Azure Service Fabric is een platform voor gedistribueerde systemen waarmee u schaalbare en betrouwbare microservices en containers implementeert en beheert.
 
@@ -189,9 +179,9 @@ az group delete --name $ResourceGroupName
 ```
 
 Als u klaar bent met het cluster, kunt u het certificaat verwijderen uit het certificaatarchief. Bijvoorbeeld:
-- In Windows: Gebruik de [MMC-module Certificaten](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Selecteer **Mijn gebruikersaccount** wanneer u de module toevoegt. Navigeer naar `Certificates - Current User\Personal\Certificates` en verwijder het certificaat.
-- Op de Mac: Gebruik de app Sleutelhanger.
-- Op Ubuntu: Volg de stappen die u hebt gebruikt om certificaten weer te geven en verwijder het certificaat.
+- Op Windows: gebruik de [MMC-module Certificaten](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Selecteer **Mijn gebruikersaccount** wanneer u de module toevoegt. Navigeer naar `Certificates - Current User\Personal\Certificates` en verwijder het certificaat.
+- Op Mac: gebruik de app Sleutelhanger.
+- Op Ubuntu: volg de stappen die u hebt gebruikt om certificaten weer te geven en verwijder het certificaat.
 
 ## <a name="next-steps"></a>Volgende stappen
 

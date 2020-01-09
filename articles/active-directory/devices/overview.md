@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b56319579bc8766bbd8467296daf41e25fc31862
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 73104cc1bcd9266cbb9e5b1985dac4a4566f0a74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420517"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423121"
 ---
 # <a name="what-is-a-device-identity"></a>Wat is een apparaat-id?
 
@@ -58,7 +58,10 @@ Apparaten in azure AD kunnen worden beheerd met behulp van Mobile Device Managem
 
 ## <a name="resource-access"></a>Toegang tot bronnen
 
-Registreren en samen voegen bieden uw gebruikers naadloze aanmelding (SSO) voor cloud resources en beheerders de mogelijkheid om beleid voor voorwaardelijke toegang toe te passen op deze resources. 
+Het registreren en koppelen van apparaten aan Azure AD biedt uw gebruikers naadloze aanmelding (SSO) naar cloud resources. Dit proces biedt beheerders de mogelijkheid om beleid voor voorwaardelijke toegang toe te passen op resources op basis van het apparaat waartoe ze toegang hebben. 
+
+> [!NOTE]
+> Voor op apparaten gebaseerd beleid voor voorwaardelijke toegang moeten hybride, aan Azure AD gekoppelde apparaten of aan Azure AD gekoppelde of Azure AD geregistreerde apparaten zijn gekoppeld.
 
 Apparaten die zijn toegevoegd aan Azure AD of hybride Azure AD, profiteren van eenmalige aanmelding bij de on-premises resources van uw organisatie en in cloud resources. Meer informatie vindt u in het artikel, [hoe SSO to on-premises resources werkt op apparaten die zijn toegevoegd aan Azure AD](azuread-join-sso.md).
 
@@ -66,14 +69,14 @@ Apparaten die zijn toegevoegd aan Azure AD of hybride Azure AD, profiteren van e
 
 - **Geregistreerde apparaten van Azure AD** gebruiken een account dat wordt beheerd door de eind gebruiker. dit account is een Microsoft-account of een andere lokaal beheerde referentie die is beveiligd met een of meer van de volgende.
    - Wachtwoord
-   - PINCODE
+   - VASTMAKEN
    - Patroon
    - Windows Hello
 - Aan **Azure AD gekoppelde of hybride Azure AD gekoppelde apparaten** maken gebruik van een organisatie account in azure AD dat is beveiligd met een of meer van de volgende.
    - Wachtwoord
    - Windows Hello voor Bedrijven
 
-## <a name="provisioning"></a>Inrichten
+## <a name="provisioning"></a>Inrichting
 
 Het ophalen van apparaten in voor Azure AD kan worden uitgevoerd op een selfservice manier of een bewaakt inrichtings proces door beheerders.
 

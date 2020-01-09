@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/11/2019
-ms.openlocfilehash: 356c8389ed486246ce55b5006e1e489ac7c3c1e3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 5a647dda21855f754754f76682e5c00443eaac55
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884787"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432609"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Verwerking van geolocatie en IP-adres
 
@@ -20,7 +20,7 @@ In dit artikel wordt uitgelegd hoe geolocatie lookup en IP-adres afhandeling pla
 
 ## <a name="default-behavior"></a>Standaardgedrag
 
-IP-adressen worden standaard tijdelijk verzameld, maar niet opgeslagen in Application Insights. Het basis proces is als volgt:
+IP-adressen worden standaard tijdelijk verzameld, maar niet opgeslagen in Application Insights. Het basisproces verloopt als volgt:
 
 IP-adressen worden verzonden naar Application Insights als onderdeel van telemetriegegevens. Bij het bereiken van het opname-eind punt in azure wordt het IP-adres gebruikt voor het uitvoeren van een geolocatie lookup met [GeoLite2 van Maxmind](https://dev.maxmind.com/geoip/geoip2/geolite2/). De resultaten van deze zoek actie worden gebruikt om de volgende velden in te vullen `client_City`, `client_StateOrProvince``client_CountryOrRegion`. Op dit moment wordt het IP-adres verwijderd en worden `0.0.0.0` naar het veld `client_IP` geschreven.
 
@@ -101,7 +101,7 @@ Als u het gedrag voor een enkele Application Insights resource alleen hoeft te w
     
     Er wordt een lijst met eigenschappen geretourneerd als resultaat. Een van de eigenschappen moet `DisableIpMasking: true`lezen. Als u de Power shell uitvoert voordat u de nieuwe eigenschap met Azure Resource Manager implementeert, bestaat de eigenschap niet.
 
-### <a name="rest-api"></a>Rest API
+### <a name="rest-api"></a>REST API
 
 De nettolading van de [rest-API](https://docs.microsoft.com/rest/api/azure/) voor het maken van dezelfde wijzigingen is als volgt:
 
@@ -154,7 +154,7 @@ namespace MyWebApp
 > [!NOTE]
 > Als u geen toegang hebt tot `ISupportProperties`, controleert u of u de laatste stabiele versie van de Application Insights SDK uitvoert. `ISupportProperties` zijn bedoeld voor hoge kardinaliteit waarden, terwijl `GlobalProperties` geschikter zijn voor waarden met weinig kardinaliteit, zoals regio naam, omgevings naam, enzovoort. 
 
-### <a name="enable-telemetry-initializer-for-aspnet"></a>Schakel de initialisatie functie voor telemetrie in voor. ASP.NET
+### <a name="enable-telemetry-initializer-for-aspnet"></a>De initialisatie functie voor telemetrie voor ASP.NET inschakelen
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility;

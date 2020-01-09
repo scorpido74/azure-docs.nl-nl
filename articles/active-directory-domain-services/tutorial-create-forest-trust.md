@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: f861303b7f3bc8d37caf6da0eaf2f4cef4b36ee5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd0ec46d224e68f92b5d042826633d1efc7c336e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233595"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425423"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Zelf studie: een uitgaande forest-vertrouwens relatie maken met een on-premises domein in Azure Active Directory Domain Services (preview-versie)
 
@@ -43,6 +43,9 @@ U hebt de volgende resources en bevoegdheden nodig om deze zelf studie te volt o
     * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
 * Een Azure Active Directory Domain Services beheerd domein dat is gemaakt met behulp van een resource-forest en geconfigureerd in uw Azure AD-Tenant.
     * Als dat nodig is, kunt [u een Azure Active Directory Domain Services-exemplaar maken en configureren][create-azure-ad-ds-instance-advanced].
+    
+    > [!IMPORTANT]
+    > Zorg ervoor dat u een beheerd domein van Azure AD DS maakt met behulp van een *resource* -forest. Met de standaard optie wordt een *gebruikers* forest gemaakt. Alleen bron-forests kunnen vertrouwens relaties maken met on-premises AD DS omgevingen.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -82,6 +85,10 @@ Als u binnenkomende vertrouwens relatie wilt configureren voor het on-premises A
 1. Selecteer **Start | Systeem beheer | Active Directory domeinen en vertrouwens relaties**
 1. Klik met de rechter muisknop op domein, zoals *onprem.contoso.com*, selecteer **Eigenschappen**
 1. Klik op het tabblad **vertrouwens relaties** en vervolgens op **nieuwe vertrouwens relatie**
+
+   > [!NOTE]
+   > Als u de menu optie **vertrouwens relaties** niet ziet, controleert u onder **Eigenschappen** voor het *type forest*. Alleen *bron* -forests kunnen vertrouwens relaties maken. Als het forest-type *gebruiker*is, kunt u geen vertrouwens relaties maken. Er is momenteel geen manier om het type forest van een door Azure AD DS beheerd domein te wijzigen. U moet het beheerde domein verwijderen en opnieuw maken als een resource-forest.
+
 1. Voer een naam in voor Azure AD DS domein naam, bijvoorbeeld *aadds.contoso.com*, en selecteer vervolgens **volgende**
 1. Selecteer de optie voor het maken van een **forestvertrouwensrelatie**en vervolgens het maken van een **eenrichtings vertrouwensrelatie: inkomend** vertrouwen.
 1. Kies ervoor om de vertrouwens relatie **alleen voor dit domein**te maken. In de volgende stap maakt u de vertrouwens relatie in de Azure Portal voor het beheerde domein van Azure AD DS.
@@ -181,7 +188,7 @@ Met de virtuele machine van Windows Server die is toegevoegd aan het Azure AD DS
 1. Selecteer *FileServerAccess* in de lijst **groepen of gebruikers namen** . Kies in de lijst **machtigingen voor FileServerAccess** de optie *toestaan* voor de machtigingen **wijzigen** en **schrijven** en selecteer vervolgens **OK**.
 1. Selecteer het tabblad **delen** en kies vervolgens **Geavanceerd delen...**
 1. Kies **deze map delen**en voer een naam in voor het onthouden van de bestands share in **share naam** , zoals *CrossForestShare*.
-1. Selecteer **machtigingen**. Klik in de lijst **machtigingen voor iedereen** op **toestaan** voor de **wijzigings** machtiging.
+1. Selecteer **Machtigingen**. Klik in de lijst **machtigingen voor iedereen** op **toestaan** voor de **wijzigings** machtiging.
 1. Selecteer **OK** twee keer en vervolgens **sluiten**.
 
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>Verificatie tussen forests valideren voor een resource
@@ -197,7 +204,7 @@ Met de virtuele machine van Windows Server die is toegevoegd aan het Azure AD DS
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * DNS configureren in een on-premises AD DS omgeving ter ondersteuning van Azure AD DS-connectiviteit

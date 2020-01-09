@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: 891f680485ec3ee65c0bef102eb7f52cea0611c6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 57bc5739d8e6b1fa30482de69285c8895294cfa8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839634"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454764"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>Eind punten maken voor geïmplementeerde Azure Machine Learning Studio (klassieke) webservices
 
@@ -27,7 +27,7 @@ Elk eind punt in de webservice wordt onafhankelijk aangepakt, beperkt en beheerd
 
 ## <a name="add-endpoints-to-a-web-service"></a>Eind punten toevoegen aan een webservice
 
-U kunt een eind punt toevoegen aan een webservice met behulp van de Azure Machine Learning Web Services-portal. Zodra het eind punt is gemaakt, kunt u het gebruiken via synchrone Api's, batch-Api's en Excel-werk bladen.
+U kunt een eind punt toevoegen aan een webservice met behulp van de Azure Machine Learning Web Services-portal. Zodra het eindpunt is gemaakt, kunt u deze via synchrone API's, batch-API's, gebruiken en excel-werkbladen.
 
 > [!NOTE]
 > Als u extra eind punten aan de webservice hebt toegevoegd, kunt u het standaard eindpunt niet verwijderen.
@@ -35,11 +35,11 @@ U kunt een eind punt toevoegen aan een webservice met behulp van de Azure Machin
 1. Klik in Machine Learning Studio (klassiek) in de linker navigatie kolom op Web Services.
 2. Klik onder aan het dash board van de webservice op **eind punten beheren**. De Azure Machine Learning Web Services-portal wordt geopend op de pagina eind punten voor de webservice.
 3. Klik op **Nieuw**.
-4. Typ een naam en beschrijving voor het nieuwe eind punt. Namen van eind punten moeten uit 24 tekens of minder bestaan en moeten bestaan uit kleine letters of cijfers. Selecteer het logboek registratie niveau en of voorbeeld gegevens zijn ingeschakeld. Zie [logboek registratie inschakelen voor machine learning-webservices](web-services-logging.md)voor meer informatie over logboek registratie.
+4. Typ een naam en beschrijving voor het nieuwe eindpunt. Namen van eindpunten 24 tekens of minder lang moeten zijn en moeten bestaan uit kleine letters of cijfers. Selecteer het niveau van logboekregistratie en of de voorbeeldgegevens is ingeschakeld. Zie [logboek registratie inschakelen voor machine learning-webservices](web-services-logging.md)voor meer informatie over logboek registratie.
 
 ## <a id="scaling"></a>Een webservice schalen door extra eind punten toe te voegen
 
-Elke gepubliceerde webservice is standaard geconfigureerd voor de ondersteuning van 20 gelijktijdige aanvragen en kan Maxi maal 200 gelijktijdige aanvragen zijn. De klassieke versie van Azure Machine Learning Studio optimaliseert automatisch de instelling om de beste prestaties voor uw webservice te bieden en de waarde van de portal wordt genegeerd.
+Elke gepubliceerde webservice is standaard geconfigureerd voor de ondersteuning van 20 gelijktijdige aanvragen en kan Maxi maal 200 gelijktijdige aanvragen zijn. Azure Machine Learning Studio (klassiek) optimaliseert automatisch de instelling om de beste prestaties voor uw webservice te bieden en de waarde van de portal wordt genegeerd.
 
 Als u van plan bent de API aan te roepen met een hogere belasting dan een maximum waarde voor gelijktijdige aanroepen van 200, moet u meerdere eind punten maken op dezelfde webservice. U kunt de belasting vervolgens wille keurig verdelen over al deze taken.
 

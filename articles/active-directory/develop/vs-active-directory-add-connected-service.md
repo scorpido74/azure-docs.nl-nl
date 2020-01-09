@@ -1,5 +1,5 @@
 ---
-title: Een Azure AD toevoegen met verbonden services
+title: De Active Directory verbonden service gebruiken (Visual Studio)
 description: Een Azure Active Directory toevoegen met behulp van het dialoog venster verbonden services van Visual Studio toevoegen
 author: ghogen
 manager: jillfra
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bbbf002110d997d18c49fb03ad599342cdf618d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 435ec76a6a7ffe81c1be2752d69b79c1fb8d0bd2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964196"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423183"
 ---
-# <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Een Azure Active Directory toevoegen met behulp van verbonden services in Visual Studio
+# <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Een Azure Active Directory toevoegen met behulp van verbonden services in Visual Studio
 
 Door Azure Active Directory (Azure AD) te gebruiken, kunt u eenmalige aanmelding (SSO) voor ASP.NET MVC-webtoepassingen of Active Directory-verificatie in Web API-services ondersteunen. Met Azure AD-verificatie kunnen uw gebruikers hun accounts gebruiken van Azure Active Directory om verbinding te maken met uw webtoepassingen. De voor delen van Azure AD-verificatie met Web API bevatten verbeterde gegevens beveiliging bij het weer geven van een API van een webtoepassing. Met Azure AD hoeft u geen afzonderlijk verificatie systeem te beheren met een eigen account en gebruikers beheer.
 

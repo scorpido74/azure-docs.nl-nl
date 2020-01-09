@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
-ms.openlocfilehash: 3feadaca361950df2a09f8da33fe380fc3763763
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: cd859a4009782ca39732ec004a3d3e05edd377b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614816"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442899"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor het beheer van container-installatiekopie en beveiliging in Azure Kubernetes Service (AKS)
 
 Als u toepassingen ontwikkelen en in Azure Kubernetes Service (AKS uitvoeren), is de beveiliging van uw containers en containerinstallatiekopieën belangrijkste overweging. Containers die verouderd zijn basis afbeeldingen of niet-gepatchte toepassing runtimes introduceren een beveiligingsrisico en een mogelijke aanvalsvector. Om te beperken deze risico's, moet u de hulpprogramma's die zoeken en oplossen van problemen in uw containers op build-tijd, evenals runtime integreren. De eerder in het proces dat de kwetsbaarheid of verouderd basisinstallatiekopie wordt geblokkeerd, is het veiliger het cluster. In dit artikel *containers* betekent dat zowel de containerinstallatiekopieën worden opgeslagen in een container registry, en de actieve containers.
 
-In dit artikel richt zich op het beveiligen van uw containers in AKS. In deze zelfstudie leert u procedures om het volgende te doen:
+In dit artikel richt zich op het beveiligen van uw containers in AKS. Procedures voor:
 
 > [!div class="checklist"]
 > * Zoeken en afbeelding beveiligingsproblemen herstellen
@@ -26,11 +26,13 @@ In dit artikel richt zich op het beveiligen van uw containers in AKS. In deze ze
 
 U kunt ook de aanbevolen procedures voor [cluster beveiliging][best-practices-cluster-security] en voor [pod-beveiliging][best-practices-pod-security]lezen.
 
+U kunt ook [container beveiliging in Security Center][security-center-containers] gebruiken om uw containers te helpen scannen op beveiligings problemen.  Er is ook [Azure container Registry integratie][security-center-acr] met Security Center om uw installatie kopieën en het REGI ster te beschermen tegen beveiligings problemen.
+
 ## <a name="secure-the-images-and-run-time"></a>Beveiligen van de installatiekopieën en uitvoeringstijd
 
 **Aanbevolen procedurerichtlijn** - Scan van uw containerinstallatiekopieën op beveiligingsproblemen en alleen installatiekopieën die zijn geslaagd voor de validatie te implementeren. Regelmatig de basisinstallatiekopieën en runtime voor de toepassing bijwerken en opnieuw implementeren van workloads in de AKS-cluster.
 
-Een probleem met de acceptatie van werkbelastingen op basis van een container met het controleren van de beveiliging van installatiekopieën en runtime die wordt gebruikt om uw eigen toepassingen te bouwen. Hoe zorgt u ervoor dat u niet leiden beveiligingsproblemen in uw implementaties tot? De implementatie werk stroom moet een proces bevatten voor het scannen van container installatie kopieën met behulp van hulpprogram ma's zoals [Twistlock][twistlock] of zeeblauw. vervolgens mogen alleen geverifieerde installatie kopieën worden geïmplementeerd. [][aqua]
+Een probleem met de acceptatie van werkbelastingen op basis van een container met het controleren van de beveiliging van installatiekopieën en runtime die wordt gebruikt om uw eigen toepassingen te bouwen. Hoe zorgt u ervoor dat u niet leiden beveiligingsproblemen in uw implementaties tot? De implementatie werk stroom moet een proces bevatten voor het scannen van container installatie kopieën met behulp van hulpprogram ma's zoals [Twistlock][twistlock] of [zeeblauw][aqua]. vervolgens mogen alleen geverifieerde installatie kopieën worden geïmplementeerd.
 
 ![Scannen en herstellen van containerinstallatiekopieën, valideren en implementeren](media/operator-best-practices-container-security/scan-container-images-simplified.png)
 
@@ -61,3 +63,5 @@ In dit artikel is gericht op over het beveiligen van uw containers. Voor het imp
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [acr-base-image-update]: ../container-registry/container-registry-tutorial-base-image-update.md
+[security-center-containers]: /azure/security-center/container-security
+[security-center-acr]: /azure/security-center/azure-container-registry-integration

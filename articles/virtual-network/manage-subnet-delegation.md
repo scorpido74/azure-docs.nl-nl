@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 340c9192b43cbcf2daacfb791d85135518dd970c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6eab9ac7cf4547cb7fe3e736c16c3c0bd5f5bd9d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747880"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425892"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Een subnet delegering toevoegen of verwijderen
 
@@ -38,7 +38,7 @@ In deze sectie maakt u een virtueel netwerk en het subnet dat u later delegeert 
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Naam | Voer *MyVirtualNetwork*in. |
+    | Name | Voer *MyVirtualNetwork*in. |
     | Adresruimte | Voer *10.0.0.0/16* in. |
     | Abonnement | Selecteer uw abonnement.|
     | Resourcegroep | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
@@ -89,8 +89,8 @@ In het volgende voorbeeld wordt een resourcegroep met de naam **myResourceGroup*
 
 ```
 
-### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
-Maak met **az network vnet create** een virtueel netwerk met de naam **myVnet** met een subnet met de naam **mySubnet** in [myResourceGroup](https://docs.microsoft.com/cli/azure/network/vnet).
+### <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
+Maak met [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) in **myResourceGroup** een virtueel netwerk met de naam **myVnet** met een subnet met de naam **mySubnet**.
 
 ```azurecli-interactive
   az network vnet create \
@@ -124,7 +124,7 @@ Gebruik [AZ Network vnet subnet update](https://docs.microsoft.com/cli/azure/net
 Gebruik [AZ Network vnet subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)om te controleren of de overdracht is toegepast. Controleer of de service wordt overgedragen aan het subnet onder de eigenschap **service**naam:
 
 ```azurecli-interactive
-  az network vnet show \
+  az network vnet subnet show \
   --resource-group myResourceGroup \
   --name mySubnet \
   --vnet-name myVnet

@@ -2,18 +2,18 @@
 title: Diagnostische gegevens opslaan en weergeven in Azure Storage
 description: Meer informatie over het verzamelen van diagnostische gegevens van Azure in een Azure Storage-account, zodat u deze kunt bekijken met een van de beschik bare hulpprogram ma's.
 services: azure-monitor
-author: jpconnock
+author: bwren
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 08/01/2016
-ms.author: jeconnoc
+ms.author: bwren
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 35e852a36ebc52edff338ed640419afe32297b81
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: c9d751a7e3d01860b3b5860f1e75fa3767cd4f3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304962"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395016"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Diagnostische gegevens opslaan en weergeven in Azure Storage
 Diagnostische gegevens worden niet permanent opgeslagen, tenzij u deze overdraagt naar de Microsoft Azure Storage emulator of naar Azure Storage. Eenmaal in de opslag kan het worden weer gegeven met een van de beschik bare hulpprogram ma's.

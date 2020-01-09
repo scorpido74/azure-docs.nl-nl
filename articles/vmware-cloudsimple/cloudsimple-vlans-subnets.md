@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7af191893d6b3cf1c38e5ff44a7a8a04509347a8
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 2451fbb69636624db354006df2a7925ef9e75459
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543798"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372734"
 ---
 # <a name="vlans-and-subnets-overview"></a>Overzicht van VLAN'S en subnetten
 
@@ -21,7 +21,7 @@ CloudSimple biedt een netwerk per regio waar uw CloudSimple-service is geïmplem
 
 ![CloudSimple-netwerk topologie](media/cloudsimple-network-topology.png)
 
-## <a name="vlans"></a>Vlan's
+## <a name="vlans"></a>VLAN's
 
 Voor elke Privécloud wordt een VLAN (Layer 2-netwerk) gemaakt.  Het laag 2-verkeer blijft binnen de grenzen van een Privécloud, zodat u het lokale verkeer binnen de Privécloud kunt isoleren.  Een VLAN dat is gemaakt in de Privécloud kan worden gebruikt om gedistribueerde poort groepen alleen in die Privécloud te maken.  Een VLAN dat is gemaakt in een Privécloud, wordt automatisch geconfigureerd op alle switches die zijn verbonden met de hosts van een Privécloud.
 
@@ -38,14 +38,14 @@ Een Privécloud wordt gemaakt als een geïsoleerde VMware-stack (ESXi hosts, vCe
 * Minimum aantal vSphere/vSAN-subnetten CIDR-bereik voor voegsel: **/24**
 * Maximum aantal vSphere/vSAN-subnetten voor voegsel van CIDR-bereik: **/21**
 
-> [!IMPORTANT]
+> [!CAUTION]
 > IP-adressen in het vSphere/vSAN CIDR-bereik zijn gereserveerd voor gebruik door de infra structuur van de Privécloud.  Gebruik het IP-adres in dit bereik op geen enkele virtuele machine.
 
 ### <a name="vspherevsan-subnets-cidr-range-limits"></a>vSphere/vSAN subnetten CIDR-bereik limieten
 
 Het selecteren van de vSphere/vSAN-subnetten CIDR-bereik grootte heeft gevolgen voor de grootte van uw Privécloud.  In de volgende tabel ziet u het maximum aantal knoop punten dat u kunt hebben op basis van de grootte van de vSphere/vSAN-subnetten CIDR.
 
-| Opgegeven vSphere/vSAN-subnetten CIDR-voor voegsel lengte | Maximumaantal knooppunten |
+| Opgegeven vSphere/vSAN-subnetten CIDR-voor voegsel lengte | Maximum aantal knoop punten |
 |---------------------------------------------------|-------------------------|
 | /24 | 26 |
 | /23 | 58 |

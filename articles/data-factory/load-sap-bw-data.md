@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 7d9c0000964348b7c9c83ccbc2490677614c50cd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 971871c28bd1b38b134c04b0334fbe99d1d655c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931470"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440142"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Gegevens van SAP Business Warehouse kopiëren met behulp van Azure Data Factory
 
@@ -156,11 +156,15 @@ Selecteer op de pagina data factory **aan de slag** de optie **pijp lijn maken v
 
    - **SAPOpenHubDestinationName**: Geef de naam van de open hub-tabel op waaruit u gegevens wilt kopiëren.
 
-   - **ADLSGen2SinkPath**: Geef het doel Azure data Lake Storage Gen2 pad op waarnaar u gegevens wilt kopiëren. Als het pad niet bestaat, maakt de Data Factory Kopieer activiteit tijdens de uitvoering een pad.
+   - **Data_Destination_Container**: Geef de doel Azure data Lake Storage Gen2 container op waarnaar u gegevens wilt kopiëren. Als de container niet bestaat, maakt de Data Factory Kopieer activiteit tijdens de uitvoering een.
+  
+   - **Data_Destination_Directory**: Geef het mappad op onder de Azure data Lake Storage Gen2-container waarnaar u gegevens wilt kopiëren. Als het pad niet bestaat, maakt de Data Factory Kopieer activiteit tijdens de uitvoering een pad.
+  
+   - **HighWatermarkBlobContainer**: Geef de container op waarin de hoogste watermerk waarde moet worden opgeslagen.
 
-   - **HighWatermarkBlobPath**: Geef het pad op voor het opslaan van de hoogste watermerk waarde, zoals `container/path`.
+   - **HighWatermarkBlobDirectory**: Geef het mappad op onder de container waarin de hoogste watermerk waarde moet worden opgeslagen.
 
-   - **HighWatermarkBlobName**: Geef de naam van de BLOB op voor het opslaan van de bovengrens waarde, zoals `requestIdCache.txt`. Ga in Blob Storage naar het overeenkomstige pad van HighWatermarkBlobPath + HighWatermarkBlobName, zoals *container/pad/requestIdCache. txt*. Maak een blob met inhoud 0.
+   - **HighWatermarkBlobName**: Geef de naam van de BLOB op voor het opslaan van de bovengrens waarde, zoals `requestIdCache.txt`. Ga in Blob Storage naar het overeenkomstige pad van HighWatermarkBlobContainer + HighWatermarkBlobDirectory + HighWatermarkBlobName, zoals *container/pad/requestIdCache. txt*. Maak een blob met inhoud 0.
 
       ![Blob-inhoud](media/load-sap-bw-data/blob.png)
 
@@ -185,11 +189,11 @@ Selecteer op de pagina data factory **aan de slag** de optie **pijp lijn maken v
          }
          ```
 
-      3. Voeg een actie **Blob maken** toe. Voor **mappad** en **BLOB-naam**gebruikt u dezelfde waarden die u eerder hebt geconfigureerd in **HighWatermarkBlobPath** en **HighWatermarkBlobName**.
+      3. Voeg een actie **Blob maken** toe. Voor **mappad** en **BLOB-naam**gebruikt u dezelfde waarden die u eerder hebt geconfigureerd in *HighWatermarkBlobContainer + HighWatermarkBlobDirectory* en *HighWatermarkBlobName*.
 
       4. Selecteer **Opslaan**. Kopieer vervolgens de waarde van de **http post-URL** voor gebruik in de Data Factory-pijp lijn.
 
-4. Nadat u de para meters voor de Data Factory pijplijn hebt opgegeven, selecteert u **fout opsporing** > **volt ooien** om de configuratie te valideren. Of selecteer **Alles publiceren** om de wijzigingen te publiceren en selecteer vervolgens **trigger** om een uitvoering uit te voeren.
+4. Nadat u de para meters voor de Data Factory pijplijn hebt opgegeven, selecteert u **fout opsporing** > **volt ooien** om de configuratie te valideren. Of selecteer **publiceren** om alle wijzigingen te publiceren en selecteer vervolgens **trigger toevoegen** om een uitvoering uit te voeren.
 
 ## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW open hub-doel configuraties
 

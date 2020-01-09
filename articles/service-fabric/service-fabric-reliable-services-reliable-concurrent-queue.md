@@ -1,25 +1,14 @@
 ---
 title: ReliableConcurrentQueue in azure Service Fabric
 description: ReliableConcurrentQueue is een wachtrij met hoge door Voer waarmee parallelle in en dequeues zijn toegestaan.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: raja,tyadam,masnider,vturecek
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 5/1/2017
-ms.author: atsenthi
-ms.openlocfilehash: 776d330e36e6bcafe610bbab54e13ff6c41e2edf
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a7115db8259fde0e87e53557ecef730f8e82d2fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350288"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462740"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Inleiding tot ReliableConcurrentQueue in azure Service Fabric
 Betrouw bare, gelijktijdige wachtrij is een asynchrone, transactionele en gerepliceerde wachtrij, die een hoge gelijktijdigheid voor bewerkingen in de wachtrij plaatsen en verwijderen. Het is ontworpen om hoge door Voer en lage latentie te bieden door de strikte FIFO-volg orde die wordt geleverd door een [betrouw bare wachtrij](https://msdn.microsoft.com/library/azure/dn971527.aspx) te verminderen en in plaats daarvan een best mogelijke volg orde te bieden.
@@ -49,7 +38,7 @@ Een voor beeld van een use-case voor ReliableConcurrentQueue is het scenario voo
 * Aantal is niet-transactioneel. Het kan worden gebruikt om een idee te krijgen van het aantal elementen in de wachtrij, maar dit is een tijdgebonden punt en kan niet worden vertrouwd op.
 * De dure verwerking van items in de wachtrij mag niet worden uitgevoerd terwijl de trans actie actief is, om langlopende trans acties te voor komen die invloed kunnen hebben op de prestaties van het systeem.
 
-## <a name="code-snippets"></a>Code fragmenten
+## <a name="code-snippets"></a>Codefragmenten
 Laat ons enkele code fragmenten zien en de verwachte uitvoer. Afhandeling van uitzonde ringen wordt in deze sectie genegeerd.
 
 ### <a name="instantiation"></a>Instantiëring
@@ -62,7 +51,7 @@ IReliableConcurrentQueue<int> queue = await this.StateManager.GetOrAddAsync<IRel
 ### <a name="enqueueasync"></a>EnqueueAsync
 Hier volgen enkele code fragmenten voor het gebruik van EnqueueAsync, gevolgd door de verwachte uitvoer.
 
-- *Case 1: Eén taak voor in wachtrij plaatsen @ no__t-0
+- *Voor beeld 1: één taak in wachtrij plaatsen*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -81,7 +70,7 @@ Stel dat de taak is voltooid en dat er geen gelijktijdige trans acties zijn die 
 > 20, 10
 
 
-- *Case 2: Parallelle taak in wachtrij @ no__t-0
+- *Voor beeld 2: taak parallel in wachtrij plaatsen*
 
 ```
 // Parallel Task 1
@@ -110,7 +99,7 @@ Stel dat de taken zijn voltooid, dat de taken parallel werden uitgevoerd en dat 
 Hier volgen enkele code fragmenten voor het gebruik van TryDequeueAsync, gevolgd door de verwachte uitvoer. Stel dat de wachtrij al is gevuld met de volgende items in de wachtrij:
 > 10, 20, 30, 40, 50, 60
 
-- *Case 1: Enkele dewachtrij-taak @ no__t-0
+- *Voor beeld 1: enkele taak uit wachtrij*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -125,7 +114,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 Stel dat de taak is voltooid en dat er geen gelijktijdige trans acties zijn die de wachtrij wijzigen. Omdat er geen interferentie kan worden gemaakt over de volg orde van de items in de wachtrij, kunnen drie van de items in een wille keurige volg orde worden verwijderd. Er wordt geprobeerd de items in de oorspronkelijke volg orde (in de wachtrij) te houden, maar dit kan worden afgesteld als gevolg van gelijktijdige bewerkingen of fouten.  
 
-- *Case 2: Taak voor parallelle dewachtrij @ no__t-0
+- *Voor beeld 2: taak parallel dewachtrij*
 
 ```
 // Parallel Task 1
@@ -153,7 +142,7 @@ Stel dat de taken zijn voltooid, dat de taken parallel werden uitgevoerd en dat 
 
 Hetzelfde item wordt *niet* weer gegeven in beide lijsten. Als dequeue1 *10*, *30*heeft, is dequeue2 dus *20*, *40*.
 
-- *Case 3: Ordening van de wachtrij met trans actie afbreken @ no__t-0
+- *Case 3: het ordenen van een wachtrij met een trans actie afbreken*
 
 Als een trans actie wordt afgebroken met een in-Flight wachtrij, worden de items weer gegeven in de kop van de wachtrij. De volg orde waarin de items worden geplaatst op het hoofd van de wachtrij is niet gegarandeerd. We kijken naar de volgende code:
 
@@ -275,7 +264,7 @@ while(!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="best-effort-drain"></a>Afvoer met Best effort
-Een afvoer van de wachtrij kan niet worden gegarandeerd vanwege de gelijktijdige aard van de gegevens structuur.  Het is mogelijk dat, zelfs als er geen gebruikers bewerkingen zijn in de vlucht, een bepaalde aanroep naar TryDequeueAsync mogelijk geen item retourneert dat eerder in de wachtrij is geplaatst en doorgevoerd.  Het in de wachtrij geplaatste item moet *uiteindelijk* zichtbaar worden gemaakt voor het dequeueren, maar zonder een out-of-band-communicatie mechanisme kan een onafhankelijke consument niet weten dat de wachtrij een stationaire status heeft bereikt, zelfs als alle producenten zijn gestopt en Nee nieuwe bewerkingen voor plaatsen zijn toegestaan. De afvoer bewerking is dus de beste werk wijze, zoals hieronder is geïmplementeerd.
+Een afvoer van de wachtrij kan niet worden gegarandeerd vanwege de gelijktijdige aard van de gegevens structuur.  Het is mogelijk dat, zelfs als er geen gebruikers bewerkingen zijn in de vlucht, een bepaalde aanroep naar TryDequeueAsync mogelijk geen item retourneert dat eerder in de wachtrij is geplaatst en doorgevoerd.  Het in de wachtrij geplaatste item moet *uiteindelijk* zichtbaar worden gemaakt voor het dequeueren, maar zonder een out-of-band-communicatie mechanisme kan een onafhankelijke consument niet weten dat de wachtrij een stationaire status heeft bereikt, zelfs als alle producenten zijn gestopt en er geen nieuwe bewerkingen voor plaatsen zijn toegestaan. De afvoer bewerking is dus de beste werk wijze, zoals hieronder is geïmplementeerd.
 
 De gebruiker moet alle verdere producer-en Consumer taken stoppen en wachten tot trans acties die in de vlucht zijn doorgevoerd of afgebroken, voordat wordt geprobeerd om de wachtrij leeg te laten.  Als de gebruiker het verwachte aantal items in de wachtrij kent, kunnen ze een melding instellen die aangeeft dat alle items zijn verwijderd uit de wachtrij.
 
@@ -313,7 +302,7 @@ do
 } while (ret.HasValue);
 ```
 
-### <a name="peek"></a>Bekijken
+### <a name="peek"></a>Piek
 ReliableConcurrentQueue biedt geen *TryPeekAsync* -API. Gebruikers kunnen de semantische semantiek weer geven met behulp van een *TryDequeueAsync* en de trans actie vervolgens afbreken. In dit voor beeld worden de wachtrij alleen verwerkt als de waarde van het item groter is dan *10*.
 
 ```

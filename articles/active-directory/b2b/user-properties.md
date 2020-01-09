@@ -1,6 +1,6 @@
 ---
-title: Eigenschappen van een B2B-Gast gebruiker - Azure Active Directory | Microsoft Docs
-description: Azure Active Directory B2B-Gast gebruikerseigenschappen en statussen voor en na verzilvering van uitnodiging
+title: Eigenschappen van een B2B-gast gebruiker-Azure Active Directory | Microsoft Docs
+description: Azure Active Directory B2B gast gebruikers eigenschappen en-statussen vóór en na inwisseling van de uitnodiging
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,99 +12,99 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1416dacd65024457e713547223f5c35290b3d15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aa282afdf910c2449b5d5ea0bc5e38a396f3aa02
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65768154"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608853"
 ---
-# <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschappen van de gebruiker van een Azure Active Directory B2B-samenwerking
+# <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschappen van een Azure Active Directory B2B-samenwerkings gebruiker
 
-Dit artikel beschrijft de eigenschappen en de status van het gebruikersobject B2B-gasten in Azure Active Directory (Azure AD) voor en na een uitnodiging inwisselen. Een Azure AD-gebruiker voor samenwerking business-to-business (B2B) is een gebruiker met UserType = Gast. Deze gastgebruiker meestal afkomstig is van een partnerorganisatie en beperkte bevoegdheden in de map van de uitnodigende, heeft standaard.
+In dit artikel worden de eigenschappen en statussen van het B2B-gast gebruikers object in Azure Active Directory (Azure AD) voor en na de inwisseling van de uitnodiging beschreven. Een Azure AD Business-to-Business-samenwerkings gebruiker (B2B) is een gebruiker met User type = Guest. Deze gast gebruiker is doorgaans van een partner organisatie en heeft beperkte bevoegdheden in de uitgenodigde map.
 
-Afhankelijk van de behoeften van de uitnodigende organisatie, kan de gebruiker van een Azure AD B2B-samenwerking in een van de volgende account statussen zijn:
+Afhankelijk van de behoeften van de uitgenodigde organisatie, kan een Azure AD B2B-samenwerkings gebruiker een van de volgende account statussen hebben:
 
-- Status 1: Homed in een extern exemplaar van Azure AD en weergegeven als een gastgebruiker in de organisatie. In dit geval zich de B2B-gebruiker aanmeldt met een Azure AD-account die deel uitmaakt van de uitgenodigde tenant. Als de andere organisatie geen Azure AD gebruikt, wordt de gastgebruiker in Azure AD nog steeds gemaakt. De vereisten zijn dat ze hun uitnodiging inwisselen en Azure AD verifieert u het e-mailadres. Deze benadering wordt ook een just-in-time (JIT) tenants of een 'viraal' tenants genoemd.
+- Status 1: in een extern exemplaar van Azure AD en wordt weer gegeven als gast gebruiker in de uitnodigende organisatie. In dit geval meldt de B2B-gebruiker zich aan met behulp van een Azure AD-account dat deel uitmaakt van de uitgenodigde Tenant. Als de partner organisatie geen gebruik maakt van Azure AD, wordt de gast gebruiker in azure AD nog steeds gemaakt. De vereisten zijn dat ze hun uitnodiging inwisselen en Azure AD verifieert hun e-mail adres. Deze indeling wordt ook wel een just-in-time (JIT) pacht of een ' virale ' pacht genoemd.
 
-- Status van 2: In een door Microsoft of een andere account homed en weergegeven als een gastgebruiker in de organisatie van de host. In dit geval de gastgebruiker zich aanmeldt met een Microsoft-account of een sociaal account (google.com of vergelijkbaar). De identiteit van de uitgenodigde gebruiker is gemaakt als een Microsoft-account in de adreslijst van de uitnodigende organisatie tijdens de inschrijving van de aanbieding.
+- Status 2: in een micro soft-account en wordt weer gegeven als gast gebruiker in de organisatie van de host. In dit geval meldt de gast gebruiker zich aan met een Microsoft-account of een sociaal account (google.com of vergelijkbaar). De identiteit van de uitgenodigde gebruiker wordt gemaakt als een Microsoft-account in de directory van de organisatie die wordt uitgenodigd tijdens de aanbieding.
 
-- Status van 3: Homed in van de organisatie van de host on-premises Active Directory en gesynchroniseerd met de host-organisatie in Azure AD. U kunt Azure AD Connect gebruiken voor het synchroniseren van de partneraccounts naar de cloud als Azure AD B2B-gebruikers met UserType = Gast. Zie [verlenen partner lokaal beheerde accounts toegang tot cloudbronnen](hybrid-on-premises-to-cloud.md).
+- Status 3: in het on-premises Active Directory van de host-organisatie en gesynchroniseerd met de Azure AD van de host-organisatie. U kunt Azure AD Connect gebruiken om de partner accounts te synchroniseren met de Cloud als Azure AD B2B-gebruikers met User type = gast. Zie [lokaal beheerde partner accounts toegang verlenen tot cloud resources](hybrid-on-premises-to-cloud.md).
 
-- Status van 4: Homed in van de organisatie van de host Azure AD met UserType = Gast en referenties die de organisatie van de host wordt beheerd.
+- Status 4: in de Azure AD van de host-organisatie met User type = gast en referenties die de host-organisatie beheert.
 
-  ![Diagram met de status van de vier gebruiker](media/user-properties/redemption-diagram.png)
+  ![Diagram waarin de vier gebruikers Staten worden weer gegeven](media/user-properties/redemption-diagram.png)
 
 
-Nu gaan we kijken hoe de gebruiker van een Azure AD B2B-samenwerking eruit in Azure AD.
+Nu gaan we kijken hoe een Azure AD B2B-samenwerkings gebruiker eruitziet in azure AD.
 
-### <a name="before-invitation-redemption"></a>Voordat u verzilvering van uitnodiging
+### <a name="before-invitation-redemption"></a>Vóór inwisseling van uitnodiging
 
-Status 1 en 2 voor status-accounts zijn het resultaat van het uitnodigen van gastgebruikers om samen te werken met behulp van de referenties van de gebruikers zelf Gast. Wanneer de uitnodiging naar de gastgebruiker in eerste instantie verzonden is, wordt een account gemaakt in uw directory. Dit account heeft geen referenties die zijn gekoppeld aan deze omdat verificatie wordt uitgevoerd door de gastgebruiker id-provider. De **bron** eigenschap voor het gastgebruikersaccount in de map is ingesteld op **Invited gebruiker**. 
+Status 1-en status 2-accounts zijn het resultaat van het uitnodigen van gast gebruikers om samen te werken met de eigen referenties van de gast gebruikers. Wanneer de uitnodiging voor het eerst naar de gast gebruiker wordt verzonden, wordt er een account in uw directory gemaakt. Aan dit account zijn geen referenties gekoppeld, omdat de verificatie wordt uitgevoerd door de ID-provider van de gast gebruiker. De **bron** eigenschap voor het gast gebruikers account in uw directory is ingesteld op **uitgenodigde gebruiker**. 
 
-![Schermafbeelding van de eigenschappen van de gebruiker voordat u inschrijving van de aanbieding](media/user-properties/before-redemption.png)
+![Scherm opname van de gebruikers eigenschappen voordat de aanbieding wordt weer gegeven](media/user-properties/before-redemption.png)
 
-### <a name="after-invitation-redemption"></a>Na verzilvering van uitnodiging
+### <a name="after-invitation-redemption"></a>Na inwisseling van uitnodiging
 
-Nadat de gastgebruiker de uitnodiging accepteert de **bron** eigenschap is bijgewerkt op basis van de gastgebruiker id-provider.
+Nadat de gast gebruiker de uitnodiging heeft geaccepteerd, wordt de eigenschap **Source** bijgewerkt op basis van de ID-provider van de gast gebruiker.
 
-Voor gastgebruikers ook kunnen in de status 1, de **bron** is **externe Azure Active Directory**.
+Voor gast gebruikers in status 1 is de **bron** **externe Azure Active Directory**.
 
-![Status 1 gastgebruiker na inwisseling van de aanbieding](media/user-properties/after-redemption-state1.png)
+![Gast gebruiker status 1 na aflossing aanbieding](media/user-properties/after-redemption-state1.png)
 
-Gastgebruikers in 2, status, de **bron** is **Microsoft-Account**.
+Voor gast gebruikers met de status 2 is de **bron** een **micro soft-account**.
 
-![De gastgebruiker status 2 na inwisseling van de aanbieding](media/user-properties/after-redemption-state2.png)
+![Status 2 gast gebruiker na inwisseling van aanbieding](media/user-properties/after-redemption-state2.png)
 
-Voor gastgebruikers ook kunnen in de status 3 en 4, status, de **bron** eigenschap is ingesteld op **Azure Active Directory** of **Windows Server Active Directory**, zoals beschreven in de volgende sectie.
+Voor gast gebruikers met de status 3 en status 4 is de eigenschap **Source** ingesteld op **Azure Active Directory** of **Windows Server Active Directory**, zoals wordt beschreven in de volgende sectie.
 
-## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Eigenschappen van de sleutel van de gebruiker van Azure AD B2B-samenwerking
+## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Belangrijkste eigenschappen van de Azure AD B2B-samenwerkings gebruiker
 ### <a name="usertype"></a>UserType
-Deze eigenschap geeft aan dat de relatie van de gebruiker op de host-tenants. Deze eigenschap kan twee waarden hebben:
-- Lid: Deze waarde geeft aan dat een werknemer van de organisatie van de host en een gebruiker in de organisatie salarisadministratie. Deze gebruiker wordt bijvoorbeeld verwacht kunnen toegang hebben tot interne websites. Deze gebruiker wordt niet beschouwd als een externe samenwerker.
+Met deze eigenschap wordt de relatie van de gebruiker met de pacht van de host aangegeven. Deze eigenschap kan twee waarden hebben:
+- Lid: deze waarde geeft een werk nemer van de host-organisatie aan en een gebruiker in de salaris administratie van de organisatie. Deze gebruiker verwacht bijvoorbeeld dat deze toegang moet hebben tot alleen-interne sites. Deze gebruiker wordt niet beschouwd als een externe samen werker.
 
-- Gast: Deze waarde geeft aan dat een gebruiker die wordt niet beschouwd als intern gebruik binnen het bedrijf, zoals een externe samenwerker, partner of klant. Een gebruiker is niet ontvangen van een CEO interne memo of ontvangen van de voordelen van het bedrijf, bijvoorbeeld verwacht.
+- Gast: deze waarde geeft aan dat een gebruiker die niet als intern wordt beschouwd bij het bedrijf, zoals een externe mede werker, partner of klant. Een dergelijke gebruiker wordt niet verwacht dat er een interne memo van een CEO wordt ontvangen of voor delen van het bedrijf worden ontvangen.
 
   > [!NOTE]
-  > Het UserType is niet gekoppeld aan hoe de gebruiker zich aanmeldt, de directory-rol van de gebruiker, enzovoort. Deze eigenschap geeft aan dat de relatie van de gebruiker voor de organisatie van de host gewoon en kan de organisatie om af te dwingen van beleidsregels die afhankelijk van deze eigenschap zijn.
+  > De User type heeft geen relatie met de manier waarop de gebruiker zich aanmeldt, de Directory-rol van de gebruiker, enzovoort. Met deze eigenschap wordt de relatie van de gebruiker met de organisatie van de host aangegeven en kan de organisatie beleid afdwingen dat afhankelijk is van deze eigenschap.
 
-### <a name="source"></a>source
+### <a name="source"></a>Bron
 Deze eigenschap geeft aan hoe de gebruiker zich aanmeldt.
 
-- Uitgenodigde gebruiker: Deze gebruiker is uitgenodigd maar een uitnodiging nog niet is ingewisseld.
+- Uitgenodigde gebruiker: deze gebruiker is uitgenodigd, maar heeft nog geen uitnodiging ingewisseld.
 
-- Externe Active Directory: Deze gebruiker is toegewezen in een externe organisatie en verifieert met behulp van een Azure AD-account die deel uitmaakt van de andere organisatie. Dit type aanmelding komt overeen met de status van 1.
+- Externe Active Directory: deze gebruiker bevindt zich in een externe organisatie en verifieert met behulp van een Azure AD-account dat deel uitmaakt van de andere organisatie. Dit type aanmelding komt overeen met status 1.
 
-- Microsoft-account: Deze gebruiker is toegewezen in een Microsoft-account en verifieert met behulp van een Microsoft-account. Dit type aanmelding komt overeen met de status 2.
+- Microsoft-account: deze gebruiker bevindt zich in een Microsoft-account en verifieert met behulp van een Microsoft-account. Dit type aanmelding komt overeen met status 2.
 
-- Windows Server Active Directory: Deze gebruiker is aangemeld vanuit on-premises Active Directory die deel uitmaakt van deze organisatie. Dit type aanmelding komt overeen met de status 3.
+- Windows Server Active Directory: deze gebruiker is aangemeld vanaf de on-premises Active Directory die deel uitmaakt van deze organisatie. Dit type aanmelding komt overeen met status 3.
 
-- Azure Active Directory: Deze gebruiker wordt geverifieerd met behulp van een Azure AD-account die deel uitmaakt van deze organisatie. Dit type aanmelding komt overeen met status 4.
+- Azure Active Directory: deze gebruiker wordt geverifieerd met behulp van een Azure AD-account dat deel uitmaakt van deze organisatie. Dit type aanmelding komt overeen met staat 4.
   > [!NOTE]
-  > Bron- en UserType zijn onafhankelijke eigenschappen. Een waarde van de bron betekent niet dat voor een bepaalde waarde voor UserType.
+  > Bron-en User type zijn onafhankelijke eigenschappen. Een waarde van de bron impliceert niet een bepaalde waarde voor User type.
 
 ## <a name="can-azure-ad-b2b-users-be-added-as-members-instead-of-guests"></a>Kunnen Azure AD B2B-gebruikers worden toegevoegd als leden in plaats van gasten?
-Een Azure AD B2B-gebruiker en de gastgebruiker zijn meestal gelijk. Daarom wordt de gebruiker van een Azure AD B2B-samenwerking toegevoegd als een gebruiker met UserType = Gast standaard. In sommige gevallen is de partnerorganisatie echter lid is van een grotere organisatie waarvan de organisatie van de host ook deel uitmaakt. Als dit het geval is, kan de organisatie van de host wilt voor het behandelen van gebruikers in de partnerorganisatie als leden in plaats van gasten. Gebruik de Azure AD B2B uitnodiging Manager API's toe te voegen of een gebruiker van de partnerorganisatie aan de organisatie van de host als een lid uitnodigen.
+Normaal gesp roken zijn een Azure AD B2B-gebruiker en gast gebruiker synoniemen. Daarom wordt een Azure AD B2B-samenwerkings gebruiker toegevoegd als een gebruiker met User type = Guest standaard. In sommige gevallen is de partner organisatie echter lid van een grotere organisatie waar de host-organisatie ook deel van uitmaakt. Als dat het geval is, kan de organisatie van de host gebruikers in de partner organisatie beschouwen als leden in plaats van gasten. Gebruik de Api's van de Azure AD B2B-uitnodiging om een gebruiker toe te voegen aan of te uitnodigen van de partner organisatie als lid van de organisatie.
 
-## <a name="filter-for-guest-users-in-the-directory"></a>Filter voor gastgebruikers ook kunnen in de map
+## <a name="filter-for-guest-users-in-the-directory"></a>Filteren op gast gebruikers in de Directory
 
-![Schermopname van het filter voor gastgebruikers](media/user-properties/filter-guest-users.png)
+![Scherm opname van het filter voor gast gebruikers](media/user-properties/filter-guest-users.png)
 
-## <a name="convert-usertype"></a>UserType converteren
-Het is mogelijk converteren naar UserType lid Gast en vice versa met behulp van PowerShell. Echter, vertegenwoordigt het UserType-eigenschap van de gebruiker-relatie voor de organisatie. Daarom moet u deze eigenschap alleen als de relatie van de gebruiker naar de wijzigingen in de organisatie. Als de relatie van de gebruiker wordt gewijzigd, moet de UPN (User Principal Name) dan wijzigen? Moet de gebruiker nog steeds toegang tot dezelfde resources? Een postvak worden toegewezen? Wordt niet aanbevolen het UserType wijzigen met behulp van PowerShell als een atomische activiteit. Ook als deze eigenschap onveranderbare wordt met behulp van PowerShell, wordt niet aanbevolen voor het maken van een afhankelijkheid op deze waarde.
+## <a name="convert-usertype"></a>User type converteren
+Het is mogelijk om User type van het ene naar het andere gast en vice versa te converteren met behulp van Power shell. De eigenschap User type vertegenwoordigt echter de relatie van de gebruiker met de organisatie. Daarom moet u deze eigenschap alleen wijzigen als de relatie van de gebruiker met de organisatie wordt gewijzigd. Als de relatie van de gebruiker verandert, moet de user principal name (UPN) worden gewijzigd? Moet de gebruiker toegang blijven houden tot dezelfde bronnen? Moet er een postvak worden toegewezen? Het is niet raadzaam om de User type te wijzigen met behulp van Power shell als een Atomic-activiteit. Als deze eigenschap wordt gebruikt in Power shell, is het niet raadzaam een afhankelijkheid van deze waarde te maken.
 
-## <a name="remove-guest-user-limitations"></a>Beperkingen van Gast-gebruiker verwijderen
-Mogelijk zijn er gevallen waar u wilt uw gastgebruikers hogere rechten te verlenen. U kunt een gastgebruiker toevoegen aan een rol en zelfs de standaardbeperkingen voor de Gast-gebruiker verwijderen in de map waarin een gebruiker dezelfde bevoegdheden als leden.
+## <a name="remove-guest-user-limitations"></a>Gebruikers beperkingen van de gast verwijderen
+Er zijn mogelijk situaties waarin u uw gast gebruikers hogere bevoegdheden wilt geven. U kunt een gast gebruiker toevoegen aan een wille keurige rol en zelfs de standaard gebruikers beperkingen van de gast gebruiker in de Directory verwijderen om een gebruiker dezelfde bevoegdheden te geven als leden.
 
-Het is mogelijk de standaardbeperkingen uitschakelen zodat een gastgebruiker in de directory van het bedrijf dezelfde machtigingen als een gebruiker lid heeft.
+Het is mogelijk om de standaard beperkingen uit te scha kelen, zodat een gast gebruiker in de bedrijfs Directory dezelfde machtigingen heeft als een lid van de gebruiker.
 
-![Schermopname van de externe gebruikers optie in de gebruikersinstellingen](media/user-properties/remove-guest-limitations.png)
+![Scherm afbeelding met de optie externe gebruikers in de gebruikers instellingen](media/user-properties/remove-guest-limitations.png)
 
-## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Kan ik gastgebruikers zichtbaar maken in de algemene Exchange-adreslijst?
-Ja. Standaard Gast objecten zijn niet zichtbaar in de globale adreslijst van uw organisatie, maar u kunt Azure Active Directory PowerShell gebruiken om ze zichtbaar. Zie voor meer informatie, **kan ik objecten Gast zichtbaar maken in de globale adreslijst?** in [beheren van toegang voor gasten in Office 365-groepen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#faq). 
+## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Kan ik gast gebruikers zichtbaar maken in de algemene adres lijst van Exchange?
+Ja. Gast objecten zijn standaard niet zichtbaar in de algemene adres lijst van uw organisatie, maar u kunt Azure Active Directory Power shell gebruiken om ze zichtbaar te maken. Zie **kan ik gast objecten zichtbaar maken in de algemene adres lijst?** in [gast toegang beheren in Office 365-groepen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#add-guests-to-the-global-address-list)voor meer informatie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Wat is Azure AD B2B-samenwerking?](what-is-b2b.md)
-* [B2B-samenwerking gebruikerstokens](user-token.md)
-* [B2B-samenwerking-gebruikersclaims toewijzen](claims-mapping.md)
+* [Gebruikers tokens voor B2B-samen werking](user-token.md)
+* [Toewijzing van gebruikers claims voor B2B-samen werking](claims-mapping.md)

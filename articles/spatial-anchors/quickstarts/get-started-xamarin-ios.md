@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d2e1612804c78e3436b776cdffea7e19bc2925fe
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c5e217a33c8b461a438e2d0209fe6733850634e6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276991"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465144"
 ---
 # <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Quick Start: een Xamarin iOS-app maken met ruimtelijke ankers van Azure
 
-In deze Quick Start wordt beschreven hoe u een iOS-app met Xamarin maakt met behulp van [Azure spatiale ankers](../overview.md). Spatial Anchors is een platformoverschrijdende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Wanneer u klaar bent, hebt u een iOS-app waarmee u een ruimtelijk anker kunt opslaan en intrekken.
+In deze Quick Start wordt beschreven hoe u een iOS-app met Xamarin maakt met behulp van [Azure spatiale ankers](../overview.md). Azure Spatial Anchors is een platformoverstijgende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Wanneer u klaar bent, hebt u een iOS-app waarmee u een ruimtelijk anker kunt opslaan en intrekken.
 
 U leert het volgende:
 
@@ -34,7 +34,8 @@ Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 - Een Mac met macOS High Sierra (10,13) of hoger met:
   - De meest recente versie van Xcode en iOS SDK is geïnstalleerd uit de [App Store](https://itunes.apple.com/us/app/xcode/id497799835?mt=12).
   - Een up-to-date versie van <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio voor Mac 8.1 +</a>.
-  - <a href="https://git-scm.com/download/mac" target="_blank">Git voor macOS</a>
+  - <a href="https://git-scm.com/download/mac" target="_blank">Git voor macOS</a>.
+  - <a href="https://git-lfs.github.com/">Git-LF</a>.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 

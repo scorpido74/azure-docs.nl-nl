@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3b87e04c2d6380a0ee4157e73db0cd4057fadee1
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 4056ecba7ac80436952228da9e1b74dc7382448c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704928"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448952"
 ---
 # <a name="query-expression-syntax"></a>Query-expressie syntaxis
 
-We hebben gezien dat het antwoord op een aanvraag voor het interpreteren een query-expressie bevat. De grammatica waarmee de query van de gebruiker wordt geïnterpreteerd, heeft voor elke interpretatie een query-expressie gemaakt. Een query-expressie kan vervolgens worden gebruikt om een **Evaluate** -aanvraag uit te geven voor het ophalen van de zoek resultaten van de entiteit.
+We hebben gezien dat het antwoord op een aanvraag voor het **interpreteren** een query-expressie bevat. De grammatica waarmee de query van de gebruiker wordt geïnterpreteerd, heeft voor elke interpretatie een query-expressie gemaakt. Een query-expressie kan vervolgens worden gebruikt om een **Evaluate** -aanvraag uit te geven voor het ophalen van de zoek resultaten van de entiteit.
 
 U kunt ook uw eigen query-expressies maken en deze gebruiken in een **Evalueer** aanvraag. Dit kan handig zijn als u uw eigen gebruikers interface bouwt die een query-expressie maakt als reactie op de acties van de gebruiker. Hiervoor moet u de syntaxis voor query-expressies kennen.  
 
@@ -28,37 +28,38 @@ Elk kenmerk entity dat kan worden opgenomen in een query-expressie, heeft een sp
 
 Sommige gegevens van de entiteit worden opgeslagen als samengestelde kenmerken, zoals aangegeven door een punt. in de naam van het kenmerk. Bijvoorbeeld: auteur/relatie-informatie wordt weer gegeven als een samengesteld kenmerk. Het bevat vier onderdelen: AuN, AuId, AfN, AfId. Deze onderdelen zijn afzonderlijke stukjes gegevens die één entiteit kenmerk waarde vormen.
 
+Opmerking: alle query-expressies moeten in kleine letters en zonder speciale tekens worden genoteerd.
 
-**Teken reeks kenmerk: Enkele waarde** (inclusief overeenkomsten met synoniemen)  
+**Teken reeks kenmerk: enkele waarde** (inclusief overeenkomsten voor synoniemen)  
 TI = ' indexeren door latente semantische analyse '  
 Composiet (AA. AuN = ' Suzan Dumais ')
 
-**Teken reeks kenmerk: Exacte enkele waarde** (komt alleen overeen met canonieke waarden)  
+**Teken reeks kenmerk: exacte enkelvoudige waarde** (komt alleen overeen met canonieke waarden)  
 TI = = ' indexeren door latente semantische analyse '  
 Composiet (AA. AuN = = ' Susan t Dumais ')
      
-**Teken reeks kenmerk: Voorvoegsel waarde**   
+**Teken reeks kenmerk: voorvoegsel waarde**   
 TI = ' indexeren door latente Seman '...  
 Composiet (AA. AuN = "Suzan du"...)
 
-**Numeriek kenmerk: Enkele waarde**  
+**Numeriek kenmerk: enkele waarde**  
 Y = 2010
  
-**Numeriek kenmerk: Bereik waarde**  
+**Numeriek kenmerk: bereik waarde**  
 Y>2005  
 Y>=2005  
 Y < 2010  
 Y < = 2010  
-Y =\[2010, 2012\) (bevat alleen linker grens waarde: 2010, 2011)  
-Y =\[2010, 2012\] (bevat zowel grens waarden: 2010, 2011, 2012)
+Y =\[2010, 2012\) (bevat alleen links grens waarde: 2010, 2011)  
+Y =\[2010, 2012\] (inclusief grens waarden: 2010, 2011, 2012)
  
-**Numeriek kenmerk: Voorvoegsel waarde**  
+**Numeriek kenmerk: voorvoegsel waarde**  
 Y = ' 19 '... (wille keurige numerieke waarde die begint met 19) 
  
-**Datum kenmerk: Enkele waarde**  
+**Datum kenmerk: enkele waarde**  
 D='2010-02-04'
 
-**Datum kenmerk: Bereik waarde**  
+**Date-kenmerk: bereik waarde**  
 D>'2010-02-03'  
 D = [' 2010-02-03 ', ' 2010-02-05 ']
 
@@ -86,7 +87,7 @@ And(Composite(AA.AuN='mike smith'),Composite(AA.AfN='harvard university'))
 ```
 <br>Omdat samengestelde () in deze versie wordt toegepast op de auteur en de relatie afzonderlijk vóór en (), krijgen we alle documenten te zien waarbij een van de auteurs "Mike Smith" is en een van de Connecties van de auteurs "Harvard" is. Dit is vergelijkbaar met het vorige query voorbeeld, maar dit is niet hetzelfde.
 
-In het algemeen moet u rekening houden met het volgende voor beeld: We hebben een samengesteld kenmerk C met twee onderdelen A en B. Een entiteit kan meerdere waarden voor C hebben. Dit zijn onze entiteiten:
+In het algemeen moet u rekening houden met het volgende voor beeld: we hebben een samengesteld kenmerk C met twee onderdelen A en B. Een entiteit kan meerdere waarden voor C hebben. Dit zijn onze entiteiten:
 ```
 E1: C={A=1, B=1}  C={A=1,B=2}  C={A=2,B=3}
 E2: C={A=1, B=3}  C={A=3,B=2}

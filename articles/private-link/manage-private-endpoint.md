@@ -2,17 +2,17 @@
 title: Een verbinding met een privé-eind punt beheren in azure
 description: Meer informatie over het beheren van privé-eindpunt verbindingen in azure
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 929dfedbbbbe58a30eaa186398c595eaaabeb0a9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 62b24b3e2f5c1b89fa7db581ac34cf58381db2a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232538"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452968"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Een verbinding met een privé-eind punt beheren
 Een persoonlijke Azure-koppeling werkt op een goedkeurings stroom model voor de persoonlijke koppeling service, waarmee de gebruiker van de private link een verbinding kan aanvragen met de service provider voor het gebruik van de service. De service provider kan vervolgens bepalen of de gebruiker verbinding mag maken of niet. Met de persoonlijke Azure-koppeling kunnen de service providers de verbinding van het particuliere eind punt op hun resources beheren. In dit artikel vindt u instructies voor het beheren van de verbindingen met een privé-eind punt.
@@ -28,9 +28,9 @@ In de onderstaande tabel ziet u de verschillende acties van de service provider 
 
 |Actie van service provider   |Status privé-eind punt service gebruiker   |Beschrijving   |
 |---------|---------|---------|
-|None    |    In behandeling     |    De verbinding wordt hand matig gemaakt en is in afwachting van goed keuring door de resource-eigenaar van de persoonlijke koppeling.       |
+|Geen    |    In behandeling     |    De verbinding wordt hand matig gemaakt en is in afwachting van goed keuring door de resource-eigenaar van de persoonlijke koppeling.       |
 |Goedkeuren    |  Goedgekeurd       |  De verbinding is automatisch of hand matig goedgekeurd en is klaar om te worden gebruikt.     |
-|Afwijzen     | Afgekeurd        | De verbinding is geweigerd door de resource-eigenaar van de persoonlijke koppeling.        |
+|Afwijzen     | Geweigerd        | De verbinding is geweigerd door de resource-eigenaar van de persoonlijke koppeling.        |
 |Verwijderen    |  De verbinding verbroken       | De verbinding is verwijderd door de resource-eigenaar van de persoonlijke koppeling, het persoonlijke eind punt wordt informatieve en moet worden verwijderd om op te schonen.        |
 |   |         |         |
    

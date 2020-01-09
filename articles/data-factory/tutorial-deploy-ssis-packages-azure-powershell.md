@@ -14,12 +14,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: ff40867bc1e2778ec6f21f479360866b50d0c184
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f374bd386996cd02ab7e8bff975f757aec1a0bfc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926509"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439392"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory-with-powershell"></a>De Azure-SSIS-integratieruntime inrichten in Azure Data Factory met PowerShell
 
@@ -29,7 +29,7 @@ Deze zelf studie bevat stappen voor het inrichten van een Azure-SQL Server Integ
 > In dit artikel wordt gebruikgemaakt van Azure PowerShell om een Azure-SSIS IR in te richten. Zie [zelf studie: inrichten Azure-SSIS IR](tutorial-create-azure-ssis-runtime-portal.md)als u de app Azure Portal/ADF wilt gebruiken om een Azure-SSIS IR in te richten. 
 
 > [!div class="checklist"]
-> * Een gegevensfactory maakt.
+> * Een gegevensfactory maken.
 > * Een Azure SSIS Integration Runtime maken
 > * De Azure SSIS Integration Runtime starten
 > * Het volledige script bekijken
@@ -150,7 +150,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $ResourceGroupName -ServerName $S
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Maak een [Azure-resource groep](../azure-resource-manager/resource-group-overview.md) met de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd.
+Maak een [Azure-resource groep](../azure-resource-manager/management/overview.md) met de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd.
 
 Als uw resource groep al bestaat, kopieert u deze code niet naar het script. 
 
@@ -158,7 +158,7 @@ Als uw resource groep al bestaat, kopieert u deze code niet naar het script.
 New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
 ```
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 Voer de volgende opdracht uit om een data factory te maken:
 
@@ -384,7 +384,7 @@ Zie ook de volgende artikelen uit de SSIS-documentatie:
 In deze zelfstudie hebt u het volgende geleerd: 
 
 > [!div class="checklist"]
-> * Een gegevensfactory maakt.
+> * Een gegevensfactory maken.
 > * Een Azure SSIS Integration Runtime maken
 > * De Azure SSIS Integration Runtime starten
 > * Het volledige script bekijken

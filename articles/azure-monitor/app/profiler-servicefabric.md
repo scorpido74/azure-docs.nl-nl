@@ -1,5 +1,5 @@
 ---
-title: Live Azure Service Fabric-toepassingen profiel met Application Insights | Microsoft Docs
+title: Live Azure Service Fabric-apps met Application Insights profileren
 description: Profiler inschakelen voor een Service Fabric toepassing
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: a7a64be3c73ea82c6bf3d905772f3278f9bda5df
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 162a8c3f90b7adab356ebb07c80b8de283fd818d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818474"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432393"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Live Azure Service Fabric-toepassingen met Application Insights profileren
 

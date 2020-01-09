@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: daeb09acd11d727b11ad8a7b98d97ff90fddc6d8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c17576bb8cd772742b5335000a2453ff34753779
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228267"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457065"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referentie-IoT Hub quota's en beperking
 
@@ -44,7 +44,7 @@ De volgende tabel geeft de afgedwongen vertragingen weer. Waarden verwijzen naar
 | Verzenden van Cloud naar apparaat<sup>1</sup> | 1,67 verzend bewerkingen per seconde/eenheid (100 berichten/minuut/eenheid) | 1,67 verzend bewerkingen per seconde/eenheid (100 verzend bewerkingen per minuut/eenheid) | 83,33 verzend bewerkingen per seconde/eenheid (5.000 verzend bewerkingen per minuut/eenheid) |
 | Cloud-naar-apparaat ontvangt<sup>1</sup> <br/> (alleen wanneer het apparaat HTTPS gebruikt)| 16,67 receive-bewerkingen per seconde/eenheid (1.000-ontvangst bewerkingen/min/eenheid) | 16,67 receive-bewerkingen per seconde/eenheid (1.000-ontvangst bewerkingen/min/eenheid) | 833,33 receive-bewerkingen per seconde/eenheid (50.000-ontvangst bewerkingen/min/eenheid) |
 | Bestand uploaden | 1,67 initiëringen van het uploaden van bestanden per seconde per eenheid (100/min/eenheid) | 1,67 initiëringen van het uploaden van bestanden per seconde per eenheid (100/min/eenheid) | 83,33 initiëringen van het uploaden van bestanden per seconde per eenheid (5000/min per eenheid) |
-| Directe methoden<sup>1</sup> | 160KB per seconde/eenheid<sup>2</sup> | 480KB per seconde/eenheid<sup>2</sup> | 24MB per seconde/eenheid<sup>2</sup> | 
+| Directe methoden<sup>1</sup> | 160KB/sec/unit<sup>2</sup> | 480KB/sec/unit<sup>2</sup> | 24MB/sec/unit<sup>2</sup> | 
 | Query's | 20 per minuut/eenheid | 20 per minuut/eenheid | 1000/min per eenheid |
 | Dubbele Lees bewerkingen (apparaat en module)<sup>1</sup> | 100 per seconde | Hoger van 100 per seconde of 10 per seconde per eenheid | 500 per seconde per eenheid |
 | Dubbele updates (apparaat en module)<sup>1</sup> | 50 per seconde | Meer dan 50 per seconde of 5 per seconde per eenheid | 250/sec/unit |
@@ -97,16 +97,16 @@ IoT Hub dwingt andere operationele limieten af:
 | --------- | ----- |
 | Apparaten | Het totale aantal apparaten plus modules dat kan worden geregistreerd voor één IoT-hub, is beperkt tot 1.000.000. De enige manier om deze limiet te verhogen, is om contact op te nemen met [Microsoft ondersteuning](https://azure.microsoft.com/support/options/).|
 | Uploaden van bestanden | 10 gelijktijdige uploads van bestanden per apparaat. |
-| Taken<sup>1</sup> | Maximum aantal gelijktijdige taken is 1 (gratis en S1), 5 (voor S2) en 10 (voor S3). Het maximum aantal gelijktijdige [import/export-taken voor apparaten](iot-hub-bulk-identity-mgmt.md) is echter 1 voor alle lagen. <br/>De taak geschiedenis wordt Maxi maal 30 dagen bewaard. |
+| Jobs<sup>1</sup> | Maximum aantal gelijktijdige taken is 1 (gratis en S1), 5 (voor S2) en 10 (voor S3). Het maximum aantal gelijktijdige [import/export-taken voor apparaten](iot-hub-bulk-identity-mgmt.md) is echter 1 voor alle lagen. <br/>De taak geschiedenis wordt Maxi maal 30 dagen bewaard. |
 | Extra eind punten | Betaalde SKU hubs kunnen 10 extra eind punten hebben. Gratis SKU-hubs kunnen één extra eind punt hebben. |
 | Bericht routering query's | Betaalde SKU-hubs hebben mogelijk 100 routerings query's. Gratis SKU-hubs kunnen vijf routerings query's hebben. |
 | Berichtverrijkingen | Betaalde SKU hubs kunnen Maxi maal 10 bericht verrijkingen hebben. Gratis SKU-hubs kunnen Maxi maal 2 bericht verrijkingen hebben.|
-| Apparaat-naar-Cloud-berichten | Maximale bericht grootte 256 KB |
+| Apparaat-naar-cloud-berichten | Maximale bericht grootte 256 KB |
 | Cloud-naar-apparaat-berichten<sup>1</sup> | Maximale bericht grootte van 64 KB. Maximum aantal in behandeling zijnde berichten voor levering is 50 per apparaat. |
 | Directe methode<sup>1</sup> | De maximale grootte van de directe methode lading is 128 KB. |
-| Automatische configuratie van apparaten<sup>1</sup> | 100 configuraties per betaalde SKU-hub. 20 configuraties per gratis SKU-hub. |
-| Automatische implementaties IoT Edge<sup>1</sup> | 20 modules per implementatie. 100 implementaties per betaalde SKU-hub. 10 implementaties per gratis SKU-hub. |
-| Apparaatdubbels<sup>1</sup> | De sectie maximale grootte van gewenste eigenschappen en gerapporteerde eigenschappen is 32 KB. De sectie maximum grootte van tags is 8 KB. |
+| Automatische apparaat-en module configuraties<sup>1</sup> | 100 configuraties per betaalde SKU-hub. 20 configuraties per gratis SKU-hub. |
+| Automatische implementaties IoT Edge<sup>1</sup> | 20 modules per implementatie. 100 implementaties (inclusief gelaagde implementaties) per betaalde SKU-hub. 10 implementaties per gratis SKU-hub. |
+| Twins<sup>1</sup> | De sectie maximale grootte van gewenste eigenschappen en gerapporteerde eigenschappen is 32 KB. De sectie maximum grootte van tags is 8 KB. |
 
 <sup>1</sup> Deze functie is niet beschikbaar in de laag basis van IoT Hub. Zie [de juiste IOT hub kiezen](iot-hub-scaling.md)voor meer informatie.
 

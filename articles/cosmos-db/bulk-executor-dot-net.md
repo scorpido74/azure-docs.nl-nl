@@ -1,5 +1,5 @@
 ---
-title: De bulk-uitvoerder .NET-bibliotheek gebruiken voor het uitvoeren van bulk import-en update bewerkingen in Azure Cosmos DB
+title: Bulksgewijs uitvoeren van de .NET-bibliotheek in Azure Cosmos DB gebruiken voor bulksgewijze import-en update bewerkingen
 description: Bulksgewijs importeren en de Azure Cosmos DB documenten bijwerken met de bulk-uitvoerder .NET-bibliotheek.
 author: tknandu
 ms.service: cosmos-db
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: d76426e738d78391b92b008e821672017520b7d2
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218399"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442181"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Gebruik de bulk-uitvoerder .NET-bibliotheek voor het uitvoeren van bulk bewerkingen in Azure Cosmos DB
 
@@ -28,7 +28,7 @@ De bibliotheek voor bulk-uitvoering wordt momenteel alleen ondersteund door de A
 
 * Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
 
-* [Probeer Azure Cosmos DB gratis uit](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, zonder kosten en zonder verplichtingen. U kunt ook de Azure Cosmos DB- [emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) gebruiken met het `https://localhost:8081` eind punt. De primaire sleutel wordt gegeven in [Aanvragen verifiëren](local-emulator.md#authenticating-requests).
+* [Probeer Azure Cosmos DB gratis uit](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, zonder kosten en zonder verplichtingen. U kunt ook de Azure Cosmos DB- [emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) gebruiken met het `https://localhost:8081`-eind punt. De primaire sleutel wordt gegeven in [Aanvragen verifiëren](local-emulator.md#authenticating-requests).
 
 * Maak een Azure Cosmos DB SQL-API-account met behulp van de stappen in het gedeelte [Database account maken](create-sql-api-dotnet.md#create-account) van het artikel .net quick start.
 
@@ -119,11 +119,11 @@ De toepassing ' BulkImportSample ' genereert wille keurige documenten en importe
 
 ## <a name="bulk-update-data-in-your-azure-cosmos-account"></a>Gegevens bulksgewijs bijwerken in uw Azure Cosmos-account
 
-U kunt bestaande documenten met behulp van de API BulkUpdateAsync bijwerken. In dit voor beeld stelt u het `Name` veld in op een nieuwe waarde en verwijdert u het `Description` veld uit de bestaande documenten. Raadpleeg de [API-documentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)voor de volledige set met ondersteunde update bewerkingen.
+U kunt bestaande documenten met behulp van de API BulkUpdateAsync bijwerken. In dit voor beeld stelt u het veld `Name` in op een nieuwe waarde en verwijdert u het veld `Description` uit de bestaande documenten. Raadpleeg de [API-documentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)voor de volledige set met ondersteunde update bewerkingen.
 
 1. Ga naar de map ' BulkUpdateSample ' en open het bestand ' BulkUpdateSample. SLN '.  
 
-2. Definieer de update-items samen met de bijbehorende veld Update bewerkingen. In dit voor beeld gaat u gebruiken `SetUpdateOperation` om het `Name` veld bij te `UnsetUpdateOperation` werken en het `Description` veld uit alle documenten te verwijderen. U kunt ook andere bewerkingen zoals het verhogen van een veld van het document door een specifieke waarde uitvoeren, push-specifieke waarden in het matrixveld van een of een specifieke waarde verwijderen uit een matrixveld. Raadpleeg de [API-documentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)voor meer informatie over de verschillende methoden van de API voor bulksgewijs bijwerken.
+2. Definieer de update-items samen met de bijbehorende veld Update bewerkingen. In dit voor beeld gebruikt u `SetUpdateOperation` om het `Name` veld bij te werken en `UnsetUpdateOperation` om het veld `Description` te verwijderen uit alle documenten. U kunt ook andere bewerkingen zoals het verhogen van een veld van het document door een specifieke waarde uitvoeren, push-specifieke waarden in het matrixveld van een of een specifieke waarde verwijderen uit een matrixveld. Raadpleeg de [API-documentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)voor meer informatie over de verschillende methoden van de API voor bulksgewijs bijwerken.
 
    ```csharp
    SetUpdateOperation<string> nameUpdate = new SetUpdateOperation<string>("Name", "UpdatedDoc");
@@ -171,11 +171,11 @@ Houd rekening met de volgende punten voor betere prestaties bij gebruik van de b
 
 * Voor de beste prestaties voert u uw toepassing uit vanaf een virtuele machine van Azure die zich in dezelfde regio bevindt als de schrijf regio van uw Azure Cosmos-account.  
 
-* Het is raadzaam om één `BulkExecutor` object voor de hele toepassing te instantiëren binnen één virtuele machine die overeenkomt met een specifieke Azure Cosmos-container.  
+* Het is raadzaam om een enkel `BulkExecutor`-object voor de hele toepassing te instantiëren binnen één virtuele machine die overeenkomt met een specifieke Azure Cosmos-container.  
 
-* Omdat één bulk bewerking van een API een groot deel van de CPU-en netwerk-i/o's van de client computer verbruikt (dit gebeurt door het uitvoeren van meerdere taken intern). Vermijd het starten van meerdere gelijktijdige taken binnen uw toepassings proces waarmee API-aanroepen voor bulk bewerkingen worden uitgevoerd. Als één bulk bewerking van een API-aanroep die wordt uitgevoerd op één virtuele machine, niet in staat is de gehele door Voer van de container te gebruiken (als de door Voer van de container > 1.000.000 RU/s) is, kunt u het beste afzonderlijke virtuele machines maken die gelijktijdig kunnen worden uitgevoerd. de API-aanroepen in bulk bewerking.  
+* Omdat één bulk bewerking van een API een groot deel van de CPU-en netwerk-i/o's van de client computer verbruikt (dit gebeurt door het uitvoeren van meerdere taken intern). Vermijd het starten van meerdere gelijktijdige taken binnen uw toepassings proces waarmee API-aanroepen voor bulk bewerkingen worden uitgevoerd. Als één bulk bewerking van een API-aanroep die wordt uitgevoerd op één virtuele machine, niet in staat is de gehele door Voer van de container te gebruiken (als de door Voer van de container > 1.000.000 RU/s) is, kunt u het beste afzonderlijke virtuele machines maken voor het gelijktijdig uitvoeren van de API-aanroepen voor bulk bewerkingen.  
 
-* Zorg ervoor `InitializeAsync()` dat de methode wordt aangeroepen na het instantiëren van een BulkExecutor-object om de partitie toewijzing van de doel Cosmos-container op te halen.  
+* Zorg ervoor dat de `InitializeAsync()` methode wordt aangeroepen nadat u een BulkExecutor-object hebt geinstantiërd om de partitie toewijzing van de doel Cosmos-container op te halen.  
 
 * Zorg ervoor dat **gcServer** is ingeschakeld voor betere prestaties in de app. config van uw toepassing.
   ```xml  

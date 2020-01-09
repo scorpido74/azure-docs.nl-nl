@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 1abfd8af7e0ef18d4e7bcf05b4726c5d0bcb0a84
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 57351ccf0c6155a1a3532ec9e6481a724e3219aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151695"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462435"
 ---
 # <a name="workflow-automation-preview"></a>Werk stroom automatisering (preview-versie)
 
@@ -87,6 +87,9 @@ Als u een logische app hand matig wilt uitvoeren, opent u een aanbeveling en kli
 
 [een logische app ![hand matig activeren](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 
+## <a name="data-types-schemas"></a>Gegevens type schema's
+
+Als u de onbewerkte gebeurtenis schema's wilt bekijken van de beveiligings waarschuwingen of aanbevelingen die zijn door gegeven aan de logische app-instantie, gaat u naar de [schema gegevens typen werk stroom automatisering](https://aka.ms/ASCAutomationSchemas). Dit kan handig zijn in gevallen waarin u geen gebruik maakt van Security Center ingebouwde logische app-connectors die hierboven worden genoemd. in plaats daarvan kunt u het JSON-schema van de logische app gebruiken om dit hand matig te parseren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -98,3 +101,4 @@ Raadpleeg de volgende artikelen voor meer gerelateerde materialen:
 - [Beveiligingswaarschuwingen in Azure Security Center](security-center-alerts-overview.md)
 - [Over Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)
 - [Logic Apps-connectors](https://docs.microsoft.com/connectors/)
+- [Schema's van werk stroom automatiserings gegevens typen](https://aka.ms/ASCAutomationSchemas)

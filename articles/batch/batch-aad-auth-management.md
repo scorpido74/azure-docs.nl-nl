@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: lahugh
-ms.openlocfilehash: 3f7ba22fa8e2a8709fc37a891b3da64b6d83e654
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2fd5867d910d29533eb17a4660039cc7b9610290
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095632"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449841"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Oplossingen voor Batch Management verifiëren met Active Directory
 
@@ -35,7 +35,7 @@ Zie voor meer informatie over het gebruik van de Batch Management .NET-bibliothe
 
 Azure [Active Directory Authentication Library][aad_adal] (ADAL) biedt een programmatische interface voor Azure AD voor gebruik in uw toepassingen. Als u ADAL vanuit uw toepassing wilt aanroepen, moet u uw toepassing registreren in een Azure AD-Tenant. Wanneer u uw toepassing registreert, geeft u Azure AD op met informatie over uw toepassing, met inbegrip van een naam voor de app in de Azure AD-Tenant. Azure AD biedt vervolgens een toepassings-ID die u gebruikt om uw toepassing te koppelen aan Azure AD tijdens runtime. Zie voor meer informatie over de toepassings-ID [toepassings-en Service-Principal-objecten in azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Als u de voorbeeld toepassing AccountManagement wilt registreren, volgt u de stappen in de sectie [een toepassing toevoegen](../active-directory/develop/quickstart-register-app.md) in [toepassingen integreren met Azure Active Directory][aad_integrate]. Geef een **systeem eigen client toepassing** op voor het type toepassing. De standaard OAuth 2,0 URI voor de omleidings- `urn:ietf:wg:oauth:2.0:oob` **URI** is. U kunt echter een wille keurige geldige URI `http://myaccountmanagementsample`opgeven voor de omleidings- **URI**, omdat deze geen echt eind punt hoeft te zijn:
+Als u de voorbeeld toepassing AccountManagement wilt registreren, volgt u de stappen in de sectie [een toepassing toevoegen](../active-directory/develop/quickstart-register-app.md) in [toepassingen integreren met Azure Active Directory][aad_integrate]. Geef een **systeem eigen client toepassing** op voor het type toepassing. De standaard OAuth 2,0-URI voor de **omleidings-URI** is `urn:ietf:wg:oauth:2.0:oob`. U kunt echter een geldige URI (zoals `http://myaccountmanagementsample`) voor de **omleidings-URI**opgeven, omdat deze geen echt eind punt hoeft te zijn:
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
@@ -47,9 +47,9 @@ Zodra u het registratie proces hebt voltooid, ziet u de toepassings-ID en de obj
 
 Vervolgens moet u de toegang tot uw toepassing delegeren naar de Azure Resource Manager-API. De Azure AD-id voor de Resource Manager-API is **Windows Azure Service Management-API**.
 
-Volg deze stappen in de Azure Portal:
+Volg deze stappen in Azure Portal:
 
-1. Kies in het navigatie deel venster aan de linkerkant van de Azure Portal **alle services**, klik op **app**-registraties en klik op **toevoegen**.
+1. Kies in het navigatie deel venster aan de linkerkant van de Azure Portal **alle services**, klik op **app-registraties**en klik op **toevoegen**.
 2. Zoek de naam van uw toepassing in de lijst met app-registraties:
 
     ![Zoek naar de naam van uw toepassing](./media/batch-aad-auth-management/search-app-registration.png)
@@ -137,4 +137,4 @@ Zie [batch-service oplossingen verifiëren met Active Directory](batch-aad-auth.
 [aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Toepassingen integreren met Azure Active Directory"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
 [azure_portal]: https://portal.azure.com
-[resman_overview]: ../azure-resource-manager/resource-group-overview.md
+[resman_overview]: ../azure-resource-manager/management/overview.md

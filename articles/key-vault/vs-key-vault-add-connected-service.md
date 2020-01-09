@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 1df0ff3b6fea335dde5a3200f824adf14f924d9c
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 1c12cf4a7bd097c6d33d032065734b477920644b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452365"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456994"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault toevoegen aan uw web-app met behulp van Visual Studio Connected Services
 
@@ -25,8 +25,8 @@ Voor meer informatie over de wijzigingen die verbonden services in uw project ma
 ## <a name="prerequisites"></a>Vereisten
 
 - **Een Azure-abonnement**. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/pricing/free-trial/).
-- **Visual studio 2019 versie 16,3** of hoger, of **Visual studio 2017 versie 15,7** met de werk belasting voor **Web Development** geïnstalleerd. [Nu downloaden](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
-- Voor ASP.NET (niet kern geheugens) met Visual Studio 2017 hebt u de ontwikkel Hulpprogramma's van .NET Framework 4.7.1 of hoger nodig, die niet standaard worden geïnstalleerd. Als u deze wilt installeren, start u het installatie programma van Visual Studio, kiest u **wijzigen**en kiest u vervolgens **afzonderlijke onderdelen**. Vouw vervolgens aan de rechter kant **ASP.net en web development**uit en kies **.NET Framework 4.7.1 Development tools** .
+- **Visual studio 2019 versie 16,3** of hoger, of **Visual studio 2017 versie 15,7** met de werk belasting voor **Web Development** geïnstalleerd. [Download nu](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Voor ASP.NET (niet kern geheugens) met Visual Studio 2017 hebt u de ontwikkel Hulpprogramma's van .NET Framework 4.7.1 of hoger nodig, die niet standaard worden geïnstalleerd. Als u deze wilt installeren, opent u het installatie programma van Visual Studio, kiest u **wijzigen**en kiest u vervolgens **afzonderlijke onderdelen**. Vouw vervolgens aan de rechter kant **ASP.net en web development**uit en kies **.NET Framework 4.7.1 Development tools**.
 - Een ASP.NET-4.7.1 of hoger, of ASP.NET Core 2,0 of hoger web-project geopend.
 
 ## <a name="add-key-vault-support-to-your-project"></a>Key Vault ondersteuning toevoegen aan uw project
@@ -112,7 +112,7 @@ Nu kunt u toegang krijgen tot uw geheimen in code. De volgende stappen verschill
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-        private static string GetKeyVaultEndpoint() => "https://WebApplication4-3-kv.vault.azure.net";
+        private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
     ```
 
 1. Open vervolgens een van de pagina bestanden, zoals *index.cshtml.cs* en schrijf de volgende code:
@@ -205,7 +205,7 @@ In deze sectie worden de exacte wijzigingen in een ASP.NET-project geïdentifice
 
 Van invloed op het project bestand .NET-verwijzingen en NuGet-pakket verwijzingen.
 
-| Type | Naslaginformatie |
+| Type | Referentie |
 | --- | --- |
 | NuGet | Microsoft.AspNetCore.AzureKeyVault.HostingStartup |
 
@@ -241,7 +241,7 @@ In deze sectie worden de exacte wijzigingen in een ASP.NET-project geïdentifice
 
 Heeft betrekking op het project bestand .NET-verwijzingen en `packages.config` (NuGet references).
 
-| Type | Naslaginformatie |
+| Type | Referentie |
 | --- | --- |
 | .NET; NuGet | Microsoft.Azure.KeyVault |
 | .NET; NuGet | Microsoft.Azure.KeyVault.WebKey |

@@ -1,5 +1,6 @@
 ---
-title: Azure API Management gebruiken in Virtual Network met Application Gateway | Microsoft Docs
+title: API Management gebruiken in Virtual Network met Application Gateway
+titleSuffix: Azure API Management
 description: Meer informatie over het instellen en configureren van Azure-API Management in interne Virtual Network met Application Gateway (WAF) als front-end
 services: api-management
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: d1ab7089ba76890488aa73d03e0fd9fc8efbe4d5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4e4d4c69eb51e0058d3b6b561b5167051079bf89
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176738"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442691"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Management integreren in een intern VNET met Application Gateway
 
@@ -46,7 +47,7 @@ Voor het volgen van de stappen die in dit artikel worden beschreven, hebt u het 
 
 * Certificaten: pfx en CER voor de API-hostnaam en pfx voor de hostnaam van de ontwikkelaars Portal.
 
-## <a name="scenario"></a> Scenario
+## <a name="scenario"> </a> Scenario
 
 In dit artikel wordt beschreven hoe u een single API Management-service gebruikt voor zowel interne als externe consumenten en hoe u deze kunt gebruiken als één frontend voor zowel on-premises als Cloud-Api's. U ziet ook hoe u slechts een subset van uw Api's beschikbaar maakt (in het voor beeld dat ze in het groen zijn gemarkeerd) voor extern verbruik met behulp van route ring beschikbaar in Application Gateway.
 

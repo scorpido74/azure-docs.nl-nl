@@ -1,5 +1,6 @@
 ---
-title: Ontwikkel ontwikkelaars accounts met behulp van Azure Active Directory-Azure API Management | Microsoft Docs
+title: Ontwikkelaars accounts met behulp van Azure Active Directory autoriseren
+titleSuffix: Azure API Management
 description: Meer informatie over het autoriseren van gebruikers met behulp van Azure Active Directory in API Management.
 services: api-management
 documentationcenter: API Management
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 067d4488b064ede572a4b3ad94c94fb1552c827d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 131621e05d7800e59ce3bbdec5c11c1da9facf11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454448"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442802"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Ontwikkel ontwikkelaars accounts met behulp van Azure Active Directory in azure API Management
 
@@ -49,17 +50,17 @@ Dit artikel laat u zien hoe u toegang tot de ontwikkelaars Portal kunt inschakel
    ![Stappen voor het toevoegen van een id-provider in de Azure Portal](./media/api-management-howto-aad/api-management-with-aad001.png)  
 10. Open een ander tabblad in uw browser. 
 11. Ga naar de [Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) om een App in Active Directory te registreren.
-12. Selecteer onder **beheren**de optie **app-registraties**.
+12. Selecteer **App-registraties** onder **Beheren**.
 13. Selecteer **nieuwe registratie**. Stel op de pagina **een toepassing registreren** de volgende waarden in:
     
-* Stel **name** in op een duidelijke naam. bijvoorbeeld: *Developer-Portal*
+* Stel **name** in op een duidelijke naam. e.g., *developer-portal*
 * Stel **ondersteunde account typen** **in op accounts in deze directory van de organisatie**. 
 * Stel de **omleidings-URI** in op de waarde die u in stap 9 hebt ontvangen. 
 * Kies **registreren**. 
 
 14.  Nadat de toepassing is geregistreerd, kopieert u de **toepassings-id (client)** van de pagina **overzicht** . 
 15. Ga terug naar uw API Management-exemplaar. Plak in het venster **ID-provider toevoegen** de waarde van de **toepassing (client)** in het vak **client-id** .
-16. Ga terug naar de Azure AD-configuratie en selecteer **certificaten & geheimen** onder **beheren**. Selecteer de knop **Nieuw client geheim** . Voer een waarde in het veld **Beschrijving**in, selecteer een optie voor **verloopt** en kies **toevoegen**. Kopieer de waarde van het client geheim voordat u de pagina verlaat. U hebt deze gegevens nodig in de volgende stap. 
+16. Ga terug naar de Azure AD-configuratie en selecteer **certificaten & geheimen** onder **beheren**. Selecteer de knop **Nieuw clientgeheim**. Voer een waarde in voor **Beschrijving**, selecteer een optie voor **Verloopt** en kies **Toevoegen**. Kopieer de waarde van het client geheim voordat u de pagina verlaat. U hebt deze nodig in de volgende stap. 
 17. Selecteer onder **beheren**de optie **verificatie** en selecteer **id-tokens** onder **impliciete toekenning**
 18. Ga terug naar uw API Management-exemplaar en plak het geheim in het vak **client Secret** .
 

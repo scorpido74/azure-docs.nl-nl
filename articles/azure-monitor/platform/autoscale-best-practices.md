@@ -1,24 +1,21 @@
 ---
 title: Aanbevolen procedures voor automatisch schalen
 description: Patronen automatisch schalen in azure voor Web Apps, schaal sets voor virtuele machines en Cloud Services
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/07/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 604cf0564039a542ec117612bcbf74601388c0f7
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: d9f04e0af4349f6b149619f13dac8ca2f59b560e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007611"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396986"
 ---
 # <a name="best-practices-for-autoscale"></a>Aanbevolen procedures voor Automatisch schalen
 Azure Monitor automatisch schalen is alleen van toepassing op [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app service-Web apps](https://azure.microsoft.com/services/app-service/web/)en [API Management Services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
 ## <a name="autoscale-concepts"></a>Concepten automatisch schalen
+
 * Een resource kan slechts *één* instelling voor automatisch schalen hebben
 * Een instelling voor automatisch schalen kan een of meer profielen hebben en elk profiel kan een of meer regels voor automatisch schalen hebben.
 * Met een instelling voor automatisch schalen worden instanties horizon taal geschaald. *Dit komt doordat* de instanties en *in* worden verhoogd door het aantal exemplaren te verminderen.
@@ -29,12 +26,15 @@ Azure Monitor automatisch schalen is alleen van toepassing op [Virtual Machine S
 * Op dezelfde manier worden alle geslaagde schaal acties in het activiteiten logboek geplaatst. U kunt vervolgens een waarschuwing voor een activiteiten logboek configureren, zodat u via e-mail, SMS of webhooks kunt worden gewaarschuwd wanneer er een actie voor automatisch schalen is uitgevoerd. U kunt ook e-mail berichten of webhook-meldingen configureren om op de hoogte te worden gesteld van geslaagde schaal acties via het tabblad meldingen in de instelling voor automatisch schalen.
 
 ## <a name="autoscale-best-practices"></a>Aanbevolen procedures voor automatisch schalen
+
 Gebruik de volgende aanbevolen procedures voor automatisch schalen.
 
 ### <a name="ensure-the-maximum-and-minimum-values-are-different-and-have-an-adequate-margin-between-them"></a>Zorg ervoor dat de maximum-en minimum waarden verschillen en een voldoende marge hebben
+
 Als u een instelling hebt met minimale = 2, maximum = 2 en het huidige aantal instanties is 2, kan er geen schaal actie optreden. Beperk een voldoende marge tussen het maximum-en minimum aantal instanties, inclusief. Automatisch schalen schaalt altijd tussen deze limieten.
 
 ### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>Hand matig schalen wordt opnieuw ingesteld door de minimum-en maximum waarde voor automatisch schalen
+
 Als u het aantal exemplaren hand matig bijwerkt naar een waarde boven of beneden het maximum, wordt de auto Scale-Engine automatisch ingesteld op het minimum (indien hieronder) of het maximum (indien hierboven). U kunt bijvoorbeeld het bereik instellen tussen 3 en 6. Als u één exemplaar hebt dat wordt uitgevoerd, wordt de engine voor automatisch schalen geschaald naar drie exemplaren tijdens de volgende uitvoering. Als u de schaal hand matig instelt op acht exemplaren, wordt deze in de volgende uitvoering automatisch schalen naar zes instanties geschaald.  Hand matig schalen is tijdelijk, tenzij u de regels voor automatisch schalen ook opnieuw instelt.
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Gebruik altijd een combi natie van regel voor uitschalen en schalen die een verhoging en verlaging uitvoert
@@ -46,7 +46,7 @@ Voor metrische gegevens over diagnose kunt u het *gemiddelde*, het *minimum*, he
 ### <a name="choose-the-thresholds-carefully-for-all-metric-types"></a>De drempel waarden zorgvuldig kiezen voor alle metrische typen
 We raden u aan om verschillende drempel waarden te kiezen voor uitschalen en schalen op basis van praktische situaties.
 
-We *raden* instellingen voor automatisch schalen, zoals de onderstaande voor beelden, niet aan met dezelfde of een vergelijk bare drempel waarde voor uitgaand en in voor waarden:
+We *raden* instellingen voor automatisch schalen, zoals de onderstaande voor beelden, niet aan met dezelfde of vergelijk bare drempel waarden voor en in voor waarden:
 
 * Instanties verhogen met 1 aantal wanneer het aantal threads > = 600
 * Exemplaren verlagen met 1 aantal wanneer het aantal threads < = 600
@@ -56,8 +56,8 @@ Laten we eens kijken naar een voor beeld van wat kan leiden tot een gedrag dat v
 1. Stel dat er twee exemplaren met moeten beginnen en dat het gemiddelde aantal threads per instantie toeneemt op 625.
 2. Met automatisch schalen wordt het toevoegen van een derde exemplaar uitgebreid.
 3. Vervolgens wordt ervan uitgegaan dat het gemiddelde aantal threads over de verschillende instanties valt op 575.
-4. Voordat u omlaag schaalt, probeert automatisch te schatten wat de uiteindelijke status is als deze is geschaald. Bijvoorbeeld: 575 x 3 (aantal huidige instanties) = 1.725/2 (laatste aantal instanties bij omlaag geschaald) = 862,5 threads. Dit betekent dat automatisch schalen altijd onmiddellijk moet worden uitgeschaald, zelfs nadat het is geschaald in, als het gemiddelde aantal threads hetzelfde is of zelfs een kleine hoeveelheid heeft. Als de app echter opnieuw wordt geschaald, wordt het hele proces herhaald, waardoor er een oneindige lus ontstaat.
-5. Om deze situatie te voor komen (met de term ' gaat en neer '), wordt automatisch schalen niet omlaag geschaald. In plaats daarvan wordt de voor waarde overs Laan en opnieuw geëvalueerd wanneer de taak van de service de volgende keer wordt uitgevoerd. Dit kan veel mensen verwarrend zijn omdat automatisch schalen niet lijkt te werken wanneer het gemiddelde aantal threads 575 was.
+4. Voordat u omlaag schaalt, probeert automatisch te schatten wat de uiteindelijke status is als deze is geschaald. Bijvoorbeeld: 575 x 3 (aantal huidige instanties) = 1.725/2 (laatste aantal instanties bij omlaag geschaald) = 862,5 threads. Dit betekent dat automatisch schalen onmiddellijk opnieuw moet worden uitgeschaald, zelfs nadat het is geschaald in, als het gemiddelde aantal threads hetzelfde is of zelfs een kleine hoeveelheid heeft. Als de app echter opnieuw wordt geschaald, wordt het hele proces herhaald, waardoor er een oneindige lus ontstaat.
+5. Om deze situatie te voor komen (met de term ' gaat en neer '), wordt automatisch schalen niet omlaag geschaald. In plaats daarvan wordt de voor waarde overs Laan en opnieuw geëvalueerd wanneer de taak van de service de volgende keer wordt uitgevoerd. De gaat en neer-status kan veel mensen verwarren omdat automatisch schalen niet lijkt te werken wanneer het gemiddelde aantal threads 575 was.
 
 De schatting tijdens een inschaal is bedoeld om "gaat en neer"-situaties te voor komen, waarbij de acties voor schalen en uitschalen voortdurend teruggaan. Houd dit gedrag in acht wanneer u dezelfde drempel waarden kiest voor uitschalen en in.
 
@@ -101,18 +101,19 @@ Wanneer de service automatisch wordt geschaald, wordt de volgende volg orde alti
 
 Als aan een voor waarde voor een profiel wordt voldaan, wordt de volgende profiel voorwaarde hieronder niet door automatisch schalen gecontroleerd. Automatisch schalen kan slechts één profiel per keer verwerken. Dit betekent dat als u ook een verwerkings voorwaarde wilt toevoegen uit een profiel met een lagere laag, u deze regels in het huidige profiel moet toevoegen.
 
-Laten we dit eens bekijken met een voor beeld:
+Laten we een voor beeld bekijken:
 
-In de onderstaande afbeelding ziet u een instelling voor automatisch schalen met een standaard Profiel van minimum aantal exemplaren = 2 en maximum aantal exemplaren = 10. In dit voor beeld worden regels geconfigureerd om te worden uitgeschaald wanneer het aantal berichten in de wachtrij groter is dan 10 en de schaal als het aantal berichten in de wachtrij kleiner is dan drie. De resource kan nu worden geschaald tussen twee en tien instanties.
+In de onderstaande afbeelding ziet u een instelling voor automatisch schalen met een standaard Profiel van minimum aantal exemplaren = 2 en maximum aantal exemplaren = 10. In dit voor beeld worden regels geconfigureerd om te worden uitgeschaald wanneer het aantal berichten in de wachtrij groter is dan 10 en moet worden geschaald wanneer het aantal berichten in de wachtrij kleiner is dan drie. De resource kan nu worden geschaald tussen twee en tien instanties.
 
 Daarnaast is er een terugkerende profiel verzameling voor maandag. Deze is ingesteld voor minimum aantal instanties = 3 en maximum aantal exemplaren = 10. Dit betekent op maandag, de eerste keer dat automatisch wordt gecontroleerd op deze voor waarde, als het aantal exemplaren twee is, wordt het geschaald naar het nieuwe minimum van drie. Zolang automatisch schalen blijft zoeken naar deze profiel voorwaarde die overeenkomt met (maandag), worden alleen de op CPU gebaseerde scale-out/in-regels verwerkt die zijn geconfigureerd voor dit profiel. Op dit moment wordt er niet gecontroleerd op de lengte van de wachtrij. Als u echter ook wilt dat de lengte van de wachtrij wordt gecontroleerd, moet u deze regels van het standaard profiel ook in uw maandag profiel toevoegen.
 
 Op dezelfde manier wordt met de functie voor automatisch schalen naar het standaard profiel gecontroleerd of aan de minimum-en maximum voorwaarden wordt voldaan. Als het aantal exemplaren op het moment 12 is, wordt het geschaald naar 10, de Maxi maal toegestane waarde voor het standaard profiel.
 
-![Instellingen voor automatisch schalen](./media/autoscale-best-practices/insights-autoscale-best-practices-2.png)
+![instellingen voor automatisch schalen](./media/autoscale-best-practices/insights-autoscale-best-practices-2.png)
 
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>Overwegingen voor schalen wanneer meerdere regels in een profiel zijn geconfigureerd
-Er zijn gevallen waarin het mogelijk is om meerdere regels in een profiel in te stellen. De volgende set regels voor automatisch schalen wordt gebruikt door services wanneer er meerdere regels zijn ingesteld.
+
+Er zijn gevallen waarin het mogelijk is om meerdere regels in een profiel in te stellen. De volgende regels voor automatisch schalen worden door Services gebruikt wanneer er meerdere regels zijn ingesteld.
 
 Bij *uitschalen worden automatisch*schalen uitgevoerd als aan een regel wordt voldaan.
 Bij *schalen naar automatisch*schalen moeten aan alle regels worden voldaan.
@@ -127,7 +128,7 @@ Stel dat u de volgende vier regels voor automatisch schalen hebt:
 Daarna gebeurt het volgende:
 
 * Als CPU 76% is en geheugen 50% is, kunnen we uitschalen.
-* Als CPU 50% is en geheugen 76% wordt uitgeschaald.
+* Als CPU 50% is en geheugen 76% is, kunnen we uitschalen.
 
 Aan de andere kant, als CPU 25% is en het geheugen 51% automatisch schalen **niet** is geschaald. Om in te schalen moet CPU 29% zijn en geheugen 49%.
 

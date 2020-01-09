@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b912743c758f33173b568944341fab4e815300ed
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a23fb981e24f6152d99b76bd72115f8159f5d60f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099993"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645841"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines DBMS-implementatie voor SAP-workload
 
@@ -77,8 +77,8 @@ ms.locfileid: "70099993"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -235,7 +235,7 @@ ms.locfileid: "70099993"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -249,7 +249,7 @@ ms.locfileid: "70099993"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -357,7 +357,7 @@ Alleen Oracle met één instantie die NTFS-geformatteerde schijven gebruikt, wor
 
 Het is raadzaam [Azure Managed disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)te gebruiken. We raden u ook ten zeerste aan om [Premium ssd's](../../windows/disks-types.md) te gebruiken voor uw Oracle database-implementaties.
 
-Netwerk stations of externe shares zoals Azure File Services worden niet ondersteund voor Oracle Database-bestanden. Ga voor meer informatie naar:
+Netwerk stations of externe shares zoals Azure File Services worden niet ondersteund voor Oracle Database-bestanden. Zie voor meer informatie:
 
 - [Introducing Microsoft Azure File Service (Introductie van Microsoft Azure File-service)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 
@@ -372,29 +372,29 @@ Zie SAP Note [1928533]om de ondersteunde typen Azure VM te identificeren.
 
 De minimale configuratie is als volgt: 
 
-| Onderdeel | Schijf | Caching | Opslag groep |
+| Component | Schijf | Caching | Opslaggroep |
 | --- | ---| --- | --- |
-| \oracle\<SID > \origlogaA & mirrlogB | Premium | None | Niet nodig |
-| \oracle\<SID > \origlogaB & mirrlogA | Premium | None | Niet nodig |
+| \oracle\<SID > \origlogaA & mirrlogB | Premium | Geen | Niet vereist |
+| \oracle\<SID > \origlogaB & mirrlogA | Premium | Geen | Niet vereist |
 | \oracle\<SID>\sapdata1...n | Premium | Alleen-lezen | Kan worden gebruikt |
-| \oracle\<SID>\oraarch | Standard | None | Niet nodig |
-| Oracle Home, saptrace,... | Besturingssysteemschijf | | Niet nodig |
+| \oracle\<SID>\oraarch | Standard | Geen | Niet vereist |
+| Oracle Home, saptrace,... | Besturingssysteemschijf | | Niet vereist |
 
 
 Schijven selecteren voor het hosten van online logboeken voor opnieuw uitvoeren moet worden aangestuurd door IOPs-vereisten. Het is mogelijk om alle sapdata1 op te slaan... n (tablespaces) op één gekoppelde schijf zolang de grootte, IOPS en door Voer voldoen aan de vereisten. 
 
 De configuratie van de prestaties is als volgt:
 
-| Onderdeel | Schijf | Caching | Opslag groep |
+| Component | Schijf | Caching | Opslaggroep |
 | --- | ---| --- | --- |
-| \oracle\<SID>\origlogaA | Premium | None | Kan worden gebruikt  |
-| \oracle\<SID>\origlogaB | Premium | None | Kan worden gebruikt |
-| \oracle\<SID>\mirrlogAB | Premium | None | Kan worden gebruikt |
-| \oracle\<SID>\mirrlogBA | Premium | None | Kan worden gebruikt |
+| \oracle\<SID>\origlogaA | Premium | Geen | Kan worden gebruikt  |
+| \oracle\<SID>\origlogaB | Premium | Geen | Kan worden gebruikt |
+| \oracle\<SID>\mirrlogAB | Premium | Geen | Kan worden gebruikt |
+| \oracle\<SID>\mirrlogBA | Premium | Geen | Kan worden gebruikt |
 | \oracle\<SID>\sapdata1...n | Premium | Alleen-lezen | Aanbevolen  |
-| \oracle\SID\sapdata(n+1)* | Premium | None | Kan worden gebruikt |
-| \oracle\<SID > \oraarch * | Premium | None | Niet nodig |
-| Oracle Home, saptrace,... | Besturingssysteemschijf | Niet nodig |
+| \oracle\SID\sapdata(n+1)* | Premium | Geen | Kan worden gebruikt |
+| \oracle\<SID > \oraarch * | Premium | Geen | Niet vereist |
+| Oracle Home, saptrace,... | Besturingssysteemschijf | Niet vereist |
 
 \* (n + 1): host systeem, TEMP en ongedaan maken van tablespaces. Het I/O-patroon van systeem-en ongedaan maken tablespaces verschillen van andere tablespaces-hosting toepassings gegevens. Caching is niet de beste optie voor het uitvoeren van de prestaties van het systeem en het ongedaan maken van tablespaces.
 
@@ -448,7 +448,7 @@ Voor Oracle Linux UEK-kernels is mini maal UEK versie 4 vereist voor de onderste
 
 Het wordt sterk aanbevolen om [Azure Managed disks](../../windows/managed-disks-overview.md)te gebruiken. Het wordt ook nadrukkelijk aanbevolen [Azure Premium ssd's](../../windows/disks-types.md) te gebruiken voor uw Oracle database-implementaties.
 
-Netwerk stations of externe shares zoals Azure File Services worden niet ondersteund voor Oracle Database-bestanden. Zie het volgende voor meer informatie: 
+Netwerk stations of externe shares zoals Azure File Services worden niet ondersteund voor Oracle Database-bestanden. Raadpleeg de volgende onderwerpen voor meer informatie: 
 
 - [Introducing Microsoft Azure File Service (Introductie van Microsoft Azure File-service)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 
@@ -462,13 +462,13 @@ Zie SAP Note [1928533]om de ondersteunde typen Azure VM te identificeren.
 
 Minimale configuratie:
 
-| Onderdeel | Schijf | Caching | Moeten ontdaan |
+| Component | Schijf | Caching | Moeten ontdaan |
 | --- | ---| --- | --- |
-| /Oracle/\<SID >/origlogaA & mirrlogB | Premium | None | Niet nodig |
-| /Oracle/\<SID >/origlogaB & mirrlogA | Premium | None | Niet nodig |
+| /Oracle/\<SID >/origlogaA & mirrlogB | Premium | Geen | Niet vereist |
+| /Oracle/\<SID >/origlogaB & mirrlogA | Premium | Geen | Niet vereist |
 | /Oracle/\<SID >/sapdata1... nvt | Premium | Alleen-lezen | Kan worden gebruikt |
-| /Oracle/\<SID >/oraarch | Standard | None | Niet nodig |
-| Oracle Home, saptrace,... | Besturingssysteemschijf | | Niet nodig |
+| /Oracle/\<SID >/oraarch | Standard | Geen | Niet vereist |
+| Oracle Home, saptrace,... | Besturingssysteemschijf | | Niet vereist |
 
 \* Verwijderen: LVM Stripe of MDADM met RAID0
 
@@ -476,16 +476,16 @@ De schijf selectie voor het hosten van het online opnieuw uitvoeren van Oracle-l
 
 Configuratie van prestaties:
 
-| Onderdeel | Schijf | Caching | Moeten ontdaan |
+| Component | Schijf | Caching | Moeten ontdaan |
 | --- | ---| --- | --- |
-| /Oracle/\<SID >/origlogaA | Premium | None | Kan worden gebruikt  |
-| /Oracle/\<SID >/origlogaB | Premium | None | Kan worden gebruikt |
-| /Oracle/\<SID >/mirrlogAB | Premium | None | Kan worden gebruikt |
-| /Oracle/\<SID >/mirrlogBA | Premium | None | Kan worden gebruikt |
+| /Oracle/\<SID >/origlogaA | Premium | Geen | Kan worden gebruikt  |
+| /Oracle/\<SID >/origlogaB | Premium | Geen | Kan worden gebruikt |
+| /Oracle/\<SID >/mirrlogAB | Premium | Geen | Kan worden gebruikt |
+| /Oracle/\<SID >/mirrlogBA | Premium | Geen | Kan worden gebruikt |
 | /Oracle/\<SID >/sapdata1... nvt | Premium | Alleen-lezen | Aanbevolen  |
-| /Oracle/\<SID >/sapdata (n + 1) * | Premium | None | Kan worden gebruikt |
-| /Oracle/\<SID >/oraarch * | Premium | None | Niet nodig |
-| Oracle Home, saptrace,... | Besturingssysteemschijf | Niet nodig |
+| /Oracle/\<SID >/sapdata (n + 1) * | Premium | Geen | Kan worden gebruikt |
+| /Oracle/\<SID >/oraarch * | Premium | Geen | Niet vereist |
+| Oracle Home, saptrace,... | Besturingssysteemschijf | Niet vereist |
 
 \* Verwijderen: LVM Stripe of MDADM met RAID0
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 277616d9fcd15affc7ddc8ede5d9af3ff68c62f8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 31ae3483ca7cefbb65726f976244d582f1587aaf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926604"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439457"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Activiteiten vertakken en koppelen in een Data Factory-pijplijn
 
@@ -29,7 +29,7 @@ Deze afbeelding biedt een overzicht van het scenario:
 Deze zelf studie laat zien hoe u de volgende taken kunt uitvoeren:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maken
+> * Een data factory maken
 > * Een gekoppelde Azure Storage-service maken
 > * Een Azure Blob-gegevensset maken
 > * Een pijplijn met een kopieeractiviteit en een webactiviteit maken
@@ -144,7 +144,7 @@ Een C# .net-console toepassing maken:
    var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
    ```
 
-### <a name="create-a-data-factory"></a>Een gegevensfactory maken
+### <a name="create-a-data-factory"></a>Een data factory maken
 
 1. Voeg een `CreateOrUpdateDataFactory` methode toe aan uw *Program.cs* -bestand:
 
@@ -551,7 +551,7 @@ Bouw het programma en voer het uit om een pijplijnuitvoering te activeren.
 
 ## <a name="monitor-a-pipeline-run"></a>Een pijplijnuitvoering controleren
 
-1. Voeg de volgende code toe aan de methode `Main`:
+1. Voeg de volgende code aan de `Main` methode toe:
 
     ```csharp
     // Monitor the pipeline run
@@ -608,10 +608,7 @@ Creating linked service AzureStorageLinkedService...
 {
   "type": "AzureStorage",
   "typeProperties": {
-    "connectionString": {
-      "type": "SecureString",
-      "value": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
-    }
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
   }
 }
 Creating dataset SourceStorageDataset...
@@ -754,7 +751,7 @@ Press any key to exit...
 In deze zelf studie hebt u de volgende taken doorstaan:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maken
+> * Een data factory maken
 > * Een gekoppelde Azure Storage-service maken
 > * Een Azure Blob-gegevensset maken
 > * Een pijplijn met een kopieeractiviteit en een webactiviteit maken

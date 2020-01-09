@@ -1,5 +1,6 @@
 ---
-title: Azure VMware-oplossing door CloudSimple-CloudSimple onderhoud en updates
+title: Onderhoud en updates voor CloudSimple
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Beschrijft het CloudSimple-service proces voor gepland onderhoud en updates
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 92f02c0abef6755213d4c73189c7e0a593867ef6
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877933"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372820"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>Onderhoud en updates voor CloudSimple
 
@@ -37,9 +38,9 @@ CloudSimple controleert ook de volgende taken continu voor fouten:
 * Harde schijven
 * Fysieke NIC-poorten
 * Servers
-* Fans
-* /Uitschakelaar
-* Focus
+* Ventilatoren
+* Power
+* Switches
 * Switch poorten
 
 Als een schijf of knoop punt uitvalt, wordt er automatisch een nieuw knoop punt aan het betrokken VMware-cluster toegevoegd om de status onmiddellijk weer te geven.
@@ -48,11 +49,11 @@ CloudSimple maakt een back-up, onderhoudt en werkt deze VMware-elementen bij in 
 
 * ESXi
 * vCenter-platform Services
-* Controller
+* Regelaar
 * vSAN
 * NSX
 
-## <a name="back-up-and-restore"></a>Back-up en herstel
+## <a name="back-up-and-restore"></a>Back-ups maken en terugzetten
 
 CloudSimple back-up omvat:
 

@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: cbfb0ddb0ee901545443fc127f80a1837c7bde9b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 55ba025b9174f727a54ce0cd63da11c8661af91c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278586"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381984"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Snelstartgids: een nieuwe app maken in de LUIS-Portal
-
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 In deze Quick Start maakt u een nieuwe app in de LUIS-Portal. Eerst maakt u de basis onderdelen van een app, **intenties**en **entiteiten**. Vervolgens test u de app door een voor beeld van een gebruiker utterance in het interactieve test paneel op te geven om de voorspelde intentie te verkrijgen.
 
@@ -37,9 +35,9 @@ Het bouwen van een app is gratis en er is geen Azure-abonnement vereist. Wanneer
 
    |Naam van instelling| Waarde | Doel|
    |--|--|--|
-   |Naam|`myEnglishApp`|Unieke naam van de LUIS-app<br>Vereist|
-   |Culture|**Engels**|Taal van uitingen van gebruikers, **en-US**<br>Vereist|
-   |Beschrijving (optioneel)|`App made with LUIS Portal`|Beschrijving van de app<br>Beschrijving|
+   |Name|`myEnglishApp`|Unieke naam van de LUIS-app<br>vereist|
+   |Culture|**Engels**|Taal van uitingen van gebruikers, **en-US**<br>vereist|
+   |Beschrijving (optioneel)|`App made with LUIS Portal`|Beschrijving van de app<br>optioneel|
    |Voorspellings bron (optioneel) |-  |Niet selecteren. LUIS biedt u een begin sleutel die gratis kan worden gebruikt voor het maken van bewerkings eindpunt aanvragen voor ontwerpen en 1.000. |
 
    ![Nieuwe app-instellingen invoeren](./media/get-started-portal-build-app/create-new-app-settings.png)

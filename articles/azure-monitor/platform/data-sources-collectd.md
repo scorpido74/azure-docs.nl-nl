@@ -4,15 +4,15 @@ description: Verzamelde is een open-source Linux-daemon waarmee periodiek gegeve
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: 4bf58a7e446cb13366a230a35c83e6bf0acaa09a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 277e6c9736266b64fd717b719dc740525047ae88
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932523"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395878"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Gegevens verzamelen van verzamelde op Linux-agents in Azure Monitor
 [Verzamelde](https://collectd.org/) is een open-source Linux-daemon waarmee periodiek prestatie gegevens worden verzameld van toepassingen en systeem niveau gegevens. Voor beelden van toepassingen zijn de Java Virtual Machine (JVM), MySQL-server en nginx. Dit artikel bevat informatie over het verzamelen van prestatie gegevens van verzamelde in Azure Monitor.
@@ -110,13 +110,13 @@ Voor het onderhouden van een bekend model tussen infrastructuur gegevens die al 
 |:--|:--|
 | `host` | Computer |
 | `plugin` | Geen |
-| `plugin_instance` | Exemplaar naam<br>Als **plugin_instance** is *Null* , then INSTANCENAME = " *_Totaal*" |
+| `plugin_instance` | Exemplaar naam<br>Als **plugin_instance** *Null* is, then INSTANCENAME = " *_Total*" |
 | `type` | ObjectName |
-| `type_instance` | CounterName<br>Als **type_instance** is *Null* , then CounterName =**blank** |
+| `type_instance` | CounterName<br>Als **type_instance** *Null* is, dan CounterName =**blank** |
 | `dsnames[]` | CounterName |
 | `dstypes` | Geen |
 | `values[]` | CounterValue |
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [logboek query's](../log-query/log-query-overview.md) voor het analyseren van de gegevens die zijn verzameld uit gegevens bronnen en oplossingen. 
-* Gebruik [aangepaste velden](custom-fields.md) voor het parseren van gegevens van syslog-records in afzonderlijke velden.
+* Meer informatie over [query's bijgehouden](../log-query/log-query-overview.md) om de gegevens die worden verzameld van gegevensbronnen en oplossingen te analyseren. 
+* Gebruik [aangepaste velden](custom-fields.md) parseren van gegevens van syslog-records in afzonderlijke velden.

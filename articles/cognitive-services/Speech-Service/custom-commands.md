@@ -1,7 +1,7 @@
 ---
 title: Aangepaste opdrachten (preview)-spraak service
 titleSuffix: Azure Cognitive Services
-description: Een overzicht van de functies, mogelijkheden en beperkingen voor aangepaste opdrachten (preview), een oplossing voor het maken van spraak assistenten.
+description: Een overzicht van de functies, mogelijkheden en beperkingen voor aangepaste opdrachten (preview), een oplossing voor het maken van spraak toepassingen.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: dd3e27aefe03ee30e721fcbb915d9ad4b3821618
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 9349969f1f9b037a271cb727233517daba999acd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806300"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446986"
 ---
 # <a name="custom-commands-preview"></a>Aangepaste opdrachten (preview)
 
-[Spraak assistenten](voice-assistants.md) worden naar gebruikers geluisterd en nemen een actie in antwoord, vaak gesp roken terug. Ze gebruiken [spraak-naar-tekst](speech-to-text.md) om de spraak van de gebruiker te transcriberen en vervolgens actie te ondernemen op het memorandum van natuurlijke taal van de tekst. Deze actie omvat vaak gesp roken uitvoer van de assistent die is gegenereerd met [tekst-naar-spraak](text-to-speech.md). Apparaten maken verbinding met assistenten met het `DialogServiceConnector`-object van de Speech SDK.
+Spraak toepassingen, zoals [spraak assistenten](voice-assistants.md) , Luis teren naar gebruikers en nemen een actie in antwoord, vaak gesp roken terug. Ze gebruiken [spraak-naar-tekst](speech-to-text.md) om de spraak van de gebruiker te transcriberen en vervolgens actie te ondernemen op het memorandum van natuurlijke taal van de tekst. Deze actie omvat vaak gesp roken uitvoer van de assistent die is gegenereerd met [tekst-naar-spraak](text-to-speech.md). Apparaten maken verbinding met assistenten met het `DialogServiceConnector`-object van de Speech SDK.
 
-**Aangepaste opdrachten (preview)** is een gestroomlijnde oplossing voor het maken van een spraak assistent. Het biedt een uniforme ontwerp-ervaring, een automatisch hosting model en relatief lagere complexiteit versus andere opties voor het maken van een assistent, zoals [direct line speech](direct-line-speech.md). Deze vereenvoudiging wordt echter geleverd met een lagere flexibiliteit. Aangepaste opdrachten (preview) zijn dus het meest geschikt voor het volt ooien van taken of voor scenario's met opdrachten en besturings elementen. Het is met name goed afgestemd op Internet of Things (IoT) en headless apparaten.
+**Aangepaste opdrachten (preview)** is een gestroomlijnde oplossing voor het maken van spraak toepassingen. Het biedt een geïntegreerde ontwerp ervaring, een automatisch hosting model en relatief lagere complexiteit en andere opties, zoals [directe lijn spraak](direct-line-speech.md). Deze vereenvoudiging wordt echter geleverd met een lagere flexibiliteit. Aangepaste opdrachten (preview) zijn dus het meest geschikt voor het volt ooien van taken of voor scenario's met opdrachten en besturings elementen. Het is met name goed afgestemd op Internet of Things (IoT) en headless apparaten.
 
 Voor complexe conversatie-interacties en integratie met andere oplossingen, zoals de [Virtual assistent-oplossing en de ondernemings sjabloon,](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) wordt u geadviseerd om direct line speech te gebruiken.
 
@@ -31,7 +31,7 @@ Goede kandidaten voor aangepaste opdrachten (preview) hebben een vaste vocabulai
 
 ## <a name="getting-started-with-custom-commands-preview"></a>Aan de slag met aangepaste opdrachten (preview-versie)
 
-De eerste stap voor het gebruik van aangepaste opdrachten (preview) voor het maken van een spraak assistent is het [verkrijgen van een sleutel voor een spraak abonnement](get-started.md) en het openen van de opbouw functie voor aangepaste opdrachten (preview) in de [Speech Studio](https://speech.microsoft.com). Van daaruit kunt u een nieuwe toepassing voor aangepaste opdrachten (preview) maken en deze publiceren, waarna een toepassing op het apparaat kan communiceren met de spraak-SDK.
+De eerste stap voor het gebruik van aangepaste opdrachten (preview) om een spraak toepassing te maken, is door [een sleutel voor een spraak abonnement te verkrijgen](get-started.md) en de opbouw functie voor aangepaste opdrachten (preview) te openen in de [Speech Studio](https://speech.microsoft.com). Van daaruit kunt u een nieuwe toepassing voor aangepaste opdrachten (preview) maken en deze publiceren, waarna een toepassing op het apparaat kan communiceren met de spraak-SDK.
 
    ![Ontwerp stroom voor aangepaste opdrachten (preview-versie)](media/voice-assistants/custom-commands-flow.png "De ontwerp stroom voor aangepaste opdrachten (preview-versie)")
 
@@ -41,24 +41,15 @@ We bieden Quick starts die zijn ontworpen om code in minder dan 10 minuten uit t
 * [Een aangepaste opdrachten (preview)-toepassing maken met para meters](quickstart-custom-speech-commands-create-parameters.md)
 * [Verbinding maken met een toepassing voor aangepaste opdrachten (preview) met de Speech SDK,C#](quickstart-custom-speech-commands-speech-sdk.md)
 
-## <a name="sample-code"></a>Voorbeeldcode
+Wanneer u klaar bent met de Quick starts, kunt u onze How-Tos verkennen.
 
-Voorbeeld code voor het maken van een spraak assistent met aangepaste opdrachten (preview) is beschikbaar op GitHub.
-
-* [Voor beelden van Voice Assistant (SDK)](https://aka.ms/csspeech/samples)
-
-## <a name="customization"></a>Aanpassing
-
-Spraak assistenten die zijn gebouwd met behulp van de spraak service kunnen gebruikmaken van het volledige aanbod aan aanpassings opties voor [spraak naar tekst](speech-to-text.md), [tekst naar spraak](text-to-speech.md)en [aangepaste trefwoord selectie](speech-devices-sdk-create-kws.md).
-
-> [!NOTE]
-> Aanpassings opties variëren per taal/land instelling (Zie [ondersteunde talen](supported-languages.md)).
-
-## <a name="reference-docs"></a>Referentiedocumenten
-
-* [Speech-SDK](speech-sdk-reference.md)
+- [Validaties toevoegen aan aangepaste opdracht parameters](./how-to-custom-speech-commands-validations.md)
+- [Opdrachten op de client uitvoeren met de Speech SDK](./how-to-custom-speech-commands-fulfill-sdk.md)
+- [Een bevestiging toevoegen aan een aangepaste opdracht](./how-to-custom-speech-commands-confirmations.md)
+- [Een correctie met één stap toevoegen aan een aangepaste opdracht](./how-to-custom-speech-commands-one-step-correction.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
+* [Ga naar de speech Studio om aangepaste opdrachten uit te proberen](https://speech.microsoft.com)
 * [De Speech SDK ophalen](speech-sdk.md)

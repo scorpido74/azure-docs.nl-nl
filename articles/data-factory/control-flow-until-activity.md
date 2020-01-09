@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ab24b4f3a819e2b44c68d052c355f10219eb1dc4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b4786b612dedb065239f57e0286bafb688180dff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679358"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440375"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Until-activiteit in Azure Data Factory
 De activiteit until biedt dezelfde functionaliteit als een lus-until-herhalings structuur in programmeer talen. Er wordt een reeks activiteiten uitgevoerd totdat de voorwaarde die aan de activiteit is gekoppeld, resulteert in waar. U kunt in Data Factory een time-outwaarde voor de Until-activiteit opgeven. 
@@ -51,15 +51,15 @@ De activiteit until biedt dezelfde functionaliteit als een lus-until-herhalings 
 
 ## <a name="type-properties"></a>Type-eigenschappen
 
-Eigenschap | Beschrijving | Toegestane waarden | Vereist
+Eigenschap | Beschrijving | Toegestane waarden | Verplicht
 -------- | ----------- | -------------- | --------
-naam | De naam van de `Until` activiteit. | Tekenreeks | Ja
+name | De naam van de `Until` activiteit. | Tekenreeks | Ja
 type | Moet worden ingesteld op **until**. | Tekenreeks | Ja
-expressie | Expressie die moet worden geëvalueerd als waar of onwaar | Expressie.  | Ja
-timeout | De lus-until loopt na de opgegeven tijd hier. | tekenreeksexpressie. `d.hh:mm:ss` (of) `hh:mm:ss`. De standaard waarde is 7 dagen. De maximum waarde is: 90 dagen. | Nee
+expression | Expressie die moet worden geëvalueerd als waar of onwaar | Expressie.  | Ja
+timeout | De lus-until loopt na de opgegeven tijd hier. | Tekenreeks. `d.hh:mm:ss` (of) `hh:mm:ss`. De standaardwaarde is 7 dagen. De maximum waarde is: 90 dagen. | Nee
 Activiteiten | Set activiteiten die worden uitgevoerd tot de expressie wordt geëvalueerd als `true`. | Matrix van activiteiten. |  Ja
 
-## <a name="example-1"></a>Voor beeld 1
+## <a name="example-1"></a>Voorbeeld 1
 
 > [!NOTE]
 > Deze sectie bevat JSON-definities en voor beelden van Power shell-opdrachten voor het uitvoeren van de pijp lijn. Zie [zelf studie: een Data Factory maken met behulp van Azure PowerShell](quickstart-create-data-factory-powershell.md)voor een overzicht met stapsgewijze instructies voor het maken van een Data Factory pijp lijn met behulp van Azure PowerShell-en JSON-definities.
@@ -115,7 +115,7 @@ In dit voor beeld heeft de pijp lijn twee activiteiten: **tot** en met een **oge
 
 ```
 
-## <a name="example-2"></a>Voor beeld 2 
+## <a name="example-2"></a>Voorbeeld 2 
 Met de pijp lijn in dit voor beeld worden gegevens gekopieerd van een uitvoermap naar een uitvoermap in een lus. De lus wordt beëindigd wanneer de waarde voor de para meter REPEAT is ingesteld op False of na één minuut een time-out optreedt.   
 
 ### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Pijp lijn met until-activiteit (Adfv2QuickStartPipeline. json)
@@ -199,10 +199,7 @@ Met de pijp lijn in dit voor beeld worden gegevens gekopieerd van een uitvoermap
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }
@@ -245,7 +242,7 @@ De pijp lijn stelt de **FolderPath** in op de waarde van de para meter **outputP
 }
 ```
 
-### <a name="powershell-commands"></a>Power shell-opdrachten
+### <a name="powershell-commands"></a>PowerShell-opdrachten
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

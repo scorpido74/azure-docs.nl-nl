@@ -1,5 +1,5 @@
 ---
-title: Micro soft Identity platform & OpenID Connect Connect protocol | Azure
+title: OpenID Connect Connect-protocol-micro soft Identity platform | Azure
 description: Bouw webtoepassingen met behulp van de micro soft Identity platform-implementatie van het OpenID Connect Connect-verificatie protocol.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc3778f31cb5dd68d3f3f49ed3cddf574b1cc3bd
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 270fda72378b61e6011d5bbf4ce43496df045c25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966738"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423212"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Micro soft Identity platform en OpenID Connect Connect protocol
 

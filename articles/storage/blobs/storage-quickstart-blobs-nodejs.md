@@ -7,12 +7,12 @@ ms.date: 11/19/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0a6d7ce8f1f6b81c3dbae3d41842345be5d2e551
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 089cda74740d3934c76a3b0ca8803a30654feccf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422015"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465113"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V12 voor Java script
 
@@ -29,7 +29,7 @@ Gebruik de Azure Blob Storage-client bibliotheek V12 voor Java script voor het v
 * De BLOB downloaden naar uw lokale computer
 * Een container verwijderen
 
-[API-referentie documentatie](/javascript/api/@azure/storage-blob) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [pakket (knooppunt pakket beheer)](https://www.npmjs.com/package/@azure/storage-blob/v/12.0.0) | voor [beelden](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
+[API-referentie documentatie](/javascript/api/@azure/storage-blob) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [pakket (knooppunt pakket beheer)](https://www.npmjs.com/package/@azure/storage-blob) | voor [beelden](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -114,7 +114,7 @@ Vanuit de projectmap:
 
 1. Sla het nieuwe bestand op als *BLOB-QuickStart-V12. js* in de map *BLOB-Quick Start-V12* .
 
-[!INCLUDE [storage-quickstart-connection-string-include](../../../includes/storage-quickstart-credentials-include.md)]
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>Object model
 
@@ -134,7 +134,7 @@ Gebruik de volgende Java script-klassen om te communiceren met deze resources:
 * [ContainerClient](/javascript/api/@azure/storage-blob/containerclient): met de klasse `ContainerClient` kunt u Azure Storage containers en de bijbehorende blobs bewerken.
 * [BlobClient](/javascript/api/@azure/storage-blob/blobclient): met de klasse `BlobClient` kunt u Azure Storage blobs bewerken.
 
-## <a name="code-examples"></a>Code voorbeelden
+## <a name="code-examples"></a>Codevoorbeelden
 
 In deze voorbeeld code fragmenten ziet u hoe u het volgende kunt uitvoeren met de Azure Blob Storage-client bibliotheek voor Java script:
 
@@ -154,11 +154,11 @@ Voeg deze code toe in de `main` functie:
 ```javascript
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable on the machine
-// running the application called CONNECT_STR. If the environment variable is
-// created after the application is launched in a console or with Visual Studio,
-// the shell or application needs to be closed and reloaded to take the
-// environment variable into account.
-const CONNECT_STR = process.env.CONNECT_STR;
+// running the application called AZURE_STORAGE_CONNECTION_STRING. If the
+// environment variable is created after the application is launched in a
+// console or with Visual Studio, the shell or application needs to be closed
+// and reloaded to take the environment variable into account.
+const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING;
 ```
 
 ### <a name="create-a-container"></a>Een container maken
@@ -174,7 +174,7 @@ Voeg deze code toe aan het einde van de `main` functie:
 
 ```javascript
 // Create the BlobServiceClient object which will be used to create a container client
-const blobServiceClient = await BlobServiceClient.fromConnectionString(CONNECT_STR);
+const blobServiceClient = await BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
 
 // Create a unique name for the container
 const containerName = 'quickstart' + uuidv1();
@@ -308,16 +308,16 @@ Deleting container...
 Done
 ```
 
-Door loop de code in uw debugger en controleer de Azure Portal gedurende het proces. Controleer of de container wordt gemaakt. U kunt de BLOB in de container openen en de inhoud weer geven.
+Door loop de code in uw debugger en controleer de [Azure Portal](https://portal.azure.com) gedurende het proces. Controleer of de container wordt gemaakt. U kunt de BLOB in de container openen en de inhoud weer geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze Quick Start hebt u geleerd hoe u blobs kunt uploaden, downloaden en vermelden met behulp van Java script.
 
-Als u voor beeld-apps voor Blob-opslag wilt zien, gaat u door naar:
+Voor zelf studies, voor beelden, snel starten en andere documentatie gaat u naar:
 
 > [!div class="nextstepaction"]
-> [Azure Blob Storage SDK V12 java script-voor beelden](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
+> [Documentatie voor Azure voor Java script](/azure/javascript/)
 
-* Zie de [Azure SDK voor Java script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/README.md)voor meer informatie.
-* Voor zelf studies, voor beelden, snel starten en andere documentatie gaat u naar de [Azure SDK voor Java script-documentatie](/azure/javascript/).
+* Zie de [Azure Blob Storage-client bibliotheek voor Java script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)voor meer informatie.
+* Als u voor beeld-apps voor Blob-opslag wilt zien, gaat u naar [Azure Blob Storage-client bibliotheek V12 java script](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)-voor beelden.

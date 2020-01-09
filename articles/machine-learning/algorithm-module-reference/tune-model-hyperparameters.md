@@ -1,7 +1,7 @@
 ---
 title: Model Hyperparameters afstemmen
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module Tune model Hyper parameters in de Azure Machine Learning-service om een parameter opruiming uit te voeren op een model om de optimale parameter instellingen te bepalen.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module model Hyper parameters afstemmen in Azure Machine Learning om een parameter opruiming op een model uit te voeren om de optimale parameter instellingen te bepalen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 834907528e4062de583197cf91e98372b96451d7
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 3db20110571203588ac15f4f64a2ae0a6ab6ef27
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131219"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428408"
 ---
 # <a name="tune-model-hyperparameters"></a>Model Hyperparameters afstemmen
 
@@ -155,5 +155,5 @@ Bijna alle leer Azure Machine Learning ondersteunen Kruis validatie met een geï
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor de Azure machine learning-service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
 

@@ -8,12 +8,14 @@
     - name: Wat is er nieuw in Azure Active Directory?
       href: whats-new.md
 - name: Snelstartgidsen
+  expanded: true
   items:
     - name: De portal openen en een tenant maken
       href: active-directory-access-create-new-tenant.md
     - name: Uw groepen met toegewezen leden bekijken
       href: active-directory-groups-view-azure-portal.md
 - name: Concepten
+  expanded: true
   items:
     - name: Identity Secure Score
       href: identity-secure-score.md
@@ -37,6 +39,8 @@
       href: active-directory-deployment-checklist-p2.md
     - name: Opslag van identiteitsgegevens voor de EU
       href: active-directory-data-storage-eu.md
+    - name: Opslag van identiteitsgegevens voor Australië
+      href: active-directory-data-storage-australia.md
     - name: Nieuw in Microsoft 365 Government
       href: whats-new-microsoft-365-government.md
     - name: Naslaginformatie over Azure AD-bewerkingen
@@ -51,7 +55,7 @@
           href: active-directory-ops-guide-govern.md
         - name: Bewerkingen
           href: active-directory-ops-guide-ops.md
-- name: Handleidingen
+- name: Instructiegidsen
   expanded: true
   items:
     - name: Organisatie
@@ -97,6 +101,7 @@
         - name: Een verwijderde gebruiker herstellen
           href: active-directory-users-restore.md
 - name: Resources
+  expanded: true
   items:
     - name: Ondersteuning vragen voor Azure Active Directory
       href: active-directory-troubleshooting-support-howto.md

@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 32219eeaee7980b685ac3453c6af3beff716abe2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 968241eff1bcab449f9a4def7a394a508461ec95
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824088"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457019"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>X. 509-beveiliging instellen in uw Azure IoT hub
 
@@ -83,7 +83,7 @@ Als u uw X. 509-apparaat wilt verifiëren, moet u het apparaat eerst ondertekene
 
 We laten nu zien hoe u een C# toepassing maakt voor het simuleren van het X. 509-apparaat dat is geregistreerd voor uw IOT-hub. De waarden voor de Tempe ratuur en lucht vochtigheid worden verzonden vanaf het gesimuleerde apparaat naar uw hub. In deze zelf studie maakt u alleen de apparaat-app. Het is aan de lezers te blijven om de IoT Hub-service toepassing te maken die een reactie verzendt naar de gebeurtenissen die door dit gesimuleerde apparaat worden verzonden. De C# toepassing gaat ervan uit dat u de stappen in het [beheer van test-CA-certificaten voor voor beelden en zelf studies](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)hebt gevolgd.
 
-1. Open Visual Studio, selecteer **een nieuw project maken**en kies vervolgens de project sjabloon **console-app (.NET Framework)** . Selecteer **Volgende**.
+1. Open Visual Studio, selecteer **een nieuw project maken**en kies vervolgens de project sjabloon **console-app (.NET Framework)** . Selecteer **Next**.
 
 1. Geef in **uw nieuwe project**de naam project *SimulateX509Device*en selecteer vervolgens **maken**.
 
@@ -97,9 +97,9 @@ We laten nu zien hoe u een C# toepassing maakt voor het simuleren van het X. 509
 
     Met deze stap wordt een verwijzing naar het Azure IoT Device SDK NuGet-pakket en de bijbehorende afhankelijkheden gedownload, geïnstalleerd en toegevoegd.
 
-1. Voeg aan het begin van het bestand `using`Program.cs**de volgende** instructies toe:
+1. Voeg aan het begin van het bestand **Program.cs** de volgende `using`-instructies toe:
 
-    ```CSharp
+    ```csharp
         using Microsoft.Azure.Devices.Client;
         using Microsoft.Azure.Devices.Shared;
         using System.Security.Cryptography.X509Certificates;
@@ -107,7 +107,7 @@ We laten nu zien hoe u een C# toepassing maakt voor het simuleren van het X. 509
 
 1. Voeg de volgende velden toe aan de klasse **Program** :
 
-    ```CSharp
+    ```csharp
         private static int MESSAGE_COUNT = 5;
         private const int TEMPERATURE_THRESHOLD = 30;
         private static String deviceId = "<your-device-id>";
@@ -120,7 +120,7 @@ We laten nu zien hoe u een C# toepassing maakt voor het simuleren van het X. 509
 
 1. Voeg de volgende functie toe om wille keurige getallen te maken voor de Tempe ratuur en vochtigheid en deze waarden naar de hub te verzenden:
 
-    ```CSharp
+    ```csharp
     static async Task SendEvent(DeviceClient deviceClient)
     {
         string dataBuffer;
@@ -142,7 +142,7 @@ We laten nu zien hoe u een C# toepassing maakt voor het simuleren van het X. 509
 
 1. Voeg ten slotte de volgende regels code toe aan de functie **Main** , waarbij de tijdelijke aanduidingen _apparaat-id_, _uw-IOT-hub-naam_en _absoluut pad_ naar het pfx-bestand worden vervangen als vereist door uw installatie.
 
-    ```CSharp
+    ```csharp
     try
     {
         var cert = new X509Certificate2(@"<absolute-path-to-your-device-pfx-file>", "1234");

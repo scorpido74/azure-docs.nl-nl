@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/15/2019
-ms.openlocfilehash: 08a93c10a4214696d67f95cb862654d095899630
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 03a4b8df24a0ab1dbe3cfabd3ccf207005b0e186
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932968"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397622"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Voor beelden van Log Analytics Smart Analytics
 In dit artikel vindt u voor beelden van het gebruik van slimme Analytics-functies in Log Analytics voor het uitvoeren van analyse van gebruikers activiteit. U kunt deze voor beelden gebruiken om uw eigen toepassingen te analyseren die worden bewaakt door Application Insights of gebruik de concepten in deze query's voor vergelijk bare analyse van andere gegevens. 
@@ -184,7 +184,7 @@ In dit voor beeld ziet u hoe u een geautomatiseerde detector maakt voor service-
 Er worden twee technieken gebruikt om de status van de service op basis van traceer logboek gegevens te evalueren:
 
 - Gebruik de [Maak reeks](/azure/kusto/query/make-seriesoperator) om semi-gestructureerde tekstuele traceer logboeken te converteren naar een metrieke waarde die de verhouding tussen positieve en negatieve tracerings regels vertegenwoordigt.
-- Gebruik [series_fit_2lines](/azure/kusto/query/series-fit-2linesfunction) en [series_fit_line](/azure/kusto/query/series-fit-linefunction) om geavanceerde stapsgewijze detectie uit te voeren met een time-series-analyse met een lineaire regressie van twee lijnen.
+- Gebruik [series_fit_2lines](/azure/kusto/query/series-fit-2linesfunction) en [series_fit_line](/azure/kusto/query/series-fit-linefunction) voor het uitvoeren van geavanceerde stapsgewijze detectie met behulp van Time-Series-analyses met een lineaire regressie van twee lijnen.
 
 ``` Kusto
 let startDate = startofday(datetime("2017-02-01"));

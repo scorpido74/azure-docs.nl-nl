@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Azure Service Bus-onderwerpen en-abonnementen gebruiken met node. js'
+title: Azure/service-bus-onderwerpen en-abonnementen gebruiken met node. js
 description: 'Snelstartgids: informatie over het gebruik van Service Bus-onderwerpen en abonnementen in azure vanuit een node. js-app.'
 services: service-bus-messaging
 documentationcenter: nodejs
@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: fa6f40eba02ffe171dc521f952e0d00fc35fc7e6
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 160f9831a23ed16fc33ddbbb9b4e07a5627a3f9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721660"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462125"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Snelstartgids: Service Bus-onderwerpen en-abonnementen gebruiken met node. js en het Azure/service-bus-pakket
 > [!div class="op_multi_selector" title1="Programmeertaal" title2="Node. js pakket"]
@@ -87,7 +87,7 @@ Interactie met een Service Bus onderwerp begint met het instantiëren van de kla
 3. Voer in de bovenstaande code de connection string en de naam van uw onderwerp in.
 4. Voer vervolgens de opdracht `node send.js` in een opdracht prompt uit om dit bestand uit te voeren. 
 
-Gefeliciteerd! U hebt zojuist berichten verzonden naar een Service Bus wachtrij.
+Gefeliciteerd. U hebt zojuist berichten verzonden naar een Service Bus wachtrij.
 
 Berichten bevatten enkele standaard eigenschappen, zoals `label`, en `messageId` die u kunt instellen tijdens het verzenden. Als u aangepaste eigenschappen wilt instellen, gebruikt u de `userProperties`. Dit is een JSON-object dat sleutel-waardeparen van uw aangepaste gegevens kan bevatten.
 
@@ -130,7 +130,7 @@ Interactie met een Service Bus-abonnement begint bij het instantiëren van de kl
 3. Voer in de bovenstaande code de connection string en namen in van uw onderwerp en abonnement.
 4. Voer vervolgens de opdracht `node receiveMessages.js` in een opdracht prompt uit om dit bestand uit te voeren.
 
-Gefeliciteerd! U hebt zojuist berichten ontvangen van een Service Bus-abonnement.
+Gefeliciteerd. U hebt zojuist berichten ontvangen van een Service Bus-abonnement.
 
 De methode [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) neemt in een `ReceiveMode`. Dit is een enum met waarden [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) en [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations). Vergeet niet om [uw berichten](message-transfers-locks-settlement.md#settling-receive-operations) af te rekenen als u de `PeekLock` modus gebruikt met behulp van `complete()`, `abandon()`, `defer()`of `deadletter()` methoden in het bericht.
 

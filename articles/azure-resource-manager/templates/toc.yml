@@ -10,10 +10,6 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: Sjablonen maken - VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
-    - name: Sjablonen maken - Visual Studio
-      href: create-visual-studio-deployment-project.md
-    - name: Sjablonen maken - IntelliJ IDEA
-      href: create-templates-use-intellij.md
 - name: Zelfstudies
   items:
     - name: Beginner
@@ -101,8 +97,9 @@
   items:
     - name: Sjablonen maken
       items:
-        - name: VS Code gebruiken
-          href: use-vs-code-to-create-template.md
+        - name: Sjabloonbestandstructuur
+          displayName: 'parameters,variables,resources,outputs,condition'
+          href: template-syntax.md
         - name: Sjabloonexpressies schrijven
           href: template-expressions.md
         - name: Parameters
@@ -134,6 +131,14 @@
           href: deploy-to-subscription.md
         - name: Resources op beheergroepniveau
           href: deploy-to-management-group.md
+    - name: Creatiehulpprogramma's gebruiken
+      items:
+        - name: VS-code
+          href: use-vs-code-to-create-template.md
+        - name: Visual Studio
+          href: create-visual-studio-deployment-project.md
+        - name: IntelliJ IDEA
+          href: create-templates-use-intellij.md
     - name: Sjablonen implementeren
       items:
         - name: Implementeren - portal
@@ -206,9 +211,6 @@
           href: ../../virtual-machines/windows/troubleshoot-deploy-vm.md
 - name: Naslaginformatie
   items:
-    - name: Sjabloonbestandstructuur
-      displayName: 'parameters,variables,resources,outputs,condition'
-      href: template-syntax.md
     - name: Sjabloonverwijzing
       href: /azure/templates/
     - name: Sjabloonfuncties

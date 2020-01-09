@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 83910c2209b5d3d3d67578ae41afb902bc885171
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f7d14da6c7436120e013c979b108f61b82640d13
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037460"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647880"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Een of meer listeners voor Always on-beschikbaarheids groep configureren-Resource Manager
 In dit onderwerp wordt beschreven hoe u:
@@ -137,7 +137,7 @@ De front-end-poort is de poort die door toepassingen wordt gebruikt om verbindin
 > [!NOTE]
 > Voor SQL Server-beschikbaarheids groepen is voor elk IP-adres een specifieke test poort vereist. Als bijvoorbeeld één IP-adres op een load balancer test poort 59999 gebruikt, kunnen er geen andere IP-adressen op die load balancer de test poort 59999 gebruiken.
 
-* Zie voor meer informatie over load balancer limieten **persoonlijke front-end-IP per Load Balancer** onder [netwerk limieten-Azure Resource Manager](../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
+* Zie voor meer informatie over load balancer limieten **persoonlijke front-end-IP per Load Balancer** onder [netwerk limieten-Azure Resource Manager](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
 * Zie voor meer informatie over limieten van de beschikbaarheids groep [beperkingen (beschikbaarheids groepen)](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG).
 
 Met het volgende script wordt een nieuw IP-adres toegevoegd aan een bestaand load balancer. De ILB maakt gebruik van de listener-poort voor de front-end-taakverdelings poort. Deze poort kan de poort zijn waarop SQL Server luistert. Voor de standaard exemplaren van SQL Server is de poort 1433. Voor de taakverdelings regel voor een beschikbaarheids groep is een zwevend IP-adres (Direct Server Return) vereist, zodat de back-end-poort hetzelfde is als de front-end-poort. Werk de variabelen voor uw omgeving bij. 

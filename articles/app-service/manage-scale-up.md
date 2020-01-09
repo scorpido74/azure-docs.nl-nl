@@ -5,12 +5,12 @@ ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 37120377f87bee53f73fe4d3dd7ced59551a491f
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: dfd9297e80836978b8a185df3fc4659676383802
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672316"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659896"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Een app omhoog schalen in Azure App Service
 
@@ -71,7 +71,7 @@ Als uw app afhankelijk is van andere services, zoals Azure SQL Database of Azure
 
 Zie [app service prijs informatie](https://azure.microsoft.com/pricing/details/app-service)voor gedetailleerde informatie, zoals VM-grootten voor elke prijs categorie.
 
-Zie [app service limieten](../azure-subscription-service-limits.md#app-service-limits)voor een tabel met Service limieten, quota's en beperkingen en ondersteunde functies in elke laag.
+Zie [app service limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)voor een tabel met Service limieten, quota's en beperkingen en ondersteunde functies in elke laag.
 
 <a name="Next Steps"></a>
 

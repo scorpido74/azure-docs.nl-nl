@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 684c067f393b1f6037e67d3b49a861341f3353c8
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 24738e4d6a9f18bccdbc775fa20cccec222a85fb
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706126"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561623"
 ---
 # <a name="what-are-durable-functions"></a>Wat is Durable Functions?
 
@@ -48,7 +48,7 @@ In het patroon functie koppeling wordt een reeks functies in een specifieke volg
 
 U kunt Durable Functions gebruiken om het patroon van de functie koppeling beknopt te implementeren, zoals wordt weer gegeven in het volgende voor beeld.
 
-In dit voor beeld zijn de waarden `F1`, `F2`, `F3`en `F4` de namen van andere functies in de functie-app. U kunt de controle stroom implementeren met behulp van normale verplichte coderings constructies. Code wordt van boven naar beneden uitgevoerd. De code kan bestaan uit de bestaande semantiek van de taal besturings flow, zoals voor waarden en lussen. U kunt de logica voor fout afhandeling in `try`/`catch`/`finally` blokken toevoegen.
+In dit voor beeld zijn de waarden `F1`, `F2`, `F3`en `F4` de namen van andere functies in dezelfde functie-app. U kunt de controle stroom implementeren met behulp van normale verplichte coderings constructies. Code wordt van boven naar beneden uitgevoerd. De code kan bestaan uit de bestaande semantiek van de taal besturings flow, zoals voor waarden en lussen. U kunt de logica voor fout afhandeling in `try`/`catch`/`finally` blokken toevoegen.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -353,7 +353,7 @@ Een externe client kan de gebeurtenis melding leveren aan een functie die wacht 
 curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
 ```
 
-Een gebeurtenis kan ook worden gegenereerd met behulp van de duurzame Orchestration-client vanuit een andere functie:
+Een gebeurtenis kan ook worden gegenereerd met behulp van de duurzame Orchestration-client vanuit een andere functie in dezelfde functie-app:
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
